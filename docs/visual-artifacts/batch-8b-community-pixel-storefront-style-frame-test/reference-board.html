@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Batch 8B Reference Board</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        background: #efe6d7;
+        color: #151515;
+      }
+
+      .page {
+        width: 1760px;
+        margin: 0 auto;
+        padding: 44px 48px 56px;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      .eyebrow {
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 28px;
+        margin-top: 18px;
+        padding: 28px 30px;
+        background: #fff8ec;
+        border: 3px solid #151515;
+      }
+
+      .intro h1 {
+        font-size: 54px;
+        line-height: 0.94;
+      }
+
+      .intro p {
+        font-size: 19px;
+        line-height: 1.45;
+      }
+
+      .group {
+        margin-top: 30px;
+      }
+
+      .group h2 {
+        font-size: 28px;
+        margin-bottom: 14px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        background: #fff8ec;
+        border: 3px solid #151515;
+        overflow: hidden;
+      }
+
+      .card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        background: #d9d1c6;
+      }
+
+      .card .body {
+        padding: 16px 18px 18px;
+      }
+
+      .meta {
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .take,
+      .avoid,
+      .source {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+      .avoid,
+      .source {
+        margin-top: 8px;
+      }
+
+      .footer {
+        margin-top: 24px;
+        padding: 20px 24px;
+        background: #fff8ec;
+        border: 3px solid #151515;
+        font-size: 16px;
+        line-height: 1.45;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <p class="eyebrow">lo-fi / exploratory / not final</p>
+      <section class="intro">
+        <div>
+          <h1>Batch 8B Reference Board</h1>
+        </div>
+        <p>
+          This board keeps the source-backed visual inputs separate from the decision images.
+          The style frames are fully redrawn artifacts. These references exist to ground the
+          scene in actual Greenpoint and OCCII observations, not to be copied literally.
+        </p>
+      </section>
+
+      <section class="group">
+        <h2>OCCII / Overlay Mood</h2>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/reference-sources/occii-visual-reference.png" alt="OCCII flyer reference">
+            <div class="body">
+              <p class="meta">direct mood reference</p>
+              <p class="title">OCCII Community Drinks flyer</p>
+              <p class="take">Borrow: white/navy hierarchy, community invitation, neon-green attention cue, late-90s sim confidence.</p>
+              <p class="avoid">Avoid: exact type, exact layout, exact plumbob logic, interior-first composition.</p>
+              <p class="source">Source: local user-provided reference inspected in preproduction.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/BG.jpg" alt="Peter Pan stripe background">
+            <div class="body">
+              <p class="meta">official palette cue</p>
+              <p class="title">Peter Pan stripe rhythm</p>
+              <p class="take">Borrow: mint-and-white shop confidence for awning and trim notes.</p>
+              <p class="avoid">Avoid: using the stripe field as a literal pasted facade.</p>
+              <p class="source">Source: Peter Pan official site background asset.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/Carousel-1.png" alt="Peter Pan donut cutout">
+            <div class="body">
+              <p class="meta">official product color</p>
+              <p class="title">Frosting + sprinkle palette</p>
+              <p class="take">Borrow: bakery pinks, candy accents, glaze sheen, sweet-shop warmth.</p>
+              <p class="avoid">Avoid: literal product cutout use inside the scene.</p>
+              <p class="source">Source: Peter Pan official site carousel asset.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>Peter Pan / Storefront Warmth</h2>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/reference-sources/1D9A0693.jpg" alt="Peter Pan interior">
+            <div class="body">
+              <p class="meta">official interior cue</p>
+              <p class="title">Mint trim + pendant globes</p>
+              <p class="take">Borrow: interior glow, mint framing, simple menu-label rhythm, metal bakery racks.</p>
+              <p class="avoid">Avoid: turning the exterior scene into an interior bakery poster.</p>
+              <p class="source">Source: Peter Pan official gallery image.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/1D9A0650.jpg" alt="Peter Pan counter">
+            <div class="body">
+              <p class="meta">official service cue</p>
+              <p class="title">Counter warmth + case density</p>
+              <p class="take">Borrow: approachable warmth, softly crowded cases, casual neighborhood energy.</p>
+              <p class="avoid">Avoid: putting staff or customers into the MVP world layer.</p>
+              <p class="source">Source: Peter Pan official gallery image.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/1D9A0713.jpg" alt="Peter Pan donut rack">
+            <div class="body">
+              <p class="meta">official material cue</p>
+              <p class="title">Metal rack + glaze materials</p>
+              <p class="take">Borrow: chrome rack silhouette, warm glaze tones, bakery display hardware.</p>
+              <p class="avoid">Avoid: over-rendered pastry fetish detail in the world layer.</p>
+              <p class="source">Source: Peter Pan official gallery image.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>Greenpoint Streetscape + Brick Rhythm</h2>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/reference-sources/960px-735_Manhattan_Av_Grnpt_jeh.jpg" alt="Manhattan Avenue streetscape">
+            <div class="body">
+              <p class="meta">public streetscape</p>
+              <p class="title">Manhattan Avenue upper-floor rhythm</p>
+              <p class="take">Borrow: brick massing, cornice weight, vertical window cadence, commercial-strip density.</p>
+              <p class="avoid">Avoid: implying these exact storefront neighbors are Peter Pan’s block.</p>
+              <p class="source">Source: Wikimedia Commons Manhattan Avenue image.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/greenpoint-historic-district-cover.png" alt="Historic district report cover">
+            <div class="body">
+              <p class="meta">historic proportion discipline</p>
+              <p class="title">Greenpoint Historic District reference</p>
+              <p class="take">Borrow: historic storefront proportion discipline and arched-window brick logic.</p>
+              <p class="avoid">Avoid: preservation-museum polish or postcard sentimentality.</p>
+              <p class="source">Source: Landmarks Preservation Commission designation report.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/Carousel-3.png" alt="Peter Pan donut cutout">
+            <div class="body">
+              <p class="meta">bakery accent cue</p>
+              <p class="title">Warm neutral bakery anchor</p>
+              <p class="take">Borrow: softer bakery neutrals that keep the world grounded when the UI gets louder.</p>
+              <p class="avoid">Avoid: turning the whole palette into beige pastry tones.</p>
+              <p class="source">Source: Peter Pan official site carousel asset.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>Greenpoint Ave G Station</h2>
+        <div class="grid">
+          <article class="card">
+            <img src="assets/reference-sources/960px-Greenpoint_Ave_G.jpg" alt="Greenpoint Avenue station entrance">
+            <div class="body">
+              <p class="meta">public street-level anchor</p>
+              <p class="title">Entrance globe + sign panel</p>
+              <p class="take">Borrow: green globe, black sign panel, metal post language, sidewalk adjacency.</p>
+              <p class="avoid">Avoid: obsolete payphone details or exact street furniture.</p>
+              <p class="source">Source: Wikimedia Commons entrance photo.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/1280px-Greenpoint_Avenue_Station_Sign.jpg" alt="Greenpoint Avenue station sign">
+            <div class="body">
+              <p class="meta">public type cue</p>
+              <p class="title">Station typography + G identity</p>
+              <p class="take">Borrow: black/white/green sign contrast and compact factual transit identity.</p>
+              <p class="avoid">Avoid: copying exact wording or layout one-for-one.</p>
+              <p class="source">Source: Wikimedia Commons station sign image.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="assets/reference-sources/1280px-Greenpoint_Avenue_Southbound_IND_Crosstown_Line_Platform%2C_June_2025.jpg" alt="Greenpoint Avenue platform">
+            <div class="body">
+              <p class="meta">public interior palette cue</p>
+              <p class="title">Green tile + black steel balance</p>
+              <p class="take">Borrow: MTA green identity, white tile contrast, dark steel mass, yellow warning strip as a restraint foil.</p>
+              <p class="avoid">Avoid: turning the exterior scene into a platform scene or transit-map product.</p>
+              <p class="source">Source: Wikimedia Commons platform image.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="footer">
+        Batch 8B uses these references as observational inputs only. The style frames keep composition, card fields,
+        marker family, and scene geometry fixed so Batu can judge emotional volume rather than being forced to decode
+        multiple moving variables at once.
+      </section>
+    </main>
+  </body>
+</html>

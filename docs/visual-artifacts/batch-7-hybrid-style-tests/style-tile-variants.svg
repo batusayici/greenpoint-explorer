@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Batch 7 style tile variants</title>
+  <desc id="desc">Lo-fi exploratory style tile variants for Community Pixel Storefront.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3ecd8; }
+      .panel { fill: #fff9ea; stroke: #111827; stroke-width: 4; }
+      .ink { fill: #111827; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .big { font-size: 38px; font-weight: 900; }
+      .med { font-size: 24px; font-weight: 800; }
+      .small { font-size: 17px; }
+      .note { fill: #374151; font-size: 15px; }
+      .outline { stroke: #111827; stroke-linejoin: round; stroke-linecap: square; }
+      .brick { fill: #b95843; stroke: #111827; stroke-width: 5; }
+      .cream { fill: #f0d994; stroke: #111827; stroke-width: 4; }
+      .green { fill: #5d8f67; stroke: #111827; stroke-width: 4; }
+      .navy { fill: #071f5f; stroke: #111827; stroke-width: 4; }
+      .acid { fill: #dfff3f; stroke: #111827; stroke-width: 4; }
+      .red { fill: #f16648; stroke: #111827; stroke-width: 4; }
+      .blue { fill: #2e6edb; stroke: #111827; stroke-width: 4; }
+      .soft { fill: #d8d0bb; stroke: #111827; stroke-width: 3; }
+      .thin { stroke-width: 2; }
+      .mid { stroke-width: 4; }
+      .heavy { stroke-width: 7; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1800" height="1050"/>
+  <text class="ink big" x="54" y="64">Community Pixel Storefront - Style Tile Variants</text>
+  <text class="ink med" x="54" y="100">lo-fi / exploratory / not final</text>
+  <text class="ink note" x="54" y="130">Tests visual language only. Not a static style frame, not final art, not app implementation.</text>
+
+  <rect class="panel" x="54" y="170" width="530" height="780"/>
+  <rect class="panel" x="635" y="170" width="530" height="780"/>
+  <rect class="panel" x="1216" y="170" width="530" height="780"/>
+
+  <text class="ink med" x="84" y="215">A. Community-heavy</text>
+  <text class="ink note" x="84" y="244">OCCII-inspired confidence; highest warmth and UI volume.</text>
+  <g transform="translate(162 398)">
+    <polygon class="brick" points="0,205 132,140 300,224 168,290"/>
+    <polygon class="brick" points="0,205 0,20 132,-44 132,140"/>
+    <polygon class="brick" points="132,140 132,-44 300,40 300,224"/>
+    <rect class="cream" x="28" y="100" width="190" height="52"/>
+    <text class="ink med" x="43" y="134">STORE</text>
+    <rect x="42" y="164" width="58" height="76" fill="#37281f" stroke="#111827" stroke-width="4"/>
+    <rect x="122" y="166" width="82" height="48" fill="#b7dbe5" stroke="#111827" stroke-width="3"/>
+    <rect x="222" y="166" width="52" height="48" fill="#b7dbe5" stroke="#111827" stroke-width="3"/>
+    <path class="acid" d="M244 -80 L268 -36 L316 -38 L282 -6 L294 42 L246 18 L204 44 L214 -8 L178 -38 L224 -36 Z"/>
+    <rect class="navy" x="198" y="-110" width="210" height="58"/>
+    <text x="216" y="-72" font-family="ui-monospace, monospace" font-size="27" font-weight="900" fill="#fff" stroke="#071f5f" stroke-width="1">OPEN</text>
+    <rect class="red" x="-25" y="248" width="170" height="46"/>
+    <text class="ink small" x="-6" y="278">community cue</text>
+  </g>
+  <text class="ink small" x="84" y="778">Borrow: warmth, invitation, bold label hierarchy.</text>
+  <text class="ink small" x="84" y="808">Risk: too close to event flyer; UI overpowers world.</text>
+  <text class="ink small" x="84" y="838">Use if Batu wants the first click to feel social.</text>
+
+  <text class="ink med" x="665" y="215">B. Balanced hybrid</text>
+  <text class="ink note" x="665" y="244">Local storefront first; medium sticker UI; civic clarity.</text>
+  <g transform="translate(742 398)">
+    <polygon class="brick" points="0,205 132,140 300,224 168,290"/>
+    <polygon class="brick" points="0,205 0,20 132,-44 132,140"/>
+    <polygon class="brick" points="132,140 132,-44 300,40 300,224"/>
+    <rect class="cream" x="28" y="100" width="190" height="52"/>
+    <text class="ink med" x="43" y="134">PETER PAN</text>
+    <rect x="42" y="164" width="58" height="76" fill="#37281f" stroke="#111827" stroke-width="4"/>
+    <rect x="122" y="166" width="82" height="48" fill="#b7dbe5" stroke="#111827" stroke-width="3"/>
+    <rect x="222" y="166" width="52" height="48" fill="#b7dbe5" stroke="#111827" stroke-width="3"/>
+    <path class="acid" d="M245 -55 L278 -22 L250 16 L213 -15 Z"/>
+    <rect fill="#fff9ea" stroke="#111827" stroke-width="4" x="272" y="-43" width="142" height="42"/>
+    <text class="ink small" x="289" y="-16">place</text>
+    <rect class="green" x="-18" y="248" width="142" height="38"/>
+    <text class="ink small" x="-2" y="273">verified</text>
+  </g>
+  <text class="ink small" x="665" y="778">Borrow: storefront specificity plus clickable charm.</text>
+  <text class="ink small" x="665" y="808">Risk: can become too careful if accents are timid.</text>
+  <text class="ink small" x="665" y="838">Use if Batu wants the safest emotional/clarity balance.</text>
+
+  <text class="ink med" x="1246" y="215">C. Civic-heavy</text>
+  <text class="ink note" x="1246" y="244">Cleaner guide clarity; smaller flyer accents; most restrained.</text>
+  <g transform="translate(1323 398)">
+    <polygon class="brick" points="0,205 132,140 300,224 168,290"/>
+    <polygon class="brick" points="0,205 0,20 132,-44 132,140"/>
+    <polygon class="brick" points="132,140 132,-44 300,40 300,224"/>
+    <rect class="cream" x="28" y="100" width="190" height="52"/>
+    <text class="ink med" x="43" y="134">STORE</text>
+    <rect x="42" y="164" width="58" height="76" fill="#37281f" stroke="#111827" stroke-width="4"/>
+    <rect x="122" y="166" width="82" height="48" fill="#b7dbe5" stroke="#111827" stroke-width="3"/>
+    <rect x="222" y="166" width="52" height="48" fill="#b7dbe5" stroke="#111827" stroke-width="3"/>
+    <rect class="acid" x="252" y="-38" width="54" height="38"/>
+    <text class="ink small" x="272" y="-12">i</text>
+    <rect fill="#fff9ea" stroke="#111827" stroke-width="3" x="310" y="-35" width="95" height="32"/>
+    <text class="ink note" x="323" y="-13">place</text>
+    <rect class="soft" x="-18" y="248" width="142" height="38"/>
+    <text class="ink small" x="-2" y="273">source</text>
+  </g>
+  <text class="ink small" x="1246" y="778">Borrow: factual discipline and low visual noise.</text>
+  <text class="ink small" x="1246" y="808">Risk: too polite; less OCCII warmth.</text>
+  <text class="ink small" x="1246" y="838">Use if Batu wants a guide/map feel with charm.</text>
+
+  <text class="ink note" x="54" y="1002">Decision prompt: Which emotional volume feels right before any composition blockout or static style frame?</text>
+</svg>
+

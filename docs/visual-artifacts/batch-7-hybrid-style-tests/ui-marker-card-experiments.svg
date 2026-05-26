@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Batch 7 UI marker and card experiments</title>
+  <desc id="desc">Lo-fi exploratory marker, label chip, and place-card variants.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f3ecd8; }
+      .panel { fill: #fff9ea; stroke: #111827; stroke-width: 4; }
+      .ink { fill: #111827; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .big { font-size: 38px; font-weight: 900; }
+      .med { font-size: 24px; font-weight: 800; }
+      .small { font-size: 17px; }
+      .note { fill: #374151; font-size: 15px; }
+      .card { fill: #fff9ea; stroke: #111827; stroke-width: 5; }
+      .thin-card { fill: #fff9ea; stroke: #111827; stroke-width: 3; }
+      .navy { fill: #071f5f; stroke: #111827; stroke-width: 4; }
+      .acid { fill: #dfff3f; stroke: #111827; stroke-width: 4; }
+      .green { fill: #42b96b; stroke: #111827; stroke-width: 4; }
+      .red { fill: #f16648; stroke: #111827; stroke-width: 4; }
+      .blue { fill: #2e6edb; stroke: #111827; stroke-width: 4; }
+      .muted { fill: #d8d0bb; stroke: #111827; stroke-width: 3; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="1050"/>
+  <text class="ink big" x="54" y="64">UI Marker / Card Experiments</text>
+  <text class="ink med" x="54" y="100">lo-fi / exploratory / not final</text>
+  <text class="ink note" x="54" y="130">Tests UI language only. Markers are place/hotspot cues, not character indicators.</text>
+
+  <rect class="panel" x="54" y="170" width="520" height="355"/>
+  <text class="ink med" x="84" y="215">Green attention marker options</text>
+  <g transform="translate(105 260)">
+    <path class="green" d="M54 0 L98 38 L72 98 L20 98 L-6 38 Z"/>
+    <text class="ink small" x="-28" y="140">faceted map jewel</text>
+  </g>
+  <g transform="translate(270 260)">
+    <path class="acid" d="M0 54 C38 4 86 4 124 54 C84 100 38 100 0 54 Z"/>
+    <circle cx="62" cy="54" r="14" fill="#111827"/>
+    <text class="ink small" x="-8" y="140">eye/attention tab</text>
+  </g>
+  <g transform="translate(440 260)">
+    <path class="green" d="M0 20 L86 0 L72 88 L20 108 Z"/>
+    <path d="M20 108 L72 88" stroke="#111827" stroke-width="4"/>
+    <text class="ink small" x="-12" y="140">folded sticker flag</text>
+  </g>
+  <text class="ink note" x="84" y="470">Avoid plumbob silhouette. Marker should mean "clickable place", not "person".</text>
+
+  <rect class="panel" x="625" y="170" width="520" height="355"/>
+  <text class="ink med" x="655" y="215">Label chip variants</text>
+  <g transform="translate(675 270)">
+    <rect class="navy" x="0" y="0" width="275" height="58"/>
+    <text x="22" y="38" font-family="ui-monospace, monospace" font-size="25" font-weight="900" fill="#fff">Peter Pan</text>
+    <text class="ink small" x="0" y="96">community-heavy</text>
+  </g>
+  <g transform="translate(675 405)">
+    <rect class="card" x="0" y="0" width="275" height="58"/>
+    <rect class="acid" x="-11" y="-10" width="48" height="26"/>
+    <text class="ink med" x="30" y="38">Peter Pan</text>
+    <text class="ink small" x="0" y="96">balanced hybrid</text>
+  </g>
+  <g transform="translate(968 405)">
+    <rect class="thin-card" x="0" y="0" width="132" height="46"/>
+    <text class="ink small" x="18" y="29">bakery</text>
+    <text class="ink small" x="-10" y="84">civic-heavy</text>
+  </g>
+
+  <rect class="panel" x="1196" y="170" width="550" height="780"/>
+  <text class="ink med" x="1226" y="215">Place-card hierarchy variants</text>
+  <g transform="translate(1235 250)">
+    <rect class="thin-card" x="0" y="0" width="450" height="165"/>
+    <text class="ink med" x="24" y="42">Factual card</text>
+    <text class="ink small" x="24" y="78">Peter Pan Donuts</text>
+    <text class="ink note" x="24" y="108">Bakery / donut shop</text>
+    <text class="ink note" x="24" y="137">727 Manhattan Ave · source · unofficial</text>
+  </g>
+  <g transform="translate(1235 455)">
+    <rect class="card" x="0" y="0" width="450" height="185"/>
+    <rect class="navy" x="0" y="0" width="450" height="54"/>
+    <text x="24" y="37" font-family="ui-monospace, monospace" font-size="25" font-weight="900" fill="#fff">Community flyer card</text>
+    <text class="ink small" x="24" y="92">PETER PAN DONUTS</text>
+    <rect class="acid" x="24" y="114" width="168" height="34"/>
+    <text class="ink note" x="34" y="136">tap for place info</text>
+    <text class="ink note" x="24" y="168">Risk: too event-like for factual map.</text>
+  </g>
+  <g transform="translate(1235 680)">
+    <rect class="card" x="0" y="0" width="450" height="205"/>
+    <rect class="acid" x="0" y="0" width="450" height="48"/>
+    <text class="ink med" x="24" y="34">Hybrid card</text>
+    <text class="ink small" x="24" y="82">Peter Pan Donuts</text>
+    <text class="ink note" x="24" y="112">A long-running Manhattan Ave bakery anchor.</text>
+    <rect class="muted" x="24" y="138" width="285" height="34"/>
+    <text class="ink note" x="34" y="160">source · last verified · unofficial</text>
+    <text class="ink note" x="24" y="190">Likely best balance candidate.</text>
+  </g>
+
+  <rect class="panel" x="54" y="570" width="1091" height="380"/>
+  <text class="ink med" x="84" y="615">Decision notes</text>
+  <text class="ink small" x="84" y="660">Factual card: clearest and safest, but may feel dry.</text>
+  <text class="ink small" x="84" y="700">Community flyer card: warmest and most OCCII-adjacent, but risks implying an event system.</text>
+  <text class="ink small" x="84" y="740">Hybrid card: keeps factual discipline while allowing sticker/flyer energy in the header and accent.</text>
+  <text class="ink small" x="84" y="800">Batu should choose marker/label/card volume before any composition blockout.</text>
+  <text class="ink note" x="84" y="850">No final UI decision is made here.</text>
+</svg>
+

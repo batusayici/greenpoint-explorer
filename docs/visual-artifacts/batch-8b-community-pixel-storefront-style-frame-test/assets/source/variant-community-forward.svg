@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Batch 8B community-forward variant</title>
+  <desc id="desc">Higher-fidelity exploratory Peter Pan plus G station style-frame test with the loudest community-forward emotional volume.</desc>
+  <rect width="1800" height="1120" fill="#f2e2cf"/>
+  <rect x="48" y="46" width="1704" height="1028" fill="#fbefe0" stroke="#151515" stroke-width="4"/>
+  <text x="84" y="102" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" fill="#151515">lo-fi / exploratory / not final</text>
+  <text x="84" y="144" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="54" font-weight="900" fill="#151515">Batch 8B - Community-forward</text>
+  <text x="84" y="180" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#2f3a38">Controlled emotional-volume test. Geometry, crop, and factual overlay copy stay fixed across all three variants.</text>
+
+  <g>
+    <rect x="84" y="226" width="1632" height="780" fill="#eadccf" stroke="#151515" stroke-width="3"/>
+    <polygon points="146,702 1338,428 1488,638 276,930" fill="#5d6874"/>
+    <polygon points="212,512 1248,286 1338,428 146,702" fill="#d8c9b6"/>
+    <polygon points="276,930 1488,638 1512,742 322,1012" fill="#ccb8a0"/>
+    <polygon points="188,694 1338,432 1348,452 198,712" fill="#fff3dd" opacity="0.68"/>
+    <polygon points="278,930 1490,640 1498,658 286,948" fill="#fff6e9" opacity="0.56"/>
+
+    <g opacity="0.42" fill="#9f8c79">
+      <circle cx="336" cy="868" r="4"/><circle cx="388" cy="856" r="4"/><circle cx="440" cy="844" r="4"/><circle cx="492" cy="832" r="4"/>
+      <circle cx="544" cy="820" r="4"/><circle cx="596" cy="808" r="4"/><circle cx="648" cy="796" r="4"/><circle cx="700" cy="784" r="4"/>
+      <circle cx="752" cy="772" r="4"/><circle cx="804" cy="760" r="4"/><circle cx="856" cy="748" r="4"/><circle cx="908" cy="736" r="4"/>
+      <circle cx="960" cy="724" r="4"/><circle cx="1012" cy="712" r="4"/><circle cx="1064" cy="700" r="4"/><circle cx="1116" cy="688" r="4"/>
+      <circle cx="1168" cy="676" r="4"/><circle cx="1220" cy="664" r="4"/>
+    </g>
+
+    <g>
+      <polygon points="360,422 612,362 612,738 360,796" fill="#b95c43" stroke="#151515" stroke-width="5"/>
+      <polygon points="612,362 868,420 868,796 612,738" fill="#ecd59f" stroke="#151515" stroke-width="5"/>
+      <polygon points="342,404 612,340 884,402 612,462" fill="#252223" stroke="#151515" stroke-width="5"/>
+
+      <line x1="390" y1="468" x2="580" y2="424" stroke="#913e33" stroke-width="3" opacity="0.84"/>
+      <line x1="390" y1="508" x2="580" y2="464" stroke="#913e33" stroke-width="3" opacity="0.84"/>
+      <line x1="390" y1="548" x2="580" y2="504" stroke="#913e33" stroke-width="3" opacity="0.84"/>
+      <line x1="390" y1="588" x2="580" y2="544" stroke="#913e33" stroke-width="3" opacity="0.84"/>
+      <line x1="390" y1="628" x2="580" y2="584" stroke="#913e33" stroke-width="3" opacity="0.84"/>
+
+      <path d="M404 382 Q440 352 474 374" fill="none" stroke="#a54537" stroke-width="10"/>
+      <path d="M476 364 Q514 334 548 356" fill="none" stroke="#a54537" stroke-width="10"/>
+      <path d="M630 418 Q666 392 702 412" fill="none" stroke="#cab28a" stroke-width="8"/>
+      <path d="M710 438 Q746 412 782 432" fill="none" stroke="#cab28a" stroke-width="8"/>
+
+      <rect x="436" y="394" width="48" height="88" fill="#234f74" stroke="#151515" stroke-width="4"/>
+      <rect x="516" y="376" width="48" height="106" fill="#234f74" stroke="#151515" stroke-width="4"/>
+      <rect x="658" y="430" width="56" height="84" fill="#8fa6ac" stroke="#151515" stroke-width="4"/>
+      <rect x="742" y="448" width="56" height="84" fill="#8fa6ac" stroke="#151515" stroke-width="4"/>
+
+      <polygon points="394,542 578,498 578,566 394,612" fill="#ffd261" stroke="#151515" stroke-width="4"/>
+      <text x="430" y="568" transform="rotate(-14 430 568)" font-family="Georgia, Times, serif" font-size="42" font-style="italic" font-weight="700" fill="#281f18">Peter Pan</text>
+
+      <polygon points="632,540 828,586 828,630 632,584" fill="#61b28a" stroke="#151515" stroke-width="4"/>
+      <line x1="644" y1="551" x2="816" y2="591" stroke="#fffef6" stroke-width="7"/>
+      <line x1="644" y1="568" x2="816" y2="608" stroke="#fffef6" stroke-width="7"/>
+      <rect x="420" y="620" width="118" height="140" fill="#163459" stroke="#151515" stroke-width="4"/>
+      <rect x="636" y="650" width="176" height="92" fill="#8ea9af" stroke="#151515" stroke-width="4"/>
+      <rect x="646" y="660" width="72" height="72" fill="#dfe5e0"/>
+      <rect x="728" y="670" width="74" height="62" fill="#e4e9e3"/>
+      <circle cx="694" cy="622" r="22" fill="#fffaf0" opacity="0.92"/>
+      <circle cx="782" cy="612" r="20" fill="#fffaf0" opacity="0.92"/>
+      <circle cx="706" cy="690" r="7" fill="#ff5f77"/>
+      <circle cx="730" cy="700" r="6" fill="#7be963"/>
+      <circle cx="752" cy="690" r="6" fill="#55a0ff"/>
+    </g>
+
+    <g>
+      <polygon points="1046,518 1154,492 1154,692 1046,718" fill="#132d45" opacity="0.3"/>
+      <polygon points="1032,506 1162,476 1274,504 1146,536" fill="#2d5d73" stroke="#151515" stroke-width="4"/>
+      <polygon points="1048,536 1160,510 1160,704 1048,730" fill="#214861" stroke="#151515" stroke-width="4"/>
+      <polygon points="1160,510 1274,538 1274,730 1160,704" fill="#0c1720" stroke="#151515" stroke-width="4"/>
+      <polygon points="1180,558 1248,574 1248,678 1180,662" fill="#060d14"/>
+      <line x1="1186" y1="588" x2="1234" y2="600" stroke="#6a757b" stroke-width="4"/>
+      <line x1="1188" y1="610" x2="1234" y2="622" stroke="#6a757b" stroke-width="4"/>
+      <line x1="1192" y1="632" x2="1234" y2="644" stroke="#6a757b" stroke-width="4"/>
+
+      <rect x="1080" y="402" width="196" height="70" fill="#0f1012" stroke="#151515" stroke-width="4"/>
+      <text x="1106" y="446" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="800" fill="#ffffff">Greenpoint Ave</text>
+      <circle cx="1240" cy="436" r="24" fill="#49cc44"/>
+      <text x="1226" y="446" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#ffffff">G</text>
+
+      <rect x="998" y="422" width="22" height="172" fill="#337259" stroke="#151515" stroke-width="4"/>
+      <circle cx="1008" cy="396" r="30" fill="#7eff5f" stroke="#151515" stroke-width="4"/>
+      <circle cx="1008" cy="396" r="18" fill="#d5ff9e" opacity="0.82"/>
+      <rect x="1290" y="428" width="20" height="126" fill="#364247" stroke="#151515" stroke-width="3"/>
+      <rect x="1332" y="418" width="22" height="134" fill="#364247" stroke="#151515" stroke-width="3"/>
+      <line x1="1300" y1="436" x2="1344" y2="424" stroke="#151515" stroke-width="3"/>
+    </g>
+
+    <g>
+      <line x1="934" y1="586" x2="1030" y2="564" stroke="#22343f" stroke-width="7"/>
+      <circle cx="952" cy="582" r="24" fill="none" stroke="#22343f" stroke-width="7"/>
+      <circle cx="1020" cy="566" r="24" fill="none" stroke="#22343f" stroke-width="7"/>
+      <line x1="992" y1="562" x2="974" y2="524" stroke="#22343f" stroke-width="6"/>
+      <rect x="870" y="614" width="32" height="50" fill="#4a565a" stroke="#151515" stroke-width="3"/>
+      <rect x="876" y="626" width="20" height="12" fill="#ff5472"/>
+      <line x1="878" y1="648" x2="894" y2="648" stroke="#dce0dc" stroke-width="3"/>
+    </g>
+
+    <g>
+      <polygon points="512,276 560,276 592,320 570,374 510,374 478,322" fill="#99ff56" stroke="#17382f" stroke-width="5"/>
+      <polygon points="522,290 552,290 574,320 558,356 520,356 502,320" fill="#dfff9d" opacity="0.72"/>
+      <rect x="592" y="286" width="236" height="72" fill="#fff8ee" stroke="#151515" stroke-width="4"/>
+      <rect x="592" y="286" width="24" height="72" fill="#ff5472"/>
+      <text x="626" y="332" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="31" font-weight="900" fill="#10225a">Peter Pan Donuts</text>
+    </g>
+
+    <g>
+      <rect x="1058" y="716" width="478" height="220" fill="#fff8ec" stroke="#151515" stroke-width="4"/>
+      <rect x="1058" y="716" width="478" height="66" fill="#10225a"/>
+      <rect x="1058" y="716" width="24" height="66" fill="#ff5472"/>
+      <text x="1092" y="756" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="31" font-weight="900" fill="#ffffff">Peter Pan Donuts</text>
+      <text x="1088" y="816" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#151515">Bakery</text>
+      <text x="1088" y="854" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#151515">727 Manhattan Ave, Brooklyn, NY</text>
+      <text x="1088" y="892" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#374146">Source: https://www.peterpandonuts.com/</text>
+      <text x="1088" y="920" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#374146">Last verified: 2026-05-26</text>
+      <line x1="1088" y1="932" x2="1504" y2="932" stroke="#151515" stroke-width="2"/>
+      <text x="1088" y="970" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#151515">Unofficial neighborhood map.</text>
+    </g>
+
+    <text x="102" y="980" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#374146">Strongest community cueing. Most flyer/sim confidence. Highest risk of the overlay getting louder than the block.</text>
+  </g>
+</svg>

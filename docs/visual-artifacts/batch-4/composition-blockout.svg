@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Batch 4 composition blockout</title>
+  <desc id="desc">Lo-fi exploratory composition options for Greenpoint Isometric Explorer Territory A.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f4ecd8; }
+      .panel { fill: #fff8e8; stroke: #151515; stroke-width: 4; }
+      .ink { fill: #151515; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .small { font-size: 18px; }
+      .med { font-size: 24px; font-weight: 700; }
+      .big { font-size: 34px; font-weight: 800; }
+      .note { fill: #3c3c3c; font-size: 16px; }
+      .street { fill: #53616a; stroke: #151515; stroke-width: 3; }
+      .sidewalk { fill: #c9c2ae; stroke: #151515; stroke-width: 2; }
+      .building { fill: #c65f47; stroke: #151515; stroke-width: 4; }
+      .building2 { fill: #e5bf67; stroke: #151515; stroke-width: 4; }
+      .placeholder { fill: #cfd6c2; stroke: #151515; stroke-width: 3; stroke-dasharray: 8 7; }
+      .transit { fill: #62b36f; stroke: #151515; stroke-width: 4; }
+      .marker { fill: #dbff46; stroke: #151515; stroke-width: 4; }
+      .warn { fill: #ff6b4a; stroke: #151515; stroke-width: 3; }
+      .grid { stroke: #151515; stroke-width: 1.5; opacity: .22; }
+      .axis { stroke: #151515; stroke-width: 3; stroke-dasharray: 10 8; opacity: .55; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="900"/>
+  <text class="ink big" x="54" y="58">Composition Blockout</text>
+  <text class="ink med" x="54" y="92">lo-fi / exploratory / not final</text>
+  <text class="ink note" x="54" y="122">Territory A: Storefront Sticker Diorama. Tests honest scene structure before static style-frame production.</text>
+
+  <rect class="panel" x="54" y="155" width="700" height="585" rx="0"/>
+  <rect class="panel" x="846" y="155" width="700" height="585" rx="0"/>
+
+  <text class="ink med" x="85" y="200">Option A: Peter Pan + G station + placeholders</text>
+  <text class="ink note" x="85" y="230">Safer first frame: strongest local anchor, compact scene, no cross-street overclaim.</text>
+
+  <g transform="translate(150 320)">
+    <polygon class="street" points="0,185 250,60 540,205 290,330"/>
+    <polygon class="sidewalk" points="28,158 250,48 512,180 290,290"/>
+    <line class="axis" x1="20" y1="182" x2="540" y2="205"/>
+    <text class="ink small" x="205" y="42">Manhattan Ave side</text>
+    <text class="ink small" x="394" y="292">Greenpoint Ave edge</text>
+
+    <g transform="translate(70 66)">
+      <polygon class="building" points="0,92 72,55 154,94 82,132"/>
+      <polygon class="building" points="0,92 0,12 72,-24 72,55"/>
+      <polygon class="building" points="72,55 72,-24 154,16 154,94"/>
+      <rect x="15" y="44" width="98" height="34" fill="#fff1b8" stroke="#151515" stroke-width="3"/>
+      <text class="ink small" x="21" y="67">PETER PAN</text>
+      <polygon class="marker" points="88,-58 111,-24 88,10 65,-24"/>
+      <text class="ink note" x="-12" y="164">REAL: Peter Pan</text>
+    </g>
+
+    <g transform="translate(245 126)">
+      <polygon class="transit" points="0,58 56,30 108,56 52,85"/>
+      <rect x="26" y="-14" width="42" height="62" fill="#d9f3dd" stroke="#151515" stroke-width="3"/>
+      <text class="ink small" x="-10" y="112">REAL: G station</text>
+    </g>
+
+    <g transform="translate(350 115)">
+      <polygon class="placeholder" points="0,80 70,45 140,80 70,115"/>
+      <polygon class="placeholder" points="0,80 0,10 70,-24 70,45"/>
+      <polygon class="placeholder" points="70,45 70,-24 140,12 140,80"/>
+      <text class="ink small" x="8" y="53">FILLER</text>
+      <text class="ink note" x="-8" y="145">PLACEHOLDER</text>
+    </g>
+
+    <circle cx="48" cy="204" r="11" fill="#151515"/>
+    <circle cx="420" cy="198" r="8" fill="#151515"/>
+    <rect x="452" y="222" width="32" height="12" fill="#151515"/>
+  </g>
+
+  <text class="ink small" x="85" y="670">Decision use: choose if first frame should be compact and unmistakably local without forcing Karczma into frame.</text>
+  <text class="ink small" x="85" y="700">Risk: may feel less rich if placeholder storefronts are too generic.</text>
+
+  <text class="ink med" x="877" y="200">Option B: Peter Pan + G station + Karczma if honest</text>
+  <text class="ink note" x="877" y="230">Richer Greenpoint identity, but only works if street placement stays truthful.</text>
+
+  <g transform="translate(930 310)">
+    <polygon class="street" points="0,210 270,75 555,218 285,352"/>
+    <polygon class="sidewalk" points="28,182 270,62 526,190 285,310"/>
+    <line class="axis" x1="40" y1="202" x2="545" y2="220"/>
+    <line class="axis" x1="272" y1="63" x2="285" y2="352"/>
+    <text class="ink small" x="208" y="54">Manhattan Ave</text>
+    <text class="ink small" x="376" y="348">Greenpoint Ave</text>
+
+    <g transform="translate(60 83)">
+      <polygon class="building" points="0,92 72,55 154,94 82,132"/>
+      <polygon class="building" points="0,92 0,12 72,-24 72,55"/>
+      <polygon class="building" points="72,55 72,-24 154,16 154,94"/>
+      <rect x="15" y="44" width="98" height="34" fill="#fff1b8" stroke="#151515" stroke-width="3"/>
+      <text class="ink small" x="21" y="67">PETER PAN</text>
+      <text class="ink note" x="-14" y="164">REAL: Peter Pan</text>
+    </g>
+
+    <g transform="translate(240 150)">
+      <polygon class="transit" points="0,58 56,30 108,56 52,85"/>
+      <rect x="26" y="-14" width="42" height="62" fill="#d9f3dd" stroke="#151515" stroke-width="3"/>
+      <polygon class="marker" points="92,-40 115,-8 92,24 69,-8"/>
+      <text class="ink small" x="-9" y="112">REAL: G station</text>
+    </g>
+
+    <g transform="translate(340 183)">
+      <polygon class="building2" points="0,76 78,37 166,81 88,120"/>
+      <polygon class="building2" points="0,76 0,10 78,-30 78,37"/>
+      <polygon class="building2" points="78,37 78,-30 166,13 166,81"/>
+      <rect x="18" y="38" width="116" height="31" fill="#f9efe1" stroke="#151515" stroke-width="3"/>
+      <text class="ink small" x="34" y="60">KARCZMA</text>
+      <text class="ink note" x="-4" y="151">REAL only if street logic holds</text>
+    </g>
+
+    <g transform="translate(475 126)">
+      <polygon class="warn" points="0,0 34,-18 68,0 34,18"/>
+      <text class="ink small" x="-58" y="-28">truth check</text>
+    </g>
+  </g>
+
+  <text class="ink small" x="877" y="670">Decision use: choose if Karczma belongs in first frame, or if it makes the scene too spatially compressed.</text>
+  <text class="ink small" x="877" y="700">Risk: false adjacency or too-wide composition. If doubtful, hold Karczma for later expansion.</text>
+
+  <text class="ink note" x="54" y="805">Legend: solid = real anchor; dashed = placeholder; green = transit; acid marker = medium sticker UI cue.</text>
+  <text class="ink note" x="54" y="833">This is a blockout only. Scale, style, color, and architecture are not final.</text>
+</svg>
+
