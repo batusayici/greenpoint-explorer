@@ -1,5 +1,88 @@
 # Decision Log
 
+## 2026-05-26 - Return To Radical Art-Direction Concept Sprint
+
+Decision:
+- Rejected the recent three-direction visual artifact as non-decision-grade.
+- Superseded the current three-direction visual batch with `batch-11-radical-art-direction-concept-sprint`.
+- The next process returns to divergent art-direction exploration before any style approval.
+- Batch 11 must define six concept territories: Soft Pixel Neighborhood Sim, Xerox-Riso Street Zine, Tilt-Shift Toy Block Greenpoint, Inked Indie Graphic Novel, Civic Atlas Deluxe, and Weird Hyperlocal Magical Realism.
+- Batch 11 should produce concept territory briefs, image-generation prompt kits, a divergence matrix, a decision rubric, and a production plan for decision-grade raster/image style frames.
+- Batch 11 must not produce another minor SVG comparison board.
+- Final visual direction, static style-frame production, production visual assets, app code, public interfaces, architecture implementation, package tooling, build tooling, CI, and deployment remain blocked.
+
+Rationale:
+- The recent artifact showed insufficient divergence.
+- The variants mostly changed palette, density, and iconography while reusing a base composition.
+- The artifact risked confusing exterior map-mode browsing with interiors or venue scenes.
+- Batu needs radically distinct visual-world hypotheses before approving any direction.
+
+Owner:
+- Creative direction and style approval: Batu
+- Documentation process correction and next-batch framing: Codex
+
+Status:
+- Active process correction / no visual direction approved
+
+## 2026-05-26 - Curated Isometric Reference Set Integrated As Directional Input
+
+Decision:
+- Integrated Batu's curated Image A-G isometric reference set into `docs/ART_DIRECTION.md`.
+- Recorded the target visual thesis: "Greenpoint street-corner sim with Bushwick creative mess and HD pixel clarity."
+- Structured the references by role, core/accent status, what to use, and what not to copy.
+- Added weighted influence guidance:
+  - 30% isometric camera / map readability;
+  - 25% Greenpoint / NYC architectural specificity;
+  - 25% Bushwick / Gen Z creative culture;
+  - 10% pixel / retro charm;
+  - 10% cinematic lighting / mood.
+- Added translation rules and negative constraints so the set cannot be flattened into a generic isometric moodboard.
+- Added a proposed docs/artifact-only style-frame batch to `docs/TASKS.md` requiring three concrete directions. This proposal was later superseded by `batch-11-radical-art-direction-concept-sprint`:
+  - HD Pixel Storefront;
+  - DIY Flyer Maximalist;
+  - Clean Isometric Civic.
+- The proposed batch requires visible artifacts with storefronts, curb/crosswalk geometry, sidewalk props, social cues, surface layering, and marker/card treatment. It cannot be satisfied by prose-only direction.
+- Final visual direction, production art, static style-frame approval, public interfaces, app implementation, package tooling, build tooling, CI, and deployment remain blocked.
+
+Rationale:
+- Batu provided curated references with specific use and anti-copy instructions.
+- The useful next step is to turn those references into decision-making artifacts while preserving Batu as creative director.
+- Core influences must protect storefront readability, map clickability, Greenpoint/NYC specificity, and truth-safe composition.
+- Accent influences should add warmth, surface culture, and HD pixel charm without causing graffiti overload, cyberpunk drift, fantasy architecture, Japanese typology, or pure retro nostalgia.
+
+Owner:
+- Creative direction, reference approval, and final visual decision: Batu
+- Documentation translation and proposed artifact-batch framing: Codex
+
+Status:
+- Integrated as directional input / not final visual approval
+
+## 2026-05-26 - Batch 9 Revision B Created
+
+Decision:
+- Created Batch 9 Revision B in `docs/visual-artifacts/batch-9-hybrid-composition-style-frame-revision-b/`.
+- Revision B contains exactly two visual artifacts:
+  - `balanced-plus-target.svg`;
+  - `community-forward-stress-test.svg`.
+- No quiet variant was produced for Revision B.
+- Revision B accepts the same-base composition structure, truth-status system, Peter Pan plus G station symbolic-anchor logic, and hybrid placeholder strategy from Revision A.
+- Revision B does not approve final visual direction, Revision A storefront specificity, Revision A UI/card hierarchy, or Revision A emotional-volume differentiation.
+- Balanced-plus uses the current balanced composition as the base and increases storefront specificity, symbolic Peter Pan prominence, controlled Greenpoint street texture, and product-like marker/card hierarchy.
+- Community-forward pushes DIY flyer, sticker, pixel, signage, visual layering, and marker/card assertiveness harder as an upper-bound stress test.
+- Truth constraints remain unchanged: Peter Pan and G station are symbolic anchors only; other storefronts are fictionalized, placeholder, or unresolved; real-place cards and exact placement claims remain blocked.
+- App implementation, public interfaces, package tooling, build tooling, CI, deployment, production visual assets, production placement, and final visual approval remain blocked.
+
+Rationale:
+- Batu accepted Revision A only as a partial pass, not a visual-direction approval.
+- The next useful comparison is not another three-way emotional-volume set; it is a two-way decision between a plausible target direction and a sufficiently pushed community-forward upper bound.
+
+Owner:
+- Creative direction and review decision: Batu
+- Revision B artifact production and documentation alignment: Codex
+
+Status:
+- Created / needs Batu review
+
 ## 2026-05-26 - Batch 9 Artifacts Revised For Decision Usefulness
 
 Decision:

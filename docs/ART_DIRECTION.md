@@ -9,7 +9,7 @@ Implementation owner: Codex
 
 No final visual direction is approved yet.
 
-The strongest current hybrid test path is Community Pixel Storefront. It is a test path only, not final production direction.
+Community Pixel Storefront is historical/exploratory only. It is not the current approval path and not final production direction.
 
 Older territories in this document are historical references unless Batu explicitly reactivates one. They should not be treated as current approval candidates or production direction.
 
@@ -19,15 +19,92 @@ Current working read:
 - That energy must not overwhelm storefront, place, and map clarity.
 - The world should remain Greenpoint/storefront-led.
 - UI and marker language should support discovery without implying a character system, quest system, social sim, or full game HUD.
+- The newest curated reference thesis is: "Greenpoint street-corner sim with Bushwick creative mess and HD pixel clarity."
+- The curated reference set is directional input only. It does not approve a final visual direction, palette, UI system, production art style, or implementation path.
 
-Next visual decisions require concrete artifacts, not prose labels. The expected path is:
+Next visual decisions require concrete artifacts, not prose labels. The corrected path is:
 
-1. Style tile variants.
-2. Marker/card experiments.
-3. Palette studies.
+1. Radical Art Direction Concept Sprint.
+2. Batu review of distinct visual-world hypotheses.
+3. Decision-grade raster/image style frames for selected territories only.
 4. Static style frame only after Batu approves the relevant direction and composition gates.
 
 React/Vite/Pixi implementation remains blocked until the approved static style frame exists.
+
+## Visual Exploration Rules
+
+- References are directional inputs, not approved style.
+- The goal is to generate world hypotheses, not palette, density, marker, or icon variants.
+- Exterior-only map mode is mandatory: storefront facades, sidewalks, street corner, signage, street furniture, markers, and place cards.
+- No interiors, cutaways, indoor venue scenes, or poster-only compositions.
+- Thumbnail divergence rule: options must look like different games at 20% zoom.
+- Decision-grade artifacts must be visual enough for Batu to judge without prose.
+- Reusing one base composition is allowed only for controlled later refinement, not for radical concept selection.
+
+## Curated Isometric Reference Set
+
+Status: Batu-curated directional input / not final visual approval  
+Decision authority: Batu  
+Codex role: translate, structure, propose testable artifacts
+
+Target visual thesis:
+
+> Greenpoint street-corner sim with Bushwick creative mess and HD pixel clarity.
+
+This thesis should not be interpreted as an equal blend of all references. The project needs a clear hierarchy: map readability and Greenpoint/NYC truth stay core, while Bushwick / Gen Z creative culture supplies controlled surface and social cues. Pixel charm and cinematic mood are supporting accents, not a license to drift into generic retro nostalgia or cyberpunk atmosphere.
+
+### Weighted Influence Guidance
+
+- 30% isometric camera / map readability.
+- 25% Greenpoint / NYC architectural specificity.
+- 25% Bushwick / Gen Z creative culture.
+- 10% pixel / retro charm.
+- 10% cinematic lighting / mood.
+
+Practical read:
+- Storefront readability, sidewalk/crossing logic, click targets, and scene clarity must win over texture and mood.
+- Greenpoint/NYC specificity must appear through proportions, corner geometry, building rhythm, storefront bands, awnings, curb cuts, crosswalks, signage density, transit cues, and neighborhood clutter.
+- Bushwick / Gen Z culture should show through controlled cues: flyers, stickers, wheatpaste, bikes, e-bikes, handmade signs, thrifted fashion, pop-up tables, zines, small social clusters, and layered-but-readable sidewalk life.
+- Pixel charm should mean crisp HD pixel clarity, blocky simplification, and legible silhouettes, not low-res imitation or pure 1990s nostalgia.
+- Cinematic mood should provide warmth, glow, and emotional invitation without obscuring map function or turning the scene into a night-life illustration.
+
+### Reference Matrix
+
+| Reference | Role | Core / Accent | Use For | Do Not Copy |
+| --- | --- | --- | --- | --- |
+| Image A - Pixel NYC corner with pizza / pawn / news | Primary structural read for game-space composition | Core | Isometric camera angle, stacked storefront rhythm, sidewalk/curb readability, street-corner composition, clear click-scale building bases | Final palette, generic retro simplification, suburban/cartoon tone, direct sign or business mimicry |
+| Image B - Tokyo night storefront | Mood and light reference | Accent | Warm storefront glow, intimate street mood, atmospheric lighting, emotional tone, inviting threshold contrast | Japanese architecture, Japanese signage, exact urban typology, cyberpunk drift, night mood that hides map clarity |
+| Image C - Clean 3D isometric tile | Production-clarity and modular construction reference | Core support | Modular asset thinking, sidewalk/building construction, curb and tile readability, scene clarity, production-friendly geometry | Sterile final style, generic mobile-game polish, empty environment feeling, decorative lawns as Greenpoint default |
+| Image D - Aerial NYC corner photo | Spatial truth reference | Core | Actual NYC corner proportions, crosswalk geometry, curb/lane/intersection truth, pedestrian-scale spatial grounding, overhead compression lessons | Photorealism, top-down literal translation, realistic color palette, unfiltered traffic-photo busyness |
+| Image E - Busy NYC deli / neighborhood illustration | Social-density and lived-in energy reference | Core support | Neighborhood energy, sidewalk life, urban vignettes, social density, local specificity, clustered micro-scenes around storefronts | Exact line style, overcrowding, full-frame chaos, turning every inch into a gag or event |
+| Image F - Graffiti alley | Surface-culture texture reference | Accent | Sticker/flyer/graffiti layering, subcultural edge, controlled visual grit, worn surfaces, utility-box/pole detail | Overall scene composition, abandoned/dangerous atmosphere, graffiti overload, making graffiti the main premise |
+| Image G - Storefront row on plain background | Facade-rhythm and silhouette simplification reference | Core support | Storefront rhythm, facade variation, silhouette simplification, sign/awning diversity, compact row readability | Flat front-facing composition as the main scene, overly cute toy-town simplification, isolated object-sheet feeling |
+
+### Translation Rules
+
+- Start from Image A and Image D for camera, corner composition, sidewalk/crosswalk truth, and storefront clickability.
+- Use Image C as a construction discipline: sidewalks, curbs, facades, planters, poles, signs, and street objects should feel modular enough to build consistently later, even in static preproduction artifacts.
+- Use Image G to design storefront rhythm: each facade needs a clear silhouette, sign band, entry, window logic, awning or frontage variation, and a readable business-scale zone.
+- Use Image E to decide where social detail clusters belong: near entrances, curb corners, bikes, pop-up tables, stoops, and transit edges, not evenly sprinkled across the whole image.
+- Use Image F only as surface seasoning: posters on poles, wheatpaste panels, stickers on utility boxes, tagged roll gates, tape residue, and worn doorframes. Keep the main scene safe, lived-in, and navigable.
+- Use Image B for warmth at thresholds: lit interiors, sign glow, vending/window highlights, wet or reflective accents if useful, and evening warmth. Do not let it dictate architecture or signage language.
+- Storefronts must remain individually clickable at a glance. Surface texture must frame click targets, not camouflage them.
+- Bushwick / Gen Z creative cues should appear as lived behaviors and surfaces: bikes, e-bikes, zines, handmade signs, thrifted clothing silhouettes, tote bags, pop-up tables, small social clusters, and sticker/flyer layering.
+- HD pixel clarity means crisp edges, simplified planes, chunky readable props, and controlled texture density. It does not require visible low-resolution pixels everywhere.
+- Every future visual artifact using this set must state what is core, what is accent, and what is intentionally excluded.
+
+### Negative Constraints / Anti-Patterns
+
+- Do not average the references into a generic isometric moodboard style.
+- Do not approve a final direction from this prose.
+- Do not let Bushwick cues replace Greenpoint/NYC architectural specificity.
+- Do not use generic graffiti overload as shorthand for creative culture.
+- Do not drift into cyberpunk, fantasy architecture, Japanese urban typology, or neon-night spectacle.
+- Do not make pure 1990s retro nostalgia the dominant feeling.
+- Do not make the street feel abandoned, dangerous, sterile, suburban, toy-town cute, or mobile-game generic.
+- Do not overcrowd the frame until storefronts, sidewalks, signs, markers, or cards stop reading.
+- Do not introduce new marker systems, UI card styles, palettes, or production visual language without Batu approval.
+- Do not treat Community Pixel Storefront, Batch 8B, Batch 9, or this curated reference set as approved final style.
 
 ## Creative Direction Protocol
 
@@ -419,7 +496,7 @@ Why:
 
 Decision status:
 
-> Historical recommendation only. No final visual direction is approved. The strongest current hybrid test path is Community Pixel Storefront.
+> Historical recommendation only. No final visual direction is approved. Community Pixel Storefront is historical/exploratory and superseded by the Batch 11 radical concept sprint process.
 
 ## Approval Gate For Static Style Frame
 

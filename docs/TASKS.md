@@ -7,50 +7,58 @@ Implementation owner: Codex
 
 ## Phase Orientation
 
-- Phase 1 Visual Preproduction started but is paused / partially blocked while location and representational-truth feasibility is resolved.
+- Phase 1 Visual Preproduction is active again as divergent art-direction exploration.
 - Phase 2 Location & Representational Truth Feasibility selected `hybrid real-plus-placeholder composition` as the gate outcome.
 - Batch 8.5 remains the truth record for unresolved placement risks.
-- Batch 9 is the next docs/artifact batch: a static hybrid composition/style-frame brief and artifact.
-- Batch 8B may inform mood, palette, marker/card hierarchy, emotional volume, and symbolic composition only.
+- Recent three-direction artifacts are rejected as non-decision-grade.
+- Batch 11 is the next docs/artifact-planning batch: `batch-11-radical-art-direction-concept-sprint`.
+- Previous artifacts may inform constraints only; they do not approve visual direction.
 - Future visual batches must reference `docs/VISUAL_ARTIFACT_STANDARDS.md` and pass the decision-usefulness self-audit before they are called complete.
 - Static style frame, architecture, and implementation remain blocked.
 
 ## Current Batch
 
-Batch 9 Static Hybrid Composition / Style-Frame Artifacts.
+Batch 11 Radical Art Direction Concept Sprint.
 
-This is a docs/artifact-only preproduction batch. It creates static hybrid composition/style-frame artifacts for review, using the Phase 2 outcome selected by Batu.
+Folder name:
+- `batch-11-radical-art-direction-concept-sprint`
 
-The first Batch 9 visual pass was revised because the variants were too mechanically similar and not decision-useful enough. The current Batch 9 package uses stronger storefront drawing, richer street context, integrated G station treatment, stronger Peter Pan anchoring, and variant-specific UI/card hierarchy.
+Status: proposed / docs-only planning before artifact production.
 
-Selected Phase 2 outcome:
+Purpose:
+- Return to game-studio-style radical concept exploration.
+- Compare distinct visual worlds, not minor variants of one base composition.
+- Prepare decision-grade raster/image style-frame production without creating those frames yet.
 
-- Use a hybrid real-plus-placeholder composition.
+Required concept territories:
+- Soft Pixel Neighborhood Sim.
+- Xerox-Riso Street Zine.
+- Tilt-Shift Toy Block Greenpoint.
+- Inked Indie Graphic Novel.
+- Civic Atlas Deluxe.
+- Weird Hyperlocal Magical Realism.
 
-No app code, build tooling, package files, production visual assets, architecture/public-interface files, React/Vite/Pixi setup, implementation skills, plugin installs, CI, deployment, API integrations, live data, scraping, or broad plugin stack changes are included.
+Required outputs:
+- Concept territory briefs.
+- Image-generation prompt kits.
+- Divergence matrix.
+- Decision rubric.
+- Production plan for decision-grade raster/image style frames.
 
-The next-artifact brief lives at `docs/visual-artifacts/batch-9-hybrid-composition-style-frame-brief/README.md`.
+Required process rules:
+- References are directional inputs, not approved style.
+- Each concept must be a world hypothesis, not a palette/icon variant.
+- Each concept must preserve exterior-only map mode: storefront facades, sidewalks, street corner, signage, street furniture, markers, and place cards.
+- No interiors, cutaways, indoor venue scenes, or poster-only compositions.
+- Thumbnail divergence rule: options must look like different games at 20% zoom.
+- Decision-grade artifacts must be visual enough to judge without prose.
 
-The Batch 9 artifact package lives at `docs/visual-artifacts/batch-9-hybrid-composition-style-frame/`.
-
-Allowed during Batch 9:
-
-- Lo-fi or mid-fi visual exploration.
-- Mood, palette, marker/card hierarchy, and emotional-volume tests.
-- Clearly labeled symbolic anchors, placeholder storefronts, fictionalized storefronts, and unresolved elements.
-- Composition studies that explicitly mark unresolved geography.
-- Peter Pan and Greenpoint Av G station as symbolic / exploratory anchors.
-
-Forbidden during Batch 9:
-
+Forbidden during Batch 11:
+- Another minor SVG comparison board.
 - Final visual direction approval.
-- Static style-frame production approval.
+- Static style-frame production.
 - Production visual assets.
-- Real-place cards.
-- Claims that a real business/building/street relationship is accurate.
-- Any composition that silently relies on unresolved geography.
-- Real business names on unresolved storefronts.
-- App or implementation scaffolding.
+- App code, package files, build tooling, React/Vite/Pixi setup, public interfaces, architecture implementation, CI, deployment, plugin installs, or broad tooling changes.
 
 Completed Batch 8.5 outputs:
 
@@ -69,15 +77,11 @@ Completed Batch 8.5 outputs:
 - Done: complete initial candidate source review for the Manhattan Ave / Greenpoint Ave slice.
 - Done: Batu selected the hybrid real-plus-placeholder composition outcome.
 
-Planned Batch 9 outputs:
+Rejected recent visual artifact status:
 
-- File exists: create `docs/visual-artifacts/batch-9-hybrid-composition-style-frame-brief/README.md`.
-- File exists: create static hybrid composition/style-frame source artifacts.
-- File exists: create labeled variants showing truth status for verified, symbolic, placeholder, fictionalized, and unresolved elements.
-- File exists: create one short review guide for Batu.
-- File exists: revise the three variants to meet the decision-useful visual artifact standard.
-- Review required: assess Batch 9 against `docs/VISUAL_ARTIFACT_STANDARDS.md` before calling it decision-useful or complete.
-- Optional: create a compact comparison against one Batch 8B emotional-volume reference if useful.
+- Batch 10 / recent three-direction artifact is rejected as non-decision-grade.
+- Rejection reasons: insufficient divergence, mostly palette/density/iconography changes, reused base composition, and exterior/interior ambiguity.
+- It may be cited as a process lesson only; it is not a visual-direction candidate.
 
 Blocking factual uncertainties:
 
@@ -98,20 +102,14 @@ Batch 8.5B truth-record status:
 - Composition viability read: done.
 - Phase 2 gate outcome: hybrid real-plus-placeholder composition.
 
-Batch 9 acceptance criteria:
+Batch 11 acceptance criteria:
 
-- The artifact is higher fidelity than abstract symbolic diagrams and lower fidelity than production art.
-- It includes enough storefront massing, signage treatment, street context, and UI-card placement to support visual feedback.
-- It clearly labels verified, symbolic, placeholder, fictionalized, and unresolved elements.
-- Peter Pan and the G station are treated as symbolic / exploratory anchors.
-- Other businesses are placeholders, fictionalized, omitted, or unresolved unless manual verification clears them.
-- Real-place cards are not included.
-- No app files or implementation scaffolding are created.
-- The artifact passes the decision-usefulness standard; files existing does not make the batch complete.
-
-Batch 9 review question:
-
-- Does the hybrid slice feel worth continuing, and which composition/emotional-volume/marker-card direction should be refined next?
+- Six concept territories are clearly different in worldview, rendering language, composition feel, material treatment, and UI/place-card relationship.
+- The divergence matrix makes the differences scannable.
+- Prompt kits are specific enough to guide future raster/image style-frame production.
+- The decision rubric lets Batu compare concepts without Codex choosing the direction.
+- The production plan defines how to create decision-grade raster/image style frames next.
+- No visual direction is approved and no new visual artifacts are created in this docs batch.
 
 ## Current Visual Artifact Package
 
@@ -140,18 +138,9 @@ No app code, build tooling, package files, production visual assets, architectur
 
 ## Next Proposed Batch
 
-Review the Batch 9 static hybrid composition/style-frame artifacts.
+Produce the Batch 11 concept sprint docs.
 
-After Batch 9 review, Batu can decide whether the hybrid slice is worth continuing toward a later proposed static style-frame production pass.
-
-Likely Batch 9 review decision points:
-
-- Which emotional-volume variant best balances Greenpoint specificity and community warmth.
-- Whether the marker/card system is believable, useful, and not too gamey.
-- Whether Community Pixel Storefront is viable enough to justify a later proposed static style-frame production pass.
-- Whether the compact Peter Pan + G station composition should remain the first frame.
-
-Any next visual pass must remain lo-fi / exploratory / not final unless Batu explicitly approves a production step.
+After Batch 11, Batu can choose which concepts, if any, should receive decision-grade raster/image style-frame production.
 
 ## Reusable Visual Batch Acceptance Checklist
 

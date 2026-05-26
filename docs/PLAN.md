@@ -77,9 +77,9 @@ Major outputs:
 
 Phase 1 - Visual Preproduction
 
-Status: Started; paused / partially blocked.
+Status: Active / returning to divergent art-direction exploration.
 
-Purpose: Explore visual language, emotional volume, marker/card direction, and authored-scene composition through concrete artifacts before final visual approval.
+Purpose: Explore radically distinct visual worlds through concrete artifacts before final visual approval. The current process is no longer minor variants of one base composition; it is a game-studio-style concept sprint comparing different art-direction hypotheses.
 
 Entry criteria:
 
@@ -92,14 +92,17 @@ Exit criteria:
 - Batu has enough concrete visual evidence to approve a static style-frame direction.
 - Visual artifacts pass the decision-usefulness standard; files existing is not enough.
 - The chosen visual path does not depend on unresolved or false location/truth claims.
+- Concept options are distinct enough to compare as different visual worlds, not palette, density, or iconography variants.
 
 Major outputs:
 
 - Batch 8 exploratory context-test artifacts.
 - Batch 8B Community Pixel Storefront style-frame test package.
+- Batch 10 curated-reference comparison, rejected as non-decision-grade.
+- Batch 11 Radical Art Direction Concept Sprint.
 - Reference boards, review guides, and visual QA notes.
 
-Phase 1 is not complete. It resumes after Phase 2 resolves enough location and representational-truth constraints to support safe composition and visual-direction decisions.
+Phase 1 is not complete. Visual direction is not approved. The next step is `batch-11-radical-art-direction-concept-sprint`, whose goal is to compare distinct visual worlds before any style approval or static style-frame production.
 
 Visual-preproduction batches are not complete merely because artifact files exist. They must pass `docs/VISUAL_ARTIFACT_STANDARDS.md` before Codex may call them review-ready or use them as gate-supporting evidence.
 
@@ -258,23 +261,25 @@ The project is in documentation and visual preproduction.
 
 Governance hardening and the docs-only tooling policy are complete.
 
-The latest visual-preproduction package is Batch 8B: a higher-fidelity static style-frame test package for Community Pixel Storefront using the compact Peter Pan + G station composition only.
+The latest visual-preproduction correction rejects recent minor-variant artifacts as non-decision-grade.
 
 Phase 2 / Batch 8.5 selected a hybrid real-plus-placeholder composition as the gate outcome.
 
-The next visual artifact is a static hybrid composition/style-frame brief, not app implementation.
+The next visual-preproduction step is a Radical Art Direction Concept Sprint, not app implementation and not another same-base SVG comparison board.
 
 ## Latest Visual State
 
 - No final visual direction is approved yet.
-- Community Pixel Storefront is the strongest current hybrid test path.
-- Community Pixel Storefront is not final direction.
+- The process is returning to divergent art-direction exploration.
+- Community Pixel Storefront remains historical/exploratory only, not final direction.
 - Batch 8 context-test artifacts remain in the repo as useful intent scaffolding only.
 - Batch 8 did not meet the fidelity threshold for creative-direction feedback and does not imply any approved direction.
-- Batch 8B is the latest visual-preproduction package and is intended to make the creative-direction decision visually answerable.
+- Batch 8B and later same-base comparison artifacts do not approve visual direction.
+- Batch 10 is rejected as non-decision-grade because it did not diverge enough.
 - Phase 2 / Batch 8.5 selected a hybrid real-plus-placeholder composition because the slice is not verified enough to proceed as-is.
 - Exploratory visual work may continue only if it uses clearly labeled placeholder, symbolic, fictionalized, or unresolved geography.
-- The next visual artifact is defined in `docs/visual-artifacts/batch-9-hybrid-composition-style-frame-brief/README.md`.
+- The next visual batch is `batch-11-radical-art-direction-concept-sprint`.
+- The next decision is between distinct visual worlds, not minor variants of one base composition.
 - Static style frame remains blocked.
 - React/Vite/Pixi remains blocked.
 - Production visual assets and real-place card production remain blocked.
@@ -296,12 +301,12 @@ The next visual artifact is a static hybrid composition/style-frame brief, not a
 ## Pending Decisions
 
 - Batu has selected the Phase 2 gate outcome: hybrid real-plus-placeholder composition.
-- Next Batu decision: review the static hybrid composition/style-frame artifact and decide whether the hybrid slice feels worth continuing.
+- Next Batu decision: review radical concept territories and decide which visual worlds deserve decision-grade raster/image style-frame production.
 - Which unresolved candidates are omitted, treated as unknown/closed, or allowed only as placeholders.
 - Whether Karczma and Brouwerij Lane remain out of the compact slice, require a revised/expanded boundary, or are deferred to a later slice.
-- Whether Batu wants to continue testing Community Pixel Storefront, revise it, or request another visual test path after Phase 2.
-- Which emotional-volume variant, marker/card treatment, and palette direction from Batch 8B should be considered for a later static style-frame brief, if any.
-- The static style-frame composition after the truth gate outcome is chosen.
+- Whether any previous Community Pixel Storefront energy should survive as one input inside a more divergent concept sprint.
+- Which radical concept territories should advance to decision-grade raster/image style frames.
+- The static style-frame composition after a visual world is chosen.
 - The authoritative source hierarchy for buildings, lots, addresses, and businesses.
 - The operational definition of spatially coherent authored placement.
 - Whether a later proposed static style-frame production pass is justified after Batch 8B review.
@@ -351,11 +356,11 @@ Selected outcome:
 
 - Use a hybrid real-plus-placeholder composition.
 
-The gate does not clear production placement. It allows the next visual artifact to use Peter Pan and the G station as symbolic anchors while treating unresolved businesses as placeholders, fictionalized storefronts, omitted, or unresolved.
+The gate does not clear production placement. Future visual artifacts may use Peter Pan and the G station as symbolic anchors only when unresolved businesses are treated as placeholders, fictionalized storefronts, omitted, or unresolved.
 
 Exploratory visual work may continue only if it does not depend on unresolved real-world placement claims.
 
-Allowed for the hybrid follow-up artifact:
+Allowed for future truth-safe visual exploration:
 
 - Lo-fi or mid-fi visual exploration.
 - Mood, palette, marker/card hierarchy, and emotional-volume tests.
@@ -451,24 +456,11 @@ Before app implementation or production asset work, the project should have:
 
 ## Next Proposed Batch
 
-Create the Batch 9 static hybrid composition/style-frame artifact described in `docs/visual-artifacts/batch-9-hybrid-composition-style-frame-brief/README.md`.
+Run `batch-11-radical-art-direction-concept-sprint`.
 
-The artifact should be higher than abstract symbolic diagrams, lower than production art, and concrete enough for Batu to judge composition, emotional volume, marker/card hierarchy, and whether the slice feels worth continuing.
+The batch should define divergent concept territories, prompt kits, a divergence matrix, a decision rubric, and a production plan for decision-grade raster/image style frames. It should compare distinct visual worlds before any style approval.
 
-Batch 8B may inform mood, palette, marker/card hierarchy, emotional volume, and symbolic composition only. It must not be used as evidence that real-world placement, adjacency, or business/building relationships are accurate.
-
-Batch 8B is still exploratory and review-pending. It:
-
-- Uses the compact Peter Pan + G station composition only.
-- Compares three controlled emotional-volume variants:
-  - Quiet storefront-led.
-  - Balanced warm.
-  - Community-forward.
-- Uses actual Greenpoint and OCCII visual references with disciplined abstraction.
-- Keeps Batch 8 unapproved and preserved as historical scaffolding.
-- Includes PNG review artifacts exported from flattened source files with deterministic palette rendering.
-
-This does not approve visual direction, static style-frame production, app architecture, public interfaces, React/Vite/Pixi, CI, deployment, plugins, implementation-oriented skills, production visual assets, or real-place card production.
+It must not produce another minor SVG comparison board, approve final visual direction, approve static style-frame production, create app architecture, create public interfaces, initialize React/Vite/Pixi, install tooling, or create production visual assets.
 
 ## Batch 8B Acceptance Criteria
 
