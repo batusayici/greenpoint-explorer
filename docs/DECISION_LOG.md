@@ -1,5 +1,30 @@
 # Decision Log
 
+## 2026-05-26 - Batch 13 Survivor Development Test Approved
+
+Decision:
+- Batu approved the next test step, not final visual direction approval.
+- Soft Pixel Neighborhood Sim and Inked Indie Graphic Novel are selected for focused development testing.
+- Xerox-Riso Street Zine, Tilt-Shift Toy Block Greenpoint, Civic Atlas Deluxe, and Weird Hyperlocal Magical Realism are not advancing as full directions.
+- Limited accent borrowing is allowed:
+  - Soft Pixel may borrow Civic Atlas clarity and a small amount of Xerox sticker/flyer texture.
+  - Inked Indie may borrow Civic Atlas hierarchy and limited Xerox surface pressure.
+- Created `docs/visual-artifacts/batch-13-survivor-direction-development/` as a planning and prompt package for the next generated development artifacts.
+- Batch 13 will test UI/world integration, marker/card systems, style-system tiles, and production viability for the two survivor directions.
+- Final visual direction, production visual language, app implementation, public interfaces, package tooling, build tooling, CI, deployment, and real-place representation remain blocked.
+
+Rationale:
+- Batch 11 produced six generated hero directions and enough visual evidence for survivor selection.
+- The next useful question is not broader divergence; it is whether either survivor can become a usable visual system for the map-mode MVP.
+- The development test must prove clickability, map readability, UI native-ness, local specificity, repeatability, and production survivability.
+
+Owner:
+- Creative direction, survivor selection, and final approval: Batu
+- Development-batch planning, prompt preparation, and review framing: Codex
+
+Status:
+- Approved next test step / no final direction approved / no app implementation approved
+
 ## 2026-05-26 - Batch 11 Hero Frames Integrated For Direction Selection
 
 Decision:
@@ -357,6 +382,33 @@ Owner:
 
 Status:
 - Approved / active
+
+## 2026-05-26 - Batch 13 Survivor Development Images Generated
+
+Decision:
+- Generate the six approved Batch 13 survivor-direction development images from `docs/visual-artifacts/batch-13-survivor-direction-development/PROMPT_MANIFEST.md`.
+- Save the new Batch 13 outputs in `docs/visual-artifacts/batch-13-survivor-direction-development/generated/`:
+  - `SP-A-ui-world-integration.png`
+  - `SP-B-place-card-marker-hover-state.png`
+  - `SP-C-style-system-tile.png`
+  - `II-A-ui-world-integration.png`
+  - `II-B-place-card-marker-hover-state.png`
+  - `II-C-style-system-tile.png`
+- Keep the Batch 12 survivor hero frames as references only, not new Batch 13 outputs.
+- Update the Batch 13 review docs to reference the actual generated files and add a generated-output self-critique.
+- Do not approve final visual direction, production assets, app implementation, public interfaces, or architecture boundaries.
+
+Rationale:
+- The batch tests whether Soft Pixel Neighborhood Sim and Inked Indie Graphic Novel can support map-mode UI, hover/selected states, place-card behavior, and repeatable visual-system elements.
+- The generated images provide product-usefulness evidence rather than only mood evidence.
+- The outputs are decision-grade for survivor review, with caveats around over-literal generated labels, controls, and legends.
+
+Owner:
+- Creative direction: Batu
+- Implementation: Codex
+
+Status:
+- Generated / needs Batu review
 
 ## 2026-05-26 - Batch 8B Higher-Fidelity Style-Frame Test Created
 
