@@ -1,45 +1,62 @@
 # Decision Rubric
 
-Label: **visual decision gate / not approval**  
+Label: **direction-selection gate / not final approval**
 Date: 2026-05-26
 
 ## Core Rule
 
-This batch is not decision-grade unless actual visual style frames exist.
+This package is decision-grade for choosing survivor directions because six actual hero frames now exist.
 
-Prompts, matrices, and territory descriptions can prepare the work. They cannot substitute for visual evidence.
+Prompts, matrices, and territory descriptions are supporting evidence only. Batu should make the survivor decision from the generated frames, the comparison board, and the observed critique.
 
-## Definition Of Decision-Grade
+## Decision This Package Can Support
 
-A radical art-direction concept sprint becomes decision-grade only when all of the following are true:
+This package can support:
 
-- Each option looks like a different game at 20% zoom.
-- Each option shows exterior map-mode browsing.
-- Each option includes storefront, marker, and place-card logic.
-- Each option expresses local creative culture through form and materiality, not just labels.
-- Each option can be judged visually without reading the prose.
+- Rejecting weak directions.
+- Choosing one or two survivor directions.
+- Naming merge opportunities or accent elements.
+- Defining the next development batch.
 
-## Required Visual Contents Per Territory
+This package cannot support:
 
-Each territory needs at least two raster/image style frames before Batu can make a meaningful concept decision:
+- Final visual direction approval.
+- Production art approval.
+- Final UI or marker/card approval.
+- Public place representation approval.
+- Architecture, module, package, or app implementation approval.
 
-- Hero exterior style frame.
-- UI-integrated map browsing frame.
+## Direction-Selection Definition
 
-Recommended third frame:
+A direction-selection package passes when all of the following are true:
 
-- Place-card / hover-state treatment.
+- Each option looks meaningfully different at 20% zoom.
+- Each option shows exterior storefront map-mode browsing.
+- Each option includes at least implied marker and selected-place logic.
+- Each option expresses local creative culture through visual form, not only text labels.
+- Each option can be judged visually without reading the prompt.
+- The package clearly separates "recommended to survive" from "approved final direction."
+
+## What Is Still Missing For Final Art Approval
+
+Each survivor still needs:
+
+- One UI/world integration frame.
+- One place-card / hover-state / marker integration frame.
+- One style tile or visual system tile.
+- Production viability notes.
+- Batu approval of any final visual direction.
 
 ## Pass Criteria
 
-An option passes the concept-sprint gate if:
+An option passes the survivor gate if:
 
 - It is recognizably exterior Greenpoint / Brooklyn storefront browsing.
 - It has clear building facades, sidewalk/street logic, signage, street furniture, markers, and a place card.
 - The visual medium is materially distinct from the other options.
 - Storefront click targets are visible before reading any explanation.
 - Local creative culture appears in surfaces, objects, materials, signage, and world behavior.
-- It has enough fidelity for Batu to accept, reject, merge, or send it into deeper generation.
+- It has enough fidelity for Batu to accept, reject, merge, or send into deeper development.
 
 ## Fail Criteria
 
@@ -51,10 +68,11 @@ An option fails if:
 - It hides weak map function behind texture or mood.
 - It is generic enough that Greenpoint / Brooklyn could be swapped for any city.
 - It lacks marker and place-card logic.
+- It cannot plausibly host future map UI without fighting the world.
 
 ## Review Questions For Batu
 
-Use these questions after visual frames exist:
+Use these questions while reviewing the six generated hero frames:
 
 1. Which territory has the strongest first-screenshot identity?
 2. Which territory best supports place browsing rather than passive illustration?
@@ -62,19 +80,18 @@ Use these questions after visual frames exist:
 4. Which territory has the best balance of emotional pull and UI clarity?
 5. Which territory should be rejected outright?
 6. Which territories, if any, should be merged or hybridized later?
-7. Which territory deserves a static style-frame composition pass?
+7. Which one or two territories deserve a focused development batch?
 
 ## Reserved Decisions
 
 Batu must explicitly approve:
 
 - Which territory proceeds.
-- Whether to generate all six territories or narrow first.
+- Whether to advance one or two survivor directions.
 - Whether to bring in human visual design.
 - Any final visual direction.
 - Any production visual language.
-- Any static style-frame composition.
+- Any static style-frame composition or production art pass.
 - Any app implementation gate.
 
 Codex must not mark any direction approved.
-

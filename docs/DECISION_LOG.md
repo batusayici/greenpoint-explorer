@@ -1,5 +1,36 @@
 # Decision Log
 
+## 2026-05-26 - Batch 11 Hero Frames Integrated For Direction Selection
+
+Decision:
+- Converted `docs/visual-artifacts/batch-11-radical-art-direction-concept-sprint/` from a prompt-ready concept sprint into a direction-selection review package.
+- Integrated the six generated hero frames from `docs/visual-artifacts/batch-12-radical-hero-style-frames/` as the visual evidence for Batch 11 review.
+- Created a frame index, comparison board, review guide, decision memo, self-critique, and next-batch brief.
+- Updated the Batch 11 rubric, matrix, self-audit, README, and next-step note so they no longer describe the package as missing raster hero frames.
+- Recommended two survivor directions for deeper development:
+  - Soft Pixel Neighborhood Sim;
+  - Inked Indie Graphic Novel.
+- Parked Xerox-Riso Street Zine, Tilt-Shift Toy Block Greenpoint, Civic Atlas Deluxe, and Weird Hyperlocal Magical Realism as full directions for now, with limited accent-borrowing opportunities noted.
+- Final visual direction, production visual language, UI system, static style-frame approval, real-place representation, app implementation, public interfaces, package tooling, build tooling, CI, and deployment remain blocked.
+
+Rationale:
+- The six hero frames resolved the previous blocker: Batu can now compare real visual evidence instead of prose-only territories.
+- Soft Pixel Neighborhood Sim best supports immediate clickability, map readability, and MVP product fit.
+- Inked Indie Graphic Novel best supports authored Greenpoint specificity, taste level, and local storefront character.
+- The other four directions are valuable but currently show stronger risks: poster/collage over map usability, generic toy-town drift, overly restrained atlas polish, or fantasy/mood-art drift.
+
+Next batch:
+- Run a focused development batch for Batu-selected survivor directions, not another six-way divergence sprint.
+- For each survivor, test one UI/world integration frame, one place-card / hover-state / marker integration frame, one style tile or visual system tile, and production viability notes.
+- The next batch should learn whether UI overlays coexist with the world, whether the direction remains readable at map scale, and whether the style can become a repeatable system.
+
+Owner:
+- Creative direction, survivor selection, and final approval: Batu
+- Review packaging, critique, and next-batch framing: Codex
+
+Status:
+- Review package prepared / survivor recommendation only / no direction approved
+
 ## 2026-05-26 - Return To Radical Art-Direction Concept Sprint
 
 Decision:

@@ -1,6 +1,6 @@
 # Six Radical Concept Territories
 
-Label: **concept territories / prompt-ready / not approved**  
+Label: **concept territory briefs / not approved**
 Date: 2026-05-26
 
 ## Territory 1: Soft Pixel Neighborhood Sim
@@ -224,4 +224,3 @@ Review questions for Batu:
 - Is the magic subtle and local, or too fantasy / cyberpunk?
 - Does the world remain exterior and storefront-led?
 - Is this emotional territory worth deeper testing despite calibration risk?
-

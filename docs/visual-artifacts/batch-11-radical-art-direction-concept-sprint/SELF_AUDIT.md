@@ -1,35 +1,42 @@
 # Self-Audit
 
-Label: **standards check / not approval**  
+Label: **standards check / not final approval**
 Date: 2026-05-26
 
 This audit uses `docs/VISUAL_ARTIFACT_STANDARDS.md`.
 
 ## Intended Decision
 
-This package should let Batu decide how to run the next radical visual concept sprint, not choose a final visual direction.
+This package should let Batu choose which one or two visual territories deserve deeper development next.
 
-The intended near-term decision is operational:
+The intended decision is:
 
-- Generate all six territories as raster/image style frames.
-- Narrow to three territories before generation.
-- Bring in human visual design for an authored pass.
+- Advance one or two survivor directions.
+- Reject or park the weaker directions.
+- Identify limited merge opportunities.
 
 ## Fidelity Level
 
-Documentation and prompt brief.
+Hero style-frame review package.
 
-This is lower than a style frame and is not decision-grade for final art direction.
+This is appropriate for direction selection. It is still lower than final style approval because UI states, place cards, hover states, style tiles, and production rules are not yet developed.
 
 ## Visual Evidence
 
-No raster/image style frames are included in this package.
+Six generated hero frames exist and are referenced from `FRAME_INDEX.md` and `comparison-board.svg`.
 
-This is intentional for the current docs/artifacts-only batch, but it means Batu cannot choose a final visual world from this package alone.
+Batu can directly see:
+
+- Storefront rendering language.
+- Camera and exterior map readability.
+- Marker and selected-place hints.
+- Local material cues.
+- Emotional tone.
+- Thumbnail-level divergence.
 
 ## Variant Difference
 
-The territories differ in decision-relevant dimensions:
+The generated frames differ in decision-relevant dimensions:
 
 - Rendering medium.
 - Materiality.
@@ -40,36 +47,38 @@ The territories differ in decision-relevant dimensions:
 - Emotional promise.
 - Production risk profile.
 
-They are designed to avoid palette-only or decoration-only variation.
+They avoid palette-only or decoration-only variation well enough for survivor selection.
 
 ## Truth Handling
 
-The prompts require Greenpoint / Brooklyn storefront context without literal copying of reference images or unsupported real-place claims.
+The generated frames should be treated as fictionalized / symbolic Greenpoint exterior studies.
 
-The next visual-generation batch must label any verified, symbolic, placeholder, fictionalized, omitted, or unresolved details in its own review guide.
+They are not approved as factual depictions of real storefront placement, active businesses, exact addresses, exact station access, or public place cards. Generated signs and business names are mood artifacts only.
 
 ## Missing Fidelity
 
-Batu would still have to imagine:
+Batu still has to imagine:
 
-- Actual rendered storefront fidelity.
-- Actual UI/card appearance.
-- Actual material quality.
-- Actual thumbnail divergence.
-- Whether image generation can obey exterior-only and map-mode constraints.
+- Fully integrated UI overlays.
+- Place-card typography and hierarchy.
+- Hover and marker state behavior.
+- Style-system rules.
+- Repeatability across many blocks.
+- Accessibility and zoom behavior.
+- Production pipeline implications.
 
 ## Pass / Fail
 
-Pass for a prompt-ready radical concept-sprint brief.
+Pass for direction-selection review.
 
-Fail for final art-direction decision-making because actual raster/image style frames do not exist yet.
+Fail for final visual approval.
 
 ## Revision Needed
 
-Before this work can become decision-grade, create visual style frames:
+Before any direction can be approved as final, the survivor batch must create:
 
-- At least two raster/image frames per territory.
-- Exterior-only map-mode browsing in every frame.
-- Storefront, marker, and place-card logic in every option.
-- 20% zoom contact sheet comparison.
-
+- UI/world integration frames.
+- Place-card / hover-state / marker integration frames.
+- Style tiles or visual system tiles.
+- Production viability notes.
+- Updated self-audit against the same standards.
