@@ -41,6 +41,36 @@ React/Vite/Pixi implementation remains blocked until the approved static style f
 - Decision-grade artifacts must be visual enough for Batu to judge without prose.
 - Reusing one base composition is allowed only for controlled later refinement, not for radical concept selection.
 
+## Informal Environment-As-Character Working Principle
+
+The environment should carry the project's personality through storefront rhythm, street furniture, signage, surface texture, transit cues, sidewalk life, and authored local detail.
+
+This is an informal working principle, not an approved formal design pillar. Batu must explicitly approve any named design pillar or final visual thesis.
+
+## Modular Diorama Asset Strategy
+
+Future visual systems should be evaluated for whether they can support reusable diorama parts without losing Greenpoint specificity.
+
+Likely reusable categories:
+
+- Facades, windows, doors, roll gates, awnings, sign bands, and storefront widths.
+- Street furniture, utility poles, bike racks, trash cans, mailboxes, benches, tree planters, stoops, and sidewalk modules.
+- Corner conditions, curb cuts, crosswalk edges, subway-anchor elements, and controlled sticker/flyer surfaces.
+
+The goal is not bespoke modeling for every building. The goal is a repeatable authored kit that can carry local specificity through combinations, material rules, signage treatment, and carefully chosen hero details.
+
+Parameterized storefront identity may be useful later, but it is deferred until visual direction and architecture boundaries are approved.
+
+## Readability And Interaction Principle
+
+Orthographic/isometric clarity matters more than decorative density.
+
+- Users must understand what is clickable, what is place data, and what is atmosphere.
+- Local specificity must support map usability, not obscure it.
+- Storefront entrances, marker placement, hover states, selected states, and place-card attachment must remain legible at review size.
+- Hover, click, and card hierarchy must be tested visually before implementation.
+- Texture, signage, flyers, and ambient detail should frame click targets, not camouflage them.
+
 ## Curated Isometric Reference Set
 
 Status: Batu-curated directional input / not final visual approval  

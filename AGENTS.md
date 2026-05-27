@@ -10,12 +10,13 @@ The project is in documentation and visual preproduction only.
 
 No app implementation exists yet. Do not initialize React, Vite, PixiJS, Three.js, package tooling, source folders, or build configuration until the gates below are cleared.
 
-## Authority Model
+## Creative Authority Model
 
 Batu owns:
 
 - Creative direction.
 - Product direction.
+- Taste calls and visual tradeoff decisions.
 - Public module and interface approval.
 - Final approval of visual language, architecture boundaries, and scope changes.
 
@@ -23,21 +24,27 @@ Agents own:
 
 - Tactical implementation inside approved boundaries.
 - Clear options and tradeoff framing.
+- Proposals, artifacts, critique, verification, and documentation for Batu review.
 - Small, reviewable batches.
 - Test, QA, and documentation updates for approved work.
 
-When requirements are ambiguous, clarify before implementation. Do not make autonomous creative, product, architecture, or public-interface decisions.
+When requirements are ambiguous, clarify before implementation. Codex must mark assumptions and unresolved decisions. Do not make autonomous creative, product, architecture, or public-interface decisions, and do not silently convert suggestions, recommendations, or exploratory artifacts into approved decisions.
+
+Visual direction cannot be approved from prose-only labels, recommendations, or taste descriptions. It requires concrete artifacts and Batu approval.
 
 ## Required Workflow
 
 Use this workflow for meaningful work:
 
 1. Clarify the goal and unresolved requirements.
-2. Plan the batch.
+2. Plan the batch with reviewable artifact entry and exit criteria.
 3. Wait for approval when the work changes scope, visual direction, product behavior, public interfaces, or module boundaries.
 4. Implement one small batch.
 5. Run the fastest useful feedback loop available.
-6. Summarize what changed, what did not change, verification results, and remaining review items.
+6. Verify the batch against its acceptance criteria.
+7. Summarize what changed, what did not change, verification results, and remaining review items.
+
+Reviewable artifact entry and exit criteria are batch acceptance gates only. They do not imply game intro, menu, onboarding, or product-polish work.
 
 After the baseline repository commit, future batches must report `git status` and a `git diff --stat` summary.
 
@@ -56,7 +63,6 @@ If the batch does not change public interfaces or module boundaries, say that ex
 
 - No final visual direction is approved yet.
 - The strongest current hybrid test path is Community Pixel Storefront.
-- Visual approvals require concrete artifacts, not prose labels.
 - Do not introduce new visual metaphors, palettes, marker systems, card styles, UI styles, or production visual language without Batu approval.
 - Unapproved visual directions must be labeled as unapproved, exploratory, or historical.
 - Lo-fi artifacts are decision aids only; they are not final art.

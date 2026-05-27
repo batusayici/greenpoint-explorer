@@ -37,9 +37,20 @@ Future implementation should separate:
 
 These are intended boundaries to review later, not approved modules or file names.
 
+## Future Architecture Guardrail
+
+The eventual architecture must preserve a clear truth/rendering split.
+
+- Greenpoint place facts, addresses, source URLs, verification status, and placement confidence belong in a truth layer / data layer.
+- Rendering may consume verified or explicitly labeled place data, but rendering must not own or invent truth.
+- UI cards and markers must consume the same truth source as the rendered scene.
+- Stylized representation may simplify geometry, scale, and detail, but it must not corrupt address, side-of-street, adjacency, active-status, or location facts.
+- The MVP must not depend on live data, scrapers, refresh jobs, or backend services unless a later approved plan explicitly changes that scope.
+
+This is a future guardrail only. It does not approve a database, runtime schema, package, module boundary, public interface, or implementation file.
+
 ## Deep-Module Principle
 
 Prefer deep modules with simple public interfaces and hidden internal complexity.
 
 Avoid shallow wrappers, speculative abstractions, broad utility files, and file sprawl. Add abstractions only when they protect a stable boundary, reduce real complexity, or match an approved architecture.
-

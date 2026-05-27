@@ -7,54 +7,42 @@ Implementation owner: Codex
 
 ## Phase Orientation
 
-- Phase 1 Visual Preproduction is active again as divergent art-direction exploration.
+- Phase 1 Visual Preproduction has started but is incomplete; no final visual direction is approved.
 - Phase 2 Location & Representational Truth Feasibility selected `hybrid real-plus-placeholder composition` as the gate outcome.
 - Batch 8.5 remains the truth record for unresolved placement risks.
 - Recent three-direction artifacts are rejected as non-decision-grade.
-- Batch 11 is the next docs/artifact-planning batch: `batch-11-radical-art-direction-concept-sprint`.
+- Batch 13 survivor direction development exists as current visual development evidence only.
 - Previous artifacts may inform constraints only; they do not approve visual direction.
 - Future visual batches must reference `docs/VISUAL_ARTIFACT_STANDARDS.md` and pass the decision-usefulness self-audit before they are called complete.
 - Static style frame, architecture, and implementation remain blocked.
 
 ## Current Batch
 
-Batch 11 Radical Art Direction Concept Sprint.
+Batch 13 Survivor Direction Development review.
 
 Folder name:
-- `batch-11-radical-art-direction-concept-sprint`
+- `batch-13-survivor-direction-development`
 
-Status: proposed / docs-only planning before artifact production.
+Status: visual development evidence exists / review only / not final approval.
 
 Purpose:
-- Return to game-studio-style radical concept exploration.
-- Compare distinct visual worlds, not minor variants of one base composition.
-- Prepare decision-grade raster/image style-frame production without creating those frames yet.
+- Review the two survivor directions, Soft Pixel Neighborhood Sim and Inked Indie Graphic Novel.
+- Decide whether either direction should advance toward prototype visual-system exploration.
+- Preserve Phase 1 as incomplete until Batu approves a final visual direction through concrete artifacts.
 
-Required concept territories:
-- Soft Pixel Neighborhood Sim.
-- Xerox-Riso Street Zine.
-- Tilt-Shift Toy Block Greenpoint.
-- Inked Indie Graphic Novel.
-- Civic Atlas Deluxe.
-- Weird Hyperlocal Magical Realism.
-
-Required outputs:
-- Concept territory briefs.
-- Image-generation prompt kits.
-- Divergence matrix.
-- Decision rubric.
-- Production plan for decision-grade raster/image style frames.
+Current evidence:
+- `docs/visual-artifacts/batch-13-survivor-direction-development/README.md`
+- `docs/visual-artifacts/batch-13-survivor-direction-development/DEVELOPMENT_BRIEF.md`
+- `docs/visual-artifacts/batch-13-survivor-direction-development/ARTIFACT_PLAN.md`
+- Six generated development images under `docs/visual-artifacts/batch-13-survivor-direction-development/generated/`
 
 Required process rules:
 - References are directional inputs, not approved style.
-- Each concept must be a world hypothesis, not a palette/icon variant.
-- Each concept must preserve exterior-only map mode: storefront facades, sidewalks, street corner, signage, street furniture, markers, and place cards.
-- No interiors, cutaways, indoor venue scenes, or poster-only compositions.
-- Thumbnail divergence rule: options must look like different games at 20% zoom.
+- Any survivor direction must preserve exterior-only map mode: storefront facades, sidewalks, street corner, signage, street furniture, markers, and place cards.
+- No interiors, cutaways, indoor venue scenes, avatar systems, NPC systems, quests, or poster-only compositions.
 - Decision-grade artifacts must be visual enough to judge without prose.
 
-Forbidden during Batch 11:
-- Another minor SVG comparison board.
+Forbidden during Batch 13 review:
 - Final visual direction approval.
 - Static style-frame production.
 - Production visual assets.
@@ -102,22 +90,24 @@ Batch 8.5B truth-record status:
 - Composition viability read: done.
 - Phase 2 gate outcome: hybrid real-plus-placeholder composition.
 
-Batch 11 acceptance criteria:
+Batch 13 review acceptance criteria:
 
-- Six concept territories are clearly different in worldview, rendering language, composition feel, material treatment, and UI/place-card relationship.
-- The divergence matrix makes the differences scannable.
-- Prompt kits are specific enough to guide future raster/image style-frame production.
-- The decision rubric lets Batu compare concepts without Codex choosing the direction.
-- The production plan defines how to create decision-grade raster/image style frames next.
-- No visual direction is approved and no new visual artifacts are created in this docs batch.
+- Batu can judge Soft Pixel and Inked Indie using the existing development frames and review materials.
+- Review output does not approve final visual direction, production visual language, real-place representation, app implementation, public interfaces, or module boundaries.
+- Any recommended next step states what evidence is still missing and what decisions remain reserved for Batu.
+- Location truth and hybrid real-plus-placeholder constraints remain visible.
 
-## Current Visual Artifact Package
+## Current Visual Development Evidence
 
-Batch 8B higher-fidelity static style-frame test for Community Pixel Storefront.
+Batch 13 survivor direction development is the current visual development evidence for Batu's review of whether Soft Pixel, Inked Indie, both, or neither should advance toward prototype visual-system exploration.
 
-This is a docs-only visual-preproduction package. It exists to make the creative-direction decision visually answerable without approving final direction or starting implementation.
+Status: evidence exists / review-pending / not final approval.
 
-Status: existing / exploratory / review-pending.
+Existing Batch 13 outputs:
+
+- `docs/visual-artifacts/batch-13-survivor-direction-development/` exists for review.
+- Six generated development images exist under `docs/visual-artifacts/batch-13-survivor-direction-development/generated/`.
+- The package tests UI/world integration, marker/card systems, style-system tiles, and production viability for two survivor directions.
 
 Batch 8 status:
 
@@ -138,9 +128,9 @@ No app code, build tooling, package files, production visual assets, architectur
 
 ## Next Proposed Batch
 
-Produce the Batch 11 concept sprint docs.
+Review the Batch 13 survivor direction development evidence.
 
-After Batch 11, Batu can choose which concepts, if any, should receive decision-grade raster/image style-frame production.
+After Batch 13 review, Batu can decide whether Soft Pixel, Inked Indie, both, or neither should advance toward prototype visual-system exploration. This review must not approve final visual direction, static style-frame production, app implementation, public interfaces, production visual assets, or real-place representation.
 
 ## Reusable Visual Batch Acceptance Checklist
 
@@ -173,10 +163,12 @@ Apply this checklist to every future visual batch before reporting completion:
 - Implementation-oriented Codex skills.
 - Plugin installs or broad plugin stack setup.
 - CI, deployment, Render, Remotion, Superpowers, and CodeRabbit.
+- Rejected game-dev systems: NPC memory/mood agents, avatars, interiors, quests, click-to-move, live data, Unreal/Godot/MCP workflows, world generation, and broad autonomous multi-agent workflows.
 
 ## Parking Lot
 
 - Optional future preproduction-only skills: `visual-direction-review`, `design-decision-log`, `greenpoint-reference-discipline`.
+- Deferred delight / funsies after map readability and place-card interaction are proven: G-train rumble, flickering bodega sign, flapping awning, steam vent, flyer peel, dog walker, or stoop detail. These are not MVP blockers unless Batu explicitly promotes them.
 - Any Karczma-in-frame testing after the compact first-frame decision is settled.
 - Future app implementation.
 - Architecture expansion after approval.

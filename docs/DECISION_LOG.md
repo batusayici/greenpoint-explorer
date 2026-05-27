@@ -1,5 +1,38 @@
 # Decision Log
 
+## 2026-05-26 - Agentic Game-Dev Guardrails Integrated
+
+Decision:
+- Integrated selected agentic game-development practices as documentation guardrails only.
+- Adopted now:
+  - Creative authority model with Batu owning visual direction, taste calls, approvals, and tradeoff decisions.
+  - Codex role clarity: propose, generate, critique, verify, and document without silently converting suggestions into decisions.
+  - Small scoped batches with reviewable artifact entry/exit criteria, acceptance criteria, direct verification, and synchronized docs.
+  - Visual validation ladder from references/moodboard through MVP implementation, with prose-only direction explicitly not decision-grade.
+  - Future truth/data versus rendering separation for place facts, cards, markers, and stylized representation.
+  - Modular diorama asset strategy and readability-first interaction principles.
+  - Verification review checklist for docs, artifacts, scope, and truth/rendering consistency.
+- Deferred:
+  - Delight/funsies such as G-train rumble, flickering signs, flapping awnings, steam vents, flyer peel, dog walker, or stoop detail.
+  - Parameterized storefronts, procedural helpers, pitch/GIF-style validation artifacts, object pooling, and performance tactics until later gates justify them.
+- Rejected for current MVP scope:
+  - Autonomous NPC memory/mood agents, avatars, interiors, quests, click-to-move, live data dependencies, Unreal/Godot/MCP engine workflows, world generation, and broad autonomous multi-agent game-creator workflows.
+- Batch 13 may be cited only as current visual development evidence because the corresponding files exist; it is not final visual approval.
+- No implementation gates were cleared.
+- No app code, package tooling, generated assets, implementation scaffolding, public interfaces, architecture implementation, production visual assets, or real-place representation were approved.
+
+Rationale:
+- The recommendation included useful game-development discipline, but several ideas were premature or directly outside the map-mode MVP.
+- The project benefits from stronger artifact validation, creative authority, modularity, readability, and verification language while preserving Batu's creative direction authority and the current preproduction gates.
+- Location truth remains active and important, so rendering and UI planning must not blur verified place facts with stylized representation.
+
+Owner:
+- Creative direction, taste calls, scope approval, and tradeoff decisions: Batu
+- Documentation integration, guardrail framing, verification, and audit discipline: Codex
+
+Status:
+- Integrated as docs-only guardrails / no visual approval / no implementation approval
+
 ## 2026-05-26 - Batch 13 Survivor Development Test Approved
 
 Decision:

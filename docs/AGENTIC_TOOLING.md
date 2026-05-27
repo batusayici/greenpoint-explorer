@@ -32,6 +32,31 @@ Agents may use approved tooling to:
 - Define acceptance criteria for docs-only and lo-fi artifact batches.
 - Summarize what changed, what did not change, verification results, and remaining review items.
 
+## Agentic Game-Dev Operating Model
+
+Use game-development practices only when they fit this web-first, map-mode-only diorama prototype.
+
+- Use Plan Mode before edits when scope is unclear, multi-file, or likely to affect visual direction, product behavior, public interfaces, architecture, or scope.
+- Work in small scoped batches with explicit acceptance criteria before implementation.
+- Verify directly after edits using file checks, searches, or the fastest useful feedback loop available.
+- Keep source-of-truth docs synchronized; do not leave stale planning text that contradicts current project state.
+- Separate creative intent, location/data truth, rendering implementation, and interaction behavior.
+- Use docs-only batches when planning, review framing, visual preproduction, or governance is the goal.
+- Avoid premature engineering systems, automation stacks, implementation scaffolding, and broad game-creator workflows.
+- Treat reviewable artifact entry and exit criteria as batch acceptance gates, not as game intro, menu, onboarding, or polish requirements.
+
+## Verification Review Checklist
+
+Use this checklist before reporting an agentic docs, planning, or visual-preproduction batch complete:
+
+- Confirm project docs remain consistent with the source-of-truth order in `AGENTS.md`.
+- Confirm no approved visual direction, final style, production asset path, or implementation gate is claimed prematurely.
+- Confirm no out-of-scope systems were introduced into MVP scope.
+- Confirm referenced visual artifacts exist before citing them as evidence.
+- Confirm location truth, rendering responsibilities, UI cards, and markers remain separated.
+- Confirm every adopted game-dev practice has a project-specific reason for this web-first, map-mode-only diorama prototype.
+- Confirm deferred or rejected practices remain parked, blocked, or clearly labeled as future-only.
+
 ## Blocked Use
 
 Agents must not use tooling to:
@@ -83,4 +108,3 @@ The following tooling is explicitly deferred:
 - Any broad plugin stack installation.
 
 These may be reconsidered only after the relevant project gates are cleared and Batu approves the scope.
-

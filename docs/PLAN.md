@@ -77,7 +77,7 @@ Major outputs:
 
 Phase 1 - Visual Preproduction
 
-Status: Active / returning to divergent art-direction exploration.
+Status: Started / incomplete / no final visual direction approved.
 
 Purpose: Explore radically distinct visual worlds through concrete artifacts before final visual approval. The current process is no longer minor variants of one base composition; it is a game-studio-style concept sprint comparing different art-direction hypotheses.
 
@@ -100,9 +100,11 @@ Major outputs:
 - Batch 8B Community Pixel Storefront style-frame test package.
 - Batch 10 curated-reference comparison, rejected as non-decision-grade.
 - Batch 11 Radical Art Direction Concept Sprint.
+- Batch 12 radical hero style frames as visual evidence for direction selection.
+- Batch 13 survivor direction development package.
 - Reference boards, review guides, and visual QA notes.
 
-Phase 1 is not complete. Visual direction is not approved. The next step is `batch-11-radical-art-direction-concept-sprint`, whose goal is to compare distinct visual worlds before any style approval or static style-frame production.
+Phase 1 is not complete. Visual direction is not approved.
 
 Visual-preproduction batches are not complete merely because artifact files exist. They must pass `docs/VISUAL_ARTIFACT_STANDARDS.md` before Codex may call them review-ready or use them as gate-supporting evidence.
 
@@ -261,29 +263,49 @@ The project is in documentation and visual preproduction.
 
 Governance hardening and the docs-only tooling policy are complete.
 
-The latest visual-preproduction correction rejects recent minor-variant artifacts as non-decision-grade.
+Visual preproduction has started but remains incomplete.
 
 Phase 2 / Batch 8.5 selected a hybrid real-plus-placeholder composition as the gate outcome.
 
-The next visual-preproduction step is a Radical Art Direction Concept Sprint, not app implementation and not another same-base SVG comparison board.
+Location truth feasibility remains active and important because real-place cards, production placement, and truthful storefront relationships are still blocked.
+
+The current visual-development evidence is Batch 13 survivor direction materials.
 
 ## Latest Visual State
 
 - No final visual direction is approved yet.
-- The process is returning to divergent art-direction exploration.
+- Phase 1 is incomplete and cannot exit until Batu approves a static style-frame direction from concrete visual evidence.
+- Batch 13 survivor direction development is evidence only; it does not approve final visual language, production assets, app implementation, public interfaces, or real-place representation.
 - Community Pixel Storefront remains historical/exploratory only, not final direction.
 - Batch 8 context-test artifacts remain in the repo as useful intent scaffolding only.
 - Batch 8 did not meet the fidelity threshold for creative-direction feedback and does not imply any approved direction.
 - Batch 8B and later same-base comparison artifacts do not approve visual direction.
 - Batch 10 is rejected as non-decision-grade because it did not diverge enough.
+- Batch 11 and Batch 12 are historical inputs to the current survivor-development evidence, not final visual approval.
 - Phase 2 / Batch 8.5 selected a hybrid real-plus-placeholder composition because the slice is not verified enough to proceed as-is.
 - Exploratory visual work may continue only if it uses clearly labeled placeholder, symbolic, fictionalized, or unresolved geography.
-- The next visual batch is `batch-11-radical-art-direction-concept-sprint`.
-- The next decision is between distinct visual worlds, not minor variants of one base composition.
+- The next visual decision must treat current artifacts as evidence to review, not as a pre-approved direction.
 - Static style frame remains blocked.
 - React/Vite/Pixi remains blocked.
 - Production visual assets and real-place card production remain blocked.
 - Older visual territories are historical references unless Batu explicitly reactivates one.
+
+## Agentic Workflow Guardrails
+
+Current agentic workflow guardrails live in `docs/AGENTIC_TOOLING.md`. This plan records phase/state, decision gates, and next project decisions.
+
+## Visual Validation Ladder
+
+Visual decisions advance through concrete artifacts, not prose-only direction.
+
+1. References / moodboard.
+2. Divergent style frames.
+3. Decision-grade comparison board.
+4. Greybox interaction prototype.
+5. High-fidelity slice.
+6. MVP implementation.
+
+Prose direction alone is not decision-grade. Each rung must state the decision it supports, the fidelity level, and what remains unresolved or reserved for Batu.
 
 ## Locked Decisions
 
@@ -301,7 +323,7 @@ The next visual-preproduction step is a Radical Art Direction Concept Sprint, no
 ## Pending Decisions
 
 - Batu has selected the Phase 2 gate outcome: hybrid real-plus-placeholder composition.
-- Next Batu decision: review radical concept territories and decide which visual worlds deserve decision-grade raster/image style-frame production.
+- Next Batu decision: review current survivor-development visual evidence and decide whether any direction advances toward prototype visual-system exploration.
 - Which unresolved candidates are omitted, treated as unknown/closed, or allowed only as placeholders.
 - Whether Karczma and Brouwerij Lane remain out of the compact slice, require a revised/expanded boundary, or are deferred to a later slice.
 - Whether any previous Community Pixel Storefront energy should survive as one input inside a more divergent concept sprint.
@@ -456,11 +478,9 @@ Before app implementation or production asset work, the project should have:
 
 ## Next Proposed Batch
 
-Run `batch-11-radical-art-direction-concept-sprint`.
+Review the Batch 13 survivor direction development evidence and decide whether Soft Pixel, Inked Indie, both, or neither should advance toward prototype visual-system exploration.
 
-The batch should define divergent concept territories, prompt kits, a divergence matrix, a decision rubric, and a production plan for decision-grade raster/image style frames. It should compare distinct visual worlds before any style approval.
-
-It must not produce another minor SVG comparison board, approve final visual direction, approve static style-frame production, create app architecture, create public interfaces, initialize React/Vite/Pixi, install tooling, or create production visual assets.
+Batch 13 is evidence only; this review must not approve final visual direction, app architecture, implementation, or production visual assets.
 
 ## Batch 8B Acceptance Criteria
 
