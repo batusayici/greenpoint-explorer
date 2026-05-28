@@ -18,10 +18,10 @@ export default function App() {
       <section className="world-panel" aria-label="Placeholder authored scene">
         <div className="panel-topline">
           <div>
-            <p className="kicker">Map mode</p>
+            <p className="kicker">Browse mode</p>
             <h1>Greenpoint Explorer</h1>
           </div>
-          <p className="placeholder-note">Fictional neighborhood browsing slice. Review-only local prototype.</p>
+          <p className="placeholder-note">Fictional storefront slice for product review. Non-production prototype.</p>
         </div>
 
         <div className="viewport-frame">
@@ -101,6 +101,7 @@ export default function App() {
               <p className="card-label">Selected place</p>
               <h2>{selectedTarget.title}</h2>
               <p className="card-category">{selectedTarget.category}</p>
+              <p className="card-summary">{selectedTarget.summary}</p>
               <p>{selectedTarget.description}</p>
               <ul className="tag-list" aria-label="Placeholder tags">
                 {selectedTarget.tags.map((tag) => (

@@ -327,13 +327,19 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   const { x, y, width, height } = target.bounds;
   const { shape, label } = targetGraphic;
   const showReviewOverlay = reviewMode;
-  const markerX = x + width - 28;
-  const markerY = y + 30;
-  const markerRadius = isSelected ? 18 : isActive ? 15 : 11;
+  const markerX = target.marker?.x ?? x + width - 28;
+  const markerY = target.marker?.y ?? y + 30;
+  const markerRadius = isSelected ? 19 : isActive ? 15 : 10;
   const markerColor = isSelected ? 0xf0bc45 : isActive ? 0xf7df9d : 0xf6ead2;
   const markerStroke = isSelected ? 0x1f2727 : 0x2b2a25;
 
   shape.clear();
+
+  if (isActive || isSelected) {
+    shape
+      .circle(markerX, markerY, markerRadius + (isSelected ? 10 : 7))
+      .fill({ color: 0xf0bc45, alpha: isSelected ? 0.16 : 0.1 });
+  }
 
   shape
     .circle(markerX, markerY, markerRadius)
@@ -346,16 +352,21 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   shape
     .circle(markerX, markerY, markerRadius * 0.36)
     .fill({ color: isSelected ? 0x9d4a32 : 0x243738, alpha: isSelected ? 0.9 : 0.76 });
+  if (isSelected) {
+    shape
+      .circle(markerX, markerY, markerRadius + 7)
+      .stroke({ color: 0xf6ead2, width: 2, alpha: 0.68 });
+  }
   shape
     .moveTo(markerX, markerY + markerRadius)
-    .lineTo(markerX, markerY + markerRadius + 24)
+    .lineTo(markerX, markerY + markerRadius + (isSelected ? 30 : 22))
     .stroke({
       color: isSelected ? 0xf0bc45 : 0xf6ead2,
       width: isSelected ? 3 : 2,
       alpha: isActive || isSelected ? 0.82 : 0.34,
     });
   shape
-    .ellipse(markerX, markerY + markerRadius + 26, 17, 6)
+    .ellipse(markerX, markerY + markerRadius + (isSelected ? 32 : 24), isSelected ? 20 : 16, isSelected ? 7 : 5)
     .stroke({
       color: isSelected ? 0xf0bc45 : 0xf6ead2,
       width: isSelected ? 3 : 2,
@@ -363,10 +374,14 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     });
 
   if (isActive || isSelected) {
-    const corner = Math.min(74, width * 0.22, height * 0.22);
+    const corner = Math.min(68, width * 0.2, height * 0.2);
     const traceColor = isSelected ? 0xf0bc45 : 0xf6ead2;
-    const traceAlpha = isSelected ? 0.86 : 0.62;
-    const traceWidth = isSelected ? 5 : 4;
+    const traceAlpha = isSelected ? 0.78 : 0.5;
+    const traceWidth = isSelected ? 4 : 3;
+    if (isSelected) {
+      shape.roundRect(x + 4, y + 4, width - 8, height - 8, 14)
+        .fill({ color: 0xf0bc45, alpha: 0.06 });
+    }
     shape.moveTo(x, y + corner).lineTo(x, y).lineTo(x + corner, y)
       .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
     shape.moveTo(x + width - corner, y).lineTo(x + width, y).lineTo(x + width, y + corner)
@@ -386,8 +401,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   label.visible = showReviewOverlay;
   label.text = target.title;
   label.style.fill = "#f8ecd4";
-  label.x = x + 16;
-  label.y = y + 14;
+  label.x = x + 14;
+  label.y = y + 12;
   if (showReviewOverlay) {
     const labelPaddingX = 12;
     const labelPaddingY = 7;
