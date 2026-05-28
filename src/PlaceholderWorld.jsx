@@ -1,15 +1,18 @@
 import { useEffect, useRef } from "react";
-import { Application, Container, Graphics, Text } from "pixi.js";
+import { Application, Assets, Container, Graphics, Sprite, Text } from "pixi.js";
 
 const CAMERA = {
-  minScale: 0.62,
-  maxScale: 1.65,
+  minScale: 0.5,
+  maxScale: 1.55,
+  desktopMaxOverviewScale: 0.82,
 };
 
 export default function PlaceholderWorld({
   scene,
   selectedTargetId,
   hoveredTargetId,
+  reviewMode,
+  cameraCommand,
   onHoverTarget,
   onSelectTarget,
 }) {
@@ -17,8 +20,8 @@ export default function PlaceholderWorld({
   const stateRef = useRef({
     app: null,
     world: null,
-    targetGraphic: null,
-    camera: { x: 0, y: 0, scale: 0.82 },
+    targetGraphics: new Map(),
+    camera: { x: 0, y: 0, scale: 0.58 },
     cameraInitialized: false,
     dragging: false,
     dragStart: null,
@@ -38,6 +41,8 @@ export default function PlaceholderWorld({
         resolution: Math.min(window.devicePixelRatio || 1, 2),
       });
 
+      const texture = await Assets.load(scene.plate.src);
+
       if (cancelled || !host) {
         app.destroy(true);
         return;
@@ -50,8 +55,8 @@ export default function PlaceholderWorld({
       stateRef.current.world = world;
       app.stage.addChild(world);
 
-      drawScene(world, scene);
-      stateRef.current.targetGraphic = drawTarget(world, scene.target);
+      drawRasterPlate(world, scene, texture);
+      stateRef.current.targetGraphics = drawTargets(world, scene.targets, false);
 
       const resizeObserver = new ResizeObserver(() => {
         resizeApp(host, app);
@@ -73,18 +78,59 @@ export default function PlaceholderWorld({
       app?.destroy(true);
       stateRef.current.app = null;
       stateRef.current.world = null;
-      stateRef.current.targetGraphic = null;
+      stateRef.current.targetGraphics = new Map();
     };
   }, [scene]);
 
   useEffect(() => {
     const host = hostRef.current;
-    const targetGraphic = stateRef.current.targetGraphic;
-    if (!host || !targetGraphic) return;
+    const { targetGraphics } = stateRef.current;
+    if (!host || !targetGraphics.size) return;
 
-    const isActive = selectedTargetId === scene.target.id || hoveredTargetId === scene.target.id;
-    renderTargetState(targetGraphic, scene.target, isActive, selectedTargetId === scene.target.id);
-  }, [hoveredTargetId, scene.target, selectedTargetId]);
+    for (const target of scene.targets) {
+      const targetGraphic = targetGraphics.get(target.id);
+      if (!targetGraphic) continue;
+      const isActive = selectedTargetId === target.id || hoveredTargetId === target.id;
+      renderTargetState(targetGraphic, target, isActive, selectedTargetId === target.id, reviewMode);
+    }
+  }, [hoveredTargetId, reviewMode, scene.targets, selectedTargetId]);
+
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || !cameraCommand) return;
+
+    const { camera } = stateRef.current;
+    if (cameraCommand.type === "reset") {
+      stateRef.current.cameraInitialized = false;
+      clampAndApplyCamera(host, scene, stateRef.current);
+      return;
+    }
+
+    if (cameraCommand.type === "zoom-in" || cameraCommand.type === "zoom-out") {
+      const nextScale = clamp(
+        camera.scale * (cameraCommand.type === "zoom-in" ? 1.18 : 0.84),
+        CAMERA.minScale,
+        CAMERA.maxScale,
+      );
+      const pointerX = host.clientWidth / 2;
+      const pointerY = host.clientHeight / 2;
+      const sceneX = (pointerX - camera.x) / camera.scale;
+      const sceneY = (pointerY - camera.y) / camera.scale;
+      updateCamera({
+        scale: nextScale,
+        x: pointerX - sceneX * nextScale,
+        y: pointerY - sceneY * nextScale,
+      });
+      return;
+    }
+
+    if (cameraCommand.type === "pan-left" || cameraCommand.type === "pan-right") {
+      updateCamera({
+        ...camera,
+        x: camera.x + (cameraCommand.type === "pan-left" ? 180 : -180),
+      });
+    }
+  }, [cameraCommand, scene]);
 
   function updateCamera(nextCamera) {
     const host = hostRef.current;
@@ -103,19 +149,28 @@ export default function PlaceholderWorld({
     };
   }
 
-  function isInsideTarget(event) {
+  function getTargetAtEvent(event) {
     const point = toScenePoint(event);
-    const { bounds } = scene.target;
-    return (
-      point.x >= bounds.x &&
-      point.x <= bounds.x + bounds.width &&
-      point.y >= bounds.y &&
-      point.y <= bounds.y + bounds.height
+    const targetsBySmallestHitArea = [...scene.targets].sort(
+      (a, b) => a.bounds.width * a.bounds.height - b.bounds.width * b.bounds.height,
     );
+    for (const target of targetsBySmallestHitArea) {
+      const { bounds } = target;
+      if (
+        point.x >= bounds.x &&
+        point.x <= bounds.x + bounds.width &&
+        point.y >= bounds.y &&
+        point.y <= bounds.y + bounds.height
+      ) {
+        return target;
+      }
+    }
+    return null;
   }
 
   function handlePointerDown(event) {
     const { camera } = stateRef.current;
+    const target = getTargetAtEvent(event);
     stateRef.current.dragging = true;
     stateRef.current.moved = false;
     stateRef.current.dragStart = {
@@ -123,7 +178,7 @@ export default function PlaceholderWorld({
       pointerY: event.clientY,
       cameraX: camera.x,
       cameraY: camera.y,
-      startedOnTarget: isInsideTarget(event),
+      targetId: target?.id ?? null,
     };
     event.currentTarget.setPointerCapture(event.pointerId);
   }
@@ -143,19 +198,20 @@ export default function PlaceholderWorld({
       return;
     }
 
-    onHoverTarget(isInsideTarget(event) ? scene.target.id : null);
+    onHoverTarget(getTargetAtEvent(event)?.id ?? null);
   }
 
   function handlePointerUp(event) {
     const dragStart = stateRef.current.dragStart;
+    const target = getTargetAtEvent(event);
     const didSelect =
-      dragStart?.startedOnTarget && !stateRef.current.moved && isInsideTarget(event);
+      dragStart?.targetId && !stateRef.current.moved && target?.id === dragStart.targetId;
 
     stateRef.current.dragging = false;
     stateRef.current.dragStart = null;
 
     if (didSelect) {
-      onSelectTarget(scene.target.id);
+      onSelectTarget(dragStart.targetId);
     }
   }
 
@@ -188,13 +244,16 @@ export default function PlaceholderWorld({
       ref={hostRef}
       className="pixi-host"
       role="img"
-      aria-label="Fictional placeholder isometric corner with one interactive target"
+      aria-label="Non-production review-only raster scene plate with multiple fictional interactive targets"
       data-testid="pixi-host"
+      tabIndex={0}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerLeave={() => onHoverTarget(null)}
       onPointerUp={handlePointerUp}
       onWheel={handleWheel}
+      onFocus={() => onHoverTarget(selectedTargetId ?? scene.targets[0]?.id ?? null)}
+      onBlur={() => onHoverTarget(null)}
     />
   );
 }
@@ -208,6 +267,10 @@ function clampAndApplyCamera(host, scene, state) {
   if (!world) return;
 
   if (!state.cameraInitialized) {
+    const fitWidthScale = host.clientWidth / scene.size.width;
+    const fitHeightScale = host.clientHeight / scene.size.height;
+    const maxOverviewScale = host.clientWidth >= 760 ? CAMERA.desktopMaxOverviewScale : CAMERA.maxScale;
+    camera.scale = clamp(Math.max(fitWidthScale, fitHeightScale) * 1.02, CAMERA.minScale, maxOverviewScale);
     camera.x = (host.clientWidth - scene.size.width * camera.scale) / 2;
     camera.y = (host.clientHeight - scene.size.height * camera.scale) / 2;
     state.cameraInitialized = true;
@@ -229,93 +292,115 @@ function clampAndApplyCamera(host, scene, state) {
   world.scale.set(camera.scale);
 }
 
-function drawScene(world, scene) {
-  const g = new Graphics();
-  world.addChild(g);
-
-  g.rect(0, 0, scene.size.width, scene.size.height).fill(0xf5ecd8);
-  drawDiamond(g, 594, 494, 420, 214, 0xd8cba5, 0x433b31);
-  drawDiamond(g, 365, 486, 282, 144, 0xc7d7d2, 0x433b31);
-  drawDiamond(g, 822, 478, 300, 150, 0xe6d6b8, 0x433b31);
-
-  drawBuilding(g, 302, 258, 250, 210, 0xd55f4d, 0xf2c46d);
-  drawBuilding(g, 514, 206, 255, 252, 0x86a9a0, 0xf4e5bc);
-  drawBuilding(g, 730, 260, 232, 198, 0x515d7d, 0xd7b574);
-
-  drawAwning(g, 520, 350, 190, 52);
-  drawPropCluster(g);
-
-  const label = new Text({
-    text: "fictional placeholder scene",
-    style: {
-      fill: 0x4c4035,
-      fontFamily: "Arial",
-      fontSize: 22,
-      fontWeight: "700",
-    },
-  });
-  label.position.set(64, 650);
-  world.addChild(label);
+function drawRasterPlate(world, scene, texture) {
+  const plate = new Sprite(texture);
+  plate.width = scene.size.width;
+  plate.height = scene.size.height;
+  world.addChild(plate);
 }
 
-function drawTarget(world, target) {
-  const g = new Graphics();
-  g.eventMode = "none";
-  world.addChild(g);
-  renderTargetState(g, target, false, false);
-  return g;
-}
-
-function renderTargetState(g, target, isActive, isSelected) {
-  const { x, y, width, height } = target.bounds;
-  g.clear();
-  g.roundRect(x, y, width, height, 16)
-    .stroke({ color: isSelected ? 0x222222 : isActive ? 0x6c7c58 : 0x000000, width: isActive ? 8 : 0, alpha: isActive ? 0.78 : 0 });
-  g.circle(x + width - 44, y + 58, isActive ? 20 : 14)
-    .fill(isSelected ? 0x222222 : 0xf2cf68)
-    .stroke({ color: 0x2f2b27, width: 4 });
-}
-
-function drawDiamond(g, x, y, width, height, fill, stroke) {
-  g.poly([
-    x,
-    y - height / 2,
-    x + width / 2,
-    y,
-    x,
-    y + height / 2,
-    x - width / 2,
-    y,
-  ])
-    .fill(fill)
-    .stroke({ color: stroke, width: 5 });
-}
-
-function drawBuilding(g, x, y, width, height, wall, roof) {
-  g.roundRect(x, y, width, height, 10)
-    .fill(wall)
-    .stroke({ color: 0x3a332c, width: 5 });
-  g.poly([x - 22, y, x + width / 2, y - 78, x + width + 22, y, x + width, y + 30, x, y + 30])
-    .fill(roof)
-    .stroke({ color: 0x3a332c, width: 5 });
-  g.rect(x + 28, y + 94, 64, 92).fill(0xf8edcf).stroke({ color: 0x3a332c, width: 4 });
-  g.rect(x + 118, y + 98, width - 154, 70).fill(0xf8edcf).stroke({ color: 0x3a332c, width: 4 });
-}
-
-function drawAwning(g, x, y, width, height) {
-  g.roundRect(x, y, width, height, 10)
-    .fill(0xf6cf6b)
-    .stroke({ color: 0x3a332c, width: 4 });
-  for (let i = 0; i < 6; i += 1) {
-    g.rect(x + i * (width / 6), y, width / 12, height).fill(0xf2efe2);
+function drawTargets(world, targets, reviewMode) {
+  const targetGraphics = new Map();
+  for (const target of targets) {
+    const container = new Container();
+    const shape = new Graphics();
+    const label = new Text({
+      text: target.title,
+      style: {
+        fill: "#28231f",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 20,
+        fontWeight: "800",
+      },
+    });
+    container.eventMode = "none";
+    label.resolution = 2;
+    container.addChild(shape, label);
+    world.addChild(container);
+    renderTargetState({ shape, label }, target, false, false, reviewMode);
+    targetGraphics.set(target.id, { shape, label });
   }
+  return targetGraphics;
 }
 
-function drawPropCluster(g) {
-  g.circle(320, 548, 28).fill(0x6e7f56).stroke({ color: 0x302b25, width: 4 });
-  g.circle(902, 548, 24).fill(0x6e7f56).stroke({ color: 0x302b25, width: 4 });
-  g.rect(292, 574, 56, 22).fill(0x7b5a41).stroke({ color: 0x302b25, width: 3 });
-  g.rect(874, 570, 56, 22).fill(0x7b5a41).stroke({ color: 0x302b25, width: 3 });
+function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMode) {
+  const { x, y, width, height } = target.bounds;
+  const { shape, label } = targetGraphic;
+  const showReviewOverlay = reviewMode;
+  const markerX = x + width - 28;
+  const markerY = y + 30;
+  const markerRadius = isSelected ? 18 : isActive ? 15 : 11;
+  const markerColor = isSelected ? 0xf0bc45 : isActive ? 0xf7df9d : 0xf6ead2;
+  const markerStroke = isSelected ? 0x1f2727 : 0x2b2a25;
+
+  shape.clear();
+
+  shape
+    .circle(markerX, markerY, markerRadius)
+    .fill({ color: markerColor, alpha: isActive || isSelected ? 0.96 : 0.78 })
+    .stroke({
+      color: markerStroke,
+      width: isSelected ? 4 : isActive ? 3 : 2,
+      alpha: isActive || isSelected ? 0.95 : 0.62,
+    });
+  shape
+    .circle(markerX, markerY, markerRadius * 0.36)
+    .fill({ color: isSelected ? 0x9d4a32 : 0x243738, alpha: isSelected ? 0.9 : 0.76 });
+  shape
+    .moveTo(markerX, markerY + markerRadius)
+    .lineTo(markerX, markerY + markerRadius + 24)
+    .stroke({
+      color: isSelected ? 0xf0bc45 : 0xf6ead2,
+      width: isSelected ? 3 : 2,
+      alpha: isActive || isSelected ? 0.82 : 0.34,
+    });
+  shape
+    .ellipse(markerX, markerY + markerRadius + 26, 17, 6)
+    .stroke({
+      color: isSelected ? 0xf0bc45 : 0xf6ead2,
+      width: isSelected ? 3 : 2,
+      alpha: isActive || isSelected ? 0.78 : 0.28,
+    });
+
+  if (isActive || isSelected) {
+    const corner = Math.min(74, width * 0.22, height * 0.22);
+    const traceColor = isSelected ? 0xf0bc45 : 0xf6ead2;
+    const traceAlpha = isSelected ? 0.86 : 0.62;
+    const traceWidth = isSelected ? 5 : 4;
+    shape.moveTo(x, y + corner).lineTo(x, y).lineTo(x + corner, y)
+      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
+    shape.moveTo(x + width - corner, y).lineTo(x + width, y).lineTo(x + width, y + corner)
+      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
+    shape.moveTo(x + width, y + height - corner).lineTo(x + width, y + height).lineTo(x + width - corner, y + height)
+      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
+    shape.moveTo(x + corner, y + height).lineTo(x, y + height).lineTo(x, y + height - corner)
+      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
+  }
+
+  if (showReviewOverlay) {
+    shape.roundRect(x, y, width, height, 10)
+      .fill({ color: 0xf5e5c3, alpha: 0.08 })
+      .stroke({ color: 0xe28e54, width: 3, alpha: 0.78 });
+  }
+
+  label.visible = showReviewOverlay;
+  label.text = target.title;
+  label.style.fill = "#f8ecd4";
+  label.x = x + 16;
+  label.y = y + 14;
+  if (showReviewOverlay) {
+    const labelPaddingX = 12;
+    const labelPaddingY = 7;
+    shape.roundRect(
+      label.x - labelPaddingX,
+      label.y - labelPaddingY,
+      label.width + labelPaddingX * 2,
+      label.height + labelPaddingY * 2,
+      4,
+    )
+      .fill({ color: 0x202424, alpha: 0.88 })
+      .stroke({ color: 0xf5e5c3, width: 2, alpha: 0.68 });
+  }
 }
 
 function clamp(value, min, max) {

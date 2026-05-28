@@ -1,192 +1,180 @@
 # Current Execution Brief
 
-Status: Active docs-only visual integration planning brief  
+Status: Active implementation brief  
 Date: 2026-05-28  
-Purpose: Canonical next-task handoff for planning the next visual-integration implementation batch after the narrow placeholder prototype scaffold.
+Authorized task: Phase 6.1 Constrained Raster Prototype Integration
 
-This file is operational only. It is the canonical source for Codex's next executable task. It does not replace `AGENTS.md`, `docs/PLAN.md`, `docs/TASKS.md`, `docs/DECISION_LOG.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/AGENTIC_TOOLING.md`, or `docs/ARCHITECTURE.md`.
+This file is the single executable source of truth for Codex's next task. Supporting docs may provide context, but Codex must be able to execute Phase 6.1 from this file alone.
 
-## Operating Handoff
+## Authorized Task
 
-Workflow:
+Phase 6.1 Constrained Raster Prototype Integration.
 
-1. Codex produces an output packet from this brief.
-2. Batu pastes the Codex report and relevant artifacts into ChatGPT.
-3. ChatGPT critiques the output, supports Batu's decision, and writes or updates this brief.
-4. Codex reads this brief.
-5. Codex executes only this brief.
-6. Repeat.
+## Goal
 
-Codex must not infer, continue, or expand work from prior chat context when this brief exists. If older docs, historical artifact packets, or previous chat context imply a different next action, Codex should treat this brief as controlling for execution and report the contradiction rather than resolving it by momentum.
+Update the existing interactive prototype so its primary world surface uses one approved Phase 6 raster proof image, while preserving existing pan, zoom, hover, click, tap, selected-card, and mobile containment behavior.
 
-Batu owns creative direction, product direction, public representation, public module/interface approval, and gate changes. ChatGPT owns critique, decision-support framing, and next-brief authoring. Codex owns execution of this brief only.
+This is a constrained review-only prototype integration batch. It is not production asset work, a production asset pipeline, broad Greenpoint coverage, real-place-card work, architecture expansion, a new renderer, routing, backend/CMS/persistence/analytics/deployment work, or public-interface approval.
 
-## Current Decision State
+## Primary Raster
 
-The narrow prototype setup batch is approved as a placeholder interaction scaffold.
+Use this raster plate unless blocked:
 
-This approval means:
+- `docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/ui-integrated-recombination-v1.png`
 
-- The minimal React + Vite + PixiJS/canvas scaffold is acceptable as an interaction proof.
-- The placeholder authored scene is acceptable as schematic plumbing only.
-- The bounded pan/zoom, hover/click/tap selected-state card, and basic mobile containment are accepted as smoke-test interaction evidence.
+Fallback only if the primary is too busy or cannot support interaction alignment:
 
-This approval does not mean:
+- `docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png`
 
-- The prototype is approved as visual-direction-in-app evidence.
-- The placeholder screenshots validate art direction.
-- Production assets are approved.
-- A production asset pipeline is approved.
-- Real-place cards, factual copy, exact facades, exact addresses, exact station geometry, live data, final public interfaces, CI, deployment, or production scalability/buildability are approved.
+## Allowed Files To Change
 
-The screenshots from the narrow prototype setup batch are smoke-test evidence only. They are not art-direction validation and must not be used to claim the approved Phase 4 Inked Indie / Compact Corner direction is working in-app.
+Source/app files:
 
-Approved visual direction remains:
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/placeholderScene.js`
+- `src/styles.css`
 
-- Inked Indie / Compact Corner.
-- Fictional-safe storefront identity.
-- Integrated paper/card UI direction as a visual direction, with later product and interaction refinement still required.
-- High-fidelity raster, storefront-led, Greenpoint-inspired isometric street-slice language shown in the Phase 4 proof.
+Asset-copy allowance:
 
-Phase 4.5 Reusable-System Scalability Proof remains supporting evidence only. It does not approve production scalability, production buildability, production assets, production asset pipeline, real-place representation, or live data.
+- Copy exactly one Phase 6 generated PNG into `src/assets/review-only/` if the app needs a served local raster asset.
+- Do not move, overwrite, or edit the original Phase 6 generated image.
+- Label the copied asset as review-only in implementation notes or a concise nearby code comment if useful.
 
-## Current Task
+Review screenshots:
 
-Create a docs-only Visual Integration Prototype Planning Brief.
+- Create screenshots only under `docs/review-screenshots/phase-6-1-constrained-raster-prototype-integration/`.
 
-Purpose:
+## Files Off-Limits
 
-Define how the next implementation batch should raise the in-app scene from schematic placeholder fidelity toward the approved Phase 4 Inked Indie / Compact Corner direction, without approving production assets or real-place cards.
+Do not modify:
 
-Authorized scope:
+- package files
+- build/config/CI files
+- backend/CMS/persistence/analytics/deployment files
+- `docs/approved-reference-corpus/`
+- original Phase 6 proof files or generated images
+- `docs/archive/`
+- generated images outside the allowed copied review-only app asset
+- screenshots outside the new Phase 6.1 review-screenshot folder
 
-- Modify documentation only.
-- Create or update a planning brief that defines the next visual-integration implementation batch.
-- Specify temporary visual-integration asset rules.
-- Specify how existing Phase 4 and Phase 4.5 review images may be referenced visually without being imported as production assets.
-- Specify where durable screenshots from the future visual-integration batch should be saved.
-- Specify how temporary assets must be labeled as non-production.
-- Specify the visual fidelity bar future in-app screenshots must meet.
-- Specify which interaction behaviors from the placeholder scaffold must be preserved.
-- Preserve all blocked production, truth, architecture, and deployment gates.
+Do not stage or commit.
 
-This brief authorizes planning only. It does not authorize implementation changes, asset creation, image generation, production asset work, real-place cards, factual copy, source verification, live data, CI, deployment, routing, broad map coverage, persistence, or public-interface design.
+## Implementation Requirements
 
-## Expected Planning Brief Contents
+- Use the selected raster as the primary world surface.
+- Do not draw storefronts, facades, awnings, sign bands, props, sidewalk/curb texture, or primary world art with SVG, CSS, DOM, canvas, or primitive code shapes.
+- Preserve existing pan, zoom, hover, click, tap, selected-card, and mobile containment behavior.
+- Define 3-5 fictional-safe interactive targets aligned to visible storefront areas in the raster.
+- Use fictional placeholder place labels only.
+- Do not introduce real businesses, exact addresses, factual place copy, exact facades, exact station geometry, live data, or real-place cards.
+- Implement or preserve selected marker, selected building treatment, tether/card attachment, compact place card, compact controls, and optional compact place index.
+- Keep product-facing UI aligned with the approved Inked Indie / Compact Corner paper-card direction.
+- Keep QA/review-only labels visually secondary and separate from normal UI.
+- Do not create a production asset pipeline, public module/interface contract, real data system, new renderer, routing, backend, CMS, persistence, analytics, deployment, or broad map coverage.
 
-The docs-only planning brief must include:
+## Visual Alignment Rules
 
-- Decision recorded: the narrow placeholder prototype scaffold is approved only as an interaction scaffold.
-- Visual evidence boundary: the scaffold screenshots are smoke-test evidence only and not art-direction validation.
-- Temporary asset allowance: what kinds of temporary visual-integration assets a later implementation batch may use.
-- Review-image reference rule: Phase 4 and Phase 4.5 images may be referenced visually for comparison, but may not be imported into the app as production or prototype assets unless a later brief explicitly approves a non-production reference workflow.
-- Durable screenshot location: where future visual-integration screenshots should be saved for review.
-- Non-production labeling rule: temporary assets and screenshots must be labeled clearly as non-production and review-only.
-- Future screenshot fidelity bar: what the next in-app screenshots must show to support Batu/ChatGPT review.
-- Interaction preservation rule: which scaffold behaviors must remain working while visual fidelity is raised.
-- Blocked scope list: production assets, production asset pipeline, real-place cards, factual copy, final public interfaces, live data, CI, deployment, production scalability/buildability, and other blocked areas remain blocked.
-- Acceptance criteria for the future implementation batch, without implementing that batch now.
+Preserve:
 
-## Temporary Visual-Integration Asset Rules To Specify
+- Inked Indie hand-inked linework from the raster.
+- Controlled hatching and local street texture.
+- Muted warm palette with brick, dark green, ochre, muted red, charcoal ink, worn paper, and restrained blue accents.
+- Storefront specificity and readable density.
+- Product-facing selected marker hierarchy.
+- Selected treatment attached to a visible storefront target.
+- Slim tether/card connection.
+- Paper/card UI integration without drifting into Phase 5.2 beige QA-harness styling.
 
-The planning brief should recommend temporary assets that are visibly closer to the approved direction while remaining non-production. Acceptable categories to define for later approval may include:
+## Public Interfaces And Module Boundaries
 
-- Hand-authored rough raster or canvas-drawn storefront pieces used only as temporary integration materials.
-- Simplified texture, ink-line, shadow, facade, awning, sign-shape, prop, and paper/card UI treatments that are clearly marked review-only.
-- Fictional-safe storefront identities with invented names or non-word marks only if a later implementation brief explicitly allows readable placeholder text.
-- No real business names, exact addresses, factual claims, exact real facades, exact station geometry, or active-business copy.
+No public interfaces or module boundaries should change.
 
-The planning brief must state that temporary visual-integration assets are not production assets, not production asset direction approval, and not proof of production scalability/buildability.
+Small internal edits to existing placeholder scene data are allowed only if they remain private to this review-only prototype and do not claim production data status.
 
-## Screenshot And Artifact Location Rules To Specify
+Stop before implementation if a public interface, new data contract, new renderer boundary, new asset-loading abstraction, package change, or build/config change appears necessary.
 
-The planning brief must define a durable review location for future screenshots, for example:
+## Preflight Before Coding
 
-- `docs/review-screenshots/visual-integration-prototype/`
+Before editing source/app files, state:
 
-The planning brief should require future screenshots to include at minimum:
+- whether public interfaces or module boundaries will change; expected answer is none
+- files expected to be touched
+- feedback loop and screenshot evidence to verify the change
+- decisions still reserved for Batu
 
-- Desktop selected-state view.
-- Desktop hover or focus affordance view.
-- Mobile selected-state containment view.
-- One pan/zoom stress view if relevant to the batch.
+## Screenshot Evidence
 
-Do not create this folder or any screenshots in the docs-only planning batch unless the planning brief explicitly chooses to create only a markdown document. This current task should not create visual assets or generated images.
+Start or use the existing local dev server if needed.
 
-## Future Visual Fidelity Bar To Specify
+Capture these review screenshots:
 
-The planning brief must define the minimum review bar for the next in-app screenshots:
+- desktop default overview
+- desktop hover/focus state
+- desktop selected card state
+- mobile selected-state containment
+- pan/zoom stress view
 
-- The scene should read as an in-app step toward Inked Indie / Compact Corner rather than a schematic blockout.
-- Storefront massing, inked outlines, color relationships, paper/card integration, prop density, and selected-state treatment should be decision-relevant.
-- The scene may remain temporary and fictional-safe, but Batu should be able to judge whether the approved Phase 4 direction can begin to survive inside the actual app surface.
-- The output must not claim final art direction validation, production asset approval, or production buildability.
+Save screenshots under:
 
-## Interaction Behaviors To Preserve
-
-The planning brief must require the future implementation batch to preserve:
-
-- Existing local app run path.
-- Placeholder/static/local data only.
-- Desktop hover affordance on one target.
-- Desktop click selection.
-- Touch/tap selection on a mobile-sized viewport.
-- One selected-state card that opens from the target.
-- Close or deselect behavior.
-- Bounded pan.
-- Bounded zoom.
-- Basic mobile containment.
-- No blocking console/runtime errors.
+- `docs/review-screenshots/phase-6-1-constrained-raster-prototype-integration/`
 
 ## Verification Requirements
 
-For this docs-only planning batch:
+Run the fastest available app check. If no formal test/lint command exists or dependencies are unavailable, report that clearly.
 
-- Do not modify implementation files.
-- Do not create assets.
-- Do not generate images.
-- Do not stage historical visual-artifact folders unless explicitly required.
-- Run `git status --short`.
-- Run `git diff --stat`.
-- Confirm the diff is documentation-only.
+Before final response, run:
 
-## Acceptance Criteria
+- `git diff --stat`
+- `git status --short`
 
-The docs-only planning batch is complete only if:
+Confirm:
 
-- `docs/CURRENT_EXECUTION_BRIEF.md` records the scaffold decision and its limits.
-- The next executable task is a docs-only Visual Integration Prototype Planning Brief.
-- The planning requirements cover temporary assets, review-image reference rules, durable screenshot location, non-production labeling, visual fidelity bar, preserved interactions, and blocked scope.
-- No implementation files are modified.
-- No assets are created.
-- No images are generated.
-- No historical visual-artifact folders are staged.
-- `git status --short` and `git diff --stat` are reported.
+- existing interactions were preserved
+- the primary visual world surface is the selected Phase 6 raster
+- no SVG/CSS/DOM/canvas/code-drawn storefront or primary world art was introduced
+- only allowed files were changed
+- no approved corpus files, original Phase 6 images, archived folders, package files, build/config/CI files, backend/CMS/persistence/analytics/deployment files were modified
+- no staging or commit occurred
 
 ## Stop Conditions
 
-Stop and ask Batu before:
+Stop and report if:
 
-- Modifying implementation files.
-- Creating visual assets or generated images.
-- Importing Phase 4 or Phase 4.5 review images into the app.
-- Treating review images as production or prototype assets.
-- Creating production assets, production asset direction, or a production asset pipeline.
-- Creating real-place cards, factual copy, exact real facades, exact addresses, exact station geometry, or live data.
-- Creating public interfaces, formal schemas, broad architecture layers, or speculative abstractions.
-- Adding routing, avatars, NPCs, interiors, quests, CMS, persistence, accounts, user submissions, broad map coverage, backend services, CI, deployment, analytics, or live data.
-- Claiming production scalability, production buildability, final architecture approval, production asset approval, visual-direction-in-app approval, or public-interface approval.
-- Changing creative direction, product scope, public representation policy, or source-of-truth order.
+- The Phase 6 raster image cannot be found.
+- The raster cannot be loaded without package/build/config changes.
+- Existing interactions cannot be preserved within the allowed files.
+- Alignment would require code-drawn storefronts or primary world art.
+- A public-interface/module-boundary change appears necessary.
+- The implementation would require package/build/config/CI changes, a new renderer, routing, live data, backend, CMS, persistence, analytics, deployment, real business data, exact addresses, factual card copy, exact facades, or exact station geometry.
+- The normal UI would drift toward Phase 5.2 beige QA-harness styling.
+- More than one Phase 6 generated PNG would need to be copied into app assets.
 
-## Report-Back Format
+## Acceptance Criteria
 
-Report back with:
+The batch is complete only if:
 
-- Files modified.
-- Decision recorded.
-- Summary of the next visual-integration planning brief.
-- What remains blocked.
-- `git status --short`.
-- `git diff --stat`.
-- Whether any stop condition was triggered.
-- Exact current next action.
+- The prototype uses one Phase 6 raster as the primary visual world surface.
+- Existing pan/zoom and pointer/touch interaction behavior is preserved.
+- 3-5 fictional-safe targets can be hovered/focused/selected.
+- Selected state includes marker, selected treatment, tether, and card attachment.
+- The place card uses fictional placeholder content only.
+- Compact controls and optional place index are product-facing, not QA-harness styled.
+- Desktop and mobile compositions remain contained and readable.
+- Required screenshots are saved.
+- Verification requirements are complete and reported.
+
+## Final Response Required
+
+Report:
+
+- files changed
+- copied raster asset path, if any
+- screenshots created
+- verification performed
+- confirmation that existing interactions were preserved
+- confirmation that no off-limits files were modified
+- `git diff --stat`
+- `git status --short`
+- no commit
+- no staging
