@@ -6,9 +6,9 @@ Project: Greenpoint Isometric Explorer
 
 ## Project Status
 
-The project has an approved visual direction and remains pre-implementation.
+The project has an approved visual direction and remains pre-production.
 
-No app implementation exists yet. Do not initialize React, Vite, PixiJS, Three.js, package tooling, source folders, or build configuration until a current execution brief explicitly opens the architecture/prototype gate and the required architecture boundaries and public interfaces are documented and reviewed.
+Prototype implementation may proceed only when `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens that scope. Do not initialize new frameworks, package tooling, source folders, build configuration, map systems, or production architecture unless the current brief explicitly authorizes them and the required architecture boundaries and public interfaces are documented and reviewed.
 
 ## Creative Authority Model
 
@@ -85,18 +85,43 @@ If the batch does not change public interfaces or module boundaries, say that ex
 ## Visual Governance
 
 - Final visual direction is approved: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 visual proof and supported by the Phase 4.5 reusable-system scalability proof.
-- This approval is visual-direction approval only. It does not approve production assets, production asset direction, production asset pipeline, app implementation, architecture boundaries, public interfaces, real-place cards, exact real facades, exact addresses, exact station geometry, factual card copy, live data, or deployment.
+- This approval is visual-direction approval only. It does not approve production assets, production asset direction, production asset pipeline, architecture boundaries, public interfaces, real-place cards, exact real facades, exact addresses, exact station geometry, factual card copy, live data, or deployment.
 - Current lead directions, test paths, and next tasks must be read from `docs/CURRENT_EXECUTION_BRIEF.md` and current project-state docs; older visual territories remain historical unless Batu/ChatGPT explicitly reactivates them in the current brief.
 - Do not introduce new visual metaphors, palettes, marker systems, card styles, UI styles, or production visual language without Batu approval.
 - Unapproved visual directions must be labeled as unapproved, exploratory, or historical.
 - Lo-fi artifacts are decision aids only; they are not final art.
 - Visual artifacts exist to enable Batu's creative decisions, not checklist completion.
 - A visual artifact passes only if Batu can make the intended decision from the artifact itself without mentally imagining missing fidelity, storefront detail, UI detail, or emotional tone.
-- Visual Artifact Fidelity Gate: Codex must match artifact format to the decision stage. SVG, ASCII, and markdown diagrams are acceptable for blockouts, composition planning, and governance review. High-fidelity visual-direction decisions require raster PNG/JPG artifacts. SVG-only output is invalid for style frames, raster production proofs, final visual-direction candidates, or art-direction approval artifacts unless Batu explicitly requests SVG. Constraint checklist compliance is not enough if the artifact format is wrong.
-- Before generating any future visual artifact, Codex must state the intended artifact class, the decision it supports, the required output format, why that format fits the decision, and whether SVG is allowed or disallowed for the task.
 - Visual variants must be materially different in decision-relevant ways, not only color swaps or minor decoration changes.
 - Codex must self-audit visual artifacts against `docs/VISUAL_ARTIFACT_STANDARDS.md` before delivery.
 - If the self-audit fails, Codex must revise the artifact before reporting the batch complete.
+
+## Visual Artifact Fidelity Gate
+
+Codex must match artifact format to the decision stage.
+
+- SVG, ASCII, and markdown diagrams are acceptable for blockouts, composition planning, and governance review.
+- High-fidelity visual-direction decisions require raster PNG/JPG artifacts.
+- SVG-only output is invalid for style frames, raster production proofs, final visual-direction candidates, or art-direction approval artifacts unless Batu explicitly requests SVG.
+- Constraint checklist compliance is not enough if the artifact format is wrong.
+- Before generating any future visual artifact, Codex must state the intended artifact class, the decision it supports, the required output format, why that format fits the decision, and whether SVG is allowed or disallowed for the task.
+
+## Visual Asset Responsibility Rule
+
+Codex must not create primary art-direction evidence or primary browsable world surfaces through SVG, canvas, CSS illustration, emoji, icon assemblage, DOM drawing, or primitive code-drawn scene art.
+
+For any task where visual fidelity materially affects acceptance, Codex must use a supplied raster/reference asset as the primary visual surface. Codex may wire visuals into the prototype, but it may not invent the primary visual world surface.
+
+If no suitable raster/reference asset exists at the path required by the current brief, Codex must stop before implementation and report:
+
+- The missing asset.
+- The expected path and filename.
+- The required dimensions or aspect ratio, if known.
+- How the asset will be integrated once supplied.
+
+Codex may create interaction overlays, hotspot regions, labels, cards, layout chrome, and responsive behavior around a supplied visual asset. Codex may not replace a missing raster/reference asset with SVG, canvas, CSS, DOM-drawn storefronts, or other code-generated scene art.
+
+Review-only raster assets must be labeled non-production and must not be described as production assets, factual Greenpoint representations, exact facades, exact addresses, or approved production asset direction.
 
 ## Engineering Governance
 
@@ -118,10 +143,10 @@ If the batch does not change public interfaces or module boundaries, say that ex
 ## Current Hard Gates
 
 - The static style-frame and final visual-direction gates are cleared.
-- No React/Vite/Pixi implementation, Three.js implementation, package tooling, source folders, build configuration, app implementation, or map implementation until a current execution brief explicitly opens that implementation scope and the architecture boundaries and public interfaces are documented and reviewed.
-- No map implementation until architecture boundaries and public interfaces are approved.
-- No public module/interface implementation until the proposed boundary and interface are documented and reviewed.
+- Prototype implementation is allowed only inside the scope explicitly opened by `docs/CURRENT_EXECUTION_BRIEF.md`.
+- No new framework, renderer, map system, routing system, package tooling, architecture boundary, or public module/interface may be introduced unless the current brief explicitly opens that scope and the proposed boundary/interface is documented and reviewed.
 - No production visual assets, production asset pipeline, or production asset direction until Batu explicitly approves them in a later review.
+- No production map implementation, real-place system, exact-address system, factual place-copy system, live data, backend service, CMS, persistence, accounts, analytics, CI, deployment, or broad coverage until a later brief explicitly opens that scope.
 - No visual production work may treat Community Pixel Storefront, or any older territory, as approved final direction.
 
 ## Source Of Truth Order

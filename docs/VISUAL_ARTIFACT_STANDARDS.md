@@ -23,9 +23,9 @@ High-fidelity visual-direction decisions require raster PNG/JPG artifacts. SVG-o
 
 Constraint checklist compliance is not enough if the artifact format is wrong.
 
-## Current Raster Fidelity Reference
+## Current Evidence Stack
 
-The current approved visual-direction reference is the Phase 4 fictional-safe storefront identity + UI integration proof, supported by the Phase 4.5 reusable-system scalability proof:
+The approved visual direction is still anchored by the Phase 4 fictional-safe storefront identity + UI integration proof, supported by the Phase 4.5 reusable-system scalability proof:
 
 - `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png`
 - `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/integrated-hover-card-pressure.png`
@@ -41,6 +41,8 @@ Current verdict:
 - Visual direction is approved: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Phase 4 is complete.
 - Phase 4.5 makes the reusable storefront system appear promising at small proof scale.
+- `docs/approved-reference-corpus/` is the active visual reference source for future visual, prototype, and assetization work.
+- `docs/visual-artifacts/phase-6-repeatable-assetization-proof/` is the active review-only repeatable assetization proof for reusable system logic.
 - These proofs remain non-production and do not approve production assets, production asset direction, production asset pipeline, implementation, architecture, public interfaces, real-place cards, or production scalability/buildability.
 - Main caveats: sign-band repetition, accidental brand-like glyphs, prop repetition, UI weight, generated micro-text, real-place truth, and production burden.
 
@@ -49,6 +51,10 @@ Hard rule:
 Technical-art proofs fail if their visual fidelity drops below the latest approved/recovered raster reference for the decision being tested.
 
 If forced to choose between clearer diagramming and maintaining the prior approved/recovered raster fidelity, preserve raster fidelity and communicate structure another way, such as rendered crops, contact sheets, restrained annotations, or companion Markdown. Clarity must not come from flattening the art below the current raster bar.
+
+Prototype translation rule:
+
+Future prototype work must use approved raster/reference assets or extracted/recombined Phase 6 asset-kit logic as its visual basis. SVG, CSS, DOM, canvas, or other code-drawn scene art may support overlays, hit regions, labels, cards, and interaction chrome only when the current brief allows it; it must not replace missing primary world evidence.
 
 ## Visual Fidelity Ladder
 

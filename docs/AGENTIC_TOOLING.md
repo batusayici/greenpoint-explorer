@@ -24,6 +24,14 @@ Current approved tooling:
 
 The canonical handoff loop is defined in `AGENTS.md`: Codex produces an output packet, Batu brings it to ChatGPT, ChatGPT critiques and writes/updates the current brief, and Codex executes only that brief. `docs/CURRENT_EXECUTION_BRIEF.md` should stay concise and operational; it does not replace the policy, phase-state, task-tracking, or tooling-limit docs.
 
+Anti-drift guardrail:
+
+- `docs/CURRENT_EXECUTION_BRIEF.md` defines executable work.
+- `docs/PLAN.md` defines phase orientation and gate context, not task authorization.
+- Archived artifacts under `docs/archive/` are reference/history only unless explicitly promoted in a later current brief.
+- Visual decision evidence must be concrete visual artifacts, not prose claims.
+- No production claims should be made until the app demonstrates the behavior under an approved implementation brief and feedback loop.
+
 ## Allowed Preproduction Use
 
 Agents may use approved tooling to:
@@ -77,6 +85,8 @@ Agents must not use tooling to:
 - Create implementation-oriented skills before implementation gates clear.
 - Install a broad plugin stack or add plugins without Batu approval.
 - Treat Community Pixel Storefront, Batch 8 artifacts, or any older visual territory as final direction or as the active next task unless reactivated in `docs/CURRENT_EXECUTION_BRIEF.md`.
+- Treat archived visual artifacts or screenshots as current execution authority unless a later current brief explicitly promotes them.
+- Use SVG/code-drawn scene art as a substitute for approved raster/reference evidence in prototype or visual-decision work.
 
 ## Skills And Plugins Governance
 

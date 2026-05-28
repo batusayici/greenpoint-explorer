@@ -30,13 +30,16 @@ Latest visual proof state:
 
 - Phase 4 is complete and is the visual-direction approval proof.
 - Phase 4.5 is supporting scalability evidence.
+- The approved reference corpus in `docs/approved-reference-corpus/` is now the active visual reference source for future visual, prototype, and assetization work.
+- The active Phase 6 package in `docs/visual-artifacts/phase-6-repeatable-assetization-proof/` is a review-only repeatable assetization proof. Its next use is review and prototype translation planning, not production asset approval.
+- Historical visual-artifact and review-screenshot folders under `docs/archive/` are preserved reference/history only and are not current execution authority.
 - Fictional-safe storefront identity restores personality without real business names, addresses, factual card copy, exact facades, or exact station geometry.
 - The reusable storefront system appears promising at small proof scale, with unresolved production risks around sign-band repetition, accidental brand-like glyphs, prop repetition, and production burden.
 - The integrated paper/card UI direction is approved as a visual direction, but product behavior, interaction details, card content hierarchy, and implementation remain unresolved.
 
 Use `docs/PLAN.md` for current phase/gate orientation and `docs/CURRENT_EXECUTION_BRIEF.md` for Codex's next executable task.
 
-React/Vite/Pixi implementation remains blocked until Batu explicitly opens the architecture/prototype gate and architecture boundaries/public interfaces are documented and reviewed.
+Prototype implementation remains blocked until Batu explicitly opens that scope through `docs/CURRENT_EXECUTION_BRIEF.md` and any needed architecture boundaries/public interfaces are documented and reviewed.
 
 ## Visual Exploration Rules
 
@@ -171,7 +174,7 @@ These artifacts are allowed before final static style-frame production. They are
 
 Current gate:
 
-> Visual direction is approved. The next gate is architecture/prototype setup, but it remains blocked until a later current execution brief explicitly opens architecture planning and documents public-interface/module-boundary review.
+> Visual direction is approved. The next gate is Phase 6 review and prototype translation planning: determine which repeatable assetization rules can safely inform a constrained prototype implementation brief. Source/app implementation remains blocked until a later current execution brief explicitly opens that scope and documents any required public-interface/module-boundary review.
 
 This approval does not authorize app implementation, production asset creation, a production asset pipeline, architecture setup, tooling, public interfaces, real-place cards, exact addresses, exact Greenpoint facades, station geometry, or factual card copy.
 
@@ -708,8 +711,8 @@ Purpose:
 - Prove screenshot appeal.
 - Establish world/UI balance.
 
-Historical approval gate:
+Historical approval gate at the time:
 
 - Batu must approve the visual direction and static style-frame composition before Codex creates the frame.
 - The style-frame composition approval must be supported by at least one lo-fi exploratory visual artifact or reference board clearly labeled "lo-fi / exploratory / not final."
-- React/Vite/Pixi implementation remains blocked until Batu explicitly opens the architecture/prototype gate and architecture boundaries/public interfaces are documented and reviewed.
+- This historical gate is now superseded by the current state near the top of this document: visual direction is approved, Phase 6 review/prototype translation planning is the next step, and source/app implementation remains blocked until a later current brief explicitly opens it.
