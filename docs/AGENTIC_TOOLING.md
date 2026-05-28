@@ -1,7 +1,7 @@
 # Agentic Tooling
 
 Status: Active tooling policy  
-Date: 2026-05-26  
+Date: 2026-05-28
 Creative direction owner: Batu  
 Implementation owner: Codex
 
@@ -16,20 +16,24 @@ Agentic tooling does not approve creative direction, product behavior, public in
 Current approved tooling:
 
 - `AGENTS.md` governance and source-of-truth order.
+- `docs/CURRENT_EXECUTION_BRIEF.md` as the canonical source for Codex's next executable task.
 - Plan Mode for audits, strategy, and visual-test planning.
 - Small docs/artifact batches.
 - `docs/DECISION_LOG.md` for meaningful design and technical choices.
 - This document as the detailed policy for agentic tooling.
+
+The canonical handoff loop is defined in `AGENTS.md`: Codex produces an output packet, Batu brings it to ChatGPT, ChatGPT critiques and writes/updates the current brief, and Codex executes only that brief. `docs/CURRENT_EXECUTION_BRIEF.md` should stay concise and operational; it does not replace the policy, phase-state, task-tracking, or tooling-limit docs.
 
 ## Allowed Preproduction Use
 
 Agents may use approved tooling to:
 
 - Audit current docs for drift, contradictions, and unresolved requirements.
-- Frame options and tradeoffs for Batu review.
+- Frame options and tradeoffs when the current execution brief asks for them.
 - Draft or update decision-log entries after approval.
 - Maintain reference discipline and flag unsupported claims.
 - Define acceptance criteria for docs-only and lo-fi artifact batches.
+- Preflight visual artifact work by stating the intended artifact class, supported decision, required output format, format rationale, and whether SVG is allowed.
 - Summarize what changed, what did not change, verification results, and remaining review items.
 
 ## Agentic Game-Dev Operating Model
@@ -53,6 +57,8 @@ Use this checklist before reporting an agentic docs, planning, or visual-preprod
 - Confirm no approved visual direction, final style, production asset path, or implementation gate is claimed prematurely.
 - Confirm no out-of-scope systems were introduced into MVP scope.
 - Confirm referenced visual artifacts exist before citing them as evidence.
+- Confirm every visual artifact's format matches its decision stage: SVG/ASCII/markdown for diagrams and blockouts only; PNG/JPG for high-fidelity style frames, raster production proofs, final visual-direction candidates, and art-direction approval artifacts unless Batu explicitly requests SVG.
+- Confirm checklist compliance is not used to pass an artifact whose format is invalid for the intended decision.
 - Confirm location truth, rendering responsibilities, UI cards, and markers remain separated.
 - Confirm every adopted game-dev practice has a project-specific reason for this web-first, map-mode-only diorama prototype.
 - Confirm deferred or rejected practices remain parked, blocked, or clearly labeled as future-only.
@@ -64,10 +70,13 @@ Agents must not use tooling to:
 - Approve visual direction or production visual language.
 - Make product decisions or public-interface decisions.
 - Define final architecture boundaries without review.
+- Infer or continue work from prior chat context when `docs/CURRENT_EXECUTION_BRIEF.md` exists.
+- Decide the next phase or rewrite the next task outside the ChatGPT-authored brief workflow.
+- Submit SVG-only output as a style frame, raster production proof, final visual-direction candidate, or art-direction approval artifact unless Batu explicitly requests SVG for that purpose.
 - Create app scaffolding, package tooling, React, Vite, PixiJS, source folders, or build configuration before gates clear.
 - Create implementation-oriented skills before implementation gates clear.
 - Install a broad plugin stack or add plugins without Batu approval.
-- Treat Community Pixel Storefront, Batch 8 artifacts, or any older visual territory as final direction.
+- Treat Community Pixel Storefront, Batch 8 artifacts, or any older visual territory as final direction or as the active next task unless reactivated in `docs/CURRENT_EXECUTION_BRIEF.md`.
 
 ## Skills And Plugins Governance
 

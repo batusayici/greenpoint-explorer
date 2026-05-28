@@ -138,9 +138,9 @@ Practical read:
 
 ## Creative Direction Protocol
 
-Batu owns taste. Codex owns production proposals and implementation.
+Batu owns taste and creative/product decisions. ChatGPT owns critique, decision-support framing, and next-brief authoring under the workflow defined in `AGENTS.md`. Codex owns execution of the current brief.
 
-Codex must not make autonomous final visual language decisions. For any meaningful visual decision, Codex should present options, explain tradeoffs, recommend when useful, and wait for Batu approval before implementation.
+Codex must not make autonomous final visual language decisions. For any meaningful visual decision, Codex should present options, explain tradeoffs, or recommend only when the current brief asks for that work, then wait for Batu/ChatGPT review before further execution.
 
 For meaningful visual decisions, Codex must provide low-fidelity visual material before requesting approval when a rough artifact can clarify the choice. Prose-only approval is not enough for visual taste decisions when a visible comparison can be made.
 

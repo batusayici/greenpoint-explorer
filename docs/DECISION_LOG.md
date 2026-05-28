@@ -1,5 +1,262 @@
 # Decision Log
 
+## 2026-05-28 - Codex / ChatGPT / Batu Handoff Workflow Aligned
+
+Decision:
+- Adopted `docs/CURRENT_EXECUTION_BRIEF.md` as the canonical source for Codex's next executable task.
+- Consolidated the operating loop in `AGENTS.md`: Codex produces an output packet, Batu brings the report and relevant artifacts to ChatGPT, ChatGPT critiques and writes or updates the current brief, Codex reads the brief, and Codex executes only that brief.
+- Clarified that Codex must not infer, continue, or expand work from prior chat context when a current brief exists.
+- Clarified authority boundaries:
+  - Batu owns creative and product decisions.
+  - ChatGPT owns critique, decision-support framing, and next-brief authoring.
+  - Codex owns execution of the current brief only.
+- Updated short references in process docs instead of duplicating the full workflow everywhere.
+- Kept Phase 3.6 docs-only buildability/scalability planning as the next executable Codex task.
+
+Rationale:
+- The project now uses an explicit Baton pass between Codex execution and ChatGPT critique/briefing.
+- `docs/CURRENT_EXECUTION_BRIEF.md` prevents Codex from advancing by momentum from prior chat, historical task trackers, or stale phase notes.
+- The split preserves Batu's creative/product authority while keeping Codex focused on small, reviewable execution packets.
+
+Constraints preserved:
+- Docs-only.
+- No app/source/package/config/tooling/CI/deployment/public-interface changes.
+- No generated images.
+- No production asset changes.
+- No commit.
+- No final visual-direction, production-buildability, implementation, real-place-card, or exact real-place-geometry approval.
+
+Owner:
+- Creative and product decisions: Batu
+- Critique, decision support, and next-brief authoring: ChatGPT
+- Current-brief execution and documentation alignment: Codex
+
+Status:
+- Active workflow / Phase 3.6 remains the current executable brief / no implementation approval
+
+## 2026-05-27 - Phase 3.5 Production-System Proof Defined For Review
+
+Decision:
+- Defined `docs/visual-artifacts/phase-3-5-production-system-proof/README.md` as the Phase 3.5 production-system proof plan for the Inked Indie / Compact Corner direction.
+- The proof plan documents facade module rules, storefront bay construction rules, signage types, awning/window/door/roll-gate variants, prop categories, marker/card rules, texture and linework rules, density limits, truth-handling rules, and constraints against exact real-place claims.
+- The proof plan proposes 3 smaller derivative storefront examples: Narrow Fictional Service Bay, Two-Bay Fictional Retail Pair, and Symbolic Transit-Edge Micro Corner.
+- No derivative visual artifacts were produced.
+- The next Batu decision is whether this proposed proof is the right test for buildability and scalability.
+- This decision does not approve final visual direction, production visual language, production assets, app implementation, architecture setup, package/build tooling, CI, deployment, public interfaces, real-place cards, exact real-place claims, or exact station geometry claims.
+
+Rationale:
+- Phase 3 passed as static style-frame gate evidence only.
+- A single polished hero frame does not prove that the direction can be repeated as a production system.
+- The next review should test repeatable construction rules and truth handling before any architecture or implementation gate opens.
+
+Owner:
+- Proof-plan review and any buildability/scalability judgment: Batu
+- Proof-plan drafting, documentation sync, and guardrail preservation: Codex
+
+Status:
+- Phase 3.5 proof defined for Batu review / no buildability or scalability approval / no final visual approval / no implementation approval
+
+## 2026-05-27 - Phase 3 Static Style Frame Approved As Gate Evidence Only
+
+Decision:
+- Batu approved `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/inked-indie-compact-corner-style-frame-revision-a.png` as Phase 3 static style-frame gate evidence only.
+- The artifact proves that the Inked Indie / Compact Corner direction has promise as a visual direction for the MVP.
+- The artifact does not prove that the direction can be built, scaled, systematized, or implemented.
+- This approval does not approve final visual direction.
+- This approval does not approve production visual language.
+- This approval does not approve production assets.
+- This approval does not approve app implementation, architecture setup, package/build tooling, CI, deployment, public interfaces, or real-place cards.
+- The next approved batch is a production-system proof for the Inked Indie / Compact Corner direction.
+
+Rationale:
+- Revision A is the first high-fidelity raster PNG/JPG style-frame evidence that satisfies the Phase 3 artifact-format gate.
+- Batu can use it as gate evidence that the direction is promising enough to test as a repeatable visual system.
+- A single polished hero frame is not enough to prove production scalability, repeatable construction rules, derivative storefront handling, or implementation readiness.
+
+Owner:
+- Gate approval and future production-system judgment: Batu
+- Decision recording, next-batch framing, and documentation alignment: Codex
+
+Status:
+- Phase 3 passed as static style-frame gate evidence only / production-system proof approved as next batch / no final visual approval / no implementation approval
+
+## 2026-05-27 - Phase 3 Revision A Raster Style Frame Created
+
+Decision:
+- Revised the Phase 3 Inked Indie / Compact Corner artifact after adding the Visual Artifact Fidelity Gate.
+- The previous SVG is superseded as the primary Phase 3 evidence because it satisfied the checklist but failed as visual-direction evidence: it read as a planning diagram, not a high-fidelity style frame.
+- Created `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/inked-indie-compact-corner-style-frame-revision-a.png` as the primary Phase 3 review artifact.
+- Updated the Phase 3 README, static style-frame spec, and self-audit to identify Revision A as the primary raster artifact.
+- Revision A remains a review artifact only.
+- Final visual direction remains unapproved.
+- App implementation, package tooling, public interfaces, architecture, deployment, production assets, and real-place cards remain blocked.
+
+Rationale:
+- Phase 3 requires a high-fidelity raster PNG/JPG static style frame unless Batu explicitly requests SVG.
+- The decision depends on line quality, texture, storefront personality, isometric map craft, UI/world integration, and emotional tone that cannot be proven by an SVG planning diagram.
+- Revision A is intended to let Batu judge whether Inked Indie / Compact Corner passes Phase 3 visual-direction review.
+
+Owner:
+- Creative review and Phase 3 pass/fail decision: Batu
+- Revision A raster artifact generation, documentation update, and self-audit: Codex
+
+Status:
+- Revision A raster generated / recommended for Batu Phase 3 pass review / no final visual approval / no implementation approval
+
+## 2026-05-27 - Phase 3 Static Style Frame Production Approved And Review Artifact Created
+
+Decision:
+- Batu approved Phase 3 static style-frame production for one Inked Indie frame using Batch 16 `Option 1: Compact Corner Anchor`, as revised with the scored rubric and spatial blockout constraints.
+- This approval is limited to producing one static review artifact.
+- Created `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/`.
+- Created one SVG review artifact: `inked-indie-compact-corner-style-frame.svg`.
+- Added `README.md`, `STATIC_STYLE_FRAME_SPEC.md`, `REVIEW_RUBRIC.md`, and `SELF_AUDIT.md`.
+- The frame uses hybrid real-plus-placeholder representation.
+- Peter Pan and Greenpoint Av G station are treated only as symbolic/exploratory anchors.
+- Final visual direction remains unapproved.
+- Static style-frame approval remains pending Batu review of the produced artifact.
+- App implementation, real-place cards, production assets, public interfaces, architecture, package tooling, build tooling, CI, deployment, and real-place representation remain blocked.
+
+Rationale:
+- Batch 16 established a constrained, decision-grade gate package for one Inked Indie / Compact Corner Anchor static style frame.
+- Batu approved only the production of that review artifact, not broader production or implementation.
+- The produced artifact gives Batu concrete visual evidence to judge map readability, Inked Indie distinctiveness, UI/world hierarchy, truth handling, people/dog/bike/vehicle scale, and MVP usefulness.
+
+Owner:
+- Creative direction, static-frame review, and any Phase 3 exit approval: Batu
+- Review artifact production, documentation, and self-audit: Codex
+
+Status:
+- Phase 3 review artifact generated / self-audited / Batu review pending / no final visual approval / no implementation approval
+
+## 2026-05-27 - Inked Indie Selected As Lead Direction And Batch 16 Gate Brief Created
+
+Decision:
+- Batu selected Inked Indie Graphic Novel as the lead visual direction after reviewing Batch 15 Raster Production Proof.
+- This is a lead-direction selection only. It is not final visual direction approval and not final production approval.
+- Created `docs/visual-artifacts/batch-16-inked-indie-static-style-frame-gate/` as a docs-only planning and decision package.
+- Batch 16 defines the proposed Phase 3 static style-frame target, Inked Indie style rules, three composition options, a decision rubric, and a recommended composition path.
+- Codex recommends `Option 1: Compact Corner Anchor` as the strongest next composition path for one Phase 3 static style frame.
+- Phase 3 Static Style Frame remains blocked until Batu explicitly approves static style-frame production.
+- No final visual direction, production visual language, production assets, real-place cards, app implementation, public interfaces, module boundaries, package tooling, build tooling, CI, deployment, or real-place representation was approved.
+
+Rationale:
+- Batch 15 gave enough high-fidelity raster evidence for Batu to choose Inked Indie as the lead direction while preserving the distinction between lead-direction selection and final production approval.
+- The next useful decision is not to implement or produce assets, but to decide whether one constrained Inked Indie static style frame should be produced under Phase 3.
+- The Phase 2 hybrid real-plus-placeholder outcome still governs the next visual gate, so Peter Pan and the Greenpoint Av G station remain symbolic/exploratory anchors unless separately verified.
+
+Owner:
+- Creative direction, gate approval, and final visual approval: Batu
+- Gate brief, composition options, recommendation, and documentation alignment: Codex
+
+Status:
+- Inked Indie lead direction selected / Batch 16 docs-only gate brief created / Phase 3 blocked pending explicit approval / no implementation approval
+
+## 2026-05-27 - Batch 15 Raster Production Proof Generated
+
+Decision:
+- Generated exactly four high-fidelity raster proof images in `docs/visual-artifacts/batch-15-raster-production-proof/generated/`:
+  - `II-assembled-mini-scene.png`;
+  - `SP-assembled-mini-scene.png`;
+  - `II-life-integration-crop.png`;
+  - `SP-life-integration-crop.png`.
+- Updated the Batch 15 README and artifact plan to reference the actual generated files.
+- Added `REVIEW_GUIDE.md` and `SELF_AUDIT.md`.
+- The four outputs are high-fidelity raster proofs visually comparable to Batch 13, not schematic SVG placeholders.
+- The outputs provide decision-grade evidence for Batu to compare distinctiveness, scalability, people/dog/vehicle handling, UI/world integration, and MVP viability.
+- The documentation does not select a final winner and does not approve final visual direction, production visual language, app implementation, public interfaces, module boundaries, package tooling, build tooling, CI, deployment, or real-place representation.
+
+Rationale:
+- Batch 14's SVGs failed the decision-grade bar because they required Batu to imagine missing raster fidelity.
+- Batch 15 directly tests the production question in finished raster form: whether Inked Indie can preserve its authored richness under product-density pressure and whether Soft Pixel remains a safer scalable path without becoming generic.
+
+Owner:
+- Creative direction, tradeoff judgment, and final decision: Batu
+- Raster evidence generation, review framing, and verification: Codex
+
+Status:
+- Generated raster evidence exists / ready for Batu review / no winner selected / no final visual approval / no implementation approval
+
+## 2026-05-27 - Batch 14 SVG Audit Failed Decision-Grade Bar
+
+Decision:
+- Audited the six Batch 14 generated SVG artifacts against the decision-grade visual bar.
+- Determined that Batu cannot make a real production scalability decision from the SVG artifacts without mentally imagining missing fidelity.
+- Batch 14 preserves broad production-structure questions, but it does not preserve Batch 13 art-direction fidelity, raster texture, atmosphere, material richness, storefront detail, UI integration, or people/dog/vehicle finish.
+- People, dogs, bikes/e-bikes, and vehicles are directionally map-scale, but simplified SVG symbols do not prove finished map-scale readability.
+- The assembled mini-scenes are density diagrams, not visual peers of the Batch 13 hero/development frames.
+- Batch 14 can support preliminary technical/cost hypotheses only. It is schematic/planning-grade, not decision-grade production scalability evidence.
+- Created `docs/visual-artifacts/batch-15-raster-production-proof/` as the required follow-up plan for high-fidelity raster proof.
+- No winner, final visual direction, production visual language, app implementation, public interfaces, module boundaries, package tooling, build tooling, CI, deployment, or real-place representation was approved.
+
+Rationale:
+- The original Batch 14 goal required decision-grade visual evidence. SVG placeholders make reuse logic visible, but avoid the central production-cost question: whether Batch 13-level finished art can be repeated without becoming too bespoke.
+- Batu needs raster artifacts comparable to Batch 13 before deciding whether Inked Indie is worth the added production burden.
+
+Owner:
+- Creative direction and production tradeoff decision: Batu
+- Audit, documentation correction, and Batch 15 planning: Codex
+
+Status:
+- Batch 14 downgraded to schematic/planning-grade evidence / Batch 15 raster proof planned / no final visual approval / no implementation approval
+
+## 2026-05-27 - Batch 14 Production Scalability Visual Evidence Generated
+
+Decision:
+- Generated six SVG visual artifacts in `docs/visual-artifacts/batch-14-production-scalability-spike/generated/`.
+- Generated artifacts:
+  - `II-modular-storefront-sheet.svg`;
+  - `SP-modular-storefront-sheet.svg`;
+  - `II-life-motion-compatibility-sheet.svg`;
+  - `SP-life-motion-compatibility-sheet.svg`;
+  - `II-assembled-mini-scene.svg`;
+  - `SP-assembled-mini-scene.svg`.
+- Updated the Batch 14 README, matrices, decision rubric, and self-audit to reference the actual generated files.
+- The generated evidence suggests Soft Pixel is more scalable and lower-cost, while Inked Indie remains visually viable but has materially higher production risk for MVP.
+- This is evidence for Batu review only. No winner, final visual direction, production visual language, app implementation, public interfaces, module boundaries, package tooling, build tooling, CI, deployment, or real-place representation was approved.
+
+Rationale:
+- The docs-only Batch 14 plan needed concrete visual evidence before Batu could evaluate whether Inked Indie's distinctiveness justifies its added production burden.
+- The generated sheets test storefront reuse, map-scale life elements, and assembled product density for both survivor directions.
+
+Owner:
+- Creative direction, tradeoff judgment, and decision whether Inked Indie continues: Batu
+- Visual evidence generation, review framing, and verification: Codex
+
+Status:
+- Generated evidence exists / no winner selected / no final visual approval / no implementation approval
+
+## 2026-05-27 - Batch 14 Production Scalability Spike Defined
+
+Decision:
+- Created `docs/visual-artifacts/batch-14-production-scalability-spike/` as a docs-only production scalability spike definition.
+- The spike compares Inked Indie Graphic Novel and Soft Pixel Neighborhood Sim without deciding a winner.
+- The test is structured to determine whether Inked Indie can scale into a repeatable production system for map-mode places, people, dogs, bikes, and vehicles without becoming too expensive or bespoke.
+- Defined a modular asset test for both directions:
+  - 6 storefront variants per direction;
+  - 8 street props per direction;
+  - 4 signage/flyer variants per direction;
+  - 3 marker/card UI states per direction.
+- Defined a future-life test for both directions at actual map scale:
+  - 6 pedestrian figures;
+  - 2 dogs;
+  - 2 bikes/e-bikes;
+  - 1 parked vehicle.
+- Added production-cost and technical-feasibility matrices plus a decision rubric for future review.
+- No visual artifact generation, final visual direction approval, production asset approval, app implementation, public interfaces, module boundaries, package tooling, build tooling, CI, or deployment were introduced.
+
+Rationale:
+- Batch 13 showed the two survivor directions under UI/world integration pressure.
+- The next useful question is production scalability, especially whether Inked Indie's authored quality can justify its likely higher art-direction burden.
+- Batu needs a fair, comparable test that exposes reuse, map-scale life compatibility, UI readability, and production cost before any direction advances toward a static style-frame path.
+
+Owner:
+- Creative direction, taste calls, and approval of whether to run the spike: Batu
+- Spike definition, review framing, and documentation alignment: Codex
+
+Status:
+- Docs-only spike defined / no winner selected / no final visual approval / no implementation approval
+
 ## 2026-05-26 - Agentic Game-Dev Guardrails Integrated
 
 Decision:
