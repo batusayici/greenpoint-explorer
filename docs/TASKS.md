@@ -11,73 +11,59 @@ Implementation owner: Codex
 
 ## Phase Orientation
 
-- Phase 1 Visual Preproduction has started but is incomplete; no final visual direction is approved.
+- Phase 1 Visual Preproduction is historical and complete as exploration.
 - Phase 2 Location & Representational Truth Feasibility selected `hybrid real-plus-placeholder composition` as the gate outcome.
 - Batch 8.5 remains the truth record for unresolved placement risks.
 - Recent three-direction artifacts are rejected as non-decision-grade.
 - Batch 13 survivor direction development exists as current visual development evidence only.
-- Previous artifacts may inform constraints only; they do not approve visual direction.
+- Older artifacts may inform constraints only; they do not override the approved visual direction.
 - Future visual batches must reference `docs/VISUAL_ARTIFACT_STANDARDS.md`, state their required output format before generation, and pass both the format gate and decision-usefulness self-audit before they are called complete.
-- Batu approved `inked-indie-compact-corner-style-frame-revision-a.png` as Phase 3 static style-frame gate evidence only.
-- The approved frame proves the Inked Indie / Compact Corner direction has promise; it does not prove the direction can be built or scaled.
+- Batu approved `inked-indie-compact-corner-style-frame-revision-a.png` as Phase 3 static style-frame gate evidence.
+- Batu approved the final visual direction after Phase 4: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Phase 3.5 derivative visual proof status: `PROCEED_TO_BUILDABILITY_PLANNING`.
-- Current Codex-executable task: Phase 3.6 docs-only buildability/scalability planning, as stated in `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Final visual direction, architecture, and implementation remain blocked.
+- Phase 4 is complete.
+- Phase 4.5 reusable-system scalability evidence is promising but does not approve production scalability or production buildability.
+- Current Codex-executable task: docs-only Architecture / Prototype Setup Planning Gate, as stated in `docs/CURRENT_EXECUTION_BRIEF.md`.
+- Architecture, implementation, production assets, public interfaces, real-place cards, and production pipeline remain blocked.
 
 ## Current Batch
 
-Phase 3.6 Buildability / Scalability Planning - Inked Indie Compact Corner.
+Architecture / Prototype Setup Planning Gate.
 
 Folder name:
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/`
+- No new artifact folder for this docs-only planning batch.
 
-Status: Current docs-only planning task / implementation blocked / final visual direction not approved / production buildability and scalability not approved.
+Status: Current docs-only architecture/prototype planning task / visual direction approved / implementation blocked / production buildability and scalability not approved.
 
 Purpose:
-- Translate the Phase 3.5 repeatability proof into buildability/scalability planning.
-- Identify reusable modules, hand-directed art responsibilities, safe Codex/AI execution zones, source-verification requirements, failure modes, and production pipeline options.
-- Recommend a bounded next proof without implementing it.
-- Preserve final visual direction, implementation, production assets, real-place cards, architecture, public interfaces, package tooling, and deployment as blocked.
+- Create a planning packet that helps Batu/ChatGPT decide whether to approve a later implementation setup gate.
+- Propose conceptual architecture boundaries, prose/table-only interface concepts and data contracts, rendering approach options, asset-pipeline options, feedback loops, performance assumptions, likely future files, blockers, and stop conditions.
+- Preserve implementation, production assets, real-place cards, public-interface approval, package tooling, CI, and deployment as blocked.
 
-Phase 3 gate evidence:
+Key approval evidence:
 - `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/README.md`
 - `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/STATIC_STYLE_FRAME_SPEC.md`
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/REVIEW_RUBRIC.md`
 - `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/SELF_AUDIT.md`
 - `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/inked-indie-compact-corner-style-frame-revision-a.png`
-
-Existing SVG artifact, preserved as supporting/planning evidence:
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/inked-indie-compact-corner-style-frame.svg`
-
-Phase 3.6 planning packet must include:
-- Facade module rules.
-- Storefront bay construction rules.
-- Signage types.
-- Awning, window, door, and roll-gate variants.
-- Prop categories.
-- Marker/card rules.
-- Texture and linework rules.
-- Density limits.
-- Rules for symbolic real-place anchors versus fictional/placeholder storefronts.
-- Constraints for avoiding exact real-place claims.
-- Production pipeline comparison.
-- A next proof brief framed as a bounded technical-art prototype, not an app build.
-
-Current planning packet:
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/README.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/MODULE_BREAKDOWN.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/SCALABILITY_RISKS.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/PRODUCTION_PIPELINE_OPTIONS.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/NEXT_PROOF_BRIEF.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/SELF_AUDIT.md`
+- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/README.md`
+- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/SELF_AUDIT.md`
+- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png`
+- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/integrated-hover-card-pressure.png`
+- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/zoom-readability-identity-crop.png`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/README.md`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/SELF_AUDIT.md`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/source-storefront-decomposition-board.png`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/recombination-proof-board.png`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/mini-street-slice-scalability-proof.png`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/selected-state-ui-attachment-proof.png`
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/zoom-readability-crop.png`
 
 Required process rules:
-- Inked Indie is the lead direction, not final production approval.
-- References and previous visual artifacts remain directional inputs, not approved style.
-- Phase 3 approval is limited to static style-frame gate evidence.
-- Phase 3.6 is docs-only planning.
-- No new generated images or SVG stand-ins are allowed in this planning task.
-- Any later technical-art proof requires a later current brief.
+- Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction is the approved visual direction.
+- Visual-direction approval is not final production approval.
+- Phase 4.5 is supporting evidence only; it is not production scalability approval.
+- No new generated images or SVG stand-ins are allowed in this architecture/prototype planning task.
+- Any later architecture, implementation, production-asset, or real-place task requires a later current brief.
 - If later visual artifacts are proposed, Codex must specify artifact class, supported decision, required output format, and acceptance criteria before producing them.
 - Constraint checklist compliance is not enough if the artifact format is wrong.
 - Any derivative examples must preserve exterior-only map mode: storefront facades, sidewalks, street corner, signage, street furniture, markers, and place cards where relevant.
@@ -86,15 +72,14 @@ Required process rules:
 - Other businesses must remain fictionalized, placeholder, omitted, or unresolved unless verification clears them.
 - Real-place cards remain blocked.
 
-Forbidden during this Phase 3.6 planning batch:
-- Final visual direction approval.
+Forbidden during this architecture/prototype planning batch:
 - Production buildability or scalability approval.
 - Production asset claims.
 - Production visual assets.
 - New generated images.
 - SVG stand-ins as visual proof.
 - Real-place card production.
-- App code, package files, build tooling, React/Vite/Pixi setup, public interfaces, architecture implementation, CI, deployment, plugin installs, or broad tooling changes.
+- App code, package files, build tooling, React/Vite/Pixi setup, approved public interfaces, architecture implementation, CI, deployment, plugin installs, or broad tooling changes.
 
 Completed Batch 8.5 outputs:
 
@@ -147,24 +132,32 @@ Completed Batch 15 outputs:
 - Documentation does not decide a winner or approve final visual direction, production visual language, real-place representation, app implementation, public interfaces, or module boundaries.
 - Location truth and hybrid real-plus-placeholder constraints remain visible.
 - Batu selected Inked Indie as the lead visual direction after review.
-- This selection does not approve final visual direction, production visual language, production assets, real-place representation, app implementation, public interfaces, module boundaries, or Phase 3 static style-frame production.
+- Historical note: Batch 15 did not itself approve final visual direction; Batu later approved the visual direction after Phase 4.
 
 ## Current Visual Development Evidence
 
-The Phase 3 Inked Indie / Compact Corner Revision A raster artifact is approved as static style-frame gate evidence only.
+The Phase 4 Fictional-Safe Storefront Identity + UI Integration proof is the visual-direction approval proof.
 
-Status: Revision A raster artifact approved as gate evidence only / not final approval / production-system proof needed before build or scale confidence.
+Status: visual direction approved / Phase 4 complete / Phase 4.5 supporting scalability evidence promising but not production-proven.
 
-Current lead direction:
+Approved visual direction:
 
-- Inked Indie Graphic Novel is the lead visual direction after Batch 15 review.
-- This is not final production approval.
+- Inked Indie / Compact Corner is approved as the visual direction.
+- Fictional-safe storefront identity is part of the approved visual direction.
+- Integrated paper/card UI direction is approved visually, while product behavior and interaction details remain unresolved.
+- This is not production asset, implementation, architecture, public-interface, real-place-card, production-buildability, or production-scalability approval.
 - Soft Pixel is no longer the lead path, but remains historical comparison evidence from Batches 13-15.
+
+Phase 4 and Phase 4.5 outputs:
+
+- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/` exists as the visual-direction approval proof package.
+- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/` exists as supporting reusable-system scalability evidence.
+- Phase 4.5 appears promising for a small reusable storefront system, but sign-band repetition, accidental brand-like glyphs, prop repetition, UI weight, production burden, and production pipeline remain unresolved.
 
 Existing Batch 16 outputs:
 
 - `docs/visual-artifacts/batch-16-inked-indie-static-style-frame-gate/` exists as the docs-only gate brief that Batu approved for one Phase 3 static review artifact.
-- Batch 16 does not approve final visual direction, production assets, app implementation, real-place cards, public interfaces, architecture, package tooling, or deployment.
+- Historical note: Batch 16 did not itself approve final visual direction; Batu later approved the visual direction after Phase 4. Batch 16 still does not approve production assets, app implementation, real-place cards, public interfaces, architecture, package tooling, or deployment.
 
 Existing Batch 13 outputs:
 
@@ -175,7 +168,7 @@ Existing Batch 13 outputs:
 Existing Batch 15 outputs:
 
 - `docs/visual-artifacts/batch-15-raster-production-proof/` exists as the raster proof package that led to Inked Indie being selected as the lead direction.
-- Batch 15 does not approve final visual direction, production assets, app implementation, real-place representation, public interfaces, or module boundaries.
+- Historical note: Batch 15 did not itself approve final visual direction; Batu later approved the visual direction after Phase 4. Batch 15 still does not approve production assets, app implementation, real-place representation, public interfaces, or module boundaries.
 
 Batch 8 status:
 
@@ -200,11 +193,11 @@ Codex's next executable task is defined in `docs/CURRENT_EXECUTION_BRIEF.md`.
 
 At this alignment point, the exact next task remains:
 
-- Phase 3.6 docs-only buildability/scalability planning for the Inked Indie / Compact Corner direction.
+- Docs-only Architecture / Prototype Setup Planning Gate.
 
-Expected Batu/ChatGPT decision after Phase 3.6:
+Expected Batu/ChatGPT decision after this planning packet:
 
-- Decide whether to authorize a bounded technical-art proof asking whether one small storefront module can be decomposed into reusable layers while preserving the Phase 3.5 visual character.
+- Decide whether the architecture/prototype plan is clear enough to authorize a later implementation setup gate, reject it, or request revisions.
 
 That decision must not approve app implementation, real-place cards, production assets, public interfaces, architecture, package tooling, CI, or deployment unless Batu explicitly opens those later gates through a later current brief.
 
@@ -229,8 +222,7 @@ Apply this checklist to every future visual batch before reporting completion:
 
 ## Blocked Tasks
 
-- Final visual direction approval.
-- Production-system proof approval as build/scale evidence.
+- Production buildability or production scalability approval.
 - React/Vite/Pixi initialization.
 - Map implementation.
 - Real-place card production.

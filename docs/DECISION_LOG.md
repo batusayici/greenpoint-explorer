@@ -1,5 +1,34 @@
 # Decision Log
 
+## 2026-05-28 - Visual Direction Approved And Phase 4 Completed
+
+Decision:
+- Batu approved the visual direction.
+- Phase 4 Fictional-Safe Storefront Identity + UI Integration Proof is complete.
+- The approved visual direction is Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
+- Phase 4.5 Reusable-System Scalability Proof is accepted as supporting evidence that the direction appears promising as a reusable storefront system.
+- Phase 4.5 does not approve production scalability, production buildability, production assets, production asset direction, production asset pipeline, app implementation, architecture, public interfaces, real-place cards, exact real-place representation, live data, CI, deployment, or package/build tooling.
+
+Rationale:
+- The Phase 4 proof supplied concrete high-fidelity raster evidence for fictional-safe identity and UI/world integration.
+- The Phase 4.5 proof supplied concrete high-fidelity raster evidence that the visual language can be decomposed and recombined at small proof scale without immediately losing fidelity or fictional-safe identity.
+- Batu's approval clears the visual-direction gate while preserving implementation, architecture, production asset, and truth/source gates.
+
+Constraints preserved:
+- No app/source/package/config/tooling/CI/deployment/public-interface changes.
+- No architecture decisions.
+- No production assets or production pipeline approval.
+- No real-place cards, factual card copy, exact real facades, exact addresses, exact station geometry, or live data.
+- Real-place placement and production representation remain subject to source verification and Batu approval.
+
+Owner:
+- Visual-direction approval: Batu
+- Critique, decision-support framing, and next-brief authoring: ChatGPT
+- Documentation alignment inside the current brief: Codex
+
+Status:
+- Visual direction approved / Phase 4 complete / Phase 4.5 supporting evidence complete / implementation and production gates remain blocked
+
 ## 2026-05-28 - Codex / ChatGPT / Batu Handoff Workflow Aligned
 
 Decision:

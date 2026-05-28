@@ -1,10 +1,10 @@
 # Current Execution Brief
 
-Status: Active handoff
-Date: 2026-05-28
-Purpose: Canonical next-task handoff from ChatGPT decision-support to Codex execution.
+Status: Active narrow implementation setup brief  
+Date: 2026-05-28  
+Purpose: Canonical next-task handoff for the first bounded prototype implementation setup batch.
 
-This file is operational only. It is the canonical source for Codex's next executable task. It does not replace `AGENTS.md`, `docs/PLAN.md`, `docs/TASKS.md`, `docs/DECISION_LOG.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, or `docs/AGENTIC_TOOLING.md`.
+This file is operational only. It is the canonical source for Codex's next executable task. It does not replace `AGENTS.md`, `docs/PLAN.md`, `docs/TASKS.md`, `docs/DECISION_LOG.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/AGENTIC_TOOLING.md`, or `docs/ARCHITECTURE.md`.
 
 ## Operating Handoff
 
@@ -19,143 +19,134 @@ Workflow:
 
 Codex must not infer, continue, or expand work from prior chat context when this brief exists. If older docs, historical artifact packets, or previous chat context imply a different next action, Codex should treat this brief as controlling for execution and report the contradiction rather than resolving it by momentum.
 
-Batu owns creative and product decisions. ChatGPT owns critique, decision-support framing, and next-brief authoring. Codex owns execution of this brief only.
+Batu owns creative direction, product direction, public representation, public module/interface approval, and gate changes. ChatGPT owns critique, decision-support framing, and next-brief authoring. Codex owns execution of this brief only.
 
-## Current Phase
+## Current Decision State
 
-Phase 3.5 derivative visual proof status: `PROCEED_TO_BUILDABILITY_PLANNING`.
+Batu has approved the final visual direction and considers Phase 4 complete.
 
-Batu/ChatGPT judged that the Phase 3.5 Inked Indie / Compact Corner derivative proof has enough repeatability evidence to begin buildability and scalability planning.
+Approved visual direction:
 
-Why it passed:
-- High-fidelity PNGs proved repeatability across one-bay, two-bay, and symbolic transit-edge cases.
-- The proof showed that facade shell, storefront bay, sign band, openings, awning/roll-gate treatments, sidewalk texture, marker/card hierarchy, and symbolic transit cues can be tested as a repeatable visual system.
-- The pass is limited to planning readiness only.
+- Inked Indie / Compact Corner.
+- Fictional-safe storefront identity.
+- Integrated paper/card UI direction as a visual direction, with later product and interaction refinement still required.
+- High-fidelity raster, storefront-led, Greenpoint-inspired isometric street-slice language shown in the Phase 4 proof.
 
-This does not approve:
-- Final visual direction.
-- Production visual language.
-- Production assets.
-- App implementation.
-- Architecture setup.
-- Package/build tooling.
-- CI or deployment.
-- Public interfaces.
-- Real-place cards.
-- Exact station geometry, facade geometry, addresses, or factual storefront claims.
+Phase 4.5 Reusable-System Scalability Proof is accepted only as supporting evidence that the visual direction appears promising as a reusable storefront system. It does not approve production scalability, production buildability, production assets, production asset pipeline, real-place representation, or live data.
 
-Phase 4 architecture/prototype setup and Phase 5 implementation remain blocked.
-
-## Current Objective
-
-Create a docs-only Phase 3.6 buildability/scalability planning packet for the Inked Indie / Compact Corner direction.
-
-The packet should answer:
-
-> How could this visual language become a scalable map-mode asset system without losing its hand-drawn, Greenpoint-specific character?
-
-## Key Constraints From Phase 3.5
-
-- Cards and markers need UI refinement before any production path can be trusted.
-- Real-place translation remains unproven; no factual card, facade, address, station, or adjacency claim is approved.
-- Symbolic transit cues remain unresolved and must not be treated as station geometry.
-- Visual richness must be controlled to avoid density overload.
-- Phase 3.5 generated PNGs are proof artifacts only, not production assets or implementation-ready source material.
+`docs/ARCHITECTURE.md` now provides the architecture/prototype setup planning packet. The next task is a narrow prototype scaffold and placeholder interaction proof, not broad implementation.
 
 ## Current Task
 
-Phase 3.6 docs-only buildability/scalability planning.
+Create the first narrow implementation setup batch for the Greenpoint Isometric Explorer prototype.
 
-This remains the next executable Codex task after the workflow-alignment pass. Do not advance to a technical-art proof, implementation, production assets, or Phase 4 unless a later ChatGPT-authored current brief explicitly opens that scope after Batu approval.
+Authorized scope:
 
-Create:
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/README.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/MODULE_BREAKDOWN.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/SCALABILITY_RISKS.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/PRODUCTION_PIPELINE_OPTIONS.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/NEXT_PROOF_BRIEF.md`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/SELF_AUDIT.md`
+- Initialize a minimal React + Vite prototype shell.
+- Add PixiJS/canvas world-rendering dependency only for the placeholder world-rendering proof in this brief.
+- Render a placeholder authored scene, not production art.
+- Prove bounded pan/zoom.
+- Prove one hover/click/tap selected-state card using fictional-safe placeholder data.
+- Keep all data static and local.
+- Capture screenshots and report smoke checks.
 
-The packet must:
-- Break the visual language into reusable modules.
-- Classify each module as reusable system component, hand-authored art, generated/reference-assisted art, source-verified real-place component, or unsafe to automate where applicable.
-- Identify what remains hand-directed by Batu.
-- Identify where Codex/AI can safely execute.
-- Identify what requires real Greenpoint source verification before production use.
-- Identify likely failure modes.
-- Compare 2-3 plausible production approaches.
-- Recommend one approach for the next proof without implementing it.
-- Define the next proof as a bounded technical-art prototype, not an app build.
+This brief authorizes only the minimum implementation needed to prove the scaffold, placeholder scene, bounded viewport behavior, and one selected-state interaction. It does not authorize production assets, real-place cards, factual copy, final public interfaces, production data schemas, broad map coverage, routing, avatars, NPCs, interiors, quests, CMS, persistence, live data, CI, deployment, or production scalability/buildability claims.
 
-## Next Expected Batu/ChatGPT Decision
+## Expected Implementation Shape
 
-After Phase 3.6, Batu/ChatGPT should decide whether to authorize a bounded technical-art proof:
+Implementation should follow `docs/ARCHITECTURE.md` as a planning guide, while keeping decisions minimal and reversible.
 
-> Can one small storefront module be decomposed into reusable layers while preserving the Phase 3.5 visual character?
+Expected files may include:
 
-The expected decision should choose whether the recommended production approach is the right next proof path, what constraints apply, and whether any additional source-verification requirements must be satisfied before the proof begins.
+- `package.json`
+- one lockfile generated by the package manager used for setup
+- `vite.config.*`
+- `index.html`
+- `src/`
+- `src/main.*`
+- `src/App.*`
+- small prototype-local files under `src/` for scene setup, rendering, interaction, placeholder data, and styles
+- lightweight run instructions if needed
 
-Approval of the next proof would still not approve final visual direction, production assets, app implementation, public interfaces, real-place cards, or exact station/facade/address claims.
+Keep file count small. Do not create speculative architecture folders, broad utilities, formal schemas, public TypeScript interfaces, production asset folders, tests, CI files, deployment files, or documentation churn beyond what is necessary to run and verify the prototype setup.
 
-## Inputs To Read
+## Placeholder Data And Art Rules
 
-Source docs:
-- `AGENTS.md`
-- `docs/PLAN.md`
-- `docs/TASKS.md`
-- `docs/DECISION_LOG.md`
-- `docs/ART_DIRECTION.md`
-- `docs/VISUAL_ARTIFACT_STANDARDS.md`
-- `docs/VISUAL_QA_CHECKLIST.md`
-- `docs/AGENTIC_TOOLING.md`
+- Use fictional-safe placeholder storefront data only.
+- Do not use real business names, exact addresses, factual card copy, exact facades, exact station geometry, live data, or verified place cards.
+- Use simple placeholder shapes or temporary raster-free drawing for the scene.
+- Do not import Phase 4 or Phase 4.5 review images as production or prototype assets.
+- Label any visible content as fictional/placeholder if labels are needed.
+- Keep the selected card content neutral and obviously non-factual.
 
-Phase 3 gate evidence:
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/README.md`
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/STATIC_STYLE_FRAME_SPEC.md`
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/REVIEW_RUBRIC.md`
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/SELF_AUDIT.md`
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/inked-indie-compact-corner-style-frame-revision-a.png`
+## Interaction Requirements
 
-Phase 3.5 production-system proof:
-- `docs/visual-artifacts/phase-3-5-production-system-proof/README.md`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/REVIEW.md`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/SELF_AUDIT.md`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/generated/example-a-narrow-fictional-service-bay.png`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/generated/example-b-two-bay-fictional-retail-pair.png`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/generated/example-c-symbolic-transit-edge-micro-corner.png`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/generated/phase-3-5-derivative-comparison-board.png`
+The prototype should demonstrate:
+
+- Desktop hover affordance on one placeholder target.
+- Desktop click selection.
+- Touch/tap selection on a mobile-sized viewport.
+- One selected-state card that opens from the placeholder target.
+- A close or deselect behavior.
+- Bounded pan.
+- Bounded zoom.
+- Basic mobile containment.
+
+The selected-state card should use placeholder content only. It should prove interaction plumbing, not final UI copy, final card hierarchy, or production visual language.
+
+## Verification Requirements
+
+Run the fastest useful feedback loop available:
+
+- Install dependencies if needed for the authorized setup.
+- Start the local dev server.
+- Verify the app loads without blocking console/runtime errors.
+- Verify the placeholder scene is visible.
+- Verify bounded pan/zoom.
+- Verify hover/click/tap selected-state behavior.
+- Verify basic mobile containment.
+- Capture desktop and mobile screenshots for report-back.
+- Search the diff to confirm no real-place cards, factual copy, production assets, live data, CI, deployment, broad map coverage, routing, avatars, NPCs, interiors, quests, CMS, or persistence were introduced.
 
 ## Acceptance Criteria
 
-- Phase 3.5 status is recorded as `PROCEED_TO_BUILDABILITY_PLANNING`.
-- The reason for passing is recorded as high-fidelity PNG repeatability across one-bay, two-bay, and symbolic transit-edge cases.
-- Constraints are recorded for cards/markers, real-place translation, symbolic transit cues, and density control.
-- The new Phase 3.6 packet is docs-only.
-- The packet does not create app code, source folders, package/config/build tooling, architecture setup, CI, deployment, public interfaces, production assets, generated images, or SVG visual proofs.
-- The packet does not approve final visual direction, production assets, real-place cards, exact station geometry, exact facade geometry, or address claims.
-- The packet recommends a next proof as a bounded technical-art prototype only.
-- The brief remains the canonical next-task source and preserves the Batu/ChatGPT/Codex handoff model.
+The batch is complete only if:
+
+- Minimal React + Vite prototype shell runs locally.
+- PixiJS/canvas world-rendering dependency is used only for the placeholder world-rendering proof authorized by this brief.
+- A placeholder authored scene renders.
+- Bounded pan/zoom works.
+- One fictional-safe placeholder target supports hover/click/tap selected-state card behavior.
+- All data is static/local.
+- Screenshots and smoke-check results are reported.
+- No production assets or visual artifacts are generated.
+- No real-place cards, factual copy, live data, broad map coverage, routing, avatars, NPCs, interiors, quests, CMS, persistence, CI, or deployment are introduced.
+- No final public interfaces, formal schemas, production asset pipeline, or production scalability/buildability claims are introduced.
+- `git status` and `git diff --stat` are reported.
 
 ## Stop Conditions
 
 Stop and ask Batu before:
-- Executing a task that is not in this current brief.
-- Inferring the next task from prior chat context instead of this brief.
-- Treating Phase 3 or Phase 3.5 approval as final visual direction approval.
-- Claiming the direction is production-buildable or production-scalable before further proof.
-- Opening Phase 4 architecture/prototype setup.
-- Starting implementation or package/build tooling.
-- Changing product behavior, scope, architecture boundaries, or public interfaces.
-- Producing final production assets.
-- Producing real-place cards or factual production representations.
-- Producing generated images or SVG stand-ins as visual proof for Phase 3.6.
-- Making exact real-place, exact station-geometry, facade, address, adjacency, or active-business claims.
+
+- Expanding beyond the minimal prototype scaffold and one placeholder interaction proof.
+- Creating production assets or importing Phase 4 / Phase 4.5 review images as assets.
+- Creating real-place cards, factual copy, exact real facades, exact addresses, exact station geometry, or live data.
+- Creating public interfaces, formal schemas, broad architecture layers, or speculative abstractions beyond the small prototype need.
+- Adding routing, avatars, NPCs, interiors, quests, CMS, persistence, accounts, user submissions, broad map coverage, backend services, CI, deployment, or analytics.
+- Claiming production scalability, production buildability, final architecture approval, production asset approval, or public-interface approval.
+- Changing creative direction, product scope, public representation policy, or source-of-truth order.
 
 ## Report-Back Format
 
 Report back with:
+
 - Files created/modified.
+- Summary of the prototype scaffold and placeholder interaction.
+- How to run it locally.
+- Screenshots captured.
+- Smoke-check results.
+- What remains blocked.
 - `git status` summary.
 - `git diff --stat` summary.
 - Whether any stop condition was triggered.
-- Recommended next decision after Phase 3.6.
+- Exact current next action.

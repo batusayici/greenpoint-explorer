@@ -54,7 +54,7 @@ Use game-development practices only when they fit this web-first, map-mode-only 
 Use this checklist before reporting an agentic docs, planning, or visual-preproduction batch complete:
 
 - Confirm project docs remain consistent with the source-of-truth order in `AGENTS.md`.
-- Confirm no approved visual direction, final style, production asset path, or implementation gate is claimed prematurely.
+- Confirm the approved visual direction is recorded without prematurely claiming production asset paths, implementation gates, architecture boundaries, or public interfaces.
 - Confirm no out-of-scope systems were introduced into MVP scope.
 - Confirm referenced visual artifacts exist before citing them as evidence.
 - Confirm every visual artifact's format matches its decision stage: SVG/ASCII/markdown for diagrams and blockouts only; PNG/JPG for high-fidelity style frames, raster production proofs, final visual-direction candidates, and art-direction approval artifacts unless Batu explicitly requests SVG.
@@ -67,7 +67,7 @@ Use this checklist before reporting an agentic docs, planning, or visual-preprod
 
 Agents must not use tooling to:
 
-- Approve visual direction or production visual language.
+- Approve visual direction or production visual language; Batu has approved the current visual direction, but tooling must not create new approvals or expand it.
 - Make product decisions or public-interface decisions.
 - Define final architecture boundaries without review.
 - Infer or continue work from prior chat context when `docs/CURRENT_EXECUTION_BRIEF.md` exists.

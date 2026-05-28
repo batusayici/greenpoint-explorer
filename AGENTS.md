@@ -6,9 +6,9 @@ Project: Greenpoint Isometric Explorer
 
 ## Project Status
 
-The project is in documentation and visual preproduction only.
+The project has an approved visual direction and remains pre-implementation.
 
-No app implementation exists yet. Do not initialize React, Vite, PixiJS, Three.js, package tooling, source folders, or build configuration until the gates below are cleared.
+No app implementation exists yet. Do not initialize React, Vite, PixiJS, Three.js, package tooling, source folders, or build configuration until a current execution brief explicitly opens the architecture/prototype gate and the required architecture boundaries and public interfaces are documented and reviewed.
 
 ## Creative Authority Model
 
@@ -84,7 +84,8 @@ If the batch does not change public interfaces or module boundaries, say that ex
 
 ## Visual Governance
 
-- No final visual direction is approved yet.
+- Final visual direction is approved: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 visual proof and supported by the Phase 4.5 reusable-system scalability proof.
+- This approval is visual-direction approval only. It does not approve production assets, production asset direction, production asset pipeline, app implementation, architecture boundaries, public interfaces, real-place cards, exact real facades, exact addresses, exact station geometry, factual card copy, live data, or deployment.
 - Current lead directions, test paths, and next tasks must be read from `docs/CURRENT_EXECUTION_BRIEF.md` and current project-state docs; older visual territories remain historical unless Batu/ChatGPT explicitly reactivates them in the current brief.
 - Do not introduce new visual metaphors, palettes, marker systems, card styles, UI styles, or production visual language without Batu approval.
 - Unapproved visual directions must be labeled as unapproved, exploratory, or historical.
@@ -116,9 +117,11 @@ If the batch does not change public interfaces or module boundaries, say that ex
 
 ## Current Hard Gates
 
-- No React/Vite/Pixi implementation until an approved static style frame exists.
-- No map implementation until the visual direction and architecture boundaries are approved.
+- The static style-frame and final visual-direction gates are cleared.
+- No React/Vite/Pixi implementation, Three.js implementation, package tooling, source folders, build configuration, app implementation, or map implementation until a current execution brief explicitly opens that implementation scope and the architecture boundaries and public interfaces are documented and reviewed.
+- No map implementation until architecture boundaries and public interfaces are approved.
 - No public module/interface implementation until the proposed boundary and interface are documented and reviewed.
+- No production visual assets, production asset pipeline, or production asset direction until Batu explicitly approves them in a later review.
 - No visual production work may treat Community Pixel Storefront, or any older territory, as approved final direction.
 
 ## Source Of Truth Order

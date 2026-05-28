@@ -1,7 +1,7 @@
 # Greenpoint Isometric Explorer - MVP Scope
 
-Status: Approved for Batch 1 documentation setup  
-Date: 2026-05-26  
+Status: Current MVP scope / visual direction approved / implementation blocked  
+Date: 2026-05-28  
 Creative direction owner: Batu  
 Implementation owner: Codex
 
@@ -39,8 +39,8 @@ Core loop:
 - One compact isometric scene around Manhattan Ave / Greenpoint Ave.
 - Desktop/tablet-primary layout.
 - Basic mobile containment.
-- Pixel-inspired HD visual style.
-- Greenpoint DIY Sim art direction.
+- Approved Inked Indie / Compact Corner visual direction with fictional-safe storefront identity.
+- Integrated paper/card UI direction, with product behavior and implementation details still blocked.
 - 4-6 source-backed real named places, only if spatially coherent.
 - Pointer/tap feedback.
 - Desktop hover and click.
@@ -123,4 +123,3 @@ Do not include:
 Default removal/editing policy:
 
 > If a business objects to inclusion or factual presentation, remove or edit it on request.
-

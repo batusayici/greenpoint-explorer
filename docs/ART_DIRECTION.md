@@ -1,13 +1,15 @@
 # Art Direction
 
-Status: Current guidance / no final visual direction approved  
-Date: 2026-05-26  
+Status: Current guidance / visual direction approved  
+Date: 2026-05-28  
 Creative direction owner: Batu  
 Implementation owner: Codex
 
 ## Current Visual State
 
-No final visual direction is approved yet.
+Final visual direction is approved: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
+
+This approval covers the visual direction only. It does not approve production assets, production asset direction, a production asset pipeline, app implementation, architecture, tooling, public interfaces, real-place cards, exact real facades, exact addresses, exact station geometry, factual card copy, live data, or deployment.
 
 Community Pixel Storefront is historical/exploratory only. It is not the current approval path and not final production direction.
 
@@ -20,16 +22,21 @@ Current working read:
 - The world should remain Greenpoint/storefront-led.
 - UI and marker language should support discovery without implying a character system, quest system, social sim, or full game HUD.
 - The newest curated reference thesis is: "Greenpoint street-corner sim with Bushwick creative mess and HD pixel clarity."
-- The curated reference set is directional input only. It does not approve a final visual direction, palette, UI system, production art style, or implementation path.
+- The curated reference set is historical directional input. It does not override the approved visual direction or approve production assets, a production pipeline, implementation, or public interfaces.
 
-Next visual decisions require concrete artifacts, not prose labels. The corrected path is:
+Future visual refinements still require concrete artifacts, not prose labels. The earlier radical-exploration-to-static-frame path is historical: Phase 3 static style-frame gate evidence, Phase 3.5 production-system proof, Phase 3.6 buildability/scalability planning, Phase 3.7 one-module decomposition proof, Phase 3.8 fidelity-recovery + multi-module stress test, Phase 3.9 map-scale integration, Phase 4 fictional-safe identity/UI integration, and Phase 4.5 reusable-system scalability proof have happened.
 
-1. Radical Art Direction Concept Sprint.
-2. Batu review of distinct visual-world hypotheses.
-3. Decision-grade raster/image style frames for selected territories only.
-4. Static style frame only after Batu approves the relevant direction and composition gates.
+Latest visual proof state:
 
-React/Vite/Pixi implementation remains blocked until the approved static style frame exists.
+- Phase 4 is complete and is the visual-direction approval proof.
+- Phase 4.5 is supporting scalability evidence.
+- Fictional-safe storefront identity restores personality without real business names, addresses, factual card copy, exact facades, or exact station geometry.
+- The reusable storefront system appears promising at small proof scale, with unresolved production risks around sign-band repetition, accidental brand-like glyphs, prop repetition, and production burden.
+- The integrated paper/card UI direction is approved as a visual direction, but product behavior, interaction details, card content hierarchy, and implementation remain unresolved.
+
+Use `docs/PLAN.md` for current phase/gate orientation and `docs/CURRENT_EXECUTION_BRIEF.md` for Codex's next executable task.
+
+React/Vite/Pixi implementation remains blocked until Batu explicitly opens the architecture/prototype gate and architecture boundaries/public interfaces are documented and reviewed.
 
 ## Visual Exploration Rules
 
@@ -70,6 +77,7 @@ Orthographic/isometric clarity matters more than decorative density.
 - Storefront entrances, marker placement, hover states, selected states, and place-card attachment must remain legible at review size.
 - Hover, click, and card hierarchy must be tested visually before implementation.
 - Texture, signage, flyers, and ambient detail should frame click targets, not camouflage them.
+- Future implementation planning should preserve the approved Phase 4 direction while keeping truth safety designed into fictional-safe signs, abstract glyphs, and source-reviewed real-place content rather than pasted-over labels.
 
 ## Curated Isometric Reference Set
 
@@ -163,7 +171,9 @@ These artifacts are allowed before final static style-frame production. They are
 
 Current gate:
 
-> Batu must approve the visual direction and static style-frame composition before any static style-frame image production.
+> Visual direction is approved. The next gate is architecture/prototype setup, but it remains blocked until a later current execution brief explicitly opens architecture planning and documents public-interface/module-boundary review.
+
+This approval does not authorize app implementation, production asset creation, a production asset pipeline, architecture setup, tooling, public interfaces, real-place cards, exact addresses, exact Greenpoint facades, station geometry, or factual card copy.
 
 ## Historical Visual Thesis
 
@@ -180,6 +190,11 @@ The UI layer should carry the more expressive energy: chunky labels, sticker-lik
 The first screenshot should read as a distinctive Greenpoint-inspired isometric diorama before any interaction is explained.
 
 If someone needs the UI or a written explanation to understand why it is interesting, the style frame is not ready.
+
+Technical-art proof fidelity rule:
+
+- After Phase 4 and Phase 4.5, future technical-art proofs fail if they drop below the latest approved/recovered high-fidelity raster reference for the decision being tested.
+- If forced to choose between clearer diagramming and maintaining the prior approved/recovered raster fidelity, preserve raster fidelity and communicate structure through rendered crops, companion documentation, restrained annotations, or other non-flattening methods.
 
 ## Reference Digestion
 
@@ -526,17 +541,19 @@ Why:
 
 Decision status:
 
-> Historical recommendation only. No final visual direction is approved. Community Pixel Storefront is historical/exploratory and superseded by the Batch 11 radical concept sprint process.
+> Historical recommendation only. At the time, no final visual direction was approved. Community Pixel Storefront is historical/exploratory and superseded by the later Inked Indie / Compact Corner approval path.
 
-## Approval Gate For Static Style Frame
+## Historical Approval Gate For Static Style Frame
 
-Static style-frame production must not begin until:
+Status: Historical gate. Phase 3 static style-frame production and review have happened, and Batu later approved the visual direction after Phase 4.
+
+Static style-frame production could not begin until:
 
 - Batu approves a visual direction.
 - Batu approves the static style-frame composition plan.
 - The composition/style approval is supported by at least one lo-fi exploratory visual artifact or reference board clearly labeled "lo-fi / exploratory / not final."
 
-If Batu approves a visual direction with edits, Codex must update this document and `docs/DECISION_LOG.md` before producing the style frame.
+Future visual-direction changes still require Batu approval and source-of-truth documentation updates.
 
 ## Shared Style Rules
 
@@ -670,7 +687,9 @@ Too documentary:
 - No graphic attitude.
 - Dry information cards.
 
-## Static Style Frame Plan
+## Historical Static Style Frame Plan
+
+Status: Historical planning note. Phase 3 Revision A now exists and is approved as static style-frame gate evidence only; it does not approve final visual direction, implementation, production assets, architecture, or public interfaces.
 
 Proposed frame:
 
@@ -689,8 +708,8 @@ Purpose:
 - Prove screenshot appeal.
 - Establish world/UI balance.
 
-Approval gate:
+Historical approval gate:
 
 - Batu must approve the visual direction and static style-frame composition before Codex creates the frame.
 - The style-frame composition approval must be supported by at least one lo-fi exploratory visual artifact or reference board clearly labeled "lo-fi / exploratory / not final."
-- React/Vite/Pixi implementation remains blocked until the static style frame is approved.
+- React/Vite/Pixi implementation remains blocked until Batu explicitly opens the architecture/prototype gate and architecture boundaries/public interfaces are documented and reviewed.
