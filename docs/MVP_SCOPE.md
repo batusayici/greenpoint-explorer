@@ -204,6 +204,23 @@ Previous-scene candidates now parked outside the current MVP-05 validation set:
 - Polka Dot / 726 Manhattan Ave.
 - Karczma.
 
+## Active Scene Confirmation Guardrail
+
+Before any future source validation, scene translation, visual polish, data alignment, or real-place implementation work, Codex must:
+
+1. Confirm the active scene/place set from current app/data files.
+2. List that active set in its task output.
+3. Treat previous-scene entities as archival/reference-only unless the current brief explicitly reactivates them.
+4. Stop and report if control docs, review artifacts, and app/data files disagree about the active scene, unless the current brief explicitly identifies that disagreement and authorizes correcting it.
+
+Current durable active scene/place set:
+
+- Greenpoint Deli.
+- McDonald's.
+- Dunkin'.
+- Citizens Bank.
+- Greenpoint G subway.
+
 Possible later expansion:
 
 - Radio Bakery / India St, only if the rendered scene expands north toward India St.

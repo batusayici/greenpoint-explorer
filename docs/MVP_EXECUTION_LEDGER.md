@@ -55,9 +55,9 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-05 Source-Of-Truth Validation Spike corrected as docs/data-only review evidence for the current scene; pending Batu/ChatGPT review.
+- Current phase: MVP-06 Corrective Scene Translation And Data Realignment brief prepared; pending Batu/ChatGPT acceptance before implementation.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: no active Codex execution task; Batu/ChatGPT should review the corrected MVP-05 and approve or revise a proposed MVP-06 Corrective Scene Translation And Data Realignment Brief.
+- Current next recommended task: accept or revise the proposed MVP-06 implementation brief in `docs/CURRENT_EXECUTION_BRIEF.md`.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
@@ -477,3 +477,78 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` still states that there is no active Codex execution task and recommends Batu/ChatGPT review of corrected MVP-05 before any proposed MVP-06 corrective scene/data task.
+
+### 2026-05-29 - MVP-06 Corrective Scene Translation Brief
+
+Status:
+- Complete as brief-writing batch.
+
+Scope:
+- Create a concise MVP-06 implementation brief after acceptance of the corrected MVP-05 `revise` verdict.
+- Authorize only the minimum app/source/data changes needed to align the prototype with the corrected current scene boundary after the brief is accepted.
+- Preserve Visual Polish / Optional Ambient as blocked.
+- Avoid app/source/assets, screenshots, package/config/tooling/CI/deployment changes, staging, and commit in this brief-writing batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Requested MVP-05, control docs, MVP scope, and source files reviewed.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now contains the proposed MVP-06 Corrective Scene Translation And Data Realignment implementation brief.
+- The brief limits implementation to `src/mvpPlaceData.js`, `src/App.jsx`, `src/PlaceholderWorld.jsx`, `src/styles.css`, MVP-06 review screenshots, MVP-06 self-audit, and required control-doc reconciliation.
+- The brief requires current-scene data/UI for Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway, removal of stale previous-scene active data/UI, review screenshots, and a self-audit mapping each visible place/card to MVP-05 evidence status.
+- The brief keeps LiveXYZ as identity/presence evidence only and blocks Google/Street View-style imagery as facade evidence.
+- `docs/PLAN.md` now points to MVP-06 as the proposed next implementation task and keeps Visual Polish / Optional Ambient blocked behind MVP-06.
+- `docs/MVP_SCOPE.md` was not changed because the durable scope boundary already reflected the corrected current-scene set.
+- No app/source/assets were modified.
+- No visuals or screenshots were generated.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept or revise the proposed MVP-06 implementation brief before Codex executes implementation.
+- Batu still owns candidate treatment decisions, branded-chain treatment decisions, public representation, exact geometry, and visual-reference approval.
+- Visual Polish / Optional Ambient remains blocked until MVP-06 is implemented, reviewed, and accepted.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to proposed MVP-06 Corrective Scene Translation And Data Realignment as the next implementation task pending acceptance.
+
+### 2026-05-29 - Active Scene Confirmation Guardrail
+
+Status:
+- Complete.
+
+Scope:
+- Add a control-doc guardrail after the MVP-05 scene identity drift correction.
+- Require future source validation, scene translation, visual polish, data alignment, and real-place implementation work to confirm the active scene/place set from current app/data files before making decisions.
+- Keep the change docs-only with no app/source/assets, screenshots, package/config/tooling/CI/deployment changes, staging, or commit.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- `docs/MVP_SCOPE.md` now contains the durable Active Scene Confirmation Guardrail and records the current durable active scene/place set: Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- `docs/PLAN.md` now carries a tight roadmap-level pointer to the guardrail.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now requires MVP-06 implementation to confirm and list the active app/data scene set before implementation and notes that this brief explicitly authorizes correcting the known stale app/data disagreement.
+- Previous-scene entities remain archival/reference-only unless explicitly reactivated.
+
+Unresolved decisions:
+- Batu/ChatGPT must still accept or revise the proposed MVP-06 implementation brief before Codex executes implementation.
+- Visual Polish / Optional Ambient remains blocked until MVP-06 is implemented, reviewed, and accepted.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to proposed MVP-06 Corrective Scene Translation And Data Realignment as the next implementation task pending acceptance.
