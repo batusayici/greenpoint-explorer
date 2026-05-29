@@ -55,9 +55,9 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Static MVP Data Contract pending approval.
+- Current phase: MVP Interaction Integration pending approval.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: MVP-03 Static MVP Data Contract, pending Batu/ChatGPT approval.
+- Current next recommended task: MVP-04 MVP Interaction Integration, pending Batu/ChatGPT approval of the MVP-03 contract proposal and implementation boundary.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
@@ -264,3 +264,45 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-03 Static MVP Data Contract as a proposed next task pending approval.
+
+### 2026-05-29 - MVP-03 Static MVP Data Contract
+
+Status:
+- Complete.
+
+Scope:
+- Produce a docs-only static MVP data contract proposal grounded in `docs/PLACE_SCHEMA.md`, `docs/PLACE_SOURCE_POLICY.md`, and the MVP-02 truth packet.
+- Define required conceptual fields for real places, symbolic anchors, context buildings, placeholders, omitted/deferred candidates, source references, card data, status vocabulary, and shared disclaimer handling.
+- Reconcile the plan, MVP scope, current brief, and ledger.
+- Avoid app/source/asset edits, visual generation, staging, and commits.
+
+Files changed:
+- `docs/mvp-review/mvp-03-static-mvp-data-contract/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Existing repo docs and source-policy evidence reviewed.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-03 static data contract packet defines the docs-only static MVP data shape needed to preserve source metadata, verification status, placement uncertainty, manual-review flags, approval state, candidate outcomes, card constraints, and disclaimer requirements.
+- The packet separates `Place`, `Building`, `Storefront`, and `MapAnchor` concepts so future integration does not flatten multi-tenant or uncertain storefront relationships into misleading public claims.
+- The packet proposes a future static source-file boundary only as a review item, not as an approved app/source interface or implementation path.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to proposed MVP-04 MVP Interaction Integration.
+- No app/source/assets were modified.
+- No visuals were generated.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must approve, revise, or reject the MVP-03 contract proposal before implementation.
+- Batu/ChatGPT must approve the static MVP place-data implementation boundary and allowed app/source files before MVP-04 can execute.
+- Batu must decide which candidates receive cards, symbolic treatment, placeholders, omission, deferral, manual verification, or public copy.
+- Public interfaces, production assets, production data contracts, architecture, deployment, and MVP completion remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-04 MVP Interaction Integration as a proposed next task pending Batu/ChatGPT approval of the MVP-03 contract proposal and implementation boundary.

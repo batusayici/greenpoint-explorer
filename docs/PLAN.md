@@ -44,14 +44,14 @@ Use these in order when documents conflict:
 
 ## Current State Snapshot
 
-- Current phase: Static MVP Data Contract pending approval.
+- Current phase: MVP Interaction Integration pending approval.
 - Current Codex task pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended executable task: MVP-03 Static MVP Data Contract, pending Batu/ChatGPT approval.
+- Current next recommended executable task: MVP-04 MVP Interaction Integration, pending Batu/ChatGPT approval of the MVP-03 contract proposal and implementation boundary.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 proof and supported by the Phase 4.5 reusable-system scalability proof.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
 - Active implementation evidence observed in the repository: review-only prototype source uses one Phase 6 raster with fictional-safe targets. Phase 6.1 and Phase 6.2 screenshots exist under `docs/archive/review-screenshots/` as review history, not active execution authority unless Batu/ChatGPT promote them.
-- Current blockers: production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact addresses, exact station geometry, factual card copy, static implementation data boundary approval, public module/interface approval, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage.
+- Current blockers: production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact addresses, exact station geometry, factual card copy, MVP-03 static data contract approval, static implementation data boundary approval, public module/interface approval, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage.
 - Detailed MVP boundaries: `docs/MVP_SCOPE.md`.
 - Anti-drift rule: future prototype work must use approved raster/reference assets or reviewed asset-kit logic as the primary visual world surface. Generic SVG/CSS/DOM/canvas/code-drawn storefronts must not substitute for primary world evidence.
 
@@ -65,8 +65,8 @@ Use these in order when documents conflict:
 | 3. Review-Only Prototype Evidence | Demonstrate the approved raster direction inside the interactive shell with fictional-safe targets. | Phase 6 translation plan exists and constrained implementation is approved. | Existing pan/zoom/hover/click/tap/card/mobile behavior is demonstrated with review screenshots and no production claims. | Evidence appears present; pending Batu/ChatGPT review. |
 | 4. MVP Gap Review | Review current prototype evidence and identify the exact gap to MVP completion. | Review-only prototype evidence exists. | `docs/mvp-review/mvp-01-prototype-state-review-and-gap-brief/README.md` identifies current evidence, missing MVP work, blockers, and next implementation sequence. | Complete as docs-only review artifact; requires Batu/ChatGPT review. |
 | 5. Place Truth Packet | Select candidate real places, source evidence, copy constraints, spatial risks, and omissions. | Batu/ChatGPT approve moving from fictional placeholders toward real-place MVP data review. | Place truth packet lists recommended approved/deferred/omitted/fictionalized candidates with source URLs, source-review dates, truth status, and unresolved placement decisions. | Complete as docs-only review artifact; requires Batu/ChatGPT review. |
-| 6. Static MVP Data Contract | Define the static local data shape needed for the MVP without approving live data or a production data platform. | Place Truth Packet is reviewed and the implementation boundary is approved. | Docs-only data contract or approved source file boundary defines fields, disclaimers, source metadata, and review rules. | Current next recommended phase. |
-| 7. MVP Interaction Integration | Integrate approved static data and final MVP interaction behavior into the prototype. | Static MVP Data Contract and implementation brief are approved. | Prototype demonstrates approved targets, cards, marker states, selected treatment, pan/zoom, hover/click/tap, and mobile containment with review screenshots. | Blocked. |
+| 6. Static MVP Data Contract | Define the static local data shape needed for the MVP without approving live data or a production data platform. | Place Truth Packet is reviewed and the implementation boundary is approved. | Docs-only data contract or approved source file boundary defines fields, disclaimers, source metadata, and review rules. | Complete as docs-only proposal; requires Batu/ChatGPT review before implementation. |
+| 7. MVP Interaction Integration | Integrate approved static data and final MVP interaction behavior into the prototype. | Static MVP Data Contract and implementation brief are approved. | Prototype demonstrates approved targets, cards, marker states, selected treatment, pan/zoom, hover/click/tap, and mobile containment with review screenshots. | Current next recommended phase, pending approval. |
 | 8. Visual Polish / Optional Ambient | Polish the contained MVP experience and add only approved ambient visual loops. | Core MVP interaction slice works. | Review screenshots and notes show accepted visual polish, optional ambient loops or explicit cuts, and no production-asset claims. | Blocked. |
 | 9. MVP QA And Demo Freeze | Verify MVP behavior, truth policy, visual containment, and demo readiness. | MVP feature slice and polish pass exist. | MVP QA checklist, smoke-check report, accepted exceptions, and demo-freeze notes are complete. | Blocked. |
 | 10. MVP Completion / Post-MVP Parking | Mark MVP complete or hold with explicit blockers, and keep expansion ideas parked. | MVP QA And Demo Freeze exits. | MVP completion note records final status; post-MVP ideas remain parked unless Batu promotes them. | Future-only. |
@@ -75,9 +75,9 @@ Use these in order when documents conflict:
 
 The next recommended Codex task is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- MVP-03 Static MVP Data Contract.
+- MVP-04 MVP Interaction Integration.
 
-This is proposed for Batu/ChatGPT approval. It does not itself approve app/source changes, production assets, real-place cards, public interfaces, architecture, deployment, live data, or broad implementation.
+This is proposed for Batu/ChatGPT approval. It requires approval of the MVP-03 contract proposal and a specific app/source implementation boundary before Codex executes it. It does not itself approve production assets, real-place production cards, public interfaces beyond the approved MVP implementation boundary, architecture, deployment, live data, or broad implementation.
 
 ## Locked Decisions
 
@@ -108,10 +108,10 @@ This is proposed for Batu/ChatGPT approval. It does not itself approve app/sourc
 
 ## Pending Decisions
 
-- Whether Batu/ChatGPT accept the MVP-02 place-truth packet recommendations.
-- Whether the next approved task should be the proposed MVP-03 Static MVP Data Contract.
+- Whether Batu/ChatGPT accept the MVP-02 place-truth packet recommendations and MVP-03 static data contract proposal.
+- Whether the next approved task should be the proposed MVP-04 MVP Interaction Integration.
 - Which remaining MVP implementation sequence Batu wants after the gap review.
-- Which MVP-02 real-place candidate recommendations are accepted, revised, or rejected, including omissions, unknown/closed handling, symbolic treatment, fictionalization, and manual verification.
+- Which MVP-02 real-place candidate recommendations and MVP-03 data-boundary recommendations are accepted, revised, or rejected, including omissions, unknown/closed handling, symbolic treatment, fictionalization, manual verification, static source-file boundary, and disclaimer handling.
 - Whether any Should-Have or Cuttable scope items in `docs/MVP_SCOPE.md` should be promoted, cut, or deferred.
 - What public interfaces and module boundaries are approved for any future implementation phase.
 - What production asset direction and production asset pipeline, if any, should be approved later.

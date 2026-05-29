@@ -66,7 +66,7 @@ Allowed review/demo-safe material can include:
 - Supplied or approved raster scene plates.
 - Copied review-only local raster assets when explicitly allowed by the current brief.
 - Fictional placeholder target labels and card copy.
-- Static manually authored place data after Batu/ChatGPT approve the place-truth step.
+- Static manually authored place data after Batu/ChatGPT approve the place-truth step, the MVP-03 static data contract proposal, and a specific implementation boundary.
 - Review screenshots and smoke-check evidence.
 
 This does not approve:
