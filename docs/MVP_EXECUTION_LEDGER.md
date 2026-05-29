@@ -55,9 +55,9 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-04 Interaction Integration reviewed; useful as a technical interaction baseline, but not accepted as final visual/source-frame integration.
+- Current phase: MVP-05 Source-Of-Truth Validation Spike corrected as docs/data-only review evidence for the current scene; pending Batu/ChatGPT review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: MVP-05 Source-Of-Truth Validation Spike, pending Batu/ChatGPT approval of the validation-spike boundary.
+- Current next recommended task: no active Codex execution task; Batu/ChatGPT should review the corrected MVP-05 and approve or revise a proposed MVP-06 Corrective Scene Translation And Data Realignment Brief.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
@@ -391,3 +391,89 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-05 Source-Of-Truth Validation Spike as a proposed next task pending Batu/ChatGPT approval.
+
+### 2026-05-29 - MVP-05 Source-Of-Truth Validation Spike
+
+Status:
+- Complete.
+
+Scope:
+- Execute the approved MVP-05 docs/data-only validation spike for the current Manhattan Ave / Greenpoint Ave scene boundary.
+- Produce one review artifact with 5-10 storefront evidence cards, confidence notes, provenance notes, manual-review flags, and a proceed/revise/cut verdict.
+- Reconcile `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and this ledger.
+- Avoid app/source edits, visual asset edits or generation, screenshots, package/config/build/CI/deployment changes, live data, scraping, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-05-source-of-truth-validation-spike/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Existing repo docs and project evidence reviewed.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-05 review packet records eight candidate evidence cards: Greenpoint Av G station, Peter Pan Donut & Pastry Shop, Sweetgreen Greenpoint, former Meserole Theater / 723-725 Manhattan Ave, Captured Record Shop, Polka Dot / 726 Manhattan Ave, Karczma, and Brouwerij Lane.
+- The packet carries building/tax-lot linkage only where already present in project evidence and marks missing/blocked items explicitly.
+- The packet marks current Google Maps / Google Street View-style scene images as blocked visual-reference evidence under the current brief and does not use them for facade claims.
+- The packet verdict is `revise`: address/source data is useful, but owned/approved storefront-specific visual references and manual verification are insufficient for confident real-place usage before Visual Polish / Optional Ambient.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records no active Codex execution task and points to Batu/ChatGPT review of MVP-05.
+- `docs/MVP_SCOPE.md` was not changed because MVP boundaries did not change.
+- No app/source/assets were modified.
+- No visuals were generated.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-05 `revise` verdict.
+- Batu/ChatGPT must approve or revise any MVP-06 Corrective Scene Translation And Data Realignment Brief before Codex executes further work.
+- Batu must decide candidate treatments, approved non-Google visual references, and any manual public-representation overrides.
+- Visual Polish / Optional Ambient remains blocked until MVP-05 is reviewed and any corrective scene/data realignment is approved and reviewed.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now states that there is no active Codex execution task and recommends Batu/ChatGPT review of MVP-05 before any proposed MVP-06 corrective scene/data task.
+
+### 2026-05-29 - MVP-05 Current-Scene Correction
+
+Status:
+- Complete.
+
+Scope:
+- Correct the MVP-05 review artifact and control docs so they refer to the actual current scene rather than stale previous-scene businesses.
+- Replace the stale previous-scene set with Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Treat user-provided LiveXYZ links as identity/presence evidence only, not approved facade/art references.
+- Avoid app/source edits, visual asset edits or generation, screenshots, package/config/build/CI/deployment changes, live data, scraping, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-05-source-of-truth-validation-spike/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/MVP_SCOPE.md`
+
+Verification:
+- Existing artifact, control docs, MVP scope, and `src/mvpPlaceData.js` inspected.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- Corrected MVP-05 now records five current-scene evidence cards: Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Sweetgreen, Captured, Karczma, Polka Dot, Peter Pan, and former Meserole Theater are explicitly marked as previous-scene/stale references, not current pending-review businesses.
+- LiveXYZ links are documented as useful identity/presence evidence only; they were not fetched, scraped, or treated as approved facade/art references.
+- The final MVP-05 verdict remains `revise`, now grounded in the corrected current scene.
+- `docs/MVP_SCOPE.md` now records the current candidate set and parks the previous-scene candidates outside the current MVP-05 validation set.
+- No app/source/assets were modified.
+- No visuals were generated.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the corrected MVP-05 `revise` verdict.
+- Batu/ChatGPT must decide current candidate treatments for Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Batu/ChatGPT must approve any MVP-06 corrective scene/data implementation boundary, including allowed files and approved non-Google visual references.
+- Visual Polish / Optional Ambient remains blocked until corrected MVP-05 is reviewed and any corrective scene/data realignment is approved and reviewed.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still states that there is no active Codex execution task and recommends Batu/ChatGPT review of corrected MVP-05 before any proposed MVP-06 corrective scene/data task.

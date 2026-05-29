@@ -56,6 +56,8 @@ The MVP may include:
 - Place cards with neutral factual copy, source URL, last verified date, and unofficial-map disclaimer.
 - 2-4 ambient visual-only loops if they support the scene without becoming product systems.
 - Review-only labels and QA affordances when they are visually secondary and separate from product-facing UI.
+- One narrow source-of-truth validation spike for the same scene/block face, limited to 5-10 storefront candidates, if approved by the current brief.
+- Review-only storefront evidence cards covering candidate address, building/tax-lot linkage, business match, visual-reference provenance, facade cues, confidence, and manual follow-up.
 
 ## Demo-Safe Assets And Data
 
@@ -67,6 +69,8 @@ Allowed review/demo-safe material can include:
 - Copied review-only local raster assets when explicitly allowed by the current brief.
 - Fictional placeholder target labels and card copy.
 - Static manually authored place data after Batu/ChatGPT approve the place-truth step, the MVP-03 static data contract proposal, and a specific implementation boundary.
+- Owned or explicitly approved field-reference photos for review-only source-of-truth validation, with provenance metadata.
+- Static review-only storefront evidence cards generated from approved public/open data plus manual observations.
 - Review screenshots and smoke-check evidence.
 
 This does not approve:
@@ -76,10 +80,28 @@ This does not approve:
 - A production asset pipeline.
 - Generated storefront factories.
 - Automated extraction, sprite generation, or build-time asset systems.
+- Automated source-of-truth pipelines, storefront-unit databases, live refresh, or broad data imports.
+- Google/Street View/3D Tiles imagery as stored reference, training input, generation input, texture source, or extracted facade data.
 - Public-release real-place data.
 - Live data, scraping, automated refresh, or CMS-backed content.
 
 Review-only raster assets must remain labeled non-production and must not be described as production assets, factual Greenpoint representations, exact facades, exact addresses, exact station geometry, or approved production asset direction.
+
+## MVP-Adjacent Source-Of-Truth Validation Spike
+
+A current brief may approve one narrow validation spike to test whether the recommended hybrid source-of-truth approach works before further polish. This is evidence for decision-making, not a production system.
+
+The spike may produce only:
+
+- 5-10 review-only storefront evidence cards for the current scene/block face.
+- Candidate address, BBL/BIN or tax-lot/building linkage, and source notes.
+- Candidate business match, status, category, confidence, and unresolved conflicts.
+- Owned/approved visual-reference notes and a facade cue checklist.
+- A short scale-readiness note: what automated cleanly, what required manual review, and what blocks corridor/neighborhood expansion.
+
+The spike must not produce live data, scraping, backend services, public-release cards, broad coverage, Google/Street View-derived assets, AI training data, or production storefront-unit claims.
+
+The exit question is: can this block face reach enough confidence to support MVP real-place cards and future scaling, or should the MVP stay more fictional/place-light until the source-of-truth approach is stronger?
 
 ## Detailed MVP Out Of Scope / Non-Goals
 
@@ -89,6 +111,8 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Production asset pipeline.
 - Production asset direction.
 - Broad map coverage.
+- Automated storefront/business matching at scale.
+- Google/Street View/3D Tiles-derived extraction, training, generation, or texture reuse.
 - Backend services.
 - CMS.
 - Live data.
@@ -145,6 +169,7 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Small product-facing details that reinforce the paper/card UI direction.
 - Review screenshots for default, hover/focus, selected, mobile containment, and pan/zoom stress states.
 - A concise manual QA checklist for MVP demo freeze.
+- A review-only source-of-truth validation packet for the same scene/block face before final visual polish, if approved.
 
 ### Cuttable
 
@@ -160,14 +185,24 @@ First scene:
 
 > Manhattan Ave / Greenpoint Ave handheld diorama, using one compact intersection or adjacent storefront row.
 
-Candidate anchors, pending Batu/ChatGPT review of `docs/mvp-review/mvp-02-place-truth-packet/README.md` and later static data approval:
+Current candidate anchors, pending Batu/ChatGPT review of the corrected `docs/mvp-review/mvp-05-source-of-truth-validation-spike/README.md` and later static data approval:
 
+- Greenpoint Deli as a current-scene candidate requiring address, building/tax-lot, storefront, status, and visual-reference verification.
+- McDonald's as a current-scene candidate requiring address, building/tax-lot, storefront, status, branded-treatment, and visual-reference verification.
+- Dunkin' as a current-scene candidate requiring address, building/tax-lot, storefront, status, branded-treatment, and visual-reference verification.
+- Citizens Bank as a current-scene candidate requiring address, building/tax-lot, storefront, status, branded-treatment, and visual-reference verification.
 - Greenpoint Ave G station / subway entrance as a symbolic transit anchor only until exact access-point geometry is manually verified.
-- Peter Pan Donut & Pastry Shop - 727 Manhattan Ave as a primary real-place candidate requiring manual storefront/placement verification.
-- Sweetgreen Greenpoint - 723 Manhattan Ave as a conditional real-place candidate requiring manual frontage/entrance verification.
-- Former Meserole Theater / 723-725 Manhattan Ave as context-building mass only unless later historical/card copy is separately approved.
-- Captured Record Shop - 718 Manhattan Ave only if manual review clears storefront/entrance representation and the scene boundary supports the even-numbered Manhattan Ave side.
-- Karczma - 136 Greenpoint Ave only if Batu approves westward Greenpoint Ave slice expansion.
+
+User-provided LiveXYZ links for the four business candidates are useful for current-scene identity/presence review only. They do not by themselves approve exact addresses, active-status finality, facade/art reference use, storefront frontage, entrance geometry, production placement, or public card copy.
+
+Previous-scene candidates now parked outside the current MVP-05 validation set:
+
+- Peter Pan Donut & Pastry Shop.
+- Sweetgreen Greenpoint.
+- Former Meserole Theater / 723-725 Manhattan Ave.
+- Captured Record Shop.
+- Polka Dot / 726 Manhattan Ave.
+- Karczma.
 
 Possible later expansion:
 
@@ -180,7 +215,7 @@ The diorama may simplify or compress distances for readability, but it must not 
 
 The scene should feel like an authored miniature, not a precise GIS map.
 
-MVP-02 currently recommends omitting Polka Dot as an active business unless status conflicts are manually resolved. If Batu wants density at that location, use a clearly fictional placeholder or an unknown/closed treatment after review.
+The corrected MVP-05 packet supersedes previous-scene candidate handling for current-scene review. If Batu wants density where evidence is incomplete, use clearly fictional placeholders or context-only treatment until current-scene verification clears real-place use.
 
 ## Business Representation Policy
 
@@ -218,4 +253,6 @@ The MVP can be considered complete only when:
 - The visual presentation remains aligned with the approved Inked Indie / Compact Corner direction.
 - Demo-safe assets and data are not presented as production/public-release approval.
 - QA records accepted passes, misses, or explicit cuts.
+- Any source-of-truth validation spike remains review-only evidence and does not approve a production data, imagery, or asset pipeline.
+- The source-of-truth validation spike records a clear proceed, revise, or cut recommendation for real-place usage before final visual polish/demo freeze.
 - Post-MVP ideas remain parked unless Batu explicitly promotes them.

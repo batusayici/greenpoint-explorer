@@ -44,14 +44,14 @@ Use these in order when documents conflict:
 
 ## Current State Snapshot
 
-- Current phase: MVP Interaction Integration complete as a review/demo-safe implementation batch; pending Batu/ChatGPT review.
+- Current phase: MVP-05 Source-Of-Truth Validation Spike complete as a docs/data-only review artifact; pending Batu/ChatGPT review.
 - Current Codex task pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: MVP-05 Source-Of-Truth Validation Spike, pending Batu/ChatGPT approval of the MVP-04 output and validation-spike boundary.
+- Current next recommended task: no active Codex execution task; Batu/ChatGPT should review MVP-05 and approve or revise a proposed MVP-06 Corrective Scene Translation And Data Realignment Brief.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 proof and supported by the Phase 4.5 reusable-system scalability proof.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
 - Active implementation evidence observed in the repository: review-only prototype source now uses a user-provided Manhattan Ave / Greenpoint Ave street-reference raster as the primary review surface, static local MVP data, five interaction targets, source metadata, `lastVerified`, uncertainty notes, disclaimer behavior, and fresh MVP-04 review screenshots under `docs/review-screenshots/mvp-04-interaction-integration/`.
-- Current blockers: Batu/ChatGPT review of the MVP-04 output, approval of the MVP-05 validation-spike boundary, production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact addresses, exact station geometry, final factual card copy, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage.
+- Current blockers: Batu/ChatGPT review of the corrected MVP-05 `revise` verdict for Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway; approval of any corrective scene/data implementation boundary; approved non-Google storefront-specific visual references; production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact addresses, exact station geometry, final factual card copy, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage.
 - Detailed MVP boundaries: `docs/MVP_SCOPE.md`.
 - Anti-drift rule: future prototype work must use approved raster/reference assets or reviewed asset-kit logic as the primary visual world surface. Generic SVG/CSS/DOM/canvas/code-drawn storefronts must not substitute for primary world evidence.
 
@@ -67,25 +67,20 @@ Use these in order when documents conflict:
 | 5. Place Truth Packet | Select candidate real places, source evidence, copy constraints, spatial risks, and omissions. | Batu/ChatGPT approve moving from fictional placeholders toward real-place MVP data review. | Place truth packet lists recommended approved/deferred/omitted/fictionalized candidates with source URLs, source-review dates, truth status, and unresolved placement decisions. | Complete as docs-only review artifact; requires Batu/ChatGPT review. |
 | 6. Static MVP Data Contract | Define the static local data shape needed for the MVP without approving live data or a production data platform. | Place Truth Packet is reviewed and the implementation boundary is approved. | Docs-only data contract or approved source file boundary defines fields, disclaimers, source metadata, and review rules. | Complete as docs-only proposal; requires Batu/ChatGPT review before implementation. |
 | 7. MVP Interaction Integration | Integrate approved static data and final MVP interaction behavior into the prototype. | Static MVP Data Contract and implementation brief are approved. | Prototype demonstrates approved targets, cards, marker states, selected treatment, pan/zoom, hover/click/tap, and mobile containment with review screenshots. | Complete as review/demo-safe MVP-04 batch; pending Batu/ChatGPT review. |
-| 8. Source-Of-Truth Validation Spike | Test the recommended open-data + owned/approved visual-reference + human-QA approach on the current block face before more polish. | MVP-04 output is reviewed enough to know the active scene/block face; validation-spike boundary is approved. | 5-10 review-only storefront evidence cards, confidence notes, provenance notes, manual-review flags, and a short scale-readiness verdict exist; no production pipeline or public claims. | Proposed next phase; approval needed before execution. |
-| 9. Visual Polish / Optional Ambient | Polish the contained MVP experience and add only approved ambient visual loops. | Core MVP interaction slice works and the validation spike has a proceed/revise/cut verdict. | Review screenshots and notes show accepted visual polish, optional ambient loops or explicit cuts, and no production-asset claims. | Blocked behind validation spike. |
+| 8. Source-Of-Truth Validation Spike | Test the recommended open-data + owned/approved visual-reference + human-QA approach on the current block face before more polish. | MVP-04 output is reviewed enough to know the active scene/block face; validation-spike boundary is approved. | 5-10 review-only storefront evidence cards, confidence notes, provenance notes, manual-review flags, and a short scale-readiness verdict exist; no production pipeline or public claims. | Corrected as docs/data-only MVP-05 artifact for Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway; verdict is `revise`; pending Batu/ChatGPT review. |
+| 9. Visual Polish / Optional Ambient | Polish the contained MVP experience and add only approved ambient visual loops. | Core MVP interaction slice works, MVP-05 is reviewed, and any required corrective scene/data realignment is approved and reviewed. | Review screenshots and notes show accepted visual polish, optional ambient loops or explicit cuts, and no production-asset claims. | Blocked behind MVP-05 review and proposed corrective scene/data realignment boundary. |
 | 10. MVP QA And Demo Freeze | Verify MVP behavior, truth policy, visual containment, and demo readiness. | MVP feature slice, validation verdict, and polish pass exist. | MVP QA checklist, smoke-check report, accepted exceptions, and demo-freeze notes are complete. | Blocked. |
 | 11. MVP Completion / Post-MVP Parking | Mark MVP complete or hold with explicit blockers, and keep expansion ideas parked. | MVP QA And Demo Freeze exits. | MVP completion note records final status; post-MVP ideas remain parked unless Batu promotes them. | Future-only. |
 
 ## Current Next Task
 
-The next recommended Codex task is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
+The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- MVP-05 Source-Of-Truth Validation Spike.
+- No active Codex execution task.
+- Batu/ChatGPT should review `docs/mvp-review/mvp-05-source-of-truth-validation-spike/README.md`.
+- Recommended next task, if approved, is an MVP-06 Corrective Scene Translation And Data Realignment Brief.
 
-This is proposed before Visual Polish / Optional Ambient so the team tests whether the recommended approach can support the current real-place/block-face claims before polishing the scene. Codex should keep it docs/data-only unless the current brief explicitly says otherwise.
-
-Tight Codex output target:
-
-- Create or update one review artifact under `docs/mvp-review/` for the active block face.
-- Produce 5-10 storefront evidence cards with candidate address, building/tax-lot linkage, business match, source/provenance notes, facade cues, confidence, and manual-review flags.
-- Include a short verdict: proceed, revise, or cut real-place usage before visual polish.
-- Do not add backend services, live data, scraping, broad imports, production asset work, Google/Street View-derived inputs, or public-release claims.
+The next active brief should define allowed files, current candidate treatments, approved non-Google visual references, implementation boundaries, and required checks before Codex performs any app/source, asset, screenshot, package/config/build/CI/deployment, staging, or commit work.
 
 ## Locked Decisions
 
@@ -119,9 +114,10 @@ Tight Codex output target:
 
 ## Pending Decisions
 
-- Whether Batu/ChatGPT accept the MVP-04 review/demo-safe interaction integration output.
-- Whether the next approved task should be the proposed MVP-05 Source-Of-Truth Validation Spike.
-- Whether Visual Polish / Optional Ambient should proceed only after the validation spike returns a proceed/revise/cut verdict.
+- Whether Batu/ChatGPT accept, revise, or reject the corrected MVP-05 `revise` verdict for the current scene.
+- Whether Batu/ChatGPT approve an MVP-06 Corrective Scene Translation And Data Realignment Brief before Visual Polish / Optional Ambient.
+- Which non-Google, owned, or explicitly approved storefront-specific visual references are allowed for any corrective scene/data work.
+- Whether Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway should be real cards, context only, fictionalized, omitted, or blocked.
 - Which remaining MVP implementation sequence Batu wants after the gap review.
 - Which MVP-02 real-place candidate recommendations and MVP-03 data-boundary recommendations need revision after MVP-04, including omissions, unknown/closed handling, symbolic treatment, fictionalization, manual verification, static source-file boundary, and disclaimer handling.
 - Whether any Should-Have or Cuttable scope items in `docs/MVP_SCOPE.md` should be promoted, cut, or deferred.
