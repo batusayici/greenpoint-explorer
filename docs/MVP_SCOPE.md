@@ -160,22 +160,27 @@ First scene:
 
 > Manhattan Ave / Greenpoint Ave handheld diorama, using one compact intersection or adjacent storefront row.
 
-Candidate anchors, pending source/placement approval:
+Candidate anchors, pending Batu/ChatGPT review of `docs/mvp-review/mvp-02-place-truth-packet/README.md` and later static data approval:
 
-- Peter Pan Donuts - 727 Manhattan Ave.
-- Karczma - 136 Greenpoint Ave.
-- Greenpoint Ave G station / subway entrance.
-- 1-3 nearby storefronts only if spatially coherent.
+- Greenpoint Ave G station / subway entrance as a symbolic transit anchor only until exact access-point geometry is manually verified.
+- Peter Pan Donut & Pastry Shop - 727 Manhattan Ave as a primary real-place candidate requiring manual storefront/placement verification.
+- Sweetgreen Greenpoint - 723 Manhattan Ave as a conditional real-place candidate requiring manual frontage/entrance verification.
+- Former Meserole Theater / 723-725 Manhattan Ave as context-building mass only unless later historical/card copy is separately approved.
+- Captured Record Shop - 718 Manhattan Ave only if manual review clears storefront/entrance representation and the scene boundary supports the even-numbered Manhattan Ave side.
+- Karczma - 136 Greenpoint Ave only if Batu approves westward Greenpoint Ave slice expansion.
 
 Possible later expansion:
 
 - Radio Bakery / India St, only if the rendered scene expands north toward India St.
+- Brouwerij Lane / Franklin-Greenpoint area, only if a later slice or expanded boundary is approved.
 
 ## Geographic Rule
 
 The diorama may simplify or compress distances for readability, but it must not relocate businesses onto incorrect streets or imply false adjacency.
 
 The scene should feel like an authored miniature, not a precise GIS map.
+
+MVP-02 currently recommends omitting Polka Dot as an active business unless status conflicts are manually resolved. If Batu wants density at that location, use a clearly fictional placeholder or an unknown/closed treatment after review.
 
 ## Business Representation Policy
 

@@ -55,9 +55,9 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Place Truth Packet pending approval.
+- Current phase: Static MVP Data Contract pending approval.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: MVP-02 Place Truth Packet, pending Batu/ChatGPT approval.
+- Current next recommended task: MVP-03 Static MVP Data Contract, pending Batu/ChatGPT approval.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
@@ -222,3 +222,45 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-02 Place Truth Packet as a proposed next task pending approval.
+
+### 2026-05-29 - MVP-02 Place Truth Packet
+
+Status:
+- Complete.
+
+Scope:
+- Produce a docs-only place-truth packet for the compact Manhattan Ave / Greenpoint Ave MVP scene.
+- Identify candidate real places, source evidence, spatial coherence risks, copy/disclaimer constraints, and approve/defer/omit/fictionalize recommendations for Batu/ChatGPT review.
+- Reconcile the plan, MVP scope, current brief, ledger, and legacy task tracker.
+- Avoid app/source/asset edits, visual generation, staging, and commits.
+
+Files changed:
+- `docs/mvp-review/mvp-02-place-truth-packet/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/TASKS.md`
+
+Verification:
+- Existing repo docs and source-policy evidence reviewed.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-02 truth packet records the candidate review set, spatial coherence read, manual-verification requirements, and recommended symbolic/defer/omit/fictionalize treatment for Greenpoint Av G station, Peter Pan, Sweetgreen, former Meserole Theater, Captured Record Shop, Polka Dot, Karczma, and Brouwerij Lane.
+- Copy constraints, unofficial-map disclaimer requirements, source metadata requirements, and conceptual static field recommendations are ready for Batu/ChatGPT review.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to proposed MVP-03 Static MVP Data Contract.
+- No app/source/assets were modified.
+- No visuals were generated.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-02 candidate recommendations.
+- Batu must decide which candidates receive manual verification, which are omitted or fictionalized, and whether Karczma requires westward scene expansion.
+- Batu/ChatGPT must approve or revise proposed MVP-03 before Codex executes it.
+- Real-place representation, static data implementation, public interfaces, production assets, architecture, deployment, and MVP completion remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-03 Static MVP Data Contract as a proposed next task pending approval.

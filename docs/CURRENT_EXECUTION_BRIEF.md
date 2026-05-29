@@ -2,34 +2,38 @@
 
 Status: Proposed next MVP task, pending Batu/ChatGPT approval
 Date: 2026-05-29
-Recommended task: MVP-02 Place Truth Packet
+Recommended task: MVP-03 Static MVP Data Contract
 
 This file is the single next-task pointer for Codex. Because this brief is marked proposed, Codex should not execute it until Batu or ChatGPT explicitly approves it as the active task.
 
 ## Recommended Task
 
-MVP-02 Place Truth Packet.
+MVP-03 Static MVP Data Contract.
 
 ## Goal
 
-Create a docs-only place-truth packet for the MVP scene. The packet should identify candidate real places, source evidence, spatial coherence risks, copy constraints, and approve/defer/omit/fictionalize recommendations for Batu/ChatGPT review.
+Create a docs-only static data contract or approved source-file boundary proposal for MVP place data. The packet should translate MVP-02 truth findings into a reviewable data shape for static local MVP data, including source metadata, verification status, spatial uncertainty, approval state, copy/disclaimer requirements, and manual-verification flags.
 
-This is not app/source implementation, production data work, real-place-card implementation, live data, scraping, backend/CMS/persistence/analytics/deployment work, public-interface approval, architecture approval, production asset work, or broad map coverage.
+This is not app/source implementation, production data work, live data, scraping, backend/CMS/persistence/analytics/deployment work, public-interface approval, architecture approval, production asset work, or broad map coverage.
 
 ## Context
 
-MVP-01 reviewed the current repository evidence and concluded that a review-only fictional-target prototype exists, but the biggest remaining MVP blocker is the truth-safe transition from fictional placeholders to 4-6 source-backed real named places.
+MVP-01 reviewed the current repository evidence and concluded that a review-only fictional-target prototype exists.
 
-MVP-01 review packet:
+MVP-02 produced a docs-only place-truth packet identifying candidate real places, source evidence, spatial coherence risks, copy constraints, and approve/defer/omit/fictionalize recommendations for Batu/ChatGPT review.
+
+Review packets:
 
 - `docs/mvp-review/mvp-01-prototype-state-review-and-gap-brief/README.md`
+- `docs/mvp-review/mvp-02-place-truth-packet/README.md`
 
 ## Allowed Files To Change
 
-- `docs/mvp-review/` for the new MVP-02 place-truth packet
+- `docs/mvp-review/` for a new MVP-03 static data contract packet
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`, only if the batch clarifies detailed MVP data boundaries
 - `docs/TASKS.md`, only if needed to prevent stale contradiction
 
 ## Files Off-Limits
@@ -48,21 +52,21 @@ Do not stage or commit.
 
 ## Required Review Questions
 
-Answer from existing docs and source-policy evidence:
+Answer from existing docs, source-policy evidence, `docs/PLACE_SCHEMA.md`, and the MVP-02 truth packet:
 
-- Which real-place candidates are in scope for review?
-- Which candidates appear spatially coherent for a compact Manhattan Ave / Greenpoint Ave scene?
-- Which candidates need manual verification before MVP use?
-- Which candidates should be deferred, omitted, fictionalized, or treated symbolically?
-- What minimum static fields are needed for each approved place?
-- What copy and disclaimer constraints must carry into the later static data contract?
+- What static place fields are required for MVP real places?
+- What fields are required for symbolic anchors, placeholders, context buildings, or omitted/deferred candidates?
+- How should source URLs, source labels, source notes, and `lastVerified` be represented?
+- How should verification status, placement confidence, manual review, approval status, and candidate outcome labels be represented?
+- How should copy and disclaimer constraints carry into place-card data?
+- What should remain conceptual until Batu approves an implementation boundary?
 - What decisions remain reserved for Batu?
 
 ## Public Interfaces And Module Boundaries
 
-No public interfaces or module boundaries may change.
+No app/source public interfaces or module boundaries may change.
 
-Do not create an implementation data contract in this batch. If field recommendations are useful, keep them conceptual and mark them as pending MVP-03 Static MVP Data Contract approval.
+Do not create or modify app/source data files in this batch. If an implementation boundary is proposed, keep it docs-only and explicitly mark it as pending Batu/ChatGPT approval.
 
 ## Verification Requirements
 
@@ -75,7 +79,7 @@ Before final response, run:
 Confirm:
 
 - only allowed docs were changed
-- `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and `docs/MVP_EXECUTION_LEDGER.md` remain reconciled
+- `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/MVP_SCOPE.md`, and `docs/MVP_EXECUTION_LEDGER.md` remain reconciled
 - no app/source/assets were modified
 - no visual artifacts were generated
 - no staging or commit occurred
@@ -84,11 +88,11 @@ Confirm:
 
 The batch is complete only if:
 
-- Candidate real places and spatial risks are explicit.
-- Approved/deferred/omitted/fictionalized recommendations are clearly labeled as recommendations, not final Batu decisions.
-- Source/copy/disclaimer constraints are ready for Batu/ChatGPT review.
+- Static MVP place fields are explicit and grounded in MVP-02.
+- Truth status, source metadata, spatial uncertainty, manual review, approval state, and disclaimer requirements are explicit.
+- The packet does not implement app/source data or approve public interfaces by itself.
 - The next recommended task after the packet is explicit.
-- The plan, current brief, and execution ledger are reconciled.
+- The plan, scope, current brief, and execution ledger are reconciled.
 
 ## Final Response Required
 
