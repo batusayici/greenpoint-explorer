@@ -1,7 +1,19 @@
-# Current Execution Brief - MVP-06 Corrective Scene Translation And Data Realignment
+# Current Execution Brief - Post-MVP-06 Review State
 
-Status: Proposed next implementation brief; pending Batu/ChatGPT acceptance before execution.
-Owner boundary: Codex may execute only the implementation scope below after this brief is accepted. This brief-writing batch does not execute MVP-06.
+Status: MVP-06 Corrective Scene Translation And Data Realignment is implemented for review; no active Codex execution task is approved.
+Owner boundary: Codex must not perform further app/source, visual, polish, ambient, production, CI/deployment, staging, or commit work until Batu/ChatGPT accepts or revises MVP-06 and a later current brief explicitly opens the next scope.
+
+## Current Next Task State
+
+Recommended next step:
+
+- Batu/ChatGPT review of the MVP-06 corrective scene/data output, screenshots, and self-audit.
+
+Next executable task status:
+
+- Pending Batu/ChatGPT review and approval.
+- Visual Polish / Optional Ambient remains blocked.
+- No next implementation task is approved in this file.
 
 ## Context
 
@@ -19,29 +31,29 @@ LiveXYZ links are identity/presence evidence only. They are not approved facade/
 
 Google/Street View-style reference imagery remains blocked as facade evidence. Visual Polish / Optional Ambient remains blocked.
 
-Current source read:
+Current source state after MVP-06:
 
-- `src/mvpPlaceData.js` still contains stale previous-scene active data for Peter Pan, Sweetgreen, and former Meserole Theater, plus deferred Captured, Polka Dot, Karczma, and Brouwerij Lane.
-- `src/App.jsx` renders `mvpScene.targets` and card metadata directly.
-- `src/PlaceholderWorld.jsx` renders target markers, labels, hover/click/tap, pan/zoom, and QA hotspot outlines from the supplied scene data.
+- `src/mvpPlaceData.js` now contains the corrected active set: Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- `src/App.jsx` renders `mvpScene.targets`, evidence-status rows, and card metadata directly.
+- `src/PlaceholderWorld.jsx` renders target markers, labels, hover/click/tap, pan/zoom, QA hotspot outlines, and a dimmed scaffold-only raster treatment from the supplied scene data.
 - `src/placeholderScene.js` remains older fictional placeholder data and is not the active app import.
 
 Active-scene guardrail:
 
 - Before implementation, Codex must confirm the active scene/place set from current app/data files and list that set in the task output.
 - Previous-scene entities are archival/reference-only unless this brief explicitly names them for removal.
-- This brief explicitly identifies the current app/data disagreement and authorizes correcting it by replacing stale active UI/data with Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
-- If any additional disagreement appears among control docs, review artifacts, and app/data files, Codex must stop and report it before widening scope.
+- MVP-06 corrected the known app/data disagreement by replacing stale active UI/data with Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- If any later disagreement appears among control docs, review artifacts, and app/data files, Codex must stop and report it before widening scope unless a later current brief explicitly authorizes the correction.
 
-## Purpose
+## Completed MVP-06 Purpose
 
 Align the review-only prototype with the corrected MVP-05 source boundary while preserving MVP-04 interaction behavior.
 
 The implementation should make the prototype usable as a scaffold for review without implying real facade accuracy, production data approval, exact storefront placement, exact station geometry, or approved visual polish.
 
-## Allowed Files For MVP-06 Implementation
+## Files Authorized And Used For Completed MVP-06
 
-Codex may modify only:
+MVP-06 was limited to:
 
 - `src/mvpPlaceData.js`
 - `src/App.jsx`
@@ -53,9 +65,9 @@ Codex may modify only:
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 
-Codex may read `src/placeholderScene.js`, but should not modify it unless the implementation discovers a direct active-app contradiction that cannot be resolved in the allowed active files.
+`src/placeholderScene.js` was read only and not modified.
 
-## Required Implementation
+## Completed Implementation Requirements
 
 1. Preserve MVP-04 interaction behavior:
    - Pan and zoom.
@@ -105,14 +117,14 @@ Codex may read `src/placeholderScene.js`, but should not modify it unless the im
    - Marker and bounds positions may be adjusted only enough to support interaction review.
    - Any position/bounds changes must be labeled authored scaffold positions, not exact placement.
 
-8. Produce review screenshots after implementation:
+8. Review screenshots produced:
    - Default overview.
    - Selected Greenpoint Deli card.
    - Selected Greenpoint G subway card or context card.
    - QA hotspot outline mode.
    - Mobile selected-card containment.
 
-9. Produce a short self-audit:
+9. Short self-audit produced:
    - Create `docs/mvp-review/mvp-06-corrective-scene-translation-and-data-realignment/README.md`.
    - Map each visible place/card to MVP-05 evidence status.
    - Confirm stale previous-scene businesses are no longer active in current-scene UI.
@@ -120,7 +132,7 @@ Codex may read `src/placeholderScene.js`, but should not modify it unless the im
    - Confirm facade/art reference is insufficient for the four business candidates.
    - Confirm Visual Polish / Optional Ambient remains blocked.
 
-## Forbidden
+## Still Forbidden Unless A Later Brief Opens Scope
 
 Do not add or modify:
 
@@ -140,17 +152,15 @@ Do not add or modify:
 - CI/deployment/package/config/tooling changes.
 - Staging or commit.
 
-## Public Interfaces / Module Boundaries
+## Public Interfaces / Module Boundaries From Completed MVP-06
 
-This MVP-06 implementation may adjust the local shape/content of `mvpScene` inside `src/mvpPlaceData.js` only as needed for the existing app to render corrected evidence status.
+MVP-06 adjusted the local shape/content of `mvpScene` inside `src/mvpPlaceData.js` only as needed for the existing app to render corrected evidence status.
 
-It must not create a production data contract, public module API, runtime schema, source-of-truth pipeline, renderer boundary, map system, routing system, or asset pipeline.
+It did not create a production data contract, public module API, runtime schema, source-of-truth pipeline, renderer boundary, map system, routing system, or asset pipeline.
 
-If additional fields are added, they must remain internal review/demo-safe fields and be documented in the MVP-06 self-audit.
+Additional fields remain internal review/demo-safe fields and are documented in the MVP-06 self-audit.
 
-## Verification Required
-
-Run the fastest useful feedback loop:
+## Verification To Report
 
 - `npm run build`
 - Browser smoke check of the local prototype.
@@ -161,7 +171,7 @@ Run the fastest useful feedback loop:
 - `git diff --stat`
 - `git status --short`
 
-## Acceptance Criteria
+## Review Criteria
 
 - Active UI shows the corrected current scene/place set.
 - Stale previous-scene businesses are not visible as active current-scene targets, cards, source links, or target rail items.

@@ -552,3 +552,63 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` still points to proposed MVP-06 Corrective Scene Translation And Data Realignment as the next implementation task pending acceptance.
+
+### 2026-05-29 - MVP-06 Corrective Scene Translation And Data Realignment
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Replace stale active app/data places with the corrected MVP-05 current scene set.
+- Preserve MVP-04 interaction behavior.
+- Keep LiveXYZ as identity/presence evidence only.
+- Prevent the UI from implying approved facade/art accuracy, exact storefronts, exact addresses, exact station geometry, or production placement.
+- Produce MVP-06 review screenshots and a self-audit.
+- Reconcile control docs without staging or commit.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/mvp-review/mvp-06-corrective-scene-translation-and-data-realignment/README.md`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/01-overview-corrected-active-scene.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/02-greenpoint-deli-card.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/03-mcdonalds-card.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/04-dunkin-card.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/05-citizens-bank-card.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/06-greenpoint-g-subway-card.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/07-qa-hotspots-corrected-set.png`
+- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/08-mobile-greenpoint-deli-card.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Active-scene confirmation completed. Known stale app/data mismatch was the authorized correction target; no second mismatch was found.
+- `npm run build`
+- Browser smoke check of corrected target rail.
+- Browser selected-card checks for Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- QA hotspot outline screenshot.
+- Mobile selected-card containment screenshot.
+- Source scan confirmed stale previous-scene business names are absent from active app data/UI files.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- Active prototype now displays Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Peter Pan Donut & Pastry Shop, Sweetgreen Greenpoint, Former Meserole Theater Context, Captured Record Shop, Polka Dot, Karczma, Brouwerij Lane, and Corner Infill Placeholder were removed from active current-scene target/card/source data.
+- Visible cards distinguish identity/presence evidence from facade/art-reference insufficiency.
+- The existing raster is dimmed at runtime and labeled scaffold-only; no visual assets were modified or generated.
+- MVP-04 interaction behavior remains intact.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records post-MVP-06 review state with no active Codex implementation task.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-06 output.
+- Candidate treatment decisions remain reserved for Batu/ChatGPT, including whether any current business becomes a real card, context-only card, fictionalized card, omitted item, or blocked item.
+- Approved non-Google storefront-specific visual references are still missing.
+- Visual Polish / Optional Ambient remains blocked until MVP-06 is reviewed and accepted and a later brief opens that scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-06 output. No next implementation task is approved.

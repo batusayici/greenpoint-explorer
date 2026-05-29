@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { placeholderScene } from "./placeholderScene.js";
+import { mvpScene } from "./mvpPlaceData.js";
 import PlaceholderWorld from "./PlaceholderWorld.jsx";
 
 export default function App() {
@@ -7,7 +7,9 @@ export default function App() {
   const [selectedTargetId, setSelectedTargetId] = useState(null);
   const [cameraCommand, setCameraCommand] = useState(null);
   const [isReviewMode, setIsReviewMode] = useState(false);
-  const selectedTarget = placeholderScene.targets.find((target) => target.id === selectedTargetId);
+  const selectedTarget = mvpScene.targets.find((target) => target.id === selectedTargetId);
+  const selectedSources = selectedTarget?.sourceRefs.map((sourceId) => mvpScene.sourceRefs[sourceId]).filter(Boolean) ?? [];
+  const selectedEvidenceRows = selectedTarget?.evidenceStatus ?? [];
 
   function sendCameraCommand(type) {
     setCameraCommand({ type, nonce: Date.now() });
@@ -15,22 +17,26 @@ export default function App() {
 
   return (
     <main className="prototype-shell" aria-label="Greenpoint Explorer prototype shell">
-      <section className="world-panel" aria-label="Placeholder authored scene">
+      <section className="world-panel" aria-label="Review-only Manhattan and Greenpoint scene">
         <div className="panel-topline">
           <div>
-            <p className="kicker">Browse mode</p>
+            <p className="kicker">MVP-06 corrective slice</p>
             <h1>Greenpoint Explorer</h1>
           </div>
-          <p className="placeholder-note">Fictional storefront slice for product review. Non-production prototype.</p>
+          <p className="placeholder-note">{mvpScene.note}</p>
         </div>
 
         <div className="viewport-frame">
           <div className="review-ribbon" aria-hidden="true">
             Review-only
           </div>
-          <div className="target-rail" aria-label="Fictional place index">
-            <p className="rail-label">Places</p>
-            {placeholderScene.targets.map((target) => {
+          <div className="scene-frame-note" aria-label="Scene source frame">
+            <strong>{mvpScene.sceneFrame.locationLabel}</strong>
+            <span>{mvpScene.sceneFrame.intent}</span>
+          </div>
+          <div className="target-rail" aria-label="MVP place index">
+            <p className="rail-label">Targets</p>
+            {mvpScene.targets.map((target) => {
               const isActive = hoveredTargetId === target.id || selectedTargetId === target.id;
               return (
                 <button
@@ -46,7 +52,7 @@ export default function App() {
                   onPointerLeave={() => setHoveredTargetId(null)}
                 >
                   <span>{target.title}</span>
-                  <small>{target.category}</small>
+                  <small>{target.cardBadge ?? target.verificationStatus}</small>
                 </button>
               );
             })}
@@ -78,7 +84,7 @@ export default function App() {
             </button>
           </div>
           <PlaceholderWorld
-            scene={placeholderScene}
+            scene={mvpScene}
             selectedTargetId={selectedTargetId}
             hoveredTargetId={hoveredTargetId}
             reviewMode={isReviewMode}
@@ -93,22 +99,58 @@ export default function App() {
               <button
                 className="icon-button"
                 type="button"
-                aria-label="Close placeholder card"
+                aria-label="Close selected card"
                 onClick={() => setSelectedTargetId(null)}
               >
                 <span aria-hidden="true">x</span>
               </button>
-              <p className="card-label">Selected place</p>
+              <p className="card-label">{selectedTarget.label}</p>
               <h2>{selectedTarget.title}</h2>
               <p className="card-category">{selectedTarget.category}</p>
               <p className="card-summary">{selectedTarget.summary}</p>
               <p>{selectedTarget.description}</p>
-              <ul className="tag-list" aria-label="Placeholder tags">
+              {selectedEvidenceRows.length ? (
+                <dl className="evidence-list" aria-label="Evidence status">
+                  {selectedEvidenceRows.map((row) => (
+                    <div key={row.label}>
+                      <dt>{row.label}</dt>
+                      <dd>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
+              {selectedTarget.address ? (
+                <dl className="card-metadata" aria-label="Source and review metadata">
+                  <div>
+                    <dt>Address / anchor</dt>
+                    <dd>{selectedTarget.address}</dd>
+                  </div>
+                  <div>
+                    <dt>Last verified</dt>
+                    <dd>{selectedTarget.lastVerified ?? "Not source-backed"}</dd>
+                  </div>
+                  <div>
+                    <dt>Truth status</dt>
+                    <dd>{selectedTarget.statusNote}</dd>
+                  </div>
+                </dl>
+              ) : null}
+              {selectedSources.length ? (
+                <div className="source-list" aria-label="Reviewed sources">
+                  <p>{mvpScene.sourceListLabel ?? "Reviewed sources"}</p>
+                  {selectedSources.map((source) => (
+                    <a key={source.url} href={source.url} target="_blank" rel="noreferrer">
+                      {source.label}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+              <p className="card-disclaimer">{selectedTarget.disclaimer ?? mvpScene.disclaimer}</p>
+              <ul className="tag-list" aria-label="Place review tags">
                 {selectedTarget.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
-              <p className="card-disclaimer">Review-only fictional placeholder</p>
             </aside>
           ) : null}
         </div>

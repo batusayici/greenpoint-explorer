@@ -244,7 +244,7 @@ export default function PlaceholderWorld({
       ref={hostRef}
       className="pixi-host"
       role="img"
-      aria-label="Non-production review-only raster scene plate with multiple fictional interactive targets"
+      aria-label={scene.plate.label}
       data-testid="pixi-host"
       tabIndex={0}
       onPointerDown={handlePointerDown}
@@ -296,7 +296,15 @@ function drawRasterPlate(world, scene, texture) {
   const plate = new Sprite(texture);
   plate.width = scene.size.width;
   plate.height = scene.size.height;
+  plate.alpha = scene.plate.alpha ?? 1;
   world.addChild(plate);
+
+  if (scene.plate.scaffoldWash) {
+    const wash = new Graphics()
+      .rect(0, 0, scene.size.width, scene.size.height)
+      .fill(scene.plate.scaffoldWash);
+    world.addChild(wash);
+  }
 }
 
 function drawTargets(world, targets, reviewMode) {
@@ -399,7 +407,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   }
 
   label.visible = showReviewOverlay;
-  label.text = target.title;
+  label.text = target.label ?? target.title;
   label.style.fill = "#f8ecd4";
   label.x = x + 14;
   label.y = y + 12;
