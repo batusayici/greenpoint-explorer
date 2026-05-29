@@ -55,9 +55,9 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP Interaction Integration pending approval.
+- Current phase: MVP-04 Interaction Integration reviewed; useful as a technical interaction baseline, but not accepted as final visual/source-frame integration.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: MVP-04 MVP Interaction Integration, pending Batu/ChatGPT approval of the MVP-03 contract proposal and implementation boundary.
+- Current next recommended task: MVP-05 Source-Of-Truth Validation Spike, pending Batu/ChatGPT approval of the validation-spike boundary.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
@@ -129,7 +129,7 @@ Verification:
 Outcome:
 - `docs/PLAN.md` now points to `docs/MVP_SCOPE.md` for detailed scope and focuses on roadmap, phase order, gates, blockers, and current state.
 - `docs/MVP_SCOPE.md` now defines included scope, non-goals, demo-safe assets/data rules, Must-Have / Should-Have / Cuttable items, and MVP acceptance boundaries.
-- Remaining MVP phases are sequenced as MVP Gap Review, Place Truth Packet, Static MVP Data Contract, MVP Interaction Integration, Visual Polish / Optional Ambient, MVP QA And Demo Freeze, and MVP Completion / Post-MVP Parking.
+- At that time, remaining MVP phases were sequenced as MVP Gap Review, Place Truth Packet, Static MVP Data Contract, MVP Interaction Integration, Visual Polish / Optional Ambient, MVP QA And Demo Freeze, and MVP Completion / Post-MVP Parking. This sequencing was later superseded by the MVP-04 review sequence correction.
 - Demo/static assets and data are explicitly allowed only as controlled review/demo-safe material, not as production/public-release asset or pipeline approval.
 - `docs/CURRENT_EXECUTION_BRIEF.md` remains reconciled and still points to proposed MVP-01.
 
@@ -306,3 +306,88 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-04 MVP Interaction Integration as a proposed next task pending Batu/ChatGPT approval of the MVP-03 contract proposal and implementation boundary.
+
+### 2026-05-29 - MVP-04 MVP Interaction Integration
+
+Status:
+- Complete.
+
+Scope:
+- Execute the approved MVP-04 brief by integrating static local MVP data and final MVP interaction behavior into the review-only prototype.
+- Use user-provided Manhattan Ave / Greenpoint Ave street-reference imagery as the primary review surface for the busy intersection stress test.
+- Preserve fictional-safe, bounded, review/demo-safe treatment; avoid live data, production data contracts, broad map expansion, production assets, staging, and commits.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/review-screenshots/mvp-04-interaction-integration/desktop-default.png`
+- `docs/review-screenshots/mvp-04-interaction-integration/desktop-selected-peter-pan.png`
+- `docs/review-screenshots/mvp-04-interaction-integration/desktop-qa-hotspots.png`
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- Browser smoke check at `http://127.0.0.1:5173/`
+- Browser click check for selected Peter Pan card.
+- Browser control smoke check for zoom in, pan right, and reset.
+- Browser QA hotspot screenshot check.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- The prototype now reads from a static local MVP data module with real candidates, symbolic/context treatment, a fictional density placeholder, deferred candidate records, source references, `lastVerified`, status notes, manual-review flags, and shared disclaimer text.
+- The app now uses the supplied Manhattan Ave / Greenpoint Ave street-reference raster as the primary review surface for the MVP-04 stress-test scene.
+- The place index, selected card, source links, disclaimer behavior, marker states, QA hotspot overlay, pan/zoom controls, and reset control remain functional in the browser smoke check.
+- Review screenshots were captured under `docs/review-screenshots/mvp-04-interaction-integration/`.
+- No production assets, production data contract, live data, broad map system, package/config/build/CI/deployment changes, staging, or commit were introduced.
+- Later Batu/ChatGPT review found this output useful as a technical interaction baseline but not accepted as final visual/source-frame integration.
+
+Unresolved decisions:
+- Batu/ChatGPT must approve the MVP-05 Source-Of-Truth Validation Spike boundary.
+- MVP-05 must determine which current Manhattan Ave / Greenpoint Ave storefronts/places can be used as real cards, context only, fictionalized, omitted, or blocked.
+- The next implementation task after MVP-05 should be a corrective scene translation and data realignment pass, not Visual Polish / Optional Ambient.
+- Visual Polish / Optional Ambient remains blocked until validation returns a proceed/revise/cut verdict and corrected scene/data implementation is reviewed.
+- Final public-facing place copy, exact geometry, exact facades, exact storefront frontage/order, exact station geometry, production assets, production data contracts, architecture, deployment, and broad map expansion remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-05 Source-Of-Truth Validation Spike as a proposed next task pending Batu/ChatGPT approval of the validation-spike boundary.
+
+### 2026-05-29 - MVP-04 Review Sequence Correction
+
+Status:
+- Complete.
+
+Scope:
+- Update control docs only to reflect Batu/ChatGPT review of MVP-04.
+- Record that MVP-04 is useful as a technical interaction baseline but failed final visual/source-frame integration and requires place/data realignment.
+- Redirect the next recommended task from Visual Polish / Optional Ambient to MVP-05 Source-Of-Truth Validation Spike.
+- Keep app/source/assets, visuals, package/config/build/CI/deployment files, staging, and commits untouched.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-05 Source-Of-Truth Validation Spike as proposed/pending.
+- `docs/PLAN.md` now sequences MVP-05 validation before corrective scene translation and data realignment.
+- Visual Polish / Optional Ambient is blocked until MVP-05 returns a proceed/revise/cut verdict and the corrected scene/data implementation is reviewed.
+- The docs now record that street/reference raster use as the visible world surface is not accepted as final translation into the approved Inked Indie / Compact Corner isometric direction.
+
+Unresolved decisions:
+- Batu/ChatGPT must approve or revise the MVP-05 validation-spike boundary before Codex executes it.
+- MVP-05 must determine real card, context-only, fictionalized, omitted, or blocked treatment for current Manhattan Ave / Greenpoint Ave storefront/place candidates.
+- Batu/ChatGPT must approve a later corrective scene translation and data realignment implementation boundary.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-05 Source-Of-Truth Validation Spike as a proposed next task pending Batu/ChatGPT approval.
