@@ -55,9 +55,9 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-06 Corrective Scene Translation And Data Realignment brief prepared; pending Batu/ChatGPT acceptance before implementation.
+- Current phase: MVP-07 Reusable Place Evidence Pipeline Spike complete for review; pending Batu/ChatGPT acceptance.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: accept or revise the proposed MVP-06 implementation brief in `docs/CURRENT_EXECUTION_BRIEF.md`.
+- Current next recommended task: review MVP-07 and decide whether to authorize the proposed MVP-08 Place Evidence Packet For Current Scene.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
@@ -612,3 +612,47 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-06 output. No next implementation task is approved.
+
+### 2026-05-29 - MVP-07 Reusable Place Evidence Pipeline Spike
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Create a concise docs-only MVP-07 review artifact proposing a reusable source/evidence pipeline for Greenpoint addresses, businesses, interactive scene data, and approved art-reference inputs.
+- Test the pipeline against the current active scene: Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Reconcile the plan, current brief, and ledger.
+- Avoid app/source/assets, screenshots, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-07-reusable-place-evidence-pipeline/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required docs and `src/mvpPlaceData.js` reviewed.
+- Active scene confirmed from `src/mvpPlaceData.js`.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-07 proposes a recommended source hierarchy, evidence status taxonomy, conceptual place record schema, facade/art-reference eligibility rules, manual vs automated steps, scaling risks, and recommended next task.
+- The current scene pipeline test classifies all five active places as still requiring revision before real-inspired facade/art treatment or Visual Polish / Optional Ambient.
+- The final verdict is `revise`: the workflow is viable as a repeatable review pipeline, but the current scene still lacks approved address/parcel/storefront and facade/art-reference evidence.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records post-MVP-07 review state and proposes MVP-08 Place Evidence Packet For Current Scene as the next docs-only task pending approval.
+- `docs/MVP_SCOPE.md` was not changed because MVP-07 is a review proposal, not yet a durable approved scope rule.
+- No app/source/assets were modified.
+- No screenshots or visuals were created.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-07 pipeline and `revise` verdict.
+- Batu/ChatGPT must decide whether to authorize MVP-08 Place Evidence Packet For Current Scene.
+- Batu must decide treatment for each current place, including real card, context-only, fictional-safe, omitted, or blocked.
+- Approved non-Google storefront-specific visual references remain missing.
+- Visual Polish / Optional Ambient remains blocked until place-evidence review is accepted and a later brief opens that scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-07 and a proposed MVP-08 docs-only current-scene evidence packet. No implementation task is approved.

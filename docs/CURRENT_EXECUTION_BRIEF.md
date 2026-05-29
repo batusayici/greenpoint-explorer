@@ -1,25 +1,24 @@
-# Current Execution Brief - Post-MVP-06 Review State
+# Current Execution Brief - Post-MVP-07 Review State
 
-Status: MVP-06 Corrective Scene Translation And Data Realignment is implemented for review; no active Codex execution task is approved.
-Owner boundary: Codex must not perform further app/source, visual, polish, ambient, production, CI/deployment, staging, or commit work until Batu/ChatGPT accepts or revises MVP-06 and a later current brief explicitly opens the next scope.
+Status: MVP-07 Reusable Place Evidence Pipeline Spike is complete for review; no active Codex implementation task is approved.
+Owner boundary: Codex must not perform app/source, visual, polish, ambient, production, CI/deployment, staging, or commit work until Batu/ChatGPT accepts or revises MVP-07 and a later current brief explicitly opens the next scope.
 
 ## Current Next Task State
 
 Recommended next step:
 
-- Batu/ChatGPT review of the MVP-06 corrective scene/data output, screenshots, and self-audit.
+- Batu/ChatGPT review of `docs/mvp-review/mvp-07-reusable-place-evidence-pipeline/README.md`.
 
 Next executable task status:
 
 - Pending Batu/ChatGPT review and approval.
+- Recommended next task is MVP-08 Place Evidence Packet For Current Scene, docs-only.
 - Visual Polish / Optional Ambient remains blocked.
 - No next implementation task is approved in this file.
 
 ## Context
 
-MVP-05 Source-Of-Truth Validation Spike is complete and accepted with verdict `revise`.
-
-Corrected current scene/place set:
+MVP-06 corrected the active prototype scene to:
 
 - Greenpoint Deli.
 - McDonald's.
@@ -27,115 +26,52 @@ Corrected current scene/place set:
 - Citizens Bank.
 - Greenpoint G subway.
 
-LiveXYZ links are identity/presence evidence only. They are not approved facade/art references and do not approve exact address, storefront frontage, entrance geometry, active-status finality, production placement, or public card copy.
+MVP-07 proposes a repeatable evidence pipeline for converting Greenpoint addresses/businesses into validated interactive scene data and approved art-reference inputs. It tests the pipeline against the current MVP-06 active scene.
 
-Google/Street View-style reference imagery remains blocked as facade evidence. Visual Polish / Optional Ambient remains blocked.
+MVP-07 final verdict:
 
-Current source state after MVP-06:
+- `revise`.
 
-- `src/mvpPlaceData.js` now contains the corrected active set: Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
-- `src/App.jsx` renders `mvpScene.targets`, evidence-status rows, and card metadata directly.
-- `src/PlaceholderWorld.jsx` renders target markers, labels, hover/click/tap, pan/zoom, QA hotspot outlines, and a dimmed scaffold-only raster treatment from the supplied scene data.
-- `src/placeholderScene.js` remains older fictional placeholder data and is not the active app import.
+Pipeline read:
 
-Active-scene guardrail:
+- The pipeline is viable as a repeatable review workflow.
+- The current scene still lacks enough approved address/parcel/storefront and facade/art-reference evidence to unlock real-inspired facade/art treatment.
+- Visual Polish / Optional Ambient remains blocked.
 
-- Before implementation, Codex must confirm the active scene/place set from current app/data files and list that set in the task output.
-- Previous-scene entities are archival/reference-only unless this brief explicitly names them for removal.
-- MVP-06 corrected the known app/data disagreement by replacing stale active UI/data with Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
-- If any later disagreement appears among control docs, review artifacts, and app/data files, Codex must stop and report it before widening scope unless a later current brief explicitly authorizes the correction.
+LiveXYZ links remain identity/presence evidence only. They are not approved facade/art references and do not approve exact address, storefront frontage, entrance geometry, active-status finality, production placement, or public card copy.
 
-## Completed MVP-06 Purpose
+Google/Street View-style reference imagery remains blocked as facade evidence.
 
-Align the review-only prototype with the corrected MVP-05 source boundary while preserving MVP-04 interaction behavior.
+## Recommended MVP-08 Scope, Pending Approval
 
-The implementation should make the prototype usable as a scaffold for review without implying real facade accuracy, production data approval, exact storefront placement, exact station geometry, or approved visual polish.
+If Batu/ChatGPT approve, the next proposed task is:
 
-## Files Authorized And Used For Completed MVP-06
+- Create `docs/mvp-review/mvp-08-current-scene-place-evidence-packet/README.md`.
+- Produce one evidence card per current active place:
+  - Greenpoint Deli.
+  - McDonald's.
+  - Dunkin'.
+  - Citizens Bank.
+  - Greenpoint G subway.
+- Apply the MVP-07 taxonomy to each place:
+  - Identity/presence.
+  - Business status.
+  - Address.
+  - Parcel/building linkage.
+  - Storefront/frontage/entrance evidence.
+  - Facade/art-reference provenance.
+  - Recommended treatment.
+  - Unresolved questions.
+- Use only approved/manual research methods and static review notes.
+- Stop if approved facade/art-reference inputs are missing, and report the exact missing input paths or source categories.
 
-MVP-06 was limited to:
-
-- `src/mvpPlaceData.js`
-- `src/App.jsx`
-- `src/PlaceholderWorld.jsx`
-- `src/styles.css`
-- `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/`
-- `docs/mvp-review/mvp-06-corrective-scene-translation-and-data-realignment/README.md`
-- `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/PLAN.md`
-- `docs/MVP_EXECUTION_LEDGER.md`
-
-`src/placeholderScene.js` was read only and not modified.
-
-## Completed Implementation Requirements
-
-1. Preserve MVP-04 interaction behavior:
-   - Pan and zoom.
-   - Hover/focus.
-   - Click/tap selection.
-   - Selected card behavior.
-   - Target rail behavior.
-   - QA hotspot outline toggle.
-   - Basic mobile containment.
-
-2. Update active displayed place/card data to the corrected current set:
-   - Greenpoint Deli.
-   - McDonald's.
-   - Dunkin'.
-   - Citizens Bank.
-   - Greenpoint G subway.
-
-3. Remove stale previous-scene businesses from active current-scene data/UI:
-   - Peter Pan Donut & Pastry Shop.
-   - Sweetgreen Greenpoint.
-   - Former Meserole Theater.
-   - Captured Record Shop.
-   - Polka Dot.
-   - Karczma.
-   - Brouwerij Lane.
-
-4. Keep LiveXYZ links as identity/presence source references only:
-   - Greenpoint Deli: `https://embed.livexyz.com/venue/5526f8acd8ca7000030002e4`
-   - McDonald's: `https://embed.livexyz.com/venue/5511c3063d42bd0003001146`
-   - Dunkin': `https://embed.livexyz.com/venue/5b50eecca3e3ee0003e4e0db`
-   - Citizens Bank: `https://embed.livexyz.com/venue/64893028145f5b00018b86a7`
-
-5. Clearly distinguish evidence status in data and visible cards:
-   - `identity/presence validated`
-   - `facade/art reference insufficient`
-   - `fictional-safe or placeholder treatment`
-
-6. Prevent UI overclaiming:
-   - Do not label any business card as exact, verified, production-ready, or facade-accurate.
-   - Do not show exact storefront/frontage/order claims.
-   - Do not imply Google/Street View-derived facade evidence.
-   - Do not present LiveXYZ as facade/art reference.
-   - Keep the scene plate described as a non-production scaffold, not facade evidence.
-
-7. Keep the scene usable as a prototype scaffold:
-   - Maintain five selectable targets.
-   - Marker and bounds positions may be adjusted only enough to support interaction review.
-   - Any position/bounds changes must be labeled authored scaffold positions, not exact placement.
-
-8. Review screenshots produced:
-   - Default overview.
-   - Selected Greenpoint Deli card.
-   - Selected Greenpoint G subway card or context card.
-   - QA hotspot outline mode.
-   - Mobile selected-card containment.
-
-9. Short self-audit produced:
-   - Create `docs/mvp-review/mvp-06-corrective-scene-translation-and-data-realignment/README.md`.
-   - Map each visible place/card to MVP-05 evidence status.
-   - Confirm stale previous-scene businesses are no longer active in current-scene UI.
-   - Confirm LiveXYZ is identity/presence only.
-   - Confirm facade/art reference is insufficient for the four business candidates.
-   - Confirm Visual Polish / Optional Ambient remains blocked.
+The proposed MVP-08 task would remain docs-only unless a later brief explicitly authorizes source/app changes.
 
 ## Still Forbidden Unless A Later Brief Opens Scope
 
 Do not add or modify:
 
+- App/source files.
 - Visual polish.
 - Optional ambient work.
 - New facade art.
@@ -152,39 +88,15 @@ Do not add or modify:
 - CI/deployment/package/config/tooling changes.
 - Staging or commit.
 
-## Public Interfaces / Module Boundaries From Completed MVP-06
+## Public Interfaces / Module Boundaries
 
-MVP-06 adjusted the local shape/content of `mvpScene` inside `src/mvpPlaceData.js` only as needed for the existing app to render corrected evidence status.
-
-It did not create a production data contract, public module API, runtime schema, source-of-truth pipeline, renderer boundary, map system, routing system, or asset pipeline.
-
-Additional fields remain internal review/demo-safe fields and are documented in the MVP-06 self-audit.
-
-## Verification To Report
-
-- `npm run build`
-- Browser smoke check of the local prototype.
-- Click/tap or browser check for at least Greenpoint Deli and Greenpoint G subway selected states.
-- QA hotspot outline check.
-- Mobile selected-card containment check.
-- `git diff --check`
-- `git diff --stat`
-- `git status --short`
-
-## Review Criteria
-
-- Active UI shows the corrected current scene/place set.
-- Stale previous-scene businesses are not visible as active current-scene targets, cards, source links, or target rail items.
-- Cards visibly communicate identity/presence status and facade/art-reference insufficiency.
-- The prototype does not imply real facade accuracy, exact storefront placement, exact station geometry, production data, or public release readiness.
-- MVP-04 interaction behavior remains intact.
-- Required screenshots exist under `docs/review-screenshots/mvp-06-corrective-scene-translation-and-data-realignment/`.
-- MVP-06 self-audit exists and maps each visible place/card to MVP-05 evidence status.
-- Plan, current brief, and ledger are reconciled after implementation.
+MVP-07 created a docs-only conceptual pipeline proposal. It did not create a production data contract, public module API, runtime schema, source-of-truth pipeline implementation, renderer boundary, map system, routing system, or asset pipeline.
 
 ## Decisions Still Reserved For Batu
 
-- Whether any current business becomes a real card rather than scaffold/context/fictional-safe treatment.
+- Whether to accept, revise, or reject the MVP-07 pipeline and `revise` verdict.
+- Whether MVP-08 should proceed as the next docs-only current-scene evidence packet.
+- Whether any current business becomes a real card, context-only card, fictionalized card, omitted item, or blocked item.
 - Whether branded chain identities should remain literal, be fictionalized, or be omitted.
 - Whether any non-Google storefront-specific visual references are approved later.
 - Any exact address, frontage/order, entrance, facade, or station geometry approval.
