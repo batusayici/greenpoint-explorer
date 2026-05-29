@@ -1,7 +1,7 @@
 # Agent Operating Contract
 
 Status: Active  
-Date: 2026-05-28
+Date: 2026-05-29
 Project: Greenpoint Isometric Explorer
 
 ## Project Status
@@ -20,19 +20,19 @@ Batu owns:
 - Public module and interface approval.
 - Final approval of visual language, architecture boundaries, and scope changes.
 
-ChatGPT owns:
+ChatGPT supports:
 
-- Critique of Codex output packets.
-- Decision-support framing for Batu.
-- Writing or updating `docs/CURRENT_EXECUTION_BRIEF.md` after Batu/ChatGPT review.
-- Preserving constraints, unresolved questions, and next-step criteria in the brief.
+- Critique at major planning, review, ambiguity, and gate-decision moments.
+- Decision-support framing for Batu when a decision needs outside critique.
+- Drafting or revising `docs/CURRENT_EXECUTION_BRIEF.md` when Batu asks for that support.
+- Preserving constraints, unresolved questions, and next-step criteria when participating in a review.
 
 Codex owns:
 
 - Tactical implementation inside approved boundaries.
 - Producing the output packet requested by the current execution brief.
 - Clear options and tradeoff framing when the current brief asks for them.
-- Artifacts, verification, and documentation for Batu/ChatGPT review.
+- Artifacts, verification, and documentation for Batu review, with ChatGPT review used only when Batu or the repo governance calls for it.
 - Small, reviewable batches.
 - Test, QA, and documentation updates for the current brief only.
 
@@ -42,18 +42,30 @@ Visual direction cannot be approved from prose-only labels, recommendations, or 
 
 ## Required Workflow
 
-Canonical operating loop:
+Codex executes directly from repo governance and current project docs. ChatGPT is a support tool for critical planning, review, ambiguity, and gate-decision moments; it is not a required handoff step for every Codex batch.
 
-1. Codex produces an output packet from the current brief.
-2. Batu pastes the Codex report and relevant artifacts into ChatGPT.
-3. ChatGPT critiques the output, supports Batu's decision, and writes or updates `docs/CURRENT_EXECUTION_BRIEF.md`.
-4. Codex reads `docs/CURRENT_EXECUTION_BRIEF.md`.
-5. Codex executes only the current brief.
-6. Repeat.
+Before each batch, Codex must always read:
 
-`docs/CURRENT_EXECUTION_BRIEF.md` is the canonical source for Codex's next executable task. When it exists, Codex must not infer, continue, or expand work from prior chat context, older task trackers, historical artifact docs, or unstated phase momentum. If another doc appears to suggest a different next action, Codex should follow the current brief for execution and preserve the conflict as an unresolved review item unless the brief explicitly asks Codex to resolve it.
+1. `AGENTS.md`
+2. `docs/CURRENT_EXECUTION_BRIEF.md`
+3. `docs/PLAN.md`
+4. `docs/MVP_EXECUTION_LEDGER.md`
 
-Codex must not autonomously decide the next phase, open a blocked gate, or convert recommendations into approved direction. ChatGPT owns critique and next-brief authoring; Batu owns creative, product, scope, public-interface, architecture, and final approval decisions; Codex owns execution of the current brief only.
+Read topic-specific docs only when the task touches that area:
+
+- `docs/MVP_SCOPE.md` for scope boundaries, MVP eligibility, or production-vs-review status.
+- `docs/DECISION_LOG.md` for checking or recording durable decisions.
+- `docs/ART_DIRECTION.md` for visual language, style, or raster/art decisions.
+- `docs/VISUAL_ARTIFACT_STANDARDS.md` for creating or evaluating visual artifacts.
+- `docs/VISUAL_QA_CHECKLIST.md` for screenshots or visual review evidence.
+- `docs/AGENTIC_TOOLING.md` for workflow, automation, tooling, or Codex operating behavior.
+- Current MVP/review artifact package docs when continuing, reviewing, or modifying that package.
+
+`docs/CURRENT_EXECUTION_BRIEF.md` is the active gate for Codex's next executable task. If it does not explicitly authorize source edits, prototype implementation, visual asset work, framework/tooling changes, public-interface changes, or gate movement, Codex must stop before making those changes.
+
+Codex must not rely on ChatGPT conversation memory when repo docs answer the question. When project documents conflict, use the source-of-truth order in this file. If the conflict affects source edits, scope, visual direction, production claims, commit behavior, approval states, architecture boundaries, or public interfaces, Codex must stop and ask Batu to resolve or update the control docs.
+
+Codex must not autonomously decide the next phase, open a blocked gate, or convert recommendations into approved direction. Batu owns creative, product, scope, public-interface, architecture, visual direction, and final approval decisions. Codex owns execution inside the current approved boundaries.
 
 Batch execution workflow:
 
@@ -61,7 +73,7 @@ Use this workflow for meaningful work:
 
 1. Clarify the goal and unresolved requirements.
 2. Plan the batch with reviewable artifact entry and exit criteria.
-3. Wait for approval when the work changes scope, visual direction, product behavior, public interfaces, or module boundaries.
+3. Wait for Batu approval when the work changes scope, visual direction, product behavior, public interfaces, module boundaries, approval states, or architecture gates.
 4. Implement one small batch.
 5. Run the fastest useful feedback loop available.
 6. Verify the batch against its acceptance criteria.
@@ -73,17 +85,17 @@ After the baseline repository commit, future batches must report `git status` an
 
 ## Plan Reconciliation
 
-After every successful Codex batch, Codex must reconcile the MVP execution-control documents before final response:
+After every successful MVP/prototype batch, Codex must reconcile the MVP execution-control documents before final response:
 
 - Update `docs/PLAN.md` so it reflects the current MVP phase, remaining MVP phases, blockers, pending decisions, and next-task pointer. Keep it as a stable roadmap, not a batch-history dump.
 - Update `docs/MVP_SCOPE.md` only when the batch changes or clarifies detailed MVP boundaries, non-goals, must-have/should-have/cuttable items, or MVP acceptance boundaries.
-- Update `docs/CURRENT_EXECUTION_BRIEF.md` so it no longer points to a completed or stale task. It must contain the next approved/proposed executable task, or explicitly state that the next task is pending Batu/ChatGPT approval.
+- Update `docs/CURRENT_EXECUTION_BRIEF.md` so it no longer points to a completed or stale task. It must contain the next approved/proposed executable task, or explicitly state that the next task is pending Batu approval or a later gate review.
 - Update `docs/MVP_EXECUTION_LEDGER.md` with one concise entry recording the batch outcome, files changed, verification, unresolved decisions, and next pointer.
-- Update `docs/TASKS.md` only when leaving it unchanged would create a direct contradiction with the plan, current brief, or ledger.
+- Do not update `docs/TASKS.md` unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.
 
 If the plan, current brief, and ledger cannot be reconciled, Codex must stop and report the conflict instead of silently choosing a next phase, widening scope, or leaving stale task instructions.
 
-Plan reconciliation does not authorize scope expansion. Batu still owns creative, product, public-interface, architecture-boundary, and final scope approvals; ChatGPT still owns critique and next-brief authoring support; Codex still executes only inside the current approved brief.
+Plan reconciliation does not authorize scope expansion. Batu still owns creative, product, public-interface, architecture-boundary, visual-direction, and final scope approvals; ChatGPT may support critique and next-brief drafting at critical review moments; Codex still executes only inside the current approved brief.
 
 ## Future Implementation Preflight
 
@@ -100,7 +112,7 @@ If the batch does not change public interfaces or module boundaries, say that ex
 
 - Final visual direction is approved: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 visual proof and supported by the Phase 4.5 reusable-system scalability proof.
 - This approval is visual-direction approval only. It does not approve production assets, production asset direction, production asset pipeline, architecture boundaries, public interfaces, real-place cards, exact real facades, exact addresses, exact station geometry, factual card copy, live data, or deployment.
-- Current lead directions, test paths, and next tasks must be read from `docs/CURRENT_EXECUTION_BRIEF.md` and current project-state docs; older visual territories remain historical unless Batu/ChatGPT explicitly reactivates them in the current brief.
+- Current lead directions, test paths, and next tasks must be read from `docs/CURRENT_EXECUTION_BRIEF.md` and current project-state docs; older visual territories remain historical unless Batu explicitly reactivates them in the current brief.
 - Do not introduce new visual metaphors, palettes, marker systems, card styles, UI styles, or production visual language without Batu approval.
 - Unapproved visual directions must be labeled as unapproved, exploratory, or historical.
 - Lo-fi artifacts are decision aids only; they are not final art.
@@ -170,9 +182,9 @@ When project documents conflict, use this order:
 1. `AGENTS.md`
 2. `docs/CURRENT_EXECUTION_BRIEF.md` for Codex's next executable task only
 3. `docs/PLAN.md`
-4. `docs/MVP_SCOPE.md`
-5. `docs/MVP_EXECUTION_LEDGER.md`
-6. `docs/DECISION_LOG.md`
-7. `docs/ART_DIRECTION.md`
-8. `docs/VISUAL_ARTIFACT_STANDARDS.md`
-9. `docs/VISUAL_QA_CHECKLIST.md`
+4. `docs/MVP_EXECUTION_LEDGER.md`
+5. Topic-specific docs when the task touches their area
+
+Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, `docs/AGENTIC_TOOLING.md`, and current MVP/review artifact package docs.
+
+`docs/TASKS.md` is deprecated and must not be used as an active source of truth unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.

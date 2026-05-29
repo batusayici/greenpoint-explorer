@@ -1,5 +1,37 @@
 # Decision Log
 
+## 2026-05-29 - Direct Repo-Docs Operating Model Adopted
+
+Decision:
+- Adopted a direct repo-docs execution model for Codex.
+- Codex executes from `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, and relevant topic-specific docs.
+- ChatGPT is no longer required as a repetitive handoff step after every Codex batch.
+- ChatGPT remains available for critical planning, review, ambiguity, and gate-decision support when Batu or repo governance calls for it.
+- Batu remains the decision owner for visual direction, scope, architecture gates, public interfaces, approval states, and final approvals.
+- Codex must stop when repo docs conflict in decision-relevant ways, approval is missing, the current brief does not authorize the requested edits, or another listed stop condition is reached.
+- Codex must use repo docs instead of ChatGPT conversation memory when repo docs answer the question.
+
+Rationale:
+- The previous repetitive ChatGPT / Codex handoff loop created too much friction, repeated decision churn, and context loss.
+- The repo governance and current project docs are now the stable source of execution truth.
+
+Constraints preserved:
+- Docs-only governance reconciliation.
+- No app/source files.
+- No visual assets.
+- No MVP/prototype implementation.
+- No art-direction change.
+- No MVP gate completion.
+- No staging or commit.
+
+Owner:
+- Operating-model decision: Batu
+- Governance reconciliation: Codex
+- Critical review and decision-support when requested: ChatGPT
+
+Status:
+- Active operating model / MVP-16B remains pending Batu review / no next implementation task approved
+
 ## 2026-05-28 - Visual Direction Approved And Phase 4 Completed
 
 Decision:
