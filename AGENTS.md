@@ -71,6 +71,20 @@ Reviewable artifact entry and exit criteria are batch acceptance gates only. The
 
 After the baseline repository commit, future batches must report `git status` and a `git diff --stat` summary.
 
+## Plan Reconciliation
+
+After every successful Codex batch, Codex must reconcile the MVP execution-control documents before final response:
+
+- Update `docs/PLAN.md` so it reflects the current MVP phase, remaining MVP phases, blockers, pending decisions, and next-task pointer. Keep it as a stable roadmap, not a batch-history dump.
+- Update `docs/MVP_SCOPE.md` only when the batch changes or clarifies detailed MVP boundaries, non-goals, must-have/should-have/cuttable items, or MVP acceptance boundaries.
+- Update `docs/CURRENT_EXECUTION_BRIEF.md` so it no longer points to a completed or stale task. It must contain the next approved/proposed executable task, or explicitly state that the next task is pending Batu/ChatGPT approval.
+- Update `docs/MVP_EXECUTION_LEDGER.md` with one concise entry recording the batch outcome, files changed, verification, unresolved decisions, and next pointer.
+- Update `docs/TASKS.md` only when leaving it unchanged would create a direct contradiction with the plan, current brief, or ledger.
+
+If the plan, current brief, and ledger cannot be reconciled, Codex must stop and report the conflict instead of silently choosing a next phase, widening scope, or leaving stale task instructions.
+
+Plan reconciliation does not authorize scope expansion. Batu still owns creative, product, public-interface, architecture-boundary, and final scope approvals; ChatGPT still owns critique and next-brief authoring support; Codex still executes only inside the current approved brief.
+
 ## Future Implementation Preflight
 
 Before coding, state:
@@ -156,8 +170,9 @@ When project documents conflict, use this order:
 1. `AGENTS.md`
 2. `docs/CURRENT_EXECUTION_BRIEF.md` for Codex's next executable task only
 3. `docs/PLAN.md`
-4. `docs/DECISION_LOG.md`
-5. `docs/MVP_SCOPE.md`
-6. `docs/ART_DIRECTION.md`
-7. `docs/VISUAL_ARTIFACT_STANDARDS.md`
-8. `docs/VISUAL_QA_CHECKLIST.md`
+4. `docs/MVP_SCOPE.md`
+5. `docs/MVP_EXECUTION_LEDGER.md`
+6. `docs/DECISION_LOG.md`
+7. `docs/ART_DIRECTION.md`
+8. `docs/VISUAL_ARTIFACT_STANDARDS.md`
+9. `docs/VISUAL_QA_CHECKLIST.md`
