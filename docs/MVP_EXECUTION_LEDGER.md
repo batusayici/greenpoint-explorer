@@ -55,14 +55,95 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-18 Real Corner Evidence Recovery is complete for Batu review with a `revise` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-20 Real-Corner Translation Boundary is complete for Batu review with a `proceed-to-mvp-21` recommendation; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: `MVP-19 One-Corner Field Photo Supply Gate`, pending Batu approval; MVP-19 is now a reference + repeatability/scalability gate, and MVP-20 Real-Corner Translation Boundary and MVP-21 One-Corner Raster Integration / Visual Pass must follow before QA/demo freeze if the real-corner path continues; no implementation phase is approved.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to pending MVP-20 review; MVP-21 One-Corner Raster Integration / Visual Pass is recommended pending Batu approval and a separate implementation boundary; no implementation phase is approved.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-20 Real-Corner Translation Boundary
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Produce a docs-only translation-boundary packet for the selected NW 903 Manhattan Ave corner.
+- Reconcile MVP-18/MVP-19 evidence, supplied northwest field references, Place/Building/Storefront/MapAnchor relationships, allowed/blocked references, truth constraints, treatment recommendations, and a proposed downstream MVP-21 boundary.
+- Avoid app/source implementation, renderer work, raster integration, visual generation, visual polish, screenshots, new assets, scraping, live data, Google/Street View/3D Tiles-derived imagery, LiveXYZ facade/art use, production claims, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-20-real-corner-translation-boundary/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, place schema, place source policy, MVP-18 packet, MVP-19 packet, and active source data read.
+- Confirmed the packet includes selected corner confirmation, evidence-to-scene matrix, active scene/place set, approved/blocked references, Place/Building/Storefront/MapAnchor notes, truth constraints, treatment recommendations, downstream MVP-21 boundary proposal, and verdict.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created the MVP-20 review packet.
+- MVP-20 verdict is `proceed-to-mvp-21`.
+- The selected corner is NW 903 Manhattan Ave, with a required naming reconciliation because current app/data says Greenpoint Deli while supplied field-reference signage reads `GRILLPOINT DELI`.
+- MVP-20 recommends a future one-corner raster integration / visual pass only after Batu accepts this boundary and opens a separate MVP-21 implementation brief.
+- No implementation, source, app, asset generation, visual generation, renderer, screenshot, scraping, live data, staging, commit, or production-claim work was performed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-20 `proceed-to-mvp-21` recommendation.
+- Batu must decide whether to keep Greenpoint Deli, correct to `GRILLPOINT DELI`, or fictionalize/generalize the selected target.
+- Batu must decide whether exact `GRILLPOINT DELI` sign text may appear in review-only raster art.
+- Batu must decide what primary raster material and source-file boundary, if any, are approved for MVP-21.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to pending MVP-20 review. MVP-21 is recommended pending Batu approval; no implementation task is approved.
+
+### 2026-05-30 - MVP-19 One-Corner Field Photo Supply Gate
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Produce a docs-only reference + repeatability/scalability packet for NW Greenpoint Deli / 903 Manhattan Ave.
+- Use existing repo evidence and supplied corner reference photos in `docs/mvp-reference-images/`.
+- Avoid app/source implementation, renderer work, raster integration, visual generation, visual polish, screenshots, new generated assets, scraping, live data, Google/Street View/3D Tiles-derived imagery, LiveXYZ facade/art use, production claims, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-19-one-corner-field-photo-supply-gate/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, place schema, place source policy, and MVP-18 packet read.
+- Confirmed the packet includes selected target summary, reference inventory, status/frontage/facade findings, required evidence scalability rows, one-corner / 20 / 100 / 500 storefront scale readout, and MVP-20 readiness recommendation.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created the MVP-19 review packet.
+- MVP-19 recommendation is `proceed-to-mvp-20`, pending Batu approval to open the docs-only translation boundary.
+- Batu pointed Codex to newly supplied corner reference photos in `docs/mvp-reference-images/`; northwest deli files have Apple iPhone 15 Pro metadata dated 2026-05-30.
+- The supplied photos support storefront frontage, entrance zone, facade cues, signage/awning treatment, adjacent storefront context, and subway entrance context for review-only translation planning.
+- The supplied photos reveal a naming conflict: visible signage reads `GRILLPOINT DELI`, while prior docs/app data refer to Greenpoint Deli.
+- The scalability readout finds official lot/address/building evidence is repeatable and one-corner field photos can unlock recognizable translation planning, while broader storefront recognition still requires field photography, provenance tracking, manual review, and Batu judgment.
+- MVP-20 is recommended but not opened.
+- No implementation, source, app, asset, visual generation, renderer, screenshot, scraping, live data, staging, commit, or production-claim work was performed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-19 `proceed-to-mvp-20` recommendation.
+- Batu must explicitly approve or reject the supplied northwest corner files as owned/non-Google review references.
+- Batu must decide whether to keep Greenpoint Deli as the target label, correct it to `GRILLPOINT DELI`, choose a fallback target, or pause the real-corner path.
+- Batu must approve any later MVP-20 Real-Corner Translation Boundary before implementation can be considered.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to pending MVP-19 review. MVP-20 is recommended pending Batu approval; no implementation task is approved.
 
 ### 2026-05-30 - MVP-19 Scalability Assessment Brief Patch
 
