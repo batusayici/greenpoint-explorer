@@ -55,14 +55,54 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-21 One-Corner Raster Integration / Visual Pass Brief is complete for Batu review with a `ready-to-open-mvp-21-implementation-pending-batu-approval` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-21 One-Corner Raster Integration / Visual Pass Brief is finalized with exact approved raster references and a `ready-to-open-mvp-21-implementation-pending-batu-approval` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to pending MVP-21 implementation approval; MVP-21 One-Corner Raster Integration / Visual Pass implementation is recommended only after Batu approves the brief, label/sign treatment, primary raster material, and allowed file list; no implementation phase is approved.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to pending MVP-21 implementation approval; MVP-21 One-Corner Raster Integration / Visual Pass implementation is recommended only after Batu explicitly opens implementation and confirms the implementation raster material path and allowed file list; no implementation phase is approved.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-21 Raster Brief Finalization
+
+Status:
+- Complete.
+
+Scope:
+- Update the docs-only MVP-21 brief and control docs with Batu's exact approved raster references and label/sign treatment decisions.
+- Keep MVP-21 NW-corner-only and still unopened for implementation.
+- Avoid app/source implementation, renderer work, screenshots, visual generation, new raster creation, source data changes, package/tooling changes, parked-corner reference use, exact sign/facade/address/station-geometry claims, production asset claims, staging outside the approved docs, and production place-card claims.
+
+Files changed:
+- `docs/mvp-review/mvp-21-one-corner-raster-integration-brief/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, and ledger docs read.
+- Confirmed approved raster reference files exist in `docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/`.
+- `git status --short`
+- `git diff --cached --check`
+
+Outcome:
+- Recorded `docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-A-ui-world-integration.png` as the primary raster/world integration reference.
+- Recorded `docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-B-place-card-marker-hover-state.png` as the UI/card/marker/hover-state reference.
+- Recorded both references as review-only / non-production and not approval for exact facade, sign, address, station-geometry, production assets, or code-native primary world art.
+- Recorded `GRILLPOINT DELI` as internal/source evidence label only.
+- Recorded generalized/fictional-safe product-facing deli treatment, such as non-readable deli sign treatment or `Corner Deli`, as preferred.
+- Recorded exact `GRILLPOINT DELI` sign reproduction as blocked unless explicitly approved later.
+- Parked NE / SE / SW references remain blocked for MVP-21.
+- No implementation, source, app, asset, visual generation, renderer, screenshot, scraping, live data, package/tooling, or production-claim work was performed.
+
+Unresolved decisions:
+- Batu must explicitly open MVP-21 implementation before source edits.
+- Batu must confirm the implementation raster material path if it differs from the approved raster references.
+- Batu must confirm or narrow the future source-file allowlist and screenshot/self-audit requirements.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to pending MVP-21 implementation approval with exact approved raster references recorded. MVP-21 implementation remains unopened.
 
 ### 2026-05-30 - MVP-21 One-Corner Raster Integration Brief
 
