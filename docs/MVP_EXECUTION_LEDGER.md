@@ -55,14 +55,55 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-20 Real-Corner Translation Boundary is complete for Batu review with a `proceed-to-mvp-21` recommendation; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-21 One-Corner Raster Integration / Visual Pass Brief is complete for Batu review with a `ready-to-open-mvp-21-implementation-pending-batu-approval` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to pending MVP-20 review; MVP-21 One-Corner Raster Integration / Visual Pass is recommended pending Batu approval and a separate implementation boundary; no implementation phase is approved.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to pending MVP-21 implementation approval; MVP-21 One-Corner Raster Integration / Visual Pass implementation is recommended only after Batu approves the brief, label/sign treatment, primary raster material, and allowed file list; no implementation phase is approved.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-21 One-Corner Raster Integration Brief
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Produce a docs-only implementation brief for a future one-corner raster integration / visual pass.
+- Keep the brief tightly scoped to the NW 903 Manhattan Ave / Greenpoint Deli / `GRILLPOINT DELI` selected corner.
+- Preserve truth-safety, raster-first visual governance, existing interaction-shell constraints, parked-corner exclusions, and MVP-20's one-corner boundary.
+- Avoid app/source implementation, renderer work, raster integration, visual generation, visual polish, screenshots, new assets, scraping, live data, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-21-one-corner-raster-integration-brief/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, place schema, place source policy, MVP-19 packet, MVP-20 packet, and parked-corner reference packet read.
+- Confirmed the brief defines purpose, entry criteria, selected target, allowed/blocked references, primary raster material requirement, allowed future implementation scope, proposed file allowlist, blocked work, acceptance criteria, stop conditions, verdict, and next pointer.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created the MVP-21 implementation brief packet.
+- Verdict is `ready-to-open-mvp-21-implementation-pending-batu-approval`.
+- MVP-21 implementation remains unopened until Batu approves the brief, label/sign treatment, primary raster material, and allowed file list.
+- The brief requires Codex to stop before source edits if approved primary raster material is missing.
+- Parked NE / SE / SW references remain blocked for MVP-21.
+- No implementation, source, app, asset, visual generation, renderer, screenshot, scraping, live data, staging, commit, or production-claim work was performed.
+
+Unresolved decisions:
+- Batu must approve, revise, or reject the MVP-21 implementation brief.
+- Batu must decide the visible/product label treatment for Greenpoint Deli / `GRILLPOINT DELI`.
+- Batu must decide whether exact `GRILLPOINT DELI` sign text may appear in review-only raster art.
+- Batu must supply or approve the primary raster material and confirm or narrow the future file allowlist.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to pending MVP-21 implementation approval. MVP-21 is recommended but still unopened; no implementation task is approved.
 
 ### 2026-05-30 - MVP-20 Real-Corner Translation Boundary
 

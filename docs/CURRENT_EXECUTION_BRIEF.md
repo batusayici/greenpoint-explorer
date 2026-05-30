@@ -1,31 +1,31 @@
-# Current Execution Brief - Pending MVP-20 Review
+# Current Execution Brief - Pending MVP-21 Implementation Approval
 
-Status: MVP-20 Real-Corner Translation Boundary is complete for Batu review with a `proceed-to-mvp-21` recommendation. No next task is approved yet.
+Status: MVP-21 One-Corner Raster Integration / Visual Pass Brief is complete for Batu review. MVP-21 implementation is recommended but still unopened.
 
-Owner boundary: Batu owns the MVP-20 verdict, whether to accept the Greenpoint Deli / `GRILLPOINT DELI` reconciliation path, whether to approve exact or generalized sign treatment, whether to approve any source-data label correction, whether to approve the proposed MVP-21 implementation boundary, and any later visual or source implementation approval.
+Owner boundary: Batu owns whether to approve, revise, or reject the MVP-21 implementation brief; whether the selected NW target displays Greenpoint Deli, `GRILLPOINT DELI`, a generalized deli label, a fictional-safe label, context-only treatment, or no label; whether exact sign text may appear in review-only raster art; what primary raster material is supplied or approved; which source files may be edited; and any later visual/source implementation approval.
 
-Codex must not proceed into MVP-21, source implementation, raster integration, visual generation, asset generation, renderer work, screenshots, staging, or commit unless Batu opens a later current brief.
+Codex must not proceed into MVP-21 source implementation, raster integration, visual generation, asset generation, renderer work, screenshots, staging, or commit unless Batu opens a later current brief.
 
 ## Current Outcome
 
 Completed task:
 
-- `MVP-20 Real-Corner Translation Boundary`
+- `MVP-21 One-Corner Raster Integration / Visual Pass Brief`
 
 Artifact:
 
-- `docs/mvp-review/mvp-20-real-corner-translation-boundary/README.md`
+- `docs/mvp-review/mvp-21-one-corner-raster-integration-brief/README.md`
 
 Verdict:
 
-- `proceed-to-mvp-21`
+- `ready-to-open-mvp-21-implementation-pending-batu-approval`
 
 Reason:
 
 - MVP-19 supplied owned/non-Google northwest corner references for 903 Manhattan Ave.
-- The references are strong enough to plan a recognizable one-corner translation.
-- The references also reveal a required truth correction: visible storefront signage reads `GRILLPOINT DELI`, while current app/data and prior docs refer to Greenpoint Deli.
-- MVP-20 defines the Place / Building / Storefront / MapAnchor boundary, allowed and blocked references, truth constraints, treatment recommendations, and a proposed downstream MVP-21 boundary.
+- MVP-20 returned `proceed-to-mvp-21` for the NW 903 Manhattan Ave / `GRILLPOINT DELI` one-corner translation boundary.
+- The MVP-21 brief defines the implementation entry criteria, selected target, approved/blocked references, primary raster material requirement, allowed future scope, proposed narrow file allowlist, blocked work, acceptance criteria, stop conditions, and remaining Batu decisions.
+- The brief keeps MVP-21 as a one-corner raster-first visual pass only, not a full rebuild, four-corner integration, production asset approval, production card approval, exact facade claim, or public-release claim.
 
 MVP-17 remains accepted only as the product-facing raster interaction polish baseline. It is not accepted as a truthful or recognizable Greenpoint Ave x Manhattan Ave scene.
 
@@ -35,18 +35,16 @@ Recommended next task, pending Batu approval:
 
 - `MVP-21 One-Corner Raster Integration / Visual Pass`
 
-MVP-21 must be a tightly scoped implementation brief only if Batu accepts MVP-20 and explicitly opens the boundary. It should focus on the NW 903 Manhattan Ave / `GRILLPOINT DELI` selected corner and minimal adjacent context.
+MVP-21 implementation may open only if Batu explicitly approves the implementation brief and resolves the minimum entry decisions:
 
-MVP-21 must not open until Batu decides:
+1. Accept or revise the MVP-21 implementation boundary.
+2. Choose the visible/product label treatment for the selected NW target.
+3. Decide whether exact `GRILLPOINT DELI` sign text may appear in review-only raster art.
+4. Supply or approve the primary raster material path for the MVP-21 world surface, or approve a limited interaction-only fallback.
+5. Confirm or narrow the proposed source-file allowlist.
+6. Confirm screenshot and self-audit requirements.
 
-1. Whether the active target label remains Greenpoint Deli, changes to `GRILLPOINT DELI`, or becomes fictional-safe.
-2. Whether exact `GRILLPOINT DELI` sign text may appear in review-only raster art.
-3. Which supplied northwest reference files are approved for review-only visual translation.
-4. What primary raster material will be supplied or approved for the MVP-21 world surface.
-5. Which app/source files, if any, may be edited.
-6. What screenshot/self-audit requirements apply.
-
-This recommended next task is not approved until Batu explicitly opens it.
+If no primary raster material exists at the approved path when implementation begins, Codex must stop before source edits and report the missing material.
 
 ## Active Scene / Evidence State
 
@@ -58,16 +56,21 @@ Active scene/place set:
 - Citizens Bank.
 - Greenpoint G subway.
 
-Selected corner for downstream planning:
+Selected corner for downstream implementation planning:
 
 - NW selected corner at 903 Manhattan Ave.
 - Current app/data label: Greenpoint Deli.
 - Supplied field-reference sign text: `GRILLPOINT DELI`.
-- Translation target status: proceed to a one-corner raster translation pass only after Batu approves the naming/sign-treatment boundary.
+- Translation target status: implementation-ready only after Batu approves the naming/sign-treatment boundary and primary raster material.
 
-MVP-20 treatment state:
+Reference state:
 
-- `GRILLPOINT DELI` / 903 Manhattan Ave: first real-corner translation target, name manual-review-required.
+- Allowed NW references for future MVP-21 planning are listed in `docs/mvp-review/mvp-21-one-corner-raster-integration-brief/README.md`.
+- Parked NE / SE / SW references remain review-only, non-production, not approved for MVP-21, and not active raster material.
+
+MVP-20 treatment state remains:
+
+- Greenpoint Deli / `GRILLPOINT DELI` / 903 Manhattan Ave: first real-corner translation target, name manual-review-required.
 - McDonald's: context-only or deferred for the first one-corner pass.
 - Dunkin': deferred.
 - Citizens Bank: deferred / fallback only.
@@ -87,6 +90,7 @@ MVP-20 treatment state:
 - Live data pipeline.
 - Google/Street View/3D Tiles-derived stored imagery, extraction, tracing, texture reuse, training input, generation input, or facade-reference use.
 - LiveXYZ-derived facade/art use.
+- Parked NE / SE / SW photos as MVP-21 inputs.
 - Production/public-release claims.
 - Real-place production cards.
 - Exact facade, exact address-placement, exact storefront frontage/order, exact station-geometry, or final factual card-copy claims.
@@ -94,8 +98,8 @@ MVP-20 treatment state:
 
 ## Decisions Reserved For Batu
 
-- Accept, revise, or reject the MVP-20 `proceed-to-mvp-21` recommendation.
-- Decide whether the active place label changes from Greenpoint Deli to `GRILLPOINT DELI`, remains Greenpoint Deli for now, or becomes fictional-safe.
+- Approve, revise, or reject the MVP-21 implementation brief.
+- Decide whether the active place label changes from Greenpoint Deli to `GRILLPOINT DELI`, remains Greenpoint Deli for now, becomes generalized, becomes fictional-safe, becomes context-only, or is omitted.
 - Decide whether exact `GRILLPOINT DELI` sign text may appear in a review-only raster pass.
 - Decide whether public card copy remains blocked, becomes review-only, or is fictionalized.
 - Decide what primary raster source, layered raster export, or approved raster sprite/asset-kit composition is allowed for MVP-21.
