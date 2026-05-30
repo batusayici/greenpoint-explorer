@@ -20,6 +20,12 @@ This corpus exists so future UI, prototype, and assetization work can align to c
 - Generated or historical micro-text in these images is not factual copy and must not be reused as production content.
 - These references do not approve production art, a production asset pipeline, real Greenpoint business data, exact addresses, exact facades, exact station geometry, live data, backend systems, routing, deployment, or public interfaces.
 
+## Path Integrity
+
+Canonical approved-reference files may live under `docs/archive/visual-artifacts/`. Archive storage is preservation, not demotion.
+
+Use the current paths in `MANIFEST.md` as the authoritative inspectable paths. If a required manifest path is missing, future visual gates must stop and report the broken reference before implementation.
+
 ## Corpus Contents
 
 - `MANIFEST.md` lists canonical and supporting source images, plus known cautionary references.

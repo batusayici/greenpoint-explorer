@@ -56,6 +56,10 @@ Prototype translation rule:
 
 Future prototype work must use approved raster/reference assets or extracted/recombined Phase 6 asset-kit logic as its visual basis. SVG, CSS, DOM, canvas, or other code-drawn scene art may support overlays, hit regions, labels, cards, and interaction chrome only when the current brief allows it; it must not replace missing primary world evidence.
 
+Current-brief override limit:
+
+A current brief may not authorize code-native storefronts, buildings, sidewalks, roads, props, textures, or signs as the normal-mode primary world art for a prototype being evaluated against the approved visual direction. A current brief may authorize code-native structure only for a non-visual blockout, hidden alignment aid, debug/QA overlay, or interaction layer. If no approved raster plate or approved raster sprite/asset-kit composition is available, Codex must stop before source edits.
+
 ## Visual Fidelity Ladder
 
 Use the lowest fidelity that still makes the intended decision visible, but never use a lower artifact class for a higher decision.

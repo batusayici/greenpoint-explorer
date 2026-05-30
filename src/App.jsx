@@ -17,10 +17,10 @@ export default function App() {
 
   return (
     <main className="prototype-shell" aria-label="Greenpoint Explorer prototype shell">
-      <section className="world-panel" aria-label="Review-only Manhattan and Greenpoint scene">
+      <section className="world-panel" aria-label="Product-facing raster prototype scene">
         <div className="panel-topline">
           <div>
-            <p className="kicker">MVP-06 corrective slice</p>
+            <p className="kicker">Review prototype</p>
             <h1>Greenpoint Explorer</h1>
           </div>
           <p className="placeholder-note">{mvpScene.note}</p>
@@ -35,7 +35,7 @@ export default function App() {
             <span>{mvpScene.sceneFrame.intent}</span>
           </div>
           <div className="target-rail" aria-label="MVP place index">
-            <p className="rail-label">Targets</p>
+            <p className="rail-label">Places</p>
             {mvpScene.targets.map((target) => {
               const isActive = hoveredTargetId === target.id || selectedTargetId === target.id;
               return (

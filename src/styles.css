@@ -30,10 +30,10 @@ button {
 
 .prototype-shell {
   min-height: 100vh;
-  padding: 18px;
+  padding: 14px;
   background:
-    radial-gradient(circle at 18% 0%, rgba(154, 79, 54, 0.18), transparent 32%),
-    linear-gradient(135deg, #171c1b 0%, #242725 54%, #131615 100%);
+    radial-gradient(circle at 18% 0%, rgba(154, 79, 54, 0.1), transparent 32%),
+    linear-gradient(135deg, #191d1b 0%, #222521 54%, #121514 100%);
 }
 
 .world-panel {
@@ -46,7 +46,7 @@ button {
   gap: 18px;
   align-items: end;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding: 0 4px;
 }
 
@@ -61,13 +61,13 @@ button {
 .kicker {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding: 4px 10px;
-  border: 1px solid rgba(244, 234, 216, 0.46);
-  color: #f4ead8;
-  background: rgba(24, 27, 26, 0.72);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-  font-size: 0.72rem;
+  min-height: 20px;
+  padding: 3px 8px;
+  border: 1px solid rgba(244, 234, 216, 0.28);
+  color: rgba(244, 234, 216, 0.78);
+  background: rgba(24, 27, 26, 0.38);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  font-size: 0.6rem;
   font-weight: 850;
 }
 
@@ -78,33 +78,33 @@ p {
 }
 
 h1 {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   color: #f8ecd4;
-  font-size: clamp(1.25rem, 1.7vw, 1.7rem);
+  font-size: clamp(1.18rem, 1.55vw, 1.58rem);
   line-height: 1;
 }
 
 .placeholder-note {
   margin: 0;
-  max-width: 38ch;
-  color: rgba(248, 236, 212, 0.76);
-  font-size: 0.78rem;
-  line-height: 1.35;
+  max-width: 34ch;
+  color: rgba(248, 236, 212, 0.58);
+  font-size: 0.7rem;
+  line-height: 1.28;
   text-align: right;
 }
 
 .viewport-frame {
   position: relative;
-  height: min(78vh, 760px);
-  min-height: 560px;
+  height: min(82vh, 800px);
+  min-height: 590px;
   overflow: hidden;
-  border: 1px solid rgba(248, 236, 212, 0.32);
+  border: 1px solid rgba(248, 236, 212, 0.22);
   border-radius: 8px;
   background: #101414;
   box-shadow:
-    0 26px 70px rgba(0, 0, 0, 0.44),
+    0 22px 62px rgba(0, 0, 0, 0.38),
     0 0 0 1px rgba(0, 0, 0, 0.78),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   touch-action: none;
 }
 
@@ -113,24 +113,24 @@ h1 {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(to bottom, rgba(13, 16, 15, 0.46), transparent 18%, transparent 72%, rgba(13, 16, 15, 0.42)),
-    linear-gradient(to right, rgba(13, 16, 15, 0.28), transparent 18%, transparent 78%, rgba(13, 16, 15, 0.28));
+    linear-gradient(to bottom, rgba(13, 16, 15, 0.22), transparent 16%, transparent 76%, rgba(13, 16, 15, 0.22)),
+    linear-gradient(to right, rgba(13, 16, 15, 0.16), transparent 16%, transparent 82%, rgba(13, 16, 15, 0.16));
   content: "";
   pointer-events: none;
 }
 
 .review-ribbon {
   position: absolute;
-  top: 14px;
-  left: 18px;
+  top: 12px;
+  left: 14px;
   z-index: 3;
-  padding: 4px 7px;
-  border: 1px solid rgba(248, 236, 212, 0.28);
+  padding: 3px 6px;
+  border: 1px solid rgba(248, 236, 212, 0.18);
   border-radius: 4px;
-  color: rgba(248, 236, 212, 0.68);
-  background: rgba(25, 28, 27, 0.54);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-  font-size: 0.62rem;
+  color: rgba(248, 236, 212, 0.56);
+  background: rgba(25, 28, 27, 0.34);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  font-size: 0.54rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -139,54 +139,54 @@ h1 {
 
 .scene-frame-note {
   position: absolute;
-  top: 46px;
-  left: 18px;
+  top: 38px;
+  left: 14px;
   z-index: 3;
   display: grid;
-  width: min(348px, calc(100% - 420px));
-  gap: 3px;
-  padding: 8px 9px;
-  border: 1px solid rgba(248, 236, 212, 0.24);
+  width: min(300px, calc(100% - 420px));
+  gap: 2px;
+  padding: 7px 8px;
+  border: 1px solid rgba(248, 236, 212, 0.16);
   border-radius: 5px;
-  color: rgba(248, 236, 212, 0.74);
-  background: rgba(24, 27, 26, 0.58);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
-  font-size: 0.62rem;
+  color: rgba(248, 236, 212, 0.58);
+  background: rgba(24, 27, 26, 0.34);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+  font-size: 0.56rem;
   line-height: 1.25;
   pointer-events: none;
 }
 
 .scene-frame-note strong {
-  color: #fff0d2;
-  font-size: 0.68rem;
+  color: rgba(255, 240, 210, 0.76);
+  font-size: 0.62rem;
   font-weight: 880;
 }
 
 .target-rail {
   position: absolute;
-  left: 18px;
-  bottom: 18px;
+  left: 16px;
+  bottom: 16px;
   z-index: 4;
   display: flex;
-  max-width: min(680px, calc(100% - 430px));
-  gap: 6px;
+  max-width: min(630px, calc(100% - 450px));
+  gap: 5px;
   align-items: center;
-  padding: 8px;
-  border: 1px solid rgba(248, 236, 212, 0.34);
+  padding: 6px;
+  border: 1px solid rgba(248, 236, 212, 0.22);
   border-radius: 8px;
-  background: rgba(24, 27, 26, 0.84);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(9px) saturate(1.06);
+  background: rgba(24, 27, 26, 0.58);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
+  backdrop-filter: blur(7px) saturate(1.02);
   pointer-events: auto;
 }
 
 .rail-label {
   flex: 0 0 auto;
-  margin: 0 5px 0 0;
-  padding: 0 8px 0 2px;
-  border-right: 1px solid rgba(248, 236, 212, 0.28);
-  color: rgba(248, 236, 212, 0.66);
-  font-size: 0.62rem;
+  margin: 0 3px 0 0;
+  padding: 0 7px 0 2px;
+  border-right: 1px solid rgba(248, 236, 212, 0.18);
+  color: rgba(248, 236, 212, 0.5);
+  font-size: 0.56rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -196,15 +196,15 @@ h1 {
 .target-pill {
   position: relative;
   display: grid;
-  flex: 0 1 128px;
-  min-width: 106px;
-  max-width: 138px;
+  flex: 0 1 118px;
+  min-width: 98px;
+  max-width: 128px;
   gap: 2px;
-  padding: 8px 10px 8px 23px;
-  border: 1px solid rgba(248, 236, 212, 0.22);
+  padding: 7px 9px 7px 21px;
+  border: 1px solid rgba(248, 236, 212, 0.16);
   border-radius: 5px;
-  color: rgba(248, 236, 212, 0.88);
-  background: rgba(247, 232, 202, 0.1);
+  color: rgba(248, 236, 212, 0.8);
+  background: rgba(247, 232, 202, 0.07);
   cursor: pointer;
   text-align: left;
   transition:
@@ -218,8 +218,8 @@ h1 {
   position: absolute;
   top: 13px;
   left: 9px;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border: 1px solid currentColor;
   border-radius: 999px;
   background: rgba(240, 188, 69, 0.34);
@@ -229,23 +229,23 @@ h1 {
 .target-pill[data-active="true"],
 .target-pill:hover,
 .target-pill:focus-visible {
-  border-color: rgba(240, 188, 69, 0.82);
+  border-color: rgba(240, 188, 69, 0.66);
   color: #fff2d6;
-  background: rgba(240, 188, 69, 0.16);
+  background: rgba(240, 188, 69, 0.12);
   outline: none;
   transform: translateY(-1px);
 }
 
 .target-pill[aria-pressed="true"] {
-  border-color: rgba(255, 238, 185, 0.96);
+  border-color: rgba(255, 238, 185, 0.86);
   color: #241f18;
-  background: #f0bc45;
+  background: #e8bd58;
   box-shadow: inset 0 -2px 0 rgba(36, 31, 24, 0.2);
 }
 
 .target-pill span {
   overflow: hidden;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 850;
   line-height: 1.05;
   text-overflow: ellipsis;
@@ -254,7 +254,7 @@ h1 {
 
 .target-pill small {
   overflow: hidden;
-  font-size: 0.53rem;
+  font-size: 0.48rem;
   font-weight: 780;
   letter-spacing: 0.06em;
   line-height: 1.1;
@@ -266,29 +266,29 @@ h1 {
 
 .view-controls {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 12px;
+  right: 12px;
   z-index: 4;
   display: flex;
   gap: 4px;
   align-items: center;
-  padding: 5px;
-  border: 1px solid rgba(248, 236, 212, 0.26);
+  padding: 4px;
+  border: 1px solid rgba(248, 236, 212, 0.18);
   border-radius: 8px;
-  background: rgba(22, 25, 24, 0.78);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(8px);
+  background: rgba(22, 25, 24, 0.52);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(7px);
 }
 
 .view-controls button {
   display: grid;
-  min-width: 30px;
-  height: 30px;
+  min-width: 28px;
+  height: 28px;
   place-items: center;
-  border: 1px solid rgba(248, 236, 212, 0.2);
+  border: 1px solid rgba(248, 236, 212, 0.14);
   border-radius: 5px;
-  color: rgba(248, 236, 212, 0.9);
-  background: rgba(248, 236, 212, 0.08);
+  color: rgba(248, 236, 212, 0.78);
+  background: rgba(248, 236, 212, 0.06);
   cursor: pointer;
   font-size: 0.76rem;
   font-weight: 850;
@@ -304,18 +304,18 @@ h1 {
 }
 
 .view-controls button[aria-label="Reset view"] {
-  min-width: 46px;
-  font-size: 0.64rem;
+  min-width: 42px;
+  font-size: 0.58rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .view-controls .review-toggle {
-  min-width: 38px;
-  margin-left: 4px;
-  border-color: rgba(129, 153, 134, 0.5);
-  color: rgba(210, 230, 204, 0.86);
-  background: rgba(74, 101, 83, 0.34);
+  min-width: 34px;
+  margin-left: 3px;
+  border-color: rgba(129, 153, 134, 0.34);
+  color: rgba(210, 230, 204, 0.7);
+  background: rgba(74, 101, 83, 0.22);
 }
 
 .view-controls .review-toggle[aria-pressed="true"] {
@@ -349,32 +349,32 @@ h1 {
 
 .selected-card {
   position: absolute;
-  right: 22px;
-  bottom: 22px;
+  right: 18px;
+  bottom: 18px;
   z-index: 5;
-  width: min(450px, calc(100% - 44px));
-  max-height: calc(100% - 44px);
+  width: min(420px, calc(100% - 36px));
+  max-height: calc(100% - 36px);
   overflow: auto;
-  padding: 18px 18px 15px;
-  border: 1px solid rgba(38, 34, 29, 0.86);
-  border-top: 4px solid #a94f38;
+  padding: 16px 16px 14px;
+  border: 1px solid rgba(38, 34, 29, 0.66);
+  border-top: 3px solid #a94f38;
   border-radius: 6px;
   color: #211f1b;
   background:
-    radial-gradient(circle at 18% 22%, rgba(160, 102, 65, 0.12), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 42%),
-    #f3e4c8;
+    radial-gradient(circle at 18% 22%, rgba(160, 102, 65, 0.1), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
+    rgba(243, 228, 200, 0.96);
   box-shadow:
-    0 24px 54px rgba(0, 0, 0, 0.42),
-    0 0 0 1px rgba(248, 236, 212, 0.2);
+    0 20px 46px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(248, 236, 212, 0.16);
 }
 
 .card-attachment {
   position: absolute;
-  left: -74px;
+  left: -58px;
   top: 50%;
-  width: 74px;
-  border-top: 2px solid rgba(246, 232, 202, 0.72);
+  width: 58px;
+  border-top: 1px solid rgba(246, 232, 202, 0.56);
   filter: drop-shadow(0 1px 0 rgba(25, 24, 22, 0.4));
   transform: translateY(-50%);
 }
@@ -392,19 +392,19 @@ h1 {
 
 .card-label {
   display: inline-flex;
-  margin-bottom: 10px;
-  padding: 4px 7px;
+  margin-bottom: 9px;
+  padding: 3px 7px;
   border-radius: 3px;
   color: #f6ead2;
-  background: #a94f38;
-  font-size: 0.62rem;
+  background: rgba(169, 79, 56, 0.9);
+  font-size: 0.58rem;
   font-weight: 880;
 }
 
 .selected-card h2 {
   margin: 0 42px 4px 0;
   color: #161515;
-  font-size: 1.52rem;
+  font-size: 1.38rem;
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.02;
@@ -413,13 +413,13 @@ h1 {
 
 .selected-card p {
   color: #40362d;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
 }
 
 .card-summary {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: #263d3d;
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 820;
   line-height: 1.25;
 }
@@ -430,8 +430,8 @@ h1 {
 }
 
 .card-category {
-  margin-bottom: 10px;
-  padding-bottom: 9px;
+  margin-bottom: 9px;
+  padding-bottom: 8px;
   border-bottom: 1px solid rgba(32, 30, 27, 0.22);
   color: #253e3e;
   font-size: 0.76rem;
@@ -472,12 +472,12 @@ h1 {
 
 .evidence-list {
   display: grid;
-  gap: 6px;
-  margin: 12px 0 0;
-  padding: 9px;
-  border: 1px solid rgba(32, 30, 27, 0.2);
+  gap: 5px;
+  margin: 10px 0 0;
+  padding: 8px;
+  border: 1px solid rgba(32, 30, 27, 0.16);
   border-radius: 4px;
-  background: rgba(255, 248, 232, 0.45);
+  background: rgba(255, 248, 232, 0.34);
 }
 
 .evidence-list div {
@@ -607,7 +607,7 @@ h1 {
 
 @media (max-width: 720px) {
   .prototype-shell {
-    padding: 10px;
+    padding: 8px;
   }
 
   .panel-topline {
@@ -617,9 +617,9 @@ h1 {
   }
 
   .kicker {
-    min-height: 21px;
-    padding: 3px 8px;
-    font-size: 0.62rem;
+    min-height: 19px;
+    padding: 3px 7px;
+    font-size: 0.56rem;
   }
 
   h1 {
@@ -628,14 +628,14 @@ h1 {
   }
 
   .placeholder-note {
-    max-width: 18ch;
-    font-size: 0.66rem;
+    max-width: 17ch;
+    font-size: 0.6rem;
     line-height: 1.25;
   }
 
   .viewport-frame {
-    height: 76vh;
-    min-height: 560px;
+    height: 78vh;
+    min-height: 570px;
     border-radius: 8px;
   }
 
@@ -647,15 +647,15 @@ h1 {
   }
 
   .scene-frame-note {
-    top: 42px;
+    top: 38px;
     left: 10px;
-    width: min(286px, calc(100% - 128px));
-    padding: 7px 8px;
-    font-size: 0.56rem;
+    width: min(240px, calc(100% - 128px));
+    padding: 6px 7px;
+    font-size: 0.5rem;
   }
 
   .scene-frame-note strong {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
 
   .view-controls {
@@ -682,11 +682,11 @@ h1 {
   }
 
   .target-rail {
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
     max-width: none;
-    padding: 6px;
+    padding: 5px;
     overflow-x: auto;
     border-radius: 6px;
   }
@@ -696,9 +696,9 @@ h1 {
   }
 
   .target-pill {
-    flex-basis: 124px;
-    min-width: 112px;
-    max-width: 132px;
+    flex-basis: 118px;
+    min-width: 104px;
+    max-width: 126px;
     padding: 6px 8px 6px 19px;
   }
 
@@ -711,12 +711,12 @@ h1 {
   }
 
   .selected-card {
-    right: 10px;
-    bottom: 74px;
-    width: calc(100% - 20px);
-    max-height: 43%;
+    right: 8px;
+    bottom: 66px;
+    width: calc(100% - 16px);
+    max-height: 45%;
     overflow: auto;
-    padding: 15px 14px 12px;
+    padding: 14px 13px 11px;
   }
 
   .card-attachment {

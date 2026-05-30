@@ -1,22 +1,113 @@
-# Current Execution Brief - Post-Governance-Reconciliation / Post-MVP-16B Review State
+# Current Execution Brief - Pending Next Batu Approval
 
-Status: Governance operating-model reconciliation is complete. MVP-16B Raster-First Prototype Recovery remains complete for Batu review, with ChatGPT support optional at critical review or gate-decision moments. No next implementation task is approved.
+Status: MVP-17 Product-Facing Raster Interaction Polish is accepted by Batu as the product-facing raster interaction polish baseline. The supplied screenshot set is partial, and Batu explicitly accepted the missing mobile selected-state containment screenshot evidence gap on 2026-05-30.
 
-Owner boundary: Codex must not perform further app/source implementation, visual polish, ambient work, new art generation, production asset work, package/config/tooling/CI/deployment changes, staging, or commit work until Batu approves a later current brief or explicitly opens that scope.
+Owner boundary: No new implementation task is currently approved. Codex must not perform further source implementation, create new primary world art, generate visual assets, change package/config/tooling/CI/deployment, stage, or commit except for the one-time `MVP-17 Hold-State Reconciliation Commit` task authorized below. Batu retains approval over product direction, scope changes, production claims, real-place representation, public interfaces, and any next phase.
 
 ## Current Next Task State
 
-No next implementation task is approved.
+Approved next task:
 
-Required review:
+- `MVP-17 Hold-State Reconciliation Commit` only.
 
-- Batu review of `docs/mvp-review/mvp-16b-raster-first-prototype-recovery/README.md`, with ChatGPT support optional for critical review or decision framing.
-- Browser screenshot review of `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/`.
+Approved next-task type:
 
-Proposed next state, pending Batu decision:
+- One-time commit-only reconciliation task.
+- This task may stage and commit only already-existing accepted MVP workstream paths needed to preserve the MVP-17 accepted raster interaction prototype and its historical review/evidence trail.
+- It must not edit implementation or docs, create screenshots, create or modify assets, run QA recovery, open a new MVP batch, change package/config/tooling/CI/deployment, or make production/public-release claims.
+- After the commit, the repo remains in the same MVP-17 hold state and no further task is approved.
 
-- Accept, revise, or reject MVP-16B as the raster-first recovery baseline.
-- Write a later current brief for any approved raster-anchor revision, replacement raster plate, visual polish, optional ambient, or next MVP phase.
+Approved reconciliation commit scope:
+
+- Include active accepted prototype source paths: `src/App.jsx`, `src/PlaceholderWorld.jsx`, `src/mvpPlaceData.js`, and `src/styles.css`.
+- Include MVP-17 control/review paths: `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, and `docs/mvp-review/mvp-17-product-facing-raster-interaction-polish/`.
+- Include MVP-17 accepted screenshot evidence: `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/`.
+- Include historical MVP workstream review/evidence folders already documented in the ledger and needed to preserve the trail to MVP-17, including older `docs/mvp-review/mvp-08-place-evidence-packet-current-scene/` through `docs/mvp-review/mvp-17-product-facing-raster-interaction-polish/`.
+- Include older review screenshot evidence relevant to the accepted path: `docs/review-screenshots/mvp-04-interaction-integration/`, `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/`, and `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/`.
+- Include `docs/mvp-reference-images/` as historical/source-reference evidence for the reviewed MVP workstream only, not as approved production assets or facade/art sources.
+- Include approved-reference-corpus documentation changes: `docs/approved-reference-corpus/MANIFEST.md`, `docs/approved-reference-corpus/README.md`, `docs/approved-reference-corpus/REFERENCE_INDEX.md`, and `docs/approved-reference-corpus/USAGE_RULES.md`.
+- Include `docs/VISUAL_ARTIFACT_STANDARDS.md` as part of the documented raster-first/visual-evidence governance trail.
+- Include `docs/VISUAL_INTEGRATION_PROTOTYPE_PLANNING_BRIEF.md` as historical planning context only if it already exists in the dirty tree at commit time; it is not revived as active task authority.
+
+Explicit exclusions from the reconciliation commit:
+
+- Exclude `dist/`, `node_modules/`, logs, caches, environment files, package/config/tooling/CI/deployment changes, and any newly generated files not already present in the dirty tree before the reconciliation commit task begins.
+- Exclude any new implementation, docs expansion, screenshot capture, visual asset generation/modification, QA recovery, or new MVP batch work.
+
+Batch name:
+
+- Product-Facing Raster Interaction Polish.
+
+Goal:
+
+- Hold after MVP-17 acceptance until Batu opens the next implementation, QA, or documentation batch.
+- Allow one future commit-only reconciliation task to preserve the accepted MVP-17 dirty working tree and its documented historical evidence trail, then return to hold.
+
+Source implementation already completed:
+
+- Reduced visual weight of review chrome, top copy, target rail, controls, markers, tethers, outlines, and selected card treatment.
+- Preserved the approved raster plate as the normal-mode primary world surface.
+- Preserved existing pan/zoom, hover/select, target rail, cards, and mobile containment behavior in source.
+- Kept business identity in cards, labels, accessible text, and UI copy only.
+- Did not add optional ambient motion.
+
+Current evidence status:
+
+- Present: `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-default-overview.png`
+- Present: `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-hover-focus-state.png`
+- Present: `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-store-card.png`
+- Present: `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-zoom-view.png`
+- Missing but accepted as an evidence gap: mobile selected-state containment screenshot.
+
+Remaining scope:
+
+- Only the one-time `MVP-17 Hold-State Reconciliation Commit` is authorized. All other future work requires a new explicit current brief.
+
+Allowed edits:
+
+- None. The future `MVP-17 Hold-State Reconciliation Commit` may stage and commit the approved reconciliation scope above, but must not edit files.
+
+Forbidden:
+
+- No code-drawn storefronts, buildings, roads, sidewalks, props, textures, or signs.
+- No new primary world art.
+- No new generated visual assets.
+- No replacement raster plate unless explicitly supplied and approved.
+- No real business identity baked into artwork.
+- No exact real facade, exact address, or exact station-geometry claims.
+- No package/config/tooling/CI/deployment changes.
+- No production asset, production pipeline, production scalability, or public-release claims.
+- No unrelated implementation, broad feature work, map/data expansion, backend, persistence, analytics, or live data.
+- No staging or commit except the one-time `MVP-17 Hold-State Reconciliation Commit` task authorized above.
+
+Acceptance outcome:
+
+- MVP-17 accepted by Batu on 2026-05-30.
+- MVP-16B's raster-first world surface remains primary.
+- Interaction polish is accepted as the product-facing raster interaction polish baseline.
+- The missing mobile selected-state containment screenshot is accepted as an evidence gap.
+- No production asset, production pipeline, exact-real-place, public-interface, architecture, deployment, or next-phase approval is implied.
+
+Verification recorded:
+
+- Run `npm run build`.
+- Run `git diff --check`.
+- Verify supplied review screenshots for desktop overview, hover/focus, selected card, mobile selected containment, and pan/zoom stress.
+- Report changed files, verification results, screenshot paths, and compromises.
+
+Stop conditions:
+
+- Stop if polish requires changing, repainting, regenerating, replacing, or visually restyling the raster plate.
+- Stop if the work would require code-drawn storefronts, buildings, roads, sidewalks, props, textures, signs, or any new primary world art.
+- Stop if the work would require exact real address, facade, storefront-order, or station-geometry claims.
+- Stop if the plan/current brief/ledger cannot be reconciled without widening scope.
+
+Implementation preflight required before source edits:
+
+- State whether public interfaces/module boundaries change or remain unchanged.
+- State expected files to touch.
+- State feedback loop.
+- State decisions still reserved for Batu.
 
 ## MVP-16B Outcome
 

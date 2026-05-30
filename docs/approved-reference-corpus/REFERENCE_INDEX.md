@@ -5,6 +5,8 @@ Date: 2026-05-28
 
 ## Scene / World Style
 
+Use `MANIFEST.md` for current inspectable paths. Some canonical files are preserved under `docs/archive/visual-artifacts/`; archive storage does not reduce their canonical status.
+
 Strongest references:
 
 - ARC-001: `04-inked-indie-graphic-novel.png`

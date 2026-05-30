@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 import { Application, Assets, Container, Graphics, Sprite, Text } from "pixi.js";
 
 const CAMERA = {
-  minScale: 0.5,
-  maxScale: 1.55,
-  desktopMaxOverviewScale: 0.82,
+  minScale: 0.36,
+  maxScale: 1.65,
+  desktopMaxOverviewScale: 0.86,
 };
 
 export default function PlaceholderWorld({
@@ -21,7 +21,7 @@ export default function PlaceholderWorld({
     app: null,
     world: null,
     targetGraphics: new Map(),
-    camera: { x: 0, y: 0, scale: 0.58 },
+    camera: { x: 0, y: 0, scale: 0.72 },
     cameraInitialized: false,
     dragging: false,
     dragStart: null,
@@ -41,7 +41,7 @@ export default function PlaceholderWorld({
         resolution: Math.min(window.devicePixelRatio || 1, 2),
       });
 
-      const texture = await Assets.load(scene.plate.src);
+      const texture = scene.plate?.src ? await Assets.load(scene.plate.src) : null;
 
       if (cancelled || !host) {
         app.destroy(true);
@@ -56,7 +56,7 @@ export default function PlaceholderWorld({
       app.stage.addChild(world);
 
       drawRasterPlate(world, scene, texture);
-      stateRef.current.targetGraphics = drawTargets(world, scene.targets, false);
+      stateRef.current.targetGraphics = drawTargets(world, scene.targets, reviewMode);
 
       const resizeObserver = new ResizeObserver(() => {
         resizeApp(host, app);
@@ -79,6 +79,7 @@ export default function PlaceholderWorld({
       stateRef.current.app = null;
       stateRef.current.world = null;
       stateRef.current.targetGraphics = new Map();
+      stateRef.current.cameraInitialized = false;
     };
   }, [scene]);
 
@@ -269,8 +270,10 @@ function clampAndApplyCamera(host, scene, state) {
   if (!state.cameraInitialized) {
     const fitWidthScale = host.clientWidth / scene.size.width;
     const fitHeightScale = host.clientHeight / scene.size.height;
-    const maxOverviewScale = host.clientWidth >= 760 ? CAMERA.desktopMaxOverviewScale : CAMERA.maxScale;
-    camera.scale = clamp(Math.max(fitWidthScale, fitHeightScale) * 1.02, CAMERA.minScale, maxOverviewScale);
+    const scale = host.clientWidth >= 760
+      ? Math.min(fitWidthScale, fitHeightScale) * 0.98
+      : Math.max(fitWidthScale, fitHeightScale) * 0.92;
+    camera.scale = clamp(scale, CAMERA.minScale, CAMERA.desktopMaxOverviewScale);
     camera.x = (host.clientWidth - scene.size.width * camera.scale) / 2;
     camera.y = (host.clientHeight - scene.size.height * camera.scale) / 2;
     state.cameraInitialized = true;
@@ -293,18 +296,13 @@ function clampAndApplyCamera(host, scene, state) {
 }
 
 function drawRasterPlate(world, scene, texture) {
+  if (!texture) return;
+
   const plate = new Sprite(texture);
   plate.width = scene.size.width;
   plate.height = scene.size.height;
-  plate.alpha = scene.plate.alpha ?? 1;
+  plate.alpha = 1;
   world.addChild(plate);
-
-  if (scene.plate.scaffoldWash) {
-    const wash = new Graphics()
-      .rect(0, 0, scene.size.width, scene.size.height)
-      .fill(scene.plate.scaffoldWash);
-    world.addChild(wash);
-  }
 }
 
 function drawTargets(world, targets, reviewMode) {
@@ -312,113 +310,128 @@ function drawTargets(world, targets, reviewMode) {
   for (const target of targets) {
     const container = new Container();
     const shape = new Graphics();
-    const label = new Text({
-      text: target.title,
+    const markerLabel = new Text({
+      text: target.marker?.label ?? "",
       style: {
+        align: "center",
         fill: "#28231f",
         fontFamily: "Inter, Arial, sans-serif",
-        fontSize: 20,
-        fontWeight: "800",
+        fontSize: 17,
+        fontWeight: "900",
       },
     });
+    const reviewLabel = new Text({
+      text: target.rasterAnchorLabel ?? target.label ?? target.title,
+      style: {
+        fill: "#f8ecd4",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 18,
+        fontWeight: "850",
+      },
+    });
+
     container.eventMode = "none";
-    label.resolution = 2;
-    container.addChild(shape, label);
+    markerLabel.resolution = 2;
+    markerLabel.anchor.set(0.5);
+    reviewLabel.resolution = 2;
+    container.addChild(shape, markerLabel, reviewLabel);
     world.addChild(container);
-    renderTargetState({ shape, label }, target, false, false, reviewMode);
-    targetGraphics.set(target.id, { shape, label });
+    renderTargetState({ shape, markerLabel, reviewLabel }, target, false, false, reviewMode);
+    targetGraphics.set(target.id, { shape, markerLabel, reviewLabel });
   }
   return targetGraphics;
 }
 
 function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMode) {
   const { x, y, width, height } = target.bounds;
-  const { shape, label } = targetGraphic;
-  const showReviewOverlay = reviewMode;
-  const markerX = target.marker?.x ?? x + width - 28;
-  const markerY = target.marker?.y ?? y + 30;
-  const markerRadius = isSelected ? 19 : isActive ? 15 : 10;
+  const { shape, markerLabel, reviewLabel } = targetGraphic;
+  const markerX = target.marker?.x ?? x + width * 0.5;
+  const markerY = target.marker?.y ?? y + height * 0.42;
+  const tetherEnd = target.tetherEnd ?? {
+    x: x + width * 0.5,
+    y: y + height * 0.86,
+  };
+  const markerRadius = isSelected ? 16 : isActive ? 13 : 9;
   const markerColor = isSelected ? 0xf0bc45 : isActive ? 0xf7df9d : 0xf6ead2;
   const markerStroke = isSelected ? 0x1f2727 : 0x2b2a25;
 
   shape.clear();
 
+  shape.roundRect(x, y, width, height, 10).fill({ color: 0xffffff, alpha: 0.001 });
+
+  shape
+    .moveTo(markerX, markerY + markerRadius)
+    .lineTo(tetherEnd.x, tetherEnd.y)
+    .stroke({
+      color: isSelected ? 0xf0bc45 : 0xf6ead2,
+      width: isSelected ? 2.5 : 1.5,
+      alpha: isActive || isSelected ? 0.54 : 0.18,
+    });
+
+  shape
+    .circle(tetherEnd.x, tetherEnd.y, isSelected ? 5 : 3.5)
+    .fill({ color: isSelected ? 0xf0bc45 : 0xf6ead2, alpha: isActive || isSelected ? 0.58 : 0.22 });
+
   if (isActive || isSelected) {
     shape
       .circle(markerX, markerY, markerRadius + (isSelected ? 10 : 7))
-      .fill({ color: 0xf0bc45, alpha: isSelected ? 0.16 : 0.1 });
+      .fill({ color: 0xf0bc45, alpha: isSelected ? 0.12 : 0.08 });
   }
 
   shape
     .circle(markerX, markerY, markerRadius)
-    .fill({ color: markerColor, alpha: isActive || isSelected ? 0.96 : 0.78 })
+    .fill({ color: markerColor, alpha: isActive || isSelected ? 0.94 : 0.64 })
     .stroke({
       color: markerStroke,
-      width: isSelected ? 4 : isActive ? 3 : 2,
-      alpha: isActive || isSelected ? 0.95 : 0.62,
+      width: isSelected ? 3 : isActive ? 2.5 : 1.5,
+      alpha: isActive || isSelected ? 0.9 : 0.5,
     });
-  shape
-    .circle(markerX, markerY, markerRadius * 0.36)
-    .fill({ color: isSelected ? 0x9d4a32 : 0x243738, alpha: isSelected ? 0.9 : 0.76 });
+
   if (isSelected) {
     shape
-      .circle(markerX, markerY, markerRadius + 7)
-      .stroke({ color: 0xf6ead2, width: 2, alpha: 0.68 });
+      .circle(markerX, markerY, markerRadius + 6)
+      .stroke({ color: 0xf6ead2, width: 1.5, alpha: 0.52 });
   }
-  shape
-    .moveTo(markerX, markerY + markerRadius)
-    .lineTo(markerX, markerY + markerRadius + (isSelected ? 30 : 22))
-    .stroke({
-      color: isSelected ? 0xf0bc45 : 0xf6ead2,
-      width: isSelected ? 3 : 2,
-      alpha: isActive || isSelected ? 0.82 : 0.34,
-    });
-  shape
-    .ellipse(markerX, markerY + markerRadius + (isSelected ? 32 : 24), isSelected ? 20 : 16, isSelected ? 7 : 5)
-    .stroke({
-      color: isSelected ? 0xf0bc45 : 0xf6ead2,
-      width: isSelected ? 3 : 2,
-      alpha: isActive || isSelected ? 0.78 : 0.28,
-    });
 
   if (isActive || isSelected) {
-    const corner = Math.min(68, width * 0.2, height * 0.2);
     const traceColor = isSelected ? 0xf0bc45 : 0xf6ead2;
-    const traceAlpha = isSelected ? 0.78 : 0.5;
-    const traceWidth = isSelected ? 4 : 3;
+    const traceAlpha = isSelected ? 0.58 : 0.36;
+    const traceWidth = isSelected ? 3 : 2;
     if (isSelected) {
       shape.roundRect(x + 4, y + 4, width - 8, height - 8, 14)
-        .fill({ color: 0xf0bc45, alpha: 0.06 });
+        .fill({ color: 0xf0bc45, alpha: 0.035 });
     }
-    shape.moveTo(x, y + corner).lineTo(x, y).lineTo(x + corner, y)
-      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
-    shape.moveTo(x + width - corner, y).lineTo(x + width, y).lineTo(x + width, y + corner)
-      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
-    shape.moveTo(x + width, y + height - corner).lineTo(x + width, y + height).lineTo(x + width - corner, y + height)
-      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
-    shape.moveTo(x + corner, y + height).lineTo(x, y + height).lineTo(x, y + height - corner)
+    shape.roundRect(x, y, width, height, 14)
       .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
   }
 
-  if (showReviewOverlay) {
+  if (reviewMode) {
     shape.roundRect(x, y, width, height, 10)
       .fill({ color: 0xf5e5c3, alpha: 0.08 })
       .stroke({ color: 0xe28e54, width: 3, alpha: 0.78 });
   }
 
-  label.visible = showReviewOverlay;
-  label.text = target.label ?? target.title;
-  label.style.fill = "#f8ecd4";
-  label.x = x + 14;
-  label.y = y + 12;
-  if (showReviewOverlay) {
-    const labelPaddingX = 12;
-    const labelPaddingY = 7;
+  markerLabel.visible = Boolean(target.marker?.label);
+  markerLabel.text = target.marker?.label ?? "";
+  markerLabel.style.fill = isSelected ? "#241f18" : "#28231f";
+  markerLabel.style.fontSize = isSelected ? 15 : 13;
+  markerLabel.x = markerX;
+  markerLabel.y = markerY + 0.5;
+
+  reviewLabel.visible = reviewMode;
+  reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
+  reviewLabel.style.fill = "#f8ecd4";
+  reviewLabel.x = x + 12;
+  reviewLabel.y = y + 12;
+
+  if (reviewMode) {
+    const labelPaddingX = 10;
+    const labelPaddingY = 6;
     shape.roundRect(
-      label.x - labelPaddingX,
-      label.y - labelPaddingY,
-      label.width + labelPaddingX * 2,
-      label.height + labelPaddingY * 2,
+      reviewLabel.x - labelPaddingX,
+      reviewLabel.y - labelPaddingY,
+      reviewLabel.width + labelPaddingX * 2,
+      reviewLabel.height + labelPaddingY * 2,
       4,
     )
       .fill({ color: 0x202424, alpha: 0.88 })

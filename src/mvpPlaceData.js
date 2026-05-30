@@ -1,10 +1,11 @@
 // Review/demo-safe static MVP data. This is local prototype data, not a production data contract.
-import scenePlateSrc from "../docs/mvp-reference-images/source-04-southwest-corner.png";
+import rasterPlateSrc from "../docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png";
 
 const sharedCandidateConstraints = [
   "LiveXYZ is identity/presence evidence only; it is not approved facade or art reference.",
   "Do not claim exact facade, storefront width, entrance position, frontage, address, or production placement.",
   "Google, Street View, and Street View-style imagery remain blocked as facade evidence.",
+  "MVP-16B hotspot placement is temporary raster-first recovery scaffolding, not exact real-world placement.",
 ];
 
 const candidateEvidenceRows = [
@@ -14,15 +15,15 @@ const candidateEvidenceRows = [
   },
   {
     label: "Facade / art",
-    value: "Insufficient. No approved facade, signage, frontage, or texture reference.",
+    value: "Approved recovery raster is fictional-safe review art only; no real facade, signage, frontage, or texture reference is approved.",
   },
   {
     label: "Scene placement",
-    value: "Authored scaffold anchor only; not survey-accurate or address-accurate.",
+    value: "Temporary transparent hotspot on the approved raster plate; not survey-accurate or address-accurate.",
   },
   {
     label: "Prototype treatment",
-    value: "Fictional-safe card and hotspot treatment until source review clears real-place use.",
+    value: "Card, rail, marker, and hotspot treatment only. Real identity is not baked into the raster artwork.",
   },
 ];
 
@@ -31,9 +32,12 @@ function makeCurrentCandidate({
   title,
   category,
   liveXyzSourceId,
+  corner,
   marker,
+  tetherEnd,
   bounds,
   summary,
+  rasterAnchorLabel,
 }) {
   return {
     id,
@@ -52,49 +56,48 @@ function makeCurrentCandidate({
     manualReviewRequired: true,
     summary,
     description:
-      "MVP-06 keeps this current-scene place visible as a prototype card, but only as identity/presence evidence. The card does not approve real facade accuracy, storefront order, address placement, signage, or production art use.",
+      "This card is connected to a temporary hotspot on the fictional-safe raster plate. It supports interaction review only and does not approve real facade accuracy, storefront order, address placement, signage, or production art use.",
     statusNote: "Current-scene identity/presence only; facade/art reference remains insufficient.",
     sourceRefs: [liveXyzSourceId],
     evidenceStatus: candidateEvidenceRows,
     truthConstraints: sharedCandidateConstraints,
-    tags: ["current scene", "identity/presence only", "facade blocked"],
+    tags: ["current scene", `${corner} anchor`, "identity/presence only", "raster-first recovery", "temporary hotspot"],
+    corner,
     marker,
+    tetherEnd,
     bounds,
+    rasterAnchorLabel,
   };
 }
 
 export const mvpScene = {
-  title: "MVP-06 corrected Manhattan Ave / Greenpoint Ave scaffold",
+  title: "MVP-17 product-facing raster interaction polish",
   note:
-    "Corrective MVP-06 slice with current-scene identity/presence cards only. Facade art, exact storefronts, addresses, and production placement remain unapproved.",
+    "Explore the recovered raster scene. Place identity stays in the interface, and every hotspot remains review-only.",
   size: {
-    width: 3024,
-    height: 1964,
+    width: 1672,
+    height: 941,
   },
-  reviewLabel: "NON-PRODUCTION / CORRECTIVE REVIEW ONLY",
+  reviewLabel: "REVIEW-ONLY / NON-PRODUCTION",
   sourceListLabel: "Identity / presence evidence",
   sceneFrame: {
-    locationLabel: "Corrected active scene: Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, Greenpoint G subway",
+    locationLabel: "Raster-first Greenpoint explorer prototype",
     intent:
-      "Correct the active prototype data to the MVP-05 current scene while keeping all real-place art and placement claims visibly provisional.",
+      "Pan, zoom, and select temporary place anchors on the approved raster plate.",
     treatment:
-      "Authored compact diorama anchors; not an exact map, facade, frontage, station-geometry, address-placement, or storefront-order claim.",
-    activeSceneSource: "MVP-05 corrected source-of-truth validation spike",
-    referenceImages: [
-      "docs/mvp-reference-images/source-04-southwest-corner.png",
-    ],
+      "The raster is fictional-safe review art. It is not an exact Manhattan Avenue / Greenpoint Avenue scene and does not approve real facade, address, station-geometry, or storefront-order claims.",
+    activeSceneSource: "MVP-17 product-facing raster interaction polish",
+    approvedRasterPath:
+      "docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png",
   },
   disclaimer:
-    "Unofficial authored prototype. LiveXYZ links are treated as identity/presence evidence only. This is not an official map, directory, real-time listing, facade reference, address system, or production placement.",
+    "Unofficial authored prototype. LiveXYZ and MTA links are treated as identity/presence or transit-context evidence only. The raster plate is review-only recovery art, not an official map, directory, real-time listing, facade reference, address system, or production placement.",
   plate: {
-    src: scenePlateSrc,
-    alpha: 0.34,
-    scaffoldWash: {
-      color: 0x1f2727,
-      alpha: 0.54,
-    },
+    src: rasterPlateSrc,
     label:
-      "Dimmed non-production review raster retained as prototype scaffolding only; not approved facade evidence, exact storefront order, exact address placement, or production visual reference.",
+      "MVP-17 raster-first prototype scene. Review-only, fictional-safe, non-production, and not a factual Greenpoint representation.",
+    sourcePath:
+      "docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png",
   },
   sourceRefs: {
     "greenpoint-deli-livexyz": {
@@ -146,16 +149,23 @@ export const mvpScene = {
       title: "Greenpoint Deli",
       category: "Deli / food retail",
       liveXyzSourceId: "greenpoint-deli-livexyz",
+      corner: "left storefront",
       summary: "Current-scene deli card retained with identity/presence evidence only.",
+      rasterAnchorLabel: "Temporary raster anchor 1",
       marker: {
-        x: 720,
-        y: 1248,
+        label: "1",
+        x: 360,
+        y: 454,
+      },
+      tetherEnd: {
+        x: 356,
+        y: 616,
       },
       bounds: {
-        x: 472,
-        y: 1060,
-        width: 360,
-        height: 324,
+        x: 214,
+        y: 304,
+        width: 276,
+        height: 342,
       },
     }),
     makeCurrentCandidate({
@@ -163,16 +173,23 @@ export const mvpScene = {
       title: "McDonald's",
       category: "Fast food",
       liveXyzSourceId: "mcdonalds-livexyz",
+      corner: "center-left storefront",
       summary: "Current-scene restaurant card retained with identity/presence evidence only.",
+      rasterAnchorLabel: "Temporary raster anchor 2",
       marker: {
-        x: 1716,
-        y: 1094,
+        label: "2",
+        x: 788,
+        y: 428,
+      },
+      tetherEnd: {
+        x: 804,
+        y: 640,
       },
       bounds: {
-        x: 1472,
-        y: 910,
-        width: 380,
-        height: 334,
+        x: 612,
+        y: 220,
+        width: 370,
+        height: 452,
       },
     }),
     makeCurrentCandidate({
@@ -180,16 +197,23 @@ export const mvpScene = {
       title: "Dunkin'",
       category: "Coffee / quick service",
       liveXyzSourceId: "dunkin-livexyz",
+      corner: "center storefront",
       summary: "Current-scene coffee card retained with identity/presence evidence only.",
+      rasterAnchorLabel: "Temporary raster anchor 3",
       marker: {
-        x: 2046,
-        y: 1208,
+        label: "3",
+        x: 1112,
+        y: 438,
+      },
+      tetherEnd: {
+        x: 1128,
+        y: 622,
       },
       bounds: {
-        x: 1820,
-        y: 1042,
-        width: 392,
-        height: 326,
+        x: 990,
+        y: 248,
+        width: 260,
+        height: 390,
       },
     }),
     makeCurrentCandidate({
@@ -197,16 +221,23 @@ export const mvpScene = {
       title: "Citizens Bank",
       category: "Bank",
       liveXyzSourceId: "citizens-bank-livexyz",
+      corner: "center-right storefront",
       summary: "Current-scene bank card retained with identity/presence evidence only.",
+      rasterAnchorLabel: "Temporary raster anchor 4",
       marker: {
-        x: 526,
-        y: 770,
+        label: "4",
+        x: 1378,
+        y: 436,
+      },
+      tetherEnd: {
+        x: 1374,
+        y: 616,
       },
       bounds: {
-        x: 332,
-        y: 452,
-        width: 500,
-        height: 640,
+        x: 1260,
+        y: 236,
+        width: 238,
+        height: 410,
       },
     }),
     {
@@ -226,7 +257,7 @@ export const mvpScene = {
       manualReviewRequired: true,
       summary: "Current-scene subway presence anchor with exact station geometry unresolved.",
       description:
-        "MTA sources support Greenpoint Av as a G line station, so MVP-06 keeps a subway anchor in the prototype. It does not approve exact entrance side, stair, elevator, access-point geometry, station footprint, or production placement.",
+        "MTA sources support Greenpoint Av as a G line station, so the prototype keeps a subway card and temporary hotspot. It does not approve exact entrance side, stair, elevator, access-point geometry, station footprint, or production placement.",
       statusNote: "Transit identity/context only; exact station geometry remains unresolved.",
       sourceRefs: ["mta-g-line", "mta-greenpoint-accessibility"],
       evidenceStatus: [
@@ -236,7 +267,7 @@ export const mvpScene = {
         },
         {
           label: "Facade / art",
-          value: "Not applicable as storefront art; station iconography remains symbolic.",
+          value: "Not applicable as storefront art; the raster plate remains review-only and fictional-safe.",
         },
         {
           label: "Station geometry",
@@ -244,24 +275,32 @@ export const mvpScene = {
         },
         {
           label: "Prototype treatment",
-          value: "Symbolic transit anchor only, not an exact map feature.",
+          value: "Symbolic transit card and temporary hotspot only, not an exact map feature.",
         },
       ],
       truthConstraints: [
         "Do not imply exact stair, elevator, entrance-side, access-point, or station-footprint geometry.",
         "Do not treat the transit anchor as an ordinary business listing.",
+        "Do not treat the raster plate subway cue as exact Greenpoint station geometry.",
       ],
-      tags: ["current scene", "symbolic subway", "geometry unresolved"],
+      tags: ["current scene", "symbolic subway", "geometry unresolved", "raster-first recovery"],
+      corner: "left transit anchor",
       marker: {
-        x: 1210,
-        y: 1254,
+        label: "5",
+        x: 177,
+        y: 612,
+      },
+      tetherEnd: {
+        x: 118,
+        y: 540,
       },
       bounds: {
-        x: 1044,
-        y: 1112,
-        width: 310,
-        height: 284,
+        x: 42,
+        y: 386,
+        width: 218,
+        height: 292,
       },
+      rasterAnchorLabel: "Temporary raster anchor 5",
     },
   ],
 };

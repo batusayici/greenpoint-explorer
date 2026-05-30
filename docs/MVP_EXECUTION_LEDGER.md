@@ -55,14 +55,300 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-07 Reusable Place Evidence Pipeline Spike complete for review; pending Batu/ChatGPT acceptance.
+- Current phase: MVP-17 Product-Facing Raster Interaction Polish accepted by Batu as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: review MVP-07 and decide whether to authorize the proposed MVP-08 Place Evidence Packet For Current Scene.
+- Current next recommended task: `MVP-17 Hold-State Reconciliation Commit` only; no new implementation phase is approved.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-17 Reconciliation Commit Scope Authorization
+
+Status:
+- Complete.
+
+Scope:
+- Authorize a future one-time `MVP-17 Hold-State Reconciliation Commit`.
+- Keep the batch docs-only.
+- Do not stage, commit, edit source, create screenshots, create or modify assets, run QA recovery, or open a new MVP batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now authorizes one future commit-only reconciliation task.
+- The future task may stage and commit only already-existing accepted MVP workstream paths needed to preserve the MVP-17 accepted raster interaction prototype and its historical review/evidence trail.
+- The ambiguous paths from the hold-state audit are explicitly resolved:
+  - `docs/VISUAL_INTEGRATION_PROTOTYPE_PLANNING_BRIEF.md` is included as historical planning context only if it already exists in the dirty tree at commit time.
+  - `docs/mvp-reference-images/` is included as historical/source-reference evidence only, not as approved production assets or facade/art sources.
+  - Older `docs/mvp-review/mvp-08-place-evidence-packet-current-scene/` through `docs/mvp-review/mvp-17-product-facing-raster-interaction-polish/` folders are included as the documented review trail.
+  - Older `docs/review-screenshots/mvp-04-interaction-integration/`, `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/`, and `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/` folders are included as relevant review evidence.
+  - Approved-reference-corpus docs are included as part of the visual-governance/reconciliation trail.
+  - `docs/VISUAL_ARTIFACT_STANDARDS.md` is included as part of the raster-first/visual-evidence governance trail.
+- No implementation, screenshots, asset work, package/config/tooling/CI/deployment changes, staging, or commit were performed in this authorization batch.
+
+Unresolved decisions:
+- Batu must explicitly ask Codex to run the future reconciliation commit task before staging or committing.
+- After that future commit, the repo remains in the MVP-17 hold state until Batu opens a later implementation, QA, documentation, production asset, public-interface, architecture, deployment, or next-phase brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `MVP-17 Hold-State Reconciliation Commit` as the only approved next task. No implementation task or new MVP batch is approved.
+
+### 2026-05-30 - MVP-17 Acceptance Recording
+
+Status:
+- Complete.
+
+Scope:
+- Record Batu acceptance of MVP-17 Product-Facing Raster Interaction Polish.
+- Record that Batu accepted the missing mobile selected-state containment screenshot as an evidence gap.
+- Reconcile the MVP-17 review packet and control docs.
+- Avoid app/source changes, new implementation, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-17-product-facing-raster-interaction-polish/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- MVP-17 is recorded as accepted by Batu as the product-facing raster interaction polish baseline.
+- The supplied four desktop screenshots remain the recorded visual evidence.
+- The missing mobile selected-state containment screenshot is recorded as an accepted evidence gap.
+- No app/source files, package/config/tooling files, primary world art, generated assets, staging, or commits were changed by this batch.
+
+Unresolved decisions:
+- Batu must open any next MVP QA, demo-freeze, optional ambient, production asset direction, real-place treatment, public-interface, architecture, or next-phase work in a later current brief.
+- Production asset direction, production assets, exact real facades, exact addresses, exact station geometry, live data, CI/deployment, and broad map/data work remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now states that no next implementation task is approved and the next task is pending Batu approval or a later brief update.
+
+### 2026-05-30 - MVP-17 Supplied Screenshot Evidence Recording
+
+Status:
+- Partial / mobile containment screenshot missing.
+
+Scope:
+- Verify supplied MVP-17 screenshot files under `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/`.
+- Update the MVP-17 review packet and control docs with screenshot paths and QA notes.
+- Avoid app/source changes, new implementation, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-17-product-facing-raster-interaction-polish/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Confirmed four supplied PNG files exist:
+  - `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-default-overview.png`
+  - `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-hover-focus-state.png`
+  - `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-store-card.png`
+  - `docs/review-screenshots/mvp-17-product-facing-raster-interaction-polish/desktop-zoom-view.png`
+- Confirmed the required mobile selected-state containment screenshot is not present in the supplied folder.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Recorded desktop overview, hover/focus, selected-card, and pan/zoom screenshot evidence in the MVP-17 review packet.
+- Kept MVP-17 out of final ready-for-visual-verdict status because mobile selected-state containment evidence is missing.
+- No app/source files, package/config/tooling files, primary world art, generated assets, staging, or commits were changed by this batch.
+
+Unresolved decisions:
+- Batu must decide whether to supply the missing mobile containment screenshot or accept visual review from the partial evidence set.
+- Batu must decide whether MVP-17 is accepted, revised, or rejected after reviewing the available evidence.
+- Any further implementation, optional ambient, production asset direction, real-place treatment, public-interface, architecture, or next-phase decision remains blocked until Batu opens it.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-17 mobile selected-state screenshot evidence completion, or Batu review only if Batu explicitly accepts the partial evidence gap. No new implementation phase is approved.
+
+### 2026-05-29 - MVP-17 Product-Facing Raster Interaction Polish
+
+Status:
+- Partial / screenshot QA blocked.
+
+Scope:
+- Polish the accepted MVP-16B raster-first prototype so it feels less like an internal review board and more like a product-facing exploratory prototype.
+- Preserve the approved raster as the primary world surface.
+- Preserve existing pan/zoom, hover/select, target rail, cards, transparent hit regions, marker/tether/outline overlay model, and mobile containment.
+- Avoid code-drawn scene art, new generated assets, package/config/tooling changes, staging, and commit.
+
+Files changed:
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/mvpPlaceData.js`
+- `src/styles.css`
+- `docs/mvp-review/mvp-17-product-facing-raster-interaction-polish/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- Active source scan for prior code-drawn scene renderer names.
+- Browser screenshot QA attempted but blocked:
+  - local Vite server cannot bind to localhost in the current sandbox (`EPERM` on `127.0.0.1:5173` and `::1:5173`);
+  - in-app browser blocks direct `file://` preview of the built app by browser policy.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Reduced the weight of default review chrome, top copy, scene note, target rail, controls, markers, tethers, outlines, and selected card treatment.
+- The raster plate remains imported as-is and remains the primary world surface.
+- No code-drawn storefronts, buildings, roads, sidewalks, props, textures, or signs were added.
+- No new art, replacement raster, package/config/tooling changes, staging, or commit were performed.
+- Required screenshot evidence is missing, so MVP-17 is not ready for visual verdict.
+
+Unresolved decisions:
+- Batu must review MVP-17 only after required screenshot evidence is captured.
+- Batu must decide whether this product-facing polish is accepted, revised, or rejected.
+- Any optional ambient, additional polish, production asset direction, real-place treatment, public-interface, architecture, or next-phase decision remains blocked until Batu opens it.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-17 screenshot QA completion only. No new implementation phase is approved.
+
+### 2026-05-29 - MVP-16B Raster-First Prototype Recovery
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Replace the active code-drawn world art with the approved review-only raster plate.
+- Preserve the existing interaction shell, cards, target rail, hover/select behavior, pan/zoom behavior, and responsive containment as much as possible.
+- Add only transparent hit regions, markers, tethers, selected outlines, and UI overlays.
+- Avoid production art claims, broad data/system scaling, package/config/tooling changes, staging, and commit.
+
+Files changed:
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/mvpPlaceData.js`
+- `docs/mvp-review/mvp-16b-raster-first-prototype-recovery/README.md`
+- `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/desktop-default-overview.png`
+- `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/desktop-hover-focus-state.png`
+- `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/desktop-selected-card-state.png`
+- `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/mobile-selected-state-containment.png`
+- `docs/review-screenshots/mvp-16b-raster-first-prototype-recovery/pan-zoom-stress-view.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- Browser render/screenshot QA against the local prototype.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The approved raster plate at `docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png` is now the active primary world surface.
+- The previous code-drawn perspective street/building/storefront renderer was removed from the active world component.
+- Five transparent hit regions are mapped onto the raster and attached to the existing target rail/card flow.
+- Markers, tethers, hover outlines, selected outlines, and QA hotspot labels are overlay-only treatments.
+- Real business identity remains in structured data, cards, rail labels, source links, and UI copy only.
+- No package/config/tooling changes, staging, or commit were performed.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-16B as the raster-first recovery baseline.
+- Batu/ChatGPT must decide whether a later brief opens raster-anchor revision, a replacement raster plate, visual polish, optional ambient, or another next phase.
+- Production asset direction, production assets, exact real facades, exact addresses, exact station geometry, live data, CI/deployment, and broad map/data work remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to post-MVP-16B review. No next implementation task is approved.
+
+### 2026-05-29 - MVP-16A Raster Plate Selection / Supply Gate
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Evaluate existing approved/review-only raster candidates for MVP-16B.
+- Select a raster-first primary world plate or block future implementation with minimum supply requirements.
+- Keep the batch docs-only with no app/source edits, no new art generation, no build, no staging, and no commit.
+
+Files changed:
+- `docs/mvp-review/mvp-16a-raster-plate-selection-supply-gate/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Confirmed candidate raster paths exist on disk.
+- Confirmed current-scene source screenshots exist and are blocked as primary world art.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Selected `docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png` as the recommended review-only MVP-16B primary world plate.
+- Recorded non-selected alternatives: ARC-023, ARC-028, Phase 6 UI-integrated recombination, Phase 5.1 raster scene plate, and current-scene source screenshots.
+- MVP-16B remains unrun and unapproved until Batu/ChatGPT accepts the selected plate or supplies/approves a replacement.
+- No app/source files were modified by this batch.
+
+Unresolved decisions:
+- Batu/ChatGPT must approve or reject the selected Phase 6 street-slice recombination plate.
+- Batu/ChatGPT must approve or revise MVP-16B Raster-First Prototype Recovery before implementation.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-16B Raster-First Prototype Recovery as a proposed next task only, pending Batu/ChatGPT approval of the selected raster plate or an approved replacement.
+
+### 2026-05-29 - MVP-15C Visual Failure Freeze And Raster-First Gate
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Freeze MVP-15B as visually rejected product-facing primary world art.
+- Copy the supplied MVP-15B browser screenshot as rejected evidence without modifying pixels.
+- Patch the primary-world-art loophole so future visual compliance requires raster-first material use, not only reference inspection.
+- Prepare MVP-16 Raster-First Prototype Recovery as a proposed next task only.
+- Avoid app/source implementation, MVP-16 execution, new generated art, package/config changes, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-15c-visual-failure-freeze-raster-first-gate/README.md`
+- `docs/mvp-review/mvp-15c-visual-failure-freeze-raster-first-gate/rejected-evidence/mvp-15b-rejected-diagrammatic-perspective.png`
+- `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`
+- `docs/mvp-review/mvp-15b-perspective-scene-renderer-replacement/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/VISUAL_ARTIFACT_STANDARDS.md`
+- `docs/approved-reference-corpus/USAGE_RULES.md`
+
+Verification:
+- Confirmed supplied MVP-15B screenshot was accessible.
+- Copied screenshot verbatim and confirmed matching SHA-256 hash.
+- Inspected required governance, corpus, MVP-15A, MVP-15B, and reusable asset rules docs.
+- `git diff --check`
+
+Outcome:
+- MVP-15B is now recorded as visually rejected as product-facing primary world art.
+- MVP-15B remains salvageable only for interaction shell/data/card/target-rail behavior.
+- Code-native Pixi/SVG/CSS/DOM/canvas storefronts, buildings, sidewalks, roads, props, textures, or signs are blocked as primary world art for any prototype evaluated against the approved visual direction.
+- Future visual compliance now requires material use of an approved raster/reference plate or approved raster sprite/asset-kit composition.
+- MVP-16 is proposed only and was not run.
+- No app/source files were modified.
+
+Unresolved decisions:
+- Batu/ChatGPT must approve or revise MVP-16 Raster-First Prototype Recovery before implementation.
+- Batu/ChatGPT must identify or approve the raster plate or raster sprite/asset-kit composition for the next normal-mode primary world surface.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-16 Raster-First Prototype Recovery as a proposed next task only, pending Batu/ChatGPT approval and suitable raster-first primary world material.
 
 ### 2026-05-29 - MVP Execution-Control Reconciliation
 
@@ -656,3 +942,575 @@ Unresolved decisions:
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-07 and a proposed MVP-08 docs-only current-scene evidence packet. No implementation task is approved.
+
+### 2026-05-29 - MVP-08 Place Evidence Packet For Current Scene
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Create a docs-only evidence packet for the current active scene.
+- Classify Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway using the MVP-07 taxonomy.
+- Determine eligibility for real-inspired art translation, generic placeholder, fictional-safe treatment, or blocked status.
+- Reconcile the plan, current brief, and ledger.
+- Avoid app/source/assets, screenshots, live scraping, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-08-place-evidence-packet-current-scene/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required docs and `src/mvpPlaceData.js` reviewed.
+- Active scene confirmed from `src/mvpPlaceData.js`.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-08 records one evidence packet per current active place.
+- Greenpoint Deli, McDonald's, Dunkin', and Citizens Bank are identity/presence candidates only; address, parcel/building, storefront/frontage, and approved facade/art-reference evidence remain missing.
+- Greenpoint G subway is supported as symbolic transit context only; exact access-point and station geometry remain unresolved.
+- Final verdict is `revise`.
+- No current business is eligible for real-inspired art translation yet.
+- Greenpoint G subway is eligible only for symbolic transit cue treatment, not exact real-inspired station geometry.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records post-MVP-08 review state and proposes MVP-09 Current Scene Treatment Decision Brief as the next docs-only task pending approval.
+- `docs/MVP_SCOPE.md` was not changed because MVP-08 did not add or correct a durable scope rule.
+- No app/source/assets were modified.
+- No screenshots or visuals were created.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-08 evidence packet and `revise` verdict.
+- Batu/ChatGPT must decide whether to authorize MVP-09 Current Scene Treatment Decision Brief.
+- Batu must choose whether the current scene pursues evidence acquisition, fictional-safe translation, or cut/omit treatment before art translation or polish.
+- Approved non-Google storefront-specific visual references remain missing.
+- Visual Polish / Optional Ambient remains blocked until treatment decisions are accepted and a later brief opens that scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-08 and a proposed MVP-09 docs-only treatment decision brief. No implementation task is approved.
+
+### 2026-05-29 - MVP-09 Current Scene Treatment Decision Brief
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Create a docs-only treatment decision brief for the current active scene.
+- Evaluate evidence acquisition first, fictional-safe/generic translation now, cut/omit real businesses, and mixed treatment.
+- Choose the fastest honest path toward an interactable Greenpoint Ave / Manhattan Ave scene while preserving truth-safety.
+- Reconcile the plan, current brief, and ledger.
+- Avoid app/source/assets, screenshots, exact real-inspired facade authorization, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-09-current-scene-treatment-decision/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required docs and `src/mvpPlaceData.js` reviewed.
+- Active scene confirmed from `src/mvpPlaceData.js`.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-09 chooses mixed treatment with verdict `proceed`.
+- The chosen path preserves current business identity/cards as identity/presence-only review data.
+- Business visuals should use fictional-safe or generic storefront treatments.
+- Greenpoint G subway should use symbolic transit cue treatment only.
+- Exact real-inspired facade art, exact station geometry, Google/Street View-style facade evidence, and LiveXYZ-derived facade/art use remain blocked.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records post-MVP-09 review state and proposes MVP-10 Fictional-Safe Current Scene Art Translation Brief / Implementation Boundary as the next task pending approval.
+- `docs/MVP_SCOPE.md` was not changed because MVP-09 did not add or correct a durable scope rule.
+- No app/source/assets were modified.
+- No screenshots or visuals were created.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-09 mixed treatment path and `proceed` verdict.
+- Batu/ChatGPT must decide whether to authorize MVP-10 Fictional-Safe Current Scene Art Translation Brief / Implementation Boundary.
+- Batu must decide whether MVP-10 opens implementation or remains a boundary-only brief.
+- Exact real-inspired facade and station-geometry upgrades remain blocked until approved evidence exists.
+- Visual Polish / Optional Ambient remains blocked until fictional-safe translation is reviewed and a later brief opens polish scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-09 and a proposed MVP-10 fictional-safe current scene art translation brief / implementation boundary. No implementation task is approved.
+
+### 2026-05-29 - MVP-10 Fictional-Safe Current Scene Art Translation Brief
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Create a docs-only implementation boundary brief translating MVP-09 mixed treatment into a precise MVP-11 boundary.
+- Define what MVP-11 may implement, what remains blocked, eligible scene elements, symbolic subway constraints, data/card copy constraints, acceptance criteria, stop conditions, and recommended next task.
+- Reconcile the plan, current brief, and ledger.
+- Avoid app/source files, visual assets, screenshots, package/config files, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-10-fictional-safe-current-scene-art-translation-brief/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required docs reviewed.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-10 defines the chosen MVP-09 mixed-treatment boundary for the next implementation pass.
+- The proposed MVP-11 pass may keep the five current targets, preserve existing interaction behavior, use fictional-safe/generic visuals for the four businesses, use symbolic subway cue treatment only, and preserve truth-safety constraints.
+- Exact real-inspired facades, exact station geometry, blocked source use, new visual assets, screenshots, and app/source changes remain unperformed in this MVP-10 docs-only batch.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records post-MVP-10 review state and proposes MVP-11 Current Scene Fictional-Safe Translation Pass as the next task pending explicit approval.
+- `docs/MVP_SCOPE.md` was not changed because MVP-10 did not add or correct a durable scope rule.
+- No app/source/assets/screenshots/package/config files were modified.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-10 implementation boundary.
+- Batu/ChatGPT must explicitly open MVP-11 before implementation.
+- Batu must decide whether the proposed MVP-11 file scope and acceptance criteria are sufficient.
+- Visual Polish / Optional Ambient remains blocked until fictional-safe translation is reviewed and a later brief opens polish scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-10 and a proposed MVP-11 Current Scene Fictional-Safe Translation Pass. No implementation task is approved.
+
+### 2026-05-29 - MVP-11 Current Scene Fictional-Safe Translation Pass
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Implement the MVP-10 fictional-safe translation boundary in the current review-only prototype.
+- Add 3-5 fictional-safe storefront/building treatments and one symbolic subway cue using the current in-code art system.
+- Preserve existing hover, select, card, pan/zoom, target rail, QA hotspot, and responsive behavior.
+- Produce a self-audit and reconcile control docs.
+- Avoid exact real-inspired facades, exact subway geometry, blocked source imagery, scraping, new real-place evidence, image generation, production asset pipeline, package/config changes, staging, and commit.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `docs/mvp-review/mvp-11-current-scene-fictional-safe-translation-pass/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- `git diff --check`
+- Browser/screenshot attempt blocked by environment: Vite server listening failed with `EPERM` on `127.0.0.1`, `::1`, and `0.0.0.0`; in-app browser `file://` preview was blocked by browser policy.
+
+Outcome:
+- Active scene remains Greenpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Added code-native fictional-safe treatment metadata for current targets.
+- Added a Pixi-drawn fictional-safe scene layer beneath existing markers.
+- Four business targets now have generic category visual cues: deli/corner-store, quick-service, coffee/quick-service, and service/bank.
+- Greenpoint G subway now has a symbolic G transit cue only.
+- Card/source constraints remain identity/presence-only and facade/art-insufficient.
+- Existing app interaction paths were preserved in source and build verification passed.
+- No screenshots were created because local browser verification was blocked in this environment.
+- No package/config files were modified.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-11 fictional-safe translation.
+- Screenshot/QA review should be retried in an environment where the local app can open before any visual polish decision.
+- Exact real-inspired facade and station-geometry upgrades remain blocked until approved evidence exists.
+- Visual Polish / Optional Ambient remains blocked until fictional-safe translation is reviewed and a later brief opens polish scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu/ChatGPT review of MVP-11 and recommends screenshot/QA recovery review. No next implementation task is approved.
+
+### 2026-05-29 - MVP-12 Screenshot / Visual QA Recovery Review
+
+Status:
+- Blocked for browser QA.
+
+Scope:
+- Attempt to recover browser-based visual QA for MVP-11.
+- Try to render the local prototype and capture the required review screenshots.
+- Avoid new art direction, additional storefronts, visual polish, image generation, exact real-inspired facades, exact subway geometry, data acquisition/scraping, package/config changes, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-12-screenshot-visual-qa-recovery-review/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- `git diff --check`
+- Attempted `npm run dev -- --port 5173`
+- Attempted in-app browser `data:` preview probe
+- Attempted elevated local server execution
+
+Outcome:
+- Build and diff checks passed.
+- Local Vite server startup failed with `listen EPERM` on `127.0.0.1:5173`.
+- Browser `data:` preview was blocked by Browser URL policy.
+- Elevated local server execution was rejected by the session approval policy.
+- No screenshots were captured.
+- No app/source/assets/package/config files were modified during MVP-12.
+- Visual QA verdict is `revise`, meaning browser QA remains unresolved rather than MVP-11 being visually rejected.
+- Visual Polish / Optional Ambient remains blocked.
+
+Unresolved decisions:
+- Batu/ChatGPT must decide whether to retry browser QA in another environment or provide an approved preview URL.
+- Batu/ChatGPT should not accept MVP-11 visually until screenshots/interaction QA can be reviewed, unless they explicitly accept the limitation.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to environment resolution for screenshot/interaction QA. No next implementation task is approved.
+
+### 2026-05-29 - MVP-13 Four-Corner Scene Structure Repair
+
+Status:
+- Implemented in source; screenshot QA blocked.
+
+Scope:
+- Repair the failed MVP-11 single-screenshot/overlay approach.
+- Replace the current scene with a simplified four-corner intersection structure.
+- Anchor Greenpoint Deli to NW, McDonald's to NE, Dunkin' to SW, and Citizens Bank to SE.
+- Preserve Greenpoint G subway as a symbolic intersection/transit cue only.
+- Preserve existing hover, select, card, target rail, QA outline, pan/zoom, and responsive behavior.
+- Avoid exact real-inspired facades, exact subway geometry, scraped/blocked imagery, image generation, broad visual polish, data pipeline work, package/config changes, staging, and commit.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `docs/mvp-review/mvp-13-four-corner-scene-structure-repair/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Confirmed the four supplied corner reference screenshots exist in `docs/mvp-reference-images/`.
+- `npm run build`
+- `npm run dev -- --port 5173` attempted for screenshot QA and failed with `listen EPERM` on `127.0.0.1:5173`.
+- `git diff --check`
+
+Outcome:
+- The active scene no longer imports or renders one corner screenshot as the primary scene surface.
+- The scene now renders a code-native four-corner review composition with integrated storefront/building zones.
+- Greenpoint Deli is anchored to NW, McDonald's to NE, Dunkin' to SW, and Citizens Bank to SE.
+- In-scene storefront text is generic category language: `DELI`, `BITES`, `COFFEE`, and `SERVICE`.
+- Real business identity remains limited to labels, cards, target rail, and source metadata.
+- Greenpoint G subway remains a generic symbolic transit cue, not exact station geometry.
+- Build verification passed.
+- Diff whitespace verification passed.
+- No screenshots were captured because the local server/browser environment is still blocked.
+- No package/config files were modified.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-13 after visual screenshots are available.
+- Screenshot/browser QA should be retried in an environment where the local app can bind to localhost, or via an approved preview URL.
+- Visual Polish / Optional Ambient remains blocked until MVP-13 is visually reviewed.
+- Exact real-inspired facade and station-geometry upgrades remain blocked until approved evidence exists.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-14 Four-Corner Browser Screenshot QA as the recommended next step, pending Batu/ChatGPT review and environment resolution. No next implementation task is approved.
+
+### 2026-05-29 - MVP-15 Perspective Scene Translation Repair
+
+Status:
+- Implemented in source; browser QA blocked.
+
+Scope:
+- Repair the MVP-13 flat diagram / board-game visual failure.
+- Preserve four-corner logic while shifting the scene toward a stylized perspective street composition.
+- Use four supplied corner screenshots only for broad corner identity, massing, street orientation, and urban-feel reference.
+- Preserve Greenpoint Deli to NW, McDonald's to NE, Dunkin' to SW, and Citizens Bank to SE.
+- Preserve Greenpoint G subway as a symbolic street-scene cue only.
+- Preserve existing hover, select, card, target rail, QA outline, pan/zoom, and responsive behavior.
+- Avoid exact real-inspired facades, exact subway geometry, scraped/blocked imagery, image generation, broad visual polish, data pipeline work, package/config changes, staging, and commit.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `docs/mvp-review/mvp-15-perspective-scene-translation-repair/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Confirmed the four supplied corner reference screenshots exist in `docs/mvp-reference-images/`.
+- Visually reviewed the four supplied corner reference screenshots for broad orientation/massing only.
+- `npm run build`
+- `npm run dev -- --port 5173` attempted for browser QA and failed with `listen EPERM` on `127.0.0.1:5173`.
+- `git diff --check`
+
+Outcome:
+- The scene remains code-native and does not import/render the four screenshots as scene surfaces.
+- The MVP-13 top-down/schematic intersection was replaced with receding road geometry, perspective sidewalks, crosswalk rhythm, background massing, and foreground/back-corner scale differences.
+- The four business corners now use distinct scene-native building/storefront treatments rather than one repeated rectangular window/awning template.
+- Greenpoint Deli is anchored to NW, McDonald's to NE, Dunkin' to SW, and Citizens Bank to SE.
+- In-scene storefront text remains generic category language: `DELI`, `BITES`, `COFFEE`, and `SERVICE`.
+- Real business identity remains limited to labels, cards, target rail, and source metadata.
+- Greenpoint G subway remains a generic symbolic transit cue, not exact station geometry.
+- Build verification passed.
+- Diff whitespace verification passed.
+- Browser QA is `qa-blocked` because the local server/browser environment is still blocked.
+- No package/config files were modified.
+- No staging or commit occurred.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-15 after visual screenshots are available.
+- Browser QA should be retried in an environment where the local app can bind to localhost, or via an approved preview URL.
+- Visual Polish / Optional Ambient remains blocked until MVP-15 is visually reviewed.
+- Exact real-inspired facade and station-geometry upgrades remain blocked until approved evidence exists.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-16 Perspective Scene Browser QA as the recommended next step, pending Batu/ChatGPT review and environment resolution. No next implementation task is approved.
+
+### 2026-05-29 - MVP-15A Visual Acceptance Contract / Failure Guardrails
+
+Status:
+- Complete for Batu/ChatGPT review.
+
+Scope:
+- Create a docs-only mandatory visual contract before the next implementation pass.
+- Diagnose MVP-11 screenshot-overlay failure and MVP-13 top-down board-game/storefront-tile failure.
+- Define banned visual patterns, required visual patterns, pre-code visual extraction requirements, renderer separation, QA screenshot rules, and next recommended task.
+- Reconcile the plan, current brief, and ledger.
+- Avoid app/source files, visual assets, scraping, image generation, browser screenshots, package/config files, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required review docs read.
+- Checked for local MVP-13 rejected screenshots.
+- Confirmed the four source corner screenshots exist in `docs/mvp-reference-images/`.
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- MVP-15A explicitly blocks top-down maps, board-game/grid diagrams, floating storefront tiles, repeated rectangle/window/awning templates, label-led category reads, UI-card buildings, overlay-layer storefronts, collapsed screenshot references, and screenshot backgrounds.
+- MVP-15A requires oblique/isometric street-scene language, volumetric buildings, embedded storefronts, distinct corner massing, road/sidewalk/crosswalk/curb perspective, symbolic scene-native subway cue, and the correct NW/NE/SW/SE assignments.
+- MVP-15A requires corner-by-corner visual extraction from the four source screenshots before any next implementation pass.
+- MVP-15A requires browser screenshots before any visual verdict.
+- Rejected MVP-13 browser screenshots were not found in the repository; the contract records the user-supplied rejected evidence description instead.
+- No app/source files changed.
+- No visuals, assets, screenshots, package/config files, staging, or commits were introduced.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the MVP-15A visual contract.
+- Batu/ChatGPT must decide whether to approve MVP-15B Perspective Scene Renderer Replacement.
+- Batu/ChatGPT must decide whether any pre-existing MVP-15 source changes are retained, revised, superseded, or reviewed against MVP-15A.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-15B Perspective Scene Renderer Replacement as the recommended next task, pending Batu/ChatGPT approval in a later current brief. No next implementation task is approved.
+
+### 2026-05-29 - MVP-15 Perspective Repair Control Reconciliation
+
+Status:
+- Complete.
+
+Scope:
+- Reconcile control docs after the MVP-15 source implementation while preserving the MVP-15A guardrail artifact as supporting review context.
+- Keep Visual Polish / Optional Ambient blocked.
+- Avoid further app/source, package/config, visual asset, screenshot, staging, or commit work.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records post-MVP-15 source state.
+- MVP-15 source status is `pending visual QA`.
+- Browser QA status remains `qa-blocked`.
+- MVP-15A remains documented as supporting guardrails, not as a visual acceptance decision for MVP-15.
+- No next implementation task is approved.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-15 after browser screenshots are available.
+- Batu/ChatGPT must decide whether MVP-15A should become a mandatory checklist for future visual implementation passes.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-16 Perspective Scene Browser QA as the recommended next task in a browser-capable environment. No next implementation task is approved.
+
+### 2026-05-29 - MVP-15A Approved Corpus Compliance Gate Patch
+
+Status:
+- Complete.
+
+Scope:
+- Patch MVP-15A so future visual implementation cannot pass merely by avoiding prior failure modes.
+- Add mandatory approved-reference-corpus citation and inspection requirements before code changes.
+- Add rejected screenshot evidence handling.
+- Reconcile the current brief, plan, and ledger without modifying app/source files.
+- Avoid new art, assets, scraping, image generation, package/config changes, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required docs reviewed.
+- Checked the MVP-15A folder for local rejected screenshots.
+- Checked repository image paths for rejected MVP-13 evidence.
+- `git diff --check`
+
+Outcome:
+- MVP-15A now requires future visual implementation passes to cite exact ARC IDs and paths before code changes.
+- MVP-15A now requires ARC-023, ARC-028, ARC-016 or ARC-026, ARC-024, ARC-029, ARC-015, and ARC-031 to be inspected for the appropriate scene, storefront, UI, and cautionary roles.
+- MVP-15A now requires a pre-code visual target table with reference used, visible traits to preserve, implementation implication, and risks/drift to avoid.
+- MVP-15A now requires explicit comparison against ARC-015 and ARC-031 cautionary references.
+- MVP-15A now states build success is not visual acceptance and keeps source implementation status separate from visual QA status.
+- Rejected MVP-13 screenshots remain missing evidence; MVP-15A recommends adding them under `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/rejected-evidence/`.
+- No app/source files changed.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-15 after browser screenshots are available.
+- Batu/ChatGPT must decide how the MVP-15A corpus gate should be applied to any review or revision of pre-existing MVP-15 source work.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to MVP-16 Perspective Scene Browser QA as the recommended next task in a browser-capable environment. No next implementation task is approved.
+
+### 2026-05-29 - MVP-15B Perspective Scene Renderer Replacement
+
+Status:
+- Complete pending browser visual QA.
+
+Scope:
+- Complete the MVP-15A Approved Corpus Compliance Gate before source edits.
+- Inspect required approved corpus references, rejected MVP-11/MVP-13 evidence, and four source corner screenshots.
+- Create the MVP-15B pre-code packet.
+- Replace the current diagrammatic scene renderer with a scene-native perspective renderer.
+- Preserve cards, target rail, hover/select behavior, QA outlines, pan/zoom paths, and truth-safety copy.
+- Avoid package/config changes, image generation, production asset pipeline, real-place data acquisition, deployment, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-15b-perspective-scene-renderer-replacement/README.md`
+- `src/PlaceholderWorld.jsx`
+- `src/mvpPlaceData.js`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Completed MVP-15A compliance gate before app/source edits.
+- Confirmed required approved corpus references were inspectable.
+- Confirmed rejected MVP-11/MVP-13 evidence screenshots were inspectable.
+- Confirmed four source corner screenshots in `docs/mvp-reference-images/` were inspectable.
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- MVP-15B README records the compliance table, rejected evidence table, four-corner source extraction, and renderer plan.
+- Active scene source now identifies MVP-15B as the perspective scene renderer replacement.
+- Renderer uses oblique road/sidewalk/crosswalk geometry, four distinct corner building masses, embedded storefronts, roof/parapet cues, side planes, facade texture, props, smaller secondary signs, and a symbolic scene-native G subway cue.
+- Existing interaction/card behavior and truth-safety copy were preserved.
+- Browser screenshots were not captured because local rendering is blocked.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-15B after browser screenshots are available.
+- No visual verdict is assigned without screenshots.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records MVP-15B source status as `complete pending visual QA` and recommends browser screenshot capture plus interaction smoke QA in a browser-capable environment, pending Batu/ChatGPT approval.
+
+### 2026-05-29 - MVP-15A.1 Approved Corpus Path Reconciliation
+
+Status:
+- Complete.
+
+Scope:
+- Fix approved reference corpus path integrity so the MVP-15A visual compliance gate can inspect required references.
+- Locate current filesystem paths for required ARC references.
+- Update approved corpus docs to point at existing archived paths.
+- Clarify that archived storage does not reduce canonical status.
+- Update MVP-15A to cite current manifest paths rather than hardcoded stale paths.
+- Reconcile control docs.
+- Avoid app/source files, image duplication, package/config changes, app build, staging, and commit.
+
+Files changed:
+- `docs/approved-reference-corpus/MANIFEST.md`
+- `docs/approved-reference-corpus/README.md`
+- `docs/approved-reference-corpus/REFERENCE_INDEX.md`
+- `docs/approved-reference-corpus/USAGE_RULES.md`
+- `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Located required ARC files under `docs/archive/visual-artifacts/`.
+- Visually inspected required raster references for ARC-023, ARC-028, ARC-016, ARC-026, ARC-024, ARC-029, and ARC-015.
+- Confirmed ARC-031 SVG cautionary artifacts are readable.
+- Confirmed every manifest ARC path now resolves on disk, including the ARC-031 wildcard.
+- `git diff --check`
+
+Outcome:
+- Required MVP-15A ARC references now point to inspectable archived paths in `docs/approved-reference-corpus/MANIFEST.md`.
+- `README.md`, `REFERENCE_INDEX.md`, and `USAGE_RULES.md` now state that archive storage can be canonical preservation and future visual gates must use current manifest paths.
+- MVP-15A now requires current manifest paths rather than hardcoded old `docs/visual-artifacts/` paths.
+- No image files were duplicated or copied.
+- No app/source files changed.
+- App build was not run because source files did not change.
+- MVP-15B is unblocked at the approved-corpus path level, but it must still complete the full MVP-15A gate before source edits.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject the next MVP-15B implementation output after browser screenshots are available.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-15B Perspective Scene Renderer Replacement as the recommended next task. The MVP-15A gate remains mandatory before source edits.
+
+### 2026-05-29 - MVP-15A Rejected Screenshot Evidence Reconciliation
+
+Status:
+- Complete.
+
+Scope:
+- Confirm rejected screenshot evidence now exists under the MVP-15A packet.
+- Update MVP-15A so rejected screenshots are no longer marked as missing evidence.
+- Record each screenshot path and the failure modes it documents.
+- Reconcile control docs only as needed.
+- Avoid app/source files, package/config changes, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Confirmed rejected evidence files in `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/rejected-evidence/`.
+- Visually inspected the rejected evidence screenshots.
+- `git diff --check`
+
+Outcome:
+- MVP-15A now lists `mvp-11-rejected-overlays.png` as evidence of screenshot-background composition with floating SVG-like storefront overlays.
+- MVP-15A now lists `mvp-13-rejected-flat-storefronts.png` and `mvp-13-rejected-selected-card-flat-storefronts.png` as evidence of top-down board-game/grid intersection, flat generic storefront modules, label-driven category tiles, insufficient scene-native perspective, and correct quadrant anchoring with failed art direction.
+- The Approved Corpus Compliance Gate remains intact.
+- No app/source files changed.
+
+Unresolved decisions:
+- Batu/ChatGPT must accept, revise, or reject MVP-15 after browser screenshots are available.
+- Batu/ChatGPT must decide how the MVP-15A corpus gate and rejected screenshot anti-references should be applied to any review or revision of pre-existing MVP-15 source work.
+- Visual Polish / Optional Ambient remains blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to MVP-16 Perspective Scene Browser QA as the recommended next task in a browser-capable environment. No next implementation task is approved.

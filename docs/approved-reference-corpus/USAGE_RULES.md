@@ -9,6 +9,14 @@ Batch 12+ approved raster outputs are protected canonical references. They are n
 
 Future prompts, prototype reviews, UI refinements, and visual assetization briefs must reference this corpus instead of relying on memory, prose summaries, or scattered historical folders.
 
+Reference inspection is not enough for prototype visual acceptance. Any future prototype intended to represent the approved look and feel must materially use an approved raster/reference plate or an approved raster sprite/asset-kit composition as the normal-mode primary world surface. Code-native SVG/CSS/DOM/canvas/Pixi graphics may support overlays, hit regions, markers, tethers, selected outlines, cards, controls, debug/QA layers, or non-visual blockouts only.
+
+Use `MANIFEST.md` for current inspectable paths. Some canonical references are preserved under `docs/archive/visual-artifacts/`; that archive location does not reduce canonical status.
+
+If a required manifest path is missing or cannot be inspected, stop and report the broken reference before visual implementation.
+
+If no approved raster plate or approved raster sprite/asset kit is available for the requested prototype, stop before source edits instead of synthesizing storefronts, buildings, sidewalks, roads, props, textures, or signs in code.
+
 ## What The Corpus Does Approve
 
 - Inked Indie / Compact Corner as the approved visual direction.
@@ -58,6 +66,7 @@ Flag any future output that drifts toward:
 - Generic beige paper UI.
 - Phase 5.2 QA-harness styling as normal UI.
 - SVG-grade diagrams or low-fidelity wireframes as visual proof.
+- Code-native Pixi/SVG/CSS/DOM/canvas storefronts, buildings, roads, sidewalks, props, textures, or signs as primary world art.
 - Flat vector icon sheets detached from the raster world.
 - Generic cozy-game storefront art.
 - Generic fantasy village or toy-town art.
