@@ -63,6 +63,14 @@ These are proposed module boundaries for review only. They are not approved publ
 | Visual asset layer | Store future approved raster assets, sprite sheets, layered exports, and metadata about asset provenance. | Approval of production assets or factual place content. |
 | QA/feedback loop | Visual smoke checks, interaction checks, mobile containment checks, and screenshot review checklist. | Product decisions or architecture approval. |
 
+## Real-Corner Translation Boundary Note
+
+MVP-20 Real-Corner Translation Boundary is the review point where static data/truth, Place/Building/Storefront/MapAnchor relationships, visual asset provenance, and UI/card treatment must be reconciled before any implementation is considered.
+
+- The rendering layer must not own source truth, business status, factual copy, treatment approval, or public-representation decisions.
+- The visual asset layer may store approved raster assets and provenance only after the relevant evidence/reference and translation gates clear.
+- This note does not approve architecture, public interfaces, app implementation, package/config changes, renderer changes, production assets, or production data.
+
 ## Interface Concepts And Data Contracts
 
 The following are proposed interface concepts and data contracts for later review, expressed only in prose/tables. These are not approved public interfaces and must not be implemented as code.

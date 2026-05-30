@@ -141,6 +141,14 @@ Examples of not-spatially-coherent representation:
 - Making a closed or unknown-status business appear active.
 - Writing card facts that are not supported by reviewed public sources.
 
+## Real-Corner Translation Use
+
+For real-corner translation planning, `Place`, `Building`, `Storefront`, and `MapAnchor` relationships must be reconciled before assigning authored placement, visual asset references, or card treatment.
+
+- `MapAnchor` remains authored placement for an isometric scene, not survey geometry.
+- `mapPosition`, `spriteId`, and `cardDescription` remain blocked until the relevant evidence, reference, translation-boundary, and Batu approval statuses clear.
+- This conceptual linkage supports review packets only. It does not create TypeScript/runtime schemas, app interfaces, source modules, or public contracts.
+
 ## Approval
 
 Any real place with unresolved verification, low placement confidence, source conflict, or manual override requirement must remain blocked until Batu approves the representation or chooses to omit it.

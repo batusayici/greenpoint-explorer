@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-05-29
+Last reconciled: 2026-05-30
 
 ## Purpose
 
@@ -55,14 +55,139 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-17 Product-Facing Raster Interaction Polish accepted by Batu as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-18 Real Corner Evidence Recovery is complete for Batu review with a `revise` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: `MVP-17 Hold-State Reconciliation Commit` only; no new implementation phase is approved.
+- Current next recommended task: `MVP-19 One-Corner Field Photo Supply Gate`, pending Batu approval; MVP-20 Real-Corner Translation Boundary and MVP-21 One-Corner Raster Integration / Visual Pass must follow before QA/demo freeze if the real-corner path continues; no implementation phase is approved.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-19/20/21 Real-Corner Translation Sequencing Reconciliation
+
+Status:
+- Complete.
+
+Scope:
+- Reconcile the roadmap and governance docs so MVP-19 remains a supply/reference gate only.
+- Insert MVP-20 Real-Corner Translation Boundary and MVP-21 One-Corner Raster Integration / Visual Pass before MVP QA/demo freeze.
+- Keep the batch docs-only with no app/source implementation, visual assets, generated art, renderer work, screenshots, packages, config, backend, scraping, live data, staging, or commit.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/MVP_SCOPE.md`
+- `docs/ARCHITECTURE.md`
+- `docs/PLACE_SCHEMA.md`
+- `docs/PLACE_SOURCE_POLICY.md`
+
+Verification:
+- Required governance, roadmap, scope, architecture, place schema, and source policy docs read.
+- Grep checks for `MVP QA And Demo Freeze`, `MVP-20`, `MVP-21`, and `MVP-19 One-Corner Field Photo Supply Gate`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- `docs/PLAN.md` no longer jumps directly from MVP-19 to MVP QA/demo freeze.
+- MVP-20 is documented as the docs-only real-corner translation boundary.
+- MVP-21 is documented as the first possible one-corner raster integration / visual pass, still blocked until MVP-20 acceptance and a future current brief.
+- `docs/CURRENT_EXECUTION_BRIEF.md` keeps MVP-19 as the proposed next task pending Batu approval and adds a later sequencing note for MVP-20 and MVP-21.
+- Supporting governance docs now clarify that field photos/manual observations, MapAnchor/place/storefront linkage, translation boundaries, and raster integration remain distinct gates and do not approve implementation or production claims by themselves.
+- No implementation, source, app, asset, package/config, renderer, screenshot, staging, or commit work was performed.
+
+Unresolved decisions:
+- Batu must decide whether to open MVP-19.
+- Batu must accept, revise, or reject MVP-20 after MVP-19 if the real-corner path continues.
+- Batu must decide which real-corner treatment is allowed for each active place: real card, context-only, fictionalized, omitted, blocked, or unresolved.
+- Batu must decide whether to open MVP-21 after MVP-20 and which approved/supplied raster material, if any, is allowed.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to `MVP-19 One-Corner Field Photo Supply Gate` as a proposed docs/evidence supply gate pending Batu approval. MVP-20 and MVP-21 are later gates before QA/demo freeze. No implementation task is approved.
+
+### 2026-05-30 - MVP-18 Real Corner Evidence Recovery
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Produce a docs-only evidence recovery packet for the active Greenpoint Ave x Manhattan Ave scene/place set.
+- Confirm current brief authorization and active source/data place set.
+- Use allowed public/open/manual sources and existing repo evidence only.
+- Avoid app/source implementation, visuals, generated art, screenshots, new assets, scraping, live data pipelines, Google/Street View/3D Tiles-derived stored imagery or extraction, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, scope, source-policy, schema, data-feasibility, visual-artifact, approved-reference-corpus, prior review, and active app/data files read.
+- Manual public-source checks for candidate addresses, BBL/BIN/tax-lot evidence, and business identity/status.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md`.
+- MVP-18 verdict is `revise`.
+- The packet recommends a compact four-corner evidence boundary around Greenpoint Ave x Manhattan Ave:
+  - NW Greenpoint Deli / 903 Manhattan Ave.
+  - NE McDonald's / 904 Manhattan Ave within 900/902/904 Manhattan Ave lot/building.
+  - SW Dunkin' / 893 Manhattan Ave within 893/895/897 Manhattan Ave lot/building.
+  - SE Citizens Bank / 896 Manhattan Ave within 894/896/898 Manhattan Ave lot/building.
+  - Greenpoint G subway as symbolic transit context only.
+- The packet recommends northwest Greenpoint Deli / 903 Manhattan Ave as the first field-photo target because it best supports local specificity and first-click value, but it is not ready for immediate real-facade art translation.
+- Real-corner art translation remains blocked by missing approved owned/non-Google facade references, unresolved storefront/frontage evidence, and pending Batu approval.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `MVP-19 One-Corner Field Photo Supply Gate` as the proposed next task only, pending Batu approval.
+- No implementation, visuals, screenshots, new assets, scraping, live data pipeline, staging, or commit were performed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-18 `revise` verdict.
+- Batu must approve, revise, or reject the four-corner evidence boundary.
+- Batu must approve northwest Greenpoint Deli / 903 Manhattan Ave as the first field-photo target, choose a fallback, or defer real-corner representation.
+- Batu must decide whether to open `MVP-19 One-Corner Field Photo Supply Gate`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `MVP-19 One-Corner Field Photo Supply Gate` as a proposed docs/evidence supply gate pending Batu approval. No implementation task is approved.
+
+### 2026-05-30 - MVP-18 Real Corner Evidence Recovery Brief
+
+Status:
+- Complete.
+
+Scope:
+- Create the next current brief for evidence recovery only.
+- Confirm the task is consistent with MVP scope and roadmap because `docs/MVP_SCOPE.md` allows one compact Manhattan Ave / Greenpoint Ave authored diorama, review-only source-of-truth validation packets, storefront evidence cards, and proceed/revise/cut recommendations before real-place usage.
+- Keep the batch docs-only with no app/source implementation, visuals, screenshots, new assets, scraping, live data pipeline, renderer work, package/config/tooling changes, staging, or commit.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, scope, source-policy, schema, data-feasibility, visual-artifact, plan, current-brief, and ledger docs read.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `MVP-18 Real Corner Evidence Recovery` as the approved next Codex task.
+- The future MVP-18 task must produce `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md` as a Level 0 text review packet.
+- MVP-18 must answer the exact boundary, buildings/lots/storefronts, candidate addresses, business status, BBL/BIN/tax-lot evidence, storefront/frontage evidence, allowed/blocked facade references, recognizable representation plan, fictionalize/generalize/omit/defer plan, first-corner spike recommendation, and proceed/revise/cut verdict.
+- MVP-17 remains accepted only as a raster-first interaction prototype baseline and is not accepted as a truthful or recognizable Greenpoint Ave x Manhattan Ave scene.
+- No implementation, visuals, screenshots, assets, scraping, live data pipeline, renderer work, staging, or commit were performed.
+
+Unresolved decisions:
+- Batu must approve, revise, or reject the future MVP-18 evidence recovery verdict.
+- Batu retains final approval over the exact intersection boundary, real-place representation, first-corner visual spike, and any later visual or implementation work.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `MVP-18 Real Corner Evidence Recovery` as the approved next docs-only task. No implementation task is approved.
 
 ### 2026-05-30 - MVP-17 Reconciliation Commit Scope Authorization
 

@@ -1,7 +1,7 @@
 # Greenpoint Isometric Explorer - MVP Scope
 
 Status: Detailed MVP scope authority
-Last reconciled: 2026-05-29
+Last reconciled: 2026-05-30
 Creative/product/scope owner: Batu
 Execution owner inside approved boundaries: Codex
 
@@ -86,6 +86,15 @@ This does not approve:
 - Live data, scraping, automated refresh, or CMS-backed content.
 
 Review-only raster assets must remain labeled non-production and must not be described as production assets, factual Greenpoint representations, exact facades, exact addresses, exact station geometry, or approved production asset direction.
+
+## Real-Corner Gate Sequencing
+
+Source-of-truth validation, owned/approved field-photo supply, real-corner translation boundary, and raster integration are distinct gates.
+
+- Field photos or approved reference packets may support review-only validation and visual translation planning.
+- Field photos or approved reference packets do not by themselves approve product-facing real-corner art, production assets, production data, real cards, exact facades, exact addresses, exact storefront frontage/order, exact station geometry, app implementation, or public-release claims.
+- A real-corner translation boundary must reconcile evidence, visual-reference provenance, Place/Building/Storefront/MapAnchor relationships, allowed approximations, treatment recommendations, acceptance criteria, and stop conditions before any real-corner raster integration can be considered.
+- One-corner raster integration, if pursued, requires its own later current brief and approved implementation boundary.
 
 ## MVP-Adjacent Source-Of-Truth Validation Spike
 
@@ -272,4 +281,5 @@ The MVP can be considered complete only when:
 - QA records accepted passes, misses, or explicit cuts.
 - Any source-of-truth validation spike remains review-only evidence and does not approve a production data, imagery, or asset pipeline.
 - The source-of-truth validation spike records a clear proceed, revise, or cut recommendation for real-place usage before final visual polish/demo freeze.
+- If real-corner integration is pursued, accepted evidence/reference verdicts and accepted real-corner translation/integration outcomes must exist before MVP QA/demo freeze.
 - Post-MVP ideas remain parked unless Batu explicitly promotes them.

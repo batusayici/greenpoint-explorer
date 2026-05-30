@@ -124,6 +124,20 @@ Manual verification is required when:
 
 Manual verification notes must be recorded in the feasibility table or later approved data source.
 
+## Field Photos And Manual Observations
+
+Owned or explicitly approved field photos and manual observations may support facade cues, storefront/frontage notes, entrance-position notes, and manual verification.
+
+They do not override:
+
+- The source hierarchy for business identity, address, building, lot, or status claims.
+- Conflict documentation.
+- Stale or uncertain active-status handling.
+- Storefront/frontage or adjacency uncertainty.
+- Batu approval requirements for public representation, art translation, real-place cards, exact facades, exact addresses, exact station geometry, or implementation.
+
+Missing or uncertain status, frontage, entrance, side-of-street, or adjacency must remain `unknown`, `placeholder`, `omitted`, `unresolved`, `blocked`, or `manual-review-required` until evidence and approval clear it.
+
 ## Batu Approval Requirements
 
 Batu must approve:
