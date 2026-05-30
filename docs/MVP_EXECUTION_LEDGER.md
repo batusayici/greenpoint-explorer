@@ -55,14 +55,186 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-21 One-Corner Raster Integration / Visual Pass Brief is finalized with exact approved raster references and a `ready-to-open-mvp-21-implementation-pending-batu-approval` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-22 Grillpoint / Greenpoint Ave G Real Corner Vertical Slice Stage A is approved-with-constraint; Stage B implementation brief is prepared; app integration has not started. MVP-21 remains accepted only as `approved-reviewable-limited-fallback`; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to pending MVP-21 implementation approval; MVP-21 One-Corner Raster Integration / Visual Pass implementation is recommended only after Batu explicitly opens implementation and confirms the implementation raster material path and allowed file list; no implementation phase is approved.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to MVP-22 Stage A closed as approved-with-constraint and Stage B brief prepared. Stage B raster-first real-corner vertical slice is next eligible but not started until Batu explicitly opens implementation from the prepared brief.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-22 Stage A Approval / Stage B Brief
+
+Status:
+- Complete.
+
+Scope:
+- Close MVP-22 Stage A as approved-with-constraint.
+- Record that Grillpoint identity/address/sign are supportable for Stage B planning.
+- Record that Greenpoint Ave G may be used as nearby/adjacent transit context, but not as a direct `in front of Grillpoint` claim unless stronger field/photo evidence supports it.
+- Prepare a Stage B brief naming exact raster path or generation/input path, public sign-label treatment, factual card copy/source URLs, allowed files, and screenshot QA requirements.
+- Resolve repo state by committing MVP-21 and MVP-22 together with limited/fallback/gate status.
+- Avoid app integration, raster generation, renderer work, visual production expansion, NE/SE/SW corners, code-native storefront/sign/facade art, live data, scraping, backend, CMS, analytics, broad map systems, and production claims.
+
+Files changed:
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, place schema, and place source policy docs read.
+- Confirmed the NW reference paths and II-A / II-B raster references exist.
+- Parked NE/SE/SW references were listed but excluded from the Stage B input allowlist.
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- MVP-22 Stage A is recorded as `approved-with-constraint-for-stage-b-planning`.
+- Stage B is allowed to open as a raster-first real-corner vertical slice, but implementation has not started.
+- The Stage B brief names `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/generated/mvp-22-grillpoint-real-corner-slice.png` as the raster output/generation path and `src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png` as the future app asset path only after approval.
+- The public/card label is `Grillpoint Deli`; review-only stylized `GRILLPOINT DELI` sign text is constrained to no tracing, no exact facade reproduction, no texture extraction, and no production asset claim.
+- The factual card copy, source URLs, allowed file list, screenshot QA requirements, and stop conditions are documented.
+- No app integration was performed.
+
+Unresolved decisions:
+- Batu must explicitly open Stage B implementation from the prepared brief before Codex edits app/source integration.
+- Batu must approve or revise the raster output, public sign-label treatment, factual card copy, and screenshot evidence after Stage B.
+- Any direct `in front of Grillpoint` subway-entrance claim remains blocked until stronger field/photo evidence supports it and Batu approves the claim.
+- Generic QA/demo freeze remains unopened.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-22 Stage A closed as approved-with-constraint and Stage B brief prepared; Stage B is next eligible but not started.
+
+### 2026-05-30 - MVP-22 Grillpoint / Greenpoint Ave G Stage A
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Replace the generic QA/demo freeze next pointer with `MVP-22 Grillpoint / Greenpoint Ave G Real Corner Vertical Slice`.
+- Produce a docs-first source/reference and composition packet for one NW corner only.
+- Verify Grillpoint identity/address/sign and Greenpoint Ave G station-context relationship at planning confidence.
+- Propose the most truthful diorama composition and stop before app implementation.
+- Avoid NE/SE/SW corner additions, app/source integration, raster generation, renderer work, code-native storefront/sign/facade art, live data, scraping, backend, CMS, analytics, broad map systems, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, place schema, place source policy, MVP-19, MVP-20, and MVP-21 docs read.
+- Reviewed public/source evidence for Grillpoint identity/address/category and Greenpoint Av G context.
+- Reviewed the decodable NW Grillpoint field photo and prior MVP-19/20 reference inventory; parked NE/SE/SW references were not used.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created the MVP-22 Stage A source/reference and composition packet.
+- Recorded Grillpoint identity/address/sign as supportable at planning confidence, pending Batu acceptance before any real-label art/card implementation.
+- Recorded Greenpoint Ave G as adjacent/nearby transit context; exact `in front of Grillpoint` relationship remains unapproved unless Batu explicitly accepts the field-photo interpretation.
+- Proposed `adjacent-corner-transit-context` as the truthful diorama composition.
+- Proposed factual card copy with source URL, address, category, last verified date, and unofficial-map disclaimer for Stage B review.
+- App integration remains blocked until Stage A is accepted or revised and a later brief opens Stage B.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Stage A evidence/composition packet.
+- Batu must decide whether exact `GRILLPOINT DELI` sign text may appear in review-only raster art.
+- Batu must decide whether the proposed station-context relationship is truthful enough.
+- Batu must open any Stage B raster-first art-directed scene/app integration and name the raster asset path, factual card copy, file allowlist, and screenshot requirements.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-22 Stage A review and blocks implementation until Batu opens Stage B.
+
+### 2026-05-30 - MVP-21 Limited Fallback Acceptance
+
+Status:
+- Complete.
+
+Scope:
+- Record Batu acceptance of MVP-21 only as `approved-reviewable-limited-fallback`.
+- Save the in-app browser screenshot into the MVP-21 review packet if possible.
+- Update execution-control docs so the next eligible task is limited MVP QA/demo freeze, not another renderer pass.
+- Avoid app/source changes, visual production expansion, code-native storefront/sign/facade art, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-21-one-corner-raster-integration/README.md`
+- `docs/mvp-review/mvp-21-one-corner-raster-integration/mvp-21-accepted-limited-fallback.jpg`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, and ledger docs read.
+- In-app browser at `http://127.0.0.1:5173/` used to capture the selected `Corner Deli` state.
+- Screenshot saved to `docs/mvp-review/mvp-21-one-corner-raster-integration/mvp-21-accepted-limited-fallback.jpg`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- MVP-21 is now recorded as accepted only as `approved-reviewable-limited-fallback`.
+- The accepted proof is narrow: one generalized/evidence-aware place card can attach to the raster world plate.
+- The docs explicitly state MVP-21 does not prove final visual fidelity, real-place accuracy, address placement, facade translation, exact sign treatment, or production readiness.
+- The next eligible task is limited MVP QA/demo freeze.
+- Another renderer pass, visual production expansion, code-native storefront/sign/facade art, production assets, and broader real-corner integration remain blocked.
+
+Unresolved decisions:
+- Batu must open the limited MVP QA/demo freeze before Codex executes it.
+- Batu still owns any future implementation-specific NW raster plate, exact sign/facade treatment, production assets, production place cards, public factual copy, and final MVP/demo approval.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to limited MVP QA/demo freeze as the next eligible task, not yet opened for execution.
+
+### 2026-05-30 - MVP-21 One-Corner Raster Integration Implementation
+
+Status:
+- Complete for Batu review as a limited fallback.
+
+Scope:
+- Implement Batu-approved MVP-21 within the narrow source/data/card boundary for the NW target only.
+- Preserve the existing app shell, pan/zoom, hover/click/tap selection, target rail, cards, markers, tethers, outlines, and review-only disclaimer/status behavior.
+- Keep the primary world surface raster-first and avoid new renderer/framework/tooling, generated art, code-native primary scene art, parked NE/SE/SW reference use, production assets, exact sign/facade/address/station-geometry claims, staging, and commit.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `docs/mvp-review/mvp-21-one-corner-raster-integration/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, scope, place-policy, MVP-19, MVP-20, MVP-21, and parked-reference docs read.
+- Confirmed approved II-A / II-B raster reference files exist.
+- `npm run build`
+- Local browser screenshot captured in-session; repo PNG save was blocked by browser-runtime `EPERM`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- NW target visible title is generalized to `Corner Deli`.
+- `GRILLPOINT DELI` is recorded as internal/source evidence only.
+- MVP-21 source/card evidence rows preserve blocked exact sign, facade, address placement, active-status copy, storefront frontage/order, and station-geometry claims.
+- Existing MVP-17 raster plate remains the app primary world surface because no separate implementation-specific NW raster plate, layered export, or raster sprite composition was supplied.
+- Non-NW targets remain unchanged.
+- Parked NE / SE / SW references remain unused.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the limited fallback.
+- Batu must decide whether to supply or approve an implementation-specific NW raster plate, layered export, or raster sprite composition.
+- Batu must decide whether exact `GRILLPOINT DELI` sign text may ever appear in later review-only art.
+- Batu must decide whether to open MVP QA/demo freeze after reviewing MVP-21.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to pending MVP-21 review by Batu. MVP QA/demo freeze is not opened.
 
 ### 2026-05-30 - MVP-21 Raster Brief Finalization
 

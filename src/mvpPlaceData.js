@@ -38,6 +38,7 @@ function makeCurrentCandidate({
   bounds,
   summary,
   rasterAnchorLabel,
+  overrides = {},
 }) {
   return {
     id,
@@ -67,13 +68,14 @@ function makeCurrentCandidate({
     tetherEnd,
     bounds,
     rasterAnchorLabel,
+    ...overrides,
   };
 }
 
 export const mvpScene = {
-  title: "MVP-17 product-facing raster interaction polish",
+  title: "MVP-21 NW deli raster-first review pass",
   note:
-    "Explore the recovered raster scene. Place identity stays in the interface, and every hotspot remains review-only.",
+    "Explore the recovered raster scene. The NW deli target is generalized for review, and every hotspot remains review-only.",
   size: {
     width: 1672,
     height: 941,
@@ -81,17 +83,21 @@ export const mvpScene = {
   reviewLabel: "REVIEW-ONLY / NON-PRODUCTION",
   sourceListLabel: "Identity / presence evidence",
   sceneFrame: {
-    locationLabel: "Raster-first Greenpoint explorer prototype",
+    locationLabel: "MVP-21 NW corner review prototype",
     intent:
-      "Pan, zoom, and select temporary place anchors on the approved raster plate.",
+      "Pan, zoom, and select temporary place anchors on the raster-first review plate.",
     treatment:
-      "The raster is fictional-safe review art. It is not an exact Manhattan Avenue / Greenpoint Avenue scene and does not approve real facade, address, station-geometry, or storefront-order claims.",
-    activeSceneSource: "MVP-17 product-facing raster interaction polish",
+      "The NW deli cue is product-facing and generalized. Internal evidence can refer to GRILLPOINT DELI, but the visible treatment does not reproduce the exact sign, facade, address placement, station geometry, or storefront order.",
+    activeSceneSource: "MVP-21 One-Corner Raster Integration / Visual Pass",
     approvedRasterPath:
       "docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png",
+    approvedReferencePaths: [
+      "docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-A-ui-world-integration.png",
+      "docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-B-place-card-marker-hover-state.png",
+    ],
   },
   disclaimer:
-    "Unofficial authored prototype. LiveXYZ and MTA links are treated as identity/presence or transit-context evidence only. The raster plate is review-only recovery art, not an official map, directory, real-time listing, facade reference, address system, or production placement.",
+    "Unofficial authored prototype. The NW deli treatment is review-only and generalized; GRILLPOINT DELI is internal/source evidence only. LiveXYZ, MTA links, and field-reference notes are not an official map, directory, real-time listing, facade reference, address system, or production placement.",
   plate: {
     src: rasterPlateSrc,
     label:
@@ -103,9 +109,23 @@ export const mvpScene = {
     "greenpoint-deli-livexyz": {
       label: "LiveXYZ Greenpoint Deli",
       url: "https://embed.livexyz.com/venue/5526f8acd8ca7000030002e4",
-      supports: "Greenpoint Deli identity/presence candidate only.",
-      sourceUse: "Identity/presence only; not facade, address, frontage, or art reference.",
+      supports: "Prior Greenpoint Deli identity/presence candidate only.",
+      sourceUse: "Identity/presence only; not facade, address, frontage, exact sign, or art reference.",
       reviewedOn: "2026-05-29",
+    },
+    "mvp-19-nw-field-notes": {
+      label: "MVP-19 NW field-reference notes",
+      url: "/docs/mvp-review/mvp-19-one-corner-field-photo-supply-gate/README.md",
+      supports: "Supplied NW reference notes identify visible GRILLPOINT DELI signage at 903 Manhattan Ave.",
+      sourceUse: "Internal/source evidence only; not exact public sign reproduction, facade tracing, texture extraction, or production card copy.",
+      reviewedOn: "2026-05-30",
+    },
+    "mvp-21-implementation-brief": {
+      label: "MVP-21 implementation brief",
+      url: "/docs/mvp-review/mvp-21-one-corner-raster-integration-brief/README.md",
+      supports: "Generalized product-facing deli treatment with GRILLPOINT DELI reserved for internal/source evidence.",
+      sourceUse: "Review-only implementation boundary; not production asset, exact facade, exact address, or public factual card approval.",
+      reviewedOn: "2026-05-30",
     },
     "mcdonalds-livexyz": {
       label: "LiveXYZ McDonald's",
@@ -146,12 +166,12 @@ export const mvpScene = {
   targets: [
     makeCurrentCandidate({
       id: "greenpoint-deli",
-      title: "Greenpoint Deli",
-      category: "Deli / food retail",
+      title: "Corner Deli",
+      category: "Generalized deli / food retail",
       liveXyzSourceId: "greenpoint-deli-livexyz",
-      corner: "left storefront",
-      summary: "Current-scene deli card retained with identity/presence evidence only.",
-      rasterAnchorLabel: "Temporary raster anchor 1",
+      corner: "NW deli target",
+      summary: "Product-facing deli cue is generalized; internal/source evidence label may be GRILLPOINT DELI.",
+      rasterAnchorLabel: "MVP-21 NW deli review target",
       marker: {
         label: "1",
         x: 360,
@@ -166,6 +186,63 @@ export const mvpScene = {
         y: 304,
         width: 276,
         height: 342,
+      },
+      overrides: {
+        label: "MVP-21 review target",
+        address: "NW 903 Manhattan Ave candidate, review-only anchor",
+        status: "manual-review-required",
+        candidateOutcome: "mvp-21-generalized-deli-treatment",
+        approvalStatus: "review-only-generalized-treatment",
+        verificationStatus: "manual review",
+        cardBadge: "NW review",
+        placementConfidence: "medium quadrant / low exactness",
+        lastVerified: "2026-05-30",
+        description:
+          "This card makes the selected NW deli treatment reviewable without turning the raster plate into an exact Greenpoint facade. The visible product-facing label is generalized as Corner Deli. GRILLPOINT DELI remains an internal/source evidence label from supplied NW field-reference notes.",
+        statusNote:
+          "GRILLPOINT DELI is internal/source evidence only. Exact sign, facade, address placement, active-status copy, storefront frontage/order, and station geometry remain unapproved.",
+        sourceRefs: [
+          "greenpoint-deli-livexyz",
+          "mvp-19-nw-field-notes",
+          "mvp-21-implementation-brief",
+        ],
+        evidenceStatus: [
+          {
+            label: "Product-facing treatment",
+            value:
+              "Generalized Corner Deli cue. The visible treatment must not reproduce the exact GRILLPOINT DELI sign.",
+          },
+          {
+            label: "Internal/source evidence",
+            value:
+              "Supplied NW field-reference notes may refer to GRILLPOINT DELI at 903 Manhattan Ave for review context.",
+          },
+          {
+            label: "Raster surface",
+            value:
+              "Primary world surface remains raster-first review art. No code-native storefront, building, road, sign, prop, or texture art was added.",
+          },
+          {
+            label: "Reference limits",
+            value:
+              "II-A and II-B guide the approved raster/UI direction only. Parked NE, SE, and SW references remain unused.",
+          },
+        ],
+        truthConstraints: [
+          "Keep the product-facing deli treatment generalized or non-readable.",
+          "Use GRILLPOINT DELI only as internal/source evidence unless Batu later approves exact sign treatment.",
+          "Do not claim exact facade, sign, address placement, storefront width/order, entrance position, station geometry, or active public status.",
+          "Do not use parked NE, SE, or SW references for MVP-21.",
+          "Do not use Google, Street View, 3D Tiles, LiveXYZ facade/art, copied web imagery, or blocked historical screenshots as facade/art material.",
+        ],
+        tags: [
+          "current scene",
+          "NW corner",
+          "MVP-21",
+          "generalized deli",
+          "GRILLPOINT DELI source-only",
+          "raster-first review",
+        ],
       },
     }),
     makeCurrentCandidate({
