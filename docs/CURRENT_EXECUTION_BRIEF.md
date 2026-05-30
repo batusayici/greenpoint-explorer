@@ -48,13 +48,64 @@ Goal of the proposed next task:
 
 - Obtain or explicitly approve owned/non-Google field-reference photos for the northwest Greenpoint Deli / 903 Manhattan Ave corner.
 - Confirm current business status, storefront frontage, entrance position, and any signage/facade cues visible in owned/approved references.
+- Distinguish which evidence steps are repeatable at Greenpoint scale versus which require fieldwork, manual desktop research, or Batu judgment.
 - Decide whether a later task can open a one-corner real-facade art translation brief.
 
 This recommended task is not approved until Batu explicitly opens it.
 
+## MVP-19 Required Scalability Assessment
+
+MVP-19 is not complete if it only supplies photos or visual references. It must include a concise repeatability/scalability readout that shows whether the one-corner evidence method can become a repeatable Greenpoint workflow.
+
+Required classification categories:
+
+1. `automated-public-data-repeatable`
+2. `manual-desktop-research-repeatable`
+3. `field-photo-required`
+4. `Batu-judgment-required`
+5. `blocked-or-not-scalable`
+
+Required evidence rows:
+
+- Building footprint / massing.
+- Lot / parcel / BBL.
+- Address confirmation.
+- Business identity.
+- Business active status.
+- Storefront frontage.
+- Storefront order / adjacency.
+- Facade cues.
+- Signage / awning / brand treatment.
+- Subway entrance / transit anchor.
+- Visual-reference eligibility.
+- Card copy eligibility.
+- Isometric placement confidence.
+
+For each row, MVP-19 must record:
+
+- Source path used or proposed.
+- Classification category.
+- Confidence.
+- Manual effort required.
+- Whether the source path plausibly scales to 20, 100, and 500 storefronts.
+- Blocker, mitigation, or reason the item should remain manual.
+
+Required exit outputs:
+
+1. Selected-corner photo/reference packet, or an explicit blocked-corner verdict.
+2. Provenance and visual-use status for every owned/approved reference.
+3. Current-status, storefront/frontage, entrance-position, and facade-cue notes.
+4. Repeatability/scalability readout using the rows and categories above.
+5. Recommendation for MVP-20: proceed, revise, cut, or choose a different target.
+
+Stop condition:
+
+- If MVP-19 supplies photos but does not classify evidence repeatability, stop and revise the packet before opening MVP-20.
+- If MVP-19 cannot establish whether the selected-corner workflow plausibly scales beyond one hand-authored corner, do not open MVP-20 as an implementation-adjacent translation boundary; return a `revise` verdict with the scalability blocker documented.
+
 ## Later Sequencing Note
 
-- MVP-19 only supplies, approves, or blocks owned/non-Google field/reference evidence.
+- MVP-19 only supplies, approves, or blocks owned/non-Google field/reference evidence and records a repeatability/scalability readout for the one-corner evidence method.
 - MVP-19 does not authorize real-corner art translation, raster integration, real-place cards, UI claims, renderer work, source edits, screenshots, demo freeze, or production claims.
 - MVP-20 Real-Corner Translation Boundary must follow MVP-19 before any real-corner art translation or raster integration can be considered.
 - MVP-20 is a docs-only translation boundary that reconciles evidence, Place/Building/Storefront/MapAnchor relationships, allowed and blocked visual references, truth constraints, treatment recommendations, and the proposed downstream implementation boundary.
@@ -109,3 +160,4 @@ MVP-18 recommended first target:
 - Decide whether McDonald's, Dunkin', and Citizens Bank remain real card candidates, context-only anchors, fictionalized storefronts, or cut/deferred targets.
 - Decide whether Greenpoint G subway remains symbolic only or later needs exact access-point verification.
 - Approve or reject the proposed `MVP-19 One-Corner Field Photo Supply Gate`.
+- Decide whether MVP-19 should use the required scalability assessment as a hard exit criterion before MVP-20 can open.

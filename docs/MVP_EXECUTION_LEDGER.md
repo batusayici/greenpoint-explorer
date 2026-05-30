@@ -57,12 +57,47 @@ Next pointer:
 
 - Current phase: MVP-18 Real Corner Evidence Recovery is complete for Batu review with a `revise` verdict; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended task: `MVP-19 One-Corner Field Photo Supply Gate`, pending Batu approval; MVP-20 Real-Corner Translation Boundary and MVP-21 One-Corner Raster Integration / Visual Pass must follow before QA/demo freeze if the real-corner path continues; no implementation phase is approved.
+- Current next recommended task: `MVP-19 One-Corner Field Photo Supply Gate`, pending Batu approval; MVP-19 is now a reference + repeatability/scalability gate, and MVP-20 Real-Corner Translation Boundary and MVP-21 One-Corner Raster Integration / Visual Pass must follow before QA/demo freeze if the real-corner path continues; no implementation phase is approved.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-30 - MVP-19 Scalability Assessment Brief Patch
+
+Status:
+- Complete.
+
+Scope:
+- Patch the proposed MVP-19 brief so the next task requires a repeatability/scalability assessment, not only one-off photo/reference supply.
+- Reconcile the roadmap and ledger pointer without opening MVP-19, MVP-20, implementation, visuals, assets, screenshots, scraping, live data, staging, or commit.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, and ledger docs read.
+- Checked that the brief includes the required scalability categories, evidence rows, 20/100/500 storefront scale readout, and stop conditions.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` keeps `MVP-19 One-Corner Field Photo Supply Gate` as the proposed next task pending Batu approval.
+- MVP-19 is now explicitly a reference + scalability gate and cannot complete from photos alone.
+- MVP-20 remains blocked until MVP-19 provides both a selected-corner reference packet and the repeatability/scalability readout, then Batu approves the translation boundary.
+- No implementation, source, app, asset, visual generation, renderer, screenshot, scraping, live data, staging, commit, or production-claim work was performed.
+
+Unresolved decisions:
+- Batu must decide whether to open MVP-19.
+- Batu must accept, revise, or reject the MVP-19 reference packet and scalability readout before MVP-20 can open.
+- Batu must approve any later real-corner translation boundary before implementation can be considered.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to `MVP-19 One-Corner Field Photo Supply Gate` as a proposed docs/evidence reference + scalability gate pending Batu approval. No implementation task is approved.
 
 ### 2026-05-30 - MVP-19/20/21 Real-Corner Translation Sequencing Reconciliation
 
