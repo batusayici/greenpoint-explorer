@@ -1,6 +1,6 @@
 # MVP-22 Grillpoint / Greenpoint Ave G Real Corner Vertical Slice
 
-Status: Stage A approved-with-constraint; Stage B brief prepared, app integration not started
+Status: Accepted complete; MVP-22C polish applied; screenshot QA recovered
 Date: 2026-05-30
 Artifact class: Evidence packet, source/reference inventory, and proposed composition decision
 Scope: NW Grillpoint / Greenpoint Ave G real-corner vertical slice planning only; no app integration, renderer work, generated art, production assets, scraping, live data, backend, CMS, analytics, staging, or broad map systems
@@ -17,16 +17,41 @@ Batu approves MVP-22 Stage A with constraints:
 - Stage B may open as a raster-first real-corner vertical slice.
 - Stage B must remain one corner only and must not begin app integration until the current execution brief explicitly opens implementation.
 
+Batu accepts MVP-22C as complete and closes the MVP-22 real-corner vertical slice sequence.
+
 MVP-22 moves beyond the MVP-21 generalized fallback only as a controlled, evidence-aware vertical slice. This packet remains a two-stage gate:
 
 1. Stage A: verify Grillpoint identity/address/sign evidence, Greenpoint Ave G context, visual-reference eligibility, and a truthful diorama composition.
 2. Stage B: after Stage A acceptance and a precise Stage B brief, produce or integrate one raster-first art-directed scene and factual card treatment using the real Grillpoint label only within the approved evidence and sign-label constraints.
 
-No app/source implementation is performed by this packet. Stop before implementation if evidence does not support the real Grillpoint + station relationship needed for the selected composition.
+Stage B has now produced and integrated a review-only raster-first one-corner slice. The implementation remains non-production and does not prove final visual fidelity, exact real-place accuracy, exact address placement, exact facade translation, exact station geometry, or production readiness.
 
 Stage B implementation brief:
 
 - `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md`
+
+Stage B raster output:
+
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/generated/mvp-22-grillpoint-real-corner-slice.png`
+- App copy: `src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png`
+
+Stage B app integration:
+
+- One active factual card: `Grillpoint Deli`.
+- The raster sign uses a non-readable deli cue; the exact `GRILLPOINT DELI` sign is not reproduced.
+- Greenpoint Ave G is shown only as nearby/adjacent transit context.
+- NE/SE/SW corners were not added.
+
+MVP-22C polish:
+
+- Preserved the final MVP-22 raster-first real-corner slice.
+- Did not regenerate the raster.
+- Did not use the earlier readable-sign candidates because their generated text was malformed.
+- Kept the app card label as `Grillpoint Deli`.
+- Tightened visible card copy for product readability while preserving truth constraints.
+- Narrowed the active hotspot/QA outline to the storefront/corner slice.
+- Verified the app data has one active factual Grillpoint card for this slice.
+- Captured the six required review screenshots.
 
 ## Purpose
 
@@ -107,7 +132,7 @@ If the exact station relationship remains uncertain, the truthful diorama compos
 
 ## Stage B Implementation Gate
 
-App integration may open only from the Stage B implementation brief and only after Batu explicitly opens implementation.
+App integration opened only after Batu approved Stage B from the prepared brief.
 
 Before Stage B source edits, the current brief and/or Stage B brief must name:
 
@@ -138,6 +163,39 @@ The Stage B implementation brief names:
 - Card copy: neutral factual Grillpoint card copy with Restaurantji, MTA, and Batu-supplied field-reference support, `lastVerified: 2026-05-30`, and unofficial-map disclaimer.
 - Allowed files: limited to MVP-22 review packet docs/assets, the approved review-only raster asset path, `src/mvpPlaceData.js`, `src/PlaceholderWorld.jsx`, `src/App.jsx` only if selected-card/rail support requires it, and `src/styles.css` only for containment/card fit.
 - Screenshot QA: desktop overview, selected Grillpoint card, hover/focus, QA outline/hotspot state, mobile containment, and pan/zoom stress; blockers must be recorded.
+
+## Stage B Self-Audit
+
+- Intended decision: whether one real-place, evidence-aware Grillpoint card can attach to a raster-first real-corner world plate.
+- Fidelity level: Level 4 review-only prototype asset.
+- Required output format: raster PNG.
+- SVG status: disallowed for the primary world surface.
+- Visual evidence: Batu can see a compact salmon/pink corner deli with a non-readable deli sign cue, dense storefront detail, and nearby Greenpoint Av G context.
+- Truth handling: Grillpoint identity/address/card copy are source-backed for review; the sign/facade/address/station geometry remain approximate or non-readable where needed.
+- Missing fidelity: production art, exact real-place accuracy, exact address placement, exact facade translation, and exact station geometry remain unapproved.
+- Pass/fail: passes as an accepted MVP-22 review-only vertical slice; does not pass as production art or final real-place accuracy.
+
+## Screenshot QA Status
+
+Screenshot capture is complete:
+
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-overview.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-selected-grillpoint-card.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-hover-focus.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/qa-outline-hotspot.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/mobile-selected-card-containment.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/pan-zoom-stress.png`
+
+Capture notes:
+
+- Vite dev server started after local network permission on `http://127.0.0.1:5174/` because `5173` was already in use; `curl -I` returned HTTP 200.
+- Local Playwright and Puppeteer are not installed.
+- Direct Chrome/Firefox headless screenshot routes remained unavailable in this environment.
+- The successful capture route was the Codex in-app browser connected to local Vite.
+
+Screenshot recovery note:
+
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
 
 ## Blocked Work
 

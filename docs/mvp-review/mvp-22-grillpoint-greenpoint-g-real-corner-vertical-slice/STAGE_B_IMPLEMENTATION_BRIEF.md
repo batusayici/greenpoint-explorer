@@ -1,6 +1,6 @@
 # MVP-22 Stage B Implementation Brief
 
-Status: Prepared after Stage A approval-with-constraint; implementation not started
+Status: Accepted complete; MVP-22C polish applied; screenshot capture recovered
 Date: 2026-05-30
 Scope: One NW Grillpoint / Greenpoint Ave G raster-first real-corner vertical slice only
 
@@ -9,6 +9,15 @@ Scope: One NW Grillpoint / Greenpoint Ave G raster-first real-corner vertical sl
 Stage B may open as a raster-first real-corner vertical slice, but only after Batu explicitly opens implementation from this brief.
 
 Stage B must not start if the approved raster output is missing, if the selected sign-label treatment changes, if the card copy or source URLs change without review, or if the task requires NE/SE/SW parked references.
+
+Implementation note:
+
+- Batu opened Stage B with `approved`.
+- Batu accepted Stage B as visually successful with minor revision required before QA/demo freeze.
+- Batu accepted MVP-22C as complete and closed the MVP-22 real-corner vertical slice sequence.
+- The final raster follows the fallback sign-label path: `Grillpoint Deli` is used in the factual app card, while the raster sign band uses a non-readable deli cue to avoid generated text errors and exact sign/facade reproduction risk.
+- The app integration remains review-only and one-corner-only.
+- MVP-22C preserves the raster, keeps the non-readable sign cue, tightens card copy, recovers screenshot QA, and does not open QA/demo freeze.
 
 ## Exact Raster Asset Path Or Generation/Input Path
 
@@ -19,6 +28,12 @@ Stage B raster output path:
 Future app integration path, only after the raster output exists and is approved for review-only integration:
 
 - `src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png`
+
+Raster status:
+
+- Generated and copied to both paths above.
+- Review-only, non-production, and not an exact facade, exact address-placement, or exact station-geometry asset.
+- Preserved in MVP-22C without regeneration.
 
 Approved Stage B input/reference paths:
 
@@ -45,9 +60,9 @@ Approved factual/card label:
 
 Review-only raster sign-label treatment:
 
-- `GRILLPOINT DELI` may appear only as stylized, art-directed sign text for this one-corner review slice if Batu opens Stage B from this brief.
-- The sign must not be a traced logo, exact facade reproduction, extracted texture, or production asset.
-- If exact readable text creates fidelity or rights risk during implementation, fall back to `Grillpoint Deli` on the card and a non-readable deli sign cue in the raster.
+- Final implemented treatment uses `Grillpoint Deli` in the factual card and a non-readable deli sign cue in the raster.
+- This fallback was chosen because generated readable sign candidates introduced text errors and/or exact address-placement risk.
+- The sign is not a traced logo, exact facade reproduction, extracted texture, or production asset.
 
 Station/transit treatment:
 
@@ -120,6 +135,15 @@ Suggested screenshot folder:
 - `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/`
 
 If screenshot capture is blocked, record the blocker in the review packet and do not claim visual QA passed.
+
+Screenshot status:
+
+- Complete for MVP-22 review.
+- The Vite dev server could run after network permission on `http://127.0.0.1:5174/` because `5173` was already in use, and `curl -I` returned HTTP 200.
+- Local Playwright and Puppeteer are not installed in the project environment.
+- Direct Chrome/Firefox headless screenshot routes remained unavailable in this environment.
+- The successful capture route was the Codex in-app browser connected to local Vite.
+- Six PNG screenshots are saved in `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/`.
 
 ## Stop Conditions
 

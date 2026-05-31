@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-05-30
+Last reconciled: 2026-05-31
 
 ## Purpose
 
@@ -55,14 +55,206 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-22 Grillpoint / Greenpoint Ave G Real Corner Vertical Slice Stage A is approved-with-constraint; Stage B implementation brief is prepared; app integration has not started. MVP-21 remains accepted only as `approved-reviewable-limited-fallback`; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-22C Stage B Acceptance Polish + Screenshot QA Recovery is accepted complete; the MVP-22 real-corner vertical slice sequence is closed. Required MVP-22 screenshot QA has been recovered. MVP-21 remains accepted only as `approved-reviewable-limited-fallback`; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to MVP-22 Stage A closed as approved-with-constraint and Stage B brief prepared. Stage B raster-first real-corner vertical slice is next eligible but not started until Batu explicitly opens implementation from the prepared brief.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records MVP-22 closed and points to preparing MVP-29 QA / Demo Freeze as the next proposed brief. MVP-29 implementation remains unopened.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-31 - MVP-22C Acceptance And Sequence Closeout
+
+Status:
+- Complete.
+
+Scope:
+- Accept MVP-22C as complete and close the MVP-22 Grillpoint / Greenpoint Ave G real-corner vertical slice sequence.
+- Preserve the MVP-22 raster asset, app asset copy, factual Grillpoint card data, Stage B / MVP-22C docs, screenshot QA folder, six PNG screenshots, and reconciled control docs.
+- Do not open MVP-29 implementation, new visual production, new corners, raster regeneration, code-native storefront/sign/facade art, live data, scraping, backend, CMS, analytics, deployment, CI, broad map systems, or production/public-release claims.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md`
+
+Verification:
+- Required governance, current brief, roadmap, and ledger read.
+- Changed and untracked files reviewed as MVP-22/MVP-22C related only.
+- Six screenshot PNG paths confirmed present.
+- `file` confirmed the six screenshots are PNG image data.
+- `git diff --check`
+- `npm run build`
+- `git status --short`
+
+Outcome:
+- MVP-22C is accepted as complete.
+- The MVP-22 real-corner vertical slice sequence is closed.
+- MVP-29 QA / Demo Freeze is identified as the next proposed brief only, not implemented.
+
+Unresolved decisions:
+- Batu must still open MVP-29 implementation from a later current brief.
+- Any direct `in front of Grillpoint` subway-entrance claim remains blocked until stronger field/photo evidence supports it and Batu approves the claim.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` records MVP-22 closed and points to preparing MVP-29 QA / Demo Freeze as the next proposed brief.
+
+### 2026-05-31 - MVP-22C Screenshot QA Blocker Recovery
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Investigate and resolve the MVP-22C screenshot QA blocker without changing product scope.
+- Use existing browser binaries/dependencies and existing app controls first.
+- Do not change raster image, app UI, card copy, hotspot data, styling, product dependencies, framework/tooling, MVP-29 gate state, staging, or commit.
+
+Files changed:
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-overview.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-selected-grillpoint-card.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-hover-focus.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/qa-outline-hotspot.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/mobile-selected-card-containment.png`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/pan-zoom-stress.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, visual QA checklist, screenshot README, package tooling, and app controls read.
+- Existing package/tooling inspected: Vite/React/Pixi only; local Playwright and Puppeteer are not installed.
+- Existing browser binaries inspected: Google Chrome and Firefox are installed.
+- Direct Chrome headless remained blocked before producing PNG output, including with `--no-sandbox`, `--disable-dev-shm-usage`, `--disable-gpu`, `--single-process`, and explicit temp `--user-data-dir` checks.
+- Direct Firefox headless was also unavailable for screenshot output in the sandboxed command path.
+- Vite served unchanged app on `http://127.0.0.1:5174/`; `curl -I` returned HTTP 200.
+- Codex in-app browser successfully loaded the local app and captured six review states.
+- Screenshot files were converted to true PNG format and checked with `file`.
+- Visual spot-check performed for overview, selected card, hover/focus, QA outline, mobile containment, and pan/zoom stress screenshots.
+- `npm run build`
+
+Outcome:
+- Required MVP-22C screenshots now exist in `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/`.
+- The reliable capture path is the Codex in-app browser connected to the local Vite server, with viewport overrides for desktop and mobile review states.
+- No app source, raster image, card copy, hotspot data, styling, dependencies, framework/tooling, production scope, or MVP-29 gate state was changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject MVP-22C polish and recovered screenshot evidence.
+- Any direct `in front of Grillpoint` subway-entrance claim remains blocked until stronger field/photo evidence supports it and Batu approves the claim.
+- MVP-29 QA/demo freeze remains unopened.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-22C review with recovered screenshot evidence and still blocks MVP-29 QA/demo freeze until Batu opens a later task.
+
+### 2026-05-31 - MVP-22C Acceptance Polish / Screenshot QA Recovery
+
+Status:
+- Complete for Batu review; screenshot QA blocked.
+
+Scope:
+- Accept MVP-22 Stage B as visually successful with minor revision required before QA/demo freeze.
+- Preserve the final MVP-22 raster-first real-corner slice and non-readable deli sign cue.
+- Do not regenerate the raster or use earlier malformed readable-sign candidates.
+- Keep the app card label as `Grillpoint Deli`.
+- Tighten visible factual card copy for product readability while preserving truth constraints.
+- Keep Greenpoint Av G as nearby/adjacent transit context only.
+- Verify there is only one active factual Grillpoint card for this slice.
+- Check/tighten hotspot/card alignment.
+- Attempt screenshot QA, record blocker if screenshot capture remains unavailable.
+- Avoid MVP-29 QA/demo freeze, NE/SE/SW corners, code-native storefront/sign/facade art, production assets/claims, live data, scraping, backend, CMS, analytics, deployment, CI, broad map systems, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md`
+- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `src/mvpPlaceData.js`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, current MVP-22 packet, and app data read.
+- Confirmed the raster asset is preserved and no regeneration was performed.
+- `src/mvpPlaceData.js` contains one active target, `grillpoint-deli`.
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+- Screenshot QA attempted but blocked: local network permission is required for Vite; Vite ran on `http://127.0.0.1:5174/` because `5173` was already in use; `curl -I` returned HTTP 200; in-app browser route was unavailable previously; local Playwright is not installed; Google Chrome headless screenshot launch exited with `chrome_exit:134` before producing a screenshot.
+
+Outcome:
+- MVP-22C records Stage B as visually successful with minor revision applied before QA/demo freeze.
+- Visible factual card copy is shorter and more product-readable while retaining source-backed address, disclaimer, and truth constraints.
+- The active hotspot/QA outline is narrowed to the storefront/corner slice.
+- Greenpoint Av G remains nearby/adjacent transit context only.
+- The final non-readable-sign raster is preserved; malformed readable-sign candidates remain unused.
+- Screenshot QA remains blocked and is not claimed as passed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject MVP-22C polish.
+- Batu must decide whether screenshot QA must be recovered in another environment before MVP-29 QA/demo freeze.
+- Any direct `in front of Grillpoint` subway-entrance claim remains blocked until stronger field/photo evidence supports it and Batu approves the claim.
+- MVP-29 QA/demo freeze remains unopened.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-22C review and blocks MVP-29 QA/demo freeze until Batu opens a later task.
+
+### 2026-05-31 - MVP-22 Stage B Raster-First Vertical Slice
+
+Status:
+- Complete for Batu review; screenshot QA blocked.
+
+Scope:
+- Open and execute MVP-22 Stage B after Batu approved the prepared brief.
+- Generate one review-only raster-first NW Grillpoint / Greenpoint Ave G vertical-slice plate.
+- Integrate the raster plate into the existing interaction shell.
+- Use one factual `Grillpoint Deli` card with source URL, address, category, last verified date, and unofficial-map disclaimer.
+- Treat Greenpoint Ave G only as nearby/adjacent transit context.
+- Avoid app expansion to NE/SE/SW corners, code-native storefront/sign/facade/building/road/prop/texture art as primary world surface, exact facade/sign/address/station claims, live data, scraping, backend, CMS, analytics, deployment, CI, broad map systems, staging, and commit.
+
+Files changed:
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md`
+- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/generated/mvp-22-grillpoint-real-corner-slice.png`
+- `src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png`
+- `src/mvpPlaceData.js`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, visual artifact standards, and Stage B brief docs read.
+- Approved NW reference and II-A / II-B paths checked; parked NE/SE/SW references excluded.
+- Generated raster visually inspected.
+- First readable-sign raster candidates rejected because they introduced text/address issues.
+- Final raster uses a non-readable deli sign cue and keeps the factual `Grillpoint Deli` label in the app card.
+- `npm run build`
+- `curl -I http://127.0.0.1:5173/`
+- Browser screenshot QA attempted but blocked: in-app browser route unavailable and local Playwright not installed.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created and integrated `mvp-22-grillpoint-real-corner-slice.png`.
+- App primary world surface remains raster-first.
+- App active target set is one `Grillpoint Deli` card for the NW Stage B slice.
+- Factual card copy uses `Grillpoint Deli`, `Deli / food retail`, `903 Manhattan Ave, Brooklyn, NY 11222`, Restaurantji source URL, MTA supporting URLs, `lastVerified: 2026-05-30`, and the unofficial-map disclaimer.
+- Greenpoint Ave G remains nearby/adjacent transit context only.
+- No exact sign, exact facade, exact address placement, exact storefront frontage/order, exact station geometry, production asset, public-release, live data, scraping, backend, CMS, analytics, deployment, CI, or broad map system was introduced.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Stage B visual/card integration.
+- Batu must decide whether screenshot QA must be rerun in a working browser environment before any QA/demo freeze.
+- Batu must decide whether the non-readable raster sign cue is acceptable or whether another raster pass is needed.
+- Any direct `in front of Grillpoint` subway-entrance claim remains blocked until stronger field/photo evidence supports it and Batu approves the claim.
+- Generic QA/demo freeze remains unopened.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-22 Stage B review and blocks QA/demo freeze until Batu opens a later task.
 
 ### 2026-05-30 - MVP-22 Stage A Approval / Stage B Brief
 
