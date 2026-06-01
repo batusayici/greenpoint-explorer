@@ -55,14 +55,61 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2B Manifest-Driven Scene Foundation is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2C Manifest QA Inspector is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2B manifest-driven scene foundation. Raster revisions, broader app refactor, ingestion scripts, generated scene data beyond the current review manifest, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2C manifest QA inspector. Raster revisions, broader app refactor, ingestion scripts, generated scene data beyond the current review manifest, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2C Manifest QA Inspector
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Add a lightweight review-only in-app manifest QA/debug inspector for the current MVP slice.
+- Surface selected-target provenance, confidence, manual overrides, missing-data fields, ambiguity flags, and QA notes from the already-loaded manifest path.
+- Preserve existing cards, selected state, hover/target affordances, pan/zoom, QA outlines, and review UI behavior.
+- Do not add ingestion, new places, raster/art generation, package/tooling changes, exact-geometry claims, or broad refactors.
+
+Files changed:
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/review-screenshots/phase-2c-manifest-qa-inspector/default-scene.jpg`
+- `docs/review-screenshots/phase-2c-manifest-qa-inspector/selected-qa-provenance.jpg`
+- `docs/review-screenshots/phase-2c-manifest-qa-inspector/selected-qa-missing-manual.jpg`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- Browser preview at `http://127.0.0.1:5173/`
+- Default scene screenshot
+- Selected Grillpoint card with manifest QA/provenance visible
+- Selected Grillpoint card with manual override and missing/ambiguous fields visible
+- `git diff --check`
+- Active app/data legacy JPEG-extension reference check.
+- Intentional-file staging review.
+
+Outcome:
+- The manifest adapter now exposes scene-level and per-target QA data without duplicating the manifest parser in the UI.
+- The selected-card inspector shows manifest object id, scene/place status, confidence, scene point, corner/context, address geometry gaps, storefront status, reviewed source rows, related manual overrides, missing data, ambiguity, blocked claims, unprovenanced-claim count, hidden-fix count, and manifest verdict.
+- The inspector remains review-only and subordinate to the current card UI; it opens with the existing QA mode.
+- No manifest source data, app place set, raster asset, package files, lockfiles, or production claims were changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2C QA inspector.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source ingestion, and broader debug/provenance tooling remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2C manifest QA inspector.
+- If accepted, Batu may open a later bounded Phase 2 task for normalized source-record work, source ingestion spike work, geometry mapping, QA refinement, or screenshot regression coverage.
 
 ### 2026-06-01 - Phase 2B Manifest-Driven Scene Foundation
 

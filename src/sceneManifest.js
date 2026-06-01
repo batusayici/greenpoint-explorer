@@ -23,8 +23,11 @@ export function loadMvpSceneFromManifest(manifest, assetSrcById) {
       },
     ]),
   );
+  const manifestIndexes = buildManifestIndexes(validatedManifest);
 
   return {
+    manifestId: validatedManifest.sceneId,
+    manifestVersion: validatedManifest.schemaVersion,
     title: validatedManifest.app.title,
     note: validatedManifest.app.note,
     size: validatedManifest.scene.transform.sceneSize,
@@ -38,14 +41,149 @@ export function loadMvpSceneFromManifest(manifest, assetSrcById) {
       sourcePath: primaryAsset.sourcePath,
     },
     sourceRefs,
+    manifestQA: buildSceneQA(validatedManifest),
     targets: validatedManifest.scene.objects.map((object) => ({
       ...object.appTarget,
       manifestObjectId: object.id,
       manifestPlaceId: object.placeId,
       manifestAnchorId: object.anchorId,
       claimStatus: object.claimStatus,
+      manifestQA: buildTargetQA(object, validatedManifest, manifestIndexes),
     })),
   };
+}
+
+function buildManifestIndexes(manifest) {
+  return {
+    sourcesById: indexById(manifest.sources),
+    placesById: indexById(manifest.places),
+    businessesById: indexById(manifest.businesses),
+    addressesById: indexById(manifest.addresses),
+    storefrontsById: indexById(manifest.storefronts),
+    anchorsById: indexById(manifest.scene.anchors),
+    cornersById: indexById(manifest.corners ?? manifest.scene.corners ?? []),
+  };
+}
+
+function buildSceneQA(manifest) {
+  return {
+    manifestId: manifest.sceneId,
+    blockId: manifest.blockId,
+    status: manifest.status,
+    generatedAt: manifest.generatedAt,
+    transform: manifest.scene.transform,
+    qa: manifest.qa,
+    overrideCount: manifest.overrides.length,
+  };
+}
+
+function buildTargetQA(object, manifest, indexes) {
+  const place = indexes.placesById.get(object.placeId);
+  const business = place?.businessId ? indexes.businessesById.get(place.businessId) : null;
+  const addressRecords = (place?.addressIds ?? [])
+    .map((id) => indexes.addressesById.get(id))
+    .filter(Boolean);
+  const storefrontRecords = (place?.storefrontIds ?? [])
+    .map((id) => indexes.storefrontsById.get(id))
+    .filter(Boolean);
+  const anchor = indexes.anchorsById.get(object.anchorId);
+  const corner = anchor?.cornerId ? indexes.cornersById.get(anchor.cornerId) : null;
+  const relatedIds = new Set([
+    object.id,
+    object.placeId,
+    object.anchorId,
+    place?.businessId,
+    ...(place?.addressIds ?? []),
+    ...(place?.storefrontIds ?? []),
+  ].filter(Boolean));
+  const relatedOverrides = manifest.overrides.filter((override) => (
+    override.affectedIds.some((id) => relatedIds.has(id))
+  ));
+  const sourceIds = new Set([
+    ...(object.sourceIds ?? []),
+    ...(place?.sourceIds ?? []),
+    ...(business?.officialSourceIds ?? []),
+    ...(business?.secondarySourceIds ?? []),
+    ...(anchor?.sourceIds ?? []),
+    ...addressRecords.flatMap((record) => record.sourceIds ?? []),
+    ...storefrontRecords.flatMap((record) => record.sourceIds ?? []),
+  ]);
+  const sources = [...sourceIds].map((id) => indexes.sourcesById.get(id)).filter(Boolean);
+
+  return {
+    object: {
+      id: object.id,
+      type: object.objectType,
+      claimStatus: object.claimStatus,
+    },
+    place: place ? {
+      id: place.id,
+      claimStatus: place.claimStatus,
+      cardEligibility: place.cardEligibility,
+      confidence: place.confidence,
+      notes: place.notes,
+    } : null,
+    business: business ? {
+      id: business.id,
+      status: business.status,
+      statusConfidence: business.statusConfidence,
+      lastVerified: business.lastVerified,
+      notes: business.notes,
+    } : null,
+    addresses: addressRecords.map((address) => ({
+      id: address.id,
+      normalizedAddress: address.normalizedAddress,
+      confidence: address.confidence,
+      hasWgs84: Boolean(address.wgs84),
+      hasLocalPoint: Boolean(address.localPoint),
+    })),
+    storefronts: storefrontRecords.map((storefront) => ({
+      id: storefront.id,
+      frontageStatus: storefront.frontageStatus,
+      entranceStatus: storefront.entranceStatus,
+      confidence: storefront.confidence,
+      notes: storefront.notes,
+    })),
+    sceneAnchor: anchor ? {
+      id: anchor.id,
+      cornerId: anchor.cornerId,
+      cornerLabel: corner?.label ?? anchor.cornerId,
+      claimStatus: anchor.claimStatus,
+      confidence: anchor.confidence,
+      scenePoint: anchor.scenePoint,
+      notes: anchor.notes,
+    } : null,
+    sources: sources.map((source) => ({
+      id: source.id,
+      label: source.label,
+      sourceType: source.sourceType,
+      usageStatus: source.usageStatus,
+      reviewedOn: source.reviewedOn,
+      supported: source.claimTypesSupported,
+      notSupported: source.claimTypesNotSupported,
+      confidenceNotes: source.confidenceNotes,
+    })),
+    overrides: relatedOverrides.map((override) => ({
+      id: override.id,
+      category: override.category,
+      reason: override.reason,
+      reversible: override.reversible,
+      affectedIds: override.affectedIds,
+    })),
+    sceneQA: {
+      overrideCountsByCategory: manifest.qa.overrideCountsByCategory,
+      missingData: manifest.qa.missingData,
+      ambiguity: manifest.qa.ambiguity,
+      blockedClaims: manifest.qa.blockedClaims,
+      verdict: manifest.qa.verdict,
+      unprovenancedRealWorldClaims: manifest.qa.unprovenancedRealWorldClaims,
+      hiddenManualFixes: manifest.qa.hiddenManualFixes,
+    },
+  };
+}
+
+function indexById(records) {
+  return new Map(records.map((record) => [record.id, record]));
 }
 
 export function validateSceneManifest(manifest) {

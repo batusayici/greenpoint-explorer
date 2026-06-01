@@ -546,6 +546,126 @@ h1 {
   outline: none;
 }
 
+.qa-inspector {
+  margin-top: 12px;
+  border: 1px solid rgba(32, 30, 27, 0.22);
+  border-radius: 4px;
+  background: rgba(31, 35, 32, 0.08);
+}
+
+.qa-inspector summary {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 9px;
+  color: #24211d;
+  cursor: pointer;
+  font-size: 0.62rem;
+  font-weight: 880;
+  letter-spacing: 0.06em;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.qa-inspector summary::-webkit-details-marker {
+  display: none;
+}
+
+.qa-inspector summary::before {
+  color: rgba(32, 30, 27, 0.56);
+  content: "+";
+  font-weight: 900;
+}
+
+.qa-inspector[open] summary::before {
+  content: "-";
+}
+
+.qa-inspector summary small {
+  max-width: 42%;
+  overflow: hidden;
+  color: rgba(32, 30, 27, 0.58);
+  font-size: 0.54rem;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qa-grid {
+  display: grid;
+  gap: 8px;
+  padding: 0 9px 10px;
+}
+
+.qa-facts {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+
+.qa-facts div {
+  display: grid;
+  grid-template-columns: minmax(88px, 0.36fr) 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.qa-facts dt,
+.qa-section h3 {
+  color: rgba(32, 30, 27, 0.58);
+  font-size: 0.53rem;
+  font-weight: 880;
+  letter-spacing: 0.06em;
+  line-height: 1.16;
+  text-transform: uppercase;
+}
+
+.qa-facts dd {
+  margin: 0;
+  color: #2e2924;
+  font-size: 0.64rem;
+  font-weight: 760;
+  line-height: 1.25;
+}
+
+.qa-section {
+  display: grid;
+  gap: 5px;
+  padding: 8px;
+  border: 1px solid rgba(32, 30, 27, 0.14);
+  border-radius: 4px;
+  background: rgba(255, 250, 237, 0.28);
+}
+
+.qa-section h3 {
+  margin: 0 0 1px;
+}
+
+.qa-section p,
+.qa-list {
+  margin: 0;
+  color: #302b24;
+  font-size: 0.62rem;
+  font-weight: 720;
+  line-height: 1.25;
+}
+
+.qa-section strong {
+  font-weight: 860;
+}
+
+.qa-warning {
+  border-color: rgba(169, 79, 56, 0.24);
+  background: rgba(169, 79, 56, 0.08);
+}
+
+.qa-list {
+  display: grid;
+  gap: 3px;
+  padding-left: 14px;
+}
+
 .card-disclaimer {
   display: block;
   margin: 12px 0 0;

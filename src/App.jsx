@@ -10,6 +10,7 @@ export default function App() {
   const selectedTarget = mvpScene.targets.find((target) => target.id === selectedTargetId);
   const selectedSources = selectedTarget?.sourceRefs.map((sourceId) => mvpScene.sourceRefs[sourceId]).filter(Boolean) ?? [];
   const selectedEvidenceRows = selectedTarget?.evidenceStatus ?? [];
+  const selectedQA = selectedTarget?.manifestQA;
 
   function sendCameraCommand(type) {
     setCameraCommand({ type, nonce: Date.now() });
@@ -76,7 +77,7 @@ export default function App() {
             <button
               type="button"
               className="review-toggle"
-              aria-label={isReviewMode ? "Hide review hotspot outlines" : "Show review hotspot outlines"}
+              aria-label={isReviewMode ? "Hide review hotspot outlines and manifest QA" : "Show review hotspot outlines and manifest QA"}
               aria-pressed={isReviewMode}
               onClick={() => setIsReviewMode((value) => !value)}
             >
@@ -119,6 +120,9 @@ export default function App() {
                   ))}
                 </dl>
               ) : null}
+              {selectedQA ? (
+                <ManifestQAInspector qa={selectedQA} isOpen={isReviewMode} />
+              ) : null}
               {selectedTarget.address ? (
                 <dl className="card-metadata" aria-label="Source and review metadata">
                   <div>
@@ -157,4 +161,136 @@ export default function App() {
       </section>
     </main>
   );
+}
+
+function ManifestQAInspector({ qa, isOpen }) {
+  const primarySources = qa.sources.slice(0, 4);
+  const missingData = qa.sceneQA.missingData.slice(0, 3);
+  const ambiguity = qa.sceneQA.ambiguity.slice(0, 3);
+  const blockedClaims = qa.sceneQA.blockedClaims.slice(0, 3);
+
+  return (
+    <details className="qa-inspector" open={isOpen}>
+      <summary>
+        <span>Manifest QA</span>
+        <small>{qa.place?.claimStatus ?? qa.object.claimStatus}</small>
+      </summary>
+      <div className="qa-grid" aria-label="Manifest QA details">
+        <dl className="qa-facts">
+          <div>
+            <dt>Manifest object</dt>
+            <dd>{qa.object.id}</dd>
+          </div>
+          <div>
+            <dt>Scene status</dt>
+            <dd>{qa.sceneAnchor?.claimStatus ?? qa.object.claimStatus}</dd>
+          </div>
+          <div>
+            <dt>Place confidence</dt>
+            <dd>{formatConfidence(qa.place?.confidence)}</dd>
+          </div>
+          {qa.business ? (
+            <div>
+              <dt>Business status</dt>
+              <dd>{qa.business.status} / {formatConfidence(qa.business.statusConfidence)}</dd>
+            </div>
+          ) : null}
+          <div>
+            <dt>Scene point</dt>
+            <dd>{formatScenePoint(qa.sceneAnchor?.scenePoint)}</dd>
+          </div>
+          <div>
+            <dt>Corner / context</dt>
+            <dd>{qa.sceneAnchor?.cornerLabel ?? "Unresolved"}</dd>
+          </div>
+        </dl>
+
+        {qa.addresses.length ? (
+          <section className="qa-section">
+            <h3>Address / Geometry</h3>
+            {qa.addresses.map((address) => (
+              <p key={address.id}>
+                {address.normalizedAddress}
+                {" | "}
+                WGS84 {address.hasWgs84 ? "present" : "missing"}
+                {" | "}
+                local point {address.hasLocalPoint ? "present" : "missing"}
+              </p>
+            ))}
+          </section>
+        ) : null}
+
+        {qa.storefronts.length ? (
+          <section className="qa-section">
+            <h3>Storefront</h3>
+            {qa.storefronts.map((storefront) => (
+              <p key={storefront.id}>
+                frontage {storefront.frontageStatus}; entrance {storefront.entranceStatus}. {storefront.notes}
+              </p>
+            ))}
+          </section>
+        ) : null}
+
+        <section className="qa-section">
+          <h3>Sources</h3>
+          {primarySources.map((source) => (
+            <p key={source.id}>
+              <strong>{source.label}</strong>
+              {" | "}
+              {source.sourceType}
+              {" | "}
+              {source.usageStatus}
+              {" | reviewed "}
+              {source.reviewedOn}
+            </p>
+          ))}
+        </section>
+
+        {qa.overrides.length ? (
+          <section className="qa-section qa-warning">
+            <h3>Manual Overrides</h3>
+            {qa.overrides.map((override) => (
+              <p key={override.id}>
+                {override.category}: {override.reason}
+              </p>
+            ))}
+          </section>
+        ) : null}
+
+        <section className="qa-section">
+          <h3>Missing / Ambiguous</h3>
+          <QAList items={missingData} />
+          <QAList items={ambiguity} />
+        </section>
+
+        <section className="qa-section">
+          <h3>Blocked Claims</h3>
+          <QAList items={blockedClaims} />
+          <p>
+            unprovenanced claims {qa.sceneQA.unprovenancedRealWorldClaims}; hidden manual fixes {qa.sceneQA.hiddenManualFixes}; verdict {qa.sceneQA.verdict}
+          </p>
+        </section>
+      </div>
+    </details>
+  );
+}
+
+function QAList({ items }) {
+  return (
+    <ul className="qa-list">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+
+function formatConfidence(confidence) {
+  if (!confidence) return "unknown";
+  return `${confidence.value}: ${confidence.rationale}`;
+}
+
+function formatScenePoint(point) {
+  if (!point) return "unresolved";
+  return `${point.x}, ${point.y} (${point.layer ?? "scene"})`;
 }
