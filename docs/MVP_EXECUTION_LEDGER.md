@@ -55,14 +55,58 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2A Docs-Only Data-Driven Scene Architecture Setup is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2B Manifest-Driven Scene Foundation is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2A planning packet. Phase 2B, MVP-29E implementation changes, raster revisions, app refactor, ingestion scripts, generated scene data, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2B manifest-driven scene foundation. Raster revisions, broader app refactor, ingestion scripts, generated scene data beyond the current review manifest, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2B Manifest-Driven Scene Foundation
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Create the smallest useful Phase 2 vertical slice: one review-only scene manifest for Manhattan Ave / Greenpoint Ave, a validation/adapter path, and minimal app integration that preserves the current MVP-29E interaction behavior.
+- Do not generate or revise raster art, create ingestion scripts, introduce package/tooling changes, build a full data pipeline, expand beyond the current MVP slice, or make exact geometry/production claims.
+
+Files changed:
+- `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+- `src/sceneManifest.js`
+- `src/mvpPlaceData.js`
+- `docs/review-screenshots/phase-2b-manifest-driven-scene-foundation/desktop-overview.jpg`
+- `docs/review-screenshots/phase-2b-manifest-driven-scene-foundation/desktop-selected-grillpoint-card.jpg`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- Browser preview at `http://127.0.0.1:5173/`
+- Desktop overview screenshot
+- Desktop selected Grillpoint card screenshot
+- `git diff --check`
+- Active app/data legacy JPEG-extension reference check.
+- Intentional-file staging review.
+
+Outcome:
+- The current MVP scene can now be loaded from a manifest-backed path instead of a single hand-coded scene data module.
+- The manifest records source/provenance metadata, initial place/business/address/storefront/building/parcel/transit/corner records, scene anchors/objects/assets, manual overrides, QA/missing-data/ambiguity reports, and review-only app target data.
+- The existing React/Pixi renderer, raster asset, cards, selected state, hover/target affordances, pan/zoom, and review UI behavior are preserved.
+- Active app/data legacy JPEG-extension reference paths were removed from the manifest-backed path; normalized JPG paths are used where local reference paths are listed.
+- Browser smoke screenshots were captured for overview and selected-card states; this does not open full MVP-29G screenshot QA.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2B manifest boundary and adapter approach.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source ingestion, and debug/provenance UI remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2B manifest-driven scene foundation.
+- If accepted, Batu may open a later bounded Phase 2 task for provenance/debug inspection, normalized source-record work, screenshot regression evidence, or ingestion spike work.
 
 ### 2026-06-01 - Phase 2A Planning / Architecture Setup
 

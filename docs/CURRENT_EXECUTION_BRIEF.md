@@ -1,115 +1,74 @@
-# Current Execution Brief - Phase 2A Planning Packet Review Hold
+# Current Execution Brief - Phase 2B Manifest-Driven Scene Foundation Review Hold
 
-Status: Phase 2A Docs-Only Data-Driven Scene Architecture Setup is complete for Batu review. MVP-29E remains complete for Batu review; this brief does not reopen MVP-29E implementation, raster revision, app integration, full screenshot QA, QA/demo freeze, or production work.
+Status: Phase 2B Manifest-Driven Scene Foundation is complete for Batu review. This brief records the completed vertical slice and does not open Phase 2C, ingestion scripts, raster/visual revisions, full provenance/debug UI, full screenshot QA, production data, production assets, or broader Greenpoint coverage.
 
-Owner boundary: Batu owns acceptance, revision, or rejection of the MVP-29E raster/app output; acceptance, revision, or rejection of the Phase 2A planning packet; creative/product/scope approval; public-interface approval; architecture-boundary approval; production/public claims; exact facade/frontage/address/station-geometry decisions; brand/trade-dress decisions; and any later MVP-29G/full QA or demo-freeze gate.
+Owner boundary: Batu owns acceptance, revision, or rejection of the Phase 2B manifest boundary and app-integration approach; creative/product/scope approval; public-interface approval; architecture-boundary approval; exact facade/frontage/address/station-geometry decisions; production/public claims; and any later Phase 2C/2D/2E implementation gates.
 
-Codex must not start Phase 2B, source implementation, app refactor, ingestion scripts, generated scene data, raster/visual revisions, package/tooling changes, public-interface changes, or production architecture unless Batu explicitly opens that next scope.
+## Completed Phase 2B Output
 
-## Purpose
+- Added the first review-only canonical scene manifest for the Manhattan Ave / Greenpoint Ave MVP slice.
+- Added a small manifest validation and adapter path.
+- Wired the existing app data module to load the current MVP scene from the manifest while preserving the existing React/Pixi interaction shell.
+- Kept the current review-only raster asset unchanged.
+- Removed stale active legacy JPEG-extension reference paths from the app/manifest path; normalized active references use JPG paths where local reference paths are listed.
 
-Record completion of the docs-only Phase 2A planning / architecture setup and hold the next task for Batu review.
+## Files Changed
 
-Phase 2A created a planning packet for the next major direction:
+- `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+- `src/sceneManifest.js`
+- `src/mvpPlaceData.js`
+- `docs/review-screenshots/phase-2b-manifest-driven-scene-foundation/desktop-overview.jpg`
+- `docs/review-screenshots/phase-2b-manifest-driven-scene-foundation/desktop-selected-grillpoint-card.jpg`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
 
-- Phase 2 is a data-to-scene architecture proof.
-- Phase 2 succeeds when the existing MVP scene can be represented and eventually regenerated from a traceable scene manifest.
-- LiveXYZ is preferred pending access, but Phase 2 starts open-data-first.
-- Generated truth and manual overrides must remain separate.
+## What Is Now Manifest-Driven
 
-## Completed Phase 2A Output
+- App-facing source records and reviewed source metadata.
+- Initial place, business, address, storefront, building, parcel, transit-context, and corner records for the current MVP slice.
+- Scene-local anchors, objects, target metadata, marker positions, bounds, outline paths, and reviewed card/evidence copy.
+- Review-only raster plate metadata and usage limits.
+- Manual override records for authored scene placement and the SW Dunkin MVP-only visual exception.
+- QA/missing-data/ambiguity/blocked-claim report fields.
 
-- `docs/PHASE_2_PLAN.md`
-- `docs/ARCHITECTURE.md`
-- `docs/SCENE_MANIFEST_SCHEMA.md`
-- `docs/DATA_SOURCES.md`
-- `docs/PROVENANCE_AND_QA.md`
-- `docs/PHASE_3_SCALE_TEST_PLAN.md`
+## What Remains Hardcoded Or Blocked
 
-## What Phase 2A Did
-
-- Defined Phase 2 as the Data-Driven Scene MVP.
-- Defined the architecture flow: source adapters -> normalized source records -> canonical scene manifest -> app rendering layer -> debug/provenance/QA layer.
-- Defined four truth layers: geometry truth, place/business truth, visual-reference truth, and scene truth.
-- Defined the v0.1 scene manifest planning contract.
-- Defined the source hierarchy and source-use warnings.
-- Defined provenance, debug, manual override, and QA requirements.
-- Defined high-level Phase 3 Neighborhood Scale Validation.
-
-## What Phase 2A Did Not Do
-
-- No `src/` edits.
-- No app refactor.
-- No new app components.
-- No ingestion scripts.
-- No generated scene data.
-- No mock data files.
-- No package or lockfile changes.
-- No raster or visual revisions.
-- No generated images.
-- No screenshots.
-- No MVP-29E implementation changes.
-- No production architecture or public-interface approval.
+- The bundled raster image import remains in app code so Vite can package the review-only asset.
+- The React/Pixi renderer, camera behavior, card layout, hover/selected/QA affordances, and review UI remain existing app code.
+- No ingestion adapter, source normalization pipeline, debug inspector, production runtime schema, public data API, or full Greenpoint data pipeline exists.
+- WGS84 coordinates, projected geometry, parcel/tax-lot IDs, building footprints, exact storefront segmentation, exact frontage/order, exact address placement, and exact Greenpoint G station geometry remain unresolved or blocked.
+- No raster generation, art revision, production asset direction, production data claim, deployment, backend, CMS, analytics, accounts, persistence, routing, CI, or broad map coverage is opened.
 
 ## Verification State
 
-Phase 2A verification completed:
+Phase 2B verification completed:
 
+- `npm run build`
+- Browser preview at `http://127.0.0.1:5173/`
+- Desktop overview screenshot
+- Desktop selected Grillpoint card screenshot
 - `git diff --check`
-- `git status --short`
+- Active app/data legacy JPEG-extension reference check.
+- Intentional-file staging review.
 
-No markdown/lint dependency was added.
-
-## MVP-29E Review Hold
-
-MVP-29E remains complete for Batu review with:
-
-- One review-only raster-first Manhattan Ave x Greenpoint Ave four-corner scene.
-- NW Grillpoint Deli, NE McDonald's, SW Dunkin', SE Citizens Bank, and Greenpoint G subway context.
-- Corrective pass completed for hover outline geometry, crosswalk geometry, and Citizens/Dunkin subway placement.
-- Existing app interaction shell preserved.
-- Basic review screenshots captured.
-
-The completed review packet remains:
-
-- `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`
-
-MVP-29E acceptance, revision, rejection, full screenshot QA, and demo-freeze decisions remain Batu-owned and are not resolved by the Phase 2A docs-only planning setup.
-
-## Stop Conditions
-
-Stop and ask Batu to open or revise the brief before:
-
-- Editing `src/` or app source files.
-- Editing raster assets, generated images, screenshots, package files, lockfiles, or MVP-29E implementation files.
-- Creating ingestion scripts, generated scene data, mock data files, app components, or implementation modules.
-- Starting Phase 2B or treating the Phase 2A packet as approved production architecture.
-- Treating the scene manifest planning contract as an implemented public interface.
-- Making production/public-release claims.
-- Treating the MVP-29E raster as production art, approved production asset direction, exact real-world representation, or MVP completion.
+Screenshot evidence was captured under `docs/review-screenshots/phase-2b-manifest-driven-scene-foundation/`. This is a smoke/regression check for the manifest-backed scene load, not a full MVP-29G screenshot QA pass.
 
 ## Next Actual Work
 
 Next recommended state:
 
-- Batu review/acceptance, revision, or rejection of the Phase 2A planning packet.
+- Batu review/acceptance, revision, or rejection of the Phase 2B manifest-driven scene foundation.
 
-If Batu accepts Phase 2A:
+If Batu accepts Phase 2B:
 
-- Batu may open Phase 2B - Canonical Scene Manifest v0.1 as a docs/data-boundary task.
+- Batu may open a later bounded Phase 2 task for provenance/debug inspection, normalized source-record work, screenshot regression evidence, or ingestion spike work.
 
-If Batu requests revision:
+## Stop Conditions
 
-- The next brief must name the specific Phase 2 planning, architecture, schema, source, provenance/QA, Phase 3 scale-test, roadmap, or ledger changes allowed.
+Stop and ask Batu to open or revise the brief before:
 
-## Still Blocked
-
-- Phase 2B until Batu opens it.
-- Source implementation, app refactor, ingestion scripts, generated scene data, mock data files, public runtime schemas, package/tooling changes, or production architecture.
-- MVP-29E raster/app revision unless Batu opens a specific revision scope.
-- MVP-29G full screenshot QA unless Batu opens it.
-- MVP-30 QA/demo freeze before Batu accepts the four-corner raster/app output and opens any required QA recovery.
-- Final MVP completion claim.
-- Production visual assets, production asset direction, or production asset pipeline.
-- Exact facade, exact frontage/order, exact address placement, exact branch/ATM placement, exact station geometry, ratings, reviews, `open now`, endorsement, partnership, official collaboration, or public-release claims.
-- Live data, scraping, backend, CMS, analytics, deployment, CI, broad map coverage, accounts, persistence, or routing.
+- Changing the manifest boundary beyond review-only Phase 2B fields.
+- Adding ingestion scripts, source adapters, generated scene data, debug inspector UI, public runtime schemas, package/tooling changes, or production architecture.
+- Editing raster assets, generating images, revising visual direction, adding screenshots, or opening full QA/demo freeze.
+- Treating the manifest as production data, a public API, exact geometry, exact address/frontage/station placement, or production asset direction.
