@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "local-source-evidence-raw.v0.1",
+  "fixtureId": "manhattan-greenpoint-ave-phase-2e-grillpoint-source-evidence",
+  "status": "review-only-ingestion-spike",
+  "reviewedOn": "2026-06-01",
+  "notes": "Local raw-input fixture for Phase 2E. This is an offline sample for converter validation only; it is not scraped, fetched, or used by the app runtime.",
+  "records": [
+    {
+      "id": "evidence-grillpoint-identity-address-ingested",
+      "targetId": "grillpoint-deli",
+      "placeId": "place-grillpoint-deli",
+      "sourceRecordId": "restaurantji-grillpoint",
+      "source": {
+        "type": "reviewed-secondary-directory-page",
+        "label": "Restaurantji page for Grillpoint Deli",
+        "url": "https://www.restaurantji.com/ny/brooklyn/grillpoint-deli-/"
+      },
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-01",
+      "usageStatus": "review-only-claim-support",
+      "confidence": {
+        "value": "medium",
+        "rationale": "Supports review-card identity, category, and address context; does not support exact frontage, facade, or entrance placement."
+      },
+      "claims": [
+        {
+          "id": "claim-grillpoint-display-name-ingested",
+          "manifestPath": "places.place-grillpoint-deli.displayName",
+          "type": "business-identity",
+          "value": "Grillpoint Deli",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium",
+          "notes": "Used only for review-card identity; not a production business-record claim."
+        },
+        {
+          "id": "claim-grillpoint-address-context-ingested",
+          "manifestPath": "addresses.address-grillpoint-deli.normalizedAddress",
+          "type": "address-context",
+          "value": "903 Manhattan Ave, Brooklyn, NY 11222",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium",
+          "notes": "Supports address text in the selected card, not exact raster address placement."
+        }
+      ],
+      "qaNotes": [
+        "Secondary source remains restricted to review-only factual card copy.",
+        "No ratings, reviews, hours, delivery, ownership, popularity, quality, or promotional claims are used."
+      ],
+      "remainingGaps": [
+        "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate.",
+        "Parcel/tax-lot and building-footprint geometry remain unresolved for this MVP slice."
+      ]
+    }
+  ]
+}

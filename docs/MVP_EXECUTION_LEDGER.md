@@ -55,14 +55,57 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2D Source Evidence Fixture is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2E Source Evidence Ingestion Spike is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2D source-evidence fixture and QA display. Raster revisions, broader app refactor, ingestion scripts, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2E raw-input shape, converter behavior, and partial-output boundary. Raster revisions, broader app refactor, replacing the app-loaded fixture with generated output, merge behavior, expanded ingestion coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2E Source Evidence Ingestion Spike
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Add the smallest useful local-only ingestion spike for one evidence fixture.
+- Convert one local raw Grillpoint input fixture into the existing `source-evidence-fixture.v0.1` JSON shape.
+- Keep the Phase 2D hand-authored fixture valid and unchanged.
+- Do not scrape, call external APIs, add packages, modify package/lockfiles, generate raster art, expand places, or replace app-loaded data.
+
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `src/data/source-evidence/raw/grillpoint.phase-2e.raw.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output /tmp/grillpoint.phase-2e.generated.json`
+- Deliberate missing-field failure for raw `source.url`.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The repo now has a local converter that reads a raw source-evidence fixture and writes the existing source-evidence JSON shape.
+- The converter validates required raw evidence fields and checks converted target/place/source IDs against the current manifest.
+- The generated output remains a review-only partial artifact and is not imported by app code.
+- The existing Phase 2D hand-authored fixture remains valid and unchanged.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2E raw-input shape, converter behavior, and partial-output boundary.
+- Whether converted records should later be merged into a complete review fixture, whether more local raw fixtures should be added, and whether any raw-input shape becomes durable remain blocked pending Batu approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2E source evidence ingestion spike.
+- If accepted, Batu may open a later bounded Phase 2 task for merging converted local records into a complete review fixture, expanding local raw-input fixtures, refining source-record normalization, or adding focused fixture regression checks.
 
 ### 2026-06-01 - Phase 2D Source Evidence Fixture
 
