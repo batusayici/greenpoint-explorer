@@ -222,7 +222,7 @@ Primary and corroborating source URLs reviewed or carried forward:
   - MTA G line text map: https://www.mta.info/maps/subway-line-maps/g-line
 - Candidate entrance/cue locations around Manhattan Ave x Greenpoint Ave:
   - MTA G line text map lists Greenpoint Av station entrance/exit locations as Manhattan Ave and India St, and Manhattan Ave and Greenpoint Ave.
-  - Existing field-photo candidates include `northwest-subwayA.jpeg`, `southeast-subwayB.jpg`, `southwest-subway-wide.jpeg`, and `southwest-subwayC.jpeg`.
+  - Existing field-photo candidates include `northwest-subwayA.jpg`, `southeast-subwayB.jpg`, `southwest-subway-wide.jpeg`, and `southwest-subwayC.jpeg`.
 - Verified, approximate, symbolic, context-only, omitted, or blocked:
   - Station context at Manhattan Ave and Greenpoint Ave: `verified` at station-area level from MTA text map.
   - Exact stair/elevator/entrance placement by corner: `blocked` until official entrance data and/or approved field-photo mapping supports it.

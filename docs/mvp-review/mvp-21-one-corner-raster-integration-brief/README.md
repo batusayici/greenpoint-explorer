@@ -80,9 +80,9 @@ Product-facing treatment must avoid unsupported exact claims. If a future task a
 Allowed NW reference files for MVP-21 planning, pending Batu implementation approval:
 
 - `docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg`
-- `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpeg`
-- `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpeg`
-- `docs/mvp-reference-images/northwest-subwayA.jpeg`
+- `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg`
+- `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg`
+- `docs/mvp-reference-images/northwest-subwayA.jpg`
 
 Allowed use:
 

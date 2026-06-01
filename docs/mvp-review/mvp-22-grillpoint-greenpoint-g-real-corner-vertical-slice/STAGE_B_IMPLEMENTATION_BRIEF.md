@@ -38,9 +38,9 @@ Raster status:
 Approved Stage B input/reference paths:
 
 - `docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg`
-- `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpeg`
-- `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpeg`
-- `docs/mvp-reference-images/northwest-subwayA.jpeg`
+- `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg`
+- `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg`
+- `docs/mvp-reference-images/northwest-subwayA.jpg`
 - `docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-A-ui-world-integration.png`
 - `docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-B-place-card-marker-hover-state.png`
 
@@ -83,9 +83,9 @@ Proposed Stage B card copy:
   - `https://www.mta.info/accessibility/stations`
 - Internal/source reference labels:
   - `Batu-supplied NW field photo: northwest-grillpoint-deli-closeup.jpeg`
-  - `Batu-supplied NW field photo: northwest-grillpoint-deli-wide.jpeg`
-  - `Batu-supplied NW field photo: northwest-grillpoint-deli-facade.jpeg`
-  - `Batu-supplied NW field photo: northwest-subwayA.jpeg`
+  - `Batu-supplied NW field photo: northwest-grillpoint-deli-wide.jpg`
+  - `Batu-supplied NW field photo: northwest-grillpoint-deli-facade.jpg`
+  - `Batu-supplied NW field photo: northwest-subwayA.jpg`
 - Last verified: `2026-05-30`
 - Disclaimer: `Unofficial authored prototype. This card is not an official map, directory, real-time business listing, or exact facade/address/station-geometry claim.`
 

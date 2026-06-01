@@ -57,9 +57,9 @@ The review distinguishes:
 | File | Candidate | Corner | What the image appears to support | Inspection status |
 | --- | --- | --- | --- | --- |
 | `docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg` | Grillpoint Deli / Greenpoint G subway context | NW | Grillpoint sign band, corner storefront, building massing, adjacent storefront order, Greenpoint Ave station cue nearby, crosswalk/corner context. | Inspected; JPEG with iPhone 15 Pro EXIF. |
-| `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpeg` | Grillpoint Deli | NW | Filename suggests facade/storefront support. | HEIF-wrapped `.jpeg`; unreadable in this environment, so not relied on for the MVP-29C visual verdict. |
-| `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpeg` | Grillpoint Deli / corner context | NW | Filename suggests wide corner/storefront/context support. | HEIF-wrapped `.jpeg`; unreadable in this environment, so not relied on for the MVP-29C visual verdict. |
-| `docs/mvp-reference-images/northwest-subwayA.jpeg` | Greenpoint G subway | NW / station context | Filename suggests station cue near NW/Greenpoint Ave context. | HEIF-wrapped `.jpeg`; unreadable in this environment, so not relied on for exact NW subway cue placement. |
+| `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg` | Grillpoint Deli | NW | Filename suggests facade/storefront support. | Later normalized from HEIF-wrapped `.jpeg` to readable `.jpg`; original MVP-29C visual verdict did not rely on it. |
+| `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg` | Grillpoint Deli / corner context | NW | Filename suggests wide corner/storefront/context support. | Later normalized from HEIF-wrapped `.jpeg` to readable `.jpg`; original MVP-29C visual verdict did not rely on it. |
+| `docs/mvp-reference-images/northwest-subwayA.jpg` | Greenpoint G subway | NW / station context | Filename suggests station cue near NW/Greenpoint Ave context. | Later normalized from HEIF-wrapped `.jpeg` to readable `.jpg`; original MVP-29C visual verdict did not rely on exact NW subway cue placement. |
 | `docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg` | McDonald's | NE | McDonald's sign/arches, facade panels, storefront entry, corner edge, crosswalk/curb context, neighboring mural/building context. | Inspected; JPEG with iPhone 15 Pro EXIF. |
 | `docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg` | McDonald's | NE | Sign, facade band, window order, entry zone, corner edge, crosswalk/street relationship. | Inspected; readable JPG export. Supersedes deleted/uninspectable `.jpeg` version. |
 | `docs/mvp-reference-images/northeast-mcdonalds-wide.jpg` | McDonald's / NE context | NE | Wide NE massing, building relationship, mural/sign context, corner relationship, street/crosswalk context. | Inspected; readable JPG export. Supersedes deleted/uninspectable `.jpeg` version. |
@@ -78,7 +78,7 @@ The review distinguishes:
 | Reference group | Source/provenance | User-owned or approved? | Allowed for review/demo-scale visual translation? | Blocked for production use? | Decoding/inspection issue |
 | --- | --- | --- | --- | --- | --- |
 | NW Grillpoint inspected JPEG | User-supplied field photo evidence carried forward from MVP-19/MVP-22 and local reference folder. | Likely user-owned/approved; provenance should remain recorded in later packets. | Yes for review/demo planning, with no exact facade/tracing/texture claim. | Yes. Production use remains blocked. | None for inspected JPEG. |
-| NW Grillpoint HEIF-wrapped files | Local reference folder, likely user-supplied field-photo set. | Needs provenance confirmation before implementation. | No for this pass; use only after JPG re-export or environment support. | Yes. Production use remains blocked. | HEIF content stored as `.jpeg`; not visually inspectable here. |
+| NW Grillpoint formerly HEIF-wrapped files | Local reference folder, likely user-supplied field-photo set. | Needs provenance confirmation before implementation. | No for this pass; later normalized to readable JPG after the original MVP-29C verdict. | Yes. Production use remains blocked. | Original MVP-29C pass did not rely on these for exact NW facade/frontage/cue claims. |
 | NE McDonald's inspected JPEG | User-supplied field photo evidence in local reference folder. | Likely user-owned/approved; provenance should remain recorded in later packets. | Yes for review/demo planning, with brand/trade-dress limits. | Yes. Production use remains blocked. | None for inspected JPEG. |
 | NE McDonald's JPG re-exports | Local reference folder, likely user-supplied field-photo set. | Needs provenance confirmation before implementation. | Yes for MVP-29D review/demo planning with brand/trade-dress limits. | Yes. Production use remains blocked. | No decoding issue for the recorded JPG exports. |
 | SW Dunkin / SW subway JPEG files | Appear to be Google/Street View-derived; visible Google watermark on inspected images. | Not generally approved. | Yes only under `MVP-exception-allowed` stylized/non-production handling for the SW Dunkin reference gap. | Yes. Production use remains blocked. | Viewable; exception does not allow extraction, tracing, texture reuse, training input, generation input, stored facade reuse, or exact trade-dress reproduction. |
@@ -151,7 +151,7 @@ Notes:
 Available station/subway visual references:
 
 - `docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg`
-- `docs/mvp-reference-images/northwest-subwayA.jpeg`
+- `docs/mvp-reference-images/northwest-subwayA.jpg`
 - `docs/mvp-reference-images/southeast-citizens-facadeA.jpeg`
 - `docs/mvp-reference-images/southeast-subwayB.jpg`
 - `docs/mvp-reference-images/southwest-subway-wide.jpeg`
@@ -160,7 +160,7 @@ Available station/subway visual references:
 Current placement read:
 
 - SE supplied/approved photos clearly show the station stair/rail cue adjacent to the Citizens corner context and verify enough corner/orientation relationship for MVP-29D exact cue placement planning at review/demo scale.
-- NW readable Grillpoint closeup shows a nearby station cue, but direct `in front of Grillpoint` placement and exact NW station geometry remain blocked. `northwest-subwayA.jpeg` is HEIF-wrapped and not inspectable here.
+- NW readable Grillpoint closeup shows a nearby station cue, but direct `in front of Grillpoint` placement and exact NW station geometry remain blocked. `northwest-subwayA.jpg` was formerly HEIF-wrapped and was not relied on during the original MVP-29C verdict.
 - SW subway images are still Google-derived. Batu's narrow exception applies only to the SW Dunkin visual-reference gap, not to exact station geometry clearance.
 - MTA text can support station-area context but must not be used alone to infer exact station geometry.
 
@@ -175,8 +175,8 @@ Recommendation:
 
 ### Grillpoint Deli
 
-- Not blocking MVP-29D with limits: re-export/inspect `northwest-grillpoint-deli-facade.jpeg` and `northwest-grillpoint-deli-wide.jpeg` only if MVP-29D needs stronger exact facade/frontage support than the readable closeup and accepted MVP-22 evidence provide.
-- Re-export/inspect `northwest-subwayA.jpeg` if MVP-29D proposes exact NW station-cue placement.
+- Not blocking MVP-29D with limits: re-export/inspect `northwest-grillpoint-deli-facade.jpg` and `northwest-grillpoint-deli-wide.jpg` only if MVP-29D needs stronger exact facade/frontage support than the readable closeup and accepted MVP-22 evidence provide.
+- Re-export/inspect `northwest-subwayA.jpg` if MVP-29D proposes exact NW station-cue placement.
 - Confirm provenance for all NW field photos.
 - Keep direct `in front of Grillpoint` subway claims blocked unless stronger evidence and Batu approval support them.
 
@@ -202,7 +202,7 @@ Recommendation:
 ### Greenpoint G Subway
 
 - SE cue: no blocking photo gap before MVP-29D for review/demo-scale exact cue placement planning.
-- NW cue: re-export/inspect `northwest-subwayA.jpeg` or provide another approved photo if exact NW cue placement is desired.
+- NW cue: re-export/inspect `northwest-subwayA.jpg` or provide another approved photo if exact NW cue placement is desired.
 - SW cue: provide owned/approved/non-Google photo evidence if exact SW cue placement is desired; current SW Google-derived references do not clear exact station geometry.
 - MTA text alone may support station context, not exact station geometry.
 

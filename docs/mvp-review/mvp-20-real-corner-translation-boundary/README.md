@@ -137,9 +137,9 @@ These records are planning concepts only. They do not create runtime schemas, so
 Allowed for MVP-20 review and proposed MVP-21 planning, pending Batu approval:
 
 - `docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg`
-- `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpeg`
-- `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpeg`
-- `docs/mvp-reference-images/northwest-subwayA.jpeg`
+- `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg`
+- `docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg`
+- `docs/mvp-reference-images/northwest-subwayA.jpg`
 
 Use limits:
 
