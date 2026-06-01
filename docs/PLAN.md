@@ -42,14 +42,17 @@ Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/A
 
 ## Current State Snapshot
 
-- Current phase: MVP-29E Narrow Corrective Pass is complete for Batu review. Batu directly opened the narrow pass to fix only hover outline geometry, crosswalk geometry, and Citizens/Dunkin subway placement while preserving the current direction, real business names/signage/logos, business set, UI structure, and overall visual direction. The prototype uses one review-only raster-first Manhattan Ave x Greenpoint Ave four-corner scene with NW Grillpoint Deli, NE McDonald's, SW Dunkin', SE Citizens Bank, and a separate Greenpoint G subway context target with review-scale cues next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side. MVP-22/MVP-22C remains accepted one-corner proof evidence only and does not complete the revised four-corner MVP by itself.
+- Current phase: Phase 2A Docs-Only Data-Driven Scene Architecture Setup is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review and does not reopen raster, app, screenshot-QA, or demo-freeze work.
+- Phase 1: MVP Scene Prototype is mostly complete; MVP-29E is pending Batu review/minor positioning corrections.
+- Phase 2: Data-Driven Scene MVP is the next major phase; Phase 2A docs-only architecture setup is complete for review, and Phase 2B is pending Batu approval.
+- Phase 3: Neighborhood Scale Validation is a future high-level scale test.
 - Current Codex task pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended state: Batu review/acceptance, revision, or rejection of the narrow MVP-29E corrective pass output. No later full screenshot QA, QA/demo freeze, raster revision, or production gate is opened until Batu explicitly approves the next task.
+- Current next recommended state: Batu review/acceptance, revision, or rejection of the Phase 2A planning packet. If accepted, Batu may open Phase 2B - Canonical Scene Manifest v0.1. MVP-29E review/acceptance, revision, or rejection remains pending Batu and is not resolved by Phase 2A.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 proof and supported by the Phase 4.5 reusable-system scalability proof.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
 - Active implementation evidence observed in the repository: review-only prototype source now points to `src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png` through `src/mvpPlaceData.js`. The MVP-29E packet and screenshots live under `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/` and `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/`.
-- Current blockers: MVP-30 QA/demo freeze is future-only until Batu accepts the four-corner raster/app output and opens any required full screenshot QA recovery. Dunkin visual treatment remains governed by Batu's narrow MVP-only SW exception; the exception does not allow production use, extraction, tracing, stored facade reuse, training input, generation input from SW Google-derived images, exact trade-dress reproduction, or a general Google-derived policy change. Greenpoint G cues are represented at review/demo scale next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side, while exact station geometry, exact entrance coordinates, exact stair alignment, and production transit accuracy remain blocked. Production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact address placement, exact storefront frontage/order, exact station geometry, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage remain blocked until a later brief opens them.
+- Current blockers: Phase 2A is docs-only and does not authorize source edits, app refactor, ingestion scripts, package/tooling changes, raster/visual revisions, generated data, screenshots, or MVP-29E implementation changes. Phase 2B is blocked until Batu opens it. MVP-30 QA/demo freeze is future-only until Batu accepts the four-corner raster/app output and opens any required full screenshot QA recovery. Dunkin visual treatment remains governed by Batu's narrow MVP-only SW exception; the exception does not allow production use, extraction, tracing, stored facade reuse, training input, generation input from SW Google-derived images, exact trade-dress reproduction, or a general Google-derived policy change. Greenpoint G cues are represented at review/demo scale next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side, while exact station geometry, exact entrance coordinates, exact stair alignment, and production transit accuracy remain blocked. Production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact address placement, exact storefront frontage/order, exact station geometry, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage remain blocked until a later brief opens them.
 - Detailed MVP boundaries: `docs/MVP_SCOPE.md`.
 - Active-scene guardrail: before source validation, scene translation, visual polish, data alignment, or real-place implementation work, Codex must confirm and list the active scene/place set from current app/data files; previous-scene entities are archival/reference-only unless explicitly reactivated; unresolved disagreement between control docs, review artifacts, and app/data files is a stop condition unless the current brief explicitly authorizes correcting it.
 - Primary-world-art rule: For any prototype intended to represent the approved look and feel, the normal-mode world surface must be an approved raster/reference plate or an approved raster sprite/asset-kit composition. Code-native SVG/CSS/DOM/canvas/Pixi graphics may be used only for hidden blockouts, hit regions, debug/QA overlays, markers, tethers, selected outlines, cards, controls, and temporary alignment guides. A current brief may authorize code-native structure repair only when the result is explicitly labeled as a non-visual blockout and is not used as the product-facing normal-mode world surface. A current brief may not authorize code-native storefronts, buildings, sidewalks, roads, props, textures, or signs as the primary world art for a prototype being evaluated against the approved visual direction. If no approved raster plate or approved raster sprite/asset kit is available, Codex must stop before source edits.
@@ -97,18 +100,21 @@ Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/A
 | 30. MVP QA And Demo Freeze | Verify MVP behavior, truth policy, visual containment, and demo readiness after the full four-corner scene exists. | MVP-29G exits with sufficient evidence and Batu opens QA/demo freeze. | MVP QA checklist, smoke-check report, accepted exceptions, and demo-freeze notes are complete. | Future-only. |
 | 31. MVP Completion / Post-MVP Parking | Mark MVP complete or hold with explicit blockers, and keep expansion ideas parked. | MVP QA And Demo Freeze exits. | MVP completion note records final status; post-MVP ideas remain parked unless Batu promotes them. | Future-only. |
 
+## Phase 2 / Phase 3 Direction
+
+- Phase 1: MVP Scene Prototype - mostly complete; MVP-29E pending Batu review/minor positioning corrections.
+- Phase 2: Data-Driven Scene MVP - next major phase; Phase 2A docs-only architecture setup is complete for review.
+- Phase 3: Neighborhood Scale Validation - future high-level scale test.
+
 ## Current Next Task
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- MVP-29E Narrow Corrective Pass is complete for Batu review at `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`.
-- The app now uses `src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png` and `src/mvpPlaceData.js` for the review-only four-corner scene.
-- Revised basic review screenshots exist under `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/`.
-- Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway are active review targets in the app.
-- Dunkin' remains governed by Batu's narrow MVP-only SW exception; no SW Google-derived image was used as generation input for MVP-29E.
-- Greenpoint G cues are represented at review/demo scale next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side; exact station geometry, exact entrance coordinates, exact stair alignment, and production transit accuracy remain blocked.
-- MVP-30 QA/demo freeze is future-only after Batu accepts the four-corner scene and opens any required full QA recovery.
-- Next recommended state: Batu review/acceptance, revision, or rejection of the narrow MVP-29E corrective pass output; then either an explicit revision pass, full MVP-29G screenshot QA recovery, or another approved bounded task.
+- Phase 2A - Docs-Only Data-Driven Scene Architecture Setup is complete for Batu review.
+- The Phase 2A packet created or updated `docs/PHASE_2_PLAN.md`, `docs/ARCHITECTURE.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DATA_SOURCES.md`, `docs/PROVENANCE_AND_QA.md`, and `docs/PHASE_3_SCALE_TEST_PLAN.md`.
+- Next recommended state: Batu review/acceptance, revision, or rejection of the Phase 2A packet; if accepted, Batu may open Phase 2B - Canonical Scene Manifest v0.1.
+- MVP-29E Narrow Corrective Pass remains complete for Batu review at `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`.
+- MVP-29E implementation, raster revisions, app refactor, ingestion scripts, generated scene data, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 
 ## Locked Decisions
 
@@ -148,6 +154,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 ## Pending Decisions
 
 - Whether Batu accepts, revises, or rejects the focused MVP-29E revised raster/app integration output.
+- Whether Batu accepts, revises, or rejects the Phase 2A planning packet and opens Phase 2B - Canonical Scene Manifest v0.1.
 - Whether the MVP-29E raster needs another art pass for intersection/crosswalk precision, subway cue exactness, storefront specificity, sign readability, cue density, or overall visual taste.
 - Whether the MVP-29E hotspot/card alignment and mobile containment are sufficient for the next gate or need a separate revision pass.
 - Whether Batu opens full MVP-29G screenshot QA recovery, and which screenshot states are required beyond MVP-29E's basic evidence.
@@ -168,7 +175,12 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`: fidelity ladder, artifact-format rules, and visual self-audit requirements.
 - `docs/VISUAL_QA_CHECKLIST.md`: visual QA checklist.
 - `docs/AGENTIC_TOOLING.md`: workflow/tooling policy, allowed tooling use, blocked tooling use, and skills/plugins governance.
-- `docs/ARCHITECTURE.md`: future architecture boundaries after the architecture gate opens.
+- `docs/PHASE_2_PLAN.md`: Phase 2 Data-Driven Scene MVP task sequence, goals, acceptance criteria, and non-goals.
+- `docs/ARCHITECTURE.md`: Phase 2 data-to-scene architecture flow, truth layers, coordinate separation, and blocked implementation boundaries.
+- `docs/SCENE_MANIFEST_SCHEMA.md`: v0.1 scene manifest planning contract; not a runtime schema or public interface.
+- `docs/DATA_SOURCES.md`: Phase 2 source hierarchy and source-use warnings.
+- `docs/PROVENANCE_AND_QA.md`: provenance, debug, manual override, and QA requirements.
+- `docs/PHASE_3_SCALE_TEST_PLAN.md`: high-level future Neighborhood Scale Validation plan.
 - `docs/DATA_FEASIBILITY.md`: location truth feasibility, source review, blocking factual uncertainties, and structural reference handling.
 - `docs/PLACE_SOURCE_POLICY.md`: place-source hierarchy, verification policy, source conflicts, and staleness rules.
 - `docs/PLACE_SCHEMA.md`: conceptual place-data shape and truth-status vocabulary; not an implementation interface until approved later.

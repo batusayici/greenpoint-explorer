@@ -55,15 +55,103 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-29E Narrow Corrective Pass is complete for Batu review. Batu directly opened the narrow pass after reviewing the focused MVP-29E revision.
+- Current phase: Phase 2A Docs-Only Data-Driven Scene Architecture Setup is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the narrow MVP-29E corrective pass output. MVP-30 QA/demo freeze is future-only after Batu accepts the four-corner raster/app output and opens any required full QA recovery.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2A planning packet. Phase 2B, MVP-29E implementation changes, raster revisions, app refactor, ingestion scripts, generated scene data, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
 
+### 2026-06-01 - Phase 2A Planning / Architecture Setup
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Create a docs-first Phase 2 setup for the Data-Driven Scene MVP.
+- Define the data-to-scene architecture proof, canonical manifest planning contract, source hierarchy, provenance/QA loop, and high-level Phase 3 scale-test plan.
+- Update only the allowed control docs for reconciliation.
+
+Rationale:
+- MVP-29E remains mostly manually authored and complete for Batu review.
+- Batu opened Phase 2A so the existing MVP scene can be prepared for representation in a traceable manifest before any ingestion, app refactor, or scale work.
+- The Phase 2 direction prioritizes operational discipline: source alignment, manifests, provenance, manual/generated diffs, human review loops, and consistency checks.
+
+Files changed:
+- `docs/PHASE_2_PLAN.md`
+- `docs/ARCHITECTURE.md`
+- `docs/SCENE_MANIFEST_SCHEMA.md`
+- `docs/DATA_SOURCES.md`
+- `docs/PROVENANCE_AND_QA.md`
+- `docs/PHASE_3_SCALE_TEST_PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Non-goals:
+- No `src/` edits.
+- No app refactor or new app components.
+- No ingestion scripts.
+- No generated scene data or mock data.
+- No raster assets, generated images, screenshots, package files, or lockfiles.
+- No MVP-29E implementation changes.
+- No production architecture, public-interface, production data, production asset, live data, scraping, backend, CMS, analytics, deployment, CI, routing, accounts, persistence, or broad map coverage approval.
+
+Verification:
+- `git diff --check`
+- `git status --short`
+- Existing markdown/lint checks were not run because no such dependency or repo script was added or identified for this docs-only batch.
+
+Outcome:
+- Phase 2 is documented as the Data-Driven Scene MVP.
+- Architecture flow is documented as source adapters -> normalized source records -> canonical scene manifest -> app rendering layer -> debug/provenance/QA layer.
+- Manifest v0.1 planning contract records separate WGS84, local projected geometry, and stylized scene coordinate layers.
+- Source hierarchy records LiveXYZ as preferred pending access, with Phase 2 starting open-data-first.
+- Provenance/QA docs require source-data inspection, geometry overlays, business/address confidence, storefront evidence, generated/manual diffs, missing-data and ambiguity reports, override counts, screenshot regression expectations, and human approval checklists.
+- Phase 3 is framed as high-level Neighborhood Scale Validation across representative Greenpoint block types.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2A planning packet.
+- Batu must explicitly open Phase 2B before a canonical scene manifest v0.1 task starts.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2A planning packet.
+- Next recommended task before implementation: Phase 2B - Canonical Scene Manifest v0.1, if Batu accepts Phase 2A and opens that scope.
+- Next recommended implementation task later in the sequence: Phase 2D - App Reads Manifest With Unchanged Visual Output, only after Phase 2B and Phase 2C are accepted and a later implementation brief approves source edits and public/runtime boundaries.
+
+### 2026-06-01 - Open Phase 2A Docs-Only Planning Scope
+
+Status:
+- Complete.
+
+Scope:
+- Batu opened docs-only Phase 2 planning / architecture setup scope.
+- Update only the execution-control docs so the next task can create Phase 2 planning docs.
+- Do not change app/source files, raster assets, generated images, screenshots, package files, lockfiles, or existing MVP-29E implementation files.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now opens Phase 2A - Docs-Only Data-Driven Scene Architecture Setup.
+- `docs/PLAN.md` now records the concise Phase 1 / Phase 2 / Phase 3 roadmap direction and points to the current brief for the next docs-only task.
+- No app/source/raster assets were changed by this control-doc authorization update.
+
+Unresolved decisions:
+- Batu still owns MVP-29E acceptance, revision, or rejection.
+- MVP-29E implementation changes, full MVP-29G screenshot QA, MVP-30 QA/demo freeze, production assets/data/architecture, public-interface approval, live data, scraping, backend, CMS, analytics, deployment, CI, routing, accounts, persistence, and broad map coverage remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the Phase 2A planning / architecture setup that creates `docs/PHASE_2_PLAN.md`, `docs/ARCHITECTURE.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DATA_SOURCES.md`, `docs/PROVENANCE_AND_QA.md`, and `docs/PHASE_3_SCALE_TEST_PLAN.md`.
 
 ### 2026-06-01 - MVP-29E Narrow Hover / Crosswalk / Subway Corrective Pass
 
