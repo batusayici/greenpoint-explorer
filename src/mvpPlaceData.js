@@ -1,42 +1,51 @@
 // Review/demo-safe static MVP data. This is local prototype data, not a production data contract.
-import rasterPlateSrc from "./assets/review-only/mvp-22-grillpoint-real-corner-slice.png";
+import rasterPlateSrc from "./assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png";
 
 export const mvpScene = {
-  title: "MVP-22 Grillpoint raster-first vertical slice",
+  title: "MVP-29E four-corner raster scene",
   note:
-    "Explore the NW Grillpoint slice. Greenpoint Av G appears as nearby transit context only.",
+    "Explore the review-only four-corner Manhattan/Greenpoint raster scene.",
   size: {
     width: 1672,
     height: 941,
   },
   reviewLabel: "REVIEW-ONLY / NON-PRODUCTION",
-  sourceListLabel: "Reviewed Stage B sources",
+  sourceListLabel: "Reviewed MVP-29E sources",
   sceneFrame: {
-    locationLabel: "MVP-22 NW real-corner vertical slice",
+    locationLabel: "MVP-29E four-corner raster scene",
     intent:
-      "Pan, zoom, and select one source-backed Grillpoint card on a raster-first corner plate.",
+      "Pan, zoom, and select the four approved business anchors plus Greenpoint G context on one raster-first scene.",
     treatment:
-      "The world plate uses a non-readable deli sign cue while the factual card uses Grillpoint Deli. The Greenpoint Av G cue is adjacent transit context only, not exact station geometry or a direct in-front claim.",
-    activeSceneSource: "MVP-22 Stage B Raster-First Real-Corner Vertical Slice",
+      "The world plate is an authored review-only diorama. Business cards use source-backed neutral copy; visual placement remains approximate, with review-scale Greenpoint G entrance cues placed on the Greenpoint Ave side next to Grillpoint, Dunkin', and Citizens.",
+    activeSceneSource: "MVP-29E Four-Corner Raster Scene Production / Focused Revision",
     approvedRasterPath:
-      "src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png",
+      "src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png",
     approvedReferencePaths: [
+      "src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png",
+      "docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png",
+      "docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/mini-street-slice-scalability-proof.png",
       "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
-      "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpeg",
-      "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpeg",
-      "docs/mvp-reference-images/northwest-subwayA.jpeg",
-      "docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-A-ui-world-integration.png",
-      "docs/archive/visual-artifacts/batch-13-survivor-direction-development/generated/II-B-place-card-marker-hover-state.png",
+      "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+      "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+      "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+      "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+      "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+      "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+      "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+      "docs/mvp-reference-images/southeast-subwayB.jpg",
+      "SW Dunkin treatment used the MVP-29D broad stylized exception rules only; no Google-derived SW image was used as generation input.",
     ],
   },
   disclaimer:
-    "Unofficial authored prototype. This card is not an official map, directory, real-time business listing, or exact facade/address/station-geometry claim.",
+    "Unofficial authored prototype. This card is not an official map, directory, real-time business listing, endorsement, partnership, or exact facade/address/station-geometry claim.",
   plate: {
     src: rasterPlateSrc,
     label:
-      "MVP-22 review-only raster-first Grillpoint / Greenpoint Av G vertical slice. Non-production, art-directed, and not an exact facade, address, or station-geometry representation.",
+      "MVP-29E review-only four-corner raster scene for Manhattan Ave x Greenpoint Ave. Non-production, art-directed, and not an exact facade, frontage, address, or station-geometry representation.",
     sourcePath:
-      "docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/generated/mvp-22-grillpoint-real-corner-slice.png",
+      "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
   },
   sourceRefs: {
     "restaurantji-grillpoint": {
@@ -45,126 +54,508 @@ export const mvpScene = {
       supports: "Grillpoint Deli name, deli category, and 903 Manhattan Ave address context.",
       sourceUse:
         "Secondary public directory source for review-only factual card copy; no reviews, ratings, hours, or promotional claims are used.",
-      reviewedOn: "2026-05-30",
+      reviewedOn: "2026-05-31",
+    },
+    "mcdonalds-official": {
+      label: "McDonald's official location page",
+      url: "https://www.mcdonalds.com/us/en-us/location/ny/brooklyn/904-manhattan-ave/2678.html",
+      supports: "McDonald's name and 904 Manhattan Ave address.",
+      sourceUse:
+        "Official business source for identity/address only; no endorsement, partnership, hours, open-now status, ratings, reviews, or promotional claims are used.",
+      reviewedOn: "2026-05-31",
+    },
+    "dunkin-official": {
+      label: "Dunkin' official location page",
+      url: "https://locations.dunkindonuts.com/en/ny/brooklyn/893-manhattan-ave/355867",
+      supports: "Dunkin' name and 893 Manhattan Ave address.",
+      sourceUse:
+        "Official business source for identity/address only; no endorsement, partnership, hours, open-now status, ratings, reviews, or promotional claims are used.",
+      reviewedOn: "2026-05-31",
+    },
+    "citizens-official": {
+      label: "Citizens official branch page",
+      url: "https://locations.citizensbank.com/ny/brooklyn/896-manhattan-avenue.html",
+      supports: "Citizens branch name and 896 Manhattan Avenue address.",
+      sourceUse:
+        "Official branch source for identity/address only; no endorsement, partnership, hours, open-now status, ATM availability, services, ratings, reviews, or promotional claims are used.",
+      reviewedOn: "2026-05-31",
     },
     "mta-greenpoint-accessibility": {
       label: "MTA Greenpoint Av accessibility notice",
       url: "https://www.mta.info/press-release/mta-announces-greenpoint-av-g-station-now-fully-accessible",
       supports: "Greenpoint Av G station context on Manhattan Ave.",
       sourceUse:
-        "Transit context only; not exact stair, entrance, elevator, station footprint, or Grillpoint-frontage geometry.",
-      reviewedOn: "2026-05-30",
+        "Transit context only; not exact stair, entrance, elevator, station footprint, or business-frontage geometry.",
+      reviewedOn: "2026-05-31",
     },
-    "mta-accessible-stations": {
-      label: "MTA accessible stations",
-      url: "https://www.mta.info/accessibility/stations",
-      supports: "Greenpoint Av station accessibility context.",
+    "mta-g-line-map": {
+      label: "MTA G line text map",
+      url: "https://www.mta.info/maps/subway-line-maps/g-line",
+      supports: "Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave.",
       sourceUse:
-        "Transit context only; not exact entrance placement or production station geometry.",
-      reviewedOn: "2026-05-30",
+        "Station-area context only; exact station geometry must come from approved photos and Batu approval, not MTA text alone.",
+      reviewedOn: "2026-05-31",
     },
-    "mvp-22-stage-a": {
-      label: "MVP-22 Stage A evidence packet",
-      url: "/docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md",
+    "mvp-29b": {
+      label: "MVP-29B evidence and business validation packet",
+      url: "/docs/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md",
       supports:
-        "Stage A approval-with-constraint for Grillpoint identity/address/sign planning and nearby/adjacent Greenpoint Av G context.",
+        "Four-corner candidate set, source URLs, address context, and candidate confidence notes.",
       sourceUse:
-        "Review gate only; does not approve production readiness, exact facade, exact address placement, or exact station geometry.",
-      reviewedOn: "2026-05-30",
+        "Review gate only; does not approve production readiness, exact facades, exact address placement, or exact station geometry.",
+      reviewedOn: "2026-05-31",
     },
-    "mvp-22-stage-b-brief": {
-      label: "MVP-22 Stage B implementation brief",
-      url: "/docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md",
+    "mvp-29c": {
+      label: "MVP-29C visual-reference completeness gate",
+      url: "/docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md",
       supports:
-        "Allowed raster path, factual card copy, source URLs, sign-label treatment, file allowlist, and screenshot QA requirements.",
+        "Reference completeness, Dunkin exception handling, brand/trade-dress limits, and SE subway cue eligibility.",
       sourceUse:
-        "Review-only implementation boundary; not production asset, public-release, or final visual-fidelity approval.",
-      reviewedOn: "2026-05-30",
+        "Review/demo-scale visual planning only; no production use, tracing, texture extraction, or exact trade-dress clearance.",
+      reviewedOn: "2026-05-31",
+    },
+    "mvp-29d": {
+      label: "MVP-29D translation and composition brief",
+      url: "/docs/mvp-review/mvp-29d-four-corner-translation-composition-brief/README.md",
+      supports:
+        "Four-corner composition, truth-status map, visual treatment rules, and MVP-29E limits.",
+      sourceUse:
+        "Implementation boundary input only; exact geometry and production/public claims remain blocked.",
+      reviewedOn: "2026-05-31",
     },
   },
   targets: [
     {
       id: "grillpoint-deli",
-      kind: "real-corner-vertical-slice",
+      kind: "four-corner-review-target",
       title: "Grillpoint Deli",
-      label: "Stage B review target",
+      label: "NW review target",
       category: "Deli / food retail",
       address: "903 Manhattan Ave, Brooklyn, NY 11222",
       status: "review-only-source-backed",
-      candidateOutcome: "mvp-22-stage-b-real-corner-slice",
-      approvalStatus: "stage-b-review-only",
-      verificationStatus: "source-backed planning",
-      cardBadge: "Stage B",
+      candidateOutcome: "mvp-29e-approximate-four-corner-target",
+      approvalStatus: "mvp-29e-review-only",
+      verificationStatus: "approximate visual / source-backed card",
+      cardBadge: "NW",
       placementConfidence: "medium corner context / low exact geometry",
-      lastVerified: "2026-05-30",
+      lastVerified: "2026-05-31",
       manualReviewRequired: true,
       summary:
-        "Deli at the northwest Manhattan Ave / Greenpoint Ave corner, shown in a review-only art-directed slice.",
+        "Deli anchor for the northwest corner of the review-only Manhattan Ave x Greenpoint Ave diorama.",
       description:
-        "Greenpoint Av G appears as nearby transit context. The scene is an authored diorama, not an exact facade, address-placement, storefront-order, or station-geometry claim.",
+        "The raster uses a stylized corner-deli treatment informed by approved review references. It is not an exact facade, frontage, active-status finality, address-placement, or station-geometry claim.",
       statusNote:
-        "Identity, address, and sign are supportable for this review slice; subway context is nearby/adjacent only.",
-      sourceRefs: [
-        "restaurantji-grillpoint",
-        "mta-greenpoint-accessibility",
-        "mta-accessible-stations",
-        "mvp-22-stage-a",
-        "mvp-22-stage-b-brief",
-      ],
+        "Identity/address are source-backed for review copy; visual placement and storefront geometry remain approximate.",
+      sourceRefs: ["restaurantji-grillpoint", "mvp-29b", "mvp-29c", "mvp-29d"],
       evidenceStatus: [
         {
           label: "Business identity",
           value:
-            "Grillpoint Deli identity is supportable for Stage B planning from reviewed public/source evidence and Batu-supplied NW field-reference context.",
+            "Grillpoint Deli is the active NW label for MVP-29E; Greenpoint Deli remains archival/prior-conflicting language only.",
         },
         {
           label: "Address",
           value:
-            "Card may use 903 Manhattan Ave, Brooklyn, NY 11222 as factual copy; the raster does not show or claim exact address placement.",
+            "903 Manhattan Ave may be used in review-only card copy; the raster does not claim exact address placement.",
         },
         {
-          label: "Sign treatment",
+          label: "Visual treatment",
           value:
-            "World plate uses a non-readable deli sign cue. The factual card uses Grillpoint Deli; no exact sign, logo, texture, or facade reproduction is claimed.",
+            "Stylized deli sign/storefront cues are allowed at review scale; no logo tracing, texture extraction, exact facade, or production asset claim is made.",
         },
         {
-          label: "Transit context",
+          label: "Transit relation",
           value:
-            "Greenpoint Ave G may appear as nearby/adjacent context only. The app must not claim the subway entrance is directly in front of Grillpoint without stronger evidence.",
+            "The revised raster places a review-scale Greenpoint G entrance cue next to Grillpoint on the Greenpoint Ave side; exact entrance coordinates and station geometry remain blocked.",
         },
       ],
       truthConstraints: [
         "Do not claim exact facade, exact sign, exact address placement, storefront width/order, entrance position, or production placement.",
-        "Do not claim the subway entrance is directly in front of Grillpoint unless stronger field/photo evidence supports that exact relationship and Batu approves it.",
-        "Do not use NE, SE, or SW parked references for this slice.",
-        "Do not use Google, Street View, 3D Tiles, LiveXYZ facade/art, copied web imagery, or blocked historical screenshots as facade/art material.",
+        "Do not claim exact subway entrance coordinates, exact station geometry, or production transit accuracy.",
+        "Do not claim Greenpoint Deli and Grillpoint Deli are legally the same entity without source evidence.",
         "Do not use ratings, reviews, hours, delivery, ownership, popularity, quality, or promotional claims.",
       ],
-      tags: [
-        "MVP-22",
-        "NW corner only",
-        "raster-first",
-        "real-place card",
-        "nearby transit context",
-        "review-only",
-      ],
-      corner: "NW Grillpoint / Greenpoint Av G context",
+      tags: ["MVP-29E", "NW", "real card", "approximate visual", "review-only"],
+      corner: "NW",
       marker: {
         label: "1",
-        x: 796,
-        y: 536,
+        x: 518,
+        y: 204,
       },
       tetherEnd: {
-        x: 792,
-        y: 724,
+        x: 484,
+        y: 326,
       },
       bounds: {
-        x: 254,
-        y: 282,
-        width: 944,
-        height: 498,
+        x: 236,
+        y: 74,
+        width: 514,
+        height: 334,
       },
-      rasterAnchorLabel: "MVP-22 Grillpoint slice",
+      outlinePaths: [
+        [
+          { x: 302, y: 120 },
+          { x: 440, y: 122 },
+          { x: 452, y: 190 },
+          { x: 420, y: 302 },
+          { x: 294, y: 332 },
+          { x: 250, y: 238 },
+        ],
+        [
+          { x: 432, y: 126 },
+          { x: 694, y: 124 },
+          { x: 734, y: 190 },
+          { x: 684, y: 316 },
+          { x: 496, y: 356 },
+          { x: 426, y: 286 },
+        ],
+      ],
+      reviewLabelPosition: {
+        x: 352,
+        y: 110,
+      },
+      rasterAnchorLabel: "NW Grillpoint Deli",
+    },
+    {
+      id: "mcdonalds",
+      kind: "four-corner-review-target",
+      title: "McDonald's",
+      label: "NE review target",
+      category: "Fast food / restaurant",
+      address: "904 Manhattan Ave, Brooklyn, NY 11222",
+      status: "review-only-source-backed",
+      candidateOutcome: "mvp-29e-approximate-four-corner-target",
+      approvalStatus: "mvp-29e-review-only",
+      verificationStatus: "approximate visual / source-backed card",
+      cardBadge: "NE",
+      placementConfidence: "medium-high identity/address / medium exact frontage",
+      lastVerified: "2026-05-31",
+      manualReviewRequired: true,
+      summary:
+        "Fast-food anchor for the northeast corner, represented with simplified review-scale massing and sign cues.",
+      description:
+        "The raster keeps review-scale McDonald's signage/logo cues per Batu's revision instruction. It does not imply endorsement, partnership, hours, ratings, reviews, production logo/trade-dress clearance, or exact placement.",
+      statusNote:
+        "Official source supports identity/address; exact facade, frontage/order, and address placement remain approximate.",
+      sourceRefs: ["mcdonalds-official", "mvp-29b", "mvp-29c", "mvp-29d"],
+      evidenceStatus: [
+        {
+          label: "Business identity",
+          value:
+            "Official location source supports McDonald's at 904 Manhattan Ave for review-only card copy.",
+        },
+        {
+          label: "Address",
+          value:
+            "904 Manhattan Ave may be used in review-only card copy; visual placement is not exact address placement.",
+        },
+        {
+          label: "Visual treatment",
+          value:
+            "Real signage/logo cues are allowed at review scale; production trade-dress clearance, exact facade, and exact frontage claims remain blocked.",
+        },
+        {
+          label: "Claims omitted",
+          value:
+            "The card omits hours, open-now status, ratings, reviews, endorsement, partnership, and promotional language.",
+        },
+      ],
+      truthConstraints: [
+        "Do not claim exact facade geometry, storefront frontage/order, relation to adjacent units, or exact address placement.",
+        "Do not treat review-scale signage/logo cues as production logo/trade-dress clearance or official brand approval.",
+        "Do not imply endorsement, partnership, official collaboration, ratings, reviews, open-now status, hours, or promotions.",
+      ],
+      tags: ["MVP-29E", "NE", "real card", "real signage review", "review-only"],
+      corner: "NE",
+      marker: {
+        label: "2",
+        x: 1208,
+        y: 190,
+      },
+      tetherEnd: {
+        x: 1288,
+        y: 306,
+      },
+      bounds: {
+        x: 918,
+        y: 70,
+        width: 602,
+        height: 292,
+      },
+      outlinePoints: [
+        { x: 942, y: 92 },
+        { x: 1478, y: 102 },
+        { x: 1498, y: 246 },
+        { x: 1378, y: 326 },
+        { x: 1076, y: 306 },
+        { x: 936, y: 230 },
+      ],
+      reviewLabelPosition: {
+        x: 1082,
+        y: 126,
+      },
+      rasterAnchorLabel: "NE McDonald's",
+    },
+    {
+      id: "dunkin",
+      kind: "four-corner-review-target",
+      title: "Dunkin'",
+      label: "SW review target",
+      category: "Coffee / donuts / quick-service food",
+      address: "893 Manhattan Ave, Brooklyn, NY 11222",
+      status: "review-only-source-backed",
+      candidateOutcome: "mvp-29e-approximate-four-corner-target",
+      approvalStatus: "mvp-29e-review-only-mvp-exception",
+      verificationStatus: "MVP exception / approximate visual",
+      cardBadge: "SW",
+      placementConfidence: "medium-high identity/address / low exact visual geometry",
+      lastVerified: "2026-05-31",
+      manualReviewRequired: true,
+      summary:
+        "Coffee/donut anchor for the southwest corner, represented only under Batu's narrow MVP-only exception.",
+      description:
+        "The raster uses broad stylized coffee/donut storefront cues. No Google-derived SW image was used as generation input, and the result is not production art, exact trade dress, exact facade/frontage, or exact address placement.",
+      statusNote:
+        "Official source supports identity/address; visual treatment remains MVP-only, stylized, non-production, and approximate.",
+      sourceRefs: ["dunkin-official", "mvp-29b", "mvp-29c", "mvp-29d"],
+      evidenceStatus: [
+        {
+          label: "Business identity",
+          value:
+            "Official location source supports Dunkin' at 893 Manhattan Ave for review-only card copy.",
+        },
+        {
+          label: "Exception",
+          value:
+            "Batu approved a narrow MVP-only SW visual-reference exception because scaffolding blocks usable current field photos.",
+        },
+        {
+          label: "Visual treatment",
+          value:
+            "Only broad, stylized coffee/donut and corner-storefront cues are used; no tracing, texture extraction, generation input from SW Google-derived images, or exact trade-dress claim is made.",
+        },
+        {
+          label: "Claims omitted",
+          value:
+            "The card omits hours, open-now status, ratings, reviews, endorsement, partnership, and promotional language.",
+        },
+      ],
+      truthConstraints: [
+        "Do not generalize the narrow SW Dunkin exception to other Google-derived imagery or other candidates.",
+        "Do not use production, tracing, texture extraction, stored facade reuse, training input, generation input, or exact trade-dress reproduction.",
+        "Do not claim exact facade, frontage/order, exact address placement, or exact station geometry.",
+        "Do not imply endorsement, partnership, ratings, reviews, open-now status, hours, or promotions.",
+      ],
+      tags: ["MVP-29E", "SW", "real card", "MVP exception", "review-only"],
+      corner: "SW",
+      marker: {
+        label: "3",
+        x: 370,
+        y: 668,
+      },
+      tetherEnd: {
+        x: 370,
+        y: 786,
+      },
+      bounds: {
+        x: 180,
+        y: 520,
+        width: 384,
+        height: 344,
+      },
+      outlinePoints: [
+        { x: 210, y: 548 },
+        { x: 474, y: 530 },
+        { x: 540, y: 604 },
+        { x: 488, y: 820 },
+        { x: 300, y: 852 },
+        { x: 206, y: 768 },
+      ],
+      reviewLabelPosition: {
+        x: 268,
+        y: 574,
+      },
+      rasterAnchorLabel: "SW Dunkin'",
+    },
+    {
+      id: "citizens-bank",
+      kind: "four-corner-review-target",
+      title: "Citizens Bank",
+      label: "SE review target",
+      category: "Bank branch",
+      address: "896 Manhattan Avenue, Brooklyn, NY 11222",
+      status: "review-only-source-backed",
+      candidateOutcome: "mvp-29e-approximate-four-corner-target",
+      approvalStatus: "mvp-29e-review-only",
+      verificationStatus: "approximate visual / source-backed card",
+      cardBadge: "SE",
+      placementConfidence: "medium-high identity/address / medium exact frontage",
+      lastVerified: "2026-05-31",
+      manualReviewRequired: true,
+      summary:
+        "Bank/branch anchor for the southeast corner, paired with the review-verified Greenpoint G station cue.",
+      description:
+        "The raster keeps review-scale Citizens signage/logo cues per Batu's revision instruction. It does not imply services, ATM availability, endorsement, partnership, production logo/trade-dress clearance, or exact placement.",
+      statusNote:
+        "Official source supports identity/address; branch entrance, ATM/service claims, facade geometry, and address placement remain approximate or blocked.",
+      sourceRefs: ["citizens-official", "mvp-29b", "mvp-29c", "mvp-29d"],
+      evidenceStatus: [
+        {
+          label: "Business identity",
+          value:
+            "Official branch source supports Citizens at 896 Manhattan Avenue for review-only card copy.",
+        },
+        {
+          label: "Address",
+          value:
+            "896 Manhattan Avenue may be used in review-only card copy; visual placement is not exact address placement.",
+        },
+        {
+          label: "Visual treatment",
+          value:
+            "Real bank/branch signage/logo cues are allowed at review scale; production trade-dress clearance, exact facade, ATM, and service claims remain blocked.",
+        },
+        {
+          label: "Transit relation",
+          value:
+            "The nearby SE Greenpoint G station cue is separately targetable and supported only at review/demo-scale orientation level.",
+        },
+      ],
+      truthConstraints: [
+        "Do not claim exact facade geometry, storefront frontage/order, branch entrance placement, ATM placement, service availability, or exact address placement.",
+        "Do not treat review-scale signage/logo cues as production logo/trade-dress clearance or official brand approval.",
+        "Do not imply endorsement, partnership, official collaboration, ratings, reviews, open-now status, hours, ATM availability, or promotions.",
+      ],
+      tags: ["MVP-29E", "SE", "real card", "real signage review", "review-only"],
+      corner: "SE",
+      marker: {
+        label: "4",
+        x: 1316,
+        y: 638,
+      },
+      tetherEnd: {
+        x: 1368,
+        y: 750,
+      },
+      bounds: {
+        x: 1176,
+        y: 500,
+        width: 384,
+        height: 366,
+      },
+      outlinePoints: [
+        { x: 1224, y: 518 },
+        { x: 1516, y: 546 },
+        { x: 1548, y: 724 },
+        { x: 1402, y: 836 },
+        { x: 1230, y: 792 },
+        { x: 1182, y: 620 },
+      ],
+      reviewLabelPosition: {
+        x: 1260,
+        y: 552,
+      },
+      rasterAnchorLabel: "SE Citizens Bank",
+    },
+    {
+      id: "greenpoint-g-subway",
+      kind: "four-corner-review-transit-cue",
+      title: "Greenpoint G subway",
+      label: "SE transit context",
+      category: "Subway station context",
+      address: "Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave, Brooklyn, NY",
+      status: "review-only-source-backed-context",
+      candidateOutcome: "mvp-29e-se-cue-review-scale",
+      approvalStatus: "mvp-29e-review-only",
+      verificationStatus: "SE cue verified / station geometry approximate",
+      cardBadge: "G",
+      placementConfidence: "SE cue medium-high / exact station geometry blocked",
+      lastVerified: "2026-05-31",
+      manualReviewRequired: true,
+      summary:
+        "Greenpoint Av G station context, represented by review-scale entrance cues next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side.",
+      description:
+        "The revised raster follows the bird's-eye intersection relationship and places three review-scale entrance cues on the Greenpoint Ave side. Exact station geometry, entrance coordinates, and production transit accuracy remain blocked.",
+      statusNote:
+        "Greenpoint Ave side cue placement is review-scale authored; station geometry remains approximate.",
+      sourceRefs: ["mta-greenpoint-accessibility", "mta-g-line-map", "mvp-29b", "mvp-29c", "mvp-29d"],
+      evidenceStatus: [
+        {
+          label: "Station context",
+          value:
+            "MTA sources support Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave.",
+        },
+        {
+          label: "Entrance cues",
+          value:
+            "The focused MVP-29E revision places cues next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side for review/demo-scale orientation.",
+        },
+        {
+          label: "Geometry",
+          value:
+            "The raster is authored approximate geometry, not exact entrance coordinates, station footprint, or transit infrastructure mapping.",
+        },
+        {
+          label: "Blocked precision",
+          value:
+            "The raster does not claim exact entrance coordinates, station footprint, stair alignment, or production transit mapping.",
+        },
+      ],
+      truthConstraints: [
+        "Do not infer exact station geometry from MTA text alone.",
+        "Do not claim exact entrance coordinates, exact station footprint, or production transit accuracy.",
+        "Do not use review-scale raster placement to clear exact station geometry or production transit accuracy.",
+      ],
+      tags: ["MVP-29E", "G cues", "transit context", "approximate geometry", "review-only"],
+      corner: "Greenpoint Ave station context",
+      marker: {
+        label: "G",
+        x: 1138,
+        y: 624,
+      },
+      tetherEnd: {
+        x: 1122,
+        y: 740,
+      },
+      bounds: {
+        x: 96,
+        y: 214,
+        width: 1212,
+        height: 632,
+      },
+      hitAreas: [
+        { x: 104, y: 220, width: 174, height: 160 },
+        { x: 340, y: 628, width: 214, height: 202 },
+        { x: 958, y: 590, width: 350, height: 232 },
+      ],
+      outlinePaths: [
+        [
+          { x: 112, y: 234 },
+          { x: 254, y: 228 },
+          { x: 272, y: 342 },
+          { x: 144, y: 372 },
+          { x: 102, y: 296 },
+        ],
+        [
+          { x: 358, y: 654 },
+          { x: 542, y: 646 },
+          { x: 552, y: 790 },
+          { x: 374, y: 826 },
+          { x: 342, y: 720 },
+        ],
+        [
+          { x: 988, y: 624 },
+          { x: 1268, y: 638 },
+          { x: 1304, y: 758 },
+          { x: 1042, y: 822 },
+          { x: 960, y: 724 },
+        ],
+      ],
+      reviewLabelPosition: {
+        x: 976,
+        y: 612,
+      },
+      rasterAnchorLabel: "Greenpoint G cues",
     },
   ],
 };

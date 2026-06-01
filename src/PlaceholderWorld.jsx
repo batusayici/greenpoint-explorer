@@ -153,16 +153,10 @@ export default function PlaceholderWorld({
   function getTargetAtEvent(event) {
     const point = toScenePoint(event);
     const targetsBySmallestHitArea = [...scene.targets].sort(
-      (a, b) => a.bounds.width * a.bounds.height - b.bounds.width * b.bounds.height,
+      (a, b) => getHitAreaSize(a) - getHitAreaSize(b),
     );
     for (const target of targetsBySmallestHitArea) {
-      const { bounds } = target;
-      if (
-        point.x >= bounds.x &&
-        point.x <= bounds.x + bounds.width &&
-        point.y >= bounds.y &&
-        point.y <= bounds.y + bounds.height
-      ) {
+      if (isPointInHitAreas(point, target.hitAreas ?? [target.bounds])) {
         return target;
       }
     }
@@ -357,7 +351,11 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
 
   shape.clear();
 
-  shape.roundRect(x, y, width, height, 10).fill({ color: 0xffffff, alpha: 0.001 });
+  for (const hitArea of target.hitAreas ?? [target.bounds]) {
+    shape
+      .roundRect(hitArea.x, hitArea.y, hitArea.width, hitArea.height, 10)
+      .fill({ color: 0xffffff, alpha: 0.001 });
+  }
 
   shape
     .moveTo(markerX, markerY + markerRadius)
@@ -398,17 +396,29 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     const traceAlpha = isSelected ? 0.58 : 0.36;
     const traceWidth = isSelected ? 3 : 2;
     if (isSelected) {
-      shape.roundRect(x + 4, y + 4, width - 8, height - 8, 14)
-        .fill({ color: 0xf0bc45, alpha: 0.035 });
+      drawTargetOutline(shape, target, {
+        fillColor: 0xf0bc45,
+        fillAlpha: 0.035,
+        strokeColor: 0xf0bc45,
+        strokeAlpha: 0.16,
+        strokeWidth: 8,
+      });
     }
-    shape.roundRect(x, y, width, height, 14)
-      .stroke({ color: traceColor, width: traceWidth, alpha: traceAlpha });
+    drawTargetOutline(shape, target, {
+      strokeColor: traceColor,
+      strokeAlpha: traceAlpha,
+      strokeWidth: traceWidth,
+    });
   }
 
   if (reviewMode) {
-    shape.roundRect(x, y, width, height, 10)
-      .fill({ color: 0xf5e5c3, alpha: 0.08 })
-      .stroke({ color: 0xe28e54, width: 3, alpha: 0.78 });
+    drawTargetOutline(shape, target, {
+      fillColor: 0xf5e5c3,
+      fillAlpha: 0.08,
+      strokeColor: 0xe28e54,
+      strokeAlpha: 0.78,
+      strokeWidth: 3,
+    });
   }
 
   markerLabel.visible = Boolean(target.marker?.label);
@@ -421,8 +431,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   reviewLabel.visible = reviewMode;
   reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
   reviewLabel.style.fill = "#f8ecd4";
-  reviewLabel.x = x + 12;
-  reviewLabel.y = y + 12;
+  reviewLabel.x = target.reviewLabelPosition?.x ?? x + 12;
+  reviewLabel.y = target.reviewLabelPosition?.y ?? y + 12;
 
   if (reviewMode) {
     const labelPaddingX = 10;
@@ -437,6 +447,63 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .fill({ color: 0x202424, alpha: 0.88 })
       .stroke({ color: 0xf5e5c3, width: 2, alpha: 0.68 });
   }
+}
+
+function drawTargetOutline(graphics, target, styles) {
+  const { x, y, width, height } = target.bounds;
+  const outlinePaths = target.outlinePaths ?? (target.outlinePoints ? [target.outlinePoints] : []);
+
+  if (!outlinePaths.length) {
+    const radius = styles.fillAlpha ? 14 : 10;
+    const path = graphics.roundRect(x, y, width, height, radius);
+    if (styles.fillColor && styles.fillAlpha) {
+      path.fill({ color: styles.fillColor, alpha: styles.fillAlpha });
+    }
+    path.stroke({
+      color: styles.strokeColor,
+      width: styles.strokeWidth,
+      alpha: styles.strokeAlpha,
+    });
+    return;
+  }
+
+  for (const outline of outlinePaths) {
+    if (!drawOutlinePath(graphics, outline)) continue;
+    if (styles.fillColor && styles.fillAlpha) {
+      graphics.fill({ color: styles.fillColor, alpha: styles.fillAlpha });
+    }
+    graphics.stroke({
+      color: styles.strokeColor,
+      width: styles.strokeWidth,
+      alpha: styles.strokeAlpha,
+    });
+  }
+}
+
+function drawOutlinePath(graphics, points) {
+  if (!Array.isArray(points) || points.length < 3) return false;
+  graphics.moveTo(points[0].x, points[0].y);
+  for (let index = 1; index < points.length; index += 1) {
+    graphics.lineTo(points[index].x, points[index].y);
+  }
+  graphics.lineTo(points[0].x, points[0].y);
+  return true;
+}
+
+function isPointInHitAreas(point, hitAreas) {
+  return hitAreas.some((area) => (
+    point.x >= area.x &&
+    point.x <= area.x + area.width &&
+    point.y >= area.y &&
+    point.y <= area.y + area.height
+  ));
+}
+
+function getHitAreaSize(target) {
+  return (target.hitAreas ?? [target.bounds]).reduce(
+    (total, area) => total + area.width * area.height,
+    0,
+  );
 }
 
 function clamp(value, min, max) {

@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-05-31
+Last reconciled: 2026-06-01
 
 ## Purpose
 
@@ -55,14 +55,154 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-29D Four-Corner Translation / Composition Brief is complete as docs-only composition and boundary planning. Batu accepted MVP-29C as `proceed-to-mvp-29d-with-limits`. MVP-29D exit verdict is `proceed-to-mvp-29e-with-limits`: the four-corner composition is NW Grillpoint Deli, NE McDonald's, SW Dunkin', SE Citizens Bank, plus Greenpoint G station cues; all candidates remain `ready-with-limits`; Dunkin is viable only under Batu's narrow MVP-only SW Google-derived reference exception; Greenpoint G has one SE cue eligible for exact cue-placement planning at review/demo scale while NW/SW cues remain symbolic/context-only or blocked unless later verified. MVP-22C Stage B Acceptance Polish + Screenshot QA Recovery remains accepted complete as one-corner proof evidence, but it is not sufficient for revised MVP completion. Required MVP-22 screenshot QA remains recovered proof evidence. MVP-21 remains accepted only as `approved-reviewable-limited-fallback`; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-29E Narrow Corrective Pass is complete for Batu review. Batu directly opened the narrow pass after reviewing the focused MVP-29E revision.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance or revision of MVP-29D `proceed-to-mvp-29e-with-limits`, then MVP-29E. MVP-30 QA/demo freeze is future-only after the full four-corner scene exists.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the narrow MVP-29E corrective pass output. MVP-30 QA/demo freeze is future-only after Batu accepts the four-corner raster/app output and opens any required full QA recovery.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+
+### 2026-06-01 - MVP-29E Narrow Hover / Crosswalk / Subway Corrective Pass
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Fix only hover outline geometry, crosswalk geometry, and Citizens/Dunkin subway placement.
+- Preserve the current four-corner scene concept, real business names/signage/logos, business set, UI structure, cards, labels, and overall visual direction.
+- Do not redesign, replace the renderer, open new scope, rewrite copy, or commit.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-overview.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-selected-card.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-hotspot-qa-outline.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/mobile-selected-card-containment.jpg`
+- `src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png`
+- `src/mvpPlaceData.js`
+
+Verification:
+- Inspected the revised raster plate.
+- Captured desktop overview, desktop selected-card, desktop QA/hotspot outline, and mobile selected-card containment screenshots.
+- Browser console review during screenshot capture: no warnings or errors reported.
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Hover/QA outline geometry was tightened around visible storefront/place geometry in the ARC-003 direction.
+- Crosswalk striping was corrected toward the bird's-eye reference and prior generated target.
+- Grillpoint subway remained in place, while Dunkin and Citizens subway cues moved to the Greenpoint Ave side.
+- No business set, UI structure, cards, labels, renderer, or unrelated copy was intentionally changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the narrow MVP-29E corrective pass output.
+- Full MVP-29G screenshot QA recovery, MVP-30 QA/demo freeze, production visual assets, exact geometry, production data, public-release claims, and production pipeline decisions remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the narrow MVP-29E corrective pass output and holds later work pending explicit approval.
+
+### 2026-06-01 - MVP-29E Focused Geometry / Subway / Hover Revision
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Preserve the current MVP-29E direction, business set, product structure, raster-first approach, density, mood, mobile containment, and interaction model.
+- Keep real business names/signage/logos moving forward per Batu's revision instruction.
+- Revise only the intersection geometry, four crosswalk connections, Greenpoint G subway entrance cue placement, hotspot framing, hover/selected/QA outline styling, review packet, and required screenshot evidence.
+- Do not open new MVP scope, replace the renderer, redesign the app, or commit.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`
+- `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-overview.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-selected-card.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-hotspot-qa-outline.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/mobile-selected-card-containment.jpg`
+- `src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png`
+- `src/PlaceholderWorld.jsx`
+- `src/mvpPlaceData.js`
+
+Verification:
+- Inspected the revised raster plate.
+- Captured desktop overview, desktop selected-card, desktop QA/hotspot outline, and mobile selected-card containment screenshots.
+- Browser console review during screenshot capture: no warnings or errors reported.
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- The raster scene now reads as a cleaner perpendicular Manhattan Ave x Greenpoint Ave four-corner intersection with four crosswalks connecting corner-to-corner.
+- Greenpoint G entrance cues now sit on the Greenpoint Ave side next to Grillpoint, Dunkin', and Citizens at review/demo scale.
+- The app retains the existing interaction shell and active targets while updating marker/hotspot framing to the revised raster.
+- Hover, selected, and QA states now use place-specific outline paths inspired by ARC-003 instead of generic rectangle-only callouts.
+- Revised screenshots and the review packet record the geometry, crosswalk, subway, and hover-state pass.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the focused MVP-29E revised output.
+- Batu owns whether any additional raster art pass is needed for exactness, visual taste, subway cue placement, or hotspot alignment.
+- Full MVP-29G screenshot QA recovery, MVP-30 QA/demo freeze, production visual assets, exact geometry, production data, public-release claims, and production pipeline decisions remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the focused MVP-29E revised output and holds later work pending explicit approval.
+
+### 2026-06-01 - MVP-29E Four-Corner Raster Scene Production / App Integration
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Commit the accepted four-corner docs/reference reset before implementation.
+- Produce one review-only raster-first Manhattan Ave x Greenpoint Ave four-corner scene.
+- Integrate the scene into the existing app shell with hotspots/cards for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Preserve truth-safe cards, non-production claims, and blocked exactness limits.
+- Capture basic review screenshots without opening the full MVP-29G screenshot QA phase.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`
+- `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-overview.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-selected-card.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/desktop-hotspot-qa-outline.jpg`
+- `docs/review-screenshots/mvp-29e-four-corner-raster-scene-production/mobile-selected-card-containment.jpg`
+- `src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png`
+- `src/mvpPlaceData.js`
+
+Verification:
+- Pre-implementation reset commit: `f5bdd9d docs: reset MVP to four-corner reference path`.
+- `npm run build`
+- Local browser review at `http://127.0.0.1:5173/`
+- Browser console review during screenshot capture: no warnings or errors reported.
+- Basic desktop overview, selected-card, QA/hotspot outline, and mobile selected-card containment screenshots captured.
+- `git diff --check`
+
+Outcome:
+- The app's active review scene now uses a four-corner raster plate instead of the MVP-22 single-corner plate.
+- The active app targets are Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Cards use neutral source-backed review copy with source URLs, last verified dates, and unofficial-map disclaimers.
+- SW Dunkin remains governed by Batu's narrow MVP-only exception; no SW Google-derived image was used as generation input.
+- Greenpoint G SE cue is represented at review/demo scale, while exact station geometry and NW/SW exact cue placement remain blocked.
+- MVP-29E basic screenshots exist, but full MVP-29G screenshot QA and MVP-30 QA/demo freeze remain unopened.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-29E raster/app output.
+- Batu owns whether the raster needs another art pass for brand simplification, storefront specificity, sign readability, cue density, or visual taste.
+- Batu owns whether the next task is a revision pass, full MVP-29G screenshot QA recovery, or another bounded gate.
+- Production visual assets, exact geometry, production data, public-release claims, and production pipeline decisions remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of MVP-29E and holds later work pending explicit approval.
 
 ### 2026-05-31 - MVP-29D Four-Corner Translation / Composition Brief
 
