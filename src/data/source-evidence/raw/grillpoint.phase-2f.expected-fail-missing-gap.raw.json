@@ -1,9 +1,9 @@
 {
   "schemaVersion": "local-source-evidence-raw.v0.1",
-  "fixtureId": "manhattan-greenpoint-ave-phase-2e-grillpoint-source-evidence",
-  "status": "review-only-ingestion-spike",
+  "fixtureId": "manhattan-greenpoint-ave-phase-2f-grillpoint-expected-fail",
+  "status": "review-only-parity-failure-fixture",
   "reviewedOn": "2026-06-01",
-  "notes": "Local raw-input fixture for Phase 2E. This is an offline sample for converter validation only; it is not scraped, fetched, or used by the app runtime.",
+  "notes": "Expected-fail raw fixture for Phase 2F parity verification. It intentionally omits a preserved uncertainty gap from the Phase 2D fixture.",
   "records": [
     {
       "id": "evidence-grillpoint-identity-address-review",
@@ -47,8 +47,7 @@
         "No ratings, reviews, hours, delivery, ownership, popularity, quality, or promotional claims are used."
       ],
       "remainingGaps": [
-        "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate.",
-        "Parcel/tax-lot and building-footprint geometry remain unresolved for this MVP slice."
+        "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate."
       ]
     }
   ]

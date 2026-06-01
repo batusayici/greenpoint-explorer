@@ -15,12 +15,17 @@ async function main() {
   const inputPath = resolve(repoRoot, requiredOption(options, "input"));
   const manifestPath = resolve(repoRoot, requiredOption(options, "manifest"));
   const outputPath = options.output ? resolve(repoRoot, options.output) : null;
+  const comparePath = options["compare-to"] ? resolve(repoRoot, options["compare-to"]) : null;
 
   const rawFixture = await readJson(inputPath, "raw evidence input");
   const manifest = validateSceneManifest(await readJson(manifestPath, "scene manifest"));
   const fixture = convertRawFixture(rawFixture);
 
   validateConvertedFixture(fixture, manifest);
+  if (comparePath) {
+    const expectedFixture = await readJson(comparePath, "comparison source evidence fixture");
+    if (!compareFixtureParity(fixture, expectedFixture)) return;
+  }
 
   const output = `${JSON.stringify(fixture, null, 2)}\n`;
   if (outputPath) {
@@ -29,6 +34,71 @@ async function main() {
   } else {
     process.stdout.write(output);
   }
+}
+
+function compareFixtureParity(generatedFixture, expectedFixture) {
+  assertObject(expectedFixture, "comparison fixture");
+  assertArray(expectedFixture.records, "comparison fixture.records");
+
+  const expectedRecords = new Map(expectedFixture.records.map((record) => [record.id, record]));
+  const failures = [];
+
+  for (const generatedRecord of generatedFixture.records) {
+    const expectedRecord = expectedRecords.get(generatedRecord.id);
+    if (!expectedRecord) {
+      failures.push(`missing expected record for generated id "${generatedRecord.id}"`);
+      continue;
+    }
+
+    compareField(failures, generatedRecord, expectedRecord, "id", "id");
+    compareField(failures, generatedRecord, expectedRecord, "targetIds", "target id");
+    compareField(failures, generatedRecord, expectedRecord, "placeIds", "placeId");
+    compareField(failures, generatedRecord, expectedRecord, "sourceLabel", "source title/name");
+    compareField(failures, generatedRecord, expectedRecord, "sourceUrl", "source url");
+    compareField(failures, generatedRecord, expectedRecord, "sourceType", "evidence kind/category");
+    compareField(failures, generatedRecord, expectedRecord, "usageStatus", "usage status");
+    compareField(failures, generatedRecord, expectedRecord, "claimMappings", "supported claims/copy fields");
+    compareField(failures, generatedRecord, expectedRecord, "remainingGaps", "preserved uncertainty/gap fields");
+    compareField(failures, generatedRecord, expectedRecord, "qaNotes", "review QA notes");
+  }
+
+  if (failures.length) {
+    console.error(`FAIL source evidence parity check: ${failures.length} mismatch(es).`);
+    for (const failure of failures) console.error(`- ${failure}`);
+    process.exitCode = 1;
+    return false;
+  }
+
+  console.log(`PASS source evidence parity check: ${generatedFixture.records.length} generated record(s) matched.`);
+  return true;
+}
+
+function compareField(failures, generatedRecord, expectedRecord, key, label) {
+  const generatedValue = stableComparable(generatedRecord[key]);
+  const expectedValue = stableComparable(expectedRecord[key]);
+  if (generatedValue !== expectedValue) {
+    failures.push([
+      `${generatedRecord.id} ${label} mismatch`,
+      `generated ${key}: ${generatedValue}`,
+      `expected ${key}: ${expectedValue}`,
+    ].join("; "));
+  }
+}
+
+function stableComparable(value) {
+  if (Array.isArray(value)) return JSON.stringify(value);
+  if (value && typeof value === "object") return JSON.stringify(sortObject(value));
+  return JSON.stringify(value);
+}
+
+function sortObject(value) {
+  if (Array.isArray(value)) return value.map(sortObject);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(
+    Object.keys(value)
+      .sort()
+      .map((key) => [key, sortObject(value[key])]),
+  );
 }
 
 function convertRawFixture(rawFixture) {
