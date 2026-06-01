@@ -1,8 +1,14 @@
 const REQUIRED_MANIFEST_VERSION = "0.1";
+const REQUIRED_EVIDENCE_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
 const LEGACY_JPEG_EXTENSION = "." + "jpeg";
 
-export function loadMvpSceneFromManifest(manifest, assetSrcById) {
+export function loadMvpSceneFromManifest(manifest, assetSrcById, sourceEvidenceFixture = null) {
   const validatedManifest = validateSceneManifest(manifest);
+  const manifestIndexes = buildManifestIndexes(validatedManifest);
+  const validatedEvidenceFixture = sourceEvidenceFixture
+    ? validateSourceEvidenceFixture(sourceEvidenceFixture, validatedManifest, manifestIndexes)
+    : null;
+  const sourceEvidenceIndex = buildSourceEvidenceIndex(validatedEvidenceFixture);
   const primaryAsset = validatedManifest.scene.assets.find(
     (asset) => asset.role === "primary-raster-plate",
   );
@@ -23,7 +29,6 @@ export function loadMvpSceneFromManifest(manifest, assetSrcById) {
       },
     ]),
   );
-  const manifestIndexes = buildManifestIndexes(validatedManifest);
 
   return {
     manifestId: validatedManifest.sceneId,
@@ -41,14 +46,14 @@ export function loadMvpSceneFromManifest(manifest, assetSrcById) {
       sourcePath: primaryAsset.sourcePath,
     },
     sourceRefs,
-    manifestQA: buildSceneQA(validatedManifest),
+    manifestQA: buildSceneQA(validatedManifest, validatedEvidenceFixture),
     targets: validatedManifest.scene.objects.map((object) => ({
       ...object.appTarget,
       manifestObjectId: object.id,
       manifestPlaceId: object.placeId,
       manifestAnchorId: object.anchorId,
       claimStatus: object.claimStatus,
-      manifestQA: buildTargetQA(object, validatedManifest, manifestIndexes),
+      manifestQA: buildTargetQA(object, validatedManifest, manifestIndexes, sourceEvidenceIndex),
     })),
   };
 }
@@ -65,7 +70,7 @@ function buildManifestIndexes(manifest) {
   };
 }
 
-function buildSceneQA(manifest) {
+function buildSceneQA(manifest, evidenceFixture) {
   return {
     manifestId: manifest.sceneId,
     blockId: manifest.blockId,
@@ -74,10 +79,16 @@ function buildSceneQA(manifest) {
     transform: manifest.scene.transform,
     qa: manifest.qa,
     overrideCount: manifest.overrides.length,
+    sourceEvidence: evidenceFixture ? {
+      fixtureId: evidenceFixture.fixtureId,
+      status: evidenceFixture.status,
+      reviewedOn: evidenceFixture.reviewedOn,
+      recordCount: evidenceFixture.records.length,
+    } : null,
   };
 }
 
-function buildTargetQA(object, manifest, indexes) {
+function buildTargetQA(object, manifest, indexes, evidenceIndex) {
   const place = indexes.placesById.get(object.placeId);
   const business = place?.businessId ? indexes.businessesById.get(place.businessId) : null;
   const addressRecords = (place?.addressIds ?? [])
@@ -109,6 +120,7 @@ function buildTargetQA(object, manifest, indexes) {
     ...storefrontRecords.flatMap((record) => record.sourceIds ?? []),
   ]);
   const sources = [...sourceIds].map((id) => indexes.sourcesById.get(id)).filter(Boolean);
+  const sourceEvidence = collectTargetEvidence(object, place, evidenceIndex);
 
   return {
     object: {
@@ -163,6 +175,20 @@ function buildTargetQA(object, manifest, indexes) {
       notSupported: source.claimTypesNotSupported,
       confidenceNotes: source.confidenceNotes,
     })),
+    sourceEvidence: sourceEvidence.map((record) => ({
+      id: record.id,
+      sourceType: record.sourceType,
+      sourceLabel: record.sourceLabel,
+      sourceUrl: record.sourceUrl,
+      capturedOn: record.capturedOn,
+      reviewedOn: record.reviewedOn,
+      usageStatus: record.usageStatus,
+      confidence: record.confidence,
+      sourceRecordIds: record.sourceRecordIds,
+      claimMappings: record.claimMappings,
+      qaNotes: record.qaNotes,
+      remainingGaps: record.remainingGaps,
+    })),
     overrides: relatedOverrides.map((override) => ({
       id: override.id,
       category: override.category,
@@ -180,6 +206,39 @@ function buildTargetQA(object, manifest, indexes) {
       hiddenManualFixes: manifest.qa.hiddenManualFixes,
     },
   };
+}
+
+function buildSourceEvidenceIndex(fixture) {
+  const index = {
+    recordsById: new Map(),
+    recordsByPlaceId: new Map(),
+    recordsByTargetId: new Map(),
+  };
+  if (!fixture) return index;
+
+  for (const record of fixture.records) {
+    index.recordsById.set(record.id, record);
+    for (const placeId of record.placeIds) appendIndexedRecord(index.recordsByPlaceId, placeId, record);
+    for (const targetId of record.targetIds) appendIndexedRecord(index.recordsByTargetId, targetId, record);
+  }
+
+  return index;
+}
+
+function appendIndexedRecord(index, id, record) {
+  if (!index.has(id)) index.set(id, []);
+  index.get(id).push(record);
+}
+
+function collectTargetEvidence(object, place, evidenceIndex) {
+  const records = [
+    ...(evidenceIndex.recordsByTargetId.get(object.appTarget.id) ?? []),
+    ...(evidenceIndex.recordsByPlaceId.get(object.placeId) ?? []),
+    ...((place?.sourceEvidenceIds ?? [])
+      .map((id) => evidenceIndex.recordsById.get(id))
+      .filter(Boolean)),
+  ];
+  return [...new Map(records.map((record) => [record.id, record])).values()];
 }
 
 function indexById(records) {
@@ -249,6 +308,58 @@ export function validateSceneManifest(manifest) {
   assertNoLegacyJpegReferences(manifest);
 
   return manifest;
+}
+
+export function validateSourceEvidenceFixture(fixture, manifest, indexes = buildManifestIndexes(manifest)) {
+  assertObject(fixture, "Source evidence fixture");
+  assertEqual(fixture.schemaVersion, REQUIRED_EVIDENCE_SCHEMA_VERSION, "sourceEvidence.schemaVersion");
+  assertString(fixture.fixtureId, "sourceEvidence.fixtureId");
+  assertString(fixture.status, "sourceEvidence.status");
+  assertString(fixture.reviewedOn, "sourceEvidence.reviewedOn");
+
+  const evidenceIds = collectIds(fixture.records, "sourceEvidence.records");
+  const targetIds = new Set(manifest.scene.objects.map((object) => object.appTarget.id));
+  const sourceIds = indexes.sourcesById;
+
+  for (const record of fixture.records) {
+    assertArray(record.targetIds, `source evidence ${record.id}.targetIds`);
+    assertReferences(record.targetIds, targetIds, `source evidence ${record.id}.targetIds`);
+    assertReferences(record.placeIds, indexes.placesById, `source evidence ${record.id}.placeIds`);
+    assertReferences(record.sourceRecordIds, sourceIds, `source evidence ${record.id}.sourceRecordIds`);
+    assertString(record.sourceType, `source evidence ${record.id}.sourceType`);
+    assertString(record.sourceLabel, `source evidence ${record.id}.sourceLabel`);
+    assertString(record.sourceUrl, `source evidence ${record.id}.sourceUrl`);
+    assertString(record.capturedOn, `source evidence ${record.id}.capturedOn`);
+    assertString(record.reviewedOn, `source evidence ${record.id}.reviewedOn`);
+    assertString(record.usageStatus, `source evidence ${record.id}.usageStatus`);
+    assertObject(record.confidence, `source evidence ${record.id}.confidence`);
+    assertString(record.confidence.value, `source evidence ${record.id}.confidence.value`);
+    assertString(record.confidence.rationale, `source evidence ${record.id}.confidence.rationale`);
+    assertArray(record.claimMappings, `source evidence ${record.id}.claimMappings`);
+    assertArray(record.qaNotes, `source evidence ${record.id}.qaNotes`);
+    assertArray(record.remainingGaps, `source evidence ${record.id}.remainingGaps`);
+
+    for (const mapping of record.claimMappings) {
+      assertObject(mapping, `source evidence ${record.id}.claimMappings item`);
+      assertString(mapping.claimId, `source evidence ${record.id}.claimMappings.claimId`);
+      assertString(mapping.manifestPath, `source evidence ${record.id}.claimMappings.manifestPath`);
+      assertString(mapping.claimType, `source evidence ${record.id}.claimMappings.claimType`);
+      assertString(mapping.claimValue, `source evidence ${record.id}.claimMappings.claimValue`);
+      assertString(mapping.supportLevel, `source evidence ${record.id}.claimMappings.supportLevel`);
+      assertString(mapping.confidence, `source evidence ${record.id}.claimMappings.confidence`);
+      assertString(mapping.notes, `source evidence ${record.id}.claimMappings.notes`);
+    }
+  }
+
+  for (const place of manifest.places) {
+    if (place.sourceEvidenceIds) {
+      assertReferences(place.sourceEvidenceIds, evidenceIds, `place ${place.id}.sourceEvidenceIds`);
+    }
+  }
+
+  assertNoLegacyJpegReferences(fixture, "Source evidence fixture");
+
+  return fixture;
 }
 
 function validateAppTarget(target, objectId, sourceIds) {

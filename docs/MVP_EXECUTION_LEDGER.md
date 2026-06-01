@@ -55,14 +55,65 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2C Manifest QA Inspector is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2D Source Evidence Fixture is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2C manifest QA inspector. Raster revisions, broader app refactor, ingestion scripts, generated scene data beyond the current review manifest, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2D source-evidence fixture and QA display. Raster revisions, broader app refactor, ingestion scripts, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2D Source Evidence Fixture
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Add a small review-only source-evidence fixture for the current MVP slice, focused on Grillpoint Deli and Greenpoint Ave G station context.
+- Keep reviewed evidence records separate from the scene manifest, validate fixture-to-manifest mappings, and surface mapped evidence through the existing QA inspector.
+- Preserve existing cards, selected state, hover/target affordances, pan/zoom, QA outlines, and review UI behavior.
+- Do not add a production ingestion pipeline, scraping, external app-code API calls, new places, raster/art generation, package/tooling changes, exact-geometry claims, or broad refactors.
+
+Files changed:
+- `src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json`
+- `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+- `src/sceneManifest.js`
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/review-screenshots/phase-2d-source-evidence-fixture/default-scene.jpg`
+- `docs/review-screenshots/phase-2d-source-evidence-fixture/selected-grillpoint-source-evidence.jpg`
+- `docs/review-screenshots/phase-2d-source-evidence-fixture/selected-greenpoint-g-source-evidence.jpg`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- Browser preview at `http://127.0.0.1:5173/`
+- Default scene screenshot
+- Selected Grillpoint card with source-evidence fixture record visible
+- Selected Greenpoint G card with evidence-backed context plus remaining approximate/blocked field visible
+- `git diff --check`
+- `git diff --cached --check`
+- Active app/data legacy JPEG-extension reference check.
+- Intentional-file staging review.
+
+Outcome:
+- The app now loads a separate review-only source-evidence fixture alongside the Phase 2B manifest.
+- The manifest adapter validates evidence schema, target/place/source mappings, claim mappings, confidence, usage status, captured/reviewed dates, QA notes, and remaining gaps.
+- The manifest links Grillpoint Deli and Greenpoint Ave G place records to source-evidence records without moving raw/reviewed evidence into the manifest.
+- The selected-card QA inspector now shows source-evidence rows with evidence-backed claim mappings and remaining gaps while preserving Phase 2C manifest QA behavior.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2D fixture shape and QA display.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, ingestion, and broader debug/provenance tooling remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2D source-evidence fixture.
+- If accepted, Batu may open a later bounded Phase 2 task for normalized source-record expansion, geometry mapping, QA refinement, screenshot regression coverage, or a deliberately scoped ingestion spike.
 
 ### 2026-06-01 - Phase 2C Manifest QA Inspector
 

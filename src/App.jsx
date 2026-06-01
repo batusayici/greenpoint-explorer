@@ -165,6 +165,7 @@ export default function App() {
 
 function ManifestQAInspector({ qa, isOpen }) {
   const primarySources = qa.sources.slice(0, 4);
+  const sourceEvidence = qa.sourceEvidence ?? [];
   const missingData = qa.sceneQA.missingData.slice(0, 3);
   const ambiguity = qa.sceneQA.ambiguity.slice(0, 3);
   const blockedClaims = qa.sceneQA.blockedClaims.slice(0, 3);
@@ -245,6 +246,39 @@ function ManifestQAInspector({ qa, isOpen }) {
             </p>
           ))}
         </section>
+
+        {sourceEvidence.length ? (
+          <section className="qa-section qa-evidence-section">
+            <h3>Source Evidence Fixture</h3>
+            {sourceEvidence.map((record) => (
+              <article className="qa-evidence-record" key={record.id}>
+                <p>
+                  <strong>{record.sourceLabel}</strong>
+                  {" | "}
+                  {record.sourceType}
+                  {" | "}
+                  {record.usageStatus}
+                  {" | reviewed "}
+                  {record.reviewedOn}
+                  {" | "}
+                  {formatConfidence(record.confidence)}
+                </p>
+                {record.claimMappings.map((mapping) => (
+                  <p key={mapping.claimId}>
+                    {mapping.claimType}: {mapping.claimValue}
+                    {" | "}
+                    {mapping.supportLevel}
+                    {" | confidence "}
+                    {mapping.confidence}
+                  </p>
+                ))}
+                {record.remainingGaps.length ? (
+                  <QAList items={record.remainingGaps.slice(0, 2)} />
+                ) : null}
+              </article>
+            ))}
+          </section>
+        ) : null}
 
         {qa.overrides.length ? (
           <section className="qa-section qa-warning">

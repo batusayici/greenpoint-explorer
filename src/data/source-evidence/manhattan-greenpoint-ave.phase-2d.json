@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "source-evidence-fixture.v0.1",
+  "fixtureId": "manhattan-greenpoint-ave-phase-2d-source-evidence",
+  "status": "review-only-spike",
+  "reviewedOn": "2026-06-01",
+  "notes": "Fixture-driven Phase 2D source-evidence spike. Records are reviewed evidence summaries, not a production ingestion pipeline.",
+  "records": [
+    {
+      "id": "evidence-grillpoint-identity-address-review",
+      "targetIds": [
+        "grillpoint-deli"
+      ],
+      "placeIds": [
+        "place-grillpoint-deli"
+      ],
+      "sourceRecordIds": [
+        "restaurantji-grillpoint"
+      ],
+      "sourceType": "reviewed-secondary-directory-page",
+      "sourceLabel": "Restaurantji page for Grillpoint Deli",
+      "sourceUrl": "https://www.restaurantji.com/ny/brooklyn/grillpoint-deli-/",
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-01",
+      "usageStatus": "review-only-claim-support",
+      "confidence": {
+        "value": "medium",
+        "rationale": "Supports review-card identity, category, and address context; does not support exact frontage, facade, or entrance placement."
+      },
+      "claimMappings": [
+        {
+          "claimId": "claim-grillpoint-display-name",
+          "manifestPath": "places.place-grillpoint-deli.displayName",
+          "claimType": "business-identity",
+          "claimValue": "Grillpoint Deli",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium",
+          "notes": "Used only for review-card identity; not a production business-record claim."
+        },
+        {
+          "claimId": "claim-grillpoint-address-context",
+          "manifestPath": "addresses.address-grillpoint-deli.normalizedAddress",
+          "claimType": "address-context",
+          "claimValue": "903 Manhattan Ave, Brooklyn, NY 11222",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium",
+          "notes": "Supports address text in the selected card, not exact raster address placement."
+        }
+      ],
+      "qaNotes": [
+        "Secondary source remains restricted to review-only factual card copy.",
+        "No ratings, reviews, hours, delivery, ownership, popularity, quality, or promotional claims are used."
+      ],
+      "remainingGaps": [
+        "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate.",
+        "Parcel/tax-lot and building-footprint geometry remain unresolved for this MVP slice."
+      ]
+    },
+    {
+      "id": "evidence-greenpoint-g-station-context-review",
+      "targetIds": [
+        "greenpoint-g-subway"
+      ],
+      "placeIds": [
+        "place-greenpoint-g-subway"
+      ],
+      "sourceRecordIds": [
+        "mta-greenpoint-accessibility",
+        "mta-g-line-map"
+      ],
+      "sourceType": "reviewed-official-transit-context",
+      "sourceLabel": "MTA Greenpoint Av station context sources",
+      "sourceUrl": "https://www.mta.info/maps/subway-line-maps/g-line",
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-01",
+      "usageStatus": "review-only-context-support",
+      "confidence": {
+        "value": "medium-high",
+        "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."
+      },
+      "claimMappings": [
+        {
+          "claimId": "claim-greenpoint-g-station-area-context",
+          "manifestPath": "places.place-greenpoint-g-subway.displayName",
+          "claimType": "transit-context",
+          "claimValue": "Greenpoint G subway",
+          "supportLevel": "supports-station-context",
+          "confidence": "medium-high",
+          "notes": "Supports station-area context used by the review-only transit cue."
+        },
+        {
+          "claimId": "claim-greenpoint-g-greenpoint-ave-side-cue",
+          "manifestPath": "scene.anchors.anchor-greenpoint-g-subway",
+          "claimType": "symbolic-scene-placement",
+          "claimValue": "Review-scale cue on the Greenpoint Ave side",
+          "supportLevel": "context-only",
+          "confidence": "low",
+          "notes": "MTA context does not resolve exact stair, elevator, entrance, or station-footprint geometry."
+        }
+      ],
+      "qaNotes": [
+        "Official transit sources are used for station-area context only.",
+        "The app must continue labeling the scene cue symbolic/approximate until exact geometry is separately sourced and approved."
+      ],
+      "remainingGaps": [
+        "Exact entrance coordinates, stair alignment, station footprint, and production transit mapping remain blocked.",
+        "The authored raster cue remains review-scale and not a source-derived transit geometry layer."
+      ]
+    }
+  ]
+}
