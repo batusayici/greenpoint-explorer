@@ -20,6 +20,12 @@ It preserves the planning intent of earlier place-data notes, but it does not de
 - Manual overrides must be explicit and approved.
 - Multi-tenant buildings must not be flattened into misleading single-place assumptions.
 
+Current four-corner supersession note:
+
+- This document remains conceptual only and does not define an implementation interface.
+- For the current Manhattan Ave x Greenpoint Ave four-corner MVP path, the active truth-treatment vocabulary is the MVP-29A/MVP-29B and `docs/MVP_SCOPE.md` set: `verified`, `approximate`, `symbolic`, `context-only`, `omitted`, and `blocked`, with `needs-review` used in MVP-29B as a review-packet status.
+- These current statuses supplement the older conceptual fields below and should be used in review packets until a later approved implementation boundary defines runtime data.
+
 ## Place
 
 A `Place` represents a real or placeholder business, civic feature, or named point of interest that may appear as a card or marker.

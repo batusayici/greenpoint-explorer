@@ -11,6 +11,34 @@ This policy defines how Greenpoint Isometric Explorer treats public factual info
 
 It applies before static style-frame approval, final visual direction approval, app implementation, production visual assets, and real-place card production.
 
+Current four-corner supersession note:
+
+- For the current Manhattan Ave x Greenpoint Ave four-corner MVP path, MVP-29A/MVP-29B, `docs/MVP_SCOPE.md`, `docs/PLAN.md`, and `docs/CURRENT_EXECUTION_BRIEF.md` control the active candidate set and next gate sequence.
+- Public directories and map/business listings may corroborate identity, address, or current-status research, but they are not sufficient alone for exact placement, active-status finality, production representation, or public card finality.
+- Google/Street View/3D Tiles-derived stored imagery, extraction, tracing, texture reuse, training input, generation input, or facade-reference use remains blocked, except for Batu's narrow MVP-only SW Dunkin visual-reference exception described below.
+- Greenpoint G exact cue placement may be used only where supplied/approved reference photos clearly verify the cue's corner/orientation relationship. MTA text may support station context but must not be used alone to infer exact station geometry.
+
+## Narrow MVP-Only SW Dunkin Exception
+
+Batu approved one explicit exception because scaffolding prevents usable current field photos of the SW Dunkin corner.
+
+Allowed only under this exception:
+
+- Use Google-derived SW Dunkin reference material as human-reviewed input for stylized, truth-safe, non-production MVP review/demo-scale visual approximation.
+- Limit the use to the SW Dunkin reference gap for MVP-29C/MVP-29D planning and later review-only translation if Batu opens that scope.
+
+Still blocked:
+
+- General Google/Street View/3D Tiles visual-reference use.
+- Production use.
+- Texture extraction.
+- Tracing.
+- Stored facade asset reuse.
+- Training input.
+- Generation input.
+- Exact trademark, logo, or trade-dress reproduction.
+- Any exact facade, frontage/order, address-placement, or station-geometry claim without evidence and Batu approval.
+
 ## Source Hierarchy
 
 Use the strongest available source for the claim being made.
@@ -26,7 +54,7 @@ For buildings, lots, and address context:
 For businesses:
 
 1. The business's official website or official public profile.
-2. Google Places or equivalent manual lookup for current identity, address, and operating status.
+2. Official license, branch, location, or agency records where available.
 3. Other public directory or map references as secondary evidence.
 4. Manual street-level review.
 5. Batu approval for public representation when evidence is incomplete or conflicting.

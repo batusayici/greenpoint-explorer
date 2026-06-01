@@ -1,133 +1,110 @@
-# Current Execution Brief - MVP-22 Closed
+# Current Execution Brief - MVP-29D Translation / Composition Brief
 
-Status: `MVP-22 Grillpoint / Greenpoint Ave G Real Corner Vertical Slice` is accepted as complete and closed. MVP-22C polish and screenshot QA are complete.
+Status: Complete as docs-only MVP-29D translation/composition brief; no implementation opened and MVP-29E remains closed until Batu accepts or revises the limited proceed verdict.
 
-Owner boundary: Batu accepted MVP-22C as complete on 2026-05-31. Batu owns whether and when to open MVP-29 QA/demo freeze from a later current brief.
+Owner boundary: Batu accepted MVP-29C as `proceed-to-mvp-29d-with-limits` and opened MVP-29D. Batu owns final scope approval, candidate treatment decisions, visual-reference acceptance, brand/trade-dress decisions, public representation, public-interface approval, raster-production approval, and any future implementation gate.
 
-Codex must not proceed into MVP-29 QA/demo freeze, another renderer pass, raster regeneration, visual production expansion, exact facade reproduction, NE/SE/SW corners, production asset work, staging, or another commit unless Batu opens a later current brief.
+Codex must not render, regenerate raster art, change app source, touch `src/`, add targets, change app card copy, add screenshots, stage, commit, or open implementation from this brief.
 
-## Closed Outcome
+## Purpose
 
-Completed sequence:
+Record the MVP-29D translation/composition result before any raster production or app integration:
 
-- `MVP-22 Grillpoint / Greenpoint Ave G Real Corner Vertical Slice`
-- `MVP-22 Stage B Raster-First Vertical Slice`
-- `MVP-22C Stage B Acceptance Polish + Screenshot QA Recovery`
+- MVP-29C is accepted as `proceed-to-mvp-29d-with-limits`.
+- The active four-corner composition is NW Grillpoint Deli, NE McDonald's, SW Dunkin', SE Citizens Bank, plus Greenpoint G subway station cues.
+- MVP-29D translates that reference state into a truth-status map, candidate visual-treatment rules, subway cue rules, Dunkin exception handling, and MVP-29E boundary requirements.
+- MVP-22/MVP-22C remains proof evidence only, not final MVP art or final MVP completion.
 
-Artifacts:
+## Active Candidate Set
 
-- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
-- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/STAGE_B_IMPLEMENTATION_BRIEF.md`
-- `docs/mvp-review/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/generated/mvp-22-grillpoint-real-corner-slice.png`
-- `src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/README.md`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-overview.png`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-selected-grillpoint-card.png`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/desktop-hover-focus.png`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/qa-outline-hotspot.png`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/mobile-selected-card-containment.png`
-- `docs/review-screenshots/mvp-22-grillpoint-greenpoint-g-real-corner-vertical-slice/pan-zoom-stress.png`
+- NW: Grillpoint Deli.
+- NE: McDonald's.
+- SW: Dunkin'.
+- SE: Citizens Bank.
+- Station context: Greenpoint G subway.
 
-Summary:
+`Greenpoint Deli` is historical / archival / prior conflicting candidate language only. Do not treat `Greenpoint Deli` as the current active public label. Do not claim Greenpoint Deli and Grillpoint Deli are legally the same entity unless source evidence supports that specific claim.
 
-- MVP-22C is accepted as complete.
-- The final MVP-22 raster-first real-corner slice is preserved.
-- The raster was not regenerated during MVP-22C.
-- Earlier readable-sign candidates remain unused because their generated text was malformed.
-- The app card label remains `Grillpoint Deli`.
-- Visible factual card copy is tightened for product readability while staying truth-safe.
-- Greenpoint Av G remains nearby/adjacent transit context only.
-- The active data set has one factual Grillpoint card for this slice.
-- The hotspot/QA outline is narrowed to the storefront/corner slice.
-- Required MVP-22 screenshot evidence was captured without changing app code, raster art, card copy, hotspot data, styling, dependencies, or product scope.
+## MVP-29D Output
 
-## Screenshot QA Status
+Review packet:
 
-Screenshot QA is complete for MVP-22 review.
+- `docs/mvp-review/mvp-29d-four-corner-translation-composition-brief/README.md`
 
-Captured screenshots:
+Reconciled docs:
 
-- `desktop-overview.png`
-- `desktop-selected-grillpoint-card.png`
-- `desktop-hover-focus.png`
-- `qa-outline-hotspot.png`
-- `mobile-selected-card-containment.png`
-- `pan-zoom-stress.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
 
-Environment notes:
+## MVP-29D Exit Verdict
 
-- Local Vite ran on `http://127.0.0.1:5174/` because `5173` was already in use, and `curl -I` returned HTTP 200.
-- `npm run build` passes.
-- Local Playwright and Puppeteer are not installed, and no package installation was performed.
-- Direct Chrome headless still failed before producing a PNG in this environment, including with safe launch flags and an explicit temp user-data directory.
-- Direct Firefox headless was also unavailable for screenshot output in this sandboxed command path.
-- The reliable capture route was the Codex in-app browser connected to the local Vite server.
+Exit verdict:
 
-## Active Scene / Evidence State
+- `proceed-to-mvp-29e-with-limits`
 
-Active scene/place set:
+Reason:
 
-- `Grillpoint Deli` only as the MVP-22C real-corner card.
+- The four-corner composition is defined at planning level.
+- All four active business candidates can be included as `ready-with-limits` visual-planning subjects.
+- Greenpoint G SE cue can be planned as exact review/demo-scale cue placement from MVP-29C evidence; NW/SW cues remain symbolic/context-only or blocked unless later verified.
+- SW Dunkin remains viable only under Batu's narrow MVP-only, non-production, stylized Google-derived reference exception.
+- MVP-29E can be the next boundary task only after Batu accepts or revises MVP-29D.
 
-MVP-22 selected slice:
+## Current Treatment Readiness
 
-- One corner only: NW 903 Manhattan Ave / Grillpoint Deli candidate.
-- Factual card label: `Grillpoint Deli`.
-- Address copy: `903 Manhattan Ave, Brooklyn, NY 11222`.
-- Category: `Deli / food retail`.
-- Source URL for factual card copy: `https://www.restaurantji.com/ny/brooklyn/grillpoint-deli-/`.
-- Supporting transit source URLs:
-  - `https://www.mta.info/press-release/mta-announces-greenpoint-av-g-station-now-fully-accessible`
-  - `https://www.mta.info/accessibility/stations`
-- Last verified date: `2026-05-30`.
-- Subway treatment: Greenpoint Ave G as nearby/adjacent transit context only.
+- Grillpoint Deli: `ready-with-limits`; real card/label planning is supported, but exact facade, frontage/order, address placement, active-status finality, legal sameness with Greenpoint Deli, and direct subway-front adjacency remain blocked.
+- McDonald's: `ready-with-limits`; recognizable NE treatment is supported, but exact logo/trade-dress reproduction, exact facade/frontage/address placement, and promotional/public claims remain blocked.
+- Dunkin': `ready-with-limits` only under Batu's narrow MVP-only exception; stylized/non-production approximation is allowed, while production use, tracing, texture extraction, training input, exact trade dress, and general Google-derived use remain blocked.
+- Citizens Bank: `ready-with-limits`; SE bank/branch treatment is supported, but exact logo/trade-dress, branch/ATM service claims, exact facade/frontage/address placement, and promotional/public claims remain blocked.
+- Greenpoint G subway: `ready-with-limits`; exact SE cue placement is eligible for MVP-29E planning, while NW/SW cues remain symbolic/context-only or blocked.
 
-## Next Eligible State
+## Still Blocked
 
-Next recommended action:
+- MVP-29E before Batu accepts or revises MVP-29D.
+- MVP-30 QA/demo freeze before the full four-corner scene exists and has screenshot QA.
+- Rendering, raster regeneration, new visual assets, app integration, or production visual work.
+- `src/` changes, target additions, card-copy changes, hotspot changes, style changes, package/tooling changes, public-interface changes, staging, or commit.
+- Production assets, production asset direction, production asset pipeline, public-release claims, or production-readiness claims.
+- Live data, scraping, backend, CMS, analytics, deployment, CI, broad map coverage, accounts, persistence, or routing.
+- Google/Street View/3D Tiles-derived stored imagery, extraction, tracing, texture reuse, training input, generation input, or facade-reference use, except for Batu's narrow MVP-only SW Dunkin visual-reference exception for human-reviewed stylized approximation.
+- LiveXYZ-derived facade or art use.
+- Exact facade, exact address placement, exact storefront frontage/order, exact station geometry, exact subway entrance placement, direct `in front of Grillpoint` subway claims, ratings, reviews, `open now`, endorsement, or partnership claims unless evidence supports them and Batu approves.
 
-- Prepare `MVP-29 QA / Demo Freeze` as the next proposed current brief.
+## Next Actual Work
 
-MVP-29 may verify:
+Next recommended state:
 
-- QA checklist only.
-- Demo-readiness notes.
-- Accepted limitations.
-- Screenshot review references.
-- Truth-safety review.
-- Interaction smoke-check review.
+- Batu review/acceptance or revision of MVP-29D `proceed-to-mvp-29e-with-limits`.
+- If accepted, open `MVP-29E Four-Corner Raster Scene Production / Integration Boundary`.
 
-MVP-29 must not include:
+Needed before MVP-29E can open cleanly:
 
-- New visual production.
-- New corners.
-- Raster regeneration.
-- Code-native storefront/sign/facade art.
-- Live data, scraping, backend, CMS, analytics, deployment, CI, or broad map systems.
-- Production or public-release claims.
+- Batu acceptance or revision of the MVP-29D composition and truth-status map.
+- Decision whether MVP-29E should prefer one unified raster plate or allow layered/sprite composition.
+- Exact approved MVP-29E raster output path and file allowlist.
+- Approved input reference list and explicit exclusion of unreadable HEIF-wrapped files unless re-exported.
+- Candidate/cue label and sign-treatment decisions for raster production.
+- Confirmation that MVP-29E remains a boundary task unless Batu explicitly opens raster production in that phase.
 
-MVP-29 is not implemented by this closed brief.
+## Future Sequence
 
-## Still Forbidden Unless A Later Brief Opens Scope
+1. Batu review/acceptance or revision of MVP-29D `proceed-to-mvp-29e-with-limits`.
+2. `MVP-29E Four-Corner Raster Scene Production / Integration Boundary` only after Batu accepts or revises MVP-29D.
+3. `MVP-29F Four-Corner App Integration + Interaction Alignment`
+4. `MVP-29G Four-Corner Screenshot QA Recovery`
+5. `MVP-30 MVP QA / Demo Freeze`
+6. `MVP-31 MVP Completion / Post-MVP Parking`
 
-- MVP-29 QA/demo freeze implementation.
-- Raster regeneration.
-- Earlier readable-sign candidate use.
-- Another renderer pass.
-- Visual production expansion.
-- NE / SE / SW corner additions or parked NE/SE/SW reference use.
-- Four-corner integration.
-- Code-native storefront, building, road, sign, facade, prop, or texture art as a primary world surface.
-- New framework, renderer, package, build tooling, routing system, map system, architecture boundary, or public module/interface.
-- Production visual assets, production asset direction, or production asset pipeline.
-- Production real-place cards.
-- Exact facade, exact address placement, exact storefront frontage/order, exact station geometry, final factual card copy beyond this review slice, or public-release claims.
-- A claim that the subway entrance is directly in front of Grillpoint without stronger evidence and Batu approval.
-- Scraping, live data pipeline, backend, CMS, analytics, deployment, CI, persistence, or broad data pipeline.
-- Google/Street View/3D Tiles-derived stored imagery, extraction, tracing, texture reuse, training input, generation input, or facade-reference use.
-- LiveXYZ-derived facade/art use.
+## Stop Conditions
 
-## Decisions Reserved For Batu
+Stop and report a blocker if the next task would require:
 
-- Decide whether to open MVP-29 QA/demo freeze after this MVP-22 closeout commit.
-- Decide whether stronger evidence later supports any exact `in front of Grillpoint` station relationship.
+- Treating `Greenpoint Deli` as the active NW public label.
+- Claiming Greenpoint Deli and Grillpoint Deli are legally the same entity without source evidence.
+- Opening MVP-29E before Batu accepts or revises the MVP-29D limited proceed verdict.
+- Treating MVP-22/MVP-22C as sufficient for final MVP completion.
+- Opening QA/demo freeze before the full four-corner scene exists.
+- Source edits, app integration, target changes, raster work, screenshots, package/tooling changes, staging, or commit.
+- Real labels, real cards, storefront/sign/facade treatment, or subway placement without source-backed validation, reference review, and any required Batu exception.
+- Production/public-release claims or exact-geometry claims without evidence and Batu approval.

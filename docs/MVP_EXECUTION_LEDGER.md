@@ -55,14 +55,361 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: MVP-22C Stage B Acceptance Polish + Screenshot QA Recovery is accepted complete; the MVP-22 real-corner vertical slice sequence is closed. Required MVP-22 screenshot QA has been recovered. MVP-21 remains accepted only as `approved-reviewable-limited-fallback`; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
+- Current phase: MVP-29D Four-Corner Translation / Composition Brief is complete as docs-only composition and boundary planning. Batu accepted MVP-29C as `proceed-to-mvp-29d-with-limits`. MVP-29D exit verdict is `proceed-to-mvp-29e-with-limits`: the four-corner composition is NW Grillpoint Deli, NE McDonald's, SW Dunkin', SE Citizens Bank, plus Greenpoint G station cues; all candidates remain `ready-with-limits`; Dunkin is viable only under Batu's narrow MVP-only SW Google-derived reference exception; Greenpoint G has one SE cue eligible for exact cue-placement planning at review/demo scale while NW/SW cues remain symbolic/context-only or blocked unless later verified. MVP-22C Stage B Acceptance Polish + Screenshot QA Recovery remains accepted complete as one-corner proof evidence, but it is not sufficient for revised MVP completion. Required MVP-22 screenshot QA remains recovered proof evidence. MVP-21 remains accepted only as `approved-reviewable-limited-fallback`; MVP-17 remains accepted only as the product-facing raster interaction polish baseline, with the missing mobile selected-state containment screenshot recorded as an accepted evidence gap.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records MVP-22 closed and points to preparing MVP-29 QA / Demo Freeze as the next proposed brief. MVP-29 implementation remains unopened.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance or revision of MVP-29D `proceed-to-mvp-29e-with-limits`, then MVP-29E. MVP-30 QA/demo freeze is future-only after the full four-corner scene exists.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-05-31 - MVP-29D Four-Corner Translation / Composition Brief
+
+Status:
+- Complete as docs-only translation/composition brief.
+
+Scope:
+- Record Batu's acceptance of MVP-29C as `proceed-to-mvp-29d-with-limits`.
+- Translate the accepted MVP-29C reference verdict into a four-corner composition, truth-status map, candidate treatment rules, subway cue rules, Dunkin exception handling, and MVP-29E raster-boundary requirements.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, change app card copy, add screenshots, stage, commit, or open MVP-29E.
+
+Files changed:
+- `docs/mvp-review/mvp-29d-four-corner-translation-composition-brief/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control docs reviewed.
+- MVP-29A, MVP-29B, MVP-29C, MVP scope, art direction, visual artifact standards, place source policy, and place schema reviewed.
+- `git diff --check`
+
+Outcome:
+- MVP-29D exit verdict is `proceed-to-mvp-29e-with-limits`.
+- Four-corner composition is defined as NW Grillpoint Deli, NE McDonald's, SW Dunkin', SE Citizens Bank, plus Greenpoint G station cues.
+- Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway remain `ready-with-limits`.
+- Greenpoint G exact SE cue placement may be carried into MVP-29E boundary planning; NW/SW cues remain symbolic/context-only or blocked unless later verified.
+- Dunkin remains governed by Batu's narrow MVP-only, non-production, stylized Google-derived reference exception.
+- MVP-29E requirements now include exact raster output path decision, approved input references, label/sign treatment, file allowlist, card/marker/hotspot expectations, screenshot requirements, and unified-raster versus layered-export decision.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-29D limited proceed verdict before MVP-29E opens.
+- MVP-29E must decide whether it remains boundary-only or explicitly opens raster production.
+- MVP-29E must decide whether the first four-corner artifact is a single unified raster plate or a layered/sprite composition.
+- Exact facade, frontage/order, address placement, station geometry, production use, public-release claims, and exact trademark/trade-dress reproduction remain blocked unless later evidence and Batu approval support them.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review/acceptance or revision of MVP-29D `proceed-to-mvp-29e-with-limits`, then MVP-29E Four-Corner Raster Scene Production / Integration Boundary.
+
+### 2026-05-31 - MVP-29C Four-Corner Visual Reference Review
+
+Status:
+- Complete as docs-only visual-reference review.
+
+Scope:
+- Inspect the reconciled owned/approved/non-Google/MVP-exception reference inventory.
+- Determine visual readiness for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway before MVP-29D.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, change app card copy, add screenshots, stage, commit, or open MVP-29D.
+
+Files changed:
+- `docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control docs reviewed.
+- Reconciled JPG/JPEG/HEIF-wrapped inventory inspected with `file`.
+- Readable references visually inspected with local image viewer.
+- HEIF-wrapped NW references attempted and recorded as unsupported in this environment.
+- `git diff --check`
+
+Outcome:
+- MVP-29C exit verdict is `proceed-to-mvp-29d-with-limits`.
+- Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway are each `ready-with-limits` for MVP-29D planning.
+- Dunkin readiness depends on Batu's narrow MVP-only SW Google-derived reference exception and remains non-production, stylized, non-extractive, and non-trade-dress-exact.
+- Greenpoint G exact SE cue placement is eligible for MVP-29D planning from supplied/approved photos; NW and SW cues remain symbolic/context-only or blocked unless later verified.
+- NW HEIF-wrapped facade/wide/subway files remain unavailable for visual review in this environment and must not support exact NW facade/frontage/cue claims.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-29C limited proceed verdict before MVP-29D opens.
+- MVP-29D must define brand/trade-dress handling for McDonald's, Dunkin', Citizens Bank, and Grillpoint Deli.
+- Exact facade, frontage/order, address placement, station geometry, production use, public-release claims, and exact trademark/trade-dress reproduction remain blocked unless later evidence and Batu approval support them.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review/acceptance of MVP-29C `proceed-to-mvp-29d-with-limits`, then MVP-29D Four-Corner Translation / Composition Brief.
+
+### 2026-05-31 - MVP-29C Reference Inventory Reconciliation
+
+Status:
+- Complete as docs-only reference-inventory reconciliation; no visual completeness verdict updated.
+
+Scope:
+- Reconcile newly supplied JPG exports, deleted/replaced `.jpeg` references, restored Citizens facade reference, and active MVP-29C reference paths before visual-reference review.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, change app card copy, add screenshots, stage, commit, or open MVP-29D.
+
+Files changed:
+- `docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md`
+- `docs/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md`
+- `docs/mvp-review/parked-corner-reference-images/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Inventory reviewed for `docs/mvp-reference-images/`.
+- Inventory reviewed for `docs/mvp-review/parked-corner-reference-images/`.
+- Active MVP-29B/MVP-29C/control-doc reference paths searched.
+- Basic image format check run with `file` for all active JPG/JPEG references.
+- `git diff --check`
+- Stale path search for deleted `.jpeg` filenames.
+
+Outcome:
+- `southeast-citizens-facadeA.jpeg` exists and is a readable JPEG, so Batu's restore is reflected in active docs.
+- Replacement paths are recorded: `northeast-mcdonalds-facadeA.jpeg` -> `northeast-mcdonalds-facadeA.jpg`, `northeast-mcdonalds-wide.jpeg` -> `northeast-mcdonalds-wide.jpg`, `southeast-citizens-facadeB.jpeg` -> `southeast-citizens-facadeB.jpg`, `southeast-citizens-wide.jpeg` -> `southeast-citizens-wide.jpg`, and `southeast-subwayB.jpeg` -> `southeast-subwayB.jpg`.
+- Active docs no longer point to the deleted replacement-source `.jpeg` files.
+- NW facade/wide/subway files remain HEIF content with `.jpeg` extensions and should not be relied on for visual review unless the environment can inspect them or they are re-exported.
+- SW Dunkin/subway files remain JPEGs governed by Batu's narrow MVP-only Google-derived reference exception.
+
+Unresolved decisions:
+- MVP-29C visual-reference review still needs to evaluate the reconciled JPG/JPEG inventory.
+- Brand/trade-dress handling remains pending for McDonald's, Dunkin', and Citizens Bank.
+- Exact facade, frontage/order, address placement, station geometry, production use, public-release claims, and exact trademark/trade-dress reproduction remain blocked unless later evidence and Batu approval support them.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` continues to point to MVP-29C JPG/JPEG visual-reference review before MVP-29D.
+
+### 2026-05-31 - MVP-29C Batu Decision Revision
+
+Status:
+- Complete as docs-only revision; no implementation opened.
+
+Scope:
+- Record Batu's NW naming decision, SW Dunkin MVP-only visual-reference exception, Greenpoint G cue-placement rule, and JPG reference-review requirement.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, change app card copy, add screenshots, stage, commit, or open MVP-29D.
+
+Files changed:
+- `docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md`
+- `docs/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/DECISION_LOG.md`
+- `docs/DATA_FEASIBILITY.md`
+- `docs/PLACE_SOURCE_POLICY.md`
+- `docs/VISUAL_QA_CHECKLIST.md`
+- `docs/TASKS.md`
+
+Verification:
+- Required control docs and active MVP-29B/MVP-29C packets reviewed.
+- Local JPG reference exports checked for presence and file type.
+- `git diff --check`
+- Active-doc stale phrase search for the requested strings.
+
+Outcome:
+- MVP-29C revised verdict is `revise-after-jpg-reference-supply`.
+- Active NW candidate remains `Grillpoint Deli`; `Greenpoint Deli` remains archival/prior conflicting language only.
+- Dunkin is no longer blocked solely because SW references appear Google-derived; Batu's narrow MVP-only exception permits only human-reviewed, stylized, truth-safe, non-production review/demo-scale approximation.
+- Greenpoint G exact cue placement may be used only where supplied/approved reference photos clearly verify the cue's corner/orientation relationship; otherwise the cue remains symbolic, context-only, omitted, or blocked.
+- `docs/TASKS.md` is restored as a retired stub to avoid dangling active references.
+
+Unresolved decisions:
+- Batu must accept or revise the MVP-29C JPG reference review before MVP-29D opens.
+- Brand/trade-dress handling remains pending for McDonald's, Dunkin', and Citizens Bank.
+- Exact facade, frontage/order, address placement, station geometry, production use, public-release claims, and exact trademark/trade-dress reproduction remain blocked unless later evidence and Batu approval support them.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to JPG reference supply/review for MVP-29C before MVP-29D.
+
+### 2026-05-31 - MVP-29C Four-Corner Visual Reference Completeness Gate
+
+Status:
+- Complete as docs-only visual-reference completeness gate.
+
+Scope:
+- Accept MVP-29B with Batu's naming revision: the active NW candidate label is `Grillpoint Deli`.
+- Treat `Greenpoint Deli` as historical / archival / prior conflicting candidate language only.
+- Review owned/approved/non-Google visual-reference completeness for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, change app card copy, add screenshots, stage, commit, or open implementation.
+
+Files changed:
+- `docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md`
+- `docs/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/DECISION_LOG.md`
+- `docs/DATA_FEASIBILITY.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, MVP scope, MVP-29B packet, and reference inventory reviewed.
+- `docs/mvp-reference-images/` inventory checked with `find`, `file`, and image inspection where supported.
+- HEIC files stored with `.jpeg` extensions checked with `sips` for dimensions and format.
+- `git diff --check`
+
+Outcome:
+- Active NW label is now `Grillpoint Deli`.
+- `Greenpoint Deli` remains archival/prior conflicting language only and is not the active public label.
+- Historical MVP-29C initial verdict was `request-field-photos`, superseded by the MVP-29C Batu Decision Revision entry above.
+- Grillpoint Deli is ready for true-to-life review/demo visual treatment planning, with exact claims and production use still blocked.
+- McDonald's and Citizens Bank needed re-export/inspection and brand/trade-dress decisions before stronger treatment; later JPG exports are now recorded for review.
+- Superseded by Batu decision: Dunkin is now `MVP-exception-allowed pending stylized/non-production handling` for the narrow SW reference gap.
+- Superseded by Batu decision: Greenpoint G exact cue placement is allowed where supplied/approved photos clearly verify the cue; otherwise symbolic/context-only or blocked.
+
+Unresolved decisions:
+- Batu must accept or revise the MVP-29C reference-recovery verdict.
+- Superseded by Batu decision: SW Dunkin has a narrow MVP-only exception for stylized/non-production handling; later field photos remain preferred but are not the sole path.
+- Superseded by Batu decision: JPG re-exports are now the expected review inputs where supplied; undecodable HEICs should not be relied on.
+- Brand/trade-dress treatment decisions remain pending for McDonald's, Dunkin', and Citizens Bank.
+- Exact frontage, facade, address placement, station geometry, direct `in front of Grillpoint` subway claims, and public-release claims remain blocked unless evidence supports them and Batu approves.
+
+Next pointer:
+- Historical pointer only; superseded by `docs/CURRENT_EXECUTION_BRIEF.md` pointing to JPG reference supply/review for MVP-29C before MVP-29D.
+
+### 2026-05-31 - Post-MVP-29B Docs Review / Stale Cleanup
+
+Status:
+- Complete as docs-only review and stale-doc cleanup.
+
+Scope:
+- Confirm MVP-29B is internally consistent with MVP-29A.
+- Search active-orientation docs for stale one-corner MVP-22 QA/demo-freeze language.
+- Add small supersession notes only where stale docs could create active confusion.
+- Do not open MVP-29C, render, regenerate raster art, touch `src/`, add targets, add screenshots, stage, or commit.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/DECISION_LOG.md`
+- `docs/ART_DIRECTION.md`
+- `docs/VISUAL_QA_CHECKLIST.md`
+- `docs/PLACE_SOURCE_POLICY.md`
+- `docs/PLACE_SCHEMA.md`
+- `docs/DATA_FEASIBILITY.md`
+
+Verification:
+- Reviewed MVP-29A and MVP-29B packets, current control docs, MVP scope, decision log, art direction, visual artifact standards, visual QA checklist, place source policy, place schema, and data feasibility docs.
+- Root `README.md` was requested for review but does not exist in this repository.
+- `git diff --check`
+
+Outcome:
+- MVP-29B is ready for Batu review.
+- Superseded by MVP-29C: MVP-29C was the next recommended task at the time of this cleanup pass and has since been completed.
+- Active-orientation docs now point readers back to MVP-29A/MVP-29B, `docs/PLAN.md`, `docs/MVP_SCOPE.md`, and `docs/CURRENT_EXECUTION_BRIEF.md` for the current four-corner target.
+- Historical review artifacts were left intact unless they were active-orientation docs likely to confuse current execution.
+
+Unresolved decisions:
+- Superseded by MVP-29C: Batu accepted MVP-29B and resolved the NW active label as `Grillpoint Deli`.
+- Exact frontage, facade, address placement, station geometry, branded true-to-life treatment, and public-release claims remain blocked unless evidence supports them and Batu approves.
+
+Next pointer:
+- Historical pointer only; superseded by `docs/CURRENT_EXECUTION_BRIEF.md` pointing to JPG reference supply/review for MVP-29C before MVP-29D.
+
+### 2026-05-31 - MVP-29B Four-Corner Evidence + Business Validation Packet
+
+Status:
+- Complete as docs-only evidence validation packet.
+
+Scope:
+- Validate the active four-corner candidate set before visual-reference completeness, composition, raster work, app integration, screenshot QA, or demo freeze.
+- Record source status, corner placement risks, treatment recommendations, visual-reference readiness, subway cue limits, and blocked exact claims.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, change card copy, add screenshots, stage, commit, or open implementation.
+
+Files changed:
+- `docs/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, prior four-corner evidence packets, source policy, place schema, and field-photo inventory reviewed.
+- Official/current source URLs checked for McDonald's, Dunkin', Citizens Bank, Restaurantji Grillpoint Deli, MTA Greenpoint Av station context, and NYC source hierarchy.
+- `git diff --check`
+
+Outcome:
+- MVP-29B verdict is `proceed-to-mvp-29c`.
+- The active candidate set can be mapped to NW/NE/SW/SE plus Greenpoint G station context at review-planning level.
+- Superseded by MVP-29C naming resolution: the active NW label is `Grillpoint Deli`; Greenpoint Deli is archival/prior conflicting language only.
+- McDonald's, Dunkin', and Citizens have official business/address source support, but real cards, true-to-life branded treatment, exact frontage/facade/address placement, and exact building-unit relationships remain blocked pending later review.
+- Greenpoint G subway context is source-supported. Superseded by the MVP-29C Batu decision revision: exact cue placement may be used only where supplied/approved photos clearly verify the cue; otherwise symbolic/context-only or blocked.
+- `docs/MVP_SCOPE.md` was not updated because no direct contradiction or missing scope boundary was found.
+
+Unresolved decisions:
+- Superseded by MVP-29C: Batu accepted MVP-29B, opened MVP-29C, and resolved the NW active label as `Grillpoint Deli`.
+- Exact frontage, facade, address placement, station geometry, branded true-to-life treatment, and public-release claims remain blocked unless evidence supports them and Batu approves.
+
+Next pointer:
+- Historical pointer only; superseded by `docs/CURRENT_EXECUTION_BRIEF.md` pointing to JPG reference supply/review for MVP-29C before MVP-29D.
+
+### 2026-05-31 - MVP-29A Four-Corner MVP Scope Reset
+
+Status:
+- Complete as docs-only scope reset.
+
+Scope:
+- Record Batu's decision to reject the immediate one-corner MVP-29 QA/demo freeze path.
+- Reframe MVP completion around the full Manhattan Ave x Greenpoint Ave four-corner authored diorama.
+- Record MVP-22/MVP-22C as accepted one-corner proof evidence, not sufficient for revised MVP completion.
+- Do not render, regenerate raster art, change app source, touch `src/`, add targets, perform QA/demo freeze, add screenshots, stage, or commit.
+
+Files changed:
+- `docs/mvp-review/mvp-29a-four-corner-mvp-scope-reset/README.md`
+- `docs/MVP_SCOPE.md`
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required governance, current brief, roadmap, ledger, and MVP scope docs read.
+- `git diff --check`
+
+Outcome:
+- MVP completion target is now the full Manhattan Ave x Greenpoint Ave four-corner scene with NW/NE/SW/SE structure.
+- Real labels, real cards, storefront/sign/facade treatment, and Greenpoint G subway cues require source-backed validation and owned/approved/non-Google references.
+- Uncertainty must be handled with `verified`, `approximate`, `symbolic`, `context-only`, `omitted`, or `blocked` statuses.
+- MVP-29 QA/demo freeze is no longer the next step; MVP-30 QA/demo freeze is future-only after the full four-corner scene exists.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the MVP-29A reset packet.
+- Batu must decide whether to open MVP-29B Four-Corner Evidence + Business Validation Packet.
+- Exact frontage, facade, address placement, station geometry, and public-release claims remain blocked unless evidence supports them and Batu approves.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to MVP-29B Four-Corner Evidence + Business Validation Packet as the next recommended task.
+
+### 2026-05-31 - Prepare MVP-29 QA / Demo Freeze Brief
+
+Status:
+- Rejected as immediate next path by later Batu scope decision; historical proposed brief only.
+
+Scope:
+- Prepare the next current brief for MVP-29 QA / Demo Freeze after committing the accepted MVP-22/MVP-22C work.
+- Limit the proposed scope to QA checklist, demo-readiness notes, accepted limitations, screenshot review references, truth-safety review, and interaction smoke-check review.
+- Do not implement MVP-29, change source/app behavior, create assets, add dependencies, open production scope, or make production/public-release claims.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Confirmed MVP-22 closeout commit exists: `20ef75f Accept MVP-22 Grillpoint real-corner slice`.
+- Prepared proposed brief scope and stop conditions only.
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now proposes `MVP-29 QA / Demo Freeze`.
+- MVP-29 remained unimplemented and was later rejected as the immediate next path by Batu's MVP-29A four-corner scope reset decision.
+
+Unresolved decisions:
+- Superseded by MVP-29A: the next recommended task is MVP-29B Four-Corner Evidence + Business Validation Packet.
+- Any direct `in front of Grillpoint` subway-entrance claim remains blocked until stronger field/photo evidence supports it and Batu approves the claim.
+
+Next pointer:
+- Historical pointer only; superseded by `docs/CURRENT_EXECUTION_BRIEF.md` pointing to MVP-29B after MVP-29A.
 
 ### 2026-05-31 - MVP-22C Acceptance And Sequence Closeout
 

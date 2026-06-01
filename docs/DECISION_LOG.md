@@ -1,5 +1,66 @@
 # Decision Log
 
+## 2026-05-31 - MVP-29C Batu Decision Revision Recorded
+
+Decision:
+- Batu confirmed the active NW candidate is `Grillpoint Deli`.
+- `Greenpoint Deli` is archival / prior conflicting language only and is not the current public label.
+- Batu approved a narrow MVP-only SW Dunkin visual-reference exception because scaffolding prevents usable current field photos.
+- The Dunkin exception applies only to the SW Dunkin reference gap for human-reviewed, stylized, truth-safe, non-production review/demo-scale visual approximation.
+- The exception does not approve a general Google/Street View/3D Tiles policy change, production use, texture extraction, tracing, stored facade asset reuse, training input, generation input, or exact trade-dress reproduction.
+- Greenpoint G exact cue placement may be allowed where supplied/approved reference photos clearly verify the cue's corner/orientation relationship.
+- If a specific subway cue cannot be verified from reference photos, it remains symbolic, context-only, omitted, or blocked.
+- Do not infer exact station geometry from MTA text alone.
+- MVP-29C revised verdict is `revise-after-jpg-reference-supply`; MVP-29D remains closed until JPG reference review is accepted or remaining gaps are explicitly accepted.
+
+Rationale:
+- The four-corner MVP path needs a realistic way to handle the scaffolded SW Dunkin corner without turning a temporary reference gap into a permanent blocker.
+- The subway cue rule allows exactness only where photo evidence supports it while preserving the no-false-geometry standard.
+
+Constraints preserved:
+- Docs-only revision.
+- No app/source changes.
+- No rendering, raster regeneration, screenshots, target additions, staging, or commit.
+- No MVP-29D opening before the MVP-29C JPG reference review is accepted.
+- No production assets, production asset pipeline, exact facade/address/station geometry claims, real-card finality, public-release claims, trademark/logo/trade-dress reproduction, or QA/demo freeze.
+
+Owner:
+- Scope, exception, and cue-placement decisions: Batu
+- Critical review and decision-support when requested: ChatGPT
+- Docs-only reconciliation: Codex
+
+Status:
+- Active orientation / MVP-29C revised / JPG reference review needed before MVP-29D
+
+## 2026-05-31 - MVP-29A / MVP-29B Four-Corner Scope Supersession Recorded
+
+Decision:
+- Batu rejected the immediate one-corner MVP-22 QA/demo-freeze path.
+- MVP completion is now framed around the full Manhattan Ave x Greenpoint Ave four-corner authored diorama.
+- MVP-22 / MVP-22C remains accepted as successful one-corner proof evidence, but it is not sufficient for revised MVP completion.
+- Batu accepted MVP-29B with the active NW label resolved to `Grillpoint Deli`.
+- `Greenpoint Deli` is historical / archival / prior conflicting candidate language only and is not the current active public label.
+- MVP-29C is complete as a docs-only visual-reference completeness gate.
+- Superseded by the MVP-29C Batu decision revision above: MVP-29C revised verdict is `revise-after-jpg-reference-supply`; JPG reference review is needed before MVP-29D.
+
+Rationale:
+- Freezing the one-corner Grillpoint slice would evaluate the wrong target after Batu changed the MVP completion definition.
+- The current risk is JPG reference review, truth-safe treatment, approved exception handling, and exact-claim blocking before any translation/composition or implementation work.
+
+Constraints preserved:
+- No app/source changes.
+- No rendering, raster regeneration, screenshots, target additions, staging, or commit.
+- No MVP-29D opening before MVP-29C reference gaps are resolved, cut, or explicitly downgraded by Batu.
+- No production assets, production asset pipeline, exact facade/address/station geometry claims, real-card finality, public-release claims, or QA/demo freeze.
+
+Owner:
+- Scope and acceptance decisions: Batu
+- Critical review and decision-support when requested: ChatGPT
+- Docs-only cleanup and reconciliation: Codex
+
+Status:
+- Active orientation / MVP-29C complete / reference recovery needed before MVP-29D
+
 ## 2026-05-29 - Direct Repo-Docs Operating Model Adopted
 
 Decision:

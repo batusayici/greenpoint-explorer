@@ -1,9 +1,27 @@
 # Data Feasibility
 
-Status: Phase 2 gate outcome selected / hybrid real-plus-placeholder composition
+Status: Historical Phase 2 gate record / superseded for current MVP scope by MVP-29A and MVP-29B
 Date: 2026-05-26
 Creative direction owner: Batu
 Implementation owner: Codex
+
+## Current Four-Corner Supersession Note
+
+This document preserves the earlier Phase 2 / Batch 8.5 feasibility record. It is not the active candidate set, current MVP completion target, or next gate.
+
+The current MVP completion target is the full Manhattan Ave x Greenpoint Ave four-corner authored diorama recorded in `docs/MVP_SCOPE.md`, `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and the MVP-29A/MVP-29B packets.
+
+Current active candidate validation set:
+
+- Grillpoint Deli at the NW candidate. `Greenpoint Deli` is historical / archival / prior conflicting candidate language only.
+- McDonald's.
+- Dunkin', with Batu's narrow MVP-only SW visual-reference exception for stylized, truth-safe, non-production review/demo-scale approximation while scaffolding blocks usable current field photos.
+- Citizens Bank.
+- Greenpoint G subway, with exact cue placement allowed only where supplied/approved reference photos clearly verify the cue's corner/orientation relationship; otherwise symbolic, context-only, omitted, or blocked.
+
+The Dunkin exception does not approve a general Google/Street View/3D Tiles source-policy change, production use, texture extraction, tracing, stored facade asset reuse, training input, generation input, or exact trade-dress reproduction. MTA text can support Greenpoint Av station context but must not be used alone to infer exact station geometry.
+
+Peter Pan, Sweetgreen, former Meserole Theater, Captured Record Shop, Polka Dot, Karczma, and Brouwerij Lane are historical/previous-slice candidates unless a later current brief explicitly reactivates them.
 
 ## Purpose
 
@@ -17,7 +35,7 @@ Selected outcome:
 
 - Use a hybrid real-plus-placeholder composition.
 
-Current gate read:
+Historical gate read:
 
 - Proceed with the current slice as-is is not supported by the current evidence.
 - The compact Peter Pan + G station composition may continue only as symbolic / placeholder visual exploration.
@@ -61,7 +79,7 @@ Likely source candidates include:
 
 - NYC Open Data / MapPLUTO for lots, buildings, and address context.
 - OpenStreetMap for street, building, and point-of-interest context.
-- Google Places or equivalent manual lookup for current business identity and status.
+- Map/business directory manual lookup for current business identity and status, as corroboration only.
 - Business websites and public business profiles for factual business details.
 - Street-level manual verification when needed.
 - Batu manual review for uncertain placement, public representation, and authored approximations.

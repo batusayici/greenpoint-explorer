@@ -41,6 +41,12 @@ Use `docs/PLAN.md` for current phase/gate orientation and `docs/CURRENT_EXECUTIO
 
 Prototype implementation remains blocked until Batu explicitly opens that scope through `docs/CURRENT_EXECUTION_BRIEF.md` and any needed architecture boundaries/public interfaces are documented and reviewed.
 
+Current four-corner supersession note:
+
+- MVP completion is now the full Manhattan Ave x Greenpoint Ave four-corner authored diorama, not the one-corner MVP-22 Grillpoint proof.
+- MVP-22/MVP-22C remains accepted proof evidence only.
+- Before any new visual-reference, composition, raster, or app work, use MVP-29A/MVP-29B, `docs/MVP_SCOPE.md`, `docs/PLAN.md`, and `docs/CURRENT_EXECUTION_BRIEF.md` for the current active candidate set, truth status, and gate sequence.
+
 ## Visual Exploration Rules
 
 - References are directional inputs, not approved style.
@@ -174,7 +180,7 @@ These artifacts are allowed before final static style-frame production. They are
 
 Current gate:
 
-> Visual direction is approved. The next gate is Phase 6 review and prototype translation planning: determine which repeatable assetization rules can safely inform a constrained prototype implementation brief. Source/app implementation remains blocked until a later current execution brief explicitly opens that scope and documents any required public-interface/module-boundary review.
+> Visual direction is approved. The current MVP path is the MVP-29A/MVP-29B/MVP-29C four-corner evidence and reference sequence. MVP-29C revised verdict is `revise-after-jpg-reference-supply`, so JPG reference supply/review is needed before MVP-29D translation/composition can open. Batu approved a narrow MVP-only SW Dunkin visual-reference exception for stylized, truth-safe, non-production review/demo-scale approximation; this does not approve a general Google-derived source-policy change or production use. Source/app implementation remains blocked until a later current execution brief explicitly opens that scope and documents any required public-interface/module-boundary review.
 
 This approval does not authorize app implementation, production asset creation, a production asset pipeline, architecture setup, tooling, public interfaces, real-place cards, exact addresses, exact Greenpoint facades, station geometry, or factual card copy.
 
@@ -715,4 +721,4 @@ Historical approval gate at the time:
 
 - Batu must approve the visual direction and static style-frame composition before Codex creates the frame.
 - The style-frame composition approval must be supported by at least one lo-fi exploratory visual artifact or reference board clearly labeled "lo-fi / exploratory / not final."
-- This historical gate is now superseded by the current state near the top of this document: visual direction is approved, Phase 6 review/prototype translation planning is the next step, and source/app implementation remains blocked until a later current brief explicitly opens it.
+- This historical gate is now superseded by the current state near the top of this document: visual direction is approved, the MVP path is the MVP-29A/MVP-29B/MVP-29C four-corner evidence and reference sequence, reference recovery is needed before MVP-29D, and source/app implementation remains blocked until a later current brief explicitly opens it.

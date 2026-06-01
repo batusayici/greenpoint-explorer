@@ -10,12 +10,14 @@ This packet preserves supplied non-selected corner photos as review-only evidenc
 
 These files are not part of the selected MVP-21 target. MVP-20 selected the NW 903 Manhattan Ave / `GRILLPOINT DELI` corner for the proposed next one-corner raster integration boundary. These parked files must not be treated as active raster material, active translation inputs, production assets, public-release evidence, or implementation authorization.
 
+Current supersession note: MVP-29A/MVP-29B/MVP-29C reactivated the four-corner MVP path. Use `docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md`, `docs/PLAN.md`, and `docs/CURRENT_EXECUTION_BRIEF.md` for active reference-review status. The file list below has been updated only to avoid stale paths after JPG re-export.
+
 ## Parked Files
 
 | Corner | Files | Status |
 | --- | --- | --- |
-| NE McDonald's context | `docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg`, `docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpeg`, `docs/mvp-reference-images/northeast-mcdonalds-wide.jpeg` | Parked, review-only, non-production, not approved for MVP-21. |
-| SE Citizens context | `docs/mvp-reference-images/southeast-citizens-facadeA.jpeg`, `docs/mvp-reference-images/southeast-citizens-facadeB.jpeg`, `docs/mvp-reference-images/southeast-citizens-wide.jpeg`, `docs/mvp-reference-images/southeast-subwayB.jpeg` | Parked, review-only, non-production, not approved for MVP-21. |
+| NE McDonald's context | `docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg`, `docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg`, `docs/mvp-reference-images/northeast-mcdonalds-wide.jpg` | Parked historical record; current review status lives in MVP-29C. |
+| SE Citizens context | `docs/mvp-reference-images/southeast-citizens-facadeA.jpeg`, `docs/mvp-reference-images/southeast-citizens-facadeB.jpg`, `docs/mvp-reference-images/southeast-citizens-wide.jpg`, `docs/mvp-reference-images/southeast-subwayB.jpg` | Parked historical record; current review status lives in MVP-29C. |
 | SW Dunkin / subway context | `docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg`, `docs/mvp-reference-images/southwest-subway-wide.jpeg`, `docs/mvp-reference-images/southwest-subwayC.jpeg` | Parked, review-only, non-production, not approved for MVP-21. |
 
 ## Use Limits
