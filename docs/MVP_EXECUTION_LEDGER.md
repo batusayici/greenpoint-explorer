@@ -55,14 +55,59 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2Y real data vertical slice is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2Z expanded real-data pattern is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2Y real data vertical slice complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2Z expanded real-data pattern complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2Z Expanded Real-Data Pattern
+
+Status:
+- Complete.
+
+Scope:
+- Batu authorized extending the Phase 2Y real-data fixture/adapter pattern from Grillpoint to all active MVP targets.
+- Preserve QA-mode-only rendering, normal-mode raster-first product meaning, and strict promotion readiness.
+
+Files changed:
+- `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-real-data-scene-adapter.mjs`
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build`
+- `git diff --check`
+- Browser QA/normal sanity check could not be run because the in-app browser execution tool was unavailable after tool discovery.
+
+Outcome:
+- Added an active-target Phase 2Z real-data fixture covering Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Source-backed identity/address context now flows through the real-data fixture for all active targets where existing reviewed evidence supports it.
+- Storefront-like targets use human-prepared building/storefront samples, estimated frontage/address anchors, generated-placeholder facades, and blocked exact entrances.
+- Greenpoint G uses a symbolic/blocked transit record rather than storefront/facade geometry.
+- Extended the deterministic adapter/validator only enough to support symbolic transit records.
+- Updated the QA inspector so symbolic real-data fields display clearly.
+- Strict promotion readiness remained unchanged, with 0 product-copy-ready targets.
+- Normal mode remains raster-first and unchanged in product meaning.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, source-authority decisions, exact geometry decisions, product/public claims, and opening the next executable brief.
+- Stronger source-derived geometry remains needed before exact frontage/facade/entrance/address or station-geometry claims can be made.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2Z complete and points the next recommended sequence toward source-derived geometry replacement or a demoable review scene.
 
 ### 2026-06-02 - Phase 2Y Real Data Vertical Slice
 

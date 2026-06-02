@@ -16,8 +16,15 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const MANIFEST_PATH = "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json";
 const EVIDENCE_PATH = "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json";
 const DRAFT_SCENE_PATH = "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json";
-const REAL_DATA_PATH = "src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json";
-const EXPECTED_ENTITY_TYPES = [
+const REAL_DATA_PATH = "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json";
+const EXPECTED_TARGETS = [
+  "grillpoint-deli",
+  "mcdonalds",
+  "dunkin",
+  "citizens-bank",
+  "greenpoint-g-subway",
+];
+const EXPECTED_STOREFRONT_ENTITY_TYPES = [
   "real-data-building-sample",
   "real-data-storefront-sample",
   "real-data-source-badge",
@@ -25,6 +32,13 @@ const EXPECTED_ENTITY_TYPES = [
   "real-data-address-anchor",
   "real-data-blocked-entrance",
   "real-data-generated-facade",
+  "real-data-field-status-callout",
+];
+const EXPECTED_SYMBOLIC_ENTITY_TYPES = [
+  "real-data-source-badge",
+  "symbolic-cue",
+  "real-data-address-anchor",
+  "real-data-blocked-entrance",
   "real-data-field-status-callout",
 ];
 const EXPECTED_STATUSES = [
@@ -49,35 +63,37 @@ async function main() {
     realDataFixture,
   );
   const failures = [];
-  const realDataRecord = realDataFixture.records[0];
-  const firstEntities = generateRealDataQaEntities(realDataRecord);
-  const secondEntities = generateRealDataQaEntities(realDataRecord);
+  compareArray(failures, realDataFixture.records.map((record) => record.targetId), EXPECTED_TARGETS, "real-data target coverage");
+  requireValue(failures, realDataFixture.records.length, EXPECTED_TARGETS.length, "real-data record count");
 
-  compareJson(failures, firstEntities, secondEntities, "real-data adapter output determinism");
-  requireValue(failures, realDataFixture.records.length, 1, "real-data record count");
-  requireValue(failures, realDataRecord.targetId, "grillpoint-deli", "selected target id");
-  requireValue(failures, realDataRecord.cornerId, "corner-nw", "selected corner id");
+  for (const record of realDataFixture.records) {
+    const firstEntities = generateRealDataQaEntities(record);
+    const secondEntities = generateRealDataQaEntities(record);
+    compareJson(failures, firstEntities, secondEntities, `${record.targetId} real-data adapter output determinism`);
 
-  const grillpoint = appScene.targets.find((target) => target.id === "grillpoint-deli");
-  if (!grillpoint) {
-    failures.push("app scene is missing Grillpoint target");
-  } else {
-    if (!grillpoint.draftScene?.realDataSlice) {
-      failures.push("Grillpoint target is missing realDataSlice");
+    const appTarget = appScene.targets.find((target) => target.id === record.targetId);
+    if (!appTarget) {
+      failures.push(`app scene is missing target ${record.targetId}`);
+      continue;
     }
-    const generatedEntityTypes = new Set(grillpoint.draftScene?.generatedScene?.entities.map((entity) => entity.type));
-    for (const type of EXPECTED_ENTITY_TYPES) {
-      if (!generatedEntityTypes.has(type)) failures.push(`Grillpoint generated scene is missing ${type}`);
+    if (!appTarget.draftScene?.realDataSlice) {
+      failures.push(`${record.targetId} is missing realDataSlice`);
     }
-    const generatedStatuses = new Set(grillpoint.draftScene?.generatedScene?.entities.map((entity) => entity.status));
-    for (const status of EXPECTED_STATUSES) {
-      if (!generatedStatuses.has(status)) failures.push(`Grillpoint generated scene is missing ${status} status`);
-    }
-  }
 
-  for (const target of appScene.targets.filter((target) => target.id !== "grillpoint-deli")) {
-    if (target.draftScene?.realDataSlice) {
-      failures.push(`${target.id} should not receive the Phase 2Y Grillpoint real-data slice`);
+    const expectedTypes = record.renderingKind === "symbolic_transit"
+      ? EXPECTED_SYMBOLIC_ENTITY_TYPES
+      : EXPECTED_STOREFRONT_ENTITY_TYPES;
+    const generatedEntityTypes = new Set(appTarget.draftScene?.generatedScene?.entities.map((entity) => entity.type));
+    for (const type of expectedTypes) {
+      if (!generatedEntityTypes.has(type)) failures.push(`${record.targetId} generated scene is missing ${type}`);
+    }
+
+    const generatedStatuses = new Set(appTarget.draftScene?.generatedScene?.entities.map((entity) => entity.status));
+    const expectedStatuses = record.renderingKind === "symbolic_transit"
+      ? ["source_backed", "estimated_from_source", "blocked"]
+      : EXPECTED_STATUSES;
+    for (const status of expectedStatuses) {
+      if (!generatedStatuses.has(status)) failures.push(`${record.targetId} generated scene is missing ${status} status`);
     }
   }
 
@@ -91,9 +107,8 @@ async function main() {
   console.log([
     "PASS real-data scene adapter:",
     `${realDataFixture.fixtureId};`,
-    `target=${realDataRecord.targetId};`,
-    `corner=${realDataRecord.cornerId};`,
-    `${firstEntities.length} deterministic real-data QA entit(ies);`,
+    `targets=${EXPECTED_TARGETS.join(",")};`,
+    `records=${realDataFixture.records.length};`,
     `statuses=${EXPECTED_STATUSES.join(",")}.`,
   ].join(" "));
 }
@@ -110,6 +125,14 @@ function compareJson(failures, actual, expected, label) {
 
 function requireValue(failures, actual, expected, label) {
   if (actual !== expected) failures.push(`${label} expected ${expected}, received ${actual}`);
+}
+
+function compareArray(failures, actual, expected, label) {
+  const actualSorted = [...actual].sort();
+  const expectedSorted = [...expected].sort();
+  if (JSON.stringify(actualSorted) !== JSON.stringify(expectedSorted)) {
+    failures.push(`${label} expected ${expectedSorted.join(",")}, received ${actualSorted.join(",")}`);
+  }
 }
 
 main().catch((error) => {

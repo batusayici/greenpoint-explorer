@@ -1,8 +1,22 @@
-# Current Execution Brief - Phase 2Y Real Data Vertical Slice Complete
+# Current Execution Brief - Phase 2Z Expanded Real Data Pattern Complete
 
-Status: Phase 2Y real data vertical slice is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
+Status: Phase 2Z expanded real data pattern is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
+
+## Phase 2Z Expanded Real Data Pattern
+
+- Batu authorized expanding the Phase 2Y real-data fixture/adapter pattern from Grillpoint to all active MVP targets.
+- Added `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json` as the active five-target real-data fixture.
+- Covered active targets: Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Business identity/address context is `source_backed` where supported by existing reviewed source-evidence records.
+- McDonald's, Dunkin', and Citizens Bank category text remains `estimated_from_source`; it is QA/review-only and not product-copy-ready.
+- Business storefront geometry remains `human_prepared`, frontage/address anchors remain `estimated_from_source`, generated facades remain `generated_placeholder`, and exact entrances remain `blocked`.
+- Greenpoint G uses a `symbolic_transit` real-data record that renders a symbolic/blocked station cue and blocked entrance cue instead of storefront/facade geometry.
+- Extended the deterministic real-data adapter and validator only enough to support the symbolic transit record.
+- Updated QA inspector real-data summaries so symbolic records list symbolic station fields instead of storefront-only fields.
+- Normal mode remains raster-first and unchanged in product meaning.
+- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
 
 ## Phase 2Y Real Data Vertical Slice
 
@@ -88,7 +102,18 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Files Changed
 
-Latest Phase 2Y implementation changed:
+Latest Phase 2Z implementation changed:
+
+- `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Prior Phase 2Y implementation changed:
 
 - `src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json`
 - `src/mvpPlaceData.js`
@@ -162,6 +187,9 @@ git diff --stat
 
 ## Verification State
 
+- Latest Phase 2Z verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the active-target real-data fixture validates, covers 5 records/targets, and produces deterministic QA entities for storefront records plus a symbolic/blocked transit record.
+- Latest Phase 2Z `npm run build` passed with the existing Vite large-chunk warning.
+- Latest Phase 2Z browser sanity check could not be run because the in-app browser execution tool was unavailable after tool discovery.
 - Latest Phase 2Y verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the Grillpoint/NW real-data fixture validates, produces 10 deterministic QA entities, and does not attach to other active targets.
 - Latest Phase 2Y build check passed with the existing Vite large-chunk warning.
 - Latest Phase 2Y browser sanity check was attempted against `http://localhost:5173/` and `http://127.0.0.1:5173/`, but the in-app browser blocked both local URLs with `ERR_BLOCKED_BY_CLIENT`.
@@ -187,7 +215,7 @@ git diff --stat
 - Future prompts should lead with: "Build the visible MVP proof. Preserve gates as constraints."
 - The next executable task is pending Batu or a later explicit brief.
 - Recommended next outcome-based sequence:
-  1. Expand or replace the Phase 2Y one-corner real-data sample with stronger source-derived geometry if a practical lane is available.
+  1. Replace some Phase 2Z human-prepared/estimated geometry with stronger source-derived geometry if a practical lane is available.
   2. Create a demoable review scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
 - No further prototype, visual, source-evidence, promotion, production, package/tooling, screenshot-QA, or demo-freeze work is opened by this brief.
 

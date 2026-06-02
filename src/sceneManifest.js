@@ -389,6 +389,7 @@ function buildAppRealDataRecord(record) {
     placeId: record.placeId,
     cornerId: record.cornerId,
     sourceLane: record.sourceLane,
+    renderingKind: record.renderingKind ?? "storefront",
     business: record.business,
     geometry: record.geometry,
     qaPresentation: record.qaPresentation,
@@ -573,6 +574,8 @@ function generateDraftQaScene(record, realDataRecord = null) {
 }
 
 export function generateRealDataQaEntities(record) {
+  if (record.renderingKind === "symbolic_transit") return generateSymbolicTransitRealDataQaEntities(record);
+
   const { business, geometry, qaPresentation } = record;
   const buildingBounds = geometry.buildingSample.bounds;
   const storefrontBounds = geometry.storefrontSample.bounds;
@@ -653,6 +656,79 @@ export function generateRealDataQaEntities(record) {
     field: "geometry.entranceGeometry",
     status: geometry.entranceGeometry.status,
     point: offsetPoint(centerOf(geometry.entranceGeometry.bounds), 24, 36),
+    from: centerOf(geometry.entranceGeometry.bounds),
+    text: "blocked exact entrance geometry",
+    label: "blocked entrance",
+    generatedFrom: ["realData.geometry.entranceGeometry"],
+  });
+
+  return entities;
+}
+
+function generateSymbolicTransitRealDataQaEntities(record) {
+  const { business, geometry, qaPresentation } = record;
+  const sourceBadgeBounds = qaPresentation.sourceBadgeBounds;
+  const labelPoint = qaPresentation.labelPoint;
+  const entities = [
+    buildRealDataRectEntity(record, "real-data-source-badge", "business.name", business.name.status, sourceBadgeBounds, {
+      label: "Source-backed transit identity/context",
+      text: `${business.name.value} | source-backed station context`,
+    }),
+    {
+      id: `${record.id}:real-data-symbolic-transit-cue`,
+      type: "symbolic-cue",
+      field: "geometry.symbolicCue",
+      status: geometry.symbolicCue.status,
+      center: geometry.symbolicCue.center,
+      radius: geometry.symbolicCue.radius,
+      label: geometry.symbolicCue.blockedLabel,
+      blockedLabel: geometry.symbolicCue.blockedLabel,
+      generatedFrom: ["realData.geometry.symbolicCue", "deterministic real-data adapter"],
+    },
+    {
+      id: `${record.id}:real-data-address-anchor`,
+      type: "real-data-address-anchor",
+      field: "addressAnchor",
+      status: geometry.addressAnchor.status,
+      point: geometry.addressAnchor.point,
+      label: "Estimated station context anchor",
+      text: "estimated-from-source station context anchor",
+      generatedFrom: ["realData.geometry.addressAnchor"],
+    },
+    buildRealDataRectEntity(record, "real-data-blocked-entrance", "entranceGeometry", geometry.entranceGeometry.status, geometry.entranceGeometry.bounds, {
+      label: "Blocked exact subway entrance geometry",
+      text: "blocked exact station entrance",
+    }),
+  ];
+
+  entities.push({
+    id: `${record.id}:real-data-field-status-callout-source`,
+    type: "real-data-field-status-callout",
+    field: "business.name",
+    status: business.name.status,
+    point: labelPoint,
+    from: centerOf(sourceBadgeBounds),
+    text: "source-backed station name / context",
+    label: "source-backed transit context",
+    generatedFrom: ["realData.business"],
+  });
+  entities.push({
+    id: `${record.id}:real-data-field-status-callout-symbolic`,
+    type: "real-data-field-status-callout",
+    field: "geometry.symbolicCue",
+    status: geometry.symbolicCue.status,
+    point: offsetPoint(geometry.symbolicCue.center, 48, -58),
+    from: geometry.symbolicCue.center,
+    text: "blocked symbolic station geometry",
+    label: "blocked station geometry",
+    generatedFrom: ["realData.geometry.symbolicCue"],
+  });
+  entities.push({
+    id: `${record.id}:real-data-field-status-callout-entrance`,
+    type: "real-data-field-status-callout",
+    field: "geometry.entranceGeometry",
+    status: geometry.entranceGeometry.status,
+    point: offsetPoint(centerOf(geometry.entranceGeometry.bounds), 28, 38),
     from: centerOf(geometry.entranceGeometry.bounds),
     text: "blocked exact entrance geometry",
     label: "blocked entrance",
@@ -1112,7 +1188,12 @@ export function validateRealDataFixture(fixture, manifest, indexes = buildManife
   assertString(fixture.lane, "realData.lane");
   assertString(fixture.status, "realData.status");
   assertString(fixture.reviewedOn, "realData.reviewedOn");
-  assertReference(fixture.selectedCorner, indexes.cornersById, "realData.selectedCorner");
+  if (fixture.selectedCorner === "all-active-targets") {
+    assertString(fixture.selectedCorner, "realData.selectedCorner");
+  } else {
+    assertReference(fixture.selectedCorner, indexes.cornersById, "realData.selectedCorner");
+  }
+  if (fixture.selectedCorners) assertReferences(fixture.selectedCorners, indexes.cornersById, "realData.selectedCorners");
   assertString(fixture.sourceLane, "realData.sourceLane");
   assertArray(fixture.notes, "realData.notes");
   assertObject(fixture.statusValues, "realData.statusValues");
@@ -1138,8 +1219,9 @@ export function validateRealDataFixture(fixture, manifest, indexes = buildManife
     assertReference(record.placeId, indexes.placesById, `realData record ${record.id}.placeId`);
     assertReference(record.cornerId, indexes.cornersById, `realData record ${record.id}.cornerId`);
     if (record.sourceLane) assertString(record.sourceLane, `realData record ${record.id}.sourceLane`);
+    if (record.renderingKind) assertString(record.renderingKind, `realData record ${record.id}.renderingKind`);
     validateRealDataBusiness(record.business, record.id, indexes.sourcesById, evidenceRecordIds);
-    validateRealDataGeometry(record.geometry, record.id, indexes.sourcesById);
+    validateRealDataGeometry(record.geometry, record.id, indexes.sourcesById, record.renderingKind);
     validateRealDataQaPresentation(record.qaPresentation, record.id);
   }
 
@@ -1161,8 +1243,22 @@ function validateRealDataBusiness(business, recordId, sourceIds, evidenceRecordI
   }
 }
 
-function validateRealDataGeometry(geometry, recordId, sourceIds) {
+function validateRealDataGeometry(geometry, recordId, sourceIds, renderingKind) {
   assertObject(geometry, `realData record ${recordId}.geometry`);
+  if (renderingKind === "symbolic_transit") {
+    validateRealDataSymbolicCueField(geometry.symbolicCue, `realData record ${recordId}.geometry.symbolicCue`, sourceIds);
+    validateRealDataPointField(geometry.addressAnchor, `realData record ${recordId}.geometry.addressAnchor`, sourceIds);
+    validateRealDataRectField(geometry.entranceGeometry, `realData record ${recordId}.geometry.entranceGeometry`, sourceIds);
+    if (geometry.facadePlaceholder) {
+      validateRealDataStatusField(
+        geometry.facadePlaceholder,
+        `realData record ${recordId}.geometry.facadePlaceholder`,
+        sourceIds,
+      );
+    }
+    return;
+  }
+
   validateRealDataRectField(geometry.buildingSample, `realData record ${recordId}.geometry.buildingSample`, sourceIds);
   validateRealDataLineField(geometry.frontageSegment, `realData record ${recordId}.geometry.frontageSegment`, sourceIds);
   validateRealDataRectField(geometry.storefrontSample, `realData record ${recordId}.geometry.storefrontSample`, sourceIds);
@@ -1203,6 +1299,13 @@ function validateRealDataLineField(field, label, sourceIds) {
 function validateRealDataPointField(field, label, sourceIds) {
   validateRealDataStatusField(field, label, sourceIds);
   validateScenePointLike(field.point, `${label}.point`);
+}
+
+function validateRealDataSymbolicCueField(field, label, sourceIds) {
+  validateRealDataStatusField(field, label, sourceIds);
+  validateScenePointLike(field.center, `${label}.center`);
+  assertNumber(field.radius, `${label}.radius`);
+  assertString(field.blockedLabel, `${label}.blockedLabel`);
 }
 
 function validateDraftSceneStatusField(field, label, options = {}) {

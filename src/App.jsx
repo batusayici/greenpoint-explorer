@@ -448,14 +448,7 @@ function DraftSceneInspector({ draftScene }) {
             {formatStatusLabel(realDataSlice.business.category.status)} category
           </p>
           <dl className="qa-generated-entity-list">
-            {[
-              ["Building sample", realDataSlice.geometry.buildingSample],
-              ["Storefront sample", realDataSlice.geometry.storefrontSample],
-              ["Frontage segment", realDataSlice.geometry.frontageSegment],
-              ["Address anchor", realDataSlice.geometry.addressAnchor],
-              ["Facade placeholder", realDataSlice.geometry.facadePlaceholder],
-              ["Entrance geometry", realDataSlice.geometry.entranceGeometry],
-            ].map(([label, field]) => (
+            {buildRealDataInspectorFields(realDataSlice).map(([label, field]) => (
               <div key={label} data-status={field.status}>
                 <dt>{label}</dt>
                 <dd>
@@ -511,6 +504,19 @@ function formatGeneratedEntitySummary(entity) {
     return `${field}; line ${entity.from.x},${entity.from.y} to ${entity.to.x},${entity.to.y}`;
   }
   return field;
+}
+
+function buildRealDataInspectorFields(realDataSlice) {
+  const geometry = realDataSlice.geometry;
+  return [
+    ["Building sample", geometry.buildingSample],
+    ["Storefront sample", geometry.storefrontSample],
+    ["Frontage segment", geometry.frontageSegment],
+    ["Symbolic station cue", geometry.symbolicCue],
+    ["Address anchor", geometry.addressAnchor],
+    ["Facade placeholder", geometry.facadePlaceholder],
+    ["Entrance geometry", geometry.entranceGeometry],
+  ].filter(([, field]) => Boolean(field));
 }
 
 function QAList({ items }) {
@@ -588,5 +594,6 @@ function formatRealDataFieldValue(field) {
     return `${field.from.x}, ${field.from.y} to ${field.to.x}, ${field.to.y}`;
   }
   if (field.point) return `${field.point.x}, ${field.point.y}`;
+  if (field.center) return `${field.center.x}, ${field.center.y}; radius ${field.radius}`;
   return "status-only";
 }
