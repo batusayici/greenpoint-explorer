@@ -333,23 +333,52 @@ function drawTargets(world, targets, reviewMode) {
         lineHeight: 16,
       },
     });
+    const draftSignLabel = new Text({
+      text: "",
+      style: {
+        align: "center",
+        fill: "#211d18",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 13,
+        fontWeight: "900",
+      },
+    });
+    const draftStatusLabel = new Text({
+      text: "",
+      style: {
+        fill: "#f8ecd4",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 11,
+        fontWeight: "850",
+        lineHeight: 15,
+      },
+    });
 
     container.eventMode = "none";
     markerLabel.resolution = 2;
     markerLabel.anchor.set(0.5);
     reviewLabel.resolution = 2;
     draftLabel.resolution = 2;
-    container.addChild(shape, markerLabel, reviewLabel, draftLabel);
+    draftSignLabel.resolution = 2;
+    draftSignLabel.anchor.set(0.5);
+    draftStatusLabel.resolution = 2;
+    container.addChild(shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel);
     world.addChild(container);
-    renderTargetState({ shape, markerLabel, reviewLabel, draftLabel }, target, false, false, reviewMode);
-    targetGraphics.set(target.id, { shape, markerLabel, reviewLabel, draftLabel });
+    renderTargetState(
+      { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel },
+      target,
+      false,
+      false,
+      reviewMode,
+    );
+    targetGraphics.set(target.id, { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel });
   }
   return targetGraphics;
 }
 
 function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMode) {
   const { x, y, width, height } = target.bounds;
-  const { shape, markerLabel, reviewLabel, draftLabel } = targetGraphic;
+  const { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel } = targetGraphic;
   const markerX = target.marker?.x ?? x + width * 0.5;
   const markerY = target.marker?.y ?? y + height * 0.42;
   const tetherEnd = target.tetherEnd ?? {
@@ -430,6 +459,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       strokeAlpha: 0.78,
       strokeWidth: 3,
     });
+    drawDraftQaOverlay(shape, target);
   }
 
   markerLabel.visible = Boolean(target.marker?.label);
@@ -439,7 +469,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   markerLabel.x = markerX;
   markerLabel.y = markerY + 0.5;
 
-  reviewLabel.visible = reviewMode;
+  reviewLabel.visible = Boolean(reviewMode && !target.draftScene?.qaOverlay);
   reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
   reviewLabel.style.fill = "#f8ecd4";
   reviewLabel.x = target.reviewLabelPosition?.x ?? x + 12;
@@ -460,17 +490,29 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   }
 
   draftLabel.visible = Boolean(reviewMode && target.draftScene);
+  draftSignLabel.visible = false;
+  draftStatusLabel.visible = false;
   if (draftLabel.visible) {
+    const overlay = target.draftScene.qaOverlay;
     const signText = target.draftScene.fields.signText;
     const facadeStyle = target.draftScene.fields.facadeStyle;
     const storefrontBay = target.draftScene.fields.storefrontBay;
-    draftLabel.text = [
-      `${signText.value} [${signText.status}]`,
-      `${facadeStyle.status} facade`,
-      `${storefrontBay.status} bay`,
-    ].join("\n");
-    draftLabel.x = target.draftLabelPosition?.x ?? target.reviewLabelPosition?.x ?? x + 12;
-    draftLabel.y = target.draftLabelPosition?.y ?? (target.reviewLabelPosition?.y ?? y + 12) + 34;
+    const name = target.draftScene.fields.name;
+    const address = target.draftScene.fields.addressText;
+    const category = target.draftScene.fields.category;
+    const anchor = target.draftScene.fields.sceneAnchor;
+    const doorWindow = target.draftScene.fields.doorWindowPlacement;
+    const statusChips = overlay?.statusChips ?? [
+      { label: "name", status: name.status },
+      { label: "facade", status: facadeStyle.status },
+      { label: "anchor", status: anchor.status },
+    ];
+
+    draftLabel.text = statusChips
+      .map((chip) => `${chip.label}: ${formatDraftStatus(chip.status)}`)
+      .join("\n");
+    draftLabel.x = overlay?.statusSummaryPosition?.x ?? target.draftLabelPosition?.x ?? target.reviewLabelPosition?.x ?? x + 12;
+    draftLabel.y = overlay?.statusSummaryPosition?.y ?? (target.reviewLabelPosition?.y ?? y + 12) + 34;
 
     const labelPaddingX = 8;
     const labelPaddingY = 5;
@@ -483,7 +525,107 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     )
       .fill({ color: 0xf5e5c3, alpha: 0.9 })
       .stroke({ color: 0x2c2c26, width: 1.5, alpha: 0.7 });
+
+    if (overlay?.signPanel) {
+      const { bounds } = overlay.signPanel;
+      draftSignLabel.visible = true;
+      draftSignLabel.text = overlay.signPanel.text ?? String(signText.value);
+      draftSignLabel.style.fontSize = draftSignLabel.text.length > 14 ? 11 : 13;
+      draftSignLabel.x = bounds.x + bounds.width / 2;
+      draftSignLabel.y = bounds.y + bounds.height / 2;
+    }
+
+    if (overlay?.labelPosition) {
+      const statusParts = [
+        `${name.value}`,
+        `${formatDraftStatus(name.status)} name / ${formatDraftStatus(address.status)} address`,
+        `${formatDraftStatus(category.status)} category / ${formatDraftStatus(doorWindow.status)} door-window`,
+      ];
+      draftStatusLabel.visible = true;
+      draftStatusLabel.text = statusParts.join("\n");
+      draftStatusLabel.x = overlay.labelPosition.x;
+      draftStatusLabel.y = overlay.labelPosition.y;
+      const statusPaddingX = 9;
+      const statusPaddingY = 6;
+      shape.roundRect(
+        draftStatusLabel.x - statusPaddingX,
+        draftStatusLabel.y - statusPaddingY,
+        draftStatusLabel.width + statusPaddingX * 2,
+        draftStatusLabel.height + statusPaddingY * 2,
+        5,
+      )
+        .fill({ color: 0x202424, alpha: 0.9 })
+        .stroke({ color: 0xf5e5c3, width: 1.5, alpha: 0.7 });
+    }
   }
+}
+
+function drawDraftQaOverlay(graphics, target) {
+  const overlay = target.draftScene?.qaOverlay;
+  if (!overlay) return;
+
+  drawOverlayRect(graphics, overlay.footprint, { fillAlpha: 0.035, strokeAlpha: 0.34, strokeWidth: 3 });
+  drawOverlayRect(graphics, overlay.facadeBand, { fillAlpha: 0.11, strokeAlpha: 0.76, strokeWidth: 2 });
+  drawOverlayRect(graphics, overlay.storefrontBay, { fillAlpha: 0.16, strokeAlpha: 0.92, strokeWidth: 2.5 });
+  drawOverlayRect(graphics, overlay.signPanel, { fillAlpha: 0.9, strokeAlpha: 0.94, strokeWidth: 2, forceFillColor: 0xf5e5c3 });
+  drawOverlayRect(graphics, overlay.doorCue, { fillAlpha: 0.5, strokeAlpha: 0.9, strokeWidth: 2 });
+  for (const cue of overlay.windowCues ?? []) {
+    drawOverlayRect(graphics, cue, { fillAlpha: 0.32, strokeAlpha: 0.78, strokeWidth: 1.5 });
+  }
+  if (overlay.anchorConnector) drawOverlayConnector(graphics, overlay.anchorConnector);
+  if (overlay.symbolicCue) drawSymbolicCue(graphics, overlay.symbolicCue);
+}
+
+function drawOverlayRect(graphics, overlayRect, options) {
+  if (!overlayRect?.bounds) return;
+  const { bounds, status } = overlayRect;
+  const color = options.forceFillColor ?? getDraftStatusColor(status);
+  graphics
+    .roundRect(bounds.x, bounds.y, bounds.width, bounds.height, 6)
+    .fill({ color, alpha: options.fillAlpha })
+    .stroke({
+      color: getDraftStatusColor(status),
+      width: options.strokeWidth,
+      alpha: options.strokeAlpha,
+    });
+}
+
+function drawOverlayConnector(graphics, connector) {
+  const color = getDraftStatusColor(connector.status);
+  graphics
+    .moveTo(connector.from.x, connector.from.y)
+    .lineTo(connector.to.x, connector.to.y)
+    .stroke({ color, width: 2, alpha: 0.72 });
+  graphics
+    .circle(connector.from.x, connector.from.y, 4)
+    .fill({ color, alpha: 0.7 });
+}
+
+function drawSymbolicCue(graphics, cue) {
+  const color = getDraftStatusColor(cue.status);
+  graphics
+    .circle(cue.center.x, cue.center.y, cue.radius)
+    .fill({ color, alpha: 0.055 })
+    .stroke({ color, width: 3, alpha: 0.78 });
+  graphics
+    .moveTo(cue.center.x - cue.radius * 0.72, cue.center.y - cue.radius * 0.72)
+    .lineTo(cue.center.x + cue.radius * 0.72, cue.center.y + cue.radius * 0.72)
+    .moveTo(cue.center.x + cue.radius * 0.72, cue.center.y - cue.radius * 0.72)
+    .lineTo(cue.center.x - cue.radius * 0.72, cue.center.y + cue.radius * 0.72)
+    .stroke({ color: getDraftStatusColor("blocked"), width: 2, alpha: 0.68 });
+}
+
+function getDraftStatusColor(status) {
+  if (status === "sourced" || status === "verified") return 0x6fb08f;
+  if (status === "inferred") return 0xe0a24d;
+  if (status === "manual_draft") return 0xf0bc45;
+  if (status === "symbolic") return 0x6f9ec9;
+  if (status === "blocked" || status === "unknown") return 0xd66a4e;
+  return 0xf5e5c3;
+}
+
+function formatDraftStatus(status) {
+  return status.replaceAll("_", " ");
 }
 
 function drawTargetOutline(graphics, target, styles) {

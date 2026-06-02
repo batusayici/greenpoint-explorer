@@ -55,14 +55,56 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2V Draft Real-Data Scene Pipeline is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2W Draft Real-Data Scene Visual Proof Pass is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2V complete for review and does not open a further implementation batch. Product-copy readiness, promotion weakening, raster asset edits, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2W complete for review and does not open a further implementation batch. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2W Draft Real-Data Scene Visual Proof Pass
+
+Status:
+- Complete for review.
+
+Scope:
+- Improve QA-mode draft overlays so current real names, approximate draft geometry, storefront/facade/bay/sign cues, and field-level truth statuses are visibly reviewable.
+- Preserve strict promotion readiness and normal-mode raster-first primary world art.
+
+Files changed:
+- `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
+- `src/sceneManifest.js`
+- `src/PlaceholderWorld.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Browser visual sanity check of QA mode at `http://127.0.0.1:5173/`.
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added lightweight `qaOverlay` hints to the draft scene fixture for each active target.
+- QA mode now renders clearer approximate footprint, facade, storefront bay, sign panel, door/window, anchor connector, status chip, and symbolic subway overlays from draft data.
+- Real names are legible in QA mode and remain tied to sourced/manual/inferred/symbolic/blocked draft statuses.
+- The Greenpoint G subway cue remains visibly symbolic and blocked for exact entrance geometry.
+- Strict generated source-evidence, Grillpoint product readiness, promotion gates, and negative contract behavior remained intact.
+- Normal-mode primary world art remains the approved review-only raster plate.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- The next executable task is pending Batu or a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2W complete and does not open a further implementation batch.
 
 ### 2026-06-02 - Phase 2V Draft Real-Data Scene Pipeline
 

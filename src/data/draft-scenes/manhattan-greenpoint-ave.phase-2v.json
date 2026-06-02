@@ -140,6 +140,115 @@
           ],
           "notes": "Intersection context only."
         }
+      },
+      "qaOverlay": {
+        "labelPosition": {
+          "x": 520,
+          "y": 116
+        },
+        "statusSummaryPosition": {
+          "x": 520,
+          "y": 152
+        },
+        "footprint": {
+          "field": "buildingFootprint",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 286,
+            "y": 92,
+            "width": 352,
+            "height": 214
+          }
+        },
+        "facadeBand": {
+          "field": "facadeStyle",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 342,
+            "y": 154,
+            "width": 252,
+            "height": 72
+          }
+        },
+        "storefrontBay": {
+          "field": "storefrontBay",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 386,
+            "y": 188,
+            "width": 172,
+            "height": 76
+          }
+        },
+        "signPanel": {
+          "field": "signText",
+          "status": "sourced",
+          "text": "Grillpoint Deli",
+          "bounds": {
+            "x": 390,
+            "y": 162,
+            "width": 170,
+            "height": 28
+          }
+        },
+        "doorCue": {
+          "field": "doorWindowPlacement",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 454,
+            "y": 216,
+            "width": 34,
+            "height": 48
+          }
+        },
+        "windowCues": [
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 398,
+              "y": 216,
+              "width": 42,
+              "height": 30
+            }
+          },
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 500,
+              "y": 216,
+              "width": 42,
+              "height": 30
+            }
+          }
+        ],
+        "anchorConnector": {
+          "field": "sceneAnchor",
+          "status": "inferred",
+          "from": {
+            "x": 518,
+            "y": 204
+          },
+          "to": {
+            "x": 560,
+            "y": 162
+          }
+        },
+        "statusChips": [
+          {
+            "label": "name",
+            "status": "sourced"
+          },
+          {
+            "label": "facade",
+            "status": "manual_draft"
+          },
+          {
+            "label": "anchor",
+            "status": "inferred"
+          }
+        ]
       }
     },
     {
@@ -262,6 +371,115 @@
           ],
           "notes": "Intersection context only."
         }
+      },
+      "qaOverlay": {
+        "labelPosition": {
+          "x": 1042,
+          "y": 98
+        },
+        "statusSummaryPosition": {
+          "x": 1042,
+          "y": 132
+        },
+        "footprint": {
+          "field": "buildingFootprint",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 970,
+            "y": 86,
+            "width": 392,
+            "height": 192
+          }
+        },
+        "facadeBand": {
+          "field": "facadeStyle",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1050,
+            "y": 138,
+            "width": 282,
+            "height": 66
+          }
+        },
+        "storefrontBay": {
+          "field": "storefrontBay",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1088,
+            "y": 170,
+            "width": 230,
+            "height": 70
+          }
+        },
+        "signPanel": {
+          "field": "signText",
+          "status": "sourced",
+          "text": "McDonald's",
+          "bounds": {
+            "x": 1100,
+            "y": 144,
+            "width": 188,
+            "height": 28
+          }
+        },
+        "doorCue": {
+          "field": "doorWindowPlacement",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1182,
+            "y": 198,
+            "width": 38,
+            "height": 42
+          }
+        },
+        "windowCues": [
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 1102,
+              "y": 198,
+              "width": 54,
+              "height": 28
+            }
+          },
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 1242,
+              "y": 198,
+              "width": 54,
+              "height": 28
+            }
+          }
+        ],
+        "anchorConnector": {
+          "field": "sceneAnchor",
+          "status": "inferred",
+          "from": {
+            "x": 1208,
+            "y": 190
+          },
+          "to": {
+            "x": 1288,
+            "y": 144
+          }
+        },
+        "statusChips": [
+          {
+            "label": "name",
+            "status": "sourced"
+          },
+          {
+            "label": "category",
+            "status": "manual_draft"
+          },
+          {
+            "label": "facade",
+            "status": "manual_draft"
+          }
+        ]
       }
     },
     {
@@ -385,6 +603,115 @@
           ],
           "notes": "Intersection context only."
         }
+      },
+      "qaOverlay": {
+        "labelPosition": {
+          "x": 458,
+          "y": 546
+        },
+        "statusSummaryPosition": {
+          "x": 458,
+          "y": 582
+        },
+        "footprint": {
+          "field": "buildingFootprint",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 214,
+            "y": 548,
+            "width": 276,
+            "height": 226
+          }
+        },
+        "facadeBand": {
+          "field": "facadeStyle",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 248,
+            "y": 598,
+            "width": 212,
+            "height": 72
+          }
+        },
+        "storefrontBay": {
+          "field": "storefrontBay",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 268,
+            "y": 630,
+            "width": 178,
+            "height": 74
+          }
+        },
+        "signPanel": {
+          "field": "signText",
+          "status": "sourced",
+          "text": "Dunkin'",
+          "bounds": {
+            "x": 282,
+            "y": 604,
+            "width": 132,
+            "height": 28
+          }
+        },
+        "doorCue": {
+          "field": "doorWindowPlacement",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 340,
+            "y": 660,
+            "width": 34,
+            "height": 44
+          }
+        },
+        "windowCues": [
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 282,
+              "y": 660,
+              "width": 42,
+              "height": 28
+            }
+          },
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 390,
+              "y": 660,
+              "width": 42,
+              "height": 28
+            }
+          }
+        ],
+        "anchorConnector": {
+          "field": "sceneAnchor",
+          "status": "inferred",
+          "from": {
+            "x": 370,
+            "y": 668
+          },
+          "to": {
+            "x": 414,
+            "y": 604
+          }
+        },
+        "statusChips": [
+          {
+            "label": "name",
+            "status": "sourced"
+          },
+          {
+            "label": "exception",
+            "status": "manual_draft"
+          },
+          {
+            "label": "anchor",
+            "status": "inferred"
+          }
+        ]
       }
     },
     {
@@ -507,6 +834,115 @@
           ],
           "notes": "Intersection context only."
         }
+      },
+      "qaOverlay": {
+        "labelPosition": {
+          "x": 1016,
+          "y": 546
+        },
+        "statusSummaryPosition": {
+          "x": 1016,
+          "y": 582
+        },
+        "footprint": {
+          "field": "buildingFootprint",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1210,
+            "y": 536,
+            "width": 280,
+            "height": 236
+          }
+        },
+        "facadeBand": {
+          "field": "facadeStyle",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1244,
+            "y": 590,
+            "width": 224,
+            "height": 76
+          }
+        },
+        "storefrontBay": {
+          "field": "storefrontBay",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1262,
+            "y": 626,
+            "width": 190,
+            "height": 74
+          }
+        },
+        "signPanel": {
+          "field": "signText",
+          "status": "sourced",
+          "text": "Citizens",
+          "bounds": {
+            "x": 1282,
+            "y": 598,
+            "width": 142,
+            "height": 28
+          }
+        },
+        "doorCue": {
+          "field": "doorWindowPlacement",
+          "status": "manual_draft",
+          "bounds": {
+            "x": 1344,
+            "y": 658,
+            "width": 36,
+            "height": 42
+          }
+        },
+        "windowCues": [
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 1276,
+              "y": 658,
+              "width": 48,
+              "height": 28
+            }
+          },
+          {
+            "field": "doorWindowPlacement",
+            "status": "manual_draft",
+            "bounds": {
+              "x": 1396,
+              "y": 658,
+              "width": 48,
+              "height": 28
+            }
+          }
+        ],
+        "anchorConnector": {
+          "field": "sceneAnchor",
+          "status": "inferred",
+          "from": {
+            "x": 1316,
+            "y": 638
+          },
+          "to": {
+            "x": 1424,
+            "y": 598
+          }
+        },
+        "statusChips": [
+          {
+            "label": "name",
+            "status": "sourced"
+          },
+          {
+            "label": "category",
+            "status": "manual_draft"
+          },
+          {
+            "label": "facade",
+            "status": "manual_draft"
+          }
+        ]
       }
     },
     {
@@ -617,6 +1053,104 @@
           ],
           "notes": "Station-area context from official transit sources; exact entrances remain blocked."
         }
+      },
+      "qaOverlay": {
+        "labelPosition": {
+          "x": 942,
+          "y": 704
+        },
+        "statusSummaryPosition": {
+          "x": 942,
+          "y": 738
+        },
+        "footprint": {
+          "field": "buildingFootprint",
+          "status": "symbolic",
+          "bounds": {
+            "x": 916,
+            "y": 648,
+            "width": 316,
+            "height": 152
+          }
+        },
+        "facadeBand": {
+          "field": "facadeStyle",
+          "status": "symbolic",
+          "bounds": {
+            "x": 978,
+            "y": 676,
+            "width": 194,
+            "height": 54
+          }
+        },
+        "storefrontBay": {
+          "field": "storefrontBay",
+          "status": "symbolic",
+          "bounds": {
+            "x": 998,
+            "y": 690,
+            "width": 154,
+            "height": 40
+          }
+        },
+        "signPanel": {
+          "field": "signText",
+          "status": "symbolic",
+          "text": "G",
+          "bounds": {
+            "x": 1038,
+            "y": 660,
+            "width": 74,
+            "height": 48
+          }
+        },
+        "doorCue": {
+          "field": "doorWindowPlacement",
+          "status": "blocked",
+          "bounds": {
+            "x": 1086,
+            "y": 718,
+            "width": 40,
+            "height": 28
+          }
+        },
+        "windowCues": [],
+        "anchorConnector": {
+          "field": "sceneAnchor",
+          "status": "symbolic",
+          "from": {
+            "x": 1138,
+            "y": 624
+          },
+          "to": {
+            "x": 1075,
+            "y": 660
+          }
+        },
+        "symbolicCue": {
+          "field": "stationIntersectionCues",
+          "status": "symbolic",
+          "center": {
+            "x": 1075,
+            "y": 684
+          },
+          "radius": 54,
+          "blockedLabel": "exact entrance geometry blocked"
+        },
+        "statusChips": [
+          {
+            "label": "station",
+            "status": "sourced"
+          },
+          {
+            "label": "cue",
+            "status": "symbolic"
+          },
+          {
+            "label": "entrance",
+            "status": "blocked"
+          }
+        ]
       }
     }
   ]

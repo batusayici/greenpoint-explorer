@@ -329,6 +329,7 @@ function buildAppDraftSceneRecord(record) {
         },
       ]),
     ),
+    qaOverlay: record.qaOverlay ?? null,
     statusCounts: summarizeDraftStatuses(record),
   };
 }
@@ -535,6 +536,8 @@ export function validateDraftSceneFixture(fixture, manifest, indexes = buildMani
     for (const fieldName of REQUIRED_DRAFT_SCENE_FIELDS) {
       validateDraftSceneStatusField(record.fields[fieldName], `draftScene record ${record.id}.fields.${fieldName}`);
     }
+
+    if (record.qaOverlay) validateDraftSceneQaOverlay(record.qaOverlay, `draftScene record ${record.id}.qaOverlay`);
   }
 
   assertNoLegacyJpegReferences(fixture, "Draft scene fixture");
@@ -549,6 +552,63 @@ function validateDraftSceneStatusField(field, label, options = {}) {
   assertOneOf(field.status, DRAFT_SCENE_STATUS_VALUES, `${label}.status`);
   if (requireSourceIds) assertArray(field.sourceIds, `${label}.sourceIds`);
   assertString(field.notes, `${label}.notes`);
+}
+
+function validateDraftSceneQaOverlay(overlay, label) {
+  assertObject(overlay, label);
+  validateScenePointLike(overlay.labelPosition, `${label}.labelPosition`);
+  validateScenePointLike(overlay.statusSummaryPosition, `${label}.statusSummaryPosition`);
+  validateOverlayRect(overlay.footprint, `${label}.footprint`);
+  validateOverlayRect(overlay.facadeBand, `${label}.facadeBand`);
+  validateOverlayRect(overlay.storefrontBay, `${label}.storefrontBay`);
+  validateOverlayRect(overlay.signPanel, `${label}.signPanel`);
+  assertString(overlay.signPanel.text, `${label}.signPanel.text`);
+  validateOverlayRect(overlay.doorCue, `${label}.doorCue`);
+  assertArray(overlay.windowCues, `${label}.windowCues`);
+  for (const [index, cue] of overlay.windowCues.entries()) {
+    validateOverlayRect(cue, `${label}.windowCues[${index}]`);
+  }
+  validateOverlayConnector(overlay.anchorConnector, `${label}.anchorConnector`);
+  if (overlay.symbolicCue) validateSymbolicCue(overlay.symbolicCue, `${label}.symbolicCue`);
+  assertArray(overlay.statusChips, `${label}.statusChips`);
+  for (const [index, chip] of overlay.statusChips.entries()) {
+    assertString(chip.label, `${label}.statusChips[${index}].label`);
+    assertOneOf(chip.status, DRAFT_SCENE_STATUS_VALUES, `${label}.statusChips[${index}].status`);
+  }
+}
+
+function validateOverlayRect(rect, label) {
+  assertObject(rect, label);
+  assertString(rect.field, `${label}.field`);
+  assertOneOf(rect.status, DRAFT_SCENE_STATUS_VALUES, `${label}.status`);
+  assertObject(rect.bounds, `${label}.bounds`);
+  assertNumber(rect.bounds.x, `${label}.bounds.x`);
+  assertNumber(rect.bounds.y, `${label}.bounds.y`);
+  assertNumber(rect.bounds.width, `${label}.bounds.width`);
+  assertNumber(rect.bounds.height, `${label}.bounds.height`);
+}
+
+function validateOverlayConnector(connector, label) {
+  assertObject(connector, label);
+  assertString(connector.field, `${label}.field`);
+  assertOneOf(connector.status, DRAFT_SCENE_STATUS_VALUES, `${label}.status`);
+  validateScenePointLike(connector.from, `${label}.from`);
+  validateScenePointLike(connector.to, `${label}.to`);
+}
+
+function validateSymbolicCue(cue, label) {
+  assertObject(cue, label);
+  assertString(cue.field, `${label}.field`);
+  assertOneOf(cue.status, DRAFT_SCENE_STATUS_VALUES, `${label}.status`);
+  validateScenePointLike(cue.center, `${label}.center`);
+  assertNumber(cue.radius, `${label}.radius`);
+  assertString(cue.blockedLabel, `${label}.blockedLabel`);
+}
+
+function validateScenePointLike(point, label) {
+  assertObject(point, label);
+  assertNumber(point.x, `${label}.x`);
+  assertNumber(point.y, `${label}.y`);
 }
 
 function validatePromotionGates(gates, label) {
