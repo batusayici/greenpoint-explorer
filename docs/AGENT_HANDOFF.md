@@ -174,7 +174,7 @@ Next recommended batch:
 
 ### Batch 2026-06-02 21:22
 Status: complete
-Commit: pending
+Commit: 8cc8cce
 Files changed:
 - `scripts/ingest-source-evidence-fixture.mjs`
 - `scripts/inspect-source-evidence-coverage.mjs`
