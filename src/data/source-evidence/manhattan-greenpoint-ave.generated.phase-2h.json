@@ -2,7 +2,7 @@
   "schemaVersion": "source-evidence-fixture.v0.1",
   "fixtureId": "combined-local-source-evidence-fixture",
   "status": "review-only-combined-generation",
-  "reviewedOn": "2026-06-01",
+  "reviewedOn": "2026-06-02",
   "notes": "Combined local source-evidence fixture generated from multiple raw inputs for review-only parity verification.",
   "records": [
     {
@@ -104,6 +104,157 @@
       "remainingGaps": [
         "Exact entrance coordinates, stair alignment, station footprint, and production transit mapping remain blocked.",
         "The authored raster cue remains review-scale and not a source-derived transit geometry layer."
+      ]
+    },
+    {
+      "id": "evidence-mcdonalds-identity-address-review",
+      "targetIds": [
+        "mcdonalds"
+      ],
+      "placeIds": [
+        "place-mcdonalds"
+      ],
+      "sourceRecordIds": [
+        "mcdonalds-official"
+      ],
+      "sourceType": "reviewed-official-business-location-page",
+      "sourceLabel": "McDonald's official location page",
+      "sourceUrl": "https://www.mcdonalds.com/us/en-us/location/ny/brooklyn/904-manhattan-ave/2678.html",
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-02",
+      "usageStatus": "review-only-claim-support",
+      "confidence": {
+        "value": "medium-high",
+        "rationale": "Supports review-card identity and address context; does not support exact facade, storefront frontage, entrance placement, trade-dress clearance, hours, status, or promotions."
+      },
+      "claimMappings": [
+        {
+          "claimId": "claim-mcdonalds-display-name",
+          "manifestPath": "places.place-mcdonalds.displayName",
+          "claimType": "business-identity",
+          "claimValue": "McDonald's",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium-high",
+          "notes": "Used only for review-card identity; not a production business-record, endorsement, partnership, or active-status claim."
+        },
+        {
+          "claimId": "claim-mcdonalds-address-context",
+          "manifestPath": "addresses.address-mcdonalds.normalizedAddress",
+          "claimType": "address-context",
+          "claimValue": "904 Manhattan Ave, Brooklyn, NY 11222",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium-high",
+          "notes": "Supports address text in the selected card, not exact raster address placement."
+        }
+      ],
+      "qaNotes": [
+        "Official business source remains restricted to review-only factual card copy.",
+        "No hours, open-now status, ratings, reviews, services, endorsement, partnership, or promotional claims are used."
+      ],
+      "remainingGaps": [
+        "Exact facade geometry, storefront frontage/order, adjacent-unit relationship, entrance position, and address placement remain approximate or blocked.",
+        "Production logo/trade-dress clearance and official brand approval remain blocked."
+      ]
+    },
+    {
+      "id": "evidence-dunkin-identity-address-review",
+      "targetIds": [
+        "dunkin"
+      ],
+      "placeIds": [
+        "place-dunkin"
+      ],
+      "sourceRecordIds": [
+        "dunkin-official"
+      ],
+      "sourceType": "reviewed-official-business-location-page",
+      "sourceLabel": "Dunkin' official location page",
+      "sourceUrl": "https://locations.dunkindonuts.com/en/ny/brooklyn/893-manhattan-ave/355867",
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-02",
+      "usageStatus": "review-only-claim-support",
+      "confidence": {
+        "value": "medium-high",
+        "rationale": "Supports review-card identity and address context; does not support exact visual geometry, storefront frontage, entrance placement, exception scope, hours, status, or promotions."
+      },
+      "claimMappings": [
+        {
+          "claimId": "claim-dunkin-display-name",
+          "manifestPath": "places.place-dunkin.displayName",
+          "claimType": "business-identity",
+          "claimValue": "Dunkin'",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium-high",
+          "notes": "Used only for review-card identity; not a production business-record, endorsement, partnership, or active-status claim."
+        },
+        {
+          "claimId": "claim-dunkin-address-context",
+          "manifestPath": "addresses.address-dunkin.normalizedAddress",
+          "claimType": "address-context",
+          "claimValue": "893 Manhattan Ave, Brooklyn, NY 11222",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium-high",
+          "notes": "Supports address text in the selected card, not exact raster address placement."
+        }
+      ],
+      "qaNotes": [
+        "Official business source remains restricted to review-only factual card copy.",
+        "Batu's narrow MVP-only SW visual-reference exception is not derived from this raw input and is not generalized by this evidence record.",
+        "No hours, open-now status, ratings, reviews, services, endorsement, partnership, or promotional claims are used."
+      ],
+      "remainingGaps": [
+        "Exact facade geometry, storefront frontage/order, entrance position, and address placement remain approximate or blocked.",
+        "The SW Dunkin visual treatment remains MVP-only, stylized, non-production, and governed by the existing exception; this evidence record does not approve production use, tracing, texture extraction, stored facade reuse, training input, generation input, or exact trade-dress reproduction."
+      ]
+    },
+    {
+      "id": "evidence-citizens-bank-identity-address-review",
+      "targetIds": [
+        "citizens-bank"
+      ],
+      "placeIds": [
+        "place-citizens-bank"
+      ],
+      "sourceRecordIds": [
+        "citizens-official"
+      ],
+      "sourceType": "reviewed-official-branch-location-page",
+      "sourceLabel": "Citizens official branch page",
+      "sourceUrl": "https://locations.citizensbank.com/ny/brooklyn/896-manhattan-avenue.html",
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-02",
+      "usageStatus": "review-only-claim-support",
+      "confidence": {
+        "value": "medium-high",
+        "rationale": "Supports review-card branch identity and address context; does not support exact facade, storefront frontage, branch entrance placement, ATM/service availability, hours, status, or promotions."
+      },
+      "claimMappings": [
+        {
+          "claimId": "claim-citizens-bank-display-name",
+          "manifestPath": "places.place-citizens-bank.displayName",
+          "claimType": "business-identity",
+          "claimValue": "Citizens Bank",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium-high",
+          "notes": "Used only for review-card identity; not a production business-record, endorsement, partnership, active-status, ATM, or service-availability claim."
+        },
+        {
+          "claimId": "claim-citizens-bank-address-context",
+          "manifestPath": "addresses.address-citizens-bank.normalizedAddress",
+          "claimType": "address-context",
+          "claimValue": "896 Manhattan Avenue, Brooklyn, NY 11222",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium-high",
+          "notes": "Supports address text in the selected card, not exact raster address placement."
+        }
+      ],
+      "qaNotes": [
+        "Official branch source remains restricted to review-only factual card copy.",
+        "No hours, open-now status, ratings, reviews, branch services, ATM availability, endorsement, partnership, or promotional claims are used."
+      ],
+      "remainingGaps": [
+        "Exact facade geometry, storefront frontage/order, branch entrance position, ATM placement, service availability, and address placement remain approximate or blocked.",
+        "Production logo/trade-dress clearance and official brand approval remain blocked."
       ]
     }
   ]

@@ -17,6 +17,7 @@ async function main() {
   const outputPath = options.output ? resolve(repoRoot, options.output) : null;
   const comparePath = options["compare-to"] ? resolve(repoRoot, options["compare-to"]) : null;
   const requireAllExpected = options["require-all-expected"] === "true";
+  const allowAdditionalGenerated = options["allow-additional-generated"] === "true";
   const verifyRuntimePath = options["verify-runtime"] ? resolve(repoRoot, options["verify-runtime"]) : null;
   const expectedIds = optionValues(options, "expected-id");
 
@@ -41,13 +42,14 @@ async function main() {
       expectedFixture,
       expectedIds,
       requireAllExpected,
+      allowAdditionalGenerated,
     });
     return;
   }
 
   if (comparePath) {
     const expectedFixture = await readJson(comparePath, "comparison source evidence fixture");
-    if (!compareFixtureParity(fixture, expectedFixture, { requireAllExpected })) return;
+    if (!compareFixtureParity(fixture, expectedFixture, { requireAllExpected, allowAdditionalGenerated })) return;
   }
 
   if (outputPath) {
@@ -66,6 +68,7 @@ async function verifyRuntimeFixture({
   expectedFixture,
   expectedIds,
   requireAllExpected,
+  allowAdditionalGenerated,
 }) {
   await writeFile(outputPath, generatedOutput, "utf8");
 
@@ -82,7 +85,10 @@ async function verifyRuntimeFixture({
   }
 
   if (expectedFixture) {
-    failures.push(...collectFixtureParityFailures(runtimeFixture, expectedFixture, { requireAllExpected }));
+    failures.push(...collectFixtureParityFailures(runtimeFixture, expectedFixture, {
+      requireAllExpected,
+      allowAdditionalGenerated,
+    }));
   }
 
   if (failures.length) {
@@ -95,7 +101,7 @@ async function verifyRuntimeFixture({
   console.log(`PASS source evidence drift guard: regenerated output matches committed runtime fixture.`);
   console.log(`PASS runtime evidence ids: ${runtimeFixture.records.map((record) => record.id).join(", ")}`);
   if (expectedFixture) {
-    console.log(`PASS runtime parity check: ${runtimeFixture.records.length} runtime record(s) matched reviewed reference.`);
+    console.log(`PASS runtime parity check: ${expectedFixture.records.length} reviewed reference record(s) matched.`);
   }
   console.log(`Wrote regenerated temp output ${outputPath}`);
   return true;
@@ -111,7 +117,11 @@ function compareFixtureParity(generatedFixture, expectedFixture, options = {}) {
     return false;
   }
 
-  console.log(`PASS source evidence parity check: ${generatedFixture.records.length} generated record(s) matched.`);
+  if (options.allowAdditionalGenerated) {
+    console.log(`PASS source evidence parity check: ${expectedFixture.records.length} reviewed reference record(s) matched; ${generatedFixture.records.length} generated record(s) inspected.`);
+  } else {
+    console.log(`PASS source evidence parity check: ${generatedFixture.records.length} generated record(s) matched.`);
+  }
   return true;
 }
 
@@ -134,6 +144,7 @@ function collectFixtureParityFailures(generatedFixture, expectedFixture, options
   for (const generatedRecord of generatedFixture.records) {
     const expectedRecord = expectedRecords.get(generatedRecord.id);
     if (!expectedRecord) {
+      if (options.allowAdditionalGenerated) continue;
       failures.push(`missing expected record for generated id "${generatedRecord.id}"`);
       continue;
     }
@@ -217,7 +228,7 @@ function convertRawFixtures(rawFixtures) {
     schemaVersion: OUTPUT_SCHEMA_VERSION,
     fixtureId: "combined-local-source-evidence-fixture",
     status: "review-only-combined-generation",
-    reviewedOn: fixtures[0].reviewedOn,
+    reviewedOn: fixtures.map((fixture) => fixture.reviewedOn).sort().at(-1),
     notes: "Combined local source-evidence fixture generated from multiple raw inputs for review-only parity verification.",
     records: fixtures.flatMap((fixture) => fixture.records),
   };

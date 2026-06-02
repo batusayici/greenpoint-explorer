@@ -55,14 +55,68 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2J Source Evidence Coverage Inspector is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2K Raw Input Expansion + First Evidence Ingestion Slice is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2J source-evidence coverage inspector and report. Raster revisions, broader app refactor, generated source-evidence expansion beyond one later explicitly bounded target, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2K raw-input expansion, additive parity behavior, expanded generated runtime fixture, and regenerated coverage report. Raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2K Raw Input Expansion
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Accept Phase 2J and open one bounded Phase 2 implementation batch.
+- Add a first official-location raw-input slice for the three Phase 2J manifest-source-only targets: `mcdonalds`, `dunkin`, and `citizens-bank`.
+- Use only source context already recorded in the scene manifest.
+- Restrict new evidence records to review-only identity and address-context claims.
+- Regenerate the app-loaded generated source-evidence fixture and regenerate the Phase 2J coverage report.
+- Preserve the Phase 2D reviewed parity fixture unchanged and keep the drift guard effective through additive parity.
+- Do not add external research, scraping/API calls, package scripts, CI, raster art, new places, production schemas, public APIs, exact geometry claims, or production claims.
+
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `scripts/inspect-source-evidence-coverage.mjs`
+- `src/data/source-evidence/raw/official-locations.phase-2k.raw.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --input src/data/source-evidence/raw/official-locations.phase-2k.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --allow-additional-generated true`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 5 --expect-targets-without-evidence 0`
+- Expanded drift guard command with all three raw inputs, five expected evidence IDs, the Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- Temp-output coverage verification with 5 expected targets with generated evidence and 0 expected targets without generated evidence.
+- Existing expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, confirming the missing preserved gap is still reported.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The new `official-locations.phase-2k.raw.json` fixture adds review-only raw inputs for McDonald's, Dunkin', and Citizens Bank using already-recorded manifest source context.
+- The generated runtime fixture now contains five source-evidence records, covering all current active targets.
+- The regenerated coverage report now shows 5 of 5 targets with generated evidence and 0 manifest-source-only targets.
+- The Phase 2D reviewed fixture remains unchanged and still guards the two reviewed reference records through additive parity.
+- Package scripts, lockfiles, app imports, visual assets, screenshots, and production-facing interfaces were not changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2K raw-input expansion, additive parity behavior, expanded generated runtime fixture, and regenerated coverage report.
+- Whether to refine fixture metadata, expose expanded evidence more clearly in the app QA inspector, add package scripts/CI, define a source-evidence merge workflow, or pursue external source access remains blocked pending later approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, package scripts/CI, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2K raw-input expansion.
+- If accepted, Batu may open a later bounded Phase 2 task for fixture metadata refinement, generated-output inspection ergonomics, app QA inspector surfacing of expanded evidence, a narrow manual-input checklist, or a deliberately scoped source-evidence merge/review workflow.
 
 ### 2026-06-02 - Phase 2J Source Evidence Coverage Inspector
 

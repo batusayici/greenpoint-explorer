@@ -103,7 +103,7 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
     notes: [
       "This report is generated from the review-only scene manifest and Phase 2H runtime source-evidence fixture.",
       "Generated evidence coverage does not approve production data, exact facade/frontage/address placement, exact station geometry, or public claims.",
-      "Targets without generated evidence still rely on manifest source references and remain candidates for future raw-input expansion.",
+      "Any target without generated evidence still relies on manifest source references and remains a candidate for future raw-input expansion.",
     ],
   };
 }

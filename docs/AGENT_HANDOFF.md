@@ -97,3 +97,38 @@ Remaining:
 - Production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, and broad coverage remain blocked.
 Next recommended batch:
 - If Phase 2J is accepted, open one bounded local raw-input expansion for a single manifest-source-only target, with parity and coverage updated afterward.
+
+### Batch 2026-06-02 20:58
+Status: complete
+Commit: pending in git history for this batch
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `scripts/inspect-source-evidence-coverage.mjs`
+- `src/data/source-evidence/raw/official-locations.phase-2k.raw.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --input src/data/source-evidence/raw/official-locations.phase-2k.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --allow-additional-generated true`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 5 --expect-targets-without-evidence 0`
+- Expanded Phase 2I drift guard with all three raw inputs, five expected evidence IDs, Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- Temp-output coverage verification with 5 expected targets with generated evidence and 0 expected targets without generated evidence.
+- Expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, which still fails on the omitted preserved uncertainty/gap field.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Accepted Phase 2J for continuation and opened/completed Phase 2K Raw Input Expansion + First Evidence Ingestion Slice.
+- Added a review-only official-location raw fixture for McDonald's, Dunkin', and Citizens Bank using source context already recorded in the scene manifest.
+- Regenerated the generated runtime source-evidence fixture to five records and regenerated the coverage report to 5/5 current targets with generated evidence.
+- Preserved the Phase 2D reviewed parity fixture unchanged and kept additive parity guarding the reviewed reference records.
+Remaining:
+- Batu must accept, revise, or reject the Phase 2K raw-input expansion, additive parity behavior, expanded generated runtime fixture, and regenerated coverage report.
+- Production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- If Phase 2K is accepted, open one bounded follow-up for fixture metadata refinement, generated-output inspection ergonomics, app QA inspector surfacing of expanded evidence, a narrow manual-input checklist, or a deliberately scoped source-evidence merge/review workflow.
