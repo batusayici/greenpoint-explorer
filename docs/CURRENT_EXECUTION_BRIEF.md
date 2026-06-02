@@ -1,74 +1,76 @@
-# Current Execution Brief - Phase 2H Generated Source Evidence Runtime Promotion Review Hold
+# Current Execution Brief - Phase 2I Source Evidence Drift Guard Review Hold
 
-Status: Phase 2H Generated Source Evidence Runtime Promotion is complete for Batu review. This brief records the completed runtime switch from the Phase 2D hand-authored source-evidence fixture to the generated Phase 2H fixture and does not open scraping, external app-code API calls, package/tooling changes, raster/visual revisions, production data, production assets, full MVP-29G screenshot QA, or broader Greenpoint coverage.
+Status: Phase 2I Source Evidence Drift Guard is complete for Batu review. This brief records the completed local verification guard for the generated Phase 2H runtime source-evidence fixture and does not open scraping, external app-code API calls, package/tooling changes, raster/visual revisions, production data, production assets, full MVP-29G screenshot QA, or broader Greenpoint coverage.
 
-Owner boundary: Batu owns acceptance, revision, or rejection of the Phase 2H generated runtime fixture, runtime promotion, parity workflow, and raw-input workflow; creative/product/scope approval; public-interface approval; architecture-boundary approval; exact facade/frontage/address/station-geometry decisions; production/public claims; source-authority decisions; and any later Phase 2 implementation gates.
+Owner boundary: Batu owns acceptance, revision, or rejection of the Phase 2I drift guard, generated runtime fixture workflow, parity workflow, and raw-input workflow; creative/product/scope approval; public-interface approval; architecture-boundary approval; exact facade/frontage/address/station-geometry decisions; production/public claims; source-authority decisions; and any later Phase 2 implementation gates.
 
-## Completed Phase 2H Output
+## Completed Phase 2I Output
 
-- Generated and committed `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json` from the two local raw fixtures:
-  - `src/data/source-evidence/raw/grillpoint.phase-2e.raw.json`
-  - `src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json`
-- Switched the app/runtime source-evidence import in `src/mvpPlaceData.js` from the Phase 2D hand-authored fixture to the generated Phase 2H fixture.
-- Kept `src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json` unchanged as the reviewed parity reference.
-- Preserved loader validation and QA inspector behavior.
-- Verified the generated runtime fixture still has exactly the current two evidence records:
+- Added a local `--verify-runtime` guard mode to `scripts/ingest-source-evidence-fixture.mjs`.
+- The guard regenerates source evidence from current raw fixtures to a temp output path and does not rewrite the committed runtime fixture.
+- The guard compares regenerated output against `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`.
+- The guard checks the runtime fixture has exactly the expected current evidence IDs:
   - `evidence-grillpoint-identity-address-review`
   - `evidence-greenpoint-g-station-context-review`
-- Ran full parity against the Phase 2D reviewed fixture before and after the runtime switch.
-- Preserved the missing-expected-ID failure path through `--require-all-expected true`.
+- The guard runs full parity between the runtime fixture and the Phase 2D reviewed reference fixture.
+- Preserved the existing expected-fail parity fixture/check for the missing preserved-gap case.
 
 ## Files Changed
 
-- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
-- `src/mvpPlaceData.js`
+- `scripts/ingest-source-evidence-fixture.mjs`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 
-## What Is Now Runtime-Loaded
+## Verification Command
 
-- The app now loads `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json` as its source-evidence fixture.
-- The generated fixture currently contains the same two reviewed evidence records as the Phase 2D reference fixture.
-- The Phase 2D fixture remains committed and unchanged as the reviewed parity reference.
-- The raw fixtures remain local/manual input fixtures, not scraping output, API ingestion, production source adapters, or live data.
+```sh
+node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output /tmp/source-evidence.phase-2i.regenerated.json --verify-runtime src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --expected-id evidence-grillpoint-identity-address-review --expected-id evidence-greenpoint-g-station-context-review
+```
+
+## What The Guard Fails On
+
+- Regenerated output differs from the committed Phase 2H runtime fixture.
+- Runtime fixture is missing an expected evidence ID.
+- Runtime fixture contains an unexpected evidence ID.
+- Runtime fixture contains duplicate evidence IDs.
+- Runtime fixture parity against the Phase 2D reviewed reference fails.
 
 ## What Remains Hardcoded Or Blocked
 
-- The generated fixture is review/runtime data for the current local app only; it is not a production ingestion pipeline, source normalization service, public runtime schema, public data API, fixture merge system, or full Greenpoint data workflow.
-- No scraping, browser automation, network/API calls, package changes, lockfile changes, raster generation, art revision, new places, backend, CMS, analytics, deployment, CI, or broad map coverage is opened.
+- The generated fixture remains review/runtime data for the current local app only; it is not a production ingestion pipeline, source normalization service, public runtime schema, public data API, fixture merge system, or full Greenpoint data workflow.
+- Raw fixtures remain local/manual input fixtures, not scraping output, API ingestion, production source adapters, or live data.
+- No package script, package change, lockfile change, scraping, browser automation, network/API call, raster generation, art revision, new place, backend, CMS, analytics, deployment, CI, or broad map coverage is opened.
 - Exact storefront frontage, sign geometry, entrance position, address placement, parcel/tax-lot geometry, building-footprint geometry, and station geometry remain unresolved or blocked.
 
 ## Verification State
 
-Phase 2H verification completed:
+Phase 2I verification completed:
 
-- Generator happy path from Grillpoint and Greenpoint G raw fixtures to `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
-- Full parity pass against `src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json` before the runtime switch
-- Full parity pass against `src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json` after the runtime switch
-- Expected-fail parity check using only the Grillpoint raw fixture with `--require-all-expected true`, reporting the missing Greenpoint G runtime evidence ID
+- Drift guard command above passed.
+- Expected-fail parity check using `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json` still fails on the omitted preserved uncertainty/gap field.
 - `npm run build`
 - `git diff --check`
 - `git diff --cached --check`
 - `git status --short`
 - `git diff --stat`
 
-No screenshots were required or captured. This is a local data promotion/parity-check batch, not a visual or full MVP-29G screenshot QA pass.
+No screenshots were required or captured. This is a local data drift-guard batch, not a visual or full MVP-29G screenshot QA pass.
 
 ## Next Actual Work
 
 Next recommended state:
 
-- Batu review/acceptance, revision, or rejection of the Phase 2H generated runtime fixture promotion.
+- Batu review/acceptance, revision, or rejection of the Phase 2I source-evidence drift guard.
 
-If Batu accepts Phase 2H:
+If Batu accepts Phase 2I:
 
-- Batu may open a later bounded Phase 2 task for generated fixture metadata refinement, generated-output inspection artifacts, raw-input expansion, fixture regression checks, or a deliberately scoped source-evidence merge/review workflow.
+- Batu may open a later bounded Phase 2 task for generated fixture metadata refinement, package-script/CI discussion, generated-output inspection artifacts, raw-input expansion, fixture regression checks, or a deliberately scoped source-evidence merge/review workflow.
 
 ## Stop Conditions
 
 Stop and ask Batu to open or revise the brief before:
 
-- Adding ingestion/parity coverage beyond the current local samples, scraping, external app-code API calls, production source adapters, public runtime schemas, package/tooling changes, or production architecture.
+- Adding package scripts, CI, ingestion/parity coverage beyond the current local samples, scraping, external app-code API calls, production source adapters, public runtime schemas, package/tooling changes, or production architecture.
 - Editing raster assets, generating images, revising visual direction, adding screenshots, or opening full QA/demo freeze.
-- Treating the converter, parity mode, raw fixtures, generated fixture, manifest, or inspector as production data, a public API, exact geometry, exact address/frontage/station placement, or production asset direction.
+- Treating the converter, parity mode, drift guard, raw fixtures, generated fixture, manifest, or inspector as production data, a public API, exact geometry, exact address/frontage/station placement, or production asset direction.

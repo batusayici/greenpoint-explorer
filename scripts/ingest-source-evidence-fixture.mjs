@@ -17,6 +17,8 @@ async function main() {
   const outputPath = options.output ? resolve(repoRoot, options.output) : null;
   const comparePath = options["compare-to"] ? resolve(repoRoot, options["compare-to"]) : null;
   const requireAllExpected = options["require-all-expected"] === "true";
+  const verifyRuntimePath = options["verify-runtime"] ? resolve(repoRoot, options["verify-runtime"]) : null;
+  const expectedIds = optionValues(options, "expected-id");
 
   const rawFixtures = await Promise.all(
     inputPaths.map((inputPath) => readJson(inputPath, "raw evidence input")),
@@ -25,12 +27,29 @@ async function main() {
   const fixture = convertRawFixtures(rawFixtures);
 
   validateConvertedFixture(fixture, manifest);
+  const output = `${JSON.stringify(fixture, null, 2)}\n`;
+  if (verifyRuntimePath) {
+    if (!outputPath) throw new Error("--verify-runtime requires a temp --output path.");
+    const expectedFixture = comparePath
+      ? await readJson(comparePath, "comparison source evidence fixture")
+      : null;
+    await verifyRuntimeFixture({
+      generatedFixture: fixture,
+      generatedOutput: output,
+      outputPath,
+      runtimePath: verifyRuntimePath,
+      expectedFixture,
+      expectedIds,
+      requireAllExpected,
+    });
+    return;
+  }
+
   if (comparePath) {
     const expectedFixture = await readJson(comparePath, "comparison source evidence fixture");
     if (!compareFixtureParity(fixture, expectedFixture, { requireAllExpected })) return;
   }
 
-  const output = `${JSON.stringify(fixture, null, 2)}\n`;
   if (outputPath) {
     await writeFile(outputPath, output, "utf8");
     console.log(`Wrote ${outputPath}`);
@@ -39,7 +58,64 @@ async function main() {
   }
 }
 
+async function verifyRuntimeFixture({
+  generatedFixture,
+  generatedOutput,
+  outputPath,
+  runtimePath,
+  expectedFixture,
+  expectedIds,
+  requireAllExpected,
+}) {
+  await writeFile(outputPath, generatedOutput, "utf8");
+
+  const runtimeOutput = await readFile(runtimePath, "utf8");
+  const runtimeFixture = await readJson(runtimePath, "runtime source evidence fixture");
+  const failures = [];
+
+  if (generatedOutput !== runtimeOutput) {
+    failures.push(`regenerated output differs from committed runtime fixture "${runtimePath}"`);
+  }
+
+  if (expectedIds.length) {
+    failures.push(...collectEvidenceIdFailures(runtimeFixture, expectedIds));
+  }
+
+  if (expectedFixture) {
+    failures.push(...collectFixtureParityFailures(runtimeFixture, expectedFixture, { requireAllExpected }));
+  }
+
+  if (failures.length) {
+    console.error(`FAIL source evidence drift guard: ${failures.length} issue(s).`);
+    for (const failure of failures) console.error(`- ${failure}`);
+    process.exitCode = 1;
+    return false;
+  }
+
+  console.log(`PASS source evidence drift guard: regenerated output matches committed runtime fixture.`);
+  console.log(`PASS runtime evidence ids: ${runtimeFixture.records.map((record) => record.id).join(", ")}`);
+  if (expectedFixture) {
+    console.log(`PASS runtime parity check: ${runtimeFixture.records.length} runtime record(s) matched reviewed reference.`);
+  }
+  console.log(`Wrote regenerated temp output ${outputPath}`);
+  return true;
+}
+
 function compareFixtureParity(generatedFixture, expectedFixture, options = {}) {
+  const failures = collectFixtureParityFailures(generatedFixture, expectedFixture, options);
+
+  if (failures.length) {
+    console.error(`FAIL source evidence parity check: ${failures.length} mismatch(es).`);
+    for (const failure of failures) console.error(`- ${failure}`);
+    process.exitCode = 1;
+    return false;
+  }
+
+  console.log(`PASS source evidence parity check: ${generatedFixture.records.length} generated record(s) matched.`);
+  return true;
+}
+
+function collectFixtureParityFailures(generatedFixture, expectedFixture, options = {}) {
   assertObject(expectedFixture, "comparison fixture");
   assertArray(expectedFixture.records, "comparison fixture.records");
 
@@ -74,15 +150,34 @@ function compareFixtureParity(generatedFixture, expectedFixture, options = {}) {
     compareField(failures, generatedRecord, expectedRecord, "qaNotes", "review QA notes");
   }
 
-  if (failures.length) {
-    console.error(`FAIL source evidence parity check: ${failures.length} mismatch(es).`);
-    for (const failure of failures) console.error(`- ${failure}`);
-    process.exitCode = 1;
-    return false;
+  return failures;
+}
+
+function collectEvidenceIdFailures(fixture, expectedIds) {
+  assertObject(fixture, "runtime fixture");
+  assertArray(fixture.records, "runtime fixture.records");
+  const actualIds = fixture.records.map((record) => record.id);
+  const actualIdSet = new Set(actualIds);
+  const expectedIdSet = new Set(expectedIds);
+  const failures = [];
+
+  for (const expectedId of expectedIds) {
+    if (!actualIdSet.has(expectedId)) {
+      failures.push(`runtime fixture is missing expected evidence id "${expectedId}"`);
+    }
   }
 
-  console.log(`PASS source evidence parity check: ${generatedFixture.records.length} generated record(s) matched.`);
-  return true;
+  for (const actualId of actualIds) {
+    if (!expectedIdSet.has(actualId)) {
+      failures.push(`runtime fixture contains unexpected evidence id "${actualId}"`);
+    }
+  }
+
+  if (actualIds.length !== actualIdSet.size) {
+    failures.push("runtime fixture contains duplicate evidence ids");
+  }
+
+  return failures;
 }
 
 function compareField(failures, generatedRecord, expectedRecord, key, label) {
@@ -263,6 +358,11 @@ function requiredOption(options, key) {
 
 function requiredOptionValues(options, key) {
   if (!options[key]) throw new Error(`Missing required option --${key}.`);
+  return Array.isArray(options[key]) ? options[key] : [options[key]];
+}
+
+function optionValues(options, key) {
+  if (!options[key]) return [];
   return Array.isArray(options[key]) ? options[key] : [options[key]];
 }
 

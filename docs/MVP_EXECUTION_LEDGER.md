@@ -55,14 +55,57 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2H Generated Source Evidence Runtime Promotion is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2I Source Evidence Drift Guard is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2H generated runtime fixture promotion. Raster revisions, broader app refactor, generated source-evidence expansion beyond the current two-record fixture, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2I source-evidence drift guard. Raster revisions, broader app refactor, generated source-evidence expansion beyond the current two-record fixture, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, package-script/CI additions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2I Source Evidence Drift Guard
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Add the smallest useful local verification guard for the generated Phase 2H runtime source-evidence fixture.
+- Confirm the committed runtime fixture can be regenerated exactly from the current raw fixtures using a temp output path.
+- Confirm the committed runtime fixture still passes full parity against the Phase 2D reviewed reference.
+- Confirm the runtime fixture contains exactly `evidence-grillpoint-identity-address-review` and `evidence-greenpoint-g-station-context-review`.
+- Do not replace or rewrite the runtime fixture during verification; do not add packages, lockfiles, package scripts, new places, raster art, scraping/API calls, or production claims.
+
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output /tmp/source-evidence.phase-2i.regenerated.json --verify-runtime src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --expected-id evidence-grillpoint-identity-address-review --expected-id evidence-greenpoint-g-station-context-review`
+- Existing expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, confirming the missing preserved gap is still reported.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The ingestion script now supports `--verify-runtime` for local drift guarding.
+- The guard writes regenerated output to a temp path, compares it exactly with the committed Phase 2H runtime fixture, validates the exact evidence ID set, and checks runtime parity against the Phase 2D reviewed reference.
+- The runtime fixture was not rewritten during guard verification.
+- Package scripts and lockfiles remain unchanged.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2I source-evidence drift guard.
+- Whether the guard should later become a package script or CI check, whether generated fixture metadata should be refined, whether generated output inspection artifacts should be added, and whether more local raw fixtures should be added remain blocked pending Batu approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2I source evidence drift guard.
+- If accepted, Batu may open a later bounded Phase 2 task for generated fixture metadata refinement, package-script/CI discussion, generated-output inspection artifacts, raw-input expansion, fixture regression checks, or a deliberately scoped source-evidence merge/review workflow.
 
 ### 2026-06-01 - Phase 2H Generated Source Evidence Runtime Promotion
 
