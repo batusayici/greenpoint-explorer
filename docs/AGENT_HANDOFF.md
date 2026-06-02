@@ -190,3 +190,29 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - Phase 2Q Missing-Evidence Contract Validation: add a small local validation path or focused assertions that verify missing-evidence contract fields cover the blocked promotion gates and preserve the must-not-claim constraints.
+
+### Batch 2026-06-02 23:05
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2Q Missing-Evidence Contract Validation.
+- Strengthened the local verifier so Grillpoint blocked promotion gates must be covered by missing-evidence contract entries.
+- Added checks for required raw input types, minimum raw fields, must-not-claim guardrails, partial-promotion outcome, review-only readiness, and product-copy-not-ready status.
+- Preserved visual rendering, generated source-evidence claim status, promotion gates, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- Auto-advance may continue only if the next batch remains narrow, verified, local, source-evidence focused, and within the approved Phase 2 direction.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Phase 2R Verifier Negative Smoke Check: add a focused expected-fail command or temporary-fixture smoke check that removes one Grillpoint `mustNotClaim` guardrail and confirms the verifier rejects it.

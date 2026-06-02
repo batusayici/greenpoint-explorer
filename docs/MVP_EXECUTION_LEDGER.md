@@ -55,14 +55,50 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2P Generated-Output Inspection Ergonomics is complete under auto-advance. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2Q Missing-Evidence Contract Validation is complete under auto-advance. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Phase 2Q Missing-Evidence Contract Validation as the next auto-advance-eligible candidate if it remains narrow, local, verified, and within the approved Phase 2 evidence/readiness direction. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Phase 2R Verifier Negative Smoke Check as the next auto-advance-eligible candidate if it remains narrow, local, verified, and within the approved Phase 2 evidence/readiness direction. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2Q Missing-Evidence Contract Validation
+
+Status:
+- Complete under auto-advance.
+
+Scope:
+- Strengthen the local QA/source-evidence verifier so it validates the Grillpoint missing-evidence contract shape and guardrails.
+- Keep the work review/QA-only and do not change visual rendering, source claims, promotion gates, package scripts, CI, production schemas, public APIs, or external-source access.
+
+Files changed:
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The verifier now checks Grillpoint report schema, partial-promotion outcome, review-only readiness, and product-copy-not-ready status.
+- The verifier confirms missing-evidence contract keys cover blocked promotion gates and each blocked gate contract has required raw input types, minimum raw fields, and must-not-claim guardrails.
+- The verifier preserves explicit must-not-claim checks for exact facade, production asset readiness, exact entrance position, exact address placement, and production placement readiness.
+- No evidence, visual rendering, card copy readiness, package tooling, screenshots, or production-facing claims changed.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- Auto-advance may continue only while the next batch remains local, narrow, verified, and within the approved Phase 2 evidence/readiness direction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Phase 2R Verifier Negative Smoke Check as the next candidate batch.
 
 ### 2026-06-02 - Phase 2P Generated-Output Inspection Ergonomics
 

@@ -12,6 +12,17 @@ const PROMOTION_CLAIM_KEYS = [
   "storefrontFacade",
   "entranceFrontageGeometry",
 ];
+const REQUIRED_CONTRACT_MUST_NOT_CLAIMS = {
+  storefrontFacade: [
+    "exact facade",
+    "production asset readiness",
+  ],
+  entranceFrontageGeometry: [
+    "exact entrance position",
+    "exact address placement",
+    "production placement readiness",
+  ],
+};
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -41,6 +52,7 @@ async function main() {
   const failures = [
     ...collectTargetCoverageFailures(appScene, coverageReport),
     ...collectGrillpointContractFailures(appScene, grillpointReport),
+    ...collectMissingEvidenceContractShapeFailures(grillpointReport),
   ];
 
   if (failures.length) {
@@ -145,6 +157,47 @@ function collectGrillpointContractFailures(appScene, grillpointReport) {
   return failures;
 }
 
+function collectMissingEvidenceContractShapeFailures(report) {
+  const failures = [];
+  compareValue(failures, report.schemaVersion, "place-promotion-readiness-report.v0.1", "Grillpoint report schemaVersion");
+  compareValue(failures, report.outcome, "partial-promotion-category-only", "Grillpoint report outcome");
+  compareValue(failures, report.claimReadiness, "review_only", "Grillpoint report claimReadiness");
+  compareValue(failures, report.productCopyReady, false, "Grillpoint report productCopyReady");
+
+  const blockedGateClaims = Object.entries(report.currentPromotionGates)
+    .filter(([, gate]) => gate.status === "blocked")
+    .map(([claim]) => claim);
+  compareArray(
+    failures,
+    Object.keys(report.missingEvidenceContract),
+    blockedGateClaims,
+    "Grillpoint missingEvidenceContract blocked gate keys",
+  );
+
+  for (const claim of blockedGateClaims) {
+    const gate = report.currentPromotionGates[claim];
+    const contract = report.missingEvidenceContract[claim];
+    if (!contract) {
+      failures.push(`Grillpoint missingEvidenceContract.${claim} is missing`);
+      continue;
+    }
+
+    compareValue(failures, contract.requiredForGateStatus, "allowed", `Grillpoint missingEvidenceContract.${claim}.requiredForGateStatus`);
+    compareValue(failures, contract.currentStatus, gate.status, `Grillpoint missingEvidenceContract.${claim}.currentStatus`);
+    assertNonEmptyStringArray(failures, contract.requiredRawInputTypes, `Grillpoint missingEvidenceContract.${claim}.requiredRawInputTypes`);
+    assertNonEmptyStringArray(failures, contract.minimumRawFields, `Grillpoint missingEvidenceContract.${claim}.minimumRawFields`);
+    assertNonEmptyStringArray(failures, contract.mustNotClaim, `Grillpoint missingEvidenceContract.${claim}.mustNotClaim`);
+
+    for (const requiredGuardrail of REQUIRED_CONTRACT_MUST_NOT_CLAIMS[claim] ?? []) {
+      if (!contract.mustNotClaim.includes(requiredGuardrail)) {
+        failures.push(`Grillpoint missingEvidenceContract.${claim}.mustNotClaim is missing "${requiredGuardrail}"`);
+      }
+    }
+  }
+
+  return failures;
+}
+
 function compareGateSummaries(failures, actualGates, expectedGates, label, options = {}) {
   for (const claim of PROMOTION_CLAIM_KEYS) {
     const actual = actualGates[claim];
@@ -198,6 +251,16 @@ function compareArray(failures, actual, expected, label) {
 
 function compareValue(failures, actual, expected, label) {
   if (actual !== expected) failures.push(`${label} mismatch: expected "${expected}", got "${actual}"`);
+}
+
+function assertNonEmptyStringArray(failures, value, label) {
+  if (!Array.isArray(value) || !value.length) {
+    failures.push(`${label} must be a non-empty array`);
+    return;
+  }
+  for (const item of value) {
+    if (typeof item !== "string" || !item.trim()) failures.push(`${label} contains a non-string or empty item`);
+  }
 }
 
 function uniqueStrings(values) {
