@@ -55,14 +55,53 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: QA-mode field-status callout pass is complete after Phase 2W. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2X generated QA scene skeleton refinement is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the QA-mode field-status callout pass complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2X generated QA scene skeleton refinement complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2X Generated QA Scene Skeleton Refinement
+
+Status:
+- Complete.
+
+Scope:
+- Batu explicitly authorized the plan's generated QA scene skeleton refinement item as the next executable implementation task.
+- Improve QA-mode alignment, density, and review presentation while preserving normal-mode raster-first product meaning and strict promotion readiness.
+
+Files changed:
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Local generated-scene check confirmed 10 geometry entities and 5 secondary callouts for each storefront target, plus 4 geometry entities and 4 secondary callouts for Greenpoint G subway.
+- Browser QA sanity check at `http://localhost:5173/` confirmed QA mode shows the refined generated skeleton with compact status pins.
+- Browser normal-mode sanity check confirmed generated QA skeleton is hidden and normal mode remains raster-first.
+- `npm run build` passed with the existing Vite large-chunk warning before final verification.
+
+Outcome:
+- The deterministic generator now prefers QA overlay alignment hints for generated footprints, storefront bays, facade panels, sign bands, door cues, and window cues.
+- QA rendering makes generated geometry primary: stronger storefront/sign geometry, quieter footprint/facade/connectors, and compact status pins by default.
+- Detailed field-status callout text now appears on hover/selection instead of covering the full scene.
+- The QA inspector now summarizes generated geometry and secondary callout counts separately.
+- Greenpoint G remains symbolic/blocked with no exact entrance/station geometry claim.
+- Strict promotion readiness remained unchanged, with 0 product-copy-ready targets.
+- Normal mode remains raster-first and unchanged in product meaning.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, exact geometry/source authority, product/public claims, and opening the next implementation brief.
+- True source-derived geometry remains the next recommended spike if Batu authorizes it.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2X complete and points the next recommended sequence toward a real geometry/data source spike.
 
 ### 2026-06-02 - QA Field-Status Callout Pass
 

@@ -1,6 +1,6 @@
-# Current Execution Brief - QA Field-Status Callout Pass Complete
+# Current Execution Brief - Phase 2X Generated QA Scene Skeleton Refinement Complete
 
-Status: QA-mode visible field-status callout pass is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
+Status: Phase 2X generated QA scene skeleton refinement is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
 
@@ -35,6 +35,17 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Normal mode remains raster-first and does not draw the generated draft overlay or callout labels.
 - Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
 
+## Phase 2X Generated QA Scene Skeleton Refinement
+
+- Batu explicitly authorized the plan's first recommended item, refine the generated QA scene skeleton, as the next executable implementation task.
+- The deterministic draft-scene generator now prefers QA overlay alignment hints for generated footprints, storefront bays, facade panels, sign bands, door cues, and window cues.
+- QA-mode generated storefront geometry now reads as the primary overlay: storefront bays and signs are stronger, footprints/facades are quieter, and connector lines are less dominant.
+- Detailed field-status callout text now appears only on hover/selection; compact status pins remain visible by default so field status stays inspectable without overwhelming the scene.
+- QA inspector summaries now separate generated geometry counts from secondary callout counts.
+- Greenpoint G remains symbolic/blocked and keeps the blocked entrance cue; no exact station or entrance geometry was promoted.
+- Normal mode remains raster-first and unchanged in product meaning.
+- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
+
 ## Generated From Fixture Fields
 
 - `buildingFootprint.value.sceneBounds` generates approximate footprint entities.
@@ -62,7 +73,13 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Files Changed
 
-Latest QA field-status callout pass changed:
+Latest Phase 2X implementation changed:
+
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+
+Prior QA field-status callout pass changed:
 
 - `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
 - `src/sceneManifest.js`
@@ -114,6 +131,9 @@ git diff --stat
 
 ## Verification State
 
+- Latest Phase 2X verification: generated output now reports 10 geometry entities and 5 secondary callouts for each storefront target, plus 4 geometry entities and 4 secondary callouts for Greenpoint G subway.
+- Latest Phase 2X browser sanity check passed at `http://localhost:5173/`: QA mode shows the refined generated skeleton with compact status pins, while normal mode hides the generated QA skeleton and remains raster-first.
+- Latest Phase 2X `npm run build` passed with the existing Vite large-chunk warning.
 - Latest QA field-status callout pass verification: draft fixture validates with callout plans for 5 records; generated scene output now produces 5 QA field callouts each for Grillpoint Deli, McDonald's, Dunkin', and Citizens Bank, plus 4 for Greenpoint G subway.
 - Latest `node scripts/verify-source-evidence-determinism.mjs` passed and confirmed source-evidence determinism remains stable.
 - Latest `node scripts/verify-qa-inspector-source-evidence.mjs` passed and confirmed 5 target(s) match coverage readiness, 5 evidence record(s) match app QA visibility, and the Grillpoint contract remains blocked for facade/geometry.
@@ -133,9 +153,8 @@ git diff --stat
 - Future prompts should lead with: "Build the visible MVP proof. Preserve gates as constraints."
 - The next executable task is pending Batu or a later explicit brief.
 - Recommended next outcome-based sequence:
-  1. Generated QA scene skeleton: confirm or refine all active targets so generated storefront/facade/sign/door/window geometry is visible from structured fixture fields in QA mode.
-  2. Real geometry/data source spike: bring in or prepare at least one real geometry/source-data lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, to replace some manual draft geometry with source-derived geometry.
-  3. Demoable review scene: create a review-only scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
+  1. Real geometry/data source spike: bring in or prepare at least one real geometry/source-data lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, to replace some manual draft geometry with source-derived geometry.
+  2. Demoable review scene: create a review-only scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
 - No further prototype, visual, source-evidence, promotion, production, package/tooling, screenshot-QA, or demo-freeze work is opened by this brief.
 
 ## Stop Conditions

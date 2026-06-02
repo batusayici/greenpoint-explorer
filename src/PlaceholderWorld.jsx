@@ -405,6 +405,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   const markerRadius = isSelected ? 16 : isActive ? 13 : 9;
   const markerColor = isSelected ? 0xf0bc45 : isActive ? 0xf7df9d : 0xf6ead2;
   const markerStroke = isSelected ? 0x1f2727 : 0x2b2a25;
+  const showDetailedQaLabels = Boolean(reviewMode && (isActive || isSelected));
 
   shape.clear();
 
@@ -506,15 +507,26 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .stroke({ color: 0xf5e5c3, width: 2, alpha: 0.68 });
   }
 
-  draftLabel.visible = Boolean(reviewMode && target.draftScene);
+  draftLabel.visible = Boolean(reviewMode && target.draftScene && showDetailedQaLabels);
   draftSignLabel.visible = false;
   draftStatusLabel.visible = false;
+  if (reviewMode && target.draftScene) {
+    const generatedScene = target.draftScene.generatedScene;
+    const signEntity = getDraftEntity(generatedScene, "sign-band");
+    const signText = target.draftScene.fields.signText;
+    if (signEntity?.bounds) {
+      const { bounds } = signEntity;
+      draftSignLabel.visible = true;
+      draftSignLabel.text = signEntity.text ?? String(signText.value);
+      draftSignLabel.style.fontSize = draftSignLabel.text.length > 14 ? 11 : 13;
+      draftSignLabel.x = bounds.x + bounds.width / 2;
+      draftSignLabel.y = bounds.y + bounds.height / 2;
+    }
+  }
   if (draftLabel.visible) {
     const generatedScene = target.draftScene.generatedScene;
     const statusEntity = getDraftEntity(generatedScene, "status-badges");
-    const signEntity = getDraftEntity(generatedScene, "sign-band");
     const labelEntity = getDraftEntity(generatedScene, "business-label");
-    const signText = target.draftScene.fields.signText;
     const facadeStyle = target.draftScene.fields.facadeStyle;
     const name = target.draftScene.fields.name;
     const address = target.draftScene.fields.addressText;
@@ -545,15 +557,6 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .fill({ color: 0xf5e5c3, alpha: 0.9 })
       .stroke({ color: 0x2c2c26, width: 1.5, alpha: 0.7 });
 
-    if (signEntity?.bounds) {
-      const { bounds } = signEntity;
-      draftSignLabel.visible = true;
-      draftSignLabel.text = signEntity.text ?? String(signText.value);
-      draftSignLabel.style.fontSize = draftSignLabel.text.length > 14 ? 11 : 13;
-      draftSignLabel.x = bounds.x + bounds.width / 2;
-      draftSignLabel.y = bounds.y + bounds.height / 2;
-    }
-
     if (labelEntity?.point) {
       const statusParts = [
         `${labelEntity.text ?? name.value}`,
@@ -578,7 +581,13 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     }
   }
 
-  syncDraftEntityLabelLayer(shape, draftEntityLabelLayer, target.draftScene?.generatedScene, reviewMode);
+  syncDraftEntityLabelLayer(
+    shape,
+    draftEntityLabelLayer,
+    target.draftScene?.generatedScene,
+    reviewMode,
+    showDetailedQaLabels,
+  );
 }
 
 function drawDraftQaOverlay(graphics, target) {
@@ -606,35 +615,35 @@ function drawDraftQaOverlay(graphics, target) {
 function drawGeneratedDraftEntity(graphics, entity) {
   if (entity.type === "field-status-callout") return;
   if (entity.type === "footprint") {
-    drawOverlayRect(graphics, entity, { fillAlpha: 0.035, strokeAlpha: 0.34, strokeWidth: 3 });
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.018, strokeAlpha: 0.3, strokeWidth: 2.5 });
     return;
   }
   if (entity.type === "facade-panel") {
-    drawOverlayRect(graphics, entity, { fillAlpha: 0.11, strokeAlpha: 0.76, strokeWidth: 2 });
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.08, strokeAlpha: 0.68, strokeWidth: 2.2 });
     return;
   }
   if (entity.type === "storefront-bay") {
-    drawOverlayRect(graphics, entity, { fillAlpha: 0.16, strokeAlpha: 0.92, strokeWidth: 2.5 });
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.13, strokeAlpha: 0.96, strokeWidth: 3.3 });
     return;
   }
   if (entity.type === "sign-band") {
-    drawOverlayRect(graphics, entity, { fillAlpha: 0.9, strokeAlpha: 0.94, strokeWidth: 2, forceFillColor: 0xf5e5c3 });
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.82, strokeAlpha: 0.9, strokeWidth: 2.4, forceFillColor: 0xf5e5c3 });
     return;
   }
   if (entity.type === "door-cue") {
-    drawOverlayRect(graphics, entity, { fillAlpha: 0.5, strokeAlpha: 0.9, strokeWidth: 2 });
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.38, strokeAlpha: 0.86, strokeWidth: 2 });
     return;
   }
   if (entity.type === "window-cue") {
-    drawOverlayRect(graphics, entity, { fillAlpha: 0.32, strokeAlpha: 0.78, strokeWidth: 1.5 });
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.22, strokeAlpha: 0.74, strokeWidth: 1.5 });
     return;
   }
   if (entity.type === "bay-division") {
-    drawOverlayConnector(graphics, entity);
+    drawOverlayConnector(graphics, entity, { alpha: 0.62, endpoint: false, width: 1.7 });
     return;
   }
   if (entity.type === "anchor-connector") {
-    drawOverlayConnector(graphics, entity);
+    drawOverlayConnector(graphics, entity, { alpha: 0.42, endpoint: true, width: 1.6 });
     return;
   }
   if (entity.type === "symbolic-cue") {
@@ -646,7 +655,7 @@ function getDraftEntity(generatedScene, type) {
   return generatedScene?.entities?.find((entity) => entity.type === type);
 }
 
-function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode) {
+function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, showDetailedLabels) {
   const removed = layer.removeChildren();
   for (const child of removed) child.destroy();
 
@@ -656,15 +665,17 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode) 
   const callouts = generatedScene.entities.filter((entity) => entity.type === "field-status-callout");
   for (const callout of callouts) {
     if (!callout.point) continue;
+    drawCompactStatusPin(graphics, callout);
+    if (!showDetailedLabels) continue;
 
     const text = new Text({
       text: callout.text,
       style: {
         fill: "#27221c",
         fontFamily: "Inter, Arial, sans-serif",
-        fontSize: 10,
+        fontSize: 9,
         fontWeight: "900",
-        lineHeight: 12,
+        lineHeight: 11,
       },
     });
     text.resolution = 2;
@@ -676,7 +687,7 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode) 
       graphics
         .moveTo(callout.from.x, callout.from.y)
         .lineTo(callout.point.x, callout.point.y + 6)
-        .stroke({ color: statusColor, width: 1.5, alpha: 0.54 });
+        .stroke({ color: statusColor, width: 1.2, alpha: 0.34 });
     }
 
     const paddingX = 5;
@@ -689,14 +700,27 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode) 
         text.height + paddingY * 2,
         4,
       )
-      .fill({ color: 0xfff2d1, alpha: 0.92 })
-      .stroke({ color: statusColor, width: 1.5, alpha: 0.86 });
+      .fill({ color: 0xfff2d1, alpha: 0.84 })
+      .stroke({ color: statusColor, width: 1.2, alpha: 0.74 });
     graphics
       .rect(text.x - paddingX, text.y - paddingY, 4, text.height + paddingY * 2)
       .fill({ color: statusColor, alpha: 0.92 });
 
     layer.addChild(text);
   }
+}
+
+function drawCompactStatusPin(graphics, callout) {
+  const point = callout.from ?? callout.point;
+  if (!point) return;
+  const statusColor = getDraftStatusColor(callout.status);
+  graphics
+    .circle(point.x, point.y, 5.3)
+    .fill({ color: 0xfff2d1, alpha: 0.74 })
+    .stroke({ color: statusColor, width: 1.4, alpha: 0.88 });
+  graphics
+    .circle(point.x, point.y, 2.5)
+    .fill({ color: statusColor, alpha: 0.94 });
 }
 
 function drawOverlayRect(graphics, overlayRect, options) {
@@ -713,15 +737,19 @@ function drawOverlayRect(graphics, overlayRect, options) {
     });
 }
 
-function drawOverlayConnector(graphics, connector) {
+function drawOverlayConnector(graphics, connector, options = {}) {
   const color = getDraftStatusColor(connector.status);
+  const alpha = options.alpha ?? 0.72;
+  const width = options.width ?? 2;
   graphics
     .moveTo(connector.from.x, connector.from.y)
     .lineTo(connector.to.x, connector.to.y)
-    .stroke({ color, width: 2, alpha: 0.72 });
-  graphics
-    .circle(connector.from.x, connector.from.y, 4)
-    .fill({ color, alpha: 0.7 });
+    .stroke({ color, width, alpha });
+  if (options.endpoint ?? true) {
+    graphics
+      .circle(connector.from.x, connector.from.y, 4)
+      .fill({ color, alpha: Math.min(0.7, alpha + 0.14) });
+  }
 }
 
 function drawSymbolicCue(graphics, cue) {

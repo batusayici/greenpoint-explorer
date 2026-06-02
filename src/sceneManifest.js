@@ -353,10 +353,10 @@ function generateDraftQaScene(record) {
   );
   const footprintBounds = symbolicOnly
     ? null
-    : fields.buildingFootprint.value?.sceneBounds ?? overlay.footprint?.bounds ?? null;
+    : overlay.footprint?.bounds ?? fields.buildingFootprint.value?.sceneBounds ?? null;
   const storefrontBounds = symbolicOnly
     ? null
-    : fields.storefrontBay.value?.sceneBounds ?? overlay.storefrontBay?.bounds ?? null;
+    : overlay.storefrontBay?.bounds ?? fields.storefrontBay.value?.sceneBounds ?? null;
   const anchorPoint = fields.sceneAnchor.value?.marker ?? overlay.anchorConnector?.from ?? null;
   const labelPosition = overlay.labelPosition ?? anchorPoint ?? null;
   const statusSummaryPosition = overlay.statusSummaryPosition ?? offsetPoint(labelPosition, 0, 46);
@@ -369,10 +369,12 @@ function generateDraftQaScene(record) {
   }
 
   if (storefrontBounds) {
-    const facadeBounds = deriveFacadeBounds(storefrontBounds, fields.signPlacement.value);
-    const signBounds = deriveSignBounds(storefrontBounds, fields.signPlacement.value);
-    const doorBounds = deriveDoorBounds(storefrontBounds, fields.doorWindowPlacement.value);
-    const windowBounds = deriveWindowBounds(storefrontBounds, doorBounds, fields.doorWindowPlacement.value, fields.storefrontBay.value);
+    const facadeBounds = overlay.facadeBand?.bounds ?? deriveFacadeBounds(storefrontBounds, fields.signPlacement.value);
+    const signBounds = overlay.signPanel?.bounds ?? deriveSignBounds(storefrontBounds, fields.signPlacement.value);
+    const doorBounds = overlay.doorCue?.bounds ?? deriveDoorBounds(storefrontBounds, fields.doorWindowPlacement.value);
+    const windowBounds = overlay.windowCues?.length
+      ? overlay.windowCues.map((cue) => roundBounds(cue.bounds))
+      : deriveWindowBounds(storefrontBounds, doorBounds, fields.doorWindowPlacement.value, fields.storefrontBay.value);
 
     entities.push(buildGeneratedRectEntity(record, "facade-panel", "facadeStyle", fields.facadeStyle.status, facadeBounds, {
       label: String(fields.facadeStyle.value?.description ?? fields.facadeStyle.value),

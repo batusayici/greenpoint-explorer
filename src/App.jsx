@@ -383,6 +383,15 @@ function DraftSceneInspector({ draftScene }) {
     ["sceneAnchor", "Scene anchor"],
     ["stationIntersectionCues", "Station/intersection"],
   ];
+  const generatedScene = draftScene.generatedScene;
+  const generatedGeometryCount = generatedScene?.entities.filter((entity) => ![
+    "business-label",
+    "field-status-callout",
+    "status-badges",
+  ].includes(entity.type)).length ?? 0;
+  const generatedCalloutCount = generatedScene?.entities.filter((entity) => (
+    entity.type === "field-status-callout"
+  )).length ?? 0;
 
   return (
     <section className="qa-section qa-draft-scene-section">
@@ -399,18 +408,18 @@ function DraftSceneInspector({ draftScene }) {
             </span>
           ))}
       </div>
-      {draftScene.generatedScene ? (
+      {generatedScene ? (
         <section className="qa-generated-scene" aria-label="Generated QA scene entities">
           <h4>Generated QA Scene</h4>
           <p>
-            {formatStatusLabel(draftScene.generatedScene.status)}
+            {formatStatusLabel(generatedScene.status)}
             {" | "}
-            {draftScene.generatedScene.generator}
+            {generatedScene.generator}
             {" | "}
-            {draftScene.generatedScene.entities.length} entities
+            {generatedGeometryCount} geometry; {generatedCalloutCount} secondary callouts
           </p>
           <dl className="qa-generated-entity-list">
-            {draftScene.generatedScene.entities.map((entity) => (
+            {generatedScene.entities.map((entity) => (
               <div key={entity.id} data-status={entity.status}>
                 <dt>{formatStatusLabel(entity.type)}</dt>
                 <dd>
