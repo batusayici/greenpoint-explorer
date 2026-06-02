@@ -469,13 +469,13 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   markerLabel.x = markerX;
   markerLabel.y = markerY + 0.5;
 
-  reviewLabel.visible = Boolean(reviewMode && !target.draftScene?.qaOverlay);
+  reviewLabel.visible = Boolean(reviewMode && !target.draftScene?.generatedScene);
   reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
   reviewLabel.style.fill = "#f8ecd4";
   reviewLabel.x = target.reviewLabelPosition?.x ?? x + 12;
   reviewLabel.y = target.reviewLabelPosition?.y ?? y + 12;
 
-  if (reviewMode) {
+  if (reviewLabel.visible) {
     const labelPaddingX = 10;
     const labelPaddingY = 6;
     shape.roundRect(
@@ -493,16 +493,18 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   draftSignLabel.visible = false;
   draftStatusLabel.visible = false;
   if (draftLabel.visible) {
-    const overlay = target.draftScene.qaOverlay;
+    const generatedScene = target.draftScene.generatedScene;
+    const statusEntity = getDraftEntity(generatedScene, "status-badges");
+    const signEntity = getDraftEntity(generatedScene, "sign-band");
+    const labelEntity = getDraftEntity(generatedScene, "business-label");
     const signText = target.draftScene.fields.signText;
     const facadeStyle = target.draftScene.fields.facadeStyle;
-    const storefrontBay = target.draftScene.fields.storefrontBay;
     const name = target.draftScene.fields.name;
     const address = target.draftScene.fields.addressText;
     const category = target.draftScene.fields.category;
     const anchor = target.draftScene.fields.sceneAnchor;
     const doorWindow = target.draftScene.fields.doorWindowPlacement;
-    const statusChips = overlay?.statusChips ?? [
+    const statusChips = statusEntity?.chips ?? generatedScene?.statusChips ?? [
       { label: "name", status: name.status },
       { label: "facade", status: facadeStyle.status },
       { label: "anchor", status: anchor.status },
@@ -511,8 +513,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     draftLabel.text = statusChips
       .map((chip) => `${chip.label}: ${formatDraftStatus(chip.status)}`)
       .join("\n");
-    draftLabel.x = overlay?.statusSummaryPosition?.x ?? target.draftLabelPosition?.x ?? target.reviewLabelPosition?.x ?? x + 12;
-    draftLabel.y = overlay?.statusSummaryPosition?.y ?? (target.reviewLabelPosition?.y ?? y + 12) + 34;
+    draftLabel.x = statusEntity?.point?.x ?? target.draftLabelPosition?.x ?? target.reviewLabelPosition?.x ?? x + 12;
+    draftLabel.y = statusEntity?.point?.y ?? (target.reviewLabelPosition?.y ?? y + 12) + 34;
 
     const labelPaddingX = 8;
     const labelPaddingY = 5;
@@ -526,25 +528,25 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .fill({ color: 0xf5e5c3, alpha: 0.9 })
       .stroke({ color: 0x2c2c26, width: 1.5, alpha: 0.7 });
 
-    if (overlay?.signPanel) {
-      const { bounds } = overlay.signPanel;
+    if (signEntity?.bounds) {
+      const { bounds } = signEntity;
       draftSignLabel.visible = true;
-      draftSignLabel.text = overlay.signPanel.text ?? String(signText.value);
+      draftSignLabel.text = signEntity.text ?? String(signText.value);
       draftSignLabel.style.fontSize = draftSignLabel.text.length > 14 ? 11 : 13;
       draftSignLabel.x = bounds.x + bounds.width / 2;
       draftSignLabel.y = bounds.y + bounds.height / 2;
     }
 
-    if (overlay?.labelPosition) {
+    if (labelEntity?.point) {
       const statusParts = [
-        `${name.value}`,
+        `${labelEntity.text ?? name.value}`,
         `${formatDraftStatus(name.status)} name / ${formatDraftStatus(address.status)} address`,
         `${formatDraftStatus(category.status)} category / ${formatDraftStatus(doorWindow.status)} door-window`,
       ];
       draftStatusLabel.visible = true;
       draftStatusLabel.text = statusParts.join("\n");
-      draftStatusLabel.x = overlay.labelPosition.x;
-      draftStatusLabel.y = overlay.labelPosition.y;
+      draftStatusLabel.x = labelEntity.point.x;
+      draftStatusLabel.y = labelEntity.point.y;
       const statusPaddingX = 9;
       const statusPaddingY = 6;
       shape.roundRect(
@@ -561,6 +563,12 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
 }
 
 function drawDraftQaOverlay(graphics, target) {
+  const generatedScene = target.draftScene?.generatedScene;
+  if (generatedScene?.entities?.length) {
+    for (const entity of generatedScene.entities) drawGeneratedDraftEntity(graphics, entity);
+    return;
+  }
+
   const overlay = target.draftScene?.qaOverlay;
   if (!overlay) return;
 
@@ -574,6 +582,48 @@ function drawDraftQaOverlay(graphics, target) {
   }
   if (overlay.anchorConnector) drawOverlayConnector(graphics, overlay.anchorConnector);
   if (overlay.symbolicCue) drawSymbolicCue(graphics, overlay.symbolicCue);
+}
+
+function drawGeneratedDraftEntity(graphics, entity) {
+  if (entity.type === "footprint") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.035, strokeAlpha: 0.34, strokeWidth: 3 });
+    return;
+  }
+  if (entity.type === "facade-panel") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.11, strokeAlpha: 0.76, strokeWidth: 2 });
+    return;
+  }
+  if (entity.type === "storefront-bay") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.16, strokeAlpha: 0.92, strokeWidth: 2.5 });
+    return;
+  }
+  if (entity.type === "sign-band") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.9, strokeAlpha: 0.94, strokeWidth: 2, forceFillColor: 0xf5e5c3 });
+    return;
+  }
+  if (entity.type === "door-cue") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.5, strokeAlpha: 0.9, strokeWidth: 2 });
+    return;
+  }
+  if (entity.type === "window-cue") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.32, strokeAlpha: 0.78, strokeWidth: 1.5 });
+    return;
+  }
+  if (entity.type === "bay-division") {
+    drawOverlayConnector(graphics, entity);
+    return;
+  }
+  if (entity.type === "anchor-connector") {
+    drawOverlayConnector(graphics, entity);
+    return;
+  }
+  if (entity.type === "symbolic-cue") {
+    drawSymbolicCue(graphics, entity);
+  }
+}
+
+function getDraftEntity(generatedScene, type) {
+  return generatedScene?.entities?.find((entity) => entity.type === type);
 }
 
 function drawOverlayRect(graphics, overlayRect, options) {

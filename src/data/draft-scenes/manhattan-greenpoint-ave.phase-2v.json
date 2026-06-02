@@ -58,6 +58,19 @@
           ],
           "notes": "Category gate is allowed for review evidence, but record remains review-only."
         },
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave north edge",
+            "buildingEdge": "south-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
         "buildingFootprint": {
           "value": {
             "sceneBounds": {
@@ -83,7 +96,8 @@
               "width": 190,
               "height": 118
             },
-            "bayRole": "corner deli storefront"
+            "bayRole": "corner deli storefront",
+            "bayCount": 3
           },
           "status": "manual_draft",
           "sourceIds": [
@@ -101,6 +115,21 @@
           ],
           "notes": "Text label only; exact sign geometry and facade translation remain blocked."
         },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 23,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement; not exact sign geometry."
+        },
         "facadeStyle": {
           "value": "compact corner deli facade, review-only stylized",
           "status": "manual_draft",
@@ -111,7 +140,15 @@
           "notes": "Manual draft visual treatment; no exact facade claim."
         },
         "doorWindowPlacement": {
-          "value": "single storefront entry with compact window rhythm",
+          "value": {
+            "description": "single storefront entry with compact window rhythm",
+            "doorPosition": "center",
+            "doorWidth": 34,
+            "doorHeight": 48,
+            "windowCount": 2,
+            "windowWidth": 42,
+            "windowHeight": 30
+          },
           "status": "manual_draft",
           "sourceIds": [
             "mvp-29d",
@@ -290,6 +327,19 @@
           ],
           "notes": "Useful prototype category; strict category/business-type gate remains review-only."
         },
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave north edge",
+            "buildingEdge": "south-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
         "buildingFootprint": {
           "value": {
             "sceneBounds": {
@@ -315,7 +365,8 @@
               "width": 238,
               "height": 104
             },
-            "bayRole": "corner fast-food storefront"
+            "bayRole": "corner fast-food storefront",
+            "bayCount": 3
           },
           "status": "manual_draft",
           "sourceIds": [
@@ -332,6 +383,21 @@
           ],
           "notes": "Text label only; no trade-dress or exact sign geometry claim."
         },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 29,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement; not exact sign geometry."
+        },
         "facadeStyle": {
           "value": "compact corner quick-service facade, brand-simplified",
           "status": "manual_draft",
@@ -342,7 +408,15 @@
           "notes": "Manual draft treatment for prototype readability; no exact facade or production brand treatment."
         },
         "doorWindowPlacement": {
-          "value": "central entry cue with simplified storefront glazing",
+          "value": {
+            "description": "central entry cue with simplified storefront glazing",
+            "doorPosition": "center",
+            "doorWidth": 38,
+            "doorHeight": 42,
+            "windowCount": 2,
+            "windowWidth": 54,
+            "windowHeight": 28
+          },
           "status": "manual_draft",
           "sourceIds": [
             "mvp-29d",
@@ -521,6 +595,19 @@
           ],
           "notes": "Useful prototype category; strict category/business-type gate remains review-only."
         },
+        "frontage": {
+          "value": {
+            "frontageSide": "Manhattan Ave west edge",
+            "buildingEdge": "east-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
         "buildingFootprint": {
           "value": {
             "sceneBounds": {
@@ -546,7 +633,8 @@
               "width": 208,
               "height": 124
             },
-            "bayRole": "corner coffee storefront"
+            "bayRole": "corner coffee storefront",
+            "bayCount": 3
           },
           "status": "manual_draft",
           "sourceIds": [
@@ -563,6 +651,21 @@
           ],
           "notes": "Text label only; no exact trade-dress reproduction or sign geometry claim."
         },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 38,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement under the MVP-only exception; not exact sign geometry."
+        },
         "facadeStyle": {
           "value": "compact coffee storefront, MVP-only stylized exception",
           "status": "manual_draft",
@@ -574,7 +677,15 @@
           "notes": "Manual draft under the narrow SW exception; not production use, tracing, or exact trade dress."
         },
         "doorWindowPlacement": {
-          "value": "simplified corner entry cue with storefront windows",
+          "value": {
+            "description": "simplified corner entry cue with storefront windows",
+            "doorPosition": "center",
+            "doorWidth": 34,
+            "doorHeight": 44,
+            "windowCount": 2,
+            "windowWidth": 42,
+            "windowHeight": 28
+          },
           "status": "manual_draft",
           "sourceIds": [
             "mvp-29d",
@@ -753,6 +864,19 @@
           ],
           "notes": "Useful prototype category; strict category/business-type gate remains review-only."
         },
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave south edge",
+            "buildingEdge": "north-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
         "buildingFootprint": {
           "value": {
             "sceneBounds": {
@@ -778,7 +902,8 @@
               "width": 212,
               "height": 126
             },
-            "bayRole": "corner bank storefront"
+            "bayRole": "corner bank storefront",
+            "bayCount": 3
           },
           "status": "manual_draft",
           "sourceIds": [
@@ -795,6 +920,21 @@
           ],
           "notes": "Text label only; no exact sign, ATM, or branch-service claim."
         },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 35,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement; not exact branch sign geometry."
+        },
         "facadeStyle": {
           "value": "compact bank branch facade, simplified civic storefront",
           "status": "manual_draft",
@@ -805,7 +945,15 @@
           "notes": "Manual draft treatment for prototype readability; no exact facade or production branch treatment."
         },
         "doorWindowPlacement": {
-          "value": "main entry cue with larger branch window rhythm",
+          "value": {
+            "description": "main entry cue with larger branch window rhythm",
+            "doorPosition": "center",
+            "doorWidth": 36,
+            "doorHeight": 42,
+            "windowCount": 2,
+            "windowWidth": 48,
+            "windowHeight": 28
+          },
           "status": "manual_draft",
           "sourceIds": [
             "mvp-29d",
@@ -986,6 +1134,20 @@
           ],
           "notes": "Transit cue category, not a business taxonomy claim."
         },
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave station-area side",
+            "buildingEdge": "none",
+            "claim": "symbolic station-area cue for QA overlay generation"
+          },
+          "status": "symbolic",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map",
+            "mvp-29d"
+          ],
+          "notes": "Station cue is not storefront frontage; exact entrances remain blocked."
+        },
         "buildingFootprint": {
           "value": "No storefront building footprint; station represented as symbolic scene cue.",
           "status": "symbolic",
@@ -1013,6 +1175,20 @@
           ],
           "notes": "Symbolic route cue only; not exact MTA sign placement."
         },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "symbolicCue",
+            "position": "above-symbolic-station-cue",
+            "height": 42
+          },
+          "status": "symbolic",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated symbolic route badge placement only; exact station signage remains blocked."
+        },
         "facadeStyle": {
           "value": "symbolic transit cue, not a facade",
           "status": "symbolic",
@@ -1023,7 +1199,11 @@
           "notes": "No storefront/facade claim."
         },
         "doorWindowPlacement": {
-          "value": "Exact stair/elevator/entrance placement unresolved",
+          "value": {
+            "description": "Exact stair/elevator/entrance placement unresolved",
+            "doorPosition": "blocked",
+            "windowCount": 0
+          },
           "status": "blocked",
           "sourceIds": [
             "mta-greenpoint-accessibility",

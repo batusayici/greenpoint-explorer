@@ -373,9 +373,11 @@ function DraftSceneInspector({ draftScene }) {
     ["name", "Name"],
     ["addressText", "Address"],
     ["category", "Category"],
+    ["frontage", "Frontage / edge"],
     ["buildingFootprint", "Footprint"],
     ["storefrontBay", "Storefront bay"],
     ["signText", "Sign text"],
+    ["signPlacement", "Sign placement"],
     ["facadeStyle", "Facade style"],
     ["doorWindowPlacement", "Door/window"],
     ["sceneAnchor", "Scene anchor"],
@@ -397,6 +399,30 @@ function DraftSceneInspector({ draftScene }) {
             </span>
           ))}
       </div>
+      {draftScene.generatedScene ? (
+        <section className="qa-generated-scene" aria-label="Generated QA scene entities">
+          <h4>Generated QA Scene</h4>
+          <p>
+            {formatStatusLabel(draftScene.generatedScene.status)}
+            {" | "}
+            {draftScene.generatedScene.generator}
+            {" | "}
+            {draftScene.generatedScene.entities.length} entities
+          </p>
+          <dl className="qa-generated-entity-list">
+            {draftScene.generatedScene.entities.map((entity) => (
+              <div key={entity.id} data-status={entity.status}>
+                <dt>{formatStatusLabel(entity.type)}</dt>
+                <dd>
+                  <strong>{formatStatusLabel(entity.status)}</strong>
+                  {" | "}
+                  {formatGeneratedEntitySummary(entity)}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ) : null}
       <dl className="qa-draft-field-list" aria-label="Draft scene field statuses">
         {fields.map(([fieldName, label]) => {
           const field = draftScene.fields[fieldName];
@@ -416,6 +442,23 @@ function DraftSceneInspector({ draftScene }) {
       </dl>
     </section>
   );
+}
+
+function formatGeneratedEntitySummary(entity) {
+  const field = entity.field ? `${formatStatusLabel(entity.field)} field` : "generated field";
+  if (entity.bounds) {
+    return `${field}; ${entity.bounds.x},${entity.bounds.y} ${entity.bounds.width}x${entity.bounds.height}`;
+  }
+  if (entity.point) {
+    return `${field}; point ${entity.point.x},${entity.point.y}`;
+  }
+  if (entity.center) {
+    return `${field}; symbolic center ${entity.center.x},${entity.center.y}; ${entity.blockedLabel ?? entity.label}`;
+  }
+  if (entity.from && entity.to) {
+    return `${field}; line ${entity.from.x},${entity.from.y} to ${entity.to.x},${entity.to.y}`;
+  }
+  return field;
 }
 
 function QAList({ items }) {

@@ -38,9 +38,11 @@ const REQUIRED_DRAFT_SCENE_FIELDS = [
   "name",
   "addressText",
   "category",
+  "frontage",
   "buildingFootprint",
   "storefrontBay",
   "signText",
+  "signPlacement",
   "facadeStyle",
   "doorWindowPlacement",
   "sceneAnchor",
@@ -312,6 +314,7 @@ function buildDraftSceneIndex(fixture) {
 
 function buildAppDraftSceneRecord(record) {
   if (!record) return null;
+  const generatedScene = generateDraftQaScene(record);
 
   return {
     id: record.id,
@@ -330,6 +333,7 @@ function buildAppDraftSceneRecord(record) {
       ]),
     ),
     qaOverlay: record.qaOverlay ?? null,
+    generatedScene,
     statusCounts: summarizeDraftStatuses(record),
   };
 }
@@ -338,6 +342,288 @@ function summarizeDraftStatuses(record) {
   const counts = Object.fromEntries([...DRAFT_SCENE_STATUS_VALUES].map((status) => [status, 0]));
   for (const field of Object.values(record.fields)) counts[field.status] += 1;
   return counts;
+}
+
+function generateDraftQaScene(record) {
+  const { fields } = record;
+  const overlay = record.qaOverlay ?? {};
+  const symbolicOnly = !fields.storefrontBay.value?.sceneBounds && (
+    fields.storefrontBay.status === "symbolic" ||
+    fields.category.status === "symbolic"
+  );
+  const footprintBounds = symbolicOnly
+    ? null
+    : fields.buildingFootprint.value?.sceneBounds ?? overlay.footprint?.bounds ?? null;
+  const storefrontBounds = symbolicOnly
+    ? null
+    : fields.storefrontBay.value?.sceneBounds ?? overlay.storefrontBay?.bounds ?? null;
+  const anchorPoint = fields.sceneAnchor.value?.marker ?? overlay.anchorConnector?.from ?? null;
+  const labelPosition = overlay.labelPosition ?? anchorPoint ?? null;
+  const statusSummaryPosition = overlay.statusSummaryPosition ?? offsetPoint(labelPosition, 0, 46);
+  const entities = [];
+
+  if (footprintBounds) {
+    entities.push(buildGeneratedRectEntity(record, "footprint", "buildingFootprint", fields.buildingFootprint.status, footprintBounds, {
+      label: "Approx footprint",
+    }));
+  }
+
+  if (storefrontBounds) {
+    const facadeBounds = deriveFacadeBounds(storefrontBounds, fields.signPlacement.value);
+    const signBounds = deriveSignBounds(storefrontBounds, fields.signPlacement.value);
+    const doorBounds = deriveDoorBounds(storefrontBounds, fields.doorWindowPlacement.value);
+    const windowBounds = deriveWindowBounds(storefrontBounds, doorBounds, fields.doorWindowPlacement.value, fields.storefrontBay.value);
+
+    entities.push(buildGeneratedRectEntity(record, "facade-panel", "facadeStyle", fields.facadeStyle.status, facadeBounds, {
+      label: String(fields.facadeStyle.value?.description ?? fields.facadeStyle.value),
+    }));
+    entities.push(buildGeneratedRectEntity(record, "storefront-bay", "storefrontBay", fields.storefrontBay.status, storefrontBounds, {
+      label: fields.storefrontBay.value?.bayRole ?? "Approx storefront bay",
+    }));
+    entities.push(buildGeneratedRectEntity(record, "sign-band", "signPlacement", fields.signPlacement.status, signBounds, {
+      text: String(fields.signText.value),
+      label: "Generated sign band",
+      textStatus: fields.signText.status,
+    }));
+    entities.push(buildGeneratedRectEntity(record, "door-cue", "doorWindowPlacement", fields.doorWindowPlacement.status, doorBounds, {
+      label: "Generated door cue",
+    }));
+
+    for (const [index, bounds] of windowBounds.entries()) {
+      entities.push(buildGeneratedRectEntity(record, "window-cue", "doorWindowPlacement", fields.doorWindowPlacement.status, bounds, {
+        label: `Generated window cue ${index + 1}`,
+      }));
+    }
+
+    for (const [index, line] of deriveBayDivisionLines(storefrontBounds, fields.storefrontBay.value).entries()) {
+      entities.push({
+        id: `${record.id}:bay-division-${index + 1}`,
+        type: "bay-division",
+        field: "storefrontBay",
+        status: fields.storefrontBay.status,
+        from: line.from,
+        to: line.to,
+        label: `Generated bay division ${index + 1}`,
+        generatedFrom: ["fields.storefrontBay.value.sceneBounds", "fields.storefrontBay.value.bayCount"],
+      });
+    }
+
+    if (anchorPoint) {
+      entities.push({
+        id: `${record.id}:anchor-connector`,
+        type: "anchor-connector",
+        field: "sceneAnchor",
+        status: fields.sceneAnchor.status,
+        from: anchorPoint,
+        to: centerOf(storefrontBounds),
+        label: "Generated anchor connector",
+        generatedFrom: ["fields.sceneAnchor.value.marker", "fields.storefrontBay.value.sceneBounds"],
+      });
+    }
+  } else {
+    const symbolicCue = overlay.symbolicCue ?? deriveSymbolicCue(anchorPoint, fields.signText.value);
+    if (symbolicCue) {
+      entities.push({
+        id: `${record.id}:symbolic-cue`,
+        type: "symbolic-cue",
+        field: "stationIntersectionCues",
+        status: symbolicCue.status ?? fields.stationIntersectionCues.status,
+        center: symbolicCue.center,
+        radius: symbolicCue.radius,
+        label: symbolicCue.blockedLabel ?? "Symbolic / blocked station geometry",
+        blockedLabel: symbolicCue.blockedLabel ?? "blocked exact station geometry",
+        generatedFrom: ["fields.sceneAnchor.value.marker", "fields.stationIntersectionCues"],
+      });
+      const signBounds = overlay.signPanel?.bounds ?? {
+        x: symbolicCue.center.x - 38,
+        y: symbolicCue.center.y - symbolicCue.radius - 28,
+        width: 76,
+        height: 42,
+      };
+      entities.push(buildGeneratedRectEntity(record, "sign-band", "signPlacement", fields.signPlacement.status, signBounds, {
+        text: String(fields.signText.value),
+        label: "Generated symbolic sign band",
+        textStatus: fields.signText.status,
+      }));
+      if (anchorPoint) {
+        entities.push({
+          id: `${record.id}:anchor-connector`,
+          type: "anchor-connector",
+          field: "sceneAnchor",
+          status: fields.sceneAnchor.status,
+          from: anchorPoint,
+          to: symbolicCue.center,
+          label: "Generated symbolic anchor connector",
+          generatedFrom: ["fields.sceneAnchor.value.marker", "symbolic cue center"],
+        });
+      }
+    }
+  }
+
+  entities.push({
+    id: `${record.id}:business-label`,
+    type: "business-label",
+    field: "name",
+    status: fields.name.status,
+    point: labelPosition,
+    text: String(fields.name.value),
+    label: "Generated business label",
+    generatedFrom: ["fields.name.value", "qaOverlay.labelPosition"],
+  });
+
+  const statusChips = buildDraftStatusChips(record, overlay);
+  entities.push({
+    id: `${record.id}:status-badges`,
+    type: "status-badges",
+    field: "renderingUse",
+    status: record.renderingUse.status,
+    point: statusSummaryPosition,
+    chips: statusChips,
+    label: "Generated visible status badges",
+    generatedFrom: ["fields.*.status", "qaOverlay.statusSummaryPosition"],
+  });
+
+  return {
+    id: `${record.id}:generated-qa-scene`,
+    status: "qa_mode_only_generated",
+    generator: "deterministic-draft-fixture-adapter",
+    generatedFrom: [
+      "draftScene.fields",
+      "draftScene.qaOverlay alignment hints",
+    ],
+    entities,
+    statusChips,
+  };
+}
+
+function buildGeneratedRectEntity(record, type, field, status, bounds, extra = {}) {
+  return {
+    id: `${record.id}:${type}`,
+    type,
+    field,
+    status,
+    bounds: roundBounds(bounds),
+    generatedFrom: [`fields.${field}.value`, "deterministic geometry rules"],
+    ...extra,
+  };
+}
+
+function buildDraftStatusChips(record, overlay) {
+  return overlay.statusChips ?? [
+    { label: "name", status: record.fields.name.status },
+    { label: "address", status: record.fields.addressText.status },
+    { label: "frontage", status: record.fields.frontage.status },
+    { label: "bay", status: record.fields.storefrontBay.status },
+    { label: "door/window", status: record.fields.doorWindowPlacement.status },
+  ];
+}
+
+function deriveFacadeBounds(bay, signPlacement = {}) {
+  const widthPad = Math.round(bay.width * 0.1);
+  const height = signPlacement.facadeHeight ?? Math.max(54, Math.round(bay.height * 0.58));
+  const yOffset = signPlacement.facadeOffsetY ?? Math.round(bay.height * -0.08);
+  return roundBounds({
+    x: bay.x - widthPad,
+    y: bay.y + yOffset,
+    width: bay.width + widthPad * 2,
+    height,
+  });
+}
+
+function deriveSignBounds(bay, signPlacement = {}) {
+  const insetX = signPlacement.insetX ?? Math.round(bay.width * 0.12);
+  const height = signPlacement.height ?? 28;
+  const offsetY = signPlacement.offsetY ?? 6;
+  return roundBounds({
+    x: bay.x + insetX,
+    y: bay.y + offsetY,
+    width: Math.max(54, bay.width - insetX * 2),
+    height,
+  });
+}
+
+function deriveDoorBounds(bay, doorWindowPlacement = {}) {
+  const doorWidth = doorWindowPlacement.doorWidth ?? Math.max(30, Math.round(bay.width * 0.17));
+  const doorHeight = doorWindowPlacement.doorHeight ?? Math.max(38, Math.round(bay.height * 0.38));
+  const doorY = doorWindowPlacement.doorY ?? bay.y + Math.round(bay.height * 0.48);
+  const position = doorWindowPlacement.doorPosition ?? "center";
+  const doorX = position === "right"
+    ? bay.x + bay.width - doorWidth - Math.round(bay.width * 0.18)
+    : position === "left"
+      ? bay.x + Math.round(bay.width * 0.18)
+      : bay.x + Math.round((bay.width - doorWidth) / 2);
+
+  return roundBounds({
+    x: doorX,
+    y: doorY,
+    width: doorWidth,
+    height: doorHeight,
+  });
+}
+
+function deriveWindowBounds(bay, door, doorWindowPlacement = {}, storefrontBay = {}) {
+  const count = doorWindowPlacement.windowCount ?? Math.max(0, (storefrontBay.bayCount ?? 3) - 1);
+  if (!count) return [];
+
+  const width = doorWindowPlacement.windowWidth ?? Math.max(34, Math.round(bay.width * 0.2));
+  const height = doorWindowPlacement.windowHeight ?? Math.max(24, Math.round(bay.height * 0.23));
+  const y = doorWindowPlacement.windowY ?? door.y;
+  const leftX = bay.x + Math.round(bay.width * 0.14);
+  const rightX = bay.x + bay.width - width - Math.round(bay.width * 0.14);
+
+  if (count === 1) {
+    const side = door.x < bay.x + bay.width / 2 ? rightX : leftX;
+    return [roundBounds({ x: side, y, width, height })];
+  }
+
+  return [
+    roundBounds({ x: leftX, y, width, height }),
+    roundBounds({ x: rightX, y, width, height }),
+  ].slice(0, count);
+}
+
+function deriveBayDivisionLines(bay, storefrontBay = {}) {
+  const bayCount = storefrontBay.bayCount ?? 1;
+  if (bayCount < 2) return [];
+
+  return Array.from({ length: bayCount - 1 }, (_, index) => {
+    const x = bay.x + Math.round((bay.width / bayCount) * (index + 1));
+    return {
+      from: { x, y: bay.y + Math.round(bay.height * 0.32) },
+      to: { x, y: bay.y + Math.round(bay.height * 0.92) },
+    };
+  });
+}
+
+function deriveSymbolicCue(anchorPoint, signText) {
+  if (!anchorPoint) return null;
+  return {
+    center: anchorPoint,
+    radius: String(signText).length <= 1 ? 34 : 42,
+    status: "blocked",
+    blockedLabel: "symbolic transit cue; exact geometry blocked",
+  };
+}
+
+function centerOf(bounds) {
+  return {
+    x: Math.round(bounds.x + bounds.width / 2),
+    y: Math.round(bounds.y + bounds.height / 2),
+  };
+}
+
+function offsetPoint(point, dx, dy) {
+  if (!point) return null;
+  return { x: point.x + dx, y: point.y + dy };
+}
+
+function roundBounds(bounds) {
+  return {
+    x: Math.round(bounds.x),
+    y: Math.round(bounds.y),
+    width: Math.round(bounds.width),
+    height: Math.round(bounds.height),
+  };
 }
 
 function buildSourceEvidenceIndex(fixture) {
