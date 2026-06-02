@@ -672,6 +672,74 @@ h1 {
   border-top: 0;
 }
 
+.qa-readiness-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.qa-readiness-strip span {
+  padding: 3px 5px;
+  border: 1px solid rgba(32, 30, 27, 0.14);
+  border-radius: 3px;
+  color: #263d3d;
+  background: rgba(255, 250, 237, 0.4);
+  font-size: 0.55rem;
+  font-weight: 840;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.qa-gate-list {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+
+.qa-gate-list div {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.42fr) 1fr;
+  gap: 7px;
+  align-items: baseline;
+  padding: 4px 5px;
+  border-left: 3px solid rgba(55, 114, 112, 0.44);
+  background: rgba(255, 250, 237, 0.24);
+}
+
+.qa-gate-list div[data-status="review_only"] {
+  border-left-color: rgba(223, 157, 76, 0.7);
+}
+
+.qa-gate-list div[data-status="blocked"] {
+  border-left-color: rgba(169, 79, 56, 0.74);
+}
+
+.qa-gate-list dt,
+.qa-gate-list dd {
+  margin: 0;
+  color: #302b24;
+  font-size: 0.58rem;
+  line-height: 1.22;
+}
+
+.qa-gate-list dt {
+  color: rgba(32, 30, 27, 0.58);
+  font-weight: 880;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.qa-gate-list dd {
+  font-weight: 720;
+}
+
+.qa-contract {
+  display: grid;
+  gap: 4px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(32, 30, 27, 0.12);
+}
+
 .qa-warning {
   border-color: rgba(169, 79, 56, 0.24);
   background: rgba(169, 79, 56, 0.08);

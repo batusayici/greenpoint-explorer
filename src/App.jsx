@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { mvpScene } from "./mvpPlaceData.js";
+import grillpointPromotionReadiness from "./data/source-evidence/grillpoint.promotion-readiness.phase-2n.json";
 import PlaceholderWorld from "./PlaceholderWorld.jsx";
 
 export default function App() {
@@ -11,6 +12,9 @@ export default function App() {
   const selectedSources = selectedTarget?.sourceRefs.map((sourceId) => mvpScene.sourceRefs[sourceId]).filter(Boolean) ?? [];
   const selectedEvidenceRows = selectedTarget?.evidenceStatus ?? [];
   const selectedQA = selectedTarget?.manifestQA;
+  const selectedPromotionReadinessReport = selectedTarget?.id === grillpointPromotionReadiness.targetId
+    ? grillpointPromotionReadiness
+    : null;
 
   function sendCameraCommand(type) {
     setCameraCommand({ type, nonce: Date.now() });
@@ -121,7 +125,11 @@ export default function App() {
                 </dl>
               ) : null}
               {selectedQA ? (
-                <ManifestQAInspector qa={selectedQA} isOpen={isReviewMode} />
+                <ManifestQAInspector
+                  qa={selectedQA}
+                  isOpen={isReviewMode}
+                  promotionReadinessReport={selectedPromotionReadinessReport}
+                />
               ) : null}
               {selectedTarget.address ? (
                 <dl className="card-metadata" aria-label="Source and review metadata">
@@ -163,12 +171,18 @@ export default function App() {
   );
 }
 
-function ManifestQAInspector({ qa, isOpen }) {
+function ManifestQAInspector({ qa, isOpen, promotionReadinessReport }) {
   const primarySources = qa.sources.slice(0, 4);
   const sourceEvidence = qa.sourceEvidence ?? [];
   const missingData = qa.sceneQA.missingData.slice(0, 3);
   const ambiguity = qa.sceneQA.ambiguity.slice(0, 3);
   const blockedClaims = qa.sceneQA.blockedClaims.slice(0, 3);
+  const evidenceQualityRecords = sourceEvidence.map((record) => ({
+    id: record.id,
+    evidenceStrength: record.evidenceStrength,
+    claimReadiness: record.claimReadiness,
+    promotionBlockers: getPromotionBlockers(record.promotionGates),
+  }));
 
   return (
     <details className="qa-inspector" open={isOpen}>
@@ -263,6 +277,11 @@ function ManifestQAInspector({ qa, isOpen }) {
                   {" | "}
                   {formatConfidence(record.confidence)}
                 </p>
+                <div className="qa-readiness-strip" aria-label="Source evidence readiness">
+                  <span>{formatStatusLabel(record.evidenceStrength)}</span>
+                  <span>{formatStatusLabel(record.claimReadiness)}</span>
+                </div>
+                <PromotionGateList gates={record.promotionGates} />
                 {record.claimMappings.map((mapping) => (
                   <p key={mapping.claimId}>
                     {mapping.claimType}: {mapping.claimValue}
@@ -272,10 +291,44 @@ function ManifestQAInspector({ qa, isOpen }) {
                     {mapping.confidence}
                   </p>
                 ))}
+                {getPromotionBlockers(record.promotionGates).length ? (
+                  <QAList items={getPromotionBlockers(record.promotionGates).map(formatPromotionBlocker)} />
+                ) : null}
                 {record.remainingGaps.length ? (
                   <QAList items={record.remainingGaps.slice(0, 2)} />
                 ) : null}
               </article>
+            ))}
+          </section>
+        ) : null}
+
+        {evidenceQualityRecords.length ? (
+          <section className="qa-section qa-evidence-section">
+            <h3>Readiness Summary</h3>
+            {evidenceQualityRecords.map((record) => (
+              <p key={record.id}>
+                {record.id}: {formatStatusLabel(record.evidenceStrength)} evidence; {formatStatusLabel(record.claimReadiness)} claims; {record.promotionBlockers.length} promotion blocker{record.promotionBlockers.length === 1 ? "" : "s"}
+              </p>
+            ))}
+          </section>
+        ) : null}
+
+        {promotionReadinessReport ? (
+          <section className="qa-section qa-warning">
+            <h3>Grillpoint Missing Evidence Contract</h3>
+            <p>
+              {promotionReadinessReport.outcome}; product copy ready: {promotionReadinessReport.productCopyReady ? "yes" : "no"}.
+            </p>
+            <PromotionGateList gates={promotionReadinessReport.currentPromotionGates} />
+            {Object.entries(promotionReadinessReport.missingEvidenceContract).map(([claim, contract]) => (
+              <div className="qa-contract" key={claim}>
+                <p>
+                  <strong>{formatStatusLabel(claim)}</strong>
+                  {" needs "}
+                  {contract.requiredRawInputTypes.join(", ")}
+                </p>
+                <QAList items={contract.mustNotClaim.slice(0, 3).map((item) => `must not claim ${item}`)} />
+              </div>
             ))}
           </section>
         ) : null}
@@ -317,6 +370,40 @@ function QAList({ items }) {
       ))}
     </ul>
   );
+}
+
+function PromotionGateList({ gates }) {
+  return (
+    <dl className="qa-gate-list" aria-label="Promotion gates">
+      {Object.entries(gates).map(([claim, gate]) => (
+        <div key={claim} data-status={gate.status}>
+          <dt>{formatStatusLabel(claim)}</dt>
+          <dd>
+            <strong>{formatStatusLabel(gate.status)}</strong>
+            {gate.neededEvidence ? `: ${gate.neededEvidence}` : ""}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function getPromotionBlockers(gates) {
+  return Object.entries(gates)
+    .filter(([, gate]) => gate.status !== "allowed")
+    .map(([claim, gate]) => ({
+      claim,
+      status: gate.status,
+      neededEvidence: gate.neededEvidence,
+    }));
+}
+
+function formatPromotionBlocker(blocker) {
+  return `${formatStatusLabel(blocker.claim)} ${formatStatusLabel(blocker.status)}: ${blocker.neededEvidence}`;
+}
+
+function formatStatusLabel(value) {
+  return value.replaceAll("_", " ").replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
 function formatConfidence(confidence) {

@@ -137,3 +137,30 @@ Remaining:
 - Repo cleanup is complete; auto-advance may start only after the repo is clean and the next batch remains narrow, verified, and within the approved Phase 2 direction.
 Next recommended batch:
 - Start auto-advance mode from the current committed Phase 2N state, respecting the hard-stop conditions in `docs/AGENT_HANDOFF.md`.
+
+### Batch 2026-06-02 22:18
+Status: complete
+Commit: pending
+Files changed:
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `npm run build` passed with the existing Vite large-chunk warning.
+- Manifest-loader inspector readiness assertion passed with a stubbed raster path.
+- Grillpoint missing-evidence contract availability assertion passed.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2O QA Inspector Surfacing.
+- Added app QA inspector readouts for source-evidence strength, claim readiness, promotion gates, non-allowed promotion blockers, and the existing Grillpoint missing-evidence contract.
+- Preserved visual rendering, generated source-evidence claim status, promotion gates, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- Auto-advance may continue only if the next batch remains narrow, verified, local, source-evidence focused, and within the approved Phase 2 direction.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Phase 2P Generated-Output Inspection Ergonomics: add a small local verifier or focused assertions that confirm app-visible QA inspector readiness/blocker state matches the generated coverage and Grillpoint missing-evidence contract.

@@ -55,14 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2N Grillpoint Promotion Spike is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2O QA Inspector Surfacing is complete under auto-advance. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2N Grillpoint category promotion, additive parity behavior, missing-evidence contract, generated runtime fixture, and regenerated coverage report. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Phase 2P Generated-Output Inspection Ergonomics as the next auto-advance-eligible candidate if it remains narrow, local, verified, and within the approved Phase 2 evidence/readiness direction. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2O QA Inspector Surfacing
+
+Status:
+- Complete under auto-advance.
+
+Scope:
+- Surface source-evidence quality, claim readiness, promotion gates, promotion blockers, and the existing Grillpoint missing-evidence contract in the app QA inspector.
+- Keep the work review/QA-only and do not change visual rendering, source claims, promotion gates, package scripts, CI, production schemas, public APIs, or external-source access.
+
+Files changed:
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `npm run build` passed with the existing Vite large-chunk warning.
+- Manifest-loader inspector readiness assertion passed with a stubbed raster path.
+- Grillpoint missing-evidence contract availability assertion passed.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The selected-card QA inspector now shows evidence strength, claim readiness, promotion gate statuses, non-allowed promotion blockers, and the Grillpoint missing-evidence contract status.
+- Grillpoint remains `review_only`; storefront/facade and entrance/frontage/geometry remain blocked.
+- No evidence, visual rendering, card copy readiness, package tooling, screenshots, or production-facing claims changed.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- Auto-advance may continue only while the next batch remains local, narrow, verified, and within the approved Phase 2 evidence/readiness direction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Phase 2P Generated-Output Inspection Ergonomics as the next candidate batch.
 
 ### 2026-06-02 - Phase 2N Grillpoint Promotion Spike
 
