@@ -297,3 +297,33 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - Pending explicit Batu/later brief. Safe candidate areas remain fixture metadata refinement, generated-output inspection ergonomics, missing-evidence contract validation, schema/report verification improvements, or narrow local verifier improvements.
+
+### Batch 2026-06-02 10:41
+Status: complete
+Commit: pending
+Files changed:
+- `src/data/source-evidence/grillpoint.promotion-readiness.phase-2n.json`
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2U Promotion Readiness Contract.
+- Added an explicit machine-readable `promotionReadinessContract` to the Grillpoint report for product-copy-ready prerequisites, gate-promotion prerequisites, current blockers, and local verifier rejection cases.
+- Marked the remaining Grillpoint storefront/facade and entrance/frontage/geometry missing-evidence contracts as unsatisfied with explicit promotion-blocked reasons.
+- Strengthened the QA/source-evidence verifier so the existing negative self-test rejects guardrail removal, unsupported `product_copy_ready` promotion, and unsupported storefront/facade gate promotion.
+- Preserved committed generated fixture output, raw source claims, coverage report, visual rendering, promotion gate statuses, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- The next executable task is pending Batu or a later explicit brief.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Pending explicit Batu/later brief. Safe candidate areas remain fixture metadata refinement, generated-output inspection ergonomics, missing-evidence contract validation, schema/report verification improvements, or narrow local verifier improvements.

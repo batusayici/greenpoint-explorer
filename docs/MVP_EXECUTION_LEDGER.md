@@ -55,14 +55,53 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2T Generated Fixture Determinism Check is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2U Promotion Readiness Contract is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2T complete. The next executable task is pending Batu or a later explicit brief. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2U complete. The next executable task is pending Batu or a later explicit brief. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2U Promotion Readiness Contract
+
+Status:
+- Complete for review.
+
+Scope:
+- Add or strengthen the local machine-readable contract defining what must be true before source-evidence claims can move from review-only or blocked status toward allowed/product-copy-ready status.
+- Keep the work contract/validation/readiness-focused and do not change visual rendering, source claims, promotion gate statuses, product-copy readiness, package scripts, CI, ingestion breadth, generated fixture output, source material, or external-source access.
+
+Files changed:
+- `src/data/source-evidence/grillpoint.promotion-readiness.phase-2n.json`
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The Grillpoint promotion-readiness report now includes an explicit `promotionReadinessContract` describing product-copy-ready prerequisites, gate-promotion prerequisites, blocked-gate requirements, current blockers, and verifier rejection cases.
+- The remaining Grillpoint `storefrontFacade` and `entranceFrontageGeometry` missing-evidence contracts now explicitly record that they are unsatisfied and why promotion remains blocked.
+- The QA/source-evidence verifier now validates the contract fields and its negative self-test rejects guardrail removal, unsupported `product_copy_ready` promotion, and unsupported storefront/facade gate promotion.
+- No committed generated fixture, raw source claim, coverage report, visual rendering, package tooling, screenshots, or production-facing claims changed.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- The next executable task is pending Batu or a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2U complete and does not open a further implementation batch.
 
 ### 2026-06-02 - Phase 2T Generated Fixture Determinism Check
 

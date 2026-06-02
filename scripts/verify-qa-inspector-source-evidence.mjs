@@ -23,6 +23,13 @@ const REQUIRED_CONTRACT_MUST_NOT_CLAIMS = {
     "production placement readiness",
   ],
 };
+const REQUIRED_LOCAL_VERIFIER_REJECTIONS = [
+  "product_copy_ready while any required promotion gate is not allowed",
+  "productCopyReady true while claimReadiness is not product_copy_ready",
+  "allowed gate status with no supportingClaimIds",
+  "allowed blocked-gate promotion while missingEvidenceContract remains unsatisfied",
+  "blocked gate without a matching missingEvidenceContract entry",
+];
 const ACTIVE_SOURCE_EVIDENCE_GENERATOR_PATH = "scripts/ingest-source-evidence-fixture.mjs";
 const ACTIVE_RAW_INPUT_PATHS = [
   "src/data/source-evidence/raw/grillpoint.phase-2e.raw.json",
@@ -59,7 +66,7 @@ async function main() {
   const failures = [
     ...collectTargetCoverageFailures(appScene, coverageReport),
     ...collectGrillpointContractFailures(appScene, grillpointReport),
-    ...collectMissingEvidenceContractShapeFailures(grillpointReport),
+    ...collectPromotionReadinessReportFailures(grillpointReport),
   ];
 
   if (failures.length) {
@@ -246,24 +253,51 @@ function formatEvidenceRecordMetadataLine(record) {
 }
 
 function runNegativeContractGuardrailSelfTest(report) {
-  const mutatedReport = JSON.parse(JSON.stringify(report));
   const guardrail = "exact facade";
-  mutatedReport.missingEvidenceContract.storefrontFacade.mustNotClaim =
-    mutatedReport.missingEvidenceContract.storefrontFacade.mustNotClaim.filter((item) => item !== guardrail);
+  const scenarios = [
+    {
+      label: `removing "${guardrail}"`,
+      mutate(mutatedReport) {
+        mutatedReport.missingEvidenceContract.storefrontFacade.mustNotClaim =
+          mutatedReport.missingEvidenceContract.storefrontFacade.mustNotClaim.filter((item) => item !== guardrail);
+      },
+      expectedFailure: `Grillpoint missingEvidenceContract.storefrontFacade.mustNotClaim is missing "${guardrail}"`,
+    },
+    {
+      label: "unsupported product_copy_ready promotion",
+      mutate(mutatedReport) {
+        mutatedReport.claimReadiness = "product_copy_ready";
+        mutatedReport.productCopyReady = true;
+        mutatedReport.promotionReadinessContract.currentReadinessState.claimReadiness = "product_copy_ready";
+        mutatedReport.promotionReadinessContract.currentReadinessState.productCopyReady = true;
+      },
+      expectedFailure: "Grillpoint product_copy_ready is blocked by non-allowed promotion gates: storefrontFacade=blocked, entranceFrontageGeometry=blocked",
+    },
+    {
+      label: "unsupported storefrontFacade gate promotion",
+      mutate(mutatedReport) {
+        mutatedReport.currentPromotionGates.storefrontFacade.status = "allowed";
+      },
+      expectedFailure: "Grillpoint currentPromotionGates.storefrontFacade cannot be allowed while missingEvidenceContract.storefrontFacade is currently unsatisfied",
+    },
+  ];
 
-  const failures = collectMissingEvidenceContractShapeFailures(mutatedReport);
-  const expectedFailure = `Grillpoint missingEvidenceContract.storefrontFacade.mustNotClaim is missing "${guardrail}"`;
-  if (!failures.includes(expectedFailure)) {
-    console.error("FAIL negative contract self-test: mutated Grillpoint contract was not rejected as expected.");
-    for (const failure of failures) console.error(`- observed: ${failure}`);
-    return false;
+  for (const scenario of scenarios) {
+    const mutatedReport = JSON.parse(JSON.stringify(report));
+    scenario.mutate(mutatedReport);
+    const failures = collectPromotionReadinessReportFailures(mutatedReport);
+    if (!failures.includes(scenario.expectedFailure)) {
+      console.error(`FAIL negative contract self-test: ${scenario.label} was not rejected as expected.`);
+      for (const failure of failures) console.error(`- observed: ${failure}`);
+      return false;
+    }
   }
 
-  console.log(`PASS negative contract self-test: removing "${guardrail}" was rejected.`);
+  console.log("PASS negative contract self-test: guardrail removal and unsupported promotion attempts were rejected.");
   return true;
 }
 
-function collectMissingEvidenceContractShapeFailures(report) {
+function collectPromotionReadinessReportFailures(report) {
   const failures = [];
   compareValue(failures, report.schemaVersion, "place-promotion-readiness-report.v0.1", "Grillpoint report schemaVersion");
   compareValue(failures, report.outcome, "partial-promotion-category-only", "Grillpoint report outcome");
@@ -273,6 +307,8 @@ function collectMissingEvidenceContractShapeFailures(report) {
   const blockedGateClaims = Object.entries(report.currentPromotionGates)
     .filter(([, gate]) => gate.status === "blocked")
     .map(([claim]) => claim);
+  failures.push(...collectPromotionReadinessContractFailures(report, blockedGateClaims));
+  failures.push(...collectReadinessTransitionFailures(report));
   compareArray(
     failures,
     Object.keys(report.missingEvidenceContract),
@@ -290,6 +326,8 @@ function collectMissingEvidenceContractShapeFailures(report) {
 
     compareValue(failures, contract.requiredForGateStatus, "allowed", `Grillpoint missingEvidenceContract.${claim}.requiredForGateStatus`);
     compareValue(failures, contract.currentStatus, gate.status, `Grillpoint missingEvidenceContract.${claim}.currentStatus`);
+    compareValue(failures, contract.currentlySatisfied, false, `Grillpoint missingEvidenceContract.${claim}.currentlySatisfied`);
+    assertNonEmptyString(failures, contract.promotionBlockedReason, `Grillpoint missingEvidenceContract.${claim}.promotionBlockedReason`);
     assertNonEmptyStringArray(failures, contract.requiredRawInputTypes, `Grillpoint missingEvidenceContract.${claim}.requiredRawInputTypes`);
     assertNonEmptyStringArray(failures, contract.minimumRawFields, `Grillpoint missingEvidenceContract.${claim}.minimumRawFields`);
     assertNonEmptyStringArray(failures, contract.mustNotClaim, `Grillpoint missingEvidenceContract.${claim}.mustNotClaim`);
@@ -299,6 +337,79 @@ function collectMissingEvidenceContractShapeFailures(report) {
         failures.push(`Grillpoint missingEvidenceContract.${claim}.mustNotClaim is missing "${requiredGuardrail}"`);
       }
     }
+  }
+
+  for (const [claim, gate] of Object.entries(report.currentPromotionGates)) {
+    const contract = report.missingEvidenceContract[claim];
+    if (gate.status === "allowed" && gate.supportingClaimIds.length === 0) {
+      failures.push(`Grillpoint currentPromotionGates.${claim} cannot be allowed without supportingClaimIds`);
+    }
+    if (gate.status === "allowed" && contract?.currentlySatisfied === false) {
+      failures.push(`Grillpoint currentPromotionGates.${claim} cannot be allowed while missingEvidenceContract.${claim} is currently unsatisfied`);
+    }
+  }
+
+  return failures;
+}
+
+function collectPromotionReadinessContractFailures(report, blockedGateClaims) {
+  const failures = [];
+  const contract = report.promotionReadinessContract;
+  if (!contract || typeof contract !== "object") {
+    failures.push("Grillpoint promotionReadinessContract is missing");
+    return failures;
+  }
+
+  compareValue(failures, contract.contractId, "grillpoint-deli.phase-2u.promotion-readiness-contract", "Grillpoint promotionReadinessContract.contractId");
+  compareValue(failures, contract.status, "review-only-local-contract", "Grillpoint promotionReadinessContract.status");
+  compareValue(failures, contract.appliesToEvidenceRecordId, report.evidenceRecordId, "Grillpoint promotionReadinessContract.appliesToEvidenceRecordId");
+  compareValue(failures, contract.productCopyReadyRequires.claimReadiness, "product_copy_ready", "Grillpoint promotionReadinessContract.productCopyReadyRequires.claimReadiness");
+  compareValue(failures, contract.productCopyReadyRequires.allPromotionGateStatuses, "allowed", "Grillpoint promotionReadinessContract.productCopyReadyRequires.allPromotionGateStatuses");
+  compareArray(
+    failures,
+    contract.productCopyReadyRequires.requiredPromotionGates,
+    PROMOTION_CLAIM_KEYS,
+    "Grillpoint promotionReadinessContract.productCopyReadyRequires.requiredPromotionGates",
+  );
+  compareValue(failures, contract.gatePromotionRequires.supportingClaimIds, "non-empty", "Grillpoint promotionReadinessContract.gatePromotionRequires.supportingClaimIds");
+  compareValue(failures, contract.gatePromotionRequires.missingEvidenceContractSatisfied, true, "Grillpoint promotionReadinessContract.gatePromotionRequires.missingEvidenceContractSatisfied");
+  compareValue(failures, contract.gatePromotionRequires.approvedRawEvidenceInput, true, "Grillpoint promotionReadinessContract.gatePromotionRequires.approvedRawEvidenceInput");
+  compareValue(failures, contract.gatePromotionRequires.localVerifierPass, true, "Grillpoint promotionReadinessContract.gatePromotionRequires.localVerifierPass");
+  compareValue(failures, contract.blockedOrReviewOnlyGateRequires.missingEvidenceContractEntry, true, "Grillpoint promotionReadinessContract.blockedOrReviewOnlyGateRequires.missingEvidenceContractEntry");
+  compareValue(failures, contract.blockedOrReviewOnlyGateRequires.currentStatusNotAllowed, true, "Grillpoint promotionReadinessContract.blockedOrReviewOnlyGateRequires.currentStatusNotAllowed");
+  compareValue(failures, contract.blockedOrReviewOnlyGateRequires.mustNotClaimGuardrails, "non-empty", "Grillpoint promotionReadinessContract.blockedOrReviewOnlyGateRequires.mustNotClaimGuardrails");
+  compareArray(
+    failures,
+    contract.currentBlockedPromotionGates,
+    blockedGateClaims,
+    "Grillpoint promotionReadinessContract.currentBlockedPromotionGates",
+  );
+  compareValue(failures, contract.currentReadinessState.claimReadiness, report.claimReadiness, "Grillpoint promotionReadinessContract.currentReadinessState.claimReadiness");
+  compareValue(failures, contract.currentReadinessState.productCopyReady, report.productCopyReady, "Grillpoint promotionReadinessContract.currentReadinessState.productCopyReady");
+  assertNonEmptyString(failures, contract.currentReadinessState.reason, "Grillpoint promotionReadinessContract.currentReadinessState.reason");
+  compareArray(
+    failures,
+    contract.localVerifierMustReject,
+    REQUIRED_LOCAL_VERIFIER_REJECTIONS,
+    "Grillpoint promotionReadinessContract.localVerifierMustReject",
+  );
+
+  return failures;
+}
+
+function collectReadinessTransitionFailures(report) {
+  const failures = [];
+  if (report.productCopyReady === true && report.claimReadiness !== "product_copy_ready") {
+    failures.push("Grillpoint productCopyReady cannot be true unless claimReadiness is product_copy_ready");
+  }
+
+  if (report.productCopyReady !== true && report.claimReadiness !== "product_copy_ready") return failures;
+
+  const blockedGates = PROMOTION_CLAIM_KEYS
+    .filter((claim) => report.currentPromotionGates[claim].status !== "allowed")
+    .map((claim) => `${claim}=${report.currentPromotionGates[claim].status}`);
+  if (blockedGates.length) {
+    failures.push(`Grillpoint product_copy_ready is blocked by non-allowed promotion gates: ${blockedGates.join(", ")}`);
   }
 
   return failures;
@@ -367,6 +478,10 @@ function assertNonEmptyStringArray(failures, value, label) {
   for (const item of value) {
     if (typeof item !== "string" || !item.trim()) failures.push(`${label} contains a non-string or empty item`);
   }
+}
+
+function assertNonEmptyString(failures, value, label) {
+  if (typeof value !== "string" || !value.trim()) failures.push(`${label} must be a non-empty string`);
 }
 
 function uniqueStrings(values) {

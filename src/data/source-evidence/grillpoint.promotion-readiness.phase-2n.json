@@ -16,6 +16,49 @@
   "claimReadiness": "review_only",
   "productCopyReady": false,
   "promotionRule": "Grillpoint cannot become product_copy_ready unless identity/name, category/business-type, address/location, storefront/facade, and entrance/frontage/geometry gates are all allowed.",
+  "promotionReadinessContract": {
+    "contractId": "grillpoint-deli.phase-2u.promotion-readiness-contract",
+    "status": "review-only-local-contract",
+    "appliesToEvidenceRecordId": "evidence-grillpoint-identity-address-review",
+    "productCopyReadyRequires": {
+      "claimReadiness": "product_copy_ready",
+      "allPromotionGateStatuses": "allowed",
+      "requiredPromotionGates": [
+        "identityName",
+        "categoryBusinessType",
+        "addressLocation",
+        "storefrontFacade",
+        "entranceFrontageGeometry"
+      ]
+    },
+    "gatePromotionRequires": {
+      "supportingClaimIds": "non-empty",
+      "missingEvidenceContractSatisfied": true,
+      "approvedRawEvidenceInput": true,
+      "localVerifierPass": true
+    },
+    "blockedOrReviewOnlyGateRequires": {
+      "missingEvidenceContractEntry": true,
+      "currentStatusNotAllowed": true,
+      "mustNotClaimGuardrails": "non-empty"
+    },
+    "currentBlockedPromotionGates": [
+      "storefrontFacade",
+      "entranceFrontageGeometry"
+    ],
+    "currentReadinessState": {
+      "claimReadiness": "review_only",
+      "productCopyReady": false,
+      "reason": "Storefront/facade and entrance/frontage/geometry evidence contracts remain unsatisfied."
+    },
+    "localVerifierMustReject": [
+      "product_copy_ready while any required promotion gate is not allowed",
+      "productCopyReady true while claimReadiness is not product_copy_ready",
+      "allowed gate status with no supportingClaimIds",
+      "allowed blocked-gate promotion while missingEvidenceContract remains unsatisfied",
+      "blocked gate without a matching missingEvidenceContract entry"
+    ]
+  },
   "currentPromotionGates": {
     "identityName": {
       "status": "allowed",
@@ -68,6 +111,8 @@
     "storefrontFacade": {
       "requiredForGateStatus": "allowed",
       "currentStatus": "blocked",
+      "currentlySatisfied": false,
+      "promotionBlockedReason": "No owned/approved facade-reference provenance or reviewed storefront-facade claim boundary is present in the current raw inputs.",
       "requiredRawInputTypes": [
         "owned_or_approved_non_google_facade_reference",
         "facade_storefront_claim_boundary",
@@ -98,6 +143,8 @@
     "entranceFrontageGeometry": {
       "requiredForGateStatus": "allowed",
       "currentStatus": "blocked",
+      "currentlySatisfied": false,
+      "promotionBlockedReason": "No reviewed frontage, entrance, address-placement, parcel, or building-geometry claim input is present in the current raw inputs.",
       "requiredRawInputTypes": [
         "frontage_or_entrance_review_row",
         "parcel_building_or_storefront_geometry_context",
