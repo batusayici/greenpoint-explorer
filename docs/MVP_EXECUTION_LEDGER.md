@@ -55,14 +55,60 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2U Promotion Readiness Contract is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2V Draft Real-Data Scene Pipeline is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2U complete. The next executable task is pending Batu or a later explicit brief. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2V complete for review and does not open a further implementation batch. Product-copy readiness, promotion weakening, raster asset edits, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2V Draft Real-Data Scene Pipeline
+
+Status:
+- Complete for review.
+
+Scope:
+- Add a review/demo-only draft real-data scene lane for the current Manhattan Ave x Greenpoint Ave MVP scene.
+- Preserve the strict source-evidence promotion/product-readiness lane unchanged while allowing prototype scene rendering from explicitly statused draft fields.
+- Record Batu's decision shift: optimize now for proof-of-concept real-data-to-isometric-scene generation, not public/product readiness.
+
+Files changed:
+- `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
+- `src/sceneManifest.js`
+- `src/mvpPlaceData.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a separate prototype-only draft scene fixture covering Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Each draft record includes statused fields for identity, address, category, approximate footprint, storefront bay, sign text, facade style, door/window placement, scene anchor, and station/intersection cues.
+- App data flow can consume draft fields for prototype display and QA/debug visibility while strict source-evidence promotion remains unchanged.
+- QA inspector now shows draft lane status counts and field-level statuses.
+- QA mode can show draft sign/facade/bay labels on top of the raster plate; normal-mode primary world art remains raster-first.
+- Strict generated source-evidence, Grillpoint product readiness, promotion gates, and negative contract behavior remained intact.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- The next executable task is pending Batu or a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2V complete and does not open a further implementation batch.
 
 ### 2026-06-02 - Phase 2U Promotion Readiness Contract
 

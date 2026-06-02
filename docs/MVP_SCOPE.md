@@ -1,7 +1,7 @@
 # Greenpoint Isometric Explorer - MVP Scope
 
 Status: Detailed MVP scope authority
-Last reconciled: 2026-05-31
+Last reconciled: 2026-06-02
 Creative/product/scope owner: Batu
 Execution owner inside approved boundaries: Codex
 
@@ -21,7 +21,7 @@ The desired reaction is:
 
 > I want to explore more of this.
 
-The MVP is a polished, authored, interactive diorama of the full Manhattan Ave x Greenpoint Ave four-corner intersection. It is not a full map product, game system, local guide platform, or production content pipeline.
+The MVP is a polished, authored, interactive diorama of the full Manhattan Ave x Greenpoint Ave four-corner intersection. It is not a full map product, game system, local guide platform, or production content pipeline. However, the MVP may now include a review/demo-only draft real-data scene lane to prove the real-data-to-isometric-scene pipeline before product/public readiness.
 
 ## Core Experience
 
@@ -47,6 +47,7 @@ The MVP may include:
 - Approved Inked Indie / Compact Corner visual direction with fictional-safe storefront identity and integrated paper/card UI direction.
 - Controlled, static, review/demo-safe raster assets when approved by the current brief.
 - Controlled, static, review/demo-safe local data when approved by the current brief.
+- A review/demo-only draft real-data scene lane that can render sourced, inferred, and manually authored prototype scene data before strict product-promotion readiness, when explicitly opened by the current brief.
 - Bounded pan and zoom.
 - Desktop hover and click.
 - Keyboard focus where relevant for ordinary interactive controls.
@@ -59,6 +60,7 @@ The MVP may include:
 - Review-only labels, truth statuses, and QA affordances when they are visually secondary and separate from product-facing UI.
 - One narrow source-of-truth validation spike for the same scene/block face, limited to 5-10 storefront candidates, if approved by the current brief.
 - Review-only storefront evidence cards covering candidate address, building/tax-lot linkage, business match, visual-reference provenance, facade cues, confidence, and manual follow-up.
+- Draft prototype scene records for current MVP places/cues, including real names, address text, category, approximate footprints, inferred storefront bays, sign text, facade style, door/window placement, and manual/inferred geometry, provided each major field carries a truth/evidence status.
 
 ## Demo-Safe Assets And Data
 
@@ -80,14 +82,32 @@ This does not approve:
 - Production/public-release assets.
 - A production asset direction.
 - A production asset pipeline.
-- Generated storefront factories.
-- Automated extraction, sprite generation, or build-time asset systems.
-- Automated source-of-truth pipelines, storefront-unit databases, live refresh, or broad data imports.
+- Production generated storefront factories.
+- Production automated extraction, sprite generation, or build-time asset systems.
+- Automated source-of-truth pipelines, storefront-unit databases, live refresh, or broad data imports. A current brief may still approve a narrow local draft-scene fixture/model that manually combines sourced, inferred, and manual prototype data for the current MVP intersection only.
 - Google/Street View/3D Tiles imagery as stored reference, training input, generation input, texture source, or extracted facade data, except for Batu's narrow MVP-only SW Dunkin visual-reference exception. The exception does not approve production use, texture extraction, tracing, stored facade asset reuse, training input, generation input, exact trade-dress reproduction, or a general source-policy change.
 - Public-release real-place data.
 - Live data, scraping, automated refresh, or CMS-backed content.
 
 Review-only raster assets must remain labeled non-production and must not be described as production assets, public-release factual Greenpoint representations, exact facades, exact addresses, exact station geometry, or approved production asset direction.
+
+## Draft Real-Data Scene Lane
+
+A current brief may open a review/demo-only draft scene lane to prove that real-world place data, approximate geometry, and visual storefront/facade representation can drive the MVP scene before product/public readiness.
+
+The draft lane may combine:
+
+- Sourced public facts, including real business names, address text, and categories.
+- Inferred or manually authored approximate geometry, including building footprints, storefront bays, facade modules, sign panels, door/window placement, and scene anchors.
+- Review/demo-safe visual treatment intended to feel locally specific and useful for proof-of-concept review, not GIS/survey-perfect.
+- Existing strict source-evidence records and generated fixtures as one input, plus explicit draft scene overrides or draft scene fixtures where needed for visual completeness.
+
+Every major draft field should carry a machine-readable status such as `verified`, `sourced`, `inferred`, `manual_draft`, `symbolic`, `unknown`, or `blocked`.
+
+The draft lane is intentionally separate from the strict promotion/product-readiness lane. Draft records may render in the prototype even when `productCopyReady` is false, but they must not be represented as production-ready, exact, public-release approved, or suitable for product claims.
+
+The draft lane does not approve live data, scraping, backend services, CMS, automated refresh, commercial data licensing, production asset direction, production asset pipeline, broad neighborhood coverage, exact facade/frontage/station geometry claims, or weakening existing promotion-readiness verifiers.
+
 
 ## Real-Corner Gate Sequencing
 
@@ -122,7 +142,7 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Production asset pipeline.
 - Production asset direction.
 - Broad map coverage.
-- Automated storefront/business matching at scale.
+- Automated storefront/business matching at scale, except for narrow local draft-scene experiments that remain manually reviewable and limited to the current MVP intersection.
 - Google/Street View/3D Tiles-derived extraction, training, generation, or texture reuse, except for Batu's narrow MVP-only SW Dunkin visual-reference exception for stylized/non-production review/demo approximation.
 - Backend services.
 - CMS.
@@ -149,8 +169,8 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Business opt-in flows.
 - Broad game systems.
 - Phone-first optimization.
-- Exact real facades.
-- Exact storefront frontage/order claims.
+- Exact real facades as product/public claims. Review/demo-only approximate or manually authored facade treatments are allowed in the draft lane when marked with field-level truth status.
+- Exact storefront frontage/order claims as product/public claims. Approximate storefront bay ordering is allowed in the draft lane when marked inferred/manual_draft and not represented as exact.
 - Exact Greenpoint Ave G station geometry.
 - Exact addresses in visual placement unless manually verified and approved.
 - Ratings, reviews, endorsements, partnership claims, or promotional claims.
@@ -168,11 +188,11 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Approved interaction targets by MVP completion only where they are spatially coherent and evidence-backed.
 - Compact selected card behavior.
 - Manually validated real-business cards for included real businesses.
-- Source URL, last verified date, and unofficial-map disclaimer for each real place.
-- Verified Greenpoint Ave G subway entrance/station-cue placement, with symbolic or context-only treatment where verification is incomplete.
-- Truth-safe handling of uncertainty, omissions, placeholders, and fictionalization.
-- Explicit `verified`, `approximate`, `symbolic`, `context-only`, `omitted`, or `blocked` statuses for uncertain real-world claims.
-- Recognizable and truth-safe review/demo-scale storefront, sign, and facade treatment from owned, approved, non-Google, or explicitly exception-approved references; not GIS/survey-perfect representation.
+- Source URL, last verified date, and unofficial-map disclaimer for each real place where the place is presented as factual card content; draft-only internal scene records may separately carry source/status metadata until card copy is finalized.
+- Greenpoint Ave G subway entrance/station-cue placement treated as verified, approximate, symbolic, context-only, manual_draft, or blocked depending on evidence; prototype rendering may use approximate symbolic placement when the status is explicit.
+- Truth-safe handling of uncertainty, omissions, placeholders, fictionalization, inferred geometry, and manual draft visual treatment.
+- Explicit `verified`, `sourced`, `inferred`, `manual_draft`, `approximate`, `symbolic`, `context-only`, `omitted`, or `blocked` statuses for uncertain real-world claims and draft scene fields.
+- Recognizable and truth-safe review/demo-scale storefront, sign, and facade treatment from owned, approved, non-Google, explicitly exception-approved, or manually authored draft references; not GIS/survey-perfect representation.
 - Desktop/tablet readability and basic mobile containment.
 - QA or review evidence sufficient for Batu/ChatGPT review.
 

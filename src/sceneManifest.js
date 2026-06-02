@@ -1,5 +1,6 @@
 const REQUIRED_MANIFEST_VERSION = "0.1";
 const REQUIRED_EVIDENCE_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
+const REQUIRED_DRAFT_SCENE_SCHEMA_VERSION = "draft-scene-fixture.v0.1";
 const LEGACY_JPEG_EXTENSION = "." + "jpeg";
 const EVIDENCE_STRENGTH_VALUES = new Set([
   "reviewed",
@@ -24,14 +25,44 @@ const PROMOTION_GATE_STATUS_VALUES = new Set([
   "review_only",
   "blocked",
 ]);
+const DRAFT_SCENE_STATUS_VALUES = new Set([
+  "verified",
+  "sourced",
+  "inferred",
+  "manual_draft",
+  "symbolic",
+  "unknown",
+  "blocked",
+]);
+const REQUIRED_DRAFT_SCENE_FIELDS = [
+  "name",
+  "addressText",
+  "category",
+  "buildingFootprint",
+  "storefrontBay",
+  "signText",
+  "facadeStyle",
+  "doorWindowPlacement",
+  "sceneAnchor",
+  "stationIntersectionCues",
+];
 
-export function loadMvpSceneFromManifest(manifest, assetSrcById, sourceEvidenceFixture = null) {
+export function loadMvpSceneFromManifest(
+  manifest,
+  assetSrcById,
+  sourceEvidenceFixture = null,
+  draftSceneFixture = null,
+) {
   const validatedManifest = validateSceneManifest(manifest);
   const manifestIndexes = buildManifestIndexes(validatedManifest);
   const validatedEvidenceFixture = sourceEvidenceFixture
     ? validateSourceEvidenceFixture(sourceEvidenceFixture, validatedManifest, manifestIndexes)
     : null;
+  const validatedDraftSceneFixture = draftSceneFixture
+    ? validateDraftSceneFixture(draftSceneFixture, validatedManifest, manifestIndexes)
+    : null;
   const sourceEvidenceIndex = buildSourceEvidenceIndex(validatedEvidenceFixture);
+  const draftSceneIndex = buildDraftSceneIndex(validatedDraftSceneFixture);
   const primaryAsset = validatedManifest.scene.assets.find(
     (asset) => asset.role === "primary-raster-plate",
   );
@@ -69,15 +100,25 @@ export function loadMvpSceneFromManifest(manifest, assetSrcById, sourceEvidenceF
       sourcePath: primaryAsset.sourcePath,
     },
     sourceRefs,
-    manifestQA: buildSceneQA(validatedManifest, validatedEvidenceFixture),
-    targets: validatedManifest.scene.objects.map((object) => ({
-      ...object.appTarget,
-      manifestObjectId: object.id,
-      manifestPlaceId: object.placeId,
-      manifestAnchorId: object.anchorId,
-      claimStatus: object.claimStatus,
-      manifestQA: buildTargetQA(object, validatedManifest, manifestIndexes, sourceEvidenceIndex),
-    })),
+    manifestQA: buildSceneQA(validatedManifest, validatedEvidenceFixture, validatedDraftSceneFixture),
+    targets: validatedManifest.scene.objects.map((object) => {
+      const draftScene = buildAppDraftSceneRecord(draftSceneIndex.recordsByTargetId.get(object.appTarget.id));
+      return {
+        ...buildDraftAwareAppTarget(object.appTarget, draftScene),
+        manifestObjectId: object.id,
+        manifestPlaceId: object.placeId,
+        manifestAnchorId: object.anchorId,
+        claimStatus: object.claimStatus,
+        draftScene,
+        manifestQA: buildTargetQA(
+          object,
+          validatedManifest,
+          manifestIndexes,
+          sourceEvidenceIndex,
+          draftScene,
+        ),
+      };
+    }),
   };
 }
 
@@ -93,7 +134,7 @@ function buildManifestIndexes(manifest) {
   };
 }
 
-function buildSceneQA(manifest, evidenceFixture) {
+function buildSceneQA(manifest, evidenceFixture, draftSceneFixture) {
   return {
     manifestId: manifest.sceneId,
     blockId: manifest.blockId,
@@ -108,10 +149,17 @@ function buildSceneQA(manifest, evidenceFixture) {
       reviewedOn: evidenceFixture.reviewedOn,
       recordCount: evidenceFixture.records.length,
     } : null,
+    draftScene: draftSceneFixture ? {
+      fixtureId: draftSceneFixture.fixtureId,
+      status: draftSceneFixture.status,
+      reviewedOn: draftSceneFixture.reviewedOn,
+      lane: draftSceneFixture.lane,
+      recordCount: draftSceneFixture.records.length,
+    } : null,
   };
 }
 
-function buildTargetQA(object, manifest, indexes, evidenceIndex) {
+function buildTargetQA(object, manifest, indexes, evidenceIndex, draftScene) {
   const place = indexes.placesById.get(object.placeId);
   const business = place?.businessId ? indexes.businessesById.get(place.businessId) : null;
   const addressRecords = (place?.addressIds ?? [])
@@ -215,6 +263,7 @@ function buildTargetQA(object, manifest, indexes, evidenceIndex) {
       qaNotes: record.qaNotes,
       remainingGaps: record.remainingGaps,
     })),
+    draftScene,
     overrides: relatedOverrides.map((override) => ({
       id: override.id,
       category: override.category,
@@ -232,6 +281,62 @@ function buildTargetQA(object, manifest, indexes, evidenceIndex) {
       hiddenManualFixes: manifest.qa.hiddenManualFixes,
     },
   };
+}
+
+function buildDraftAwareAppTarget(target, draftScene) {
+  if (!draftScene) return target;
+
+  const fields = draftScene.fields;
+  return {
+    ...target,
+    title: fields.name.value ?? target.title,
+    category: fields.category.value ?? target.category,
+    address: fields.addressText.value ?? target.address,
+    rasterAnchorLabel: fields.signText.value ?? target.rasterAnchorLabel,
+    draftStatusSummary: summarizeDraftStatuses(draftScene),
+  };
+}
+
+function buildDraftSceneIndex(fixture) {
+  const index = {
+    recordsByTargetId: new Map(),
+  };
+  if (!fixture) return index;
+
+  for (const record of fixture.records) {
+    index.recordsByTargetId.set(record.targetId, record);
+  }
+
+  return index;
+}
+
+function buildAppDraftSceneRecord(record) {
+  if (!record) return null;
+
+  return {
+    id: record.id,
+    status: record.renderingUse.status,
+    renderingUse: record.renderingUse,
+    sourceEvidenceRecordIds: record.sourceEvidenceRecordIds,
+    fields: Object.fromEntries(
+      Object.entries(record.fields).map(([fieldName, field]) => [
+        fieldName,
+        {
+          value: field.value,
+          status: field.status,
+          sourceIds: field.sourceIds,
+          notes: field.notes,
+        },
+      ]),
+    ),
+    statusCounts: summarizeDraftStatuses(record),
+  };
+}
+
+function summarizeDraftStatuses(record) {
+  const counts = Object.fromEntries([...DRAFT_SCENE_STATUS_VALUES].map((status) => [status, 0]));
+  for (const field of Object.values(record.fields)) counts[field.status] += 1;
+  return counts;
 }
 
 function buildSourceEvidenceIndex(fixture) {
@@ -390,6 +495,60 @@ export function validateSourceEvidenceFixture(fixture, manifest, indexes = build
   assertNoLegacyJpegReferences(fixture, "Source evidence fixture");
 
   return fixture;
+}
+
+export function validateDraftSceneFixture(fixture, manifest, indexes = buildManifestIndexes(manifest)) {
+  assertObject(fixture, "Draft scene fixture");
+  assertEqual(fixture.schemaVersion, REQUIRED_DRAFT_SCENE_SCHEMA_VERSION, "draftScene.schemaVersion");
+  assertString(fixture.fixtureId, "draftScene.fixtureId");
+  assertEqual(fixture.sceneId, manifest.sceneId, "draftScene.sceneId");
+  assertString(fixture.status, "draftScene.status");
+  assertString(fixture.reviewedOn, "draftScene.reviewedOn");
+  assertString(fixture.lane, "draftScene.lane");
+  assertArray(fixture.notes, "draftScene.notes");
+  assertObject(fixture.statusValues, "draftScene.statusValues");
+  assertArray(fixture.records, "draftScene.records");
+
+  for (const status of DRAFT_SCENE_STATUS_VALUES) {
+    assertString(fixture.statusValues[status], `draftScene.statusValues.${status}`);
+  }
+
+  const draftRecordIds = new Set();
+  const targetIds = new Set(manifest.scene.objects.map((object) => object.appTarget.id));
+  for (const record of fixture.records) {
+    assertObject(record, "draftScene.records item");
+    assertString(record.id, "draftScene.records item.id");
+    if (draftRecordIds.has(record.id)) throw new Error(`draftScene.records has duplicate id "${record.id}".`);
+    draftRecordIds.add(record.id);
+
+    assertReference(record.targetId, targetIds, `draftScene record ${record.id}.targetId`);
+    assertReference(record.placeId, indexes.placesById, `draftScene record ${record.id}.placeId`);
+    assertArray(record.sourceEvidenceRecordIds, `draftScene record ${record.id}.sourceEvidenceRecordIds`);
+    for (const id of record.sourceEvidenceRecordIds) {
+      assertString(id, `draftScene record ${record.id}.sourceEvidenceRecordIds item`);
+    }
+    validateDraftSceneStatusField(record.renderingUse, `draftScene record ${record.id}.renderingUse`, {
+      requireSourceIds: false,
+    });
+    assertObject(record.fields, `draftScene record ${record.id}.fields`);
+
+    for (const fieldName of REQUIRED_DRAFT_SCENE_FIELDS) {
+      validateDraftSceneStatusField(record.fields[fieldName], `draftScene record ${record.id}.fields.${fieldName}`);
+    }
+  }
+
+  assertNoLegacyJpegReferences(fixture, "Draft scene fixture");
+
+  return fixture;
+}
+
+function validateDraftSceneStatusField(field, label, options = {}) {
+  const requireSourceIds = options.requireSourceIds ?? true;
+  assertObject(field, label);
+  if (!Object.hasOwn(field, "value")) throw new Error(`${label}.value must be present.`);
+  assertOneOf(field.status, DRAFT_SCENE_STATUS_VALUES, `${label}.status`);
+  if (requireSourceIds) assertArray(field.sourceIds, `${label}.sourceIds`);
+  assertString(field.notes, `${label}.notes`);
 }
 
 function validatePromotionGates(gates, label) {

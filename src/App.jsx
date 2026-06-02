@@ -12,6 +12,7 @@ export default function App() {
   const selectedSources = selectedTarget?.sourceRefs.map((sourceId) => mvpScene.sourceRefs[sourceId]).filter(Boolean) ?? [];
   const selectedEvidenceRows = selectedTarget?.evidenceStatus ?? [];
   const selectedQA = selectedTarget?.manifestQA;
+  const selectedDraftScene = selectedTarget?.draftScene;
   const selectedPromotionReadinessReport = selectedTarget?.id === grillpointPromotionReadiness.targetId
     ? grillpointPromotionReadiness
     : null;
@@ -128,6 +129,7 @@ export default function App() {
                 <ManifestQAInspector
                   qa={selectedQA}
                   isOpen={isReviewMode}
+                  draftScene={selectedDraftScene}
                   promotionReadinessReport={selectedPromotionReadinessReport}
                 />
               ) : null}
@@ -171,7 +173,7 @@ export default function App() {
   );
 }
 
-function ManifestQAInspector({ qa, isOpen, promotionReadinessReport }) {
+function ManifestQAInspector({ qa, isOpen, draftScene, promotionReadinessReport }) {
   const primarySources = qa.sources.slice(0, 4);
   const sourceEvidence = qa.sourceEvidence ?? [];
   const missingData = qa.sceneQA.missingData.slice(0, 3);
@@ -302,6 +304,10 @@ function ManifestQAInspector({ qa, isOpen, promotionReadinessReport }) {
           </section>
         ) : null}
 
+        {draftScene ? (
+          <DraftSceneInspector draftScene={draftScene} />
+        ) : null}
+
         {evidenceQualityRecords.length ? (
           <section className="qa-section qa-evidence-section">
             <h3>Readiness Summary</h3>
@@ -362,6 +368,56 @@ function ManifestQAInspector({ qa, isOpen, promotionReadinessReport }) {
   );
 }
 
+function DraftSceneInspector({ draftScene }) {
+  const fields = [
+    ["name", "Name"],
+    ["addressText", "Address"],
+    ["category", "Category"],
+    ["buildingFootprint", "Footprint"],
+    ["storefrontBay", "Storefront bay"],
+    ["signText", "Sign text"],
+    ["facadeStyle", "Facade style"],
+    ["doorWindowPlacement", "Door/window"],
+    ["sceneAnchor", "Scene anchor"],
+    ["stationIntersectionCues", "Station/intersection"],
+  ];
+
+  return (
+    <section className="qa-section qa-draft-scene-section">
+      <h3>Draft Scene Lane</h3>
+      <p>
+        {formatStatusLabel(draftScene.renderingUse.status)}: {draftScene.renderingUse.value}
+      </p>
+      <div className="qa-status-row" aria-label="Draft field status counts">
+        {Object.entries(draftScene.statusCounts)
+          .filter(([, count]) => count > 0)
+          .map(([status, count]) => (
+            <span key={status} data-status={status}>
+              {formatStatusLabel(status)} {count}
+            </span>
+          ))}
+      </div>
+      <dl className="qa-draft-field-list" aria-label="Draft scene field statuses">
+        {fields.map(([fieldName, label]) => {
+          const field = draftScene.fields[fieldName];
+          if (!field) return null;
+          return (
+            <div key={fieldName} data-status={field.status}>
+              <dt>{label}</dt>
+              <dd>
+                <strong>{formatStatusLabel(field.status)}</strong>
+                {" | "}
+                {formatDraftFieldValue(field.value)}
+                <small>{field.notes}</small>
+              </dd>
+            </div>
+          );
+        })}
+      </dl>
+    </section>
+  );
+}
+
 function QAList({ items }) {
   return (
     <ul className="qa-list">
@@ -414,4 +470,16 @@ function formatConfidence(confidence) {
 function formatScenePoint(point) {
   if (!point) return "unresolved";
   return `${point.x}, ${point.y} (${point.layer ?? "scene"})`;
+}
+
+function formatDraftFieldValue(value) {
+  if (value === null || value === undefined) return "unknown";
+  if (typeof value === "string") return value;
+  if (typeof value === "number" || typeof value === "boolean") return String(value);
+  if (value.sceneBounds) {
+    const { x, y, width, height } = value.sceneBounds;
+    return `${x}, ${y}, ${width}x${height}`;
+  }
+  if (value.marker) return `${value.cornerId}: ${value.marker.x}, ${value.marker.y}`;
+  return JSON.stringify(value);
 }
