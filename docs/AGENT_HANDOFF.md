@@ -135,7 +135,7 @@ Next recommended batch:
 
 ### Batch 2026-06-02 21:03
 Status: complete
-Commit: pending in git history for this batch
+Commit: 0d6a782
 Files changed:
 - `scripts/ingest-source-evidence-fixture.mjs`
 - `scripts/inspect-source-evidence-coverage.mjs`
