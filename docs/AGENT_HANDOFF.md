@@ -69,7 +69,7 @@ Next recommended batch:
 
 ### Batch 2026-06-02 20:41
 Status: complete
-Commit: pending in git history for this batch
+Commit: a752706
 Files changed:
 - `scripts/inspect-source-evidence-coverage.mjs`
 - `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
