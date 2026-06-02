@@ -55,14 +55,60 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2G Complete Source Evidence Generation Parity is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2H Generated Source Evidence Runtime Promotion is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2G complete current-evidence raw-input set, combined generation behavior, and full-set parity criteria. Raster revisions, broader app refactor, replacing the app-loaded fixture with generated output, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2H generated runtime fixture promotion. Raster revisions, broader app refactor, generated source-evidence expansion beyond the current two-record fixture, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2H Generated Source Evidence Runtime Promotion
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Generate and commit a source-evidence fixture from the two local raw inputs.
+- Switch the app/runtime import from the Phase 2D hand-authored fixture to the generated Phase 2H fixture.
+- Keep the Phase 2D hand-authored fixture unchanged as the reviewed parity reference.
+- Preserve loader validation and QA inspector behavior.
+- Do not add new places, raster art, package changes, lockfile changes, scraping/API calls, production claims, or broader generated source data.
+
+Files changed:
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/mvpPlaceData.js`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- Pre-switch full parity pass against `src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json`.
+- Post-switch full parity pass against `src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json`.
+- Expected failure from the Grillpoint-only command with `--require-all-expected true`, reporting missing runtime evidence ID `evidence-greenpoint-g-station-context-review`.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The app runtime now imports `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`.
+- The generated runtime fixture contains exactly the two current reviewed evidence records: `evidence-grillpoint-identity-address-review` and `evidence-greenpoint-g-station-context-review`.
+- The Phase 2D hand-authored fixture remains unchanged and committed as the reviewed parity reference.
+- Raw fixtures remain local/manual inputs, not scraping output, API ingestion, production source adapters, or live data.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2H generated runtime fixture promotion.
+- Whether generated fixture metadata should be refined, whether generated output inspection artifacts should be added, whether more local raw fixtures should be added, and whether parity checks should become a durable regression command remain blocked pending Batu approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2H generated source evidence runtime promotion.
+- If accepted, Batu may open a later bounded Phase 2 task for generated fixture metadata refinement, generated-output inspection artifacts, raw-input expansion, fixture regression checks, or a deliberately scoped source-evidence merge/review workflow.
 
 ### 2026-06-01 - Phase 2G Complete Source Evidence Generation Parity
 
