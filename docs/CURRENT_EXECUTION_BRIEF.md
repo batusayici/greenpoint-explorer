@@ -1,8 +1,22 @@
-# Current Execution Brief - Phase 2Z Expanded Real Data Pattern Complete
+# Current Execution Brief - Phase 2AA Source Precision Upgrade Complete
 
-Status: Phase 2Z expanded real data pattern is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
+Status: Phase 2AA source precision upgrade is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
+
+## Phase 2AA Source Precision Upgrade
+
+- Batu authorized replacing the highest-value available estimated/human-prepared geometry with stronger source-derived geometry where local evidence supports it.
+- Added `scripts/generate-real-data-source-precision.mjs` as a deterministic local transform from the Phase 2Z fixture plus the review manifest into the Phase 2AA precision fixture.
+- Added `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json` and wired the app to load it.
+- Upgraded McDonald's and Citizens Bank `geometry.frontageSegment.status` from `estimated_from_source` to `source_backed` for QA frontage alignment only, based on review-manifest storefront confidence and official address context.
+- Upgraded McDonald's and Citizens Bank `geometry.buildingSample.status` from `human_prepared` to `estimated_from_source`, because the visible envelope is now derived from review-manifest address/building/storefront links plus raster alignment.
+- Left Grillpoint Deli and Dunkin' geometry unchanged because local manifest geometry confidence remains low.
+- Left Greenpoint G symbolic/blocked; exact station/entrance geometry remains unsupported.
+- QA inspector now surfaces source-precision metadata and rationale for upgraded records.
+- No exact parcel/tax-lot footprint, exact building footprint, exact frontage/order, exact entrance, exact facade, production/public claim, or product-copy-ready status was promoted.
+- Normal mode remains raster-first and unchanged in product meaning.
+- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
 
 ## Phase 2Z Expanded Real Data Pattern
 
@@ -102,7 +116,19 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Files Changed
 
-Latest Phase 2Z implementation changed:
+Latest Phase 2AA implementation changed:
+
+- `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `scripts/generate-real-data-source-precision.mjs`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Prior Phase 2Z implementation changed:
 
 - `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json`
 - `src/mvpPlaceData.js`
@@ -190,6 +216,8 @@ git diff --stat
 - Latest Phase 2Z verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the active-target real-data fixture validates, covers 5 records/targets, and produces deterministic QA entities for storefront records plus a symbolic/blocked transit record.
 - Latest Phase 2Z `npm run build` passed with the existing Vite large-chunk warning.
 - Latest Phase 2Z browser sanity check could not be run because the in-app browser execution tool was unavailable after tool discovery.
+- Latest Phase 2AA verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the Phase 2AA source-precision fixture deterministically regenerates, covers 5 records/targets, upgrades only McDonald's and Citizens Bank source-precision fields, and keeps Greenpoint G symbolic/blocked.
+- Latest Phase 2AA `npm run build` passed with the existing Vite large-chunk warning.
 - Latest Phase 2Y verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the Grillpoint/NW real-data fixture validates, produces 10 deterministic QA entities, and does not attach to other active targets.
 - Latest Phase 2Y build check passed with the existing Vite large-chunk warning.
 - Latest Phase 2Y browser sanity check was attempted against `http://localhost:5173/` and `http://127.0.0.1:5173/`, but the in-app browser blocked both local URLs with `ERR_BLOCKED_BY_CLIENT`.
@@ -215,7 +243,7 @@ git diff --stat
 - Future prompts should lead with: "Build the visible MVP proof. Preserve gates as constraints."
 - The next executable task is pending Batu or a later explicit brief.
 - Recommended next outcome-based sequence:
-  1. Replace some Phase 2Z human-prepared/estimated geometry with stronger source-derived geometry if a practical lane is available.
+  1. Bring in a true geometry source lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, to replace review-manifest/raster-aligned estimates.
   2. Create a demoable review scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
 - No further prototype, visual, source-evidence, promotion, production, package/tooling, screenshot-QA, or demo-freeze work is opened by this brief.
 

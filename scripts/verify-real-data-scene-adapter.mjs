@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
-import { readFile } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 import {
   generateRealDataQaEntities,
   loadMvpSceneFromManifest,
@@ -13,10 +16,12 @@ import {
 } from "../src/sceneManifest.js";
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const execFileAsync = promisify(execFile);
 const MANIFEST_PATH = "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json";
 const EVIDENCE_PATH = "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json";
 const DRAFT_SCENE_PATH = "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json";
-const REAL_DATA_PATH = "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json";
+const REAL_DATA_PATH = "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json";
+const SOURCE_PRECISION_GENERATOR_PATH = "scripts/generate-real-data-source-precision.mjs";
 const EXPECTED_TARGETS = [
   "grillpoint-deli",
   "mcdonalds",
@@ -54,6 +59,7 @@ async function main() {
   const evidenceFixture = validateSourceEvidenceFixture(await readJson(EVIDENCE_PATH), manifest);
   const draftFixture = validateDraftSceneFixture(await readJson(DRAFT_SCENE_PATH), manifest);
   const realDataFixture = validateRealDataFixture(await readJson(REAL_DATA_PATH), manifest, undefined, evidenceFixture);
+  const regeneratedPrecisionFixture = await generateSourcePrecisionFixture();
   const primaryAsset = manifest.scene.assets.find((asset) => asset.role === "primary-raster-plate");
   const appScene = loadMvpSceneFromManifest(
     manifest,
@@ -63,8 +69,15 @@ async function main() {
     realDataFixture,
   );
   const failures = [];
+  compareJson(
+    failures,
+    realDataFixture,
+    regeneratedPrecisionFixture,
+    "source precision fixture determinism",
+  );
   compareArray(failures, realDataFixture.records.map((record) => record.targetId), EXPECTED_TARGETS, "real-data target coverage");
   requireValue(failures, realDataFixture.records.length, EXPECTED_TARGETS.length, "real-data record count");
+  verifySourcePrecisionUpgrades(failures, realDataFixture);
 
   for (const record of realDataFixture.records) {
     const firstEntities = generateRealDataQaEntities(record);
@@ -109,8 +122,77 @@ async function main() {
     `${realDataFixture.fixtureId};`,
     `targets=${EXPECTED_TARGETS.join(",")};`,
     `records=${realDataFixture.records.length};`,
+    `sourcePrecisionUpgrades=mcdonalds,citizens-bank;`,
     `statuses=${EXPECTED_STATUSES.join(",")}.`,
   ].join(" "));
+}
+
+async function generateSourcePrecisionFixture() {
+  const tempDir = await mkdtemp(resolve(tmpdir(), "greenpoint-real-data-source-precision-"));
+  const tempOutputPath = resolve(tempDir, "phase-2aa.json");
+  try {
+    await execFileAsync(process.execPath, [
+      SOURCE_PRECISION_GENERATOR_PATH,
+      "--output",
+      tempOutputPath,
+    ], {
+      cwd: repoRoot,
+      maxBuffer: 1024 * 1024,
+    });
+    return JSON.parse(await readFile(tempOutputPath, "utf8"));
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+}
+
+function verifySourcePrecisionUpgrades(failures, fixture) {
+  const recordsByTarget = new Map(fixture.records.map((record) => [record.targetId, record]));
+  for (const targetId of ["mcdonalds", "citizens-bank"]) {
+    const record = recordsByTarget.get(targetId);
+    if (!record) continue;
+    requireValue(
+      failures,
+      record.geometry.buildingSample.status,
+      "estimated_from_source",
+      `${targetId} buildingSample source precision status`,
+    );
+    requireValue(
+      failures,
+      record.geometry.frontageSegment.status,
+      "source_backed",
+      `${targetId} frontageSegment source precision status`,
+    );
+    if (!record.sourcePrecision?.upgradedFields?.includes("geometry.frontageSegment.status")) {
+      failures.push(`${targetId} is missing sourcePrecision frontage upgrade metadata`);
+    }
+  }
+
+  for (const targetId of ["grillpoint-deli", "dunkin"]) {
+    const record = recordsByTarget.get(targetId);
+    if (!record) continue;
+    requireValue(
+      failures,
+      record.geometry.buildingSample.status,
+      "human_prepared",
+      `${targetId} buildingSample unchanged status`,
+    );
+    requireValue(
+      failures,
+      record.geometry.frontageSegment.status,
+      "estimated_from_source",
+      `${targetId} frontageSegment unchanged status`,
+    );
+  }
+
+  const subway = recordsByTarget.get("greenpoint-g-subway");
+  if (subway) {
+    requireValue(
+      failures,
+      subway.geometry.symbolicCue.status,
+      "blocked",
+      "greenpoint-g symbolic cue remains blocked",
+    );
+  }
 }
 
 async function readJson(path) {

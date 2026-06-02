@@ -447,6 +447,13 @@ function DraftSceneInspector({ draftScene }) {
             {" | "}
             {formatStatusLabel(realDataSlice.business.category.status)} category
           </p>
+          {realDataSlice.sourcePrecision ? (
+            <p>
+              Source precision: {realDataSlice.sourcePrecision.upgradedFields.join(", ")}
+              {" | "}
+              {realDataSlice.sourcePrecision.rationale}
+            </p>
+          ) : null}
           <dl className="qa-generated-entity-list">
             {buildRealDataInspectorFields(realDataSlice).map(([label, field]) => (
               <div key={label} data-status={field.status}>

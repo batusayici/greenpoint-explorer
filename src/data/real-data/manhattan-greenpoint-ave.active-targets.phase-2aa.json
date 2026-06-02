@@ -1,0 +1,719 @@
+{
+  "schemaVersion": "real-data-corner-fixture.v0.1",
+  "fixtureId": "manhattan-greenpoint-ave.active-targets.phase-2aa.real-data",
+  "sceneId": "manhattan-greenpoint-ave-mvp-slice",
+  "lane": "review-demo-only-real-data-active-targets",
+  "status": "prototype-local-source-precision-sample",
+  "reviewedOn": "2026-06-02",
+  "selectedCorner": "all-active-targets",
+  "selectedCorners": [
+    "corner-nw",
+    "corner-ne",
+    "corner-sw",
+    "corner-se",
+    "transit-greenpoint-ave-side"
+  ],
+  "sourceLane": "deterministic-review-manifest-source-precision-transform",
+  "notes": [
+    "Phase 2AA applies a deterministic source-precision transform over the Phase 2Z active-target fixture.",
+    "Only fields with stronger local review-manifest support are upgraded; exact product/public geometry remains blocked.",
+    "McDonald's and Citizens Bank receive source-backed QA frontage alignment from review-manifest storefront confidence and address/building links.",
+    "Building samples for McDonald's and Citizens Bank move from human_prepared to estimated_from_source because they are now derived from review-manifest address/building/storefront links plus raster alignment.",
+    "Grillpoint, Dunkin', and Greenpoint G geometry remains unchanged because the available local evidence does not support a stronger geometry tier."
+  ],
+  "statusValues": {
+    "source_backed": "Supported by existing reviewed source-evidence for review/demo use.",
+    "human_prepared": "Prepared locally by a human as a small sample for scene-generation proof; not exact source geometry.",
+    "estimated_from_source": "Estimated from source context and current scene alignment, not exact measured geometry.",
+    "generated_placeholder": "Generated from deterministic adapter rules to complete the QA skeleton.",
+    "blocked": "Blocked from exact/product/public claims pending stronger evidence and approval."
+  },
+  "records": [
+    {
+      "id": "real-data-grillpoint-nw-corner",
+      "targetId": "grillpoint-deli",
+      "placeId": "place-grillpoint-deli",
+      "cornerId": "corner-nw",
+      "renderingKind": "storefront",
+      "business": {
+        "name": {
+          "value": "Grillpoint Deli",
+          "status": "source_backed",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-grillpoint-identity-address-review"
+          ],
+          "notes": "Existing reviewed source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Deli / food retail",
+          "status": "source_backed",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-grillpoint-identity-address-review"
+          ],
+          "notes": "Existing reviewed source evidence supports review/demo category context."
+        },
+        "addressContext": {
+          "value": "903 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "source_backed",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-grillpoint-identity-address-review"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometry": {
+        "buildingSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 284,
+            "y": 92,
+            "width": 356,
+            "height": 216
+          },
+          "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+        },
+        "frontageSegment": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "restaurantji-grillpoint",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "from": {
+            "x": 386,
+            "y": 188
+          },
+          "to": {
+            "x": 560,
+            "y": 188
+          },
+          "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+        },
+        "storefrontSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 386,
+            "y": 188,
+            "width": 174,
+            "height": 78
+          },
+          "bayCount": 3,
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "addressAnchor": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "restaurantji-grillpoint",
+            "mvp-29d"
+          ],
+          "point": {
+            "x": 518,
+            "y": 204
+          },
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        },
+        "entranceGeometry": {
+          "status": "blocked",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "bounds": {
+            "x": 454,
+            "y": 216,
+            "width": 34,
+            "height": 48
+          },
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "facadePlaceholder": {
+          "status": "generated_placeholder",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Facade panel is generated from the human-prepared storefront sample for QA visibility only."
+        }
+      },
+      "qaPresentation": {
+        "labelPoint": {
+          "x": 390,
+          "y": 128
+        },
+        "sourceBadgeBounds": {
+          "x": 384,
+          "y": 134,
+          "width": 182,
+          "height": 24
+        }
+      }
+    },
+    {
+      "id": "real-data-mcdonalds-ne-corner",
+      "targetId": "mcdonalds",
+      "placeId": "place-mcdonalds",
+      "cornerId": "corner-ne",
+      "renderingKind": "storefront",
+      "business": {
+        "name": {
+          "value": "McDonald's",
+          "status": "source_backed",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-mcdonalds-identity-address-review"
+          ],
+          "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Fast food restaurant",
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "notes": "Category is estimated from official business context for QA scene generation; it is not product-copy-ready."
+        },
+        "addressContext": {
+          "value": "904 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "source_backed",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-mcdonalds-identity-address-review"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometry": {
+        "buildingSample": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "mcdonalds-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 918,
+            "y": 70,
+            "width": 602,
+            "height": 292
+          },
+          "notes": "Source-derived QA building envelope from review-manifest address/building/storefront links plus raster alignment; not exact parcel/tax-lot or building footprint geometry."
+        },
+        "frontageSegment": {
+          "status": "source_backed",
+          "sourceIds": [
+            "mcdonalds-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "from": {
+            "x": 1092,
+            "y": 156
+          },
+          "to": {
+            "x": 1330,
+            "y": 156
+          },
+          "notes": "Source-backed QA frontage alignment from review-manifest storefront confidence and official address context; exact frontage/order and entrance placement remain blocked."
+        },
+        "storefrontSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 1092,
+            "y": 156,
+            "width": 238,
+            "height": 104
+          },
+          "bayCount": 3,
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "addressAnchor": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "mcdonalds-official",
+            "mvp-29d"
+          ],
+          "point": {
+            "x": 1208,
+            "y": 190
+          },
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        },
+        "entranceGeometry": {
+          "status": "blocked",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "bounds": {
+            "x": 1190,
+            "y": 204,
+            "width": 38,
+            "height": 50
+          },
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "facadePlaceholder": {
+          "status": "generated_placeholder",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Facade panel is generated from the human-prepared storefront sample for QA visibility only."
+        }
+      },
+      "qaPresentation": {
+        "labelPoint": {
+          "x": 1068,
+          "y": 100
+        },
+        "sourceBadgeBounds": {
+          "x": 1066,
+          "y": 106,
+          "width": 218,
+          "height": 24
+        }
+      },
+      "sourcePrecision": {
+        "upgradedBy": "review-manifest-source-precision-transform",
+        "upgradedFields": [
+          "geometry.buildingSample.status",
+          "geometry.frontageSegment.status"
+        ],
+        "manifestRefs": {
+          "addressId": "address-mcdonalds",
+          "buildingId": "building-mcdonalds",
+          "parcelId": "parcel-mcdonalds",
+          "storefrontId": "storefront-mcdonalds"
+        },
+        "rationale": "Review manifest links this address to a building/storefront record with medium-high confidence and medium exact-frontage rationale; exact footprint, storefront order, and entrance geometry remain blocked."
+      }
+    },
+    {
+      "id": "real-data-dunkin-sw-corner",
+      "targetId": "dunkin",
+      "placeId": "place-dunkin",
+      "cornerId": "corner-sw",
+      "renderingKind": "storefront",
+      "business": {
+        "name": {
+          "value": "Dunkin'",
+          "status": "source_backed",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-dunkin-identity-address-review"
+          ],
+          "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Coffee and baked goods",
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "notes": "Category is estimated from official business context for QA scene generation; it is not product-copy-ready."
+        },
+        "addressContext": {
+          "value": "893 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "source_backed",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-dunkin-identity-address-review"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometry": {
+        "buildingSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 180,
+            "y": 520,
+            "width": 384,
+            "height": 344
+          },
+          "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+        },
+        "frontageSegment": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "dunkin-official",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "from": {
+            "x": 258,
+            "y": 604
+          },
+          "to": {
+            "x": 466,
+            "y": 604
+          },
+          "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+        },
+        "storefrontSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 258,
+            "y": 604,
+            "width": 208,
+            "height": 124
+          },
+          "bayCount": 3,
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "addressAnchor": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "dunkin-official",
+            "mvp-29d"
+          ],
+          "point": {
+            "x": 370,
+            "y": 668
+          },
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        },
+        "entranceGeometry": {
+          "status": "blocked",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "bounds": {
+            "x": 346,
+            "y": 660,
+            "width": 36,
+            "height": 52
+          },
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "facadePlaceholder": {
+          "status": "generated_placeholder",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Facade panel is generated from the human-prepared storefront sample for QA visibility only."
+        }
+      },
+      "qaPresentation": {
+        "labelPoint": {
+          "x": 248,
+          "y": 550
+        },
+        "sourceBadgeBounds": {
+          "x": 246,
+          "y": 556,
+          "width": 214,
+          "height": 24
+        }
+      }
+    },
+    {
+      "id": "real-data-citizens-bank-se-corner",
+      "targetId": "citizens-bank",
+      "placeId": "place-citizens-bank",
+      "cornerId": "corner-se",
+      "renderingKind": "storefront",
+      "business": {
+        "name": {
+          "value": "Citizens Bank",
+          "status": "source_backed",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-citizens-bank-identity-address-review"
+          ],
+          "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Bank branch",
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "notes": "Category is estimated from official branch context for QA scene generation; it is not product-copy-ready."
+        },
+        "addressContext": {
+          "value": "896 Manhattan Avenue, Brooklyn, NY 11222",
+          "status": "source_backed",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-citizens-bank-identity-address-review"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometry": {
+        "buildingSample": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "citizens-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 1176,
+            "y": 500,
+            "width": 384,
+            "height": 366
+          },
+          "notes": "Source-derived QA building envelope from review-manifest address/building/storefront links plus raster alignment; not exact parcel/tax-lot or building footprint geometry."
+        },
+        "frontageSegment": {
+          "status": "source_backed",
+          "sourceIds": [
+            "citizens-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "from": {
+            "x": 1246,
+            "y": 594
+          },
+          "to": {
+            "x": 1458,
+            "y": 594
+          },
+          "notes": "Source-backed QA frontage alignment from review-manifest storefront confidence and official address context; exact frontage/order and entrance placement remain blocked."
+        },
+        "storefrontSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 1246,
+            "y": 594,
+            "width": 212,
+            "height": 126
+          },
+          "bayCount": 3,
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "addressAnchor": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "citizens-official",
+            "mvp-29d"
+          ],
+          "point": {
+            "x": 1316,
+            "y": 638
+          },
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        },
+        "entranceGeometry": {
+          "status": "blocked",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "bounds": {
+            "x": 1324,
+            "y": 654,
+            "width": 40,
+            "height": 56
+          },
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "facadePlaceholder": {
+          "status": "generated_placeholder",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Facade panel is generated from the human-prepared storefront sample for QA visibility only."
+        }
+      },
+      "qaPresentation": {
+        "labelPoint": {
+          "x": 1226,
+          "y": 540
+        },
+        "sourceBadgeBounds": {
+          "x": 1224,
+          "y": 546,
+          "width": 224,
+          "height": 24
+        }
+      },
+      "sourcePrecision": {
+        "upgradedBy": "review-manifest-source-precision-transform",
+        "upgradedFields": [
+          "geometry.buildingSample.status",
+          "geometry.frontageSegment.status"
+        ],
+        "manifestRefs": {
+          "addressId": "address-citizens-bank",
+          "buildingId": "building-citizens-bank",
+          "parcelId": "parcel-citizens-bank",
+          "storefrontId": "storefront-citizens-bank"
+        },
+        "rationale": "Review manifest links this address to a building/storefront record with medium-high confidence and medium exact-frontage rationale; exact footprint, storefront order, and entrance geometry remain blocked."
+      }
+    },
+    {
+      "id": "real-data-greenpoint-g-symbolic-context",
+      "targetId": "greenpoint-g-subway",
+      "placeId": "place-greenpoint-g-subway",
+      "cornerId": "transit-greenpoint-ave-side",
+      "renderingKind": "symbolic_transit",
+      "business": {
+        "name": {
+          "value": "Greenpoint G subway",
+          "status": "source_backed",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-greenpoint-g-station-context-review"
+          ],
+          "notes": "Existing reviewed official transit sources support review/demo station context."
+        },
+        "category": {
+          "value": "Subway station context",
+          "status": "source_backed",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-greenpoint-g-station-context-review"
+          ],
+          "notes": "Existing reviewed official transit sources support station context, not exact entrance geometry."
+        },
+        "addressContext": {
+          "value": "Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave, Brooklyn, NY",
+          "status": "source_backed",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-greenpoint-g-station-context-review"
+          ],
+          "notes": "Station-area context only; exact entrance placement remains blocked."
+        }
+      },
+      "geometry": {
+        "symbolicCue": {
+          "status": "blocked",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map",
+            "mvp-29d"
+          ],
+          "center": {
+            "x": 1138,
+            "y": 624
+          },
+          "radius": 44,
+          "blockedLabel": "symbolic transit cue; exact station entrance geometry blocked",
+          "notes": "Rendered as a QA symbolic/blocked station context cue only."
+        },
+        "addressAnchor": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map",
+            "mvp-29d"
+          ],
+          "point": {
+            "x": 1138,
+            "y": 624
+          },
+          "notes": "Estimated station context anchor from reviewed transit context and current composition; exact placement remains blocked."
+        },
+        "entranceGeometry": {
+          "status": "blocked",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "bounds": {
+            "x": 1104,
+            "y": 590,
+            "width": 68,
+            "height": 68
+          },
+          "notes": "Exact station entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "facadePlaceholder": {
+          "status": "generated_placeholder",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "No storefront/facade is generated for the subway record; this placeholder status exists only for inspector consistency."
+        }
+      },
+      "qaPresentation": {
+        "labelPoint": {
+          "x": 1068,
+          "y": 554
+        },
+        "sourceBadgeBounds": {
+          "x": 1066,
+          "y": 560,
+          "width": 230,
+          "height": 24
+        }
+      }
+    }
+  ],
+  "sourcePrecision": {
+    "generatedBy": "scripts/generate-real-data-source-precision.mjs",
+    "inputFixturePath": "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json",
+    "manifestPath": "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json",
+    "upgradedTargets": [
+      "mcdonalds",
+      "citizens-bank"
+    ],
+    "blockedTargets": [
+      "grillpoint-deli",
+      "dunkin",
+      "greenpoint-g-subway"
+    ],
+    "rules": [
+      "Upgrade frontageSegment to source_backed only when the manifest storefront confidence is medium-high and its rationale contains medium exact frontage.",
+      "Upgrade buildingSample to estimated_from_source for the same targets because local manifest address/building/storefront links support a source-derived review envelope, not an exact footprint.",
+      "Do not upgrade entranceGeometry, facadePlaceholder, Greenpoint G symbolic geometry, or any low-confidence target geometry."
+    ]
+  }
+}

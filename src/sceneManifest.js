@@ -390,6 +390,7 @@ function buildAppRealDataRecord(record) {
     cornerId: record.cornerId,
     sourceLane: record.sourceLane,
     renderingKind: record.renderingKind ?? "storefront",
+    sourcePrecision: record.sourcePrecision ?? null,
     business: record.business,
     geometry: record.geometry,
     qaPresentation: record.qaPresentation,

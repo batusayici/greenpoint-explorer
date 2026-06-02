@@ -55,14 +55,60 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2Z expanded real-data pattern is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2AA source precision upgrade is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2Z expanded real-data pattern complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2AA source precision upgrade complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2AA Source Precision Upgrade
+
+Status:
+- Complete.
+
+Scope:
+- Batu authorized replacing the highest-value available estimated/human-prepared real-data geometry with stronger source-derived geometry where local evidence supports it.
+- Preserve QA-mode-only rendering, normal-mode raster-first product meaning, and strict promotion readiness.
+
+Files changed:
+- `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `scripts/generate-real-data-source-precision.mjs`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-real-data-scene-adapter.mjs`
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build`
+- `git diff --check`
+- Browser QA/normal sanity check if local browser access is available.
+
+Outcome:
+- Added a deterministic source-precision generator that derives the Phase 2AA fixture from the Phase 2Z fixture plus the review manifest.
+- McDonald's and Citizens Bank frontage alignment moved from `estimated_from_source` to `source_backed` for QA/review alignment only.
+- McDonald's and Citizens Bank building envelopes moved from `human_prepared` to `estimated_from_source` because they now derive from review-manifest address/building/storefront links plus raster alignment.
+- Grillpoint and Dunkin geometry remained unchanged because local manifest geometry confidence is low.
+- Greenpoint G remained symbolic/blocked.
+- QA inspector now exposes source-precision upgrade metadata and rationale.
+- Strict promotion readiness remained unchanged, with 0 product-copy-ready targets.
+- Normal mode remains raster-first and unchanged in product meaning.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, source-authority decisions, exact geometry decisions, product/public claims, and opening the next executable brief.
+- True geometry data remains needed before exact parcel, footprint, frontage/order, entrance, facade, or station-geometry claims can be made.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2AA complete and points the next recommended sequence toward bringing in a true geometry source lane or creating a demoable review scene.
 
 ### 2026-06-02 - Phase 2Z Expanded Real-Data Pattern
 
