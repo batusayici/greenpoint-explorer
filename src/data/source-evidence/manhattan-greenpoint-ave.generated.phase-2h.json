@@ -24,6 +24,42 @@
       "usageStatus": "review-only-claim-support",
       "evidenceStrength": "reviewed",
       "claimReadiness": "review_only",
+      "promotionGates": {
+        "identityName": {
+          "status": "allowed",
+          "rationale": "The reviewed source supports the Grillpoint Deli display-name claim for review evidence.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-grillpoint-display-name"
+          ]
+        },
+        "categoryBusinessType": {
+          "status": "review_only",
+          "rationale": "The current evidence can support review-only deli/food-retail categorization, but the raw claims do not yet isolate a product-copy category assertion.",
+          "neededEvidence": "A reviewed source claim or approved manual review row that explicitly supports the category/business-type copy field.",
+          "claimIds": []
+        },
+        "addressLocation": {
+          "status": "allowed",
+          "rationale": "The reviewed source supports the address text used in review-card context.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-grillpoint-address-context"
+          ]
+        },
+        "storefrontFacade": {
+          "status": "blocked",
+          "rationale": "The current evidence does not support exact storefront, sign, facade, or visual translation claims.",
+          "neededEvidence": "Owned/approved facade reference plus reviewed source notes separating stylized visual treatment from exact facade claims.",
+          "claimIds": []
+        },
+        "entranceFrontageGeometry": {
+          "status": "blocked",
+          "rationale": "The current evidence does not support exact entrance, frontage, address-placement, parcel, or building-footprint geometry.",
+          "neededEvidence": "Reviewed parcel/building/frontage/entrance evidence or an approved manual geometry review row.",
+          "claimIds": []
+        }
+      },
       "confidence": {
         "value": "medium",
         "rationale": "Supports review-card identity, category, and address context; does not support exact frontage, facade, or entrance placement."
@@ -77,6 +113,46 @@
       "usageStatus": "review-only-context-support",
       "evidenceStrength": "reviewed",
       "claimReadiness": "review_only",
+      "promotionGates": {
+        "identityName": {
+          "status": "allowed",
+          "rationale": "Reviewed official transit context supports the Greenpoint Av G station-area identity used by the review cue.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-greenpoint-g-station-area-context"
+          ]
+        },
+        "categoryBusinessType": {
+          "status": "review_only",
+          "rationale": "The current evidence supports transit context for review, but does not define a product-copy business/category claim.",
+          "neededEvidence": "A reviewed transit/place taxonomy claim or approved manual review row for the category copy field.",
+          "claimIds": [
+            "claim-greenpoint-g-station-area-context"
+          ]
+        },
+        "addressLocation": {
+          "status": "review_only",
+          "rationale": "The current evidence supports station-area context, not an exact address, entrance, or station-footprint location.",
+          "neededEvidence": "Reviewed station entrance/location evidence that separates exact entrance claims from symbolic scene placement.",
+          "claimIds": [
+            "claim-greenpoint-g-station-area-context"
+          ]
+        },
+        "storefrontFacade": {
+          "status": "blocked",
+          "rationale": "A subway cue is not a storefront/facade claim, and current evidence does not support exact visual station geometry.",
+          "neededEvidence": "Approved transit visual-reference evidence and a reviewed claim boundary for any product-facing station visual claim.",
+          "claimIds": []
+        },
+        "entranceFrontageGeometry": {
+          "status": "blocked",
+          "rationale": "The current evidence explicitly does not resolve exact stair, elevator, entrance, frontage, or station-footprint geometry.",
+          "neededEvidence": "Reviewed entrance-coordinate or station-geometry evidence plus Batu-approved representation rules.",
+          "claimIds": [
+            "claim-greenpoint-g-greenpoint-ave-side-cue"
+          ]
+        }
+      },
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."
@@ -129,6 +205,42 @@
       "usageStatus": "review-only-claim-support",
       "evidenceStrength": "official_location_only",
       "claimReadiness": "review_only",
+      "promotionGates": {
+        "identityName": {
+          "status": "allowed",
+          "rationale": "The official location page supports the McDonald's display-name claim for review evidence.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-mcdonalds-display-name"
+          ]
+        },
+        "categoryBusinessType": {
+          "status": "review_only",
+          "rationale": "The current evidence can support review-only restaurant categorization, but the raw claims do not yet isolate a product-copy category assertion.",
+          "neededEvidence": "A reviewed official category/service claim or approved manual review row that explicitly supports category/business-type copy.",
+          "claimIds": []
+        },
+        "addressLocation": {
+          "status": "allowed",
+          "rationale": "The official location page supports the address text used in review-card context.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-mcdonalds-address-context"
+          ]
+        },
+        "storefrontFacade": {
+          "status": "blocked",
+          "rationale": "The official location evidence does not support exact facade, storefront, sign, or visual translation claims.",
+          "neededEvidence": "Owned/approved facade reference plus reviewed source notes separating stylized treatment from exact storefront/facade claims.",
+          "claimIds": []
+        },
+        "entranceFrontageGeometry": {
+          "status": "blocked",
+          "rationale": "The official location evidence does not support exact entrance, frontage/order, adjacent-unit relationship, or address-placement geometry.",
+          "neededEvidence": "Reviewed parcel/building/frontage/entrance evidence or an approved manual geometry review row.",
+          "claimIds": []
+        }
+      },
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports review-card identity and address context; does not support exact facade, storefront frontage, entrance placement, trade-dress clearance, hours, status, or promotions."
@@ -181,6 +293,42 @@
       "usageStatus": "review-only-claim-support",
       "evidenceStrength": "official_location_only",
       "claimReadiness": "review_only",
+      "promotionGates": {
+        "identityName": {
+          "status": "allowed",
+          "rationale": "The official location page supports the Dunkin' display-name claim for review evidence.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-dunkin-display-name"
+          ]
+        },
+        "categoryBusinessType": {
+          "status": "review_only",
+          "rationale": "The current evidence can support review-only quick-service food categorization, but the raw claims do not yet isolate a product-copy category assertion.",
+          "neededEvidence": "A reviewed official category/service claim or approved manual review row that explicitly supports category/business-type copy.",
+          "claimIds": []
+        },
+        "addressLocation": {
+          "status": "allowed",
+          "rationale": "The official location page supports the address text used in review-card context.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-dunkin-address-context"
+          ]
+        },
+        "storefrontFacade": {
+          "status": "blocked",
+          "rationale": "The official location evidence does not support exact facade, storefront, sign, exception scope, or visual translation claims.",
+          "neededEvidence": "Owned/approved facade reference plus reviewed source notes separating the MVP-only exception from exact storefront/facade claims.",
+          "claimIds": []
+        },
+        "entranceFrontageGeometry": {
+          "status": "blocked",
+          "rationale": "The official location evidence does not support exact entrance, frontage/order, adjacent-unit relationship, or address-placement geometry.",
+          "neededEvidence": "Reviewed parcel/building/frontage/entrance evidence or an approved manual geometry review row.",
+          "claimIds": []
+        }
+      },
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports review-card identity and address context; does not support exact visual geometry, storefront frontage, entrance placement, exception scope, hours, status, or promotions."
@@ -234,6 +382,42 @@
       "usageStatus": "review-only-claim-support",
       "evidenceStrength": "official_location_only",
       "claimReadiness": "review_only",
+      "promotionGates": {
+        "identityName": {
+          "status": "allowed",
+          "rationale": "The official branch page supports the Citizens Bank display-name claim for review evidence.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-citizens-bank-display-name"
+          ]
+        },
+        "categoryBusinessType": {
+          "status": "review_only",
+          "rationale": "The current evidence can support review-only branch categorization, but the raw claims do not yet isolate a product-copy category or service assertion.",
+          "neededEvidence": "A reviewed official category/service claim or approved manual review row that explicitly supports category/business-type copy without adding ATM or service claims.",
+          "claimIds": []
+        },
+        "addressLocation": {
+          "status": "allowed",
+          "rationale": "The official branch page supports the address text used in review-card context.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-citizens-bank-address-context"
+          ]
+        },
+        "storefrontFacade": {
+          "status": "blocked",
+          "rationale": "The official branch evidence does not support exact facade, storefront, sign, ATM placement, or visual translation claims.",
+          "neededEvidence": "Owned/approved facade reference plus reviewed source notes separating stylized treatment from exact storefront/facade claims.",
+          "claimIds": []
+        },
+        "entranceFrontageGeometry": {
+          "status": "blocked",
+          "rationale": "The official branch evidence does not support exact entrance, frontage/order, adjacent-unit relationship, ATM placement, or address-placement geometry.",
+          "neededEvidence": "Reviewed parcel/building/frontage/entrance evidence or an approved manual geometry review row.",
+          "claimIds": []
+        }
+      },
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports review-card branch identity and address context; does not support exact facade, storefront frontage, branch entrance placement, ATM/service availability, hours, status, or promotions."

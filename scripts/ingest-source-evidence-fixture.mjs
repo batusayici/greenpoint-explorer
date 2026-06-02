@@ -18,6 +18,18 @@ const CLAIM_READINESS_VALUES = new Set([
   "review_only",
   "blocked",
 ]);
+const PROMOTION_CLAIM_KEYS = [
+  "identityName",
+  "categoryBusinessType",
+  "addressLocation",
+  "storefrontFacade",
+  "entranceFrontageGeometry",
+];
+const PROMOTION_GATE_STATUS_VALUES = new Set([
+  "allowed",
+  "review_only",
+  "blocked",
+]);
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -276,6 +288,7 @@ function validateConvertedFixture(fixture, manifest) {
     assertReferences(record.targetIds, targetIds, `converted record ${record.id}.targetIds`);
     assertReferences(record.placeIds, placeIds, `converted record ${record.id}.placeIds`);
     assertReferences(record.sourceRecordIds, sourceIds, `converted record ${record.id}.sourceRecordIds`);
+    validateProductCopyPromotion(record, `converted record ${record.id}`);
   }
 }
 
@@ -299,6 +312,7 @@ function convertRawRecord(record, index) {
   assertString(record.usageStatus, `${label}.usageStatus`);
   assertOneOf(record.evidenceStrength, EVIDENCE_STRENGTH_VALUES, `${label}.evidenceStrength`);
   assertOneOf(record.claimReadiness, CLAIM_READINESS_VALUES, `${label}.claimReadiness`);
+  const promotionGates = convertPromotionGates(record.promotionGates, `${label}.promotionGates`);
   assertObject(record.confidence, `${label}.confidence`);
   assertString(record.confidence.value, `${label}.confidence.value`);
   assertString(record.confidence.rationale, `${label}.confidence.rationale`);
@@ -319,6 +333,7 @@ function convertRawRecord(record, index) {
     usageStatus: record.usageStatus,
     evidenceStrength: record.evidenceStrength,
     claimReadiness: record.claimReadiness,
+    promotionGates,
     confidence: {
       value: record.confidence.value,
       rationale: record.confidence.rationale,
@@ -327,6 +342,31 @@ function convertRawRecord(record, index) {
     qaNotes: record.qaNotes,
     remainingGaps: record.remainingGaps,
   };
+}
+
+function convertPromotionGates(gates, label) {
+  assertObject(gates, label);
+  const converted = {};
+  for (const key of PROMOTION_CLAIM_KEYS) {
+    const gate = gates[key];
+    const gateLabel = `${label}.${key}`;
+    assertObject(gate, gateLabel);
+    assertOneOf(gate.status, PROMOTION_GATE_STATUS_VALUES, `${gateLabel}.status`);
+    assertString(gate.rationale, `${gateLabel}.rationale`);
+    if (gate.status !== "allowed") assertString(gate.neededEvidence, `${gateLabel}.neededEvidence`);
+    const claimIds = gate.claimIds ?? [];
+    assertArray(claimIds, `${gateLabel}.claimIds`);
+    claimIds.forEach((claimId, claimIndex) => {
+      assertString(claimId, `${gateLabel}.claimIds[${claimIndex}]`);
+    });
+    converted[key] = {
+      status: gate.status,
+      rationale: gate.rationale,
+      neededEvidence: optionalString(gate.neededEvidence),
+      claimIds,
+    };
+  }
+  return converted;
 }
 
 function convertRawClaim(claim, label) {
@@ -348,6 +388,16 @@ function convertRawClaim(claim, label) {
     confidence: claim.confidence,
     notes: claim.notes,
   };
+}
+
+function validateProductCopyPromotion(record, label) {
+  if (record.claimReadiness !== "product_copy_ready") return;
+  const failures = PROMOTION_CLAIM_KEYS
+    .filter((key) => record.promotionGates[key].status !== "allowed")
+    .map((key) => `${key}=${record.promotionGates[key].status}`);
+  if (failures.length) {
+    throw new Error(`${label}.claimReadiness cannot be product_copy_ready until all promotion gates are allowed; failing gates: ${failures.join(", ")}.`);
+  }
 }
 
 async function readJson(path, label) {

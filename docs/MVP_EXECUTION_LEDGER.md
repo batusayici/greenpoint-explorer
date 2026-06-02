@@ -55,14 +55,70 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2L Source Evidence Quality Tiering is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2M Evidence Promotion Gates is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2L quality tiers, readiness thresholds, generated runtime fixture, and regenerated coverage report. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2M promotion gates, product-copy promotion rule, generated runtime fixture, and regenerated coverage report. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2M Evidence Promotion Gates
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Accept Phase 2L and open one bounded Phase 2 implementation batch.
+- Add conservative claim-level promotion gates so generated evidence records can explain which claim families are allowed, review-only, or blocked.
+- Enforce that no record can become `product_copy_ready` unless identity/name, category/business-type, address/location, storefront/facade, and entrance/frontage/geometry gates are all `allowed`.
+- Preserve Phase 2D reviewed parity behavior, Phase 2H generated runtime fixture direction, and Phase 2L record-level quality/readiness behavior.
+- Do not change visual rendering, external sources, package scripts, CI, production schemas, or public APIs.
+
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `scripts/inspect-source-evidence-coverage.mjs`
+- `src/sceneManifest.js`
+- `src/data/source-evidence/raw/grillpoint.phase-2e.raw.json`
+- `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`
+- `src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json`
+- `src/data/source-evidence/raw/official-locations.phase-2k.raw.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --input src/data/source-evidence/raw/official-locations.phase-2k.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --allow-additional-generated true`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 5 --expect-targets-without-evidence 0 --expect-product-copy-ready-targets 0 --expect-review-only-targets 5 --expect-blocked-targets 0 --expect-identity-name-allowed-targets 5 --expect-category-business-type-allowed-targets 0 --expect-address-location-allowed-targets 4 --expect-storefront-facade-blocked-targets 5 --expect-entrance-frontage-geometry-blocked-targets 5`
+- Expanded drift guard command with all three raw inputs, five expected evidence IDs, the Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- False-promotion expected-fail check that changed one record to `product_copy_ready`; it failed as intended because category, facade, and geometry gates were not all `allowed`.
+- Existing expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, confirming the missing preserved gap is still reported.
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Raw and generated evidence records now include required `promotionGates`.
+- `src/sceneManifest.js` validates promotion gates before app runtime data loads and rejects invalid `product_copy_ready` records.
+- The coverage report now includes the promotion-gate definition, record-level gate counts, target-level gate counts, and per-target blockers.
+- Current claim-level state is conservative: identity/name is allowed for 5 targets, category/business-type is review-only for 5 targets, address/location is allowed for 4 targets and review-only for Greenpoint G, storefront/facade is blocked for 5 targets, and entrance/frontage/geometry is blocked for 5 targets.
+- Phase 2D reviewed fixture, app visual rendering, package scripts, lockfiles, screenshots, and production-facing interfaces were not changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2M promotion gates, product-copy promotion rule, generated runtime fixture, and regenerated coverage report.
+- Whether any evidence can become `product_copy_ready`, whether promotion blockers should surface more directly in the app QA inspector, whether package scripts/CI should enforce this, and whether source-authority/product-copy thresholds should be formalized remain blocked pending later approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, package scripts/CI, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2M evidence promotion gates.
+- If accepted, Batu may open a later bounded Phase 2 task for app QA inspector surfacing of promotion blockers, fixture metadata refinement, generated-output inspection ergonomics, a narrow manual-input checklist, or a deliberately scoped source-evidence merge/review workflow.
 
 ### 2026-06-02 - Phase 2L Source Evidence Quality Tiering
 

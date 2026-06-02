@@ -171,3 +171,43 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - If Phase 2L is accepted, open one bounded follow-up for app QA inspector surfacing of quality/readiness fields, fixture metadata refinement, generated-output inspection ergonomics, a narrow manual-input checklist, or a deliberately scoped source-evidence merge/review workflow.
+
+### Batch 2026-06-02 21:22
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `scripts/inspect-source-evidence-coverage.mjs`
+- `src/sceneManifest.js`
+- `src/data/source-evidence/raw/grillpoint.phase-2e.raw.json`
+- `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`
+- `src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json`
+- `src/data/source-evidence/raw/official-locations.phase-2k.raw.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --input src/data/source-evidence/raw/official-locations.phase-2k.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --allow-additional-generated true`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 5 --expect-targets-without-evidence 0 --expect-product-copy-ready-targets 0 --expect-review-only-targets 5 --expect-blocked-targets 0 --expect-identity-name-allowed-targets 5 --expect-category-business-type-allowed-targets 0 --expect-address-location-allowed-targets 4 --expect-storefront-facade-blocked-targets 5 --expect-entrance-frontage-geometry-blocked-targets 5`
+- Expanded drift guard with all three raw inputs, five expected evidence IDs, Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- False-promotion expected-fail check changing one generated record to `product_copy_ready`; it failed as intended because promotion gates remained review-only/blocked.
+- Expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, which still fails on the omitted preserved uncertainty/gap field.
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Accepted Phase 2L for continuation and opened/completed Phase 2M Evidence Promotion Gates.
+- Added required claim-level `promotionGates` for identity/name, category/business-type, address/location, storefront/facade, and entrance/frontage/geometry.
+- Enforced that `product_copy_ready` requires all promotion gates to be `allowed`.
+- Updated the coverage report to show generated coverage separately from product readiness and claim-level promotion blockers.
+- Preserved Phase 2D reviewed parity behavior and did not change visual rendering.
+Remaining:
+- Batu must accept, revise, or reject the Phase 2M promotion gates, product-copy promotion rule, generated runtime fixture, and regenerated coverage report.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- If Phase 2M is accepted, open one bounded follow-up for app QA inspector surfacing of promotion blockers, fixture metadata refinement, generated-output inspection ergonomics, a narrow manual-input checklist, or a deliberately scoped source-evidence merge/review workflow.

@@ -12,6 +12,18 @@ const CLAIM_READINESS_VALUES = new Set([
   "review_only",
   "blocked",
 ]);
+const PROMOTION_CLAIM_KEYS = [
+  "identityName",
+  "categoryBusinessType",
+  "addressLocation",
+  "storefrontFacade",
+  "entranceFrontageGeometry",
+];
+const PROMOTION_GATE_STATUS_VALUES = new Set([
+  "allowed",
+  "review_only",
+  "blocked",
+]);
 
 export function loadMvpSceneFromManifest(manifest, assetSrcById, sourceEvidenceFixture = null) {
   const validatedManifest = validateSceneManifest(manifest);
@@ -196,6 +208,7 @@ function buildTargetQA(object, manifest, indexes, evidenceIndex) {
       usageStatus: record.usageStatus,
       evidenceStrength: record.evidenceStrength,
       claimReadiness: record.claimReadiness,
+      promotionGates: record.promotionGates,
       confidence: record.confidence,
       sourceRecordIds: record.sourceRecordIds,
       claimMappings: record.claimMappings,
@@ -347,6 +360,8 @@ export function validateSourceEvidenceFixture(fixture, manifest, indexes = build
     assertString(record.usageStatus, `source evidence ${record.id}.usageStatus`);
     assertOneOf(record.evidenceStrength, EVIDENCE_STRENGTH_VALUES, `source evidence ${record.id}.evidenceStrength`);
     assertOneOf(record.claimReadiness, CLAIM_READINESS_VALUES, `source evidence ${record.id}.claimReadiness`);
+    validatePromotionGates(record.promotionGates, `source evidence ${record.id}.promotionGates`);
+    validateProductCopyPromotion(record, `source evidence ${record.id}`);
     assertObject(record.confidence, `source evidence ${record.id}.confidence`);
     assertString(record.confidence.value, `source evidence ${record.id}.confidence.value`);
     assertString(record.confidence.rationale, `source evidence ${record.id}.confidence.rationale`);
@@ -375,6 +390,30 @@ export function validateSourceEvidenceFixture(fixture, manifest, indexes = build
   assertNoLegacyJpegReferences(fixture, "Source evidence fixture");
 
   return fixture;
+}
+
+function validatePromotionGates(gates, label) {
+  assertObject(gates, label);
+  for (const key of PROMOTION_CLAIM_KEYS) {
+    const gate = gates[key];
+    const gateLabel = `${label}.${key}`;
+    assertObject(gate, gateLabel);
+    assertOneOf(gate.status, PROMOTION_GATE_STATUS_VALUES, `${gateLabel}.status`);
+    assertString(gate.rationale, `${gateLabel}.rationale`);
+    if (gate.status !== "allowed") assertString(gate.neededEvidence, `${gateLabel}.neededEvidence`);
+    assertArray(gate.claimIds, `${gateLabel}.claimIds`);
+    for (const claimId of gate.claimIds) assertString(claimId, `${gateLabel}.claimIds item`);
+  }
+}
+
+function validateProductCopyPromotion(record, label) {
+  if (record.claimReadiness !== "product_copy_ready") return;
+  const failures = PROMOTION_CLAIM_KEYS
+    .filter((key) => record.promotionGates[key].status !== "allowed")
+    .map((key) => `${key}=${record.promotionGates[key].status}`);
+  if (failures.length) {
+    throw new Error(`${label}.claimReadiness cannot be product_copy_ready until all promotion gates are allowed; failing gates: ${failures.join(", ")}.`);
+  }
 }
 
 function validateAppTarget(target, objectId, sourceIds) {

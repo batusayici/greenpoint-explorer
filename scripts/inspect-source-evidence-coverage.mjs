@@ -17,6 +17,27 @@ const CLAIM_READINESS_VALUES = [
   "review_only",
   "blocked",
 ];
+const PROMOTION_CLAIM_KEYS = [
+  "identityName",
+  "categoryBusinessType",
+  "addressLocation",
+  "storefrontFacade",
+  "entranceFrontageGeometry",
+];
+const PROMOTION_GATE_STATUS_VALUES = [
+  "allowed",
+  "review_only",
+  "blocked",
+];
+const PROMOTION_GATE_DEFINITION = {
+  productCopyReadyRequires: PROMOTION_CLAIM_KEYS,
+  statusValues: {
+    allowed: "Existing source evidence supports this claim family enough to clear the current promotion gate.",
+    review_only: "Existing source evidence can support review inspection, but more or stronger source evidence is needed before product-copy use.",
+    blocked: "Existing source evidence does not support this claim family; product-copy use remains blocked.",
+  },
+  rule: "A record cannot be product_copy_ready unless identity/name, category/business-type, address/location, storefront/facade, and entrance/frontage/geometry gates are all allowed.",
+};
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -45,6 +66,26 @@ async function main() {
     options["expect-blocked-targets"],
     "expect-blocked-targets",
   );
+  const expectedIdentityNameAllowedTargets = optionalNumber(
+    options["expect-identity-name-allowed-targets"],
+    "expect-identity-name-allowed-targets",
+  );
+  const expectedCategoryBusinessTypeAllowedTargets = optionalNumber(
+    options["expect-category-business-type-allowed-targets"],
+    "expect-category-business-type-allowed-targets",
+  );
+  const expectedAddressLocationAllowedTargets = optionalNumber(
+    options["expect-address-location-allowed-targets"],
+    "expect-address-location-allowed-targets",
+  );
+  const expectedStorefrontFacadeBlockedTargets = optionalNumber(
+    options["expect-storefront-facade-blocked-targets"],
+    "expect-storefront-facade-blocked-targets",
+  );
+  const expectedEntranceFrontageGeometryBlockedTargets = optionalNumber(
+    options["expect-entrance-frontage-geometry-blocked-targets"],
+    "expect-entrance-frontage-geometry-blocked-targets",
+  );
 
   const manifest = validateSceneManifest(await readJson(manifestPath, "scene manifest"));
   const evidenceFixture = validateSourceEvidenceFixture(
@@ -64,6 +105,11 @@ async function main() {
     expectedProductCopyReadyTargets,
     expectedReviewOnlyTargets,
     expectedBlockedTargets,
+    expectedIdentityNameAllowedTargets,
+    expectedCategoryBusinessTypeAllowedTargets,
+    expectedAddressLocationAllowedTargets,
+    expectedStorefrontFacadeBlockedTargets,
+    expectedEntranceFrontageGeometryBlockedTargets,
   });
   if (failures.length) {
     console.error(`FAIL source evidence coverage inspection: ${failures.length} issue(s).`);
@@ -86,7 +132,9 @@ async function main() {
     `${report.summary.targetsWithoutGeneratedEvidence} target(s) remain manifest-source-only;`,
     `${report.summary.claimReadinessByTarget.product_copy_ready} product-copy-ready target(s);`,
     `${report.summary.claimReadinessByTarget.review_only} review-only target(s);`,
-    `${report.summary.claimReadinessByTarget.blocked} blocked target(s).`,
+    `${report.summary.claimReadinessByTarget.blocked} blocked target(s);`,
+    `${report.summary.promotionGateStatusByTarget.storefrontFacade.blocked} storefront/facade blocked target(s);`,
+    `${report.summary.promotionGateStatusByTarget.entranceFrontageGeometry.blocked} entrance/frontage/geometry blocked target(s).`,
   ].join(" "));
 }
 
@@ -110,6 +158,8 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
     targetReports.map((target) => target.claimReadiness),
     CLAIM_READINESS_VALUES,
   );
+  const promotionGateStatusByRecord = summarizePromotionGatesByRecord(evidenceFixture.records);
+  const promotionGateStatusByTarget = summarizePromotionGatesByTarget(targetReports);
 
   return {
     schemaVersion: REPORT_SCHEMA_VERSION,
@@ -124,6 +174,7 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
       manifestPath: manifestInput,
       evidencePath: evidenceInput,
     },
+    promotionGateDefinition: PROMOTION_GATE_DEFINITION,
     summary: {
       targetCount: targetReports.length,
       evidenceRecordCount: evidenceFixture.records.length,
@@ -132,6 +183,8 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
       evidenceStrengthByRecord,
       claimReadinessByRecord,
       claimReadinessByTarget,
+      promotionGateStatusByRecord,
+      promotionGateStatusByTarget,
       unlinkedEvidenceRecordCount: unlinkedEvidenceRecordIds.length,
       unprovenancedRealWorldClaims: manifest.qa.unprovenancedRealWorldClaims,
       hiddenManualFixes: manifest.qa.hiddenManualFixes,
@@ -148,6 +201,7 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
       "This report is generated from the review-only scene manifest and Phase 2H runtime source-evidence fixture.",
       "Generated evidence coverage does not approve production data, exact facade/frontage/address placement, exact station geometry, or public claims.",
       "Claim readiness is reported separately from coverage so generated evidence cannot be mistaken for product-copy-ready source truth.",
+      "Claim-level promotion gates identify which claim families are allowed, review-only, or blocked for product-copy promotion.",
       "Any target without generated evidence still relies on manifest source references and remains a candidate for future raw-input expansion.",
     ],
   };
@@ -163,6 +217,8 @@ function buildTargetReport(object, indexes) {
   const manifestSources = collectManifestSources({ object, place, business, addressRecords, storefrontRecords, anchor, indexes });
   const evidenceStrengths = uniqueStrings(evidenceRecords.map((record) => record.evidenceStrength));
   const claimReadiness = summarizeClaimReadiness(evidenceRecords);
+  const promotionGates = summarizePromotionGates(evidenceRecords);
+  const promotionBlockers = collectPromotionBlockers(promotionGates);
 
   return {
     targetId: object.appTarget.id,
@@ -182,10 +238,14 @@ function buildTargetReport(object, indexes) {
     coverageStatus: evidenceRecords.length ? "generated-evidence-linked" : "manifest-source-refs-only",
     evidenceStrengths,
     claimReadiness,
+    promotionGates,
+    promotionBlockers,
     evidenceQualityRecords: evidenceRecords.map((record) => ({
       id: record.id,
       evidenceStrength: record.evidenceStrength,
       claimReadiness: record.claimReadiness,
+      promotionGates: record.promotionGates,
+      promotionBlockers: collectPromotionBlockers(record.promotionGates),
       confidence: record.confidence,
       remainingGaps: record.remainingGaps,
     })),
@@ -256,6 +316,13 @@ function collectExpectationFailures(report, expectations) {
     ["review_only", expectations.expectedReviewOnlyTargets, "review-only targets"],
     ["blocked", expectations.expectedBlockedTargets, "blocked targets"],
   ];
+  const expectedPromotionGates = [
+    ["identityName", "allowed", expectations.expectedIdentityNameAllowedTargets, "identity/name allowed targets"],
+    ["categoryBusinessType", "allowed", expectations.expectedCategoryBusinessTypeAllowedTargets, "category/business-type allowed targets"],
+    ["addressLocation", "allowed", expectations.expectedAddressLocationAllowedTargets, "address/location allowed targets"],
+    ["storefrontFacade", "blocked", expectations.expectedStorefrontFacadeBlockedTargets, "storefront/facade blocked targets"],
+    ["entranceFrontageGeometry", "blocked", expectations.expectedEntranceFrontageGeometryBlockedTargets, "entrance/frontage/geometry blocked targets"],
+  ];
   if (
     expectations.expectedTargetsWithEvidence !== null &&
     report.summary.targetsWithGeneratedEvidence !== expectations.expectedTargetsWithEvidence
@@ -288,6 +355,15 @@ function collectExpectationFailures(report, expectations) {
       ].join("; "));
     }
   }
+  for (const [claimKey, status, expected, label] of expectedPromotionGates) {
+    if (expected !== null && report.summary.promotionGateStatusByTarget[claimKey][status] !== expected) {
+      failures.push([
+        `${label} mismatch`,
+        `actual ${report.summary.promotionGateStatusByTarget[claimKey][status]}`,
+        `expected ${expected}`,
+      ].join("; "));
+    }
+  }
   return failures;
 }
 
@@ -310,6 +386,67 @@ function summarizeClaimReadiness(records) {
   if (readiness.has("blocked")) return "blocked";
   if (readiness.has("review_only")) return "review_only";
   return "product_copy_ready";
+}
+
+function summarizePromotionGates(records) {
+  return Object.fromEntries(
+    PROMOTION_CLAIM_KEYS.map((key) => [key, {
+      status: summarizePromotionGateStatus(records, key),
+      rationale: summarizePromotionGateRationale(records, key),
+      neededEvidence: summarizePromotionGateNeededEvidence(records, key),
+    }]),
+  );
+}
+
+function summarizePromotionGateStatus(records, key) {
+  if (!records.length) return "blocked";
+  const statuses = records.map((record) => record.promotionGates[key].status);
+  if (statuses.includes("blocked")) return "blocked";
+  if (statuses.includes("review_only")) return "review_only";
+  return "allowed";
+}
+
+function summarizePromotionGateRationale(records, key) {
+  return uniqueStrings(records.map((record) => record.promotionGates[key].rationale)).join(" ");
+}
+
+function summarizePromotionGateNeededEvidence(records, key) {
+  return uniqueStrings(records.map((record) => record.promotionGates[key].neededEvidence)).join(" ");
+}
+
+function collectPromotionBlockers(gates) {
+  return PROMOTION_CLAIM_KEYS
+    .filter((key) => gates[key].status !== "allowed")
+    .map((key) => ({
+      claim: key,
+      status: gates[key].status,
+      neededEvidence: gates[key].neededEvidence,
+    }));
+}
+
+function summarizePromotionGatesByRecord(records) {
+  const counts = emptyPromotionGateCounts();
+  for (const record of records) {
+    for (const key of PROMOTION_CLAIM_KEYS) counts[key][record.promotionGates[key].status] += 1;
+  }
+  return counts;
+}
+
+function summarizePromotionGatesByTarget(targetReports) {
+  const counts = emptyPromotionGateCounts();
+  for (const target of targetReports) {
+    for (const key of PROMOTION_CLAIM_KEYS) counts[key][target.promotionGates[key].status] += 1;
+  }
+  return counts;
+}
+
+function emptyPromotionGateCounts() {
+  return Object.fromEntries(
+    PROMOTION_CLAIM_KEYS.map((key) => [
+      key,
+      Object.fromEntries(PROMOTION_GATE_STATUS_VALUES.map((status) => [status, 0])),
+    ]),
+  );
 }
 
 function countBy(values, keys) {

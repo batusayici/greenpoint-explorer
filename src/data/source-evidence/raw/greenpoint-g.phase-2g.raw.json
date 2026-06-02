@@ -23,6 +23,45 @@
       "usageStatus": "review-only-context-support",
       "evidenceStrength": "reviewed",
       "claimReadiness": "review_only",
+      "promotionGates": {
+        "identityName": {
+          "status": "allowed",
+          "rationale": "Reviewed official transit context supports the Greenpoint Av G station-area identity used by the review cue.",
+          "claimIds": [
+            "claim-greenpoint-g-station-area-context"
+          ]
+        },
+        "categoryBusinessType": {
+          "status": "review_only",
+          "rationale": "The current evidence supports transit context for review, but does not define a product-copy business/category claim.",
+          "neededEvidence": "A reviewed transit/place taxonomy claim or approved manual review row for the category copy field.",
+          "claimIds": [
+            "claim-greenpoint-g-station-area-context"
+          ]
+        },
+        "addressLocation": {
+          "status": "review_only",
+          "rationale": "The current evidence supports station-area context, not an exact address, entrance, or station-footprint location.",
+          "neededEvidence": "Reviewed station entrance/location evidence that separates exact entrance claims from symbolic scene placement.",
+          "claimIds": [
+            "claim-greenpoint-g-station-area-context"
+          ]
+        },
+        "storefrontFacade": {
+          "status": "blocked",
+          "rationale": "A subway cue is not a storefront/facade claim, and current evidence does not support exact visual station geometry.",
+          "neededEvidence": "Approved transit visual-reference evidence and a reviewed claim boundary for any product-facing station visual claim.",
+          "claimIds": []
+        },
+        "entranceFrontageGeometry": {
+          "status": "blocked",
+          "rationale": "The current evidence explicitly does not resolve exact stair, elevator, entrance, frontage, or station-footprint geometry.",
+          "neededEvidence": "Reviewed entrance-coordinate or station-geometry evidence plus Batu-approved representation rules.",
+          "claimIds": [
+            "claim-greenpoint-g-greenpoint-ave-side-cue"
+          ]
+        }
+      },
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."
