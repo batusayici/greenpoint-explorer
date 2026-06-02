@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "geometry-source-fixture.v0.1",
+  "fixtureId": "manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.geometry-source",
+  "sceneId": "manhattan-greenpoint-ave-mvp-slice",
+  "lane": "review-demo-only-official-building-footprint-source",
+  "status": "prototype-local-official-geometry-sample",
+  "reviewedOn": "2026-06-02",
+  "source": {
+    "id": "nyc-open-data-building-footprints",
+    "label": "NYC Open Data Building Footprints",
+    "sourceType": "official-open-data-geometry",
+    "url": "https://data.cityofnewyork.us/resource/5zhs-2jue.json",
+    "retrievedOn": "2026-06-02",
+    "query": "within_box(the_geom, 40.7310, -73.9565, 40.7288, -73.9520)",
+    "claimTypesSupported": [
+      "building-footprint-candidate",
+      "building-height-context",
+      "tax-lot-building-context"
+    ],
+    "claimTypesNotSupported": [
+      "tenant-frontage",
+      "storefront-order",
+      "business-active-status",
+      "entrance-location",
+      "facade-appearance",
+      "exact-station-geometry"
+    ],
+    "usageStatus": "public-open-data-review-only",
+    "attributionRequired": true,
+    "confidenceNotes": "Official building footprint polygons around Manhattan Ave x Greenpoint Ave; target relationships remain candidate matches until address/lot/storefront review is complete.",
+    "conflictNotes": "Building footprints do not prove tenant frontage, exact address placement, entrance location, facade detail, or subway entrance geometry."
+  },
+  "projection": {
+    "status": "qa_alignment_projection",
+    "notes": "Simple local bounding-box projection used only to compare official source geometry against the authored raster scene. This is not a GIS transform, survey alignment, or production map projection.",
+    "wgs84Bounds": {
+      "west": -73.9565,
+      "east": -73.95535,
+      "north": 40.73072,
+      "south": 40.72962
+    },
+    "sceneBounds": {
+      "x": 286,
+      "y": 88,
+      "width": 1048,
+      "height": 602
+    }
+  },
+  "statusValues": {
+    "source_backed": "Official footprint geometry exists in the local source sample.",
+    "candidate_match": "Candidate relationship to an active target; not exact tenant/storefront proof.",
+    "unmatched": "Source geometry is present but not assigned to a target.",
+    "blocked": "Claim remains blocked from exact/product/public use."
+  },
+  "records": [
+    {
+      "id": "nyc-footprint-bin-3064700",
+      "candidateTargetIds": [
+        "grillpoint-deli"
+      ],
+      "cornerId": "corner-nw",
+      "matchStatus": "candidate_match",
+      "matchNotes": "Candidate nearby official footprint for NW comparison only. It does not prove Grillpoint Deli frontage, entrance, or exact address placement.",
+      "sourceProperties": {
+        "bin": "3064700",
+        "baseBbl": "3025580027",
+        "mapplutoBbl": "3025580027",
+        "doittId": "483957",
+        "constructionYear": "1865",
+        "heightRoof": "36.76477771",
+        "lastStatusType": "Constructed",
+        "geomSource": "Photogrammetric",
+        "shapeArea": "217.79296875",
+        "shapeLength": "69.192198006739389"
+      },
+      "wgs84Polygon": [
+        { "lon": -73.955821547739, "lat": 40.730499461362 },
+        { "lon": -73.955847445278, "lat": 40.730496996696 },
+        { "lon": -73.955852097647, "lat": 40.730525288862 },
+        { "lon": -73.955915111931, "lat": 40.730519293102 },
+        { "lon": -73.955916676959, "lat": 40.730519144217 },
+        { "lon": -73.955921849304, "lat": 40.730550600966 },
+        { "lon": -73.955939176162, "lat": 40.730655980624 },
+        { "lon": -73.95584869675, "lat": 40.730664589052 },
+        { "lon": -73.955840112378, "lat": 40.730612378768 },
+        { "lon": -73.955821547739, "lat": 40.730499461362 }
+      ]
+    },
+    {
+      "id": "nyc-footprint-bin-3064733",
+      "candidateTargetIds": [
+        "mcdonalds"
+      ],
+      "cornerId": "corner-ne",
+      "matchStatus": "candidate_match",
+      "matchNotes": "Candidate nearby official footprint for NE comparison only. It does not prove McDonald's frontage, entrance, or exact address placement.",
+      "sourceProperties": {
+        "bin": "3064733",
+        "baseBbl": "3025580071",
+        "mapplutoBbl": "3025580071",
+        "doittId": "202032",
+        "constructionYear": "1885",
+        "heightRoof": "46.71",
+        "lastStatusType": "Constructed",
+        "geomSource": "Photogrammetric",
+        "shapeArea": "263.55859375",
+        "shapeLength": "73.032179758247722"
+      },
+      "wgs84Polygon": [
+        { "lon": -73.95630903731, "lat": 40.730123951497 },
+        { "lon": -73.956307959658, "lat": 40.730117397185 },
+        { "lon": -73.95631003964, "lat": 40.730117198962 },
+        { "lon": -73.956396235169, "lat": 40.73010899738 },
+        { "lon": -73.956406213558, "lat": 40.730169690046 },
+        { "lon": -73.956425791914, "lat": 40.730288766326 },
+        { "lon": -73.956337517353, "lat": 40.730297165253 },
+        { "lon": -73.95630903731, "lat": 40.730123951497 }
+      ]
+    },
+    {
+      "id": "nyc-footprint-bin-3064827",
+      "candidateTargetIds": [
+        "dunkin"
+      ],
+      "cornerId": "corner-sw",
+      "matchStatus": "candidate_match",
+      "matchNotes": "Candidate nearby official footprint for SW comparison only. It does not prove Dunkin' frontage, entrance, or exact address placement.",
+      "sourceProperties": {
+        "bin": "3064827",
+        "baseBbl": "3025630026",
+        "mapplutoBbl": "3025630026",
+        "doittId": "60436",
+        "constructionYear": "1890",
+        "heightRoof": "38.37",
+        "lastStatusType": "Constructed",
+        "geomSource": "Photogrammetric",
+        "shapeArea": "678.75",
+        "shapeLength": "117.13526156484329"
+      },
+      "wgs84Polygon": [
+        { "lon": -73.9555272436, "lat": 40.72982247526 },
+        { "lon": -73.955508018439, "lat": 40.729710668763 },
+        { "lon": -73.955689507984, "lat": 40.729692608797 },
+        { "lon": -73.955694326135, "lat": 40.729720628182 },
+        { "lon": -73.955733837245, "lat": 40.7299504091 },
+        { "lon": -73.955593307453, "lat": 40.729964393026 },
+        { "lon": -73.955568203954, "lat": 40.729818399159 },
+        { "lon": -73.9555272436, "lat": 40.72982247526 }
+      ]
+    },
+    {
+      "id": "nyc-footprint-bin-3422353",
+      "candidateTargetIds": [
+        "citizens-bank"
+      ],
+      "cornerId": "corner-se",
+      "matchStatus": "candidate_match",
+      "matchNotes": "Candidate nearby official footprint for SE comparison only. It does not prove Citizens Bank frontage, branch entrance, or exact address placement.",
+      "sourceProperties": {
+        "bin": "3422353",
+        "baseBbl": "3025630019",
+        "mapplutoBbl": "3025630019",
+        "doittId": "1272063",
+        "constructionYear": "1891",
+        "heightRoof": "51",
+        "lastStatusType": "Alteration",
+        "geomSource": "Other (Manual)",
+        "shapeArea": "565.9609375",
+        "shapeLength": "96.304173925905289"
+      },
+      "wgs84Polygon": [
+        { "lon": -73.956183555827, "lat": 40.729719188152 },
+        { "lon": -73.956276568735, "lat": 40.729709930255 },
+        { "lon": -73.956308097136, "lat": 40.729893264203 },
+        { "lon": -73.956308817674, "lat": 40.72989743113 },
+        { "lon": -73.956215396088, "lat": 40.729906729421 },
+        { "lon": -73.956127099334, "lat": 40.729915404636 },
+        { "lon": -73.956095296015, "lat": 40.729727859754 },
+        { "lon": -73.956183555827, "lat": 40.729719188152 }
+      ]
+    }
+  ],
+  "blockedClaims": [
+    "Exact tenant frontage remains blocked.",
+    "Exact storefront order remains blocked.",
+    "Exact entrance placement remains blocked.",
+    "Exact address placement remains blocked.",
+    "Exact Greenpoint G station or entrance geometry remains blocked.",
+    "Product/public geometry claims remain blocked."
+  ]
+}

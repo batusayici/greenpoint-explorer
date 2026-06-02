@@ -2,6 +2,7 @@ const REQUIRED_MANIFEST_VERSION = "0.1";
 const REQUIRED_EVIDENCE_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
 const REQUIRED_DRAFT_SCENE_SCHEMA_VERSION = "draft-scene-fixture.v0.1";
 const REQUIRED_REAL_DATA_SCHEMA_VERSION = "real-data-corner-fixture.v0.1";
+const REQUIRED_GEOMETRY_SOURCE_SCHEMA_VERSION = "geometry-source-fixture.v0.1";
 const LEGACY_JPEG_EXTENSION = "." + "jpeg";
 const EVIDENCE_STRENGTH_VALUES = new Set([
   "reviewed",
@@ -42,6 +43,12 @@ const REAL_DATA_STATUS_VALUES = new Set([
   "generated_placeholder",
   "blocked",
 ]);
+const GEOMETRY_SOURCE_STATUS_VALUES = new Set([
+  "source_backed",
+  "candidate_match",
+  "unmatched",
+  "blocked",
+]);
 const REQUIRED_DRAFT_SCENE_FIELDS = [
   "name",
   "addressText",
@@ -63,6 +70,7 @@ export function loadMvpSceneFromManifest(
   sourceEvidenceFixture = null,
   draftSceneFixture = null,
   realDataFixture = null,
+  geometrySourceFixture = null,
 ) {
   const validatedManifest = validateSceneManifest(manifest);
   const manifestIndexes = buildManifestIndexes(validatedManifest);
@@ -75,9 +83,13 @@ export function loadMvpSceneFromManifest(
   const validatedRealDataFixture = realDataFixture
     ? validateRealDataFixture(realDataFixture, validatedManifest, manifestIndexes, validatedEvidenceFixture)
     : null;
+  const validatedGeometrySourceFixture = geometrySourceFixture
+    ? validateGeometrySourceFixture(geometrySourceFixture, validatedManifest, manifestIndexes)
+    : null;
   const sourceEvidenceIndex = buildSourceEvidenceIndex(validatedEvidenceFixture);
   const draftSceneIndex = buildDraftSceneIndex(validatedDraftSceneFixture);
   const realDataIndex = buildRealDataIndex(validatedRealDataFixture);
+  const geometrySourceIndex = buildGeometrySourceIndex(validatedGeometrySourceFixture);
   const primaryAsset = validatedManifest.scene.assets.find(
     (asset) => asset.role === "primary-raster-plate",
   );
@@ -120,12 +132,18 @@ export function loadMvpSceneFromManifest(
       validatedEvidenceFixture,
       validatedDraftSceneFixture,
       validatedRealDataFixture,
+      validatedGeometrySourceFixture,
     ),
+    geometrySource: validatedGeometrySourceFixture
+      ? buildAppGeometrySourceFixture(validatedGeometrySourceFixture)
+      : null,
     targets: validatedManifest.scene.objects.map((object) => {
       const realDataRecord = realDataIndex.recordsByTargetId.get(object.appTarget.id);
       const draftScene = buildAppDraftSceneRecord(
         draftSceneIndex.recordsByTargetId.get(object.appTarget.id),
         realDataRecord,
+        geometrySourceIndex.recordsByTargetId.get(object.appTarget.id) ?? [],
+        validatedGeometrySourceFixture,
       );
       return {
         ...buildDraftAwareAppTarget(object.appTarget, draftScene),
@@ -158,7 +176,7 @@ function buildManifestIndexes(manifest) {
   };
 }
 
-function buildSceneQA(manifest, evidenceFixture, draftSceneFixture, realDataFixture) {
+function buildSceneQA(manifest, evidenceFixture, draftSceneFixture, realDataFixture, geometrySourceFixture) {
   return {
     manifestId: manifest.sceneId,
     blockId: manifest.blockId,
@@ -187,6 +205,15 @@ function buildSceneQA(manifest, evidenceFixture, draftSceneFixture, realDataFixt
       lane: realDataFixture.lane,
       sourceLane: realDataFixture.sourceLane,
       recordCount: realDataFixture.records.length,
+    } : null,
+    geometrySource: geometrySourceFixture ? {
+      fixtureId: geometrySourceFixture.fixtureId,
+      status: geometrySourceFixture.status,
+      reviewedOn: geometrySourceFixture.reviewedOn,
+      lane: geometrySourceFixture.lane,
+      sourceLabel: geometrySourceFixture.source.label,
+      recordCount: geometrySourceFixture.records.length,
+      blockedClaims: geometrySourceFixture.blockedClaims,
     } : null,
   };
 }
@@ -355,9 +382,29 @@ function buildRealDataIndex(fixture) {
   return index;
 }
 
-function buildAppDraftSceneRecord(record, realDataRecord = null) {
+function buildGeometrySourceIndex(fixture) {
+  const index = {
+    recordsByTargetId: new Map(),
+  };
+  if (!fixture) return index;
+
+  for (const record of fixture.records) {
+    for (const targetId of record.candidateTargetIds) {
+      appendIndexedRecord(index.recordsByTargetId, targetId, record);
+    }
+  }
+
+  return index;
+}
+
+function buildAppDraftSceneRecord(
+  record,
+  realDataRecord = null,
+  geometrySourceRecords = [],
+  geometrySourceFixture = null,
+) {
   if (!record) return null;
-  const generatedScene = generateDraftQaScene(record, realDataRecord);
+  const generatedScene = generateDraftQaScene(record, realDataRecord, geometrySourceRecords, geometrySourceFixture);
 
   return {
     id: record.id,
@@ -377,6 +424,9 @@ function buildAppDraftSceneRecord(record, realDataRecord = null) {
     ),
     qaOverlay: record.qaOverlay ?? null,
     realDataSlice: realDataRecord ? buildAppRealDataRecord(realDataRecord) : null,
+    geometrySourceMatches: geometrySourceFixture
+      ? buildAppGeometrySourceMatches(geometrySourceRecords, geometrySourceFixture)
+      : [],
     generatedScene,
     statusCounts: summarizeDraftStatuses(record),
   };
@@ -397,13 +447,42 @@ function buildAppRealDataRecord(record) {
   };
 }
 
+function buildAppGeometrySourceFixture(fixture) {
+  return {
+    fixtureId: fixture.fixtureId,
+    status: fixture.status,
+    lane: fixture.lane,
+    reviewedOn: fixture.reviewedOn,
+    source: fixture.source,
+    projection: fixture.projection,
+    blockedClaims: fixture.blockedClaims,
+    recordCount: fixture.records.length,
+  };
+}
+
+function buildAppGeometrySourceMatches(records, fixture) {
+  return records.map((record) => ({
+    id: record.id,
+    candidateTargetIds: record.candidateTargetIds,
+    cornerId: record.cornerId,
+    matchStatus: record.matchStatus,
+    matchNotes: record.matchNotes,
+    sourceProperties: record.sourceProperties,
+    scenePolygon: projectWgs84Polygon(record.wgs84Polygon, fixture.projection),
+    sourceLabel: fixture.source.label,
+    sourceUrl: fixture.source.url,
+    sourceStatus: "source_backed",
+    blockedClaims: fixture.blockedClaims,
+  }));
+}
+
 function summarizeDraftStatuses(record) {
   const counts = Object.fromEntries([...DRAFT_SCENE_STATUS_VALUES].map((status) => [status, 0]));
   for (const field of Object.values(record.fields)) counts[field.status] += 1;
   return counts;
 }
 
-function generateDraftQaScene(record, realDataRecord = null) {
+function generateDraftQaScene(record, realDataRecord = null, geometrySourceRecords = [], geometrySourceFixture = null) {
   const { fields } = record;
   const overlay = record.qaOverlay ?? {};
   const symbolicOnly = !fields.storefrontBay.value?.sceneBounds && (
@@ -535,6 +614,10 @@ function generateDraftQaScene(record, realDataRecord = null) {
     entities.push(...generateRealDataQaEntities(realDataRecord));
   }
 
+  if (geometrySourceFixture) {
+    entities.push(...generateGeometrySourceQaEntities(geometrySourceRecords, geometrySourceFixture));
+  }
+
   entities.push(...buildFieldStatusCallouts(record, entities, overlay));
 
   entities.push({
@@ -568,10 +651,26 @@ function generateDraftQaScene(record, realDataRecord = null) {
       "draftScene.fields",
       "draftScene.qaOverlay alignment hints",
       ...(realDataRecord ? ["realDataFixture.records"] : []),
+      ...(geometrySourceRecords.length ? ["geometrySourceFixture.records"] : []),
     ],
     entities,
     statusChips,
   };
+}
+
+export function generateGeometrySourceQaEntities(records, fixture) {
+  return records.map((record) => ({
+    id: `${record.id}:official-footprint-candidate`,
+    type: "official-building-footprint-candidate",
+    field: "geometrySource.wgs84Polygon",
+    status: record.matchStatus,
+    sourceStatus: "source_backed",
+    polygon: projectWgs84Polygon(record.wgs84Polygon, fixture.projection),
+    label: `${record.sourceProperties.bin} official footprint candidate`,
+    text: `NYC footprint BIN ${record.sourceProperties.bin}`,
+    matchNotes: record.matchNotes,
+    generatedFrom: ["geometrySource.records.wgs84Polygon", "geometrySource.projection"],
+  }));
 }
 
 export function generateRealDataQaEntities(record) {
@@ -967,6 +1066,19 @@ function offsetPoint(point, dx, dy) {
   return { x: point.x + dx, y: point.y + dy };
 }
 
+function projectWgs84Polygon(polygon, projection) {
+  return polygon.map((point) => {
+    const xRatio = (point.lon - projection.wgs84Bounds.west) /
+      (projection.wgs84Bounds.east - projection.wgs84Bounds.west);
+    const yRatio = (projection.wgs84Bounds.north - point.lat) /
+      (projection.wgs84Bounds.north - projection.wgs84Bounds.south);
+    return {
+      x: Math.round(projection.sceneBounds.x + xRatio * projection.sceneBounds.width),
+      y: Math.round(projection.sceneBounds.y + yRatio * projection.sceneBounds.height),
+    };
+  });
+}
+
 function roundBounds(bounds) {
   return {
     x: Math.round(bounds.x),
@@ -1229,6 +1341,101 @@ export function validateRealDataFixture(fixture, manifest, indexes = buildManife
   assertNoLegacyJpegReferences(fixture, "Real data fixture");
 
   return fixture;
+}
+
+export function validateGeometrySourceFixture(fixture, manifest, indexes = buildManifestIndexes(manifest)) {
+  assertObject(fixture, "Geometry source fixture");
+  assertEqual(fixture.schemaVersion, REQUIRED_GEOMETRY_SOURCE_SCHEMA_VERSION, "geometrySource.schemaVersion");
+  assertString(fixture.fixtureId, "geometrySource.fixtureId");
+  assertEqual(fixture.sceneId, manifest.sceneId, "geometrySource.sceneId");
+  assertString(fixture.lane, "geometrySource.lane");
+  assertString(fixture.status, "geometrySource.status");
+  assertString(fixture.reviewedOn, "geometrySource.reviewedOn");
+  validateGeometrySourceDescriptor(fixture.source);
+  validateGeometryProjection(fixture.projection);
+  assertObject(fixture.statusValues, "geometrySource.statusValues");
+  for (const status of GEOMETRY_SOURCE_STATUS_VALUES) {
+    assertString(fixture.statusValues[status], `geometrySource.statusValues.${status}`);
+  }
+  assertArray(fixture.records, "geometrySource.records");
+  assertArray(fixture.blockedClaims, "geometrySource.blockedClaims");
+  for (const claim of fixture.blockedClaims) assertString(claim, "geometrySource.blockedClaims item");
+
+  const targetIds = new Set(manifest.scene.objects.map((object) => object.appTarget.id));
+  const recordIds = new Set();
+  for (const record of fixture.records) {
+    assertObject(record, "geometrySource.records item");
+    assertString(record.id, "geometrySource.records item.id");
+    if (recordIds.has(record.id)) throw new Error(`geometrySource.records has duplicate id "${record.id}".`);
+    recordIds.add(record.id);
+    assertReferences(record.candidateTargetIds, targetIds, `geometrySource record ${record.id}.candidateTargetIds`);
+    assertReference(record.cornerId, indexes.cornersById, `geometrySource record ${record.id}.cornerId`);
+    assertOneOf(record.matchStatus, GEOMETRY_SOURCE_STATUS_VALUES, `geometrySource record ${record.id}.matchStatus`);
+    assertString(record.matchNotes, `geometrySource record ${record.id}.matchNotes`);
+    validateGeometrySourceProperties(record.sourceProperties, record.id);
+    assertArray(record.wgs84Polygon, `geometrySource record ${record.id}.wgs84Polygon`);
+    if (record.wgs84Polygon.length < 4) {
+      throw new Error(`geometrySource record ${record.id}.wgs84Polygon must contain at least 4 points.`);
+    }
+    for (const [index, point] of record.wgs84Polygon.entries()) {
+      validateWgs84Point(point, `geometrySource record ${record.id}.wgs84Polygon[${index}]`);
+    }
+  }
+
+  assertNoLegacyJpegReferences(fixture, "Geometry source fixture");
+
+  return fixture;
+}
+
+function validateGeometrySourceDescriptor(source) {
+  assertObject(source, "geometrySource.source");
+  assertString(source.id, "geometrySource.source.id");
+  assertString(source.label, "geometrySource.source.label");
+  assertString(source.sourceType, "geometrySource.source.sourceType");
+  assertString(source.url, "geometrySource.source.url");
+  assertString(source.retrievedOn, "geometrySource.source.retrievedOn");
+  assertString(source.query, "geometrySource.source.query");
+  assertArray(source.claimTypesSupported, "geometrySource.source.claimTypesSupported");
+  assertArray(source.claimTypesNotSupported, "geometrySource.source.claimTypesNotSupported");
+  assertString(source.usageStatus, "geometrySource.source.usageStatus");
+  assertString(source.confidenceNotes, "geometrySource.source.confidenceNotes");
+  assertString(source.conflictNotes, "geometrySource.source.conflictNotes");
+}
+
+function validateGeometryProjection(projection) {
+  assertObject(projection, "geometrySource.projection");
+  assertString(projection.status, "geometrySource.projection.status");
+  assertString(projection.notes, "geometrySource.projection.notes");
+  assertObject(projection.wgs84Bounds, "geometrySource.projection.wgs84Bounds");
+  assertNumber(projection.wgs84Bounds.west, "geometrySource.projection.wgs84Bounds.west");
+  assertNumber(projection.wgs84Bounds.east, "geometrySource.projection.wgs84Bounds.east");
+  assertNumber(projection.wgs84Bounds.north, "geometrySource.projection.wgs84Bounds.north");
+  assertNumber(projection.wgs84Bounds.south, "geometrySource.projection.wgs84Bounds.south");
+  validateBounds(projection.sceneBounds, "geometrySource.projection.sceneBounds");
+}
+
+function validateGeometrySourceProperties(properties, recordId) {
+  assertObject(properties, `geometrySource record ${recordId}.sourceProperties`);
+  for (const field of [
+    "bin",
+    "baseBbl",
+    "mapplutoBbl",
+    "doittId",
+    "constructionYear",
+    "heightRoof",
+    "lastStatusType",
+    "geomSource",
+    "shapeArea",
+    "shapeLength",
+  ]) {
+    assertString(properties[field], `geometrySource record ${recordId}.sourceProperties.${field}`);
+  }
+}
+
+function validateWgs84Point(point, label) {
+  assertObject(point, label);
+  assertNumber(point.lon, `${label}.lon`);
+  assertNumber(point.lat, `${label}.lat`);
 }
 
 function validateRealDataBusiness(business, recordId, sourceIds, evidenceRecordIds) {

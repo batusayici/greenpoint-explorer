@@ -395,6 +395,7 @@ function DraftSceneInspector({ draftScene }) {
     entity.type === "real-data-field-status-callout"
   )).length ?? 0;
   const realDataSlice = draftScene.realDataSlice;
+  const geometrySourceMatches = draftScene.geometrySourceMatches ?? [];
 
   return (
     <section className="qa-section qa-draft-scene-section">
@@ -467,6 +468,33 @@ function DraftSceneInspector({ draftScene }) {
               </div>
             ))}
           </dl>
+        </section>
+      ) : null}
+      {geometrySourceMatches.length ? (
+        <section className="qa-generated-scene" aria-label="Official geometry source lane">
+          <h4>Official Geometry Source Lane</h4>
+          {geometrySourceMatches.map((match) => (
+            <article className="qa-evidence-record" key={match.id}>
+              <p>
+                <strong>{match.sourceLabel}</strong>
+                {" | "}
+                {formatStatusLabel(match.sourceStatus)} footprint
+                {" | "}
+                {formatStatusLabel(match.matchStatus)} target match
+              </p>
+              <p>
+                BIN {match.sourceProperties.bin}
+                {" | "}
+                BBL {match.sourceProperties.baseBbl}
+                {" | "}
+                geom {match.sourceProperties.geomSource}
+                {" | roof "}
+                {match.sourceProperties.heightRoof}
+              </p>
+              <p>{match.matchNotes}</p>
+              <QAList items={match.blockedClaims.slice(0, 3)} />
+            </article>
+          ))}
         </section>
       ) : null}
       <dl className="qa-draft-field-list" aria-label="Draft scene field statuses">

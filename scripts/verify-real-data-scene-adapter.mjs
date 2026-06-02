@@ -10,6 +10,7 @@ import {
   generateRealDataQaEntities,
   loadMvpSceneFromManifest,
   validateDraftSceneFixture,
+  validateGeometrySourceFixture,
   validateRealDataFixture,
   validateSceneManifest,
   validateSourceEvidenceFixture,
@@ -21,6 +22,7 @@ const MANIFEST_PATH = "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json";
 const EVIDENCE_PATH = "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json";
 const DRAFT_SCENE_PATH = "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json";
 const REAL_DATA_PATH = "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json";
+const GEOMETRY_SOURCE_PATH = "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json";
 const SOURCE_PRECISION_GENERATOR_PATH = "scripts/generate-real-data-source-precision.mjs";
 const EXPECTED_TARGETS = [
   "grillpoint-deli",
@@ -59,6 +61,7 @@ async function main() {
   const evidenceFixture = validateSourceEvidenceFixture(await readJson(EVIDENCE_PATH), manifest);
   const draftFixture = validateDraftSceneFixture(await readJson(DRAFT_SCENE_PATH), manifest);
   const realDataFixture = validateRealDataFixture(await readJson(REAL_DATA_PATH), manifest, undefined, evidenceFixture);
+  const geometrySourceFixture = validateGeometrySourceFixture(await readJson(GEOMETRY_SOURCE_PATH), manifest);
   const regeneratedPrecisionFixture = await generateSourcePrecisionFixture();
   const primaryAsset = manifest.scene.assets.find((asset) => asset.role === "primary-raster-plate");
   const appScene = loadMvpSceneFromManifest(
@@ -67,6 +70,7 @@ async function main() {
     evidenceFixture,
     draftFixture,
     realDataFixture,
+    geometrySourceFixture,
   );
   const failures = [];
   compareJson(
@@ -77,7 +81,9 @@ async function main() {
   );
   compareArray(failures, realDataFixture.records.map((record) => record.targetId), EXPECTED_TARGETS, "real-data target coverage");
   requireValue(failures, realDataFixture.records.length, EXPECTED_TARGETS.length, "real-data record count");
+  requireValue(failures, geometrySourceFixture.records.length, 4, "geometry source record count");
   verifySourcePrecisionUpgrades(failures, realDataFixture);
+  verifyGeometrySourceLane(failures, geometrySourceFixture, appScene);
 
   for (const record of realDataFixture.records) {
     const firstEntities = generateRealDataQaEntities(record);
@@ -122,9 +128,52 @@ async function main() {
     `${realDataFixture.fixtureId};`,
     `targets=${EXPECTED_TARGETS.join(",")};`,
     `records=${realDataFixture.records.length};`,
+    `geometrySourceRecords=${geometrySourceFixture.records.length};`,
     `sourcePrecisionUpgrades=mcdonalds,citizens-bank;`,
     `statuses=${EXPECTED_STATUSES.join(",")}.`,
   ].join(" "));
+}
+
+function verifyGeometrySourceLane(failures, fixture, appScene) {
+  for (const record of fixture.records) {
+    if (record.candidateTargetIds.length !== 1) {
+      failures.push(`${record.id} should remain a single-target candidate match in Phase 2AB`);
+    }
+    if (record.matchStatus !== "candidate_match") {
+      failures.push(`${record.id} must remain candidate_match, received ${record.matchStatus}`);
+    }
+    if (!record.matchNotes.includes("does not prove")) {
+      failures.push(`${record.id} is missing target-match guardrail language`);
+    }
+    for (const targetId of record.candidateTargetIds) {
+      const appTarget = appScene.targets.find((target) => target.id === targetId);
+      if (!appTarget) {
+        failures.push(`geometry source target ${targetId} is missing from app scene`);
+        continue;
+      }
+      const matches = appTarget.draftScene?.geometrySourceMatches ?? [];
+      if (!matches.some((match) => match.id === record.id)) {
+        failures.push(`${targetId} is missing geometry source match ${record.id}`);
+      }
+      const generatedEntity = appTarget.draftScene?.generatedScene?.entities
+        .find((entity) => entity.type === "official-building-footprint-candidate" && entity.id.startsWith(record.id));
+      if (!generatedEntity) {
+        failures.push(`${targetId} generated scene is missing official footprint candidate for ${record.id}`);
+      } else if (generatedEntity.status !== "candidate_match") {
+        failures.push(`${targetId} official footprint entity must remain candidate_match`);
+      } else if (!generatedEntity.polygon?.length) {
+        failures.push(`${targetId} official footprint entity is missing projected polygon`);
+      }
+    }
+  }
+
+  if (!fixture.blockedClaims.some((claim) => claim.includes("Exact tenant frontage"))) {
+    failures.push("geometry source fixture is missing exact frontage blocked claim");
+  }
+  const subway = appScene.targets.find((target) => target.id === "greenpoint-g-subway");
+  if ((subway?.draftScene?.geometrySourceMatches ?? []).length) {
+    failures.push("greenpoint-g-subway must not receive a building footprint geometry match");
+  }
 }
 
 async function generateSourcePrecisionFixture() {

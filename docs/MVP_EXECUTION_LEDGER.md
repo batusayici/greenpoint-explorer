@@ -55,14 +55,61 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2AA source precision upgrade is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2AB official geometry source lane is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2AA source precision upgrade complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2AB official geometry source lane complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, exact geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2AB Official Geometry Source Lane
+
+Status:
+- Complete.
+
+Scope:
+- Batu approved opening the recommended true geometry source lane after the Phase 2 status checkpoint.
+- Add a narrow review-only official building-footprint source sample for the current Manhattan Ave x Greenpoint Ave active target set.
+- Preserve QA-mode-only rendering, normal-mode raster-first product meaning, and strict promotion readiness.
+
+Files changed:
+- `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-real-data-scene-adapter.mjs`
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build`
+- Browser sanity check at `http://127.0.0.1:5173/`.
+
+Outcome:
+- Added a review-only NYC Open Data Building Footprints fixture with four official footprint candidates for the current business targets.
+- Added geometry-source fixture validation, target indexing, deterministic WGS84-to-scene QA projection, and generated official-footprint candidate entities.
+- QA mode now draws official footprint candidate outlines and selected-card QA lists BIN/BBL metadata, candidate-match status, and blocked claims.
+- Greenpoint G receives no building-footprint match.
+- Candidate footprint relationships remain `candidate_match` only.
+- Building footprints were not promoted to exact tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, station geometry, product/public claims, or production map geometry.
+- Strict promotion readiness remained unchanged, with 0 product-copy-ready targets.
+- Normal mode remains raster-first and unchanged in product meaning.
+
+Unresolved decisions:
+- Batu still owns whether the Phase 2AB footprint projection is useful enough for the next demoable review scene pass.
+- Batu still owns source-authority decisions, exact geometry decisions, visual acceptance, product/public claims, and opening the next executable brief.
+- Additional evidence is still needed before exact storefront, frontage, entrance, facade, address placement, parcel/building footprint, or station-geometry claims can be made.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2AB complete and points the next recommended sequence toward reviewing the official footprint comparison, then either a demoable review scene pass or one narrow geometry-alignment correction.
 
 ### 2026-06-02 - Phase 2AA Source Precision Upgrade
 

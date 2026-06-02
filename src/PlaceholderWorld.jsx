@@ -614,6 +614,10 @@ function drawDraftQaOverlay(graphics, target) {
 
 function drawGeneratedDraftEntity(graphics, entity) {
   if (entity.type === "field-status-callout" || entity.type === "real-data-field-status-callout") return;
+  if (entity.type === "official-building-footprint-candidate") {
+    drawSourceGeometryPolygon(graphics, entity.polygon);
+    return;
+  }
   if (entity.type === "real-data-building-sample") {
     drawOverlayRect(graphics, entity, { fillAlpha: 0.045, strokeAlpha: 0.52, strokeWidth: 3 });
     return;
@@ -710,6 +714,26 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
     layer.addChild(text);
   }
 
+  const officialFootprints = generatedScene.entities.filter((entity) => entity.type === "official-building-footprint-candidate");
+  for (const footprint of officialFootprints) {
+    if (!showDetailedLabels || !footprint.polygon?.length) continue;
+    const anchor = polygonCenter(footprint.polygon);
+    const text = new Text({
+      text: footprint.text ?? footprint.label,
+      style: {
+        fill: "#f8ecd4",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 9,
+        fontWeight: "900",
+        lineHeight: 11,
+      },
+    });
+    text.resolution = 2;
+    text.x = anchor.x + 8;
+    text.y = anchor.y - 8;
+    layer.addChild(text);
+  }
+
   const callouts = generatedScene.entities.filter((entity) => (
     entity.type === "field-status-callout" ||
     entity.type === "real-data-field-status-callout"
@@ -759,6 +783,34 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
 
     layer.addChild(text);
   }
+}
+
+function drawSourceGeometryPolygon(graphics, polygon) {
+  if (!polygon?.length) return;
+  graphics
+    .moveTo(polygon[0].x, polygon[0].y);
+  for (const point of polygon.slice(1)) {
+    graphics.lineTo(point.x, point.y);
+  }
+  graphics
+    .fill({ color: 0x7bc6a4, alpha: 0.055 })
+    .stroke({ color: 0x7bc6a4, width: 3.2, alpha: 0.82 });
+
+  for (const point of polygon.slice(0, -1)) {
+    graphics.circle(point.x, point.y, 3.2).fill({ color: 0x203f35, alpha: 0.86 });
+  }
+}
+
+function polygonCenter(polygon) {
+  const points = polygon.slice(0, -1).length ? polygon.slice(0, -1) : polygon;
+  const total = points.reduce((memo, point) => ({
+    x: memo.x + point.x,
+    y: memo.y + point.y,
+  }), { x: 0, y: 0 });
+  return {
+    x: Math.round(total.x / points.length),
+    y: Math.round(total.y / points.length),
+  };
 }
 
 function drawCompactStatusPin(graphics, callout) {

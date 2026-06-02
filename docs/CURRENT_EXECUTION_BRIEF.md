@@ -1,10 +1,26 @@
-# Current Execution Brief - Phase 2AA Source Precision Upgrade Complete
+# Current Execution Brief - Phase 2AB Official Geometry Source Lane Complete
 
-Status: Phase 2AA source precision upgrade is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
+Status: Phase 2AB official geometry source lane is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
 
-## Phase 2AA Source Precision Upgrade
+## Phase 2AB Official Geometry Source Lane
+
+- Batu approved opening the recommended true geometry source lane after the Phase 2 status checkpoint.
+- Added `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json` as a small review-only NYC Open Data Building Footprints sample for the Manhattan Ave x Greenpoint Ave current MVP intersection.
+- The fixture records official footprint polygons, BIN/BBL/building metadata, retrieval/query metadata, projection notes, and blocked claim guardrails.
+- The batch uses NYC Open Data building footprints as a geometry-context source only. It does not treat building footprints as tenant-frontage, storefront-order, entrance-location, facade-appearance, active-business, exact-address, station-geometry, product/public, or production-map evidence.
+- Candidate footprint relationships are attached only to Grillpoint Deli, McDonald's, Dunkin', and Citizens Bank as `candidate_match` QA comparisons.
+- Greenpoint G subway receives no building-footprint match; exact station and entrance geometry remain blocked.
+- Extended `src/sceneManifest.js` with a geometry-source fixture validator, target index, deterministic WGS84-to-scene QA projection, and generated QA footprint candidate entities.
+- Wired the fixture through `src/mvpPlaceData.js`.
+- QA mode now draws official building-footprint candidate outlines over the authored raster/draft overlay for comparison.
+- Selected-card QA now lists the official geometry source lane, BIN/BBL metadata, candidate-match status, and blocked claims.
+- Normal mode remains raster-first and unchanged in product meaning.
+- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
+- No exact parcel/tax-lot footprint, exact building footprint, exact storefront frontage/order, exact entrance, exact facade, exact address placement, exact station geometry, production/public claim, package/tooling change, source-vendor integration, live refresh, backend, CI, or broad coverage was promoted.
+
+## Prior Phase 2AA Source Precision Upgrade
 
 - Batu authorized replacing the highest-value available estimated/human-prepared geometry with stronger source-derived geometry where local evidence supports it.
 - Added `scripts/generate-real-data-source-precision.mjs` as a deterministic local transform from the Phase 2Z fixture plus the review manifest into the Phase 2AA precision fixture.
@@ -18,76 +34,15 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Normal mode remains raster-first and unchanged in product meaning.
 - Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
 
-## Phase 2Z Expanded Real Data Pattern
+## Prior Real-Data Draft Lane State
 
-- Batu authorized expanding the Phase 2Y real-data fixture/adapter pattern from Grillpoint to all active MVP targets.
-- Added `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json` as the active five-target real-data fixture.
-- Covered active targets: Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
-- Business identity/address context is `source_backed` where supported by existing reviewed source-evidence records.
-- McDonald's, Dunkin', and Citizens Bank category text remains `estimated_from_source`; it is QA/review-only and not product-copy-ready.
-- Business storefront geometry remains `human_prepared`, frontage/address anchors remain `estimated_from_source`, generated facades remain `generated_placeholder`, and exact entrances remain `blocked`.
-- Greenpoint G uses a `symbolic_transit` real-data record that renders a symbolic/blocked station cue and blocked entrance cue instead of storefront/facade geometry.
-- Extended the deterministic real-data adapter and validator only enough to support the symbolic transit record.
-- Updated QA inspector real-data summaries so symbolic records list symbolic station fields instead of storefront-only fields.
-- Normal mode remains raster-first and unchanged in product meaning.
-- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
-
-## Phase 2Y Real Data Vertical Slice
-
-- Batu authorized a one-corner source spike to prove real-data fixture to deterministic adapter to QA-mode scene integration without waiting for launch-grade provenance.
-- Selected corner: Grillpoint Deli / NW corner.
-- Added `src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json` as a small canonical local real-data fixture.
-- The fixture records source-backed Grillpoint name, address context, and category from existing reviewed source-evidence references.
-- The fixture records human-prepared building/storefront samples, estimated-from-source frontage/address anchor, a generated-placeholder facade, and blocked exact entrance geometry.
-- Extended `src/sceneManifest.js` with a real-data fixture validator and deterministic QA adapter that emits generated real-data QA entities.
-- Wired the real-data fixture through `src/mvpPlaceData.js` so only Grillpoint receives the Phase 2Y real-data slice.
-- Updated QA-mode rendering in `src/PlaceholderWorld.jsx` to visually distinguish source-backed, human-prepared, estimated-from-source, generated-placeholder, and blocked entities.
-- Updated the selected-card QA inspector in `src/App.jsx` to show the real-data vertical slice and per-field statuses.
-- Added `scripts/verify-real-data-scene-adapter.mjs` for targeted deterministic adapter verification.
-- Normal mode remains raster-first and unchanged in product meaning.
-- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
-
-## Post-Phase 2W Operating Model Correction
-
-- Batu explicitly requested this docs/governance-only correction after Phase 2W was complete, verified, committed, and clean.
-- Added the MVP Acceleration Rule to active governance: until the first working MVP scene is visually demoable, default to implementation over governance.
-- Future batches must produce visible scene progress, real data ingestion/generation progress, interaction progress, or deploy/review progress unless Batu explicitly requests docs/governance-only work or implementation is blocked.
-- Batch success is now measured by visible MVP progress, not documentation completeness.
-- QA mode is recorded as the experimental product lab: render sourced, manual-draft, inferred, symbolic, and blocked fields aggressively when status is visible.
-- Promotion gates, negative contract tests, and QA/product separation remain unchanged.
-
-## Prior Completed Phase 2W Output
-
-- Added structured draft fixture inputs for frontage/building edge, bay count, sign placement, and door/window pattern for the five active targets.
-- Added a deterministic local draft-scene generator in the manifest adapter: draft fixture fields now produce QA-only generated scene entities before rendering.
-- Generated QA entities include approximate footprint, storefront bay, facade panel, sign band, business label, door cue, window cues, bay divisions, anchor connector, status badges, and symbolic subway cue where applicable.
-- QA mode renders generated entities over the raster plate for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
-- The selected-card QA inspector now lists generated QA scene entities and their field/status hooks in addition to raw draft field statuses.
-- Real place names are shown in QA-mode sign panels/status cards near their current raster-plate cues.
-- Subway overlay remains symbolic/blocked and visually distinguished from business storefronts.
-- Normal-mode primary world art remains the approved review-only raster plate.
-- Phase 2W is intentionally QA-mode-only: it optimizes for faster real-data-to-scene pipeline proof without changing product readiness or normal-mode product meaning.
-
-## Latest QA Field-Status Callout Pass
-
-- Added lightweight `qaOverlay.fieldStatusCallouts` hints to the draft scene fixture for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
-- Extended the deterministic draft-scene generator to emit QA-only `field-status-callout` entities from those fixture hints.
-- QA mode now draws small scene-level callouts near generated signs, facades, bays, door/window cues, anchors, and the symbolic subway cue so reviewers can see sourced/manual-draft/inferred/symbolic/blocked status directly in the scene.
-- The Greenpoint G subway path now generates a blocked entrance cue in addition to the symbolic station cue.
-- The selected-card QA inspector now summarizes generated callout entities as visible QA callouts.
-- Normal mode remains raster-first and does not draw the generated draft overlay or callout labels.
-- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
-
-## Phase 2X Generated QA Scene Skeleton Refinement
-
-- Batu explicitly authorized the plan's first recommended item, refine the generated QA scene skeleton, as the next executable implementation task.
-- The deterministic draft-scene generator now prefers QA overlay alignment hints for generated footprints, storefront bays, facade panels, sign bands, door cues, and window cues.
-- QA-mode generated storefront geometry now reads as the primary overlay: storefront bays and signs are stronger, footprints/facades are quieter, and connector lines are less dominant.
-- Detailed field-status callout text now appears only on hover/selection; compact status pins remain visible by default so field status stays inspectable without overwhelming the scene.
-- QA inspector summaries now separate generated geometry counts from secondary callout counts.
-- Greenpoint G remains symbolic/blocked and keeps the blocked entrance cue; no exact station or entrance geometry was promoted.
-- Normal mode remains raster-first and unchanged in product meaning.
-- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
+- Phase 2V added a separate draft prototype lane with field-level statuses and QA/debug surfacing without changing strict promotion readiness.
+- Phase 2W made the draft lane visibly useful in QA mode by generating approximate storefront/facade/bay/sign/door/window/status entities from structured draft fixture fields.
+- The post-Phase 2W operating model correction established that future implementation batches should build visible MVP proof first while preserving gates as constraints.
+- The QA field-status callout pass added scene-level status callouts near generated storefront/facade/bay/sign/door/window and symbolic subway cues.
+- Phase 2X refined the generated QA scene skeleton so generated storefront geometry reads as the primary QA overlay while compact status pins remain visible by default and detailed callouts appear on hover/selection.
+- Phase 2Y added a one-corner Grillpoint/NW real-data fixture and deterministic adapter.
+- Phase 2Z expanded that fixture/adapter pattern to all five active targets and kept Greenpoint G symbolic/blocked.
 
 ## Generated From Fixture Fields
 
@@ -98,13 +53,17 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - `doorWindowPlacement` generates door/window cues.
 - `sceneAnchor` generates anchor connectors.
 - `stationIntersectionCues` plus symbolic anchor data generate the Greenpoint G symbolic/blocked subway cue.
+- `realDataFixture.records` generate QA-only source-backed/human-prepared/estimated/generated-placeholder/blocked real-data entities.
+- `geometrySourceFixture.records` generate QA-only official building-footprint candidate comparison outlines.
 
 ## Still Manual / Inferred / Blocked
 
-- Approximate footprints, frontage edges, storefront bay dimensions/counts, sign placement, facade panels, and door/window placement remain `manual_draft` for business targets.
+- Approximate footprints, frontage edges, storefront bay dimensions/counts, sign placement, facade panels, and door/window placement remain `manual_draft` for business targets unless a stronger field-level status is explicitly recorded.
+- NYC building footprints support official building-geometry context only; they do not solve storefront segmentation, tenant frontage, entrance location, facade appearance, exact address placement, or active business status.
+- Geometry-source target relationships are `candidate_match` only.
 - Scene anchors and intersection context remain `inferred` unless explicitly sourced.
 - The Greenpoint G subway representation remains symbolic; exact stair/elevator/entrance/station geometry remains blocked.
-- True source-backed geometry still needs reviewed non-restricted geometry/evidence for exact frontage, facade, entrance, station placement, and Batu approval before any product/public claim.
+- True source-backed storefront/entrance/station geometry still needs reviewed non-restricted geometry/evidence and Batu approval before any product/public claim.
 
 ## Current Strict Promotion Result
 
@@ -116,7 +75,19 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Files Changed
 
-Latest Phase 2AA implementation changed:
+Latest Phase 2AB implementation changed:
+
+- `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Prior Phase 2AA implementation changed:
 
 - `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json`
 - `src/mvpPlaceData.js`
@@ -127,59 +98,6 @@ Latest Phase 2AA implementation changed:
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
-
-Prior Phase 2Z implementation changed:
-
-- `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2z.json`
-- `src/mvpPlaceData.js`
-- `src/sceneManifest.js`
-- `src/App.jsx`
-- `scripts/verify-real-data-scene-adapter.mjs`
-- `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/PLAN.md`
-- `docs/MVP_EXECUTION_LEDGER.md`
-
-Prior Phase 2Y implementation changed:
-
-- `src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json`
-- `src/mvpPlaceData.js`
-- `src/sceneManifest.js`
-- `src/App.jsx`
-- `src/PlaceholderWorld.jsx`
-- `scripts/verify-real-data-scene-adapter.mjs`
-- `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/PLAN.md`
-- `docs/MVP_EXECUTION_LEDGER.md`
-
-Prior Phase 2X implementation changed:
-
-- `src/sceneManifest.js`
-- `src/App.jsx`
-- `src/PlaceholderWorld.jsx`
-
-Prior QA field-status callout pass changed:
-
-- `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
-- `src/sceneManifest.js`
-- `src/App.jsx`
-- `src/PlaceholderWorld.jsx`
-
-Post-Phase 2W operating-model update changed:
-
-- `AGENTS.md`
-- `docs/AGENTIC_TOOLING.md`
-- `docs/MVP_SCOPE.md`
-- `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/PLAN.md`
-- `docs/MVP_EXECUTION_LEDGER.md`
-
-Prior Phase 2W implementation changed:
-
-- `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
-- `src/sceneManifest.js`
-- `src/App.jsx`
-- `src/PlaceholderWorld.jsx`
-- `src/styles.css`
 
 ## Verification Commands
 
@@ -213,38 +131,21 @@ git diff --stat
 
 ## Verification State
 
-- Latest Phase 2Z verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the active-target real-data fixture validates, covers 5 records/targets, and produces deterministic QA entities for storefront records plus a symbolic/blocked transit record.
-- Latest Phase 2Z `npm run build` passed with the existing Vite large-chunk warning.
-- Latest Phase 2Z browser sanity check could not be run because the in-app browser execution tool was unavailable after tool discovery.
-- Latest Phase 2AA verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the Phase 2AA source-precision fixture deterministically regenerates, covers 5 records/targets, upgrades only McDonald's and Citizens Bank source-precision fields, and keeps Greenpoint G symbolic/blocked.
-- Latest Phase 2AA `npm run build` passed with the existing Vite large-chunk warning.
-- Latest Phase 2Y verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the Grillpoint/NW real-data fixture validates, produces 10 deterministic QA entities, and does not attach to other active targets.
-- Latest Phase 2Y build check passed with the existing Vite large-chunk warning.
-- Latest Phase 2Y browser sanity check was attempted against `http://localhost:5173/` and `http://127.0.0.1:5173/`, but the in-app browser blocked both local URLs with `ERR_BLOCKED_BY_CLIENT`.
-- Latest Phase 2X verification: generated output now reports 10 geometry entities and 5 secondary callouts for each storefront target, plus 4 geometry entities and 4 secondary callouts for Greenpoint G subway.
-- Latest Phase 2X browser sanity check passed at `http://localhost:5173/`: QA mode shows the refined generated skeleton with compact status pins, while normal mode hides the generated QA skeleton and remains raster-first.
-- Latest Phase 2X `npm run build` passed with the existing Vite large-chunk warning.
-- Latest QA field-status callout pass verification: draft fixture validates with callout plans for 5 records; generated scene output now produces 5 QA field callouts each for Grillpoint Deli, McDonald's, Dunkin', and Citizens Bank, plus 4 for Greenpoint G subway.
+- Latest Phase 2AB `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the active-target real-data fixture still validates, geometry source records total 4, source-precision upgrades remain limited to McDonald's/Citizens Bank, official footprint entities are generated as `candidate_match`, and Greenpoint G receives no building-footprint match.
 - Latest `node scripts/verify-source-evidence-determinism.mjs` passed and confirmed source-evidence determinism remains stable.
 - Latest `node scripts/verify-qa-inspector-source-evidence.mjs` passed and confirmed 5 target(s) match coverage readiness, 5 evidence record(s) match app QA visibility, and the Grillpoint contract remains blocked for facade/geometry.
 - Latest `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed and confirmed unsupported promotion attempts are rejected.
 - Latest `npm run build` passed with the existing Vite large-chunk warning.
-- Browser automation route was unavailable from the in-app browser session, so browser visual sanity could not be re-run in this batch.
-- Post-Phase 2W operating-model update verification: `git diff --check` passed.
-- `node scripts/verify-source-evidence-determinism.mjs` passed and confirmed regenerated source-evidence output remains stable and matches the committed generated fixture.
-- `node scripts/verify-qa-inspector-source-evidence.mjs` passed and confirmed 5 target(s) match coverage readiness, 5 evidence record(s) match app QA visibility, and the Grillpoint contract remains blocked for facade/geometry.
-- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed and confirmed unsupported promotion attempts are rejected.
-- `npm run build` passed with the existing Vite large-chunk warning.
-- Browser visual sanity check confirmed QA mode shows generated real-name/status/geometry overlays while normal mode hides the generated draft layer and keeps the raster-first presentation.
-- Follow-up reconciliation confirmed the generated Phase 2W overlay path is gated by review/QA mode; normal mode does not draw draft storefront/facade/bay/sign/status overlays.
+- Browser sanity check passed at `http://127.0.0.1:5173/`: the app loaded, normal controls were present, QA mode opened, and the selected McDonald's QA panel exposed BIN `3064733`, candidate-match status, and official-footprint language.
 
 ## Next State
 
 - Future prompts should lead with: "Build the visible MVP proof. Preserve gates as constraints."
 - The next executable task is pending Batu or a later explicit brief.
 - Recommended next outcome-based sequence:
-  1. Bring in a true geometry source lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, to replace review-manifest/raster-aligned estimates.
-  2. Create a demoable review scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
+  1. Review the Phase 2AB QA footprint comparison and decide whether the current candidate footprint projection is useful enough for the next demoable scene pass.
+  2. If useful, create a demoable review scene pass that makes the current draft/real-data/official-geometry lanes coherent enough to show for feedback while remaining review-only and not product-ready.
+  3. If not useful, perform one narrow geometry-alignment correction pass with supplied or approved stronger address/lot/storefront evidence.
 - No further prototype, visual, source-evidence, promotion, production, package/tooling, screenshot-QA, or demo-freeze work is opened by this brief.
 
 ## Stop Conditions
@@ -253,7 +154,8 @@ Stop and write `NEEDS_BATU` before:
 
 - Weakening promotion gates, source-evidence determinism checks, QA verifier checks, or negative contract tests.
 - Marking any current record as `product_copy_ready` without satisfying all existing promotion-readiness prerequisites.
-- Promoting exact storefront/facade, entrance/frontage/geometry, exact address placement, exact station geometry, exact facade, or production card claims.
-- Adding external source acquisition, scraping, browser automation for external evidence, APIs, source-vendor decisions, package scripts, CI, package/tooling changes, production schemas, public APIs, or broad coverage.
+- Promoting exact storefront/facade, entrance/frontage/geometry, exact address placement, exact station geometry, exact facade, exact parcel/building footprint, or production card claims.
+- Treating NYC building footprints as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or exact station geometry.
+- Adding external source acquisition beyond a narrow approved sample, scraping, browser automation for external evidence, APIs, source-vendor decisions, package scripts, CI, package/tooling changes, production schemas, public APIs, or broad coverage.
 - Editing raster assets, generating images, revising visual direction, or opening full MVP-29G/MVP-30 QA/demo freeze.
 - Replacing normal-mode raster-first primary world art with SVG, canvas, CSS, DOM-drawn buildings/storefronts/roads/signs, or other code-generated scene art.
