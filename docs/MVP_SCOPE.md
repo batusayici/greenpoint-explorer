@@ -106,6 +106,8 @@ Every major draft field should carry a machine-readable status such as `verified
 
 The draft lane is intentionally separate from the strict promotion/product-readiness lane. Draft records may render in the prototype even when `productCopyReady` is false, but they must not be represented as production-ready, exact, public-release approved, or suitable for product claims.
 
+QA mode is the draft lane's experimental product lab. "Not product-ready" does not mean "do not render": approximate or manual draft scene data should render aggressively in QA mode when status labels are visible. Normal mode remains protected, and promotion-readiness gates remain unchanged.
+
 The draft lane does not approve live data, scraping, backend services, CMS, automated refresh, commercial data licensing, production asset direction, production asset pipeline, broad neighborhood coverage, exact facade/frontage/station geometry claims, or weakening existing promotion-readiness verifiers.
 
 

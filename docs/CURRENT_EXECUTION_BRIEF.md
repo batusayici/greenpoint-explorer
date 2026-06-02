@@ -1,10 +1,19 @@
-# Current Execution Brief - Phase 2W QA-Mode Real-Data Scene Generation Proof Complete
+# Current Execution Brief - Post-Phase 2W MVP Acceleration Operating Model Complete
 
-Status: Phase 2W QA-mode real-data scene generation proof is complete for review. This brief records the completed QA-mode-only generation pass and does not open a further implementation batch.
+Status: Post-Phase 2W MVP Acceleration Operating Model Update is complete. This brief records Batu's requested governance/planning correction and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
 
-## Completed Phase 2W Output
+## Post-Phase 2W Operating Model Correction
+
+- Batu explicitly requested this docs/governance-only correction after Phase 2W was complete, verified, committed, and clean.
+- Added the MVP Acceleration Rule to active governance: until the first working MVP scene is visually demoable, default to implementation over governance.
+- Future batches must produce visible scene progress, real data ingestion/generation progress, interaction progress, or deploy/review progress unless Batu explicitly requests docs/governance-only work or implementation is blocked.
+- Batch success is now measured by visible MVP progress, not documentation completeness.
+- QA mode is recorded as the experimental product lab: render sourced, manual-draft, inferred, symbolic, and blocked fields aggressively when status is visible.
+- Promotion gates, negative contract tests, and QA/product separation remain unchanged.
+
+## Prior Completed Phase 2W Output
 
 - Added structured draft fixture inputs for frontage/building edge, bay count, sign placement, and door/window pattern for the five active targets.
 - Added a deterministic local draft-scene generator in the manifest adapter: draft fixture fields now produce QA-only generated scene entities before rendering.
@@ -43,14 +52,20 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Files Changed
 
+- `AGENTS.md`
+- `docs/AGENTIC_TOOLING.md`
+- `docs/MVP_SCOPE.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Prior Phase 2W implementation changed:
+
 - `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
 - `src/sceneManifest.js`
 - `src/App.jsx`
 - `src/PlaceholderWorld.jsx`
 - `src/styles.css`
-- `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/PLAN.md`
-- `docs/MVP_EXECUTION_LEDGER.md`
 
 ## Verification Commands
 
@@ -80,6 +95,7 @@ git diff --stat
 
 ## Verification State
 
+- Post-Phase 2W operating-model update verification: `git diff --check` passed.
 - `node scripts/verify-source-evidence-determinism.mjs` passed and confirmed regenerated source-evidence output remains stable and matches the committed generated fixture.
 - `node scripts/verify-qa-inspector-source-evidence.mjs` passed and confirmed 5 target(s) match coverage readiness, 5 evidence record(s) match app QA visibility, and the Grillpoint contract remains blocked for facade/geometry.
 - `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed and confirmed unsupported promotion attempts are rejected.
@@ -89,8 +105,12 @@ git diff --stat
 
 ## Next State
 
+- Future prompts should lead with: "Build the visible MVP proof. Preserve gates as constraints."
 - The next executable task is pending Batu or a later explicit brief.
-- Safe candidate areas include Batu review of the Phase 2W QA-mode generation proof, a later approved draft-scene generation refinement pass, or a later approved visual/art/data gate.
+- Recommended next outcome-based sequence:
+  1. Generated QA scene skeleton: confirm or refine all active targets so generated storefront/facade/sign/door/window geometry is visible from structured fixture fields in QA mode.
+  2. Real geometry/data source spike: bring in or prepare at least one real geometry/source-data lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, to replace some manual draft geometry with source-derived geometry.
+  3. Demoable review scene: create a review-only scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
 - No further prototype, visual, source-evidence, promotion, production, package/tooling, screenshot-QA, or demo-freeze work is opened by this brief.
 
 ## Stop Conditions

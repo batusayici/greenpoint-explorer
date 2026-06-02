@@ -42,12 +42,12 @@ Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/A
 
 ## Current State Snapshot
 
-- Current phase: Phase 2W QA-mode Real-Data Scene Generation Proof is complete for review. Batu redirected Phase 2 toward faster proof-of-concept progress through a draft real-data scene lane while preserving normal-mode product meaning and strict promotion readiness. MVP-29E Narrow Corrective Pass remains complete for Batu review and does not reopen full screenshot-QA or demo-freeze work by itself.
+- Current phase: Post-Phase 2W MVP Acceleration Operating Model Update is complete. Batu redirected Phase 2 toward faster proof-of-concept progress through a draft real-data scene lane while preserving normal-mode product meaning and strict promotion readiness. MVP-29E Narrow Corrective Pass remains complete for Batu review and does not reopen full screenshot-QA or demo-freeze work by itself.
 - Phase 1: MVP Scene Prototype is mostly complete; MVP-29E is pending Batu review/minor positioning corrections.
 - Phase 2: Data-Driven Scene MVP is underway; Phase 2A docs-only architecture setup, Phase 2B manifest-driven scene foundation, Phase 2C lightweight manifest QA inspector, Phase 2D review-only source-evidence fixture spike, Phase 2E local-only source-evidence ingestion spike, Phase 2F generated-fixture parity check, Phase 2G complete current-evidence generation parity, Phase 2H generated source-evidence runtime promotion, Phase 2I source-evidence drift guard, Phase 2J source-evidence coverage inspector, Phase 2K raw-input expansion, Phase 2L source-evidence quality tiering, Phase 2M evidence promotion gates, Phase 2N Grillpoint promotion spike, Phase 2O QA inspector surfacing, Phase 2P generated-output inspection ergonomics, Phase 2Q missing-evidence contract validation, Phase 2R verifier negative smoke check, Phase 2S fixture metadata readability check, Phase 2T generated fixture determinism check, Phase 2U promotion readiness contract, and Phase 2V draft real-data scene pipeline are complete under review/local-readiness constraints.
 - Phase 3: Neighborhood Scale Validation is a future high-level scale test.
 - Current Codex task pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended state: next executable task is pending Batu or a later explicit brief. Safe candidate areas include Batu review of the Phase 2W QA-mode generation proof, a later approved draft-scene generation refinement pass, or a later approved visual/art/data gate. MVP-29E review/acceptance, revision, or rejection remains pending Batu and is not resolved by Phase 2 work.
+- Current next recommended state: next executable task is pending Batu or a later explicit brief. Future implementation prompts should lead with "Build the visible MVP proof. Preserve gates as constraints." Safe candidate areas include Batu review/refinement of the Phase 2W QA-mode generated scene skeleton, a real geometry/data source spike, or a demoable review scene pass. MVP-29E review/acceptance, revision, or rejection remains pending Batu and is not resolved by Phase 2 work.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 proof and supported by the Phase 4.5 reusable-system scalability proof.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
@@ -106,6 +106,22 @@ Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/A
 - Phase 2: Data-Driven Scene MVP - underway; Phase 2A docs-only architecture setup, Phase 2B manifest-driven scene foundation, Phase 2C manifest QA inspector, Phase 2D source-evidence fixture spike, Phase 2E source-evidence ingestion spike, Phase 2F generated-fixture parity check, Phase 2G complete current-evidence generation parity, Phase 2H generated source-evidence runtime promotion, Phase 2I source-evidence drift guard, Phase 2J source-evidence coverage inspector, Phase 2K raw-input expansion, Phase 2L source-evidence quality tiering, Phase 2M evidence promotion gates, Phase 2N Grillpoint promotion spike, Phase 2O QA inspector surfacing, Phase 2P generated-output inspection ergonomics, Phase 2Q missing-evidence contract validation, Phase 2R verifier negative smoke check, Phase 2S fixture metadata readability check, Phase 2T generated fixture determinism check, Phase 2U promotion readiness contract, Phase 2V draft real-data scene pipeline, and Phase 2W QA-mode real-data scene generation proof are complete under review/local-readiness constraints.
 - Phase 3: Neighborhood Scale Validation - future high-level scale test.
 
+## MVP Acceleration Operating Model
+
+Until the first working MVP scene is visually demoable, default to implementation over governance. Build the visible MVP proof; preserve gates as constraints.
+
+Every implementation batch must produce visible scene progress, real data ingestion/generation progress, interaction progress that helps evaluate the scene, or deploy/review progress that helps others see the MVP. Docs-only, reconciliation-only, verifier-only, and governance-only batches are invalid unless Batu explicitly requests them or implementation is blocked.
+
+QA mode is the experimental product lab. Render sourced, manual-draft, inferred, symbolic, and blocked draft data aggressively in QA mode when status is visible. Normal mode remains protected. "Not product-ready" does not mean "do not render."
+
+Batch success is measured by visible MVP progress, not documentation completeness. Prefer approximate, status-labeled QA-mode implementation over waiting for perfect source-backed geometry.
+
+## Near-Term Outcome Plan
+
+1. Generated QA scene skeleton: all active targets should have generated storefront/facade/sign/door/window geometry from structured fixture fields, and QA mode should visibly show the real-data scene skeleton. Phase 2W establishes this path; next work may refine alignment, density, and status legibility if Batu requests it.
+2. Real geometry/data source spike: bring in or prepare at least one real geometry/source-data lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, with the goal of replacing some manual draft geometry with source-derived geometry.
+3. Demoable review scene: create a review-only demo scene coherent enough to show someone for feedback. It may remain draft/review-only and not product-ready.
+
 Phase 2 now has two lanes:
 
 - Strict promotion lane: keeps source-evidence generation, promotion gates, product-copy readiness, and verifier/negative-test safeguards intact for future product/public use.
@@ -119,6 +135,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - Phase 2W - QA-mode Real-Data Scene Generation Proof is complete for review.
 - Phase 2W made the draft lane visibly useful in QA mode by generating approximate storefront/facade/bay/sign/door/window/status entities from structured draft fixture fields.
 - Phase 2W remains QA-mode-only so the pipeline proof can move faster without changing product readiness or normal-mode product meaning.
+- Post-Phase 2W operating model correction is complete: future batches should optimize for visible MVP proof progress and use gates as constraints, not as the main output.
 - The strict promotion lane remains intact: product-copy readiness, exact/public claims, promotion gates, determinism checks, and negative contract tests were not weakened.
 - Next executable task: pending Batu or a later explicit brief.
 - MVP-29E Narrow Corrective Pass remains complete for Batu review at `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`.

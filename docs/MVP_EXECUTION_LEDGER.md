@@ -55,14 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2W QA-mode Real-Data Scene Generation Proof is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Post-Phase 2W MVP Acceleration Operating Model Update is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2W QA-mode real-data scene generation proof complete for review and does not open a further implementation batch. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the post-Phase 2W operating-model correction complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Post-Phase 2W MVP Acceleration Operating Model
+
+Status:
+- Complete.
+
+Scope:
+- Batu explicitly requested a docs/governance-only correction after Phase 2W was complete, verified, committed, and clean.
+- Update the active operating model so future batches prioritize visible MVP progress and real data-to-scene pipeline progress while preserving promotion gates and QA/product separation.
+
+Files changed:
+- `AGENTS.md`
+- `docs/AGENTIC_TOOLING.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added the MVP Acceleration Rule: until the first working MVP scene is visually demoable, default to implementation over governance.
+- Recorded that implementation batches must improve the visible scene, data-to-scene generation path, interaction, or deploy/review loop unless Batu explicitly requests docs/governance-only work or implementation is blocked.
+- Recorded that batch success is measured by visible MVP progress, not documentation completeness.
+- Recorded QA mode as the experimental product lab where sourced, manual-draft, inferred, symbolic, and blocked fields may render aggressively when their status is visible.
+- Preserved strict promotion readiness, negative contract tests, and QA/product separation.
+- Updated the near-term plan to be outcome-based: generated QA scene skeleton, real geometry/data source spike, and demoable review scene.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, product/public claims, exact geometry decisions, source-authority decisions, and opening the next implementation brief.
+- The next executable task is pending Batu or a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records the post-Phase 2W operating-model correction complete and points future prompts toward visible MVP proof progress.
 
 ### 2026-06-02 - Phase 2W QA-Mode Real-Data Scene Generation Proof
 

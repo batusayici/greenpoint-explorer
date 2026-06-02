@@ -48,12 +48,17 @@ Agents may use approved tooling to:
 
 Use game-development practices only when they fit this web-first, map-mode-only diorama prototype.
 
+- Until the first working MVP scene is visually demoable, default to implementation over governance: build the visible MVP proof, with gates preserved as constraints.
+- Batch success is measured by visible MVP progress, not documentation completeness.
+- An implementation batch must improve the working scene, data-to-scene generation path, interaction, or deploy/review loop. Docs-only, verifier-only, reconciliation-only, and governance-only batches require an explicit Batu request or a real blocker preventing implementation.
+- QA mode is the experimental product lab: render sourced, manual-draft, inferred, symbolic, or blocked draft data aggressively when its status is visible; normal/product mode remains protected.
+- Prefer approximate, status-labeled QA-mode implementation over waiting for perfect source-backed geometry.
 - Use Plan Mode before edits when scope is unclear, multi-file, or likely to affect visual direction, product behavior, public interfaces, architecture, or scope.
 - Work in small scoped batches with explicit acceptance criteria before implementation.
 - Verify directly after edits using file checks, searches, or the fastest useful feedback loop available.
 - Keep source-of-truth docs synchronized; do not leave stale planning text that contradicts current project state.
 - Separate creative intent, location/data truth, rendering implementation, and interaction behavior.
-- Use docs-only batches when planning, review framing, visual preproduction, or governance is the goal.
+- Use docs-only batches only when Batu explicitly requests planning, review framing, visual preproduction, or governance as the batch goal, or when implementation is blocked.
 - Avoid premature engineering systems, automation stacks, implementation scaffolding, and broad game-creator workflows.
 - Treat reviewable artifact entry and exit criteria as batch acceptance gates, not as game intro, menu, onboarding, or polish requirements.
 

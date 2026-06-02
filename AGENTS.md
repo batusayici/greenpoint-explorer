@@ -83,6 +83,27 @@ Reviewable artifact entry and exit criteria are batch acceptance gates only. The
 
 After the baseline repository commit, future batches must report `git status` and a `git diff --stat` summary.
 
+## MVP Acceleration Rule
+
+Until the first working MVP scene is visually demoable, default to implementation over governance.
+
+Build the visible MVP proof. Preserve gates as constraints.
+
+Every implementation batch must produce at least one of:
+
+- A visible scene improvement.
+- A real data ingestion/generation improvement.
+- A working interaction improvement that helps evaluate the scene.
+- A deploy/review improvement that helps others see the MVP.
+
+Docs-only, reconciliation-only, verifier-only, and governance-only batches are not allowed unless Batu explicitly requests them or a real blocker prevents implementation.
+
+Batch success is measured by visible MVP progress, not documentation completeness. A batch is invalid if it only updates docs, comments, tests, or governance files without improving the working scene, data-to-scene generation path, interaction, or deploy/review loop, unless Batu explicitly requested that docs/governance-only batch.
+
+QA mode is the experimental product lab. It may use sourced, manual-draft, inferred, symbolic, and blocked fields as long as their status is visible. Normal mode remains protected. Do not confuse "not product-ready" with "do not render": render draft data aggressively in QA mode, label its status clearly, and keep promotion gates unchanged.
+
+Prefer approximate, status-labeled QA-mode implementation over waiting for perfect source-backed geometry. Future implementation prompts should lead with "Build the visible MVP proof. Preserve gates as constraints," not "Preserve gates first, then maybe build if safe."
+
 ## Plan Reconciliation
 
 After every successful MVP/prototype batch, Codex must reconcile the MVP execution-control documents before final response:
