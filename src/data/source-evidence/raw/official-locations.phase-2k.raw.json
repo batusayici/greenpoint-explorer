@@ -18,6 +18,8 @@
       "capturedOn": "2026-05-31",
       "reviewedOn": "2026-06-02",
       "usageStatus": "review-only-claim-support",
+      "evidenceStrength": "official_location_only",
+      "claimReadiness": "review_only",
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports review-card identity and address context; does not support exact facade, storefront frontage, entrance placement, trade-dress clearance, hours, status, or promotions."
@@ -64,6 +66,8 @@
       "capturedOn": "2026-05-31",
       "reviewedOn": "2026-06-02",
       "usageStatus": "review-only-claim-support",
+      "evidenceStrength": "official_location_only",
+      "claimReadiness": "review_only",
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports review-card identity and address context; does not support exact visual geometry, storefront frontage, entrance placement, exception scope, hours, status, or promotions."
@@ -111,6 +115,8 @@
       "capturedOn": "2026-05-31",
       "reviewedOn": "2026-06-02",
       "usageStatus": "review-only-claim-support",
+      "evidenceStrength": "official_location_only",
+      "claimReadiness": "review_only",
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports review-card branch identity and address context; does not support exact facade, storefront frontage, branch entrance placement, ATM/service availability, hours, status, or promotions."

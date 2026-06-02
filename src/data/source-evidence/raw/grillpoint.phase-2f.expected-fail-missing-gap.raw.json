@@ -18,6 +18,8 @@
       "capturedOn": "2026-05-31",
       "reviewedOn": "2026-06-01",
       "usageStatus": "review-only-claim-support",
+      "evidenceStrength": "reviewed",
+      "claimReadiness": "review_only",
       "confidence": {
         "value": "medium",
         "rationale": "Supports review-card identity, category, and address context; does not support exact frontage, facade, or entrance placement."

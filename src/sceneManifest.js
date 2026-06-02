@@ -1,6 +1,17 @@
 const REQUIRED_MANIFEST_VERSION = "0.1";
 const REQUIRED_EVIDENCE_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
 const LEGACY_JPEG_EXTENSION = "." + "jpeg";
+const EVIDENCE_STRENGTH_VALUES = new Set([
+  "reviewed",
+  "official_location_only",
+  "manifest_context_only",
+  "blocked",
+]);
+const CLAIM_READINESS_VALUES = new Set([
+  "product_copy_ready",
+  "review_only",
+  "blocked",
+]);
 
 export function loadMvpSceneFromManifest(manifest, assetSrcById, sourceEvidenceFixture = null) {
   const validatedManifest = validateSceneManifest(manifest);
@@ -183,6 +194,8 @@ function buildTargetQA(object, manifest, indexes, evidenceIndex) {
       capturedOn: record.capturedOn,
       reviewedOn: record.reviewedOn,
       usageStatus: record.usageStatus,
+      evidenceStrength: record.evidenceStrength,
+      claimReadiness: record.claimReadiness,
       confidence: record.confidence,
       sourceRecordIds: record.sourceRecordIds,
       claimMappings: record.claimMappings,
@@ -332,6 +345,8 @@ export function validateSourceEvidenceFixture(fixture, manifest, indexes = build
     assertString(record.capturedOn, `source evidence ${record.id}.capturedOn`);
     assertString(record.reviewedOn, `source evidence ${record.id}.reviewedOn`);
     assertString(record.usageStatus, `source evidence ${record.id}.usageStatus`);
+    assertOneOf(record.evidenceStrength, EVIDENCE_STRENGTH_VALUES, `source evidence ${record.id}.evidenceStrength`);
+    assertOneOf(record.claimReadiness, CLAIM_READINESS_VALUES, `source evidence ${record.id}.claimReadiness`);
     assertObject(record.confidence, `source evidence ${record.id}.confidence`);
     assertString(record.confidence.value, `source evidence ${record.id}.confidence.value`);
     assertString(record.confidence.rationale, `source evidence ${record.id}.confidence.rationale`);
@@ -444,6 +459,13 @@ function assertObject(value, label) {
 
 function assertString(value, label) {
   if (typeof value !== "string" || !value) throw new Error(`${label} must be a string.`);
+}
+
+function assertOneOf(value, values, label) {
+  assertString(value, label);
+  if (!values.has(value)) {
+    throw new Error(`${label} must be one of: ${[...values].join(", ")}.`);
+  }
 }
 
 function assertNumber(value, label) {

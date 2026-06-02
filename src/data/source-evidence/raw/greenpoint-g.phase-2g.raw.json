@@ -21,6 +21,8 @@
       "capturedOn": "2026-05-31",
       "reviewedOn": "2026-06-01",
       "usageStatus": "review-only-context-support",
+      "evidenceStrength": "reviewed",
+      "claimReadiness": "review_only",
       "confidence": {
         "value": "medium-high",
         "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."

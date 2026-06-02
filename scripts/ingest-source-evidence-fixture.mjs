@@ -7,6 +7,17 @@ import { validateSceneManifest } from "../src/sceneManifest.js";
 
 const RAW_SCHEMA_VERSION = "local-source-evidence-raw.v0.1";
 const OUTPUT_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
+const EVIDENCE_STRENGTH_VALUES = new Set([
+  "reviewed",
+  "official_location_only",
+  "manifest_context_only",
+  "blocked",
+]);
+const CLAIM_READINESS_VALUES = new Set([
+  "product_copy_ready",
+  "review_only",
+  "blocked",
+]);
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -286,6 +297,8 @@ function convertRawRecord(record, index) {
   assertString(record.capturedOn, `${label}.capturedOn`);
   assertString(record.reviewedOn, `${label}.reviewedOn`);
   assertString(record.usageStatus, `${label}.usageStatus`);
+  assertOneOf(record.evidenceStrength, EVIDENCE_STRENGTH_VALUES, `${label}.evidenceStrength`);
+  assertOneOf(record.claimReadiness, CLAIM_READINESS_VALUES, `${label}.claimReadiness`);
   assertObject(record.confidence, `${label}.confidence`);
   assertString(record.confidence.value, `${label}.confidence.value`);
   assertString(record.confidence.rationale, `${label}.confidence.rationale`);
@@ -304,6 +317,8 @@ function convertRawRecord(record, index) {
     capturedOn: record.capturedOn,
     reviewedOn: record.reviewedOn,
     usageStatus: record.usageStatus,
+    evidenceStrength: record.evidenceStrength,
+    claimReadiness: record.claimReadiness,
     confidence: {
       value: record.confidence.value,
       rationale: record.confidence.rationale,
@@ -405,6 +420,13 @@ function assertObject(value, label) {
 
 function assertString(value, label) {
   if (typeof value !== "string" || !value) throw new Error(`${label} must be a string.`);
+}
+
+function assertOneOf(value, values, label) {
+  assertString(value, label);
+  if (!values.has(value)) {
+    throw new Error(`${label} must be one of: ${[...values].join(", ")}.`);
+  }
 }
 
 main().catch((error) => {

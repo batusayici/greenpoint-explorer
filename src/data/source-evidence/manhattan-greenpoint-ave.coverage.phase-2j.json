@@ -16,6 +16,22 @@
     "evidenceRecordCount": 5,
     "targetsWithGeneratedEvidence": 5,
     "targetsWithoutGeneratedEvidence": 0,
+    "evidenceStrengthByRecord": {
+      "reviewed": 2,
+      "official_location_only": 3,
+      "manifest_context_only": 0,
+      "blocked": 0
+    },
+    "claimReadinessByRecord": {
+      "product_copy_ready": 0,
+      "review_only": 5,
+      "blocked": 0
+    },
+    "claimReadinessByTarget": {
+      "product_copy_ready": 0,
+      "review_only": 5,
+      "blocked": 0
+    },
     "unlinkedEvidenceRecordCount": 0,
     "unprovenancedRealWorldClaims": 0,
     "hiddenManualFixes": 0
@@ -42,6 +58,25 @@
         "evidence-grillpoint-identity-address-review"
       ],
       "coverageStatus": "generated-evidence-linked",
+      "evidenceStrengths": [
+        "reviewed"
+      ],
+      "claimReadiness": "review_only",
+      "evidenceQualityRecords": [
+        {
+          "id": "evidence-grillpoint-identity-address-review",
+          "evidenceStrength": "reviewed",
+          "claimReadiness": "review_only",
+          "confidence": {
+            "value": "medium",
+            "rationale": "Supports review-card identity, category, and address context; does not support exact frontage, facade, or entrance placement."
+          },
+          "remainingGaps": [
+            "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate.",
+            "Parcel/tax-lot and building-footprint geometry remain unresolved for this MVP slice."
+          ]
+        }
+      ],
       "coverageNotes": [
         "Generated source-evidence records are linked to this target for review-only inspection."
       ],
@@ -101,6 +136,25 @@
         "evidence-mcdonalds-identity-address-review"
       ],
       "coverageStatus": "generated-evidence-linked",
+      "evidenceStrengths": [
+        "official_location_only"
+      ],
+      "claimReadiness": "review_only",
+      "evidenceQualityRecords": [
+        {
+          "id": "evidence-mcdonalds-identity-address-review",
+          "evidenceStrength": "official_location_only",
+          "claimReadiness": "review_only",
+          "confidence": {
+            "value": "medium-high",
+            "rationale": "Supports review-card identity and address context; does not support exact facade, storefront frontage, entrance placement, trade-dress clearance, hours, status, or promotions."
+          },
+          "remainingGaps": [
+            "Exact facade geometry, storefront frontage/order, adjacent-unit relationship, entrance position, and address placement remain approximate or blocked.",
+            "Production logo/trade-dress clearance and official brand approval remain blocked."
+          ]
+        }
+      ],
       "coverageNotes": [
         "Generated source-evidence records are linked to this target for review-only inspection."
       ],
@@ -160,6 +214,25 @@
         "evidence-dunkin-identity-address-review"
       ],
       "coverageStatus": "generated-evidence-linked",
+      "evidenceStrengths": [
+        "official_location_only"
+      ],
+      "claimReadiness": "review_only",
+      "evidenceQualityRecords": [
+        {
+          "id": "evidence-dunkin-identity-address-review",
+          "evidenceStrength": "official_location_only",
+          "claimReadiness": "review_only",
+          "confidence": {
+            "value": "medium-high",
+            "rationale": "Supports review-card identity and address context; does not support exact visual geometry, storefront frontage, entrance placement, exception scope, hours, status, or promotions."
+          },
+          "remainingGaps": [
+            "Exact facade geometry, storefront frontage/order, entrance position, and address placement remain approximate or blocked.",
+            "The SW Dunkin visual treatment remains MVP-only, stylized, non-production, and governed by the existing exception; this evidence record does not approve production use, tracing, texture extraction, stored facade reuse, training input, generation input, or exact trade-dress reproduction."
+          ]
+        }
+      ],
       "coverageNotes": [
         "Generated source-evidence records are linked to this target for review-only inspection."
       ],
@@ -219,6 +292,25 @@
         "evidence-citizens-bank-identity-address-review"
       ],
       "coverageStatus": "generated-evidence-linked",
+      "evidenceStrengths": [
+        "official_location_only"
+      ],
+      "claimReadiness": "review_only",
+      "evidenceQualityRecords": [
+        {
+          "id": "evidence-citizens-bank-identity-address-review",
+          "evidenceStrength": "official_location_only",
+          "claimReadiness": "review_only",
+          "confidence": {
+            "value": "medium-high",
+            "rationale": "Supports review-card branch identity and address context; does not support exact facade, storefront frontage, branch entrance placement, ATM/service availability, hours, status, or promotions."
+          },
+          "remainingGaps": [
+            "Exact facade geometry, storefront frontage/order, branch entrance position, ATM placement, service availability, and address placement remain approximate or blocked.",
+            "Production logo/trade-dress clearance and official brand approval remain blocked."
+          ]
+        }
+      ],
       "coverageNotes": [
         "Generated source-evidence records are linked to this target for review-only inspection."
       ],
@@ -278,6 +370,25 @@
         "evidence-greenpoint-g-station-context-review"
       ],
       "coverageStatus": "generated-evidence-linked",
+      "evidenceStrengths": [
+        "reviewed"
+      ],
+      "claimReadiness": "review_only",
+      "evidenceQualityRecords": [
+        {
+          "id": "evidence-greenpoint-g-station-context-review",
+          "evidenceStrength": "reviewed",
+          "claimReadiness": "review_only",
+          "confidence": {
+            "value": "medium-high",
+            "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."
+          },
+          "remainingGaps": [
+            "Exact entrance coordinates, stair alignment, station footprint, and production transit mapping remain blocked.",
+            "The authored raster cue remains review-scale and not a source-derived transit geometry layer."
+          ]
+        }
+      ],
       "coverageNotes": [
         "Generated source-evidence records are linked to this target for review-only inspection."
       ],
@@ -348,6 +459,7 @@
   "notes": [
     "This report is generated from the review-only scene manifest and Phase 2H runtime source-evidence fixture.",
     "Generated evidence coverage does not approve production data, exact facade/frontage/address placement, exact station geometry, or public claims.",
+    "Claim readiness is reported separately from coverage so generated evidence cannot be mistaken for product-copy-ready source truth.",
     "Any target without generated evidence still relies on manifest source references and remains a candidate for future raw-input expansion."
   ]
 }

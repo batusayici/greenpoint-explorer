@@ -6,6 +6,17 @@ import { fileURLToPath } from "node:url";
 import { validateSceneManifest, validateSourceEvidenceFixture } from "../src/sceneManifest.js";
 
 const REPORT_SCHEMA_VERSION = "source-evidence-coverage-report.v0.1";
+const EVIDENCE_STRENGTH_VALUES = [
+  "reviewed",
+  "official_location_only",
+  "manifest_context_only",
+  "blocked",
+];
+const CLAIM_READINESS_VALUES = [
+  "product_copy_ready",
+  "review_only",
+  "blocked",
+];
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -21,6 +32,18 @@ async function main() {
   const expectedTargetsWithoutEvidence = optionalNumber(
     options["expect-targets-without-evidence"],
     "expect-targets-without-evidence",
+  );
+  const expectedProductCopyReadyTargets = optionalNumber(
+    options["expect-product-copy-ready-targets"],
+    "expect-product-copy-ready-targets",
+  );
+  const expectedReviewOnlyTargets = optionalNumber(
+    options["expect-review-only-targets"],
+    "expect-review-only-targets",
+  );
+  const expectedBlockedTargets = optionalNumber(
+    options["expect-blocked-targets"],
+    "expect-blocked-targets",
   );
 
   const manifest = validateSceneManifest(await readJson(manifestPath, "scene manifest"));
@@ -38,6 +61,9 @@ async function main() {
   const failures = collectExpectationFailures(report, {
     expectedTargetsWithEvidence,
     expectedTargetsWithoutEvidence,
+    expectedProductCopyReadyTargets,
+    expectedReviewOnlyTargets,
+    expectedBlockedTargets,
   });
   if (failures.length) {
     console.error(`FAIL source evidence coverage inspection: ${failures.length} issue(s).`);
@@ -57,7 +83,10 @@ async function main() {
   console.log([
     "PASS source evidence coverage inspection:",
     `${report.summary.targetsWithGeneratedEvidence}/${report.summary.targetCount} target(s) have generated evidence;`,
-    `${report.summary.targetsWithoutGeneratedEvidence} target(s) remain manifest-source-only.`,
+    `${report.summary.targetsWithoutGeneratedEvidence} target(s) remain manifest-source-only;`,
+    `${report.summary.claimReadinessByTarget.product_copy_ready} product-copy-ready target(s);`,
+    `${report.summary.claimReadinessByTarget.review_only} review-only target(s);`,
+    `${report.summary.claimReadinessByTarget.blocked} blocked target(s).`,
   ].join(" "));
 }
 
@@ -69,6 +98,18 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
   const evidenceRecordIds = evidenceFixture.records.map((record) => record.id);
   const linkedEvidenceIds = new Set(targetReports.flatMap((target) => target.generatedEvidenceRecordIds));
   const unlinkedEvidenceRecordIds = evidenceRecordIds.filter((id) => !linkedEvidenceIds.has(id));
+  const evidenceStrengthByRecord = countBy(
+    evidenceFixture.records.map((record) => record.evidenceStrength),
+    EVIDENCE_STRENGTH_VALUES,
+  );
+  const claimReadinessByRecord = countBy(
+    evidenceFixture.records.map((record) => record.claimReadiness),
+    CLAIM_READINESS_VALUES,
+  );
+  const claimReadinessByTarget = countBy(
+    targetReports.map((target) => target.claimReadiness),
+    CLAIM_READINESS_VALUES,
+  );
 
   return {
     schemaVersion: REPORT_SCHEMA_VERSION,
@@ -88,6 +129,9 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
       evidenceRecordCount: evidenceFixture.records.length,
       targetsWithGeneratedEvidence,
       targetsWithoutGeneratedEvidence,
+      evidenceStrengthByRecord,
+      claimReadinessByRecord,
+      claimReadinessByTarget,
       unlinkedEvidenceRecordCount: unlinkedEvidenceRecordIds.length,
       unprovenancedRealWorldClaims: manifest.qa.unprovenancedRealWorldClaims,
       hiddenManualFixes: manifest.qa.hiddenManualFixes,
@@ -103,6 +147,7 @@ function buildCoverageReport({ manifest, evidenceFixture, manifestInput, evidenc
     notes: [
       "This report is generated from the review-only scene manifest and Phase 2H runtime source-evidence fixture.",
       "Generated evidence coverage does not approve production data, exact facade/frontage/address placement, exact station geometry, or public claims.",
+      "Claim readiness is reported separately from coverage so generated evidence cannot be mistaken for product-copy-ready source truth.",
       "Any target without generated evidence still relies on manifest source references and remains a candidate for future raw-input expansion.",
     ],
   };
@@ -116,6 +161,8 @@ function buildTargetReport(object, indexes) {
   const anchor = indexes.anchorsById.get(object.anchorId);
   const evidenceRecords = collectTargetEvidence(object, place, indexes);
   const manifestSources = collectManifestSources({ object, place, business, addressRecords, storefrontRecords, anchor, indexes });
+  const evidenceStrengths = uniqueStrings(evidenceRecords.map((record) => record.evidenceStrength));
+  const claimReadiness = summarizeClaimReadiness(evidenceRecords);
 
   return {
     targetId: object.appTarget.id,
@@ -133,6 +180,15 @@ function buildTargetReport(object, indexes) {
     } : null,
     generatedEvidenceRecordIds: evidenceRecords.map((record) => record.id),
     coverageStatus: evidenceRecords.length ? "generated-evidence-linked" : "manifest-source-refs-only",
+    evidenceStrengths,
+    claimReadiness,
+    evidenceQualityRecords: evidenceRecords.map((record) => ({
+      id: record.id,
+      evidenceStrength: record.evidenceStrength,
+      claimReadiness: record.claimReadiness,
+      confidence: record.confidence,
+      remainingGaps: record.remainingGaps,
+    })),
     coverageNotes: evidenceRecords.length
       ? ["Generated source-evidence records are linked to this target for review-only inspection."]
       : ["No generated source-evidence record is linked yet; this target remains a candidate for future raw-input expansion."],
@@ -195,6 +251,11 @@ function collectManifestSources({ object, place, business, addressRecords, store
 
 function collectExpectationFailures(report, expectations) {
   const failures = [];
+  const expectedReadiness = [
+    ["product_copy_ready", expectations.expectedProductCopyReadyTargets, "product-copy-ready targets"],
+    ["review_only", expectations.expectedReviewOnlyTargets, "review-only targets"],
+    ["blocked", expectations.expectedBlockedTargets, "blocked targets"],
+  ];
   if (
     expectations.expectedTargetsWithEvidence !== null &&
     report.summary.targetsWithGeneratedEvidence !== expectations.expectedTargetsWithEvidence
@@ -218,6 +279,15 @@ function collectExpectationFailures(report, expectations) {
   if (report.summary.unlinkedEvidenceRecordCount !== 0) {
     failures.push(`source evidence fixture has ${report.summary.unlinkedEvidenceRecordCount} unlinked record(s)`);
   }
+  for (const [key, expected, label] of expectedReadiness) {
+    if (expected !== null && report.summary.claimReadinessByTarget[key] !== expected) {
+      failures.push([
+        `${label} mismatch`,
+        `actual ${report.summary.claimReadinessByTarget[key]}`,
+        `expected ${expected}`,
+      ].join("; "));
+    }
+  }
   return failures;
 }
 
@@ -232,6 +302,22 @@ function indexById(records) {
 
 function uniqueStrings(values) {
   return [...new Set(values.filter((value) => typeof value === "string" && value))];
+}
+
+function summarizeClaimReadiness(records) {
+  if (!records.length) return "blocked";
+  const readiness = new Set(records.map((record) => record.claimReadiness));
+  if (readiness.has("blocked")) return "blocked";
+  if (readiness.has("review_only")) return "review_only";
+  return "product_copy_ready";
+}
+
+function countBy(values, keys) {
+  const counts = Object.fromEntries(keys.map((key) => [key, 0]));
+  for (const value of values) {
+    if (Object.hasOwn(counts, value)) counts[value] += 1;
+  }
+  return counts;
 }
 
 async function readJson(path, label) {
