@@ -216,3 +216,29 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - Phase 2R Verifier Negative Smoke Check: add a focused expected-fail command or temporary-fixture smoke check that removes one Grillpoint `mustNotClaim` guardrail and confirms the verifier rejects it.
+
+### Batch 2026-06-02 23:24
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2R Verifier Negative Smoke Check.
+- Added an optional in-memory negative self-test that removes the `exact facade` must-not-claim guardrail and confirms the verifier rejects the mutated Grillpoint contract.
+- Preserved committed source-evidence data, generated fixture, coverage report, missing-evidence contract, visual rendering, promotion gates, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- Auto-advance may continue only if the next batch remains narrow, verified, local, source-evidence focused, and within the approved Phase 2 direction.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Phase 2S Fixture Metadata Readability Check: add a narrow local check or report line that lists active source-evidence input/output paths and review-only status already present in committed files.

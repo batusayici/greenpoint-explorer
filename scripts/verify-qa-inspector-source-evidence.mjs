@@ -33,6 +33,7 @@ async function main() {
   const coverageInput = options.coverage ?? "src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json";
   const grillpointReportInput = options["grillpoint-report"]
     ?? "src/data/source-evidence/grillpoint.promotion-readiness.phase-2n.json";
+  const runNegativeContractSelfTest = options["self-test-negative-contract"] === "true";
 
   const manifest = await readJson(resolve(repoRoot, manifestInput), "scene manifest");
   const evidenceFixture = await readJson(resolve(repoRoot, evidenceInput), "source evidence fixture");
@@ -58,6 +59,11 @@ async function main() {
   if (failures.length) {
     console.error(`FAIL QA inspector source-evidence verification: ${failures.length} issue(s).`);
     for (const failure of failures) console.error(`- ${failure}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  if (runNegativeContractSelfTest && !runNegativeContractGuardrailSelfTest(grillpointReport)) {
     process.exitCode = 1;
     return;
   }
@@ -155,6 +161,24 @@ function collectGrillpointContractFailures(appScene, grillpointReport) {
   );
 
   return failures;
+}
+
+function runNegativeContractGuardrailSelfTest(report) {
+  const mutatedReport = JSON.parse(JSON.stringify(report));
+  const guardrail = "exact facade";
+  mutatedReport.missingEvidenceContract.storefrontFacade.mustNotClaim =
+    mutatedReport.missingEvidenceContract.storefrontFacade.mustNotClaim.filter((item) => item !== guardrail);
+
+  const failures = collectMissingEvidenceContractShapeFailures(mutatedReport);
+  const expectedFailure = `Grillpoint missingEvidenceContract.storefrontFacade.mustNotClaim is missing "${guardrail}"`;
+  if (!failures.includes(expectedFailure)) {
+    console.error("FAIL negative contract self-test: mutated Grillpoint contract was not rejected as expected.");
+    for (const failure of failures) console.error(`- observed: ${failure}`);
+    return false;
+  }
+
+  console.log(`PASS negative contract self-test: removing "${guardrail}" was rejected.`);
+  return true;
 }
 
 function collectMissingEvidenceContractShapeFailures(report) {
