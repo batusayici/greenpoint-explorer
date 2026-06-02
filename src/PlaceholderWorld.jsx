@@ -613,7 +613,36 @@ function drawDraftQaOverlay(graphics, target) {
 }
 
 function drawGeneratedDraftEntity(graphics, entity) {
-  if (entity.type === "field-status-callout") return;
+  if (entity.type === "field-status-callout" || entity.type === "real-data-field-status-callout") return;
+  if (entity.type === "real-data-building-sample") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.045, strokeAlpha: 0.52, strokeWidth: 3 });
+    return;
+  }
+  if (entity.type === "real-data-generated-facade") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.12, strokeAlpha: 0.78, strokeWidth: 2.4 });
+    return;
+  }
+  if (entity.type === "real-data-storefront-sample") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.2, strokeAlpha: 0.98, strokeWidth: 4 });
+    return;
+  }
+  if (entity.type === "real-data-source-badge") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.88, strokeAlpha: 0.96, strokeWidth: 2, forceFillColor: 0x24453c });
+    return;
+  }
+  if (entity.type === "real-data-frontage-segment") {
+    drawOverlayConnector(graphics, entity, { alpha: 0.88, endpoint: false, width: 3.2 });
+    return;
+  }
+  if (entity.type === "real-data-address-anchor") {
+    drawPointCue(graphics, entity.point, entity.status, { radius: 7.5, cross: true });
+    return;
+  }
+  if (entity.type === "real-data-blocked-entrance") {
+    drawOverlayRect(graphics, entity, { fillAlpha: 0.18, strokeAlpha: 0.96, strokeWidth: 2.5 });
+    drawBlockedBoundsCue(graphics, entity.bounds);
+    return;
+  }
   if (entity.type === "footprint") {
     drawOverlayRect(graphics, entity, { fillAlpha: 0.018, strokeAlpha: 0.3, strokeWidth: 2.5 });
     return;
@@ -662,7 +691,29 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
   layer.visible = Boolean(reviewMode && generatedScene?.entities?.length);
   if (!layer.visible) return;
 
-  const callouts = generatedScene.entities.filter((entity) => entity.type === "field-status-callout");
+  const sourceBadges = generatedScene.entities.filter((entity) => entity.type === "real-data-source-badge");
+  for (const badge of sourceBadges) {
+    if (!badge.bounds) continue;
+    const text = new Text({
+      text: badge.text ?? badge.label,
+      style: {
+        fill: "#f8ecd4",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 9,
+        fontWeight: "900",
+        lineHeight: 11,
+      },
+    });
+    text.resolution = 2;
+    text.x = badge.bounds.x + 8;
+    text.y = badge.bounds.y + 6;
+    layer.addChild(text);
+  }
+
+  const callouts = generatedScene.entities.filter((entity) => (
+    entity.type === "field-status-callout" ||
+    entity.type === "real-data-field-status-callout"
+  ));
   for (const callout of callouts) {
     if (!callout.point) continue;
     drawCompactStatusPin(graphics, callout);
@@ -752,6 +803,38 @@ function drawOverlayConnector(graphics, connector, options = {}) {
   }
 }
 
+function drawPointCue(graphics, point, status, options = {}) {
+  if (!point) return;
+  const color = getDraftStatusColor(status);
+  const radius = options.radius ?? 6;
+  graphics
+    .circle(point.x, point.y, radius)
+    .fill({ color: 0xfff2d1, alpha: 0.68 })
+    .stroke({ color, width: 2, alpha: 0.92 });
+  graphics
+    .circle(point.x, point.y, Math.max(2, radius * 0.38))
+    .fill({ color, alpha: 0.96 });
+  if (options.cross) {
+    graphics
+      .moveTo(point.x - radius - 4, point.y)
+      .lineTo(point.x + radius + 4, point.y)
+      .moveTo(point.x, point.y - radius - 4)
+      .lineTo(point.x, point.y + radius + 4)
+      .stroke({ color, width: 1.4, alpha: 0.7 });
+  }
+}
+
+function drawBlockedBoundsCue(graphics, bounds) {
+  if (!bounds) return;
+  const color = getDraftStatusColor("blocked");
+  graphics
+    .moveTo(bounds.x + 5, bounds.y + 5)
+    .lineTo(bounds.x + bounds.width - 5, bounds.y + bounds.height - 5)
+    .moveTo(bounds.x + bounds.width - 5, bounds.y + 5)
+    .lineTo(bounds.x + 5, bounds.y + bounds.height - 5)
+    .stroke({ color, width: 2, alpha: 0.72 });
+}
+
 function drawSymbolicCue(graphics, cue) {
   const color = getDraftStatusColor(cue.status);
   graphics
@@ -768,6 +851,10 @@ function drawSymbolicCue(graphics, cue) {
 
 function getDraftStatusColor(status) {
   if (status === "sourced" || status === "verified") return 0x6fb08f;
+  if (status === "source_backed") return 0x3aa37b;
+  if (status === "human_prepared") return 0x4e9bd7;
+  if (status === "estimated_from_source") return 0xe0a24d;
+  if (status === "generated_placeholder") return 0xb2a26d;
   if (status === "inferred") return 0xe0a24d;
   if (status === "manual_draft") return 0xf0bc45;
   if (status === "symbolic") return 0x6f9ec9;

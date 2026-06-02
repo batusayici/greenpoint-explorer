@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "real-data-corner-fixture.v0.1",
+  "fixtureId": "manhattan-greenpoint-ave.nw-grillpoint.phase-2y.real-data",
+  "sceneId": "manhattan-greenpoint-ave-mvp-slice",
+  "lane": "review-demo-only-real-data-vertical-slice",
+  "status": "prototype-local-real-data-sample",
+  "reviewedOn": "2026-06-02",
+  "selectedCorner": "corner-nw",
+  "sourceLane": "manual-prepared-sample-from-reviewed-source-evidence-and-raster-alignment",
+  "notes": [
+    "Phase 2Y narrow vertical slice for proving real-data fixture to deterministic adapter to QA scene integration.",
+    "Identity, address, and category reuse existing reviewed source-evidence references.",
+    "Geometry is human-prepared or estimated from source context for QA review only; it is not product-ready, survey-grade, or an exact frontage/facade/entrance claim.",
+    "Normal mode must not render this real-data QA layer."
+  ],
+  "statusValues": {
+    "source_backed": "Supported by existing reviewed source-evidence for review/demo use.",
+    "human_prepared": "Prepared locally by a human as a small sample for scene-generation proof; not exact source geometry.",
+    "estimated_from_source": "Estimated from source context and current scene alignment, not exact measured geometry.",
+    "generated_placeholder": "Generated from deterministic adapter rules to complete the QA skeleton.",
+    "blocked": "Blocked from exact/product/public claims pending stronger evidence and approval."
+  },
+  "records": [
+    {
+      "id": "real-data-grillpoint-nw-corner",
+      "targetId": "grillpoint-deli",
+      "placeId": "place-grillpoint-deli",
+      "cornerId": "corner-nw",
+      "business": {
+        "name": {
+          "value": "Grillpoint Deli",
+          "status": "source_backed",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-grillpoint-identity-address-review"
+          ],
+          "notes": "Existing reviewed source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Deli / food retail",
+          "status": "source_backed",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-grillpoint-identity-address-review"
+          ],
+          "notes": "Existing reviewed source evidence supports review/demo category context."
+        },
+        "addressContext": {
+          "value": "903 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "source_backed",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourceEvidenceRecordIds": [
+            "evidence-grillpoint-identity-address-review"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometry": {
+        "buildingSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 284,
+            "y": 92,
+            "width": 356,
+            "height": 216
+          },
+          "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+        },
+        "frontageSegment": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "restaurantji-grillpoint",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "from": {
+            "x": 386,
+            "y": 188
+          },
+          "to": {
+            "x": 560,
+            "y": 188
+          },
+          "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+        },
+        "storefrontSample": {
+          "status": "human_prepared",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "bounds": {
+            "x": 386,
+            "y": 188,
+            "width": 174,
+            "height": 78
+          },
+          "bayCount": 3,
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "addressAnchor": {
+          "status": "estimated_from_source",
+          "sourceIds": [
+            "restaurantji-grillpoint",
+            "mvp-29d"
+          ],
+          "point": {
+            "x": 518,
+            "y": 204
+          },
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        },
+        "entranceGeometry": {
+          "status": "blocked",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "bounds": {
+            "x": 454,
+            "y": 216,
+            "width": 34,
+            "height": 48
+          },
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "facadePlaceholder": {
+          "status": "generated_placeholder",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Facade panel is generated from the human-prepared storefront sample for QA visibility only."
+        }
+      },
+      "qaPresentation": {
+        "labelPoint": {
+          "x": 390,
+          "y": 128
+        },
+        "sourceBadgeBounds": {
+          "x": 384,
+          "y": 134,
+          "width": 182,
+          "height": 24
+        }
+      }
+    }
+  ]
+}

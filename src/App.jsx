@@ -387,11 +387,14 @@ function DraftSceneInspector({ draftScene }) {
   const generatedGeometryCount = generatedScene?.entities.filter((entity) => ![
     "business-label",
     "field-status-callout",
+    "real-data-field-status-callout",
     "status-badges",
   ].includes(entity.type)).length ?? 0;
   const generatedCalloutCount = generatedScene?.entities.filter((entity) => (
-    entity.type === "field-status-callout"
+    entity.type === "field-status-callout" ||
+    entity.type === "real-data-field-status-callout"
   )).length ?? 0;
+  const realDataSlice = draftScene.realDataSlice;
 
   return (
     <section className="qa-section qa-draft-scene-section">
@@ -432,6 +435,40 @@ function DraftSceneInspector({ draftScene }) {
           </dl>
         </section>
       ) : null}
+      {realDataSlice ? (
+        <section className="qa-generated-scene" aria-label="Real data vertical slice">
+          <h4>Real Data Vertical Slice</h4>
+          <p>
+            {realDataSlice.business.name.value}
+            {" | "}
+            {formatStatusLabel(realDataSlice.business.name.status)} name
+            {" | "}
+            {formatStatusLabel(realDataSlice.business.addressContext.status)} address
+            {" | "}
+            {formatStatusLabel(realDataSlice.business.category.status)} category
+          </p>
+          <dl className="qa-generated-entity-list">
+            {[
+              ["Building sample", realDataSlice.geometry.buildingSample],
+              ["Storefront sample", realDataSlice.geometry.storefrontSample],
+              ["Frontage segment", realDataSlice.geometry.frontageSegment],
+              ["Address anchor", realDataSlice.geometry.addressAnchor],
+              ["Facade placeholder", realDataSlice.geometry.facadePlaceholder],
+              ["Entrance geometry", realDataSlice.geometry.entranceGeometry],
+            ].map(([label, field]) => (
+              <div key={label} data-status={field.status}>
+                <dt>{label}</dt>
+                <dd>
+                  <strong>{formatStatusLabel(field.status)}</strong>
+                  {" | "}
+                  {formatRealDataFieldValue(field)}
+                  <small>{field.notes}</small>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ) : null}
       <dl className="qa-draft-field-list" aria-label="Draft scene field statuses">
         {fields.map(([fieldName, label]) => {
           const field = draftScene.fields[fieldName];
@@ -455,7 +492,7 @@ function DraftSceneInspector({ draftScene }) {
 
 function formatGeneratedEntitySummary(entity) {
   const field = entity.field ? `${formatStatusLabel(entity.field)} field` : "generated field";
-  if (entity.type === "field-status-callout") {
+  if (entity.type === "field-status-callout" || entity.type === "real-data-field-status-callout") {
     const secondary = entity.secondaryField
       ? `; ${formatStatusLabel(entity.secondaryField)} ${formatStatusLabel(entity.secondaryStatus)}`
       : "";
@@ -540,4 +577,16 @@ function formatDraftFieldValue(value) {
   }
   if (value.marker) return `${value.cornerId}: ${value.marker.x}, ${value.marker.y}`;
   return JSON.stringify(value);
+}
+
+function formatRealDataFieldValue(field) {
+  if (field.bounds) {
+    const { x, y, width, height } = field.bounds;
+    return `${x}, ${y}, ${width}x${height}`;
+  }
+  if (field.from && field.to) {
+    return `${field.from.x}, ${field.from.y} to ${field.to.x}, ${field.to.y}`;
+  }
+  if (field.point) return `${field.point.x}, ${field.point.y}`;
+  return "status-only";
 }

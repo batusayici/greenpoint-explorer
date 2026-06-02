@@ -1,6 +1,7 @@
 const REQUIRED_MANIFEST_VERSION = "0.1";
 const REQUIRED_EVIDENCE_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
 const REQUIRED_DRAFT_SCENE_SCHEMA_VERSION = "draft-scene-fixture.v0.1";
+const REQUIRED_REAL_DATA_SCHEMA_VERSION = "real-data-corner-fixture.v0.1";
 const LEGACY_JPEG_EXTENSION = "." + "jpeg";
 const EVIDENCE_STRENGTH_VALUES = new Set([
   "reviewed",
@@ -34,6 +35,13 @@ const DRAFT_SCENE_STATUS_VALUES = new Set([
   "unknown",
   "blocked",
 ]);
+const REAL_DATA_STATUS_VALUES = new Set([
+  "source_backed",
+  "human_prepared",
+  "estimated_from_source",
+  "generated_placeholder",
+  "blocked",
+]);
 const REQUIRED_DRAFT_SCENE_FIELDS = [
   "name",
   "addressText",
@@ -54,6 +62,7 @@ export function loadMvpSceneFromManifest(
   assetSrcById,
   sourceEvidenceFixture = null,
   draftSceneFixture = null,
+  realDataFixture = null,
 ) {
   const validatedManifest = validateSceneManifest(manifest);
   const manifestIndexes = buildManifestIndexes(validatedManifest);
@@ -63,8 +72,12 @@ export function loadMvpSceneFromManifest(
   const validatedDraftSceneFixture = draftSceneFixture
     ? validateDraftSceneFixture(draftSceneFixture, validatedManifest, manifestIndexes)
     : null;
+  const validatedRealDataFixture = realDataFixture
+    ? validateRealDataFixture(realDataFixture, validatedManifest, manifestIndexes, validatedEvidenceFixture)
+    : null;
   const sourceEvidenceIndex = buildSourceEvidenceIndex(validatedEvidenceFixture);
   const draftSceneIndex = buildDraftSceneIndex(validatedDraftSceneFixture);
+  const realDataIndex = buildRealDataIndex(validatedRealDataFixture);
   const primaryAsset = validatedManifest.scene.assets.find(
     (asset) => asset.role === "primary-raster-plate",
   );
@@ -102,9 +115,18 @@ export function loadMvpSceneFromManifest(
       sourcePath: primaryAsset.sourcePath,
     },
     sourceRefs,
-    manifestQA: buildSceneQA(validatedManifest, validatedEvidenceFixture, validatedDraftSceneFixture),
+    manifestQA: buildSceneQA(
+      validatedManifest,
+      validatedEvidenceFixture,
+      validatedDraftSceneFixture,
+      validatedRealDataFixture,
+    ),
     targets: validatedManifest.scene.objects.map((object) => {
-      const draftScene = buildAppDraftSceneRecord(draftSceneIndex.recordsByTargetId.get(object.appTarget.id));
+      const realDataRecord = realDataIndex.recordsByTargetId.get(object.appTarget.id);
+      const draftScene = buildAppDraftSceneRecord(
+        draftSceneIndex.recordsByTargetId.get(object.appTarget.id),
+        realDataRecord,
+      );
       return {
         ...buildDraftAwareAppTarget(object.appTarget, draftScene),
         manifestObjectId: object.id,
@@ -136,7 +158,7 @@ function buildManifestIndexes(manifest) {
   };
 }
 
-function buildSceneQA(manifest, evidenceFixture, draftSceneFixture) {
+function buildSceneQA(manifest, evidenceFixture, draftSceneFixture, realDataFixture) {
   return {
     manifestId: manifest.sceneId,
     blockId: manifest.blockId,
@@ -157,6 +179,14 @@ function buildSceneQA(manifest, evidenceFixture, draftSceneFixture) {
       reviewedOn: draftSceneFixture.reviewedOn,
       lane: draftSceneFixture.lane,
       recordCount: draftSceneFixture.records.length,
+    } : null,
+    realData: realDataFixture ? {
+      fixtureId: realDataFixture.fixtureId,
+      status: realDataFixture.status,
+      reviewedOn: realDataFixture.reviewedOn,
+      lane: realDataFixture.lane,
+      sourceLane: realDataFixture.sourceLane,
+      recordCount: realDataFixture.records.length,
     } : null,
   };
 }
@@ -312,9 +342,22 @@ function buildDraftSceneIndex(fixture) {
   return index;
 }
 
-function buildAppDraftSceneRecord(record) {
+function buildRealDataIndex(fixture) {
+  const index = {
+    recordsByTargetId: new Map(),
+  };
+  if (!fixture) return index;
+
+  for (const record of fixture.records) {
+    index.recordsByTargetId.set(record.targetId, record);
+  }
+
+  return index;
+}
+
+function buildAppDraftSceneRecord(record, realDataRecord = null) {
   if (!record) return null;
-  const generatedScene = generateDraftQaScene(record);
+  const generatedScene = generateDraftQaScene(record, realDataRecord);
 
   return {
     id: record.id,
@@ -333,8 +376,22 @@ function buildAppDraftSceneRecord(record) {
       ]),
     ),
     qaOverlay: record.qaOverlay ?? null,
+    realDataSlice: realDataRecord ? buildAppRealDataRecord(realDataRecord) : null,
     generatedScene,
     statusCounts: summarizeDraftStatuses(record),
+  };
+}
+
+function buildAppRealDataRecord(record) {
+  return {
+    id: record.id,
+    targetId: record.targetId,
+    placeId: record.placeId,
+    cornerId: record.cornerId,
+    sourceLane: record.sourceLane,
+    business: record.business,
+    geometry: record.geometry,
+    qaPresentation: record.qaPresentation,
   };
 }
 
@@ -344,7 +401,7 @@ function summarizeDraftStatuses(record) {
   return counts;
 }
 
-function generateDraftQaScene(record) {
+function generateDraftQaScene(record, realDataRecord = null) {
   const { fields } = record;
   const overlay = record.qaOverlay ?? {};
   const symbolicOnly = !fields.storefrontBay.value?.sceneBounds && (
@@ -472,6 +529,10 @@ function generateDraftQaScene(record) {
     }
   }
 
+  if (realDataRecord) {
+    entities.push(...generateRealDataQaEntities(realDataRecord));
+  }
+
   entities.push(...buildFieldStatusCallouts(record, entities, overlay));
 
   entities.push({
@@ -504,9 +565,112 @@ function generateDraftQaScene(record) {
     generatedFrom: [
       "draftScene.fields",
       "draftScene.qaOverlay alignment hints",
+      ...(realDataRecord ? ["realDataFixture.records"] : []),
     ],
     entities,
     statusChips,
+  };
+}
+
+export function generateRealDataQaEntities(record) {
+  const { business, geometry, qaPresentation } = record;
+  const buildingBounds = geometry.buildingSample.bounds;
+  const storefrontBounds = geometry.storefrontSample.bounds;
+  const sourceBadgeBounds = qaPresentation.sourceBadgeBounds;
+  const labelPoint = qaPresentation.labelPoint;
+  const entities = [
+    buildRealDataRectEntity(record, "real-data-building-sample", "buildingSample", geometry.buildingSample.status, buildingBounds, {
+      label: "Human-prepared building sample",
+      text: "human-prepared building sample",
+    }),
+    buildRealDataRectEntity(record, "real-data-generated-facade", "facadePlaceholder", geometry.facadePlaceholder.status, deriveFacadeBounds(storefrontBounds, {
+      facadeHeight: 58,
+      facadeOffsetY: -8,
+    }), {
+      label: "Generated facade placeholder",
+      text: "generated-placeholder facade",
+    }),
+    buildRealDataRectEntity(record, "real-data-storefront-sample", "storefrontSample", geometry.storefrontSample.status, storefrontBounds, {
+      label: "Human-prepared storefront sample",
+      text: "human-prepared storefront sample",
+    }),
+    buildRealDataRectEntity(record, "real-data-source-badge", "business.name", business.name.status, sourceBadgeBounds, {
+      label: "Source-backed identity/address/category",
+      text: `${business.name.value} | source-backed name/address/category`,
+    }),
+    {
+      id: `${record.id}:real-data-frontage-segment`,
+      type: "real-data-frontage-segment",
+      field: "frontageSegment",
+      status: geometry.frontageSegment.status,
+      from: geometry.frontageSegment.from,
+      to: geometry.frontageSegment.to,
+      label: "Estimated frontage segment",
+      text: "estimated-from-source frontage",
+      generatedFrom: ["realData.geometry.frontageSegment"],
+    },
+    {
+      id: `${record.id}:real-data-address-anchor`,
+      type: "real-data-address-anchor",
+      field: "addressAnchor",
+      status: geometry.addressAnchor.status,
+      point: geometry.addressAnchor.point,
+      label: "Estimated address anchor",
+      text: "estimated-from-source address anchor",
+      generatedFrom: ["realData.geometry.addressAnchor"],
+    },
+    buildRealDataRectEntity(record, "real-data-blocked-entrance", "entranceGeometry", geometry.entranceGeometry.status, geometry.entranceGeometry.bounds, {
+      label: "Blocked exact entrance geometry",
+      text: "blocked exact entrance",
+    }),
+  ];
+
+  entities.push({
+    id: `${record.id}:real-data-field-status-callout-source`,
+    type: "real-data-field-status-callout",
+    field: "business.name",
+    status: business.name.status,
+    point: labelPoint,
+    from: centerOf(sourceBadgeBounds),
+    text: "source-backed name / address / category",
+    label: "source-backed claims",
+    generatedFrom: ["realData.business"],
+  });
+  entities.push({
+    id: `${record.id}:real-data-field-status-callout-geometry`,
+    type: "real-data-field-status-callout",
+    field: "geometry.storefrontSample",
+    status: geometry.storefrontSample.status,
+    point: offsetPoint(centerOf(storefrontBounds), 34, 42),
+    from: centerOf(storefrontBounds),
+    text: "human-prepared storefront geometry",
+    label: "human-prepared geometry",
+    generatedFrom: ["realData.geometry.storefrontSample"],
+  });
+  entities.push({
+    id: `${record.id}:real-data-field-status-callout-entrance`,
+    type: "real-data-field-status-callout",
+    field: "geometry.entranceGeometry",
+    status: geometry.entranceGeometry.status,
+    point: offsetPoint(centerOf(geometry.entranceGeometry.bounds), 24, 36),
+    from: centerOf(geometry.entranceGeometry.bounds),
+    text: "blocked exact entrance geometry",
+    label: "blocked entrance",
+    generatedFrom: ["realData.geometry.entranceGeometry"],
+  });
+
+  return entities;
+}
+
+function buildRealDataRectEntity(record, type, field, status, bounds, extra = {}) {
+  return {
+    id: `${record.id}:${type}`,
+    type,
+    field,
+    status,
+    bounds: roundBounds(bounds),
+    generatedFrom: [`realData.${field}`, "deterministic real-data adapter"],
+    ...extra,
   };
 }
 
@@ -940,6 +1104,107 @@ export function validateDraftSceneFixture(fixture, manifest, indexes = buildMani
   return fixture;
 }
 
+export function validateRealDataFixture(fixture, manifest, indexes = buildManifestIndexes(manifest), evidenceFixture = null) {
+  assertObject(fixture, "Real data fixture");
+  assertEqual(fixture.schemaVersion, REQUIRED_REAL_DATA_SCHEMA_VERSION, "realData.schemaVersion");
+  assertString(fixture.fixtureId, "realData.fixtureId");
+  assertEqual(fixture.sceneId, manifest.sceneId, "realData.sceneId");
+  assertString(fixture.lane, "realData.lane");
+  assertString(fixture.status, "realData.status");
+  assertString(fixture.reviewedOn, "realData.reviewedOn");
+  assertReference(fixture.selectedCorner, indexes.cornersById, "realData.selectedCorner");
+  assertString(fixture.sourceLane, "realData.sourceLane");
+  assertArray(fixture.notes, "realData.notes");
+  assertObject(fixture.statusValues, "realData.statusValues");
+  assertArray(fixture.records, "realData.records");
+
+  for (const status of REAL_DATA_STATUS_VALUES) {
+    assertString(fixture.statusValues[status], `realData.statusValues.${status}`);
+  }
+
+  const realDataRecordIds = new Set();
+  const targetIds = new Set(manifest.scene.objects.map((object) => object.appTarget.id));
+  const evidenceRecordIds = evidenceFixture
+    ? new Set(evidenceFixture.records.map((record) => record.id))
+    : new Set();
+
+  for (const record of fixture.records) {
+    assertObject(record, "realData.records item");
+    assertString(record.id, "realData.records item.id");
+    if (realDataRecordIds.has(record.id)) throw new Error(`realData.records has duplicate id "${record.id}".`);
+    realDataRecordIds.add(record.id);
+
+    assertReference(record.targetId, targetIds, `realData record ${record.id}.targetId`);
+    assertReference(record.placeId, indexes.placesById, `realData record ${record.id}.placeId`);
+    assertReference(record.cornerId, indexes.cornersById, `realData record ${record.id}.cornerId`);
+    if (record.sourceLane) assertString(record.sourceLane, `realData record ${record.id}.sourceLane`);
+    validateRealDataBusiness(record.business, record.id, indexes.sourcesById, evidenceRecordIds);
+    validateRealDataGeometry(record.geometry, record.id, indexes.sourcesById);
+    validateRealDataQaPresentation(record.qaPresentation, record.id);
+  }
+
+  assertNoLegacyJpegReferences(fixture, "Real data fixture");
+
+  return fixture;
+}
+
+function validateRealDataBusiness(business, recordId, sourceIds, evidenceRecordIds) {
+  assertObject(business, `realData record ${recordId}.business`);
+  for (const fieldName of ["name", "category", "addressContext"]) {
+    const field = business[fieldName];
+    const label = `realData record ${recordId}.business.${fieldName}`;
+    validateRealDataStatusField(field, label, sourceIds);
+    assertString(field.value, `${label}.value`);
+    if (field.sourceEvidenceRecordIds) {
+      assertReferences(field.sourceEvidenceRecordIds, evidenceRecordIds, `${label}.sourceEvidenceRecordIds`);
+    }
+  }
+}
+
+function validateRealDataGeometry(geometry, recordId, sourceIds) {
+  assertObject(geometry, `realData record ${recordId}.geometry`);
+  validateRealDataRectField(geometry.buildingSample, `realData record ${recordId}.geometry.buildingSample`, sourceIds);
+  validateRealDataLineField(geometry.frontageSegment, `realData record ${recordId}.geometry.frontageSegment`, sourceIds);
+  validateRealDataRectField(geometry.storefrontSample, `realData record ${recordId}.geometry.storefrontSample`, sourceIds);
+  assertNumber(geometry.storefrontSample.bayCount, `realData record ${recordId}.geometry.storefrontSample.bayCount`);
+  validateRealDataPointField(geometry.addressAnchor, `realData record ${recordId}.geometry.addressAnchor`, sourceIds);
+  validateRealDataRectField(geometry.entranceGeometry, `realData record ${recordId}.geometry.entranceGeometry`, sourceIds);
+  validateRealDataStatusField(
+    geometry.facadePlaceholder,
+    `realData record ${recordId}.geometry.facadePlaceholder`,
+    sourceIds,
+  );
+}
+
+function validateRealDataQaPresentation(qaPresentation, recordId) {
+  assertObject(qaPresentation, `realData record ${recordId}.qaPresentation`);
+  validateScenePointLike(qaPresentation.labelPoint, `realData record ${recordId}.qaPresentation.labelPoint`);
+  validateBounds(qaPresentation.sourceBadgeBounds, `realData record ${recordId}.qaPresentation.sourceBadgeBounds`);
+}
+
+function validateRealDataStatusField(field, label, sourceIds) {
+  assertObject(field, label);
+  assertOneOf(field.status, REAL_DATA_STATUS_VALUES, `${label}.status`);
+  assertReferences(field.sourceIds, sourceIds, `${label}.sourceIds`);
+  assertString(field.notes, `${label}.notes`);
+}
+
+function validateRealDataRectField(field, label, sourceIds) {
+  validateRealDataStatusField(field, label, sourceIds);
+  validateBounds(field.bounds, `${label}.bounds`);
+}
+
+function validateRealDataLineField(field, label, sourceIds) {
+  validateRealDataStatusField(field, label, sourceIds);
+  validateScenePointLike(field.from, `${label}.from`);
+  validateScenePointLike(field.to, `${label}.to`);
+}
+
+function validateRealDataPointField(field, label, sourceIds) {
+  validateRealDataStatusField(field, label, sourceIds);
+  validateScenePointLike(field.point, `${label}.point`);
+}
+
 function validateDraftSceneStatusField(field, label, options = {}) {
   const requireSourceIds = options.requireSourceIds ?? true;
   assertObject(field, label);
@@ -993,11 +1258,7 @@ function validateOverlayRect(rect, label) {
   assertObject(rect, label);
   assertString(rect.field, `${label}.field`);
   assertOneOf(rect.status, DRAFT_SCENE_STATUS_VALUES, `${label}.status`);
-  assertObject(rect.bounds, `${label}.bounds`);
-  assertNumber(rect.bounds.x, `${label}.bounds.x`);
-  assertNumber(rect.bounds.y, `${label}.bounds.y`);
-  assertNumber(rect.bounds.width, `${label}.bounds.width`);
-  assertNumber(rect.bounds.height, `${label}.bounds.height`);
+  validateBounds(rect.bounds, `${label}.bounds`);
 }
 
 function validateOverlayConnector(connector, label) {
@@ -1021,6 +1282,14 @@ function validateScenePointLike(point, label) {
   assertObject(point, label);
   assertNumber(point.x, `${label}.x`);
   assertNumber(point.y, `${label}.y`);
+}
+
+function validateBounds(bounds, label) {
+  assertObject(bounds, label);
+  assertNumber(bounds.x, `${label}.x`);
+  assertNumber(bounds.y, `${label}.y`);
+  assertNumber(bounds.width, `${label}.width`);
+  assertNumber(bounds.height, `${label}.height`);
 }
 
 function validatePromotionGates(gates, label) {

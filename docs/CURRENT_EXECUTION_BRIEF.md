@@ -1,8 +1,23 @@
-# Current Execution Brief - Phase 2X Generated QA Scene Skeleton Refinement Complete
+# Current Execution Brief - Phase 2Y Real Data Vertical Slice Complete
 
-Status: Phase 2X generated QA scene skeleton refinement is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
+Status: Phase 2Y real data vertical slice is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
+
+## Phase 2Y Real Data Vertical Slice
+
+- Batu authorized a one-corner source spike to prove real-data fixture to deterministic adapter to QA-mode scene integration without waiting for launch-grade provenance.
+- Selected corner: Grillpoint Deli / NW corner.
+- Added `src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json` as a small canonical local real-data fixture.
+- The fixture records source-backed Grillpoint name, address context, and category from existing reviewed source-evidence references.
+- The fixture records human-prepared building/storefront samples, estimated-from-source frontage/address anchor, a generated-placeholder facade, and blocked exact entrance geometry.
+- Extended `src/sceneManifest.js` with a real-data fixture validator and deterministic QA adapter that emits generated real-data QA entities.
+- Wired the real-data fixture through `src/mvpPlaceData.js` so only Grillpoint receives the Phase 2Y real-data slice.
+- Updated QA-mode rendering in `src/PlaceholderWorld.jsx` to visually distinguish source-backed, human-prepared, estimated-from-source, generated-placeholder, and blocked entities.
+- Updated the selected-card QA inspector in `src/App.jsx` to show the real-data vertical slice and per-field statuses.
+- Added `scripts/verify-real-data-scene-adapter.mjs` for targeted deterministic adapter verification.
+- Normal mode remains raster-first and unchanged in product meaning.
+- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
 
 ## Post-Phase 2W Operating Model Correction
 
@@ -73,7 +88,19 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Files Changed
 
-Latest Phase 2X implementation changed:
+Latest Phase 2Y implementation changed:
+
+- `src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Prior Phase 2X implementation changed:
 
 - `src/sceneManifest.js`
 - `src/App.jsx`
@@ -106,6 +133,10 @@ Prior Phase 2W implementation changed:
 ## Verification Commands
 
 ```sh
+node scripts/verify-real-data-scene-adapter.mjs
+```
+
+```sh
 node scripts/verify-source-evidence-determinism.mjs
 ```
 
@@ -131,6 +162,9 @@ git diff --stat
 
 ## Verification State
 
+- Latest Phase 2Y verification: `node scripts/verify-real-data-scene-adapter.mjs` passed and confirmed the Grillpoint/NW real-data fixture validates, produces 10 deterministic QA entities, and does not attach to other active targets.
+- Latest Phase 2Y build check passed with the existing Vite large-chunk warning.
+- Latest Phase 2Y browser sanity check was attempted against `http://localhost:5173/` and `http://127.0.0.1:5173/`, but the in-app browser blocked both local URLs with `ERR_BLOCKED_BY_CLIENT`.
 - Latest Phase 2X verification: generated output now reports 10 geometry entities and 5 secondary callouts for each storefront target, plus 4 geometry entities and 4 secondary callouts for Greenpoint G subway.
 - Latest Phase 2X browser sanity check passed at `http://localhost:5173/`: QA mode shows the refined generated skeleton with compact status pins, while normal mode hides the generated QA skeleton and remains raster-first.
 - Latest Phase 2X `npm run build` passed with the existing Vite large-chunk warning.
@@ -153,8 +187,8 @@ git diff --stat
 - Future prompts should lead with: "Build the visible MVP proof. Preserve gates as constraints."
 - The next executable task is pending Batu or a later explicit brief.
 - Recommended next outcome-based sequence:
-  1. Real geometry/data source spike: bring in or prepare at least one real geometry/source-data lane, such as building footprints, parcels/addresses, OSM, or a LIVEXYZ-like sample, to replace some manual draft geometry with source-derived geometry.
-  2. Demoable review scene: create a review-only scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
+  1. Expand or replace the Phase 2Y one-corner real-data sample with stronger source-derived geometry if a practical lane is available.
+  2. Create a demoable review scene coherent enough to show someone for feedback while remaining draft/review-only and not product-ready.
 - No further prototype, visual, source-evidence, promotion, production, package/tooling, screenshot-QA, or demo-freeze work is opened by this brief.
 
 ## Stop Conditions

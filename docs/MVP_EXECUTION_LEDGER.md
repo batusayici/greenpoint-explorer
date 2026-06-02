@@ -55,14 +55,60 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2X generated QA scene skeleton refinement is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2Y real data vertical slice is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2X generated QA scene skeleton refinement complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2Y real data vertical slice complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2Y Real Data Vertical Slice
+
+Status:
+- Complete.
+
+Scope:
+- Batu authorized a one-corner real-data source spike to prove the real-data fixture to deterministic adapter to QA-mode scene loop.
+- Selected corner: Grillpoint Deli / NW corner.
+- Preserve normal-mode raster-first product meaning and strict promotion readiness.
+
+Files changed:
+- `src/data/real-data/manhattan-greenpoint-ave.nw-grillpoint.phase-2y.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `scripts/verify-real-data-scene-adapter.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-real-data-scene-adapter.mjs`
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build`
+- `git diff --check`
+- Browser QA/normal sanity check was attempted but blocked by the in-app browser with `ERR_BLOCKED_BY_CLIENT` for both localhost loopback URLs.
+
+Outcome:
+- Added a narrow local real-data fixture for Grillpoint/NW with source-backed name/address/category, human-prepared building/storefront samples, estimated frontage/address anchor, generated-placeholder facade, and blocked exact entrance geometry.
+- Added a validator and deterministic adapter that emits QA-only real-data scene entities.
+- Wired the adapter output through the app scene data flow so only Grillpoint receives the Phase 2Y real-data slice.
+- QA mode now visually distinguishes source-backed, human-prepared, estimated-from-source, generated-placeholder, and blocked entities.
+- The QA inspector now lists the real-data vertical slice and field statuses.
+- Strict promotion readiness remained unchanged, with 0 product-copy-ready targets.
+- Normal mode remains raster-first and unchanged in product meaning.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, source-authority decisions, exact geometry decisions, product/public claims, and opening the next executable brief.
+- Stronger source-derived geometry remains needed before exact frontage/facade/entrance/address claims can be made.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2Y complete and points the next recommended sequence toward stronger source-derived geometry or a demoable review scene.
 
 ### 2026-06-02 - Phase 2X Generated QA Scene Skeleton Refinement
 
