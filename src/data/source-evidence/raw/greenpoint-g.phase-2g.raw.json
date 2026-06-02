@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "local-source-evidence-raw.v0.1",
+  "fixtureId": "manhattan-greenpoint-ave-phase-2g-greenpoint-g-source-evidence",
+  "status": "review-only-ingestion-spike",
+  "reviewedOn": "2026-06-01",
+  "notes": "Local raw-input fixture for Phase 2G. This is an offline sample for converter validation only; it is not scraped, fetched, or used by the app runtime.",
+  "records": [
+    {
+      "id": "evidence-greenpoint-g-station-context-review",
+      "targetId": "greenpoint-g-subway",
+      "placeId": "place-greenpoint-g-subway",
+      "sourceRecordIds": [
+        "mta-greenpoint-accessibility",
+        "mta-g-line-map"
+      ],
+      "source": {
+        "type": "reviewed-official-transit-context",
+        "label": "MTA Greenpoint Av station context sources",
+        "url": "https://www.mta.info/maps/subway-line-maps/g-line"
+      },
+      "capturedOn": "2026-05-31",
+      "reviewedOn": "2026-06-01",
+      "usageStatus": "review-only-context-support",
+      "confidence": {
+        "value": "medium-high",
+        "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."
+      },
+      "claims": [
+        {
+          "id": "claim-greenpoint-g-station-area-context",
+          "manifestPath": "places.place-greenpoint-g-subway.displayName",
+          "type": "transit-context",
+          "value": "Greenpoint G subway",
+          "supportLevel": "supports-station-context",
+          "confidence": "medium-high",
+          "notes": "Supports station-area context used by the review-only transit cue."
+        },
+        {
+          "id": "claim-greenpoint-g-greenpoint-ave-side-cue",
+          "manifestPath": "scene.anchors.anchor-greenpoint-g-subway",
+          "type": "symbolic-scene-placement",
+          "value": "Review-scale cue on the Greenpoint Ave side",
+          "supportLevel": "context-only",
+          "confidence": "low",
+          "notes": "MTA context does not resolve exact stair, elevator, entrance, or station-footprint geometry."
+        }
+      ],
+      "qaNotes": [
+        "Official transit sources are used for station-area context only.",
+        "The app must continue labeling the scene cue symbolic/approximate until exact geometry is separately sourced and approved."
+      ],
+      "remainingGaps": [
+        "Exact entrance coordinates, stair alignment, station footprint, and production transit mapping remain blocked.",
+        "The authored raster cue remains review-scale and not a source-derived transit geometry layer."
+      ]
+    }
+  ]
+}

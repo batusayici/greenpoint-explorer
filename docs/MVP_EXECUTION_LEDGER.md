@@ -55,14 +55,59 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2F Source Evidence Generated Fixture Parity Check is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2G Complete Source Evidence Generation Parity is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2F parity criteria, expected pass/fail behavior, and raw-input ID alignment. Raster revisions, broader app refactor, replacing the app-loaded fixture with generated output, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2G complete current-evidence raw-input set, combined generation behavior, and full-set parity criteria. Raster revisions, broader app refactor, replacing the app-loaded fixture with generated output, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-01 - Phase 2G Complete Source Evidence Generation Parity
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Add the smallest useful expansion of the local ingestion/parity spike so generated output can include both current Phase 2D source-evidence records.
+- Add one local raw Greenpoint Ave G input fixture.
+- Extend full-set parity so it fails clearly when an expected runtime evidence ID is missing.
+- Keep the Phase 2D hand-authored fixture valid and unchanged.
+- Do not replace runtime imports, scrape, call external APIs, add packages, modify lockfiles, generate raster art, expand places, or make production claims.
+
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output /tmp/source-evidence.phase-2g.generated.json`
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --output /tmp/source-evidence.phase-2g.full-parity-pass.json`
+- Expected failure from the Grillpoint-only command with `--require-all-expected true`, reporting missing runtime evidence ID `evidence-greenpoint-g-station-context-review`.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The local ingestion script now accepts repeated `--input` values and combines multiple raw fixtures into one review-only generated source-evidence fixture.
+- The new Greenpoint G raw fixture generates `evidence-greenpoint-g-station-context-review` with the same review-critical fields as the Phase 2D runtime fixture.
+- Full-set parity passes for the current two-record Phase 2D evidence set and fails clearly when an expected runtime evidence ID is absent from generated output.
+- The app runtime still imports the unchanged Phase 2D hand-authored fixture.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2G complete current-evidence raw-input set, combined generation behavior, and full-set parity criteria.
+- Whether generated records should later be merged into or replace the runtime review fixture, whether more local raw fixtures should be added, and whether parity checks should become a durable regression command remain blocked pending Batu approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2G complete source evidence generation parity step.
+- If accepted, Batu may open a later bounded Phase 2 task for fixture generation/merge review, generated-output inspection artifacts, expanding local raw-input fixtures, refining source-record normalization, or adding focused fixture-level regression checks.
 
 ### 2026-06-01 - Phase 2F Source Evidence Generated Fixture Parity Check
 

@@ -12,19 +12,22 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const inputPath = resolve(repoRoot, requiredOption(options, "input"));
+  const inputPaths = requiredOptionValues(options, "input").map((input) => resolve(repoRoot, input));
   const manifestPath = resolve(repoRoot, requiredOption(options, "manifest"));
   const outputPath = options.output ? resolve(repoRoot, options.output) : null;
   const comparePath = options["compare-to"] ? resolve(repoRoot, options["compare-to"]) : null;
+  const requireAllExpected = options["require-all-expected"] === "true";
 
-  const rawFixture = await readJson(inputPath, "raw evidence input");
+  const rawFixtures = await Promise.all(
+    inputPaths.map((inputPath) => readJson(inputPath, "raw evidence input")),
+  );
   const manifest = validateSceneManifest(await readJson(manifestPath, "scene manifest"));
-  const fixture = convertRawFixture(rawFixture);
+  const fixture = convertRawFixtures(rawFixtures);
 
   validateConvertedFixture(fixture, manifest);
   if (comparePath) {
     const expectedFixture = await readJson(comparePath, "comparison source evidence fixture");
-    if (!compareFixtureParity(fixture, expectedFixture)) return;
+    if (!compareFixtureParity(fixture, expectedFixture, { requireAllExpected })) return;
   }
 
   const output = `${JSON.stringify(fixture, null, 2)}\n`;
@@ -36,12 +39,21 @@ async function main() {
   }
 }
 
-function compareFixtureParity(generatedFixture, expectedFixture) {
+function compareFixtureParity(generatedFixture, expectedFixture, options = {}) {
   assertObject(expectedFixture, "comparison fixture");
   assertArray(expectedFixture.records, "comparison fixture.records");
 
+  const generatedRecords = new Map(generatedFixture.records.map((record) => [record.id, record]));
   const expectedRecords = new Map(expectedFixture.records.map((record) => [record.id, record]));
   const failures = [];
+
+  if (options.requireAllExpected) {
+    for (const expectedRecord of expectedFixture.records) {
+      if (!generatedRecords.has(expectedRecord.id)) {
+        failures.push(`missing generated record for expected runtime id "${expectedRecord.id}"`);
+      }
+    }
+  }
 
   for (const generatedRecord of generatedFixture.records) {
     const expectedRecord = expectedRecords.get(generatedRecord.id);
@@ -101,6 +113,21 @@ function sortObject(value) {
   );
 }
 
+function convertRawFixtures(rawFixtures) {
+  assertArray(rawFixtures, "raw fixtures");
+  const fixtures = rawFixtures.map(convertRawFixture);
+  if (fixtures.length === 1) return fixtures[0];
+
+  return {
+    schemaVersion: OUTPUT_SCHEMA_VERSION,
+    fixtureId: "combined-local-source-evidence-fixture",
+    status: "review-only-combined-generation",
+    reviewedOn: fixtures[0].reviewedOn,
+    notes: "Combined local source-evidence fixture generated from multiple raw inputs for review-only parity verification.",
+    records: fixtures.flatMap((fixture) => fixture.records),
+  };
+}
+
 function convertRawFixture(rawFixture) {
   assertObject(rawFixture, "raw fixture");
   assertEqual(rawFixture.schemaVersion, RAW_SCHEMA_VERSION, "raw fixture.schemaVersion");
@@ -124,8 +151,11 @@ function validateConvertedFixture(fixture, manifest) {
   const targetIds = new Set(manifest.scene.objects.map((object) => object.appTarget.id));
   const placeIds = new Set(manifest.places.map((place) => place.id));
   const sourceIds = new Set(manifest.sources.map((source) => source.id));
+  const recordIds = new Set();
 
   for (const record of fixture.records) {
+    if (recordIds.has(record.id)) throw new Error(`converted fixture has duplicate record id "${record.id}".`);
+    recordIds.add(record.id);
     assertReferences(record.targetIds, targetIds, `converted record ${record.id}.targetIds`);
     assertReferences(record.placeIds, placeIds, `converted record ${record.id}.placeIds`);
     assertReferences(record.sourceRecordIds, sourceIds, `converted record ${record.id}.sourceRecordIds`);
@@ -138,7 +168,11 @@ function convertRawRecord(record, index) {
   assertString(record.id, `${label}.id`);
   assertString(record.targetId, `${label}.targetId`);
   assertString(record.placeId, `${label}.placeId`);
-  assertString(record.sourceRecordId, `${label}.sourceRecordId`);
+  const sourceRecordIds = record.sourceRecordIds ?? [record.sourceRecordId];
+  assertArray(sourceRecordIds, `${label}.sourceRecordIds`);
+  sourceRecordIds.forEach((sourceRecordId, sourceRecordIndex) => {
+    assertString(sourceRecordId, `${label}.sourceRecordIds[${sourceRecordIndex}]`);
+  });
   assertObject(record.source, `${label}.source`);
   assertString(record.source.type, `${label}.source.type`);
   assertString(record.source.label, `${label}.source.label`);
@@ -157,7 +191,7 @@ function convertRawRecord(record, index) {
     id: record.id,
     targetIds: [record.targetId],
     placeIds: [record.placeId],
-    sourceRecordIds: [record.sourceRecordId],
+    sourceRecordIds,
     sourceType: record.source.type,
     sourceLabel: record.source.label,
     sourceUrl: record.source.url,
@@ -211,7 +245,11 @@ function parseArgs(args) {
     const key = arg.slice(2);
     const value = args[index + 1];
     if (!value || value.startsWith("--")) throw new Error(`Missing value for --${key}.`);
-    options[key] = value;
+    if (options[key]) {
+      options[key] = Array.isArray(options[key]) ? [...options[key], value] : [options[key], value];
+    } else {
+      options[key] = value;
+    }
     index += 1;
   }
   return options;
@@ -219,7 +257,13 @@ function parseArgs(args) {
 
 function requiredOption(options, key) {
   if (!options[key]) throw new Error(`Missing required option --${key}.`);
+  if (Array.isArray(options[key])) throw new Error(`Expected one value for --${key}.`);
   return options[key];
+}
+
+function requiredOptionValues(options, key) {
+  if (!options[key]) throw new Error(`Missing required option --${key}.`);
+  return Array.isArray(options[key]) ? options[key] : [options[key]];
 }
 
 function optionalString(value) {
