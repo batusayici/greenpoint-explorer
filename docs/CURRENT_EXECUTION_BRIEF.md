@@ -1,15 +1,17 @@
-# Current Execution Brief - Auto-Advance Phase 2R Verifier Negative Smoke Check
+# Current Execution Brief - Phase 2S Fixture Metadata Readability Check Complete
 
-Status: Auto-advance is active for local Phase 2 implementation batches. Phase 2R Verifier Negative Smoke Check is complete and the next candidate batch is Phase 2S Fixture Metadata Readability Check. This brief does not open visual rendering changes, external source acquisition, scraping, package/tooling changes, production data, production assets, full MVP-29G screenshot QA, CI, package scripts, source-vendor decisions, or broader Greenpoint coverage.
+Status: Phase 2S Fixture Metadata Readability Check is complete for review. This brief records the completed local verifier readability improvement and does not open visual rendering changes, external source acquisition, scraping, package/tooling changes, production data, production assets, full MVP-29G screenshot QA, CI, package scripts, source-vendor decisions, broader Greenpoint coverage, source-claim promotion, or product-copy readiness.
 
-Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later non-local Phase 2 or MVP gates. Codex may continue only across narrow, verified, local Phase 2 evidence/readiness batches that stay within the auto-advance authorization.
+Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
 
-## Completed Phase 2R Output
+## Completed Phase 2S Output
 
-- Added an optional negative self-test path to `scripts/verify-qa-inspector-source-evidence.mjs`.
-- The negative self-test mutates an in-memory copy of the Grillpoint missing-evidence contract and removes the `exact facade` must-not-claim guardrail.
-- The verifier now confirms that the mutated contract is rejected while leaving committed repo data unchanged.
-- The normal verifier path still checks app-visible QA evidence record IDs, evidence strength, claim readiness, promotion gates, promotion blockers, generated coverage alignment, and Grillpoint missing-evidence contract shape.
+- Updated `scripts/verify-qa-inspector-source-evidence.mjs` to print deterministic fixture metadata `INFO` lines after successful verification.
+- The verifier now lists the active generator path, scene manifest path, generated source-evidence fixture path, coverage report path, Grillpoint report path, and active raw input paths.
+- The verifier now lists fixture ID, fixture status, review date, record count, and fixture notes.
+- The verifier now lists coverage readiness counts for total targets, product-copy-ready targets, review-only targets, blocked targets, storefront/facade blocked targets, and entrance/frontage/geometry blocked targets.
+- The verifier now prints one concise line per generated evidence record with target IDs, source record IDs, source type, usage status, evidence strength, claim readiness, and non-allowed promotion blockers.
+- The verifier now prints the Grillpoint missing-evidence contract report ID, raw input path, outcome, claim readiness, product-copy-ready flag, and blocked contract keys.
 - Did not add package scripts, package tooling, CI, source claims, promotion changes, screenshots, visual rendering changes, or external access.
 
 ## Current Claim-Level Result
@@ -22,7 +24,7 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Address/location allowed targets remain 4.
 - Storefront/facade blocked targets remain 5.
 - Entrance/frontage/geometry blocked targets remain 5.
-- The local verifier now has both a normal pass path and a targeted negative smoke path for the Grillpoint must-not-claim guardrails.
+- The local verifier now makes generated fixture metadata and readiness state readable from one command.
 
 ## Files Changed
 
@@ -56,19 +58,16 @@ git diff --stat
 
 ## Verification State
 
-- `node scripts/verify-qa-inspector-source-evidence.mjs` passed with 5 targets and 5 evidence records matched, and Grillpoint contract shape validated.
-- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed by confirming removal of `exact facade` is rejected.
+- `node scripts/verify-qa-inspector-source-evidence.mjs` passed and printed the fixture metadata/readiness summary.
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed and preserved the negative guardrail behavior.
 - `npm run build` passed with the existing Vite large-chunk warning.
 - `git diff --check` passed.
-- No screenshots were required or captured. This is a local verifier negative-smoke batch, not visual QA or MVP-29G screenshot recovery.
+- No screenshots were required or captured. This is a local fixture metadata readability batch, not visual QA or MVP-29G screenshot recovery.
 
-## Next Candidate Batch
+## Next State
 
-Phase 2S - Fixture Metadata Readability Check:
-
-- Keep the work review/QA-only.
-- Improve local inspection clarity around generated fixture metadata without changing generated claim status, visual rendering, package scripts, production schema/API boundaries, source authority, or source material.
-- Candidate scope: add a narrow local check or report line that lists the active source-evidence input/output paths and review-only status already present in committed files.
+- The next executable task is pending Batu or a later explicit brief.
+- Safe candidate areas remain fixture metadata refinement, generated-output inspection ergonomics, missing-evidence contract validation, or narrow local verifier improvements, but no further batch is opened by this brief.
 
 ## Stop Conditions
 

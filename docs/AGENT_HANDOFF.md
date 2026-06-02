@@ -242,3 +242,29 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - Phase 2S Fixture Metadata Readability Check: add a narrow local check or report line that lists active source-evidence input/output paths and review-only status already present in committed files.
+
+### Batch 2026-06-02 23:40
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2S Fixture Metadata Readability Check.
+- Added deterministic verifier output for generator/input/output paths, active raw input paths, fixture ID/status/review date/record count, readiness counts, each generated evidence record, and Grillpoint missing-evidence contract status.
+- Preserved committed source-evidence data, generated fixture, coverage report, missing-evidence contract, visual rendering, promotion gates, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- The next executable task is pending Batu or a later explicit brief.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Pending explicit Batu/later brief. Safe candidate areas remain fixture metadata refinement, generated-output inspection ergonomics, missing-evidence contract validation, or narrow local verifier improvements.

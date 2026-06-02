@@ -55,14 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2R Verifier Negative Smoke Check is complete under auto-advance. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2S Fixture Metadata Readability Check is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Phase 2S Fixture Metadata Readability Check as the next auto-advance-eligible candidate if it remains narrow, local, verified, and within the approved Phase 2 evidence/readiness direction. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2S complete. The next executable task is pending Batu or a later explicit brief. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2S Fixture Metadata Readability Check
+
+Status:
+- Complete for review.
+
+Scope:
+- Improve local readability and auditability of generated source-evidence fixture metadata.
+- Keep the work fixture/metadata/readability-focused and do not change visual rendering, source claims, promotion gates, package scripts, CI, production schemas, public APIs, source material, or external-source access.
+
+Files changed:
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The verifier now prints deterministic metadata lines for generator/input/output paths, active raw inputs, fixture ID/status/review date/record count, readiness counts, each generated evidence record, and Grillpoint missing-evidence contract status.
+- Reviewers can now see which fixture/source records were generated, what paths produced/describe them, what evidence strength/readiness they carry, and what remains blocked or not product-copy-ready from one local verifier command.
+- Existing negative contract self-test behavior is preserved.
+- No committed source-evidence fixture, coverage report, missing-evidence contract, visual rendering, package tooling, screenshots, or production-facing claims changed.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- The next executable task is pending Batu or a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2S complete and does not open a further implementation batch.
 
 ### 2026-06-02 - Phase 2R Verifier Negative Smoke Check
 

@@ -23,6 +23,12 @@ const REQUIRED_CONTRACT_MUST_NOT_CLAIMS = {
     "production placement readiness",
   ],
 };
+const ACTIVE_SOURCE_EVIDENCE_GENERATOR_PATH = "scripts/ingest-source-evidence-fixture.mjs";
+const ACTIVE_RAW_INPUT_PATHS = [
+  "src/data/source-evidence/raw/grillpoint.phase-2e.raw.json",
+  "src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json",
+  "src/data/source-evidence/raw/official-locations.phase-2k.raw.json",
+];
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -66,6 +72,18 @@ async function main() {
   if (runNegativeContractSelfTest && !runNegativeContractGuardrailSelfTest(grillpointReport)) {
     process.exitCode = 1;
     return;
+  }
+
+  for (const line of buildFixtureMetadataLines({
+    manifestInput,
+    evidenceInput,
+    coverageInput,
+    grillpointReportInput,
+    evidenceFixture,
+    coverageReport,
+    grillpointReport,
+  })) {
+    console.log(line);
   }
 
   console.log([
@@ -161,6 +179,70 @@ function collectGrillpointContractFailures(appScene, grillpointReport) {
   );
 
   return failures;
+}
+
+function buildFixtureMetadataLines({
+  manifestInput,
+  evidenceInput,
+  coverageInput,
+  grillpointReportInput,
+  evidenceFixture,
+  coverageReport,
+  grillpointReport,
+}) {
+  return [
+    [
+      "INFO fixture paths:",
+      `generator=${ACTIVE_SOURCE_EVIDENCE_GENERATOR_PATH};`,
+      `manifest=${manifestInput};`,
+      `generatedEvidence=${evidenceInput};`,
+      `coverage=${coverageInput};`,
+      `grillpointReport=${grillpointReportInput}.`,
+    ].join(" "),
+    `INFO raw inputs: ${ACTIVE_RAW_INPUT_PATHS.join(", ")}.`,
+    [
+      "INFO fixture status:",
+      `fixtureId=${evidenceFixture.fixtureId};`,
+      `status=${evidenceFixture.status};`,
+      `reviewedOn=${evidenceFixture.reviewedOn};`,
+      `records=${evidenceFixture.records.length};`,
+      `notes="${evidenceFixture.notes}".`,
+    ].join(" "),
+    [
+      "INFO coverage readiness:",
+      `targets=${coverageReport.summary.targetCount};`,
+      `product_copy_ready=${coverageReport.summary.claimReadinessByTarget.product_copy_ready};`,
+      `review_only=${coverageReport.summary.claimReadinessByTarget.review_only};`,
+      `blocked=${coverageReport.summary.claimReadinessByTarget.blocked};`,
+      `storefrontFacade.blocked=${coverageReport.summary.promotionGateStatusByTarget.storefrontFacade.blocked};`,
+      `entranceFrontageGeometry.blocked=${coverageReport.summary.promotionGateStatusByTarget.entranceFrontageGeometry.blocked}.`,
+    ].join(" "),
+    ...evidenceFixture.records.map(formatEvidenceRecordMetadataLine),
+    [
+      "INFO Grillpoint contract:",
+      `reportId=${grillpointReport.reportId};`,
+      `rawInput=${grillpointReport.generatedFrom.rawInputPath};`,
+      `outcome=${grillpointReport.outcome};`,
+      `claimReadiness=${grillpointReport.claimReadiness};`,
+      `productCopyReady=${grillpointReport.productCopyReady};`,
+      `blockedContracts=${Object.keys(grillpointReport.missingEvidenceContract).join(",")}.`,
+    ].join(" "),
+  ];
+}
+
+function formatEvidenceRecordMetadataLine(record) {
+  const blockers = collectPromotionBlockers(record.promotionGates).map((blocker) => `${blocker.claim}:${blocker.status}`);
+  return [
+    "INFO evidence record:",
+    `id=${record.id};`,
+    `targets=${record.targetIds.join(",")};`,
+    `sourceRecords=${record.sourceRecordIds.join(",")};`,
+    `sourceType=${record.sourceType};`,
+    `usageStatus=${record.usageStatus};`,
+    `evidenceStrength=${record.evidenceStrength};`,
+    `claimReadiness=${record.claimReadiness};`,
+    `blockers=${blockers.length ? blockers.join(",") : "none"}.`,
+  ].join(" ");
 }
 
 function runNegativeContractGuardrailSelfTest(report) {
