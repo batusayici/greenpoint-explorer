@@ -446,6 +446,12 @@ function DraftSceneInspector({ draftScene }) {
 
 function formatGeneratedEntitySummary(entity) {
   const field = entity.field ? `${formatStatusLabel(entity.field)} field` : "generated field";
+  if (entity.type === "field-status-callout") {
+    const secondary = entity.secondaryField
+      ? `; ${formatStatusLabel(entity.secondaryField)} ${formatStatusLabel(entity.secondaryStatus)}`
+      : "";
+    return `${field}; visible QA callout "${entity.text}"${secondary}`;
+  }
   if (entity.bounds) {
     return `${field}; ${entity.bounds.x},${entity.bounds.y} ${entity.bounds.width}x${entity.bounds.height}`;
   }

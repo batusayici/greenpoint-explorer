@@ -55,14 +55,57 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Post-Phase 2W MVP Acceleration Operating Model Update is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: QA-mode field-status callout pass is complete after Phase 2W. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the post-Phase 2W operating-model correction complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the QA-mode field-status callout pass complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - QA Field-Status Callout Pass
+
+Status:
+- Complete.
+
+Scope:
+- Batu directed that the batch must not be docs/governance-only and must produce visible QA-mode scene progress.
+- Add generated, QA-mode-only scene callouts that make draft field statuses visible near generated storefront/facade/bay/sign/door/window and symbolic subway cues.
+
+Files changed:
+- `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Draft fixture validation via local scene-manifest load confirmed callout plans for 5 records.
+- Generated scene output confirmed 5 QA field callouts each for Grillpoint Deli, McDonald's, Dunkin', and Citizens Bank, plus 4 for Greenpoint G subway.
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- Browser automation route was unavailable from the in-app browser session, so browser visual sanity could not be re-run in this batch.
+
+Outcome:
+- Added lightweight fixture hints for generated field-status callouts across all five active targets.
+- Extended the deterministic draft-scene generator with QA-only `field-status-callout` entities.
+- QA mode now renders small labels/connectors directly over the raster plate near generated visual cues, showing sourced/manual-draft/inferred/symbolic/blocked status in-scene.
+- Greenpoint G subway now includes a generated blocked entrance cue in addition to the symbolic station cue.
+- The QA inspector summarizes the generated callouts as visible QA callouts.
+- Strict promotion readiness remained unchanged, with 0 product-copy-ready targets.
+- Normal mode remains raster-first and does not draw the generated draft callout layer.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, exact geometry/source authority, product/public claims, and opening the next implementation brief.
+- Browser visual sanity should be re-run when the in-app browser automation route is available.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records the QA field-status callout pass complete and points future batches toward visible MVP proof progress.
 
 ### 2026-06-02 - Post-Phase 2W MVP Acceleration Operating Model
 

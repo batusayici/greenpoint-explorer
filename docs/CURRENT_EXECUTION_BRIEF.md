@@ -1,6 +1,6 @@
-# Current Execution Brief - Post-Phase 2W MVP Acceleration Operating Model Complete
+# Current Execution Brief - QA Field-Status Callout Pass Complete
 
-Status: Post-Phase 2W MVP Acceleration Operating Model Update is complete. This brief records Batu's requested governance/planning correction and does not open a further implementation batch by itself.
+Status: QA-mode visible field-status callout pass is complete. This brief records the latest implementation batch and does not open a further implementation batch by itself.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
 
@@ -24,6 +24,16 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Subway overlay remains symbolic/blocked and visually distinguished from business storefronts.
 - Normal-mode primary world art remains the approved review-only raster plate.
 - Phase 2W is intentionally QA-mode-only: it optimizes for faster real-data-to-scene pipeline proof without changing product readiness or normal-mode product meaning.
+
+## Latest QA Field-Status Callout Pass
+
+- Added lightweight `qaOverlay.fieldStatusCallouts` hints to the draft scene fixture for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Extended the deterministic draft-scene generator to emit QA-only `field-status-callout` entities from those fixture hints.
+- QA mode now draws small scene-level callouts near generated signs, facades, bays, door/window cues, anchors, and the symbolic subway cue so reviewers can see sourced/manual-draft/inferred/symbolic/blocked status directly in the scene.
+- The Greenpoint G subway path now generates a blocked entrance cue in addition to the symbolic station cue.
+- The selected-card QA inspector now summarizes generated callout entities as visible QA callouts.
+- Normal mode remains raster-first and does not draw the generated draft overlay or callout labels.
+- Strict promotion readiness remains unchanged; product-copy-ready targets remain 0.
 
 ## Generated From Fixture Fields
 
@@ -51,6 +61,15 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - The local negative self-test still rejects unsupported product-copy promotion and unsupported blocked-gate promotion.
 
 ## Files Changed
+
+Latest QA field-status callout pass changed:
+
+- `src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json`
+- `src/sceneManifest.js`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+
+Post-Phase 2W operating-model update changed:
 
 - `AGENTS.md`
 - `docs/AGENTIC_TOOLING.md`
@@ -95,6 +114,12 @@ git diff --stat
 
 ## Verification State
 
+- Latest QA field-status callout pass verification: draft fixture validates with callout plans for 5 records; generated scene output now produces 5 QA field callouts each for Grillpoint Deli, McDonald's, Dunkin', and Citizens Bank, plus 4 for Greenpoint G subway.
+- Latest `node scripts/verify-source-evidence-determinism.mjs` passed and confirmed source-evidence determinism remains stable.
+- Latest `node scripts/verify-qa-inspector-source-evidence.mjs` passed and confirmed 5 target(s) match coverage readiness, 5 evidence record(s) match app QA visibility, and the Grillpoint contract remains blocked for facade/geometry.
+- Latest `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed and confirmed unsupported promotion attempts are rejected.
+- Latest `npm run build` passed with the existing Vite large-chunk warning.
+- Browser automation route was unavailable from the in-app browser session, so browser visual sanity could not be re-run in this batch.
 - Post-Phase 2W operating-model update verification: `git diff --check` passed.
 - `node scripts/verify-source-evidence-determinism.mjs` passed and confirmed regenerated source-evidence output remains stable and matches the committed generated fixture.
 - `node scripts/verify-qa-inspector-source-evidence.mjs` passed and confirmed 5 target(s) match coverage readiness, 5 evidence record(s) match app QA visibility, and the Grillpoint contract remains blocked for facade/geometry.

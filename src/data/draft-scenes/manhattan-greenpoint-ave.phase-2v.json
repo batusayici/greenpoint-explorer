@@ -286,6 +286,54 @@
             "label": "anchor",
             "status": "inferred"
           }
+        ],
+        "fieldStatusCallouts": [
+          {
+            "entityType": "sign-band",
+            "field": "signText",
+            "secondaryField": "signPlacement",
+            "label": "sign",
+            "offset": {
+              "x": 18,
+              "y": -28
+            }
+          },
+          {
+            "entityType": "facade-panel",
+            "field": "facadeStyle",
+            "label": "facade",
+            "offset": {
+              "x": -92,
+              "y": -18
+            }
+          },
+          {
+            "entityType": "storefront-bay",
+            "field": "storefrontBay",
+            "label": "bay",
+            "offset": {
+              "x": 24,
+              "y": 16
+            }
+          },
+          {
+            "entityType": "door-cue",
+            "field": "doorWindowPlacement",
+            "label": "door/window",
+            "offset": {
+              "x": 20,
+              "y": 40
+            }
+          },
+          {
+            "entityType": "anchor-connector",
+            "field": "sceneAnchor",
+            "label": "anchor",
+            "offset": {
+              "x": 24,
+              "y": -24
+            }
+          }
         ]
       }
     },
@@ -553,6 +601,54 @@
           {
             "label": "facade",
             "status": "manual_draft"
+          }
+        ],
+        "fieldStatusCallouts": [
+          {
+            "entityType": "sign-band",
+            "field": "signText",
+            "secondaryField": "signPlacement",
+            "label": "sign",
+            "offset": {
+              "x": 18,
+              "y": -28
+            }
+          },
+          {
+            "entityType": "facade-panel",
+            "field": "facadeStyle",
+            "label": "facade",
+            "offset": {
+              "x": -96,
+              "y": -18
+            }
+          },
+          {
+            "entityType": "storefront-bay",
+            "field": "storefrontBay",
+            "label": "bay",
+            "offset": {
+              "x": 24,
+              "y": 16
+            }
+          },
+          {
+            "entityType": "door-cue",
+            "field": "doorWindowPlacement",
+            "label": "door/window",
+            "offset": {
+              "x": 20,
+              "y": 38
+            }
+          },
+          {
+            "entityType": "anchor-connector",
+            "field": "sceneAnchor",
+            "label": "anchor",
+            "offset": {
+              "x": 24,
+              "y": -24
+            }
           }
         ]
       }
@@ -823,6 +919,54 @@
             "label": "anchor",
             "status": "inferred"
           }
+        ],
+        "fieldStatusCallouts": [
+          {
+            "entityType": "sign-band",
+            "field": "signText",
+            "secondaryField": "signPlacement",
+            "label": "sign",
+            "offset": {
+              "x": 18,
+              "y": -28
+            }
+          },
+          {
+            "entityType": "facade-panel",
+            "field": "facadeStyle",
+            "label": "facade",
+            "offset": {
+              "x": -88,
+              "y": -18
+            }
+          },
+          {
+            "entityType": "storefront-bay",
+            "field": "storefrontBay",
+            "label": "bay",
+            "offset": {
+              "x": 22,
+              "y": 16
+            }
+          },
+          {
+            "entityType": "door-cue",
+            "field": "doorWindowPlacement",
+            "label": "door/window",
+            "offset": {
+              "x": 20,
+              "y": 38
+            }
+          },
+          {
+            "entityType": "anchor-connector",
+            "field": "sceneAnchor",
+            "label": "anchor",
+            "offset": {
+              "x": 24,
+              "y": -24
+            }
+          }
         ]
       }
     },
@@ -1091,6 +1235,54 @@
             "label": "facade",
             "status": "manual_draft"
           }
+        ],
+        "fieldStatusCallouts": [
+          {
+            "entityType": "sign-band",
+            "field": "signText",
+            "secondaryField": "signPlacement",
+            "label": "sign",
+            "offset": {
+              "x": 18,
+              "y": -28
+            }
+          },
+          {
+            "entityType": "facade-panel",
+            "field": "facadeStyle",
+            "label": "facade",
+            "offset": {
+              "x": -96,
+              "y": -18
+            }
+          },
+          {
+            "entityType": "storefront-bay",
+            "field": "storefrontBay",
+            "label": "bay",
+            "offset": {
+              "x": 24,
+              "y": 16
+            }
+          },
+          {
+            "entityType": "door-cue",
+            "field": "doorWindowPlacement",
+            "label": "door/window",
+            "offset": {
+              "x": 20,
+              "y": 38
+            }
+          },
+          {
+            "entityType": "anchor-connector",
+            "field": "sceneAnchor",
+            "label": "anchor",
+            "offset": {
+              "x": 24,
+              "y": -24
+            }
+          }
         ]
       }
     },
@@ -1330,6 +1522,45 @@
           {
             "label": "entrance",
             "status": "blocked"
+          }
+        ],
+        "fieldStatusCallouts": [
+          {
+            "entityType": "symbolic-cue",
+            "field": "stationIntersectionCues",
+            "label": "station cue",
+            "offset": {
+              "x": 52,
+              "y": -46
+            }
+          },
+          {
+            "entityType": "sign-band",
+            "field": "signText",
+            "secondaryField": "signPlacement",
+            "label": "route badge",
+            "offset": {
+              "x": 28,
+              "y": -32
+            }
+          },
+          {
+            "entityType": "door-cue",
+            "field": "doorWindowPlacement",
+            "label": "entrance",
+            "offset": {
+              "x": 22,
+              "y": 32
+            }
+          },
+          {
+            "entityType": "anchor-connector",
+            "field": "sceneAnchor",
+            "label": "anchor",
+            "offset": {
+              "x": 24,
+              "y": -24
+            }
           }
         ]
       }

@@ -353,6 +353,7 @@ function drawTargets(world, targets, reviewMode) {
         lineHeight: 15,
       },
     });
+    const draftEntityLabelLayer = new Container();
 
     container.eventMode = "none";
     markerLabel.resolution = 2;
@@ -362,23 +363,39 @@ function drawTargets(world, targets, reviewMode) {
     draftSignLabel.resolution = 2;
     draftSignLabel.anchor.set(0.5);
     draftStatusLabel.resolution = 2;
-    container.addChild(shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel);
+    container.addChild(shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel, draftEntityLabelLayer);
     world.addChild(container);
     renderTargetState(
-      { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel },
+      { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel, draftEntityLabelLayer },
       target,
       false,
       false,
       reviewMode,
     );
-    targetGraphics.set(target.id, { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel });
+    targetGraphics.set(target.id, {
+      shape,
+      markerLabel,
+      reviewLabel,
+      draftLabel,
+      draftSignLabel,
+      draftStatusLabel,
+      draftEntityLabelLayer,
+    });
   }
   return targetGraphics;
 }
 
 function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMode) {
   const { x, y, width, height } = target.bounds;
-  const { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel } = targetGraphic;
+  const {
+    shape,
+    markerLabel,
+    reviewLabel,
+    draftLabel,
+    draftSignLabel,
+    draftStatusLabel,
+    draftEntityLabelLayer,
+  } = targetGraphic;
   const markerX = target.marker?.x ?? x + width * 0.5;
   const markerY = target.marker?.y ?? y + height * 0.42;
   const tetherEnd = target.tetherEnd ?? {
@@ -560,6 +577,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
         .stroke({ color: 0xf5e5c3, width: 1.5, alpha: 0.7 });
     }
   }
+
+  syncDraftEntityLabelLayer(shape, draftEntityLabelLayer, target.draftScene?.generatedScene, reviewMode);
 }
 
 function drawDraftQaOverlay(graphics, target) {
@@ -585,6 +604,7 @@ function drawDraftQaOverlay(graphics, target) {
 }
 
 function drawGeneratedDraftEntity(graphics, entity) {
+  if (entity.type === "field-status-callout") return;
   if (entity.type === "footprint") {
     drawOverlayRect(graphics, entity, { fillAlpha: 0.035, strokeAlpha: 0.34, strokeWidth: 3 });
     return;
@@ -624,6 +644,59 @@ function drawGeneratedDraftEntity(graphics, entity) {
 
 function getDraftEntity(generatedScene, type) {
   return generatedScene?.entities?.find((entity) => entity.type === type);
+}
+
+function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode) {
+  const removed = layer.removeChildren();
+  for (const child of removed) child.destroy();
+
+  layer.visible = Boolean(reviewMode && generatedScene?.entities?.length);
+  if (!layer.visible) return;
+
+  const callouts = generatedScene.entities.filter((entity) => entity.type === "field-status-callout");
+  for (const callout of callouts) {
+    if (!callout.point) continue;
+
+    const text = new Text({
+      text: callout.text,
+      style: {
+        fill: "#27221c",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 10,
+        fontWeight: "900",
+        lineHeight: 12,
+      },
+    });
+    text.resolution = 2;
+    text.x = callout.point.x;
+    text.y = callout.point.y;
+
+    const statusColor = getDraftStatusColor(callout.status);
+    if (callout.from) {
+      graphics
+        .moveTo(callout.from.x, callout.from.y)
+        .lineTo(callout.point.x, callout.point.y + 6)
+        .stroke({ color: statusColor, width: 1.5, alpha: 0.54 });
+    }
+
+    const paddingX = 5;
+    const paddingY = 3;
+    graphics
+      .roundRect(
+        text.x - paddingX,
+        text.y - paddingY,
+        text.width + paddingX * 2,
+        text.height + paddingY * 2,
+        4,
+      )
+      .fill({ color: 0xfff2d1, alpha: 0.92 })
+      .stroke({ color: statusColor, width: 1.5, alpha: 0.86 });
+    graphics
+      .rect(text.x - paddingX, text.y - paddingY, 4, text.height + paddingY * 2)
+      .fill({ color: statusColor, alpha: 0.92 });
+
+    layer.addChild(text);
+  }
 }
 
 function drawOverlayRect(graphics, overlayRect, options) {

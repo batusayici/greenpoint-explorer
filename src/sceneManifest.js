@@ -445,6 +445,16 @@ function generateDraftQaScene(record) {
         label: "Generated symbolic sign band",
         textStatus: fields.signText.status,
       }));
+      if (overlay.doorCue?.bounds) {
+        entities.push(buildGeneratedRectEntity(
+          record,
+          "door-cue",
+          "doorWindowPlacement",
+          fields.doorWindowPlacement.status,
+          overlay.doorCue.bounds,
+          { label: "Generated blocked entrance cue" },
+        ));
+      }
       if (anchorPoint) {
         entities.push({
           id: `${record.id}:anchor-connector`,
@@ -459,6 +469,8 @@ function generateDraftQaScene(record) {
       }
     }
   }
+
+  entities.push(...buildFieldStatusCallouts(record, entities, overlay));
 
   entities.push({
     id: `${record.id}:business-label`,
@@ -494,6 +506,101 @@ function generateDraftQaScene(record) {
     entities,
     statusChips,
   };
+}
+
+function buildFieldStatusCallouts(record, entities, overlay) {
+  const plan = overlay.fieldStatusCallouts ?? getDefaultFieldStatusCalloutPlan(record);
+  const callouts = [];
+
+  for (const [index, item] of plan.entries()) {
+    const sourceEntity = entities.find((entity) => entity.type === item.entityType);
+    const fieldName = item.field ?? sourceEntity?.field;
+    const field = fieldName ? record.fields[fieldName] : null;
+    if (!sourceEntity || !field) continue;
+
+    const from = getGeneratedEntityAnchor(sourceEntity);
+    if (!from) continue;
+
+    const point = item.point ?? offsetPoint(
+      from,
+      item.offset?.x ?? getDefaultCalloutOffset(sourceEntity.type).x,
+      item.offset?.y ?? getDefaultCalloutOffset(sourceEntity.type).y,
+    );
+    const secondaryField = item.secondaryField ? record.fields[item.secondaryField] : null;
+    const primaryText = `${item.label ?? fieldName}: ${formatDraftStatusForLabel(field.status)}`;
+    const secondaryText = secondaryField
+      ? ` / ${formatDraftStatusForLabel(secondaryField.status)} ${formatDraftFieldName(item.secondaryField)}`
+      : "";
+
+    callouts.push({
+      id: `${record.id}:field-status-callout-${index + 1}`,
+      type: "field-status-callout",
+      field: fieldName,
+      status: field.status,
+      point,
+      from,
+      text: `${primaryText}${secondaryText}`,
+      label: item.label ?? formatDraftFieldName(fieldName),
+      targetEntityId: sourceEntity.id,
+      secondaryField: item.secondaryField ?? null,
+      secondaryStatus: secondaryField?.status ?? null,
+      generatedFrom: [
+        `fields.${fieldName}.status`,
+        "qaOverlay.fieldStatusCallouts",
+        sourceEntity.id,
+      ],
+    });
+  }
+
+  return callouts;
+}
+
+function getDefaultFieldStatusCalloutPlan(record) {
+  if (record.fields.storefrontBay.status === "symbolic") {
+    return [
+      { entityType: "symbolic-cue", field: "stationIntersectionCues", label: "station cue" },
+      { entityType: "door-cue", field: "doorWindowPlacement", label: "entrance" },
+      { entityType: "anchor-connector", field: "sceneAnchor", label: "anchor" },
+    ];
+  }
+
+  return [
+    { entityType: "sign-band", field: "signText", secondaryField: "signPlacement", label: "sign" },
+    { entityType: "facade-panel", field: "facadeStyle", label: "facade" },
+    { entityType: "storefront-bay", field: "storefrontBay", label: "bay" },
+    { entityType: "door-cue", field: "doorWindowPlacement", label: "door/window" },
+    { entityType: "anchor-connector", field: "sceneAnchor", label: "anchor" },
+  ];
+}
+
+function getGeneratedEntityAnchor(entity) {
+  if (entity.bounds) return centerOf(entity.bounds);
+  if (entity.center) return entity.center;
+  if (entity.point) return entity.point;
+  if (entity.from && entity.to) {
+    return {
+      x: Math.round((entity.from.x + entity.to.x) / 2),
+      y: Math.round((entity.from.y + entity.to.y) / 2),
+    };
+  }
+  return null;
+}
+
+function getDefaultCalloutOffset(entityType) {
+  if (entityType === "sign-band") return { x: 18, y: -24 };
+  if (entityType === "facade-panel") return { x: -82, y: -18 };
+  if (entityType === "storefront-bay") return { x: 26, y: 16 };
+  if (entityType === "door-cue") return { x: 18, y: 38 };
+  if (entityType === "symbolic-cue") return { x: 50, y: -46 };
+  return { x: 24, y: -22 };
+}
+
+function formatDraftStatusForLabel(status) {
+  return status.replaceAll("_", " ");
+}
+
+function formatDraftFieldName(fieldName) {
+  return fieldName.replaceAll("_", " ").replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
 function buildGeneratedRectEntity(record, type, field, status, bounds, extra = {}) {
@@ -860,6 +967,23 @@ function validateDraftSceneQaOverlay(overlay, label) {
   for (const [index, chip] of overlay.statusChips.entries()) {
     assertString(chip.label, `${label}.statusChips[${index}].label`);
     assertOneOf(chip.status, DRAFT_SCENE_STATUS_VALUES, `${label}.statusChips[${index}].status`);
+  }
+  if (overlay.fieldStatusCallouts) {
+    assertArray(overlay.fieldStatusCallouts, `${label}.fieldStatusCallouts`);
+    for (const [index, callout] of overlay.fieldStatusCallouts.entries()) {
+      assertString(callout.entityType, `${label}.fieldStatusCallouts[${index}].entityType`);
+      assertString(callout.field, `${label}.fieldStatusCallouts[${index}].field`);
+      assertString(callout.label, `${label}.fieldStatusCallouts[${index}].label`);
+      if (callout.secondaryField) {
+        assertString(callout.secondaryField, `${label}.fieldStatusCallouts[${index}].secondaryField`);
+      }
+      if (callout.offset) {
+        assertObject(callout.offset, `${label}.fieldStatusCallouts[${index}].offset`);
+        assertNumber(callout.offset.x, `${label}.fieldStatusCallouts[${index}].offset.x`);
+        assertNumber(callout.offset.y, `${label}.fieldStatusCallouts[${index}].offset.y`);
+      }
+      if (callout.point) validateScenePointLike(callout.point, `${label}.fieldStatusCallouts[${index}].point`);
+    }
   }
 }
 
