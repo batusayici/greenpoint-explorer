@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-01
+Last reconciled: 2026-06-02
 
 ## Purpose
 
@@ -55,14 +55,61 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2I Source Evidence Drift Guard is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2J Source Evidence Coverage Inspector is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2I source-evidence drift guard. Raster revisions, broader app refactor, generated source-evidence expansion beyond the current two-record fixture, merge behavior, expanded ingestion/parity coverage, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture, package/tooling changes, package-script/CI additions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2J source-evidence coverage inspector and report. Raster revisions, broader app refactor, generated source-evidence expansion beyond one later explicitly bounded target, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2J Source Evidence Coverage Inspector
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Move out of the accepted Phase 2I review hold and open one narrow Phase 2 implementation batch.
+- Add a local review-only coverage inspector that joins the current scene manifest to the Phase 2H generated runtime source-evidence fixture.
+- Generate a deterministic coverage report showing which current targets have linked generated evidence records and which remain manifest-source-only candidates.
+- Preserve the Phase 2D reviewed parity fixture unchanged and preserve the Phase 2H generated fixture/runtime direction unchanged.
+- Do not add package scripts, CI, scraping/API calls, raster art, new places, production schemas, public APIs, exact geometry claims, or production claims.
+
+Files changed:
+- `scripts/inspect-source-evidence-coverage.mjs`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 2 --expect-targets-without-evidence 3`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output /tmp/source-evidence.coverage.phase-2j.verify.json --expect-targets-with-evidence 2 --expect-targets-without-evidence 3`
+- Phase 2I drift guard command with the two current raw fixtures, Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- Existing expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, confirming the missing preserved gap is still reported.
+- `npm run build`
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The new coverage inspector reports 2 of 5 current targets with linked generated source-evidence records: `grillpoint-deli` and `greenpoint-g-subway`.
+- The report identifies 3 of 5 current targets as manifest-source-only raw-input expansion candidates: `mcdonalds`, `dunkin`, and `citizens-bank`.
+- The report carries forward manifest QA missing-data, ambiguity, blocked-claim, unprovenanced-claim, and hidden-manual-fix status.
+- The Phase 2D reviewed fixture, Phase 2H runtime fixture, app runtime import, package scripts, and lockfiles were not changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2J coverage inspector and report.
+- Which single manifest-source-only target should receive the next local raw-input fixture remains a Batu-owned or later-brief decision unless a future current brief explicitly delegates it.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, package scripts/CI, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2J source-evidence coverage inspector.
+- If accepted, Batu may open a later bounded Phase 2 task for one new local raw-input fixture plus parity/coverage update for a single manifest-source-only target.
 
 ### 2026-06-01 - Phase 2I Source Evidence Drift Guard
 

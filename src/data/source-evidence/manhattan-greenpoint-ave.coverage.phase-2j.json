@@ -1,0 +1,338 @@
+{
+  "schemaVersion": "source-evidence-coverage-report.v0.1",
+  "reportId": "manhattan-greenpoint-ave-mvp-slice.phase-2j.source-evidence-coverage",
+  "status": "review-only-source-evidence-coverage",
+  "manifestId": "manhattan-greenpoint-ave-mvp-slice",
+  "manifestVersion": "0.1",
+  "fixtureId": "combined-local-source-evidence-fixture",
+  "fixtureStatus": "review-only-combined-generation",
+  "reviewedOn": "2026-06-01",
+  "generatedFrom": {
+    "manifestPath": "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json",
+    "evidencePath": "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+  },
+  "summary": {
+    "targetCount": 5,
+    "evidenceRecordCount": 2,
+    "targetsWithGeneratedEvidence": 2,
+    "targetsWithoutGeneratedEvidence": 3,
+    "unlinkedEvidenceRecordCount": 0,
+    "unprovenancedRealWorldClaims": 0,
+    "hiddenManualFixes": 0
+  },
+  "targets": [
+    {
+      "targetId": "grillpoint-deli",
+      "objectId": "object-grillpoint-deli",
+      "placeId": "place-grillpoint-deli",
+      "title": "Grillpoint Deli",
+      "category": "Deli / food retail",
+      "claimStatus": "approximate",
+      "cardEligibility": "review-only",
+      "sceneAnchor": {
+        "id": "anchor-grillpoint-deli",
+        "claimStatus": "approximate",
+        "cornerId": "corner-nw",
+        "confidence": {
+          "value": "low",
+          "rationale": "medium corner context / low exact geometry"
+        }
+      },
+      "generatedEvidenceRecordIds": [
+        "evidence-grillpoint-identity-address-review"
+      ],
+      "coverageStatus": "generated-evidence-linked",
+      "coverageNotes": [
+        "Generated source-evidence records are linked to this target for review-only inspection."
+      ],
+      "manifestSourceRefs": [
+        {
+          "id": "restaurantji-grillpoint",
+          "label": "Restaurantji Grillpoint Deli",
+          "sourceType": "secondary-public-directory",
+          "usageStatus": "restricted",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29b",
+          "label": "MVP-29B evidence and business validation packet",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29c",
+          "label": "MVP-29C visual-reference completeness gate",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29d",
+          "label": "MVP-29D translation and composition brief",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        }
+      ],
+      "remainingGaps": [
+        "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate.",
+        "Parcel/tax-lot and building-footprint geometry remain unresolved for this MVP slice."
+      ]
+    },
+    {
+      "targetId": "mcdonalds",
+      "objectId": "object-mcdonalds",
+      "placeId": "place-mcdonalds",
+      "title": "McDonald's",
+      "category": "Fast food / restaurant",
+      "claimStatus": "approximate",
+      "cardEligibility": "review-only",
+      "sceneAnchor": {
+        "id": "anchor-mcdonalds",
+        "claimStatus": "approximate",
+        "cornerId": "corner-ne",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "medium-high identity/address / medium exact frontage"
+        }
+      },
+      "generatedEvidenceRecordIds": [],
+      "coverageStatus": "manifest-source-refs-only",
+      "coverageNotes": [
+        "No generated source-evidence record is linked yet; this target remains a candidate for future raw-input expansion."
+      ],
+      "manifestSourceRefs": [
+        {
+          "id": "mcdonalds-official",
+          "label": "McDonald's official location page",
+          "sourceType": "official-business-location-page",
+          "usageStatus": "restricted",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29b",
+          "label": "MVP-29B evidence and business validation packet",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29c",
+          "label": "MVP-29C visual-reference completeness gate",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29d",
+          "label": "MVP-29D translation and composition brief",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        }
+      ],
+      "remainingGaps": []
+    },
+    {
+      "targetId": "dunkin",
+      "objectId": "object-dunkin",
+      "placeId": "place-dunkin",
+      "title": "Dunkin'",
+      "category": "Coffee / donuts / quick-service food",
+      "claimStatus": "approximate",
+      "cardEligibility": "review-only",
+      "sceneAnchor": {
+        "id": "anchor-dunkin",
+        "claimStatus": "approximate",
+        "cornerId": "corner-sw",
+        "confidence": {
+          "value": "low",
+          "rationale": "medium-high identity/address / low exact visual geometry"
+        }
+      },
+      "generatedEvidenceRecordIds": [],
+      "coverageStatus": "manifest-source-refs-only",
+      "coverageNotes": [
+        "No generated source-evidence record is linked yet; this target remains a candidate for future raw-input expansion."
+      ],
+      "manifestSourceRefs": [
+        {
+          "id": "dunkin-official",
+          "label": "Dunkin' official location page",
+          "sourceType": "official-business-location-page",
+          "usageStatus": "restricted",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29b",
+          "label": "MVP-29B evidence and business validation packet",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29c",
+          "label": "MVP-29C visual-reference completeness gate",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29d",
+          "label": "MVP-29D translation and composition brief",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        }
+      ],
+      "remainingGaps": []
+    },
+    {
+      "targetId": "citizens-bank",
+      "objectId": "object-citizens-bank",
+      "placeId": "place-citizens-bank",
+      "title": "Citizens Bank",
+      "category": "Bank branch",
+      "claimStatus": "approximate",
+      "cardEligibility": "review-only",
+      "sceneAnchor": {
+        "id": "anchor-citizens-bank",
+        "claimStatus": "approximate",
+        "cornerId": "corner-se",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "medium-high identity/address / medium exact frontage"
+        }
+      },
+      "generatedEvidenceRecordIds": [],
+      "coverageStatus": "manifest-source-refs-only",
+      "coverageNotes": [
+        "No generated source-evidence record is linked yet; this target remains a candidate for future raw-input expansion."
+      ],
+      "manifestSourceRefs": [
+        {
+          "id": "citizens-official",
+          "label": "Citizens official branch page",
+          "sourceType": "official-branch-location-page",
+          "usageStatus": "restricted",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29b",
+          "label": "MVP-29B evidence and business validation packet",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29c",
+          "label": "MVP-29C visual-reference completeness gate",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29d",
+          "label": "MVP-29D translation and composition brief",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        }
+      ],
+      "remainingGaps": []
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "objectId": "object-greenpoint-g-subway",
+      "placeId": "place-greenpoint-g-subway",
+      "title": "Greenpoint G subway",
+      "category": "Subway station context",
+      "claimStatus": "symbolic",
+      "cardEligibility": "review-only",
+      "sceneAnchor": {
+        "id": "anchor-greenpoint-g-subway",
+        "claimStatus": "symbolic",
+        "cornerId": "transit-greenpoint-ave-side",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "SE cue medium-high / exact station geometry blocked"
+        }
+      },
+      "generatedEvidenceRecordIds": [
+        "evidence-greenpoint-g-station-context-review"
+      ],
+      "coverageStatus": "generated-evidence-linked",
+      "coverageNotes": [
+        "Generated source-evidence records are linked to this target for review-only inspection."
+      ],
+      "manifestSourceRefs": [
+        {
+          "id": "mta-greenpoint-accessibility",
+          "label": "MTA Greenpoint Av accessibility notice",
+          "sourceType": "official-transit-public-notice",
+          "usageStatus": "public-data",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mta-g-line-map",
+          "label": "MTA G line text map",
+          "sourceType": "official-transit-map",
+          "usageStatus": "public-data",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29b",
+          "label": "MVP-29B evidence and business validation packet",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29c",
+          "label": "MVP-29C visual-reference completeness gate",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        },
+        {
+          "id": "mvp-29d",
+          "label": "MVP-29D translation and composition brief",
+          "sourceType": "review-packet",
+          "usageStatus": "approved-review-only",
+          "reviewedOn": "2026-05-31"
+        }
+      ],
+      "remainingGaps": [
+        "Exact entrance coordinates, stair alignment, station footprint, and production transit mapping remain blocked.",
+        "The authored raster cue remains review-scale and not a source-derived transit geometry layer."
+      ]
+    }
+  ],
+  "unlinkedEvidenceRecordIds": [],
+  "qaCarryForward": {
+    "missingData": [
+      "Parcel/tax-lot identifiers are not resolved in Phase 2B.",
+      "Building footprints are not source-derived in Phase 2B.",
+      "Storefront segmentation, frontage order, entrance placement, and exact station geometry remain unresolved.",
+      "WGS84/projected coordinate transform is not implemented in this vertical slice."
+    ],
+    "ambiguity": [
+      "Scene coordinates are authored raster interaction coordinates, not real-world truth.",
+      "Business identity/address evidence does not prove exact storefront/frontage/entrance placement.",
+      "Greenpoint G cue placement is review-scale symbolic/approximate except where later evidence explicitly supports a cue relationship."
+    ],
+    "blockedClaims": [
+      "Exact facade/frontage/address placement.",
+      "Exact Greenpoint Av G station geometry or entrance coordinates.",
+      "Production visual assets or production trade-dress clearance.",
+      "Open-now, hours, ratings, reviews, services, endorsement, or partnership claims."
+    ],
+    "verdict": "proceed-for-review"
+  },
+  "notes": [
+    "This report is generated from the review-only scene manifest and Phase 2H runtime source-evidence fixture.",
+    "Generated evidence coverage does not approve production data, exact facade/frontage/address placement, exact station geometry, or public claims.",
+    "Targets without generated evidence still rely on manifest source references and remain candidates for future raw-input expansion."
+  ]
+}
