@@ -268,3 +268,32 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - Pending explicit Batu/later brief. Safe candidate areas remain fixture metadata refinement, generated-output inspection ergonomics, missing-evidence contract validation, or narrow local verifier improvements.
+
+### Batch 2026-06-02 10:24
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/verify-source-evidence-determinism.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2T Generated Fixture Determinism Check.
+- Added a local verifier that regenerates the current combined source-evidence fixture twice from the active raw inputs and scene manifest.
+- Confirmed repeated generation is byte-identical and regenerated output matches the committed generated runtime fixture.
+- Added line/column mismatch diagnostics and retained temporary generated outputs only on determinism failure.
+- Preserved committed source-evidence data, raw source claims, generated fixture, coverage report, missing-evidence contract, visual rendering, promotion gates, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- The next executable task is pending Batu or a later explicit brief.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Pending explicit Batu/later brief. Safe candidate areas remain fixture metadata refinement, generated-output inspection ergonomics, missing-evidence contract validation, schema/report verification improvements, or narrow local verifier improvements.

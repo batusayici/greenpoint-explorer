@@ -55,14 +55,52 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2S Fixture Metadata Readability Check is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2T Generated Fixture Determinism Check is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2S complete. The next executable task is pending Batu or a later explicit brief. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2T complete. The next executable task is pending Batu or a later explicit brief. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2T Generated Fixture Determinism Check
+
+Status:
+- Complete for review.
+
+Scope:
+- Add a local verifier that confirms generated source-evidence fixture output is deterministic and reproducible from the current raw inputs and generator path.
+- Keep the work fixture/determinism/readiness-focused and do not change visual rendering, source claims, promotion gates, product-copy readiness, package scripts, CI, raw source claims, ingestion breadth, source material, or external-source access.
+
+Files changed:
+- `scripts/verify-source-evidence-determinism.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- The new verifier regenerates the current combined source-evidence fixture twice, confirms repeated output is byte-identical, and confirms regenerated output matches the committed generated runtime fixture.
+- Verifier failures now retain generated temporary outputs and report line/column mismatch diagnostics for repeated-generation or committed-fixture drift.
+- Existing source-evidence / QA inspector verification and negative contract self-test behavior are preserved.
+- No committed source-evidence fixture, raw source claim, coverage report, missing-evidence contract, visual rendering, package tooling, screenshots, or production-facing claims changed.
+
+Unresolved decisions:
+- Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
+- The next executable task is pending Batu or a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records Phase 2T complete and does not open a further implementation batch.
 
 ### 2026-06-02 - Phase 2S Fixture Metadata Readability Check
 
