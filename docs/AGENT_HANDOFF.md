@@ -164,3 +164,29 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - Phase 2P Generated-Output Inspection Ergonomics: add a small local verifier or focused assertions that confirm app-visible QA inspector readiness/blocker state matches the generated coverage and Grillpoint missing-evidence contract.
+
+### Batch 2026-06-02 22:42
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/verify-qa-inspector-source-evidence.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Completed Phase 2P Generated-Output Inspection Ergonomics.
+- Added a local verifier that compares app-visible QA evidence record IDs, evidence strength, claim readiness, promotion gates, and promotion blockers against the generated coverage report.
+- Verified that the Grillpoint missing-evidence contract remains app-inspectable, review-only, product-copy-not-ready, and blocked for storefront/facade and entrance/frontage/geometry.
+- Preserved visual rendering, generated source-evidence claim status, promotion gates, product-copy readiness, package scripts, CI, screenshots, and external-source lock.
+Remaining:
+- Auto-advance may continue only if the next batch remains narrow, verified, local, source-evidence focused, and within the approved Phase 2 direction.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- Phase 2Q Missing-Evidence Contract Validation: add a small local validation path or focused assertions that verify missing-evidence contract fields cover the blocked promotion gates and preserve the must-not-claim constraints.
