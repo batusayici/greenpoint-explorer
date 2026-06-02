@@ -34,10 +34,12 @@
           ]
         },
         "categoryBusinessType": {
-          "status": "review_only",
-          "rationale": "The current evidence can support review-only deli/food-retail categorization, but the raw claims do not yet isolate a product-copy category assertion.",
-          "neededEvidence": "A reviewed source claim or approved manual review row that explicitly supports the category/business-type copy field.",
-          "claimIds": []
+          "status": "allowed",
+          "rationale": "The reviewed source and manifest source metadata support the deli/food-retail category context for this review evidence record.",
+          "neededEvidence": "",
+          "claimIds": [
+            "claim-grillpoint-category-context"
+          ]
         },
         "addressLocation": {
           "status": "allowed",
@@ -82,6 +84,15 @@
           "supportLevel": "supports-review-copy",
           "confidence": "medium",
           "notes": "Supports address text in the selected card, not exact raster address placement."
+        },
+        {
+          "claimId": "claim-grillpoint-category-context",
+          "manifestPath": "places.place-grillpoint-deli.category",
+          "claimType": "category-context",
+          "claimValue": "Deli / food retail",
+          "supportLevel": "supports-review-copy",
+          "confidence": "medium",
+          "notes": "Supports the review-card category only; does not support hours, services, active/open status, quality, popularity, or production business taxonomy claims."
         }
       ],
       "qaNotes": [

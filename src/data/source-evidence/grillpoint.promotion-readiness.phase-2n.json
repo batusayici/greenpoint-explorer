@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "place-promotion-readiness-report.v0.1",
+  "reportId": "grillpoint-deli.phase-2n.promotion-readiness",
+  "status": "review-only-single-place-promotion-spike",
+  "reviewedOn": "2026-06-02",
+  "targetId": "grillpoint-deli",
+  "placeId": "place-grillpoint-deli",
+  "evidenceRecordId": "evidence-grillpoint-identity-address-review",
+  "generatedFrom": {
+    "rawInputPath": "src/data/source-evidence/raw/grillpoint.phase-2e.raw.json",
+    "generatedEvidencePath": "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json",
+    "coverageReportPath": "src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json",
+    "manifestPath": "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json"
+  },
+  "outcome": "partial-promotion-category-only",
+  "claimReadiness": "review_only",
+  "productCopyReady": false,
+  "promotionRule": "Grillpoint cannot become product_copy_ready unless identity/name, category/business-type, address/location, storefront/facade, and entrance/frontage/geometry gates are all allowed.",
+  "currentPromotionGates": {
+    "identityName": {
+      "status": "allowed",
+      "supportingClaimIds": [
+        "claim-grillpoint-display-name"
+      ],
+      "notes": "Review-card identity remains supported by the reviewed secondary directory source."
+    },
+    "categoryBusinessType": {
+      "status": "allowed",
+      "supportingClaimIds": [
+        "claim-grillpoint-category-context"
+      ],
+      "notes": "Phase 2N added an explicit category-context raw claim using already-recorded manifest source support. This supports review-card category only, not production taxonomy, services, hours, popularity, active/open status, or promotional claims."
+    },
+    "addressLocation": {
+      "status": "allowed",
+      "supportingClaimIds": [
+        "claim-grillpoint-address-context"
+      ],
+      "notes": "Review-card address text remains supported; exact raster address placement remains unsupported."
+    },
+    "storefrontFacade": {
+      "status": "blocked",
+      "supportingClaimIds": [],
+      "notes": "Current generated raw evidence does not include approved facade/storefront claim inputs, provenance fields, or a reviewed claim boundary strong enough to support this promotion gate."
+    },
+    "entranceFrontageGeometry": {
+      "status": "blocked",
+      "supportingClaimIds": [],
+      "notes": "Current generated raw evidence does not include frontage, entrance, address-placement, parcel, or building-footprint geometry claim inputs strong enough to support this promotion gate."
+    }
+  },
+  "appliedRawInputChanges": [
+    {
+      "claim": "categoryBusinessType",
+      "addedClaimId": "claim-grillpoint-category-context",
+      "manifestPath": "places.place-grillpoint-deli.category",
+      "claimType": "category-context",
+      "claimValue": "Deli / food retail",
+      "supportLevel": "supports-review-copy",
+      "sourceRecordId": "restaurantji-grillpoint",
+      "sourceSupportAlreadyInRepo": [
+        "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json sources.restaurantji-grillpoint.claimTypesSupported includes category-context",
+        "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json sources.restaurantji-grillpoint.confidenceNotes records Grillpoint Deli name, deli category, and address context"
+      ]
+    }
+  ],
+  "missingEvidenceContract": {
+    "storefrontFacade": {
+      "requiredForGateStatus": "allowed",
+      "currentStatus": "blocked",
+      "requiredRawInputTypes": [
+        "owned_or_approved_non_google_facade_reference",
+        "facade_storefront_claim_boundary",
+        "visual_use_provenance_note",
+        "reviewer_approval_for_stylized_non_exact_facade_use"
+      ],
+      "minimumRawFields": [
+        "source.type",
+        "source.label",
+        "source.localPath or source.url",
+        "source.provenance.ownerOrApprovedUse",
+        "source.provenance.notGoogleStreetView3DTilesLiveXYZ",
+        "claims[].id",
+        "claims[].manifestPath",
+        "claims[].type = storefront-facade-context",
+        "claims[].supportLevel = supports-review-only-facade-cues",
+        "claims[].confidence",
+        "claims[].notes explaining stylized/non-exact use limits"
+      ],
+      "mustNotClaim": [
+        "exact facade",
+        "exact sign geometry",
+        "logo or trade-dress clearance",
+        "texture reuse or tracing",
+        "production asset readiness"
+      ]
+    },
+    "entranceFrontageGeometry": {
+      "requiredForGateStatus": "allowed",
+      "currentStatus": "blocked",
+      "requiredRawInputTypes": [
+        "frontage_or_entrance_review_row",
+        "parcel_building_or_storefront_geometry_context",
+        "address_placement_confidence_note",
+        "manual_geometry_review_boundary"
+      ],
+      "minimumRawFields": [
+        "source.type",
+        "source.label",
+        "source.localPath or source.url",
+        "source.provenance.reviewedBy",
+        "claims[].id",
+        "claims[].manifestPath",
+        "claims[].type = entrance-frontage-geometry-context",
+        "claims[].supportLevel",
+        "claims[].confidence",
+        "claims[].notes separating approximate review placement from exact geometry"
+      ],
+      "mustNotClaim": [
+        "exact entrance position",
+        "exact storefront width",
+        "exact frontage order",
+        "exact address placement",
+        "survey-accurate parcel or building footprint",
+        "production placement readiness"
+      ]
+    }
+  },
+  "nextSafeInputSlice": {
+    "recommendedTarget": "storefrontFacade",
+    "reason": "Category is now explicitly supported. Storefront/facade and entrance/frontage/geometry remain the only Grillpoint promotion blockers, but they require approved raw provenance and claim-boundary inputs before gates can move.",
+    "blockedUntil": [
+      "Approved raw facade/reference provenance is represented in source-evidence input form.",
+      "Batu or a later approved brief defines whether the existing supplied Grillpoint reference photos may be used for source-evidence gate promotion.",
+      "A raw-input claim separates stylized review-only facade cues from exact facade, sign, and production asset claims."
+    ]
+  }
+}

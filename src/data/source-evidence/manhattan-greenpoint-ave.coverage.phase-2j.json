@@ -54,8 +54,8 @@
         "blocked": 0
       },
       "categoryBusinessType": {
-        "allowed": 0,
-        "review_only": 5,
+        "allowed": 1,
+        "review_only": 4,
         "blocked": 0
       },
       "addressLocation": {
@@ -81,8 +81,8 @@
         "blocked": 0
       },
       "categoryBusinessType": {
-        "allowed": 0,
-        "review_only": 5,
+        "allowed": 1,
+        "review_only": 4,
         "blocked": 0
       },
       "addressLocation": {
@@ -138,9 +138,9 @@
           "neededEvidence": ""
         },
         "categoryBusinessType": {
-          "status": "review_only",
-          "rationale": "The current evidence can support review-only deli/food-retail categorization, but the raw claims do not yet isolate a product-copy category assertion.",
-          "neededEvidence": "A reviewed source claim or approved manual review row that explicitly supports the category/business-type copy field."
+          "status": "allowed",
+          "rationale": "The reviewed source and manifest source metadata support the deli/food-retail category context for this review evidence record.",
+          "neededEvidence": ""
         },
         "addressLocation": {
           "status": "allowed",
@@ -159,11 +159,6 @@
         }
       },
       "promotionBlockers": [
-        {
-          "claim": "categoryBusinessType",
-          "status": "review_only",
-          "neededEvidence": "A reviewed source claim or approved manual review row that explicitly supports the category/business-type copy field."
-        },
         {
           "claim": "storefrontFacade",
           "status": "blocked",
@@ -190,10 +185,12 @@
               ]
             },
             "categoryBusinessType": {
-              "status": "review_only",
-              "rationale": "The current evidence can support review-only deli/food-retail categorization, but the raw claims do not yet isolate a product-copy category assertion.",
-              "neededEvidence": "A reviewed source claim or approved manual review row that explicitly supports the category/business-type copy field.",
-              "claimIds": []
+              "status": "allowed",
+              "rationale": "The reviewed source and manifest source metadata support the deli/food-retail category context for this review evidence record.",
+              "neededEvidence": "",
+              "claimIds": [
+                "claim-grillpoint-category-context"
+              ]
             },
             "addressLocation": {
               "status": "allowed",
@@ -217,11 +214,6 @@
             }
           },
           "promotionBlockers": [
-            {
-              "claim": "categoryBusinessType",
-              "status": "review_only",
-              "neededEvidence": "A reviewed source claim or approved manual review row that explicitly supports the category/business-type copy field."
-            },
             {
               "claim": "storefrontFacade",
               "status": "blocked",

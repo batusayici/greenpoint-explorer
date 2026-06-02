@@ -55,14 +55,70 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2M Evidence Promotion Gates is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2N Grillpoint Promotion Spike is complete for Batu review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2M promotion gates, product-copy promotion rule, generated runtime fixture, and regenerated coverage report. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to Batu review/acceptance, revision, or rejection of the Phase 2N Grillpoint category promotion, additive parity behavior, missing-evidence contract, generated runtime fixture, and regenerated coverage report. Product-copy readiness, raster revisions, broader app refactor, merge behavior, scraping, external app-code API calls, generated scene data beyond the current review manifest/fixture/coverage report, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-02 - Phase 2N Grillpoint Promotion Spike
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Accept Phase 2M and open one bounded Phase 2 implementation batch.
+- Test a single-place evidence promotion path for Grillpoint only.
+- Add only repo-supported source evidence improvements without weakening the Phase 2M promotion gates.
+- Preserve the rule that `product_copy_ready` requires all five promotion gates to be `allowed`.
+- Keep all other targets unchanged except aggregate counts caused by Grillpoint's category improvement.
+- Do not change visual rendering, external sources, package scripts, CI, production schemas, or public APIs.
+
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `src/data/source-evidence/raw/grillpoint.phase-2e.raw.json`
+- `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `src/data/source-evidence/grillpoint.promotion-readiness.phase-2n.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --input src/data/source-evidence/raw/official-locations.phase-2k.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --allow-additional-generated true`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 5 --expect-targets-without-evidence 0 --expect-product-copy-ready-targets 0 --expect-review-only-targets 5 --expect-blocked-targets 0 --expect-identity-name-allowed-targets 5 --expect-category-business-type-allowed-targets 1 --expect-address-location-allowed-targets 4 --expect-storefront-facade-blocked-targets 5 --expect-entrance-frontage-geometry-blocked-targets 5`
+- Grillpoint Phase 2N missing-evidence report contract check.
+- Grillpoint-only category promotion check confirming only `grillpoint-deli` has category/business-type `allowed` and all five targets still block storefront/facade and entrance/frontage/geometry.
+- Expanded drift guard command with all three raw inputs, five expected evidence IDs, the Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- False-promotion expected-fail check that changed one record to `product_copy_ready`; it failed as intended because storefront/facade and entrance/frontage/geometry gates were still blocked.
+- Existing expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, confirming the missing preserved gap is still reported.
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Grillpoint now has an explicit generated `category-context` claim and its category/business-type gate is `allowed`.
+- Grillpoint remains `review_only`; it is not product-copy-ready because storefront/facade and entrance/frontage/geometry remain blocked.
+- The coverage report now shows 1 category/business-type allowed target, and the Grillpoint-only check confirms the other four targets did not change category gate status.
+- `src/data/source-evidence/grillpoint.promotion-readiness.phase-2n.json` names the exact raw input types and minimum fields needed before Grillpoint facade or geometry gates can move.
+- Phase 2D reviewed fixture, app visual rendering, package scripts, lockfiles, screenshots, and production-facing interfaces were not changed.
+
+Unresolved decisions:
+- Batu must accept, revise, or reject the Phase 2N Grillpoint category promotion, additive parity behavior, missing-evidence contract, generated runtime fixture, and regenerated coverage report.
+- Whether approved facade/reference raw-input provenance should be represented next, whether any field-photo reference may be used for promotion gates, whether promotion blockers should surface more directly in the app QA inspector, and whether source-authority/product-copy thresholds should be formalized remain blocked pending later approval.
+- Exact parcel/building/storefront/frontage/address/station geometry, production data/asset claims, public interface approval, source authority, broader ingestion, package scripts/CI, and production architecture remain blocked pending later approval.
+- MVP-29E acceptance, revision, or rejection remains pending.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 2N Grillpoint promotion spike.
+- If accepted, Batu may open a later bounded Phase 2 task for approved facade/reference raw-input provenance, app QA inspector surfacing of promotion blockers, fixture metadata refinement, generated-output inspection ergonomics, or a deliberately scoped source-evidence merge/review workflow.
 
 ### 2026-06-02 - Phase 2M Evidence Promotion Gates
 

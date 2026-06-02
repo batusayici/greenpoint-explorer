@@ -179,7 +179,7 @@ function collectFixtureParityFailures(generatedFixture, expectedFixture, options
     compareField(failures, generatedRecord, expectedRecord, "sourceUrl", "source url");
     compareField(failures, generatedRecord, expectedRecord, "sourceType", "evidence kind/category");
     compareField(failures, generatedRecord, expectedRecord, "usageStatus", "usage status");
-    compareField(failures, generatedRecord, expectedRecord, "claimMappings", "supported claims/copy fields");
+    compareClaimMappingsField(failures, generatedRecord, expectedRecord, options);
     compareField(failures, generatedRecord, expectedRecord, "remainingGaps", "preserved uncertainty/gap fields");
     compareField(failures, generatedRecord, expectedRecord, "qaNotes", "review QA notes");
   }
@@ -223,6 +223,25 @@ function compareField(failures, generatedRecord, expectedRecord, key, label) {
       `generated ${key}: ${generatedValue}`,
       `expected ${key}: ${expectedValue}`,
     ].join("; "));
+  }
+}
+
+function compareClaimMappingsField(failures, generatedRecord, expectedRecord, options) {
+  if (!options.allowAdditionalGenerated) {
+    compareField(failures, generatedRecord, expectedRecord, "claimMappings", "supported claims/copy fields");
+    return;
+  }
+
+  const generatedMappings = generatedRecord.claimMappings.map(stableComparable);
+  for (const expectedMapping of expectedRecord.claimMappings) {
+    const expectedValue = stableComparable(expectedMapping);
+    if (!generatedMappings.includes(expectedValue)) {
+      failures.push([
+        `${generatedRecord.id} supported claims/copy fields mismatch`,
+        `missing expected claim mapping: ${expectedValue}`,
+        `generated claimMappings: ${stableComparable(generatedRecord.claimMappings)}`,
+      ].join("; "));
+    }
   }
 }
 

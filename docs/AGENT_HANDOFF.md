@@ -211,3 +211,41 @@ Remaining:
 - Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
 Next recommended batch:
 - If Phase 2M is accepted, open one bounded follow-up for app QA inspector surfacing of promotion blockers, fixture metadata refinement, generated-output inspection ergonomics, a narrow manual-input checklist, or a deliberately scoped source-evidence merge/review workflow.
+
+### Batch 2026-06-02 21:47
+Status: complete
+Commit: pending
+Files changed:
+- `scripts/ingest-source-evidence-fixture.mjs`
+- `src/data/source-evidence/raw/grillpoint.phase-2e.raw.json`
+- `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json`
+- `src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json`
+- `src/data/source-evidence/grillpoint.promotion-readiness.phase-2n.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/AGENT_HANDOFF.md`
+Verification:
+- `node scripts/ingest-source-evidence-fixture.mjs --input src/data/source-evidence/raw/grillpoint.phase-2e.raw.json --input src/data/source-evidence/raw/greenpoint-g.phase-2g.raw.json --input src/data/source-evidence/raw/official-locations.phase-2k.raw.json --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --output src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --compare-to src/data/source-evidence/manhattan-greenpoint-ave.phase-2d.json --require-all-expected true --allow-additional-generated true`
+- `node scripts/inspect-source-evidence-coverage.mjs --manifest src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json --evidence src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json --output src/data/source-evidence/manhattan-greenpoint-ave.coverage.phase-2j.json --expect-targets-with-evidence 5 --expect-targets-without-evidence 0 --expect-product-copy-ready-targets 0 --expect-review-only-targets 5 --expect-blocked-targets 0 --expect-identity-name-allowed-targets 5 --expect-category-business-type-allowed-targets 1 --expect-address-location-allowed-targets 4 --expect-storefront-facade-blocked-targets 5 --expect-entrance-frontage-geometry-blocked-targets 5`
+- Grillpoint Phase 2N missing-evidence report contract check.
+- Grillpoint-only category promotion check.
+- Expanded drift guard with all three raw inputs, five expected evidence IDs, Phase 2H runtime fixture, and Phase 2D reviewed reference.
+- False-promotion expected-fail check changing one generated record to `product_copy_ready`; it failed as intended because facade and geometry gates remained blocked.
+- Expected-fail parity check with `src/data/source-evidence/raw/grillpoint.phase-2f.expected-fail-missing-gap.raw.json`, which still fails on the omitted preserved uncertainty/gap field.
+- `npm run build` passed with the existing Vite large-chunk warning.
+- `git diff --check`
+- `git diff --cached --check`
+- `git status --short`
+- `git diff --stat`
+What changed:
+- Accepted Phase 2M for continuation and opened/completed Phase 2N Single-Place Evidence Promotion Spike for Grillpoint.
+- Added an explicit Grillpoint category-context raw claim and promoted only Grillpoint's category/business-type gate to `allowed`.
+- Added a machine-readable Grillpoint missing-evidence contract for storefront/facade and entrance/frontage/geometry raw inputs.
+- Preserved Phase 2D reviewed parity behavior through additive claim-mapping parity and did not change visual rendering.
+Remaining:
+- Auto-advance may continue only if the next batch remains narrow, verified, source-evidence focused, and within the approved Phase 2 direction.
+- Product-copy readiness, production schemas/APIs, package scripts/CI, scraping/API calls, raster or visual work, exact storefront/frontage/address/station geometry claims, source-authority decisions, and broad coverage remain blocked.
+Next recommended batch:
+- A bounded follow-up for approved facade/reference raw-input provenance, app QA inspector surfacing of promotion blockers, fixture metadata refinement, generated-output inspection ergonomics, or a deliberately scoped source-evidence merge/review workflow.
