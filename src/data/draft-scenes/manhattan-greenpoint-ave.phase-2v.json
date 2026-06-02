@@ -8,7 +8,8 @@
   "notes": [
     "Prototype-only draft scene layer for proving real-data-to-scene flow before product/public readiness.",
     "Strict source-evidence promotion remains separate; these records do not mark any place product-copy-ready.",
-    "Manual/inferred/symbolic geometry may support QA/debug overlays and prototype scene completeness, not exact public claims."
+    "Manual/inferred/symbolic geometry may support QA/debug overlays and prototype scene completeness, not exact public claims.",
+    "The qaOverlay hints are QA-mode-only and must not change normal-mode scene meaning or replace the raster-first world plate."
   ],
   "statusValues": {
     "verified": "Reviewed evidence supports the field for the current review/demo use.",

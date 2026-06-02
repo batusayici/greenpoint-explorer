@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 2W Draft Real-Data Scene Visual Proof Pass Complete
+# Current Execution Brief - Phase 2W QA-Mode-Only Draft Real-Data Scene Visual Proof Pass Complete
 
-Status: Phase 2W Draft Real-Data Scene Visual Proof Pass is complete for review. This brief records the completed QA-mode visual proof pass and does not open a further implementation batch.
+Status: Phase 2W QA-mode-only Draft Real-Data Scene Visual Proof Pass is complete for review. This brief records the completed QA-mode visual proof pass and does not open a further implementation batch.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2 or MVP gates.
 
@@ -13,6 +13,7 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Subway overlay remains symbolic and explicitly blocked for exact entrance geometry.
 - Existing selected-card QA inspector draft field statuses remain available.
 - Normal-mode primary world art remains the approved review-only raster plate.
+- Phase 2W is intentionally QA-mode-only: it optimizes for faster real-data-to-scene pipeline proof without changing product readiness or normal-mode product meaning.
 
 ## Current Strict Promotion Result
 
@@ -64,6 +65,7 @@ git diff --stat
 - `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true` passed and confirmed unsupported promotion attempts are rejected.
 - `npm run build` passed with the existing Vite large-chunk warning.
 - Browser visual sanity check confirmed QA mode shows clearer real-name/status/geometry overlays while normal-mode raster art remains intact.
+- Follow-up reconciliation confirmed the Phase 2W overlay path is gated by review/QA mode; normal mode does not draw draft storefront/facade/bay/sign/status overlays.
 
 ## Next State
 

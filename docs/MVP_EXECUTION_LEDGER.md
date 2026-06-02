@@ -55,7 +55,7 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2W Draft Real-Data Scene Visual Proof Pass is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2W QA-mode-only Draft Real-Data Scene Visual Proof Pass is complete for review. MVP-29E Narrow Corrective Pass remains complete for Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
 - Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2W complete for review and does not open a further implementation batch. Product-copy readiness, promotion weakening, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
@@ -98,6 +98,7 @@ Outcome:
 - The Greenpoint G subway cue remains visibly symbolic and blocked for exact entrance geometry.
 - Strict generated source-evidence, Grillpoint product readiness, promotion gates, and negative contract behavior remained intact.
 - Normal-mode primary world art remains the approved review-only raster plate.
+- Follow-up reconciliation recorded Phase 2W as QA-mode-only: the reason is faster pipeline proof without changing product readiness or normal-mode product meaning, and the renderer audit confirmed draft overlays are gated by review/QA mode.
 
 Unresolved decisions:
 - Batu still owns source authority, production/public claims, exact facade/frontage/address/station geometry, visual acceptance, public-interface approval, and MVP-29E acceptance/revision/rejection.
