@@ -57,12 +57,48 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-3 as complete for Batu review and holds before Phase 2DTR-4 or any true regenerated image pass. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-4 as complete for Batu review and holds before Phase 2DTR-5 or any true regenerated image pass. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - Phase 2DTR-4 Exact Geometry Source Map + Target Scene Spec
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Create a review-only exact geometry source map and target scene spec after Batu unblocked exact MVP review geometry.
+- Map visible scene elements to NYC/open data, existing source evidence, supplied reference photos, manual review-coordinate interpretation, and unsupported gaps without app/source edits, package/tooling changes, live data, scraping, production assets, normal-mode raster replacement, or production/public-readiness changes.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`
+
+Verification:
+- JSON parse for `generated/exact-geometry-source-map.json`, `generated/target-scene-spec.json`, and `generated/reproducibility-gap-list.json`.
+- Raster file/dimension inspection for `generated/exact-geometry-source-map-board.png`.
+- Visual inspection of `generated/exact-geometry-source-map-board.png`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a concrete source-to-visible-scene mapping packet for Grillpoint, McDonald's, Dunkin', Citizens Bank, and Greenpoint G.
+- Added exact MVP review-coordinate placement requirements for storefront bounds, frontage lines, address anchors, entrance/cue bounds, and station cue placement.
+- Added a reproducibility gap list identifying what is automatic now and what still needs a structured adapter or stronger evidence.
+- Preserved review-only status and left app source, existing data fixtures, scripts, package tooling, normal-mode behavior, and production/public-readiness gates unchanged.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-4 source map and whether Phase 2DTR-5 should open.
+- Batu still owns whether a true generated raster image pass should happen before or after the exact review geometry fixture-to-raster adapter.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-4 output; Phase 2DTR-5 is proposed only after Batu approval or revision direction.
 
 ### 2026-06-03 - Exact MVP Geometry Review Gate Unblock
 

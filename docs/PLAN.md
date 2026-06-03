@@ -35,11 +35,12 @@ Use these in order when documents conflict:
 ## Current State Snapshot
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track.
-- Current next task: Batu review of Phase 2DTR-3 output; Phase 2DTR-4 is proposed only if Batu accepts or revises the four-corner regenerated raster/spec attempt.
+- Current next task: Batu review of Phase 2DTR-4 output; Phase 2DTR-5 is proposed only if Batu accepts or revises the exact geometry source map and target scene spec.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
 - Phase 2DTR-1 now has a review packet at `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/` with a structured Grillpoint/NW source object, deterministic raster/spec artifact, visual-instruction provenance map, and visible comparison board against MVP-29E.
 - Phase 2DTR-2 now has a review packet at `docs/mvp-review/phase-2dtr-2-four-target-structured-facade-fixture/` with a four-target structured facade fixture, deterministic raster/spec index, visual-instruction provenance map, and visible comparison board.
 - Phase 2DTR-3 now has a review packet at `docs/mvp-review/phase-2dtr-3-four-corner-regenerated-raster-attempt/` with a deterministic four-corner regenerated raster/spec attempt, visual-instruction provenance map, gap report, and visible comparison/spec board.
+- Phase 2DTR-4 now has a review packet at `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/` with an exact geometry source map, target scene spec, reproducibility gap list, and visible source-map board.
 - Batu has unblocked exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry, provided those fields stay evidence-backed, status-labeled, and review-only until later production/public approval.
 - Phase 2A through Phase 2AC are completed exploratory/source/QA groundwork. They established manifest, source-evidence, draft-scene, QA, and official-footprint comparison lanes, but they do not complete the MVP proof.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
@@ -64,7 +65,8 @@ Use these in order when documents conflict:
 1. Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice: complete and accepted as input to the following DTR slices; output proves a Grillpoint/NW structured source object can deterministically produce raster instructions and a source/status comparison packet.
 2. Phase 2DTR-2 - Four-Target Structured Facade Fixture: complete and accepted as input to Phase 2DTR-3; output extends the structured facade/source fixture model to Grillpoint, McDonald's, Dunkin', Citizens, and Greenpoint G.
 3. Phase 2DTR-3 - Four-Corner Regenerated Raster Attempt: complete for Batu review; output assembles the 2DTR-2 fixture into a deterministic four-corner raster/spec attempt and compares the instruction surface against MVP-29E evidence.
-4. Phase 2DTR-4 - QA Acceptance / Gap Report: proposed next step only after Batu accepts or revises the 2DTR-3 output; decide what is source-backed, inferred, blocked, photo/vendor-dependent, and good enough for MVP demo.
+4. Phase 2DTR-4 - Exact Geometry Source Map + Target Scene Spec: complete for Batu review; output maps visible scene elements to NYC/open data, existing source evidence, supplied reference photos, manual review-coordinate interpretation, and unsupported gaps.
+5. Phase 2DTR-5 - Exact Review Geometry Fixture To Raster Prompt Adapter: proposed next step only after Batu accepts or revises the 2DTR-4 output; move the source map into a structured review-only scene fixture and deterministic raster prompt/provenance adapter.
 
 Phase 2 now has three lanes:
 
@@ -76,10 +78,10 @@ Phase 2 now has three lanes:
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- Batu review of Phase 2DTR-3 output is now the active hold.
-- Review packet: `docs/mvp-review/phase-2dtr-3-four-corner-regenerated-raster-attempt/`.
-- Proposed next task after Batu review: Phase 2DTR-4 - QA Acceptance / Gap Report.
-- The next implementation batch must remain review-only and must not begin 2DTR-4, a true regenerated image pass, app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until the current brief explicitly opens that scope.
+- Batu review of Phase 2DTR-4 output is now the active hold.
+- Review packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
+- Proposed next task after Batu review: Phase 2DTR-5 - Exact Review Geometry Fixture To Raster Prompt Adapter.
+- The next implementation batch must remain review-only and must not begin 2DTR-5, a true regenerated image pass, app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until the current brief explicitly opens that scope.
 
 ## Locked Decisions
 
@@ -103,11 +105,11 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 ## Pending Decisions
 
 - Whether Batu accepts, revises, or rejects the focused MVP-29E raster/app integration output.
-- Whether Batu accepts, revises, or rejects the Phase 2DTR-3 four-corner regenerated raster/spec attempt.
+- Whether Batu accepts, revises, or rejects the Phase 2DTR-4 exact geometry source map and target scene spec.
 - Whether the MVP-29E raster needs another art pass for intersection/crosswalk precision, subway cue exactness, storefront specificity, sign readability, cue density, or overall visual taste.
 - Whether the MVP-29E hotspot/card alignment and mobile containment are sufficient for the next gate or need a separate revision pass.
 - Whether Batu opens full MVP-29G screenshot QA recovery and what screenshot states are required.
-- Whether the Phase 2DTR-3 output proves enough of the source-to-raster path to move to QA acceptance/gap closure, or whether Batu wants a true generated raster image pass first.
+- Whether the Phase 2DTR-4 output proves enough of the source-to-scene path to open the exact review geometry fixture and raster prompt adapter.
 - Which structured facade/source fields should influence normal-mode scene rendering versus QA/debug-only overlays as Phase 2DTR matures.
 
 ## Delegated Docs

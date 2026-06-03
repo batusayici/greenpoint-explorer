@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "phase-2dtr-exact-geometry-gap-list.v0.1",
+  "artifactId": "phase-2dtr-4.exact-geometry-gap-list",
+  "status": "review-only-gap-list",
+  "generatedOn": "2026-06-03",
+  "summary": {
+    "conceptDirectionProven": true,
+    "exactReviewCoordinateSpecAvailable": true,
+    "automaticallyReproducibleEndToEnd": false,
+    "appSourceChanged": false,
+    "productionPublicReady": false
+  },
+  "automaticallyReproducibleNow": [
+    "Business/place names, categories, and address-context text from existing local source-evidence fixtures.",
+    "Candidate NYC footprint context for the four storefront targets, with limits.",
+    "Committed MVP review-coordinate building/storefront/frontage/address/cue fields from local real-data and draft-scene fixtures.",
+    "Deterministic assembly into JSON source maps, target scene specs, gap reports, and provenance boards."
+  ],
+  "notAutomaticallyReproducibleYet": [
+    "Reference-photo facade parsing into window/entrance/sign geometry.",
+    "Automatic storefront frontage/order measurement from source evidence.",
+    "Automatic address-to-scene projection from open data/parcel/building/frontage sources.",
+    "Exact Greenpoint G station/entrance geometry from reviewed station entrance evidence.",
+    "A renderer or image-generation adapter that consumes the exact review geometry spec without hand-authored prompt translation.",
+    "QA verifier that checks every visible generated element has sourceCategory, status, and source path."
+  ],
+  "targetGaps": [
+    {
+      "targetId": "grillpoint-deli",
+      "reviewLabel": "Grillpoint Deli",
+      "highestCurrentSupport": "source-backed identity/address plus manual/photo-derived review coordinates",
+      "nextRequiredEvidenceOrDataMove": "Exact review-geometry fixture row linking address, footprint candidate, reference photos, storefront bounds, sign/entrance/window bounds, and confidence."
+    },
+    {
+      "targetId": "mcdonalds",
+      "reviewLabel": "McDonald's",
+      "highestCurrentSupport": "source-backed frontage alignment plus manual review coordinates",
+      "nextRequiredEvidenceOrDataMove": "Exact review-geometry fixture row linking address, footprint candidate, reference photos, storefront bounds, sign/entrance/window bounds, and confidence."
+    },
+    {
+      "targetId": "dunkin",
+      "reviewLabel": "Dunkin'",
+      "highestCurrentSupport": "source-backed identity/address plus manual/photo-derived review coordinates",
+      "nextRequiredEvidenceOrDataMove": "Exact review-geometry fixture row linking address, footprint candidate, reference photos, storefront bounds, sign/entrance/window bounds, and confidence."
+    },
+    {
+      "targetId": "citizens-bank",
+      "reviewLabel": "Citizens Bank",
+      "highestCurrentSupport": "source-backed frontage alignment plus manual review coordinates",
+      "nextRequiredEvidenceOrDataMove": "Exact review-geometry fixture row linking address, footprint candidate, reference photos, storefront bounds, sign/entrance/window bounds, and confidence."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "reviewLabel": "Greenpoint G subway",
+      "highestCurrentSupport": "source-backed station context plus manual/symbolic cue coordinates",
+      "nextRequiredEvidenceOrDataMove": "Station entrance evidence row from approved sources/reference photos, then exact cue bounds in a review-only geometry fixture."
+    }
+  ],
+  "recommendedNextImplementationBatch": {
+    "title": "Phase 2DTR-5 - Exact Review Geometry Fixture To Raster Prompt Adapter",
+    "purpose": "Move the exact review placement requirements from artifact JSON into a structured, testable review-only scene input that a raster prompt/provenance generator can consume.",
+    "concreteOutput": [
+      "A review-only exact-geometry scene fixture with per-field sourceCategory/status/sourceIds.",
+      "A deterministic adapter output that emits a raster prompt plus provenance map from that fixture.",
+      "A verifier that fails if visible scene fields lack sourceCategory/status/source path."
+    ],
+    "noProductionClaims": true
+  }
+}
