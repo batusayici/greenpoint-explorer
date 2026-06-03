@@ -57,12 +57,53 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-11 as complete for Batu review and holds before the proposed MVP feedback demo packaging batch. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the MVP feedback demo package as complete for Batu review. Phase 2DTR is complete for MVP-feedback purposes; do not open DTR-12 or another facade/raster correction loop unless external feedback shows facade fidelity is a decisive blocker. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - MVP Feedback Demo Package
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Package the DTR-11 hero raster, DTR-11 facade before/after board, compact pipeline board, reviewer README, feedback checklist, and manifest for external MVP feedback.
+- Mark Phase 2DTR complete for MVP-feedback purposes.
+- Preserve review-only status and avoid DTR-12, new styled raster generation, geometry/readiness phases, app/source edits, package/tooling changes, production assets, and production/public claims.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-feedback-demo-package/`
+
+Verification:
+- Confirmed referenced source/package artifacts exist.
+- Hero raster PNG exists and dimensions are 1672 x 941.
+- Facade before/after board PNG exists and dimensions are 2400 x 2500.
+- Compact pipeline board PNG exists and dimensions are 2400 x 1400.
+- JSON parse for `generated/demo-package-manifest.json`.
+- Deterministic regeneration check for `generate-feedback-demo-package.py`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added the MVP feedback demo package.
+- Added a reviewer-facing README and one-page feedback checklist.
+- Added a compact pipeline board explaining source/reference data to structured fixture to blueprint/geometry adapter to styled scene to QA.
+- Copied the DTR-11 hero raster and DTR-11 before/after board into the package.
+- Explicitly carried forward unrelated dirty state: `AGENTS.md` modified and `research/` untracked.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the MVP feedback demo package as ready for external sessions.
+- Batu still owns whether the next step is interactive demo/MVP acceptance audit or external feedback sessions.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the MVP feedback demo package; the proposed next step is interactive demo/MVP acceptance audit or external feedback sessions.
 
 ### 2026-06-03 - Phase 2DTR-11 Reference-Image Facade Fidelity Pass
 

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "mvp-feedback-demo-package-manifest.v0.1",
+  "artifactId": "mvp-feedback-demo-package",
+  "status": "review-only-ready-for-external-feedback",
+  "generatedOn": "2026-06-03",
+  "phase2DtrStatus": "complete_for_mvp_feedback_purposes",
+  "noDtr12": true,
+  "doNotReopenFacadeRasterCorrectionUnless": "external feedback shows facade fidelity is a decisive blocker",
+  "generatedArtifacts": {
+    "heroRaster": {
+      "path": "docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2902680,
+      "sha256": "8be9babdc4d058ba4cf19e8a89b642843f684ff2ebc210cda582c2af95f11f09"
+    },
+    "facadeBeforeAfterBoard": {
+      "path": "docs/mvp-review/mvp-feedback-demo-package/generated/facade-before-after-review-board.png",
+      "width": 2400,
+      "height": 2500,
+      "mode": "RGB",
+      "bytes": 4072163,
+      "sha256": "afdfc88f1e1f37bbbe4b5067597eb540150b86c4bc47f4c7fb43cf027e887c5a"
+    },
+    "compactPipelineBoard": {
+      "path": "docs/mvp-review/mvp-feedback-demo-package/generated/compact-pipeline-board.png",
+      "width": 2400,
+      "height": 1400,
+      "mode": "RGB",
+      "bytes": 1230441,
+      "sha256": "e58823ad92a8e34c94da7a774e31c4c71fefdade9b0dea0071160762b18f33c5"
+    }
+  },
+  "referencedEvidence": {
+    "dtr8Blueprint": {
+      "path": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-blueprint.svg",
+      "exists": true,
+      "bytes": 18471,
+      "sha256": "28091ce09070d600cfc1ae5f2c98460662eb1e2ee8ba453631809a0752149967"
+    },
+    "dtr8GeometryAdapter": {
+      "path": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-ready-geometry-adapter.json",
+      "exists": true,
+      "bytes": 38830,
+      "sha256": "9fc7c9f52ce80be81305d53351216b38e1f49b3f3851a7a4446279ad37a85f72"
+    },
+    "dtr10QaReport": {
+      "path": "docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/generated/corrected-styled-raster-qa-report.json",
+      "exists": true,
+      "bytes": 4286,
+      "sha256": "23960d389d0a07ae13412fe0630ebe672dcb44b8a96d55f9a795b193cd331489"
+    },
+    "dtr11QaReport": {
+      "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-qa-report.json",
+      "exists": true,
+      "bytes": 6675,
+      "sha256": "24544911465bac7b26ca63e226c4685bb96e97584c928d6856cbd90b8d7a34d4"
+    },
+    "dtr11FacadeSpecs": {
+      "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+      "exists": true,
+      "bytes": 13519,
+      "sha256": "6b9c13c1706300c1750386da7771ef668e22cdff616c643d538de03cb6c8b2a7"
+    }
+  },
+  "sourceVerdicts": {
+    "dtr10ReadyToPackage": true,
+    "dtr11ReferenceImagesImproveScene": true,
+    "dtr11FacadeFidelitySufficientForMvpFeedback": true,
+    "dtr11FullFidelityReproduction": false
+  },
+  "carriedForwardDirtyState": [
+    {
+      "path": "AGENTS.md",
+      "status": "pre-existing modified file; carried forward out of scope"
+    },
+    {
+      "path": "research/",
+      "status": "pre-existing untracked directory; carried forward out of scope"
+    }
+  ]
+}
