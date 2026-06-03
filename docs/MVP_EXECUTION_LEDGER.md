@@ -64,6 +64,35 @@ Next pointer:
 
 ## Entries
 
+### 2026-06-03 - Plan Scope Summary Tightening
+
+Status:
+- Complete.
+
+Scope:
+- Docs-only pass requested by Batu to simplify `docs/PLAN.md`, remove duplicated MVP scope detail from the roadmap, and reduce the plan's length before implementation.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git diff --check`
+- Lightweight Markdown link check
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- `docs/PLAN.md` now keeps a short MVP scope pointer instead of repeating detailed MVP boundaries already owned by `docs/MVP_SCOPE.md`.
+- The old detailed phase table was replaced with a compact roadmap summary and focused Phase 2DTR outcome plan.
+- Phase 2DTR-1 remains the next executable task, Phase 3 remains future Neighborhood Scale Validation, and production/public-readiness gates remain unchanged.
+
+Unresolved decisions:
+- Batu still owns acceptance of this simplified roadmap and any later scope, phase, visual, production, or public-readiness changes.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
+
 ### 2026-06-03 - Pre-Implementation Docs Cleanup
 
 Status:

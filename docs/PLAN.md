@@ -8,25 +8,17 @@ Execution owner inside approved boundaries: Codex
 
 ## Purpose
 
-This file is the stable roadmap through MVP completion and testing. It should describe phases, gates, current state, and remaining work without becoming a batch-history dump.
+This file is the stable roadmap through MVP completion and testing. It should stay short: current phase, next task, remaining path, blockers, pending decisions, and delegated-doc pointers.
 
-Use `docs/MVP_SCOPE.md` for detailed MVP boundaries. Use `docs/MVP_EXECUTION_LEDGER.md` for batch-by-batch execution records. Use `docs/CURRENT_EXECUTION_BRIEF.md` for the next Codex task only. Codex executes directly from repo governance and current project docs; ChatGPT is reserved for critical planning, review, ambiguity, and gate-decision moments.
+Use `docs/MVP_SCOPE.md` for detailed MVP boundaries. Use `docs/MVP_EXECUTION_LEDGER.md` for batch records. Use `docs/CURRENT_EXECUTION_BRIEF.md` for the next Codex task only.
 
 ## Product Goal
 
 Greenpoint Isometric Explorer should prove that a small authored Greenpoint scene can feel visually distinctive, locally specific, worth clicking, and reproducible from traceable real-world inputs.
 
-The MVP is not a full map product, game system, local guide platform, or production content pipeline. It is one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave that tests screenshot appeal, local specificity, first-click interest, and the real-data-to-isometric-raster-scene pipeline before strict product/public readiness.
+## MVP Scope Pointer
 
-## MVP Scope Summary
-
-The MVP is one review-only, raster-first, interactive Greenpoint diorama scene covering the full Manhattan Ave x Greenpoint Ave four-corner intersection. MVP-29E is the current manually composed baseline/reference, but the core proof must now show that the scene can be reconstructed from structured real-world inputs into a deterministic raster/spec artifact and review-only isometric scene output.
-
-The MVP may use a prototype-only draft data lane for real names, approximate geometry, storefront/facade drafts, and internal field-level truth statuses. For the MVP only, Batu-supplied reference photos are approved as facade/source imagery for review-only scene generation and facade extraction; this does not approve production reuse, training, texture extraction, third-party scraping, Google/Street View/3D Tiles extraction, or production asset policy.
-
-Detailed scope, non-goals, must-have/should-have/cuttable items, and MVP acceptance boundaries live in `docs/MVP_SCOPE.md`.
-
-`docs/PLAN.md` controls roadmap, phase order, and current state. `docs/MVP_SCOPE.md` controls detailed MVP boundaries. `docs/CURRENT_EXECUTION_BRIEF.md` can narrow scope for the active task but cannot expand MVP scope.
+The MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. Its detailed boundaries, non-goals, must-have/should-have/cuttable items, and acceptance rules live in `docs/MVP_SCOPE.md`.
 
 ## Source-Of-Truth Order
 
@@ -38,183 +30,93 @@ Use these in order when documents conflict:
 4. `docs/MVP_EXECUTION_LEDGER.md`
 5. Topic-specific docs when the task touches their area
 
-Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, `docs/AGENTIC_TOOLING.md`, and current MVP/review artifact package docs.
-
 `docs/TASKS.md` is deprecated and must not be used as an active source of truth unless `docs/CURRENT_EXECUTION_BRIEF.md` or this plan explicitly revives it.
 
 ## Current State Snapshot
 
-- Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. The current docs-only realignment is complete and sets Phase 2DTR-1 as the next recommended executable task. MVP-29E remains the current manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
-- Phase 1: MVP Scene Prototype is mostly complete; MVP-29E is pending Batu review/minor positioning corrections.
-- Phase 2: Data-Driven Scene MVP is underway; Phase 2A through Phase 2AC are summarized as completed exploratory/source/QA groundwork under review/local-readiness constraints. They established manifest/source-evidence/draft-scene/QA/official-footprint comparison lanes, but they do not complete the MVP proof until the scene can be reproducibly reconstructed from structured source/facade/geometry fields into a deterministic raster/spec artifact and review-only isometric output.
-- Phase 3: Neighborhood Scale Validation is a future high-level scale test.
-- Current Codex task pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next recommended state: Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice. Future implementation prompts should lead with "Build the visible MVP proof. Preserve gates as constraints." The next implementation batch must produce visible pipeline evidence, not just overlays, clearer explanation, verifier-only work, or governance cleanup.
-- Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction, based on the reviewed Phase 4 proof and supported by the Phase 4.5 reusable-system scalability proof.
+- Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track.
+- Current next task: Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
+- MVP-29E remains the current manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
+- Phase 2A through Phase 2AC are completed exploratory/source/QA groundwork. They established manifest, source-evidence, draft-scene, QA, and official-footprint comparison lanes, but they do not complete the MVP proof.
+- Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
-- Active implementation evidence observed in the repository: normal mode uses the MVP-29E review-only raster plate through the current app/data path; QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, selected-card evidence/status rows, and layer controls. Phase 2A through Phase 2AC established this exploratory/source/QA groundwork, but none of it approves production schemas, source pipelines, public interfaces, exact geometry, production assets, product/public readiness, scraping, live API calls, or product-copy readiness. See `docs/MVP_EXECUTION_LEDGER.md` and `docs/archive/MVP_EXECUTION_LEDGER_HISTORY.md` for batch-level details.
-- Current blockers: Phase 2DTR does not authorize product-copy readiness, package scripts, CI, scraping, external app-code API calls, package/tooling changes, production schemas, public APIs, full provenance/debug workbench, full screenshot QA, source-vendor decisions, MVP-29E demo-freeze changes, production visual assets, normal-mode code-native primary world art, production facade extraction, or production/public readiness. MVP-30 QA/demo freeze is future-only until Batu accepts sufficient four-corner raster/app output and opens any required full screenshot QA recovery. Batu-supplied reference photos are approved only as MVP review/source facade imagery, not production assets, training input, texture source, or general source policy. NYC Open Data/building footprints remain scaffold geometry context only; they do not prove tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, active-business status, or station geometry. Greenpoint G may remain symbolic/blocked while exact station geometry, exact entrance coordinates, exact stair alignment, and production transit accuracy remain blocked. Production visual assets, production asset direction, production asset pipeline, real-place production cards, exact real facades, exact address placement, exact storefront frontage/order, exact station geometry, final architecture, live data, CI, deployment, backend/CMS/persistence/analytics, and broad map coverage remain blocked until a later brief opens them.
-- Detailed MVP boundaries: `docs/MVP_SCOPE.md`.
-- Active-scene guardrail: before source validation, scene translation, visual polish, data alignment, or real-place implementation work, Codex must confirm and list the active scene/place set from current app/data files; previous-scene entities are archival/reference-only unless explicitly reactivated; unresolved disagreement between control docs, review artifacts, and app/data files is a stop condition unless the current brief explicitly authorizes correcting it.
-- Primary-world-art rule: For any prototype intended to represent the approved look and feel, the normal-mode world surface must be an approved raster/reference plate or an approved raster sprite/asset-kit composition. Code-native SVG/CSS/DOM/canvas/Pixi graphics may be used only for hidden blockouts, hit regions, debug/QA overlays, markers, tethers, selected outlines, cards, controls, and temporary alignment guides. A current brief may authorize code-native structure repair only when the result is explicitly labeled as a non-visual blockout and is not used as the product-facing normal-mode world surface. A current brief may not authorize code-native storefronts, buildings, sidewalks, roads, props, textures, or signs as the primary world art for a prototype being evaluated against the approved visual direction. If no approved raster plate or approved raster sprite/asset kit is available, Codex must stop before source edits.
+- Current implementation evidence: normal mode uses the MVP-29E review-only raster plate; QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, selected-card evidence/status rows, and layer controls. See the ledger and archived ledger history for batch detail.
 
-## MVP Phase Roadmap
+## Roadmap Summary
 
-| Phase | Purpose | Entry Criteria | Exit Criteria | Current Status |
-| --- | --- | --- | --- | --- |
-| 0. Governance And Scope | Establish authority, workflow, source-of-truth order, and MVP boundaries. | Project needs operating constraints. | Governance docs block premature production work and define owner authority. | Complete. |
-| 1. Visual Direction And Truth Feasibility | Decide whether the MVP has a viable visual direction and truth-safe representational approach. | Governance complete. | Batu approves visual direction; hybrid real-plus-placeholder truth approach is documented. | Complete. |
-| 2. Reference Corpus And Assetization Evidence | Gather approved visual references and test whether the visual direction can be reused at proof scale. | Visual direction approved. | Approved reference corpus exists; Phase 6 proof identifies reusable rules and limits. | Complete as proof evidence; not production asset approval. |
-| 3. Review-Only Prototype Evidence | Demonstrate the approved raster direction inside the interactive shell with fictional-safe targets. | Phase 6 translation plan exists and constrained implementation is approved. | Existing pan/zoom/hover/click/tap/card/mobile behavior is demonstrated with review screenshots and no production claims. | Evidence appears present; pending Batu review, with ChatGPT support optional. |
-| 4. MVP Gap Review | Review current prototype evidence and identify the exact gap to MVP completion. | Review-only prototype evidence exists. | `docs/mvp-review/mvp-01-prototype-state-review-and-gap-brief/README.md` identifies current evidence, missing MVP work, blockers, and next implementation sequence. | Complete as docs-only review artifact; requires Batu review, with ChatGPT support optional. |
-| 5. Place Truth Packet | Select candidate real places, source evidence, copy constraints, spatial risks, and omissions. | Batu approves moving from fictional placeholders toward real-place MVP data review. | Place truth packet lists recommended approved/deferred/omitted/fictionalized candidates with source URLs, source-review dates, truth status, and unresolved placement decisions. | Complete as docs-only review artifact; requires Batu review, with ChatGPT support optional. |
-| 6. Static MVP Data Contract | Define the static local data shape needed for the MVP without approving live data or a production data platform. | Place Truth Packet is reviewed and the implementation boundary is approved. | Docs-only data contract or approved source file boundary defines fields, disclaimers, source metadata, and review rules. | Complete as docs-only proposal; requires Batu review before implementation, with ChatGPT support optional. |
-| 7. MVP Interaction Integration | Integrate approved static data and final MVP interaction behavior into the prototype. | Static MVP Data Contract and implementation brief are approved. | Prototype demonstrates approved targets, cards, marker states, selected treatment, pan/zoom, hover/click/tap, and mobile containment with review screenshots. | Complete as review/demo-safe MVP-04 batch; pending Batu review, with ChatGPT support optional. |
-| 8. Source-Of-Truth Validation Spike | Test the recommended open-data + owned/approved visual-reference + human-QA approach on the current block face before more polish. | MVP-04 output is reviewed enough to know the active scene/block face; validation-spike boundary is approved. | 5-10 review-only storefront evidence cards, confidence notes, provenance notes, manual-review flags, and a short scale-readiness verdict exist; no production pipeline or public claims. | Complete and accepted with corrected current set; verdict is `revise`. |
-| 9. Corrective Scene Translation And Data Realignment | Align the prototype source/data/UI with corrected MVP-05 while preserving MVP-04 interaction behavior and avoiding facade-accuracy overclaims. | Corrected MVP-05 verdict is accepted; implementation boundary is approved. | Active prototype displays the current place set, stale previous-scene businesses are removed from active UI, review screenshots and self-audit exist, and no visual polish or new assets are introduced. | Complete for review. |
-| 10. Reusable Place Evidence Pipeline Spike | Define a repeatable source/evidence workflow for turning Greenpoint addresses/businesses into validated interactive scene data and approved art-reference inputs. | MVP-06 current-scene correction exists and facade/art accuracy remains unresolved. | Review artifact proposes source hierarchy, evidence taxonomy, conceptual schema, facade/art eligibility, manual vs automated steps, scaling risks, next task, and verdict. | Complete for review; verdict is `revise`. |
-| 11. Current-Scene Place Evidence Packet | Apply the reusable pipeline to each current active place and identify exact evidence gaps. | MVP-07 is reviewed and the docs-only evidence-packet boundary is approved. | One evidence card per current active place records identity, address, parcel/building, storefront/frontage, facade-reference provenance, treatment recommendation, and unresolved questions. | Complete for review; verdict is `revise`. |
-| 12. Current Scene Treatment Decision Brief | Decide whether the current scene pursues evidence acquisition, fictional-safe translation, cut/omit treatment, or mixed treatment before art translation. | MVP-08 is reviewed and its place-by-place eligibility findings are accepted or revised. | A docs-only decision brief frames the next approved path without opening implementation by itself. | Complete for review; verdict is `proceed` with mixed treatment. |
-| 13. Fictional-Safe Current Scene Art Translation Brief / Implementation Boundary | Define the exact review-only implementation boundary for mixed treatment if Batu accepts MVP-09. | MVP-09 is reviewed and mixed treatment is accepted or revised. | A brief identifies allowed files, public-interface/module-boundary status, acceptance criteria, stop conditions, and truth-safety guardrails before implementation. | Complete for review; verdict is `proceed-to-mvp-11-boundary`. |
-| 14. Current Scene Fictional-Safe Translation Pass | Implement the accepted MVP-10 boundary in the review-only prototype. | MVP-10 is reviewed and a later current brief explicitly opens MVP-11 implementation. | Prototype preserves five targets and interaction behavior while showing fictional-safe/generic business visuals, symbolic subway cues, screenshots, and self-audit. | Complete for review; screenshots blocked by local environment. |
-| 15. Screenshot / QA Recovery Review | Capture and review MVP-11 screenshots and interaction checks in an environment where the local app can open. | MVP-11 implementation exists; current environment blocked local server/browser preview. | Desktop/mobile review screenshots and interaction smoke notes exist, or Batu accepts the limitation. | Blocked for browser QA; verdict is `revise`. |
-| 16. Four-Corner Scene Structure Repair | Repair the failed MVP-11 single-screenshot/overlay approach with a four-corner current-scene structure. | MVP-12 blocks acceptance and Batu opens a corrective implementation pass. | Source uses a four-corner composition, targets are anchored NW/NE/SW/SE, subway remains symbolic, build passes, and review packet records screenshot status. | Implemented in source; screenshot/browser QA blocked. |
-| 17. Visual Acceptance Contract / Failure Guardrails | Prevent repeat of the MVP-11 screenshot-overlay failure and MVP-13 board-game/diagram failure before or during the next implementation pass. | MVP-13 fails visual review despite correct four-corner anchoring. | A strict docs-only contract defines banned patterns, required scene-language patterns, Approved Corpus Compliance Gate, pre-code visual extraction, renderer separation, QA screenshot rules, and next recommended task. | Complete for review as MVP-15A supporting guardrails and mandatory future implementation gate. |
-| 18. Approved Corpus Path Reconciliation | Repair stale approved-corpus manifest paths so the MVP-15A gate can inspect required references. | MVP-15B blocks because required ARC manifest paths are missing or path-conflicted. | Required ARC references point to existing inspectable paths; archive storage is documented as canonical preservation. | Complete as MVP-15A.1. |
-| 19. Perspective Scene Renderer Replacement | Replace the placeholder/diagram approach with a scene-native perspective renderer governed by MVP-15A. | MVP-15A.1 path reconciliation is complete and the full MVP-15A gate is completed in the MVP-15B packet before source edits. | Source uses scene-native perspective world geometry, embedded storefronts, distinct corner massing, correct four-corner anchoring, symbolic subway cue, and no screenshot overlay. | Implemented in source but visually rejected by supplied screenshot; salvage interaction shell only. |
-| 20. Visual Failure Freeze And Raster-First Gate | Freeze MVP-15B as failed/rejected visual evidence and patch the code-native primary-world-art loophole. | MVP-15B screenshot shows continued flat, diagrammatic, generic vector-isometric output. | Rejected screenshot evidence is copied, MVP-15B is marked visually rejected, and future visual compliance requires raster-first material use. | Complete for review as MVP-15C. |
-| 21. Raster Plate Selection / Supply Gate | Select or block the raster-first primary world surface before any MVP-16B source edits. | MVP-15C freezes MVP-15B as visually rejected and requires raster-first primary world art. | A docs-only selection packet evaluates existing raster candidates, selects a review-only plate or blocks implementation with minimum asset requirements, and updates the next brief. | Complete for review as MVP-16A; selected `docs/visual-artifacts/phase-6-repeatable-assetization-proof/generated/street-slice-recombination-v1.png`. |
-| 22. Raster-First Prototype Recovery | Recover the prototype by using an approved raster/reference plate or approved raster sprite/asset-kit composition as the normal-mode primary world surface. | Batu approves MVP-16B current brief and the selected raster plate or an approved replacement. | Prototype preserves interaction shell/card/target behavior around raster-first world art; no code-native primary scene art. | Complete for review as MVP-16B; visual verdict pending. |
-| 23. Visual Polish / Optional Ambient | Polish the contained MVP experience and add only approved ambient visual loops. | Raster-first prototype recovery is visually reviewed, and truth-safety decisions remain intact. | Review screenshots and notes show accepted visual polish, optional ambient loops or explicit cuts, and no production-asset claims. | Complete as MVP-17; accepted by Batu with mobile screenshot evidence gap noted. |
-| 24. Real Corner Evidence Recovery | Recover the source-of-truth path for a real, recognizable Greenpoint Ave x Manhattan Ave corner before any real-corner art translation. | MVP-17 is accepted only as an interaction baseline and Batu opens evidence recovery. | Review packet identifies boundary, buildings/lots/storefronts, candidate addresses, business status, BBL/BIN/tax-lot evidence, allowed/blocked facade references, first-corner spike recommendation, and proceed/revise/cut verdict. | Complete for review as MVP-18; verdict is `revise`. |
-| 25. One-Corner Field Photo Supply Gate | Supply or explicitly approve owned/non-Google facade references for the first real-corner target before art translation, and classify whether the one-corner evidence method can scale beyond a hand-authored exception. | Batu accepts or revises MVP-18 enough to open a supply/reference + scalability gate. | Owned/approved references, provenance, status/frontage notes, visual-use permissions, required evidence-row classifications, and scale readouts for 20, 100, and 500 storefronts are recorded, or the selected corner is blocked. Photos alone cannot complete MVP-19. This does not approve art translation, raster integration, real-place cards, UI claims, or implementation. | Complete for review as MVP-19; recommendation is `proceed-to-mvp-20`, pending Batu approval and naming/provenance reconciliation. |
-| 26. Real-Corner Translation Boundary | Convert accepted MVP-18 evidence and MVP-19 owned/approved reference inputs plus repeatability/scalability readout into a review-only translation brief for one real-corner target. | MVP-18 verdict and MVP-19 reference supply plus scalability assessment are accepted or revised enough to choose one target. | Docs-only boundary packet records selected-corner confirmation or blocked-corner verdict; evidence-to-scene matrix; active scene/place set; approved/blocked references; storefront/building/place and MapAnchor notes; verified/partial/symbolic/placeholder/omitted/blocked/manual-review-required status; allowed stylization and truth constraints; treatment recommendation for each active place; exact downstream implementation boundary proposal; and proceed/revise/cut verdict for one-corner raster integration. No rendering, source edits, assets, UI polish, screenshots, factual public card copy, production claims, Google/Street View/3D Tiles-derived extraction/reference storage, or implementation authorization. | Complete for review as MVP-20; recommendation is `proceed-to-mvp-21`, pending Batu approval and implementation-boundary decisions. |
-| 27. One-Corner Raster Integration / Visual Pass | Integrate an approved/supplied raster plate, layered raster export, or approved raster sprite/asset-kit composition for one selected real-corner target while preserving interaction shell and truth-safe UI/card behavior. | MVP-18 supports the selected corner; MVP-19 provides owned/approved non-Google storefront/facade references or an approved equivalent; MVP-20 is accepted by Batu; MVP-21 implementation brief is approved by Batu; approved review-only raster references are named; a later current brief explicitly opens implementation; public interfaces/module boundaries and allowed files are documented and reviewed. | One-corner raster integration is reviewable; interaction shell/card/target behavior is preserved; real-place placement and card behavior remain tied to the truth layer; product-facing world surface remains raster-first; no code-native buildings/storefronts/roads/signs/props/textures become primary world art; no production asset/data, exact facade, exact address, exact frontage/order, or exact station-geometry claim is made; screenshots/self-audit/checklist exist only if the current brief explicitly requires them. | Accepted by Batu only as `approved-reviewable-limited-fallback`: proves one generalized/evidence-aware place card can attach to the raster world plate; does not prove final visual fidelity, real-place accuracy, address placement, facade translation, or production readiness. |
-| 28. Grillpoint / Greenpoint Ave G Real Corner Vertical Slice | Move from generalized fallback to one real-place art-directed vertical slice for the NW Grillpoint / Greenpoint Ave G context. | MVP-21 limited fallback is accepted; Batu opens the MVP-22 evidence/composition path. | Stage A source/reference packet verifies Grillpoint identity/address/sign and station-context relationship enough to propose a truthful composition; Stage B raster-first art-directed scene/app integration opens only after Batu accepts Stage A and names the raster asset path, sign-label treatment, factual card copy, file allowlist, and screenshot requirements. | Accepted complete; MVP-22 sequence closed with MVP-22C polish and recovered screenshot QA. |
-| 29A. Four-Corner MVP Scope Reset | Reframe MVP completion from the accepted one-corner Grillpoint proof to the full Manhattan Ave x Greenpoint Ave four-corner scene. | Batu rejects the immediate one-corner QA/demo-freeze path and changes the MVP target. | Scope, roadmap, current brief, and ledger record the four-corner target and next sequence. | Complete as docs-only reset. |
-| 29B. Four-Corner Evidence + Business Validation Packet | Validate the active candidate set, source status, corner placement risks, business/card eligibility, and subway cue verification needs. | MVP-29A scope reset is complete. | Evidence packet recommends verified, approximate, symbolic, context-only, omitted, or blocked treatment for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway. | Complete as docs-only evidence validation; accepted by Batu with NW label resolved to `Grillpoint Deli`. |
-| 29C. Four-Corner Visual Reference Completeness Gate | Confirm whether owned/approved/non-Google references, plus any explicit Batu exception, are sufficient for true-to-life review/demo-scale storefront/sign/facade treatment. | Batu accepts or revises MVP-29B enough to proceed. | Reference completeness verdict exists, with missing references, approved exceptions, and blocked visual claims recorded. | Complete as docs-only visual-reference review; verdict `proceed-to-mvp-29d-with-limits`. |
-| 29D. Four-Corner Translation / Composition Brief | Define the truthful four-corner composition, visual treatment statuses, card/label rules, station cue rules, and implementation boundaries. | Batu accepts MVP-29C `proceed-to-mvp-29d-with-limits`. | A docs-only brief names composition, truth statuses, visual-treatment rules, MVP-29E requirements, acceptance criteria, and stop conditions before production or implementation. | Complete as docs-only composition brief; verdict `proceed-to-mvp-29e-with-limits`. |
-| 29E. Four-Corner Raster Scene Production / App Integration | Produce a review-only raster-first four-corner scene and integrate it into the existing app shell within Batu's opened implementation boundary. | Batu accepts or revises MVP-29D and directly opens MVP-29E implementation with file allowlist and truth constraints. | A review-only four-corner raster scene exists, app data/hotspots/cards are aligned, basic review screenshots exist, and production/exactness claims remain blocked. | Narrow hover/crosswalk/subway corrective pass complete for Batu review; no full QA/demo freeze opened. |
-| 29F. Four-Corner App Integration + Interaction Alignment | Reserved only for additional app-alignment work if Batu decides MVP-29E needs a separate follow-up pass. | Batu reviews MVP-29E and explicitly requests more alignment work. | Any requested hotspot/card/containment refinements are implemented within a new approved boundary. | Conditional / parked; first app integration was completed inside MVP-29E. |
-| 29G. Four-Corner Screenshot QA Recovery | Capture and review fuller interaction evidence for the four-corner scene. | Batu accepts or revises MVP-29E enough to open the full screenshot-QA phase. | Desktop/mobile/selected/hover/focus/QA-outline/pan-zoom evidence exists or blockers are recorded. | Future-only; not opened by MVP-29E basic screenshots. |
-| 30. MVP QA And Demo Freeze | Verify MVP behavior, truth policy, visual containment, and demo readiness after the full four-corner scene exists. | MVP-29G exits with sufficient evidence and Batu opens QA/demo freeze. | MVP QA checklist, smoke-check report, accepted exceptions, and demo-freeze notes are complete. | Future-only. |
-| 31. MVP Completion / Post-MVP Parking | Mark MVP complete or hold with explicit blockers, and keep expansion ideas parked. | MVP QA And Demo Freeze exits. | MVP completion note records final status; post-MVP ideas remain parked unless Batu promotes them. | Future-only. |
+| Area | Status | Current meaning |
+| --- | --- | --- |
+| Governance and scope | Complete | Authority, source-of-truth order, review-only status, and production gates are documented. |
+| Visual direction | Complete | Inked Indie / Compact Corner is approved as visual direction only, not production asset approval. |
+| Review-only prototype baseline | Mostly complete | MVP-29E is the current manually composed four-corner raster/app baseline for review. |
+| Phase 2A-2AC data groundwork | Complete as groundwork | Useful manifest/source/QA evidence exists, but it remains review-only and not production schema/pipeline approval. |
+| Phase 2DTR data-to-raster proof | Active | The MVP must now prove structured real-world inputs can reproduce or improve the four-corner raster/spec output. |
+| Phase 3 Neighborhood Scale Validation | Future | Reserved for later scale testing after the current intersection proof is accepted. |
+| MVP QA/demo freeze | Future | Blocked until Batu accepts sufficient four-corner output and opens the QA/demo freeze. |
 
-## Phase 2 / Phase 3 Direction
+## Phase 2DTR Outcome Plan
 
-- Phase 1: MVP Scene Prototype - mostly complete; MVP-29E pending Batu review/minor positioning corrections.
-- Phase 2: Data-Driven Scene MVP - underway. Phase 2A through Phase 2AC are complete as exploratory/source/QA groundwork. Phase 2DTR - Data-to-Raster MVP Proof is now the focused sub-track for proving source inputs to structured scene/facade/geometry fields to deterministic raster/spec artifact to review-only isometric scene output to QA/status comparison.
-- Phase 3: Neighborhood Scale Validation - future high-level scale test.
-
-## MVP Acceleration Operating Model
-
-Until the first working MVP scene is visually demoable, default to implementation over governance. Build the visible MVP proof; preserve gates as constraints.
-
-Every implementation batch must produce visible scene progress, real data ingestion/generation progress, interaction progress that helps evaluate the scene, or deploy/review progress that helps others see the MVP. Docs-only, reconciliation-only, verifier-only, and governance-only batches are invalid unless Batu explicitly requests them or implementation is blocked.
-
-QA mode is the experimental product lab. Render sourced, manual-draft, inferred, symbolic, and blocked draft data aggressively in QA mode when status is visible. Normal mode remains protected. "Not product-ready" does not mean "do not render."
-
-Batch success is measured by visible MVP progress, not documentation completeness. Prefer approximate, status-labeled QA-mode implementation over waiting for perfect source-backed geometry.
-
-## Near-Term Outcome Plan
-
-1. Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice: prove the pipeline on Grillpoint/NW by generating a fresh review-only raster scene spec/art prompt from structured data rather than hand-authored prose/manual composition. Output should include a structured one-corner source object, deterministic generated raster/spec artifact, provenance/status mapping from each visual instruction back to structured source fields, and review comparison against the current MVP-29E manual raster.
-2. Phase 2DTR-2 - Four-Target Structured Facade Fixture: extend the structured facade/source fixture model to Grillpoint, McDonald's, Dunkin', Citizens, and Greenpoint G. Use available real business/source data, NYC footprint/building/parcel scaffold where available, and Batu-supplied reference photos for MVP facade/source imagery. Greenpoint G may remain symbolic/blocked where exact station geometry is unresolved.
-3. Phase 2DTR-3 - Four-Corner Regenerated Raster Attempt: generate a new four-corner raster/spec attempt from the structured scene manifest and compare it against MVP-29E. This tests whether the manually composed raster can be reproduced or improved through structured source inputs.
-4. Phase 2DTR-4 - QA Acceptance / Gap Report: decide what is source-backed, what is inferred, what requires more reference photos/vendor data, and what is good enough for MVP demo. Output should be a concise acceptance/gap report, not another broad governance reset.
+1. Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice: prove the pipeline on Grillpoint/NW by generating a fresh review-only raster scene spec/art prompt from structured data rather than hand-authored prose/manual composition.
+2. Phase 2DTR-2 - Four-Target Structured Facade Fixture: extend the structured facade/source fixture model to Grillpoint, McDonald's, Dunkin', Citizens, and Greenpoint G.
+3. Phase 2DTR-3 - Four-Corner Regenerated Raster Attempt: generate a new four-corner raster/spec attempt from the structured scene manifest and compare it against MVP-29E.
+4. Phase 2DTR-4 - QA Acceptance / Gap Report: decide what is source-backed, inferred, blocked, photo/vendor-dependent, and good enough for MVP demo.
 
 Phase 2 now has three lanes:
 
-- Strict promotion lane: keeps source-evidence generation, promotion gates, product-copy readiness, and verifier/negative-test safeguards intact for future product/public use.
-- Draft prototype scene lane: allows the MVP scene to render real names, address/category facts, approximate geometry, storefront bays, facades, signs, and scene anchors using `verified`, `sourced`, `inferred`, `manual_draft`, `symbolic`, `unknown`, or `blocked` statuses before product-copy readiness.
-- Data-to-raster proof lane: focuses the draft/source/QA groundwork into review-only raster/spec regeneration evidence for the current four-corner MVP scene.
+- Strict promotion lane: keeps product-copy readiness, promotion gates, determinism checks, and negative contract tests intact for future product/public use.
+- Draft prototype scene lane: allows status-labeled real names, address/category facts, approximate geometry, storefront bays, facades, signs, and scene anchors before product-copy readiness.
+- Data-to-raster proof lane: focuses draft/source/QA groundwork into review-only raster/spec regeneration evidence for the current four-corner MVP scene.
 
 ## Current Next Task
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- Phase 2A through Phase 2AC are complete as exploratory/source/QA groundwork.
-- Phase 2DTR - Data-to-Raster MVP Proof is the focused Phase 2 sub-track.
-- Next executable task: Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
-- Phase 2DTR-1 must produce visible pipeline evidence: structured one-corner source object, deterministic generated raster/spec artifact, provenance/status mapping, and comparison against MVP-29E.
-- The strict promotion lane remains intact: product-copy readiness, exact/public claims, promotion gates, determinism checks, and negative contract tests are not weakened.
-- MVP-29E Narrow Corrective Pass remains complete for Batu review at `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/README.md`.
-- Scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor integration, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
+- Required output: structured one-corner source object, deterministic generated raster/spec artifact, provenance/status mapping from visual instructions back to source fields, and comparison against MVP-29E.
+- The next implementation batch must produce visible pipeline evidence, not only overlays, clearer explanation, verifier-only work, or governance cleanup.
 
 ## Locked Decisions
 
 - The MVP is one authored interactive diorama scene, not a broad map product or game system.
-- Batu owns creative direction, product direction, taste calls, public representation, public module/interface approval, and final approval of scope or gate changes.
-- ChatGPT supports critique, decision-support framing, and brief drafting at critical planning, review, ambiguity, and gate-decision moments.
-- Codex owns tactical execution of the current brief inside approved boundaries and should use repo docs instead of ChatGPT conversation memory when repo docs answer the question.
-- `docs/CURRENT_EXECUTION_BRIEF.md` is the canonical source for Codex's next task.
 - `docs/MVP_SCOPE.md` is the detailed MVP scope authority.
+- `docs/CURRENT_EXECUTION_BRIEF.md` is the canonical source for Codex's next task.
 - `docs/MVP_EXECUTION_LEDGER.md` records batch outcomes and reconciliation status, but it does not authorize execution by itself.
-- Every successful MVP/prototype batch must reconcile `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and `docs/MVP_EXECUTION_LEDGER.md` before final response.
-- Meaningful visual approvals require concrete artifacts at the correct fidelity/output format, as defined in `docs/VISUAL_ARTIFACT_STANDARDS.md`.
-- The Phase 2 gate outcome is hybrid real-plus-placeholder composition, now expanded with a draft prototype scene lane for real-data-driven visual completeness before product/public readiness.
-- Draft prototype records may render before `productCopyReady` when they are explicitly marked with field-level statuses and kept separate from strict promotion/product-readiness records.
-- Phase 2DTR is the current focused data-to-raster proof path inside Phase 2. It does not move the work to Phase 3, and it does not approve production schemas, public interfaces, production assets, live source acquisition, or public readiness.
-- Phase 4 is complete and the Inked Indie / Compact Corner fictional-safe storefront direction is approved as final visual direction.
-- Phase 4.5 and Phase 6 support reuse confidence only at proof/review scale. They do not approve production scalability, production buildability, production assets, production asset direction, or a production pipeline.
-- The Source-Of-Truth Validation Spike may test open-data, owned/approved visual-reference, and human-QA workflow at review scale only; it does not approve production data architecture, live refresh, or a production asset pipeline.
-- Google/Street View/3D Tiles-derived extraction, training, generation, texture reuse, or stored visual-reference use remains blocked unless a later legal/architecture gate explicitly approves it, except for Batu's narrow MVP-only SW Dunkin visual-reference exception for stylized/non-production review/demo approximation.
+- Phase 2DTR stays inside Phase 2 and does not approve production schemas, public interfaces, production assets, live source acquisition, or public readiness.
 - Batu-supplied reference photos are approved only as MVP review/source facade imagery for Phase 2DTR-style review generation and facade-field extraction. They are not production assets, training input, texture sources, or a general source-policy approval.
+- Google/Street View/3D Tiles extraction, third-party image scraping, production reuse, training, texture extraction, and production/public claims remain blocked unless a later explicit approval gate opens them.
 - The approved reference corpus is the active visual reference source for future visual, prototype, and assetization work.
-- Historical visual-artifact, review-screenshot, and review-only asset folders under `docs/archive/` are preservation/reference history only.
-- App implementation beyond a current approved brief starts only after Batu opens the relevant implementation gate and public interfaces/module boundaries are documented and reviewed.
 
 ## Active Blockers
 
-- Production visual assets, production asset direction, and production asset pipeline are unapproved.
-- Production buildability and production scalability are unapproved.
-- MVP-19 is a reference + scalability gate only and does not authorize art translation, raster integration, real-place cards, UI claims, or implementation.
-- MVP-21 is accepted only as `approved-reviewable-limited-fallback`; it does not approve another renderer pass, visual production expansion, code-native storefront/sign/facade art, or production readiness.
-- MVP-22/MVP-22C is accepted only as a one-corner proof and does not complete the revised four-corner MVP target.
-- MVP-30 QA/demo freeze is blocked until Batu accepts the MVP-29E four-corner raster/app output and opens any required full screenshot QA recovery.
-- Automated source-of-truth pipelines, broad storefront-unit databases, Live XYZ integration, and commercial data licensing remain blocked until a later architecture/legal gate. A narrow local draft scene fixture/model or official geometry sample for the current MVP intersection is allowed when opened by the current brief.
-- Phase 2A through Phase 2AC are review-only exploratory/source/QA groundwork and do not approve the manifest, QA inspector, source-evidence fixture, raw-input shape, converter, parity mode, drift guard, coverage inspector, coverage report, combined generated output, expanded generated runtime fixture, generated partial output, official-location raw-input slice, quality tiers, readiness thresholds, promotion gates, Grillpoint missing-evidence report, app QA surfacing, generated-output verifier, missing-evidence contract validation, verifier negative self-test, fixture metadata readability output, generated fixture determinism verifier, promotion-readiness contract, product-copy promotion rule, draft real-data fixture, generated QA overlay, active-target fixture, source-precision fixture, official-footprint comparison, QA layer controls, or Phase 2DTR planning sequence as a production public interface, runtime schema, ingestion output format, source pipeline, fixture merge path, coverage model, source-authority model, product-copy approval, production asset policy, or broader Greenpoint data model.
-- Product/public real-place cards and production placement remain blocked by unresolved source/placement risks. Prototype rendering of draft real-place scene records is allowed when fields are marked `verified`, `sourced`, `inferred`, `manual_draft`, `symbolic`, `unknown`, or `blocked`.
-- Real labels and review-only cards are present in MVP-29E only within the current static, source-backed, review/demo-safe boundary. Production real-place cards, exact storefront/sign/facade treatment, and exact Greenpoint Ave G station geometry remain blocked; the only current visual-reference exception is Batu's narrow MVP-only SW Dunkin exception.
-- Exact Greenpoint Av G station geometry, exact facade geometry, storefront widths, frontage/order, addresses, building footprints, parcel/tax-lot footprints, and active-business claims are not approved for production representation. Approximate/manual_draft/candidate-match versions may appear in the prototype-only draft/QA lane when clearly statused and not represented as exact.
-- Final architecture, public interfaces, production map implementation, live data, backend service, CMS, persistence, accounts, analytics, CI, deployment, and broader app implementation remain blocked until a later current brief explicitly opens that scope.
-- Project-specific implementation skills, plugin installs, and broad tooling stacks remain blocked unless Batu approves them later.
+- Product-copy readiness, exact/public claims, promotion gates, determinism checks, and negative contract tests must not be weakened.
+- Production visual assets, production asset direction, production asset pipeline, production buildability, and production scalability are unapproved.
+- Exact facade geometry, storefront widths, frontage/order, exact address placement, exact station geometry, parcel/tax-lot/building footprint claims, and active-business claims are not approved for production representation.
+- NYC Open Data/building footprints are scaffold geometry context only; they do not prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or station geometry.
+- Normal-mode code-native primary world art, raster asset edits, full MVP-29G screenshot QA, MVP-30 QA/demo freeze, package/tooling changes, package-script/CI additions, source-vendor integration, live data, scraping, backend/CMS/persistence/analytics, deployment, and broad coverage remain blocked unless a later brief explicitly opens them.
 
 ## Pending Decisions
 
-- Whether Batu accepts, revises, or rejects the focused MVP-29E revised raster/app integration output.
+- Whether Batu accepts, revises, or rejects the focused MVP-29E raster/app integration output.
 - Whether Batu accepts, revises, or rejects the Phase 2DTR-1 one-corner reproduction output once implemented.
 - Whether the MVP-29E raster needs another art pass for intersection/crosswalk precision, subway cue exactness, storefront specificity, sign readability, cue density, or overall visual taste.
 - Whether the MVP-29E hotspot/card alignment and mobile containment are sufficient for the next gate or need a separate revision pass.
-- Whether Batu opens full MVP-29G screenshot QA recovery, and which screenshot states are required beyond MVP-29E's basic evidence.
-- Whether Batu accepts the SW Dunkin stylized/non-production treatment under the narrow MVP-only exception, or cuts/downgrades Dunkin visual treatment.
-- Whether any remaining HEIC-only references are re-exported or omitted from future review rather than relied on directly.
-- Which Greenpoint Ave G subway entrances or station cues are acceptable at review/demo scale, and what additional evidence would be required before any exact placement or production transit claim.
+- Whether Batu opens full MVP-29G screenshot QA recovery and what screenshot states are required.
 - Whether the Phase 2DTR-1 output proves enough of the source-to-raster path to extend to the four-target structured facade fixture.
-- Whether any Should-Have or Cuttable scope items in `docs/MVP_SCOPE.md` should be promoted, cut, or deferred for the revised four-corner MVP.
-- What production asset direction and production asset pipeline, if any, should be approved later.
 - Which structured facade/source fields should influence normal-mode scene rendering versus QA/debug-only overlays as Phase 2DTR matures.
 
 ## Delegated Docs
 
 - `docs/CURRENT_EXECUTION_BRIEF.md`: next executable or proposed Codex task and operational handoff.
-- `docs/MVP_EXECUTION_LEDGER.md`: append-style task ledger, reconciliation status, and next-pointer history.
-- `docs/TASKS.md`: deprecated; not an active source of truth unless revived by this plan or the current brief.
-- `docs/DECISION_LOG.md`: durable decision history and rationale.
 - `docs/MVP_SCOPE.md`: detailed MVP scope and non-goals.
+- `docs/MVP_EXECUTION_LEDGER.md`: current ledger entries plus archived-history pointer.
+- `docs/DECISION_LOG.md`: durable decision history and rationale.
 - `docs/ART_DIRECTION.md`: art-direction principles, reference handling, and historical visual context.
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`: fidelity ladder, artifact-format rules, and visual self-audit requirements.
 - `docs/VISUAL_QA_CHECKLIST.md`: visual QA checklist.
-- `docs/AGENTIC_TOOLING.md`: workflow/tooling policy, allowed tooling use, blocked tooling use, and skills/plugins governance.
-- `docs/PHASE_2_PLAN.md`: historical stub only; not an active roadmap, task list, implementation brief, source-policy document, or scope authority.
-- `docs/AGENT_HANDOFF.md`: historical auto-advance stub only; not active task authority and not authorization to continue work without Batu/current-brief approval.
-- `docs/ARCHITECTURE.md`: Phase 2 data-to-scene architecture flow, truth layers, coordinate separation, and blocked implementation boundaries.
-- `docs/SCENE_MANIFEST_SCHEMA.md`: v0.1 scene manifest planning contract; not a runtime schema or public interface.
-- `docs/DATA_SOURCES.md`: Phase 2 source hierarchy and source-use warnings.
-- `docs/PROVENANCE_AND_QA.md`: provenance, debug, manual override, and QA requirements.
-- `docs/PHASE_3_SCALE_TEST_PLAN.md`: high-level future Neighborhood Scale Validation plan.
-- `docs/DATA_FEASIBILITY.md`: location truth feasibility, source review, blocking factual uncertainties, and structural reference handling.
-- `docs/PLACE_SOURCE_POLICY.md`: place-source hierarchy, verification policy, source conflicts, and staleness rules.
-- `docs/PLACE_SCHEMA.md`: conceptual place-data shape and truth-status vocabulary; not an implementation interface until approved later.
+- `docs/AGENTIC_TOOLING.md`: workflow/tooling policy and skills/plugins governance.
+- `docs/PHASE_2_PLAN.md`: historical stub only.
+- `docs/AGENT_HANDOFF.md`: historical auto-advance stub only.
+- `docs/ARCHITECTURE.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DATA_SOURCES.md`, and `docs/PROVENANCE_AND_QA.md`: Phase 2A-era planning background; subordinate to the current DTR controls.
+- `docs/PHASE_3_SCALE_TEST_PLAN.md`: future Neighborhood Scale Validation plan.
+- `docs/TASKS.md`: deprecated unless revived by this plan or the current brief.
