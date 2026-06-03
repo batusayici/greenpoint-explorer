@@ -1,5 +1,9 @@
 # Decision Log
 
+## Current Use Note
+
+This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
+
 ## 2026-05-31 - MVP-29C Batu Decision Revision Recorded
 
 Decision:

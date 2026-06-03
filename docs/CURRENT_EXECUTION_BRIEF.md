@@ -1,10 +1,10 @@
-# Current Execution Brief - Phase 2DTR Scope Realignment Complete
+# Current Execution Brief - Phase 2DTR-1 Ready
 
-Status: Phase 2 data-to-raster MVP proof realignment is complete. This brief records the docs-only scope/plan update and sets the next recommended executable task.
+Status: Phase 2 data-to-raster MVP proof realignment and pre-implementation docs cleanup are complete. This brief now sets Phase 2DTR-1 as the next recommended executable task.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, exact facade/frontage/address/station-geometry decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
-## Current Task - Scope / Plan Realignment
+## Completed Context
 
 - This was a docs-only planning and scope update. It did not authorize or edit app source, data fixtures, assets, screenshots, package files, package tooling, or scripts.
 - Phase 2 remains the active Data-Driven Scene MVP phase.
@@ -12,6 +12,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Phase 2A through Phase 2AC are now summarized as completed exploratory/source/QA groundwork.
 - Phase 2DTR - Data-to-Raster MVP Proof is created as the focused Phase 2 sub-track.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
+- `docs/PHASE_2_PLAN.md` and `docs/AGENT_HANDOFF.md` are historical stubs only, while `docs/PLAN.md` remains the active roadmap.
+- Older ledger history is archived at `docs/archive/MVP_EXECUTION_LEDGER_HISTORY.md`; the active `docs/MVP_EXECUTION_LEDGER.md` remains concise current history.
 
 ## Phase 2DTR Objective
 
@@ -84,15 +86,25 @@ The next implementation batch must produce visible pipeline evidence. It should 
 - No third-party image scraping.
 - No replacement of raster-first primary world art with SVG, canvas, CSS, DOM-drawn storefronts/buildings/roads/signs, or other code-generated primary world art.
 
-## Files Changed In This Realignment
+## Recent Docs-Only Changes
 
 - `docs/MVP_SCOPE.md`
 - `docs/PLAN.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/PHASE_2_PLAN.md`
+- `docs/AGENT_HANDOFF.md`
+- `docs/archive/MVP_EXECUTION_LEDGER_HISTORY.md`
+- `docs/ART_DIRECTION.md`
+- `docs/VISUAL_ARTIFACT_STANDARDS.md`
+- `docs/approved-reference-corpus/ASSET_CORPUS_SCAN.md`
+- `docs/DECISION_LOG.md`
+- `docs/ARCHITECTURE.md`
+- `docs/SCENE_MANIFEST_SCHEMA.md`
+- `docs/DATA_SOURCES.md`
+- `docs/PROVENANCE_AND_QA.md`
 
-## Verification For This Realignment
+## Verification For This Docs Cleanup
 
 Run before commit:
 

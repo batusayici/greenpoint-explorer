@@ -5,6 +5,9 @@ Date: 2026-06-01
 Creative/product/public-interface approval owner: Batu
 Execution owner inside approved boundaries: Codex
 
+Current note:
+- This is Phase 2A-era planning background. Phase 2DTR work is controlled by `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and `docs/MVP_SCOPE.md`; where this document conflicts with DTR scope, use the source-of-truth order in `AGENTS.md`.
+
 ## Purpose
 
 This document defines the planned v0.1 scene manifest contract for Phase 2.

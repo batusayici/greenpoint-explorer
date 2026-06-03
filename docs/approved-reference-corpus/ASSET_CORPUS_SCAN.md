@@ -1,23 +1,26 @@
 # Approved Reference Corpus Scan Notes
 
-Status: Scan record  
+Status: Historical scan record
 Date: 2026-05-28
+
+Current note:
+- This file preserves the original scan result only. Use `docs/approved-reference-corpus/MANIFEST.md` for canonical current reference paths.
 
 ## Folders Scanned
 
-- `docs/visual-artifacts/batch-12-radical-hero-style-frames/`
-- `docs/visual-artifacts/batch-13-survivor-direction-development/`
-- `docs/visual-artifacts/batch-14-production-scalability-spike/`
-- `docs/visual-artifacts/batch-15-raster-production-proof/`
-- `docs/visual-artifacts/batch-16-inked-indie-static-style-frame-gate/`
-- `docs/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/`
-- `docs/visual-artifacts/phase-3-5-production-system-proof/`
-- `docs/visual-artifacts/phase-3-6-buildability-scalability-plan/`
-- `docs/visual-artifacts/phase-3-7-storefront-layer-decomposition-proof/`
-- `docs/visual-artifacts/phase-3-8-fidelity-recovery-multi-module-stress-test/`
-- `docs/visual-artifacts/phase-3-9-map-scale-integration-test/`
-- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/`
-- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/`
+- `docs/archive/visual-artifacts/batch-12-radical-hero-style-frames/`
+- `docs/archive/visual-artifacts/batch-13-survivor-direction-development/`
+- `docs/archive/visual-artifacts/batch-14-production-scalability-spike/`
+- `docs/archive/visual-artifacts/batch-15-raster-production-proof/`
+- `docs/archive/visual-artifacts/batch-16-inked-indie-static-style-frame-gate/`
+- `docs/archive/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/`
+- `docs/archive/visual-artifacts/phase-3-5-production-system-proof/`
+- `docs/archive/visual-artifacts/phase-3-6-buildability-scalability-plan/`
+- `docs/archive/visual-artifacts/phase-3-7-storefront-layer-decomposition-proof/`
+- `docs/archive/visual-artifacts/phase-3-8-fidelity-recovery-multi-module-stress-test/`
+- `docs/archive/visual-artifacts/phase-3-9-map-scale-integration-test/`
+- `docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/`
+- `docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/`
 
 ## Required Filenames
 

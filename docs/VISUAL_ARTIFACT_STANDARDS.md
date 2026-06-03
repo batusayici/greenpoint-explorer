@@ -27,14 +27,14 @@ Constraint checklist compliance is not enough if the artifact format is wrong.
 
 The approved visual direction is still anchored by the Phase 4 fictional-safe storefront identity + UI integration proof, supported by the Phase 4.5 reusable-system scalability proof:
 
-- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png`
-- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/integrated-hover-card-pressure.png`
-- `docs/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/zoom-readability-identity-crop.png`
-- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/source-storefront-decomposition-board.png`
-- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/recombination-proof-board.png`
-- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/mini-street-slice-scalability-proof.png`
-- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/selected-state-ui-attachment-proof.png`
-- `docs/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/zoom-readability-crop.png`
+- `docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png`
+- `docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/integrated-hover-card-pressure.png`
+- `docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/zoom-readability-identity-crop.png`
+- `docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/source-storefront-decomposition-board.png`
+- `docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/recombination-proof-board.png`
+- `docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/mini-street-slice-scalability-proof.png`
+- `docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/selected-state-ui-attachment-proof.png`
+- `docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/zoom-readability-crop.png`
 
 Current verdict:
 
