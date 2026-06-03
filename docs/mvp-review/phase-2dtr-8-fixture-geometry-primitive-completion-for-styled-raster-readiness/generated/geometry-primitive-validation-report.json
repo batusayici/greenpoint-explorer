@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "phase-2dtr-8-geometry-primitive-validation-report.v0.1",
+  "artifactId": "phase-2dtr-8.geometry-primitive-validation-report",
+  "status": "review-only-ready-for-dtr9",
+  "generatedOn": "2026-06-03",
+  "generatedArtifacts": {
+    "primitiveFixture": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-fixture.json",
+    "adapter": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-ready-geometry-adapter.json",
+    "blueprint": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-blueprint.svg",
+    "prompt": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-geometry-prompt.txt"
+  },
+  "noPolishedRasterGenerated": true,
+  "noAiImageGenerationUsed": true,
+  "primitivePresence": {
+    "allRequiredPrimitivesExist": true,
+    "required": {
+      "roadGeometry": [
+        "manhattanAveRoadBand",
+        "greenpointAveRoadBand",
+        "intersectionPolygon",
+        "streetNamePlacementZones",
+        "orientationCues"
+      ],
+      "pedestrianCornerGeometry": [
+        "sidewalks",
+        "curbs",
+        "crosswalks",
+        "curbCuts",
+        "cornerZones"
+      ],
+      "storefrontTargetFields": [
+        "storefrontBounds",
+        "facadeFrontageBounds",
+        "signPanelBounds",
+        "entranceBounds",
+        "windowBounds",
+        "buildingMassBounds"
+      ],
+      "policyFields": [
+        "addressLabelPolicy",
+        "greenpointGSubwayCuePolicy",
+        "renderOrder",
+        "occlusionRules"
+      ]
+    },
+    "issues": []
+  },
+  "greenpointGSubwayCueValidation": {
+    "primaryCueCount": 1,
+    "primaryCueTargetId": "greenpoint-g-subway",
+    "additionalCuePolicy": "omit_from_styled_raster_unless_marked_secondary_symbolic",
+    "passes": true
+  },
+  "addressLabelPolicyValidation": {
+    "exists": true,
+    "inSceneAddressText": "disabled_for_styled_raster",
+    "qaOnlyAddressLabels": "enabled",
+    "dunkinIssueHandled": true,
+    "passes": true
+  },
+  "renderOrderOcclusionValidation": {
+    "renderOrderLayerCount": 11,
+    "occlusionRuleCount": 7,
+    "passes": true
+  },
+  "unsupportedOrBlockedClaims": [
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "claim": "automatic exact station entrance geometry",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "claim": "station stair/elevator orientation from official geometry",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "claim": "public/product station coordinate claim",
+      "treatment": "omitted from styled-raster-ready geometry unless later supported and explicitly approved"
+    }
+  ],
+  "dtr9Readiness": {
+    "readyForControlledStyledRaster": true,
+    "conditions": [
+      "DTR-9 must consume geometryPrimitiveFixture and this adapter JSON as source of truth.",
+      "DTR-9 must not rely on prose prompt text to invent layout, address text, extra subway cues, roads, crosswalks, or facade placements.",
+      "DTR-9 may use supplied reference imagery for facade styling only after geometry placement is locked by this spec.",
+      "DTR-9 must keep review-only labels/provenance and must not claim production/public exact geometry."
+    ]
+  },
+  "dirtyPreExistingFileState": {
+    "path": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+    "status": "pre-existing dirty visual artifact intentionally left untouched and out of DTR-8 scope"
+  }
+}

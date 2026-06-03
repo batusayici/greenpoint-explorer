@@ -1,0 +1,12 @@
+Phase 2DTR-8 Styled-Raster Geometry Prompt (secondary to JSON)
+
+- Create one controlled, review-only styled isometric raster for Manhattan Ave / Greenpoint Ave using the Phase 2DTR-8 JSON geometry adapter as the layout source of truth.
+- Use roadGeometry, pedestrianCornerGeometry, storefrontBuildingPrimitives, renderOrder, and occlusionRules exactly as placement controls.
+- Do not render in-scene address text. Address anchors are geometry only; exact addresses are QA-only labels.
+- Render one primary Greenpoint G cue from greenpointGSubwayCuePolicy. Do not invent additional primary G markers or entrances.
+- Use supplied reference imagery only for facade styling cues after geometry placement is locked.
+- Keep the artifact review-only and do not claim production/public exact geometry.
+
+JSON source of truth:
+- docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-ready-geometry-adapter.json
+- docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-fixture.json

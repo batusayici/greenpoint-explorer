@@ -1,0 +1,1230 @@
+{
+  "schemaVersion": "phase-2dtr-8-styled-raster-ready-geometry-adapter.v0.1",
+  "artifactId": "phase-2dtr-8.styled-raster-ready-geometry-adapter",
+  "status": "json-primary-review-only-layout-spec",
+  "generatedOn": "2026-06-03",
+  "sourceOfTruth": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-fixture.json",
+  "jsonIsPrimary": true,
+  "prosePromptIsSecondary": true,
+  "dtr9Readiness": {
+    "readyForControlledStyledRaster": true,
+    "conditions": [
+      "DTR-9 must consume geometryPrimitiveFixture and this adapter JSON as source of truth.",
+      "DTR-9 must not rely on prose prompt text to invent layout, address text, extra subway cues, roads, crosswalks, or facade placements.",
+      "DTR-9 may use supplied reference imagery for facade styling only after geometry placement is locked by this spec.",
+      "DTR-9 must keep review-only labels/provenance and must not claim production/public exact geometry."
+    ]
+  },
+  "frame": {
+    "width": 1672,
+    "height": 941,
+    "coordinateSystemId": "mvp-29e-review-plate-pixels"
+  },
+  "layoutPrimitives": {
+    "roads": {
+      "manhattanAveRoadBand": {
+        "value": {
+          "x": 640,
+          "y": 0,
+          "width": 278,
+          "height": 941
+        },
+        "sourceCategory": "dtr7_blueprint_gap_derivation",
+        "sourceCategories": [
+          "dtr7_blueprint_gap_derivation"
+        ],
+        "status": "derived_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Explicit review-coordinate road band promoted from DTR-7 building-mass gap derivation."
+      },
+      "greenpointAveRoadBand": {
+        "value": {
+          "x": 0,
+          "y": 362,
+          "width": 1672,
+          "height": 138
+        },
+        "sourceCategory": "dtr7_blueprint_gap_derivation",
+        "sourceCategories": [
+          "dtr7_blueprint_gap_derivation"
+        ],
+        "status": "derived_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Explicit review-coordinate road band promoted from DTR-7 building-mass gap derivation."
+      },
+      "intersectionPolygon": {
+        "value": {
+          "x": 640,
+          "y": 362,
+          "width": 278,
+          "height": 138
+        },
+        "sourceCategory": "dtr7_blueprint_gap_derivation",
+        "sourceCategories": [
+          "dtr7_blueprint_gap_derivation"
+        ],
+        "status": "derived_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Overlap of Manhattan Ave and Greenpoint Ave road bands; review-only, not GIS/survey geometry."
+      },
+      "streetNamePlacementZones": {
+        "value": [
+          {
+            "id": "street-name-greenpoint-west",
+            "streetId": "greenpoint-ave",
+            "text": "GREENPOINT AVE",
+            "bounds": {
+              "x": 150,
+              "y": 408,
+              "width": 360,
+              "height": 40
+            },
+            "orientation": "horizontal"
+          },
+          {
+            "id": "street-name-greenpoint-east",
+            "streetId": "greenpoint-ave",
+            "text": "GREENPOINT AVE",
+            "bounds": {
+              "x": 1060,
+              "y": 408,
+              "width": 380,
+              "height": 40
+            },
+            "orientation": "horizontal"
+          },
+          {
+            "id": "street-name-manhattan-north",
+            "streetId": "manhattan-ave",
+            "text": "MANHATTAN AVE",
+            "bounds": {
+              "x": 752,
+              "y": 88,
+              "width": 44,
+              "height": 230
+            },
+            "orientation": "vertical"
+          },
+          {
+            "id": "street-name-manhattan-south",
+            "streetId": "manhattan-ave",
+            "text": "MANHATTAN AVE",
+            "bounds": {
+              "x": 752,
+              "y": 572,
+              "width": 44,
+              "height": 250
+            },
+            "orientation": "vertical"
+          }
+        ],
+        "sourceCategory": "manual_review_only_interpretation",
+        "sourceCategories": [
+          "manual_review_only_interpretation"
+        ],
+        "status": "styled_raster_ready_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Deterministic text placement zones for street-name rendering or QA overlay."
+      },
+      "orientationCues": {
+        "value": [
+          {
+            "id": "north-arrow",
+            "type": "north-arrow",
+            "anchor": {
+              "x": 54,
+              "y": 853
+            },
+            "label": "N",
+            "status": "review_orientation_only"
+          },
+          {
+            "id": "manhattan-axis-cue",
+            "type": "street-axis",
+            "anchor": {
+              "x": 779,
+              "y": 470.5
+            },
+            "label": "Manhattan Ave north-south axis",
+            "status": "review_orientation_only"
+          },
+          {
+            "id": "greenpoint-axis-cue",
+            "type": "street-axis",
+            "anchor": {
+              "x": 836,
+              "y": 431
+            },
+            "label": "Greenpoint Ave east-west axis",
+            "status": "review_orientation_only"
+          }
+        ],
+        "sourceCategory": "manual_review_only_interpretation",
+        "sourceCategories": [
+          "manual_review_only_interpretation"
+        ],
+        "status": "review_orientation_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Review-coordinate orientation marks only."
+      }
+    },
+    "pedestrian": {
+      "cornerZones": {
+        "value": [
+          {
+            "id": "corner-nw",
+            "label": "NW",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 640,
+              "height": 362
+            },
+            "status": "derived_review_only",
+            "sourceCategory": "dtr7_blueprint_gap_derivation"
+          },
+          {
+            "id": "corner-ne",
+            "label": "NE",
+            "bounds": {
+              "x": 918,
+              "y": 0,
+              "width": 754,
+              "height": 362
+            },
+            "status": "derived_review_only",
+            "sourceCategory": "dtr7_blueprint_gap_derivation"
+          },
+          {
+            "id": "corner-sw",
+            "label": "SW",
+            "bounds": {
+              "x": 0,
+              "y": 500,
+              "width": 640,
+              "height": 441
+            },
+            "status": "derived_review_only",
+            "sourceCategory": "dtr7_blueprint_gap_derivation"
+          },
+          {
+            "id": "corner-se",
+            "label": "SE",
+            "bounds": {
+              "x": 918,
+              "y": 500,
+              "width": 754,
+              "height": 441
+            },
+            "status": "derived_review_only",
+            "sourceCategory": "dtr7_blueprint_gap_derivation"
+          }
+        ],
+        "sourceCategory": "dtr7_blueprint_gap_derivation",
+        "sourceCategories": [
+          "dtr7_blueprint_gap_derivation"
+        ],
+        "status": "derived_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Corner zones promoted from DTR-7 blueprint derivation."
+      },
+      "sidewalks": {
+        "value": [
+          {
+            "id": "sidewalk-nw-greenpoint-edge",
+            "cornerId": "corner-nw",
+            "relationship": "between NW storefront zone and Greenpoint Ave road band",
+            "bounds": {
+              "x": 0,
+              "y": 322,
+              "width": 640,
+              "height": 40
+            }
+          },
+          {
+            "id": "sidewalk-nw-manhattan-edge",
+            "cornerId": "corner-nw",
+            "relationship": "between NW storefront zone and Manhattan Ave road band",
+            "bounds": {
+              "x": 600,
+              "y": 0,
+              "width": 40,
+              "height": 362
+            }
+          },
+          {
+            "id": "sidewalk-ne-greenpoint-edge",
+            "cornerId": "corner-ne",
+            "relationship": "between NE storefront zone and Greenpoint Ave road band",
+            "bounds": {
+              "x": 918,
+              "y": 322,
+              "width": 754,
+              "height": 40
+            }
+          },
+          {
+            "id": "sidewalk-ne-manhattan-edge",
+            "cornerId": "corner-ne",
+            "relationship": "between NE storefront zone and Manhattan Ave road band",
+            "bounds": {
+              "x": 918,
+              "y": 0,
+              "width": 40,
+              "height": 362
+            }
+          },
+          {
+            "id": "sidewalk-sw-greenpoint-edge",
+            "cornerId": "corner-sw",
+            "relationship": "between SW storefront zone and Greenpoint Ave road band",
+            "bounds": {
+              "x": 0,
+              "y": 500,
+              "width": 640,
+              "height": 44
+            }
+          },
+          {
+            "id": "sidewalk-sw-manhattan-edge",
+            "cornerId": "corner-sw",
+            "relationship": "between SW storefront zone and Manhattan Ave road band",
+            "bounds": {
+              "x": 600,
+              "y": 500,
+              "width": 40,
+              "height": 441
+            }
+          },
+          {
+            "id": "sidewalk-se-greenpoint-edge",
+            "cornerId": "corner-se",
+            "relationship": "between SE storefront zone and Greenpoint Ave road band",
+            "bounds": {
+              "x": 918,
+              "y": 500,
+              "width": 754,
+              "height": 44
+            }
+          },
+          {
+            "id": "sidewalk-se-manhattan-edge",
+            "cornerId": "corner-se",
+            "relationship": "between SE storefront zone and Manhattan Ave road band",
+            "bounds": {
+              "x": 918,
+              "y": 500,
+              "width": 40,
+              "height": 441
+            }
+          }
+        ],
+        "sourceCategory": "manual_review_only_interpretation",
+        "sourceCategories": [
+          "manual_review_only_interpretation"
+        ],
+        "status": "styled_raster_ready_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Sidewalk rectangles derived around road/building gaps for DTR-9 layout control."
+      },
+      "curbs": {
+        "value": [
+          {
+            "id": "curb-greenpoint-north-west",
+            "from": {
+              "x": 0,
+              "y": 362
+            },
+            "to": {
+              "x": 640,
+              "y": 362
+            },
+            "adjacentRoad": "greenpoint-ave-road-band"
+          },
+          {
+            "id": "curb-greenpoint-north-east",
+            "from": {
+              "x": 918,
+              "y": 362
+            },
+            "to": {
+              "x": 1672,
+              "y": 362
+            },
+            "adjacentRoad": "greenpoint-ave-road-band"
+          },
+          {
+            "id": "curb-greenpoint-south-west",
+            "from": {
+              "x": 0,
+              "y": 500
+            },
+            "to": {
+              "x": 640,
+              "y": 500
+            },
+            "adjacentRoad": "greenpoint-ave-road-band"
+          },
+          {
+            "id": "curb-greenpoint-south-east",
+            "from": {
+              "x": 918,
+              "y": 500
+            },
+            "to": {
+              "x": 1672,
+              "y": 500
+            },
+            "adjacentRoad": "greenpoint-ave-road-band"
+          },
+          {
+            "id": "curb-manhattan-west-north",
+            "from": {
+              "x": 640,
+              "y": 0
+            },
+            "to": {
+              "x": 640,
+              "y": 362
+            },
+            "adjacentRoad": "manhattan-ave-road-band"
+          },
+          {
+            "id": "curb-manhattan-west-south",
+            "from": {
+              "x": 640,
+              "y": 500
+            },
+            "to": {
+              "x": 640,
+              "y": 941
+            },
+            "adjacentRoad": "manhattan-ave-road-band"
+          },
+          {
+            "id": "curb-manhattan-east-north",
+            "from": {
+              "x": 918,
+              "y": 0
+            },
+            "to": {
+              "x": 918,
+              "y": 362
+            },
+            "adjacentRoad": "manhattan-ave-road-band"
+          },
+          {
+            "id": "curb-manhattan-east-south",
+            "from": {
+              "x": 918,
+              "y": 500
+            },
+            "to": {
+              "x": 918,
+              "y": 941
+            },
+            "adjacentRoad": "manhattan-ave-road-band"
+          }
+        ],
+        "sourceCategory": "manual_review_only_interpretation",
+        "sourceCategories": [
+          "manual_review_only_interpretation"
+        ],
+        "status": "styled_raster_ready_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Curb line primitives separate road bands from sidewalk/corner zones."
+      },
+      "crosswalks": {
+        "value": [
+          {
+            "id": "crosswalk-greenpoint-west-leg",
+            "crosses": "greenpoint-ave-road-band",
+            "orientation": "north-south",
+            "bounds": {
+              "x": 640,
+              "y": 382,
+              "width": 70,
+              "height": 98
+            },
+            "stripeAxis": "horizontal"
+          },
+          {
+            "id": "crosswalk-greenpoint-east-leg",
+            "crosses": "greenpoint-ave-road-band",
+            "orientation": "north-south",
+            "bounds": {
+              "x": 848,
+              "y": 382,
+              "width": 70,
+              "height": 98
+            },
+            "stripeAxis": "horizontal"
+          },
+          {
+            "id": "crosswalk-manhattan-north-leg",
+            "crosses": "manhattan-ave-road-band",
+            "orientation": "east-west",
+            "bounds": {
+              "x": 682,
+              "y": 362,
+              "width": 194,
+              "height": 54
+            },
+            "stripeAxis": "vertical"
+          },
+          {
+            "id": "crosswalk-manhattan-south-leg",
+            "crosses": "manhattan-ave-road-band",
+            "orientation": "east-west",
+            "bounds": {
+              "x": 682,
+              "y": 446,
+              "width": 194,
+              "height": 54
+            },
+            "stripeAxis": "vertical"
+          }
+        ],
+        "sourceCategory": "manual_review_only_interpretation",
+        "sourceCategories": [
+          "manual_review_only_interpretation"
+        ],
+        "status": "styled_raster_ready_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Crosswalk stripe bounds for each intersection leg."
+      },
+      "curbCuts": {
+        "value": [
+          {
+            "id": "curb-cut-nw-greenpoint",
+            "cornerId": "corner-nw",
+            "bounds": {
+              "x": 552,
+              "y": 344,
+              "width": 52,
+              "height": 18
+            },
+            "connectsCrosswalk": "crosswalk-greenpoint-west-leg"
+          },
+          {
+            "id": "curb-cut-ne-greenpoint",
+            "cornerId": "corner-ne",
+            "bounds": {
+              "x": 954,
+              "y": 344,
+              "width": 52,
+              "height": 18
+            },
+            "connectsCrosswalk": "crosswalk-greenpoint-east-leg"
+          },
+          {
+            "id": "curb-cut-sw-greenpoint",
+            "cornerId": "corner-sw",
+            "bounds": {
+              "x": 552,
+              "y": 500,
+              "width": 52,
+              "height": 18
+            },
+            "connectsCrosswalk": "crosswalk-greenpoint-west-leg"
+          },
+          {
+            "id": "curb-cut-se-greenpoint",
+            "cornerId": "corner-se",
+            "bounds": {
+              "x": 954,
+              "y": 500,
+              "width": 52,
+              "height": 18
+            },
+            "connectsCrosswalk": "crosswalk-greenpoint-east-leg"
+          },
+          {
+            "id": "curb-cut-nw-manhattan",
+            "cornerId": "corner-nw",
+            "bounds": {
+              "x": 622,
+              "y": 284,
+              "width": 18,
+              "height": 50
+            },
+            "connectsCrosswalk": "crosswalk-manhattan-north-leg"
+          },
+          {
+            "id": "curb-cut-ne-manhattan",
+            "cornerId": "corner-ne",
+            "bounds": {
+              "x": 918,
+              "y": 284,
+              "width": 18,
+              "height": 50
+            },
+            "connectsCrosswalk": "crosswalk-manhattan-north-leg"
+          },
+          {
+            "id": "curb-cut-sw-manhattan",
+            "cornerId": "corner-sw",
+            "bounds": {
+              "x": 622,
+              "y": 528,
+              "width": 18,
+              "height": 50
+            },
+            "connectsCrosswalk": "crosswalk-manhattan-south-leg"
+          },
+          {
+            "id": "curb-cut-se-manhattan",
+            "cornerId": "corner-se",
+            "bounds": {
+              "x": 918,
+              "y": 528,
+              "width": 18,
+              "height": 50
+            },
+            "connectsCrosswalk": "crosswalk-manhattan-south-leg"
+          }
+        ],
+        "sourceCategory": "manual_review_only_interpretation",
+        "sourceCategories": [
+          "manual_review_only_interpretation"
+        ],
+        "status": "styled_raster_ready_review_only",
+        "sourceIds": [
+          "phase-2dtr-8.geometry-primitive-completion"
+        ],
+        "sourcePaths": [
+          "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+          "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/blueprint-validation-report.json"
+        ],
+        "notes": "Curb-cut review primitives connecting sidewalks to crosswalk bounds."
+      }
+    },
+    "targets": [
+      {
+        "targetId": "grillpoint-deli",
+        "label": "Grillpoint Deli",
+        "renderingKind": "storefront",
+        "cornerId": "corner-nw",
+        "drawOrder": 1,
+        "zOrderGroup": "facade-detail",
+        "unsupportedFieldsOmitted": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ],
+        "buildingMassBounds": {
+          "x": 284,
+          "y": 92,
+          "width": 356,
+          "height": 216
+        },
+        "storefrontBounds": {
+          "x": 386,
+          "y": 188,
+          "width": 174,
+          "height": 78
+        },
+        "facadeFrontageBounds": {
+          "storefrontBounds": {
+            "x": 386,
+            "y": 188,
+            "width": 174,
+            "height": 78
+          },
+          "frontageSegment": {
+            "from": {
+              "x": 386,
+              "y": 188
+            },
+            "to": {
+              "x": 560,
+              "y": 188
+            }
+          },
+          "relationshipToSidewalk": "frontageSegment faces the nearest corner sidewalk edge in the same review-coordinate frame",
+          "linkedSidewalks": [
+            "sidewalk-nw-greenpoint-edge",
+            "sidewalk-nw-manhattan-edge"
+          ]
+        },
+        "signPanelBounds": {
+          "x": 390,
+          "y": 162,
+          "width": 170,
+          "height": 28
+        },
+        "entranceBounds": {
+          "x": 454,
+          "y": 216,
+          "width": 34,
+          "height": 48
+        },
+        "windowBounds": [
+          {
+            "x": 398,
+            "y": 216,
+            "width": 42,
+            "height": 30
+          },
+          {
+            "x": 500,
+            "y": 216,
+            "width": 42,
+            "height": 30
+          }
+        ],
+        "addressAnchorPoint": {
+          "x": 518,
+          "y": 204
+        },
+        "addressPolicy": {
+          "inSceneTextAllowed": false,
+          "qaOnlyTextAllowed": true,
+          "labelText": "903 Manhattan Ave, Brooklyn, NY 11222"
+        }
+      },
+      {
+        "targetId": "mcdonalds",
+        "label": "McDonald's",
+        "renderingKind": "storefront",
+        "cornerId": "corner-ne",
+        "drawOrder": 2,
+        "zOrderGroup": "facade-detail",
+        "unsupportedFieldsOmitted": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ],
+        "buildingMassBounds": {
+          "x": 918,
+          "y": 70,
+          "width": 602,
+          "height": 292
+        },
+        "storefrontBounds": {
+          "x": 1092,
+          "y": 156,
+          "width": 238,
+          "height": 104
+        },
+        "facadeFrontageBounds": {
+          "storefrontBounds": {
+            "x": 1092,
+            "y": 156,
+            "width": 238,
+            "height": 104
+          },
+          "frontageSegment": {
+            "from": {
+              "x": 1092,
+              "y": 156
+            },
+            "to": {
+              "x": 1330,
+              "y": 156
+            }
+          },
+          "relationshipToSidewalk": "frontageSegment faces the nearest corner sidewalk edge in the same review-coordinate frame",
+          "linkedSidewalks": [
+            "sidewalk-ne-greenpoint-edge",
+            "sidewalk-ne-manhattan-edge"
+          ]
+        },
+        "signPanelBounds": {
+          "x": 1100,
+          "y": 144,
+          "width": 188,
+          "height": 28
+        },
+        "entranceBounds": {
+          "x": 1190,
+          "y": 204,
+          "width": 38,
+          "height": 50
+        },
+        "windowBounds": [
+          {
+            "x": 1102,
+            "y": 198,
+            "width": 54,
+            "height": 28
+          },
+          {
+            "x": 1242,
+            "y": 198,
+            "width": 54,
+            "height": 28
+          }
+        ],
+        "addressAnchorPoint": {
+          "x": 1208,
+          "y": 190
+        },
+        "addressPolicy": {
+          "inSceneTextAllowed": false,
+          "qaOnlyTextAllowed": true,
+          "labelText": "904 Manhattan Ave, Brooklyn, NY 11222"
+        }
+      },
+      {
+        "targetId": "dunkin",
+        "label": "Dunkin'",
+        "renderingKind": "storefront",
+        "cornerId": "corner-sw",
+        "drawOrder": 3,
+        "zOrderGroup": "facade-detail",
+        "unsupportedFieldsOmitted": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ],
+        "buildingMassBounds": {
+          "x": 180,
+          "y": 520,
+          "width": 384,
+          "height": 344
+        },
+        "storefrontBounds": {
+          "x": 258,
+          "y": 604,
+          "width": 208,
+          "height": 124
+        },
+        "facadeFrontageBounds": {
+          "storefrontBounds": {
+            "x": 258,
+            "y": 604,
+            "width": 208,
+            "height": 124
+          },
+          "frontageSegment": {
+            "from": {
+              "x": 258,
+              "y": 604
+            },
+            "to": {
+              "x": 466,
+              "y": 604
+            }
+          },
+          "relationshipToSidewalk": "frontageSegment faces the nearest corner sidewalk edge in the same review-coordinate frame",
+          "linkedSidewalks": [
+            "sidewalk-sw-greenpoint-edge",
+            "sidewalk-sw-manhattan-edge"
+          ]
+        },
+        "signPanelBounds": {
+          "x": 282,
+          "y": 604,
+          "width": 132,
+          "height": 28
+        },
+        "entranceBounds": {
+          "x": 346,
+          "y": 660,
+          "width": 36,
+          "height": 52
+        },
+        "windowBounds": [
+          {
+            "x": 282,
+            "y": 660,
+            "width": 42,
+            "height": 28
+          },
+          {
+            "x": 390,
+            "y": 660,
+            "width": 42,
+            "height": 28
+          }
+        ],
+        "addressAnchorPoint": {
+          "x": 370,
+          "y": 668
+        },
+        "addressPolicy": {
+          "inSceneTextAllowed": false,
+          "qaOnlyTextAllowed": true,
+          "labelText": "893 Manhattan Ave, Brooklyn, NY 11222"
+        }
+      },
+      {
+        "targetId": "citizens-bank",
+        "label": "Citizens Bank",
+        "renderingKind": "storefront",
+        "cornerId": "corner-se",
+        "drawOrder": 4,
+        "zOrderGroup": "facade-detail",
+        "unsupportedFieldsOmitted": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ],
+        "buildingMassBounds": {
+          "x": 1176,
+          "y": 500,
+          "width": 384,
+          "height": 366
+        },
+        "storefrontBounds": {
+          "x": 1246,
+          "y": 594,
+          "width": 212,
+          "height": 126
+        },
+        "facadeFrontageBounds": {
+          "storefrontBounds": {
+            "x": 1246,
+            "y": 594,
+            "width": 212,
+            "height": 126
+          },
+          "frontageSegment": {
+            "from": {
+              "x": 1246,
+              "y": 594
+            },
+            "to": {
+              "x": 1458,
+              "y": 594
+            }
+          },
+          "relationshipToSidewalk": "frontageSegment faces the nearest corner sidewalk edge in the same review-coordinate frame",
+          "linkedSidewalks": [
+            "sidewalk-se-greenpoint-edge",
+            "sidewalk-se-manhattan-edge"
+          ]
+        },
+        "signPanelBounds": {
+          "x": 1282,
+          "y": 598,
+          "width": 142,
+          "height": 28
+        },
+        "entranceBounds": {
+          "x": 1324,
+          "y": 654,
+          "width": 40,
+          "height": 56
+        },
+        "windowBounds": [
+          {
+            "x": 1276,
+            "y": 658,
+            "width": 48,
+            "height": 28
+          },
+          {
+            "x": 1396,
+            "y": 658,
+            "width": 48,
+            "height": 28
+          }
+        ],
+        "addressAnchorPoint": {
+          "x": 1316,
+          "y": 638
+        },
+        "addressPolicy": {
+          "inSceneTextAllowed": false,
+          "qaOnlyTextAllowed": true,
+          "labelText": "896 Manhattan Avenue, Brooklyn, NY 11222"
+        }
+      },
+      {
+        "targetId": "greenpoint-g-subway",
+        "label": "Greenpoint G station",
+        "renderingKind": "symbolic_transit",
+        "cornerId": "transit-greenpoint-ave-side",
+        "drawOrder": 5,
+        "zOrderGroup": "transit-primary-cue",
+        "unsupportedFieldsOmitted": [
+          "automatic exact station entrance geometry",
+          "station stair/elevator orientation from official geometry",
+          "public/product station coordinate claim"
+        ],
+        "primarySubwayCue": {
+          "cueCenter": {
+            "x": 1138,
+            "y": 624
+          },
+          "cueRadius": 44,
+          "entranceCueBounds": {
+            "x": 1104,
+            "y": 590,
+            "width": 68,
+            "height": 68
+          },
+          "status": "primary_review_only_symbolic_station_cue"
+        },
+        "additionalCueTreatment": "omit_from_styled_raster_unless_marked_secondary_symbolic",
+        "addressAnchorPoint": {
+          "x": 1138,
+          "y": 624
+        }
+      }
+    ],
+    "policies": {
+      "addressLabelPolicy": {
+        "policyId": "phase-2dtr-8.address-label-policy",
+        "inSceneAddressText": "disabled_for_styled_raster",
+        "qaOnlyAddressLabels": "enabled",
+        "reason": "DTR-6 showed generated address text can drift, including Dunkin appearing as 993 instead of the fixture-intended 893.",
+        "renderRule": "Styled raster must render address anchors as geometry only. Exact address strings may appear only in QA overlays, captions, validation boards, or non-raster metadata unless Batu explicitly reopens in-scene address text.",
+        "targets": [
+          {
+            "targetId": "grillpoint-deli",
+            "label": "Grillpoint Deli",
+            "address": "903 Manhattan Ave, Brooklyn, NY 11222",
+            "addressAnchorPoint": {
+              "x": 518,
+              "y": 204
+            },
+            "inSceneTextAllowed": false,
+            "qaOnlyTextAllowed": true,
+            "specialNotes": "Address is QA-only unless later explicitly approved for in-scene rendering."
+          },
+          {
+            "targetId": "mcdonalds",
+            "label": "McDonald's",
+            "address": "904 Manhattan Ave, Brooklyn, NY 11222",
+            "addressAnchorPoint": {
+              "x": 1208,
+              "y": 190
+            },
+            "inSceneTextAllowed": false,
+            "qaOnlyTextAllowed": true,
+            "specialNotes": "Address is QA-only unless later explicitly approved for in-scene rendering."
+          },
+          {
+            "targetId": "dunkin",
+            "label": "Dunkin'",
+            "address": "893 Manhattan Ave, Brooklyn, NY 11222",
+            "addressAnchorPoint": {
+              "x": 370,
+              "y": 668
+            },
+            "inSceneTextAllowed": false,
+            "qaOnlyTextAllowed": true,
+            "specialNotes": "Dunkin address is 893 Manhattan Ave in the fixture/source context. Do not render generated in-scene address text; QA-only label may use 893 Manhattan Ave."
+          },
+          {
+            "targetId": "citizens-bank",
+            "label": "Citizens Bank",
+            "address": "896 Manhattan Avenue, Brooklyn, NY 11222",
+            "addressAnchorPoint": {
+              "x": 1316,
+              "y": 638
+            },
+            "inSceneTextAllowed": false,
+            "qaOnlyTextAllowed": true,
+            "specialNotes": "Address is QA-only unless later explicitly approved for in-scene rendering."
+          }
+        ]
+      },
+      "greenpointGSubwayCuePolicy": {
+        "policyId": "phase-2dtr-8.greenpoint-g-cue-policy",
+        "primaryCueTargetId": "greenpoint-g-subway",
+        "primaryCue": {
+          "cueCenter": {
+            "x": 1138,
+            "y": 624
+          },
+          "cueRadius": 44,
+          "entranceCueBounds": {
+            "x": 1104,
+            "y": 590,
+            "width": 68,
+            "height": 68
+          },
+          "status": "primary_review_only_symbolic_station_cue"
+        },
+        "additionalCuePolicy": "omit_from_styled_raster_unless_marked_secondary_symbolic",
+        "allowedAdditionalCueStatuses": [
+          "secondary_symbolic",
+          "context_only",
+          "omitted"
+        ],
+        "renderRule": "DTR-9 styled raster may render one primary Greenpoint G cue. Additional G circles, signs, or entrance hints are omitted unless the geometry adapter marks them secondary_symbolic or context_only.",
+        "dtr6Correction": "Prevents multiple ambiguous primary G markers/entrances seen in DTR-6."
+      }
+    },
+    "renderOrder": [
+      {
+        "z": 0,
+        "layerId": "coordinate-frame",
+        "draws": [
+          "review frame",
+          "watermark",
+          "orientation cues"
+        ],
+        "occlusion": "never occludes scene primitives"
+      },
+      {
+        "z": 10,
+        "layerId": "road-bands",
+        "draws": [
+          "manhattan-ave-road-band",
+          "greenpoint-ave-road-band",
+          "intersection-overlap-zone"
+        ],
+        "occlusion": "below all pedestrian and storefront primitives"
+      },
+      {
+        "z": 20,
+        "layerId": "sidewalks-and-corner-zones",
+        "draws": [
+          "sidewalks",
+          "corner zones"
+        ],
+        "occlusion": "above roads, below curbs and buildings"
+      },
+      {
+        "z": 30,
+        "layerId": "curbs-and-curb-cuts",
+        "draws": [
+          "curb lines",
+          "curb cuts"
+        ],
+        "occlusion": "above sidewalks and roads"
+      },
+      {
+        "z": 40,
+        "layerId": "crosswalks",
+        "draws": [
+          "crosswalk stripe bounds"
+        ],
+        "occlusion": "above road bands, below subway cues and labels"
+      },
+      {
+        "z": 50,
+        "layerId": "building-masses",
+        "draws": [
+          "buildingMassBounds"
+        ],
+        "occlusion": "building masses may occlude rear sidewalk bands inside their corner zone"
+      },
+      {
+        "z": 60,
+        "layerId": "storefront-footprints",
+        "draws": [
+          "storefrontBounds",
+          "frontageSegment"
+        ],
+        "occlusion": "above building mass, below facade detail fields"
+      },
+      {
+        "z": 70,
+        "layerId": "facade-detail",
+        "draws": [
+          "signPanelBounds",
+          "entranceBounds",
+          "windowBounds"
+        ],
+        "occlusion": "above storefront footprint"
+      },
+      {
+        "z": 80,
+        "layerId": "transit-primary-cue",
+        "draws": [
+          "primary Greenpoint G cueCenter/cueRadius",
+          "entranceCueBounds"
+        ],
+        "occlusion": "above sidewalk/crosswalk primitives; does not create additional entrances"
+      },
+      {
+        "z": 90,
+        "layerId": "qa-only-address-anchors",
+        "draws": [
+          "addressAnchorPoint markers"
+        ],
+        "occlusion": "QA overlay only; not styled raster text"
+      },
+      {
+        "z": 100,
+        "layerId": "qa-labels-and-status",
+        "draws": [
+          "review-only labels",
+          "status text"
+        ],
+        "occlusion": "not part of styled raster primary world art"
+      }
+    ],
+    "occlusionRules": [
+      "Road bands are always base geometry.",
+      "Sidewalks sit above road bands and below curbs, buildings, and storefronts.",
+      "Crosswalks sit above road bands and below subway cue and QA labels.",
+      "Building masses may cover sidewalk portions inside their own corner zone, but must not cover road bands, crosswalks, or the primary subway cue.",
+      "Storefront bounds, frontage lines, sign panels, entrances, and windows render above building masses.",
+      "Address anchors are QA-only overlays and must not become generated in-scene text in DTR-9.",
+      "Only the primary Greenpoint G cue renders as a subway cue unless an additional cue is explicitly marked secondary_symbolic or context_only."
+    ]
+  },
+  "dtr9SecondaryPrompt": [
+    "Create one controlled, review-only styled isometric raster for Manhattan Ave / Greenpoint Ave using the Phase 2DTR-8 JSON geometry adapter as the layout source of truth.",
+    "Use roadGeometry, pedestrianCornerGeometry, storefrontBuildingPrimitives, renderOrder, and occlusionRules exactly as placement controls.",
+    "Do not render in-scene address text. Address anchors are geometry only; exact addresses are QA-only labels.",
+    "Render one primary Greenpoint G cue from greenpointGSubwayCuePolicy. Do not invent additional primary G markers or entrances.",
+    "Use supplied reference imagery only for facade styling cues after geometry placement is locked.",
+    "Keep the artifact review-only and do not claim production/public exact geometry."
+  ]
+}

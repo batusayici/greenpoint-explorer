@@ -35,7 +35,7 @@ Use these in order when documents conflict:
 ## Current State Snapshot
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track.
-- Current next task: Batu review of Phase 2DTR-7 output; Phase 2DTR-8 is proposed only if Batu accepts or revises the deterministic fixture-to-blueprint validation artifact.
+- Current next task: Batu review of Phase 2DTR-8 output; Phase 2DTR-9 is proposed as the next direct step if Batu accepts or revises the geometry-first adapter readiness packet.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
 - Phase 2DTR-1 now has a review packet at `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/` with a structured Grillpoint/NW source object, deterministic raster/spec artifact, visual-instruction provenance map, and visible comparison board against MVP-29E.
 - Phase 2DTR-2 now has a review packet at `docs/mvp-review/phase-2dtr-2-four-target-structured-facade-fixture/` with a four-target structured facade fixture, deterministic raster/spec index, visual-instruction provenance map, and visible comparison board.
@@ -44,6 +44,7 @@ Use these in order when documents conflict:
 - Phase 2DTR-5 now has a review packet at `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/` with a structured exact review geometry fixture, deterministic raster prompt adapter spec, adapter provenance map, and raster prompt text.
 - Phase 2DTR-6 now has a review packet at `docs/mvp-review/phase-2dtr-6-exact-review-geometry-raster-artifact-generation/` with a visually strong review-only raster attempt and QA/contact-sheet board, but Batu identified that it did not prove source-data-driven rendering from the Phase 2DTR-5 fixture.
 - Phase 2DTR-7 now has a review packet at `docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/` with a deterministic black-and-white SVG blueprint and validation report generated from the Phase 2DTR-5 exact review geometry fixture.
+- Phase 2DTR-8 now has a review packet at `docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/` with completed review-only geometry primitives, a JSON-first styled-raster-ready adapter, a primitive blueprint, and a validation report with status `review-only-ready-for-dtr9`.
 - Batu has unblocked exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry, provided those fields stay evidence-backed, status-labeled, and review-only until later production/public approval.
 - Phase 2A through Phase 2AC are completed exploratory/source/QA groundwork. They established manifest, source-evidence, draft-scene, QA, and official-footprint comparison lanes, but they do not complete the MVP proof.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
@@ -72,7 +73,8 @@ Use these in order when documents conflict:
 5. Phase 2DTR-5 - Exact Review Geometry Fixture To Raster Prompt Adapter: complete for Batu review; output moves the 2DTR-4 source map into a structured review-only scene fixture and deterministic raster prompt/provenance adapter.
 6. Phase 2DTR-6 - Exact Review Geometry Raster Artifact Generation: complete for Batu review as a visual attempt, but insufficient as proof of source-data-driven scene reproduction; output should not be treated as proving the data-to-raster pipeline.
 7. Phase 2DTR-7 - Fixture-To-Blueprint Scene Layout Validation: complete for Batu review; output deterministically renders the Phase 2DTR-5 fixture into a black-and-white layout blueprint and validation report, proving target placement while surfacing missing street/intersection primitives.
-8. Phase 2DTR-8 - Fixture Geometry Primitive Completion For Styled Raster Readiness: proposed next step only after Batu accepts or revises the 2DTR-7 output; add explicit road, curb, sidewalk, crosswalk, curb-cut, render-order, occlusion, address-label, and primary subway cue primitives/rules before another styled raster attempt.
+8. Phase 2DTR-8 - Fixture Geometry Primitive Completion For Styled Raster Readiness: complete for Batu review; output adds explicit road, curb, sidewalk, crosswalk, curb-cut, render-order, occlusion, address-label, and primary subway cue primitives/rules, plus a JSON-first geometry adapter for DTR-9.
+9. Phase 2DTR-9 - Controlled Styled Raster From Geometry-First Adapter Output: proposed next direct step after Batu accepts or revises DTR-8; produce one controlled review-only styled raster from the DTR-8 JSON adapter and supplied reference imagery.
 
 Phase 2 now has three lanes:
 
@@ -84,10 +86,10 @@ Phase 2 now has three lanes:
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- Batu review of Phase 2DTR-7 output is now the active hold.
-- Review packet: `docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/`.
-- Proposed next task after Batu review: Phase 2DTR-8 - Fixture Geometry Primitive Completion For Styled Raster Readiness.
-- The next implementation batch must remain review-only and must not begin 2DTR-8, styled raster generation, AI image generation, app/source edits, public interfaces, package/tooling changes, normal-mode replacement, or production/public-readiness changes until the current brief explicitly opens that scope.
+- Batu review of Phase 2DTR-8 output is now the active hold.
+- Review packet: `docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/`.
+- Proposed next task after Batu review: Phase 2DTR-9 - Controlled Styled Raster From Geometry-First Adapter Output.
+- The next implementation batch must remain review-only and must not begin DTR-9 styled raster generation, AI image generation, app/source edits, public interfaces, package/tooling changes, normal-mode replacement, or production/public-readiness changes until the current brief explicitly opens that scope.
 
 ## Locked Decisions
 
@@ -111,11 +113,11 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 ## Pending Decisions
 
 - Whether Batu accepts, revises, or rejects the focused MVP-29E raster/app integration output.
-- Whether Batu accepts, revises, or rejects the Phase 2DTR-7 deterministic fixture-to-blueprint validation artifact and sufficiency verdict.
+- Whether Batu accepts, revises, or rejects the Phase 2DTR-8 geometry primitive completion packet and DTR-9 readiness verdict.
 - Whether the MVP-29E raster needs another art pass for intersection/crosswalk precision, subway cue exactness, storefront specificity, sign readability, cue density, or overall visual taste.
 - Whether the MVP-29E hotspot/card alignment and mobile containment are sufficient for the next gate or need a separate revision pass.
 - Whether Batu opens full MVP-29G screenshot QA recovery and what screenshot states are required.
-- Whether the Phase 2DTR-7 output proves enough of the fixture-to-blueprint path to open fixture primitive completion before another styled raster attempt.
+- Whether Batu opens Phase 2DTR-9 as a controlled styled raster attempt from the DTR-8 JSON adapter and supplied reference imagery.
 - Which structured facade/source fields should influence normal-mode scene rendering versus QA/debug-only overlays as Phase 2DTR matures.
 
 ## Delegated Docs

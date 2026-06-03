@@ -4,6 +4,35 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-03 - DTR-8 Geometry-First Raster Readiness Policies
+
+Decision:
+- For Phase 2DTR-9, the JSON geometry adapter is the source of truth for styled raster layout.
+- Prose prompt text is secondary and must not replace, reinterpret, or invent geometry outside the structured adapter.
+- In-scene address text is disabled for the controlled styled raster attempt; exact address strings are QA-only unless Batu explicitly reopens in-scene address labels.
+- The Dunkin address cue must not be generated as freeform in-scene text. The fixture/source context is `893 Manhattan Ave`; any exact address display remains QA-only.
+- One primary Greenpoint G subway cue is allowed from the geometry adapter. Additional G circles, signs, or entrance hints must be omitted unless explicitly marked `secondary_symbolic` or `context_only`.
+
+Rationale:
+- Phase 2DTR-6 showed that polished raster generation can hide layout drift and produce wrong or ambiguous text/cues.
+- Phase 2DTR-7 showed the fixture could control target layout but lacked hard road/pedestrian primitives.
+- Phase 2DTR-8 completes the geometry-first adapter so DTR-9 can test styled rendering without returning to prose-driven layout.
+
+Constraints preserved:
+- Review-only.
+- No production/public exact-geometry claims.
+- No production assets or production asset pipeline approval.
+- No live scraping, Google/Street View/3D Tiles extraction, texture extraction, tracing, or training use.
+- No app/source/package/tooling changes.
+- No normal-mode raster replacement.
+
+Owner:
+- DTR-8 policy direction: Batu
+- Geometry adapter and documentation execution: Codex
+
+Status:
+- Active DTR-9 review-only adapter policy / production and public-readiness gates still blocked
+
 ## 2026-06-03 - Exact MVP Geometry Review Gate Opened
 
 Decision:
