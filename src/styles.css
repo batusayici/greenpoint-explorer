@@ -310,6 +310,23 @@ h1 {
   text-transform: uppercase;
 }
 
+.view-controls .fixed-view-control {
+  min-width: 42px;
+  color: rgba(248, 236, 212, 0.48);
+  background: rgba(248, 236, 212, 0.035);
+  cursor: not-allowed;
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.view-controls .fixed-view-control:hover,
+.view-controls .fixed-view-control:focus-visible {
+  border-color: rgba(248, 236, 212, 0.14);
+  color: rgba(248, 236, 212, 0.48);
+  background: rgba(248, 236, 212, 0.035);
+}
+
 .view-controls .review-toggle {
   min-width: 34px;
   margin-left: 3px;

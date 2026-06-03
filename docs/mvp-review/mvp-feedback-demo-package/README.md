@@ -3,6 +3,8 @@
 Status: Review-only package for external MVP feedback
 Date: 2026-06-03
 
+Interactive demo status: DTR-11 is now integrated into the app as the review-only interactive demo plate.
+
 ## What This Is
 
 Greenpoint Explorer is a proposed local discovery experience built around a compact, illustrated neighborhood scene. The current MVP slice focuses on Manhattan Ave and Greenpoint Ave in Greenpoint, Brooklyn.
@@ -10,6 +12,12 @@ Greenpoint Explorer is a proposed local discovery experience built around a comp
 The idea is not a broad map yet. It is a small authored corner that asks whether a place can feel worth exploring when real storefront/source/reference data is translated into a charming isometric scene with reviewable provenance.
 
 ## What To Review First
+
+Interactive demo:
+
+- Open the app and use the DTR-11 review-only scene.
+- Reviewers can pan, zoom, hover, click/tap Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and the Greenpoint G cue.
+- The view angle is fixed. True rotation is deferred because the scene is raster-first, not a true 3D world.
 
 Hero scene:
 
@@ -26,6 +34,7 @@ Pipeline board:
 ## What This MVP Proof Demonstrates
 
 - A four-corner Greenpoint scene can be visually distinctive enough to evaluate as a product direction.
+- The DTR-11 raster can support a review-only interactive demo with pan, zoom, hover, click/tap, selected state, and compact source/status cards.
 - Structured geometry can control the scene better than prompt-only raster generation.
 - The scene preserves storefront order, road/crosswalk layout, and one primary Greenpoint G cue.
 - Batu-supplied facade/reference photos materially improve storefront specificity.
@@ -37,6 +46,7 @@ Pipeline board:
 - Business names, facade cues, geometry, address metadata, and subway cues are for MVP review only.
 - Address text remains QA-only and should not be treated as public exact-address presentation.
 - The DTR-8 blueprint/geometry adapter is review-coordinate geometry, not GIS/survey geometry.
+- The interactive DTR-11 app integration is a feedback demo, not normal-mode/public factual output.
 
 ## What Is Not Production/Public-Ready
 
@@ -44,7 +54,7 @@ Pipeline board:
 - No production/public exact-geometry claim is made.
 - No exact facade, exact entrance, exact address, exact station, or exact parcel claim is approved for public use.
 - No live data, scraping, Google/Street View extraction, 3D Tiles extraction, backend, CMS, deployment, analytics, or broad map coverage is included.
-- This package does not approve normal-mode raster replacement or public product copy.
+- This package does not approve public product copy.
 
 ## Known Limitations
 
@@ -82,7 +92,7 @@ Phase 2DTR is complete for MVP-feedback purposes.
 
 Do not open DTR-12. Do not reopen facade/raster correction unless external feedback shows facade fidelity is a decisive blocker.
 
-Next step after this package is interactive demo/MVP acceptance audit or external feedback sessions.
+Next step after this package is Batu review of the interactive DTR-11 demo for either external feedback sessions or a bounded acceptance/audit pass.
 
 ## Carried-Forward Dirty State
 

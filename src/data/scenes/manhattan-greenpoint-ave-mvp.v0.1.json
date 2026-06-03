@@ -156,7 +156,7 @@
     {
       "id": "mvp-29e-raster-review-output",
       "sourceType": "review-output",
-      "label": "MVP-29E review-only raster output",
+      "label": "MVP-29E review-only raster baseline",
       "url": "/docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
       "reviewedOn": "2026-06-01",
       "claimTypesSupported": [
@@ -166,8 +166,25 @@
       "claimTypesNotSupported": "Does not support production visual assets, exact facade/frontage/address placement, or exact station geometry.",
       "usageStatus": "approved-review-only",
       "attributionRequired": false,
-      "confidenceNotes": "Review-only raster plate integrated into the MVP-29E app shell.",
+      "confidenceNotes": "Review-only raster plate retained as the MVP-29E app baseline/reference.",
       "conflictNotes": "Production asset direction, exact placement, and public-release claims remain blocked."
+    },
+    {
+      "id": "dtr-11-feedback-demo-package",
+      "sourceType": "review-output",
+      "label": "Phase 2DTR-11 feedback demo hero raster",
+      "url": "/docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+      "reviewedOn": "2026-06-03",
+      "claimTypesSupported": [
+        "review-only-raster-plate",
+        "facade-fidelity-feedback-context",
+        "interactive-demo-scene"
+      ],
+      "claimTypesNotSupported": "Does not prove full-fidelity deterministic facade reproduction, production visual assets, exact facade/frontage/address placement, exact station geometry, or public factual output.",
+      "usageStatus": "approved-review-only",
+      "attributionRequired": false,
+      "confidenceNotes": "DTR-11 is the current review-only hero raster for the interactive MVP demo; it is sufficient for feedback, not production/public claims.",
+      "conflictNotes": "DTR-11-derived output remains review-only. No DTR-12, no production/public readiness, and no exact public geometry claims are opened by this asset."
     }
   ],
   "geometry": {
@@ -1106,12 +1123,13 @@
         "placeId": "place-grillpoint-deli",
         "objectType": "place-target",
         "assetIds": [
-          "asset-mvp-29e-raster"
+          "asset-dtr-11-interactive-demo-raster"
         ],
         "anchorId": "anchor-grillpoint-deli",
         "claimStatus": "approximate",
         "sourceIds": [
           "restaurantji-grillpoint",
+          "dtr-11-feedback-demo-package",
           "mvp-29b",
           "mvp-29c",
           "mvp-29d"
@@ -1124,21 +1142,22 @@
           "category": "Deli / food retail",
           "address": "903 Manhattan Ave, Brooklyn, NY 11222",
           "status": "review-only-source-backed",
-          "candidateOutcome": "mvp-29e-approximate-four-corner-target",
-          "approvalStatus": "mvp-29e-review-only",
+        "candidateOutcome": "dtr-11-approximate-four-corner-target",
+        "approvalStatus": "dtr-11-review-only",
           "verificationStatus": "approximate visual / source-backed card",
           "cardBadge": "NW",
           "placementConfidence": "medium corner context / low exact geometry",
           "lastVerified": "2026-05-31",
           "manualReviewRequired": true,
-          "summary": "Deli anchor for the northwest corner of the review-only Manhattan Ave x Greenpoint Ave diorama.",
-          "description": "The raster uses a stylized corner-deli treatment informed by approved review references. It is not an exact facade, frontage, active-status finality, address-placement, or station-geometry claim.",
+        "summary": "Deli anchor for the northwest corner of the DTR-11 review-only Manhattan Ave x Greenpoint Ave diorama.",
+        "description": "The DTR-11 raster uses a reference-informed corner-deli treatment. It is not an exact facade, frontage, active-status finality, address-placement, or station-geometry claim.",
           "statusNote": "Identity/address are source-backed for review copy; visual placement and storefront geometry remain approximate.",
-          "sourceRefs": [
-            "restaurantji-grillpoint",
-            "mvp-29b",
-            "mvp-29c",
-            "mvp-29d"
+        "sourceRefs": [
+          "restaurantji-grillpoint",
+          "dtr-11-feedback-demo-package",
+          "mvp-29b",
+          "mvp-29c",
+          "mvp-29d"
           ],
           "evidenceStatus": [
             {
@@ -1153,10 +1172,10 @@
               "label": "Visual treatment",
               "value": "Stylized deli sign/storefront cues are allowed at review scale; no logo tracing, texture extraction, exact facade, or production asset claim is made."
             },
-            {
-              "label": "Transit relation",
-              "value": "The revised raster places a review-scale Greenpoint G entrance cue next to Grillpoint on the Greenpoint Ave side; exact entrance coordinates and station geometry remain blocked."
-            }
+          {
+            "label": "Transit relation",
+            "value": "The DTR-11 demo uses the separate SE Greenpoint G cue as station context; exact entrance coordinates and station geometry remain blocked."
+          }
           ],
           "truthConstraints": [
             "Do not claim exact facade, exact sign, exact address placement, storefront width/order, entrance position, or production placement.",
@@ -1165,7 +1184,7 @@
             "Do not use ratings, reviews, hours, delivery, ownership, popularity, quality, or promotional claims."
           ],
           "tags": [
-            "MVP-29E",
+          "DTR-11",
             "NW",
             "real card",
             "approximate visual",
@@ -1173,79 +1192,93 @@
           ],
           "corner": "NW",
           "marker": {
-            "label": "1",
-            "x": 518,
-            "y": 204
-          },
-          "tetherEnd": {
-            "x": 484,
-            "y": 326
-          },
-          "bounds": {
-            "x": 236,
+          "label": "1",
+          "x": 438,
+          "y": 128
+        },
+        "tetherEnd": {
+          "x": 450,
+          "y": 218
+        },
+        "bounds": {
+          "x": 146,
+          "y": 52,
+          "width": 536,
+          "height": 318
+        },
+        "hitAreas": [
+          {
+            "x": 168,
             "y": 74,
-            "width": 514,
-            "height": 334
+            "width": 224,
+            "height": 252
           },
-          "outlinePaths": [
-            [
-              {
-                "x": 302,
-                "y": 120
-              },
-              {
-                "x": 440,
-                "y": 122
-              },
-              {
-                "x": 452,
-                "y": 190
-              },
-              {
-                "x": 420,
-                "y": 302
-              },
-              {
-                "x": 294,
-                "y": 332
-              },
-              {
-                "x": 250,
-                "y": 238
-              }
-            ],
-            [
-              {
-                "x": 432,
-                "y": 126
-              },
-              {
-                "x": 694,
-                "y": 124
-              },
-              {
-                "x": 734,
-                "y": 190
-              },
-              {
-                "x": 684,
-                "y": 316
-              },
-              {
-                "x": 496,
-                "y": 356
-              },
-              {
-                "x": 426,
-                "y": 286
-              }
-            ]
+          {
+            "x": 386,
+            "y": 72,
+            "width": 286,
+            "height": 266
+          }
+        ],
+        "outlinePaths": [
+          [
+            {
+              "x": 194,
+              "y": 104
+            },
+            {
+              "x": 372,
+              "y": 62
+            },
+            {
+              "x": 394,
+              "y": 196
+            },
+            {
+              "x": 338,
+              "y": 302
+            },
+            {
+              "x": 178,
+              "y": 306
+            },
+            {
+              "x": 146,
+              "y": 210
+            }
           ],
-          "reviewLabelPosition": {
-            "x": 352,
-            "y": 110
-          },
-          "rasterAnchorLabel": "NW Grillpoint Deli"
+          [
+            {
+              "x": 382,
+              "y": 58
+            },
+            {
+              "x": 674,
+              "y": 70
+            },
+            {
+              "x": 680,
+              "y": 226
+            },
+            {
+              "x": 590,
+              "y": 346
+            },
+            {
+              "x": 414,
+              "y": 302
+            },
+            {
+              "x": 392,
+              "y": 194
+            }
+          ]
+        ],
+        "reviewLabelPosition": {
+          "x": 314,
+          "y": 72
+        },
+        "rasterAnchorLabel": "NW Grillpoint Deli"
         }
       },
       {
@@ -1253,12 +1286,13 @@
         "placeId": "place-mcdonalds",
         "objectType": "place-target",
         "assetIds": [
-          "asset-mvp-29e-raster"
+          "asset-dtr-11-interactive-demo-raster"
         ],
         "anchorId": "anchor-mcdonalds",
         "claimStatus": "approximate",
         "sourceIds": [
           "mcdonalds-official",
+          "dtr-11-feedback-demo-package",
           "mvp-29b",
           "mvp-29c",
           "mvp-29d"
@@ -1271,21 +1305,22 @@
           "category": "Fast food / restaurant",
           "address": "904 Manhattan Ave, Brooklyn, NY 11222",
           "status": "review-only-source-backed",
-          "candidateOutcome": "mvp-29e-approximate-four-corner-target",
-          "approvalStatus": "mvp-29e-review-only",
+        "candidateOutcome": "dtr-11-approximate-four-corner-target",
+        "approvalStatus": "dtr-11-review-only",
           "verificationStatus": "approximate visual / source-backed card",
           "cardBadge": "NE",
           "placementConfidence": "medium-high identity/address / medium exact frontage",
           "lastVerified": "2026-05-31",
           "manualReviewRequired": true,
-          "summary": "Fast-food anchor for the northeast corner, represented with simplified review-scale massing and sign cues.",
-          "description": "The raster keeps review-scale McDonald's signage/logo cues per Batu's revision instruction. It does not imply endorsement, partnership, hours, ratings, reviews, production logo/trade-dress clearance, or exact placement.",
+        "summary": "Fast-food anchor for the northeast corner, represented with DTR-11 review-scale massing and sign cues.",
+        "description": "The DTR-11 raster keeps review-scale McDonald's signage/logo cues. It does not imply endorsement, partnership, hours, ratings, reviews, production logo/trade-dress clearance, or exact placement.",
           "statusNote": "Official source supports identity/address; exact facade, frontage/order, and address placement remain approximate.",
-          "sourceRefs": [
-            "mcdonalds-official",
-            "mvp-29b",
-            "mvp-29c",
-            "mvp-29d"
+        "sourceRefs": [
+          "mcdonalds-official",
+          "dtr-11-feedback-demo-package",
+          "mvp-29b",
+          "mvp-29c",
+          "mvp-29d"
           ],
           "evidenceStatus": [
             {
@@ -1311,7 +1346,7 @@
             "Do not imply endorsement, partnership, official collaboration, ratings, reviews, open-now status, hours, or promotions."
           ],
           "tags": [
-            "MVP-29E",
+          "DTR-11",
             "NE",
             "real card",
             "real signage review",
@@ -1319,50 +1354,62 @@
           ],
           "corner": "NE",
           "marker": {
-            "label": "2",
-            "x": 1208,
-            "y": 190
+          "label": "2",
+          "x": 1280,
+          "y": 112
+        },
+        "tetherEnd": {
+          "x": 1286,
+          "y": 218
+        },
+        "bounds": {
+          "x": 1000,
+          "y": 26,
+          "width": 622,
+          "height": 316
+        },
+        "hitAreas": [
+          {
+            "x": 1042,
+            "y": 52,
+            "width": 560,
+            "height": 278
+          }
+        ],
+        "outlinePoints": [
+          {
+            "x": 1050,
+            "y": 58
           },
-          "tetherEnd": {
-            "x": 1288,
-            "y": 306
+          {
+            "x": 1548,
+            "y": 28
           },
-          "bounds": {
-            "x": 918,
-            "y": 70,
-            "width": 602,
-            "height": 292
+          {
+            "x": 1608,
+            "y": 116
           },
-          "outlinePoints": [
-            {
-              "x": 942,
-              "y": 92
-            },
-            {
-              "x": 1478,
-              "y": 102
-            },
-            {
-              "x": 1498,
-              "y": 246
-            },
-            {
-              "x": 1378,
-              "y": 326
-            },
-            {
-              "x": 1076,
-              "y": 306
-            },
-            {
-              "x": 936,
-              "y": 230
-            }
-          ],
-          "reviewLabelPosition": {
-            "x": 1082,
-            "y": 126
+          {
+            "x": 1566,
+            "y": 248
           },
+          {
+            "x": 1322,
+            "y": 302
+          },
+          {
+            "x": 1032,
+            "y": 242
+          },
+          {
+            "x": 1012,
+            "y": 142
+          }
+        ],
+        "reviewLabelPosition": {
+          "x": 1148,
+          "y": 68
+        },
           "rasterAnchorLabel": "NE McDonald's"
         }
       },
@@ -1371,12 +1418,13 @@
         "placeId": "place-dunkin",
         "objectType": "place-target",
         "assetIds": [
-          "asset-mvp-29e-raster"
+          "asset-dtr-11-interactive-demo-raster"
         ],
         "anchorId": "anchor-dunkin",
         "claimStatus": "approximate",
         "sourceIds": [
           "dunkin-official",
+          "dtr-11-feedback-demo-package",
           "mvp-29b",
           "mvp-29c",
           "mvp-29d"
@@ -1389,21 +1437,22 @@
           "category": "Coffee / donuts / quick-service food",
           "address": "893 Manhattan Ave, Brooklyn, NY 11222",
           "status": "review-only-source-backed",
-          "candidateOutcome": "mvp-29e-approximate-four-corner-target",
-          "approvalStatus": "mvp-29e-review-only-mvp-exception",
+        "candidateOutcome": "dtr-11-approximate-four-corner-target",
+        "approvalStatus": "dtr-11-review-only-mvp-exception",
           "verificationStatus": "MVP exception / approximate visual",
           "cardBadge": "SW",
           "placementConfidence": "medium-high identity/address / low exact visual geometry",
           "lastVerified": "2026-05-31",
           "manualReviewRequired": true,
-          "summary": "Coffee/donut anchor for the southwest corner, represented only under Batu's narrow MVP-only exception.",
-          "description": "The raster uses broad stylized coffee/donut storefront cues. No Google-derived SW image was used as generation input, and the result is not production art, exact trade dress, exact facade/frontage, or exact address placement.",
+        "summary": "Coffee/donut anchor for the southwest corner, represented only under review-only MVP constraints.",
+        "description": "The DTR-11 raster uses review-scale coffee/donut storefront cues. The result is not production art, exact trade dress, exact facade/frontage, or exact address placement.",
           "statusNote": "Official source supports identity/address; visual treatment remains MVP-only, stylized, non-production, and approximate.",
-          "sourceRefs": [
-            "dunkin-official",
-            "mvp-29b",
-            "mvp-29c",
-            "mvp-29d"
+        "sourceRefs": [
+          "dunkin-official",
+          "dtr-11-feedback-demo-package",
+          "mvp-29b",
+          "mvp-29c",
+          "mvp-29d"
           ],
           "evidenceStatus": [
             {
@@ -1430,7 +1479,7 @@
             "Do not imply endorsement, partnership, ratings, reviews, open-now status, hours, or promotions."
           ],
           "tags": [
-            "MVP-29E",
+          "DTR-11",
             "SW",
             "real card",
             "MVP exception",
@@ -1438,50 +1487,58 @@
           ],
           "corner": "SW",
           "marker": {
-            "label": "3",
-            "x": 370,
-            "y": 668
+          "label": "3",
+          "x": 320,
+          "y": 594
+        },
+        "tetherEnd": {
+          "x": 328,
+          "y": 696
+        },
+        "bounds": {
+          "x": 124,
+          "y": 500,
+          "width": 418,
+          "height": 314
+        },
+        "hitAreas": [
+          {
+            "x": 138,
+            "y": 508,
+            "width": 368,
+            "height": 294
+          }
+        ],
+        "outlinePoints": [
+          {
+            "x": 148,
+            "y": 514
           },
-          "tetherEnd": {
-            "x": 370,
-            "y": 786
+          {
+            "x": 472,
+            "y": 506
           },
-          "bounds": {
-            "x": 180,
-            "y": 520,
-            "width": 384,
-            "height": 344
+          {
+            "x": 512,
+            "y": 592
           },
-          "outlinePoints": [
-            {
-              "x": 210,
-              "y": 548
-            },
-            {
-              "x": 474,
-              "y": 530
-            },
-            {
-              "x": 540,
-              "y": 604
-            },
-            {
-              "x": 488,
-              "y": 820
-            },
-            {
-              "x": 300,
-              "y": 852
-            },
-            {
-              "x": 206,
-              "y": 768
-            }
-          ],
-          "reviewLabelPosition": {
-            "x": 268,
-            "y": 574
+          {
+            "x": 474,
+            "y": 762
           },
+          {
+            "x": 190,
+            "y": 802
+          },
+          {
+            "x": 132,
+            "y": 674
+          }
+        ],
+        "reviewLabelPosition": {
+          "x": 214,
+          "y": 548
+        },
           "rasterAnchorLabel": "SW Dunkin'"
         }
       },
@@ -1490,12 +1547,13 @@
         "placeId": "place-citizens-bank",
         "objectType": "place-target",
         "assetIds": [
-          "asset-mvp-29e-raster"
+          "asset-dtr-11-interactive-demo-raster"
         ],
         "anchorId": "anchor-citizens-bank",
         "claimStatus": "approximate",
         "sourceIds": [
           "citizens-official",
+          "dtr-11-feedback-demo-package",
           "mvp-29b",
           "mvp-29c",
           "mvp-29d"
@@ -1508,21 +1566,22 @@
           "category": "Bank branch",
           "address": "896 Manhattan Avenue, Brooklyn, NY 11222",
           "status": "review-only-source-backed",
-          "candidateOutcome": "mvp-29e-approximate-four-corner-target",
-          "approvalStatus": "mvp-29e-review-only",
+        "candidateOutcome": "dtr-11-approximate-four-corner-target",
+        "approvalStatus": "dtr-11-review-only",
           "verificationStatus": "approximate visual / source-backed card",
           "cardBadge": "SE",
           "placementConfidence": "medium-high identity/address / medium exact frontage",
           "lastVerified": "2026-05-31",
           "manualReviewRequired": true,
-          "summary": "Bank/branch anchor for the southeast corner, paired with the review-verified Greenpoint G station cue.",
-          "description": "The raster keeps review-scale Citizens signage/logo cues per Batu's revision instruction. It does not imply services, ATM availability, endorsement, partnership, production logo/trade-dress clearance, or exact placement.",
+        "summary": "Bank/branch anchor for the southeast corner, near the review-only Greenpoint G context cue.",
+        "description": "The DTR-11 raster keeps review-scale Citizens signage/logo cues. It does not imply services, ATM availability, endorsement, partnership, production logo/trade-dress clearance, or exact placement.",
           "statusNote": "Official source supports identity/address; branch entrance, ATM/service claims, facade geometry, and address placement remain approximate or blocked.",
-          "sourceRefs": [
-            "citizens-official",
-            "mvp-29b",
-            "mvp-29c",
-            "mvp-29d"
+        "sourceRefs": [
+          "citizens-official",
+          "dtr-11-feedback-demo-package",
+          "mvp-29b",
+          "mvp-29c",
+          "mvp-29d"
           ],
           "evidenceStatus": [
             {
@@ -1548,7 +1607,7 @@
             "Do not imply endorsement, partnership, official collaboration, ratings, reviews, open-now status, hours, ATM availability, or promotions."
           ],
           "tags": [
-            "MVP-29E",
+          "DTR-11",
             "SE",
             "real card",
             "real signage review",
@@ -1556,50 +1615,58 @@
           ],
           "corner": "SE",
           "marker": {
-            "label": "4",
-            "x": 1316,
-            "y": 638
-          },
-          "tetherEnd": {
-            "x": 1368,
-            "y": 750
-          },
-          "bounds": {
-            "x": 1176,
-            "y": 500,
+          "label": "4",
+          "x": 1508,
+          "y": 548
+        },
+        "tetherEnd": {
+          "x": 1484,
+          "y": 676
+        },
+        "bounds": {
+          "x": 1260,
+          "y": 448,
+          "width": 412,
+          "height": 370
+        },
+        "hitAreas": [
+          {
+            "x": 1286,
+            "y": 464,
             "width": 384,
-            "height": 366
+            "height": 330
+          }
+        ],
+        "outlinePoints": [
+          {
+            "x": 1354,
+            "y": 466
           },
-          "outlinePoints": [
-            {
-              "x": 1224,
-              "y": 518
-            },
-            {
-              "x": 1516,
-              "y": 546
-            },
-            {
-              "x": 1548,
-              "y": 724
-            },
-            {
-              "x": 1402,
-              "y": 836
-            },
-            {
-              "x": 1230,
-              "y": 792
-            },
-            {
-              "x": 1182,
-              "y": 620
-            }
-          ],
-          "reviewLabelPosition": {
-            "x": 1260,
+          {
+            "x": 1670,
+            "y": 426
+          },
+          {
+            "x": 1670,
+            "y": 774
+          },
+          {
+            "x": 1524,
+            "y": 816
+          },
+          {
+            "x": 1294,
+            "y": 740
+          },
+          {
+            "x": 1262,
             "y": 552
-          },
+          }
+        ],
+        "reviewLabelPosition": {
+          "x": 1384,
+          "y": 506
+        },
           "rasterAnchorLabel": "SE Citizens Bank"
         }
       },
@@ -1608,13 +1675,14 @@
         "placeId": "place-greenpoint-g-subway",
         "objectType": "transit-cue-target",
         "assetIds": [
-          "asset-mvp-29e-raster"
+          "asset-dtr-11-interactive-demo-raster"
         ],
         "anchorId": "anchor-greenpoint-g-subway",
         "claimStatus": "symbolic",
         "sourceIds": [
           "mta-greenpoint-accessibility",
           "mta-g-line-map",
+          "dtr-11-feedback-demo-package",
           "mvp-29b",
           "mvp-29c",
           "mvp-29d"
@@ -1627,32 +1695,33 @@
           "category": "Subway station context",
           "address": "Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave, Brooklyn, NY",
           "status": "review-only-source-backed-context",
-          "candidateOutcome": "mvp-29e-se-cue-review-scale",
-          "approvalStatus": "mvp-29e-review-only",
-          "verificationStatus": "SE cue verified / station geometry approximate",
+        "candidateOutcome": "dtr-11-se-cue-review-scale",
+        "approvalStatus": "dtr-11-review-only",
+        "verificationStatus": "SE cue symbolic / station geometry approximate",
           "cardBadge": "G",
           "placementConfidence": "SE cue medium-high / exact station geometry blocked",
           "lastVerified": "2026-05-31",
           "manualReviewRequired": true,
-          "summary": "Greenpoint Av G station context, represented by review-scale entrance cues next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side.",
-          "description": "The revised raster follows the bird's-eye intersection relationship and places three review-scale entrance cues on the Greenpoint Ave side. Exact station geometry, entrance coordinates, and production transit accuracy remain blocked.",
-          "statusNote": "Greenpoint Ave side cue placement is review-scale authored; station geometry remains approximate.",
-          "sourceRefs": [
-            "mta-greenpoint-accessibility",
-            "mta-g-line-map",
-            "mvp-29b",
-            "mvp-29c",
-            "mvp-29d"
+        "summary": "Greenpoint Av G station context, represented by the SE station entrance cue in the DTR-11 raster.",
+        "description": "The DTR-11 raster uses one primary Greenpoint G station cue for review/demo orientation. Exact station geometry, entrance coordinates, and production transit accuracy remain blocked.",
+        "statusNote": "SE station cue placement is review-scale authored and symbolic/contextual; station geometry remains approximate.",
+        "sourceRefs": [
+          "mta-greenpoint-accessibility",
+          "mta-g-line-map",
+          "dtr-11-feedback-demo-package",
+          "mvp-29b",
+          "mvp-29c",
+          "mvp-29d"
           ],
           "evidenceStatus": [
             {
               "label": "Station context",
               "value": "MTA sources support Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave."
             },
-            {
-              "label": "Entrance cues",
-              "value": "The focused MVP-29E revision places cues next to Grillpoint, Dunkin', and Citizens on the Greenpoint Ave side for review/demo-scale orientation."
-            },
+          {
+            "label": "Entrance cues",
+            "value": "The DTR-11 interactive demo treats the visible SE station entrance cue as a single context hotspot for review/demo orientation."
+          },
             {
               "label": "Geometry",
               "value": "The raster is authored approximate geometry, not exact entrance coordinates, station footprint, or transit infrastructure mapping."
@@ -1668,131 +1737,91 @@
             "Do not use review-scale raster placement to clear exact station geometry or production transit accuracy."
           ],
           "tags": [
-            "MVP-29E",
-            "G cues",
+          "DTR-11",
+          "G cues",
             "transit context",
             "approximate geometry",
             "review-only"
           ],
           "corner": "Greenpoint Ave station context",
           "marker": {
-            "label": "G",
-            "x": 1138,
-            "y": 624
-          },
-          "tetherEnd": {
-            "x": 1122,
-            "y": 740
-          },
-          "bounds": {
-            "x": 96,
-            "y": 214,
-            "width": 1212,
-            "height": 632
-          },
-          "hitAreas": [
+          "label": "G",
+          "x": 1186,
+          "y": 538
+        },
+        "tetherEnd": {
+          "x": 1148,
+          "y": 650
+        },
+        "bounds": {
+          "x": 1008,
+          "y": 508,
+          "width": 402,
+          "height": 242
+        },
+        "hitAreas": [
+          {
+            "x": 1032,
+            "y": 516,
+            "width": 374,
+            "height": 230
+          }
+        ],
+        "outlinePaths": [
+          [
             {
-              "x": 104,
-              "y": 220,
-              "width": 174,
-              "height": 160
+              "x": 1108,
+              "y": 510
             },
             {
-              "x": 340,
-              "y": 628,
-              "width": 214,
-              "height": 202
+              "x": 1288,
+              "y": 534
             },
             {
-              "x": 958,
-              "y": 590,
-              "width": 350,
-              "height": 232
+              "x": 1404,
+              "y": 620
+            },
+            {
+              "x": 1360,
+              "y": 710
+            },
+            {
+              "x": 1044,
+              "y": 726
+            },
+            {
+              "x": 1008,
+              "y": 616
             }
-          ],
-          "outlinePaths": [
-            [
-              {
-                "x": 112,
-                "y": 234
-              },
-              {
-                "x": 254,
-                "y": 228
-              },
-              {
-                "x": 272,
-                "y": 342
-              },
-              {
-                "x": 144,
-                "y": 372
-              },
-              {
-                "x": 102,
-                "y": 296
-              }
-            ],
-            [
-              {
-                "x": 358,
-                "y": 654
-              },
-              {
-                "x": 542,
-                "y": 646
-              },
-              {
-                "x": 552,
-                "y": 790
-              },
-              {
-                "x": 374,
-                "y": 826
-              },
-              {
-                "x": 342,
-                "y": 720
-              }
-            ],
-            [
-              {
-                "x": 988,
-                "y": 624
-              },
-              {
-                "x": 1268,
-                "y": 638
-              },
-              {
-                "x": 1304,
-                "y": 758
-              },
-              {
-                "x": 1042,
-                "y": 822
-              },
-              {
-                "x": 960,
-                "y": 724
-              }
-            ]
-          ],
-          "reviewLabelPosition": {
-            "x": 976,
-            "y": 612
-          },
-          "rasterAnchorLabel": "Greenpoint G cues"
+          ]
+        ],
+        "reviewLabelPosition": {
+          "x": 1036,
+          "y": 566
+        },
+        "rasterAnchorLabel": "Greenpoint G cue"
         }
       }
     ],
     "assets": [
       {
-        "id": "asset-mvp-29e-raster",
+        "id": "asset-dtr-11-interactive-demo-raster",
         "role": "primary-raster-plate",
+        "localPath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
+        "sourcePath": "docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+        "label": "DTR-11 review-only interactive demo raster for Manhattan Ave x Greenpoint Ave. Non-production, feedback-only, and not an exact facade, frontage, address, or station-geometry representation.",
+        "usageStatus": "approved-review-only",
+        "productionStatus": "blocked",
+        "sourceIds": [
+          "dtr-11-feedback-demo-package"
+        ]
+      },
+      {
+        "id": "asset-mvp-29e-raster",
+        "role": "baseline-raster-reference",
         "localPath": "src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png",
         "sourcePath": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
-        "label": "MVP-29E review-only four-corner raster scene for Manhattan Ave x Greenpoint Ave. Non-production, art-directed, and not an exact facade, frontage, address, or station-geometry representation.",
+        "label": "MVP-29E review-only four-corner raster baseline retained for comparison. Non-production, art-directed, and not an exact facade, frontage, address, or station-geometry representation.",
         "usageStatus": "approved-review-only",
         "productionStatus": "blocked",
         "sourceIds": [
@@ -1868,17 +1897,19 @@
     "verdict": "proceed-for-review"
   },
   "app": {
-    "title": "MVP-29E four-corner raster scene",
-    "note": "Explore the review-only four-corner Manhattan/Greenpoint raster scene.",
-    "reviewLabel": "REVIEW-ONLY / NON-PRODUCTION",
-    "sourceListLabel": "Reviewed MVP-29E sources",
+    "title": "DTR-11 interactive review demo",
+    "note": "Explore the review-only DTR-11 Manhattan/Greenpoint raster scene.",
+    "reviewLabel": "DTR-11 REVIEW-ONLY / NON-PRODUCTION",
+    "sourceListLabel": "Reviewed demo sources",
     "sceneFrame": {
-      "locationLabel": "MVP-29E four-corner raster scene",
-      "intent": "Pan, zoom, and select the four approved business anchors plus Greenpoint G context on one raster-first scene.",
-      "treatment": "The world plate is an authored review-only diorama. Business cards use source-backed neutral copy; visual placement remains approximate, with review-scale Greenpoint G entrance cues placed on the Greenpoint Ave side next to Grillpoint, Dunkin', and Citizens.",
-      "activeSceneSource": "MVP-29E Four-Corner Raster Scene Production / Focused Revision",
-      "approvedRasterPath": "src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png",
+      "locationLabel": "DTR-11 reference-fidelity raster scene",
+      "intent": "Pan, zoom, and select the four active business anchors plus the Greenpoint G context cue on one raster-first scene.",
+      "treatment": "The world plate is the DTR-11 corrected review-only raster. Business cards use source-backed neutral copy where available; visual placement remains review-scale approximate, and the Greenpoint G cue is context/symbolic rather than exact station geometry.",
+      "activeSceneSource": "Phase 2DTR-11 feedback demo hero raster",
+      "approvedRasterPath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
       "approvedReferencePaths": [
+        "docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+        "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-raster.png",
         "src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png",
         "docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png",
         "docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/mini-street-slice-scalability-proof.png",
@@ -1890,9 +1921,9 @@
         "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
         "docs/mvp-reference-images/southeast-citizens-wide.jpg",
         "docs/mvp-reference-images/southeast-subwayB.jpg",
-        "SW Dunkin treatment used the MVP-29D broad stylized exception rules only; no Google-derived SW image was used as generation input."
+        "SW Dunkin treatment remains review-only and source/status-labeled; no new raster/facade correction loop is opened."
       ]
     },
-    "disclaimer": "Unofficial authored prototype. This card is not an official map, directory, real-time business listing, endorsement, partnership, or exact facade/address/station-geometry claim."
+    "disclaimer": "Unofficial review-only prototype. This DTR-11 card is not production-public factual output, an official map, directory, real-time business listing, endorsement, partnership, or exact facade/address/station-geometry claim."
   }
 }

@@ -1,6 +1,6 @@
-# Current Execution Brief - MVP Feedback Demo Package Review Hold
+# Current Execution Brief - DTR-11 Interactive Demo Review Hold
 
-Status: MVP Feedback Demo Package is complete for Batu review. Phase 2DTR is complete for MVP-feedback purposes. The next executable task is pending Batu approval or revision direction.
+Status: DTR-11 Interactive Demo Integration is complete for Batu review. Phase 2DTR remains complete for MVP-feedback purposes. The next executable task is pending Batu approval, external-feedback direction, or bounded acceptance/audit direction.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -19,6 +19,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Phase 2DTR-10 produced one narrow corrective styled raster pass from DTR-9, improving sign panels, microtext cleanup, facade/window/entrance read, and preserving one primary Greenpoint G cue and the DTR-8/DTR-9 geometry intent.
 - Phase 2DTR-11 produced a reference-image-constrained facade fidelity pass from DTR-10, plus per-storefront facade extraction/spec records, crop boards, and QA report.
 - The MVP feedback demo package gathered the DTR-11 hero raster, DTR-11 facade before/after board, compact pipeline board, reviewer-facing README, and feedback checklist.
+- The DTR-11 hero raster is now integrated into the app as the review-only interactive MVP demo plate with pan, zoom, hover, click/tap, compact cards, and one symbolic/context Greenpoint G cue target.
+- True rotation is deferred because the scene is raster-first rather than a true 3D world; the app exposes a fixed-view-angle affordance instead of faking 3D rotation.
 - Phase 2 remains the active Data-Driven Scene MVP phase.
 - Phase 3 remains reserved for future Neighborhood Scale Validation.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
@@ -53,11 +55,17 @@ Batu review is required before the next implementation batch.
 
 Review question:
 
-- Accept, revise, or reject the MVP feedback demo package as ready for external feedback sessions.
-- Decide whether the next step should be interactive demo/MVP acceptance audit or external feedback sessions.
+- Accept, revise, or reject the DTR-11 interactive demo as ready for external feedback sessions.
+- Decide whether the next step should be external feedback sessions, a bounded MVP acceptance/audit pass, or a targeted interaction/card/hotspot revision.
 
 Review packet:
 
+- App source integration:
+  - `src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png`
+  - `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+  - `src/mvpPlaceData.js`
+  - `src/App.jsx`
+  - `src/styles.css`
 - `docs/mvp-review/mvp-feedback-demo-package/README.md`
 - `docs/mvp-review/mvp-feedback-demo-package/feedback-script-checklist.md`
 - `docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png`
@@ -70,19 +78,22 @@ Findings to review:
 
 - Phase 2DTR is complete for MVP-feedback purposes.
 - Do not open DTR-12.
-- The package shows the DTR-11 hero scene, DTR-10 to DTR-11 facade improvement, and compact pipeline evidence.
+- The app now opens the DTR-11 review-only raster as the active interactive demo scene.
+- The app supports pan, zoom, hover, click/tap selected state, compact business/status cards, and mobile containment at review-demo level.
+- Rotation is deferred and represented as a fixed view angle because true raster rotation would be misleading.
+- The package still shows the DTR-11 hero scene, DTR-10 to DTR-11 facade improvement, and compact pipeline evidence.
 - Facade transfer remains improved but not pixel-perfect; exact facade reproduction would require explicit masks, perspective warp, and path-level compositing.
 - Review-only status and production/public gates remain intact.
 
-No app/source edit, public-interface/schema approval, package/tooling change, normal-mode raster replacement, DTR-12, facade/raster correction loop, or production/public-readiness change is authorized until Batu updates this brief or gives explicit direction.
+No new app/source edit, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, or production/public-readiness change is authorized until Batu updates this brief or gives explicit direction.
 
 ## Proposed Next Task After Batu Review
 
-Interactive Demo / MVP Acceptance Audit Or External Feedback Sessions.
+External Feedback Sessions Or Bounded MVP Acceptance Audit.
 
 Purpose:
 
-- Use the MVP feedback demo package to collect feedback or audit the current interactive demo readiness.
+- Use the DTR-11 interactive demo and MVP feedback demo package to collect feedback or audit current demo readiness.
 - Preserve review-only labeling and no production/public exact-geometry claims.
 - Do not reopen facade/raster correction unless external feedback shows facade fidelity is a decisive blocker.
 
@@ -93,7 +104,7 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - Review-only.
 - No product-copy readiness change.
 - No production/public readiness change.
-- No DTR-12, facade/raster correction loop, app/source edits, public interfaces, package/tooling changes, normal-mode replacement, or production/public-readiness changes until explicitly opened.
+- No DTR-12, facade/raster correction loop, new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.
@@ -101,21 +112,26 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - No unsupported exact geometry claims and no production/public exact-geometry claims.
 - No replacement of raster-first primary world art with SVG, canvas, CSS, DOM-drawn storefronts/buildings/roads/signs, or other code-generated primary world art.
 
-## Recent MVP Feedback Demo Package Changes
+## Recent DTR-11 Interactive Demo Changes
 
+- `src/App.jsx`
+- `src/mvpPlaceData.js`
+- `src/styles.css`
+- `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+- `src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png`
 - `docs/PLAN.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/mvp-review/mvp-feedback-demo-package/`
 
-## Verification For MVP Feedback Demo Package
+## Verification For DTR-11 Interactive Demo
 
-- Referenced package images exist and dimensions are recorded.
-- Hero raster PNG exists and dimensions are 1672 x 941.
-- Facade before/after board PNG exists and dimensions are 2400 x 2500.
-- Compact pipeline board PNG exists and dimensions are 2400 x 1400.
-- JSON parse for `generated/demo-package-manifest.json`.
-- Deterministic regeneration check for `generate-feedback-demo-package.py`.
+- DTR-11 app asset exists and dimensions are 1672 x 941.
+- Scene manifest JSON parse.
+- Primary manifest asset is `asset-dtr-11-interactive-demo-raster`; MVP-29E remains `baseline-raster-reference`.
+- Production build imports the DTR-11 PNG.
+- Browser screenshots captured for default, selected, and mobile containment states when possible.
+- `npm run build`
 - `git diff --check`
 - `git status --short`
 - `git diff --stat`

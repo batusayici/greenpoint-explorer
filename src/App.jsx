@@ -69,7 +69,7 @@ export default function App() {
 
         <div className="viewport-frame">
           <div className="review-ribbon" aria-hidden="true">
-            Review-only
+            {mvpScene.reviewLabel}
           </div>
           <div className="scene-frame-note" aria-label="Scene source frame">
             <strong>{mvpScene.sceneFrame.locationLabel}</strong>
@@ -113,6 +113,15 @@ export default function App() {
             </button>
             <button type="button" aria-label="Reset view" onClick={() => sendCameraCommand("reset")}>
               <span aria-hidden="true">Reset</span>
+            </button>
+            <button
+              type="button"
+              className="fixed-view-control"
+              aria-label="Fixed view angle; true rotation is deferred for this raster-first scene"
+              title="Fixed view angle; true rotation is deferred for this raster-first scene"
+              disabled
+            >
+              <span aria-hidden="true">Fixed</span>
             </button>
             <button
               type="button"
