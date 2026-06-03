@@ -57,12 +57,53 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-10 as complete for Batu review and holds before the proposed MVP feedback demo packaging batch. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-11 as complete for Batu review and holds before the proposed MVP feedback demo packaging batch. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - Phase 2DTR-11 Reference-Image Facade Fidelity Pass
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Freeze the DTR-10 scene geometry and perform a narrow reference-image-constrained facade/sign/window/entrance pass.
+- Create per-storefront facade extraction/spec records, reference crops, DTR-10/DTR-11 crop comparisons, a corrected raster, boards, and QA report.
+- Preserve review-only status and avoid geometry adapter changes, new data sources, live scraping, Google/Street View/3D Tiles extraction, third-party image scraping, app/source edits, package/tooling changes, normal-mode replacement, production assets, and production/public exact-geometry claims.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/`
+
+Verification:
+- Confirmed all referenced source images exist.
+- Corrected facade raster PNG exists and dimensions are 1672 x 941.
+- Facade fidelity board PNG exists and dimensions are 2400 x 2200.
+- Before/after QA board PNG exists and dimensions are 2400 x 2500.
+- JSON parse for `generated/facade-extraction-specs.json` and `generated/reference-facade-fidelity-qa-report.json`.
+- Basic hash comparison versus DTR-10.
+- Deterministic regeneration check for `generate-dtr11-facade-qa.py`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a reference-image-constrained DTR-11 facade raster.
+- Added four storefront facade extraction/spec records with source image paths, crop coordinates, DTR-8 scene bounds, sign/entrance/window/awning/material/prop cues, preservation requirements, and unsupported omissions.
+- Added a facade fidelity board and before/after QA board with close-up crop comparisons.
+- Added a QA report that marks supplied-reference-image-to-facade-scene improvement as material but partial, not full-fidelity deterministic reproduction.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-11 facade fidelity pass as ready for external MVP feedback.
+- Batu still owns whether to open MVP feedback demo packaging, or one ultra-narrow storefront-specific correction if a DTR-11 crop is rejected.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-11 output; MVP feedback demo packaging is proposed as the next direct step after Batu approval or revision direction.
 
 ### 2026-06-03 - Phase 2DTR-10 Narrow Corrective Styled Raster Pass
 

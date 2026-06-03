@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "phase-2dtr-11-reference-image-facade-fidelity-qa-report.v0.1",
+  "artifactId": "phase-2dtr-11.reference-image-facade-fidelity-pass",
+  "status": "review-only-facade-fidelity-materially-improved",
+  "generatedOn": "2026-06-03",
+  "reviewOnly": true,
+  "productionPublicExactGeometryClaim": false,
+  "geometryAdapterChanged": false,
+  "newDataSourcesIntroduced": false,
+  "liveScrapingUsed": false,
+  "googleStreetViewOr3DTilesExtractionUsed": false,
+  "primarySources": [
+    "docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/generated/corrected-styled-raster.png",
+    "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-ready-geometry-adapter.json",
+    "docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/generated/corrected-styled-raster-qa-report.json"
+  ],
+  "generatedArtifacts": {
+    "correctedRaster": {
+      "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-raster.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2902680,
+      "sha256": "8be9babdc4d058ba4cf19e8a89b642843f684ff2ebc210cda582c2af95f11f09"
+    },
+    "facadeExtractionSpecs": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+    "facadeFidelityBoard": {
+      "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-fidelity-board.png",
+      "width": 2400,
+      "height": 2200,
+      "mode": "RGB",
+      "bytes": 2241536,
+      "sha256": "b473fdc37e9ee83209d68d997bf9ea173d40c56cceba028ce32be4b20215d190"
+    },
+    "beforeAfterQaBoard": {
+      "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/dtr10-dtr11-before-after-facade-qa-board.png",
+      "width": 2400,
+      "height": 2500,
+      "mode": "RGB",
+      "bytes": 4072163,
+      "sha256": "afdfc88f1e1f37bbbe4b5067597eb540150b86c4bc47f4c7fb43cf027e887c5a"
+    }
+  },
+  "dtr10Comparison": {
+    "dtr10Raster": {
+      "path": "docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/generated/corrected-styled-raster.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2999560,
+      "sha256": "74f2e71ba3753230aa4d670dc3c0f7decef012d1d94d4eb45a4adff6ce4f2ea5"
+    },
+    "sameSha256": false,
+    "assessment": "meaningfully_new_facade_edit_with_geometry_preserved"
+  },
+  "sourceImageExistence": [
+    {
+      "targetId": "grillpoint-deli",
+      "allSourceImagesExist": true,
+      "sourceReferenceImagePaths": [
+        "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+        "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+        "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg"
+      ]
+    },
+    {
+      "targetId": "mcdonalds",
+      "allSourceImagesExist": true,
+      "sourceReferenceImagePaths": [
+        "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+        "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+        "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg"
+      ]
+    },
+    {
+      "targetId": "dunkin",
+      "allSourceImagesExist": true,
+      "sourceReferenceImagePaths": [
+        "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+        "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+        "docs/mvp-reference-images/southwest-subwayC.jpeg"
+      ]
+    },
+    {
+      "targetId": "citizens-bank",
+      "allSourceImagesExist": true,
+      "sourceReferenceImagePaths": [
+        "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+        "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+        "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+        "docs/mvp-reference-images/southeast-subwayB.jpg"
+      ]
+    }
+  ],
+  "scores": [
+    {
+      "criterion": "grillpoint_reference_fidelity",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Green G, maroon sign, black canopy, central entry, and poster/window rhythm now read strongly."
+    },
+    {
+      "criterion": "mcdonalds_reference_fidelity",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Gray/yellow/dark glass, slat panels, arches, and mural mass are stronger."
+    },
+    {
+      "criterion": "dunkin_reference_fidelity",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Black/orange-pink sign, side sign, beige mass, and dark entry are stronger; still small-scale approximate."
+    },
+    {
+      "criterion": "citizens_reference_fidelity",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Green sign box, recessed entry, railings, masonry, and reddish trim are stronger."
+    },
+    {
+      "criterion": "sign_band_accuracy",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "entrance_window_alignment",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "material_color_fidelity",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "dtr10_geometry_preservation",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "unsupported_invention_risk",
+      "score": 3,
+      "acceptable": false,
+      "notes": "Risk remains because built-in image editing can invent small facade micro-details; QA labels and unsupported omissions constrain interpretation."
+    },
+    {
+      "criterion": "facade_fidelity_sufficient_for_mvp_feedback",
+      "score": 4,
+      "acceptable": true
+    }
+  ],
+  "requirementsAssessment": {
+    "allReferencedSourceImagesExist": true,
+    "fourStorefrontSpecRecordsCreated": true,
+    "roadsSidewalksCrosswalksFrozen": true,
+    "storefrontOrderPreserved": true,
+    "onePrimaryGreenpointGCuePreserved": true,
+    "addressTextQaOnly": true,
+    "unsupportedDetailsOmittedOrMarked": true,
+    "facadeReferenceFidelityMateriallyImproved": true,
+    "fullFidelityFacadeReproductionProven": false
+  },
+  "methodBottleneck": "Built-in image editing can reference visible source photos and improve facade cues, but without explicit per-facade masks, perspective-warp controls, or deterministic crop-to-scene compositing it cannot guarantee full-fidelity facade reproduction.",
+  "verdict": {
+    "suppliedReferenceImagesMateriallyImproveScene": true,
+    "provesSuppliedReferenceImageToFacadeScenePipeline": "partial",
+    "facadeFidelityNowSufficientForMvpFeedback": true,
+    "recommendedNextStep": "Proceed to MVP feedback packaging. Only perform another ultra-narrow facade correction if Batu rejects a specific storefront crop in DTR-11."
+  }
+}

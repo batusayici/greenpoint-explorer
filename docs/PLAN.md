@@ -35,7 +35,7 @@ Use these in order when documents conflict:
 ## Current State Snapshot
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track.
-- Current next task: Batu review of Phase 2DTR-10 output; MVP feedback demo packaging is proposed next if Batu accepts the corrected raster.
+- Current next task: Batu review of Phase 2DTR-11 output; MVP feedback demo packaging is proposed next if Batu accepts the reference-image facade fidelity pass.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
 - Phase 2DTR-1 now has a review packet at `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/` with a structured Grillpoint/NW source object, deterministic raster/spec artifact, visual-instruction provenance map, and visible comparison board against MVP-29E.
 - Phase 2DTR-2 now has a review packet at `docs/mvp-review/phase-2dtr-2-four-target-structured-facade-fixture/` with a four-target structured facade fixture, deterministic raster/spec index, visual-instruction provenance map, and visible comparison board.
@@ -47,6 +47,7 @@ Use these in order when documents conflict:
 - Phase 2DTR-8 now has a review packet at `docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/` with completed review-only geometry primitives, a JSON-first styled-raster-ready adapter, a primitive blueprint, and a validation report with status `review-only-ready-for-dtr9`.
 - Phase 2DTR-9 now has a review packet at `docs/mvp-review/phase-2dtr-9-controlled-styled-raster-from-geometry-first-adapter/` with a controlled review-only styled raster, QA comparison board, and machine-readable QA report generated from the DTR-8 geometry-first adapter.
 - Phase 2DTR-10 now has a review packet at `docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/` with a corrected styled raster, before/after QA board, and QA report marking it ready to package for external MVP feedback.
+- Phase 2DTR-11 now has a review packet at `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/` with a reference-image-constrained facade raster, per-storefront facade extraction/spec records, crop boards, and a QA report marking reference fidelity materially improved but not full-fidelity deterministic reproduction.
 - Batu has unblocked exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry, provided those fields stay evidence-backed, status-labeled, and review-only until later production/public approval.
 - Phase 2A through Phase 2AC are completed exploratory/source/QA groundwork. They established manifest, source-evidence, draft-scene, QA, and official-footprint comparison lanes, but they do not complete the MVP proof.
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
@@ -78,7 +79,8 @@ Use these in order when documents conflict:
 8. Phase 2DTR-8 - Fixture Geometry Primitive Completion For Styled Raster Readiness: complete for Batu review; output adds explicit road, curb, sidewalk, crosswalk, curb-cut, render-order, occlusion, address-label, and primary subway cue primitives/rules, plus a JSON-first geometry adapter for DTR-9.
 9. Phase 2DTR-9 - Controlled Styled Raster From Geometry-First Adapter Output: complete for Batu review; output produced a meaningfully new review-only styled raster from the DTR-8 JSON adapter, plus a QA board/report that marks the result useful for MVP feedback but partial on facade/microtext precision.
 10. Phase 2DTR-10 - Narrow Corrective Visual Pass From DTR-8 Overlay Mask: complete for Batu review; output made one constrained visual correction focused on facade/window/entrance/sign alignment and microtext cleanup, while preserving the DTR-8/DTR-9 geometry intent.
-11. MVP Feedback Demo Packaging: proposed next direct step after Batu accepts DTR-10; package the corrected raster and QA evidence for external MVP feedback without another correction loop.
+11. Phase 2DTR-11 - Reference-Image Facade Fidelity Pass: complete for Batu review; output made one narrow facade/sign/window/entrance pass using supplied real facade imagery while preserving DTR-10 geometry.
+12. MVP Feedback Demo Packaging: proposed next direct step after Batu accepts DTR-11; package the corrected raster and QA evidence for external MVP feedback without another correction loop.
 
 Phase 2 now has three lanes:
 
@@ -90,8 +92,8 @@ Phase 2 now has three lanes:
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- Batu review of Phase 2DTR-10 output is now the active hold.
-- Review packet: `docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/`.
+- Batu review of Phase 2DTR-11 output is now the active hold.
+- Review packet: `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/`.
 - Proposed next task after Batu review: MVP Feedback Demo Packaging.
 - The next implementation batch must remain review-only and must not begin demo packaging, app/source edits, public interfaces, package/tooling changes, normal-mode replacement, or production/public-readiness changes until the current brief explicitly opens that scope.
 
@@ -117,7 +119,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 ## Pending Decisions
 
 - Whether Batu accepts, revises, or rejects the focused MVP-29E raster/app integration output.
-- Whether Batu accepts, revises, or rejects the Phase 2DTR-10 corrected styled raster as ready to package for external MVP feedback.
+- Whether Batu accepts, revises, or rejects the Phase 2DTR-11 reference-image facade fidelity pass as ready to package for external MVP feedback.
 - Whether the MVP-29E raster needs another art pass for intersection/crosswalk precision, subway cue exactness, storefront specificity, sign readability, cue density, or overall visual taste.
 - Whether the MVP-29E hotspot/card alignment and mobile containment are sufficient for the next gate or need a separate revision pass.
 - Whether Batu opens full MVP-29G screenshot QA recovery and what screenshot states are required.
