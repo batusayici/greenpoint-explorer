@@ -3,11 +3,42 @@ import { mvpScene } from "./mvpPlaceData.js";
 import grillpointPromotionReadiness from "./data/source-evidence/grillpoint.promotion-readiness.phase-2n.json";
 import PlaceholderWorld from "./PlaceholderWorld.jsx";
 
+const DEFAULT_QA_LAYERS = {
+  realData: true,
+  footprints: true,
+  draft: false,
+  labels: false,
+};
+
+const QA_LAYER_OPTIONS = [
+  {
+    id: "realData",
+    label: "Real data",
+    description: "Source-backed or stronger review fields",
+  },
+  {
+    id: "footprints",
+    label: "Footprints",
+    description: "NYC footprint candidates, not tenant frontage",
+  },
+  {
+    id: "draft",
+    label: "Draft",
+    description: "Manual/authored scene geometry",
+  },
+  {
+    id: "labels",
+    label: "Labels",
+    description: "Detailed QA text and callouts",
+  },
+];
+
 export default function App() {
   const [hoveredTargetId, setHoveredTargetId] = useState(null);
   const [selectedTargetId, setSelectedTargetId] = useState(null);
   const [cameraCommand, setCameraCommand] = useState(null);
   const [isReviewMode, setIsReviewMode] = useState(false);
+  const [qaLayers, setQaLayers] = useState(DEFAULT_QA_LAYERS);
   const selectedTarget = mvpScene.targets.find((target) => target.id === selectedTargetId);
   const selectedSources = selectedTarget?.sourceRefs.map((sourceId) => mvpScene.sourceRefs[sourceId]).filter(Boolean) ?? [];
   const selectedEvidenceRows = selectedTarget?.evidenceStatus ?? [];
@@ -19,6 +50,10 @@ export default function App() {
 
   function sendCameraCommand(type) {
     setCameraCommand({ type, nonce: Date.now() });
+  }
+
+  function toggleQaLayer(layerId) {
+    setQaLayers((layers) => ({ ...layers, [layerId]: !layers[layerId] }));
   }
 
   return (
@@ -89,11 +124,30 @@ export default function App() {
               <span aria-hidden="true">QA</span>
             </button>
           </div>
+          {isReviewMode ? (
+            <div className="qa-layer-controls" aria-label="QA overlay layers">
+              <p>QA layers</p>
+              {QA_LAYER_OPTIONS.map((layer) => (
+                <button
+                  key={layer.id}
+                  type="button"
+                  aria-pressed={qaLayers[layer.id]}
+                  aria-label={`${qaLayers[layer.id] ? "Hide" : "Show"} ${layer.label}: ${layer.description}`}
+                  title={layer.description}
+                  onClick={() => toggleQaLayer(layer.id)}
+                >
+                  {layer.label}
+                </button>
+              ))}
+              <span>Footprints are official building candidates only, not exact storefronts.</span>
+            </div>
+          ) : null}
           <PlaceholderWorld
             scene={mvpScene}
             selectedTargetId={selectedTargetId}
             hoveredTargetId={hoveredTargetId}
             reviewMode={isReviewMode}
+            qaLayers={qaLayers}
             cameraCommand={cameraCommand}
             onHoverTarget={setHoveredTargetId}
             onSelectTarget={setSelectedTargetId}
@@ -115,6 +169,9 @@ export default function App() {
               <p className="card-category">{selectedTarget.category}</p>
               <p className="card-summary">{selectedTarget.summary}</p>
               <p>{selectedTarget.description}</p>
+              {isReviewMode && selectedDraftScene?.geometrySourceMatches?.length ? (
+                <GeometryCandidateSummary matches={selectedDraftScene.geometrySourceMatches} />
+              ) : null}
               {selectedEvidenceRows.length ? (
                 <dl className="evidence-list" aria-label="Evidence status">
                   {selectedEvidenceRows.map((row) => (
@@ -128,7 +185,7 @@ export default function App() {
               {selectedQA ? (
                 <ManifestQAInspector
                   qa={selectedQA}
-                  isOpen={isReviewMode}
+                  isOpen={false}
                   draftScene={selectedDraftScene}
                   promotionReadinessReport={selectedPromotionReadinessReport}
                 />
@@ -170,6 +227,37 @@ export default function App() {
         </div>
       </section>
     </main>
+  );
+}
+
+function GeometryCandidateSummary({ matches }) {
+  return (
+    <section className="geometry-candidate-summary" aria-label="Official geometry candidate summary">
+      <h3>Official Footprint Candidate</h3>
+      {matches.map((match) => (
+        <article key={match.id}>
+          <p>
+            <strong>{formatStatusLabel(match.matchStatus)}</strong>
+            {" | "}
+            {match.sourceLabel}
+          </p>
+          <dl>
+            <div>
+              <dt>Source geometry</dt>
+              <dd>BIN {match.sourceProperties.bin}; BBL {match.sourceProperties.baseBbl}</dd>
+            </div>
+            <div>
+              <dt>Use</dt>
+              <dd>Nearby building-footprint comparison only</dd>
+            </div>
+            <div>
+              <dt>Still blocked</dt>
+              <dd>Exact tenant frontage, storefront order, entrance placement</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
+    </section>
   );
 }
 

@@ -7,11 +7,19 @@ const CAMERA = {
   desktopMaxOverviewScale: 0.86,
 };
 
+const DEFAULT_QA_LAYERS = {
+  realData: true,
+  footprints: true,
+  draft: false,
+  labels: false,
+};
+
 export default function PlaceholderWorld({
   scene,
   selectedTargetId,
   hoveredTargetId,
   reviewMode,
+  qaLayers = DEFAULT_QA_LAYERS,
   cameraCommand,
   onHoverTarget,
   onSelectTarget,
@@ -56,7 +64,7 @@ export default function PlaceholderWorld({
       app.stage.addChild(world);
 
       drawRasterPlate(world, scene, texture);
-      stateRef.current.targetGraphics = drawTargets(world, scene.targets, reviewMode);
+      stateRef.current.targetGraphics = drawTargets(world, scene.targets, reviewMode, qaLayers);
 
       const resizeObserver = new ResizeObserver(() => {
         resizeApp(host, app);
@@ -92,9 +100,9 @@ export default function PlaceholderWorld({
       const targetGraphic = targetGraphics.get(target.id);
       if (!targetGraphic) continue;
       const isActive = selectedTargetId === target.id || hoveredTargetId === target.id;
-      renderTargetState(targetGraphic, target, isActive, selectedTargetId === target.id, reviewMode);
+      renderTargetState(targetGraphic, target, isActive, selectedTargetId === target.id, reviewMode, qaLayers);
     }
-  }, [hoveredTargetId, reviewMode, scene.targets, selectedTargetId]);
+  }, [hoveredTargetId, qaLayers, reviewMode, scene.targets, selectedTargetId]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -299,7 +307,7 @@ function drawRasterPlate(world, scene, texture) {
   world.addChild(plate);
 }
 
-function drawTargets(world, targets, reviewMode) {
+function drawTargets(world, targets, reviewMode, qaLayers) {
   const targetGraphics = new Map();
   for (const target of targets) {
     const container = new Container();
@@ -371,6 +379,7 @@ function drawTargets(world, targets, reviewMode) {
       false,
       false,
       reviewMode,
+      qaLayers,
     );
     targetGraphics.set(target.id, {
       shape,
@@ -385,7 +394,7 @@ function drawTargets(world, targets, reviewMode) {
   return targetGraphics;
 }
 
-function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMode) {
+function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {
   const { x, y, width, height } = target.bounds;
   const {
     shape,
@@ -405,7 +414,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   const markerRadius = isSelected ? 16 : isActive ? 13 : 9;
   const markerColor = isSelected ? 0xf0bc45 : isActive ? 0xf7df9d : 0xf6ead2;
   const markerStroke = isSelected ? 0x1f2727 : 0x2b2a25;
-  const showDetailedQaLabels = Boolean(reviewMode && (isActive || isSelected));
+  const showDetailedQaLabels = Boolean(reviewMode && qaLayers.labels && (isActive || isSelected));
 
   shape.clear();
 
@@ -469,7 +478,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     });
   }
 
-  if (reviewMode) {
+  if (reviewMode && qaLayers.draft) {
     drawTargetOutline(shape, target, {
       fillColor: 0xf5e5c3,
       fillAlpha: 0.08,
@@ -477,7 +486,10 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       strokeAlpha: 0.78,
       strokeWidth: 3,
     });
-    drawDraftQaOverlay(shape, target);
+  }
+
+  if (reviewMode) {
+    drawDraftQaOverlay(shape, target, qaLayers);
   }
 
   markerLabel.visible = Boolean(target.marker?.label);
@@ -507,10 +519,10 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .stroke({ color: 0xf5e5c3, width: 2, alpha: 0.68 });
   }
 
-  draftLabel.visible = Boolean(reviewMode && target.draftScene && showDetailedQaLabels);
+  draftLabel.visible = Boolean(reviewMode && target.draftScene && qaLayers.draft && showDetailedQaLabels);
   draftSignLabel.visible = false;
   draftStatusLabel.visible = false;
-  if (reviewMode && target.draftScene) {
+  if (reviewMode && target.draftScene && qaLayers.draft) {
     const generatedScene = target.draftScene.generatedScene;
     const signEntity = getDraftEntity(generatedScene, "sign-band");
     const signText = target.draftScene.fields.signText;
@@ -587,18 +599,19 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     target.draftScene?.generatedScene,
     reviewMode,
     showDetailedQaLabels,
+    qaLayers,
   );
 }
 
-function drawDraftQaOverlay(graphics, target) {
+function drawDraftQaOverlay(graphics, target, qaLayers) {
   const generatedScene = target.draftScene?.generatedScene;
   if (generatedScene?.entities?.length) {
-    for (const entity of generatedScene.entities) drawGeneratedDraftEntity(graphics, entity);
+    for (const entity of generatedScene.entities) drawGeneratedDraftEntity(graphics, entity, qaLayers);
     return;
   }
 
   const overlay = target.draftScene?.qaOverlay;
-  if (!overlay) return;
+  if (!overlay || !qaLayers.draft) return;
 
   drawOverlayRect(graphics, overlay.footprint, { fillAlpha: 0.035, strokeAlpha: 0.34, strokeWidth: 3 });
   drawOverlayRect(graphics, overlay.facadeBand, { fillAlpha: 0.11, strokeAlpha: 0.76, strokeWidth: 2 });
@@ -612,10 +625,15 @@ function drawDraftQaOverlay(graphics, target) {
   if (overlay.symbolicCue) drawSymbolicCue(graphics, overlay.symbolicCue);
 }
 
-function drawGeneratedDraftEntity(graphics, entity) {
+function drawGeneratedDraftEntity(graphics, entity, qaLayers) {
   if (entity.type === "field-status-callout" || entity.type === "real-data-field-status-callout") return;
   if (entity.type === "official-building-footprint-candidate") {
-    drawSourceGeometryPolygon(graphics, entity.polygon);
+    if (qaLayers.footprints) drawSourceGeometryPolygon(graphics, entity.polygon, qaLayers.labels);
+    return;
+  }
+  if (entity.type.startsWith("real-data-")) {
+    if (!qaLayers.realData) return;
+  } else if (!qaLayers.draft) {
     return;
   }
   if (entity.type === "real-data-building-sample") {
@@ -631,6 +649,7 @@ function drawGeneratedDraftEntity(graphics, entity) {
     return;
   }
   if (entity.type === "real-data-source-badge") {
+    if (!qaLayers.labels) return;
     drawOverlayRect(graphics, entity, { fillAlpha: 0.88, strokeAlpha: 0.96, strokeWidth: 2, forceFillColor: 0x24453c });
     return;
   }
@@ -688,7 +707,7 @@ function getDraftEntity(generatedScene, type) {
   return generatedScene?.entities?.find((entity) => entity.type === type);
 }
 
-function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, showDetailedLabels) {
+function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, showDetailedLabels, qaLayers) {
   const removed = layer.removeChildren();
   for (const child of removed) child.destroy();
 
@@ -697,6 +716,7 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
 
   const sourceBadges = generatedScene.entities.filter((entity) => entity.type === "real-data-source-badge");
   for (const badge of sourceBadges) {
+    if (!qaLayers.realData || !qaLayers.labels) continue;
     if (!badge.bounds) continue;
     const text = new Text({
       text: badge.text ?? badge.label,
@@ -716,7 +736,7 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
 
   const officialFootprints = generatedScene.entities.filter((entity) => entity.type === "official-building-footprint-candidate");
   for (const footprint of officialFootprints) {
-    if (!showDetailedLabels || !footprint.polygon?.length) continue;
+    if (!qaLayers.footprints || !showDetailedLabels || !footprint.polygon?.length) continue;
     const anchor = polygonCenter(footprint.polygon);
     const text = new Text({
       text: footprint.text ?? footprint.label,
@@ -739,8 +759,11 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
     entity.type === "real-data-field-status-callout"
   ));
   for (const callout of callouts) {
+    const isRealDataCallout = callout.type === "real-data-field-status-callout";
+    if (isRealDataCallout && !qaLayers.realData) continue;
+    if (!isRealDataCallout && !qaLayers.draft) continue;
     if (!callout.point) continue;
-    drawCompactStatusPin(graphics, callout);
+    if (showDetailedLabels) drawCompactStatusPin(graphics, callout);
     if (!showDetailedLabels) continue;
 
     const text = new Text({
@@ -785,7 +808,7 @@ function syncDraftEntityLabelLayer(graphics, layer, generatedScene, reviewMode, 
   }
 }
 
-function drawSourceGeometryPolygon(graphics, polygon) {
+function drawSourceGeometryPolygon(graphics, polygon, showVertices = false) {
   if (!polygon?.length) return;
   graphics
     .moveTo(polygon[0].x, polygon[0].y);
@@ -793,11 +816,12 @@ function drawSourceGeometryPolygon(graphics, polygon) {
     graphics.lineTo(point.x, point.y);
   }
   graphics
-    .fill({ color: 0x7bc6a4, alpha: 0.055 })
-    .stroke({ color: 0x7bc6a4, width: 3.2, alpha: 0.82 });
+    .fill({ color: 0x7bc6a4, alpha: 0.035 })
+    .stroke({ color: 0x7bc6a4, width: 2.4, alpha: 0.58 });
 
+  if (!showVertices) return;
   for (const point of polygon.slice(0, -1)) {
-    graphics.circle(point.x, point.y, 3.2).fill({ color: 0x203f35, alpha: 0.86 });
+    graphics.circle(point.x, point.y, 2.8).fill({ color: 0x203f35, alpha: 0.74 });
   }
 }
 

@@ -64,6 +64,36 @@ Next pointer:
 
 ## Entries
 
+### 2026-06-03 - QA Layer Controls Source Commit
+
+Status:
+- Complete.
+
+Scope:
+- Commit the existing uncommitted Phase 2AC-style QA readability/source-comparison edits as their own continuity batch before Phase 2DTR-1 starts.
+
+Files changed:
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- QA mode now has layer controls for real-data, official-footprint, draft, and label overlays.
+- Selected cards can show a compact official-footprint candidate summary while preserving the warning that footprints are not tenant frontage or exact storefront proof.
+- Normal-mode raster-first scene meaning, product-copy readiness, production/public-readiness gates, package tooling, assets, fixtures, and scripts were not changed.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, exact geometry claims, production/public-readiness gates, and whether later DTR outputs are accepted or revised.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
+
 ### 2026-06-03 - Plan Scope Summary Tightening
 
 Status:
