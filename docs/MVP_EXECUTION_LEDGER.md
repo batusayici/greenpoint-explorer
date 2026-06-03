@@ -57,12 +57,49 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-6 as complete for Batu review and holds before Phase 2DTR-7 or any corrective raster alignment/text cleanup pass. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-7 as complete for Batu review and holds before Phase 2DTR-8 or any fixture geometry primitive completion batch. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, polished raster generation, AI image generation, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - Phase 2DTR-7 Fixture-To-Blueprint Scene Layout Validation
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Create a deterministic black-and-white SVG blueprint from the Phase 2DTR-5 exact review geometry fixture.
+- Validate target rendering, storefront order, coordinate mapping, frontage bounds, sign panels, entrances, windows, address anchors, and Greenpoint G subway cue placement before any further styled raster work.
+- Preserve review-only status and avoid polished raster generation, AI image generation, app/source edits, package/tooling changes, live scraping, Google/Street View/3D Tiles extraction, normal-mode replacement, production assets, and production/public exact-geometry claims.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/`
+
+Verification:
+- JSON parse for `generated/blueprint-validation-report.json`.
+- SVG label check for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, Greenpoint G station, Manhattan Ave, Greenpoint Ave, and review-only status.
+- Deterministic regeneration check for `generate-fixture-blueprint.mjs`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a packet-local deterministic generator, black-and-white SVG blueprint, and machine-readable validation report.
+- The blueprint renders all five Phase 2DTR-5 fixture targets into the 1672 x 941 review-coordinate frame.
+- The validation report confirms the fixture is sufficient for deterministic target blueprint rendering, but not sufficient for another styled raster attempt because explicit road, curb, sidewalk, crosswalk, curb-cut, render-order, occlusion, address-label, and primary subway cue rules are still missing.
+- The pre-existing dirty MVP-29E raster file was intentionally left untouched and documented because it is unrelated to DTR-7.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-7 blueprint and sufficiency verdict.
+- Batu still owns whether Phase 2DTR-8 should open as fixture geometry primitive completion before another styled raster attempt.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-7 output; Phase 2DTR-8 is proposed only after Batu approval or revision direction.
 
 ### 2026-06-03 - Phase 2DTR-6 Exact Review Geometry Raster Artifact Generation
 
@@ -95,11 +132,11 @@ Outcome:
 - The raster visibly follows the approved isometric art direction, real storefront order, and named anchors well enough to prove pipeline direction, but it remains partial for reference-photo fidelity, exact entrance/window/facade placement, generated micro-text, SW Dunkin address correctness, and Greenpoint G cue ambiguity.
 
 Unresolved decisions:
-- Batu still owns whether to accept, revise, or reject the Phase 2DTR-6 raster attempt and QA verdict.
-- Batu still owns whether Phase 2DTR-7 should open as a corrective raster alignment/text cleanup pass.
+- Batu later clarified that Phase 2DTR-6 should not be treated as proof of source-data-driven rendering.
+- Batu later opened Phase 2DTR-7 as a deterministic fixture-to-blueprint validation step instead of a corrective polished-raster pass.
 
 Next pointer:
-- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-6 output; Phase 2DTR-7 is proposed only after Batu approval or revision direction.
+- Superseded by the 2026-06-03 Phase 2DTR-7 ledger entry above.
 
 ### 2026-06-03 - Phase 2DTR-5 Exact Review Geometry Fixture To Raster Prompt Adapter
 

@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "phase-2dtr-7-blueprint-validation-report.v0.1",
+  "artifactId": "phase-2dtr-7.fixture-to-blueprint-scene-layout-validation",
+  "status": "review-only-deterministic-blueprint",
+  "generatedOn": "2026-06-03",
+  "inputFixture": "docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/generated/exact-review-geometry-fixture.json",
+  "generatedArtifacts": {
+    "svg": "docs/mvp-review/phase-2dtr-7-fixture-to-blueprint-scene-layout-validation/generated/fixture-blueprint.svg"
+  },
+  "coordinateSystem": {
+    "id": "mvp-29e-review-plate-pixels",
+    "sourcePlate": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+    "pixelSize": {
+      "width": 1672,
+      "height": 941
+    },
+    "meaning": "Exact review-coordinate placement on the MVP plate. This is not a GIS/survey transform and not a public/product exact-geometry claim."
+  },
+  "dirtyPreExistingFileState": {
+    "path": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+    "status": "pre-existing dirty file intentionally left untouched; not part of DTR-7 commit scope"
+  },
+  "targetSummary": {
+    "fixtureTargetCount": 5,
+    "renderedTargetCount": 5,
+    "allFixtureTargetsRendered": true,
+    "targetOrder": [
+      {
+        "targetId": "grillpoint-deli",
+        "label": "Grillpoint Deli",
+        "drawOrder": 1,
+        "cornerId": "corner-nw"
+      },
+      {
+        "targetId": "mcdonalds",
+        "label": "McDonald's",
+        "drawOrder": 2,
+        "cornerId": "corner-ne"
+      },
+      {
+        "targetId": "dunkin",
+        "label": "Dunkin'",
+        "drawOrder": 3,
+        "cornerId": "corner-sw"
+      },
+      {
+        "targetId": "citizens-bank",
+        "label": "Citizens Bank",
+        "drawOrder": 4,
+        "cornerId": "corner-se"
+      },
+      {
+        "targetId": "greenpoint-g-subway",
+        "label": "Greenpoint G station",
+        "drawOrder": 5,
+        "cornerId": "transit-greenpoint-ave-side"
+      }
+    ]
+  },
+  "renderedTargets": [
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "renderingKind": "storefront",
+      "cornerId": "corner-nw",
+      "rendered": true,
+      "renderedGeometryFields": [
+        "buildingMassBounds",
+        "frontageSegment",
+        "storefrontBounds",
+        "storefrontOrder",
+        "signPanelBounds",
+        "entranceBounds",
+        "windowBounds",
+        "addressAnchorPoint"
+      ],
+      "missingGeometryFields": [],
+      "unsupportedOrBlockedClaimsOmitted": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ],
+      "coordinateIssues": []
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "renderingKind": "storefront",
+      "cornerId": "corner-ne",
+      "rendered": true,
+      "renderedGeometryFields": [
+        "buildingMassBounds",
+        "frontageSegment",
+        "storefrontBounds",
+        "storefrontOrder",
+        "signPanelBounds",
+        "entranceBounds",
+        "windowBounds",
+        "addressAnchorPoint"
+      ],
+      "missingGeometryFields": [],
+      "unsupportedOrBlockedClaimsOmitted": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ],
+      "coordinateIssues": []
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "renderingKind": "storefront",
+      "cornerId": "corner-sw",
+      "rendered": true,
+      "renderedGeometryFields": [
+        "buildingMassBounds",
+        "frontageSegment",
+        "storefrontBounds",
+        "storefrontOrder",
+        "signPanelBounds",
+        "entranceBounds",
+        "windowBounds",
+        "addressAnchorPoint"
+      ],
+      "missingGeometryFields": [],
+      "unsupportedOrBlockedClaimsOmitted": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ],
+      "coordinateIssues": []
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "renderingKind": "storefront",
+      "cornerId": "corner-se",
+      "rendered": true,
+      "renderedGeometryFields": [
+        "buildingMassBounds",
+        "frontageSegment",
+        "storefrontBounds",
+        "storefrontOrder",
+        "signPanelBounds",
+        "entranceBounds",
+        "windowBounds",
+        "addressAnchorPoint"
+      ],
+      "missingGeometryFields": [],
+      "unsupportedOrBlockedClaimsOmitted": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ],
+      "coordinateIssues": []
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "renderingKind": "symbolic_transit",
+      "cornerId": "transit-greenpoint-ave-side",
+      "rendered": true,
+      "renderedGeometryFields": [
+        "cueCenter",
+        "cueRadius",
+        "entranceCueBounds",
+        "addressAnchorPoint",
+        "storefrontOrder",
+        "facadeFrontageWindowEntrance"
+      ],
+      "missingGeometryFields": [],
+      "unsupportedOrBlockedClaimsOmitted": [
+        "automatic exact station entrance geometry",
+        "station stair/elevator orientation from official geometry",
+        "public/product station coordinate claim"
+      ],
+      "coordinateIssues": []
+    }
+  ],
+  "omittedUnsupportedOrBlockedClaims": [
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "label": "Grillpoint Deli",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "mcdonalds",
+      "label": "McDonald's",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "dunkin",
+      "label": "Dunkin'",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "automatic reference-photo facade parsing",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "automatic storefront frontage/order measurement",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "automatic exact address-to-scene projection",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "citizens-bank",
+      "label": "Citizens Bank",
+      "claim": "production/public exact-geometry claim",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "claim": "automatic exact station entrance geometry",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "claim": "station stair/elevator orientation from official geometry",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "label": "Greenpoint G station",
+      "claim": "public/product station coordinate claim",
+      "treatment": "omitted from blueprint as unsupported/blocked; not drawn as a scene claim"
+    }
+  ],
+  "derivedLayout": {
+    "greenpointAveRoadBand": {
+      "x": 0,
+      "y": 362,
+      "width": 1672,
+      "height": 138
+    },
+    "manhattanAveRoadBand": {
+      "x": 640,
+      "y": 0,
+      "width": 278,
+      "height": 941
+    },
+    "cornerZones": [
+      {
+        "id": "corner-nw",
+        "label": "NW",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 362
+        }
+      },
+      {
+        "id": "corner-ne",
+        "label": "NE",
+        "rect": {
+          "x": 918,
+          "y": 0,
+          "width": 754,
+          "height": 362
+        }
+      },
+      {
+        "id": "corner-sw",
+        "label": "SW",
+        "rect": {
+          "x": 0,
+          "y": 500,
+          "width": 640,
+          "height": 441
+        }
+      },
+      {
+        "id": "corner-se",
+        "label": "SE",
+        "rect": {
+          "x": 918,
+          "y": 500,
+          "width": 754,
+          "height": 441
+        }
+      }
+    ],
+    "derivation": "Road bands and corner zones are derived from fixture buildingMassBounds gaps only; they validate coordinate-space relationship but are not source-backed street geometry."
+  },
+  "obviousCoordinateOrLayoutInconsistencies": [
+    {
+      "scope": "intersection-road-layout",
+      "issues": [
+        "Road/intersection bands are derived deterministically from gaps between fixture buildingMassBounds, because the fixture does not yet include explicit road, curb, lane, or crosswalk geometry fields."
+      ]
+    }
+  ],
+  "sufficiencyAssessment": {
+    "sufficientForDeterministicBlueprint": true,
+    "sufficientForNextStyledRaster": false,
+    "reasonsBlockingStyledRaster": [
+      "Fixture lacks explicit road, curb, lane, crosswalk, sidewalk, and street-grid geometry fields.",
+      "Fixture contains review-coordinate facade fields, but not deterministic facade-generation rules for styled raster rendering.",
+      "Unsupported automatic photo parsing, frontage/order measurement, exact address projection, and exact station geometry remain omitted."
+    ],
+    "exactCorrectiveDeltasBeforeStyledRaster": [
+      "Add explicit deterministic street/intersection primitives: road bands, curbs, sidewalks, crosswalks, and corner curb cuts.",
+      "Add render-order and occlusion rules for building mass, storefront bounds, sign panels, entrances, windows, and subway cue overlays.",
+      "Decide whether address labels render in-scene or only in QA annotations to avoid generated text errors like the DTR-6 Dunkin 993/893 mismatch.",
+      "Keep a single Greenpoint G cue in the fixture or mark any extra cues as symbolic/non-primary before raster styling.",
+      "Create a blueprint-to-styled-raster adapter that consumes geometry primitives directly instead of relying on prose prompt interpretation."
+    ]
+  }
+}

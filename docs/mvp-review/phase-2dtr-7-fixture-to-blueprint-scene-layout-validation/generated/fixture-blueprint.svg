@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1672" height="941" viewBox="0 0 1672 941" role="img" aria-label="Phase 2DTR-7 deterministic fixture blueprint">
+<title>Phase 2DTR-7 Fixture-To-Blueprint Scene Layout Validation</title>
+<desc>Black-and-white deterministic SVG generated from the Phase 2DTR-5 exact review geometry fixture. Review-only; not production or public exact geometry.</desc>
+<defs>
+  <pattern id="diagonal-hatch" width="12" height="12" patternUnits="userSpaceOnUse">
+    <path d="M-2 12 L12 -2 M4 16 L16 4" stroke="#000" stroke-width="1"/>
+  </pattern>
+  <marker id="frontage-dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+    <circle cx="3" cy="3" r="2.5" fill="#000"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="1672" height="941" fill="#fff"/>
+<rect x="1" y="1" width="1670" height="939" fill="none" stroke="#000" stroke-width="2"/>
+<line x1="0" y1="0" x2="0" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="16" font-family="monospace" font-size="12" fill="#000">0</text>
+<line x1="100" y1="0" x2="100" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="104" y="16" font-family="monospace" font-size="12" fill="#000">100</text>
+<line x1="200" y1="0" x2="200" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="204" y="16" font-family="monospace" font-size="12" fill="#000">200</text>
+<line x1="300" y1="0" x2="300" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="304" y="16" font-family="monospace" font-size="12" fill="#000">300</text>
+<line x1="400" y1="0" x2="400" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="404" y="16" font-family="monospace" font-size="12" fill="#000">400</text>
+<line x1="500" y1="0" x2="500" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="504" y="16" font-family="monospace" font-size="12" fill="#000">500</text>
+<line x1="600" y1="0" x2="600" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="604" y="16" font-family="monospace" font-size="12" fill="#000">600</text>
+<line x1="700" y1="0" x2="700" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="704" y="16" font-family="monospace" font-size="12" fill="#000">700</text>
+<line x1="800" y1="0" x2="800" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="804" y="16" font-family="monospace" font-size="12" fill="#000">800</text>
+<line x1="900" y1="0" x2="900" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="904" y="16" font-family="monospace" font-size="12" fill="#000">900</text>
+<line x1="1000" y1="0" x2="1000" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1004" y="16" font-family="monospace" font-size="12" fill="#000">1000</text>
+<line x1="1100" y1="0" x2="1100" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1104" y="16" font-family="monospace" font-size="12" fill="#000">1100</text>
+<line x1="1200" y1="0" x2="1200" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1204" y="16" font-family="monospace" font-size="12" fill="#000">1200</text>
+<line x1="1300" y1="0" x2="1300" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1304" y="16" font-family="monospace" font-size="12" fill="#000">1300</text>
+<line x1="1400" y1="0" x2="1400" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1404" y="16" font-family="monospace" font-size="12" fill="#000">1400</text>
+<line x1="1500" y1="0" x2="1500" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1504" y="16" font-family="monospace" font-size="12" fill="#000">1500</text>
+<line x1="1600" y1="0" x2="1600" y2="941" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="1604" y="16" font-family="monospace" font-size="12" fill="#000">1600</text>
+<line x1="0" y1="0" x2="1672" y2="0" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="14" font-family="monospace" font-size="12" fill="#000">0</text>
+<line x1="0" y1="100" x2="1672" y2="100" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="114" font-family="monospace" font-size="12" fill="#000">100</text>
+<line x1="0" y1="200" x2="1672" y2="200" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="214" font-family="monospace" font-size="12" fill="#000">200</text>
+<line x1="0" y1="300" x2="1672" y2="300" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="314" font-family="monospace" font-size="12" fill="#000">300</text>
+<line x1="0" y1="400" x2="1672" y2="400" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="414" font-family="monospace" font-size="12" fill="#000">400</text>
+<line x1="0" y1="500" x2="1672" y2="500" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="514" font-family="monospace" font-size="12" fill="#000">500</text>
+<line x1="0" y1="600" x2="1672" y2="600" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="614" font-family="monospace" font-size="12" fill="#000">600</text>
+<line x1="0" y1="700" x2="1672" y2="700" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="714" font-family="monospace" font-size="12" fill="#000">700</text>
+<line x1="0" y1="800" x2="1672" y2="800" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="814" font-family="monospace" font-size="12" fill="#000">800</text>
+<line x1="0" y1="900" x2="1672" y2="900" stroke="#000" stroke-width="0.5" stroke-dasharray="2 8"/>
+<text x="4" y="914" font-family="monospace" font-size="12" fill="#000">900</text>
+<rect x="0" y="362" width="1672" height="138" fill="none" stroke="#000" stroke-width="4"/>
+<rect x="640" y="0" width="278" height="941" fill="none" stroke="#000" stroke-width="4"/>
+<text x="726" y="439" font-family="monospace" font-size="28" font-weight="700" fill="#000">GREENPOINT AVE</text>
+<text x="769" y="230" font-family="monospace" font-size="28" font-weight="700" fill="#000" transform="rotate(90 779 230)">MANHATTAN AVE</text>
+<rect x="0" y="0" width="640" height="362" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="12 8"/>
+<text x="16" y="34" font-family="monospace" font-size="28" font-weight="700" fill="#000">NW</text>
+<rect x="918" y="0" width="754" height="362" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="12 8"/>
+<text x="934" y="34" font-family="monospace" font-size="28" font-weight="700" fill="#000">NE</text>
+<rect x="0" y="500" width="640" height="441" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="12 8"/>
+<text x="16" y="534" font-family="monospace" font-size="28" font-weight="700" fill="#000">SW</text>
+<rect x="918" y="500" width="754" height="441" fill="none" stroke="#000" stroke-width="2" stroke-dasharray="12 8"/>
+<text x="934" y="534" font-family="monospace" font-size="28" font-weight="700" fill="#000">SE</text>
+<text x="32" y="865" font-family="monospace" font-size="28" font-weight="700" fill="#000">PHASE 2DTR-7 FIXTURE BLUEPRINT</text>
+<text x="32" y="897" font-family="monospace" font-size="18" fill="#000">REVIEW ONLY - DETERMINISTIC SVG FROM DTR-5 JSON - NOT PRODUCTION OR PUBLIC EXACT GEOMETRY</text>
+<text x="1252" y="897" font-family="monospace" font-size="16" fill="#000">Coordinate frame: 1672 x 941</text>
+<rect x="284" y="92" width="356" height="216" fill="url(#diagonal-hatch)" stroke="#000" stroke-width="3"/>
+<text x="292" y="116" font-family="monospace" font-size="18" font-weight="700" fill="#000">Grillpoint Deli buildingMass</text>
+<rect x="386" y="188" width="174" height="78" fill="#fff" stroke="#000" stroke-width="5"/>
+<text x="392" y="178" font-family="monospace" font-size="20" font-weight="700" fill="#000">Grillpoint Deli</text>
+<line x1="386" y1="188" x2="560" y2="188" stroke="#000" stroke-width="8" marker-start="url(#frontage-dot)" marker-end="url(#frontage-dot)"/>
+<text x="386" y="180" font-family="monospace" font-size="14" fill="#000">frontage</text>
+<rect x="390" y="162" width="170" height="28" fill="#fff" stroke="#000" stroke-width="3" stroke-dasharray="8 5"/>
+<text x="395" y="182" font-family="monospace" font-size="15" fill="#000">SIGN: Grillpoint Deli</text>
+<rect x="454" y="216" width="34" height="48" fill="#000" stroke="#000" stroke-width="2"/>
+<text x="440" y="282" font-family="monospace" font-size="14" fill="#000">entrance</text>
+<rect x="398" y="216" width="42" height="30" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="398" y1="216" x2="440" y2="246" stroke="#000" stroke-width="1"/>
+<line x1="440" y1="216" x2="398" y2="246" stroke="#000" stroke-width="1"/>
+<text x="398" y="260" font-family="monospace" font-size="12" fill="#000">win 1</text>
+<rect x="500" y="216" width="42" height="30" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="500" y1="216" x2="542" y2="246" stroke="#000" stroke-width="1"/>
+<line x1="542" y1="216" x2="500" y2="246" stroke="#000" stroke-width="1"/>
+<text x="500" y="260" font-family="monospace" font-size="12" fill="#000">win 2</text>
+<line x1="506" y1="204" x2="530" y2="204" stroke="#000" stroke-width="3"/>
+<line x1="518" y1="192" x2="518" y2="216" stroke="#000" stroke-width="3"/>
+<circle cx="518" cy="204" r="15" fill="none" stroke="#000" stroke-width="2"/>
+<text x="536" y="209" font-family="monospace" font-size="14" fill="#000">address cue</text>
+<rect x="918" y="70" width="602" height="292" fill="url(#diagonal-hatch)" stroke="#000" stroke-width="3"/>
+<text x="926" y="94" font-family="monospace" font-size="18" font-weight="700" fill="#000">McDonald's buildingMass</text>
+<rect x="1092" y="156" width="238" height="104" fill="#fff" stroke="#000" stroke-width="5"/>
+<text x="1098" y="146" font-family="monospace" font-size="20" font-weight="700" fill="#000">McDonald's</text>
+<line x1="1092" y1="156" x2="1330" y2="156" stroke="#000" stroke-width="8" marker-start="url(#frontage-dot)" marker-end="url(#frontage-dot)"/>
+<text x="1092" y="148" font-family="monospace" font-size="14" fill="#000">frontage</text>
+<rect x="1100" y="144" width="188" height="28" fill="#fff" stroke="#000" stroke-width="3" stroke-dasharray="8 5"/>
+<text x="1105" y="164" font-family="monospace" font-size="15" fill="#000">SIGN: McDonald's</text>
+<rect x="1190" y="204" width="38" height="50" fill="#000" stroke="#000" stroke-width="2"/>
+<text x="1176" y="272" font-family="monospace" font-size="14" fill="#000">entrance</text>
+<rect x="1102" y="198" width="54" height="28" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="1102" y1="198" x2="1156" y2="226" stroke="#000" stroke-width="1"/>
+<line x1="1156" y1="198" x2="1102" y2="226" stroke="#000" stroke-width="1"/>
+<text x="1102" y="240" font-family="monospace" font-size="12" fill="#000">win 1</text>
+<rect x="1242" y="198" width="54" height="28" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="1242" y1="198" x2="1296" y2="226" stroke="#000" stroke-width="1"/>
+<line x1="1296" y1="198" x2="1242" y2="226" stroke="#000" stroke-width="1"/>
+<text x="1242" y="240" font-family="monospace" font-size="12" fill="#000">win 2</text>
+<line x1="1196" y1="190" x2="1220" y2="190" stroke="#000" stroke-width="3"/>
+<line x1="1208" y1="178" x2="1208" y2="202" stroke="#000" stroke-width="3"/>
+<circle cx="1208" cy="190" r="15" fill="none" stroke="#000" stroke-width="2"/>
+<text x="1226" y="195" font-family="monospace" font-size="14" fill="#000">address cue</text>
+<rect x="180" y="520" width="384" height="344" fill="url(#diagonal-hatch)" stroke="#000" stroke-width="3"/>
+<text x="188" y="544" font-family="monospace" font-size="18" font-weight="700" fill="#000">Dunkin' buildingMass</text>
+<rect x="258" y="604" width="208" height="124" fill="#fff" stroke="#000" stroke-width="5"/>
+<text x="264" y="594" font-family="monospace" font-size="20" font-weight="700" fill="#000">Dunkin'</text>
+<line x1="258" y1="604" x2="466" y2="604" stroke="#000" stroke-width="8" marker-start="url(#frontage-dot)" marker-end="url(#frontage-dot)"/>
+<text x="258" y="596" font-family="monospace" font-size="14" fill="#000">frontage</text>
+<rect x="282" y="604" width="132" height="28" fill="#fff" stroke="#000" stroke-width="3" stroke-dasharray="8 5"/>
+<text x="287" y="624" font-family="monospace" font-size="15" fill="#000">SIGN: Dunkin'</text>
+<rect x="346" y="660" width="36" height="52" fill="#000" stroke="#000" stroke-width="2"/>
+<text x="332" y="730" font-family="monospace" font-size="14" fill="#000">entrance</text>
+<rect x="282" y="660" width="42" height="28" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="282" y1="660" x2="324" y2="688" stroke="#000" stroke-width="1"/>
+<line x1="324" y1="660" x2="282" y2="688" stroke="#000" stroke-width="1"/>
+<text x="282" y="702" font-family="monospace" font-size="12" fill="#000">win 1</text>
+<rect x="390" y="660" width="42" height="28" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="390" y1="660" x2="432" y2="688" stroke="#000" stroke-width="1"/>
+<line x1="432" y1="660" x2="390" y2="688" stroke="#000" stroke-width="1"/>
+<text x="390" y="702" font-family="monospace" font-size="12" fill="#000">win 2</text>
+<line x1="358" y1="668" x2="382" y2="668" stroke="#000" stroke-width="3"/>
+<line x1="370" y1="656" x2="370" y2="680" stroke="#000" stroke-width="3"/>
+<circle cx="370" cy="668" r="15" fill="none" stroke="#000" stroke-width="2"/>
+<text x="388" y="673" font-family="monospace" font-size="14" fill="#000">address cue</text>
+<rect x="1176" y="500" width="384" height="366" fill="url(#diagonal-hatch)" stroke="#000" stroke-width="3"/>
+<text x="1184" y="524" font-family="monospace" font-size="18" font-weight="700" fill="#000">Citizens Bank buildingMass</text>
+<rect x="1246" y="594" width="212" height="126" fill="#fff" stroke="#000" stroke-width="5"/>
+<text x="1252" y="584" font-family="monospace" font-size="20" font-weight="700" fill="#000">Citizens Bank</text>
+<line x1="1246" y1="594" x2="1458" y2="594" stroke="#000" stroke-width="8" marker-start="url(#frontage-dot)" marker-end="url(#frontage-dot)"/>
+<text x="1246" y="586" font-family="monospace" font-size="14" fill="#000">frontage</text>
+<rect x="1282" y="598" width="142" height="28" fill="#fff" stroke="#000" stroke-width="3" stroke-dasharray="8 5"/>
+<text x="1287" y="618" font-family="monospace" font-size="15" fill="#000">SIGN: Citizens Bank</text>
+<rect x="1324" y="654" width="40" height="56" fill="#000" stroke="#000" stroke-width="2"/>
+<text x="1310" y="728" font-family="monospace" font-size="14" fill="#000">entrance</text>
+<rect x="1276" y="658" width="48" height="28" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="1276" y1="658" x2="1324" y2="686" stroke="#000" stroke-width="1"/>
+<line x1="1324" y1="658" x2="1276" y2="686" stroke="#000" stroke-width="1"/>
+<text x="1276" y="700" font-family="monospace" font-size="12" fill="#000">win 1</text>
+<rect x="1396" y="658" width="48" height="28" fill="#fff" stroke="#000" stroke-width="3"/>
+<line x1="1396" y1="658" x2="1444" y2="686" stroke="#000" stroke-width="1"/>
+<line x1="1444" y1="658" x2="1396" y2="686" stroke="#000" stroke-width="1"/>
+<text x="1396" y="700" font-family="monospace" font-size="12" fill="#000">win 2</text>
+<line x1="1304" y1="638" x2="1328" y2="638" stroke="#000" stroke-width="3"/>
+<line x1="1316" y1="626" x2="1316" y2="650" stroke="#000" stroke-width="3"/>
+<circle cx="1316" cy="638" r="15" fill="none" stroke="#000" stroke-width="2"/>
+<text x="1334" y="643" font-family="monospace" font-size="14" fill="#000">address cue</text>
+<circle cx="1138" cy="624" r="44" fill="#fff" stroke="#000" stroke-width="5"/>
+<text x="1124" y="634" font-family="monospace" font-size="32" font-weight="700" fill="#000">G</text>
+<rect x="1104" y="590" width="68" height="68" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="10 6"/>
+<text x="1180" y="608" font-family="monospace" font-size="18" font-weight="700" fill="#000">Greenpoint G station</text>
+<text x="1180" y="630" font-family="monospace" font-size="14" fill="#000">entranceCueBounds</text>
+<line x1="1126" y1="624" x2="1150" y2="624" stroke="#000" stroke-width="3"/>
+<line x1="1138" y1="612" x2="1138" y2="636" stroke="#000" stroke-width="3"/>
+<circle cx="1138" cy="624" r="15" fill="none" stroke="#000" stroke-width="2"/>
+<text x="1156" y="629" font-family="monospace" font-size="14" fill="#000">address cue</text>
+<g transform="translate(1202 30)">
+  <rect x="0" y="0" width="440" height="238" fill="#fff" stroke="#000" stroke-width="2"/>
+  <text x="16" y="28" font-family="monospace" font-size="20" font-weight="700" fill="#000">Legend</text>
+  <rect x="18" y="48" width="44" height="24" fill="url(#diagonal-hatch)" stroke="#000" stroke-width="2"/><text x="78" y="66" font-family="monospace" font-size="14" fill="#000">buildingMassBounds</text>
+  <rect x="18" y="84" width="44" height="24" fill="#fff" stroke="#000" stroke-width="4"/><text x="78" y="102" font-family="monospace" font-size="14" fill="#000">storefrontBounds</text>
+  <rect x="18" y="120" width="44" height="18" fill="#fff" stroke="#000" stroke-width="2" stroke-dasharray="7 4"/><text x="78" y="134" font-family="monospace" font-size="14" fill="#000">signPanelBounds</text>
+  <rect x="18" y="154" width="44" height="24" fill="#000" stroke="#000" stroke-width="2"/><text x="78" y="172" font-family="monospace" font-size="14" fill="#000">entranceBounds</text>
+  <line x1="18" y1="202" x2="62" y2="202" stroke="#000" stroke-width="8"/><text x="78" y="207" font-family="monospace" font-size="14" fill="#000">frontageSegment</text>
+  <circle cx="40" cy="224" r="12" fill="#fff" stroke="#000" stroke-width="3"/><text x="78" y="229" font-family="monospace" font-size="14" fill="#000">address/subway cue</text>
+</g>
+</svg>
