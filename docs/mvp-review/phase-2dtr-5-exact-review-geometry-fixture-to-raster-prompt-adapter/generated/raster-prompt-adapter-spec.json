@@ -1,0 +1,2118 @@
+{
+  "schemaVersion": "phase-2dtr-raster-prompt-adapter-spec.v0.1",
+  "artifactId": "phase-2dtr-5.raster-prompt-adapter-spec",
+  "status": "deterministic-review-only-raster-prompt-spec",
+  "generatedOn": "2026-06-03",
+  "generatedBy": "scripts/generate-phase-2dtr-5-exact-review-raster-prompt.mjs",
+  "inputFixture": "exact-review-geometry-fixture.json",
+  "scenePrompt": {
+    "title": "Manhattan Ave / Greenpoint Ave exact review geometry raster prompt",
+    "purpose": "Generate a true-to-life review-only isometric MVP scene from structured exact review geometry, provenance, and supplied reference imagery.",
+    "coordinateSystem": {
+      "id": "mvp-29e-review-plate-pixels",
+      "sourcePlate": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+      "pixelSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "meaning": "Exact review-coordinate placement on the MVP plate. This is not a GIS/survey transform and not a public/product exact-geometry claim."
+    },
+    "globalPrompt": [
+      "Create one review-only, true-to-life compact isometric raster scene for Manhattan Ave / Greenpoint Ave in Greenpoint, Brooklyn.",
+      "Use the supplied exact review-coordinate geometry fixture as the placement authority for storefront bounds, frontage lines, sign panels, entrance cues, window cues, address anchors, and Greenpoint G station cue bounds.",
+      "Preserve the approved Inked Indie / Compact Corner visual direction while keeping real names and address context clearly review-only.",
+      "Use NYC/open data only as building scaffold context; do not infer tenant frontage, storefront order, entrance placement, facade appearance, active-business status, address placement, or station geometry from building footprints alone.",
+      "Use supplied reference photos as MVP review/source imagery for facade rhythm, sign-band relationship, entrance/window cues, and station cue interpretation; do not trace, texture-extract, train on, or treat them as production assets.",
+      "Every visible scene field must retain sourceCategory, status, and source path in the companion provenance map."
+    ],
+    "negativePrompt": [
+      "No production/public exact-geometry claims.",
+      "No ratings, reviews, hours, endorsements, partnership claims, promotions, or service availability claims.",
+      "No Google/Street View/3D Tiles extraction, scraping, tracing, texture extraction, or production reuse.",
+      "No generated brand/trade-dress exactness claims or production trademark clearance claims.",
+      "No unlabeled exact geometry: unsupported fields must remain review-only, unsupported, symbolic, or blocked in provenance."
+    ]
+  },
+  "promptSections": [
+    {
+      "targetId": "grillpoint-deli",
+      "reviewLabel": "Grillpoint Deli",
+      "cornerId": "corner-nw",
+      "drawOrder": 1,
+      "promptText": "Target 1: Grillpoint Deli (903 Manhattan Ave, Brooklyn, NY 11222) at corner-nw. Rendering kind: storefront. Visible text cue: Grillpoint Deli. Use exact review-coordinate geometry: buildingMassBounds={\"x\":284,\"y\":92,\"width\":356,\"height\":216} [nyc_open_data; exact_review_candidate]; frontageSegment={\"from\":{\"x\":386,\"y\":188},\"to\":{\"x\":560,\"y\":188}} [reference_photo_derived; exact_review_candidate]; storefrontBounds={\"x\":386,\"y\":188,\"width\":174,\"height\":78} [reference_photo_derived; exact_review_candidate]; storefrontOrder={\"sceneOrder\":1,\"cornerId\":\"corner-nw\",\"bayCount\":3} [manual_review_only_interpretation; exact_review_candidate]; signPanelBounds={\"x\":390,\"y\":162,\"width\":170,\"height\":28} [manual_review_only_interpretation; exact_review_candidate]; entranceBounds={\"x\":454,\"y\":216,\"width\":34,\"height\":48} [reference_photo_derived; exact_review_candidate]; windowBounds=[{\"x\":398,\"y\":216,\"width\":42,\"height\":30},{\"x\":500,\"y\":216,\"width\":42,\"height\":30}] [reference_photo_derived; exact_review_candidate]; addressAnchorPoint={\"x\":518,\"y\":204} [existing_source_evidence; exact_review_candidate]. Required directives: Render Grillpoint Deli at corner-nw using its exact review-coordinate storefront bounds. Use frontageSegment as the required visible-facing line on the MVP review plate. Place sign text inside signPanelBounds and align entrance/window cues to their exact review-coordinate bounds. Use supplied reference photos for facade rhythm, entrance/window interpretation, and sign-band relationship only. Carry sourceCategory/status/provenance for every visible target field. Keep this target review-only; do not imply production/public exact geometry.",
+      "requiredGeometry": {
+        "buildingMassBounds": {
+          "value": {
+            "x": 284,
+            "y": 92,
+            "width": 356,
+            "height": 216
+          },
+          "sourceCategory": "nyc_open_data",
+          "sourceCategories": [
+            "nyc_open_data"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+          ],
+          "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+        },
+        "frontageSegment": {
+          "value": {
+            "from": {
+              "x": 386,
+              "y": 188
+            },
+            "to": {
+              "x": 560,
+              "y": 188
+            }
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output",
+            "restaurantji-grillpoint"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+        },
+        "storefrontBounds": {
+          "value": {
+            "x": 386,
+            "y": 188,
+            "width": 174,
+            "height": 78
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "storefrontOrder": {
+          "value": {
+            "sceneOrder": 1,
+            "cornerId": "corner-nw",
+            "bayCount": 3
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+          ],
+          "notes": "Review-coordinate storefront order inside the MVP slice."
+        },
+        "signPanelBounds": {
+          "value": {
+            "x": 390,
+            "y": 162,
+            "width": 170,
+            "height": 28
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate sign panel placement for adapter generation."
+        },
+        "entranceBounds": {
+          "value": {
+            "x": 454,
+            "y": 216,
+            "width": 34,
+            "height": 48
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "windowBounds": {
+          "value": [
+            {
+              "x": 398,
+              "y": 216,
+              "width": 42,
+              "height": 30
+            },
+            {
+              "x": 500,
+              "y": 216,
+              "width": 42,
+              "height": 30
+            }
+          ],
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+            "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+        },
+        "addressAnchorPoint": {
+          "value": {
+            "x": 518,
+            "y": 204
+          },
+          "sourceCategory": "existing_source_evidence",
+          "sourceCategories": [
+            "existing_source_evidence"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29d",
+            "restaurantji-grillpoint"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+          ],
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        }
+      },
+      "provenanceRequirements": {
+        "businessOrPlace": {
+          "name": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed source evidence supports review/demo identity text."
+          },
+          "category": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed source evidence supports review/demo category context."
+          },
+          "addressOrContext": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address text only; exact scene placement remains blocked."
+          }
+        },
+        "visibleTextCues": {
+          "primarySignText": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Visible review sign text derived from the review label/business identity."
+          },
+          "secondaryAddressCue": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "review_only",
+            "sourceIds": [
+              "evidence-grillpoint-identity-address-review"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address/context text supports scene targeting but is not a production/public exact-placement claim."
+          }
+        },
+        "geometry": {
+          "buildingMassBounds": {
+            "sourceCategory": "nyc_open_data",
+            "sourceCategories": [
+              "nyc_open_data"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+            ],
+            "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+          },
+          "frontageSegment": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29d",
+              "mvp-29e-raster-review-output",
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+          },
+          "storefrontBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+          },
+          "storefrontOrder": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+            ],
+            "notes": "Review-coordinate storefront order inside the MVP slice."
+          },
+          "signPanelBounds": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate sign panel placement for adapter generation."
+          },
+          "entranceBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+          },
+          "windowBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+              "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+          },
+          "addressAnchorPoint": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29d",
+              "restaurantji-grillpoint"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+          }
+        }
+      },
+      "unsupportedMustRemainLabeled": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ]
+    },
+    {
+      "targetId": "mcdonalds",
+      "reviewLabel": "McDonald's",
+      "cornerId": "corner-ne",
+      "drawOrder": 2,
+      "promptText": "Target 2: McDonald's (904 Manhattan Ave, Brooklyn, NY 11222) at corner-ne. Rendering kind: storefront. Visible text cue: McDonald's. Use exact review-coordinate geometry: buildingMassBounds={\"x\":918,\"y\":70,\"width\":602,\"height\":292} [nyc_open_data; exact_review_candidate]; frontageSegment={\"from\":{\"x\":1092,\"y\":156},\"to\":{\"x\":1330,\"y\":156}} [existing_source_evidence; exact_review_candidate]; storefrontBounds={\"x\":1092,\"y\":156,\"width\":238,\"height\":104} [reference_photo_derived; exact_review_candidate]; storefrontOrder={\"sceneOrder\":2,\"cornerId\":\"corner-ne\",\"bayCount\":3} [manual_review_only_interpretation; exact_review_candidate]; signPanelBounds={\"x\":1100,\"y\":144,\"width\":188,\"height\":28} [manual_review_only_interpretation; exact_review_candidate]; entranceBounds={\"x\":1190,\"y\":204,\"width\":38,\"height\":50} [reference_photo_derived; exact_review_candidate]; windowBounds=[{\"x\":1102,\"y\":198,\"width\":54,\"height\":28},{\"x\":1242,\"y\":198,\"width\":54,\"height\":28}] [reference_photo_derived; exact_review_candidate]; addressAnchorPoint={\"x\":1208,\"y\":190} [existing_source_evidence; exact_review_candidate]. Required directives: Render McDonald's at corner-ne using its exact review-coordinate storefront bounds. Use frontageSegment as the required visible-facing line on the MVP review plate. Place sign text inside signPanelBounds and align entrance/window cues to their exact review-coordinate bounds. Use supplied reference photos for facade rhythm, entrance/window interpretation, and sign-band relationship only. Carry sourceCategory/status/provenance for every visible target field. Keep this target review-only; do not imply production/public exact geometry.",
+      "requiredGeometry": {
+        "buildingMassBounds": {
+          "value": {
+            "x": 918,
+            "y": 70,
+            "width": 602,
+            "height": 292
+          },
+          "sourceCategory": "nyc_open_data",
+          "sourceCategories": [
+            "nyc_open_data"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mcdonalds-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+          ],
+          "notes": "Source-derived QA building envelope from review-manifest address/building/storefront links plus raster alignment; not exact parcel/tax-lot or building footprint geometry."
+        },
+        "frontageSegment": {
+          "value": {
+            "from": {
+              "x": 1092,
+              "y": 156
+            },
+            "to": {
+              "x": 1330,
+              "y": 156
+            }
+          },
+          "sourceCategory": "existing_source_evidence",
+          "sourceCategories": [
+            "existing_source_evidence"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mcdonalds-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+            "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+            "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Source-backed QA frontage alignment from review-manifest storefront confidence and official address context; exact frontage/order and entrance placement remain blocked."
+        },
+        "storefrontBounds": {
+          "value": {
+            "x": 1092,
+            "y": 156,
+            "width": 238,
+            "height": 104
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+            "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+            "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "storefrontOrder": {
+          "value": {
+            "sceneOrder": 2,
+            "cornerId": "corner-ne",
+            "bayCount": 3
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+          ],
+          "notes": "Review-coordinate storefront order inside the MVP slice."
+        },
+        "signPanelBounds": {
+          "value": {
+            "x": 1100,
+            "y": 144,
+            "width": 188,
+            "height": 28
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+            "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+            "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate sign panel placement for adapter generation."
+        },
+        "entranceBounds": {
+          "value": {
+            "x": 1190,
+            "y": 204,
+            "width": 38,
+            "height": 50
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+            "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+            "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "windowBounds": {
+          "value": [
+            {
+              "x": 1102,
+              "y": 198,
+              "width": 54,
+              "height": 28
+            },
+            {
+              "x": 1242,
+              "y": 198,
+              "width": 54,
+              "height": 28
+            }
+          ],
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+            "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+            "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+            "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+            "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+        },
+        "addressAnchorPoint": {
+          "value": {
+            "x": 1208,
+            "y": 190
+          },
+          "sourceCategory": "existing_source_evidence",
+          "sourceCategories": [
+            "existing_source_evidence"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mcdonalds-official",
+            "mvp-29d"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+          ],
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        }
+      },
+      "provenanceRequirements": {
+        "businessOrPlace": {
+          "name": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "mcdonalds-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+          },
+          "category": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "estimated_from_source",
+            "sourceIds": [
+              "mcdonalds-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Category is estimated from official business context for QA scene generation; it is not product-copy-ready."
+          },
+          "addressOrContext": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "mcdonalds-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address text only; exact scene placement remains blocked."
+          }
+        },
+        "visibleTextCues": {
+          "primarySignText": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "mcdonalds-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Visible review sign text derived from the review label/business identity."
+          },
+          "secondaryAddressCue": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "review_only",
+            "sourceIds": [
+              "evidence-mcdonalds-identity-address-review"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address/context text supports scene targeting but is not a production/public exact-placement claim."
+          }
+        },
+        "geometry": {
+          "buildingMassBounds": {
+            "sourceCategory": "nyc_open_data",
+            "sourceCategories": [
+              "nyc_open_data"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mcdonalds-official",
+              "mvp-29b",
+              "mvp-29c",
+              "mvp-29d",
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+            ],
+            "notes": "Source-derived QA building envelope from review-manifest address/building/storefront links plus raster alignment; not exact parcel/tax-lot or building footprint geometry."
+          },
+          "frontageSegment": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mcdonalds-official",
+              "mvp-29b",
+              "mvp-29c",
+              "mvp-29d",
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+              "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+              "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Source-backed QA frontage alignment from review-manifest storefront confidence and official address context; exact frontage/order and entrance placement remain blocked."
+          },
+          "storefrontBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+              "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+              "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+          },
+          "storefrontOrder": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+            ],
+            "notes": "Review-coordinate storefront order inside the MVP slice."
+          },
+          "signPanelBounds": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+              "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+              "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate sign panel placement for adapter generation."
+          },
+          "entranceBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mcdonalds-official"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+              "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+              "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+          },
+          "windowBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+              "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+              "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+              "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+              "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+          },
+          "addressAnchorPoint": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mcdonalds-official",
+              "mvp-29d"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+          }
+        }
+      },
+      "unsupportedMustRemainLabeled": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ]
+    },
+    {
+      "targetId": "dunkin",
+      "reviewLabel": "Dunkin'",
+      "cornerId": "corner-sw",
+      "drawOrder": 3,
+      "promptText": "Target 3: Dunkin' (893 Manhattan Ave, Brooklyn, NY 11222) at corner-sw. Rendering kind: storefront. Visible text cue: Dunkin'. Use exact review-coordinate geometry: buildingMassBounds={\"x\":180,\"y\":520,\"width\":384,\"height\":344} [nyc_open_data; exact_review_candidate]; frontageSegment={\"from\":{\"x\":258,\"y\":604},\"to\":{\"x\":466,\"y\":604}} [reference_photo_derived; exact_review_candidate]; storefrontBounds={\"x\":258,\"y\":604,\"width\":208,\"height\":124} [reference_photo_derived; exact_review_candidate]; storefrontOrder={\"sceneOrder\":3,\"cornerId\":\"corner-sw\",\"bayCount\":3} [manual_review_only_interpretation; exact_review_candidate]; signPanelBounds={\"x\":282,\"y\":604,\"width\":132,\"height\":28} [manual_review_only_interpretation; exact_review_candidate]; entranceBounds={\"x\":346,\"y\":660,\"width\":36,\"height\":52} [reference_photo_derived; exact_review_candidate]; windowBounds=[{\"x\":282,\"y\":660,\"width\":42,\"height\":28},{\"x\":390,\"y\":660,\"width\":42,\"height\":28}] [reference_photo_derived; exact_review_candidate]; addressAnchorPoint={\"x\":370,\"y\":668} [existing_source_evidence; exact_review_candidate]. Required directives: Render Dunkin' at corner-sw using its exact review-coordinate storefront bounds. Use frontageSegment as the required visible-facing line on the MVP review plate. Place sign text inside signPanelBounds and align entrance/window cues to their exact review-coordinate bounds. Use supplied reference photos for facade rhythm, entrance/window interpretation, and sign-band relationship only. Carry sourceCategory/status/provenance for every visible target field. Keep this target review-only; do not imply production/public exact geometry.",
+      "requiredGeometry": {
+        "buildingMassBounds": {
+          "value": {
+            "x": 180,
+            "y": 520,
+            "width": 384,
+            "height": 344
+          },
+          "sourceCategory": "nyc_open_data",
+          "sourceCategories": [
+            "nyc_open_data"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+          ],
+          "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+        },
+        "frontageSegment": {
+          "value": {
+            "from": {
+              "x": 258,
+              "y": 604
+            },
+            "to": {
+              "x": 466,
+              "y": 604
+            }
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "dunkin-official",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+        },
+        "storefrontBounds": {
+          "value": {
+            "x": 258,
+            "y": 604,
+            "width": 208,
+            "height": 124
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "storefrontOrder": {
+          "value": {
+            "sceneOrder": 3,
+            "cornerId": "corner-sw",
+            "bayCount": 3
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+          ],
+          "notes": "Review-coordinate storefront order inside the MVP slice."
+        },
+        "signPanelBounds": {
+          "value": {
+            "x": 282,
+            "y": 604,
+            "width": 132,
+            "height": 28
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate sign panel placement for adapter generation."
+        },
+        "entranceBounds": {
+          "value": {
+            "x": 346,
+            "y": 660,
+            "width": 36,
+            "height": 52
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "windowBounds": {
+          "value": [
+            {
+              "x": 282,
+              "y": 660,
+              "width": 42,
+              "height": 28
+            },
+            {
+              "x": 390,
+              "y": 660,
+              "width": 42,
+              "height": 28
+            }
+          ],
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+        },
+        "addressAnchorPoint": {
+          "value": {
+            "x": 370,
+            "y": 668
+          },
+          "sourceCategory": "existing_source_evidence",
+          "sourceCategories": [
+            "existing_source_evidence"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "dunkin-official",
+            "mvp-29d"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+          ],
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        }
+      },
+      "provenanceRequirements": {
+        "businessOrPlace": {
+          "name": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "dunkin-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+          },
+          "category": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "estimated_from_source",
+            "sourceIds": [
+              "dunkin-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Category is estimated from official business context for QA scene generation; it is not product-copy-ready."
+          },
+          "addressOrContext": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "dunkin-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address text only; exact scene placement remains blocked."
+          }
+        },
+        "visibleTextCues": {
+          "primarySignText": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "dunkin-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Visible review sign text derived from the review label/business identity."
+          },
+          "secondaryAddressCue": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "review_only",
+            "sourceIds": [
+              "evidence-dunkin-identity-address-review"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address/context text supports scene targeting but is not a production/public exact-placement claim."
+          }
+        },
+        "geometry": {
+          "buildingMassBounds": {
+            "sourceCategory": "nyc_open_data",
+            "sourceCategories": [
+              "nyc_open_data"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+            ],
+            "notes": "Human-prepared scene envelope aligned to the current raster plate and hotspot context."
+          },
+          "frontageSegment": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "dunkin-official",
+              "mvp-29d",
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Estimated storefront-facing segment for QA generation, not exact frontage/order."
+          },
+          "storefrontBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+          },
+          "storefrontOrder": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+            ],
+            "notes": "Review-coordinate storefront order inside the MVP slice."
+          },
+          "signPanelBounds": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate sign panel placement for adapter generation."
+          },
+          "entranceBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "dunkin-official"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+          },
+          "windowBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+          },
+          "addressAnchorPoint": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "dunkin-official",
+              "mvp-29d"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+          }
+        }
+      },
+      "unsupportedMustRemainLabeled": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ]
+    },
+    {
+      "targetId": "citizens-bank",
+      "reviewLabel": "Citizens Bank",
+      "cornerId": "corner-se",
+      "drawOrder": 4,
+      "promptText": "Target 4: Citizens Bank (896 Manhattan Avenue, Brooklyn, NY 11222) at corner-se. Rendering kind: storefront. Visible text cue: Citizens Bank. Use exact review-coordinate geometry: buildingMassBounds={\"x\":1176,\"y\":500,\"width\":384,\"height\":366} [nyc_open_data; exact_review_candidate]; frontageSegment={\"from\":{\"x\":1246,\"y\":594},\"to\":{\"x\":1458,\"y\":594}} [existing_source_evidence; exact_review_candidate]; storefrontBounds={\"x\":1246,\"y\":594,\"width\":212,\"height\":126} [reference_photo_derived; exact_review_candidate]; storefrontOrder={\"sceneOrder\":4,\"cornerId\":\"corner-se\",\"bayCount\":3} [manual_review_only_interpretation; exact_review_candidate]; signPanelBounds={\"x\":1282,\"y\":598,\"width\":142,\"height\":28} [manual_review_only_interpretation; exact_review_candidate]; entranceBounds={\"x\":1324,\"y\":654,\"width\":40,\"height\":56} [reference_photo_derived; exact_review_candidate]; windowBounds=[{\"x\":1276,\"y\":658,\"width\":48,\"height\":28},{\"x\":1396,\"y\":658,\"width\":48,\"height\":28}] [reference_photo_derived; exact_review_candidate]; addressAnchorPoint={\"x\":1316,\"y\":638} [existing_source_evidence; exact_review_candidate]. Required directives: Render Citizens Bank at corner-se using its exact review-coordinate storefront bounds. Use frontageSegment as the required visible-facing line on the MVP review plate. Place sign text inside signPanelBounds and align entrance/window cues to their exact review-coordinate bounds. Use supplied reference photos for facade rhythm, entrance/window interpretation, and sign-band relationship only. Carry sourceCategory/status/provenance for every visible target field. Keep this target review-only; do not imply production/public exact geometry.",
+      "requiredGeometry": {
+        "buildingMassBounds": {
+          "value": {
+            "x": 1176,
+            "y": 500,
+            "width": 384,
+            "height": 366
+          },
+          "sourceCategory": "nyc_open_data",
+          "sourceCategories": [
+            "nyc_open_data"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "citizens-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+          ],
+          "notes": "Source-derived QA building envelope from review-manifest address/building/storefront links plus raster alignment; not exact parcel/tax-lot or building footprint geometry."
+        },
+        "frontageSegment": {
+          "value": {
+            "from": {
+              "x": 1246,
+              "y": 594
+            },
+            "to": {
+              "x": 1458,
+              "y": 594
+            }
+          },
+          "sourceCategory": "existing_source_evidence",
+          "sourceCategories": [
+            "existing_source_evidence"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "citizens-official",
+            "mvp-29b",
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+            "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+            "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Source-backed QA frontage alignment from review-manifest storefront confidence and official address context; exact frontage/order and entrance placement remain blocked."
+        },
+        "storefrontBounds": {
+          "value": {
+            "x": 1246,
+            "y": 594,
+            "width": 212,
+            "height": 126
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mvp-29e-raster-review-output"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+            "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+            "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+        },
+        "storefrontOrder": {
+          "value": {
+            "sceneOrder": 4,
+            "cornerId": "corner-se",
+            "bayCount": 3
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+          ],
+          "notes": "Review-coordinate storefront order inside the MVP slice."
+        },
+        "signPanelBounds": {
+          "value": {
+            "x": 1282,
+            "y": 598,
+            "width": 142,
+            "height": 28
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "phase-2dtr-4.target-scene-spec"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+            "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+            "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate sign panel placement for adapter generation."
+        },
+        "entranceBounds": {
+          "value": {
+            "x": 1324,
+            "y": 654,
+            "width": 40,
+            "height": 56
+          },
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+            "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+            "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "windowBounds": {
+          "value": [
+            {
+              "x": 1276,
+              "y": 658,
+              "width": 48,
+              "height": 28
+            },
+            {
+              "x": 1396,
+              "y": 658,
+              "width": 48,
+              "height": 28
+            }
+          ],
+          "sourceCategory": "reference_photo_derived",
+          "sourceCategories": [
+            "reference_photo_derived"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+            "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+            "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+            "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+            "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+          ],
+          "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+        },
+        "addressAnchorPoint": {
+          "value": {
+            "x": 1316,
+            "y": 638
+          },
+          "sourceCategory": "existing_source_evidence",
+          "sourceCategories": [
+            "existing_source_evidence"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "citizens-official",
+            "mvp-29d"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+          ],
+          "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+        }
+      },
+      "provenanceRequirements": {
+        "businessOrPlace": {
+          "name": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "citizens-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+          },
+          "category": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "estimated_from_source",
+            "sourceIds": [
+              "citizens-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Category is estimated from official branch context for QA scene generation; it is not product-copy-ready."
+          },
+          "addressOrContext": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "citizens-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address text only; exact scene placement remains blocked."
+          }
+        },
+        "visibleTextCues": {
+          "primarySignText": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "citizens-official"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Visible review sign text derived from the review label/business identity."
+          },
+          "secondaryAddressCue": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "review_only",
+            "sourceIds": [
+              "evidence-citizens-bank-identity-address-review"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address/context text supports scene targeting but is not a production/public exact-placement claim."
+          }
+        },
+        "geometry": {
+          "buildingMassBounds": {
+            "sourceCategory": "nyc_open_data",
+            "sourceCategories": [
+              "nyc_open_data"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "citizens-official",
+              "mvp-29b",
+              "mvp-29c",
+              "mvp-29d",
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json"
+            ],
+            "notes": "Source-derived QA building envelope from review-manifest address/building/storefront links plus raster alignment; not exact parcel/tax-lot or building footprint geometry."
+          },
+          "frontageSegment": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "citizens-official",
+              "mvp-29b",
+              "mvp-29c",
+              "mvp-29d",
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+              "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+              "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Source-backed QA frontage alignment from review-manifest storefront confidence and official address context; exact frontage/order and entrance placement remain blocked."
+          },
+          "storefrontBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mvp-29e-raster-review-output"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+              "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+              "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Human-prepared storefront sample aligned to the raster plate for proof-of-concept generation."
+          },
+          "storefrontOrder": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json"
+            ],
+            "notes": "Review-coordinate storefront order inside the MVP slice."
+          },
+          "signPanelBounds": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "phase-2dtr-4.target-scene-spec"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+              "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+              "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate sign panel placement for adapter generation."
+          },
+          "entranceBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "citizens-official"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+              "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+              "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Exact door/entrance geometry is blocked; rendered only as a QA blocked cue."
+          },
+          "windowBounds": {
+            "sourceCategory": "reference_photo_derived",
+            "sourceCategories": [
+              "reference_photo_derived"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+              "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+              "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+              "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+              "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json"
+            ],
+            "notes": "Review-coordinate window cues derived from supplied reference-photo review and manual plate interpretation."
+          },
+          "addressAnchorPoint": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "citizens-official",
+              "mvp-29d"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Estimated scene anchor from address context and current composition; exact address placement remains blocked."
+          }
+        }
+      },
+      "unsupportedMustRemainLabeled": [
+        "automatic reference-photo facade parsing",
+        "automatic storefront frontage/order measurement",
+        "automatic exact address-to-scene projection",
+        "production/public exact-geometry claim"
+      ]
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "reviewLabel": "Greenpoint G subway",
+      "cornerId": "transit-greenpoint-ave-side",
+      "drawOrder": 5,
+      "promptText": "Target 5: Greenpoint G subway (Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave, Brooklyn, NY) at transit-greenpoint-ave-side. Rendering kind: symbolic_transit. Visible text cue: G. Use exact review-coordinate geometry: cueCenter={\"x\":1138,\"y\":624} [manual_review_only_interpretation; exact_review_candidate]; cueRadius=44 [manual_review_only_interpretation; exact_review_candidate]; entranceCueBounds={\"x\":1104,\"y\":590,\"width\":68,\"height\":68} [manual_review_only_interpretation; exact_review_candidate]; addressAnchorPoint={\"x\":1138,\"y\":624} [manual_review_only_interpretation; exact_review_candidate]; storefrontOrder=\"not_applicable_transit_context\" [unsupported_or_unresolved; not_applicable]; facadeFrontageWindowEntrance=\"station cue only; no storefront facade/windows\" [unsupported_or_unresolved; not_applicable]. Required directives: Render a Greenpoint G station-area cue at the review-coordinate center and entrance cue bounds. Use supplied station-context reference photos only as MVP review/source imagery. Keep station geometry marked review-only unless exact entrance evidence is later accepted. Keep this target review-only; do not imply production/public exact geometry.",
+      "requiredGeometry": {
+        "cueCenter": {
+          "value": {
+            "x": 1138,
+            "y": 624
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mta-greenpoint-accessibility",
+            "mvp-29d"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Rendered as a QA symbolic/blocked station context cue only."
+        },
+        "cueRadius": {
+          "value": 44,
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mta-greenpoint-accessibility",
+            "mvp-29d"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Radius of the review-coordinate symbolic station cue."
+        },
+        "entranceCueBounds": {
+          "value": {
+            "x": 1104,
+            "y": 590,
+            "width": 68,
+            "height": 68
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mta-greenpoint-accessibility"
+          ],
+          "sourcePaths": [
+            "docs/mvp-reference-images/northwest-subwayA.jpg",
+            "docs/mvp-reference-images/southeast-subwayB.jpg",
+            "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+            "docs/mvp-reference-images/southwest-subwayC.jpeg",
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Exact station entrance geometry is blocked; rendered only as a QA blocked cue."
+        },
+        "addressAnchorPoint": {
+          "value": {
+            "x": 1138,
+            "y": 624
+          },
+          "sourceCategory": "manual_review_only_interpretation",
+          "sourceCategories": [
+            "manual_review_only_interpretation"
+          ],
+          "status": "exact_review_candidate",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mta-greenpoint-accessibility",
+            "mvp-29d"
+          ],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+            "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+          ],
+          "notes": "Estimated station context anchor from reviewed transit context and current composition; exact placement remains blocked."
+        },
+        "storefrontOrder": {
+          "value": "not_applicable_transit_context",
+          "sourceCategory": "unsupported_or_unresolved",
+          "sourceCategories": [
+            "unsupported_or_unresolved"
+          ],
+          "status": "not_applicable",
+          "sourceIds": [],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/reproducibility-gap-list.json"
+          ],
+          "notes": "Transit cue is not a storefront order/frontage claim."
+        },
+        "facadeFrontageWindowEntrance": {
+          "value": "station cue only; no storefront facade/windows",
+          "sourceCategory": "unsupported_or_unresolved",
+          "sourceCategories": [
+            "unsupported_or_unresolved"
+          ],
+          "status": "not_applicable",
+          "sourceIds": [],
+          "sourcePaths": [
+            "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/reproducibility-gap-list.json"
+          ],
+          "notes": "Exact station entrance details still require stronger evidence before public/product claims."
+        }
+      },
+      "provenanceRequirements": {
+        "businessOrPlace": {
+          "name": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed official transit sources support review/demo station context."
+          },
+          "category": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Existing reviewed official transit sources support station context, not exact entrance geometry."
+          },
+          "addressOrContext": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "source_backed",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Station-area context only; exact entrance placement remains blocked."
+          }
+        },
+        "visibleTextCues": {
+          "primarySignText": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "symbolic_review",
+            "sourceIds": [
+              "evidence-greenpoint-g-station-context-review"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Route/station cue text for review-only station context."
+          },
+          "secondaryAddressCue": {
+            "sourceCategory": "existing_source_evidence",
+            "sourceCategories": [
+              "existing_source_evidence"
+            ],
+            "status": "review_only",
+            "sourceIds": [
+              "evidence-greenpoint-g-station-context-review"
+            ],
+            "sourcePaths": [
+              "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json"
+            ],
+            "notes": "Address/context text supports scene targeting but is not a production/public exact-placement claim."
+          }
+        },
+        "geometry": {
+          "cueCenter": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility",
+              "mvp-29d"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Rendered as a QA symbolic/blocked station context cue only."
+          },
+          "cueRadius": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility",
+              "mvp-29d"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Radius of the review-coordinate symbolic station cue."
+          },
+          "entranceCueBounds": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility"
+            ],
+            "sourcePaths": [
+              "docs/mvp-reference-images/northwest-subwayA.jpg",
+              "docs/mvp-reference-images/southeast-subwayB.jpg",
+              "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+              "docs/mvp-reference-images/southwest-subwayC.jpeg",
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Exact station entrance geometry is blocked; rendered only as a QA blocked cue."
+          },
+          "addressAnchorPoint": {
+            "sourceCategory": "manual_review_only_interpretation",
+            "sourceCategories": [
+              "manual_review_only_interpretation"
+            ],
+            "status": "exact_review_candidate",
+            "sourceIds": [
+              "mta-g-line-map",
+              "mta-greenpoint-accessibility",
+              "mvp-29d"
+            ],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/target-scene-spec.json",
+              "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json"
+            ],
+            "notes": "Estimated station context anchor from reviewed transit context and current composition; exact placement remains blocked."
+          },
+          "storefrontOrder": {
+            "sourceCategory": "unsupported_or_unresolved",
+            "sourceCategories": [
+              "unsupported_or_unresolved"
+            ],
+            "status": "not_applicable",
+            "sourceIds": [],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/reproducibility-gap-list.json"
+            ],
+            "notes": "Transit cue is not a storefront order/frontage claim."
+          },
+          "facadeFrontageWindowEntrance": {
+            "sourceCategory": "unsupported_or_unresolved",
+            "sourceCategories": [
+              "unsupported_or_unresolved"
+            ],
+            "status": "not_applicable",
+            "sourceIds": [],
+            "sourcePaths": [
+              "docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/generated/reproducibility-gap-list.json"
+            ],
+            "notes": "Exact station entrance details still require stronger evidence before public/product claims."
+          }
+        }
+      },
+      "unsupportedMustRemainLabeled": [
+        "automatic exact station entrance geometry",
+        "station stair/elevator orientation from official geometry",
+        "public/product station coordinate claim"
+      ]
+    }
+  ],
+  "reproducibilityStatus": {
+    "automaticNow": [
+      "Business/place names, categories, and address-context text from existing local source-evidence fixtures.",
+      "Candidate NYC footprint context for the four storefront targets, with limits.",
+      "Committed MVP review-coordinate building/storefront/frontage/address/cue fields from local real-data and draft-scene fixtures.",
+      "Deterministic assembly into JSON source maps, target scene specs, gap reports, and provenance boards."
+    ],
+    "notAutomaticYet": [
+      "Reference-photo facade parsing into window/entrance/sign geometry.",
+      "Automatic storefront frontage/order measurement from source evidence.",
+      "Automatic address-to-scene projection from open data/parcel/building/frontage sources.",
+      "Exact Greenpoint G station/entrance geometry from reviewed station entrance evidence.",
+      "A renderer or image-generation adapter that consumes the exact review geometry spec without hand-authored prompt translation.",
+      "QA verifier that checks every visible generated element has sourceCategory, status, and source path."
+    ]
+  },
+  "adapterVerificationRules": [
+    "Fail if any promptSection lacks targetId, reviewLabel, cornerId, drawOrder, promptText, requiredGeometry, or provenanceRequirements.",
+    "Fail if any visible geometry field lacks value, sourceCategory, sourceCategories, status, sourceIds, and sourcePaths.",
+    "Fail if a target prompt omits review-only/non-production language.",
+    "Fail if the global prompt omits supplied reference photo constraints or NYC/open-data scaffold limits."
+  ]
+}
