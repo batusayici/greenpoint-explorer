@@ -1,0 +1,1039 @@
+{
+  "schemaVersion": "phase-2dtr-four-target-facade-fixture.v0.1",
+  "artifactId": "phase-2dtr-2.four-target-structured-facade-fixture",
+  "status": "review-only-mvp-proof",
+  "generatedOn": "2026-06-03",
+  "sourceLane": "phase-2dtr-review-only-data-to-raster-proof",
+  "scope": {
+    "sceneId": "manhattan-greenpoint-ave-mvp-slice",
+    "includes": [
+      "Grillpoint/NW",
+      "McDonald's/NE",
+      "Dunkin'/SW",
+      "Citizens/SE",
+      "Greenpoint G symbolic station-area context"
+    ],
+    "notApproved": [
+      "production schema",
+      "public interface",
+      "app/source fixture implementation",
+      "production assets",
+      "exact real-world geometry",
+      "public factual readiness"
+    ]
+  },
+  "statusValues": {
+    "verified": "Approved or reviewed source supports this field for current review use.",
+    "sourced": "Existing source evidence supports review/demo identity, address, category, sign, or context.",
+    "inferred": "Derived from existing source context and/or review raster alignment; not exact measured truth.",
+    "manual_draft": "Authored or aligned for prototype completeness and review comparison.",
+    "symbolic": "Represents context/cue meaning without exact physical geometry.",
+    "blocked": "Blocked from exact/product/public claims pending stronger evidence and approval.",
+    "unknown": "Known unresolved gap."
+  },
+  "sourceInputs": [
+    "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+    "src/data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json",
+    "src/data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json",
+    "docs/mvp-reference-images/",
+    "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png"
+  ],
+  "records": [
+    {
+      "id": "phase-2dtr-2-grillpoint-deli",
+      "targetId": "grillpoint-deli",
+      "placeId": "place-grillpoint-deli",
+      "cornerId": "corner-nw",
+      "renderingKind": "storefront",
+      "reviewLabel": "Grillpoint Deli",
+      "sourceEvidenceRecordId": "evidence-grillpoint-identity-address-review",
+      "business": {
+        "name": {
+          "value": "Grillpoint Deli",
+          "status": "sourced",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "notes": "Existing reviewed source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Deli / food retail",
+          "status": "sourced",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "notes": "Existing reviewed source evidence supports review/demo category context."
+        },
+        "addressContext": {
+          "value": "903 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "sourced",
+          "sourceIds": [
+            "restaurantji-grillpoint"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometryAndFacade": {
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave north edge",
+            "buildingEdge": "south-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
+        "buildingFootprint": {
+          "value": {
+            "sceneBounds": {
+              "x": 236,
+              "y": 74,
+              "width": 514,
+              "height": 334
+            },
+            "orientation": "northwest-corner-compressed"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Uses the existing review raster/hotspot container as an approximate draft building envelope."
+        },
+        "storefrontBay": {
+          "value": {
+            "sceneBounds": {
+              "x": 416,
+              "y": 166,
+              "width": 190,
+              "height": 118
+            },
+            "bayRole": "corner deli storefront",
+            "bayCount": 3
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate visual bay for prototype targeting; not exact frontage/order."
+        },
+        "signText": {
+          "value": "Grillpoint Deli",
+          "status": "sourced",
+          "sourceIds": [
+            "restaurantji-grillpoint",
+            "mvp-29d"
+          ],
+          "notes": "Text label only; exact sign geometry and facade translation remain blocked."
+        },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 23,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement; not exact sign geometry."
+        },
+        "facadeStyle": {
+          "value": "compact corner deli facade, review-only stylized",
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Manual draft visual treatment; no exact facade claim."
+        },
+        "doorWindowPlacement": {
+          "value": {
+            "description": "single storefront entry with compact window rhythm",
+            "doorPosition": "center",
+            "doorWidth": 34,
+            "doorHeight": 48,
+            "windowCount": 2,
+            "windowWidth": 42,
+            "windowHeight": 30
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Authored for prototype readability; entrance position remains blocked."
+        },
+        "sceneAnchor": {
+          "value": {
+            "cornerId": "corner-nw",
+            "marker": {
+              "x": 518,
+              "y": 204
+            }
+          },
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Corner-level placement from approved review composition, not exact address placement."
+        },
+        "stationIntersectionCues": {
+          "value": "NW corner relationship to Manhattan Ave x Greenpoint Ave scene",
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Intersection context only."
+        }
+      },
+      "sourceEvidence": {
+        "sourceLabel": "Restaurantji page for Grillpoint Deli",
+        "sourceUrl": "https://www.restaurantji.com/ny/brooklyn/grillpoint-deli-/",
+        "confidence": {
+          "value": "medium",
+          "rationale": "Supports review-card identity, category, and address context; does not support exact frontage, facade, or entrance placement."
+        },
+        "remainingGaps": [
+          "Exact storefront frontage, sign geometry, entrance position, and address placement remain approximate.",
+          "Parcel/tax-lot and building-footprint geometry remain unresolved for this MVP slice."
+        ]
+      },
+      "referenceImagery": [
+        {
+          "referenceId": "northwest-grillpoint-deli-facade",
+          "path": "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+          "usageStatus": "Batu-supplied non-Google field references, MVP review/source facade imagery only."
+        },
+        {
+          "referenceId": "northwest-grillpoint-deli-wide",
+          "path": "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+          "usageStatus": "Batu-supplied non-Google field references, MVP review/source facade imagery only."
+        },
+        {
+          "referenceId": "northwest-grillpoint-deli-closeup",
+          "path": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+          "usageStatus": "Batu-supplied non-Google field references, MVP review/source facade imagery only."
+        }
+      ],
+      "rasterInstructionSeed": {
+        "promptRole": "compact corner deli storefront",
+        "visualStatus": "manual_draft",
+        "mustNotClaim": [
+          "production asset approval",
+          "public factual readiness",
+          "exact facade reproduction",
+          "exact tenant frontage/order",
+          "exact entrance/window geometry",
+          "exact address placement",
+          "exact station geometry or entrance coordinates",
+          "active-status finality",
+          "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+        ]
+      }
+    },
+    {
+      "id": "phase-2dtr-2-mcdonalds",
+      "targetId": "mcdonalds",
+      "placeId": "place-mcdonalds",
+      "cornerId": "corner-ne",
+      "renderingKind": "storefront",
+      "reviewLabel": "McDonald's",
+      "sourceEvidenceRecordId": "evidence-mcdonalds-identity-address-review",
+      "business": {
+        "name": {
+          "value": "McDonald's",
+          "status": "sourced",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Fast food restaurant",
+          "status": "inferred",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "notes": "Category is estimated from official business context for QA scene generation; it is not product-copy-ready."
+        },
+        "addressContext": {
+          "value": "904 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "sourced",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometryAndFacade": {
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave north edge",
+            "buildingEdge": "south-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
+        "buildingFootprint": {
+          "value": {
+            "sceneBounds": {
+              "x": 918,
+              "y": 70,
+              "width": 602,
+              "height": 292
+            },
+            "orientation": "northeast-corner-compressed"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Uses existing review raster/hotspot container as approximate draft building envelope."
+        },
+        "storefrontBay": {
+          "value": {
+            "sceneBounds": {
+              "x": 1092,
+              "y": 156,
+              "width": 238,
+              "height": 104
+            },
+            "bayRole": "corner fast-food storefront",
+            "bayCount": 3
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate visual bay for prototype targeting; not exact frontage/order."
+        },
+        "signText": {
+          "value": "McDonald's",
+          "status": "sourced",
+          "sourceIds": [
+            "mcdonalds-official"
+          ],
+          "notes": "Text label only; no trade-dress or exact sign geometry claim."
+        },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 29,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement; not exact sign geometry."
+        },
+        "facadeStyle": {
+          "value": "compact corner quick-service facade, brand-simplified",
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Manual draft treatment for prototype readability; no exact facade or production brand treatment."
+        },
+        "doorWindowPlacement": {
+          "value": {
+            "description": "central entry cue with simplified storefront glazing",
+            "doorPosition": "center",
+            "doorWidth": 38,
+            "doorHeight": 42,
+            "windowCount": 2,
+            "windowWidth": 54,
+            "windowHeight": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Authored for prototype readability; entrance position remains blocked."
+        },
+        "sceneAnchor": {
+          "value": {
+            "cornerId": "corner-ne",
+            "marker": {
+              "x": 1208,
+              "y": 190
+            }
+          },
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Corner-level placement from review composition, not exact address placement."
+        },
+        "stationIntersectionCues": {
+          "value": "NE corner relationship to Manhattan Ave x Greenpoint Ave scene",
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Intersection context only."
+        }
+      },
+      "sourceEvidence": {
+        "sourceLabel": "McDonald's official location page",
+        "sourceUrl": "https://www.mcdonalds.com/us/en-us/location/ny/brooklyn/904-manhattan-ave/2678.html",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "Supports review-card identity and address context; does not support exact facade, storefront frontage, entrance placement, trade-dress clearance, hours, status, or promotions."
+        },
+        "remainingGaps": [
+          "Exact facade geometry, storefront frontage/order, adjacent-unit relationship, entrance position, and address placement remain approximate or blocked.",
+          "Production logo/trade-dress clearance and official brand approval remain blocked."
+        ]
+      },
+      "referenceImagery": [
+        {
+          "referenceId": "northeast-mcdonalds-facadeA",
+          "path": "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; brand/trade-dress clearance remains blocked."
+        },
+        {
+          "referenceId": "northeast-mcdonalds-wide",
+          "path": "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; brand/trade-dress clearance remains blocked."
+        },
+        {
+          "referenceId": "northeast-mcdonalds-closeup",
+          "path": "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; brand/trade-dress clearance remains blocked."
+        }
+      ],
+      "rasterInstructionSeed": {
+        "promptRole": "compact corner fast-food storefront",
+        "visualStatus": "manual_draft",
+        "mustNotClaim": [
+          "production asset approval",
+          "public factual readiness",
+          "exact facade reproduction",
+          "exact tenant frontage/order",
+          "exact entrance/window geometry",
+          "exact address placement",
+          "exact station geometry or entrance coordinates",
+          "active-status finality",
+          "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+        ]
+      }
+    },
+    {
+      "id": "phase-2dtr-2-dunkin",
+      "targetId": "dunkin",
+      "placeId": "place-dunkin",
+      "cornerId": "corner-sw",
+      "renderingKind": "storefront",
+      "reviewLabel": "Dunkin'",
+      "sourceEvidenceRecordId": "evidence-dunkin-identity-address-review",
+      "business": {
+        "name": {
+          "value": "Dunkin'",
+          "status": "sourced",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Coffee and baked goods",
+          "status": "inferred",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "notes": "Category is estimated from official business context for QA scene generation; it is not product-copy-ready."
+        },
+        "addressContext": {
+          "value": "893 Manhattan Ave, Brooklyn, NY 11222",
+          "status": "sourced",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometryAndFacade": {
+        "frontage": {
+          "value": {
+            "frontageSide": "Manhattan Ave west edge",
+            "buildingEdge": "east-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
+        "buildingFootprint": {
+          "value": {
+            "sceneBounds": {
+              "x": 180,
+              "y": 520,
+              "width": 384,
+              "height": 344
+            },
+            "orientation": "southwest-corner-compressed"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Uses existing review raster/hotspot container as approximate draft building envelope."
+        },
+        "storefrontBay": {
+          "value": {
+            "sceneBounds": {
+              "x": 258,
+              "y": 604,
+              "width": 208,
+              "height": 124
+            },
+            "bayRole": "corner coffee storefront",
+            "bayCount": 3
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate visual bay for prototype targeting; not exact frontage/order."
+        },
+        "signText": {
+          "value": "Dunkin'",
+          "status": "sourced",
+          "sourceIds": [
+            "dunkin-official"
+          ],
+          "notes": "Text label only; no exact trade-dress reproduction or sign geometry claim."
+        },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 38,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement under the MVP-only exception; not exact sign geometry."
+        },
+        "facadeStyle": {
+          "value": "compact coffee storefront, MVP-only stylized exception",
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29c",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Manual draft under the narrow SW exception; not production use, tracing, or exact trade dress."
+        },
+        "doorWindowPlacement": {
+          "value": {
+            "description": "simplified corner entry cue with storefront windows",
+            "doorPosition": "center",
+            "doorWidth": 34,
+            "doorHeight": 44,
+            "windowCount": 2,
+            "windowWidth": 42,
+            "windowHeight": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Authored for prototype readability; entrance position remains blocked."
+        },
+        "sceneAnchor": {
+          "value": {
+            "cornerId": "corner-sw",
+            "marker": {
+              "x": 370,
+              "y": 668
+            }
+          },
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Corner-level placement from review composition, not exact address placement."
+        },
+        "stationIntersectionCues": {
+          "value": "SW corner relationship to Manhattan Ave x Greenpoint Ave scene",
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Intersection context only."
+        }
+      },
+      "sourceEvidence": {
+        "sourceLabel": "Dunkin' official location page",
+        "sourceUrl": "https://locations.dunkindonuts.com/en/ny/brooklyn/893-manhattan-ave/355867",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "Supports review-card identity and address context; does not support exact visual geometry, storefront frontage, entrance placement, exception scope, hours, status, or promotions."
+        },
+        "remainingGaps": [
+          "Exact facade geometry, storefront frontage/order, entrance position, and address placement remain approximate or blocked.",
+          "The SW Dunkin visual treatment remains MVP-only, stylized, non-production, and governed by the existing exception; this evidence record does not approve production use, tracing, texture extraction, stored facade reuse, training input, generation input, or exact trade-dress reproduction."
+        ]
+      },
+      "referenceImagery": [
+        {
+          "referenceId": "southwest-dunkin-facadeA",
+          "path": "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+          "usageStatus": "Batu-supplied current field references plus the documented narrow SW Dunkin MVP-only exception where needed; production use/tracing/texture extraction remain blocked."
+        },
+        {
+          "referenceId": "southwest-subway-wide",
+          "path": "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+          "usageStatus": "Batu-supplied current field references plus the documented narrow SW Dunkin MVP-only exception where needed; production use/tracing/texture extraction remain blocked."
+        },
+        {
+          "referenceId": "southwest-subwayC",
+          "path": "docs/mvp-reference-images/southwest-subwayC.jpeg",
+          "usageStatus": "Batu-supplied current field references plus the documented narrow SW Dunkin MVP-only exception where needed; production use/tracing/texture extraction remain blocked."
+        }
+      ],
+      "rasterInstructionSeed": {
+        "promptRole": "compact corner coffee storefront",
+        "visualStatus": "manual_draft",
+        "mustNotClaim": [
+          "production asset approval",
+          "public factual readiness",
+          "exact facade reproduction",
+          "exact tenant frontage/order",
+          "exact entrance/window geometry",
+          "exact address placement",
+          "exact station geometry or entrance coordinates",
+          "active-status finality",
+          "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+        ]
+      }
+    },
+    {
+      "id": "phase-2dtr-2-citizens-bank",
+      "targetId": "citizens-bank",
+      "placeId": "place-citizens-bank",
+      "cornerId": "corner-se",
+      "renderingKind": "storefront",
+      "reviewLabel": "Citizens Bank",
+      "sourceEvidenceRecordId": "evidence-citizens-bank-identity-address-review",
+      "business": {
+        "name": {
+          "value": "Citizens Bank",
+          "status": "sourced",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "notes": "Existing reviewed official-location source evidence supports review/demo identity text."
+        },
+        "category": {
+          "value": "Bank branch",
+          "status": "inferred",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "notes": "Category is estimated from official branch context for QA scene generation; it is not product-copy-ready."
+        },
+        "addressContext": {
+          "value": "896 Manhattan Avenue, Brooklyn, NY 11222",
+          "status": "sourced",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "notes": "Address text only; exact scene placement remains blocked."
+        }
+      },
+      "geometryAndFacade": {
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave south edge",
+            "buildingEdge": "north-facing corner storefront edge",
+            "claim": "manual scene-facing edge for QA overlay generation"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate scene edge for QA generation only; not exact frontage/order."
+        },
+        "buildingFootprint": {
+          "value": {
+            "sceneBounds": {
+              "x": 1176,
+              "y": 500,
+              "width": 384,
+              "height": 366
+            },
+            "orientation": "southeast-corner-compressed"
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Uses existing review raster/hotspot container as approximate draft building envelope."
+        },
+        "storefrontBay": {
+          "value": {
+            "sceneBounds": {
+              "x": 1246,
+              "y": 594,
+              "width": 212,
+              "height": 126
+            },
+            "bayRole": "corner bank storefront",
+            "bayCount": 3
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Approximate visual bay for prototype targeting; not exact frontage/order."
+        },
+        "signText": {
+          "value": "Citizens",
+          "status": "sourced",
+          "sourceIds": [
+            "citizens-official"
+          ],
+          "notes": "Text label only; no exact sign, ATM, or branch-service claim."
+        },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "storefrontBay",
+            "position": "above-bay",
+            "insetX": 35,
+            "offsetY": 6,
+            "height": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated QA sign band placement; not exact branch sign geometry."
+        },
+        "facadeStyle": {
+          "value": "compact bank branch facade, simplified civic storefront",
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Manual draft treatment for prototype readability; no exact facade or production branch treatment."
+        },
+        "doorWindowPlacement": {
+          "value": {
+            "description": "main entry cue with larger branch window rhythm",
+            "doorPosition": "center",
+            "doorWidth": 36,
+            "doorHeight": 42,
+            "windowCount": 2,
+            "windowWidth": 48,
+            "windowHeight": 28
+          },
+          "status": "manual_draft",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Authored for prototype readability; entrance and ATM placement remain blocked."
+        },
+        "sceneAnchor": {
+          "value": {
+            "cornerId": "corner-se",
+            "marker": {
+              "x": 1316,
+              "y": 638
+            }
+          },
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Corner-level placement from review composition, not exact address placement."
+        },
+        "stationIntersectionCues": {
+          "value": "SE corner relationship to Manhattan Ave x Greenpoint Ave scene",
+          "status": "inferred",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Intersection context only."
+        }
+      },
+      "sourceEvidence": {
+        "sourceLabel": "Citizens official branch page",
+        "sourceUrl": "https://locations.citizensbank.com/ny/brooklyn/896-manhattan-avenue.html",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "Supports review-card branch identity and address context; does not support exact facade, storefront frontage, branch entrance placement, ATM/service availability, hours, status, or promotions."
+        },
+        "remainingGaps": [
+          "Exact facade geometry, storefront frontage/order, branch entrance position, ATM placement, service availability, and address placement remain approximate or blocked.",
+          "Production logo/trade-dress clearance and official brand approval remain blocked."
+        ]
+      },
+      "referenceImagery": [
+        {
+          "referenceId": "southeast-citizens-facadeA",
+          "path": "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; branch service/trade-dress clearance remains blocked."
+        },
+        {
+          "referenceId": "southeast-citizens-facadeB",
+          "path": "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; branch service/trade-dress clearance remains blocked."
+        },
+        {
+          "referenceId": "southeast-citizens-wide",
+          "path": "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; branch service/trade-dress clearance remains blocked."
+        },
+        {
+          "referenceId": "southeast-subwayB",
+          "path": "docs/mvp-reference-images/southeast-subwayB.jpg",
+          "usageStatus": "Batu-supplied field references, MVP review/source facade imagery only; branch service/trade-dress clearance remains blocked."
+        }
+      ],
+      "rasterInstructionSeed": {
+        "promptRole": "compact corner bank branch storefront",
+        "visualStatus": "manual_draft",
+        "mustNotClaim": [
+          "production asset approval",
+          "public factual readiness",
+          "exact facade reproduction",
+          "exact tenant frontage/order",
+          "exact entrance/window geometry",
+          "exact address placement",
+          "exact station geometry or entrance coordinates",
+          "active-status finality",
+          "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+        ]
+      }
+    },
+    {
+      "id": "phase-2dtr-2-greenpoint-g-subway",
+      "targetId": "greenpoint-g-subway",
+      "placeId": "place-greenpoint-g-subway",
+      "cornerId": "transit-greenpoint-ave-side",
+      "renderingKind": "symbolic-transit-context",
+      "reviewLabel": "Greenpoint G subway",
+      "sourceEvidenceRecordId": "evidence-greenpoint-g-station-context-review",
+      "business": {
+        "name": {
+          "value": "Greenpoint G subway",
+          "status": "sourced",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "notes": "Existing reviewed official transit sources support review/demo station context."
+        },
+        "category": {
+          "value": "Subway station context",
+          "status": "sourced",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "notes": "Existing reviewed official transit sources support station context, not exact entrance geometry."
+        },
+        "addressContext": {
+          "value": "Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave, Brooklyn, NY",
+          "status": "sourced",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "notes": "Station-area context only; exact entrance placement remains blocked."
+        }
+      },
+      "geometryAndFacade": {
+        "frontage": {
+          "value": {
+            "frontageSide": "Greenpoint Ave station-area side",
+            "buildingEdge": "none",
+            "claim": "symbolic station-area cue for QA overlay generation"
+          },
+          "status": "symbolic",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map",
+            "mvp-29d"
+          ],
+          "notes": "Station cue is not storefront frontage; exact entrances remain blocked."
+        },
+        "buildingFootprint": {
+          "value": "No storefront building footprint; station represented as symbolic scene cue.",
+          "status": "symbolic",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Exact station footprint remains blocked."
+        },
+        "storefrontBay": {
+          "value": "No storefront bay; cue spans selected station/intersection hotspot areas.",
+          "status": "symbolic",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Subway cue is not a storefront/frontage claim."
+        },
+        "signText": {
+          "value": "G",
+          "status": "symbolic",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mvp-29d"
+          ],
+          "notes": "Symbolic route cue only; not exact MTA sign placement."
+        },
+        "signPlacement": {
+          "value": {
+            "relativeTo": "symbolicCue",
+            "position": "above-symbolic-station-cue",
+            "height": 42
+          },
+          "status": "symbolic",
+          "sourceIds": [
+            "mta-g-line-map",
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "Generated symbolic route badge placement only; exact station signage remains blocked."
+        },
+        "facadeStyle": {
+          "value": "symbolic transit cue, not a facade",
+          "status": "symbolic",
+          "sourceIds": [
+            "mvp-29d",
+            "mvp-29e-raster-review-output"
+          ],
+          "notes": "No storefront/facade claim."
+        },
+        "doorWindowPlacement": {
+          "value": {
+            "description": "Exact stair/elevator/entrance placement unresolved",
+            "doorPosition": "blocked",
+            "windowCount": 0
+          },
+          "status": "blocked",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "notes": "Requires later reviewed entrance geometry and Batu approval."
+        },
+        "sceneAnchor": {
+          "value": {
+            "cornerId": "transit-greenpoint-ave-side",
+            "marker": {
+              "x": 1138,
+              "y": 624
+            }
+          },
+          "status": "symbolic",
+          "sourceIds": [
+            "mvp-29d"
+          ],
+          "notes": "Review-scale cue on the Greenpoint Ave side; exact station geometry remains blocked."
+        },
+        "stationIntersectionCues": {
+          "value": "Greenpoint Av G station-area cue at Manhattan Ave x Greenpoint Ave",
+          "status": "sourced",
+          "sourceIds": [
+            "mta-greenpoint-accessibility",
+            "mta-g-line-map"
+          ],
+          "notes": "Station-area context from official transit sources; exact entrances remain blocked."
+        }
+      },
+      "sourceEvidence": {
+        "sourceLabel": "MTA Greenpoint Av station context sources",
+        "sourceUrl": "https://www.mta.info/maps/subway-line-maps/g-line",
+        "confidence": {
+          "value": "medium-high",
+          "rationale": "Supports Greenpoint Av G station-area context at Manhattan Ave and Greenpoint Ave; does not support exact entrance coordinates or station geometry."
+        },
+        "remainingGaps": [
+          "Exact entrance coordinates, stair alignment, station footprint, and production transit mapping remain blocked.",
+          "The authored raster cue remains review-scale and not a source-derived transit geometry layer."
+        ]
+      },
+      "referenceImagery": [
+        {
+          "referenceId": "northwest-subwayA",
+          "path": "docs/mvp-reference-images/northwest-subwayA.jpg",
+          "usageStatus": "Batu-supplied subway/context references plus official MTA context; exact station geometry remains blocked."
+        },
+        {
+          "referenceId": "southwest-subway-wide",
+          "path": "docs/mvp-reference-images/southwest-subway-wide.jpeg",
+          "usageStatus": "Batu-supplied subway/context references plus official MTA context; exact station geometry remains blocked."
+        },
+        {
+          "referenceId": "southwest-subwayC",
+          "path": "docs/mvp-reference-images/southwest-subwayC.jpeg",
+          "usageStatus": "Batu-supplied subway/context references plus official MTA context; exact station geometry remains blocked."
+        },
+        {
+          "referenceId": "southeast-subwayB",
+          "path": "docs/mvp-reference-images/southeast-subwayB.jpg",
+          "usageStatus": "Batu-supplied subway/context references plus official MTA context; exact station geometry remains blocked."
+        }
+      ],
+      "rasterInstructionSeed": {
+        "promptRole": "symbolic Greenpoint G station-area cue",
+        "visualStatus": "symbolic",
+        "mustNotClaim": [
+          "production asset approval",
+          "public factual readiness",
+          "exact facade reproduction",
+          "exact tenant frontage/order",
+          "exact entrance/window geometry",
+          "exact address placement",
+          "exact station geometry or entrance coordinates",
+          "active-status finality",
+          "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "phase-2dtr-four-target-provenance-map.v0.1",
+  "artifactId": "phase-2dtr-2.four-target-visual-instruction-provenance",
+  "status": "review-only-source-status-map",
+  "generatedOn": "2026-06-03",
+  "inputArtifacts": [
+    "../four-target-structured-facade-fixture.json",
+    "raster-spec-index.json"
+  ],
+  "statusSummaryByTarget": {
+    "grillpoint-deli": {
+      "sourced": 4,
+      "manual_draft": 6,
+      "inferred": 2
+    },
+    "mcdonalds": {
+      "sourced": 3,
+      "inferred": 3,
+      "manual_draft": 6
+    },
+    "dunkin": {
+      "sourced": 3,
+      "inferred": 3,
+      "manual_draft": 6
+    },
+    "citizens-bank": {
+      "sourced": 3,
+      "inferred": 3,
+      "manual_draft": 6
+    },
+    "greenpoint-g-subway": {
+      "sourced": 4,
+      "symbolic": 7,
+      "blocked": 1
+    }
+  },
+  "instructionMappings": [
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "identity",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].business.name",
+      "reviewMeaning": "identity instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "category",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].business.category",
+      "reviewMeaning": "category instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "addressContext",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].business.addressContext",
+      "reviewMeaning": "addressContext instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "facadeLayout",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].geometryAndFacade.facadeStyle",
+      "reviewMeaning": "facadeLayout instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "signCue",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].geometryAndFacade.signText",
+      "reviewMeaning": "signCue instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "doorWindowCue",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].geometryAndFacade.doorWindowPlacement",
+      "reviewMeaning": "doorWindowCue instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "grillpoint-deli",
+      "instructionRole": "referenceImagery",
+      "sourceFieldPath": "records[targetId=grillpoint-deli].referenceImagery",
+      "reviewMeaning": "referenceImagery instruction for Grillpoint Deli must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "identity",
+      "sourceFieldPath": "records[targetId=mcdonalds].business.name",
+      "reviewMeaning": "identity instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "category",
+      "sourceFieldPath": "records[targetId=mcdonalds].business.category",
+      "reviewMeaning": "category instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "addressContext",
+      "sourceFieldPath": "records[targetId=mcdonalds].business.addressContext",
+      "reviewMeaning": "addressContext instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "facadeLayout",
+      "sourceFieldPath": "records[targetId=mcdonalds].geometryAndFacade.facadeStyle",
+      "reviewMeaning": "facadeLayout instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "signCue",
+      "sourceFieldPath": "records[targetId=mcdonalds].geometryAndFacade.signText",
+      "reviewMeaning": "signCue instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "doorWindowCue",
+      "sourceFieldPath": "records[targetId=mcdonalds].geometryAndFacade.doorWindowPlacement",
+      "reviewMeaning": "doorWindowCue instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "mcdonalds",
+      "instructionRole": "referenceImagery",
+      "sourceFieldPath": "records[targetId=mcdonalds].referenceImagery",
+      "reviewMeaning": "referenceImagery instruction for McDonald's must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "identity",
+      "sourceFieldPath": "records[targetId=dunkin].business.name",
+      "reviewMeaning": "identity instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "category",
+      "sourceFieldPath": "records[targetId=dunkin].business.category",
+      "reviewMeaning": "category instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "addressContext",
+      "sourceFieldPath": "records[targetId=dunkin].business.addressContext",
+      "reviewMeaning": "addressContext instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "facadeLayout",
+      "sourceFieldPath": "records[targetId=dunkin].geometryAndFacade.facadeStyle",
+      "reviewMeaning": "facadeLayout instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "signCue",
+      "sourceFieldPath": "records[targetId=dunkin].geometryAndFacade.signText",
+      "reviewMeaning": "signCue instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "doorWindowCue",
+      "sourceFieldPath": "records[targetId=dunkin].geometryAndFacade.doorWindowPlacement",
+      "reviewMeaning": "doorWindowCue instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "dunkin",
+      "instructionRole": "referenceImagery",
+      "sourceFieldPath": "records[targetId=dunkin].referenceImagery",
+      "reviewMeaning": "referenceImagery instruction for Dunkin' must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "identity",
+      "sourceFieldPath": "records[targetId=citizens-bank].business.name",
+      "reviewMeaning": "identity instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "category",
+      "sourceFieldPath": "records[targetId=citizens-bank].business.category",
+      "reviewMeaning": "category instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "addressContext",
+      "sourceFieldPath": "records[targetId=citizens-bank].business.addressContext",
+      "reviewMeaning": "addressContext instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "facadeLayout",
+      "sourceFieldPath": "records[targetId=citizens-bank].geometryAndFacade.facadeStyle",
+      "reviewMeaning": "facadeLayout instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "signCue",
+      "sourceFieldPath": "records[targetId=citizens-bank].geometryAndFacade.signText",
+      "reviewMeaning": "signCue instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "doorWindowCue",
+      "sourceFieldPath": "records[targetId=citizens-bank].geometryAndFacade.doorWindowPlacement",
+      "reviewMeaning": "doorWindowCue instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "citizens-bank",
+      "instructionRole": "referenceImagery",
+      "sourceFieldPath": "records[targetId=citizens-bank].referenceImagery",
+      "reviewMeaning": "referenceImagery instruction for Citizens Bank must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "identity",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].business.name",
+      "reviewMeaning": "identity instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "category",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].business.category",
+      "reviewMeaning": "category instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "addressContext",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].business.addressContext",
+      "reviewMeaning": "addressContext instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "facadeLayout",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].geometryAndFacade.facadeStyle",
+      "reviewMeaning": "facadeLayout instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "signCue",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].geometryAndFacade.signText",
+      "reviewMeaning": "signCue instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "doorWindowCue",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].geometryAndFacade.doorWindowPlacement",
+      "reviewMeaning": "doorWindowCue instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "instructionRole": "referenceImagery",
+      "sourceFieldPath": "records[targetId=greenpoint-g-subway].referenceImagery",
+      "reviewMeaning": "referenceImagery instruction for Greenpoint G subway must use this field path and preserve its status/blocked claims."
+    }
+  ],
+  "blockedClaimsKeptBlocked": [
+    "Exact facade reproduction",
+    "Exact tenant frontage/order",
+    "Exact entrance/window geometry",
+    "Exact address placement",
+    "Exact station geometry or entrance coordinates",
+    "Active-status finality",
+    "Production asset, production data, public schema/interface, or public factual-readiness claims"
+  ]
+}

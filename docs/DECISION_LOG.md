@@ -4,6 +4,32 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-03 - Exact MVP Geometry Review Gate Opened
+
+Decision:
+- Batu unblocked exact MVP review work for storefront/facade/frontage/order/entrance/window geometry.
+- Batu unblocked exact MVP review work for exact address placement and exact Greenpoint G station/entrance geometry.
+- These fields may now be pursued, represented, and evaluated in review-only MVP artifacts when backed by structured source/reference evidence, provenance, and explicit truth/status labels.
+- This does not approve unsupported exact claims, product/public exact-geometry claims, production assets, production asset pipeline, public factual readiness, live data, scraping, Google/Street View/3D Tiles extraction, broad coverage, package/tooling changes, or normal-mode raster replacement.
+- NYC Open Data/building footprints remain scaffold geometry context only and must not by themselves be treated as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or exact station/entrance geometry.
+
+Rationale:
+- The MVP data-to-raster proof now needs a path for evidence-backed exact geometry fields instead of treating all exact geometry as categorically blocked.
+- The unblock lets the review pipeline test whether stronger source/reference evidence can support exact MVP geometry while preserving production/public-readiness gates.
+
+Constraints preserved:
+- Docs-only gate recording for this batch.
+- No app/source edits.
+- No new package/tooling, CI, live data, scraping, source-vendor integration, production assets, or normal-mode behavior changes.
+- No automatic product/public readiness or production/public exact-geometry claims.
+
+Owner:
+- Exact-geometry gate unblock: Batu
+- Documentation reconciliation: Codex
+
+Status:
+- Active orientation / exact MVP geometry review lane opened / production and public-readiness gates still blocked
+
 ## 2026-05-31 - MVP-29C Batu Decision Revision Recorded
 
 Decision:

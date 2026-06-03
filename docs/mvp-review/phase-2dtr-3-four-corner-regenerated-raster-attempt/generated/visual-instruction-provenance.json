@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "phase-2dtr-3-visual-instruction-provenance.v0.1",
+  "artifactId": "phase-2dtr-3.visual-instruction-provenance",
+  "status": "review-only-provenance-map",
+  "generatedOn": "2026-06-03",
+  "inputAttempt": "four-corner-regenerated-raster-attempt.json",
+  "visualInstructionMap": [
+    {
+      "targetId": "grillpoint-deli",
+      "reviewLabel": "Grillpoint Deli",
+      "cornerId": "corner-nw",
+      "rasterInstructionSources": [
+        "four-target-structured-facade-fixture.records[targetId=grillpoint-deli].business",
+        "four-target-structured-facade-fixture.records[targetId=grillpoint-deli].geometryAndFacade",
+        "raster-spec-index.targetSpecs[targetId=grillpoint-deli].deterministicPrompt",
+        "raster-spec-index.targetSpecs[targetId=grillpoint-deli].blockedClaims"
+      ],
+      "driveableNow": [
+        "review label / identity text",
+        "business category cue",
+        "corner assignment",
+        "sign text cue",
+        "approximate/manual-draft storefront bay role",
+        "reference imagery set for human/art review"
+      ],
+      "stillManualOrBlocked": [
+        "exact frontage/order",
+        "exact entrance/window placement",
+        "exact sign geometry",
+        "exact address placement",
+        "production trademark/trade-dress handling",
+        "production asset readiness"
+      ],
+      "boardEvidenceFiles": [
+        "generated/mvp-29e-nw-crop.png",
+        "generated/ref-nw-grillpoint.png"
+      ]
+    },
+    {
+      "targetId": "mcdonalds",
+      "reviewLabel": "McDonald's",
+      "cornerId": "corner-ne",
+      "rasterInstructionSources": [
+        "four-target-structured-facade-fixture.records[targetId=mcdonalds].business",
+        "four-target-structured-facade-fixture.records[targetId=mcdonalds].geometryAndFacade",
+        "raster-spec-index.targetSpecs[targetId=mcdonalds].deterministicPrompt",
+        "raster-spec-index.targetSpecs[targetId=mcdonalds].blockedClaims"
+      ],
+      "driveableNow": [
+        "review label / identity text",
+        "business category cue",
+        "corner assignment",
+        "sign text cue",
+        "approximate/manual-draft storefront bay role",
+        "reference imagery set for human/art review"
+      ],
+      "stillManualOrBlocked": [
+        "exact frontage/order",
+        "exact entrance/window placement",
+        "exact sign geometry",
+        "exact address placement",
+        "production trademark/trade-dress handling",
+        "production asset readiness"
+      ],
+      "boardEvidenceFiles": [
+        "generated/mvp-29e-ne-crop.png",
+        "generated/ref-ne-mcdonalds.png"
+      ]
+    },
+    {
+      "targetId": "dunkin",
+      "reviewLabel": "Dunkin'",
+      "cornerId": "corner-sw",
+      "rasterInstructionSources": [
+        "four-target-structured-facade-fixture.records[targetId=dunkin].business",
+        "four-target-structured-facade-fixture.records[targetId=dunkin].geometryAndFacade",
+        "raster-spec-index.targetSpecs[targetId=dunkin].deterministicPrompt",
+        "raster-spec-index.targetSpecs[targetId=dunkin].blockedClaims"
+      ],
+      "driveableNow": [
+        "review label / identity text",
+        "business category cue",
+        "corner assignment",
+        "sign text cue",
+        "approximate/manual-draft storefront bay role",
+        "reference imagery set for human/art review"
+      ],
+      "stillManualOrBlocked": [
+        "exact frontage/order",
+        "exact entrance/window placement",
+        "exact sign geometry",
+        "exact address placement",
+        "production trademark/trade-dress handling",
+        "production asset readiness"
+      ],
+      "boardEvidenceFiles": [
+        "generated/mvp-29e-sw-crop.png",
+        "generated/ref-sw-dunkin.png"
+      ]
+    },
+    {
+      "targetId": "citizens-bank",
+      "reviewLabel": "Citizens Bank",
+      "cornerId": "corner-se",
+      "rasterInstructionSources": [
+        "four-target-structured-facade-fixture.records[targetId=citizens-bank].business",
+        "four-target-structured-facade-fixture.records[targetId=citizens-bank].geometryAndFacade",
+        "raster-spec-index.targetSpecs[targetId=citizens-bank].deterministicPrompt",
+        "raster-spec-index.targetSpecs[targetId=citizens-bank].blockedClaims"
+      ],
+      "driveableNow": [
+        "review label / identity text",
+        "business category cue",
+        "corner assignment",
+        "sign text cue",
+        "approximate/manual-draft storefront bay role",
+        "reference imagery set for human/art review"
+      ],
+      "stillManualOrBlocked": [
+        "exact frontage/order",
+        "exact entrance/window placement",
+        "exact sign geometry",
+        "exact address placement",
+        "production trademark/trade-dress handling",
+        "production asset readiness"
+      ],
+      "boardEvidenceFiles": [
+        "generated/mvp-29e-se-crop.png",
+        "generated/ref-se-citizens.png"
+      ]
+    }
+  ],
+  "symbolicContext": [
+    {
+      "targetId": "greenpoint-g-subway",
+      "reviewLabel": "Greenpoint G subway",
+      "status": "symbolic review cue only",
+      "blocked": "No exact station entrance/geometry/address placement claim."
+    }
+  ]
+}

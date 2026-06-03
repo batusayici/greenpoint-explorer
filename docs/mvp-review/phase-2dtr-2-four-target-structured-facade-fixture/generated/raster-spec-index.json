@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "phase-2dtr-four-target-raster-spec-index.v0.1",
+  "artifactId": "phase-2dtr-2.four-target-raster-spec-index",
+  "status": "deterministic-review-only-spec-artifact",
+  "generatedOn": "2026-06-03",
+  "inputFixture": "../four-target-structured-facade-fixture.json",
+  "generationRules": {
+    "oneRecordPerTarget": true,
+    "requiredStatusMapping": "Every visual instruction derives from business, geometryAndFacade, sourceEvidence, referenceImagery, or rasterInstructionSeed.",
+    "blockedRule": "Blocked claims stay blocked in each prompt and must not be converted into exact visual claims.",
+    "referenceRule": "Use supplied local review/reference photos and approved visual-direction references only; no tracing, texture extraction, scraping, or live acquisition.",
+    "appRule": "This index does not replace app source, app fixtures, or the normal-mode raster plate."
+  },
+  "targetSpecs": [
+    {
+      "targetId": "grillpoint-deli",
+      "reviewLabel": "Grillpoint Deli",
+      "cornerId": "corner-nw",
+      "renderingKind": "storefront",
+      "instructionIds": [
+        "grillpoint-deli.identity",
+        "grillpoint-deli.category",
+        "grillpoint-deli.address-context",
+        "grillpoint-deli.facade-layout",
+        "grillpoint-deli.sign-cue",
+        "grillpoint-deli.door-window-cue",
+        "grillpoint-deli.truth-constraints"
+      ],
+      "deterministicPrompt": [
+        "Review-only raster/spec instruction for Grillpoint Deli at corner-nw in the Manhattan Ave x Greenpoint Ave MVP scene.",
+        "Represent as compact corner deli storefront; preserve approved Inked Indie / Compact Corner visual direction and review-scale comparison to MVP-29E.",
+        "Identity/category/address context: Grillpoint Deli; Deli / food retail; 903 Manhattan Ave, Brooklyn, NY 11222. Treat address as text/context only, not exact visual placement.",
+        "Facade/source cues: use northwest-grillpoint-deli-facade, northwest-grillpoint-deli-wide, northwest-grillpoint-deli-closeup as MVP review/source imagery only.",
+        "Status handling: label facade/geometry/layout fields as manual_draft; keep exact facade/frontage/entrance/address/station claims blocked.",
+        "Do not include ratings, reviews, hours, endorsement, partnership, service availability, production trademark clearance, exact trade-dress reproduction, tracing, texture extraction, or production/public readiness claims."
+      ],
+      "sourceFieldPaths": {
+        "identity": "records[targetId=grillpoint-deli].business.name",
+        "category": "records[targetId=grillpoint-deli].business.category",
+        "addressContext": "records[targetId=grillpoint-deli].business.addressContext",
+        "facadeLayout": "records[targetId=grillpoint-deli].geometryAndFacade.facadeStyle",
+        "signCue": "records[targetId=grillpoint-deli].geometryAndFacade.signText",
+        "doorWindowCue": "records[targetId=grillpoint-deli].geometryAndFacade.doorWindowPlacement",
+        "referenceImagery": "records[targetId=grillpoint-deli].referenceImagery"
+      },
+      "blockedClaims": [
+        "production asset approval",
+        "public factual readiness",
+        "exact facade reproduction",
+        "exact tenant frontage/order",
+        "exact entrance/window geometry",
+        "exact address placement",
+        "exact station geometry or entrance coordinates",
+        "active-status finality",
+        "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+      ]
+    },
+    {
+      "targetId": "mcdonalds",
+      "reviewLabel": "McDonald's",
+      "cornerId": "corner-ne",
+      "renderingKind": "storefront",
+      "instructionIds": [
+        "mcdonalds.identity",
+        "mcdonalds.category",
+        "mcdonalds.address-context",
+        "mcdonalds.facade-layout",
+        "mcdonalds.sign-cue",
+        "mcdonalds.door-window-cue",
+        "mcdonalds.truth-constraints"
+      ],
+      "deterministicPrompt": [
+        "Review-only raster/spec instruction for McDonald's at corner-ne in the Manhattan Ave x Greenpoint Ave MVP scene.",
+        "Represent as compact corner fast-food storefront; preserve approved Inked Indie / Compact Corner visual direction and review-scale comparison to MVP-29E.",
+        "Identity/category/address context: McDonald's; Fast food restaurant; 904 Manhattan Ave, Brooklyn, NY 11222. Treat address as text/context only, not exact visual placement.",
+        "Facade/source cues: use northeast-mcdonalds-facadeA, northeast-mcdonalds-wide, northeast-mcdonalds-closeup as MVP review/source imagery only.",
+        "Status handling: label facade/geometry/layout fields as manual_draft; keep exact facade/frontage/entrance/address/station claims blocked.",
+        "Do not include ratings, reviews, hours, endorsement, partnership, service availability, production trademark clearance, exact trade-dress reproduction, tracing, texture extraction, or production/public readiness claims."
+      ],
+      "sourceFieldPaths": {
+        "identity": "records[targetId=mcdonalds].business.name",
+        "category": "records[targetId=mcdonalds].business.category",
+        "addressContext": "records[targetId=mcdonalds].business.addressContext",
+        "facadeLayout": "records[targetId=mcdonalds].geometryAndFacade.facadeStyle",
+        "signCue": "records[targetId=mcdonalds].geometryAndFacade.signText",
+        "doorWindowCue": "records[targetId=mcdonalds].geometryAndFacade.doorWindowPlacement",
+        "referenceImagery": "records[targetId=mcdonalds].referenceImagery"
+      },
+      "blockedClaims": [
+        "production asset approval",
+        "public factual readiness",
+        "exact facade reproduction",
+        "exact tenant frontage/order",
+        "exact entrance/window geometry",
+        "exact address placement",
+        "exact station geometry or entrance coordinates",
+        "active-status finality",
+        "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+      ]
+    },
+    {
+      "targetId": "dunkin",
+      "reviewLabel": "Dunkin'",
+      "cornerId": "corner-sw",
+      "renderingKind": "storefront",
+      "instructionIds": [
+        "dunkin.identity",
+        "dunkin.category",
+        "dunkin.address-context",
+        "dunkin.facade-layout",
+        "dunkin.sign-cue",
+        "dunkin.door-window-cue",
+        "dunkin.truth-constraints"
+      ],
+      "deterministicPrompt": [
+        "Review-only raster/spec instruction for Dunkin' at corner-sw in the Manhattan Ave x Greenpoint Ave MVP scene.",
+        "Represent as compact corner coffee storefront; preserve approved Inked Indie / Compact Corner visual direction and review-scale comparison to MVP-29E.",
+        "Identity/category/address context: Dunkin'; Coffee and baked goods; 893 Manhattan Ave, Brooklyn, NY 11222. Treat address as text/context only, not exact visual placement.",
+        "Facade/source cues: use southwest-dunkin-facadeA, southwest-subway-wide, southwest-subwayC as MVP review/source imagery only.",
+        "Status handling: label facade/geometry/layout fields as manual_draft; keep exact facade/frontage/entrance/address/station claims blocked.",
+        "Do not include ratings, reviews, hours, endorsement, partnership, service availability, production trademark clearance, exact trade-dress reproduction, tracing, texture extraction, or production/public readiness claims."
+      ],
+      "sourceFieldPaths": {
+        "identity": "records[targetId=dunkin].business.name",
+        "category": "records[targetId=dunkin].business.category",
+        "addressContext": "records[targetId=dunkin].business.addressContext",
+        "facadeLayout": "records[targetId=dunkin].geometryAndFacade.facadeStyle",
+        "signCue": "records[targetId=dunkin].geometryAndFacade.signText",
+        "doorWindowCue": "records[targetId=dunkin].geometryAndFacade.doorWindowPlacement",
+        "referenceImagery": "records[targetId=dunkin].referenceImagery"
+      },
+      "blockedClaims": [
+        "production asset approval",
+        "public factual readiness",
+        "exact facade reproduction",
+        "exact tenant frontage/order",
+        "exact entrance/window geometry",
+        "exact address placement",
+        "exact station geometry or entrance coordinates",
+        "active-status finality",
+        "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+      ]
+    },
+    {
+      "targetId": "citizens-bank",
+      "reviewLabel": "Citizens Bank",
+      "cornerId": "corner-se",
+      "renderingKind": "storefront",
+      "instructionIds": [
+        "citizens-bank.identity",
+        "citizens-bank.category",
+        "citizens-bank.address-context",
+        "citizens-bank.facade-layout",
+        "citizens-bank.sign-cue",
+        "citizens-bank.door-window-cue",
+        "citizens-bank.truth-constraints"
+      ],
+      "deterministicPrompt": [
+        "Review-only raster/spec instruction for Citizens Bank at corner-se in the Manhattan Ave x Greenpoint Ave MVP scene.",
+        "Represent as compact corner bank branch storefront; preserve approved Inked Indie / Compact Corner visual direction and review-scale comparison to MVP-29E.",
+        "Identity/category/address context: Citizens Bank; Bank branch; 896 Manhattan Avenue, Brooklyn, NY 11222. Treat address as text/context only, not exact visual placement.",
+        "Facade/source cues: use southeast-citizens-facadeA, southeast-citizens-facadeB, southeast-citizens-wide, southeast-subwayB as MVP review/source imagery only.",
+        "Status handling: label facade/geometry/layout fields as manual_draft; keep exact facade/frontage/entrance/address/station claims blocked.",
+        "Do not include ratings, reviews, hours, endorsement, partnership, service availability, production trademark clearance, exact trade-dress reproduction, tracing, texture extraction, or production/public readiness claims."
+      ],
+      "sourceFieldPaths": {
+        "identity": "records[targetId=citizens-bank].business.name",
+        "category": "records[targetId=citizens-bank].business.category",
+        "addressContext": "records[targetId=citizens-bank].business.addressContext",
+        "facadeLayout": "records[targetId=citizens-bank].geometryAndFacade.facadeStyle",
+        "signCue": "records[targetId=citizens-bank].geometryAndFacade.signText",
+        "doorWindowCue": "records[targetId=citizens-bank].geometryAndFacade.doorWindowPlacement",
+        "referenceImagery": "records[targetId=citizens-bank].referenceImagery"
+      },
+      "blockedClaims": [
+        "production asset approval",
+        "public factual readiness",
+        "exact facade reproduction",
+        "exact tenant frontage/order",
+        "exact entrance/window geometry",
+        "exact address placement",
+        "exact station geometry or entrance coordinates",
+        "active-status finality",
+        "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+      ]
+    },
+    {
+      "targetId": "greenpoint-g-subway",
+      "reviewLabel": "Greenpoint G subway",
+      "cornerId": "transit-greenpoint-ave-side",
+      "renderingKind": "symbolic-transit-context",
+      "instructionIds": [
+        "greenpoint-g-subway.identity",
+        "greenpoint-g-subway.category",
+        "greenpoint-g-subway.address-context",
+        "greenpoint-g-subway.facade-layout",
+        "greenpoint-g-subway.sign-cue",
+        "greenpoint-g-subway.door-window-cue",
+        "greenpoint-g-subway.truth-constraints"
+      ],
+      "deterministicPrompt": [
+        "Review-only raster/spec instruction for Greenpoint G subway at transit-greenpoint-ave-side in the Manhattan Ave x Greenpoint Ave MVP scene.",
+        "Represent as symbolic Greenpoint G station-area cue; preserve approved Inked Indie / Compact Corner visual direction and review-scale comparison to MVP-29E.",
+        "Identity/category/address context: Greenpoint G subway; Subway station context; Greenpoint Av station-area context at Manhattan Ave and Greenpoint Ave, Brooklyn, NY. Treat address as text/context only, not exact visual placement.",
+        "Facade/source cues: use northwest-subwayA, southwest-subway-wide, southwest-subwayC, southeast-subwayB as MVP review/source imagery only.",
+        "Status handling: label facade/geometry/layout fields as symbolic; keep exact facade/frontage/entrance/address/station claims blocked.",
+        "Do not include ratings, reviews, hours, endorsement, partnership, service availability, production trademark clearance, exact trade-dress reproduction, tracing, texture extraction, or production/public readiness claims."
+      ],
+      "sourceFieldPaths": {
+        "identity": "records[targetId=greenpoint-g-subway].business.name",
+        "category": "records[targetId=greenpoint-g-subway].business.category",
+        "addressContext": "records[targetId=greenpoint-g-subway].business.addressContext",
+        "facadeLayout": "records[targetId=greenpoint-g-subway].geometryAndFacade.facadeStyle",
+        "signCue": "records[targetId=greenpoint-g-subway].geometryAndFacade.signText",
+        "doorWindowCue": "records[targetId=greenpoint-g-subway].geometryAndFacade.doorWindowPlacement",
+        "referenceImagery": "records[targetId=greenpoint-g-subway].referenceImagery"
+      },
+      "blockedClaims": [
+        "production asset approval",
+        "public factual readiness",
+        "exact facade reproduction",
+        "exact tenant frontage/order",
+        "exact entrance/window geometry",
+        "exact address placement",
+        "exact station geometry or entrance coordinates",
+        "active-status finality",
+        "endorsement, partnership, ratings, reviews, hours, or promotional claims"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "phase-2dtr-visual-provenance-map.v0.1",
+  "artifactId": "phase-2dtr-1.grillpoint-nw.visual-instruction-provenance",
+  "status": "review-only-source-status-map",
+  "generatedOn": "2026-06-03",
+  "inputArtifacts": [
+    "../structured-source-object.json",
+    "raster-spec.json"
+  ],
+  "statusSummary": {
+    "verified": 1,
+    "sourced": 3,
+    "inferred": 1,
+    "manual_draft": 4,
+    "symbolic": 1,
+    "blocked": 0,
+    "unknown": 0
+  },
+  "instructionMappings": [
+    {
+      "instructionId": "style.inked-indie-compact-corner",
+      "instructionPath": "style",
+      "sourceFieldPath": "sourceInputs[sourceId=arc-023-arc-024-arc-029]",
+      "status": "verified",
+      "sourceIds": [
+        "arc-023-arc-024-arc-029"
+      ],
+      "reviewMeaning": "Approved visual direction reference, not production asset approval."
+    },
+    {
+      "instructionId": "target.corner-context",
+      "instructionPath": "visualInstructions[0]",
+      "sourceFieldPath": "target.cornerId",
+      "status": "manual_draft",
+      "sourceIds": [
+        "mvp-29e-raster-review-output"
+      ],
+      "reviewMeaning": "Limits the first DTR proof to NW Grillpoint and preserves one-corner scope."
+    },
+    {
+      "instructionId": "business.label",
+      "instructionPath": "visualInstructions[1]",
+      "sourceFieldPath": "business.name",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "reviewMeaning": "Label/sign identity can be used for review-only output, with no production or active-status finality."
+    },
+    {
+      "instructionId": "business.category",
+      "instructionPath": "visualInstructions[2]",
+      "sourceFieldPath": "business.category",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint"
+      ],
+      "reviewMeaning": "Supports neutral deli/food retail cue only."
+    },
+    {
+      "instructionId": "geometry.envelope",
+      "instructionPath": "visualInstructions[3]",
+      "sourceFieldPath": "geometry.sceneEnvelope",
+      "status": "manual_draft",
+      "sourceIds": [
+        "mvp-29e-raster-review-output"
+      ],
+      "reviewMeaning": "Enables direct comparison to MVP-29E without claiming survey geometry."
+    },
+    {
+      "instructionId": "geometry.frontage",
+      "instructionPath": "visualInstructions[4]",
+      "sourceFieldPath": "geometry.frontageSegment",
+      "status": "inferred",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "mvp-29e-raster-review-output"
+      ],
+      "reviewMeaning": "Approximate frontage guide only; exact tenant frontage/order remains blocked."
+    },
+    {
+      "instructionId": "facade.layout",
+      "instructionPath": "visualInstructions[5]",
+      "sourceFieldPath": "facade.storefrontLayoutCue",
+      "status": "manual_draft",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos",
+        "mvp-29e-raster-review-output"
+      ],
+      "reviewMeaning": "Photo-informed storefront rhythm for proof output, not exact facade reproduction."
+    },
+    {
+      "instructionId": "facade.sign-band",
+      "instructionPath": "visualInstructions[6]",
+      "sourceFieldPath": "facade.signBandCue",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "reviewMeaning": "Review-only sign-band cue; tracing, texture extraction, exact geometry, and production trademark clearance remain blocked."
+    },
+    {
+      "instructionId": "facade.door-window",
+      "instructionPath": "visualInstructions[7]",
+      "sourceFieldPath": "facade.windowDoorCue",
+      "status": "manual_draft",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "reviewMeaning": "Approximate entry/window cue only; exact placement remains unresolved."
+    },
+    {
+      "instructionId": "material.color-density",
+      "instructionPath": "visualInstructions[8]",
+      "sourceFieldPath": "facade.materialColorNotes",
+      "status": "manual_draft",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos",
+        "arc-023-arc-024-arc-029"
+      ],
+      "reviewMeaning": "Style/density guidance for this proof only; no new palette or production direction approval."
+    },
+    {
+      "instructionId": "transit.context",
+      "instructionPath": "visualInstructions[9]",
+      "sourceFieldPath": "facade.visiblePropNotes",
+      "status": "symbolic",
+      "sourceIds": [
+        "mta-greenpoint-station-context",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "reviewMeaning": "Transit cue may appear as nearby context only; exact station geometry remains blocked."
+    }
+  ],
+  "blockedClaimsKeptBlocked": [
+    "Exact facade reproduction",
+    "Exact tenant frontage/order",
+    "Exact address placement",
+    "Exact entrance/window geometry",
+    "Exact Greenpoint G entrance coordinates or station geometry",
+    "Active-status finality",
+    "Production asset, production data, or public factual-readiness claims"
+  ]
+}

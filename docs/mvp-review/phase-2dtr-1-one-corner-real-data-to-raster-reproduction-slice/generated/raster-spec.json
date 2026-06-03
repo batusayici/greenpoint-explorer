@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "phase-2dtr-raster-spec.v0.1",
+  "artifactId": "phase-2dtr-1.grillpoint-nw.generated-raster-spec",
+  "status": "deterministic-review-only-spec-artifact",
+  "generatedOn": "2026-06-03",
+  "inputObject": "../structured-source-object.json",
+  "generationRules": {
+    "fieldOrdering": [
+      "target",
+      "business",
+      "geometry",
+      "facade",
+      "truthConstraints",
+      "style"
+    ],
+    "statusRule": "Every visual instruction carries a sourceFieldPath, status, and sourceIds entry.",
+    "blockedRule": "Blocked fields may create labeled caution instructions but must not be promoted to exact visual claims.",
+    "visualReferenceRule": "Use approved raster/reference assets and Batu-supplied field photos as review-only sources; do not trace or extract textures.",
+    "normalModeRule": "This spec does not replace the app's normal-mode raster plate."
+  },
+  "canvas": {
+    "outputClass": "one-corner-review-only-raster-generation-spec",
+    "recommendedAspectRatio": "16:9 crop-friendly one-corner plate",
+    "targetView": "compact isometric NW Grillpoint corner slice",
+    "comparisonBaseline": "MVP-29E NW Grillpoint crop",
+    "primaryWorldSurfaceRequirement": "raster output only if later generated; SVG/canvas/CSS/DOM art is disallowed as primary world art"
+  },
+  "style": {
+    "instructionId": "style.inked-indie-compact-corner",
+    "text": "Preserve Inked Indie / Compact Corner: crisp isometric map readability, confident inked outlines, controlled hatching, warm compact storefront massing, integrated paper/card visual language if UI is included.",
+    "status": "verified",
+    "sourceFieldPath": "sourceInputs[sourceId=arc-023-arc-024-arc-029]",
+    "sourceIds": [
+      "arc-023-arc-024-arc-029"
+    ],
+    "blockedClaims": [
+      "new visual direction",
+      "production asset approval"
+    ]
+  },
+  "visualInstructions": [
+    {
+      "instructionId": "target.corner-context",
+      "text": "Render only the NW Grillpoint corner as a one-corner reproduction slice within Manhattan Ave x Greenpoint Ave context.",
+      "status": "manual_draft",
+      "sourceFieldPath": "target.cornerId",
+      "sourceIds": [
+        "mvp-29e-raster-review-output"
+      ],
+      "blockedClaims": [
+        "full four-corner regenerated output",
+        "production/public readiness"
+      ]
+    },
+    {
+      "instructionId": "business.label",
+      "text": "Use the review-only visible label 'Grillpoint Deli' for the deli sign/card identity, without ratings, reviews, hours, quality, or promotional claims.",
+      "status": "sourced",
+      "sourceFieldPath": "business.name",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "blockedClaims": [
+        "active-status finality",
+        "production business record"
+      ]
+    },
+    {
+      "instructionId": "business.category",
+      "text": "Represent the place as a deli / food retail storefront through neutral visual cues only.",
+      "status": "sourced",
+      "sourceFieldPath": "business.category",
+      "sourceIds": [
+        "restaurantji-grillpoint"
+      ],
+      "blockedClaims": [
+        "endorsement",
+        "menu/service claims"
+      ]
+    },
+    {
+      "instructionId": "geometry.envelope",
+      "text": "Keep the storefront within the current NW scene envelope so it can be compared directly against the MVP-29E raster crop.",
+      "status": "manual_draft",
+      "sourceFieldPath": "geometry.sceneEnvelope",
+      "sourceIds": [
+        "mvp-29e-raster-review-output"
+      ],
+      "blockedClaims": [
+        "survey geometry",
+        "parcel/building-footprint exactness"
+      ]
+    },
+    {
+      "instructionId": "geometry.frontage",
+      "text": "Use one estimated storefront-facing segment as an approximate review-scale frontage guide; do not imply exact tenant frontage or storefront order.",
+      "status": "inferred",
+      "sourceFieldPath": "geometry.frontageSegment",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "mvp-29e-raster-review-output"
+      ],
+      "blockedClaims": [
+        "exact frontage",
+        "exact storefront order"
+      ]
+    },
+    {
+      "instructionId": "facade.layout",
+      "text": "Compose a compact three-bay deli rhythm: sign band above, storefront/window texture below, one entry cue, and enough sidewalk edge to read as a corner.",
+      "status": "manual_draft",
+      "sourceFieldPath": "facade.storefrontLayoutCue",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos",
+        "mvp-29e-raster-review-output"
+      ],
+      "blockedClaims": [
+        "exact facade reproduction",
+        "exact bay dimensions"
+      ]
+    },
+    {
+      "instructionId": "facade.sign-band",
+      "text": "Use a dark sign band with review-only Grillpoint Deli text; stylize rather than trace the real sign, logo, material, or trade dress.",
+      "status": "sourced",
+      "sourceFieldPath": "facade.signBandCue",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "blockedClaims": [
+        "texture extraction",
+        "tracing",
+        "exact sign geometry",
+        "production trademark clearance"
+      ]
+    },
+    {
+      "instructionId": "facade.door-window",
+      "text": "Show a single storefront entry cue with compact window rhythm, labeled internally as approximate/manual draft.",
+      "status": "manual_draft",
+      "sourceFieldPath": "facade.windowDoorCue",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "blockedClaims": [
+        "exact entrance position",
+        "exact window placement"
+      ]
+    },
+    {
+      "instructionId": "material.color-density",
+      "text": "Use warm compact corner massing, dark sign band contrast, restrained deli-window density, and Greenpoint street-level texture without hiding click targets.",
+      "status": "manual_draft",
+      "sourceFieldPath": "facade.materialColorNotes",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos",
+        "arc-023-arc-024-arc-029"
+      ],
+      "blockedClaims": [
+        "production asset direction",
+        "new palette approval"
+      ]
+    },
+    {
+      "instructionId": "transit.context",
+      "text": "A Greenpoint G/subway railing cue may appear as nearby symbolic context only; avoid any exact entrance-coordinate or in-front-of-Grillpoint claim.",
+      "status": "symbolic",
+      "sourceFieldPath": "facade.visiblePropNotes",
+      "sourceIds": [
+        "mta-greenpoint-station-context",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "blockedClaims": [
+        "exact station geometry",
+        "exact entrance coordinates",
+        "direct in-front placement claim"
+      ]
+    }
+  ],
+  "deterministicPrompt": [
+    "Review-only one-corner raster generation spec for the NW Grillpoint Deli corner at Manhattan Ave x Greenpoint Ave.",
+    "Preserve the approved Inked Indie / Compact Corner direction from ARC-023, ARC-024, and ARC-029: crisp isometric map readability, confident inked outlines, controlled hatching, compact storefront massing, and paper/card UI compatibility.",
+    "Render only the NW Grillpoint corner as a compact isometric deli storefront slice that can be compared directly to the MVP-29E NW crop.",
+    "Use the review-only identity 'Grillpoint Deli' and neutral deli / food retail cues. Do not include ratings, reviews, hours, service claims, quality claims, promotional claims, or endorsement language.",
+    "Use a dark sign band with stylized readable Grillpoint Deli text, a three-bay review-scale storefront rhythm, one approximate entry cue, compact windows, warm corner massing, and restrained Greenpoint sidewalk clutter.",
+    "A Greenpoint G/subway railing cue may appear only as nearby symbolic transit context. Do not imply exact station geometry, exact entrance coordinates, or that the entrance is directly in front of Grillpoint.",
+    "Do not trace, texture-extract, reproduce exact trade dress, or claim exact facade/frontage/address placement. Output is non-production and review-only."
+  ],
+  "comparisonQuestions": [
+    "Does the spec preserve Grillpoint identity/category/address context without overclaiming exact facade/frontage/station geometry?",
+    "Can each visual instruction be traced to a structured source field and status?",
+    "Does the resulting instruction set reveal which fields are sourced, inferred, manual_draft, symbolic, blocked, or unresolved before four-corner regeneration?"
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "phase-2dtr-one-corner-source-object.v0.1",
+  "artifactId": "phase-2dtr-1.grillpoint-nw.structured-source-object",
+  "status": "review-only-mvp-proof",
+  "reviewedOn": "2026-06-03",
+  "sourceLane": "phase-2dtr-review-only-data-to-raster-proof",
+  "target": {
+    "targetId": "grillpoint-deli",
+    "placeId": "place-grillpoint-deli",
+    "cornerId": "corner-nw",
+    "intersectionContext": "Manhattan Ave x Greenpoint Ave",
+    "mvpTreatment": "one-corner reproduction slice against MVP-29E"
+  },
+  "sourceInputs": [
+    {
+      "sourceId": "restaurantji-grillpoint",
+      "sourceType": "reviewed-secondary-directory-page",
+      "sourcePathOrUrl": "https://www.restaurantji.com/ny/brooklyn/grillpoint-deli-/",
+      "usageStatus": "review-only-claim-support",
+      "supports": [
+        "business.name",
+        "business.category",
+        "business.addressContext"
+      ],
+      "doesNotSupport": [
+        "exact storefront frontage",
+        "exact facade",
+        "exact sign geometry",
+        "exact entrance position",
+        "exact address placement",
+        "active-status finality"
+      ]
+    },
+    {
+      "sourceId": "mvp-29e-raster-review-output",
+      "sourceType": "review-only-manual-raster-baseline",
+      "sourcePathOrUrl": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+      "usageStatus": "comparison-baseline-only",
+      "supports": [
+        "geometry.sceneEnvelope",
+        "geometry.frontageSegment",
+        "geometry.storefrontSample",
+        "qaComparison.currentRasterCrop"
+      ],
+      "doesNotSupport": [
+        "source-derived pipeline completion",
+        "exact facade",
+        "production asset approval"
+      ]
+    },
+    {
+      "sourceId": "batu-nw-grillpoint-field-photos",
+      "sourceType": "Batu-supplied non-Google field references",
+      "sourcePathOrUrl": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg; docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg; docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "usageStatus": "mvp-review-only-facade-source-imagery",
+      "supports": [
+        "facade.signBandCue",
+        "facade.storefrontLayoutCue",
+        "facade.windowDoorCue",
+        "facade.materialColorNotes",
+        "facade.visiblePropNotes"
+      ],
+      "doesNotSupport": [
+        "production reuse",
+        "texture extraction",
+        "tracing",
+        "exact trade-dress reproduction",
+        "public exact-facade claim"
+      ]
+    },
+    {
+      "sourceId": "mta-greenpoint-station-context",
+      "sourceType": "reviewed transit context plus supplied NW subway reference",
+      "sourcePathOrUrl": "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "usageStatus": "review-only-context-support",
+      "supports": [
+        "transitCue.context"
+      ],
+      "doesNotSupport": [
+        "exact station geometry",
+        "exact entrance coordinates",
+        "claim that the entrance is directly in front of Grillpoint"
+      ]
+    },
+    {
+      "sourceId": "arc-023-arc-024-arc-029",
+      "sourceType": "approved visual-direction reference corpus",
+      "sourcePathOrUrl": "docs/approved-reference-corpus/MANIFEST.md",
+      "usageStatus": "visual-direction-alignment-reference",
+      "supports": [
+        "style.inkedIndieCompactCorner",
+        "style.paperCardUi",
+        "style.selectedMarkerTether"
+      ],
+      "doesNotSupport": [
+        "production asset approval",
+        "new visual direction",
+        "real-place factual claims"
+      ]
+    }
+  ],
+  "business": {
+    "name": {
+      "value": "Grillpoint Deli",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "notes": "Review-only identity/sign text support. This is not a production business-record claim."
+    },
+    "category": {
+      "value": "Deli / food retail",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint"
+      ],
+      "notes": "Neutral category context only; no reviews, ratings, hours, quality, delivery, or promotional copy."
+    },
+    "addressContext": {
+      "value": "903 Manhattan Ave, Brooklyn, NY 11222",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint"
+      ],
+      "notes": "Address text only; exact visual placement remains blocked."
+    }
+  },
+  "geometry": {
+    "sceneEnvelope": {
+      "value": {
+        "x": 284,
+        "y": 92,
+        "width": 356,
+        "height": 216,
+        "coordinateSpace": "MVP-29E raster pixels"
+      },
+      "status": "manual_draft",
+      "sourceIds": [
+        "mvp-29e-raster-review-output"
+      ],
+      "notes": "One-corner scene envelope aligned to the current review raster/hotspot context, not survey geometry."
+    },
+    "frontageSegment": {
+      "value": {
+        "from": {
+          "x": 386,
+          "y": 188
+        },
+        "to": {
+          "x": 560,
+          "y": 188
+        },
+        "coordinateSpace": "MVP-29E raster pixels"
+      },
+      "status": "inferred",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "mvp-29e-raster-review-output"
+      ],
+      "notes": "Estimated storefront-facing segment for DTR proof only; exact frontage/order remains blocked."
+    },
+    "storefrontBay": {
+      "value": {
+        "x": 386,
+        "y": 188,
+        "width": 174,
+        "height": 78,
+        "bayCount": 3,
+        "coordinateSpace": "MVP-29E raster pixels"
+      },
+      "status": "manual_draft",
+      "sourceIds": [
+        "mvp-29e-raster-review-output",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "notes": "Review-scale bay sample for deterministic raster instruction; not exact storefront geometry."
+    },
+    "addressAnchor": {
+      "value": {
+        "x": 518,
+        "y": 204,
+        "coordinateSpace": "MVP-29E raster pixels"
+      },
+      "status": "inferred",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "mvp-29e-raster-review-output"
+      ],
+      "notes": "Approximate scene anchor from address context and current composition; exact address placement remains blocked."
+    },
+    "entranceGeometry": {
+      "value": {
+        "x": 454,
+        "y": 216,
+        "width": 34,
+        "height": 48,
+        "coordinateSpace": "MVP-29E raster pixels"
+      },
+      "status": "blocked",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "notes": "Door cue may appear as blocked/approximate visual instruction only; exact entrance geometry remains unresolved."
+    }
+  },
+  "facade": {
+    "storefrontLayoutCue": {
+      "value": "compact corner deli storefront with three-bay review-scale rhythm",
+      "status": "manual_draft",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos",
+        "mvp-29e-raster-review-output"
+      ],
+      "notes": "Photo-informed and composition-aligned, but not exact reproduction."
+    },
+    "signBandCue": {
+      "value": "dark deli sign band with readable Grillpoint Deli label allowed only as review-only raster text",
+      "status": "sourced",
+      "sourceIds": [
+        "restaurantji-grillpoint",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "notes": "Do not trace or texture-extract the real sign; exact sign geometry remains blocked."
+    },
+    "windowDoorCue": {
+      "value": "single storefront entry cue with compact window rhythm",
+      "status": "manual_draft",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "notes": "Field-photo-informed cue for review rendering only; exact entrance/window dimensions remain blocked."
+    },
+    "materialColorNotes": {
+      "value": "warm compact corner mass, dark sign band, dense deli-window texture, Greenpoint street-level clutter restrained for readability",
+      "status": "manual_draft",
+      "sourceIds": [
+        "batu-nw-grillpoint-field-photos",
+        "arc-023-arc-024-arc-029"
+      ],
+      "notes": "Visual treatment should preserve approved Inked Indie / Compact Corner direction without creating production asset claims."
+    },
+    "visiblePropNotes": {
+      "value": "subway railing/context cue may appear nearby as symbolic transit context, plus small sidewalk clutter if it does not obscure clickability",
+      "status": "symbolic",
+      "sourceIds": [
+        "mta-greenpoint-station-context",
+        "batu-nw-grillpoint-field-photos"
+      ],
+      "notes": "Transit cue is nearby/contextual, not exact station geometry."
+    }
+  },
+  "truthConstraints": [
+    "review-only",
+    "not production art",
+    "not public factual representation",
+    "no exact facade claim",
+    "no exact frontage/order claim",
+    "no exact address-placement claim",
+    "no exact station-geometry claim",
+    "no scraping/live source acquisition",
+    "no Google/Street View/3D Tiles extraction",
+    "no texture extraction or tracing"
+  ]
+}

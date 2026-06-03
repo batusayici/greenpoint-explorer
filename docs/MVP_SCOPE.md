@@ -71,6 +71,7 @@ The MVP may include:
 - One narrow source-of-truth validation spike for the same scene/block face, limited to 5-10 storefront candidates, if approved by the current brief.
 - Review-only storefront evidence cards covering candidate address, building/tax-lot linkage, business match, visual-reference provenance, facade cues, confidence, and manual follow-up.
 - Draft prototype scene records for current MVP places/cues, including real names, address text, category, approximate footprints, inferred storefront bays, sign text, facade style, door/window placement, and manual/inferred geometry, provided each major field carries a truth/evidence status.
+- Evidence-backed exact MVP review fields for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry when explicitly supported by structured source/reference evidence, provenance, and status labels.
 - A focused data-to-raster proof track for Manhattan Ave x Greenpoint Ave, where source inputs become structured scene/facade/geometry fields, then deterministic raster/spec artifacts, then review-only isometric scene output and QA/status comparison.
 
 ## Demo-Safe Assets And Data
@@ -102,7 +103,7 @@ This does not approve:
 - Public-release real-place data.
 - Live data, scraping, automated refresh, or CMS-backed content.
 
-Review-only raster assets must remain labeled non-production and must not be described as production assets, public-release factual Greenpoint representations, exact facades, exact addresses, exact station geometry, or approved production asset direction.
+Review-only raster assets must remain labeled non-production and must not be described as production assets, public-release factual Greenpoint representations, or approved production asset direction. Exact MVP review geometry may be represented only where the field is evidence-backed, provenance-labeled, and not promoted as public/product truth.
 
 ## Draft Real-Data Scene Lane
 
@@ -121,7 +122,7 @@ The draft lane is intentionally separate from the strict promotion/product-readi
 
 QA mode is the draft lane's experimental product lab. "Not product-ready" does not mean "do not render": approximate or manual draft scene data should render aggressively in QA mode when status labels are visible. Normal mode remains protected, and promotion-readiness gates remain unchanged.
 
-The draft lane does not approve live data, scraping, backend services, CMS, automated refresh, commercial data licensing, production asset direction, production asset pipeline, broad neighborhood coverage, exact facade/frontage/station geometry claims, or weakening existing promotion-readiness verifiers.
+The draft lane does not approve live data, scraping, backend services, CMS, automated refresh, commercial data licensing, production asset direction, production asset pipeline, broad neighborhood coverage, unsupported exact-geometry claims, public/product exact-geometry claims, or weakening existing promotion-readiness verifiers.
 
 ## Data-To-Raster MVP Proof Boundary
 
@@ -147,7 +148,7 @@ Structured field statuses must distinguish at least:
 - `blocked`
 - `unknown`
 
-The MVP can be demoable while still not production-ready or public-ready. Review-only raster/spec artifacts may be evaluated for whether the pipeline works, but they must not be presented as exact facades, exact addresses, exact frontage/order, exact station geometry, production assets, or public factual claims unless a later approval gate explicitly opens that scope.
+The MVP can be demoable while still not production-ready or public-ready. Review-only raster/spec artifacts may be evaluated for whether the pipeline works. Exact storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry may now be represented in MVP review artifacts when evidence-backed and status-labeled, but must not be presented as production assets, public factual claims, or product-ready claims.
 
 
 ## Real-Corner Gate Sequencing
@@ -155,7 +156,7 @@ The MVP can be demoable while still not production-ready or public-ready. Review
 Source-of-truth validation, owned/approved field-photo supply, four-corner translation boundary, and raster integration are distinct gates.
 
 - Field photos or approved reference packets may support review-only validation and visual translation planning.
-- Field photos or approved reference packets do not by themselves approve product-facing real-corner art, production assets, production data, real cards, exact facades, exact addresses, exact storefront frontage/order, exact station geometry, app implementation, or public-release claims.
+- Field photos or approved reference packets may support evidence-backed exact MVP review fields, but they do not by themselves approve product-facing real-corner art, production assets, production data, real cards, app implementation, or public-release claims.
 - A real-corner translation boundary must reconcile evidence, visual-reference provenance, Place/Building/Storefront/MapAnchor relationships, allowed approximations, treatment recommendations, acceptance criteria, and stop conditions before any real-corner raster integration can be considered.
 - Four-corner raster integration, if pursued, requires its own later current brief and approved implementation boundary.
 
@@ -210,10 +211,8 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Business opt-in flows.
 - Broad game systems.
 - Phone-first optimization.
-- Exact real facades as product/public claims. Review/demo-only approximate or manually authored facade treatments are allowed in the draft lane when marked with field-level truth status.
-- Exact storefront frontage/order claims as product/public claims. Approximate storefront bay ordering is allowed in the draft lane when marked inferred/manual_draft and not represented as exact.
-- Exact Greenpoint Ave G station geometry.
-- Exact addresses in visual placement unless manually verified and approved.
+- Unsupported exact real facades, storefront frontage/order, entrance/window geometry, exact Greenpoint Ave G station/entrance geometry, or exact address placement.
+- Product/public exact-geometry claims without later production/public approval.
 - Ratings, reviews, endorsements, partnership claims, or promotional claims.
 
 ## Must-Have / Should-Have / Cuttable

@@ -57,12 +57,153 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the Phase 2DTR scope/plan realignment and points to Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, exact geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-3 as complete for Batu review and holds before Phase 2DTR-4 or any true regenerated image pass. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - Exact MVP Geometry Review Gate Unblock
+
+Status:
+- Complete.
+
+Scope:
+- Record Batu's explicit unblock for exact MVP review work covering storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry.
+- Preserve source/provenance requirements and production/public-readiness gates.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/MVP_SCOPE.md`
+- `docs/DECISION_LOG.md`
+
+Verification:
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Exact MVP geometry review work is no longer categorically blocked.
+- Exact geometry fields may now be pursued and represented in review-only artifacts when backed by structured source/reference evidence, provenance, and explicit status labels.
+- Unsupported exact claims, product/public exact-geometry claims, production assets, production asset pipeline, live data, scraping, package/tooling changes, normal-mode replacement, and public readiness remain blocked.
+
+Unresolved decisions:
+- Batu still owns which exact-geometry artifact or implementation brief opens next.
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-3 raster/spec attempt and whether Phase 2DTR-4 or a true generated raster image pass should open next.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to Batu review of Phase 2DTR-3 output; Phase 2DTR-4 is proposed only after Batu approval or revision direction, now with the exact MVP geometry review lane unblocked.
+
+### 2026-06-03 - Phase 2DTR-3 Four-Corner Regenerated Raster Attempt
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Proceed from Batu acceptance of Phase 2DTR-2 into a review-only deterministic four-corner regenerated raster/spec attempt.
+- Assemble the accepted four-target fixture into a scene-level raster instruction packet and visible comparison/spec board without app source edits, fixture edits, script edits, package/tooling changes, live source acquisition, production assets, public interfaces, true regenerated production scene output, or production/public-readiness changes.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-3-four-corner-regenerated-raster-attempt/`
+
+Verification:
+- JSON parse for `generated/four-corner-regenerated-raster-attempt.json`, `generated/visual-instruction-provenance.json`, and `generated/regeneration-gap-report.json`.
+- Raster file/dimension inspection for `generated/four-corner-regenerated-raster-attempt-board.png`.
+- Visual inspection of `generated/four-corner-regenerated-raster-attempt-board.png`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a deterministic four-corner raster/spec attempt assembled from the Phase 2DTR-2 fixture.
+- Added visual-instruction provenance and a regeneration gap report.
+- Added a visible PNG board comparing MVP-29E baseline/corner evidence against the regenerated instruction/status surface.
+- Preserved all production/public-readiness gates and left app source, existing data fixtures, scripts, package tooling, and normal-mode behavior unchanged.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-3 raster/spec attempt and whether Phase 2DTR-4 or a true generated raster image pass should open next.
+- Exact MVP geometry review work was later unblocked by Batu when backed by source/reference evidence, provenance, and explicit status labels. Public schema/interface, production asset, unsupported exact-geometry, product/public exact-geometry, and production/public-readiness decisions remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-3 output; Phase 2DTR-4 is proposed only after Batu approval or revision direction.
+
+### 2026-06-03 - Phase 2DTR-2 Four-Target Structured Facade Fixture
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Proceed from Batu approval of Phase 2DTR-1 into a review-only four-target structured facade/source fixture.
+- Extend the DTR source/spec model to Grillpoint, McDonald's, Dunkin', Citizens, and Greenpoint G symbolic context without app source edits, fixture edits, script edits, package/tooling changes, live source acquisition, production assets, public interfaces, or production/public-readiness changes.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-2-four-target-structured-facade-fixture/`
+
+Verification:
+- JSON parse for `four-target-structured-facade-fixture.json`, `generated/raster-spec-index.json`, and `generated/visual-instruction-provenance.json`.
+- Raster file/dimension inspection for `generated/four-target-structured-facade-fixture-board.png` and generated preview crops.
+- Visual inspection of `generated/four-target-structured-facade-fixture-board.png`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a structured fixture covering NW Grillpoint, NE McDonald's, SW Dunkin', SE Citizens Bank, and Greenpoint G symbolic transit context.
+- Added a deterministic raster/spec index and visual-instruction provenance/status map.
+- Added a visible comparison board showing MVP-29E baseline crops, supplied reference previews, target statuses, and blocked claims.
+- Preserved all production/public-readiness gates and left app source, existing data fixtures, scripts, package tooling, and normal-mode behavior unchanged.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-2 fixture structure and whether Phase 2DTR-3 should open.
+- Exact facade, frontage/order, entrance/window geometry, address placement, station geometry, public schema/interface, production asset, and production/public-readiness decisions remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-2 output; Phase 2DTR-3 is proposed only after Batu approval or revision direction.
+
+### 2026-06-03 - Phase 2DTR-1 One-Corner Source-To-Raster Spec
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Start Phase 2DTR-1 with a review-only Grillpoint/NW source-to-raster-spec packet.
+- Produce visible pipeline evidence without app source edits, fixture edits, script edits, package/tooling changes, live source acquisition, production assets, public interfaces, or production/public-readiness changes.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/`
+
+Verification:
+- JSON parse for `structured-source-object.json`, `generated/raster-spec.json`, and `generated/visual-instruction-provenance.json`.
+- Raster file/dimension inspection for `generated/grillpoint-nw-dtr-comparison-board.png` and generated preview crops.
+- Visual inspection of `generated/grillpoint-nw-dtr-comparison-board.png`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a structured one-corner source object for Grillpoint/NW.
+- Added a deterministic generated raster/spec artifact and visual-instruction provenance/status map.
+- Added a visible comparison board against the MVP-29E NW crop using existing review-only raster/photo inputs.
+- Preserved all production/public-readiness gates and left app source, data fixtures, scripts, package tooling, and normal-mode behavior unchanged.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-1 source/spec structure and whether Phase 2DTR-2 should open.
+- Exact facade, frontage/order, entrance/window geometry, address placement, station geometry, public schema/interface, production asset, and production/public-readiness decisions remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-1 output; Phase 2DTR-2 is proposed only after Batu approval or revision direction.
 
 ### 2026-06-03 - QA Layer Controls Source Commit
 

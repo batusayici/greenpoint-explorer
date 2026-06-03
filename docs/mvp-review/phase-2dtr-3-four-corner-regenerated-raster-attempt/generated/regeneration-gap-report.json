@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "phase-2dtr-3-regeneration-gap-report.v0.1",
+  "artifactId": "phase-2dtr-3.regeneration-gap-report",
+  "status": "review-only-gap-report",
+  "generatedOn": "2026-06-03",
+  "summary": {
+    "readyForSpecAssembly": true,
+    "readyForTrueRegeneratedRasterPass": "candidate-ready-for-review-decision",
+    "readyForProductionSceneOrPublicClaims": false
+  },
+  "passSignals": [
+    "All four corner targets have source/status records, deterministic prompt blocks, and board evidence paths.",
+    "Blocked claims remain explicit in the attempt and are not silently promoted.",
+    "The attempt can be compared against MVP-29E without app source edits or package/tooling changes."
+  ],
+  "gapsByTarget": [
+    {
+      "targetId": "grillpoint-deli",
+      "reviewLabel": "Grillpoint Deli",
+      "enoughForReviewRasterInstruction": true,
+      "notEnoughForExactClaims": [
+        "frontage/order",
+        "facade/sign geometry",
+        "entrance/window placement",
+        "exact address placement",
+        "active-status finality",
+        "production/public readiness"
+      ]
+    },
+    {
+      "targetId": "mcdonalds",
+      "reviewLabel": "McDonald's",
+      "enoughForReviewRasterInstruction": true,
+      "notEnoughForExactClaims": [
+        "frontage/order",
+        "facade/sign geometry",
+        "entrance/window placement",
+        "exact address placement",
+        "active-status finality",
+        "production/public readiness"
+      ]
+    },
+    {
+      "targetId": "dunkin",
+      "reviewLabel": "Dunkin'",
+      "enoughForReviewRasterInstruction": true,
+      "notEnoughForExactClaims": [
+        "frontage/order",
+        "facade/sign geometry",
+        "entrance/window placement",
+        "exact address placement",
+        "active-status finality",
+        "production/public readiness"
+      ]
+    },
+    {
+      "targetId": "citizens-bank",
+      "reviewLabel": "Citizens Bank",
+      "enoughForReviewRasterInstruction": true,
+      "notEnoughForExactClaims": [
+        "frontage/order",
+        "facade/sign geometry",
+        "entrance/window placement",
+        "exact address placement",
+        "active-status finality",
+        "production/public readiness"
+      ]
+    }
+  ],
+  "recommendedNextReviewChoice": [
+    "Accept: open a true 2DTR-4 QA acceptance/gap decision or a narrowly authorized generated raster image pass if Batu wants visual regeneration before gap closure.",
+    "Revise: tighten target fields or reference handling before a true generated raster pass.",
+    "Reject: return to Phase 2DTR-2 fixture design."
+  ]
+}
