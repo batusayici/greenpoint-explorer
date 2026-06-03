@@ -1,7 +1,7 @@
 # Greenpoint Isometric Explorer - MVP Scope
 
 Status: Detailed MVP scope authority
-Last reconciled: 2026-06-02
+Last reconciled: 2026-06-03
 Creative/product/scope owner: Batu
 Execution owner inside approved boundaries: Codex
 
@@ -17,11 +17,21 @@ The MVP should prove one thing:
 
 > Can a small isometric Greenpoint scene feel visually distinctive, locally specific, and worth clicking?
 
+The current MVP proof must now also prove the real-data-to-isometric-raster-scene pipeline, not only screenshot appeal:
+
+```text
+source inputs
+-> structured scene/facade/geometry fields
+-> deterministic generated raster/spec artifact
+-> review-only isometric scene output
+-> QA/status comparison
+```
+
 The desired reaction is:
 
 > I want to explore more of this.
 
-The MVP is a polished, authored, interactive diorama of the full Manhattan Ave x Greenpoint Ave four-corner intersection. It is not a full map product, game system, local guide platform, or production content pipeline. However, the MVP may now include a review/demo-only draft real-data scene lane to prove the real-data-to-isometric-scene pipeline before product/public readiness.
+The MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. It is not a full map product, game system, local guide platform, production content pipeline, production data pipeline, or public-ready factual representation. The current manually composed MVP-29E raster is a strong baseline/reference, but it is not sufficient as the core proof unless the scene can be reproducibly reconstructed from structured real-world inputs into a true-to-life, review-only isometric raster scene.
 
 ## Core Experience
 
@@ -61,6 +71,7 @@ The MVP may include:
 - One narrow source-of-truth validation spike for the same scene/block face, limited to 5-10 storefront candidates, if approved by the current brief.
 - Review-only storefront evidence cards covering candidate address, building/tax-lot linkage, business match, visual-reference provenance, facade cues, confidence, and manual follow-up.
 - Draft prototype scene records for current MVP places/cues, including real names, address text, category, approximate footprints, inferred storefront bays, sign text, facade style, door/window placement, and manual/inferred geometry, provided each major field carries a truth/evidence status.
+- A focused data-to-raster proof track for Manhattan Ave x Greenpoint Ave, where source inputs become structured scene/facade/geometry fields, then deterministic raster/spec artifacts, then review-only isometric scene output and QA/status comparison.
 
 ## Demo-Safe Assets And Data
 
@@ -73,6 +84,7 @@ Allowed review/demo-safe material can include:
 - Fictional placeholder target labels and card copy.
 - Static manually authored place data after Batu/ChatGPT approve the place-truth step, the MVP-03 static data contract proposal, and a specific implementation boundary.
 - Owned or explicitly approved field-reference photos for review-only source-of-truth validation, with provenance metadata.
+- Batu-supplied reference photos for MVP-only facade/source imagery, with provenance/status metadata and review-only labels.
 - Batu's narrow MVP-only SW Dunkin visual-reference exception, limited to human-reviewed, stylized, truth-safe, non-production review/demo-scale approximation while scaffolding blocks usable current SW field photos.
 - Static review-only storefront evidence cards generated from approved public/open data plus manual observations.
 - Review screenshots and smoke-check evidence.
@@ -86,6 +98,7 @@ This does not approve:
 - Production automated extraction, sprite generation, or build-time asset systems.
 - Automated source-of-truth pipelines, storefront-unit databases, live refresh, or broad data imports. A current brief may still approve a narrow local draft-scene fixture/model that manually combines sourced, inferred, and manual prototype data for the current MVP intersection only.
 - Google/Street View/3D Tiles imagery as stored reference, training input, generation input, texture source, or extracted facade data, except for Batu's narrow MVP-only SW Dunkin visual-reference exception. The exception does not approve production use, texture extraction, tracing, stored facade asset reuse, training input, generation input, exact trade-dress reproduction, or a general source-policy change.
+- Third-party image scraping, unsourced image collection, or Google/Street View/3D Tiles extraction for facade fields, visual generation, texture extraction, training, stored facade asset reuse, or production asset use.
 - Public-release real-place data.
 - Live data, scraping, automated refresh, or CMS-backed content.
 
@@ -109,6 +122,32 @@ The draft lane is intentionally separate from the strict promotion/product-readi
 QA mode is the draft lane's experimental product lab. "Not product-ready" does not mean "do not render": approximate or manual draft scene data should render aggressively in QA mode when status labels are visible. Normal mode remains protected, and promotion-readiness gates remain unchanged.
 
 The draft lane does not approve live data, scraping, backend services, CMS, automated refresh, commercial data licensing, production asset direction, production asset pipeline, broad neighborhood coverage, exact facade/frontage/station geometry claims, or weakening existing promotion-readiness verifiers.
+
+## Data-To-Raster MVP Proof Boundary
+
+Phase 2DTR is the focused MVP proof path for the current Manhattan Ave x Greenpoint Ave four-corner scene.
+
+It may use these review-only source categories:
+
+- Business/source data for identity, category, address, and source-evidence status.
+- NYC Open Data/building footprints for scaffold geometry context only. Footprints do not provide storefront, facade, tenant-frontage, entrance, sign, window, or active-business truth by themselves.
+- Batu-supplied reference photos as MVP-only facade/source imagery for review-only scene generation and facade extraction.
+
+Batu-supplied reference photos may be used, for the MVP only, to derive structured facade fields such as storefront layout, sign band, awning/canopy, entrance cue, window bays, material/color notes, visible props, and corner character.
+
+This allowance does not approve production reuse, production assets, production asset direction, training use, texture extraction, exact trade-dress reproduction, third-party image scraping, Google/Street View/3D Tiles extraction, or a general production source policy.
+
+Structured field statuses must distinguish at least:
+
+- `verified`
+- `sourced`
+- `inferred`
+- `manual_draft`
+- `symbolic`
+- `blocked`
+- `unknown`
+
+The MVP can be demoable while still not production-ready or public-ready. Review-only raster/spec artifacts may be evaluated for whether the pipeline works, but they must not be presented as exact facades, exact addresses, exact frontage/order, exact station geometry, production assets, or public factual claims unless a later approval gate explicitly opens that scope.
 
 
 ## Real-Corner Gate Sequencing
@@ -185,6 +224,7 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Full Manhattan Ave x Greenpoint Ave four-corner structure with NW, NE, SW, and SE corner treatment.
 - Approved Inked Indie / Compact Corner visual direction preserved in the primary world surface.
 - Primary world art uses approved/supplied raster or reviewed reference assets when visual fidelity affects acceptance.
+- The core MVP proof shows that the four-corner review raster/spec can be generated from structured source, facade, and geometry fields rather than only from hand-authored prose/manual composition.
 - Bounded pan and zoom.
 - Desktop hover/click and touch tap selection.
 - Approved interaction targets by MVP completion only where they are spatially coherent and evidence-backed.
@@ -194,6 +234,7 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Greenpoint Ave G subway entrance/station-cue placement treated as verified, approximate, symbolic, context-only, manual_draft, or blocked depending on evidence; prototype rendering may use approximate symbolic placement when the status is explicit.
 - Truth-safe handling of uncertainty, omissions, placeholders, fictionalization, inferred geometry, and manual draft visual treatment.
 - Explicit `verified`, `sourced`, `inferred`, `manual_draft`, `approximate`, `symbolic`, `context-only`, `omitted`, or `blocked` statuses for uncertain real-world claims and draft scene fields.
+- Clear separation between scaffold geometry, business/source evidence, facade/source imagery, inferred/manual draft fields, symbolic transit cues, blocked fields, and unknown fields.
 - Recognizable and truth-safe review/demo-scale storefront, sign, and facade treatment from owned, approved, non-Google, explicitly exception-approved, or manually authored draft references; not GIS/survey-perfect representation.
 - Desktop/tablet readability and basic mobile containment.
 - QA or review evidence sufficient for Batu/ChatGPT review.
@@ -304,6 +345,7 @@ Default removal/editing policy:
 The MVP can be considered complete only when:
 
 - The full Manhattan Ave x Greenpoint Ave four-corner interactive diorama is reviewable as a contained experience.
+- The real-data-to-isometric-raster-scene pipeline is reviewable from source inputs through structured scene/facade/geometry fields, deterministic generated raster/spec artifact, review-only output, and QA/status comparison.
 - NW, NE, SW, and SE corner structure exists in the approved scene.
 - Pan, zoom, hover, click, tap, selected state, card behavior, and basic mobile containment work within the approved scope.
 - Any real place included in the MVP has manually approved static source-backed data and a truth status.
@@ -312,6 +354,7 @@ The MVP can be considered complete only when:
 - The visual presentation remains aligned with the approved Inked Indie / Compact Corner direction.
 - Storefront/sign/facade treatment is recognizable and truth-safe at review/demo scale using owned, approved, or non-Google references; it is not represented as GIS/survey-perfect or production art.
 - Demo-safe assets and data are not presented as production/public-release approval.
+- Batu-supplied reference photos, if used, are labeled as MVP-only review/source facade imagery and not production assets or production policy.
 - QA records accepted passes, misses, or explicit cuts.
 - Any source-of-truth validation spike remains review-only evidence and does not approve a production data, imagery, or asset pipeline.
 - The source-of-truth validation spike records a clear proceed, revise, or cut recommendation for real-place usage before final visual polish/demo freeze.

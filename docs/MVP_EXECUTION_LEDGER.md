@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-02
+Last reconciled: 2026-06-03
 
 ## Purpose
 
@@ -55,14 +55,89 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2AB official geometry source lane is complete. MVP-29E Narrow Corrective Pass remains complete for Batu review.
+- Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2AB official geometry source lane complete and does not open a further implementation batch. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, exact geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the Phase 2DTR scope/plan realignment and points to Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, exact geometry claims, raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - Phase 2DTR Scope / Plan Realignment
+
+Status:
+- Complete.
+
+Scope:
+- Docs-only planning/scope update to realign the MVP around a focused data-to-raster proof track inside Phase 2.
+- No app source, data fixtures, assets, screenshots, package files, or scripts were edited.
+
+Files changed:
+- `docs/MVP_SCOPE.md`
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/PHASE_2_PLAN.md`
+
+Verification:
+- `git diff --check`
+- Lightweight docs validation search: no dedicated docs validator was present.
+- `git status --short`
+
+Outcome:
+- Created Phase 2DTR - Data-to-Raster MVP Proof as the focused Phase 2 sub-track.
+- Recorded the MVP proof path as source inputs to structured scene/facade/geometry fields to deterministic generated raster/spec artifact to review-only isometric scene output to QA/status comparison.
+- Summarized Phase 2A through Phase 2AC as completed exploratory/source/QA groundwork.
+- Confirmed MVP-29E remains the current manually composed raster baseline/reference, not the final proof of the pipeline.
+- Recorded Batu-supplied reference photos as approved for MVP-only review/source facade imagery and facade-field extraction.
+- Preserved strict promotion/public-readiness gates, no scraping/live API calls, no Google/Street View/3D Tiles extraction, no production asset approval, and no production schema/interface approval.
+- Confirmed Phase 3 remains reserved for Neighborhood Scale Validation.
+
+Unresolved decisions:
+- Batu still owns visual acceptance, product/public readiness, exact facade/frontage/address/station claims, production source policy, production assets, architecture/public-interface approval, and whether later Phase 2DTR outputs are accepted or revised.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
+
+### 2026-06-02 - Phase 2AC QA Comparison Readability Pass
+
+Status:
+- Complete.
+
+Scope:
+- Batu approved a narrow correction pass after visual review showed QA mode worked but had too many simultaneous overlays to judge clearly.
+- Reduce default QA visual density, add independent QA layer controls, clarify official footprint candidate meaning, and keep normal-mode/product gates unchanged.
+
+Files changed:
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-real-data-scene-adapter.mjs`
+- `node scripts/verify-source-evidence-determinism.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs`
+- `node scripts/verify-qa-inspector-source-evidence.mjs --self-test-negative-contract true`
+- `npm run build`
+- `git diff --check`
+- Browser sanity check at `http://127.0.0.1:5173/`
+
+Outcome:
+- QA mode now defaults to `Real data` and `Footprints` enabled, with `Draft` and `Labels` disabled.
+- QA layer controls allow draft/manual geometry, source-backed real-data hints, official footprint candidate outlines, and detailed labels to be toggled independently.
+- Selected cards show a compact official-footprint candidate summary before the deeper evidence/status sections, and the manifest QA ledger is collapsed by default.
+- Official footprint candidate geometry remains source-derived candidate geometry only; it does not prove tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, or station geometry.
+- Normal mode remains raster-first and unchanged in product meaning; strict promotion gates and product-copy-ready target count remain unchanged.
+
+Unresolved decisions:
+- Batu still needs to visually decide whether the calmer footprint comparison makes the authored raster/scene more credible and easier to explain, or whether a narrow geometry-alignment correction pass is needed before demoable review polish.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2AC complete and points to Batu visual review before opening any next implementation batch.
 
 ### 2026-06-02 - Phase 2AB Official Geometry Source Lane
 
