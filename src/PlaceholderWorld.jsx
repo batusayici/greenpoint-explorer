@@ -28,6 +28,7 @@ export default function PlaceholderWorld({
   const stateRef = useRef({
     app: null,
     world: null,
+    overlayWorld: null,
     targetGraphics: new Map(),
     camera: { x: 0, y: 0, scale: 0.72 },
     cameraInitialized: false,
@@ -64,8 +65,12 @@ export default function PlaceholderWorld({
       app.stage.addChild(world);
 
       drawRasterPlate(world, scene, texture);
-      stateRef.current.targetGraphics = drawTargets(world, scene.targets, reviewMode, qaLayers);
       applyWorldVisibleBounds(world, scene);
+
+      const overlayWorld = new Container();
+      stateRef.current.overlayWorld = overlayWorld;
+      app.stage.addChild(overlayWorld);
+      stateRef.current.targetGraphics = drawTargets(overlayWorld, scene.targets, reviewMode, qaLayers);
 
       const resizeObserver = new ResizeObserver(() => {
         resizeApp(host, app);
@@ -87,6 +92,7 @@ export default function PlaceholderWorld({
       app?.destroy(true);
       stateRef.current.app = null;
       stateRef.current.world = null;
+      stateRef.current.overlayWorld = null;
       stateRef.current.targetGraphics = new Map();
       stateRef.current.cameraInitialized = false;
     };
@@ -141,6 +147,21 @@ export default function PlaceholderWorld({
       });
     }
   }, [cameraCommand, scene]);
+
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || !selectedTargetId) return;
+    const target = scene.targets.find((item) => item.id === selectedTargetId);
+    if (!target) return;
+    const { camera } = stateRef.current;
+    const focusX = target.bounds.x + target.bounds.width * 0.5;
+    const focusY = target.bounds.y + target.bounds.height * 0.42;
+    updateCamera({
+      ...camera,
+      x: host.clientWidth * 0.36 - focusX * camera.scale,
+      y: host.clientHeight * 0.36 - focusY * camera.scale,
+    });
+  }, [scene.targets, selectedTargetId]);
 
   function updateCamera(nextCamera) {
     const host = hostRef.current;
@@ -244,21 +265,23 @@ export default function PlaceholderWorld({
   }
 
   return (
-    <div
-      ref={hostRef}
-      className="pixi-host"
-      role="img"
-      aria-label={scene.plate.label}
-      data-testid="pixi-host"
-      tabIndex={0}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={() => onHoverTarget(null)}
-      onPointerUp={handlePointerUp}
-      onWheel={handleWheel}
-      onFocus={() => onHoverTarget(selectedTargetId ?? scene.targets[0]?.id ?? null)}
-      onBlur={() => onHoverTarget(null)}
-    />
+    <>
+      <div
+        ref={hostRef}
+        className="pixi-host"
+        role="img"
+        aria-label={scene.plate.label}
+        data-testid="pixi-host"
+        tabIndex={0}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={() => onHoverTarget(null)}
+        onPointerUp={handlePointerUp}
+        onWheel={handleWheel}
+        onFocus={() => onHoverTarget(selectedTargetId ?? scene.targets[0]?.id ?? null)}
+        onBlur={() => onHoverTarget(null)}
+      />
+    </>
   );
 }
 
@@ -267,7 +290,7 @@ function resizeApp(host, app) {
 }
 
 function clampAndApplyCamera(host, scene, state) {
-  const { camera, world } = state;
+  const { camera, world, overlayWorld } = state;
   if (!world) return;
   const sceneSize = getVisibleSceneSize(scene);
 
@@ -297,6 +320,10 @@ function clampAndApplyCamera(host, scene, state) {
 
   world.position.set(camera.x, camera.y);
   world.scale.set(camera.scale);
+  if (overlayWorld) {
+    overlayWorld.position.set(camera.x, camera.y);
+    overlayWorld.scale.set(camera.scale);
+  }
 }
 
 function drawRasterPlate(world, scene, texture) {
@@ -382,6 +409,26 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       },
     });
     const draftEntityLabelLayer = new Container();
+    const annotationLabel = new Text({
+      text: "",
+      style: {
+        fill: "#241f18",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 13,
+        fontWeight: "950",
+        letterSpacing: 1.3,
+      },
+    });
+    const markerTagLabel = new Text({
+      text: "",
+      style: {
+        fill: "#241f18",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 12,
+        fontWeight: "950",
+        letterSpacing: 1.2,
+      },
+    });
 
     container.eventMode = "none";
     markerLabel.resolution = 2;
@@ -391,10 +438,32 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
     draftSignLabel.resolution = 2;
     draftSignLabel.anchor.set(0.5);
     draftStatusLabel.resolution = 2;
-    container.addChild(shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel, draftEntityLabelLayer);
+    annotationLabel.resolution = 2;
+    markerTagLabel.resolution = 2;
+    container.addChild(
+      shape,
+      markerLabel,
+      reviewLabel,
+      annotationLabel,
+      markerTagLabel,
+      draftLabel,
+      draftSignLabel,
+      draftStatusLabel,
+      draftEntityLabelLayer,
+    );
     world.addChild(container);
     renderTargetState(
-      { shape, markerLabel, reviewLabel, draftLabel, draftSignLabel, draftStatusLabel, draftEntityLabelLayer },
+      {
+        shape,
+        markerLabel,
+        reviewLabel,
+        annotationLabel,
+        markerTagLabel,
+        draftLabel,
+        draftSignLabel,
+        draftStatusLabel,
+        draftEntityLabelLayer,
+      },
       target,
       false,
       false,
@@ -405,6 +474,8 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       shape,
       markerLabel,
       reviewLabel,
+      annotationLabel,
+      markerTagLabel,
       draftLabel,
       draftSignLabel,
       draftStatusLabel,
@@ -420,6 +491,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     shape,
     markerLabel,
     reviewLabel,
+    annotationLabel,
+    markerTagLabel,
     draftLabel,
     draftSignLabel,
     draftStatusLabel,
@@ -431,8 +504,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     x: x + width * 0.5,
     y: y + height * 0.86,
   };
-  const markerRadius = isSelected ? 16 : isActive ? 13 : 9;
-  const markerColor = isSelected ? 0xf0bc45 : isActive ? 0xf7df9d : 0xf6ead2;
+  const markerRadius = isSelected ? 18 : isActive ? 15 : 11;
+  const markerColor = isSelected ? 0xc95b3c : isActive ? 0xf1cf78 : 0xf4df9b;
   const markerStroke = isSelected ? 0x1f2727 : 0x2b2a25;
   const showDetailedQaLabels = Boolean(reviewMode && qaLayers.labels && (isActive || isSelected));
 
@@ -444,23 +517,24 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .fill({ color: 0xffffff, alpha: 0.001 });
   }
 
-  shape
-    .moveTo(markerX, markerY + markerRadius)
-    .lineTo(tetherEnd.x, tetherEnd.y)
-    .stroke({
-      color: isSelected ? 0xf0bc45 : 0xf6ead2,
-      width: isSelected ? 2.5 : 1.5,
-      alpha: isActive || isSelected ? 0.54 : 0.18,
+  if (isActive || isSelected) {
+    drawDottedLeader(shape, { x: markerX, y: markerY + markerRadius * 1.4 }, tetherEnd, {
+      color: isSelected ? 0xf3d38d : 0xf6ead2,
+      darkColor: 0x161413,
+      alpha: isSelected ? 0.78 : 0.5,
+      width: isSelected ? 2.2 : 1.7,
+      dotRadius: isSelected ? 2.6 : 2,
     });
-
-  shape
-    .circle(tetherEnd.x, tetherEnd.y, isSelected ? 5 : 3.5)
-    .fill({ color: isSelected ? 0xf0bc45 : 0xf6ead2, alpha: isActive || isSelected ? 0.58 : 0.22 });
+    shape
+      .circle(tetherEnd.x, tetherEnd.y, isSelected ? 5 : 3.5)
+      .fill({ color: isSelected ? 0xc95b3c : 0xf6ead2, alpha: isSelected ? 0.8 : 0.52 })
+      .stroke({ color: 0x191716, width: 1.2, alpha: 0.62 });
+  }
 
   if (isActive || isSelected) {
     shape
       .circle(markerX, markerY + markerRadius * 0.08, markerRadius + (isSelected ? 11 : 8))
-      .fill({ color: 0xf0bc45, alpha: isSelected ? 0.12 : 0.08 });
+      .fill({ color: 0xf4d27c, alpha: isSelected ? 0.1 : 0.07 });
   }
 
   drawMapPinMarker(shape, {
@@ -476,11 +550,10 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   if (isSelected) {
     shape
       .ellipse(markerX, markerY + markerRadius * 1.38, markerRadius * 0.82, markerRadius * 0.22)
-      .stroke({ color: 0xf6ead2, width: 1.5, alpha: 0.52 });
-  }
-
-  if (isActive || isSelected) {
-    drawArtDirectedTargetContour(shape, target, isSelected);
+      .stroke({ color: 0x151312, width: 4.2, alpha: 0.32 });
+    shape
+      .ellipse(markerX, markerY + markerRadius * 1.38, markerRadius * 0.82, markerRadius * 0.22)
+      .stroke({ color: 0xf6ead2, width: 1.7, alpha: 0.72 });
   }
 
   if (reviewMode && qaLayers.draft) {
@@ -497,12 +570,15 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     drawDraftQaOverlay(shape, target, qaLayers);
   }
 
-  markerLabel.visible = Boolean(target.marker?.label);
+  markerLabel.visible = Boolean(target.id === "greenpoint-g-subway" && target.marker?.label);
   markerLabel.text = target.marker?.label ?? "";
-  markerLabel.style.fill = isSelected ? "#241f18" : "#28231f";
-  markerLabel.style.fontSize = isSelected ? 15 : 13;
+  markerLabel.style.fill = isSelected ? "#f8ecd4" : "#28231f";
+  markerLabel.style.fontSize = isSelected ? 14 : 12;
   markerLabel.x = markerX;
   markerLabel.y = markerY - markerRadius * 0.12;
+
+  annotationLabel.visible = false;
+  markerTagLabel.visible = false;
 
   reviewLabel.visible = Boolean(reviewMode && !target.draftScene?.generatedScene);
   reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
@@ -978,55 +1054,6 @@ function drawTargetOutline(graphics, target, styles) {
   }
 }
 
-function drawArtDirectedTargetContour(graphics, target, isSelected) {
-  const contourPaths = target.displayOutlinePaths
-    ?? target.outlinePaths
-    ?? (target.outlinePoints ? [target.outlinePoints] : []);
-  if (!contourPaths.length) {
-    drawTargetOutline(graphics, target, {
-      fillColor: 0xf0bc45,
-      fillAlpha: isSelected ? 0.045 : 0.024,
-      strokeColor: 0xf9e8b7,
-      strokeAlpha: isSelected ? 0.78 : 0.56,
-      strokeWidth: isSelected ? 3.2 : 2.4,
-    });
-    return;
-  }
-
-  for (const contour of contourPaths) {
-    if (!drawDisplayContourPath(graphics, contour)) continue;
-    graphics.stroke({
-      color: 0x171716,
-      width: isSelected ? 6.2 : 4.6,
-      alpha: isSelected ? 0.48 : 0.32,
-      cap: "round",
-      join: "round",
-    });
-  }
-
-  for (const contour of contourPaths) {
-    if (!drawDisplayContourPath(graphics, contour)) continue;
-    graphics.stroke({
-      color: 0xf0bc45,
-      width: isSelected ? 4.6 : 3.2,
-      alpha: isSelected ? 0.62 : 0.42,
-      cap: "round",
-      join: "round",
-    });
-  }
-
-  for (const contour of contourPaths) {
-    if (!drawDisplayContourPath(graphics, contour)) continue;
-    graphics.stroke({
-      color: 0xffedb7,
-      width: isSelected ? 2.1 : 1.6,
-      alpha: isSelected ? 0.9 : 0.7,
-      cap: "round",
-      join: "round",
-    });
-  }
-}
-
 function drawMapPinMarker(graphics, options) {
   const {
     x,
@@ -1043,6 +1070,12 @@ function drawMapPinMarker(graphics, options) {
   const side = radius * 1.02;
 
   graphics
+    .moveTo(x, bottom + 1.5)
+    .bezierCurveTo(x - side - 3, y + radius * 0.42, x - side - 3, top + radius * 0.34, x, top - 3)
+    .bezierCurveTo(x + side + 3, top + radius * 0.34, x + side + 3, y + radius * 0.42, x, bottom + 1.5)
+    .fill({ color: 0x171514, alpha: isActive || isSelected ? 0.46 : 0.28 });
+
+  graphics
     .moveTo(x, bottom)
     .bezierCurveTo(x - side, y + radius * 0.4, x - side, top + radius * 0.38, x, top)
     .bezierCurveTo(x + side, top + radius * 0.38, x + side, y + radius * 0.4, x, bottom)
@@ -1054,8 +1087,31 @@ function drawMapPinMarker(graphics, options) {
     });
 
   graphics
+    .circle(x, y - radius * 0.12, radius * 0.47)
+    .fill({ color: isSelected ? 0xf6ead2 : 0x2a2520, alpha: isSelected ? 0.9 : 0.86 })
+    .stroke({ color: isSelected ? 0x2a2520 : 0xf6ead2, width: 1.3, alpha: 0.82 });
+
+  graphics
     .ellipse(x, y + stem + radius * 0.24, radius * 0.68, radius * 0.18)
-    .stroke({ color: 0xf6ead2, width: isSelected ? 2 : 1.2, alpha: isSelected ? 0.55 : 0.22 });
+    .stroke({ color: 0xf6ead2, width: isSelected ? 2 : 1.2, alpha: isSelected ? 0.64 : 0.28 });
+}
+
+function drawDottedLeader(graphics, from, to, options) {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const distance = Math.hypot(dx, dy);
+  const steps = Math.max(2, Math.floor(distance / 13));
+  graphics
+    .moveTo(from.x, from.y)
+    .lineTo(to.x, to.y)
+    .stroke({ color: options.darkColor, width: options.width + 2.2, alpha: options.alpha * 0.28, cap: "round" });
+
+  for (let index = 0; index <= steps; index += 1) {
+    const t = index / steps;
+    graphics
+      .circle(from.x + dx * t, from.y + dy * t, options.dotRadius)
+      .fill({ color: options.color, alpha: options.alpha });
+  }
 }
 
 function drawOutlinePath(graphics, points) {
@@ -1083,6 +1139,7 @@ function drawDisplayContourPath(graphics, points) {
   }
   return true;
 }
+
 
 function isPointInHitAreas(point, hitAreas) {
   return hitAreas.some((area) => (

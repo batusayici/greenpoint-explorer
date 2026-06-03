@@ -3,7 +3,7 @@
 Status: Review-only package for external MVP feedback
 Date: 2026-06-03
 
-Interactive demo status: DTR-11 is integrated into the app as the review-only interactive demo plate, with simplified store-info cards and art-directed hover/selected contours.
+Interactive demo status: DTR-11 is integrated into the app as the locked review-only interactive demo plate, with simplified store-info cards and no storefront outline overlay.
 
 Share status: Vercel Preview is the chosen remote-review route. The local correction batch is build-ready; generating the remote link requires Vercel CLI auth/write access outside the repo sandbox.
 
@@ -20,7 +20,7 @@ Interactive demo:
 - Open the app and use the DTR-11 review-only scene.
 - Reviewers can pan, zoom, hover, click/tap Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and the Greenpoint G cue.
 - Cards intentionally show only compact store/context information plus a tiny review-only footer; detailed source/status records remain in the review data and package.
-- Hover/selected outlines are interaction presentation cues, not exact facade/frontage/entrance geometry claims.
+- Storefront outline overlays were removed from the locked demo; selection is represented through the place rail/card state rather than facade tracing.
 - The view angle is fixed. True rotation is deferred because the scene is raster-first, not a true 3D world.
 
 Hero scene:

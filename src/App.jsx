@@ -165,7 +165,7 @@ export default function App() {
               >
                 <span aria-hidden="true">x</span>
               </button>
-              <p className="card-label">{selectedTarget.label}</p>
+              <p className="card-label">{getCardLabel(selectedTarget)}</p>
               <h2>{selectedTarget.title}</h2>
               <p className="card-category">{selectedTarget.category}</p>
               <dl className="store-card-facts" aria-label="Store information">
@@ -188,4 +188,8 @@ function getCompactDisclaimer(target) {
     return "Review-only. Exact station entrance geometry is not claimed.";
   }
   return "Review-only. Address/category are source-backed where listed; exact facade or entrance geometry is not claimed.";
+}
+
+function getCardLabel(target) {
+  return target.id === "greenpoint-g-subway" ? "Transit context" : "Selected place";
 }

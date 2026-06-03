@@ -57,12 +57,48 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. DTR-11 is now the active review-only interactive demo raster in the app; MVP-29E remains the manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the DTR-11 interactive demo integration, Strategic Signal Doc Reconciliation, and targeted MVP card/hover correction as complete for Batu review. Vercel Preview publication is the selected share route but is blocked in Codex by local Vercel CLI auth/write access. Phase 2DTR is complete for MVP-feedback purposes; do not open DTR-12 or another facade/raster correction loop unless external feedback shows facade fidelity is a decisive blocker. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, Phase 3 implementation, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the DTR-11 interactive demo integration, Strategic Signal Doc Reconciliation, targeted MVP card/hover correction, and final outline-removal MVP lock as complete for external review preparation. Vercel Preview publication is the selected share route but is blocked in Codex by local Vercel CLI auth/write access. Phase 2DTR is complete for MVP-feedback purposes; do not open DTR-12 or another facade/raster correction loop unless external feedback shows facade fidelity is a decisive blocker. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, storefront outline rebuilds, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, Phase 3 implementation, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - DTR-11 MVP Review Lock Without Storefront Outlines
+
+Status:
+- Complete; locked for external review preparation.
+
+Scope:
+- Remove the failed hover/selected storefront outline overlay from the MVP demo and lock the review scene without opening another visual polish batch.
+
+Files changed:
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `src/App.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-feedback-demo-package/README.md`
+- `docs/mvp-review/mvp-feedback-demo-package/feedback-script-checklist.md`
+
+Verification:
+- Confirmed no annotation/outline overlay references remain in app presentation code.
+- `npm run build`
+- `git diff --check`
+- Browser smoke: DTR-11 raster visible, annotation overlay absent, selected-card state opens through the place rail, no browser console errors.
+
+Outcome:
+- Removed the SVG/Pixi storefront outline presentation system from the locked demo.
+- Preserved DTR-11 raster-first scene, pan, zoom, hover/click/tap selection behavior, selected rail state, compact truth-safe cards, fixed-view-angle affordance, review-only labeling, and no production/public claims.
+- Kept true rotation deferred and avoided DTR-12, new raster work, new data sources, scraping, or another facade/raster correction loop.
+
+Unresolved decisions:
+- Batu or local environment owner must complete Vercel auth/deploy, or provide an equivalent approved review-only remote link path.
+- External feedback may later determine whether a future art-directed outline system is worth reopening under a new brief, but it is not part of the locked MVP.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Vercel Preview publication, then external feedback sessions or a bounded MVP acceptance audit.
 
 ### 2026-06-03 - DTR-11 Footer And Art-Direction Follow-Up
 

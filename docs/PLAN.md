@@ -41,7 +41,7 @@ Use these in order when documents conflict:
 ## Current State Snapshot
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track.
-- Current next task: Batu review of the corrected DTR-11 interactive demo, followed by Vercel Preview publication once local CLI auth/write access is available, then external feedback sessions or a bounded MVP acceptance audit.
+- Current next task: Vercel Preview publication of the locked DTR-11 interactive demo once local CLI auth/write access is available, then external feedback sessions or a bounded MVP acceptance audit.
 - DTR-11 is now the active review-only interactive demo raster in the app. MVP-29E remains the manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
 - Phase 2DTR-1 now has a review packet at `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/` with a structured Grillpoint/NW source object, deterministic raster/spec artifact, visual-instruction provenance map, and visible comparison board against MVP-29E.
 - Phase 2DTR-2 now has a review packet at `docs/mvp-review/phase-2dtr-2-four-target-structured-facade-fixture/` with a four-target structured facade fixture, deterministic raster/spec index, visual-instruction provenance map, and visible comparison board.
@@ -60,7 +60,7 @@ Use these in order when documents conflict:
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
-- Current implementation evidence: normal mode uses the DTR-11 review-only raster plate with the redundant raster footer clipped from the interactive viewport, pan, zoom, hover, click/tap, compact store-info cards, open art-directed hover/selected edge accents, fixed-view-angle affordance, and one symbolic/context Greenpoint G cue target. MVP-29E remains a baseline/reference asset. QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, and layer controls. See the ledger and archived ledger history for batch detail.
+- Current implementation evidence: normal mode uses the DTR-11 review-only raster plate with the redundant raster footer clipped from the interactive viewport, pan, zoom, hover, click/tap selected state, compact store-info cards, fixed-view-angle affordance, and one symbolic/context Greenpoint G cue target. The attempted storefront outline overlay has been removed from the locked MVP demo. MVP-29E remains a baseline/reference asset. QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, and layer controls. See the ledger and archived ledger history for batch detail.
 
 ## Roadmap Summary
 
@@ -68,7 +68,7 @@ Use these in order when documents conflict:
 | --- | --- | --- |
 | Governance and scope | Complete | Authority, source-of-truth order, review-only status, and production gates are documented. |
 | Visual direction | Complete | Inked Indie / Compact Corner is approved as visual direction only, not production asset approval. |
-| Review-only prototype baseline | Mostly complete | DTR-11 is the current interactive review-demo raster/app scene with simplified cards and art-directed hover contours; MVP-29E remains the baseline/reference plate. |
+| Review-only prototype baseline | Locked for external review | DTR-11 is the current interactive review-demo raster/app scene with simplified cards and no storefront outline overlay; MVP-29E remains the baseline/reference plate. |
 | Phase 2A-2AC data groundwork | Complete as groundwork | Useful manifest/source/QA evidence exists, but it remains review-only and not production schema/pipeline approval. |
 | Phase 2DTR data-to-raster proof | Complete for MVP feedback | The current proof is sufficient to package for external feedback; do not open DTR-12 or continue facade/raster correction loops unless feedback shows facade fidelity is decisive. |
 | Phase 3 Tile-Based Neighborhood Scale Validation | Future | Reserved for later validation of tile partitioning, batch rendering, cross-tile consistency, automated QA boards, source freshness, runtime/cost, and review burden after the current intersection proof is accepted. |
@@ -101,10 +101,10 @@ Phase 2 now has three lanes:
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- Batu review of the corrected DTR-11 interactive demo is now the active hold.
+- Vercel Preview publication of the locked DTR-11 interactive demo is now the active next step.
 - Review packet: `docs/mvp-review/mvp-feedback-demo-package/`.
 - Proposed next task after Batu review: complete Vercel Preview publication once local CLI auth/write access is available, then run external feedback sessions or a bounded MVP acceptance audit.
-- The next implementation batch must remain review-only and must not begin new app/source edits, public interfaces, package/tooling changes, DTR-12, another facade/raster correction loop, or production/public-readiness changes until the current brief explicitly opens that scope.
+- The next batch must remain review-only and must not begin new app/source edits, storefront outline rebuilds, public interfaces, package/tooling changes, DTR-12, another facade/raster correction loop, or production/public-readiness changes until the current brief explicitly opens that scope.
 
 ## Locked Decisions
 
@@ -129,7 +129,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 ## Pending Decisions
 
 - Whether Batu accepts, revises, or rejects the focused MVP-29E raster/app integration output.
-- Whether Batu accepts, revises, or rejects the corrected DTR-11 interactive demo as ready for external feedback sessions.
+- Whether the locked DTR-11 interactive demo should proceed directly into external feedback sessions after remote preview publication.
 - Whether the Vercel Preview publication should be completed locally, via token, or through an equivalent approved review-only share route.
 - Whether Batu opens full MVP-29G screenshot QA recovery and what screenshot states are required.
 - Whether Batu opens bounded MVP acceptance audit or external feedback sessions after reviewing the interactive demo.
