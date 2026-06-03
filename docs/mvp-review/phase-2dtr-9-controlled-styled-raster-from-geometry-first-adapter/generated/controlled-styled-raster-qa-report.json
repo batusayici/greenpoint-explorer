@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "phase-2dtr-9-controlled-styled-raster-qa-report.v0.1",
+  "artifactId": "phase-2dtr-9.controlled-styled-raster-from-geometry-first-adapter",
+  "status": "review-only-controlled-styled-raster-produced",
+  "generatedOn": "2026-06-03",
+  "reviewOnly": true,
+  "productionPublicExactGeometryClaim": false,
+  "primarySource": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-ready-geometry-adapter.json",
+  "supportingSources": [
+    "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-fixture.json",
+    "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/geometry-primitive-blueprint.svg",
+    "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+    "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+    "docs/mvp-reference-images/southwest-dunkin-facadeA.jpeg",
+    "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg"
+  ],
+  "generatedArtifacts": {
+    "styledRaster": {
+      "path": "docs/mvp-review/phase-2dtr-9-controlled-styled-raster-from-geometry-first-adapter/generated/controlled-styled-raster.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 3120207,
+      "sha256": "4987ef979bd33f2fc90e7d31de664fc8149ac1747705e270fe54c239f1e7570c"
+    },
+    "qaBoard": {
+      "path": "docs/mvp-review/phase-2dtr-9-controlled-styled-raster-from-geometry-first-adapter/generated/controlled-styled-raster-qa-board.png",
+      "width": 2400,
+      "height": 1600,
+      "mode": "RGB",
+      "bytes": 1492090,
+      "sha256": "67d17ae71cb2bc9a26aaf9f22b06e03e2bf384fed2367925394a48ad8e3b9e80"
+    }
+  },
+  "preExistingDirtyFileResolution": {
+    "path": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+    "resolutionBeforeDtr9": "restored to repository state before DTR-9 work began",
+    "usedAsSourceOrReference": false
+  },
+  "dtr6Comparison": {
+    "dtr6Raster": {
+      "path": "docs/mvp-review/phase-2dtr-6-exact-review-geometry-raster-artifact-generation/generated/exact-review-geometry-raster-attempt.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 3338349,
+      "sha256": "5c4c37f0c2b6a056eb094def16597db7f8a6fe447bce6a9815f323669c786a6f"
+    },
+    "sameSha256": false,
+    "basicFileHashAssessment": "meaningfully_new_at_file_hash_level",
+    "visualAssessment": "meaningfully_new: selected DTR-9 raster has clearer DTR-8 road/crosswalk structure, one primary G cue, no in-scene address numerals, and different composition/details from DTR-6.",
+    "alternateGeneratedCandidateRejected": {
+      "reason": "It contained multiple G cues and visible storefront address numerals, including the prior Dunkin address failure mode.",
+      "committed": false
+    }
+  },
+  "requirementsAssessment": {
+    "allTargetsRepresented": true,
+    "targets": [
+      {
+        "targetId": "grillpoint-deli",
+        "label": "Grillpoint Deli",
+        "representedInRaster": true,
+        "geometryFieldsConsumed": [
+          "buildingMassBounds",
+          "storefrontBounds",
+          "facadeFrontageBounds",
+          "signPanelBounds",
+          "entranceBounds",
+          "windowBounds",
+          "addressAnchorPoint"
+        ],
+        "unsupportedFieldsOmittedOrReviewOnly": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ]
+      },
+      {
+        "targetId": "mcdonalds",
+        "label": "McDonald's",
+        "representedInRaster": true,
+        "geometryFieldsConsumed": [
+          "buildingMassBounds",
+          "storefrontBounds",
+          "facadeFrontageBounds",
+          "signPanelBounds",
+          "entranceBounds",
+          "windowBounds",
+          "addressAnchorPoint"
+        ],
+        "unsupportedFieldsOmittedOrReviewOnly": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ]
+      },
+      {
+        "targetId": "dunkin",
+        "label": "Dunkin'",
+        "representedInRaster": true,
+        "geometryFieldsConsumed": [
+          "buildingMassBounds",
+          "storefrontBounds",
+          "facadeFrontageBounds",
+          "signPanelBounds",
+          "entranceBounds",
+          "windowBounds",
+          "addressAnchorPoint"
+        ],
+        "unsupportedFieldsOmittedOrReviewOnly": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ]
+      },
+      {
+        "targetId": "citizens-bank",
+        "label": "Citizens Bank",
+        "representedInRaster": true,
+        "geometryFieldsConsumed": [
+          "buildingMassBounds",
+          "storefrontBounds",
+          "facadeFrontageBounds",
+          "signPanelBounds",
+          "entranceBounds",
+          "windowBounds",
+          "addressAnchorPoint"
+        ],
+        "unsupportedFieldsOmittedOrReviewOnly": [
+          "automatic reference-photo facade parsing",
+          "automatic storefront frontage/order measurement",
+          "automatic exact address-to-scene projection",
+          "production/public exact-geometry claim"
+        ]
+      },
+      {
+        "targetId": "greenpoint-g-subway",
+        "label": "Greenpoint G station",
+        "representedInRaster": true,
+        "geometryFieldsConsumed": [
+          "primarySubwayCue",
+          "addressAnchorPoint"
+        ],
+        "unsupportedFieldsOmittedOrReviewOnly": [
+          "automatic exact station entrance geometry",
+          "station stair/elevator orientation from official geometry",
+          "public/product station coordinate claim"
+        ]
+      }
+    ],
+    "storefrontOrderMatchesAdapter": true,
+    "roadSidewalkCrosswalkPrimitivesVisible": true,
+    "onePrimarySubwayCuePreserved": true,
+    "addressLabelPolicyRespected": true,
+    "unsupportedDetailsOmittedOrMarkedReviewOnly": true,
+    "polishedRasterGenerated": true,
+    "newReadinessLayerCreated": false,
+    "liveScrapingOrExternalAcquisitionUsed": false,
+    "googleStreetViewOr3DTilesExtractionUsed": false,
+    "productionPublicExactGeometryClaimMade": false
+  },
+  "scores": [
+    {
+      "criterion": "art_direction_fidelity",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Isometric/editorial Greenpoint Explorer look is coherent and review-board labeled."
+    },
+    {
+      "criterion": "reference_photo_fidelity",
+      "score": 3,
+      "acceptable": false,
+      "correctiveDeltaForDtr10": "Tighten facade material cues, reduce generic fine detail, and suppress generated microtext."
+    },
+    {
+      "criterion": "storefront_order_accuracy",
+      "score": 4,
+      "acceptable": true,
+      "notes": "NW/NE/SW/SE business order is preserved."
+    },
+    {
+      "criterion": "facade_entrance_window_accuracy",
+      "score": 3,
+      "acceptable": false,
+      "correctiveDeltaForDtr10": "Use a blueprint overlay mask to constrain entrance/window/sign panel positions more tightly."
+    },
+    {
+      "criterion": "subway_cue_placement",
+      "score": 4,
+      "acceptable": true,
+      "notes": "One primary Greenpoint G cue is preserved on the SE/Greenpoint Ave side."
+    },
+    {
+      "criterion": "address_policy",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Exact addresses are QA-only footer metadata; scene body avoids address numerals."
+    },
+    {
+      "criterion": "overall_mvp_demo_usefulness",
+      "score": 4,
+      "acceptable": true,
+      "notes": "Useful for MVP feedback as a controlled styled attempt, not a deterministic production renderer proof."
+    }
+  ],
+  "pipelineVerdict": {
+    "provesEnoughForMvpFeedback": true,
+    "claimLimits": "DTR-9 proves that the DTR-8 geometry-first adapter can control a styled review raster enough for MVP feedback. It does not prove pixel-exact deterministic rasterization or production/public exact geometry.",
+    "recommendedNextBatch": "Phase 2DTR-10 should be one narrow corrective visual pass focused on facade/window/entrance alignment and microtext cleanup using the DTR-8 blueprint as an overlay mask."
+  }
+}
