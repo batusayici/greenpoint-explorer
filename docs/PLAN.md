@@ -60,7 +60,7 @@ Use these in order when documents conflict:
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
-- Current implementation evidence: normal mode uses the DTR-11 review-only raster plate with pan, zoom, hover, click/tap, compact store-info cards, art-directed hover/selected contours, fixed-view-angle affordance, and one symbolic/context Greenpoint G cue target. MVP-29E remains a baseline/reference asset. QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, and layer controls. See the ledger and archived ledger history for batch detail.
+- Current implementation evidence: normal mode uses the DTR-11 review-only raster plate with the redundant raster footer clipped from the interactive viewport, pan, zoom, hover, click/tap, compact store-info cards, open art-directed hover/selected edge accents, fixed-view-angle affordance, and one symbolic/context Greenpoint G cue target. MVP-29E remains a baseline/reference asset. QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, and layer controls. See the ledger and archived ledger history for batch detail.
 
 ## Roadmap Summary
 

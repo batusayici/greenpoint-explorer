@@ -64,6 +64,40 @@ Next pointer:
 
 ## Entries
 
+### 2026-06-03 - DTR-11 Footer And Art-Direction Follow-Up
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Correct the visible issues Batu flagged in the deployed/local review scene: remove the redundant grey raster footer from the interactive viewport, replace closed polygon target outlines with shorter art-directed edge accents, and tighten card styling toward the reference paper/ink direction.
+
+Files changed:
+- `src/PlaceholderWorld.jsx`
+- `src/sceneManifest.js`
+- `src/styles.css`
+- `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Scene manifest JSON parse.
+- `npm run build`
+- `git diff --check`
+- Runtime page text loaded in the in-app browser; screenshot capture was blocked by the browser wrapper timing out.
+
+Outcome:
+- Added manifest-driven `visibleBounds` for the DTR-11 primary plate so the interactive viewport crops out the redundant grey footer without editing the raster asset.
+- Changed target display contours to open edge-accent paths that trace storefront/transit edges instead of closed polygon hulls.
+- Tightened selected-card styling toward the approved paper/ink reference language while keeping card content compact and truth-safe.
+- Preserved no DTR-12, no new raster, no new source data, no production/public claims, and true-rotation deferral.
+
+Unresolved decisions:
+- Batu owns acceptance/revision of the corrected hover/selected and card visual treatment.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the corrected DTR-11 demo and Vercel Preview publication for external feedback.
+
 ### 2026-06-03 - DTR-11 MVP Card And Hover Correction
 
 Status:

@@ -65,6 +65,7 @@ export default function PlaceholderWorld({
 
       drawRasterPlate(world, scene, texture);
       stateRef.current.targetGraphics = drawTargets(world, scene.targets, reviewMode, qaLayers);
+      applyWorldVisibleBounds(world, scene);
 
       const resizeObserver = new ResizeObserver(() => {
         resizeApp(host, app);
@@ -268,29 +269,30 @@ function resizeApp(host, app) {
 function clampAndApplyCamera(host, scene, state) {
   const { camera, world } = state;
   if (!world) return;
+  const sceneSize = getVisibleSceneSize(scene);
 
   if (!state.cameraInitialized) {
-    const fitWidthScale = host.clientWidth / scene.size.width;
-    const fitHeightScale = host.clientHeight / scene.size.height;
+    const fitWidthScale = host.clientWidth / sceneSize.width;
+    const fitHeightScale = host.clientHeight / sceneSize.height;
     const scale = host.clientWidth >= 760
       ? Math.min(fitWidthScale, fitHeightScale) * 0.98
       : Math.max(fitWidthScale, fitHeightScale) * 0.92;
     camera.scale = clamp(scale, CAMERA.minScale, CAMERA.desktopMaxOverviewScale);
-    camera.x = (host.clientWidth - scene.size.width * camera.scale) / 2;
-    camera.y = (host.clientHeight - scene.size.height * camera.scale) / 2;
+    camera.x = (host.clientWidth - sceneSize.width * camera.scale) / 2;
+    camera.y = (host.clientHeight - sceneSize.height * camera.scale) / 2;
     state.cameraInitialized = true;
   }
 
-  const minX = host.clientWidth - scene.size.width * camera.scale - 44;
-  const minY = host.clientHeight - scene.size.height * camera.scale - 44;
+  const minX = host.clientWidth - sceneSize.width * camera.scale - 44;
+  const minY = host.clientHeight - sceneSize.height * camera.scale - 44;
   const maxX = 44;
   const maxY = 44;
 
-  camera.x = scene.size.width * camera.scale < host.clientWidth
-    ? (host.clientWidth - scene.size.width * camera.scale) / 2
+  camera.x = sceneSize.width * camera.scale < host.clientWidth
+    ? (host.clientWidth - sceneSize.width * camera.scale) / 2
     : clamp(camera.x, minX, maxX);
-  camera.y = scene.size.height * camera.scale < host.clientHeight
-    ? (host.clientHeight - scene.size.height * camera.scale) / 2
+  camera.y = sceneSize.height * camera.scale < host.clientHeight
+    ? (host.clientHeight - sceneSize.height * camera.scale) / 2
     : clamp(camera.y, minY, maxY);
 
   world.position.set(camera.x, camera.y);
@@ -305,6 +307,24 @@ function drawRasterPlate(world, scene, texture) {
   plate.height = scene.size.height;
   plate.alpha = 1;
   world.addChild(plate);
+}
+
+function applyWorldVisibleBounds(world, scene) {
+  const bounds = scene.plate?.visibleBounds;
+  if (!bounds) return;
+
+  const mask = new Graphics()
+    .rect(bounds.x, bounds.y, bounds.width, bounds.height)
+    .fill({ color: 0xffffff, alpha: 1 });
+  world.addChild(mask);
+  world.mask = mask;
+}
+
+function getVisibleSceneSize(scene) {
+  return {
+    width: scene.plate?.visibleBounds?.width ?? scene.size.width,
+    height: scene.plate?.visibleBounds?.height ?? scene.size.height,
+  };
 }
 
 function drawTargets(world, targets, reviewMode, qaLayers) {
@@ -974,34 +994,35 @@ function drawArtDirectedTargetContour(graphics, target, isSelected) {
   }
 
   for (const contour of contourPaths) {
-    if (!drawOutlinePath(graphics, contour)) continue;
-    graphics.fill({ color: 0xf0bc45, alpha: isSelected ? 0.05 : 0.026 });
-  }
-
-  for (const contour of contourPaths) {
-    if (!drawOutlinePath(graphics, contour)) continue;
+    if (!drawDisplayContourPath(graphics, contour)) continue;
     graphics.stroke({
       color: 0x171716,
-      width: isSelected ? 7.4 : 5.8,
-      alpha: isSelected ? 0.5 : 0.36,
+      width: isSelected ? 6.2 : 4.6,
+      alpha: isSelected ? 0.48 : 0.32,
+      cap: "round",
+      join: "round",
     });
   }
 
   for (const contour of contourPaths) {
-    if (!drawOutlinePath(graphics, contour)) continue;
+    if (!drawDisplayContourPath(graphics, contour)) continue;
     graphics.stroke({
       color: 0xf0bc45,
-      width: isSelected ? 5.4 : 4.1,
-      alpha: isSelected ? 0.52 : 0.34,
+      width: isSelected ? 4.6 : 3.2,
+      alpha: isSelected ? 0.62 : 0.42,
+      cap: "round",
+      join: "round",
     });
   }
 
   for (const contour of contourPaths) {
-    if (!drawOutlinePath(graphics, contour)) continue;
+    if (!drawDisplayContourPath(graphics, contour)) continue;
     graphics.stroke({
       color: 0xffedb7,
-      width: isSelected ? 2.3 : 1.8,
-      alpha: isSelected ? 0.88 : 0.66,
+      width: isSelected ? 2.1 : 1.6,
+      alpha: isSelected ? 0.9 : 0.7,
+      cap: "round",
+      join: "round",
     });
   }
 }
@@ -1044,6 +1065,22 @@ function drawOutlinePath(graphics, points) {
     graphics.lineTo(points[index].x, points[index].y);
   }
   graphics.lineTo(points[0].x, points[0].y);
+  return true;
+}
+
+function drawDisplayContourPath(graphics, points) {
+  if (!Array.isArray(points) || points.length < 2) return false;
+  graphics.moveTo(points[0].x, points[0].y);
+  for (let index = 1; index < points.length; index += 1) {
+    const previous = points[index - 1];
+    const current = points[index];
+    if (current.curve === "quadratic" || current.control) {
+      const control = current.control ?? previous;
+      graphics.quadraticCurveTo(control.x, control.y, current.x, current.y, 10);
+    } else {
+      graphics.lineTo(current.x, current.y);
+    }
+  }
   return true;
 }
 

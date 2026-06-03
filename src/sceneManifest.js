@@ -125,6 +125,7 @@ export function loadMvpSceneFromManifest(
       src: assetSrcById[primaryAsset.id],
       label: primaryAsset.label,
       sourcePath: primaryAsset.sourcePath,
+      visibleBounds: primaryAsset.visibleBounds ?? null,
     },
     sourceRefs,
     manifestQA: buildSceneQA(

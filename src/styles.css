@@ -437,21 +437,21 @@ h1 {
   right: 18px;
   bottom: 18px;
   z-index: 5;
-  width: min(360px, calc(100% - 36px));
+  width: min(380px, calc(100% - 36px));
   max-height: calc(100% - 36px);
   overflow: auto;
-  padding: 15px 15px 13px;
-  border: 1px solid rgba(38, 34, 29, 0.66);
-  border-top: 3px solid #a94f38;
-  border-radius: 6px;
+  padding: 17px 16px 13px;
+  border: 2px solid #27231f;
+  border-radius: 4px;
   color: #211f1b;
   background:
-    radial-gradient(circle at 18% 22%, rgba(160, 102, 65, 0.1), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
-    rgba(243, 228, 200, 0.96);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 26%, rgba(148, 91, 48, 0.07) 62%, transparent),
+    repeating-linear-gradient(0deg, rgba(42, 35, 27, 0.025), rgba(42, 35, 27, 0.025) 1px, transparent 1px, transparent 18px),
+    #f1dfb7;
   box-shadow:
-    0 20px 46px rgba(0, 0, 0, 0.34),
-    0 0 0 1px rgba(248, 236, 212, 0.16);
+    0 16px 0 -12px rgba(169, 79, 56, 0.9),
+    0 18px 38px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(248, 236, 212, 0.18);
 }
 
 .card-attachment {
@@ -477,22 +477,24 @@ h1 {
 
 .card-label {
   display: inline-flex;
-  margin-bottom: 9px;
-  padding: 3px 7px;
+  margin-bottom: 8px;
+  padding: 4px 8px 3px;
+  border: 1px solid rgba(38, 34, 29, 0.34);
   border-radius: 3px;
-  color: #f6ead2;
-  background: rgba(169, 79, 56, 0.9);
+  color: #f3dfb2;
+  background: #a9553e;
   font-size: 0.58rem;
-  font-weight: 880;
+  font-weight: 920;
+  line-height: 1;
 }
 
 .selected-card h2 {
-  margin: 0 38px 4px 0;
+  margin: 0 36px 5px 0;
   color: #161515;
-  font-size: 1.18rem;
+  font-size: 1.08rem;
   font-weight: 900;
   letter-spacing: 0;
-  line-height: 1.02;
+  line-height: 1.04;
   text-transform: uppercase;
 }
 
@@ -515,11 +517,11 @@ h1 {
 }
 
 .card-category {
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(32, 30, 27, 0.22);
-  color: #253e3e;
-  font-size: 0.68rem;
+  margin-bottom: 9px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(32, 30, 27, 0.3);
+  color: #3b332c;
+  font-size: 0.64rem;
   font-weight: 850;
 }
 
@@ -537,8 +539,8 @@ h1 {
 }
 
 .store-card-facts dt {
-  color: rgba(32, 30, 27, 0.58);
-  font-size: 0.54rem;
+  color: rgba(32, 30, 27, 0.62);
+  font-size: 0.5rem;
   font-weight: 880;
   letter-spacing: 0.06em;
   line-height: 1.16;
@@ -548,7 +550,7 @@ h1 {
 .store-card-facts dd {
   margin: 0;
   color: #2c2823;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
   line-height: 1.24;
 }
@@ -1086,13 +1088,12 @@ h1 {
 
 .card-disclaimer {
   display: block;
-  margin: 10px 0 0;
-  padding: 4px 6px;
-  border: 1px solid rgba(32, 30, 27, 0.14);
-  border-radius: 3px;
-  color: rgba(32, 30, 27, 0.58);
-  background: rgba(255, 248, 232, 0.34);
-  font-size: 0.52rem;
+  margin: 9px 0 0;
+  padding: 7px 0 0;
+  border-top: 1px solid rgba(32, 30, 27, 0.22);
+  color: rgba(32, 30, 27, 0.62);
+  background: transparent;
+  font-size: 0.5rem;
   font-weight: 780;
   letter-spacing: 0;
   line-height: 1.2;
@@ -1121,18 +1122,18 @@ h1 {
 
 .icon-button {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 13px;
+  right: 13px;
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   place-items: center;
   border: 1px solid rgba(32, 30, 27, 0.65);
-  border-radius: 4px;
+  border-radius: 3px;
   color: #f5e5c3;
   background: #292623;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 850;
 }
 
@@ -1273,10 +1274,10 @@ h1 {
   .selected-card {
     right: 8px;
     bottom: 66px;
-    width: calc(100% - 16px);
-    max-height: 45%;
+    width: min(390px, calc(100% - 16px));
+    max-height: 42%;
     overflow: auto;
-    padding: 14px 13px 11px;
+    padding: 14px 13px 10px;
   }
 
   .card-attachment {
@@ -1290,7 +1291,7 @@ h1 {
 
   .selected-card h2 {
     margin-right: 38px;
-    font-size: 1.14rem;
+    font-size: 1rem;
   }
 
   .card-summary {
@@ -1382,6 +1383,6 @@ h1 {
 
   .card-disclaimer {
     max-width: 100%;
-    font-size: 0.5rem;
+    font-size: 0.48rem;
   }
 }

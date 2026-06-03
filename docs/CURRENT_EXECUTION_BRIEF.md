@@ -1,6 +1,6 @@
 # Current Execution Brief - DTR-11 MVP Correction Review Hold
 
-Status: DTR-11 MVP interaction/card/hover correction is complete for Batu review except for remote Vercel Preview publication, which is blocked by local Vercel CLI auth/write access outside the repo sandbox. Phase 2DTR remains complete for MVP-feedback purposes. The next executable task is pending Batu review, Vercel auth/deploy completion, external-feedback direction, or bounded acceptance/audit direction.
+Status: DTR-11 MVP interaction/card/hover correction is complete for Batu review, with a follow-up fix removing the redundant raster footer from the interactive viewport and replacing closed polygon target outlines with shorter art-directed edge accents. Remote Vercel Preview publication remains the selected external-review route. Phase 2DTR remains complete for MVP-feedback purposes. The next executable task is pending Batu review, Vercel deploy completion, external-feedback direction, or bounded acceptance/audit direction.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -23,6 +23,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Batu opened a targeted MVP correction batch for simplified cards, art-directed hover/selected outlines based on the attached Batch 13 reference images, Vercel Preview sharing, and rotation feasibility documentation.
 - The app card path now shows compact store/context information plus a tiny review-only footer; detailed source/status records remain in the data/review package rather than the visible external-review card.
 - The visible hover/selected target contours now use separate display paths and warm paper/ink styling so the presentation layer is not the same as the click/tap hit geometry.
+- The redundant grey review/footer strip from the DTR-11 raster is clipped out of the interactive viewport without editing or replacing the raster asset.
+- The latest target display paths are open storefront/transit-edge accents rather than closed polygon hulls.
 - True rotation is deferred because the scene is raster-first rather than a true 3D world; the app exposes a fixed-view-angle affordance instead of faking 3D rotation.
 - The Digital Neighborhoods Signal Log now lives at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` as strategic context only, with compact roadmap/scope/architecture reconciliation preserving local-recognizability, editorial/local-knowledge, provenance-as-trust/craft, and future tile-based scale-validation signals without opening new execution scope.
 - Phase 2 remains the active Data-Driven Scene MVP phase.
@@ -103,6 +105,7 @@ Findings to review:
 - The app now opens the DTR-11 review-only raster as the active interactive demo scene.
 - The app supports pan, zoom, hover, click/tap selected state, compact store-info cards, and mobile containment at review-demo level.
 - Hover/selected target outlines are now warm art-direction presentation contours, not debug polygon outlines or exact geometry claims.
+- The interactive viewport now crops the displayed DTR-11 plate to the illustrated scene area, hiding the redundant grey footer strip while preserving the review-only raster asset.
 - Rotation is deferred and represented as a fixed view angle because true raster rotation would be misleading.
 - Vercel Preview is the selected share route, but deployment did not complete in Codex because the sandbox did not grant the Vercel CLI write access to its auth file and no `VERCEL_TOKEN` was available.
 - The package still shows the DTR-11 hero scene, DTR-10 to DTR-11 facade improvement, and compact pipeline evidence.
