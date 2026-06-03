@@ -1,6 +1,6 @@
-# Current Execution Brief - DTR-11 Interactive Demo Review Hold
+# Current Execution Brief - DTR-11 MVP Correction Review Hold
 
-Status: DTR-11 Interactive Demo Integration is complete for Batu review. Phase 2DTR remains complete for MVP-feedback purposes. The next executable task is pending Batu approval, external-feedback direction, or bounded acceptance/audit direction.
+Status: DTR-11 MVP interaction/card/hover correction is complete for Batu review except for remote Vercel Preview publication, which is blocked by local Vercel CLI auth/write access outside the repo sandbox. Phase 2DTR remains complete for MVP-feedback purposes. The next executable task is pending Batu review, Vercel auth/deploy completion, external-feedback direction, or bounded acceptance/audit direction.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -20,7 +20,11 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Phase 2DTR-11 produced a reference-image-constrained facade fidelity pass from DTR-10, plus per-storefront facade extraction/spec records, crop boards, and QA report.
 - The MVP feedback demo package gathered the DTR-11 hero raster, DTR-11 facade before/after board, compact pipeline board, reviewer-facing README, and feedback checklist.
 - The DTR-11 hero raster is now integrated into the app as the review-only interactive MVP demo plate with pan, zoom, hover, click/tap, compact cards, and one symbolic/context Greenpoint G cue target.
+- Batu opened a targeted MVP correction batch for simplified cards, art-directed hover/selected outlines based on the attached Batch 13 reference images, Vercel Preview sharing, and rotation feasibility documentation.
+- The app card path now shows compact store/context information plus a tiny review-only footer; detailed source/status records remain in the data/review package rather than the visible external-review card.
+- The visible hover/selected target contours now use separate display paths and warm paper/ink styling so the presentation layer is not the same as the click/tap hit geometry.
 - True rotation is deferred because the scene is raster-first rather than a true 3D world; the app exposes a fixed-view-angle affordance instead of faking 3D rotation.
+- The Digital Neighborhoods Signal Log now lives at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` as strategic context only, with compact roadmap/scope/architecture reconciliation preserving local-recognizability, editorial/local-knowledge, provenance-as-trust/craft, and future tile-based scale-validation signals without opening new execution scope.
 - Phase 2 remains the active Data-Driven Scene MVP phase.
 - Phase 3 remains reserved for future Neighborhood Scale Validation.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
@@ -34,6 +38,22 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - Phase 2DTR-11 output packet: `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/`.
 - MVP feedback demo package: `docs/mvp-review/mvp-feedback-demo-package/`.
 - `docs/PHASE_2_PLAN.md` and `docs/AGENT_HANDOFF.md` are historical stubs only, while `docs/PLAN.md` remains the active roadmap.
+
+## Completed Docs-Only Reconciliation
+
+Batu approved one docs-only Strategic Signal Doc Reconciliation batch. It moved the Digital Neighborhoods Signal Log to the `AGENTS.md` pointer path and updated only execution-control/planning docs.
+
+Allowed files for that completed batch:
+
+- `AGENTS.md`
+- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/ARCHITECTURE.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+The batch did not authorize or change app/source files, generated artifacts, raster images, package files, tests, build tooling, source policy, public-readiness claims, Phase 3 implementation, DTR-12, Google/Street View/3D Tiles extraction, scraping, production visual assets, live data integration, backend services, deployment, broad map coverage, or weakened promotion/product-copy gates.
 
 ## Phase 2DTR Objective
 
@@ -55,8 +75,9 @@ Batu review is required before the next implementation batch.
 
 Review question:
 
-- Accept, revise, or reject the DTR-11 interactive demo as ready for external feedback sessions.
-- Decide whether the next step should be external feedback sessions, a bounded MVP acceptance/audit pass, or a targeted interaction/card/hotspot revision.
+- Accept, revise, or reject the corrected DTR-11 interactive demo as ready for external feedback sessions.
+- Complete Vercel Preview publication after local Vercel CLI auth/write access is available, or provide an equivalent approved review-only remote link.
+- Decide whether the next step should be external feedback sessions or a bounded MVP acceptance/audit pass.
 
 Review packet:
 
@@ -65,6 +86,7 @@ Review packet:
   - `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
   - `src/mvpPlaceData.js`
   - `src/App.jsx`
+  - `src/PlaceholderWorld.jsx`
   - `src/styles.css`
 - `docs/mvp-review/mvp-feedback-demo-package/README.md`
 - `docs/mvp-review/mvp-feedback-demo-package/feedback-script-checklist.md`
@@ -79,23 +101,28 @@ Findings to review:
 - Phase 2DTR is complete for MVP-feedback purposes.
 - Do not open DTR-12.
 - The app now opens the DTR-11 review-only raster as the active interactive demo scene.
-- The app supports pan, zoom, hover, click/tap selected state, compact business/status cards, and mobile containment at review-demo level.
+- The app supports pan, zoom, hover, click/tap selected state, compact store-info cards, and mobile containment at review-demo level.
+- Hover/selected target outlines are now warm art-direction presentation contours, not debug polygon outlines or exact geometry claims.
 - Rotation is deferred and represented as a fixed view angle because true raster rotation would be misleading.
+- Vercel Preview is the selected share route, but deployment did not complete in Codex because the sandbox did not grant the Vercel CLI write access to its auth file and no `VERCEL_TOKEN` was available.
 - The package still shows the DTR-11 hero scene, DTR-10 to DTR-11 facade improvement, and compact pipeline evidence.
 - Facade transfer remains improved but not pixel-perfect; exact facade reproduction would require explicit masks, perspective warp, and path-level compositing.
+- Strategic research signals now reinforce that local recognizability, editorial/local knowledge, and provenance-as-trust/craft matter for review, while the current MVP remains one narrow review-only four-corner diorama.
 - Review-only status and production/public gates remain intact.
 
 No new app/source edit, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, or production/public-readiness change is authorized until Batu updates this brief or gives explicit direction.
 
 ## Proposed Next Task After Batu Review
 
-External Feedback Sessions Or Bounded MVP Acceptance Audit.
+Vercel Preview Publication, Then External Feedback Sessions Or Bounded MVP Acceptance Audit.
 
 Purpose:
 
+- Publish the corrected review-only DTR-11 demo through the selected Vercel Preview route once local Vercel CLI auth/write access is available.
 - Use the DTR-11 interactive demo and MVP feedback demo package to collect feedback or audit current demo readiness.
 - Preserve review-only labeling and no production/public exact-geometry claims.
 - Do not reopen facade/raster correction unless external feedback shows facade fidelity is a decisive blocker.
+- Do not treat the Vercel Preview link as production/public factual release.
 
 This is proposed, not opened. A later brief or Batu message must name the exact allowed files and acceptance criteria before implementation.
 
@@ -104,7 +131,8 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - Review-only.
 - No product-copy readiness change.
 - No production/public readiness change.
-- No DTR-12, facade/raster correction loop, new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
+- No DTR-12, facade/raster correction loop, broad new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
+- No Phase 3 implementation, broad tile production, seamless tiling, or production scale architecture until explicitly opened.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.
@@ -115,6 +143,7 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 ## Recent DTR-11 Interactive Demo Changes
 
 - `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
 - `src/mvpPlaceData.js`
 - `src/styles.css`
 - `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
@@ -122,6 +151,9 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - `docs/PLAN.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/ARCHITECTURE.md`
+- `docs/MVP_SCOPE.md`
+- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
 - `docs/mvp-review/mvp-feedback-demo-package/`
 
 ## Verification For DTR-11 Interactive Demo
@@ -131,6 +163,7 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - Primary manifest asset is `asset-dtr-11-interactive-demo-raster`; MVP-29E remains `baseline-raster-reference`.
 - Production build imports the DTR-11 PNG.
 - Browser screenshots captured for default, selected, and mobile containment states when possible.
+- Vercel CLI auth/deploy attempt blocked by sandbox write restriction for `/Users/batusayici/Library/Application Support/com.vercel.cli/auth.json`; no `VERCEL_TOKEN` was available.
 - `npm run build`
 - `git diff --check`
 - `git status --short`

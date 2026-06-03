@@ -16,6 +16,12 @@ Use `docs/MVP_SCOPE.md` for detailed MVP boundaries. Use `docs/MVP_EXECUTION_LED
 
 Greenpoint Isometric Explorer should prove that a small authored Greenpoint scene can feel visually distinctive, locally specific, worth clicking, and reproducible from traceable real-world inputs.
 
+## Strategic Research Signals
+
+`docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` is strategic context only. It frames Greenpoint as the smallest proof slice for a possible future generate-any-neighborhood pipeline, but it does not expand current MVP scope, authorize Phase 3 implementation, approve new sources, or change production/public-readiness gates.
+
+The durable product frame is a human-directed, data-grounded neighborhood explorer that turns real places into recognizable, browsable local worlds. Provenance should therefore support trust and craft, not only safety review: source/status records, manual editorial judgment, and visible review evidence should help Batu and future reviewers understand why the scene feels locally specific without weakening factual, licensing, or promotion gates.
+
 ## MVP Scope Pointer
 
 The MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. Its detailed boundaries, non-goals, must-have/should-have/cuttable items, and acceptance rules live in `docs/MVP_SCOPE.md`.
@@ -35,7 +41,7 @@ Use these in order when documents conflict:
 ## Current State Snapshot
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track.
-- Current next task: Batu review of the DTR-11 interactive demo; external feedback sessions, bounded MVP acceptance audit, or a targeted interaction/card/hotspot revision are proposed next.
+- Current next task: Batu review of the corrected DTR-11 interactive demo, followed by Vercel Preview publication once local CLI auth/write access is available, then external feedback sessions or a bounded MVP acceptance audit.
 - DTR-11 is now the active review-only interactive demo raster in the app. MVP-29E remains the manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
 - Phase 2DTR-1 now has a review packet at `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/` with a structured Grillpoint/NW source object, deterministic raster/spec artifact, visual-instruction provenance map, and visible comparison board against MVP-29E.
 - Phase 2DTR-2 now has a review packet at `docs/mvp-review/phase-2dtr-2-four-target-structured-facade-fixture/` with a four-target structured facade fixture, deterministic raster/spec index, visual-instruction provenance map, and visible comparison board.
@@ -54,7 +60,7 @@ Use these in order when documents conflict:
 - Approved visual direction: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Active visual reference source: `docs/approved-reference-corpus/`.
 - Active reusable-system evidence: `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`.
-- Current implementation evidence: normal mode uses the DTR-11 review-only raster plate with pan, zoom, hover, click/tap, compact cards, fixed-view-angle affordance, and one symbolic/context Greenpoint G cue target. MVP-29E remains a baseline/reference asset. QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, selected-card evidence/status rows, and layer controls. See the ledger and archived ledger history for batch detail.
+- Current implementation evidence: normal mode uses the DTR-11 review-only raster plate with pan, zoom, hover, click/tap, compact store-info cards, art-directed hover/selected contours, fixed-view-angle affordance, and one symbolic/context Greenpoint G cue target. MVP-29E remains a baseline/reference asset. QA mode can surface generated draft-scene entities, active-target source/status records, official-footprint candidate comparisons, and layer controls. See the ledger and archived ledger history for batch detail.
 
 ## Roadmap Summary
 
@@ -62,10 +68,10 @@ Use these in order when documents conflict:
 | --- | --- | --- |
 | Governance and scope | Complete | Authority, source-of-truth order, review-only status, and production gates are documented. |
 | Visual direction | Complete | Inked Indie / Compact Corner is approved as visual direction only, not production asset approval. |
-| Review-only prototype baseline | Mostly complete | DTR-11 is the current interactive review-demo raster/app scene; MVP-29E remains the baseline/reference plate. |
+| Review-only prototype baseline | Mostly complete | DTR-11 is the current interactive review-demo raster/app scene with simplified cards and art-directed hover contours; MVP-29E remains the baseline/reference plate. |
 | Phase 2A-2AC data groundwork | Complete as groundwork | Useful manifest/source/QA evidence exists, but it remains review-only and not production schema/pipeline approval. |
 | Phase 2DTR data-to-raster proof | Complete for MVP feedback | The current proof is sufficient to package for external feedback; do not open DTR-12 or continue facade/raster correction loops unless feedback shows facade fidelity is decisive. |
-| Phase 3 Neighborhood Scale Validation | Future | Reserved for later scale testing after the current intersection proof is accepted. |
+| Phase 3 Tile-Based Neighborhood Scale Validation | Future | Reserved for later validation of tile partitioning, batch rendering, cross-tile consistency, automated QA boards, source freshness, runtime/cost, and review burden after the current intersection proof is accepted. |
 | MVP QA/demo freeze | Future | Blocked until Batu accepts sufficient four-corner output and opens the QA/demo freeze. |
 
 ## Phase 2DTR Outcome Plan
@@ -83,7 +89,7 @@ Use these in order when documents conflict:
 11. Phase 2DTR-11 - Reference-Image Facade Fidelity Pass: complete for Batu review; output made one narrow facade/sign/window/entrance pass using supplied real facade imagery while preserving DTR-10 geometry.
 12. MVP Feedback Demo Packaging: complete for Batu review; output packages the DTR-11 hero raster, facade before/after board, compact pipeline board, reviewer README, feedback checklist, and manifest.
 
-No Phase 2DTR-12 should be opened. Do not reopen facade/raster correction unless external feedback shows facade fidelity is a decisive blocker.
+No Phase 2DTR-12 should be opened. Do not reopen facade/raster correction unless external feedback shows facade fidelity is a decisive blocker. Any later corrective styled-raster pass should continue only if it materially improves blueprint/reference obedience; otherwise the next visual-system work should pivot toward reusable visual primitives, masks, modules, or constrained asset approaches under a later approved brief.
 
 Phase 2 now has three lanes:
 
@@ -95,9 +101,9 @@ Phase 2 now has three lanes:
 
 The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 
-- Batu review of the DTR-11 interactive demo is now the active hold.
+- Batu review of the corrected DTR-11 interactive demo is now the active hold.
 - Review packet: `docs/mvp-review/mvp-feedback-demo-package/`.
-- Proposed next task after Batu review: external feedback sessions, bounded MVP acceptance audit, or a targeted interaction/card/hotspot revision.
+- Proposed next task after Batu review: complete Vercel Preview publication once local CLI auth/write access is available, then run external feedback sessions or a bounded MVP acceptance audit.
 - The next implementation batch must remain review-only and must not begin new app/source edits, public interfaces, package/tooling changes, DTR-12, another facade/raster correction loop, or production/public-readiness changes until the current brief explicitly opens that scope.
 
 ## Locked Decisions
@@ -109,6 +115,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - Phase 2DTR stays inside Phase 2 and does not approve production schemas, public interfaces, production assets, live source acquisition, or public readiness.
 - Batu-supplied reference photos are approved only as MVP review/source facade imagery for Phase 2DTR-style review generation and facade-field extraction. They are not production assets, training input, texture sources, or a general source-policy approval.
 - Google/Street View/3D Tiles extraction, third-party image scraping, production reuse, training, texture extraction, and production/public claims remain blocked unless a later explicit approval gate opens them.
+- Google 3D Tiles may be studied only as a strategic fidelity benchmark/reference topic until licensing, attribution, and allowed-use boundaries are explicitly resolved; this does not approve extraction, previsualization, source-of-truth use, generation input, texture use, or production use.
 - The approved reference corpus is the active visual reference source for future visual, prototype, and assetization work.
 
 ## Active Blockers
@@ -117,13 +124,13 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - Production visual assets, production asset direction, production asset pipeline, production buildability, and production scalability are unapproved.
 - Unsupported exact geometry claims remain blocked. Exact storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry may now be pursued in MVP review artifacts when backed by source/reference evidence and explicit status labels.
 - NYC Open Data/building footprints are scaffold geometry context only; they do not by themselves prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or station geometry.
-- Normal-mode code-native primary world art, raster asset edits, full MVP-29G screenshot QA, MVP-30 QA/demo freeze, package/tooling changes, package-script/CI additions, source-vendor integration, live data, scraping, backend/CMS/persistence/analytics, deployment, and broad coverage remain blocked unless a later brief explicitly opens them.
+- Normal-mode code-native primary world art, raster asset edits, full MVP-29G screenshot QA, MVP-30 QA/demo freeze, package/tooling changes, package-script/CI additions, source-vendor integration, live data, scraping, backend/CMS/persistence/analytics, production deployment, and broad coverage remain blocked unless a later brief explicitly opens them. A review-only Vercel Preview share link is the selected external-feedback route but remains pending local CLI auth/write access.
 
 ## Pending Decisions
 
 - Whether Batu accepts, revises, or rejects the focused MVP-29E raster/app integration output.
-- Whether Batu accepts, revises, or rejects the DTR-11 interactive demo as ready for external feedback sessions.
-- Whether the DTR-11 raster/app demo needs a targeted hotspot/card/mobile/interaction revision before external review.
+- Whether Batu accepts, revises, or rejects the corrected DTR-11 interactive demo as ready for external feedback sessions.
+- Whether the Vercel Preview publication should be completed locally, via token, or through an equivalent approved review-only share route.
 - Whether Batu opens full MVP-29G screenshot QA recovery and what screenshot states are required.
 - Whether Batu opens bounded MVP acceptance audit or external feedback sessions after reviewing the interactive demo.
 - Which structured facade/source fields should influence normal-mode scene rendering versus QA/debug-only overlays as Phase 2DTR matures.
@@ -138,6 +145,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`: fidelity ladder, artifact-format rules, and visual self-audit requirements.
 - `docs/VISUAL_QA_CHECKLIST.md`: visual QA checklist.
 - `docs/AGENTIC_TOOLING.md`: workflow/tooling policy and skills/plugins governance.
+- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`: strategic research context only; not execution authorization.
 - `docs/PHASE_2_PLAN.md`: historical stub only.
 - `docs/AGENT_HANDOFF.md`: historical auto-advance stub only.
 - `docs/ARCHITECTURE.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DATA_SOURCES.md`, and `docs/PROVENANCE_AND_QA.md`: Phase 2A-era planning background; subordinate to the current DTR controls.

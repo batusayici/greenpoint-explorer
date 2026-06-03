@@ -3,7 +3,9 @@
 Status: Review-only package for external MVP feedback
 Date: 2026-06-03
 
-Interactive demo status: DTR-11 is now integrated into the app as the review-only interactive demo plate.
+Interactive demo status: DTR-11 is integrated into the app as the review-only interactive demo plate, with simplified store-info cards and art-directed hover/selected contours.
+
+Share status: Vercel Preview is the chosen remote-review route. The local correction batch is build-ready; generating the remote link requires Vercel CLI auth/write access outside the repo sandbox.
 
 ## What This Is
 
@@ -17,6 +19,8 @@ Interactive demo:
 
 - Open the app and use the DTR-11 review-only scene.
 - Reviewers can pan, zoom, hover, click/tap Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and the Greenpoint G cue.
+- Cards intentionally show only compact store/context information plus a tiny review-only footer; detailed source/status records remain in the review data and package.
+- Hover/selected outlines are interaction presentation cues, not exact facade/frontage/entrance geometry claims.
 - The view angle is fixed. True rotation is deferred because the scene is raster-first, not a true 3D world.
 
 Hero scene:
@@ -34,7 +38,7 @@ Pipeline board:
 ## What This MVP Proof Demonstrates
 
 - A four-corner Greenpoint scene can be visually distinctive enough to evaluate as a product direction.
-- The DTR-11 raster can support a review-only interactive demo with pan, zoom, hover, click/tap, selected state, and compact source/status cards.
+- The DTR-11 raster can support a review-only interactive demo with pan, zoom, hover, click/tap, selected state, and compact truth-safe store cards.
 - Structured geometry can control the scene better than prompt-only raster generation.
 - The scene preserves storefront order, road/crosswalk layout, and one primary Greenpoint G cue.
 - Batu-supplied facade/reference photos materially improve storefront specificity.
@@ -53,7 +57,7 @@ Pipeline board:
 - No production visual asset direction is approved by this package.
 - No production/public exact-geometry claim is made.
 - No exact facade, exact entrance, exact address, exact station, or exact parcel claim is approved for public use.
-- No live data, scraping, Google/Street View extraction, 3D Tiles extraction, backend, CMS, deployment, analytics, or broad map coverage is included.
+- No live data, scraping, Google/Street View extraction, 3D Tiles extraction, backend, CMS, analytics, production deployment, or broad map coverage is included.
 - This package does not approve public product copy.
 
 ## Known Limitations

@@ -439,43 +439,28 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
 
   if (isActive || isSelected) {
     shape
-      .circle(markerX, markerY, markerRadius + (isSelected ? 10 : 7))
+      .circle(markerX, markerY + markerRadius * 0.08, markerRadius + (isSelected ? 11 : 8))
       .fill({ color: 0xf0bc45, alpha: isSelected ? 0.12 : 0.08 });
   }
 
-  shape
-    .circle(markerX, markerY, markerRadius)
-    .fill({ color: markerColor, alpha: isActive || isSelected ? 0.94 : 0.64 })
-    .stroke({
-      color: markerStroke,
-      width: isSelected ? 3 : isActive ? 2.5 : 1.5,
-      alpha: isActive || isSelected ? 0.9 : 0.5,
-    });
+  drawMapPinMarker(shape, {
+    x: markerX,
+    y: markerY,
+    radius: markerRadius,
+    fillColor: markerColor,
+    strokeColor: markerStroke,
+    isActive,
+    isSelected,
+  });
 
   if (isSelected) {
     shape
-      .circle(markerX, markerY, markerRadius + 6)
+      .ellipse(markerX, markerY + markerRadius * 1.38, markerRadius * 0.82, markerRadius * 0.22)
       .stroke({ color: 0xf6ead2, width: 1.5, alpha: 0.52 });
   }
 
   if (isActive || isSelected) {
-    const traceColor = isSelected ? 0xf0bc45 : 0xf6ead2;
-    const traceAlpha = isSelected ? 0.58 : 0.36;
-    const traceWidth = isSelected ? 3 : 2;
-    if (isSelected) {
-      drawTargetOutline(shape, target, {
-        fillColor: 0xf0bc45,
-        fillAlpha: 0.035,
-        strokeColor: 0xf0bc45,
-        strokeAlpha: 0.16,
-        strokeWidth: 8,
-      });
-    }
-    drawTargetOutline(shape, target, {
-      strokeColor: traceColor,
-      strokeAlpha: traceAlpha,
-      strokeWidth: traceWidth,
-    });
+    drawArtDirectedTargetContour(shape, target, isSelected);
   }
 
   if (reviewMode && qaLayers.draft) {
@@ -497,7 +482,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   markerLabel.style.fill = isSelected ? "#241f18" : "#28231f";
   markerLabel.style.fontSize = isSelected ? 15 : 13;
   markerLabel.x = markerX;
-  markerLabel.y = markerY + 0.5;
+  markerLabel.y = markerY - markerRadius * 0.12;
 
   reviewLabel.visible = Boolean(reviewMode && !target.draftScene?.generatedScene);
   reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
@@ -971,6 +956,85 @@ function drawTargetOutline(graphics, target, styles) {
       alpha: styles.strokeAlpha,
     });
   }
+}
+
+function drawArtDirectedTargetContour(graphics, target, isSelected) {
+  const contourPaths = target.displayOutlinePaths
+    ?? target.outlinePaths
+    ?? (target.outlinePoints ? [target.outlinePoints] : []);
+  if (!contourPaths.length) {
+    drawTargetOutline(graphics, target, {
+      fillColor: 0xf0bc45,
+      fillAlpha: isSelected ? 0.045 : 0.024,
+      strokeColor: 0xf9e8b7,
+      strokeAlpha: isSelected ? 0.78 : 0.56,
+      strokeWidth: isSelected ? 3.2 : 2.4,
+    });
+    return;
+  }
+
+  for (const contour of contourPaths) {
+    if (!drawOutlinePath(graphics, contour)) continue;
+    graphics.fill({ color: 0xf0bc45, alpha: isSelected ? 0.05 : 0.026 });
+  }
+
+  for (const contour of contourPaths) {
+    if (!drawOutlinePath(graphics, contour)) continue;
+    graphics.stroke({
+      color: 0x171716,
+      width: isSelected ? 7.4 : 5.8,
+      alpha: isSelected ? 0.5 : 0.36,
+    });
+  }
+
+  for (const contour of contourPaths) {
+    if (!drawOutlinePath(graphics, contour)) continue;
+    graphics.stroke({
+      color: 0xf0bc45,
+      width: isSelected ? 5.4 : 4.1,
+      alpha: isSelected ? 0.52 : 0.34,
+    });
+  }
+
+  for (const contour of contourPaths) {
+    if (!drawOutlinePath(graphics, contour)) continue;
+    graphics.stroke({
+      color: 0xffedb7,
+      width: isSelected ? 2.3 : 1.8,
+      alpha: isSelected ? 0.88 : 0.66,
+    });
+  }
+}
+
+function drawMapPinMarker(graphics, options) {
+  const {
+    x,
+    y,
+    radius,
+    fillColor,
+    strokeColor,
+    isActive,
+    isSelected,
+  } = options;
+  const stem = radius * 1.26;
+  const top = y - radius * 0.92;
+  const bottom = y + stem;
+  const side = radius * 1.02;
+
+  graphics
+    .moveTo(x, bottom)
+    .bezierCurveTo(x - side, y + radius * 0.4, x - side, top + radius * 0.38, x, top)
+    .bezierCurveTo(x + side, top + radius * 0.38, x + side, y + radius * 0.4, x, bottom)
+    .fill({ color: fillColor, alpha: isActive || isSelected ? 0.96 : 0.68 })
+    .stroke({
+      color: strokeColor,
+      width: isSelected ? 3 : isActive ? 2.4 : 1.5,
+      alpha: isActive || isSelected ? 0.92 : 0.58,
+    });
+
+  graphics
+    .ellipse(x, y + stem + radius * 0.24, radius * 0.68, radius * 0.18)
+    .stroke({ color: 0xf6ead2, width: isSelected ? 2 : 1.2, alpha: isSelected ? 0.55 : 0.22 });
 }
 
 function drawOutlinePath(graphics, points) {

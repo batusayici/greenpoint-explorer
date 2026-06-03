@@ -9,7 +9,7 @@ Show the reviewer the interactive DTR-11 demo first. Give only this framing:
 
 > This is an early review-only concept for a local Greenpoint exploration experience. It is not production-ready or public factual output. We are testing whether the scene and product idea are compelling enough to continue.
 
-Ask them to pan, zoom, hover, and click/tap at least one business card. The view angle is fixed because this is a raster-first scene, not a true 3D world. Then show the facade before/after board and pipeline board only if they ask how it was made or whether it is source-backed.
+Ask them to pan, zoom, hover, and click/tap at least one business card. Cards are intentionally compact: store/context information plus a tiny review-only footer. The view angle is fixed because this is a raster-first scene, not a true 3D world. Then show the facade before/after board and pipeline board only if they ask how it was made or whether it is source-backed.
 
 ## Questions
 
@@ -23,11 +23,13 @@ Ask them to pan, zoom, hover, and click/tap at least one business card. The view
 
 5. Did the hover/click/tap/card behavior make the scene easier to explore?
 
-6. After looking at it for a minute, what do you think the product is?
+6. Did the hover outline feel like part of the art, or like a technical overlay?
 
-7. What feels fake, generic, confusing, or overclaimed?
+7. After looking at it for a minute, what do you think the product is?
 
-8. Would this be more useful as a map, a guide, a game, a neighborhood memory object, or a local discovery tool?
+8. What feels fake, generic, confusing, or overclaimed?
+
+9. Would this be more useful as a map, a guide, a game, a neighborhood memory object, or a local discovery tool?
 
 ## Notes To Capture
 

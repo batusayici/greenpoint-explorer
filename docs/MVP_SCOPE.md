@@ -31,7 +31,9 @@ The desired reaction is:
 
 > I want to explore more of this.
 
-The MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. It is not a full map product, game system, local guide platform, production content pipeline, production data pipeline, or public-ready factual representation. The current manually composed MVP-29E raster is a strong baseline/reference, but it is not sufficient as the core proof unless the scene can be reproducibly reconstructed from structured real-world inputs into a true-to-life, review-only isometric raster scene.
+The MVP also has a local-recognizability test: someone familiar with the intersection should be able to recognize the review/demo scene as meaningfully Greenpoint, without the project claiming GIS-perfect geometry, exact public factual representation, production art, or production data readiness.
+
+The MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. It is not a full map product, game system, local guide platform, production content pipeline, production data pipeline, personalized-neighborhood generator, search/tour system, marketplace, broad coverage effort, or public-ready factual representation. The current manually composed MVP-29E raster is a strong baseline/reference, but it is not sufficient as the core proof unless the scene can be reproducibly reconstructed from structured real-world inputs into a true-to-life, review-only isometric raster scene.
 
 ## Core Experience
 
@@ -65,7 +67,7 @@ The MVP may include:
 - Selected marker, selected storefront/target treatment, tether/card attachment, compact place card, compact controls, and optional compact place index.
 - Source-backed real named places only if spatially coherent and manually verified.
 - Static local place data for approved real places.
-- Place cards with neutral factual copy, source URL, last verified date, and unofficial-map disclaimer.
+- Compact place cards with neutral store information: name, category, source-backed address/context where available, and a tiny review-only disclaimer. Source URLs, last-verified dates, status records, and evidence detail may remain in source/status fixtures or review materials instead of the visible external-review card.
 - 2-4 ambient visual-only loops if they support the scene without becoming product systems.
 - Review-only labels, truth statuses, and QA affordances when they are visually secondary and separate from product-facing UI.
 - One narrow source-of-truth validation spike for the same scene/block face, limited to 5-10 storefront candidates, if approved by the current brief.
@@ -224,12 +226,13 @@ The following remain out of scope unless Batu later approves them in a new brief
 - Approved Inked Indie / Compact Corner visual direction preserved in the primary world surface.
 - Primary world art uses approved/supplied raster or reviewed reference assets when visual fidelity affects acceptance.
 - The core MVP proof shows that the four-corner review raster/spec can be generated from structured source, facade, and geometry fields rather than only from hand-authored prose/manual composition.
+- The scene carries enough local detail, browsing pleasure, density, and recognizable corner character to evaluate whether the experience is worth exploring, alongside source traceability.
 - Bounded pan and zoom.
 - Desktop hover/click and touch tap selection.
 - Approved interaction targets by MVP completion only where they are spatially coherent and evidence-backed.
 - Compact selected card behavior.
 - Manually validated real-business cards for included real businesses.
-- Source URL, last verified date, and unofficial-map disclaimer for each real place where the place is presented as factual card content; draft-only internal scene records may separately carry source/status metadata until card copy is finalized.
+- Source/status records, last-verified dates, and review-only disclaimers for each real place where the place is presented as factual card content; the external-review card may stay compact while source detail remains in fixtures or review materials.
 - Greenpoint Ave G subway entrance/station-cue placement treated as verified, approximate, symbolic, context-only, manual_draft, or blocked depending on evidence; prototype rendering may use approximate symbolic placement when the status is explicit.
 - Truth-safe handling of uncertainty, omissions, placeholders, fictionalization, inferred geometry, and manual draft visual treatment.
 - Explicit `verified`, `sourced`, `inferred`, `manual_draft`, `approximate`, `symbolic`, `context-only`, `omitted`, or `blocked` statuses for uncertain real-world claims and draft scene fields.
@@ -345,6 +348,7 @@ The MVP can be considered complete only when:
 
 - The full Manhattan Ave x Greenpoint Ave four-corner interactive diorama is reviewable as a contained experience.
 - The real-data-to-isometric-raster-scene pipeline is reviewable from source inputs through structured scene/facade/geometry fields, deterministic generated raster/spec artifact, review-only output, and QA/status comparison.
+- A reviewer familiar with the intersection can plausibly recognize the scene as meaningfully Greenpoint at review/demo scale, while all exactness, uncertainty, omissions, and approximations remain truth-safe and status-labeled.
 - NW, NE, SW, and SE corner structure exists in the approved scene.
 - Pan, zoom, hover, click, tap, selected state, card behavior, and basic mobile containment work within the approved scope.
 - Any real place included in the MVP has manually approved static source-backed data and a truth status.

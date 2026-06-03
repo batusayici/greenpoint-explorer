@@ -57,12 +57,95 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. DTR-11 is now the active review-only interactive demo raster in the app; MVP-29E remains the manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the DTR-11 interactive demo integration as complete for Batu review. Phase 2DTR is complete for MVP-feedback purposes; do not open DTR-12 or another facade/raster correction loop unless external feedback shows facade fidelity is a decisive blocker. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the DTR-11 interactive demo integration, Strategic Signal Doc Reconciliation, and targeted MVP card/hover correction as complete for Batu review. Vercel Preview publication is the selected share route but is blocked in Codex by local Vercel CLI auth/write access. Phase 2DTR is complete for MVP-feedback purposes; do not open DTR-12 or another facade/raster correction loop unless external feedback shows facade fidelity is a decisive blocker. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, Phase 3 implementation, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - DTR-11 MVP Card And Hover Correction
+
+Status:
+- Complete for Batu review; Vercel Preview publication blocked by local CLI auth/write access.
+
+Scope:
+- Implement Batu-approved targeted corrections before MVP lock: simplified store-info cards, art-directed hover/selected outlines from the attached Batch 13 references, review-only Vercel Preview share route, and explicit true-rotation deferral.
+
+Files changed:
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-feedback-demo-package/README.md`
+- `docs/mvp-review/mvp-feedback-demo-package/feedback-script-checklist.md`
+
+Verification:
+- Scene manifest JSON parse.
+- `npm run build`
+- Browser screenshot captured for default state; selected-card state captured during tuning; mobile screenshot capture was limited by the in-app browser wrapper.
+- Vercel CLI available, but `vercel whoami` failed because the sandbox could not write `/Users/batusayici/Library/Application Support/com.vercel.cli/auth.json`; `VERCEL_TOKEN` was not set.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Visible cards now show only name, category, source-backed address/context, and a tiny review-only footer.
+- Removed the obsolete selected-card QA/source/evidence helper path from `src/App.jsx`.
+- Added separate `displayOutlinePaths` for active targets so click/tap hit areas remain practical while visible hover/selected contours can follow the art direction.
+- Updated the Pixi target presentation with warm ink/paper contour strokes and map-pin markers; outlines remain review-demo presentation cues, not exact geometry claims.
+- Preserved DTR-11 raster-first status, MVP-29E baseline/reference status, no DTR-12, no new raster, no new data sources, no scraping, and no production/public claims.
+- True rotation remains deferred as technically dishonest for a single raster scene without layered depth or true 3D geometry.
+
+Unresolved decisions:
+- Batu owns acceptance/revision of the corrected card and hover treatment.
+- Batu or local environment owner must complete Vercel auth/deploy, or provide an equivalent approved review-only remote link path.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the corrected DTR-11 demo and Vercel Preview publication once CLI auth/write access is available.
+
+### 2026-06-03 - Strategic Signal Doc Reconciliation
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Reconcile the durable Digital Neighborhoods Signal Log into execution-control docs without changing code, app/source files, generated artifacts, raster images, package files, tests, build tooling, source policy, public-readiness claims, Phase 3 implementation, DTR-12, or production scope.
+
+Files changed:
+- `AGENTS.md`
+- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
+- `docs/PLAN.md`
+- `docs/MVP_SCOPE.md`
+- `docs/ARCHITECTURE.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Read required governance, roadmap, scope, architecture, current brief, ledger, and signal-log docs before editing.
+- Moved the signal log to the `AGENTS.md` pointer path.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Resolved the signal-log path mismatch by moving the log to `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`.
+- Added compact strategic roadmap language preserving Greenpoint as the narrow proof slice for future neighborhood-generation logic without opening MVP scope.
+- Added local-recognizability acceptance language to `docs/MVP_SCOPE.md`.
+- Added a planning-only Editorial / Local Knowledge Layer and visual-consistency risk note to `docs/ARCHITECTURE.md`.
+- Preserved review-only status, blocked-source policy, no DTR-12, no app/source edits, no generated/raster/package changes, no Phase 3 implementation, and no production/public-readiness changes.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the DTR-11 interactive demo as ready for external sessions.
+- Batu still owns whether the next step is external feedback sessions, a bounded MVP acceptance/audit pass, or a targeted interaction/card/hotspot revision.
+- Batu still owns whether to open a later dedicated Phase 3 tile-based scale-validation planning update.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points back to Batu review of the DTR-11 interactive demo; the proposed next step remains external feedback sessions, bounded MVP acceptance audit, or targeted interaction/card/hotspot revision.
 
 ### 2026-06-03 - DTR-11 Interactive Demo Integration
 
