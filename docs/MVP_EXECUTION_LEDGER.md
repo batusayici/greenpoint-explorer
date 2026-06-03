@@ -57,12 +57,50 @@ Next pointer:
 
 - Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. MVP-29E remains the current manually composed four-corner raster baseline/reference.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-9 as complete for Batu review and holds before the proposed Phase 2DTR-10 narrow corrective visual pass. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR-10 as complete for Batu review and holds before the proposed MVP feedback demo packaging batch. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-03 - Phase 2DTR-10 Narrow Corrective Styled Raster Pass
+
+Status:
+- Complete for Batu review.
+
+Scope:
+- Perform one narrow corrective visual pass on the Phase 2DTR-9 styled raster.
+- Focus only on facade/window/entrance alignment, storefront/sign panel cleanup, microtext cleanup, one primary Greenpoint G cue, and DTR-8/DTR-9 geometry preservation.
+- Preserve review-only status and avoid geometry adapter changes, new data sources, live scraping, Google/Street View/3D Tiles extraction, app/source edits, package/tooling changes, normal-mode replacement, production assets, and production/public exact-geometry claims.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/`
+
+Verification:
+- Corrected styled raster PNG exists and dimensions are 1672 x 941.
+- Before/after QA board PNG exists and dimensions are 2400 x 1600.
+- JSON parse for `generated/corrected-styled-raster-qa-report.json`.
+- Deterministic regeneration check for `generate-dtr10-qa.py`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a corrected review-only styled raster from DTR-9.
+- Added a before/after QA board comparing DTR-9 and DTR-10.
+- Added a QA report that records exact fixes, remaining issues, unchanged geometry adapter state, no new data sources, and readiness to package for external MVP feedback.
+- DTR-10 does not claim deterministic pixel-perfect rendering, production/public exact geometry, or final facade accuracy.
+
+Unresolved decisions:
+- Batu still owns whether to accept, revise, or reject the Phase 2DTR-10 corrected styled raster as ready for external MVP feedback.
+- Batu still owns whether to open MVP feedback demo packaging.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of Phase 2DTR-10 output; MVP feedback demo packaging is proposed as the next direct step after Batu approval or revision direction.
 
 ### 2026-06-03 - Phase 2DTR-9 Controlled Styled Raster From Geometry-First Adapter
 

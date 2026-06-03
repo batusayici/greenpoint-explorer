@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "phase-2dtr-10-narrow-corrective-styled-raster-qa-report.v0.1",
+  "artifactId": "phase-2dtr-10.narrow-corrective-styled-raster-pass",
+  "status": "review-only-ready-to-package-for-mvp-feedback",
+  "generatedOn": "2026-06-03",
+  "reviewOnly": true,
+  "productionPublicExactGeometryClaim": false,
+  "sourceArtifacts": {
+    "dtr9Raster": "docs/mvp-review/phase-2dtr-9-controlled-styled-raster-from-geometry-first-adapter/generated/controlled-styled-raster.png",
+    "dtr9QaBoard": "docs/mvp-review/phase-2dtr-9-controlled-styled-raster-from-geometry-first-adapter/generated/controlled-styled-raster-qa-board.png",
+    "dtr9QaReport": "docs/mvp-review/phase-2dtr-9-controlled-styled-raster-from-geometry-first-adapter/generated/controlled-styled-raster-qa-report.json",
+    "dtr9PrimarySourceFromReport": "docs/mvp-review/phase-2dtr-8-fixture-geometry-primitive-completion-for-styled-raster-readiness/generated/styled-raster-ready-geometry-adapter.json"
+  },
+  "generatedArtifacts": {
+    "correctedRaster": {
+      "path": "docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/generated/corrected-styled-raster.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 2999560,
+      "sha256": "74f2e71ba3753230aa4d670dc3c0f7decef012d1d94d4eb45a4adff6ce4f2ea5"
+    },
+    "beforeAfterQaBoard": {
+      "path": "docs/mvp-review/phase-2dtr-10-narrow-corrective-styled-raster-pass/generated/dtr9-dtr10-before-after-qa-board.png",
+      "width": 2400,
+      "height": 1600,
+      "mode": "RGB",
+      "bytes": 2705208,
+      "sha256": "38b66ad18aee125186043a1fdf35b0d8f488bb36d55bdfdce245b05dd743f7a5"
+    }
+  },
+  "correctionMethod": {
+    "mode": "built_in_image_edit_pass",
+    "geometryAdapterChanged": false,
+    "newDataSourcesIntroduced": false,
+    "liveScrapingUsed": false,
+    "googleStreetViewOr3DTilesExtractionUsed": false,
+    "promptSummary": "Edit DTR-9 only for facade/window/entrance alignment, sign panel cleanup, microtext cleanup, one primary G cue, geometry preservation, and DTR-10 review footer."
+  },
+  "fixesApplied": [
+    "Cleaned main storefront sign panels.",
+    "Reduced garbled generated microtext and tiny fake copy.",
+    "Simplified and aligned storefront glazing/entrance read without changing corner order.",
+    "Preserved one primary Greenpoint G cue on the SE/Greenpoint Ave side.",
+    "Preserved DTR-8/DTR-9 road, sidewalk, crosswalk, and storefront layout visually.",
+    "Updated review footer/status from DTR-9 to DTR-10."
+  ],
+  "requirementsAssessment": {
+    "facadeWindowEntranceAlignmentImproved": true,
+    "storefrontSignPanelCleanupImproved": true,
+    "microtextSignageArtifactCleanupImproved": true,
+    "onePrimaryGreenpointGCueOnly": true,
+    "dtr8RoadSidewalkCrosswalkStorefrontGeometryPreserved": true,
+    "geometryAdapterChanged": false,
+    "newReadinessPhaseCreated": false,
+    "broadReplanningCreated": false,
+    "reviewOnlyLabelsPreserved": true,
+    "readyToPackageForExternalMvpFeedback": true
+  },
+  "remainingIssues": [
+    "The raster remains an image-edited styled artifact, not deterministic pixel-perfect rendering.",
+    "Reference-photo fidelity is improved but still approximate at small facade/interior/window details.",
+    "Footer QA addresses are metadata only and must not be treated as public exact-address presentation."
+  ],
+  "scores": [
+    {
+      "criterion": "facade_window_entrance_alignment",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "storefront_sign_panel_cleanup",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "microtext_artifact_cleanup",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "one_primary_greenpoint_g_cue",
+      "score": 5,
+      "acceptable": true
+    },
+    {
+      "criterion": "dtr8_geometry_preservation",
+      "score": 4,
+      "acceptable": true
+    },
+    {
+      "criterion": "external_mvp_feedback_readiness",
+      "score": 4,
+      "acceptable": true
+    }
+  ],
+  "verdict": {
+    "readyToPackageForMvpFeedback": true,
+    "doNotKeepCorrectingIndefinitely": true,
+    "nextRecommendedBatch": "Package the demo for external MVP feedback; do not open another corrective raster pass unless Batu rejects DTR-10."
+  }
+}
