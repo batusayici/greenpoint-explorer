@@ -7,6 +7,7 @@ Execution owner inside approved boundaries: Codex
 
 Current note:
 - This is Phase 2A-era planning background. Phase 2DTR work is controlled by `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and `docs/MVP_SCOPE.md`; where this document conflicts with DTR scope, use the source-of-truth order in `AGENTS.md`.
+- The strategic research signal log at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` informs product and scale framing only. It does not approve implementation, source policy changes, public interfaces, production assets, Phase 3 work, or public/product claims.
 
 ## Purpose
 
@@ -76,6 +77,14 @@ Scene truth describes authored/stylized placement inside the Greenpoint Isometri
 Scene coordinates are not real-world truth. They are an authored coordinate layer used for interaction, composition, card attachment, hit regions, and review/debug overlays.
 
 Scene truth must link back to real-world geometry/place/visual-reference truth and must label every compression, symbolic cue, manual placement, omission, approximation, and blocked claim.
+
+## Editorial / Local Knowledge Layer
+
+The architecture should also preserve a planning-only Editorial / Local Knowledge Layer. This layer captures curated neighborhood meaning, local interpretation, authored emphasis, omissions, subjective context, review decisions, and why a scene should feel recognizable or worth browsing.
+
+Editorial/local knowledge is not generated truth and is not an invisible manual override. It must remain provenance/status-labeled, reviewable, and separate from geometry, place/business, visual-reference, and scene truth. It may explain or guide treatment choices, but it cannot authorize unsupported factual claims, exact public geometry, active-business claims, production asset use, source-policy changes, or public/product readiness.
+
+This layer is part of the product trust and craft model: human judgment should be inspectable enough to support confidence in local memory and recognizability, while still preserving strict source, licensing, and promotion gates.
 
 ## Coordinate Layers
 
@@ -147,6 +156,10 @@ When implementation is later opened, the app layer should:
 The debug/provenance/QA layer should make source alignment and manual corrections inspectable.
 
 Expected capabilities are defined in `docs/PROVENANCE_AND_QA.md` and include source-data inspection, geometry overlays, match confidence, storefront evidence, generated/manual diffs, missing-data reports, ambiguity reports, override counts, screenshot regression expectations, and human approval checklists.
+
+## Visual Consistency Risk
+
+Prompt-only raster generation is an architecture risk because visual output can drift from explicit geometry, facade, and reference constraints. Corrective raster passes should be treated as useful only when they improve blueprint/reference obedience. If they become manual image repair loops, a later approved architecture brief should consider reusable visual primitives, sign/window/door modules, masks, constrained asset libraries, or other structured approaches before expanding scale.
 
 ## What Remains Blocked
 

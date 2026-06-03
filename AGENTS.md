@@ -40,6 +40,14 @@ When requirements are ambiguous, clarify before implementation. Codex must mark 
 
 Visual direction cannot be approved from prose-only labels, recommendations, or taste descriptions. It requires concrete artifacts and Batu approval.
 
+## Product / Research Context
+
+For strategic product signals around digital neighborhoods, isometric city maps, GeoAI, tile generation, Fractal Paris, Edushi, Google 3D Tiles, local-recognizability criteria, and neighborhood-memory positioning, read:
+
+- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
+
+Use this document as strategic context only. Do not treat it as authorization to change MVP scope, source policy, architecture boundaries, implementation gates, visual direction, production-readiness claims, source integrations, or current execution scope. Active execution authority remains with `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_SCOPE.md`, and the source-of-truth order in this file.
+
 ## Required Workflow
 
 Codex executes directly from repo governance and current project docs. ChatGPT is a support tool for critical planning, review, ambiguity, and gate-decision moments; it is not a required handoff step for every Codex batch.
