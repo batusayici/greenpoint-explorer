@@ -55,14 +55,50 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 Brouwerij Lane source-retrieval blocker for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 POI/business source ADR + narrow source spike for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, and the Brouwerij Lane source-retrieval spike as complete. Brouwerij Lane is now a review-only source-retrieval-blocked candidate because no approved configured source adapter, checked-in source response, endpoint contract, or credential/API key exists for deterministic retrieval. The next task is Batu supply or approval of Brouwerij Lane retrieval material/access, plus separate facade/frontage/entrance/raster evidence if those fields should advance. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, broad source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, and the Brouwerij Lane source-retrieval spike as complete. The next authorized batch is Phase 3 POI/business source ADR + narrow source spike. It must compare candidate source lanes, define the deterministic evidence record shape, identify credentials/access, recommend primary/fallback/cross-check source strategy, and produce a blocked credential/source report if no narrow source check is available. Brouwerij Lane and all other non-west target deepening remain blocked until that ADR/source spike is complete. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Roadmap Source ADR Reconciliation
+
+Status:
+- Complete.
+
+Scope:
+- Execute a docs-only roadmap reconciliation batch to collapse `docs/PLAN.md` into a short Phase 3 completion roadmap and promote the Phase 3 POI/business source ADR + narrow source spike as the next required batch.
+
+Files changed:
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Markdown/lint command search: no dedicated docs lint or markdown lint script is available in `package.json`.
+- `npm run build` not run; docs are not imported into app behavior.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Collapsed Phase 2/DTR detail in `docs/PLAN.md` into a locked/completed summary with pointers to the ledger, archived ledger history, and review packets.
+- Rewrote Phase 3 as a completion roadmap with the required ten-step sequence from source ADR through Phase 3 exit read.
+- Promoted the source/API decision from buried blocker to the next explicit batch.
+- Updated `docs/CURRENT_EXECUTION_BRIEF.md` to authorize only Phase 3 POI/business source ADR + narrow source spike as the next Codex batch.
+- Preserved review-only status, MVP locked/demo status, source-of-truth order, and production/public-readiness gates.
+- Did not edit app/source files, package/tooling files, or unrelated review-package/audit files.
+
+Unresolved decisions:
+- Batu owns the eventual source-authority decision after the ADR/source spike.
+- The next batch must recommend primary/fallback/cross-check source lanes, define credential/access needs, define deterministic evidence record shape, and block retrieval if no approved credential/source access exists.
+- Brouwerij Lane and any other non-west target cannot be deepened until the ADR/source spike is complete.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Phase 3 POI/business source ADR + narrow source spike.
 
 ### 2026-06-04 - Phase 3 Brouwerij Lane Source Retrieval Spike
 
