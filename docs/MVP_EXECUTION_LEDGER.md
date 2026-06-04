@@ -55,14 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 POI/business source ADR + narrow source spike for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 Brouwerij Lane source-access / deterministic fixture gate for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, and the Brouwerij Lane source-retrieval spike as complete. The next authorized batch is Phase 3 POI/business source ADR + narrow source spike. It must compare candidate source lanes, define the deterministic evidence record shape, identify credentials/access, recommend primary/fallback/cross-check source strategy, and produce a blocked credential/source report if no narrow source check is available. Brouwerij Lane and all other non-west target deepening remain blocked until that ADR/source spike is complete. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, and the Phase 3 POI/business source ADR as complete. The next proposed batch is a Phase 3 Brouwerij Lane deterministic POI evidence packet, pending Batu approval or supply of source access/material. The selected strategy is LiveXYZ/local-directory as preferred POI lane if access/terms/fixture storage are approved, Foursquare as fallback after credential/terms approval, OSM as open cross-check, NYC Open Data as geometry/context only, and manual evidence packets for facade/frontage/entrance/raster readiness. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material exists and a later brief authorizes the one-target packet. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 POI Business Source ADR
+
+Status:
+- Complete; Brouwerij source retrieval remains blocked pending Batu-approved source access/material.
+
+Scope:
+- Create a review-only Phase 3 POI/business source ADR and narrow Brouwerij Lane source-spike readout without live API calls, scraping, broad integration, app/source changes, or target deepening.
+
+Files changed:
+- `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required doc/source reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/DATA_SOURCES.md`, `docs/PROVENANCE_AND_QA.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DECISION_LOG.md`, and `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- External docs review only for source-policy orientation; no live APIs called and no scraping performed.
+- Markdown/lint command search: no dedicated docs lint or markdown lint script is available in `package.json`.
+- `npm run build` not run; docs are not imported into app behavior.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Added the Phase 3 POI/business source ADR under `docs/decisions/`.
+- Recommended separate source lanes: LiveXYZ/local-directory static export/access as preferred POI lane if Batu approves terms and deterministic fixture storage, Foursquare as fallback POI lane after credential/terms approval, OSM as open cross-check, NYC Open Data/official records as geometry/context lane, and manual evidence packets as the only lane for facade/frontage/entrance/raster readiness.
+- Defined a review-only normalized deterministic POI evidence record shape for later Phase 3 packets.
+- Recorded credentials/access needs and the Brouwerij Lane readout: identity/address/category/coordinates/freshness/provenance can be retrieved only after approved source access/material exists; facade/frontage/entrance/raster readiness remain blocked by separate evidence needs.
+- Did not modify app/source files, deepen Brouwerij Lane, create production/public interfaces, create broad API integration, call live APIs, scrape, or edit unrelated review-package/audit files.
+
+Unresolved decisions:
+- Batu owns approval or supply of LiveXYZ/local-directory access/export, Foursquare credentials/export path, or another deterministic Brouwerij POI source packet.
+- Batu owns whether Brouwerij facade/frontage/entrance/raster fields remain blocked or receive separate approved evidence.
+- Batu owns whether the next batch authorizes a one-target evidence packet after access/material is available, switches targets, or pauses Phase 3 source deepening.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the Phase 3 Brouwerij Lane deterministic POI evidence packet as pending Batu-approved source access/material.
 
 ### 2026-06-04 - Phase 3 Roadmap Source ADR Reconciliation
 

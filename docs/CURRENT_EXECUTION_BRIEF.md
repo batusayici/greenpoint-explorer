@@ -1,47 +1,45 @@
-# Current Execution Brief - Phase 3 POI/Business Source ADR + Narrow Source Spike
+# Current Execution Brief - Phase 3 Brouwerij Lane Source Access / Fixture Gate
 
-Status: Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes. The review-only DTR-11 interactive demo remains the active locked MVP demo, and the Vercel Preview remains review-only behind protected shareable-link access. Phase 3 first scaffold direction is approved only as described in `docs/phase-3-architecture-scaling-decision-surface.md`. The Phase 3 corridor scaffold, west-anchor realness pass, mid-corridor candidate/status layer, Franklin endpoint status layer, one-target evidence-deepening audit, and Brouwerij Lane source-retrieval spike are complete. The Brouwerij spike showed that repo-local evidence and configured source access are insufficient to deepen Brouwerij Lane.
+Status: Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes. The review-only DTR-11 interactive demo remains the active locked MVP demo, and the Vercel Preview remains review-only behind protected shareable-link access. Phase 3 first scaffold direction is approved only as described in `docs/phase-3-architecture-scaling-decision-surface.md`. The Phase 3 corridor scaffold, west-anchor realness pass, mid-corridor candidate/status layer, Franklin endpoint status layer, one-target evidence-deepening audit, Brouwerij Lane source-retrieval spike, and Phase 3 POI/business source ADR are complete. The ADR recommends separate source lanes and keeps Brouwerij Lane blocked until Batu approves or supplies deterministic source access/fixture material.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
-## Next Authorized Batch
+## Next Proposed / Blocked Batch
 
-Phase 3 POI/business source ADR + narrow source spike.
+Phase 3 Brouwerij Lane deterministic POI evidence packet, pending Batu approval or supply of source access/material.
 
 Purpose:
 
-- Make the source/API decision the next explicit Phase 3 batch.
-- Decide which source lanes can support Phase 3 business/place evidence before Brouwerij Lane or any other non-west target is deepened.
-- Produce a review-only ADR/source-spike packet that can unblock, or clearly block, a deterministic one-target Brouwerij Lane retrieval pass.
+- Use the completed source ADR to normalize exactly one Brouwerij Lane POI/business evidence packet if Batu supplies or approves a deterministic source lane.
+- Preferred path: LiveXYZ or Batu-approved local-directory/static export.
+- Fallback path: Foursquare Places API or export, only after Batu approves credentials, terms, caching/storage/display limits, and a bounded one-target fixture/export path.
+- Open cross-check path: OSM/static extract where useful for corroboration.
+- Geometry/context path: NYC Open Data/official public records only for building/parcel/street/address-container context.
+- Facade/frontage/entrance/raster path: Batu-supplied or Batu-approved manual evidence only.
 
-This batch is required before:
+This proposed batch remains blocked until Batu supplies or approves one of:
 
-- Brouwerij Lane identity/address/category/coordinate/provenance fields are deepened.
-- Any other non-west Phase 3 target is deepened.
-- Any corridor-specific real target is promoted beyond candidate/blocked status.
+- LiveXYZ/local-directory static source packet or approved access path for Brouwerij Lane.
+- Foursquare credential/export/response fixture path plus usage/caching/display approval.
+- A different Batu-approved deterministic POI source packet for Brouwerij Lane.
+
+If no source access/material is supplied, Brouwerij Lane remains `blocked_source_retrieval` and the next useful Phase 3 action is a Batu decision: provide source access/material, switch targets, or provide manual evidence packets.
 
 ## Authorized Work
 
-Codex may create or update review-only docs needed for the ADR/source spike. The batch may:
+Codex may create or update review-only docs needed to prepare the next bounded evidence packet only after Batu supplies or approves the source material/access above. A later execution brief must explicitly authorize any live request or fixture creation.
 
-- Compare Google Places, Foursquare Places, OSM/Overpass, NYC Open Data, LiveXYZ/local-directory path, and manual evidence packets.
-- Distinguish what each source may support:
-  - POI/business claims.
-  - Building/parcel/geometry claims.
-  - Facade/frontage/entrance claims.
-  - Raster readiness.
-- Evaluate coverage, freshness/status quality, address precision, coordinate precision, category quality, licensing/cache/display risk, provenance support, cost/rate limits, deterministic fixture fit, and review burden.
-- Recommend primary, fallback, and cross-check source lanes.
-- Define what credentials or access are needed.
-- Define the normalized deterministic evidence record shape needed for later Phase 3 source-backed records.
-- Identify whether a narrow live/source check is possible from already-approved/configured access.
-- If no credential/source access is available for a narrow live check, produce a blocked credential/source report rather than pretending retrieval is available.
+Allowed after source/access approval:
 
-Expected output:
+- Normalize exactly one Brouwerij Lane POI/business evidence record using the ADR shape in `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`.
+- Record source id, provider id, retrieved/reviewed date, raw fixture path or hash, usage/caching/display status, attribution, fields requested, normalized identity/address/category/coordinates/freshness-status, confidence, cross-checks, and blocked claims.
+- Preserve separate blocked fields for facade, frontage/order, entrance, geometry-context limits, and raster readiness.
+- Update `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, and `docs/CURRENT_EXECUTION_BRIEF.md` after the batch.
 
-- A review-only ADR/source-spike artifact or packet.
-- `docs/PLAN.md` and `docs/MVP_EXECUTION_LEDGER.md` reconciled after the batch.
-- `docs/CURRENT_EXECUTION_BRIEF.md` updated to the next approved/proposed task or next blocker after the ADR/source spike.
+Expected output if authorized:
+
+- One review-only deterministic Brouwerij Lane POI evidence packet or a precise blocked credential/source report.
+- No app behavior changes unless a later brief explicitly authorizes fixture consumption.
 
 ## Boundaries
 
@@ -54,7 +52,7 @@ Expected output:
 - No package/tooling/CI changes unless a later brief explicitly opens them.
 - No backend services, CMS, persistence, analytics, broad coverage, full 3D, or major animation/aliveness systems.
 - No Google/Street View/3D Tiles extraction or production use.
-- No source-vendor integration beyond the narrow ADR/source-spike analysis.
+- No source-vendor integration beyond a later explicitly approved one-target source packet/retrieval fixture.
 - Do not deepen Brouwerij Lane yet.
 - Do not deepen any other non-west target.
 - Do not replace the placeholder Phase 3 raster.
@@ -68,25 +66,27 @@ Expected output:
 - Phase 3 remains the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice unless a later brief expands scope.
 - The west anchor is sourced from existing reviewed MVP context.
 - Mid-corridor, Franklin endpoint, and Brouwerij Lane remain candidate/blocked where evidence is missing.
+- The Phase 3 POI/business ADR is `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`.
+- ADR decision summary: primary POI lane is LiveXYZ/local-directory static export/access if Batu approves terms and deterministic fixture storage; fallback POI lane is Foursquare after credentials/terms approval; OSM is open corroboration; NYC Open Data is geometry/context only; manual evidence packets are required for facade/frontage/entrance/raster readiness.
 - POI/business data may support identity, address, category, coordinates, and possibly freshness/status; it must not be used to infer facade, frontage/order, entrance, exact geometry, or raster readiness.
 - NYC/Open geometry may support building/parcel/geometry context; it must not be used alone to infer tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
 - Facade/frontage/entrance evidence requires Batu-supplied or Batu-approved reference/source material.
 
-## Verification For This Docs-Only Reconciliation Batch
+## Verification For The Completed ADR/Source Spike Batch
 
-For the roadmap reconciliation batch that created this brief:
-
-- Existing markdown/lint command: not available in `package.json`; no dedicated docs lint script identified.
-- `npm run build`: not applicable because these docs are not imported into app behavior.
+- Required control-doc/source-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/DATA_SOURCES.md`, `docs/PROVENANCE_AND_QA.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DECISION_LOG.md`, and `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- No generated/static ADR JSON or fixture was created.
+- Markdown/lint command search: no dedicated docs lint or markdown lint script is available in `package.json`.
+- `npm run build` not applicable because this batch changed docs only and no app-imported behavior.
 - `git diff --check`.
 - `git status --short`.
 
-## Verification For The Next ADR/Source Spike Batch
+## Verification For The Next Proposed Evidence Packet Batch
 
-Expected checks for the next batch:
+Expected checks for a later authorized source-material batch:
 
-- Any generated/static ADR/source-spike JSON or fixture parses, if created.
-- Any deterministic source-spike script/check runs, if added by the authorized brief.
+- JSON parse for any generated/static evidence packet or fixture.
+- Raw fixture hash/check, if a source response/export is checked in.
 - `git diff --check`.
 - `git status --short`.
 - `npm run build` only if app-imported docs/data/source behavior changes.
