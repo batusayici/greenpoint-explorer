@@ -55,14 +55,53 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 corridor status-map review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 corridor evidence blocker for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, and the Franklin Ave endpoint status-layer pass as complete. The next task is Batu review/approval or revision of the completed corridor status map. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, and the one-target evidence-deepening audit as complete. No non-west target was deepened because existing local repo evidence is insufficient for unsupported-claim-safe identity/address/source-evidence/facade/frontage/entrance/geometry/raster-readiness deepening. The next task is Batu supply or approval of one non-west corridor target evidence packet. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Corridor Evidence Deepening Blocker
+
+Status:
+- Complete; no non-west target deepened because approved local evidence is insufficient.
+
+Scope:
+- Execute one bounded evidence audit to determine whether exactly one mid-corridor or Franklin-side target can be deepened beyond status scaffolding using existing approved/local repo evidence only.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Source/evidence reread: Phase 3 scaffold fixture, linked Phase 3 decision surface, Phase 2AA fixture, Phase 2AB footprint sample, DTR-11 facade specs, MVP scope later-expansion notes, `docs/DATA_FEASIBILITY.md`, MVP-02 place-truth packet, MVP-03 static data contract notes, and decision/ledger history references for Karczma/Brouwerij.
+- Phase 3 scaffold JSON parse.
+- Phase 3 scaffold loader/status check.
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Selected target: none.
+- Evidence blocker: no approved local evidence supports deepening a specific non-west Phase 3 corridor target without unsupported claims.
+- The currently linked Phase 2AA, Phase 2AB, and DTR-11 artifacts remain scoped to Manhattan Ave / Greenpoint Ave and cannot support a new mid-corridor or Franklin-side business/facade/address/frontage/entrance/geometry/raster-ready target.
+- Brouwerij Lane is the closest Franklin-side mention in older local docs, but it is labeled alternate-slice/parked/not ready, with official source not text-readable in the existing pass and manual/Batu reactivation required. It cannot be treated as an approved current Phase 3 target from existing evidence alone.
+- Karczma is also deferred and requires boundary approval/manual verification before inclusion.
+- Existing west/mid/Franklin status layers, placeholder raster, pan/zoom, QA overlay, source summary, and hover/click/card behavior were preserved.
+
+Unresolved decisions:
+- Batu owns the next target choice and source authority.
+- Batu must supply or approve a local/static evidence packet for exactly one non-west target before Codex can deepen that target.
+- Needed evidence includes target identity/address/context, allowed local source pointer, facade/reference imagery or explicit facade block, storefront/frontage/order and entrance evidence or explicit block, geometry/footprint/context evidence or explicit candidate/block, and an approved corridor raster/reference surface or approval to keep raster readiness blocked while data deepens.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu supply or approval of one non-west corridor target evidence packet.
 
 ### 2026-06-04 - Phase 3 Franklin Ave Endpoint Status Layer
 
