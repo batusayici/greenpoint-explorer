@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-03
+Last reconciled: 2026-06-04
 
 ## Purpose
 
@@ -55,14 +55,122 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 2DTR - Data-to-Raster MVP Proof is the active Phase 2 sub-track. DTR-11 is now the active review-only interactive demo raster in the app; MVP-29E remains the manually composed four-corner raster baseline/reference.
+- Current phase: Phase 3 opening/planning for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the DTR-11 interactive demo integration, Strategic Signal Doc Reconciliation, targeted MVP card/hover correction, and final outline-removal MVP lock as complete for external review preparation. Vercel Preview publication is the selected share route but is blocked in Codex by local Vercel CLI auth/write access. Phase 2DTR is complete for MVP-feedback purposes; do not open DTR-12 or another facade/raster correction loop unless external feedback shows facade fidelity is a decisive blocker. Batu has unblocked evidence-backed exact MVP review work for storefront/facade/frontage/order/entrance/window geometry, exact address placement, and Greenpoint G station/entrance geometry. Future batches should build visible MVP proof first and preserve gates as constraints. Product-copy readiness, promotion weakening, unsupported exact geometry claims, production/public exact-geometry claims, production raster asset edits, normal-mode code-native primary world art, storefront outline rebuilds, broader app refactor, scraping, external app-code API calls, package/tooling changes, package-script/CI additions, source-vendor decisions, Phase 3 implementation, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, and Phase 3 as open for scoping/planning only. The next task is Phase 3 scoping/planning for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave, including the required architecture-scaling decision surface before any implementation. Phase 3 implementation, new architecture boundaries, public interfaces, source acquisition, visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Roadmap Control Reconciliation
+
+Status:
+- Complete; current-control text reconciled to Phase 3 opening/planning.
+
+Scope:
+- Reconcile only `docs/MVP_EXECUTION_LEDGER.md` with `docs/PLAN.md` and `docs/CURRENT_EXECUTION_BRIEF.md` after the Phase 3 roadmap/current-brief update.
+
+Files changed:
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Marked Phase 2DTR / MVP feedback demo complete and locked for MVP-feedback purposes.
+- Marked Phase 3 opening/planning as the current active phase.
+- Pointed the next task to Phase 3 scoping/planning for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice and architecture-scaling decision surface.
+- Preserved historical ledger entries without rewriting their prior next pointers.
+- Did not edit the package README, acceptance audit, app/source files, generated artifacts, package/tooling files, or other docs.
+
+Unresolved decisions:
+- Batu owns Phase 3 scope approval, architecture-boundary approval, public-interface approval, target business/landmark selection, source/reference lane decisions, and any later implementation authorization.
+- Historical review artifacts may still contain older external-feedback or remote-link wording; they remain historical unless a later reconciliation batch explicitly opens them.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Phase 3 scoping/planning and the architecture-scaling decision surface before any Phase 3 implementation.
+
+### 2026-06-03 - DTR-11 Vercel Preview Publication
+
+Status:
+- Complete; review-only Vercel Preview published with protected shareable-link access.
+
+Scope:
+- Publish the locked DTR-11 interactive demo to Vercel Preview for review-only external feedback without changing app/source code, raster assets, public interfaces, module boundaries, source policy, package tooling, production/public-readiness gates, Phase 3 scope, DTR scope, or visual direction.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/mvp-review/mvp-feedback-demo-package/README.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Confirmed Vercel CLI auth with `vercel whoami`.
+- `npm run build`
+- `vercel --yes`
+- `vercel inspect greenpoint-explorer-m21pixa86-batusayicis-projects.vercel.app`
+- `curl` confirmed the base preview URL is protected by Vercel SSO.
+- Created a 14-day Vercel shareable-link bypass for the deployment.
+- `curl` with preserved shareable-link cookie returned the built app HTML.
+- Browser smoke confirmed the shareable preview loads the review prototype text, DTR-11 review-only/non-production label, five target buttons, and canvas presence.
+
+Outcome:
+- Published preview deployment:
+  - Deployment URL: `https://greenpoint-explorer-m21pixa86-batusayicis-projects.vercel.app`
+  - Inspector URL: `https://vercel.com/batusayicis-projects/greenpoint-explorer/AQi3fxF1RNc96wTLP73Naf2NBXAn`
+  - Deployment ID: `dpl_AQi3fxF1RNc96wTLP73Naf2NBXAn`
+- Preserved Vercel SSO protection on the base preview URL and created a time-bounded shareable-link bypass expiring `2026-06-18T00:30:05Z`.
+- Did not commit the shareable bypass token to repo docs.
+- Preserved review-only status, no production/public factual release claim, no DTR-12, no new raster work, no source acquisition, no package/tooling changes, and no app/source edits.
+
+Unresolved decisions:
+- Batu owns whether to proceed into external feedback sessions with the published preview.
+- Batu owns whether the 14-day shareable-link TTL is sufficient or should be refreshed/reissued later.
+- Any later revision, storefront outline rebuild, DTR-12, production/public-readiness change, package/tooling change, public-interface change, or Phase 3 work requires a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to external feedback sessions or Batu acceptance/revision direction using the published review-only Vercel Preview and feedback package.
+
+### 2026-06-03 - Bounded MVP Acceptance Audit
+
+Status:
+- Complete; Codex audit recommends proceeding to review-only remote sharing and external feedback once a remote link exists.
+
+Scope:
+- Audit the locked DTR-11 interactive MVP demo and feedback package against the current MVP acceptance boundary without changing app/source code, raster assets, public interfaces, module boundaries, source policy, package tooling, production/public-readiness gates, Phase 3 scope, or visual direction.
+
+Files changed:
+- `docs/mvp-review/mvp-acceptance-audit-2026-06-03.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, and `docs/MVP_SCOPE.md`.
+- JSON parse for scene manifest, feedback package manifest, DTR-8 geometry adapter, DTR-10 QA report, DTR-11 QA report, and DTR-11 facade extraction specs.
+- PNG dimension checks for the DTR-11 app raster, feedback hero raster, facade before/after board, and compact pipeline board.
+- `npm run build`
+- `git diff --check`
+- Local browser smoke: default render, Grillpoint selected card, QA toggle/layer warning, and 390 x 844 Greenpoint G selected-card containment.
+
+Outcome:
+- Found no local demo/package blocker that should prevent external MVP feedback after a review-only remote link is available.
+- Confirmed active scene/place set remains Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint G subway.
+- Confirmed compact cards, review-only/non-production labels, fixed-view-angle treatment, no normal-mode storefront outline overlay, DTR-11 raster-first primary world art, and feedback package evidence remain aligned with the current brief.
+- Recorded non-blocking caveats: full-fidelity deterministic facade reproduction remains unproven, build chunk-size warning is acceptable for review scope, and mobile containment is adequate for review but not phone-first polish.
+
+Unresolved decisions:
+- Batu owns final acceptance of the audit recommendation and whether to proceed into external feedback sessions.
+- Batu or local environment owner must complete Vercel auth/deploy, provide `VERCEL_TOKEN`, or approve an equivalent review-only remote link.
+- Any later revision, storefront outline rebuild, DTR-12, production/public-readiness change, package/tooling change, public-interface change, or Phase 3 work requires a later explicit brief.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Vercel Preview publication or equivalent review-only remote sharing, then external feedback sessions.
 
 ### 2026-06-03 - DTR-11 MVP Review Lock Without Storefront Outlines
 

@@ -1,6 +1,6 @@
-# Current Execution Brief - DTR-11 MVP Locked Review Hold
+# Current Execution Brief - Phase 3 Exploration Slice Planning Gate
 
-Status: DTR-11 MVP interaction/card correction is locked for external review. A follow-up removed the redundant raster footer from the interactive viewport and removed the failed hover/selected storefront outline layer from the demo. Remote Vercel Preview publication remains the selected external-review route. Phase 2DTR remains complete for MVP-feedback purposes. The next executable task is Vercel Preview publication or equivalent review-only remote sharing, then external feedback sessions or a bounded MVP acceptance/audit direction.
+Status: DTR-11 MVP interaction/card correction is locked for external review. A follow-up removed the redundant raster footer from the interactive viewport and removed the failed hover/selected storefront outline layer from the demo. Batu requested and Codex completed a bounded MVP acceptance/audit pass; the audit found no local demo/package blocker to external feedback. Remote Vercel Preview publication is now complete. The preview is protected by Vercel SSO at the base URL, with a time-bounded shareable-link bypass created for review access. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. The next executable task is Phase 3 scoping/planning and a required architecture-scaling decision surface for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -27,8 +27,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - The locked demo keeps invisible practical hit zones, selected rail/card state, and review-only labels, but no visible storefront outline overlay.
 - True rotation is deferred because the scene is raster-first rather than a true 3D world; the app exposes a fixed-view-angle affordance instead of faking 3D rotation.
 - The Digital Neighborhoods Signal Log now lives at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` as strategic context only, with compact roadmap/scope/architecture reconciliation preserving local-recognizability, editorial/local-knowledge, provenance-as-trust/craft, and future tile-based scale-validation signals without opening new execution scope.
-- Phase 2 remains the active Data-Driven Scene MVP phase.
-- Phase 3 remains reserved for future Neighborhood Scale Validation.
+- Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes.
+- Phase 3 is opening as a planning/scoping track only: Phase 3 Exploration Slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
 - Phase 2DTR-4 output packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
 - Phase 2DTR-5 output packet: `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/`.
@@ -71,15 +71,15 @@ source inputs
 
 The MVP proof is the real-data-to-isometric-raster-scene pipeline, not just screenshot appeal. The scene remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave.
 
-## Current Review Hold
+## Current Phase 3 Planning Gate
 
-Batu review is required before the next implementation batch.
+Batu review is required before any Phase 3 implementation batch.
 
-Review question:
+Planning question:
 
-- Confirm the locked DTR-11 interactive demo is ready for external feedback sessions without storefront outline overlays.
-- Complete Vercel Preview publication after local Vercel CLI auth/write access is available, or provide an equivalent approved review-only remote link.
-- Decide whether the next step should be external feedback sessions or a bounded MVP acceptance/audit pass.
+- Can a user pan/zoom through one connected Greenpoint block and feel the beginning of a recognizable, browsable neighborhood world?
+- Can the underlying architecture credibly scale from one expanded block toward many connected blocks without becoming a bespoke one-off artwork?
+- What architecture-scaling decision surface should Batu approve before implementation begins?
 
 Review packet:
 
@@ -97,6 +97,7 @@ Review packet:
 - `docs/mvp-review/mvp-feedback-demo-package/generated/compact-pipeline-board.png`
 - `docs/mvp-review/mvp-feedback-demo-package/generated/demo-package-manifest.json`
 - `docs/mvp-review/mvp-feedback-demo-package/generate-feedback-demo-package.py`
+- `docs/mvp-review/mvp-acceptance-audit-2026-06-03.md`
 
 Findings to review:
 
@@ -107,27 +108,44 @@ Findings to review:
 - Hover/selected storefront outlines are removed from the locked demo; hover/click/tap still update selected state and compact cards.
 - The interactive viewport now crops the displayed DTR-11 plate to the illustrated scene area, hiding the redundant grey footer strip while preserving the review-only raster asset.
 - Rotation is deferred and represented as a fixed view angle because true raster rotation would be misleading.
-- Vercel Preview is the selected share route, but deployment did not complete in Codex because the sandbox did not grant the Vercel CLI write access to its auth file and no `VERCEL_TOKEN` was available.
+- Vercel Preview is published for review-only access behind protected shareable-link access.
 - The package still shows the DTR-11 hero scene, DTR-10 to DTR-11 facade improvement, and compact pipeline evidence.
 - Facade transfer remains improved but not pixel-perfect; exact facade reproduction would require explicit masks, perspective warp, and path-level compositing.
 - Strategic research signals now reinforce that local recognizability, editorial/local knowledge, and provenance-as-trust/craft matter for review, while the current MVP remains one narrow review-only four-corner diorama.
+- The bounded MVP acceptance/audit pass found no local demo/package blocker to external feedback once the review-only remote link exists.
+- Vercel Preview deployment succeeded:
+  - Deployment URL: `https://greenpoint-explorer-m21pixa86-batusayicis-projects.vercel.app`
+  - Inspector URL: `https://vercel.com/batusayicis-projects/greenpoint-explorer/AQi3fxF1RNc96wTLP73Naf2NBXAn`
+  - Deployment ID: `dpl_AQi3fxF1RNc96wTLP73Naf2NBXAn`
+  - Shareable-link bypass expires: `2026-06-18T00:30:05Z`
+  - Do not commit the shareable bypass token to repo docs; share it directly only with intended reviewers.
 - Review-only status and production/public gates remain intact.
 
-No new app/source edit, storefront outline rebuild, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, or production/public-readiness change is authorized until Batu updates this brief or gives explicit direction.
+No new app/source edit, storefront outline rebuild, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, Phase 3 implementation, new architecture, source acquisition, visual asset generation, or production/public-readiness change is authorized until Batu updates this brief or gives explicit direction.
 
 ## Proposed Next Task
 
-Vercel Preview Publication, Then External Feedback Sessions Or Bounded MVP Acceptance Audit.
+Phase 3 Scoping/Planning And Architecture-Scaling Decision Surface.
 
 Purpose:
 
-- Publish the locked review-only DTR-11 demo through the selected Vercel Preview route once local Vercel CLI auth/write access is available.
-- Use the DTR-11 interactive demo and MVP feedback demo package to collect feedback or audit current demo readiness.
-- Preserve review-only labeling and no production/public exact-geometry claims.
-- Do not reopen facade/raster correction unless external feedback shows facade fidelity is a decisive blocker.
-- Do not treat the Vercel Preview link as production/public factual release.
+- Define the one-block exploration slice from the locked MVP scene at Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Produce a Phase 3 architecture-scaling decision surface before any implementation is authorized.
+- Prevent Phase 3 from becoming a one-off larger artwork that cannot scale toward authored, data-grounded neighborhood scenes in the browser.
+- Preserve review-only labeling, no production/public exact-geometry claims, and no production/public readiness change.
 
-This is proposed, not opened. A later brief or Batu message must name the exact allowed files and acceptance criteria before implementation.
+Required decision surface:
+
+- Proposed block/tile partitioning path.
+- Raster/layer strategy, including whether the expanded scene stays monolithic, layered, tiled, masked, or otherwise modular.
+- Reusable primitives for roads, sidewalks, facades, signage, labels, cards, interaction states, and QA overlays.
+- Scene manifest/data-model implications, including what must remain structured and source/status-labeled.
+- Browser performance constraints for pan/zoom, memory, asset loading, practical viewport sizes, and review-demo limits.
+- Lazy loading, viewport clipping, or culling assumptions.
+- QA/debug overlay expectations for provenance, source status, block/tile boundaries, interaction targets, and unsupported claims.
+- Known architecture, data-source, provenance, visual-continuity, review-burden, and runtime risks/gaps, including what may break at 10 blocks, 50 blocks, or neighborhood scale.
+
+This is proposed, not opened for source/app changes. A later brief or Batu message must name the exact allowed files, architecture/interface boundaries, and acceptance criteria before any Phase 3 implementation.
 
 ## Continuing Boundaries
 
@@ -135,10 +153,12 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - No product-copy readiness change.
 - No production/public readiness change.
 - No DTR-12, facade/raster correction loop, broad new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
-- No Phase 3 implementation, broad tile production, seamless tiling, or production scale architecture until explicitly opened.
+- No Phase 3 implementation, broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface until the architecture-scaling decision surface is reviewed or approved by Batu and a later brief explicitly opens implementation.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.
+- No one-off Phase 3 expansion that ignores future neighborhood-scale architecture.
+- No major animation/aliveness system yet; light aliveness may be noted only as a later secondary layer after the expanded block composition and scalable architecture path are established.
 - Exact storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry may be pursued and represented in review-only artifacts when supported by structured source/reference evidence and explicit status labels.
 - No unsupported exact geometry claims and no production/public exact-geometry claims.
 - No replacement of raster-first primary world art with SVG, canvas, CSS, DOM-drawn storefronts/buildings/roads/signs, or other code-generated primary world art.
@@ -166,7 +186,9 @@ This is proposed, not opened. A later brief or Batu message must name the exact 
 - Primary manifest asset is `asset-dtr-11-interactive-demo-raster`; MVP-29E remains `baseline-raster-reference`.
 - Production build imports the DTR-11 PNG.
 - Browser screenshots captured for default, selected, and mobile containment states when possible.
-- Vercel CLI auth/deploy attempt blocked by sandbox write restriction for `/Users/batusayici/Library/Application Support/com.vercel.cli/auth.json`; no `VERCEL_TOKEN` was available.
+- Vercel Preview deployment completed on 2026-06-03/2026-06-04 boundary; Vercel reported deployment status `READY`.
+- Base preview URL returns Vercel SSO protection for anonymous visitors; a shareable-link bypass was created and verified with curl plus browser page-load smoke.
+- Remote browser smoke confirmed review prototype text, DTR-11 review-only/non-production label, five target buttons, and canvas presence.
 - `npm run build`
 - `git diff --check`
 - `git status --short`
@@ -182,5 +204,7 @@ Stop and write `NEEDS_BATU` before:
 - Treating NYC building footprints alone as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or exact station geometry.
 - Treating Batu-supplied reference photos as production assets, public factual proof, training input, texture extraction source, or general source-policy approval.
 - Adding external source acquisition, scraping, browser automation for external evidence, APIs, source-vendor decisions, package scripts, CI, package/tooling changes, production schemas, public APIs, or broad coverage.
+- Beginning Phase 3 implementation before Batu reviews or approves the architecture-scaling decision surface.
+- Implementing a larger one-off scene without identifying whether the work improves or weakens the path toward neighborhood-scale, browser-based, real-data-to-authored-scene generation.
 - Editing raster assets as production images, revising visual direction, or opening full MVP-29G/MVP-30 QA/demo freeze.
 - Replacing normal-mode raster-first primary world art with SVG, canvas, CSS, DOM-drawn buildings/storefronts/roads/signs, or other code-generated scene art.
