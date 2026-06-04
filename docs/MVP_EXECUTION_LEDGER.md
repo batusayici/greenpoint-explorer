@@ -55,14 +55,48 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 opening/planning for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 first scaffold implementation for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, and Phase 3 as open for scoping/planning only. The Phase 3 architecture-scaling decision surface for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave is complete at `docs/phase-3-architecture-scaling-decision-surface.md`; the next task is Batu review/approval or revision of that decision surface. Phase 3 implementation, new architecture boundaries, public interfaces, source acquisition, visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, and `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only. The next authorized task is the smallest review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice: add a Phase 3 scene fixture, define block/tile/layer metadata, define manifest-driven pan/zoom bounds, render minimum QA/debug overlay, carry forward minimal safe hover/click/card behavior, and use an approved placeholder or supplied review-only raster/surface. Phase 3 implementation beyond that scaffold, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 First Scaffold Authorization
+
+Status:
+- Complete; first scaffold implementation direction authorized.
+
+Scope:
+- Update active control docs only enough to mark the Phase 3 architecture-scaling decision surface as reviewed/approved for the first scaffold direction and authorize the smallest review-only Phase 3 scaffold batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc reread: `docs/phase-3-architecture-scaling-decision-surface.md`.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Marked `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first scaffold implementation direction only.
+- Set the next authorized task to a review-only Phase 3 scaffold for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
+- Preserved the hybrid direction: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA overlays, and reusable primitives for geometry, hotspots, masks, labels, provenance, and review.
+- Preserved review-only status and blocked production/public-readiness changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, major animation/aliveness systems, package/tooling changes, production architecture, public interfaces, DTR-12, and facade/raster correction loops.
+- Did not touch app/source files.
+
+Unresolved decisions:
+- Batu owns exact creative/product acceptance of the first scaffold after implementation.
+- Batu owns any later approval to expand Phase 3 beyond the first scaffold, approve public interfaces, approve production architecture, collect/source new reference material, or promote any production/public claims.
+- The next implementation batch must confirm whether an extended review-only raster plate exists or whether the approved placeholder surface will be used for scaffold mechanics only.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the first review-only Phase 3 scaffold implementation batch.
 
 ### 2026-06-04 - Phase 3 Architecture Scaling Decision Surface
 

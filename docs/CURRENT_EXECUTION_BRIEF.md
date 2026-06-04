@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 3 Exploration Slice Planning Gate
+# Current Execution Brief - Phase 3 First Scaffold Implementation
 
-Status: DTR-11 MVP interaction/card correction is locked for external review. A follow-up removed the redundant raster footer from the interactive viewport and removed the failed hover/selected storefront outline layer from the demo. Batu requested and Codex completed a bounded MVP acceptance/audit pass; the audit found no local demo/package blocker to external feedback. Remote Vercel Preview publication is now complete. The preview is protected by Vercel SSO at the base URL, with a time-bounded shareable-link bypass created for review access. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. The Phase 3 architecture-scaling decision surface for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave is complete for Batu review at `docs/phase-3-architecture-scaling-decision-surface.md`. The next task is Batu review/approval or revision of that decision surface before any Phase 3 implementation is opened.
+Status: DTR-11 MVP interaction/card correction is locked for external review. A follow-up removed the redundant raster footer from the interactive viewport and removed the failed hover/selected storefront outline layer from the demo. Batu requested and Codex completed a bounded MVP acceptance/audit pass; the audit found no local demo/package blocker to external feedback. Remote Vercel Preview publication is now complete. The preview is protected by Vercel SSO at the base URL, with a time-bounded shareable-link bypass created for review access. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu has reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. The next authorized task is the smallest review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -28,8 +28,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - True rotation is deferred because the scene is raster-first rather than a true 3D world; the app exposes a fixed-view-angle affordance instead of faking 3D rotation.
 - The Digital Neighborhoods Signal Log now lives at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` as strategic context only, with compact roadmap/scope/architecture reconciliation preserving local-recognizability, editorial/local-knowledge, provenance-as-trust/craft, and future tile-based scale-validation signals without opening new execution scope.
 - Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes.
-- Phase 3 is open as a planning/scoping track only: Phase 3 Exploration Slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
-- The Phase 3 architecture-scaling decision surface is complete for Batu review at `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Phase 3 is open for the first scaffold implementation batch only: Phase 3 Exploration Slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- The Phase 3 architecture-scaling decision surface is reviewed/approved for the first scaffold direction at `docs/phase-3-architecture-scaling-decision-surface.md`.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
 - Phase 2DTR-4 output packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
 - Phase 2DTR-5 output packet: `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/`.
@@ -72,17 +72,17 @@ source inputs
 
 The MVP proof is the real-data-to-isometric-raster-scene pipeline, not just screenshot appeal. The scene remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave.
 
-## Current Phase 3 Planning Gate
+## Current Phase 3 Implementation Gate
 
-Batu review is required before any Phase 3 implementation batch.
+Batu has approved the decision surface for the first scaffold direction only. Phase 3 implementation is now open only for the smallest review-only scaffold batch described below.
 
-Planning question:
+Guiding question:
 
 - Can a user pan/zoom through one connected Greenpoint block and feel the beginning of a recognizable, browsable neighborhood world?
 - Can the underlying architecture credibly scale from one expanded block toward many connected blocks without becoming a bespoke one-off artwork?
-- What architecture-scaling decision surface should Batu approve before implementation begins?
+- Can the approved hybrid scaffold direction prove enough structure for the next Phase 3 review decision without opening production scope?
 
-Completed planning artifact:
+Approved planning artifact:
 
 - `docs/phase-3-architecture-scaling-decision-surface.md`
 
@@ -126,31 +126,37 @@ Findings to review:
   - Do not commit the shareable bypass token to repo docs; share it directly only with intended reviewers.
 - Review-only status and production/public gates remain intact.
 
-No new app/source edit, storefront outline rebuild, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, Phase 3 implementation, new architecture, source acquisition, visual asset generation, or production/public-readiness change is authorized until Batu reviews or revises the decision surface and updates this brief or gives explicit direction.
+No storefront outline rebuild, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, broad Phase 3 implementation, new framework/renderer/map system, source acquisition, visual asset generation beyond an approved review-only placeholder/supplied surface, or production/public-readiness change is authorized.
 
-## Proposed Next Task
+## Authorized Next Task
 
-Batu Review Of Phase 3 Architecture-Scaling Decision Surface.
+Phase 3 First Scaffold Implementation.
 
 Purpose:
 
-- Review `docs/phase-3-architecture-scaling-decision-surface.md`.
-- Decide whether to approve, revise, or reject the recommended hybrid path: block/tile-scoped manifest planning, raster-first scene plates/layers, structured interaction/QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
-- Decide whether a later implementation brief may open the smallest visible Phase 3 scaffold.
-- Preserve review-only labeling, no production/public exact-geometry claims, and no production/public readiness change.
+- Build the smallest visible Phase 3 scaffold that proves the approved hybrid direction: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA overlays, and reusable primitives for geometry, hotspots, masks, labels, provenance, and review.
+- Add a review-only Phase 3 scene fixture for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
+- Define block/tile/layer metadata for the scaffold.
+- Define manifest-driven pan/zoom bounds for the connected slice.
+- Render a minimum QA/debug overlay for block, tile, layer, interaction-target, and source/status boundaries.
+- Carry forward only the minimum hover/click/card behavior from the locked MVP where it is safe and does not create a new visual-polish or storefront-outline batch.
+- Use a Batu-supplied/approved review-only extended raster plate if available; otherwise use an approved placeholder raster/surface for scaffold mechanics only, clearly labeled review-only/non-production and not visual-quality evidence.
 
-Decision surface covers:
+Allowed next-batch source scope:
 
-- Proposed block/tile partitioning path.
-- Raster/layer strategy, including whether the expanded scene stays monolithic, layered, tiled, masked, or otherwise modular.
-- Reusable primitives for roads, sidewalks, facades, signage, labels, cards, interaction states, and QA overlays.
-- Scene manifest/data-model implications, including what must remain structured and source/status-labeled.
-- Browser performance constraints for pan/zoom, memory, asset loading, practical viewport sizes, and review-demo limits.
-- Lazy loading, viewport clipping, or culling assumptions.
-- QA/debug overlay expectations for provenance, source status, block/tile boundaries, interaction targets, and unsupported claims.
-- Known architecture, data-source, provenance, visual-continuity, review-burden, and runtime risks/gaps, including what may break at 10 blocks, 50 blocks, or neighborhood scale.
+- App/source edits are authorized only as needed for the scaffold fixture, manifest-driven bounds, QA/debug overlay, and minimal carried-forward interaction/card behavior.
+- A review-only Phase 3 scene manifest/fixture may be added.
+- Internal block/tile/layer metadata may be introduced for this scaffold, but no public schema/interface approval is granted.
+- Reusable primitives may be introduced only when they directly support geometry, hotspots, masks, labels, provenance, review overlays, or scaffold cards in this batch.
+- No new framework, package tooling, renderer, route system, map system, backend, CMS, persistence, analytics, CI, deployment, or production architecture boundary is authorized.
 
-This is proposed, not opened for source/app changes. A later brief or Batu message must name the exact allowed files, architecture/interface boundaries, source/reference lane, visual asset availability, and acceptance criteria before any Phase 3 implementation.
+Expected verification for the next implementation batch:
+
+- JSON/manifest parse.
+- Fastest useful local app feedback loop, including build if available.
+- Browser smoke for default load, pan/zoom bounds, hover/click/card behavior where present, QA/debug overlay, and mobile containment.
+- `git diff --check`.
+- `git status --short`.
 
 ## Continuing Boundaries
 
@@ -158,10 +164,11 @@ This is proposed, not opened for source/app changes. A later brief or Batu messa
 - No product-copy readiness change.
 - No production/public readiness change.
 - No DTR-12, facade/raster correction loop, broad new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
-- No Phase 3 implementation, broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface until the architecture-scaling decision surface is reviewed or approved by Batu and a later brief explicitly opens implementation.
+- No Phase 3 implementation beyond the authorized first scaffold batch; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.
+- No live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, major animation/aliveness systems, or public-production readiness claims.
 - No one-off Phase 3 expansion that ignores future neighborhood-scale architecture.
 - No major animation/aliveness system yet; light aliveness may be noted only as a later secondary layer after the expanded block composition and scalable architecture path are established.
 - Exact storefront/facade/frontage/order/entrance/window geometry, exact address placement, and exact Greenpoint G station/entrance geometry may be pursued and represented in review-only artifacts when supported by structured source/reference evidence and explicit status labels.
@@ -209,7 +216,7 @@ Stop and write `NEEDS_BATU` before:
 - Treating NYC building footprints alone as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or exact station geometry.
 - Treating Batu-supplied reference photos as production assets, public factual proof, training input, texture extraction source, or general source-policy approval.
 - Adding external source acquisition, scraping, browser automation for external evidence, APIs, source-vendor decisions, package scripts, CI, package/tooling changes, production schemas, public APIs, or broad coverage.
-- Beginning Phase 3 implementation before Batu reviews or approves the architecture-scaling decision surface.
+- Expanding Phase 3 implementation beyond the first approved scaffold direction.
 - Implementing a larger one-off scene without identifying whether the work improves or weakens the path toward neighborhood-scale, browser-based, real-data-to-authored-scene generation.
 - Editing raster assets as production images, revising visual direction, or opening full MVP-29G/MVP-30 QA/demo freeze.
 - Replacing normal-mode raster-first primary world art with SVG, canvas, CSS, DOM-drawn buildings/storefronts/roads/signs, or other code-generated scene art.
