@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 3 Mid-Corridor Candidate Layer Review Gate
+# Current Execution Brief - Phase 3 Corridor Status Map Review Gate
 
-Status: DTR-11 MVP interaction/card correction is locked for external review. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. Codex completed the first review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, one bounded west-anchor realness pass, and one bounded mid-corridor source-candidate layer pass. The Manhattan Ave / Greenpoint Ave west anchor carries existing reviewed MVP business/transit context and facade/source reference pointers. The mid-corridor target now carries explicit candidate/unknown/blocked status metadata for identity, address, frontage/order, facade, entrance, geometry, source evidence, and raster readiness. The visual surface remains a clearly labeled review-only placeholder. The next task is Batu review/approval or revision of the mid-corridor candidate-layer outcome before any further Phase 3 implementation is opened.
+Status: DTR-11 MVP interaction/card correction is locked for external review. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. Codex completed the first review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, one bounded west-anchor realness pass, one bounded mid-corridor source-candidate layer pass, and one bounded Franklin Ave endpoint status/evidence layer pass. The Manhattan Ave / Greenpoint Ave west anchor carries existing reviewed MVP business/transit context and facade/source reference pointers. The mid-corridor target carries explicit candidate/unknown/blocked status metadata. The Franklin Ave endpoint now carries explicit unknown/candidate/blocked status metadata for identity, address, source evidence, frontage/order, facade, entrance, geometry, and raster readiness. The visual surface remains a clearly labeled review-only placeholder. The next task is Batu review/approval or revision of the completed corridor status map before any further Phase 3 implementation is opened.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -33,7 +33,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - The first scaffold added a review-only Phase 3 scene fixture, block/tile/layer metadata, manifest-driven pan/zoom bounds, a minimum QA/debug overlay, minimal safe hover/click/card carry-forward, and an approved placeholder raster surface for scaffold mechanics only.
 - The west-anchor realness pass made the Manhattan Ave / Greenpoint Ave anchor more real by carrying existing reviewed MVP context for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and the Greenpoint Av G station-area cue into the Phase 3 corridor scaffold.
 - The mid-corridor source-candidate layer pass made the middle corridor target more inspectable without inventing facts: identity/address/source evidence remain `unknown`, frontage/order/facade/entrance/raster readiness remain `blocked`, and scene-space geometry is only a `candidate` scaffold target.
-- The west tile is marked `sourced`; the mid-corridor tile remains `unknown` with candidate metadata; Franklin Ave remains `blocked`.
+- The Franklin Ave endpoint status/evidence layer pass made the east anchor explicit without inventing facts: identity/address/source evidence remain `unknown`, frontage/order/facade/entrance/raster readiness remain `blocked`, and scene-space geometry is only a `candidate` scaffold endpoint.
+- The west tile is marked `sourced`; the mid-corridor tile remains `unknown` with candidate metadata; Franklin Ave remains `blocked` with explicit endpoint status metadata.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
 - Phase 2DTR-4 output packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
 - Phase 2DTR-5 output packet: `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/`.
@@ -78,7 +79,7 @@ The MVP proof is the real-data-to-isometric-raster-scene pipeline, not just scre
 
 ## Current Phase 3 Review Gate
 
-Batu has approved the decision surface for the first scaffold direction only, and Codex has completed the first scaffold, one bounded west-anchor realness pass, and one bounded mid-corridor source-candidate layer pass. Further Phase 3 implementation is blocked until Batu reviews the mid-corridor candidate-layer outcome and gives the next explicit direction.
+Batu has approved the decision surface for the first scaffold direction only, and Codex has completed the first scaffold, one bounded west-anchor realness pass, one bounded mid-corridor source-candidate layer pass, and one bounded Franklin Ave endpoint status/evidence layer pass. Further Phase 3 implementation is blocked until Batu reviews the completed corridor status map and gives the next explicit direction.
 
 Guiding question:
 
@@ -230,15 +231,43 @@ Expected verification for the completed batch:
 - `git diff --check`.
 - `git status --short`.
 
-## Proposed Next Task
+## Completed Phase 3 Franklin Ave Endpoint Status Layer Pass
 
-Batu Review Of Phase 3 Mid-Corridor Candidate Layer Outcome.
+Phase 3 Franklin Ave Endpoint Status Layer Pass.
 
 Purpose:
 
-- Review whether the middle corridor target is now a useful, honest source-candidate layer while still preserving review-only/placeholder boundaries.
-- Decide whether to approve, revise, or reject the sourced-west / candidate-unknown-mid / blocked-east tile split.
-- Decide whether the next implementation batch should add a similarly explicit Franklin-anchor status/evidence layer, deepen mid-corridor source review only after approved evidence is supplied, or first supply/approve an extended corridor raster/reference surface.
+- Complete the current corridor scaffold's explicit status map by making the Franklin Ave endpoint reviewable as a status/evidence layer, without pretending that endpoint artwork, place data, facades, addresses, frontage/order, entrances, or exact geometry are complete.
+- Add review-only status metadata for identity, address, source evidence, frontage/order, facade, entrance, geometry, and raster readiness using only existing local repo evidence and explicit unknown/candidate/blocked records where evidence is insufficient.
+- Preserve the sourced Manhattan Ave west anchor, the mid-corridor source-candidate layer, manifest-driven pan/zoom bounds, QA/debug overlay, hover/click/card behavior, review-only labeling, and placeholder-raster status.
+- Surface the Franklin endpoint statuses in the selected-card source summary.
+- Do not add live data ingestion, scraping, external source acquisition, public schema/interface commitments, production/public readiness claims, full 3D, broad coverage, major animation/aliveness systems, or a replacement raster.
+
+Completed files:
+
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Expected verification for the completed batch:
+
+- Phase 3 scaffold JSON parse.
+- Relevant manifest/scaffold loader verification.
+- `npm run build`.
+- Browser smoke for updated Franklin card/source-status summary and preserved QA overlay behavior.
+- `git diff --check`.
+- `git status --short`.
+
+## Proposed Next Task
+
+Batu Review Of Phase 3 Corridor Status Map Outcome.
+
+Purpose:
+
+- Review whether the corridor status map is now useful and honest: sourced west anchor, candidate/unknown mid-corridor layer, and blocked/candidate Franklin endpoint layer.
+- Decide whether to approve, revise, or reject the sourced-west / candidate-unknown-mid / blocked-candidate-east tile split.
+- Decide whether the next implementation batch should deepen source review only after approved evidence is supplied, supply/approve an extended corridor raster/reference surface, or authorize a narrow review artifact that compares status gaps against what would be needed for one real corridor MVP target.
 - Preserve review-only labeling, no production/public exact-geometry claims, and no production/public readiness change.
 
 ## Continuing Boundaries
@@ -247,7 +276,7 @@ Purpose:
 - No product-copy readiness change.
 - No production/public readiness change.
 - No DTR-12, facade/raster correction loop, broad new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
-- No Phase 3 implementation beyond the completed first scaffold, west-anchor realness, and mid-corridor candidate-layer batches; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
+- No Phase 3 implementation beyond the completed first scaffold, west-anchor realness, mid-corridor candidate-layer, and Franklin endpoint status-layer batches; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.

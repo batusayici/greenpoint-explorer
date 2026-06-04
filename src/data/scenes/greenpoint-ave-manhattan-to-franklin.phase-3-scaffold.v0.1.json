@@ -14,7 +14,7 @@
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context and a status-labeled mid-corridor source-candidate layer. Placeholder raster is not visual-quality evidence.",
+    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context plus status-labeled mid-corridor and Franklin Ave layers. Placeholder raster is not visual-quality evidence.",
     "reviewLabel": "PHASE 3 CORRIDOR SCAFFOLD / REVIEW ONLY",
     "sourceListLabel": "Phase 3 scaffold status",
     "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
@@ -113,7 +113,7 @@
       },
       {
         "id": "tile-phase-3-east-franklin-placeholder",
-        "label": "East anchor tile: Franklin Ave pending",
+        "label": "East anchor tile: Franklin Ave status layer",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
           "x": 1540,
@@ -123,7 +123,7 @@
         },
         "status": "blocked",
         "loadPriority": 3,
-        "notes": "Franklin Ave anchor remains blocked until source/reference evidence and visual surface decisions are approved."
+        "notes": "Review-only Franklin Ave endpoint status layer. Local repo evidence reviewed in this batch supports the slice endpoint only, not exact Franklin businesses, addresses, facades, entrances, frontage/order, or real-world geometry."
       }
     ],
     "layers": [
@@ -424,15 +424,116 @@
       },
       {
         "id": "phase3-east-anchor",
-        "title": "Franklin Ave Anchor",
-        "label": "Slice end anchor",
-        "category": "Review scaffold anchor",
+        "title": "Franklin Ave Status Layer",
+        "label": "Endpoint status segment",
+        "category": "Review-only endpoint status segment",
         "address": "Greenpoint Ave / Franklin Ave context",
         "cardBadge": "blocked",
         "verificationStatus": "blocked",
         "status": "blocked",
-        "summary": "Ending edge of the connected Phase 3 block scaffold.",
-        "disclaimer": "Review-only scaffold anchor. Exact intersection, storefront, address, and facade geometry remain blocked.",
+        "summary": "East endpoint of the scaffold now records what remains unresolved: identity, address, source evidence, frontage/order, facade, entrance, geometry, and raster readiness are all explicitly status-labeled.",
+        "disclaimer": "Review-only Franklin endpoint status layer. No exact Franklin businesses, addresses, facades, entrances, storefront order, or real-world geometry are claimed.",
+        "tileId": "tile-phase-3-east-franklin-placeholder",
+        "sourceSummary": "Local repo evidence supports the Phase 3 slice ending at Greenpoint Ave / Franklin Ave, but does not support exact Franklin-anchor businesses, addresses, facades, entrances, storefront order, or geometry. No new source acquisition was performed.",
+        "realnessStatus": {
+          "identity": "unknown",
+          "address": "unknown",
+          "sourceEvidence": "unknown",
+          "frontageOrder": "blocked",
+          "facade": "blocked",
+          "entrance": "blocked",
+          "geometry": "candidate",
+          "rasterReadiness": "blocked"
+        },
+        "fieldStatuses": [
+          {
+            "field": "identity",
+            "label": "Place identity",
+            "status": "unknown",
+            "notes": "No approved local repo record was found for a Franklin Ave anchor business, landmark, or place identity."
+          },
+          {
+            "field": "address",
+            "label": "Address",
+            "status": "unknown",
+            "notes": "The slice endpoint text names Greenpoint Ave / Franklin Ave context only; no approved exact address record is present."
+          },
+          {
+            "field": "sourceEvidence",
+            "label": "Source evidence",
+            "status": "unknown",
+            "notes": "Existing Phase 2AA, Phase 2AB, and DTR-11 local artifacts are scoped to Manhattan Ave / Greenpoint Ave and do not provide Franklin-specific source evidence."
+          },
+          {
+            "field": "frontageOrder",
+            "label": "Frontage/order",
+            "status": "blocked",
+            "notes": "No approved storefront-order or tenant-frontage evidence exists for the Franklin Ave endpoint."
+          },
+          {
+            "field": "facade",
+            "label": "Facade",
+            "status": "blocked",
+            "notes": "No approved Franklin facade reference or extraction spec exists in the repo."
+          },
+          {
+            "field": "entrance",
+            "label": "Entrance",
+            "status": "blocked",
+            "notes": "No approved Franklin entrance evidence exists for this endpoint."
+          },
+          {
+            "field": "geometry",
+            "label": "Geometry",
+            "status": "candidate",
+            "notes": "Scene-space tile bounds exist for scaffold review only; they do not claim exact real-world Franklin geometry."
+          },
+          {
+            "field": "rasterReadiness",
+            "label": "Raster readiness",
+            "status": "blocked",
+            "notes": "The Phase 3 scaffold still uses the approved placeholder raster; no extended Franklin endpoint raster/reference surface exists in this fixture."
+          }
+        ],
+        "candidateTargets": [
+          {
+            "id": "franklin-endpoint-candidate-01",
+            "label": "Unresolved Franklin Ave endpoint",
+            "status": "candidate",
+            "scope": "Greenpoint Ave / Franklin Ave endpoint of the current one-block Phase 3 scaffold.",
+            "notes": "Candidate endpoint shell only. It is ready for Batu/source review to decide whether Franklin should become a real anchor, remain a blocked endpoint, or wait for an approved extended raster/reference surface."
+          }
+        ],
+        "sourceReferences": [
+          {
+            "id": "phase-3-decision-surface-franklin-endpoint",
+            "label": "Phase 3 architecture decision surface",
+            "path": "docs/phase-3-architecture-scaling-decision-surface.md",
+            "status": "sourced",
+            "notes": "Supports the Manhattan-to-Franklin slice endpoint and block/tile-scoped scaffold direction only; does not identify Franklin businesses, facades, addresses, or entrances."
+          },
+          {
+            "id": "mvp-scope-possible-franklin-context",
+            "label": "MVP scope later-expansion note",
+            "path": "docs/MVP_SCOPE.md",
+            "status": "candidate",
+            "notes": "Mentions Brouwerij Lane / Franklin-Greenpoint area only as possible later expansion context; not evidence for the current Franklin anchor."
+          },
+          {
+            "id": "phase-2aa-west-anchor-real-data-fixture",
+            "label": "Phase 2AA active-target real-data fixture",
+            "path": "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "status": "sourced",
+            "notes": "Supports existing Manhattan/Greenpoint MVP targets only. Used here as gap evidence that no Franklin active-target record is present."
+          },
+          {
+            "id": "phase-2ab-intersection-footprint-sample",
+            "label": "Phase 2AB official footprint sample",
+            "path": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
+            "status": "candidate",
+            "notes": "Official footprint sample is scoped around Manhattan Ave x Greenpoint Ave and cannot prove Franklin endpoint geometry, tenant frontage, entrance, facade, or address placement."
+          }
+        ],
         "marker": {
           "x": 1884,
           "y": 416
@@ -470,8 +571,9 @@
       "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
       "The Manhattan Ave west anchor now carries existing sourced/draft MVP context, but the visual plate is still a placeholder and not factual corridor art.",
       "The mid-corridor target now has a source-candidate/status layer only; local repo evidence reviewed in this batch does not support exact mid-corridor businesses, facades, addresses, frontage/order, entrances, or geometry.",
+      "The Franklin Ave endpoint now has a status/evidence layer only; local repo evidence reviewed in this batch supports the slice endpoint but not exact Franklin businesses, addresses, facades, frontage/order, entrances, or geometry.",
       "Scene coordinates do not imply exact real-world placement.",
-      "Franklin Ave remains blocked until reviewed source and reference evidence exists."
+      "Franklin Ave remains blocked for exact place/facade/address/frontage/entrance/raster claims until reviewed source and reference evidence exists."
     ],
     "blockedClaims": [
       "production visual assets",
