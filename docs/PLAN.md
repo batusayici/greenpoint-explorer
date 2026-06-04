@@ -35,7 +35,7 @@ Use these in order when documents conflict:
 - Phase 3 scaffold direction is approved only for the first scaffold direction in `docs/phase-3-architecture-scaling-decision-surface.md`: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
 - Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, and Phase 3 POI/business source ADR complete.
 - Brouwerij Lane is now the active source-access test target. Identity, address, category/business type, coordinates, freshness/status, and provenance cannot be deepened until Batu supplies or approves a deterministic source packet/access path.
-- Selected source strategy: LiveXYZ/local-directory static export/access is the preferred POI lane if Batu approves access, terms, caching, attribution, and fixture storage; Foursquare is the fallback POI lane after credential/terms approval; OSM is the open cross-check lane; NYC Open Data is the geometry/context lane; manual evidence packets are required for facade/frontage/entrance/raster readiness.
+- Selected source strategy: the strategic local-directory/community-validation lane includes LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists if Batu approves access, terms, caching, attribution, and fixture storage; Foursquare remains the practical near-term POI implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM is the open cross-check lane; NYC Open Data is the geometry/context lane; manual evidence packets are required for facade/frontage/entrance/raster readiness.
 
 ## Completed Work Pointers
 
@@ -68,8 +68,8 @@ The next batch is pending Batu approval or source/access supply. It should be a 
 It should:
 
 - Use `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`.
-- Prefer LiveXYZ/local-directory static export/access if Batu approves terms and deterministic fixture storage.
-- Fall back to Foursquare only if Batu approves credentials, terms, caching/storage/display limits, and a bounded one-target response fixture/export path.
+- Prefer strategic local-directory/community-validation access if Batu approves terms and deterministic fixture storage, including LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, or another approved local business list.
+- Use Foursquare as the practical near-term implementation path if Batu approves credentials, terms, caching/storage/display limits, and a bounded one-target response fixture/export path, and no deterministic local-directory source is available.
 - Record provider id, source id, retrieval/review date, source path/endpoint, raw response hash or fixture path, attribution, usage/cache status, fields requested, identity/address/category/coordinates/freshness-status, confidence, cross-checks, and blocked claims.
 - Keep facade/frontage/order/entrance/raster readiness blocked unless separate Batu-approved evidence supports them.
 - Produce a blocked credential/source report if no approved source access/material exists.
@@ -92,7 +92,7 @@ It must not:
 
 ## Pending Decisions
 
-- Batu approval/supply of LiveXYZ/local-directory access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet.
+- Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet.
 - Whether a later brief authorizes a one-target Brouwerij source packet/retrieval batch after access/material is available.
 - Whether Brouwerij Lane facade/frontage/entrance/raster fields remain blocked or receive separate approved evidence.
 - Whether an approved corridor-specific review raster/surface should arrive before or after Brouwerij Lane data deepening.

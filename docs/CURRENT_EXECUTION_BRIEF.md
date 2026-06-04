@@ -11,7 +11,7 @@ Phase 3 Brouwerij Lane deterministic POI evidence packet, pending Batu approval 
 Purpose:
 
 - Use the completed source ADR to normalize exactly one Brouwerij Lane POI/business evidence packet if Batu supplies or approves a deterministic source lane.
-- Preferred path: LiveXYZ or Batu-approved local-directory/static export.
+- Preferred path: strategic local-directory/community-validation source with deterministic access, including LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, or another Batu-approved local business list.
 - Fallback path: Foursquare Places API or export, only after Batu approves credentials, terms, caching/storage/display limits, and a bounded one-target fixture/export path.
 - Open cross-check path: OSM/static extract where useful for corroboration.
 - Geometry/context path: NYC Open Data/official public records only for building/parcel/street/address-container context.
@@ -19,7 +19,7 @@ Purpose:
 
 This proposed batch remains blocked until Batu supplies or approves one of:
 
-- LiveXYZ/local-directory static source packet or approved access path for Brouwerij Lane.
+- LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, or other Batu-approved local-directory/community static source packet or approved access path for Brouwerij Lane.
 - Foursquare credential/export/response fixture path plus usage/caching/display approval.
 - A different Batu-approved deterministic POI source packet for Brouwerij Lane.
 
@@ -67,7 +67,7 @@ Expected output if authorized:
 - The west anchor is sourced from existing reviewed MVP context.
 - Mid-corridor, Franklin endpoint, and Brouwerij Lane remain candidate/blocked where evidence is missing.
 - The Phase 3 POI/business ADR is `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`.
-- ADR decision summary: primary POI lane is LiveXYZ/local-directory static export/access if Batu approves terms and deterministic fixture storage; fallback POI lane is Foursquare after credentials/terms approval; OSM is open corroboration; NYC Open Data is geometry/context only; manual evidence packets are required for facade/frontage/entrance/raster readiness.
+- ADR decision summary: the strategic local-directory/community-validation lane includes LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists if Batu approves terms and deterministic fixture storage; Foursquare remains the practical near-term POI implementation lane after credentials/terms approval when no deterministic local-directory source is available; OSM is open corroboration; NYC Open Data is geometry/context only; manual evidence packets are required for facade/frontage/entrance/raster readiness.
 - POI/business data may support identity, address, category, coordinates, and possibly freshness/status; it must not be used to infer facade, frontage/order, entrance, exact geometry, or raster readiness.
 - NYC/Open geometry may support building/parcel/geometry context; it must not be used alone to infer tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
 - Facade/frontage/entrance evidence requires Batu-supplied or Batu-approved reference/source material.

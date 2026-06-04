@@ -23,11 +23,18 @@ Repo policy already warns that a source supporting one lane does not support ano
 
 No live APIs were called, no scraping was performed, and no source records were retrieved for Brouwerij Lane in this ADR batch.
 
+For the local-directory amendment, directory pages were reviewed only as source-strategy references. No directory entries were extracted, normalized, or promoted into Brouwerij Lane evidence.
+
 References reviewed for source-policy orientation:
 
+- North Brooklyn Chamber member directory: <https://www.northbrooklynchamber.com/member-directory/>
+- North Brooklyn Chamber mission/home: <https://www.northbrooklynchamber.com/>
+- Shop Small Greenpoint directory: <https://shopsmallgreenpoint.carrd.co/>
+- Shop Small Greenpoint Instagram/about: <https://www.instagram.com/shopsmallgreenpoint/>
 - Google Places API policies and attribution: <https://developers.google.com/maps/documentation/places/web-service/policies>
 - Google Places API usage and billing: <https://developers.google.com/maps/documentation/places/web-service/usage-and-billing>
 - Foursquare Places API overview: <https://docs.foursquare.com/developer/docs/places-api>
+- Foursquare Places API product page: <https://foursquare.com/products/places-api/>
 - Foursquare Places API pricing: <https://foursquare.com/pricing/>
 - Foursquare Places API PAYG terms: <https://foursquare.com/legal/terms/apilicenseagreement/>
 - Foursquare Places OS schema orientation: <https://docs.foursquare.com/data-products/docs/places-os-data-schema>
@@ -40,12 +47,14 @@ References reviewed for source-policy orientation:
 
 Use separate source lanes instead of one merged "place truth" source.
 
+Strategic preferred source does not automatically equal next implementation source. Phase 3 should prefer local-directory/community sources when deterministic access is available, but the next retrieval implementation should use the most reliable permissioned source that can produce a bounded, hashable, review-only evidence record.
+
 Recommended Phase 3 lanes:
 
 | Lane | Recommendation | Role |
 | --- | --- | --- |
-| Primary POI/business lane | LiveXYZ or Batu-approved local-directory/static export, if access, terms, caching, attribution, and fixture storage are approved | Best strategic fit for Greenpoint storefront visibility and front-door-oriented local business records. |
-| Fallback POI/business lane | Foursquare Places API or Foursquare-provided export, after API key/billing/terms review | Practical commercial fallback for business identity, category, address, coordinate, and status/freshness fields when LiveXYZ/local-directory access is absent. |
+| Strategic local-directory / community-validation lane | LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists, if access, terms, caching, attribution, and fixture storage are approved | Strategically preferred for Greenpoint relevance, merchant outreach, local validation, and possible manual/source evidence packets. Valid deterministic inputs only when an approved static export, approved API/access path, approved manually captured evidence packet, or stable local file with source/date/owner/usage/claim-support metadata and hash exists. |
+| Practical near-term POI implementation lane | Foursquare Places API or Foursquare-provided export, after API key/billing/terms review | Practical commercial path for the first one-target identity/address/category/coordinate/freshness retrieval spike when no deterministic local-directory export/access is available. |
 | Open cross-check lane | OSM/Overpass or static OSM extract | Open corroboration for POI presence, names, tags, street/building context, and conflict discovery; not primary for active small-business status. |
 | Geometry/context lane | NYC Open Data, official public records, and OSM geometry as supplemental | Building footprints, parcels, street/intersection context, and address containers only. |
 | Facade/frontage/entrance evidence lane | Batu-supplied or Batu-approved manual evidence packets | Only lane allowed to support tenant frontage, storefront order, entrance placement, facade appearance, and visual-reference claims. |
@@ -57,8 +66,8 @@ Google Places is not recommended as the primary Phase 3 deterministic fixture la
 
 | Source | Greenpoint small-business coverage | Freshness/current status | Address precision | Coordinate precision | Category quality | Licensing/cache/display risk | Provenance/citation support | Cost/rate limits | Deterministic fixture fit | Review burden | Facade/frontage/entrance support | Raster readiness support |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| LiveXYZ / local-directory path | Potentially strongest strategic fit if access covers Greenpoint storefronts; claims storefront/front-door orientation | Unknown until access/export cadence and update policy are reviewed | Potentially strong if storefront records include addresses | Potentially strong if front-door or storefront coordinates are present | Unknown; likely local-directory categories may need normalization | Unknown until Batu reviews partner/export terms, storage, attribution, display, and cache rules | Good if export supplies stable ids, source dates, and source links; blocked if only browser-only access exists | Unknown; partner/export terms needed | Strong only if a static export or deterministic response packet can be checked in or hashed | Medium to high until schema/terms are known | Possible only if the source itself contains reviewed frontage/front-door evidence, but still needs Batu approval; cannot infer facade appearance | No by itself; visual/raster evidence still needed |
-| Foursquare Places | Strong broad POI coverage; likely good for restaurants/bars/retail, but local storefront completeness must be tested | Good candidate because provider tracks POI status/freshness signals, but must verify response fields and closed/status semantics | Good for listed POIs; user-entered/source-normalized address quality still needs cross-check | Good for POI lat/lng; provider schema notes front-door/rooftop where available, but exact tenant frontage still not guaranteed | Strong category taxonomy; may need mapping to project categories | Medium/high: paid API terms, attribution, no material data exposure, cache/rate limits by account/terms | Good if provider id, response timestamp, endpoint, query, fields, attribution, and hash are recorded | Paid after free/low-volume tier; API key/billing required | Good if terms allow storing a bounded static response fixture or normalized excerpt; otherwise blocked | Medium: must inspect matches, closed/status, category mapping, and conflicts | No; POI coordinate is not tenant frontage/order/entrance proof | No; photos/tips are premium/restricted and still not production raster evidence |
+| LiveXYZ / North Brooklyn Chamber / Shop Small Greenpoint / Batu-approved local lists | Potentially strongest strategic fit if access covers Greenpoint storefronts; North Brooklyn Chamber provides a member directory with neighborhood/category filtering, and Shop Small Greenpoint focuses on independently owned Greenpoint brick-and-mortar shops | Unknown until export cadence, owner updates, and review/update policy are known | Potentially strong if records include addresses; may vary by directory/list | Variable unless source supplies coordinates; directory entries may need separate geocoding or manual coordinate evidence | Potentially strong local categories, but likely needs project normalization | Unknown until Batu reviews terms, owner permission, storage, attribution, display, and cache rules | Good if export/packet supplies stable ids, source dates, source links, owner, and claim metadata; blocked if only browser-only or Instagram-only review exists | Unknown; may be free/manual/partner-based but high relationship/review time | Strong only if a static export, API response packet, manually approved evidence packet, or stable local file with hash can be checked in | Medium to high until schema/terms/owner permissions are known | Possible only when the local source or packet explicitly supports frontage/front-door evidence and Batu approves it; cannot infer facade appearance | No by itself; visual/raster evidence still needed |
+| Foursquare Places | Strong broad POI coverage; likely good for restaurants/bars/retail, but local storefront completeness must be tested | Good candidate because provider tracks POI status/freshness signals, but must verify response fields and closed/status semantics | Good for listed POIs; user-entered/source-normalized address quality still needs cross-check | Good for POI lat/lng; provider schema notes front-door/rooftop where available, but exact tenant frontage still not guaranteed | Strong category taxonomy; may need mapping to project categories | Medium/high: paid API terms, attribution, no material data exposure, cache/rate limits by account/terms | Good if provider id, response timestamp, endpoint, query, fields, attribution, and hash are recorded | Paid/free-tier/enterprise terms require review; API key/billing may be required | Good near-term fit if terms allow storing a bounded static response fixture or normalized excerpt; otherwise blocked | Medium: must inspect matches, closed/status, category mapping, and conflicts | No; POI coordinate is not tenant frontage/order/entrance proof | No; photos/tips are premium/restricted and still not production raster evidence |
 | Google Places | Excellent broad coverage; likely strong for active businesses | Strong freshness/status signals | Strong address coverage | Strong point coordinates | Strong type/category coverage, though types may be coarse for local flavor | High: caching/storage/display/Google-map/attribution restrictions are mismatched with stored deterministic fixtures and custom non-Google display | Good ids and response fields, but recordable content is restricted; place id storage is the safer durable field | Billing and SKU complexity; key and billing required | Poor as primary fixture lane; acceptable only for restricted manual review/cross-check if approved | High legal/display review burden | No; Places data/photos must not imply facade/frontage/entrance permission or evidence | No; Google imagery/photos cannot become raster/reference input without a later explicit exception |
 | OSM / Overpass | Variable; small businesses may be missing, stale, or unevenly tagged | Weak for current business status unless recently edited and corroborated | Variable; address tags may be absent or partial | Variable; node/way placement may be approximate | Variable tags; useful for open taxonomy/cross-check | Medium: ODbL attribution/share-alike considerations and public-service usage limits | Good open ids, tags, geometry, and retrieved dates can be recorded | Public endpoints have usage limits; static extracts preferred for determinism | Good for static extracts/hashes; weaker for live Overpass dependency | Medium: must inspect tags, dates, conflicts, and attribution | No by itself; building/POI geometry does not prove tenant frontage or entrance | No |
 | NYC Open Data / official public records | Weak for active small-business POIs; strong for official context | Good for maintained public datasets, but not active tenant status | Strong for official address/public-record context when dataset supports it | Strong for footprints/parcels/geospatial datasets | Weak for business category unless using specific agency records | Low/medium: public-data terms and dataset-specific metadata still need recording | Strong dataset metadata, agency owner, update date, and stable dataset ids | Usually public, with possible portal rate limiting/app-token benefits | Strong for checked-in static exports and official dataset metadata | Medium: must join carefully and avoid overclaiming tenant facts | No; footprints/parcels do not prove storefront order, entrance, or facade | No |
@@ -68,7 +77,7 @@ Google Places is not recommended as the primary Phase 3 deterministic fixture la
 
 ### POI / Business Claims
 
-May be supported by LiveXYZ/local-directory, Foursquare, restricted Google cross-check, OSM corroboration, official business pages, or manual packets.
+May be supported by the strategic local-directory/community-validation lane, Foursquare, restricted Google cross-check, OSM corroboration, official business pages, or manual packets.
 
 Allowed Phase 3 claims:
 
@@ -141,7 +150,7 @@ This is a review-only normalized evidence shape for Phase 3 source packets. It i
   "lane": "poi-business",
   "reviewOnly": true,
   "source": {
-    "sourceType": "livexyz|foursquare|google-restricted|osm|nyc-open-data|business-official|manual-team-evidence|other",
+    "sourceType": "livexyz|north-brooklyn-chamber|shop-small-greenpoint|community-directory|foursquare|google-restricted|osm|nyc-open-data|business-official|manual-team-evidence|other",
     "providerName": "string",
     "providerRecordId": "string|null",
     "title": "string",
@@ -247,8 +256,8 @@ Minimum deterministic acceptance for a future Brouwerij Lane POI record:
 
 | Source lane | Required access | Blocked if missing |
 | --- | --- | --- |
-| LiveXYZ / local-directory | Batu-approved partner access, static export, API response packet, or local-directory evidence packet; terms covering storage/cache/display/attribution | Primary POI lane; Brouwerij identity/address/category/coordinates/freshness cannot be retrieved through the preferred lane |
-| Foursquare | Developer account, API key, billing/payment setup if required, terms/caching/attribution review, approved endpoint/field list | Fallback POI lane; no deterministic fallback retrieval unless a bounded response fixture/export can be stored or hashed |
+| Strategic local-directory / community-validation lane | Batu-approved LiveXYZ access/export, North Brooklyn Chamber member-directory export/permission, Shop Small Greenpoint export/permission, another approved local business list, or manually captured evidence packet; each must include source, date, owner, usage rights, allowed/blocked claims, and hash when stored locally | Strategically preferred local-validation lane; cannot be used as deterministic fixture input until approved static export, approved API/access path, approved manually captured evidence packet, or stable local file with hash exists |
+| Foursquare | Developer account, API key, billing/payment setup if required, terms/caching/attribution review, approved endpoint/field list | Practical near-term POI implementation lane; no deterministic retrieval unless a bounded response fixture/export can be stored or hashed |
 | Google Places | Google Cloud project, Places API enabled, API key/OAuth, billing, terms/privacy/display review, restricted-use approval | Restricted cross-check only; not primary fixture lane. Without approval, do not use or record Google-derived content beyond policy-safe references |
 | OSM/Overpass | No credential for small manual/static extracts; use static extract or polite Overpass access if later authorized; ODbL attribution recorded | Open corroboration and OSM geometry/POI cross-check; does not block primary POI retrieval if LiveXYZ/Foursquare exists |
 | NYC Open Data | Usually no credential; Socrata app token may help rate limits; dataset ids/metadata/update dates needed | Geometry/context lane; POI business identity remains blocked because NYC geometry/public records are not active-business sources |
@@ -271,6 +280,7 @@ What can be source-retrieved once the chosen source/access exists:
 - Source freshness/status only if the provider returns explicit status/freshness semantics.
 - Retrieval/provenance record: source type, title, endpoint or export path, retrieved date, query, fields, attribution, usage/caching status, and raw response hash.
 - Cross-check result against OSM and/or NYC address/geometry context where available.
+- Community/local validation notes from North Brooklyn Chamber, Shop Small Greenpoint, LiveXYZ, or another approved local list only when the evidence packet records source, date, owner, usage rights, allowed/blocked claims, and hash.
 
 What remains blocked without separate facade/frontage/entrance evidence:
 
@@ -295,8 +305,8 @@ What must not be inferred from Brouwerij POI data:
 ## Consequences
 
 - Brouwerij Lane remains blocked for source-backed deepening until Batu supplies or approves one deterministic source packet/access path.
-- If LiveXYZ/local-directory access is approved, it should be tried first because it aligns with local storefront coverage and the project's neighborhood-memory positioning.
-- If LiveXYZ/local-directory access is absent, Foursquare is the preferred fallback for a narrow one-target retrieval, provided terms allow a bounded deterministic response fixture or normalized evidence record.
+- If strategic local-directory/community-validation access is approved, it should be tried first because LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, and other Batu-approved local lists align with local storefront relevance, merchant outreach, and the project's neighborhood-memory positioning.
+- If no deterministic local-directory/community source is available, Foursquare remains the practical near-term implementation path for a narrow one-target retrieval, provided terms allow a bounded deterministic response fixture or normalized evidence record.
 - OSM should be used as open corroboration, not as the authoritative active-business source.
 - NYC Open Data should be used for geometry/context joins only.
 - Manual evidence remains unavoidable for facade/frontage/entrance/raster readiness.
@@ -305,6 +315,6 @@ What must not be inferred from Brouwerij POI data:
 
 The next bounded batch should be one of:
 
-1. Batu supplies/approves a LiveXYZ/local-directory Brouwerij Lane static source packet, and Codex normalizes it into the deterministic evidence shape.
+1. Batu supplies/approves a LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, or other local-directory/community Brouwerij Lane static source packet, and Codex normalizes it into the deterministic evidence shape.
 2. Batu approves Foursquare credentials/terms and a bounded one-target response fixture/export path, and Codex performs a narrow Brouwerij Lane retrieval/normalization batch.
 3. If neither source access path is available, Phase 3 records Brouwerij POI retrieval as blocked and shifts to a Batu-approved manual evidence packet or another bounded target/source decision.
