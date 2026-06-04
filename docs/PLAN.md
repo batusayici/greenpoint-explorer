@@ -33,7 +33,7 @@ Use these in order when documents conflict:
 - The locked MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. DTR-11 is the active review-only demo raster in the app, and the Vercel Preview is published behind protected shareable-link access.
 - Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes. Do not open DTR-12 unless later feedback makes that necessary and Batu explicitly approves it.
 - Phase 3 scaffold direction is approved only for the first scaffold direction in `docs/phase-3-architecture-scaling-decision-surface.md`: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
-- Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, Phase 3 POI/business source ADR complete, local-directory ADR amendment complete, and Foursquare Brouwerij adapter contract complete.
+- Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, Phase 3 POI/business source ADR complete, local-directory ADR amendment complete, Foursquare Brouwerij adapter contract complete, and Foursquare credential/source blocker report complete.
 - Brouwerij Lane is now the active source-access test target. Identity, address, category/business type, coordinates, freshness/status, and provenance cannot be deepened until Batu supplies or approves a deterministic source packet/access path.
 - Selected source strategy: the strategic local-directory/community-validation lane includes LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists if Batu approves access, terms, caching, attribution, and fixture storage; Foursquare remains the practical near-term POI implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM is the open cross-check lane; NYC Open Data is the geometry/context lane; manual evidence packets are required for facade/frontage/entrance/raster readiness.
 
@@ -48,13 +48,14 @@ Use these in order when documents conflict:
 - Brouwerij Lane source-retrieval blocker record: `docs/phase-3-brouwerij-source-retrieval-spike.md`
 - Phase 3 POI/business source ADR: `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
 - Foursquare Brouwerij one-target adapter contract: `docs/phase-3-foursquare-brouwerij-poi-adapter-contract.md`
+- Foursquare Brouwerij credential/source blocker report: `docs/phase-3-brouwerij-foursquare-credential-blocker.md`
 
 ## Phase 3 Completion Roadmap
 
 1. Phase 3 POI/business source ADR + source spike. Complete.
 2. Choose primary/fallback/cross-check source lanes for business identity, address, category, coordinates, freshness/status, geometry context, facade/frontage/entrance evidence. Complete.
 3. Define normalized deterministic evidence record shape. Complete as review-only ADR shape, not a public/runtime interface.
-4. Pending Batu approval/supply: implement one-target Brouwerij Lane deterministic source packet or record a blocked credential/source report. Foursquare contract/stub is prepared, but no retrieval has run.
+4. Pending Batu approval/supply: implement one-target Brouwerij Lane deterministic source packet or record a blocked credential/source report. Foursquare contract/stub is prepared, and the first Foursquare readiness attempt is blocked by missing credential and terms/cache/display approval.
 5. Join retrieved POI data to NYC/open geometry context where supported.
 6. Add approved facade/frontage/entrance evidence path.
 7. Deepen Brouwerij Lane as the first non-west real target.
@@ -85,7 +86,7 @@ It must not:
 
 ## Active Blockers
 
-- Source/API strategy is no longer the main blocker; source access/material is. Brouwerij Lane cannot become a real corridor target until Batu supplies or approves deterministic source access/material and a later brief authorizes the one-target evidence packet.
+- Source/API strategy is no longer the main blocker; source access/material is. Brouwerij Lane cannot become a real corridor target until Batu supplies or approves deterministic source access/material and a later brief authorizes the one-target evidence packet. The Foursquare path is specifically blocked by missing credential and repo-recorded terms/cache/display approval.
 - POI/business sources may support identity, address, category, coordinates, and possibly freshness/status, but they do not by themselves support facade, storefront/frontage/order, entrance, exact geometry, or raster readiness.
 - NYC/Open geometry sources may support building/parcel/geometry context, but they do not by themselves prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, or exact address placement.
 - Facade/frontage/entrance evidence requires Batu-supplied or Batu-approved reference/source material; POI data cannot infer it.

@@ -57,12 +57,51 @@ Next pointer:
 
 - Current phase: Phase 3 Brouwerij Lane source-access / deterministic fixture gate for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, and the Foursquare Brouwerij adapter contract as complete. The next proposed batch is a Phase 3 Brouwerij Lane deterministic POI evidence packet, pending Batu approval or supply of source access/material. The selected strategy is the strategic local-directory/community-validation lane with LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists when deterministic access is available; Foursquare as the practical near-term implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM as open cross-check; NYC Open Data as geometry/context only; and manual evidence packets for facade/frontage/entrance/raster readiness. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material exists and a later brief authorizes the one-target packet. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, the Foursquare Brouwerij adapter contract as complete, and the Foursquare credential/source blocker report as complete. The next proposed batch is a Phase 3 Brouwerij Lane deterministic POI evidence packet, pending Batu approval or supply of source access/material. The selected strategy is the strategic local-directory/community-validation lane with LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists when deterministic access is available; Foursquare as the practical near-term implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM as open cross-check; NYC Open Data as geometry/context only; and manual evidence packets for facade/frontage/entrance/raster readiness. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material exists and a later brief authorizes the one-target packet. The Foursquare path is currently blocked by missing credential and missing repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Brouwerij Foursquare Credential Blocker
+
+Status:
+- Blocked; no live retrieval performed.
+
+Scope:
+- Attempt the next bounded Phase 3 Brouwerij Lane Foursquare POI evidence packet only if credentials, repo-recorded terms/cache/display approval, and contract field scope are present. Record a blocker report if gates are missing.
+
+Files changed:
+- `docs/phase-3-brouwerij-foursquare-credential-blocker.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Contract/stub review: `docs/phase-3-foursquare-brouwerij-poi-adapter-contract.md` and `scripts/prepare-foursquare-brouwerij-poi-evidence.mjs`.
+- Foursquare readiness check: `node scripts/prepare-foursquare-brouwerij-poi-evidence.mjs --check-readiness` failed as expected because required credential and terms/cache/display approval env vars are missing.
+- Repo approval search: no separate repo-recorded Foursquare terms/cache/display approval found.
+- No live API call performed.
+- Markdown/lint command search: no dedicated docs lint or markdown lint script is available in `package.json`.
+- `npm run build` not run; docs are not imported into app behavior.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Created a review-only Foursquare credential/source blocker report for Brouwerij Lane.
+- Confirmed the Foursquare contract permits the requested evidence fields, but retrieval is blocked because required credentials and terms/cache/display approval are missing.
+- Did not create the raw Foursquare fixture or normalized POI evidence output.
+- Did not deepen Brouwerij Lane in the scene fixture, call live APIs, scrape, change app/source behavior, or create production/public claims.
+
+Unresolved decisions:
+- Batu owns whether to provide/configure Foursquare credentials and record terms/cache/display approval.
+- Batu owns whether to use a deterministic LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, other local-directory/community packet, or a Batu-approved manual evidence packet instead.
+- Batu owns separate facade/frontage/entrance/raster evidence decisions.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` continues to point to the Phase 3 Brouwerij Lane deterministic POI evidence packet as pending Batu-approved source access/material.
 
 ### 2026-06-04 - Phase 3 Foursquare Brouwerij Adapter Contract
 
