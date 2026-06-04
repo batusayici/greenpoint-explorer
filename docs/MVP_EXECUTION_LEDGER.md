@@ -55,14 +55,54 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 corridor evidence blocker for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 Brouwerij Lane source-retrieval blocker for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, and the one-target evidence-deepening audit as complete. No non-west target was deepened because existing local repo evidence is insufficient for unsupported-claim-safe identity/address/source-evidence/facade/frontage/entrance/geometry/raster-readiness deepening. The next task is Batu supply or approval of one non-west corridor target evidence packet. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, and the Brouwerij Lane source-retrieval spike as complete. Brouwerij Lane is now a review-only source-retrieval-blocked candidate because no approved configured source adapter, checked-in source response, endpoint contract, or credential/API key exists for deterministic retrieval. The next task is Batu supply or approval of Brouwerij Lane retrieval material/access, plus separate facade/frontage/entrance/raster evidence if those fields should advance. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, broad source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Brouwerij Lane Source Retrieval Spike
+
+Status:
+- Complete; source retrieval is blocked pending Batu-approved source material/access.
+
+Scope:
+- Execute one narrow Phase 3 source-retrieval spike for exactly one target, Brouwerij Lane, and preserve review-only status while avoiding unsupported facade/frontage/entrance/raster claims.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/data/source-candidates/brouwerij-lane.phase-3-source-retrieval-spike.v0.1.json`
+- `docs/phase-3-brouwerij-source-retrieval-spike.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Source/path review: Phase 3 scaffold fixture, `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/MVP_SCOPE.md`, `docs/DATA_FEASIBILITY.md`, MVP-02 place-truth packet, MVP-05 source-of-truth validation spike, source-evidence scripts, checked-in source-evidence fixtures, and local environment source/credential variable names.
+- Brouwerij source-candidate JSON parse.
+- Phase 3 scaffold JSON parse.
+- Phase 3 scaffold loader/status check.
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Brouwerij Lane is now represented as a review-only source-retrieval-blocked candidate under the Franklin Ave endpoint.
+- The new source-candidate record tracks identity, address, category/business type, coordinates, and source provenance as `blocked_source_retrieval`.
+- Storefront/frontage/order, facade/source imagery, entrance, and raster readiness remain `blocked` because POI/address retrieval would not support those claims.
+- Historical Brouwerij notes remain local context only; they explain why Brouwerij is a plausible spike target but are not promoted into sourced business data.
+- No live retrieval, scraping, source acquisition pipeline, placeholder-raster replacement, production asset, public interface, production architecture, or production/public readiness change was introduced.
+
+Unresolved decisions:
+- Batu owns the approved source path for Brouwerij Lane, including whether to provide a static source response, approve a source adapter contract, or provide/configure a credential/API key.
+- Batu owns whether Brouwerij facade/frontage/entrance/raster fields stay blocked or receive separate approved reference/source evidence.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu supply or approval of Brouwerij Lane source retrieval material/access.
 
 ### 2026-06-04 - Phase 3 Corridor Evidence Deepening Blocker
 

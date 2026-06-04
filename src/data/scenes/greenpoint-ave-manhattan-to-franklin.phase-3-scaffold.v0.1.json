@@ -14,7 +14,7 @@
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context plus status-labeled mid-corridor and Franklin Ave layers. Placeholder raster is not visual-quality evidence.",
+    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context plus status-labeled mid-corridor, Franklin Ave, and Brouwerij Lane source-retrieval-blocked layers. Placeholder raster is not visual-quality evidence.",
     "reviewLabel": "PHASE 3 CORRIDOR SCAFFOLD / REVIEW ONLY",
     "sourceListLabel": "Phase 3 scaffold status",
     "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
@@ -123,7 +123,7 @@
         },
         "status": "blocked",
         "loadPriority": 3,
-        "notes": "Review-only Franklin Ave endpoint status layer. Local repo evidence reviewed in this batch supports the slice endpoint only, not exact Franklin businesses, addresses, facades, entrances, frontage/order, or real-world geometry."
+        "notes": "Review-only Franklin Ave endpoint status layer. Brouwerij Lane is now tracked as a source-retrieval-blocked candidate inside this endpoint, but no exact Franklin business, address, facade, entrance, frontage/order, coordinates, or real-world geometry claim is made."
       }
     ],
     "layers": [
@@ -431,14 +431,16 @@
         "cardBadge": "blocked",
         "verificationStatus": "blocked",
         "status": "blocked",
-        "summary": "East endpoint of the scaffold now records what remains unresolved: identity, address, source evidence, frontage/order, facade, entrance, geometry, and raster readiness are all explicitly status-labeled.",
-        "disclaimer": "Review-only Franklin endpoint status layer. No exact Franklin businesses, addresses, facades, entrances, storefront order, or real-world geometry are claimed.",
+        "summary": "East endpoint of the scaffold now includes a Brouwerij Lane source-retrieval spike. No approved adapter, source response, or credential is configured, so identity, address, category, coordinates, and source provenance remain blocked for retrieval rather than promoted from historical notes.",
+        "disclaimer": "Review-only Franklin endpoint status layer. No exact Franklin businesses, addresses, categories, coordinates, facades, entrances, storefront order, or real-world geometry are claimed.",
         "tileId": "tile-phase-3-east-franklin-placeholder",
-        "sourceSummary": "Local repo evidence supports the Phase 3 slice ending at Greenpoint Ave / Franklin Ave, but does not support exact Franklin-anchor businesses, addresses, facades, entrances, storefront order, or geometry. No new source acquisition was performed.",
+        "sourceSummary": "Brouwerij Lane is reactivated only as a source-retrieval candidate. Repo policy names LiveXYZ as a preferred future source pending access, but no approved Brouwerij adapter, checked-in source response, endpoint contract, or credential is configured; no live retrieval was performed.",
         "realnessStatus": {
-          "identity": "unknown",
-          "address": "unknown",
-          "sourceEvidence": "unknown",
+          "identity": "blocked_source_retrieval",
+          "address": "blocked_source_retrieval",
+          "categoryBusinessType": "blocked_source_retrieval",
+          "coordinates": "blocked_source_retrieval",
+          "sourceEvidence": "blocked_source_retrieval",
           "frontageOrder": "blocked",
           "facade": "blocked",
           "entrance": "blocked",
@@ -449,20 +451,32 @@
           {
             "field": "identity",
             "label": "Place identity",
-            "status": "unknown",
-            "notes": "No approved local repo record was found for a Franklin Ave anchor business, landmark, or place identity."
+            "status": "blocked_source_retrieval",
+            "notes": "Brouwerij Lane is the scoped retrieval target, but no approved source response was retrieved. The target label is not promoted to a newly source-retrieved identity claim."
           },
           {
             "field": "address",
             "label": "Address",
-            "status": "unknown",
-            "notes": "The slice endpoint text names Greenpoint Ave / Franklin Ave context only; no approved exact address record is present."
+            "status": "blocked_source_retrieval",
+            "notes": "Historical local notes mention 78 Greenpoint Ave, but no approved source adapter or source response was retrieved in this spike, so no address is promoted as sourced in the fixture."
+          },
+          {
+            "field": "categoryBusinessType",
+            "label": "Category/business type",
+            "status": "blocked_source_retrieval",
+            "notes": "No approved source response was retrieved for Brouwerij Lane category or business type."
+          },
+          {
+            "field": "coordinates",
+            "label": "Coordinates",
+            "status": "blocked_source_retrieval",
+            "notes": "No approved POI/geocoder response or checked-in coordinate payload exists for Brouwerij Lane."
           },
           {
             "field": "sourceEvidence",
             "label": "Source evidence",
-            "status": "unknown",
-            "notes": "Existing Phase 2AA, Phase 2AB, and DTR-11 local artifacts are scoped to Manhattan Ave / Greenpoint Ave and do not provide Franklin-specific source evidence."
+            "status": "blocked_source_retrieval",
+            "notes": "No Brouwerij source retrieval output, source id, retrieval timestamp, attribution record, or adapter-normalized provenance exists."
           },
           {
             "field": "frontageOrder",
@@ -502,6 +516,13 @@
             "status": "candidate",
             "scope": "Greenpoint Ave / Franklin Ave endpoint of the current one-block Phase 3 scaffold.",
             "notes": "Candidate endpoint shell only. It is ready for Batu/source review to decide whether Franklin should become a real anchor, remain a blocked endpoint, or wait for an approved extended raster/reference surface."
+          },
+          {
+            "id": "brouwerij-lane-source-retrieval-candidate",
+            "label": "Brouwerij Lane source retrieval spike",
+            "status": "blocked_source_retrieval",
+            "scope": "Exactly one Franklin-side target: Brouwerij Lane.",
+            "notes": "No approved source adapter, source response, or credential is configured. Identity, address, category, coordinates, and provenance remain blocked for retrieval; facade, frontage/order, entrance, and raster readiness remain blocked by missing reference evidence."
           }
         ],
         "sourceReferences": [
@@ -517,7 +538,21 @@
             "label": "MVP scope later-expansion note",
             "path": "docs/MVP_SCOPE.md",
             "status": "candidate",
-            "notes": "Mentions Brouwerij Lane / Franklin-Greenpoint area only as possible later expansion context; not evidence for the current Franklin anchor."
+            "notes": "Mentions Brouwerij Lane / Franklin-Greenpoint area only as possible later expansion context; supports why this spike is review-only and boundary-limited, not a sourced target upgrade."
+          },
+          {
+            "id": "brouwerij-lane-source-retrieval-spike",
+            "label": "Brouwerij Lane Phase 3 source candidate record",
+            "path": "src/data/source-candidates/brouwerij-lane.phase-3-source-retrieval-spike.v0.1.json",
+            "status": "blocked_source_retrieval",
+            "notes": "Records the blocked retrieval attempt, missing approved adapter/credential/source response, and per-field status labels for identity, address, category, coordinates, provenance, facade, frontage/order, entrance, and raster readiness."
+          },
+          {
+            "id": "brouwerij-lane-source-retrieval-report",
+            "label": "Brouwerij Lane source retrieval spike report",
+            "path": "docs/phase-3-brouwerij-source-retrieval-spike.md",
+            "status": "blocked_source_retrieval",
+            "notes": "Human-readable report explaining that local historical notes exist, but no approved deterministic retrieval source is configured for this target."
           },
           {
             "id": "phase-2aa-west-anchor-real-data-fixture",
@@ -565,13 +600,15 @@
       "manual_draft",
       "symbolic",
       "unknown",
+      "blocked_source_retrieval",
       "blocked"
     ],
     "warnings": [
       "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
       "The Manhattan Ave west anchor now carries existing sourced/draft MVP context, but the visual plate is still a placeholder and not factual corridor art.",
       "The mid-corridor target now has a source-candidate/status layer only; local repo evidence reviewed in this batch does not support exact mid-corridor businesses, facades, addresses, frontage/order, entrances, or geometry.",
-      "The Franklin Ave endpoint now has a status/evidence layer only; local repo evidence reviewed in this batch supports the slice endpoint but not exact Franklin businesses, addresses, facades, frontage/order, entrances, or geometry.",
+      "The Franklin Ave endpoint now has a Brouwerij Lane source-retrieval candidate only; no approved adapter, source response, endpoint contract, or credential is configured for retrieval.",
+      "Brouwerij Lane historical notes are not promoted to sourced identity/address/category/coordinates; facade, frontage/order, entrance, and raster readiness remain blocked.",
       "Scene coordinates do not imply exact real-world placement.",
       "Franklin Ave remains blocked for exact place/facade/address/frontage/entrance/raster claims until reviewed source and reference evidence exists."
     ],

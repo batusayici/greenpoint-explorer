@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 3 Corridor Evidence Blocker
+# Current Execution Brief - Phase 3 Brouwerij Lane Source Retrieval Blocker
 
-Status: DTR-11 MVP interaction/card correction is locked for external review. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. Codex completed the first review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, one bounded west-anchor realness pass, one bounded mid-corridor source-candidate layer pass, and one bounded Franklin Ave endpoint status/evidence layer pass. Codex then inspected local repo evidence for one non-west-anchor corridor target to deepen. No approved local evidence was sufficient to deepen a specific mid-corridor or Franklin-side target without inventing unsupported identity, address, facade/source imagery, storefront/frontage/order, entrance, geometry, or raster-readiness claims. The next unblock is Batu-supplied or Batu-approved corridor reference/source material for exactly one target beyond the west anchor, or explicit Batu approval to reactivate a parked candidate with its required evidence limits.
+Status: DTR-11 MVP interaction/card correction is locked for external review. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. Codex completed the first review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, the west-anchor realness pass, the mid-corridor source-candidate layer, the Franklin Ave endpoint status/evidence layer, and the local-only one-target evidence-deepening audit. Batu accepted that repo-local evidence is insufficient to deepen Brouwerij Lane manually, and opened one narrow Brouwerij Lane source-retrieval spike. Codex completed that spike as a review-only blocked retrieval record: no approved configured source adapter, checked-in source response, endpoint contract, or credential/API key exists for Brouwerij Lane retrieval. The next unblock is Batu-supplied or Batu-approved Brouwerij Lane source material/adapter access for identity, address, category/business type, coordinates, and provenance, plus separate approved evidence for facade/frontage/entrance/raster claims if those are to advance.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -36,6 +36,7 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - The Franklin Ave endpoint status/evidence layer pass made the east anchor explicit without inventing facts: identity/address/source evidence remain `unknown`, frontage/order/facade/entrance/raster readiness remain `blocked`, and scene-space geometry is only a `candidate` scaffold endpoint.
 - The west tile is marked `sourced`; the mid-corridor tile remains `unknown` with candidate metadata; Franklin Ave remains `blocked` with explicit endpoint status metadata.
 - The one-target evidence-deepening audit found no approved local repo evidence sufficient to make another non-west target real. Existing Brouwerij Lane and Karczma notes are parked/alternate/deferred candidates requiring boundary/reactivation decisions and manual evidence; the currently linked Phase 2AA, Phase 2AB, and DTR-11 artifacts remain scoped to Manhattan Ave / Greenpoint Ave.
+- The Brouwerij Lane source-retrieval spike reactivated exactly one target as a review-only source candidate, then blocked retrieval because the repo lacks an approved configured source adapter, static source response, endpoint contract, and credential/API key. Historical notes remain local context only and are not promoted to sourced identity/address/category/coordinate claims.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
 - Phase 2DTR-4 output packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
 - Phase 2DTR-5 output packet: `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/`.
@@ -80,7 +81,7 @@ The MVP proof is the real-data-to-isometric-raster-scene pipeline, not just scre
 
 ## Current Phase 3 Review Gate
 
-Batu has approved the decision surface for the first scaffold direction only, and Codex has completed the first scaffold, one bounded west-anchor realness pass, one bounded mid-corridor source-candidate layer pass, one bounded Franklin Ave endpoint status/evidence layer pass, and one bounded evidence-deepening audit. Further Phase 3 implementation is blocked until Batu supplies or approves specific corridor evidence for one non-west target, or explicitly revises the scope/source authority.
+Batu has approved the decision surface for the first scaffold direction only, and Codex has completed the first scaffold, one bounded west-anchor realness pass, one bounded mid-corridor source-candidate layer pass, one bounded Franklin Ave endpoint status/evidence layer pass, one bounded evidence-deepening audit, and one bounded Brouwerij Lane source-retrieval spike. Further Phase 3 implementation is blocked until Batu supplies or approves deterministic Brouwerij Lane source retrieval material/access, supplies separate facade/frontage/entrance/reference evidence, or explicitly revises the scope/source authority.
 
 Guiding question:
 
@@ -291,21 +292,60 @@ Verification for the completed batch:
 - `git diff --check`.
 - `git status --short`.
 
-## Proposed Next Task
+## Completed Phase 3 Brouwerij Lane Source Retrieval Spike
 
-Batu Supply Or Approve One Non-West Corridor Target Evidence Packet.
+Phase 3 Brouwerij Lane Source Retrieval Spike.
 
 Purpose:
 
-- Choose exactly one target beyond the west anchor for possible deepening.
-- Provide or approve enough local/static evidence for that target to support at least identity/address/source-evidence status, and ideally facade/source imagery, storefront/frontage/order, entrance, geometry, and raster-readiness status.
-- Decide whether any parked candidate, such as Brouwerij Lane, is reactivated for the current Greenpoint Ave / Manhattan Ave to Franklin Ave Phase 3 slice, and under what exact evidence limits.
+- Test exactly one non-west corridor target, Brouwerij Lane, through source retrieval rather than manual repo-only evidence.
+- Create a review-only source candidate record for identity, address, category/business type, coordinates, and source provenance.
+- Preserve the rule that facade, entrance, storefront/frontage/order, and raster readiness cannot be inferred from POI/address data.
+- Block retrieval cleanly if no approved source adapter, source response, or credential is configured.
+
+Outcome:
+
+- Brouwerij Lane is now represented as a review-only source-retrieval-blocked candidate under the Franklin Ave endpoint.
+- `src/data/source-candidates/brouwerij-lane.phase-3-source-retrieval-spike.v0.1.json` records per-field statuses for identity, address, category/business type, coordinates, source provenance, storefront/frontage/order, facade, entrance, and raster readiness.
+- `docs/phase-3-brouwerij-source-retrieval-spike.md` records the blocker: no approved configured source adapter, checked-in static source response, endpoint contract, Brouwerij source link/export, or credential/API key exists in the repo or local environment.
+- Historical Brouwerij notes remain local context only. They support why the target is plausible for a spike, but they do not become sourced business data.
+- No live retrieval, scraping, source acquisition pipeline, placeholder-raster replacement, facade/frontage/entrance/raster claim, production asset, public interface, production architecture, or production/public readiness change was introduced.
+
+Files changed:
+
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/data/source-candidates/brouwerij-lane.phase-3-source-retrieval-spike.v0.1.json`
+- `docs/phase-3-brouwerij-source-retrieval-spike.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification for the completed batch:
+
+- Brouwerij source-candidate JSON parse.
+- Phase 3 scaffold JSON parse.
+- Phase 3 scaffold loader/status check.
+- `npm run build`.
+- `git diff --check`.
+- `git status --short`.
+
+## Proposed Next Task
+
+Batu Supply Or Approve Brouwerij Lane Source Retrieval Packet.
+
+Purpose:
+
+- Keep the next Phase 3 move focused on the already-reactivated Brouwerij Lane target.
+- Provide or approve enough deterministic retrieval material for Brouwerij Lane to support identity, address, category/business type, coordinates, and source provenance without relying on historical notes alone.
+- Decide whether facade/source imagery, storefront/frontage/order, entrance, geometry, or raster readiness remain blocked or receive separate approved reference/source evidence.
 - Keep review-only labeling, no production/public exact-geometry claims, and no production/public readiness change.
 
 Required evidence before implementation can deepen a target:
 
-- Target identity and address/context source approved for this Phase 3 slice.
-- Source/evidence pointer that is local, static, and allowed for review use.
+- Brouwerij Lane source response or static export approved for this Phase 3 slice.
+- Adapter contract or deterministic normalization rule if source retrieval is to run locally.
+- Any required credential/API key, or a checked-in static response that avoids live credential use.
+- Usage, storage, attribution, and claim-support limits for the approved source.
 - Facade/reference imagery path or an explicit decision that facade remains blocked.
 - Storefront/frontage/order and entrance evidence, or explicit blocked status if unavailable.
 - Geometry/footprint/context evidence, or explicit candidate/blocked status if unavailable.
@@ -317,7 +357,7 @@ Required evidence before implementation can deepen a target:
 - No product-copy readiness change.
 - No production/public readiness change.
 - No DTR-12, facade/raster correction loop, broad new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
-- No Phase 3 implementation beyond the completed first scaffold, west-anchor realness, mid-corridor candidate-layer, Franklin endpoint status-layer, and one-target evidence-deepening audit batches; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
+- No Phase 3 implementation beyond the completed first scaffold, west-anchor realness, mid-corridor candidate-layer, Franklin endpoint status-layer, one-target evidence-deepening audit, and Brouwerij Lane source-retrieval spike batches; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.
@@ -369,7 +409,7 @@ Stop and write `NEEDS_BATU` before:
 - Treating NYC building footprints alone as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or exact station geometry.
 - Treating Batu-supplied reference photos as production assets, public factual proof, training input, texture extraction source, or general source-policy approval.
 - Adding external source acquisition, scraping, browser automation for external evidence, APIs, source-vendor decisions, package scripts, CI, package/tooling changes, production schemas, public APIs, or broad coverage.
-- Expanding Phase 3 implementation beyond the completed first scaffold and west-anchor realness batches without Batu approval.
+- Expanding Phase 3 implementation beyond the completed first scaffold, west-anchor realness, mid-corridor candidate-layer, Franklin endpoint status-layer, one-target evidence-deepening audit, and Brouwerij Lane source-retrieval spike batches without Batu approval.
 - Implementing a larger one-off scene without identifying whether the work improves or weakens the path toward neighborhood-scale, browser-based, real-data-to-authored-scene generation.
 - Editing raster assets as production images, revising visual direction, or opening full MVP-29G/MVP-30 QA/demo freeze.
 - Replacing normal-mode raster-first primary world art with SVG, canvas, CSS, DOM-drawn buildings/storefronts/roads/signs, or other code-generated scene art.

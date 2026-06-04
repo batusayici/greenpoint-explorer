@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "phase-3-source-candidate.v0.1",
+  "recordId": "brouwerij-lane-phase-3-source-retrieval-spike",
+  "status": "review-only-blocked-source-retrieval",
+  "reviewOnly": true,
+  "generatedAt": "2026-06-04T00:00:00-04:00",
+  "target": {
+    "id": "brouwerij-lane",
+    "label": "Brouwerij Lane",
+    "sliceId": "greenpoint-ave-manhattan-to-franklin",
+    "scope": "Exactly one Phase 3 source-retrieval spike target beyond the west anchor.",
+    "claimLimit": "The target label is reactivated for source-retrieval review only. This record does not claim source-retrieved identity, address, category, coordinates, facade, entrance, storefront order, or raster readiness."
+  },
+  "sourceRetrievalReview": {
+    "status": "blocked",
+    "attemptedLiveRetrieval": false,
+    "blocker": "No approved configured source adapter, static source response, or credential/API key for Brouwerij Lane source retrieval is present in the repo or local environment.",
+    "approvedSourcePathFinding": "Repo policy names LiveXYZ as a preferred future source pending access and usage review, but no Brouwerij LiveXYZ link, LiveXYZ adapter/client, endpoint contract, export file, or credential variable is configured. Existing official/Time Out URLs are historical local notes, not an approved deterministic retrieval adapter.",
+    "missingToUnblock": [
+      "Batu-approved source for Brouwerij Lane identity/address/category/coordinates retrieval, such as an approved LiveXYZ venue/search response or another allowed local/static source packet.",
+      "A configured adapter contract or checked-in static source response for that approved source.",
+      "Any required credential/API key or exported source payload, with usage/storage/attribution limits documented.",
+      "A deterministic retrieval/normalization check that writes or verifies the review-only candidate fields."
+    ],
+    "localEvidenceReviewed": [
+      {
+        "path": "docs/DATA_SOURCES.md",
+        "status": "policy_context",
+        "notes": "LiveXYZ is preferred pending access and usage review; live API clients and ingestion are not approved by default."
+      },
+      {
+        "path": "docs/PLACE_SOURCE_POLICY.md",
+        "status": "policy_context",
+        "notes": "Public directories may corroborate identity/address research, but exact placement, public card finality, storefront frontage, facade, and entrance claims require stronger evidence and Batu approval."
+      },
+      {
+        "path": "docs/DATA_FEASIBILITY.md",
+        "status": "historical_candidate_context",
+        "notes": "Older local notes list Brouwerij Lane as an alternate-slice candidate near Franklin/Greenpoint, with public listing support for 78 Greenpoint Ave and official contact text not readable in the earlier pass."
+      },
+      {
+        "path": "docs/mvp-review/mvp-02-place-truth-packet/README.md",
+        "status": "historical_candidate_context",
+        "notes": "Brouwerij Lane is parked as possible later-slice research and requires manual verification if reactivated."
+      },
+      {
+        "path": "docs/MVP_SCOPE.md",
+        "status": "scope_context",
+        "notes": "Brouwerij Lane / Franklin-Greenpoint is possible later expansion only if a later slice or expanded boundary is approved."
+      }
+    ]
+  },
+  "fieldStatuses": [
+    {
+      "field": "identity",
+      "status": "blocked_source_retrieval",
+      "sourceRetrievedValue": null,
+      "notes": "No approved source response was retrieved. The label Brouwerij Lane is the scoped spike target, not a newly source-retrieved identity claim."
+    },
+    {
+      "field": "address",
+      "status": "blocked_source_retrieval",
+      "sourceRetrievedValue": null,
+      "historicalRepoCandidateValue": "78 Greenpoint Ave",
+      "notes": "Historical local notes mention public listings supporting 78 Greenpoint Ave, but this spike did not retrieve or normalize an approved source response, so the fixture must not promote the address as sourced."
+    },
+    {
+      "field": "categoryBusinessType",
+      "status": "blocked_source_retrieval",
+      "sourceRetrievedValue": null,
+      "notes": "No approved source response was retrieved for category or business type."
+    },
+    {
+      "field": "coordinates",
+      "status": "blocked_source_retrieval",
+      "sourceRetrievedValue": null,
+      "notes": "No approved geocoder, POI source, or checked-in coordinate response exists for this target."
+    },
+    {
+      "field": "sourceProvenance",
+      "status": "blocked_source_retrieval",
+      "sourceRetrievedValue": null,
+      "notes": "Only local historical evidence pointers are present. No retrieved source payload, retrieval timestamp, source id, attribution record, or adapter output exists."
+    },
+    {
+      "field": "frontageOrder",
+      "status": "blocked",
+      "sourceRetrievedValue": null,
+      "notes": "POI/address retrieval would not prove storefront order or tenant frontage. This remains blocked pending approved frontage evidence or field/reference review."
+    },
+    {
+      "field": "facade",
+      "status": "blocked",
+      "sourceRetrievedValue": null,
+      "notes": "No Batu-supplied/approved Brouwerij facade imagery or extraction spec exists. POI data must not be used to infer facade appearance."
+    },
+    {
+      "field": "entrance",
+      "status": "blocked",
+      "sourceRetrievedValue": null,
+      "notes": "No approved entrance evidence exists. POI/address retrieval must not be used to infer entrance location."
+    },
+    {
+      "field": "rasterReadiness",
+      "status": "blocked",
+      "sourceRetrievedValue": null,
+      "notes": "No extended corridor raster/reference surface or Brouwerij-specific visual evidence exists. The Phase 3 placeholder raster remains scaffold mechanics only."
+    }
+  ]
+}
