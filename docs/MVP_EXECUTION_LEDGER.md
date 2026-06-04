@@ -57,12 +57,46 @@ Next pointer:
 
 - Current phase: Phase 3 opening/planning for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, and Phase 3 as open for scoping/planning only. The next task is Phase 3 scoping/planning for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave, including the required architecture-scaling decision surface before any implementation. Phase 3 implementation, new architecture boundaries, public interfaces, source acquisition, visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, and Phase 3 as open for scoping/planning only. The Phase 3 architecture-scaling decision surface for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave is complete at `docs/phase-3-architecture-scaling-decision-surface.md`; the next task is Batu review/approval or revision of that decision surface. Phase 3 implementation, new architecture boundaries, public interfaces, source acquisition, visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Architecture Scaling Decision Surface
+
+Status:
+- Complete for Batu review; implementation remains blocked.
+
+Scope:
+- Produce a concise docs-only Phase 3 architecture-scaling decision surface for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice, then reconcile execution-control pointers.
+
+Files changed:
+- `docs/phase-3-architecture-scaling-decision-surface.md`
+- `docs/PLAN.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc reread: `docs/MVP_SCOPE.md`, `docs/ARCHITECTURE.md`, `docs/PHASE_3_SCALE_TEST_PLAN.md`, and `docs/SCENE_MANIFEST_SCHEMA.md`.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Created `docs/phase-3-architecture-scaling-decision-surface.md` as a concise planning-only decision surface.
+- Recommended, for Batu review only, a hybrid path using block/tile-scoped manifest planning, raster-first scene plates/layers, structured interaction/QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
+- Documented the minimum decisions needed to open the first scaffold proposal: slice bounds, block/tile/layer partition direction, coordinates/pan/zoom approach, raster placeholder/approved-surface choice, minimum QA/provenance overlay, browser assumptions, 10-block/50-block risks, and the proposed first implementation batch after approval.
+- Preserved no Phase 3 implementation, no app/source edits, no new architecture boundary, no public-interface/schema approval, no visual asset generation, no source acquisition, no production/public claims, and no package/tooling changes.
+
+Unresolved decisions:
+- Batu owns whether to approve, revise, or reject the recommended hybrid direction.
+- Batu owns the exact allowed files, public-interface/schema implications, source/reference lane, visual asset availability, and acceptance criteria for any later Phase 3 implementation batch.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of `docs/phase-3-architecture-scaling-decision-surface.md` before any Phase 3 implementation.
 
 ### 2026-06-04 - Phase 3 Roadmap Control Reconciliation
 

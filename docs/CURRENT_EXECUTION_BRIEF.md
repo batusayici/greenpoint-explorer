@@ -1,6 +1,6 @@
 # Current Execution Brief - Phase 3 Exploration Slice Planning Gate
 
-Status: DTR-11 MVP interaction/card correction is locked for external review. A follow-up removed the redundant raster footer from the interactive viewport and removed the failed hover/selected storefront outline layer from the demo. Batu requested and Codex completed a bounded MVP acceptance/audit pass; the audit found no local demo/package blocker to external feedback. Remote Vercel Preview publication is now complete. The preview is protected by Vercel SSO at the base URL, with a time-bounded shareable-link bypass created for review access. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. The next executable task is Phase 3 scoping/planning and a required architecture-scaling decision surface for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+Status: DTR-11 MVP interaction/card correction is locked for external review. A follow-up removed the redundant raster footer from the interactive viewport and removed the failed hover/selected storefront outline layer from the demo. Batu requested and Codex completed a bounded MVP acceptance/audit pass; the audit found no local demo/package blocker to external feedback. Remote Vercel Preview publication is now complete. The preview is protected by Vercel SSO at the base URL, with a time-bounded shareable-link bypass created for review access. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. The Phase 3 architecture-scaling decision surface for the one-block exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave is complete for Batu review at `docs/phase-3-architecture-scaling-decision-surface.md`. The next task is Batu review/approval or revision of that decision surface before any Phase 3 implementation is opened.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -28,7 +28,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - True rotation is deferred because the scene is raster-first rather than a true 3D world; the app exposes a fixed-view-angle affordance instead of faking 3D rotation.
 - The Digital Neighborhoods Signal Log now lives at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` as strategic context only, with compact roadmap/scope/architecture reconciliation preserving local-recognizability, editorial/local-knowledge, provenance-as-trust/craft, and future tile-based scale-validation signals without opening new execution scope.
 - Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes.
-- Phase 3 is opening as a planning/scoping track only: Phase 3 Exploration Slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Phase 3 is open as a planning/scoping track only: Phase 3 Exploration Slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- The Phase 3 architecture-scaling decision surface is complete for Batu review at `docs/phase-3-architecture-scaling-decision-surface.md`.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
 - Phase 2DTR-4 output packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
 - Phase 2DTR-5 output packet: `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/`.
@@ -81,6 +82,10 @@ Planning question:
 - Can the underlying architecture credibly scale from one expanded block toward many connected blocks without becoming a bespoke one-off artwork?
 - What architecture-scaling decision surface should Batu approve before implementation begins?
 
+Completed planning artifact:
+
+- `docs/phase-3-architecture-scaling-decision-surface.md`
+
 Review packet:
 
 - App source integration:
@@ -121,20 +126,20 @@ Findings to review:
   - Do not commit the shareable bypass token to repo docs; share it directly only with intended reviewers.
 - Review-only status and production/public gates remain intact.
 
-No new app/source edit, storefront outline rebuild, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, Phase 3 implementation, new architecture, source acquisition, visual asset generation, or production/public-readiness change is authorized until Batu updates this brief or gives explicit direction.
+No new app/source edit, storefront outline rebuild, public-interface/schema approval, package/tooling change, DTR-12, facade/raster correction loop, Phase 3 implementation, new architecture, source acquisition, visual asset generation, or production/public-readiness change is authorized until Batu reviews or revises the decision surface and updates this brief or gives explicit direction.
 
 ## Proposed Next Task
 
-Phase 3 Scoping/Planning And Architecture-Scaling Decision Surface.
+Batu Review Of Phase 3 Architecture-Scaling Decision Surface.
 
 Purpose:
 
-- Define the one-block exploration slice from the locked MVP scene at Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
-- Produce a Phase 3 architecture-scaling decision surface before any implementation is authorized.
-- Prevent Phase 3 from becoming a one-off larger artwork that cannot scale toward authored, data-grounded neighborhood scenes in the browser.
+- Review `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Decide whether to approve, revise, or reject the recommended hybrid path: block/tile-scoped manifest planning, raster-first scene plates/layers, structured interaction/QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
+- Decide whether a later implementation brief may open the smallest visible Phase 3 scaffold.
 - Preserve review-only labeling, no production/public exact-geometry claims, and no production/public readiness change.
 
-Required decision surface:
+Decision surface covers:
 
 - Proposed block/tile partitioning path.
 - Raster/layer strategy, including whether the expanded scene stays monolithic, layered, tiled, masked, or otherwise modular.
@@ -145,7 +150,7 @@ Required decision surface:
 - QA/debug overlay expectations for provenance, source status, block/tile boundaries, interaction targets, and unsupported claims.
 - Known architecture, data-source, provenance, visual-continuity, review-burden, and runtime risks/gaps, including what may break at 10 blocks, 50 blocks, or neighborhood scale.
 
-This is proposed, not opened for source/app changes. A later brief or Batu message must name the exact allowed files, architecture/interface boundaries, and acceptance criteria before any Phase 3 implementation.
+This is proposed, not opened for source/app changes. A later brief or Batu message must name the exact allowed files, architecture/interface boundaries, source/reference lane, visual asset availability, and acceptance criteria before any Phase 3 implementation.
 
 ## Continuing Boundaries
 
