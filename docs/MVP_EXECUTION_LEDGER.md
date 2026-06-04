@@ -55,14 +55,59 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 first scaffold implementation for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 first scaffold review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, and `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only. The next authorized task is the smallest review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice: add a Phase 3 scene fixture, define block/tile/layer metadata, define manifest-driven pan/zoom bounds, render minimum QA/debug overlay, carry forward minimal safe hover/click/card behavior, and use an approved placeholder or supplied review-only raster/surface. Phase 3 implementation beyond that scaffold, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, and the first review-only Phase 3 scaffold batch as complete. The next task is Batu review/approval or revision of that scaffold outcome. Phase 3 implementation beyond that scaffold, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 First Scaffold Implementation
+
+Status:
+- Complete for Batu review; further Phase 3 implementation remains blocked.
+
+Scope:
+- Execute the single next authorized Phase 3 scaffold batch from `docs/CURRENT_EXECUTION_BRIEF.md`: add a review-only scene fixture for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, define block/tile/layer metadata and manifest-driven pan/zoom bounds, render minimum QA/debug overlay, carry forward minimal safe hover/click/card behavior, and use an approved placeholder raster surface for scaffold mechanics only.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/PlaceholderWorld.jsx`
+- `src/App.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc reread: `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Phase 3 scaffold JSON parse.
+- `npm run build` passed with the existing large-chunk warning.
+- Browser smoke passed for default load, Phase 3 review label, canvas presence, QA overlay toggle, scaffold layer control, selected card, pan/zoom controls, and desktop containment/no horizontal overflow.
+- Mobile viewport resizing was unavailable in the in-app browser surface, so mobile containment remains a verification gap.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Added a review-only Phase 3 scaffold fixture for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
+- Loaded the existing approved review-only Phase 6 raster as a placeholder surface for scaffold mechanics only; it is labeled non-production and not factual Greenpoint or visual-quality evidence.
+- Added internal scaffold fixture loading for block/tile/layer metadata, manifest-driven pan/zoom bounds, QA warnings, and status-labeled scaffold targets without approving a public schema/interface.
+- Rendered a minimum QA/debug scaffold overlay for block, tile, layer, target/status, and warning information.
+- Carried forward minimal hover/click/card behavior and added compact status display in cards.
+- Preserved no production/public readiness, no production visual assets, no source acquisition, no live data, no scraping, no Google/Street View/3D Tiles extraction, no full 3D, no broad coverage, no major animation/aliveness system, no package/tooling changes, and no broader Phase 3 implementation.
+
+Unresolved decisions:
+- Batu owns creative/product acceptance of the first scaffold and whether it proves enough of the hybrid architecture direction.
+- Batu owns whether to approve a later implementation batch, request revision, supply or approve an extended raster plate, approve any public interface/schema, approve production architecture, or expand Phase 3 beyond this scaffold.
+- Mobile containment should be verified in a resize-capable browser surface before treating the scaffold as mobile-reviewed.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the completed first review-only Phase 3 scaffold outcome.
 
 ### 2026-06-04 - Phase 3 First Scaffold Authorization
 

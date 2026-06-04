@@ -40,8 +40,8 @@ Use these in order when documents conflict:
 
 ## Current State Snapshot
 
-- Current phase: Phase 3 first scaffold implementation for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
-- Current next task: the smallest review-only Phase 3 scaffold batch authorized by `docs/CURRENT_EXECUTION_BRIEF.md`.
+- Current phase: Phase 3 first scaffold review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current next task: Batu review of the completed first review-only Phase 3 scaffold outcome.
 - Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes. The review-only Vercel Preview is deployed behind protected shareable-link access.
 - DTR-11 is now the active review-only interactive demo raster in the app. MVP-29E remains the manually composed four-corner raster baseline/reference, not the final proof of the pipeline.
 - Phase 2DTR-1 now has a review packet at `docs/mvp-review/phase-2dtr-1-one-corner-real-data-to-raster-reproduction-slice/` with a structured Grillpoint/NW source object, deterministic raster/spec artifact, visual-instruction provenance map, and visible comparison board against MVP-29E.
@@ -72,7 +72,7 @@ Use these in order when documents conflict:
 | Review-only prototype baseline | Published for external review | DTR-11 is the current interactive review-demo raster/app scene with simplified cards and no storefront outline overlay; the bounded MVP audit found no local demo/package blocker, and the Vercel Preview is published behind protected shareable-link access. MVP-29E remains the baseline/reference plate. |
 | Phase 2A-2AC data groundwork | Complete as groundwork | Useful manifest/source/QA evidence exists, but it remains review-only and not production schema/pipeline approval. |
 | Phase 2DTR data-to-raster proof | Complete and locked for MVP feedback | The current proof is sufficient for MVP feedback; do not open DTR-12 or continue facade/raster correction loops unless feedback shows facade fidelity is decisive. |
-| Phase 3 Exploration Slice: Greenpoint Ave from Manhattan Ave to Franklin Ave | First scaffold implementation authorized | Product-led and architecture-aware implementation for one connected block: prove the beginning of a recognizable browsable Greenpoint world and test whether the scene/data/rendering approach can scale toward neighborhood-level authored scenes in a browser. Batu has approved the first decision surface at `docs/phase-3-architecture-scaling-decision-surface.md` for the first scaffold direction only; broader Phase 3 implementation, production architecture, public interfaces, and production/public readiness remain blocked. |
+| Phase 3 Exploration Slice: Greenpoint Ave from Manhattan Ave to Franklin Ave | First scaffold complete for Batu review | Product-led and architecture-aware implementation for one connected block: prove the beginning of a recognizable browsable Greenpoint world and test whether the scene/data/rendering approach can scale toward neighborhood-level authored scenes in a browser. The first review-only scaffold now exists with block/tile/layer metadata, manifest-driven pan/zoom bounds, minimum QA/debug overlay, minimal card/interaction carry-forward, and an approved placeholder raster surface for mechanics only. Broader Phase 3 implementation, production architecture, public interfaces, and production/public readiness remain blocked. |
 | MVP QA/demo freeze | Future | Blocked until Batu accepts sufficient four-corner output and opens the QA/demo freeze. |
 
 ## Phase 2DTR Outcome Plan
@@ -125,7 +125,7 @@ Success criteria:
 - Review burden visibility: the plan must call out where human review is still required, where automation can help, and what would break at 10 blocks, 50 blocks, or full-neighborhood scale.
 - Risk/gap visibility: Codex must explicitly surface architectural risks, scalability gaps, browser-performance risks, data-source gaps, provenance gaps, review-burden risks, and places where the current approach may not scale.
 
-The Phase 3 architecture-scaling decision surface is reviewed/approved for the first scaffold direction at `docs/phase-3-architecture-scaling-decision-surface.md`. The approved first scaffold direction is the hybrid path: block/tile-scoped manifest planning, raster-first scene plates/layers, structured interaction/QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review. This approval opens only the smallest review-only scaffold batch in `docs/CURRENT_EXECUTION_BRIEF.md`; it does not approve production architecture, public interfaces, production/public readiness, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, or major animation/aliveness systems.
+The Phase 3 architecture-scaling decision surface is reviewed/approved for the first scaffold direction at `docs/phase-3-architecture-scaling-decision-surface.md`. The approved first scaffold direction is the hybrid path: block/tile-scoped manifest planning, raster-first scene plates/layers, structured interaction/QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review. The first review-only scaffold batch is now complete for Batu review; it does not approve production architecture, public interfaces, production/public readiness, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, or major animation/aliveness systems.
 
 Operating rule: Codex must not simply implement a larger one-off scene. For each Phase 3 batch, Codex must identify whether the work improves or weakens the path toward neighborhood-scale, browser-based, real-data-to-authored-scene generation. If a proposed implementation creates a scaling dead end, Codex must flag it before proceeding.
 
@@ -149,8 +149,8 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - Completed bounded audit: `docs/mvp-review/mvp-acceptance-audit-2026-06-03.md`.
 - Published preview base URL: `https://greenpoint-explorer-m21pixa86-batusayicis-projects.vercel.app`.
 - Shareable-link bypass expires: `2026-06-18T00:30:05Z`; do not commit the bypass token to repo docs.
-- Current next task after publication: first review-only Phase 3 scaffold implementation for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
-- The next batch must remain review-only and must be limited to the scaffold scope in `docs/CURRENT_EXECUTION_BRIEF.md`: review-only scene fixture, block/tile/layer metadata, manifest-driven pan/zoom bounds, minimum QA/debug overlay, minimal safe hover/click/card carry-forward, and an approved placeholder or supplied review-only raster/surface. It must not open production/public-readiness changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, major animation/aliveness systems, DTR-12, another facade/raster correction loop, package/tooling changes, production architecture, public interfaces, or source acquisition.
+- Current next task after publication: Batu review of the completed first review-only Phase 3 scaffold for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
+- The next task must remain review-only and must not open further Phase 3 implementation, production/public-readiness changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, major animation/aliveness systems, DTR-12, another facade/raster correction loop, package/tooling changes, production architecture, public interfaces, or source acquisition.
 
 ## Locked Decisions
 
@@ -163,7 +163,7 @@ The current next pointer is documented in `docs/CURRENT_EXECUTION_BRIEF.md`:
 - Google/Street View/3D Tiles extraction, third-party image scraping, production reuse, training, texture extraction, and production/public claims remain blocked unless a later explicit approval gate opens them.
 - Google 3D Tiles may be studied only as a strategic fidelity benchmark/reference topic until licensing, attribution, and allowed-use boundaries are explicitly resolved; this does not approve extraction, previsualization, source-of-truth use, generation input, texture use, or production use.
 - The approved reference corpus is the active visual reference source for future visual, prototype, and assetization work.
-- The Phase 3 architecture-scaling decision surface is approved only for the first scaffold direction; broader Phase 3 implementation remains blocked until a later brief opens it.
+- The Phase 3 architecture-scaling decision surface is approved only for the first scaffold direction; that scaffold is complete for review, and broader Phase 3 implementation remains blocked until a later brief opens it.
 
 ## Active Blockers
 

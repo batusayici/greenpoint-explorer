@@ -1,21 +1,12 @@
-// Review/demo-safe MVP scene data now loads through the Phase 2B manifest path.
-import dtr11RasterPlateSrc from "./assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png";
-import mvp29eRasterPlateSrc from "./assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png";
-import draftSceneFixture from "./data/draft-scenes/manhattan-greenpoint-ave.phase-2v.json";
-import geometrySourceFixture from "./data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json";
-import realDataFixture from "./data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json";
-import sceneManifest from "./data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json";
-import sourceEvidenceFixture from "./data/source-evidence/manhattan-greenpoint-ave.generated.phase-2h.json";
-import { loadMvpSceneFromManifest } from "./sceneManifest.js";
+// Review/demo-safe Phase 3 scaffold data. The placeholder surface is approved
+// for scaffold mechanics only; it is not visual-quality or factual evidence.
+import phase3PlaceholderRasterSrc from "./assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png";
+import phase3ScaffoldFixture from "./data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json";
+import { loadPhase3ScaffoldSceneFromFixture } from "./sceneManifest.js";
 
-export const mvpScene = loadMvpSceneFromManifest(
-  sceneManifest,
+export const mvpScene = loadPhase3ScaffoldSceneFromFixture(
+  phase3ScaffoldFixture,
   {
-    "asset-dtr-11-interactive-demo-raster": dtr11RasterPlateSrc,
-    "asset-mvp-29e-raster": mvp29eRasterPlateSrc,
+    "asset-phase-3-placeholder-raster": phase3PlaceholderRasterSrc,
   },
-  sourceEvidenceFixture,
-  draftSceneFixture,
-  realDataFixture,
-  geometrySourceFixture,
 );

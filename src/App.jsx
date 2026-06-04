@@ -3,6 +3,7 @@ import { mvpScene } from "./mvpPlaceData.js";
 import PlaceholderWorld from "./PlaceholderWorld.jsx";
 
 const DEFAULT_QA_LAYERS = {
+  scaffold: true,
   realData: true,
   footprints: true,
   draft: false,
@@ -10,6 +11,11 @@ const DEFAULT_QA_LAYERS = {
 };
 
 const QA_LAYER_OPTIONS = [
+  {
+    id: "scaffold",
+    label: "Scaffold",
+    description: "Block, tile, layer, and status boundaries",
+  },
   {
     id: "realData",
     label: "Real data",
@@ -140,7 +146,7 @@ export default function App() {
                   {layer.label}
                 </button>
               ))}
-              <span>Footprints are official building candidates only, not exact storefronts.</span>
+              <span>Scaffold status is review-only; coordinates are not exact real-world geometry.</span>
             </div>
           ) : null}
           <PlaceholderWorld
@@ -168,13 +174,20 @@ export default function App() {
               <p className="card-label">{getCardLabel(selectedTarget)}</p>
               <h2>{selectedTarget.title}</h2>
               <p className="card-category">{selectedTarget.category}</p>
+              {selectedTarget.summary ? (
+                <p className="card-summary">{selectedTarget.summary}</p>
+              ) : null}
               <dl className="store-card-facts" aria-label="Store information">
                 <div>
                   <dt>Address</dt>
                   <dd>{selectedTarget.address ?? "Manhattan Ave / Greenpoint Ave context"}</dd>
                 </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>{selectedTarget.verificationStatus ?? selectedTarget.status ?? "review-only"}</dd>
+                </div>
               </dl>
-              <p className="card-disclaimer">{getCompactDisclaimer(selectedTarget)}</p>
+              <p className="card-disclaimer">{selectedTarget.disclaimer ?? getCompactDisclaimer(selectedTarget)}</p>
             </aside>
           ) : null}
         </div>

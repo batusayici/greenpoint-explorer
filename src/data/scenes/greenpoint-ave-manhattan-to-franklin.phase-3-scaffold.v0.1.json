@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "phase-3-scaffold.v0.1",
+  "sceneId": "greenpoint-ave-manhattan-to-franklin-phase-3-scaffold",
+  "status": "review-only-non-production",
+  "generatedAt": "2026-06-04T00:00:00-04:00",
+  "reviewOnly": true,
+  "slice": {
+    "id": "greenpoint-ave-manhattan-to-franklin",
+    "label": "Greenpoint Ave: Manhattan Ave to Franklin Ave",
+    "from": "Greenpoint Ave / Manhattan Ave",
+    "to": "Greenpoint Ave / Franklin Ave",
+    "status": "manual_draft",
+    "notes": "Phase 3 scaffold coordinates are stylized scene coordinates only. They do not claim exact real-world placement, storefront order, facade geometry, or address placement."
+  },
+  "app": {
+    "title": "Greenpoint Explorer",
+    "note": "Phase 3 review-only scaffold for pan/zoom, block/tile/layer metadata, QA boundaries, and minimal cards. Placeholder raster is not visual-quality evidence.",
+    "reviewLabel": "PHASE 3 SCAFFOLD / REVIEW ONLY",
+    "sourceListLabel": "Phase 3 scaffold status",
+    "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
+    "sceneFrame": {
+      "locationLabel": "Greenpoint Ave / Manhattan Ave to Franklin Ave",
+      "intent": "One connected block scaffold: manifest-driven bounds, QA overlays, and minimum interaction."
+    }
+  },
+  "scene": {
+    "size": {
+      "width": 2304,
+      "height": 1024
+    },
+    "coordinates": {
+      "system": "stylized_scene_pixels",
+      "realWorldTransformStatus": "not_implemented",
+      "notes": "Keep real-world coordinates, local geometry, and scene coordinates separate for this scaffold."
+    },
+    "plate": {
+      "id": "asset-phase-3-placeholder-raster",
+      "role": "review-only-placeholder-raster-surface",
+      "label": "Approved review-only placeholder raster surface for Phase 3 scaffold mechanics. Not a factual Greenpoint representation.",
+      "sourcePath": "src/assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png",
+      "nativeSize": {
+        "width": 1536,
+        "height": 1024
+      },
+      "renderSize": {
+        "width": 2304,
+        "height": 1024
+      },
+      "visibleBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2304,
+        "height": 1024
+      },
+      "status": "manual_draft",
+      "usageLimit": "Scaffold mechanics only; does not test final visual quality, factual facade fidelity, or production asset direction."
+    },
+    "panZoom": {
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2304,
+        "height": 1024
+      },
+      "minScale": 0.3,
+      "maxScale": 1.75,
+      "desktopMaxOverviewScale": 0.72,
+      "status": "manual_draft",
+      "notes": "Bounds come from the Phase 3 scaffold manifest, not hard-coded renderer dimensions."
+    },
+    "blocks": [
+      {
+        "id": "block-greenpoint-ave-manhattan-to-franklin",
+        "label": "Greenpoint Ave block: Manhattan to Franklin",
+        "bounds": {
+          "x": 120,
+          "y": 122,
+          "width": 2040,
+          "height": 720
+        },
+        "status": "manual_draft",
+        "notes": "One connected-block review scaffold; not exact parcel or street geometry."
+      }
+    ],
+    "tiles": [
+      {
+        "id": "tile-phase-3-scaffold-full-block",
+        "label": "Temporary full-block tile",
+        "blockId": "block-greenpoint-ave-manhattan-to-franklin",
+        "bounds": {
+          "x": 120,
+          "y": 122,
+          "width": 2040,
+          "height": 720
+        },
+        "status": "manual_draft",
+        "loadPriority": 1,
+        "notes": "Single temporary tile records tile bounds explicitly while avoiding premature production tiling."
+      }
+    ],
+    "layers": [
+      {
+        "id": "layer-placeholder-raster",
+        "type": "raster_plate",
+        "label": "Placeholder raster plate",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2304,
+          "height": 1024
+        },
+        "status": "manual_draft"
+      },
+      {
+        "id": "layer-interaction-targets",
+        "type": "interaction_targets",
+        "label": "Interaction targets",
+        "bounds": {
+          "x": 180,
+          "y": 208,
+          "width": 1860,
+          "height": 452
+        },
+        "status": "manual_draft"
+      },
+      {
+        "id": "layer-qa-provenance-overlay",
+        "type": "qa_debug_overlay",
+        "label": "QA / provenance overlay",
+        "bounds": {
+          "x": 96,
+          "y": 88,
+          "width": 2112,
+          "height": 796
+        },
+        "status": "manual_draft"
+      }
+    ],
+    "targets": [
+      {
+        "id": "phase3-west-anchor",
+        "title": "Manhattan Ave Anchor",
+        "label": "Slice start anchor",
+        "category": "Review scaffold anchor",
+        "address": "Greenpoint Ave / Manhattan Ave context",
+        "cardBadge": "manual draft",
+        "verificationStatus": "manual_draft",
+        "status": "manual_draft",
+        "summary": "Starting edge of the connected Phase 3 block scaffold.",
+        "disclaimer": "Review-only scaffold anchor. Not exact intersection, station, facade, or address geometry.",
+        "marker": {
+          "x": 312,
+          "y": 418
+        },
+        "bounds": {
+          "x": 180,
+          "y": 268,
+          "width": 320,
+          "height": 292
+        },
+        "hitAreas": [
+          {
+            "x": 160,
+            "y": 238,
+            "width": 360,
+            "height": 350
+          }
+        ],
+        "reviewLabelPosition": {
+          "x": 198,
+          "y": 246
+        }
+      },
+      {
+        "id": "phase3-mid-block",
+        "title": "Mid-Block Placeholder",
+        "label": "Tile continuity test",
+        "category": "Review scaffold segment",
+        "address": "Greenpoint Ave block context",
+        "cardBadge": "unknown",
+        "verificationStatus": "unknown",
+        "status": "unknown",
+        "summary": "Middle of the scaffold slice for testing pan/zoom continuity and status-labeled interaction.",
+        "disclaimer": "Review-only placeholder. Target does not claim a real tenant, exact frontage, or facade.",
+        "marker": {
+          "x": 1124,
+          "y": 372
+        },
+        "bounds": {
+          "x": 940,
+          "y": 220,
+          "width": 372,
+          "height": 318
+        },
+        "hitAreas": [
+          {
+            "x": 900,
+            "y": 198,
+            "width": 444,
+            "height": 382
+          }
+        ],
+        "reviewLabelPosition": {
+          "x": 954,
+          "y": 202
+        }
+      },
+      {
+        "id": "phase3-east-anchor",
+        "title": "Franklin Ave Anchor",
+        "label": "Slice end anchor",
+        "category": "Review scaffold anchor",
+        "address": "Greenpoint Ave / Franklin Ave context",
+        "cardBadge": "blocked",
+        "verificationStatus": "blocked",
+        "status": "blocked",
+        "summary": "Ending edge of the connected Phase 3 block scaffold.",
+        "disclaimer": "Review-only scaffold anchor. Exact intersection, storefront, address, and facade geometry remain blocked.",
+        "marker": {
+          "x": 1884,
+          "y": 416
+        },
+        "bounds": {
+          "x": 1700,
+          "y": 264,
+          "width": 340,
+          "height": 300
+        },
+        "hitAreas": [
+          {
+            "x": 1664,
+            "y": 232,
+            "width": 412,
+            "height": 364
+          }
+        ],
+        "reviewLabelPosition": {
+          "x": 1724,
+          "y": 240
+        }
+      }
+    ]
+  },
+  "qa": {
+    "statusMarkers": [
+      "sourced",
+      "manual_draft",
+      "symbolic",
+      "unknown",
+      "blocked"
+    ],
+    "warnings": [
+      "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
+      "Scene coordinates do not imply exact real-world placement.",
+      "Targets are scaffold anchors/segments, not production/public factual place cards."
+    ],
+    "blockedClaims": [
+      "production visual assets",
+      "exact storefront/facade/frontage/order/entrance/window geometry",
+      "exact address placement",
+      "exact station/entrance geometry",
+      "live data",
+      "broad neighborhood coverage",
+      "full 3D"
+    ]
+  }
+}

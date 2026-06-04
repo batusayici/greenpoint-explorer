@@ -28,6 +28,7 @@ export default function PlaceholderWorld({
   const stateRef = useRef({
     app: null,
     world: null,
+    scaffoldLayer: null,
     overlayWorld: null,
     targetGraphics: new Map(),
     camera: { x: 0, y: 0, scale: 0.72 },
@@ -70,6 +71,12 @@ export default function PlaceholderWorld({
       const overlayWorld = new Container();
       stateRef.current.overlayWorld = overlayWorld;
       app.stage.addChild(overlayWorld);
+
+      const scaffoldLayer = new Container();
+      stateRef.current.scaffoldLayer = scaffoldLayer;
+      overlayWorld.addChild(scaffoldLayer);
+      syncScaffoldLayer(scaffoldLayer, scene, reviewMode, qaLayers);
+
       stateRef.current.targetGraphics = drawTargets(overlayWorld, scene.targets, reviewMode, qaLayers);
 
       const resizeObserver = new ResizeObserver(() => {
@@ -92,6 +99,7 @@ export default function PlaceholderWorld({
       app?.destroy(true);
       stateRef.current.app = null;
       stateRef.current.world = null;
+      stateRef.current.scaffoldLayer = null;
       stateRef.current.overlayWorld = null;
       stateRef.current.targetGraphics = new Map();
       stateRef.current.cameraInitialized = false;
@@ -100,8 +108,10 @@ export default function PlaceholderWorld({
 
   useEffect(() => {
     const host = hostRef.current;
-    const { targetGraphics } = stateRef.current;
+    const { scaffoldLayer, targetGraphics } = stateRef.current;
     if (!host || !targetGraphics.size) return;
+
+    syncScaffoldLayer(scaffoldLayer, scene, reviewMode, qaLayers);
 
     for (const target of scene.targets) {
       const targetGraphic = targetGraphics.get(target.id);
@@ -125,8 +135,8 @@ export default function PlaceholderWorld({
     if (cameraCommand.type === "zoom-in" || cameraCommand.type === "zoom-out") {
       const nextScale = clamp(
         camera.scale * (cameraCommand.type === "zoom-in" ? 1.18 : 0.84),
-        CAMERA.minScale,
-        CAMERA.maxScale,
+        getCameraLimits(scene).minScale,
+        getCameraLimits(scene).maxScale,
       );
       const pointerX = host.clientWidth / 2;
       const pointerY = host.clientHeight / 2;
@@ -253,8 +263,8 @@ export default function PlaceholderWorld({
     const sceneY = (pointerY - camera.y) / camera.scale;
     const nextScale = clamp(
       camera.scale * (event.deltaY > 0 ? 0.9 : 1.1),
-      CAMERA.minScale,
-      CAMERA.maxScale,
+      getCameraLimits(scene).minScale,
+      getCameraLimits(scene).maxScale,
     );
 
     updateCamera({
@@ -292,7 +302,8 @@ function resizeApp(host, app) {
 function clampAndApplyCamera(host, scene, state) {
   const { camera, world, overlayWorld } = state;
   if (!world) return;
-  const sceneSize = getVisibleSceneSize(scene);
+  const sceneSize = getCameraBounds(scene);
+  const cameraLimits = getCameraLimits(scene);
 
   if (!state.cameraInitialized) {
     const fitWidthScale = host.clientWidth / sceneSize.width;
@@ -300,7 +311,7 @@ function clampAndApplyCamera(host, scene, state) {
     const scale = host.clientWidth >= 760
       ? Math.min(fitWidthScale, fitHeightScale) * 0.98
       : Math.max(fitWidthScale, fitHeightScale) * 0.92;
-    camera.scale = clamp(scale, CAMERA.minScale, CAMERA.desktopMaxOverviewScale);
+    camera.scale = clamp(scale, cameraLimits.minScale, cameraLimits.desktopMaxOverviewScale);
     camera.x = (host.clientWidth - sceneSize.width * camera.scale) / 2;
     camera.y = (host.clientHeight - sceneSize.height * camera.scale) / 2;
     state.cameraInitialized = true;
@@ -352,6 +363,119 @@ function getVisibleSceneSize(scene) {
     width: scene.plate?.visibleBounds?.width ?? scene.size.width,
     height: scene.plate?.visibleBounds?.height ?? scene.size.height,
   };
+}
+
+function getCameraBounds(scene) {
+  return scene.camera?.bounds ?? scene.plate?.visibleBounds ?? {
+    x: 0,
+    y: 0,
+    width: scene.size.width,
+    height: scene.size.height,
+  };
+}
+
+function getCameraLimits(scene) {
+  return {
+    minScale: scene.camera?.minScale ?? CAMERA.minScale,
+    maxScale: scene.camera?.maxScale ?? CAMERA.maxScale,
+    desktopMaxOverviewScale: scene.camera?.desktopMaxOverviewScale ?? CAMERA.desktopMaxOverviewScale,
+  };
+}
+
+function syncScaffoldLayer(layer, scene, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {
+  if (!layer) return;
+  const removed = layer.removeChildren();
+  for (const child of removed) child.destroy();
+  layer.visible = Boolean(reviewMode && scene.scaffold && qaLayers.scaffold !== false);
+  if (!layer.visible) return;
+
+  const shape = new Graphics();
+  layer.addChild(shape);
+
+  for (const block of scene.scaffold.blocks ?? []) {
+    drawScaffoldRect(shape, block, {
+      fillColor: 0x375f70,
+      strokeColor: 0x8fd2d0,
+      fillAlpha: 0.045,
+      strokeAlpha: 0.74,
+      strokeWidth: 4,
+    });
+    addScaffoldText(layer, `${block.label}\n${formatDraftStatus(block.status)}`, block.bounds.x + 14, block.bounds.y + 12, {
+      fill: "#e6f5ee",
+      background: 0x1d3334,
+    });
+  }
+
+  for (const tile of scene.scaffold.tiles ?? []) {
+    drawScaffoldRect(shape, tile, {
+      fillColor: 0xf0bc45,
+      strokeColor: 0xf0bc45,
+      fillAlpha: 0.025,
+      strokeAlpha: 0.78,
+      strokeWidth: 2.5,
+    });
+    addScaffoldText(layer, `${tile.id}\n${formatDraftStatus(tile.status)}`, tile.bounds.x + tile.bounds.width - 220, tile.bounds.y + 14, {
+      fill: "#27221c",
+      background: 0xf5e5c3,
+    });
+  }
+
+  for (const layerMeta of scene.scaffold.layers ?? []) {
+    drawScaffoldRect(shape, layerMeta, {
+      fillColor: getDraftStatusColor(layerMeta.status),
+      strokeColor: getDraftStatusColor(layerMeta.status),
+      fillAlpha: 0.018,
+      strokeAlpha: layerMeta.type === "qa_debug_overlay" ? 0.62 : 0.42,
+      strokeWidth: layerMeta.type === "qa_debug_overlay" ? 2 : 1.5,
+    });
+  }
+
+  const warningText = [
+    scene.plate?.usageLimit,
+    ...(scene.scaffold.qa?.warnings ?? []),
+  ].filter(Boolean).slice(0, 3).join("\n");
+  addScaffoldText(layer, warningText, 142, 680, {
+    fill: "#f8ecd4",
+    background: 0x3b2621,
+    maxWidth: 780,
+  });
+}
+
+function drawScaffoldRect(graphics, item, options) {
+  const { bounds } = item;
+  graphics
+    .roundRect(bounds.x, bounds.y, bounds.width, bounds.height, 8)
+    .fill({ color: options.fillColor, alpha: options.fillAlpha })
+    .stroke({
+      color: options.strokeColor,
+      width: options.strokeWidth,
+      alpha: options.strokeAlpha,
+    });
+}
+
+function addScaffoldText(layer, text, x, y, options) {
+  if (!text) return;
+  const label = new Text({
+    text,
+    style: {
+      fill: options.fill,
+      fontFamily: "Inter, Arial, sans-serif",
+      fontSize: 13,
+      fontWeight: "850",
+      lineHeight: 17,
+      wordWrap: Boolean(options.maxWidth),
+      wordWrapWidth: options.maxWidth ?? 260,
+    },
+  });
+  label.resolution = 2;
+  label.x = x;
+  label.y = y;
+
+  const background = new Graphics()
+    .roundRect(label.x - 8, label.y - 6, Math.min(label.width, options.maxWidth ?? label.width) + 16, label.height + 12, 5)
+    .fill({ color: options.background, alpha: 0.86 })
+    .stroke({ color: 0xf8ecd4, width: 1.2, alpha: 0.42 });
+  layer.addChild(background, label);
 }
 
 function drawTargets(world, targets, reviewMode, qaLayers) {
@@ -581,7 +705,10 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   markerTagLabel.visible = false;
 
   reviewLabel.visible = Boolean(reviewMode && !target.draftScene?.generatedScene);
-  reviewLabel.text = target.rasterAnchorLabel ?? target.label ?? target.title;
+  reviewLabel.text = [
+    target.rasterAnchorLabel ?? target.label ?? target.title,
+    target.status || target.verificationStatus ? formatDraftStatus(target.status ?? target.verificationStatus) : null,
+  ].filter(Boolean).join("\n");
   reviewLabel.style.fill = "#f8ecd4";
   reviewLabel.x = target.reviewLabelPosition?.x ?? x + 12;
   reviewLabel.y = target.reviewLabelPosition?.y ?? y + 12;

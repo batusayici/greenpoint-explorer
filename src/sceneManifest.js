@@ -1,4 +1,5 @@
 const REQUIRED_MANIFEST_VERSION = "0.1";
+const REQUIRED_PHASE3_SCAFFOLD_VERSION = "phase-3-scaffold.v0.1";
 const REQUIRED_EVIDENCE_SCHEMA_VERSION = "source-evidence-fixture.v0.1";
 const REQUIRED_DRAFT_SCENE_SCHEMA_VERSION = "draft-scene-fixture.v0.1";
 const REQUIRED_REAL_DATA_SCHEMA_VERSION = "real-data-corner-fixture.v0.1";
@@ -163,6 +164,155 @@ export function loadMvpSceneFromManifest(
       };
     }),
   };
+}
+
+export function loadPhase3ScaffoldSceneFromFixture(fixture, assetSrcById) {
+  const validatedFixture = validatePhase3ScaffoldFixture(fixture);
+  const plate = validatedFixture.scene.plate;
+  const plateSrc = assetSrcById[plate.id];
+
+  if (!plateSrc) {
+    throw new Error(`Phase 3 scaffold is missing asset source for ${plate.id}.`);
+  }
+
+  return {
+    manifestId: validatedFixture.sceneId,
+    manifestVersion: validatedFixture.schemaVersion,
+    title: validatedFixture.app.title,
+    note: validatedFixture.app.note,
+    size: validatedFixture.scene.size,
+    reviewLabel: validatedFixture.app.reviewLabel,
+    sourceListLabel: validatedFixture.app.sourceListLabel,
+    sceneFrame: validatedFixture.app.sceneFrame,
+    disclaimer: validatedFixture.app.disclaimer,
+    slice: validatedFixture.slice,
+    camera: {
+      bounds: validatedFixture.scene.panZoom.bounds,
+      minScale: validatedFixture.scene.panZoom.minScale,
+      maxScale: validatedFixture.scene.panZoom.maxScale,
+      desktopMaxOverviewScale: validatedFixture.scene.panZoom.desktopMaxOverviewScale,
+      status: validatedFixture.scene.panZoom.status,
+      notes: validatedFixture.scene.panZoom.notes,
+    },
+    plate: {
+      id: plate.id,
+      src: plateSrc,
+      label: plate.label,
+      sourcePath: plate.sourcePath,
+      visibleBounds: plate.visibleBounds,
+      nativeSize: plate.nativeSize,
+      renderSize: plate.renderSize,
+      status: plate.status,
+      usageLimit: plate.usageLimit,
+    },
+    scaffold: {
+      coordinates: validatedFixture.scene.coordinates,
+      blocks: validatedFixture.scene.blocks,
+      tiles: validatedFixture.scene.tiles,
+      layers: validatedFixture.scene.layers,
+      qa: validatedFixture.qa,
+    },
+    manifestQA: {
+      manifestId: validatedFixture.sceneId,
+      blockId: validatedFixture.slice.id,
+      status: validatedFixture.status,
+      generatedAt: validatedFixture.generatedAt,
+      transform: {
+        sceneSize: validatedFixture.scene.size,
+        panZoomBounds: validatedFixture.scene.panZoom.bounds,
+        realWorldTransformStatus: validatedFixture.scene.coordinates.realWorldTransformStatus,
+      },
+      qa: validatedFixture.qa,
+      overrideCount: 0,
+    },
+    geometrySource: null,
+    sourceRefs: {},
+    targets: validatedFixture.scene.targets.map((target) => ({
+      ...target,
+      manifestObjectId: target.id,
+      manifestPlaceId: target.id,
+      manifestAnchorId: target.id,
+      claimStatus: target.status,
+      rasterAnchorLabel: target.label,
+      manifestQA: {
+        object: {
+          id: target.id,
+          type: "phase-3-scaffold-target",
+          claimStatus: target.status,
+        },
+        sceneAnchor: {
+          id: target.id,
+          claimStatus: target.status,
+          scenePoint: target.marker,
+          notes: target.disclaimer,
+        },
+        sources: [],
+        sourceEvidence: [],
+        sceneQA: {
+          blockedClaims: validatedFixture.qa.blockedClaims,
+          warnings: validatedFixture.qa.warnings,
+          verdict: "review_only_scaffold",
+        },
+      },
+    })),
+  };
+}
+
+function validatePhase3ScaffoldFixture(fixture) {
+  assertObject(fixture, "Phase 3 scaffold fixture");
+  assertEqual(fixture.schemaVersion, REQUIRED_PHASE3_SCAFFOLD_VERSION, "Phase 3 scaffold schemaVersion");
+  assertString(fixture.sceneId, "Phase 3 scaffold sceneId");
+  assertString(fixture.status, "Phase 3 scaffold status");
+  assertObject(fixture.slice, "Phase 3 scaffold slice");
+  assertObject(fixture.app, "Phase 3 scaffold app");
+  assertObject(fixture.scene, "Phase 3 scaffold scene");
+  assertObject(fixture.qa, "Phase 3 scaffold qa");
+  assertObject(fixture.scene.size, "Phase 3 scaffold scene.size");
+  assertNumber(fixture.scene.size.width, "Phase 3 scaffold scene.size.width");
+  assertNumber(fixture.scene.size.height, "Phase 3 scaffold scene.size.height");
+  assertObject(fixture.scene.plate, "Phase 3 scaffold scene.plate");
+  assertString(fixture.scene.plate.id, "Phase 3 scaffold scene.plate.id");
+  validateBounds(fixture.scene.plate.visibleBounds, "Phase 3 scaffold scene.plate.visibleBounds");
+  assertObject(fixture.scene.panZoom, "Phase 3 scaffold scene.panZoom");
+  validateBounds(fixture.scene.panZoom.bounds, "Phase 3 scaffold scene.panZoom.bounds");
+  assertNumber(fixture.scene.panZoom.minScale, "Phase 3 scaffold scene.panZoom.minScale");
+  assertNumber(fixture.scene.panZoom.maxScale, "Phase 3 scaffold scene.panZoom.maxScale");
+  assertNumber(
+    fixture.scene.panZoom.desktopMaxOverviewScale,
+    "Phase 3 scaffold scene.panZoom.desktopMaxOverviewScale",
+  );
+
+  validateScaffoldItems(fixture.scene.blocks, "block");
+  validateScaffoldItems(fixture.scene.tiles, "tile");
+  validateScaffoldItems(fixture.scene.layers, "layer");
+  assertArray(fixture.scene.targets, "Phase 3 scaffold scene.targets");
+
+  for (const target of fixture.scene.targets) {
+    assertString(target.id, "Phase 3 scaffold target.id");
+    assertString(target.title, `Phase 3 scaffold target ${target.id} title`);
+    assertString(target.status, `Phase 3 scaffold target ${target.id} status`);
+    assertOneOf(target.status, DRAFT_SCENE_STATUS_VALUES, `Phase 3 scaffold target ${target.id} status`);
+    validateBounds(target.bounds, `Phase 3 scaffold target ${target.id} bounds`);
+    assertObject(target.marker, `Phase 3 scaffold target ${target.id} marker`);
+    assertNumber(target.marker.x, `Phase 3 scaffold target ${target.id} marker.x`);
+    assertNumber(target.marker.y, `Phase 3 scaffold target ${target.id} marker.y`);
+    for (const [index, hitArea] of (target.hitAreas ?? []).entries()) {
+      validateBounds(hitArea, `Phase 3 scaffold target ${target.id} hitAreas[${index}]`);
+    }
+  }
+
+  return fixture;
+}
+
+function validateScaffoldItems(items, itemType) {
+  assertArray(items, `Phase 3 scaffold ${itemType}s`);
+  for (const item of items) {
+    assertString(item.id, `Phase 3 scaffold ${itemType}.id`);
+    assertString(item.label, `Phase 3 scaffold ${itemType} ${item.id} label`);
+    assertString(item.status, `Phase 3 scaffold ${itemType} ${item.id} status`);
+    assertOneOf(item.status, DRAFT_SCENE_STATUS_VALUES, `Phase 3 scaffold ${itemType} ${item.id} status`);
+    validateBounds(item.bounds, `Phase 3 scaffold ${itemType} ${item.id} bounds`);
+  }
 }
 
 function buildManifestIndexes(manifest) {
