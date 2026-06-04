@@ -14,7 +14,7 @@
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context plus status-labeled mid-corridor, Franklin Ave, and Brouwerij Lane source-retrieval-blocked layers. Placeholder raster is not visual-quality evidence.",
+    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context, NYC/open geometry context, DTR-11 facade evidence status, and status-labeled candidate/blocked corridor layers. Placeholder raster is not visual-quality evidence.",
     "reviewLabel": "PHASE 3 CORRIDOR SCAFFOLD / REVIEW ONLY",
     "sourceListLabel": "Phase 3 scaffold status",
     "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
@@ -180,9 +180,168 @@
         "sourceSummary": "Uses existing Phase 2DTR/MVP reviewed records and DTR-11 facade-reference pass; no new source acquisition.",
         "realnessStatus": {
           "businessData": "sourced",
+          "geometryContext": "candidate",
           "facadeReferences": "manual_draft",
           "sceneGeometry": "manual_draft",
+          "rasterReadiness": "blocked",
           "exactClaims": "blocked"
+        },
+        "evidenceLanes": [
+          {
+            "id": "west-anchor-business-place-metadata",
+            "label": "Business/place metadata",
+            "shortLabel": "metadata",
+            "status": "sourced",
+            "sourcePath": "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json",
+            "supports": "Reviewed identity, address, category, and station-context labels for the existing Manhattan/Greenpoint MVP set.",
+            "doesNotSupport": "Exact tenant frontage, facade geometry, entrance placement, or raster readiness."
+          },
+          {
+            "id": "west-anchor-nyc-open-geometry-context",
+            "label": "NYC/open geometry context",
+            "shortLabel": "geometry",
+            "status": "candidate",
+            "sourcePath": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
+            "supports": "Official building-footprint candidates around Manhattan Ave / Greenpoint Ave for context and QA comparison.",
+            "doesNotSupport": "Tenant frontage, storefront order, active-business status, facade appearance, entrance location, exact address placement, or raster readiness."
+          },
+          {
+            "id": "west-anchor-dtr-11-facade-reference-evidence",
+            "label": "DTR-11 facade/reference evidence",
+            "shortLabel": "facade",
+            "status": "manual_draft",
+            "sourcePath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+            "supports": "Reference-photo-derived review specs for facade cues and claim limits on the four existing west-anchor businesses.",
+            "doesNotSupport": "Production texture, exact storefront tracing, exact entrance/frontage geometry, or final visual acceptance."
+          },
+          {
+            "id": "west-anchor-raster-interaction-status",
+            "label": "Raster/interaction status",
+            "shortLabel": "raster",
+            "status": "blocked",
+            "sourcePath": "src/assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png",
+            "supports": "Review-only card selection, QA overlays, pan/zoom, and scaffold mechanics.",
+            "doesNotSupport": "Corridor-specific raster readiness, production visual assets, factual facade fidelity, or public place claims."
+          }
+        ],
+        "geometryContext": {
+          "label": "NYC Open Data building-footprint context",
+          "status": "candidate",
+          "sourcePath": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
+          "sourceFixtureId": "manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.geometry-source",
+          "sourceLabel": "NYC Open Data Building Footprints",
+          "reviewedOn": "2026-06-02",
+          "projectionStatus": "qa_alignment_projection",
+          "sceneBounds": {
+            "x": 180,
+            "y": 268,
+            "width": 320,
+            "height": 292
+          },
+          "usageLimit": "Official footprint records are surfaced as west-anchor building context only. They do not prove tenant frontage, storefront order, entrance placement, active-business status, facade appearance, exact address placement, or raster readiness.",
+          "records": [
+            {
+              "id": "nyc-footprint-bin-3064700",
+              "targetId": "grillpoint-deli",
+              "label": "Grillpoint Deli footprint candidate",
+              "cornerId": "corner-nw",
+              "status": "candidate",
+              "sourceStatus": "source_backed",
+              "bin": "3064700",
+              "lastStatusType": "Constructed",
+              "geomSource": "Photogrammetric",
+              "notes": "Candidate nearby official footprint for NW comparison only; does not prove Grillpoint Deli frontage, entrance, or exact address placement."
+            },
+            {
+              "id": "nyc-footprint-bin-3064733",
+              "targetId": "mcdonalds",
+              "label": "McDonald's footprint candidate",
+              "cornerId": "corner-ne",
+              "status": "candidate",
+              "sourceStatus": "source_backed",
+              "bin": "3064733",
+              "lastStatusType": "Constructed",
+              "geomSource": "Photogrammetric",
+              "notes": "Candidate nearby official footprint for NE comparison only; does not prove McDonald's frontage, entrance, or exact address placement."
+            },
+            {
+              "id": "nyc-footprint-bin-3064827",
+              "targetId": "dunkin",
+              "label": "Dunkin' footprint candidate",
+              "cornerId": "corner-sw",
+              "status": "candidate",
+              "sourceStatus": "source_backed",
+              "bin": "3064827",
+              "lastStatusType": "Constructed",
+              "geomSource": "Photogrammetric",
+              "notes": "Candidate nearby official footprint for SW comparison only; does not prove Dunkin' frontage, entrance, or exact address placement."
+            },
+            {
+              "id": "nyc-footprint-bin-3422353",
+              "targetId": "citizens-bank",
+              "label": "Citizens Bank footprint candidate",
+              "cornerId": "corner-se",
+              "status": "candidate",
+              "sourceStatus": "source_backed",
+              "bin": "3422353",
+              "lastStatusType": "Alteration",
+              "geomSource": "Other (Manual)",
+              "notes": "Candidate nearby official footprint for SE comparison only; does not prove Citizens Bank frontage, branch entrance, or exact address placement."
+            }
+          ]
+        },
+        "facadeEvidence": {
+          "label": "DTR-11 reference-photo-derived facade evidence status",
+          "status": "manual_draft",
+          "sourcePath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+          "artifactId": "phase-2dtr-11.facade-extraction-specs",
+          "generatedOn": "2026-06-03",
+          "usageLimit": "Reference-photo-derived review specs may guide facade-cue review only. They do not create production textures, exact tenant frontage, exact entrances, exact geometry, or raster readiness.",
+          "records": [
+            {
+              "targetId": "grillpoint-deli",
+              "label": "Grillpoint Deli",
+              "status": "manual_draft",
+              "referenceImagesExist": true,
+              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/grillpoint-deli-reference-crop.png",
+              "keyCues": "Maroon/green/black identity, central entry, poster/window rhythm, adjacent dark doorway cue.",
+              "blockedClaims": "Phone number as exact scene text, exact food poster text, pedestrians, public exact-address claim."
+            },
+            {
+              "targetId": "mcdonalds",
+              "label": "McDonald's",
+              "status": "manual_draft",
+              "referenceImagesExist": true,
+              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/mcdonalds-reference-crop.png",
+              "keyCues": "Gray/yellow/dark-glass facade, brown slats, golden arch cue, mural mass above.",
+              "blockedClaims": "Exact promo poster text, unrelated tenant signs, public exact-geometry claim."
+            },
+            {
+              "targetId": "dunkin",
+              "label": "Dunkin'",
+              "status": "manual_draft",
+              "referenceImagesExist": true,
+              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/dunkin-reference-crop.png",
+              "keyCues": "Black/orange/pink sign band, side/corner sign cue, dark recessed entry, beige mass.",
+              "blockedClaims": "Exact side street traffic details, extra primary G cue, public exact-address claim."
+            },
+            {
+              "targetId": "citizens-bank",
+              "label": "Citizens Bank",
+              "status": "manual_draft",
+              "referenceImagesExist": true,
+              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/citizens-bank-reference-crop.png",
+              "keyCues": "Green sign on white sign box, recessed black-framed entry, black railings, reddish-brown trim rhythm.",
+              "blockedClaims": "Exact bank interior text, extra station entrances, public exact station geometry claim."
+            }
+          ]
+        },
+        "rasterInteractionStatus": {
+          "label": "Scaffold raster and interaction status",
+          "status": "blocked",
+          "interactionStatus": "manual_draft",
+          "sourcePath": "src/assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png",
+          "notes": "The west-anchor hotspot and card behavior are active for QA. The raster remains a review-only placeholder and does not prove corridor visual quality or factual facade fidelity."
         },
         "realPlaces": [
           {
@@ -262,6 +421,13 @@
             "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
             "status": "manual_draft",
             "notes": "Reference-constrained facade review specs; not production texture, tracing, or exact facade approval."
+          },
+          {
+            "id": "phase-2ab-intersection-footprint-sample",
+            "label": "Phase 2AB official footprint sample",
+            "path": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
+            "status": "candidate",
+            "notes": "Surfaces NYC/Open building-footprint context for the west anchor only; does not prove tenant frontage, storefront order, entrance, facade, exact address placement, or raster readiness."
           }
         ],
         "marker": {
@@ -605,7 +771,8 @@
     ],
     "warnings": [
       "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
-      "The Manhattan Ave west anchor now carries existing sourced/draft MVP context, but the visual plate is still a placeholder and not factual corridor art.",
+      "The Manhattan Ave west anchor now carries existing sourced business/place metadata, NYC/Open geometry context, and DTR-11 facade-reference evidence status, but the visual plate is still a placeholder and not factual corridor art.",
+      "The NYC footprint sample is geometry context only for the Manhattan/Greenpoint west anchor; it does not prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.",
       "The mid-corridor target now has a source-candidate/status layer only; local repo evidence reviewed in this batch does not support exact mid-corridor businesses, facades, addresses, frontage/order, entrances, or geometry.",
       "The Franklin Ave endpoint now has a Brouwerij Lane source-retrieval candidate only; no approved adapter, source response, endpoint contract, or credential is configured for retrieval.",
       "Brouwerij Lane historical notes are not promoted to sourced identity/address/category/coordinates; facade, frontage/order, entrance, and raster readiness remain blocked.",

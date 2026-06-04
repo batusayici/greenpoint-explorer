@@ -679,7 +679,10 @@ h1 {
 
 .target-status-summary,
 .candidate-targets,
-.local-source-references {
+.local-source-references,
+.evidence-lanes,
+.geometry-context,
+.facade-evidence {
   display: grid;
   gap: 7px;
   margin-top: 12px;
@@ -701,9 +704,24 @@ h1 {
   border-left: 4px solid #377270;
 }
 
+.evidence-lanes {
+  border-left: 4px solid #819986;
+}
+
+.geometry-context {
+  border-left: 4px solid #377270;
+}
+
+.facade-evidence {
+  border-left: 4px solid #d49c3f;
+}
+
 .target-status-summary h3,
 .candidate-targets h3,
-.local-source-references h3 {
+.local-source-references h3,
+.evidence-lanes h3,
+.geometry-context h3,
+.facade-evidence h3 {
   margin: 0;
   color: #243835;
   font-size: 0.58rem;
@@ -773,7 +791,10 @@ h1 {
 }
 
 .candidate-targets ul,
-.local-source-references ul {
+.local-source-references ul,
+.evidence-lanes ul,
+.geometry-context ul,
+.facade-evidence ul {
   display: grid;
   gap: 6px;
   margin: 0;
@@ -782,7 +803,10 @@ h1 {
 }
 
 .candidate-targets li,
-.local-source-references li {
+.local-source-references li,
+.evidence-lanes li,
+.geometry-context li,
+.facade-evidence li {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 3px 8px;
@@ -791,13 +815,19 @@ h1 {
 }
 
 .candidate-targets li:last-child,
-.local-source-references li:last-child {
+.local-source-references li:last-child,
+.evidence-lanes li:last-child,
+.geometry-context li:last-child,
+.facade-evidence li:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }
 
 .candidate-targets strong,
-.local-source-references strong {
+.local-source-references strong,
+.evidence-lanes strong,
+.geometry-context strong,
+.facade-evidence strong {
   overflow: hidden;
   color: #171514;
   font-size: 0.68rem;
@@ -808,7 +838,10 @@ h1 {
 }
 
 .candidate-targets small,
-.local-source-references small {
+.local-source-references small,
+.evidence-lanes small,
+.geometry-context small,
+.facade-evidence small {
   color: #6c2c1f;
   font-size: 0.52rem;
   font-weight: 950;
@@ -818,9 +851,53 @@ h1 {
 }
 
 .candidate-targets span,
-.local-source-references span {
+.local-source-references span,
+.evidence-lanes span,
+.geometry-context span,
+.facade-evidence span,
+.evidence-lanes em,
+.facade-evidence em {
   grid-column: 1 / -1;
   overflow-wrap: anywhere;
+}
+
+.evidence-lanes li[data-status="sourced"],
+.geometry-context li[data-status="sourced"],
+.facade-evidence li[data-status="sourced"] {
+  border-left: 3px solid rgba(55, 114, 112, 0.7);
+  padding-left: 7px;
+}
+
+.evidence-lanes li[data-status="candidate"],
+.geometry-context li[data-status="candidate"],
+.facade-evidence li[data-status="manual_draft"] {
+  border-left: 3px solid rgba(212, 156, 63, 0.86);
+  padding-left: 7px;
+}
+
+.evidence-lanes li[data-status="blocked"],
+.geometry-context li[data-status="blocked"],
+.facade-evidence li[data-status="blocked"] {
+  border-left: 3px solid rgba(169, 79, 56, 0.86);
+  padding-left: 7px;
+}
+
+.evidence-lanes em,
+.facade-evidence em {
+  color: #674234;
+  font-size: 0.58rem;
+  font-style: normal;
+  font-weight: 760;
+  line-height: 1.24;
+}
+
+.geometry-context p,
+.facade-evidence p {
+  margin: 0;
+  color: #40362d;
+  font-size: 0.62rem;
+  font-weight: 760;
+  line-height: 1.25;
 }
 
 .card-metadata {

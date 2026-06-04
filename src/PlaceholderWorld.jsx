@@ -532,6 +532,16 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
         lineHeight: 15,
       },
     });
+    const qaLaneLabel = new Text({
+      text: "",
+      style: {
+        fill: "#f8ecd4",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 12,
+        fontWeight: "850",
+        lineHeight: 16,
+      },
+    });
     const draftEntityLabelLayer = new Container();
     const annotationLabel = new Text({
       text: "",
@@ -562,6 +572,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
     draftSignLabel.resolution = 2;
     draftSignLabel.anchor.set(0.5);
     draftStatusLabel.resolution = 2;
+    qaLaneLabel.resolution = 2;
     annotationLabel.resolution = 2;
     markerTagLabel.resolution = 2;
     container.addChild(
@@ -573,6 +584,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftLabel,
       draftSignLabel,
       draftStatusLabel,
+      qaLaneLabel,
       draftEntityLabelLayer,
     );
     world.addChild(container);
@@ -586,6 +598,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
         draftLabel,
         draftSignLabel,
         draftStatusLabel,
+        qaLaneLabel,
         draftEntityLabelLayer,
       },
       target,
@@ -603,6 +616,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftLabel,
       draftSignLabel,
       draftStatusLabel,
+      qaLaneLabel,
       draftEntityLabelLayer,
     });
   }
@@ -620,6 +634,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     draftLabel,
     draftSignLabel,
     draftStatusLabel,
+    qaLaneLabel,
     draftEntityLabelLayer,
   } = targetGraphic;
   const markerX = target.marker?.x ?? x + width * 0.5;
@@ -692,6 +707,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
 
   if (reviewMode) {
     drawDraftQaOverlay(shape, target, qaLayers);
+    if (qaLayers.footprints !== false) drawGeometryContextCue(shape, target);
   }
 
   markerLabel.visible = Boolean(target.id === "greenpoint-g-subway" && target.marker?.label);
@@ -730,6 +746,28 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   draftLabel.visible = Boolean(reviewMode && target.draftScene && qaLayers.draft && showDetailedQaLabels);
   draftSignLabel.visible = false;
   draftStatusLabel.visible = false;
+  qaLaneLabel.visible = false;
+  if (reviewMode && target.evidenceLanes?.length) {
+    qaLaneLabel.visible = true;
+    qaLaneLabel.text = target.evidenceLanes
+      .slice(0, 4)
+      .map((lane) => `${lane.shortLabel ?? lane.label}: ${formatDraftStatus(lane.status)}`)
+      .join("\n");
+    qaLaneLabel.x = target.evidenceLanePosition?.x ?? x + 12;
+    qaLaneLabel.y = target.evidenceLanePosition?.y ?? y + height + 12;
+
+    const labelPaddingX = 9;
+    const labelPaddingY = 6;
+    shape.roundRect(
+      qaLaneLabel.x - labelPaddingX,
+      qaLaneLabel.y - labelPaddingY,
+      qaLaneLabel.width + labelPaddingX * 2,
+      qaLaneLabel.height + labelPaddingY * 2,
+      5,
+    )
+      .fill({ color: 0x202424, alpha: 0.9 })
+      .stroke({ color: 0x7bc6a4, width: 1.7, alpha: 0.72 });
+  }
   if (reviewMode && target.draftScene && qaLayers.draft) {
     const generatedScene = target.draftScene.generatedScene;
     const signEntity = getDraftEntity(generatedScene, "sign-band");
@@ -809,6 +847,15 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     showDetailedQaLabels,
     qaLayers,
   );
+}
+
+function drawGeometryContextCue(graphics, target) {
+  const bounds = target.geometryContext?.sceneBounds;
+  if (!bounds) return;
+  graphics
+    .roundRect(bounds.x - 8, bounds.y - 8, bounds.width + 16, bounds.height + 16, 14)
+    .fill({ color: 0x7bc6a4, alpha: 0.035 })
+    .stroke({ color: 0x7bc6a4, width: 2.6, alpha: 0.58 });
 }
 
 function drawDraftQaOverlay(graphics, target, qaLayers) {
@@ -1142,6 +1189,8 @@ function getDraftStatusColor(status) {
   if (status === "inferred") return 0xe0a24d;
   if (status === "manual_draft") return 0xf0bc45;
   if (status === "symbolic") return 0x6f9ec9;
+  if (status === "candidate" || status === "candidate_review") return 0xe0a24d;
+  if (status === "blocked_source_retrieval") return 0xd66a4e;
   if (status === "blocked" || status === "unknown") return 0xd66a4e;
   return 0xf5e5c3;
 }

@@ -55,14 +55,56 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 Brouwerij Lane source-access / deterministic fixture gate for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 west-anchor spatial grounding for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, the Foursquare Brouwerij adapter contract as complete, and the Foursquare credential/source blocker report as complete. The next proposed batch is a Phase 3 Brouwerij Lane deterministic POI evidence packet, pending Batu approval or supply of source access/material. The selected strategy is the strategic local-directory/community-validation lane with LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists when deterministic access is available; Foursquare as the practical near-term implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM as open cross-check; NYC Open Data as geometry/context only; and manual evidence packets for facade/frontage/entrance/raster readiness. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material exists and a later brief authorizes the one-target packet. The Foursquare path is currently blocked by missing credential and missing repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, the Foursquare Brouwerij adapter contract as complete, the Foursquare credential/source blocker report as complete, and the source-independent west-anchor QA/evidence overlay pass as structurally complete but visually not yet feedback-ready. Batu review found the current corridor does not yet resemble the real Manhattan Ave / Greenpoint Ave location closely enough for meaningful feedback. The next authorized batch is the Phase 3 west-anchor spatial grounding pass: make the base scene recognizable using available geometry context, plausible intersection/corner logic, building massing, storefront placement, and visible reference-photo/DTR-11 facade cues before further evidence-lane refinement. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material or approved manual evidence exists and a later brief authorizes the one-target packet. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops beyond the authorized spatial grounding pass, storefront outline rebuilds outside the west-anchor grounding scope, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 West Anchor QA/Evidence Overlay
+
+Status:
+- Structurally complete; visually not yet feedback-ready after Batu review.
+
+Scope:
+- Implement the smallest Phase 3 west-anchor QA/evidence overlay pass for Manhattan Ave / Greenpoint Ave only, using existing reviewed metadata, NYC/Open geometry context, DTR-11/reference-photo-derived facade evidence status, visible claim/status lanes, and interactive card behavior.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Source evidence review: `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json` and `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json`.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- `npm run build`.
+- Browser smoke unavailable in this sandbox: the dev server could not bind to localhost (`listen EPERM` on ports 5173 and 5174), and the in-app browser policy blocked direct `file://` loading of a temporary relative-path build.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- The west-anchor fixture now surfaces separate business/place metadata, NYC/Open geometry context, DTR-11 facade/reference evidence, and raster/interaction status lanes.
+- The interactive selected card now shows west-anchor metadata, geometry context, and facade evidence as separate sections.
+- QA mode now surfaces a compact source/status lane strip and geometry-context cue for the west anchor.
+- Batu review found the overlay structurally useful but not yet meaningful for visual/product feedback because the base corridor does not resemble Manhattan Ave / Greenpoint Ave closely enough.
+- Gate correction: evidence overlays are downstream of spatial recognizability; the next proof must first let Batu identify the real intersection represented, even if still draft.
+- Mid-corridor, Franklin, and Brouwerij remain candidate/blocked scaffolds; no Brouwerij deepening or live Foursquare retrieval occurred.
+- The placeholder raster remains scaffold mechanics only, not factual corridor art or production visual evidence.
+
+Unresolved decisions:
+- Batu owns visual/product acceptance after the west-anchor spatial grounding pass.
+- Batu owns any later evidence-lane refinement, source/access, manual evidence packet, facade/frontage/entrance, corridor raster, production/public, or target-promotion decision.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now authorizes the Phase 3 west-anchor spatial grounding pass.
 
 ### 2026-06-04 - Brouwerij Foursquare Credential Blocker
 

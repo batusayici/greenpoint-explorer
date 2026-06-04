@@ -209,6 +209,52 @@ export default function App() {
                   </dl>
                 </section>
               ) : null}
+              {selectedTarget.evidenceLanes?.length ? (
+                <section className="evidence-lanes" aria-label="Evidence lane status">
+                  <h3>Evidence Lanes</h3>
+                  <ul>
+                    {selectedTarget.evidenceLanes.map((lane) => (
+                      <li key={`${selectedTarget.id}-${lane.id}`} data-status={lane.status}>
+                        <strong>{lane.label}</strong>
+                        <small>{formatStatusLabel(lane.status)}</small>
+                        <span>{lane.supports}</span>
+                        <em>{lane.doesNotSupport}</em>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+              {selectedTarget.geometryContext ? (
+                <section className="geometry-context" aria-label="Geometry context evidence">
+                  <h3>Geometry Context</h3>
+                  <p>{selectedTarget.geometryContext.usageLimit}</p>
+                  <ul>
+                    {selectedTarget.geometryContext.records?.map((record) => (
+                      <li key={`${selectedTarget.id}-${record.id}`} data-status={record.status}>
+                        <strong>{record.label}</strong>
+                        <small>{formatStatusLabel(record.status)}</small>
+                        <span>{`BIN ${record.bin}; ${record.lastStatusType}; ${record.geomSource}`}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+              {selectedTarget.facadeEvidence ? (
+                <section className="facade-evidence" aria-label="Facade reference evidence">
+                  <h3>Facade Evidence</h3>
+                  <p>{selectedTarget.facadeEvidence.usageLimit}</p>
+                  <ul>
+                    {selectedTarget.facadeEvidence.records?.map((record) => (
+                      <li key={`${selectedTarget.id}-${record.targetId}`} data-status={record.status}>
+                        <strong>{record.label}</strong>
+                        <small>{formatStatusLabel(record.status)}</small>
+                        <span>{record.keyCues}</span>
+                        <em>{record.blockedClaims}</em>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
               {selectedTarget.candidateTargets?.length ? (
                 <section className="candidate-targets" aria-label="Candidate target records">
                   <h3>Candidate Records</h3>
