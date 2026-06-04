@@ -187,6 +187,23 @@ export default function App() {
                   <dd>{selectedTarget.verificationStatus ?? selectedTarget.status ?? "review-only"}</dd>
                 </div>
               </dl>
+              {selectedTarget.sourceSummary ? (
+                <p className="source-summary">{selectedTarget.sourceSummary}</p>
+              ) : null}
+              {selectedTarget.realPlaces?.length ? (
+                <section className="corridor-realness" aria-label="Existing real place context">
+                  <h3>Existing MVP Context</h3>
+                  <ul>
+                    {selectedTarget.realPlaces.map((place) => (
+                      <li key={`${selectedTarget.id}-${place.name}`}>
+                        <strong>{place.name}</strong>
+                        <span>{place.category}</span>
+                        <small>{place.status}</small>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
               <p className="card-disclaimer">{selectedTarget.disclaimer ?? getCompactDisclaimer(selectedTarget)}</p>
             </aside>
           ) : null}

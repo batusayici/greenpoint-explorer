@@ -14,8 +14,8 @@
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 review-only scaffold for pan/zoom, block/tile/layer metadata, QA boundaries, and minimal cards. Placeholder raster is not visual-quality evidence.",
-    "reviewLabel": "PHASE 3 SCAFFOLD / REVIEW ONLY",
+    "note": "Phase 3 review-only corridor scaffold with the Manhattan Ave anchor upgraded to existing sourced/draft MVP context. Placeholder raster is not visual-quality evidence.",
+    "reviewLabel": "PHASE 3 CORRIDOR SCAFFOLD / REVIEW ONLY",
     "sourceListLabel": "Phase 3 scaffold status",
     "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
     "sceneFrame": {
@@ -84,18 +84,46 @@
     ],
     "tiles": [
       {
-        "id": "tile-phase-3-scaffold-full-block",
-        "label": "Temporary full-block tile",
+        "id": "tile-phase-3-west-manhattan-anchor",
+        "label": "West anchor tile: Manhattan Ave context",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
           "x": 120,
           "y": 122,
-          "width": 2040,
+          "width": 640,
           "height": 720
         },
-        "status": "manual_draft",
+        "status": "sourced",
         "loadPriority": 1,
-        "notes": "Single temporary tile records tile bounds explicitly while avoiding premature production tiling."
+        "notes": "Review-only tile for the existing Manhattan Ave / Greenpoint Ave MVP anchor. Business/address/category context is sourced where already reviewed; scene position and facade geometry remain non-exact."
+      },
+      {
+        "id": "tile-phase-3-mid-corridor-placeholder",
+        "label": "Mid-corridor placeholder tile",
+        "blockId": "block-greenpoint-ave-manhattan-to-franklin",
+        "bounds": {
+          "x": 760,
+          "y": 122,
+          "width": 780,
+          "height": 720
+        },
+        "status": "unknown",
+        "loadPriority": 2,
+        "notes": "Placeholder corridor tile. Target businesses, source records, facades, and exact geometry are not yet resolved."
+      },
+      {
+        "id": "tile-phase-3-east-franklin-placeholder",
+        "label": "East anchor tile: Franklin Ave pending",
+        "blockId": "block-greenpoint-ave-manhattan-to-franklin",
+        "bounds": {
+          "x": 1540,
+          "y": 122,
+          "width": 620,
+          "height": 720
+        },
+        "status": "blocked",
+        "loadPriority": 3,
+        "notes": "Franklin Ave anchor remains blocked until source/reference evidence and visual surface decisions are approved."
       }
     ],
     "layers": [
@@ -139,15 +167,103 @@
     "targets": [
       {
         "id": "phase3-west-anchor",
-        "title": "Manhattan Ave Anchor",
-        "label": "Slice start anchor",
-        "category": "Review scaffold anchor",
-        "address": "Greenpoint Ave / Manhattan Ave context",
-        "cardBadge": "manual draft",
-        "verificationStatus": "manual_draft",
-        "status": "manual_draft",
-        "summary": "Starting edge of the connected Phase 3 block scaffold.",
-        "disclaimer": "Review-only scaffold anchor. Not exact intersection, station, facade, or address geometry.",
+        "title": "Manhattan Ave MVP Anchor",
+        "label": "Sourced west anchor segment",
+        "category": "Sourced/draft corridor segment",
+        "address": "Manhattan Ave / Greenpoint Ave context",
+        "cardBadge": "sourced",
+        "verificationStatus": "sourced",
+        "status": "sourced",
+        "summary": "Existing MVP context carried into the corridor scaffold: Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint Av G station-area cue.",
+        "disclaimer": "Review-only corridor anchor. Business names/address/category context are carried from existing reviewed MVP artifacts where listed; placeholder raster, scene placement, exact storefront order, exact facades, exact entrances, exact addresses, and exact station geometry are not claimed.",
+        "tileId": "tile-phase-3-west-manhattan-anchor",
+        "sourceSummary": "Uses existing Phase 2DTR/MVP reviewed records and DTR-11 facade-reference pass; no new source acquisition.",
+        "realnessStatus": {
+          "businessData": "sourced",
+          "facadeReferences": "manual_draft",
+          "sceneGeometry": "manual_draft",
+          "exactClaims": "blocked"
+        },
+        "realPlaces": [
+          {
+            "name": "Grillpoint Deli",
+            "address": "903 Manhattan Ave, Brooklyn, NY 11222",
+            "category": "Deli / food retail",
+            "status": "sourced",
+            "sourceIds": [
+              "restaurantji-grillpoint",
+              "dtr-11-facade-extraction-specs"
+            ],
+            "notes": "Identity/address/category context is sourced for review use; exact facade, frontage, and entrance geometry remain blocked."
+          },
+          {
+            "name": "McDonald's",
+            "address": "904 Manhattan Ave, Brooklyn, NY 11222",
+            "category": "Fast food restaurant",
+            "status": "sourced",
+            "sourceIds": [
+              "mcdonalds-official",
+              "dtr-11-facade-extraction-specs"
+            ],
+            "notes": "Official location source supports review identity/address context; facade reference remains review-only and non-production."
+          },
+          {
+            "name": "Dunkin'",
+            "address": "893 Manhattan Ave, Brooklyn, NY 11222",
+            "category": "Coffee / quick service",
+            "status": "sourced",
+            "sourceIds": [
+              "dunkin-official",
+              "dtr-11-facade-extraction-specs"
+            ],
+            "notes": "Official location source supports review identity/address context; facade fidelity remains partial."
+          },
+          {
+            "name": "Citizens Bank",
+            "address": "896 Manhattan Avenue, Brooklyn, NY 11222",
+            "category": "Bank branch",
+            "status": "sourced",
+            "sourceIds": [
+              "citizens-official",
+              "dtr-11-facade-extraction-specs"
+            ],
+            "notes": "Official branch source supports review identity/address context; exact branch entrance geometry remains blocked."
+          },
+          {
+            "name": "Greenpoint Av G station-area cue",
+            "address": "Manhattan Ave / Greenpoint Ave station-area context",
+            "category": "Transit context",
+            "status": "symbolic",
+            "sourceIds": [
+              "mta-greenpoint-accessibility",
+              "mta-g-line-map"
+            ],
+            "notes": "Transit context only; exact station entrance geometry remains blocked."
+          }
+        ],
+        "sourceReferences": [
+          {
+            "id": "phase-3-west-anchor-existing-mvp-manifest",
+            "label": "Existing MVP scene manifest sources",
+            "path": "src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json",
+            "status": "sourced",
+            "notes": "Carries existing reviewed source ids and claim limits into the Phase 3 west anchor."
+          },
+          {
+            "id": "phase-3-west-anchor-real-data-fixture",
+            "label": "Phase 2AA active-target real-data fixture",
+            "path": "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "status": "sourced",
+            "notes": "Supports review-only identity/address/category and QA geometry status where already prepared."
+          },
+          {
+            "id": "dtr-11-facade-extraction-specs",
+            "label": "DTR-11 facade extraction specs",
+            "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+            "status": "manual_draft",
+            "notes": "Reference-constrained facade review specs; not production texture, tracing, or exact facade approval."
+          }
+        ],
         "marker": {
           "x": 312,
           "y": 418
@@ -251,8 +367,9 @@
     ],
     "warnings": [
       "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
+      "The Manhattan Ave west anchor now carries existing sourced/draft MVP context, but the visual plate is still a placeholder and not factual corridor art.",
       "Scene coordinates do not imply exact real-world placement.",
-      "Targets are scaffold anchors/segments, not production/public factual place cards."
+      "Mid-corridor and Franklin Ave targets remain placeholder/blocked until reviewed source and reference evidence exists."
     ],
     "blockedClaims": [
       "production visual assets",

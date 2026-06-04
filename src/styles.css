@@ -599,6 +599,84 @@ h1 {
   line-height: 1.18;
 }
 
+.corridor-realness {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid rgba(32, 30, 27, 0.2);
+  border-left: 4px solid #377270;
+  border-radius: 4px;
+  background: rgba(255, 248, 232, 0.36);
+}
+
+.corridor-realness h3 {
+  margin: 0;
+  color: #243835;
+  font-size: 0.58rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.corridor-realness ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.corridor-realness li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  align-items: baseline;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(32, 30, 27, 0.12);
+}
+
+.corridor-realness li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.corridor-realness strong {
+  overflow: hidden;
+  color: #171514;
+  font-size: 0.72rem;
+  font-weight: 950;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.corridor-realness span {
+  grid-column: 1 / -1;
+  color: #40362d;
+  font-size: 0.64rem;
+  font-weight: 790;
+  line-height: 1.14;
+}
+
+.corridor-realness small {
+  color: #1d4d44;
+  font-size: 0.54rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.source-summary {
+  margin: 10px 0 0;
+  color: #30423d;
+  font-size: 0.68rem;
+  font-weight: 820;
+  line-height: 1.24;
+}
+
 .card-metadata {
   display: grid;
   gap: 7px;
