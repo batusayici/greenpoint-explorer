@@ -14,7 +14,7 @@
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 review-only corridor scaffold with the Manhattan Ave anchor upgraded to existing sourced/draft MVP context. Placeholder raster is not visual-quality evidence.",
+    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context and a status-labeled mid-corridor source-candidate layer. Placeholder raster is not visual-quality evidence.",
     "reviewLabel": "PHASE 3 CORRIDOR SCAFFOLD / REVIEW ONLY",
     "sourceListLabel": "Phase 3 scaffold status",
     "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
@@ -99,7 +99,7 @@
       },
       {
         "id": "tile-phase-3-mid-corridor-placeholder",
-        "label": "Mid-corridor placeholder tile",
+        "label": "Mid-corridor source-candidate tile",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
           "x": 760,
@@ -109,7 +109,7 @@
         },
         "status": "unknown",
         "loadPriority": 2,
-        "notes": "Placeholder corridor tile. Target businesses, source records, facades, and exact geometry are not yet resolved."
+        "notes": "Review-only mid-corridor candidate layer. Local repo evidence reviewed in this batch does not contain approved mid-corridor businesses, addresses, facades, entrances, frontage/order, or exact geometry."
       },
       {
         "id": "tile-phase-3-east-franklin-placeholder",
@@ -289,15 +289,116 @@
       },
       {
         "id": "phase3-mid-block",
-        "title": "Mid-Block Placeholder",
-        "label": "Tile continuity test",
-        "category": "Review scaffold segment",
+        "title": "Mid-Corridor Candidate Layer",
+        "label": "Source-candidate segment",
+        "category": "Review-only source-candidate segment",
         "address": "Greenpoint Ave block context",
-        "cardBadge": "unknown",
-        "verificationStatus": "unknown",
+        "cardBadge": "candidate",
+        "verificationStatus": "candidate_review",
         "status": "unknown",
-        "summary": "Middle of the scaffold slice for testing pan/zoom continuity and status-labeled interaction.",
-        "disclaimer": "Review-only placeholder. Target does not claim a real tenant, exact frontage, or facade.",
+        "summary": "Mid-corridor scaffold target now records what can be reviewed next: target identity, address, frontage/order, facade, entrance, geometry, source evidence, and raster readiness all remain explicitly candidate, unknown, or blocked.",
+        "disclaimer": "Review-only source-candidate layer. No exact mid-corridor businesses, facades, addresses, storefront order, entrances, or geometry are claimed.",
+        "tileId": "tile-phase-3-mid-corridor-placeholder",
+        "sourceSummary": "Local repo evidence supports the west Manhattan/Greenpoint anchor, not this mid-corridor segment. This record is a target-status shell for review planning; no new source acquisition was performed.",
+        "realnessStatus": {
+          "identity": "unknown",
+          "address": "unknown",
+          "frontageOrder": "blocked",
+          "facade": "blocked",
+          "entrance": "blocked",
+          "geometry": "candidate",
+          "sourceEvidence": "unknown",
+          "rasterReadiness": "blocked"
+        },
+        "fieldStatuses": [
+          {
+            "field": "identity",
+            "label": "Place identity",
+            "status": "unknown",
+            "notes": "No approved local repo record was found for a mid-corridor business or landmark in this tile."
+          },
+          {
+            "field": "address",
+            "label": "Address",
+            "status": "unknown",
+            "notes": "No approved local repo address evidence was found for this mid-corridor target."
+          },
+          {
+            "field": "frontageOrder",
+            "label": "Frontage/order",
+            "status": "blocked",
+            "notes": "No approved storefront-order or tenant-frontage evidence exists for the mid-corridor segment."
+          },
+          {
+            "field": "facade",
+            "label": "Facade",
+            "status": "blocked",
+            "notes": "DTR-11 facade extraction specs cover the Manhattan/Greenpoint MVP targets only, not this mid-corridor target."
+          },
+          {
+            "field": "entrance",
+            "label": "Entrance",
+            "status": "blocked",
+            "notes": "No approved entrance evidence exists for this segment."
+          },
+          {
+            "field": "geometry",
+            "label": "Geometry",
+            "status": "candidate",
+            "notes": "Scene-space tile bounds exist for scaffold review only; no exact real-world geometry is claimed."
+          },
+          {
+            "field": "sourceEvidence",
+            "label": "Source evidence",
+            "status": "unknown",
+            "notes": "Existing Phase 2AA and DTR-11 evidence are useful as west-anchor references and gap evidence only."
+          },
+          {
+            "field": "rasterReadiness",
+            "label": "Raster readiness",
+            "status": "blocked",
+            "notes": "The Phase 3 scaffold still uses the approved placeholder raster; no extended mid-corridor raster/reference surface exists in this fixture."
+          }
+        ],
+        "candidateTargets": [
+          {
+            "id": "mid-corridor-segment-candidate-01",
+            "label": "Unresolved mid-corridor place/segment",
+            "status": "candidate",
+            "scope": "Greenpoint Ave between the sourced Manhattan Ave anchor and the Franklin Ave blocked anchor.",
+            "notes": "Candidate shell only. It is ready for Batu/source review to decide which real place, facade, or segment should become the first mid-corridor MVP target."
+          }
+        ],
+        "sourceReferences": [
+          {
+            "id": "phase-3-decision-surface-slice-bounds",
+            "label": "Phase 3 architecture decision surface",
+            "path": "docs/phase-3-architecture-scaling-decision-surface.md",
+            "status": "sourced",
+            "notes": "Supports the Manhattan-to-Franklin slice and block/tile-scoped scaffold direction only; does not identify mid-corridor businesses."
+          },
+          {
+            "id": "phase-2aa-west-anchor-real-data-fixture",
+            "label": "Phase 2AA active-target real-data fixture",
+            "path": "src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json",
+            "status": "sourced",
+            "notes": "Supports existing Manhattan/Greenpoint MVP targets only. Used here to mark mid-corridor source evidence as absent, not to infer new facts."
+          },
+          {
+            "id": "dtr-11-west-anchor-facade-specs",
+            "label": "DTR-11 facade extraction specs",
+            "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+            "status": "manual_draft",
+            "notes": "Facade specs cover the existing MVP targets only; no mid-corridor facade readiness is claimed."
+          },
+          {
+            "id": "phase-2ab-intersection-footprint-sample",
+            "label": "Phase 2AB official footprint sample",
+            "path": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
+            "status": "candidate",
+            "notes": "Official footprint sample is scoped around Manhattan Ave x Greenpoint Ave and cannot prove mid-corridor tenant frontage, entrance, facade, or address placement."
+          }
+        ],
         "marker": {
           "x": 1124,
           "y": 372
@@ -368,8 +469,9 @@
     "warnings": [
       "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
       "The Manhattan Ave west anchor now carries existing sourced/draft MVP context, but the visual plate is still a placeholder and not factual corridor art.",
+      "The mid-corridor target now has a source-candidate/status layer only; local repo evidence reviewed in this batch does not support exact mid-corridor businesses, facades, addresses, frontage/order, entrances, or geometry.",
       "Scene coordinates do not imply exact real-world placement.",
-      "Mid-corridor and Franklin Ave targets remain placeholder/blocked until reviewed source and reference evidence exists."
+      "Franklin Ave remains blocked until reviewed source and reference evidence exists."
     ],
     "blockedClaims": [
       "production visual assets",

@@ -190,6 +190,39 @@ export default function App() {
               {selectedTarget.sourceSummary ? (
                 <p className="source-summary">{selectedTarget.sourceSummary}</p>
               ) : null}
+              {selectedTarget.fieldStatuses?.length ? (
+                <section className="target-status-summary" aria-label="Target field status summary">
+                  <h3>Target Status</h3>
+                  <dl>
+                    {selectedTarget.fieldStatuses.map((fieldStatus) => (
+                      <div
+                        key={`${selectedTarget.id}-${fieldStatus.field}`}
+                        data-status={fieldStatus.status}
+                      >
+                        <dt>{fieldStatus.label}</dt>
+                        <dd>
+                          <strong>{formatStatusLabel(fieldStatus.status)}</strong>
+                          <span>{fieldStatus.notes}</span>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              ) : null}
+              {selectedTarget.candidateTargets?.length ? (
+                <section className="candidate-targets" aria-label="Candidate target records">
+                  <h3>Candidate Records</h3>
+                  <ul>
+                    {selectedTarget.candidateTargets.map((candidate) => (
+                      <li key={`${selectedTarget.id}-${candidate.id}`}>
+                        <strong>{candidate.label}</strong>
+                        <small>{formatStatusLabel(candidate.status)}</small>
+                        <span>{candidate.notes}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
               {selectedTarget.realPlaces?.length ? (
                 <section className="corridor-realness" aria-label="Existing real place context">
                   <h3>Existing MVP Context</h3>
@@ -199,6 +232,20 @@ export default function App() {
                         <strong>{place.name}</strong>
                         <span>{place.category}</span>
                         <small>{place.status}</small>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+              {selectedTarget.sourceReferences?.length ? (
+                <section className="local-source-references" aria-label="Local source references">
+                  <h3>Local Evidence Pointers</h3>
+                  <ul>
+                    {selectedTarget.sourceReferences.map((source) => (
+                      <li key={`${selectedTarget.id}-${source.id}`}>
+                        <strong>{source.label}</strong>
+                        <small>{formatStatusLabel(source.status)}</small>
+                        <span>{source.path}</span>
                       </li>
                     ))}
                   </ul>
@@ -221,5 +268,11 @@ function getCompactDisclaimer(target) {
 }
 
 function getCardLabel(target) {
-  return target.id === "greenpoint-g-subway" ? "Transit context" : "Selected place";
+  if (target.id === "greenpoint-g-subway") return "Transit context";
+  if (target.cardBadge === "candidate") return "Source candidate";
+  return "Selected place";
+}
+
+function formatStatusLabel(status) {
+  return String(status).replaceAll("_", " ");
 }

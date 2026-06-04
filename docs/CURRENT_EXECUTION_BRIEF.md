@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 3 West Anchor Realness Review Gate
+# Current Execution Brief - Phase 3 Mid-Corridor Candidate Layer Review Gate
 
-Status: DTR-11 MVP interaction/card correction is locked for external review. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. Codex completed the first review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, then completed one bounded west-anchor realness pass. The Manhattan Ave / Greenpoint Ave west anchor now carries existing reviewed MVP business/transit context and facade/source reference pointers while the visual surface remains a clearly labeled review-only placeholder. The next task is Batu review/approval or revision of the west-anchor realness outcome before any further Phase 3 implementation is opened.
+Status: DTR-11 MVP interaction/card correction is locked for external review. Phase 2DTR / MVP feedback demo remains complete and locked for MVP-feedback purposes. Batu reviewed and approved `docs/phase-3-architecture-scaling-decision-surface.md` for the first Phase 3 scaffold implementation direction only. Codex completed the first review-only Phase 3 scaffold batch for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice, one bounded west-anchor realness pass, and one bounded mid-corridor source-candidate layer pass. The Manhattan Ave / Greenpoint Ave west anchor carries existing reviewed MVP business/transit context and facade/source reference pointers. The mid-corridor target now carries explicit candidate/unknown/blocked status metadata for identity, address, frontage/order, facade, entrance, geometry, source evidence, and raster readiness. The visual surface remains a clearly labeled review-only placeholder. The next task is Batu review/approval or revision of the mid-corridor candidate-layer outcome before any further Phase 3 implementation is opened.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, and any later Phase 2, Phase 3, or MVP gates.
 
@@ -32,7 +32,8 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 - The Phase 3 architecture-scaling decision surface is reviewed/approved for the first scaffold direction at `docs/phase-3-architecture-scaling-decision-surface.md`.
 - The first scaffold added a review-only Phase 3 scene fixture, block/tile/layer metadata, manifest-driven pan/zoom bounds, a minimum QA/debug overlay, minimal safe hover/click/card carry-forward, and an approved placeholder raster surface for scaffold mechanics only.
 - The west-anchor realness pass made the Manhattan Ave / Greenpoint Ave anchor more real by carrying existing reviewed MVP context for Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and the Greenpoint Av G station-area cue into the Phase 3 corridor scaffold.
-- The west tile is now marked `sourced`; mid-corridor remains `unknown`; Franklin Ave remains `blocked`.
+- The mid-corridor source-candidate layer pass made the middle corridor target more inspectable without inventing facts: identity/address/source evidence remain `unknown`, frontage/order/facade/entrance/raster readiness remain `blocked`, and scene-space geometry is only a `candidate` scaffold target.
+- The west tile is marked `sourced`; the mid-corridor tile remains `unknown` with candidate metadata; Franklin Ave remains `blocked`.
 - MVP-29E remains the current manually composed four-corner raster baseline/reference. It is not treated as the final proof of the data-to-raster pipeline.
 - Phase 2DTR-4 output packet: `docs/mvp-review/phase-2dtr-4-exact-geometry-source-map-target-scene-spec/`.
 - Phase 2DTR-5 output packet: `docs/mvp-review/phase-2dtr-5-exact-review-geometry-fixture-to-raster-prompt-adapter/`.
@@ -77,7 +78,7 @@ The MVP proof is the real-data-to-isometric-raster-scene pipeline, not just scre
 
 ## Current Phase 3 Review Gate
 
-Batu has approved the decision surface for the first scaffold direction only, and Codex has completed the first scaffold plus one bounded west-anchor realness pass. Further Phase 3 implementation is blocked until Batu reviews the west-anchor outcome and gives the next explicit direction.
+Batu has approved the decision surface for the first scaffold direction only, and Codex has completed the first scaffold, one bounded west-anchor realness pass, and one bounded mid-corridor source-candidate layer pass. Further Phase 3 implementation is blocked until Batu reviews the mid-corridor candidate-layer outcome and gives the next explicit direction.
 
 Guiding question:
 
@@ -199,15 +200,45 @@ Verification:
 - `git diff --check`.
 - `git status --short`.
 
-## Proposed Next Task
+## Completed Phase 3 Mid-Corridor Candidate Layer Pass
 
-Batu Review Of Phase 3 West Anchor Realness Outcome.
+Phase 3 Mid-Corridor Candidate Layer Pass.
 
 Purpose:
 
-- Review whether the west anchor now feels meaningfully more real while still preserving review-only/placeholder boundaries.
-- Decide whether to approve, revise, or reject the sourced-west / placeholder-mid / blocked-east tile split.
-- Decide whether the next implementation batch should make the mid-corridor segment more real by adding a source-candidate fixture and review-only target/status metadata from existing approved local evidence, or whether Batu should first supply/approve an extended corridor raster/reference surface.
+- Move the mechanics/west-anchor scaffold one bounded step toward a credible corridor MVP by making the mid-corridor target reviewable as a source-candidate layer, without pretending that corridor artwork, place data, facades, addresses, frontage/order, entrances, or exact geometry are complete.
+- Add review-only status metadata for the middle corridor target using only existing approved/local repo evidence and explicit absence/gap records where evidence is insufficient.
+- Preserve the sourced Manhattan Ave west anchor, the blocked Franklin Ave anchor, manifest-driven pan/zoom bounds, QA/debug overlay, hover/click/card behavior, review-only labeling, and placeholder-raster status.
+- Surface the mid-corridor candidate/unknown/blocked statuses in the selected-card source summary.
+- Do not add live data ingestion, scraping, external source acquisition, public schema/interface commitments, production/public readiness claims, full 3D, broad coverage, major animation/aliveness systems, or a replacement raster.
+
+Completed files:
+
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Expected verification for the completed batch:
+
+- Phase 3 scaffold JSON parse.
+- Relevant manifest/app build verification.
+- `npm run build`.
+- Browser smoke for updated mid-corridor card/source-status summary and preserved QA overlay behavior.
+- `git diff --check`.
+- `git status --short`.
+
+## Proposed Next Task
+
+Batu Review Of Phase 3 Mid-Corridor Candidate Layer Outcome.
+
+Purpose:
+
+- Review whether the middle corridor target is now a useful, honest source-candidate layer while still preserving review-only/placeholder boundaries.
+- Decide whether to approve, revise, or reject the sourced-west / candidate-unknown-mid / blocked-east tile split.
+- Decide whether the next implementation batch should add a similarly explicit Franklin-anchor status/evidence layer, deepen mid-corridor source review only after approved evidence is supplied, or first supply/approve an extended corridor raster/reference surface.
 - Preserve review-only labeling, no production/public exact-geometry claims, and no production/public readiness change.
 
 ## Continuing Boundaries
@@ -216,7 +247,7 @@ Purpose:
 - No product-copy readiness change.
 - No production/public readiness change.
 - No DTR-12, facade/raster correction loop, broad new app/source edits, public interfaces, package/tooling changes, or production/public-readiness changes until explicitly opened.
-- No Phase 3 implementation beyond the completed first scaffold and west-anchor realness batches; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
+- No Phase 3 implementation beyond the completed first scaffold, west-anchor realness, and mid-corridor candidate-layer batches; no broad tile production, seamless tiling, production scale architecture, new architecture boundary, or public interface.
 - No live scraping, live API calls, Google/Street View/3D Tiles extraction, or external source acquisition.
 - No package/tooling/CI changes unless later approved.
 - No production asset, production asset pipeline, or public schema/interface approval.

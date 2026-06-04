@@ -55,14 +55,54 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 west-anchor realness review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 mid-corridor candidate-layer review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, and the west-anchor realness pass as complete. The next task is Batu review/approval or revision of the west-anchor outcome. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, and the mid-corridor candidate-layer pass as complete. The next task is Batu review/approval or revision of the mid-corridor candidate-layer outcome. Phase 3 implementation beyond that outcome, new architecture boundaries, public interfaces, source acquisition, production visual asset generation, production/public claims, DTR-12, facade/raster correction loops, storefront outline rebuilds, package/tooling changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, major animation/aliveness systems, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Mid-Corridor Candidate Layer
+
+Status:
+- Complete for Batu review; further Phase 3 implementation remains blocked.
+
+Scope:
+- Execute one bounded corridor-realness batch by upgrading the mid-corridor scaffold target from generic placeholder to a review-only source-candidate/status layer, using only existing approved/local repo evidence and explicit candidate/unknown/blocked records where evidence is insufficient.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic/source reread: `docs/phase-3-architecture-scaling-decision-surface.md`, Phase 3 scaffold fixture, Phase 2AA real-data fixture, DTR-11 facade extraction specs, MVP manifest, draft-scene fixture, and official-footprint sample.
+- Phase 3 scaffold JSON parse.
+- `npm run build`.
+- Browser smoke for default load, QA overlay, mid-corridor card/source-status summary, and preserved hover/click behavior.
+- `git diff --check`
+- `git status --short`
+- `git diff --stat`
+
+Outcome:
+- Preserved the sourced Manhattan Ave / Greenpoint Ave west anchor and blocked Franklin Ave anchor.
+- Replaced the generic mid-block placeholder card with a source-candidate layer that explicitly labels identity, address, source evidence as `unknown`; frontage/order, facade, entrance, and raster readiness as `blocked`; and scene-space geometry as candidate scaffold metadata only.
+- Added local evidence pointers to the Phase 3 decision surface, Phase 2AA active-target fixture, DTR-11 facade extraction specs, and Phase 2AB official-footprint sample, with notes that these do not support exact mid-corridor business/facade/address/entrance/frontage claims.
+- Added a compact card/source-summary display for mid-corridor field statuses, candidate records, and local evidence pointers.
+- Preserved the placeholder raster as scaffold mechanics only; no live data, scraping, source acquisition, factual mid-corridor place claims, replacement raster, production assets, public schema/interface, production architecture, or production/public readiness was opened.
+
+Unresolved decisions:
+- Batu owns whether the mid-corridor candidate layer is useful enough to continue this evidence-first corridor MVP path.
+- Batu owns exact target businesses/landmarks, source authority, reference/raster supply, and whether the next bounded batch should add a Franklin-anchor evidence/status layer or wait for approved mid-corridor source/reference material.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the completed mid-corridor candidate-layer outcome.
 
 ### 2026-06-04 - Phase 3 West Anchor Realness Pass
 
