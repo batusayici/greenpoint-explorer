@@ -190,6 +190,26 @@ export default function App() {
               {selectedTarget.sourceSummary ? (
                 <p className="source-summary">{selectedTarget.sourceSummary}</p>
               ) : null}
+              {selectedTarget.spatialGrounding ? (
+                <section className="spatial-grounding" aria-label="Spatial grounding status">
+                  <h3>Spatial Grounding</h3>
+                  <p>{selectedTarget.spatialGrounding.usageLimit}</p>
+                  <ul>
+                    <li data-status={selectedTarget.spatialGrounding.status}>
+                      <strong>{selectedTarget.spatialGrounding.label}</strong>
+                      <small>{formatStatusLabel(selectedTarget.spatialGrounding.status)}</small>
+                      <span>{selectedTarget.spatialGrounding.sourceBasis?.join("; ")}</span>
+                    </li>
+                    {selectedTarget.spatialGrounding.transitCues?.map((cue) => (
+                      <li key={`${selectedTarget.id}-${cue.id}`} data-status={cue.status}>
+                        <strong>{cue.label}</strong>
+                        <small>{formatStatusLabel(cue.status)}</small>
+                        <span>{cue.notes}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
               {selectedTarget.fieldStatuses?.length ? (
                 <section className="target-status-summary" aria-label="Target field status summary">
                   <h3>Target Status</h3>

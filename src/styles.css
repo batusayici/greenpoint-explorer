@@ -681,6 +681,7 @@ h1 {
 .candidate-targets,
 .local-source-references,
 .evidence-lanes,
+.spatial-grounding,
 .geometry-context,
 .facade-evidence {
   display: grid;
@@ -708,6 +709,10 @@ h1 {
   border-left: 4px solid #819986;
 }
 
+.spatial-grounding {
+  border-left: 4px solid #e28e54;
+}
+
 .geometry-context {
   border-left: 4px solid #377270;
 }
@@ -720,6 +725,7 @@ h1 {
 .candidate-targets h3,
 .local-source-references h3,
 .evidence-lanes h3,
+.spatial-grounding h3,
 .geometry-context h3,
 .facade-evidence h3 {
   margin: 0;
@@ -783,6 +789,7 @@ h1 {
 
 .target-status-summary dd span,
 .candidate-targets span,
+.spatial-grounding span,
 .local-source-references span {
   color: #40362d;
   font-size: 0.62rem;
@@ -793,6 +800,7 @@ h1 {
 .candidate-targets ul,
 .local-source-references ul,
 .evidence-lanes ul,
+.spatial-grounding ul,
 .geometry-context ul,
 .facade-evidence ul {
   display: grid;
@@ -805,6 +813,7 @@ h1 {
 .candidate-targets li,
 .local-source-references li,
 .evidence-lanes li,
+.spatial-grounding li,
 .geometry-context li,
 .facade-evidence li {
   display: grid;
@@ -817,6 +826,7 @@ h1 {
 .candidate-targets li:last-child,
 .local-source-references li:last-child,
 .evidence-lanes li:last-child,
+.spatial-grounding li:last-child,
 .geometry-context li:last-child,
 .facade-evidence li:last-child {
   padding-bottom: 0;
@@ -826,6 +836,7 @@ h1 {
 .candidate-targets strong,
 .local-source-references strong,
 .evidence-lanes strong,
+.spatial-grounding strong,
 .geometry-context strong,
 .facade-evidence strong {
   overflow: hidden;
@@ -840,6 +851,7 @@ h1 {
 .candidate-targets small,
 .local-source-references small,
 .evidence-lanes small,
+.spatial-grounding small,
 .geometry-context small,
 .facade-evidence small {
   color: #6c2c1f;
@@ -853,6 +865,7 @@ h1 {
 .candidate-targets span,
 .local-source-references span,
 .evidence-lanes span,
+.spatial-grounding span,
 .geometry-context span,
 .facade-evidence span,
 .evidence-lanes em,
@@ -862,6 +875,7 @@ h1 {
 }
 
 .evidence-lanes li[data-status="sourced"],
+.spatial-grounding li[data-status="sourced"],
 .geometry-context li[data-status="sourced"],
 .facade-evidence li[data-status="sourced"] {
   border-left: 3px solid rgba(55, 114, 112, 0.7);
@@ -869,6 +883,9 @@ h1 {
 }
 
 .evidence-lanes li[data-status="candidate"],
+.spatial-grounding li[data-status="candidate"],
+.spatial-grounding li[data-status="manual_draft"],
+.spatial-grounding li[data-status="symbolic"],
 .geometry-context li[data-status="candidate"],
 .facade-evidence li[data-status="manual_draft"] {
   border-left: 3px solid rgba(212, 156, 63, 0.86);
@@ -876,6 +893,7 @@ h1 {
 }
 
 .evidence-lanes li[data-status="blocked"],
+.spatial-grounding li[data-status="blocked"],
 .geometry-context li[data-status="blocked"],
 .facade-evidence li[data-status="blocked"] {
   border-left: 3px solid rgba(169, 79, 56, 0.86);
@@ -892,6 +910,7 @@ h1 {
 }
 
 .geometry-context p,
+.spatial-grounding p,
 .facade-evidence p {
   margin: 0;
   color: #40362d;

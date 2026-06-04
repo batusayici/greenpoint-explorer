@@ -186,6 +186,374 @@
           "rasterReadiness": "blocked",
           "exactClaims": "blocked"
         },
+        "spatialGrounding": {
+          "id": "west-anchor-manhattan-greenpoint-spatial-grounding-v0.1",
+          "label": "Manhattan Ave / Greenpoint Ave draft spatial grounding",
+          "status": "manual_draft",
+          "artifactClass": "level-1-prototype-blockout",
+          "sourceBasis": [
+            "Existing reviewed MVP business/place metadata",
+            "NYC/Open building-footprint context sample",
+            "DTR-11 reference-photo-derived facade cue records",
+            "Existing Phase 3 placeholder/scaffold renderer"
+          ],
+          "usageLimit": "Review-only spatial grounding overlay. Street relationship, corner orientation, building massing, storefront placement, facade cues, and transit cue are approximate/contextual or manual draft unless separately sourced. This does not claim exact tenant frontage, exact entrance placement, exact building geometry, exact station geometry, production raster readiness, or public factual output.",
+          "streets": [
+            {
+              "id": "manual-draft-manhattan-ave-axis",
+              "label": "MANHATTAN AVE",
+              "status": "manual_draft",
+              "fillColor": "#3f4643",
+              "strokeColor": "#171514",
+              "fillAlpha": 0.76,
+              "polygon": [
+                { "x": 326, "y": 112 },
+                { "x": 514, "y": 132 },
+                { "x": 570, "y": 798 },
+                { "x": 338, "y": 788 }
+              ],
+              "centerLines": [
+                {
+                  "from": { "x": 428, "y": 132 },
+                  "to": { "x": 454, "y": 770 },
+                  "color": "#f0bc45",
+                  "alpha": 0.38,
+                  "width": 2
+                }
+              ],
+              "labelPoint": { "x": 455, "y": 652 },
+              "labelRotation": -0.18,
+              "notes": "Manual draft scene axis for Manhattan Ave orientation only; not a measured street alignment."
+            },
+            {
+              "id": "manual-draft-greenpoint-ave-axis",
+              "label": "GREENPOINT AVE",
+              "status": "manual_draft",
+              "fillColor": "#45413d",
+              "strokeColor": "#171514",
+              "fillAlpha": 0.8,
+              "polygon": [
+                { "x": 94, "y": 392 },
+                { "x": 758, "y": 270 },
+                { "x": 805, "y": 442 },
+                { "x": 126, "y": 610 }
+              ],
+              "centerLines": [
+                {
+                  "from": { "x": 132, "y": 494 },
+                  "to": { "x": 760, "y": 360 },
+                  "color": "#f5e5c3",
+                  "alpha": 0.26,
+                  "width": 2
+                }
+              ],
+              "labelPoint": { "x": 156, "y": 518 },
+              "labelRotation": -0.16,
+              "notes": "Manual draft scene axis for Greenpoint Ave orientation only; not a measured street alignment."
+            }
+          ],
+          "cornerPads": [
+            {
+              "id": "nw-sidewalk-corner-pad",
+              "status": "manual_draft",
+              "fillColor": "#d8c79f",
+              "polygon": [
+                { "x": 168, "y": 194 },
+                { "x": 322, "y": 128 },
+                { "x": 372, "y": 316 },
+                { "x": 170, "y": 382 }
+              ]
+            },
+            {
+              "id": "ne-sidewalk-corner-pad",
+              "status": "manual_draft",
+              "fillColor": "#ddcfa8",
+              "polygon": [
+                { "x": 516, "y": 150 },
+                { "x": 742, "y": 194 },
+                { "x": 720, "y": 352 },
+                { "x": 534, "y": 328 }
+              ]
+            },
+            {
+              "id": "sw-sidewalk-corner-pad",
+              "status": "manual_draft",
+              "fillColor": "#d5c297",
+              "polygon": [
+                { "x": 130, "y": 592 },
+                { "x": 342, "y": 518 },
+                { "x": 444, "y": 730 },
+                { "x": 196, "y": 802 }
+              ]
+            },
+            {
+              "id": "se-sidewalk-corner-pad",
+              "status": "manual_draft",
+              "fillColor": "#d9c8a0",
+              "polygon": [
+                { "x": 520, "y": 526 },
+                { "x": 744, "y": 468 },
+                { "x": 796, "y": 668 },
+                { "x": 560, "y": 746 }
+              ]
+            }
+          ],
+          "crosswalks": [
+            {
+              "id": "greenpoint-ave-west-crosswalk-draft",
+              "status": "manual_draft",
+              "color": "#f5e5c3",
+              "alpha": 0.55,
+              "width": 5,
+              "stripes": [
+                { "from": { "x": 280, "y": 406 }, "to": { "x": 334, "y": 386 } },
+                { "from": { "x": 302, "y": 440 }, "to": { "x": 360, "y": 420 } },
+                { "from": { "x": 326, "y": 476 }, "to": { "x": 386, "y": 454 } },
+                { "from": { "x": 350, "y": 510 }, "to": { "x": 414, "y": 488 } }
+              ]
+            },
+            {
+              "id": "manhattan-ave-south-crosswalk-draft",
+              "status": "manual_draft",
+              "color": "#f5e5c3",
+              "alpha": 0.5,
+              "width": 5,
+              "stripes": [
+                { "from": { "x": 438, "y": 470 }, "to": { "x": 532, "y": 452 } },
+                { "from": { "x": 438, "y": 498 }, "to": { "x": 536, "y": 480 } },
+                { "from": { "x": 440, "y": 526 }, "to": { "x": 538, "y": 508 } }
+              ]
+            }
+          ],
+          "corners": [
+            {
+              "id": "corner-nw-grillpoint-draft",
+              "label": "NW: Grillpoint-side corner",
+              "status": "manual_draft",
+              "buildingMass": {
+                "status": "candidate",
+                "fillColor": "#a66a4a",
+                "polygon": [
+                  { "x": 190, "y": 150 },
+                  { "x": 356, "y": 116 },
+                  { "x": 404, "y": 290 },
+                  { "x": 230, "y": 330 }
+                ],
+                "roofLines": [
+                  { "from": { "x": 206, "y": 174 }, "to": { "x": 362, "y": 142 } },
+                  { "from": { "x": 224, "y": 208 }, "to": { "x": 374, "y": 178 } }
+                ],
+                "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
+              },
+              "storefronts": [
+                {
+                  "id": "draft-facade-cue-grillpoint-deli",
+                  "label": "Grillpoint Deli",
+                  "shortLabel": "GRILLPOINT",
+                  "status": "manual_draft",
+                  "facadeColor": "#9a5b43",
+                  "signColor": "#5b2430",
+                  "accentColor": "#74a667",
+                  "windowColor": "#202424",
+                  "entryColor": "#151312",
+                  "bounds": { "x": 250, "y": 244, "width": 160, "height": 76 },
+                  "signBounds": { "x": 258, "y": 244, "width": 144, "height": 24 },
+                  "entranceBounds": { "x": 318, "y": 280, "width": 26, "height": 36 },
+                  "windowBounds": [
+                    { "x": 268, "y": 280, "width": 36, "height": 22 },
+                    { "x": 356, "y": 280, "width": 34, "height": 22 }
+                  ],
+                  "cueRects": [
+                    { "bounds": { "x": 286, "y": 248, "width": 18, "height": 15 }, "fillColor": "#74a667" },
+                    { "bounds": { "x": 394, "y": 274, "width": 16, "height": 44 }, "fillColor": "#171514", "fillAlpha": 0.76 }
+                  ],
+                  "labelPoint": { "x": 330, "y": 256 },
+                  "notes": "DTR-11 cue translation: maroon/green/black identity, central entry, poster/window rhythm, adjacent dark doorway. Manual draft, not exact facade/frontage."
+                }
+              ]
+            },
+            {
+              "id": "corner-ne-mcdonalds-draft",
+              "label": "NE: McDonald's-side corner",
+              "status": "manual_draft",
+              "buildingMass": {
+                "status": "candidate",
+                "fillColor": "#9b8174",
+                "polygon": [
+                  { "x": 510, "y": 134 },
+                  { "x": 742, "y": 178 },
+                  { "x": 690, "y": 348 },
+                  { "x": 472, "y": 306 }
+                ],
+                "roofLines": [
+                  { "from": { "x": 526, "y": 160 }, "to": { "x": 724, "y": 198 } },
+                  { "from": { "x": 508, "y": 194 }, "to": { "x": 710, "y": 232 } }
+                ],
+                "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
+              },
+              "storefronts": [
+                {
+                  "id": "draft-facade-cue-mcdonalds",
+                  "label": "McDonald's",
+                  "shortLabel": "MCD",
+                  "status": "manual_draft",
+                  "facadeColor": "#7e8581",
+                  "signColor": "#f0bc45",
+                  "accentColor": "#5a3a2a",
+                  "windowColor": "#20282a",
+                  "entryColor": "#181d1e",
+                  "bounds": { "x": 520, "y": 236, "width": 176, "height": 82 },
+                  "signBounds": { "x": 536, "y": 236, "width": 110, "height": 22 },
+                  "entranceBounds": { "x": 592, "y": 276, "width": 28, "height": 34 },
+                  "windowBounds": [
+                    { "x": 532, "y": 276, "width": 44, "height": 22 },
+                    { "x": 636, "y": 276, "width": 46, "height": 22 }
+                  ],
+                  "cueRects": [
+                    { "bounds": { "x": 656, "y": 240, "width": 18, "height": 68 }, "fillColor": "#5a3a2a", "fillAlpha": 0.68 },
+                    { "bounds": { "x": 548, "y": 206, "width": 82, "height": 26 }, "fillColor": "#6f875d", "strokeColor": "#f0bc45", "fillAlpha": 0.62 }
+                  ],
+                  "labelPoint": { "x": 592, "y": 247 },
+                  "notes": "DTR-11 cue translation: gray/yellow/dark glass, brown slats, golden-arch cue, mural mass above. Manual draft, not exact facade/frontage."
+                }
+              ]
+            },
+            {
+              "id": "corner-sw-dunkin-draft",
+              "label": "SW: Dunkin-side corner",
+              "status": "manual_draft",
+              "buildingMass": {
+                "status": "candidate",
+                "fillColor": "#c2a06f",
+                "polygon": [
+                  { "x": 142, "y": 548 },
+                  { "x": 350, "y": 492 },
+                  { "x": 430, "y": 704 },
+                  { "x": 206, "y": 766 }
+                ],
+                "roofLines": [
+                  { "from": { "x": 174, "y": 582 }, "to": { "x": 362, "y": 532 } },
+                  { "from": { "x": 190, "y": 620 }, "to": { "x": 376, "y": 570 } }
+                ],
+                "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
+              },
+              "storefronts": [
+                {
+                  "id": "draft-facade-cue-dunkin",
+                  "label": "Dunkin'",
+                  "shortLabel": "DUNKIN",
+                  "status": "manual_draft",
+                  "facadeColor": "#c5ad83",
+                  "signColor": "#1d1a17",
+                  "accentColor": "#e28e54",
+                  "windowColor": "#202424",
+                  "entryColor": "#151312",
+                  "bounds": { "x": 232, "y": 592, "width": 158, "height": 82 },
+                  "signBounds": { "x": 250, "y": 592, "width": 108, "height": 24 },
+                  "entranceBounds": { "x": 304, "y": 632, "width": 28, "height": 36 },
+                  "windowBounds": [
+                    { "x": 256, "y": 632, "width": 34, "height": 22 },
+                    { "x": 344, "y": 632, "width": 32, "height": 22 }
+                  ],
+                  "cueRects": [
+                    { "bounds": { "x": 360, "y": 596, "width": 26, "height": 44 }, "fillColor": "#e28e54" },
+                    { "bounds": { "x": 274, "y": 596, "width": 20, "height": 15 }, "fillColor": "#e86aa7" }
+                  ],
+                  "labelPoint": { "x": 304, "y": 604 },
+                  "notes": "DTR-11 cue translation: black/orange/pink sign band, side/corner sign, dark recessed entry, beige mass. Manual draft, not exact facade/frontage."
+                }
+              ]
+            },
+            {
+              "id": "corner-se-citizens-draft",
+              "label": "SE: Citizens/subway-side corner",
+              "status": "manual_draft",
+              "buildingMass": {
+                "status": "candidate",
+                "fillColor": "#c4b7a1",
+                "polygon": [
+                  { "x": 500, "y": 530 },
+                  { "x": 742, "y": 478 },
+                  { "x": 782, "y": 682 },
+                  { "x": 548, "y": 742 }
+                ],
+                "roofLines": [
+                  { "from": { "x": 522, "y": 558 }, "to": { "x": 734, "y": 514 } },
+                  { "from": { "x": 538, "y": 600 }, "to": { "x": 748, "y": 552 } }
+                ],
+                "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
+              },
+              "storefronts": [
+                {
+                  "id": "draft-facade-cue-citizens-bank",
+                  "label": "Citizens Bank",
+                  "shortLabel": "CITIZENS",
+                  "status": "manual_draft",
+                  "facadeColor": "#d8d2c5",
+                  "signColor": "#f5efe3",
+                  "accentColor": "#377270",
+                  "windowColor": "#24292a",
+                  "entryColor": "#11100f",
+                  "bounds": { "x": 550, "y": 572, "width": 166, "height": 86 },
+                  "signBounds": { "x": 584, "y": 572, "width": 102, "height": 24 },
+                  "entranceBounds": { "x": 622, "y": 616, "width": 30, "height": 38 },
+                  "windowBounds": [
+                    { "x": 570, "y": 618, "width": 38, "height": 22 },
+                    { "x": 666, "y": 618, "width": 36, "height": 22 }
+                  ],
+                  "cueRects": [
+                    { "bounds": { "x": 612, "y": 650, "width": 52, "height": 7 }, "fillColor": "#171514", "fillAlpha": 0.78 },
+                    { "bounds": { "x": 566, "y": 606, "width": 140, "height": 5 }, "fillColor": "#8b4734", "fillAlpha": 0.68 }
+                  ],
+                  "labelPoint": { "x": 635, "y": 584 },
+                  "notes": "DTR-11 cue translation: green sign on white box, recessed black-framed entry, railings/steps, reddish-brown trim rhythm. Manual draft, not exact facade/frontage."
+                }
+              ]
+            }
+          ],
+          "transitCues": [
+            {
+              "id": "symbolic-greenpoint-g-station-cue",
+              "label": "Greenpoint Av G station-area cue",
+              "shortLabel": "G cue\nsymbolic",
+              "status": "symbolic",
+              "fillColor": "#25465a",
+              "bounds": { "x": 704, "y": 646, "width": 72, "height": 54 },
+              "symbolPoint": { "x": 728, "y": 664 },
+              "symbolRadius": 12,
+              "railLines": [
+                { "from": { "x": 742, "y": 684 }, "to": { "x": 766, "y": 676 } },
+                { "from": { "x": 742, "y": 694 }, "to": { "x": 770, "y": 686 } }
+              ],
+              "labelPoint": { "x": 740, "y": 690 },
+              "notes": "Symbolic corner/transit context only. Exact station entrance geometry and placement remain blocked."
+            }
+          ],
+          "statusCallouts": [
+            {
+              "id": "west-anchor-spatial-status-callout",
+              "text": "Spatial grounding: manual draft / approximate contextual geometry",
+              "status": "manual_draft",
+              "point": { "x": 184, "y": 160 },
+              "maxWidth": 220
+            },
+            {
+              "id": "west-anchor-transit-status-callout",
+              "text": "G cue is symbolic; exact entrance placement blocked",
+              "status": "symbolic",
+              "point": { "x": 626, "y": 706 },
+              "maxWidth": 190
+            }
+          ],
+          "blockedClaims": [
+            "exact tenant frontage",
+            "exact entrance placement",
+            "exact building geometry",
+            "exact station/entrance geometry",
+            "raster readiness",
+            "production/public factual output"
+          ]
+        },
         "evidenceLanes": [
           {
             "id": "west-anchor-business-place-metadata",

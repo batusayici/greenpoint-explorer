@@ -55,14 +55,55 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 west-anchor spatial grounding for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 west-anchor spatial grounding review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, the Foursquare Brouwerij adapter contract as complete, the Foursquare credential/source blocker report as complete, and the source-independent west-anchor QA/evidence overlay pass as structurally complete but visually not yet feedback-ready. Batu review found the current corridor does not yet resemble the real Manhattan Ave / Greenpoint Ave location closely enough for meaningful feedback. The next authorized batch is the Phase 3 west-anchor spatial grounding pass: make the base scene recognizable using available geometry context, plausible intersection/corner logic, building massing, storefront placement, and visible reference-photo/DTR-11 facade cues before further evidence-lane refinement. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material or approved manual evidence exists and a later brief authorizes the one-target packet. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops beyond the authorized spatial grounding pass, storefront outline rebuilds outside the west-anchor grounding scope, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, the Foursquare Brouwerij adapter contract as complete, the Foursquare credential/source blocker report as complete, the source-independent west-anchor QA/evidence overlay pass as structurally complete, and the west-anchor spatial grounding pass as complete pending Batu review. The completed grounding pass adds a review-only overlay with approximate Manhattan Ave / Greenpoint Ave street relationship, corner orientation, contextual building massing, active storefront cue placement, DTR-11 facade cues, and symbolic/blocked subway context. No further implementation task is authorized until Batu accepts, redirects, or replaces the next-task pointer. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material or approved manual evidence exists and a later brief authorizes the one-target packet. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops beyond the completed spatial grounding pass, storefront outline rebuilds outside the west-anchor grounding scope, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 West Anchor Spatial Grounding
+
+Status:
+- Complete pending Batu visual review.
+
+Scope:
+- Make the Manhattan Ave / Greenpoint Ave west anchor visually reviewable using repo-local reviewed MVP metadata, NYC/Open geometry context, DTR-11/reference-photo-derived facade cues, and the existing placeholder/scaffold renderer only.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc/source review: `docs/MVP_SCOPE.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json`, `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`, `src/data/real-data/manhattan-greenpoint-ave.active-targets.phase-2aa.json`, and `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json`.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- `npm run build`.
+- Browser smoke after temporary local network permission: default load, west-anchor visual recognition, selected-card click, and QA overlay visible.
+- Mobile containment could not be viewport-smoked because the in-app browser surface did not expose viewport resizing and the repo does not include local Playwright.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Added a west-anchor `spatialGrounding` packet with manual-draft Manhattan Ave and Greenpoint Ave axes, crosswalk context, four approximate corner pads/masses, active storefront cue blocks for Grillpoint Deli, McDonald's, Dunkin', and Citizens Bank, and a symbolic Greenpoint Av G station-area cue.
+- Added renderer support for the spatial grounding packet as a review-only scaffold overlay on default load, with QA/status labels preserved in review mode.
+- Added a compact Spatial Grounding section to the selected west-anchor card.
+- Preserved evidence lanes/card sections as supporting UI.
+- Kept Brouwerij Lane, Franklin, and mid-corridor visibly candidate/blocked; no live retrieval, source-vendor integration, package/tooling change, production raster replacement, or broad corridor implementation occurred.
+
+Unresolved decisions:
+- Batu owns whether the spatial grounding is recognizable enough to support meaningful visual/product feedback.
+- Batu owns whether the next brief refines this overlay, supplies/approves a corridor-specific raster/reference surface, adds a facade/frontage/entrance evidence path, deepens one non-west target after approved source material exists, or pauses Phase 3.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review / approval pending; no further implementation task is authorized until Batu accepts, redirects, or replaces the next-task pointer.
 
 ### 2026-06-04 - Phase 3 West Anchor QA/Evidence Overlay
 

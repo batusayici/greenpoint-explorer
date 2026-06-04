@@ -26,16 +26,16 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Phase 3 west-anchor spatial grounding for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice.
-- Current next task: Phase 3 west-anchor spatial grounding pass for Manhattan Ave / Greenpoint Ave.
+- Current phase: Phase 3 west-anchor spatial grounding review for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice.
+- Current next task: Batu review of the completed west-anchor spatial grounding pass; no further implementation task is authorized until Batu accepts, redirects, or replaces the next-task pointer.
 - The Phase 3 POI/business source ADR is complete and lives at `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`.
 - Brouwerij Lane and any other non-west target still cannot be deepened until an approved deterministic source packet/access path or approved manual evidence packet exists and a later brief authorizes the one-target evidence batch.
 - The locked MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. DTR-11 is the active review-only demo raster in the app, and the Vercel Preview is published behind protected shareable-link access.
 - Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes. Do not open DTR-12 unless later feedback makes that necessary and Batu explicitly approves it.
 - Phase 3 scaffold direction is approved only for the first scaffold direction in `docs/phase-3-architecture-scaling-decision-surface.md`: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
-- Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, Phase 3 POI/business source ADR complete, local-directory ADR amendment complete, Foursquare Brouwerij adapter contract complete, Foursquare credential/source blocker report complete, and west-anchor source-independent QA/evidence overlay pass structurally complete but not yet visually feedback-ready.
+- Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, Phase 3 POI/business source ADR complete, local-directory ADR amendment complete, Foursquare Brouwerij adapter contract complete, Foursquare credential/source blocker report complete, west-anchor source-independent QA/evidence overlay pass structurally complete, and west-anchor spatial grounding pass complete pending Batu visual review.
 - Brouwerij Lane remains a blocked future target, not the active critical path. Identity, address, category/business type, coordinates, freshness/status, and provenance cannot be deepened until Batu supplies or approves a deterministic source packet/access path.
-- The west anchor now structurally combines existing reviewed business/place metadata, NYC/Open geometry context, DTR-11/reference-photo-derived facade evidence status, separated evidence lanes, and interactive card/QA overlay behavior. Batu review found the current corridor is not yet visually feedback-ready because the base scene does not resemble the real Manhattan Ave / Greenpoint Ave location closely enough to support meaningful review. The overlay is blocked from meaningful Batu review until the base scene is recognizable as Manhattan Ave / Greenpoint Ave.
+- The west anchor now structurally combines existing reviewed business/place metadata, NYC/Open geometry context, DTR-11/reference-photo-derived facade evidence status, separated evidence lanes, interactive card/QA overlay behavior, and a review-only spatial grounding overlay with approximate Manhattan Ave / Greenpoint Ave axes, four corner masses, active storefront cues, crosswalks, and symbolic/blocked G station-area context. Batu review is pending to decide whether it is visually feedback-ready.
 - Selected source strategy: the strategic local-directory/community-validation lane includes LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists if Batu approves access, terms, caching, attribution, and fixture storage; Foursquare remains the practical near-term POI implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM is the open cross-check lane; NYC Open Data is the geometry/context lane; manual evidence packets are required for facade/frontage/entrance/raster readiness.
 
 ## Completed Work Pointers
@@ -57,7 +57,7 @@ Use these in order when documents conflict:
 2. Choose primary/fallback/cross-check source lanes for business identity, address, category, coordinates, freshness/status, geometry context, facade/frontage/entrance evidence. Complete.
 3. Define normalized deterministic evidence record shape. Complete as review-only ADR shape, not a public/runtime interface.
 4. Source-independent west-anchor QA/evidence overlay pass. Structurally complete; visually not yet feedback-ready.
-5. West-anchor spatial grounding pass: make the base scene recognizable as Manhattan Ave / Greenpoint Ave using available geometry context, plausible intersection/corner logic, building massing, storefront placement, and visible reference-photo/DTR-11 facade cues.
+5. West-anchor spatial grounding pass. Complete pending Batu review.
 6. Pending Batu review/approval of the spatially grounded west-anchor visible proof.
 7. Add approved facade/frontage/entrance evidence path where Batu supplies or approves evidence.
 8. Join retrieved or manually approved POI data to NYC/open geometry context where supported.
@@ -68,11 +68,11 @@ Use these in order when documents conflict:
 
 ## Next Batch Requirements
 
-The next batch is the Phase 3 west-anchor spatial grounding pass. It should keep moving visible MVP proof work without treating Foursquare as a critical-path dependency.
+The next step is Batu review of the completed Phase 3 west-anchor spatial grounding pass. No further implementation batch is authorized until Batu accepts, redirects, or replaces the next-task pointer.
 
-It should:
+If Batu authorizes a follow-up implementation batch, it should:
 
-- Prioritize west-anchor spatial recognizability over additional metadata/evidence-lane work. A reviewer should be able to tell what real intersection this represents before being asked to evaluate cards, QA overlays, facade evidence, or claim status.
+- Prioritize west-anchor spatial recognizability over additional metadata/evidence-lane work unless Batu has accepted the current recognizability bar.
 - Preserve the west-anchor evidence lanes and claim limits now visible in the demo, but treat them as supporting UI until the base scene is recognizable.
 - Prefer a bounded visible improvement: Manhattan Ave / Greenpoint Ave street relationship, approximate building massing from available geometry context, plausible corner/storefront placement, and visible reference-photo/DTR-11 facade cues in the scene itself.
 - Keep all spatial, facade, frontage, entrance, geometry, and raster-readiness claims conservative and visibly status-labeled.
@@ -91,7 +91,7 @@ It must not:
 ## Active Blockers
 
 - Source/API strategy is no longer the main blocker; source access/material is. Brouwerij Lane cannot become a real corridor target until Batu supplies or approves deterministic source access/material and a later brief authorizes the one-target evidence packet. The Foursquare path is optional future enrichment and remains blocked by missing credential and repo-recorded terms/cache/display approval.
-- The west-anchor evidence overlay is structurally useful but visually not yet feedback-ready; meaningful Batu review is blocked until the base scene reads as the real Manhattan Ave / Greenpoint Ave location.
+- Batu has not yet accepted the completed west-anchor spatial grounding pass as visually feedback-ready. If it fails review, the next brief must specify whether to refine the scaffold overlay, supply/approve a corridor-specific raster/reference surface, or pause Phase 3.
 - POI/business sources may support identity, address, category, coordinates, and possibly freshness/status, but they do not by themselves support facade, storefront/frontage/order, entrance, exact geometry, or raster readiness.
 - NYC/Open geometry sources may support building/parcel/geometry context, but they do not by themselves prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, or exact address placement.
 - Facade/frontage/entrance evidence requires Batu-supplied or Batu-approved reference/source material; POI data cannot infer it.
@@ -100,7 +100,7 @@ It must not:
 
 ## Pending Decisions
 
-- Batu review/acceptance of the west-anchor spatial grounding pass once the base scene is recognizable enough to support meaningful feedback.
+- Batu review/acceptance of the completed west-anchor spatial grounding pass.
 - Batu choice/approval of any follow-up evidence-lane, facade, or non-west target progression after spatial recognizability is established.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.
 - Whether a later brief authorizes a one-target Brouwerij source packet/retrieval batch after access/material is available.

@@ -543,6 +543,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       },
     });
     const draftEntityLabelLayer = new Container();
+    const groundingLabelLayer = new Container();
     const annotationLabel = new Text({
       text: "",
       style: {
@@ -585,6 +586,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftSignLabel,
       draftStatusLabel,
       qaLaneLabel,
+      groundingLabelLayer,
       draftEntityLabelLayer,
     );
     world.addChild(container);
@@ -599,6 +601,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
         draftSignLabel,
         draftStatusLabel,
         qaLaneLabel,
+        groundingLabelLayer,
         draftEntityLabelLayer,
       },
       target,
@@ -617,6 +620,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftSignLabel,
       draftStatusLabel,
       qaLaneLabel,
+      groundingLabelLayer,
       draftEntityLabelLayer,
     });
   }
@@ -635,6 +639,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     draftSignLabel,
     draftStatusLabel,
     qaLaneLabel,
+    groundingLabelLayer,
     draftEntityLabelLayer,
   } = targetGraphic;
   const markerX = target.marker?.x ?? x + width * 0.5;
@@ -655,6 +660,8 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .roundRect(hitArea.x, hitArea.y, hitArea.width, hitArea.height, 10)
       .fill({ color: 0xffffff, alpha: 0.001 });
   }
+
+  syncSpatialGroundingLayer(shape, groundingLabelLayer, target.spatialGrounding, reviewMode, qaLayers);
 
   if (isActive || isSelected) {
     drawDottedLeader(shape, { x: markerX, y: markerY + markerRadius * 1.4 }, tetherEnd, {
@@ -847,6 +854,282 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     showDetailedQaLabels,
     qaLayers,
   );
+}
+
+function syncSpatialGroundingLayer(graphics, labelLayer, grounding, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {
+  const removed = labelLayer.removeChildren();
+  for (const child of removed) child.destroy();
+  labelLayer.visible = Boolean(grounding);
+  if (!grounding) return;
+
+  for (const street of grounding.streets ?? []) drawGroundingStreet(graphics, street);
+  for (const pad of grounding.cornerPads ?? []) drawGroundingPolygon(graphics, pad.polygon, {
+    fillColor: parseSceneColor(pad.fillColor, 0xd6c59e),
+    fillAlpha: pad.fillAlpha ?? 0.36,
+    strokeColor: parseSceneColor(pad.strokeColor, 0x3c3328),
+    strokeAlpha: pad.strokeAlpha ?? 0.3,
+    strokeWidth: pad.strokeWidth ?? 1.4,
+  });
+  for (const crosswalk of grounding.crosswalks ?? []) drawGroundingCrosswalk(graphics, crosswalk);
+  for (const corner of grounding.corners ?? []) drawGroundingCorner(graphics, corner);
+  for (const cue of grounding.transitCues ?? []) drawGroundingTransitCue(graphics, cue);
+
+  for (const street of grounding.streets ?? []) {
+    addGroundingText(labelLayer, street.label, street.labelPoint, {
+      fill: "#fff1d3",
+      background: 0x202424,
+      strokeColor: getDraftStatusColor(street.status),
+      fontSize: street.fontSize ?? 15,
+      rotation: street.labelRotation ?? 0,
+      alpha: 0.86,
+    });
+  }
+
+  for (const corner of grounding.corners ?? []) {
+    for (const storefront of corner.storefronts ?? []) {
+      addGroundingText(labelLayer, storefront.shortLabel ?? storefront.label, storefront.labelPoint ?? centerOfBounds(storefront.signBounds ?? storefront.bounds), {
+        fill: storefront.labelFill ?? "#241f18",
+        background: parseSceneColor(storefront.signColor, 0xf5e5c3),
+        strokeColor: parseSceneColor(storefront.accentColor, getDraftStatusColor(storefront.status)),
+        fontSize: storefront.fontSize ?? 11,
+        align: "center",
+        alpha: 0.94,
+      });
+    }
+  }
+
+  for (const cue of grounding.transitCues ?? []) {
+    addGroundingText(labelLayer, cue.shortLabel ?? cue.label, cue.labelPoint ?? centerOfBounds(cue.bounds), {
+      fill: "#f8ecd4",
+      background: 0x25465a,
+      strokeColor: getDraftStatusColor(cue.status),
+      fontSize: 11,
+      align: "center",
+      alpha: 0.92,
+    });
+  }
+
+  const showStatus = reviewMode || qaLayers.labels !== false;
+  if (showStatus) {
+    for (const callout of grounding.statusCallouts ?? []) {
+      addGroundingText(labelLayer, callout.text, callout.point, {
+        fill: "#27221c",
+        background: 0xfff2d1,
+        strokeColor: getDraftStatusColor(callout.status),
+        fontSize: 10,
+        maxWidth: callout.maxWidth ?? 190,
+        alpha: reviewMode ? 0.9 : 0.72,
+      });
+    }
+  }
+}
+
+function drawGroundingStreet(graphics, street) {
+  drawGroundingPolygon(graphics, street.polygon, {
+    fillColor: parseSceneColor(street.fillColor, 0x3d4140),
+    fillAlpha: street.fillAlpha ?? 0.72,
+    strokeColor: parseSceneColor(street.strokeColor, 0x191716),
+    strokeAlpha: street.strokeAlpha ?? 0.52,
+    strokeWidth: street.strokeWidth ?? 2.2,
+  });
+
+  for (const line of street.centerLines ?? []) {
+    drawGroundingLine(graphics, line.from, line.to, {
+      color: parseSceneColor(line.color, 0xf0bc45),
+      alpha: line.alpha ?? 0.58,
+      width: line.width ?? 2,
+    });
+  }
+}
+
+function drawGroundingCorner(graphics, corner) {
+  const mass = corner.buildingMass;
+  if (mass?.polygon) {
+    drawGroundingPolygon(graphics, mass.polygon, {
+      fillColor: parseSceneColor(mass.fillColor, 0xba986a),
+      fillAlpha: mass.fillAlpha ?? 0.74,
+      strokeColor: parseSceneColor(mass.strokeColor, 0x241f18),
+      strokeAlpha: mass.strokeAlpha ?? 0.72,
+      strokeWidth: mass.strokeWidth ?? 2,
+    });
+    for (const line of mass.roofLines ?? []) {
+      drawGroundingLine(graphics, line.from, line.to, {
+        color: parseSceneColor(line.color, 0xf4df9b),
+        alpha: line.alpha ?? 0.18,
+        width: line.width ?? 1.4,
+      });
+    }
+  }
+
+  for (const storefront of corner.storefronts ?? []) drawGroundingStorefront(graphics, storefront);
+}
+
+function drawGroundingStorefront(graphics, storefront) {
+  drawGroundingRect(graphics, storefront.bounds, {
+    fillColor: parseSceneColor(storefront.facadeColor, 0xd6b577),
+    fillAlpha: storefront.fillAlpha ?? 0.86,
+    strokeColor: parseSceneColor(storefront.accentColor, getDraftStatusColor(storefront.status)),
+    strokeAlpha: 0.84,
+    strokeWidth: 1.8,
+    radius: 5,
+  });
+  drawGroundingRect(graphics, storefront.signBounds, {
+    fillColor: parseSceneColor(storefront.signColor, 0xf5e5c3),
+    fillAlpha: 0.94,
+    strokeColor: parseSceneColor(storefront.accentColor, getDraftStatusColor(storefront.status)),
+    strokeAlpha: 0.88,
+    strokeWidth: 1.5,
+    radius: 4,
+  });
+  for (const windowBounds of storefront.windowBounds ?? []) {
+    drawGroundingRect(graphics, windowBounds, {
+      fillColor: parseSceneColor(storefront.windowColor, 0x222829),
+      fillAlpha: 0.78,
+      strokeColor: parseSceneColor(storefront.accentColor, 0xf4df9b),
+      strokeAlpha: 0.46,
+      strokeWidth: 1,
+      radius: 3,
+    });
+  }
+  drawGroundingRect(graphics, storefront.entranceBounds, {
+    fillColor: parseSceneColor(storefront.entryColor, 0x171514),
+    fillAlpha: 0.88,
+    strokeColor: parseSceneColor(storefront.accentColor, 0xf4df9b),
+    strokeAlpha: 0.74,
+    strokeWidth: 1.3,
+    radius: 3,
+  });
+  for (const cue of storefront.cueRects ?? []) {
+    drawGroundingRect(graphics, cue.bounds, {
+      fillColor: parseSceneColor(cue.fillColor, parseSceneColor(storefront.accentColor, 0xf0bc45)),
+      fillAlpha: cue.fillAlpha ?? 0.68,
+      strokeColor: parseSceneColor(cue.strokeColor, 0x241f18),
+      strokeAlpha: cue.strokeAlpha ?? 0.5,
+      strokeWidth: cue.strokeWidth ?? 1,
+      radius: cue.radius ?? 3,
+    });
+  }
+}
+
+function drawGroundingTransitCue(graphics, cue) {
+  drawGroundingRect(graphics, cue.bounds, {
+    fillColor: parseSceneColor(cue.fillColor, 0x25465a),
+    fillAlpha: cue.fillAlpha ?? 0.8,
+    strokeColor: getDraftStatusColor(cue.status),
+    strokeAlpha: 0.84,
+    strokeWidth: 2,
+    radius: 8,
+  });
+  if (cue.symbolPoint) {
+    graphics
+      .circle(cue.symbolPoint.x, cue.symbolPoint.y, cue.symbolRadius ?? 13)
+      .fill({ color: 0xf8ecd4, alpha: 0.86 })
+      .stroke({ color: 0x1b2830, width: 2, alpha: 0.82 });
+  }
+  for (const line of cue.railLines ?? []) {
+    drawGroundingLine(graphics, line.from, line.to, {
+      color: parseSceneColor(line.color, 0x1b2830),
+      alpha: line.alpha ?? 0.7,
+      width: line.width ?? 2,
+    });
+  }
+}
+
+function drawGroundingCrosswalk(graphics, crosswalk) {
+  for (const stripe of crosswalk.stripes ?? []) {
+    drawGroundingLine(graphics, stripe.from, stripe.to, {
+      color: parseSceneColor(crosswalk.color, 0xf5e5c3),
+      alpha: stripe.alpha ?? crosswalk.alpha ?? 0.58,
+      width: stripe.width ?? crosswalk.width ?? 5,
+    });
+  }
+}
+
+function drawGroundingRect(graphics, bounds, options) {
+  if (!bounds) return;
+  graphics
+    .roundRect(bounds.x, bounds.y, bounds.width, bounds.height, options.radius ?? 4)
+    .fill({ color: options.fillColor, alpha: options.fillAlpha ?? 0.8 })
+    .stroke({
+      color: options.strokeColor,
+      width: options.strokeWidth ?? 1.5,
+      alpha: options.strokeAlpha ?? 0.7,
+    });
+}
+
+function drawGroundingPolygon(graphics, polygon, options) {
+  if (!Array.isArray(polygon) || polygon.length < 3) return;
+  graphics.moveTo(polygon[0].x, polygon[0].y);
+  for (const point of polygon.slice(1)) graphics.lineTo(point.x, point.y);
+  graphics.lineTo(polygon[0].x, polygon[0].y);
+  graphics
+    .fill({ color: options.fillColor, alpha: options.fillAlpha ?? 0.6 })
+    .stroke({
+      color: options.strokeColor,
+      width: options.strokeWidth ?? 1.5,
+      alpha: options.strokeAlpha ?? 0.5,
+    });
+}
+
+function drawGroundingLine(graphics, from, to, options) {
+  if (!from || !to) return;
+  graphics
+    .moveTo(from.x, from.y)
+    .lineTo(to.x, to.y)
+    .stroke({
+      color: options.color,
+      width: options.width ?? 1.5,
+      alpha: options.alpha ?? 0.7,
+      cap: "round",
+    });
+}
+
+function addGroundingText(layer, text, point, options) {
+  if (!text || !point) return;
+  const label = new Text({
+    text,
+    style: {
+      align: options.align ?? "left",
+      fill: options.fill,
+      fontFamily: "Inter, Arial, sans-serif",
+      fontSize: options.fontSize ?? 11,
+      fontWeight: "950",
+      lineHeight: Math.round((options.fontSize ?? 11) * 1.18),
+      wordWrap: Boolean(options.maxWidth),
+      wordWrapWidth: options.maxWidth ?? 180,
+    },
+  });
+  label.resolution = 2;
+  label.x = point.x;
+  label.y = point.y;
+  label.rotation = options.rotation ?? 0;
+  if (options.align === "center") label.anchor.set(0.5);
+
+  const width = options.maxWidth ? Math.min(label.width, options.maxWidth) : label.width;
+  const backgroundX = options.align === "center" ? label.x - width / 2 - 6 : label.x - 6;
+  const backgroundY = options.align === "center" ? label.y - label.height / 2 - 4 : label.y - 4;
+  const background = new Graphics()
+    .roundRect(backgroundX, backgroundY, width + 12, label.height + 8, 4)
+    .fill({ color: options.background, alpha: options.alpha ?? 0.86 })
+    .stroke({ color: options.strokeColor, width: 1.2, alpha: 0.68 });
+  background.rotation = options.rotation ?? 0;
+  layer.addChild(background, label);
+}
+
+function centerOfBounds(bounds) {
+  if (!bounds) return null;
+  return {
+    x: bounds.x + bounds.width / 2,
+    y: bounds.y + bounds.height / 2,
+  };
+}
+
+function parseSceneColor(value, fallback) {
+  if (typeof value === "number") return value;
+  if (typeof value === "string" && /^#[0-9a-f]{6}$/i.test(value)) {
+    return Number.parseInt(value.slice(1), 16);
+  }
+  return fallback;
 }
 
 function drawGeometryContextCue(graphics, target) {
