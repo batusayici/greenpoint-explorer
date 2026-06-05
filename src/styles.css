@@ -162,6 +162,76 @@ h1 {
   font-weight: 880;
 }
 
+.geometry-legend {
+  position: absolute;
+  top: 78px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: min(430px, calc(100% - 32px));
+  gap: 5px;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid rgba(248, 236, 212, 0.2);
+  border-radius: 8px;
+  color: rgba(248, 236, 212, 0.74);
+  background: rgba(22, 25, 24, 0.58);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(7px);
+  pointer-events: none;
+}
+
+.geometry-legend p {
+  margin: 0 4px 0 0;
+  padding-right: 8px;
+  border-right: 1px solid rgba(248, 236, 212, 0.18);
+  color: rgba(248, 236, 212, 0.56);
+  font-size: 0.54rem;
+  font-weight: 880;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.geometry-legend span {
+  position: relative;
+  padding: 4px 7px 4px 18px;
+  border: 1px solid rgba(248, 236, 212, 0.14);
+  border-radius: 5px;
+  color: rgba(248, 236, 212, 0.76);
+  background: rgba(248, 236, 212, 0.06);
+  font-size: 0.54rem;
+  font-weight: 860;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.geometry-legend span::before {
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f5e5c3;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.geometry-legend span[data-status="sourced"]::before {
+  background: #6fb08f;
+}
+
+.geometry-legend span[data-status="manual_draft"]::before {
+  background: #f0bc45;
+}
+
+.geometry-legend span[data-status="blocked"]::before {
+  background: #d66a4e;
+}
+
 .target-rail {
   position: absolute;
   left: 16px;
@@ -681,6 +751,7 @@ h1 {
 .candidate-targets,
 .local-source-references,
 .evidence-lanes,
+.geometry-review-summary,
 .spatial-grounding,
 .geometry-context,
 .facade-evidence {
@@ -713,6 +784,18 @@ h1 {
   border-left: 4px solid #e28e54;
 }
 
+.geometry-review-summary {
+  border-left: 4px solid #f0bc45;
+}
+
+.geometry-review-summary:has(li[data-status="sourced"]) {
+  border-left-color: #377270;
+}
+
+.geometry-review-summary:has(li[data-status="blocked"]) {
+  border-left-color: #a7543d;
+}
+
 .geometry-context {
   border-left: 4px solid #377270;
 }
@@ -725,6 +808,7 @@ h1 {
 .candidate-targets h3,
 .local-source-references h3,
 .evidence-lanes h3,
+.geometry-review-summary h3,
 .spatial-grounding h3,
 .geometry-context h3,
 .facade-evidence h3 {
@@ -800,6 +884,7 @@ h1 {
 .candidate-targets ul,
 .local-source-references ul,
 .evidence-lanes ul,
+.geometry-review-summary ul,
 .spatial-grounding ul,
 .geometry-context ul,
 .facade-evidence ul {
@@ -813,6 +898,7 @@ h1 {
 .candidate-targets li,
 .local-source-references li,
 .evidence-lanes li,
+.geometry-review-summary li,
 .spatial-grounding li,
 .geometry-context li,
 .facade-evidence li {
@@ -826,6 +912,7 @@ h1 {
 .candidate-targets li:last-child,
 .local-source-references li:last-child,
 .evidence-lanes li:last-child,
+.geometry-review-summary li:last-child,
 .spatial-grounding li:last-child,
 .geometry-context li:last-child,
 .facade-evidence li:last-child {
@@ -836,6 +923,7 @@ h1 {
 .candidate-targets strong,
 .local-source-references strong,
 .evidence-lanes strong,
+.geometry-review-summary strong,
 .spatial-grounding strong,
 .geometry-context strong,
 .facade-evidence strong {
@@ -851,6 +939,7 @@ h1 {
 .candidate-targets small,
 .local-source-references small,
 .evidence-lanes small,
+.geometry-review-summary small,
 .spatial-grounding small,
 .geometry-context small,
 .facade-evidence small {
@@ -865,6 +954,7 @@ h1 {
 .candidate-targets span,
 .local-source-references span,
 .evidence-lanes span,
+.geometry-review-summary span,
 .spatial-grounding span,
 .geometry-context span,
 .facade-evidence span,
@@ -875,6 +965,7 @@ h1 {
 }
 
 .evidence-lanes li[data-status="sourced"],
+.geometry-review-summary li[data-status="sourced"],
 .spatial-grounding li[data-status="sourced"],
 .geometry-context li[data-status="sourced"],
 .facade-evidence li[data-status="sourced"] {
@@ -883,6 +974,8 @@ h1 {
 }
 
 .evidence-lanes li[data-status="candidate"],
+.geometry-review-summary li[data-status="candidate"],
+.geometry-review-summary li[data-status="manual_draft"],
 .spatial-grounding li[data-status="candidate"],
 .spatial-grounding li[data-status="manual_draft"],
 .spatial-grounding li[data-status="symbolic"],
@@ -893,6 +986,7 @@ h1 {
 }
 
 .evidence-lanes li[data-status="blocked"],
+.geometry-review-summary li[data-status="blocked"],
 .spatial-grounding li[data-status="blocked"],
 .geometry-context li[data-status="blocked"],
 .facade-evidence li[data-status="blocked"] {
@@ -910,6 +1004,7 @@ h1 {
 }
 
 .geometry-context p,
+.geometry-review-summary p,
 .spatial-grounding p,
 .facade-evidence p {
   margin: 0;
@@ -1561,6 +1656,29 @@ h1 {
 
   .scene-frame-note strong {
     font-size: 0.55rem;
+  }
+
+  .geometry-legend {
+    top: 98px;
+    right: 10px;
+    max-width: min(260px, calc(100% - 20px));
+    justify-content: flex-end;
+    padding: 5px;
+  }
+
+  .geometry-legend p {
+    display: none;
+  }
+
+  .geometry-legend span {
+    padding: 4px 6px 4px 16px;
+    font-size: 0.48rem;
+  }
+
+  .geometry-legend span::before {
+    left: 6px;
+    width: 6px;
+    height: 6px;
   }
 
   .view-controls {

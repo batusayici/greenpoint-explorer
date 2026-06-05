@@ -73,8 +73,14 @@ export default function App() {
             <strong>{mvpScene.sceneFrame.locationLabel}</strong>
             <span>{mvpScene.sceneFrame.intent}</span>
           </div>
-          <div className="target-rail" aria-label="MVP place index">
-            <p className="rail-label">Places</p>
+          <div className="geometry-legend" aria-label="Geometry status legend">
+            <p>Geometry</p>
+            <span data-status="sourced">sourced</span>
+            <span data-status="manual_draft">manual draft</span>
+            <span data-status="blocked">blocked</span>
+          </div>
+          <div className="target-rail" aria-label="Corridor segment index">
+            <p className="rail-label">Segments</p>
             {mvpScene.targets.map((target) => {
               const isActive = hoveredTargetId === target.id || selectedTargetId === target.id;
               return (
@@ -190,6 +196,18 @@ export default function App() {
               {selectedTarget.sourceSummary ? (
                 <p className="source-summary">{selectedTarget.sourceSummary}</p>
               ) : null}
+              {selectedTarget.geometryReview ? (
+                <section className="geometry-review-summary" aria-label="Geometry review status">
+                  <h3>Geometry Review</h3>
+                  <p>{selectedTarget.geometryReview.usageLimit}</p>
+                  <ul>
+                    <li data-status={selectedTarget.geometryReview.status}>
+                      <strong>{selectedTarget.geometryReview.label}</strong>
+                      <small>{formatStatusLabel(selectedTarget.geometryReview.status)}</small>
+                    </li>
+                  </ul>
+                </section>
+              ) : null}
               {isReviewMode && selectedTarget.spatialGrounding ? (
                 <section className="spatial-grounding" aria-label="Spatial grounding status">
                   <h3>Spatial Grounding</h3>
@@ -229,7 +247,7 @@ export default function App() {
                   </dl>
                 </section>
               ) : null}
-              {selectedTarget.evidenceLanes?.length ? (
+              {isReviewMode && selectedTarget.evidenceLanes?.length ? (
                 <section className="evidence-lanes" aria-label="Evidence lane status">
                   <h3>Evidence Lanes</h3>
                   <ul>
@@ -244,7 +262,7 @@ export default function App() {
                   </ul>
                 </section>
               ) : null}
-              {selectedTarget.geometryContext ? (
+              {isReviewMode && selectedTarget.geometryContext ? (
                 <section className="geometry-context" aria-label="Geometry context evidence">
                   <h3>Geometry Context</h3>
                   <p>{selectedTarget.geometryContext.usageLimit}</p>
@@ -259,7 +277,7 @@ export default function App() {
                   </ul>
                 </section>
               ) : null}
-              {selectedTarget.facadeEvidence ? (
+              {isReviewMode && selectedTarget.facadeEvidence ? (
                 <section className="facade-evidence" aria-label="Facade reference evidence">
                   <h3>Facade Evidence</h3>
                   <p>{selectedTarget.facadeEvidence.usageLimit}</p>
@@ -275,7 +293,7 @@ export default function App() {
                   </ul>
                 </section>
               ) : null}
-              {selectedTarget.candidateTargets?.length ? (
+              {isReviewMode && selectedTarget.candidateTargets?.length ? (
                 <section className="candidate-targets" aria-label="Candidate target records">
                   <h3>Candidate Records</h3>
                   <ul>
@@ -289,7 +307,7 @@ export default function App() {
                   </ul>
                 </section>
               ) : null}
-              {selectedTarget.realPlaces?.length ? (
+              {isReviewMode && selectedTarget.realPlaces?.length ? (
                 <section className="corridor-realness" aria-label="Existing real place context">
                   <h3>Existing MVP Context</h3>
                   <ul>
@@ -303,7 +321,7 @@ export default function App() {
                   </ul>
                 </section>
               ) : null}
-              {selectedTarget.sourceReferences?.length ? (
+              {isReviewMode && selectedTarget.sourceReferences?.length ? (
                 <section className="local-source-references" aria-label="Local source references">
                   <h3>Local Evidence Pointers</h3>
                   <ul>
@@ -335,8 +353,9 @@ function getCompactDisclaimer(target) {
 
 function getCardLabel(target) {
   if (target.id === "greenpoint-g-subway") return "Transit context";
+  if (target.cardBadge === "manual draft") return "Geometry segment";
   if (target.cardBadge === "candidate") return "Source candidate";
-  if (target.cardBadge === "blocked") return "Real-data intake";
+  if (target.cardBadge === "blocked") return "Blocked geometry";
   return "Selected place";
 }
 

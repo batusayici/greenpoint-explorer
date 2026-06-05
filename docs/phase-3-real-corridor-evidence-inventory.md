@@ -1,7 +1,7 @@
 # Phase 3 Real Corridor Evidence Inventory
 
 Status: Review-only intake inventory  
-Date: 2026-06-04  
+Date: 2026-06-05
 Scope: Greenpoint Ave from Manhattan Ave to Franklin Ave
 
 ## Purpose
@@ -41,9 +41,16 @@ The repo contains NYC/Open building-footprint context scoped to the Manhattan Av
 Current slice coverage:
 
 - Manhattan Ave / Greenpoint Ave west-anchor context: repo-local NYC/Open footprint records exist for contextual review.
-- Greenpoint Ave mid-corridor between Manhattan Ave and Franklin Ave: no repo-local NYC/Open footprint/parcel/street-side geometry records found in this batch.
-- Franklin Ave / Greenpoint Ave endpoint context: no repo-local NYC/Open footprint/parcel/street-side geometry records found in this batch.
+- Greenpoint Ave mid-corridor between Manhattan Ave and Franklin Ave: no repo-local NYC/Open footprint/parcel/street-side geometry records found in the geometry intake batch.
+- Franklin Ave / Greenpoint Ave endpoint context: no repo-local NYC/Open footprint/parcel/street-side geometry records found in the geometry intake batch.
 - Brouwerij Lane geometry relationship: not covered by deterministic repo-local NYC/Open geometry; remains blocked/source-retrieval candidate only.
+
+Current visual review surface after the Phase 3 geometry-first corridor pass:
+
+- West anchor: sourced/contextual geometry state, grounded by the accepted DTR-11 west-anchor raster and existing repo-local NYC/Open footprint context.
+- Mid-corridor: manual-draft/contextual streetbed, sidewalk bands, and building-massing rhythm rendered only so Batu can review spatial recognizability before business/place overlays.
+- Franklin endpoint: blocked/contextual intersection marker only; no exact endpoint geometry is implied.
+- Brouwerij: blocked marker only; no identity/address/category/coordinate/source-response promotion occurred.
 
 What the geometry packet can support later:
 
@@ -51,7 +58,7 @@ What the geometry packet can support later:
 - Corridor evidence review that clearly separates sourced west-anchor geometry from missing mid-corridor/Franklin geometry.
 - A deterministic merge target for future full-corridor NYC/Open geometry once source data is supplied or retrieval is authorized.
 
-Claim limit: This supports contextual west-anchor building-footprint QA and corridor coverage-gap review only. It does not prove tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, business identity, active-business status, Franklin endpoint geometry, full corridor geometry, or raster readiness.
+Claim limit: This supports contextual west-anchor building-footprint QA, manual-draft corridor spatial review, and corridor coverage-gap review only. It does not prove tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, business identity, active-business status, Franklin endpoint geometry, full sourced corridor geometry, or raster readiness.
 
 ## Repo-Local Candidate / Blocked Items
 
@@ -59,13 +66,13 @@ Claim limit: This supports contextual west-anchor building-footprint QA and corr
 
 No approved repo-local business/address/category/facade/entrance/frontage/order record was found for a mid-corridor Phase 3 target between the west anchor and Franklin endpoint.
 
-Current fixture state: real-data intake / blocked until sourced.
+Current fixture state: geometry is manual_draft/contextual for visual review only; business/address/category/facade/entrance/frontage/order/raster readiness remain unknown or blocked until sourced.
 
 ### Franklin Ave Endpoint
 
 No approved repo-local Franklin endpoint business/address/category/facade/entrance/frontage/order/raster record was found for this batch.
 
-Current fixture state: real-data intake / blocked until sourced.
+Current fixture state: blocked/contextual intersection marker only; exact endpoint geometry, business/address/category/facade/entrance/frontage/order/raster readiness remain blocked until sourced.
 
 ### Brouwerij Lane
 

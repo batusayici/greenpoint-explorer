@@ -563,6 +563,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       },
     });
     const draftEntityLabelLayer = new Container();
+    const geometryReviewLabelLayer = new Container();
     const groundingLabelLayer = new Container();
     const annotationLabel = new Text({
       text: "",
@@ -608,6 +609,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftStatusLabel,
       intakeLabel,
       qaLaneLabel,
+      geometryReviewLabelLayer,
       groundingLabelLayer,
       draftEntityLabelLayer,
     );
@@ -624,6 +626,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
         draftStatusLabel,
         intakeLabel,
         qaLaneLabel,
+        geometryReviewLabelLayer,
         groundingLabelLayer,
         draftEntityLabelLayer,
       },
@@ -644,6 +647,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftStatusLabel,
       intakeLabel,
       qaLaneLabel,
+      geometryReviewLabelLayer,
       groundingLabelLayer,
       draftEntityLabelLayer,
     });
@@ -664,6 +668,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     draftStatusLabel,
     intakeLabel,
     qaLaneLabel,
+    geometryReviewLabelLayer,
     groundingLabelLayer,
     draftEntityLabelLayer,
   } = targetGraphic;
@@ -686,6 +691,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .fill({ color: 0xffffff, alpha: 0.001 });
   }
 
+  syncGeometryReviewLayer(shape, geometryReviewLabelLayer, target.geometryReview, reviewMode, qaLayers);
   syncIntakePanel(shape, intakeLabel, target);
   syncSpatialGroundingLayer(shape, groundingLabelLayer, target.spatialGrounding, reviewMode, qaLayers);
 
@@ -909,6 +915,130 @@ function syncIntakePanel(graphics, label, target) {
   label.style.wordWrapWidth = Math.max(120, (panel.textWidth ?? bounds.width - 48));
   label.x = panel.textPoint?.x ?? bounds.x + 24;
   label.y = panel.textPoint?.y ?? bounds.y + 24;
+}
+
+function syncGeometryReviewLayer(graphics, labelLayer, review, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {
+  const removed = labelLayer.removeChildren();
+  for (const child of removed) child.destroy();
+
+  const visible = Boolean(review && (review.showInNormalMode || reviewMode));
+  labelLayer.visible = visible;
+  if (!visible) return;
+
+  for (const item of review.polygons ?? []) {
+    drawGroundingPolygon(graphics, item.polygon, {
+      fillColor: parseSceneColor(item.fillColor, getDraftStatusColor(item.status)),
+      fillAlpha: item.fillAlpha ?? 0.18,
+      strokeColor: parseSceneColor(item.strokeColor, getDraftStatusColor(item.status)),
+      strokeAlpha: item.strokeAlpha ?? 0.62,
+      strokeWidth: item.strokeWidth ?? 2,
+    });
+  }
+
+  for (const block of review.massingBlocks ?? []) {
+    drawGroundingPolygon(graphics, block.polygon, {
+      fillColor: parseSceneColor(block.fillColor, getDraftStatusColor(block.status)),
+      fillAlpha: block.fillAlpha ?? 0.62,
+      strokeColor: parseSceneColor(block.strokeColor, 0x241f18),
+      strokeAlpha: block.strokeAlpha ?? 0.66,
+      strokeWidth: block.strokeWidth ?? 1.8,
+    });
+    for (const roofLine of block.roofLines ?? []) {
+      drawGroundingLine(graphics, roofLine.from, roofLine.to, {
+        color: parseSceneColor(roofLine.color, 0xf4df9b),
+        alpha: roofLine.alpha ?? 0.2,
+        width: roofLine.width ?? 1.3,
+      });
+    }
+  }
+
+  for (const line of review.lines ?? []) {
+    drawGroundingLine(graphics, line.from, line.to, {
+      color: parseSceneColor(line.color, getDraftStatusColor(line.status)),
+      alpha: line.alpha ?? 0.64,
+      width: line.width ?? 2,
+    });
+  }
+
+  for (const marker of review.markers ?? []) {
+    drawGeometryReviewMarker(graphics, marker);
+  }
+
+  const showLabels = reviewMode || review.showLabelsInNormalMode !== false || qaLayers.labels;
+  if (!showLabels) return;
+
+  for (const item of review.polygons ?? []) {
+    if (!item.labelPoint) continue;
+    addGroundingText(labelLayer, item.label, item.labelPoint, {
+      fill: "#f8ecd4",
+      background: 0x202424,
+      strokeColor: getDraftStatusColor(item.status),
+      fontSize: 10,
+      maxWidth: item.maxWidth ?? 180,
+      alpha: 0.84,
+    });
+  }
+
+  for (const block of review.massingBlocks ?? []) {
+    if (!block.labelPoint) continue;
+    addGroundingText(labelLayer, block.label, block.labelPoint, {
+      fill: "#27221c",
+      background: 0xfff2d1,
+      strokeColor: getDraftStatusColor(block.status),
+      fontSize: 9,
+      maxWidth: block.maxWidth ?? 160,
+      alpha: 0.78,
+    });
+  }
+
+  for (const marker of review.markers ?? []) {
+    addGroundingText(labelLayer, marker.label, marker.labelPoint ?? {
+      x: marker.point.x + (marker.labelOffset?.x ?? marker.radius ?? 24),
+      y: marker.point.y + (marker.labelOffset?.y ?? -(marker.radius ?? 24)),
+    }, {
+      fill: "#fff1d3",
+      background: 0x3b2621,
+      strokeColor: getDraftStatusColor(marker.status),
+      fontSize: 10,
+      maxWidth: marker.maxWidth ?? 170,
+      alpha: 0.9,
+    });
+  }
+
+  for (const callout of review.callouts ?? []) {
+    addGroundingText(labelLayer, callout.text, callout.point, {
+      fill: callout.status === "blocked" ? "#fff1d3" : "#27221c",
+      background: callout.status === "blocked" ? 0x3b2621 : 0xfff2d1,
+      strokeColor: getDraftStatusColor(callout.status),
+      fontSize: 10,
+      maxWidth: callout.maxWidth ?? 210,
+      alpha: 0.9,
+    });
+  }
+}
+
+function drawGeometryReviewMarker(graphics, marker) {
+  if (!marker.point) return;
+  const radius = marker.radius ?? 24;
+  const color = getDraftStatusColor(marker.status);
+  graphics
+    .circle(marker.point.x, marker.point.y, radius)
+    .fill({ color, alpha: marker.fillAlpha ?? 0.07 })
+    .stroke({ color, width: marker.strokeWidth ?? 3, alpha: marker.strokeAlpha ?? 0.82 });
+
+  if (marker.status === "blocked" || marker.status === "blocked_source_retrieval") {
+    graphics
+      .moveTo(marker.point.x - radius * 0.58, marker.point.y - radius * 0.58)
+      .lineTo(marker.point.x + radius * 0.58, marker.point.y + radius * 0.58)
+      .moveTo(marker.point.x + radius * 0.58, marker.point.y - radius * 0.58)
+      .lineTo(marker.point.x - radius * 0.58, marker.point.y + radius * 0.58)
+      .stroke({ color, width: 2.4, alpha: 0.78, cap: "round" });
+    return;
+  }
+
+  graphics
+    .circle(marker.point.x, marker.point.y, Math.max(4, radius * 0.22))
+    .fill({ color, alpha: 0.9 });
 }
 
 function syncSpatialGroundingLayer(graphics, labelLayer, grounding, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {

@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-04
+Last reconciled: 2026-06-05
 
 ## Purpose
 
@@ -55,14 +55,92 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 corridor geometry intake for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 geometry-first corridor review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 full-corridor NYC/Open geometry intake batch is complete pending Batu review. The deterministic geometry context packet carries forward existing west-anchor NYC/Open footprint records and explicitly marks mid-corridor, Franklin endpoint, and Brouwerij geometry coverage as missing/blocked. No further implementation batch is authorized until Batu approves the next missing-geometry, source, or facade intake step. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 geometry-first corridor review pass is complete pending Batu review. The app surface keeps the accepted DTR-11 west-anchor raster, shows sourced/contextual west-anchor geometry state, manual-draft/contextual mid-corridor street/massing continuation, and blocked/contextual Franklin/Brouwerij markers. Deterministic screenshot evidence exists at `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-geometry-first-corridor-default.png`. No further implementation batch is authorized until Batu approves the next refinement, missing-geometry, source, business, or facade step. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Phase 3 Geometry Screenshot Evidence
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Diagnose the browser screenshot timeout, preserve the current truth-state contract, and produce deterministic screenshot evidence for the geometry-first corridor review surface before any business verification work.
+
+Files changed:
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-geometry-first-corridor-default.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, and `docs/VISUAL_QA_CHECKLIST.md`.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- Browser smoke on local Vite preview at `http://127.0.0.1:5174/`: canvas mounted, DTR-11 context present, geometry legend present, segment rail present, mid-corridor and Franklin labels present, no horizontal overflow, and no visible fictional/placeholder storefront terms.
+- Screenshot diagnosis: raw in-app browser tab screenshot capture completed quickly, but returning/writing those bytes from the browser sandbox timed out or was blocked. Full OS screen capture was rejected because it could include unrelated private content. Headless Chrome/Playwright launch was unavailable or blocked by the sandbox.
+- Deterministic PNG artifact generated from the checked-in Phase 3 scene fixture and accepted DTR-11 raster, then visually inspected.
+- `npm run build`.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Added screenshot evidence showing the DTR-11 west-anchor context, manual-draft mid-corridor street/massing continuation, Franklin/Brouwerij blocked markers, and sourced/manual-draft/blocked geometry legend.
+- Preserved the truth-state separation: sourced/contextual west anchor, manual-draft/contextual mid-corridor geometry, blocked Franklin/Brouwerij/exact geometry/business/facade/frontage/entrance.
+- No fictional businesses, tenant fill, frontage inference, entrance inference, facade inference, business verification, live retrieval, Foursquare use, package/tooling change, production/public claim, or Brouwerij promotion occurred.
+
+Unresolved decisions:
+- Batu owns whether the corridor reads spatially as Greenpoint Ave from Manhattan toward Franklin.
+- Batu owns any refinement of manual-draft massing, supplied/approved missing geometry records, business/source evidence, facade/reference imagery, exact geometry/frontage/entrance decisions, corridor-specific raster direction, and future non-west target promotion.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the geometry-first corridor surface and screenshot evidence; no further implementation batch is authorized until Batu approves the next refinement, source, facade, or missing-geometry step.
+
+### 2026-06-05 - Phase 3 Geometry-First Corridor Review
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Make the Manhattan Ave to Franklin Ave corridor visually reviewable as architecture/street geometry first, without business verification or tenant overlays.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/PlaceholderWorld.jsx`
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, and `docs/phase-3-real-corridor-evidence-inventory.md`.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- `npm run build`.
+- Browser smoke on local Vite preview at `http://127.0.0.1:5174/`: default load, DTR-11 context present, geometry legend present, corridor segment rail present, canvas present after render, mid-corridor card geometry-first, Franklin card blocked-geometry first, QA controls open, no horizontal page overflow, and no visible fictional/placeholder storefront terms. Browser screenshot capture timed out and was not used as evidence.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Preserved the accepted DTR-11 Manhattan Ave / Greenpoint Ave raster as the sourced west-anchor baseline.
+- Added status-labeled geometry-review records and renderer support for sourced/contextual west anchor, manual-draft/contextual mid-corridor streetbed/sidewalk/massing rhythm, and blocked/contextual Franklin/Brouwerij markers.
+- Added a compact sourced/manual-draft/blocked geometry legend and changed the default rail/card hierarchy from place-first to segment/geometry-first.
+- Moved evidence/business details behind QA so they remain secondary to geometry review.
+- No fictional businesses, tenant fill, frontage inference, entrance inference, facade inference, live retrieval, Foursquare use, package/tooling change, production/public claim, or Brouwerij promotion occurred.
+
+Unresolved decisions:
+- Batu owns whether the corridor now reads as Greenpoint Ave from Manhattan toward Franklin.
+- Batu owns any refinement of manual-draft massing, supplied/approved missing geometry records, business/source evidence, facade/reference imagery, exact geometry/frontage/entrance decisions, corridor-specific raster direction, and future non-west target promotion.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the geometry-first corridor surface; no further implementation batch is authorized until Batu approves the next refinement, source, facade, or missing-geometry step.
 
 ### 2026-06-04 - Phase 3 Corridor NYC/Open Geometry Intake
 
