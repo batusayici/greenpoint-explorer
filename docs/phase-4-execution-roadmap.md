@@ -19,6 +19,8 @@ real spatial/business data
 
 The compiler and semantic manifest are the center. Blender is an asset foundry/offline renderer, not a layout source. Three.js / React Three Fiber remains the likely runtime direction after approval. GLB/glTF remains the likely runtime asset format after approval. Reference imagery, splats, and world-model outputs are QA/reference only.
 
+The first visual proof after the primitive compiler must validate the actual 3D architecture: a deterministic, navigable, interactive graybox/isometric corridor scene generated from source geometry and the semantic manifest. It must not be a static image, 2D map, raster composition, hand-arranged illustration, or manifest-only artifact.
+
 ## Batch Plan
 
 Agents must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`. This roadmap is the operating plan for that named batch, not permission to self-advance through later batches. At every stop/decision gate, agents must stop for review and may continue only after explicit Batu approval or an updated current brief names the next batch.
@@ -32,8 +34,8 @@ Agents must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIE
 | 4A-5: Decision gate | Phase 4A decision note and completed matrix. | Core lane, reference/acceleration lanes, rejected/deferred lanes, smallest Phase 4B proof, and required approvals are decided. | No Phase 4B implementation, runtime work, schema/compiler/source fixture creation, asset files, or public interfaces. | Markdown sanity; `git diff --check`; no build unless runtime files changed, which this batch should avoid. | Decision-doc commit. | Stop for Batu approval before Phase 4B implementation. |
 | 4B-1: Contract foundation | Lean planning contracts for source fixture, scene manifest, storefront anchors, stable IDs, manual overrides, style recipe, and asset registry. | Contracts are short, coherent, and implementation-ready without becoming doc sprawl. | No runtime code, compiler code, generated manifests, package/tooling, broad data model, or asset production. | Markdown sanity; schema parse only if schema files are explicitly approved and created. | Contract-doc commit. | Stop if public interfaces, module boundaries, or schema ownership need approval. |
 | 4B-2: Minimal source fixture + verifier | One corridor source fixture and verifier, only after approval. | Required metadata, IDs, geometry presence, source traceability, and blocked claims validate. | No compiler, runtime changes, asset files, broad ingestion, live APIs, scraping, or unapproved source storage. | JSON/schema parse, verifier, determinism/hash checks, `git diff --check`. | Fixture/verifier commit. | Stop if source rights, cache/storage, attribution, or fixture shape are unresolved. |
-| 4B-3: Primitive compiler | Minimal Python compiler, only after approval. | Source fixture compiles into semantic scene manifest with deterministic IDs, primitive massing, storefront anchor candidates, confidence levels, and explicit overrides. | No runtime preview, art asset library, production renderer, broad compiler architecture, or live data. | Compiler determinism check, generated manifest validation, source metadata checks, `git diff --check`. | Compiler/generated-output commit. | Stop if generated manifest becomes a public/runtime interface without approval. |
-| 4B-4: Runtime manifest preview | Inspectable primitive browser scene, only after approval. | Runtime loads manifest, renders primitive massing and semantic storefront anchors, and keeps QA/provenance visible. | No over-styling, large refactor, production renderer, asset library buildout, or business facts baked into images. | Frontend build, browser smoke, manifest validation, `git diff --check`. | Runtime-preview commit. | Stop if runtime boundary, renderer choice, or public interface expands. |
+| 4B-3: Primitive compiler | Minimal Python compiler, only after approval. | Source fixture compiles into semantic scene manifest with deterministic IDs, primitive massing, storefront anchor candidates, confidence levels, and explicit overrides. | No runtime preview, art asset library, production renderer, broad compiler architecture, live data, or visual-proof substitution. | Compiler determinism check, generated manifest validation, source metadata checks, `git diff --check`. | Compiler/generated-output commit. | Stop if generated manifest becomes a public/runtime interface without approval; 4B-3 alone is not a visual proof. |
+| 4B-4: Runtime manifest preview | Deterministic interactive 3D graybox/isometric browser corridor scene, only after approval. | Runtime loads manifest, renders source-derived primitive massing, supports pan/zoom/orbit camera, makes corridor orientation and next intersection recognizable for QA, exposes semantic object IDs, keeps hover/click hooks routed through semantic IDs, and keeps QA/provenance/blocked-claim states inspectable. | No static-only image, 2D map, raster composition, manually arranged scene, over-styling, polished hover/card visual language, production renderer, exact facade/frontage/storefront-order claims without evidence, asset library buildout, production assets, or business facts baked into images. | Frontend build, browser smoke, 3D camera interaction QA, semantic ID inspection, manifest validation, `git diff --check`. | Runtime-preview commit. | Stop if runtime boundary, renderer choice, public interface, visual styling, or source-claim promotion expands. |
 | 4B-5: Semantic interaction/art-direction foundation | Interactive proof with semantic hover/click/card behavior and initial deterministic style rules. | Hover/click/cards connect to semantic IDs; style recipe/asset rules apply without hiding source truth; business cards remain semantic data. | No production asset direction, large asset library, factual public release, broad coverage, live data, or hidden manual overrides. | Frontend build, browser smoke, interaction QA, manifest/source checks, `git diff --check`. | Interaction/style commit. | Stop for Batu visual/product review before any production-readiness claim. |
 
 ## Phase 4A Success Criteria
@@ -58,8 +60,23 @@ Phase 4B succeeds when:
 - Manual overrides are explicit and versioned.
 - Style recipe and asset registry contracts exist without becoming bloated.
 - Runtime can later consume the manifest.
+- The first visual proof after the primitive compiler is a deterministic interactive 3D corridor scene, not a static or manually composed substitute.
 - Hover, click, and business cards remain semantic runtime requirements, not decoration.
 - Business/place facts are not baked into raster/image assets.
+
+## First Visual Proof Guardrail
+
+After 4B-3, the first renderer/visual-proof batch must validate the actual 3D architecture at graybox fidelity:
+
+- Extruded building footprints or primitive massing from source geometry and the semantic manifest.
+- Simple materials only; no final art direction, production assets, GLB asset library, exact facades, exact storefront ordering/frontage claims, polished hover/card visual language, or business cards.
+- Pan, zoom, and orbit/rotate camera controls.
+- Corridor orientation and the next intersection recognizable enough for QA.
+- Semantic object IDs inspectable, with hover/click hooks resolving through those IDs.
+- Storefront-anchor placeholders visible only when evidence/status allows.
+- QA, provenance, and blocked-claim states inspectable.
+
+A future Phase 4B visual batch is not acceptable if it only produces a static image, 2D map, raster composition, manually arranged scene, or manifest with no navigable 3D proof.
 
 ## Non-Goals
 
@@ -101,8 +118,8 @@ Phase 4B succeeds when:
 
 ## Immediate Next Batch
 
-Current gate: `Batch 4A-5: Decision gate`, complete pending Batu review.
+Current gate: `Batch 4B-2: Minimal source fixture + verifier`, complete pending Batu review.
 
-Next proposed batch: `Batch 4B-1: Contract foundation`, pending Batu approval and updated current brief.
+Next proposed batch: `Batch 4B-3: Primitive compiler`, pending Batu approval and updated current brief.
 
-Expected future output if approved: lean planning contracts for source fixture, scene manifest, storefront anchors, stable IDs, manual overrides, style recipe, and asset registry; no runtime code, compiler code, generated manifests, package/tooling, broad data model, or asset production.
+Expected future output if approved: one minimal compiler that consumes the approved 4B-2 source fixture and produces one deterministic semantic scene manifest with primitive massing inputs, explicit status-labeled storefront-anchor candidates only where allowed, confidence levels, and manual overrides; no runtime preview, art asset library, production renderer, broad compiler architecture, live data, visual-proof substitution, or unapproved public/runtime interface. The first visual-proof batch after 4B-3 must validate a navigable 3D graybox corridor scene.

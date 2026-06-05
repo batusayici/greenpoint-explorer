@@ -1,0 +1,378 @@
+{
+  "schemaVersion": "phase-4b-corridor-source-fixture.v0.1",
+  "fixtureId": "p4b-fixture-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4B-2",
+  "status": "review-only-minimal-corridor-source-fixture",
+  "reviewOnly": true,
+  "reviewedOn": "2026-06-05",
+  "scopeLimit": "One file-based source fixture for the Greenpoint Ave Manhattan-to-Franklin corridor proof. This fixture references existing repo-local Phase 3B NYC/Open geometry context and does not add live retrieval, scraping, business enrichment, storefront anchors, generated manifests, compiler output, runtime code, or assets.",
+  "sourcePacket": {
+    "id": "p4b-source-packet-nyc-open-geometry-phase-3b",
+    "label": "Phase 3B NYC/Open corridor geometry context packet",
+    "sourceAuthority": "existing repo-local review-only geometry context",
+    "normalizedPath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+    "normalizedSha256": "34e8370aa25d1cd6acdc6e00776690b1f5f74032aeafffc25c9580c314e976fb",
+    "rawPath": "src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json",
+    "rawSha256": "2378a7f093c26d8dddf5d1825e51980e8538ad2b93a899338029bfbd7c36b13b",
+    "retrievalStatus": "carried-forward-from-phase-3b-no-live-retrieval-in-4b-2",
+    "storageStatus": "repo-local-review-only-public-open-data-packet",
+    "attributionRequired": true,
+    "scrapingAttempted": false,
+    "liveApiCalledInThisBatch": false,
+    "businessClaimsPromoted": false
+  },
+  "corridor": {
+    "id": "p4b-corridor-greenpoint-ave-manhattan-to-franklin",
+    "sourceKey": "greenpoint-ave-manhattan-to-franklin",
+    "label": "Greenpoint Ave from Manhattan Ave to Franklin Ave",
+    "sourceGeometryFixtureId": "greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b",
+    "geometryStatus": "source_backed_contextual",
+    "sceneProjectionStatus": "manual_draft",
+    "claimLimit": "Corridor and geometry context only. Scene projection remains stylized review space, not survey/GIS output."
+  },
+  "stableIds": [
+    {
+      "id": "p4b-fixture-greenpoint-ave-manhattan-to-franklin",
+      "namespace": "fixture",
+      "sourceKey": "greenpoint-ave-manhattan-to-franklin",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-source-packet-nyc-open-geometry-phase-3b",
+      "namespace": "source-packet",
+      "sourceKey": "nyc-open-geometry-phase-3b",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-corridor-greenpoint-ave-manhattan-to-franklin",
+      "namespace": "corridor",
+      "sourceKey": "greenpoint-ave-manhattan-to-franklin",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-source-nyc-open-data-street-centerline",
+      "namespace": "source",
+      "sourceKey": "nyc-open-data-street-centerline",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-source-nyc-open-data-sidewalk-line-planimetrics",
+      "namespace": "source",
+      "sourceKey": "nyc-open-data-sidewalk-line-planimetrics",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-source-nyc-open-data-building-footprints",
+      "namespace": "source",
+      "sourceKey": "nyc-open-data-building-footprints",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-record-nyc-centerline-physicalid-47237",
+      "namespace": "record",
+      "sourceKey": "nyc-centerline-physicalid-47237",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-record-nyc-sidewalk-line-physicalid-47237",
+      "namespace": "record",
+      "sourceKey": "nyc-sidewalk-line-physicalid-47237",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-record-nyc-footprint-bin-3064904",
+      "namespace": "record",
+      "sourceKey": "nyc-footprint-bin-3064904",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-record-nyc-footprint-bin-3064901",
+      "namespace": "record",
+      "sourceKey": "nyc-footprint-bin-3064901",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-assumption-stylized-scene-projection",
+      "namespace": "assumption",
+      "sourceKey": "stylized-scene-projection",
+      "method": "p4b-{namespace}-{sourceKey}"
+    },
+    {
+      "id": "p4b-assumption-sidewalk-surface-blocked",
+      "namespace": "assumption",
+      "sourceKey": "sidewalk-surface-blocked",
+      "method": "p4b-{namespace}-{sourceKey}"
+    }
+  ],
+  "claimPolicy": {
+    "allowedClaimClasses": [
+      "corridor-context",
+      "street-centerline-context",
+      "intersection-node-context",
+      "street-width-context",
+      "address-range-context",
+      "planimetrics-line-context",
+      "street-segment-cross-check",
+      "building-footprint-context",
+      "building-height-context",
+      "tax-lot-building-context"
+    ],
+    "blockedClaimClasses": [
+      "tenant-frontage",
+      "storefront-order",
+      "storefront-anchor",
+      "storefront-segmentation",
+      "business-identity",
+      "business-active-status",
+      "business-category",
+      "entrance-location",
+      "facade-appearance",
+      "signage",
+      "exact-address-placement",
+      "raster-readiness",
+      "production-public-readiness"
+    ]
+  },
+  "sources": [
+    {
+      "id": "p4b-source-nyc-open-data-street-centerline",
+      "sourceFixtureId": "nyc-open-data-street-centerline",
+      "label": "NYC Open Data Centerline / CSCL",
+      "usageStatus": "public-open-data-review-only",
+      "attributionRequired": true,
+      "provenancePath": "sourcePacket.normalizedPath:sources[nyc-open-data-street-centerline]",
+      "allowedClaimClasses": [
+        "street-centerline-context",
+        "intersection-node-context",
+        "street-width-context",
+        "address-range-context"
+      ]
+    },
+    {
+      "id": "p4b-source-nyc-open-data-sidewalk-line-planimetrics",
+      "sourceFixtureId": "nyc-open-data-sidewalk-line-planimetrics",
+      "label": "NYC Open Data Sidewalk Centerline / SIDEWALK_LINE",
+      "usageStatus": "public-open-data-review-only",
+      "attributionRequired": true,
+      "provenancePath": "sourcePacket.normalizedPath:sources[nyc-open-data-sidewalk-line-planimetrics]",
+      "allowedClaimClasses": [
+        "planimetrics-line-context",
+        "street-segment-cross-check"
+      ]
+    },
+    {
+      "id": "p4b-source-nyc-open-data-building-footprints",
+      "sourceFixtureId": "nyc-open-data-building-footprints",
+      "label": "NYC Open Data Building Footprints",
+      "usageStatus": "public-open-data-review-only",
+      "attributionRequired": true,
+      "provenancePath": "sourcePacket.normalizedPath:sources[nyc-open-data-building-footprints]",
+      "allowedClaimClasses": [
+        "building-footprint-context",
+        "building-height-context",
+        "tax-lot-building-context"
+      ]
+    }
+  ],
+  "sourceRecords": [
+    {
+      "id": "p4b-record-nyc-centerline-physicalid-47237",
+      "sourceId": "p4b-source-nyc-open-data-street-centerline",
+      "geometryReferenceId": "nyc-centerline-physicalid-47237",
+      "geometryCollection": "streetCenterlineRecords",
+      "allowedClaims": [
+        {
+          "claimClass": "street-centerline-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-street-centerline",
+          "sourceRecordId": "p4b-record-nyc-centerline-physicalid-47237"
+        },
+        {
+          "claimClass": "street-width-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-street-centerline",
+          "sourceRecordId": "p4b-record-nyc-centerline-physicalid-47237"
+        },
+        {
+          "claimClass": "address-range-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-street-centerline",
+          "sourceRecordId": "p4b-record-nyc-centerline-physicalid-47237"
+        }
+      ],
+      "blockedClaimClasses": [
+        "tenant-frontage",
+        "storefront-order",
+        "storefront-anchor",
+        "business-identity",
+        "entrance-location",
+        "facade-appearance",
+        "exact-address-placement",
+        "raster-readiness"
+      ],
+      "manualAssumptionRefs": [
+        "p4b-assumption-stylized-scene-projection"
+      ]
+    },
+    {
+      "id": "p4b-record-nyc-sidewalk-line-physicalid-47237",
+      "sourceId": "p4b-source-nyc-open-data-sidewalk-line-planimetrics",
+      "geometryReferenceId": "nyc-sidewalk-line-physicalid-47237",
+      "geometryCollection": "sidewalkLineRecords",
+      "allowedClaims": [
+        {
+          "claimClass": "planimetrics-line-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-sidewalk-line-planimetrics",
+          "sourceRecordId": "p4b-record-nyc-sidewalk-line-physicalid-47237"
+        },
+        {
+          "claimClass": "street-segment-cross-check",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-sidewalk-line-planimetrics",
+          "sourceRecordId": "p4b-record-nyc-sidewalk-line-physicalid-47237"
+        }
+      ],
+      "blockedClaimClasses": [
+        "sidewalk-surface-polygon",
+        "curb-polygon",
+        "tenant-frontage",
+        "storefront-order",
+        "storefront-anchor",
+        "business-identity",
+        "entrance-location",
+        "facade-appearance",
+        "exact-address-placement",
+        "raster-readiness"
+      ],
+      "manualAssumptionRefs": [
+        "p4b-assumption-sidewalk-surface-blocked",
+        "p4b-assumption-stylized-scene-projection"
+      ]
+    },
+    {
+      "id": "p4b-record-nyc-footprint-bin-3064904",
+      "sourceId": "p4b-source-nyc-open-data-building-footprints",
+      "geometryReferenceId": "nyc-footprint-bin-3064904",
+      "geometryCollection": "footprintRecords",
+      "allowedClaims": [
+        {
+          "claimClass": "building-footprint-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064904"
+        },
+        {
+          "claimClass": "building-height-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064904"
+        }
+      ],
+      "blockedClaimClasses": [
+        "tenant-frontage",
+        "storefront-order",
+        "storefront-anchor",
+        "storefront-segmentation",
+        "business-identity",
+        "business-active-status",
+        "entrance-location",
+        "facade-appearance",
+        "signage",
+        "exact-address-placement",
+        "raster-readiness"
+      ],
+      "manualAssumptionRefs": [
+        "p4b-assumption-stylized-scene-projection"
+      ]
+    },
+    {
+      "id": "p4b-record-nyc-footprint-bin-3064901",
+      "sourceId": "p4b-source-nyc-open-data-building-footprints",
+      "geometryReferenceId": "nyc-footprint-bin-3064901",
+      "geometryCollection": "footprintRecords",
+      "allowedClaims": [
+        {
+          "claimClass": "building-footprint-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064901"
+        },
+        {
+          "claimClass": "tax-lot-building-context",
+          "status": "source_backed_contextual",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064901"
+        }
+      ],
+      "blockedClaimClasses": [
+        "tenant-frontage",
+        "storefront-order",
+        "storefront-anchor",
+        "storefront-segmentation",
+        "business-identity",
+        "business-active-status",
+        "entrance-location",
+        "facade-appearance",
+        "signage",
+        "exact-address-placement",
+        "raster-readiness"
+      ],
+      "manualAssumptionRefs": [
+        "p4b-assumption-stylized-scene-projection"
+      ]
+    }
+  ],
+  "storefrontAnchorPolicy": {
+    "status": "blocked_no_candidates",
+    "anchors": [],
+    "reason": "NYC/Open geometry context does not prove tenant frontage, storefront order, storefront segmentation, entrances, facade appearance, business identity, active status, or exact address placement.",
+    "requiredFutureEvidence": [
+      "Batu-supplied or Batu-approved facade/frontage/entrance reference material",
+      "approved source policy for business/place evidence",
+      "manual review before any business-to-storefront match is promoted"
+    ]
+  },
+  "manualAssumptions": [
+    {
+      "id": "p4b-assumption-stylized-scene-projection",
+      "status": "manual_draft",
+      "target": "corridor.sceneProjection",
+      "reason": "Existing Phase 3B geometry includes stylized scene coordinates for review. They are deterministic review coordinates, not survey/GIS output.",
+      "notClaims": [
+        "exact-address-placement",
+        "tenant-frontage",
+        "storefront-anchor",
+        "entrance-location",
+        "facade-appearance",
+        "raster-readiness"
+      ]
+    },
+    {
+      "id": "p4b-assumption-sidewalk-surface-blocked",
+      "status": "blocked",
+      "target": "corridor.sidewalkSurface",
+      "reason": "The referenced SIDEWALK_LINE source supports line context only, not sidewalk surface polygons, curb polygons, tenant frontage, entrances, or facades.",
+      "notClaims": [
+        "sidewalk-surface-polygon",
+        "curb-polygon",
+        "tenant-frontage",
+        "storefront-anchor",
+        "entrance-location",
+        "facade-appearance"
+      ]
+    }
+  ],
+  "deterministicHashInputs": [
+    {
+      "role": "normalized-geometry-context",
+      "path": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+      "sha256": "34e8370aa25d1cd6acdc6e00776690b1f5f74032aeafffc25c9580c314e976fb"
+    },
+    {
+      "role": "raw-source-packet",
+      "path": "src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json",
+      "sha256": "2378a7f093c26d8dddf5d1825e51980e8538ad2b93a899338029bfbd7c36b13b"
+    }
+  ]
+}

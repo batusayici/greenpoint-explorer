@@ -1,6 +1,8 @@
-# Current Execution Brief - Phase 4A Batch 4A-5 Gate
+# Current Execution Brief - Phase 4B Batch 4B-2 Gate
 
-Status: `Batch 4A-5: Decision gate` is complete pending Batu review. Phase 4A now has a recommendation, and the Phase 4B gate remains closed. No Phase 4B batch is executable until Batu explicitly approves the next batch and this brief is updated.
+Status: `Batch 4B-2: Minimal source fixture + verifier` is complete pending Batu review. Batu approved opening 4B-2 on 2026-06-05; Codex created one file-based corridor source fixture plus one targeted verifier and stopped at the 4B-2 roadmap gate. No 4B-3 batch is executable until Batu explicitly approves it and this brief is updated.
+
+Documentation clarification: before 4B-3 is opened, the Phase 4B docs now explicitly require the first visual proof after the primitive compiler to be a deterministic, navigable, interactive 3D graybox/isometric corridor scene. A static image, 2D map, raster composition, manually arranged scene, or manifest-only artifact does not satisfy the future visual-proof gate.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, Phase 4A approval, Phase 4B implementation approval, and any later MVP gates.
 
@@ -29,29 +31,29 @@ Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefro
 
 ## Current Gate
 
-Name: `Batch 4A-5: Decision gate`
+Name: `Batch 4B-2: Minimal source fixture + verifier`
 
 Execution rule:
 
-- Agents must stop at the 4A-5 roadmap stop/decision gate.
+- Agents must stop at the 4B-2 roadmap stop/decision gate.
 - Use `docs/phase-4-execution-roadmap.md` as the operating plan.
-- Do not self-advance into Phase 4B or any later Phase 4 batch without explicit Batu approval and an updated current brief.
+- Do not self-advance into 4B-3 or any later Phase 4 batch without explicit Batu approval and an updated current brief.
 
 Purpose:
 
-- Review the Phase 4A recommendation now recorded in `docs/phase-4a-workflow-spike-plan.md`.
-- Decide whether to approve a later Phase 4B planning/implementation batch, revise the Phase 4A recommendation, or pause before implementation.
-- Keep Phase 4A as a decision workflow and keep Phase 4B non-executable until explicitly approved.
+- Review the minimal corridor source fixture and targeted verifier created for 4B-2.
+- Decide whether to approve `Batch 4B-3: Primitive compiler`, revise the 4B-2 fixture/verifier, or pause before compiler implementation.
+- Keep 4B-3 non-executable until explicitly approved.
 
 Expected output:
 
-- Review of the 4A-5 recommendation now recorded in `docs/phase-4a-workflow-spike-plan.md`.
-- Review of the recommendation summary in `docs/phase-4a-workflow-spike-decision-matrix.md`.
-- No new Codex implementation until the next batch is approved or this brief is updated.
+- Review of `src/data/source-fixtures/greenpoint-ave-manhattan-to-franklin.phase-4b-source-fixture.v0.1.json`.
+- Review of `scripts/verify-phase-4b-source-fixture.mjs`.
+- No compiler, runtime, generated manifest, schema file, package/tooling, asset, API, scraping, business/place enrichment, or production/public work until the next batch is approved or this brief is updated.
 
 ## Proposed Next Task Pending Approval
 
-Name: `Batch 4B-1: Contract foundation`
+Name: `Batch 4B-3: Primitive compiler`
 
 Approval state:
 
@@ -60,17 +62,18 @@ Approval state:
 
 Expected future output if approved:
 
-- Lean planning contracts for source fixture, scene manifest, storefront anchors, stable IDs, manual overrides, style recipe, and asset registry.
-- Contracts only; no runtime code, compiler code, generated manifests, package/tooling, broad data model, or asset production.
-- Stop if public interfaces, module boundaries, schema ownership, source storage/attribution, or verifier scope need approval.
+- Minimal compiler that consumes the approved 4B-2 source fixture and produces one deterministic semantic scene manifest only if Batu approves the compiler/generated-output boundary.
+- Deterministic IDs, primitive massing inputs, storefront-anchor candidates only where explicit and status-labeled, confidence levels, and explicit manual overrides.
+- 4B-3 remains compiler/manifest only if approved; the first renderer/visual-proof batch after 4B-3 must validate the actual 3D architecture with pan, zoom, orbit/rotate, semantic-ID inspection, hover/click hooks, QA/provenance visibility, and blocked-claim visibility.
+- Stop if generated manifest ownership, public/runtime interface status, compiler boundary, schema ownership, or source/claim promotion rules are unresolved.
 
 ## Phase 4B Boundary
 
 Phase 4B is `Reproducible Data-to-Scene + Storefront Anchor Foundation`.
 
-Phase 4B remains post-spike and non-implementation until Phase 4A produces a recommendation, Batu approves the architecture boundaries and public-interface implications, and a later `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens the narrow executable scope.
+Phase 4B is open only at the specific batch named in this brief. 4B-2 is complete pending Batu review. 4B-3 remains closed until Batu approves it and a later `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens the narrow executable scope.
 
-Current Phase 4B docs are supporting planning detail only. They do not authorize schema files, compiler scripts, generated manifests, source fixtures, runtime refactors, package/tooling changes, public interfaces, asset-kit files, GLB production work, or production architecture.
+Current Phase 4B docs are supporting planning detail only. The 4B-2 fixture/verifier prepare 4B-3, but they do not authorize compiler scripts beyond the approved verifier, generated manifests, runtime refactors, package/tooling changes, public interfaces, asset-kit files, GLB production work, production architecture, or 4B-3 execution without approval.
 
 ## Claim Discipline
 
@@ -85,7 +88,7 @@ Current Phase 4B docs are supporting planning detail only. They do not authorize
 
 Stop and report before:
 
-- Implementing Phase 4 runtime/code, schema files, compiler scripts, source fixtures, generated manifests, asset-kit files, GLB assets, package/tooling changes, or public interfaces.
+- Implementing Phase 4 runtime/code, schema files, compiler scripts beyond the approved 4B-2 verifier, additional or unapproved source fixtures, generated manifests, asset-kit files, GLB assets, package/tooling changes, or public interfaces.
 - Calling Foursquare or another business/POI API without credentials plus recorded terms/cache/display approval.
 - Scraping websites, directories, or imagery.
 - Making splats, world models, Blender, screenshots, Figma, AI image generation, Cesium, or manually composed scene files the canonical source of truth.
@@ -95,7 +98,7 @@ Stop and report before:
 - Treating NYC/Open geometry as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
 - Adding production/public readiness, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, or deployment.
 
-## Verification Expectations For This Planning Cleanup Batch
+## Verification Expectations For This 4B-2 Gate
 
 - `git status --short` before and after.
 - `git diff --stat`.

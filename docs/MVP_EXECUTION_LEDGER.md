@@ -55,14 +55,129 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 4A decision gate complete pending Batu review; Phase 4B remains closed until Batu approval and an updated current brief.
+- Current phase: Phase 4B Batch 4B-2 minimal source fixture + verifier complete pending Batu review; 4B-3 remains closed until Batu approval and an updated current brief.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the completed `Batch 4A-5: Decision gate`. No executable Phase 4B batch is open until Batu approves the next batch and the current brief is updated. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4A remains a decision workflow, not Phase 4 runtime implementation. Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the completed `Batch 4B-2: Minimal source fixture + verifier`. No executable 4B-3 batch is open until Batu approves the next batch and the current brief is updated. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4B has planning contracts plus one minimal source fixture/verifier proof; compiler implementation remains closed until a later brief explicitly opens 4B-3. The Phase 4B first-visual-proof path now requires a deterministic interactive 3D graybox/isometric corridor scene after the primitive compiler, not a static/raster/2D/manual/manifest-only substitute. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Phase 4B First Visual Proof Clarification
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Narrow documentation clarification only; define the expected visual artifact path before any 4B-3 implementation approval.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Markdown/link sanity by inspection.
+- Package-script inspection for markdown/link validation.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- Phase 4B docs now require the first visual proof after an approved primitive compiler to be a deterministic interactive 3D graybox/isometric corridor scene.
+- The clarified first visual fidelity bar is primitive massing/extruded footprints, simple materials, source-derived building massing, semantic-ID inspection, hover/click hooks through semantic IDs, camera pan/zoom/orbit, QA/provenance/blocked-claim visibility, and storefront-anchor placeholders only when evidence/status allows.
+- Static images, 2D maps, raster compositions, manually arranged scenes, and manifest-only artifacts are explicitly unacceptable as the future 4B visual proof.
+- No 4B-3 implementation, runtime code, compiler code, schema, generated manifest, fixture/verifier change, asset, package/tooling change, staging, or commit occurred.
+
+Unresolved decisions:
+- Batu owns approval of `Batch 4B-3: Primitive compiler`, revision of the 4B-2 fixture/verifier, or pause before implementation.
+- Batu owns the later first 3D visual-proof batch boundary, renderer choice, public/runtime interface implications, semantic inspection UX, QA/provenance surfacing, and graybox acceptance criteria.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to the completed 4B-2 gate; 4B-3 is not executable until Batu approval and an updated current brief.
+
+### 2026-06-05 - Phase 4B Minimal Source Fixture And Verifier
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Batch 4B-2: create the smallest approved file-based corridor source fixture plus one targeted verifier enforcing the 4B-1 planning contracts.
+
+Files changed:
+- `src/data/source-fixtures/greenpoint-ave-manhattan-to-franklin.phase-4b-source-fixture.v0.1.json`
+- `scripts/verify-phase-4b-source-fixture.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, and `AGENTS.md`.
+- Existing repo source/data pattern inspection for `src/data/geometry-source/`, `src/data/scenes/`, `src/sceneManifest.js`, and existing verifier scripts.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- JSON parse for `src/data/source-fixtures/greenpoint-ave-manhattan-to-franklin.phase-4b-source-fixture.v0.1.json`.
+- Syntax check for `scripts/verify-phase-4b-source-fixture.mjs`.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- Added one review-only 4B-2 source fixture for Greenpoint Ave from Manhattan Ave to Franklin Ave.
+- The fixture references existing repo-local Phase 3B NYC/Open geometry context, records source packet metadata, deterministic hash inputs, stable IDs, source records, geometry references, allowed contextual geometry claims, blocked storefront/facade/frontage/entrance/business claim classes, and explicit manual assumptions.
+- Added one targeted verifier that checks required packet metadata, stable ID derivation, referenced file hashes, source and geometry reference resolution, geometry presence, provenance for allowed claims, blocked claim discipline, empty/blocked storefront anchors, absence of business links, explicit manual assumptions, and deterministic hash inputs.
+- No compiler, runtime code, generated scene manifest, schema file, package script, live API call, scraping, business/place enrichment, asset pipeline, GLB/glTF/assets, visual styling implementation, staging, commit, or 4B-3 work occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4B-2 fixture/verifier.
+- Batu owns approval of `Batch 4B-3: Primitive compiler`, revision of the 4B-2 fixture/verifier, or pause before compiler implementation.
+- Batu owns generated manifest ownership, schema ownership, compiler boundary, storefront-anchor candidate policy, manual override policy, public/runtime interface implications, and any future source/claim promotion.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4B-2 gate; 4B-3 is not executable until Batu approval and an updated current brief.
+
+### 2026-06-05 - Phase 4B Contract Foundation
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Docs-only Batch 4B-1 contract foundation for the one-corridor Phase 4B proof.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Phase 4 support-doc review: `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`, and `docs/DOCS_INDEX.md`.
+- Scope-boundary review: `docs/MVP_SCOPE.md`.
+- Package-script scan found no dedicated markdown validation script.
+- Markdown/link sanity by inspection.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- `docs/phase-4b-implementation-plan.md` now records lean planning contracts for source fixture, scene manifest, storefront anchors, stable IDs, manual overrides, style recipe, and asset registry.
+- The contracts define planning-only boundaries, verifier duties for 4B-2, and explicit non-authorizations for runtime code, compiler code, source fixture creation in 4B-1, schema files, generated manifests, package/tooling changes, and asset production.
+- 4B-2 is prepared to create one approved file-based source fixture and one targeted verifier after Batu approval and an updated current brief.
+- No source fixture, verifier, schema file, compiler script, generated manifest, runtime change, package/tooling change, asset production, staging, commit, or 4B-2 implementation occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4B-1 contracts.
+- Batu owns approval of `Batch 4B-2: Minimal source fixture + verifier`, revision of the 4B-1 contracts, or pause before implementation.
+- Batu owns source fixture path/shape, allowed source classes, source storage/attribution/cache/display rules, schema-file ownership, verifier scope, public-interface implications, and any later compiler/runtime boundary.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4B-1 gate; 4B-2 is not executable until Batu approval and an updated current brief.
 
 ### 2026-06-05 - Phase 4A Decision Gate
 

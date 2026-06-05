@@ -26,15 +26,16 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Phase 4A decision gate complete pending Batu review; Phase 4B remains closed until Batu approval and an updated current brief.
+- Current phase: Phase 4B Batch 4B-2 minimal source fixture + verifier complete pending Batu review; 4B-3 remains closed until Batu approval and an updated current brief.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: no executable Phase 4B batch is open until Batu approves the next batch and `docs/CURRENT_EXECUTION_BRIEF.md` is updated.
+- Current next task: no executable 4B-3 batch is open until Batu approves the next batch and `docs/CURRENT_EXECUTION_BRIEF.md` is updated.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at each roadmap gate instead of self-advancing.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.
-- Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation.
+- Phase 4B now has lean planning contracts plus one minimal source fixture/verifier proof; compiler implementation remains closed until a later brief explicitly opens 4B-3.
+- Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
 ## Completed Work Pointers
 
@@ -61,12 +62,14 @@ Use these in order when documents conflict:
 4. Batch 4A-2: Deterministic compiler lane assessment. Complete; Batu approved opening 4A-3.
 5. Batch 4A-3: 3D map/export shortcut assessment. Complete; Batu approved opening 4A-4.
 6. Batch 4A-4: Reality-capture/reference lane assessment. Complete; Batu approved opening 4A-5.
-7. Batch 4A-5: Decision gate. Complete pending Batu review.
-8. Phase 4B compiler-centered foundation only after Batu approval and updated current brief.
+7. Batch 4A-5: Decision gate. Complete; Batu approved opening 4B-1.
+8. Batch 4B-1: Contract foundation. Complete; Batu approved opening 4B-2.
+9. Batch 4B-2: Minimal source fixture + verifier. Complete pending Batu review.
+10. Batch 4B-3: Primitive compiler only after Batu approval and updated current brief.
 
 ## Active Blockers
 
-- Storefront anchoring and business-to-storefront matching are unresolved first-class architecture problems.
+- Storefront anchoring and business-to-storefront matching are framed by 4B-1 planning contracts and enforced as blocked/no-candidate claims in the 4B-2 source fixture; they remain unresolved first-class implementation problems until approved evidence exists.
 - Source/API strategy is no longer the main blocker; source access/material is. Brouwerij Lane cannot become a real corridor target until Batu supplies or approves deterministic source access/material and a later brief authorizes the evidence packet.
 - Foursquare remains optional future enrichment and blocked by missing credential plus repo-recorded terms/cache/display approval.
 - Mid-corridor and Franklin have sourced/contextual NYC/Open street/building geometry, but sidewalk surfaces, stylized scene projection, real storefronts, exact frontage/order, entrances, facades, address placement, business identity, active status, and raster readiness remain blocked/manual as labeled.
@@ -77,10 +80,10 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu review of the completed `Batch 4A-5: Decision gate`.
-- Batu approval of a Phase 4B next batch, revision of the Phase 4A recommendation, or pause before implementation.
-- Whether to approve `Batch 4B-1: Contract foundation` as the next docs-only Phase 4B batch.
-- Phase 4B architecture boundaries, public-interface implications, source fixtures, compiler boundaries, storefront-anchor contract, style recipe contract, asset-kit contract, and runtime scope.
+- Batu review of the completed `Batch 4B-2: Minimal source fixture + verifier`.
+- Batu approval of `Batch 4B-3: Primitive compiler`, revision of the 4B-2 fixture/verifier, or pause before implementation.
+- Phase 4B architecture boundaries, public-interface implications, generated manifest ownership, schema ownership, compiler boundaries, manual override policy, storefront-anchor candidate policy, and runtime scope.
+- Batu approval of the later first 3D visual-proof batch boundary after 4B-3, including renderer choice, public/runtime interface implications, semantic inspection UX, QA/provenance surfacing, and graybox acceptance criteria.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.
 
