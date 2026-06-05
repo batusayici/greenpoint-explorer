@@ -1,7 +1,9 @@
 # Greenpoint Explorer Agent Handoff - Historical Stub
 
-Status: Historical / non-authoritative
+Status: Historical / non-authoritative. Do not use this file to determine current task, scope, approval, or implementation authority.
 Date: 2026-06-03
+
+Superseded by: `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/phase-4-execution-roadmap.md`.
 
 ## Purpose
 
@@ -23,6 +25,6 @@ Use:
 
 Auto-advance is not active.
 
-The current next task remains Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice, controlled by `docs/PLAN.md` and `docs/CURRENT_EXECUTION_BRIEF.md`.
+This file has no current next-task authority.
 
-Future implementation must produce visible pipeline evidence, preserve strict promotion/public-readiness gates, and stay inside the active current brief.
+Use `docs/CURRENT_EXECUTION_BRIEF.md` for the current next task and `docs/phase-4-execution-roadmap.md` for Phase 4A/4B planning context.

@@ -55,14 +55,56 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 4 roadmap consolidation complete pending review.
+- Current phase: Docs authority audit complete pending review; Phase 4A workflow spike setup remains the proposed next task.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records `Batch 4A-1: Workflow spike setup` as the proposed next task unless repo docs already mark it approved. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4A remains a decision workflow, not Phase 4 runtime implementation. Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records `Batch 4A-1: Workflow spike setup` as the proposed next task unless repo docs already mark it approved. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4A remains a decision workflow, not Phase 4 runtime implementation. Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Docs Authority Audit And Index
+
+Status:
+- Complete.
+
+Scope:
+- Docs-only authority audit before Phase 4A execution: classify the docs tree, add one operational docs index, neutralize stale Phase 2/3 task language, and point current control docs to the docs index and Phase 4 roadmap.
+
+Files changed:
+- `docs/DOCS_INDEX.md`
+- `docs/AGENT_HANDOFF.md`
+- `docs/PHASE_2_PLAN.md`
+- `docs/PHASE_2_BACKLOG.md`
+- `docs/PHASE_3_SCALE_TEST_PLAN.md`
+- `docs/ART_DIRECTION.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Requested docs audit by inspection, including Phase 2/3 docs, Phase 4A/4B docs, archive/research/decision/review folders, and approved reference corpus docs.
+- `git status --short` before editing.
+- Markdown/link sanity by inspection.
+- `git diff --stat`.
+- `git diff --check`.
+- `git status --short` after editing.
+
+Outcome:
+- `docs/DOCS_INDEX.md` now defines the operational docs authority map and read-first path.
+- Phase 4 remains controlled by `docs/phase-4-execution-roadmap.md`.
+- Stale Phase 2/3 current-task wording was neutralized in historical stubs and current visual guidance.
+- No Phase 4 code, runtime file, schema file, compiler script, source fixture, generated manifest, asset file, package/tooling change, file move, file deletion, staging, commit, API call, scraping, or frontend build occurred.
+
+Unresolved decisions:
+- Batu owns approval of Batch 4A-1 as the next executable workflow-spike setup if it is not already approved.
+- Batu owns any future move/delete/consolidation cleanup of historical docs and review evidence.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
 
 ### 2026-06-05 - Phase 4 Roadmap Consolidation
 

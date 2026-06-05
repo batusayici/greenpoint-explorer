@@ -1,7 +1,9 @@
 # Phase 2 Plan - Historical Stub
 
-Status: Historical / non-authoritative
+Status: Historical / non-authoritative. Do not use this file to determine current task, scope, approval, or implementation authority.
 Date: 2026-06-03
+
+Superseded by: `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/phase-4-execution-roadmap.md`.
 
 ## Purpose
 
@@ -18,12 +20,8 @@ Use these files instead:
 - `docs/MVP_SCOPE.md` for durable MVP scope, non-goals, and production/public-readiness gates.
 - `docs/MVP_EXECUTION_LEDGER.md` for batch history and reconciliation notes.
 
-## Current Phase 2DTR Pointer
+## Historical Phase 2DTR Pointer
 
-Phase 2DTR - Data-to-Raster MVP Proof is now controlled by `docs/PLAN.md` and `docs/CURRENT_EXECUTION_BRIEF.md`.
-
-The current next executable task remains:
-
-> Phase 2DTR-1 - One-Corner Real-Data-to-Raster Reproduction Slice.
+Phase 2DTR - Data-to-Raster MVP Proof was later superseded by Phase 3 closeout and the Phase 4A/4B execution path.
 
 Do not use this file to infer scope, authorize implementation, approve production/public readiness, approve source policy, or select a next task.

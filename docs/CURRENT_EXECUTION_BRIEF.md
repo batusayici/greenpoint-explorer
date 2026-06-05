@@ -6,6 +6,11 @@ Owner boundary: Batu owns creative/product/scope approval, public-interface appr
 
 ## Current State
 
+Docs authority routing:
+
+- `docs/DOCS_INDEX.md`
+- `docs/phase-4-execution-roadmap.md`
+
 Phase 4 now has one primary operational roadmap:
 
 - `docs/phase-4-execution-roadmap.md`

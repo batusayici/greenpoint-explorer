@@ -1,9 +1,11 @@
 # Phase 2 Backlog
 
-Status: Revisit later  
+Status: Historical / non-authoritative. Do not use this file to determine current task, scope, approval, or implementation authority.
 Date: 2026-05-26  
 Creative direction owner: Batu  
 Implementation owner: Codex
+
+Superseded by: `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/phase-4-execution-roadmap.md`.
 
 These ideas are intentionally out of scope for the MVP. They should not be implemented until the Map Mode Prototype proves the visual world and click interaction.
 
@@ -64,4 +66,3 @@ Only pull items from this backlog when:
 - The single-scene interaction prototype feels compelling.
 - The MVP screenshot and first-click experience pass QA.
 - Batu explicitly expands scope.
-

@@ -178,9 +178,9 @@ All such artifacts must be clearly labeled:
 
 These artifacts are allowed before final static style-frame production. They are disposable decision aids and do not count as final production art. Batu still owns final taste decisions.
 
-Current gate:
+Current execution gate:
 
-> Visual direction is approved. The current MVP path is Phase 2DTR - Data-to-Raster MVP Proof inside Phase 2, with MVP-29E as the manually composed raster baseline/reference and Phase 2DTR-1 as the next executable task. Batu-supplied reference photos may be used only as MVP review/source facade imagery under the current scope. This does not approve production assets, exact facades, public-ready real-place claims, Google/Street View/3D Tiles extraction, third-party image scraping, training, texture extraction, or a production source policy. Source/app implementation remains limited to whatever the current execution brief explicitly opens.
+> Visual direction is approved. Current executable work is controlled only by `docs/CURRENT_EXECUTION_BRIEF.md`, with Phase 4A/4B planning context in `docs/phase-4-execution-roadmap.md`. Batu-supplied or Batu-approved reference material may be used only inside the current approved scope and claim limits. This does not approve production assets, exact facades, public-ready real-place claims, Google/Street View/3D Tiles extraction, third-party image scraping, training, texture extraction, or a production source policy. Source/app implementation remains limited to whatever the current execution brief explicitly opens.
 
 This approval does not authorize app implementation, production asset creation, a production asset pipeline, architecture setup, tooling, public interfaces, real-place cards, exact addresses, exact Greenpoint facades, station geometry, or factual card copy.
 

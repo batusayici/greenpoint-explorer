@@ -10,7 +10,7 @@ Execution owner inside approved boundaries: Codex
 
 This file is the stable roadmap through MVP completion and the Phase 3 to Phase 4 transition. It should stay short: current phase, next task, remaining path, blockers, pending decisions, and delegated-doc pointers.
 
-Use `docs/phase-4-execution-roadmap.md` as the primary Phase 4 control surface. Use `docs/MVP_SCOPE.md` for detailed MVP boundaries. Use `docs/MVP_EXECUTION_LEDGER.md` for batch records. Use `docs/CURRENT_EXECUTION_BRIEF.md` for the next Codex task only.
+Use `docs/DOCS_INDEX.md` to route the docs tree. Use `docs/phase-4-execution-roadmap.md` as the primary Phase 4 control surface. Use `docs/MVP_SCOPE.md` for detailed MVP boundaries. Use `docs/MVP_EXECUTION_LEDGER.md` for batch records. Use `docs/CURRENT_EXECUTION_BRIEF.md` for the next Codex task only.
 
 ## Source-Of-Truth Order
 
@@ -26,7 +26,8 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Phase 4 roadmap consolidation complete pending review.
+- Current phase: Docs authority audit complete pending review; Phase 4A workflow spike setup remains the proposed next task.
+- Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
 - Current next task: `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
@@ -39,6 +40,7 @@ Use these in order when documents conflict:
 - Detailed batch records: `docs/MVP_EXECUTION_LEDGER.md`
 - Older batch history: `docs/archive/MVP_EXECUTION_LEDGER_HISTORY.md`
 - Detailed MVP scope and non-goals: `docs/MVP_SCOPE.md`
+- Docs authority index: `docs/DOCS_INDEX.md`
 - Phase 4 execution roadmap: `docs/phase-4-execution-roadmap.md`
 - Phase 4A supporting docs: `docs/phase-4a-workflow-spike-plan.md`, `docs/phase-4a-workflow-spike-decision-matrix.md`
 - Phase 4B supporting docs: `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`

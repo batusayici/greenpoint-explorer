@@ -1,16 +1,18 @@
 # Phase 3 Scale Test Plan
 
-Status: High-level future planning / not implementation approval
+Status: Historical / non-authoritative. Do not use this file to determine current task, scope, approval, or implementation authority.
 Date: 2026-06-01
 Phase name: Neighborhood Scale Validation
 Creative/product/public-interface approval owner: Batu
 Execution owner inside approved boundaries: Codex
 
+Superseded by: `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/phase-4-execution-roadmap.md`.
+
 ## Purpose
 
-Phase 3 tests whether the Phase 2 manifest pipeline works across representative Greenpoint blocks.
+This historical plan described an earlier Phase 3 scale-validation idea. Phase 3 is now closed for planning purposes, and current Phase 4 work is controlled by `docs/phase-4-execution-roadmap.md`.
 
-Phase 3 is future-only. It does not open full Greenpoint coverage, app expansion, automated visual stylization, live refresh, CMS/admin tooling, deployment, monetization, or production data work.
+This file does not open full Greenpoint coverage, app expansion, automated visual stylization, live refresh, CMS/admin tooling, deployment, monetization, production data work, or any current Phase 4 task.
 
 ## Goal
 

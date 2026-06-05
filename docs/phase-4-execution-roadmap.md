@@ -77,6 +77,7 @@ Phase 4B succeeds when:
 
 ## Repo Cleanliness Rules
 
+- Use `docs/DOCS_INDEX.md` to route docs authority before reading historical or review-only Phase 2/3 files.
 - `docs/phase-4-execution-roadmap.md` is the primary Phase 4 control surface.
 - Existing Phase 4A/4B docs are supporting detail docs.
 - Do not duplicate the full roadmap into supporting docs.
