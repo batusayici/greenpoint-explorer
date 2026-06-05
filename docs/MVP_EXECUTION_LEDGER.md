@@ -57,12 +57,186 @@ Next pointer:
 
 - Current phase: Phase 3 geometry-first corridor review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 geometry-first corridor review pass is complete pending Batu review. The app surface keeps the accepted DTR-11 west-anchor raster, shows sourced/contextual west-anchor geometry state, manual-draft/contextual mid-corridor street/massing continuation, and blocked/contextual Franklin/Brouwerij markers. Deterministic screenshot evidence exists at `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-geometry-first-corridor-default.png`. No further implementation batch is authorized until Batu approves the next refinement, missing-geometry, source, business, or facade step. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 westward visual-integration corridor correction pass is complete pending Batu review. The app surface keeps the accepted DTR-11 west-anchor raster as the grounded right-side style/baseline anchor, shows sourced/contextual NYC/Open street/building context for the mid-corridor and Franklin endpoint as stylized paper/ink massing expanding west / left, a softened raster/vector seam, quiet manual-draft sidewalk/scene-transform gaps, and blocked Brouwerij/business/frontage/facade/entrance/signage claims. Deterministic screenshot evidence exists at `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-westward-geometry-to-massing-corridor-default.png`. No further implementation batch is authorized until Batu approves the next refinement, business/POI source, facade/reference, join, or raster step. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Phase 3 Westward Visual-Integration Pass
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Reduce the remaining raster/vector seam in the westward corridor scene, make the sourced massing less generic, and diagnose the local browser-smoke path before commit.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/README.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-westward-geometry-to-massing-corridor-default.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Minimal Node socket bind diagnosis: localhost bind failed before Vite with `listen EPERM: operation not permitted 127.0.0.1:5175`, indicating an environment/network-sandbox limitation rather than an app issue.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- Phase 3 westward geometry structural check.
+- Screenshot artifact check for `phase-3-westward-geometry-to-massing-corridor-default.png`.
+- `npm run build`.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Further reduced label dominance and decorative background texture.
+- Added a manual-draft seam apron, calmer street tone, subtler curb/slab cues, varied lot widths/heights, varied roof/parapet treatment, and facade-neutral base rhythm.
+- Strengthened the Franklin corner massing/context moment while keeping Brouwerij blocked.
+- No external fetch, Foursquare/API call, scraping, fictional business, tenant fill, facade inference, frontage inference, entrance inference, signage inference, production/public claim, package/tooling change, backend service, CMS, persistence, analytics, or deployment occurred.
+
+Unresolved decisions:
+- Batu owns whether the seam is now sufficiently integrated for Phase 3 review and whether any later raster/reference asset is needed before business/place overlays.
+- Batu owns any later geometry/massing art refinement, Franklin Ave/St naming decision, business/POI source approval, Brouwerij claim promotion, facade/reference imagery, frontage/entrance/exact-address decisions, and corridor-specific raster direction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 3 westward visual-integration corridor surface and screenshot evidence; no further implementation batch is authorized until Batu approves the next refinement, business/source, facade/reference, join, or raster step.
+
+### 2026-06-05 - Phase 3 Westward Geometry-To-Massing Correction
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Correct the Phase 3 geometry-to-massing scene so the corridor expands west / left from the DTR-11 Manhattan Ave / Greenpoint Ave anchor, and refine the visual treatment toward a continuous paper/ink street scene before any business verification work.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/PlaceholderWorld.jsx`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/README.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-westward-geometry-to-massing-corridor-default.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc review: `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, and `docs/phase-3-real-corridor-evidence-inventory.md`.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- Visual self-audit against the requested seven-item acceptance test after generating `phase-3-westward-geometry-to-massing-corridor-default.png`.
+- Phase 3 geometry structural check.
+- Screenshot artifact check.
+- `npm run build`.
+- Browser smoke on local Vite dev server.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Moved the DTR-11 raster to the right-side baseline position and mirrored the sourced corridor geometry so the continuation expands west / left.
+- Added warmer paper/ink massing treatment, roof/parapet hatching, generic facade-neutral base rhythm, softer shadows, curb/street texture, manual sidewalk slab cues, and reduced normal-mode label dominance.
+- Kept sourced/manual/blocked truth-state separation visible without turning labels into the main proof.
+- Brouwerij remains blocked for POI identity, address, category, coordinates, frontage, entrance, facade, signage, active status, exact storefront geometry, exact address placement, and raster readiness.
+- No external fetch, Foursquare/API call, scraping, fictional business, tenant fill, facade inference, frontage inference, entrance inference, signage inference, production/public claim, package/tooling change, backend service, CMS, persistence, analytics, or deployment occurred.
+
+Unresolved decisions:
+- Batu owns whether the westward corridor now feels like one coherent DTR-11-derived street scene rather than a raster panel plus schematic extension.
+- Batu owns any later geometry/massing art refinement, Franklin Ave/St naming decision, business/POI source approval, Brouwerij claim promotion, facade/reference imagery, frontage/entrance/exact-address decisions, and corridor-specific raster direction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 3 westward geometry-to-massing corridor surface and screenshot evidence; no further implementation batch is authorized until Batu approves the next refinement, business/source, facade/reference, join, or raster step.
+
+### 2026-06-05 - Phase 3 Geometry-To-Massing Corridor Review
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Convert the Phase 3B sourced NYC/Open corridor geometry from a GIS/debug-style overlay into an art-directed paper/ink isometric corridor scene with two recognizable corner moments, while preserving claim-level truth states and keeping business verification blocked.
+
+Files changed:
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/PlaceholderWorld.jsx`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/README.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-geometry-to-massing-corridor-default.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc review: `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, and `docs/phase-3-real-corridor-evidence-inventory.md`.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- Phase 3 geometry structural check: 12 sourced paper/ink massing blocks resolve to Phase 3B normalized geometry records, Franklin corner massing is present, and Brouwerij/frontage/facade/entrance/business fields remain blocked.
+- Screenshot artifact check for `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-geometry-to-massing-corridor-default.png`.
+- `npm run build`.
+- Browser smoke on local Vite dev server at `http://127.0.0.1:5175/`: canvas present, DTR-11 context present, mid-corridor sourced geometry text present, Franklin corner text present, Brouwerij blocked text present, truth-state legend present, QA/review state visible, no horizontal overflow, and no forbidden fictional/placeholder/fake-business/tenant-fill terms.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Sourced NYC/Open building-footprint records now render as filled stylized roof/wall massing blocks instead of raw outline linework.
+- The mid-corridor streetbed, sourced massing rhythm, and quiet manual sidewalk bands visually connect the DTR-11 Manhattan corner toward Franklin.
+- The Franklin endpoint is now a sourced/contextual corner massing moment rather than a blocked-only marker.
+- Brouwerij remains blocked for POI identity, address, category, coordinates, frontage, entrance, facade, signage, active status, exact storefront geometry, exact address placement, and raster readiness.
+- No external fetch, Foursquare/API call, scraping, fictional business, tenant fill, facade inference, frontage inference, entrance inference, production/public claim, package/tooling change, backend service, CMS, persistence, analytics, or deployment occurred.
+
+Unresolved decisions:
+- Batu owns whether the geometry-to-massing scene now reads as Greenpoint Ave from Manhattan Ave toward Franklin Ave before business/place overlays.
+- Batu owns any later geometry/massing art refinement, Franklin Ave/St naming decision, business/POI source approval, Brouwerij claim promotion, facade/reference imagery, frontage/entrance/exact-address decisions, and corridor-specific raster direction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 3 geometry-to-massing corridor surface and screenshot evidence; no further implementation batch is authorized until Batu approves the next refinement, business/source, facade/reference, join, or raster step.
+
+### 2026-06-05 - Phase 3 Sourced Geometry Corridor Review
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Ingest official NYC/Open geometry for the Manhattan-to-Franklin corridor, normalize it into repo-local evidence, promote only supported street/building geometry claims in the Phase 3 scene, keep Brouwerij/business/frontage/facade/entrance claims blocked, and produce screenshot evidence for review.
+
+Files changed:
+- `src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json`
+- `src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json`
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/styles.css`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/README.md`
+- `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-sourced-geometry-corridor-default.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/PROVENANCE_AND_QA.md`, and `docs/phase-3-real-corridor-evidence-inventory.md`.
+- Official source retrieval from NYC Open Data Building Footprints, Centerline/CSCL, and Sidewalk Centerline/SIDEWALK_LINE line context.
+- JSON parse for the Phase 3 scene fixture and Phase 3B raw/normalized official geometry packets.
+- Structural source/evidence check: 291 footprint records, 2 selected Greenpoint Ave street-centerline records, 4 selected sidewalk-line/context records, with blocked claim classes preserved.
+- Foursquare Brouwerij readiness check failed as expected due to missing credential/terms gates and made no live request.
+- `npm run build`.
+- Browser smoke on local Vite dev server: DTR-11 anchor, sourced mid-corridor, Franklin sourced context, Brouwerij blocked text, sourced/manual/blocked legend, canvas mount, no forbidden fictional-storefront terms, and no meaningful horizontal overflow after root clamp.
+- Browser screenshot capture timed out and canvas export was unavailable; deterministic PNG evidence was generated from the checked-in scene fixture and DTR-11 raster, then visually inspected.
+- `git diff --check`.
+- `git status --short`.
+
+Outcome:
+- Added a raw official geometry packet and normalized official geometry packet for the corridor.
+- Promoted mid-corridor and Franklin endpoint from blocked/manual-only geometry review to sourced/contextual street/building geometry where NYC/Open records support it.
+- Preserved DTR-11 as the west-anchor visual baseline.
+- Kept sidewalk surfaces and stylized scene projection manual_draft/contextual.
+- Kept Brouwerij identity, address, category, coordinates, provenance, frontage, entrance, facade, signage, active status, exact storefront geometry, and raster readiness blocked because approved POI/API credentials/source packets are unavailable.
+- No fictional businesses, tenant fill, frontage inference, entrance inference, facade inference, scraping, business live API call, production/public claim, package/tooling change, backend service, CMS, persistence, analytics, or deployment occurred.
+
+Unresolved decisions:
+- Batu owns whether the sourced-geometry two-corner corridor now reads spatially as Greenpoint Ave from Manhattan toward the Franklin endpoint.
+- Batu owns any visual refinement, naming-text resolution for Franklin Ave/St, source authority decisions, Foursquare/API or local-directory access approval, Brouwerij claim promotion, facade/reference imagery, frontage/entrance/exact-address decisions, and later corridor-specific raster direction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 3 sourced-geometry corridor surface and screenshot evidence; no further implementation batch is authorized until Batu approves the next refinement, business/source, facade/reference, join, or raster step.
 
 ### 2026-06-05 - Phase 3 Geometry Screenshot Evidence
 

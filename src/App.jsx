@@ -353,6 +353,7 @@ function getCompactDisclaimer(target) {
 
 function getCardLabel(target) {
   if (target.id === "greenpoint-g-subway") return "Transit context";
+  if (target.id?.startsWith("phase3-")) return "Geometry context";
   if (target.cardBadge === "manual draft") return "Geometry segment";
   if (target.cardBadge === "candidate") return "Source candidate";
   if (target.cardBadge === "blocked") return "Blocked geometry";

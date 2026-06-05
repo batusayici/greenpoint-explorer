@@ -936,13 +936,17 @@ function syncGeometryReviewLayer(graphics, labelLayer, review, reviewMode, qaLay
   }
 
   for (const block of review.massingBlocks ?? []) {
-    drawGroundingPolygon(graphics, block.polygon, {
-      fillColor: parseSceneColor(block.fillColor, getDraftStatusColor(block.status)),
-      fillAlpha: block.fillAlpha ?? 0.62,
-      strokeColor: parseSceneColor(block.strokeColor, 0x241f18),
-      strokeAlpha: block.strokeAlpha ?? 0.66,
-      strokeWidth: block.strokeWidth ?? 1.8,
-    });
+    if (block.massingStyle === "paper_ink_extruded") {
+      drawPaperInkMassingBlock(graphics, block);
+    } else {
+      drawGroundingPolygon(graphics, block.polygon, {
+        fillColor: parseSceneColor(block.fillColor, getDraftStatusColor(block.status)),
+        fillAlpha: block.fillAlpha ?? 0.62,
+        strokeColor: parseSceneColor(block.strokeColor, 0x241f18),
+        strokeAlpha: block.strokeAlpha ?? 0.66,
+        strokeWidth: block.strokeWidth ?? 1.8,
+      });
+    }
     for (const roofLine of block.roofLines ?? []) {
       drawGroundingLine(graphics, roofLine.from, roofLine.to, {
         color: parseSceneColor(roofLine.color, 0xf4df9b),
@@ -1039,6 +1043,153 @@ function drawGeometryReviewMarker(graphics, marker) {
   graphics
     .circle(marker.point.x, marker.point.y, Math.max(4, radius * 0.22))
     .fill({ color, alpha: 0.9 });
+}
+
+function drawPaperInkMassingBlock(graphics, block) {
+  if (!block.polygon?.length) return;
+  const rise = block.rise ?? { x: -16, y: -38 };
+  const base = block.polygon;
+  const roof = base.map((point) => ({
+    x: point.x + rise.x,
+    y: point.y + rise.y,
+  }));
+  const edgeColor = parseSceneColor(block.edgeColor, 0x241f18);
+  const truthColor = getDraftStatusColor(block.status);
+  const roofColor = parseSceneColor(block.roofColor, block.fillColor ? parseSceneColor(block.fillColor, 0xc8a66e) : 0xc8a66e);
+  const frontWallColor = parseSceneColor(block.frontWallColor, 0x9e8567);
+  const sideWallColor = parseSceneColor(block.sideWallColor, 0x7d695b);
+  const shadowColor = parseSceneColor(block.shadowColor, 0x151312);
+
+  if (block.shadow !== false) {
+    drawGroundingPolygon(graphics, base.map((point) => ({
+      x: point.x + 10,
+      y: point.y + 12,
+    })), {
+      fillColor: shadowColor,
+      fillAlpha: block.shadowAlpha ?? 0.12,
+      strokeColor: shadowColor,
+      strokeAlpha: 0,
+      strokeWidth: 0,
+    });
+  }
+
+  drawGroundingPolygon(graphics, [
+    base[0],
+    base[1],
+    roof[1],
+    roof[0],
+  ], {
+    fillColor: sideWallColor,
+    fillAlpha: block.wallAlpha ?? 0.82,
+    strokeColor: edgeColor,
+    strokeAlpha: block.strokeAlpha ?? 0.72,
+    strokeWidth: block.strokeWidth ?? 1.5,
+  });
+  drawGroundingPolygon(graphics, [
+    base[1],
+    base[2],
+    roof[2],
+    roof[1],
+  ], {
+    fillColor: frontWallColor,
+    fillAlpha: block.wallAlpha ?? 0.84,
+    strokeColor: edgeColor,
+    strokeAlpha: block.strokeAlpha ?? 0.72,
+    strokeWidth: block.strokeWidth ?? 1.5,
+  });
+  drawGroundingPolygon(graphics, roof, {
+    fillColor: roofColor,
+    fillAlpha: block.fillAlpha ?? 0.9,
+    strokeColor: edgeColor,
+    strokeAlpha: block.strokeAlpha ?? 0.82,
+    strokeWidth: block.strokeWidth ?? 1.7,
+  });
+
+  const roofAccentColor = parseSceneColor(block.roofAccentColor, edgeColor);
+  const roofAccentAlpha = block.roofAccentAlpha ?? 0.22;
+  drawGroundingLine(graphics, lerpPoint(roof[0], roof[1], 0.14), lerpPoint(roof[0], roof[1], 0.86), {
+    color: roofAccentColor,
+    alpha: roofAccentAlpha,
+    width: block.roofAccentWidth ?? 1,
+  });
+  drawGroundingLine(graphics, lerpPoint(roof[3], roof[2], 0.16), lerpPoint(roof[3], roof[2], 0.82), {
+    color: roofAccentColor,
+    alpha: roofAccentAlpha * 0.82,
+    width: block.roofAccentWidth ?? 1,
+  });
+  for (const hatch of block.roofHatches ?? [
+    { from: { a: 0, b: 3, t: 0.34 }, to: { a: 1, b: 2, t: 0.34 } },
+    { from: { a: 0, b: 3, t: 0.54 }, to: { a: 1, b: 2, t: 0.54 } },
+  ]) {
+    drawGroundingLine(
+      graphics,
+      lerpPoint(roof[hatch.from.a], roof[hatch.from.b], hatch.from.t),
+      lerpPoint(roof[hatch.to.a], roof[hatch.to.b], hatch.to.t),
+      {
+        color: roofAccentColor,
+        alpha: hatch.alpha ?? 0.18,
+        width: hatch.width ?? 1,
+      },
+    );
+  }
+
+  if (block.neutralBaseRhythm !== false) {
+    const rhythmColor = parseSceneColor(block.baseRhythmColor, edgeColor);
+    const lowerBandA = lerpPoint(base[1], roof[1], 0.2);
+    const lowerBandB = lerpPoint(base[2], roof[2], 0.2);
+    const upperBandA = lerpPoint(base[1], roof[1], 0.38);
+    const upperBandB = lerpPoint(base[2], roof[2], 0.38);
+    drawGroundingLine(graphics, lowerBandA, lowerBandB, {
+      color: rhythmColor,
+      alpha: block.baseRhythmAlpha ?? 0.26,
+      width: block.baseRhythmWidth ?? 1.15,
+    });
+    drawGroundingLine(graphics, upperBandA, upperBandB, {
+      color: rhythmColor,
+      alpha: (block.baseRhythmAlpha ?? 0.26) * 0.72,
+      width: block.baseRhythmWidth ?? 1,
+    });
+    const tickCount = block.baseRhythmCount ?? 3;
+    for (let index = 1; index < tickCount; index += 1) {
+      const t = index / tickCount;
+      drawGroundingLine(graphics, lerpPoint(lowerBandA, lowerBandB, t), lerpPoint(upperBandA, upperBandB, t), {
+        color: rhythmColor,
+        alpha: (block.baseRhythmAlpha ?? 0.26) * 0.78,
+        width: 0.9,
+      });
+    }
+  }
+
+  if (block.truthStripe !== false) {
+    const stripeA = roof[0];
+    const stripeB = roof[1];
+    drawGroundingLine(graphics, {
+      x: stripeA.x + 4,
+      y: stripeA.y + 5,
+    }, {
+      x: stripeB.x - 4,
+      y: stripeB.y + 5,
+    }, {
+      color: parseSceneColor(block.truthStripeColor, truthColor),
+      alpha: block.truthStripeAlpha ?? 0.72,
+      width: block.truthStripeWidth ?? 2.2,
+    });
+  }
+
+  for (const accent of block.edgeAccents ?? []) {
+    drawGroundingLine(graphics, accent.from, accent.to, {
+      color: parseSceneColor(accent.color, 0xf5e5c3),
+      alpha: accent.alpha ?? 0.28,
+      width: accent.width ?? 1.2,
+    });
+  }
+}
+
+function lerpPoint(a, b, t) {
+  return {
+    x: a.x + (b.x - a.x) * t,
+    y: a.y + (b.y - a.y) * t,
+  };
 }
 
 function syncSpatialGroundingLayer(graphics, labelLayer, grounding, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {

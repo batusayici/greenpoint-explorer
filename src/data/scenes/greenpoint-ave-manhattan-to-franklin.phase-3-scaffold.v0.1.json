@@ -2,25 +2,25 @@
   "schemaVersion": "phase-3-scaffold.v0.1",
   "sceneId": "greenpoint-ave-manhattan-to-franklin-phase-3-scaffold",
   "status": "review-only-non-production",
-  "generatedAt": "2026-06-04T00:00:00-04:00",
+  "generatedAt": "2026-06-05T00:00:00-04:00",
   "reviewOnly": true,
   "slice": {
     "id": "greenpoint-ave-manhattan-to-franklin",
     "label": "Greenpoint Ave: Manhattan Ave to Franklin Ave",
     "from": "Greenpoint Ave / Manhattan Ave",
     "to": "Greenpoint Ave / Franklin Ave",
-    "status": "manual_draft",
-    "notes": "Phase 3 scaffold coordinates are stylized scene coordinates only. They do not claim exact real-world placement, storefront order, facade geometry, or address placement."
+    "status": "sourced_contextual_geometry_with_manual_draft_gaps",
+    "notes": "Phase 3 scaffold coordinates are stylized scene coordinates only. Official NYC Open Data records now support corridor street-centerline and building-footprint context; sidewalks, storefronts, entrances, facades, frontage, exact address placement, Brouwerij POI claims, and raster readiness remain manual_draft/blocked where noted."
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 geometry-first corridor review: accepted DTR-11 Manhattan/Greenpoint west-anchor raster plus status-labeled manual-draft corridor massing toward Franklin. No business verification or tenant fill is included.",
-    "reviewLabel": "PHASE 3 GEOMETRY-FIRST CORRIDOR REVIEW / REVIEW ONLY",
+    "note": "Phase 3 westward integration review: accepted DTR-11 Manhattan/Greenpoint west-anchor raster plus official NYC/Open corridor street/building context translated into a warmer paper/ink massing extension expanding west/left. Business, facade, frontage, entrance, signage, and exact storefront claims remain blocked.",
+    "reviewLabel": "PHASE 3 WESTWARD GEOMETRY-TO-MASSING CORRIDOR REVIEW / REVIEW ONLY",
     "sourceListLabel": "Phase 3 geometry status",
-    "disclaimer": "Review-only geometry pass. The DTR-11 west-anchor raster is accepted feedback/demo baseline only; mid-corridor massing is manual draft/contextual; Franklin and Brouwerij remain blocked markers. Business verification, facade/frontage/entrance, exact geometry, exact address placement, and production/public claims remain blocked unless separately sourced.",
+    "disclaimer": "Review-only westward visual-integration pass. The DTR-11 west-anchor raster remains the accepted feedback/demo baseline and style source; NYC Open Data supports corridor street-centerline and building-footprint context; filled massing, curb/slab cues, and facade-neutral base rhythm are stylized review translations only. Sidewalk bands and scene transform remain manual draft. Brouwerij business/POI claims, frontage, entrances, facades, signage, exact storefront geometry, exact address placement, active status, and production/public claims remain blocked unless separately sourced.",
     "sceneFrame": {
       "locationLabel": "Greenpoint Ave / Manhattan Ave to Franklin Ave",
-      "intent": "Architecture/street-geometry review first: sourced west anchor, manual-draft corridor continuation, blocked Franklin/Brouwerij context."
+      "intent": "Architecture/street-geometry review first: DTR-11 right-side style anchor, west/left sourced road/building massing rhythm, softened seam, quiet manual sidewalk gaps, and blocked Brouwerij/frontage/facade/signage claims."
     }
   },
   "scene": {
@@ -47,7 +47,7 @@
         "height": 518
       },
       "renderBounds": {
-        "x": 96,
+        "x": 1210,
         "y": 142,
         "width": 920,
         "height": 518
@@ -105,7 +105,7 @@
       },
       {
         "id": "tile-phase-3-mid-corridor-intake",
-        "label": "Mid-corridor manual-draft geometry tile",
+        "label": "Mid-corridor tile: sourced street/building geometry with manual-draft gaps",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
           "x": 1020,
@@ -113,13 +113,13 @@
           "width": 520,
           "height": 720
         },
-        "status": "manual_draft",
+        "status": "sourced",
         "loadPriority": 2,
-        "notes": "Review-only mid-corridor geometry/massing layer. Local repo evidence does not contain sourced mid-corridor geometry, businesses, addresses, facades, entrances, frontage/order, or exact geometry, so this tile renders only manual-draft contextual streetwall rhythm."
+        "notes": "Review-only mid-corridor geometry/massing layer. NYC Open Data supports street centerline and building-footprint context; sidewalk bands and scene placement remain stylized/manual draft; business, address, facade, entrance, frontage/order, and raster readiness remain blocked."
       },
       {
         "id": "tile-phase-3-east-franklin-intake",
-        "label": "East anchor tile: Franklin Ave blocked geometry marker",
+        "label": "East anchor tile: Franklin sourced geometry/context",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
           "x": 1620,
@@ -127,9 +127,9 @@
           "width": 520,
           "height": 720
         },
-        "status": "blocked",
+        "status": "sourced",
         "loadPriority": 3,
-        "notes": "Review-only Franklin Ave endpoint status layer. Brouwerij Lane is now tracked as a source-retrieval-blocked candidate inside this endpoint, but no exact Franklin business, address, facade, entrance, frontage/order, coordinates, or real-world geometry claim is made."
+        "notes": "Review-only Franklin endpoint geometry/context layer. NYC Open Data Centerline and Building Footprints support street/building context. Brouwerij POI/business, facade, entrance, frontage/order, exact storefront geometry, and raster readiness remain blocked."
       }
     ],
     "layers": [
@@ -138,7 +138,7 @@
         "type": "raster_plate",
         "label": "Accepted DTR-11 west-anchor raster plate",
         "bounds": {
-          "x": 96,
+          "x": 1210,
           "y": 142,
           "width": 920,
           "height": 518
@@ -148,24 +148,24 @@
       {
         "id": "layer-real-data-intake-lanes",
         "type": "geometry_review_lanes",
-        "label": "Geometry review lanes: manual-draft corridor and blocked endpoint",
+        "label": "Geometry review lanes: sourced corridor context with manual/blocked gaps",
         "bounds": {
-          "x": 1020,
-          "y": 122,
-          "width": 1120,
-          "height": 720
+          "x": 32,
+          "y": 118,
+          "width": 1220,
+          "height": 726
         },
-        "status": "manual_draft"
+        "status": "sourced"
       },
       {
         "id": "layer-interaction-targets",
         "type": "interaction_targets",
         "label": "Interaction targets",
         "bounds": {
-          "x": 180,
-          "y": 208,
-          "width": 1860,
-          "height": 452
+          "x": 54,
+          "y": 150,
+          "width": 2030,
+          "height": 560
         },
         "status": "manual_draft"
       },
@@ -174,9 +174,9 @@
         "type": "qa_debug_overlay",
         "label": "QA / provenance overlay",
         "bounds": {
-          "x": 96,
+          "x": 42,
           "y": 88,
-          "width": 2112,
+          "width": 2160,
           "height": 796
         },
         "status": "manual_draft"
@@ -216,27 +216,32 @@
               "label": "DTR-11 west-anchor baseline",
               "status": "sourced",
               "fillColor": "#6fb08f",
-              "fillAlpha": 0.03,
+              "fillAlpha": 0.015,
               "strokeColor": "#6fb08f",
-              "strokeAlpha": 0.62,
-              "strokeWidth": 3,
+              "strokeAlpha": 0.24,
+              "strokeWidth": 1.4,
               "polygon": [
-                { "x": 96, "y": 142 },
-                { "x": 1016, "y": 142 },
-                { "x": 1016, "y": 660 },
-                { "x": 96, "y": 660 }
+                {
+                  "x": 1210,
+                  "y": 142
+                },
+                {
+                  "x": 2130,
+                  "y": 142
+                },
+                {
+                  "x": 2130,
+                  "y": 660
+                },
+                {
+                  "x": 1210,
+                  "y": 660
+                }
               ]
             }
           ],
-          "callouts": [
-            {
-              "id": "west-anchor-sourced-callout",
-              "text": "Sourced/contextual west anchor: DTR-11 baseline + repo-local NYC/Open footprint context",
-              "status": "sourced",
-              "point": { "x": 118, "y": 164 },
-              "maxWidth": 310
-            }
-          ]
+          "callouts": [],
+          "showLabelsInNormalMode": false
         },
         "spatialGrounding": {
           "id": "west-anchor-manhattan-greenpoint-spatial-grounding-v0.1",
@@ -259,21 +264,42 @@
               "strokeColor": "#171514",
               "fillAlpha": 0.76,
               "polygon": [
-                { "x": 326, "y": 112 },
-                { "x": 514, "y": 132 },
-                { "x": 570, "y": 798 },
-                { "x": 338, "y": 788 }
+                {
+                  "x": 326,
+                  "y": 112
+                },
+                {
+                  "x": 514,
+                  "y": 132
+                },
+                {
+                  "x": 570,
+                  "y": 798
+                },
+                {
+                  "x": 338,
+                  "y": 788
+                }
               ],
               "centerLines": [
                 {
-                  "from": { "x": 428, "y": 132 },
-                  "to": { "x": 454, "y": 770 },
+                  "from": {
+                    "x": 428,
+                    "y": 132
+                  },
+                  "to": {
+                    "x": 454,
+                    "y": 770
+                  },
                   "color": "#f0bc45",
                   "alpha": 0.38,
                   "width": 2
                 }
               ],
-              "labelPoint": { "x": 455, "y": 652 },
+              "labelPoint": {
+                "x": 455,
+                "y": 652
+              },
               "labelRotation": -0.18,
               "notes": "Manual draft scene axis for Manhattan Ave orientation only; not a measured street alignment."
             },
@@ -285,21 +311,42 @@
               "strokeColor": "#171514",
               "fillAlpha": 0.8,
               "polygon": [
-                { "x": 94, "y": 392 },
-                { "x": 758, "y": 270 },
-                { "x": 805, "y": 442 },
-                { "x": 126, "y": 610 }
+                {
+                  "x": 94,
+                  "y": 392
+                },
+                {
+                  "x": 758,
+                  "y": 270
+                },
+                {
+                  "x": 805,
+                  "y": 442
+                },
+                {
+                  "x": 126,
+                  "y": 610
+                }
               ],
               "centerLines": [
                 {
-                  "from": { "x": 132, "y": 494 },
-                  "to": { "x": 760, "y": 360 },
+                  "from": {
+                    "x": 132,
+                    "y": 494
+                  },
+                  "to": {
+                    "x": 760,
+                    "y": 360
+                  },
                   "color": "#f5e5c3",
                   "alpha": 0.26,
                   "width": 2
                 }
               ],
-              "labelPoint": { "x": 156, "y": 518 },
+              "labelPoint": {
+                "x": 156,
+                "y": 518
+              },
               "labelRotation": -0.16,
               "notes": "Manual draft scene axis for Greenpoint Ave orientation only; not a measured street alignment."
             }
@@ -310,10 +357,22 @@
               "status": "manual_draft",
               "fillColor": "#d8c79f",
               "polygon": [
-                { "x": 168, "y": 194 },
-                { "x": 322, "y": 128 },
-                { "x": 372, "y": 316 },
-                { "x": 170, "y": 382 }
+                {
+                  "x": 168,
+                  "y": 194
+                },
+                {
+                  "x": 322,
+                  "y": 128
+                },
+                {
+                  "x": 372,
+                  "y": 316
+                },
+                {
+                  "x": 170,
+                  "y": 382
+                }
               ]
             },
             {
@@ -321,10 +380,22 @@
               "status": "manual_draft",
               "fillColor": "#ddcfa8",
               "polygon": [
-                { "x": 516, "y": 150 },
-                { "x": 742, "y": 194 },
-                { "x": 720, "y": 352 },
-                { "x": 534, "y": 328 }
+                {
+                  "x": 516,
+                  "y": 150
+                },
+                {
+                  "x": 742,
+                  "y": 194
+                },
+                {
+                  "x": 720,
+                  "y": 352
+                },
+                {
+                  "x": 534,
+                  "y": 328
+                }
               ]
             },
             {
@@ -332,10 +403,22 @@
               "status": "manual_draft",
               "fillColor": "#d5c297",
               "polygon": [
-                { "x": 130, "y": 592 },
-                { "x": 342, "y": 518 },
-                { "x": 444, "y": 730 },
-                { "x": 196, "y": 802 }
+                {
+                  "x": 130,
+                  "y": 592
+                },
+                {
+                  "x": 342,
+                  "y": 518
+                },
+                {
+                  "x": 444,
+                  "y": 730
+                },
+                {
+                  "x": 196,
+                  "y": 802
+                }
               ]
             },
             {
@@ -343,10 +426,22 @@
               "status": "manual_draft",
               "fillColor": "#d9c8a0",
               "polygon": [
-                { "x": 520, "y": 526 },
-                { "x": 744, "y": 468 },
-                { "x": 796, "y": 668 },
-                { "x": 560, "y": 746 }
+                {
+                  "x": 520,
+                  "y": 526
+                },
+                {
+                  "x": 744,
+                  "y": 468
+                },
+                {
+                  "x": 796,
+                  "y": 668
+                },
+                {
+                  "x": 560,
+                  "y": 746
+                }
               ]
             }
           ],
@@ -358,10 +453,46 @@
               "alpha": 0.55,
               "width": 5,
               "stripes": [
-                { "from": { "x": 280, "y": 406 }, "to": { "x": 334, "y": 386 } },
-                { "from": { "x": 302, "y": 440 }, "to": { "x": 360, "y": 420 } },
-                { "from": { "x": 326, "y": 476 }, "to": { "x": 386, "y": 454 } },
-                { "from": { "x": 350, "y": 510 }, "to": { "x": 414, "y": 488 } }
+                {
+                  "from": {
+                    "x": 280,
+                    "y": 406
+                  },
+                  "to": {
+                    "x": 334,
+                    "y": 386
+                  }
+                },
+                {
+                  "from": {
+                    "x": 302,
+                    "y": 440
+                  },
+                  "to": {
+                    "x": 360,
+                    "y": 420
+                  }
+                },
+                {
+                  "from": {
+                    "x": 326,
+                    "y": 476
+                  },
+                  "to": {
+                    "x": 386,
+                    "y": 454
+                  }
+                },
+                {
+                  "from": {
+                    "x": 350,
+                    "y": 510
+                  },
+                  "to": {
+                    "x": 414,
+                    "y": 488
+                  }
+                }
               ]
             },
             {
@@ -371,9 +502,36 @@
               "alpha": 0.5,
               "width": 5,
               "stripes": [
-                { "from": { "x": 438, "y": 470 }, "to": { "x": 532, "y": 452 } },
-                { "from": { "x": 438, "y": 498 }, "to": { "x": 536, "y": 480 } },
-                { "from": { "x": 440, "y": 526 }, "to": { "x": 538, "y": 508 } }
+                {
+                  "from": {
+                    "x": 438,
+                    "y": 470
+                  },
+                  "to": {
+                    "x": 532,
+                    "y": 452
+                  }
+                },
+                {
+                  "from": {
+                    "x": 438,
+                    "y": 498
+                  },
+                  "to": {
+                    "x": 536,
+                    "y": 480
+                  }
+                },
+                {
+                  "from": {
+                    "x": 440,
+                    "y": 526
+                  },
+                  "to": {
+                    "x": 538,
+                    "y": 508
+                  }
+                }
               ]
             }
           ],
@@ -386,14 +544,44 @@
                 "status": "candidate",
                 "fillColor": "#a66a4a",
                 "polygon": [
-                  { "x": 190, "y": 150 },
-                  { "x": 356, "y": 116 },
-                  { "x": 404, "y": 290 },
-                  { "x": 230, "y": 330 }
+                  {
+                    "x": 190,
+                    "y": 150
+                  },
+                  {
+                    "x": 356,
+                    "y": 116
+                  },
+                  {
+                    "x": 404,
+                    "y": 290
+                  },
+                  {
+                    "x": 230,
+                    "y": 330
+                  }
                 ],
                 "roofLines": [
-                  { "from": { "x": 206, "y": 174 }, "to": { "x": 362, "y": 142 } },
-                  { "from": { "x": 224, "y": 208 }, "to": { "x": 374, "y": 178 } }
+                  {
+                    "from": {
+                      "x": 206,
+                      "y": 174
+                    },
+                    "to": {
+                      "x": 362,
+                      "y": 142
+                    }
+                  },
+                  {
+                    "from": {
+                      "x": 224,
+                      "y": 208
+                    },
+                    "to": {
+                      "x": 374,
+                      "y": 178
+                    }
+                  }
                 ],
                 "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
               },
@@ -408,18 +596,63 @@
                   "accentColor": "#74a667",
                   "windowColor": "#202424",
                   "entryColor": "#151312",
-                  "bounds": { "x": 250, "y": 244, "width": 160, "height": 76 },
-                  "signBounds": { "x": 258, "y": 244, "width": 144, "height": 24 },
-                  "entranceBounds": { "x": 318, "y": 280, "width": 26, "height": 36 },
+                  "bounds": {
+                    "x": 250,
+                    "y": 244,
+                    "width": 160,
+                    "height": 76
+                  },
+                  "signBounds": {
+                    "x": 258,
+                    "y": 244,
+                    "width": 144,
+                    "height": 24
+                  },
+                  "entranceBounds": {
+                    "x": 318,
+                    "y": 280,
+                    "width": 26,
+                    "height": 36
+                  },
                   "windowBounds": [
-                    { "x": 268, "y": 280, "width": 36, "height": 22 },
-                    { "x": 356, "y": 280, "width": 34, "height": 22 }
+                    {
+                      "x": 268,
+                      "y": 280,
+                      "width": 36,
+                      "height": 22
+                    },
+                    {
+                      "x": 356,
+                      "y": 280,
+                      "width": 34,
+                      "height": 22
+                    }
                   ],
                   "cueRects": [
-                    { "bounds": { "x": 286, "y": 248, "width": 18, "height": 15 }, "fillColor": "#74a667" },
-                    { "bounds": { "x": 394, "y": 274, "width": 16, "height": 44 }, "fillColor": "#171514", "fillAlpha": 0.76 }
+                    {
+                      "bounds": {
+                        "x": 286,
+                        "y": 248,
+                        "width": 18,
+                        "height": 15
+                      },
+                      "fillColor": "#74a667"
+                    },
+                    {
+                      "bounds": {
+                        "x": 394,
+                        "y": 274,
+                        "width": 16,
+                        "height": 44
+                      },
+                      "fillColor": "#171514",
+                      "fillAlpha": 0.76
+                    }
                   ],
-                  "labelPoint": { "x": 330, "y": 256 },
+                  "labelPoint": {
+                    "x": 330,
+                    "y": 256
+                  },
                   "notes": "DTR-11 cue translation: maroon/green/black identity, central entry, poster/window rhythm, adjacent dark doorway. Manual draft, not exact facade/frontage."
                 }
               ]
@@ -432,14 +665,44 @@
                 "status": "candidate",
                 "fillColor": "#9b8174",
                 "polygon": [
-                  { "x": 510, "y": 134 },
-                  { "x": 742, "y": 178 },
-                  { "x": 690, "y": 348 },
-                  { "x": 472, "y": 306 }
+                  {
+                    "x": 510,
+                    "y": 134
+                  },
+                  {
+                    "x": 742,
+                    "y": 178
+                  },
+                  {
+                    "x": 690,
+                    "y": 348
+                  },
+                  {
+                    "x": 472,
+                    "y": 306
+                  }
                 ],
                 "roofLines": [
-                  { "from": { "x": 526, "y": 160 }, "to": { "x": 724, "y": 198 } },
-                  { "from": { "x": 508, "y": 194 }, "to": { "x": 710, "y": 232 } }
+                  {
+                    "from": {
+                      "x": 526,
+                      "y": 160
+                    },
+                    "to": {
+                      "x": 724,
+                      "y": 198
+                    }
+                  },
+                  {
+                    "from": {
+                      "x": 508,
+                      "y": 194
+                    },
+                    "to": {
+                      "x": 710,
+                      "y": 232
+                    }
+                  }
                 ],
                 "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
               },
@@ -454,18 +717,65 @@
                   "accentColor": "#5a3a2a",
                   "windowColor": "#20282a",
                   "entryColor": "#181d1e",
-                  "bounds": { "x": 520, "y": 236, "width": 176, "height": 82 },
-                  "signBounds": { "x": 536, "y": 236, "width": 110, "height": 22 },
-                  "entranceBounds": { "x": 592, "y": 276, "width": 28, "height": 34 },
+                  "bounds": {
+                    "x": 520,
+                    "y": 236,
+                    "width": 176,
+                    "height": 82
+                  },
+                  "signBounds": {
+                    "x": 536,
+                    "y": 236,
+                    "width": 110,
+                    "height": 22
+                  },
+                  "entranceBounds": {
+                    "x": 592,
+                    "y": 276,
+                    "width": 28,
+                    "height": 34
+                  },
                   "windowBounds": [
-                    { "x": 532, "y": 276, "width": 44, "height": 22 },
-                    { "x": 636, "y": 276, "width": 46, "height": 22 }
+                    {
+                      "x": 532,
+                      "y": 276,
+                      "width": 44,
+                      "height": 22
+                    },
+                    {
+                      "x": 636,
+                      "y": 276,
+                      "width": 46,
+                      "height": 22
+                    }
                   ],
                   "cueRects": [
-                    { "bounds": { "x": 656, "y": 240, "width": 18, "height": 68 }, "fillColor": "#5a3a2a", "fillAlpha": 0.68 },
-                    { "bounds": { "x": 548, "y": 206, "width": 82, "height": 26 }, "fillColor": "#6f875d", "strokeColor": "#f0bc45", "fillAlpha": 0.62 }
+                    {
+                      "bounds": {
+                        "x": 656,
+                        "y": 240,
+                        "width": 18,
+                        "height": 68
+                      },
+                      "fillColor": "#5a3a2a",
+                      "fillAlpha": 0.68
+                    },
+                    {
+                      "bounds": {
+                        "x": 548,
+                        "y": 206,
+                        "width": 82,
+                        "height": 26
+                      },
+                      "fillColor": "#6f875d",
+                      "strokeColor": "#f0bc45",
+                      "fillAlpha": 0.62
+                    }
                   ],
-                  "labelPoint": { "x": 592, "y": 247 },
+                  "labelPoint": {
+                    "x": 592,
+                    "y": 247
+                  },
                   "notes": "DTR-11 cue translation: gray/yellow/dark glass, brown slats, golden-arch cue, mural mass above. Manual draft, not exact facade/frontage."
                 }
               ]
@@ -478,14 +788,44 @@
                 "status": "candidate",
                 "fillColor": "#c2a06f",
                 "polygon": [
-                  { "x": 142, "y": 548 },
-                  { "x": 350, "y": 492 },
-                  { "x": 430, "y": 704 },
-                  { "x": 206, "y": 766 }
+                  {
+                    "x": 142,
+                    "y": 548
+                  },
+                  {
+                    "x": 350,
+                    "y": 492
+                  },
+                  {
+                    "x": 430,
+                    "y": 704
+                  },
+                  {
+                    "x": 206,
+                    "y": 766
+                  }
                 ],
                 "roofLines": [
-                  { "from": { "x": 174, "y": 582 }, "to": { "x": 362, "y": 532 } },
-                  { "from": { "x": 190, "y": 620 }, "to": { "x": 376, "y": 570 } }
+                  {
+                    "from": {
+                      "x": 174,
+                      "y": 582
+                    },
+                    "to": {
+                      "x": 362,
+                      "y": 532
+                    }
+                  },
+                  {
+                    "from": {
+                      "x": 190,
+                      "y": 620
+                    },
+                    "to": {
+                      "x": 376,
+                      "y": 570
+                    }
+                  }
                 ],
                 "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
               },
@@ -500,18 +840,62 @@
                   "accentColor": "#e28e54",
                   "windowColor": "#202424",
                   "entryColor": "#151312",
-                  "bounds": { "x": 232, "y": 592, "width": 158, "height": 82 },
-                  "signBounds": { "x": 250, "y": 592, "width": 108, "height": 24 },
-                  "entranceBounds": { "x": 304, "y": 632, "width": 28, "height": 36 },
+                  "bounds": {
+                    "x": 232,
+                    "y": 592,
+                    "width": 158,
+                    "height": 82
+                  },
+                  "signBounds": {
+                    "x": 250,
+                    "y": 592,
+                    "width": 108,
+                    "height": 24
+                  },
+                  "entranceBounds": {
+                    "x": 304,
+                    "y": 632,
+                    "width": 28,
+                    "height": 36
+                  },
                   "windowBounds": [
-                    { "x": 256, "y": 632, "width": 34, "height": 22 },
-                    { "x": 344, "y": 632, "width": 32, "height": 22 }
+                    {
+                      "x": 256,
+                      "y": 632,
+                      "width": 34,
+                      "height": 22
+                    },
+                    {
+                      "x": 344,
+                      "y": 632,
+                      "width": 32,
+                      "height": 22
+                    }
                   ],
                   "cueRects": [
-                    { "bounds": { "x": 360, "y": 596, "width": 26, "height": 44 }, "fillColor": "#e28e54" },
-                    { "bounds": { "x": 274, "y": 596, "width": 20, "height": 15 }, "fillColor": "#e86aa7" }
+                    {
+                      "bounds": {
+                        "x": 360,
+                        "y": 596,
+                        "width": 26,
+                        "height": 44
+                      },
+                      "fillColor": "#e28e54"
+                    },
+                    {
+                      "bounds": {
+                        "x": 274,
+                        "y": 596,
+                        "width": 20,
+                        "height": 15
+                      },
+                      "fillColor": "#e86aa7"
+                    }
                   ],
-                  "labelPoint": { "x": 304, "y": 604 },
+                  "labelPoint": {
+                    "x": 304,
+                    "y": 604
+                  },
                   "notes": "DTR-11 cue translation: black/orange/pink sign band, side/corner sign, dark recessed entry, beige mass. Manual draft, not exact facade/frontage."
                 }
               ]
@@ -524,14 +908,44 @@
                 "status": "candidate",
                 "fillColor": "#c4b7a1",
                 "polygon": [
-                  { "x": 500, "y": 530 },
-                  { "x": 742, "y": 478 },
-                  { "x": 782, "y": 682 },
-                  { "x": 548, "y": 742 }
+                  {
+                    "x": 500,
+                    "y": 530
+                  },
+                  {
+                    "x": 742,
+                    "y": 478
+                  },
+                  {
+                    "x": 782,
+                    "y": 682
+                  },
+                  {
+                    "x": 548,
+                    "y": 742
+                  }
                 ],
                 "roofLines": [
-                  { "from": { "x": 522, "y": 558 }, "to": { "x": 734, "y": 514 } },
-                  { "from": { "x": 538, "y": 600 }, "to": { "x": 748, "y": 552 } }
+                  {
+                    "from": {
+                      "x": 522,
+                      "y": 558
+                    },
+                    "to": {
+                      "x": 734,
+                      "y": 514
+                    }
+                  },
+                  {
+                    "from": {
+                      "x": 538,
+                      "y": 600
+                    },
+                    "to": {
+                      "x": 748,
+                      "y": 552
+                    }
+                  }
                 ],
                 "notes": "Approximate contextual mass from candidate footprint orientation plus scene composition; not exact building geometry."
               },
@@ -546,18 +960,64 @@
                   "accentColor": "#377270",
                   "windowColor": "#24292a",
                   "entryColor": "#11100f",
-                  "bounds": { "x": 550, "y": 572, "width": 166, "height": 86 },
-                  "signBounds": { "x": 584, "y": 572, "width": 102, "height": 24 },
-                  "entranceBounds": { "x": 622, "y": 616, "width": 30, "height": 38 },
+                  "bounds": {
+                    "x": 550,
+                    "y": 572,
+                    "width": 166,
+                    "height": 86
+                  },
+                  "signBounds": {
+                    "x": 584,
+                    "y": 572,
+                    "width": 102,
+                    "height": 24
+                  },
+                  "entranceBounds": {
+                    "x": 622,
+                    "y": 616,
+                    "width": 30,
+                    "height": 38
+                  },
                   "windowBounds": [
-                    { "x": 570, "y": 618, "width": 38, "height": 22 },
-                    { "x": 666, "y": 618, "width": 36, "height": 22 }
+                    {
+                      "x": 570,
+                      "y": 618,
+                      "width": 38,
+                      "height": 22
+                    },
+                    {
+                      "x": 666,
+                      "y": 618,
+                      "width": 36,
+                      "height": 22
+                    }
                   ],
                   "cueRects": [
-                    { "bounds": { "x": 612, "y": 650, "width": 52, "height": 7 }, "fillColor": "#171514", "fillAlpha": 0.78 },
-                    { "bounds": { "x": 566, "y": 606, "width": 140, "height": 5 }, "fillColor": "#8b4734", "fillAlpha": 0.68 }
+                    {
+                      "bounds": {
+                        "x": 612,
+                        "y": 650,
+                        "width": 52,
+                        "height": 7
+                      },
+                      "fillColor": "#171514",
+                      "fillAlpha": 0.78
+                    },
+                    {
+                      "bounds": {
+                        "x": 566,
+                        "y": 606,
+                        "width": 140,
+                        "height": 5
+                      },
+                      "fillColor": "#8b4734",
+                      "fillAlpha": 0.68
+                    }
                   ],
-                  "labelPoint": { "x": 635, "y": 584 },
+                  "labelPoint": {
+                    "x": 635,
+                    "y": 584
+                  },
                   "notes": "DTR-11 cue translation: green sign on white box, recessed black-framed entry, railings/steps, reddish-brown trim rhythm. Manual draft, not exact facade/frontage."
                 }
               ]
@@ -570,14 +1030,43 @@
               "shortLabel": "G cue\nsymbolic",
               "status": "symbolic",
               "fillColor": "#25465a",
-              "bounds": { "x": 704, "y": 646, "width": 72, "height": 54 },
-              "symbolPoint": { "x": 728, "y": 664 },
+              "bounds": {
+                "x": 704,
+                "y": 646,
+                "width": 72,
+                "height": 54
+              },
+              "symbolPoint": {
+                "x": 728,
+                "y": 664
+              },
               "symbolRadius": 12,
               "railLines": [
-                { "from": { "x": 742, "y": 684 }, "to": { "x": 766, "y": 676 } },
-                { "from": { "x": 742, "y": 694 }, "to": { "x": 770, "y": 686 } }
+                {
+                  "from": {
+                    "x": 742,
+                    "y": 684
+                  },
+                  "to": {
+                    "x": 766,
+                    "y": 676
+                  }
+                },
+                {
+                  "from": {
+                    "x": 742,
+                    "y": 694
+                  },
+                  "to": {
+                    "x": 770,
+                    "y": 686
+                  }
+                }
               ],
-              "labelPoint": { "x": 740, "y": 690 },
+              "labelPoint": {
+                "x": 740,
+                "y": 690
+              },
               "notes": "Symbolic corner/transit context only. Exact station entrance geometry and placement remain blocked."
             }
           ],
@@ -586,14 +1075,20 @@
               "id": "west-anchor-spatial-status-callout",
               "text": "Spatial grounding: manual draft / approximate contextual geometry",
               "status": "manual_draft",
-              "point": { "x": 184, "y": 160 },
+              "point": {
+                "x": 184,
+                "y": 160
+              },
               "maxWidth": 220
             },
             {
               "id": "west-anchor-transit-status-callout",
               "text": "G cue is symbolic; exact entrance placement blocked",
               "status": "symbolic",
-              "point": { "x": 626, "y": 706 },
+              "point": {
+                "x": 626,
+                "y": 706
+              },
               "maxWidth": 190
             }
           ],
@@ -862,7 +1357,7 @@
           "y": 418
         },
         "bounds": {
-          "x": 96,
+          "x": 1210,
           "y": 142,
           "width": 920,
           "height": 518
@@ -882,20 +1377,20 @@
       },
       {
         "id": "phase3-mid-block",
-        "title": "Mid-Corridor Geometry",
-        "label": "Manual-draft corridor geometry segment",
-        "category": "Review-only geometry/massing segment",
+        "title": "Westward Corridor Massing",
+        "label": "Sourced/manual corridor geometry segment",
+        "category": "Review-only sourced geometry/context segment",
         "address": "Greenpoint Ave block context",
-        "cardBadge": "manual draft",
-        "verificationStatus": "manual_draft",
-        "status": "manual_draft",
-        "summary": "Mid-corridor now renders only manual-draft streetbed, sidewalk, and building-massing rhythm so the Manhattan-to-Franklin corridor can be reviewed spatially before business/place overlays are added.",
-        "disclaimer": "Review-only geometry scaffold. No exact mid-corridor businesses, facades, addresses, storefront order, entrances, or real-world geometry are claimed.",
+        "cardBadge": "sourced",
+        "verificationStatus": "sourced",
+        "status": "sourced",
+        "summary": "Mid-corridor now renders sourced NYC/Open street-centerline and building-footprint context as stylized paper/ink architectural massing, with sidewalk bands and scene placement clearly secondary/manual-draft. No business/place overlays are promoted.",
+        "disclaimer": "Review-only geometry scaffold. Filled massing is footprint-derived context for spatial review only. No exact mid-corridor businesses, facades, addresses, storefront order, entrances, sidewalk polygons, exact address placement, or raster readiness are claimed.",
         "tileId": "tile-phase-3-mid-corridor-intake",
-        "sourceSummary": "Local repo evidence supports sourced/contextual west-anchor geometry only. This mid-corridor continuation is manual-draft scene geometry for spatial recognizability review; no business verification, live retrieval, or source acquisition was performed.",
+        "sourceSummary": "Official NYC Open Data packet src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json promotes road/building geometry context from source records; sidewalk bands, stylized scene placement, business evidence, facade/frontage/entrance, and raster readiness remain non-promoted.",
         "intakePanel": {
           "title": "Mid-Corridor Geometry",
-          "status": "manual_draft",
+          "status": "sourced",
           "bounds": {
             "x": 1080,
             "y": 112,
@@ -907,165 +1402,691 @@
             "y": 138
           },
           "textWidth": 360,
-          "fillAlpha": 0.72,
+          "fillAlpha": 0.55,
           "lines": [
-            "Streetwall rhythm: manual draft",
-            "Business/place overlays: suppressed",
-            "Facade/frontage/entrance: blocked"
+            "Street/building massing: sourced/contextual",
+            "Sidewalk + scene placement: quiet manual draft",
+            "Business/facade/frontage/entrance: blocked"
           ]
         },
         "geometryReview": {
-          "id": "phase3-mid-corridor-manual-draft-geometry",
-          "label": "Manual-draft Greenpoint Ave corridor continuation",
-          "status": "manual_draft",
+          "id": "phase3-mid-corridor-sourced-context-geometry",
+          "label": "West/left sourced street and footprint context translated into paper/ink massing",
+          "status": "sourced",
           "showInNormalMode": true,
-          "usageLimit": "Manual-draft contextual street geometry for review only. These streetbed, sidewalk, and massing marks are not sourced footprints, exact parcels, tenant frontage, entrances, facade appearance, address placement, or business identity.",
+          "usageLimit": "NYC Open Data supports road centerline and building-footprint context only. Filled massing is a stylized westward review translation of selected source footprints; sidewalk bands and scene-space projection remain manual-draft/contextual. No tenant frontage, storefront order, entrances, facade appearance, signage, business identity, active status, exact address placement, or raster readiness is claimed.",
           "polygons": [
             {
-              "id": "mid-corridor-greenpoint-ave-streetbed",
-              "label": "Greenpoint Ave streetbed continuation",
-              "status": "manual_draft",
-              "fillColor": "#47433e",
-              "fillAlpha": 0.82,
-              "strokeColor": "#171514",
-              "strokeAlpha": 0.6,
-              "strokeWidth": 2,
+              "id": "mid-corridor-greenpoint-ave-streetbed-source-backed",
+              "label": "NYC Centerline 47237: Greenpoint Ave road-bed context",
+              "status": "sourced",
+              "sourceRecordId": "nyc-centerline-physicalid-47237",
+              "fillColor": "#3c3f39",
+              "fillAlpha": 0.91,
+              "strokeColor": "#4a392d",
+              "strokeAlpha": 0.5,
+              "strokeWidth": 1.4,
               "polygon": [
-                { "x": 966, "y": 352 },
-                { "x": 1582, "y": 252 },
-                { "x": 1604, "y": 416 },
-                { "x": 984, "y": 548 }
+                {
+                  "x": 1214,
+                  "y": 352
+                },
+                {
+                  "x": 598,
+                  "y": 252
+                },
+                {
+                  "x": 576,
+                  "y": 416
+                },
+                {
+                  "x": 1196,
+                  "y": 548
+                }
               ]
             },
             {
-              "id": "mid-corridor-north-sidewalk-band",
+              "id": "mid-corridor-north-sidewalk-band-manual-draft",
               "label": "North sidewalk/streetwall band",
               "status": "manual_draft",
-              "fillColor": "#d9c69a",
-              "fillAlpha": 0.38,
-              "strokeColor": "#f0bc45",
-              "strokeAlpha": 0.42,
-              "strokeWidth": 1.6,
+              "fillColor": "#d5c18f",
+              "fillAlpha": 0.16,
+              "strokeColor": "#ecd5a2",
+              "strokeAlpha": 0.16,
+              "strokeWidth": 0.9,
               "polygon": [
-                { "x": 988, "y": 262 },
-                { "x": 1558, "y": 168 },
-                { "x": 1582, "y": 248 },
-                { "x": 968, "y": 350 }
+                {
+                  "x": 1192,
+                  "y": 262
+                },
+                {
+                  "x": 622,
+                  "y": 168
+                },
+                {
+                  "x": 598,
+                  "y": 248
+                },
+                {
+                  "x": 1212,
+                  "y": 350
+                }
               ]
             },
             {
-              "id": "mid-corridor-south-sidewalk-band",
+              "id": "mid-corridor-south-sidewalk-band-manual-draft",
               "label": "South sidewalk/streetwall band",
               "status": "manual_draft",
-              "fillColor": "#d3bd8f",
-              "fillAlpha": 0.38,
-              "strokeColor": "#f0bc45",
-              "strokeAlpha": 0.42,
-              "strokeWidth": 1.6,
+              "fillColor": "#d5c18f",
+              "fillAlpha": 0.16,
+              "strokeColor": "#ecd5a2",
+              "strokeAlpha": 0.16,
+              "strokeWidth": 0.9,
               "polygon": [
-                { "x": 984, "y": 550 },
-                { "x": 1608, "y": 418 },
-                { "x": 1626, "y": 528 },
-                { "x": 1028, "y": 690 }
+                {
+                  "x": 1196,
+                  "y": 550
+                },
+                {
+                  "x": 572,
+                  "y": 418
+                },
+                {
+                  "x": 554,
+                  "y": 528
+                },
+                {
+                  "x": 1152,
+                  "y": 690
+                }
               ]
+            },
+            {
+              "id": "dtr-left-seam-apron-manual-draft-context",
+              "label": "Visual seam apron into DTR-11 baseline",
+              "status": "manual_draft",
+              "fillColor": "#d3bd8d",
+              "fillAlpha": 0.11,
+              "strokeColor": "#ead4a6",
+              "strokeAlpha": 0.08,
+              "strokeWidth": 0.8,
+              "polygon": [
+                {
+                  "x": 1188,
+                  "y": 318
+                },
+                {
+                  "x": 1224,
+                  "y": 312
+                },
+                {
+                  "x": 1230,
+                  "y": 520
+                },
+                {
+                  "x": 1184,
+                  "y": 530
+                }
+              ],
+              "claimLimit": "Manual-draft visual seam apron only; not exact sidewalk, curb, frontage, facade, entrance, or street geometry."
             }
           ],
           "lines": [
             {
-              "id": "mid-corridor-center-line",
-              "label": "Manual-draft Greenpoint Ave center rhythm",
+              "id": "mid-westward-curb-north-0",
+              "label": "Quiet curb edge cue",
               "status": "manual_draft",
-              "from": { "x": 1014, "y": 456 },
-              "to": { "x": 1568, "y": 336 },
+              "from": {
+                "x": 1214,
+                "y": 352
+              },
+              "to": {
+                "x": 598,
+                "y": 252
+              },
+              "color": "#e6d2aa",
+              "alpha": 0.24,
+              "width": 1
+            },
+            {
+              "id": "mid-westward-curb-south-0",
+              "label": "Quiet curb edge cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1196,
+                "y": 548
+              },
+              "to": {
+                "x": 576,
+                "y": 416
+              },
+              "color": "#e6d2aa",
+              "alpha": 0.24,
+              "width": 1
+            },
+            {
+              "id": "mid-westward-street-surface-grain-0",
+              "label": "Street surface tone cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1205,
+                "y": 450
+              },
+              "to": {
+                "x": 587,
+                "y": 334
+              },
+              "color": "#f4e4c2",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-center-line-source-backed",
+              "label": "NYC Centerline physicalid 47237 projected into scene coordinates",
+              "status": "sourced",
+              "sourceRecordId": "nyc-centerline-physicalid-47237",
+              "from": {
+                "x": 1170,
+                "y": 458
+              },
+              "to": {
+                "x": 610,
+                "y": 336
+              },
               "color": "#f5e5c3",
-              "alpha": 0.22,
-              "width": 2
+              "alpha": 0.12,
+              "width": 1.2
+            },
+            {
+              "id": "mid-corridor-north-sidewalk-band-manual-draft-slab-joint-1",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1196,
+                "y": 279.6
+              },
+              "to": {
+                "x": 617.2,
+                "y": 184
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-north-sidewalk-band-manual-draft-slab-joint-2",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1200,
+                "y": 297.2
+              },
+              "to": {
+                "x": 612.4,
+                "y": 200
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-north-sidewalk-band-manual-draft-slab-joint-3",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1204,
+                "y": 314.8
+              },
+              "to": {
+                "x": 607.6,
+                "y": 216
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-north-sidewalk-band-manual-draft-slab-joint-4",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1208,
+                "y": 332.4
+              },
+              "to": {
+                "x": 602.8,
+                "y": 232
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-south-sidewalk-band-manual-draft-slab-joint-1",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1187.2,
+                "y": 578
+              },
+              "to": {
+                "x": 568.4,
+                "y": 440
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-south-sidewalk-band-manual-draft-slab-joint-2",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1178.4,
+                "y": 606
+              },
+              "to": {
+                "x": 564.8,
+                "y": 462
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-south-sidewalk-band-manual-draft-slab-joint-3",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1169.6,
+                "y": 634
+              },
+              "to": {
+                "x": 561.2,
+                "y": 484
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "mid-corridor-south-sidewalk-band-manual-draft-slab-joint-4",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 1160.8,
+                "y": 662
+              },
+              "to": {
+                "x": 557.6,
+                "y": 506
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
             }
           ],
           "massingBlocks": [
             {
-              "id": "mid-corridor-north-massing-01",
-              "label": "North streetwall massing",
-              "status": "manual_draft",
-              "fillColor": "#a68463",
-              "fillAlpha": 0.72,
+              "id": "mid-north-source-massing-3064843",
+              "label": "BIN 3064843 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064843",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#d3bd8b",
+              "frontWallColor": "#a98862",
+              "sideWallColor": "#7a6657",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -12,
+                "y": -34
+              },
               "polygon": [
-                { "x": 1052, "y": 220 },
-                { "x": 1188, "y": 196 },
-                { "x": 1198, "y": 282 },
-                { "x": 1058, "y": 308 }
+                {
+                  "x": 1131.74,
+                  "y": 292.52
+                },
+                {
+                  "x": 1054.66,
+                  "y": 273.08
+                },
+                {
+                  "x": 1036.62,
+                  "y": 331.4
+                },
+                {
+                  "x": 1116.98,
+                  "y": 353
+                }
               ],
-              "roofLines": [
-                { "from": { "x": 1064, "y": 238 }, "to": { "x": 1184, "y": 216 } }
-              ]
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 2,
+              "neutralBaseRhythm": true
             },
             {
-              "id": "mid-corridor-north-massing-02",
-              "label": "North streetwall massing",
-              "status": "manual_draft",
-              "fillColor": "#947d6f",
-              "fillAlpha": 0.72,
+              "id": "mid-north-source-massing-3064844",
+              "label": "BIN 3064844 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064844",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#c5aa78",
+              "frontWallColor": "#9f7b59",
+              "sideWallColor": "#705d52",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -17,
+                "y": -46
+              },
               "polygon": [
-                { "x": 1218, "y": 190 },
-                { "x": 1378, "y": 164 },
-                { "x": 1390, "y": 262 },
-                { "x": 1224, "y": 290 }
+                {
+                  "x": 1029.17,
+                  "y": 272.86
+                },
+                {
+                  "x": 906.05,
+                  "y": 253.66
+                },
+                {
+                  "x": 878.69,
+                  "y": 313.18
+                },
+                {
+                  "x": 1004.09,
+                  "y": 334.3
+                }
               ],
-              "roofLines": [
-                { "from": { "x": 1230, "y": 214 }, "to": { "x": 1374, "y": 190 } },
-                { "from": { "x": 1230, "y": 242 }, "to": { "x": 1378, "y": 216 } }
-              ]
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 4,
+              "neutralBaseRhythm": true
             },
             {
-              "id": "mid-corridor-south-massing-01",
-              "label": "South streetwall massing",
-              "status": "manual_draft",
-              "fillColor": "#b59469",
-              "fillAlpha": 0.72,
+              "id": "mid-north-source-massing-3064839",
+              "label": "BIN 3064839 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064839",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#baa074",
+              "frontWallColor": "#92725a",
+              "sideWallColor": "#6d5a51",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -14,
+                "y": -38
+              },
               "polygon": [
-                { "x": 1050, "y": 594 },
-                { "x": 1198, "y": 554 },
-                { "x": 1228, "y": 658 },
-                { "x": 1080, "y": 700 }
+                {
+                  "x": 875.95,
+                  "y": 246
+                },
+                {
+                  "x": 785.95,
+                  "y": 228
+                },
+                {
+                  "x": 766.15,
+                  "y": 284
+                },
+                {
+                  "x": 857.95,
+                  "y": 304
+                }
               ],
-              "roofLines": [
-                { "from": { "x": 1068, "y": 620 }, "to": { "x": 1198, "y": 584 } }
-              ]
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 3,
+              "neutralBaseRhythm": true
             },
             {
-              "id": "mid-corridor-south-massing-02",
-              "label": "South streetwall massing",
-              "status": "manual_draft",
-              "fillColor": "#8f775f",
-              "fillAlpha": 0.72,
+              "id": "mid-north-source-massing-3064726",
+              "label": "BIN 3064726 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064726",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#d1b987",
+              "frontWallColor": "#aa8862",
+              "sideWallColor": "#806957",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -20,
+                "y": -50
+              },
               "polygon": [
-                { "x": 1264, "y": 540 },
-                { "x": 1492, "y": 486 },
-                { "x": 1528, "y": 614 },
-                { "x": 1300, "y": 674 }
+                {
+                  "x": 754.66,
+                  "y": 221.08
+                },
+                {
+                  "x": 642.34,
+                  "y": 202.36
+                },
+                {
+                  "x": 613.22,
+                  "y": 266.84
+                },
+                {
+                  "x": 731.78,
+                  "y": 289.72
+                }
               ],
-              "roofLines": [
-                { "from": { "x": 1282, "y": 568 }, "to": { "x": 1486, "y": 518 } },
-                { "from": { "x": 1290, "y": 600 }, "to": { "x": 1498, "y": 548 } }
-              ]
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 5,
+              "neutralBaseRhythm": true
+            },
+            {
+              "id": "mid-south-source-massing-3064585",
+              "label": "BIN 3064585 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064585",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#cbb47f",
+              "frontWallColor": "#9b7659",
+              "sideWallColor": "#705d54",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -12,
+                "y": -32
+              },
+              "polygon": [
+                {
+                  "x": 1130.41,
+                  "y": 588.88
+                },
+                {
+                  "x": 1042.69,
+                  "y": 559.76
+                },
+                {
+                  "x": 1011.73,
+                  "y": 644.88
+                },
+                {
+                  "x": 1101.17,
+                  "y": 678.48
+                }
+              ],
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 2,
+              "neutralBaseRhythm": true
+            },
+            {
+              "id": "mid-south-source-massing-3064708",
+              "label": "BIN 3064708 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064708",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#d7c08a",
+              "frontWallColor": "#ad8a63",
+              "sideWallColor": "#7c6658",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -18,
+                "y": -44
+              },
+              "polygon": [
+                {
+                  "x": 1004.85,
+                  "y": 556.62
+                },
+                {
+                  "x": 851.45,
+                  "y": 527.22
+                },
+                {
+                  "x": 808.97,
+                  "y": 615.42
+                },
+                {
+                  "x": 964.73,
+                  "y": 648.74
+                }
+              ],
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 5,
+              "neutralBaseRhythm": true
+            },
+            {
+              "id": "mid-south-source-massing-3064724",
+              "label": "BIN 3064724 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064724",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#bfa474",
+              "frontWallColor": "#957158",
+              "sideWallColor": "#6c5a52",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -15,
+                "y": -39
+              },
+              "polygon": [
+                {
+                  "x": 814.36,
+                  "y": 514.2
+                },
+                {
+                  "x": 674.2,
+                  "y": 482.7
+                },
+                {
+                  "x": 639.64,
+                  "y": 585.6
+                },
+                {
+                  "x": 779.8,
+                  "y": 625.5
+                }
+              ],
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 3,
+              "neutralBaseRhythm": true
             }
           ],
-          "callouts": [
-            {
-              "id": "mid-corridor-manual-draft-callout",
-              "text": "Manual draft geometry: streetbed, sidewalk bands, and massing rhythm only",
-              "status": "manual_draft",
-              "point": { "x": 1164, "y": 330 },
-              "maxWidth": 270
-            },
-            {
-              "id": "mid-corridor-no-business-overlay-callout",
-              "text": "No business identity, facade, frontage, or entrance inference",
-              "status": "blocked",
-              "point": { "x": 1276, "y": 704 },
-              "maxWidth": 245
-            }
-          ]
+          "callouts": [],
+          "showLabelsInNormalMode": false
         },
         "realnessStatus": {
           "identity": "unknown",
@@ -1073,9 +2094,12 @@
           "frontageOrder": "blocked",
           "facade": "blocked",
           "entrance": "blocked",
-          "geometry": "manual_draft",
-          "sourceEvidence": "unknown",
-          "rasterReadiness": "blocked"
+          "geometry": "sourced",
+          "sourceEvidence": "sourced",
+          "rasterReadiness": "blocked",
+          "sidewalkSurfaces": "manual_draft",
+          "visualMassing": "sourced_contextual",
+          "scenePlacement": "manual_draft"
         },
         "fieldStatuses": [
           {
@@ -1111,20 +2135,38 @@
           {
             "field": "geometry",
             "label": "Geometry",
-            "status": "manual_draft",
-            "notes": "Manual-draft streetbed, sidewalk, and massing rhythm are rendered for corridor recognizability review only; no exact real-world geometry is claimed."
+            "status": "sourced",
+            "notes": "NYC Open Data Centerline physicalid 47237 and Building Footprints records now support street/building context for the corridor; scene projection remains stylized review geometry."
           },
           {
             "field": "sourceEvidence",
             "label": "Source evidence",
-            "status": "unknown",
-            "notes": "Existing Phase 2AA and DTR-11 evidence are useful as west-anchor references and gap evidence only."
+            "status": "sourced",
+            "notes": "Source packet and normalized geometry fixture added at src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json and src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json."
           },
           {
             "field": "rasterReadiness",
             "label": "Raster readiness",
             "status": "blocked",
             "notes": "No extended mid-corridor raster/reference surface exists in this fixture. The accepted DTR-11 raster applies to the west anchor only."
+          },
+          {
+            "field": "sidewalkSurfaces",
+            "label": "Sidewalk surfaces",
+            "status": "manual_draft",
+            "notes": "Retrieved official line/context records do not promote exact sidewalk surface polygons in this scene pass."
+          },
+          {
+            "field": "visualMassing",
+            "label": "Visual massing",
+            "status": "sourced",
+            "notes": "Selected NYC/Open footprint records are translated into stylized review massing blocks. This is not facade, frontage, entrance, storefront order, exact address, or business evidence."
+          },
+          {
+            "field": "scenePlacement",
+            "label": "Scene placement",
+            "status": "manual_draft",
+            "notes": "The corridor scene transform remains stylized/manual-draft even where source geometry informs street/building context."
           }
         ],
         "candidateTargets": [
@@ -1137,6 +2179,20 @@
           }
         ],
         "sourceReferences": [
+          {
+            "id": "phase-3b-official-geometry-context",
+            "label": "Phase 3B official NYC/Open geometry context",
+            "path": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+            "status": "sourced",
+            "notes": "Promotes corridor street-centerline and building-footprint context only; does not prove tenant frontage, storefront order, entrances, facades, exact addresses, business identity, or raster readiness."
+          },
+          {
+            "id": "phase-3b-official-geometry-raw-packet",
+            "label": "Phase 3B raw official geometry packet",
+            "path": "src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json",
+            "status": "sourced",
+            "notes": "Raw bounded NYC Open Data responses for Building Footprints, Centerline, and Sidewalk Centerline/planimetrics line context."
+          },
           {
             "id": "phase-3-decision-surface-slice-bounds",
             "label": "Phase 3 architecture decision surface",
@@ -1178,7 +2234,7 @@
           "y": 406
         },
         "bounds": {
-          "x": 1050,
+          "x": 670,
           "y": 210,
           "width": 460,
           "height": 360
@@ -1198,20 +2254,20 @@
       },
       {
         "id": "phase3-east-anchor",
-        "title": "Franklin Blocked Context",
-        "label": "Endpoint blocked/context segment",
-        "category": "Review-only blocked geometry/context segment",
+        "title": "Franklin Corner Geometry",
+        "label": "Franklin sourced geometry/context segment",
+        "category": "Review-only sourced endpoint geometry/context segment",
         "address": "Greenpoint Ave / Franklin Ave context",
-        "cardBadge": "blocked",
-        "verificationStatus": "blocked",
-        "status": "blocked",
-        "summary": "Franklin endpoint is intentionally not rendered as storefronts yet. Brouwerij Lane remains a blocked source-retrieval candidate; no approved adapter, source response, credential, facade imagery, frontage, entrance, or raster surface exists.",
-        "disclaimer": "Review-only Franklin endpoint status layer. No exact Franklin businesses, addresses, categories, coordinates, facades, entrances, storefront order, or real-world geometry are claimed.",
+        "cardBadge": "sourced",
+        "verificationStatus": "sourced",
+        "status": "sourced",
+        "summary": "Franklin endpoint now reads as a sourced/contextual corner moment: official street-centerline and building-footprint context is translated into filled architectural massing around the cross-axis. Brouwerij remains blocked for business/POI, frontage, entrance, facade, signage, exact storefront geometry, and raster readiness.",
+        "disclaimer": "Review-only Franklin endpoint geometry layer. Official sources support street/building context only; Brouwerij identity/address/category/coordinates, exact businesses, facades, entrances, storefront order, active status, and exact address placement remain blocked.",
         "tileId": "tile-phase-3-east-franklin-intake",
-        "sourceSummary": "No repo-local sourced geometry exists for the Franklin endpoint in this batch. Brouwerij remains a blocked marker/source-retrieval candidate only; no live retrieval or business verification was performed.",
+        "sourceSummary": "Official NYC Open Data packet src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json supports Franklin endpoint centerline/building context. Foursquare/API readiness remains blocked, so Brouwerij business claims are not promoted.",
         "intakePanel": {
-          "title": "Greenpoint Ave / Franklin Ave",
-          "status": "blocked",
+          "title": "Franklin Corner Geometry",
+          "status": "sourced",
           "bounds": {
             "x": 1656,
             "y": 112,
@@ -1223,119 +2279,620 @@
             "y": 138
           },
           "textWidth": 378,
-          "fillAlpha": 0.72,
+          "fillAlpha": 0.55,
           "lines": [
-            "Franklin intersection: contextual marker",
-            "Brouwerij: blocked marker only",
-            "No sourced endpoint geometry"
+            "Corner street/building massing: sourced/contextual",
+            "Brouwerij POI/frontage: blocked",
+            "Facade/entrance/signage: blocked"
           ]
         },
         "geometryReview": {
-          "id": "phase3-franklin-endpoint-blocked-context",
-          "label": "Franklin Ave blocked/contextual intersection marker",
-          "status": "blocked",
+          "id": "phase3-franklin-endpoint-sourced-context-geometry",
+          "label": "West/left Franklin sourced corner massing with blocked Brouwerij claims",
+          "status": "sourced",
           "showInNormalMode": true,
-          "usageLimit": "Blocked/contextual endpoint marker for review only. No repo-local sourced geometry currently supports the Franklin endpoint or Brouwerij relationship; this does not imply exact intersection geometry, business identity, frontage, entrances, facade appearance, coordinates, or address placement.",
+          "usageLimit": "NYC Open Data supports Franklin endpoint street-centerline and building-footprint context only. Filled massing is a stylized westward review translation of selected source footprints. It does not prove Brouwerij business identity, address, category, POI coordinates, tenant frontage, entrances, facade appearance, signage, exact storefront geometry, exact address placement, active status, or raster readiness.",
           "polygons": [
             {
-              "id": "franklin-endpoint-greenpoint-ave-streetbed-context",
+              "id": "franklin-endpoint-greenpoint-ave-streetbed-source-backed",
               "label": "Greenpoint Ave endpoint continuation",
-              "status": "blocked",
-              "fillColor": "#403d39",
-              "fillAlpha": 0.58,
-              "strokeColor": "#d66a4e",
-              "strokeAlpha": 0.52,
-              "strokeWidth": 2.2,
+              "status": "sourced",
+              "sourceRecordId": "nyc-centerline-physicalid-47237",
+              "fillColor": "#3c3f39",
+              "fillAlpha": 0.91,
+              "strokeColor": "#4a392d",
+              "strokeAlpha": 0.5,
+              "strokeWidth": 1.4,
               "polygon": [
-                { "x": 1554, "y": 250 },
-                { "x": 2134, "y": 290 },
-                { "x": 2154, "y": 486 },
-                { "x": 1588, "y": 416 }
+                {
+                  "x": 626,
+                  "y": 250
+                },
+                {
+                  "x": 46,
+                  "y": 290
+                },
+                {
+                  "x": 26,
+                  "y": 486
+                },
+                {
+                  "x": 592,
+                  "y": 416
+                }
               ]
             },
             {
-              "id": "franklin-ave-cross-axis-context",
-              "label": "Franklin Ave contextual cross-axis",
-              "status": "blocked",
-              "fillColor": "#3b4340",
-              "fillAlpha": 0.46,
-              "strokeColor": "#d66a4e",
-              "strokeAlpha": 0.58,
-              "strokeWidth": 2.2,
+              "id": "franklin-st-cross-axis-source-backed",
+              "label": "Franklin St cross-axis context",
+              "status": "sourced",
+              "sourceRecordIds": [
+                "nyc-centerline-physicalid-64737",
+                "nyc-centerline-physicalid-64738"
+              ],
+              "fillColor": "#3f4039",
+              "fillAlpha": 0.78,
+              "strokeColor": "#4a392d",
+              "strokeAlpha": 0.5,
+              "strokeWidth": 1.4,
               "polygon": [
-                { "x": 1858, "y": 162 },
-                { "x": 2020, "y": 206 },
-                { "x": 1998, "y": 674 },
-                { "x": 1818, "y": 648 }
+                {
+                  "x": 322,
+                  "y": 162
+                },
+                {
+                  "x": 160,
+                  "y": 206
+                },
+                {
+                  "x": 182,
+                  "y": 674
+                },
+                {
+                  "x": 362,
+                  "y": 648
+                }
+              ]
+            },
+            {
+              "id": "franklin-corner-sidewalk-manual-draft-context",
+              "label": "Franklin sidewalk/corner pad context",
+              "status": "manual_draft",
+              "fillColor": "#d5c18f",
+              "fillAlpha": 0.16,
+              "strokeColor": "#ecd5a2",
+              "strokeAlpha": 0.16,
+              "strokeWidth": 0.9,
+              "polygon": [
+                {
+                  "x": 560,
+                  "y": 214
+                },
+                {
+                  "x": 110,
+                  "y": 254
+                },
+                {
+                  "x": 88,
+                  "y": 300
+                },
+                {
+                  "x": 556,
+                  "y": 270
+                }
               ]
             }
           ],
           "lines": [
             {
-              "id": "franklin-endpoint-blocked-cross-01",
-              "label": "Blocked endpoint geometry",
-              "status": "blocked",
-              "from": { "x": 1818, "y": 300 },
-              "to": { "x": 2020, "y": 518 },
-              "color": "#d66a4e",
-              "alpha": 0.7,
-              "width": 3
+              "id": "franklin-westward-curb-north-0",
+              "label": "Quiet curb edge cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 626,
+                "y": 250
+              },
+              "to": {
+                "x": 46,
+                "y": 290
+              },
+              "color": "#e6d2aa",
+              "alpha": 0.24,
+              "width": 1
             },
             {
-              "id": "franklin-endpoint-blocked-cross-02",
-              "label": "Blocked endpoint geometry",
+              "id": "franklin-westward-curb-south-0",
+              "label": "Quiet curb edge cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 592,
+                "y": 416
+              },
+              "to": {
+                "x": 26,
+                "y": 486
+              },
+              "color": "#e6d2aa",
+              "alpha": 0.24,
+              "width": 1
+            },
+            {
+              "id": "franklin-westward-street-surface-grain-0",
+              "label": "Street surface tone cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 609,
+                "y": 333
+              },
+              "to": {
+                "x": 36,
+                "y": 388
+              },
+              "color": "#f4e4c2",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "franklin-westward-curb-north-1",
+              "label": "Quiet curb edge cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 322,
+                "y": 162
+              },
+              "to": {
+                "x": 160,
+                "y": 206
+              },
+              "color": "#e6d2aa",
+              "alpha": 0.24,
+              "width": 1
+            },
+            {
+              "id": "franklin-westward-curb-south-1",
+              "label": "Quiet curb edge cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 362,
+                "y": 648
+              },
+              "to": {
+                "x": 182,
+                "y": 674
+              },
+              "color": "#e6d2aa",
+              "alpha": 0.24,
+              "width": 1
+            },
+            {
+              "id": "franklin-westward-street-surface-grain-1",
+              "label": "Street surface tone cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 342,
+                "y": 405
+              },
+              "to": {
+                "x": 171,
+                "y": 440
+              },
+              "color": "#f4e4c2",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "franklin-centerline-source-backed",
+              "label": "Franklin St official centerline projected into scene coordinates",
+              "status": "sourced",
+              "from": {
+                "x": 276,
+                "y": 408
+              },
+              "to": {
+                "x": 216,
+                "y": 178
+              },
+              "color": "#f5e5c3",
+              "alpha": 0.12,
+              "width": 1.2
+            },
+            {
+              "id": "brouwerij-claim-blocker-line",
+              "label": "Brouwerij claim blocker",
               "status": "blocked",
-              "from": { "x": 2028, "y": 304 },
-              "to": { "x": 1816, "y": 526 },
+              "from": {
+                "x": 200,
+                "y": 258
+              },
+              "to": {
+                "x": 136,
+                "y": 342
+              },
               "color": "#d66a4e",
-              "alpha": 0.7,
-              "width": 3
+              "alpha": 0.54,
+              "width": 2.2
+            },
+            {
+              "id": "franklin-corner-sidewalk-manual-draft-context-slab-joint-1",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 559.2,
+                "y": 225.2
+              },
+              "to": {
+                "x": 105.6,
+                "y": 263.2
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "franklin-corner-sidewalk-manual-draft-context-slab-joint-2",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 558.4,
+                "y": 236.4
+              },
+              "to": {
+                "x": 101.2,
+                "y": 272.4
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "franklin-corner-sidewalk-manual-draft-context-slab-joint-3",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 557.6,
+                "y": 247.6
+              },
+              "to": {
+                "x": 96.8,
+                "y": 281.6
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
+            },
+            {
+              "id": "franklin-corner-sidewalk-manual-draft-context-slab-joint-4",
+              "label": "Manual sidewalk slab rhythm cue",
+              "status": "manual_draft",
+              "from": {
+                "x": 556.8,
+                "y": 258.8
+              },
+              "to": {
+                "x": 92.4,
+                "y": 290.8
+              },
+              "color": "#f1dcae",
+              "alpha": 0.09,
+              "width": 0.8
             }
           ],
           "markers": [
             {
-              "id": "franklin-intersection-blocked-marker",
-              "label": "Franklin endpoint blocked",
-              "status": "blocked",
-              "point": { "x": 1904, "y": 408 },
-              "radius": 38
+              "id": "franklin-intersection-sourced-marker",
+              "label": "Franklin source geometry",
+              "status": "sourced",
+              "point": {
+                "x": 276,
+                "y": 408
+              },
+              "radius": 24,
+              "fillAlpha": 0.05,
+              "strokeAlpha": 0.62
             },
             {
               "id": "brouwerij-blocked-marker",
-              "label": "Brouwerij blocked",
+              "label": "Brouwerij POI/frontage blocked",
               "status": "blocked",
-              "point": { "x": 1992, "y": 308 },
-              "radius": 26
+              "point": {
+                "x": 188,
+                "y": 308
+              },
+              "radius": 22
             }
           ],
           "callouts": [
             {
-              "id": "franklin-blocked-callout",
-              "text": "Franklin endpoint: blocked/contextual marker only",
+              "id": "brouwerij-blocked-callout",
+              "text": "Brouwerij claims blocked",
               "status": "blocked",
-              "point": { "x": 1764, "y": 278 },
-              "maxWidth": 240
+              "point": {
+                "x": 138,
+                "y": 202
+              },
+              "maxWidth": 160
+            }
+          ],
+          "massingBlocks": [
+            {
+              "id": "franklin-north-source-massing-3064738",
+              "label": "BIN 3064738 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064738",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#d7c08a",
+              "frontWallColor": "#ad8a63",
+              "sideWallColor": "#806957",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.9,
+              "shadowAlpha": 0.2,
+              "rise": {
+                "x": -20,
+                "y": -52
+              },
+              "polygon": [
+                {
+                  "x": 544.8,
+                  "y": 253.58
+                },
+                {
+                  "x": 384.32,
+                  "y": 276.46
+                },
+                {
+                  "x": 400.84,
+                  "y": 380.46
+                },
+                {
+                  "x": 566.04,
+                  "y": 355.5
+                }
+              ],
+              "labelPoint": {
+                "x": 528,
+                "y": 214
+              },
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 5,
+              "neutralBaseRhythm": true
             },
             {
-              "id": "brouwerij-blocked-callout",
-              "text": "Brouwerij remains blocked; no source response or geometry",
-              "status": "blocked",
-              "point": { "x": 1980, "y": 232 },
-              "maxWidth": 230
+              "id": "franklin-north-source-massing-3064739",
+              "label": "BIN 3064739 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064739",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#c5aa78",
+              "frontWallColor": "#9d775a",
+              "sideWallColor": "#715d52",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -14,
+                "y": -38
+              },
+              "polygon": [
+                {
+                  "x": 370.6,
+                  "y": 277.24
+                },
+                {
+                  "x": 260.8,
+                  "y": 298.84
+                },
+                {
+                  "x": 271.6,
+                  "y": 406.84
+                },
+                {
+                  "x": 385,
+                  "y": 383.08
+                }
+              ],
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 3,
+              "neutralBaseRhythm": true
+            },
+            {
+              "id": "franklin-south-source-massing-3064815",
+              "label": "BIN 3064815 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064815",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#cdb681",
+              "frontWallColor": "#a27c5c",
+              "sideWallColor": "#715e54",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -13,
+                "y": -34
+              },
+              "polygon": [
+                {
+                  "x": 511.64,
+                  "y": 513.04
+                },
+                {
+                  "x": 396.4,
+                  "y": 533.2
+                },
+                {
+                  "x": 382.64,
+                  "y": 645.2
+                },
+                {
+                  "x": 501.32,
+                  "y": 620.56
+                }
+              ],
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 2,
+              "neutralBaseRhythm": true
+            },
+            {
+              "id": "franklin-south-source-massing-3064814",
+              "label": "BIN 3064814 source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064814",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#bfa474",
+              "frontWallColor": "#92715a",
+              "sideWallColor": "#6d5a51",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 1.45,
+              "shadowAlpha": 0.16,
+              "rise": {
+                "x": -18,
+                "y": -44
+              },
+              "polygon": [
+                {
+                  "x": 369.76,
+                  "y": 540.85
+                },
+                {
+                  "x": 231.52,
+                  "y": 557.17
+                },
+                {
+                  "x": 209.92,
+                  "y": 661.21
+                },
+                {
+                  "x": 356.8,
+                  "y": 638.77
+                }
+              ],
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 4,
+              "neutralBaseRhythm": true
+            },
+            {
+              "id": "franklin-corner-source-massing-3064677",
+              "label": "Franklin corner source-backed massing",
+              "status": "sourced",
+              "massingStyle": "paper_ink_extruded",
+              "sourceRecordId": "nyc-footprint-bin-3064677",
+              "scenePlacementStatus": "manual_draft_stylized_projection",
+              "claimLimit": "Source-backed building-footprint context converted to stylized review massing with generic facade-neutral rhythm. Not facade, frontage, entrance, storefront order, signage, business identity, active status, exact address placement, or raster readiness.",
+              "roofColor": "#d1b987",
+              "frontWallColor": "#aa8862",
+              "sideWallColor": "#806957",
+              "edgeColor": "#2b241c",
+              "truthStripeColor": "#6fb08f",
+              "fillAlpha": 0.92,
+              "wallAlpha": 0.88,
+              "strokeAlpha": 0.72,
+              "strokeWidth": 2,
+              "shadowAlpha": 0.23,
+              "rise": {
+                "x": -22,
+                "y": -58
+              },
+              "polygon": [
+                {
+                  "x": 286.6,
+                  "y": 324.56
+                },
+                {
+                  "x": 135.32,
+                  "y": 346.16
+                },
+                {
+                  "x": 152.68,
+                  "y": 473.6
+                },
+                {
+                  "x": 311.4,
+                  "y": 447.68
+                }
+              ],
+              "labelPoint": {
+                "x": 294,
+                "y": 284
+              },
+              "maxWidth": 150,
+              "shadowColor": "#16130f",
+              "truthStripeAlpha": 0.2,
+              "truthStripeWidth": 1.4,
+              "roofAccentColor": "#3a2c21",
+              "roofAccentAlpha": 0.18,
+              "baseRhythmColor": "#382b22",
+              "baseRhythmAlpha": 0.18,
+              "baseRhythmCount": 5,
+              "neutralBaseRhythm": true
             }
-          ]
+          ],
+          "showLabelsInNormalMode": false
         },
         "realnessStatus": {
           "identity": "blocked_source_retrieval",
           "address": "blocked_source_retrieval",
           "categoryBusinessType": "blocked_source_retrieval",
           "coordinates": "blocked_source_retrieval",
-          "sourceEvidence": "blocked_source_retrieval",
+          "sourceEvidence": "sourced",
           "frontageOrder": "blocked",
           "facade": "blocked",
           "entrance": "blocked",
-          "geometry": "blocked",
-          "rasterReadiness": "blocked"
+          "geometry": "sourced",
+          "rasterReadiness": "blocked",
+          "visualMassing": "sourced_contextual",
+          "scenePlacement": "manual_draft"
         },
         "fieldStatuses": [
           {
@@ -1365,8 +2922,8 @@
           {
             "field": "sourceEvidence",
             "label": "Source evidence",
-            "status": "blocked_source_retrieval",
-            "notes": "No Brouwerij source retrieval output, source id, retrieval timestamp, attribution record, or adapter-normalized provenance exists."
+            "status": "sourced",
+            "notes": "Source packet and normalized geometry fixture added at src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json and src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json. Foursquare/API POI evidence remains unavailable."
           },
           {
             "field": "frontageOrder",
@@ -1389,14 +2946,26 @@
           {
             "field": "geometry",
             "label": "Geometry",
-            "status": "blocked",
-            "notes": "Franklin endpoint and Brouwerij geometry are rendered only as blocked/contextual markers because no repo-local sourced geometry covers them."
+            "status": "sourced",
+            "notes": "Official NYC Open Data Centerline and Building Footprints records now support Franklin endpoint street/building context. Scene transform remains stylized review geometry."
           },
           {
             "field": "rasterReadiness",
             "label": "Raster readiness",
             "status": "blocked",
             "notes": "No extended Franklin endpoint raster/reference surface exists in this fixture. The accepted DTR-11 raster applies to the west anchor only."
+          },
+          {
+            "field": "visualMassing",
+            "label": "Visual massing",
+            "status": "sourced",
+            "notes": "Selected NYC/Open footprint records are translated into stylized Franklin corner massing. This is not Brouwerij POI, facade, frontage, entrance, storefront order, exact address, or business evidence."
+          },
+          {
+            "field": "scenePlacement",
+            "label": "Scene placement",
+            "status": "manual_draft",
+            "notes": "The Franklin corner scene transform remains stylized/manual-draft even where source geometry informs street/building context."
           }
         ],
         "candidateTargets": [
@@ -1416,6 +2985,20 @@
           }
         ],
         "sourceReferences": [
+          {
+            "id": "phase-3b-official-geometry-context",
+            "label": "Phase 3B official NYC/Open geometry context",
+            "path": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+            "status": "sourced",
+            "notes": "Promotes Franklin endpoint street-centerline and building-footprint context only; does not prove Brouwerij POI/business, frontage, entrance, facade, signage, active status, exact address placement, or raster readiness."
+          },
+          {
+            "id": "phase-3b-official-geometry-raw-packet",
+            "label": "Phase 3B raw official geometry packet",
+            "path": "src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json",
+            "status": "sourced",
+            "notes": "Raw bounded NYC Open Data responses for Building Footprints, Centerline, and Sidewalk Centerline/planimetrics line context."
+          },
           {
             "id": "phase-3-decision-surface-franklin-endpoint",
             "label": "Phase 3 architecture decision surface",
@@ -1471,7 +3054,7 @@
           "y": 406
         },
         "bounds": {
-          "x": 1648,
+          "x": 72,
           "y": 210,
           "width": 460,
           "height": 360
