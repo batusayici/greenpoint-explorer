@@ -32,12 +32,26 @@ Claim limit: These records support review-only identity/address/category/context
 
 ### Geometry Context
 
-The repo contains NYC/Open building-footprint context scoped to the Manhattan Ave / Greenpoint Ave west anchor:
+The repo contains NYC/Open building-footprint context scoped to the Manhattan Ave / Greenpoint Ave west anchor and a Phase 3 corridor coverage packet for the full Manhattan-to-Franklin slice:
 
 - Geometry fixture: `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json`
+- Corridor geometry context packet: `src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3a.json`
 - Candidate BINs surfaced for west-anchor comparison: `3064700`, `3064733`, `3064827`, `3422353`
 
-Claim limit: This supports contextual west-anchor building-footprint QA only. It does not prove tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, active-business status, Franklin endpoint geometry, or full corridor geometry.
+Current slice coverage:
+
+- Manhattan Ave / Greenpoint Ave west-anchor context: repo-local NYC/Open footprint records exist for contextual review.
+- Greenpoint Ave mid-corridor between Manhattan Ave and Franklin Ave: no repo-local NYC/Open footprint/parcel/street-side geometry records found in this batch.
+- Franklin Ave / Greenpoint Ave endpoint context: no repo-local NYC/Open footprint/parcel/street-side geometry records found in this batch.
+- Brouwerij Lane geometry relationship: not covered by deterministic repo-local NYC/Open geometry; remains blocked/source-retrieval candidate only.
+
+What the geometry packet can support later:
+
+- West-anchor building-massing/context comparison against the accepted DTR-11 baseline.
+- Corridor evidence review that clearly separates sourced west-anchor geometry from missing mid-corridor/Franklin geometry.
+- A deterministic merge target for future full-corridor NYC/Open geometry once source data is supplied or retrieval is authorized.
+
+Claim limit: This supports contextual west-anchor building-footprint QA and corridor coverage-gap review only. It does not prove tenant frontage, storefront order, entrance placement, facade appearance, exact address placement, business identity, active-business status, Franklin endpoint geometry, full corridor geometry, or raster readiness.
 
 ## Repo-Local Candidate / Blocked Items
 
@@ -67,7 +81,7 @@ Claim limit: Historical notes are not promoted to sourced identity, address, cat
 
 - Real business/address/category records for Greenpoint Ave between Manhattan Ave and Franklin Ave.
 - Source records or source exports with allowed use, attribution, cache/display policy, and review-only fixture storage.
-- NYC/Open or approved geometry context for the full Manhattan-to-Franklin corridor, not only the Manhattan/Greenpoint west anchor.
+- NYC/Open or approved geometry source records for the missing mid-corridor and Franklin endpoint portions of the full Manhattan-to-Franklin corridor.
 - Batu-supplied or Batu-approved facade/reference imagery for mid-corridor and Franklin endpoint buildings.
 - Approved evidence for storefront frontage/order and entrance placement.
 - A corridor-specific review raster or reference surface after the data and facade imagery are supplied or approved.

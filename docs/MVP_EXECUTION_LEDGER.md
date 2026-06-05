@@ -55,14 +55,53 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 real corridor reset for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 corridor geometry intake for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 real corridor reset implementation batch is complete pending Batu review. The normal Phase 3 review surface now uses the accepted Phase 2/DTR-11 Manhattan Ave / Greenpoint Ave west-anchor raster, and mid-corridor, Franklin, and Brouwerij remain real-data intake/blocked. No further implementation batch is authorized until Batu approves the next source/facade intake step or supplies/approves deterministic evidence and facade imagery. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 full-corridor NYC/Open geometry intake batch is complete pending Batu review. The deterministic geometry context packet carries forward existing west-anchor NYC/Open footprint records and explicitly marks mid-corridor, Franklin endpoint, and Brouwerij geometry coverage as missing/blocked. No further implementation batch is authorized until Batu approves the next missing-geometry, source, or facade intake step. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Corridor NYC/Open Geometry Intake
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Create a deterministic repo-local NYC/Open geometry context packet for the Greenpoint Ave slice from Manhattan Ave to Franklin Ave, using repo-local inputs only and preserving the Phase 3 real corridor reset visual baseline.
+
+Files changed:
+- `src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3a.json`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Existing geometry/source inspection: `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json`, source/geometry scripts, scene schema background, and Phase 3 reset evidence inventory.
+- JSON parse for `src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3a.json`.
+- JSON parse for `src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json`.
+- Narrow structural check for the new geometry packet: no live retrieval, no scraping, no Foursquare, four carried west-anchor records with contextual geometry status, and blocked gap segments for mid-corridor, Franklin, and Brouwerij.
+- Existing source-evidence verifiers were inspected but not run because they validate source-evidence fixtures, not standalone geometry-source fixtures.
+- `npm run build` not run because no app/runtime files changed.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Added a Phase 3 geometry context packet defining the Manhattan-to-Franklin corridor scope, both requested street sides, Manhattan and Franklin intersection context, source/provenance, coverage summary, coverage segments, carried west-anchor footprint records, and blocked claims.
+- Carried forward existing NYC/Open west-anchor footprint records for BINs `3064700`, `3064733`, `3064827`, and `3422353` as contextual geometry only.
+- Marked mid-corridor, Franklin endpoint, and Brouwerij geometry coverage as missing/blocked because no repo-local NYC/Open source records cover those portions.
+- Updated the real corridor evidence inventory to distinguish geometry context from business identity, tenant frontage, entrances, facade imagery, exact address placement, and raster readiness.
+- No live API call, scraping, Foursquare use, visual-scene change, business deepening, tenant-frontage inference, entrance inference, facade inference, package/tooling change, or production/public claim occurred.
+
+Unresolved decisions:
+- Batu owns whether to approve/supply missing mid-corridor and Franklin geometry records, business/source records, facade/reference imagery, exact geometry/frontage/entrance decisions, corridor-specific raster direction, and any future non-west target promotion.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the geometry intake packet; no further implementation batch is authorized until Batu approves the next missing-geometry, source, or facade intake step.
 
 ### 2026-06-04 - Phase 3 Real Corridor Reset Implementation
 

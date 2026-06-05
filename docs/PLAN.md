@@ -26,14 +26,14 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Phase 3 real corridor reset complete pending Batu review for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice.
-- Current next task: Batu review of the reset and evidence inventory; no further implementation batch is authorized until Batu approves the next source/facade intake step.
+- Current phase: Phase 3 corridor geometry intake complete pending Batu review for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice.
+- Current next task: Batu review of the geometry intake packet and updated evidence inventory; no further implementation batch is authorized until Batu approves the next source, facade, or missing-geometry intake step.
 - The Phase 3 POI/business source ADR is complete and lives at `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`.
 - Brouwerij Lane and any other non-west target still cannot be deepened until an approved deterministic source packet/access path or approved manual evidence packet exists and a later brief authorizes the one-target evidence batch.
 - The locked MVP remains one review-only, raster-first, interactive four-corner diorama of Manhattan Ave x Greenpoint Ave. DTR-11 is the active review-only demo raster in the app, and the Vercel Preview is published behind protected shareable-link access.
 - Phase 2DTR / MVP feedback demo is complete and locked for MVP-feedback purposes. Do not open DTR-12 unless later feedback makes that necessary and Batu explicitly approves it.
 - Phase 3 scaffold direction is approved only for the first scaffold direction in `docs/phase-3-architecture-scaling-decision-surface.md`: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
-- Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, Phase 3 POI/business source ADR complete, local-directory ADR amendment complete, Foursquare Brouwerij adapter contract complete, Foursquare credential/source blocker report complete, west-anchor source-independent QA/evidence overlay pass structurally complete, west-anchor spatial grounding pass complete but rejected as the Phase 3 product review surface, and real corridor reset complete with the accepted DTR-11 west-anchor raster wired as the visual baseline and non-west corridor lanes marked intake/blocked.
+- Phase 3 implementation/source planning so far: first scaffold complete, west anchor sourced from existing reviewed MVP context, mid-corridor candidate/status layer complete, Franklin endpoint status layer complete, local-only evidence-deepening audit complete, Brouwerij Lane source-retrieval spike complete as blocked, Phase 3 POI/business source ADR complete, local-directory ADR amendment complete, Foursquare Brouwerij adapter contract complete, Foursquare credential/source blocker report complete, west-anchor source-independent QA/evidence overlay pass structurally complete, west-anchor spatial grounding pass complete but rejected as the Phase 3 product review surface, real corridor reset complete with the accepted DTR-11 west-anchor raster wired as the visual baseline and non-west corridor lanes marked intake/blocked, and Phase 3 corridor NYC/Open geometry context packet complete with west-anchor geometry carried forward and mid-corridor/Franklin/Brouwerij geometry gaps explicitly blocked.
 - Brouwerij Lane remains a blocked future target, not the active critical path. Identity, address, category/business type, coordinates, freshness/status, and provenance cannot be deepened until Batu supplies or approves a deterministic source packet/access path.
 - Batu approved the Phase 3 direction correction on 2026-06-04: users should eventually explore the real Greenpoint Ave corridor between Manhattan Ave and Franklin Ave using real geometry, real business addresses, real business information, and Batu-supplied/approved facade imagery. Arbitrary fictional storefront rasters and SVG/code-native diagramming are not acceptable as the Phase 3 product review surface.
 - Selected source strategy: the strategic local-directory/community-validation lane includes LiveXYZ, North Brooklyn Chamber member directory, Shop Small Greenpoint directory, and other Batu-approved local business lists if Batu approves access, terms, caching, attribution, and fixture storage; Foursquare remains the practical near-term POI implementation lane after credential/terms approval when no deterministic local-directory source is available; OSM is the open cross-check lane; NYC Open Data is the geometry/context lane; manual evidence packets are required for facade/frontage/entrance/raster readiness.
@@ -59,24 +59,25 @@ Use these in order when documents conflict:
 4. Source-independent west-anchor QA/evidence overlay pass. Structurally complete; not acceptable as a product review surface while paired with arbitrary placeholder storefront art.
 5. West-anchor spatial grounding pass. Complete as scaffold/debug work; rejected as the Phase 3 visual/product review target.
 6. Real corridor reset: remove the arbitrary placeholder storefront raster from normal Phase 3 review, restore/anchor on the accepted Phase 2/DTR-11 Manhattan Ave / Greenpoint Ave raster, and represent mid-corridor/Franklin as real-data intake/blocked until sourced. Complete pending Batu review.
-7. Build or ingest real corridor evidence for Greenpoint Ave from Manhattan Ave to Franklin Ave: geometry, business identity, addresses, categories, coordinates, provenance, and evidence status.
-8. Add approved facade/frontage/entrance evidence path where Batu supplies or approves corridor facade imagery.
-9. Join retrieved or manually approved POI data to NYC/open geometry context where supported.
-10. Deepen one non-west target only after deterministic source/access or approved manual evidence exists.
-11. Produce or approve corridor-specific review raster/surface.
-12. Validate corridor interaction, QA overlays, cards, pan/zoom, and browser performance.
-13. Run Phase 3 exit read: what scales, what is manual, what is blocked, and what source gaps dominate.
+7. Build or ingest real corridor geometry evidence for Greenpoint Ave from Manhattan Ave to Franklin Ave. Initial repo-local NYC/Open geometry packet complete; missing mid-corridor and Franklin geometry source records remain blocked.
+8. Build or ingest real corridor business evidence: identity, addresses, categories, coordinates, provenance, and evidence status.
+9. Add approved facade/frontage/entrance evidence path where Batu supplies or approves corridor facade imagery.
+10. Join retrieved or manually approved POI data to NYC/open geometry context where supported.
+11. Deepen one non-west target only after deterministic source/access or approved manual evidence exists.
+12. Produce or approve corridor-specific review raster/surface.
+13. Validate corridor interaction, QA overlays, cards, pan/zoom, and browser performance.
+14. Run Phase 3 exit read: what scales, what is manual, what is blocked, and what source gaps dominate.
 
 ## Next Batch Requirements
 
-No implementation batch is currently authorized. The next action is Batu review of the reset and `docs/phase-3-real-corridor-evidence-inventory.md`.
+No implementation batch is currently authorized. The next action is Batu review of the Phase 3 geometry intake packet and `docs/phase-3-real-corridor-evidence-inventory.md`.
 
-A later brief may authorize a narrow real-corridor evidence intake batch. That batch would need approved source/access material for real businesses, addresses, categories, coordinates/freshness/status where available, NYC/Open geometry for the full Manhattan-to-Franklin slice, and Batu-supplied or Batu-approved facade/reference imagery.
+A later brief may authorize a narrow real-corridor evidence intake batch. That batch would need approved source/access material for missing mid-corridor/Franklin geometry, real businesses, addresses, categories, coordinates/freshness/status where available, and Batu-supplied or Batu-approved facade/reference imagery.
 
 ## Active Blockers
 
 - Source/API strategy is no longer the main blocker; source access/material is. Brouwerij Lane cannot become a real corridor target until Batu supplies or approves deterministic source access/material and a later brief authorizes the one-target evidence packet. The Foursquare path is optional future enrichment and remains blocked by missing credential and repo-recorded terms/cache/display approval.
-- Mid-corridor, Franklin, and Brouwerij remain blocked/intake; they cannot be rendered as real storefronts until deterministic source records and Batu-approved facade/reference imagery exist.
+- Mid-corridor, Franklin, and Brouwerij remain blocked/intake; the current geometry packet documents that no repo-local NYC/Open geometry records cover those missing portions. They cannot be rendered as real storefronts until deterministic source records and Batu-approved facade/reference imagery exist.
 - POI/business sources may support identity, address, category, coordinates, and possibly freshness/status, but they do not by themselves support facade, storefront/frontage/order, entrance, exact geometry, or raster readiness.
 - NYC/Open geometry sources may support building/parcel/geometry context, but they do not by themselves prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, or exact address placement.
 - Facade/frontage/entrance evidence requires Batu-supplied or Batu-approved reference/source material; POI data cannot infer it.
