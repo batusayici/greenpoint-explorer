@@ -14,13 +14,13 @@
   },
   "app": {
     "title": "Greenpoint Explorer",
-    "note": "Phase 3 review-only corridor scaffold with sourced west-anchor context, NYC/open geometry context, DTR-11 facade evidence status, and status-labeled candidate/blocked corridor layers. Placeholder raster is not visual-quality evidence.",
-    "reviewLabel": "PHASE 3 CORRIDOR SCAFFOLD / REVIEW ONLY",
-    "sourceListLabel": "Phase 3 scaffold status",
-    "disclaimer": "Review-only scaffold. Placeholder surface and scene coordinates are not production assets, factual facades, exact addresses, exact station geometry, or public-ready place copy.",
+    "note": "Phase 3 real-corridor reset: accepted DTR-11 Manhattan/Greenpoint west-anchor raster plus status-labeled real-data intake lanes toward Franklin. No fictional storefronts are used as the corridor surface.",
+    "reviewLabel": "PHASE 3 REAL CORRIDOR RESET / REVIEW ONLY",
+    "sourceListLabel": "Phase 3 real-data status",
+    "disclaimer": "Review-only reset. The DTR-11 west-anchor raster is accepted feedback/demo baseline only; mid-corridor, Franklin, Brouwerij, facade/frontage/entrance, exact geometry, exact address placement, and production/public claims remain blocked unless separately sourced.",
     "sceneFrame": {
       "locationLabel": "Greenpoint Ave / Manhattan Ave to Franklin Ave",
-      "intent": "One connected block scaffold: manifest-driven bounds, QA overlays, and minimum interaction."
+      "intent": "West anchor uses the accepted Manhattan/Greenpoint DTR-11 review raster; the rest of the corridor is explicit real-data intake until sourced."
     }
   },
   "scene": {
@@ -34,17 +34,23 @@
       "notes": "Keep real-world coordinates, local geometry, and scene coordinates separate for this scaffold."
     },
     "plate": {
-      "id": "asset-phase-3-placeholder-raster",
-      "role": "review-only-placeholder-raster-surface",
-      "label": "Approved review-only placeholder raster surface for Phase 3 scaffold mechanics. Not a factual Greenpoint representation.",
-      "sourcePath": "src/assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png",
+      "id": "asset-phase-3-dtr-11-west-anchor-raster",
+      "role": "review-only-west-anchor-raster-baseline",
+      "label": "Accepted DTR-11 review-only Manhattan Ave / Greenpoint Ave west-anchor raster baseline. Non-production and not exact facade, frontage, address, station-geometry, or corridor-complete evidence.",
+      "sourcePath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
       "nativeSize": {
-        "width": 1536,
-        "height": 1024
+        "width": 1672,
+        "height": 941
       },
       "renderSize": {
-        "width": 2304,
-        "height": 1024
+        "width": 920,
+        "height": 518
+      },
+      "renderBounds": {
+        "x": 96,
+        "y": 142,
+        "width": 920,
+        "height": 518
       },
       "visibleBounds": {
         "x": 0,
@@ -52,8 +58,8 @@
         "width": 2304,
         "height": 1024
       },
-      "status": "manual_draft",
-      "usageLimit": "Scaffold mechanics only; does not test final visual quality, factual facade fidelity, or production asset direction."
+      "status": "sourced",
+      "usageLimit": "Accepted west-anchor feedback/demo raster only. It does not provide mid-corridor or Franklin raster readiness, exact tenant frontage, exact entrance placement, exact building geometry, exact station geometry, or production/public factual output."
     },
     "panZoom": {
       "bounds": {
@@ -85,40 +91,40 @@
     "tiles": [
       {
         "id": "tile-phase-3-west-manhattan-anchor",
-        "label": "West anchor tile: Manhattan Ave context",
+        "label": "West anchor tile: accepted DTR-11 Manhattan Ave context",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
           "x": 120,
           "y": 122,
-          "width": 640,
+          "width": 900,
           "height": 720
         },
         "status": "sourced",
         "loadPriority": 1,
-        "notes": "Review-only tile for the existing Manhattan Ave / Greenpoint Ave MVP anchor. Business/address/category context is sourced where already reviewed; scene position and facade geometry remain non-exact."
+        "notes": "Review-only tile for the accepted Manhattan Ave / Greenpoint Ave MVP/DTR-11 west anchor. Business/address/category context is sourced where already reviewed; scene position and facade geometry remain non-exact."
       },
       {
-        "id": "tile-phase-3-mid-corridor-placeholder",
-        "label": "Mid-corridor source-candidate tile",
+        "id": "tile-phase-3-mid-corridor-intake",
+        "label": "Mid-corridor real-data intake tile",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
-          "x": 760,
+          "x": 1020,
           "y": 122,
-          "width": 780,
+          "width": 520,
           "height": 720
         },
-        "status": "unknown",
+        "status": "blocked",
         "loadPriority": 2,
-        "notes": "Review-only mid-corridor candidate layer. Local repo evidence reviewed in this batch does not contain approved mid-corridor businesses, addresses, facades, entrances, frontage/order, or exact geometry."
+        "notes": "Review-only mid-corridor real-data intake layer. Local repo evidence reviewed in this batch does not contain approved mid-corridor businesses, addresses, facades, entrances, frontage/order, or exact geometry."
       },
       {
-        "id": "tile-phase-3-east-franklin-placeholder",
-        "label": "East anchor tile: Franklin Ave status layer",
+        "id": "tile-phase-3-east-franklin-intake",
+        "label": "East anchor tile: Franklin Ave real-data intake",
         "blockId": "block-greenpoint-ave-manhattan-to-franklin",
         "bounds": {
-          "x": 1540,
+          "x": 1620,
           "y": 122,
-          "width": 620,
+          "width": 520,
           "height": 720
         },
         "status": "blocked",
@@ -128,16 +134,28 @@
     ],
     "layers": [
       {
-        "id": "layer-placeholder-raster",
+        "id": "layer-west-anchor-dtr-11-raster",
         "type": "raster_plate",
-        "label": "Placeholder raster plate",
+        "label": "Accepted DTR-11 west-anchor raster plate",
         "bounds": {
-          "x": 0,
-          "y": 0,
-          "width": 2304,
-          "height": 1024
+          "x": 96,
+          "y": 142,
+          "width": 920,
+          "height": 518
         },
-        "status": "manual_draft"
+        "status": "sourced"
+      },
+      {
+        "id": "layer-real-data-intake-lanes",
+        "type": "status_intake_lanes",
+        "label": "Real-data intake and blocked corridor lanes",
+        "bounds": {
+          "x": 1020,
+          "y": 122,
+          "width": 1120,
+          "height": 720
+        },
+        "status": "blocked"
       },
       {
         "id": "layer-interaction-targets",
@@ -174,8 +192,8 @@
         "cardBadge": "sourced",
         "verificationStatus": "sourced",
         "status": "sourced",
-        "summary": "Existing MVP context carried into the corridor scaffold: Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint Av G station-area cue.",
-        "disclaimer": "Review-only corridor anchor. Business names/address/category context are carried from existing reviewed MVP artifacts where listed; placeholder raster, scene placement, exact storefront order, exact facades, exact entrances, exact addresses, and exact station geometry are not claimed.",
+        "summary": "Accepted Phase 2/DTR-11 Manhattan Ave / Greenpoint Ave visual baseline carried into Phase 3: Grillpoint Deli, McDonald's, Dunkin', Citizens Bank, and Greenpoint Av G station-area cue.",
+        "disclaimer": "Review-only corridor anchor. Business names/address/category context are carried from existing reviewed MVP artifacts where listed; DTR-11 raster is a feedback/demo baseline only. Exact storefront order, exact facades, exact entrances, exact addresses, exact station geometry, and corridor raster readiness are not claimed.",
         "tileId": "tile-phase-3-west-manhattan-anchor",
         "sourceSummary": "Uses existing Phase 2DTR/MVP reviewed records and DTR-11 facade-reference pass; no new source acquisition.",
         "realnessStatus": {
@@ -183,7 +201,7 @@
           "geometryContext": "candidate",
           "facadeReferences": "manual_draft",
           "sceneGeometry": "manual_draft",
-          "rasterReadiness": "blocked",
+          "rasterReadiness": "sourced",
           "exactClaims": "blocked"
         },
         "spatialGrounding": {
@@ -195,7 +213,7 @@
             "Existing reviewed MVP business/place metadata",
             "NYC/Open building-footprint context sample",
             "DTR-11 reference-photo-derived facade cue records",
-            "Existing Phase 3 placeholder/scaffold renderer"
+            "Existing Phase 3 review renderer"
           ],
           "usageLimit": "Review-only spatial grounding overlay. Street relationship, corner orientation, building massing, storefront placement, facade cues, and transit cue are approximate/contextual or manual draft unless separately sourced. This does not claim exact tenant frontage, exact entrance placement, exact building geometry, exact station geometry, production raster readiness, or public factual output.",
           "streets": [
@@ -583,13 +601,13 @@
             "doesNotSupport": "Production texture, exact storefront tracing, exact entrance/frontage geometry, or final visual acceptance."
           },
           {
-            "id": "west-anchor-raster-interaction-status",
-            "label": "Raster/interaction status",
+            "id": "west-anchor-dtr-11-raster-status",
+            "label": "DTR-11 west-anchor raster status",
             "shortLabel": "raster",
-            "status": "blocked",
-            "sourcePath": "src/assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png",
-            "supports": "Review-only card selection, QA overlays, pan/zoom, and scaffold mechanics.",
-            "doesNotSupport": "Corridor-specific raster readiness, production visual assets, factual facade fidelity, or public place claims."
+            "status": "sourced",
+            "sourcePath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
+            "supports": "Accepted review-only Manhattan Ave / Greenpoint Ave west-anchor visual baseline and card/hotspot review.",
+            "doesNotSupport": "Mid-corridor or Franklin raster readiness, production visual assets, exact facade/frontage/entrance geometry, exact station geometry, or public place claims."
           }
         ],
         "geometryContext": {
@@ -705,11 +723,11 @@
           ]
         },
         "rasterInteractionStatus": {
-          "label": "Scaffold raster and interaction status",
-          "status": "blocked",
+          "label": "DTR-11 west-anchor raster and interaction status",
+          "status": "sourced",
           "interactionStatus": "manual_draft",
-          "sourcePath": "src/assets/review-only/phase-6-1-ui-integrated-recombination-review-only.png",
-          "notes": "The west-anchor hotspot and card behavior are active for QA. The raster remains a review-only placeholder and does not prove corridor visual quality or factual facade fidelity."
+          "sourcePath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
+          "notes": "The west-anchor hotspot and card behavior are active for QA. The raster is the accepted Phase 2/DTR-11 feedback/demo baseline only and does not prove full-corridor raster readiness, exact facade/frontage/entrance geometry, exact station geometry, or production/public factual output."
         },
         "realPlaces": [
           {
@@ -796,6 +814,13 @@
             "path": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
             "status": "candidate",
             "notes": "Surfaces NYC/Open building-footprint context for the west anchor only; does not prove tenant frontage, storefront order, entrance, facade, exact address placement, or raster readiness."
+          },
+          {
+            "id": "phase-3-real-corridor-evidence-inventory",
+            "label": "Phase 3 real corridor evidence inventory",
+            "path": "docs/phase-3-real-corridor-evidence-inventory.md",
+            "status": "sourced",
+            "notes": "Separates accepted west-anchor evidence from blocked/intake mid-corridor, Franklin, and Brouwerij evidence needs."
           }
         ],
         "marker": {
@@ -803,17 +828,17 @@
           "y": 418
         },
         "bounds": {
-          "x": 180,
-          "y": 268,
-          "width": 320,
-          "height": 292
+          "x": 96,
+          "y": 142,
+          "width": 920,
+          "height": 518
         },
         "hitAreas": [
           {
-            "x": 160,
-            "y": 238,
-            "width": 360,
-            "height": 350
+            "x": 96,
+            "y": 142,
+            "width": 920,
+            "height": 518
           }
         ],
         "reviewLabelPosition": {
@@ -823,17 +848,38 @@
       },
       {
         "id": "phase3-mid-block",
-        "title": "Mid-Corridor Candidate Layer",
-        "label": "Source-candidate segment",
-        "category": "Review-only source-candidate segment",
+        "title": "Mid-Corridor Intake",
+        "label": "Real-data intake segment",
+        "category": "Review-only real-data intake segment",
         "address": "Greenpoint Ave block context",
-        "cardBadge": "candidate",
-        "verificationStatus": "candidate_review",
-        "status": "unknown",
-        "summary": "Mid-corridor scaffold target now records what can be reviewed next: target identity, address, frontage/order, facade, entrance, geometry, source evidence, and raster readiness all remain explicitly candidate, unknown, or blocked.",
+        "cardBadge": "blocked",
+        "verificationStatus": "blocked",
+        "status": "blocked",
+        "summary": "Mid-corridor is intentionally not rendered as storefronts yet. Target identity, address, frontage/order, facade, entrance, geometry, source evidence, and raster readiness all remain explicitly unknown or blocked until repo-local evidence and Batu-approved imagery exist.",
         "disclaimer": "Review-only source-candidate layer. No exact mid-corridor businesses, facades, addresses, storefront order, entrances, or geometry are claimed.",
-        "tileId": "tile-phase-3-mid-corridor-placeholder",
+        "tileId": "tile-phase-3-mid-corridor-intake",
         "sourceSummary": "Local repo evidence supports the west Manhattan/Greenpoint anchor, not this mid-corridor segment. This record is a target-status shell for review planning; no new source acquisition was performed.",
+        "intakePanel": {
+          "title": "Greenpoint Ave Mid-Corridor",
+          "status": "blocked",
+          "bounds": {
+            "x": 1050,
+            "y": 210,
+            "width": 460,
+            "height": 360
+          },
+          "textPoint": {
+            "x": 1080,
+            "y": 244
+          },
+          "textWidth": 390,
+          "lines": [
+            "Real businesses: intake needed",
+            "Addresses: intake needed",
+            "Facade imagery: Batu supply/approval needed",
+            "No fictional storefront fill"
+          ]
+        },
         "realnessStatus": {
           "identity": "unknown",
           "address": "unknown",
@@ -891,7 +937,7 @@
             "field": "rasterReadiness",
             "label": "Raster readiness",
             "status": "blocked",
-            "notes": "The Phase 3 scaffold still uses the approved placeholder raster; no extended mid-corridor raster/reference surface exists in this fixture."
+            "notes": "No extended mid-corridor raster/reference surface exists in this fixture. The accepted DTR-11 raster applies to the west anchor only."
           }
         ],
         "candidateTargets": [
@@ -931,44 +977,72 @@
             "path": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
             "status": "candidate",
             "notes": "Official footprint sample is scoped around Manhattan Ave x Greenpoint Ave and cannot prove mid-corridor tenant frontage, entrance, facade, or address placement."
+          },
+          {
+            "id": "phase-3-real-corridor-evidence-inventory",
+            "label": "Phase 3 real corridor evidence inventory",
+            "path": "docs/phase-3-real-corridor-evidence-inventory.md",
+            "status": "blocked",
+            "notes": "Records that no approved repo-local mid-corridor business/address/facade/frontage/entrance/raster evidence exists yet."
           }
         ],
         "marker": {
-          "x": 1124,
-          "y": 372
+          "x": 1288,
+          "y": 406
         },
         "bounds": {
-          "x": 940,
-          "y": 220,
-          "width": 372,
-          "height": 318
+          "x": 1050,
+          "y": 210,
+          "width": 460,
+          "height": 360
         },
         "hitAreas": [
           {
-            "x": 900,
-            "y": 198,
-            "width": 444,
-            "height": 382
+            "x": 1032,
+            "y": 190,
+            "width": 500,
+            "height": 404
           }
         ],
         "reviewLabelPosition": {
-          "x": 954,
-          "y": 202
+          "x": 1078,
+          "y": 196
         }
       },
       {
         "id": "phase3-east-anchor",
-        "title": "Franklin Ave Status Layer",
-        "label": "Endpoint status segment",
-        "category": "Review-only endpoint status segment",
+        "title": "Franklin Ave Intake",
+        "label": "Endpoint real-data intake segment",
+        "category": "Review-only endpoint intake segment",
         "address": "Greenpoint Ave / Franklin Ave context",
         "cardBadge": "blocked",
         "verificationStatus": "blocked",
         "status": "blocked",
-        "summary": "East endpoint of the scaffold now includes a Brouwerij Lane source-retrieval spike. No approved adapter, source response, or credential is configured, so identity, address, category, coordinates, and source provenance remain blocked for retrieval rather than promoted from historical notes.",
+        "summary": "Franklin endpoint is intentionally not rendered as storefronts yet. Brouwerij Lane remains a blocked source-retrieval candidate; no approved adapter, source response, credential, facade imagery, frontage, entrance, or raster surface exists.",
         "disclaimer": "Review-only Franklin endpoint status layer. No exact Franklin businesses, addresses, categories, coordinates, facades, entrances, storefront order, or real-world geometry are claimed.",
-        "tileId": "tile-phase-3-east-franklin-placeholder",
+        "tileId": "tile-phase-3-east-franklin-intake",
         "sourceSummary": "Brouwerij Lane is reactivated only as a source-retrieval candidate. Repo policy names LiveXYZ as a preferred future source pending access, but no approved Brouwerij adapter, checked-in source response, endpoint contract, or credential is configured; no live retrieval was performed.",
+        "intakePanel": {
+          "title": "Greenpoint Ave / Franklin Ave",
+          "status": "blocked",
+          "bounds": {
+            "x": 1648,
+            "y": 210,
+            "width": 460,
+            "height": 360
+          },
+          "textPoint": {
+            "x": 1678,
+            "y": 244
+          },
+          "textWidth": 390,
+          "lines": [
+            "Franklin endpoint: evidence needed",
+            "Brouwerij Lane: blocked",
+            "No sourced facade/frontage/entrance",
+            "No fictional storefront fill"
+          ]
+        },
         "realnessStatus": {
           "identity": "blocked_source_retrieval",
           "address": "blocked_source_retrieval",
@@ -1040,7 +1114,7 @@
             "field": "rasterReadiness",
             "label": "Raster readiness",
             "status": "blocked",
-            "notes": "The Phase 3 scaffold still uses the approved placeholder raster; no extended Franklin endpoint raster/reference surface exists in this fixture."
+            "notes": "No extended Franklin endpoint raster/reference surface exists in this fixture. The accepted DTR-11 raster applies to the west anchor only."
           }
         ],
         "candidateTargets": [
@@ -1101,29 +1175,36 @@
             "path": "src/data/geometry-source/manhattan-greenpoint-ave.nyc-building-footprints.phase-2ab.json",
             "status": "candidate",
             "notes": "Official footprint sample is scoped around Manhattan Ave x Greenpoint Ave and cannot prove Franklin endpoint geometry, tenant frontage, entrance, facade, or address placement."
+          },
+          {
+            "id": "phase-3-real-corridor-evidence-inventory",
+            "label": "Phase 3 real corridor evidence inventory",
+            "path": "docs/phase-3-real-corridor-evidence-inventory.md",
+            "status": "blocked",
+            "notes": "Records that Franklin and Brouwerij remain real-data intake/blocked until deterministic evidence and approved facade imagery exist."
           }
         ],
         "marker": {
-          "x": 1884,
-          "y": 416
+          "x": 1888,
+          "y": 406
         },
         "bounds": {
-          "x": 1700,
-          "y": 264,
-          "width": 340,
-          "height": 300
+          "x": 1648,
+          "y": 210,
+          "width": 460,
+          "height": 360
         },
         "hitAreas": [
           {
-            "x": 1664,
-            "y": 232,
-            "width": 412,
-            "height": 364
+            "x": 1628,
+            "y": 190,
+            "width": 500,
+            "height": 404
           }
         ],
         "reviewLabelPosition": {
-          "x": 1724,
-          "y": 240
+          "x": 1676,
+          "y": 196
         }
       }
     ]
@@ -1138,8 +1219,8 @@
       "blocked"
     ],
     "warnings": [
-      "No extended Phase 3 raster plate exists in this batch; existing review-only raster is used as placeholder surface for scaffold mechanics only.",
-      "The Manhattan Ave west anchor now carries existing sourced business/place metadata, NYC/Open geometry context, and DTR-11 facade-reference evidence status, but the visual plate is still a placeholder and not factual corridor art.",
+      "The accepted DTR-11 raster is wired as the west-anchor review baseline only; no extended mid-corridor or Franklin raster plate exists in this batch.",
+      "The Manhattan Ave west anchor carries existing sourced business/place metadata, NYC/Open geometry context, and DTR-11 facade-reference evidence status, but exact facade/frontage/entrance/station geometry and production/public claims remain blocked.",
       "The NYC footprint sample is geometry context only for the Manhattan/Greenpoint west anchor; it does not prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.",
       "The mid-corridor target now has a source-candidate/status layer only; local repo evidence reviewed in this batch does not support exact mid-corridor businesses, facades, addresses, frontage/order, entrances, or geometry.",
       "The Franklin Ave endpoint now has a Brouwerij Lane source-retrieval candidate only; no approved adapter, source response, endpoint contract, or credential is configured for retrieval.",

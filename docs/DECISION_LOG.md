@@ -4,6 +4,35 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-04 - Phase 3 Real Corridor Direction Approved
+
+Decision:
+- Batu rejected the current Phase 3 placeholder/scaffold review surface as product-direction evidence.
+- The Phase 6 fictional storefront raster, arbitrary storefront names, and SVG/code-native diagramming may support scaffold mechanics or QA only; they must not be presented as the Phase 3 product/visual review target.
+- Phase 3 is approved as the real Greenpoint Ave corridor expansion from the accepted Manhattan Ave / Greenpoint Ave west anchor toward the Greenpoint Ave / Franklin Ave corner.
+- Users should eventually explore Greenpoint Ave between those intersections using real geometry, real business addresses, real business information, and Batu-supplied or Batu-approved facade imagery.
+- Missing corridor data or facade imagery must be represented as blocked/intake state, not replaced with invented storefronts or fictional names.
+
+Rationale:
+- The project already has an accepted, rastered Manhattan Ave / Greenpoint Ave corner at the end of Phase 2.
+- Re-reviewing an arbitrary placeholder raster with made-up storefronts does not advance the Phase 3 goal and creates confusion about whether the app is showing real Greenpoint.
+- The next useful proof must move toward the real street, real buildings, and real stores, with claim discipline preserved.
+
+Constraints preserved:
+- Review-only.
+- No production/public factual claims.
+- No production visual assets, production asset direction, or production asset pipeline approval.
+- No live retrieval, scraping, Google/Street View/3D Tiles extraction, source-vendor integration, backend, CMS, persistence, analytics, CI, deployment, package/tooling changes, or public-interface changes.
+- No exact tenant frontage, exact entrance placement, exact building geometry, exact station geometry, or raster readiness without supporting evidence and Batu approval.
+
+Owner:
+- Phase 3 product/scope correction: Batu
+- Control-doc reconciliation: Codex
+- Critical review/brief support when requested: ChatGPT
+
+Status:
+- Active orientation / next implementation brief redirects Phase 3 toward real corridor reset and evidence-backed scene foundation
+
 ## 2026-06-03 - DTR-8 Geometry-First Raster Readiness Policies
 
 Decision:

@@ -190,7 +190,7 @@ export default function App() {
               {selectedTarget.sourceSummary ? (
                 <p className="source-summary">{selectedTarget.sourceSummary}</p>
               ) : null}
-              {selectedTarget.spatialGrounding ? (
+              {isReviewMode && selectedTarget.spatialGrounding ? (
                 <section className="spatial-grounding" aria-label="Spatial grounding status">
                   <h3>Spatial Grounding</h3>
                   <p>{selectedTarget.spatialGrounding.usageLimit}</p>
@@ -336,6 +336,7 @@ function getCompactDisclaimer(target) {
 function getCardLabel(target) {
   if (target.id === "greenpoint-g-subway") return "Transit context";
   if (target.cardBadge === "candidate") return "Source candidate";
+  if (target.cardBadge === "blocked") return "Real-data intake";
   return "Selected place";
 }
 

@@ -55,14 +55,89 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 west-anchor spatial grounding review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 real corridor reset for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records Phase 2DTR / MVP feedback demo as complete and locked for MVP-feedback purposes, the review-only Vercel Preview as deployed behind protected shareable-link access, `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first Phase 3 scaffold direction only, the first review-only Phase 3 scaffold batch as complete, the west-anchor realness pass as complete, the mid-corridor candidate-layer pass as complete, the Franklin Ave endpoint status-layer pass as complete, the one-target evidence-deepening audit as complete, the Brouwerij Lane source-retrieval spike as complete, the Phase 3 POI/business source ADR as complete, the local-directory ADR amendment as complete, the Foursquare Brouwerij adapter contract as complete, the Foursquare credential/source blocker report as complete, the source-independent west-anchor QA/evidence overlay pass as structurally complete, and the west-anchor spatial grounding pass as complete pending Batu review. The completed grounding pass adds a review-only overlay with approximate Manhattan Ave / Greenpoint Ave street relationship, corner orientation, contextual building massing, active storefront cue placement, DTR-11 facade cues, and symbolic/blocked subway context. No further implementation task is authorized until Batu accepts, redirects, or replaces the next-task pointer. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Brouwerij Lane and all other non-west target deepening remain blocked until deterministic source access/material or approved manual evidence exists and a later brief authorizes the one-target packet. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, facade/raster correction loops beyond the completed spatial grounding pass, storefront outline rebuilds outside the west-anchor grounding scope, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 real corridor reset implementation batch is complete pending Batu review. The normal Phase 3 review surface now uses the accepted Phase 2/DTR-11 Manhattan Ave / Greenpoint Ave west-anchor raster, and mid-corridor, Franklin, and Brouwerij remain real-data intake/blocked. No further implementation batch is authorized until Batu approves the next source/facade intake step or supplies/approves deterministic evidence and facade imagery. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-04 - Phase 3 Real Corridor Reset Implementation
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Stop presenting fictional placeholder storefront art as the Phase 3 normal review surface, wire the accepted DTR-11 Manhattan Ave / Greenpoint Ave raster as the west-anchor visual baseline, and convert mid-corridor, Franklin, and Brouwerij into real-data intake/blocked states.
+
+Files changed:
+- `src/mvpPlaceData.js`
+- `src/sceneManifest.js`
+- `src/PlaceholderWorld.jsx`
+- `src/App.jsx`
+- `src/styles.css`
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Source/raster inspection: active Phase 3 data path, Phase 3 fixture, Phase 2/DTR-11 scene manifest asset wiring, active west-anchor real-data fixture, DTR-11 facade evidence paths, and Phase 6 placeholder references.
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- `npm run build`.
+- Browser smoke after temporary local network permission: default load text/host label, no fictional storefront names in active DOM, selected intake card click, QA toggle after control/card stacking fix, renderer canvas mount, and desktop containment. Screenshot and canvas-pixel reads were unavailable in the in-app browser runtime; mobile viewport resizing was also unsupported.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- `src/mvpPlaceData.js` now binds the Phase 3 fixture to `src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png` instead of the Phase 6 placeholder raster.
+- The Phase 3 fixture now treats the DTR-11 raster as a west-anchor review-only baseline with explicit render bounds, and keeps mid-corridor/Franklin/Brouwerij as blocked/intake lanes rather than fictional storefronts.
+- Evidence lanes and cards remain available as support; the spatial-grounding packet is QA-only and no longer appears as the normal-mode visual proof.
+- Added a real corridor evidence inventory separating known west-anchor evidence, repo-local candidate/blocked items, missing corridor inputs, and blocked claims.
+- No live retrieval, source-vendor integration, broad ingestion, production/public claims, Brouwerij deepening, or new framework/tooling occurred.
+
+Unresolved decisions:
+- Batu owns reset acceptance, corridor facade imagery supply/approval, real source/access approval, exact-geometry/frontage/entrance decisions, corridor-specific raster direction, and any future non-west target promotion.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the reset; no further implementation batch is authorized until Batu approves the next source/facade intake step.
+
+### 2026-06-04 - Phase 3 Real Corridor Direction Correction
+
+Status:
+- Complete; next implementation batch authorized by `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Scope:
+- Record Batu approval that Phase 3 should stop using arbitrary placeholder storefront art/SVG diagramming as the review surface and should redirect toward the real Greenpoint Ave corridor from Manhattan Ave to Franklin Ave.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/DECISION_LOG.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, and `docs/phase-3-architecture-scaling-decision-surface.md`.
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Replaced the stale "Batu review pending" current brief with a real-corridor reset brief.
+- Recorded that the Phase 6 fictional storefront raster is scaffold mechanics only and must not be the normal Phase 3 product review surface.
+- Set the next authorized batch to re-anchor the app/review path on the accepted Phase 2/DTR-11 Manhattan Ave / Greenpoint Ave west-anchor raster where feasible and to represent mid-corridor/Franklin as real-data intake/blocked until sourced.
+- Preserved review-only status, no live retrieval/scraping, no production/public claims, no package/tooling changes, and no invented storefront substitutions for missing data or facade imagery.
+
+Unresolved decisions:
+- Batu still owns facade imagery supply/approval for Greenpoint Ave between Manhattan Ave and Franklin Ave.
+- Batu still owns any future source-access, non-west target promotion, corridor-specific raster, production/public, or exact-geometry approval.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now authorizes the Phase 3 real corridor reset and evidence-backed scene foundation.
 
 ### 2026-06-04 - Phase 3 West Anchor Spatial Grounding
 

@@ -340,9 +340,17 @@ function clampAndApplyCamera(host, scene, state) {
 function drawRasterPlate(world, scene, texture) {
   if (!texture) return;
 
+  const bounds = scene.plate?.renderBounds ?? {
+    x: 0,
+    y: 0,
+    width: scene.size.width,
+    height: scene.size.height,
+  };
   const plate = new Sprite(texture);
-  plate.width = scene.size.width;
-  plate.height = scene.size.height;
+  plate.x = bounds.x;
+  plate.y = bounds.y;
+  plate.width = bounds.width;
+  plate.height = bounds.height;
   plate.alpha = 1;
   world.addChild(plate);
 }
@@ -532,6 +540,18 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
         lineHeight: 15,
       },
     });
+    const intakeLabel = new Text({
+      text: "",
+      style: {
+        fill: "#f8ecd4",
+        fontFamily: "Inter, Arial, sans-serif",
+        fontSize: 18,
+        fontWeight: "850",
+        lineHeight: 24,
+        wordWrap: true,
+        wordWrapWidth: 360,
+      },
+    });
     const qaLaneLabel = new Text({
       text: "",
       style: {
@@ -573,6 +593,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
     draftSignLabel.resolution = 2;
     draftSignLabel.anchor.set(0.5);
     draftStatusLabel.resolution = 2;
+    intakeLabel.resolution = 2;
     qaLaneLabel.resolution = 2;
     annotationLabel.resolution = 2;
     markerTagLabel.resolution = 2;
@@ -585,6 +606,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftLabel,
       draftSignLabel,
       draftStatusLabel,
+      intakeLabel,
       qaLaneLabel,
       groundingLabelLayer,
       draftEntityLabelLayer,
@@ -600,6 +622,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
         draftLabel,
         draftSignLabel,
         draftStatusLabel,
+        intakeLabel,
         qaLaneLabel,
         groundingLabelLayer,
         draftEntityLabelLayer,
@@ -619,6 +642,7 @@ function drawTargets(world, targets, reviewMode, qaLayers) {
       draftLabel,
       draftSignLabel,
       draftStatusLabel,
+      intakeLabel,
       qaLaneLabel,
       groundingLabelLayer,
       draftEntityLabelLayer,
@@ -638,6 +662,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
     draftLabel,
     draftSignLabel,
     draftStatusLabel,
+    intakeLabel,
     qaLaneLabel,
     groundingLabelLayer,
     draftEntityLabelLayer,
@@ -661,6 +686,7 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
       .fill({ color: 0xffffff, alpha: 0.001 });
   }
 
+  syncIntakePanel(shape, intakeLabel, target);
   syncSpatialGroundingLayer(shape, groundingLabelLayer, target.spatialGrounding, reviewMode, qaLayers);
 
   if (isActive || isSelected) {
@@ -856,11 +882,40 @@ function renderTargetState(targetGraphic, target, isActive, isSelected, reviewMo
   );
 }
 
+function syncIntakePanel(graphics, label, target) {
+  const panel = target.intakePanel;
+  label.visible = Boolean(panel);
+  if (!panel) return;
+
+  const bounds = panel.bounds ?? target.bounds;
+  const statusColor = getDraftStatusColor(panel.status ?? target.status);
+  graphics
+    .roundRect(bounds.x, bounds.y, bounds.width, bounds.height, 12)
+    .fill({ color: parseSceneColor(panel.fillColor, 0x202424), alpha: panel.fillAlpha ?? 0.82 })
+    .stroke({
+      color: statusColor,
+      width: panel.strokeWidth ?? 2.4,
+      alpha: panel.strokeAlpha ?? 0.76,
+    });
+
+  const lineText = [
+    panel.title ?? target.title,
+    panel.status ? formatDraftStatus(panel.status).toUpperCase() : null,
+    ...(panel.lines ?? []),
+  ].filter(Boolean).join("\n");
+  label.text = lineText;
+  label.style.fill = panel.textFill ?? "#f8ecd4";
+  label.style.fontSize = panel.fontSize ?? 17;
+  label.style.wordWrapWidth = Math.max(120, (panel.textWidth ?? bounds.width - 48));
+  label.x = panel.textPoint?.x ?? bounds.x + 24;
+  label.y = panel.textPoint?.y ?? bounds.y + 24;
+}
+
 function syncSpatialGroundingLayer(graphics, labelLayer, grounding, reviewMode, qaLayers = DEFAULT_QA_LAYERS) {
   const removed = labelLayer.removeChildren();
   for (const child of removed) child.destroy();
-  labelLayer.visible = Boolean(grounding);
-  if (!grounding) return;
+  labelLayer.visible = Boolean(grounding && reviewMode && qaLayers.draft);
+  if (!labelLayer.visible) return;
 
   for (const street of grounding.streets ?? []) drawGroundingStreet(graphics, street);
   for (const pad of grounding.cornerPads ?? []) drawGroundingPolygon(graphics, pad.polygon, {

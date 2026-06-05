@@ -200,6 +200,7 @@ export function loadPhase3ScaffoldSceneFromFixture(fixture, assetSrcById) {
       label: plate.label,
       sourcePath: plate.sourcePath,
       visibleBounds: plate.visibleBounds,
+      renderBounds: plate.renderBounds ?? null,
       nativeSize: plate.nativeSize,
       renderSize: plate.renderSize,
       status: plate.status,
@@ -273,6 +274,9 @@ function validatePhase3ScaffoldFixture(fixture) {
   assertObject(fixture.scene.plate, "Phase 3 scaffold scene.plate");
   assertString(fixture.scene.plate.id, "Phase 3 scaffold scene.plate.id");
   validateBounds(fixture.scene.plate.visibleBounds, "Phase 3 scaffold scene.plate.visibleBounds");
+  if (fixture.scene.plate.renderBounds) {
+    validateBounds(fixture.scene.plate.renderBounds, "Phase 3 scaffold scene.plate.renderBounds");
+  }
   assertObject(fixture.scene.panZoom, "Phase 3 scaffold scene.panZoom");
   validateBounds(fixture.scene.panZoom.bounds, "Phase 3 scaffold scene.panZoom.bounds");
   assertNumber(fixture.scene.panZoom.minScale, "Phase 3 scaffold scene.panZoom.minScale");
