@@ -1,6 +1,6 @@
 # Phase 4A Workflow Spike Decision Matrix
 
-Status: Proposed evaluation matrix / no implementation approval
+Status: Supporting detail. Primary Phase 4 execution roadmap: `docs/phase-4-execution-roadmap.md`.
 Date: 2026-06-05
 Target corridor: Greenpoint Ave from Manhattan Ave toward Franklin Ave
 

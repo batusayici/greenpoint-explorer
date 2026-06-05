@@ -1,6 +1,6 @@
 # Phase 4A Workflow Spike Plan
 
-Status: Proposed next task unless repo docs already mark it approved
+Status: Supporting detail. Primary Phase 4 execution roadmap: `docs/phase-4-execution-roadmap.md`.
 Date: 2026-06-05
 Name: Phase 4A: Workflow Spike - Compiler vs Export vs Reality-Capture Reference
 Target corridor: Greenpoint Ave from Manhattan Ave toward Franklin Ave

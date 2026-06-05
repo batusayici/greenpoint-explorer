@@ -1,6 +1,6 @@
 # Phase 4B Implementation Plan
 
-Status: Non-implementation planning only
+Status: Supporting detail. Primary Phase 4 execution roadmap: `docs/phase-4-execution-roadmap.md`.
 Date: 2026-06-05
 Name: Phase 4B: Reproducible Data-to-Scene + Storefront Anchor Foundation
 

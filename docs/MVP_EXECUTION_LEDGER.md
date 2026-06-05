@@ -55,14 +55,55 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 closed for planning purposes after the Phase 3D corridor style matte review package.
+- Current phase: Phase 4 roadmap consolidation complete pending review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records `Phase 4A: Workflow Spike - Compiler vs Export vs Reality-Capture Reference` as the proposed next task unless repo docs already mark it approved. Phase 4A is a workflow decision spike, not Phase 4 runtime implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Phase 4B docs are non-implementation planning only and do not authorize schema files, compiler scripts, source fixtures, generated manifests, runtime refactors, asset-kit files, public interfaces, package/tooling changes, or production architecture. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records `Batch 4A-1: Workflow spike setup` as the proposed next task unless repo docs already mark it approved. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4A remains a decision workflow, not Phase 4 runtime implementation. Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Phase 4 Roadmap Consolidation
+
+Status:
+- Complete pending review.
+
+Scope:
+- Docs-only planning cleanup: add one primary Phase 4 execution roadmap, mark existing Phase 4A/4B docs as supporting detail, and reconcile current brief/plan/ledger around Batch 4A-1 as the proposed next task.
+
+Files changed:
+- `docs/phase-4-execution-roadmap.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/phase-4a-workflow-spike-decision-matrix.md`
+- `docs/phase-4b-data-to-scene-workflow.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Phase 4 supporting-doc review.
+- `git status --short` before editing.
+- Markdown heading/link inspection.
+- `git diff --stat`.
+- `git diff --check`.
+- `git status --short` after editing.
+
+Outcome:
+- `docs/phase-4-execution-roadmap.md` is now the primary Phase 4 control surface.
+- Existing Phase 4A/4B docs remain in place as supporting detail docs.
+- Batch 4A-1 is recorded as the proposed next task unless repo docs already mark it approved.
+- Phase 4B remains post-spike and non-implementation.
+- No runtime code, schema file, compiler script, source fixture, generated manifest, asset file, package/tooling change, public interface, API call, scraping, production/public claim, commit, or deployment occurred.
+
+Unresolved decisions:
+- Batu owns approval of Batch 4A-1 as the next executable workflow-spike setup if it is not already approved.
+- Batu owns Phase 4A lane decisions, Phase 4B architecture boundaries, public-interface implications, source/reference approvals, production asset direction, and any later implementation scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
 
 ### 2026-06-05 - Phase 3 Closeout And Phase 4 Planning
 
