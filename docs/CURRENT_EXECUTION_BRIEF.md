@@ -24,19 +24,35 @@ Purpose:
 
 ## Next State
 
-No further implementation batch is authorized by this brief.
+The next implementation batch is authorized as a narrow Phase 3D corridor style matte pass.
 
-Next step is Batu review of the corrected westward visual-integration corridor surface. Batu should decide whether the current scene answers:
+Phase 3D may use the Batu-supplied reference packet at `docs/phase3-reference-images/` as visual reference for a review-only corridor matte. The reference packet may inform visual art direction, Franklin endpoint character, roofline/setback feel, street width and curb feel, sidewalk/crosswalk cues, building rhythm, and general Greenpoint architectural character. It does not automatically authorize business identity, active status, exact frontage, exact entrance, exact address placement, exact facade claims, or signage claims unless those claims are separately opened through evidence gates.
 
-> Does this now read as an art-directed Greenpoint Ave corridor expanding west / left from Manhattan Ave toward the Franklin endpoint, with two recognizable corner moments, while business/place/facade/frontage/signage claims remain blocked?
+Allowed Phase 3D implementation files may include:
 
-A future brief may authorize one of:
+- `docs/mvp-review/phase-3d-corridor-style-matte-review/`
+- `src/assets/review-only/phase-3d-greenpoint-westward-corridor-matte-review-only.png`
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/styles.css`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
 
-- refinement of the stylized scene transform and manual sidewalk/context bands after Batu review,
-- a narrow source/access batch for Brouwerij or corridor business identity/address/category/coordinate evidence after credentials, terms, or deterministic source exports exist,
-- a Batu-supplied or Batu-approved facade/reference imagery intake batch,
-- a join pass from sourced POI evidence to geometry context where supported,
-- or a later corridor-specific review raster/surface after geometry, business, and facade inputs are sufficiently available.
+The final primary world surface for Phase 3D must be a review-only raster PNG/JPG matte. Procedural scripts may be used only as offline generation or compositing helpers to produce that raster; runtime SVG, canvas, CSS, or procedural blocks must not become the primary visual world surface for Phase 3D.
+
+Sourced geometry remains provenance/layout underlay. Truth-state overlays remain QA/provenance overlays, not the primary visual deliverable.
+
+Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefront/exact-address claims remain blocked unless separately authorized through evidence gates.
+
+No Foursquare, scraping, live APIs, external fetches, third-party imagery collection, new renderer/framework/map-system/package tooling, public readiness claims, or production readiness claims are authorized.
+
+The following unrelated dirty files remain out of scope for Phase 3D unless explicitly authorized later:
+
+- `docs/mvp-review/mvp-feedback-demo-package/README.md`
+- `docs/mvp-review/mvp-acceptance-audit-2026-06-03.md`
+- `docs/research/Spatial_Intelligence_Research.md`
 
 ## Completed Files
 
