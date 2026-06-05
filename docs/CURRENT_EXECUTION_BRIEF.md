@@ -31,6 +31,13 @@ Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefro
 
 Name: `Batch 4A-1: Workflow spike setup`
 
+Execution rule:
+
+- Agents must execute only this named Phase 4 batch.
+- Use `docs/phase-4-execution-roadmap.md` as the operating plan.
+- Stop at the 4A-1 roadmap stop/decision gate.
+- Do not self-advance into 4A-2 or any later Phase 4 batch without explicit Batu approval or an updated current brief.
+
 Purpose:
 
 - Consolidate the Greenpoint Ave Manhattan-to-Franklin corridor target for Phase 4A.

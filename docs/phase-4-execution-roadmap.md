@@ -21,6 +21,8 @@ The compiler and semantic manifest are the center. Blender is an asset foundry/o
 
 ## Batch Plan
 
+Agents must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`. This roadmap is the operating plan for that named batch, not permission to self-advance through later batches. At every stop/decision gate, agents must stop for review and may continue only after explicit Batu approval or an updated current brief names the next batch.
+
 | Batch | Expected outcome | Success criteria | Must not change | Verification | Commit boundary | Stop / decision gate |
 | --- | --- | --- | --- | --- | --- | --- |
 | 4A-1: Workflow spike setup | Ready-to-run spike checklist for the Manhattan-to-Franklin corridor. | Corridor target, three lanes, required inputs, evaluation criteria, source/reference constraints, and evidence outputs are clear. | No source fixtures, schemas, compiler scripts, runtime changes, assets, package/tooling, or public interfaces. | `git status --short`, `git diff --check`, markdown/link sanity if available. | Docs-only commit. | Stop if required source/reference inputs are unclear or if a lane needs external access, licensing approval, or Batu decision. |
@@ -79,6 +81,8 @@ Phase 4B succeeds when:
 
 - Use `docs/DOCS_INDEX.md` to route docs authority before reading historical or review-only Phase 2/3 files.
 - `docs/phase-4-execution-roadmap.md` is the primary Phase 4 control surface.
+- `docs/CURRENT_EXECUTION_BRIEF.md` names the only Phase 4 batch agents may execute.
+- Stop at every roadmap stop/decision gate; do not self-advance to the next Phase 4 batch.
 - Existing Phase 4A/4B docs are supporting detail docs.
 - Do not duplicate the full roadmap into supporting docs.
 - Do not create new Phase 4 docs unless they remove ambiguity or directly support an implementation artifact.

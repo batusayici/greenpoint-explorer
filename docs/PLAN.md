@@ -30,6 +30,7 @@ Use these in order when documents conflict:
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
 - Current next task: `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
+- Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at each roadmap gate instead of self-advancing.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.

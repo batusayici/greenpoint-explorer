@@ -71,6 +71,8 @@ Read topic-specific docs only when the task touches that area:
 
 `docs/CURRENT_EXECUTION_BRIEF.md` is the active gate for Codex's next executable task. If it does not explicitly authorize source edits, prototype implementation, visual asset work, framework/tooling changes, public-interface changes, or gate movement, Codex must stop before making those changes.
 
+For Phase 4 work, Codex must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`, using `docs/phase-4-execution-roadmap.md` as the operating plan. Codex must stop at each roadmap stop/decision gate and may not self-advance into the next Phase 4 batch without explicit Batu approval or an updated current brief.
+
 Codex must not rely on ChatGPT conversation memory when repo docs answer the question. When project documents conflict, use the source-of-truth order in this file. If the conflict affects source edits, scope, visual direction, production claims, commit behavior, approval states, architecture boundaries, or public interfaces, Codex must stop and ask Batu to resolve or update the control docs.
 
 Codex must not autonomously decide the next phase, open a blocked gate, or convert recommendations into approved direction. Batu owns creative, product, scope, public-interface, architecture, visual direction, and final approval decisions. Codex owns execution inside the current approved boundaries.

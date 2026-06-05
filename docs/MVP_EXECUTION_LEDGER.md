@@ -64,6 +64,41 @@ Next pointer:
 
 ## Entries
 
+### 2026-06-05 - Phase 4 Batch-Gate Hardening
+
+Status:
+- Complete pending review.
+
+Scope:
+- Docs-only governance update: make the Phase 4 current-batch-only rule durable in the root contract, Phase 4 roadmap, and current brief.
+
+Files changed:
+- `AGENTS.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- `git status --short` before editing.
+- Markdown/link sanity by inspection.
+- `git diff --check`.
+- `git status --short` after editing.
+
+Outcome:
+- Phase 4 agents are now explicitly constrained to execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`.
+- `docs/phase-4-execution-roadmap.md` is confirmed as the operating plan for that named batch.
+- Agents must stop at each roadmap stop/decision gate and may not self-advance to the next Phase 4 batch without explicit Batu approval or an updated current brief.
+- The current next task remains `Batch 4A-1: Workflow spike setup`.
+- No Phase 4 code, runtime file, schema file, compiler script, source fixture, generated manifest, asset file, package/tooling change, file move, file deletion, staging, commit, API call, scraping, or frontend build occurred.
+
+Unresolved decisions:
+- Batu owns approval of Batch 4A-1 as the next executable workflow-spike setup if it is not already approved.
+- Batu owns approval for every later Phase 4 batch transition.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still points to `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
+
 ### 2026-06-05 - Docs Authority Audit And Index
 
 Status:
