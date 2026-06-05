@@ -55,14 +55,209 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Docs authority audit complete pending review; Phase 4A workflow spike setup remains the proposed next task.
+- Current phase: Phase 4A decision gate complete pending Batu review; Phase 4B remains closed until Batu approval and an updated current brief.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records `Batch 4A-1: Workflow spike setup` as the proposed next task unless repo docs already mark it approved. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4A remains a decision workflow, not Phase 4 runtime implementation. Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the completed `Batch 4A-5: Decision gate`. No executable Phase 4B batch is open until Batu approves the next batch and the current brief is updated. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4A remains a decision workflow, not Phase 4 runtime implementation. Phase 4B remains post-spike and non-implementation until a later brief explicitly opens implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Phase 4A Decision Gate
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Docs-only Batch 4A-5 decision gate: turn the 4A-2, 4A-3, and 4A-4 lane assessments into a Phase 4A recommendation and stop before Phase 4B.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/phase-4a-workflow-spike-decision-matrix.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Phase 4A supporting-doc reconciliation: `docs/phase-4a-workflow-spike-plan.md` and `docs/phase-4a-workflow-spike-decision-matrix.md`.
+- Markdown recommendation-shape sanity by inspection.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- Phase 4A now recommends deterministic compiler plus semantic manifest as the core lane.
+- Controlled owned/approved references are recommended as the reference/QA lane for facade cue extraction, recognizability QA, and art-direction calibration.
+- 3D map/export as core workflow is deferred; restricted capture outputs as canonical data, runtime surfaces, production assets, training input, or exact facade/frontage evidence remain blocked/deferred.
+- The smallest Phase 4B proof is a file-based one-corridor source fixture plus verifier first, before compiler or runtime work.
+- No Phase 4B implementation, source fixture, schema file, compiler script, generated manifest, runtime change, asset file, public interface, package/tooling change, staging, or commit occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4A-5 decision.
+- Batu owns approval of any Phase 4B next batch, including `Batch 4B-1: Contract foundation`.
+- Batu owns Phase 4B architecture boundaries, public-interface implications, source fixture shape, source storage/attribution/cache/display rules, schema ownership, stable-ID contract, verifier scope, compiler boundary, storefront-anchor/manual override policy, style/asset contract boundaries, and approved reference/source classes.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4A-5 gate; Phase 4B is not executable until Batu approval and an updated current brief.
+
+### 2026-06-05 - Phase 4A Reality Capture Reference Lane Assessment
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Docs-only Batch 4A-4 assessment of whether reference photos, Google Photorealistic 3D Tiles, world-model outputs, splats, or photo-to-3D workflows can help the Greenpoint Ave Manhattan-to-Franklin corridor workflow.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/phase-4a-workflow-spike-decision-matrix.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Source/reference policy review: `docs/MVP_SCOPE.md`, `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/approved-reference-corpus/USAGE_RULES.md`, and DTR-11 facade-fidelity evidence.
+- Existing DTR-11 generated JSON parse for `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-qa-report.json` and `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json`.
+- Markdown/link sanity by inspection.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` was updated to open 4A-4 after Batu approval, then reconciled to the completed 4A-4 stop/decision gate.
+- `docs/phase-4a-workflow-spike-plan.md` now records the reality-capture/reference lane viability read, inspected evidence, required future inputs, inspection questions, outputs, validation gates, current repo support, gaps, and decision implications.
+- `docs/phase-4a-workflow-spike-decision-matrix.md` now updates only the reality-capture/reference lane scores.
+- Assessment result: reference/capture is viable only as a controlled reference and QA lane. Owned or explicitly approved references can support human review and recognizability QA; restricted capture outputs remain blocked or deferred for canonical data, production assets, training input, runtime surfaces, and exact facade/frontage evidence.
+- No stored restricted imagery, texture extraction, tracing, canonical splats/world models, runtime capture path, source fixture, generated manifest, asset file, public interface, API call, scraping, staging, commit, 4A-5 work, or Phase 4B implementation occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4A-4 assessment.
+- Batu owns approval of `Batch 4A-5: Decision gate`, revision of the 4A-4 assessment, or pause of Phase 4A.
+- Batu owns any later approval of reference/capture source classes, storage policy, usage rights, claim boundaries, and production/public readiness changes.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4A-4 gate; 4A-5 is pending Batu approval or an updated current brief.
+
+### 2026-06-05 - Phase 4A 3D Map Export Shortcut Assessment
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Docs-only Batch 4A-3 assessment of whether 3D map/export tools can serve as a shortcut or acceleration lane for the Greenpoint Ave Manhattan-to-Franklin corridor workflow.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/phase-4a-workflow-spike-decision-matrix.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Phase 4A supporting-doc review.
+- Repo scan for local 3D export samples: `.glb`, `.gltf`, `.obj`, `.fbx`, `.3dm`, and `.dae`.
+- Package-script/dependency inspection for current runtime/tooling support.
+- Markdown/link sanity by inspection.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` was updated to open 4A-3 after Batu approval, then reconciled to the completed 4A-3 stop/decision gate.
+- `docs/phase-4a-workflow-spike-plan.md` now records the 3D map/export shortcut viability read, inspected evidence, required future inputs, inspection questions, outputs, validation gates, current repo support, gaps, and decision implications.
+- `docs/phase-4a-workflow-spike-decision-matrix.md` now updates only the 3D map/export shortcut lane scores.
+- Assessment result: the export shortcut lane is not viable as the core workflow under current repo conditions. It may be useful later as a reference/acceleration lane only after a specific tool, terms/export rights, storage/attribution policy, and sample export are approved.
+- No canonical export adoption, GLB/glTF asset, runtime loader, package/tooling change, broad import, source fixture, generated manifest, public interface, API call, scraping, staging, commit, 4A-4 work, or Phase 4B implementation occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4A-3 assessment.
+- Batu owns approval of `Batch 4A-4: Reality-capture/reference lane assessment`, revision of the 4A-3 assessment, or pause of Phase 4A.
+- Batu owns any later approval of export tool terms, export rights, sample storage, attribution, source provenance, runtime boundary, and canonical-use limits.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4A-3 gate; 4A-4 is pending Batu approval or an updated current brief.
+
+### 2026-06-05 - Phase 4A Deterministic Compiler Lane Assessment
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Docs-only Batch 4A-2 assessment of whether the deterministic compiler lane is viable for the Greenpoint Ave Manhattan-to-Franklin corridor workflow.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/phase-4a-workflow-spike-decision-matrix.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4a-workflow-spike-plan.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Existing source/sample JSON parse for `src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json`, `src/data/geometry-source/raw/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry.phase-3b.raw.json`, `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`, and `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`.
+- Markdown/link sanity by inspection.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- `docs/CURRENT_EXECUTION_BRIEF.md` was updated to open 4A-2 after Batu approval, then reconciled to the completed 4A-2 stop/decision gate.
+- `docs/phase-4a-workflow-spike-plan.md` now records the deterministic compiler lane viability read, inspected evidence, required future inputs, transforms, outputs, validation gates, current repo support, gaps, and decision implications.
+- `docs/phase-4a-workflow-spike-decision-matrix.md` now updates only the deterministic compiler lane scores.
+- Assessment result: the deterministic compiler lane is viable as the leading core-lane candidate for a future one-corridor Phase 4B proof, but not viable as an automatic source of storefront/frontage/entrance/facade/business truth without approved evidence and explicit manual-review gates.
+- No source fixtures, schemas, compiler scripts, generated manifests, assets, runtime changes, package/tooling changes, public interfaces, API calls, scraping, staging, commit, 4A-3 work, or Phase 4B implementation occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4A-2 assessment.
+- Batu owns approval of `Batch 4A-3: 3D map/export shortcut assessment`, revision of the 4A-2 assessment, or pause of Phase 4A.
+- Batu owns later approval of any Phase 4B fixture shape, schema ownership, stable-ID contract, compiler module boundary, source storage/attribution, and public-interface implications.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4A-2 gate; 4A-3 is pending Batu approval or an updated current brief.
+
+### 2026-06-05 - Phase 4A Workflow Spike Setup
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Docs-only Batch 4A-1 setup: make the Manhattan-to-Franklin Phase 4A workflow spike ready to run, with lane inputs, evaluation criteria, evidence outputs, and stop gates.
+
+Files changed:
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Phase 4 roadmap and Phase 4A supporting-doc review.
+- `git status --short` before editing.
+- Markdown/link sanity by inspection.
+- `git diff --stat`.
+- `git diff --check`.
+- `git status --short` after editing.
+
+Outcome:
+- `docs/phase-4a-workflow-spike-plan.md` now contains the Batch 4A-1 ready-to-run checklist.
+- The checklist confirms the shared corridor target, three lane input checks, shared evaluation criteria, evidence output packet, decision-matrix update path, and stop gates.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now stops at the 4A-1 gate and records `Batch 4A-2: Deterministic compiler lane assessment` as pending Batu approval or updated brief, not executable.
+- No source fixtures, schemas, compiler scripts, generated manifests, assets, runtime changes, package/tooling changes, public interfaces, API calls, scraping, staging, commit, or Phase 4B implementation occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed Batch 4A-1 checklist.
+- Batu owns approval of `Batch 4A-2: Deterministic compiler lane assessment`, revision of the checklist, or pause of Phase 4A.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4A-1 gate; no executable next batch is open until Batu approval or an updated current brief.
 
 ### 2026-06-05 - Phase 4 Batch-Gate Hardening
 

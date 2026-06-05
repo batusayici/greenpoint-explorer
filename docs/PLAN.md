@@ -26,10 +26,10 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Docs authority audit complete pending review; Phase 4A workflow spike setup remains the proposed next task.
+- Current phase: Phase 4A decision gate complete pending Batu review; Phase 4B remains closed until Batu approval and an updated current brief.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
+- Current next task: no executable Phase 4B batch is open until Batu approves the next batch and `docs/CURRENT_EXECUTION_BRIEF.md` is updated.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at each roadmap gate instead of self-advancing.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
@@ -57,9 +57,12 @@ Use these in order when documents conflict:
 
 1. Phase 3 closeout. Complete for planning purposes.
 2. Phase 4 roadmap consolidation. Complete pending review.
-3. Batch 4A-1: Workflow spike setup. Proposed next task unless repo docs already mark it approved.
-4. Phase 4A lane assessments and decision gate.
-5. Phase 4B compiler-centered foundation only after Phase 4A recommendation and Batu approval.
+3. Batch 4A-1: Workflow spike setup. Complete; Batu approved opening 4A-2.
+4. Batch 4A-2: Deterministic compiler lane assessment. Complete; Batu approved opening 4A-3.
+5. Batch 4A-3: 3D map/export shortcut assessment. Complete; Batu approved opening 4A-4.
+6. Batch 4A-4: Reality-capture/reference lane assessment. Complete; Batu approved opening 4A-5.
+7. Batch 4A-5: Decision gate. Complete pending Batu review.
+8. Phase 4B compiler-centered foundation only after Batu approval and updated current brief.
 
 ## Active Blockers
 
@@ -74,9 +77,9 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu approval of Batch 4A-1 as the next executable workflow-spike setup if it is not already approved in repo docs.
-- Whether Phase 4A recommends deterministic compiler as core, export tools as acceleration/reference, and reality-capture outputs as reference/QA only.
-- The smallest Phase 4B proof needed after Phase 4A.
+- Batu review of the completed `Batch 4A-5: Decision gate`.
+- Batu approval of a Phase 4B next batch, revision of the Phase 4A recommendation, or pause before implementation.
+- Whether to approve `Batch 4B-1: Contract foundation` as the next docs-only Phase 4B batch.
 - Phase 4B architecture boundaries, public-interface implications, source fixtures, compiler boundaries, storefront-anchor contract, style recipe contract, asset-kit contract, and runtime scope.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.

@@ -101,6 +101,8 @@ Phase 4B succeeds when:
 
 ## Immediate Next Batch
 
-Next batch: `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
+Current gate: `Batch 4A-5: Decision gate`, complete pending Batu review.
 
-Expected output: a ready-to-run Phase 4A spike checklist that confirms the corridor target, evaluation criteria, required inputs, evidence format, stop gates, and decision-matrix update path.
+Next proposed batch: `Batch 4B-1: Contract foundation`, pending Batu approval and updated current brief.
+
+Expected future output if approved: lean planning contracts for source fixture, scene manifest, storefront anchors, stable IDs, manual overrides, style recipe, and asset registry; no runtime code, compiler code, generated manifests, package/tooling, broad data model, or asset production.

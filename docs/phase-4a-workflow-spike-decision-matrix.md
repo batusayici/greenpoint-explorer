@@ -20,29 +20,27 @@ Suggested scale:
 
 | Criterion | Deterministic compiler lane | 3D map/export shortcut lane | Reality-capture/reference lane |
 | --- | --- | --- | --- |
-| Semantic interaction support | Unknown; should become strong if generated objects keep stable IDs and card anchors. | Unknown; often weak if exports collapse structure or lose source IDs. | Weak for core interaction; useful only as reference unless semantic labels are separately authored. |
-| Reproducibility | Unknown; expected strongest if source fixtures, transforms, and manual overrides are versioned. | Unknown; depends on export repeatability, tool settings, and source provenance. | Usually weak for canonical rebuilds; useful for visual QA snapshots only. |
-| Art-direction support | Unknown; depends on style recipe and asset-kit assembly rules. | Mixed if GLB geometry is editable and can accept modular treatment. | Mixed for fidelity references; weak as an art-directed production system. |
-| Licensing/runtime risk | Mixed; lower if using approved local/open fixtures. | Unknown; tool/export license and attribution must be checked. | High/unknown; Google/Street View/3D Tiles, splats, and world-model outputs require strict usage review. |
-| Editability | Unknown; expected strong if generated primitives and overrides are explicit. | Unknown; depends on mesh hierarchy, instancing, and cleanup burden. | Weak/mixed; visual captures may be hard to edit semantically. |
-| Stable ID support | Unknown; should be designed into compiler output. | Unknown; often weak unless export preserves feature IDs. | Weak unless IDs are manually layered afterward. |
-| Storefront-anchor support | Unknown; must be tested as a first-class compiler problem. | Weak/mixed; building exports rarely solve storefront slots. | Mixed for visual clue review; not sufficient for canonical anchors. |
-| Business-to-storefront matching | Unknown; requires explicit confidence and manual review model. | Weak without separate semantic data. | Weak for canonical matching; useful for human review only. |
-| Reference/facade fidelity | Mixed initially; improves with approved imagery and asset kit. | Mixed if geometry massing helps visual alignment. | Strong as a reference/QA lane when usage is allowed, but not canonical truth. |
-| Runtime fit | Unknown; depends on output size and browser rendering path. | Unknown; may require GLB optimization and asset rules. | Weak/high risk for core runtime unless a later brief approves a constrained use. |
+| Semantic interaction support | Mixed; manifest/anchor planning and the west-anchor sample support semantic IDs and cards, but no Phase 4 compiler output or corridor runtime contract exists. | Weak; no local export sample proves preserved semantic IDs or card anchors, and any export would need a separate semantic layer. | Weak; references can guide human review but semantic labels, cards, and anchors must be authored as separate data. |
+| Reproducibility | Mixed; existing corridor geometry preserves source metadata and raw-packet hash, but fixture shape, transform rules, compiler code, and determinism checks are not approved or implemented. | Blocked; no selected tool, export settings, source lineage, export sample, or terms approval exists for repeatable rebuild checks. | Weak; QA boards and inventories can be repeatable for approved local references, but capture outputs are not canonical rebuild inputs. |
+| Art-direction support | Mixed; semantic manifests can feed style recipes and asset rules later, but this lane produces primitive massing and claim-status structure rather than final visual fidelity. | Mixed; a clean editable GLB could accelerate reference or asset work later, but no sample exists and exported geometry must not become the art system. | Mixed; supplied/approved references can calibrate facade cues and recognizability, but they do not define a production asset system. |
+| Licensing/runtime risk | Mixed; NYC/Open-style file fixtures are the lowest-risk source path, but attribution, source-storage, schema ownership, and public-interface gates remain unapproved. | Blocked; tool terms, export rights, storage rules, attribution, textures/material rights, and runtime boundary are unapproved. | Blocked for restricted capture; owned/approved photos are usable only under recorded review-only provenance and claim limits. |
+| Editability | Mixed; generated primitives plus explicit overrides should be reviewable, but current corridor transform and storefront/manual override burden are not measured. | Unknown; no sample exists to inspect hierarchy, mesh granularity, instancing, material cleanup, or decomposition burden. | Weak; captures and image references are hard to edit semantically and require explicit manual extraction/override records. |
+| Stable ID support | Mixed; the lane can design deterministic IDs from source records and transform inputs, but no approved stable-ID contract or verifier exists yet. | Weak; no evidence shows preserved source IDs or stable feature IDs from an export path. | Weak; stable IDs must be layered in separate reference records and semantic scene objects. |
+| Storefront-anchor support | Mixed; compiler output can represent storefront anchors as explicit candidates with confidence, but current geometry cannot derive exact frontage/order/entrances by itself. | Weak; building/map exports rarely solve storefront slots and no inspected sample proves frontage or entrance semantics. | Mixed; approved photos can support human storefront/frontage/entrance review, but capture/reference output alone is not canonical anchor truth. |
+| Business-to-storefront matching | Mixed; the lane can expose confidence and manual-review states, but current corridor lacks approved business/source records and exact storefront evidence. | Weak; exports do not provide business matching without separate semantic/source records. | Weak; references may corroborate visual cues but cannot establish active business identity or matching without separate source records. |
+| Reference/facade fidelity | Weak; deterministic geometry can support alignment and massing, but facade/frontage fidelity requires approved reference evidence or later asset rules. | Mixed; exports may help massing/reference alignment if rights and sample quality are approved, but cannot prove facade/frontage truth. | Strong for review-only fidelity when references are owned/approved; blocked for restricted storage/extraction or production facade evidence. |
+| Runtime fit | Mixed; JSON manifest-shaped data already exists in the repo, but no approved Phase 4 runtime schema, loader, or renderer boundary exists. | Blocked; current app has no approved Three/R3F/glTF loader boundary, package/tooling change, or GLB asset path. | Blocked as runtime source; references/captures may inform QA only unless a later brief approves a constrained runtime use. |
 
-## Recommendation Template
+## Phase 4A Recommendation
 
-Use this output shape at the end of Phase 4A:
+- Core lane: deterministic compiler plus semantic manifest.
+- Reference lane: controlled owned/approved references for facade cue extraction, recognizability QA, and art-direction calibration.
+- Rejected/deferred lanes: 3D map/export as core workflow; restricted capture outputs as canonical data, runtime surfaces, production assets, training input, or exact facade/frontage evidence.
+- Smallest Phase 4B proof: file-based one-corridor source fixture plus verifier first, before compiler or runtime work.
+- Required approvals before implementation: Phase 4B current brief, source fixture boundary, source storage/attribution/cache/display rules, schema/public-interface implications, stable-ID contract, verifier scope, compiler boundary, storefront-anchor/manual override policy, style/asset contract boundaries, and approved reference/source classes.
+- Remaining blockers: storefront anchoring, business-to-storefront matching, mid-corridor/Franklin business/source records, approved facade/frontage/entrance references, Foursquare credential/terms gates, export/capture usage rights, and Phase 4B architecture/public-interface approval.
 
-```text
-Core lane:
-Reference lane:
-Rejected/deferred lanes:
-Smallest Phase 4B proof:
-Required approvals before implementation:
-Remaining blockers:
-```
+Detailed decision packet: `docs/phase-4a-workflow-spike-plan.md`.
 
 ## Non-Negotiables
 

@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 4A Workflow Spike Setup
+# Current Execution Brief - Phase 4A Batch 4A-5 Gate
 
-Status: Phase 3 is closed for planning purposes. The Phase 3D corridor style matte remains complete review evidence. The immediate next task is `Batch 4A-1: Workflow spike setup`, proposed unless repo docs already mark it approved.
+Status: `Batch 4A-5: Decision gate` is complete pending Batu review. Phase 4A now has a recommendation, and the Phase 4B gate remains closed. No Phase 4B batch is executable until Batu explicitly approves the next batch and this brief is updated.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, Phase 4A approval, Phase 4B implementation approval, and any later MVP gates.
 
@@ -27,28 +27,42 @@ The Phase 3D review matte, app surface, screenshot evidence, reference inventory
 
 Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefront/exact-address claims remain blocked unless separately authorized through evidence gates.
 
-## Proposed Next Task
+## Current Gate
 
-Name: `Batch 4A-1: Workflow spike setup`
+Name: `Batch 4A-5: Decision gate`
 
 Execution rule:
 
-- Agents must execute only this named Phase 4 batch.
+- Agents must stop at the 4A-5 roadmap stop/decision gate.
 - Use `docs/phase-4-execution-roadmap.md` as the operating plan.
-- Stop at the 4A-1 roadmap stop/decision gate.
-- Do not self-advance into 4A-2 or any later Phase 4 batch without explicit Batu approval or an updated current brief.
+- Do not self-advance into Phase 4B or any later Phase 4 batch without explicit Batu approval and an updated current brief.
 
 Purpose:
 
-- Consolidate the Greenpoint Ave Manhattan-to-Franklin corridor target for Phase 4A.
-- Confirm the inputs needed for the deterministic compiler lane, 3D map/export shortcut lane, and reality-capture/reference lane.
-- Produce a ready-to-run spike checklist.
-- Keep Phase 4A as a decision workflow, not a production system.
+- Review the Phase 4A recommendation now recorded in `docs/phase-4a-workflow-spike-plan.md`.
+- Decide whether to approve a later Phase 4B planning/implementation batch, revise the Phase 4A recommendation, or pause before implementation.
+- Keep Phase 4A as a decision workflow and keep Phase 4B non-executable until explicitly approved.
 
 Expected output:
 
-- A short 4A-1 checklist or update to existing Phase 4A supporting docs that makes the spike ready to run.
-- No implementation beyond docs/checklist.
+- Review of the 4A-5 recommendation now recorded in `docs/phase-4a-workflow-spike-plan.md`.
+- Review of the recommendation summary in `docs/phase-4a-workflow-spike-decision-matrix.md`.
+- No new Codex implementation until the next batch is approved or this brief is updated.
+
+## Proposed Next Task Pending Approval
+
+Name: `Batch 4B-1: Contract foundation`
+
+Approval state:
+
+- Pending Batu approval or updated current brief.
+- Not executable from this brief as currently written.
+
+Expected future output if approved:
+
+- Lean planning contracts for source fixture, scene manifest, storefront anchors, stable IDs, manual overrides, style recipe, and asset registry.
+- Contracts only; no runtime code, compiler code, generated manifests, package/tooling, broad data model, or asset production.
+- Stop if public interfaces, module boundaries, schema ownership, source storage/attribution, or verifier scope need approval.
 
 ## Phase 4B Boundary
 
