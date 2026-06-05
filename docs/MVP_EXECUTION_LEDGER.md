@@ -55,14 +55,103 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 3 geometry-first corridor review for the exploration slice from Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave.
+- Current phase: Phase 3 closed for planning purposes after the Phase 3D corridor style matte review package.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records that the Phase 3 westward visual-integration corridor correction pass is complete pending Batu review. The app surface keeps the accepted DTR-11 west-anchor raster as the grounded right-side style/baseline anchor, shows sourced/contextual NYC/Open street/building context for the mid-corridor and Franklin endpoint as stylized paper/ink massing expanding west / left, a softened raster/vector seam, quiet manual-draft sidewalk/scene-transform gaps, and blocked Brouwerij/business/frontage/facade/entrance/signage claims. Deterministic screenshot evidence exists at `docs/mvp-review/phase-3-geometry-first-corridor-review/generated/phase-3-westward-geometry-to-massing-corridor-default.png`. No further implementation batch is authorized until Batu approves the next refinement, business/POI source, facade/reference, join, or raster step. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full MVP-29G screenshot QA, and MVP-30 QA/demo freeze remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records `Phase 4A: Workflow Spike - Compiler vs Export vs Reality-Capture Reference` as the proposed next task unless repo docs already mark it approved. Phase 4A is a workflow decision spike, not Phase 4 runtime implementation. The Phase 3D app surface and review-only raster matte remain preserved evidence. Phase 4B docs are non-implementation planning only and do not authorize schema files, compiler scripts, source fixtures, generated manifests, runtime refactors, asset-kit files, public interfaces, package/tooling changes, or production architecture. Foursquare is optional future enrichment only and remains blocked by missing credential and repo-recorded terms/cache/display approval. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-05 - Phase 3 Closeout And Phase 4 Planning
+
+Status:
+- Complete.
+
+Scope:
+- Docs-only closeout and planning batch: close Phase 3 for planning purposes, preserve Phase 3D evidence, add Phase 4A workflow spike planning, and add Phase 4B non-implementation foundation planning.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-3-closeout.md`
+- `docs/phase-4a-workflow-spike-plan.md`
+- `docs/phase-4a-workflow-spike-decision-matrix.md`
+- `docs/phase-4b-data-to-scene-workflow.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- `git status --short` before editing.
+- Markdown planning-doc inspection.
+- `git diff --stat`.
+- `git diff --check`.
+- `git status --short` after editing.
+
+Outcome:
+- Phase 3 is closed for planning purposes with the core lesson recorded: real geometry and source evidence matter, but artifact-specific rendering is not a scalable production workflow.
+- Phase 3D matte, screenshot evidence, reference inventory, self-audit, and evidence inventory remain preserved as review-only/non-production evidence.
+- Phase 4A is recorded as the proposed next workflow spike unless repo docs already mark it approved.
+- Phase 4B is documented as non-implementation planning only; schema/compiler/storefront/style/asset contracts remain planning docs, not files or scripts to create.
+- No runtime code, schema file, compiler script, source fixture, generated manifest, asset-kit file, package/tooling change, API call, scraping, production/public claim, commit, or deployment occurred.
+
+Unresolved decisions:
+- Batu owns whether Phase 4A is approved as the next executable spike.
+- Batu owns Phase 4A lane decisions, Phase 4B architecture boundaries, public-interface implications, source/reference approvals, production asset direction, and any later implementation scope.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Phase 4A: Workflow Spike - Compiler vs Export vs Reality-Capture Reference` as the proposed next task unless repo docs already mark it approved; Phase 4B remains non-implementation planning only.
+
+### 2026-06-05 - Phase 3D Corridor Style Matte
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Implement the authorized narrow Phase 3D corridor style matte batch: review-only raster matte as the normal world surface, DTR-11 embedded as the east/right anchor, west/left reference-informed facade-neutral extension, sourced geometry retained as layout/provenance underlay, and truth-state overlays retained as QA only.
+
+Files changed:
+- `src/assets/review-only/phase-3d-greenpoint-westward-corridor-matte-review-only.png`
+- `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`
+- `src/App.jsx`
+- `src/PlaceholderWorld.jsx`
+- `src/mvpPlaceData.js`
+- `docs/phase-3-real-corridor-evidence-inventory.md`
+- `docs/mvp-review/phase-3d-corridor-style-matte-review/README.md`
+- `docs/mvp-review/phase-3d-corridor-style-matte-review/REFERENCE_INVENTORY.md`
+- `docs/mvp-review/phase-3d-corridor-style-matte-review/SELF_AUDIT.md`
+- `docs/mvp-review/phase-3d-corridor-style-matte-review/generated/phase-3d-corridor-style-matte-default.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- JSON parse for `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- JSON parse for Phase 3B raw and normalized geometry packets.
+- Structural truth-state check for matte reference, reference inventory existence, QA-only geometry overlays, and blocked Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefront/exact-address claims.
+- Visual inspection of the matte asset and deterministic screenshot artifact.
+- `npm run build`.
+- Browser smoke on local Vite dev server at `http://127.0.0.1:5175/`.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- Phase 3 now has a review-only raster corridor matte as the normal app surface.
+- DTR-11 remains the east/right anchor, and the west/left corridor extension is generic/reference-informed and facade-neutral.
+- Batu-supplied local reference images inform general visual character only.
+- Sourced NYC/Open geometry remains provenance/layout underlay and truth-state overlays remain QA/provenance overlays.
+- Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefront/exact-address claims remain blocked.
+- No Foursquare/API call, scraping, external fetch, third-party imagery collection, invented tenant/signage/frontage/facade/entrance, production/public claim, new framework, renderer, map system, package tooling, backend service, CMS, persistence, analytics, CI, deployment, or commit occurred.
+
+Unresolved decisions:
+- Batu owns whether the matte is coherent enough to close Phase 3.
+- Batu owns any later matte refinement, exact facade/reference evidence, business/POI source approval, Brouwerij claim promotion, source join, Phase 4 workflow, production asset direction, and production/public readiness decision.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of the Phase 3D matte, screenshot evidence, reference inventory, self-audit, and QA/provenance behavior; no further implementation batch is authorized until Batu approves the next step.
 
 ### 2026-06-05 - Phase 3 Westward Visual-Integration Pass
 
