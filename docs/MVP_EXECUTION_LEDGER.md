@@ -57,12 +57,40 @@ Next pointer:
 
 - Current phase: Phase 4B Batch 4B-6R corridor frame and endpoint cue correction cleared Batu visual review with result: CONDITIONAL PASS.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4B-6R: Corridor frame and endpoint cue correction` Batu-reviewed with result: CONDITIONAL PASS. The pre-authorized queue is empty, self-advance is not allowed, and no next executable batch is open. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, facade/storefront/anchor semantics, entrance/signage/address claim promotion, generic procedural city generation, random generation, infinite wrapping, public/deployment work, Phase 4C, and self-advancing beyond 4B-6R remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4B-6R: Corridor frame and endpoint cue correction` Batu-reviewed with result: CONDITIONAL PASS and proposes `Batch 4C-1: Recognizable facade cue planning` for Batu review. The pre-authorized queue is empty, self-advance is not allowed, and no next executable batch is open. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, facade/storefront/anchor semantics, entrance/signage/address claim promotion, generic procedural city generation, random generation, infinite wrapping, public/deployment work, Phase 4C, and self-advancing beyond 4B-6R remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-06 - Proposed 4C-1 Recognizable Facade Cue Planning
+
+Status:
+- Proposed for Batu review; not executable.
+
+Scope:
+- Docs-only next-step proposal after the 4B-6R CONDITIONAL PASS.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `git diff --check`.
+
+Outcome:
+- Recommended `Batch 4C-1: Recognizable facade cue planning` as the next planning step because the largest remaining blocker is safe corridor recognizability beyond graybox massing, not business/storefront attachment or immediate camera tuning.
+- Preserved the conditional 4B-6R follow-up that M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
+- Kept `Batch 4C-1` proposed only; no current executable batch, pre-authorized queue, implementation, source expansion, manifest/schema change, visual art-direction pass, business overlay, dependency change, or commit was authorized.
+
+Unresolved decisions:
+- Batu owns whether to accept, revise, or reject the proposed 4C-1 planning batch, or to open a different next batch such as 4B-7 camera tuning.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now proposes `Batch 4C-1: Recognizable facade cue planning` for Batu review while keeping no current executable batch and no pre-authorized queue.
 
 ### 2026-06-06 - Phase 4B Corridor Frame And Endpoint Cue Correction
 

@@ -124,6 +124,8 @@ A future Phase 4B visual batch is not acceptable if it only produces a static im
 
 Current gate: `Batch 4B-6R: Corridor frame and endpoint cue correction`, Batu-reviewed with result: CONDITIONAL PASS.
 
+Proposed next batch for Batu review: `Batch 4C-1: Recognizable facade cue planning`.
+
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
@@ -139,5 +141,7 @@ Completed 4B-6 output: separable QA/debug review affordances, camera presets, si
 Completed 4B-6R output: strengthened corridor path hierarchy, added lightweight Manhattan Ave / Franklin Ave endpoint cues, added block/building rhythm cues using existing manifest/runtime/source-backed object boundaries, refined M-to-F/F-to-M/overhead/oblique camera presets, improved selected-object inspector visibility, and updated docs to record the 4B-6R CONDITIONAL PASS.
 
 Conditional follow-up: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
+
+Recommended next-step rationale: 4C-1 recognizable facade cue planning should precede storefront-anchor contract work because business/storefront attachment depends on facade/frontage evidence that remains blocked. It should also precede optional 4B-7 camera tuning unless Batu prioritizes the known compressed-camera follow-up, because 4B-6R already cleared visual review with CONDITIONAL PASS and the larger blocker is safe corridor recognizability beyond graybox massing.
 
 Hard review gate: cleared for 4B-6R. No later Phase 4 batch is open or queued. Batu review and an updated `docs/CURRENT_EXECUTION_BRIEF.md`/pre-authorized queue are required before any batch beyond 4B-6R may execute.

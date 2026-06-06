@@ -29,7 +29,7 @@ Use these in order when documents conflict:
 - Current phase: Phase 4B Batch 4B-6R corridor frame and endpoint cue correction cleared Batu visual review with result: CONDITIONAL PASS.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: none authorized; Batu must approve any later executable batch or pre-authorized queue.
+- Current next task: Batu review of the proposed `Batch 4C-1: Recognizable facade cue planning`; no later executable batch is authorized until Batu approves it or updates the pre-authorized queue.
 - Pre-authorized queue: none.
 - Hard review gate: cleared for 4B-6R; next gate pending Batu approval of any later batch.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
@@ -87,7 +87,7 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu decision after 4B-6R to open a later batch or pre-authorized queue, if desired.
+- Batu decision after 4B-6R to accept, revise, or reject the proposed `Batch 4C-1: Recognizable facade cue planning`, or to open a different later batch/pre-authorized queue.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
 - Any scope change beyond the opened 4B-6R correction boundary, including source fixture changes without a documented blocking defect, generated manifest changes without a documented blocking defect, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, anchor/facade/storefront semantics, art direction, source expansion, Phase 4C, or self-advancing beyond 4B-6R.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.

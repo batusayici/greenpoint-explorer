@@ -4,6 +4,8 @@ Status: `Batch 4B-6R: Corridor frame and endpoint cue correction` has cleared Ba
 
 Current executable batch: none.
 
+Proposed next batch for Batu review: `Batch 4C-1: Recognizable facade cue planning`.
+
 Pre-authorized queue: none.
 
 Hard Batu review gate: cleared for 4B-6R; next gate pending Batu approval of any later batch.
@@ -13,6 +15,47 @@ Self-advance allowed: no. Codex must stop because the pre-authorized queue is em
 4B-6R was a corrective runtime/docs batch only. The implementation improved the existing 4B runtime's corridor frame, endpoint cues, camera legibility, building rhythm cues, and selected-object inspector visibility using the already-approved source-backed manifest/runtime data. It did not expand source data, promote new claims, add assets, change package dependencies, or self-advance beyond the 4B-6R review gate. Conditional follow-up: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, Phase 4B gate movement, and any later MVP gates.
+
+## Proposed Next Step For Batu Review
+
+Recommended next batch: `Batch 4C-1: Recognizable facade cue planning`.
+
+Recommendation:
+
+- Choose 4C-1 recognizable facade cue planning before additional runtime tuning or storefront-anchor contract work.
+- Reason: 4B now proves deterministic source-backed massing and interaction, but local recognizability remains limited by the absence of safe facade/corridor identity cues. Planning the smallest safe cue layer clarifies what evidence, fixture fields, manual review gates, and blocked claims are needed before any visual or business overlay can responsibly render.
+- Why not 4B-7 now: M-to-F and F-to-M camera tuning is useful but already recorded as a conditional follow-up, and the 4B-6R proof cleared visual review with CONDITIONAL PASS. Camera tuning should stay as a later narrow runtime batch only if Batu prioritizes it.
+- Why not storefront anchor contract now: storefront/business anchoring still depends on frontage/facade evidence that does not exist yet. Defining anchor attachment before the recognizable facade cue plan risks over-specifying business semantics ahead of visual/source readiness.
+
+Proposed scope:
+
+- Define the smallest safe step from deterministic graybox toward recognizable corridor identity.
+- Identify allowed inputs for facade/corridor identity cue planning, such as Batu-supplied or Batu-approved reference material, existing source-backed geometry context, manual review notes, and explicit status fields.
+- Identify blocked claims that must remain blocked, including exact facade appearance, storefront order, tenant frontage, entrance placement, signage, exact address placement, business identity, active-business status, production/public readiness, and raster readiness.
+- Define required fixture/status fields for future planning only, such as cue type, source/evidence reference, status, confidence, target building or side reference, manual reviewer, and blocked-claim notes.
+- Define visual review entry/exit criteria for any later implementation batch without authorizing implementation.
+
+Explicit non-scope:
+
+- No runtime changes.
+- No camera tuning.
+- No source fixture expansion.
+- No manifest schema changes.
+- No business data overlay.
+- No storefront-anchor implementation.
+- No external APIs, scraping, or source acquisition.
+- No art-direction pass, generated assets, textures, facade art, signage, windows, doors, or production visual assets.
+- No dependency changes.
+
+Acceptance criteria for the proposal:
+
+- Batu can decide whether 4C-1 should open as a planning batch, be revised, or be replaced by 4B-7 camera tuning.
+- The proposal preserves the existing 4B deterministic runtime proof and blocked-claim discipline.
+- The proposal names a hard Batu approval gate before any implementation, source expansion, visual direction, public-interface, architecture, or business semantics work.
+
+Stop gate:
+
+- Stop for Batu review. `Batch 4C-1: Recognizable facade cue planning` is proposed only; it is not executable until Batu updates this brief or the pre-authorized queue.
 
 ## Current State
 
