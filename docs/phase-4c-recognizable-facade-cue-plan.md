@@ -1,6 +1,6 @@
 # Phase 4C Recognizable Facade Cue Plan
 
-Status: Batch 4C-1 planning output / not implementation approval
+Status: Batch 4C-1 planning output / Phase 4C geometry-only work-packet support
 Date: 2026-06-06
 Scope: Greenpoint Ave corridor from Manhattan Ave toward Franklin Ave
 Creative/product/source approval owner: Batu
@@ -11,6 +11,8 @@ Execution owner inside approved boundaries: Codex
 Define the smallest truth-safe path from the committed Phase 4B deterministic graybox corridor toward recognizable Greenpoint Ave corridor identity.
 
 This plan does not authorize runtime code, source fixture expansion, manifest schema changes, camera tuning, source acquisition, external APIs, scraping, generated assets, art-direction work, business overlays, storefront anchors, production assets, or public factual claims.
+
+Current execution authority lives in `docs/CURRENT_EXECUTION_BRIEF.md`. As of the bounded Phase 4C work-packet governance update, `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` is executable, and `Batch 4C-3: Narrow geometry-only cue tuning pass` is conditionally pre-authorized only if 4C-2 verification passes and all work remains geometry-only, deterministic, and free of Batu product/visual/source-evidence decisions.
 
 The operating principle:
 
@@ -250,6 +252,7 @@ Acceptance criteria:
 Stop condition:
 
 - Stop after 4C-2 review if the next desired step is evidence-approved facade cues, landmark identity treatment, storefront anchors, business cards, source expansion, art direction, asset generation, or production/public claims.
+- Under the bounded work packet, Codex may continue from 4C-2 into `Batch 4C-3: Narrow geometry-only cue tuning pass` only if 4C-2 verification passes, no source/evidence uncertainty appears, no product/visual Batu decision is needed, changes remain geometry-only and deterministic, docs are reconciled, and final 4C-3 scope is limited to small cue readability tuning.
 
 ## Deferred Work
 

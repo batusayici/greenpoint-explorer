@@ -26,18 +26,18 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Phase 4C Batch 4C-1 recognizable facade cue planning is complete as docs-only planning.
+- Current phase: Phase 4C Geometry-Only Facade Cue Work Packet is open.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: Batu review of the completed 4C-1 planning output and proposed `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`; no later executable batch is authorized until Batu approves it or updates the pre-authorized queue.
-- Pre-authorized queue: none.
-- Hard review gate: stop for Batu review of the 4C-1 planning output.
+- Current next task: execute `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`.
+- Pre-authorized queue: `Batch 4C-3: Narrow geometry-only cue tuning pass`, conditionally available only if 4C-2 verification passes, no source/evidence uncertainty appears, no product/visual Batu decision is needed, changes remain geometry-only and deterministic, and final 4C-3 scope stays limited to small cue readability tuning.
+- Hard review gate: stop after 4C-3, or earlier if a visual/product review need appears, verification fails, source evidence is missing/uncertain, scope would expand beyond geometry-only deterministic cues, or implementation commit behavior is needed without explicit Batu authorization.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.
 - Phase 4B now has lean planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed graybox recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R corridor frame correction with CONDITIONAL PASS.
-- Phase 4C now has a docs-only recognizable facade cue plan that separates geometry-only cues, evidence-approved cues, forbidden claims, fixture requirements, landmark/special-treatment handling, storefront/business anchor dependencies, manual review gates, and acceptance criteria for a later implementation batch.
+- Phase 4C now has a docs-only recognizable facade cue plan and a bounded work packet that opens only geometry-only cue fixture/verifier/runtime QA overlay work.
 - Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
 ## Completed Work Pointers
@@ -75,7 +75,8 @@ Use these in order when documents conflict:
 13. Batch 4B-5: Context building coverage expansion. Batu-reviewed and accepted for purposes of opening 4B-6.
 14. Batch 4B-6: Graybox corridor recognizability QA. Batu-reviewed with result: Partial pass.
 15. Batch 4B-6R: Corridor frame and endpoint cue correction. Batu-reviewed with result: CONDITIONAL PASS.
-16. Batch 4C-1: Recognizable facade cue planning. Complete as docs-only planning; stop for Batu review.
+16. Batch 4C-1: Recognizable facade cue planning. Complete as docs-only planning.
+17. Phase 4C Geometry-Only Facade Cue Work Packet. Open; current executable batch is 4C-2, with 4C-3 conditionally queued.
 
 ## Active Blockers
 
@@ -91,9 +92,9 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu decision after 4C-1 to accept, revise, or reject the proposed `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`, or to open a different later batch/pre-authorized queue.
+- Batu review after the bounded 4C packet: 4C-2 may execute now; 4C-3 is conditionally pre-authorized only if 4C-2 passes verification and remains geometry-only/deterministic without Batu product/visual decisions.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
-- Any scope change beyond the completed 4C-1 planning boundary, including source fixture changes, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, evidence-approved facade cues, anchor/facade/storefront semantics, art direction, source expansion, 4C-2 implementation, 4B-7 camera tuning, or self-advancing beyond 4C-1.
+- Any scope change beyond the bounded 4C work packet, including source expansion beyond what existing manifest/geometry supports, generated manifest changes not required by the cue proof, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, evidence-approved facade cues, anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, 4C-4, or self-advancing beyond 4C-3.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.
 

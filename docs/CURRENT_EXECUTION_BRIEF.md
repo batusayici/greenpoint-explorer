@@ -1,79 +1,119 @@
-# Current Execution Brief - Phase 4C Batch 4C-1 Recognizable Facade Cue Planning Review Gate
+# Current Execution Brief - Phase 4C Geometry-Only Facade Cue Work Packet
 
-Status: `Batch 4C-1: Recognizable facade cue planning` is complete as a docs-only planning batch. No implementation batch is authorized.
+Status: `Phase 4C Geometry-Only Facade Cue Work Packet` is open. This is a bounded sequential implementation packet for geometry-only facade/corridor cue work. It does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, unrelated camera tuning, 4C-4, or any later batch.
 
-Current executable batch: none.
+Current executable batch: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`.
 
-Proposed next batch for Batu review: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`.
+Pre-authorized queue:
 
-Pre-authorized queue: none.
+1. `Batch 4C-3: Narrow geometry-only cue tuning pass`
 
-Hard Batu review gate: stop for Batu review of the 4C-1 planning output before any later batch.
+Hard Batu review gate: stop after 4C-3, or earlier if any stop condition is reached. Do not open 4C-4 or any later batch without Batu approval and an updated current brief/queue.
 
-Self-advance allowed: no. Codex must stop because the pre-authorized queue is empty and no next executable batch is authorized.
+Self-advance allowed: yes, but only from 4C-2 to 4C-3 and only if all 4C-2 self-advance conditions pass.
 
-4C-1 defined the smallest truth-safe path from the committed deterministic Phase 4B graybox corridor toward recognizable Greenpoint Ave corridor identity. It added `docs/phase-4c-recognizable-facade-cue-plan.md` and reconciled the execution-control docs. It did not change runtime code, tune cameras, expand source fixtures, change the generated manifest, add dependencies, generate assets, call external APIs, add business/place overlays, implement storefront anchors, or verify facade/business detail.
+4C-1 defined the truth-safe cue plan in `docs/phase-4c-recognizable-facade-cue-plan.md`. This packet now opens only the geometry-only implementation path described there.
 
-Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, and any later MVP gates.
+Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, evidence-approved facade cue approval, art-direction approval, and any later MVP gates.
 
-## Completed 4C-1 Output
+## Work Packet
 
-Primary planning doc:
+Name: `Phase 4C Geometry-Only Facade Cue Work Packet`
 
-- `docs/phase-4c-recognizable-facade-cue-plan.md`
+Purpose:
 
-4C-1 answered:
+- Create the smallest deterministic geometry-only facade/corridor cue fixture and QA overlay proof.
+- Improve review recognizability using existing source-backed semantic building IDs and existing manifest/geometry support only.
+- Preserve all blocked claims and make cue status inspectable.
+- Avoid evidence-approved facade claims, storefront/business overlays, art-direction changes, source expansion, dependency changes, and unrelated camera tuning.
 
-- What facade/corridor identity cues are safe from source-backed geometry alone.
-- What cues require Batu-supplied or Batu-approved visual/evidence references.
-- What claims remain forbidden until stronger evidence exists.
-- How landmark/special-treatment buildings should be handled.
-- How future business/storefront anchors should depend on facade/frontage evidence.
-- What smallest later implementation batch could improve recognizability without breaking truth safety.
+Authorized sequential batches:
 
-Core strategy:
+1. `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`
+2. `Batch 4C-3: Narrow geometry-only cue tuning pass`, only if 4C-2 passes verification and stays within scope.
 
-- Use geometry-only cues first: street-facing plane, building-width rhythm, height tier where already supported, corner/endpoint role, setback/depth tier, block breaks, side-of-corridor, and coverage status.
-- Require approved evidence for facade-module layout, entrance cues, window bays, sign bands, awnings/canopies, material/color notes, local props, transit-entrance cues, and landmark identity treatment.
-- Keep exact facade reproduction, storefront order, tenant frontage, entrance placement, sign/brand claims, exact address placement, active-business status, and production/public readiness blocked until later evidence and Batu approval.
+## Current Executable Batch: 4C-2
 
-## Proposed Next Step For Batu Review
+`Batch 4C-2: Geometry-only facade cue fixture and QA overlay` may:
 
-Recommended next batch: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`.
+- Inspect existing 4B manifest/runtime/source fixture shape before editing.
+- Create one small geometry-only cue fixture for existing 4B semantic building IDs.
+- Include only geometry-only cue classes from the 4C plan, such as street-facing plane, building-width rhythm, supported height/width tier, corner/endpoint role, setback/depth tier, block break, side-of-corridor, and coverage status.
+- Add or update the smallest verifier needed to check cue provenance, claim status, blocked claims, deterministic IDs, and target ID resolution.
+- Add a QA-mode or clearly status-labeled review overlay in the existing runtime boundary if needed for the proof.
+- Preserve existing source fixture, generated manifest, package dependencies, runtime architecture, and blocked business/storefront/facade claims.
+- Update docs and ledger to record the 4C-2 outcome and next pointer.
 
-Recommendation:
+4C-2 must not:
 
-- Choose 4C-2 as the next implementation batch only if Batu wants visible MVP progress before evidence-approved facade work.
-- Reason: geometry-only cues can improve corridor recognizability while preserving truth safety, because they attach to existing source-backed semantic building IDs and do not claim exact facade, storefront, business, sign, entrance, material, or address truth.
-- Why not evidence-approved facade cues now: those require Batu-supplied or Batu-approved visual/evidence references, usage status, and manual review.
-- Why not storefront/business anchors now: anchor semantics still depend on frontage/facade/entrance evidence that does not exist in the current 4B proof.
-- Why not 4B-7 camera tuning now: M-to-F and F-to-M camera tuning remains a valid conditional follow-up, but it should stay a later narrow runtime batch only if Batu prioritizes it.
+- Add evidence-approved facade detail.
+- Claim exact facade, storefront, frontage, entrance, sign, window, door, awning, material, color, address, active-business status, or real-place card readiness.
+- Add business/place overlays.
+- Implement storefront anchors.
+- Acquire sources, call APIs, scrape, add capture workflows, generate assets, add dependencies, or tune cameras unrelated to cue review.
+- Expand source fixtures beyond what existing manifest/geometry supports.
+- Change production/public readiness, art direction, renderer, package tooling, backend, CMS, persistence, analytics, routing, deployment, or broad map systems.
 
-Proposed 4C-2 scope:
+4C-2 verification minimum:
 
-- Create one small cue fixture for existing 4B semantic building IDs using geometry-only cue classes.
-- Add one verifier that checks cue provenance, claim status, blocked claims, and target ID resolution.
-- Render only geometry-only cues in QA mode or a clearly status-labeled review layer.
-- Preserve the existing runtime boundary, source fixture, generated manifest, package dependencies, and blocked business/storefront/facade claims.
+- `git diff --check`.
+- Cue verifier or fixture validation introduced/updated by the batch.
+- Existing source fixture verifier and compiler determinism check if cue records reference existing source/manifest IDs.
+- Frontend build and app/browser smoke if runtime code changes.
 
-Explicit non-scope for 4C-2 unless Batu revises the brief:
+## Conditional Queued Batch: 4C-3
 
-- No evidence-approved facade detail.
-- No exact facade, storefront, frontage, entrance, sign, window, door, awning, material, color, address, active-business, or real-place card claims.
-- No business/place overlays.
-- No storefront-anchor implementation.
-- No source acquisition, external APIs, scraping, capture workflows, generated assets, or dependency changes.
-- No camera tuning unless Batu explicitly chooses a separate 4B-7 batch instead.
+`Batch 4C-3: Narrow geometry-only cue tuning pass` is conditionally pre-authorized only after 4C-2 completes.
 
-Acceptance criteria for opening 4C-2:
+Codex may self-advance from 4C-2 to 4C-3 only if:
 
-- Batu approves the cue fixture boundary and whether it is an implementation/public-interface change.
-- Batu accepts geometry-only cue classes as review affordances, not facade truth.
-- Batu confirms that evidence-approved facade cues, landmark identity treatment, storefront anchors, and business overlays remain blocked until later gates.
+- 4C-2 verification passes.
+- No source/evidence uncertainty appears.
+- No product/visual decision is needed from Batu.
+- Changes remain geometry-only and deterministic.
+- Final 4C-3 scope is limited to small cue readability tuning.
+- Docs are reconciled to mark 4C-2 complete and 4C-3 current before 4C-3 work starts.
+- No hard stop condition intervenes.
 
-Stop gate:
+4C-3 may:
 
-- Stop for Batu review. `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` is proposed only; it is not executable until Batu updates this brief or the pre-authorized queue.
+- Make small cue readability tuning adjustments to the 4C-2 geometry-only fixture, verifier, or QA overlay.
+- Improve label/status readability, cue grouping, cue counts, or geometry-only visual clarity.
+- Preserve all 4C-2 source, claim, dependency, and runtime boundaries.
+- Update docs and ledger to stop at the 4C packet review gate.
+
+4C-3 must not:
+
+- Add new cue families beyond geometry-only cue classes.
+- Add evidence-approved facade cues, exact facade claims, storefront/business overlays, source expansion, art-direction changes, generated assets, new dependencies, unrelated camera tuning, 4C-4, or any later batch.
+
+## Hard Stops
+
+Stop and report before:
+
+- Evidence-approved facade cues.
+- Exact facade, storefront, frontage, entrance, signage, window/door/awning/material/color, exact-address, active-business, or public/product-ready claims.
+- Business/place overlays or storefront-anchor implementation.
+- Source fixture expansion beyond what existing manifest/geometry supports.
+- Art-direction pass, generated assets, raster assets, GLB/glTF assets, or production visual assets.
+- External APIs, scraping, capture workflows, automated extraction, or live data.
+- New dependencies unless explicitly approved in a later brief.
+- Camera tuning unrelated to cue review.
+- 4C-4 or any later batch.
+- A visual/product decision need.
+- Verification failure.
+- Missing source evidence or uncertainty about what existing geometry supports.
+- Any change that would require broad architecture, product, art-direction, public-interface, or source-policy decisions.
+- Committing implementation unless Batu explicitly authorizes commit behavior in the prompt.
+
+## Claim Discipline
+
+- Geometry-only cues are deterministic review affordances, not facade truth.
+- NYC/Open geometry may support source-backed contextual building massing, corridor-side labels, street-facing plane cues, width/depth/height tiers when already supported, block breaks, corner/endpoint roles, and coverage status.
+- NYC/Open geometry does not prove tenant frontage, storefront order, entrance placement, facade appearance, signage, window/door/awning/material/color truth, active-business status, exact address placement, or raster readiness.
+- Human-approved evidence is required before facade-module layout, entrance cues, window bays, sign bands, awnings/canopies, material/color notes, local props, transit-entrance cues, or landmark identity treatment can render as evidence-approved cues.
+- Storefront anchoring and business-to-storefront matching remain first-class unresolved Phase 4 problems.
+- Business/place facts must remain semantic data and must not be baked into image pixels.
 
 ## Current State
 
@@ -98,51 +138,6 @@ Supporting detail docs:
 The Phase 3D review matte, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory remain preserved as review-only/non-production evidence. Sourced geometry remains provenance/layout underlay. Truth-state overlays remain QA/provenance overlays, not the primary visual deliverable.
 
 Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefront/exact-address claims remain blocked unless separately authorized through evidence gates.
-
-## Current Gate
-
-Name: `Batch 4C-1: Recognizable facade cue planning review gate`
-
-Execution state:
-
-- Current executable batch: none.
-- Pre-authorized queue: none.
-- Hard Batu review gate: stop for Batu review of the 4C-1 planning output.
-- Self-advance allowed: no.
-
-Execution rule:
-
-- 4B-6R cleared Batu visual review with result: CONDITIONAL PASS.
-- 4C-1 is complete as documentation/planning only.
-- There are no pre-authorized queued batches after 4C-1.
-- Use `docs/phase-4-execution-roadmap.md` as the operating plan.
-- Preserve the existing React + Vite + Three.js runtime boundary unless Batu later opens a specific implementation batch.
-- Do not self-advance into 4C-2, 4B-7, evidence-approved facade work, anchor semantics, storefront work, business verification, art direction, source expansion, or any post-4C-1 work.
-
-## Claim Discipline
-
-- NYC/Open geometry may support source-backed contextual building massing, corridor-side labels, street-facing plane cues, width/depth/height tiers when already supported, block breaks, corner/endpoint roles, and coverage status.
-- NYC/Open geometry does not prove tenant frontage, storefront order, entrance placement, facade appearance, signage, window/door/awning/material/color truth, active-business status, exact address placement, or raster readiness.
-- Human-approved evidence is required before facade-module layout, entrance cues, window bays, sign bands, awnings/canopies, material/color notes, local props, transit-entrance cues, or landmark identity treatment can render as evidence-approved cues.
-- Storefront anchoring and business-to-storefront matching remain first-class unresolved Phase 4 problems.
-- Business/place facts must remain semantic data and must not be baked into image pixels.
-- Geometry-only cues must be framed as deterministic graybox/review affordances, not sourced/exact facade, curb, sidewalk, frontage, entrance, address, business, or landmark truth.
-
-## Stop Conditions
-
-Stop and report before:
-
-- Moving beyond 4C-1, because the pre-authorized queue is empty.
-- Opening 4C-2, 4B-7, evidence-approved facade cues, landmark identity treatment, anchor semantics, storefront work, business verification, art direction, source expansion, or any later batch without Batu approval and an updated current brief/queue.
-- Adding or broadening source data.
-- Changing the source fixture or generated manifest.
-- Adding package dependencies.
-- Adding business verification, POI enrichment, APIs, scraping, external imagery, raster/generative/stock assets, GLB/glTF assets, routing, deployment, backend/CMS/persistence/analytics, or broad map systems.
-- Calling Foursquare, LiveXYZ, local-directory sources, or another business/POI API.
-- Inventing building footprints, parcels, tenant frontage, storefront anchors, entrances, facade appearance, signage, exact address placement, business identity, business active status, cross-streets, landmarks, or unsupported endpoint claims.
-- Treating geometry-only cue classes as sourced/exact geometry beyond their documented status.
-- Treating NYC/Open geometry as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
-- Adding production/public readiness, full-neighborhood scope, dynamic spatial streaming, PostGIS, broad map systems, or full 3D runtime architecture.
 
 ## Execution Queue Template
 
