@@ -83,6 +83,59 @@ Phase 4 execution states:
 - Pre-authorized queue: an ordered list of batches Codex may self-open and execute after completing the current batch, only if the next batch is already listed and no hard Batu review gate intervenes.
 - Hard Batu review gate: a stop point where Codex must return results and must not self-open the next batch or continue until Batu explicitly approves the next executable batch or queue.
 
+## Phase 4 Operating Model
+
+Approval governs boundaries, not every action.
+
+Batu approval defines the active work packet, allowed scope, hard stop conditions, truth gates, verification expectations, commit behavior, and final review gate. Codex executes inside those boundaries and stops when a boundary, truth gate, verification failure, dirty-tree issue, or unresolved ambiguity is hit.
+
+Bounded work packets:
+
+- A packet may contain one to four small sequential batches.
+- The packet must name allowed files or work areas where possible.
+- The packet must define explicit stop conditions.
+- Codex may self-advance inside the packet only when the next batch is explicitly authorized inside that packet, the prior batch completed cleanly, required verification passed, docs are reconciled, and no hard stop condition intervenes.
+- Codex must stop at the end of the packet for Batu review.
+
+Truth gates remain strict:
+
+- No real business, storefront, tenant, facade, frontage, entrance, signage, active-status, exact-address, or public/product-ready claims without approved evidence.
+- No source expansion without approval.
+- No claim-level escalation without approval.
+- No new packet, new phase, public interface, architecture boundary, production asset direction, or new claim class without Batu approval.
+
+Execution gates are lighter inside an approved packet:
+
+- If a change is geometry-only, deterministic, verified, and inside an approved packet, Codex should proceed.
+- If a change is QA-only, status-labeled, non-factual, verified, and inside an approved packet, Codex should proceed.
+- Codex should not ask for approval after every small valid execution step inside an approved packet.
+
+Commit behavior is packet-scoped:
+
+- Codex may commit after each successful batch only when the packet explicitly allows commit-after-batch behavior, only allowed files changed, verification passes, final status is clean except intended changes, and the commit message clearly names the batch.
+- Without explicit packet commit permission, do not commit implementation.
+
+QA mode is the experimental product lab:
+
+- QA mode may contain draft, non-factual, status-labeled approximations.
+- Normal mode must remain protected.
+- QA mode may move faster than evidence-backed production layers.
+- QA output must visibly carry statuses such as `manual_draft`, `fictional_safe`, `not_verified`, or equivalent.
+
+Implementation packets must produce at least one of:
+
+- A visible scene improvement.
+- A data or fixture improvement.
+- An interaction or review improvement.
+- A verifier or report improvement.
+- A deploy or review improvement.
+
+Pure governance, docs-only, reconciliation-only, or next-pointer-only batches should happen only when Batu explicitly requests them or when a real gate/next-pointer blocker prevents implementation.
+
+After implementation batches, keep docs concise: update only the brief, ledger, roadmap, and next pointer as needed. Do not rewrite the whole control surface or create docs-only reconciliation loops.
+
+Before editing, run `git status --short`. If the tree is dirty and those changes are not explicitly part of the authorized packet, stop and report the exact files. Do not edit around unrelated dirty state.
+
 Codex must stop and return results when the current batch says "stop at review gate", visual review by Batu is required, product/strategy judgment is required, source expansion is proposed, business verification is proposed, facade/storefront semantics are proposed for the first time, art direction is proposed, package/dependency addition is proposed, or the next step is not already in the pre-authorized queue.
 
 Batch execution workflow:

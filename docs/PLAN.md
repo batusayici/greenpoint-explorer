@@ -39,6 +39,7 @@ Use these in order when documents conflict:
 - Phase 4B now has lean planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed graybox recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R corridor frame correction with CONDITIONAL PASS.
 - Phase 4C now has a docs-only recognizable facade cue plan, a completed 4C-2 geometry-only cue fixture/verifier/runtime QA overlay proof, a completed 4C-4 QA-mode/manual-draft/non-factual recognizable facade slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`. This proves the QA-only fictional facade lane, but that lane is now closed for generic tuning.
 - Phase 4D is proposed as the next direction: geometry confidence and claim discipline before POIs, facade imagery, storefront anchors, or asset registry work.
+- Phase 4 operating model is clarified: Batu approves packet boundaries; Codex executes inside approved boundaries without re-asking for every valid small step; Codex stops at truth gates, packet boundaries, verification failures, dirty-tree issues, unresolved ambiguity, or final review gates.
 - Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
 ## Completed Work Pointers
@@ -102,10 +103,12 @@ Use these in order when documents conflict:
 - Batu-supplied or project-owned storefront imagery remains the safest first facade evidence path.
 - Geometry-only facade/corridor cues may improve review recognizability only as status-labeled review affordances; they do not prove facade, storefront, entrance, sign, material, address, business, or landmark identity.
 - Production visual assets, production asset pipeline, production architecture, public interfaces, production/public claims, broad live data, scraping, Google/Street View/3D Tiles extraction, full-neighborhood scope, dynamic spatial streaming, and deployment remain blocked.
+- New packets, new phases, new claim classes, source expansion, and claim-level escalation remain Batu approval gates even though execution gates inside approved packets should be lightweight.
 
 ## Pending Decisions
 
 - Batu authorization decision for proposed `Batch 4D-1: Geometry validation and gap audit`, or a different next batch.
+- Future approved packets should state allowed scope, stop conditions, truth gates, verification expectations, commit behavior, and final review gate so Codex can self-advance only inside those boundaries.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
 - Any scope change beyond this docs-only planning update, including 4D-1 implementation, source expansion beyond what existing manifest/geometry supports, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, POI overlays, facade imagery ingestion, evidence-approved facade cues, anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, later 4C tuning, asset registry, visual-system work, or self-advancing beyond the current review gate.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.

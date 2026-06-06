@@ -14,6 +14,24 @@ Self-advance allowed: no.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, geometry-confidence acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, evidence-approved facade cue approval, art-direction approval, and any later MVP gates.
 
+## Operating Model
+
+Approval governs boundaries, not every action.
+
+Batu approval should define the active work packet, allowed scope, hard stop conditions, truth gates, verification expectations, commit behavior, and final review gate. Codex executes inside those boundaries and stops when a boundary, truth gate, verification failure, dirty-tree issue, or unresolved ambiguity is hit.
+
+Inside an approved bounded packet, Codex should not ask for approval after every small valid execution step. If a change is geometry-only, deterministic, verified, and inside the approved packet, Codex should proceed. If a change is QA-only, status-labeled, non-factual, verified, and inside the approved packet, Codex should proceed. Codex must not self-open new packets, phases, or claim classes without Batu approval.
+
+Bounded work packets may contain one to four small sequential batches, must name allowed files or areas where possible, must define explicit stop conditions, may allow self-advance only through explicitly authorized steps after clean verification, and must end at a Batu review gate.
+
+Truth gates remain strict: no real business/storefront/tenant/facade/frontage/entrance/signage claims without approved evidence, no source expansion without approval, and no claim-level escalation without approval.
+
+Commit behavior is packet-scoped. Codex may commit after each successful batch only when the packet explicitly allows commit-after-batch behavior, only allowed files changed, verification passes, final status is clean except intended changes, and the commit message clearly names the batch.
+
+QA mode remains the experimental product lab: it may contain draft, non-factual, status-labeled approximations, while normal mode remains protected. QA output must carry visible statuses such as `manual_draft`, `fictional_safe`, `not_verified`, or equivalent.
+
+Implementation packets should produce visible scene progress, data/fixture progress, interaction/review progress, verifier/report progress, or deploy/review progress. Pure governance/docs-only batches should happen only when explicitly requested or when a next pointer/gate must be updated.
+
 ## Planning Decision
 
 The next phase should shift from fictional facade tuning to geometry confidence and claim discipline.

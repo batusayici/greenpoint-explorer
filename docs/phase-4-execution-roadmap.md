@@ -25,6 +25,22 @@ The first visual proof after the primitive compiler must validate the actual 3D 
 
 Agents must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue. This roadmap is the operating plan for the current/queued named batches, not permission to invent or skip later batches. Codex may update `docs/CURRENT_EXECUTION_BRIEF.md` and related execution docs to move from a completed current batch into the next queued batch only when the completed batch stayed within scope, required verification passed or failures are documented as non-blocking, the next batch is already listed in the pre-authorized queue, and no hard Batu review gate intervenes. At every hard Batu review gate, agents must stop for review and may continue only after explicit Batu approval or an updated current brief/queue names the next batch.
 
+## Phase 4 Operating Model
+
+Approval governs boundaries, not every action.
+
+Batu approval defines the active work packet, allowed scope, hard stop conditions, truth gates, verification expectations, commit behavior, and final review gate. A bounded packet may contain one to four small sequential batches, should name allowed files or areas where possible, and must define explicit stop conditions.
+
+Inside an approved bounded packet, Codex may self-advance through explicitly authorized steps only when the prior batch is clean and verified. Codex should proceed without re-asking for approval when a change is geometry-only, deterministic, verified, and inside the packet, or when a change is QA-only, status-labeled, non-factual, verified, and inside the packet. Codex must stop when a boundary, truth gate, verification failure, dirty-tree issue, unresolved ambiguity, or packet-end review gate is hit.
+
+Truth gates remain strict: no real business/storefront/tenant/facade/frontage/entrance/signage claims without approved evidence, no source expansion without approval, and no claim-level escalation without approval. Codex must not self-open new packets, new phases, or new claim classes.
+
+Commit-after-batch behavior is allowed only when the packet explicitly says so, only allowed files changed, verification passes, final status is clean except intended changes, and the commit message clearly names the batch.
+
+QA mode may move faster than evidence-backed production layers: it may contain draft, non-factual, status-labeled approximations such as `manual_draft`, `fictional_safe`, or `not_verified`. Normal mode must remain protected.
+
+Every implementation packet should produce visible scene progress, data/fixture progress, interaction/review progress, verifier/report progress, or deploy/review progress. Pure governance or docs-only updates should happen only when explicitly requested or when a next pointer/gate must be updated. After implementation, update only the brief, ledger, roadmap, and next pointer as needed; avoid broad rewrites and docs-only reconciliation loops.
+
 | Batch | Expected outcome | Success criteria | Must not change | Verification | Commit boundary | Stop / decision gate |
 | --- | --- | --- | --- | --- | --- | --- |
 | 4A-1: Workflow spike setup | Ready-to-run spike checklist for the Manhattan-to-Franklin corridor. | Corridor target, three lanes, required inputs, evaluation criteria, source/reference constraints, and evidence outputs are clear. | No source fixtures, schemas, compiler scripts, runtime changes, assets, package/tooling, or public interfaces. | `git status --short`, `git diff --check`, markdown/link sanity if available. | Docs-only commit. | Stop if required source/reference inputs are unclear or if a lane needs external access, licensing approval, or Batu decision. |

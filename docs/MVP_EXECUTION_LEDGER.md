@@ -57,12 +57,45 @@ Next pointer:
 
 - Current phase: Post-4C direction set; no implementation batch is open.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks the post-4C direction as docs-only planning, with no current executable batch and no pre-authorized queue. The proposed next authorization is `Batch 4D-1: Geometry validation and gap audit`. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D is proposed as geometry confidence and claim discipline before POIs, facade imagery, storefront anchors, or asset registry work. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, 4D implementation, asset registry, visual-system work, and self-advancing beyond the current review gate remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks the post-4C direction as docs-only planning, with no current executable batch and no pre-authorized queue. The proposed next authorization is `Batch 4D-1: Geometry validation and gap audit`. The Phase 4 operating model is now clarified: Batu approval governs packet boundaries, while Codex executes inside approved boundaries and stops at truth gates, packet boundaries, verification failures, dirty-tree issues, unresolved ambiguity, or final review gates. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D is proposed as geometry confidence and claim discipline before POIs, facade imagery, storefront anchors, or asset registry work. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, 4D implementation, asset registry, visual-system work, and self-advancing beyond explicitly approved packet boundaries remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-06 - Bounded Packet Execution Model Governance
+
+Status:
+- Complete as explicitly requested docs-only governance update.
+
+Scope:
+- Clarify the operating model that approval governs boundaries, not every action, while preserving strict truth gates and the proposed-only 4D-1 next pointer.
+
+Files changed:
+- `AGENTS.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `git status --short` before edits.
+- `git diff --check`.
+
+Outcome:
+- Added the bounded work packet model: Batu approves active packet, allowed scope, stop conditions, truth gates, verification expectations, commit behavior, and final review gate.
+- Clarified that Codex may self-advance only through explicitly authorized steps inside an approved packet after clean verification, without asking for approval after every small valid step.
+- Preserved strict truth gates for real business/storefront/tenant/facade/frontage/entrance/signage claims, source expansion, and claim-level escalation.
+- Clarified packet-scoped commit-after-batch behavior, QA mode as a status-labeled lab, visible-progress expectations, concise docs updates, and dirty-tree stop behavior.
+- Preserved `Batch 4D-1: Geometry validation and gap audit` as proposed only; no 4D-1 implementation was opened.
+- No runtime, data, verifier, UI, build, source, package, or dependency changes occurred.
+
+Unresolved decisions:
+- Batu owns whether to authorize `Batch 4D-1: Geometry validation and gap audit` and what packet boundaries, commit behavior, and final review gate it should carry.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` still proposes `Batch 4D-1: Geometry validation and gap audit` and keeps no current executable batch or pre-authorized queue.
 
 ### 2026-06-06 - Post-4C Geometry Confidence Direction Planning
 
