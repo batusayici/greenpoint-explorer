@@ -8,7 +8,7 @@ Project: Greenpoint Isometric Explorer
 
 The project has an approved visual direction and remains pre-production.
 
-Prototype implementation may proceed only when `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens that scope. Do not initialize new frameworks, package tooling, source folders, build configuration, map systems, or production architecture unless the current brief explicitly authorizes them and the required architecture boundaries and public interfaces are documented and reviewed.
+Prototype implementation may proceed only when `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens that scope as the current executable batch or as a pre-authorized queued batch. Do not initialize new frameworks, package tooling, source folders, build configuration, map systems, or production architecture unless the current brief explicitly authorizes them and the required architecture boundaries and public interfaces are documented and reviewed.
 
 ## Creative Authority Model
 
@@ -69,13 +69,21 @@ Read topic-specific docs only when the task touches that area:
 - `docs/AGENTIC_TOOLING.md` for workflow, automation, tooling, or Codex operating behavior.
 - Current MVP/review artifact package docs when continuing, reviewing, or modifying that package.
 
-`docs/CURRENT_EXECUTION_BRIEF.md` is the active gate for Codex's next executable task. If it does not explicitly authorize source edits, prototype implementation, visual asset work, framework/tooling changes, public-interface changes, or gate movement, Codex must stop before making those changes.
+`docs/CURRENT_EXECUTION_BRIEF.md` is the active gate for Codex's next executable task and any explicitly pre-authorized queued tasks. If it does not explicitly authorize source edits, prototype implementation, visual asset work, framework/tooling changes, public-interface changes, or queue-based gate movement, Codex must stop before making those changes.
 
-For Phase 4 work, Codex must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`, using `docs/phase-4-execution-roadmap.md` as the operating plan. Codex must stop at each roadmap stop/decision gate and may not self-advance into the next Phase 4 batch without explicit Batu approval or an updated current brief.
+For Phase 4 work, Codex must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, using `docs/phase-4-execution-roadmap.md` as the operating plan. Codex may update `docs/CURRENT_EXECUTION_BRIEF.md` and related execution docs to move from the completed current batch into the next batch only when that next batch is already named in the pre-authorized queue, the prior batch completed within scope, required verification passed or failures are documented as non-blocking, the docs are updated to mark the prior batch complete, and no hard Batu review gate intervenes. Codex must never invent a new batch, rename a batch, expand scope, skip a batch, or continue past a hard Batu review gate.
 
 Codex must not rely on ChatGPT conversation memory when repo docs answer the question. When project documents conflict, use the source-of-truth order in this file. If the conflict affects source edits, scope, visual direction, production claims, commit behavior, approval states, architecture boundaries, or public interfaces, Codex must stop and ask Batu to resolve or update the control docs.
 
-Codex must not autonomously decide the next phase, open a blocked gate, or convert recommendations into approved direction. Batu owns creative, product, scope, public-interface, architecture, visual direction, and final approval decisions. Codex owns execution inside the current approved boundaries.
+Codex must not autonomously decide the next phase, open a blocked gate, or convert recommendations into approved direction. A pre-authorized queue is not a blank check: it is only an ordered list of already-approved narrow batches, and Codex must stop when the current batch, queue, roadmap, or brief names a hard Batu review gate. Batu owns creative, product, scope, public-interface, architecture, visual direction, and final approval decisions. Codex owns execution inside the current approved boundaries.
+
+Phase 4 execution states:
+
+- Current executable batch: the batch Codex may implement now.
+- Pre-authorized queue: an ordered list of batches Codex may self-open and execute after completing the current batch, only if the next batch is already listed and no hard Batu review gate intervenes.
+- Hard Batu review gate: a stop point where Codex must return results and must not self-open the next batch or continue until Batu explicitly approves the next executable batch or queue.
+
+Codex must stop and return results when the current batch says "stop at review gate", visual review by Batu is required, product/strategy judgment is required, source expansion is proposed, business verification is proposed, facade/storefront semantics are proposed for the first time, art direction is proposed, package/dependency addition is proposed, or the next step is not already in the pre-authorized queue.
 
 Batch execution workflow:
 
@@ -120,7 +128,7 @@ After every successful MVP/prototype batch, Codex must reconcile the MVP executi
 
 - Update `docs/PLAN.md` so it reflects the current MVP phase, remaining MVP phases, blockers, pending decisions, and next-task pointer. Keep it as a stable roadmap, not a batch-history dump.
 - Update `docs/MVP_SCOPE.md` only when the batch changes or clarifies detailed MVP boundaries, non-goals, must-have/should-have/cuttable items, or MVP acceptance boundaries.
-- Update `docs/CURRENT_EXECUTION_BRIEF.md` so it no longer points to a completed or stale task. It must contain the next approved/proposed executable task, or explicitly state that the next task is pending Batu approval or a later gate review.
+- Update `docs/CURRENT_EXECUTION_BRIEF.md` so it no longer points to a completed or stale task. It must contain the next approved/proposed executable task, an explicit pre-authorized queue if one exists, and the next hard Batu review gate; or explicitly state that the next task is pending Batu approval or a later gate review.
 - Update `docs/MVP_EXECUTION_LEDGER.md` with one concise entry recording the batch outcome, files changed, verification, unresolved decisions, and next pointer.
 - Do not update `docs/TASKS.md` unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.
 

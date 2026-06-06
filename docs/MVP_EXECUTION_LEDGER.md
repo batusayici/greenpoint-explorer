@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-05
+Last reconciled: 2026-06-06
 
 ## Purpose
 
@@ -19,7 +19,7 @@ It is not a roadmap and does not authorize work by itself:
 After every successful Codex batch, Codex must update all three documents before final response:
 
 - `docs/PLAN.md`: update current phase, phase status, blockers, pending decisions, and next-task pointer only. Do not turn it into batch history.
-- `docs/CURRENT_EXECUTION_BRIEF.md`: replace the completed task with the next approved/proposed executable task, or explicitly mark that the next task is pending Batu/ChatGPT approval.
+- `docs/CURRENT_EXECUTION_BRIEF.md`: replace the completed task with the next approved/proposed executable task, list any pre-authorized queued batches, identify the next hard Batu review gate, or explicitly mark that the next task is pending Batu/ChatGPT approval.
 - `docs/MVP_EXECUTION_LEDGER.md`: append one new entry with outcome, files changed, verification, unresolved decisions, and next pointer.
 
 If these documents cannot be reconciled, Codex must stop and report the conflict instead of leaving stale instructions.
@@ -55,14 +55,492 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 4B Batch 4B-2 minimal source fixture + verifier complete pending Batu review; 4B-3 remains closed until Batu approval and an updated current brief.
+- Current phase: Phase 4B Batch 4B-6R corridor frame and endpoint cue correction cleared Batu visual review with result: CONDITIONAL PASS.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the completed `Batch 4B-2: Minimal source fixture + verifier`. No executable 4B-3 batch is open until Batu approves the next batch and the current brief is updated. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4B has planning contracts plus one minimal source fixture/verifier proof; compiler implementation remains closed until a later brief explicitly opens 4B-3. The Phase 4B first-visual-proof path now requires a deterministic interactive 3D graybox/isometric corridor scene after the primitive compiler, not a static/raster/2D/manual/manifest-only substitute. The Phase 3D app surface and review-only raster matte remain preserved evidence. Broad API integration, scraping, generalized ingestion, production/public claims, DTR-12, package/tooling changes, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, and deployment remain blocked unless a later brief explicitly opens them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4B-6R: Corridor frame and endpoint cue correction` Batu-reviewed with result: CONDITIONAL PASS. The pre-authorized queue is empty, self-advance is not allowed, and no next executable batch is open. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, facade/storefront/anchor semantics, entrance/signage/address claim promotion, generic procedural city generation, random generation, infinite wrapping, public/deployment work, Phase 4C, and self-advancing beyond 4B-6R remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-06 - Phase 4B Corridor Frame And Endpoint Cue Correction
+
+Status:
+- Complete; Batu visual review result: CONDITIONAL PASS.
+
+Scope:
+- Batch 4B-6R: narrow runtime/docs correction to strengthen corridor path hierarchy, Manhattan/Franklin endpoint cues, building rhythm, camera preset framing, and selected-object inspector visibility using existing manifest/runtime data only.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/phase4bRuntimeScene.js`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `npm run build` (passes with the expected large Three.js/runtime bundle-size warning).
+- Browser smoke at `http://127.0.0.1:5175/`: app loads, counts remain 144 semantic objects, 142 primitive buildings, 140 source-backed buildings, and 63 / 77 side counts; M-to-F, F-to-M, overhead, and oblique presets click successfully; QA mode toggles; selected object summary stays visible at inspector top; no browser console errors.
+- Screenshot/pixel sanity checks saved outside the repo at `/private/tmp/greenpoint-4b6r-final-desktop.png`, `/private/tmp/greenpoint-4b6r-final-mobile.png`, and `/private/tmp/greenpoint-4b6r-final-qa-selected.png`; all were nonblank with varied sampled colors.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+- Batu visual review at `http://127.0.0.1:5175/`: CONDITIONAL PASS.
+
+Outcome:
+- Added a stronger normal-mode corridor path band, endpoint cross-lines, labeled Manhattan/Franklin in-scene endpoint cues, and deterministic street-edge rhythm ticks derived from existing source-backed building positions.
+- Refined M-to-F, F-to-M, overhead, and oblique cameras so directional views are less compressed and easier to read as a two-sided corridor.
+- Added a sticky selected-object summary with semantic ID, source record, side, role, and approximate dimensions at the top of the inspector.
+- Preserved source fixture, generated manifest, package dependencies, counts, blocked storefront/business/facade/address claims, and the existing React + Vite + Three.js runtime boundary.
+- Conditional follow-up: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
+
+Unresolved decisions:
+- Batu owns any future decision to open a later batch or pre-authorized queue.
+- No work beyond 4B-6R is executable until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now records 4B-6R CONDITIONAL PASS, with no current executable batch and no pre-authorized queue.
+
+### 2026-06-06 - Phase 4 Execution Queue Governance Update
+
+Status:
+- Complete.
+
+Scope:
+- Docs/governance update only: remove the manual authorization loop by allowing Codex to execute the current batch and any explicitly listed pre-authorized queued batches, while preserving hard Batu review gates.
+
+Files changed:
+- `AGENTS.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, and `docs/phase-4b-implementation-plan.md`.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- Defined three execution states: current executable batch, pre-authorized queue, and hard Batu review gate.
+- Added the self-advance rule: Codex may move from a completed current batch into the next batch only when that batch is already named in the pre-authorized queue, the prior batch completed within scope, verification passed or non-blocking failures are documented, docs are reconciled, and no hard Batu review gate intervenes.
+- Added the review-gate rule: Codex must stop when visual Batu review, product/strategy judgment, source expansion, business verification, first facade/storefront semantics, art direction, package/dependency addition, or an unqueued next step is required.
+- Preserved Phase 4 constraints: no source expansion, scraping/APIs, business verification, facade/storefront semantics, art direction, package dependencies, broad map system, or commits unless explicitly authorized.
+- Set current executable batch to `Batch 4B-6R: Corridor frame and endpoint cue correction`.
+- Set pre-authorized queue to none.
+- Set hard Batu review gate after 4B-6R visual review.
+- No runtime code, source fixtures, generated manifests, compiler scripts, package files, staging, or commit changed in this governance update.
+
+Unresolved decisions:
+- Batu owns 4B-6R visual review and any future decision to open or queue work beyond 4B-6R.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-6R: Corridor frame and endpoint cue correction`, with no pre-authorized queue and a hard Batu review gate after 4B-6R visual review.
+
+### 2026-06-06 - Phase 4B Corridor Frame Correction Control Handoff
+
+Status:
+- Complete.
+
+Scope:
+- Docs/control update only: record Batu's 4B-6 visual review result as Partial pass and open `Batch 4B-6R: Corridor frame and endpoint cue correction` as the current executable batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, and `docs/phase-4b-implementation-plan.md`.
+- `git status --short` before and after.
+- `git diff --stat`.
+- `git diff --check`.
+
+Outcome:
+- Marked `Batch 4B-6: Graybox corridor recognizability QA` as Batu-reviewed with result: Partial pass.
+- Opened `Batch 4B-6R: Corridor frame and endpoint cue correction` as the current executable batch.
+- Authorized only a corrective runtime/docs pass to strengthen corridor path hierarchy, add lightweight Manhattan Ave / Franklin Ave endpoint cues, add block/building rhythm cues from existing manifest/runtime/source-backed object boundaries, refine M-to-F/F-to-M/overhead/oblique camera presets if needed, improve selected-object inspector visibility, and update docs to stop at the 4B-6R review gate.
+- Preserved non-authorizations for new source data, scraping, APIs, business verification, facade/storefront/anchor semantics, art direction, new assets, broad map systems, package dependencies without explicit authorization, source expansion, Phase 4C, staging, commit, and self-advancing beyond 4B-6R.
+- No runtime code, source fixtures, generated manifests, compiler scripts, package files, staging, or commit changed in this docs-only handoff.
+
+Unresolved decisions:
+- Batu owns review of the future 4B-6R output and any decision to accept the corrected corridor recognizability proof, request another narrow revision, pause, or open a later batch.
+- Any work beyond 4B-6R remains closed until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-6R: Corridor frame and endpoint cue correction` as the current executable batch.
+
+### 2026-06-06 - Phase 4B Graybox Corridor Recognizability QA
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Batch 4B-6: add deterministic review/debug affordances to the existing 4B runtime so Batu can evaluate whether the source-backed graybox Greenpoint Ave corridor is spatially legible before storefront detail, facade semantics, business verification, or art direction.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/phase4bRuntimeScene.js`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required doc/runtime reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, `src/Phase4BRuntimePreview.jsx`, `src/phase4bRuntimeScene.js`, and `src/styles.css`.
+- `git status --short` before implementation.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `npm run build` (passes with the expected Vite large-chunk warning from the Three.js/runtime bundle).
+- Browser smoke at `http://127.0.0.1:5175/`: app loads, review panel reports 144 semantic objects, 142 primitive buildings, 140 source-backed context buildings, and 63 / 77 left-right counts; QA mode toggles on; Manhattan-to-Franklin, Franklin-to-Manhattan, overhead, and oblique camera presets respond; selecting `bin-3064709` exposes source record, side, role, approximate dimensions, QA/provenance, and blocked claims.
+- Screenshot automation was not added; no repo screenshot automation command exists, so manual browser review steps were documented in `docs/CURRENT_EXECUTION_BRIEF.md`.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short` after implementation.
+
+Outcome:
+- Added a separable QA/debug mode that colors left/right building massing and emphasizes the corridor walk path while preserving the normal preview.
+- Added camera presets for Manhattan-to-Franklin, Franklin-to-Manhattan, overhead, and street-level oblique corridor review.
+- Replaced the coverage-only summary with a review panel reporting semantic object, primitive building, source-backed building, and left/right counts plus selected side and anchor status.
+- Added selected-object role and approximate preview dimensions to the semantic inspector.
+- Documented Batu review steps, pass/fail criteria, acceptable graybox limitations, and manual browser review path.
+- No source fixture changes, generated manifest changes, compiler redesign, package/dependency changes, screenshot tooling, new source data, APIs, scraping, business verification, POI enrichment, storefront/facade semantics, assets, art-direction pass, broad map systems, staging, commit, or work beyond 4B-6 occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4B-6 output and any decision to accept recognizability QA, request another narrow revision, pause, or open a later batch.
+- No work beyond 4B-6 is executable until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now marks `Batch 4B-6: Graybox corridor recognizability QA` complete pending Batu review and opens no next implementation batch.
+
+### 2026-06-06 - Phase 4B Graybox Recognizability QA Control Handoff
+
+Status:
+- Complete.
+
+Scope:
+- Docs/control update only: record Batu's 4B-5 review acceptance for purposes of opening the next narrow batch and open `Batch 4B-6: Graybox corridor recognizability QA` as the current executable batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, and `docs/phase-4b-implementation-plan.md`.
+- Markdown/link sanity by inspection; package scripts expose no dedicated markdown/link checker.
+- `git status --short` before and after.
+- `git diff --stat`.
+- `git diff --check`.
+
+Outcome:
+- Marked 4B-5 as Batu-reviewed and accepted for purposes of opening 4B-6.
+- Opened 4B-6 as the current executable batch for deterministic graybox corridor recognizability QA affordances.
+- Authorized 4B-6 to add separable QA/debug review affordances, camera presets, hover/click identity inspection, side labels/counts, key-anchor highlighting for already-present manifest anchors, and a compact review panel.
+- Required 4B-6 docs/review output to state what Batu should inspect visually, pass/fail criteria, acceptable graybox limitations, and that the proof remains source-backed context rather than final architecture, art, storefront, facade, or business layer.
+- Preserved non-authorizations for new source data, source fixture/generated manifest changes without a documented blocking defect, screenshot tooling dependencies, scraping, APIs, business verification, POI enrichment, assets, art direction, broad map systems, storefront/facade semantics, runtime/package edits in this docs batch, staging, commit, and self-advancing beyond 4B-6.
+
+Unresolved decisions:
+- Batu owns review of the future 4B-6 implementation output and any decision to accept recognizability QA affordances, request another revision, pause, or open a later batch.
+- Any work beyond 4B-6 remains closed until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-6: Graybox corridor recognizability QA` as the current executable batch.
+
+### 2026-06-06 - Phase 4B Context Building Coverage Expansion
+
+Status:
+- Complete; Batu-reviewed and accepted for purposes of opening 4B-6.
+
+Scope:
+- Batch 4B-5: expand the existing deterministic runtime from the 4B-4R two-building graybox proof into broader source-backed contextual corridor massing using approved fixture/geometry data and the existing React + Vite + Three.js runtime boundary.
+
+Files changed:
+- `scripts/compile-phase-4b-scene-manifest.mjs`
+- `src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json`
+- `src/phase4bRuntimeScene.js`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required doc/context reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, `docs/phase-4b-data-to-scene-workflow.md`, and the approved 4B-3 compiler output/contracts/tests.
+- `git status --short` before implementation.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `npm run build` (passes with the expected Vite large-chunk warning from the Three.js/runtime bundle).
+- Browser smoke at `http://127.0.0.1:5174/`: app loads, expanded source-backed massing renders, coverage summary shows 142 rendered buildings, 140 source-backed context promotions, and left/right counts of 63 / 77; hover/click inspection resolves semantic IDs; camera controls work; QA/provenance, coverage status, corridor side, and blocked claims remain visible.
+- `git diff --check`.
+- `git diff --stat`.
+
+Outcome:
+- Updated the primitive compiler so the generated semantic manifest can promote eligible approved geometry fixture building footprints into source-backed contextual graybox massing without changing the source fixture or adding new source data.
+- Regenerated the semantic scene manifest with 144 semantic objects, including 142 primitive building massing objects and 140 compiler-promoted contextual building records.
+- Updated the runtime adapter and preview UI to render and inspect the expanded context, expose coverage summary/counts, show per-object coverage status and corridor side, and preserve semantic hover/click through invisible pick targets.
+- Preserved storefront/business/facade/entrance/signage/address blocked-claim visibility and did not promote business or storefront claims.
+- No package changes, new dependencies, new source fixtures, APIs, scraping, business verification, POI enrichment, assets, art-direction pass, GLB/glTF/raster/generated/stock/production assets, React Three Fiber, Drei, Cesium, Mapbox, deck.gl, backend/CMS/persistence/analytics/routing/deployment, broad map systems, random/procedural city generation, infinite wrapping, staging, commit, or work beyond 4B-5 occurred.
+
+Unresolved decisions:
+- Batu owns review of any future 4B-6 output and any later decision to accept recognizability QA affordances, request another narrow revision, pause, or open a later batch.
+- No work beyond 4B-6 is executable until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- Superseded by the 4B-6 control handoff above; `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-6: Graybox corridor recognizability QA` as the current executable batch.
+
+### 2026-06-06 - Phase 4B Context Building Coverage Control Handoff
+
+Status:
+- Complete.
+
+Scope:
+- Docs/control update only: record Batu's 4B-4R review finding and open `Batch 4B-5: Context building coverage expansion` as the current executable batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, and `docs/phase-4b-data-to-scene-workflow.md`.
+- Markdown/link sanity by inspection; package scripts expose no dedicated markdown/link checker.
+- `git status --short` before and after.
+- `git diff --stat`.
+- `git diff --check`.
+
+Outcome:
+- Recorded that Batu approves 4B-4R as complete pending final repo verification and accepts it as a useful technical/spatial runtime foundation.
+- Recorded the remaining 4B-4R review finding: the scene lacks enough source-backed corridor massing to validate the full Greenpoint Ave corridor.
+- Opened 4B-5 as the current executable batch for source-backed contextual building coverage expansion.
+- Authorized 4B-5 to inspect existing geometry/source fixtures for eligible Greenpoint Ave building footprint records, promote only safe source-backed contextual massing, update the minimal source fixture/compiler/generated manifest only as needed through the approved path, render expanded graybox context in the existing React + Vite + Three.js runtime, preserve semantic inspection and QA/provenance behavior, and label coverage/gaps where useful.
+- Preserved non-authorizations for business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, active-business claims, exact storefront/entrance/facade/signage/address claims, facade detail, art direction, GLB/glTF/raster/generated/stock/production assets, React Three Fiber, Drei, Cesium, Mapbox, deck.gl, backend/CMS/persistence/analytics/routing/deployment, broad map systems, generic procedural city generation, random generation, infinite wrapping, runtime/source/compiler/package edits in this docs batch, staging, commit, and self-advancing beyond 4B-5.
+
+Unresolved decisions:
+- Batu owns review of the future 4B-5 implementation output and any decision to approve expanded corridor coverage, request another revision, pause, or open a later batch.
+- Any work beyond 4B-5 remains closed until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-5: Context building coverage expansion` as the current executable batch.
+
+### 2026-06-06 - Phase 4B Runtime Preview Legibility Pass
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Batch 4B-4R: narrow revision to the existing 4B-4 runtime to improve corridor legibility only, using the approved generated semantic scene manifest, referenced geometry fixture, and existing React + Vite + Three.js runtime boundary.
+
+Files changed:
+- `src/phase4bRuntimeScene.js`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required doc/runtime reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, `src/Phase4BRuntimePreview.jsx`, `src/phase4bRuntimeScene.js`, `src/styles.css`, and `src/App.jsx`.
+- `git status --short` before implementation.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `npm run build` (passes with the expected Vite large-chunk warning from Three.js).
+- Browser smoke at `http://127.0.0.1:5173/`: initial framing shows the corridor guide and source-derived building massing; hover resolves a building semantic ID; click selects a building semantic ID; in-scene highlight/anchor feedback appears; rotate, zoom, and home controls respond; QA/provenance and blocked/no-candidate state remain visible.
+- `git diff --check`.
+- `git diff --stat`.
+
+Outcome:
+- Updated preview normalization so existing manifest/fixture objects share a more legible corridor frame while preserving deterministic scene-space transformation notes.
+- Added a deterministic visual-QA street/corridor guide derived from existing centerline direction, street-width context, and manifest object extents, explicitly labeled as a QA guide rather than sourced/exact curb/frontage/sidewalk geometry.
+- Reduced corridor/context line dominance and improved source-derived building footprint, base outline, extrusion, and blocked/no-candidate anchor marker visibility.
+- Improved default camera framing for the corridor/building relationship.
+- Added a compact legend for buildings, street QA guide, corridor line, selected/hovered state, and blocked/no-candidate state.
+- Made the QA/provenance panel less visually dominant on the narrow in-app viewport while preserving semantic ID, source record, geometry reference, allowed claims, blocked claims, provenance, and object selection.
+- Preserved semantic IDs as the interaction source of truth and invisible pick targets tied to semantic object IDs.
+- No new source data, source fixtures, generated manifests, compiler redesign, package dependencies, external data calls, scraping, business verification, invented storefronts/entrances/facades/signage/active status/address placement, business cards, GLB/glTF/raster/generated/stock/production assets, React Three Fiber, Drei, Cesium, Mapbox, deck.gl, backend/CMS/persistence/analytics/routing/deployment, random generation, procedural city logic, infinite wrapping, staging, commit, or 4B-5 work occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4B-4R output and any decision to approve it as useful for corridor validation, request another narrow revision, pause, or open a later batch.
+- 4B-5 remains closed until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now marks `Batch 4B-4R: Runtime preview legibility pass` complete pending Batu review and opens no next implementation batch.
+
+### 2026-06-06 - Phase 4B Runtime Legibility Control Handoff
+
+Status:
+- Complete.
+
+Scope:
+- Docs/control update only: record Batu's 4B-4 review finding and open `Batch 4B-4R: Runtime preview legibility pass` as the current executable revision batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, and `docs/phase-4b-implementation-plan.md`.
+- Markdown/link sanity by inspection; package scripts expose no dedicated markdown/link checker.
+- `git status --short` before and after.
+- `git diff --stat`.
+- `git diff --check`.
+
+Outcome:
+- Recorded that Batu approves 4B-4 as a technical runtime foundation but not yet as a useful corridor-validation scene.
+- Opened 4B-4R as a narrow revision to the existing 4B-4 runtime.
+- Authorized only legibility improvements using existing manifest/fixture data and the existing React + Vite + Three.js runtime boundary.
+- Recorded the observed 4B-4 issues: sparse scene, dominant centerline, unclear building placement/orientation, weak street-edge hierarchy, subtle in-scene feedback, visually heavy QA/provenance UI, and insufficient default framing.
+- Preserved requirements for deterministic rendering, semantic IDs as interaction truth, invisible pick targets tied to semantic IDs, QA/provenance visibility, and blocked-claim visibility.
+- React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, backend/CMS/persistence/analytics, deployment/routing/broad map systems, business verification, new data sources, scraping, API calls, primitive compiler redesign, generic procedural city generation, random generation, infinite wrapping, runtime/package/data edits in this docs batch, staging, commit, and self-advancing to 4B-5 remain blocked.
+
+Unresolved decisions:
+- Batu owns review of the future 4B-4R implementation output and any decision to approve corridor-validation legibility, request another revision, pause, or open a later batch.
+- 4B-5 remains closed until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-4R: Runtime preview legibility pass` as the current executable batch.
+
+### 2026-06-06 - Phase 4B Runtime Manifest Preview
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Batch 4B-4: implement the first deterministic interactive 3D graybox/isometric corridor runtime proof from the approved 4B-3 semantic scene manifest and referenced geometry fixture.
+
+Files changed:
+- `package.json`
+- `package-lock.json`
+- `src/App.jsx`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/phase4bRuntimeScene.js`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/phase-4b-implementation-plan.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git status --short` before implementation showed the existing 4B-3/control-doc work plus no 4B-4 runtime files.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `npm run build` (passes; Vite reports the expected large-chunk warning after adding Three.js).
+- Browser smoke at `http://127.0.0.1:5173/`: page loads, 3D scene appears, source-derived building massing and corridor/context line render, rotate/pan/zoom/home controls work, pointer drag/shift-drag/scroll gestures work, hover resolves to a semantic line ID, click selects a semantic building ID, and the QA/provenance panel updates with blocked/no-candidate storefront anchor status.
+- `git diff --check`.
+- `git diff --stat`.
+
+Outcome:
+- Added `three` as the only new runtime dependency and used it only as a renderer inside the existing React + Vite shell.
+- Added an app-internal runtime adapter that turns the approved generated semantic manifest and referenced geometry fixture into deterministic preview-space building and line objects.
+- Added a Three.js runtime preview that renders source-derived primitive building massing, corridor/context lines, a constrained isometric/editorial camera, reset/home controls, invisible pick targets tied to semantic object IDs, semantic hover/click inspection, QA/provenance/blocked-claim visibility, and visibly blocked storefront anchors.
+- No source fixtures, generated manifests, compiler scripts, schemas, external data sources, scraping, API calls, business verification, production assets, GLB/glTF assets, React Three Fiber, Drei, Cesium, Mapbox, deck.gl, backend/CMS/persistence/analytics, deployment tooling, generic procedural city generation, infinite wrapping, staging, commit, or 4B-5 work occurred.
+
+Unresolved decisions:
+- Batu owns review of the completed 4B-4 runtime proof and any decision to approve as-is, request revisions, pause, or open a later batch.
+- 4B-5 remains closed until Batu approval and an updated `docs/CURRENT_EXECUTION_BRIEF.md`.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the completed 4B-4 gate; no next implementation batch is executable.
+
+### 2026-06-05 - Phase 4B Runtime Manifest Preview Control Handoff
+
+Status:
+- Complete.
+
+Scope:
+- Docs/control update only: close `Batch 4B-3: Primitive compiler` as reviewed, approved, and closed; open `Batch 4B-4: Runtime manifest preview` as the current executable batch.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4b-implementation-plan.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, and `docs/phase-4b-implementation-plan.md`.
+- Markdown/link sanity by inspection.
+- `git status --short` before and after.
+- `git diff --stat`.
+- `git diff --check`.
+
+Outcome:
+- 4B-3 is recorded as reviewed, approved, and closed.
+- 4B-4 is now the current executable batch for the first deterministic interactive 3D graybox/isometric browser corridor runtime proof.
+- The 4B-4 runtime boundary is recorded: consume the approved 4B-3 generated manifest and referenced geometry fixture, render source-derived primitive massing and corridor/context lines, support constrained pan/orbit/zoom/home controls, use invisible pick targets tied to semantic IDs for hover/click inspection, show QA/provenance/blocked-claim visibility, and keep storefront anchors visibly `blocked_no_candidates` where applicable.
+- The package/runtime boundary is recorded: the existing React + Vite shell remains the app/build layer, and a minimal `three` dependency may be added if needed only as the renderer inside that shell.
+- React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, new data sources, scraping, API calls, storefront/business invention, compiler redesign, generic procedural city generation, infinite wrapping, public/deployment work, and self-advancing to 4B-5 remain blocked.
+- No runtime code, app files, package files, compiler scripts, source fixtures, generated manifests, assets, staging, commit, or implementation work occurred.
+
+Unresolved decisions:
+- Batu owns review of the future 4B-4 implementation output and any scope expansion beyond the authorized 4B-4 boundary.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-4: Runtime manifest preview` as the current executable batch.
+
+### 2026-06-05 - Phase 4B Primitive Compiler
+
+Status:
+- Reviewed, approved, and closed.
+
+Scope:
+- Batch 4B-3: create one compiler that reads the approved 4B-2 corridor source fixture and produces one deterministic semantic scene manifest.
+
+Files changed:
+- `scripts/compile-phase-4b-scene-manifest.mjs`
+- `src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/phase-4b-implementation-plan.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Source fixture and verifier review: `src/data/source-fixtures/greenpoint-ave-manhattan-to-franklin.phase-4b-source-fixture.v0.1.json` and `scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- JSON parse inspection for the generated manifest.
+- Syntax check for `scripts/compile-phase-4b-scene-manifest.mjs`.
+- `git diff --check`.
+- `git diff --stat`.
+- `git status --short`.
+
+Outcome:
+- Added one deterministic primitive compiler for the approved 4B-2 source fixture.
+- Added one generated semantic scene manifest with corridor metadata, source references, stable IDs, semantic geometry object references, QA/provenance flags, blocked/allowed claim states, empty blocked storefront anchors, and future renderer requirements.
+- The manifest preserves source provenance, stable IDs, blocked claim status, manual assumptions, and hidden-inference guardrails.
+- No runtime code, rendering code, Three.js, React Three Fiber, schemas, package script, assets, GLB/glTF generation, business enrichment, live API, scraping, facade generation, visual styling implementation, staging, commit, 4B-4 renderer work, visual proof work, or asset work occurred.
+
+Unresolved decisions:
+- None for 4B-3 closure. Future runtime scope and review now belong to the opened 4B-4 batch.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4B-4: Runtime manifest preview` as the current executable batch.
 
 ### 2026-06-05 - Phase 4B First Visual Proof Clarification
 

@@ -1,10 +1,18 @@
-# Current Execution Brief - Phase 4B Batch 4B-2 Gate
+# Current Execution Brief - Phase 4B Batch 4B-6R Corridor Frame And Endpoint Cue Correction Review Gate
 
-Status: `Batch 4B-2: Minimal source fixture + verifier` is complete pending Batu review. Batu approved opening 4B-2 on 2026-06-05; Codex created one file-based corridor source fixture plus one targeted verifier and stopped at the 4B-2 roadmap gate. No 4B-3 batch is executable until Batu explicitly approves it and this brief is updated.
+Status: `Batch 4B-6R: Corridor frame and endpoint cue correction` has cleared Batu visual review with result: CONDITIONAL PASS. No post-4B-6R batch is authorized.
 
-Documentation clarification: before 4B-3 is opened, the Phase 4B docs now explicitly require the first visual proof after the primitive compiler to be a deterministic, navigable, interactive 3D graybox/isometric corridor scene. A static image, 2D map, raster composition, manually arranged scene, or manifest-only artifact does not satisfy the future visual-proof gate.
+Current executable batch: none.
 
-Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, Phase 4A approval, Phase 4B implementation approval, and any later MVP gates.
+Pre-authorized queue: none.
+
+Hard Batu review gate: cleared for 4B-6R; next gate pending Batu approval of any later batch.
+
+Self-advance allowed: no. Codex must stop because the pre-authorized queue is empty and no next executable batch is authorized.
+
+4B-6R was a corrective runtime/docs batch only. The implementation improved the existing 4B runtime's corridor frame, endpoint cues, camera legibility, building rhythm cues, and selected-object inspector visibility using the already-approved source-backed manifest/runtime data. It did not expand source data, promote new claims, add assets, change package dependencies, or self-advance beyond the 4B-6R review gate. Conditional follow-up: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
+
+Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, Phase 4B gate movement, and any later MVP gates.
 
 ## Current State
 
@@ -13,7 +21,7 @@ Docs authority routing:
 - `docs/DOCS_INDEX.md`
 - `docs/phase-4-execution-roadmap.md`
 
-Phase 4 now has one primary operational roadmap:
+Phase 4 primary operational roadmap:
 
 - `docs/phase-4-execution-roadmap.md`
 
@@ -31,77 +39,225 @@ Brouwerij/business/frontage/facade/entrance/signage/active-status/exact-storefro
 
 ## Current Gate
 
-Name: `Batch 4B-2: Minimal source fixture + verifier`
+Name: `Batch 4B-6R: Corridor frame and endpoint cue correction conditional pass`
+
+Execution state:
+
+- Current executable batch: none.
+- Pre-authorized queue: none.
+- Hard Batu review gate: cleared for 4B-6R; next gate pending Batu approval of any later batch.
+- Self-advance allowed: no.
 
 Execution rule:
 
-- Agents must stop at the 4B-2 roadmap stop/decision gate.
+- 4B-6 has been reviewed by Batu with result: Partial pass.
+- 4B-6R cleared Batu visual review with result: CONDITIONAL PASS.
+- There are no pre-authorized queued batches after 4B-6R.
 - Use `docs/phase-4-execution-roadmap.md` as the operating plan.
-- Do not self-advance into 4B-3 or any later Phase 4 batch without explicit Batu approval and an updated current brief.
+- Preserve the existing React + Vite + Three.js runtime boundary.
+- Stop after committing the approved current 4B stack; no later batch is open.
+- Do not self-advance into anchor semantics, facade semantics, storefront work, business verification, art direction, source expansion, Phase 4C, 4B-7, or any post-4B-6R work.
 
 Purpose:
 
-- Review the minimal corridor source fixture and targeted verifier created for 4B-2.
-- Decide whether to approve `Batch 4B-3: Primitive compiler`, revise the 4B-2 fixture/verifier, or pause before compiler implementation.
-- Keep 4B-3 non-executable until explicitly approved.
+- Make the existing source-backed graybox read more clearly as a navigable Greenpoint Ave street corridor, even with QA mode off.
+- Strengthen the corridor path hierarchy, endpoint direction, two-sided street-wall rhythm, camera preset usefulness, and selected-object identity visibility.
+- Preserve deterministic rendering, semantic-ID interaction, invisible pick targets, QA/provenance visibility, blocked-claim visibility, and truthful source-backed/context labeling.
 
-Expected output:
+## 4B-6 Review Finding
 
-- Review of `src/data/source-fixtures/greenpoint-ave-manhattan-to-franklin.phase-4b-source-fixture.v0.1.json`.
-- Review of `scripts/verify-phase-4b-source-fixture.mjs`.
-- No compiler, runtime, generated manifest, schema file, package/tooling, asset, API, scraping, business/place enrichment, or production/public work until the next batch is approved or this brief is updated.
+Batu's visual review result for 4B-6: Partial pass.
 
-## Proposed Next Task Pending Approval
+4B-6 works as a technical QA foundation:
 
-Name: `Batch 4B-3: Primitive compiler`
+- Current 4B-6 UI loads at the active preview server.
+- QA mode works.
+- Left/right coloring works.
+- Camera presets work.
+- Review panel counts are correct: 144 semantic objects, 142 primitive buildings, 140 source-backed buildings, and 63 / 77 side counts.
+- Click selection exposes semantic ID, source record, side, provenance, blocked claims, and approximate dimensions.
+- No browser console errors were observed during review.
 
-Approval state:
+Observed 4B-6 defects to correct:
 
-- Pending Batu approval or updated current brief.
-- Not executable from this brief as currently written.
+- Corridor is spatially legible as two-sided source-backed massing, but not yet recognizable enough as a corridor place.
+- Manhattan-to-Franklin and Franklin-to-Manhattan presets compress buildings into narrow abstract walls.
+- Building masses read like continuous walls instead of block-by-block street edges.
+- Endpoint/intersection/cross-street cues are too weak.
+- Corridor walk path exists but is visually quiet and overwhelmed by massing.
+- Selected-object identity is partly buried when the inspector panel is scrolled.
 
-Expected future output if approved:
+## Required Inputs
 
-- Minimal compiler that consumes the approved 4B-2 source fixture and produces one deterministic semantic scene manifest only if Batu approves the compiler/generated-output boundary.
-- Deterministic IDs, primitive massing inputs, storefront-anchor candidates only where explicit and status-labeled, confidence levels, and explicit manual overrides.
-- 4B-3 remains compiler/manifest only if approved; the first renderer/visual-proof batch after 4B-3 must validate the actual 3D architecture with pan, zoom, orbit/rotate, semantic-ID inspection, hover/click hooks, QA/provenance visibility, and blocked-claim visibility.
-- Stop if generated manifest ownership, public/runtime interface status, compiler boundary, schema ownership, or source/claim promotion rules are unresolved.
+- Existing source fixture and verifier from 4B-2.
+- Existing 4B-3 primitive compiler and generated semantic scene manifest path.
+- Existing Phase 3B NYC/Open geometry context fixture referenced by the source fixture/manifest.
+- Existing 4B-4/4B-4R/4B-5/4B-6 React + Vite + Three.js runtime files.
 
-## Phase 4B Boundary
+## Authorized 4B-6R Scope
 
-Phase 4B is `Reproducible Data-to-Scene + Storefront Anchor Foundation`.
+4B-6R may:
 
-Phase 4B is open only at the specific batch named in this brief. 4B-2 is complete pending Batu review. 4B-3 remains closed until Batu approves it and a later `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens the narrow executable scope.
+- Strengthen corridor path hierarchy in normal mode and QA mode using the existing runtime style and current manifest/runtime data.
+- Add lightweight in-scene Manhattan Ave and Franklin Ave endpoint cues.
+- Add cross-street or block-break cues only if they are derivable from existing manifest/fixture/runtime data.
+- Add block/building rhythm cues using existing source-backed object boundaries, spacing, edge outlines, base pads, ground ticks, or separators.
+- Refine Manhattan-to-Franklin, Franklin-to-Manhattan, overhead, and oblique camera presets if needed.
+- Improve selected-object inspector visibility so selected semantic ID, source record, side, role, and approximate dimensions are immediately visible after click.
+- Update docs to mark 4B-6 as Partial pass, document 4B-6R as the corrective runtime/docs batch, define corrected review criteria, and stop at the 4B-6R review gate.
 
-Current Phase 4B docs are supporting planning detail only. The 4B-2 fixture/verifier prepare 4B-3, but they do not authorize compiler scripts beyond the approved verifier, generated manifests, runtime refactors, package/tooling changes, public interfaces, asset-kit files, GLB production work, production architecture, or 4B-3 execution without approval.
+## Runtime And Package Boundary
+
+- The existing React + Vite app shell remains the app/build layer.
+- The existing minimal `three` dependency remains the only authorized 3D renderer.
+- Three.js remains authorized only as the renderer inside the existing React + Vite shell.
+- 4B-6R does not authorize new package dependencies.
+- React Three Fiber, Drei, Cesium, Mapbox, deck.gl, physics engines, ECS frameworks, GLB/glTF pipelines, backend services, CMS, persistence, analytics, routing systems, deployment tooling, and broad map systems are not authorized.
+
+## Explicit Non-Authorization
+
+4B-6R does not authorize:
+
+- New source data.
+- Source fixture changes unless a blocking defect is found, explicitly documented, and narrowly justified.
+- Generated manifest changes unless a blocking defect is found, explicitly documented, and narrowly justified.
+- Compiler redesign.
+- Business verification.
+- POI enrichment.
+- New APIs.
+- Scraping.
+- LiveXYZ, Foursquare, or local-directory calls.
+- Storefront segmentation.
+- Business cards.
+- Active-business claims.
+- Exact storefront, entrance, facade, signage, or address placement claims.
+- Anchor semantics or facade semantics.
+- Facade detail.
+- Windows, doors, or signage.
+- Art-direction pass.
+- GLB/glTF assets.
+- Raster assets.
+- Generated imagery.
+- Stock assets.
+- Production visual assets.
+- React Three Fiber, Drei, Cesium, Mapbox, deck.gl.
+- Backend, CMS, persistence, analytics, routing, deployment, or broad map systems.
+- Generic procedural city generation.
+- Random generation.
+- Infinite wrapping.
+- Phase 4C.
+- Self-advancing to 4B-7 or any post-4B-6R batch.
 
 ## Claim Discipline
 
-- The DTR-11 west-anchor raster remains review-only and non-production.
-- The Phase 3D corridor matte remains review-only and non-production.
-- The Phase 3D reference packet informs general visual character only; it does not promote business identity, active status, exact frontage, exact entrance, exact address placement, exact facade claims, signage claims, Brouwerij claims, production/public claims, scraping, live APIs, or third-party imagery collection.
-- NYC/Open geometry supports street/building context only. It does not prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
+- NYC/Open geometry may support source-backed contextual building massing and corridor-side QA labels when the approved fixture/compiler/runtime path preserves provenance and claim status.
+- NYC/Open geometry does not prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
 - Storefront anchoring and business-to-storefront matching remain first-class unresolved Phase 4 problems.
 - Business/place facts must remain semantic data and must not be baked into image pixels.
+- Endpoint markers, path emphasis, side labels, building rhythm cues, camera presets, and visual guides must be framed as deterministic graybox review affordances, not sourced/exact curb, sidewalk, frontage, facade, address, business, or landmark truth.
 
 ## Stop Conditions
 
 Stop and report before:
 
-- Implementing Phase 4 runtime/code, schema files, compiler scripts beyond the approved 4B-2 verifier, additional or unapproved source fixtures, generated manifests, asset-kit files, GLB assets, package/tooling changes, or public interfaces.
-- Calling Foursquare or another business/POI API without credentials plus recorded terms/cache/display approval.
-- Scraping websites, directories, or imagery.
-- Making splats, world models, Blender, screenshots, Figma, AI image generation, Cesium, or manually composed scene files the canonical source of truth.
-- Treating export/capture/reference outputs as canonical Greenpoint truth.
-- Inventing building footprints, parcels, tenant frontage, entrances, facade appearance, exact address placement, or business identity.
-- Treating manual-draft sidewalk bands or stylized scene projection as sourced/exact geometry.
+- Moving beyond 4B-6R, because the pre-authorized queue is empty.
+- Opening 4B-7, Phase 4C, anchor semantics, facade semantics, storefront work, business verification, art direction, source expansion, or any later batch without Batu approval and an updated current brief/queue.
+- Adding or broadening source data unless a blocking defect is found and narrowly justified.
+- Changing the source fixture or generated manifest without a documented blocking defect.
+- Adding package dependencies without explicit Batu approval and an updated current brief/queue.
+- Adding business verification, POI enrichment, APIs, scraping, external imagery, raster/generative/stock assets, GLB/glTF assets, routing, deployment, backend/CMS/persistence/analytics, or broad map systems.
+- Calling Foursquare, LiveXYZ, local-directory sources, or another business/POI API.
+- Inventing building footprints, parcels, tenant frontage, storefront anchors, entrances, facade appearance, exact address placement, business identity, business active status, cross-streets, landmarks, or unsupported endpoint claims.
+- Treating QA overlays, endpoint markers, labels, camera presets, path cues, block rhythm cues, or visual guides as sourced/exact geometry beyond their documented source status.
 - Treating NYC/Open geometry as proof of tenant frontage, storefront order, entrance placement, facade appearance, active-business status, exact address placement, or raster readiness.
-- Adding production/public readiness, backend/CMS/persistence/analytics, broad coverage, full-neighborhood scope, dynamic spatial streaming, PostGIS, full 3D runtime, or deployment.
+- Adding production/public readiness, full-neighborhood scope, dynamic spatial streaming, PostGIS, broad map systems, or full 3D runtime architecture.
+- Self-advancing beyond 4B-6R.
 
-## Verification Expectations For This 4B-2 Gate
+## Execution Queue Template
 
-- `git status --short` before and after.
-- `git diff --stat`.
-- Markdown/link sanity by inspection unless a repo check is present.
-- JSON parse only if JSON files are touched.
+Use this template for future execution-control updates:
+
+```markdown
+Current executable batch:
+
+- [batch name]
+
+Pre-authorized queue:
+
+1. [optional next batch]
+2. [optional next batch]
+
+Hard review gate:
+
+- [where Codex must stop]
+
+Self-advance allowed:
+
+- yes/no
+
+Stop conditions:
+
+- [list]
+```
+
+Queue rules:
+
+- Codex may implement the current executable batch.
+- Codex may self-open and execute the next queued batch only when the prior batch completed within scope, required verification passed or failures are documented as non-blocking, docs are updated to mark the prior batch complete, the next batch is already listed in the pre-authorized queue, and no hard Batu review gate intervenes.
+- Codex must never invent a new batch, rename a batch, expand scope, skip a batch, or continue past a hard Batu review gate.
+- Codex must stop and return results when the current batch says "stop at review gate", visual review by Batu is required, product/strategy judgment is required, source expansion is proposed, business verification is proposed, facade/storefront semantics are proposed for the first time, art direction is proposed, package/dependency addition is proposed, or the next step is not already in the pre-authorized queue.
+
+## Required Acceptance Criteria For 4B-6R
+
+- With QA mode off, the corridor path and endpoint direction are visibly understandable.
+- With QA mode on, side assignment, path, endpoints, and object identity are easier to inspect.
+- Oblique view shows a readable two-sided corridor with path hierarchy and building rhythm.
+- Manhattan-to-Franklin and Franklin-to-Manhattan views no longer collapse into an unreadable extrusion band.
+- Overhead confirms corridor alignment and side coverage.
+- Selected-object details are immediately legible after click.
+- Existing manifest/source-backed counts remain consistent unless a justified defect is found and documented.
+- Preview remains interactive: pan, rotate, zoom, hover, and click still work.
+- No new source data, scraping, APIs, business verification, assets, art-direction pass, broad map system, or post-4B-6R work occurs.
+- Docs stop at a 4B-6R review gate and do not open 4B-7.
+
+## Batu Review Gate For 4B-6R
+
+Batu should inspect visually:
+
+- Whether the corridor path is readable in normal mode without relying on QA colors.
+- Whether Manhattan Ave and Franklin Ave endpoint direction is understandable from the scene itself.
+- Whether building masses read as a two-sided corridor with block/building rhythm rather than one continuous extrusion canyon.
+- Whether Manhattan-to-Franklin, Franklin-to-Manhattan, overhead, and oblique camera presets support quick corridor review.
+- Whether clicked selected-object identity remains immediately visible and tied to semantic/source IDs.
+- Whether QA mode makes side assignment, path, endpoints, and object identity easier to inspect without promoting unsupported claims.
+
+Pass means:
+
+- Batu can use the graybox preview to judge corridor recognizability without mentally reconstructing path, endpoint direction, side rhythm, or source identity.
+- The correction improves runtime legibility while staying visibly graybox/source-backed.
+- Blocked storefront/business/facade/address claims remain clearly blocked.
+
+Fail means:
+
+- The corridor still reads as an abstract wall of masses rather than a navigable spatial corridor.
+- Directional camera presets still collapse the scene into unreadable extrusion bands.
+- Endpoint direction, side rhythm, semantic identity, source record, or blocked-claim status remains hard to inspect.
+- The proof appears to imply final architecture, storefronts, facades, businesses, signage, exact addresses, or production art.
+
+Known acceptable limitations:
+
+- Buildings remain primitive source-backed graybox extrusions.
+- QA guide geometry is deterministic review guidance, not exact curb, sidewalk, frontage, facade, cross-street, or survey geometry.
+- Storefront anchors remain `blocked_no_candidates`; no business cards or storefront/facade semantics are expected.
+- Screenshot automation is not required; manual browser review remains acceptable unless existing repo tooling already supports screenshots.
+
+## Verification Expectations For 4B-6R
+
+- `git status --short` before implementation.
+- `node scripts/verify-phase-4b-source-fixture.mjs`.
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`.
+- `npm run build` (the existing large-chunk warning from Three.js/runtime bundle size is acceptable).
+- Browser smoke on a fresh/current localhost preview: app loads, corridor path and endpoint cues render, camera presets work, QA/debug affordances are separable, click inspection resolves semantic IDs, QA/provenance updates, blocked claims remain visible, and coverage/side status remains visible.
 - `git diff --check`.
+- `git diff --stat`.
+- `git status --short` after implementation.

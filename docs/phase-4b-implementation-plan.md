@@ -12,10 +12,27 @@ Phase 4B implementation may begin only after:
 
 - Phase 4A produces a recommendation.
 - Batu approves the architecture boundaries and public-interface implications.
-- `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens the narrow executable scope.
+- `docs/CURRENT_EXECUTION_BRIEF.md` explicitly opens the narrow executable scope as the current executable batch or as the next batch in the pre-authorized queue.
 - Required source, reference, and usage constraints are documented.
 
 Until then, every schema/compiler/storefront/style/asset contract named here is planning-only.
+
+## Current 4B-6R Corridor Frame Correction Review Gate
+
+`Batch 4B-6: Graybox corridor recognizability QA` was reviewed by Batu with result: Partial pass. 4B-6 added deterministic review/debug affordances to the existing React + Vite + Three.js runtime, but the corridor frame needed a narrow correction before it was useful enough for corridor-place recognizability review. `Batch 4B-6R: Corridor frame and endpoint cue correction` has now cleared Batu visual review with result: CONDITIONAL PASS. `docs/CURRENT_EXECUTION_BRIEF.md` lists no pre-authorized queue and opens no next executable batch.
+
+For the completed-pending-review 4B-6R output:
+
+- The existing React + Vite app shell remains the app/build layer.
+- The minimal `three` dependency remains the only authorized renderer.
+- Three.js is only the renderer inside the existing shell.
+- 4B-6R was a corrective runtime/docs batch only.
+- The runtime strengthened corridor path hierarchy, added lightweight Manhattan Ave / Franklin Ave endpoint cues, added block/building rhythm cues from existing manifest/runtime/source-backed object boundaries, refined M-to-F/F-to-M/overhead/oblique camera presets, and improved selected-object inspector visibility.
+- Expanded buildings remain graybox/context massing only and preserve one-side or both-side corridor coverage according to source geometry, not invention.
+- Deterministic rendering, semantic IDs as the interaction source of truth, invisible pick targets tied to semantic object IDs, QA/provenance visibility, and blocked-claim visibility remain required.
+- Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
+- Source fixture or generated manifest changes remain unauthorized unless a blocking defect is found, explicitly documented, and narrowly justified.
+- React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, anchor/facade/storefront semantics, facade detail, art-direction work, generic procedural city generation, random generation, infinite wrapping, public/deployment work, Phase 4C, and self-advancing beyond 4B-6R remain unauthorized.
 
 ## Batch 4B-1 Planning Contracts
 
@@ -109,8 +126,8 @@ A future 4B visual batch fails the contract if it only produces a static image, 
 - File-based JSON/GeoJSON fixtures are acceptable for a one-corridor proof.
 - Python is the likely spatial-compilation lane because of GeoPandas/Shapely/Fiona/NetworkX maturity.
 - Node remains the likely verification/frontend-build lane where aligned with the current repo.
-- Three.js / React Three Fiber remains a likely runtime direction after approval.
-- GLB/glTF remains the likely runtime asset format after approval.
+- For the completed 4B-4 proof, 4B-4R legibility revision, 4B-5 context coverage expansion, 4B-6 recognizability QA batch, and open 4B-6R correction batch, minimal Three.js is used only as a renderer inside the existing React + Vite shell.
+- React Three Fiber, Drei, and GLB/glTF runtime asset pipelines are not authorized for 4B-4, 4B-4R, 4B-5, 4B-6, or 4B-6R.
 - Blender is an asset foundry or offline renderer, not the production layout source.
 
 ## Later Or Deferred

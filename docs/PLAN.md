@@ -1,7 +1,7 @@
 # MVP Roadmap
 
 Status: Current MVP roadmap and phase-control document
-Last reconciled: 2026-06-05
+Last reconciled: 2026-06-06
 Creative/product/public-interface approval owner: Batu
 Critical review/decision-support/brief-authoring support: ChatGPT
 Execution owner inside approved boundaries: Codex
@@ -26,15 +26,17 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Phase 4B Batch 4B-2 minimal source fixture + verifier complete pending Batu review; 4B-3 remains closed until Batu approval and an updated current brief.
+- Current phase: Phase 4B Batch 4B-6R corridor frame and endpoint cue correction cleared Batu visual review with result: CONDITIONAL PASS.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: no executable 4B-3 batch is open until Batu approves the next batch and `docs/CURRENT_EXECUTION_BRIEF.md` is updated.
-- Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md`, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at each roadmap gate instead of self-advancing.
+- Current next task: none authorized; Batu must approve any later executable batch or pre-authorized queue.
+- Pre-authorized queue: none.
+- Hard review gate: cleared for 4B-6R; next gate pending Batu approval of any later batch.
+- Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.
-- Phase 4B now has lean planning contracts plus one minimal source fixture/verifier proof; compiler implementation remains closed until a later brief explicitly opens 4B-3.
+- Phase 4B now has lean planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed graybox recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R corridor frame correction with CONDITIONAL PASS.
 - Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
 ## Completed Work Pointers
@@ -64,8 +66,13 @@ Use these in order when documents conflict:
 6. Batch 4A-4: Reality-capture/reference lane assessment. Complete; Batu approved opening 4A-5.
 7. Batch 4A-5: Decision gate. Complete; Batu approved opening 4B-1.
 8. Batch 4B-1: Contract foundation. Complete; Batu approved opening 4B-2.
-9. Batch 4B-2: Minimal source fixture + verifier. Complete pending Batu review.
-10. Batch 4B-3: Primitive compiler only after Batu approval and updated current brief.
+9. Batch 4B-2: Minimal source fixture + verifier. Complete; Batu approved opening 4B-3.
+10. Batch 4B-3: Primitive compiler. Reviewed, approved, and closed.
+11. Batch 4B-4: Runtime manifest preview. Technically complete as a runtime foundation; Batu requested a legibility revision before accepting it as a corridor-validation scene.
+12. Batch 4B-4R: Runtime preview legibility pass. Batu-reviewed and approved as complete pending final repo verification.
+13. Batch 4B-5: Context building coverage expansion. Batu-reviewed and accepted for purposes of opening 4B-6.
+14. Batch 4B-6: Graybox corridor recognizability QA. Batu-reviewed with result: Partial pass.
+15. Batch 4B-6R: Corridor frame and endpoint cue correction. Batu-reviewed with result: CONDITIONAL PASS.
 
 ## Active Blockers
 
@@ -80,10 +87,9 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu review of the completed `Batch 4B-2: Minimal source fixture + verifier`.
-- Batu approval of `Batch 4B-3: Primitive compiler`, revision of the 4B-2 fixture/verifier, or pause before implementation.
-- Phase 4B architecture boundaries, public-interface implications, generated manifest ownership, schema ownership, compiler boundaries, manual override policy, storefront-anchor candidate policy, and runtime scope.
-- Batu approval of the later first 3D visual-proof batch boundary after 4B-3, including renderer choice, public/runtime interface implications, semantic inspection UX, QA/provenance surfacing, and graybox acceptance criteria.
+- Batu decision after 4B-6R to open a later batch or pre-authorized queue, if desired.
+- Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
+- Any scope change beyond the opened 4B-6R correction boundary, including source fixture changes without a documented blocking defect, generated manifest changes without a documented blocking defect, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, anchor/facade/storefront semantics, art direction, source expansion, Phase 4C, or self-advancing beyond 4B-6R.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.
 
