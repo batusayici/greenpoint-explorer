@@ -1,36 +1,58 @@
-# Current Execution Brief - Phase 4C Geometry-Only Facade Cue Work Packet
+# Current Execution Brief - Batch 4C-4 QA-Mode Recognizable Facade Slice
 
-Status: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` is complete pending Batu review. The Phase 4C Geometry-Only Facade Cue Work Packet remains bounded to geometry-only facade/corridor cue work. It does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, unrelated camera tuning, 4C-4, or any later batch.
+Status: `Batch 4C-4: QA-mode recognizable facade slice` is complete pending Batu review. Batu explicitly authorized this bounded implementation packet on 2026-06-06. The output remains QA-mode/manual-draft/non-factual only and does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, unrelated camera tuning, or any later batch.
 
-Current executable batch: none. Stop for Batu review of 4C-2 output.
+Current executable batch: none. Stop for Batu review of 4C-4 output.
 
-Pre-authorized queue:
+Pre-authorized queue: none.
 
-1. `Batch 4C-3: Narrow geometry-only cue tuning pass`, only if Batu confirms a narrow geometry-only cue readability tuning need after reviewing 4C-2.
+Hard Batu review gate: stop after 4C-4. Do not open any later batch without Batu approval and an updated current brief/queue.
 
-Hard Batu review gate: stop after 4C-3, or earlier if any stop condition is reached. Do not open 4C-4 or any later batch without Batu approval and an updated current brief/queue.
+Self-advance allowed: no.
 
-Self-advance allowed: no current self-advance remains. 4C-2 completed cleanly, but no required narrow 4C-3 tuning need was identified before this review gate.
-
-4C-1 defined the truth-safe cue plan in `docs/phase-4c-recognizable-facade-cue-plan.md`. This packet now opens only the geometry-only implementation path described there.
+4C-1 defined the truth-safe cue plan in `docs/phase-4c-recognizable-facade-cue-plan.md`. 4C-2 completed the geometry-only cue fixture and QA overlay. 4C-4 added a small QA-mode recognizable facade slice using existing building geometry for placement only, with `manual_draft`, `fictional_safe`, and `not_verified` labels.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, evidence-approved facade cue approval, art-direction approval, and any later MVP gates.
 
 ## Work Packet
 
-Name: `Phase 4C Geometry-Only Facade Cue Work Packet`
+Name: `Batch 4C-4 QA-Mode Recognizable Facade Slice`
 
 Purpose:
 
-- Create the smallest deterministic geometry-only facade/corridor cue fixture and QA overlay proof.
-- Improve review recognizability using existing source-backed semantic building IDs and existing manifest/geometry support only.
-- Preserve all blocked claims and make cue status inspectable.
-- Avoid evidence-approved facade claims, storefront/business overlays, art-direction changes, source expansion, dependency changes, and unrelated camera tuning.
+- Add the smallest QA-mode synthetic facade rhythm layer needed to judge whether a short corridor segment starts to feel more street-like.
+- Use existing building geometry only for placement.
+- Preserve all blocked factual facade, storefront, business, entrance, frontage, sign, tenant, address, and production-readiness claims.
+- Keep normal mode protected.
 
-Authorized sequential batches:
+Authorized batch:
 
-1. `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`
-2. `Batch 4C-3: Narrow geometry-only cue tuning pass`, only if 4C-2 passes verification and stays within scope.
+1. `Batch 4C-4: QA-mode recognizable facade slice`
+
+## Completed Batch: 4C-4
+
+`Batch 4C-4: QA-mode recognizable facade slice` completed on 2026-06-06.
+
+4C-4 output:
+
+- Added a small Franklin-end QA facade slice for 8 existing 4B primitive building masses.
+- Added a structured review-only fixture with `manual_draft`, `fictional_safe`, and `not_verified` status labels.
+- Added a verifier for slice count, existing-target resolution, existing geometry-cue linkage, status labels, module bounds, and blocked claims.
+- Added QA-only runtime facade rhythm modules: bay divisions, upper/lower splits, window-row placeholders, sign-band placeholders, awning-like placeholders, parapet/cornice tiers, and generic endpoint edge emphasis.
+- Normal mode does not render the QA facade slice.
+
+4C-4 verification:
+
+- Phase 4C QA facade slice verifier passed.
+- Phase 4C geometry cue fixture verifier passed.
+- Phase 4B source fixture verifier passed.
+- Phase 4B compiler determinism check passed.
+- Frontend build passed with the existing large bundle-size warning.
+- Browser smoke passed: QA toggled on, canvas rendered, `QA facade slice: 8` was visible, no browser console errors were reported, and the QA-mode layer rendered in the scene.
+
+Stop condition:
+
+- Stop for Batu review. No next batch is open or queued.
 
 ## Completed Batch: 4C-2
 
@@ -85,11 +107,11 @@ Stop condition:
 - Existing source fixture verifier and compiler determinism check if cue records reference existing source/manifest IDs.
 - Frontend build and app/browser smoke if runtime code changes.
 
-## Conditional Queued Batch: 4C-3
+## Historical Conditional Batch: 4C-3
 
-`Batch 4C-3: Narrow geometry-only cue tuning pass` is conditionally pre-authorized only after 4C-2 completes.
+`Batch 4C-3: Narrow geometry-only cue tuning pass` was conditionally pre-authorized only after 4C-2 completed, but it was not executed and is not currently queued.
 
-Codex may self-advance from 4C-2 to 4C-3 only if:
+Historical self-advance from 4C-2 to 4C-3 was allowed only if:
 
 - 4C-2 verification passes.
 - No source/evidence uncertainty appears.
@@ -123,7 +145,7 @@ Stop and report before:
 - External APIs, scraping, capture workflows, automated extraction, or live data.
 - New dependencies unless explicitly approved in a later brief.
 - Camera tuning unrelated to cue review.
-- 4C-4 or any later batch.
+- Any later batch.
 - A visual/product decision need.
 - Verification failure.
 - Missing source evidence or uncertainty about what existing geometry supports.

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import manifest from "./data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json";
 import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json";
+import qaFacadeSliceFixture from "./data/facade-cues/greenpoint-ave-franklin-end.phase-4c-qa-facade-slice.v0.1.json";
 import geometryFixture from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
@@ -58,6 +59,7 @@ const CAMERA_LIMITS = {
 export default function Phase4BRuntimePreview() {
   const runtimeScene = useMemo(() => buildPhase4BRuntimeScene(manifest, geometryFixture), []);
   const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
+  const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
   const hostRef = useRef(null);
   const stateRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -66,7 +68,10 @@ export default function Phase4BRuntimePreview() {
   const inspectedId = selectedId ?? hoveredId;
   const inspectedObject = runtimeScene.objects.find((object) => object.id === inspectedId) ?? null;
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
-  const reviewTotals = useMemo(() => buildReviewTotals(runtimeScene, facadeCueFixture), [runtimeScene]);
+  const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
+  const reviewTotals = useMemo(() => (
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture)
+  ), [runtimeScene]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -91,7 +96,7 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene);
-    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, pickTargets, visualObjects, pickObjects);
 
     stateRef.current = {
       camera,
@@ -140,7 +145,7 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex]);
 
   useEffect(() => {
     const state = stateRef.current;
@@ -262,11 +267,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4B-6R / Corridor correction</p>
-          <h1>Greenpoint Ave graybox corridor</h1>
+          <p className="phase4b-kicker">Batch 4C-4 / QA facade slice</p>
+          <h1>Greenpoint Ave QA corridor</h1>
         </div>
         <p>
-          Deterministic 3D proof from approved manifest and geometry fixture. QA mode is review-only; storefront, facade, and business claims remain blocked.
+          Deterministic 3D proof from approved manifest and geometry fixture. QA facade slice is manual_draft / fictional_safe / not_verified. Non-factual QA rhythm only; hidden in normal mode.
         </p>
       </section>
 
@@ -298,7 +303,9 @@ export default function Phase4BRuntimePreview() {
           <QADebugPanel
             inspectedObject={inspectedObject}
             inspectedCue={inspectedCue}
+            inspectedSliceFacade={inspectedSliceFacade}
             facadeCueFixture={facadeCueFixture}
+            qaFacadeSliceFixture={qaFacadeSliceFixture}
             storefrontAnchors={runtimeScene.storefrontAnchors}
           />
         ) : null}
@@ -361,6 +368,7 @@ export default function Phase4BRuntimePreview() {
           onSelect={setSelectedId}
           reviewTotals={reviewTotals}
           inspectedCue={inspectedCue}
+          inspectedSliceFacade={inspectedSliceFacade}
         />
       </section>
     </main>
@@ -377,6 +385,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-path" /> Walk path cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-endpoint" /> Endpoint cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-facade-cue" /> QA facade cue</li>
+        <li><span className="phase4b-swatch phase4b-swatch-qa-facade-slice" /> QA draft facade slice</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
         <li><span className="phase4b-swatch phase4b-swatch-blocked" /> {anchorStatus}</li>
@@ -411,6 +420,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors 
           <dd>{totals.geometryFacadeCues}</dd>
         </div>
         <div>
+          <dt>QA facade slice</dt>
+          <dd>{totals.qaFacadeSliceBuildings}</dd>
+        </div>
+        <div>
           <dt>Selected side</dt>
           <dd>{inspectedObject?.corridorSide ?? "none"}</dd>
         </div>
@@ -427,11 +440,21 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors 
   );
 }
 
-function QADebugPanel({ inspectedObject, inspectedCue, facadeCueFixture, storefrontAnchors }) {
+function QADebugPanel({
+  inspectedObject,
+  inspectedCue,
+  inspectedSliceFacade,
+  facadeCueFixture,
+  qaFacadeSliceFixture,
+  storefrontAnchors,
+}) {
   return (
     <aside className="phase4b-qa-panel" aria-label="QA debug overlay status">
       <p>QA overlay</p>
       <ul>
+        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA facade slice: {qaFacadeSliceFixture.facades.length}</li>
+        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Slice labels: {qaFacadeSliceFixture.statusLabels.join(" / ")}</li>
+        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Non-factual QA rhythm only</li>
         <li><span className="phase4b-side-dot phase4b-side-left" /> Left-side massing</li>
         <li><span className="phase4b-side-dot phase4b-side-right" /> Right-side massing</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> Corridor path + ticks</li>
@@ -456,12 +479,25 @@ function QADebugPanel({ inspectedObject, inspectedCue, facadeCueFixture, storefr
           <dt>Cue class</dt>
           <dd>{inspectedCue?.cueClass ?? "none"}</dd>
         </div>
+        <div>
+          <dt>Slice status</dt>
+          <dd>{inspectedSliceFacade ? inspectedSliceFacade.statusLabels.join(" / ") : "none"}</dd>
+        </div>
       </dl>
     </aside>
   );
 }
 
-function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, onSelect, reviewTotals, inspectedCue }) {
+function InspectorPanel({
+  runtimeScene,
+  inspectedObject,
+  hoveredId,
+  selectedId,
+  onSelect,
+  reviewTotals,
+  inspectedCue,
+  inspectedSliceFacade,
+}) {
   const inspectorRef = useRef(null);
   const object = inspectedObject ?? runtimeScene.objects[0];
   const anchorStatus = runtimeScene.storefrontAnchors?.status ?? "unknown";
@@ -538,7 +574,7 @@ function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, 
         </div>
         <div>
           <dt>Review totals</dt>
-          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues</dd>
+          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues / {reviewTotals.qaFacadeSliceBuildings} draft facades</dd>
         </div>
         <div>
           <dt>Storefront anchors</dt>
@@ -564,6 +600,28 @@ function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, 
           <li>
             <span>Role</span>
             <small>{inspectedCue?.geometryDerived?.cornerOrEndpointRole ?? "none"}</small>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>QA Facade Slice</h2>
+        <ul>
+          <li>
+            <span>Status</span>
+            <small>{inspectedSliceFacade ? inspectedSliceFacade.statusLabels.join(" / ") : "not in slice"}</small>
+          </li>
+          <li>
+            <span>Modules</span>
+            <small>{formatSliceModules(inspectedSliceFacade)}</small>
+          </li>
+          <li>
+            <span>Use</span>
+            <small>{inspectedSliceFacade?.allowedUse ?? "none"}</small>
+          </li>
+          <li>
+            <span>Truth gate</span>
+            <small>non-factual QA rhythm only</small>
           </li>
         </ul>
       </section>
@@ -615,11 +673,12 @@ function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, 
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
     geometryFacadeCues: cueFixture.cues.length,
+    qaFacadeSliceBuildings: qaFacadeSliceFixture.facades.length,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
@@ -632,10 +691,21 @@ function buildFacadeCueIndex(cueFixture) {
   return new Map(cueFixture.cues.map((cue) => [cue.targetSemanticId, cue]));
 }
 
+function buildQAFacadeSliceIndex(fixture) {
+  return new Map(fixture.facades.map((facade) => [facade.targetSemanticId, facade]));
+}
+
 function formatCueTiers(cue) {
   if (!cue?.geometryDerived) return "none";
   const { widthTier, heightTier, depthTier } = cue.geometryDerived;
   return `${widthTier} / ${heightTier} / ${depthTier}`;
+}
+
+function formatSliceModules(facade) {
+  if (!facade?.modules) return "none";
+  const modules = facade.modules;
+  const awnings = modules.awningSegments ? `${modules.awningSegments} awning-like` : "no awning-like";
+  return `${modules.bayCount} bays / ${modules.upperRows} rows / ${awnings}`;
 }
 
 function formatDimensions(object) {
@@ -776,7 +846,15 @@ function addGuideGeometry(scene, runtimeScene) {
   }
 }
 
-function addRuntimeObjects(scene, runtimeScene, facadeCueIndex, pickTargets, visualObjects, pickObjects) {
+function addRuntimeObjects(
+  scene,
+  runtimeScene,
+  facadeCueIndex,
+  qaFacadeSliceIndex,
+  pickTargets,
+  visualObjects,
+  pickObjects,
+) {
   for (const object of runtimeScene.lines) {
     const visual = createLineTube(object, {
       color: object.semanticType === "corridor-street-centerline" ? 0xb2c9c1 : 0xc7a767,
@@ -792,6 +870,7 @@ function addRuntimeObjects(scene, runtimeScene, facadeCueIndex, pickTargets, vis
 
   for (const object of runtimeScene.buildings) {
     const facadeCue = facadeCueIndex.get(object.id);
+    const qaFacadeSlice = qaFacadeSliceIndex.get(object.id);
     const palette = getBuildingPalette(object);
     const qaPalette = getQASidePalette(object);
     const base = createFlatPolygonMesh(object.points, {
@@ -877,6 +956,7 @@ function addRuntimeObjects(scene, runtimeScene, facadeCueIndex, pickTargets, vis
     const group = new THREE.Group();
     group.add(base, visual, outline, footprint, marker, anchorMarker);
     if (facadeCue) group.add(createFacadeCueMarker(object, facadeCue));
+    if (facadeCue && qaFacadeSlice) group.add(createQAFacadeSliceLayer(object, facadeCue, qaFacadeSlice));
 
     const pick = new THREE.Mesh(
       createPrismGeometry(object.points, object.height + 0.35),
@@ -941,6 +1021,185 @@ function createFacadeCueMarker(object, cue) {
   group.userData.semanticId = object.id;
   group.userData.stateRole = "facadeCue";
   return group;
+}
+
+function createQAFacadeSliceLayer(object, cue, facadeRecord) {
+  const plane = cue.geometryDerived.streetFacingPlane;
+  const modules = facadeRecord.modules;
+  const length = Math.max(plane.xMax - plane.xMin, 0.2);
+  const centerX = plane.xMin + length / 2;
+  const height = Math.max(object.height, 0.55);
+  const sideOffset = object.corridorSide === "left" ? 0.072 : -0.072;
+  const z = plane.z + sideOffset;
+  const depth = 0.045;
+  const group = new THREE.Group();
+
+  addQAFacadeBox(group, {
+    color: 0x253c3a,
+    opacity: 0.32,
+    position: [centerX, height / 2, z],
+    size: [length, height, depth],
+  });
+
+  const splitY = clamp(height * modules.lowerSplitRatio, 0.18, height - 0.12);
+  addQAFacadeBox(group, {
+    color: 0xf2d08a,
+    opacity: 0.74,
+    position: [centerX, splitY, z + sideOffset * 0.12],
+    size: [length * 0.94, 0.045, depth * 1.4],
+  });
+
+  const signY = clamp(height * modules.signBandRatio, 0.16, Math.max(splitY - 0.05, 0.18));
+  addQAFacadeBox(group, {
+    color: 0xd79b62,
+    opacity: 0.6,
+    position: [centerX, signY, z + sideOffset * 0.18],
+    size: [length * 0.86, 0.11, depth * 1.6],
+  });
+
+  addBayDivisions(group, { length, plane, height, splitY, z, sideOffset, bayCount: modules.bayCount });
+  addUpperWindowPlaceholders(group, {
+    length,
+    plane,
+    height,
+    splitY,
+    z,
+    sideOffset,
+    bayCount: modules.bayCount,
+    upperRows: modules.upperRows,
+  });
+  addAwningPlaceholders(group, {
+    length,
+    plane,
+    signY,
+    z,
+    sideOffset,
+    awningSegments: modules.awningSegments,
+  });
+  addParapetTiers(group, {
+    length,
+    centerX,
+    height,
+    z,
+    sideOffset,
+    parapetTiers: modules.parapetTiers,
+  });
+  addEndpointEmphasis(group, {
+    plane,
+    height,
+    z,
+    sideOffset,
+    endpointEmphasis: modules.endpointEmphasis,
+  });
+
+  group.userData.semanticId = object.id;
+  group.userData.stateRole = "qaFacadeSlice";
+  group.visible = false;
+  return group;
+}
+
+function addBayDivisions(group, { length, plane, height, splitY, z, sideOffset, bayCount }) {
+  const usableHeight = Math.max(splitY - 0.08, 0.18);
+  for (let index = 1; index < bayCount; index += 1) {
+    const x = plane.xMin + (length / bayCount) * index;
+    addQAFacadeBox(group, {
+      color: 0x9be1d8,
+      opacity: 0.68,
+      position: [x, usableHeight / 2, z + sideOffset * 0.24],
+      size: [0.035, usableHeight, 0.055],
+    });
+  }
+
+  addQAFacadeBox(group, {
+    color: 0x9be1d8,
+    opacity: 0.48,
+    position: [plane.xMin, height / 2, z + sideOffset * 0.24],
+    size: [0.035, height * 0.92, 0.055],
+  });
+  addQAFacadeBox(group, {
+    color: 0x9be1d8,
+    opacity: 0.48,
+    position: [plane.xMax, height / 2, z + sideOffset * 0.24],
+    size: [0.035, height * 0.92, 0.055],
+  });
+}
+
+function addUpperWindowPlaceholders(group, { length, plane, height, splitY, z, sideOffset, bayCount, upperRows }) {
+  if (!upperRows) return;
+  const upperHeight = Math.max(height - splitY - 0.16, 0.16);
+  const rowGap = upperHeight / (upperRows + 1);
+  const bayWidth = length / bayCount;
+  const windowWidth = Math.max(Math.min(bayWidth * 0.46, 0.14), 0.045);
+
+  for (let row = 0; row < upperRows; row += 1) {
+    const y = splitY + rowGap * (row + 1);
+    for (let bay = 0; bay < bayCount; bay += 1) {
+      const x = plane.xMin + bayWidth * bay + bayWidth / 2;
+      addQAFacadeBox(group, {
+        color: 0xd9efe6,
+        opacity: 0.58,
+        position: [x, y, z + sideOffset * 0.3],
+        size: [windowWidth, 0.095, 0.052],
+      });
+    }
+  }
+}
+
+function addAwningPlaceholders(group, { length, plane, signY, z, sideOffset, awningSegments }) {
+  if (!awningSegments) return;
+  const segmentWidth = length / awningSegments;
+  const awningWidth = Math.max(segmentWidth * 0.72, 0.09);
+  const y = Math.max(signY - 0.12, 0.1);
+
+  for (let index = 0; index < awningSegments; index += 1) {
+    const x = plane.xMin + segmentWidth * index + segmentWidth / 2;
+    addQAFacadeBox(group, {
+      color: 0xe8795f,
+      opacity: 0.66,
+      position: [x, y, z + sideOffset * 0.44],
+      size: [awningWidth, 0.07, 0.09],
+    });
+  }
+}
+
+function addParapetTiers(group, { length, centerX, height, z, sideOffset, parapetTiers }) {
+  for (let index = 0; index < parapetTiers; index += 1) {
+    addQAFacadeBox(group, {
+      color: 0xffdf7f,
+      opacity: 0.7 - index * 0.12,
+      position: [centerX, height + 0.04 + index * 0.075, z + sideOffset * 0.2],
+      size: [length * (0.98 - index * 0.12), 0.045, 0.07],
+    });
+  }
+}
+
+function addEndpointEmphasis(group, { plane, height, z, sideOffset, endpointEmphasis }) {
+  if (endpointEmphasis === "none") return;
+  const x = endpointEmphasis === "left-edge" ? plane.xMin : plane.xMax;
+  addQAFacadeBox(group, {
+    color: 0xf0c96a,
+    opacity: 0.84,
+    position: [x, height / 2, z + sideOffset * 0.5],
+    size: [0.08, height + 0.16, 0.095],
+  });
+}
+
+function addQAFacadeBox(group, { color, opacity, position, size }) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(...size),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  mesh.position.set(...position);
+  mesh.userData.stateRole = "qaFacadeSlice";
+  mesh.userData.qaOpacity = opacity;
+  mesh.userData.qaColor = color;
+  mesh.visible = false;
+  group.add(mesh);
 }
 
 function createPrismGeometry(points, height) {
@@ -1053,9 +1312,21 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 ? Math.min(child.userData.qaOpacity + 0.1, 0.9)
                 : child.userData.qaOpacity
             : 0;
+        } else if (child.userData.stateRole === "qaFacadeSlice") {
+          child.visible = qaEnabled;
+          child.material.opacity = qaEnabled
+            ? isSelected
+              ? Math.min(child.userData.qaOpacity + 0.2, 0.96)
+              : isHovered
+                ? Math.min(child.userData.qaOpacity + 0.12, 0.92)
+                : child.userData.qaOpacity
+            : 0;
         }
       }
       if (child.userData.stateRole === "facadeCue" && !child.material) {
+        child.visible = qaEnabled;
+      }
+      if (child.userData.stateRole === "qaFacadeSlice" && !child.material) {
         child.visible = qaEnabled;
       }
       if (child.userData.stateRole === "marker") {

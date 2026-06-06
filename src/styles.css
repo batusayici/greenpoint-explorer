@@ -238,6 +238,10 @@
   background: #91d5cb;
 }
 
+.phase4b-side-qa-facade-slice {
+  background: #e8795f;
+}
+
 .phase4b-side-anchor {
   background: #8d7245;
 }
@@ -292,6 +296,10 @@
 
 .phase4b-swatch-facade-cue {
   background: #91d5cb;
+}
+
+.phase4b-swatch-qa-facade-slice {
+  background: linear-gradient(90deg, #9be1d8 0 34%, #d79b62 34% 68%, #e8795f 68%);
 }
 
 .phase4b-swatch-centerline {

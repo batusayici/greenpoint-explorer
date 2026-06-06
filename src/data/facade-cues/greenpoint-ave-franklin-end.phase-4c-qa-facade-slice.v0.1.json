@@ -1,0 +1,382 @@
+{
+  "schemaVersion": "phase-4c-qa-facade-slice.v0.1",
+  "fixtureId": "p4c4-qa-facade-slice-greenpoint-ave-franklin-end",
+  "phase": "4C-4",
+  "reviewOnly": true,
+  "status": "qa-mode-manual-draft-facade-slice",
+  "selectedSlice": {
+    "id": "franklin-end-eight-building-cluster",
+    "label": "Franklin-end QA facade slice",
+    "selectionPolicy": "Eight existing 4B primitive building masses in the Franklin-end review band, selected for both-side coverage and mixed width/height/depth tiers.",
+    "targetSemanticIds": [
+      "p4b-object-nyc-footprint-bin-3064803",
+      "p4b-object-nyc-footprint-bin-3064792",
+      "p4b-object-nyc-footprint-bin-3064793",
+      "p4b-object-nyc-footprint-bin-3064688",
+      "p4b-object-nyc-footprint-bin-3064802",
+      "p4b-object-nyc-footprint-bin-3337057",
+      "p4b-object-nyc-footprint-bin-3337034",
+      "p4b-object-nyc-footprint-bin-3064690"
+    ],
+    "reviewQuestion": "Does a small, non-factual facade rhythm layer make this endpoint cluster start to read as a street?"
+  },
+  "generatedFrom": {
+    "sceneManifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+    "geometryCueFixturePath": "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json",
+    "runtimeBuilderPath": "src/phase4bRuntimeScene.js",
+    "sourcePolicy": "existing-4b-building-geometry-and-existing-4c-geometry-cues-only"
+  },
+  "renderPolicy": {
+    "normalModeUse": "not-rendered",
+    "qaModeUse": "manual-draft-recognizable-street-feel-review-only",
+    "noSourceExpansion": true,
+    "noExactFacadeClaims": true,
+    "noBusinessOrStorefrontClaims": true,
+    "noExactEntranceOrFrontageClaims": true,
+    "noRealSignageOrTenantClaims": true
+  },
+  "statusLabels": [
+    "manual_draft",
+    "fictional_safe",
+    "not_verified"
+  ],
+  "allowedModules": [
+    "bay-divisions",
+    "upper-lower-split",
+    "window-row-placeholder",
+    "sign-band-placeholder",
+    "awning-placeholder",
+    "parapet-cornice-tier",
+    "endpoint-corner-emphasis"
+  ],
+  "blockedClaims": [
+    "active-business-status",
+    "business-identity",
+    "business-storefront-anchor",
+    "entrance-location",
+    "exact-address-placement",
+    "exact-facade-appearance",
+    "exact-frontage",
+    "facade-material",
+    "production-public-readiness",
+    "real-signage",
+    "storefront-order",
+    "storefront-segmentation",
+    "tenant-frontage",
+    "window-door-layout"
+  ],
+  "facades": [
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064803",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064803",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064803-geometry-summary",
+      "corridorSide": "right",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 4,
+        "upperRows": 1,
+        "lowerSplitRatio": 0.44,
+        "signBandRatio": 0.33,
+        "awningSegments": 3,
+        "parapetTiers": 2,
+        "endpointEmphasis": "left-edge"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Generic endpoint rhythm only; not a corner business, exact facade, sign, storefront, frontage, or entrance claim."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064792",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064792",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064792-geometry-summary",
+      "corridorSide": "right",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 3,
+        "upperRows": 1,
+        "lowerSplitRatio": 0.48,
+        "signBandRatio": 0.35,
+        "awningSegments": 2,
+        "parapetTiers": 1,
+        "endpointEmphasis": "none"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Generic sign-band and bay rhythm only; not tied to a real tenant or storefront order."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064793",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064793-geometry-summary",
+      "corridorSide": "right",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 5,
+        "upperRows": 2,
+        "lowerSplitRatio": 0.38,
+        "signBandRatio": 0.29,
+        "awningSegments": 0,
+        "parapetTiers": 2,
+        "endpointEmphasis": "none"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Upper-window placeholders are draft rhythm marks only; no window layout is verified."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064688",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064688",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064688-geometry-summary",
+      "corridorSide": "left",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 3,
+        "upperRows": 2,
+        "lowerSplitRatio": 0.4,
+        "signBandRatio": 0.31,
+        "awningSegments": 1,
+        "parapetTiers": 2,
+        "endpointEmphasis": "right-edge"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Generic opposite-side endpoint emphasis only; no entrance, corner tenant, or exact frontage claim."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064802",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064802",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064802-geometry-summary",
+      "corridorSide": "right",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 4,
+        "upperRows": 0,
+        "lowerSplitRatio": 0.62,
+        "signBandRatio": 0.43,
+        "awningSegments": 4,
+        "parapetTiers": 1,
+        "endpointEmphasis": "none"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Low-massing draft rhythm only; awning-like marks are fictional-safe placeholders."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3337057",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3337057",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3337057-geometry-summary",
+      "corridorSide": "right",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 2,
+        "upperRows": 2,
+        "lowerSplitRatio": 0.42,
+        "signBandRatio": 0.32,
+        "awningSegments": 1,
+        "parapetTiers": 1,
+        "endpointEmphasis": "none"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Narrower draft bay rhythm only; no storefront segmentation is claimed."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3337034",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3337034",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3337034-geometry-summary",
+      "corridorSide": "left",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 2,
+        "upperRows": 1,
+        "lowerSplitRatio": 0.46,
+        "signBandRatio": 0.34,
+        "awningSegments": 2,
+        "parapetTiers": 1,
+        "endpointEmphasis": "none"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Fictional-safe module variation only; no real facade appearance is verified."
+      ]
+    },
+    {
+      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064690",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064690",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064690",
+      "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064690-geometry-summary",
+      "corridorSide": "left",
+      "claimStatus": "manual_draft",
+      "statusLabels": ["manual_draft", "fictional_safe", "not_verified"],
+      "confidence": "draft-pattern-from-existing-building-extent",
+      "allowedUse": "qa-mode-recognizable-street-feel-review-only",
+      "modules": {
+        "bayCount": 3,
+        "upperRows": 2,
+        "lowerSplitRatio": 0.39,
+        "signBandRatio": 0.3,
+        "awningSegments": 0,
+        "parapetTiers": 2,
+        "endpointEmphasis": "none"
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "exact-frontage",
+        "facade-material",
+        "production-public-readiness",
+        "real-signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Tall draft rhythm only; window rows are placeholders, not verified openings."
+      ]
+    }
+  ]
+}

@@ -17,7 +17,7 @@ real spatial/business data
 -> interactive browser runtime
 ```
 
-The compiler and semantic manifest are the center. Blender is an asset foundry/offline renderer, not a layout source. For the completed 4B-4 runtime manifest preview, completed 4B-4R legibility revision, completed 4B-5 context coverage expansion, completed 4B-6 recognizability QA batch, and Batu-reviewed 4B-6R corridor frame correction batch with CONDITIONAL PASS, the existing React + Vite app shell remains the app/build layer, and the minimal `three` dependency is used only as the renderer inside that shell. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines, backend/CMS/persistence/analytics, deployment tooling, broad map systems, reference imagery, splats, and world-model outputs are not authorized for 4B-4, 4B-4R, 4B-5, 4B-6, or 4B-6R. Batch 4C-1 was docs-only planning. The current 4C work packet opens only bounded geometry-only cue fixture/verifier/runtime QA overlay work; it does not authorize evidence-approved facade cues, exact facade claims, business/storefront overlays, art direction, source expansion beyond existing manifest/geometry support, external APIs/scrapers, generated assets, or new dependencies.
+The compiler and semantic manifest are the center. Blender is an asset foundry/offline renderer, not a layout source. For the completed 4B-4 runtime manifest preview, completed 4B-4R legibility revision, completed 4B-5 context coverage expansion, completed 4B-6 recognizability QA batch, and Batu-reviewed 4B-6R corridor frame correction batch with CONDITIONAL PASS, the existing React + Vite app shell remains the app/build layer, and the minimal `three` dependency is used only as the renderer inside that shell. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines, backend/CMS/persistence/analytics, deployment tooling, broad map systems, reference imagery, splats, and world-model outputs are not authorized for 4B-4, 4B-4R, 4B-5, 4B-6, or 4B-6R. Batch 4C-1 was docs-only planning. Batch 4C-2 completed geometry-only cue fixture/verifier/runtime QA overlay work. Batch 4C-4 completed a bounded QA-mode/manual-draft/non-factual recognizable facade slice using existing building geometry for placement only. It does not authorize evidence-approved facade cues, exact facade claims, business/storefront overlays, art direction, source expansion beyond existing manifest/geometry support, external APIs/scrapers, generated assets, or new dependencies.
 
 The first visual proof after the primitive compiler must validate the actual 3D architecture: a deterministic, navigable, interactive graybox/isometric corridor scene generated from source geometry and the semantic manifest. It must not be a static image, 2D map, raster composition, hand-arranged illustration, or manifest-only artifact.
 
@@ -43,6 +43,7 @@ Agents must execute only the current batch named in `docs/CURRENT_EXECUTION_BRIE
 | 4C-1: Recognizable facade cue planning | Docs-only plan for the smallest truth-safe path from deterministic graybox corridor massing toward recognizable corridor identity. Complete. | Defines geometry-only cues, evidence-approved cues, forbidden claims, allowed inputs, fixture requirements, landmark/special-treatment handling, business/storefront anchor dependency order, manual review gates, deferred work, and acceptance criteria for a later implementation batch. | No runtime changes, camera tuning, source fixture expansion, generated manifest changes, business/place overlays, storefront anchors, source acquisition, external APIs, scraping, capture workflow, generated assets, dependency changes, art-direction pass, production assets, or verified facade/business claims. | Required control-doc reread, topic-doc review, `git diff --check`, `git diff --stat`, `git status --short`. | Docs-only planning boundary; committed separately. | 4C-1 review gate superseded by the bounded Phase 4C Geometry-Only Facade Cue Work Packet. |
 | 4C-2: Geometry-only facade cue fixture and QA overlay | Complete pending Batu review. | Added a deterministic geometry-only cue fixture with 142 cue records for existing 4B primitive building masses; verifier regenerates the fixture from existing 4B manifest/runtime geometry and checks provenance, claim status, blocked claims, deterministic IDs, and target ID resolution; runtime renders geometry-only review planes and cue tiers only in QA mode. | No evidence-approved facade detail, exact facade/storefront/frontage/entrance/sign/window/door/awning/material/color/address/active-business/card claims, business/place overlays, storefront anchors, source acquisition, external APIs, scraping, capture workflows, generated assets, new dependencies, unrelated camera tuning, or source expansion beyond existing manifest/geometry support. | Phase 4C cue verifier, existing source fixture verifier, compiler determinism check, frontend build, browser smoke, and `git diff --check` passed. | Fixture/verifier/runtime QA overlay commit; stop for Batu review. | 4C-3 was not started because no required narrow geometry-only cue tuning need was identified after verification. |
 | 4C-3: Narrow geometry-only cue tuning pass | Conditionally pre-authorized queued batch only after 4C-2 passes all self-advance conditions. | Small cue readability tuning to the 4C-2 geometry-only fixture, verifier, or QA overlay; may improve label/status readability, cue grouping, cue counts, or geometry-only visual clarity. | No new cue families beyond geometry-only cue classes, evidence-approved facade cues, exact facade claims, storefront/business overlays, source expansion, art-direction changes, generated assets, new dependencies, unrelated camera tuning, 4C-4, or any later batch. | Relevant 4C-2 verifier/build/smoke checks for touched areas plus `git diff --check`. | Narrow tuning boundary; implementation commit only if Batu explicitly authorizes commit behavior. | Hard stop after 4C-3 for Batu review. Stop earlier if verification fails, source evidence is missing/uncertain, visual/product review is needed, or scope would expand. |
+| 4C-4: QA-mode recognizable facade slice | Complete pending Batu review. | Added an 8-building Franklin-end QA facade slice with manual_draft, fictional_safe, and not_verified status labels; runtime renders generic bay divisions, upper/lower splits, window-row placeholders, sign-band placeholders, awning-like placeholders, parapet/cornice tiers, and generic endpoint emphasis only in QA mode. | No real business names, tenant claims, exact storefront/facade/frontage/entrance/sign/address/material/window/door claims, source expansion, new dependencies, production art direction, normal-mode facade layer, business/storefront anchors, or later batch self-advance. | QA facade slice verifier, Phase 4C geometry cue verifier, source fixture verifier, compiler determinism check, frontend build, browser smoke, and `git diff --check` passed. | Bounded runtime/fixture/verifier/docs commit. | Stop for Batu review of recognizable-street-feel result; no next batch is open or queued. |
 
 ## Phase 4A Success Criteria
 
@@ -76,6 +77,7 @@ Phase 4C succeeds when:
 
 - Recognizable corridor identity improves without treating geometry-only cues as facade truth.
 - Geometry-only cues remain limited to street-facing plane, building-width rhythm, supported height tiers, corner/endpoint role, setback/depth tier, block breaks, side-of-corridor, and coverage status.
+- Batu-authorized QA-mode synthetic facade rhythm may render only as `manual_draft`, `fictional_safe`, `not_verified`, and non-factual review scaffolding.
 - Facade-module layout, entrances, windows, sign bands, awnings/canopies, materials/colors, local props, transit entrances, and landmark identity treatment require Batu-approved evidence.
 - Exact facade reproduction, storefront order, tenant frontage, entrance placement, sign/brand claims, exact address placement, active-business status, production/public readiness, and raster readiness remain blocked until later evidence gates clear.
 - Storefront/business anchors depend on frontage/facade/entrance evidence and are not inferred from business names, POI coordinates, address strings, building footprints, or geometry-only cues alone.
@@ -136,15 +138,13 @@ A future Phase 4B visual batch is not acceptable if it only produces a static im
 
 ## Immediate Next Batch
 
-Current work packet: `Phase 4C Geometry-Only Facade Cue Work Packet`.
+Current work packet: `Batch 4C-4 QA-Mode Recognizable Facade Slice`.
 
-Current executable batch: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`.
+Current executable batch: none.
 
-Pre-authorized queue:
+Pre-authorized queue: none.
 
-1. `Batch 4C-3: Narrow geometry-only cue tuning pass`
-
-Self-advance allowed: yes, from 4C-2 to 4C-3 only if the bounded packet conditions pass.
+Self-advance allowed: no.
 
 Closed gate: `Batch 4B-3: Primitive compiler`, reviewed, approved, and closed.
 
@@ -160,6 +160,6 @@ Conditional follow-up: M-to-F and F-to-M cameras remain somewhat compressed and 
 
 Completed 4C-1 output: added `docs/phase-4c-recognizable-facade-cue-plan.md`, defining geometry-only cue classes, evidence-approved cue classes, forbidden claims, fixture requirements, landmark/special-treatment handling, business/storefront anchor dependencies, manual review gates, deferred work, and the proposed 4C-2 acceptance criteria.
 
-Recommended next-step rationale: 4C-2 geometry-only facade cue fixture and QA overlay is the smallest visible implementation step because it can improve corridor recognizability through existing source-backed semantic building IDs without claiming facade, storefront, business, sign, entrance, material, or address truth. Evidence-approved facade cues, landmark identity treatment, storefront anchors, and business overlays should wait for later evidence gates.
+Completed 4C-4 output: added a QA-mode/manual-draft/non-factual Franklin-end facade rhythm slice for 8 existing building masses, with generic bay divisions, upper/lower splits, window-row placeholders, sign-band placeholders, awning-like placeholders, parapet/cornice tiers, endpoint emphasis, and visible `manual_draft / fictional_safe / not_verified` labels. Normal mode remains protected.
 
-Hard review gate: stop after 4C-3, or earlier if a visual/product review need appears, verification fails, source evidence is missing/uncertain, scope would expand beyond geometry-only deterministic cues, or implementation commit behavior is needed without explicit Batu authorization. No 4C-4 or later Phase 4 batch is open or queued.
+Hard review gate: stop after 4C-4 for Batu review. No later Phase 4 batch is open or queued.
