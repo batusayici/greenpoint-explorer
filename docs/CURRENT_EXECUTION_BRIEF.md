@@ -1,33 +1,58 @@
-# Current Execution Brief - Batch 4C-4 QA-Mode Recognizable Facade Slice
+# Current Execution Brief - Batch 4C-5 QA-Mode Street-Feel Facade Tuning Pass
 
-Status: `Batch 4C-4: QA-mode recognizable facade slice` is complete pending Batu review. Batu explicitly authorized this bounded implementation packet on 2026-06-06. The output remains QA-mode/manual-draft/non-factual only and does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, unrelated camera tuning, or any later batch.
+Status: `Batch 4C-5: QA-mode street-feel facade tuning pass` is complete pending Batu review. Batu explicitly authorized this bounded implementation packet on 2026-06-06. The output remains QA-mode/manual-draft/non-factual only and does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, or any later batch.
 
-Current executable batch: none. Stop for Batu review of 4C-4 output.
+Current executable batch: none. Stop for Batu review of 4C-5 output.
 
 Pre-authorized queue: none.
 
-Hard Batu review gate: stop after 4C-4. Do not open any later batch without Batu approval and an updated current brief/queue.
+Hard Batu review gate: stop after 4C-5. Do not open any later batch without Batu approval and an updated current brief/queue.
 
 Self-advance allowed: no.
 
-4C-1 defined the truth-safe cue plan in `docs/phase-4c-recognizable-facade-cue-plan.md`. 4C-2 completed the geometry-only cue fixture and QA overlay. 4C-4 added a small QA-mode recognizable facade slice using existing building geometry for placement only, with `manual_draft`, `fictional_safe`, and `not_verified` labels.
+4C-1 defined the truth-safe cue plan in `docs/phase-4c-recognizable-facade-cue-plan.md`. 4C-2 completed the geometry-only cue fixture and QA overlay. 4C-4 added a small QA-mode recognizable facade slice using existing building geometry for placement only. 4C-5 tuned the same eight-building Franklin-end slice for street feel, with `manual_draft`, `fictional_safe`, and `not_verified` labels.
 
 Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, production/public claims, visual acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, evidence-approved facade cue approval, art-direction approval, and any later MVP gates.
 
 ## Work Packet
 
-Name: `Batch 4C-4 QA-Mode Recognizable Facade Slice`
+Name: `Batch 4C-5 QA-Mode Street-Feel Facade Tuning Pass`
 
 Purpose:
 
-- Add the smallest QA-mode synthetic facade rhythm layer needed to judge whether a short corridor segment starts to feel more street-like.
+- Tune the existing QA-mode synthetic facade rhythm layer so the short Franklin-end segment is more useful for judging street-block feel.
 - Use existing building geometry only for placement.
 - Preserve all blocked factual facade, storefront, business, entrance, frontage, sign, tenant, address, and production-readiness claims.
 - Keep normal mode protected.
 
 Authorized batch:
 
-1. `Batch 4C-4: QA-mode recognizable facade slice`
+1. `Batch 4C-5: QA-mode street-feel facade tuning pass`
+
+## Completed Batch: 4C-5
+
+`Batch 4C-5: QA-mode street-feel facade tuning pass` completed on 2026-06-06.
+
+4C-5 output:
+
+- Kept the existing Franklin-end 8-building QA slice; no slice expansion occurred.
+- Added denser manual-draft storefront cadence parameters, varied placeholder sign-band widths, darker base bands, muted brick-like draft palettes, glass/entry placeholders, stoop/step hints, cellar-grate marks, poles/posts, curb rhythm ticks, crosswalk/curb-cut placeholders, wrapped sign-band placeholders, and stronger generic corner anchor volumes.
+- Added a `Street` camera preset for lower isometric street-block review.
+- Updated the runtime QA layer to render the new street-feel marks only in QA mode.
+- Normal mode does not render the QA street-feel slice.
+
+4C-5 verification:
+
+- Phase 4C QA facade slice verifier passed.
+- Phase 4C geometry cue fixture verifier passed.
+- Phase 4B source fixture verifier passed.
+- Phase 4B compiler determinism check passed.
+- Frontend build passed with the existing large bundle-size warning.
+- Browser smoke passed: QA toggled on, Street camera clicked, canvas rendered, `QA street-feel slice: 8` and `manual_draft / fictional_safe / not_verified` labels were visible, and no browser console errors were reported.
+
+Stop condition:
+
+- Stop for Batu review. No next batch is open or queued.
 
 ## Completed Batch: 4C-4
 

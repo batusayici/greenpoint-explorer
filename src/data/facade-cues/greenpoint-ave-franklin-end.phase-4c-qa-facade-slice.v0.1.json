@@ -1,9 +1,9 @@
 {
   "schemaVersion": "phase-4c-qa-facade-slice.v0.1",
-  "fixtureId": "p4c4-qa-facade-slice-greenpoint-ave-franklin-end",
-  "phase": "4C-4",
+  "fixtureId": "p4c5-qa-facade-slice-greenpoint-ave-franklin-end",
+  "phase": "4C-5",
   "reviewOnly": true,
-  "status": "qa-mode-manual-draft-facade-slice",
+  "status": "qa-mode-manual-draft-street-feel-facade-slice",
   "selectedSlice": {
     "id": "franklin-end-eight-building-cluster",
     "label": "Franklin-end QA facade slice",
@@ -18,7 +18,7 @@
       "p4b-object-nyc-footprint-bin-3337034",
       "p4b-object-nyc-footprint-bin-3064690"
     ],
-    "reviewQuestion": "Does a small, non-factual facade rhythm layer make this endpoint cluster start to read as a street?"
+    "reviewQuestion": "Does a small, non-factual facade rhythm layer make this endpoint cluster start to read as a street block?"
   },
   "generatedFrom": {
     "sceneManifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
@@ -47,7 +47,18 @@
     "sign-band-placeholder",
     "awning-placeholder",
     "parapet-cornice-tier",
-    "endpoint-corner-emphasis"
+    "endpoint-corner-emphasis",
+    "storefront-base-band",
+    "uneven-storefront-cadence",
+    "entry-placeholder-rectangle",
+    "glass-placeholder",
+    "brick-like-draft-block",
+    "stoop-step-hint",
+    "cellar-grate-mark",
+    "pole-post-placeholder",
+    "curb-rhythm-placeholder",
+    "crosswalk-curb-cut-placeholder",
+    "wrapped-sign-band-placeholder"
   ],
   "blockedClaims": [
     "active-business-status",
@@ -67,7 +78,7 @@
   ],
   "facades": [
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064803",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3064803",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3064803",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064803-geometry-summary",
@@ -83,7 +94,21 @@
         "signBandRatio": 0.33,
         "awningSegments": 3,
         "parapetTiers": 2,
-        "endpointEmphasis": "left-edge"
+        "endpointEmphasis": "left-edge",
+        "storefrontCadence": [0.16, 0.1, 0.23, 0.13, 0.18, 0.2],
+        "signBandWidths": [0.24, 0.16, 0.32, 0.2],
+        "draftPalette": "brickish-corner",
+        "groundBaseTone": "charcoal",
+        "entryPlaceholders": 2,
+        "glassPlaceholders": 5,
+        "brickBlockRows": 4,
+        "stoopStepHints": 1,
+        "cellarGrateMarks": 2,
+        "polePostPlaceholders": 1,
+        "curbRhythmTicks": 5,
+        "crosswalkCue": true,
+        "wrappedSignBand": true,
+        "cornerAnchorVolume": true
       },
       "blockedClaims": [
         "active-business-status",
@@ -106,7 +131,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064792",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3064792",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3064792",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064792-geometry-summary",
@@ -122,7 +147,21 @@
         "signBandRatio": 0.35,
         "awningSegments": 2,
         "parapetTiers": 1,
-        "endpointEmphasis": "none"
+        "endpointEmphasis": "none",
+        "storefrontCadence": [0.22, 0.15, 0.18, 0.11, 0.19, 0.15],
+        "signBandWidths": [0.3, 0.18, 0.24],
+        "draftPalette": "muted-brick",
+        "groundBaseTone": "dark-umber",
+        "entryPlaceholders": 1,
+        "glassPlaceholders": 4,
+        "brickBlockRows": 3,
+        "stoopStepHints": 1,
+        "cellarGrateMarks": 1,
+        "polePostPlaceholders": 0,
+        "curbRhythmTicks": 3,
+        "crosswalkCue": false,
+        "wrappedSignBand": false,
+        "cornerAnchorVolume": false
       },
       "blockedClaims": [
         "active-business-status",
@@ -145,7 +184,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064793",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3064793",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064793-geometry-summary",
@@ -161,7 +200,21 @@
         "signBandRatio": 0.29,
         "awningSegments": 0,
         "parapetTiers": 2,
-        "endpointEmphasis": "none"
+        "endpointEmphasis": "none",
+        "storefrontCadence": [0.14, 0.16, 0.12, 0.2, 0.14, 0.24],
+        "signBandWidths": [0.18, 0.22, 0.14, 0.28, 0.18],
+        "draftPalette": "light-brick",
+        "groundBaseTone": "slate",
+        "entryPlaceholders": 2,
+        "glassPlaceholders": 5,
+        "brickBlockRows": 5,
+        "stoopStepHints": 0,
+        "cellarGrateMarks": 2,
+        "polePostPlaceholders": 0,
+        "curbRhythmTicks": 4,
+        "crosswalkCue": false,
+        "wrappedSignBand": false,
+        "cornerAnchorVolume": false
       },
       "blockedClaims": [
         "active-business-status",
@@ -184,7 +237,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064688",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3064688",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3064688",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064688-geometry-summary",
@@ -200,7 +253,21 @@
         "signBandRatio": 0.31,
         "awningSegments": 1,
         "parapetTiers": 2,
-        "endpointEmphasis": "right-edge"
+        "endpointEmphasis": "right-edge",
+        "storefrontCadence": [0.2, 0.12, 0.17, 0.14, 0.21, 0.16],
+        "signBandWidths": [0.22, 0.28, 0.17, 0.18],
+        "draftPalette": "ochre-brick",
+        "groundBaseTone": "charcoal",
+        "entryPlaceholders": 1,
+        "glassPlaceholders": 4,
+        "brickBlockRows": 4,
+        "stoopStepHints": 2,
+        "cellarGrateMarks": 1,
+        "polePostPlaceholders": 1,
+        "curbRhythmTicks": 4,
+        "crosswalkCue": true,
+        "wrappedSignBand": true,
+        "cornerAnchorVolume": true
       },
       "blockedClaims": [
         "active-business-status",
@@ -223,7 +290,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064802",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3064802",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3064802",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064802-geometry-summary",
@@ -239,7 +306,21 @@
         "signBandRatio": 0.43,
         "awningSegments": 4,
         "parapetTiers": 1,
-        "endpointEmphasis": "none"
+        "endpointEmphasis": "none",
+        "storefrontCadence": [0.12, 0.18, 0.1, 0.2, 0.16, 0.24],
+        "signBandWidths": [0.2, 0.15, 0.27, 0.18],
+        "draftPalette": "low-dark-storefront",
+        "groundBaseTone": "deep-green",
+        "entryPlaceholders": 2,
+        "glassPlaceholders": 6,
+        "brickBlockRows": 2,
+        "stoopStepHints": 0,
+        "cellarGrateMarks": 2,
+        "polePostPlaceholders": 0,
+        "curbRhythmTicks": 5,
+        "crosswalkCue": false,
+        "wrappedSignBand": false,
+        "cornerAnchorVolume": false
       },
       "blockedClaims": [
         "active-business-status",
@@ -262,7 +343,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3337057",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3337057",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3337057",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3337057-geometry-summary",
@@ -278,7 +359,21 @@
         "signBandRatio": 0.32,
         "awningSegments": 1,
         "parapetTiers": 1,
-        "endpointEmphasis": "none"
+        "endpointEmphasis": "none",
+        "storefrontCadence": [0.28, 0.16, 0.22, 0.34],
+        "signBandWidths": [0.34, 0.2],
+        "draftPalette": "narrow-brick",
+        "groundBaseTone": "dark-umber",
+        "entryPlaceholders": 1,
+        "glassPlaceholders": 2,
+        "brickBlockRows": 5,
+        "stoopStepHints": 1,
+        "cellarGrateMarks": 1,
+        "polePostPlaceholders": 0,
+        "curbRhythmTicks": 2,
+        "crosswalkCue": false,
+        "wrappedSignBand": false,
+        "cornerAnchorVolume": false
       },
       "blockedClaims": [
         "active-business-status",
@@ -301,7 +396,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3337034",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3337034",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3337034",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3337034-geometry-summary",
@@ -317,7 +412,21 @@
         "signBandRatio": 0.34,
         "awningSegments": 2,
         "parapetTiers": 1,
-        "endpointEmphasis": "none"
+        "endpointEmphasis": "none",
+        "storefrontCadence": [0.36, 0.2, 0.18, 0.26],
+        "signBandWidths": [0.28, 0.22],
+        "draftPalette": "small-ochre",
+        "groundBaseTone": "slate",
+        "entryPlaceholders": 1,
+        "glassPlaceholders": 2,
+        "brickBlockRows": 2,
+        "stoopStepHints": 1,
+        "cellarGrateMarks": 1,
+        "polePostPlaceholders": 1,
+        "curbRhythmTicks": 2,
+        "crosswalkCue": false,
+        "wrappedSignBand": false,
+        "cornerAnchorVolume": false
       },
       "blockedClaims": [
         "active-business-status",
@@ -340,7 +449,7 @@
       ]
     },
     {
-      "id": "p4c4-qa-facade-p4b-object-nyc-footprint-bin-3064690",
+      "id": "p4c5-qa-facade-p4b-object-nyc-footprint-bin-3064690",
       "targetSemanticId": "p4b-object-nyc-footprint-bin-3064690",
       "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064690",
       "geometryCueId": "p4c-cue-p4b-object-nyc-footprint-bin-3064690-geometry-summary",
@@ -356,7 +465,21 @@
         "signBandRatio": 0.3,
         "awningSegments": 0,
         "parapetTiers": 2,
-        "endpointEmphasis": "none"
+        "endpointEmphasis": "none",
+        "storefrontCadence": [0.18, 0.13, 0.19, 0.12, 0.2, 0.18],
+        "signBandWidths": [0.2, 0.26, 0.16],
+        "draftPalette": "tall-muted-brick",
+        "groundBaseTone": "charcoal",
+        "entryPlaceholders": 1,
+        "glassPlaceholders": 4,
+        "brickBlockRows": 5,
+        "stoopStepHints": 1,
+        "cellarGrateMarks": 2,
+        "polePostPlaceholders": 0,
+        "curbRhythmTicks": 3,
+        "crosswalkCue": false,
+        "wrappedSignBand": false,
+        "cornerAnchorVolume": false
       },
       "blockedClaims": [
         "active-business-status",

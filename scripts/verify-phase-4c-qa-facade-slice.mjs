@@ -12,7 +12,31 @@ const allowedModules = new Set([
   "awning-placeholder",
   "parapet-cornice-tier",
   "endpoint-corner-emphasis",
+  "storefront-base-band",
+  "uneven-storefront-cadence",
+  "entry-placeholder-rectangle",
+  "glass-placeholder",
+  "brick-like-draft-block",
+  "stoop-step-hint",
+  "cellar-grate-mark",
+  "pole-post-placeholder",
+  "curb-rhythm-placeholder",
+  "crosswalk-curb-cut-placeholder",
+  "wrapped-sign-band-placeholder",
 ]);
+
+const allowedDraftPalettes = new Set([
+  "brickish-corner",
+  "muted-brick",
+  "light-brick",
+  "ochre-brick",
+  "low-dark-storefront",
+  "narrow-brick",
+  "small-ochre",
+  "tall-muted-brick",
+]);
+
+const allowedGroundBaseTones = new Set(["charcoal", "dark-umber", "slate", "deep-green"]);
 
 const requiredStatusLabels = new Set(["manual_draft", "fictional_safe", "not_verified"]);
 
@@ -67,7 +91,7 @@ function main() {
   }
 
   console.log(
-    `Phase 4C QA facade slice verified (${qaFacadeSliceFixture.facades.length} manual_draft / fictional_safe / not_verified records).`,
+    `Phase 4C QA facade slice verified (${qaFacadeSliceFixture.facades.length} manual_draft / fictional_safe / not_verified records; phase ${qaFacadeSliceFixture.phase}).`,
   );
 }
 
@@ -75,7 +99,7 @@ function validateFixtureShape(fixture, failures) {
   if (fixture.schemaVersion !== "phase-4c-qa-facade-slice.v0.1") {
     failures.push("Unexpected QA facade slice schemaVersion.");
   }
-  if (fixture.phase !== "4C-4") failures.push("QA facade slice phase must be 4C-4.");
+  if (fixture.phase !== "4C-5") failures.push("QA facade slice phase must be 4C-5.");
   if (fixture.reviewOnly !== true) failures.push("QA facade slice must be review-only.");
   if (fixture.renderPolicy?.normalModeUse !== "not-rendered") {
     failures.push("QA facade slice must not render in normal mode.");
@@ -157,6 +181,13 @@ function validateModules(facade, failures) {
     ["signBandRatio", 0.22, 0.5],
     ["awningSegments", 0, 5],
     ["parapetTiers", 0, 3],
+    ["entryPlaceholders", 0, 3],
+    ["glassPlaceholders", 1, 8],
+    ["brickBlockRows", 0, 6],
+    ["stoopStepHints", 0, 3],
+    ["cellarGrateMarks", 0, 3],
+    ["polePostPlaceholders", 0, 2],
+    ["curbRhythmTicks", 0, 7],
   ];
 
   for (const [key, min, max] of numericRules) {
@@ -167,6 +198,40 @@ function validateModules(facade, failures) {
   }
   if (!["none", "left-edge", "right-edge"].includes(modules.endpointEmphasis)) {
     failures.push(`${facade.id} has invalid endpointEmphasis ${modules.endpointEmphasis}.`);
+  }
+  if (!allowedDraftPalettes.has(modules.draftPalette)) {
+    failures.push(`${facade.id} has unsupported draftPalette ${modules.draftPalette}.`);
+  }
+  if (!allowedGroundBaseTones.has(modules.groundBaseTone)) {
+    failures.push(`${facade.id} has unsupported groundBaseTone ${modules.groundBaseTone}.`);
+  }
+  if (!Array.isArray(modules.storefrontCadence) || modules.storefrontCadence.length < 4) {
+    failures.push(`${facade.id} must include at least four storefrontCadence values.`);
+  } else {
+    validateRatioArray(`${facade.id}.storefrontCadence`, modules.storefrontCadence, failures, { sumCloseToOne: true });
+  }
+  if (!Array.isArray(modules.signBandWidths) || modules.signBandWidths.length < 2) {
+    failures.push(`${facade.id} must include at least two signBandWidths values.`);
+  } else {
+    validateRatioArray(`${facade.id}.signBandWidths`, modules.signBandWidths, failures, { sumCloseToOne: false });
+  }
+  for (const key of ["crosswalkCue", "wrappedSignBand", "cornerAnchorVolume"]) {
+    if (typeof modules[key] !== "boolean") failures.push(`${facade.id} must include boolean ${key}.`);
+  }
+}
+
+function validateRatioArray(label, values, failures, { sumCloseToOne }) {
+  const total = values.reduce((sum, value) => sum + value, 0);
+  if (sumCloseToOne && Math.abs(total - 1) > 0.04) {
+    failures.push(`${label} should sum close to 1, got ${total.toFixed(3)}.`);
+  }
+  if (!sumCloseToOne && (total < 0.45 || total > 1.15)) {
+    failures.push(`${label} total should stay within draft placeholder bounds, got ${total.toFixed(3)}.`);
+  }
+  for (const value of values) {
+    if (!Number.isFinite(value) || value <= 0 || value > 0.45) {
+      failures.push(`${label} includes invalid ratio ${value}.`);
+    }
   }
 }
 

@@ -44,6 +44,13 @@ const CAMERA_PRESETS = {
     zoom: 0.86,
     target: new THREE.Vector3(0, 0.95, 0.15),
   },
+  streetReview: {
+    azimuth: -1.12,
+    polar: 1.08,
+    distance: 11.8,
+    zoom: 1.24,
+    target: new THREE.Vector3(-6.15, 0.72, 0.04),
+  },
 };
 
 const CAMERA_LIMITS = {
@@ -267,11 +274,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4C-4 / QA facade slice</p>
+          <p className="phase4b-kicker">Batch 4C-5 / QA street-feel slice</p>
           <h1>Greenpoint Ave QA corridor</h1>
         </div>
         <p>
-          Deterministic 3D proof from approved manifest and geometry fixture. QA facade slice is manual_draft / fictional_safe / not_verified. Non-factual QA rhythm only; hidden in normal mode.
+          Deterministic 3D proof from approved manifest and geometry fixture. QA street-feel slice is manual_draft / fictional_safe / not_verified. Non-factual QA rhythm only; hidden in normal mode.
         </p>
       </section>
 
@@ -331,6 +338,9 @@ export default function Phase4BRuntimePreview() {
           <button type="button" onClick={() => runCameraCommand("streetOblique")} aria-label="Camera preset street-level oblique">
             Oblique
           </button>
+          <button type="button" onClick={() => runCameraCommand("streetReview")} aria-label="Camera preset street review">
+            Street
+          </button>
           <button type="button" onClick={() => runCameraCommand("orbit-left")} aria-label="Rotate view left">
             Rotate -
           </button>
@@ -385,7 +395,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-path" /> Walk path cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-endpoint" /> Endpoint cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-facade-cue" /> QA facade cue</li>
-        <li><span className="phase4b-swatch phase4b-swatch-qa-facade-slice" /> QA draft facade slice</li>
+        <li><span className="phase4b-swatch phase4b-swatch-qa-facade-slice" /> QA draft street-feel slice</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
         <li><span className="phase4b-swatch phase4b-swatch-blocked" /> {anchorStatus}</li>
@@ -420,7 +430,7 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors 
           <dd>{totals.geometryFacadeCues}</dd>
         </div>
         <div>
-          <dt>QA facade slice</dt>
+          <dt>QA street-feel slice</dt>
           <dd>{totals.qaFacadeSliceBuildings}</dd>
         </div>
         <div>
@@ -452,7 +462,7 @@ function QADebugPanel({
     <aside className="phase4b-qa-panel" aria-label="QA debug overlay status">
       <p>QA overlay</p>
       <ul>
-        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA facade slice: {qaFacadeSliceFixture.facades.length}</li>
+        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA street-feel slice: {qaFacadeSliceFixture.facades.length}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Slice labels: {qaFacadeSliceFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Non-factual QA rhythm only</li>
         <li><span className="phase4b-side-dot phase4b-side-left" /> Left-side massing</li>
@@ -605,7 +615,7 @@ function InspectorPanel({
       </section>
 
       <section>
-        <h2>QA Facade Slice</h2>
+        <h2>QA Street-Feel Slice</h2>
         <ul>
           <li>
             <span>Status</span>
@@ -705,7 +715,7 @@ function formatSliceModules(facade) {
   if (!facade?.modules) return "none";
   const modules = facade.modules;
   const awnings = modules.awningSegments ? `${modules.awningSegments} awning-like` : "no awning-like";
-  return `${modules.bayCount} bays / ${modules.upperRows} rows / ${awnings}`;
+  return `${modules.storefrontCadence.length} base beats / ${modules.entryPlaceholders} entries / ${modules.glassPlaceholders} glass / ${awnings}`;
 }
 
 function formatDimensions(object) {
@@ -1032,32 +1042,38 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
   const sideOffset = object.corridorSide === "left" ? 0.072 : -0.072;
   const z = plane.z + sideOffset;
   const depth = 0.045;
+  const palette = getStreetFeelPalette(modules.draftPalette, modules.groundBaseTone);
   const group = new THREE.Group();
 
   addQAFacadeBox(group, {
-    color: 0x253c3a,
-    opacity: 0.32,
+    color: palette.facade,
+    opacity: 0.62,
     position: [centerX, height / 2, z],
     size: [length, height, depth],
   });
 
   const splitY = clamp(height * modules.lowerSplitRatio, 0.18, height - 0.12);
   addQAFacadeBox(group, {
-    color: 0xf2d08a,
-    opacity: 0.74,
-    position: [centerX, splitY, z + sideOffset * 0.12],
-    size: [length * 0.94, 0.045, depth * 1.4],
+    color: palette.groundBase,
+    opacity: 0.88,
+    position: [centerX, splitY / 2, z + sideOffset * 0.18],
+    size: [length * 0.98, splitY * 0.92, depth * 1.7],
   });
 
   const signY = clamp(height * modules.signBandRatio, 0.16, Math.max(splitY - 0.05, 0.18));
-  addQAFacadeBox(group, {
-    color: 0xd79b62,
-    opacity: 0.6,
-    position: [centerX, signY, z + sideOffset * 0.18],
-    size: [length * 0.86, 0.11, depth * 1.6],
-  });
+  addSignBandPlaceholders(group, { modules, palette, length, plane, signY, z, sideOffset, depth });
 
-  addBayDivisions(group, { length, plane, height, splitY, z, sideOffset, bayCount: modules.bayCount });
+  addStreetBaseCadence(group, {
+    modules,
+    palette,
+    length,
+    plane,
+    height,
+    splitY,
+    z,
+    sideOffset,
+    depth,
+  });
   addUpperWindowPlaceholders(group, {
     length,
     plane,
@@ -1075,6 +1091,18 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
     z,
     sideOffset,
     awningSegments: modules.awningSegments,
+    palette,
+  });
+  addBrickLikeDraftBlocks(group, {
+    modules,
+    palette,
+    length,
+    plane,
+    height,
+    splitY,
+    z,
+    sideOffset,
+    depth,
   });
   addParapetTiers(group, {
     length,
@@ -1083,6 +1111,7 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
     z,
     sideOffset,
     parapetTiers: modules.parapetTiers,
+    palette,
   });
   addEndpointEmphasis(group, {
     plane,
@@ -1090,6 +1119,15 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
     z,
     sideOffset,
     endpointEmphasis: modules.endpointEmphasis,
+    palette,
+  });
+  addHumanScaleStreetCues(group, {
+    modules,
+    palette,
+    length,
+    plane,
+    z,
+    sideOffset,
   });
 
   group.userData.semanticId = object.id;
@@ -1098,27 +1136,63 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
   return group;
 }
 
-function addBayDivisions(group, { length, plane, height, splitY, z, sideOffset, bayCount }) {
+function addStreetBaseCadence(group, { modules, palette, length, plane, height, splitY, z, sideOffset, depth }) {
   const usableHeight = Math.max(splitY - 0.08, 0.18);
-  for (let index = 1; index < bayCount; index += 1) {
-    const x = plane.xMin + (length / bayCount) * index;
+  const cadence = normalizeCadence(modules.storefrontCadence);
+  let cursor = plane.xMin;
+  for (let index = 0; index < cadence.length; index += 1) {
+    const segmentWidth = length * cadence[index];
+    const segmentCenterX = cursor + segmentWidth / 2;
+    const isEntry = index < modules.entryPlaceholders || (index === cadence.length - 1 && modules.entryPlaceholders > 1);
+    const glassHeight = isEntry ? usableHeight * 0.58 : usableHeight * 0.44;
+    const glassY = isEntry ? usableHeight * 0.48 : usableHeight * 0.58;
+
     addQAFacadeBox(group, {
-      color: 0x9be1d8,
-      opacity: 0.68,
+      color: palette.glass,
+      opacity: isEntry ? 0.76 : 0.62,
+      position: [segmentCenterX, glassY, z + sideOffset * 0.42],
+      size: [Math.max(segmentWidth * 0.58, 0.045), glassHeight, depth * 1.9],
+    });
+
+    if (isEntry) {
+      addQAFacadeBox(group, {
+        color: palette.entry,
+        opacity: 0.86,
+        position: [segmentCenterX, usableHeight * 0.38, z + sideOffset * 0.55],
+        size: [Math.max(segmentWidth * 0.32, 0.04), usableHeight * 0.72, depth * 2.2],
+      });
+    }
+
+    cursor += segmentWidth;
+    if (index < cadence.length - 1) {
+      addQAFacadeBox(group, {
+        color: palette.seam,
+        opacity: 0.9,
+        position: [cursor, usableHeight / 2, z + sideOffset * 0.62],
+        size: [0.026, usableHeight * 0.96, depth * 2.25],
+      });
+    }
+  }
+
+  for (let index = 1; index < modules.bayCount; index += 1) {
+    const x = plane.xMin + (length / modules.bayCount) * index;
+    addQAFacadeBox(group, {
+      color: palette.seam,
+      opacity: 0.54,
       position: [x, usableHeight / 2, z + sideOffset * 0.24],
       size: [0.035, usableHeight, 0.055],
     });
   }
 
   addQAFacadeBox(group, {
-    color: 0x9be1d8,
-    opacity: 0.48,
+    color: palette.seam,
+    opacity: 0.7,
     position: [plane.xMin, height / 2, z + sideOffset * 0.24],
     size: [0.035, height * 0.92, 0.055],
   });
   addQAFacadeBox(group, {
-    color: 0x9be1d8,
-    opacity: 0.48,
+    color: palette.seam,
+    opacity: 0.7,
     position: [plane.xMax, height / 2, z + sideOffset * 0.24],
     size: [0.035, height * 0.92, 0.055],
   });
@@ -1136,8 +1210,8 @@ function addUpperWindowPlaceholders(group, { length, plane, height, splitY, z, s
     for (let bay = 0; bay < bayCount; bay += 1) {
       const x = plane.xMin + bayWidth * bay + bayWidth / 2;
       addQAFacadeBox(group, {
-        color: 0xd9efe6,
-        opacity: 0.58,
+        color: 0xcbd8c4,
+        opacity: 0.64,
         position: [x, y, z + sideOffset * 0.3],
         size: [windowWidth, 0.095, 0.052],
       });
@@ -1145,7 +1219,36 @@ function addUpperWindowPlaceholders(group, { length, plane, height, splitY, z, s
   }
 }
 
-function addAwningPlaceholders(group, { length, plane, signY, z, sideOffset, awningSegments }) {
+function addSignBandPlaceholders(group, { modules, palette, length, plane, signY, z, sideOffset, depth }) {
+  const widths = modules.signBandWidths.length ? modules.signBandWidths : [0.32, 0.24];
+  const total = widths.reduce((sum, value) => sum + value, 0);
+  const gutter = length * 0.035;
+  let cursor = plane.xMin + gutter;
+  for (let index = 0; index < widths.length; index += 1) {
+    const rawWidth = length * (widths[index] / Math.max(total, 0.1)) * 0.82;
+    const width = Math.max(rawWidth, 0.08);
+    addQAFacadeBox(group, {
+      color: index % 2 ? palette.signAlt : palette.sign,
+      opacity: 0.76,
+      position: [cursor + width / 2, signY, z + sideOffset * 0.7],
+      size: [width, 0.1, depth * 2.4],
+    });
+    cursor += width + gutter;
+    if (cursor > plane.xMax - gutter) break;
+  }
+
+  if (modules.wrappedSignBand) {
+    const edgeX = modules.endpointEmphasis === "left-edge" ? plane.xMin : plane.xMax;
+    addQAFacadeBox(group, {
+      color: palette.sign,
+      opacity: 0.82,
+      position: [edgeX, signY + 0.03, z + sideOffset * 1.2],
+      size: [0.08, 0.16, 0.24],
+    });
+  }
+}
+
+function addAwningPlaceholders(group, { length, plane, signY, z, sideOffset, awningSegments, palette }) {
   if (!awningSegments) return;
   const segmentWidth = length / awningSegments;
   const awningWidth = Math.max(segmentWidth * 0.72, 0.09);
@@ -1154,39 +1257,197 @@ function addAwningPlaceholders(group, { length, plane, signY, z, sideOffset, awn
   for (let index = 0; index < awningSegments; index += 1) {
     const x = plane.xMin + segmentWidth * index + segmentWidth / 2;
     addQAFacadeBox(group, {
-      color: 0xe8795f,
-      opacity: 0.66,
+      color: index % 2 ? palette.awningAlt : palette.awning,
+      opacity: 0.78,
       position: [x, y, z + sideOffset * 0.44],
       size: [awningWidth, 0.07, 0.09],
     });
   }
 }
 
-function addParapetTiers(group, { length, centerX, height, z, sideOffset, parapetTiers }) {
+function addBrickLikeDraftBlocks(group, { modules, palette, length, plane, height, splitY, z, sideOffset, depth }) {
+  if (!modules.brickBlockRows) return;
+  const rowHeight = Math.min(Math.max((height - splitY) / (modules.brickBlockRows + 1), 0.07), 0.16);
+  for (let row = 0; row < modules.brickBlockRows; row += 1) {
+    const y = splitY + rowHeight * (row + 1);
+    const blocks = 3 + (row % 3);
+    const blockWidth = length / blocks;
+    for (let block = 0; block < blocks; block += 1) {
+      if ((row + block) % 2 && blocks > 3) continue;
+      addQAFacadeBox(group, {
+        color: row % 2 ? palette.brickAlt : palette.brick,
+        opacity: 0.28,
+        position: [plane.xMin + blockWidth * block + blockWidth / 2, y, z + sideOffset * 0.12],
+        size: [Math.max(blockWidth * 0.72, 0.06), rowHeight * 0.42, depth * 1.25],
+      });
+    }
+  }
+}
+
+function addParapetTiers(group, { length, centerX, height, z, sideOffset, parapetTiers, palette }) {
   for (let index = 0; index < parapetTiers; index += 1) {
     addQAFacadeBox(group, {
-      color: 0xffdf7f,
-      opacity: 0.7 - index * 0.12,
+      color: palette.cornice,
+      opacity: 0.76 - index * 0.12,
       position: [centerX, height + 0.04 + index * 0.075, z + sideOffset * 0.2],
       size: [length * (0.98 - index * 0.12), 0.045, 0.07],
     });
   }
 }
 
-function addEndpointEmphasis(group, { plane, height, z, sideOffset, endpointEmphasis }) {
+function addEndpointEmphasis(group, { plane, height, z, sideOffset, endpointEmphasis, palette }) {
   if (endpointEmphasis === "none") return;
   const x = endpointEmphasis === "left-edge" ? plane.xMin : plane.xMax;
   addQAFacadeBox(group, {
-    color: 0xf0c96a,
-    opacity: 0.84,
+    color: palette.corner,
+    opacity: 0.9,
     position: [x, height / 2, z + sideOffset * 0.5],
     size: [0.08, height + 0.16, 0.095],
   });
 }
 
+function addHumanScaleStreetCues(group, { modules, palette, length, plane, z, sideOffset }) {
+  const sidewalkZ = z + sideOffset * 1.55;
+  const curbZ = z + sideOffset * 2.65;
+  const cadence = normalizeCadence(modules.storefrontCadence);
+  let cursor = plane.xMin;
+
+  for (let index = 0; index < cadence.length; index += 1) {
+    const segmentWidth = length * cadence[index];
+    const x = cursor + segmentWidth / 2;
+    if (index < modules.stoopStepHints) {
+      addQAFacadeBox(group, {
+        color: palette.step,
+        opacity: 0.78,
+        position: [x, 0.055, sidewalkZ],
+        size: [Math.max(segmentWidth * 0.44, 0.06), 0.055, 0.13],
+      });
+    }
+    if (index < modules.cellarGrateMarks) {
+      addQAFacadeBox(group, {
+        color: palette.grate,
+        opacity: 0.82,
+        position: [x, 0.035, curbZ - sideOffset * 0.15],
+        size: [Math.max(segmentWidth * 0.52, 0.08), 0.025, 0.09],
+      });
+      addQAFacadeBox(group, {
+        color: palette.grateLine,
+        opacity: 0.68,
+        position: [x, 0.052, curbZ - sideOffset * 0.15],
+        size: [0.024, 0.018, 0.12],
+      });
+    }
+    cursor += segmentWidth;
+  }
+
+  for (let index = 0; index < modules.curbRhythmTicks; index += 1) {
+    const x = plane.xMin + (length / Math.max(modules.curbRhythmTicks, 1)) * (index + 0.5);
+    addQAFacadeBox(group, {
+      color: palette.curb,
+      opacity: 0.7,
+      position: [x, 0.04, curbZ],
+      size: [0.04, 0.04, 0.18],
+    });
+  }
+
+  for (let index = 0; index < modules.polePostPlaceholders; index += 1) {
+    const x = plane.xMin + length * (index ? 0.78 : 0.18);
+    addQAFacadeCylinder(group, {
+      color: palette.post,
+      opacity: 0.78,
+      position: [x, 0.36, curbZ + sideOffset * 0.18],
+      radius: 0.025,
+      height: 0.72,
+    });
+  }
+
+  if (modules.crosswalkCue) {
+    for (let index = 0; index < 4; index += 1) {
+      addQAFacadeBox(group, {
+        color: palette.crosswalk,
+        opacity: 0.62,
+        position: [plane.xMin + length * 0.1 + index * 0.1, 0.03, curbZ + sideOffset * (0.22 + index * 0.12)],
+        size: [0.18, 0.022, 0.045],
+      });
+    }
+  }
+
+  if (modules.cornerAnchorVolume) {
+    const edgeX = modules.endpointEmphasis === "right-edge" ? plane.xMax : plane.xMin;
+    addQAFacadeBox(group, {
+      color: palette.corner,
+      opacity: 0.84,
+      position: [edgeX, 0.44, sidewalkZ + sideOffset * 0.05],
+      size: [0.16, 0.88, 0.22],
+    });
+  }
+}
+
+function getStreetFeelPalette(draftPalette, groundBaseTone) {
+  const facadePalettes = {
+    "brickish-corner": { facade: 0x8f6752, brick: 0xb07b5b, brickAlt: 0x6f4f44 },
+    "muted-brick": { facade: 0x76584b, brick: 0x9a6b55, brickAlt: 0x5d4840 },
+    "light-brick": { facade: 0x9b8064, brick: 0xb8926c, brickAlt: 0x715b4d },
+    "ochre-brick": { facade: 0x8c7450, brick: 0xa98752, brickAlt: 0x604f3d },
+    "low-dark-storefront": { facade: 0x5b6656, brick: 0x77765d, brickAlt: 0x46524b },
+    "narrow-brick": { facade: 0x7a5f52, brick: 0x9a735f, brickAlt: 0x554940 },
+    "small-ochre": { facade: 0x806d4c, brick: 0x9b7e4c, brickAlt: 0x51483a },
+    "tall-muted-brick": { facade: 0x7b5c52, brick: 0x98705f, brickAlt: 0x54453f },
+  };
+  const baseTones = {
+    charcoal: 0x26302d,
+    "dark-umber": 0x3b2f28,
+    slate: 0x303b3d,
+    "deep-green": 0x263b34,
+  };
+  const facade = facadePalettes[draftPalette] ?? facadePalettes["muted-brick"];
+  return {
+    ...facade,
+    groundBase: baseTones[groundBaseTone] ?? baseTones.charcoal,
+    glass: 0x8fa7a0,
+    entry: 0x232a2a,
+    seam: 0xd8c79f,
+    sign: 0xd7b774,
+    signAlt: 0xb99764,
+    awning: 0x9f6759,
+    awningAlt: 0x6f7d74,
+    cornice: 0xd9c895,
+    corner: 0xe0b45d,
+    step: 0x90856e,
+    grate: 0x202524,
+    grateLine: 0xd3c7aa,
+    curb: 0xd4c79e,
+    post: 0xb8aa88,
+    crosswalk: 0xe6dfc8,
+  };
+}
+
+function normalizeCadence(values) {
+  const total = values.reduce((sum, value) => sum + value, 0) || 1;
+  return values.map((value) => value / total);
+}
+
 function addQAFacadeBox(group, { color, opacity, position, size }) {
   const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(...size),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  mesh.position.set(...position);
+  mesh.userData.stateRole = "qaFacadeSlice";
+  mesh.userData.qaOpacity = opacity;
+  mesh.userData.qaColor = color;
+  mesh.visible = false;
+  group.add(mesh);
+}
+
+function addQAFacadeCylinder(group, { color, opacity, position, radius, height }) {
+  const mesh = new THREE.Mesh(
+    new THREE.CylinderGeometry(radius, radius, height, 8),
     new THREE.MeshBasicMaterial({
       color,
       transparent: true,
