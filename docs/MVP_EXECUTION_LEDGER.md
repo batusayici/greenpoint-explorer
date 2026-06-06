@@ -55,14 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 4B Batch 4B-6R corridor frame and endpoint cue correction cleared Batu visual review with result: CONDITIONAL PASS.
+- Current phase: Phase 4C Batch 4C-1 recognizable facade cue planning is complete as docs-only planning.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4B-6R: Corridor frame and endpoint cue correction` Batu-reviewed with result: CONDITIONAL PASS and proposes `Batch 4C-1: Recognizable facade cue planning` for Batu review. The pre-authorized queue is empty, self-advance is not allowed, and no next executable batch is open. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, facade/storefront/anchor semantics, entrance/signage/address claim promotion, generic procedural city generation, random generation, infinite wrapping, public/deployment work, Phase 4C, and self-advancing beyond 4B-6R remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4C-1: Recognizable facade cue planning` complete as docs-only planning and proposes `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` for Batu review. The pre-authorized queue is empty, self-advance is not allowed, and no next executable batch is open. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` is the current 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy and later-batch acceptance plan separating geometry-only cues, evidence-approved cues, forbidden claims, fixture requirements, landmark/special-treatment handling, and storefront/business anchor dependencies. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, facade/storefront/anchor semantics, entrance/signage/address claim promotion, generic procedural city generation, random generation, infinite wrapping, public/deployment work, 4C-2 implementation, 4B-7 camera tuning, and self-advancing beyond 4C-1 remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-06 - Phase 4C Recognizable Facade Cue Planning
+
+Status:
+- Complete as docs-only planning; stop for Batu review.
+
+Scope:
+- Batch 4C-1: define the smallest truth-safe path from the committed deterministic Phase 4B graybox corridor toward recognizable Greenpoint Ave corridor identity.
+
+Files changed:
+- `docs/phase-4c-recognizable-facade-cue-plan.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/MVP_SCOPE.md`, `docs/ART_DIRECTION.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/PROVENANCE_AND_QA.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`, and `docs/DOCS_INDEX.md`.
+- `git status --short` before implementation.
+- `git diff --check`.
+- `git diff --no-index --check /dev/null docs/phase-4c-recognizable-facade-cue-plan.md` produced no whitespace-error output; nonzero exit is expected for a no-index comparison against a new file.
+- `git diff --stat`.
+- `git status --short` after implementation.
+
+Outcome:
+- Added a dedicated 4C cue plan that separates geometry-only cues from evidence-approved cues and forbidden claims.
+- Defined allowed evidence inputs, blocked inputs, future cue/evidence fixture requirements, verifier duties, landmark/special-treatment handling, business/storefront anchor dependency order, manual review gates, deferred work, and acceptance criteria for a later implementation batch.
+- Recommended `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` as the smallest later implementation batch because it can improve recognizability using existing source-backed semantic building IDs without claiming facade, storefront, business, sign, entrance, material, or address truth.
+- Preserved 4B runtime boundaries, source fixture, generated manifest, package dependencies, blocked claims, and the 4B-6R camera-tuning follow-up as deferred unless Batu opens it.
+- No runtime code, camera tuning, source fixture expansion, generated manifest change, business/place overlay, storefront-anchor implementation, new dependency, generated asset, external API integration, scraper/capture workflow, staging, or commit occurred.
+
+Unresolved decisions:
+- Batu owns whether to accept, revise, or reject the proposed 4C-2 implementation batch, or to open a different next batch such as 4B-7 camera tuning.
+- Batu owns any approval of evidence packets, facade imagery, landmark identity treatment, storefront/business anchors, public-interface boundaries, architecture boundaries, art direction, production/public claims, and source expansion.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now marks 4C-1 complete, proposes `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` for Batu review, and keeps no current executable batch and no pre-authorized queue.
 
 ### 2026-06-06 - Proposed 4C-1 Recognizable Facade Cue Planning
 
