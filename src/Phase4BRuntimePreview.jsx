@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import manifest from "./data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json";
+import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json";
 import geometryFixture from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
@@ -56,6 +57,7 @@ const CAMERA_LIMITS = {
 
 export default function Phase4BRuntimePreview() {
   const runtimeScene = useMemo(() => buildPhase4BRuntimeScene(manifest, geometryFixture), []);
+  const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
   const hostRef = useRef(null);
   const stateRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -63,7 +65,8 @@ export default function Phase4BRuntimePreview() {
   const [qaEnabled, setQaEnabled] = useState(false);
   const inspectedId = selectedId ?? hoveredId;
   const inspectedObject = runtimeScene.objects.find((object) => object.id === inspectedId) ?? null;
-  const reviewTotals = useMemo(() => buildReviewTotals(runtimeScene), [runtimeScene]);
+  const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
+  const reviewTotals = useMemo(() => buildReviewTotals(runtimeScene, facadeCueFixture), [runtimeScene]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -88,7 +91,7 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene);
-    addRuntimeObjects(scene, runtimeScene, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, pickTargets, visualObjects, pickObjects);
 
     stateRef.current = {
       camera,
@@ -287,12 +290,15 @@ export default function Phase4BRuntimePreview() {
         <ReviewPanel
           totals={reviewTotals}
           inspectedObject={inspectedObject}
+          inspectedCue={inspectedCue}
           storefrontAnchors={runtimeScene.storefrontAnchors}
         />
 
         {qaEnabled ? (
           <QADebugPanel
             inspectedObject={inspectedObject}
+            inspectedCue={inspectedCue}
+            facadeCueFixture={facadeCueFixture}
             storefrontAnchors={runtimeScene.storefrontAnchors}
           />
         ) : null}
@@ -354,6 +360,7 @@ export default function Phase4BRuntimePreview() {
           selectedId={selectedId}
           onSelect={setSelectedId}
           reviewTotals={reviewTotals}
+          inspectedCue={inspectedCue}
         />
       </section>
     </main>
@@ -369,6 +376,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-street" /> Street QA guide</li>
         <li><span className="phase4b-swatch phase4b-swatch-path" /> Walk path cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-endpoint" /> Endpoint cue</li>
+        <li><span className="phase4b-swatch phase4b-swatch-facade-cue" /> QA facade cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
         <li><span className="phase4b-swatch phase4b-swatch-blocked" /> {anchorStatus}</li>
@@ -377,7 +385,7 @@ function RuntimeLegend({ anchorStatus }) {
   );
 }
 
-function ReviewPanel({ totals, inspectedObject, storefrontAnchors }) {
+function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors }) {
   return (
     <aside className="phase4b-review" aria-label="Graybox recognizability review panel">
       <p>Review counts</p>
@@ -399,8 +407,16 @@ function ReviewPanel({ totals, inspectedObject, storefrontAnchors }) {
           <dd>{totals.leftBuildings} / {totals.rightBuildings}</dd>
         </div>
         <div>
+          <dt>Geometry cues</dt>
+          <dd>{totals.geometryFacadeCues}</dd>
+        </div>
+        <div>
           <dt>Selected side</dt>
           <dd>{inspectedObject?.corridorSide ?? "none"}</dd>
+        </div>
+        <div>
+          <dt>Selected tiers</dt>
+          <dd>{formatCueTiers(inspectedCue)}</dd>
         </div>
         <div>
           <dt>Anchor status</dt>
@@ -411,7 +427,7 @@ function ReviewPanel({ totals, inspectedObject, storefrontAnchors }) {
   );
 }
 
-function QADebugPanel({ inspectedObject, storefrontAnchors }) {
+function QADebugPanel({ inspectedObject, inspectedCue, facadeCueFixture, storefrontAnchors }) {
   return (
     <aside className="phase4b-qa-panel" aria-label="QA debug overlay status">
       <p>QA overlay</p>
@@ -420,6 +436,7 @@ function QADebugPanel({ inspectedObject, storefrontAnchors }) {
         <li><span className="phase4b-side-dot phase4b-side-right" /> Right-side massing</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> Corridor path + ticks</li>
         <li><span className="phase4b-side-dot phase4b-side-endpoint" /> Manhattan / Franklin cues</li>
+        <li><span className="phase4b-side-dot phase4b-side-facade" /> Geometry-only facade cues: {facadeCueFixture.cues.length}</li>
         <li><span className="phase4b-side-dot phase4b-side-anchor" /> Existing anchors: {storefrontAnchors?.anchors?.length ?? 0}</li>
       </ul>
       <dl>
@@ -431,12 +448,20 @@ function QADebugPanel({ inspectedObject, storefrontAnchors }) {
           <dt>Source record</dt>
           <dd>{inspectedObject?.sourceRecordId ?? "none"}</dd>
         </div>
+        <div>
+          <dt>Cue status</dt>
+          <dd>{inspectedCue?.claimStatus ?? "none"}</dd>
+        </div>
+        <div>
+          <dt>Cue class</dt>
+          <dd>{inspectedCue?.cueClass ?? "none"}</dd>
+        </div>
       </dl>
     </aside>
   );
 }
 
-function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, onSelect, reviewTotals }) {
+function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, onSelect, reviewTotals, inspectedCue }) {
   const inspectorRef = useRef(null);
   const object = inspectedObject ?? runtimeScene.objects[0];
   const anchorStatus = runtimeScene.storefrontAnchors?.status ?? "unknown";
@@ -513,13 +538,35 @@ function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, 
         </div>
         <div>
           <dt>Review totals</dt>
-          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.semanticObjects} objects</dd>
+          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues</dd>
         </div>
         <div>
           <dt>Storefront anchors</dt>
           <dd>{anchorStatus}</dd>
         </div>
       </dl>
+
+      <section>
+        <h2>Geometry-Only Facade Cue</h2>
+        <ul>
+          <li>
+            <span>Class</span>
+            <small>{inspectedCue?.cueClass ?? "none"}</small>
+          </li>
+          <li>
+            <span>Use</span>
+            <small>{inspectedCue?.allowedUse ?? "none"}</small>
+          </li>
+          <li>
+            <span>Width / Height / Depth</span>
+            <small>{formatCueTiers(inspectedCue)}</small>
+          </li>
+          <li>
+            <span>Role</span>
+            <small>{inspectedCue?.geometryDerived?.cornerOrEndpointRole ?? "none"}</small>
+          </li>
+        </ul>
+      </section>
 
       <section>
         <h2>Allowed Claims</h2>
@@ -568,16 +615,27 @@ function InspectorPanel({ runtimeScene, inspectedObject, hoveredId, selectedId, 
   );
 }
 
-function buildReviewTotals(runtimeScene) {
+function buildReviewTotals(runtimeScene, cueFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
+    geometryFacadeCues: cueFixture.cues.length,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
     rightBuildings: runtimeScene.coverage?.corridorSideCounts?.right
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "right").length,
   };
+}
+
+function buildFacadeCueIndex(cueFixture) {
+  return new Map(cueFixture.cues.map((cue) => [cue.targetSemanticId, cue]));
+}
+
+function formatCueTiers(cue) {
+  if (!cue?.geometryDerived) return "none";
+  const { widthTier, heightTier, depthTier } = cue.geometryDerived;
+  return `${widthTier} / ${heightTier} / ${depthTier}`;
 }
 
 function formatDimensions(object) {
@@ -718,7 +776,7 @@ function addGuideGeometry(scene, runtimeScene) {
   }
 }
 
-function addRuntimeObjects(scene, runtimeScene, pickTargets, visualObjects, pickObjects) {
+function addRuntimeObjects(scene, runtimeScene, facadeCueIndex, pickTargets, visualObjects, pickObjects) {
   for (const object of runtimeScene.lines) {
     const visual = createLineTube(object, {
       color: object.semanticType === "corridor-street-centerline" ? 0xb2c9c1 : 0xc7a767,
@@ -733,6 +791,7 @@ function addRuntimeObjects(scene, runtimeScene, pickTargets, visualObjects, pick
   }
 
   for (const object of runtimeScene.buildings) {
+    const facadeCue = facadeCueIndex.get(object.id);
     const palette = getBuildingPalette(object);
     const qaPalette = getQASidePalette(object);
     const base = createFlatPolygonMesh(object.points, {
@@ -817,6 +876,7 @@ function addRuntimeObjects(scene, runtimeScene, pickTargets, visualObjects, pick
 
     const group = new THREE.Group();
     group.add(base, visual, outline, footprint, marker, anchorMarker);
+    if (facadeCue) group.add(createFacadeCueMarker(object, facadeCue));
 
     const pick = new THREE.Mesh(
       createPrismGeometry(object.points, object.height + 0.35),
@@ -835,6 +895,52 @@ function addRuntimeObjects(scene, runtimeScene, pickTargets, visualObjects, pick
     visualObjects.set(object.id, group);
     pickObjects.set(object.id, pick);
   }
+}
+
+function createFacadeCueMarker(object, cue) {
+  const plane = cue.geometryDerived.streetFacingPlane;
+  const length = Math.max(plane.xMax - plane.xMin, 0.12);
+  const centerX = plane.xMin + length / 2;
+  const height = Math.max(object.height, 0.18);
+  const color = getFacadeCueColor(cue);
+
+  const planeMesh = new THREE.Mesh(
+    new THREE.BoxGeometry(length, height, 0.035),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  planeMesh.position.set(centerX, height / 2, plane.z);
+  planeMesh.userData.semanticId = object.id;
+  planeMesh.userData.stateRole = "facadeCue";
+  planeMesh.userData.qaOpacity = 0.22;
+  planeMesh.userData.qaColor = color;
+  planeMesh.visible = false;
+
+  const topRail = new THREE.Mesh(
+    new THREE.BoxGeometry(length, 0.055, 0.065),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  topRail.position.set(centerX, height + 0.08, plane.z);
+  topRail.userData.semanticId = object.id;
+  topRail.userData.stateRole = "facadeCue";
+  topRail.userData.qaOpacity = 0.78;
+  topRail.userData.qaColor = color;
+  topRail.visible = false;
+
+  const group = new THREE.Group();
+  group.add(planeMesh, topRail);
+  group.userData.semanticId = object.id;
+  group.userData.stateRole = "facadeCue";
+  return group;
 }
 
 function createPrismGeometry(points, height) {
@@ -938,7 +1044,19 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
               : qaEnabled
                 ? 0.36
                 : child.userData.baseOpacity ?? 0.35;
+        } else if (child.userData.stateRole === "facadeCue") {
+          child.visible = qaEnabled;
+          child.material.opacity = qaEnabled
+            ? isSelected
+              ? Math.min(child.userData.qaOpacity + 0.18, 0.95)
+              : isHovered
+                ? Math.min(child.userData.qaOpacity + 0.1, 0.9)
+                : child.userData.qaOpacity
+            : 0;
         }
+      }
+      if (child.userData.stateRole === "facadeCue" && !child.material) {
+        child.visible = qaEnabled;
       }
       if (child.userData.stateRole === "marker") {
         child.visible = isSelected || isHovered;
@@ -994,6 +1112,13 @@ function getQASidePalette(object) {
     footprint: 0xd5d6dc,
     anchor: 0xb8bac2,
   };
+}
+
+function getFacadeCueColor(cue) {
+  const heightTier = cue.geometryDerived?.heightTier;
+  if (heightTier === "tall") return 0xffdf7f;
+  if (heightTier === "mid") return 0x91d5cb;
+  return 0xc8d9a1;
 }
 
 function createFlatPolygonMesh(points, { color, opacity, y }) {

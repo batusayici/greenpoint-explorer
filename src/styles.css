@@ -234,6 +234,10 @@
   background: #f0c96a;
 }
 
+.phase4b-side-facade {
+  background: #91d5cb;
+}
+
 .phase4b-side-anchor {
   background: #8d7245;
 }
@@ -284,6 +288,10 @@
 
 .phase4b-swatch-endpoint {
   background: #f0c96a;
+}
+
+.phase4b-swatch-facade-cue {
+  background: #91d5cb;
 }
 
 .phase4b-swatch-centerline {

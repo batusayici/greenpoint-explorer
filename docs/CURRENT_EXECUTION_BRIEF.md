@@ -1,16 +1,16 @@
 # Current Execution Brief - Phase 4C Geometry-Only Facade Cue Work Packet
 
-Status: `Phase 4C Geometry-Only Facade Cue Work Packet` is open. This is a bounded sequential implementation packet for geometry-only facade/corridor cue work. It does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, unrelated camera tuning, 4C-4, or any later batch.
+Status: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` is complete pending Batu review. The Phase 4C Geometry-Only Facade Cue Work Packet remains bounded to geometry-only facade/corridor cue work. It does not authorize evidence-approved facade cues, exact facade claims, storefront/business overlays, art-direction work, external APIs/scrapers, source expansion beyond existing manifest/geometry support, new dependencies, unrelated camera tuning, 4C-4, or any later batch.
 
-Current executable batch: `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`.
+Current executable batch: none. Stop for Batu review of 4C-2 output.
 
 Pre-authorized queue:
 
-1. `Batch 4C-3: Narrow geometry-only cue tuning pass`
+1. `Batch 4C-3: Narrow geometry-only cue tuning pass`, only if Batu confirms a narrow geometry-only cue readability tuning need after reviewing 4C-2.
 
 Hard Batu review gate: stop after 4C-3, or earlier if any stop condition is reached. Do not open 4C-4 or any later batch without Batu approval and an updated current brief/queue.
 
-Self-advance allowed: yes, but only from 4C-2 to 4C-3 and only if all 4C-2 self-advance conditions pass.
+Self-advance allowed: no current self-advance remains. 4C-2 completed cleanly, but no required narrow 4C-3 tuning need was identified before this review gate.
 
 4C-1 defined the truth-safe cue plan in `docs/phase-4c-recognizable-facade-cue-plan.md`. This packet now opens only the geometry-only implementation path described there.
 
@@ -32,7 +32,31 @@ Authorized sequential batches:
 1. `Batch 4C-2: Geometry-only facade cue fixture and QA overlay`
 2. `Batch 4C-3: Narrow geometry-only cue tuning pass`, only if 4C-2 passes verification and stays within scope.
 
-## Current Executable Batch: 4C-2
+## Completed Batch: 4C-2
+
+`Batch 4C-2: Geometry-only facade cue fixture and QA overlay` completed on 2026-06-06.
+
+4C-2 output:
+
+- Added a deterministic geometry-only cue fixture for the 142 existing 4B primitive building masses.
+- Added a verifier that regenerates the fixture from the existing 4B manifest/runtime geometry and checks cue policy, deterministic IDs, geometry-only evidence inputs, and blocked claims.
+- Added a QA-mode runtime overlay for geometry-derived review planes and cue tiers; normal mode does not render the cue layer.
+- Preserved source fixture, generated manifest, dependencies, camera presets, business/storefront/facade blocked claims, and normal-mode claim protection.
+
+4C-2 verification:
+
+- Phase 4C cue fixture verifier passed.
+- Phase 4B source fixture verifier passed.
+- Phase 4B compiler determinism check passed.
+- Frontend build passed.
+- Browser smoke passed: QA toggled on, canvas rendered, `Geometry-only facade cues: 142` was visible, and no browser console errors were reported.
+- `git diff --check` passed.
+
+Stop condition:
+
+- Stop for Batu review. 4C-3 was not started because no required narrow geometry-only cue tuning need was identified after 4C-2 verification.
+
+## Historical 4C-2 Authorization
 
 `Batch 4C-2: Geometry-only facade cue fixture and QA overlay` may:
 

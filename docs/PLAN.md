@@ -37,7 +37,7 @@ Use these in order when documents conflict:
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.
 - Phase 4B now has lean planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed graybox recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R corridor frame correction with CONDITIONAL PASS.
-- Phase 4C now has a docs-only recognizable facade cue plan and a bounded work packet that opens only geometry-only cue fixture/verifier/runtime QA overlay work.
+- Phase 4C now has a docs-only recognizable facade cue plan and a completed 4C-2 geometry-only cue fixture/verifier/runtime QA overlay proof pending Batu review.
 - Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
 ## Completed Work Pointers
@@ -76,7 +76,7 @@ Use these in order when documents conflict:
 14. Batch 4B-6: Graybox corridor recognizability QA. Batu-reviewed with result: Partial pass.
 15. Batch 4B-6R: Corridor frame and endpoint cue correction. Batu-reviewed with result: CONDITIONAL PASS.
 16. Batch 4C-1: Recognizable facade cue planning. Complete as docs-only planning.
-17. Phase 4C Geometry-Only Facade Cue Work Packet. Open; current executable batch is 4C-2, with 4C-3 conditionally queued.
+17. Batch 4C-2: Geometry-only facade cue fixture and QA overlay. Complete pending Batu review; 4C-3 remains proposed only if Batu identifies a narrow geometry-only cue readability tuning need.
 
 ## Active Blockers
 
@@ -92,7 +92,7 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu review after the bounded 4C packet: 4C-2 may execute now; 4C-3 is conditionally pre-authorized only if 4C-2 passes verification and remains geometry-only/deterministic without Batu product/visual decisions.
+- Batu review of 4C-2 geometry-only cue fixture/verifier/runtime QA overlay output; 4C-3 remains proposed only if Batu identifies a narrow geometry-only cue readability tuning need.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
 - Any scope change beyond the bounded 4C work packet, including source expansion beyond what existing manifest/geometry supports, generated manifest changes not required by the cue proof, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, evidence-approved facade cues, anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, 4C-4, or self-advancing beyond 4C-3.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
