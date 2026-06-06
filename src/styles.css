@@ -246,6 +246,18 @@
   background: #8d7245;
 }
 
+.phase4b-side-safe {
+  background: #75b982;
+}
+
+.phase4b-side-uncertain {
+  background: #d4b36f;
+}
+
+.phase4b-side-blocked {
+  background: #b56d5e;
+}
+
 .phase4b-legend p {
   margin: 0;
   color: rgba(244, 234, 216, 0.56);

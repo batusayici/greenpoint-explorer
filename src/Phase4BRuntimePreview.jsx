@@ -3,6 +3,7 @@ import * as THREE from "three";
 import manifest from "./data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json";
 import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json";
 import qaFacadeSliceFixture from "./data/facade-cues/greenpoint-ave-franklin-end.phase-4c-qa-facade-slice.v0.1.json";
+import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import geometryFixture from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
@@ -67,6 +68,7 @@ export default function Phase4BRuntimePreview() {
   const runtimeScene = useMemo(() => buildPhase4BRuntimeScene(manifest, geometryFixture), []);
   const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
   const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
+  const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
   const hostRef = useRef(null);
   const stateRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -76,8 +78,9 @@ export default function Phase4BRuntimePreview() {
   const inspectedObject = runtimeScene.objects.find((object) => object.id === inspectedId) ?? null;
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
+  const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const reviewTotals = useMemo(() => (
-    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture)
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, geometryValidationReport)
   ), [runtimeScene]);
 
   useEffect(() => {
@@ -274,11 +277,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4C-5 / QA street-feel slice</p>
-          <h1>Greenpoint Ave QA corridor</h1>
+          <p className="phase4b-kicker">Batch 4D-1 / geometry validation</p>
+          <h1>Greenpoint Ave geometry confidence</h1>
         </div>
         <p>
-          Deterministic 3D proof from approved manifest and geometry fixture. QA street-feel slice is manual_draft / fictional_safe / not_verified. Non-factual QA rhythm only; hidden in normal mode.
+          Deterministic 3D proof from approved manifest and geometry fixture. 4D geometry confidence appears only in QA inspection and does not attach POIs, facades, storefronts, or production claims.
         </p>
       </section>
 
@@ -303,6 +306,8 @@ export default function Phase4BRuntimePreview() {
           totals={reviewTotals}
           inspectedObject={inspectedObject}
           inspectedCue={inspectedCue}
+          qaEnabled={qaEnabled}
+          inspectedValidation={qaEnabled ? inspectedValidation : null}
           storefrontAnchors={runtimeScene.storefrontAnchors}
         />
 
@@ -310,9 +315,11 @@ export default function Phase4BRuntimePreview() {
           <QADebugPanel
             inspectedObject={inspectedObject}
             inspectedCue={inspectedCue}
+            inspectedValidation={inspectedValidation}
             inspectedSliceFacade={inspectedSliceFacade}
             facadeCueFixture={facadeCueFixture}
             qaFacadeSliceFixture={qaFacadeSliceFixture}
+            geometryValidationReport={geometryValidationReport}
             storefrontAnchors={runtimeScene.storefrontAnchors}
           />
         ) : null}
@@ -379,6 +386,8 @@ export default function Phase4BRuntimePreview() {
           reviewTotals={reviewTotals}
           inspectedCue={inspectedCue}
           inspectedSliceFacade={inspectedSliceFacade}
+          inspectedValidation={qaEnabled ? inspectedValidation : null}
+          qaEnabled={qaEnabled}
         />
       </section>
     </main>
@@ -404,7 +413,7 @@ function RuntimeLegend({ anchorStatus }) {
   );
 }
 
-function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors }) {
+function ReviewPanel({ totals, inspectedObject, inspectedCue, qaEnabled, inspectedValidation, storefrontAnchors }) {
   return (
     <aside className="phase4b-review" aria-label="Graybox recognizability review panel">
       <p>Review counts</p>
@@ -434,8 +443,16 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors 
           <dd>{totals.qaFacadeSliceBuildings}</dd>
         </div>
         <div>
+          <dt>4D safe / uncertain / blocked</dt>
+          <dd>{qaEnabled ? `${totals.geometrySafe} / ${totals.geometryUncertain} / ${totals.geometryBlocked}` : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Selected side</dt>
           <dd>{inspectedObject?.corridorSide ?? "none"}</dd>
+        </div>
+        <div>
+          <dt>QA confidence</dt>
+          <dd>{inspectedValidation?.geometryConfidence?.label ?? "QA off"}</dd>
         </div>
         <div>
           <dt>Selected tiers</dt>
@@ -453,15 +470,21 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, storefrontAnchors 
 function QADebugPanel({
   inspectedObject,
   inspectedCue,
+  inspectedValidation,
   inspectedSliceFacade,
   facadeCueFixture,
   qaFacadeSliceFixture,
+  geometryValidationReport,
   storefrontAnchors,
 }) {
+  const confidence = inspectedValidation?.geometryConfidence?.label ?? "none";
   return (
     <aside className="phase4b-qa-panel" aria-label="QA debug overlay status">
       <p>QA overlay</p>
       <ul>
+        <li><span className="phase4b-side-dot phase4b-side-safe" /> Geometry safe: {geometryValidationReport.summary.confidenceCounts.safe}</li>
+        <li><span className="phase4b-side-dot phase4b-side-uncertain" /> Geometry uncertain: {geometryValidationReport.summary.confidenceCounts.uncertain}</li>
+        <li><span className="phase4b-side-dot phase4b-side-blocked" /> Geometry blocked: {geometryValidationReport.summary.confidenceCounts.blocked}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA street-feel slice: {qaFacadeSliceFixture.facades.length}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Slice labels: {qaFacadeSliceFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Non-factual QA rhythm only</li>
@@ -486,6 +509,18 @@ function QADebugPanel({
           <dd>{inspectedCue?.claimStatus ?? "none"}</dd>
         </div>
         <div>
+          <dt>Geometry confidence</dt>
+          <dd>{confidence}</dd>
+        </div>
+        <div>
+          <dt>Gap status</dt>
+          <dd>{inspectedValidation?.gapAndBlockBreak?.status ?? "none"}</dd>
+        </div>
+        <div>
+          <dt>POI eligibility</dt>
+          <dd>{inspectedValidation?.poiMatchingEligibility?.status ?? "none"}</dd>
+        </div>
+        <div>
           <dt>Cue class</dt>
           <dd>{inspectedCue?.cueClass ?? "none"}</dd>
         </div>
@@ -507,6 +542,8 @@ function InspectorPanel({
   reviewTotals,
   inspectedCue,
   inspectedSliceFacade,
+  inspectedValidation,
+  qaEnabled,
 }) {
   const inspectorRef = useRef(null);
   const object = inspectedObject ?? runtimeScene.objects[0];
@@ -591,6 +628,44 @@ function InspectorPanel({
           <dd>{anchorStatus}</dd>
         </div>
       </dl>
+
+      <section>
+        <h2>4D Geometry Validation</h2>
+        {qaEnabled ? (
+          <ul>
+            <li>
+              <span>Confidence</span>
+              <small>{inspectedValidation?.geometryConfidence?.label ?? "none"}</small>
+            </li>
+            <li>
+              <span>Reason</span>
+              <small>{formatReasons(inspectedValidation?.geometryConfidence?.reasons)}</small>
+            </li>
+            <li>
+              <span>Relative order</span>
+              <small>{formatRelativeOrder(inspectedValidation?.relativeOrder)}</small>
+            </li>
+            <li>
+              <span>Gap / break</span>
+              <small>{inspectedValidation?.gapAndBlockBreak?.status ?? "none"}</small>
+            </li>
+            <li>
+              <span>Address/building ambiguity</span>
+              <small>{inspectedValidation?.addressBuildingAmbiguity?.status ?? "none"}</small>
+            </li>
+            <li>
+              <span>POI matching</span>
+              <small>{inspectedValidation?.poiMatchingEligibility?.status ?? "none"}</small>
+            </li>
+            <li>
+              <span>Facade evidence target</span>
+              <small>{inspectedValidation?.facadeEvidenceAnchorEligibility?.status ?? "none"}</small>
+            </li>
+          </ul>
+        ) : (
+          <p>QA mode required for 4D confidence labels.</p>
+        )}
+      </section>
 
       <section>
         <h2>Geometry-Only Facade Cue</h2>
@@ -683,7 +758,7 @@ function InspectorPanel({
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, validationReport) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
@@ -694,6 +769,9 @@ function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture) {
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
     rightBuildings: runtimeScene.coverage?.corridorSideCounts?.right
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "right").length,
+    geometrySafe: validationReport.summary.confidenceCounts.safe,
+    geometryUncertain: validationReport.summary.confidenceCounts.uncertain,
+    geometryBlocked: validationReport.summary.confidenceCounts.blocked,
   };
 }
 
@@ -703,6 +781,10 @@ function buildFacadeCueIndex(cueFixture) {
 
 function buildQAFacadeSliceIndex(fixture) {
   return new Map(fixture.facades.map((facade) => [facade.targetSemanticId, facade]));
+}
+
+function buildGeometryValidationIndex(report) {
+  return new Map(report.buildingRecords.map((record) => [record.renderedObjectId, record]));
 }
 
 function formatCueTiers(cue) {
@@ -722,6 +804,16 @@ function formatDimensions(object) {
   if (!object?.dimensions) return "not applicable";
   const { width, depth, height } = object.dimensions;
   return `${formatMeasure(width)}w / ${formatMeasure(depth)}d / ${formatMeasure(height)}h scene units`;
+}
+
+function formatReasons(reasons) {
+  if (!Array.isArray(reasons) || !reasons.length) return "none";
+  return reasons.slice(0, 3).join(" / ");
+}
+
+function formatRelativeOrder(relativeOrder) {
+  if (!relativeOrder) return "none";
+  return `${relativeOrder.side} ${relativeOrder.index} of ${relativeOrder.countOnSide}`;
 }
 
 function formatMeasure(value) {
