@@ -26,19 +26,20 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Post-4C direction set; no implementation batch is open.
+- Current phase: Post-4D-1 geometry validation review; no implementation batch is open.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: none; proposed next authorization is `Batch 4D-1: Geometry validation and gap audit`.
+- Current next task: none; proposed next authorization is `Batch 4D-2: Claim ladder / matching contract`, only after Batu reviews 4D-1.
 - Pre-authorized queue: none.
-- Hard review gate: stop until Batu explicitly authorizes 4D-1 or a different next batch. Do not open 4D implementation, Foursquare/local-directory work, POI overlays, facade imagery ingestion, asset registry, visual-system work, or another generic facade tuning batch without Batu approval and an updated current brief/queue.
+- Hard review gate: stop for Batu review of completed 4D-1. Do not open 4D-2, Foursquare/local-directory work, POI overlays, facade imagery ingestion, storefront anchors, asset registry, visual-system work, or another generic facade tuning batch without Batu approval and an updated current brief/queue.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.
 - Phase 4B now has lean planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed graybox recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R corridor frame correction with CONDITIONAL PASS.
 - Phase 4C now has a docs-only recognizable facade cue plan, a completed 4C-2 geometry-only cue fixture/verifier/runtime QA overlay proof, a completed 4C-4 QA-mode/manual-draft/non-factual recognizable facade slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`. This proves the QA-only fictional facade lane, but that lane is now closed for generic tuning.
-- Phase 4D is proposed as the next direction: geometry confidence and claim discipline before POIs, facade imagery, storefront anchors, or asset registry work.
+- Phase 4D now has a completed 4D-1 review-only geometry validation/gap report and QA-mode inspector confidence visibility. It classifies the 142 rendered buildings as 126 `safe`, 14 `uncertain`, and 2 `blocked`, without attaching POIs, facade evidence, storefront anchors, source expansion, new dependencies, or production claims.
+- Phase 4D has begun with completed 4D-1 geometry confidence and gap audit. Claim discipline remains the next proposed step before POIs, facade imagery, storefront anchors, or asset registry work.
 - Phase 4 operating model is clarified: Batu approves packet boundaries; Codex executes inside approved boundaries without re-asking for every valid small step; Codex stops at truth gates, packet boundaries, verification failures, dirty-tree issues, unresolved ambiguity, or final review gates.
 - Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
@@ -81,8 +82,8 @@ Use these in order when documents conflict:
 17. Batch 4C-2: Geometry-only facade cue fixture and QA overlay. Complete.
 18. Batch 4C-4: QA-mode recognizable facade slice. Complete.
 19. Batch 4C-5: QA-mode street-feel facade tuning pass. Complete and committed as `eaf3418`; no next implementation batch is open or queued.
-20. Batch 4D-1: Geometry validation and gap audit. Proposed next authorization only; not executable until Batu opens it.
-21. Batch 4D-2: Claim ladder / matching contract. Proposed later phase.
+20. Batch 4D-1: Geometry validation and gap audit. Complete pending Batu review.
+21. Batch 4D-2: Claim ladder / matching contract. Proposed next authorization only; not executable until Batu opens it.
 22. Batch 4D-3: Candidate POI overlay. Proposed later phase; Foursquare/local-directory data must be treated as candidate enrichment, not authoritative storefront assignment.
 23. Batch 4D-4: Batu-supplied facade evidence packet. Proposed later phase; Batu-supplied/project-owned imagery is the safest initial facade evidence path.
 24. Batch 4D-5: Evidence-backed facade/storefront anchors. Proposed later phase.
@@ -107,10 +108,10 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu authorization decision for proposed `Batch 4D-1: Geometry validation and gap audit`, or a different next batch.
+- Batu review/acceptance decision for completed `Batch 4D-1: Geometry validation and gap audit`, and authorization decision for proposed `Batch 4D-2: Claim ladder / matching contract` or a different next batch.
 - Future approved packets should state allowed scope, stop conditions, truth gates, verification expectations, commit behavior, and final review gate so Codex can self-advance only inside those boundaries.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
-- Any scope change beyond this docs-only planning update, including 4D-1 implementation, source expansion beyond what existing manifest/geometry supports, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, POI overlays, facade imagery ingestion, evidence-approved facade cues, anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, later 4C tuning, asset registry, visual-system work, or self-advancing beyond the current review gate.
+- Any scope change beyond completed 4D-1, including 4D-2 implementation, source expansion beyond what existing manifest/geometry supports, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, POI overlays, facade imagery ingestion, evidence-approved facade cues, anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, later 4C tuning, asset registry, visual-system work, or self-advancing beyond the current review gate.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.
 

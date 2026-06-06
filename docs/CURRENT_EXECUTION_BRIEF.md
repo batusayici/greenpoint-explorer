@@ -1,14 +1,14 @@
-# Current Execution Brief - Post-4C Geometry Confidence Direction
+# Current Execution Brief - Post-4D-1 Geometry Validation Review
 
-Status: Post-4C docs-only planning state. `Batch 4C-5: QA-mode street-feel facade tuning pass` is complete and committed as `eaf3418` (`Tune QA facade slice street feel`). 4C-4 and 4C-5 proved that the QA-only fictional facade slice can become more street-readable, but the generic fictional-facade tuning lane should now stop. The next recommended direction is Phase 4D geometry confidence and claim discipline.
+Status: `Batch 4D-1: Geometry validation and gap audit` is complete pending Batu review. The existing 4B/4C corridor geometry now has a deterministic review-only geometry validation/gap report, and QA mode exposes per-building confidence, gap status, ambiguity, and later matching eligibility without attaching POIs, facade evidence, or storefront anchors.
 
 Current executable batch: none.
 
-Proposed next authorization: `Batch 4D-1: Geometry validation and gap audit`.
+Proposed next authorization: `Batch 4D-2: Claim ladder / matching contract`, only after Batu reviews and accepts the 4D-1 geometry confidence output or gives alternate direction.
 
 Pre-authorized queue: none.
 
-Hard Batu review gate: stop here until Batu explicitly authorizes 4D-1 or a different next batch. Do not self-open 4D-1 or any later 4D batch.
+Hard Batu review gate: stop here for Batu review of 4D-1. Do not self-open 4D-2 or any later 4D batch.
 
 Self-advance allowed: no.
 
@@ -32,19 +32,26 @@ QA mode remains the experimental product lab: it may contain draft, non-factual,
 
 Implementation packets should produce visible scene progress, data/fixture progress, interaction/review progress, verifier/report progress, or deploy/review progress. Pure governance/docs-only batches should happen only when explicitly requested or when a next pointer/gate must be updated.
 
-## Planning Decision
+## 4D-1 Output
 
-The next phase should shift from fictional facade tuning to geometry confidence and claim discipline.
+4D-1 completed:
 
-Rationale:
+- Generated `src/data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json`.
+- Added `scripts/verify-phase-4d-geometry-validation.mjs`.
+- Added QA-only runtime confidence visibility in the existing inspector and QA panel.
+- Classified 142 rendered buildings: 126 `safe`, 14 `uncertain`, and 2 `blocked`.
+- Preserved normal-mode protection: 4D confidence labels are hidden until QA is enabled.
 
-- 4C-4 and 4C-5 proved the QA lane and draft street-feel facade grammar, but further fictional-facade tuning is not the highest-leverage next move.
-- Before Foursquare, facade imagery, storefront anchors, or asset management, the project needs a reviewable geometry confidence layer.
-- The core 4D-1 question is: can every rendered building be inspected and classified as safe, uncertain, or blocked for later POI and facade matching?
-- "Correct geometry" means geometry confidence in a stylized/normalized runtime, not survey-grade correctness.
-- Foursquare and local directories should later be treated as candidate business enrichment, not authoritative storefront assignment.
-- Google/Street View must not become a default stored or derived source-of-truth asset pipeline without a separate terms/source-policy gate.
-- Batu-supplied or project-owned storefront imagery remains the safest initial facade evidence path.
+Verification completed:
+
+- `node scripts/verify-phase-4d-geometry-validation.mjs`
+- `node scripts/verify-phase-4c-geometry-cues.mjs`
+- `node scripts/verify-phase-4c-qa-facade-slice.mjs`
+- `node scripts/verify-phase-4b-source-fixture.mjs`
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- `npm run build`
+- Browser smoke on local preview: QA off showed `QA off`; QA on showed `126 / 14 / 2`; selecting blocked record `p4b-object-nyc-footprint-bin-3064901` showed `blocked`, blocker reasons, gap status, and `blocked_until_geometry_resolved`; no browser console errors were reported.
+- `git diff --check`
 
 ## Proposed Phase 4D Sequence
 
@@ -55,25 +62,24 @@ Rationale:
 5. `Batch 4D-5: Evidence-backed facade/storefront anchors`
 6. Asset registry / visual system work only after evidence and anchor models are defined.
 
-## Proposed Batch: 4D-1
+## Proposed Batch: 4D-2
 
-`Batch 4D-1: Geometry validation and gap audit` is proposed only. It is not executable until Batu explicitly authorizes it.
+`Batch 4D-2: Claim ladder / matching contract` is proposed only. It is not executable until Batu explicitly authorizes it.
 
 Goal:
 
-- Make the existing 4B/4C corridor geometry inspectable and confidence-labeled before attaching POIs, facade evidence, or storefront anchors.
+- Define the claim ladder and matching contract before candidate POIs are attached.
 
 Expected outputs if later authorized:
 
-- A generated geometry validation/gap report for current rendered building masses.
-- QA inspector or overlay improvements that show building identity and confidence.
-- Per-building review fields such as rendered object ID, source footprint/building ID, corridor side, relative order/block position, source-backed/inferred/manual status, height/massing confidence, gap/block-break status, address/building ambiguity if known, POI matching eligibility, and facade evidence anchoring eligibility.
+- A concise contract for geometry container confidence, address/building ambiguity, candidate business enrichment, storefront/facade evidence, and promotion gates.
+- Explicit allowed, blocked, and review-required claim states before POI or facade data can be matched to geometry.
 
 Acceptance bar if later authorized:
 
-- Before adding businesses or facades, QA mode should let Batu inspect a building and understand what it is, where it came from, how confident the geometry is, what claims are allowed, what claims are blocked, and whether it is safe to use as a future POI/facade anchor.
+- Before candidate POIs or facade evidence are attached, Batu can review what each claim class means, which evidence can support it, and which promotion gates remain blocked.
 
-4D-1 must not include:
+4D-2 must not include:
 
 - Foursquare or local-directory calls.
 - POI overlays.
@@ -87,7 +93,7 @@ Acceptance bar if later authorized:
 
 Stop and report before:
 
-- Implementing 4D-1.
+- Implementing 4D-2.
 - Opening another generic fictional-facade tuning batch.
 - Foursquare, local-directory, API, scraper, live-data, or source acquisition work.
 - POI/business overlays or business-to-building matching.
@@ -130,4 +136,4 @@ Supporting detail docs:
 - `docs/phase-4b-implementation-plan.md`
 - `docs/phase-3-closeout.md`
 
-The Phase 4B/4C runtime, fixtures, verifiers, and QA facade slice remain preserved. No 4D implementation work is open or queued.
+The Phase 4B/4C runtime, fixtures, verifiers, QA facade slice, and 4D-1 geometry validation report remain preserved. No further 4D implementation work is open or queued.
