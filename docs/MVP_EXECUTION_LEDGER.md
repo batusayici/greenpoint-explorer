@@ -55,19 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Batch 4C-5 QA-mode street-feel facade tuning pass is complete pending Batu review.
+- Current phase: Post-4C direction set; no implementation batch is open.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4C-5: QA-mode street-feel facade tuning pass` complete pending Batu review, with no current executable batch and no pre-authorized queue. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` is the current 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass pending review. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C batches, and self-advancing beyond the current review gate remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks the post-4C direction as docs-only planning, with no current executable batch and no pre-authorized queue. The proposed next authorization is `Batch 4D-1: Geometry validation and gap audit`. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D is proposed as geometry confidence and claim discipline before POIs, facade imagery, storefront anchors, or asset registry work. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, 4D implementation, asset registry, visual-system work, and self-advancing beyond the current review gate remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
 
+### 2026-06-06 - Post-4C Geometry Confidence Direction Planning
+
+Status:
+- Complete as docs-only planning update.
+
+Scope:
+- Reconcile control docs after 4C-5 to stop the generic fictional-facade tuning lane and propose Phase 4D geometry confidence and claim discipline as the next direction.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `git status --short` before edits.
+- `git diff --check`.
+
+Outcome:
+- Recorded that 4C-5 is complete and committed as `eaf3418`.
+- Closed additional generic QA-fictional facade tuning as the next lane.
+- Proposed `Batch 4D-1: Geometry validation and gap audit` as the next recommended authorization, with no current executable batch and no pre-authorized queue.
+- Added the proposed 4D sequence: geometry audit, claim ladder / matching contract, candidate POI overlay, Batu-supplied facade evidence packet, evidence-backed facade/storefront anchors, and asset registry / visual system only after evidence and anchor models are defined.
+- Reframed "correct geometry" as confidence-labeled review of stylized/normalized geometry, not survey-grade correctness.
+- Preserved no runtime changes, verifier changes, data changes, UI changes, source changes, package changes, Foursquare/local-directory calls, POI overlay, facade imagery ingestion, asset registry work, visual-system work, dependencies, or implementation self-advance.
+
+Unresolved decisions:
+- Batu owns whether to authorize `Batch 4D-1: Geometry validation and gap audit` or a different next batch.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to the post-4C docs-only planning state and proposes `Batch 4D-1: Geometry validation and gap audit` as the next authorization prompt.
+
 ### 2026-06-06 - Batch 4C-5 QA-Mode Street-Feel Facade Tuning Pass
 
 Status:
-- Complete pending Batu review.
+- Complete and committed as `eaf3418`.
 
 Scope:
 - Tune the existing Franklin-end 8-building QA facade slice for street-block feel while keeping it QA-only, non-factual, draft-labeled, and placed from existing geometry only.
@@ -101,7 +133,7 @@ Unresolved decisions:
 - Any evidence-approved facade cues, exact facade/frontage/entrance/sign/window/door/material/address claims, business/storefront overlays, source expansion, art direction, camera tuning beyond this approved Street preset, and later batches remain blocked.
 
 Next pointer:
-- `docs/CURRENT_EXECUTION_BRIEF.md` now marks 4C-5 complete pending Batu review, with no current executable batch and no pre-authorized queue.
+- Superseded by the post-4C docs-only planning state, which proposes `Batch 4D-1: Geometry validation and gap audit` and keeps no current executable batch or pre-authorized queue.
 
 ### 2026-06-06 - Batch 4C-4 QA-Mode Recognizable Facade Slice
 
