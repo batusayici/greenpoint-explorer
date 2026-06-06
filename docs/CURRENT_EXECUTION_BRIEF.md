@@ -1,14 +1,14 @@
-# Current Execution Brief - Post-4D-1 Geometry Validation Review
+# Current Execution Brief - Post-4D-2 Claim Ladder Review
 
-Status: `Batch 4D-1: Geometry validation and gap audit` is complete pending Batu review. The existing 4B/4C corridor geometry now has a deterministic review-only geometry validation/gap report, and QA mode exposes per-building confidence, gap status, ambiguity, and later matching eligibility without attaching POIs, facade evidence, or storefront anchors.
+Status: Batu approved `Batch 4D-1: Geometry validation and gap audit`. `Batch 4D-2: Claim ladder / matching contract` is complete pending Batu review. The project now has a dedicated claim ladder and matching contract for future POI, business, facade, storefront, entrance, signage, and landmark work, without adding data, imagery, anchors, runtime visuals, or production claims.
 
 Current executable batch: none.
 
-Proposed next authorization: `Batch 4D-2: Claim ladder / matching contract`, only after Batu reviews and accepts the 4D-1 geometry confidence output or gives alternate direction.
+Proposed next authorization: `Batch 4D-3: Candidate POI overlay`, only after Batu reviews and accepts the 4D-2 claim ladder or gives alternate direction.
 
 Pre-authorized queue: none.
 
-Hard Batu review gate: stop here for Batu review of 4D-1. Do not self-open 4D-2 or any later 4D batch.
+Hard Batu review gate: stop here for Batu review of 4D-2. Do not self-open 4D-3 or any later 4D batch.
 
 Self-advance allowed: no.
 
@@ -53,6 +53,25 @@ Verification completed:
 - Browser smoke on local preview: QA off showed `QA off`; QA on showed `126 / 14 / 2`; selecting blocked record `p4b-object-nyc-footprint-bin-3064901` showed `blocked`, blocker reasons, gap status, and `blocked_until_geometry_resolved`; no browser console errors were reported.
 - `git diff --check`
 
+## 4D-2 Output
+
+4D-2 completed:
+
+- Added `docs/phase-4d-claim-ladder-matching-contract.md`.
+- Defined claim states and nine claim levels: geometry container, address candidate, parcel/building association, POI candidate, tenant-at-address, storefront/frontage, entrance, facade/signage, and landmark/special-treatment.
+- Defined allowed/disallowed evidence, runtime/QA rules, Batu evidence gates, matching rules, default blocked states, and promotion gates.
+- Preserved the hard boundary that NYC/Open footprints do not prove business/storefront/frontage/entrance/signage claims.
+- Preserved no POIs, no businesses, no facade imagery, no storefront anchors, no tenant frontage matches, no runtime visual changes, no source expansion, and no production claims.
+
+Verification completed:
+
+- `node scripts/verify-phase-4d-geometry-validation.mjs`
+- `node scripts/verify-phase-4c-geometry-cues.mjs`
+- `node scripts/verify-phase-4c-qa-facade-slice.mjs`
+- `node scripts/verify-phase-4b-source-fixture.mjs`
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- `git diff --check`
+
 ## Proposed Phase 4D Sequence
 
 1. `Batch 4D-1: Geometry validation and gap audit`
@@ -62,29 +81,31 @@ Verification completed:
 5. `Batch 4D-5: Evidence-backed facade/storefront anchors`
 6. Asset registry / visual system work only after evidence and anchor models are defined.
 
-## Proposed Batch: 4D-2
+## Proposed Batch: 4D-3
 
-`Batch 4D-2: Claim ladder / matching contract` is proposed only. It is not executable until Batu explicitly authorizes it.
+`Batch 4D-3: Candidate POI overlay` is proposed only. It is not executable until Batu explicitly authorizes it.
 
 Goal:
 
-- Define the claim ladder and matching contract before candidate POIs are attached.
+- Attach future approved POI/business sources as candidate enrichment only, with confidence and blocked storefront-assignment claims visible.
 
 Expected outputs if later authorized:
 
-- A concise contract for geometry container confidence, address/building ambiguity, candidate business enrichment, storefront/facade evidence, and promotion gates.
-- Explicit allowed, blocked, and review-required claim states before POI or facade data can be matched to geometry.
+- A source-approved static candidate POI fixture or equivalent future approved source packet.
+- QA-only candidate overlay/inspection, if explicitly opened.
+- Visible blocked states showing that candidate POIs do not prove storefront, frontage, entrance, facade, signage, active-status finality, or production cards.
 
 Acceptance bar if later authorized:
 
-- Before candidate POIs or facade evidence are attached, Batu can review what each claim class means, which evidence can support it, and which promotion gates remain blocked.
+- Batu can inspect candidate POI enrichment without any authoritative storefront assignment or claim promotion.
 
-4D-2 must not include:
+4D-3 must not include:
 
-- Foursquare or local-directory calls.
-- POI overlays.
+- Live Foursquare or local-directory calls unless a later brief explicitly approves source access, terms/cache/display, and fixture boundaries.
+- Authoritative POI overlays or production place cards.
 - Facade imagery ingestion.
 - Storefront anchors.
+- Tenant frontage, storefront order, entrance, facade, signage, active-status finality, or exact-address placement claims.
 - Asset registry or visual system work.
 - New dependencies unless separately approved.
 - Runtime, verifier, data, UI, package, source, or architecture changes unless Batu opens those boundaries in a later executable brief.
@@ -93,7 +114,7 @@ Acceptance bar if later authorized:
 
 Stop and report before:
 
-- Implementing 4D-2.
+- Implementing 4D-3.
 - Opening another generic fictional-facade tuning batch.
 - Foursquare, local-directory, API, scraper, live-data, or source acquisition work.
 - POI/business overlays or business-to-building matching.
@@ -136,4 +157,4 @@ Supporting detail docs:
 - `docs/phase-4b-implementation-plan.md`
 - `docs/phase-3-closeout.md`
 
-The Phase 4B/4C runtime, fixtures, verifiers, QA facade slice, and 4D-1 geometry validation report remain preserved. No further 4D implementation work is open or queued.
+The Phase 4B/4C runtime, fixtures, verifiers, QA facade slice, 4D-1 geometry validation report, and 4D-2 claim ladder contract remain preserved. No further 4D implementation work is open or queued.
