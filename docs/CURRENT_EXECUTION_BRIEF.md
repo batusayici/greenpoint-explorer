@@ -1,14 +1,14 @@
-# Current Execution Brief - Post-4D-5 Corner Anchor Candidate Review
+# Current Execution Brief - Post-4D-6 Corner Evidence Reconciliation Review
 
-Status: Batu approved `Batch 4D-4: Batu-supplied facade evidence packet`. `Batch 4D-5: Corner evidence-to-geometry anchor candidates` is complete pending Batu review. The project now has a corrected corner-scoped 4D-4 evidence packet, a deterministic QA-only 4D-5 corner anchor-candidate fixture, verifier coverage, and QA inspector visibility without creating authoritative storefront anchors, tenant frontage assignments, business identity, active-status, signage, entrance ownership, frontage width/order, material/color, exact facade truth, production cards, normal runtime rendering, new imagery, source expansion, or visual-system work.
+Status: Batu approved `Batch 4D-5: Corner evidence-to-geometry anchor candidates`. `Batch 4D-6: Corner evidence folder reconciliation + Franklin evidence intake` is complete pending Batu review. The project now has reconciled corner evidence folders, 11 Manhattan evidence records, 11 Franklin evidence records, zero stale flat evidence paths, and 22 QA-only unresolved corner anchor candidates without evidence-to-geometry links.
 
 Current executable batch: none.
 
-Proposed next authorization: none. Batu review is required before any later anchor, evidence, facade, storefront, visual, or source work.
+Proposed next authorization: none. Batu review is required before any later geometry linking, anchor, evidence, facade, storefront, visual, or source work.
 
 Pre-authorized queue: none.
 
-Hard Batu review gate: stop here for Batu review of 4D-5. Do not self-open any later 4D batch.
+Hard Batu review gate: stop here for Batu review of 4D-6. Do not self-open any later 4D batch.
 
 Self-advance allowed: no.
 
@@ -34,31 +34,23 @@ QA mode remains the experimental product lab: it may contain draft, non-factual,
 
 4D-4 completed a review-only facade evidence packet and verifier. 4D-5 corrected the packet so every evidence record is explicitly corner-scoped and not corridor-wide.
 
-4D-5 completed:
+4D-6 completed:
 
-- Updated `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`.
-- Updated `scripts/verify-phase-4d-facade-evidence.mjs`.
-- Added `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json`.
-- Added `scripts/verify-phase-4d-corner-anchor-candidates.mjs`.
-- Added `docs/phase-4d-corner-anchor-candidates.md`.
-- Added QA-only inspector visibility for corner anchor candidates in `src/Phase4BRuntimePreview.jsx`.
-- Identified deterministic geometry containers for both corners.
-- Kept all evidence-to-specific-geometry associations unresolved rather than forcing a match.
-- Kept Franklin blocked because no eligible repo-local Franklin facade evidence record is present in the 4D-4 packet.
-- Preserved mid-corridor facade evidence as absent and `blocked_insufficient_evidence`.
-
-4D-5 result:
-
-- Evidence records by corner scope: `manhattan_greenpoint`: 11, `franklin_greenpoint`: 0, `unresolved_unknown`: 0.
-- Anchor candidates: 11 QA-only unresolved candidates.
-- Linked candidates: 0.
-- Blocked corner scopes: 1, Franklin blocked for missing eligible evidence.
-- Mid-corridor anchor candidates: 0.
+- Reconciled Manhattan evidence paths to `docs/mvp-reference-images/greenpoint manhattan corner/`.
+- Added Batu-supplied Franklin evidence from `docs/mvp-reference-images/greenpoint franklin  corner/`.
+- Updated the 4D-4 evidence packet to 22 review-only records: 11 `manhattan_greenpoint`, 11 `franklin_greenpoint`, 0 `unresolved_unknown`.
+- Added path/provenance verifier coverage so missing or stale repo-local evidence paths fail verification.
+- Reconciled legacy review-scene reference path strings that pointed at moved Manhattan evidence files.
+- Updated the 4D-5 anchor-candidate fixture to 22 QA-only unresolved candidates: 11 Manhattan and 11 Franklin.
+- Preserved 0 linked candidates, 0 storefront anchors, 0 tenant assignments, 0 normal-mode candidates, and 0 mid-corridor candidates.
+- Preserved mid-corridor evidence as `blocked_insufficient_evidence`.
+- Did not link any evidence record to a specific geometry container.
 
 Verification completed:
 
 - `node scripts/verify-phase-4d-facade-evidence.mjs`
 - `node scripts/verify-phase-4d-corner-anchor-candidates.mjs`
+- `node scripts/verify-phase-4d-corner-evidence-paths.mjs`
 - `node scripts/verify-phase-4d-candidate-pois.mjs`
 - `node scripts/verify-phase-4d-geometry-validation.mjs`
 - `node scripts/verify-phase-4c-geometry-cues.mjs`
@@ -81,6 +73,7 @@ Stop and report before:
 - Inferring business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth.
 - Generating, cropping, transforming, stylizing, or ingesting new imagery.
 - Using restricted or terms-uncertain sources, scraping, live APIs, or source expansion.
+- Treating Franklin evidence as corridor-wide evidence.
 - Modifying normal runtime rendering.
 - Creating production cards, visual-system work, production assets, or production/public claims.
 
@@ -101,6 +94,7 @@ Supporting detail docs:
 - `docs/phase-4d-candidate-poi-qa-fixture.md`
 - `docs/phase-4d-batu-supplied-facade-evidence-packet.md`
 - `docs/phase-4d-corner-anchor-candidates.md`
+- `docs/phase-4d-corner-evidence-folder-reconciliation.md`
 - `docs/phase-4c-recognizable-facade-cue-plan.md`
 
 No further 4D implementation work is open or queued.

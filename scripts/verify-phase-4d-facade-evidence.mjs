@@ -9,18 +9,32 @@ const fixtureRepoPath =
 const fixturePath = resolve(repoRoot, fixtureRepoPath);
 const claimContractPath = "docs/phase-4d-claim-ladder-matching-contract.md";
 
+const manhattanEvidenceRoot = "docs/mvp-reference-images/greenpoint manhattan corner/";
+const franklinEvidenceRoot = "docs/mvp-reference-images/greenpoint franklin  corner/";
+
 const eligibleRecords = [
-  ["p4d-facade-evidence-nw-grillpoint-closeup", "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-nw-grillpoint-facade", "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-nw-grillpoint-wide", "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-nw-subway-context", "docs/mvp-reference-images/northwest-subwayA.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-ne-mcdonalds-closeup", "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-ne-mcdonalds-facade", "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-ne-mcdonalds-wide", "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-se-citizens-facade-a", "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable local reference. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-se-citizens-facade-b", "docs/mvp-reference-images/southeast-citizens-facadeB.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-se-citizens-wide", "docs/mvp-reference-images/southeast-citizens-wide.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch."],
-  ["p4d-facade-evidence-se-subway-context", "docs/mvp-reference-images/southeast-subwayB.jpg", "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-nw-grillpoint-closeup", `${manhattanEvidenceRoot}northwest-grillpoint-deli-closeup.jpeg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-nw-grillpoint-facade", `${manhattanEvidenceRoot}northwest-grillpoint-deli-facade.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-nw-grillpoint-wide", `${manhattanEvidenceRoot}northwest-grillpoint-deli-wide.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-nw-subway-context", `${manhattanEvidenceRoot}northwest-subwayA.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-ne-mcdonalds-closeup", `${manhattanEvidenceRoot}northeast-mcdonalds-closeup.jpeg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-ne-mcdonalds-facade", `${manhattanEvidenceRoot}northeast-mcdonalds-facadeA.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-ne-mcdonalds-wide", `${manhattanEvidenceRoot}northeast-mcdonalds-wide.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-se-citizens-facade-a", `${manhattanEvidenceRoot}southeast-citizens-facadeA.jpeg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable local reference. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-se-citizens-facade-b", `${manhattanEvidenceRoot}southeast-citizens-facadeB.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-se-citizens-wide", `${manhattanEvidenceRoot}southeast-citizens-wide.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-se-subway-context", `${manhattanEvidenceRoot}southeast-subwayB.jpg`, "manhattan_greenpoint", "Manhattan Ave x Greenpoint Ave", "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch."],
+  ["p4d-facade-evidence-franklin-northwest-1", `${franklinEvidenceRoot}franklin-northwest1.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-northwest-2", `${franklinEvidenceRoot}franklin-northwest2.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-northwest-3", `${franklinEvidenceRoot}franklin-northwest3.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-northwest-4", `${franklinEvidenceRoot}franklin-northwest4.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southeast-1", `${franklinEvidenceRoot}franklin-southeast-1.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southeast-wide", `${franklinEvidenceRoot}franklin-southeast-wide.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southeast-zoom", `${franklinEvidenceRoot}franklin-southeast-zoom.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southwest-wide", `${franklinEvidenceRoot}franklin-southwest-wide.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southwest-zoom", `${franklinEvidenceRoot}franklin-southwest-zoom.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southwest-1", `${franklinEvidenceRoot}franklin-southwest1.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
+  ["p4d-facade-evidence-franklin-southwest-2", `${franklinEvidenceRoot}franklin-southwest2.jpeg`, "franklin_greenpoint", "Franklin Ave x Greenpoint Ave", "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch."],
 ];
 
 const allowedUse = [
@@ -173,6 +187,12 @@ function buildFixture() {
         franklin_greenpoint: records.filter((record) => record.cornerScope.scopeId === "franklin_greenpoint").length,
         unresolved_unknown: records.filter((record) => record.cornerScope.scopeId === "unresolved_unknown").length,
       },
+      pathReconciliation: {
+        staleFlatPathCountBefore4d6: 11,
+        staleFlatPathCountAfter4d6: records.filter((record) => isStaleFlatEvidencePath(record.filePath)).length,
+        manhattanEvidenceFolder: manhattanEvidenceRoot,
+        franklinEvidenceFolder: franklinEvidenceRoot,
+      },
       recordsWithAssociatedGeometryContainer: 0,
       recordsWithStorefrontAssignment: 0,
       recordsWithTenantAssignment: 0,
@@ -260,6 +280,15 @@ function validateFixture(fixture, fixtureText, failures) {
   if (fixture.summary?.evidenceRecordCount !== eligibleRecords.length) {
     failures.push("Summary evidenceRecordCount does not match expected allowlist count.");
   }
+  if (fixture.summary?.pathReconciliation?.staleFlatPathCountAfter4d6 !== 0) {
+    failures.push("4D-6 path reconciliation must leave zero stale flat evidence paths.");
+  }
+  if (fixture.summary?.pathReconciliation?.manhattanEvidenceFolder !== manhattanEvidenceRoot) {
+    failures.push("Manhattan evidence folder summary is stale.");
+  }
+  if (fixture.summary?.pathReconciliation?.franklinEvidenceFolder !== franklinEvidenceRoot) {
+    failures.push("Franklin evidence folder summary is stale.");
+  }
   if (fixture.summary?.recordsWithAssociatedGeometryContainer !== 0) {
     failures.push("4D-4 must not associate records to geometry containers yet.");
   }
@@ -292,8 +321,15 @@ function validateRecords(records, failures) {
     }
 
     if (!existsSync(resolve(repoRoot, record.filePath))) failures.push(`${record.evidenceId} filePath does not exist: ${record.filePath}`);
+    if (isStaleFlatEvidencePath(record.filePath)) failures.push(`${record.evidenceId} still references stale flat evidence path.`);
     if (!["manhattan_greenpoint", "franklin_greenpoint", "unresolved_unknown"].includes(record.cornerScope?.scopeId)) {
       failures.push(`${record.evidenceId} has invalid cornerScope.`);
+    }
+    if (record.cornerScope?.scopeId === "manhattan_greenpoint" && !record.filePath.startsWith(manhattanEvidenceRoot)) {
+      failures.push(`${record.evidenceId} must resolve to the 4D-6 Manhattan evidence folder.`);
+    }
+    if (record.cornerScope?.scopeId === "franklin_greenpoint" && !record.filePath.startsWith(franklinEvidenceRoot)) {
+      failures.push(`${record.evidenceId} must resolve to the 4D-6 Franklin evidence folder.`);
     }
     if (record.cornerScope?.notCorridorWideEvidence !== true) {
       failures.push(`${record.evidenceId} must explicitly be not corridor-wide evidence.`);
@@ -334,6 +370,10 @@ function validateRecords(records, failures) {
       if (!record.disallowedUse?.includes(blockedUse)) failures.push(`${record.evidenceId} missing disallowed use ${blockedUse}.`);
     }
   }
+}
+
+function isStaleFlatEvidencePath(filePath) {
+  return filePath.startsWith("docs/mvp-reference-images/") && !filePath.startsWith(manhattanEvidenceRoot) && !filePath.startsWith(franklinEvidenceRoot);
 }
 
 function validateForbiddenStrings(text, failures) {

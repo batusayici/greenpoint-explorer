@@ -26,12 +26,12 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: Post-4D-5 corner anchor-candidate review; no implementation batch is open.
+- Current phase: Post-4D-6 corner evidence reconciliation review; no implementation batch is open.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: none; Batu review is required before any later anchor, evidence, facade, storefront, visual, or source work.
+- Current next task: none; Batu review is required before any later geometry linking, anchor, evidence, facade, storefront, visual, or source work.
 - Pre-authorized queue: none.
-- Hard review gate: stop for Batu review of completed 4D-5. Do not open later 4D work, real-source POI work, facade imagery generation, storefront anchors, asset registry, visual-system work, or another generic facade tuning batch without Batu approval and an updated current brief/queue.
+- Hard review gate: stop for Batu review of completed 4D-6. Do not open later 4D work, real-source POI work, facade imagery generation, storefront anchors, asset registry, visual-system work, or another generic facade tuning batch without Batu approval and an updated current brief/queue.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
@@ -42,7 +42,7 @@ Use these in order when documents conflict:
 - Phase 4D now also has a completed 4D-2 claim ladder/matching contract in `docs/phase-4d-claim-ladder-matching-contract.md`, defining claim levels, evidence rules, matching rules, blocked states, and promotion gates before POIs, facade imagery, storefront anchors, or asset registry work.
 - Phase 4D now also has a completed 4D-3 synthetic candidate POI QA fixture and overlay in `src/data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json`, with QA-only runtime markers and inspector labels. It uses synthetic placeholders only and does not add real POIs, businesses, active-status truth, storefront assignments, facade imagery, source expansion, or production cards.
 - Phase 4D now also has a completed 4D-4 Batu-supplied facade evidence packet in `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`, with verifier coverage and usage/claim boundaries. It indexes 11 eligible repo-local Batu-supplied/project-owned field-photo references as review-only evidence and does not create storefront anchors, tenant frontage assignments, geometry-container associations, exact facade/signage/entrance/material/color claims, active-status claims, normal runtime rendering, production assets, asset-generation input, source expansion, scraping, live APIs, or visual-system work.
-- Phase 4D now also has a completed 4D-5 corner evidence-to-geometry anchor-candidate layer in `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json`. It corrects the 4D-4 evidence packet to corner-scoped, non-corridor-wide records; records 11 Manhattan-corner evidence records, 0 Franklin evidence records, 11 QA-only unresolved anchor candidates, 0 linked candidates, 1 blocked Franklin scope, and 0 mid-corridor candidates; and does not create authoritative storefront anchors, tenant frontage assignments, exact facade/signage/entrance/material/color claims, active-status claims, production cards, normal runtime rendering, new imagery, source expansion, or visual-system work.
+- Phase 4D now also has a completed 4D-5 corner evidence-to-geometry anchor-candidate layer in `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json`. 4D-6 reconciled moved evidence folders and added Batu-supplied Franklin evidence: 11 Manhattan evidence records, 11 Franklin evidence records, 22 QA-only unresolved anchor candidates, 0 linked candidates, 0 blocked corner scopes, and 0 mid-corridor candidates. It does not create authoritative storefront anchors, tenant frontage assignments, exact facade/signage/entrance/material/color claims, active-status claims, production cards, normal runtime rendering, new imagery, source expansion, visual-system work, or evidence-to-geometry links.
 - Phase 4 operating model is clarified: Batu approves packet boundaries; Codex executes inside approved boundaries without re-asking for every valid small step; Codex stops at truth gates, packet boundaries, verification failures, dirty-tree issues, unresolved ambiguity, or final review gates.
 - Phase 4B visual-proof path is clarified: after an approved primitive compiler, the first visual proof must be a deterministic interactive 3D graybox/isometric corridor scene, not a static/raster/2D/manual/manifest-only substitute.
 
@@ -58,6 +58,7 @@ Use these in order when documents conflict:
 - Phase 4D candidate POI QA fixture note: `docs/phase-4d-candidate-poi-qa-fixture.md`
 - Phase 4D Batu-supplied facade evidence packet note: `docs/phase-4d-batu-supplied-facade-evidence-packet.md`
 - Phase 4D corner anchor-candidate note: `docs/phase-4d-corner-anchor-candidates.md`
+- Phase 4D corner evidence folder reconciliation note: `docs/phase-4d-corner-evidence-folder-reconciliation.md`
 - Phase 4A supporting docs: `docs/phase-4a-workflow-spike-plan.md`, `docs/phase-4a-workflow-spike-decision-matrix.md`
 - Phase 4B supporting docs: `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`
 - Phase 3 closeout: `docs/phase-3-closeout.md`
@@ -93,8 +94,9 @@ Use these in order when documents conflict:
 21. Batch 4D-2: Claim ladder / matching contract. Complete and Batu-approved for purposes of opening 4D-3.
 22. Batch 4D-3: Candidate POI QA fixture and overlay. Complete and Batu-approved for purposes of opening 4D-4.
 23. Batch 4D-4: Batu-supplied facade evidence packet. Complete and Batu-approved for purposes of opening 4D-5.
-24. Batch 4D-5: Corner evidence-to-geometry anchor candidates. Complete pending Batu review.
-25. Asset registry / visual system work. Deferred until evidence and anchor models are defined.
+24. Batch 4D-5: Corner evidence-to-geometry anchor candidates. Complete and Batu-approved for purposes of opening 4D-6.
+25. Batch 4D-6: Corner evidence folder reconciliation + Franklin evidence intake. Complete pending Batu review.
+26. Asset registry / visual system work. Deferred until evidence and anchor models are defined.
 
 ## Active Blockers
 
@@ -106,7 +108,7 @@ Use these in order when documents conflict:
 - The 4D-2 claim ladder now defines that geometry containers, address candidates, parcel/building associations, POI candidates, tenant-at-address claims, storefront/frontage claims, entrance claims, facade/signage claims, and landmark/special-treatment claims require separate evidence and promotion gates.
 - The 4D-3 candidate layer is synthetic/manual placeholder QA only. It does not prove real business identity, tenant-at-address, storefront/frontage, entrance, facade, signage, active status, or production card claims.
 - The 4D-4 facade evidence packet is review-only provenance/evidence indexing only. It does not prove or create geometry-container association, storefront/frontage, entrance, facade/signage promotion, material/color, active status, tenant frontage, production assets, normal runtime rendering, or visual-system readiness.
-- The 4D-5 corner anchor-candidate layer is QA-only and unresolved. It exposes candidate review records but does not link evidence to specific geometry containers, create authoritative storefront anchors, assign tenants/frontages, or promote any facade/signage/entrance/business/active-status/production claim.
+- The 4D-6 corner evidence reconciliation is QA-only and unresolved. It exposes Manhattan and Franklin candidate review records but does not link evidence to specific geometry containers, create authoritative storefront anchors, assign tenants/frontages, or promote any facade/signage/entrance/business/active-status/production claim.
 - POI/business sources may support identity, address, category, coordinates, and possibly freshness/status, but they do not by themselves support facade, storefront/frontage/order, entrance, exact geometry, or raster readiness.
 - Foursquare and local directories remain future candidate business enrichment sources only; they must not be treated as authoritative storefront assignment.
 - NYC/Open geometry sources may support building/parcel/geometry context, but they do not by themselves prove tenant frontage, storefront order, entrance placement, facade appearance, active-business status, or exact address placement.
@@ -119,10 +121,10 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu review/acceptance decision for completed `Batch 4D-5: Corner evidence-to-geometry anchor candidates`, and authorization decision for any later batch.
+- Batu review/acceptance decision for completed `Batch 4D-6: Corner evidence folder reconciliation + Franklin evidence intake`, and authorization decision for any later batch.
 - Future approved packets should state allowed scope, stop conditions, truth gates, verification expectations, commit behavior, and final review gate so Codex can self-advance only inside those boundaries.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
-- Any scope change beyond completed 4D-5, including linking unresolved candidates to specific geometry containers, source expansion beyond what existing manifest/geometry supports, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, real-source POI overlays, facade imagery generation, evidence-approved facade cues, authoritative anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, later 4C tuning, asset registry, visual-system work, or self-advancing beyond the current review gate.
+- Any scope change beyond completed 4D-6, including linking unresolved candidates to specific geometry containers, source expansion beyond what existing manifest/geometry supports, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, real-source POI overlays, facade imagery generation, evidence-approved facade cues, authoritative anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, later 4C tuning, asset registry, visual-system work, or self-advancing beyond the current review gate.
 - Batu supply/approval of accurate facade imagery for Greenpoint Ave between Manhattan Ave and Franklin Ave if a later brief seeks exact facade/frontage/entrance extraction.
 - Batu approval/supply of LiveXYZ, North Brooklyn Chamber, Shop Small Greenpoint, another local-directory/community source access/export, Foursquare credential/export path, or another deterministic Brouwerij POI source packet if Brouwerij is reactivated later.
 
@@ -135,6 +137,7 @@ Use these in order when documents conflict:
 - `docs/phase-4d-candidate-poi-qa-fixture.md`: Phase 4D synthetic candidate POI QA fixture shape, source/cache/display boundaries, QA behavior, and blocked claims.
 - `docs/phase-4d-batu-supplied-facade-evidence-packet.md`: Phase 4D review-only facade evidence packet shape, provenance/usage boundaries, indexed repo-local evidence, and blocked claims.
 - `docs/phase-4d-corner-anchor-candidates.md`: Phase 4D QA-only corner anchor-candidate shape, corner scope correction, geometry coverage, unresolved/blocked counts, and blocked claims.
+- `docs/phase-4d-corner-evidence-folder-reconciliation.md`: Phase 4D-6 evidence folder reconciliation, Franklin intake, stale-path result, and deferred geometry-linking boundary.
 - `docs/MVP_SCOPE.md`: detailed MVP boundaries and non-goals.
 - `docs/MVP_EXECUTION_LEDGER.md`: current ledger entries plus archived-history pointer.
 - `docs/DECISION_LOG.md`: durable decision history and rationale.

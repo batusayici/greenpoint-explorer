@@ -1,6 +1,6 @@
 # Phase 4D-4 Batu-Supplied Facade Evidence Packet
 
-Status: Batch 4D-4 review artifact  
+Status: Batch 4D-4 review artifact, updated by Batch 4D-6 path/provenance reconciliation
 Date: 2026-06-07  
 Scope: Greenpoint Ave from Manhattan Ave toward Franklin Ave
 
@@ -8,7 +8,9 @@ Scope: Greenpoint Ave from Manhattan Ave toward Franklin Ave
 
 This packet defines the facade evidence shape and indexes eligible repo-local Batu-supplied/project-owned reference material for future facade/frontage review.
 
-4D-5 correction: evidence must be treated as corner-scoped, not corridor-wide. Current indexed records are scoped to `manhattan_greenpoint`. The repo does not currently contain eligible Franklin-corner facade evidence records in this packet, so Franklin evidence-to-geometry association remains blocked until Batu supplies or identifies repo-local evidence for that corner.
+4D-5 correction: evidence must be treated as corner-scoped, not corridor-wide.
+
+4D-6 reconciliation: Manhattan evidence now resolves to `docs/mvp-reference-images/greenpoint manhattan corner/`. Franklin evidence supplied by Batu now resolves to `docs/mvp-reference-images/greenpoint franklin  corner/` and is indexed with `cornerScope: franklin_greenpoint`. Franklin evidence is corner-only and not corridor-wide.
 
 It does not authorize facade imagery generation, storefront anchors, tenant-frontage assignment, exact entrance placement, exact facade/signage/material/color claims, production assets, normal runtime rendering, source expansion, scraping, live APIs, or visual-system work.
 
@@ -41,7 +43,14 @@ The verifier is:
 
 Repo-local evidence was ingested as a deterministic review-only index.
 
-The indexed records are local field-photo references from `docs/mvp-reference-images/` whose prior repo docs describe them as Batu-supplied or project-owned/repo-local references. The packet intentionally excludes exception-only or restricted-source material.
+The indexed records are local field-photo references from the two approved corner folders whose prior repo docs or Batu's 4D-6 supply note describe them as Batu-supplied or project-owned/repo-local references. The packet intentionally excludes exception-only or restricted-source material.
+
+Evidence counts after 4D-6:
+
+- `manhattan_greenpoint`: 11 records in `docs/mvp-reference-images/greenpoint manhattan corner/`.
+- `franklin_greenpoint`: 11 records in `docs/mvp-reference-images/greenpoint franklin  corner/`.
+- `unresolved_unknown`: 0 records.
+- Stale flat evidence paths: 11 before 4D-6 reconciliation, 0 after.
 
 Every indexed record now carries:
 
@@ -73,7 +82,7 @@ Disallowed:
 
 Usage rights status is `review_only_owner_confirmation_required_before_promotion` for every record.
 
-No record is attached to a Phase 4D geometry container in this packet. 4D-5 may create QA-only unresolved anchor candidates, but authoritative storefront anchors remain blocked.
+No record is attached to a Phase 4D geometry container in this packet. 4D-5/4D-6 may create QA-only unresolved anchor candidates, but authoritative storefront anchors remain blocked. Geometry linking is deferred until Batu reviews and approves a later batch.
 
 ## Claim Boundaries
 

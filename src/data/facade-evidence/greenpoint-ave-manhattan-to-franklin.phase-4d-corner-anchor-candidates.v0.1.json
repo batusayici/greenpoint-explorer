@@ -248,7 +248,7 @@
           "confidenceStatus": "geometry_container_ready_for_later_review"
         }
       ],
-      "associationReadiness": "corner_geometry_present_but_facade_evidence_missing_from_4d4_packet"
+      "associationReadiness": "corner_geometry_present_specific_evidence_to_container_association_unresolved_manual_review_required"
     },
     "mid_corridor": {
       "status": "blocked_insufficient_evidence",
@@ -258,36 +258,18 @@
   "summary": {
     "evidenceRecordsByCornerScope": {
       "manhattan_greenpoint": 11,
-      "franklin_greenpoint": 0,
+      "franklin_greenpoint": 11,
       "unresolved_unknown": 0
     },
-    "anchorCandidateCount": 11,
+    "anchorCandidateCount": 22,
     "linkedCandidateCount": 0,
-    "unresolvedCandidateCount": 11,
-    "blockedCornerScopeCount": 1,
+    "unresolvedCandidateCount": 22,
+    "blockedCornerScopeCount": 0,
     "midCorridorAnchorCandidateCount": 0,
     "normalModeAnchorCandidateCount": 0,
-    "qaOnlyAnchorCandidateCount": 11
+    "qaOnlyAnchorCandidateCount": 22
   },
-  "blockedCornerScopes": [
-    {
-      "cornerScope": "franklin_greenpoint",
-      "status": "blocked_insufficient_evidence",
-      "reason": "Franklin Ave x Greenpoint Ave has deterministic endpoint geometry containers, but no eligible repo-local Batu-supplied/project-owned facade evidence record is present in the 4D-4 packet.",
-      "geometryCoverageStatus": "represented_by_deterministic_geometry_containers",
-      "candidateGeometryContainerIds": [
-        "p4b-object-nyc-footprint-bin-3064803",
-        "p4b-object-nyc-footprint-bin-3064792",
-        "p4b-object-nyc-footprint-bin-3064793",
-        "p4b-object-nyc-footprint-bin-3064802",
-        "p4b-object-nyc-footprint-bin-3064688",
-        "p4b-object-nyc-footprint-bin-3337057",
-        "p4b-object-nyc-footprint-bin-3337034",
-        "p4b-object-nyc-footprint-bin-3064675"
-      ],
-      "qaOnly": true
-    }
-  ],
+  "blockedCornerScopes": [],
   "blockedClaimsPreserved": [
     "business-identity",
     "tenant-frontage",
@@ -309,7 +291,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-nw-grillpoint-closeup",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
-      "evidencePath": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-closeup.jpeg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -332,7 +314,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -347,7 +329,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-nw-grillpoint-facade",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
-      "evidencePath": "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-facade.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -370,7 +352,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -385,7 +367,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-nw-grillpoint-wide",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
-      "evidencePath": "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-wide.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -408,7 +390,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -423,7 +405,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-nw-subway-context",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-nw-subway-context",
-      "evidencePath": "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-subwayA.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -446,7 +428,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -461,7 +443,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-ne-mcdonalds-closeup",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
-      "evidencePath": "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-closeup.jpeg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -484,7 +466,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -499,7 +481,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-ne-mcdonalds-facade",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
-      "evidencePath": "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-facadeA.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -522,7 +504,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -537,7 +519,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-ne-mcdonalds-wide",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
-      "evidencePath": "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-wide.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -560,7 +542,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -575,7 +557,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-se-citizens-facade-a",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
-      "evidencePath": "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeA.jpeg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -598,7 +580,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected readable local reference. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected readable local reference. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -613,7 +595,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-se-citizens-facade-b",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
-      "evidencePath": "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeB.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -636,7 +618,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -651,7 +633,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-se-citizens-wide",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-se-citizens-wide",
-      "evidencePath": "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-wide.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -674,7 +656,7 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [
@@ -689,7 +671,7 @@
       "anchorCandidateId": "p4d-corner-anchor-candidate-se-subway-context",
       "cornerScope": "manhattan_greenpoint",
       "evidenceId": "p4d-facade-evidence-se-subway-context",
-      "evidencePath": "docs/mvp-reference-images/southeast-subwayB.jpg",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-subwayB.jpg",
       "candidateGeometryContainerId": null,
       "sideOrderHint": null,
       "associationStatus": "unresolved",
@@ -712,7 +694,425 @@
         "specific-evidence-to-geometry-container-association-unresolved"
       ],
       "provenanceNotes": [
-        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-northwest-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-northwest-2",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-2",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-northwest-3",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-3",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest3.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-northwest-4",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-4",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest4.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southeast-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-1.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southeast-wide",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southeast-zoom",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-zoom",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southwest-wide",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southwest-zoom",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-zoom",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southwest-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest1.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-franklin-southwest-2",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-2",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest2.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
         "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
       ],
       "manualReviewNotes": [

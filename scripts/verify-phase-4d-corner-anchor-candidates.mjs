@@ -97,9 +97,7 @@ function buildFixture() {
     .filter((entry) => Number.isFinite(entry.axisT) && entry.validation);
 
   const geometryCoverage = buildGeometryCoverage(buildingObjects);
-  const eligibleEvidence = facadeEvidencePacket.records.filter(
-    (record) => record.cornerScope?.scopeId === "manhattan_greenpoint",
-  );
+  const eligibleEvidence = facadeEvidencePacket.records.filter((record) => allowedCornerScopes.has(record.cornerScope?.scopeId));
   const anchorCandidates = eligibleEvidence.map((record) => buildAnchorCandidate(record));
 
   return {
@@ -131,7 +129,9 @@ function buildFixture() {
     geometryCoverage,
     summary: {
       evidenceRecordsByCornerScope: {
-        manhattan_greenpoint: eligibleEvidence.length,
+        manhattan_greenpoint: facadeEvidencePacket.records.filter(
+          (record) => record.cornerScope?.scopeId === "manhattan_greenpoint",
+        ).length,
         franklin_greenpoint: facadeEvidencePacket.records.filter(
           (record) => record.cornerScope?.scopeId === "franklin_greenpoint",
         ).length,
@@ -142,24 +142,12 @@ function buildFixture() {
       anchorCandidateCount: anchorCandidates.length,
       linkedCandidateCount: anchorCandidates.filter((candidate) => candidate.candidateGeometryContainerId).length,
       unresolvedCandidateCount: anchorCandidates.filter((candidate) => candidate.associationStatus === "unresolved").length,
-      blockedCornerScopeCount: 1,
+      blockedCornerScopeCount: 0,
       midCorridorAnchorCandidateCount: 0,
       normalModeAnchorCandidateCount: 0,
       qaOnlyAnchorCandidateCount: anchorCandidates.length,
     },
-    blockedCornerScopes: [
-      {
-        cornerScope: "franklin_greenpoint",
-        status: "blocked_insufficient_evidence",
-        reason:
-          "Franklin Ave x Greenpoint Ave has deterministic endpoint geometry containers, but no eligible repo-local Batu-supplied/project-owned facade evidence record is present in the 4D-4 packet.",
-        geometryCoverageStatus: geometryCoverage.franklin_greenpoint.status,
-        candidateGeometryContainerIds: geometryCoverage.franklin_greenpoint.candidateGeometryContainers.map(
-          (container) => container.renderedObjectId,
-        ),
-        qaOnly: true,
-      },
-    ],
+    blockedCornerScopes: [],
     blockedClaimsPreserved: [
       "business-identity",
       "tenant-frontage",
@@ -209,7 +197,7 @@ function buildGeometryCoverage(buildingObjects) {
         "4D-1 validation marks these rendered building containers as the Franklin-end review band.",
       candidateGeometryContainers: franklin,
       associationReadiness:
-        "corner_geometry_present_but_facade_evidence_missing_from_4d4_packet",
+        "corner_geometry_present_specific_evidence_to_container_association_unresolved_manual_review_required",
     },
     mid_corridor: {
       status: "blocked_insufficient_evidence",
@@ -270,6 +258,16 @@ function validateFixture(fixture, fixtureText, failures) {
   if (fixture.scopeBoundary?.normalModeUse !== "not-rendered") failures.push("Normal mode must not render anchor candidates.");
   if (fixture.summary?.midCorridorAnchorCandidateCount !== 0) failures.push("Mid-corridor anchor candidate count must be zero.");
   if (fixture.summary?.normalModeAnchorCandidateCount !== 0) failures.push("Normal-mode anchor candidate count must be zero.");
+  if (fixture.summary?.evidenceRecordsByCornerScope?.manhattan_greenpoint !== 11) {
+    failures.push("Manhattan evidence summary must remain 11 records.");
+  }
+  if (fixture.summary?.evidenceRecordsByCornerScope?.franklin_greenpoint !== 11) {
+    failures.push("Franklin evidence summary must be 11 records after 4D-6.");
+  }
+  if (fixture.summary?.anchorCandidateCount !== 22) failures.push("Anchor candidate count must be 22 after 4D-6.");
+  if (fixture.summary?.unresolvedCandidateCount !== 22) failures.push("All 4D-6 anchor candidates must remain unresolved.");
+  if (fixture.summary?.linkedCandidateCount !== 0) failures.push("No 4D-6 anchor candidate may be linked.");
+  if (fixture.summary?.blockedCornerScopeCount !== 0) failures.push("No corner scope should remain blocked after Franklin evidence intake.");
 
   validateGeometryCoverage(fixture.geometryCoverage, failures);
   validateCandidates(fixture.anchorCandidates ?? [], failures);
@@ -311,9 +309,6 @@ function validateCandidates(candidates, failures) {
     const evidence = evidenceById.get(candidate.evidenceId);
     if (!evidence) failures.push(`${candidate.anchorCandidateId} references missing evidence ${candidate.evidenceId}.`);
     if (!allowedCornerScopes.has(candidate.cornerScope)) failures.push(`${candidate.anchorCandidateId} has invalid corner scope.`);
-    if (candidate.cornerScope !== "manhattan_greenpoint") {
-      failures.push(`${candidate.anchorCandidateId} is not scoped to the only evidenced 4D-5 corner.`);
-    }
     if (evidence && evidence.cornerScope?.scopeId !== candidate.cornerScope) {
       failures.push(`${candidate.anchorCandidateId} corner scope does not match evidence record.`);
     }
@@ -336,10 +331,7 @@ function validateCandidates(candidates, failures) {
 }
 
 function validateBlockedScopes(blockedScopes, failures) {
-  const franklin = blockedScopes.find((scope) => scope.cornerScope === "franklin_greenpoint");
-  if (!franklin) failures.push("Franklin corner blocked scope record is required.");
-  if (franklin?.status !== "blocked_insufficient_evidence") failures.push("Franklin corner must remain blocked_insufficient_evidence.");
-  if (franklin?.qaOnly !== true) failures.push("Franklin blocked scope must be QA-only.");
+  if (blockedScopes.length !== 0) failures.push("No corner scope should remain blocked after 4D-6 Franklin evidence intake.");
 }
 
 function validateForbiddenStrings(text, failures) {

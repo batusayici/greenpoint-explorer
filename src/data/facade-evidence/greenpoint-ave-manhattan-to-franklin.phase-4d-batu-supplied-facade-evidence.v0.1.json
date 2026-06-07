@@ -70,12 +70,18 @@
     ]
   },
   "summary": {
-    "evidenceRecordCount": 11,
+    "evidenceRecordCount": 22,
     "ingestionResult": "repo-local-batu-supplied-field-photo-references-indexed-review-only",
     "evidenceRecordsByCornerScope": {
       "manhattan_greenpoint": 11,
-      "franklin_greenpoint": 0,
+      "franklin_greenpoint": 11,
       "unresolved_unknown": 0
+    },
+    "pathReconciliation": {
+      "staleFlatPathCountBefore4d6": 11,
+      "staleFlatPathCountAfter4d6": 0,
+      "manhattanEvidenceFolder": "docs/mvp-reference-images/greenpoint manhattan corner/",
+      "franklinEvidenceFolder": "docs/mvp-reference-images/greenpoint franklin  corner/"
     },
     "recordsWithAssociatedGeometryContainer": 0,
     "recordsWithStorefrontAssignment": 0,
@@ -89,13 +95,13 @@
     {
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-closeup.jpeg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -150,13 +156,13 @@
     {
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-facade.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -211,13 +217,13 @@
     {
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-wide.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -272,13 +278,13 @@
     {
       "evidenceId": "p4d-facade-evidence-nw-subway-context",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-subwayA.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -334,13 +340,13 @@
     {
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-closeup.jpeg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -395,13 +401,13 @@
     {
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-facadeA.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -456,13 +462,13 @@
     {
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-wide.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -517,13 +523,13 @@
     {
       "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeA.jpeg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable local reference. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable local reference. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -578,13 +584,13 @@
     {
       "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeB.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -639,13 +645,13 @@
     {
       "evidenceId": "p4d-facade-evidence-se-citizens-wide",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-wide.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -700,13 +706,13 @@
     {
       "evidenceId": "p4d-facade-evidence-se-subway-context",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
-      "filePath": "docs/mvp-reference-images/southeast-subwayB.jpg",
+      "filePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-subwayB.jpg",
       "cornerScope": {
         "scopeId": "manhattan_greenpoint",
         "label": "Manhattan Ave x Greenpoint Ave",
         "notCorridorWideEvidence": true
       },
-      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. 4D-6 reconciled this record to the repo-local Manhattan corner evidence folder. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
         "provenance-review",
@@ -757,6 +763,677 @@
       "manualReviewNotes": [
         "Treat as provenance/evidence material only.",
         "Do not infer station geometry, storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-1",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-2",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-3",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest3.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-4",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest4.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-1",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-1.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-wide",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-zoom",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-wide",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-zoom",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-1",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest1.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-2",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest2.jpeg",
+      "cornerScope": {
+        "scopeId": "franklin_greenpoint",
+        "label": "Franklin Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
+      "captureProvenanceNotes": "4D-6 repo-local Franklin corner evidence supplied by Batu in the Franklin corner evidence folder. Use remains review-only until Batu confirms rights, intended use, and any later geometry association in a future batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "franklin_greenpoint",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
       ]
     }
   ],
