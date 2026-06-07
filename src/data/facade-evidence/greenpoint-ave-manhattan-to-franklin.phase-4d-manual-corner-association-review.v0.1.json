@@ -1,0 +1,3738 @@
+{
+  "schemaVersion": "phase-4d-manual-corner-association-review.v0.1",
+  "fixtureId": "p4d-manual-corner-association-review-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4D-7",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "status": "qa-only-provisional-manual-evidence-to-geometry-association-review",
+  "generatedFrom": {
+    "facadeEvidencePacketPath": "src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json",
+    "anchorCandidateFixturePath": "src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json",
+    "sourcePolicy": "existing-corner-scoped-batu-supplied-evidence-and-existing-deterministic-geometry-only"
+  },
+  "scopeBoundary": {
+    "allowedCornerScopes": [
+      "manhattan_greenpoint",
+      "franklin_greenpoint"
+    ],
+    "blockedScope": "manhattan-to-franklin-mid-corridor",
+    "midCorridorFacadeEvidenceStatus": "blocked_insufficient_evidence",
+    "normalModeUse": "not-rendered",
+    "qaModeUse": "manual-review-packet-only",
+    "canCreateAuthoritativeAnchors": false,
+    "canCreateStorefrontAnchors": false,
+    "canAssignTenantsToFrontages": false,
+    "canPromoteBusinessIdentityClaims": false,
+    "canPromoteFacadeClaims": false,
+    "canPromoteEntranceClaims": false,
+    "canPromoteSignageClaims": false,
+    "canPromoteMaterialColorClaims": false,
+    "canPromoteActiveStatusClaims": false,
+    "canPromoteExactAddressClaims": false,
+    "canCreateProductionCards": false,
+    "canAffectRuntimeRendering": false
+  },
+  "geometryCoverage": {
+    "manhattan_greenpoint": {
+      "status": "represented_by_deterministic_geometry_containers",
+      "method": "Runtime corridor guide labels the high-axis endpoint as Manhattan Ave; listed containers are the highest-axis rendered building containers from the manifest with 4D-1 confidence.",
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        }
+      ],
+      "associationReadiness": "corner_geometry_present_specific_evidence_to_container_association_unresolved_manual_review_required"
+    },
+    "franklin_greenpoint": {
+      "status": "represented_by_deterministic_geometry_containers",
+      "method": "4D-1 validation marks these rendered building containers as the Franklin-end review band.",
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        }
+      ],
+      "associationReadiness": "corner_geometry_present_specific_evidence_to_container_association_unresolved_manual_review_required"
+    },
+    "mid_corridor": {
+      "status": "blocked_insufficient_evidence",
+      "reason": "4D-5 authorizes only Manhattan and Franklin corner evidence. No mid-corridor facade evidence is present or indexed."
+    }
+  },
+  "summary": {
+    "evidenceRecordsByCornerScope": {
+      "manhattan_greenpoint": 11,
+      "franklin_greenpoint": 11,
+      "unresolved_unknown": 0
+    },
+    "possibleGeometryContainerCountByCornerScope": {
+      "manhattan_greenpoint": 8,
+      "franklin_greenpoint": 8,
+      "mid_corridor": 0
+    },
+    "reviewRecordCount": 22,
+    "provisionalAssociationReviewCount": 22,
+    "selectedAssociationCount": 0,
+    "approvedAssociationCount": 0,
+    "linkedAssociationCount": 0,
+    "authoritativeAnchorCount": 0,
+    "storefrontAnchorCount": 0,
+    "tenantFrontageAssignmentCount": 0,
+    "promotedClaimCount": 0,
+    "normalModeRecordCount": 0,
+    "midCorridorAssociationCandidateCount": 0
+  },
+  "blockedClaimsPreserved": [
+    "business-identity",
+    "tenant-frontage",
+    "storefront-anchor",
+    "storefront-order",
+    "frontage-width",
+    "entrance-location",
+    "entrance-ownership",
+    "exact-address-placement",
+    "exact-facade-appearance",
+    "signage",
+    "material",
+    "color",
+    "active-status",
+    "production-card",
+    "normal-runtime-rendering",
+    "visual-facade-cue-production"
+  ],
+  "reviewRecords": [
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-northwest-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-northwest-2",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-2",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-northwest-3",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-3",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest3.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-northwest-4",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-4",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest4.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southeast-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-1.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southeast-wide",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southeast-zoom",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-zoom",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southwest-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest1.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southwest-2",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-2",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest2.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southwest-wide",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-franklin-southwest-zoom",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-zoom",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-ne-mcdonalds-closeup",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-closeup.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-ne-mcdonalds-facade",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-facadeA.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-ne-mcdonalds-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-wide.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-nw-grillpoint-closeup",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-closeup.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-nw-grillpoint-facade",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-facade.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-nw-grillpoint-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-wide.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-nw-subway-context",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-subway-context",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-subwayA.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-se-citizens-facade-a",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeA.jpeg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-se-citizens-facade-b",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeB.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-se-citizens-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-wide.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    },
+    {
+      "associationReviewId": "p4d-manual-association-review-se-subway-context",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-subway-context",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-subwayB.jpg",
+      "evidenceUsageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "possibleGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "plausibilityBasis": "Existing deterministic corner geometry for this corner scope only; not a specific evidence-to-container match."
+        }
+      ],
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "associationStatus": "provisional_unresolved_review_only",
+      "associationConfidence": "corner_scope_possible_container_set_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-an-authoritative-anchor",
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "possible-container-set-only",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "authoritativeAnchorCreated": false,
+      "storefrontAnchorCreated": false,
+      "tenantFrontageAssignmentCreated": false,
+      "promotedClaimsCreated": false,
+      "manualReviewNotes": [
+        "Possible container set only. Not an approved evidence-to-geometry association.",
+        "Manual Batu review is required before selecting or approving any specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, exact facade truth, production-card readiness, or runtime rendering."
+      ]
+    }
+  ]
+}
