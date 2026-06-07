@@ -4,6 +4,7 @@ import manifest from "./data/generated-scene-manifests/greenpoint-ave-manhattan-
 import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json";
 import qaFacadeSliceFixture from "./data/facade-cues/greenpoint-ave-franklin-end.phase-4c-qa-facade-slice.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
+import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import geometryFixture from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
@@ -69,6 +70,7 @@ export default function Phase4BRuntimePreview() {
   const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
   const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
   const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
+  const candidatePoiIndex = useMemo(() => buildCandidatePoiIndex(candidatePoiFixture), []);
   const hostRef = useRef(null);
   const stateRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -79,8 +81,9 @@ export default function Phase4BRuntimePreview() {
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
+  const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
   const reviewTotals = useMemo(() => (
-    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, geometryValidationReport)
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, geometryValidationReport, candidatePoiFixture)
   ), [runtimeScene]);
 
   useEffect(() => {
@@ -107,6 +110,7 @@ export default function Phase4BRuntimePreview() {
     addLights(scene);
     addGround(scene, runtimeScene);
     addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, pickTargets, visualObjects, pickObjects);
+    addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
 
     stateRef.current = {
       camera,
@@ -277,11 +281,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4D-1 / geometry validation</p>
-          <h1>Greenpoint Ave geometry confidence</h1>
+          <p className="phase4b-kicker">Batch 4D-3 / candidate POI QA</p>
+          <h1>Greenpoint Ave candidate review</h1>
         </div>
         <p>
-          Deterministic 3D proof from approved manifest and geometry fixture. 4D geometry confidence appears only in QA inspection and does not attach POIs, facades, storefronts, or production claims.
+          Deterministic 3D proof with QA-only synthetic POI candidates. Candidate markers are hidden in normal mode and are not storefront assignments, active businesses, facades, signs, entrances, or production cards.
         </p>
       </section>
 
@@ -320,6 +324,7 @@ export default function Phase4BRuntimePreview() {
             facadeCueFixture={facadeCueFixture}
             qaFacadeSliceFixture={qaFacadeSliceFixture}
             geometryValidationReport={geometryValidationReport}
+            candidatePoiFixture={candidatePoiFixture}
             storefrontAnchors={runtimeScene.storefrontAnchors}
           />
         ) : null}
@@ -387,6 +392,8 @@ export default function Phase4BRuntimePreview() {
           inspectedCue={inspectedCue}
           inspectedSliceFacade={inspectedSliceFacade}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
+          inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
+          candidatePoiFixture={candidatePoiFixture}
           qaEnabled={qaEnabled}
         />
       </section>
@@ -405,6 +412,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-endpoint" /> Endpoint cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-facade-cue" /> QA facade cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-qa-facade-slice" /> QA draft street-feel slice</li>
+        <li><span className="phase4b-swatch phase4b-swatch-candidate-poi" /> QA candidate POI</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
         <li><span className="phase4b-swatch phase4b-swatch-blocked" /> {anchorStatus}</li>
@@ -443,6 +451,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, qaEnabled, inspect
           <dd>{totals.qaFacadeSliceBuildings}</dd>
         </div>
         <div>
+          <dt>Candidate POIs</dt>
+          <dd>{qaEnabled ? totals.candidatePoiCount : "QA off"}</dd>
+        </div>
+        <div>
           <dt>4D safe / uncertain / blocked</dt>
           <dd>{qaEnabled ? `${totals.geometrySafe} / ${totals.geometryUncertain} / ${totals.geometryBlocked}` : "QA off"}</dd>
         </div>
@@ -475,6 +487,7 @@ function QADebugPanel({
   facadeCueFixture,
   qaFacadeSliceFixture,
   geometryValidationReport,
+  candidatePoiFixture,
   storefrontAnchors,
 }) {
   const confidence = inspectedValidation?.geometryConfidence?.label ?? "none";
@@ -485,6 +498,8 @@ function QADebugPanel({
         <li><span className="phase4b-side-dot phase4b-side-safe" /> Geometry safe: {geometryValidationReport.summary.confidenceCounts.safe}</li>
         <li><span className="phase4b-side-dot phase4b-side-uncertain" /> Geometry uncertain: {geometryValidationReport.summary.confidenceCounts.uncertain}</li>
         <li><span className="phase4b-side-dot phase4b-side-blocked" /> Geometry blocked: {geometryValidationReport.summary.confidenceCounts.blocked}</li>
+        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Candidate POIs: {candidatePoiFixture.summary.candidateCount}</li>
+        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Not a storefront assignment</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA street-feel slice: {qaFacadeSliceFixture.facades.length}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Slice labels: {qaFacadeSliceFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Non-factual QA rhythm only</li>
@@ -543,6 +558,8 @@ function InspectorPanel({
   inspectedCue,
   inspectedSliceFacade,
   inspectedValidation,
+  inspectedCandidatePois,
+  candidatePoiFixture,
   qaEnabled,
 }) {
   const inspectorRef = useRef(null);
@@ -668,6 +685,37 @@ function InspectorPanel({
       </section>
 
       <section>
+        <h2>4D Candidate POI QA</h2>
+        {qaEnabled ? (
+          <>
+            <p>Not a storefront assignment.</p>
+            <ul>
+              <li>
+                <span>Fixture source</span>
+                <small>{candidatePoiFixture.sourceBoundary.sourceType}</small>
+              </li>
+              <li>
+                <span>Cache / display</span>
+                <small>{candidatePoiFixture.sourceBoundary.cachePermissionStatus} / {candidatePoiFixture.sourceBoundary.displayPermissionStatus}</small>
+              </li>
+              <li>
+                <span>Selected candidates</span>
+                <small>{inspectedCandidatePois.length}</small>
+              </li>
+              {(inspectedCandidatePois.length ? inspectedCandidatePois : candidatePoiFixture.candidates).map((candidate) => (
+                <li key={candidate.id}>
+                  <span>{candidate.displayLabel}</span>
+                  <small>{candidate.claimState} / {candidate.candidateConfidence} / Not a storefront assignment.</small>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <p>QA mode required for candidate POI records.</p>
+        )}
+      </section>
+
+      <section>
         <h2>Geometry-Only Facade Cue</h2>
         <ul>
           <li>
@@ -758,7 +806,7 @@ function InspectorPanel({
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, validationReport) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, validationReport, candidateFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
@@ -772,6 +820,7 @@ function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, valid
     geometrySafe: validationReport.summary.confidenceCounts.safe,
     geometryUncertain: validationReport.summary.confidenceCounts.uncertain,
     geometryBlocked: validationReport.summary.confidenceCounts.blocked,
+    candidatePoiCount: candidateFixture.summary.candidateCount,
   };
 }
 
@@ -785,6 +834,17 @@ function buildQAFacadeSliceIndex(fixture) {
 
 function buildGeometryValidationIndex(report) {
   return new Map(report.buildingRecords.map((record) => [record.renderedObjectId, record]));
+}
+
+function buildCandidatePoiIndex(fixture) {
+  const index = new Map();
+  for (const candidate of fixture.candidates) {
+    const targetId = candidate.reviewPlacement.targetRenderedObjectId;
+    const records = index.get(targetId) ?? [];
+    records.push(candidate);
+    index.set(targetId, records);
+  }
+  return index;
 }
 
 function formatCueTiers(cue) {
@@ -1077,6 +1137,82 @@ function addRuntimeObjects(
     visualObjects.set(object.id, group);
     pickObjects.set(object.id, pick);
   }
+}
+
+function addCandidatePoiMarkers(scene, runtimeScene, fixture, visualObjects) {
+  const buildingsById = new Map(runtimeScene.buildings.map((building) => [building.id, building]));
+  for (const candidate of fixture.candidates) {
+    const target = buildingsById.get(candidate.reviewPlacement.targetRenderedObjectId);
+    if (!target) continue;
+    const offset = candidate.reviewPlacement.offset ?? { x: 0, z: 0.3 };
+    const group = createCandidatePoiMarker(candidate, target, offset);
+    scene.add(group);
+    visualObjects.set(candidate.id, group);
+  }
+}
+
+function createCandidatePoiMarker(candidate, target, offset) {
+  const color = getCandidatePoiColor(candidate.claimState);
+  const x = target.centroid.x + offset.x;
+  const z = target.centroid.z + offset.z;
+  const y = Math.max(target.height + 0.2, 1.05);
+  const group = new THREE.Group();
+  group.visible = false;
+  group.userData.stateRole = "candidatePoi";
+  group.userData.semanticId = candidate.id;
+
+  const pin = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.07, 0.12, 0.48, 16),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  pin.position.set(x, y, z);
+  pin.userData.stateRole = "candidatePoi";
+  pin.userData.qaOpacity = 0.9;
+  pin.userData.qaColor = color;
+
+  const ring = new THREE.Mesh(
+    new THREE.RingGeometry(0.18, 0.26, 24),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+    }),
+  );
+  ring.rotation.x = -Math.PI / 2;
+  ring.position.set(x, y - 0.28, z);
+  ring.userData.stateRole = "candidatePoi";
+  ring.userData.qaOpacity = 0.76;
+  ring.userData.qaColor = color;
+
+  const tether = createPolyline([
+    { x: target.centroid.x, z: target.centroid.z },
+    { x, z },
+  ], {
+    color,
+    opacity: 0,
+    y: Math.max(target.height + 0.08, 0.9),
+  });
+  tether.userData.stateRole = "candidatePoi";
+  tether.userData.qaOpacity = 0.45;
+  tether.userData.qaColor = color;
+  tether.visible = false;
+
+  const label = createTextSprite(candidate.displayLabel);
+  label.position.set(x, y + 0.42, z);
+  label.userData.stateRole = "candidatePoi";
+  label.userData.qaOpacity = 0.86;
+  label.userData.qaColor = color;
+  label.visible = false;
+
+  group.add(pin, ring, tether, label);
+  return group;
 }
 
 function createFacadeCueMarker(object, cue) {
@@ -1633,7 +1769,17 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
     const isSelected = id === selectedId;
     const isHovered = id === hoveredId;
     visual.traverse((child) => {
-      if (!child.material || child.userData.pickTarget) return;
+      if (child.userData.pickTarget) return;
+      if (!child.material) {
+        if (
+          child.userData.stateRole === "facadeCue"
+          || child.userData.stateRole === "qaFacadeSlice"
+          || child.userData.stateRole === "candidatePoi"
+        ) {
+          child.visible = qaEnabled;
+        }
+        return;
+      }
       if (child.material.color) {
         const qaColor = child.userData.qaColor ?? child.userData.baseColor;
         child.material.color.set(isSelected ? 0xf0c96a : isHovered ? 0xb9cec7 : qaEnabled ? qaColor : child.userData.baseColor ?? 0x88908d);
@@ -1674,13 +1820,11 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 ? Math.min(child.userData.qaOpacity + 0.12, 0.92)
                 : child.userData.qaOpacity
             : 0;
+        } else if (child.userData.stateRole === "candidatePoi") {
+          child.visible = qaEnabled;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled ? child.userData.qaOpacity ?? 0.75 : 0;
         }
-      }
-      if (child.userData.stateRole === "facadeCue" && !child.material) {
-        child.visible = qaEnabled;
-      }
-      if (child.userData.stateRole === "qaFacadeSlice" && !child.material) {
-        child.visible = qaEnabled;
       }
       if (child.userData.stateRole === "marker") {
         child.visible = isSelected || isHovered;
@@ -1688,6 +1832,12 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
       }
     });
   }
+}
+
+function getCandidatePoiColor(claimState) {
+  if (claimState === "candidate_only") return 0x8cc5ff;
+  if (claimState === "manual_review_required") return 0xd4b36f;
+  return 0xb56d5e;
 }
 
 function getBuildingPalette(object) {

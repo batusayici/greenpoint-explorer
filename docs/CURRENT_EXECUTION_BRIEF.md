@@ -1,14 +1,14 @@
-# Current Execution Brief - Post-4D-2 Claim Ladder Review
+# Current Execution Brief - Post-4D-3 Candidate POI QA Review
 
-Status: Batu approved `Batch 4D-1: Geometry validation and gap audit`. `Batch 4D-2: Claim ladder / matching contract` is complete pending Batu review. The project now has a dedicated claim ladder and matching contract for future POI, business, facade, storefront, entrance, signage, and landmark work, without adding data, imagery, anchors, runtime visuals, or production claims.
+Status: Batu approved `Batch 4D-2: Claim ladder / matching contract`. `Batch 4D-3: Candidate POI QA fixture and overlay` is complete pending Batu review. The project now has a deterministic synthetic candidate-only POI fixture, verifier, QA-only runtime markers, and inspector labels without adding real POIs, businesses, facade imagery, storefront anchors, tenant frontage matches, active-status claims, or production cards.
 
 Current executable batch: none.
 
-Proposed next authorization: `Batch 4D-3: Candidate POI overlay`, only after Batu reviews and accepts the 4D-2 claim ladder or gives alternate direction.
+Proposed next authorization: `Batch 4D-4: Batu-supplied facade evidence packet`, only after Batu reviews and accepts the 4D-3 candidate POI QA output or gives alternate direction.
 
 Pre-authorized queue: none.
 
-Hard Batu review gate: stop here for Batu review of 4D-2. Do not self-open 4D-3 or any later 4D batch.
+Hard Batu review gate: stop here for Batu review of 4D-3. Do not self-open 4D-4 or any later 4D batch.
 
 Self-advance allowed: no.
 
@@ -72,40 +72,62 @@ Verification completed:
 - `node scripts/compile-phase-4b-scene-manifest.mjs --check`
 - `git diff --check`
 
+## 4D-3 Output
+
+4D-3 completed:
+
+- Added `src/data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json`.
+- Added `scripts/verify-phase-4d-candidate-pois.mjs`.
+- Added `docs/phase-4d-candidate-poi-qa-fixture.md`.
+- Added six deterministic synthetic/manual placeholder candidate records generated from the 4D-1 geometry validation report.
+- Added QA-only runtime candidate markers and inspector text. Normal mode hides candidate records and markers.
+- Preserved the hard boundary: candidate POIs are not storefront assignments, active businesses, tenants, frontage, entrances, facades, signage, production cards, or source-backed real business truth.
+
+Verification completed:
+
+- `node scripts/verify-phase-4d-candidate-pois.mjs`
+- `node scripts/verify-phase-4d-geometry-validation.mjs`
+- `node scripts/verify-phase-4c-geometry-cues.mjs`
+- `node scripts/verify-phase-4c-qa-facade-slice.mjs`
+- `node scripts/verify-phase-4b-source-fixture.mjs`
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- `npm run build`
+- Browser smoke on local preview: normal mode showed `Candidate POIs` as `QA off` and no candidate records; QA mode showed six candidates, `candidate_only`, `manual_review_required`, `blocked_insufficient_evidence`, `synthetic_manual_placeholder`, and `Not a storefront assignment.`
+- `git diff --check`
+
 ## Proposed Phase 4D Sequence
 
 1. `Batch 4D-1: Geometry validation and gap audit`
 2. `Batch 4D-2: Claim ladder / matching contract`
-3. `Batch 4D-3: Candidate POI overlay`
+3. `Batch 4D-3: Candidate POI QA fixture and overlay`
 4. `Batch 4D-4: Batu-supplied facade evidence packet`
 5. `Batch 4D-5: Evidence-backed facade/storefront anchors`
 6. Asset registry / visual system work only after evidence and anchor models are defined.
 
-## Proposed Batch: 4D-3
+## Proposed Batch: 4D-4
 
-`Batch 4D-3: Candidate POI overlay` is proposed only. It is not executable until Batu explicitly authorizes it.
+`Batch 4D-4: Batu-supplied facade evidence packet` is proposed only. It is not executable until Batu explicitly authorizes it.
 
 Goal:
 
-- Attach future approved POI/business sources as candidate enrichment only, with confidence and blocked storefront-assignment claims visible.
+- Define or ingest a Batu-supplied/project-owned facade evidence packet with provenance, usage status, allowed uses, blocked uses, and candidate target geometry references.
 
 Expected outputs if later authorized:
 
-- A source-approved static candidate POI fixture or equivalent future approved source packet.
-- QA-only candidate overlay/inspection, if explicitly opened.
-- Visible blocked states showing that candidate POIs do not prove storefront, frontage, entrance, facade, signage, active-status finality, or production cards.
+- A review-only facade evidence packet contract or fixture, only from Batu-supplied/project-owned or otherwise Batu-approved evidence.
+- Provenance, source/access, usage, allowed-use, blocked-use, target-candidate, and ambiguity fields.
+- Explicit separation from storefront anchors, production assets, exact facade claims, and visual-system work.
 
 Acceptance bar if later authorized:
 
-- Batu can inspect candidate POI enrichment without any authoritative storefront assignment or claim promotion.
+- Batu can review evidence readiness and usage boundaries before any evidence-backed facade/storefront anchors are created.
 
-4D-3 must not include:
+4D-4 must not include:
 
-- Live Foursquare or local-directory calls unless a later brief explicitly approves source access, terms/cache/display, and fixture boundaries.
-- Authoritative POI overlays or production place cards.
-- Facade imagery ingestion.
+- Google/Street View/3D Tiles default stored or derived source-of-truth pipeline.
+- Scraping, unprovenanced imagery, generated assets, or production assets.
 - Storefront anchors.
-- Tenant frontage, storefront order, entrance, facade, signage, active-status finality, or exact-address placement claims.
+- Tenant frontage, storefront order, entrance, facade, signage, active-status finality, or exact-address placement promotion.
 - Asset registry or visual system work.
 - New dependencies unless separately approved.
 - Runtime, verifier, data, UI, package, source, or architecture changes unless Batu opens those boundaries in a later executable brief.
@@ -114,7 +136,7 @@ Acceptance bar if later authorized:
 
 Stop and report before:
 
-- Implementing 4D-3.
+- Implementing 4D-4.
 - Opening another generic fictional-facade tuning batch.
 - Foursquare, local-directory, API, scraper, live-data, or source acquisition work.
 - POI/business overlays or business-to-building matching.
@@ -157,4 +179,4 @@ Supporting detail docs:
 - `docs/phase-4b-implementation-plan.md`
 - `docs/phase-3-closeout.md`
 
-The Phase 4B/4C runtime, fixtures, verifiers, QA facade slice, 4D-1 geometry validation report, and 4D-2 claim ladder contract remain preserved. No further 4D implementation work is open or queued.
+The Phase 4B/4C runtime, fixtures, verifiers, QA facade slice, 4D-1 geometry validation report, 4D-2 claim ladder contract, and 4D-3 synthetic candidate POI QA fixture remain preserved. No further 4D implementation work is open or queued.

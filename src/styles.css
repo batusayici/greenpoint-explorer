@@ -258,6 +258,10 @@
   background: #b56d5e;
 }
 
+.phase4b-side-candidate-poi {
+  background: #8cc5ff;
+}
+
 .phase4b-legend p {
   margin: 0;
   color: rgba(244, 234, 216, 0.56);
@@ -312,6 +316,10 @@
 
 .phase4b-swatch-qa-facade-slice {
   background: linear-gradient(90deg, #3b2f28 0 28%, #9a6b55 28% 56%, #8fa7a0 56% 76%, #d7b774 76%);
+}
+
+.phase4b-swatch-candidate-poi {
+  background: linear-gradient(90deg, #8cc5ff 0 45%, #d4b36f 45% 72%, #b56d5e 72%);
 }
 
 .phase4b-swatch-centerline {

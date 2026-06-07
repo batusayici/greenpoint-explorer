@@ -1,0 +1,396 @@
+{
+  "schemaVersion": "phase-4d-candidate-pois.v0.1",
+  "fixtureId": "p4d-candidate-pois-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4D-3",
+  "reviewOnly": true,
+  "status": "generated-review-only-synthetic-candidate-poi-fixture",
+  "generatedFrom": {
+    "geometryValidationReportPath": "src/data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json",
+    "claimContractPath": "docs/phase-4d-claim-ladder-matching-contract.md",
+    "sourcePolicy": "synthetic-manual-placeholder-candidates-only-no-external-source"
+  },
+  "sourceBoundary": {
+    "sourceType": "synthetic_manual_placeholder",
+    "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+    "sourceProvenance": "No real POI source was accessed; records are deterministic placeholders for QA workflow review.",
+    "cachePermissionStatus": "local-review-placeholder-only",
+    "displayPermissionStatus": "qa-only-placeholder-labels",
+    "liveApiCalled": false,
+    "scrapingAttempted": false,
+    "restrictedSourceUsed": false,
+    "googleStreetViewOr3dTilesUsed": false,
+    "termsUncertainMaterialUsed": false,
+    "realBusinessTruthClaimed": false,
+    "activeStatusClaimed": false
+  },
+  "renderPolicy": {
+    "normalModeUse": "not-rendered",
+    "qaModeUse": "candidate-only-review-markers-and-inspector-text",
+    "runtimeClaimLimit": "Not a storefront assignment.",
+    "canAffectNormalRuntime": false,
+    "canCreateProductionCards": false,
+    "canCreateStorefrontAnchors": false
+  },
+  "claimPolicy": {
+    "maxClaimLevel": "poi-candidate",
+    "allowedClaimStates": [
+      "blocked_address_ambiguity",
+      "blocked_frontage_ambiguity",
+      "blocked_insufficient_evidence",
+      "blocked_multi_tenant_ambiguity",
+      "candidate_only",
+      "manual_review_required"
+    ],
+    "forbiddenPromotions": [
+      "tenant-at-address",
+      "storefront-frontage",
+      "entrance",
+      "facade-signage",
+      "active-status-finality",
+      "production-card"
+    ],
+    "requiredBlockedReasons": [
+      "not-a-storefront-assignment",
+      "no-tenant-frontage-evidence",
+      "no-entrance-evidence",
+      "no-facade-or-signage-evidence",
+      "no-active-status-evidence",
+      "synthetic-placeholder-source-only"
+    ]
+  },
+  "summary": {
+    "candidateCount": 6,
+    "sourceTypes": [
+      "synthetic_manual_placeholder"
+    ],
+    "claimStateCounts": {
+      "candidate_only": 3,
+      "manual_review_required": 2,
+      "blocked_insufficient_evidence": 1
+    },
+    "normalModeCandidateCount": 0,
+    "qaOnlyCandidateCount": 6
+  },
+  "manualReviewNotes": [
+    "These records are placeholders for evaluating candidate POI QA workflow only.",
+    "They are not real businesses, tenants, storefronts, entrances, signs, facades, active-status claims, or production cards.",
+    "Future real-source candidate work requires separate source access, cache/display permission, fixture, and QA approval."
+  ],
+  "candidates": [
+    {
+      "id": "p4d-candidate-poi-synthetic-01",
+      "displayLabel": "Synthetic candidate 01",
+      "sourceType": "synthetic_manual_placeholder",
+      "sourceProvenance": {
+        "sourceLabel": "Synthetic manual placeholder",
+        "sourceRecordId": "synthetic-placeholder-01",
+        "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+        "cachePermissionStatus": "local-review-placeholder-only",
+        "displayPermissionStatus": "qa-only-placeholder-labels",
+        "url": null,
+        "restrictedSourceUsed": false
+      },
+      "addressString": "Unverified address candidate 01",
+      "sourceCoordinate": null,
+      "category": "food-and-drink-placeholder",
+      "candidateConfidence": "low_synthetic_placeholder",
+      "claimLevel": "poi-candidate",
+      "claimState": "candidate_only",
+      "blockedReasons": [
+        "no-active-status-evidence",
+        "no-entrance-evidence",
+        "no-facade-or-signage-evidence",
+        "no-tenant-frontage-evidence",
+        "not-a-storefront-assignment",
+        "synthetic-placeholder-source-only"
+      ],
+      "lastVerified": null,
+      "verificationStatus": "unknown_not_verified_synthetic_placeholder",
+      "notes": [
+        "Not a storefront assignment.",
+        "Synthetic candidate for QA workflow review only; no real business identity or active-status claim.",
+        "Placed near p4b-object-nyc-footprint-bin-3064675 for candidate-review ergonomics only."
+      ],
+      "reviewPlacement": {
+        "placementMethod": "near-existing-rendered-geometry-for-qa-only",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+        "targetSourceFootprintId": "nyc-footprint-bin-3064675",
+        "targetGeometryConfidence": "safe",
+        "offset": {
+          "x": -0.26,
+          "z": 0.32
+        },
+        "notClaims": [
+          "source-coordinate",
+          "business-location",
+          "storefront-frontage",
+          "entrance-location",
+          "facade-or-signage-location"
+        ]
+      }
+    },
+    {
+      "id": "p4d-candidate-poi-synthetic-02",
+      "displayLabel": "Synthetic candidate 02",
+      "sourceType": "synthetic_manual_placeholder",
+      "sourceProvenance": {
+        "sourceLabel": "Synthetic manual placeholder",
+        "sourceRecordId": "synthetic-placeholder-02",
+        "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+        "cachePermissionStatus": "local-review-placeholder-only",
+        "displayPermissionStatus": "qa-only-placeholder-labels",
+        "url": null,
+        "restrictedSourceUsed": false
+      },
+      "addressString": "Unverified address candidate 02",
+      "sourceCoordinate": null,
+      "category": "retail-placeholder",
+      "candidateConfidence": "low_synthetic_placeholder",
+      "claimLevel": "poi-candidate",
+      "claimState": "candidate_only",
+      "blockedReasons": [
+        "no-active-status-evidence",
+        "no-entrance-evidence",
+        "no-facade-or-signage-evidence",
+        "no-tenant-frontage-evidence",
+        "not-a-storefront-assignment",
+        "synthetic-placeholder-source-only"
+      ],
+      "lastVerified": null,
+      "verificationStatus": "unknown_not_verified_synthetic_placeholder",
+      "notes": [
+        "Not a storefront assignment.",
+        "Synthetic candidate for QA workflow review only; no real business identity or active-status claim.",
+        "Placed near p4b-object-nyc-footprint-bin-3064803 for candidate-review ergonomics only."
+      ],
+      "reviewPlacement": {
+        "placementMethod": "near-existing-rendered-geometry-for-qa-only",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+        "targetSourceFootprintId": "nyc-footprint-bin-3064803",
+        "targetGeometryConfidence": "safe",
+        "offset": {
+          "x": 0.22,
+          "z": -0.32
+        },
+        "notClaims": [
+          "source-coordinate",
+          "business-location",
+          "storefront-frontage",
+          "entrance-location",
+          "facade-or-signage-location"
+        ]
+      }
+    },
+    {
+      "id": "p4d-candidate-poi-synthetic-03",
+      "displayLabel": "Synthetic candidate 03",
+      "sourceType": "synthetic_manual_placeholder",
+      "sourceProvenance": {
+        "sourceLabel": "Synthetic manual placeholder",
+        "sourceRecordId": "synthetic-placeholder-03",
+        "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+        "cachePermissionStatus": "local-review-placeholder-only",
+        "displayPermissionStatus": "qa-only-placeholder-labels",
+        "url": null,
+        "restrictedSourceUsed": false
+      },
+      "addressString": "Unverified address candidate 03",
+      "sourceCoordinate": null,
+      "category": "service-placeholder",
+      "candidateConfidence": "low_synthetic_placeholder",
+      "claimLevel": "poi-candidate",
+      "claimState": "candidate_only",
+      "blockedReasons": [
+        "no-active-status-evidence",
+        "no-entrance-evidence",
+        "no-facade-or-signage-evidence",
+        "no-tenant-frontage-evidence",
+        "not-a-storefront-assignment",
+        "synthetic-placeholder-source-only"
+      ],
+      "lastVerified": null,
+      "verificationStatus": "unknown_not_verified_synthetic_placeholder",
+      "notes": [
+        "Not a storefront assignment.",
+        "Synthetic candidate for QA workflow review only; no real business identity or active-status claim.",
+        "Placed near p4b-object-nyc-footprint-bin-3422353 for candidate-review ergonomics only."
+      ],
+      "reviewPlacement": {
+        "placementMethod": "near-existing-rendered-geometry-for-qa-only",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3422353",
+        "targetSourceFootprintId": "nyc-footprint-bin-3422353",
+        "targetGeometryConfidence": "safe",
+        "offset": {
+          "x": 0.28,
+          "z": 0.34
+        },
+        "notClaims": [
+          "source-coordinate",
+          "business-location",
+          "storefront-frontage",
+          "entrance-location",
+          "facade-or-signage-location"
+        ]
+      }
+    },
+    {
+      "id": "p4d-candidate-poi-synthetic-04",
+      "displayLabel": "Synthetic candidate 04",
+      "sourceType": "synthetic_manual_placeholder",
+      "sourceProvenance": {
+        "sourceLabel": "Synthetic manual placeholder",
+        "sourceRecordId": "synthetic-placeholder-04",
+        "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+        "cachePermissionStatus": "local-review-placeholder-only",
+        "displayPermissionStatus": "qa-only-placeholder-labels",
+        "url": null,
+        "restrictedSourceUsed": false
+      },
+      "addressString": "Unverified address candidate 04",
+      "sourceCoordinate": null,
+      "category": "civic-or-community-placeholder",
+      "candidateConfidence": "manual_review_required",
+      "claimLevel": "poi-candidate",
+      "claimState": "manual_review_required",
+      "blockedReasons": [
+        "geometry-or-address-review-required",
+        "no-active-status-evidence",
+        "no-entrance-evidence",
+        "no-facade-or-signage-evidence",
+        "no-tenant-frontage-evidence",
+        "not-a-storefront-assignment",
+        "synthetic-placeholder-source-only"
+      ],
+      "lastVerified": null,
+      "verificationStatus": "unknown_not_verified_synthetic_placeholder",
+      "notes": [
+        "Not a storefront assignment.",
+        "Synthetic candidate for QA workflow review only; no real business identity or active-status claim.",
+        "Placed near p4b-object-nyc-footprint-bin-3064699 for candidate-review ergonomics only."
+      ],
+      "reviewPlacement": {
+        "placementMethod": "near-existing-rendered-geometry-for-qa-only",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3064699",
+        "targetSourceFootprintId": "nyc-footprint-bin-3064699",
+        "targetGeometryConfidence": "uncertain",
+        "offset": {
+          "x": -0.3,
+          "z": -0.36
+        },
+        "notClaims": [
+          "source-coordinate",
+          "business-location",
+          "storefront-frontage",
+          "entrance-location",
+          "facade-or-signage-location"
+        ]
+      }
+    },
+    {
+      "id": "p4d-candidate-poi-synthetic-05",
+      "displayLabel": "Synthetic candidate 05",
+      "sourceType": "synthetic_manual_placeholder",
+      "sourceProvenance": {
+        "sourceLabel": "Synthetic manual placeholder",
+        "sourceRecordId": "synthetic-placeholder-05",
+        "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+        "cachePermissionStatus": "local-review-placeholder-only",
+        "displayPermissionStatus": "qa-only-placeholder-labels",
+        "url": null,
+        "restrictedSourceUsed": false
+      },
+      "addressString": "Unverified address candidate 05",
+      "sourceCoordinate": null,
+      "category": "unknown-category-placeholder",
+      "candidateConfidence": "manual_review_required",
+      "claimLevel": "poi-candidate",
+      "claimState": "manual_review_required",
+      "blockedReasons": [
+        "geometry-or-address-review-required",
+        "no-active-status-evidence",
+        "no-entrance-evidence",
+        "no-facade-or-signage-evidence",
+        "no-tenant-frontage-evidence",
+        "not-a-storefront-assignment",
+        "synthetic-placeholder-source-only"
+      ],
+      "lastVerified": null,
+      "verificationStatus": "unknown_not_verified_synthetic_placeholder",
+      "notes": [
+        "Not a storefront assignment.",
+        "Synthetic candidate for QA workflow review only; no real business identity or active-status claim.",
+        "Placed near p4b-object-nyc-footprint-bin-3425016 for candidate-review ergonomics only."
+      ],
+      "reviewPlacement": {
+        "placementMethod": "near-existing-rendered-geometry-for-qa-only",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3425016",
+        "targetSourceFootprintId": "nyc-footprint-bin-3425016",
+        "targetGeometryConfidence": "uncertain",
+        "offset": {
+          "x": 0.34,
+          "z": 0.28
+        },
+        "notClaims": [
+          "source-coordinate",
+          "business-location",
+          "storefront-frontage",
+          "entrance-location",
+          "facade-or-signage-location"
+        ]
+      }
+    },
+    {
+      "id": "p4d-candidate-poi-synthetic-06",
+      "displayLabel": "Synthetic candidate 06",
+      "sourceType": "synthetic_manual_placeholder",
+      "sourceProvenance": {
+        "sourceLabel": "Synthetic manual placeholder",
+        "sourceRecordId": "synthetic-placeholder-06",
+        "sourceAccessMethod": "manual-authored-synthetic-stub-no-external-source",
+        "cachePermissionStatus": "local-review-placeholder-only",
+        "displayPermissionStatus": "qa-only-placeholder-labels",
+        "url": null,
+        "restrictedSourceUsed": false
+      },
+      "addressString": "Unverified address candidate 06",
+      "sourceCoordinate": null,
+      "category": "blocked-geometry-placeholder",
+      "candidateConfidence": "blocked_geometry",
+      "claimLevel": "poi-candidate",
+      "claimState": "blocked_insufficient_evidence",
+      "blockedReasons": [
+        "geometry-container-blocked",
+        "no-active-status-evidence",
+        "no-entrance-evidence",
+        "no-facade-or-signage-evidence",
+        "no-tenant-frontage-evidence",
+        "not-a-storefront-assignment",
+        "synthetic-placeholder-source-only"
+      ],
+      "lastVerified": null,
+      "verificationStatus": "unknown_not_verified_synthetic_placeholder",
+      "notes": [
+        "Not a storefront assignment.",
+        "Synthetic candidate for QA workflow review only; no real business identity or active-status claim.",
+        "Placed near p4b-object-nyc-footprint-bin-3064901 for candidate-review ergonomics only."
+      ],
+      "reviewPlacement": {
+        "placementMethod": "near-existing-rendered-geometry-for-qa-only",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3064901",
+        "targetSourceFootprintId": "nyc-footprint-bin-3064901",
+        "targetGeometryConfidence": "blocked",
+        "offset": {
+          "x": -0.34,
+          "z": -0.28
+        },
+        "notClaims": [
+          "source-coordinate",
+          "business-location",
+          "storefront-frontage",
+          "entrance-location",
+          "facade-or-signage-location"
+        ]
+      }
+    }
+  ]
+}
