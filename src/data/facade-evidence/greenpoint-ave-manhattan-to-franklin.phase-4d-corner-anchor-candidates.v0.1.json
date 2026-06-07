@@ -1,0 +1,727 @@
+{
+  "schemaVersion": "phase-4d-corner-anchor-candidates.v0.1",
+  "fixtureId": "p4d-corner-anchor-candidates-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4D-5",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "status": "qa-only-unresolved-corner-evidence-to-geometry-anchor-candidates",
+  "generatedFrom": {
+    "facadeEvidencePacketPath": "src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json",
+    "geometryValidationReportPath": "src/data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json",
+    "manifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+    "sourcePolicy": "corner-scoped-batu-supplied-project-owned-evidence-only-no-new-imagery"
+  },
+  "scopeBoundary": {
+    "allowedCornerScopes": [
+      "manhattan_greenpoint",
+      "franklin_greenpoint"
+    ],
+    "blockedScope": "manhattan-to-franklin-mid-corridor",
+    "midCorridorFacadeEvidenceStatus": "blocked_insufficient_evidence",
+    "normalModeUse": "not-rendered",
+    "qaModeUse": "inspector-only-anchor-candidate-review",
+    "canCreateAuthoritativeStorefrontAnchors": false,
+    "canAssignTenantsToFrontages": false,
+    "canPromoteFacadeClaims": false,
+    "canPromoteEntranceClaims": false,
+    "canPromoteSignageClaims": false,
+    "canPromoteActiveStatusClaims": false
+  },
+  "geometryCoverage": {
+    "manhattan_greenpoint": {
+      "status": "represented_by_deterministic_geometry_containers",
+      "method": "Runtime corridor guide labels the high-axis endpoint as Manhattan Ave; listed containers are the highest-axis rendered building containers from the manifest with 4D-1 confidence.",
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064844",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064844",
+          "geometryReferenceId": "nyc-footprint-bin-3064844",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 846.495,
+            "corridorSideOffset": 34.151
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3421612",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3421612",
+          "geometryReferenceId": "nyc-footprint-bin-3421612",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 851.75,
+            "corridorSideOffset": 17.402
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064843",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064843",
+          "geometryReferenceId": "nyc-footprint-bin-3064843",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 863.268,
+            "corridorSideOffset": 34.15
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064842",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064842",
+          "geometryReferenceId": "nyc-footprint-bin-3064842",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 873.537,
+            "corridorSideOffset": 34.06
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3259412",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3259412",
+          "geometryReferenceId": "nyc-footprint-bin-3259412",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 895.918,
+            "corridorSideOffset": 34.527
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        }
+      ],
+      "associationReadiness": "corner_geometry_present_specific_evidence_to_container_association_unresolved_manual_review_required"
+    },
+    "franklin_greenpoint": {
+      "status": "represented_by_deterministic_geometry_containers",
+      "method": "4D-1 validation marks these rendered building containers as the Franklin-end review band.",
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064802",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064802",
+          "geometryReferenceId": "nyc-footprint-bin-3064802",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -50.395,
+            "corridorSideOffset": 36.424
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064688",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064688",
+          "geometryReferenceId": "nyc-footprint-bin-3064688",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -43.976,
+            "corridorSideOffset": -38.252
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337057",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337057",
+          "geometryReferenceId": "nyc-footprint-bin-3337057",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -19.313,
+            "corridorSideOffset": 13.727
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3337034",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
+          "geometryReferenceId": "nyc-footprint-bin-3337034",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -17.724,
+            "corridorSideOffset": -24.957
+          },
+          "geometryConfidence": "uncertain",
+          "confidenceStatus": "review_required_before_later_matching"
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064675",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064675",
+          "geometryReferenceId": "nyc-footprint-bin-3064675",
+          "corridorSide": "left",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -16.704,
+            "corridorSideOffset": -11.6
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review"
+        }
+      ],
+      "associationReadiness": "corner_geometry_present_but_facade_evidence_missing_from_4d4_packet"
+    },
+    "mid_corridor": {
+      "status": "blocked_insufficient_evidence",
+      "reason": "4D-5 authorizes only Manhattan and Franklin corner evidence. No mid-corridor facade evidence is present or indexed."
+    }
+  },
+  "summary": {
+    "evidenceRecordsByCornerScope": {
+      "manhattan_greenpoint": 11,
+      "franklin_greenpoint": 0,
+      "unresolved_unknown": 0
+    },
+    "anchorCandidateCount": 11,
+    "linkedCandidateCount": 0,
+    "unresolvedCandidateCount": 11,
+    "blockedCornerScopeCount": 1,
+    "midCorridorAnchorCandidateCount": 0,
+    "normalModeAnchorCandidateCount": 0,
+    "qaOnlyAnchorCandidateCount": 11
+  },
+  "blockedCornerScopes": [
+    {
+      "cornerScope": "franklin_greenpoint",
+      "status": "blocked_insufficient_evidence",
+      "reason": "Franklin Ave x Greenpoint Ave has deterministic endpoint geometry containers, but no eligible repo-local Batu-supplied/project-owned facade evidence record is present in the 4D-4 packet.",
+      "geometryCoverageStatus": "represented_by_deterministic_geometry_containers",
+      "candidateGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793",
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "qaOnly": true
+    }
+  ],
+  "blockedClaimsPreserved": [
+    "business-identity",
+    "tenant-frontage",
+    "storefront-anchor",
+    "storefront-order",
+    "frontage-width",
+    "entrance-location",
+    "entrance-ownership",
+    "exact-facade-appearance",
+    "signage",
+    "material",
+    "color",
+    "active-status",
+    "production-card",
+    "normal-runtime-rendering"
+  ],
+  "anchorCandidates": [
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-nw-grillpoint-closeup",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
+      "evidencePath": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-nw-grillpoint-facade",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
+      "evidencePath": "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-nw-grillpoint-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
+      "evidencePath": "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-nw-subway-context",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-subway-context",
+      "evidencePath": "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-ne-mcdonalds-closeup",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
+      "evidencePath": "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-ne-mcdonalds-facade",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
+      "evidencePath": "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-ne-mcdonalds-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
+      "evidencePath": "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-se-citizens-facade-a",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
+      "evidencePath": "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected readable local reference. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-se-citizens-facade-b",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
+      "evidencePath": "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-se-citizens-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-wide",
+      "evidencePath": "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    },
+    {
+      "anchorCandidateId": "p4d-corner-anchor-candidate-se-subway-context",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-subway-context",
+      "evidencePath": "docs/mvp-reference-images/southeast-subwayB.jpg",
+      "candidateGeometryContainerId": null,
+      "sideOrderHint": null,
+      "associationStatus": "unresolved",
+      "associationConfidence": "unresolved_corner_scope_only",
+      "supportedClaimLevel": "level-8-facade-signage-evidence-review-only",
+      "blockedClaimLevels": [
+        "level-5-tenant-at-address",
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedReasons": [
+        "not-a-storefront-assignment",
+        "not-a-tenant-frontage-assignment",
+        "no-exact-frontage-order-or-width",
+        "no-entrance-ownership-claim",
+        "no-signage-material-color-or-active-status-claim",
+        "no-production-runtime-use",
+        "specific-evidence-to-geometry-container-association-unresolved"
+      ],
+      "provenanceNotes": [
+        "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+        "Corner scope is known, but this batch does not have enough support to associate the evidence record with one specific rendered geometry container."
+      ],
+      "manualReviewNotes": [
+        "Corner anchor candidate only. Not a storefront assignment.",
+        "Manual Batu review is required before any evidence record can be linked to a specific geometry container.",
+        "Do not infer business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, or exact facade truth."
+      ],
+      "qaOnly": true,
+      "normalModeUse": "not-rendered"
+    }
+  ]
+}

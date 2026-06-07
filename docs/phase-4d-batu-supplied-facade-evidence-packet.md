@@ -8,6 +8,8 @@ Scope: Greenpoint Ave from Manhattan Ave toward Franklin Ave
 
 This packet defines the facade evidence shape and indexes eligible repo-local Batu-supplied/project-owned reference material for future facade/frontage review.
 
+4D-5 correction: evidence must be treated as corner-scoped, not corridor-wide. Current indexed records are scoped to `manhattan_greenpoint`. The repo does not currently contain eligible Franklin-corner facade evidence records in this packet, so Franklin evidence-to-geometry association remains blocked until Batu supplies or identifies repo-local evidence for that corner.
+
 It does not authorize facade imagery generation, storefront anchors, tenant-frontage assignment, exact entrance placement, exact facade/signage/material/color claims, production assets, normal runtime rendering, source expansion, scraping, live APIs, or visual-system work.
 
 ## Evidence Packet Shape
@@ -41,6 +43,14 @@ Repo-local evidence was ingested as a deterministic review-only index.
 
 The indexed records are local field-photo references from `docs/mvp-reference-images/` whose prior repo docs describe them as Batu-supplied or project-owned/repo-local references. The packet intentionally excludes exception-only or restricted-source material.
 
+Every indexed record now carries:
+
+- `cornerScope.scopeId`
+- `cornerScope.label`
+- `cornerScope.notCorridorWideEvidence`
+
+Valid scope IDs are `manhattan_greenpoint`, `franklin_greenpoint`, or `unresolved_unknown`.
+
 The packet does not crop, transform, stylize, generate, copy, or render the image files. It records paths, provenance notes, use boundaries, claim boundaries, and manual review status only.
 
 ## Usage Boundaries
@@ -63,7 +73,7 @@ Disallowed:
 
 Usage rights status is `review_only_owner_confirmation_required_before_promotion` for every record.
 
-No record is attached to a Phase 4D geometry container in this batch. Future anchor work must separately link accepted evidence to a safe or explicitly reviewed geometry container.
+No record is attached to a Phase 4D geometry container in this packet. 4D-5 may create QA-only unresolved anchor candidates, but authoritative storefront anchors remain blocked.
 
 ## Claim Boundaries
 

@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-06
+Last reconciled: 2026-06-07
 
 ## Purpose
 
@@ -55,14 +55,64 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Post-4D-4 facade evidence packet review; no implementation batch is open.
+- Current phase: Post-4D-5 corner anchor-candidate review; no implementation batch is open.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks Batu approval of `Batch 4D-3: Candidate POI QA fixture and overlay` and marks `Batch 4D-4: Batu-supplied facade evidence packet` complete pending Batu review, with no current executable batch and no pre-authorized queue. The proposed next authorization is `Batch 4D-5: Evidence-backed facade/storefront anchors`, only after Batu reviews the 4D-4 output. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D now has a completed review-only 4D-1 geometry validation/gap report and QA-mode inspector confidence visibility classifying 142 rendered buildings as 126 `safe`, 14 `uncertain`, and 2 `blocked`, a completed 4D-2 claim ladder/matching contract at `docs/phase-4d-claim-ladder-matching-contract.md`, a completed 4D-3 synthetic/manual placeholder candidate POI fixture plus QA-only runtime overlay, and a completed 4D-4 review-only facade evidence packet at `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, real-source POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, 4D-5 implementation, asset registry, visual-system work, and self-advancing beyond explicitly approved packet boundaries remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks Batu approval of `Batch 4D-4: Batu-supplied facade evidence packet` and marks `Batch 4D-5: Corner evidence-to-geometry anchor candidates` complete pending Batu review, with no current executable batch and no pre-authorized queue. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D now has a completed review-only 4D-1 geometry validation/gap report and QA-mode inspector confidence visibility classifying 142 rendered buildings as 126 `safe`, 14 `uncertain`, and 2 `blocked`, a completed 4D-2 claim ladder/matching contract at `docs/phase-4d-claim-ladder-matching-contract.md`, a completed 4D-3 synthetic/manual placeholder candidate POI fixture plus QA-only runtime overlay, a completed 4D-4 review-only facade evidence packet at `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`, and a completed 4D-5 QA-only corner anchor-candidate fixture at `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json`. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, real-source POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, authoritative facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, later 4D implementation, asset registry, visual-system work, and self-advancing beyond explicitly approved packet boundaries remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-07 - Batch 4D-5 Corner Evidence-To-Geometry Anchor Candidates
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Create a narrow QA-only corner evidence-to-geometry anchor-candidate layer for Manhattan Ave x Greenpoint Ave and Franklin Ave x Greenpoint Ave only.
+
+Files changed:
+- `scripts/verify-phase-4d-facade-evidence.mjs`
+- `scripts/verify-phase-4d-corner-anchor-candidates.mjs`
+- `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`
+- `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/phase-4d-batu-supplied-facade-evidence-packet.md`
+- `docs/phase-4d-corner-anchor-candidates.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4d-facade-evidence.mjs`
+- `node scripts/verify-phase-4d-corner-anchor-candidates.mjs`
+- `node scripts/verify-phase-4d-candidate-pois.mjs`
+- `node scripts/verify-phase-4d-geometry-validation.mjs`
+- `node scripts/verify-phase-4c-geometry-cues.mjs`
+- `node scripts/verify-phase-4c-qa-facade-slice.mjs`
+- `node scripts/verify-phase-4b-source-fixture.mjs`
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Corrected the 4D-4 evidence packet so every indexed evidence record is corner-scoped and explicitly not corridor-wide.
+- Created a deterministic `phase-4d-corner-anchor-candidates.v0.1` fixture.
+- Recorded Manhattan evidence records: 11; Franklin evidence records: 0; unresolved/unknown evidence records: 0.
+- Recorded deterministic geometry coverage for both corners. Manhattan candidate containers are the high-axis endpoint containers; Franklin candidate containers are the 4D-1 `franklin-end-review-band` containers.
+- Created 11 QA-only Manhattan corner anchor candidates, all unresolved and unlinked because the current evidence does not prove a specific evidence-to-geometry-container association.
+- Kept Franklin blocked for missing eligible repo-local facade evidence in the 4D-4 packet.
+- Kept Manhattan-to-Franklin mid-corridor facade evidence absent and `blocked_insufficient_evidence`.
+- Added QA-only inspector visibility. Normal mode hides anchor-candidate records.
+- Preserved no authoritative storefront anchors, tenant frontage assignments, business identity, active-status, signage, entrance ownership, frontage width/order, material/color, exact facade truth, production cards, new imagery, source expansion, restricted-source use, normal runtime rendering, or visual-system work.
+
+Unresolved decisions:
+- Batu owns review/acceptance of the 4D-5 unresolved anchor-candidate layer, whether any evidence-to-geometry association is acceptable later, whether Franklin evidence should be supplied/identified, and whether any later batch should open.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now marks 4D-5 complete pending Batu review and opens no next batch.
 
 ### 2026-06-07 - Batch 4D-4 Batu-Supplied Facade Evidence Packet
 

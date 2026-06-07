@@ -72,18 +72,29 @@
   "summary": {
     "evidenceRecordCount": 11,
     "ingestionResult": "repo-local-batu-supplied-field-photo-references-indexed-review-only",
+    "evidenceRecordsByCornerScope": {
+      "manhattan_greenpoint": 11,
+      "franklin_greenpoint": 0,
+      "unresolved_unknown": 0
+    },
     "recordsWithAssociatedGeometryContainer": 0,
     "recordsWithStorefrontAssignment": 0,
     "recordsWithTenantAssignment": 0,
     "recordsAllowedForProductionRuntime": 0,
     "recordsAllowedForAssetGeneration": 0,
-    "excludedKnownRestrictedOrExceptionOnlyMaterial": "SW Dunkin / SW subway exception-only references are not indexed in this 4D-4 packet because this batch allows only Batu-supplied/project-owned non-restricted evidence."
+    "excludedKnownRestrictedOrExceptionOnlyMaterial": "SW Dunkin / SW subway exception-only references are not indexed in this 4D-4 packet because this batch allows only Batu-supplied/project-owned non-restricted evidence.",
+    "correctionNote": "4D-5 narrowed this packet to corner-scoped evidence only. Indexed records are not corridor-wide evidence."
   },
   "records": [
     {
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -102,10 +113,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -140,6 +151,11 @@
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -158,10 +174,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -196,6 +212,11 @@
       "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -214,10 +235,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -252,6 +273,11 @@
       "evidenceId": "p4d-facade-evidence-nw-subway-context",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -271,10 +297,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -309,6 +335,11 @@
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -327,10 +358,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -365,6 +396,11 @@
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -383,10 +419,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -421,6 +457,11 @@
       "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -439,10 +480,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -477,6 +518,11 @@
       "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected readable local reference. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -495,10 +541,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -533,6 +579,11 @@
       "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -551,10 +602,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -589,6 +640,11 @@
       "evidenceId": "p4d-facade-evidence-se-citizens-wide",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -607,10 +663,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [
@@ -645,6 +701,11 @@
       "evidenceId": "p4d-facade-evidence-se-subway-context",
       "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
       "filePath": "docs/mvp-reference-images/southeast-subwayB.jpg",
+      "cornerScope": {
+        "scopeId": "manhattan_greenpoint",
+        "label": "Manhattan Ave x Greenpoint Ave",
+        "notCorridorWideEvidence": true
+      },
       "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
       "allowedUse": [
         "facade-evidence-review",
@@ -664,10 +725,10 @@
       ],
       "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
       "associatedCorridorSideOrGeometryContainer": {
-        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSegment": "manhattan_greenpoint",
         "corridorSide": "unknown_for_phase_4d_container",
         "geometryContainerId": null,
-        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+        "notes": "Not linked to a Phase 4D rendered geometry container in the 4D-4 evidence packet."
       },
       "confidenceReviewStatus": "manual_review_required",
       "claimLevelsSupported": [

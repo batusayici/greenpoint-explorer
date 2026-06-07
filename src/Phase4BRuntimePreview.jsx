@@ -5,6 +5,7 @@ import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-fra
 import qaFacadeSliceFixture from "./data/facade-cues/greenpoint-ave-franklin-end.phase-4c-qa-facade-slice.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
+import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
 import geometryFixture from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
@@ -71,6 +72,7 @@ export default function Phase4BRuntimePreview() {
   const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
   const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
   const candidatePoiIndex = useMemo(() => buildCandidatePoiIndex(candidatePoiFixture), []);
+  const cornerAnchorCandidateIndex = useMemo(() => buildCornerAnchorCandidateIndex(cornerAnchorCandidateFixture), []);
   const hostRef = useRef(null);
   const stateRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -82,6 +84,7 @@ export default function Phase4BRuntimePreview() {
   const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
+  const inspectedCornerAnchorCandidates = inspectedObject ? cornerAnchorCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const reviewTotals = useMemo(() => (
     buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, geometryValidationReport, candidatePoiFixture)
   ), [runtimeScene]);
@@ -325,6 +328,7 @@ export default function Phase4BRuntimePreview() {
             qaFacadeSliceFixture={qaFacadeSliceFixture}
             geometryValidationReport={geometryValidationReport}
             candidatePoiFixture={candidatePoiFixture}
+            cornerAnchorCandidateFixture={cornerAnchorCandidateFixture}
             storefrontAnchors={runtimeScene.storefrontAnchors}
           />
         ) : null}
@@ -394,6 +398,8 @@ export default function Phase4BRuntimePreview() {
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
           candidatePoiFixture={candidatePoiFixture}
+          inspectedCornerAnchorCandidates={qaEnabled ? inspectedCornerAnchorCandidates : []}
+          cornerAnchorCandidateFixture={cornerAnchorCandidateFixture}
           qaEnabled={qaEnabled}
         />
       </section>
@@ -488,6 +494,7 @@ function QADebugPanel({
   qaFacadeSliceFixture,
   geometryValidationReport,
   candidatePoiFixture,
+  cornerAnchorCandidateFixture,
   storefrontAnchors,
 }) {
   const confidence = inspectedValidation?.geometryConfidence?.label ?? "none";
@@ -500,6 +507,9 @@ function QADebugPanel({
         <li><span className="phase4b-side-dot phase4b-side-blocked" /> Geometry blocked: {geometryValidationReport.summary.confidenceCounts.blocked}</li>
         <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Candidate POIs: {candidatePoiFixture.summary.candidateCount}</li>
         <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Not a storefront assignment</li>
+        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Corner anchor candidates: {cornerAnchorCandidateFixture.summary.anchorCandidateCount}</li>
+        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Linked / unresolved: {cornerAnchorCandidateFixture.summary.linkedCandidateCount} / {cornerAnchorCandidateFixture.summary.unresolvedCandidateCount}</li>
+        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Corner anchor candidate only. Not a storefront assignment.</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA street-feel slice: {qaFacadeSliceFixture.facades.length}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Slice labels: {qaFacadeSliceFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Non-factual QA rhythm only</li>
@@ -560,6 +570,8 @@ function InspectorPanel({
   inspectedValidation,
   inspectedCandidatePois,
   candidatePoiFixture,
+  inspectedCornerAnchorCandidates,
+  cornerAnchorCandidateFixture,
   qaEnabled,
 }) {
   const inspectorRef = useRef(null);
@@ -715,6 +727,41 @@ function InspectorPanel({
         )}
       </section>
 
+      {qaEnabled ? (
+        <section>
+          <h2>4D Corner Anchor Candidates</h2>
+          <p>Corner anchor candidate only. Not a storefront assignment.</p>
+          <ul>
+            <li>
+              <span>Scope</span>
+              <small>Manhattan corner / Franklin corner only; mid-corridor absent</small>
+            </li>
+            <li>
+              <span>Linked / unresolved</span>
+              <small>{cornerAnchorCandidateFixture.summary.linkedCandidateCount} / {cornerAnchorCandidateFixture.summary.unresolvedCandidateCount}</small>
+            </li>
+            <li>
+              <span>Franklin status</span>
+              <small>{cornerAnchorCandidateFixture.blockedCornerScopes[0]?.status ?? "none"}</small>
+            </li>
+            <li>
+              <span>Selected candidates</span>
+              <small>{inspectedCornerAnchorCandidates.length}</small>
+            </li>
+            {(inspectedCornerAnchorCandidates.length
+              ? inspectedCornerAnchorCandidates
+              : cornerAnchorCandidateFixture.anchorCandidates).map((candidate) => (
+                <li key={candidate.anchorCandidateId}>
+                  <span>{candidate.evidenceId}</span>
+                  <small>
+                    {candidate.cornerScope} / {candidate.candidateGeometryContainerId ?? "geometry unresolved"} / {candidate.associationConfidence} / {candidate.supportedClaimLevel} / blocked {candidate.blockedClaimLevels.join(", ")}
+                  </small>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ) : null}
+
       <section>
         <h2>Geometry-Only Facade Cue</h2>
         <ul>
@@ -840,6 +887,18 @@ function buildCandidatePoiIndex(fixture) {
   const index = new Map();
   for (const candidate of fixture.candidates) {
     const targetId = candidate.reviewPlacement.targetRenderedObjectId;
+    const records = index.get(targetId) ?? [];
+    records.push(candidate);
+    index.set(targetId, records);
+  }
+  return index;
+}
+
+function buildCornerAnchorCandidateIndex(fixture) {
+  const index = new Map();
+  for (const candidate of fixture.anchorCandidates) {
+    const targetId = candidate.candidateGeometryContainerId;
+    if (!targetId) continue;
     const records = index.get(targetId) ?? [];
     records.push(candidate);
     index.set(targetId, records);
