@@ -1,0 +1,707 @@
+{
+  "schemaVersion": "phase-4d-batu-supplied-facade-evidence.v0.1",
+  "packetId": "p4d-batu-supplied-facade-evidence-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4D-4",
+  "reviewOnly": true,
+  "status": "review-only-facade-evidence-index",
+  "generatedFrom": {
+    "claimContractPath": "docs/phase-4d-claim-ladder-matching-contract.md",
+    "localEvidenceRoots": [
+      "docs/mvp-reference-images/"
+    ],
+    "sourcePolicy": "repo-local-batu-supplied-or-project-owned-evidence-only"
+  },
+  "packetBoundary": {
+    "normalRuntimeUse": "not-rendered",
+    "qaRuntimeUse": "none-in-this-batch",
+    "canAffectNormalRuntime": false,
+    "canCreateProductionAssets": false,
+    "canCreateStorefrontAnchors": false,
+    "canAssignTenantsToFrontages": false,
+    "canPromoteFacadeClaims": false,
+    "canPromoteEntranceClaims": false,
+    "canPromoteSignageClaims": false,
+    "canPromoteActiveStatusClaims": false
+  },
+  "claimBoundary": {
+    "allowedClaimLevels": [
+      {
+        "level": 8,
+        "claim": "facade/signage evidence review",
+        "status": "manual_review_required",
+        "limit": "Evidence may be reviewed for future facade/frontage questions, but it does not promote exact facade, signage, material, color, entrance, frontage, tenant, active-status, or production asset claims."
+      }
+    ],
+    "blockedClaimLevels": [
+      {
+        "level": 6,
+        "claim": "storefront/frontage claim",
+        "reason": "No storefront anchor, tenant frontage, frontage order, or width assignment is created in 4D-4."
+      },
+      {
+        "level": 7,
+        "claim": "entrance claim",
+        "reason": "No entrance location or tenant/building entrance assignment is created in 4D-4."
+      },
+      {
+        "level": 8,
+        "claim": "facade/signage promotion",
+        "reason": "Records remain evidence-review material only and do not promote exact facade or signage claims."
+      },
+      {
+        "level": 9,
+        "claim": "landmark/special-treatment claim",
+        "reason": "No landmark, transit, civic, or special art treatment is approved in 4D-4."
+      }
+    ],
+    "requiredBlockedClaims": [
+      "active-status-finality",
+      "business-storefront-anchor",
+      "exact-address-placement",
+      "exact-entrance-location",
+      "exact-facade-appearance",
+      "exact-facade-color",
+      "exact-facade-material",
+      "exact-frontage-order",
+      "exact-signage-reproduction",
+      "production-asset-readiness",
+      "storefront-segmentation",
+      "tenant-frontage-assignment"
+    ]
+  },
+  "summary": {
+    "evidenceRecordCount": 11,
+    "ingestionResult": "repo-local-batu-supplied-field-photo-references-indexed-review-only",
+    "recordsWithAssociatedGeometryContainer": 0,
+    "recordsWithStorefrontAssignment": 0,
+    "recordsWithTenantAssignment": 0,
+    "recordsAllowedForProductionRuntime": 0,
+    "recordsAllowedForAssetGeneration": 0,
+    "excludedKnownRestrictedOrExceptionOnlyMaterial": "SW Dunkin / SW subway exception-only references are not indexed in this 4D-4 packet because this batch allows only Batu-supplied/project-owned non-restricted evidence."
+  },
+  "records": [
+    {
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-closeup.jpeg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata dated 2026-05-30. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-facade.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as a local reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-nw-subway-context",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northwest-subwayA.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as a local station-area context reference normalized to readable JPG after earlier review. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim",
+        "exact-station-geometry-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer station geometry, storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northeast-mcdonalds-closeup.jpeg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected local field-photo reference with iPhone 15 Pro metadata. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northeast-mcdonalds-facadeA.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/northeast-mcdonalds-wide.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/southeast-citizens-facadeA.jpeg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable local reference. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/southeast-citizens-facadeB.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-se-citizens-wide",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/southeast-citizens-wide.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    },
+    {
+      "evidenceId": "p4d-facade-evidence-se-subway-context",
+      "sourceOwnerSupplier": "Batu-supplied repo-local field photo reference",
+      "filePath": "docs/mvp-reference-images/southeast-subwayB.jpg",
+      "captureProvenanceNotes": "Prior repo docs record this as an inspected readable JPG export from the local reference set. Use remains review-only until Batu confirms rights and intended use for a later batch.",
+      "allowedUse": [
+        "facade-evidence-review",
+        "provenance-review",
+        "future-manual-review-input-if-batu-approves"
+      ],
+      "disallowedUse": [
+        "normal-runtime-rendering",
+        "production-asset-use",
+        "asset-generation-input",
+        "texture-extraction",
+        "tracing",
+        "storefront-anchor-creation",
+        "tenant-frontage-assignment",
+        "exact-facade-or-signage-claim",
+        "exact-station-geometry-claim"
+      ],
+      "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+      "associatedCorridorSideOrGeometryContainer": {
+        "corridorSegment": "west_anchor_manhattan_greenpoint_context",
+        "corridorSide": "unknown_for_phase_4d_container",
+        "geometryContainerId": null,
+        "notes": "Not linked to a Phase 4D rendered geometry container in this batch."
+      },
+      "confidenceReviewStatus": "manual_review_required",
+      "claimLevelsSupported": [
+        "level-8-facade-signage-evidence-review-only"
+      ],
+      "blockedClaimLevels": [
+        "level-6-storefront-frontage",
+        "level-7-entrance",
+        "level-8-facade-signage-promotion",
+        "level-9-special-treatment"
+      ],
+      "blockedClaims": [
+        "active-status-finality",
+        "business-storefront-anchor",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-facade-color",
+        "exact-facade-material",
+        "exact-frontage-order",
+        "exact-signage-reproduction",
+        "production-asset-readiness",
+        "storefront-segmentation",
+        "tenant-frontage-assignment"
+      ],
+      "manualReviewNotes": [
+        "Treat as provenance/evidence material only.",
+        "Do not infer station geometry, storefront order, entrance placement, tenant frontage, exact signage, material, color, or active status."
+      ]
+    }
+  ],
+  "futureUseNotes": [
+    "Future facade/frontage batches may reference this packet only as evidence/provenance input after Batu accepts the packet and opens a new batch.",
+    "Any future anchor must separately link approved evidence to a safe or explicitly reviewed geometry container.",
+    "Any future visual work needs Batu approval for usage rights, claim level, treatment, and whether exact or stylized representation is allowed."
+  ]
+}

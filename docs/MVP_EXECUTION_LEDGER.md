@@ -55,14 +55,54 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Post-4D-3 candidate POI QA review; no implementation batch is open.
+- Current phase: Post-4D-4 facade evidence packet review; no implementation batch is open.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks Batu approval of `Batch 4D-2: Claim ladder / matching contract` and marks `Batch 4D-3: Candidate POI QA fixture and overlay` complete pending Batu review, with no current executable batch and no pre-authorized queue. The proposed next authorization is `Batch 4D-4: Batu-supplied facade evidence packet`, only after Batu reviews the 4D-3 output. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D now has a completed review-only 4D-1 geometry validation/gap report and QA-mode inspector confidence visibility classifying 142 rendered buildings as 126 `safe`, 14 `uncertain`, and 2 `blocked`, a completed 4D-2 claim ladder/matching contract at `docs/phase-4d-claim-ladder-matching-contract.md`, and a completed 4D-3 synthetic/manual placeholder candidate POI fixture plus QA-only runtime overlay. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, real-source POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, 4D-4 implementation, asset registry, visual-system work, and self-advancing beyond explicitly approved packet boundaries remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks Batu approval of `Batch 4D-3: Candidate POI QA fixture and overlay` and marks `Batch 4D-4: Batu-supplied facade evidence packet` complete pending Batu review, with no current executable batch and no pre-authorized queue. The proposed next authorization is `Batch 4D-5: Evidence-backed facade/storefront anchors`, only after Batu reviews the 4D-4 output. Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope. `docs/DOCS_INDEX.md` routes docs authority. `docs/phase-4-execution-roadmap.md` is the primary Phase 4 operational roadmap. Existing Phase 4A/4B docs are supporting detail docs. `docs/phase-4c-recognizable-facade-cue-plan.md` remains the 4C planning detail doc. Phase 4B has planning contracts, one minimal source fixture/verifier proof, one deterministic primitive compiler/generated semantic scene manifest, one deterministic interactive 3D graybox/isometric runtime preview, one Batu-approved runtime legibility revision, one Batu-accepted source-backed context building coverage expansion, one Batu-reviewed recognizability QA pass with Partial pass result, and one Batu-reviewed 4B-6R correction with CONDITIONAL PASS. Phase 4C now has a cue taxonomy, a completed geometry-only 4C-2 proof, a completed 4C-4 QA-mode/manual-draft/non-factual facade rhythm slice, and a completed 4C-5 street-feel tuning pass committed at `eaf3418`; the generic fictional-facade tuning lane is now closed. Phase 4D now has a completed review-only 4D-1 geometry validation/gap report and QA-mode inspector confidence visibility classifying 142 rendered buildings as 126 `safe`, 14 `uncertain`, and 2 `blocked`, a completed 4D-2 claim ladder/matching contract at `docs/phase-4d-claim-ladder-matching-contract.md`, a completed 4D-3 synthetic/manual placeholder candidate POI fixture plus QA-only runtime overlay, and a completed 4D-4 review-only facade evidence packet at `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`. React Three Fiber, Drei, Cesium, Mapbox, deck.gl, GLB/glTF pipelines/assets, raster/generated/stock/production assets, screenshot tooling dependencies, package dependencies without explicit authorization, backend/CMS/persistence/analytics, deployment tooling, broad map systems, business verification, real-source POI enrichment, new APIs, scraping, LiveXYZ/Foursquare/local-directory calls, storefront segmentation, business cards, evidence-approved facade cues, exact facade claims, facade/storefront/anchor semantics, entrance/signage/address claim promotion, source expansion beyond existing manifest/geometry support, generic procedural city generation, random generation, infinite wrapping, public/deployment work, unrelated camera tuning, later 4C tuning, 4D-5 implementation, asset registry, visual-system work, and self-advancing beyond explicitly approved packet boundaries remain blocked unless a later brief explicitly opens them or lists them in a pre-authorized queue before a hard review gate.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-07 - Batch 4D-4 Batu-Supplied Facade Evidence Packet
+
+Status:
+- Complete pending Batu review.
+
+Scope:
+- Define and ingest a review-only Batu-supplied/project-owned facade evidence packet with provenance, usage boundaries, review status, and 4D-2 claim constraints for future facade/frontage work.
+
+Files changed:
+- `scripts/verify-phase-4d-facade-evidence.mjs`
+- `src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json`
+- `docs/phase-4d-batu-supplied-facade-evidence-packet.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4d-facade-evidence.mjs`
+- `node scripts/verify-phase-4d-candidate-pois.mjs`
+- `node scripts/verify-phase-4d-geometry-validation.mjs`
+- `node scripts/verify-phase-4c-geometry-cues.mjs`
+- `node scripts/verify-phase-4c-qa-facade-slice.mjs`
+- `node scripts/verify-phase-4b-source-fixture.mjs`
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- `git diff --check`
+- `npm run build` not run because no runtime or implementation files changed.
+
+Outcome:
+- Added a deterministic `phase-4d-batu-supplied-facade-evidence.v0.1` packet with 11 eligible repo-local Batu-supplied/project-owned field-photo reference records.
+- Defined the evidence packet shape: stable evidence ID, source owner/supplier, file path/reference, capture/provenance notes, allowed/disallowed use, usage-rights status, associated corridor side or geometry container, confidence/review status, supported 4D-2 claim levels, blocked claim levels, and manual review notes.
+- Added verifier coverage for provenance, allowed/disallowed use, restricted-source contamination, runtime/production promotion, storefront/frontage/tenant assignment, missing claim-state boundaries, file existence, and deterministic output.
+- Preserved no restricted-source evidence indexing, storefront anchors, tenant frontage assignments, geometry-container associations, exact facade/signage/entrance/material/color claims, active-status claims, normal runtime rendering, production assets, asset-generation input, source expansion, scraping, live APIs, or visual-system work.
+
+Unresolved decisions:
+- Batu owns review/acceptance of the 4D-4 evidence packet, usage-rights sufficiency, which records may be used later, and whether to authorize 4D-5, revise the packet, or choose a different next batch.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now marks 4D-4 complete pending Batu review and proposes `Batch 4D-5: Evidence-backed facade/storefront anchors` only after review.
 
 ### 2026-06-06 - Batch 4D-3 Candidate POI QA Fixture and Overlay
 
