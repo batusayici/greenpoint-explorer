@@ -1,81 +1,198 @@
-# Current Execution Brief - Post-4D-7 Manual Corner Association Review
+# Current Execution Brief - Batch 4G External Source Policy And Coverage Audit Contract
 
-Status: Batu approved `Batch 4D-6: Corner evidence folder reconciliation + Franklin evidence intake`. `Batch 4D-7: Manual corner evidence-to-geometry association review` is complete pending Batu review. The project now has a QA-only manual review packet that lists possible deterministic corner geometry containers for each Manhattan and Franklin evidence record without selecting, approving, or linking any evidence-to-geometry association.
+Status: Batu approved `Batch 4F-1: Facade Cue Model Hardening`. `Batch 4G: External Source Policy And Coverage Audit Contract` is open.
 
-Current executable batch: none.
-
-Proposed next authorization: none. Batu review is required before any later geometry selection/linking, anchor, evidence, facade, storefront, visual, or source work.
+Current executable batch: `Batch 4G: External Source Policy And Coverage Audit Contract`.
 
 Pre-authorized queue: none.
 
-Hard Batu review gate: stop here for Batu review of 4D-7. Do not self-open any later 4D batch.
-
 Self-advance allowed: no.
 
-Owner boundary: Batu owns creative/product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, usage-rights acceptance, production/public claims, visual acceptance, geometry-confidence acceptance, evidence-to-container association acceptance, facade imagery approval, exact geometry/frontage/entrance approval, business verification approval, evidence-approved facade cue approval, art-direction approval, and any later MVP gates.
+Hard Batu review gate: stop after 4G for Batu review. Do not proceed to 4G-A, 4G-B, 4H, NYC 3D / CityGML / 3DCityDB source access or audit, Mapillary/KartaView access or audit, Google 3D Tiles/Street View benchmark work, Qwen/Oxen visual-system work, source expansion, storefront/frontage/entrance claims, business linkage, production exposure, normal-mode exposure, asset registry, visual-system work, art-direction translation, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-## Operating Model
+Owner boundary: Batu owns visual acceptance, product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, usage-rights acceptance, production/public claims, geometry-confidence acceptance, evidence-to-container association acceptance, exact geometry/frontage/entrance approval, business verification approval, facade cue promotion approval, art-direction approval, and any later MVP gates.
 
-Approval governs boundaries, not every action.
+## Batch 4G Objective
 
-Batu approval should define the active work packet, allowed scope, hard stop conditions, truth gates, verification expectations, commit behavior, and final review gate. Codex executes inside those boundaries and stops when a boundary, truth gate, verification failure, dirty-tree issue, or unresolved ambiguity is hit.
+Create the source-policy and coverage-audit contract for future external source work, while keeping geometry confidence separate from facade evidence and preserving all evidence, source-access, production, and claim-promotion gates.
 
-Truth gates remain strict: no real business/storefront/tenant/facade/frontage/entrance/signage claims without approved evidence, no source expansion without approval, and no claim-level escalation without approval.
+Allowed work:
 
-QA mode remains the experimental product lab: it may contain draft, non-factual, status-labeled approximations, while normal mode remains protected.
+- Define source-lane roles and boundaries for `4G-A: Geometry Source Audit` and `4G-B: Facade Evidence Source Audit`.
+- Formalize NYC 3D / CityGML / 3DCityDB as future geometry-confidence candidates only.
+- Formalize Mapillary/KartaView as future facade/storefront evidence candidates only.
+- Preserve Google 3D Tiles/Street View as benchmark-only or narrow-exception material unless separately cleared.
+- Preserve Qwen/Oxen as deferred 4M visual-system acceleration, not evidence.
+- Specify allowed/prohibited uses for access, attribution, storage/cache, derivative use, extraction, benchmark use, render use, training use, and production use.
+- Define review-only coverage-audit contract fields and acceptance criteria without performing source access or ingestion.
+- Update control docs and ledger to mark 4F-1 approved and 4G opened.
 
-## 4D Outputs
+Blocked:
 
-4D-1 completed a deterministic review-only geometry validation/gap report and QA-only inspector confidence visibility for 142 rendered buildings: 126 `safe`, 14 `uncertain`, and 2 `blocked`.
+- No NYC 3D / CityGML / 3DCityDB access, download, cache, ingestion, conversion, audit execution, or render use.
+- No Mapillary/KartaView access, download, cache, ingestion, extraction, audit execution, imagery use, or render use.
+- No Google 3D Tiles/Street View benchmark execution, imagery storage, geometry extraction, texture use, training use, or production visual pipeline.
+- No Qwen/Oxen work.
+- No source expansion beyond contract definition.
+- No business linkage.
+- No exact storefront/frontage/entrance claims.
+- No production assets.
+- No normal-mode exposure.
+- No full corridor expansion.
+- No art-direction translation.
 
-4D-2 completed `docs/phase-4d-claim-ladder-matching-contract.md`, defining claim states and nine claim levels from geometry container through landmark/special-treatment.
+## Completed 4F-1 Result
 
-4D-3 completed a synthetic/manual placeholder candidate POI fixture and QA-only runtime marker/inspector layer. It did not add real POIs, businesses, active-status truth, storefront assignments, facade imagery, source expansion, or production cards.
+Batch 4F-1 hardened the QA-only facade cue model so future endpoint and corridor evidence can attach to stable facade plane, streetwall slot, side-return, depth/setback, ground-contact, and placeholder bay structures without creating storefront, entrance, business, production, or normal-mode claims. Batu approved 4F-1 and opened 4G.
 
-4D-4 completed a review-only facade evidence packet and verifier. 4D-5 corrected the packet so every evidence record is explicitly corner-scoped and not corridor-wide.
+What changed:
 
-4D-6 reconciled moved evidence folders and added Batu-supplied Franklin evidence. The packet has 11 `manhattan_greenpoint` records, 11 `franklin_greenpoint` records, zero stale flat evidence paths, 22 QA-only unresolved corner anchor candidates, and no evidence-to-geometry links.
+- Added a top-level `facadeCueModelPolicy` to the 4E fixture for the QA-only 4F-1 model contract.
+- Added per-record `qaFacadeModel` blocks with stable unique `facadePlaneId` values.
+- Added streetwall slot/layout contracts with slot extents, slot order, slot count, street-edge alignment, and minimum rendered gaps.
+- Formalized side-return/corner-wrap fields and depth/setback/ground-contact fields without promoting entrance, frontage, storefront, material, or exact facade claims.
+- Added storefront bay placeholders only as `qa_non_claim_storefront_bay_placeholder` records.
+- Added status/confidence states and blocked-promotion fields that keep business linkage, storefront anchors, exact frontage, exact entrance, normal-mode rendering, production assets, and public/product claims blocked.
+- Added a dedicated 4F verifier for facade plane IDs, slot extents, rendered gaps, QA-only exposure, required source/evidence references, placeholder bay boundaries, and forbidden raw claim fields.
 
-4D-7 completed:
+Preserved boundaries:
 
-- Added a QA-only manual association review fixture.
-- Added a deterministic verifier for the association review fixture.
-- Added a 4D-7 review doc.
-- Listed 8 possible deterministic corner geometry containers for each Manhattan evidence record.
-- Listed 8 possible deterministic corner geometry containers for each Franklin evidence record.
-- Kept every review record provisional, unresolved, review-only, QA-only, and not rendered in normal mode.
-- Preserved 0 selected associations, 0 approved associations, 0 linked associations, 0 authoritative anchors, 0 storefront anchors, 0 tenant frontage assignments, 0 promoted claims, and 0 mid-corridor candidates.
-- Preserved mid-corridor evidence as `blocked_insufficient_evidence`.
+- No Mapillary/KartaView ingestion or coverage audit.
+- No business linkage.
+- No exact storefront/frontage/entrance claims.
+- No production assets.
+- No normal-mode exposure.
+- No full corridor expansion.
+- No art-direction translation.
 
-Verification completed:
+## 4F-1 Review Packet
 
-- `node scripts/verify-phase-4d-manual-corner-associations.mjs`
-- `node scripts/verify-phase-4d-facade-evidence.mjs`
-- `node scripts/verify-phase-4d-corner-anchor-candidates.mjs`
-- `node scripts/verify-phase-4d-corner-evidence-paths.mjs`
-- `node scripts/verify-phase-4d-candidate-pois.mjs`
-- `node scripts/verify-phase-4d-geometry-validation.mjs`
-- `node scripts/verify-phase-4c-geometry-cues.mjs`
-- `node scripts/verify-phase-4c-qa-facade-slice.mjs`
-- `node scripts/verify-phase-4b-source-fixture.mjs`
-- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- Fixture/model: `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json`
+- 4F verifier: `scripts/verify-phase-4f-facade-cue-model.mjs`
+- Review note: `docs/phase-4f-facade-cue-model-hardening.md`
+- Existing runtime consumer preserved: `src/Phase4BRuntimePreview.jsx`
+
+## 4F-1 Verification Completed
+
+- `node scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
+- `node scripts/verify-phase-4f-facade-cue-model.mjs`
+- Full existing 4D/4C/4B verifier chain.
+- `npm run build`
 - `git diff --check`
 
-`npm run build` was not run because no runtime files were touched.
+## Completed 4E-5 Result
 
-## Hard Stops
+Batch 4E-5 corrected the endpoint facade proof so Manhattan and Franklin endpoint facade records read more clearly as grounded architectural QA volumes rather than ghosted translucent panels. The pass remains QA-only, evidence-informed, non-factual, and normal-mode protected.
+
+What changed:
+
+- Updated the 4E fixture to phase `4E-5` with a QA-only render-legibility contract, opacity minimums, required silhouette hierarchy, computed-render-gap policy, and wider Franklin rendered slot offsets.
+- Extended the 4E verifier to compute rendered facade extents from the geometry cue plus QA composition, enforce minimum gaps, require opaque mass/face/return/base/ground-contact values, require side returns and curb/sidewalk grounding, and preserve blocked claims.
+- Reworked the QA renderer so evidence facade boxes are born opaque/depth-writing, the canvas clears as a non-alpha renderer, evidence-target graybox underlays are hidden in QA, synthetic context remains translucent, and secondary detail layers no longer dominate the endpoint silhouette.
+- Recaptured normal, QA overview, Manhattan endpoint, Franklin endpoint, and mobile containment screenshots under `docs/review-screenshots/phase-4e-5-opaque-volumetric-legibility-pass/`.
+
+Blocked:
+
+- No Mapillary/KartaView work.
+- No source expansion.
+- No facade model hardening beyond checks needed for this rendering correction.
+- No storefront/frontage/entrance claims.
+- No business linkage.
+- No production assets.
+- No normal-mode exposure.
+- No corridor-wide expansion.
+- No 4F work.
+
+## Updated Roadmap Posture
+
+This brief opens only 4G source-policy and coverage-audit contract work. It does not open 4G-A, 4G-B, source expansion, NYC 3D / CityGML / 3DCityDB access or audit, Mapillary/KartaView access or audit, source ingestion, Google 3D Tiles/Street View benchmark work, Qwen/Oxen visual-system work, corridor expansion, business linkage, exact storefront/frontage/entrance claims, production assets, normal-mode exposure, or art-direction translation.
+
+Current state:
+
+- Existing scene state: source-backed graybox Greenpoint Ave corridor plus QA-only endpoint facade experiments.
+- 4E-4 received a conditional pass.
+- 4E-5 passed Batu visual review.
+- 4F-1 is approved by Batu.
+- 4G is open as the current source-policy and coverage-audit contract batch.
+- No authoritative business linkage, exact storefront/frontage/entrance claims, production assets, normal-mode exposure, or full art-directed corridor exists yet.
+
+Planned gate sequence after Batu review, subject to later explicit current briefs:
+
+1. 4E gate: endpoint facade visual review.
+2. 4F: facade cue model hardening.
+3. 4G: external source policy and coverage audit contract.
+4. 4G-A: geometry source audit for NYC 3D / CityGML / 3DCityDB.
+5. 4G-B: facade evidence source audit for Mapillary/KartaView.
+6. 4H: facade evidence intake workflow.
+7. 4I: corridor facade cue expansion.
+8. 4J: storefront bay/frontage candidate layer.
+9. 4K: business/source linkage.
+10. 4L: evidence-backed QA corridor render.
+11. 4M: asset registry / visual system / art-direction translation.
+12. 4N: normal-mode promotion + recognition QA.
+
+4G must keep geometry confidence separate from facade evidence. NYC 3D / CityGML / 3DCityDB is a future geometry-confidence candidate only: it may help evaluate building heights, massing, roof volumes, block gaps, and better review-only geometry containers, but it must not prove storefront frontage, entrances, tenants, signage, facade appearance, or business assignment. Mapillary/KartaView are preferred external candidate imagery lanes for facade/storefront evidence pending explicit source-policy approval, not approved primary production sources. Batu-supplied imagery remains the controlled fallback and adjudication source for gaps, ambiguity, or unsupported claims. Google 3D Tiles/Street View remains benchmark-only or narrow-exception material unless separately cleared, and must not become source-of-truth, stored facade reference, extracted geometry, texture source, training input, or production visual pipeline. Qwen/Oxen is deferred to 4M as a possible visual-system accelerator trained only from owned/approved references, deterministic cue blueprints, and Batu-approved style targets.
+
+## Completed 4E-4 Result
+
+Batch 4E-4 corrected the six QA-only evidence-informed endpoint facade records so they render as visibly separate, grounded, volumetric endpoint corner building blocks instead of clustered flat facade props.
+
+What changed:
+
+- Added QA-only slot/depth metadata to the 4E fixture: streetwall slots, slot gaps, footprint depth, facade thickness, corner return depth, storefront setback, sign-band depth, window relief depth, parapet/cornice projection, street-edge alignment, ground-plane extent, and synthetic-context visibility policy.
+- Extended the 4E verifier to require exactly six rendered QA records, six unique visual slots, minimum depth/separation values, real side returns, QA-only status, blocked claims, and non-promotable synthetic context.
+- Reworked the existing Three.js QA runtime so evidence facades render as volumetric blocks with body depth, front facade thickness, return walls, storefront setback, projected sign bands, window relief, parapet/cornice relief, contact shadow, sidewalk/curb/street slabs, and very low-contrast synthetic context.
+- Tuned Manhattan and Franklin endpoint review cameras and QA UI so the required screenshots frame grounded endpoint architecture without the large semantic panel covering the scene.
+- Captured normal, QA overview, Manhattan endpoint, Franklin endpoint, and mobile containment screenshots under `docs/review-screenshots/phase-4e-4-endpoint-facade-record-separation-depth-correction/`.
+
+Preserved boundaries:
+
+- QA-only evidence-informed facade records.
+- Normal mode remains protected.
+- Business evidence remains not connected.
+- Synthetic context remains labeled as non-evidence placeholder and cannot promote to evidence.
+- No real business identity, signage text/logos, exact storefront frontage, exact address, active-status claim, production asset, normal-mode exposure, public/product claim, source expansion, new renderer, or new package.
+- No 4F work.
+
+## Completed 4E Review Packet
+
+- Fixture: `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json`
+- Verifier: `scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
+- Runtime consumer: `src/Phase4BRuntimePreview.jsx`
+- Styles: `src/styles.css`
+- Review note: `docs/phase-4e-evidence-informed-qa-facade-scene-proof.md`
+- Screenshots: `docs/review-screenshots/phase-4e-4-endpoint-facade-record-separation-depth-correction/`
+
+## Verification Completed
+
+- `node scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
+- Full existing 4D/4C/4B verifier chain.
+- `npm run build`
+- `git diff --check`
+- Browser QA smoke at `http://127.0.0.1:5180/`:
+  - normal mode hides QA facades and reports evidence facades as QA off;
+  - QA mode shows 6 evidence-informed facades and 6 unique visual slots;
+  - Manhattan and Franklin endpoint screenshots show three separated volumetric facade/building blocks per endpoint;
+  - business evidence remains not connected;
+  - synthetic context remains labeled non-evidence;
+  - large semantic panel is hidden during QA screenshot review;
+  - raw prohibited fields are absent from visible UI.
+
+## Stop Conditions
 
 Stop and report before:
 
-- Opening any later 4D batch.
-- Selecting, approving, or linking an evidence record to a specific geometry container.
-- Creating authoritative storefront anchors.
+- Opening any later batch without Batu approval.
+- Proceeding to 4G-A, 4G-B, 4H, or any later batch.
+- Connecting business evidence.
+- Selecting, approving, or linking an evidence record to a specific geometry container as authoritative.
+- Creating storefront anchors.
 - Assigning tenants to storefronts/frontages.
-- Inferring business identity, active status, signage, entrance ownership, frontage width, storefront order, material, color, exact address placement, or exact facade truth.
-- Generating, cropping, transforming, stylizing, or ingesting new imagery.
+- Claiming business identity, active status, signage, entrance ownership, frontage width/order, material/color, exact address placement, or exact facade truth.
+- Generating, cropping, transforming, stylizing, tracing, texturing, or ingesting new imagery.
 - Using restricted or terms-uncertain sources, scraping, live APIs, or source expansion.
-- Treating Franklin evidence as corridor-wide evidence.
-- Creating mid-corridor candidates.
+- Treating endpoint evidence as corridor-wide evidence.
+- Creating mid-corridor facade candidates.
 - Modifying normal runtime rendering.
 - Creating production cards, visual-system work, production assets, or production/public claims.
 
@@ -92,12 +209,13 @@ Phase 4 primary operational roadmap:
 
 Supporting detail docs:
 
+- `docs/phase-4e-evidence-informed-qa-facade-scene-proof.md`
+- `docs/phase-4f-facade-cue-model-hardening.md`
 - `docs/phase-4d-claim-ladder-matching-contract.md`
 - `docs/phase-4d-candidate-poi-qa-fixture.md`
 - `docs/phase-4d-batu-supplied-facade-evidence-packet.md`
 - `docs/phase-4d-corner-anchor-candidates.md`
 - `docs/phase-4d-corner-evidence-folder-reconciliation.md`
 - `docs/phase-4d-manual-corner-association-review.md`
+- `docs/phase-4d-provisional-corner-association-shortlist.md`
 - `docs/phase-4c-recognizable-facade-cue-plan.md`
-
-No further 4D implementation work is open or queued.
