@@ -55,15 +55,50 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: bounded Phase 4G follow-on source audit packet is open; 4G-A is complete and verified.
+- Current phase: bounded Phase 4G follow-on source audit packet is open; 4G-A and 4G-B are complete and verified.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens `4G-B: Facade Evidence Source Audit for Mapillary/KartaView` and pre-authorizes `4H-1: Facade Evidence Intake Workflow Contract`.
-- Updated roadmap posture: 4G external source policy and coverage audit contract is accepted by Batu as complete. Batu opened a bounded packet for 4G-A, 4G-B, and 4H-1 only. 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, while preserving all source access/download/cache/ingestion/conversion/render/use gates. Mapillary/KartaView are candidate facade/storefront evidence lanes only and are not approved production sources. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens `4H-1: Facade Evidence Intake Workflow Contract`; no further queue is open.
+- Updated roadmap posture: 4G external source policy and coverage audit contract is accepted by Batu as complete. Batu opened a bounded packet for 4G-A, 4G-B, and 4H-1 only. 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, while preserving all source access/download/cache/ingestion/conversion/render/use gates. 4G-B found Mapillary/KartaView plausible for future review-only facade evidence lane feasibility, with Mapillary authenticated API/terms review still unresolved and all real imagery access/download/cache/ingestion/render/extraction/training/use blocked. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4G-B Facade Evidence Source Audit
+
+Status:
+- Complete.
+
+Scope:
+- Audit public documentation, schemas, metadata fields, licensing/terms pages, attribution/display/cache constraints, and feasibility notes for Mapillary/KartaView as candidate facade/storefront evidence lanes only.
+
+Files changed:
+- `docs/phase-4g-b-facade-evidence-source-audit.md`
+- `src/data/source-audits/greenpoint-ave-manhattan-to-franklin.phase-4g-b-facade-evidence-source-audit.v0.1.json`
+- `scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
+- `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
+- `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Recorded Mapillary and KartaView as plausible future review-only facade evidence lane candidates for coverage availability, facade-plane visibility, storefront-bay visibility, entrance-cue visibility, sign-band visibility, window/door rhythm, corner-wrap visibility, occlusion, recency, and angle sufficiency.
+- Recorded Mapillary API/terms as incomplete in this audit environment because developer/API terms were login-gated.
+- Recorded CC BY-SA attribution/share-alike considerations for future Batu acceptance before any source use.
+- Did not access imagery, call APIs, download, cache, ingest, extract, render, texture, train, runtime-use source material, add dependencies, credentials, paid APIs, architecture changes, normal-mode exposure, production use, business linkage, geometry-confidence promotion, source approval, or exact claims.
+
+Unresolved decisions:
+- Batu owns future authenticated Mapillary API/terms review, KartaView full terms acceptance, source access approval, imagery download/cache/ingestion/display approval, CC BY-SA share-alike acceptance, source promotion, claim promotion, production use, and normal-mode/public use.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `4H-1: Facade Evidence Intake Workflow Contract`.
 
 ### 2026-06-08 - Batch 4G-A Geometry Source Audit
 

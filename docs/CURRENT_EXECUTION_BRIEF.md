@@ -1,37 +1,26 @@
-# Current Execution Brief - Phase 4G-B Facade Evidence Source Audit Open
+# Current Execution Brief - Phase 4H-1 Facade Evidence Intake Workflow Contract Open
 
-Status: `4G-A: Geometry Source Audit for NYC 3D / CityGML / 3DCityDB` is complete and verified inside Batu's bounded Phase 4G follow-on packet.
+Status: `4G-A: Geometry Source Audit for NYC 3D / CityGML / 3DCityDB` and `4G-B: Facade Evidence Source Audit for Mapillary/KartaView` are complete and verified inside Batu's bounded Phase 4G follow-on packet.
 
-Current executable batch: `4G-B: Facade Evidence Source Audit for Mapillary/KartaView`.
+Current executable batch: `4H-1: Facade Evidence Intake Workflow Contract`.
 
-Pre-authorized queue:
+Pre-authorized queue: none.
 
-1. `4H-1: Facade Evidence Intake Workflow Contract`
-
-Self-advance allowed: yes, only from 4G-B to 4H-1, and only when 4G-B stays within scope, verification passes, docs are reconciled, no source-policy conflict is found, and no critical Batu decision gate is hit.
+Self-advance allowed: no further self-advance beyond 4H-1. Stop at packet end for Batu review.
 
 Hard Batu gate: stop at the end of 4H-1, or earlier if any stop condition below is hit.
 
-Owner boundary: Batu owns source approval, usage-rights acceptance, source promotion, claim-level promotion, production/public claims, geometry-confidence acceptance, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant claims, credential/API approval, architecture-boundary approval, visual-system/art-direction work, and final packet review. Codex owns review-only audit artifacts, fixture/report/verifier work, concise control-doc reconciliation, and batch-sized commits inside the approved packet.
+Owner boundary: Batu owns source approval, usage-rights acceptance, source promotion, claim-level promotion, production/public claims, geometry-confidence acceptance, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant claims, credential/API approval, architecture-boundary approval, visual-system/art-direction work, and final packet review. Codex owns review-only workflow-contract artifacts, verifier work, concise control-doc reconciliation, and batch-sized commits inside the approved packet.
 
 ## Packet Goal
 
 Open and execute three source-safe batches:
 
 1. `4G-A`: audit NYC 3D / CityGML / 3DCityDB as geometry-confidence candidates only. Complete.
-2. `4G-B`: audit Mapillary/KartaView as candidate facade/storefront evidence lanes only. Current.
-3. `4H-1`: define the source-safe facade evidence intake workflow contract. Queued.
+2. `4G-B`: audit Mapillary/KartaView as candidate facade/storefront evidence lanes only. Complete.
+3. `4H-1`: define the source-safe facade evidence intake workflow contract. Current.
 
 All outputs are review-only and non-production.
-
-## Packet Allowed Scope
-
-- Audit public documentation, schemas, file formats, metadata fields, licensing/terms pages, and feasibility notes.
-- Create docs, fixtures, verifier scripts, and audit reports as needed.
-- Evaluate whether each source can support approved claim classes.
-- Keep geometry confidence separate from facade/storefront/business evidence.
-- Add verifier checks that enforce allowed/prohibited source use.
-- Commit after each successful batch if verification passes and the working tree contains only intended files for that batch.
 
 ## Completed 4G-A Result
 
@@ -57,37 +46,30 @@ Verification completed:
 - `node scripts/verify-phase-4g-source-policy-contract.mjs`
 - `git diff --check`
 
-## 4G-A Scope
+## Completed 4G-B Result
 
-Allowed:
+What changed:
 
-- Evaluate NYC 3D / CityGML / 3DCityDB only for geometry-confidence support:
-  - building heights;
-  - massing;
-  - roof volumes;
-  - block gaps;
-  - geometry-container review.
-- Document terms, attribution, format/schema, metadata, feasibility, claim support, blocked claims, and unresolved questions.
-- Add verifier checks for geometry-only lane separation.
+- Added `docs/phase-4g-b-facade-evidence-source-audit.md`.
+- Added `src/data/source-audits/greenpoint-ave-manhattan-to-franklin.phase-4g-b-facade-evidence-source-audit.v0.1.json`.
+- Added `scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`.
+- Reviewed public documentation only for Mapillary and KartaView licensing, metadata, coverage, API, and attribution/display/cache feasibility.
+- Recorded Mapillary and KartaView as plausible future review-only facade evidence lane candidates.
+- Recorded Mapillary API/terms as incomplete in this audit environment because developer/API terms were login-gated.
+- Recorded CC BY-SA attribution/share-alike considerations for future Batu acceptance before any source use.
 
-Blocked:
+Preserved boundaries:
 
-- No storefront, facade, tenant, signage, entrance, active-business, business-assignment, exact-address, production, or normal-mode claims.
-- No source download/cache/ingestion/conversion/render use unless a later Batu gate explicitly approves it.
+- No imagery access, API call, download, cache, ingestion, extraction, render use, texture use, training use, runtime use, normal-mode exposure, production use, new dependency, credential, paid API, or architecture change.
+- No business identity, active status, tenant frontage, storefront anchor approval, exact frontage/order, exact entrance ownership, exact sign text/logo/trade dress, material/color truth, exact-address, production, normal-mode, or public/product claims.
+- Mapillary/KartaView remain candidate facade-evidence lanes only, not source approval.
 
-## 4G-B Scope
+Verification completed:
 
-Allowed:
-
-- Evaluate Mapillary/KartaView only as candidate facade/storefront evidence lanes:
-  - coverage availability;
-  - image metadata usefulness;
-  - attribution/display/cache constraints;
-  - whether imagery can support facade, frontage, entrance, sign, or storefront review claims.
-
-Blocked:
-
-- No real imagery ingestion, cache, download, texturing, rendering, training, productionization, business linkage, exact storefront/frontage/entrance/address/signage/tenant claim, or normal-mode exposure unless a later Batu gate explicitly approves it.
+- `node scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
+- `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
+- `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `git diff --check`
 
 ## 4H-1 Scope
 
@@ -101,10 +83,20 @@ Allowed:
   - storage/cache/display rules;
   - blocked-claim behavior;
   - verifier requirements.
+- Use 4G-A and 4G-B audit outputs as review-only context.
+- Add docs, review-only fixture/contract records, and verifier checks as needed.
 
 Blocked:
 
-- No real imagery intake, source promotion, production use, normal-mode exposure, business linkage, exact storefront/frontage/entrance/address/signage/tenant claim, source-derived textures, model training, or credential/API work unless a later Batu gate explicitly approves it.
+- No real imagery intake.
+- No source promotion.
+- No production use.
+- No normal-mode exposure.
+- No business linkage.
+- No exact storefront, frontage, entrance, address, signage, tenant, or active-business claim.
+- No source-derived textures.
+- No model training.
+- No credential, paid API, dependency, runtime, renderer, or architecture work.
 
 ## Global Packet Blocks
 
@@ -117,43 +109,38 @@ Blocked:
 - No Google Street View / Google 3D Tiles use beyond previously approved benchmark-only discussion.
 - No Qwen/Oxen visual-system work.
 - No new paid APIs or credentials.
-- No renderer/runtime changes unless the current batch explicitly requires a QA-only inspector/report view.
+- No renderer/runtime changes.
 
 ## Stop Conditions
 
 Stop and report before continuing if:
 
-- A source's terms are ambiguous or appear to block planned use.
+- A source's terms are ambiguous or appear to block planned workflow-contract use.
 - A batch would require downloading, caching, or ingesting real source data.
 - A source would be promoted from audit candidate to approved evidence source.
 - A claim class would be upgraded beyond review-only.
 - Any exact business/storefront/frontage/entrance/address/signage/tenant claim would be made.
-- A new dependency, credential, paid API, architecture change, or renderer/runtime change is needed outside an explicitly opened QA-only inspector/report view.
+- A new dependency, credential, paid API, architecture change, or renderer/runtime change is needed.
 - Verification/build fails and cannot be fixed cleanly inside scope.
-- The bounded packet reaches the end of `4H-1`.
+- 4H-1 is complete, because the bounded packet then ends at a hard Batu review gate.
 
 ## Verification Expectations
 
-For every batch:
+For 4H-1:
 
-- Run relevant new and existing verifiers.
+- Run the new 4H-1 facade evidence intake workflow verifier.
+- Run relevant prior source-policy verifiers.
 - Run `git diff --check`.
 - Run build only if runtime/source app files change.
 - Report `git status --short` and `git diff --stat`.
 
-Current 4G-B verification target:
-
-- New 4G-B facade evidence source audit verifier.
-- Relevant prior source-policy verifiers.
-- `git diff --check`.
-
 ## Documentation Reconciliation
 
-After each successful batch, update:
+After 4H-1, update:
 
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/phase-4-execution-roadmap.md`
 
-Keep updates concise and do not rewrite the whole control surface.
+Keep updates concise and stop for Batu review.
