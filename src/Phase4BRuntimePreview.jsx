@@ -104,6 +104,7 @@ export default function Phase4BRuntimePreview() {
   const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
   const inspectedEvidenceFacade = inspectedObject ? evidenceFacadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCorridorFacadeCue = inspectedObject ? corridorFacadeCueIndex.get(inspectedObject.id) ?? null : null;
+  const inspectedQAScaffoldPreviewRecords = inspectedObject ? qaScaffoldPreviewIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedCornerAnchorCandidates = inspectedObject ? cornerAnchorCandidateIndex.get(inspectedObject.id) ?? [] : [];
@@ -308,11 +309,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4I-4 / corridor cue legibility correction + 4O-15 QA scaffold preview</p>
+          <p className="phase4b-kicker">Batch 4I-4 / corridor cue legibility correction + 4O-17 QA scaffold preview legibility</p>
           <h1>Greenpoint Ave corridor facade cue review</h1>
         </div>
         <p>
-          QA-only 4I corridor cues plus a 4O scaffold preview layer for candidate containers, grounding bands, and height/massing caps. Normal mode stays protected; QA facades and scaffolds are not business identity, exact frontage, signage, active status, exact height, or production claims.
+          QA-only 4I corridor cues plus the 4O-15 QA scaffold preview, now with 4O-17 legibility labels, outlines, and family grouping for candidate containers, grounding bands, and height/massing caps. Normal mode stays protected; QA facades and scaffolds are not business identity, exact frontage, signage, active status, exact height, or production claims.
         </p>
       </section>
 
@@ -434,6 +435,8 @@ export default function Phase4BRuntimePreview() {
           inspectedSliceFacade={inspectedSliceFacade}
           inspectedEvidenceFacade={inspectedEvidenceFacade}
           inspectedCorridorFacadeCue={inspectedCorridorFacadeCue}
+          inspectedQAScaffoldPreviewRecords={qaEnabled ? inspectedQAScaffoldPreviewRecords : []}
+          qaScaffoldPreviewAdapter={qaScaffoldPreviewAdapter}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
           candidatePoiFixture={candidatePoiFixture}
@@ -511,6 +514,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceF
           <dd>{qaEnabled ? `${totals.scaffoldPreviewRendered} shown / ${totals.scaffoldPreviewNormalMode} normal` : "QA off"}</dd>
         </div>
         <div>
+          <dt>4O scaffold families</dt>
+          <dd>{qaEnabled ? `${totals.scaffoldPreviewContainers} / ${totals.scaffoldPreviewGrounding} / ${totals.scaffoldPreviewHeight}` : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Candidate POIs</dt>
           <dd>{qaEnabled ? totals.candidatePoiCount : "QA off"}</dd>
         </div>
@@ -574,6 +581,7 @@ function QADebugPanel({
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Unique visual slots: {evidenceFacadeCueFixture.summary.uniqueStreetwallSlotCount}</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Evidence labels: {evidenceFacadeCueFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> 4O scaffold: {qaScaffoldPreviewAdapter.summary.renderedQaOnlyRecordCount} QA placeholders / {qaScaffoldPreviewAdapter.summary.normalModeRecordCount} normal</li>
+        <li><span className="phase4b-side-dot phase4b-side-center" /> 4O families: {qaScaffoldPreviewAdapter.summary.buildingContainerPreviewCount} container / {qaScaffoldPreviewAdapter.summary.groundingPreviewCount} ground / {qaScaffoldPreviewAdapter.summary.heightMassingPreviewCount} height</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Business evidence not connected</li>
         <li><span className="phase4b-side-dot phase4b-side-blocked" /> Blocked claims remain blocked</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> Synthetic context: non-evidence placeholder</li>
@@ -643,6 +651,8 @@ function InspectorPanel({
   inspectedSliceFacade,
   inspectedEvidenceFacade,
   inspectedCorridorFacadeCue,
+  inspectedQAScaffoldPreviewRecords,
+  qaScaffoldPreviewAdapter,
   inspectedValidation,
   inspectedCandidatePois,
   candidatePoiFixture,
@@ -921,6 +931,34 @@ function InspectorPanel({
       </section>
 
       <section>
+        <h2>4O Scaffold Preview</h2>
+        {qaEnabled ? (
+          <ul>
+            <li>
+              <span>Rendered</span>
+              <small>{qaScaffoldPreviewAdapter.summary.renderedQaOnlyRecordCount} QA / {qaScaffoldPreviewAdapter.summary.normalModeRecordCount} normal</small>
+            </li>
+            <li>
+              <span>Families</span>
+              <small>{qaScaffoldPreviewAdapter.summary.buildingContainerPreviewCount} container / {qaScaffoldPreviewAdapter.summary.groundingPreviewCount} ground / {qaScaffoldPreviewAdapter.summary.heightMassingPreviewCount} height</small>
+            </li>
+            <li>
+              <span>Selected traces</span>
+              <small>{inspectedQAScaffoldPreviewRecords.length ? inspectedQAScaffoldPreviewRecords.map((record) => record.legibility?.familyChip ?? record.visualRole).join(" / ") : "none"}</small>
+            </li>
+            {(inspectedQAScaffoldPreviewRecords.length ? inspectedQAScaffoldPreviewRecords : qaScaffoldPreviewAdapter.renderRecords).slice(0, 6).map((record) => (
+              <li key={record.recordId}>
+                <span>{record.displayLabel}</span>
+                <small>{record.derivedFromCandidateId} / {record.normalModeExposure}</small>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>QA mode required for 4O scaffold preview records.</p>
+        )}
+      </section>
+
+      <section>
         <h2>4I Corridor Facade Cue</h2>
         {qaEnabled ? (
           <ul>
@@ -1014,6 +1052,9 @@ function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evide
     corridorFacadeBlocked: corridorFacadeCueFixture.summary.blockedNoEvidenceGapRecordCount,
     scaffoldPreviewRecords: qaScaffoldAdapter.summary.renderRecordCount,
     scaffoldPreviewRendered: qaScaffoldAdapter.summary.renderedQaOnlyRecordCount,
+    scaffoldPreviewContainers: qaScaffoldAdapter.summary.buildingContainerPreviewCount,
+    scaffoldPreviewGrounding: qaScaffoldAdapter.summary.groundingPreviewCount,
+    scaffoldPreviewHeight: qaScaffoldAdapter.summary.heightMassingPreviewCount,
     scaffoldPreviewNormalMode: qaScaffoldAdapter.summary.normalModeRecordCount,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
@@ -1050,7 +1091,6 @@ function buildCorridorFacadeCueIndex(fixture) {
 function buildQAScaffoldPreviewIndex(fixture) {
   const index = new Map();
   for (const record of fixture.renderRecords ?? []) {
-    if (record.placement?.anchorMode !== "existing_runtime_building_centroid") continue;
     const records = index.get(record.targetRenderedObjectId) ?? [];
     records.push(record);
     index.set(record.targetRenderedObjectId, records);
@@ -1786,30 +1826,46 @@ function createQAScaffoldPreviewLayer(object, records) {
       const height = Math.max(object.height * (placement.heightMultiplier ?? 0.75), 0.42);
       addQAScaffoldPreviewBox(group, {
         color: palette.body,
-        opacity: 0.17,
+        opacity: 0.28,
         position: [object.centroid.x, height / 2 + 0.02, object.centroid.z + sideOffset],
         size: [width, height, depth],
+        outlineColor: palette.edge,
+        outlineOpacity: 0.72,
       });
       addQAScaffoldPreviewBox(group, {
         color: palette.edge,
-        opacity: 0.38,
+        opacity: 0.58,
         position: [object.centroid.x, height + 0.055, object.centroid.z + sideOffset],
         size: [width * 1.02, 0.045, Math.max(depth * 1.05, 0.2)],
+      });
+      addQAScaffoldPreviewLabel(group, {
+        label: record.displayLabel ?? "4O container",
+        color: palette.label,
+        position: [object.centroid.x, height + 0.62, object.centroid.z + sideOffset + Math.sign(sideOffset || 1) * 0.22],
+        tetherStart: [object.centroid.x, height + 0.08, object.centroid.z + sideOffset],
       });
     } else if (record.visualRole === "height_massing_cap") {
       const capHeight = placement.capHeight ?? 0.1;
       const y = Math.max(object.height * (placement.heightMultiplier ?? 1), 0.5) + capHeight / 2;
       addQAScaffoldPreviewBox(group, {
         color: palette.cap,
-        opacity: 0.44,
+        opacity: 0.66,
         position: [object.centroid.x, y, object.centroid.z + sideOffset],
         size: [width, capHeight, depth],
+        outlineColor: palette.edge,
+        outlineOpacity: 0.82,
       });
       addQAScaffoldPreviewBox(group, {
         color: palette.edge,
-        opacity: 0.26,
+        opacity: 0.4,
         position: [object.centroid.x, Math.max(y - 0.22, 0.3), object.centroid.z + sideOffset],
         size: [Math.max(width * 0.18, 0.08), 0.42, Math.max(depth * 1.1, 0.2)],
+      });
+      addQAScaffoldPreviewLabel(group, {
+        label: record.displayLabel ?? "4O height",
+        color: palette.label,
+        position: [object.centroid.x, y + 0.48, object.centroid.z + sideOffset + Math.sign(sideOffset || 1) * 0.28],
+        tetherStart: [object.centroid.x, y, object.centroid.z + sideOffset],
       });
     }
   }
@@ -1845,15 +1901,23 @@ function createQAScaffoldGroundingPreview(record, guide) {
     const z = (pointA.z + pointB.z) / 2;
     addQAScaffoldPreviewBox(group, {
       color: palette.body,
-      opacity: 0.3,
+      opacity: 0.46,
       position: [x, placement.y ?? 0.12, z],
       size: [placement.xSpan ?? 0.18, 0.055, placement.zSpan ?? Math.abs(pointB.z - pointA.z)],
+      outlineColor: palette.edge,
+      outlineOpacity: 0.82,
     });
     addQAScaffoldPreviewBox(group, {
       color: palette.edge,
-      opacity: 0.46,
+      opacity: 0.62,
       position: [x, (placement.y ?? 0.12) + 0.06, z],
       size: [Math.max((placement.xSpan ?? 0.18) * 1.8, 0.18), 0.04, 0.22],
+    });
+    addQAScaffoldPreviewLabel(group, {
+      label: record.displayLabel ?? "4O ground",
+      color: palette.label,
+      position: [x + 0.45, 0.72, z - 0.78],
+      tetherStart: [x, placement.y ?? 0.12, z],
     });
   } else if (placement.guideRole === "south_sidewalk_band") {
     const band = guide.sidewalkBands?.[placement.guideIndex] ?? guide.sidewalkBands?.[0];
@@ -1861,15 +1925,23 @@ function createQAScaffoldGroundingPreview(record, guide) {
     const z = zValues.length ? zValues.reduce((sum, value) => sum + value, 0) / zValues.length : 1.08;
     addQAScaffoldPreviewBox(group, {
       color: palette.body,
-      opacity: 0.26,
+      opacity: 0.42,
       position: [placement.xCenter ?? 0, placement.y ?? 0.12, z],
       size: [placement.xSpan ?? 2.2, 0.05, placement.zSpan ?? 0.44],
+      outlineColor: palette.edge,
+      outlineOpacity: 0.78,
     });
     addQAScaffoldPreviewBox(group, {
       color: palette.edge,
-      opacity: 0.36,
+      opacity: 0.54,
       position: [placement.xCenter ?? 0, (placement.y ?? 0.12) + 0.055, z],
       size: [0.16, 0.04, placement.zSpan ?? 0.44],
+    });
+    addQAScaffoldPreviewLabel(group, {
+      label: record.displayLabel ?? "4O ground",
+      color: palette.label,
+      position: [(placement.xCenter ?? 0) + 0.52, 0.7, z + 0.42],
+      tetherStart: [placement.xCenter ?? 0, placement.y ?? 0.12, z],
     });
   }
 
@@ -1900,34 +1972,40 @@ function getCorridorFacadePalette(corridorRecord) {
 function getQAScaffoldPreviewPalette(token) {
   const palettes = {
     qa_scaffold_container_manhattan: {
-      body: 0x4eb3a5,
-      edge: 0xe7d48a,
+      body: 0x2fc0ad,
+      edge: 0xffd76f,
       cap: 0xf0c96a,
+      label: 0xffd76f,
     },
     qa_scaffold_container_mid_corridor: {
-      body: 0x7193d1,
-      edge: 0xd5bd76,
+      body: 0x6fa4ff,
+      edge: 0xffd76f,
       cap: 0xd5bd76,
+      label: 0xffd76f,
     },
     qa_scaffold_grounding_endpoint: {
-      body: 0xc8a85a,
-      edge: 0x7bd2bd,
+      body: 0xffbd5f,
+      edge: 0x88f0dd,
       cap: 0xc8a85a,
+      label: 0x88f0dd,
     },
     qa_scaffold_grounding_sidewalk: {
-      body: 0x7bd2bd,
-      edge: 0xe0c878,
+      body: 0x88f0dd,
+      edge: 0xffbd5f,
       cap: 0x7bd2bd,
+      label: 0x88f0dd,
     },
     qa_scaffold_height_manhattan: {
       body: 0x4eb3a5,
-      edge: 0xf0c96a,
-      cap: 0xf0c96a,
+      edge: 0xffee8a,
+      cap: 0xffee8a,
+      label: 0xffee8a,
     },
     qa_scaffold_height_mid_corridor: {
       body: 0x7193d1,
-      edge: 0xe0c878,
-      cap: 0xe0c878,
+      edge: 0xffee8a,
+      cap: 0xffee8a,
+      label: 0xffee8a,
     },
   };
   return palettes[token] ?? palettes.qa_scaffold_container_mid_corridor;
@@ -2662,9 +2740,10 @@ function addCorridorFacadeBox(group, { color, opacity, position, size }) {
   group.add(mesh);
 }
 
-function addQAScaffoldPreviewBox(group, { color, opacity, position, size }) {
+function addQAScaffoldPreviewBox(group, { color, opacity, position, size, outlineColor = null, outlineOpacity = 0 }) {
+  const geometry = new THREE.BoxGeometry(...size);
   const mesh = new THREE.Mesh(
-    new THREE.BoxGeometry(...size),
+    geometry,
     new THREE.MeshBasicMaterial({
       color,
       transparent: true,
@@ -2678,6 +2757,50 @@ function addQAScaffoldPreviewBox(group, { color, opacity, position, size }) {
   mesh.userData.qaColor = color;
   mesh.visible = false;
   group.add(mesh);
+
+  if (outlineColor && outlineOpacity > 0) {
+    const outline = new THREE.LineSegments(
+      new THREE.EdgesGeometry(geometry),
+      new THREE.LineBasicMaterial({
+        color: outlineColor,
+        transparent: true,
+        opacity: 0,
+        depthWrite: false,
+      }),
+    );
+    outline.position.set(...position);
+    outline.userData.stateRole = "qaScaffoldPreviewOutline";
+    outline.userData.qaOpacity = outlineOpacity;
+    outline.userData.qaColor = outlineColor;
+    outline.visible = false;
+    group.add(outline);
+  }
+}
+
+function addQAScaffoldPreviewLabel(group, { label, color, position, tetherStart }) {
+  const sprite = createTextSprite(label);
+  sprite.position.set(...position);
+  sprite.userData.stateRole = "qaScaffoldPreviewLabel";
+  sprite.userData.qaOpacity = 0.92;
+  sprite.userData.qaColor = color;
+  sprite.visible = false;
+  group.add(sprite);
+
+  if (tetherStart) {
+    const tether = createPolyline([
+      { x: tetherStart[0], z: tetherStart[2] },
+      { x: position[0], z: position[2] },
+    ], {
+      color,
+      opacity: 0,
+      y: Math.max(position[1] - 0.16, 0.24),
+    });
+    tether.userData.stateRole = "qaScaffoldPreviewOutline";
+    tether.userData.qaOpacity = 0.48;
+    tether.userData.qaColor = color;
+    tether.visible = false;
+    group.add(tether);
+  }
 }
 
 function addSyntheticContextBox(group, { color, opacity, position, size }) {
@@ -2821,6 +2944,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
           || child.userData.stateRole === "evidenceFacadeCue"
           || child.userData.stateRole === "corridorFacadeCue"
           || child.userData.stateRole === "qaScaffoldPreview"
+          || child.userData.stateRole === "qaScaffoldPreviewOutline"
+          || child.userData.stateRole === "qaScaffoldPreviewLabel"
           || child.userData.stateRole === "syntheticQAGrounding"
           || child.userData.stateRole === "candidatePoi"
           || child.userData.stateRole === "candidatePoiLabel"
@@ -2921,7 +3046,7 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 ? Math.min((child.userData.qaOpacity ?? 0.08) + 0.08, 0.26)
                 : child.userData.qaOpacity ?? 0.08
             : 0;
-        } else if (child.userData.stateRole === "qaScaffoldPreview") {
+        } else if (child.userData.stateRole === "qaScaffoldPreview" || child.userData.stateRole === "qaScaffoldPreviewOutline") {
           child.visible = qaEnabled;
           child.material.transparent = true;
           child.material.depthWrite = false;
@@ -2932,6 +3057,15 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
               : isHovered
                 ? Math.min((child.userData.qaOpacity ?? 0.22) + 0.1, 0.54)
                 : child.userData.qaOpacity ?? 0.22
+            : 0;
+        } else if (child.userData.stateRole === "qaScaffoldPreviewLabel") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          child.material.opacity = qaEnabled
+            ? isSelected || isHovered
+              ? 1
+              : child.userData.qaOpacity ?? 0.9
             : 0;
         } else if (child.userData.stateRole === "syntheticQAGrounding") {
           child.visible = qaEnabled;

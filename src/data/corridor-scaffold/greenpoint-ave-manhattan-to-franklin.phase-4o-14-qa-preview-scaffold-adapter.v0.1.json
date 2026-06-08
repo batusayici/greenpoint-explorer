@@ -72,6 +72,7 @@
       "sourceLane": "building_container",
       "renderStatus": "rendered_qa_only_candidate_placeholder",
       "visualRole": "building_container_shell",
+      "displayLabel": "4O container",
       "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3400032",
       "placement": {
         "anchorMode": "existing_runtime_building_centroid",
@@ -80,6 +81,12 @@
         "depthMultiplier": 1.42,
         "heightMultiplier": 0.86,
         "zOffsetByCorridorSide": 0.08
+      },
+      "legibility": {
+        "familyChip": "container",
+        "labelVisibility": "qa_only_visible",
+        "outlineVisibility": "qa_only_visible",
+        "hoverReadout": "target_object_and_candidate_trace"
       },
       "paletteToken": "qa_scaffold_container_manhattan",
       "claimStatusLabels": [
@@ -116,6 +123,7 @@
       "sourceLane": "building_container",
       "renderStatus": "rendered_qa_only_candidate_placeholder",
       "visualRole": "building_container_shell",
+      "displayLabel": "4O container",
       "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3393885",
       "placement": {
         "anchorMode": "existing_runtime_building_centroid",
@@ -124,6 +132,12 @@
         "depthMultiplier": 1.36,
         "heightMultiplier": 0.72,
         "zOffsetByCorridorSide": 0.08
+      },
+      "legibility": {
+        "familyChip": "container",
+        "labelVisibility": "qa_only_visible",
+        "outlineVisibility": "qa_only_visible",
+        "hoverReadout": "target_object_and_candidate_trace"
       },
       "paletteToken": "qa_scaffold_container_mid_corridor",
       "claimStatusLabels": [
@@ -160,6 +174,7 @@
       "sourceLane": "street_sidewalk_curb_grounding",
       "renderStatus": "rendered_qa_only_candidate_placeholder",
       "visualRole": "grounding_alignment_band",
+      "displayLabel": "4O ground",
       "targetRenderedObjectId": "p4b-object-nyc-centerline-physicalid-47237",
       "placement": {
         "anchorMode": "existing_runtime_guide",
@@ -168,6 +183,12 @@
         "xSpan": 0.18,
         "zSpan": 3.08,
         "y": 0.12
+      },
+      "legibility": {
+        "familyChip": "grounding",
+        "labelVisibility": "qa_only_visible",
+        "outlineVisibility": "qa_only_visible",
+        "hoverReadout": "target_guide_and_candidate_trace"
       },
       "paletteToken": "qa_scaffold_grounding_endpoint",
       "claimStatusLabels": [
@@ -204,6 +225,7 @@
       "sourceLane": "street_sidewalk_curb_grounding",
       "renderStatus": "rendered_qa_only_candidate_placeholder",
       "visualRole": "grounding_alignment_band",
+      "displayLabel": "4O ground",
       "targetRenderedObjectId": "p4b-object-nyc-centerline-physicalid-47237",
       "placement": {
         "anchorMode": "existing_runtime_guide",
@@ -213,6 +235,12 @@
         "xSpan": 2.36,
         "zSpan": 0.46,
         "y": 0.12
+      },
+      "legibility": {
+        "familyChip": "grounding",
+        "labelVisibility": "qa_only_visible",
+        "outlineVisibility": "qa_only_visible",
+        "hoverReadout": "target_guide_and_candidate_trace"
       },
       "paletteToken": "qa_scaffold_grounding_sidewalk",
       "claimStatusLabels": [
@@ -249,6 +277,7 @@
       "sourceLane": "height_massing",
       "renderStatus": "rendered_qa_only_candidate_placeholder",
       "visualRole": "height_massing_cap",
+      "displayLabel": "4O height",
       "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3400032",
       "placement": {
         "anchorMode": "existing_runtime_building_centroid",
@@ -258,6 +287,12 @@
         "heightMultiplier": 1.06,
         "capHeight": 0.1,
         "zOffsetByCorridorSide": 0.11
+      },
+      "legibility": {
+        "familyChip": "height",
+        "labelVisibility": "qa_only_visible",
+        "outlineVisibility": "qa_only_visible",
+        "hoverReadout": "target_object_and_candidate_trace"
       },
       "paletteToken": "qa_scaffold_height_manhattan",
       "claimStatusLabels": [
@@ -294,6 +329,7 @@
       "sourceLane": "height_massing",
       "renderStatus": "rendered_qa_only_candidate_placeholder",
       "visualRole": "height_massing_cap",
+      "displayLabel": "4O height",
       "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3393885",
       "placement": {
         "anchorMode": "existing_runtime_building_centroid",
@@ -303,6 +339,12 @@
         "heightMultiplier": 1.04,
         "capHeight": 0.1,
         "zOffsetByCorridorSide": 0.11
+      },
+      "legibility": {
+        "familyChip": "height",
+        "labelVisibility": "qa_only_visible",
+        "outlineVisibility": "qa_only_visible",
+        "hoverReadout": "target_object_and_candidate_trace"
       },
       "paletteToken": "qa_scaffold_height_mid_corridor",
       "claimStatusLabels": [
