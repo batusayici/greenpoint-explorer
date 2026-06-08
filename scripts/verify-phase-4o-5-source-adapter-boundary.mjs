@@ -29,7 +29,7 @@ const requiredNoteSnippets = [
 
 const requiredBriefSnippets = [
   "4O-5 is complete and verified.",
-  "Current executable batch: none.",
+  "Current executable batch:",
   "No external data download, cache, ingestion, conversion, render use, source access",
   "No package/tooling changes",
   "No business linkage",

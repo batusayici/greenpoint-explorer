@@ -138,8 +138,8 @@ async function main() {
   }
 
   for (const snippet of [
-    "Batch 4O-6: Offline Source Adapter Skeleton",
-    "Current executable batch: none.",
+    "4O-6 is complete and verified.",
+    "Current executable batch:",
     "No external data download, cache, ingestion, conversion, render use, source access",
     "No package/tooling changes",
     "No business linkage",

@@ -55,20 +55,59 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4O-6: Offline Source Adapter Skeleton` is complete and pending Batu review.
+- Current phase: `Batch 4O-7: Offline Adapter Normalization` is complete and verified; `Batch 4O-8: Deterministic Scaffold Input Fixture` is current.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4O-6 Batu review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. 4O-6 adds a deterministic offline source-adapter fixture skeleton. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` names 4O-8 as the current executable batch and 4O-9 as the only pre-authorized queued batch.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. 4O-6 adds a deterministic offline source-adapter fixture skeleton. 4O-7 normalizes those rows into scaffold-input candidate shapes. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
 
+### 2026-06-08 - Batch 4O-7 Offline Adapter Normalization
+
+Status:
+- Complete and verified.
+
+Scope:
+- Normalize 4O-6 offline adapter rows into a deterministic scaffold-input shape while preserving source-lane labels, claim-status labels, no-source-access status, derivation links, and blocked-claim fields.
+
+Files changed:
+- `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-7-offline-adapter-normalization.v0.1.json`
+- `scripts/verify-phase-4o-7-offline-adapter-normalization.mjs`
+- `scripts/verify-phase-4o-6-offline-source-adapter-fixture.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git status --short` before edits: clean.
+- `node scripts/verify-phase-4o-7-offline-adapter-normalization.mjs`
+- `node scripts/verify-phase-4o-6-offline-source-adapter-fixture.mjs`
+- `node scripts/verify-phase-4o-5-source-adapter-boundary.mjs`
+- `node scripts/verify-phase-4o-4-placeholder-scaffold-manifest.mjs`
+- `node scripts/verify-phase-4o-3-scaffold-generation-contract.mjs`
+- `node scripts/verify-phase-4o-2-corridor-fixture-stub.mjs`
+- `node scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Added six deterministic normalized scaffold-input candidate records derived from the 4O-6 offline adapter rows.
+- Preserved source-lane labels, claim-status labels, no-source-access status, derivation links, blocked-claim fields, test-only/offline-only status, and separation from the 4O-4 placeholder scaffold manifest.
+- Did not fetch external data, add dependencies, render runtime geometry, add public interfaces, connect businesses, signs, entrances, exact facades, or tenant frontage, or promote claims.
+
+Unresolved decisions:
+- Batu owns 4O-7 acceptance, 4O-8/4O-9 packet-end acceptance, source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now names 4O-8 as current and 4O-9 as the only pre-authorized queued batch.
+
 ### 2026-06-08 - Batch 4O-6 Offline Source Adapter Skeleton
 
 Status:
-- Complete and verified; pending Batu review.
+- Complete, verified, and accepted by Batu for purposes of opening the 4O-7 -> 4O-9 packet.
 
 Scope:
 - Implement the first offline source-adapter skeleton for the truth-first corridor scaffold pipeline using local deterministic fixture records only.
