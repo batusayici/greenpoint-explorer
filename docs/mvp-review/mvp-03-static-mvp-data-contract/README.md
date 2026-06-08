@@ -16,8 +16,8 @@ Any future app/source data file, import path, module boundary, public interface,
 
 This packet uses existing repository evidence only:
 
-- `docs/PLACE_SCHEMA.md`
-- `docs/PLACE_SOURCE_POLICY.md`
+- `docs/reference/PLACE_SCHEMA.md`
+- `docs/reference/PLACE_SOURCE_POLICY.md`
 - `docs/MVP_SCOPE.md`
 - `docs/mvp-review/mvp-01-prototype-state-review-and-gap-brief/README.md`
 - `docs/mvp-review/mvp-02-place-truth-packet/README.md`

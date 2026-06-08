@@ -47,7 +47,7 @@ The following newly supplied files are present in `docs/mvp-reference-images/`. 
 Allowed context from prior packet:
 
 - `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md` may be used for prior address/lot/status findings and blocked-reference policy.
-- `docs/approved-reference-corpus/` may be used for style language only, not real-facade truth.
+- `docs/reference/approved-reference-corpus/` may be used for style language only, not real-facade truth.
 - The newly supplied northwest JPEG/HEIF files may become eligible real-corner references once Batu confirms their owned/non-Google approval and intended use.
 
 Blocked references:
@@ -213,7 +213,7 @@ MVP-20 must not authorize raster integration, app/source edits, screenshots, pro
 
 ## Source And Scope Notes
 
-- Required docs read: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, `docs/PLACE_SCHEMA.md`, `docs/PLACE_SOURCE_POLICY.md`, and `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md`.
+- Required docs read: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, `docs/reference/PLACE_SCHEMA.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, and `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md`.
 - No new public-source lookup, scraping, live data pipeline, browser screenshot, renderer work, visual generation, app/source implementation, asset creation, staging, or commit was performed.
 - Local photo inspection was limited to the supplied repo files under `docs/mvp-reference-images/`; temporary conversion attempts for HEIF-with-`.jpeg` files were written only under `/private/tmp`.
 - No Google/Street View/3D Tiles-derived image was stored, copied, traced, transformed, extracted, used as generation input, used as training input, or used as facade reference.

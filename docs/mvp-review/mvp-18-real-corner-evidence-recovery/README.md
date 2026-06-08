@@ -126,7 +126,7 @@ Last checked: 2026-05-30.
 
 Allowed now:
 
-- `docs/approved-reference-corpus/` for Inked Indie / Compact Corner style language only.
+- `docs/reference/approved-reference-corpus/` for Inked Indie / Compact Corner style language only.
 - `docs/visual-artifacts/phase-6-repeatable-assetization-proof/` for reusable-system logic only.
 - Textual business/location pages for identity, address, and status evidence only.
 - NYC GeoSearch/PAD and MapPLUTO for address, BBL/BIN, tax-lot, and building facts.

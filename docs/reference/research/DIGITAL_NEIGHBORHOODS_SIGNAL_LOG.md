@@ -1,7 +1,7 @@
 # Digital Neighborhoods Signal Log
 
 Status: Strategic research context / not execution authorization  
-Recommended repo path: `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`  
+Recommended repo path: `docs/reference/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`  
 Project: Greenpoint Isometric Explorer  
 Purpose: Preserve external signals, precedents, comments, and strategic implications around digital neighborhoods, isometric city maps, GeoAI, spatial browsing, and neighborhood-memory systems.
 
@@ -294,7 +294,7 @@ The project can generate many tiles but cannot verify or correct them efficientl
 
 These are strategic recommendations only. They require normal project approval before implementation.
 
-1. Add `Editorial / Local Knowledge Layer` to `docs/ARCHITECTURE.md`.
+1. Add `Editorial / Local Knowledge Layer` to `docs/reference/ARCHITECTURE.md`.
 2. Add a `Strategic Research Signals` section to `docs/PLAN.md`.
 3. Add a `local recognizability` acceptance criterion to `docs/MVP_SCOPE.md`.
 4. Reframe Phase 3 as `Tile-Based Neighborhood Scale Validation`.

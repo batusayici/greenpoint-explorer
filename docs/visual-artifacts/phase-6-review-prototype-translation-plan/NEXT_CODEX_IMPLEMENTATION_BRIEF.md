@@ -10,7 +10,7 @@ Execute Phase 6.1 Constrained Raster Prototype Integration.
 
 Current authority:
 - docs/CURRENT_EXECUTION_BRIEF.md defines the only executable task.
-- docs/approved-reference-corpus/ is the active visual reference source.
+- docs/reference/approved-reference-corpus/ is the active visual reference source.
 - docs/visual-artifacts/phase-6-repeatable-assetization-proof/ is the active Phase 6 proof package.
 - docs/visual-artifacts/phase-6-review-prototype-translation-plan/ defines the prototype translation plan.
 - docs/archive/ is historical/reference-only and must not be treated as current execution authority.
@@ -39,7 +39,7 @@ Do not modify:
 - package files
 - build/config/CI
 - backend/CMS/persistence/analytics/deployment files
-- docs/approved-reference-corpus/
+- docs/reference/approved-reference-corpus/
 - original Phase 6 proof files or generated images
 - docs/archive/
 - generated images or screenshots except for new review screenshots requested below

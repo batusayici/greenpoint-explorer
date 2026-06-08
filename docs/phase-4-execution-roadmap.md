@@ -210,7 +210,7 @@ A future Phase 4B visual batch is not acceptable if it only produces a static im
 - `docs/phase-4a-workflow-spike-decision-matrix.md`
 - `docs/phase-4b-data-to-scene-workflow.md`
 - `docs/phase-4b-implementation-plan.md`
-- `docs/phase-3-closeout.md`
+- `docs/archive/phase-3/phase-3-closeout.md`
 
 ## Immediate Next Batch
 

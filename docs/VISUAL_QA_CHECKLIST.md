@@ -107,4 +107,4 @@ Documentation:
 - [ ] `docs/DECISION_LOG.md` updated after the batch.
 - [ ] Visual changes include before/after rationale when applicable.
 - [ ] Open review items are documented.
-- [ ] Phase-2 ideas stay in `docs/PHASE_2_BACKLOG.md`, not the MVP.
+- [ ] Phase-2 ideas stay in `docs/archive/phase-2/PHASE_2_BACKLOG.md`, not the MVP.

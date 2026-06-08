@@ -114,10 +114,10 @@ Viability read:
 
 Evidence inspected:
 
-- `docs/ARCHITECTURE.md`: records the source adapters -> normalized records -> canonical scene manifest -> rendering -> QA layer direction, while keeping generated truth and manual overrides separate.
-- `docs/SCENE_MANIFEST_SCHEMA.md`: defines planning contracts for provenance, geometry, places, businesses, addresses, storefronts, scene objects, scene anchors, transforms, manual overrides, and QA.
-- `docs/PROVENANCE_AND_QA.md`: defines the inspection loop, missing-data/ambiguity reports, hidden-manual-fix checks, and stop conditions.
-- `docs/DATA_SOURCES.md` and `docs/PLACE_SOURCE_POLICY.md`: define source hierarchy and claim limits.
+- `docs/reference/ARCHITECTURE.md`: records the source adapters -> normalized records -> canonical scene manifest -> rendering -> QA layer direction, while keeping generated truth and manual overrides separate.
+- `docs/reference/SCENE_MANIFEST_SCHEMA.md`: defines planning contracts for provenance, geometry, places, businesses, addresses, storefronts, scene objects, scene anchors, transforms, manual overrides, and QA.
+- `docs/reference/PROVENANCE_AND_QA.md`: defines the inspection loop, missing-data/ambiguity reports, hidden-manual-fix checks, and stop conditions.
+- `docs/reference/DATA_SOURCES.md` and `docs/reference/PLACE_SOURCE_POLICY.md`: define source hierarchy and claim limits.
 - `src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json`: existing review-only corridor geometry packet with 3 sources, 2 street centerline records, 4 sidewalk-line records, 291 footprint records, raw source hash, and explicit blocked claims.
 - `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`: existing corridor scaffold with 3 targets and 4 layers, but `realWorldTransformStatus` remains `not_implemented`.
 - `src/data/scenes/manhattan-greenpoint-ave-mvp.v0.1.json`: existing west-anchor manifest-shaped sample with sources, geometry, places, businesses, addresses, storefronts, scene transform/anchors/objects/assets, overrides, and QA fields.
@@ -246,9 +246,9 @@ Viability read:
 Evidence inspected:
 
 - `docs/MVP_SCOPE.md`: allows supplied/approved field-reference photos for review-only validation and MVP-only facade/source imagery, but blocks Google/Street View/3D Tiles storage, extraction, training, generation input, texture reuse, and production asset use except the narrow historical SW Dunkin exception.
-- `docs/DATA_SOURCES.md`: treats Google/Street View/Places as fallback/reference only until licensing is resolved and requires manual/team evidence to record provenance, usage/licensing status, supported claims, and unsupported claims.
-- `docs/PLACE_SOURCE_POLICY.md`: keeps general Google/Street View/3D Tiles facade-reference use blocked and allows owned/approved field photos/manual observations only as provenance-labeled support for facade/frontage/entrance review.
-- `docs/approved-reference-corpus/USAGE_RULES.md`: protects approved raster/reference outputs as visual alignment references, not production assets or exact Greenpoint factual evidence.
+- `docs/reference/DATA_SOURCES.md`: treats Google/Street View/Places as fallback/reference only until licensing is resolved and requires manual/team evidence to record provenance, usage/licensing status, supported claims, and unsupported claims.
+- `docs/reference/PLACE_SOURCE_POLICY.md`: keeps general Google/Street View/3D Tiles facade-reference use blocked and allows owned/approved field photos/manual observations only as provenance-labeled support for facade/frontage/entrance review.
+- `docs/reference/approved-reference-corpus/USAGE_RULES.md`: protects approved raster/reference outputs as visual alignment references, not production assets or exact Greenpoint factual evidence.
 - `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/README.md`: records that supplied real facade imagery materially improved DTR-11 but did not prove full-fidelity deterministic facade reproduction.
 - `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-qa-report.json`: records `googleStreetViewOr3DTilesExtractionUsed: false`.
 

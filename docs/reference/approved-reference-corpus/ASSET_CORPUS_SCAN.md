@@ -4,7 +4,7 @@ Status: Historical scan record
 Date: 2026-05-28
 
 Current note:
-- This file preserves the original scan result only. Use `docs/approved-reference-corpus/MANIFEST.md` for canonical current reference paths.
+- This file preserves the original scan result only. Use `docs/reference/approved-reference-corpus/MANIFEST.md` for canonical current reference paths.
 
 ## Folders Scanned
 

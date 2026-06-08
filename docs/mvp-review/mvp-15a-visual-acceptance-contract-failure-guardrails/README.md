@@ -18,10 +18,10 @@ Reviewed:
 - `docs/mvp-review/mvp-12-screenshot-visual-qa-recovery-review/README.md`
 - `docs/mvp-review/mvp-10-fictional-safe-current-scene-art-translation-brief/README.md`
 - `docs/ART_DIRECTION.md`
-- `docs/approved-reference-corpus/README.md`
-- `docs/approved-reference-corpus/USAGE_RULES.md`
-- `docs/approved-reference-corpus/REFERENCE_INDEX.md`
-- `docs/approved-reference-corpus/MANIFEST.md`
+- `docs/reference/approved-reference-corpus/README.md`
+- `docs/reference/approved-reference-corpus/USAGE_RULES.md`
+- `docs/reference/approved-reference-corpus/REFERENCE_INDEX.md`
+- `docs/reference/approved-reference-corpus/MANIFEST.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
@@ -61,7 +61,7 @@ The core problem is not only target placement. It is visual scene-language failu
 
 Every future visual implementation pass must align to the approved Inked Indie / Compact Corner corpus before code changes. Avoiding MVP-11 and MVP-13 failure modes is not enough. Inspecting and citing the corpus is also not enough.
 
-No visual implementation pass is valid unless it cites exact ARC IDs and source paths from `docs/approved-reference-corpus/MANIFEST.md`.
+No visual implementation pass is valid unless it cites exact ARC IDs and source paths from `docs/reference/approved-reference-corpus/MANIFEST.md`.
 
 For any prototype intended to represent the approved look and feel, the normal-mode primary world surface must materially use an approved raster/reference plate or an approved raster sprite/asset-kit composition. Code-native SVG/CSS/DOM/canvas/Pixi graphics may support hidden blockouts, hit regions, debug/QA overlays, markers, tethers, selected outlines, cards, controls, and temporary alignment guides only.
 
@@ -71,11 +71,11 @@ Required references before code changes:
 
 | Required use | Required ARC citation |
 | --- | --- |
-| Primary scene/world reference | ARC-023 with the current source path from `docs/approved-reference-corpus/MANIFEST.md`. |
-| Compact street-slice scalability reference | ARC-028 with the current source path from `docs/approved-reference-corpus/MANIFEST.md`. |
-| Storefront module fidelity/decomposition reference | ARC-016 or ARC-026 with the current source path from `docs/approved-reference-corpus/MANIFEST.md`. |
-| UI/card/marker/selected-state integration reference | ARC-024 and ARC-029 with current source paths from `docs/approved-reference-corpus/MANIFEST.md`. |
-| Cautionary anti-references | ARC-015 and ARC-031 with current source paths from `docs/approved-reference-corpus/MANIFEST.md`. |
+| Primary scene/world reference | ARC-023 with the current source path from `docs/reference/approved-reference-corpus/MANIFEST.md`. |
+| Compact street-slice scalability reference | ARC-028 with the current source path from `docs/reference/approved-reference-corpus/MANIFEST.md`. |
+| Storefront module fidelity/decomposition reference | ARC-016 or ARC-026 with the current source path from `docs/reference/approved-reference-corpus/MANIFEST.md`. |
+| UI/card/marker/selected-state integration reference | ARC-024 and ARC-029 with current source paths from `docs/reference/approved-reference-corpus/MANIFEST.md`. |
+| Cautionary anti-references | ARC-015 and ARC-031 with current source paths from `docs/reference/approved-reference-corpus/MANIFEST.md`. |
 
 Before implementation, Codex must inspect the required references and produce a pre-code visual target table with:
 

@@ -47,12 +47,12 @@ LiveXYZ links are treated here as user-provided place identity/presence evidence
 
 Reviewed existing project evidence:
 
-- `docs/PLACE_SOURCE_POLICY.md`
-- `docs/PLACE_SCHEMA.md`
+- `docs/reference/PLACE_SOURCE_POLICY.md`
+- `docs/reference/PLACE_SCHEMA.md`
 - `docs/MVP_SCOPE.md`
-- `docs/approved-reference-corpus/REFERENCE_INDEX.md`
-- `docs/approved-reference-corpus/MANIFEST.md`
-- `docs/approved-reference-corpus/USAGE_RULES.md`
+- `docs/reference/approved-reference-corpus/REFERENCE_INDEX.md`
+- `docs/reference/approved-reference-corpus/MANIFEST.md`
+- `docs/reference/approved-reference-corpus/USAGE_RULES.md`
 - `src/mvpPlaceData.js` only to confirm that app/source implementation remains stale relative to this corrected current scene set.
 
 No new web lookup, scraping, live data fetch, screenshot generation, visual generation, app/source edit, package/config/build/CI/deployment edit, staging, or commit was performed.

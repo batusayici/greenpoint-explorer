@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-07
+Last reconciled: 2026-06-08
 
 ## Purpose
 
@@ -61,9 +61,49 @@ Next pointer:
 - Updated roadmap posture: 4G external source policy and coverage audit contract is open. The intended later gated sequence is 4G-A geometry source audit for NYC 3D / CityGML / 3DCityDB, 4G-B facade evidence source audit for Mapillary/KartaView, 4H facade evidence intake workflow, 4I corridor facade cue expansion, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset registry / visual system / art-direction translation, and 4N normal-mode promotion + recognition QA. NYC 3D / CityGML / 3DCityDB is a geometry-confidence candidate only and not facade/storefront/business evidence; Mapillary/KartaView remain preferred external candidate imagery lanes pending explicit source-policy approval, not approved primary production sources; Batu-supplied imagery remains the controlled fallback and adjudication source for gaps, ambiguity, or unsupported claims; Google 3D Tiles/Street View remains benchmark-only or narrow-exception material unless separately cleared; Qwen/Oxen is deferred to 4M as a possible visual-system accelerator, not an evidence source.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
-- Legacy tracker: `docs/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
+- Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Top-Level Docs Cleanup Batch A/B
+
+Status:
+- Complete as approved docs-organization cleanup.
+
+Scope:
+- Simplify top-level `docs/` by archiving stale governance/history files and moving stable reference material under `docs/reference/`, without starting 4G or moving review/evidence folders.
+
+Files changed:
+- `AGENTS.md`
+- `docs/DOCS_INDEX.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/archive/governance/`
+- `docs/archive/phase-2/`
+- `docs/archive/phase-3/`
+- `docs/reference/`
+- Path references in docs/source metadata that pointed to moved docs.
+
+Verification:
+- `find docs -maxdepth 1 -mindepth 1 -print | sort`
+- Stale moved-path search with `rg`
+- `git diff --check`
+- `git diff --stat`
+- `git status --short`
+
+Outcome:
+- Archived retired top-level stubs and historical Phase 2/3 notes.
+- Moved stable source/schema/provenance/reference docs and reference folders under `docs/reference/`.
+- Updated path references to the new locations.
+- Removed the empty `docs/phase-4d-candidate-poi-qa/` folder and moved top-level `docs/.DS_Store` out of the repo.
+- Kept `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/DOCS_INDEX.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, active Phase 4 support docs, and all review/evidence folders in place.
+- Did not start 4G feature work, access sources, move evidence folders, stage files, or commit.
+
+Unresolved decisions:
+- Batu owns whether to run a later Phase 4 artifact move batch and whether/when to migrate review/evidence folders with fixture/verifier path updates.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` remains pointed at `Batch 4G: External Source Policy And Coverage Audit Contract`.
 
 ### 2026-06-07 - 4F/4G Review-Gate Reconciliation Cleanup
 
@@ -1051,7 +1091,7 @@ Files changed:
 - `docs/phase-4-execution-roadmap.md`
 
 Verification:
-- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/MVP_SCOPE.md`, `docs/ART_DIRECTION.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/PROVENANCE_AND_QA.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`, and `docs/DOCS_INDEX.md`.
+- Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/phase-4-execution-roadmap.md`, `docs/MVP_SCOPE.md`, `docs/ART_DIRECTION.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/reference/PROVENANCE_AND_QA.md`, `docs/reference/SCENE_MANIFEST_SCHEMA.md`, `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`, and `docs/DOCS_INDEX.md`.
 - `git status --short` before implementation.
 - `git diff --check`.
 - `git diff --no-index --check /dev/null docs/phase-4c-recognizable-facade-cue-plan.md` produced no whitespace-error output; nonzero exit is expected for a no-index comparison against a new file.
@@ -1750,7 +1790,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/phase-4-execution-roadmap.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Source/reference policy review: `docs/MVP_SCOPE.md`, `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/approved-reference-corpus/USAGE_RULES.md`, and DTR-11 facade-fidelity evidence.
+- Source/reference policy review: `docs/MVP_SCOPE.md`, `docs/reference/DATA_SOURCES.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/reference/approved-reference-corpus/USAGE_RULES.md`, and DTR-11 facade-fidelity evidence.
 - Existing DTR-11 generated JSON parse for `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-qa-report.json` and `docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json`.
 - Markdown/link sanity by inspection.
 - `git diff --check`.
@@ -1933,10 +1973,10 @@ Scope:
 
 Files changed:
 - `docs/DOCS_INDEX.md`
-- `docs/AGENT_HANDOFF.md`
-- `docs/PHASE_2_PLAN.md`
-- `docs/PHASE_2_BACKLOG.md`
-- `docs/PHASE_3_SCALE_TEST_PLAN.md`
+- `docs/archive/governance/AGENT_HANDOFF.md`
+- `docs/archive/phase-2/PHASE_2_PLAN.md`
+- `docs/archive/phase-2/PHASE_2_BACKLOG.md`
+- `docs/archive/phase-3/PHASE_3_SCALE_TEST_PLAN.md`
 - `docs/ART_DIRECTION.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
@@ -2018,7 +2058,7 @@ Files changed:
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
-- `docs/phase-3-closeout.md`
+- `docs/archive/phase-3/phase-3-closeout.md`
 - `docs/phase-4a-workflow-spike-plan.md`
 - `docs/phase-4a-workflow-spike-decision-matrix.md`
 - `docs/phase-4b-data-to-scene-workflow.md`
@@ -2243,7 +2283,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/PROVENANCE_AND_QA.md`, and `docs/phase-3-real-corridor-evidence-inventory.md`.
+- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/reference/DATA_SOURCES.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/reference/PROVENANCE_AND_QA.md`, and `docs/phase-3-real-corridor-evidence-inventory.md`.
 - Official source retrieval from NYC Open Data Building Footprints, Centerline/CSCL, and Sidewalk Centerline/SIDEWALK_LINE line context.
 - JSON parse for the Phase 3 scene fixture and Phase 3B raw/normalized official geometry packets.
 - Structural source/evidence check: 291 footprint records, 2 selected Greenpoint Ave street-centerline records, 4 selected sidewalk-line/context records, with blocked claim classes preserved.
@@ -2444,7 +2484,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, and `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Topic-doc review: `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, and `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`.
 - `git diff --check`
 - `git status --short`
 
@@ -2633,7 +2673,7 @@ Scope:
 - Amend the Phase 3 POI/business source ADR to explicitly incorporate North Brooklyn Chamber and Shop Small Greenpoint into the local-directory/community source strategy while preserving Foursquare as the practical near-term implementation lane when no deterministic local source is available.
 
 Files changed:
-- `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
+- `docs/reference/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
@@ -2671,13 +2711,13 @@ Scope:
 - Create a review-only Phase 3 POI/business source ADR and narrow Brouwerij Lane source-spike readout without live API calls, scraping, broad integration, app/source changes, or target deepening.
 
 Files changed:
-- `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
+- `docs/reference/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 
 Verification:
-- Required doc/source reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/DATA_SOURCES.md`, `docs/PROVENANCE_AND_QA.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, `docs/DECISION_LOG.md`, and `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
+- Required doc/source reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/reference/DATA_SOURCES.md`, `docs/reference/PROVENANCE_AND_QA.md`, `docs/reference/SCENE_MANIFEST_SCHEMA.md`, `docs/DECISION_LOG.md`, and `src/data/scenes/greenpoint-ave-manhattan-to-franklin.phase-3-scaffold.v0.1.json`.
 - External docs review only for source-policy orientation; no live APIs called and no scraping performed.
 - Markdown/lint command search: no dedicated docs lint or markdown lint script is available in `package.json`.
 - `npm run build` not run; docs are not imported into app behavior.
@@ -2685,7 +2725,7 @@ Verification:
 - `git status --short`
 
 Outcome:
-- Added the Phase 3 POI/business source ADR under `docs/decisions/`.
+- Added the Phase 3 POI/business source ADR under `docs/reference/decisions/`.
 - Recommended separate source lanes: LiveXYZ/local-directory static export/access as preferred POI lane if Batu approves terms and deterministic fixture storage, Foursquare as fallback POI lane after credential/terms approval, OSM as open cross-check, NYC Open Data/official records as geometry/context lane, and manual evidence packets as the only lane for facade/frontage/entrance/raster readiness.
 - Defined a review-only normalized deterministic POI evidence record shape for later Phase 3 packets.
 - Recorded credentials/access needs and the Brouwerij Lane readout: identity/address/category/coordinates/freshness/provenance can be retrieved only after approved source access/material exists; facade/frontage/entrance/raster readiness remain blocked by separate evidence needs.
@@ -2753,7 +2793,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Source/path review: Phase 3 scaffold fixture, `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/MVP_SCOPE.md`, `docs/DATA_FEASIBILITY.md`, MVP-02 place-truth packet, MVP-05 source-of-truth validation spike, source-evidence scripts, checked-in source-evidence fixtures, and local environment source/credential variable names.
+- Source/path review: Phase 3 scaffold fixture, `docs/reference/DATA_SOURCES.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/MVP_SCOPE.md`, `docs/reference/DATA_FEASIBILITY.md`, MVP-02 place-truth packet, MVP-05 source-of-truth validation spike, source-evidence scripts, checked-in source-evidence fixtures, and local environment source/credential variable names.
 - Brouwerij source-candidate JSON parse.
 - Phase 3 scaffold JSON parse.
 - Phase 3 scaffold loader/status check.
@@ -2790,7 +2830,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Source/evidence reread: Phase 3 scaffold fixture, linked Phase 3 decision surface, Phase 2AA fixture, Phase 2AB footprint sample, DTR-11 facade specs, MVP scope later-expansion notes, `docs/DATA_FEASIBILITY.md`, MVP-02 place-truth packet, MVP-03 static data contract notes, and decision/ledger history references for Karczma/Brouwerij.
+- Source/evidence reread: Phase 3 scaffold fixture, linked Phase 3 decision surface, Phase 2AA fixture, Phase 2AB footprint sample, DTR-11 facade specs, MVP scope later-expansion notes, `docs/reference/DATA_FEASIBILITY.md`, MVP-02 place-truth packet, MVP-03 static data contract notes, and decision/ledger history references for Karczma/Brouwerij.
 - Phase 3 scaffold JSON parse.
 - Phase 3 scaffold loader/status check.
 - `npm run build`
@@ -2830,7 +2870,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic/source reread: Phase 3 scaffold fixture, `docs/phase-3-architecture-scaling-decision-surface.md`, `docs/MVP_SCOPE.md`, and Phase 2AB official-footprint sample.
+- Topic/source reread: Phase 3 scaffold fixture, `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`, `docs/MVP_SCOPE.md`, and Phase 2AB official-footprint sample.
 - Phase 3 scaffold JSON parse.
 - Phase 3 scaffold loader/status check.
 - `npm run build`.
@@ -2870,7 +2910,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic/source reread: `docs/phase-3-architecture-scaling-decision-surface.md`, Phase 3 scaffold fixture, Phase 2AA real-data fixture, DTR-11 facade extraction specs, MVP manifest, draft-scene fixture, and official-footprint sample.
+- Topic/source reread: `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`, Phase 3 scaffold fixture, Phase 2AA real-data fixture, DTR-11 facade extraction specs, MVP manifest, draft-scene fixture, and official-footprint sample.
 - Phase 3 scaffold JSON parse.
 - `npm run build`.
 - Browser smoke for default load, QA overlay, mid-corridor card/source-status summary, and preserved hover/click behavior.
@@ -2910,7 +2950,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic-doc reread: `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Topic-doc reread: `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`.
 - Phase 3 scaffold JSON parse.
 - `npm run build` passed with the existing large-chunk warning.
 - Browser smoke passed for default load, Phase 3 corridor review label, canvas presence, QA overlay toggle, west-anchor card, real-place context list, pan/zoom controls, and desktop containment/no horizontal overflow.
@@ -2953,7 +2993,7 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic-doc reread: `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Topic-doc reread: `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`.
 - Phase 3 scaffold JSON parse.
 - `npm run build` passed with the existing large-chunk warning.
 - Browser smoke passed for default load, Phase 3 review label, canvas presence, QA overlay toggle, scaffold layer control, selected card, pan/zoom controls, and desktop containment/no horizontal overflow.
@@ -2993,12 +3033,12 @@ Files changed:
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic-doc reread: `docs/phase-3-architecture-scaling-decision-surface.md`.
+- Topic-doc reread: `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`.
 - `git diff --check`
 - `git status --short`
 
 Outcome:
-- Marked `docs/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first scaffold implementation direction only.
+- Marked `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md` as reviewed/approved for the first scaffold implementation direction only.
 - Set the next authorized task to a review-only Phase 3 scaffold for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave slice.
 - Preserved the hybrid direction: block/tile-scoped manifest, raster-first plates/layers, structured interaction plus QA overlays, and reusable primitives for geometry, hotspots, masks, labels, provenance, and review.
 - Preserved review-only status and blocked production/public-readiness changes, live data, scraping, Google/Street View/3D Tiles extraction, full 3D, broad coverage, major animation/aliveness systems, package/tooling changes, production architecture, public interfaces, DTR-12, and facade/raster correction loops.
@@ -3021,20 +3061,20 @@ Scope:
 - Produce a concise docs-only Phase 3 architecture-scaling decision surface for the Greenpoint Ave / Manhattan Ave to Greenpoint Ave / Franklin Ave exploration slice, then reconcile execution-control pointers.
 
 Files changed:
-- `docs/phase-3-architecture-scaling-decision-surface.md`
+- `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md`
 - `docs/PLAN.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 
 Verification:
 - Required control-doc reread: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Topic-doc reread: `docs/MVP_SCOPE.md`, `docs/ARCHITECTURE.md`, `docs/PHASE_3_SCALE_TEST_PLAN.md`, and `docs/SCENE_MANIFEST_SCHEMA.md`.
+- Topic-doc reread: `docs/MVP_SCOPE.md`, `docs/reference/ARCHITECTURE.md`, `docs/archive/phase-3/PHASE_3_SCALE_TEST_PLAN.md`, and `docs/reference/SCENE_MANIFEST_SCHEMA.md`.
 - `git diff --check`
 - `git status --short`
 - `git diff --stat`
 
 Outcome:
-- Created `docs/phase-3-architecture-scaling-decision-surface.md` as a concise planning-only decision surface.
+- Created `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md` as a concise planning-only decision surface.
 - Recommended, for Batu review only, a hybrid path using block/tile-scoped manifest planning, raster-first scene plates/layers, structured interaction/QA/provenance overlays, and reusable primitives for geometry, hotspots, masks, labels, cards, provenance, and review.
 - Documented the minimum decisions needed to open the first scaffold proposal: slice bounds, block/tile/layer partition direction, coordinates/pan/zoom approach, raster placeholder/approved-surface choice, minimum QA/provenance overlay, browser assumptions, 10-block/50-block risks, and the proposed first implementation batch after approval.
 - Preserved no Phase 3 implementation, no app/source edits, no new architecture boundary, no public-interface/schema approval, no visual asset generation, no source acquisition, no production/public claims, and no package/tooling changes.
@@ -3044,7 +3084,7 @@ Unresolved decisions:
 - Batu owns the exact allowed files, public-interface/schema implications, source/reference lane, visual asset availability, and acceptance criteria for any later Phase 3 implementation batch.
 
 Next pointer:
-- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of `docs/phase-3-architecture-scaling-decision-surface.md` before any Phase 3 implementation.
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to Batu review of `docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md` before any Phase 3 implementation.
 
 ### 2026-06-04 - Phase 3 Roadmap Control Reconciliation
 
@@ -3278,10 +3318,10 @@ Scope:
 
 Files changed:
 - `AGENTS.md`
-- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
+- `docs/reference/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
 - `docs/PLAN.md`
 - `docs/MVP_SCOPE.md`
-- `docs/ARCHITECTURE.md`
+- `docs/reference/ARCHITECTURE.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 
@@ -3293,10 +3333,10 @@ Verification:
 - `git diff --stat`
 
 Outcome:
-- Resolved the signal-log path mismatch by moving the log to `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`.
+- Resolved the signal-log path mismatch by moving the log to `docs/reference/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`.
 - Added compact strategic roadmap language preserving Greenpoint as the narrow proof slice for future neighborhood-generation logic without opening MVP scope.
 - Added local-recognizability acceptance language to `docs/MVP_SCOPE.md`.
-- Added a planning-only Editorial / Local Knowledge Layer and visual-consistency risk note to `docs/ARCHITECTURE.md`.
+- Added a planning-only Editorial / Local Knowledge Layer and visual-consistency risk note to `docs/reference/ARCHITECTURE.md`.
 - Preserved review-only status, blocked-source policy, no DTR-12, no app/source edits, no generated/raster/package changes, no Phase 3 implementation, and no production/public-readiness changes.
 
 Unresolved decisions:
@@ -3911,20 +3951,20 @@ Scope:
 - Simplify active control docs, retire stale auto-advance language, fix stale visual-reference pointers, and archive old ledger history without changing source/app behavior.
 
 Files changed:
-- `docs/AGENT_HANDOFF.md`
+- `docs/archive/governance/AGENT_HANDOFF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/archive/MVP_EXECUTION_LEDGER_HISTORY.md`
 - `docs/PLAN.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/PHASE_2_PLAN.md`
+- `docs/archive/phase-2/PHASE_2_PLAN.md`
 - `docs/ART_DIRECTION.md`
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`
-- `docs/approved-reference-corpus/ASSET_CORPUS_SCAN.md`
+- `docs/reference/approved-reference-corpus/ASSET_CORPUS_SCAN.md`
 - `docs/DECISION_LOG.md`
-- `docs/ARCHITECTURE.md`
-- `docs/SCENE_MANIFEST_SCHEMA.md`
-- `docs/DATA_SOURCES.md`
-- `docs/PROVENANCE_AND_QA.md`
+- `docs/reference/ARCHITECTURE.md`
+- `docs/reference/SCENE_MANIFEST_SCHEMA.md`
+- `docs/reference/DATA_SOURCES.md`
+- `docs/reference/PROVENANCE_AND_QA.md`
 
 Verification:
 - `git diff --check`
@@ -3934,7 +3974,7 @@ Verification:
 
 Outcome:
 - Active planning authority remains concentrated in `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_SCOPE.md`, and the slim active ledger.
-- `docs/AGENT_HANDOFF.md` is now a historical stub and no longer authorizes auto-advance.
+- `docs/archive/governance/AGENT_HANDOFF.md` is now a historical stub and no longer authorizes auto-advance.
 - Older ledger entries are preserved in `docs/archive/MVP_EXECUTION_LEDGER_HISTORY.md` so the active ledger stays readable before Phase 2DTR-1 implementation.
 - Stale Phase 2AD-style/overlay-polish and pre-DTR current-gate language was replaced with Phase 2DTR orientation.
 - No app source, data fixtures, assets, screenshots, package files, package tooling, scripts, public interfaces, production gates, or Phase 2DTR scope were changed.
@@ -3952,10 +3992,10 @@ Status:
 
 Scope:
 - Docs-only simplification requested by Batu to reduce future planning confusion.
-- Convert `docs/PHASE_2_PLAN.md` from an active plan into a historical stub and make `docs/PLAN.md` the single active roadmap.
+- Convert `docs/archive/phase-2/PHASE_2_PLAN.md` from an active plan into a historical stub and make `docs/PLAN.md` the single active roadmap.
 
 Files changed:
-- `docs/PHASE_2_PLAN.md`
+- `docs/archive/phase-2/PHASE_2_PLAN.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 
@@ -3965,7 +4005,7 @@ Verification:
 - `git diff --stat`
 
 Outcome:
-- `docs/PHASE_2_PLAN.md` is now retained only to avoid dangling references.
+- `docs/archive/phase-2/PHASE_2_PLAN.md` is now retained only to avoid dangling references.
 - `docs/PLAN.md` remains the active roadmap, phase-control document, and next-task pointer source.
 - `docs/CURRENT_EXECUTION_BRIEF.md` remains the active task handoff and still points to Phase 2DTR-1.
 - `docs/MVP_SCOPE.md` remains the durable MVP scope authority.
@@ -3992,7 +4032,7 @@ Files changed:
 - `docs/PLAN.md`
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
-- `docs/PHASE_2_PLAN.md`
+- `docs/archive/phase-2/PHASE_2_PLAN.md`
 
 Verification:
 - `git diff --check`

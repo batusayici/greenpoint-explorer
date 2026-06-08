@@ -109,7 +109,7 @@ Allowed only after Batu approval for evidence-based cue planning or implementati
 - Project-owned photos with provenance and usage notes.
 - Batu-approved non-Google public/open reference material with explicit usage status.
 - Manual review notes tied to specific source/evidence records.
-- Approved MVP-only exceptions already documented in `docs/MVP_SCOPE.md` or `docs/PLACE_SOURCE_POLICY.md`, limited to their stated scope.
+- Approved MVP-only exceptions already documented in `docs/MVP_SCOPE.md` or `docs/reference/PLACE_SOURCE_POLICY.md`, limited to their stated scope.
 
 Blocked inputs:
 

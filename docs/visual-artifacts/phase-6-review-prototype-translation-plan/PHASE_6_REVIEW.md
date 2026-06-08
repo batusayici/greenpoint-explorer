@@ -7,7 +7,7 @@ Date: 2026-05-28
 
 This review uses the approved reference corpus and the active Phase 6 proof package:
 
-- `docs/approved-reference-corpus/`
+- `docs/reference/approved-reference-corpus/`
 - `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`
 
 It does not use `docs/archive/` as execution authority.

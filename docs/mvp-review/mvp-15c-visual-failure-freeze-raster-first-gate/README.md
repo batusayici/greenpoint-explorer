@@ -85,9 +85,9 @@ If no approved raster plate or approved raster sprite/asset kit is available, Co
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`
 - `docs/VISUAL_QA_CHECKLIST.md`
-- `docs/approved-reference-corpus/MANIFEST.md`
-- `docs/approved-reference-corpus/REFERENCE_INDEX.md`
-- `docs/approved-reference-corpus/USAGE_RULES.md`
+- `docs/reference/approved-reference-corpus/MANIFEST.md`
+- `docs/reference/approved-reference-corpus/REFERENCE_INDEX.md`
+- `docs/reference/approved-reference-corpus/USAGE_RULES.md`
 - `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`
 - `docs/mvp-review/mvp-15b-perspective-scene-renderer-replacement/README.md`
 - `docs/visual-artifacts/phase-6-review-prototype-translation-plan/REUSABLE_ASSET_RULES.md`
@@ -97,7 +97,7 @@ If no approved raster plate or approved raster sprite/asset kit is available, Co
 - `docs/PLAN.md`: replaced the code-native repair escape hatch with the stricter primary-world-art rule.
 - `docs/CURRENT_EXECUTION_BRIEF.md`: freezes MVP-15B as visually rejected and proposes MVP-16 Raster-First Prototype Recovery without running it.
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`: clarifies that current briefs cannot override the primary-world-art rule for visual acceptance work.
-- `docs/approved-reference-corpus/USAGE_RULES.md`: adds material-use gate language.
+- `docs/reference/approved-reference-corpus/USAGE_RULES.md`: adds material-use gate language.
 - `docs/mvp-review/mvp-15a-visual-acceptance-contract-failure-guardrails/README.md`: updates the gate from inspection-only compliance to raster-first material-use compliance.
 - `docs/mvp-review/mvp-15b-perspective-scene-renderer-replacement/README.md`: records the supplied screenshot rejection and freezes the code-native world renderer as failed visual evidence.
 - `docs/MVP_EXECUTION_LEDGER.md`: records this batch.

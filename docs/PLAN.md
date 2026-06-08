@@ -1,7 +1,7 @@
 # MVP Roadmap
 
 Status: Current MVP roadmap and phase-control document
-Last reconciled: 2026-06-07
+Last reconciled: 2026-06-08
 Creative/product/public-interface approval owner: Batu
 Critical review/decision-support/brief-authoring support: ChatGPT
 Execution owner inside approved boundaries: Codex
@@ -22,7 +22,7 @@ Use these in order when documents conflict:
 4. `docs/MVP_EXECUTION_LEDGER.md`
 5. Topic-specific docs when the task touches their area
 
-`docs/TASKS.md` is deprecated and must not be used as an active source of truth unless `docs/CURRENT_EXECUTION_BRIEF.md` or this plan explicitly revives it.
+`docs/archive/governance/TASKS.md` is deprecated and must not be used as an active source of truth unless `docs/CURRENT_EXECUTION_BRIEF.md` or this plan explicitly revives it.
 
 ## Current State
 
@@ -67,10 +67,10 @@ Use these in order when documents conflict:
 - Phase 4D provisional corner association shortlist note: `docs/phase-4d-provisional-corner-association-shortlist.md`
 - Phase 4A supporting docs: `docs/phase-4a-workflow-spike-plan.md`, `docs/phase-4a-workflow-spike-decision-matrix.md`
 - Phase 4B supporting docs: `docs/phase-4b-data-to-scene-workflow.md`, `docs/phase-4b-implementation-plan.md`
-- Phase 3 closeout: `docs/phase-3-closeout.md`
+- Phase 3 closeout: `docs/archive/phase-3/phase-3-closeout.md`
 - Phase 3D review package: `docs/mvp-review/phase-3d-corridor-style-matte-review/`
 - Phase 3 real corridor evidence inventory: `docs/phase-3-real-corridor-evidence-inventory.md`
-- Phase 3 POI/business source ADR: `docs/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
+- Phase 3 POI/business source ADR: `docs/reference/decisions/ADR-2026-06-04-phase-3-poi-business-source-selection.md`
 - Brouwerij Lane source-retrieval blocker record: `docs/phase-3-brouwerij-source-retrieval-spike.md`
 - Foursquare Brouwerij one-target adapter contract: `docs/phase-3-foursquare-brouwerij-poi-adapter-contract.md`
 - Foursquare Brouwerij credential/source blocker report: `docs/phase-3-brouwerij-foursquare-credential-blocker.md`
@@ -179,6 +179,6 @@ Use these in order when documents conflict:
 - `docs/MVP_SCOPE.md`: detailed MVP boundaries and non-goals.
 - `docs/MVP_EXECUTION_LEDGER.md`: current ledger entries plus archived-history pointer.
 - `docs/DECISION_LOG.md`: durable decision history and rationale.
-- `docs/DATA_SOURCES.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/ARCHITECTURE.md`, `docs/SCENE_MANIFEST_SCHEMA.md`, and `docs/PROVENANCE_AND_QA.md`: source/architecture background, subordinate to current execution controls.
-- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`: strategic context only; not execution authorization.
-- `docs/PHASE_2_PLAN.md`, `docs/AGENT_HANDOFF.md`, and `docs/PHASE_3_SCALE_TEST_PLAN.md`: historical/background only.
+- `docs/reference/DATA_SOURCES.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/reference/ARCHITECTURE.md`, `docs/reference/SCENE_MANIFEST_SCHEMA.md`, and `docs/reference/PROVENANCE_AND_QA.md`: source/architecture background, subordinate to current execution controls.
+- `docs/reference/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`: strategic context only; not execution authorization.
+- `docs/archive/phase-2/PHASE_2_PLAN.md`, `docs/archive/governance/AGENT_HANDOFF.md`, and `docs/archive/phase-3/PHASE_3_SCALE_TEST_PLAN.md`: historical/background only.

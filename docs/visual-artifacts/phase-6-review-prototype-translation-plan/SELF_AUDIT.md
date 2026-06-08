@@ -19,7 +19,7 @@ Created:
 Modified:
 
 - `docs/CURRENT_EXECUTION_BRIEF.md`
-- `docs/TASKS.md`
+- `docs/archive/governance/TASKS.md`
 
 ## Files Not Modified By This Batch
 
@@ -31,7 +31,7 @@ Specifically, this batch did not modify:
 - `src/assets/`
 - package files
 - build/config/CI files
-- `docs/approved-reference-corpus/`
+- `docs/reference/approved-reference-corpus/`
 - `docs/visual-artifacts/phase-6-repeatable-assetization-proof/`
 - generated images
 - screenshots

@@ -30,7 +30,7 @@ Latest visual proof state:
 
 - Phase 4 is complete and is the visual-direction approval proof.
 - Phase 4.5 is supporting scalability evidence.
-- The approved reference corpus in `docs/approved-reference-corpus/` is now the active visual reference source for future visual, prototype, and assetization work.
+- The approved reference corpus in `docs/reference/approved-reference-corpus/` is now the active visual reference source for future visual, prototype, and assetization work.
 - The active Phase 6 package in `docs/visual-artifacts/phase-6-repeatable-assetization-proof/` is a review-only repeatable assetization proof. Its next use is review and prototype translation planning, not production asset approval.
 - Historical visual-artifact and review-screenshot folders under `docs/archive/` are preserved reference/history only and are not current execution authority.
 - Fictional-safe storefront identity restores personality without real business names, addresses, factual card copy, exact facades, or exact station geometry.

@@ -43,7 +43,7 @@ The future batch may copy, not move or overwrite, the Phase 6 raster into `src/a
 - package files
 - build/config/CI files
 - backend/CMS/persistence/analytics/deployment files
-- `docs/approved-reference-corpus/`
+- `docs/reference/approved-reference-corpus/`
 - original Phase 6 proof files and generated images
 - `docs/archive/`
 - broad architecture docs unless the current brief explicitly asks for docs updates

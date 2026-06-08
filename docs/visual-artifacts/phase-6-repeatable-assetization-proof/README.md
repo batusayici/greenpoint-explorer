@@ -19,11 +19,11 @@ The generated outputs are decision artifacts for judging repeatability: whether 
 
 Canonical corpus:
 
-- `docs/approved-reference-corpus/README.md`
-- `docs/approved-reference-corpus/MANIFEST.md`
-- `docs/approved-reference-corpus/USAGE_RULES.md`
-- `docs/approved-reference-corpus/REFERENCE_INDEX.md`
-- `docs/approved-reference-corpus/ASSET_CORPUS_SCAN.md`
+- `docs/reference/approved-reference-corpus/README.md`
+- `docs/reference/approved-reference-corpus/MANIFEST.md`
+- `docs/reference/approved-reference-corpus/USAGE_RULES.md`
+- `docs/reference/approved-reference-corpus/REFERENCE_INDEX.md`
+- `docs/reference/approved-reference-corpus/ASSET_CORPUS_SCAN.md`
 
 Primary raster references used:
 

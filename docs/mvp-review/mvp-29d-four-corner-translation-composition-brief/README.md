@@ -21,8 +21,8 @@ MVP-22/MVP-22C remains accepted proof evidence only. It should inform interactio
 - `docs/MVP_SCOPE.md`
 - `docs/ART_DIRECTION.md`
 - `docs/VISUAL_ARTIFACT_STANDARDS.md`
-- `docs/PLACE_SOURCE_POLICY.md`
-- `docs/PLACE_SCHEMA.md`
+- `docs/reference/PLACE_SOURCE_POLICY.md`
+- `docs/reference/PLACE_SCHEMA.md`
 
 ## Artifact Class
 

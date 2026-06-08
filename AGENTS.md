@@ -44,7 +44,7 @@ Visual direction cannot be approved from prose-only labels, recommendations, or 
 
 For strategic product signals around digital neighborhoods, isometric city maps, GeoAI, tile generation, Fractal Paris, Edushi, Google 3D Tiles, local-recognizability criteria, and neighborhood-memory positioning, read:
 
-- `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
+- `docs/reference/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md`
 
 Use this document as strategic context only. Do not treat it as authorization to change MVP scope, source policy, architecture boundaries, implementation gates, visual direction, production-readiness claims, source integrations, or current execution scope. Active execution authority remains with `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_SCOPE.md`, and the source-of-truth order in this file.
 
@@ -183,7 +183,7 @@ After every successful MVP/prototype batch, Codex must reconcile the MVP executi
 - Update `docs/MVP_SCOPE.md` only when the batch changes or clarifies detailed MVP boundaries, non-goals, must-have/should-have/cuttable items, or MVP acceptance boundaries.
 - Update `docs/CURRENT_EXECUTION_BRIEF.md` so it no longer points to a completed or stale task. It must contain the next approved/proposed executable task, an explicit pre-authorized queue if one exists, and the next hard Batu review gate; or explicitly state that the next task is pending Batu approval or a later gate review.
 - Update `docs/MVP_EXECUTION_LEDGER.md` with one concise entry recording the batch outcome, files changed, verification, unresolved decisions, and next pointer.
-- Do not update `docs/TASKS.md` unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.
+- Do not update `docs/archive/governance/TASKS.md` unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.
 
 If the plan, current brief, and ledger cannot be reconciled, Codex must stop and report the conflict instead of silently choosing a next phase, widening scope, or leaving stale task instructions.
 
@@ -279,4 +279,4 @@ When project documents conflict, use this order:
 
 Topic-specific docs include `docs/MVP_SCOPE.md`, `docs/DECISION_LOG.md`, `docs/ART_DIRECTION.md`, `docs/VISUAL_ARTIFACT_STANDARDS.md`, `docs/VISUAL_QA_CHECKLIST.md`, `docs/AGENTIC_TOOLING.md`, and current MVP/review artifact package docs.
 
-`docs/TASKS.md` is deprecated and must not be used as an active source of truth unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.
+`docs/archive/governance/TASKS.md` is deprecated and must not be used as an active source of truth unless `docs/CURRENT_EXECUTION_BRIEF.md` or `docs/PLAN.md` explicitly revives it.

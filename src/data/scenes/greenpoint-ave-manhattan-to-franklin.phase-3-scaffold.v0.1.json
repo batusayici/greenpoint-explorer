@@ -2196,7 +2196,7 @@
           {
             "id": "phase-3-decision-surface-slice-bounds",
             "label": "Phase 3 architecture decision surface",
-            "path": "docs/phase-3-architecture-scaling-decision-surface.md",
+            "path": "docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md",
             "status": "sourced",
             "notes": "Supports the Manhattan-to-Franklin slice and block/tile-scoped scaffold direction only; does not identify mid-corridor businesses."
           },
@@ -3002,7 +3002,7 @@
           {
             "id": "phase-3-decision-surface-franklin-endpoint",
             "label": "Phase 3 architecture decision surface",
-            "path": "docs/phase-3-architecture-scaling-decision-surface.md",
+            "path": "docs/archive/phase-3/phase-3-architecture-scaling-decision-surface.md",
             "status": "sourced",
             "notes": "Supports the Manhattan-to-Franklin slice endpoint and block/tile-scoped scaffold direction only; does not identify Franklin businesses, facades, addresses, or entrances."
           },

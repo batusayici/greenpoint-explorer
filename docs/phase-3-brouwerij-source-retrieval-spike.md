@@ -16,8 +16,8 @@ No live retrieval, scraping, browser automation for external evidence, Google/St
 
 ## Approved Source Path Review
 
-- `docs/DATA_SOURCES.md` names LiveXYZ as the preferred future source pending access and usage review, but LiveXYZ is not assumed available.
-- `docs/PLACE_SOURCE_POLICY.md` allows public factual research only with provenance and strong claim limits; public directories alone do not clear exact placement, facade, frontage, entrance, production card, or public-readiness claims.
+- `docs/reference/DATA_SOURCES.md` names LiveXYZ as the preferred future source pending access and usage review, but LiveXYZ is not assumed available.
+- `docs/reference/PLACE_SOURCE_POLICY.md` allows public factual research only with provenance and strong claim limits; public directories alone do not clear exact placement, facade, frontage, entrance, production card, or public-readiness claims.
 - Existing source-evidence scripts convert and verify checked-in static fixtures. They are not live source adapters.
 - No Brouwerij Lane LiveXYZ link, static source export, source adapter, endpoint contract, or source credential was found in repo configuration or local environment.
 
@@ -37,7 +37,7 @@ No live retrieval, scraping, browser automation for external evidence, Google/St
 
 ## Local Historical Evidence Reviewed
 
-- `docs/DATA_FEASIBILITY.md`: records Brouwerij Lane as an alternate-slice candidate near Franklin/Greenpoint, with earlier public-listing support for 78 Greenpoint Ave and an official contact page that was not text-readable in that pass.
+- `docs/reference/DATA_FEASIBILITY.md`: records Brouwerij Lane as an alternate-slice candidate near Franklin/Greenpoint, with earlier public-listing support for 78 Greenpoint Ave and an official contact page that was not text-readable in that pass.
 - `docs/mvp-review/mvp-02-place-truth-packet/README.md`: parks Brouwerij Lane as possible later-slice research and requires manual verification if reactivated.
 - `docs/MVP_SCOPE.md`: lists Brouwerij Lane / Franklin-Greenpoint only as possible later expansion if a later slice or boundary is approved.
 

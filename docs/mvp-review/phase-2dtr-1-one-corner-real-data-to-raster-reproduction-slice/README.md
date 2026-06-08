@@ -49,7 +49,7 @@ Used existing local sources only:
 - `docs/mvp-reference-images/northwest-grillpoint-deli-wide.jpg`
 - `docs/mvp-reference-images/northwest-subwayA.jpg`
 - `docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png`
-- `docs/approved-reference-corpus/MANIFEST.md`
+- `docs/reference/approved-reference-corpus/MANIFEST.md`
 
 No live scraping, live API calls, browser source acquisition, Google/Street View/3D Tiles extraction, texture extraction, tracing, new package tooling, app source edits, data fixture edits, or script edits were introduced.
 

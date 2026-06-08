@@ -216,7 +216,7 @@ Stop before implementation if:
 
 ## Source And Scope Notes
 
-- Required docs read: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, `docs/PLACE_SCHEMA.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/mvp-review/mvp-19-one-corner-field-photo-supply-gate/README.md`, `docs/mvp-review/mvp-20-real-corner-translation-boundary/README.md`, and `docs/mvp-review/parked-corner-reference-images/README.md`.
+- Required docs read: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, `docs/reference/PLACE_SCHEMA.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/mvp-review/mvp-19-one-corner-field-photo-supply-gate/README.md`, `docs/mvp-review/mvp-20-real-corner-translation-boundary/README.md`, and `docs/mvp-review/parked-corner-reference-images/README.md`.
 - No app/source files were edited.
 - No renderer work, raster integration, visual generation, screenshots, scraping, live data pipeline, new assets, staging, or commit was performed.
 - No Google/Street View/3D Tiles-derived imagery was stored, copied, transformed, traced, extracted, used as generation input, used as training input, or used as facade reference.

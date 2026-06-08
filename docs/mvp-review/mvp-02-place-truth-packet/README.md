@@ -14,9 +14,9 @@ These are recommendations, not final Batu decisions. This packet does not approv
 
 This packet uses existing repo documentation only:
 
-- `docs/DATA_FEASIBILITY.md`
-- `docs/PLACE_SOURCE_POLICY.md`
-- `docs/PLACE_SCHEMA.md`
+- `docs/reference/DATA_FEASIBILITY.md`
+- `docs/reference/PLACE_SOURCE_POLICY.md`
+- `docs/reference/PLACE_SCHEMA.md`
 - `docs/MVP_SCOPE.md`
 - `docs/mvp-review/mvp-01-prototype-state-review-and-gap-brief/README.md`
 

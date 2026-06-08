@@ -262,7 +262,7 @@ Stop before or during MVP-21 if:
 
 ## Source And Scope Notes
 
-- Required docs read: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, `docs/PLACE_SCHEMA.md`, `docs/PLACE_SOURCE_POLICY.md`, `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md`, and `docs/mvp-review/mvp-19-one-corner-field-photo-supply-gate/README.md`.
+- Required docs read: `AGENTS.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/MVP_EXECUTION_LEDGER.md`, `docs/MVP_SCOPE.md`, `docs/reference/PLACE_SCHEMA.md`, `docs/reference/PLACE_SOURCE_POLICY.md`, `docs/mvp-review/mvp-18-real-corner-evidence-recovery/README.md`, and `docs/mvp-review/mvp-19-one-corner-field-photo-supply-gate/README.md`.
 - Active source data was inspected for the current place set and the existing `greenpoint-deli` label.
 - No app/source files were edited.
 - No renderer work, visual generation, raster integration, screenshots, scraping, live data pipeline, new assets, staging, or commit was performed.

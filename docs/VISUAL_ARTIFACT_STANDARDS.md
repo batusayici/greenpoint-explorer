@@ -41,7 +41,7 @@ Current verdict:
 - Visual direction is approved: Inked Indie / Compact Corner with fictional-safe storefront identity and integrated paper/card UI direction.
 - Phase 4 is complete.
 - Phase 4.5 makes the reusable storefront system appear promising at small proof scale.
-- `docs/approved-reference-corpus/` is the active visual reference source for future visual, prototype, and assetization work.
+- `docs/reference/approved-reference-corpus/` is the active visual reference source for future visual, prototype, and assetization work.
 - `docs/visual-artifacts/phase-6-repeatable-assetization-proof/` is the active review-only repeatable assetization proof for reusable system logic.
 - These proofs remain non-production and do not approve production assets, production asset direction, production asset pipeline, implementation, architecture, public interfaces, real-place cards, or production scalability/buildability.
 - Main caveats: sign-band repetition, accidental brand-like glyphs, prop repetition, UI weight, generated micro-text, real-place truth, and production burden.

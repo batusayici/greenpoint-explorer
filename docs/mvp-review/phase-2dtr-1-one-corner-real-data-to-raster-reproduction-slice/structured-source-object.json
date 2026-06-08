@@ -85,7 +85,7 @@
     {
       "sourceId": "arc-023-arc-024-arc-029",
       "sourceType": "approved visual-direction reference corpus",
-      "sourcePathOrUrl": "docs/approved-reference-corpus/MANIFEST.md",
+      "sourcePathOrUrl": "docs/reference/approved-reference-corpus/MANIFEST.md",
       "usageStatus": "visual-direction-alignment-reference",
       "supports": [
         "style.inkedIndieCompactCorner",

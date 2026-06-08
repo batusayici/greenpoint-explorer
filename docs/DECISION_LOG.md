@@ -593,7 +593,7 @@ Decision:
   - 10% pixel / retro charm;
   - 10% cinematic lighting / mood.
 - Added translation rules and negative constraints so the set cannot be flattened into a generic isometric moodboard.
-- Added a proposed docs/artifact-only style-frame batch to `docs/TASKS.md` requiring three concrete directions. This proposal was later superseded by `batch-11-radical-art-direction-concept-sprint`:
+- Added a proposed docs/artifact-only style-frame batch to `docs/archive/governance/TASKS.md` requiring three concrete directions. This proposal was later superseded by `batch-11-radical-art-direction-concept-sprint`:
   - HD Pixel Storefront;
   - DIY Flyer Maximalist;
   - Clean Isometric Civic.
@@ -758,7 +758,7 @@ Status:
 
 Decision:
 - Added a high-level project phase roadmap to `docs/PLAN.md`.
-- Added compact phase orientation to `docs/TASKS.md`.
+- Added compact phase orientation to `docs/archive/governance/TASKS.md`.
 - Clarified that Phase 1 Visual Preproduction started but is paused / partially blocked pending Location & Representational Truth Feasibility.
 - Confirmed Phase 2 / Batch 8.5 is the current active required gate.
 - Confirmed static style frame, architecture, React/Vite/Pixi, and app implementation remain blocked.
@@ -825,10 +825,10 @@ Rationale:
 - Verification commands need actual repository metadata before implementation maturity.
 
 Required artifacts:
-- `docs/DATA_FEASIBILITY.md`
-- `docs/PLACE_SOURCE_POLICY.md`
-- `docs/PLACE_SCHEMA.md`
-- `docs/TASKS.md` update
+- `docs/reference/DATA_FEASIBILITY.md`
+- `docs/reference/PLACE_SOURCE_POLICY.md`
+- `docs/reference/PLACE_SCHEMA.md`
+- `docs/archive/governance/TASKS.md` update
 - `docs/PLAN.md` update
 
 Acceptance criteria:
@@ -1487,7 +1487,7 @@ Decision:
 - Adopt a docs-only agentic tooling policy before further Batch 8 visual work.
 - Create `docs/AGENTIC_TOOLING.md` as the detailed tooling policy.
 - Add compact skills/plugins governance to `AGENTS.md`.
-- Update `docs/PLAN.md` and `docs/TASKS.md` so tooling is a governed preproduction support layer, not a creative, product, architecture, or public-interface authority layer.
+- Update `docs/PLAN.md` and `docs/archive/governance/TASKS.md` so tooling is a governed preproduction support layer, not a creative, product, architecture, or public-interface authority layer.
 - Do not create project-specific Codex skills or install plugins in this batch.
 - Pause further Batch 8 visual execution, review follow-up, or next-pass planning until Batu approves this tooling plan.
 
@@ -1501,7 +1501,7 @@ Adopted now:
 - `docs/AGENTIC_TOOLING.md`.
 - Compact `AGENTS.md` skills/plugins governance.
 - Tightened `docs/PLAN.md` agentic tooling strategy.
-- Updated `docs/TASKS.md` current-batch tracker.
+- Updated `docs/archive/governance/TASKS.md` current-batch tracker.
 - This decision-log entry.
 
 Deferred:

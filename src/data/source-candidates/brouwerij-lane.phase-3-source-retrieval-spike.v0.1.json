@@ -24,17 +24,17 @@
     ],
     "localEvidenceReviewed": [
       {
-        "path": "docs/DATA_SOURCES.md",
+        "path": "docs/reference/DATA_SOURCES.md",
         "status": "policy_context",
         "notes": "LiveXYZ is preferred pending access and usage review; live API clients and ingestion are not approved by default."
       },
       {
-        "path": "docs/PLACE_SOURCE_POLICY.md",
+        "path": "docs/reference/PLACE_SOURCE_POLICY.md",
         "status": "policy_context",
         "notes": "Public directories may corroborate identity/address research, but exact placement, public card finality, storefront frontage, facade, and entrance claims require stronger evidence and Batu approval."
       },
       {
-        "path": "docs/DATA_FEASIBILITY.md",
+        "path": "docs/reference/DATA_FEASIBILITY.md",
         "status": "historical_candidate_context",
         "notes": "Older local notes list Brouwerij Lane as an alternate-slice candidate near Franklin/Greenpoint, with public listing support for 78 Greenpoint Ave and official contact text not readable in the earlier pass."
       },

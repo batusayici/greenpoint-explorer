@@ -7,7 +7,7 @@ Execution owner inside approved boundaries: Codex
 
 Current note:
 - This is Phase 2A-era planning background. Phase 2DTR work is controlled by `docs/PLAN.md`, `docs/CURRENT_EXECUTION_BRIEF.md`, and `docs/MVP_SCOPE.md`; where this document conflicts with DTR scope, use the source-of-truth order in `AGENTS.md`.
-- The strategic research signal log at `docs/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` informs product and scale framing only. It does not approve implementation, source policy changes, public interfaces, production assets, Phase 3 work, or public/product claims.
+- The strategic research signal log at `docs/reference/research/DIGITAL_NEIGHBORHOODS_SIGNAL_LOG.md` informs product and scale framing only. It does not approve implementation, source policy changes, public interfaces, production assets, Phase 3 work, or public/product claims.
 
 ## Purpose
 
@@ -109,7 +109,7 @@ The manifest should include:
 - Manual overrides.
 - QA reports, missing-data reports, ambiguity reports, and approval state.
 
-`docs/SCENE_MANIFEST_SCHEMA.md` defines the v0.1 planning contract. That contract is not a runtime schema or public interface until a later brief explicitly opens implementation and Batu approves the boundary.
+`docs/reference/SCENE_MANIFEST_SCHEMA.md` defines the v0.1 planning contract. That contract is not a runtime schema or public interface until a later brief explicitly opens implementation and Batu approves the boundary.
 
 ## Source Adapter Boundary
 
@@ -155,7 +155,7 @@ When implementation is later opened, the app layer should:
 
 The debug/provenance/QA layer should make source alignment and manual corrections inspectable.
 
-Expected capabilities are defined in `docs/PROVENANCE_AND_QA.md` and include source-data inspection, geometry overlays, match confidence, storefront evidence, generated/manual diffs, missing-data reports, ambiguity reports, override counts, screenshot regression expectations, and human approval checklists.
+Expected capabilities are defined in `docs/reference/PROVENANCE_AND_QA.md` and include source-data inspection, geometry overlays, match confidence, storefront evidence, generated/manual diffs, missing-data reports, ambiguity reports, override counts, screenshot regression expectations, and human approval checklists.
 
 ## Visual Consistency Risk
 
