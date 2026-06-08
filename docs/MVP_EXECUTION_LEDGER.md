@@ -55,15 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: bounded Phase 4G follow-on source audit packet is open; 4G-A and 4G-B are complete and verified.
+- Current phase: bounded Phase 4G follow-on source audit packet is complete and verified, pending Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens `4H-1: Facade Evidence Intake Workflow Contract`; no further queue is open.
-- Updated roadmap posture: 4G external source policy and coverage audit contract is accepted by Batu as complete. Batu opened a bounded packet for 4G-A, 4G-B, and 4H-1 only. 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, while preserving all source access/download/cache/ingestion/conversion/render/use gates. 4G-B found Mapillary/KartaView plausible for future review-only facade evidence lane feasibility, with Mapillary authenticated API/terms review still unresolved and all real imagery access/download/cache/ingestion/render/extraction/training/use blocked. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the packet-end Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: 4G external source policy and coverage audit contract is accepted by Batu as complete. Batu opened and Codex completed a bounded packet for 4G-A, 4G-B, and 4H-1 only. 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, while preserving all source access/download/cache/ingestion/conversion/render/use gates. 4G-B found Mapillary/KartaView plausible for future review-only facade evidence lane feasibility, with Mapillary authenticated API/terms review still unresolved and all real imagery access/download/cache/ingestion/render/extraction/training/use blocked. 4H-1 defined a source-safe facade evidence intake workflow contract without ingesting real evidence. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4H-1 Facade Evidence Intake Workflow Contract
+
+Status:
+- Complete.
+
+Scope:
+- Define the source-safe facade evidence intake workflow: evidence record shape, provenance fields, allowed claim levels, review statuses, storage/cache/display rules, blocked-claim behavior, and verifier requirements.
+
+Files changed:
+- `docs/phase-4h-1-facade-evidence-intake-workflow-contract.md`
+- `src/data/facade-evidence-intake/greenpoint-ave-manhattan-to-franklin.phase-4h-1-facade-evidence-intake-workflow-contract.v0.1.json`
+- `scripts/verify-phase-4h-1-facade-evidence-intake-workflow.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4h-1-facade-evidence-intake-workflow.mjs`
+- `node scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
+- `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
+- `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Defined future facade evidence record shape, required provenance fields, allowed review-only claim levels, review statuses, source policies, storage/cache/display rules, blocked-promotion triggers, and verifier requirements.
+- Kept external candidate imagery defaults at no imagery storage, thumbnail storage, file URL storage, metadata storage, render use, texture use, training use, QA display, normal-mode display, or production use until later Batu gates.
+- Kept `approved_evidence_backed` Batu-only.
+- Did not ingest real imagery, promote sources, promote claims, create storefront anchors, link businesses, expose normal mode, change runtime/build files, add dependencies, credentials, paid APIs, architecture changes, production use, or exact claims.
+
+Unresolved decisions:
+- Batu owns packet acceptance, whether to open 4I, whether to open a corrective source-audit/intake-contract pass, source promotion, authenticated Mapillary terms review, KartaView full terms acceptance, source access/storage/display approval, claim promotion, production use, normal-mode/public use, and any later dependency/API/architecture work.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the packet-end Batu review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-08 - Batch 4G-B Facade Evidence Source Audit
 

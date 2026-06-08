@@ -1,0 +1,325 @@
+{
+  "workflowContractId": "phase-4h-1-facade-evidence-intake-workflow-contract-v0-1",
+  "workflowBatch": "4H-1",
+  "status": "review_only_workflow_contract_complete",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "productionUsePolicy": "blocked_not_approved",
+  "realImageryIntakeStatus": "blocked_none_ingested",
+  "sourcePromotionStatus": "blocked_candidate_sources_not_approved",
+  "geometryLaneSeparation": "geometry_confidence_sources_must_not_support_facade_storefront_business_claims",
+  "facadeLaneSeparation": "facade_evidence_sources_must_not_support_geometry_confidence_business_identity_active_status_or_exact_claims_by_themselves",
+  "requiredRecordFields": [
+    "evidenceRecordId",
+    "evidenceBatch",
+    "recordStatus",
+    "sourceLane",
+    "sourceCandidate",
+    "sourceApprovalStatus",
+    "termsReviewStatus",
+    "usageRightsStatus",
+    "sourceAccessStatus",
+    "provenance",
+    "corridorScope",
+    "coverageScope",
+    "storageCachePolicy",
+    "displayPolicy",
+    "attributionRequirement",
+    "licenseOrTermsSummary",
+    "allowedUses",
+    "blockedUses",
+    "claimSupportAllowed",
+    "claimSupportBlocked",
+    "reviewStatuses",
+    "observedCueFields",
+    "qualityReviewFields",
+    "geometryAssociationPolicy",
+    "businessLinkagePolicy",
+    "normalModeExposure",
+    "productionUsePolicy",
+    "batuDecisionRequired",
+    "unresolvedQuestions"
+  ],
+  "requiredProvenanceFields": [
+    "sourceOwner",
+    "sourceSupplier",
+    "sourceName",
+    "sourceRecordReference",
+    "sourceRecordReferenceStoragePolicy",
+    "captureOrPublishDate",
+    "retrievalOrReviewDate",
+    "reviewer",
+    "attributionText",
+    "licenseName",
+    "sourceVersion",
+    "modificationsMade",
+    "accessMethod",
+    "accessWasPerformed",
+    "imageryWasStored",
+    "thumbnailWasStored",
+    "fileUrlWasStored"
+  ],
+  "allowedReviewOnlyClaimLevels": [
+    {
+      "claimLevel": "level_6_storefront_frontage_review_candidate",
+      "allowedStatus": "candidate_review_only",
+      "allowedMeaning": "Imagery may appear to show a possible storefront or frontage cue for later review.",
+      "blockedPromotion": [
+        "exact_frontage_width",
+        "storefront_order",
+        "tenant_frontage_assignment",
+        "storefront_anchor_approval"
+      ]
+    },
+    {
+      "claimLevel": "level_7_entrance_review_candidate",
+      "allowedStatus": "manual_review_required",
+      "allowedMeaning": "Imagery may appear to show a possible entrance cue for later review.",
+      "blockedPromotion": [
+        "exact_entrance_location",
+        "entrance_ownership",
+        "tenant_entrance_assignment"
+      ]
+    },
+    {
+      "claimLevel": "level_8_facade_signage_review_evidence",
+      "allowedStatus": "manual_review_required",
+      "allowedMeaning": "Imagery may support review of facade plane, sign-band, window/door rhythm, corner-wrap, and visual-cue visibility.",
+      "blockedPromotion": [
+        "exact_sign_text",
+        "logo_or_trade_dress",
+        "material_or_color_truth",
+        "production_asset_readiness"
+      ]
+    }
+  ],
+  "blockedClaimLevels": [
+    "business_identity_from_imagery",
+    "active_business_status",
+    "tenant_frontage_assignment",
+    "storefront_anchor_approval",
+    "exact_frontage_width_or_order",
+    "exact_entrance_ownership",
+    "exact_sign_text_logo_trade_dress",
+    "exact_address_placement",
+    "material_or_color_truth",
+    "production_asset_generation",
+    "normal_mode_rendering",
+    "public_product_claims"
+  ],
+  "allowedReviewStatuses": [
+    "source_terms_pending",
+    "source_access_blocked",
+    "candidate_review_only",
+    "manual_review_required",
+    "blocked_insufficient_evidence",
+    "blocked_conflicting_evidence",
+    "blocked_restricted_source_contamination",
+    "blocked_frontage_ambiguity",
+    "blocked_multi_tenant_ambiguity",
+    "eligible_for_batu_review",
+    "approved_evidence_backed"
+  ],
+  "batuOnlyStatuses": [
+    "approved_evidence_backed"
+  ],
+  "sourcePolicies": [
+    {
+      "sourcePolicyId": "external_candidate_imagery_default",
+      "appliesTo": [
+        "Mapillary",
+        "KartaView"
+      ],
+      "sourceApprovalStatus": "candidate_not_approved",
+      "termsReviewStatus": "source_specific_terms_acceptance_required_before_use",
+      "imageStorageAllowed": false,
+      "thumbnailStorageAllowed": false,
+      "fileUrlStorageAllowed": false,
+      "metadataStorageAllowed": false,
+      "renderUseAllowed": false,
+      "textureUseAllowed": false,
+      "trainingUseAllowed": false,
+      "normalModeDisplayAllowed": false,
+      "qaDisplayAllowed": false,
+      "allowedUses": [
+        "workflow_contract_reference_only",
+        "future_review_only_terms_metadata_feasibility_if_opened"
+      ],
+      "blockedUses": [
+        "imagery_access",
+        "api_call",
+        "image_download",
+        "image_cache",
+        "image_ingestion",
+        "thumbnail_storage",
+        "file_url_storage",
+        "image_render_use",
+        "source_derived_textures",
+        "automated_image_extraction",
+        "model_training",
+        "normal_mode_exposure",
+        "production_use",
+        "business_linkage",
+        "exact_storefront_frontage_entrance_claim"
+      ]
+    },
+    {
+      "sourcePolicyId": "batu_supplied_project_owned_default",
+      "appliesTo": [
+        "Batu-supplied imagery",
+        "project-owned imagery"
+      ],
+      "sourceApprovalStatus": "requires_batch_specific_batu_approval",
+      "termsReviewStatus": "owner_confirmation_required_before_promotion",
+      "repoLocalPathIndexingAllowed": "only_in_later_approved_evidence_packet",
+      "imageStorageAllowed": "repo_local_existing_only_if_approved",
+      "thumbnailStorageAllowed": false,
+      "fileUrlStorageAllowed": false,
+      "metadataStorageAllowed": "review_only_if_approved",
+      "renderUseAllowed": false,
+      "textureUseAllowed": false,
+      "trainingUseAllowed": false,
+      "normalModeDisplayAllowed": false,
+      "qaDisplayAllowed": "only_if_later_brief_approves",
+      "allowedUses": [
+        "review_only_provenance_indexing_if_approved",
+        "future_manual_review_input_if_approved"
+      ],
+      "blockedUses": [
+        "cropping",
+        "transforming",
+        "stylizing",
+        "tracing",
+        "texture_use",
+        "asset_generation_input",
+        "production_asset_use",
+        "normal_mode_exposure",
+        "business_linkage",
+        "exact_storefront_frontage_entrance_claim"
+      ]
+    }
+  ],
+  "evidenceRecordTemplate": {
+    "evidenceRecordId": "template_only_no_real_evidence",
+    "evidenceBatch": "future_batch_required",
+    "recordStatus": "source_access_blocked",
+    "sourceLane": "facade_evidence",
+    "sourceCandidate": "future_batu_approved_source_required",
+    "sourceApprovalStatus": "candidate_not_approved",
+    "termsReviewStatus": "source_specific_terms_acceptance_required_before_use",
+    "usageRightsStatus": "review_only_owner_confirmation_required_before_promotion",
+    "sourceAccessStatus": "not_accessed",
+    "provenance": {
+      "sourceOwner": "future_required",
+      "sourceSupplier": "future_required",
+      "sourceName": "future_required",
+      "sourceRecordReference": "not_stored_in_4h_1",
+      "sourceRecordReferenceStoragePolicy": "blocked_until_later_gate",
+      "captureOrPublishDate": "future_required_or_unknown_with_status",
+      "retrievalOrReviewDate": "future_required",
+      "reviewer": "future_required",
+      "attributionText": "future_required",
+      "licenseName": "future_required",
+      "sourceVersion": "future_required_or_not_applicable",
+      "modificationsMade": "none_or_documented",
+      "accessMethod": "future_required",
+      "accessWasPerformed": false,
+      "imageryWasStored": false,
+      "thumbnailWasStored": false,
+      "fileUrlWasStored": false
+    },
+    "corridorScope": "Greenpoint Ave from Manhattan Ave toward Franklin Ave",
+    "coverageScope": "future_required",
+    "storageCachePolicy": "blocked_until_later_gate",
+    "displayPolicy": "blocked_until_later_gate",
+    "attributionRequirement": "future_required",
+    "licenseOrTermsSummary": "future_required",
+    "allowedUses": [
+      "review_only_manual_evidence_assessment_if_later_approved"
+    ],
+    "blockedUses": [
+      "normal_mode_exposure",
+      "production_use",
+      "business_linkage",
+      "source_derived_textures",
+      "model_training",
+      "exact_storefront_frontage_entrance_claim"
+    ],
+    "claimSupportAllowed": [
+      "level_6_candidate_review_only",
+      "level_7_manual_review_required",
+      "level_8_manual_review_required"
+    ],
+    "claimSupportBlocked": [
+      "business_identity_from_imagery",
+      "active_business_status",
+      "tenant_frontage_assignment",
+      "exact_frontage_width_or_order",
+      "exact_entrance_ownership",
+      "exact_sign_text_logo_trade_dress",
+      "exact_address_placement",
+      "production_asset_generation",
+      "normal_mode_rendering"
+    ],
+    "reviewStatuses": [
+      "source_terms_pending",
+      "source_access_blocked",
+      "manual_review_required"
+    ],
+    "observedCueFields": [
+      "facadePlaneVisibility",
+      "storefrontBayVisibility",
+      "entranceCueVisibility",
+      "signBandVisibility",
+      "windowDoorRhythmVisibility",
+      "cornerWrapVisibility"
+    ],
+    "qualityReviewFields": [
+      "occlusionStatus",
+      "blurStatus",
+      "recencyStatus",
+      "angleSufficiencyStatus",
+      "resolutionSufficiencyStatus",
+      "lightingSufficiencyStatus"
+    ],
+    "geometryAssociationPolicy": "may_reference_candidate_geometry_container_for_review_only_but_must_not_link_authoritatively",
+    "businessLinkagePolicy": "blocked_no_business_identity_or_active_status_from_facade_evidence",
+    "normalModeExposure": "blocked",
+    "productionUsePolicy": "blocked",
+    "batuDecisionRequired": [
+      "source_approval",
+      "terms_acceptance",
+      "storage_cache_display_approval",
+      "claim_promotion",
+      "normal_mode_or_production_use"
+    ],
+    "unresolvedQuestions": [
+      "future_batch_must_supply_source_specific_terms_and_allowed_storage_policy"
+    ]
+  },
+  "blockedPromotionTriggers": [
+    "terms_or_source_approval_pending",
+    "source_access_download_cache_ingestion_required",
+    "evidence_quality_insufficient",
+    "geometry_association_unresolved",
+    "multi_tenant_frontage_unresolved",
+    "business_identity_or_active_status_inferred_from_imagery",
+    "exact_storefront_frontage_entrance_address_signage_tenant_claim",
+    "restricted_source_contamination",
+    "google_street_view_or_google_3d_tiles_in_claim_path",
+    "qwen_oxen_or_model_training_in_claim_path"
+  ],
+  "verifierRequirements": [
+    "required_record_fields_present",
+    "required_provenance_fields_present",
+    "external_storage_cache_display_flags_false_until_later_gate",
+    "geometry_confidence_not_used_as_facade_evidence",
+    "facade_evidence_not_used_as_business_identity_active_status_or_exact_truth",
+    "blocked_uses_and_claim_levels_present",
+    "approved_evidence_backed_absent_unless_later_batu_gate_opens_it",
+    "normal_mode_and_production_blocked",
+    "no_real_source_urls_file_urls_thumbnails_downloaded_imagery_cached_imagery_textures_or_training_inputs_in_4h_1"
+  ],
+  "phase4H1Result": "workflow_contract_only_no_real_evidence_ingested"
+}
