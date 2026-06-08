@@ -7,6 +7,7 @@ import evidenceFacadeCueFixture from "./data/facade-cues/greenpoint-ave-manhatta
 import corridorFacadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4i-corridor-qa-facade-cues.v0.1.json";
 import qaScaffoldPreviewSeedAdapter from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-14-qa-preview-scaffold-adapter.v0.1.json";
 import qaScaffoldPreviewExpansionFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.v0.1.json";
+import qaFrontageCandidateFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4j-1-qa-frontage-candidates.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -93,6 +94,9 @@ export default function Phase4BRuntimePreview() {
   const qaScaffoldPreviewRecords = useMemo(() => (
     buildQAScaffoldPreviewRenderRecords(qaScaffoldPreviewExpansionFixture, qaScaffoldPreviewSeedAdapter)
   ), []);
+  const qaFrontageCandidateRecords = useMemo(() => (
+    buildQAFrontageCandidateRenderRecords(qaFrontageCandidateFixture, qaScaffoldPreviewExpansionFixture)
+  ), []);
   const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
   const candidatePoiIndex = useMemo(() => buildCandidatePoiIndex(candidatePoiFixture), []);
   const cornerAnchorCandidateIndex = useMemo(() => buildCornerAnchorCandidateIndex(cornerAnchorCandidateFixture), []);
@@ -104,13 +108,23 @@ export default function Phase4BRuntimePreview() {
   const [qaScaffoldFamilyVisibility, setQAScaffoldFamilyVisibility] = useState(() => ({
     ...qaScaffoldPreviewExpansionFixture.familyVisibilityDefaults,
   }));
+  const [qaFrontageCandidateTypeVisibility, setQAFrontageCandidateTypeVisibility] = useState(() => (
+    Object.fromEntries(qaFrontageCandidateFixture.candidateTypeAllowlist.map((type) => [type, true]))
+  ));
   const visibleQAScaffoldPreviewRecords = useMemo(() => (
     filterQAScaffoldPreviewRecords(qaScaffoldPreviewRecords, qaScaffoldFamilyVisibility)
   ), [qaScaffoldPreviewRecords, qaScaffoldFamilyVisibility]);
+  const visibleQAFrontageCandidateRecords = useMemo(() => (
+    filterQAFrontageCandidateRecords(qaFrontageCandidateRecords, qaFrontageCandidateTypeVisibility)
+  ), [qaFrontageCandidateRecords, qaFrontageCandidateTypeVisibility]);
   const qaScaffoldPreviewAdapter = useMemo(() => (
     buildQAScaffoldPreviewRuntimeAdapter(qaScaffoldPreviewExpansionFixture, visibleQAScaffoldPreviewRecords)
   ), [visibleQAScaffoldPreviewRecords]);
   const qaScaffoldPreviewIndex = useMemo(() => buildQAScaffoldPreviewIndex(qaScaffoldPreviewAdapter), [qaScaffoldPreviewAdapter]);
+  const qaFrontageCandidateAdapter = useMemo(() => (
+    buildQAFrontageCandidateRuntimeAdapter(qaFrontageCandidateFixture, visibleQAFrontageCandidateRecords)
+  ), [visibleQAFrontageCandidateRecords]);
+  const qaFrontageCandidateIndex = useMemo(() => buildQAFrontageCandidateIndex(qaFrontageCandidateAdapter), [qaFrontageCandidateAdapter]);
   const inspectedId = selectedId ?? hoveredId;
   const inspectedObject = runtimeScene.objects.find((object) => object.id === inspectedId) ?? null;
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
@@ -118,12 +132,13 @@ export default function Phase4BRuntimePreview() {
   const inspectedEvidenceFacade = inspectedObject ? evidenceFacadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCorridorFacadeCue = inspectedObject ? corridorFacadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedQAScaffoldPreviewRecords = inspectedObject ? qaScaffoldPreviewIndex.get(inspectedObject.id) ?? [] : [];
+  const inspectedQAFrontageCandidateRecords = inspectedObject ? qaFrontageCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedCornerAnchorCandidates = inspectedObject ? cornerAnchorCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const reviewTotals = useMemo(() => (
-    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldPreviewAdapter, geometryValidationReport, candidatePoiFixture)
-  ), [runtimeScene]);
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldPreviewAdapter, qaFrontageCandidateAdapter, geometryValidationReport, candidatePoiFixture)
+  ), [runtimeScene, qaScaffoldPreviewAdapter, qaFrontageCandidateAdapter]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -149,7 +164,7 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene);
-    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaFrontageCandidateIndex, pickTargets, visualObjects, pickObjects);
     addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter.renderRecords, visualObjects);
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
 
@@ -200,7 +215,7 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex]);
 
   useEffect(() => {
     const state = stateRef.current;
@@ -322,11 +337,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4I-4 / corridor cue legibility correction + 4O-17 QA scaffold preview legibility + 4O-18-20 spatial review</p>
+          <p className="phase4b-kicker">Batch 4J-2 / QA frontage candidate overlay</p>
           <h1>Greenpoint Ave corridor facade cue review</h1>
         </div>
         <p>
-          QA-only 4I corridor cues plus the 4O-15 QA scaffold preview, now expanded for 4O-18 corridor-wide spatial review with 4O-19 family controls and 4O-20 review-readiness reporting. Normal mode stays protected; QA facades and scaffolds are not business identity, exact frontage, signage, active status, exact height, or production claims.
+          QA-only 4I corridor cues, 4O scaffold previews with 4O-19 family controls, and 4J generic frontage/bay candidate guides. Normal mode stays protected; QA guides are not business identity, exact storefront, exact frontage, facade, signage, entrance, active status, exact height, or production claims.
         </p>
       </section>
 
@@ -375,6 +390,12 @@ export default function Phase4BRuntimePreview() {
             onToggleQAScaffoldFamily={(family) => setQAScaffoldFamilyVisibility((visibility) => ({
               ...visibility,
               [family]: !visibility[family],
+            }))}
+            qaFrontageCandidateAdapter={qaFrontageCandidateAdapter}
+            qaFrontageCandidateTypeVisibility={qaFrontageCandidateTypeVisibility}
+            onToggleQAFrontageCandidateType={(candidateType) => setQAFrontageCandidateTypeVisibility((visibility) => ({
+              ...visibility,
+              [candidateType]: !visibility[candidateType],
             }))}
             geometryValidationReport={geometryValidationReport}
             candidatePoiFixture={candidatePoiFixture}
@@ -456,6 +477,9 @@ export default function Phase4BRuntimePreview() {
           inspectedQAScaffoldPreviewRecords={qaEnabled ? inspectedQAScaffoldPreviewRecords : []}
           qaScaffoldPreviewAdapter={qaScaffoldPreviewAdapter}
           qaScaffoldFamilyVisibility={qaScaffoldFamilyVisibility}
+          inspectedQAFrontageCandidateRecords={qaEnabled ? inspectedQAFrontageCandidateRecords : []}
+          qaFrontageCandidateAdapter={qaFrontageCandidateAdapter}
+          qaFrontageCandidateTypeVisibility={qaFrontageCandidateTypeVisibility}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
           candidatePoiFixture={candidatePoiFixture}
@@ -482,6 +506,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-evidence-facade" /> QA evidence facade</li>
         <li><span className="phase4b-swatch phase4b-swatch-corridor-facade" /> QA corridor cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-scaffold-preview" /> QA scaffold preview</li>
+        <li><span className="phase4b-swatch phase4b-swatch-frontage-candidate" /> QA 4J candidate</li>
         <li><span className="phase4b-swatch phase4b-swatch-candidate-poi" /> QA candidate POI</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
@@ -537,6 +562,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceF
           <dd>{qaEnabled ? `${totals.scaffoldPreviewVisibleContainers} / ${totals.scaffoldPreviewVisibleGrounding} / ${totals.scaffoldPreviewVisibleHeight}` : "QA off"}</dd>
         </div>
         <div>
+          <dt>4J candidates</dt>
+          <dd>{qaEnabled ? `${totals.frontageCandidateVisible} visible / ${totals.frontageCandidateRecords} QA / ${totals.frontageCandidateNormalMode} normal` : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Candidate POIs</dt>
           <dd>{qaEnabled ? totals.candidatePoiCount : "QA off"}</dd>
         </div>
@@ -587,6 +616,9 @@ function QADebugPanel({
   qaScaffoldPreviewAdapter,
   qaScaffoldFamilyVisibility,
   onToggleQAScaffoldFamily,
+  qaFrontageCandidateAdapter,
+  qaFrontageCandidateTypeVisibility,
+  onToggleQAFrontageCandidateType,
   geometryValidationReport,
   candidatePoiFixture,
   cornerAnchorCandidateFixture,
@@ -603,6 +635,7 @@ function QADebugPanel({
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Evidence labels: {evidenceFacadeCueFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> 4O scaffold: {qaScaffoldPreviewAdapter.summary.visibleQaOnlyRecordCount} visible / {qaScaffoldPreviewAdapter.summary.renderedQaOnlyRecordCount} QA placeholders / {qaScaffoldPreviewAdapter.summary.normalModeRecordCount} normal</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> 4O families: {qaScaffoldPreviewAdapter.summary.visibleBuildingContainerPreviewCount} container / {qaScaffoldPreviewAdapter.summary.visibleGroundingPreviewCount} ground / {qaScaffoldPreviewAdapter.summary.visibleHeightMassingPreviewCount} height</li>
+        <li><span className="phase4b-side-dot phase4b-side-center" /> 4J candidates: {qaFrontageCandidateAdapter.summary.visibleQaOnlyRecordCount} visible / {qaFrontageCandidateAdapter.summary.candidateRecordCount} QA / {qaFrontageCandidateAdapter.summary.normalModeRecordCount} normal</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Business evidence not connected</li>
         <li><span className="phase4b-side-dot phase4b-side-blocked" /> Blocked claims remain blocked</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> Synthetic context: non-evidence placeholder</li>
@@ -616,6 +649,18 @@ function QADebugPanel({
             onClick={() => onToggleQAScaffoldFamily(family)}
           >
             {family}
+          </button>
+        ))}
+      </div>
+      <div className="phase4b-qa-filter-row" aria-label="QA frontage candidate type filters">
+        {qaFrontageCandidateAdapter.candidateTypeAllowlist.map((candidateType) => (
+          <button
+            key={candidateType}
+            type="button"
+            aria-pressed={qaFrontageCandidateTypeVisibility[candidateType] !== false}
+            onClick={() => onToggleQAFrontageCandidateType(candidateType)}
+          >
+            {formatCandidateTypeLabel(candidateType)}
           </button>
         ))}
       </div>
@@ -687,6 +732,9 @@ function InspectorPanel({
   inspectedQAScaffoldPreviewRecords,
   qaScaffoldPreviewAdapter,
   qaScaffoldFamilyVisibility,
+  inspectedQAFrontageCandidateRecords,
+  qaFrontageCandidateAdapter,
+  qaFrontageCandidateTypeVisibility,
   inspectedValidation,
   inspectedCandidatePois,
   candidatePoiFixture,
@@ -997,6 +1045,34 @@ function InspectorPanel({
       </section>
 
       <section>
+        <h2>4J Frontage Candidates</h2>
+        {qaEnabled ? (
+          <ul>
+            <li>
+              <span>Rendered</span>
+              <small>{qaFrontageCandidateAdapter.summary.visibleQaOnlyRecordCount} visible / {qaFrontageCandidateAdapter.summary.candidateRecordCount} QA / {qaFrontageCandidateAdapter.summary.normalModeRecordCount} normal</small>
+            </li>
+            <li>
+              <span>Candidate types</span>
+              <small>{formatQAFrontageCandidateTypeVisibility(qaFrontageCandidateTypeVisibility)}</small>
+            </li>
+            <li>
+              <span>Selected records</span>
+              <small>{inspectedQAFrontageCandidateRecords.length ? inspectedQAFrontageCandidateRecords.map((record) => formatCandidateTypeLabel(record.candidateType)).join(" / ") : "none"}</small>
+            </li>
+            {(inspectedQAFrontageCandidateRecords.length ? inspectedQAFrontageCandidateRecords : qaFrontageCandidateAdapter.renderRecords).slice(0, 8).map((record) => (
+              <li key={record.candidateId}>
+                <span>{formatCandidateTypeLabel(record.candidateType)}</span>
+                <small>{record.linked4OScaffoldAnchorId} / {record.qaOnlyStatus} / blocked {record.blockedClaimCategories.slice(0, 4).join(", ")}</small>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>QA mode required for 4J frontage candidate records.</p>
+        )}
+      </section>
+
+      <section>
         <h2>4I Corridor Facade Cue</h2>
         {qaEnabled ? (
           <ul>
@@ -1077,7 +1153,7 @@ function InspectorPanel({
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldAdapter, validationReport, candidateFixture) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldAdapter, qaFrontageCandidateAdapter, validationReport, candidateFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
@@ -1098,6 +1174,9 @@ function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evide
     scaffoldPreviewVisibleGrounding: qaScaffoldAdapter.summary.visibleGroundingPreviewCount ?? qaScaffoldAdapter.summary.groundingPreviewCount,
     scaffoldPreviewVisibleHeight: qaScaffoldAdapter.summary.visibleHeightMassingPreviewCount ?? qaScaffoldAdapter.summary.heightMassingPreviewCount,
     scaffoldPreviewNormalMode: qaScaffoldAdapter.summary.normalModeRecordCount,
+    frontageCandidateRecords: qaFrontageCandidateAdapter.summary.candidateRecordCount,
+    frontageCandidateVisible: qaFrontageCandidateAdapter.summary.visibleQaOnlyRecordCount,
+    frontageCandidateNormalMode: qaFrontageCandidateAdapter.summary.normalModeRecordCount,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
@@ -1138,6 +1217,59 @@ function buildQAScaffoldPreviewIndex(fixture) {
     index.set(record.targetRenderedObjectId, records);
   }
   return index;
+}
+
+function buildQAFrontageCandidateIndex(fixture) {
+  const index = new Map();
+  for (const record of fixture.renderRecords ?? []) {
+    const records = index.get(record.targetRenderedObjectId) ?? [];
+    records.push(record);
+    index.set(record.targetRenderedObjectId, records);
+  }
+  return index;
+}
+
+function buildQAFrontageCandidateRenderRecords(candidateFixture, scaffoldExpansionFixture) {
+  const anchorById = new Map((scaffoldExpansionFixture.buildingAnchors ?? []).map((anchor) => [anchor.anchorId, anchor]));
+  return (candidateFixture.candidateRecords ?? []).map((candidate) => {
+    const anchor = anchorById.get(candidate.linked4OScaffoldAnchorId);
+    return {
+      ...candidate,
+      targetRenderedObjectId: anchor?.targetRenderedObjectId ?? null,
+      displayLabel: "4J candidate",
+      renderStatus: "rendered_qa_only_candidate_guide",
+      normalModeExposure: "blocked",
+      visualRole: candidate.candidateType,
+    };
+  }).filter((record) => record.targetRenderedObjectId);
+}
+
+function filterQAFrontageCandidateRecords(records, candidateTypeVisibility) {
+  return records.filter((record) => candidateTypeVisibility[record.candidateType] !== false);
+}
+
+function buildQAFrontageCandidateRuntimeAdapter(candidateFixture, visibleRecords) {
+  const visibleByType = countRecordsByCandidateType(visibleRecords);
+  return {
+    ...candidateFixture,
+    renderRecordOrder: visibleRecords.map((record) => record.candidateId),
+    renderRecords: visibleRecords,
+    summary: {
+      ...candidateFixture.summary,
+      visibleQaOnlyRecordCount: visibleRecords.length,
+      visibleFrontageBandCandidateCount: visibleByType.frontage_band_candidate ?? 0,
+      visibleBayRhythmCandidateCount: visibleByType.bay_rhythm_candidate ?? 0,
+      visibleCornerWrapCandidateCount: visibleByType.corner_wrap_candidate ?? 0,
+      visibleSetbackDepthCandidateCount: visibleByType.setback_depth_candidate ?? 0,
+    },
+  };
+}
+
+function countRecordsByCandidateType(records) {
+  return records.reduce((counts, record) => {
+    counts[record.candidateType] = (counts[record.candidateType] ?? 0) + 1;
+    return counts;
+  }, {});
 }
 
 function buildQAScaffoldPreviewRenderRecords(expansionFixture, seedAdapter) {
@@ -1331,6 +1463,18 @@ function formatQAScaffoldFamilyVisibility(visibility) {
     .join(" / ");
 }
 
+function formatQAFrontageCandidateTypeVisibility(visibility) {
+  return qaFrontageCandidateFixture.candidateTypeAllowlist
+    .map((candidateType) => `${formatCandidateTypeLabel(candidateType)}:${visibility?.[candidateType] !== false ? "on" : "off"}`)
+    .join(" / ");
+}
+
+function formatCandidateTypeLabel(candidateType) {
+  return candidateType
+    .replace("_candidate", "")
+    .replaceAll("_", " ");
+}
+
 function formatSliceModules(facade) {
   if (!facade?.modules) return "none";
   const modules = facade.modules;
@@ -1502,6 +1646,7 @@ function addRuntimeObjects(
   evidenceFacadeCueIndex,
   corridorFacadeCueIndex,
   qaScaffoldPreviewIndex,
+  qaFrontageCandidateIndex,
   pickTargets,
   visualObjects,
   pickObjects,
@@ -1525,6 +1670,7 @@ function addRuntimeObjects(
     const evidenceFacadeCue = evidenceFacadeCueIndex.get(object.id);
     const corridorFacadeCue = corridorFacadeCueIndex.get(object.id);
     const qaScaffoldPreviewRecords = qaScaffoldPreviewIndex.get(object.id) ?? [];
+    const qaFrontageCandidateRecords = qaFrontageCandidateIndex.get(object.id) ?? [];
     const palette = getBuildingPalette(object);
     const qaPalette = getQASidePalette(object);
     const base = createFlatPolygonMesh(object.points, {
@@ -1622,6 +1768,7 @@ function addRuntimeObjects(
     if (facadeCue && evidenceFacadeCue) group.add(createEvidenceInformedFacadeLayer(object, facadeCue, evidenceFacadeCue));
     if (facadeCue && corridorFacadeCue && !evidenceFacadeCue) group.add(createCorridorFacadeCueLayer(object, facadeCue, corridorFacadeCue));
     if (qaScaffoldPreviewRecords.length) group.add(createQAScaffoldPreviewLayer(object, qaScaffoldPreviewRecords));
+    if (qaFrontageCandidateRecords.length) group.add(createQAFrontageCandidateLayer(object, qaFrontageCandidateRecords));
 
     const pick = new THREE.Mesh(
       createPrismGeometry(object.points, object.height + 0.35),
@@ -2184,6 +2331,123 @@ function createQAScaffoldGroundingPreview(record, guide) {
   return group;
 }
 
+function createQAFrontageCandidateLayer(object, records) {
+  const group = new THREE.Group();
+  group.userData.semanticId = object.id;
+  group.userData.stateRole = "qaFrontageCandidate";
+  group.visible = false;
+
+  const palette = getQAFrontageCandidatePalette(object.corridorSide);
+  const sideSign = object.corridorSide === "left" ? 1 : -1;
+  const width = Math.max(object.dimensions.width * 0.94, 0.28);
+  const depth = Math.max(object.dimensions.depth, 0.22);
+  const frontZ = object.centroid.z + sideSign * (depth * 0.58 + 0.08);
+  const y = 0.18;
+
+  for (const [index, record] of records.entries()) {
+    const yOffset = y + index * 0.018;
+    if (record.candidateType === "frontage_band_candidate") {
+      addQAFrontageCandidateBox(group, {
+        color: palette.band,
+        opacity: 0.58,
+        position: [object.centroid.x, yOffset, frontZ],
+        size: [width, 0.055, 0.09],
+      });
+    } else if (record.candidateType === "bay_rhythm_candidate") {
+      const tickCount = 4;
+      for (let tickIndex = 0; tickIndex < tickCount; tickIndex += 1) {
+        const t = tickCount === 1 ? 0.5 : tickIndex / (tickCount - 1);
+        addQAFrontageCandidateBox(group, {
+          color: palette.tick,
+          opacity: 0.62,
+          position: [object.centroid.x - width * 0.42 + width * 0.84 * t, yOffset + 0.11, frontZ],
+          size: [0.045, 0.22, 0.075],
+        });
+      }
+    } else if (record.candidateType === "corner_wrap_candidate") {
+      const edgeSign = record.corridorSection.includes("franklin") ? -1 : 1;
+      addQAFrontageCandidateBox(group, {
+        color: palette.corner,
+        opacity: 0.6,
+        position: [object.centroid.x, yOffset + 0.02, frontZ],
+        size: [width * 0.48, 0.06, 0.1],
+      });
+      addQAFrontageCandidateBox(group, {
+        color: palette.corner,
+        opacity: 0.5,
+        position: [object.centroid.x + edgeSign * width * 0.28, yOffset + 0.03, object.centroid.z + sideSign * depth * 0.24],
+        size: [0.09, 0.06, Math.max(depth * 0.5, 0.18)],
+      });
+    } else if (record.candidateType === "setback_depth_candidate") {
+      addQAFrontageCandidateBox(group, {
+        color: palette.depth,
+        opacity: 0.46,
+        position: [object.centroid.x, yOffset, frontZ],
+        size: [width * 0.72, 0.05, 0.07],
+      });
+      addQAFrontageCandidateBox(group, {
+        color: palette.depth,
+        opacity: 0.34,
+        position: [object.centroid.x, yOffset + 0.015, object.centroid.z + sideSign * depth * 0.18],
+        size: [width * 0.54, 0.045, 0.07],
+      });
+      addQAFrontageCandidateBox(group, {
+        color: palette.depth,
+        opacity: 0.34,
+        position: [object.centroid.x, yOffset + 0.04, object.centroid.z + sideSign * depth * 0.38],
+        size: [0.055, 0.12, Math.max(depth * 0.34, 0.12)],
+      });
+    }
+  }
+
+  addQAFrontageCandidateLabel(group, {
+    label: "4J candidates",
+    color: palette.label,
+    position: [object.centroid.x, Math.max(object.height * 0.52, 0.72), frontZ + sideSign * 0.2],
+    tetherStart: [object.centroid.x, y, frontZ],
+  });
+
+  return group;
+}
+
+function addQAFrontageCandidateBox(group, { color, opacity, position, size }) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(size[0], size[1], size[2]),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity,
+      depthWrite: false,
+    }),
+  );
+  mesh.position.set(position[0], position[1], position[2]);
+  mesh.userData.stateRole = "qaFrontageCandidate";
+  mesh.userData.qaColor = color;
+  mesh.userData.qaOpacity = opacity;
+  group.add(mesh);
+}
+
+function addQAFrontageCandidateLabel(group, { label, color, position, tetherStart }) {
+  const sprite = createTextSprite(label, { color, background: "rgba(13, 24, 23, 0.78)" });
+  sprite.position.set(position[0], position[1], position[2]);
+  sprite.userData.stateRole = "qaFrontageCandidateLabel";
+  sprite.userData.qaOpacity = 0.9;
+  group.add(sprite);
+
+  const tether = createPolyline([
+    { x: tetherStart[0], z: tetherStart[2] },
+    { x: position[0], z: position[2] },
+  ], {
+    color,
+    opacity: 0.48,
+    y: Math.max(tetherStart[1], 0.16),
+  });
+  tether.userData.stateRole = "qaFrontageCandidate";
+  tether.userData.qaColor = color;
+  tether.userData.qaOpacity = 0.48;
+  group.add(tether);
+}
+
 function averageGuideValue(points, key, fallback) {
   if (!Array.isArray(points) || !points.length) return fallback;
   return points.reduce((sum, point) => sum + (point[key] ?? 0), 0) / points.length;
@@ -2250,6 +2514,25 @@ function getQAScaffoldPreviewPalette(token) {
     },
   };
   return palettes[token] ?? palettes.qa_scaffold_container_mid_corridor;
+}
+
+function getQAFrontageCandidatePalette(corridorSide) {
+  if (corridorSide === "left") {
+    return {
+      band: 0xff8f70,
+      tick: 0xffd36f,
+      corner: 0x91e4c3,
+      depth: 0x9cc8ff,
+      label: 0xffd36f,
+    };
+  }
+  return {
+    band: 0xe88fcf,
+    tick: 0xffd36f,
+    corner: 0x91e4c3,
+    depth: 0x9cc8ff,
+    label: 0xffd36f,
+  };
 }
 
 function getEvidenceComposition(facadeRecord) {
@@ -3187,6 +3470,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
           || child.userData.stateRole === "qaScaffoldPreview"
           || child.userData.stateRole === "qaScaffoldPreviewOutline"
           || child.userData.stateRole === "qaScaffoldPreviewLabel"
+          || child.userData.stateRole === "qaFrontageCandidate"
+          || child.userData.stateRole === "qaFrontageCandidateLabel"
           || child.userData.stateRole === "syntheticQAGrounding"
           || child.userData.stateRole === "candidatePoi"
           || child.userData.stateRole === "candidatePoiLabel"
@@ -3300,6 +3585,27 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : child.userData.qaOpacity ?? 0.22
             : 0;
         } else if (child.userData.stateRole === "qaScaffoldPreviewLabel") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          child.material.opacity = qaEnabled
+            ? isSelected || isHovered
+              ? 1
+              : child.userData.qaOpacity ?? 0.9
+            : 0;
+        } else if (child.userData.stateRole === "qaFrontageCandidate") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled
+            ? isSelected
+              ? Math.min((child.userData.qaOpacity ?? 0.42) + 0.16, 0.74)
+              : isHovered
+                ? Math.min((child.userData.qaOpacity ?? 0.42) + 0.1, 0.66)
+                : child.userData.qaOpacity ?? 0.42
+            : 0;
+        } else if (child.userData.stateRole === "qaFrontageCandidateLabel") {
           child.visible = qaEnabled;
           child.material.transparent = true;
           child.material.depthWrite = false;

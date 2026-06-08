@@ -220,8 +220,8 @@ function verifyBrief(brief, failures) {
   const requiredSnippets = [
     "Batch 4J-1: Frontage Candidate Contract + Fixture",
     "4J-1 is complete and verified.",
-    "Current executable batch: `Batch 4J-2: QA Runtime Frontage Candidate Overlay`.",
-    "Pre-authorized queue: `Batch 4J-3: Candidate Gap + Readiness Report`.",
+    "Batch 4J-2: QA Runtime Frontage Candidate Overlay",
+    "Hard Batu gate: stop after 4J-3.",
   ];
   for (const snippet of requiredSnippets) {
     if (!brief.includes(snippet)) failures.push(`Current brief missing 4J-1 snippet: ${snippet}`);

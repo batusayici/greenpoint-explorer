@@ -1,4 +1,4 @@
-# Current Execution Brief - Phase 4J-1 Complete, 4J-2 Open
+# Current Execution Brief - Phase 4J-2 Complete, 4J-3 Open
 
 Status: `Batch 4J-1 -> 4J-3: QA-Only Storefront Bay / Frontage Candidate Layer` is open as a bounded Batu-approved packet on 2026-06-08 after acceptance of the completed 4O-18 -> 4O-20 spatial scaffold review packet.
 
@@ -6,22 +6,25 @@ Completed precondition:
 
 - 4O-18 through 4O-20 are committed at `3ebb949`.
 - `git status --short` was clean before opening 4J.
+- 4J-1 is committed at `8987722`.
 
 4J-1 is complete and verified.
 
-Current executable batch: `Batch 4J-2: QA Runtime Frontage Candidate Overlay`.
+4J-2 is complete and verified.
 
-Completed batch: `Batch 4J-1: Frontage Candidate Contract + Fixture`.
+Current executable batch: `Batch 4J-3: Candidate Gap + Readiness Report`.
 
-Pre-authorized queue: `Batch 4J-3: Candidate Gap + Readiness Report`.
+Completed batch: `Batch 4J-2: QA Runtime Frontage Candidate Overlay`.
 
-Self-advance allowed: yes, from 4J-2 to 4J-3 only if 4J-2 completes cleanly, verification passes, docs are reconciled, and no hard stop condition intervenes.
+Pre-authorized queue: none.
+
+Self-advance allowed: no. Stop after 4J-3 at the hard Batu review gate.
 
 Hard Batu gate: stop after 4J-3. Do not start 4K, 4P, evidence intake, business/source linkage, facade evidence linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
 Owner boundary: Batu owns whether the QA-only frontage/bay candidate layer is useful enough, whether later evidence/business linkage planning may open, whether any claim class may promote, and whether any source/evidence access may open. Codex owns tactical implementation inside the 4J packet only.
 
-## Approved Packet
+## Completed Batches
 
 ### Batch 4J-1: Frontage Candidate Contract + Fixture
 
@@ -37,20 +40,19 @@ What changed:
 
 ### Batch 4J-2: QA Runtime Frontage Candidate Overlay
 
-Goal:
+Status: complete and verified.
 
-- Render generic frontage/bay candidate guides in QA mode only so Batu can inspect them.
+What changed:
 
-Allowed scope:
+- Updated `src/Phase4BRuntimePreview.jsx`.
+- Updated `src/styles.css`.
+- Added `scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`.
+- Added `docs/reports/phase-4j-2-qa-frontage-runtime-overlay.md`.
+- Rendered generic 4J frontage/bay candidate guides behind QA mode only.
+- Added candidate-type filters and readouts for candidate type, linked 4O anchor, QA-only status, and blocked claims.
+- Preserved normal mode with zero records and no claim promotion.
 
-- Add QA-only runtime overlay for the 4J candidate records.
-- Add lightweight filters/readouts for candidate type, linked 4O scaffold anchor, QA-only status, and blocked claims.
-- Keep visuals generic guides, not facade/storefront truth.
-- Preserve normal mode behavior.
-- Add verifier coverage proving the overlay is unavailable in normal mode, filters/readouts use only allowed candidate types, all records remain non-promoted, and blocked claims remain blocked.
-- Add a concise 4J-2 report.
-- Reconcile `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/phase-4-execution-roadmap.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Run relevant verification and commit 4J-2.
+## Current Batch
 
 ### Batch 4J-3: Candidate Gap + Readiness Report
 
@@ -73,7 +75,7 @@ Allowed scope:
 - Recommend any next phase only as a proposal.
 - Do not start evidence linkage.
 - Add verifier coverage as needed proving 4J-3 is review/report only, no normal-mode promotion occurred, and no forbidden factual claims were introduced.
-- Reconcile execution-control docs.
+- Reconcile `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/phase-4-execution-roadmap.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
 - Run the full relevant verifier chain, `npm run build`, `git diff --check`, and final `git status --short`.
 - Commit 4J-3 and stop at the Batu review gate.
 
@@ -87,19 +89,10 @@ Allowed scope:
 
 ## Verification Required
 
-For 4J-2:
-
-- `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
-- 4J-2 runtime verifier.
-- Relevant 4O scaffold verifiers.
-- `npm run build`
-- `git diff --check`
-- `git status --short`
-
 For 4J-3:
 
-- 4J-1 verifier.
-- 4J-2 verifier.
+- `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
+- `node scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
 - 4J-3 verifier.
 - Relevant prior 4O/4I runtime and scaffold verifiers.
 - `npm run build`
