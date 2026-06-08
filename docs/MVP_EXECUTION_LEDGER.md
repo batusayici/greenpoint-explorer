@@ -55,15 +55,55 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4O-7: Offline Adapter Normalization` is complete and verified; `Batch 4O-8: Deterministic Scaffold Input Fixture` is current.
+- Current phase: `Batch 4O-8: Deterministic Scaffold Input Fixture` is complete and verified; `Batch 4O-9: QA-Only Scaffold Input Inspector` is current.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` names 4O-8 as the current executable batch and 4O-9 as the only pre-authorized queued batch.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. 4O-6 adds a deterministic offline source-adapter fixture skeleton. 4O-7 normalizes those rows into scaffold-input candidate shapes. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` names 4O-9 as the current executable batch with no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. 4O-6 adds a deterministic offline source-adapter fixture skeleton. 4O-7 normalizes those rows into scaffold-input candidate shapes. 4O-8 adds the deterministic scaffold-input fixture. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4O-8 Deterministic Scaffold Input Fixture
+
+Status:
+- Complete and verified.
+
+Scope:
+- Add the smallest deterministic scaffold-input fixture derived from 4O-7, including building/container inputs, grounding inputs, and height/massing inputs.
+
+Files changed:
+- `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-8-deterministic-scaffold-input-fixture.v0.1.json`
+- `scripts/verify-phase-4o-8-deterministic-scaffold-input-fixture.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git status --short` before edits: clean.
+- `node scripts/verify-phase-4o-8-deterministic-scaffold-input-fixture.mjs`
+- `node scripts/verify-phase-4o-7-offline-adapter-normalization.mjs`
+- `node scripts/verify-phase-4o-6-offline-source-adapter-fixture.mjs`
+- `node scripts/verify-phase-4o-5-source-adapter-boundary.mjs`
+- `node scripts/verify-phase-4o-4-placeholder-scaffold-manifest.mjs`
+- `node scripts/verify-phase-4o-3-scaffold-generation-contract.mjs`
+- `node scripts/verify-phase-4o-2-corridor-fixture-stub.mjs`
+- `node scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Added six deterministic scaffold-input records derived from 4O-7 across building/container, grounding, and height/massing families.
+- Kept the fixture separate from the 4O-4 placeholder scaffold manifest and explicitly test-only/offline-only.
+- Added verifier coverage for deterministic IDs, derivation links, blocked claims, zero source access, zero runtime coupling, no public-interface coupling, and no claim promotion.
+- Did not fetch external data, add dependencies, render runtime geometry, add public interfaces, connect businesses, signs, entrances, exact facades, or tenant frontage, or promote claims.
+
+Unresolved decisions:
+- Batu owns 4O-8 acceptance, 4O-9 packet-end acceptance, source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now names 4O-9 as current with no pre-authorized queue.
 
 ### 2026-06-08 - Batch 4O-7 Offline Adapter Normalization
 

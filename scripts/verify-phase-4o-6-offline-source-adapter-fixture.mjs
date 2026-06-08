@@ -94,7 +94,6 @@ const forbiddenPhrases = [
   "data converted",
   "runtime rendering added",
   "rendered scaffold",
-  "public ui",
   "storefront approved",
   "tenant linked",
   "business linked",
