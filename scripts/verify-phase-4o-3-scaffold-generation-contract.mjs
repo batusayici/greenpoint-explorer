@@ -25,7 +25,8 @@ const requiredNoteSnippets = [
 
 const requiredBriefSnippets = [
   "4O-2 accepted by Batu on 2026-06-08.",
-  "Batch 4O-3: First Deterministic Scaffold Generation Contract",
+  "4O-3 is complete and verified.",
+  "Current executable batch:",
 ];
 
 const requiredFixtureCollections = [

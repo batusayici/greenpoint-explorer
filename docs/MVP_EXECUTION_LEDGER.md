@@ -55,20 +55,58 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4O-4: Minimal Placeholder Scaffold Manifest` is complete and pending Batu review.
+- Current phase: `Batch 4O-5: Source Adapter And Fixture Ingestion Boundary` is complete and pending Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4O-4 Batu review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4O-5 Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
 
-### 2026-06-08 - Batch 4O-4 Minimal Placeholder Scaffold Manifest
+### 2026-06-08 - Batch 4O-5 Source Adapter And Fixture Ingestion Boundary
 
 Status:
 - Complete and verified; pending Batu review.
+
+Scope:
+- Define the narrow next truth-first source-adapter and fixture-ingestion boundary for future real corridor scaffold data without fetching live data, rendering runtime geometry, adding dependencies, or making exact facade/business/frontage claims.
+
+Files changed:
+- `docs/phase-4o-5-source-adapter-fixture-ingestion-boundary.md`
+- `scripts/verify-phase-4o-5-source-adapter-boundary.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git status --short` before edits: clean.
+- `node scripts/verify-phase-4o-5-source-adapter-boundary.mjs`
+- `node scripts/verify-phase-4o-4-placeholder-scaffold-manifest.mjs`
+- `node scripts/verify-phase-4o-3-scaffold-generation-contract.mjs`
+- `node scripts/verify-phase-4o-2-corridor-fixture-stub.mjs`
+- `node scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Added a concise source-adapter / fixture-ingestion boundary for future real scaffold data.
+- Defined building container, grounding, height/massing, facade-evidence, and manual override lanes.
+- Preserved strict claim boundaries: building mass/container truth is not tenant truth, frontage/classification remains provisional unless evidence-backed, facade detail remains blocked until evidence/manual override records exist, and approximate grounding must be explicitly labeled.
+- Preserved the truth-first order: spatial scaffold first, facade recognizability second, art direction third.
+- Did not fetch live external sources, create source fixtures, add runtime rendering, add dependencies, add public UI, connect exact businesses/signs/entrances/tenant frontage, change public interfaces/module boundaries, or promote claims.
+
+Unresolved decisions:
+- Batu owns 4O-5 acceptance, whether to open first real source fixture ingestion or request a corrective 4O boundary pass, source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the 4O-5 Batu review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-08 - Batch 4O-4 Minimal Placeholder Scaffold Manifest
+
+Status:
+- Complete and verified.
 
 Scope:
 - Add the smallest deterministic placeholder scaffold manifest generated or derived from the 4O-2 stub, with verifier coverage for deterministic IDs, required scaffold families, blocked claims, and zero source access.
@@ -96,7 +134,7 @@ Outcome:
 - Did not download or ingest external data, change runtime rendering, render scaffold geometry, add package/tooling, create Blender/GLB assets, automate Mapillary, change public interfaces/module boundaries, or promote storefront, tenant, exact facade, frontage, entrance, signage, active-status, exact-address, exact-height, exact-roof, production, or public claims.
 
 Unresolved decisions:
-- Batu owns 4O-4 acceptance, whether to open runtime/scaffold rendering or request a corrective 4O data pass, source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
+- Batu owns source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
 
 Next pointer:
 - `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the 4O-4 Batu review gate with no executable batch and no pre-authorized queue.
