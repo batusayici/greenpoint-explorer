@@ -55,15 +55,48 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4L-Prep: Evidence Gap to Cue Eligibility Plan` is complete and verified at the Batu review gate.
+- Current phase: `Batch 4L-Local-2: Evidence-Backed QA Cue Enrichment` is open after verified 4L-Local-1.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4L-Prep Batu review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path through spatial-usefulness review. Batu accepted the 4O-18 -> 4O-20 packet and opened bounded 4J work. 4J-1 adds QA-only frontage/bay candidate records mapped only to existing 4O building anchors. 4J-2 renders those records as generic QA-only runtime guides with candidate-type filters/readouts while preserving normal mode. 4J-3 records the candidate gap/readiness review. Batu then opened bounded 4K QA-only recognizable corridor anchor proof work. 4K-1 adds QA-only recognizable anchor cue records mapped to existing 4O/4J lineage and existing 4E cue IDs where available. 4K-2 renders those records as generic QA-only guide overlays with cue-category filters/readouts while preserving normal mode. 4K-3 records the local recognizability review. Batu approved the 4K review gate for bounded 4L-Prep only. 4L-Prep maps current 4K recognizability gaps to required evidence types, defines QA evidence eligibility states for every cue category, and records that the repo is not ready for evidence-backed 4L QA corridor render. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to 4L-Local-2, with 4L-Local-3 and 4L-Local-4 queued, then stop at the Batu review gate.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep maps current 4K recognizability gaps to required evidence types. Batu then opened bounded 4L-Local work to test the scene pipeline with existing repo-local evidence before Mapillary/KartaView. 4L-Local-1 inventories 22 existing repo-local Batu-supplied evidence records and maps every record to QA cue eligibility. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4L-Local-1 Local Evidence Inventory + Cue Eligibility
+
+Status:
+- Complete and verified.
+
+Scope:
+- Inventory existing repo-local Batu-supplied Manhattan/Greenpoint and Franklin/Greenpoint facade evidence records and map them to QA-only visual cue categories.
+
+Files changed:
+- `src/data/evidence-eligibility/greenpoint-ave-manhattan-to-franklin.phase-4l-local-1-repo-local-evidence-cue-eligibility.v0.1.json`
+- `docs/reports/phase-4l-local-1-evidence-inventory-cue-eligibility.md`
+- `scripts/verify-phase-4l-local-1-evidence-cue-eligibility.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-phase-4l-local-1-evidence-cue-eligibility.mjs`
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Inventoried 22 existing repo-local Batu-supplied evidence records: 11 Manhattan/Greenpoint and 11 Franklin/Greenpoint.
+- Mapped every record to one or more QA-only visual cue categories.
+- Classified records as `eligible_qa_visual_reference` or `eligible_gap_fill`.
+- Did not add evidence files, access external sources, download/cache/ingest/convert data, link businesses/tenants/signs/logos/POIs/active status, expose normal mode, or promote claims.
+
+Unresolved decisions:
+- Batu owns whether the later 4L-Local visual result is useful enough to justify Mapillary/KartaView scaling.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4L-Local-2: Evidence-Backed QA Cue Enrichment`, with 4L-Local-3 and 4L-Local-4 queued.
 
 ### 2026-06-08 - Batch 4L-Prep Evidence Gap To Cue Eligibility Plan
 
