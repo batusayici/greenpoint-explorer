@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "phase-4o-13-existing-render-compatibility-mapping.v0.1",
+  "fixtureId": "p4o13-existing-render-compatibility-mapping-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4O-13",
+  "status": "qa_only_existing_render_compatibility_mapping_complete",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "offlineFixtureOnly": true,
+  "normalModeExposure": "blocked",
+  "runtimeUsePolicy": "qa_only_adapter_boundary_not_normal_mode",
+  "productionUsePolicy": "blocked",
+  "publicInterfacePolicy": "blocked_no_public_interface",
+  "moduleBoundaryPolicy": "blocked_no_new_public_module_boundary",
+  "derivedFromCandidateFixtureId": "p4o10-scaffold-candidates-greenpoint-ave-manhattan-to-franklin",
+  "derivedFromCandidatePath": "src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-10-scaffold-candidates.v0.1.json",
+  "existingRuntimePath": "src/Phase4BRuntimePreview.jsx",
+  "existingSceneManifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+  "existingGeometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+  "mappingPolicy": "map_4o_candidates_to_existing_qa_render_anchors_without_creating_parallel_scaffold_universe",
+  "readiness": "ready_for_qa_only_adapter_not_normal_mode",
+  "deterministic": true,
+  "truthFirstOrder": [
+    "spatial_scaffold_first",
+    "facade_recognizability_second",
+    "art_direction_third"
+  ],
+  "sourceAccessPolicy": {
+    "externalDataFetched": false,
+    "externalDataDownloaded": false,
+    "externalDataCached": false,
+    "externalDataIngested": false,
+    "externalDataConverted": false,
+    "externalDataRendered": false,
+    "externalImageryAccessed": false,
+    "liveNetworkAccess": false,
+    "mapillaryAutomation": false,
+    "blenderOrGlbAssetWork": false,
+    "packageOrToolingChanged": false,
+    "publicInterfacesChanged": false,
+    "moduleBoundariesChanged": false,
+    "normalModeExposureChanged": false
+  },
+  "compatibilityChecks": {
+    "coordinateOrientationCompatibility": "compatible_with_existing_phase4b_normalized_scene_axis_for_qa_preview_only",
+    "cameraPresetCompatibility": "compatible_with_existing_manhattan_franklin_overhead_street_review_presets",
+    "objectIdMapping": "each_candidate_maps_to_existing_runtime_object_or_existing_runtime_guide_anchor",
+    "groundingAlignment": "uses_existing_runtime_centerline_curb_sidewalk_endpoint_guides_as_review_anchors",
+    "heightMassingInterpretation": "generic_height_massing_placeholder_only_no_exact_height_or_roof_claim",
+    "blockedFacadeBusinessFrontageSignEntranceClaims": "preserved_blocked",
+    "normalModeIsolation": "qa_toggle_only_normal_mode_invisible"
+  },
+  "candidateRecordOrder": [
+    "p4o10-candidate-building-container-manhattan-corner-north",
+    "p4o10-candidate-building-container-mid-corridor-south",
+    "p4o10-candidate-grounding-manhattan-intersection",
+    "p4o10-candidate-grounding-mid-corridor-sidewalk-south",
+    "p4o10-candidate-height-massing-manhattan-corner-north",
+    "p4o10-candidate-height-massing-mid-corridor-south"
+  ],
+  "mappingRecordOrder": [
+    "p4o13-map-building-container-manhattan-corner-north",
+    "p4o13-map-building-container-mid-corridor-south",
+    "p4o13-map-grounding-manhattan-intersection",
+    "p4o13-map-grounding-mid-corridor-sidewalk-south",
+    "p4o13-map-height-massing-manhattan-corner-north",
+    "p4o13-map-height-massing-mid-corridor-south"
+  ],
+  "mappingRecords": [
+    {
+      "recordType": "existing_qa_render_compatibility_mapping",
+      "mappingId": "p4o13-map-building-container-manhattan-corner-north",
+      "candidateId": "p4o10-candidate-building-container-manhattan-corner-north",
+      "candidateFamily": "scaffold_building_container_candidate",
+      "sourceLane": "building_container",
+      "mappingStatus": "mapped_to_existing_qa_render_anchor",
+      "qaPreviewEligibility": "eligible_qa_only_preview_candidate",
+      "existingRenderAnchor": {
+        "anchorType": "runtime_building_object",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3400032",
+        "targetRenderedObjectRole": "manhattan_endpoint_building_context_anchor",
+        "targetCorridorSide": "left"
+      },
+      "compatibility": {
+        "coordinateOrientation": "compatible_existing_normalized_scene_units",
+        "cameraPreset": "manhattanFacadeReview",
+        "objectIdMapping": "mapped_existing_runtime_object_id",
+        "groundingAlignment": "uses_existing_building_footprint_and_runtime_ground_plane",
+        "heightMassingInterpretation": "container_preview_only_no_exact_height_or_roof_claim",
+        "normalModeIsolation": "qa_toggle_only"
+      },
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "not_verified",
+        "candidate_only",
+        "existing_render_anchor_only",
+        "no_claim_promotion"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "existing_qa_render_compatibility_mapping",
+      "mappingId": "p4o13-map-building-container-mid-corridor-south",
+      "candidateId": "p4o10-candidate-building-container-mid-corridor-south",
+      "candidateFamily": "scaffold_building_container_candidate",
+      "sourceLane": "building_container",
+      "mappingStatus": "mapped_to_existing_qa_render_anchor",
+      "qaPreviewEligibility": "eligible_qa_only_preview_candidate",
+      "existingRenderAnchor": {
+        "anchorType": "runtime_building_object",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3393885",
+        "targetRenderedObjectRole": "mid_corridor_south_side_building_context_anchor",
+        "targetCorridorSide": "right"
+      },
+      "compatibility": {
+        "coordinateOrientation": "compatible_existing_normalized_scene_units",
+        "cameraPreset": "streetReview",
+        "objectIdMapping": "mapped_existing_runtime_object_id",
+        "groundingAlignment": "uses_existing_building_footprint_and_runtime_ground_plane",
+        "heightMassingInterpretation": "container_preview_only_no_exact_height_or_roof_claim",
+        "normalModeIsolation": "qa_toggle_only"
+      },
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "not_verified",
+        "candidate_only",
+        "existing_render_anchor_only",
+        "no_claim_promotion"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "existing_qa_render_compatibility_mapping",
+      "mappingId": "p4o13-map-grounding-manhattan-intersection",
+      "candidateId": "p4o10-candidate-grounding-manhattan-intersection",
+      "candidateFamily": "scaffold_grounding_candidate",
+      "sourceLane": "street_sidewalk_curb_grounding",
+      "mappingStatus": "mapped_to_existing_qa_render_anchor",
+      "qaPreviewEligibility": "eligible_qa_only_preview_candidate",
+      "existingRenderAnchor": {
+        "anchorType": "runtime_corridor_guide",
+        "targetRenderedObjectId": "p4b-object-nyc-centerline-physicalid-47237",
+        "targetGuideRole": "manhattan_endpoint_band",
+        "targetCorridorSide": "center"
+      },
+      "compatibility": {
+        "coordinateOrientation": "compatible_existing_normalized_scene_units",
+        "cameraPreset": "manhattanToFranklin",
+        "objectIdMapping": "mapped_existing_runtime_centerline_and_endpoint_guide",
+        "groundingAlignment": "uses_existing_runtime_endpoint_centerline_curb_and_sidewalk_guides",
+        "heightMassingInterpretation": "not_applicable_grounding_record",
+        "normalModeIsolation": "qa_toggle_only"
+      },
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "not_verified",
+        "candidate_only",
+        "grounding_alignment_placeholder",
+        "no_claim_promotion"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "existing_qa_render_compatibility_mapping",
+      "mappingId": "p4o13-map-grounding-mid-corridor-sidewalk-south",
+      "candidateId": "p4o10-candidate-grounding-mid-corridor-sidewalk-south",
+      "candidateFamily": "scaffold_grounding_candidate",
+      "sourceLane": "street_sidewalk_curb_grounding",
+      "mappingStatus": "mapped_to_existing_qa_render_anchor",
+      "qaPreviewEligibility": "eligible_qa_only_preview_candidate",
+      "existingRenderAnchor": {
+        "anchorType": "runtime_corridor_guide",
+        "targetRenderedObjectId": "p4b-object-nyc-centerline-physicalid-47237",
+        "targetGuideRole": "south_sidewalk_band",
+        "targetCorridorSide": "right"
+      },
+      "compatibility": {
+        "coordinateOrientation": "compatible_existing_normalized_scene_units",
+        "cameraPreset": "streetReview",
+        "objectIdMapping": "mapped_existing_runtime_centerline_and_sidewalk_guide",
+        "groundingAlignment": "uses_existing_runtime_sidewalk_and_curb_guides",
+        "heightMassingInterpretation": "not_applicable_grounding_record",
+        "normalModeIsolation": "qa_toggle_only"
+      },
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "not_verified",
+        "candidate_only",
+        "grounding_alignment_placeholder",
+        "no_claim_promotion"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "existing_qa_render_compatibility_mapping",
+      "mappingId": "p4o13-map-height-massing-manhattan-corner-north",
+      "candidateId": "p4o10-candidate-height-massing-manhattan-corner-north",
+      "candidateFamily": "scaffold_height_massing_candidate",
+      "sourceLane": "height_massing",
+      "mappingStatus": "mapped_to_existing_qa_render_anchor",
+      "qaPreviewEligibility": "eligible_qa_only_preview_candidate",
+      "existingRenderAnchor": {
+        "anchorType": "runtime_building_object",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3400032",
+        "targetRenderedObjectRole": "manhattan_endpoint_height_massing_anchor",
+        "targetCorridorSide": "left"
+      },
+      "compatibility": {
+        "coordinateOrientation": "compatible_existing_normalized_scene_units",
+        "cameraPreset": "manhattanFacadeReview",
+        "objectIdMapping": "mapped_existing_runtime_object_id",
+        "groundingAlignment": "uses_existing_building_ground_contact_and_runtime_ground_plane",
+        "heightMassingInterpretation": "generic_massing_band_only_no_exact_height_or_roof_claim",
+        "normalModeIsolation": "qa_toggle_only"
+      },
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "not_verified",
+        "candidate_only",
+        "height_massing_placeholder",
+        "no_claim_promotion"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "existing_qa_render_compatibility_mapping",
+      "mappingId": "p4o13-map-height-massing-mid-corridor-south",
+      "candidateId": "p4o10-candidate-height-massing-mid-corridor-south",
+      "candidateFamily": "scaffold_height_massing_candidate",
+      "sourceLane": "height_massing",
+      "mappingStatus": "mapped_to_existing_qa_render_anchor",
+      "qaPreviewEligibility": "eligible_qa_only_preview_candidate",
+      "existingRenderAnchor": {
+        "anchorType": "runtime_building_object",
+        "targetRenderedObjectId": "p4b-object-nyc-footprint-bin-3393885",
+        "targetRenderedObjectRole": "mid_corridor_south_side_height_massing_anchor",
+        "targetCorridorSide": "right"
+      },
+      "compatibility": {
+        "coordinateOrientation": "compatible_existing_normalized_scene_units",
+        "cameraPreset": "streetReview",
+        "objectIdMapping": "mapped_existing_runtime_object_id",
+        "groundingAlignment": "uses_existing_building_ground_contact_and_runtime_ground_plane",
+        "heightMassingInterpretation": "generic_massing_band_only_no_exact_height_or_roof_claim",
+        "normalModeIsolation": "qa_toggle_only"
+      },
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "not_verified",
+        "candidate_only",
+        "height_massing_placeholder",
+        "no_claim_promotion"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "summary": {
+    "candidateCount": 6,
+    "mappedCandidateCount": 6,
+    "runtimeObjectAnchorCount": 4,
+    "runtimeGuideAnchorCount": 2,
+    "qaPreviewEligibleCount": 6,
+    "normalModeRecordCount": 0,
+    "publicInterfaceCount": 0,
+    "moduleBoundaryChangeCount": 0,
+    "sourceFetchCount": 0,
+    "sourceIngestionCount": 0,
+    "businessLinkCount": 0,
+    "exactClaimRecordCount": 0,
+    "claimPromotionCount": 0
+  }
+}
