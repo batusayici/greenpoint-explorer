@@ -55,15 +55,77 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Batch 4G external source policy and coverage audit contract is accepted by Batu as complete.
+- Current phase: bounded Phase 4G follow-on source audit packet is open; 4G-A is complete and verified.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` marks `Batch 4G: External Source Policy And Coverage Audit Contract` accepted by Batu as complete, with no executable batch and no pre-authorized queue. The 4G contract separates future `4G-A: Geometry Source Audit` work for NYC 3D / CityGML / 3DCityDB from future `4G-B: Facade Evidence Source Audit` work for Mapillary/KartaView, preserves Google 3D Tiles / Street View as benchmark-only or narrow-exception material, and defers Qwen/Oxen to 4M visual-system acceleration. Actual source access, audits, downloads, caches, ingestion, extraction, render use, business linkage, exact claims, production assets, normal-mode exposure, and public/product claims remain blocked.
-- Updated roadmap posture: 4G external source policy and coverage audit contract is accepted by Batu as complete. The intended later gated sequence is 4G-A geometry source audit for NYC 3D / CityGML / 3DCityDB, 4G-B facade evidence source audit for Mapillary/KartaView, 4H facade evidence intake workflow, 4I corridor facade cue expansion, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset registry / visual system / art-direction translation, and 4N normal-mode promotion + recognition QA. NYC 3D / CityGML / 3DCityDB is a geometry-confidence candidate only and not facade/storefront/business evidence; Mapillary/KartaView remain preferred external candidate imagery lanes pending explicit source-policy approval, not approved primary production sources; Batu-supplied imagery remains the controlled fallback and adjudication source for gaps, ambiguity, or unsupported claims; Google 3D Tiles/Street View remains benchmark-only or narrow-exception material unless separately cleared; Qwen/Oxen is deferred to 4M as a possible visual-system accelerator, not an evidence source.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens `4G-B: Facade Evidence Source Audit for Mapillary/KartaView` and pre-authorizes `4H-1: Facade Evidence Intake Workflow Contract`.
+- Updated roadmap posture: 4G external source policy and coverage audit contract is accepted by Batu as complete. Batu opened a bounded packet for 4G-A, 4G-B, and 4H-1 only. 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, while preserving all source access/download/cache/ingestion/conversion/render/use gates. Mapillary/KartaView are candidate facade/storefront evidence lanes only and are not approved production sources. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4G-A Geometry Source Audit
+
+Status:
+- Complete.
+
+Scope:
+- Audit public documentation, schemas, file formats, metadata fields, licensing/terms pages, and feasibility notes for NYC 3D / CityGML / 3DCityDB as geometry-confidence candidates only.
+
+Files changed:
+- `docs/phase-4g-a-geometry-source-audit.md`
+- `src/data/source-audits/greenpoint-ave-manhattan-to-franklin.phase-4g-a-geometry-source-audit.v0.1.json`
+- `scripts/verify-phase-4g-a-geometry-source-audit.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
+- `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Recorded NYC 3D as a plausible future review-only geometry-confidence candidate for building heights, massing, roof volumes, block gaps, and geometry-container review.
+- Recorded CityGML as a plausible standard/schema lane for interpreting future geometry records.
+- Recorded 3DCityDB as a plausible future tooling path only, blocked behind later architecture/dependency approval.
+- Did not download, cache, ingest, convert, extract, render, or runtime-use source data; did not add dependencies, credentials, paid APIs, architecture changes, normal-mode exposure, production use, business linkage, facade/storefront evidence, or exact claims.
+
+Unresolved decisions:
+- Batu owns future source access/download/cache/ingestion/conversion approval, terms acceptance, dependency/architecture approval, source promotion, geometry-confidence acceptance, production use, and normal-mode/public use.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `4G-B: Facade Evidence Source Audit for Mapillary/KartaView`.
+
+### 2026-06-08 - Open Phase 4G Follow-On Source Audit Packet
+
+Status:
+- Complete as gate-opening control update.
+
+Scope:
+- Record Batu approval to open a bounded Phase 4G follow-on packet covering 4G-A, 4G-B, and 4H-1, with self-advance allowed only inside those named batches and stop conditions preserved.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- To be verified with the 4G-A batch after the first audit artifact/verifier is added: new 4G-A verifier, existing 4G verifier, and `git diff --check`.
+
+Outcome:
+- Opened `4G-A: Geometry Source Audit for NYC 3D / CityGML / 3DCityDB` as the current executable batch.
+- Pre-authorized `4G-B: Facade Evidence Source Audit for Mapillary/KartaView`, then `4H-1: Facade Evidence Intake Workflow Contract`.
+- Preserved review-only/non-production status, geometry/facade lane separation, no real source download/cache/ingestion, no business linkage, no exact storefront/frontage/entrance/address/signage/tenant claims, no normal-mode exposure, no production use, no Qwen/Oxen work, no new credentials/paid APIs/dependencies, and no architecture changes.
+
+Unresolved decisions:
+- Batu owns any source promotion, terms acceptance, real data access/download/cache/ingestion, claim promotion, credential/API/dependency/architecture approval, production use, and final packet review after 4H-1.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `4G-A: Geometry Source Audit for NYC 3D / CityGML / 3DCityDB`.
 
 ### 2026-06-08 - Batch 4G External Source Policy And Coverage Audit Contract
 

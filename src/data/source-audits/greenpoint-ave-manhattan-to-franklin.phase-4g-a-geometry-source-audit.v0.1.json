@@ -1,0 +1,295 @@
+{
+  "auditPacketId": "phase-4g-a-geometry-source-audit-v0-1",
+  "auditBatch": "4G-A",
+  "status": "review_only_candidate_audit_complete",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "productionUsePolicy": "blocked_not_approved",
+  "normalModeExposure": "blocked",
+  "sourceAccessSummary": "Public documentation reviewed only. No source data was downloaded, cached, ingested, converted, rendered, extracted, or used as runtime input.",
+  "corridorScope": "Greenpoint Ave from Manhattan Ave toward Franklin Ave",
+  "retrievalOrReviewDate": "2026-06-08",
+  "reviewer": "Codex",
+  "sourceLane": "geometry_confidence",
+  "candidateSources": [
+    {
+      "auditRecordId": "phase-4g-a-nyc-3d-building-model",
+      "candidateSource": "NYC 3D Building Model",
+      "sourceAccessStatus": "public_docs_reviewed_no_data_downloaded",
+      "termsReviewStatus": "not_blocking_for_review_only_audit_notes_batu_terms_acceptance_required_before_data_use",
+      "reviewedPublicUrls": [
+        "https://www.nyc.gov/assets/planning/download/pdf/data-maps/open-data/nyc-3d-model-metadata.pdf",
+        "https://github.com/CityOfNewYork/nyc-geo-metadata",
+        "https://maps.nyc.gov/download/3dmodel/",
+        "https://cityofnewyork.github.io/opendatatsm/publicpolicies.html",
+        "https://www.nyc.gov/main/terms-of-use"
+      ],
+      "formatAndSchemaNotes": [
+        "NYC metadata describes the model as a public 2014 citywide 3D building model divided by community district.",
+        "Metadata describes Rhino .3dm community district files and building layers with footprint, rooftop, facade linework, and surface layers.",
+        "NYC download listing exposes large archive names including a GML archive, but no archive was downloaded in this batch."
+      ],
+      "metadataFieldsObserved": [
+        "dataset name",
+        "tags",
+        "data steward",
+        "credits",
+        "use limitations",
+        "update frequency",
+        "date of last update",
+        "data quality",
+        "common uses"
+      ],
+      "allowedUses": [
+        "review_only_building_height_confidence",
+        "review_only_massing_confidence",
+        "review_only_roof_volume_confidence",
+        "review_only_block_gap_confidence",
+        "review_only_geometry_container_review",
+        "review_only_discrepancy_notes"
+      ],
+      "blockedUses": [
+        "source_data_download",
+        "source_data_cache",
+        "source_data_ingestion",
+        "source_data_conversion",
+        "runtime_render_use",
+        "normal_mode_exposure",
+        "production_use",
+        "facade_evidence",
+        "storefront_evidence",
+        "business_linkage",
+        "exact_address_claim",
+        "source_derived_textures",
+        "model_training"
+      ],
+      "attributionRequirement": "future_use_must_identify_source_version_and_modifications_where_applicable",
+      "storageCachePolicy": "blocked_until_later_batu_source_access_gate",
+      "derivativeUsePolicy": "review_only_geometry_notes_only_if_later_data_access_is_approved",
+      "renderUsePolicy": "blocked",
+      "trainingUsePolicy": "blocked",
+      "claimSupportAllowed": [
+        "building_height_confidence",
+        "massing_confidence",
+        "roof_volume_confidence",
+        "block_gap_confidence",
+        "geometry_container_review"
+      ],
+      "claimSupportBlocked": [
+        "storefront_frontage",
+        "storefront_order",
+        "facade_appearance",
+        "entrance_location",
+        "tenant_assignment",
+        "business_identity",
+        "active_status",
+        "signage",
+        "material_or_color",
+        "exact_address_placement",
+        "production_asset_readiness",
+        "public_product_exactness"
+      ],
+      "geometryCoverageStatus": "candidate_citywide_coverage_documented_not_verified_for_corridor",
+      "heightConfidencePotential": "review_only_potential",
+      "massingConfidencePotential": "review_only_potential",
+      "roofVolumeConfidencePotential": "review_only_potential",
+      "blockGapConfidencePotential": "review_only_potential",
+      "containerAssociationPotential": "review_only_potential",
+      "geometryDiscrepancyNotes": "possible_future_compare_against_existing_source_backed_graybox_records_after_source_access_gate",
+      "facadeEvidenceSupport": "blocked_not_facade_evidence",
+      "businessStorefrontSupport": "blocked_not_business_or_storefront_evidence",
+      "batuDecisionRequired": [
+        "source_access_download_cache_ingestion_conversion",
+        "terms_acceptance",
+        "geometry_confidence_promotion",
+        "production_or_normal_mode_use"
+      ],
+      "unresolvedQuestions": [
+        "Whether future source-access should use 3dm, GML, multipatch, or another metadata-only path.",
+        "Whether future geometry-container review should compare NYC 3D against the existing 4D geometry validation report."
+      ]
+    },
+    {
+      "auditRecordId": "phase-4g-a-citygml-standard",
+      "candidateSource": "CityGML",
+      "sourceAccessStatus": "public_standard_docs_reviewed_no_data_downloaded",
+      "termsReviewStatus": "not_blocking_for_review_only_standard_notes",
+      "reviewedPublicUrls": [
+        "https://www.ogc.org/standards/citygml/"
+      ],
+      "formatAndSchemaNotes": [
+        "OGC describes CityGML as a conceptual model and exchange format for virtual 3D city models.",
+        "CityGML versions and GML encodings can represent semantic urban objects and building geometry at levels of detail.",
+        "CityGML is a standard lane, not an evidence source by itself."
+      ],
+      "metadataFieldsObserved": [
+        "standard version",
+        "encoding",
+        "level of detail",
+        "building geometry",
+        "semantic object relationships"
+      ],
+      "allowedUses": [
+        "review_only_geometry_schema_interpretation",
+        "review_only_building_height_confidence",
+        "review_only_massing_confidence",
+        "review_only_roof_volume_confidence",
+        "review_only_geometry_container_review"
+      ],
+      "blockedUses": [
+        "facade_evidence",
+        "storefront_evidence",
+        "business_linkage",
+        "exact_address_claim",
+        "normal_mode_exposure",
+        "production_use",
+        "source_derived_textures",
+        "model_training"
+      ],
+      "attributionRequirement": "cite_ogc_citygml_standard_for_standard_interpretation",
+      "storageCachePolicy": "not_applicable_no_data_reviewed",
+      "derivativeUsePolicy": "review_only_schema_notes_only",
+      "renderUsePolicy": "blocked",
+      "trainingUsePolicy": "blocked",
+      "claimSupportAllowed": [
+        "geometry_schema_interpretation",
+        "building_height_confidence",
+        "massing_confidence",
+        "roof_volume_confidence",
+        "geometry_container_review"
+      ],
+      "claimSupportBlocked": [
+        "storefront_frontage",
+        "storefront_order",
+        "facade_appearance",
+        "entrance_location",
+        "tenant_assignment",
+        "business_identity",
+        "active_status",
+        "signage",
+        "material_or_color",
+        "exact_address_placement",
+        "production_asset_readiness",
+        "public_product_exactness"
+      ],
+      "geometryCoverageStatus": "standard_not_coverage_source",
+      "heightConfidencePotential": "review_only_schema_potential",
+      "massingConfidencePotential": "review_only_schema_potential",
+      "roofVolumeConfidencePotential": "review_only_schema_potential",
+      "blockGapConfidencePotential": "review_only_schema_potential",
+      "containerAssociationPotential": "review_only_schema_potential",
+      "geometryDiscrepancyNotes": "standard_can_help_normalize_future_geometry_records_but_does_not_validate_corridor_coverage",
+      "facadeEvidenceSupport": "blocked_not_facade_evidence",
+      "businessStorefrontSupport": "blocked_not_business_or_storefront_evidence",
+      "batuDecisionRequired": [
+        "using_citygml_as_runtime_or_fixture_schema",
+        "claim_promotion_beyond_review_only"
+      ],
+      "unresolvedQuestions": [
+        "Whether future source-access should target CityGML directly or remain metadata-only."
+      ]
+    },
+    {
+      "auditRecordId": "phase-4g-a-3dcitydb-tooling",
+      "candidateSource": "3DCityDB",
+      "sourceAccessStatus": "public_tooling_docs_reviewed_no_installation_no_data_import",
+      "termsReviewStatus": "software_license_appears_permissive_but_architecture_dependency_gate_required_before_use",
+      "reviewedPublicUrls": [
+        "https://github.com/3dcitydb/3dcitydb",
+        "https://3dcitydb-docs.readthedocs.io/en/latest/overview/license.html"
+      ],
+      "formatAndSchemaNotes": [
+        "3DCityDB V5 maps CityGML 3.0 into a spatial relational database schema and supports CityGML 3.0, 2.0, and 1.0.",
+        "3DCityDB documentation describes import/export tooling and spatial database requirements.",
+        "Using 3DCityDB would add database/tooling architecture, so current batch records feasibility only."
+      ],
+      "metadataFieldsObserved": [
+        "supported CityGML versions",
+        "database requirements",
+        "import/export tooling",
+        "license",
+        "system requirements"
+      ],
+      "allowedUses": [
+        "review_only_tooling_feasibility_notes",
+        "review_only_citygml_storage_path_assessment",
+        "review_only_geometry_query_path_assessment"
+      ],
+      "blockedUses": [
+        "tool_installation",
+        "database_setup",
+        "source_data_import",
+        "source_data_export",
+        "runtime_render_use",
+        "normal_mode_exposure",
+        "production_use",
+        "facade_evidence",
+        "storefront_evidence",
+        "business_linkage",
+        "exact_address_claim",
+        "source_derived_textures",
+        "model_training"
+      ],
+      "attributionRequirement": "cite_3dcitydb_project_and_license_if_future_tooling_is_approved",
+      "storageCachePolicy": "blocked_architecture_dependency_gate_required",
+      "derivativeUsePolicy": "blocked_until_tooling_use_approved",
+      "renderUsePolicy": "blocked",
+      "trainingUsePolicy": "blocked",
+      "claimSupportAllowed": [
+        "tooling_feasibility",
+        "citygml_storage_feasibility",
+        "geometry_query_feasibility",
+        "building_height_confidence_tooling_path",
+        "massing_confidence_tooling_path",
+        "roof_volume_confidence_tooling_path",
+        "geometry_container_review_tooling_path"
+      ],
+      "claimSupportBlocked": [
+        "storefront_frontage",
+        "storefront_order",
+        "facade_appearance",
+        "entrance_location",
+        "tenant_assignment",
+        "business_identity",
+        "active_status",
+        "signage",
+        "material_or_color",
+        "exact_address_placement",
+        "production_asset_readiness",
+        "public_product_exactness"
+      ],
+      "geometryCoverageStatus": "tooling_not_coverage_source",
+      "heightConfidencePotential": "indirect_review_only_tooling_potential",
+      "massingConfidencePotential": "indirect_review_only_tooling_potential",
+      "roofVolumeConfidencePotential": "indirect_review_only_tooling_potential",
+      "blockGapConfidencePotential": "indirect_review_only_tooling_potential",
+      "containerAssociationPotential": "indirect_review_only_tooling_potential",
+      "geometryDiscrepancyNotes": "could_support_future_queries_after_batu_approves_dependency_and_architecture_path",
+      "facadeEvidenceSupport": "blocked_not_facade_evidence",
+      "businessStorefrontSupport": "blocked_not_business_or_storefront_evidence",
+      "batuDecisionRequired": [
+        "dependency_approval",
+        "architecture_boundary_approval",
+        "database_or_tooling_installation",
+        "source_data_import"
+      ],
+      "unresolvedQuestions": [
+        "Whether future workflow needs 3DCityDB at all or can use a smaller metadata/geometry conversion path."
+      ]
+    }
+  ],
+  "packetBlocksPreserved": [
+    "no_production_use",
+    "no_normal_mode_exposure",
+    "no_business_linkage",
+    "no_exact_storefront_frontage_entrance_address_signage_tenant_claims",
+    "no_source_derived_textures",
+    "no_model_training",
+    "no_google_street_view_or_google_3d_tiles_use",
+    "no_qwen_oxen_visual_system_work",
+    "no_new_paid_api_or_credentials",
+    "no_new_dependency_or_architecture_change",
+    "no_source_data_download_cache_ingestion_conversion_render_extraction"
+  ],
+  "phase4GAResult": "pass_review_only_geometry_confidence_audit_feasibility_not_source_approval"
+}
