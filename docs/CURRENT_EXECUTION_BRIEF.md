@@ -1,4 +1,4 @@
-# Current Execution Brief - Phase 4K-2 Open
+# Current Execution Brief - Phase 4K-3 Open
 
 Status: `Batch 4K-1 -> 4K-3: QA-Only Recognizable Corridor Anchor Proof` is open. Batu approved this bounded packet on 2026-06-08 after the completed 4J-3 Batu review gate.
 
@@ -14,13 +14,15 @@ Completed precondition:
 
 4K-1 is complete and verified.
 
-Current executable batch: `Batch 4K-2: QA Runtime Recognizable Anchor Overlay`.
+4K-2 is complete and verified.
 
-Completed batch: `Batch 4K-1: Recognizable Anchor Cue Contract + Fixture`.
+Current executable batch: `Batch 4K-3: Local Recognizability Review Pack`.
 
-Pre-authorized queue: `Batch 4K-3: Local Recognizability Review Pack`.
+Completed batch: `Batch 4K-2: QA Runtime Recognizable Anchor Overlay`.
 
-Self-advance allowed: yes, from 4K-2 to 4K-3 only if 4K-2 completes cleanly, verification passes, docs are reconciled, and no hard stop condition intervenes.
+Pre-authorized queue: none.
+
+Self-advance allowed: no. Stop at the 4K-3 Batu review gate.
 
 Hard Batu gate: stop after 4K-3. Do not start 4L, 4P, evidence intake, business/source linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
@@ -28,27 +30,34 @@ Owner boundary: Batu owns whether the QA-only recognizable corridor anchor proof
 
 ## Active Batch
 
-### Batch 4K-2: QA Runtime Recognizable Anchor Overlay
+### Batch 4K-3: Local Recognizability Review Pack
 
 Goal:
 
-- Render recognizable anchor cues in QA mode only, layered over the existing 4O/4J scaffold/frontage guides.
+- Produce a concise review artifact answering whether someone familiar with Greenpoint could begin to identify this as Greenpoint Ave between Manhattan and Franklin.
 
 Allowed scope:
 
-- Add QA-only runtime overlay/readouts for 4K cue records.
-- Make endpoint/corner cues and corridor identity easier to inspect with generic material/color-family bands, facade rhythm marks, corner emphasis markers, sidewalk/street/subway/street-furniture cue markers where supported by existing data, and blocked-claim readouts.
-- Add lightweight filters/readouts by cue category.
-- Preserve normal mode behavior.
-- Add verifier coverage proving 4K overlay is QA-only, filters/readouts use only allowed cue categories, no cue appears in normal mode, and no business/factual claim fields are promoted.
-- Add a concise 4K-2 report.
-- Reconcile execution docs, run relevant verification, and commit 4K-2.
+- Add a concise 4K-3 recognizability review report covering visible anchors, endpoint/corner cues, whether corridor identity is stronger than after 4J, what remains generic, missing evidence, and what is still blocked from promotion.
+- Classify remaining recognizability gaps only with the approved bounded categories:
+  - `missing_mid_corridor_facade_evidence`
+  - `weak_corner_wrap_recognition`
+  - `weak_material_color_specificity`
+  - `weak_storefront_rhythm_specificity`
+  - `missing_street_furniture_evidence`
+  - `missing_subway_entrance_specificity`
+  - `missing_business_source_linkage`
+  - `insufficient_local_landmark_signal`
+- Include screenshot references only if the existing repo screenshot workflow already supports them; do not create a large screenshot system.
+- Recommend next phase only as a proposal.
+- Add verifier coverage proving 4K-3 is review/report only, no normal-mode promotion occurred, and no forbidden factual claims were introduced.
+- Reconcile execution docs, run the full relevant verifier chain, `npm run build`, `git diff --check`, final `git status --short`, and commit 4K-3.
 
 Blocked:
 
-- No new external source access, source download/cache/ingestion/conversion, evidence intake, image analysis, image paths, source paths, business/source linkage, business/tenant/storefront inference, exact frontage, exact facade, exact sign, entrance, exact address, exact height, roof, production/public claim, normal-mode exposure, public interface, new dependency, package/tooling change, renderer replacement, or architecture change.
+- No new external source access, source download/cache/ingestion/conversion, evidence intake, image analysis, image paths, source paths, business/source linkage, business/tenant/storefront inference, exact frontage, exact facade, exact sign, entrance, exact address, exact height, roof, production/public claim, normal-mode exposure, public interface, new dependency, package/tooling change, renderer replacement, architecture change, 4L, or 4P.
 
-## Completed Batch
+## Completed Batches
 
 ### Batch 4K-1: Recognizable Anchor Cue Contract + Fixture
 
@@ -58,6 +67,17 @@ What changed:
 - Added `scripts/verify-phase-4k-1-qa-recognizable-anchor-cues.mjs`.
 - Added `docs/reports/phase-4k-1-recognizable-anchor-cue-contract-fixture.md`.
 - Created 18 QA-only cue records mapped to existing 4O/4J lineage, with existing 4E cue ID references where available.
+- Preserved normal mode with zero records and no claim promotion.
+
+### Batch 4K-2: QA Runtime Recognizable Anchor Overlay
+
+What changed:
+
+- Updated `src/Phase4BRuntimePreview.jsx`.
+- Updated `src/styles.css`.
+- Added `scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`.
+- Added `docs/reports/phase-4k-2-qa-recognizable-anchor-runtime-overlay.md`.
+- Rendered 18 QA-only cue records as generic 4K guide overlays with cue category filters/readouts.
 - Preserved normal mode with zero records and no claim promotion.
 
 ## Preserved Boundaries
@@ -72,8 +92,10 @@ What changed:
 
 - `git status --short` before 4K: clean.
 - `node scripts/verify-phase-4k-1-qa-recognizable-anchor-cues.mjs`
-- `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
-- `node scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
+- `node scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`
+- `node scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
+- `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `npm run build`
 - `git diff --check`
 
 ## Unresolved Decisions For Batu

@@ -256,15 +256,26 @@ function verifyReport(report, failures) {
 }
 
 function verifyBrief(brief, failures) {
-  const requiredSnippets = [
+  const originalHandoffSnippets = [
     "Current Execution Brief - Phase 4K-2 Open",
     "4K-1 is complete and verified.",
     "Current executable batch: `Batch 4K-2: QA Runtime Recognizable Anchor Overlay`.",
     "Pre-authorized queue: `Batch 4K-3: Local Recognizability Review Pack`.",
     "Hard Batu gate: stop after 4K-3.",
   ];
-  for (const snippet of requiredSnippets) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4K-1 handoff snippet: ${snippet}`);
+  const laterPhaseSnippets = [
+    "Current Execution Brief - Phase 4K-3 Open",
+    "4K-1 is complete and verified.",
+    "4K-2 is complete and verified.",
+    "Current executable batch: `Batch 4K-3: Local Recognizability Review Pack`.",
+    "Pre-authorized queue: none.",
+    "Hard Batu gate: stop after 4K-3.",
+  ];
+
+  const originalHandoffValid = originalHandoffSnippets.every((snippet) => brief.includes(snippet));
+  const laterPhaseValid = laterPhaseSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalHandoffValid && !laterPhaseValid) {
+    failures.push("Current brief must either preserve the 4K-1 -> 4K-2 handoff or record later-phase completion without 4K promotion");
   }
 }
 

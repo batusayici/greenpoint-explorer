@@ -120,14 +120,24 @@ function verifyReport(report, failures) {
 }
 
 function verifyBrief(brief, failures) {
-  const requiredSnippets = [
+  const originalHandoffSnippets = [
     "Batch 4J-2: QA Runtime Frontage Candidate Overlay",
     "4J-2 is complete and verified.",
     "Pre-authorized queue: none.",
     "Hard Batu gate: stop.",
   ];
-  for (const snippet of requiredSnippets) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4J-2 snippet: ${snippet}`);
+  const laterPhaseSnippets = [
+    "4J-2 is complete and verified.",
+    "4J-3 is complete and verified.",
+    "4K-2 is complete and verified.",
+    "Current executable batch: `Batch 4K-3: Local Recognizability Review Pack`.",
+    "Hard Batu gate: stop after 4K-3.",
+  ];
+
+  const originalHandoffValid = originalHandoffSnippets.every((snippet) => brief.includes(snippet));
+  const laterPhaseValid = laterPhaseSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalHandoffValid && !laterPhaseValid) {
+    failures.push("Current brief must either preserve the 4J-2 handoff or record later-phase completion without 4J promotion");
   }
 }
 

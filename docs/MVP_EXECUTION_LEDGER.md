@@ -55,15 +55,53 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4K-1: Recognizable Anchor Cue Contract + Fixture` is complete and verified; `Batch 4K-2: QA Runtime Recognizable Anchor Overlay` is open.
+- Current phase: `Batch 4K-2: QA Runtime Recognizable Anchor Overlay` is complete and verified; `Batch 4K-3: Local Recognizability Review Pack` is open.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens 4K-2 and queues 4K-3 only, with a hard Batu gate after 4K-3.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path through spatial-usefulness review. Batu accepted the 4O-18 -> 4O-20 packet and opened bounded 4J work. 4J-1 adds QA-only frontage/bay candidate records mapped only to existing 4O building anchors. 4J-2 renders those records as generic QA-only runtime guides with candidate-type filters/readouts while preserving normal mode. 4J-3 records the candidate gap/readiness review. Batu then opened bounded 4K QA-only recognizable corridor anchor proof work. 4K-1 adds QA-only recognizable anchor cue records mapped to existing 4O/4J lineage and existing 4E cue IDs where available. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens 4K-3 with no pre-authorized queue and a hard Batu gate after 4K-3.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path through spatial-usefulness review. Batu accepted the 4O-18 -> 4O-20 packet and opened bounded 4J work. 4J-1 adds QA-only frontage/bay candidate records mapped only to existing 4O building anchors. 4J-2 renders those records as generic QA-only runtime guides with candidate-type filters/readouts while preserving normal mode. 4J-3 records the candidate gap/readiness review. Batu then opened bounded 4K QA-only recognizable corridor anchor proof work. 4K-1 adds QA-only recognizable anchor cue records mapped to existing 4O/4J lineage and existing 4E cue IDs where available. 4K-2 renders those records as generic QA-only guide overlays with cue-category filters/readouts while preserving normal mode. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4K-2 QA Runtime Recognizable Anchor Overlay
+
+Status:
+- Complete and verified.
+
+Scope:
+- Render recognizable anchor cues in QA mode only, layered over existing 4O scaffold and 4J frontage/bay guides.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
+- `scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`
+- `docs/reports/phase-4k-2-qa-recognizable-anchor-runtime-overlay.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-phase-4k-1-qa-recognizable-anchor-cues.mjs`
+- `node scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`
+- `node scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
+- `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Rendered 18 QA-only recognizable anchor cue records as generic guide overlays behind QA mode.
+- Added cue-category filters and readouts for cue category, linked 4O anchor, linked 4J candidate, QA-only status, and blocked claims.
+- Normal mode remains protected with zero records, all cues remain non-promoted, and blocked claims remain blocked.
+
+Unresolved decisions:
+- Batu owns whether the visible cue layer improves local recognizability enough to guide the next phase.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4K-3: Local Recognizability Review Pack`, with no pre-authorized queue after 4K-3.
 
 ### 2026-06-08 - Batch 4K-1 Recognizable Anchor Cue Contract + Fixture
 

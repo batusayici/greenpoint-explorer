@@ -77,7 +77,8 @@ Current state:
 - 4J-1 is complete and verified.
 - 4J-2 is complete and verified.
 - 4J-3 is complete and verified.
-- 4K-1 is complete and verified; 4K-2 is the current executable batch with 4K-3 pre-authorized.
+- 4K-1 is complete and verified.
+- 4K-2 is complete and verified; 4K-3 is the current executable batch with no pre-authorized queue after it.
 - There is no authoritative business linkage, exact storefront/frontage/entrance claim, production asset, normal-mode facade exposure, or full art-directed corridor.
 
 Planned sequence:
@@ -114,8 +115,8 @@ Planned sequence:
 30. 4J-2: QA runtime frontage candidate overlay. Complete and verified.
 31. 4J-3: candidate gap + readiness report. Complete and verified.
 32. 4K-1: recognizable anchor cue contract + fixture. Complete and verified.
-33. 4K-2: QA runtime recognizable anchor overlay. Current executable batch.
-34. 4K-3: local recognizability review pack. Pre-authorized queue; stop at Batu review gate.
+33. 4K-2: QA runtime recognizable anchor overlay. Complete and verified.
+34. 4K-3: local recognizability review pack. Current executable batch; stop at Batu review gate.
 35. 4L: evidence-backed QA corridor render, deferred until evidence and linkage gates support a truthful QA render.
 36. 4M: asset registry / visual system / art-direction translation, deferred until spatial recognizability is proven and evidence/override models are defined.
 37. 4N: normal-mode promotion + recognition QA, deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
@@ -201,6 +202,7 @@ Planning-only future building/override record shape, not an implemented public c
 | 4J-2: QA Runtime Frontage Candidate Overlay | Complete. | Rendered 4J candidates as generic QA-only frontage/bay guide bands, rhythm ticks, corner-wrap hints, and setback/depth hints with candidate-type filters and readouts for linked 4O anchor, QA-only status, and blocked claims. | No business, tenant, exact storefront, exact frontage, facade, sign, entrance, exact address, exact height, roof, source access/download/cache/ingestion/conversion, normal-mode exposure, production/public claim, public interface, dependency, package/tooling, renderer replacement, or architecture change. | 4J-2 verifier, 4J-1 verifier, relevant 4O verifiers, build, and `git diff --check`. | Existing runtime/styles/verifier/report/control-doc boundary. | Self-advance to 4J-3 because clean. |
 | 4J-3: Candidate Gap + Readiness Report | Complete. | Added a report assessing candidate coverage, visible usefulness, normal-mode isolation, blocked fields, missing evidence, unsafe promotion areas, and proposed next-phase planning only. | No evidence linkage, business/source linkage, source access/download/cache/ingestion/conversion, normal-mode exposure, claim promotion, production/public claim, public interface, dependency, package/tooling, renderer replacement, or architecture change. | 4J-3 verifier, 4J-2 verifier, 4J-1 verifier, relevant 4O/4I verifiers, build, `git diff --check`, and final status. | Report/verifier/control-doc boundary. | Stop at Batu review gate. |
 | 4K-1: Recognizable Anchor Cue Contract + Fixture | Complete. | Added 18 QA-only recognizable anchor cue records mapped to existing 4O/4J lineage, with existing 4E cue ID references where available. | No source access/download/cache/ingestion/conversion, evidence intake, business/source linkage, business, tenant, exact storefront, exact frontage, exact facade, sign, entrance, exact address, exact height, roof, normal-mode exposure, production/public claim, public interface, dependency, package/tooling, renderer replacement, or architecture change. | 4K-1 verifier, 4J-1 verifier, 4O-18 verifier, and `git diff --check`. | Fixture/verifier/report/control-doc boundary. | Self-advance to 4K-2 because clean. |
+| 4K-2: QA Runtime Recognizable Anchor Overlay | Complete. | Rendered 18 4K cue records as generic QA-only guide overlays with cue-category filters and readouts for cue category, linked 4O anchor, linked 4J candidate, QA-only status, and blocked claims. | No source access/download/cache/ingestion/conversion, evidence intake, business/source linkage, business, tenant, exact storefront, exact frontage, exact facade, sign, entrance, exact address, exact height, roof, normal-mode exposure, production/public claim, public interface, dependency, package/tooling, renderer replacement, or architecture change. | 4K-2 verifier, 4K-1 verifier, 4J-2 verifier, 4O-19 verifier, build, and `git diff --check`. | Existing runtime/styles/verifier/report/control-doc boundary. | Self-advance to 4K-3 because clean. |
 
 ## Phase 4A Success Criteria
 
@@ -312,11 +314,11 @@ A future Phase 4B visual batch is not acceptable if it only produces a static im
 
 Current work packet: Batch 4K-1 -> 4K-3 QA-only recognizable corridor anchor proof.
 
-Current executable batch: Batch 4K-2 QA runtime recognizable anchor overlay.
+Current executable batch: Batch 4K-3 local recognizability review pack.
 
-Pre-authorized queue: Batch 4K-3 local recognizability review pack.
+Pre-authorized queue: none.
 
-Self-advance allowed: yes, from 4K-2 to 4K-3 only if 4K-2 completes cleanly. Stop at the 4K-3 Batu review gate.
+Self-advance allowed: no. Stop at the 4K-3 Batu review gate.
 
 Closed gate: `Batch 4B-3: Primitive compiler`, reviewed, approved, and closed.
 
@@ -425,5 +427,7 @@ Completed 4J-2 output: updated the existing runtime/styles to render the 4J cand
 Completed 4J-3 output: added the candidate gap/readiness report and verifier. The report classifies missing evidence with the bounded approved categories, recommends any next phase only as a proposal, and does not start evidence linkage, business/source linkage, source access, normal-mode promotion, or claim promotion.
 
 Completed 4K-1 output: added the QA-only recognizable anchor cue fixture, verifier, and concise report. The fixture contains 18 non-promoted cue records mapped only to existing 4O/4J lineage, with existing 4E cue IDs where available, and with normal mode protected.
+
+Completed 4K-2 output: updated the existing runtime/styles to render the 18 4K cue records as generic QA-only guide overlays with cue-category filters and blocked-claim readouts. Normal mode remains protected, all records remain non-promoted, and blocked claims remain blocked.
 
 Hard review gate: stop after 4K-3. Do not implement real source access, source download/cache/ingest/convert/render/use, normal-mode rendering, public UI, procedural production scaffold rendering, add dependencies or tooling, replace the renderer, change public interfaces or module boundaries, open 4L/4M/4N/4P, start facade evidence intake, start business/source linkage, promote sources or claims, or make exact storefront/frontage/facade/entrance/address/signage/tenant/material/active-status/height/roof/public/product claims without Batu approval and an updated current brief.

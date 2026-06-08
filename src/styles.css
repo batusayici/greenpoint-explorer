@@ -319,6 +319,10 @@
   background: #8cc5ff;
 }
 
+.phase4b-side-recognizable-anchor {
+  background: #ffd36f;
+}
+
 .phase4b-legend p {
   margin: 0;
   color: rgba(244, 234, 216, 0.56);
@@ -389,6 +393,10 @@
 
 .phase4b-swatch-frontage-candidate {
   background: linear-gradient(90deg, #ff8f70 0 28%, #ffd36f 28% 52%, #91e4c3 52% 76%, #9cc8ff 76%);
+}
+
+.phase4b-swatch-recognizable-anchor {
+  background: linear-gradient(90deg, #ffd36f 0 18%, #96c6b8 18% 34%, #86a8ff 34% 50%, #f0a36e 50% 66%, #c77565 66% 82%, #a7d879 82%);
 }
 
 .phase4b-swatch-candidate-poi {
