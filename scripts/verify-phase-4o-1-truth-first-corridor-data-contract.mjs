@@ -24,7 +24,7 @@ const requiredNoteSnippets = [
 const requiredBriefSnippets = [
   "4O-1 accepted by Batu on 2026-06-08.",
   "Current executable batch:",
-  "No external data download",
+  "No external data fetch, download",
   "Blender/GLB",
   "Mapillary",
 ];

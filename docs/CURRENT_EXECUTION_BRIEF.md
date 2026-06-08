@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 4O-9 Complete At Review Gate
+# Current Execution Brief - Phase 4O-10 Complete, 4O-11 Open
 
-Status: `Batch 4O-9: QA-Only Scaffold Input Inspector` is complete and pending Batu review.
+Status: `Batch 4O-10: Scaffold Candidate Generation` is complete and verified. Batu accepted the completed 4O-7 -> 4O-9 packet on 2026-06-08 and opened the bounded 4O-10 -> 4O-12 implementation packet.
 
 4O-1 accepted by Batu on 2026-06-08.
 
@@ -22,42 +22,81 @@ Status: `Batch 4O-9: QA-Only Scaffold Input Inspector` is complete and pending B
 
 4O-9 is complete and verified.
 
+4O-7 -> 4O-9 accepted by Batu on 2026-06-08.
+
+4O-10 is complete and verified.
+
 Historical packet labels:
 
 - `Batch 4O-7: Offline Adapter Normalization`
 - `Batch 4O-8: Deterministic Scaffold Input Fixture`
 - `Batch 4O-9: QA-Only Scaffold Input Inspector`
+- `Batch 4O-10: Scaffold Candidate Generation`
 
-Current executable batch: none.
+Current executable batch: `Batch 4O-11: Scaffold Candidate QA Gap Report`.
 
-Completed batch: `Batch 4O-9: QA-Only Scaffold Input Inspector`.
+Completed batch: `Batch 4O-10: Scaffold Candidate Generation`.
 
 Target corridor: Greenpoint Ave from Manhattan Ave to Franklin Ave.
 
-Pre-authorized queue: none.
+Pre-authorized queue:
 
-Self-advance allowed: no.
+1. `Batch 4O-12: Existing QA Render Reconnection Boundary`
 
-Hard Batu gate: stop. Do not proceed to first real source fixture ingestion, real source access, source download/cache/ingestion/conversion/render use, runtime rendering, procedural scaffold rendering, Blender/GLB assets, Mapillary automation, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset-system/art-direction work, 4N normal-mode promotion, source promotion, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, package tooling, renderer changes, public interfaces, module-boundary changes, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Self-advance allowed: yes, from 4O-11 to 4O-12 only if 4O-11 verifies cleanly, docs reconcile, commits cleanly, and no hard Batu gate intervenes.
 
-Owner boundary: Batu owns 4O-9 packet-end acceptance, whether to open first real source fixture ingestion or another corrective offline batch, source access and usage-rights acceptance, spatial recognizability acceptance, source promotion, claim-level promotion, production/public claims, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant/material/active-status claims, credential/API approval, architecture-boundary approval, Blender/GLB override use, Mapillary/street-level metadata use, art-direction translation timing, and any later MVP gates.
+Hard Batu gate: stop after 4O-12. Do not proceed to first real source fixture ingestion, real source access, source download/cache/ingestion/conversion/render use, runtime rendering, procedural scaffold rendering, Blender/GLB assets, Mapillary automation, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset-system/art-direction work, 4N normal-mode promotion, source promotion, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, package tooling, renderer changes, public interfaces, module-boundary changes, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
+
+Owner boundary: Batu owns acceptance of the 4O-10 -> 4O-12 packet, spatial recognizability acceptance, whether the scaffold candidate set may later render in QA mode, source access and usage-rights acceptance, source promotion, claim-level promotion, production/public claims, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant/material/active-status claims, credential/API approval, architecture-boundary approval, Blender/GLB override use, Mapillary/street-level metadata use, art-direction translation timing, and any later MVP gates.
+
+## Current Batch
+
+### 4O-11 Scaffold Candidate QA Gap Report
+
+Allowed scope:
+
+- Add a QA-only scaffold candidate gap/coverage report derived from the 4O-10 scaffold-candidate records.
+- Report candidate counts by family, missing/blocked fields, claim statuses, source-lane/provenance coverage, and whether the candidate set is ready or not ready for a QA-only preview.
+- Add a verifier if useful.
+- Do not render anything.
+
+Boundaries:
+
+- No external data fetch, download, cache, ingestion, conversion, or render use.
+- No dependencies.
+- No runtime rendering.
+- No public interfaces.
+- No normal-mode exposure.
+- No exact businesses, signs, entrances, facades, tenant frontage, exact addresses, active status, production claims, public claims, or claim promotion.
+- Preserve truth-first order: spatial scaffold first, facade recognizability second, art direction third.
+
+Verification:
+
+- Run the 4O-11 verifier.
+- Run all relevant 4O verifiers.
+- Run `git diff --check`.
+
+Commit behavior:
+
+- Commit after 4O-11 only if verification passes and only allowed files changed.
 
 ## Completed Batch
 
-### 4O-9 QA-Only Scaffold Input Inspector
+### 4O-10 Scaffold Candidate Generation
 
 What changed:
 
-- Added `docs/reports/phase-4o-9-qa-only-scaffold-input-inspector.md`.
-- Added `scripts/verify-phase-4o-9-scaffold-input-inspector.mjs`.
-- Added a QA-only non-rendering review artifact for the 4O-8 scaffold-input fixture.
-- Summarized building/container, grounding, and height/massing scaffold-input records, source lanes, input families, target scaffold families, source statuses, claim-status labels, summary counts, and blocked claims.
-- Kept the inspector repo-local, non-rendering, test-only, and disconnected from runtime scene integration, public UI, and normal-mode exposure.
+- Added `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-10-scaffold-candidates.v0.1.json`.
+- Added `scripts/verify-phase-4o-10-scaffold-candidates.mjs`.
+- Generated deterministic scaffold-candidate records derived from the 4O-8 scaffold-input fixture.
+- Preserved derivation links back to 4O-8 and provenance links back through 4O-7 and 4O-6.
+- Included candidate families for building/container candidates, grounding/street/sidewalk/curb candidates, and height/massing candidates.
+- Kept records offline/test-only, not render-ready, not public, and disconnected from runtime/normal mode.
 
 ## Preserved Boundaries
 
-- 4O-9 changes no public interfaces and no module boundaries.
-- No external data download, cache, ingestion, conversion, render use, source access, source promotion, runtime rendering, procedural scaffold rendering, Blender/GLB asset work, or Mapillary automation occurred.
+- 4O-10 changes no public interfaces and no module boundaries.
+- No external data fetch, download, cache, ingestion, conversion, render use, source access, source promotion, runtime rendering, procedural scaffold rendering, Blender/GLB asset work, or Mapillary automation occurred.
 - No package/tooling changes, new dependencies, source app changes, production data pipeline, production visual pipeline, runtime consumer, public UI, or public interface were added.
 - No business linkage, POI linkage, sign linkage, entrance linkage, authoritative storefront anchors, storefront bay/frontage candidates, exact storefront, frontage, tenant frontage, entrance, address, sign, tenant, material, active-status, facade, height, roof, production, public, or product claims.
 - No normal-mode exposure and no normal-mode facade/corridor promotion.
@@ -66,6 +105,7 @@ What changed:
 ## Verification Completed
 
 - `git status --short` before edits: clean.
+- `node scripts/verify-phase-4o-10-scaffold-candidates.mjs`
 - `node scripts/verify-phase-4o-9-scaffold-input-inspector.mjs`
 - `node scripts/verify-phase-4o-8-deterministic-scaffold-input-fixture.mjs`
 - `node scripts/verify-phase-4o-7-offline-adapter-normalization.mjs`
@@ -79,7 +119,7 @@ What changed:
 
 ## Unresolved Decisions For Batu
 
-- Whether to accept 4O-7, 4O-8, and 4O-9 as the correct offline scaffold-input proof packet.
-- Whether to open first real source fixture ingestion, request another corrective offline pass, or pause 4O.
+- Whether to accept the 4O-10 -> 4O-12 scaffold-candidate proof packet after 4O-12.
+- Whether the scaffold candidate set may later connect to QA-only runtime rendering.
 - Which 4O source-access/download/cache/conversion/render-use boundaries, if any, are approved.
 - What spatial recognizability acceptance bar must be met before procedural rendering, facade recognizability, manual overrides, Blender/GLB enhancement, or art-direction translation may proceed.

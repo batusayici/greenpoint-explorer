@@ -139,7 +139,7 @@ async function main() {
   for (const snippet of [
     "4O-6 is complete and verified.",
     "Current executable batch:",
-    "No external data download, cache, ingestion, conversion, render use, source access",
+    "No external data fetch, download, cache, ingestion, conversion",
     "No package/tooling changes",
     "No business linkage",
   ]) {

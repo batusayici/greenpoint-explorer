@@ -22,8 +22,7 @@ const requiredBoundarySnippets = [
 const requiredBriefSnippets = [
   "Batch 4O-9: QA-Only Scaffold Input Inspector",
   "4O-9 is complete and verified.",
-  "Current executable batch: none.",
-  "No external data download, cache, ingestion, conversion, render use, source access",
+  "No external data fetch, download, cache, ingestion, conversion",
   "No package/tooling changes",
   "No business linkage",
 ];
