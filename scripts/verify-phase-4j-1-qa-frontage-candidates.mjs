@@ -217,14 +217,24 @@ function verifyReport(report, failures) {
 }
 
 function verifyBrief(brief, failures) {
-  const requiredSnippets = [
+  const originalHandoffSnippets = [
     "Batch 4J-1: Frontage Candidate Contract + Fixture",
     "4J-1 is complete and verified.",
     "Batch 4J-2: QA Runtime Frontage Candidate Overlay",
     "Hard Batu gate: stop.",
   ];
-  for (const snippet of requiredSnippets) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4J-1 snippet: ${snippet}`);
+  const laterPhaseSnippets = [
+    "4J-1 is complete and verified.",
+    "4J-2 is complete and verified.",
+    "4J-3 is complete and verified.",
+    "4K-1 is complete and verified.",
+    "Hard Batu gate: stop after 4K-3.",
+  ];
+
+  const originalHandoffValid = originalHandoffSnippets.every((snippet) => brief.includes(snippet));
+  const laterPhaseValid = laterPhaseSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalHandoffValid && !laterPhaseValid) {
+    failures.push("Current brief must either preserve the 4J-1 -> 4J-2 handoff or record later-phase completion without 4J promotion");
   }
 }
 
