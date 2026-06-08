@@ -1,34 +1,35 @@
-# Current Execution Brief - Phase 4J-2 Complete, 4J-3 Open
+# Current Execution Brief - Phase 4J Complete At Review Gate
 
-Status: `Batch 4J-1 -> 4J-3: QA-Only Storefront Bay / Frontage Candidate Layer` is open as a bounded Batu-approved packet on 2026-06-08 after acceptance of the completed 4O-18 -> 4O-20 spatial scaffold review packet.
+Status: `Batch 4J-1 -> 4J-3: QA-Only Storefront Bay / Frontage Candidate Layer` is complete and verified. Batu approved this bounded packet on 2026-06-08 after acceptance of the completed 4O-18 -> 4O-20 spatial scaffold review packet.
 
 Completed precondition:
 
 - 4O-18 through 4O-20 are committed at `3ebb949`.
 - `git status --short` was clean before opening 4J.
 - 4J-1 is committed at `8987722`.
+- 4J-2 is committed at `27241f2`.
 
 4J-1 is complete and verified.
 
 4J-2 is complete and verified.
 
-Current executable batch: `Batch 4J-3: Candidate Gap + Readiness Report`.
+4J-3 is complete and verified.
 
-Completed batch: `Batch 4J-2: QA Runtime Frontage Candidate Overlay`.
+Current executable batch: none.
+
+Completed batch: `Batch 4J-3: Candidate Gap + Readiness Report`.
 
 Pre-authorized queue: none.
 
-Self-advance allowed: no. Stop after 4J-3 at the hard Batu review gate.
+Self-advance allowed: no.
 
-Hard Batu gate: stop after 4J-3. Do not start 4K, 4P, evidence intake, business/source linkage, facade evidence linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Hard Batu gate: stop. Do not start 4K, 4P, evidence intake, business/source linkage, facade evidence linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-Owner boundary: Batu owns whether the QA-only frontage/bay candidate layer is useful enough, whether later evidence/business linkage planning may open, whether any claim class may promote, and whether any source/evidence access may open. Codex owns tactical implementation inside the 4J packet only.
+Owner boundary: Batu owns whether the QA-only frontage/bay candidate layer is useful enough, whether later evidence/business linkage planning may open, whether any claim class may promote, and whether any source/evidence access may open. Codex owns tactical implementation inside the completed 4J packet only.
 
-## Completed Batches
+## Completed Packet
 
 ### Batch 4J-1: Frontage Candidate Contract + Fixture
-
-Status: complete and verified.
 
 What changed:
 
@@ -40,8 +41,6 @@ What changed:
 
 ### Batch 4J-2: QA Runtime Frontage Candidate Overlay
 
-Status: complete and verified.
-
 What changed:
 
 - Updated `src/Phase4BRuntimePreview.jsx`.
@@ -52,32 +51,16 @@ What changed:
 - Added candidate-type filters and readouts for candidate type, linked 4O anchor, QA-only status, and blocked claims.
 - Preserved normal mode with zero records and no claim promotion.
 
-## Current Batch
-
 ### Batch 4J-3: Candidate Gap + Readiness Report
 
-Goal:
+What changed:
 
-- Assess whether the QA-only frontage/bay candidate layer is useful enough for later evidence/business linkage planning.
-
-Allowed scope:
-
-- Add a concise 4J-3 readiness report covering candidate coverage, visible usefulness, normal-mode isolation, blocked fields, missing evidence, and what remains unsafe to promote.
-- Classify gaps only with the approved bounded categories:
-  - `missing_facade_photo_evidence`
-  - `missing_frontage_segmentation_evidence`
-  - `missing_entrance_evidence`
-  - `missing_sign_band_evidence`
-  - `missing_corner_wrap_evidence`
-  - `missing_depth_or_setback_evidence`
-  - `missing_business_source_linkage`
-  - `insufficient_spatial_confidence`
-- Recommend any next phase only as a proposal.
-- Do not start evidence linkage.
-- Add verifier coverage as needed proving 4J-3 is review/report only, no normal-mode promotion occurred, and no forbidden factual claims were introduced.
-- Reconcile `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/phase-4-execution-roadmap.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
-- Run the full relevant verifier chain, `npm run build`, `git diff --check`, and final `git status --short`.
-- Commit 4J-3 and stop at the Batu review gate.
+- Added `docs/reports/phase-4j-3-candidate-gap-readiness-report.md`.
+- Added `scripts/verify-phase-4j-3-candidate-readiness-report.mjs`.
+- Assessed candidate coverage, visible usefulness, normal-mode isolation, blocked fields, missing evidence, and unsafe promotion areas.
+- Classified gaps only with approved bounded 4J categories.
+- Recommended any next phase only as a proposal.
+- Stopped at Batu review.
 
 ## Preserved Boundaries
 
@@ -86,21 +69,23 @@ Allowed scope:
 - 4J uses existing 4O scaffold anchors only.
 - 4J records are QA-only, review-only, non-promoted, and blocked from normal mode.
 - 4J does not add production/public claims, public UI, new dependencies, package tooling, renderer replacement, or architecture changes.
+- 4J-3 did not start evidence linkage, source access, business/source linkage, facade evidence intake, normal-mode promotion, or claim promotion.
 
-## Verification Required
+## Verification Completed
 
-For 4J-3:
-
+- `git status --short` before 4J: clean.
 - `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
 - `node scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
-- 4J-3 verifier.
-- Relevant prior 4O/4I runtime and scaffold verifiers.
+- `node scripts/verify-phase-4j-3-candidate-readiness-report.mjs`
+- `node scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
+- `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
 - `npm run build`
 - `git diff --check`
 - Final `git status --short`
 
 ## Unresolved Decisions For Batu
 
-- Whether the QA-only frontage/bay candidate layer is spatially useful enough for later planning.
+- Whether the QA-only frontage/bay candidate layer is useful enough for later planning.
 - Whether later evidence/business linkage planning may open.
 - What evidence is required before any frontage, storefront, facade, sign, entrance, address, business, active-status, exact height, roof, production, or public claim can promote.

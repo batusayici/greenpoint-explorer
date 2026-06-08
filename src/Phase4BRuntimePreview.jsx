@@ -337,7 +337,7 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4J-2 / QA frontage candidate overlay</p>
+          <p className="phase4b-kicker">Batch 4I-4 / corridor cue legibility correction + 4J-2 QA frontage candidate overlay</p>
           <h1>Greenpoint Ave corridor facade cue review</h1>
         </div>
         <p>

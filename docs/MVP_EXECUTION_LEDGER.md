@@ -55,15 +55,55 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4J-2: QA Runtime Frontage Candidate Overlay` is complete and verified; `Batch 4J-3: Candidate Gap + Readiness Report` is open.
+- Current phase: `Batch 4J-3: Candidate Gap + Readiness Report` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to 4J-3 as the current executable batch, with no pre-authorized queue and a hard Batu review gate after 4J-3.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path through spatial-usefulness review. Batu accepted the 4O-18 -> 4O-20 packet and opened bounded 4J work. 4J-1 adds QA-only frontage/bay candidate records mapped only to existing 4O building anchors. 4J-2 renders those records as generic QA-only runtime guides with candidate-type filters/readouts while preserving normal mode. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4J-3 Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path through spatial-usefulness review. Batu accepted the 4O-18 -> 4O-20 packet and opened bounded 4J work. 4J-1 adds QA-only frontage/bay candidate records mapped only to existing 4O building anchors. 4J-2 renders those records as generic QA-only runtime guides with candidate-type filters/readouts while preserving normal mode. 4J-3 records the candidate gap/readiness review and stops at the Batu review gate. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4J-3 Candidate Gap + Readiness Report
+
+Status:
+- Complete and verified; pending Batu review.
+
+Scope:
+- Assess the QA-only storefront bay/frontage candidate layer for coverage, visible usefulness, normal-mode isolation, blocked fields, missing evidence, and unsafe promotion areas.
+
+Files changed:
+- `docs/reports/phase-4j-3-candidate-gap-readiness-report.md`
+- `scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
+- `scripts/verify-phase-4j-3-candidate-readiness-report.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
+- `node scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
+- `node scripts/verify-phase-4j-3-candidate-readiness-report.mjs`
+- `node scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
+- `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Classified 4J gaps with only the approved bounded categories.
+- Recorded that 22 QA-only candidates cover 10 existing 4O anchors, remain non-promoted, and remain isolated from normal mode.
+- Recommended any later evidence/business linkage planning only as a proposal.
+- Did not start evidence linkage, source access, business/source linkage, facade evidence intake, normal-mode promotion, or claim promotion.
+
+Unresolved decisions:
+- Batu owns whether the QA-only frontage/bay candidate layer is useful enough for later planning and whether any later evidence/business linkage packet may open.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the 4J-3 Batu review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-08 - Batch 4J-2 QA Runtime Frontage Candidate Overlay
 
