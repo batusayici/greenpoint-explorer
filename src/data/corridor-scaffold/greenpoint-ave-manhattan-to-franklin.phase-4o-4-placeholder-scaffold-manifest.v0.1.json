@@ -1,0 +1,660 @@
+{
+  "schemaVersion": "phase-4o-4-placeholder-scaffold-manifest.v0.1",
+  "manifestId": "p4o4-placeholder-scaffold-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4O-4",
+  "status": "deterministic_placeholder_scaffold_manifest_no_source_data",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "runtimeUsePolicy": "blocked_no_runtime_consumer",
+  "productionUsePolicy": "blocked",
+  "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+  "derivedFromFixturePath": "src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-2-truth-first-corridor-fixture-stub.v0.1.json",
+  "generationContractPath": "docs/phase-4o-3-deterministic-scaffold-generation-contract.md",
+  "deterministic": true,
+  "generatedBy": {
+    "method": "manual_deterministic_derivation_from_4o2_stub",
+    "generatedAt": "deterministic-no-wall-clock",
+    "recordOrder": [
+      "buildingMassRecords",
+      "groundingSurfaceRecords",
+      "heightMassingOutputRecords",
+      "frontageClassificationOutputRecords",
+      "overrideSlotReferenceRecords"
+    ]
+  },
+  "sourceAccessPolicy": {
+    "externalDataDownloaded": false,
+    "externalDataCached": false,
+    "externalDataIngested": false,
+    "externalDataConverted": false,
+    "externalDataRendered": false,
+    "externalImageryAccessed": false,
+    "mapillaryAutomation": false,
+    "blenderOrGlbAssetWork": false,
+    "runtimeRenderingChanged": false,
+    "proceduralScaffoldRendering": false,
+    "packageOrToolingChanged": false,
+    "publicInterfacesChanged": false,
+    "moduleBoundariesChanged": false
+  },
+  "corridor": {
+    "corridorId": "p4o4-corridor-greenpoint-ave-manhattan-to-franklin",
+    "derivedFromCorridorId": "p4o2-corridor-greenpoint-ave-manhattan-to-franklin",
+    "label": "Greenpoint Ave from Manhattan Ave to Franklin Ave",
+    "scaffoldStatus": "placeholder_symbolic_not_rendered",
+    "spatialClaimStatus": "not_verified",
+    "coordinatesPolicy": "no_real_coordinates_until_source_access_gate",
+    "claimBoundary": [
+      "no_exact_geometry_claim",
+      "no_exact_address_claim",
+      "no_production_claim",
+      "no_public_claim"
+    ]
+  },
+  "manifestRecordFamilies": [
+    "scaffold_building_mass",
+    "scaffold_grounding_surface",
+    "scaffold_height_massing_output",
+    "scaffold_frontage_classification_output",
+    "scaffold_override_slot_reference"
+  ],
+  "blockedClaimsRequired": [
+    "no_storefront_claim",
+    "no_tenant_claim",
+    "no_exact_facade_claim",
+    "no_entrance_claim",
+    "no_signage_claim",
+    "no_active_status_claim",
+    "no_exact_address_claim",
+    "no_exact_height_claim",
+    "no_exact_roof_claim",
+    "no_production_claim",
+    "no_public_claim"
+  ],
+  "buildingMassRecords": [
+    {
+      "recordType": "scaffold_building_mass",
+      "recordId": "p4o4-scaffold-building-mass-placeholder-manhattan-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-building-footprint-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "placeholderGeometry": {
+        "geometryKind": "symbolic_building_mass",
+        "coordinatesIncluded": false,
+        "symbolicFootprintRef": "candidate.nyc_building_footprints.placeholder_manhattan_corner_north",
+        "symbolicMassingTier": "pending_height_massing_output"
+      },
+      "linkedHeightMassingOutputId": "p4o4-scaffold-height-massing-placeholder-manhattan-corner-north",
+      "linkedFrontageClassificationOutputId": "p4o4-scaffold-frontage-classification-placeholder-manhattan-corner-north",
+      "linkedOverrideSlotReferenceId": "p4o4-scaffold-override-slot-reference-placeholder-manhattan-corner-north",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_building_mass",
+      "recordId": "p4o4-scaffold-building-mass-placeholder-mid-corridor-south",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-building-footprint-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "placeholderGeometry": {
+        "geometryKind": "symbolic_building_mass",
+        "coordinatesIncluded": false,
+        "symbolicFootprintRef": "candidate.nyc_building_footprints.placeholder_mid_corridor_south",
+        "symbolicMassingTier": "pending_height_massing_output"
+      },
+      "linkedHeightMassingOutputId": "p4o4-scaffold-height-massing-placeholder-mid-corridor-south",
+      "linkedFrontageClassificationOutputId": "p4o4-scaffold-frontage-classification-placeholder-mid-corridor-south",
+      "linkedOverrideSlotReferenceId": "p4o4-scaffold-override-slot-reference-placeholder-mid-corridor-south",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_building_mass",
+      "recordId": "p4o4-scaffold-building-mass-placeholder-franklin-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-building-footprint-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "placeholderGeometry": {
+        "geometryKind": "symbolic_building_mass",
+        "coordinatesIncluded": false,
+        "symbolicFootprintRef": "candidate.nyc_building_footprints.placeholder_franklin_corner_north",
+        "symbolicMassingTier": "pending_height_massing_output"
+      },
+      "linkedHeightMassingOutputId": "p4o4-scaffold-height-massing-placeholder-franklin-corner-north",
+      "linkedFrontageClassificationOutputId": "p4o4-scaffold-frontage-classification-placeholder-franklin-corner-north",
+      "linkedOverrideSlotReferenceId": "p4o4-scaffold-override-slot-reference-placeholder-franklin-corner-north",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "groundingSurfaceRecords": [
+    {
+      "recordType": "scaffold_grounding_surface",
+      "recordId": "p4o4-scaffold-grounding-surface-placeholder-greenpoint-corridor",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-grounding-placeholder-greenpoint-corridor",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-cscl",
+        "p4o2-source-ref-sidewalk-curb-planimetrics"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "groundingRole": "corridor_ground_plane",
+      "placeholderGeometry": {
+        "geometryKind": "symbolic_corridor_grounding_surface",
+        "coordinatesIncluded": false,
+        "symbolicStreetRef": "candidate.cscl.greenpoint_ave.segment_placeholder",
+        "symbolicSidewalkRef": "candidate.planimetrics.sidewalk_placeholder",
+        "symbolicCurbRef": "candidate.planimetrics.curb_placeholder"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_grounding_surface",
+      "recordId": "p4o4-scaffold-grounding-surface-placeholder-manhattan-intersection",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-grounding-placeholder-manhattan-intersection",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-cscl",
+        "p4o2-source-ref-sidewalk-curb-planimetrics"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "groundingRole": "endpoint_intersection_grounding",
+      "placeholderGeometry": {
+        "geometryKind": "symbolic_intersection_grounding_surface",
+        "coordinatesIncluded": false,
+        "symbolicStreetRef": "candidate.cscl.manhattan_ave.intersection_placeholder",
+        "symbolicSidewalkRef": "candidate.planimetrics.manhattan_sidewalk_placeholder",
+        "symbolicCurbRef": "candidate.planimetrics.manhattan_curb_placeholder"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_grounding_surface",
+      "recordId": "p4o4-scaffold-grounding-surface-placeholder-franklin-intersection",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-grounding-placeholder-franklin-intersection",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-cscl",
+        "p4o2-source-ref-sidewalk-curb-planimetrics"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "groundingRole": "endpoint_intersection_grounding",
+      "placeholderGeometry": {
+        "geometryKind": "symbolic_intersection_grounding_surface",
+        "coordinatesIncluded": false,
+        "symbolicStreetRef": "candidate.cscl.franklin_ave.intersection_placeholder",
+        "symbolicSidewalkRef": "candidate.planimetrics.franklin_sidewalk_placeholder",
+        "symbolicCurbRef": "candidate.planimetrics.franklin_curb_placeholder"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "heightMassingOutputRecords": [
+    {
+      "recordType": "scaffold_height_massing_output",
+      "recordId": "p4o4-scaffold-height-massing-placeholder-manhattan-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-height-massing-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-3d-or-citygml",
+        "p4o2-source-ref-pluto-mappluto"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "heightValue": null,
+      "floorCountFallback": null,
+      "massingConfidence": "pending_source_review",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_height_massing_output",
+      "recordId": "p4o4-scaffold-height-massing-placeholder-mid-corridor-south",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-height-massing-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-3d-or-citygml",
+        "p4o2-source-ref-pluto-mappluto"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "heightValue": null,
+      "floorCountFallback": null,
+      "massingConfidence": "pending_source_review",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_height_massing_output",
+      "recordId": "p4o4-scaffold-height-massing-placeholder-franklin-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-height-massing-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-3d-or-citygml",
+        "p4o2-source-ref-pluto-mappluto"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "heightValue": null,
+      "floorCountFallback": null,
+      "massingConfidence": "pending_source_review",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "frontageClassificationOutputRecords": [
+    {
+      "recordType": "scaffold_frontage_classification_output",
+      "recordId": "p4o4-scaffold-frontage-classification-placeholder-manhattan-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-frontage-classification-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "frontageRole": "corner_candidate_review_only",
+      "streetFacingEdges": [
+        "greenpoint_ave_candidate_edge",
+        "manhattan_ave_candidate_edge"
+      ],
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_frontage_classification_output",
+      "recordId": "p4o4-scaffold-frontage-classification-placeholder-mid-corridor-south",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-frontage-classification-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "frontageRole": "midblock_candidate_review_only",
+      "streetFacingEdges": [
+        "greenpoint_ave_candidate_edge"
+      ],
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_frontage_classification_output",
+      "recordId": "p4o4-scaffold-frontage-classification-placeholder-franklin-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-frontage-classification-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "frontageRole": "corner_candidate_review_only",
+      "streetFacingEdges": [
+        "greenpoint_ave_candidate_edge",
+        "franklin_ave_candidate_edge"
+      ],
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "overrideSlotReferenceRecords": [
+    {
+      "recordType": "scaffold_override_slot_reference",
+      "recordId": "p4o4-scaffold-override-slot-reference-placeholder-manhattan-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-manual-override-slot-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "overrideStatus": "empty",
+      "allowedOverrideTypes": [
+        "manual_geometry_adjustment",
+        "facade_evidence_annotation",
+        "procedural_detail_override",
+        "optional_blender_glb_asset_override"
+      ],
+      "claimBoundary": [
+        "override_does_not_promote_claims",
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_override_slot_reference",
+      "recordId": "p4o4-scaffold-override-slot-reference-placeholder-mid-corridor-south",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-manual-override-slot-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "overrideStatus": "empty",
+      "allowedOverrideTypes": [
+        "manual_geometry_adjustment",
+        "facade_evidence_annotation",
+        "procedural_detail_override",
+        "optional_blender_glb_asset_override"
+      ],
+      "claimBoundary": [
+        "override_does_not_promote_claims",
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "scaffold_override_slot_reference",
+      "recordId": "p4o4-scaffold-override-slot-reference-placeholder-franklin-corner-north",
+      "derivedFromFixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+      "derivedFromRecordId": "p4o2-manual-override-slot-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-building-footprints"
+      ],
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "scaffoldStatus": "placeholder_symbolic_not_rendered",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "overrideStatus": "empty",
+      "allowedOverrideTypes": [
+        "manual_geometry_adjustment",
+        "facade_evidence_annotation",
+        "procedural_detail_override",
+        "optional_blender_glb_asset_override"
+      ],
+      "claimBoundary": [
+        "override_does_not_promote_claims",
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "summary": {
+    "buildingMassRecordCount": 3,
+    "groundingSurfaceRecordCount": 3,
+    "heightMassingOutputRecordCount": 3,
+    "frontageClassificationOutputRecordCount": 3,
+    "overrideSlotReferenceRecordCount": 3,
+    "totalScaffoldRecordCount": 15,
+    "externalDataDownloadedCount": 0,
+    "sourceIngestionRecordCount": 0,
+    "runtimeConsumerCount": 0,
+    "renderedScaffoldCount": 0,
+    "blenderOrGlbAssetCount": 0,
+    "storefrontClaimCount": 0,
+    "tenantClaimCount": 0,
+    "exactFacadeClaimCount": 0,
+    "entranceClaimCount": 0,
+    "signageClaimCount": 0,
+    "activeStatusClaimCount": 0,
+    "exactAddressClaimCount": 0,
+    "exactHeightClaimCount": 0,
+    "exactRoofClaimCount": 0,
+    "productionClaimCount": 0,
+    "publicClaimCount": 0
+  }
+}
