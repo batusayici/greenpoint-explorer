@@ -26,14 +26,14 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: bounded Phase 4G follow-on source audit packet is complete and verified, pending Batu review.
+- Current phase: bounded Phase 4I corridor facade cue expansion packet is complete and verified, pending Batu visual/review gate. Batch commits are blocked in this environment by `.git` metadata write permissions.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
 - Current next task: none; pending Batu packet review and later approval or updated current brief.
 - Pre-authorized queue: none.
-- Hard stop gate: do not open 4I, 4J, 4K, 4L, 4M, 4N, source promotion, real imagery intake, source access/download/cache/ingestion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, architecture changes, or public/product claims without Batu approval and an updated current brief/queue.
-- Updated high-level roadmap posture: 4G is accepted by Batu as complete and Batu has opened a bounded follow-on packet for 4G-A, 4G-B, and 4H-1. Later 4I corridor facade cue expansion, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset registry / visual system / art-direction translation, and 4N normal-mode promotion + recognition QA remain deferred.
-- 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, with source access/download/cache/ingestion/conversion/render/use still blocked behind later Batu approval. 4G-B found Mapillary/KartaView plausible for future review-only facade evidence lane feasibility, with Mapillary authenticated API/terms review still unresolved and all real imagery access/download/cache/ingestion/render/extraction/training/use blocked. 4H-1 defined the intake workflow contract only; no real imagery intake occurred. Batu-supplied imagery remains the controlled fallback and adjudication source for gaps, ambiguity, or unsupported claims.
+- Hard stop gate: do not open 4J, 4K, 4L, 4M, 4N, source promotion, real imagery intake, source access/download/cache/ingestion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, renderer changes, architecture changes, or public/product claims without Batu approval and an updated current brief/queue.
+- Updated high-level roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet for 4I-1, 4I-2, and 4I-3 only. 4I-1 defined the implementation plan. 4I-2 added a QA-only corridor facade cue fixture/verifier with 6 endpoint evidence-backed records, 36 mid-corridor insufficient-evidence records, and 100 blocked/no-evidence gaps. 4I-3 added QA-only runtime legibility for the 4I fixture while preserving normal mode. 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset registry / visual system / art-direction translation, and 4N normal-mode promotion + recognition QA remain deferred.
+- 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, with source access/download/cache/ingestion/conversion/render/use still blocked behind later Batu approval. 4G-B found Mapillary/KartaView plausible for future review-only facade evidence lane feasibility, with Mapillary authenticated API/terms review still unresolved and all real imagery access/download/cache/ingestion/render/extraction/training/use blocked. 4H-1 defined the intake workflow contract only; no real imagery intake occurred. 4I uses only existing repo-local Batu-supplied endpoint evidence, existing geometry containers, and existing stable scene IDs for QA-only cue expansion; Batu-supplied imagery remains the controlled fallback and adjudication source for gaps, ambiguity, or unsupported claims.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
@@ -116,12 +116,14 @@ Use these in order when documents conflict:
 37. 4G-A: Geometry source audit for NYC 3D / CityGML / 3DCityDB. Complete and verified; candidate geometry-confidence support only, not facade/storefront/business evidence.
 38. 4G-B: Facade evidence source audit for Mapillary/KartaView. Complete and verified; candidate facade/storefront evidence only, no imagery ingestion/cache/download/render/training/production.
 39. 4H-1: Facade evidence intake workflow contract. Complete and verified; workflow contract only, no real imagery intake.
-40. 4I: Corridor facade cue expansion. Deferred pending Batu packet review and later approval.
-41. 4J: Storefront bay/frontage candidate layer. Deferred; candidate-only and QA-only until later approval.
-42. 4K: Business/source linkage. Deferred until storefront/frontage candidates and business source policy are approved.
-43. 4L: Evidence-backed QA corridor render. Deferred until evidence and linkage gates support a truthful QA render.
-44. 4M: Asset registry / visual system / art-direction translation. Deferred until evidence and anchor models are defined; Qwen/Oxen may be evaluated here only as a source-safe visual-system accelerator.
-45. 4N: Normal-mode promotion + recognition QA. Deferred until QA render, asset/art translation, provenance, and Batu promotion gates clear.
+40. 4I-1: Corridor facade cue expansion plan. Complete and verified.
+41. 4I-2: Corridor facade cue fixture expansion. Complete and verified.
+42. 4I-3: QA corridor facade render legibility pass. Complete and verified; browser visual smoke pending outside this restricted environment.
+43. 4J: Storefront bay/frontage candidate layer. Deferred; candidate-only and QA-only until later approval.
+44. 4K: Business/source linkage. Deferred until storefront/frontage candidates and business source policy are approved.
+45. 4L: Evidence-backed QA corridor render. Deferred until evidence and linkage gates support a truthful QA render.
+46. 4M: Asset registry / visual system / art-direction translation. Deferred until evidence and anchor models are defined; Qwen/Oxen may be evaluated here only as a source-safe visual-system accelerator.
+47. 4N: Normal-mode promotion + recognition QA. Deferred until QA render, asset/art translation, provenance, and Batu promotion gates clear.
 
 ## Active Blockers
 
@@ -151,7 +153,7 @@ Use these in order when documents conflict:
 
 ## Pending Decisions
 
-- Batu final packet review after Codex reaches the end of `4H-1`, unless an earlier critical source-policy/terms/claim/verification gate is hit.
+- Batu visual/review gate for the completed 4I packet.
 - Future approved packets should state allowed scope, stop conditions, truth gates, verification expectations, commit behavior, and final review gate so Codex can self-advance only inside those boundaries.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.
 - Any scope change beyond completed 4E-3, including selecting, approving, linking, or making provisional shortlist candidates authoritative, business-evidence connection, source expansion beyond what existing manifest/geometry supports, generated manifest changes, renderer expansion beyond minimal Three.js inside the existing React + Vite shell, package dependencies without explicit authorization, screenshot tooling expansion, public/runtime interface expansion, production visual assets, business verification, new APIs/scraping, real-source POI overlays, facade imagery generation, authoritative anchor/facade/storefront semantics, art direction, 4B-7 camera tuning, later 4C/4E tuning, asset registry, visual-system work, or self-advancing beyond the current review gate.

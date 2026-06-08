@@ -4,6 +4,7 @@ import manifest from "./data/generated-scene-manifests/greenpoint-ave-manhattan-
 import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json";
 import qaFacadeSliceFixture from "./data/facade-cues/greenpoint-ave-franklin-end.phase-4c-qa-facade-slice.v0.1.json";
 import evidenceFacadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json";
+import corridorFacadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4i-corridor-qa-facade-cues.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -86,6 +87,7 @@ export default function Phase4BRuntimePreview() {
   const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
   const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
   const evidenceFacadeCueIndex = useMemo(() => buildEvidenceFacadeCueIndex(evidenceFacadeCueFixture), []);
+  const corridorFacadeCueIndex = useMemo(() => buildCorridorFacadeCueIndex(corridorFacadeCueFixture), []);
   const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
   const candidatePoiIndex = useMemo(() => buildCandidatePoiIndex(candidatePoiFixture), []);
   const cornerAnchorCandidateIndex = useMemo(() => buildCornerAnchorCandidateIndex(cornerAnchorCandidateFixture), []);
@@ -99,11 +101,12 @@ export default function Phase4BRuntimePreview() {
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
   const inspectedEvidenceFacade = inspectedObject ? evidenceFacadeCueIndex.get(inspectedObject.id) ?? null : null;
+  const inspectedCorridorFacadeCue = inspectedObject ? corridorFacadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedCornerAnchorCandidates = inspectedObject ? cornerAnchorCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const reviewTotals = useMemo(() => (
-    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, geometryValidationReport, candidatePoiFixture)
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, geometryValidationReport, candidatePoiFixture)
   ), [runtimeScene]);
 
   useEffect(() => {
@@ -130,7 +133,7 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene);
-    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, pickTargets, visualObjects, pickObjects);
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
 
     stateRef.current = {
@@ -180,7 +183,7 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex]);
 
   useEffect(() => {
     const state = stateRef.current;
@@ -306,7 +309,7 @@ export default function Phase4BRuntimePreview() {
           <h1>Greenpoint Ave facade render proof</h1>
         </div>
         <p>
-          Deterministic 3D proof with QA-only opaque volumetric endpoint facades. Normal mode stays protected; QA facades are not business identity, exact frontage, signage, active status, or production claims.
+          Deterministic 3D proof with QA-only endpoint facades and corridor cue placeholders. Normal mode stays protected; QA facades are not business identity, exact frontage, signage, active status, or production claims.
         </p>
       </section>
 
@@ -332,6 +335,7 @@ export default function Phase4BRuntimePreview() {
           inspectedObject={inspectedObject}
           inspectedCue={inspectedCue}
           inspectedEvidenceFacade={inspectedEvidenceFacade}
+          inspectedCorridorFacadeCue={inspectedCorridorFacadeCue}
           qaEnabled={qaEnabled}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           storefrontAnchors={runtimeScene.storefrontAnchors}
@@ -344,9 +348,11 @@ export default function Phase4BRuntimePreview() {
             inspectedValidation={inspectedValidation}
             inspectedSliceFacade={inspectedSliceFacade}
             inspectedEvidenceFacade={inspectedEvidenceFacade}
+            inspectedCorridorFacadeCue={inspectedCorridorFacadeCue}
             facadeCueFixture={facadeCueFixture}
             qaFacadeSliceFixture={qaFacadeSliceFixture}
             evidenceFacadeCueFixture={evidenceFacadeCueFixture}
+            corridorFacadeCueFixture={corridorFacadeCueFixture}
             geometryValidationReport={geometryValidationReport}
             candidatePoiFixture={candidatePoiFixture}
             cornerAnchorCandidateFixture={cornerAnchorCandidateFixture}
@@ -423,6 +429,7 @@ export default function Phase4BRuntimePreview() {
           inspectedCue={inspectedCue}
           inspectedSliceFacade={inspectedSliceFacade}
           inspectedEvidenceFacade={inspectedEvidenceFacade}
+          inspectedCorridorFacadeCue={inspectedCorridorFacadeCue}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
           candidatePoiFixture={candidatePoiFixture}
@@ -447,6 +454,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-facade-cue" /> QA facade cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-qa-facade-slice" /> QA draft street-feel slice</li>
         <li><span className="phase4b-swatch phase4b-swatch-evidence-facade" /> QA evidence facade</li>
+        <li><span className="phase4b-swatch phase4b-swatch-corridor-facade" /> QA corridor cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-candidate-poi" /> QA candidate POI</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
@@ -456,7 +464,7 @@ function RuntimeLegend({ anchorStatus }) {
   );
 }
 
-function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceFacade, qaEnabled, inspectedValidation, storefrontAnchors }) {
+function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceFacade, inspectedCorridorFacadeCue, qaEnabled, inspectedValidation, storefrontAnchors }) {
   return (
     <aside className="phase4b-review" aria-label="Graybox recognizability review panel">
       <p>Review counts</p>
@@ -490,6 +498,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceF
           <dd>{qaEnabled ? totals.evidenceFacadeRecords : "QA off"}</dd>
         </div>
         <div>
+          <dt>Corridor cues</dt>
+          <dd>{qaEnabled ? `${totals.corridorFacadeRendered} shown / ${totals.corridorFacadeBlocked} blocked` : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Candidate POIs</dt>
           <dd>{qaEnabled ? totals.candidatePoiCount : "QA off"}</dd>
         </div>
@@ -514,6 +526,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceF
           <dd>{qaEnabled ? inspectedEvidenceFacade?.claimStatus ?? "none" : "QA off"}</dd>
         </div>
         <div>
+          <dt>Corridor facade lane</dt>
+          <dd>{qaEnabled ? inspectedCorridorFacadeCue?.recordLane ?? "none" : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Anchor status</dt>
           <dd>{storefrontAnchors?.status ?? "unknown"}</dd>
         </div>
@@ -528,9 +544,11 @@ function QADebugPanel({
   inspectedValidation,
   inspectedSliceFacade,
   inspectedEvidenceFacade,
+  inspectedCorridorFacadeCue,
   facadeCueFixture,
   qaFacadeSliceFixture,
   evidenceFacadeCueFixture,
+  corridorFacadeCueFixture,
   geometryValidationReport,
   candidatePoiFixture,
   cornerAnchorCandidateFixture,
@@ -542,6 +560,7 @@ function QADebugPanel({
       <p>QA facade status</p>
       <ul>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Evidence facades: {evidenceFacadeCueFixture.summary.renderedCueRecordCount}</li>
+        <li><span className="phase4b-side-dot phase4b-side-center" /> Corridor cues: {corridorFacadeCueFixture.summary.renderedQaOnlyRecordCount} QA shown / {corridorFacadeCueFixture.summary.blockedNoEvidenceGapRecordCount} blocked gaps</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Unique visual slots: {evidenceFacadeCueFixture.summary.uniqueStreetwallSlotCount}</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Evidence labels: {evidenceFacadeCueFixture.statusLabels.join(" / ")}</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Business evidence not connected</li>
@@ -586,6 +605,10 @@ function QADebugPanel({
           <dd>{inspectedEvidenceFacade ? `${inspectedEvidenceFacade.qaComposition.streetwallSlot} / ${inspectedEvidenceFacade.statusLabels.join(" / ")}` : "none"}</dd>
         </div>
         <div>
+          <dt>4I corridor lane</dt>
+          <dd>{inspectedCorridorFacadeCue ? `${inspectedCorridorFacadeCue.recordLane} / ${inspectedCorridorFacadeCue.statusLabels.join(" / ")}` : "none"}</dd>
+        </div>
+        <div>
           <dt>Evidence palette</dt>
           <dd>{inspectedEvidenceFacade?.paletteFamily ?? "none"}</dd>
         </div>
@@ -608,6 +631,7 @@ function InspectorPanel({
   inspectedCue,
   inspectedSliceFacade,
   inspectedEvidenceFacade,
+  inspectedCorridorFacadeCue,
   inspectedValidation,
   inspectedCandidatePois,
   candidatePoiFixture,
@@ -691,7 +715,7 @@ function InspectorPanel({
         </div>
         <div>
           <dt>Review totals</dt>
-          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues / {reviewTotals.qaFacadeSliceBuildings} draft facades / {reviewTotals.evidenceFacadeRecords} evidence facades</dd>
+          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues / {reviewTotals.qaFacadeSliceBuildings} draft facades / {reviewTotals.evidenceFacadeRecords} evidence facades / {reviewTotals.corridorFacadeRendered} corridor QA cues</dd>
         </div>
         <div>
           <dt>Storefront anchors</dt>
@@ -886,6 +910,40 @@ function InspectorPanel({
       </section>
 
       <section>
+        <h2>4I Corridor Facade Cue</h2>
+        {qaEnabled ? (
+          <ul>
+            <li>
+              <span>Lane</span>
+              <small>{inspectedCorridorFacadeCue?.recordLane ?? "not targeted"}</small>
+            </li>
+            <li>
+              <span>Status</span>
+              <small>{inspectedCorridorFacadeCue ? inspectedCorridorFacadeCue.statusLabels.join(" / ") : "none"}</small>
+            </li>
+            <li>
+              <span>Evidence</span>
+              <small>{inspectedCorridorFacadeCue?.evidenceStatus ?? "none"}</small>
+            </li>
+            <li>
+              <span>Render role</span>
+              <small>{inspectedCorridorFacadeCue?.qaCueGeometry?.qaRenderRole ?? inspectedCorridorFacadeCue?.renderStatus ?? "none"}</small>
+            </li>
+            <li>
+              <span>Fixture counts</span>
+              <small>{reviewTotals.corridorFacadeMid} insufficient / {reviewTotals.corridorFacadeBlocked} blocked gaps</small>
+            </li>
+            <li>
+              <span>Truth gate</span>
+              <small>QA-only; no storefront, business, exact facade, normal-mode, or production claim</small>
+            </li>
+          </ul>
+        ) : (
+          <p>QA mode required for 4I corridor facade cue records.</p>
+        )}
+      </section>
+
+      <section>
         <h2>Allowed Claims</h2>
         <ul>
           {(object?.allowedClaims ?? []).map((claim) => (
@@ -932,13 +990,17 @@ function InspectorPanel({
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, validationReport, candidateFixture) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, validationReport, candidateFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
     geometryFacadeCues: cueFixture.cues.length,
     qaFacadeSliceBuildings: qaFacadeSliceFixture.facades.length,
     evidenceFacadeRecords: evidenceFacadeCueFixture.summary.renderedCueRecordCount,
+    corridorFacadeRecords: corridorFacadeCueFixture.summary.totalRecordCount,
+    corridorFacadeRendered: corridorFacadeCueFixture.summary.renderedQaOnlyRecordCount,
+    corridorFacadeMid: corridorFacadeCueFixture.summary.midCorridorInsufficientEvidenceRecordCount,
+    corridorFacadeBlocked: corridorFacadeCueFixture.summary.blockedNoEvidenceGapRecordCount,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
@@ -965,6 +1027,10 @@ function buildEvidenceFacadeCueIndex(fixture) {
       .filter((record) => record.renderStatus === "rendered_qa_only")
       .map((record) => [record.targetSemanticId, record]),
   );
+}
+
+function buildCorridorFacadeCueIndex(fixture) {
+  return new Map(fixture.corridorCueRecords.map((record) => [record.targetSemanticId, record]));
 }
 
 function buildGeometryValidationIndex(report) {
@@ -1169,6 +1235,7 @@ function addRuntimeObjects(
   facadeCueIndex,
   qaFacadeSliceIndex,
   evidenceFacadeCueIndex,
+  corridorFacadeCueIndex,
   pickTargets,
   visualObjects,
   pickObjects,
@@ -1190,6 +1257,7 @@ function addRuntimeObjects(
     const facadeCue = facadeCueIndex.get(object.id);
     const qaFacadeSlice = qaFacadeSliceIndex.get(object.id);
     const evidenceFacadeCue = evidenceFacadeCueIndex.get(object.id);
+    const corridorFacadeCue = corridorFacadeCueIndex.get(object.id);
     const palette = getBuildingPalette(object);
     const qaPalette = getQASidePalette(object);
     const base = createFlatPolygonMesh(object.points, {
@@ -1218,6 +1286,7 @@ function addRuntimeObjects(
     visual.userData.qaColor = qaPalette.massing;
     visual.userData.corridorSide = object.corridorSide;
     visual.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
+    visual.userData.hasCorridorFacadeCue = Boolean(corridorFacadeCue);
     visual.userData.stateRole = "massing";
 
     const outline = new THREE.LineSegments(
@@ -1229,6 +1298,7 @@ function addRuntimeObjects(
     outline.userData.qaColor = qaPalette.outline;
     outline.userData.corridorSide = object.corridorSide;
     outline.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
+    outline.userData.hasCorridorFacadeCue = Boolean(corridorFacadeCue);
     outline.userData.stateRole = "outline";
 
     const footprint = createPolyline(removeClosingPoint(object.points), {
@@ -1242,6 +1312,7 @@ function addRuntimeObjects(
     footprint.userData.qaColor = qaPalette.footprint;
     footprint.userData.corridorSide = object.corridorSide;
     footprint.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
+    footprint.userData.hasCorridorFacadeCue = Boolean(corridorFacadeCue);
     footprint.userData.stateRole = "footprint";
 
     const marker = new THREE.Mesh(
@@ -1274,6 +1345,7 @@ function addRuntimeObjects(
     anchorMarker.userData.qaColor = qaPalette.anchor;
     anchorMarker.userData.corridorSide = object.corridorSide;
     anchorMarker.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
+    anchorMarker.userData.hasCorridorFacadeCue = Boolean(corridorFacadeCue);
     anchorMarker.userData.stateRole = "anchor";
 
     const group = new THREE.Group();
@@ -1281,6 +1353,7 @@ function addRuntimeObjects(
     if (facadeCue) group.add(createFacadeCueMarker(object, facadeCue));
     if (facadeCue && qaFacadeSlice && !evidenceFacadeCue) group.add(createQAFacadeSliceLayer(object, facadeCue, qaFacadeSlice));
     if (facadeCue && evidenceFacadeCue) group.add(createEvidenceInformedFacadeLayer(object, facadeCue, evidenceFacadeCue));
+    if (facadeCue && corridorFacadeCue && !evidenceFacadeCue) group.add(createCorridorFacadeCueLayer(object, facadeCue, corridorFacadeCue));
 
     const pick = new THREE.Mesh(
       createPrismGeometry(object.points, object.height + 0.35),
@@ -1585,6 +1658,103 @@ function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
   group.userData.stateRole = "evidenceFacadeCue";
   group.visible = false;
   return group;
+}
+
+function createCorridorFacadeCueLayer(object, cue, corridorRecord) {
+  const group = new THREE.Group();
+  group.userData.semanticId = object.id;
+  group.userData.stateRole = "corridorFacadeCue";
+  group.visible = false;
+
+  if (corridorRecord.recordLane !== "mid_corridor_insufficient_evidence") return group;
+  if (corridorRecord.renderStatus !== "rendered_qa_only_candidate_placeholder") return group;
+
+  const plane = cue.geometryDerived.streetFacingPlane;
+  const sourceLength = Math.max(plane.xMax - plane.xMin, 0.2);
+  const length = Math.max(Math.min(sourceLength * 0.72, 1.2), 0.2);
+  const centerX = plane.xMin + sourceLength / 2;
+  const sideOffset = object.corridorSide === "left" ? 0.1 : -0.1;
+  const z = plane.z + sideOffset * 0.92;
+  const height = Math.max(object.height * 0.72, 0.42);
+  const baseHeight = clamp(height * 0.34, 0.16, 0.46);
+  const upperHeight = Math.max(height - baseHeight, 0.18);
+  const bayCount = clampInteger(corridorRecord.qaCueGeometry?.bayPlaceholderCount, 2, 4, 2);
+  const palette = getCorridorFacadePalette(corridorRecord);
+
+  addCorridorFacadeBox(group, {
+    color: palette.shadow,
+    opacity: 0.1,
+    position: [centerX, 0.025, z - sideOffset * 0.18],
+    size: [length * 1.04, 0.03, 0.34],
+  });
+  addCorridorFacadeBox(group, {
+    color: palette.body,
+    opacity: 0.18,
+    position: [centerX, height / 2, z - sideOffset * 0.08],
+    size: [length, height, 0.18],
+  });
+  addCorridorFacadeBox(group, {
+    color: palette.base,
+    opacity: 0.24,
+    position: [centerX, baseHeight / 2, z + sideOffset * 0.04],
+    size: [length * 0.94, baseHeight, 0.08],
+  });
+  addCorridorFacadeBox(group, {
+    color: palette.signBand,
+    opacity: 0.32,
+    position: [centerX, baseHeight + 0.04, z + sideOffset * 0.09],
+    size: [length * 0.86, 0.055, 0.09],
+  });
+
+  const bayWidth = length / bayCount;
+  for (let index = 0; index < bayCount; index += 1) {
+    const x = centerX - length / 2 + bayWidth * index + bayWidth / 2;
+    addCorridorFacadeBox(group, {
+      color: palette.bay,
+      opacity: 0.22,
+      position: [x, baseHeight * 0.48, z + sideOffset * 0.1],
+      size: [Math.max(bayWidth * 0.42, 0.045), Math.max(baseHeight * 0.52, 0.08), 0.055],
+    });
+  }
+
+  const rowCount = corridorRecord.geometryDerived.heightTier === "tall" ? 3 : 2;
+  for (let row = 0; row < rowCount; row += 1) {
+    const y = baseHeight + upperHeight * (row + 0.55) / (rowCount + 0.2);
+    for (let index = 0; index < bayCount; index += 1) {
+      const x = centerX - length / 2 + bayWidth * index + bayWidth / 2;
+      addCorridorFacadeBox(group, {
+        color: palette.window,
+        opacity: 0.2,
+        position: [x, y, z + sideOffset * 0.1],
+        size: [Math.max(bayWidth * 0.34, 0.04), 0.07, 0.045],
+      });
+    }
+  }
+
+  group.userData.corridorFacadeLane = corridorRecord.recordLane;
+  group.userData.corridorFacadeStatus = corridorRecord.evidenceStatus;
+  return group;
+}
+
+function getCorridorFacadePalette(corridorRecord) {
+  if (corridorRecord.corridorSide === "left") {
+    return {
+      shadow: 0x0b1211,
+      body: 0x6f8f88,
+      base: 0x31423f,
+      signBand: 0x9fb7a9,
+      bay: 0xc0cdbf,
+      window: 0xd8e2d3,
+    };
+  }
+  return {
+    shadow: 0x0b1114,
+    body: 0x7b829b,
+    base: 0x333a51,
+    signBand: 0xb8aa80,
+    bay: 0xcfc4a0,
+    window: 0xd9dfda,
+  };
 }
 
 function getEvidenceComposition(facadeRecord) {
@@ -2298,6 +2468,24 @@ function addEvidenceFacadeBox(group, { color, opacity, position, size, opaque = 
   group.add(mesh);
 }
 
+function addCorridorFacadeBox(group, { color, opacity, position, size }) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(...size),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  mesh.position.set(...position);
+  mesh.userData.stateRole = "corridorFacadeCue";
+  mesh.userData.qaOpacity = opacity;
+  mesh.userData.qaColor = color;
+  mesh.visible = false;
+  group.add(mesh);
+}
+
 function addSyntheticContextBox(group, { color, opacity, position, size }) {
   const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(...size),
@@ -2437,6 +2625,7 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
           child.userData.stateRole === "facadeCue"
           || child.userData.stateRole === "qaFacadeSlice"
           || child.userData.stateRole === "evidenceFacadeCue"
+          || child.userData.stateRole === "corridorFacadeCue"
           || child.userData.stateRole === "syntheticQAGrounding"
           || child.userData.stateRole === "candidatePoi"
           || child.userData.stateRole === "candidatePoiLabel"
@@ -2524,6 +2713,18 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : isHovered
                   ? Math.min(child.userData.qaOpacity + 0.14, 0.94)
                   : child.userData.qaOpacity
+            : 0;
+        } else if (child.userData.stateRole === "corridorFacadeCue") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled
+            ? isSelected
+              ? Math.min((child.userData.qaOpacity ?? 0.18) + 0.18, 0.5)
+              : isHovered
+                ? Math.min((child.userData.qaOpacity ?? 0.18) + 0.12, 0.42)
+                : child.userData.qaOpacity ?? 0.18
             : 0;
         } else if (child.userData.stateRole === "syntheticQAGrounding") {
           child.visible = qaEnabled;

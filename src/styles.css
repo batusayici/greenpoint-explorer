@@ -352,6 +352,10 @@
   background: linear-gradient(90deg, #8f4e42 0 22%, #302a27 22% 38%, #d1ad6a 38% 58%, #87958f 58% 78%, #92ada4 78%);
 }
 
+.phase4b-swatch-corridor-facade {
+  background: linear-gradient(90deg, #6f8f88 0 34%, #31423f 34% 52%, #9fb7a9 52% 70%, #7b829b 70%);
+}
+
 .phase4b-swatch-candidate-poi {
   background: linear-gradient(90deg, #8cc5ff 0 45%, #d4b36f 45% 72%, #b56d5e 72%);
 }

@@ -1,76 +1,84 @@
-# Current Execution Brief - Phase 4G Follow-On Packet Complete At Batu Review Gate
+# Current Execution Brief - Phase 4I Packet Complete At Batu Review Gate
 
-Status: `4G-A`, `4G-B`, and `4H-1` are complete and verified inside Batu's bounded Phase 4G follow-on packet.
+Status: `4I-1`, `4I-2`, and `4I-3` are complete and verified inside Batu's bounded Phase 4I corridor facade cue expansion packet.
 
-Current executable batch: none. Pending Batu packet review and later approval or updated current brief.
+Current executable batch: none. Pending Batu visual/review gate and later approval or updated current brief.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop. Do not proceed to 4I corridor facade cue expansion, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M visual-system/art-direction work, 4N normal-mode promotion, source promotion, real imagery intake, source access/download/cache/ingestion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Hard Batu gate: stop. Do not proceed to 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M visual-system/art-direction work, 4N normal-mode promotion, source promotion, real imagery intake, source access/download/cache/ingestion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, renderer changes, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-Owner boundary: Batu owns packet acceptance, source approval, usage-rights acceptance, source promotion, claim-level promotion, production/public claims, geometry-confidence acceptance, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant claims, credential/API approval, architecture-boundary approval, visual-system/art-direction work, and any later MVP gates.
+Owner boundary: Batu owns packet acceptance, visual/legibility review, source approval, usage-rights acceptance, source promotion, claim-level promotion, production/public claims, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant/material/active-status claims, credential/API approval, architecture-boundary approval, visual-system/art-direction work, and any later MVP gates.
 
 ## Completed Packet Result
 
-### 4G-A Geometry Source Audit
+### 4I-1 Corridor Facade Cue Expansion Plan
 
 What changed:
 
-- Added `docs/phase-4g-a-geometry-source-audit.md`.
-- Added `src/data/source-audits/greenpoint-ave-manhattan-to-franklin.phase-4g-a-geometry-source-audit.v0.1.json`.
-- Added `scripts/verify-phase-4g-a-geometry-source-audit.mjs`.
-- Reviewed public documentation only for NYC 3D, CityGML, 3DCityDB, NYC Open Data public policies, and NYC.gov terms.
-- Recorded NYC 3D as a plausible future review-only geometry-confidence candidate for building heights, massing, roof volumes, block gaps, and geometry-container review.
-- Recorded CityGML as a plausible standard/schema lane for interpreting future geometry records.
-- Recorded 3DCityDB as a plausible future tooling path only, blocked behind later architecture/dependency approval.
+- Added `docs/phase-4i-1-corridor-facade-cue-expansion-plan.md`.
+- Added `scripts/verify-phase-4i-1-corridor-facade-cue-expansion-plan.mjs`.
+- Defined 4I expansion boundaries that distinguish endpoint evidence-backed records, mid-corridor insufficient-evidence records, and blocked/no-evidence gaps.
+- Defined exact 4I-2 fixture/verifier boundaries and 4I-3 QA-runtime legibility boundaries.
 
-### 4G-B Facade Evidence Source Audit
+### 4I-2 Corridor Facade Cue Fixture Expansion
 
 What changed:
 
-- Added `docs/phase-4g-b-facade-evidence-source-audit.md`.
-- Added `src/data/source-audits/greenpoint-ave-manhattan-to-franklin.phase-4g-b-facade-evidence-source-audit.v0.1.json`.
-- Added `scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`.
-- Reviewed public documentation only for Mapillary and KartaView licensing, metadata, coverage, API, and attribution/display/cache feasibility.
-- Recorded Mapillary and KartaView as plausible future review-only facade evidence lane candidates.
-- Recorded Mapillary API/terms as incomplete in this audit environment because developer/API terms were login-gated.
-- Recorded CC BY-SA attribution/share-alike considerations for future Batu acceptance before any source use.
+- Added `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4i-corridor-qa-facade-cues.v0.1.json`.
+- Added `scripts/verify-phase-4i-corridor-facade-cues.mjs`.
+- Added `docs/phase-4i-corridor-facade-cue-expansion.md`.
+- Created 142 deterministic QA-only corridor facade cue records:
+  - 6 endpoint evidence-backed records preserving existing 4E/4F repo-local Batu-supplied evidence references.
+  - 36 mid-corridor insufficient-evidence/manual-draft placeholder records.
+  - 100 blocked/no-evidence gap records.
+- Preserved stable 4B scene IDs and 4C geometry cue references.
 
-### 4H-1 Facade Evidence Intake Workflow Contract
+### 4I-3 QA Corridor Facade Render Legibility Pass
 
 What changed:
 
-- Added `docs/phase-4h-1-facade-evidence-intake-workflow-contract.md`.
-- Added `src/data/facade-evidence-intake/greenpoint-ave-manhattan-to-franklin.phase-4h-1-facade-evidence-intake-workflow-contract.v0.1.json`.
-- Added `scripts/verify-phase-4h-1-facade-evidence-intake-workflow.mjs`.
-- Defined future evidence record shape, provenance fields, allowed review-only claim levels, review statuses, source policies, storage/cache/display rules, blocked-claim behavior, and verifier requirements.
-- Kept `approved_evidence_backed` Batu-only and blocked by default.
+- Updated `src/Phase4BRuntimePreview.jsx` to import and consume the 4I corridor cue fixture in QA mode only.
+- Added subdued QA-only mid-corridor placeholder facade bands for `mid_corridor_insufficient_evidence` records.
+- Kept existing 4E/4F endpoint evidence-backed facade volumes visually primary.
+- Kept blocked/no-evidence records visible in QA summaries/inspector readouts instead of creating facade geometry.
+- Added QA panel, review count, legend, and inspector readouts for 4I lane/status/provenance.
+- Added `scripts/verify-phase-4i-qa-runtime-legibility.mjs`.
+- Updated `src/styles.css` with the 4I corridor cue legend swatch only.
 
 ## Preserved Boundaries
 
-- No real source data or imagery was downloaded, cached, ingested, converted, extracted, rendered, textured, trained on, or runtime-used.
-- No source was promoted from candidate/audit status to approved evidence or geometry source.
-- No business linkage was created.
-- No exact storefront, frontage, entrance, address, signage, tenant, active-status, material/color, production, normal-mode, or public/product claim was made.
-- No normal-mode exposure, production use, Google Street View / Google 3D Tiles use, Qwen/Oxen work, new dependency, credential, paid API, renderer/runtime change, or architecture change was added.
+- No external source access, download, cache, ingestion, rendering, extraction, or training.
+- No source promotion.
+- No business linkage.
+- No authoritative storefront anchors.
+- No exact frontage, entrance, address, sign, tenant, material, active-status, or business claims.
+- No normal-mode facade cue exposure.
+- No production assets.
+- No new dependencies, credentials, paid APIs, renderer replacement, architecture changes, Google Street View / Google 3D Tiles use, Qwen/Oxen work, 4J, 4K, or 4M work.
 
 ## Verification Completed
 
+- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
+- `node scripts/verify-phase-4i-corridor-facade-cues.mjs`
+- `node scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
+- `node scripts/verify-phase-4f-facade-cue-model.mjs`
 - `node scripts/verify-phase-4h-1-facade-evidence-intake-workflow.mjs`
 - `node scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
 - `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
 - `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `npm run build`
 - `git diff --check`
 
-Build was not run because runtime/source app files did not change.
+Browser QA note: local dev server startup was blocked by sandbox network binding permissions (`listen EPERM` on `127.0.0.1:5173`), and in-app browser navigation to the built `file://` artifact was blocked by browser URL policy. Visual browser smoke QA remains pending outside this restricted environment.
+
+Commit note: batch commits were attempted but blocked by local `.git` metadata write permissions (`.git/index.lock` operation not permitted). The working tree contains intended packet files only.
 
 ## Unresolved Decisions For Batu
 
-- Whether to accept the completed bounded packet.
-- Whether to open 4I corridor facade cue expansion, a corrective source-audit/intake-contract pass, or a narrower terms/source-access review.
-- Whether any audited source should be promoted from candidate/audit status.
-- Whether authenticated Mapillary API/terms review is needed.
-- Whether KartaView full terms acceptance is sufficient for any future source use.
-- Whether any real source data access, download, cache, ingestion, display, render use, derivative use, extraction, training use, production use, credential, paid API, dependency, or architecture work may open.
+- Whether to accept the completed 4I packet.
+- Whether the QA runtime legibility pass is visually sufficient.
+- Whether to open a narrow 4I corrective pass, 4J storefront bay/frontage candidates, or another later packet.
+- Whether any source promotion, claim promotion, source access/storage/display, normal/product exposure, production use, business linkage, exact claim work, visual-system/art-direction work, dependency/API/credential work, renderer change, or architecture change may open.
