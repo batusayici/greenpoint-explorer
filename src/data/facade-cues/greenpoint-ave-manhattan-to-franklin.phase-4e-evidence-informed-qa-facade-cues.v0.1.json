@@ -1,0 +1,1974 @@
+{
+  "schemaVersion": "phase-4e-evidence-informed-qa-facade-cues.v0.1",
+  "fixtureId": "p4e1-evidence-informed-qa-facade-cues-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4E-5",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "status": "qa-only-manual-coarse-evidence-informed-facade-cues",
+  "generatedFrom": {
+    "facadeEvidencePacketPath": "src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-batu-supplied-facade-evidence.v0.1.json",
+    "provisionalShortlistPath": "src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-provisional-corner-association-shortlist.v0.1.json",
+    "sceneManifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+    "geometryCueFixturePath": "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json",
+    "sourcePolicy": "manual coarse cue extraction from existing repo-local Batu-supplied endpoint-corner evidence only; no automated image analysis, textures, tracing, logos, exact sign text, business names, exact frontage, or exact address claims"
+  },
+  "renderPolicy": {
+    "normalModeUse": "not-rendered",
+    "qaModeUse": "evidence-informed-manual-draft-facade-geometry",
+    "canAffectNormalRuntime": false,
+    "usesPhotoTextures": false,
+    "usesAutomatedImageAnalysis": false,
+    "usesTracing": false,
+    "usesLogosOrExactSignText": false,
+    "usesBusinessNames": false,
+    "canConnectBusinessIdentity": false,
+    "canCreateStorefrontAnchors": false,
+    "canAssignTenantsToFrontages": false,
+    "canPromoteExactFacadeClaims": false,
+    "canPromoteExactFrontageClaims": false,
+    "canPromoteExactAddressClaims": false,
+    "canCreateProductionAssets": false
+  },
+  "compositionPolicy": {
+    "phase": "4E-5",
+    "qaOnly": true,
+    "normalModeUse": "not-rendered",
+    "evidenceFacadeRole": "evidence-informed-qa-facade",
+    "syntheticContextRole": "non-evidence-placeholder-context",
+    "canPromoteSyntheticContextToEvidence": false,
+    "canUseBenchmarkAsEvidence": false,
+    "requiresUniqueStreetwallSlots": true,
+    "minimumSlotGapUnits": 0.18,
+    "minimumFootprintDepthUnits": 0.44,
+    "minimumFacadeThicknessUnits": 0.08,
+    "minimumCornerReturnDepthUnits": 0.32,
+    "minimumRenderedGapUnits": 0.12,
+    "minimumPrimaryMassOpacity": 0.92,
+    "minimumGroundContactOpacity": 0.74,
+    "requiresOpaquePrimaryMasses": true,
+    "requiresComputedRenderExtents": true,
+    "requiresGroundContact": true,
+    "requiredSilhouetteHierarchy": [
+      "solid-body-mass",
+      "front-face",
+      "side-return",
+      "storefront-base-inset",
+      "sign-band",
+      "windows-openings",
+      "cornice-trim",
+      "ground-contact"
+    ],
+    "requiresContextVisibilityPolicy": true,
+    "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only"
+  },
+  "allowedCueVocabulary": [
+    "facade-rhythm",
+    "sign-band-zone",
+    "awning-canopy",
+    "window-glass-rhythm",
+    "corner-emphasis",
+    "street-transit-detail-cue",
+    "palette-family",
+    "blocked-claim-readout"
+  ],
+  "allowedPaletteFamilies": [
+    "warm-red-brick-dark-base",
+    "bright-panel-silver-gray",
+    "pale-stone-red-trim",
+    "weathered-brick-wood-green",
+    "dark-brick-black-base",
+    "red-brick-stone-cornice"
+  ],
+  "statusLabels": [
+    "manual_draft",
+    "evidence_informed",
+    "qa_only",
+    "not_verified"
+  ],
+  "blockedClaimsRequired": [
+    "business-identity",
+    "active-status",
+    "storefront-anchor",
+    "tenant-frontage",
+    "exact-frontage",
+    "exact-frontage-order",
+    "exact-address-placement",
+    "exact-entrance-location",
+    "exact-facade-appearance",
+    "exact-signage-reproduction",
+    "facade-material",
+    "facade-color",
+    "production-asset-readiness",
+    "normal-runtime-rendering",
+    "public-product-claim"
+  ],
+  "summary": {
+    "targetCornerScopes": [
+      "manhattan_greenpoint",
+      "franklin_greenpoint"
+    ],
+    "renderedCueRecordCount": 6,
+    "blockedCueRecordCount": 0,
+    "normalModeRecordCount": 0,
+    "businessIdentityConnectionCount": 0,
+    "exactFrontageClaimCount": 0,
+    "productionClaimCount": 0,
+    "uniqueStreetwallSlotCount": 6,
+    "syntheticContextPromotionCount": 0,
+    "facadePlaneCount": 6,
+    "storefrontBayPlaceholderCount": 16
+  },
+  "facadeCueRecords": [
+    {
+      "cueRecordId": "p4e1-manhattan-warm-brick-corner-wrap",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064832",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064832",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+      "cornerScope": "manhattan_greenpoint",
+      "associationStatus": "provisional_geometry_target_for_qa_render_only",
+      "renderStatus": "rendered_qa_only",
+      "claimStatus": "manual_draft",
+      "statusLabels": [
+        "manual_draft",
+        "evidence_informed",
+        "qa_only",
+        "not_verified"
+      ],
+      "paletteFamily": "warm-red-brick-dark-base",
+      "qaComposition": {
+        "compositionStatus": "qa_only_composition_metadata",
+        "evidenceFacadeRole": "evidence-informed-qa-facade",
+        "syntheticContextRole": "non-evidence-placeholder-context",
+        "recordSeparationIndex": 0,
+        "recordSeparationCount": 3,
+        "lateralOffsetUnits": -1.2,
+        "widthScale": 0.45,
+        "depthProfile": "projecting-corner-wrap",
+        "basePlaneRatio": 0.36,
+        "upperPlaneRatio": 0.64,
+        "storefrontRecessDepth": 0.05,
+        "upperProjectionDepth": 0.04,
+        "signBandProjectionDepth": 0.12,
+        "sideReturn": {
+          "enabled": true,
+          "edge": "left",
+          "depthUnits": 0.62,
+          "widthRatio": 0.16
+        },
+        "grounding": {
+          "sidewalk": true,
+          "curb": true,
+          "crosswalk": true
+        },
+        "streetwallSlot": "manhattan_slot_01_west_corner",
+        "slotGapUnits": 0.28,
+        "footprintDepthUnits": 0.72,
+        "facadeThicknessUnits": 0.12,
+        "cornerReturnDepthUnits": 0.62,
+        "storefrontSetbackUnits": 0.12,
+        "signBandDepthUnits": 0.18,
+        "windowReliefDepthUnits": 0.09,
+        "parapetDepthUnits": 0.1,
+        "corniceProjectionUnits": 0.14,
+        "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
+        "groundPlaneExtent": {
+          "sidewalkDepthUnits": 0.54,
+          "curbDepthUnits": 0.08,
+          "streetDepthUnits": 0.64
+        },
+        "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only",
+        "renderLegibility": {
+          "primaryMassOpacity": 1,
+          "frontFaceOpacity": 0.98,
+          "returnWallOpacity": 1,
+          "baseOpacity": 1,
+          "groundContactOpacity": 0.86,
+          "minimumRenderedGapUnits": 0.12,
+          "silhouetteHierarchy": [
+            "solid-body-mass",
+            "front-face",
+            "side-return",
+            "storefront-base-inset",
+            "sign-band",
+            "windows-openings",
+            "cornice-trim",
+            "ground-contact"
+          ]
+        }
+      },
+      "manualCueExtraction": "Tall warm masonry corner mass, repeated upper-window stacks, dark ground-level band, wrapped sign-band zone, and strong endpoint corner edge translated into coarse generic geometry.",
+      "sourceEvidenceRefs": [
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-wide.jpg",
+          "usage": "manual coarse cue reference only"
+        },
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-facade.jpg",
+          "usage": "manual coarse cue reference only"
+        }
+      ],
+      "cues": [
+        {
+          "cueType": "palette-family",
+          "semanticValue": "warm-red-brick-dark-base"
+        },
+        {
+          "cueType": "facade-rhythm",
+          "bayCount": 5,
+          "upperRows": 3,
+          "baseBeatCount": 6,
+          "verticalEmphasis": "regular-window-stack"
+        },
+        {
+          "cueType": "sign-band-zone",
+          "segmentCount": 3,
+          "heightRatio": 0.32,
+          "wrapsCorner": true
+        },
+        {
+          "cueType": "window-glass-rhythm",
+          "bayCount": 5,
+          "upperRows": 3,
+          "groundGlassBeats": 5
+        },
+        {
+          "cueType": "corner-emphasis",
+          "edge": "left",
+          "strength": "strong"
+        },
+        {
+          "cueType": "street-transit-detail-cue",
+          "detailTypes": [
+            "signal-post",
+            "street-sign",
+            "curb-crossing"
+          ],
+          "detailCount": 3
+        },
+        {
+          "cueType": "blocked-claim-readout",
+          "blockedClaims": [
+            "business-identity",
+            "active-status",
+            "storefront-anchor",
+            "tenant-frontage",
+            "exact-frontage",
+            "exact-frontage-order",
+            "exact-address-placement",
+            "exact-entrance-location",
+            "exact-facade-appearance",
+            "exact-signage-reproduction",
+            "facade-material",
+            "facade-color",
+            "production-asset-readiness",
+            "normal-runtime-rendering",
+            "public-product-claim"
+          ]
+        }
+      ],
+      "allowedUse": "qa-mode-evidence-informed-render-proof-only",
+      "blockedClaims": [
+        "business-identity",
+        "active-status",
+        "storefront-anchor",
+        "tenant-frontage",
+        "exact-frontage",
+        "exact-frontage-order",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-signage-reproduction",
+        "facade-material",
+        "facade-color",
+        "production-asset-readiness",
+        "normal-runtime-rendering",
+        "public-product-claim"
+      ],
+      "qaFacadeModel": {
+        "modelPhase": "4F-1",
+        "modelStatus": "qa_only_facade_cue_model_hardened",
+        "facadePlaneId": "qa-facade-plane-manhattan-slot-01-west-corner",
+        "facadePlaneRole": "qa_evidence_informed_facade_plane",
+        "statusStates": [
+          "manual_draft",
+          "evidence_informed",
+          "qa_only",
+          "not_verified"
+        ],
+        "confidenceStates": {
+          "facadePlane": "manual_review_required",
+          "streetwallSlotLayout": "manual_review_required",
+          "sideReturnCornerWrap": "medium",
+          "depthSetbackGroundContact": "medium",
+          "storefrontBayPlaceholders": "low",
+          "businessLinkage": "blocked",
+          "frontagePromotionGate": "blocked",
+          "entrancePromotionGate": "blocked"
+        },
+        "facadePlane": {
+          "facadePlaneId": "qa-facade-plane-manhattan-slot-01-west-corner",
+          "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064832",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064832",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "associationStatus": "provisional_geometry_target_for_qa_render_only",
+          "canBecomeAuthoritativeWithoutReview": false,
+          "normalRuntimeGate": "blocked_not_rendered"
+        },
+        "streetwallLayout": {
+          "streetwallId": "qa-streetwall-manhattan-greenpoint-greenpoint-ave-north-streetwall",
+          "streetwallSlotId": "manhattan_slot_01_west_corner",
+          "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
+          "slotOrder": 1,
+          "slotCount": 3,
+          "slotExtentUnits": {
+            "xMin": 2.503,
+            "xMax": 3.214,
+            "widthUnits": 0.711
+          },
+          "minimumVisualGapUnits": 0.12,
+          "layoutStatus": "qa_slot_layout_only_not_frontage_order",
+          "canClaimExactFrontageOrder": false
+        },
+        "sideReturnCornerWrap": {
+          "sideReturnEnabled": true,
+          "sideReturnEdge": "left",
+          "sideReturnDepthUnits": 0.62,
+          "cornerReturnDepthUnits": 0.62,
+          "sideReturnWidthRatio": 0.16,
+          "cornerWrapEnabled": true,
+          "cornerWrapStatus": "qa_corner_wrap_placeholder_not_entrance_or_frontage"
+        },
+        "depthSetbackGroundContact": {
+          "footprintDepthUnits": 0.72,
+          "facadeThicknessUnits": 0.12,
+          "storefrontSetbackUnits": 0.12,
+          "storefrontRecessDepthUnits": 0.05,
+          "signBandDepthUnits": 0.18,
+          "signBandProjectionDepthUnits": 0.12,
+          "upperProjectionDepthUnits": 0.04,
+          "windowReliefDepthUnits": 0.09,
+          "parapetDepthUnits": 0.1,
+          "corniceProjectionUnits": 0.14,
+          "groundPlaneExtent": {
+            "sidewalkDepthUnits": 0.54,
+            "curbDepthUnits": 0.08,
+            "streetDepthUnits": 0.64
+          },
+          "groundContact": {
+            "sidewalk": true,
+            "curb": true,
+            "crosswalk": true,
+            "status": "qa_ground_contact_not_survey_or_frontage_claim"
+          }
+        },
+        "storefrontBayPlaceholders": [
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-01-west-corner-qa-bay-01",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 1,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-01-west-corner-qa-bay-02",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 2,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-01-west-corner-qa-bay-03",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 3,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          }
+        ],
+        "blockedPromotion": {
+          "canConnectBusinessIdentity": false,
+          "canCreateStorefrontAnchor": false,
+          "canClaimExactFrontage": false,
+          "canClaimExactEntrance": false,
+          "canRenderInNormalMode": false,
+          "canCreateProductionAsset": false
+        }
+      }
+    },
+    {
+      "cueRecordId": "p4e1-manhattan-bright-panel-corner",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064831",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064831",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+      "cornerScope": "manhattan_greenpoint",
+      "associationStatus": "provisional_geometry_target_for_qa_render_only",
+      "renderStatus": "rendered_qa_only",
+      "claimStatus": "manual_draft",
+      "statusLabels": [
+        "manual_draft",
+        "evidence_informed",
+        "qa_only",
+        "not_verified"
+      ],
+      "paletteFamily": "bright-panel-silver-gray",
+      "qaComposition": {
+        "compositionStatus": "qa_only_composition_metadata",
+        "evidenceFacadeRole": "evidence-informed-qa-facade",
+        "syntheticContextRole": "non-evidence-placeholder-context",
+        "recordSeparationIndex": 1,
+        "recordSeparationCount": 3,
+        "lateralOffsetUnits": 0.28,
+        "widthScale": 0.45,
+        "depthProfile": "recessed-panel-block",
+        "basePlaneRatio": 0.32,
+        "upperPlaneRatio": 0.68,
+        "storefrontRecessDepth": 0.09,
+        "upperProjectionDepth": 0.02,
+        "signBandProjectionDepth": 0.08,
+        "sideReturn": {
+          "enabled": true,
+          "edge": "right",
+          "depthUnits": 0.44,
+          "widthRatio": 0.14
+        },
+        "grounding": {
+          "sidewalk": true,
+          "curb": true,
+          "crosswalk": false
+        },
+        "streetwallSlot": "manhattan_slot_02_center_panel",
+        "slotGapUnits": 0.3,
+        "footprintDepthUnits": 0.58,
+        "facadeThicknessUnits": 0.11,
+        "cornerReturnDepthUnits": 0.44,
+        "storefrontSetbackUnits": 0.16,
+        "signBandDepthUnits": 0.15,
+        "windowReliefDepthUnits": 0.07,
+        "parapetDepthUnits": 0.08,
+        "corniceProjectionUnits": 0.1,
+        "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
+        "groundPlaneExtent": {
+          "sidewalkDepthUnits": 0.48,
+          "curbDepthUnits": 0.08,
+          "streetDepthUnits": 0.58
+        },
+        "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only",
+        "renderLegibility": {
+          "primaryMassOpacity": 1,
+          "frontFaceOpacity": 0.98,
+          "returnWallOpacity": 1,
+          "baseOpacity": 1,
+          "groundContactOpacity": 0.84,
+          "minimumRenderedGapUnits": 0.12,
+          "silhouetteHierarchy": [
+            "solid-body-mass",
+            "front-face",
+            "side-return",
+            "storefront-base-inset",
+            "sign-band",
+            "windows-openings",
+            "cornice-trim",
+            "ground-contact"
+          ]
+        }
+      },
+      "manualCueExtraction": "Broad contemporary panel wall, sparse horizontal glass, low continuous base, and bright block-like facade rhythm translated into coarse generic geometry without text or logos.",
+      "sourceEvidenceRefs": [
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-wide.jpg",
+          "usage": "manual coarse cue reference only"
+        },
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-facadeA.jpg",
+          "usage": "manual coarse cue reference only"
+        }
+      ],
+      "cues": [
+        {
+          "cueType": "palette-family",
+          "semanticValue": "bright-panel-silver-gray"
+        },
+        {
+          "cueType": "facade-rhythm",
+          "bayCount": 4,
+          "upperRows": 1,
+          "baseBeatCount": 5,
+          "verticalEmphasis": "large-panel-blocks"
+        },
+        {
+          "cueType": "sign-band-zone",
+          "segmentCount": 2,
+          "heightRatio": 0.48,
+          "wrapsCorner": false
+        },
+        {
+          "cueType": "window-glass-rhythm",
+          "bayCount": 4,
+          "upperRows": 1,
+          "groundGlassBeats": 4
+        },
+        {
+          "cueType": "corner-emphasis",
+          "edge": "right",
+          "strength": "medium"
+        },
+        {
+          "cueType": "street-transit-detail-cue",
+          "detailTypes": [
+            "signal-post",
+            "street-sign",
+            "curb-crossing"
+          ],
+          "detailCount": 3
+        },
+        {
+          "cueType": "blocked-claim-readout",
+          "blockedClaims": [
+            "business-identity",
+            "active-status",
+            "storefront-anchor",
+            "tenant-frontage",
+            "exact-frontage",
+            "exact-frontage-order",
+            "exact-address-placement",
+            "exact-entrance-location",
+            "exact-facade-appearance",
+            "exact-signage-reproduction",
+            "facade-material",
+            "facade-color",
+            "production-asset-readiness",
+            "normal-runtime-rendering",
+            "public-product-claim"
+          ]
+        }
+      ],
+      "allowedUse": "qa-mode-evidence-informed-render-proof-only",
+      "blockedClaims": [
+        "business-identity",
+        "active-status",
+        "storefront-anchor",
+        "tenant-frontage",
+        "exact-frontage",
+        "exact-frontage-order",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-signage-reproduction",
+        "facade-material",
+        "facade-color",
+        "production-asset-readiness",
+        "normal-runtime-rendering",
+        "public-product-claim"
+      ],
+      "qaFacadeModel": {
+        "modelPhase": "4F-1",
+        "modelStatus": "qa_only_facade_cue_model_hardened",
+        "facadePlaneId": "qa-facade-plane-manhattan-slot-02-center-panel",
+        "facadePlaneRole": "qa_evidence_informed_facade_plane",
+        "statusStates": [
+          "manual_draft",
+          "evidence_informed",
+          "qa_only",
+          "not_verified"
+        ],
+        "confidenceStates": {
+          "facadePlane": "manual_review_required",
+          "streetwallSlotLayout": "manual_review_required",
+          "sideReturnCornerWrap": "medium",
+          "depthSetbackGroundContact": "medium",
+          "storefrontBayPlaceholders": "low",
+          "businessLinkage": "blocked",
+          "frontagePromotionGate": "blocked",
+          "entrancePromotionGate": "blocked"
+        },
+        "facadePlane": {
+          "facadePlaneId": "qa-facade-plane-manhattan-slot-02-center-panel",
+          "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064831",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064831",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "associationStatus": "provisional_geometry_target_for_qa_render_only",
+          "canBecomeAuthoritativeWithoutReview": false,
+          "normalRuntimeGate": "blocked_not_rendered"
+        },
+        "streetwallLayout": {
+          "streetwallId": "qa-streetwall-manhattan-greenpoint-greenpoint-ave-north-streetwall",
+          "streetwallSlotId": "manhattan_slot_02_center_panel",
+          "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
+          "slotOrder": 2,
+          "slotCount": 3,
+          "slotExtentUnits": {
+            "xMin": 3.339,
+            "xMax": 4.311,
+            "widthUnits": 0.972
+          },
+          "minimumVisualGapUnits": 0.12,
+          "layoutStatus": "qa_slot_layout_only_not_frontage_order",
+          "canClaimExactFrontageOrder": false
+        },
+        "sideReturnCornerWrap": {
+          "sideReturnEnabled": true,
+          "sideReturnEdge": "right",
+          "sideReturnDepthUnits": 0.44,
+          "cornerReturnDepthUnits": 0.44,
+          "sideReturnWidthRatio": 0.14,
+          "cornerWrapEnabled": false,
+          "cornerWrapStatus": "qa_corner_wrap_placeholder_not_entrance_or_frontage"
+        },
+        "depthSetbackGroundContact": {
+          "footprintDepthUnits": 0.58,
+          "facadeThicknessUnits": 0.11,
+          "storefrontSetbackUnits": 0.16,
+          "storefrontRecessDepthUnits": 0.09,
+          "signBandDepthUnits": 0.15,
+          "signBandProjectionDepthUnits": 0.08,
+          "upperProjectionDepthUnits": 0.02,
+          "windowReliefDepthUnits": 0.07,
+          "parapetDepthUnits": 0.08,
+          "corniceProjectionUnits": 0.1,
+          "groundPlaneExtent": {
+            "sidewalkDepthUnits": 0.48,
+            "curbDepthUnits": 0.08,
+            "streetDepthUnits": 0.58
+          },
+          "groundContact": {
+            "sidewalk": true,
+            "curb": true,
+            "crosswalk": false,
+            "status": "qa_ground_contact_not_survey_or_frontage_claim"
+          }
+        },
+        "storefrontBayPlaceholders": [
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-02-center-panel-qa-bay-01",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 1,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-02-center-panel-qa-bay-02",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 2,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-02-center-panel-qa-bay-03",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 3,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          }
+        ],
+        "blockedPromotion": {
+          "canConnectBusinessIdentity": false,
+          "canCreateStorefrontAnchor": false,
+          "canClaimExactFrontage": false,
+          "canClaimExactEntrance": false,
+          "canRenderInNormalMode": false,
+          "canCreateProductionAsset": false
+        }
+      }
+    },
+    {
+      "cueRecordId": "p4e1-manhattan-pale-stone-window-rhythm",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064840",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064840",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+      "cornerScope": "manhattan_greenpoint",
+      "associationStatus": "provisional_geometry_target_for_qa_render_only",
+      "renderStatus": "rendered_qa_only",
+      "claimStatus": "manual_draft",
+      "statusLabels": [
+        "manual_draft",
+        "evidence_informed",
+        "qa_only",
+        "not_verified"
+      ],
+      "paletteFamily": "pale-stone-red-trim",
+      "qaComposition": {
+        "compositionStatus": "qa_only_composition_metadata",
+        "evidenceFacadeRole": "evidence-informed-qa-facade",
+        "syntheticContextRole": "non-evidence-placeholder-context",
+        "recordSeparationIndex": 2,
+        "recordSeparationCount": 3,
+        "lateralOffsetUnits": 1.05,
+        "widthScale": 0.52,
+        "depthProfile": "narrow-layered-return",
+        "basePlaneRatio": 0.34,
+        "upperPlaneRatio": 0.66,
+        "storefrontRecessDepth": 0.06,
+        "upperProjectionDepth": 0.05,
+        "signBandProjectionDepth": 0.1,
+        "sideReturn": {
+          "enabled": true,
+          "edge": "right",
+          "depthUnits": 0.5,
+          "widthRatio": 0.13
+        },
+        "grounding": {
+          "sidewalk": true,
+          "curb": true,
+          "crosswalk": false
+        },
+        "streetwallSlot": "manhattan_slot_03_east_corner",
+        "slotGapUnits": 0.28,
+        "footprintDepthUnits": 0.66,
+        "facadeThicknessUnits": 0.1,
+        "cornerReturnDepthUnits": 0.5,
+        "storefrontSetbackUnits": 0.1,
+        "signBandDepthUnits": 0.16,
+        "windowReliefDepthUnits": 0.08,
+        "parapetDepthUnits": 0.12,
+        "corniceProjectionUnits": 0.15,
+        "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
+        "groundPlaneExtent": {
+          "sidewalkDepthUnits": 0.5,
+          "curbDepthUnits": 0.08,
+          "streetDepthUnits": 0.6
+        },
+        "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only",
+        "renderLegibility": {
+          "primaryMassOpacity": 1,
+          "frontFaceOpacity": 0.98,
+          "returnWallOpacity": 1,
+          "baseOpacity": 1,
+          "groundContactOpacity": 0.84,
+          "minimumRenderedGapUnits": 0.12,
+          "silhouetteHierarchy": [
+            "solid-body-mass",
+            "front-face",
+            "side-return",
+            "storefront-base-inset",
+            "sign-band",
+            "windows-openings",
+            "cornice-trim",
+            "ground-contact"
+          ]
+        }
+      },
+      "manualCueExtraction": "Light facade field with regular tall upper-window rhythm, darker trim-like vertical beats, base-level sign-band zone, and corner emphasis translated into coarse generic geometry.",
+      "sourceEvidenceRefs": [
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-wide.jpg",
+          "usage": "manual coarse cue reference only"
+        },
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeA.jpeg",
+          "usage": "manual coarse cue reference only"
+        }
+      ],
+      "cues": [
+        {
+          "cueType": "palette-family",
+          "semanticValue": "pale-stone-red-trim"
+        },
+        {
+          "cueType": "facade-rhythm",
+          "bayCount": 6,
+          "upperRows": 3,
+          "baseBeatCount": 4,
+          "verticalEmphasis": "trimmed-window-stack"
+        },
+        {
+          "cueType": "sign-band-zone",
+          "segmentCount": 2,
+          "heightRatio": 0.28,
+          "wrapsCorner": true
+        },
+        {
+          "cueType": "window-glass-rhythm",
+          "bayCount": 6,
+          "upperRows": 3,
+          "groundGlassBeats": 3
+        },
+        {
+          "cueType": "corner-emphasis",
+          "edge": "right",
+          "strength": "strong"
+        },
+        {
+          "cueType": "street-transit-detail-cue",
+          "detailTypes": [
+            "street-sign",
+            "curb-crossing"
+          ],
+          "detailCount": 2
+        },
+        {
+          "cueType": "blocked-claim-readout",
+          "blockedClaims": [
+            "business-identity",
+            "active-status",
+            "storefront-anchor",
+            "tenant-frontage",
+            "exact-frontage",
+            "exact-frontage-order",
+            "exact-address-placement",
+            "exact-entrance-location",
+            "exact-facade-appearance",
+            "exact-signage-reproduction",
+            "facade-material",
+            "facade-color",
+            "production-asset-readiness",
+            "normal-runtime-rendering",
+            "public-product-claim"
+          ]
+        }
+      ],
+      "allowedUse": "qa-mode-evidence-informed-render-proof-only",
+      "blockedClaims": [
+        "business-identity",
+        "active-status",
+        "storefront-anchor",
+        "tenant-frontage",
+        "exact-frontage",
+        "exact-frontage-order",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-signage-reproduction",
+        "facade-material",
+        "facade-color",
+        "production-asset-readiness",
+        "normal-runtime-rendering",
+        "public-product-claim"
+      ],
+      "qaFacadeModel": {
+        "modelPhase": "4F-1",
+        "modelStatus": "qa_only_facade_cue_model_hardened",
+        "facadePlaneId": "qa-facade-plane-manhattan-slot-03-east-corner",
+        "facadePlaneRole": "qa_evidence_informed_facade_plane",
+        "statusStates": [
+          "manual_draft",
+          "evidence_informed",
+          "qa_only",
+          "not_verified"
+        ],
+        "confidenceStates": {
+          "facadePlane": "manual_review_required",
+          "streetwallSlotLayout": "manual_review_required",
+          "sideReturnCornerWrap": "medium",
+          "depthSetbackGroundContact": "medium",
+          "storefrontBayPlaceholders": "low",
+          "businessLinkage": "blocked",
+          "frontagePromotionGate": "blocked",
+          "entrancePromotionGate": "blocked"
+        },
+        "facadePlane": {
+          "facadePlaneId": "qa-facade-plane-manhattan-slot-03-east-corner",
+          "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064840",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064840",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "associationStatus": "provisional_geometry_target_for_qa_render_only",
+          "canBecomeAuthoritativeWithoutReview": false,
+          "normalRuntimeGate": "blocked_not_rendered"
+        },
+        "streetwallLayout": {
+          "streetwallId": "qa-streetwall-manhattan-greenpoint-greenpoint-ave-south-streetwall",
+          "streetwallSlotId": "manhattan_slot_03_east_corner",
+          "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
+          "slotOrder": 3,
+          "slotCount": 3,
+          "slotExtentUnits": {
+            "xMin": 4.485,
+            "xMax": 5.457,
+            "widthUnits": 0.972
+          },
+          "minimumVisualGapUnits": 0.12,
+          "layoutStatus": "qa_slot_layout_only_not_frontage_order",
+          "canClaimExactFrontageOrder": false
+        },
+        "sideReturnCornerWrap": {
+          "sideReturnEnabled": true,
+          "sideReturnEdge": "right",
+          "sideReturnDepthUnits": 0.5,
+          "cornerReturnDepthUnits": 0.5,
+          "sideReturnWidthRatio": 0.13,
+          "cornerWrapEnabled": true,
+          "cornerWrapStatus": "qa_corner_wrap_placeholder_not_entrance_or_frontage"
+        },
+        "depthSetbackGroundContact": {
+          "footprintDepthUnits": 0.66,
+          "facadeThicknessUnits": 0.1,
+          "storefrontSetbackUnits": 0.1,
+          "storefrontRecessDepthUnits": 0.06,
+          "signBandDepthUnits": 0.16,
+          "signBandProjectionDepthUnits": 0.1,
+          "upperProjectionDepthUnits": 0.05,
+          "windowReliefDepthUnits": 0.08,
+          "parapetDepthUnits": 0.12,
+          "corniceProjectionUnits": 0.15,
+          "groundPlaneExtent": {
+            "sidewalkDepthUnits": 0.5,
+            "curbDepthUnits": 0.08,
+            "streetDepthUnits": 0.6
+          },
+          "groundContact": {
+            "sidewalk": true,
+            "curb": true,
+            "crosswalk": false,
+            "status": "qa_ground_contact_not_survey_or_frontage_claim"
+          }
+        },
+        "storefrontBayPlaceholders": [
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-03-east-corner-qa-bay-01",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 1,
+            "bayCount": 2,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-manhattan-slot-03-east-corner-qa-bay-02",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 2,
+            "bayCount": 2,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          }
+        ],
+        "blockedPromotion": {
+          "canConnectBusinessIdentity": false,
+          "canCreateStorefrontAnchor": false,
+          "canClaimExactFrontage": false,
+          "canClaimExactEntrance": false,
+          "canRenderInNormalMode": false,
+          "canCreateProductionAsset": false
+        }
+      }
+    },
+    {
+      "cueRecordId": "p4e1-franklin-weathered-brick-glass-base",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064803",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064803",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+      "cornerScope": "franklin_greenpoint",
+      "associationStatus": "provisional_geometry_target_for_qa_render_only",
+      "renderStatus": "rendered_qa_only",
+      "claimStatus": "manual_draft",
+      "statusLabels": [
+        "manual_draft",
+        "evidence_informed",
+        "qa_only",
+        "not_verified"
+      ],
+      "paletteFamily": "weathered-brick-wood-green",
+      "qaComposition": {
+        "compositionStatus": "qa_only_composition_metadata",
+        "evidenceFacadeRole": "evidence-informed-qa-facade",
+        "syntheticContextRole": "non-evidence-placeholder-context",
+        "recordSeparationIndex": 0,
+        "recordSeparationCount": 3,
+        "lateralOffsetUnits": -1.2,
+        "widthScale": 0.45,
+        "depthProfile": "low-storefront-recess",
+        "basePlaneRatio": 0.42,
+        "upperPlaneRatio": 0.58,
+        "storefrontRecessDepth": 0.1,
+        "upperProjectionDepth": 0.03,
+        "signBandProjectionDepth": 0.09,
+        "sideReturn": {
+          "enabled": true,
+          "edge": "left",
+          "depthUnits": 0.48,
+          "widthRatio": 0.15
+        },
+        "grounding": {
+          "sidewalk": true,
+          "curb": true,
+          "crosswalk": true
+        },
+        "streetwallSlot": "franklin_slot_01_west_corner",
+        "slotGapUnits": 0.25,
+        "footprintDepthUnits": 0.62,
+        "facadeThicknessUnits": 0.1,
+        "cornerReturnDepthUnits": 0.48,
+        "storefrontSetbackUnits": 0.18,
+        "signBandDepthUnits": 0.15,
+        "windowReliefDepthUnits": 0.08,
+        "parapetDepthUnits": 0.08,
+        "corniceProjectionUnits": 0.1,
+        "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
+        "groundPlaneExtent": {
+          "sidewalkDepthUnits": 0.56,
+          "curbDepthUnits": 0.08,
+          "streetDepthUnits": 0.68
+        },
+        "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only",
+        "renderLegibility": {
+          "primaryMassOpacity": 1,
+          "frontFaceOpacity": 0.98,
+          "returnWallOpacity": 1,
+          "baseOpacity": 1,
+          "groundContactOpacity": 0.88,
+          "minimumRenderedGapUnits": 0.12,
+          "silhouetteHierarchy": [
+            "solid-body-mass",
+            "front-face",
+            "side-return",
+            "storefront-base-inset",
+            "sign-band",
+            "windows-openings",
+            "cornice-trim",
+            "ground-contact"
+          ]
+        }
+      },
+      "manualCueExtraction": "Low weathered masonry wall, large framed glass openings, warm wood-like lower panels, canopy/street seating hints, and corner-side edge translated into coarse generic geometry.",
+      "sourceEvidenceRefs": [
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+          "usage": "manual coarse cue reference only"
+        },
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg",
+          "usage": "manual coarse cue reference only"
+        }
+      ],
+      "cues": [
+        {
+          "cueType": "palette-family",
+          "semanticValue": "weathered-brick-wood-green"
+        },
+        {
+          "cueType": "facade-rhythm",
+          "bayCount": 4,
+          "upperRows": 1,
+          "baseBeatCount": 5,
+          "verticalEmphasis": "low-wide-bays"
+        },
+        {
+          "cueType": "sign-band-zone",
+          "segmentCount": 2,
+          "heightRatio": 0.34,
+          "wrapsCorner": false
+        },
+        {
+          "cueType": "awning-canopy",
+          "segmentCount": 2,
+          "style": "street-canopy"
+        },
+        {
+          "cueType": "window-glass-rhythm",
+          "bayCount": 4,
+          "upperRows": 1,
+          "groundGlassBeats": 5
+        },
+        {
+          "cueType": "corner-emphasis",
+          "edge": "right",
+          "strength": "medium"
+        },
+        {
+          "cueType": "street-transit-detail-cue",
+          "detailTypes": [
+            "outdoor-table-zone",
+            "signal-post",
+            "curb-crossing"
+          ],
+          "detailCount": 4
+        },
+        {
+          "cueType": "blocked-claim-readout",
+          "blockedClaims": [
+            "business-identity",
+            "active-status",
+            "storefront-anchor",
+            "tenant-frontage",
+            "exact-frontage",
+            "exact-frontage-order",
+            "exact-address-placement",
+            "exact-entrance-location",
+            "exact-facade-appearance",
+            "exact-signage-reproduction",
+            "facade-material",
+            "facade-color",
+            "production-asset-readiness",
+            "normal-runtime-rendering",
+            "public-product-claim"
+          ]
+        }
+      ],
+      "allowedUse": "qa-mode-evidence-informed-render-proof-only",
+      "blockedClaims": [
+        "business-identity",
+        "active-status",
+        "storefront-anchor",
+        "tenant-frontage",
+        "exact-frontage",
+        "exact-frontage-order",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-signage-reproduction",
+        "facade-material",
+        "facade-color",
+        "production-asset-readiness",
+        "normal-runtime-rendering",
+        "public-product-claim"
+      ],
+      "qaFacadeModel": {
+        "modelPhase": "4F-1",
+        "modelStatus": "qa_only_facade_cue_model_hardened",
+        "facadePlaneId": "qa-facade-plane-franklin-slot-01-west-corner",
+        "facadePlaneRole": "qa_evidence_informed_facade_plane",
+        "statusStates": [
+          "manual_draft",
+          "evidence_informed",
+          "qa_only",
+          "not_verified"
+        ],
+        "confidenceStates": {
+          "facadePlane": "manual_review_required",
+          "streetwallSlotLayout": "manual_review_required",
+          "sideReturnCornerWrap": "medium",
+          "depthSetbackGroundContact": "medium",
+          "storefrontBayPlaceholders": "low",
+          "businessLinkage": "blocked",
+          "frontagePromotionGate": "blocked",
+          "entrancePromotionGate": "blocked"
+        },
+        "facadePlane": {
+          "facadePlaneId": "qa-facade-plane-franklin-slot-01-west-corner",
+          "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064803",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064803",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "associationStatus": "provisional_geometry_target_for_qa_render_only",
+          "canBecomeAuthoritativeWithoutReview": false,
+          "normalRuntimeGate": "blocked_not_rendered"
+        },
+        "streetwallLayout": {
+          "streetwallId": "qa-streetwall-franklin-greenpoint-greenpoint-ave-north-streetwall",
+          "streetwallSlotId": "franklin_slot_01_west_corner",
+          "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
+          "slotOrder": 1,
+          "slotCount": 3,
+          "slotExtentUnits": {
+            "xMin": -8.232,
+            "xMax": -7.466,
+            "widthUnits": 0.766
+          },
+          "minimumVisualGapUnits": 0.12,
+          "layoutStatus": "qa_slot_layout_only_not_frontage_order",
+          "canClaimExactFrontageOrder": false
+        },
+        "sideReturnCornerWrap": {
+          "sideReturnEnabled": true,
+          "sideReturnEdge": "left",
+          "sideReturnDepthUnits": 0.48,
+          "cornerReturnDepthUnits": 0.48,
+          "sideReturnWidthRatio": 0.15,
+          "cornerWrapEnabled": false,
+          "cornerWrapStatus": "qa_corner_wrap_placeholder_not_entrance_or_frontage"
+        },
+        "depthSetbackGroundContact": {
+          "footprintDepthUnits": 0.62,
+          "facadeThicknessUnits": 0.1,
+          "storefrontSetbackUnits": 0.18,
+          "storefrontRecessDepthUnits": 0.1,
+          "signBandDepthUnits": 0.15,
+          "signBandProjectionDepthUnits": 0.09,
+          "upperProjectionDepthUnits": 0.03,
+          "windowReliefDepthUnits": 0.08,
+          "parapetDepthUnits": 0.08,
+          "corniceProjectionUnits": 0.1,
+          "groundPlaneExtent": {
+            "sidewalkDepthUnits": 0.56,
+            "curbDepthUnits": 0.08,
+            "streetDepthUnits": 0.68
+          },
+          "groundContact": {
+            "sidewalk": true,
+            "curb": true,
+            "crosswalk": true,
+            "status": "qa_ground_contact_not_survey_or_frontage_claim"
+          }
+        },
+        "storefrontBayPlaceholders": [
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-01-west-corner-qa-bay-01",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 1,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-01-west-corner-qa-bay-02",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 2,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-01-west-corner-qa-bay-03",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 3,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          }
+        ],
+        "blockedPromotion": {
+          "canConnectBusinessIdentity": false,
+          "canCreateStorefrontAnchor": false,
+          "canClaimExactFrontage": false,
+          "canClaimExactEntrance": false,
+          "canRenderInNormalMode": false,
+          "canCreateProductionAsset": false
+        }
+      }
+    },
+    {
+      "cueRecordId": "p4e1-franklin-dark-brick-awned-base",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064792",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064792",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+      "cornerScope": "franklin_greenpoint",
+      "associationStatus": "provisional_geometry_target_for_qa_render_only",
+      "renderStatus": "rendered_qa_only",
+      "claimStatus": "manual_draft",
+      "statusLabels": [
+        "manual_draft",
+        "evidence_informed",
+        "qa_only",
+        "not_verified"
+      ],
+      "paletteFamily": "dark-brick-black-base",
+      "qaComposition": {
+        "compositionStatus": "qa_only_composition_metadata",
+        "evidenceFacadeRole": "evidence-informed-qa-facade",
+        "syntheticContextRole": "non-evidence-placeholder-context",
+        "recordSeparationIndex": 1,
+        "recordSeparationCount": 3,
+        "lateralOffsetUnits": -0.05,
+        "widthScale": 0.45,
+        "depthProfile": "dark-base-canopy",
+        "basePlaneRatio": 0.4,
+        "upperPlaneRatio": 0.6,
+        "storefrontRecessDepth": 0.08,
+        "upperProjectionDepth": 0.04,
+        "signBandProjectionDepth": 0.14,
+        "sideReturn": {
+          "enabled": true,
+          "edge": "right",
+          "depthUnits": 0.36,
+          "widthRatio": 0.12
+        },
+        "grounding": {
+          "sidewalk": true,
+          "curb": true,
+          "crosswalk": false
+        },
+        "streetwallSlot": "franklin_slot_02_center_row",
+        "slotGapUnits": 0.24,
+        "footprintDepthUnits": 0.56,
+        "facadeThicknessUnits": 0.11,
+        "cornerReturnDepthUnits": 0.36,
+        "storefrontSetbackUnits": 0.14,
+        "signBandDepthUnits": 0.18,
+        "windowReliefDepthUnits": 0.08,
+        "parapetDepthUnits": 0.1,
+        "corniceProjectionUnits": 0.12,
+        "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
+        "groundPlaneExtent": {
+          "sidewalkDepthUnits": 0.5,
+          "curbDepthUnits": 0.08,
+          "streetDepthUnits": 0.62
+        },
+        "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only",
+        "renderLegibility": {
+          "primaryMassOpacity": 1,
+          "frontFaceOpacity": 0.98,
+          "returnWallOpacity": 1,
+          "baseOpacity": 1,
+          "groundContactOpacity": 0.84,
+          "minimumRenderedGapUnits": 0.12,
+          "silhouetteHierarchy": [
+            "solid-body-mass",
+            "front-face",
+            "side-return",
+            "storefront-base-inset",
+            "sign-band",
+            "windows-openings",
+            "cornice-trim",
+            "ground-contact"
+          ]
+        }
+      },
+      "manualCueExtraction": "Darker masonry row with black base band, repeated upper windows, small canopy rhythm, fire-escape/street-pole-like details, and strong curb edge translated into coarse generic geometry.",
+      "sourceEvidenceRefs": [
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+          "usage": "manual coarse cue reference only"
+        },
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg",
+          "usage": "manual coarse cue reference only"
+        }
+      ],
+      "cues": [
+        {
+          "cueType": "palette-family",
+          "semanticValue": "dark-brick-black-base"
+        },
+        {
+          "cueType": "facade-rhythm",
+          "bayCount": 5,
+          "upperRows": 3,
+          "baseBeatCount": 5,
+          "verticalEmphasis": "rowhouse-window-stack"
+        },
+        {
+          "cueType": "sign-band-zone",
+          "segmentCount": 2,
+          "heightRatio": 0.3,
+          "wrapsCorner": true
+        },
+        {
+          "cueType": "awning-canopy",
+          "segmentCount": 3,
+          "style": "short-dark-canopy"
+        },
+        {
+          "cueType": "window-glass-rhythm",
+          "bayCount": 5,
+          "upperRows": 3,
+          "groundGlassBeats": 4
+        },
+        {
+          "cueType": "street-transit-detail-cue",
+          "detailTypes": [
+            "signal-post",
+            "curb-crossing",
+            "sidewalk-post"
+          ],
+          "detailCount": 3
+        },
+        {
+          "cueType": "blocked-claim-readout",
+          "blockedClaims": [
+            "business-identity",
+            "active-status",
+            "storefront-anchor",
+            "tenant-frontage",
+            "exact-frontage",
+            "exact-frontage-order",
+            "exact-address-placement",
+            "exact-entrance-location",
+            "exact-facade-appearance",
+            "exact-signage-reproduction",
+            "facade-material",
+            "facade-color",
+            "production-asset-readiness",
+            "normal-runtime-rendering",
+            "public-product-claim"
+          ]
+        }
+      ],
+      "allowedUse": "qa-mode-evidence-informed-render-proof-only",
+      "blockedClaims": [
+        "business-identity",
+        "active-status",
+        "storefront-anchor",
+        "tenant-frontage",
+        "exact-frontage",
+        "exact-frontage-order",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-signage-reproduction",
+        "facade-material",
+        "facade-color",
+        "production-asset-readiness",
+        "normal-runtime-rendering",
+        "public-product-claim"
+      ],
+      "qaFacadeModel": {
+        "modelPhase": "4F-1",
+        "modelStatus": "qa_only_facade_cue_model_hardened",
+        "facadePlaneId": "qa-facade-plane-franklin-slot-02-center-row",
+        "facadePlaneRole": "qa_evidence_informed_facade_plane",
+        "statusStates": [
+          "manual_draft",
+          "evidence_informed",
+          "qa_only",
+          "not_verified"
+        ],
+        "confidenceStates": {
+          "facadePlane": "manual_review_required",
+          "streetwallSlotLayout": "manual_review_required",
+          "sideReturnCornerWrap": "medium",
+          "depthSetbackGroundContact": "medium",
+          "storefrontBayPlaceholders": "low",
+          "businessLinkage": "blocked",
+          "frontagePromotionGate": "blocked",
+          "entrancePromotionGate": "blocked"
+        },
+        "facadePlane": {
+          "facadePlaneId": "qa-facade-plane-franklin-slot-02-center-row",
+          "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064792",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064792",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "associationStatus": "provisional_geometry_target_for_qa_render_only",
+          "canBecomeAuthoritativeWithoutReview": false,
+          "normalRuntimeGate": "blocked_not_rendered"
+        },
+        "streetwallLayout": {
+          "streetwallId": "qa-streetwall-franklin-greenpoint-greenpoint-ave-south-streetwall",
+          "streetwallSlotId": "franklin_slot_02_center_row",
+          "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
+          "slotOrder": 2,
+          "slotCount": 3,
+          "slotExtentUnits": {
+            "xMin": -7.039,
+            "xMax": -6.274,
+            "widthUnits": 0.765
+          },
+          "minimumVisualGapUnits": 0.12,
+          "layoutStatus": "qa_slot_layout_only_not_frontage_order",
+          "canClaimExactFrontageOrder": false
+        },
+        "sideReturnCornerWrap": {
+          "sideReturnEnabled": true,
+          "sideReturnEdge": "right",
+          "sideReturnDepthUnits": 0.36,
+          "cornerReturnDepthUnits": 0.36,
+          "sideReturnWidthRatio": 0.12,
+          "cornerWrapEnabled": true,
+          "cornerWrapStatus": "qa_corner_wrap_placeholder_not_entrance_or_frontage"
+        },
+        "depthSetbackGroundContact": {
+          "footprintDepthUnits": 0.56,
+          "facadeThicknessUnits": 0.11,
+          "storefrontSetbackUnits": 0.14,
+          "storefrontRecessDepthUnits": 0.08,
+          "signBandDepthUnits": 0.18,
+          "signBandProjectionDepthUnits": 0.14,
+          "upperProjectionDepthUnits": 0.04,
+          "windowReliefDepthUnits": 0.08,
+          "parapetDepthUnits": 0.1,
+          "corniceProjectionUnits": 0.12,
+          "groundPlaneExtent": {
+            "sidewalkDepthUnits": 0.5,
+            "curbDepthUnits": 0.08,
+            "streetDepthUnits": 0.62
+          },
+          "groundContact": {
+            "sidewalk": true,
+            "curb": true,
+            "crosswalk": false,
+            "status": "qa_ground_contact_not_survey_or_frontage_claim"
+          }
+        },
+        "storefrontBayPlaceholders": [
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-02-center-row-qa-bay-01",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 1,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-02-center-row-qa-bay-02",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 2,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-02-center-row-qa-bay-03",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 3,
+            "bayCount": 3,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          }
+        ],
+        "blockedPromotion": {
+          "canConnectBusinessIdentity": false,
+          "canCreateStorefrontAnchor": false,
+          "canClaimExactFrontage": false,
+          "canClaimExactEntrance": false,
+          "canRenderInNormalMode": false,
+          "canCreateProductionAsset": false
+        }
+      }
+    },
+    {
+      "cueRecordId": "p4e1-franklin-red-brick-cornice-corner",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064793",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+      "cornerScope": "franklin_greenpoint",
+      "associationStatus": "provisional_geometry_target_for_qa_render_only",
+      "renderStatus": "rendered_qa_only",
+      "claimStatus": "manual_draft",
+      "statusLabels": [
+        "manual_draft",
+        "evidence_informed",
+        "qa_only",
+        "not_verified"
+      ],
+      "paletteFamily": "red-brick-stone-cornice",
+      "qaComposition": {
+        "compositionStatus": "qa_only_composition_metadata",
+        "evidenceFacadeRole": "evidence-informed-qa-facade",
+        "syntheticContextRole": "non-evidence-placeholder-context",
+        "recordSeparationIndex": 2,
+        "recordSeparationCount": 3,
+        "lateralOffsetUnits": 0.95,
+        "widthScale": 0.48,
+        "depthProfile": "cornice-corner-wrap",
+        "basePlaneRatio": 0.35,
+        "upperPlaneRatio": 0.65,
+        "storefrontRecessDepth": 0.06,
+        "upperProjectionDepth": 0.06,
+        "signBandProjectionDepth": 0.12,
+        "sideReturn": {
+          "enabled": true,
+          "edge": "right",
+          "depthUnits": 0.64,
+          "widthRatio": 0.16
+        },
+        "grounding": {
+          "sidewalk": true,
+          "curb": true,
+          "crosswalk": true
+        },
+        "streetwallSlot": "franklin_slot_03_east_corner",
+        "slotGapUnits": 0.28,
+        "footprintDepthUnits": 0.74,
+        "facadeThicknessUnits": 0.12,
+        "cornerReturnDepthUnits": 0.64,
+        "storefrontSetbackUnits": 0.12,
+        "signBandDepthUnits": 0.18,
+        "windowReliefDepthUnits": 0.1,
+        "parapetDepthUnits": 0.12,
+        "corniceProjectionUnits": 0.16,
+        "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
+        "groundPlaneExtent": {
+          "sidewalkDepthUnits": 0.58,
+          "curbDepthUnits": 0.08,
+          "streetDepthUnits": 0.7
+        },
+        "contextVisibilityPolicy": "synthetic_context_low_contrast_outline_only",
+        "renderLegibility": {
+          "primaryMassOpacity": 1,
+          "frontFaceOpacity": 0.98,
+          "returnWallOpacity": 1,
+          "baseOpacity": 1,
+          "groundContactOpacity": 0.88,
+          "minimumRenderedGapUnits": 0.12,
+          "silhouetteHierarchy": [
+            "solid-body-mass",
+            "front-face",
+            "side-return",
+            "storefront-base-inset",
+            "sign-band",
+            "windows-openings",
+            "cornice-trim",
+            "ground-contact"
+          ]
+        }
+      },
+      "manualCueExtraction": "Ornate red masonry corner with upper-window stacks, cornice-like top emphasis, projecting corner volume hint, dark ground band, and wrapped sign-band zone translated into coarse generic geometry.",
+      "sourceEvidenceRefs": [
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+          "usage": "manual coarse cue reference only"
+        },
+        {
+          "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+          "usage": "manual coarse cue reference only"
+        }
+      ],
+      "cues": [
+        {
+          "cueType": "palette-family",
+          "semanticValue": "red-brick-stone-cornice"
+        },
+        {
+          "cueType": "facade-rhythm",
+          "bayCount": 5,
+          "upperRows": 4,
+          "baseBeatCount": 4,
+          "verticalEmphasis": "ornate-window-stack"
+        },
+        {
+          "cueType": "sign-band-zone",
+          "segmentCount": 3,
+          "heightRatio": 0.27,
+          "wrapsCorner": true
+        },
+        {
+          "cueType": "window-glass-rhythm",
+          "bayCount": 5,
+          "upperRows": 4,
+          "groundGlassBeats": 4
+        },
+        {
+          "cueType": "corner-emphasis",
+          "edge": "left",
+          "strength": "strong"
+        },
+        {
+          "cueType": "street-transit-detail-cue",
+          "detailTypes": [
+            "signal-post",
+            "curb-crossing",
+            "sidewalk-post"
+          ],
+          "detailCount": 3
+        },
+        {
+          "cueType": "blocked-claim-readout",
+          "blockedClaims": [
+            "business-identity",
+            "active-status",
+            "storefront-anchor",
+            "tenant-frontage",
+            "exact-frontage",
+            "exact-frontage-order",
+            "exact-address-placement",
+            "exact-entrance-location",
+            "exact-facade-appearance",
+            "exact-signage-reproduction",
+            "facade-material",
+            "facade-color",
+            "production-asset-readiness",
+            "normal-runtime-rendering",
+            "public-product-claim"
+          ]
+        }
+      ],
+      "allowedUse": "qa-mode-evidence-informed-render-proof-only",
+      "blockedClaims": [
+        "business-identity",
+        "active-status",
+        "storefront-anchor",
+        "tenant-frontage",
+        "exact-frontage",
+        "exact-frontage-order",
+        "exact-address-placement",
+        "exact-entrance-location",
+        "exact-facade-appearance",
+        "exact-signage-reproduction",
+        "facade-material",
+        "facade-color",
+        "production-asset-readiness",
+        "normal-runtime-rendering",
+        "public-product-claim"
+      ],
+      "qaFacadeModel": {
+        "modelPhase": "4F-1",
+        "modelStatus": "qa_only_facade_cue_model_hardened",
+        "facadePlaneId": "qa-facade-plane-franklin-slot-03-east-corner",
+        "facadePlaneRole": "qa_evidence_informed_facade_plane",
+        "statusStates": [
+          "manual_draft",
+          "evidence_informed",
+          "qa_only",
+          "not_verified"
+        ],
+        "confidenceStates": {
+          "facadePlane": "manual_review_required",
+          "streetwallSlotLayout": "manual_review_required",
+          "sideReturnCornerWrap": "medium",
+          "depthSetbackGroundContact": "medium",
+          "storefrontBayPlaceholders": "low",
+          "businessLinkage": "blocked",
+          "frontagePromotionGate": "blocked",
+          "entrancePromotionGate": "blocked"
+        },
+        "facadePlane": {
+          "facadePlaneId": "qa-facade-plane-franklin-slot-03-east-corner",
+          "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064793",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "associationStatus": "provisional_geometry_target_for_qa_render_only",
+          "canBecomeAuthoritativeWithoutReview": false,
+          "normalRuntimeGate": "blocked_not_rendered"
+        },
+        "streetwallLayout": {
+          "streetwallId": "qa-streetwall-franklin-greenpoint-greenpoint-ave-south-streetwall",
+          "streetwallSlotId": "franklin_slot_03_east_corner",
+          "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
+          "slotOrder": 3,
+          "slotCount": 3,
+          "slotExtentUnits": {
+            "xMin": -5.822,
+            "xMax": -5.001,
+            "widthUnits": 0.821
+          },
+          "minimumVisualGapUnits": 0.12,
+          "layoutStatus": "qa_slot_layout_only_not_frontage_order",
+          "canClaimExactFrontageOrder": false
+        },
+        "sideReturnCornerWrap": {
+          "sideReturnEnabled": true,
+          "sideReturnEdge": "right",
+          "sideReturnDepthUnits": 0.64,
+          "cornerReturnDepthUnits": 0.64,
+          "sideReturnWidthRatio": 0.16,
+          "cornerWrapEnabled": true,
+          "cornerWrapStatus": "qa_corner_wrap_placeholder_not_entrance_or_frontage"
+        },
+        "depthSetbackGroundContact": {
+          "footprintDepthUnits": 0.74,
+          "facadeThicknessUnits": 0.12,
+          "storefrontSetbackUnits": 0.12,
+          "storefrontRecessDepthUnits": 0.06,
+          "signBandDepthUnits": 0.18,
+          "signBandProjectionDepthUnits": 0.12,
+          "upperProjectionDepthUnits": 0.06,
+          "windowReliefDepthUnits": 0.1,
+          "parapetDepthUnits": 0.12,
+          "corniceProjectionUnits": 0.16,
+          "groundPlaneExtent": {
+            "sidewalkDepthUnits": 0.58,
+            "curbDepthUnits": 0.08,
+            "streetDepthUnits": 0.7
+          },
+          "groundContact": {
+            "sidewalk": true,
+            "curb": true,
+            "crosswalk": true,
+            "status": "qa_ground_contact_not_survey_or_frontage_claim"
+          }
+        },
+        "storefrontBayPlaceholders": [
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-03-east-corner-qa-bay-01",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 1,
+            "bayCount": 2,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          },
+          {
+            "placeholderId": "qa-facade-plane-franklin-slot-03-east-corner-qa-bay-02",
+            "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
+            "bayOrder": 2,
+            "bayCount": 2,
+            "claimStatus": "not_a_storefront_claim",
+            "statusLabels": [
+              "qa_only",
+              "placeholder",
+              "not_verified"
+            ],
+            "canRepresentBusiness": false,
+            "canRepresentEntrance": false,
+            "canRepresentExactFrontage": false,
+            "canLinkToBusinessEvidence": false
+          }
+        ],
+        "blockedPromotion": {
+          "canConnectBusinessIdentity": false,
+          "canCreateStorefrontAnchor": false,
+          "canClaimExactFrontage": false,
+          "canClaimExactEntrance": false,
+          "canRenderInNormalMode": false,
+          "canCreateProductionAsset": false
+        }
+      }
+    }
+  ],
+  "blockedCueRecords": [],
+  "facadeCueModelPolicy": {
+    "phase": "4F-1",
+    "qaOnly": true,
+    "modelStatus": "qa_only_facade_cue_model_hardened",
+    "normalModeUse": "not-rendered",
+    "evidenceAttachmentScope": "endpoint_and_future_corridor_qa_facade_cues_only",
+    "facadePlaneIdRequired": true,
+    "uniqueFacadePlaneIdsRequired": true,
+    "streetwallSlotLayoutContractRequired": true,
+    "sideReturnCornerWrapContractRequired": true,
+    "depthSetbackGroundContactContractRequired": true,
+    "storefrontBayPlaceholdersAllowedUse": "qa_non_claim_placeholder_only",
+    "canCreateStorefrontAnchors": false,
+    "canAssignBusinessLinkage": false,
+    "canClaimExactFrontage": false,
+    "canClaimExactEntrance": false,
+    "canAffectNormalRuntime": false,
+    "minimumVisualGapUnits": 0.12,
+    "requiredConfidenceStates": [
+      "low",
+      "medium",
+      "manual_review_required",
+      "blocked"
+    ],
+    "requiredStatusStates": [
+      "manual_draft",
+      "evidence_informed",
+      "qa_only",
+      "not_verified"
+    ],
+    "normalizedDepthTerms": {
+      "footprintDepthUnits": "canonical_mass_depth",
+      "facadeThicknessUnits": "canonical_front_wall_thickness",
+      "cornerReturnDepthUnits": "canonical_side_return_depth",
+      "storefrontSetbackUnits": "canonical_base_setback_depth",
+      "storefrontRecessDepth": "legacy_visual_recess_depth_kept_for_renderer",
+      "signBandDepthUnits": "canonical_sign_band_projection_depth",
+      "signBandProjectionDepth": "legacy_visual_sign_projection_depth_kept_for_renderer",
+      "windowReliefDepthUnits": "canonical_opening_relief_depth",
+      "parapetDepthUnits": "canonical_parapet_depth",
+      "corniceProjectionUnits": "canonical_cornice_projection_depth"
+    },
+    "blockedClaimsPreserved": [
+      "business-identity",
+      "active-status",
+      "storefront-anchor",
+      "tenant-frontage",
+      "exact-frontage",
+      "exact-frontage-order",
+      "exact-address-placement",
+      "exact-entrance-location",
+      "exact-facade-appearance",
+      "exact-signage-reproduction",
+      "facade-material",
+      "facade-color",
+      "production-asset-readiness",
+      "normal-runtime-rendering",
+      "public-product-claim"
+    ]
+  }
+}

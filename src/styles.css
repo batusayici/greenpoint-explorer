@@ -82,6 +82,24 @@
     inset 0 0 0 1px rgba(138, 199, 190, 0.12);
 }
 
+.phase4b-runtime-qa .phase4b-legend,
+.phase4b-runtime-qa .phase4b-review,
+.phase4b-runtime-qa .phase4b-qa-panel {
+  opacity: 0.72;
+}
+
+.phase4b-runtime-qa .phase4b-legend,
+.phase4b-runtime-qa .phase4b-review {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.phase4b-runtime-qa .phase4b-inspector {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .phase4b-viewport:active {
   cursor: grabbing;
 }
@@ -188,10 +206,14 @@
 
 .phase4b-qa-panel {
   position: absolute;
-  top: 432px;
-  left: 14px;
+  top: auto;
+  right: 14px;
+  bottom: 14px;
+  left: auto;
   z-index: 5;
-  width: 206px;
+  width: 310px;
+  max-height: 178px;
+  overflow: hidden;
   padding: 8px;
   border: 1px solid rgba(138, 199, 190, 0.34);
   border-radius: 6px;
@@ -199,6 +221,10 @@
   color: rgba(248, 236, 212, 0.78);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
   pointer-events: none;
+}
+
+.phase4b-runtime-qa .phase4b-qa-panel {
+  opacity: 0.64;
 }
 
 .phase4b-qa-panel li {
@@ -240,6 +266,10 @@
 
 .phase4b-side-qa-facade-slice {
   background: #9a6b55;
+}
+
+.phase4b-side-evidence-facade {
+  background: #d1ad6a;
 }
 
 .phase4b-side-anchor {
@@ -318,6 +348,10 @@
   background: linear-gradient(90deg, #3b2f28 0 28%, #9a6b55 28% 56%, #8fa7a0 56% 76%, #d7b774 76%);
 }
 
+.phase4b-swatch-evidence-facade {
+  background: linear-gradient(90deg, #8f4e42 0 22%, #302a27 22% 38%, #d1ad6a 38% 58%, #87958f 58% 78%, #92ada4 78%);
+}
+
 .phase4b-swatch-candidate-poi {
   background: linear-gradient(90deg, #8cc5ff 0 45%, #d4b36f 45% 72%, #b56d5e 72%);
 }
@@ -344,15 +378,15 @@
   position: absolute;
   left: 14px;
   bottom: 14px;
-  z-index: 5;
+  z-index: 9;
   display: flex;
   flex-wrap: wrap;
-  width: min(760px, calc(100% - 420px));
+  width: min(760px, calc(100% - 340px));
   gap: 6px;
   padding: 7px;
   border: 1px solid rgba(244, 234, 216, 0.2);
   border-radius: 8px;
-  background: rgba(18, 23, 22, 0.68);
+  background: rgba(18, 23, 22, 0.54);
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
   backdrop-filter: blur(8px);
 }
@@ -408,6 +442,30 @@
   background: rgba(18, 23, 22, 0.58);
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(7px);
+}
+
+.phase4b-runtime-qa .phase4b-inspector {
+  top: 14px;
+  right: 14px;
+  width: 238px;
+  max-height: 48px;
+  overflow: hidden;
+  opacity: 0.54;
+  padding: 7px 8px;
+}
+
+.phase4b-runtime-qa .phase4b-inspector > dl,
+.phase4b-runtime-qa .phase4b-inspector > section,
+.phase4b-runtime-qa .phase4b-object-list,
+.phase4b-runtime-qa .phase4b-selected-summary {
+  display: none;
+}
+
+.phase4b-runtime-qa .phase4b-inspector-heading {
+  margin: 0;
+  padding: 0;
+  border-bottom: 0;
+  background: transparent;
 }
 
 .phase4b-inspector-heading {
@@ -601,8 +659,14 @@
   }
 
   .phase4b-qa-panel {
-    top: 476px;
-    width: min(206px, calc(100% - 28px));
+    top: 76px;
+    right: 14px;
+    bottom: auto;
+    left: auto;
+    width: min(174px, calc(100% - 28px));
+    max-height: 96px;
+    padding: 7px;
+    opacity: 0.58;
   }
 
   .phase4b-inspector {
@@ -611,6 +675,15 @@
     left: 14px;
     width: calc(100% - 28px);
     max-height: 230px;
+  }
+
+  .phase4b-runtime-qa .phase4b-inspector {
+    top: 14px;
+    right: 14px;
+    bottom: auto;
+    left: auto;
+    width: min(174px, calc(100% - 28px));
+    max-height: 42px;
   }
 
   .phase4b-object-list {

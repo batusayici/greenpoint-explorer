@@ -3,6 +3,7 @@ import * as THREE from "three";
 import manifest from "./data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json";
 import facadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json";
 import qaFacadeSliceFixture from "./data/facade-cues/greenpoint-ave-franklin-end.phase-4c-qa-facade-slice.v0.1.json";
+import evidenceFacadeCueFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -48,11 +49,25 @@ const CAMERA_PRESETS = {
     target: new THREE.Vector3(0, 0.95, 0.15),
   },
   streetReview: {
-    azimuth: -1.12,
+    azimuth: -1.18,
     polar: 1.08,
-    distance: 11.8,
-    zoom: 1.24,
-    target: new THREE.Vector3(-6.15, 0.72, 0.04),
+    distance: 15.2,
+    zoom: 1.02,
+    target: new THREE.Vector3(-1.35, 0.78, 0.08),
+  },
+  manhattanFacadeReview: {
+    azimuth: -1.08,
+    polar: 0.98,
+    distance: 9.8,
+    zoom: 2.72,
+    target: new THREE.Vector3(3.9, 0.78, 0.42),
+  },
+  franklinFacadeReview: {
+    azimuth: -1.08,
+    polar: 0.98,
+    distance: 9.2,
+    zoom: 3.0,
+    target: new THREE.Vector3(-6.55, 0.78, 0.44),
   },
 };
 
@@ -62,7 +77,7 @@ const CAMERA_LIMITS = {
   minDistance: 9,
   maxDistance: 24,
   minZoom: 0.68,
-  maxZoom: 1.8,
+  maxZoom: 3.1,
   panLimit: 9,
 };
 
@@ -70,6 +85,7 @@ export default function Phase4BRuntimePreview() {
   const runtimeScene = useMemo(() => buildPhase4BRuntimeScene(manifest, geometryFixture), []);
   const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
   const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
+  const evidenceFacadeCueIndex = useMemo(() => buildEvidenceFacadeCueIndex(evidenceFacadeCueFixture), []);
   const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
   const candidatePoiIndex = useMemo(() => buildCandidatePoiIndex(candidatePoiFixture), []);
   const cornerAnchorCandidateIndex = useMemo(() => buildCornerAnchorCandidateIndex(cornerAnchorCandidateFixture), []);
@@ -82,18 +98,20 @@ export default function Phase4BRuntimePreview() {
   const inspectedObject = runtimeScene.objects.find((object) => object.id === inspectedId) ?? null;
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedSliceFacade = inspectedObject ? qaFacadeSliceIndex.get(inspectedObject.id) ?? null : null;
+  const inspectedEvidenceFacade = inspectedObject ? evidenceFacadeCueIndex.get(inspectedObject.id) ?? null : null;
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedCornerAnchorCandidates = inspectedObject ? cornerAnchorCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const reviewTotals = useMemo(() => (
-    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, geometryValidationReport, candidatePoiFixture)
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, geometryValidationReport, candidatePoiFixture)
   ), [runtimeScene]);
 
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return undefined;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.autoClear = true;
     renderer.setClearColor(0x101414, 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.domElement.className = "phase4b-canvas";
@@ -112,7 +130,7 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene);
-    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, pickTargets, visualObjects, pickObjects);
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
 
     stateRef.current = {
@@ -162,7 +180,7 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex]);
 
   useEffect(() => {
     const state = stateRef.current;
@@ -284,11 +302,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4D-3 / candidate POI QA</p>
-          <h1>Greenpoint Ave candidate review</h1>
+          <p className="phase4b-kicker">Batch 4E-5 / opaque endpoint facade volumes</p>
+          <h1>Greenpoint Ave facade render proof</h1>
         </div>
         <p>
-          Deterministic 3D proof with QA-only synthetic POI candidates. Candidate markers are hidden in normal mode and are not storefront assignments, active businesses, facades, signs, entrances, or production cards.
+          Deterministic 3D proof with QA-only opaque volumetric endpoint facades. Normal mode stays protected; QA facades are not business identity, exact frontage, signage, active status, or production claims.
         </p>
       </section>
 
@@ -313,6 +331,7 @@ export default function Phase4BRuntimePreview() {
           totals={reviewTotals}
           inspectedObject={inspectedObject}
           inspectedCue={inspectedCue}
+          inspectedEvidenceFacade={inspectedEvidenceFacade}
           qaEnabled={qaEnabled}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           storefrontAnchors={runtimeScene.storefrontAnchors}
@@ -324,8 +343,10 @@ export default function Phase4BRuntimePreview() {
             inspectedCue={inspectedCue}
             inspectedValidation={inspectedValidation}
             inspectedSliceFacade={inspectedSliceFacade}
+            inspectedEvidenceFacade={inspectedEvidenceFacade}
             facadeCueFixture={facadeCueFixture}
             qaFacadeSliceFixture={qaFacadeSliceFixture}
+            evidenceFacadeCueFixture={evidenceFacadeCueFixture}
             geometryValidationReport={geometryValidationReport}
             candidatePoiFixture={candidatePoiFixture}
             cornerAnchorCandidateFixture={cornerAnchorCandidateFixture}
@@ -356,6 +377,12 @@ export default function Phase4BRuntimePreview() {
           </button>
           <button type="button" onClick={() => runCameraCommand("streetReview")} aria-label="Camera preset street review">
             Street
+          </button>
+          <button type="button" onClick={() => runCameraCommand("manhattanFacadeReview")} aria-label="Camera preset Manhattan facade review">
+            Manhattan
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinFacadeReview")} aria-label="Camera preset Franklin facade review">
+            Franklin
           </button>
           <button type="button" onClick={() => runCameraCommand("orbit-left")} aria-label="Rotate view left">
             Rotate -
@@ -395,6 +422,7 @@ export default function Phase4BRuntimePreview() {
           reviewTotals={reviewTotals}
           inspectedCue={inspectedCue}
           inspectedSliceFacade={inspectedSliceFacade}
+          inspectedEvidenceFacade={inspectedEvidenceFacade}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
           candidatePoiFixture={candidatePoiFixture}
@@ -418,6 +446,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-endpoint" /> Endpoint cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-facade-cue" /> QA facade cue</li>
         <li><span className="phase4b-swatch phase4b-swatch-qa-facade-slice" /> QA draft street-feel slice</li>
+        <li><span className="phase4b-swatch phase4b-swatch-evidence-facade" /> QA evidence facade</li>
         <li><span className="phase4b-swatch phase4b-swatch-candidate-poi" /> QA candidate POI</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
@@ -427,7 +456,7 @@ function RuntimeLegend({ anchorStatus }) {
   );
 }
 
-function ReviewPanel({ totals, inspectedObject, inspectedCue, qaEnabled, inspectedValidation, storefrontAnchors }) {
+function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceFacade, qaEnabled, inspectedValidation, storefrontAnchors }) {
   return (
     <aside className="phase4b-review" aria-label="Graybox recognizability review panel">
       <p>Review counts</p>
@@ -457,6 +486,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, qaEnabled, inspect
           <dd>{totals.qaFacadeSliceBuildings}</dd>
         </div>
         <div>
+          <dt>Evidence facades</dt>
+          <dd>{qaEnabled ? totals.evidenceFacadeRecords : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Candidate POIs</dt>
           <dd>{qaEnabled ? totals.candidatePoiCount : "QA off"}</dd>
         </div>
@@ -477,6 +510,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, qaEnabled, inspect
           <dd>{formatCueTiers(inspectedCue)}</dd>
         </div>
         <div>
+          <dt>Evidence facade</dt>
+          <dd>{qaEnabled ? inspectedEvidenceFacade?.claimStatus ?? "none" : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Anchor status</dt>
           <dd>{storefrontAnchors?.status ?? "unknown"}</dd>
         </div>
@@ -490,8 +527,10 @@ function QADebugPanel({
   inspectedCue,
   inspectedValidation,
   inspectedSliceFacade,
+  inspectedEvidenceFacade,
   facadeCueFixture,
   qaFacadeSliceFixture,
+  evidenceFacadeCueFixture,
   geometryValidationReport,
   candidatePoiFixture,
   cornerAnchorCandidateFixture,
@@ -500,25 +539,14 @@ function QADebugPanel({
   const confidence = inspectedValidation?.geometryConfidence?.label ?? "none";
   return (
     <aside className="phase4b-qa-panel" aria-label="QA debug overlay status">
-      <p>QA overlay</p>
+      <p>QA facade status</p>
       <ul>
-        <li><span className="phase4b-side-dot phase4b-side-safe" /> Geometry safe: {geometryValidationReport.summary.confidenceCounts.safe}</li>
-        <li><span className="phase4b-side-dot phase4b-side-uncertain" /> Geometry uncertain: {geometryValidationReport.summary.confidenceCounts.uncertain}</li>
-        <li><span className="phase4b-side-dot phase4b-side-blocked" /> Geometry blocked: {geometryValidationReport.summary.confidenceCounts.blocked}</li>
-        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Candidate POIs: {candidatePoiFixture.summary.candidateCount}</li>
-        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Not a storefront assignment</li>
-        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Corner anchor candidates: {cornerAnchorCandidateFixture.summary.anchorCandidateCount}</li>
-        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Linked / unresolved: {cornerAnchorCandidateFixture.summary.linkedCandidateCount} / {cornerAnchorCandidateFixture.summary.unresolvedCandidateCount}</li>
-        <li><span className="phase4b-side-dot phase4b-side-candidate-poi" /> Corner anchor candidate only. Not a storefront assignment.</li>
-        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> QA street-feel slice: {qaFacadeSliceFixture.facades.length}</li>
-        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Slice labels: {qaFacadeSliceFixture.statusLabels.join(" / ")}</li>
-        <li><span className="phase4b-side-dot phase4b-side-qa-facade-slice" /> Non-factual QA rhythm only</li>
-        <li><span className="phase4b-side-dot phase4b-side-left" /> Left-side massing</li>
-        <li><span className="phase4b-side-dot phase4b-side-right" /> Right-side massing</li>
-        <li><span className="phase4b-side-dot phase4b-side-center" /> Corridor path + ticks</li>
-        <li><span className="phase4b-side-dot phase4b-side-endpoint" /> Manhattan / Franklin cues</li>
-        <li><span className="phase4b-side-dot phase4b-side-facade" /> Geometry-only facade cues: {facadeCueFixture.cues.length}</li>
-        <li><span className="phase4b-side-dot phase4b-side-anchor" /> Existing anchors: {storefrontAnchors?.anchors?.length ?? 0}</li>
+        <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Evidence facades: {evidenceFacadeCueFixture.summary.renderedCueRecordCount}</li>
+        <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Unique visual slots: {evidenceFacadeCueFixture.summary.uniqueStreetwallSlotCount}</li>
+        <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Evidence labels: {evidenceFacadeCueFixture.statusLabels.join(" / ")}</li>
+        <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Business evidence not connected</li>
+        <li><span className="phase4b-side-dot phase4b-side-blocked" /> Blocked claims remain blocked</li>
+        <li><span className="phase4b-side-dot phase4b-side-center" /> Synthetic context: non-evidence placeholder</li>
       </ul>
       <dl>
         <div>
@@ -535,7 +563,7 @@ function QADebugPanel({
         </div>
         <div>
           <dt>Geometry confidence</dt>
-          <dd>{confidence}</dd>
+          <dd>{confidence} / {geometryValidationReport.summary.confidenceCounts.safe} safe / {geometryValidationReport.summary.confidenceCounts.blocked} blocked</dd>
         </div>
         <div>
           <dt>Gap status</dt>
@@ -551,7 +579,19 @@ function QADebugPanel({
         </div>
         <div>
           <dt>Slice status</dt>
-          <dd>{inspectedSliceFacade ? inspectedSliceFacade.statusLabels.join(" / ") : "none"}</dd>
+          <dd>{inspectedSliceFacade ? inspectedSliceFacade.statusLabels.join(" / ") : `${qaFacadeSliceFixture.facades.length} QA-only records`}</dd>
+        </div>
+        <div>
+          <dt>Evidence facade</dt>
+          <dd>{inspectedEvidenceFacade ? `${inspectedEvidenceFacade.qaComposition.streetwallSlot} / ${inspectedEvidenceFacade.statusLabels.join(" / ")}` : "none"}</dd>
+        </div>
+        <div>
+          <dt>Evidence palette</dt>
+          <dd>{inspectedEvidenceFacade?.paletteFamily ?? "none"}</dd>
+        </div>
+        <div>
+          <dt>Candidate POIs</dt>
+          <dd>{candidatePoiFixture.summary.candidateCount} candidate-only / {cornerAnchorCandidateFixture.summary.anchorCandidateCount} anchor candidates / {storefrontAnchors?.anchors?.length ?? 0} existing anchors</dd>
         </div>
       </dl>
     </aside>
@@ -567,6 +607,7 @@ function InspectorPanel({
   reviewTotals,
   inspectedCue,
   inspectedSliceFacade,
+  inspectedEvidenceFacade,
   inspectedValidation,
   inspectedCandidatePois,
   candidatePoiFixture,
@@ -650,7 +691,7 @@ function InspectorPanel({
         </div>
         <div>
           <dt>Review totals</dt>
-          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues / {reviewTotals.qaFacadeSliceBuildings} draft facades</dd>
+          <dd>{reviewTotals.primitiveBuildings} buildings / {reviewTotals.geometryFacadeCues} cues / {reviewTotals.qaFacadeSliceBuildings} draft facades / {reviewTotals.evidenceFacadeRecords} evidence facades</dd>
         </div>
         <div>
           <dt>Storefront anchors</dt>
@@ -807,6 +848,44 @@ function InspectorPanel({
       </section>
 
       <section>
+        <h2>4E Evidence Facade</h2>
+        {qaEnabled ? (
+          <ul>
+            <li>
+              <span>Status</span>
+              <small>{inspectedEvidenceFacade ? inspectedEvidenceFacade.statusLabels.join(" / ") : "not targeted"}</small>
+            </li>
+            <li>
+              <span>Slot</span>
+              <small>{inspectedEvidenceFacade?.qaComposition?.streetwallSlot ?? "none"}</small>
+            </li>
+            <li>
+              <span>Depth</span>
+              <small>{inspectedEvidenceFacade?.qaComposition ? `${inspectedEvidenceFacade.qaComposition.footprintDepthUnits} footprint / ${inspectedEvidenceFacade.qaComposition.cornerReturnDepthUnits} return` : "none"}</small>
+            </li>
+            <li>
+              <span>Palette</span>
+              <small>{inspectedEvidenceFacade?.paletteFamily ?? "none"}</small>
+            </li>
+            <li>
+              <span>Cues</span>
+              <small>{formatEvidenceCueTypes(inspectedEvidenceFacade)}</small>
+            </li>
+            <li>
+              <span>Use</span>
+              <small>{inspectedEvidenceFacade?.allowedUse ?? "none"}</small>
+            </li>
+            <li>
+              <span>Truth gate</span>
+              <small>business evidence not connected; exact claims blocked</small>
+            </li>
+          </ul>
+        ) : (
+          <p>QA mode required for evidence-informed facade cues.</p>
+        )}
+      </section>
+
+      <section>
         <h2>Allowed Claims</h2>
         <ul>
           {(object?.allowedClaims ?? []).map((claim) => (
@@ -853,12 +932,13 @@ function InspectorPanel({
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, validationReport, candidateFixture) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, validationReport, candidateFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
     geometryFacadeCues: cueFixture.cues.length,
     qaFacadeSliceBuildings: qaFacadeSliceFixture.facades.length,
+    evidenceFacadeRecords: evidenceFacadeCueFixture.summary.renderedCueRecordCount,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
@@ -877,6 +957,14 @@ function buildFacadeCueIndex(cueFixture) {
 
 function buildQAFacadeSliceIndex(fixture) {
   return new Map(fixture.facades.map((facade) => [facade.targetSemanticId, facade]));
+}
+
+function buildEvidenceFacadeCueIndex(fixture) {
+  return new Map(
+    fixture.facadeCueRecords
+      .filter((record) => record.renderStatus === "rendered_qa_only")
+      .map((record) => [record.targetSemanticId, record]),
+  );
 }
 
 function buildGeometryValidationIndex(report) {
@@ -917,6 +1005,14 @@ function formatSliceModules(facade) {
   const modules = facade.modules;
   const awnings = modules.awningSegments ? `${modules.awningSegments} awning-like` : "no awning-like";
   return `${modules.storefrontCadence.length} base beats / ${modules.entryPlaceholders} entries / ${modules.glassPlaceholders} glass / ${awnings}`;
+}
+
+function formatEvidenceCueTypes(record) {
+  if (!record?.cues?.length) return "none";
+  return record.cues
+    .map((cue) => cue.cueType)
+    .filter((cueType) => cueType !== "blocked-claim-readout" && cueType !== "palette-family")
+    .join(" / ");
 }
 
 function formatDimensions(object) {
@@ -1072,6 +1168,7 @@ function addRuntimeObjects(
   runtimeScene,
   facadeCueIndex,
   qaFacadeSliceIndex,
+  evidenceFacadeCueIndex,
   pickTargets,
   visualObjects,
   pickObjects,
@@ -1092,6 +1189,7 @@ function addRuntimeObjects(
   for (const object of runtimeScene.buildings) {
     const facadeCue = facadeCueIndex.get(object.id);
     const qaFacadeSlice = qaFacadeSliceIndex.get(object.id);
+    const evidenceFacadeCue = evidenceFacadeCueIndex.get(object.id);
     const palette = getBuildingPalette(object);
     const qaPalette = getQASidePalette(object);
     const base = createFlatPolygonMesh(object.points, {
@@ -1119,6 +1217,7 @@ function addRuntimeObjects(
     visual.userData.baseColor = palette.massing;
     visual.userData.qaColor = qaPalette.massing;
     visual.userData.corridorSide = object.corridorSide;
+    visual.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
     visual.userData.stateRole = "massing";
 
     const outline = new THREE.LineSegments(
@@ -1129,6 +1228,7 @@ function addRuntimeObjects(
     outline.userData.baseColor = palette.outline;
     outline.userData.qaColor = qaPalette.outline;
     outline.userData.corridorSide = object.corridorSide;
+    outline.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
     outline.userData.stateRole = "outline";
 
     const footprint = createPolyline(removeClosingPoint(object.points), {
@@ -1141,6 +1241,7 @@ function addRuntimeObjects(
     footprint.userData.baseColor = palette.footprint;
     footprint.userData.qaColor = qaPalette.footprint;
     footprint.userData.corridorSide = object.corridorSide;
+    footprint.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
     footprint.userData.stateRole = "footprint";
 
     const marker = new THREE.Mesh(
@@ -1172,12 +1273,14 @@ function addRuntimeObjects(
     anchorMarker.userData.baseColor = 0x8d7245;
     anchorMarker.userData.qaColor = qaPalette.anchor;
     anchorMarker.userData.corridorSide = object.corridorSide;
+    anchorMarker.userData.hasEvidenceFacade = Boolean(evidenceFacadeCue);
     anchorMarker.userData.stateRole = "anchor";
 
     const group = new THREE.Group();
     group.add(base, visual, outline, footprint, marker, anchorMarker);
     if (facadeCue) group.add(createFacadeCueMarker(object, facadeCue));
-    if (facadeCue && qaFacadeSlice) group.add(createQAFacadeSliceLayer(object, facadeCue, qaFacadeSlice));
+    if (facadeCue && qaFacadeSlice && !evidenceFacadeCue) group.add(createQAFacadeSliceLayer(object, facadeCue, qaFacadeSlice));
+    if (facadeCue && evidenceFacadeCue) group.add(createEvidenceInformedFacadeLayer(object, facadeCue, evidenceFacadeCue));
 
     const pick = new THREE.Mesh(
       createPrismGeometry(object.points, object.height + 0.35),
@@ -1265,7 +1368,7 @@ function createCandidatePoiMarker(candidate, target, offset) {
 
   const label = createTextSprite(candidate.displayLabel);
   label.position.set(x, y + 0.42, z);
-  label.userData.stateRole = "candidatePoi";
+  label.userData.stateRole = "candidatePoiLabel";
   label.userData.qaOpacity = 0.86;
   label.userData.qaColor = color;
   label.visible = false;
@@ -1421,6 +1524,313 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
   group.userData.stateRole = "qaFacadeSlice";
   group.visible = false;
   return group;
+}
+
+function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
+  const plane = cue.geometryDerived.streetFacingPlane;
+  const composition = getEvidenceComposition(facadeRecord);
+  const sourceLength = Math.max(plane.xMax - plane.xMin, 0.2);
+  const length = Math.max(sourceLength * composition.widthScale, 0.16);
+  const sourceCenterX = plane.xMin + sourceLength / 2;
+  const centerX = sourceCenterX + composition.lateralOffsetUnits;
+  const renderPlane = {
+    ...plane,
+    xMin: centerX - length / 2,
+    xMax: centerX + length / 2,
+  };
+  const height = Math.max(object.height, 0.58);
+  const sideOffset = object.corridorSide === "left" ? 0.12 : -0.12;
+  const z = plane.z + sideOffset * (0.8 + composition.recordSeparationIndex * composition.slotGapUnits * 0.16);
+  const depth = composition.facadeThicknessUnits;
+  const palette = getEvidenceFacadePalette(facadeRecord.paletteFamily);
+  const group = new THREE.Group();
+
+  addEvidenceSyntheticGrounding(group, {
+    composition,
+    palette,
+    length,
+    plane: renderPlane,
+    z,
+    sideOffset,
+  });
+  addEvidenceLayeredFacadeShell(group, {
+    composition,
+    palette,
+    length,
+    centerX,
+    plane: renderPlane,
+    height,
+    z,
+    sideOffset,
+    depth,
+  });
+
+  for (const cueRecord of facadeRecord.cues) {
+    if (cueRecord.cueType === "facade-rhythm") {
+      addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth });
+    } else if (cueRecord.cueType === "sign-band-zone") {
+      addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth });
+    } else if (cueRecord.cueType === "awning-canopy") {
+      addEvidenceAwningCanopy(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset });
+    } else if (cueRecord.cueType === "window-glass-rhythm") {
+      addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth });
+    } else if (cueRecord.cueType === "corner-emphasis") {
+      addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane: renderPlane, height, z, sideOffset });
+    } else if (cueRecord.cueType === "street-transit-detail-cue") {
+      addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane: renderPlane, z, sideOffset });
+    }
+  }
+
+  group.userData.semanticId = object.id;
+  group.userData.stateRole = "evidenceFacadeCue";
+  group.visible = false;
+  return group;
+}
+
+function getEvidenceComposition(facadeRecord) {
+  const composition = facadeRecord.qaComposition ?? {};
+  return {
+    compositionStatus: composition.compositionStatus ?? "qa_only_composition_metadata",
+    evidenceFacadeRole: composition.evidenceFacadeRole ?? "evidence-informed-qa-facade",
+    syntheticContextRole: composition.syntheticContextRole ?? "non-evidence-placeholder-context",
+    recordSeparationIndex: clampInteger(composition.recordSeparationIndex, 0, 8, 0),
+    recordSeparationCount: clampInteger(composition.recordSeparationCount, 1, 8, 1),
+    lateralOffsetUnits: clampNumber(composition.lateralOffsetUnits, -1.2, 1.2, 0),
+    streetwallSlot: composition.streetwallSlot ?? "unassigned-slot",
+    slotGapUnits: clampNumber(composition.slotGapUnits, 0.18, 1, 0.22),
+    footprintDepthUnits: clampNumber(composition.footprintDepthUnits, 0.44, 2, 0.6),
+    facadeThicknessUnits: clampNumber(composition.facadeThicknessUnits, 0.08, 0.4, 0.1),
+    cornerReturnDepthUnits: clampNumber(composition.cornerReturnDepthUnits, 0.32, 2, 0.44),
+    storefrontSetbackUnits: clampNumber(composition.storefrontSetbackUnits, 0.06, 0.32, 0.12),
+    signBandDepthUnits: clampNumber(composition.signBandDepthUnits, 0.08, 0.36, 0.16),
+    windowReliefDepthUnits: clampNumber(composition.windowReliefDepthUnits, 0.04, 0.22, 0.08),
+    parapetDepthUnits: clampNumber(composition.parapetDepthUnits, 0.04, 0.24, 0.1),
+    corniceProjectionUnits: clampNumber(composition.corniceProjectionUnits, 0.08, 0.32, 0.12),
+    streetEdgeAlignment: composition.streetEdgeAlignment ?? "qa_streetwall",
+    groundPlaneExtent: {
+      sidewalkDepthUnits: clampNumber(composition.groundPlaneExtent?.sidewalkDepthUnits, 0.36, 1.2, 0.52),
+      curbDepthUnits: clampNumber(composition.groundPlaneExtent?.curbDepthUnits, 0.04, 0.18, 0.08),
+      streetDepthUnits: clampNumber(composition.groundPlaneExtent?.streetDepthUnits, 0.42, 1.4, 0.62),
+    },
+    contextVisibilityPolicy: composition.contextVisibilityPolicy ?? "synthetic_context_low_contrast_outline_only",
+    widthScale: clampNumber(composition.widthScale, 0.45, 1.2, 0.82),
+    depthProfile: composition.depthProfile ?? "layered-qa-facade",
+    basePlaneRatio: clampNumber(composition.basePlaneRatio, 0.22, 0.5, 0.34),
+    upperPlaneRatio: clampNumber(composition.upperPlaneRatio, 0.5, 0.78, 0.66),
+    storefrontRecessDepth: clampNumber(composition.storefrontRecessDepth, 0, 0.2, 0.06),
+    upperProjectionDepth: clampNumber(composition.upperProjectionDepth, 0, 0.16, 0.04),
+    signBandProjectionDepth: clampNumber(composition.signBandProjectionDepth, 0.04, 0.22, 0.1),
+    sideReturn: {
+      enabled: composition.sideReturn?.enabled === true,
+      edge: composition.sideReturn?.edge === "right" ? "right" : "left",
+      depthUnits: clampNumber(composition.sideReturn?.depthUnits, 0, 0.7, 0.24),
+      widthRatio: clampNumber(composition.sideReturn?.widthRatio, 0.05, 0.28, 0.12),
+    },
+    grounding: {
+      sidewalk: composition.grounding?.sidewalk === true,
+      curb: composition.grounding?.curb === true,
+      crosswalk: composition.grounding?.crosswalk === true,
+    },
+    renderLegibility: {
+      primaryMassOpacity: clampNumber(composition.renderLegibility?.primaryMassOpacity, 0.92, 1, 1),
+      frontFaceOpacity: clampNumber(composition.renderLegibility?.frontFaceOpacity, 0.92, 1, 0.98),
+      returnWallOpacity: clampNumber(composition.renderLegibility?.returnWallOpacity, 0.92, 1, 1),
+      baseOpacity: clampNumber(composition.renderLegibility?.baseOpacity, 0.92, 1, 1),
+      groundContactOpacity: clampNumber(composition.renderLegibility?.groundContactOpacity, 0.74, 1, 0.84),
+      minimumRenderedGapUnits: clampNumber(composition.renderLegibility?.minimumRenderedGapUnits, 0.12, 1, 0.12),
+      silhouetteHierarchy: Array.isArray(composition.renderLegibility?.silhouetteHierarchy)
+        ? composition.renderLegibility.silhouetteHierarchy
+        : [],
+    },
+  };
+}
+
+function addEvidenceLayeredFacadeShell(group, { composition, palette, length, centerX, plane, height, z, sideOffset, depth }) {
+  const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
+  const upperHeight = Math.max(height - baseHeight, 0.18);
+  const footprintDepth = composition.footprintDepthUnits;
+  const wallThickness = composition.facadeThicknessUnits;
+  const bodyZ = z - sideOffset * (footprintDepth / 2);
+  const baseZ = z - sideOffset * composition.storefrontSetbackUnits;
+  const upperZ = z - sideOffset * Math.max(composition.upperProjectionDepth, wallThickness * 0.25);
+
+  addSyntheticContextBox(group, {
+    color: 0x060707,
+    opacity: 0.24,
+    position: [centerX + 0.04, 0.01, bodyZ - sideOffset * 0.03],
+    size: [length * 1.05, 0.018, footprintDepth * 1.04],
+  });
+
+  addEvidenceFacadeBox(group, {
+    color: palette.body,
+    opacity: composition.renderLegibility.primaryMassOpacity,
+    position: [centerX, height / 2, bodyZ],
+    size: [length, height, footprintDepth],
+  });
+
+  addEvidenceFacadeBox(group, {
+    color: palette.base,
+    opacity: composition.renderLegibility.baseOpacity,
+    position: [centerX, baseHeight / 2, baseZ],
+    size: [length * 0.9, baseHeight, wallThickness * 1.35],
+  });
+  addEvidenceFacadeBox(group, {
+    color: palette.facade,
+    opacity: composition.renderLegibility.frontFaceOpacity,
+    position: [centerX, baseHeight + upperHeight / 2, upperZ],
+    size: [length * 0.96, upperHeight, wallThickness * 1.15],
+  });
+  addEvidenceFacadeBox(group, {
+    color: palette.trim,
+    opacity: 0.96,
+    position: [centerX, baseHeight + 0.018, z + sideOffset * (composition.signBandDepthUnits * 0.45)],
+    size: [length * 1.02, 0.035, wallThickness + composition.signBandDepthUnits],
+  });
+  addEvidenceFacadeBox(group, {
+    color: palette.cornice,
+    opacity: 1,
+    position: [centerX, height + composition.parapetDepthUnits * 0.55, z + sideOffset * composition.corniceProjectionUnits * 0.5],
+    size: [length * 1.06, composition.parapetDepthUnits, wallThickness + composition.corniceProjectionUnits],
+  });
+
+  if (composition.sideReturn.enabled) {
+    const returnDepth = composition.cornerReturnDepthUnits;
+    const returnWidth = Math.max(length * composition.sideReturn.widthRatio, 0.05);
+    const edgeX = composition.sideReturn.edge === "right" ? plane.xMax : plane.xMin;
+    const returnX = edgeX + (composition.sideReturn.edge === "right" ? -returnWidth / 2 : returnWidth / 2);
+    addEvidenceFacadeBox(group, {
+      color: palette.returnWall,
+      opacity: composition.renderLegibility.returnWallOpacity,
+      position: [
+        returnX,
+        height / 2,
+        z - sideOffset * (returnDepth / 2),
+      ],
+      size: [returnWidth, height * 0.96, returnDepth],
+    });
+    addEvidenceFacadeBox(group, {
+      color: palette.corner,
+      opacity: 1,
+      position: [edgeX, height / 2, z - sideOffset * (returnDepth * 0.42)],
+      size: [0.065, height + 0.12, returnDepth * 0.92],
+    });
+  }
+}
+
+function addEvidenceFacadeRhythm() {
+  // 4E-5 suppresses fine facade rhythm so endpoint volumes stay visually clear.
+}
+
+function addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
+  const y = clamp(height * cueRecord.heightRatio, 0.16, Math.max(height * 0.58, 0.22));
+  const segmentCount = clampInteger(cueRecord.segmentCount, 1, 6, 2);
+  const segmentWidth = length / segmentCount;
+  for (let index = 0; index < segmentCount; index += 1) {
+    const x = plane.xMin + segmentWidth * index + segmentWidth / 2;
+    addEvidenceFacadeBox(group, {
+      color: index % 2 ? palette.signAlt : palette.sign,
+      opacity: 1,
+      position: [x, y, z + sideOffset * (depth + composition.signBandDepthUnits * 0.65)],
+      size: [Math.max(segmentWidth * 0.68, 0.08), 0.115, Math.max(composition.signBandDepthUnits * 0.7, 0.06)],
+    });
+  }
+
+  if (cueRecord.wrapsCorner) {
+    addEvidenceFacadeBox(group, {
+      color: palette.sign,
+      opacity: 1,
+      position: [plane.xMin, y + 0.03, z + sideOffset * (depth + composition.signBandDepthUnits * 0.65)],
+      size: [0.07, 0.18, Math.max(composition.signBandDepthUnits * 0.72, 0.06)],
+    });
+    addEvidenceFacadeBox(group, {
+      color: palette.signAlt,
+      opacity: 1,
+      position: [plane.xMax, y + 0.03, z + sideOffset * (depth + composition.signBandDepthUnits * 0.65)],
+      size: [0.07, 0.18, Math.max(composition.signBandDepthUnits * 0.72, 0.06)],
+    });
+  }
+}
+
+function addEvidenceAwningCanopy(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset }) {
+  const segmentCount = clampInteger(cueRecord.segmentCount, 1, 5, 2);
+  const segmentWidth = length / segmentCount;
+  const y = clamp(height * 0.22, 0.12, 0.42);
+  for (let index = 0; index < segmentCount; index += 1) {
+    const x = plane.xMin + segmentWidth * index + segmentWidth / 2;
+    addEvidenceFacadeBox(group, {
+      color: index % 2 ? palette.awningAlt : palette.awning,
+      opacity: 1,
+      position: [x, y, z + sideOffset * (composition.signBandDepthUnits + 0.08)],
+      size: [Math.max(segmentWidth * 0.68, 0.08), 0.075, composition.signBandDepthUnits * 0.72],
+    });
+  }
+}
+
+function addEvidenceWindowGlassRhythm() {
+  // 4E-5 prioritizes opaque architectural massing over opening rhythm fidelity.
+}
+
+function addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane, height, z, sideOffset }) {
+  const edge = cueRecord.edge === "right" ? plane.xMax : plane.xMin;
+  const strength = cueRecord.strength === "strong" ? 1 : 0.72;
+  addEvidenceFacadeBox(group, {
+    color: palette.corner,
+    opacity: 1,
+    position: [edge, height / 2, z - sideOffset * composition.cornerReturnDepthUnits * 0.35],
+    size: [0.09 * strength, height + 0.14, composition.cornerReturnDepthUnits * 0.72],
+  });
+  addEvidenceFacadeBox(group, {
+    color: palette.cornice,
+    opacity: 1,
+    position: [edge, height + 0.12, z + sideOffset * composition.corniceProjectionUnits * 0.4],
+    size: [0.18 * strength, 0.08, composition.corniceProjectionUnits + 0.08],
+  });
+}
+
+function addEvidenceSyntheticGrounding(group, { composition, palette, length, plane, z, sideOffset }) {
+  if (!composition.grounding.sidewalk && !composition.grounding.curb && !composition.grounding.crosswalk) return;
+  const centerX = plane.xMin + length / 2;
+  const sidewalkDepth = composition.groundPlaneExtent.sidewalkDepthUnits;
+  const curbDepth = composition.groundPlaneExtent.curbDepthUnits;
+  const streetDepth = composition.groundPlaneExtent.streetDepthUnits;
+  const sidewalkZ = z + sideOffset * (sidewalkDepth / 2);
+  if (composition.grounding.sidewalk) {
+    addEvidenceFacadeBox(group, {
+      color: 0x84918b,
+      opacity: composition.renderLegibility.groundContactOpacity,
+      position: [centerX, 0.012, sidewalkZ],
+      size: [length * 1.28, 0.03, sidewalkDepth],
+    });
+  }
+  if (composition.grounding.curb) {
+    addEvidenceFacadeBox(group, {
+      color: palette.crosswalk,
+      opacity: 0.92,
+      position: [centerX, 0.045, z + sideOffset * (sidewalkDepth + curbDepth / 2)],
+      size: [length * 1.24, 0.04, curbDepth],
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x202b2a,
+      opacity: 0.86,
+      position: [centerX, 0.006, z + sideOffset * (sidewalkDepth + curbDepth + streetDepth / 2)],
+      size: [length * 1.34, 0.018, streetDepth],
+    });
+  }
+  if (composition.grounding.crosswalk) {
+    for (let index = 0; index < 4; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: palette.crosswalk,
+        opacity: 0.9,
+        position: [plane.xMin + length * (0.12 + index * 0.08), 0.038, z + sideOffset * (sidewalkDepth + curbDepth + 0.18 + index * 0.07)],
+        size: [0.16, 0.026, 0.045],
+      });
+    }
+  }
+}
+
+function addEvidenceStreetDetailCues() {
+  // 4E-5 keeps small street fixtures out of the primary facade silhouette.
+  return;
 }
 
 function addStreetBaseCadence(group, { modules, palette, length, plane, height, splitY, z, sideOffset, depth }) {
@@ -1709,9 +2119,146 @@ function getStreetFeelPalette(draftPalette, groundBaseTone) {
   };
 }
 
+function getEvidenceFacadePalette(paletteFamily) {
+  const palettes = {
+    "warm-red-brick-dark-base": {
+      body: 0x5f342f,
+      side: 0x4c2d2a,
+      returnWall: 0x6f3d36,
+      facade: 0x8f4e42,
+      base: 0x272727,
+      baseAlt: 0x3c332e,
+      trim: 0x2f2928,
+      sign: 0xe2c37b,
+      signAlt: 0x6e947d,
+      glass: 0x87a39c,
+      window: 0xb8c5bd,
+      awning: 0x6e947d,
+      awningAlt: 0x2b3a36,
+      cornice: 0xd0b47b,
+      corner: 0xefc165,
+      post: 0xb9a879,
+      streetSign: 0x4f9474,
+      table: 0x8a7a5d,
+      crosswalk: 0xe7dcc7,
+    },
+    "bright-panel-silver-gray": {
+      body: 0x596460,
+      side: 0x4a5552,
+      returnWall: 0x6f7c77,
+      facade: 0x87958f,
+      base: 0x3e4542,
+      baseAlt: 0x5b615e,
+      trim: 0xd7d0bd,
+      sign: 0xd0bd5e,
+      signAlt: 0x5990a0,
+      glass: 0xabc2bd,
+      window: 0xcbd6d2,
+      awning: 0xc6b558,
+      awningAlt: 0x5a8173,
+      cornice: 0xe0d8bd,
+      corner: 0xd5b35c,
+      post: 0x1d2425,
+      streetSign: 0x4b8f72,
+      table: 0x6f766f,
+      crosswalk: 0xe8ddc8,
+    },
+    "pale-stone-red-trim": {
+      body: 0x9e9585,
+      side: 0x887f72,
+      returnWall: 0xb7ad9a,
+      facade: 0xc6bfb0,
+      base: 0xeee8db,
+      baseAlt: 0x7d5148,
+      trim: 0x7d453d,
+      sign: 0xa6b98c,
+      signAlt: 0xf0e7d7,
+      glass: 0xa2b7b3,
+      window: 0xd8e0d8,
+      awning: 0x5e7b68,
+      awningAlt: 0x7d5148,
+      cornice: 0xeee2c8,
+      corner: 0x9d5b4f,
+      post: 0x2d3330,
+      streetSign: 0x4a9170,
+      table: 0x8d8069,
+      crosswalk: 0xe7dcc7,
+    },
+    "weathered-brick-wood-green": {
+      body: 0x5f3e37,
+      side: 0x4d352f,
+      returnWall: 0x714b42,
+      facade: 0x865448,
+      base: 0xa68658,
+      baseAlt: 0x4b5f52,
+      trim: 0xd9c89f,
+      sign: 0xc8a76f,
+      signAlt: 0x6f8a68,
+      glass: 0x92ada4,
+      window: 0xc3d2ca,
+      awning: 0x5f7c62,
+      awningAlt: 0x405548,
+      cornice: 0xd1ba86,
+      corner: 0xd9b466,
+      post: 0x222928,
+      streetSign: 0x4e926f,
+      table: 0x7d8d6f,
+      crosswalk: 0xe6ddca,
+    },
+    "dark-brick-black-base": {
+      body: 0x4f302f,
+      side: 0x382625,
+      returnWall: 0x603836,
+      facade: 0x74423f,
+      base: 0x202322,
+      baseAlt: 0x3c2c29,
+      trim: 0x1e2221,
+      sign: 0xc09f67,
+      signAlt: 0x454f4b,
+      glass: 0x78918c,
+      window: 0xbdc7bf,
+      awning: 0x252a28,
+      awningAlt: 0x5d6f62,
+      cornice: 0xbfaa78,
+      corner: 0xceaa5f,
+      post: 0x232928,
+      streetSign: 0x4e916f,
+      table: 0x716a58,
+      crosswalk: 0xe5ddcd,
+    },
+    "red-brick-stone-cornice": {
+      body: 0x663a36,
+      side: 0x4f302e,
+      returnWall: 0x7a443f,
+      facade: 0x8f4f41,
+      base: 0x302a27,
+      baseAlt: 0x5c4038,
+      trim: 0xb9a278,
+      sign: 0xd1ad6a,
+      signAlt: 0x6f7b63,
+      glass: 0x879f99,
+      window: 0xc4d0c8,
+      awning: 0x2d3431,
+      awningAlt: 0x6a7767,
+      cornice: 0xd8c08c,
+      corner: 0xe0b661,
+      post: 0x222827,
+      streetSign: 0x4e9270,
+      table: 0x82755f,
+      crosswalk: 0xe6dece,
+    },
+  };
+  return palettes[paletteFamily] ?? palettes["warm-red-brick-dark-base"];
+}
+
 function normalizeCadence(values) {
   const total = values.reduce((sum, value) => sum + value, 0) || 1;
   return values.map((value) => value / total);
+}
+
+function clampInteger(value, min, max, fallback) {
+  const parsed = Number.isFinite(value) ? Math.round(value) : fallback;
+  return clamp(parsed, min, max);
 }
 
 function addQAFacadeBox(group, { color, opacity, position, size }) {
@@ -1728,6 +2275,62 @@ function addQAFacadeBox(group, { color, opacity, position, size }) {
   mesh.userData.stateRole = "qaFacadeSlice";
   mesh.userData.qaOpacity = opacity;
   mesh.userData.qaColor = color;
+  mesh.visible = false;
+  group.add(mesh);
+}
+
+function addEvidenceFacadeBox(group, { color, opacity, position, size, opaque = true }) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(...size),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: !opaque,
+      opacity: opaque ? 1 : 0,
+      depthWrite: opaque,
+    }),
+  );
+  mesh.position.set(...position);
+  mesh.userData.stateRole = "evidenceFacadeCue";
+  mesh.userData.qaOpacity = opacity;
+  mesh.userData.qaColor = color;
+  mesh.userData.qaOpaque = opaque;
+  mesh.visible = false;
+  group.add(mesh);
+}
+
+function addSyntheticContextBox(group, { color, opacity, position, size }) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(...size),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  mesh.position.set(...position);
+  mesh.userData.stateRole = "syntheticQAGrounding";
+  mesh.userData.qaOpacity = opacity;
+  mesh.userData.qaColor = color;
+  mesh.visible = false;
+  group.add(mesh);
+}
+
+function addEvidenceFacadeCylinder(group, { color, opacity, position, radius, height, opaque = true }) {
+  const mesh = new THREE.Mesh(
+    new THREE.CylinderGeometry(radius, radius, height, 8),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: !opaque,
+      opacity: opaque ? 1 : 0,
+      depthWrite: opaque,
+    }),
+  );
+  mesh.position.set(...position);
+  mesh.userData.stateRole = "evidenceFacadeCue";
+  mesh.userData.qaOpacity = opacity;
+  mesh.userData.qaColor = color;
+  mesh.userData.qaOpaque = opaque;
   mesh.visible = false;
   group.add(mesh);
 }
@@ -1833,42 +2436,67 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
         if (
           child.userData.stateRole === "facadeCue"
           || child.userData.stateRole === "qaFacadeSlice"
+          || child.userData.stateRole === "evidenceFacadeCue"
+          || child.userData.stateRole === "syntheticQAGrounding"
           || child.userData.stateRole === "candidatePoi"
+          || child.userData.stateRole === "candidatePoiLabel"
         ) {
-          child.visible = qaEnabled;
+          child.visible = child.userData.stateRole === "candidatePoiLabel" ? qaEnabled && (isSelected || isHovered) : qaEnabled;
         }
         return;
       }
       if (child.material.color) {
         const qaColor = child.userData.qaColor ?? child.userData.baseColor;
-        child.material.color.set(isSelected ? 0xf0c96a : isHovered ? 0xb9cec7 : qaEnabled ? qaColor : child.userData.baseColor ?? 0x88908d);
+        const qaNeutralRoles = ["massing", "outline", "footprint", "base", "anchor"];
+        const color = qaEnabled && qaNeutralRoles.includes(child.userData.stateRole)
+          ? child.userData.baseColor
+          : qaColor;
+        child.material.color.set(isSelected ? 0xf0c96a : isHovered ? 0xb9cec7 : color ?? child.userData.baseColor ?? 0x88908d);
       }
       if (child.material.opacity !== undefined) {
         if (child.userData.stateRole === "outline" || child.userData.stateRole === "footprint") {
-          child.material.opacity = isSelected ? 0.95 : isHovered ? 0.78 : qaEnabled ? 0.72 : 0.5;
+          child.material.opacity = isSelected
+            ? 0.95
+            : isHovered
+              ? 0.78
+              : qaEnabled
+                ? child.userData.hasEvidenceFacade ? 0 : 0.002
+                : 0.5;
         } else if (child.userData.stateRole === "base") {
-          child.material.opacity = isSelected ? 0.72 : isHovered ? 0.58 : qaEnabled ? 0.54 : 0.4;
+          child.material.opacity = isSelected
+            ? 0.72
+            : isHovered
+              ? 0.58
+              : qaEnabled
+                ? child.userData.hasEvidenceFacade ? 0 : 0.003
+                : 0.4;
         } else if (child.userData.stateRole === "massing") {
-          child.material.opacity = isSelected ? 1 : isHovered ? 0.97 : 0.94;
+          child.material.opacity = isSelected
+            ? 0.86
+            : isHovered
+              ? 0.72
+              : qaEnabled
+                ? child.userData.hasEvidenceFacade ? 0 : 0.003
+                : 0.94;
         } else if (child.userData.stateRole === "anchor") {
-          child.material.opacity = isSelected ? 0.9 : isHovered ? 0.72 : qaEnabled ? 0.62 : 0.42;
+          child.material.opacity = isSelected ? 0.9 : isHovered ? 0.72 : qaEnabled ? 0.025 : 0.42;
         } else if (child.userData.stateRole === "line") {
           const isCenterline = child.userData.semanticType === "corridor-street-centerline";
           child.material.opacity = isSelected || isHovered
             ? 0.72
             : qaEnabled && isCenterline
-              ? 0.82
+              ? 0.08
               : qaEnabled
-                ? 0.36
+                ? 0.015
                 : child.userData.baseOpacity ?? 0.35;
         } else if (child.userData.stateRole === "facadeCue") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && (isSelected || isHovered);
           child.material.opacity = qaEnabled
             ? isSelected
               ? Math.min(child.userData.qaOpacity + 0.18, 0.95)
               : isHovered
                 ? Math.min(child.userData.qaOpacity + 0.1, 0.9)
-                : child.userData.qaOpacity
+                : 0
             : 0;
         } else if (child.userData.stateRole === "qaFacadeSlice") {
           child.visible = qaEnabled;
@@ -1877,12 +2505,44 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
               ? Math.min(child.userData.qaOpacity + 0.2, 0.96)
               : isHovered
                 ? Math.min(child.userData.qaOpacity + 0.12, 0.92)
-                : child.userData.qaOpacity
+                : Math.min(child.userData.qaOpacity ?? 0.12, 0.12)
+            : 0;
+        } else if (child.userData.stateRole === "evidenceFacadeCue") {
+          child.visible = qaEnabled;
+          const isOpaqueEvidence = qaEnabled && child.userData.qaOpaque === true;
+          const shouldBeTransparent = !isOpaqueEvidence;
+          if (child.material.transparent !== shouldBeTransparent || child.material.depthWrite !== isOpaqueEvidence) {
+            child.material.transparent = shouldBeTransparent;
+            child.material.depthWrite = isOpaqueEvidence;
+            child.material.needsUpdate = true;
+          }
+          child.material.opacity = qaEnabled
+            ? isOpaqueEvidence
+              ? 1
+              : isSelected
+                ? Math.min(child.userData.qaOpacity + 0.2, 0.98)
+                : isHovered
+                  ? Math.min(child.userData.qaOpacity + 0.14, 0.94)
+                  : child.userData.qaOpacity
+            : 0;
+        } else if (child.userData.stateRole === "syntheticQAGrounding") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled
+            ? isSelected || isHovered
+              ? Math.min((child.userData.qaOpacity ?? 0.28) + 0.12, 0.64)
+              : child.userData.qaOpacity ?? 0.28
             : 0;
         } else if (child.userData.stateRole === "candidatePoi") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && (isSelected || isHovered);
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled ? child.userData.qaOpacity ?? 0.75 : 0;
+          child.material.opacity = child.visible ? Math.min(child.userData.qaOpacity ?? 0.36, 0.36) : 0;
+        } else if (child.userData.stateRole === "candidatePoiLabel") {
+          child.visible = qaEnabled && (isSelected || isHovered);
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = child.visible ? child.userData.qaOpacity ?? 0.75 : 0;
         }
       }
       if (child.userData.stateRole === "marker") {
@@ -2043,6 +2703,7 @@ function panCamera(state, dx, dz, startTarget = state.cameraState.target) {
 
 function renderFrame(state) {
   if (!state) return;
+  state.renderer.clear(true, true, true);
   state.renderer.render(state.scene, state.camera);
 }
 
@@ -2087,4 +2748,8 @@ function compactObjectLabel(object) {
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
+}
+
+function clampNumber(value, min, max, fallback) {
+  return Number.isFinite(value) ? clamp(value, min, max) : fallback;
 }
