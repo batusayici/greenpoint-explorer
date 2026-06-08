@@ -55,15 +55,59 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: bounded Phase 4I corridor facade cue expansion packet is complete and verified, pending Batu visual/review gate. Batch commits are blocked in this environment by `.git` metadata write permissions.
+- Current phase: Phase 4I-4 QA corridor cue legibility correction is complete and verified, pending Batu visual/review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the packet-end Batu visual/review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet for 4I-1, 4I-2, and 4I-3 only. 4I-1 defined the corridor facade cue expansion plan. 4I-2 added a QA-only corridor facade cue fixture/verifier using existing repo-local Batu-supplied endpoint evidence, existing geometry containers, and stable scene IDs: 6 endpoint evidence-backed records, 36 mid-corridor insufficient-evidence records, and 100 blocked/no-evidence gaps. 4I-3 added QA-only runtime legibility for the 4I fixture while preserving normal mode. Browser visual smoke remains pending outside this restricted environment. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4I-4 Batu visual/review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet for 4I-1, 4I-2, and 4I-3 only. 4I-1 defined the corridor facade cue expansion plan. 4I-2 added a QA-only corridor facade cue fixture/verifier using existing repo-local Batu-supplied endpoint evidence, existing geometry containers, and stable scene IDs: 6 endpoint evidence-backed records, 36 mid-corridor insufficient-evidence records, and 100 blocked/no-evidence gaps. 4I-3 added QA-only runtime legibility for the 4I fixture while preserving normal mode. 4I-4 corrected stale runtime labels and subdued mid-corridor placeholder geometry for visual review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4I-4 QA Corridor Cue Legibility Correction
+
+Status:
+- Complete and verified; pending Batu visual/review gate.
+
+Scope:
+- Correct the QA-only 4I corridor facade cue runtime view so it is easier to review before any 4J decision.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `scripts/verify-phase-4i-1-corridor-facade-cue-expansion-plan.mjs`
+- `scripts/verify-phase-4i-qa-runtime-legibility.mjs`
+- `docs/phase-4i-corridor-facade-cue-expansion.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4i-1-corridor-facade-cue-expansion-plan.mjs`
+- `node scripts/verify-phase-4i-corridor-facade-cues.mjs`
+- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
+- `node scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
+- `node scripts/verify-phase-4f-facade-cue-model.mjs`
+- `node scripts/verify-phase-4h-1-facade-evidence-intake-workflow.mjs`
+- `node scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
+- `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
+- `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Replaced stale 4E-5 runtime header copy with 4I-4 corridor cue review copy.
+- Reduced mid-corridor insufficient-evidence placeholder opacity, width, detail density, and hover/selection emphasis.
+- Preserved endpoint evidence-backed facade volumes as visually primary.
+- Kept blocked/no-evidence records out of rendered facade geometry and kept normal mode protected.
+- Did not start 4J, create storefront bay/frontage candidates, link businesses/POIs, add sources/dependencies/assets, or promote claims.
+
+Unresolved decisions:
+- Batu owns 4I-4 visual acceptance and whether to open 4J or any later/corrective packet.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the 4I-4 Batu visual/review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-08 - Batch 4I-3 QA Corridor Facade Render Legibility Pass
 

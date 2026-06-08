@@ -22,7 +22,7 @@ const requiredPlanSnippets = [
 
 const requiredBriefSnippets = [
   "Current executable batch: none. Pending Batu visual/review gate",
-  "`4I-1`, `4I-2`, and `4I-3` are complete and verified",
+  "4I-4 QA corridor cue legibility correction",
   "Hard Batu gate: stop.",
   "No external source access, download, cache, ingestion",
 ];

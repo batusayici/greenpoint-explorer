@@ -305,11 +305,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4E-5 / opaque endpoint facade volumes</p>
-          <h1>Greenpoint Ave facade render proof</h1>
+          <p className="phase4b-kicker">Batch 4I-4 / corridor cue legibility correction</p>
+          <h1>Greenpoint Ave corridor facade cue review</h1>
         </div>
         <p>
-          Deterministic 3D proof with QA-only endpoint facades and corridor cue placeholders. Normal mode stays protected; QA facades are not business identity, exact frontage, signage, active status, or production claims.
+          QA-only 4I corridor cue expansion with endpoint evidence-backed volumes kept primary and mid-corridor insufficient-evidence placeholders subdued. Normal mode stays protected; QA facades are not business identity, exact frontage, signage, active status, or production claims.
         </p>
       </section>
 
@@ -1671,39 +1671,42 @@ function createCorridorFacadeCueLayer(object, cue, corridorRecord) {
 
   const plane = cue.geometryDerived.streetFacingPlane;
   const sourceLength = Math.max(plane.xMax - plane.xMin, 0.2);
-  const length = Math.max(Math.min(sourceLength * 0.72, 1.2), 0.2);
+  const placeholderWidthScale = 0.52;
+  const length = Math.max(Math.min(sourceLength * placeholderWidthScale, 0.86), 0.16);
   const centerX = plane.xMin + sourceLength / 2;
-  const sideOffset = object.corridorSide === "left" ? 0.1 : -0.1;
-  const z = plane.z + sideOffset * 0.92;
-  const height = Math.max(object.height * 0.72, 0.42);
-  const baseHeight = clamp(height * 0.34, 0.16, 0.46);
+  const sideOffset = object.corridorSide === "left" ? 0.11 : -0.11;
+  const orderHint = corridorRecord.corridorOrderHint ?? 0;
+  const separationOffset = ((orderHint % 3) - 1) * 0.012;
+  const z = plane.z + sideOffset * (0.98 + separationOffset);
+  const height = Math.max(object.height * 0.52, 0.34);
+  const baseHeight = clamp(height * 0.3, 0.12, 0.34);
   const upperHeight = Math.max(height - baseHeight, 0.18);
-  const bayCount = clampInteger(corridorRecord.qaCueGeometry?.bayPlaceholderCount, 2, 4, 2);
+  const bayCount = clampInteger(corridorRecord.qaCueGeometry?.bayPlaceholderCount, 2, 3, 2);
   const palette = getCorridorFacadePalette(corridorRecord);
 
   addCorridorFacadeBox(group, {
     color: palette.shadow,
-    opacity: 0.1,
-    position: [centerX, 0.025, z - sideOffset * 0.18],
-    size: [length * 1.04, 0.03, 0.34],
+    opacity: 0.035,
+    position: [centerX, 0.018, z - sideOffset * 0.12],
+    size: [length * 0.94, 0.022, 0.2],
   });
   addCorridorFacadeBox(group, {
     color: palette.body,
-    opacity: 0.18,
-    position: [centerX, height / 2, z - sideOffset * 0.08],
-    size: [length, height, 0.18],
+    opacity: 0.075,
+    position: [centerX, height / 2, z - sideOffset * 0.05],
+    size: [length, height, 0.11],
   });
   addCorridorFacadeBox(group, {
     color: palette.base,
-    opacity: 0.24,
-    position: [centerX, baseHeight / 2, z + sideOffset * 0.04],
-    size: [length * 0.94, baseHeight, 0.08],
+    opacity: 0.105,
+    position: [centerX, baseHeight / 2, z + sideOffset * 0.035],
+    size: [length * 0.9, baseHeight, 0.055],
   });
   addCorridorFacadeBox(group, {
     color: palette.signBand,
-    opacity: 0.32,
-    position: [centerX, baseHeight + 0.04, z + sideOffset * 0.09],
-    size: [length * 0.86, 0.055, 0.09],
+    opacity: 0.14,
+    position: [centerX, baseHeight + 0.032, z + sideOffset * 0.075],
+    size: [length * 0.74, 0.04, 0.06],
   });
 
   const bayWidth = length / bayCount;
@@ -1711,22 +1714,22 @@ function createCorridorFacadeCueLayer(object, cue, corridorRecord) {
     const x = centerX - length / 2 + bayWidth * index + bayWidth / 2;
     addCorridorFacadeBox(group, {
       color: palette.bay,
-      opacity: 0.22,
-      position: [x, baseHeight * 0.48, z + sideOffset * 0.1],
-      size: [Math.max(bayWidth * 0.42, 0.045), Math.max(baseHeight * 0.52, 0.08), 0.055],
+      opacity: 0.11,
+      position: [x, baseHeight * 0.48, z + sideOffset * 0.085],
+      size: [Math.max(bayWidth * 0.34, 0.04), Math.max(baseHeight * 0.44, 0.06), 0.04],
     });
   }
 
-  const rowCount = corridorRecord.geometryDerived.heightTier === "tall" ? 3 : 2;
+  const rowCount = corridorRecord.geometryDerived.heightTier === "tall" ? 2 : 1;
   for (let row = 0; row < rowCount; row += 1) {
     const y = baseHeight + upperHeight * (row + 0.55) / (rowCount + 0.2);
     for (let index = 0; index < bayCount; index += 1) {
       const x = centerX - length / 2 + bayWidth * index + bayWidth / 2;
       addCorridorFacadeBox(group, {
         color: palette.window,
-        opacity: 0.2,
-        position: [x, y, z + sideOffset * 0.1],
-        size: [Math.max(bayWidth * 0.34, 0.04), 0.07, 0.045],
+        opacity: 0.085,
+        position: [x, y, z + sideOffset * 0.085],
+        size: [Math.max(bayWidth * 0.28, 0.035), 0.045, 0.035],
       });
     }
   }
@@ -2721,10 +2724,10 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
           child.material.opacity = qaEnabled
             ? isSelected
-              ? Math.min((child.userData.qaOpacity ?? 0.18) + 0.18, 0.5)
+              ? Math.min((child.userData.qaOpacity ?? 0.08) + 0.12, 0.32)
               : isHovered
-                ? Math.min((child.userData.qaOpacity ?? 0.18) + 0.12, 0.42)
-                : child.userData.qaOpacity ?? 0.18
+                ? Math.min((child.userData.qaOpacity ?? 0.08) + 0.08, 0.26)
+                : child.userData.qaOpacity ?? 0.08
             : 0;
         } else if (child.userData.stateRole === "syntheticQAGrounding") {
           child.visible = qaEnabled;

@@ -1,6 +1,6 @@
 # Phase 4I Corridor Facade Cue Expansion
 
-Status: 4I-2 QA-only fixture expansion
+Status: 4I-4 QA-only legibility correction complete
 Date: 2026-06-08
 Scope: Greenpoint Ave from Manhattan Ave toward Franklin Ave
 
@@ -51,3 +51,21 @@ What changed:
 - Added review-panel, QA-panel, legend, and inspector readouts for 4I lane/status/provenance.
 
 Browser QA could not run in this environment because local server binding and built-file navigation were blocked. Build and deterministic verifiers passed.
+
+## 4I-4 QA Corridor Cue Legibility Correction
+
+4I-4 is a narrow visual/QA correction before Batu decides whether to open 4J.
+
+What changed:
+
+- Runtime header text now identifies the current QA review view as `Batch 4I-4 / corridor cue legibility correction`.
+- Mid-corridor insufficient-evidence placeholders are narrower, dimmer, simpler, and softer on hover/selection.
+- Endpoint evidence-backed facade volumes remain visually primary.
+- Blocked/no-evidence records remain review records only and do not render facade geometry.
+- Normal mode remains protected.
+
+Preserved boundaries:
+
+- No 4J storefront bay/frontage candidates.
+- No business, POI, entrance, address, sign, tenant, exact frontage, or storefront linkage.
+- No new sources, dependencies, production assets, normal-mode exposure, or evidence-model promotion.

@@ -14,11 +14,15 @@ const requiredRuntimeSnippets = [
   "const corridorFacadeCueIndex = useMemo(() => buildCorridorFacadeCueIndex(corridorFacadeCueFixture), []);",
   "createCorridorFacadeCueLayer(object, facadeCue, corridorFacadeCue)",
   "child.userData.stateRole === \"corridorFacadeCue\"",
+  "Batch 4I-4 / corridor cue legibility correction",
+  "const placeholderWidthScale = 0.52;",
+  "opacity: 0.075",
   "4I Corridor Facade Cue",
   "QA-only; no storefront, business, exact facade, normal-mode, or production claim",
 ];
 
 const forbiddenRuntimeSnippets = [
+  "Batch 4E-5 / opaque endpoint facade volumes",
   "normalModeExposure: \"enabled\"",
   "normalModeUse: \"rendered\"",
   "canAffectNormalRuntime: true",
