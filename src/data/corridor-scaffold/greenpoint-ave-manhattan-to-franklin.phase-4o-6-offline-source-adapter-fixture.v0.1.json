@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "phase-4o-6-offline-source-adapter-fixture.v0.1",
+  "fixtureId": "p4o6-offline-source-adapter-fixture-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4O-6",
+  "status": "offline_fixture_adapter_skeleton_no_source_access",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "offlineFixtureOnly": true,
+  "normalModeExposure": "blocked",
+  "runtimeUsePolicy": "blocked_no_runtime_consumer",
+  "productionUsePolicy": "blocked",
+  "publicInterfacePolicy": "blocked_no_public_interface",
+  "moduleBoundaryPolicy": "blocked_no_module_boundary_change",
+  "derivedFromBoundaryPath": "docs/phase-4o-5-source-adapter-fixture-ingestion-boundary.md",
+  "separateFromPlaceholderScaffoldManifestPath": "src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-4-placeholder-scaffold-manifest.v0.1.json",
+  "adapterOutputPolicy": "offline_fixture_test_only_not_scaffold_manifest",
+  "deterministic": true,
+  "truthFirstOrder": [
+    "spatial_scaffold_first",
+    "facade_recognizability_second",
+    "art_direction_third"
+  ],
+  "sourceAccessPolicy": {
+    "externalDataFetched": false,
+    "externalDataDownloaded": false,
+    "externalDataCached": false,
+    "externalDataIngested": false,
+    "externalDataConverted": false,
+    "externalDataRendered": false,
+    "externalImageryAccessed": false,
+    "liveNetworkAccess": false,
+    "mapillaryAutomation": false,
+    "blenderOrGlbAssetWork": false,
+    "runtimeRenderingChanged": false,
+    "proceduralScaffoldRendering": false,
+    "packageOrToolingChanged": false,
+    "publicInterfacesChanged": false,
+    "moduleBoundariesChanged": false
+  },
+  "corridor": {
+    "corridorId": "p4o6-corridor-greenpoint-ave-manhattan-to-franklin",
+    "label": "Greenpoint Ave from Manhattan Ave to Franklin Ave",
+    "targetStreet": "Greenpoint Ave",
+    "fromCrossStreet": "Manhattan Ave",
+    "toCrossStreet": "Franklin Ave",
+    "geometryStatus": "offline_fixture_symbolic",
+    "spatialClaimStatus": "not_verified",
+    "groundingClaimStatus": "approximate_symbolic_not_verified",
+    "claimStatusLabels": [
+      "review_only",
+      "qa_only",
+      "offline_fixture_test_only",
+      "not_verified",
+      "not_source_accessed",
+      "no_claim_promotion"
+    ]
+  },
+  "sourceLaneOrder": [
+    "building_container",
+    "street_sidewalk_curb_grounding",
+    "height_massing"
+  ],
+  "recordOrder": [
+    "p4o6-adapter-building-container-manhattan-corner-north",
+    "p4o6-adapter-building-container-mid-corridor-south",
+    "p4o6-adapter-grounding-manhattan-intersection",
+    "p4o6-adapter-grounding-mid-corridor-sidewalk-south",
+    "p4o6-adapter-height-massing-manhattan-corner-north",
+    "p4o6-adapter-height-massing-mid-corridor-south"
+  ],
+  "blockedClaimsRequired": [
+    "no_business_claim",
+    "no_tenant_claim",
+    "no_storefront_claim",
+    "no_frontage_promotion",
+    "no_exact_facade_claim",
+    "no_entrance_claim",
+    "no_signage_claim",
+    "no_active_status_claim",
+    "no_exact_address_claim",
+    "no_exact_height_claim",
+    "no_exact_roof_claim",
+    "no_production_claim",
+    "no_public_claim"
+  ],
+  "buildingContainerSourceRows": [
+    {
+      "recordType": "offline_source_adapter_row",
+      "recordId": "p4o6-adapter-building-container-manhattan-corner-north",
+      "sourceLane": "building_container",
+      "candidateSource": "NYC Building Footprints",
+      "sourceRecordStatus": "offline_fixture_placeholder_no_source_record_loaded",
+      "adapterOutputFamily": "building_container_input",
+      "adapterOutputStatus": "offline_fixture_test_only_not_manifest_output",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "offlineFixtureOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "publicInterfacePolicy": "blocked_no_public_interface",
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "offline_fixture_test_only",
+        "not_verified",
+        "not_source_accessed",
+        "building_container_context_only",
+        "no_claim_promotion"
+      ],
+      "sourceRowShape": {
+        "sourcePrimaryKeyField": "bin_or_footprint_id_placeholder",
+        "geometryField": "footprint_geometry_placeholder",
+        "geometryStatus": "symbolic_no_coordinates",
+        "containerRole": "endpoint_corner_context"
+      },
+      "allowedAdapterUseIfLaterApproved": [
+        "building_container_input_shape_test",
+        "scaffold_building_mass_input_mapping_test"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "offline_source_adapter_row",
+      "recordId": "p4o6-adapter-building-container-mid-corridor-south",
+      "sourceLane": "building_container",
+      "candidateSource": "PLUTO/MapPLUTO-style building container fallback",
+      "sourceRecordStatus": "offline_fixture_placeholder_no_source_record_loaded",
+      "adapterOutputFamily": "building_container_input",
+      "adapterOutputStatus": "offline_fixture_test_only_not_manifest_output",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "offlineFixtureOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "publicInterfacePolicy": "blocked_no_public_interface",
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "offline_fixture_test_only",
+        "not_verified",
+        "not_source_accessed",
+        "building_container_context_only",
+        "no_claim_promotion"
+      ],
+      "sourceRowShape": {
+        "sourcePrimaryKeyField": "bbl_or_lot_id_placeholder",
+        "geometryField": "parcel_or_lot_context_placeholder",
+        "geometryStatus": "symbolic_no_coordinates",
+        "containerRole": "mid_corridor_context"
+      },
+      "allowedAdapterUseIfLaterApproved": [
+        "building_container_input_shape_test",
+        "parcel_context_input_mapping_test"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "groundingSourceRows": [
+    {
+      "recordType": "offline_source_adapter_row",
+      "recordId": "p4o6-adapter-grounding-manhattan-intersection",
+      "sourceLane": "street_sidewalk_curb_grounding",
+      "candidateSource": "CSCL plus sidewalk/curb/planimetric datasets",
+      "sourceRecordStatus": "offline_fixture_placeholder_no_source_record_loaded",
+      "adapterOutputFamily": "grounding_input",
+      "adapterOutputStatus": "offline_fixture_test_only_not_manifest_output",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "offlineFixtureOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "publicInterfacePolicy": "blocked_no_public_interface",
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "offline_fixture_test_only",
+        "approximate",
+        "symbolic",
+        "not_verified",
+        "not_source_accessed",
+        "no_claim_promotion"
+      ],
+      "sourceRowShape": {
+        "streetCenterlineField": "street_segment_placeholder",
+        "sidewalkField": "sidewalk_surface_placeholder",
+        "curbField": "curb_line_placeholder",
+        "intersectionRole": "manhattan_ave_endpoint",
+        "geometryStatus": "symbolic_no_coordinates"
+      },
+      "allowedAdapterUseIfLaterApproved": [
+        "corridor_grounding_input_shape_test",
+        "intersection_grounding_mapping_test"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "offline_source_adapter_row",
+      "recordId": "p4o6-adapter-grounding-mid-corridor-sidewalk-south",
+      "sourceLane": "street_sidewalk_curb_grounding",
+      "candidateSource": "sidewalk/curb/planimetric datasets",
+      "sourceRecordStatus": "offline_fixture_placeholder_no_source_record_loaded",
+      "adapterOutputFamily": "grounding_input",
+      "adapterOutputStatus": "offline_fixture_test_only_not_manifest_output",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "offlineFixtureOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "publicInterfacePolicy": "blocked_no_public_interface",
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "offline_fixture_test_only",
+        "approximate",
+        "symbolic",
+        "not_verified",
+        "not_source_accessed",
+        "no_claim_promotion"
+      ],
+      "sourceRowShape": {
+        "streetCenterlineField": "street_segment_placeholder",
+        "sidewalkField": "sidewalk_surface_placeholder",
+        "curbField": "curb_line_placeholder",
+        "intersectionRole": "none_mid_corridor",
+        "geometryStatus": "symbolic_no_coordinates"
+      },
+      "allowedAdapterUseIfLaterApproved": [
+        "sidewalk_grounding_input_shape_test",
+        "curb_alignment_input_mapping_test"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "heightMassingSourceRows": [
+    {
+      "recordType": "offline_source_adapter_row",
+      "recordId": "p4o6-adapter-height-massing-manhattan-corner-north",
+      "sourceLane": "height_massing",
+      "candidateSource": "NYC 3-D Building Model / CityGML-style massing",
+      "sourceRecordStatus": "offline_fixture_placeholder_no_source_record_loaded",
+      "adapterOutputFamily": "height_massing_input",
+      "adapterOutputStatus": "offline_fixture_test_only_not_manifest_output",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "offlineFixtureOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "publicInterfacePolicy": "blocked_no_public_interface",
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "offline_fixture_test_only",
+        "not_verified",
+        "not_source_accessed",
+        "height_massing_context_only",
+        "no_claim_promotion"
+      ],
+      "sourceRowShape": {
+        "heightField": "height_value_placeholder",
+        "floorCountFallbackField": "floor_count_placeholder",
+        "roofField": "roof_shape_placeholder",
+        "heightValue": null,
+        "floorCountFallback": null,
+        "roofStatus": "blocked_not_verified"
+      },
+      "allowedAdapterUseIfLaterApproved": [
+        "height_massing_input_shape_test",
+        "massing_confidence_mapping_test"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "offline_source_adapter_row",
+      "recordId": "p4o6-adapter-height-massing-mid-corridor-south",
+      "sourceLane": "height_massing",
+      "candidateSource": "PLUTO/MapPLUTO-style floor-count fallback",
+      "sourceRecordStatus": "offline_fixture_placeholder_no_source_record_loaded",
+      "adapterOutputFamily": "height_massing_input",
+      "adapterOutputStatus": "offline_fixture_test_only_not_manifest_output",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "offlineFixtureOnly": true,
+      "normalModeExposure": "blocked",
+      "runtimeUsePolicy": "blocked_no_runtime_consumer",
+      "productionUsePolicy": "blocked",
+      "publicInterfacePolicy": "blocked_no_public_interface",
+      "claimStatusLabels": [
+        "review_only",
+        "qa_only",
+        "offline_fixture_test_only",
+        "not_verified",
+        "not_source_accessed",
+        "height_massing_context_only",
+        "no_claim_promotion"
+      ],
+      "sourceRowShape": {
+        "heightField": "none_fallback_placeholder",
+        "floorCountFallbackField": "floor_count_placeholder",
+        "roofField": "none",
+        "heightValue": null,
+        "floorCountFallback": null,
+        "roofStatus": "blocked_not_verified"
+      },
+      "allowedAdapterUseIfLaterApproved": [
+        "floor_count_fallback_shape_test",
+        "massing_fallback_mapping_test"
+      ],
+      "blockedClaims": [
+        "no_business_claim",
+        "no_tenant_claim",
+        "no_storefront_claim",
+        "no_frontage_promotion",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "summary": {
+    "buildingContainerSourceRowCount": 2,
+    "groundingSourceRowCount": 2,
+    "heightMassingSourceRowCount": 2,
+    "totalOfflineAdapterRowCount": 6,
+    "runtimeConsumerCount": 0,
+    "publicInterfaceCount": 0,
+    "moduleBoundaryChangeCount": 0,
+    "sourceFetchCount": 0,
+    "sourceIngestionCount": 0,
+    "businessLinkCount": 0,
+    "signLinkCount": 0,
+    "entranceLinkCount": 0,
+    "exactFacadeClaimCount": 0,
+    "tenantFrontageClaimCount": 0,
+    "claimPromotionCount": 0,
+    "scaffoldManifestOutputCount": 0
+  }
+}

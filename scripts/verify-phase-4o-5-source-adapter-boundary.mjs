@@ -28,7 +28,7 @@ const requiredNoteSnippets = [
 ];
 
 const requiredBriefSnippets = [
-  "Batch 4O-5: Source Adapter And Fixture Ingestion Boundary",
+  "4O-5 is complete and verified.",
   "Current executable batch: none.",
   "No external data download, cache, ingestion, conversion, render use, source access",
   "No package/tooling changes",
