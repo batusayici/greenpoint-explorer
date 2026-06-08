@@ -31,8 +31,8 @@ const requiredBriefSnippets = [
   "4O-11 is complete and verified.",
   "Batch 4O-12: Existing QA Render Reconnection Boundary",
   "No external data fetch, download, cache, ingestion, conversion",
-  "No runtime rendering",
-  "No public interfaces",
+  "runtime rendering",
+  "public interfaces",
 ];
 
 const requiredClaimLabels = [

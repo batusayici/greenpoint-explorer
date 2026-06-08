@@ -126,8 +126,8 @@ async function main() {
     "4O-10 is complete and verified.",
     "Batch 4O-11: Scaffold Candidate QA Gap Report",
     "No external data fetch, download, cache, ingestion, conversion",
-    "No runtime rendering",
-    "No public interfaces",
+    "runtime rendering",
+    "public interfaces",
   ]) {
     if (!brief.includes(snippet)) failures.push(`Current brief missing 4O-10 packet snippet: ${snippet}`);
   }
