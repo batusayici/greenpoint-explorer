@@ -55,15 +55,49 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Truth-first hybrid planning reconciliation is complete; `Batch 4O: Truth-First Procedural Corridor Scaffold` is proposed as the next implementation candidate.
+- Current phase: `Batch 4O-1: Truth-First Corridor Data Contract` is complete and pending Batu review.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` proposes 4O as the next implementation candidate but holds with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. The proposed 4O pipeline is GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4O-1 Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4O-1 Truth-First Corridor Data Contract
+
+Status:
+- Complete and verified; pending Batu review.
+
+Scope:
+- Define the first source-to-scaffold data contract for a truthful procedural Greenpoint Ave corridor scaffold from Manhattan Ave to Franklin Ave.
+
+Files changed:
+- `docs/phase-4o-1-truth-first-corridor-data-contract.md`
+- `scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git status --short` before edits: clean.
+- `node scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`
+- `git diff --check`
+
+Outcome:
+- Added a narrow 4O-1 contract note and verifier.
+- Defined planning-only / fixture-ready JSON record shapes for building footprints, street/sidewalk/curb grounding, height/massing fallbacks, frontage/corner classification, and manual override slots.
+- Preserved strict claim boundaries for storefront, tenant, exact facade, entrance, signage, active status, exact address, production, and public claims.
+- Kept Blender/GLB as an optional override hook only.
+- Did not download data, create source fixtures, implement ingestion, alter runtime rendering, add Blender/GLB assets, add Mapillary automation, change package/tooling, or change public interfaces/module boundaries.
+
+Unresolved decisions:
+- Batu owns 4O-1 acceptance, whether to open 4O-2 fixture/source-stub work, source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the 4O-1 Batu review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-08 - Truth-First Hybrid Planning Reconciliation
 
