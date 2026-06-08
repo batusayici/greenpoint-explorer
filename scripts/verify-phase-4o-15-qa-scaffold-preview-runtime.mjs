@@ -12,10 +12,11 @@ const mappingPath = "src/data/corridor-scaffold/greenpoint-ave-manhattan-to-fran
 const candidatePath = "src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-10-scaffold-candidates.v0.1.json";
 
 const requiredRuntimeSnippets = [
-  "import qaScaffoldPreviewAdapter from \"./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-14-qa-preview-scaffold-adapter.v0.1.json\";",
-  "const qaScaffoldPreviewIndex = useMemo(() => buildQAScaffoldPreviewIndex(qaScaffoldPreviewAdapter), []);",
+  "import qaScaffoldPreviewSeedAdapter from \"./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-14-qa-preview-scaffold-adapter.v0.1.json\";",
+  "import qaScaffoldPreviewExpansionFixture from \"./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.v0.1.json\";",
+  "const qaScaffoldPreviewIndex = useMemo(() => buildQAScaffoldPreviewIndex(qaScaffoldPreviewAdapter), [qaScaffoldPreviewAdapter]);",
   "addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex",
-  "addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter, visualObjects);",
+  "addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter.renderRecords, visualObjects);",
   "createQAScaffoldPreviewLayer(object, qaScaffoldPreviewRecords)",
   "child.userData.stateRole === \"qaScaffoldPreview\"",
   "child.visible = qaEnabled;",

@@ -212,7 +212,7 @@
   left: auto;
   z-index: 5;
   width: 310px;
-  max-height: 178px;
+  max-height: 232px;
   overflow: hidden;
   padding: 8px;
   border: 1px solid rgba(138, 199, 190, 0.34);
@@ -235,6 +235,33 @@
   font-size: 0.62rem;
   line-height: 1.15;
   list-style: none;
+}
+
+.phase4b-qa-panel .phase4b-qa-filter-row {
+  display: flex;
+  grid-template-columns: none;
+  gap: 6px;
+  align-items: center;
+  margin: 7px 0;
+  pointer-events: auto;
+}
+
+.phase4b-qa-filter-row button {
+  min-height: 26px;
+  padding: 0 8px;
+  border: 1px solid rgba(138, 199, 190, 0.34);
+  border-radius: 5px;
+  background: rgba(18, 23, 22, 0.56);
+  color: rgba(248, 236, 212, 0.76);
+  font-size: 0.6rem;
+  font-weight: 820;
+  cursor: pointer;
+}
+
+.phase4b-qa-filter-row button[aria-pressed="true"] {
+  border-color: rgba(255, 215, 111, 0.72);
+  background: rgba(79, 165, 151, 0.32);
+  color: #f8f0d6;
 }
 
 .phase4b-side-dot {

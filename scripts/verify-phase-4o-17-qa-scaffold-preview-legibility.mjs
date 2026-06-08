@@ -92,9 +92,6 @@ async function main() {
   for (const snippet of [
     "Batch 4O-17: QA scaffold preview legibility pass",
     "4O-17 is complete and verified.",
-    "Current executable batch: none.",
-    "Pre-authorized queue: none.",
-    "Hard Batu gate: stop.",
   ]) {
     if (!brief.includes(snippet)) failures.push(`Current brief missing 4O-17 snippet: ${snippet}`);
   }

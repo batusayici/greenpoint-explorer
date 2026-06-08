@@ -55,15 +55,62 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4O-17: QA scaffold preview legibility pass` is complete and verified at the Batu review gate.
+- Current phase: `Batch 4O-20: Spatial Usefulness Review Pack` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4O-17 Batu review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. 4O-6 adds a deterministic offline source-adapter fixture skeleton. 4O-7 normalizes those rows into scaffold-input candidate shapes. 4O-8 adds the deterministic scaffold-input fixture. 4O-9 adds the QA-only non-rendering scaffold-input inspector. 4O-10 adds deterministic scaffold-candidate records derived from 4O-8. 4O-11 adds a QA-only scaffold candidate gap/coverage report. 4O-12 defines the existing QA render reconnection boundary. 4O-13 maps the candidates to existing QA render anchors. 4O-14 adds the QA scaffold preview adapter. 4O-15 renders generic QA-only scaffold placeholders in the existing runtime behind the QA toggle. 4O-16 adds the QA scaffold preview report and review gate. 4O-17 improves QA-only scaffold preview legibility with labels, outlines, family counts, selected-record readouts, and adapter legibility metadata. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4O-20 Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 defines the first source-to-scaffold data contract for future GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides work. 4O-2 adds the first planning-safe fixture-ready stub for that contract. 4O-3 defines the internal deterministic scaffold-generation contract. 4O-4 adds a minimal deterministic placeholder scaffold manifest. 4O-5 defines the source-adapter / fixture-ingestion boundary for future real corridor scaffold data. 4O-6 adds a deterministic offline source-adapter fixture skeleton. 4O-7 normalizes those rows into scaffold-input candidate shapes. 4O-8 adds the deterministic scaffold-input fixture. 4O-9 adds the QA-only non-rendering scaffold-input inspector. 4O-10 adds deterministic scaffold-candidate records derived from 4O-8. 4O-11 adds a QA-only scaffold candidate gap/coverage report. 4O-12 defines the existing QA render reconnection boundary. 4O-13 maps the candidates to existing QA render anchors. 4O-14 adds the QA scaffold preview adapter. 4O-15 renders generic QA-only scaffold placeholders in the existing runtime behind the QA toggle. 4O-16 adds the QA scaffold preview report and review gate. 4O-17 improves QA-only scaffold preview legibility with labels, outlines, family counts, selected-record readouts, and adapter legibility metadata. 4O-18 expands the QA scaffold preview to 26 derived QA-only records across 10 existing building anchors and 6 guide anchors. 4O-19 adds QA-only family controls/readouts. 4O-20 records the spatial-usefulness review pack and Batu stop gate. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4O-18 To 4O-20 Corridor-Wide QA Scaffold Expansion And Spatial Review
+
+Status:
+- Complete and verified; pending Batu review.
+
+Scope:
+- Expand the existing QA scaffold preview into a more useful corridor-wide spatial scaffold review layer using existing local runtime anchors only, add QA-only family controls/readouts, and record a spatial-usefulness review pack.
+
+Files changed:
+- `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `docs/reports/phase-4o-20-qa-scaffold-spatial-usefulness-review.md`
+- `scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
+- `scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `scripts/verify-phase-4o-20-spatial-usefulness-review-pack.mjs`
+- `scripts/verify-phase-4o-15-qa-scaffold-preview-runtime.mjs`
+- `scripts/verify-phase-4o-17-qa-scaffold-preview-legibility.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `git status --short` before edits: clean.
+- Browser inspection at `http://127.0.0.1:5181/` in QA mode and normal mode.
+- `node scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
+- `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `node scripts/verify-phase-4o-20-spatial-usefulness-review-pack.mjs`
+- Relevant prior 4O verifiers.
+- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Expanded QA scaffold preview coverage from 6 seed records to 26 derived QA-only records.
+- Added 10 building/container placeholders, 6 grounding guide placeholders, and 10 height/massing cap placeholders.
+- Added QA-only family filters for `container`, `grounding`, and `height`.
+- Browser QA mode reported `26 visible / 26 QA placeholders / 0 normal`; turning `container` off reported `16 visible / 26 QA placeholders / 0 normal`.
+- Normal mode remained protected: QA panel and family filters were absent, and scaffold readouts reported `QA off`.
+
+Unresolved decisions:
+- Batu owns whether the expanded QA scaffold is spatially useful enough, whether a corrective camera/framing/placement/color hierarchy pass is needed, and whether source-backed scaffold ingestion may open.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the 4O-20 Batu review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-08 - Batch 4O-17 QA Scaffold Preview Legibility Pass
 
