@@ -15,6 +15,57 @@ This document defines the Phase 2 source hierarchy and source-use warnings for t
 
 It does not approve ingestion scripts, scraping, live data, API clients, generated scene data, mock data, app source changes, production data use, or public-release claims.
 
+## Phase 4O Truth-First Addendum
+
+Status: planning-only source-lane addendum / not access, ingestion, render-use, or production approval
+
+The proposed `Batch 4O: Truth-First Procedural Corridor Scaffold` reframes the next implementation candidate around:
+
+```text
+Spatial truth first.
+Facade recognizability second.
+Art direction third.
+```
+
+Future 4O implementation remains blocked until Batu explicitly opens it in `docs/CURRENT_EXECUTION_BRIEF.md`. This addendum does not approve source access, download, cache, ingestion, conversion, render use, extraction, training, fixtures, dependencies, architecture changes, runtime changes, public interfaces, module-boundary changes, production use, normal-mode exposure, or public/product claims.
+
+Candidate source lanes for 4O planning:
+
+- NYC Building Footprints: candidate base geometry for building outlines, building IDs, massing, and footprint-to-frontage alignment. Does not prove storefront segmentation, tenant frontage, entrance placement, facade appearance, active status, exact address placement, or production readiness.
+- NYC 3-D Building Model / CityGML-style massing: candidate source for heights, roof shapes, setbacks, and more accurate massing where available, with footprint attributes or floor estimates as possible future fallbacks. Does not prove facade, storefront, entrance, signage, tenant, business, active-status, exact-address, or production claims.
+- NYC Street Centerline / CSCL: candidate source for street alignment, corridor bounds, intersection structure, and street-width hints. It should not be overused for sidewalks where better sidewalk/curb polygons are available, and it does not prove exact pedestrian-realm detail.
+- NYC sidewalk / curb / planimetric datasets: candidate source for sidewalk polygons, curb edges, pedestrian realm, and street/sidewalk grounding. Does not prove storefront entrances, exact facade detail, business frontage, or production visual assets.
+- PLUTO / MapPLUTO: candidate source for lot boundaries, land use, building class, floor count, year built, zoning, and context classification. Does not prove current tenants, storefront order, entrance position, facade appearance, active status, or exact business placement.
+- User-supplied facade photos: candidate evidence for manual/evidence-backed facade overrides and facade cue validation. They must keep provenance, usage status, reviewed date, supported claims, and blocked claims explicit.
+- Mapillary or other street-level imagery metadata: experimental only. It may later help review street furniture, traffic/sign/crosswalk/hydrant/lamp cues if a source-policy gate allows it, but it must not be treated as reliable automatic facade truth or production imagery.
+- POI/business sources: separate from geometry truth. LiveXYZ, local directories, Foursquare, OSM, or similar sources may inform later cards or business identity only after approval, but they must not be treated as facade geometry, storefront frontage, entrance, signage, tenant frontage, or active-status proof.
+
+Planning-only future building/override record shape, not an implemented public contract:
+
+```json
+{
+  "buildingId": "bin_3064700",
+  "generationMode": "procedural_massing",
+  "overrideAssetId": null,
+  "facadeEvidenceStatus": "none",
+  "detailLevel": "massing_only"
+}
+```
+
+Optional later override example, still planning-only:
+
+```json
+{
+  "buildingId": "bin_3064700",
+  "generationMode": "asset_override",
+  "overrideAssetId": "bldg.greenpoint.corner_storefront.v01",
+  "facadeEvidenceStatus": "batu_photo_reviewed",
+  "detailLevel": "facade_authored"
+}
+```
+
+Inked Indie / Compact Corner remains the approved visual direction. Art-direction translation, production visual assets, and Blender/GLB asset use are deferred until spatial recognizability is proven and Batu opens the relevant later gate. Blender remains an optional enhancement/override layer, not the immediate source of the spatial scaffold.
+
 ## Approved Default Source Hierarchy
 
 1. LiveXYZ - preferred pending access, not assumed available.

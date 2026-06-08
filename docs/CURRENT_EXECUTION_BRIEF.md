@@ -1,57 +1,49 @@
-# Current Execution Brief - Phase 4I-4 Complete At Batu Review Gate
+# Current Execution Brief - Truth-First 4O Candidate Planning Gate
 
-Status: `4I-4 QA corridor cue legibility correction` is complete and ready for Batu visual review.
+Status: docs-only planning reconciliation complete. `Batch 4O: Truth-First Procedural Corridor Scaffold` is proposed as the next implementation candidate, but 4O implementation is not open.
 
-Current executable batch: none. Pending Batu visual/review gate and later approval or updated current brief.
+Current executable batch: none. Pending Batu approval or an updated current brief explicitly opening 4O implementation.
+
+Proposed next implementation candidate: `Batch 4O: Truth-First Procedural Corridor Scaffold`.
+
+Target corridor: Greenpoint Ave from Manhattan Ave to Franklin Ave.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop. Do not proceed to 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M visual-system/art-direction work, 4N normal-mode promotion, source promotion, real imagery intake, source access/download/cache/ingestion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, renderer changes, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Hard Batu gate: stop. Do not implement 4O, access/download/cache/ingest/convert/render/use source data, add source fixtures, add ingestion scripts, add dependencies or package tooling, change renderer/runtime code, change public interfaces or module boundaries, open 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset-system/art-direction work, 4N normal-mode promotion, source promotion, real imagery intake, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-Owner boundary: Batu owns visual/legibility acceptance, whether to open 4J or another corrective packet, source approval, usage-rights acceptance, source promotion, claim-level promotion, production/public claims, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant/material/active-status claims, credential/API approval, architecture-boundary approval, visual-system/art-direction work, and any later MVP gates.
+Owner boundary: Batu owns approval to open 4O implementation, source access and usage-rights acceptance, spatial recognizability acceptance, visual/legibility acceptance, source promotion, claim-level promotion, production/public claims, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant/material/active-status claims, credential/API approval, architecture-boundary approval, art-direction translation timing, and any later MVP gates.
 
-## Completed Corrective Batch
+## Completed Docs-Only Reconciliation
 
-### 4I-4 QA Corridor Cue Legibility Correction
+### Truth-First Hybrid Planning Reframe
 
 What changed:
 
-- Updated stale runtime header text so the QA view identifies `Batch 4I-4 / corridor cue legibility correction` instead of the earlier 4E-5 endpoint proof.
-- Reduced mid-corridor insufficient-evidence placeholder visual noise with narrower, dimmer, simpler QA cue planes and softer hover/selection emphasis.
-- Preserved endpoint evidence-backed facade volumes as the visually primary facade layer.
-- Kept blocked/no-evidence records out of rendered facade geometry.
-- Kept normal mode protected.
-- Added verifier coverage for the 4I-4 label and subdued placeholder requirements.
+- Reframed the next direction around `Spatial truth first. Facade recognizability second. Art direction third.`
+- Proposed `Batch 4O: Truth-First Procedural Corridor Scaffold` as the next implementation candidate for the Manhattan-to-Franklin Greenpoint Ave corridor.
+- Reframed the future pipeline as GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides.
+- Preserved Inked Indie / Compact Corner as the approved visual direction while deferring art-direction translation until spatial recognizability is proven.
+- Kept Blender valuable as an optional enhancement/override layer, not the immediate primary production path.
 
 ## Preserved Boundaries
 
-- No external source access, download, cache, ingestion, rendering, extraction, or training.
-- No source promotion.
-- No business linkage, POI linkage, authoritative storefront anchors, 4J storefront bay/frontage candidates, or exact frontage, entrance, address, sign, tenant, material, active-status, or business claims.
-- No normal-mode facade cue exposure.
-- No production assets.
-- No new dependencies, credentials, paid APIs, renderer replacement, architecture changes, Google Street View / Google 3D Tiles use, Qwen/Oxen work, 4J, 4K, or 4M work.
+- No runtime code, source fixtures, package/tooling changes, ingestion scripts, data downloads, renderer changes, public interfaces, or module-boundary changes.
+- No source access, download, cache, ingestion, conversion, rendering, extraction, training, or promotion.
+- No business linkage, POI linkage, authoritative storefront anchors, storefront bay/frontage candidates, or exact storefront, frontage, entrance, address, sign, tenant, material, active-status, or business claims.
+- No normal-mode facade/corridor promotion.
+- No production assets, production visual pipeline, production data pipeline, public/product claims, or architecture approval.
 
 ## Verification Completed
 
-- `node scripts/verify-phase-4i-1-corridor-facade-cue-expansion-plan.mjs`
-- `node scripts/verify-phase-4i-corridor-facade-cues.mjs`
-- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
-- `node scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
-- `node scripts/verify-phase-4f-facade-cue-model.mjs`
-- `node scripts/verify-phase-4h-1-facade-evidence-intake-workflow.mjs`
-- `node scripts/verify-phase-4g-b-facade-evidence-source-audit.mjs`
-- `node scripts/verify-phase-4g-a-geometry-source-audit.mjs`
-- `node scripts/verify-phase-4g-source-policy-contract.mjs`
-- `npm run build`
+- `git status --short` before edits: clean.
 - `git diff --check`
-
-Browser QA note: visual browser smoke should be attempted for Batu review when the local dev server can bind in the execution environment.
 
 ## Unresolved Decisions For Batu
 
-- Whether to accept the 4I-4 legibility correction.
-- Whether to open 4J storefront bay/frontage candidates or another later packet.
-- Whether any source promotion, claim promotion, source access/storage/display, normal/product exposure, production use, business linkage, exact claim work, visual-system/art-direction work, dependency/API/credential work, renderer change, or architecture change may open.
+- Whether to open `Batch 4O: Truth-First Procedural Corridor Scaffold` as an implementation batch.
+- Which 4O source-access/download/cache/conversion/render-use boundaries, if any, are approved.
+- Whether the first 4O proof should use only repo-local/previously approved source fixtures or newly approved NYC geospatial data access.
+- What spatial recognizability acceptance bar must be met before facade recognizability, manual overrides, Blender/GLB enhancement, or art-direction translation may proceed.

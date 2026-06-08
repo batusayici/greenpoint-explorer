@@ -55,15 +55,47 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: Phase 4I-4 QA corridor cue legibility correction is complete and verified, pending Batu visual/review gate.
+- Current phase: Truth-first hybrid planning reconciliation is complete; `Batch 4O: Truth-First Procedural Corridor Scaffold` is proposed as the next implementation candidate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the 4I-4 Batu visual/review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet for 4I-1, 4I-2, and 4I-3 only. 4I-1 defined the corridor facade cue expansion plan. 4I-2 added a QA-only corridor facade cue fixture/verifier using existing repo-local Batu-supplied endpoint evidence, existing geometry containers, and stable scene IDs: 6 endpoint evidence-backed records, 36 mid-corridor insufficient-evidence records, and 100 blocked/no-evidence gaps. 4I-3 added QA-only runtime legibility for the 4I fixture while preserving normal mode. 4I-4 corrected stale runtime labels and subdued mid-corridor placeholder geometry for visual review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` proposes 4O as the next implementation candidate but holds with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. The proposed 4O pipeline is GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer changes, public interfaces, module boundaries, and architecture changes remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Truth-First Hybrid Planning Reconciliation
+
+Status:
+- Complete; docs-only planning update.
+
+Scope:
+- Reframe the next planning direction around `Batch 4O: Truth-First Procedural Corridor Scaffold` without opening implementation.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/reference/DATA_SOURCES.md`
+
+Verification:
+- `git status --short` before edits: clean.
+- `git diff --check`
+
+Outcome:
+- Proposed 4O as the next implementation candidate for Greenpoint Ave from Manhattan Ave to Franklin Ave.
+- Reframed the roadmap around spatial truth first, facade recognizability second, and art direction third.
+- Reclassified Blender/GLB assets as optional enhancement/override layers rather than the immediate primary production path.
+- Added planning-only 4O source-lane documentation and a planning-only future building/override record shape.
+- Did not change runtime code, source fixtures, package/tooling, ingestion scripts, data downloads, renderer, public interfaces, or module boundaries.
+
+Unresolved decisions:
+- Batu owns whether to open 4O implementation, source access/download/cache/conversion/render-use boundaries, spatial recognizability acceptance, and later facade/art/promotion gates.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now proposes 4O as the next implementation candidate and keeps implementation blocked pending Batu approval.
 
 ### 2026-06-08 - Batch 4I-4 QA Corridor Cue Legibility Correction
 
