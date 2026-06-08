@@ -1,0 +1,716 @@
+{
+  "schemaVersion": "phase-4o-2-truth-first-corridor-fixture-stub.v0.1",
+  "fixtureId": "p4o2-fixture-stub-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4O-2",
+  "status": "fixture_ready_stub_planning_safe_no_source_data",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "fixtureReadyOnly": true,
+  "normalModeExposure": "blocked",
+  "runtimeUsePolicy": "blocked_no_runtime_consumer",
+  "productionUsePolicy": "blocked",
+  "createdFor": "Smallest repo-local source-to-scaffold fixture stub for a future truth-first Greenpoint Ave corridor scaffold.",
+  "corridor": {
+    "corridorId": "p4o2-corridor-greenpoint-ave-manhattan-to-franklin",
+    "label": "Greenpoint Ave from Manhattan Ave to Franklin Ave",
+    "targetStreet": "Greenpoint Ave",
+    "fromCrossStreet": "Manhattan Ave",
+    "toCrossStreet": "Franklin Ave",
+    "geometryStatus": "placeholder_reference_only",
+    "spatialClaimStatus": "not_verified",
+    "claimBoundary": [
+      "no_exact_address_claim",
+      "no_exact_geometry_claim",
+      "no_production_claim",
+      "no_public_claim"
+    ]
+  },
+  "sourceAccessPolicy": {
+    "externalDataDownloaded": false,
+    "externalDataCached": false,
+    "externalDataIngested": false,
+    "externalDataConverted": false,
+    "externalDataRendered": false,
+    "externalImageryAccessed": false,
+    "mapillaryAutomation": false,
+    "blenderOrGlbAssetWork": false,
+    "runtimeRenderingChanged": false,
+    "proceduralScaffoldGeneration": false,
+    "packageOrToolingChanged": false,
+    "publicInterfacesChanged": false,
+    "moduleBoundariesChanged": false
+  },
+  "candidateSourceReferences": [
+    {
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "candidateSource": "NYC Building Footprints",
+      "sourceLane": "building_footprints",
+      "sourceAccessStatus": "not_accessed_placeholder_reference_only",
+      "allowedFutureUseIfApproved": [
+        "building_outline_review",
+        "building_container_identity",
+        "footprint_frontage_alignment_review"
+      ],
+      "blockedUses": [
+        "source_download",
+        "source_cache",
+        "source_ingestion",
+        "runtime_render_use",
+        "storefront_frontage_claim",
+        "tenant_claim",
+        "exact_facade_claim",
+        "production_use"
+      ]
+    },
+    {
+      "sourceReferenceId": "p4o2-source-ref-cscl",
+      "candidateSource": "CSCL",
+      "sourceLane": "street_alignment",
+      "sourceAccessStatus": "not_accessed_placeholder_reference_only",
+      "allowedFutureUseIfApproved": [
+        "corridor_alignment_review",
+        "intersection_reference",
+        "street_width_hint_review"
+      ],
+      "blockedUses": [
+        "source_download",
+        "source_cache",
+        "source_ingestion",
+        "runtime_render_use",
+        "exact_address_claim",
+        "production_use"
+      ]
+    },
+    {
+      "sourceReferenceId": "p4o2-source-ref-sidewalk-curb-planimetrics",
+      "candidateSource": "Sidewalk/curb/planimetric datasets",
+      "sourceLane": "street_sidewalk_curb_grounding",
+      "sourceAccessStatus": "not_accessed_placeholder_reference_only",
+      "allowedFutureUseIfApproved": [
+        "sidewalk_grounding_review",
+        "curb_alignment_review",
+        "pedestrian_realm_review"
+      ],
+      "blockedUses": [
+        "source_download",
+        "source_cache",
+        "source_ingestion",
+        "runtime_render_use",
+        "entrance_claim",
+        "production_use"
+      ]
+    },
+    {
+      "sourceReferenceId": "p4o2-source-ref-nyc-3d-or-citygml",
+      "candidateSource": "NYC 3-D Building Model / CityGML-style massing",
+      "sourceLane": "height_massing_fallback",
+      "sourceAccessStatus": "not_accessed_placeholder_reference_only",
+      "allowedFutureUseIfApproved": [
+        "height_confidence_review",
+        "massing_confidence_review",
+        "roof_or_setback_availability_review"
+      ],
+      "blockedUses": [
+        "source_download",
+        "source_cache",
+        "source_ingestion",
+        "source_conversion",
+        "runtime_render_use",
+        "exact_height_claim",
+        "exact_roof_claim",
+        "production_use"
+      ]
+    },
+    {
+      "sourceReferenceId": "p4o2-source-ref-pluto-mappluto",
+      "candidateSource": "PLUTO/MapPLUTO",
+      "sourceLane": "parcel_and_floor_fallback",
+      "sourceAccessStatus": "not_accessed_placeholder_reference_only",
+      "allowedFutureUseIfApproved": [
+        "parcel_context_review",
+        "floor_count_fallback_review",
+        "land_use_context_review"
+      ],
+      "blockedUses": [
+        "source_download",
+        "source_cache",
+        "source_ingestion",
+        "runtime_render_use",
+        "tenant_claim",
+        "exact_address_claim",
+        "active_status_claim",
+        "production_use"
+      ]
+    }
+  ],
+  "blockedClaimsRequired": [
+    "no_storefront_claim",
+    "no_tenant_claim",
+    "no_exact_facade_claim",
+    "no_entrance_claim",
+    "no_signage_claim",
+    "no_active_status_claim",
+    "no_exact_address_claim",
+    "no_production_claim",
+    "no_public_claim"
+  ],
+  "buildingFootprintRecords": [
+    {
+      "recordType": "building_footprint",
+      "recordId": "p4o2-building-footprint-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_manhattan_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "representativeRole": "endpoint_corner",
+      "generationMode": "procedural_massing_pending",
+      "footprintSource": "nyc_building_footprints_candidate_not_accessed",
+      "heightSource": "pending_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "pending_classification",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "massing_only",
+      "geometryStub": {
+        "geometryKind": "placeholder_polygon_reference",
+        "coordinatesIncluded": false,
+        "reasonCoordinatesOmitted": "no_source_download_or_ingestion_in_4o_2"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "building_footprint",
+      "recordId": "p4o2-building-footprint-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_mid_corridor_south",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "representativeRole": "mid_corridor",
+      "generationMode": "procedural_massing_pending",
+      "footprintSource": "nyc_building_footprints_candidate_not_accessed",
+      "heightSource": "pending_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "pending_classification",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "massing_only",
+      "geometryStub": {
+        "geometryKind": "placeholder_polygon_reference",
+        "coordinatesIncluded": false,
+        "reasonCoordinatesOmitted": "no_source_download_or_ingestion_in_4o_2"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "building_footprint",
+      "recordId": "p4o2-building-footprint-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_franklin_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "representativeRole": "endpoint_corner",
+      "generationMode": "procedural_massing_pending",
+      "footprintSource": "nyc_building_footprints_candidate_not_accessed",
+      "heightSource": "pending_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "pending_classification",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "massing_only",
+      "geometryStub": {
+        "geometryKind": "placeholder_polygon_reference",
+        "coordinatesIncluded": false,
+        "reasonCoordinatesOmitted": "no_source_download_or_ingestion_in_4o_2"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "groundingRecords": [
+    {
+      "recordType": "corridor_grounding",
+      "recordId": "p4o2-grounding-placeholder-greenpoint-corridor",
+      "groundingId": "p4o2-grounding-greenpoint-ave-manhattan-to-franklin",
+      "buildingId": null,
+      "sourceReferenceIds": [
+        "p4o2-source-ref-cscl",
+        "p4o2-source-ref-sidewalk-curb-planimetrics"
+      ],
+      "sourceGeometryId": "candidate.cscl.greenpoint_ave.segment_placeholder",
+      "streetSourceGeometryId": "candidate.cscl.greenpoint_ave.segment_placeholder",
+      "sidewalkSourceGeometryId": "candidate.planimetrics.sidewalk_placeholder",
+      "curbSourceGeometryId": "candidate.planimetrics.curb_placeholder",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_grounding_pending",
+      "heightSource": "not_applicable",
+      "massingConfidence": "not_applicable",
+      "frontageRole": "corridor_ground_plane",
+      "facadeEvidenceStatus": "not_applicable",
+      "overrideAssetId": null,
+      "detailLevel": "street_sidewalk_curb_grounding",
+      "geometryStub": {
+        "geometryKind": "placeholder_corridor_axis_and_grounding_reference",
+        "coordinatesIncluded": false,
+        "reasonCoordinatesOmitted": "no_source_download_or_ingestion_in_4o_2"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "corridor_grounding",
+      "recordId": "p4o2-grounding-placeholder-manhattan-intersection",
+      "groundingId": "p4o2-grounding-manhattan-ave-crossing",
+      "buildingId": null,
+      "sourceReferenceIds": [
+        "p4o2-source-ref-cscl",
+        "p4o2-source-ref-sidewalk-curb-planimetrics"
+      ],
+      "sourceGeometryId": "candidate.cscl.manhattan_ave.intersection_placeholder",
+      "streetSourceGeometryId": "candidate.cscl.manhattan_ave.intersection_placeholder",
+      "sidewalkSourceGeometryId": "candidate.planimetrics.manhattan_sidewalk_placeholder",
+      "curbSourceGeometryId": "candidate.planimetrics.manhattan_curb_placeholder",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_grounding_pending",
+      "heightSource": "not_applicable",
+      "massingConfidence": "not_applicable",
+      "frontageRole": "endpoint_intersection_grounding",
+      "facadeEvidenceStatus": "not_applicable",
+      "overrideAssetId": null,
+      "detailLevel": "street_sidewalk_curb_grounding",
+      "geometryStub": {
+        "geometryKind": "placeholder_intersection_grounding_reference",
+        "coordinatesIncluded": false,
+        "reasonCoordinatesOmitted": "no_source_download_or_ingestion_in_4o_2"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "corridor_grounding",
+      "recordId": "p4o2-grounding-placeholder-franklin-intersection",
+      "groundingId": "p4o2-grounding-franklin-ave-crossing",
+      "buildingId": null,
+      "sourceReferenceIds": [
+        "p4o2-source-ref-cscl",
+        "p4o2-source-ref-sidewalk-curb-planimetrics"
+      ],
+      "sourceGeometryId": "candidate.cscl.franklin_ave.intersection_placeholder",
+      "streetSourceGeometryId": "candidate.cscl.franklin_ave.intersection_placeholder",
+      "sidewalkSourceGeometryId": "candidate.planimetrics.franklin_sidewalk_placeholder",
+      "curbSourceGeometryId": "candidate.planimetrics.franklin_curb_placeholder",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_grounding_pending",
+      "heightSource": "not_applicable",
+      "massingConfidence": "not_applicable",
+      "frontageRole": "endpoint_intersection_grounding",
+      "facadeEvidenceStatus": "not_applicable",
+      "overrideAssetId": null,
+      "detailLevel": "street_sidewalk_curb_grounding",
+      "geometryStub": {
+        "geometryKind": "placeholder_intersection_grounding_reference",
+        "coordinatesIncluded": false,
+        "reasonCoordinatesOmitted": "no_source_download_or_ingestion_in_4o_2"
+      },
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "heightMassingFallbackRecords": [
+    {
+      "recordType": "height_massing_fallback",
+      "recordId": "p4o2-height-massing-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-3d-or-citygml",
+        "p4o2-source-ref-pluto-mappluto"
+      ],
+      "sourceGeometryId": "candidate.nyc_3d_or_mappluto.placeholder_manhattan_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_massing_pending",
+      "heightSource": "nyc_3d_candidate_or_mappluto_floor_fallback_pending",
+      "heightValue": null,
+      "floorCountFallback": null,
+      "roofShapeSource": "pending_source_review",
+      "setbackSource": "pending_source_review",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "pending_classification",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "massing_only",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim"
+      ]
+    },
+    {
+      "recordType": "height_massing_fallback",
+      "recordId": "p4o2-height-massing-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-3d-or-citygml",
+        "p4o2-source-ref-pluto-mappluto"
+      ],
+      "sourceGeometryId": "candidate.nyc_3d_or_mappluto.placeholder_mid_corridor_south",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_massing_pending",
+      "heightSource": "nyc_3d_candidate_or_mappluto_floor_fallback_pending",
+      "heightValue": null,
+      "floorCountFallback": null,
+      "roofShapeSource": "pending_source_review",
+      "setbackSource": "pending_source_review",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "pending_classification",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "massing_only",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim"
+      ]
+    },
+    {
+      "recordType": "height_massing_fallback",
+      "recordId": "p4o2-height-massing-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceIds": [
+        "p4o2-source-ref-nyc-3d-or-citygml",
+        "p4o2-source-ref-pluto-mappluto"
+      ],
+      "sourceGeometryId": "candidate.nyc_3d_or_mappluto.placeholder_franklin_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_massing_pending",
+      "heightSource": "nyc_3d_candidate_or_mappluto_floor_fallback_pending",
+      "heightValue": null,
+      "floorCountFallback": null,
+      "roofShapeSource": "pending_source_review",
+      "setbackSource": "pending_source_review",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "pending_classification",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "massing_only",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim",
+        "no_exact_height_claim",
+        "no_exact_roof_claim"
+      ]
+    }
+  ],
+  "frontageCornerClassificationRecords": [
+    {
+      "recordType": "frontage_corner_classification",
+      "recordId": "p4o2-frontage-classification-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_manhattan_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_classification_pending",
+      "heightSource": "linked_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "corner_candidate_review_only",
+      "streetFacingEdges": [
+        "greenpoint_ave_candidate_edge",
+        "manhattan_ave_candidate_edge"
+      ],
+      "classificationConfidence": "pending_source_review",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "classification_only",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim",
+        "no_storefront_frontage_claim"
+      ]
+    },
+    {
+      "recordType": "frontage_corner_classification",
+      "recordId": "p4o2-frontage-classification-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_mid_corridor_south",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_classification_pending",
+      "heightSource": "linked_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "midblock_candidate_review_only",
+      "streetFacingEdges": [
+        "greenpoint_ave_candidate_edge"
+      ],
+      "classificationConfidence": "pending_source_review",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "classification_only",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim",
+        "no_storefront_frontage_claim"
+      ]
+    },
+    {
+      "recordType": "frontage_corner_classification",
+      "recordId": "p4o2-frontage-classification-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_franklin_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_classification_pending",
+      "heightSource": "linked_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "corner_candidate_review_only",
+      "streetFacingEdges": [
+        "greenpoint_ave_candidate_edge",
+        "franklin_ave_candidate_edge"
+      ],
+      "classificationConfidence": "pending_source_review",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "detailLevel": "classification_only",
+      "claimBoundary": [
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim",
+        "no_storefront_frontage_claim"
+      ]
+    }
+  ],
+  "manualOverrideSlots": [
+    {
+      "recordType": "manual_override_slot",
+      "recordId": "p4o2-manual-override-slot-placeholder-manhattan-corner-north",
+      "buildingId": "p4o2-placeholder-building-manhattan-corner-north",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_manhattan_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_massing_pending",
+      "heightSource": "linked_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "corner_candidate_review_only",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "overrideStatus": "empty",
+      "allowedOverrideTypes": [
+        "manual_geometry_adjustment",
+        "facade_evidence_annotation",
+        "procedural_detail_override",
+        "optional_blender_glb_asset_override"
+      ],
+      "detailLevel": "massing_only",
+      "claimBoundary": [
+        "override_does_not_promote_claims",
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "manual_override_slot",
+      "recordId": "p4o2-manual-override-slot-placeholder-mid-corridor-south",
+      "buildingId": "p4o2-placeholder-building-mid-corridor-south",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_mid_corridor_south",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_massing_pending",
+      "heightSource": "linked_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "midblock_candidate_review_only",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "overrideStatus": "empty",
+      "allowedOverrideTypes": [
+        "manual_geometry_adjustment",
+        "facade_evidence_annotation",
+        "procedural_detail_override",
+        "optional_blender_glb_asset_override"
+      ],
+      "detailLevel": "massing_only",
+      "claimBoundary": [
+        "override_does_not_promote_claims",
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    },
+    {
+      "recordType": "manual_override_slot",
+      "recordId": "p4o2-manual-override-slot-placeholder-franklin-corner-north",
+      "buildingId": "p4o2-placeholder-building-franklin-corner-north",
+      "sourceReferenceId": "p4o2-source-ref-nyc-building-footprints",
+      "sourceGeometryId": "candidate.nyc_building_footprints.placeholder_franklin_corner_north",
+      "sourceRecordStatus": "placeholder_no_source_record_loaded",
+      "generationMode": "procedural_massing_pending",
+      "heightSource": "linked_height_massing_fallback_record",
+      "massingConfidence": "pending_source_review",
+      "frontageRole": "corner_candidate_review_only",
+      "facadeEvidenceStatus": "none",
+      "overrideAssetId": null,
+      "overrideStatus": "empty",
+      "allowedOverrideTypes": [
+        "manual_geometry_adjustment",
+        "facade_evidence_annotation",
+        "procedural_detail_override",
+        "optional_blender_glb_asset_override"
+      ],
+      "detailLevel": "massing_only",
+      "claimBoundary": [
+        "override_does_not_promote_claims",
+        "no_storefront_claim",
+        "no_tenant_claim",
+        "no_exact_facade_claim",
+        "no_entrance_claim",
+        "no_signage_claim",
+        "no_active_status_claim",
+        "no_exact_address_claim",
+        "no_production_claim",
+        "no_public_claim"
+      ]
+    }
+  ],
+  "summary": {
+    "buildingFootprintRecordCount": 3,
+    "groundingRecordCount": 3,
+    "heightMassingFallbackRecordCount": 3,
+    "frontageCornerClassificationRecordCount": 3,
+    "manualOverrideSlotCount": 3,
+    "externalDataDownloadedCount": 0,
+    "sourceIngestionRecordCount": 0,
+    "runtimeConsumerCount": 0,
+    "proceduralGeneratedScaffoldCount": 0,
+    "blenderOrGlbAssetCount": 0,
+    "storefrontClaimCount": 0,
+    "tenantClaimCount": 0,
+    "exactFacadeClaimCount": 0,
+    "entranceClaimCount": 0,
+    "signageClaimCount": 0,
+    "activeStatusClaimCount": 0,
+    "exactAddressClaimCount": 0,
+    "productionClaimCount": 0,
+    "publicClaimCount": 0
+  },
+  "nextBatchCandidate": {
+    "batch": "4O-3",
+    "status": "proposed_only_not_pre_authorized_by_this_fixture",
+    "possibleGoal": "Use this verified stub shape to define the first deterministic scaffold generation contract only if Batu opens that scope.",
+    "blockedUntilApproved": [
+      "source_access_download_cache_ingestion_conversion",
+      "procedural_scaffold_generation",
+      "runtime_rendering",
+      "public_interface_or_module_boundary_change",
+      "new_dependencies_or_tooling",
+      "claim_promotion"
+    ]
+  }
+}
