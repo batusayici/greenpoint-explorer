@@ -66,6 +66,15 @@ const laterBriefSnippets = [
   "Hard Batu gate: stop.",
 ];
 
+const finalPrepBriefSnippets = [
+  "Current Execution Brief - Phase 4L-Prep Complete At Review Gate",
+  "4K-3 is complete and verified.",
+  "4L-Prep is complete and verified.",
+  "Current executable batch: none.",
+  "Pre-authorized queue: none.",
+  "Hard Batu gate: stop.",
+];
+
 async function main() {
   const failures = [];
   const report = await readFile(resolve(repoRoot, reportPath), "utf8");
@@ -89,7 +98,8 @@ async function main() {
 
   const originalBriefValid = originalBriefSnippets.every((snippet) => brief.includes(snippet));
   const laterBriefValid = laterBriefSnippets.every((snippet) => brief.includes(snippet));
-  if (!originalBriefValid && !laterBriefValid) {
+  const finalPrepBriefValid = finalPrepBriefSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalBriefValid && !laterBriefValid && !finalPrepBriefValid) {
     failures.push("Current brief must either preserve the 4O-20 gate or record later-phase completion without 4O promotion");
   }
 

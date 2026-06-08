@@ -1,81 +1,57 @@
-# Current Execution Brief - Phase 4K Complete At Review Gate
+# Current Execution Brief - Phase 4L-Prep Complete At Review Gate
 
-Status: `Batch 4K-1 -> 4K-3: QA-Only Recognizable Corridor Anchor Proof` is complete and verified. Batu approved this bounded packet on 2026-06-08 after the completed 4J-3 Batu review gate.
+Status: `Batch 4L-Prep: Evidence Gap to Cue Eligibility Plan` is complete and verified. Batu approved this bounded preparation packet on 2026-06-08 after accepting the completed 4K review gate.
 
 Completed precondition:
 
-- 4J-3 is complete and committed at `cbbaea7`.
 - 4J-1 is complete and verified.
 - 4J-2 is complete and verified.
 - 4J-3 is complete and verified.
-- 4O provides 26 QA-only spatial scaffold records.
-- 4J provides 22 QA-only frontage/bay candidates mapped to 10 existing 4O anchors.
-- `git status --short` was clean before opening 4K.
+- 4K-1 is complete and verified.
+- 4K-2 is complete and verified.
+- 4K-3 is complete and verified.
+- 4K review gate was approved by Batu for purposes of opening 4L-Prep only.
+- `git status --short` was clean before opening 4L-Prep.
 
-4K-1 is complete and verified.
-
-4K-2 is complete and verified.
-
-4K-3 is complete and verified.
+4L-Prep is complete and verified.
 
 Current executable batch: none.
 
-Completed batch: `Batch 4K-3: Local Recognizability Review Pack`.
+Completed batch: `Batch 4L-Prep: Evidence Gap to Cue Eligibility Plan`.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop. Do not start 4L, 4P, evidence intake, business/source linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Hard Batu gate: stop. Do not start 4L render implementation, 4M, 4P, evidence intake, external source access, source download/cache/ingestion/conversion, business/source linkage, normal-mode exposure, runtime render promotion, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-Owner boundary: Batu owns whether the QA-only recognizable corridor anchor proof is useful enough, whether later evidence-backed facade cue intake or source-backed geometry/evidence planning may open, and whether any claim class may promote. Codex owns tactical implementation inside the completed 4K packet only.
+Owner boundary: Batu owns whether the missing evidence set is acceptable, whether evidence-backed 4L QA corridor render may open later, whether any evidence/source access may open, and whether any claim class may promote. Codex owns tactical implementation inside the completed 4L-Prep packet only.
 
 ## Completed Packet
 
-### Batch 4K-1: Recognizable Anchor Cue Contract + Fixture
+### Batch 4L-Prep: Evidence Gap to Cue Eligibility Plan
 
 What changed:
 
-- Added `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4k-1-qa-recognizable-anchor-cues.v0.1.json`.
-- Added `scripts/verify-phase-4k-1-qa-recognizable-anchor-cues.mjs`.
-- Added `docs/reports/phase-4k-1-recognizable-anchor-cue-contract-fixture.md`.
-- Created 18 QA-only cue records mapped to existing 4O/4J lineage, with existing 4E cue ID references where available.
-- Preserved normal mode with zero records and no claim promotion.
-
-### Batch 4K-2: QA Runtime Recognizable Anchor Overlay
-
-What changed:
-
-- Updated `src/Phase4BRuntimePreview.jsx`.
-- Updated `src/styles.css`.
-- Added `scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`.
-- Added `docs/reports/phase-4k-2-qa-recognizable-anchor-runtime-overlay.md`.
-- Rendered 18 QA-only cue records as generic 4K guide overlays with cue category filters/readouts.
-- Preserved normal mode with zero records and no claim promotion.
-
-### Batch 4K-3: Local Recognizability Review Pack
-
-What changed:
-
-- Added `docs/reports/phase-4k-3-local-recognizability-review-pack.md`.
-- Added `scripts/verify-phase-4k-3-local-recognizability-review-pack.mjs`.
-- Assessed whether the QA-only cue layer makes the corridor more recognizable than after 4J.
-- Classified remaining recognizability gaps only with approved bounded 4K categories.
-- Recommended any next phase only as a proposal.
-- Stopped at Batu review.
+- Added `docs/phase-4l-prep-evidence-gap-to-cue-intake-plan.md`.
+- Added `docs/phase-4l-prep-qa-evidence-eligibility-contract.md`.
+- Added `docs/reports/phase-4l-prep-review-gate-report.md`.
+- Added `src/data/evidence-eligibility/greenpoint-ave-manhattan-to-franklin.phase-4l-prep-qa-evidence-eligibility-contract.v0.1.json`.
+- Added `scripts/verify-phase-4l-prep-evidence-eligibility.mjs`.
+- Mapped current 4K recognizability gaps to required evidence types.
+- Defined eligible, insufficient, and blocked states for every 4K cue category.
+- Separated Batu-supplied repo-local evidence, future Batu-approved evidence, future external source candidates, and blocked/insufficient evidence lanes.
+- Decided the repo is not ready for evidence-backed 4L QA corridor render.
 
 ## Preserved Boundaries
 
-- 4K does not infer businesses, tenants, exact storefronts, exact frontage, exact facades, signs, entrances, exact addresses, exact heights, or roof forms.
-- 4K does not add source access, downloads, cache, ingestion, conversion, imagery access, source-backed claims, or new evidence intake.
-- 4K uses existing repo assets/data/evidence only.
-- 4K records are QA-only, review-only, non-promoted, and blocked from normal mode.
-- 4K does not add production/public claims, public UI, new dependencies, package tooling, renderer replacement, or architecture changes.
-- 4K-3 did not start evidence-backed facade cue intake, source-backed geometry/evidence planning, business/source linkage, 4L, 4P, normal-mode promotion, or claim promotion.
+- 4L-Prep did not start evidence intake, external source access, downloads, business/source linkage, normal-mode exposure, runtime render promotion, 4L render implementation, 4M, 4P, or claim promotion.
+- 4L-Prep did not ingest evidence files, alter 4K cue behavior, link businesses, tenants, signs, POIs, or source records, or expose anything in normal mode.
+- 4L-Prep does not add production/public claims, public UI, new dependencies, package tooling, renderer replacement, or architecture changes.
 
 ## Verification Completed
 
-- `git status --short` before 4K: clean.
+- `node scripts/verify-phase-4l-prep-evidence-eligibility.mjs`
 - `node scripts/verify-phase-4k-1-qa-recognizable-anchor-cues.mjs`
 - `node scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`
 - `node scripts/verify-phase-4k-3-local-recognizability-review-pack.mjs`
@@ -92,6 +68,6 @@ What changed:
 
 ## Unresolved Decisions For Batu
 
-- Whether the QA-only recognizable anchor layer makes the corridor locally recognizable enough for later planning.
-- Whether later evidence-backed facade cue intake or source-backed geometry/evidence planning may open.
-- What evidence is required before any frontage, storefront, facade, sign, entrance, address, business, active-status, exact height, roof, production, or public claim can promote.
+- Whether Batu wants to supply or approve the missing evidence set listed by 4L-Prep.
+- Whether a later evidence-backed 4L QA corridor render packet may open.
+- Whether any future external source candidate, evidence intake, source access, source download/cache/ingestion/conversion, display/render use, business/source linkage, normal-mode exposure, production/public use, or claim promotion may open.

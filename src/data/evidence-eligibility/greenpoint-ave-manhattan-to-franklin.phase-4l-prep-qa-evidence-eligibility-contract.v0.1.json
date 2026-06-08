@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "phase-4l-prep-qa-evidence-eligibility-contract.v0.1",
+  "contractId": "p4l-prep-qa-evidence-eligibility-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4L-Prep",
+  "status": "planning_contract_review_gate",
+  "reviewOnly": true,
+  "planningOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "runtimeRenderChange": "blocked_none",
+  "claimPromotion": "blocked_none",
+  "derivedFrom4KFixturePath": "src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4k-1-qa-recognizable-anchor-cues.v0.1.json",
+  "derivedFrom4KReviewPath": "docs/reports/phase-4k-3-local-recognizability-review-pack.md",
+  "questionAnswered": "What evidence is needed before the 4K QA recognizability cues can become evidence-backed facade/corridor cues?",
+  "sourceAccessPolicy": {
+    "evidenceFilesIngested": false,
+    "externalSourcesAccessed": false,
+    "externalDataFetched": false,
+    "externalDataDownloaded": false,
+    "externalDataCached": false,
+    "externalDataIngested": false,
+    "externalDataConverted": false,
+    "externalImageryAccessed": false,
+    "sourceRecordsLinked": false,
+    "businessTenantSignPoiLinked": false,
+    "normalModeExposureAdded": false,
+    "qaCuePromotionAdded": false,
+    "runtimeRenderPromotionAdded": false,
+    "packageOrToolingChanged": false
+  },
+  "evidenceLaneStates": [
+    {
+      "lane": "batu_supplied_repo_local_evidence",
+      "status": "eligible_for_review_if_previously_indexed_and_use_bounded",
+      "allowedIn4LPrep": "reference_existing_index_or_cue_ids_only",
+      "blockedIn4LPrep": [
+        "new_file_ingestion",
+        "image_path_expansion",
+        "image_render_use",
+        "texture_or_training_use",
+        "claim_promotion"
+      ]
+    },
+    {
+      "lane": "future_batu_approved_evidence",
+      "status": "eligible_only_after_later_batu_packet",
+      "allowedIn4LPrep": "eligibility_criteria_only",
+      "blockedIn4LPrep": [
+        "approval_assignment",
+        "source_access",
+        "file_ingestion",
+        "claim_promotion"
+      ]
+    },
+    {
+      "lane": "future_external_source_candidates",
+      "status": "candidate_only_blocked_until_source_policy_gate",
+      "allowedIn4LPrep": "requirements_and_blockers_only",
+      "blockedIn4LPrep": [
+        "access",
+        "download",
+        "cache",
+        "ingestion",
+        "conversion",
+        "render_use",
+        "source_record_linkage"
+      ]
+    },
+    {
+      "lane": "blocked_or_insufficient_evidence",
+      "status": "not_eligible_for_4l_render",
+      "allowedIn4LPrep": "gap_classification_only",
+      "blockedIn4LPrep": [
+        "qa_cue_promotion",
+        "normal_mode_exposure",
+        "production_or_public_claim"
+      ]
+    }
+  ],
+  "evidenceNeedCategories": [
+    "mid_corridor_facade_evidence",
+    "side_return_corner_wrap_recognition",
+    "facade_depth_setback_specificity",
+    "material_color_specificity",
+    "storefront_rhythm_specificity",
+    "street_furniture_sidewalk_grounding",
+    "subway_entrance_specificity",
+    "distinct_evidence_records_per_facade_cue"
+  ],
+  "cueEligibilityCriteria": [
+    {
+      "cueCategory": "corner_composition_cue",
+      "requiredEvidenceTypes": [
+        "side_return_corner_wrap_recognition",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when_repo_local_or_future_approved_evidence_shows corner composition from more than one relevant view or one unambiguous corner view without exact frontage claims",
+      "insufficientState": "insufficient_when only scaffold lineage or generic corner-wrap candidate exists",
+      "blockedState": "blocked_when evidence would require exact storefront, tenant, sign, entrance, active-status, restricted-source, or unapproved external-source claims"
+    },
+    {
+      "cueCategory": "sidewalk_street_cue",
+      "requiredEvidenceTypes": [
+        "street_furniture_sidewalk_grounding",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when evidence shows sidewalk or street-edge grounding as a review cue without exact curb, entrance, or fixture placement claims",
+      "insufficientState": "insufficient_when cue is only inferred from scaffold side or corridor guide geometry",
+      "blockedState": "blocked_when evidence would imply exact sidewalk geometry, exact fixture placement, normal-mode readiness, or source use beyond approved review scope"
+    },
+    {
+      "cueCategory": "subway_or_street_furniture_cue",
+      "requiredEvidenceTypes": [
+        "street_furniture_sidewalk_grounding",
+        "subway_entrance_specificity",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when evidence distinguishes a generic subway or street-furniture cue from surrounding sidewalk context without exact entrance or ownership claims",
+      "insufficientState": "insufficient_when marker is symbolic, unlocated, or unsupported by dedicated evidence",
+      "blockedState": "blocked_when evidence would imply exact entrance location, transit facility truth, business relation, restricted source use, or public-facing claim"
+    },
+    {
+      "cueCategory": "facade_rhythm_cue",
+      "requiredEvidenceTypes": [
+        "mid_corridor_facade_evidence",
+        "storefront_rhythm_specificity",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when evidence supports repeated facade or bay rhythm as a non-exact visual cue for a specific facade segment",
+      "insufficientState": "insufficient_when rhythm is only generic ticks or a frontage-density placeholder",
+      "blockedState": "blocked_when evidence would promote exact storefront order, tenant frontage, sign text, entrance placement, or business identity"
+    },
+    {
+      "cueCategory": "material_color_family_cue",
+      "requiredEvidenceTypes": [
+        "material_color_specificity",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when evidence supports a broad material or color family as review-only visual guidance without exact material or color truth",
+      "insufficientState": "insufficient_when evidence is absent, stale, ambiguous, lighting-distorted, or only a generic palette family",
+      "blockedState": "blocked_when evidence would assert exact material, exact paint color, trade dress, logo, production asset readiness, or normal-mode use"
+    },
+    {
+      "cueCategory": "massing_silhouette_cue",
+      "requiredEvidenceTypes": [
+        "facade_depth_setback_specificity",
+        "side_return_corner_wrap_recognition",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when evidence supports broad depth, setback, or silhouette relationships without exact height, roof, or survey-grade geometry claims",
+      "insufficientState": "insufficient_when cue is only derived from 4O scaffold massing or 4J setback-depth placeholder lineage",
+      "blockedState": "blocked_when evidence would promote exact height, roof form, parcel geometry, exact setback, production asset, or public claim"
+    },
+    {
+      "cueCategory": "frontage_density_cue",
+      "requiredEvidenceTypes": [
+        "storefront_rhythm_specificity",
+        "mid_corridor_facade_evidence",
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "eligibleState": "eligible_for_batu_review_when evidence supports coarse frontage density or bay rhythm as a review cue without exact storefront count, order, width, or tenant assignment",
+      "insufficientState": "insufficient_when only 4J frontage-band or bay-rhythm candidate lineage exists",
+      "blockedState": "blocked_when evidence would assign tenants, businesses, POIs, exact frontage, sign text, entrance placement, or active status"
+    }
+  ],
+  "current4KGapToEvidenceNeedMap": [
+    {
+      "gapCategory": "missing_mid_corridor_facade_evidence",
+      "requiredEvidenceTypes": [
+        "mid_corridor_facade_evidence",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    },
+    {
+      "gapCategory": "weak_corner_wrap_recognition",
+      "requiredEvidenceTypes": [
+        "side_return_corner_wrap_recognition",
+        "facade_depth_setback_specificity",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    },
+    {
+      "gapCategory": "weak_material_color_specificity",
+      "requiredEvidenceTypes": [
+        "material_color_specificity",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    },
+    {
+      "gapCategory": "weak_storefront_rhythm_specificity",
+      "requiredEvidenceTypes": [
+        "storefront_rhythm_specificity",
+        "mid_corridor_facade_evidence",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    },
+    {
+      "gapCategory": "missing_street_furniture_evidence",
+      "requiredEvidenceTypes": [
+        "street_furniture_sidewalk_grounding",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    },
+    {
+      "gapCategory": "missing_subway_entrance_specificity",
+      "requiredEvidenceTypes": [
+        "subway_entrance_specificity",
+        "street_furniture_sidewalk_grounding",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    },
+    {
+      "gapCategory": "missing_business_source_linkage",
+      "requiredEvidenceTypes": [
+        "distinct_evidence_records_per_facade_cue"
+      ],
+      "businessLinkagePolicy": "not_required_for_facade_cue_eligibility_and_remains_blocked_for_4l_prep"
+    },
+    {
+      "gapCategory": "insufficient_local_landmark_signal",
+      "requiredEvidenceTypes": [
+        "side_return_corner_wrap_recognition",
+        "material_color_specificity",
+        "street_furniture_sidewalk_grounding",
+        "distinct_evidence_records_per_facade_cue"
+      ]
+    }
+  ],
+  "reviewGateDecision": {
+    "readyForEvidenceBacked4LQACorridorRender": false,
+    "decision": "not_ready",
+    "reason": "4K has useful QA recognizability cues, but approved evidence is endpoint-biased and insufficient for mid-corridor, cue-specific, distinct evidence-backed facade/corridor rendering.",
+    "missingEvidenceBatuWouldNeedToSupplyOrApprove": [
+      "mid_corridor_facade_reference_set_covering_both_sides",
+      "corner_wrap_or_side_return_reference_set_for_endpoint_and_transition_anchors",
+      "depth_or_setback_reference_for_cues_that would affect silhouette or streetwall depth",
+      "material_color_reference_for_each cue intended to leave generic palette status",
+      "storefront_rhythm_reference_without tenant or business assignment",
+      "street_furniture_sidewalk_grounding_reference_for markers and pedestrian-realm cues",
+      "subway_or_entrance_reference_if any subway/entrance cue should remain visible",
+      "distinct_review_record_per facade/cue target so one evidence item is not overextended"
+    ]
+  },
+  "summary": {
+    "cueCategoryCount": 7,
+    "gapCategoryCount": 8,
+    "evidenceNeedCategoryCount": 8,
+    "eligibleStateCount": 7,
+    "insufficientStateCount": 7,
+    "blockedStateCount": 7,
+    "evidenceFilesIngestedCount": 0,
+    "externalSourceAccessCount": 0,
+    "downloadCount": 0,
+    "businessTenantSignPoiLinkCount": 0,
+    "qaCuePromotionCount": 0,
+    "normalModeExposureCount": 0,
+    "readyFor4LRenderCount": 0
+  }
+}

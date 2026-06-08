@@ -106,15 +106,25 @@ async function main() {
 }
 
 function verifyBrief(brief, failures) {
-  const requiredSnippets = [
+  const originalGateSnippets = [
     "Current Execution Brief - Phase 4K Complete At Review Gate",
     "4K-3 is complete and verified.",
     "Current executable batch: none.",
     "Pre-authorized queue: none.",
     "Hard Batu gate: stop.",
   ];
-  for (const snippet of requiredSnippets) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4K-3 gate snippet: ${snippet}`);
+  const finalPrepSnippets = [
+    "Current Execution Brief - Phase 4L-Prep Complete At Review Gate",
+    "4K-3 is complete and verified.",
+    "4L-Prep is complete and verified.",
+    "Current executable batch: none.",
+    "Pre-authorized queue: none.",
+    "Hard Batu gate: stop.",
+  ];
+  const originalGateValid = originalGateSnippets.every((snippet) => brief.includes(snippet));
+  const finalPrepValid = finalPrepSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalGateValid && !finalPrepValid) {
+    failures.push("Current brief must either preserve the 4K-3 gate or record 4L-Prep completion without 4K promotion");
   }
 }
 

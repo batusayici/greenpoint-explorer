@@ -150,10 +150,21 @@ function verifyBrief(brief, failures) {
     "Pre-authorized queue: none.",
     "Hard Batu gate: stop.",
   ];
+  const finalPrepSnippets = [
+    "Current Execution Brief - Phase 4L-Prep Complete At Review Gate",
+    "4K-1 is complete and verified.",
+    "4K-2 is complete and verified.",
+    "4K-3 is complete and verified.",
+    "4L-Prep is complete and verified.",
+    "Current executable batch: none.",
+    "Pre-authorized queue: none.",
+    "Hard Batu gate: stop.",
+  ];
 
   const originalHandoffValid = originalHandoffSnippets.every((snippet) => brief.includes(snippet));
   const laterPhaseValid = laterPhaseSnippets.every((snippet) => brief.includes(snippet));
-  if (!originalHandoffValid && !laterPhaseValid) {
+  const finalPrepValid = finalPrepSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalHandoffValid && !laterPhaseValid && !finalPrepValid) {
     failures.push("Current brief must either preserve the 4K-2 -> 4K-3 handoff or record final 4K completion without promotion");
   }
 }
