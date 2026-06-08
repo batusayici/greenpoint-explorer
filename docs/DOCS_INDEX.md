@@ -46,6 +46,7 @@ If files conflict, use the source-of-truth order in `AGENTS.md`. Historical, rev
 - `docs/phase-4a-workflow-spike-decision-matrix.md`
 - `docs/phase-4b-data-to-scene-workflow.md`
 - `docs/phase-4b-implementation-plan.md`
+- `docs/phase-4g-external-source-policy-coverage-audit-contract.md`
 - `docs/archive/phase-3/phase-3-closeout.md`
 - Phase 3 corridor evidence docs may inform Phase 4 context, but they do not authorize new implementation.
 

@@ -1,16 +1,50 @@
-# Current Execution Brief - Batch 4G External Source Policy And Coverage Audit Contract
+# Current Execution Brief - Batch 4G External Source Policy And Coverage Audit Contract Accepted
 
-Status: Batu approved `Batch 4F-1: Facade Cue Model Hardening`. `Batch 4G: External Source Policy And Coverage Audit Contract` is open.
+Status: Batu accepted `Batch 4G: External Source Policy And Coverage Audit Contract` as complete.
 
-Current executable batch: `Batch 4G: External Source Policy And Coverage Audit Contract`.
+Current executable batch: none. Pending later Batu approval or updated current brief.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu review gate: stop after 4G for Batu review. Do not proceed to 4G-A, 4G-B, 4H, NYC 3D / CityGML / 3DCityDB source access or audit, Mapillary/KartaView access or audit, Google 3D Tiles/Street View benchmark work, Qwen/Oxen visual-system work, source expansion, storefront/frontage/entrance claims, business linkage, production exposure, normal-mode exposure, asset registry, visual-system work, art-direction translation, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Hard Batu gate: stop. Do not proceed to 4G-A, 4G-B, 4H, NYC 3D / CityGML / 3DCityDB source access or audit, Mapillary/KartaView access or audit, Google 3D Tiles/Street View benchmark work, Qwen/Oxen visual-system work, source expansion, storefront/frontage/entrance claims, business linkage, production exposure, normal-mode exposure, asset registry, visual-system work, art-direction translation, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
 Owner boundary: Batu owns visual acceptance, product/scope approval, public-interface approval, architecture-boundary approval, source-authority decisions, usage-rights acceptance, production/public claims, geometry-confidence acceptance, evidence-to-container association acceptance, exact geometry/frontage/entrance approval, business verification approval, facade cue promotion approval, art-direction approval, and any later MVP gates.
+
+## Completed 4G Result
+
+Batch 4G created a Phase 4-specific external source policy and coverage audit contract without accessing, downloading, caching, ingesting, extracting, rendering, benchmarking, or using any external source material.
+
+What changed:
+
+- Added `docs/phase-4g-external-source-policy-coverage-audit-contract.md`.
+- Added `scripts/verify-phase-4g-source-policy-contract.mjs`.
+- Defined separate future lanes for `4G-A: Geometry Source Audit` and `4G-B: Facade Evidence Source Audit`.
+- Formalized NYC 3D / CityGML / 3DCityDB as future geometry-confidence candidates only.
+- Formalized Mapillary/KartaView as future facade/storefront evidence candidates only.
+- Preserved Google 3D Tiles / Street View as benchmark-only or narrow-exception material unless separately cleared.
+- Preserved Qwen/Oxen as deferred 4M visual-system acceleration, not evidence.
+- Defined allowed/prohibited use categories and review-only audit fields for future coverage-audit records.
+- Added a verifier that checks required lane separation, use boundaries, audit fields, blocked claims, and non-authorization wording.
+
+Preserved boundaries:
+
+- No NYC 3D / CityGML / 3DCityDB access, download, cache, ingestion, conversion, audit execution, or render use.
+- No Mapillary/KartaView access, download, cache, ingestion, extraction, audit execution, imagery use, or render use.
+- No Google 3D Tiles/Street View benchmark execution, imagery storage, geometry extraction, texture use, training use, generation use, or production visual pipeline.
+- No Qwen/Oxen work.
+- No source expansion.
+- No business linkage.
+- No exact storefront/frontage/entrance claims.
+- No production assets.
+- No normal-mode exposure.
+- No art-direction translation.
+
+Verification completed:
+
+- `node scripts/verify-phase-4g-source-policy-contract.mjs`
+- `git diff --check`
 
 ## Batch 4G Objective
 
@@ -25,7 +59,7 @@ Allowed work:
 - Preserve Qwen/Oxen as deferred 4M visual-system acceleration, not evidence.
 - Specify allowed/prohibited uses for access, attribution, storage/cache, derivative use, extraction, benchmark use, render use, training use, and production use.
 - Define review-only coverage-audit contract fields and acceptance criteria without performing source access or ingestion.
-- Update control docs and ledger to mark 4F-1 approved and 4G opened.
+- Reconcile control docs and ledger to mark 4G accepted by Batu.
 
 Blocked:
 
@@ -105,7 +139,7 @@ Blocked:
 
 ## Updated Roadmap Posture
 
-This brief opens only 4G source-policy and coverage-audit contract work. It does not open 4G-A, 4G-B, source expansion, NYC 3D / CityGML / 3DCityDB access or audit, Mapillary/KartaView access or audit, source ingestion, Google 3D Tiles/Street View benchmark work, Qwen/Oxen visual-system work, corridor expansion, business linkage, exact storefront/frontage/entrance claims, production assets, normal-mode exposure, or art-direction translation.
+This brief records completed and Batu-accepted 4G source-policy and coverage-audit contract work and holds at the post-4G stop gate. It does not open 4G-A, 4G-B, source expansion, NYC 3D / CityGML / 3DCityDB access or audit, Mapillary/KartaView access or audit, source ingestion, Google 3D Tiles/Street View benchmark work, Qwen/Oxen visual-system work, corridor expansion, business linkage, exact storefront/frontage/entrance claims, production assets, normal-mode exposure, or art-direction translation.
 
 Current state:
 
@@ -113,7 +147,7 @@ Current state:
 - 4E-4 received a conditional pass.
 - 4E-5 passed Batu visual review.
 - 4F-1 is approved by Batu.
-- 4G is open as the current source-policy and coverage-audit contract batch.
+- 4G is accepted by Batu as complete.
 - No authoritative business linkage, exact storefront/frontage/entrance claims, production assets, normal-mode exposure, or full art-directed corridor exists yet.
 
 Planned gate sequence after Batu review, subject to later explicit current briefs:
@@ -210,6 +244,7 @@ Phase 4 primary operational roadmap:
 Supporting detail docs:
 
 - `docs/phase-4e-evidence-informed-qa-facade-scene-proof.md`
+- `docs/phase-4g-external-source-policy-coverage-audit-contract.md`
 - `docs/phase-4f-facade-cue-model-hardening.md`
 - `docs/phase-4d-claim-ladder-matching-contract.md`
 - `docs/phase-4d-candidate-poi-qa-fixture.md`
