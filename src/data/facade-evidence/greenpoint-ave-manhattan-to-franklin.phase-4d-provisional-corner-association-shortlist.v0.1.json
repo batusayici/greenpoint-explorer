@@ -1,0 +1,3563 @@
+{
+  "schemaVersion": "phase-4d-provisional-corner-association-shortlist.v0.1",
+  "fixtureId": "p4d-provisional-corner-association-shortlist-greenpoint-ave-manhattan-to-franklin",
+  "phase": "4D-8",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "status": "qa-only-provisional-corner-geometry-association-shortlist",
+  "generatedFrom": {
+    "manualAssociationReviewFixturePath": "src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json",
+    "sourcePolicy": "existing-4d-7-review-records-and-existing-deterministic-geometry-containers-only-no-image-inspection-no-new-sources"
+  },
+  "scopeBoundary": {
+    "allowedCornerScopes": [
+      "manhattan_greenpoint",
+      "franklin_greenpoint"
+    ],
+    "franklinScope": "franklin_greenpoint-only",
+    "blockedScope": "manhattan-to-franklin-mid-corridor",
+    "midCorridorFacadeEvidenceStatus": "blocked_insufficient_evidence",
+    "normalModeUse": "not-rendered",
+    "qaModeUse": "manual-review-shortlist-only",
+    "canApproveAssociations": false,
+    "canCreateAuthoritativeAssociations": false,
+    "canCreateAuthoritativeAnchors": false,
+    "canCreateStorefrontAnchors": false,
+    "canAssignTenantsToFrontages": false,
+    "canPromoteBusinessIdentityClaims": false,
+    "canPromoteFacadeClaims": false,
+    "canPromoteEntranceClaims": false,
+    "canPromoteSignageClaims": false,
+    "canPromoteMaterialColorClaims": false,
+    "canPromoteActiveStatusClaims": false,
+    "canPromoteExactAddressClaims": false,
+    "canCreateProductionCards": false,
+    "canCreateProductionAssets": false,
+    "canAffectRuntimeRendering": false
+  },
+  "shortlistMethod": {
+    "evidenceSignal": "Evidence records inherit only 4D-7 corner scope plus direction words from existing evidence IDs and repo-local paths.",
+    "geometrySignal": "Candidate containers inherit only 4D-7 deterministic corner geometry coverage, corridorAxisT endpoint proximity, corridorSideOffset, and 4D-1 geometry confidence.",
+    "primaryCandidateRule": "For each evidence record, the three same-corner containers nearest that corner endpoint by corridorAxisT are marked as primary provisional review candidates when their geometry confidence is safe or uncertain.",
+    "limitation": "Primary means review priority only. It is not a selected, linked, approved, authoritative, storefront, tenant, facade, signage, entrance, material, color, active-status, address-placement, runtime, or production claim."
+  },
+  "summary": {
+    "evidenceRecordsByCornerScope": {
+      "manhattan_greenpoint": 11,
+      "franklin_greenpoint": 11,
+      "unresolved_unknown": 0
+    },
+    "shortlistRecordCount": 22,
+    "candidateEntryCount": 66,
+    "primaryCandidateEntryCount": 66,
+    "secondaryPossibleContainerCount": 110,
+    "provisionalAssociationCount": 22,
+    "selectedAssociationCount": 0,
+    "approvedAssociationCount": 0,
+    "authoritativeAssociationCount": 0,
+    "authoritativeAnchorCount": 0,
+    "storefrontAnchorCount": 0,
+    "tenantFrontageAssignmentCount": 0,
+    "promotedClaimCount": 0,
+    "normalModeRecordCount": 0,
+    "midCorridorAssociationCandidateCount": 0
+  },
+  "blockedClaimsPreserved": [
+    "authoritative-evidence-to-geometry-association",
+    "storefront-anchor",
+    "tenant-frontage",
+    "business-identity",
+    "exact-frontage-order",
+    "exact-frontage-width",
+    "entrance-location",
+    "entrance-ownership",
+    "exact-address-placement",
+    "exact-facade-appearance",
+    "signage",
+    "material",
+    "color",
+    "active-status",
+    "production-card",
+    "normal-runtime-rendering",
+    "visual-facade-generation",
+    "mid-corridor-inference"
+  ],
+  "shortlistRecords": [
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-northwest-1",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-northwest-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-northwest-2",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-northwest-2",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-2",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-northwest-3",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-northwest-3",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-3",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest3.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-northwest-4",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-northwest-4",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-northwest-4",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest4.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southeast-1",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southeast-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-1.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southeast-wide",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southeast-wide",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southeast-zoom",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southeast-zoom",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southeast-zoom",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southwest-1",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southwest-1",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-1",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest1.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southwest-2",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southwest-2",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-2",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest2.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southwest-wide",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southwest-wide",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-franklin-southwest-zoom",
+      "sourceAssociationReviewId": "p4d-manual-association-review-franklin-southwest-zoom",
+      "cornerScope": "franklin_greenpoint",
+      "evidenceId": "p4d-facade-evidence-franklin-southwest-zoom",
+      "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064803",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "geometryReferenceId": "nyc-footprint-bin-3064803",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -83.324,
+            "corridorSideOffset": 36.041
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064792",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "geometryReferenceId": "nyc-footprint-bin-3064792",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -56.898,
+            "corridorSideOffset": 18.489
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064793",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "geometryReferenceId": "nyc-footprint-bin-3064793",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": -54.023,
+            "corridorSideOffset": 16.096
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same franklin_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for franklin_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064803",
+        "p4b-object-nyc-footprint-bin-3064792",
+        "p4b-object-nyc-footprint-bin-3064793"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064802",
+        "p4b-object-nyc-footprint-bin-3064688",
+        "p4b-object-nyc-footprint-bin-3337057",
+        "p4b-object-nyc-footprint-bin-3337034",
+        "p4b-object-nyc-footprint-bin-3064675"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to franklin_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the low-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-ne-mcdonalds-closeup",
+      "sourceAssociationReviewId": "p4d-manual-association-review-ne-mcdonalds-closeup",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-closeup",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-closeup.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "northeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-ne-mcdonalds-facade",
+      "sourceAssociationReviewId": "p4d-manual-association-review-ne-mcdonalds-facade",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-facade",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-facadeA.jpg",
+      "evidenceDirectionHint": {
+        "direction": "northeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-ne-mcdonalds-wide",
+      "sourceAssociationReviewId": "p4d-manual-association-review-ne-mcdonalds-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-ne-mcdonalds-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northeast-mcdonalds-wide.jpg",
+      "evidenceDirectionHint": {
+        "direction": "northeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-nw-grillpoint-closeup",
+      "sourceAssociationReviewId": "p4d-manual-association-review-nw-grillpoint-closeup",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-closeup",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-closeup.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-nw-grillpoint-facade",
+      "sourceAssociationReviewId": "p4d-manual-association-review-nw-grillpoint-facade",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-facade",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-facade.jpg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-nw-grillpoint-wide",
+      "sourceAssociationReviewId": "p4d-manual-association-review-nw-grillpoint-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-grillpoint-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-wide.jpg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-nw-subway-context",
+      "sourceAssociationReviewId": "p4d-manual-association-review-nw-subway-context",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-nw-subway-context",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/northwest-subwayA.jpg",
+      "evidenceDirectionHint": {
+        "direction": "northwest",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-se-citizens-facade-a",
+      "sourceAssociationReviewId": "p4d-manual-association-review-se-citizens-facade-a",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-a",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeA.jpeg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-se-citizens-facade-b",
+      "sourceAssociationReviewId": "p4d-manual-association-review-se-citizens-facade-b",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-facade-b",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-facadeB.jpg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-se-citizens-wide",
+      "sourceAssociationReviewId": "p4d-manual-association-review-se-citizens-wide",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-citizens-wide",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-citizens-wide.jpg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    },
+    {
+      "shortlistRecordId": "p4d-provisional-shortlist-se-subway-context",
+      "sourceAssociationReviewId": "p4d-manual-association-review-se-subway-context",
+      "cornerScope": "manhattan_greenpoint",
+      "evidenceId": "p4d-facade-evidence-se-subway-context",
+      "evidencePath": "docs/mvp-reference-images/greenpoint manhattan corner/southeast-subwayB.jpg",
+      "evidenceDirectionHint": {
+        "direction": "southeast",
+        "source": "existing-evidence-id-and-file-path-label",
+        "status": "label_only_manual_review_hint",
+        "limitation": "Not translated into corridorSide or authoritative geometry selection."
+      },
+      "associationStatus": "provisional_shortlist_review_only",
+      "selectedGeometryContainerId": null,
+      "approvedGeometryContainerId": null,
+      "authoritativeGeometryContainerId": null,
+      "candidateGeometryContainers": [
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064832",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064832",
+          "geometryReferenceId": "nyc-footprint-bin-3064832",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 943.445,
+            "corridorSideOffset": 13.317
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 1,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 1 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064831",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064831",
+          "geometryReferenceId": "nyc-footprint-bin-3064831",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 926.876,
+            "corridorSideOffset": 18.318
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 2,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 2 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        },
+        {
+          "renderedObjectId": "p4b-object-nyc-footprint-bin-3064840",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3064840",
+          "geometryReferenceId": "nyc-footprint-bin-3064840",
+          "corridorSide": "right",
+          "sideOrderHint": {
+            "basis": "corridor-axis-t-and-side-offset",
+            "corridorAxisT": 921.814,
+            "corridorSideOffset": 32.407
+          },
+          "geometryConfidence": "safe",
+          "confidenceStatus": "geometry_container_ready_for_later_review",
+          "shortlistRole": "primary_provisional_review_candidate",
+          "rank": 3,
+          "associationConfidence": "medium_provisional_same_corner_endpoint_geometry",
+          "rationale": [
+            "Container belongs to the same manhattan_greenpoint possible-container set from 4D-7.",
+            "Container is rank 3 by deterministic endpoint proximity for manhattan_greenpoint.",
+            "Geometry confidence is safe."
+          ],
+          "uncertaintyNotes": [
+            "Not selected, linked, approved, or authoritative.",
+            "Does not assign a tenant, storefront, frontage, facade, signage, entrance, material, color, active status, or exact address placement."
+          ]
+        }
+      ],
+      "primaryCandidateContainerIds": [
+        "p4b-object-nyc-footprint-bin-3064832",
+        "p4b-object-nyc-footprint-bin-3064831",
+        "p4b-object-nyc-footprint-bin-3064840"
+      ],
+      "deferredPossibleGeometryContainerIds": [
+        "p4b-object-nyc-footprint-bin-3259412",
+        "p4b-object-nyc-footprint-bin-3064842",
+        "p4b-object-nyc-footprint-bin-3064843",
+        "p4b-object-nyc-footprint-bin-3421612",
+        "p4b-object-nyc-footprint-bin-3064844"
+      ],
+      "confidence": "medium_provisional_review_priority_only",
+      "rationale": [
+        "Evidence record is already scoped to manhattan_greenpoint by the 4D-7 review packet.",
+        "Candidate containers are same-corner deterministic geometry from src/data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-manual-corner-association-review.v0.1.json.",
+        "Primary candidates are nearest the high-axis endpoint by corridorAxisT.",
+        "No image content was interpreted and no external source was used."
+      ],
+      "uncertaintyNotes": [
+        "Direction words in evidence filenames are manual review hints only, not geometry bindings.",
+        "corridorSide and corridorSideOffset do not prove cardinal corner, tenant frontage, facade, entrance, or storefront order.",
+        "Manual Batu review is required before any single candidate can be selected, linked, or approved."
+      ],
+      "manualReviewPrompt": "Check whether the evidence frame and one of the provisional candidate containers describe the same physical corner area before authorizing any later association batch.",
+      "reviewOnly": true,
+      "qaOnly": true,
+      "normalModeUse": "not-rendered",
+      "blockedClaimsPreserved": [
+        "authoritative-evidence-to-geometry-association",
+        "storefront-anchor",
+        "tenant-frontage",
+        "business-identity",
+        "exact-frontage-order",
+        "exact-frontage-width",
+        "entrance-location",
+        "entrance-ownership",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "signage",
+        "material",
+        "color",
+        "active-status",
+        "production-card",
+        "normal-runtime-rendering",
+        "visual-facade-generation",
+        "mid-corridor-inference"
+      ],
+      "claimCreationFlags": {
+        "approvedAssociationCreated": false,
+        "authoritativeAssociationCreated": false,
+        "storefrontAnchorCreated": false,
+        "tenantFrontageAssignmentCreated": false,
+        "businessIdentityAssignmentCreated": false,
+        "facadeClaimCreated": false,
+        "signageClaimCreated": false,
+        "entranceClaimCreated": false,
+        "materialClaimCreated": false,
+        "colorClaimCreated": false,
+        "activeStatusClaimCreated": false,
+        "exactAddressPlacementClaimCreated": false,
+        "normalRuntimeRenderingChanged": false,
+        "productionAssetCreated": false
+      }
+    }
+  ]
+}
