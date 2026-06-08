@@ -1,140 +1,113 @@
-# Current Execution Brief - Phase 4O-20 Complete At Review Gate
+# Current Execution Brief - Phase 4J-1 Complete, 4J-2 Open
 
-Status: `Batch 4O-18 -> 4O-20: Corridor-Wide QA Scaffold Expansion And Spatial Review` is complete and verified. Batu approved this bounded packet on 2026-06-08 after the 4O-17 review gate to make more visible QA scaffold progress without opening production, public, factual, source, facade, storefront, business, or normal-mode scope.
+Status: `Batch 4J-1 -> 4J-3: QA-Only Storefront Bay / Frontage Candidate Layer` is open as a bounded Batu-approved packet on 2026-06-08 after acceptance of the completed 4O-18 -> 4O-20 spatial scaffold review packet.
 
-4O-1 accepted by Batu on 2026-06-08.
+Completed precondition:
 
-4O-2 accepted by Batu on 2026-06-08.
+- 4O-18 through 4O-20 are committed at `3ebb949`.
+- `git status --short` was clean before opening 4J.
 
-4O-3 is complete and verified.
+4J-1 is complete and verified.
 
-4O-4 is complete and verified.
+Current executable batch: `Batch 4J-2: QA Runtime Frontage Candidate Overlay`.
 
-4O-5 is complete and verified.
+Completed batch: `Batch 4J-1: Frontage Candidate Contract + Fixture`.
 
-4O-6 is complete and verified.
+Pre-authorized queue: `Batch 4J-3: Candidate Gap + Readiness Report`.
 
-4O-6 accepted by Batu on 2026-06-08.
+Self-advance allowed: yes, from 4J-2 to 4J-3 only if 4J-2 completes cleanly, verification passes, docs are reconciled, and no hard stop condition intervenes.
 
-4O-7 is complete and verified.
+Hard Batu gate: stop after 4J-3. Do not start 4K, 4P, evidence intake, business/source linkage, facade evidence linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-4O-8 is complete and verified.
+Owner boundary: Batu owns whether the QA-only frontage/bay candidate layer is useful enough, whether later evidence/business linkage planning may open, whether any claim class may promote, and whether any source/evidence access may open. Codex owns tactical implementation inside the 4J packet only.
 
-4O-9 is complete and verified.
+## Approved Packet
 
-4O-7 -> 4O-9 accepted by Batu on 2026-06-08.
+### Batch 4J-1: Frontage Candidate Contract + Fixture
 
-4O-10 is complete and verified.
-
-4O-11 is complete and verified.
-
-4O-12 is complete and verified.
-
-4O-13 is complete and verified.
-
-4O-14 is complete and verified.
-
-4O-15 is complete and verified.
-
-4O-16 is complete and verified.
-
-4O-17 is complete and verified.
-
-4O-18 is complete and verified.
-
-4O-19 is complete and verified.
-
-4O-20 is complete and verified.
-
-Historical packet labels:
-
-- `Batch 4O-7: Offline Adapter Normalization`
-- `Batch 4O-8: Deterministic Scaffold Input Fixture`
-- `Batch 4O-9: QA-Only Scaffold Input Inspector`
-- `Batch 4O-10: Scaffold Candidate Generation`
-- `Batch 4O-11: Scaffold Candidate QA Gap Report`
-- `Batch 4O-12: Existing QA Render Reconnection Boundary`
-- `Batch 4O-13: Existing Render Compatibility Mapping`
-- `Batch 4O-14: QA Scaffold Preview Adapter`
-- `Batch 4O-15: Existing QA Runtime Scaffold Preview`
-- `Batch 4O-16: QA Scaffold Preview Report And Batu Review Gate`
-- `Batch 4O-17: QA scaffold preview legibility pass`
-- `Batch 4O-18: Corridor-Wide QA Scaffold Preview Expansion`
-- `Batch 4O-19: QA Scaffold Preview Family Controls`
-- `Batch 4O-20: Spatial Usefulness Review Pack`
-
-Current executable batch: none.
-
-Completed batch: `Batch 4O-20: Spatial Usefulness Review Pack`.
-
-Target corridor: Greenpoint Ave from Manhattan Ave to Franklin Ave.
-
-Pre-authorized queue: none.
-
-Self-advance allowed: no.
-
-Hard Batu gate: stop. Do not proceed to first real source fixture ingestion, real source access, source download/cache/ingestion/conversion/render use, normal-mode rendering, public UI, procedural production scaffold rendering, Blender/GLB assets, Mapillary automation, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset-system/art-direction work, 4N normal-mode promotion, 4P work, facade evidence intake, source promotion, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, exact height/roof claims, normal-mode exposure, production use, new dependencies, package tooling, renderer replacement, public interfaces, module-boundary changes, architecture changes, or public/product claims without later Batu approval and an updated current brief or explicit pre-authorized queue.
-
-Owner boundary: Batu owns acceptance of the 4O-18 -> 4O-20 spatial-usefulness packet, whether the expanded QA scaffold preview is spatially useful enough, whether camera/framing/placement/color hierarchy correction is needed, whether source-backed scaffold ingestion may open, source access and usage-rights acceptance, source promotion, claim-level promotion, production/public claims, facade/storefront/frontage/entrance evidence acceptance, exact business/storefront/frontage/entrance/address/signage/tenant/material/active-status claims, exact height/roof claims, credential/API approval, architecture-boundary approval, Blender/GLB override use, Mapillary/street-level metadata use, art-direction translation timing, and any later MVP gates.
-
-## Completed Packet
-
-### 4O-18 Corridor-Wide QA Scaffold Preview Expansion
+Status: complete and verified.
 
 What changed:
 
-- Added `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.v0.1.json`.
-- Added `scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`.
-- Expanded QA-only scaffold preview coverage from 6 seed records to 26 derived preview records.
-- Used 10 existing local runtime building anchors and 6 existing local guide anchors.
-- Preserved the 4O-14 seed adapter and 4O-10 candidate traces.
+- Added `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4j-1-qa-frontage-candidates.v0.1.json`.
+- Added `scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`.
+- Added `docs/reports/phase-4j-1-frontage-candidate-contract-fixture.md`.
+- Created 22 QA-only candidate records mapped to 10 existing 4O building anchors.
+- Preserved normal mode with zero records and no claim promotion.
 
-### 4O-19 QA Scaffold Preview Family Controls
+### Batch 4J-2: QA Runtime Frontage Candidate Overlay
 
-What changed:
+Goal:
 
-- Updated `src/Phase4BRuntimePreview.jsx`.
-- Updated `src/styles.css`.
-- Added `scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`.
-- Added QA-only family controls for container, grounding, and height/massing records.
-- Added visible/total QA scaffold counts and selected-record readouts.
+- Render generic frontage/bay candidate guides in QA mode only so Batu can inspect them.
 
-### 4O-20 Spatial Usefulness Review Pack
+Allowed scope:
 
-What changed:
+- Add QA-only runtime overlay for the 4J candidate records.
+- Add lightweight filters/readouts for candidate type, linked 4O scaffold anchor, QA-only status, and blocked claims.
+- Keep visuals generic guides, not facade/storefront truth.
+- Preserve normal mode behavior.
+- Add verifier coverage proving the overlay is unavailable in normal mode, filters/readouts use only allowed candidate types, all records remain non-promoted, and blocked claims remain blocked.
+- Add a concise 4J-2 report.
+- Reconcile `docs/CURRENT_EXECUTION_BRIEF.md`, `docs/PLAN.md`, `docs/phase-4-execution-roadmap.md`, and `docs/MVP_EXECUTION_LEDGER.md`.
+- Run relevant verification and commit 4J-2.
 
-- Added `docs/reports/phase-4o-20-qa-scaffold-spatial-usefulness-review.md`.
-- Added `scripts/verify-phase-4o-20-spatial-usefulness-review-pack.mjs`.
-- Recorded browser inspection in QA mode and normal mode.
-- Stopped at Batu review.
+### Batch 4J-3: Candidate Gap + Readiness Report
+
+Goal:
+
+- Assess whether the QA-only frontage/bay candidate layer is useful enough for later evidence/business linkage planning.
+
+Allowed scope:
+
+- Add a concise 4J-3 readiness report covering candidate coverage, visible usefulness, normal-mode isolation, blocked fields, missing evidence, and what remains unsafe to promote.
+- Classify gaps only with the approved bounded categories:
+  - `missing_facade_photo_evidence`
+  - `missing_frontage_segmentation_evidence`
+  - `missing_entrance_evidence`
+  - `missing_sign_band_evidence`
+  - `missing_corner_wrap_evidence`
+  - `missing_depth_or_setback_evidence`
+  - `missing_business_source_linkage`
+  - `insufficient_spatial_confidence`
+- Recommend any next phase only as a proposal.
+- Do not start evidence linkage.
+- Add verifier coverage as needed proving 4J-3 is review/report only, no normal-mode promotion occurred, and no forbidden factual claims were introduced.
+- Reconcile execution-control docs.
+- Run the full relevant verifier chain, `npm run build`, `git diff --check`, and final `git status --short`.
+- Commit 4J-3 and stop at the Batu review gate.
 
 ## Preserved Boundaries
 
-- 4O-18 -> 4O-20 changes no public interfaces and no new public module boundaries.
-- No external data fetch, download, cache, ingestion, conversion, source access, source promotion, Blender/GLB asset work, Mapillary automation, credentials, paid APIs, package/tooling changes, new dependencies, renderer replacement, public UI, public interface, production data pipeline, or production visual pipeline occurred.
-- No package/tooling changes.
-- No business linkage, POI linkage, sign linkage, entrance linkage, authoritative storefront anchors, storefront bay/frontage candidates, exact storefront, frontage, tenant frontage, entrance, address, sign, tenant, material, active-status, facade, exact height, exact roof, production, public, or product claims.
-- No normal-mode exposure and no normal-mode facade/corridor/scaffold promotion.
-- QA-only runtime rendering remains generic scaffold preview placeholders behind the existing QA toggle.
-- Truth-first order remains: spatial scaffold first, facade recognizability second, art direction third.
+- 4J does not infer businesses, tenants, exact storefronts, exact frontage, facades, signs, entrances, exact addresses, exact heights, or roof forms.
+- 4J does not add source access, downloads, cache, ingestion, conversion, or source-backed claims.
+- 4J uses existing 4O scaffold anchors only.
+- 4J records are QA-only, review-only, non-promoted, and blocked from normal mode.
+- 4J does not add production/public claims, public UI, new dependencies, package tooling, renderer replacement, or architecture changes.
 
-## Verification Completed
+## Verification Required
 
-- `git status --short` before edits: clean.
-- Browser inspection in QA mode and normal mode using `http://127.0.0.1:5181/`.
-- `node scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
-- `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
-- `node scripts/verify-phase-4o-20-spatial-usefulness-review-pack.mjs`
-- Relevant prior 4O verifiers.
-- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
+For 4J-2:
+
+- `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
+- 4J-2 runtime verifier.
+- Relevant 4O scaffold verifiers.
 - `npm run build`
 - `git diff --check`
+- `git status --short`
+
+For 4J-3:
+
+- 4J-1 verifier.
+- 4J-2 verifier.
+- 4J-3 verifier.
+- Relevant prior 4O/4I runtime and scaffold verifiers.
+- `npm run build`
+- `git diff --check`
+- Final `git status --short`
 
 ## Unresolved Decisions For Batu
 
-- Whether to accept the 4O-18 -> 4O-20 corridor-wide QA scaffold expansion and spatial-usefulness review.
-- Whether the expanded QA-only container, grounding, and height/massing layers are visually useful enough.
-- Whether camera/framing/placement/color hierarchy needs a corrective pass.
-- Whether the current generic building/container, grounding, and height/massing placeholders meet the spatial-recognizability bar for source-backed scaffold ingestion.
-- Which source-access/download/cache/conversion/render-use boundaries, if any, are approved for later source-backed scaffold work.
-- What spatial recognizability acceptance bar must be met before facade recognizability, manual overrides, Blender/GLB enhancement, art-direction translation, or normal-mode/public promotion may proceed.
+- Whether the QA-only frontage/bay candidate layer is spatially useful enough for later planning.
+- Whether later evidence/business linkage planning may open.
+- What evidence is required before any frontage, storefront, facade, sign, entrance, address, business, active-status, exact height, roof, production, or public claim can promote.
