@@ -26,17 +26,17 @@ Use these in order when documents conflict:
 
 ## Current State
 
-- Current phase: `Batch 4O-2: Truth-First Corridor Fixture Stub` is complete and pending Batu review.
+- Current phase: `Batch 4O-3: First Deterministic Scaffold Generation Contract` is complete and verified; `Batch 4O-4: Minimal Placeholder Scaffold Manifest` is open as the current executable batch.
 - Docs authority routing: `docs/DOCS_INDEX.md`.
 - Current Phase 4 control surface: `docs/phase-4-execution-roadmap.md`.
-- Current next task: none; pending Batu review of 4O-2 and later approval or an updated current brief.
-- Pre-authorized queue: none.
-- Hard stop gate: do not open 4O-3, implement procedural scaffold generation, open 4J, 4K, 4L, 4M, 4N, source promotion, real imagery intake, source access/download/cache/ingestion/conversion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, renderer changes, architecture changes, public interfaces, module boundaries, or public/product claims without Batu approval and an updated current brief/queue.
-- Updated high-level roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet for 4I-1, 4I-2, and 4I-3 only. 4I-1 defined the implementation plan. 4I-2 added a QA-only corridor facade cue fixture/verifier with 6 endpoint evidence-backed records, 36 mid-corridor insufficient-evidence records, and 100 blocked/no-evidence gaps. 4I-3 added QA-only runtime legibility for the 4I fixture while preserving normal mode. Batu then opened the narrow 4I-4 corrective batch to update stale runtime labels and reduce mid-corridor placeholder visual noise before 4J review. 4O-1 defined the first truth-first source-to-scaffold data contract for Greenpoint Ave from Manhattan Ave to Franklin Ave. 4O-2 added a planning-safe fixture-ready stub for that contract. 4O-3 scaffold-generation contract work, procedural scaffold generation, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset registry / visual system / art-direction translation, and 4N normal-mode promotion + recognition QA remain deferred until later Batu gates.
+- Current next task: `Batch 4O-4: Minimal Placeholder Scaffold Manifest`.
+- Pre-authorized queue: none after 4O-4.
+- Hard stop gate: stop after 4O-4; do not implement runtime rendering, procedural scaffold rendering, open 4J, 4K, 4L, 4M, 4N, source promotion, real imagery intake, source access/download/cache/ingestion/conversion/render/extraction/training/use, business linkage, exact storefront/frontage/entrance/address/signage/tenant/material/active-status claims, normal-mode exposure, production use, new dependencies, credentials, paid APIs, renderer changes, architecture changes, public interfaces, module boundaries, or public/product claims without Batu approval and an updated current brief/queue.
+- Updated high-level roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet for 4I-1, 4I-2, and 4I-3 only. 4I-1 defined the implementation plan. 4I-2 added a QA-only corridor facade cue fixture/verifier with 6 endpoint evidence-backed records, 36 mid-corridor insufficient-evidence records, and 100 blocked/no-evidence gaps. 4I-3 added QA-only runtime legibility for the 4I fixture while preserving normal mode. Batu then opened the narrow 4I-4 corrective batch to update stale runtime labels and reduce mid-corridor placeholder visual noise before 4J review. 4O-1 defined the first truth-first source-to-scaffold data contract for Greenpoint Ave from Manhattan Ave to Franklin Ave. 4O-2 added a planning-safe fixture-ready stub for that contract. 4O-3 defined the first deterministic scaffold-generation contract. 4O-4 placeholder scaffold manifest work is open now; runtime rendering, 4J storefront bay/frontage candidates, 4K business/source linkage, 4L evidence-backed QA corridor render, 4M asset registry / visual system / art-direction translation, and 4N normal-mode promotion + recognition QA remain deferred until later Batu gates.
 - Truth-first hybrid priority: spatial truth first; facade recognizability second; art direction third. The 4O-1 contract preserves the future pipeline as GIS footprints/streets/heights -> procedural 3D corridor scaffold -> facade evidence/classification -> modular/manual detail overrides -> optional Blender/GLB overrides. Inked Indie / Compact Corner remains the approved visual direction, but art-direction translation is deferred until spatial recognizability is proven. Blender remains valuable as an optional enhancement/override layer, not the immediate primary production path.
 - 4G-A found NYC 3D / CityGML / 3DCityDB plausible for future review-only geometry-confidence work, with source access/download/cache/ingestion/conversion/render/use still blocked behind later Batu approval. 4G-B found Mapillary/KartaView plausible for future facade evidence lane feasibility, with Mapillary authenticated API/terms review still unresolved and all real imagery access/download/cache/ingestion/render/extraction/training/use blocked. 4H-1 defined the intake workflow contract only; no real imagery intake occurred. For 4O planning, NYC Building Footprints, NYC 3-D Building Model / CityGML-style massing, CSCL, sidewalk/curb/planimetric datasets, and PLUTO/MapPLUTO are elevated as candidate spatial-truth lanes; user-supplied facade photos remain evidence-backed manual override material; Mapillary/street-level metadata remains experimental only; POI/business sources remain separate from geometry truth.
 - Phase 4 execution gate: agents may execute only the current batch named in `docs/CURRENT_EXECUTION_BRIEF.md` or the next batch already named in that brief's pre-authorized queue, must use `docs/phase-4-execution-roadmap.md` as the operating plan, and must stop at hard Batu review gates instead of inventing, skipping, or opening unqueued batches.
-- Phase 4O-1 has a planning/implementation note and verifier: `docs/phase-4o-1-truth-first-corridor-data-contract.md` and `scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`. It defines planning-only / fixture-ready record shapes for building footprints, street/sidewalk/curb grounding, height/massing fallback, frontage/corner classification, and manual override slots. Phase 4O-2 adds `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-2-truth-first-corridor-fixture-stub.v0.1.json` and `scripts/verify-phase-4o-2-corridor-fixture-stub.mjs` as a planning-safe source-reference-only fixture stub. It does not download data, access sources, create runtime rendering, implement scaffold generation, add Blender/GLB assets, add Mapillary automation, or promote claims.
+- Phase 4O-1 has a planning/implementation note and verifier: `docs/phase-4o-1-truth-first-corridor-data-contract.md` and `scripts/verify-phase-4o-1-truth-first-corridor-data-contract.mjs`. It defines planning-only / fixture-ready record shapes for building footprints, street/sidewalk/curb grounding, height/massing fallback, frontage/corner classification, and manual override slots. Phase 4O-2 adds `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-2-truth-first-corridor-fixture-stub.v0.1.json` and `scripts/verify-phase-4o-2-corridor-fixture-stub.mjs` as a planning-safe source-reference-only fixture stub. Phase 4O-3 adds `docs/phase-4o-3-deterministic-scaffold-generation-contract.md` and `scripts/verify-phase-4o-3-scaffold-generation-contract.mjs` as the internal contract for deriving a placeholder scaffold manifest. It does not download data, access sources, create runtime rendering, implement rendered scaffold generation, add Blender/GLB assets, add Mapillary automation, or promote claims.
 - Phase 3 is closed for planning purposes after the Phase 3D corridor style matte review package.
 - Phase 3D preserved review evidence remains review-only/non-production: matte asset, app surface, screenshot evidence, reference inventory, self-audit, and evidence inventory.
 - Phase 4A remains a decision workflow, not a production system.
@@ -61,6 +61,7 @@ Use these in order when documents conflict:
 - Phase 4 execution roadmap: `docs/phase-4-execution-roadmap.md`
 - Phase 4O-1 truth-first corridor data contract: `docs/phase-4o-1-truth-first-corridor-data-contract.md`
 - Phase 4O-2 truth-first corridor fixture stub: `src/data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-2-truth-first-corridor-fixture-stub.v0.1.json`
+- Phase 4O-3 deterministic scaffold generation contract: `docs/phase-4o-3-deterministic-scaffold-generation-contract.md`
 - Phase 4C recognizable facade cue plan: `docs/phase-4c-recognizable-facade-cue-plan.md`
 - Phase 4D claim ladder/matching contract: `docs/phase-4d-claim-ladder-matching-contract.md`
 - Phase 4D candidate POI QA fixture note: `docs/phase-4d-candidate-poi-qa-fixture.md`
@@ -126,13 +127,14 @@ Use these in order when documents conflict:
 43. 4I-4: QA corridor cue legibility correction. Complete and verified; pending Batu visual review.
 44. 4O: Truth-First Procedural Corridor Scaffold. Proposed overall direction.
 45. 4O-1: Truth-First Corridor Data Contract. Complete, verified, and accepted by Batu.
-46. 4O-2: Truth-First Corridor Fixture Stub. Complete and verified; pending Batu review.
-47. 4O-3: First Deterministic Scaffold Generation Contract. Proposed only; not open.
-48. 4J: Storefront bay/frontage candidate layer. Deferred; candidate-only and QA-only until later approval after spatial scaffold review.
-49. 4K: Business/source linkage. Deferred until storefront/frontage candidates and business source policy are approved.
-50. 4L: Evidence-backed QA corridor render. Deferred until evidence and linkage gates support a truthful QA render.
-51. 4M: Asset registry / visual system / art-direction translation. Deferred until spatial recognizability is proven and evidence/override models are defined; Qwen/Oxen may be evaluated here only as a source-safe visual-system accelerator.
-52. 4N: Normal-mode promotion + recognition QA. Deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
+46. 4O-2: Truth-First Corridor Fixture Stub. Complete, verified, and accepted by Batu.
+47. 4O-3: First Deterministic Scaffold Generation Contract. Complete and verified.
+48. 4O-4: Minimal Placeholder Scaffold Manifest. Open as current executable batch.
+49. 4J: Storefront bay/frontage candidate layer. Deferred; candidate-only and QA-only until later approval after spatial scaffold review.
+50. 4K: Business/source linkage. Deferred until storefront/frontage candidates and business source policy are approved.
+51. 4L: Evidence-backed QA corridor render. Deferred until evidence and linkage gates support a truthful QA render.
+52. 4M: Asset registry / visual system / art-direction translation. Deferred until spatial recognizability is proven and evidence/override models are defined; Qwen/Oxen may be evaluated here only as a source-safe visual-system accelerator.
+53. 4N: Normal-mode promotion + recognition QA. Deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
 
 ## Active Blockers
 
@@ -140,7 +142,7 @@ Use these in order when documents conflict:
 - Source/API strategy is no longer the main blocker; source access/material is. Brouwerij Lane cannot become a real corridor target until Batu supplies or approves deterministic source access/material and a later brief authorizes the evidence packet.
 - Foursquare remains optional future enrichment and blocked by missing credential plus repo-recorded terms/cache/display approval.
 - Mid-corridor and Franklin have sourced/contextual NYC/Open street/building geometry, but sidewalk surfaces, stylized scene projection, real storefronts, exact frontage/order, entrances, facades, address placement, business identity, active status, and raster readiness remain blocked/manual as labeled.
-- 4O-2 is a fixture-ready stub only. NYC Building Footprints, NYC 3-D Building Model / CityGML-style massing, CSCL, sidewalk/curb/planimetric datasets, and PLUTO/MapPLUTO remain candidate planning lanes only until Batu approves source access, download/cache/conversion, render use, dependencies, and architecture boundaries.
+- 4O-3 is a scaffold-generation contract only. NYC Building Footprints, NYC 3-D Building Model / CityGML-style massing, CSCL, sidewalk/curb/planimetric datasets, and PLUTO/MapPLUTO remain candidate planning lanes only until Batu approves source access, download/cache/conversion, render use, dependencies, and architecture boundaries.
 - "Correct geometry" is framed as confidence-labeled review of stylized/normalized geometry, not survey-grade correctness. 4D-1 made every rendered building inspectable as safe, uncertain, or blocked for later POI/facade matching.
 - The 4D-2 claim ladder now defines that geometry containers, address candidates, parcel/building associations, POI candidates, tenant-at-address claims, storefront/frontage claims, entrance claims, facade/signage claims, and landmark/special-treatment claims require separate evidence and promotion gates.
 - The 4D-3 candidate layer is synthetic/manual placeholder QA only. It does not prove real business identity, tenant-at-address, storefront/frontage, entrance, facade, signage, active status, or production card claims.
@@ -165,8 +167,8 @@ Use these in order when documents conflict:
 ## Pending Decisions
 
 - Batu visual/review gate for the completed 4I-4 correction.
-- Batu review decision for `Batch 4O-2: Truth-First Corridor Fixture Stub`.
-- Batu decision on whether to open 4O-3 first deterministic scaffold generation contract work or request a corrective 4O-2 pass.
+- Batu acceptance decision for `Batch 4O-3: First Deterministic Scaffold Generation Contract`.
+- Batu review decision for `Batch 4O-4: Minimal Placeholder Scaffold Manifest` after completion.
 - Batu decision on 4O source access, download/cache/conversion/render-use boundaries, source fixtures, dependencies/tooling, architecture boundaries, and spatial recognizability acceptance criteria.
 - Future approved packets should state allowed scope, stop conditions, truth gates, verification expectations, commit behavior, and final review gate so Codex can self-advance only inside those boundaries.
 - Conditional follow-up from 4B-6R: M-to-F and F-to-M cameras remain somewhat compressed and should be tuned in a later narrow batch only if Batu opens that scope.

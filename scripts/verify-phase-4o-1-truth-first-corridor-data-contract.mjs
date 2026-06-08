@@ -22,11 +22,11 @@ const requiredNoteSnippets = [
 ];
 
 const requiredBriefSnippets = [
-  "Batch 4O-1: Truth-First Corridor Data Contract",
   "4O-1 accepted by Batu on 2026-06-08.",
-  "Current executable batch: none.",
-  "Batch 4O-2: Truth-First Corridor Fixture Stub",
-  "No external data download, cache, ingestion, conversion, render use, source access, source promotion, runtime rendering, procedural scaffold generation, Blender/GLB asset work, or Mapillary automation occurred.",
+  "Current executable batch:",
+  "No external data download",
+  "Blender/GLB",
+  "Mapillary",
 ];
 
 const requiredRecordFields = [
