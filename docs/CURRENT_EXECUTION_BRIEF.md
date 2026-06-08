@@ -1,6 +1,6 @@
-# Current Execution Brief - Phase 4K-3 Open
+# Current Execution Brief - Phase 4K Complete At Review Gate
 
-Status: `Batch 4K-1 -> 4K-3: QA-Only Recognizable Corridor Anchor Proof` is open. Batu approved this bounded packet on 2026-06-08 after the completed 4J-3 Batu review gate.
+Status: `Batch 4K-1 -> 4K-3: QA-Only Recognizable Corridor Anchor Proof` is complete and verified. Batu approved this bounded packet on 2026-06-08 after the completed 4J-3 Batu review gate.
 
 Completed precondition:
 
@@ -16,48 +16,21 @@ Completed precondition:
 
 4K-2 is complete and verified.
 
-Current executable batch: `Batch 4K-3: Local Recognizability Review Pack`.
+4K-3 is complete and verified.
 
-Completed batch: `Batch 4K-2: QA Runtime Recognizable Anchor Overlay`.
+Current executable batch: none.
+
+Completed batch: `Batch 4K-3: Local Recognizability Review Pack`.
 
 Pre-authorized queue: none.
 
-Self-advance allowed: no. Stop at the 4K-3 Batu review gate.
+Self-advance allowed: no.
 
-Hard Batu gate: stop after 4K-3. Do not start 4L, 4P, evidence intake, business/source linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
+Hard Batu gate: stop. Do not start 4L, 4P, evidence intake, business/source linkage, source access, source download/cache/ingestion/conversion, normal-mode exposure, production/public claims, public interfaces, package/tooling changes, renderer replacement, architecture changes, or claim promotion without later Batu approval and an updated current brief or explicit pre-authorized queue.
 
-Owner boundary: Batu owns whether the QA-only recognizable corridor anchor proof is useful enough, whether later evidence-backed facade cue intake or geometry/evidence planning may open, and whether any claim class may promote. Codex owns tactical implementation inside the approved 4K packet only.
+Owner boundary: Batu owns whether the QA-only recognizable corridor anchor proof is useful enough, whether later evidence-backed facade cue intake or source-backed geometry/evidence planning may open, and whether any claim class may promote. Codex owns tactical implementation inside the completed 4K packet only.
 
-## Active Batch
-
-### Batch 4K-3: Local Recognizability Review Pack
-
-Goal:
-
-- Produce a concise review artifact answering whether someone familiar with Greenpoint could begin to identify this as Greenpoint Ave between Manhattan and Franklin.
-
-Allowed scope:
-
-- Add a concise 4K-3 recognizability review report covering visible anchors, endpoint/corner cues, whether corridor identity is stronger than after 4J, what remains generic, missing evidence, and what is still blocked from promotion.
-- Classify remaining recognizability gaps only with the approved bounded categories:
-  - `missing_mid_corridor_facade_evidence`
-  - `weak_corner_wrap_recognition`
-  - `weak_material_color_specificity`
-  - `weak_storefront_rhythm_specificity`
-  - `missing_street_furniture_evidence`
-  - `missing_subway_entrance_specificity`
-  - `missing_business_source_linkage`
-  - `insufficient_local_landmark_signal`
-- Include screenshot references only if the existing repo screenshot workflow already supports them; do not create a large screenshot system.
-- Recommend next phase only as a proposal.
-- Add verifier coverage proving 4K-3 is review/report only, no normal-mode promotion occurred, and no forbidden factual claims were introduced.
-- Reconcile execution docs, run the full relevant verifier chain, `npm run build`, `git diff --check`, final `git status --short`, and commit 4K-3.
-
-Blocked:
-
-- No new external source access, source download/cache/ingestion/conversion, evidence intake, image analysis, image paths, source paths, business/source linkage, business/tenant/storefront inference, exact frontage, exact facade, exact sign, entrance, exact address, exact height, roof, production/public claim, normal-mode exposure, public interface, new dependency, package/tooling change, renderer replacement, architecture change, 4L, or 4P.
-
-## Completed Batches
+## Completed Packet
 
 ### Batch 4K-1: Recognizable Anchor Cue Contract + Fixture
 
@@ -80,6 +53,17 @@ What changed:
 - Rendered 18 QA-only cue records as generic 4K guide overlays with cue category filters/readouts.
 - Preserved normal mode with zero records and no claim promotion.
 
+### Batch 4K-3: Local Recognizability Review Pack
+
+What changed:
+
+- Added `docs/reports/phase-4k-3-local-recognizability-review-pack.md`.
+- Added `scripts/verify-phase-4k-3-local-recognizability-review-pack.mjs`.
+- Assessed whether the QA-only cue layer makes the corridor more recognizable than after 4J.
+- Classified remaining recognizability gaps only with approved bounded 4K categories.
+- Recommended any next phase only as a proposal.
+- Stopped at Batu review.
+
 ## Preserved Boundaries
 
 - 4K does not infer businesses, tenants, exact storefronts, exact frontage, exact facades, signs, entrances, exact addresses, exact heights, or roof forms.
@@ -87,19 +71,27 @@ What changed:
 - 4K uses existing repo assets/data/evidence only.
 - 4K records are QA-only, review-only, non-promoted, and blocked from normal mode.
 - 4K does not add production/public claims, public UI, new dependencies, package tooling, renderer replacement, or architecture changes.
+- 4K-3 did not start evidence-backed facade cue intake, source-backed geometry/evidence planning, business/source linkage, 4L, 4P, normal-mode promotion, or claim promotion.
 
 ## Verification Completed
 
 - `git status --short` before 4K: clean.
 - `node scripts/verify-phase-4k-1-qa-recognizable-anchor-cues.mjs`
 - `node scripts/verify-phase-4k-2-qa-recognizable-anchor-runtime-overlay.mjs`
+- `node scripts/verify-phase-4k-3-local-recognizability-review-pack.mjs`
+- `node scripts/verify-phase-4j-3-candidate-readiness-report.mjs`
 - `node scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs`
+- `node scripts/verify-phase-4j-1-qa-frontage-candidates.mjs`
+- `node scripts/verify-phase-4o-20-spatial-usefulness-review-pack.mjs`
 - `node scripts/verify-phase-4o-19-qa-scaffold-preview-controls.mjs`
+- `node scripts/verify-phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.mjs`
+- `node scripts/verify-phase-4i-qa-runtime-legibility.mjs`
 - `npm run build`
 - `git diff --check`
+- Final `git status --short`
 
 ## Unresolved Decisions For Batu
 
-- Whether the QA-only recognizable anchor layer makes the corridor more locally recognizable than 4J alone.
+- Whether the QA-only recognizable anchor layer makes the corridor locally recognizable enough for later planning.
 - Whether later evidence-backed facade cue intake or source-backed geometry/evidence planning may open.
 - What evidence is required before any frontage, storefront, facade, sign, entrance, address, business, active-status, exact height, roof, production, or public claim can promote.

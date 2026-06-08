@@ -29,21 +29,38 @@ const requiredReportSnippets = [
 ];
 
 const requiredRuntimeSnippets = [
-  "4O-18-20 spatial review",
-  "4O-20 review-readiness reporting",
   "scaffoldPreviewVisible",
   "visibleQaOnlyRecordCount",
   "normalModeExposure: \"blocked\"",
   "child.visible = qaEnabled;",
 ];
 
-const requiredBriefSnippets = [
+const historicalRuntimeSnippets = [
+  "4O-18-20 spatial review",
+  "4O-20 review-readiness reporting",
+];
+
+const laterRuntimeSnippets = [
+  "4O scaffold previews with 4O-19 family controls",
+  "4K recognizable anchor cues",
+];
+
+const originalBriefSnippets = [
   "Batch 4O-18: Corridor-Wide QA Scaffold Preview Expansion",
   "Batch 4O-19: QA Scaffold Preview Family Controls",
   "Batch 4O-20: Spatial Usefulness Review Pack",
   "4O-18 is complete and verified.",
   "4O-19 is complete and verified.",
   "4O-20 is complete and verified.",
+  "Current executable batch: none.",
+  "Pre-authorized queue: none.",
+  "Hard Batu gate: stop.",
+];
+
+const laterBriefSnippets = [
+  "Current Execution Brief - Phase 4K Complete At Review Gate",
+  "4K-3 is complete and verified.",
+  "4K uses existing repo assets/data/evidence only.",
   "Current executable batch: none.",
   "Pre-authorized queue: none.",
   "Hard Batu gate: stop.",
@@ -64,8 +81,16 @@ async function main() {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing 4O-20 snippet: ${snippet}`);
   }
 
-  for (const snippet of requiredBriefSnippets) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4O-20 snippet: ${snippet}`);
+  const historicalRuntimeValid = historicalRuntimeSnippets.every((snippet) => runtime.includes(snippet));
+  const laterRuntimeValid = laterRuntimeSnippets.every((snippet) => runtime.includes(snippet));
+  if (!historicalRuntimeValid && !laterRuntimeValid) {
+    failures.push("Runtime must preserve either the 4O-20 review header or a later-phase header that still names 4O scaffold controls");
+  }
+
+  const originalBriefValid = originalBriefSnippets.every((snippet) => brief.includes(snippet));
+  const laterBriefValid = laterBriefSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalBriefValid && !laterBriefValid) {
+    failures.push("Current brief must either preserve the 4O-20 gate or record later-phase completion without 4O promotion");
   }
 
   if (expansion.summary.renderedQaOnlyRecordCount !== 26) failures.push("Expansion must keep 26 QA-only records");

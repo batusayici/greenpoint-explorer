@@ -14,11 +14,15 @@ const requiredRuntimeSnippets = [
   "const corridorFacadeCueIndex = useMemo(() => buildCorridorFacadeCueIndex(corridorFacadeCueFixture), []);",
   "createCorridorFacadeCueLayer(object, facadeCue, corridorFacadeCue)",
   "child.userData.stateRole === \"corridorFacadeCue\"",
-  "Batch 4I-4 / corridor cue legibility correction",
   "const placeholderWidthScale = 0.52;",
   "opacity: 0.075",
   "4I Corridor Facade Cue",
   "QA-only; no storefront, business, exact facade, normal-mode, or production claim",
+];
+
+const runtimeHeaderSnippets = [
+  "Batch 4I-4 / corridor cue legibility correction",
+  "Batch 4K-2 / QA recognizable anchor overlay",
 ];
 
 const forbiddenRuntimeSnippets = [
@@ -40,6 +44,10 @@ async function main() {
 
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing required snippet: ${snippet}`);
+  }
+
+  if (!runtimeHeaderSnippets.some((snippet) => runtime.includes(snippet))) {
+    failures.push("Runtime missing either the original 4I header or a later approved runtime header");
   }
 
   if (!styles.includes(".phase4b-swatch-corridor-facade")) {
