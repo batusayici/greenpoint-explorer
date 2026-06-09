@@ -159,6 +159,21 @@ const endpointHeroFacadeOverrides = {
       ],
       benchmarkUse: "lookdev_density_lighting_material_readability_only",
     },
+    hybridHeroLayer: {
+      status: "qa_only_hybrid_benchmark_closure_overlay",
+      purpose: "push Franklin benchmark recognizability with opaque hero modules while preserving measured trace",
+      renderMode: "visual_poc_final_look_overlay",
+      grammarFamilies: [
+        "corner_storefront_wrap_type_a",
+        "black_awning_canopy_type_a",
+        "tan_sign_band_type_a",
+        "brick_window_stack_type_a",
+        "cornice_parapet_family_a",
+        "side_return_bay_fire_escape_type_a",
+        "street_grounding_kit_a",
+      ],
+      evidenceBoundary: "measured_trace_plus_repo_local_evidence_plus_art_directed_approximation",
+    },
   },
   manhattan: {
     targetCueRecordId: "p4e1-manhattan-warm-brick-corner-wrap",
@@ -4698,6 +4713,9 @@ function addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, compos
   if (hasHeroFidelityLayer) {
     addFranklinHeroFidelityLayer(group, { heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, baySpans });
   }
+  if (heroOverride.hybridHeroLayer && heroOverride === endpointHeroFacadeOverrides.franklin) {
+    addFranklinHybridHeroOverlay(group, { heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, baySpans });
+  }
 
   if (recognitionProfile.accentDetails?.includes("traffic-signal") || heroOverride.streetGrounding.evidenceBackedPoles.includes("traffic_signal_post")) {
     const signalX = heroOverride.sideReturn.edge === "right" ? plane.xMax + length * 0.04 : plane.xMin - length * 0.04;
@@ -5251,6 +5269,562 @@ function addHeroStreetGroundingModule(group, { materials, length, plane, z, side
       opacity: 1,
       position: [bikeBaseX + 0.05 + index * 0.11, 0.16, bikeZ - sideOffset * (0.02 + index * 0.05)],
       size: [0.11, 0.016, 0.02],
+      ...layer,
+    });
+  }
+}
+
+function addFranklinHybridHeroOverlay(group, { materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, baySpans }) {
+  const shell = { opaque: false, depthTest: false, renderOrder: 16 };
+  const hybrid = { opaque: false, depthTest: false, renderOrder: 22 };
+  const soft = { opaque: false, depthTest: false, renderOrder: 17 };
+  const upperHeight = Math.max(height - baseHeight, 0.18);
+  const centerX = plane.xMin + length / 2;
+  const faceZ = frontZ + sideOffset * 0.56;
+  const side = endpointHeroFacadeOverrides.franklin.sideReturn;
+  const sideDepth = side.depthUnits * 1.02;
+  const sideWallX = plane.xMax - length * 0.045;
+  const sideCenterZ = frontZ - sideOffset * sideDepth * 0.43;
+
+  addHybridFusedMassingShell(group, { materials, length, plane, height, baseHeight, upperHeight, centerX, faceZ, sideOffset, sideWallX, sideCenterZ, sideDepth, layer: shell });
+  addHybridCorniceRoofBox(group, { materials, length, plane, height, centerX, z, depth, faceZ, sideOffset, sideWallX, sideCenterZ, sideDepth, layer: hybrid });
+  addHybridBrickWindowStack(group, { materials, length, plane, height, baseHeight, upperHeight, faceZ, sideOffset, layer: hybrid });
+  addHybridWrappedStorefront(group, { materials, baySpans, baseHeight, faceZ, sideOffset, sideWallX, sideCenterZ, sideDepth, layer: hybrid, softLayer: soft });
+  addHybridSideReturnGrammar(group, { materials, height, baseHeight, sideOffset, sideWallX, sideCenterZ, sideDepth, frontZ, layer: hybrid });
+  addHybridStreetGroundingKit(group, { materials, length, plane, z, frontZ, sideOffset, layer: hybrid, softLayer: soft });
+}
+
+function addHybridFusedMassingShell(group, { materials, length, plane, height, baseHeight, upperHeight, centerX, faceZ, sideOffset, sideWallX, sideCenterZ, sideDepth, layer }) {
+  addHeroFidelityBox(group, {
+    color: 0x944638,
+    opacity: 1,
+    position: [centerX, baseHeight + upperHeight * 0.49, faceZ],
+    size: [length * 1.03, upperHeight * 0.98, 0.068],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x7a362e,
+    opacity: 1,
+    position: [sideWallX, height * 0.52, sideCenterZ],
+    size: [0.11, height * 0.96, sideDepth],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x5f2c27,
+    opacity: 1,
+    position: [plane.xMin - length * 0.015, height * 0.5, faceZ + sideOffset * 0.018],
+    size: [length * 0.055, height * 0.93, 0.07],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x6a3029,
+    opacity: 1,
+    position: [plane.xMax - length * 0.01, height * 0.51, faceZ + sideOffset * 0.02],
+    size: [length * 0.06, height * 0.98, 0.075],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x3b2420,
+    opacity: 1,
+    position: [centerX, baseHeight - 0.025, faceZ + sideOffset * 0.035],
+    size: [length * 1.02, 0.055, 0.085],
+    ...layer,
+  });
+  for (let row = 0; row < 14; row += 1) {
+    const y = baseHeight + upperHeight * (0.08 + row * 0.061);
+    addHeroFidelityBox(group, {
+      color: row % 3 === 0 ? 0xbf765d : materials.mortarLine,
+      opacity: row % 3 === 0 ? 0.38 : 0.52,
+      position: [centerX, y, faceZ + sideOffset * 0.044],
+      size: [length * 0.9, 0.008, 0.028],
+      ...layer,
+    });
+  }
+}
+
+function addHybridCorniceRoofBox(group, { materials, length, plane, height, centerX, z, depth, faceZ, sideOffset, sideWallX, sideCenterZ, sideDepth, layer }) {
+  const bands = [
+    { y: height + 0.015, h: 0.045, w: 1.12, d: 0.14, color: 0x6d6252 },
+    { y: height + 0.075, h: 0.052, w: 1.18, d: 0.2, color: materials.stoneCornice },
+    { y: height + 0.142, h: 0.045, w: 1.08, d: 0.24, color: 0xf0dfb1 },
+    { y: height + 0.2, h: 0.038, w: 1.0, d: 0.18, color: 0xc8b27c },
+  ];
+  for (const band of bands) {
+    addHeroFidelityBox(group, {
+      color: band.color,
+      opacity: 1,
+      position: [centerX, band.y, faceZ + sideOffset * band.d],
+      size: [length * band.w, band.h, 0.075 + band.d],
+      ...layer,
+    });
+  }
+  for (let index = 0; index < 20; index += 1) {
+    if (index % 2) continue;
+    addHeroFidelityBox(group, {
+      color: 0x7a6b50,
+      opacity: 1,
+      position: [plane.xMin + length * (0.03 + index * 0.047), height + 0.055, faceZ + sideOffset * 0.265],
+      size: [length * 0.026, 0.04, 0.055],
+      ...layer,
+    });
+  }
+  addHeroFidelityBox(group, {
+    color: materials.roof ?? 0x3a3833,
+    opacity: 1,
+    position: [centerX, height + 0.16, z - sideOffset * depth * 0.26],
+    size: [length * 0.88, 0.032, depth * 0.88],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x2b2c28,
+    opacity: 1,
+    position: [centerX, height + 0.205, z - sideOffset * depth * 0.18],
+    size: [length * 0.62, 0.018, depth * 0.62],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.stoneCornice,
+    opacity: 1,
+    position: [sideWallX - length * 0.01, height + 0.115, sideCenterZ],
+    size: [0.115, 0.06, sideDepth * 1.04],
+    ...layer,
+  });
+}
+
+function addHybridBrickWindowStack(group, { materials, length, plane, height, baseHeight, upperHeight, faceZ, sideOffset, layer }) {
+  const columns = [0.12, 0.27, 0.42, 0.57, 0.72, 0.87];
+  const rowYs = [
+    baseHeight + upperHeight * 0.22,
+    baseHeight + upperHeight * 0.51,
+    baseHeight + upperHeight * 0.78,
+  ];
+  for (let row = 0; row < rowYs.length; row += 1) {
+    for (let col = 0; col < columns.length; col += 1) {
+      const x = plane.xMin + length * columns[col];
+      const topRow = row === rowYs.length - 1;
+      const width = length * (col === 0 || col === columns.length - 1 ? 0.058 : 0.062);
+      const winHeight = topRow ? 0.21 : 0.185;
+      addHybridWindow(group, {
+        x,
+        y: rowYs[row],
+        z: faceZ + sideOffset * 0.092,
+        width,
+        height: winHeight,
+        topRow,
+        ac: row === 0 && [0, 2, 4].includes(col),
+        materials,
+        sideOffset,
+        layer,
+      });
+    }
+    addHeroFidelityBox(group, {
+      color: 0x6b332c,
+      opacity: 1,
+      position: [plane.xMin + length * 0.5, rowYs[row] + 0.15, faceZ + sideOffset * 0.074],
+      size: [length * 0.82, 0.026, 0.035],
+      ...layer,
+    });
+    for (let panel = 0; panel < 8; panel += 1) {
+      addHeroFidelityBox(group, {
+        color: 0x9f5946,
+        opacity: 0.82,
+        position: [plane.xMin + length * (0.12 + panel * 0.1), rowYs[row] + 0.15, faceZ + sideOffset * 0.105],
+        size: [length * 0.04, 0.034, 0.03],
+        ...layer,
+      });
+    }
+  }
+}
+
+function addHybridWindow(group, { x, y, z, width, height, topRow, ac, materials, sideOffset, layer }) {
+  addHeroFidelityBox(group, {
+    color: 0x251f1c,
+    opacity: 1,
+    position: [x, y, z],
+    size: [width * 1.72, height * 1.42, 0.07],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x0f1515,
+    opacity: 1,
+    position: [x, y - height * 0.03, z + sideOffset * 0.043],
+    size: [width * 1.08, height * 1.02, 0.052],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xb9c5bd,
+    opacity: 1,
+    position: [x, y + height * 0.18, z + sideOffset * 0.068],
+    size: [width * 0.78, height * 0.36, 0.035],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.stoneCornice,
+    opacity: 1,
+    position: [x, y - height * 0.74, z + sideOffset * 0.078],
+    size: [width * 1.85, 0.036, 0.064],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: topRow ? 0x7a3f33 : materials.stoneCornice,
+    opacity: 1,
+    position: [x, y + height * 0.76, z + sideOffset * 0.08],
+    size: [width * (topRow ? 1.42 : 1.78), topRow ? 0.07 : 0.04, 0.06],
+    ...layer,
+  });
+  if (topRow) {
+    addHeroFidelityBox(group, {
+      color: 0x51261f,
+      opacity: 1,
+      position: [x, y + height * 0.96, z + sideOffset * 0.066],
+      size: [width * 1.2, 0.024, 0.04],
+      ...layer,
+    });
+  }
+  if (ac) {
+    addHeroFidelityBox(group, {
+      color: 0xd6d4ca,
+      opacity: 1,
+      position: [x + width * 0.46, y - height * 0.84, z + sideOffset * 0.12],
+      size: [width * 0.72, 0.052, 0.07],
+      ...layer,
+    });
+    addHeroFidelityBox(group, {
+      color: 0x737a75,
+      opacity: 1,
+      position: [x + width * 0.46, y - height * 0.84, z + sideOffset * 0.162],
+      size: [width * 0.48, 0.02, 0.02],
+      ...layer,
+    });
+  }
+}
+
+function addHybridWrappedStorefront(group, { materials, baySpans, baseHeight, faceZ, sideOffset, sideWallX, sideCenterZ, sideDepth, layer, softLayer }) {
+  if (!baySpans.length) return;
+  const xMin = baySpans[1]?.xMin ?? baySpans[0].xMin;
+  const xMax = baySpans[5]?.xMax ?? baySpans[baySpans.length - 1].xMax;
+  const centerX = (xMin + xMax) / 2;
+  const width = xMax - xMin;
+  const shopZ = faceZ + sideOffset * 0.22;
+
+  addHeroFidelityBox(group, {
+    color: 0x070908,
+    opacity: 1,
+    position: [centerX, baseHeight * 0.38, shopZ],
+    size: [width * 1.02, baseHeight * 0.8, 0.115],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x1a100b,
+    opacity: 0.55,
+    position: [centerX, baseHeight * 0.18, shopZ + sideOffset * 0.09],
+    size: [width, 0.035, 0.14],
+    ...softLayer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xb1845b,
+    opacity: 1,
+    position: [centerX, baseHeight * 1.08, shopZ + sideOffset * 0.035],
+    size: [width * 1.04, baseHeight * 0.19, 0.115],
+    ...layer,
+  });
+  for (let stripe = 0; stripe < 6; stripe += 1) {
+    addHeroFidelityBox(group, {
+      color: stripe % 2 ? 0xd0a06a : 0x8f603f,
+      opacity: 0.9,
+      position: [xMin + width * (0.08 + stripe * 0.16), baseHeight * 1.095, shopZ + sideOffset * 0.102],
+      size: [width * 0.09, baseHeight * 0.018, 0.035],
+      ...layer,
+    });
+  }
+  addHeroFidelityBox(group, {
+    color: materials.greenSign,
+    opacity: 1,
+    position: [centerX - width * 0.02, baseHeight * 1.105, shopZ + sideOffset * 0.14],
+    size: [width * 0.32, baseHeight * 0.075, 0.055],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.blackCanopy,
+    opacity: 1,
+    position: [centerX, baseHeight * 0.76, shopZ + sideOffset * 0.24],
+    size: [width * 1.06, baseHeight * 0.13, 0.42],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x050606,
+    opacity: 1,
+    position: [centerX, baseHeight * 0.66, shopZ + sideOffset * 0.47],
+    size: [width * 1.02, baseHeight * 0.055, 0.22],
+    ...layer,
+  });
+
+  const paneCount = 9;
+  for (let index = 0; index < paneCount; index += 1) {
+    const paneWidth = width * (index === 4 ? 0.072 : 0.058);
+    const x = xMin + width * (0.075 + index * 0.105);
+    const isDoor = index === 4 || index === 7;
+    addHybridStorefrontPane(group, {
+      x,
+      y: isDoor ? baseHeight * 0.38 : baseHeight * 0.45,
+      z: shopZ + sideOffset * 0.145,
+      width: paneWidth,
+      height: isDoor ? baseHeight * 0.64 : baseHeight * 0.43,
+      isDoor,
+      materials,
+      sideOffset,
+      layer,
+    });
+  }
+  addHeroFidelityBox(group, {
+    color: 0x0b0d0d,
+    opacity: 1,
+    position: [xMax - width * 0.03, baseHeight * 0.48, shopZ + sideOffset * 0.2],
+    size: [width * 0.045, baseHeight * 0.83, 0.15],
+    ...layer,
+  });
+
+  addHeroFidelityBox(group, {
+    color: 0xb1845b,
+    opacity: 1,
+    position: [sideWallX - 0.07, baseHeight * 1.06, sideCenterZ + sideOffset * sideDepth * 0.17],
+    size: [0.12, baseHeight * 0.18, sideDepth * 0.48],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.blackCanopy,
+    opacity: 1,
+    position: [sideWallX - 0.105, baseHeight * 0.76, sideCenterZ + sideOffset * sideDepth * 0.17],
+    size: [0.19, baseHeight * 0.13, sideDepth * 0.5],
+    ...layer,
+  });
+}
+
+function addHybridStorefrontPane(group, { x, y, z, width, height, isDoor, materials, sideOffset, layer }) {
+  addHeroFidelityBox(group, {
+    color: 0x060808,
+    opacity: 1,
+    position: [x, y, z],
+    size: [width * 1.32, height * 1.12, 0.064],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: isDoor ? 0x101615 : 0x5f7c73,
+    opacity: 1,
+    position: [x, y, z + sideOffset * 0.045],
+    size: [width, height, 0.048],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xd9e5da,
+    opacity: 0.78,
+    position: [x - width * 0.18, y + height * 0.22, z + sideOffset * 0.078],
+    size: [width * 0.32, height * 0.03, 0.02],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.trim,
+    opacity: 1,
+    position: [x, y, z + sideOffset * 0.083],
+    size: [0.012, height * 0.94, 0.03],
+    ...layer,
+  });
+  if (!isDoor) {
+    addHeroFidelityBox(group, {
+      color: 0xe8eee4,
+      opacity: 0.82,
+      position: [x + width * 0.24, y - height * 0.18, z + sideOffset * 0.082],
+      size: [width * 0.16, height * 0.18, 0.018],
+      ...layer,
+    });
+  }
+}
+
+function addHybridSideReturnGrammar(group, { materials, height, baseHeight, sideOffset, sideWallX, sideCenterZ, sideDepth, frontZ, layer }) {
+  const yRows = [
+    baseHeight + (height - baseHeight) * 0.25,
+    baseHeight + (height - baseHeight) * 0.5,
+    baseHeight + (height - baseHeight) * 0.74,
+  ];
+  for (let row = 0; row < yRows.length; row += 1) {
+    for (let col = 0; col < 4; col += 1) {
+      const z = frontZ - sideOffset * sideDepth * (0.18 + col * 0.18);
+      addHeroFidelityBox(group, {
+        color: 0x211e1c,
+        opacity: 1,
+        position: [sideWallX - 0.068, yRows[row], z],
+        size: [0.064, 0.18, 0.082],
+        ...layer,
+      });
+      addHeroFidelityBox(group, {
+        color: 0x9eaaa2,
+        opacity: 1,
+        position: [sideWallX - 0.105, yRows[row] + 0.015, z],
+        size: [0.034, 0.12, 0.054],
+        ...layer,
+      });
+      if (row === 0 && col % 2 === 0) {
+        addHeroFidelityBox(group, {
+          color: 0xd8d5ca,
+          opacity: 1,
+          position: [sideWallX - 0.13, yRows[row] - 0.09, z + sideOffset * 0.012],
+          size: [0.055, 0.045, 0.065],
+          ...layer,
+        });
+      }
+    }
+  }
+
+  const bayX = sideWallX - 0.2;
+  const bayZ = frontZ - sideOffset * sideDepth * 0.62;
+  addHeroFidelityBox(group, {
+    color: materials.sideBay ?? 0x735b44,
+    opacity: 1,
+    position: [bayX, height * 0.58, bayZ],
+    size: [0.26, 0.68, 0.3],
+    ...layer,
+  });
+  for (let row = 0; row < 3; row += 1) {
+    addHeroFidelityBox(group, {
+      color: 0x171b1a,
+      opacity: 1,
+      position: [bayX - 0.115, height * (0.4 + row * 0.13), bayZ + sideOffset * 0.075],
+      size: [0.045, 0.13, 0.062],
+      ...layer,
+    });
+  }
+
+  const fireX = sideWallX - 0.27;
+  const fireZ = frontZ - sideOffset * sideDepth * 0.78;
+  for (let level = 0; level < 3; level += 1) {
+    const y = baseHeight + (height - baseHeight) * (0.24 + level * 0.2);
+    addHeroFidelityBox(group, {
+      color: materials.fireEscape,
+      opacity: 1,
+      position: [fireX, y - 0.045, fireZ],
+      size: [0.026, 0.025, 0.34],
+      ...layer,
+    });
+    for (let rail = 0; rail < 4; rail += 1) {
+      addHeroFidelityBox(group, {
+        color: materials.fireEscape,
+        opacity: 1,
+        position: [fireX, y + 0.02, fireZ - sideOffset * (0.15 - rail * 0.1)],
+        size: [0.018, 0.15, 0.014],
+        ...layer,
+      });
+    }
+    addHeroFidelityBox(group, {
+      color: materials.fireEscape,
+      opacity: 1,
+      position: [fireX, y + 0.04, fireZ - sideOffset * 0.04],
+      size: [0.018, 0.018, 0.38],
+      ...layer,
+    });
+  }
+}
+
+function addHybridStreetGroundingKit(group, { materials, length, plane, z, frontZ, sideOffset, layer, softLayer }) {
+  const centerX = plane.xMin + length / 2;
+  const sidewalkZ = z + sideOffset * 0.34;
+  const curbZ = z + sideOffset * 0.74;
+  const roadZ = z + sideOffset * 1.02;
+  addHeroFidelityBox(group, {
+    color: 0xaab2aa,
+    opacity: 1,
+    position: [centerX, 0.065, sidewalkZ],
+    size: [length * 1.38, 0.04, 0.72],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x838b85,
+    opacity: 1,
+    position: [plane.xMax + length * 0.05, 0.07, z - sideOffset * 0.04],
+    size: [length * 0.28, 0.035, 0.58],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.curb,
+    opacity: 1,
+    position: [centerX, 0.095, curbZ],
+    size: [length * 1.36, 0.045, 0.09],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x171d1c,
+    opacity: 0.92,
+    position: [centerX, 0.022, roadZ],
+    size: [length * 1.55, 0.025, 0.78],
+    ...softLayer,
+  });
+  for (let stripe = 0; stripe < 8; stripe += 1) {
+    addHeroFidelityBox(group, {
+      color: 0xf0ead7,
+      opacity: 0.88,
+      position: [plane.xMin + length * (0.06 + stripe * 0.08), 0.105, roadZ + sideOffset * (0.04 + stripe * 0.022)],
+      size: [length * 0.065, 0.026, 0.18],
+      ...layer,
+    });
+  }
+  for (const x of [plane.xMin + length * 0.16, plane.xMax - length * 0.13]) {
+    addHeroFidelityBox(group, {
+      color: materials.tactilePaving,
+      opacity: 1,
+      position: [x, 0.12, curbZ - sideOffset * 0.11],
+      size: [length * 0.12, 0.02, 0.1],
+      ...layer,
+    });
+  }
+  addHeroFidelityBox(group, {
+    color: 0x111514,
+    opacity: 0.55,
+    position: [centerX, 0.115, frontZ + sideOffset * 0.34],
+    size: [length * 1.02, 0.018, 0.12],
+    ...softLayer,
+  });
+  addHeroFidelityCylinder(group, {
+    color: 0x111514,
+    opacity: 1,
+    position: [plane.xMin + length * 0.04, 0.62, frontZ + sideOffset * 0.56],
+    radius: 0.021,
+    height: 1.18,
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xd2a33e,
+    opacity: 1,
+    position: [plane.xMin + length * 0.04, 0.88, frontZ + sideOffset * 0.61],
+    size: [0.08, 0.18, 0.065],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xdedbd0,
+    opacity: 1,
+    position: [plane.xMin + length * 0.04, 1.13, frontZ + sideOffset * 0.59],
+    size: [0.12, 0.12, 0.026],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.objectGreen,
+    opacity: 1,
+    position: [plane.xMax - length * 0.34, 0.25, frontZ + sideOffset * 0.44],
+    size: [0.15, 0.35, 0.045],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xd6d1bc,
+    opacity: 1,
+    position: [plane.xMax - length * 0.14, 0.18, frontZ + sideOffset * 0.48],
+    size: [0.16, 0.26, 0.13],
+    ...layer,
+  });
+  for (let index = 0; index < 3; index += 1) {
+    addHeroFidelityCylinder(group, {
+      color: materials.trim,
+      opacity: 1,
+      position: [plane.xMax + length * (0.02 + index * 0.055), 0.125, z - sideOffset * (0.42 + index * 0.035)],
+      radius: 0.045,
+      height: 0.012,
       ...layer,
     });
   }

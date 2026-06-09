@@ -55,15 +55,57 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4M-R5: Franklin Hero Corner Fidelity Layer` is complete and verified at the Batu review gate.
+- Current phase: `Packet 4M-R6: Franklin Hybrid Benchmark-Closure Packet` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R5 Batu visual review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. Batu then opened bounded 4M runtime passes through 4M-R5 to improve the existing Phase 4 endpoint visuals directly using measured overrides and repo-local evidence only. 4M-R5 adds a Franklin QA-only low-poly fidelity layer, lowers the older translucent backing, and improves brick/window/cornice/awning/storefront/side-return/street-grounding read while preserving QA-only status. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R6 Batu visual review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-09 - Packet 4M-R6 Franklin Hybrid Benchmark-Closure
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Open and execute a bounded Franklin hybrid benchmark-closure packet: R6A grammar spec, R6B QA-only hybrid overlay implementation, and R6C review capture/reusable kit report. Preserve the existing runtime scene and R5 measured trace; do not add new source lanes, normal-mode exposure, exact claims, production assets, or a new scaffold.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r6a-franklin-hero-decomposition-grammar-spec.md`
+- `docs/reports/phase-4m-r6-franklin-hybrid-benchmark-closure-report.md`
+- `docs/review-screenshots/phase-4m-r6-franklin-hybrid-benchmark-closure/franklin-benchmark-close-r6.png`
+- `docs/review-screenshots/phase-4m-r6-franklin-hybrid-benchmark-closure/franklin-side-return-corner-wrap-r6.png`
+- `docs/review-screenshots/phase-4m-r6-franklin-hybrid-benchmark-closure/franklin-street-level-lower-oblique-r6.png`
+- `docs/review-screenshots/phase-4m-r6-franklin-hybrid-benchmark-closure/corridor-oblique-ghosted-r6.png`
+- `docs/review-screenshots/phase-4m-r6-franklin-hybrid-benchmark-closure/manhattan-close-r6-shared-renderer-check.png`
+
+Verification:
+- `npm run build`
+- Browser Visual POC capture from the existing runtime scene on `http://127.0.0.1:5174/`.
+- Visual inspection of Franklin benchmark close, Franklin side-return/corner-wrap, Franklin street-level/lower oblique, corridor oblique, and Manhattan regression screenshots.
+- Screenshot format check and conversion to true PNG files.
+- `git diff --check`
+
+Outcome:
+- Added a practical R6A Franklin hero decomposition and reusable grammar spec.
+- Added `endpointHeroFacadeOverrides.franklin.hybridHeroLayer`.
+- Added Franklin-specific hybrid modules for fused massing, cornice/parapet, dark window stack, wrapped storefront, black awning, tan sign band, side-return bay/fire-escape grammar, and street grounding.
+- Captured R6 review artifacts and recorded reusable module candidates.
+
+Unresolved decisions:
+- Batu owns whether R6 is close enough for Franklin benchmark closure.
+- Batu owns whether to iterate Franklin, apply the hybrid lane to Manhattan, or begin formal facade/street kit schema extraction after another corner proves reuse.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R6 Batu visual review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-09 - Batch 4M-R5 Franklin Hero Corner Fidelity Layer
 
