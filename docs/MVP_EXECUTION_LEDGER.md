@@ -55,15 +55,51 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4L-Local-3: QA Runtime Evidence Overlay` is open after verified 4L-Local-2.
+- Current phase: `Batch 4L-Local-4: Visual Review Gate Report` is open after verified 4L-Local-3.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to 4L-Local-3, with 4L-Local-4 queued, then stop at the Batu review gate.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep maps current 4K recognizability gaps to required evidence types. Batu then opened bounded 4L-Local work to test the scene pipeline with existing repo-local evidence before Mapillary/KartaView. 4L-Local-1 inventories 22 existing repo-local Batu-supplied evidence records and maps every record to QA cue eligibility. 4L-Local-2 adds 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` points to 4L-Local-4, then stop at the Batu review gate.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep maps current 4K recognizability gaps to required evidence types. Batu then opened bounded 4L-Local work to test the scene pipeline with existing repo-local evidence before Mapillary/KartaView. 4L-Local-1 inventories 22 existing repo-local Batu-supplied evidence records and maps every record to QA cue eligibility. 4L-Local-2 adds 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs. 4L-Local-3 renders those enriched cues in QA mode only with runtime readouts. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-08 - Batch 4L-Local-3 QA Runtime Evidence Overlay
+
+Status:
+- Complete and verified.
+
+Scope:
+- Render the enriched local evidence-backed cues in QA runtime only and add readouts for evidence-backed, unsupported, blocked, and normal-mode protected cues.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `docs/reports/phase-4l-local-3-qa-runtime-evidence-overlay.md`
+- `scripts/verify-phase-4l-local-3-runtime-evidence-overlay.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-phase-4l-local-1-evidence-cue-eligibility.mjs`
+- `node scripts/verify-phase-4l-local-2-qa-cue-enrichment.mjs`
+- `node scripts/verify-phase-4l-local-3-runtime-evidence-overlay.mjs`
+- `npm run build`
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Added a QA-only 4L local evidence overlay for the six enriched endpoint cue records.
+- Added runtime/review/inspector readouts for local evidence cue counts, selected status, evidence-reference counts, and blocked claims.
+- Did not add evidence files, access external sources, download/cache/ingest/convert data, link businesses/tenants/signs/logos/POIs/active status, expose normal mode, or promote claims.
+
+Unresolved decisions:
+- Batu owns whether the 4L-Local visual result is useful enough to justify Mapillary/KartaView scaling.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to `Batch 4L-Local-4: Visual Review Gate Report`, with no pre-authorized queue after it.
 
 ### 2026-06-08 - Batch 4L-Local-2 Evidence-Backed QA Cue Enrichment
 

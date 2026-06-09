@@ -1,18 +1,19 @@
-# Current Execution Brief - Phase 4L-Local-3 Open
+# Current Execution Brief - Phase 4L-Local-4 Open
 
-Status: `Batch 4L-Local-2: Evidence-Backed QA Cue Enrichment` is complete and verified inside the approved 4L-Local packet.
+Status: `Batch 4L-Local-3: QA Runtime Evidence Overlay` is complete and verified inside the approved 4L-Local packet.
 
 Completed precondition:
 
 - 4L-Prep is complete and verified.
 - 4L-Local-1 is complete and verified.
 - 4L-Local-2 is complete and verified.
+- 4L-Local-3 is complete and verified.
 
-Current executable batch: `Batch 4L-Local-3: QA Runtime Evidence Overlay`.
+Current executable batch: `Batch 4L-Local-4: Visual Review Gate Report`.
 
-Pre-authorized queue: `Batch 4L-Local-4: Visual Review Gate Report`.
+Pre-authorized queue: none.
 
-Self-advance allowed: yes, inside this 4L-Local packet only, if verification passes, docs are reconciled, intended files only are changed, and no hard stop condition intervenes.
+Self-advance allowed: no after 4L-Local-4. Stop at the Batu review gate.
 
 Hard Batu gate: stop after 4L-Local-4.
 
@@ -20,32 +21,16 @@ Owner boundary: Batu owns visual/product acceptance, whether the pipeline justif
 
 ## Current Batch
 
-### Batch 4L-Local-3: QA Runtime Evidence Overlay
+### Batch 4L-Local-4: Visual Review Gate Report
 
-Goal: Make the enriched local evidence-backed cues visibly useful in QA runtime.
-
-Allowed inputs:
-
-- 4L-Local-2 enriched QA cue fixture.
-- Existing 4D repo-local Batu-supplied facade evidence records.
-- Existing 4E evidence-informed QA facade cues.
-- Existing 4J/4K/4O scaffold and cue lineage.
+Goal: Decide whether the current pipeline is strong enough to justify scaling with Mapillary/KartaView next.
 
 Scope:
 
-- Connect enriched local evidence-backed cues to QA runtime only.
-- Improve recognizability for Manhattan and Franklin endpoint corners.
-- Keep mid-corridor generic unless existing repo-local evidence supports specific cue enrichment.
-- Render features generically: facade rhythm blocks, bay rhythm, color/material families, awning/canopy/sign-band zones without text/logos, corner-wrap indications, depth/setback indications, and sidewalk/street grounding cues.
-- Add QA readouts or labels distinguishing evidence-backed QA cue, gap-fill cue, blocked cue, and unsupported cue.
-- Add verifier coverage and a concise report.
-- Commit after verification passes.
-
-## Packet Queue
-
-### Batch 4L-Local-4: Visual Review Gate Report
-
-Report what improved, what remains weak, whether the local-evidence pipeline justifies Mapillary/KartaView next, reconcile control docs, run the required verifier/build chain, commit, and stop at the Batu review gate.
+- Add a concise visual review gate report covering what improved visually, which corners became more recognizable, which cue categories worked best, which categories remain weak, remaining evidence gaps, whether the current pipeline justifies Mapillary/KartaView as the next scaling lane, what external street-level imagery would need to provide, what Batu-supplied photos are still needed, and recommended next packet.
+- Reconcile `CURRENT_EXECUTION_BRIEF`, `PLAN`, `phase-4-execution-roadmap`, and `MVP_EXECUTION_LEDGER`.
+- Run all new 4L-Local verifiers, relevant 4K / 4J / 4O / 4I verifier chain, `npm run build`, `git diff --check`, and final `git status --short`.
+- Commit and stop at the Batu review gate.
 
 ## Hard Constraints
 
@@ -64,17 +49,19 @@ Report what improved, what remains weak, whether the local-evidence pipeline jus
 
 ### Batch 4L-Local-1: Local Evidence Inventory + Cue Eligibility
 
-Completed output:
-
-- Added 22-record repo-local evidence cue eligibility fixture, verifier, and report.
-- Mapped every existing 4D local evidence record to at least one QA-only cue category.
+Completed output: added 22-record repo-local evidence cue eligibility fixture, verifier, and report.
 
 ### Batch 4L-Local-2: Evidence-Backed QA Cue Enrichment
 
+Completed output: added 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs.
+
+### Batch 4L-Local-3: QA Runtime Evidence Overlay
+
 Completed output:
 
-- Added `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4l-local-2-evidence-backed-qa-cue-enrichment.v0.1.json`.
-- Added `docs/reports/phase-4l-local-2-evidence-backed-qa-cue-enrichment.md`.
-- Added `scripts/verify-phase-4l-local-2-qa-cue-enrichment.mjs`.
-- Added 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs.
+- Updated `src/Phase4BRuntimePreview.jsx` and `src/styles.css`.
+- Added `docs/reports/phase-4l-local-3-qa-runtime-evidence-overlay.md`.
+- Added `scripts/verify-phase-4l-local-3-runtime-evidence-overlay.mjs`.
+- Rendered 4L local evidence cues in QA mode only.
+- Added runtime readouts for evidence-backed QA cues, unsupported cues, blocked cues, and normal-mode protected cues.
 - Kept external sources, new evidence files, normal-mode records, business/source linkage, and claim promotions at 0.

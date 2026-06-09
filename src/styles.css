@@ -323,6 +323,10 @@
   background: #ffd36f;
 }
 
+.phase4b-side-local-evidence {
+  background: #eacb88;
+}
+
 .phase4b-legend p {
   margin: 0;
   color: rgba(244, 234, 216, 0.56);
@@ -397,6 +401,10 @@
 
 .phase4b-swatch-recognizable-anchor {
   background: linear-gradient(90deg, #ffd36f 0 18%, #96c6b8 18% 34%, #86a8ff 34% 50%, #f0a36e 50% 66%, #c77565 66% 82%, #a7d879 82%);
+}
+
+.phase4b-swatch-local-evidence {
+  background: linear-gradient(90deg, #b75f4c 0 18%, #2b2a28 18% 34%, #d6b57a 34% 52%, #ded6c8 52% 70%, #8fb8a6 70%);
 }
 
 .phase4b-swatch-candidate-poi {

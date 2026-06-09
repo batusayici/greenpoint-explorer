@@ -9,6 +9,7 @@ import qaScaffoldPreviewSeedAdapter from "./data/corridor-scaffold/greenpoint-av
 import qaScaffoldPreviewExpansionFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4o-18-corridor-wide-qa-scaffold-preview-expansion.v0.1.json";
 import qaFrontageCandidateFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4j-1-qa-frontage-candidates.v0.1.json";
 import qaRecognizableAnchorCueFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4k-1-qa-recognizable-anchor-cues.v0.1.json";
+import localEvidenceCueEnrichmentFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4l-local-2-evidence-backed-qa-cue-enrichment.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -101,6 +102,7 @@ export default function Phase4BRuntimePreview() {
   const qaRecognizableAnchorCueRecords = useMemo(() => (
     buildQARecognizableAnchorCueRenderRecords(qaRecognizableAnchorCueFixture, qaScaffoldPreviewExpansionFixture, qaFrontageCandidateFixture)
   ), []);
+  const localEvidenceCueRecords = useMemo(() => buildLocalEvidenceCueRenderRecords(localEvidenceCueEnrichmentFixture), []);
   const geometryValidationIndex = useMemo(() => buildGeometryValidationIndex(geometryValidationReport), []);
   const candidatePoiIndex = useMemo(() => buildCandidatePoiIndex(candidatePoiFixture), []);
   const cornerAnchorCandidateIndex = useMemo(() => buildCornerAnchorCandidateIndex(cornerAnchorCandidateFixture), []);
@@ -139,6 +141,10 @@ export default function Phase4BRuntimePreview() {
     buildQARecognizableAnchorCueRuntimeAdapter(qaRecognizableAnchorCueFixture, visibleQARecognizableAnchorCueRecords)
   ), [visibleQARecognizableAnchorCueRecords]);
   const qaRecognizableAnchorCueIndex = useMemo(() => buildQARecognizableAnchorCueIndex(qaRecognizableAnchorCueAdapter), [qaRecognizableAnchorCueAdapter]);
+  const localEvidenceCueAdapter = useMemo(() => (
+    buildLocalEvidenceCueRuntimeAdapter(localEvidenceCueEnrichmentFixture, localEvidenceCueRecords)
+  ), [localEvidenceCueRecords]);
+  const localEvidenceCueIndex = useMemo(() => buildLocalEvidenceCueIndex(localEvidenceCueAdapter), [localEvidenceCueAdapter]);
   const inspectedId = selectedId ?? hoveredId;
   const inspectedObject = runtimeScene.objects.find((object) => object.id === inspectedId) ?? null;
   const inspectedCue = inspectedObject ? facadeCueIndex.get(inspectedObject.id) ?? null : null;
@@ -148,12 +154,13 @@ export default function Phase4BRuntimePreview() {
   const inspectedQAScaffoldPreviewRecords = inspectedObject ? qaScaffoldPreviewIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedQAFrontageCandidateRecords = inspectedObject ? qaFrontageCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedQARecognizableAnchorCueRecords = inspectedObject ? qaRecognizableAnchorCueIndex.get(inspectedObject.id) ?? [] : [];
+  const inspectedLocalEvidenceCueRecords = inspectedObject ? localEvidenceCueIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedValidation = inspectedObject ? geometryValidationIndex.get(inspectedObject.id) ?? null : null;
   const inspectedCandidatePois = inspectedObject ? candidatePoiIndex.get(inspectedObject.id) ?? [] : [];
   const inspectedCornerAnchorCandidates = inspectedObject ? cornerAnchorCandidateIndex.get(inspectedObject.id) ?? [] : [];
   const reviewTotals = useMemo(() => (
-    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldPreviewAdapter, qaFrontageCandidateAdapter, qaRecognizableAnchorCueAdapter, geometryValidationReport, candidatePoiFixture)
-  ), [runtimeScene, qaScaffoldPreviewAdapter, qaFrontageCandidateAdapter, qaRecognizableAnchorCueAdapter]);
+    buildReviewTotals(runtimeScene, facadeCueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldPreviewAdapter, qaFrontageCandidateAdapter, qaRecognizableAnchorCueAdapter, localEvidenceCueAdapter, geometryValidationReport, candidatePoiFixture)
+  ), [runtimeScene, qaScaffoldPreviewAdapter, qaFrontageCandidateAdapter, qaRecognizableAnchorCueAdapter, localEvidenceCueAdapter]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -179,7 +186,7 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene);
-    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, pickTargets, visualObjects, pickObjects);
     addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter.renderRecords, visualObjects);
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
 
@@ -230,7 +237,7 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex]);
 
   useEffect(() => {
     const state = stateRef.current;
@@ -383,6 +390,7 @@ export default function Phase4BRuntimePreview() {
           inspectedCue={inspectedCue}
           inspectedEvidenceFacade={inspectedEvidenceFacade}
           inspectedCorridorFacadeCue={inspectedCorridorFacadeCue}
+          inspectedLocalEvidenceCueRecords={inspectedLocalEvidenceCueRecords}
           qaEnabled={qaEnabled}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           storefrontAnchors={runtimeScene.storefrontAnchors}
@@ -418,6 +426,8 @@ export default function Phase4BRuntimePreview() {
               ...visibility,
               [cueCategory]: !visibility[cueCategory],
             }))}
+            localEvidenceCueAdapter={localEvidenceCueAdapter}
+            inspectedLocalEvidenceCueRecords={inspectedLocalEvidenceCueRecords}
             geometryValidationReport={geometryValidationReport}
             candidatePoiFixture={candidatePoiFixture}
             cornerAnchorCandidateFixture={cornerAnchorCandidateFixture}
@@ -504,6 +514,8 @@ export default function Phase4BRuntimePreview() {
           inspectedQARecognizableAnchorCueRecords={qaEnabled ? inspectedQARecognizableAnchorCueRecords : []}
           qaRecognizableAnchorCueAdapter={qaRecognizableAnchorCueAdapter}
           qaRecognizableCueCategoryVisibility={qaRecognizableCueCategoryVisibility}
+          inspectedLocalEvidenceCueRecords={qaEnabled ? inspectedLocalEvidenceCueRecords : []}
+          localEvidenceCueAdapter={localEvidenceCueAdapter}
           inspectedValidation={qaEnabled ? inspectedValidation : null}
           inspectedCandidatePois={qaEnabled ? inspectedCandidatePois : []}
           candidatePoiFixture={candidatePoiFixture}
@@ -532,6 +544,7 @@ function RuntimeLegend({ anchorStatus }) {
         <li><span className="phase4b-swatch phase4b-swatch-scaffold-preview" /> QA scaffold preview</li>
         <li><span className="phase4b-swatch phase4b-swatch-frontage-candidate" /> QA 4J candidate</li>
         <li><span className="phase4b-swatch phase4b-swatch-recognizable-anchor" /> QA 4K cue</li>
+        <li><span className="phase4b-swatch phase4b-swatch-local-evidence" /> QA 4L local evidence</li>
         <li><span className="phase4b-swatch phase4b-swatch-candidate-poi" /> QA candidate POI</li>
         <li><span className="phase4b-swatch phase4b-swatch-centerline" /> Corridor line</li>
         <li><span className="phase4b-swatch phase4b-swatch-selected" /> Selected/hovered</li>
@@ -541,7 +554,7 @@ function RuntimeLegend({ anchorStatus }) {
   );
 }
 
-function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceFacade, inspectedCorridorFacadeCue, qaEnabled, inspectedValidation, storefrontAnchors }) {
+function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceFacade, inspectedCorridorFacadeCue, inspectedLocalEvidenceCueRecords, qaEnabled, inspectedValidation, storefrontAnchors }) {
   return (
     <aside className="phase4b-review" aria-label="Graybox recognizability review panel">
       <p>Review counts</p>
@@ -595,6 +608,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceF
           <dd>{qaEnabled ? `${totals.recognizableAnchorCueVisible} visible / ${totals.recognizableAnchorCueRecords} QA / ${totals.recognizableAnchorCueNormalMode} normal` : "QA off"}</dd>
         </div>
         <div>
+          <dt>4L local cues</dt>
+          <dd>{qaEnabled ? `${totals.localEvidenceCueVisible} visible / ${totals.localEvidenceCueRecords} QA / ${totals.localEvidenceCueNormalMode} normal` : "QA off"}</dd>
+        </div>
+        <div>
           <dt>Candidate POIs</dt>
           <dd>{qaEnabled ? totals.candidatePoiCount : "QA off"}</dd>
         </div>
@@ -621,6 +638,10 @@ function ReviewPanel({ totals, inspectedObject, inspectedCue, inspectedEvidenceF
         <div>
           <dt>Corridor facade lane</dt>
           <dd>{qaEnabled ? inspectedCorridorFacadeCue?.recordLane ?? "none" : "QA off"}</dd>
+        </div>
+        <div>
+          <dt>Local evidence</dt>
+          <dd>{qaEnabled ? inspectedLocalEvidenceCueRecords?.[0]?.qaOnlyStatus ?? "none" : "QA off"}</dd>
         </div>
         <div>
           <dt>Anchor status</dt>
@@ -651,6 +672,8 @@ function QADebugPanel({
   qaRecognizableAnchorCueAdapter,
   qaRecognizableCueCategoryVisibility,
   onToggleQARecognizableCueCategory,
+  localEvidenceCueAdapter,
+  inspectedLocalEvidenceCueRecords,
   geometryValidationReport,
   candidatePoiFixture,
   cornerAnchorCandidateFixture,
@@ -669,6 +692,8 @@ function QADebugPanel({
         <li><span className="phase4b-side-dot phase4b-side-center" /> 4O families: {qaScaffoldPreviewAdapter.summary.visibleBuildingContainerPreviewCount} container / {qaScaffoldPreviewAdapter.summary.visibleGroundingPreviewCount} ground / {qaScaffoldPreviewAdapter.summary.visibleHeightMassingPreviewCount} height</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> 4J candidates: {qaFrontageCandidateAdapter.summary.visibleQaOnlyRecordCount} visible / {qaFrontageCandidateAdapter.summary.candidateRecordCount} QA / {qaFrontageCandidateAdapter.summary.normalModeRecordCount} normal</li>
         <li><span className="phase4b-side-dot phase4b-side-recognizable-anchor" /> 4K cues: {qaRecognizableAnchorCueAdapter.summary.visibleQaOnlyRecordCount} visible / {qaRecognizableAnchorCueAdapter.summary.cueRecordCount} QA / {qaRecognizableAnchorCueAdapter.summary.normalModeRecordCount} normal</li>
+        <li><span className="phase4b-side-dot phase4b-side-local-evidence" /> 4L local cues: {localEvidenceCueAdapter.summary.visibleQaOnlyRecordCount} visible / {localEvidenceCueAdapter.summary.enrichedCueRecordCount} QA / {localEvidenceCueAdapter.summary.normalModeRecordCount} normal</li>
+        <li><span className="phase4b-side-dot phase4b-side-local-evidence" /> Selected 4L: {inspectedLocalEvidenceCueRecords.length ? inspectedLocalEvidenceCueRecords.map((record) => record.qaOnlyStatus).join(" / ") : "none"}</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Business evidence not connected</li>
         <li><span className="phase4b-side-dot phase4b-side-blocked" /> Blocked claims remain blocked</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> Synthetic context: non-evidence placeholder</li>
@@ -783,6 +808,8 @@ function InspectorPanel({
   inspectedQARecognizableAnchorCueRecords,
   qaRecognizableAnchorCueAdapter,
   qaRecognizableCueCategoryVisibility,
+  inspectedLocalEvidenceCueRecords,
+  localEvidenceCueAdapter,
   inspectedValidation,
   inspectedCandidatePois,
   candidatePoiFixture,
@@ -1149,6 +1176,34 @@ function InspectorPanel({
       </section>
 
       <section>
+        <h2>4L Local Evidence Cues</h2>
+        {qaEnabled ? (
+          <ul>
+            <li>
+              <span>Rendered</span>
+              <small>{localEvidenceCueAdapter.summary.visibleQaOnlyRecordCount} visible / {localEvidenceCueAdapter.summary.enrichedCueRecordCount} QA / {localEvidenceCueAdapter.summary.normalModeRecordCount} normal</small>
+            </li>
+            <li>
+              <span>Evidence refs</span>
+              <small>{localEvidenceCueAdapter.summary.uniqueEvidenceIdCount} repo-local evidence IDs / blocked claims remain blocked</small>
+            </li>
+            <li>
+              <span>Selected records</span>
+              <small>{inspectedLocalEvidenceCueRecords.length ? inspectedLocalEvidenceCueRecords.map((record) => record.qaOnlyStatus).join(" / ") : "none"}</small>
+            </li>
+            {(inspectedLocalEvidenceCueRecords.length ? inspectedLocalEvidenceCueRecords : localEvidenceCueAdapter.renderRecords).slice(0, 6).map((record) => (
+              <li key={record.enrichedCueId}>
+                <span>{formatPaletteFamilyLabel(record.visualCueProfile.paletteFamily)}</span>
+                <small>{record.cornerScope} / evidence {record.evidenceIds.length} / {record.qaOnlyStatus}</small>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>QA mode required for 4L local evidence cues.</p>
+        )}
+      </section>
+
+      <section>
         <h2>4I Corridor Facade Cue</h2>
         {qaEnabled ? (
           <ul>
@@ -1229,7 +1284,7 @@ function InspectorPanel({
   );
 }
 
-function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldAdapter, qaFrontageCandidateAdapter, qaRecognizableAnchorCueAdapter, validationReport, candidateFixture) {
+function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evidenceFacadeCueFixture, corridorFacadeCueFixture, qaScaffoldAdapter, qaFrontageCandidateAdapter, qaRecognizableAnchorCueAdapter, localEvidenceCueAdapter, validationReport, candidateFixture) {
   return {
     semanticObjects: runtimeScene.objects.length,
     primitiveBuildings: runtimeScene.buildings.length,
@@ -1256,6 +1311,10 @@ function buildReviewTotals(runtimeScene, cueFixture, qaFacadeSliceFixture, evide
     recognizableAnchorCueRecords: qaRecognizableAnchorCueAdapter.summary.cueRecordCount,
     recognizableAnchorCueVisible: qaRecognizableAnchorCueAdapter.summary.visibleQaOnlyRecordCount,
     recognizableAnchorCueNormalMode: qaRecognizableAnchorCueAdapter.summary.normalModeRecordCount,
+    localEvidenceCueRecords: localEvidenceCueAdapter.summary.enrichedCueRecordCount,
+    localEvidenceCueVisible: localEvidenceCueAdapter.summary.visibleQaOnlyRecordCount,
+    localEvidenceCueNormalMode: localEvidenceCueAdapter.summary.normalModeRecordCount,
+    localEvidenceCueRefs: localEvidenceCueAdapter.summary.uniqueEvidenceIdCount,
     sourceBackedBuildings: runtimeScene.coverage?.sourceBackedBuildingCount ?? runtimeScene.buildings.length,
     leftBuildings: runtimeScene.coverage?.corridorSideCounts?.left
       ?? runtimeScene.buildings.filter((object) => object.corridorSide === "left").length,
@@ -1309,6 +1368,27 @@ function buildQAFrontageCandidateIndex(fixture) {
 }
 
 function buildQARecognizableAnchorCueIndex(fixture) {
+  const index = new Map();
+  for (const record of fixture.renderRecords ?? []) {
+    const records = index.get(record.targetRenderedObjectId) ?? [];
+    records.push(record);
+    index.set(record.targetRenderedObjectId, records);
+  }
+  return index;
+}
+
+function buildLocalEvidenceCueRenderRecords(fixture) {
+  return (fixture.enrichedCueRecords ?? []).map((record) => ({
+    ...record,
+    targetRenderedObjectId: record.targetSemanticId,
+    displayLabel: "4L local evidence",
+    renderStatus: "rendered_qa_only_local_evidence_cue",
+    normalModeExposure: "blocked",
+    visualRole: "repo_local_evidence_cue",
+  }));
+}
+
+function buildLocalEvidenceCueIndex(fixture) {
   const index = new Map();
   for (const record of fixture.renderRecords ?? []) {
     const records = index.get(record.targetRenderedObjectId) ?? [];
@@ -1394,6 +1474,21 @@ function buildQARecognizableAnchorCueRuntimeAdapter(cueFixture, visibleRecords) 
       visibleMaterialColorFamilyCueCount: visibleByCategory.material_color_family_cue ?? 0,
       visibleMassingSilhouetteCueCount: visibleByCategory.massing_silhouette_cue ?? 0,
       visibleFrontageDensityCueCount: visibleByCategory.frontage_density_cue ?? 0,
+    },
+  };
+}
+
+function buildLocalEvidenceCueRuntimeAdapter(fixture, visibleRecords) {
+  return {
+    ...fixture,
+    renderRecordOrder: visibleRecords.map((record) => record.enrichedCueId),
+    renderRecords: visibleRecords,
+    summary: {
+      ...fixture.summary,
+      visibleQaOnlyRecordCount: visibleRecords.length,
+      normalModeRecordCount: 0,
+      evidenceBackedQaCueCount: visibleRecords.filter((record) => record.qaOnlyStatus === "evidence_backed_qa_visual_reference").length,
+      unsupportedCueCount: visibleRecords.filter((record) => Object.values(record.visualCueProfile ?? {}).includes("unsupported")).length,
     },
   };
 }
@@ -1627,6 +1722,11 @@ function formatCueCategoryLabel(cueCategory) {
     .replaceAll("_", " ");
 }
 
+function formatPaletteFamilyLabel(paletteFamily) {
+  return String(paletteFamily ?? "unsupported")
+    .replaceAll("_", " ");
+}
+
 function formatSliceModules(facade) {
   if (!facade?.modules) return "none";
   const modules = facade.modules;
@@ -1800,6 +1900,7 @@ function addRuntimeObjects(
   qaScaffoldPreviewIndex,
   qaFrontageCandidateIndex,
   qaRecognizableAnchorCueIndex,
+  localEvidenceCueIndex,
   pickTargets,
   visualObjects,
   pickObjects,
@@ -1825,6 +1926,7 @@ function addRuntimeObjects(
     const qaScaffoldPreviewRecords = qaScaffoldPreviewIndex.get(object.id) ?? [];
     const qaFrontageCandidateRecords = qaFrontageCandidateIndex.get(object.id) ?? [];
     const qaRecognizableAnchorCueRecords = qaRecognizableAnchorCueIndex.get(object.id) ?? [];
+    const localEvidenceCueRecords = localEvidenceCueIndex.get(object.id) ?? [];
     const palette = getBuildingPalette(object);
     const qaPalette = getQASidePalette(object);
     const base = createFlatPolygonMesh(object.points, {
@@ -1924,6 +2026,7 @@ function addRuntimeObjects(
     if (qaScaffoldPreviewRecords.length) group.add(createQAScaffoldPreviewLayer(object, qaScaffoldPreviewRecords));
     if (qaFrontageCandidateRecords.length) group.add(createQAFrontageCandidateLayer(object, qaFrontageCandidateRecords));
     if (qaRecognizableAnchorCueRecords.length) group.add(createQARecognizableAnchorCueLayer(object, qaRecognizableAnchorCueRecords));
+    if (localEvidenceCueRecords.length) group.add(createLocalEvidenceCueLayer(object, localEvidenceCueRecords));
 
     const pick = new THREE.Mesh(
       createPrismGeometry(object.points, object.height + 0.35),
@@ -2571,7 +2674,7 @@ function addQAFrontageCandidateBox(group, { color, opacity, position, size }) {
     new THREE.MeshBasicMaterial({
       color,
       transparent: true,
-      opacity,
+      opacity: 0,
       depthWrite: false,
     }),
   );
@@ -2579,6 +2682,7 @@ function addQAFrontageCandidateBox(group, { color, opacity, position, size }) {
   mesh.userData.stateRole = "qaFrontageCandidate";
   mesh.userData.qaColor = color;
   mesh.userData.qaOpacity = opacity;
+  mesh.visible = false;
   group.add(mesh);
 }
 
@@ -2767,6 +2871,155 @@ function addQARecognizableAnchorCueLabel(group, { label, color, position, tether
   group.add(tether);
 }
 
+function createLocalEvidenceCueLayer(object, records) {
+  const group = new THREE.Group();
+  group.userData.semanticId = object.id;
+  group.userData.stateRole = "localEvidenceCue";
+  group.visible = false;
+
+  const record = records[0];
+  const profile = record.visualCueProfile ?? {};
+  const palette = getLocalEvidenceCuePalette(profile.paletteFamily);
+  const sideSign = object.corridorSide === "left" ? 1 : -1;
+  const width = Math.max(object.dimensions.width * 0.92, 0.34);
+  const depth = Math.max(object.dimensions.depth, 0.24);
+  const frontZ = object.centroid.z + sideSign * (depth * 0.68 + 0.2);
+  const baseY = Math.max(object.height * 0.22, 0.28);
+  const upperY = Math.max(object.height * 0.62, 0.68);
+  const bayCount = parseCoarseCount(profile.storefrontBayRhythm, profile.facadeRhythm?.bayCount, 4);
+  const rowCount = parseCoarseCount(profile.windowGlassRhythm, profile.facadeRhythm?.upperRows, 2);
+
+  addLocalEvidenceCueBox(group, {
+    color: palette.body,
+    opacity: 0.52,
+    position: [object.centroid.x, upperY, frontZ],
+    size: [width * 0.9, Math.max(object.height * 0.42, 0.36), 0.11],
+  });
+  addLocalEvidenceCueBox(group, {
+    color: palette.base,
+    opacity: 0.64,
+    position: [object.centroid.x, baseY, frontZ + sideSign * 0.02],
+    size: [width * 0.92, Math.max(object.height * 0.22, 0.2), 0.13],
+  });
+  addLocalEvidenceCueBox(group, {
+    color: palette.signBand,
+    opacity: 0.74,
+    position: [object.centroid.x, Math.max(object.height * 0.42, 0.48), frontZ + sideSign * 0.055],
+    size: [width * 0.9, 0.08, 0.08],
+  });
+
+  for (let index = 0; index < bayCount; index += 1) {
+    const t = bayCount === 1 ? 0.5 : index / (bayCount - 1);
+    const x = object.centroid.x - width * 0.42 + width * 0.84 * t;
+    addLocalEvidenceCueBox(group, {
+      color: palette.bay,
+      opacity: 0.72,
+      position: [x, baseY + 0.02, frontZ + sideSign * 0.09],
+      size: [0.045, Math.max(object.height * 0.26, 0.22), 0.075],
+    });
+  }
+
+  for (let row = 0; row < rowCount; row += 1) {
+    const y = Math.max(object.height * (0.54 + row * 0.16), 0.62 + row * 0.12);
+    for (let index = 0; index < Math.min(bayCount, 5); index += 1) {
+      const t = bayCount === 1 ? 0.5 : index / (bayCount - 1);
+      const x = object.centroid.x - width * 0.38 + width * 0.76 * t;
+      addLocalEvidenceCueBox(group, {
+        color: palette.window,
+        opacity: 0.68,
+        position: [x, y, frontZ + sideSign * 0.1],
+        size: [Math.max(width / Math.max(bayCount, 4) * 0.22, 0.045), 0.07, 0.045],
+      });
+    }
+  }
+
+  if (profile.cornerWrapSideReturn !== "unsupported") {
+    const edgeSign = record.cornerScope === "franklin_greenpoint" ? -1 : 1;
+    addLocalEvidenceCueBox(group, {
+      color: palette.return,
+      opacity: 0.56,
+      position: [object.centroid.x + edgeSign * width * 0.44, Math.max(object.height * 0.5, 0.55), object.centroid.z + sideSign * depth * 0.2],
+      size: [0.08, Math.max(object.height * 0.58, 0.42), Math.max(depth * 0.58, 0.18)],
+    });
+  }
+
+  if (profile.setbackDepthCue !== "unsupported") {
+    addLocalEvidenceCueBox(group, {
+      color: palette.depth,
+      opacity: 0.38,
+      position: [object.centroid.x, 0.12, object.centroid.z + sideSign * depth * 0.28],
+      size: [width * 0.72, 0.035, Math.max(depth * 0.48, 0.16)],
+    });
+  }
+
+  addLocalEvidenceCueBox(group, {
+    color: palette.ground,
+    opacity: 0.5,
+    position: [object.centroid.x, 0.08, frontZ + sideSign * 0.2],
+    size: [width * 1.05, 0.035, 0.16],
+  });
+
+  addLocalEvidenceCueLabel(group, {
+    label: "4L local evidence",
+    color: palette.label,
+    position: [object.centroid.x, Math.max(object.height * 0.88, 1.05), frontZ + sideSign * 0.34],
+    tetherStart: [object.centroid.x, Math.max(object.height * 0.48, 0.5), frontZ],
+  });
+
+  group.userData.localEvidenceCueStatus = record.qaOnlyStatus;
+  group.userData.localEvidenceCueRefs = record.evidenceIds?.length ?? 0;
+  return group;
+}
+
+function addLocalEvidenceCueBox(group, { color, opacity, position, size }) {
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(size[0], size[1], size[2]),
+    new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity,
+      depthWrite: false,
+    }),
+  );
+  mesh.position.set(position[0], position[1], position[2]);
+  mesh.userData.stateRole = "localEvidenceCue";
+  mesh.userData.qaColor = color;
+  mesh.userData.qaOpacity = opacity;
+  group.add(mesh);
+}
+
+function addLocalEvidenceCueLabel(group, { label, color, position, tetherStart }) {
+  const sprite = createTextSprite(label, { color, background: "rgba(18, 23, 19, 0.82)" });
+  sprite.position.set(position[0], position[1], position[2]);
+  sprite.userData.stateRole = "localEvidenceCueLabel";
+  sprite.userData.qaOpacity = 0.92;
+  sprite.userData.qaColor = color;
+  sprite.visible = false;
+  group.add(sprite);
+
+  const tether = createPolyline([
+    { x: tetherStart[0], z: tetherStart[2] },
+    { x: position[0], z: position[2] },
+  ], {
+    color,
+    opacity: 0,
+    y: Math.max(tetherStart[1], 0.2),
+  });
+  tether.userData.stateRole = "localEvidenceCue";
+  tether.userData.qaColor = color;
+  tether.userData.qaOpacity = 0.44;
+  tether.visible = false;
+  group.add(tether);
+}
+
+function parseCoarseCount(...values) {
+  for (const value of values) {
+    const match = String(value ?? "").match(/coarse_(\d+)/);
+    if (match) return Number(match[1]);
+  }
+  return 4;
+}
+
 function averageGuideValue(points, key, fallback) {
   if (!Array.isArray(points) || !points.length) return fallback;
   return points.reduce((sum, point) => sum + (point[key] ?? 0), 0) / points.length;
@@ -2872,6 +3125,18 @@ function getQARecognizableAnchorCuePalette(corridorSide) {
     material_color_family_cue: 0xd58fa8,
     frontage_density_cue: 0x84d3b0,
   };
+}
+
+function getLocalEvidenceCuePalette(paletteFamily) {
+  const palettes = {
+    warm_red_brick_dark_base: { body: 0xb75f4c, base: 0x2b2a28, signBand: 0xd6b57a, bay: 0xf0c27b, window: 0xded6c8, return: 0x8f4f42, depth: 0x73534b, ground: 0x8fb8a6, label: 0xffd98b },
+    bright_panel_silver_gray: { body: 0xd8d2c3, base: 0x565d61, signBand: 0xe7c85f, bay: 0xcfd8d8, window: 0xf2efe5, return: 0xa9a796, depth: 0x7d8587, ground: 0x9fc0b3, label: 0xf3d36c },
+    pale_stone_red_trim: { body: 0xd1c3a5, base: 0x73585c, signBand: 0xbf6e57, bay: 0xe2d6be, window: 0xf0efe5, return: 0xa27b68, depth: 0x8c7568, ground: 0x94b7a2, label: 0xf1c584 },
+    weathered_brick_wood_green: { body: 0x8f6a52, base: 0x3f5d4d, signBand: 0x9a8058, bay: 0xbba06d, window: 0xd6d7c6, return: 0x6d5b48, depth: 0x5d5146, ground: 0x8cad9a, label: 0xd7c27f },
+    dark_brick_black_base: { body: 0x5b3f3b, base: 0x181b1b, signBand: 0x5f705f, bay: 0xa49172, window: 0xc8cbc1, return: 0x4b3634, depth: 0x3a3330, ground: 0x89ab96, label: 0xd2c282 },
+    red_brick_stone_cornice: { body: 0xa95543, base: 0x5a463f, signBand: 0xb99c75, bay: 0xd2b17b, window: 0xe4dfd1, return: 0x7d453b, depth: 0x5f4840, ground: 0x92b29f, label: 0xeacb88 },
+  };
+  return palettes[paletteFamily] ?? palettes.warm_red_brick_dark_base;
 }
 
 function getEvidenceComposition(facadeRecord) {
@@ -3813,6 +4078,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
           || child.userData.stateRole === "qaFrontageCandidateLabel"
           || child.userData.stateRole === "qaRecognizableAnchorCue"
           || child.userData.stateRole === "qaRecognizableAnchorCueLabel"
+          || child.userData.stateRole === "localEvidenceCue"
+          || child.userData.stateRole === "localEvidenceCueLabel"
           || child.userData.stateRole === "syntheticQAGrounding"
           || child.userData.stateRole === "candidatePoi"
           || child.userData.stateRole === "candidatePoiLabel"
@@ -3975,6 +4242,27 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
             ? isSelected || isHovered
               ? 1
               : child.userData.qaOpacity ?? 0.9
+            : 0;
+        } else if (child.userData.stateRole === "localEvidenceCue") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled
+            ? isSelected
+              ? Math.min((child.userData.qaOpacity ?? 0.5) + 0.16, 0.86)
+              : isHovered
+                ? Math.min((child.userData.qaOpacity ?? 0.5) + 0.1, 0.78)
+                : child.userData.qaOpacity ?? 0.5
+            : 0;
+        } else if (child.userData.stateRole === "localEvidenceCueLabel") {
+          child.visible = qaEnabled;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          child.material.opacity = qaEnabled
+            ? isSelected || isHovered
+              ? 1
+              : child.userData.qaOpacity ?? 0.92
             : 0;
         } else if (child.userData.stateRole === "syntheticQAGrounding") {
           child.visible = qaEnabled;
