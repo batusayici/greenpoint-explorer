@@ -202,9 +202,18 @@ function verifyBrief(brief, failures) {
     "Pre-authorized queue: none.",
     "Hard Batu gate: stop.",
   ];
+  const laterHandoffSnippets = [
+    "Current Execution Brief - Phase 4L-Local-3 Open",
+    "4L-Local-1 is complete and verified.",
+    "4L-Local-2 is complete and verified.",
+    "Current executable batch: `Batch 4L-Local-3: QA Runtime Evidence Overlay`.",
+    "Pre-authorized queue: `Batch 4L-Local-4: Visual Review Gate Report`.",
+    "Hard Batu gate: stop after 4L-Local-4.",
+  ];
   const handoffValid = handoffSnippets.every((snippet) => brief.includes(snippet));
   const laterGateValid = laterGateSnippets.every((snippet) => brief.includes(snippet));
-  if (!handoffValid && !laterGateValid) {
+  const laterHandoffValid = laterHandoffSnippets.every((snippet) => brief.includes(snippet));
+  if (!handoffValid && !laterGateValid && !laterHandoffValid) {
     failures.push("Current brief must preserve the 4L-Local-1 -> 4L-Local-2 handoff or final 4L-Local gate");
   }
 }
