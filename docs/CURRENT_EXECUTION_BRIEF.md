@@ -1,102 +1,52 @@
-# Current Execution Brief - Phase 4L-Local Complete At Review Gate
+# Current Execution Brief - Phase 4M-POC Endpoint Fidelity Patch Complete
 
-Status: `Batch 4L-Local-5: QA Layer Focus + Label-Density Legibility Pass` is complete and verified.
+Status: `Batch 4M-POC: Existing Runtime Endpoint Fidelity Patch` is complete and verified.
 
 Completed precondition:
 
 - 4O-20 is complete and verified.
-- 4J-1 is complete and verified.
-- 4J-2 is complete and verified.
-- 4J-3 is complete and verified.
-- 4K-1 is complete and verified.
-- 4K-2 is complete and verified.
-- 4K-3 is complete and verified.
-- 4L-Prep is complete and verified.
-- 4L-Local-1 is complete and verified.
-- 4L-Local-2 is complete and verified.
-- 4L-Local-3 is complete and verified.
-- 4L-Local-4 is complete and verified.
-- 4L-Local-5 is complete and verified.
+- 4J-1 through 4J-3 are complete and verified.
+- 4K-1 through 4K-3 are complete and verified.
+- 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified.
+- Batu explicitly opened this bounded acceleration patch to improve the existing Phase 4 runtime scene directly, without creating a parallel POC pipeline.
 
 Current executable batch: none.
 
-Completed packet: `4L-Local: Repo-Local Evidence-Backed QA Scene Expansion`.
+Completed batch: `4M-POC: Existing Runtime Endpoint Fidelity Patch`.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop.
+Hard Batu gate: stop for Batu visual review of the improved endpoint screenshots and runtime scene.
 
-Owner boundary: Batu owns visual/product acceptance, whether the repo-local evidence pipeline is visually legible enough, whether Mapillary/KartaView should open later, and whether any external source/evidence packet opens.
+Owner boundary: Batu owns visual/product acceptance, whether the endpoint fidelity is close enough to the benchmark direction for this proof, and whether any later exact storefront/frontage, source expansion, production asset, or art-directed scene work opens.
 
-## Completed Packet
+## Completed Output
 
-### Batch 4L-Local-1: Local Evidence Inventory + Cue Eligibility
-
-Completed output:
-
-- Added a 22-record repo-local evidence cue eligibility fixture.
-- Mapped every existing 4D local evidence record to at least one QA-only cue category.
-- Added verifier and report.
-
-### Batch 4L-Local-2: Evidence-Backed QA Cue Enrichment
-
-Completed output:
-
-- Added 6 QA-only enriched endpoint cue records.
-- Cited all 22 existing repo-local evidence IDs through 4L-Local-1 eligibility records.
-- Added verifier and report.
-
-### Batch 4L-Local-3: QA Runtime Evidence Overlay
-
-Completed output:
-
-- Rendered 4L local evidence cues in QA mode only.
-- Added runtime readouts for evidence-backed QA cues, unsupported cues, blocked cues, and normal-mode protected cues.
-- Added verifier and report.
-
-### Batch 4L-Local-4: Visual Review Gate Report
-
-Completed output:
-
-- Added `docs/reports/phase-4l-local-4-visual-review-gate-report.md`.
-- Added `scripts/verify-phase-4l-local-4-visual-review-gate.mjs`.
-- Recorded that the repo-local pipeline improved endpoint recognizability enough to justify a later Mapillary/KartaView source-use gate proposal, but not direct external evidence intake.
-
-### Batch 4L-Local-5: QA Layer Focus + Label-Density Legibility Pass
-
-Completed output:
-
-- Added an `All QA` / `4L Focus` control to the existing QA runtime.
-- In `4L Focus`, suppressed competing 4O scaffold, 4J frontage candidate, 4K recognizable anchor, corridor cue, synthetic grounding, and candidate POI QA overlays.
-- Preserved the 4L local evidence cue layer and existing evidence facade context for visual review.
-- Added `docs/reports/phase-4l-local-5-qa-layer-focus-legibility.md`.
-- Added `scripts/verify-phase-4l-local-5-qa-layer-focus-legibility.mjs`.
+- Patched the existing `Phase4BRuntimePreview.jsx` runtime path and current stylesheet only.
+- Reused the current corridor scene, Manhattan endpoint, Franklin endpoint, 4J frontage candidates, 4K recognizable cues, and 4L local evidence records.
+- Added a QA-only `Visual POC` focus mode that hides cluttering QA chrome, keeps endpoint crops visually readable, and preserves normal-mode protection.
+- Improved endpoint facade rendering with evidence-cue rhythm, glass/door/sign-band/grounding details, material/color-family cues, side-return/depth hints, and muted scaffold context.
+- Captured immediate artifacts from the current runtime scene:
+  - `docs/review-screenshots/phase-4m-poc-endpoint-fidelity-patch/corridor-oblique-visual-poc.png`
+  - `docs/review-screenshots/phase-4m-poc-endpoint-fidelity-patch/manhattan-endpoint-visual-poc.png`
+  - `docs/review-screenshots/phase-4m-poc-endpoint-fidelity-patch/franklin-endpoint-visual-poc.png`
 
 ## Preserved Boundaries
 
-- 4L-Local did not open Mapillary/KartaView, 4L-External, 4M, 4P, external source access, downloads, cache, ingestion, conversion, new evidence intake, normal-mode exposure, business/source linkage, or claim promotion.
-- 4L-Local did not add new evidence files, link businesses, tenants, signs, logos, POIs, or active status, or expose anything in normal mode.
-- 4L-Local did not add dependencies, credentials, paid APIs, package tooling, renderer replacement, public interfaces, architecture changes, production assets, production claims, or public claims.
-- 4L-Local-5 did not add evidence files, access external sources, open Mapillary/KartaView, link businesses, expose normal mode, or promote claims.
+- No new corridor, endpoint model, renderer, broad fixture schema, backend service, package tooling, dependency, external source, API, scraping, source download/cache/ingestion, or disconnected blueprint workflow was added.
+- Normal mode remains protected. This patch does not promote exact storefront/frontage, business identity, signage, entrance, address, material, active status, production asset, public/product, or source-truth claims.
+- Repo-local evidence remains the only evidence basis for this visual POC pass.
 
 ## Verification Completed
 
-- `node scripts/verify-phase-4l-local-1-evidence-cue-eligibility.mjs`
-- `node scripts/verify-phase-4l-local-2-qa-cue-enrichment.mjs`
-- `node scripts/verify-phase-4l-local-3-runtime-evidence-overlay.mjs`
-- `node scripts/verify-phase-4l-local-4-visual-review-gate.mjs`
-- `node scripts/verify-phase-4l-local-5-qa-layer-focus-legibility.mjs`
-- Relevant 4K / 4J / 4O / 4I verifier chain
 - `npm run build`
-- Browser visual review
-- `git diff --check`
-- Final `git status --short`
+- Browser runtime review from the current Phase 4 scene.
+- Screenshot capture of Manhattan endpoint crop, Franklin endpoint crop, and corridor oblique Visual POC view.
+- One correction loop: context scaffold opacity was lowered after visual review so endpoint frontage detail remains readable.
 
 ## Unresolved Decisions For Batu
 
-- Whether the 4L-Local QA scene improvement and 4L focus mode are visually useful enough.
-- Whether to open a later Mapillary/KartaView source-use gate.
-- Whether to instead supply more Batu-owned mid-corridor evidence before external source planning.
-- Whether any future source access, download/cache/ingestion/conversion, display/render use, business/source linkage, normal-mode exposure, production/public use, or claim promotion may open.
+- Whether this endpoint fidelity pass is visually close enough to the benchmark direction for proof-of-pipeline purposes.
+- Whether to open another bounded endpoint fidelity pass, exact storefront/frontage data pass, art-directed scene pass, or external/source expansion gate.

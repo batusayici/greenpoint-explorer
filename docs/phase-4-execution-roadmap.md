@@ -86,6 +86,7 @@ Current state:
 - 4L-Local-3 is complete and verified.
 - 4L-Local-4 is complete and verified at the Batu review gate.
 - 4L-Local-5 is complete and verified at the Batu review gate.
+- 4M-POC is complete and verified at the Batu visual review gate.
 - There is no authoritative business linkage, exact storefront/frontage/entrance claim, production asset, normal-mode facade exposure, or full art-directed corridor.
 
 Planned sequence:
@@ -130,10 +131,11 @@ Planned sequence:
 38. 4L-Local-3: QA runtime evidence overlay. Complete and verified.
 39. 4L-Local-4: visual review gate report. Complete and verified.
 40. 4L-Local-5: QA layer focus + label-density legibility pass. Complete and verified; stop at Batu review gate.
-41. Mapillary/KartaView source-use gate: recommended as a proposal only; not open.
-42. 4L external/scaled evidence-backed QA corridor render, deferred until Batu supplies or approves enough eligible evidence and opens a later packet.
-43. 4M: asset registry / visual system / art-direction translation, deferred until spatial recognizability is proven and evidence/override models are defined.
-44. 4N: normal-mode promotion + recognition QA, deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
+41. 4M-POC: existing runtime endpoint fidelity patch. Complete and verified; stop at Batu visual review gate.
+42. Mapillary/KartaView source-use gate: recommended as a proposal only; not open.
+43. 4L external/scaled evidence-backed QA corridor render, deferred until Batu supplies or approves enough eligible evidence and opens a later packet.
+44. 4M production asset registry / visual system / art-direction translation, deferred until Batu opens production visual-system scope.
+45. 4N: normal-mode promotion + recognition QA, deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
 
 4G-A/4G-B/4H-1 must keep geometry confidence separate from facade evidence. For 4O planning, NYC Building Footprints are the candidate base geometry lane for building outlines, building IDs, massing, and footprint/frontage alignment. NYC 3-D Building Model / CityGML-style massing is the candidate height, roof-shape, setback, and massing lane where available. CSCL is the candidate street-alignment, corridor-bound, intersection, and street-width-hint lane. Sidewalk/curb/planimetric datasets are candidate sidewalk, curb, pedestrian-realm, and grounding lanes. PLUTO/MapPLUTO is the candidate parcel, land-use, building-class, floor-count, year-built, zoning/context lane. User-supplied facade photos remain evidence-backed manual override and facade cue validation material. Mapillary/street-level metadata remains experimental only and must not become automatic facade truth. POI/business sources remain separate from geometry truth: they may inform later cards or business identity, but not facade geometry, storefront/frontage, entrance, signage, active status, or exact placement. Google 3D Tiles/Street View remains benchmark-only discussion unless separately cleared, and must not become source-of-truth, stored facade reference, extracted geometry, texture source, training input, or production visual pipeline. Qwen/Oxen is deferred to 4M as a possible visual-system accelerator trained only from owned/approved references, deterministic cue blueprints, and Batu-approved style targets. No real source data download/cache/ingestion, image storage, render use, extraction, training use, source promotion, production use, new credentials, paid APIs, dependencies, or architecture changes are approved by this roadmap.
 
@@ -333,13 +335,13 @@ A future Phase 4B visual batch is not acceptable if it only produces a static im
 
 ## Immediate Next Batch
 
-Current work packet: 4L-Local repo-local evidence-backed QA scene expansion.
+Current work packet: 4M-POC existing runtime endpoint fidelity patch.
 
-Current executable batch: none. 4L-Local-5 is complete and pending Batu review.
+Current executable batch: none. 4M-POC is complete and pending Batu visual review.
 
 Pre-authorized queue: none.
 
-Self-advance allowed: no. Stop at the 4L-Local Batu review gate.
+Self-advance allowed: no. Stop at the 4M-POC Batu visual review gate.
 
 Closed gate: `Batch 4B-3: Primitive compiler`, reviewed, approved, and closed.
 
@@ -457,4 +459,6 @@ Completed 4L-Prep output: added the evidence gap to cue intake plan, QA evidence
 
 Completed 4L-Local output: added repo-local evidence cue eligibility, QA-only cue enrichment, QA runtime evidence overlay, the visual review-gate report, and a QA layer-focus legibility pass. The packet uses only existing Batu-supplied repo-local evidence, improves endpoint recognizability, lets Batu isolate 4L local evidence visually, and recommends a later Mapillary/KartaView source-use gate only as a proposal.
 
-Hard review gate: stop after 4L-Local. Do not implement 4L external/scaled render work, real source access, source download/cache/ingest/convert/render/use, new evidence intake, normal-mode rendering, public UI, procedural production scaffold rendering, add dependencies or tooling, replace the renderer, change public interfaces or module boundaries, open 4M/4N/4P, start facade evidence intake, start business/source linkage, promote sources or claims, or make exact storefront/frontage/facade/entrance/address/signage/tenant/material/active-status/height/roof/public/product claims without Batu approval and an updated current brief.
+Completed 4M-POC output: patched the existing runtime scene directly for QA-only Manhattan/Franklin endpoint visual fidelity, added Visual POC mode, reused current 4J/4K/4L records, captured the corridor and endpoint screenshots, and preserved normal-mode/source/promotion gates.
+
+Hard review gate: stop after 4M-POC. Do not implement 4L external/scaled render work, real source access, source download/cache/ingest/convert/render/use, new evidence intake, normal-mode rendering, public UI, procedural production scaffold rendering, production 4M asset/art-direction work, add dependencies or tooling, replace the renderer, change public interfaces or module boundaries, open 4N/4P, start facade evidence intake, start business/source linkage, promote sources or claims, or make exact storefront/frontage/facade/entrance/address/signage/tenant/material/active-status/height/roof/public/product claims without Batu approval and an updated current brief.

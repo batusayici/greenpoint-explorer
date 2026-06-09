@@ -18,14 +18,21 @@ import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
 const QA_LAYER_FOCUS_ALL = "all";
 const QA_LAYER_FOCUS_4L_LOCAL = "4l_local_evidence";
+const QA_LAYER_FOCUS_VISUAL_POC = "visual_poc";
 const QA_LAYER_FOCUS_OPTIONS = [
   { id: QA_LAYER_FOCUS_ALL, label: "All QA" },
   { id: QA_LAYER_FOCUS_4L_LOCAL, label: "4L Focus" },
+  { id: QA_LAYER_FOCUS_VISUAL_POC, label: "Visual POC" },
 ];
 const QA_4L_LOCAL_FOCUS_VISIBLE_ROLES = new Set([
   "evidenceFacadeCue",
   "localEvidenceCue",
   "localEvidenceCueLabel",
+]);
+const QA_VISUAL_POC_VISIBLE_ROLES = new Set([
+  "evidenceFacadeCue",
+  "localEvidenceCue",
+  "syntheticQAGrounding",
 ]);
 
 const HOME_CAMERA = {
@@ -198,7 +205,7 @@ export default function Phase4BRuntimePreview() {
     const pickObjects = new Map();
 
     addLights(scene);
-    addGround(scene, runtimeScene);
+    addGround(scene, runtimeScene, visualObjects);
     addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, pickTargets, visualObjects, pickObjects);
     addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter.renderRecords, visualObjects);
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
@@ -372,15 +379,15 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4K-2 / QA recognizable anchor overlay</p>
-          <h1>Greenpoint Ave corridor facade cue review</h1>
+          <p className="phase4b-kicker">Batch 4M-POC / endpoint visual fidelity patch</p>
+          <h1>Greenpoint Ave endpoint visual POC</h1>
         </div>
         <p>
-          QA-only 4I corridor cues, 4O scaffold previews with 4O-19 family controls, 4J frontage/bay candidate guides, and 4K recognizable anchor cues. Normal mode stays protected; QA guides are not business identity, exact storefront, exact frontage, facade, signage, entrance, active status, exact height, or production claims.
+          QA-only endpoint fidelity pass using the existing corridor scene, 4J frontage candidates, 4K recognizable cues, and 4L repo-local evidence. Normal mode stays protected; visual POC output is review-only and not business identity, exact public frontage, signage, entrance, active status, or production claim.
         </p>
       </section>
 
-      <section className={`phase4b-runtime${qaEnabled ? " phase4b-runtime-qa" : ""}`} aria-label="Interactive 3D graybox corridor runtime">
+      <section className={`phase4b-runtime${qaEnabled ? " phase4b-runtime-qa" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC ? " phase4b-runtime-visual-poc" : ""}`} aria-label="Interactive 3D graybox corridor runtime">
         <div
           ref={hostRef}
           className="phase4b-viewport"
@@ -1811,8 +1818,9 @@ function addLights(scene) {
   scene.add(fill);
 }
 
-function addGround(scene, runtimeScene) {
-  addGuideGeometry(scene, runtimeScene);
+function addGround(scene, runtimeScene, visualObjects) {
+  const guideGroup = addGuideGeometry(scene, runtimeScene);
+  if (guideGroup) visualObjects.set("__scene-guides", guideGroup);
 
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(28, 12),
@@ -1831,7 +1839,10 @@ function addGround(scene, runtimeScene) {
 
 function addGuideGeometry(scene, runtimeScene) {
   const guide = runtimeScene.guide;
-  if (!guide) return;
+  if (!guide) return null;
+  const group = new THREE.Group();
+  group.userData.semanticId = "__scene-guides";
+  group.userData.stateRole = "guideGroup";
 
   const street = createFlatPolygonMesh(guide.streetPolygon, {
     color: 0x263633,
@@ -1839,7 +1850,9 @@ function addGuideGeometry(scene, runtimeScene) {
     y: -0.025,
   });
   street.userData.qaGuide = true;
-  scene.add(street);
+  street.userData.stateRole = "guideSurface";
+  street.userData.baseOpacity = 0.48;
+  group.add(street);
 
   const path = createFlatPolygonMesh(guide.pathBand, {
     color: 0xdbe4d5,
@@ -1847,7 +1860,9 @@ function addGuideGeometry(scene, runtimeScene) {
     y: 0.005,
   });
   path.userData.qaGuide = true;
-  scene.add(path);
+  path.userData.stateRole = "guideSurface";
+  path.userData.baseOpacity = 0.42;
+  group.add(path);
 
   for (const band of guide.sidewalkBands) {
     const sidewalk = createFlatPolygonMesh(band, {
@@ -1856,7 +1871,9 @@ function addGuideGeometry(scene, runtimeScene) {
       y: -0.018,
     });
     sidewalk.userData.qaGuide = true;
-    scene.add(sidewalk);
+    sidewalk.userData.stateRole = "guideSurface";
+    sidewalk.userData.baseOpacity = 0.28;
+    group.add(sidewalk);
   }
 
   for (const endpointBand of guide.endpointBands) {
@@ -1866,7 +1883,9 @@ function addGuideGeometry(scene, runtimeScene) {
       y: 0.08,
     });
     endpointLine.userData.qaGuide = true;
-    scene.add(endpointLine);
+    endpointLine.userData.stateRole = "guideSurface";
+    endpointLine.userData.baseOpacity = 0.82;
+    group.add(endpointLine);
   }
 
   for (const tick of guide.rhythmTicks) {
@@ -1876,7 +1895,9 @@ function addGuideGeometry(scene, runtimeScene) {
       y: 0.055,
     });
     rhythm.userData.qaGuide = true;
-    scene.add(rhythm);
+    rhythm.userData.stateRole = "guideSurface";
+    rhythm.userData.baseOpacity = 0.28;
+    group.add(rhythm);
   }
 
   for (const curb of guide.curbLines) {
@@ -1886,7 +1907,9 @@ function addGuideGeometry(scene, runtimeScene) {
       y: 0.07,
     });
     line.userData.qaGuide = true;
-    scene.add(line);
+    line.userData.stateRole = "guideSurface";
+    line.userData.baseOpacity = 0.52;
+    group.add(line);
   }
 
   const labelOffset = Math.max(...guide.sidewalkBands.flatMap((band) => band.map((point) => Math.abs(point.z)))) + 0.35;
@@ -1899,6 +1922,8 @@ function addGuideGeometry(scene, runtimeScene) {
     );
     marker.position.set(point.x, 0.04, point.z);
     marker.userData.qaGuide = true;
+    marker.userData.stateRole = "guideLabel";
+    marker.userData.baseOpacity = 0.9;
 
     const post = new THREE.Mesh(
       new THREE.CylinderGeometry(0.035, 0.035, 1.05, 8),
@@ -1906,10 +1931,14 @@ function addGuideGeometry(scene, runtimeScene) {
     );
     post.position.set(point.x, 0.56, point.z);
     post.userData.qaGuide = true;
+    post.userData.stateRole = "guideLabel";
+    post.userData.baseOpacity = 0.74;
 
     const label = createTextSprite(endpoint.label);
     label.position.set(point.x, 1.28, labelZ);
     label.userData.qaGuide = true;
+    label.userData.stateRole = "guideLabel";
+    label.userData.baseOpacity = 1;
 
     const tether = createPolyline([
       { x: point.x, z: point.z },
@@ -1920,12 +1949,15 @@ function addGuideGeometry(scene, runtimeScene) {
       y: 0.1,
     });
     tether.userData.qaGuide = true;
+    tether.userData.stateRole = "guideLabel";
+    tether.userData.baseOpacity = 0.54;
 
-    const group = new THREE.Group();
     group.add(marker, post, label, tether);
-    group.userData.qaGuide = true;
-    scene.add(group);
   }
+
+  group.userData.qaGuide = true;
+  scene.add(group);
+  return group;
 }
 
 function addRuntimeObjects(
@@ -3307,8 +3339,47 @@ function addEvidenceLayeredFacadeShell(group, { composition, palette, length, ce
   }
 }
 
-function addEvidenceFacadeRhythm() {
-  // 4E-5 suppresses fine facade rhythm so endpoint volumes stay visually clear.
+function addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
+  const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
+  const bayCount = clampInteger(cueRecord.bayCount, 2, 8, 4);
+  const baseBeatCount = clampInteger(cueRecord.baseBeatCount, 2, 8, bayCount);
+  const upperRows = clampInteger(cueRecord.upperRows, 1, 5, 2);
+  const upperStart = baseHeight + Math.max((height - baseHeight) * 0.16, 0.1);
+  const upperEnd = height - Math.max(height * 0.13, 0.12);
+  const rowGap = Math.max((upperEnd - upperStart) / Math.max(upperRows - 1, 1), 0.1);
+  const bayWidth = length / bayCount;
+  const baseBeatWidth = length / baseBeatCount;
+  const reliefZ = z + sideOffset * (depth + composition.windowReliefDepthUnits * 0.62);
+
+  for (let bay = 1; bay < bayCount; bay += 1) {
+    const x = plane.xMin + bayWidth * bay;
+    addEvidenceFacadeBox(group, {
+      color: palette.trim,
+      opacity: 0.88,
+      position: [x, baseHeight + (height - baseHeight) / 2, reliefZ],
+      size: [0.018, Math.max(height - baseHeight - 0.12, 0.16), Math.max(composition.windowReliefDepthUnits * 0.55, 0.035)],
+    });
+  }
+
+  for (let row = 0; row < upperRows; row += 1) {
+    const y = upperRows === 1 ? upperStart + (upperEnd - upperStart) * 0.52 : upperStart + rowGap * row;
+    addEvidenceFacadeBox(group, {
+      color: palette.trim,
+      opacity: 0.76,
+      position: [plane.xMin + length / 2, y - 0.072, reliefZ - sideOffset * 0.01],
+      size: [length * 0.92, 0.012, Math.max(composition.windowReliefDepthUnits * 0.45, 0.028)],
+    });
+  }
+
+  for (let beat = 1; beat < baseBeatCount; beat += 1) {
+    const x = plane.xMin + baseBeatWidth * beat;
+    addEvidenceFacadeBox(group, {
+      color: palette.trim,
+      opacity: 0.9,
+      position: [x, baseHeight * 0.46, z + sideOffset * (depth + composition.signBandDepthUnits * 0.22)],
+      size: [0.024, baseHeight * 0.74, Math.max(composition.signBandDepthUnits * 0.52, 0.05)],
+    });
+  }
 }
 
 function addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
@@ -3356,8 +3427,64 @@ function addEvidenceAwningCanopy(group, { cueRecord, composition, palette, lengt
   }
 }
 
-function addEvidenceWindowGlassRhythm() {
-  // 4E-5 prioritizes opaque architectural massing over opening rhythm fidelity.
+function addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
+  const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
+  const bayCount = clampInteger(cueRecord.bayCount, 2, 8, 4);
+  const upperRows = clampInteger(cueRecord.upperRows, 1, 5, 2);
+  const groundGlassBeats = clampInteger(cueRecord.groundGlassBeats, 2, 8, bayCount);
+  const upperStart = baseHeight + Math.max((height - baseHeight) * 0.18, 0.11);
+  const upperEnd = height - Math.max(height * 0.16, 0.13);
+  const rowGap = Math.max((upperEnd - upperStart) / Math.max(upperRows - 1, 1), 0.1);
+  const bayWidth = length / bayCount;
+  const glassBeatWidth = length / groundGlassBeats;
+  const frontZ = z + sideOffset * (depth + composition.windowReliefDepthUnits * 0.96);
+  const windowWidth = Math.max(Math.min(bayWidth * 0.46, 0.18), 0.052);
+  const windowHeight = Math.max(Math.min((height - baseHeight) / Math.max(upperRows, 2) * 0.32, 0.18), 0.07);
+
+  for (let row = 0; row < upperRows; row += 1) {
+    const y = upperRows === 1 ? upperStart + (upperEnd - upperStart) * 0.55 : upperStart + rowGap * row;
+    for (let bay = 0; bay < bayCount; bay += 1) {
+      const x = plane.xMin + bayWidth * bay + bayWidth / 2;
+      addEvidenceFacadeBox(group, {
+        color: palette.windowShadow,
+        opacity: 0.95,
+        position: [x, y, frontZ - sideOffset * 0.012],
+        size: [windowWidth * 1.24, windowHeight * 1.34, Math.max(composition.windowReliefDepthUnits * 0.52, 0.04)],
+      });
+      addEvidenceFacadeBox(group, {
+        color: palette.window,
+        opacity: 0.94,
+        position: [x, y + windowHeight * 0.04, frontZ + sideOffset * 0.014],
+        size: [windowWidth, windowHeight, Math.max(composition.windowReliefDepthUnits * 0.48, 0.035)],
+      });
+      addEvidenceFacadeBox(group, {
+        color: palette.trim,
+        opacity: 0.72,
+        position: [x, y - windowHeight * 0.68, frontZ + sideOffset * 0.018],
+        size: [windowWidth * 1.08, 0.018, Math.max(composition.windowReliefDepthUnits * 0.42, 0.03)],
+      });
+    }
+  }
+
+  for (let beat = 0; beat < groundGlassBeats; beat += 1) {
+    const x = plane.xMin + glassBeatWidth * beat + glassBeatWidth / 2;
+    const isDoor = beat === Math.floor(groundGlassBeats * 0.45) || (groundGlassBeats <= 3 && beat === 1);
+    const glassHeight = isDoor ? baseHeight * 0.66 : baseHeight * 0.48;
+    const glassY = isDoor ? baseHeight * 0.38 : baseHeight * 0.46;
+    const glassWidth = Math.max(glassBeatWidth * (isDoor ? 0.42 : 0.56), 0.055);
+    addEvidenceFacadeBox(group, {
+      color: isDoor ? palette.door : palette.glass,
+      opacity: 0.96,
+      position: [x, glassY, frontZ + sideOffset * 0.035],
+      size: [glassWidth, glassHeight, Math.max(composition.windowReliefDepthUnits * 0.72, 0.05)],
+    });
+    addEvidenceFacadeBox(group, {
+      color: palette.trim,
+      opacity: 0.78,
+      position: [x, glassY + glassHeight * 0.52, frontZ + sideOffset * 0.05],
+      size: [glassWidth * 1.06, 0.016, Math.max(composition.windowReliefDepthUnits * 0.52, 0.035)],
+    });
+  }
 }
 
 function addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane, height, z, sideOffset }) {
@@ -3418,9 +3545,61 @@ function addEvidenceSyntheticGrounding(group, { composition, palette, length, pl
   }
 }
 
-function addEvidenceStreetDetailCues() {
-  // 4E-5 keeps small street fixtures out of the primary facade silhouette.
-  return;
+function addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane, z, sideOffset }) {
+  const detailTypes = Array.isArray(cueRecord.detailTypes) ? cueRecord.detailTypes : [];
+  const detailCount = clampInteger(cueRecord.detailCount, 0, 6, detailTypes.length);
+  const sidewalkZ = z + sideOffset * 0.72;
+  const curbZ = z + sideOffset * 1.08;
+
+  if (detailTypes.includes("signal-post") || detailTypes.includes("sidewalk-post")) {
+    const postCount = Math.max(1, Math.min(detailCount, 3));
+    for (let index = 0; index < postCount; index += 1) {
+      const x = plane.xMin + length * (0.18 + index * 0.28);
+      addEvidenceFacadeCylinder(group, {
+        color: palette.post,
+        opacity: 0.9,
+        position: [x, 0.34, curbZ + sideOffset * 0.12],
+        radius: 0.018,
+        height: 0.68,
+      });
+      addEvidenceFacadeBox(group, {
+        color: palette.streetSign,
+        opacity: 0.88,
+        position: [x + 0.04, 0.66, curbZ + sideOffset * 0.13],
+        size: [0.12, 0.04, 0.024],
+      });
+    }
+  }
+
+  if (detailTypes.includes("outdoor-table-zone")) {
+    for (let index = 0; index < 2; index += 1) {
+      const x = plane.xMin + length * (0.34 + index * 0.18);
+      addEvidenceFacadeCylinder(group, {
+        color: palette.table,
+        opacity: 0.82,
+        position: [x, 0.11, sidewalkZ + sideOffset * 0.12],
+        radius: 0.045,
+        height: 0.045,
+      });
+      addEvidenceFacadeBox(group, {
+        color: palette.post,
+        opacity: 0.76,
+        position: [x + 0.08, 0.16, sidewalkZ + sideOffset * 0.16],
+        size: [0.035, 0.18, 0.035],
+      });
+    }
+  }
+
+  if (detailTypes.includes("curb-crossing")) {
+    for (let index = 0; index < 5; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: palette.crosswalk,
+        opacity: 0.78,
+        position: [plane.xMin + length * 0.08 + index * length * 0.07, 0.036, curbZ + sideOffset * (0.16 + index * 0.055)],
+        size: [Math.max(length * 0.055, 0.08), 0.022, 0.04],
+      });
+    }
+  }
 }
 
 function addStreetBaseCadence(group, { modules, palette, length, plane, height, splitY, z, sideOffset, depth }) {
@@ -3838,7 +4017,12 @@ function getEvidenceFacadePalette(paletteFamily) {
       crosswalk: 0xe6dece,
     },
   };
-  return palettes[paletteFamily] ?? palettes["warm-red-brick-dark-base"];
+  const palette = palettes[paletteFamily] ?? palettes["warm-red-brick-dark-base"];
+  return {
+    windowShadow: 0x151c1b,
+    door: 0x1c2322,
+    ...palette,
+  };
 }
 
 function normalizeCadence(values) {
@@ -3872,8 +4056,10 @@ function addQAFacadeBox(group, { color, opacity, position, size }) {
 function addEvidenceFacadeBox(group, { color, opacity, position, size, opaque = true }) {
   const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(...size),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshStandardMaterial({
       color,
+      roughness: 0.72,
+      metalness: 0.02,
       transparent: !opaque,
       opacity: opaque ? 1 : 0,
       depthWrite: opaque,
@@ -3990,8 +4176,10 @@ function addSyntheticContextBox(group, { color, opacity, position, size }) {
 function addEvidenceFacadeCylinder(group, { color, opacity, position, radius, height, opaque = true }) {
   const mesh = new THREE.Mesh(
     new THREE.CylinderGeometry(radius, radius, height, 8),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshStandardMaterial({
       color,
+      roughness: 0.66,
+      metalness: 0.03,
       transparent: !opaque,
       opacity: opaque ? 1 : 0,
       depthWrite: opaque,
@@ -4098,7 +4286,9 @@ function getHitFromEvent(state, event) {
 }
 
 function isQALayerVisibleInFocus(role, qaLayerFocus) {
-  return qaLayerFocus !== QA_LAYER_FOCUS_4L_LOCAL || QA_4L_LOCAL_FOCUS_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_4L_LOCAL) return QA_4L_LOCAL_FOCUS_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC) return QA_VISUAL_POC_VISIBLE_ROLES.has(role);
+  return true;
 }
 
 function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus = QA_LAYER_FOCUS_ALL) {
@@ -4141,11 +4331,14 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
         child.material.color.set(isSelected ? 0xf0c96a : isHovered ? 0xb9cec7 : color ?? child.userData.baseColor ?? 0x88908d);
       }
       if (child.material.opacity !== undefined) {
+        const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
         if (child.userData.stateRole === "outline" || child.userData.stateRole === "footprint") {
           child.material.opacity = isSelected
             ? 0.95
             : isHovered
               ? 0.78
+              : visualPoc
+                ? child.userData.hasEvidenceFacade ? 0.12 : 0.045
               : qaEnabled
                 ? child.userData.hasEvidenceFacade ? 0 : 0.002
                 : 0.5;
@@ -4154,6 +4347,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             ? 0.72
             : isHovered
               ? 0.58
+              : visualPoc
+                ? child.userData.hasEvidenceFacade ? 0.08 : 0.02
               : qaEnabled
                 ? child.userData.hasEvidenceFacade ? 0 : 0.003
                 : 0.4;
@@ -4162,6 +4357,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             ? 0.86
             : isHovered
               ? 0.72
+              : visualPoc
+                ? child.userData.hasEvidenceFacade ? 0.12 : 0.035
               : qaEnabled
                 ? child.userData.hasEvidenceFacade ? 0 : 0.003
                 : 0.94;
@@ -4176,6 +4373,17 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
               : qaEnabled
                 ? 0.015
                 : child.userData.baseOpacity ?? 0.35;
+        } else if (child.userData.stateRole === "guideSurface") {
+          const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
+          child.visible = true;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          child.material.opacity = visualPoc ? 0.055 : child.userData.baseOpacity ?? child.material.opacity;
+        } else if (child.userData.stateRole === "guideLabel") {
+          const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
+          child.visible = !visualPoc;
+          child.material.transparent = true;
+          child.material.opacity = visualPoc ? 0 : child.userData.baseOpacity ?? child.material.opacity;
         } else if (child.userData.stateRole === "facadeCue") {
           child.visible = qaEnabled && qaLayerVisible && (isSelected || isHovered);
           child.material.opacity = qaEnabled && qaLayerVisible

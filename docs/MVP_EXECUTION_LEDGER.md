@@ -55,15 +55,50 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4L-Local-5: QA Layer Focus + Label-Density Legibility Pass` is complete and verified at the Batu review gate.
+- Current phase: `Batch 4M-POC: Existing Runtime Endpoint Fidelity Patch` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4L-Local-5 Batu review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep maps current 4K recognizability gaps to required evidence types. Batu then opened bounded 4L-Local work to test the scene pipeline with existing repo-local evidence before Mapillary/KartaView. 4L-Local-1 inventories 22 existing repo-local Batu-supplied evidence records and maps every record to QA cue eligibility. 4L-Local-2 adds 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs. 4L-Local-3 renders those enriched cues in QA mode only with runtime readouts. 4L-Local-4 records that this improves endpoint recognizability enough to justify a later Mapillary/KartaView source-use gate proposal, not direct external intake. 4L-Local-5 adds a QA-only layer focus control to isolate the 4L local evidence layer from competing QA labels. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-POC Batu visual review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. Batu then opened a bounded 4M-POC acceleration patch to improve the existing Phase 4 runtime endpoint visuals directly using current 4J/4K/4L records and repo-local evidence only. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-09 - Batch 4M-POC Existing Runtime Endpoint Fidelity Patch
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Improve the existing Phase 4 runtime scene's Manhattan and Franklin endpoint visual fidelity directly, using the current endpoint geometry, 4J frontage candidates, 4K recognizable cues, 4L local evidence records, and repo-local evidence only.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/review-screenshots/phase-4m-poc-endpoint-fidelity-patch/corridor-oblique-visual-poc.png`
+- `docs/review-screenshots/phase-4m-poc-endpoint-fidelity-patch/manhattan-endpoint-visual-poc.png`
+- `docs/review-screenshots/phase-4m-poc-endpoint-fidelity-patch/franklin-endpoint-visual-poc.png`
+
+Verification:
+- `npm run build`
+- Browser runtime review using the existing Phase 4 scene.
+- Captured Manhattan endpoint, Franklin endpoint, and corridor oblique Visual POC screenshots.
+- One correction loop lowered muted context scaffold opacity after visual review so endpoint frontage detail remained readable.
+
+Outcome:
+- Added a QA-only `Visual POC` focus mode that hides cluttering QA chrome and uses the existing scene objects.
+- Improved endpoint facade rendering with storefront rhythm, glass/door/sign-band/grounding detail, material/color-family cues, side-return/depth hints, and muted scaffold context.
+- Preserved normal-mode protection and did not add external sources, new schemas, new renderer, new dependencies, backend services, or public/product truth claims.
+
+Unresolved decisions:
+- Batu owns whether the endpoint fidelity is close enough to the benchmark direction for proof-of-pipeline purposes and whether another bounded endpoint pass, exact storefront/frontage pass, art-directed scene pass, or source expansion gate opens.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-POC Batu visual review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-09 - Batch 4L-Local-5 QA Layer Focus + Label-Density Legibility Pass
 
