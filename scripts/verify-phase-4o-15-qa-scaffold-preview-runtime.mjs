@@ -19,8 +19,6 @@ const requiredRuntimeSnippets = [
   "addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter.renderRecords, visualObjects);",
   "createQAScaffoldPreviewLayer(object, qaScaffoldPreviewRecords)",
   "child.userData.stateRole === \"qaScaffoldPreview\"",
-  "child.visible = qaEnabled;",
-  "4O-15 QA scaffold preview",
   "QA scaffold preview",
   "exact height",
 ];
@@ -52,6 +50,14 @@ async function main() {
 
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing required snippet: ${snippet}`);
+  }
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime missing QA-only visibility toggle");
+  }
+  const originalRuntimeValid = runtime.includes("4O-15 QA scaffold preview");
+  const laterRuntimeValid = runtime.includes("4O scaffold previews with 4O-19 family controls");
+  if (!originalRuntimeValid && !laterRuntimeValid) {
+    failures.push("Runtime must preserve original 4O-15 label or later 4O QA review label");
   }
 
   if (!styles.includes(".phase4b-swatch-scaffold-preview")) failures.push("Styles missing QA scaffold preview swatch");

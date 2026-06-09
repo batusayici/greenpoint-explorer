@@ -12,14 +12,11 @@ const reportPath = "docs/reports/phase-4o-17-qa-scaffold-preview-legibility-repo
 const briefPath = "docs/CURRENT_EXECUTION_BRIEF.md";
 
 const requiredRuntimeSnippets = [
-  "4O-17 QA scaffold preview legibility",
-  "4O-15 QA scaffold preview",
   "4O families",
   "inspectedQAScaffoldPreviewRecords",
   "qaScaffoldPreviewOutline",
   "qaScaffoldPreviewLabel",
   "addQAScaffoldPreviewLabel",
-  "child.visible = qaEnabled;",
   "QA mode required for 4O scaffold preview records.",
 ];
 
@@ -84,16 +81,38 @@ async function main() {
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing 4O-17 legibility snippet: ${snippet}`);
   }
+  const originalRuntimeValid = [
+    "4O-17 QA scaffold preview legibility",
+    "4O-15 QA scaffold preview",
+  ].every((snippet) => runtime.includes(snippet));
+  const laterRuntimeValid = [
+    "4O scaffold previews with 4O-19 family controls",
+    "4L local evidence",
+  ].every((snippet) => runtime.includes(snippet));
+  if (!originalRuntimeValid && !laterRuntimeValid) {
+    failures.push("Runtime must preserve original 4O-17 labels or later 4O/4L QA review labels");
+  }
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime missing QA-only visibility toggle");
+  }
 
   for (const snippet of requiredReportSnippets) {
     if (!report.includes(snippet)) failures.push(`Report missing 4O-17 snippet: ${snippet}`);
   }
 
-  for (const snippet of [
+  const originalBriefValid = [
     "Batch 4O-17: QA scaffold preview legibility pass",
     "4O-17 is complete and verified.",
-  ]) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4O-17 snippet: ${snippet}`);
+  ].every((snippet) => brief.includes(snippet));
+  const laterBriefValid = [
+    "Current Execution Brief - Phase 4L-Local Complete At Review Gate",
+    "4O-20 is complete and verified.",
+    "4L-Local-5 is complete and verified.",
+    "Current executable batch: none.",
+    "Hard Batu gate: stop.",
+  ].every((snippet) => brief.includes(snippet));
+  if (!originalBriefValid && !laterBriefValid) {
+    failures.push("Current brief must preserve the 4O-17 gate or record later 4L-Local completion without 4O promotion");
   }
 
   for (const snippet of forbiddenRuntimeSnippets) {

@@ -20,7 +20,6 @@ const requiredRuntimeSnippets = [
   "visibleQaOnlyRecordCount",
   "formatQAScaffoldFamilyVisibility",
   "4O-19 family controls",
-  "child.visible = qaEnabled;",
   "QA mode required for 4O scaffold preview records.",
 ];
 
@@ -55,6 +54,9 @@ async function main() {
 
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing 4O-19 controls snippet: ${snippet}`);
+  }
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime missing QA-only visibility toggle");
   }
 
   for (const snippet of requiredStyleSnippets) {

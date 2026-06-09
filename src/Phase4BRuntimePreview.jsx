@@ -16,6 +16,18 @@ import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-
 import geometryFixture from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import { buildPhase4BRuntimeScene } from "./phase4bRuntimeScene.js";
 
+const QA_LAYER_FOCUS_ALL = "all";
+const QA_LAYER_FOCUS_4L_LOCAL = "4l_local_evidence";
+const QA_LAYER_FOCUS_OPTIONS = [
+  { id: QA_LAYER_FOCUS_ALL, label: "All QA" },
+  { id: QA_LAYER_FOCUS_4L_LOCAL, label: "4L Focus" },
+];
+const QA_4L_LOCAL_FOCUS_VISIBLE_ROLES = new Set([
+  "evidenceFacadeCue",
+  "localEvidenceCue",
+  "localEvidenceCueLabel",
+]);
+
 const HOME_CAMERA = {
   azimuth: -0.68,
   polar: 0.88,
@@ -111,6 +123,7 @@ export default function Phase4BRuntimePreview() {
   const [hoveredId, setHoveredId] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [qaEnabled, setQaEnabled] = useState(false);
+  const [qaLayerFocus, setQALayerFocus] = useState(QA_LAYER_FOCUS_ALL);
   const [qaScaffoldFamilyVisibility, setQAScaffoldFamilyVisibility] = useState(() => ({
     ...qaScaffoldPreviewExpansionFixture.familyVisibilityDefaults,
   }));
@@ -242,9 +255,9 @@ export default function Phase4BRuntimePreview() {
   useEffect(() => {
     const state = stateRef.current;
     if (!state) return;
-    updateObjectStates(state, hoveredId, selectedId, qaEnabled);
+    updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus);
     renderFrame(state);
-  }, [hoveredId, selectedId, qaEnabled]);
+  }, [hoveredId, selectedId, qaEnabled, qaLayerFocus]);
 
   function handlePointerDown(event) {
     const state = stateRef.current;
@@ -428,6 +441,7 @@ export default function Phase4BRuntimePreview() {
             }))}
             localEvidenceCueAdapter={localEvidenceCueAdapter}
             inspectedLocalEvidenceCueRecords={inspectedLocalEvidenceCueRecords}
+            qaLayerFocus={qaLayerFocus}
             geometryValidationReport={geometryValidationReport}
             candidatePoiFixture={candidatePoiFixture}
             cornerAnchorCandidateFixture={cornerAnchorCandidateFixture}
@@ -444,6 +458,17 @@ export default function Phase4BRuntimePreview() {
           >
             QA
           </button>
+          {QA_LAYER_FOCUS_OPTIONS.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              aria-pressed={qaLayerFocus === option.id}
+              onClick={() => setQALayerFocus(option.id)}
+              aria-label={`QA layer focus ${option.label}`}
+            >
+              {option.label}
+            </button>
+          ))}
           <button type="button" onClick={() => runCameraCommand("manhattanToFranklin")} aria-label="Camera preset Manhattan to Franklin">
             M to F
           </button>
@@ -674,6 +699,7 @@ function QADebugPanel({
   onToggleQARecognizableCueCategory,
   localEvidenceCueAdapter,
   inspectedLocalEvidenceCueRecords,
+  qaLayerFocus,
   geometryValidationReport,
   candidatePoiFixture,
   cornerAnchorCandidateFixture,
@@ -693,11 +719,19 @@ function QADebugPanel({
         <li><span className="phase4b-side-dot phase4b-side-center" /> 4J candidates: {qaFrontageCandidateAdapter.summary.visibleQaOnlyRecordCount} visible / {qaFrontageCandidateAdapter.summary.candidateRecordCount} QA / {qaFrontageCandidateAdapter.summary.normalModeRecordCount} normal</li>
         <li><span className="phase4b-side-dot phase4b-side-recognizable-anchor" /> 4K cues: {qaRecognizableAnchorCueAdapter.summary.visibleQaOnlyRecordCount} visible / {qaRecognizableAnchorCueAdapter.summary.cueRecordCount} QA / {qaRecognizableAnchorCueAdapter.summary.normalModeRecordCount} normal</li>
         <li><span className="phase4b-side-dot phase4b-side-local-evidence" /> 4L local cues: {localEvidenceCueAdapter.summary.visibleQaOnlyRecordCount} visible / {localEvidenceCueAdapter.summary.enrichedCueRecordCount} QA / {localEvidenceCueAdapter.summary.normalModeRecordCount} normal</li>
+        <li><span className="phase4b-side-dot phase4b-side-local-evidence" /> QA layer focus: {formatQALayerFocusLabel(qaLayerFocus)}</li>
         <li><span className="phase4b-side-dot phase4b-side-local-evidence" /> Selected 4L: {inspectedLocalEvidenceCueRecords.length ? inspectedLocalEvidenceCueRecords.map((record) => record.qaOnlyStatus).join(" / ") : "none"}</li>
         <li><span className="phase4b-side-dot phase4b-side-evidence-facade" /> Business evidence not connected</li>
         <li><span className="phase4b-side-dot phase4b-side-blocked" /> Blocked claims remain blocked</li>
         <li><span className="phase4b-side-dot phase4b-side-center" /> Synthetic context: non-evidence placeholder</li>
       </ul>
+      <div className="phase4b-qa-filter-row" aria-label="QA layer focus status">
+        {QA_LAYER_FOCUS_OPTIONS.map((option) => (
+          <span key={option.id} data-active={qaLayerFocus === option.id ? "true" : "false"}>
+            {option.label}
+          </span>
+        ))}
+      </div>
       <div className="phase4b-qa-filter-row" aria-label="QA scaffold family filters">
         {["container", "grounding", "height"].map((family) => (
           <button
@@ -1708,6 +1742,10 @@ function formatQARecognizableCueCategoryVisibility(visibility) {
   return qaRecognizableAnchorCueFixture.cueCategoryAllowlist
     .map((cueCategory) => `${formatCueCategoryLabel(cueCategory)}:${visibility?.[cueCategory] !== false ? "on" : "off"}`)
     .join(" / ");
+}
+
+function formatQALayerFocusLabel(focus) {
+  return QA_LAYER_FOCUS_OPTIONS.find((option) => option.id === focus)?.label ?? "All QA";
 }
 
 function formatCandidateTypeLabel(candidateType) {
@@ -4059,32 +4097,38 @@ function getHitFromEvent(state, event) {
   return state.raycaster.intersectObjects(state.pickTargets, false)[0]?.object ?? null;
 }
 
-function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
+function isQALayerVisibleInFocus(role, qaLayerFocus) {
+  return qaLayerFocus !== QA_LAYER_FOCUS_4L_LOCAL || QA_4L_LOCAL_FOCUS_VISIBLE_ROLES.has(role);
+}
+
+function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus = QA_LAYER_FOCUS_ALL) {
   for (const [id, visual] of state.visualObjects) {
     const isSelected = id === selectedId;
     const isHovered = id === hoveredId;
     visual.traverse((child) => {
       if (child.userData.pickTarget) return;
+      const role = child.userData.stateRole;
+      const qaLayerVisible = isQALayerVisibleInFocus(role, qaLayerFocus);
       if (!child.material) {
         if (
-          child.userData.stateRole === "facadeCue"
-          || child.userData.stateRole === "qaFacadeSlice"
-          || child.userData.stateRole === "evidenceFacadeCue"
-          || child.userData.stateRole === "corridorFacadeCue"
-          || child.userData.stateRole === "qaScaffoldPreview"
-          || child.userData.stateRole === "qaScaffoldPreviewOutline"
-          || child.userData.stateRole === "qaScaffoldPreviewLabel"
-          || child.userData.stateRole === "qaFrontageCandidate"
-          || child.userData.stateRole === "qaFrontageCandidateLabel"
-          || child.userData.stateRole === "qaRecognizableAnchorCue"
-          || child.userData.stateRole === "qaRecognizableAnchorCueLabel"
-          || child.userData.stateRole === "localEvidenceCue"
-          || child.userData.stateRole === "localEvidenceCueLabel"
-          || child.userData.stateRole === "syntheticQAGrounding"
-          || child.userData.stateRole === "candidatePoi"
-          || child.userData.stateRole === "candidatePoiLabel"
+          role === "facadeCue"
+          || role === "qaFacadeSlice"
+          || role === "evidenceFacadeCue"
+          || role === "corridorFacadeCue"
+          || role === "qaScaffoldPreview"
+          || role === "qaScaffoldPreviewOutline"
+          || role === "qaScaffoldPreviewLabel"
+          || role === "qaFrontageCandidate"
+          || role === "qaFrontageCandidateLabel"
+          || role === "qaRecognizableAnchorCue"
+          || role === "qaRecognizableAnchorCueLabel"
+          || role === "localEvidenceCue"
+          || role === "localEvidenceCueLabel"
+          || role === "syntheticQAGrounding"
+          || role === "candidatePoi"
+          || role === "candidatePoiLabel"
         ) {
-          child.visible = child.userData.stateRole === "candidatePoiLabel" ? qaEnabled && (isSelected || isHovered) : qaEnabled;
+          child.visible = role === "candidatePoiLabel" ? qaEnabled && qaLayerVisible && (isSelected || isHovered) : qaEnabled && qaLayerVisible;
         }
         return;
       }
@@ -4133,8 +4177,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 ? 0.015
                 : child.userData.baseOpacity ?? 0.35;
         } else if (child.userData.stateRole === "facadeCue") {
-          child.visible = qaEnabled && (isSelected || isHovered);
-          child.material.opacity = qaEnabled
+          child.visible = qaEnabled && qaLayerVisible && (isSelected || isHovered);
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min(child.userData.qaOpacity + 0.18, 0.95)
               : isHovered
@@ -4142,8 +4186,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : 0
             : 0;
         } else if (child.userData.stateRole === "qaFacadeSlice") {
-          child.visible = qaEnabled;
-          child.material.opacity = qaEnabled
+          child.visible = qaEnabled && qaLayerVisible;
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min(child.userData.qaOpacity + 0.2, 0.96)
               : isHovered
@@ -4151,15 +4195,15 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : Math.min(child.userData.qaOpacity ?? 0.12, 0.12)
             : 0;
         } else if (child.userData.stateRole === "evidenceFacadeCue") {
-          child.visible = qaEnabled;
-          const isOpaqueEvidence = qaEnabled && child.userData.qaOpaque === true;
+          child.visible = qaEnabled && qaLayerVisible;
+          const isOpaqueEvidence = qaEnabled && qaLayerVisible && child.userData.qaOpaque === true;
           const shouldBeTransparent = !isOpaqueEvidence;
           if (child.material.transparent !== shouldBeTransparent || child.material.depthWrite !== isOpaqueEvidence) {
             child.material.transparent = shouldBeTransparent;
             child.material.depthWrite = isOpaqueEvidence;
             child.material.needsUpdate = true;
           }
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isOpaqueEvidence
               ? 1
               : isSelected
@@ -4169,11 +4213,11 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                   : child.userData.qaOpacity
             : 0;
         } else if (child.userData.stateRole === "corridorFacadeCue") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min((child.userData.qaOpacity ?? 0.08) + 0.12, 0.32)
               : isHovered
@@ -4181,11 +4225,11 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : child.userData.qaOpacity ?? 0.08
             : 0;
         } else if (child.userData.stateRole === "qaScaffoldPreview" || child.userData.stateRole === "qaScaffoldPreviewOutline") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min((child.userData.qaOpacity ?? 0.22) + 0.16, 0.64)
               : isHovered
@@ -4193,20 +4237,20 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : child.userData.qaOpacity ?? 0.22
             : 0;
         } else if (child.userData.stateRole === "qaScaffoldPreviewLabel") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected || isHovered
               ? 1
               : child.userData.qaOpacity ?? 0.9
             : 0;
         } else if (child.userData.stateRole === "qaFrontageCandidate") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min((child.userData.qaOpacity ?? 0.42) + 0.16, 0.74)
               : isHovered
@@ -4214,20 +4258,20 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : child.userData.qaOpacity ?? 0.42
             : 0;
         } else if (child.userData.stateRole === "qaFrontageCandidateLabel") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected || isHovered
               ? 1
               : child.userData.qaOpacity ?? 0.9
             : 0;
         } else if (child.userData.stateRole === "qaRecognizableAnchorCue") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min((child.userData.qaOpacity ?? 0.34) + 0.18, 0.72)
               : isHovered
@@ -4235,20 +4279,20 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : child.userData.qaOpacity ?? 0.34
             : 0;
         } else if (child.userData.stateRole === "qaRecognizableAnchorCueLabel") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected || isHovered
               ? 1
               : child.userData.qaOpacity ?? 0.9
             : 0;
         } else if (child.userData.stateRole === "localEvidenceCue") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected
               ? Math.min((child.userData.qaOpacity ?? 0.5) + 0.16, 0.86)
               : isHovered
@@ -4256,30 +4300,30 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled) {
                 : child.userData.qaOpacity ?? 0.5
             : 0;
         } else if (child.userData.stateRole === "localEvidenceCueLabel") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected || isHovered
               ? 1
               : child.userData.qaOpacity ?? 0.92
             : 0;
         } else if (child.userData.stateRole === "syntheticQAGrounding") {
-          child.visible = qaEnabled;
+          child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
           child.material.depthWrite = false;
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
-          child.material.opacity = qaEnabled
+          child.material.opacity = qaEnabled && qaLayerVisible
             ? isSelected || isHovered
               ? Math.min((child.userData.qaOpacity ?? 0.28) + 0.12, 0.64)
               : child.userData.qaOpacity ?? 0.28
             : 0;
         } else if (child.userData.stateRole === "candidatePoi") {
-          child.visible = qaEnabled && (isSelected || isHovered);
+          child.visible = qaEnabled && qaLayerVisible && (isSelected || isHovered);
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
           child.material.opacity = child.visible ? Math.min(child.userData.qaOpacity ?? 0.36, 0.36) : 0;
         } else if (child.userData.stateRole === "candidatePoiLabel") {
-          child.visible = qaEnabled && (isSelected || isHovered);
+          child.visible = qaEnabled && qaLayerVisible && (isSelected || isHovered);
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
           child.material.opacity = child.visible ? child.userData.qaOpacity ?? 0.75 : 0;
         }

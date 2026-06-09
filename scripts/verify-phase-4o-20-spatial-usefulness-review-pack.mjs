@@ -32,7 +32,6 @@ const requiredRuntimeSnippets = [
   "scaffoldPreviewVisible",
   "visibleQaOnlyRecordCount",
   "normalModeExposure: \"blocked\"",
-  "child.visible = qaEnabled;",
 ];
 
 const historicalRuntimeSnippets = [
@@ -99,6 +98,9 @@ async function main() {
 
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing 4O-20 snippet: ${snippet}`);
+  }
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime missing QA-only visibility toggle");
   }
 
   const historicalRuntimeValid = historicalRuntimeSnippets.every((snippet) => runtime.includes(snippet));

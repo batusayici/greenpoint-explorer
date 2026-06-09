@@ -51,7 +51,9 @@ async function main() {
     if (!styles.includes(snippet)) failures.push(`Styles missing 4L-Local-3 snippet: ${snippet}`);
   }
 
-  if (!runtime.includes("child.visible = qaEnabled;")) failures.push("Runtime must preserve QA-only visibility toggles");
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime must preserve QA-only visibility toggles");
+  }
   if (runtime.includes("normalModeExposure: \"enabled\"")) failures.push("Runtime must not enable normal-mode exposure");
   for (const forbidden of ["mapillary", "kartaView", "googleImagery", "businessName", "tenantName", "signText", "logoText", "poiId", "activeStatus"]) {
     if (runtime.includes(forbidden)) failures.push(`Runtime contains forbidden 4L-Local-3 linkage/source token: ${forbidden}`);

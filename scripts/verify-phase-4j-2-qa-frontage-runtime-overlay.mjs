@@ -30,7 +30,6 @@ const requiredRuntimeSnippets = [
   "QA mode required for 4J frontage candidate records.",
   "child.userData.stateRole === \"qaFrontageCandidate\"",
   "child.userData.stateRole === \"qaFrontageCandidateLabel\"",
-  "child.visible = qaEnabled;",
   "normal` : \"QA off\"",
 ];
 
@@ -68,6 +67,9 @@ async function main() {
 
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing 4J-2 snippet: ${snippet}`);
+  }
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime missing QA-only visibility toggle");
   }
 
   for (const snippet of requiredStyleSnippets) {

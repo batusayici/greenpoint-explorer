@@ -264,6 +264,23 @@
   color: #f8f0d6;
 }
 
+.phase4b-qa-filter-row span {
+  min-height: 22px;
+  padding: 5px 7px;
+  border: 1px solid rgba(138, 199, 190, 0.24);
+  border-radius: 5px;
+  background: rgba(18, 23, 22, 0.42);
+  color: rgba(248, 236, 212, 0.58);
+  font-size: 0.58rem;
+  font-weight: 820;
+}
+
+.phase4b-qa-filter-row span[data-active="true"] {
+  border-color: rgba(255, 215, 111, 0.72);
+  background: rgba(79, 165, 151, 0.32);
+  color: #f8f0d6;
+}
+
 .phase4b-side-dot {
   width: 10px;
   height: 10px;

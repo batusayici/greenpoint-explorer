@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-08
+Last reconciled: 2026-06-09
 
 ## Purpose
 
@@ -55,15 +55,53 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Packet 4L-Local: Repo-Local Evidence-Backed QA Scene Expansion` is complete and verified at the Batu review gate.
+- Current phase: `Batch 4L-Local-5: QA Layer Focus + Label-Density Legibility Pass` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4L-Local Batu review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep maps current 4K recognizability gaps to required evidence types. Batu then opened bounded 4L-Local work to test the scene pipeline with existing repo-local evidence before Mapillary/KartaView. 4L-Local-1 inventories 22 existing repo-local Batu-supplied evidence records and maps every record to QA cue eligibility. 4L-Local-2 adds 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs. 4L-Local-3 renders those enriched cues in QA mode only with runtime readouts. 4L-Local-4 records that this improves endpoint recognizability enough to justify a later Mapillary/KartaView source-use gate proposal, not direct external intake. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4L-Local-5 Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep maps current 4K recognizability gaps to required evidence types. Batu then opened bounded 4L-Local work to test the scene pipeline with existing repo-local evidence before Mapillary/KartaView. 4L-Local-1 inventories 22 existing repo-local Batu-supplied evidence records and maps every record to QA cue eligibility. 4L-Local-2 adds 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs. 4L-Local-3 renders those enriched cues in QA mode only with runtime readouts. 4L-Local-4 records that this improves endpoint recognizability enough to justify a later Mapillary/KartaView source-use gate proposal, not direct external intake. 4L-Local-5 adds a QA-only layer focus control to isolate the 4L local evidence layer from competing QA labels. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, 4M, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-09 - Batch 4L-Local-5 QA Layer Focus + Label-Density Legibility Pass
+
+Status:
+- Complete and verified; pending Batu review.
+
+Scope:
+- Add QA-only controls/readability behavior so Batu can isolate 4L local evidence cues from competing 4O/4J/4K QA labels.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `docs/reports/phase-4l-local-5-qa-layer-focus-legibility.md`
+- `scripts/verify-phase-4l-local-5-qa-layer-focus-legibility.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- `node scripts/verify-phase-4l-local-5-qa-layer-focus-legibility.mjs`
+- New and relevant prior 4L verifiers
+- Relevant 4K / 4J / 4O / 4I verifier chain
+- `npm run build`
+- Browser visual review
+- `git diff --check`
+- `git status --short`
+
+Outcome:
+- Added `All QA` / `4L Focus` controls in the existing QA runtime.
+- `4L Focus` suppresses competing scaffold/candidate/cue QA layers while preserving the 4L local evidence cue layer and existing evidence facade context.
+- Preserved all external source, new evidence intake, business/source linkage, normal-mode exposure, production/public, and claim-promotion blocks.
+
+Unresolved decisions:
+- Batu owns whether the focused 4L local evidence view is visually legible enough for the next decision.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4L-Local-5 Batu review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-08 - Batch 4L-Local-4 Visual Review Gate Report
 

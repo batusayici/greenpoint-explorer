@@ -33,7 +33,6 @@ const requiredRuntimeSnippets = [
   "QA mode required for 4K recognizable anchor cue records.",
   "child.userData.stateRole === \"qaRecognizableAnchorCue\"",
   "child.userData.stateRole === \"qaRecognizableAnchorCueLabel\"",
-  "child.visible = qaEnabled;",
   "4K cues: {qaRecognizableAnchorCueAdapter.summary.visibleQaOnlyRecordCount} visible / {qaRecognizableAnchorCueAdapter.summary.cueRecordCount} QA / {qaRecognizableAnchorCueAdapter.summary.normalModeRecordCount} normal",
 ];
 
@@ -75,6 +74,9 @@ async function main() {
 
   for (const snippet of requiredRuntimeSnippets) {
     if (!runtime.includes(snippet)) failures.push(`Runtime missing 4K-2 snippet: ${snippet}`);
+  }
+  if (!runtime.includes("child.visible = qaEnabled;") && !runtime.includes("child.visible = qaEnabled && qaLayerVisible;")) {
+    failures.push("Runtime missing QA-only visibility toggle");
   }
 
   for (const snippet of requiredStyleSnippets) {
