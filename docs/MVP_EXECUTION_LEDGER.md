@@ -55,15 +55,62 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Packet 4M-R6: Franklin Hybrid Benchmark-Closure Packet` is complete and verified at the Batu review gate.
+- Current phase: `Packet 4M-R7: Franklin Hero Kit Extraction + Benchmark Render Proof` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R6 Batu visual review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R7 Batu review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. R6 proved hybrid recognizability but not benchmark render fidelity. R7 completed a Franklin-only hero kit extraction/render proof: measured trace = alignment, hero kit = visual fidelity, runtime = assembly/review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces beyond the internal Franklin QA hero module, broad module-boundary changes, architecture changes, Manhattan expansion, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-09 - Packet 4M-R7 Franklin Hero Kit Extraction + Benchmark Render Proof
+
+Status:
+- Complete and verified; pending Batu review.
+
+Scope:
+- Open and execute a bounded Franklin-only hero kit extraction/render proof. Extract Franklin-specific R6/R5 hero fidelity logic out of `Phase4BRuntimePreview.jsx`, preserve measured trace alignment and R6 visual baseline, document the authoring workflow decision, specify benchmark asset groups, capture review artifacts, and stop without opening R8 or Manhattan.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `src/components/hero/FranklinHeroCorner.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r7-franklin-hero-kit-extraction-workflow-decision.md`
+- `docs/reports/phase-4m-r7-franklin-benchmark-render-spec.md`
+- `docs/reports/phase-4m-r7-franklin-hero-kit-extraction-report.md`
+- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/franklin-benchmark-close-r7.png`
+- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/franklin-side-return-corner-wrap-r7.png`
+- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/franklin-street-level-lower-oblique-r7.png`
+- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/corridor-oblique-ghosted-r7.png`
+- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/manhattan-close-r7-shared-renderer-check.png`
+- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/normal-mode-protection-smoke-r7.png`
+
+Verification:
+- `npm run build`
+- Browser review/capture from `http://127.0.0.1:5176/`
+- PNG/file-format check for R7 screenshots
+- `git diff --check`
+- Staging audit excluding older unrelated untracked 4M artifacts
+
+Outcome:
+- R6 is recorded as hybrid-recognizable but not benchmark-render-fidelity complete.
+- Added a dedicated QA-only Franklin hero kit module.
+- Runtime now computes placement/alignment and delegates Franklin fidelity modules to the hero kit.
+- Workflow decision recommends review-only GLB/GLTF for the next benchmark-fidelity push while keeping the extracted Three.js module as fallback/placement proof.
+- Benchmark render spec defines required asset groups and blocked visual claims.
+
+Unresolved decisions:
+- Batu owns whether the extracted Franklin hero-kit boundary is the right workflow direction.
+- Batu owns whether to open a later Franklin review-only GLB/GLTF asset-placement batch.
+- Manhattan remains closed.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R7 Batu review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-09 - Packet 4M-R6 Franklin Hybrid Benchmark-Closure
 
