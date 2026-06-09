@@ -54,6 +54,7 @@ const allowedChangedPathPrefixes = [
   "docs/phase-4l-prep-evidence-gap-to-cue-intake-plan.md",
   "docs/phase-4l-prep-qa-evidence-eligibility-contract.md",
   "docs/reports/phase-4l-prep-review-gate-report.md",
+  "docs/reports/phase-4l-local-4-visual-review-gate-report.md",
   "scripts/verify-phase-4j-1-qa-frontage-candidates.mjs",
   "scripts/verify-phase-4j-2-qa-frontage-runtime-overlay.mjs",
   "scripts/verify-phase-4j-3-candidate-readiness-report.mjs",
@@ -62,6 +63,7 @@ const allowedChangedPathPrefixes = [
   "scripts/verify-phase-4k-3-local-recognizability-review-pack.mjs",
   "scripts/verify-phase-4o-20-spatial-usefulness-review-pack.mjs",
   "scripts/verify-phase-4l-prep-evidence-eligibility.mjs",
+  "scripts/verify-phase-4l-local-4-visual-review-gate.mjs",
   contractPath,
 ];
 
@@ -258,15 +260,26 @@ function verifyChangedPaths(failures) {
 }
 
 function verifyBrief(brief, failures) {
-  const requiredSnippets = [
+  const prepGateSnippets = [
     "Current Execution Brief - Phase 4L-Prep Complete At Review Gate",
     "Current executable batch: none.",
     "Pre-authorized queue: none.",
     "Hard Batu gate: stop.",
     "4L-Prep did not start evidence intake, external source access, downloads, business/source linkage, normal-mode exposure, runtime render promotion, 4L render implementation, 4M, 4P, or claim promotion.",
   ];
-  for (const snippet of requiredSnippets) {
-    if (!brief.includes(snippet)) failures.push(`Current brief missing 4L-Prep gate snippet: ${snippet}`);
+  const localGateSnippets = [
+    "Current Execution Brief - Phase 4L-Local Complete At Review Gate",
+    "4L-Prep is complete and verified.",
+    "4L-Local-4 is complete and verified.",
+    "Current executable batch: none.",
+    "Pre-authorized queue: none.",
+    "Hard Batu gate: stop.",
+    "4L-Local did not open Mapillary/KartaView, 4L-External, 4M, 4P, external source access, downloads, cache, ingestion, conversion, new evidence intake, normal-mode exposure, business/source linkage, or claim promotion.",
+  ];
+  const prepGateValid = prepGateSnippets.every((snippet) => brief.includes(snippet));
+  const localGateValid = localGateSnippets.every((snippet) => brief.includes(snippet));
+  if (!prepGateValid && !localGateValid) {
+    failures.push("Current brief must preserve the 4L-Prep gate or record final 4L-Local completion without source access, intake, linkage, promotion, or normal-mode exposure");
   }
 }
 

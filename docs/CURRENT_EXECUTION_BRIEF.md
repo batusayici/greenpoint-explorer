@@ -1,67 +1,88 @@
-# Current Execution Brief - Phase 4L-Local-4 Open
+# Current Execution Brief - Phase 4L-Local Complete At Review Gate
 
-Status: `Batch 4L-Local-3: QA Runtime Evidence Overlay` is complete and verified inside the approved 4L-Local packet.
+Status: `Packet 4L-Local: Repo-Local Evidence-Backed QA Scene Expansion` is complete and verified.
 
 Completed precondition:
 
+- 4O-20 is complete and verified.
+- 4J-1 is complete and verified.
+- 4J-2 is complete and verified.
+- 4J-3 is complete and verified.
+- 4K-1 is complete and verified.
+- 4K-2 is complete and verified.
+- 4K-3 is complete and verified.
 - 4L-Prep is complete and verified.
 - 4L-Local-1 is complete and verified.
 - 4L-Local-2 is complete and verified.
 - 4L-Local-3 is complete and verified.
+- 4L-Local-4 is complete and verified.
 
-Current executable batch: `Batch 4L-Local-4: Visual Review Gate Report`.
+Current executable batch: none.
+
+Completed packet: `4L-Local: Repo-Local Evidence-Backed QA Scene Expansion`.
 
 Pre-authorized queue: none.
 
-Self-advance allowed: no after 4L-Local-4. Stop at the Batu review gate.
+Self-advance allowed: no.
 
-Hard Batu gate: stop after 4L-Local-4.
+Hard Batu gate: stop.
 
-Owner boundary: Batu owns visual/product acceptance, whether the pipeline justifies Mapillary/KartaView later, and whether any external source/evidence packet opens. Codex owns tactical implementation inside the approved 4L-Local packet only.
+Owner boundary: Batu owns visual/product acceptance, whether the repo-local evidence pipeline justifies Mapillary/KartaView later, and whether any external source/evidence packet opens.
 
-## Current Batch
-
-### Batch 4L-Local-4: Visual Review Gate Report
-
-Goal: Decide whether the current pipeline is strong enough to justify scaling with Mapillary/KartaView next.
-
-Scope:
-
-- Add a concise visual review gate report covering what improved visually, which corners became more recognizable, which cue categories worked best, which categories remain weak, remaining evidence gaps, whether the current pipeline justifies Mapillary/KartaView as the next scaling lane, what external street-level imagery would need to provide, what Batu-supplied photos are still needed, and recommended next packet.
-- Reconcile `CURRENT_EXECUTION_BRIEF`, `PLAN`, `phase-4-execution-roadmap`, and `MVP_EXECUTION_LEDGER`.
-- Run all new 4L-Local verifiers, relevant 4K / 4J / 4O / 4I verifier chain, `npm run build`, `git diff --check`, and final `git status --short`.
-- Commit and stop at the Batu review gate.
-
-## Hard Constraints
-
-- Do not open Mapillary/KartaView work.
-- Do not open 4L-External, 4M, 4P, or any future packet.
-- Do not access external sources.
-- Do not download, cache, ingest, or convert anything.
-- Do not add new evidence files.
-- Do not promote QA cues into production or factual claims.
-- Do not expose anything in normal mode.
-- Do not link businesses, tenants, signs, logos, POIs, or active status.
-- Do not alter 4K behavior except through QA-only local evidence cue enrichment.
-- Do not add dependencies, credentials, paid APIs, package tooling, renderer replacement, public interfaces, or architecture changes.
-
-## Completed Packet Work
+## Completed Packet
 
 ### Batch 4L-Local-1: Local Evidence Inventory + Cue Eligibility
 
-Completed output: added 22-record repo-local evidence cue eligibility fixture, verifier, and report.
+Completed output:
+
+- Added a 22-record repo-local evidence cue eligibility fixture.
+- Mapped every existing 4D local evidence record to at least one QA-only cue category.
+- Added verifier and report.
 
 ### Batch 4L-Local-2: Evidence-Backed QA Cue Enrichment
 
-Completed output: added 6 QA-only enriched endpoint cue records citing all 22 existing repo-local evidence IDs.
+Completed output:
+
+- Added 6 QA-only enriched endpoint cue records.
+- Cited all 22 existing repo-local evidence IDs through 4L-Local-1 eligibility records.
+- Added verifier and report.
 
 ### Batch 4L-Local-3: QA Runtime Evidence Overlay
 
 Completed output:
 
-- Updated `src/Phase4BRuntimePreview.jsx` and `src/styles.css`.
-- Added `docs/reports/phase-4l-local-3-qa-runtime-evidence-overlay.md`.
-- Added `scripts/verify-phase-4l-local-3-runtime-evidence-overlay.mjs`.
 - Rendered 4L local evidence cues in QA mode only.
 - Added runtime readouts for evidence-backed QA cues, unsupported cues, blocked cues, and normal-mode protected cues.
-- Kept external sources, new evidence files, normal-mode records, business/source linkage, and claim promotions at 0.
+- Added verifier and report.
+
+### Batch 4L-Local-4: Visual Review Gate Report
+
+Completed output:
+
+- Added `docs/reports/phase-4l-local-4-visual-review-gate-report.md`.
+- Added `scripts/verify-phase-4l-local-4-visual-review-gate.mjs`.
+- Recorded that the repo-local pipeline improved endpoint recognizability enough to justify a later Mapillary/KartaView source-use gate proposal, but not direct external evidence intake.
+
+## Preserved Boundaries
+
+- 4L-Local did not open Mapillary/KartaView, 4L-External, 4M, 4P, external source access, downloads, cache, ingestion, conversion, new evidence intake, normal-mode exposure, business/source linkage, or claim promotion.
+- 4L-Local did not add new evidence files, link businesses, tenants, signs, logos, POIs, or active status, or expose anything in normal mode.
+- 4L-Local did not add dependencies, credentials, paid APIs, package tooling, renderer replacement, public interfaces, architecture changes, production assets, production claims, or public claims.
+
+## Verification Completed
+
+- `node scripts/verify-phase-4l-local-1-evidence-cue-eligibility.mjs`
+- `node scripts/verify-phase-4l-local-2-qa-cue-enrichment.mjs`
+- `node scripts/verify-phase-4l-local-3-runtime-evidence-overlay.mjs`
+- `node scripts/verify-phase-4l-local-4-visual-review-gate.mjs`
+- Relevant 4K / 4J / 4O / 4I verifier chain
+- `npm run build`
+- `git diff --check`
+- Final `git status --short`
+
+## Unresolved Decisions For Batu
+
+- Whether the 4L-Local QA scene improvement is visually useful enough.
+- Whether to open a later Mapillary/KartaView source-use gate.
+- Whether to instead supply more Batu-owned mid-corridor evidence before external source planning.
+- Whether any future source access, download/cache/ingestion/conversion, display/render use, business/source linkage, normal-mode exposure, production/public use, or claim promotion may open.

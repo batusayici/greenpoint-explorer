@@ -119,11 +119,22 @@ function verifyBrief(brief, failures) {
     "Pre-authorized queue: none.",
     "Hard Batu gate: stop.",
   ];
+  const finalLocalSnippets = [
+    "Current Execution Brief - Phase 4L-Local Complete At Review Gate",
+    "4J-3 is complete and verified.",
+    "4K-3 is complete and verified.",
+    "4L-Prep is complete and verified.",
+    "4L-Local-4 is complete and verified.",
+    "Current executable batch: none.",
+    "Pre-authorized queue: none.",
+    "Hard Batu gate: stop.",
+  ];
 
   const originalGateValid = originalGateSnippets.every((snippet) => brief.includes(snippet));
   const laterPhaseValid = laterPhaseSnippets.every((snippet) => brief.includes(snippet));
   const finalPrepValid = finalPrepSnippets.every((snippet) => brief.includes(snippet));
-  if (!originalGateValid && !laterPhaseValid && !finalPrepValid) {
+  const finalLocalValid = finalLocalSnippets.every((snippet) => brief.includes(snippet));
+  if (!originalGateValid && !laterPhaseValid && !finalPrepValid && !finalLocalValid) {
     failures.push("Current brief must either preserve the 4J-3 gate or record later-phase completion without 4J promotion");
   }
 }
