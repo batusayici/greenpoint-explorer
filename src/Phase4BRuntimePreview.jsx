@@ -35,6 +35,383 @@ const QA_VISUAL_POC_VISIBLE_ROLES = new Set([
   "syntheticQAGrounding",
 ]);
 
+const endpointHeroFacadeOverrides = {
+  franklin: {
+    targetCueRecordId: "p4e1-franklin-red-brick-cornice-corner",
+    status: "manual_measured_trace_from_repo_local_evidence",
+    massing: {
+      widthMultiplier: 1.12,
+      heightMultiplier: 1.06,
+      depthUnits: 0.66,
+      baseHeightRatio: 0.31,
+      frontReliefDepthUnits: 0.26,
+      bodyOpacity: 0.5,
+      cornerPierWidthRatio: 0.035,
+      rooflineLiftUnits: 0.24,
+      roofInsetDepthUnits: 0.54,
+      roofInsetWidthRatio: 0.72,
+    },
+    frontFacade: {
+      facadeWidthRatios: [0.1, 0.17, 0.2, 0.21, 0.18, 0.14],
+      storefrontBayCount: 6,
+      upperFloorCount: 3,
+      cornerEdge: "right",
+      signBandHeightRatio: 0.31,
+      canopyHeightRatio: 0.235,
+      storefrontGlassHeightRatio: 0.2,
+      reliefPlaneDepthUnits: 0.06,
+    },
+    sideReturn: {
+      edge: "right",
+      depthUnits: 0.92,
+      visibleWidthRatio: 0.18,
+      panelRhythm: [0.2, 0.24, 0.22, 0.2, 0.14],
+      upperWindowColumns: 4,
+      upperWindowRows: 3,
+      storefrontReturnBays: 3,
+      hasProjectingBay: true,
+      hasFireEscape: true,
+      acUnitSlots: [0, 2],
+      bayProjectionDepthUnits: 0.19,
+      evidenceRefs: [
+        "franklin-southwest-wide.jpeg side wall / bay projection",
+        "franklin-southwest1.jpeg side-return storefront and pole view",
+      ],
+    },
+    storefrontBays: [
+      { id: "neighbor-black-left", widthRatio: 0.1, role: "neighbor-dark-entry", glassBeats: 1, door: "left", signBand: "black-thin", canopy: "black-shallow", lowerPanel: "dark", confidence: "medium" },
+      { id: "left-grocery-window", widthRatio: 0.17, role: "left-grocery-glass", glassBeats: 2, door: null, signBand: "tan-with-small-green", canopy: "black-continuous", lowerPanel: "chalk-black", confidence: "medium-high" },
+      { id: "main-entry", widthRatio: 0.2, role: "main-center-entry", glassBeats: 2, door: "center", signBand: "tan-green-primary", canopy: "black-continuous", lowerPanel: "sticker-black", confidence: "medium-high" },
+      { id: "corner-large-window", widthRatio: 0.21, role: "corner-front-glass", glassBeats: 2, door: null, signBand: "tan-green-primary", canopy: "black-continuous", lowerPanel: "chalk-black", confidence: "medium-high" },
+      { id: "right-door-wrap", widthRatio: 0.18, role: "corner-wrap-door", glassBeats: 2, door: "right", signBand: "tan-secondary", canopy: "black-continuous", lowerPanel: "dark-glass", confidence: "medium" },
+      { id: "side-sign-return", widthRatio: 0.14, role: "visible-side-return", glassBeats: 1, door: null, signBand: "tan-side", canopy: "black-return", lowerPanel: "red-brick", confidence: "medium" },
+    ],
+    upperWindows: {
+      bayRatios: [0.1, 0.15, 0.17, 0.18, 0.19, 0.21],
+      rows: 3,
+      sillColor: 0x7b6558,
+      frameColor: 0x2d3330,
+      glassColor: 0xbfc9c1,
+      archTop: true,
+      acUnitBays: [1, 3, 5],
+      lintelPanelRows: 2,
+    },
+    cornice: {
+      parapetBands: [
+        { heightRatio: 1.01, thicknessUnits: 0.035, projectionUnits: 0.1, color: 0x6e6153 },
+        { heightRatio: 1.06, thicknessUnits: 0.045, projectionUnits: 0.16, color: 0x9b8067 },
+        { heightRatio: 1.11, thicknessUnits: 0.038, projectionUnits: 0.2, color: 0xd1bb8c },
+      ],
+      dentilCount: 14,
+      cornerCap: true,
+    },
+    canopies: [
+      { bayStart: 1, bayEnd: 5, depthUnits: 0.28, color: 0x0b0d0d, confidence: "medium-high" },
+      { bayStart: 5, bayEnd: 6, depthUnits: 0.22, color: 0x080b0b, confidence: "medium" },
+    ],
+    materialZones: {
+      bodyBrick: 0x8f4b43,
+      brickShadow: 0x5d342f,
+      mortarLine: 0xbf8d77,
+      storefrontBase: 0x111514,
+      tanSign: 0xba8c5e,
+      greenSign: 0x52b864,
+      blackCanopy: 0x080b0b,
+      glass: 0x9fbfb2,
+      trim: 0x2b312f,
+      stoneCornice: 0xcfba87,
+      roof: 0x4b4640,
+      roofRim: 0xd7c69a,
+      sideBay: 0x735b44,
+      fireEscape: 0x121515,
+      tactilePaving: 0xb5554e,
+      objectGreen: 0x6f8c56,
+      objectSticker: 0xd9d1b9,
+      sidewalk: 0x99a59e,
+      curb: 0xe4ddcb,
+      road: 0x1f2927,
+    },
+    streetGrounding: {
+      sidewalkShape: "corner_slab_with_return",
+      slabWidthMultiplier: 1.24,
+      frontDepthUnits: 0.52,
+      sideDepthUnits: 0.72,
+      curbReturnRadiusUnits: 0.24,
+      curbEdge: true,
+      crosswalk: { enabled: true, stripeCount: 7, alignment: "greenpoint_ave_corner_return" },
+      evidenceBackedPoles: ["traffic_signal_post", "street_sign_post"],
+      genericContext: ["bike_cluster", "a_frame_board", "newspaper_box", "sidewalk_slab_seams", "tactile_paving"],
+    },
+    evidenceRefs: [
+      "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+      "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+      "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest1.jpeg",
+      "supplied ChatGPT Image Jun 9, 2026, 12_17_05 PM.png benchmark fidelity target only",
+    ],
+    heroFidelityLayer: {
+      status: "qa_only_manual_draft_low_poly_fidelity_layer",
+      purpose: "reduce translucent box read in benchmark review while preserving R4 measured trace",
+      renderMode: "visual_poc_opaque_detail_overlay",
+      evidenceRefs: [
+        "franklin-southwest-wide.jpeg",
+        "franklin-southwest-zoom.jpeg",
+        "franklin-southwest1.jpeg",
+      ],
+      benchmarkUse: "lookdev_density_lighting_material_readability_only",
+    },
+  },
+  manhattan: {
+    targetCueRecordId: "p4e1-manhattan-warm-brick-corner-wrap",
+    status: "lighter_manual_measured_trace_from_repo_local_evidence",
+    massing: {
+      widthMultiplier: 1.02,
+      heightMultiplier: 0.98,
+      depthUnits: 0.54,
+      baseHeightRatio: 0.29,
+      frontReliefDepthUnits: 0.2,
+      bodyOpacity: 0.76,
+      cornerPierWidthRatio: 0.03,
+      rooflineLiftUnits: 0.14,
+    },
+    frontFacade: {
+      facadeWidthRatios: [0.16, 0.2, 0.2, 0.21, 0.14, 0.09],
+      storefrontBayCount: 6,
+      upperFloorCount: 3,
+      cornerEdge: "left",
+      signBandHeightRatio: 0.3,
+      canopyHeightRatio: 0.23,
+      storefrontGlassHeightRatio: 0.22,
+      reliefPlaneDepthUnits: 0.055,
+    },
+    sideReturn: {
+      edge: "left",
+      depthUnits: 0.58,
+      visibleWidthRatio: 0.12,
+      panelRhythm: [0.42, 0.34, 0.24],
+      upperWindowColumns: 2,
+      upperWindowRows: 3,
+      storefrontReturnBays: 1,
+      hasProjectingBay: false,
+    },
+    storefrontBays: [
+      { id: "subway-edge", widthRatio: 0.16, role: "transit-edge", glassBeats: 1, door: null, signBand: "green-small", canopy: "green-low", lowerPanel: "transit-green", confidence: "medium" },
+      { id: "poster-left", widthRatio: 0.2, role: "poster-food-panel", glassBeats: 1, door: null, signBand: "black-green", canopy: "black-continuous", lowerPanel: "poster-red", confidence: "medium" },
+      { id: "deli-entry", widthRatio: 0.2, role: "main-deli-entry", glassBeats: 2, door: "left", signBand: "black-green-primary", canopy: "black-continuous", lowerPanel: "dark-glass", confidence: "medium-high" },
+      { id: "wide-deli-window", widthRatio: 0.21, role: "wide-deli-glass", glassBeats: 2, door: null, signBand: "black-white-primary", canopy: "black-continuous", lowerPanel: "food-window", confidence: "medium-high" },
+      { id: "right-dark-door", widthRatio: 0.14, role: "right-dark-entry", glassBeats: 1, door: "right", signBand: "black-thin", canopy: "green-side", lowerPanel: "graffiti-dark", confidence: "medium" },
+      { id: "side-sliver", widthRatio: 0.09, role: "supporting-side-sliver", glassBeats: 1, door: null, signBand: "black-side", canopy: "green-side", lowerPanel: "dark", confidence: "low-medium" },
+    ],
+    upperWindows: {
+      bayRatios: [0.18, 0.18, 0.2, 0.2, 0.14, 0.1],
+      rows: 3,
+      sillColor: 0x342d2c,
+      frameColor: 0x222927,
+      glassColor: 0xb8c7c0,
+      archTop: false,
+      acUnitBays: [0, 2],
+    },
+    cornice: {
+      parapetBands: [
+        { heightRatio: 1.01, thicknessUnits: 0.028, projectionUnits: 0.08, color: 0x312c2a },
+        { heightRatio: 1.06, thicknessUnits: 0.034, projectionUnits: 0.1, color: 0x473b36 },
+      ],
+      dentilCount: 8,
+      roofPosts: 5,
+    },
+    canopies: [
+      { bayStart: 1, bayEnd: 4, depthUnits: 0.25, color: 0x0c1010, confidence: "medium-high" },
+      { bayStart: 4, bayEnd: 6, depthUnits: 0.2, color: 0x163c34, confidence: "medium" },
+    ],
+    materialZones: {
+      bodyBrick: 0x8a443a,
+      brickShadow: 0x5f342f,
+      mortarLine: 0xa87362,
+      storefrontBase: 0x101514,
+      tanSign: 0xd8c777,
+      greenSign: 0x67b86e,
+      blackCanopy: 0x0c1010,
+      glass: 0x9dbfb2,
+      trim: 0x252a28,
+      stoneCornice: 0x4b3f39,
+      sidewalk: 0x9aa49e,
+      curb: 0xe5ddcb,
+      road: 0x202927,
+    },
+    streetGrounding: {
+      sidewalkShape: "transit_corner_slab",
+      slabWidthMultiplier: 1.18,
+      frontDepthUnits: 0.5,
+      sideDepthUnits: 0.58,
+      curbReturnRadiusUnits: 0.2,
+      curbEdge: true,
+      crosswalk: { enabled: true, stripeCount: 5, alignment: "manhattan_ave_subway_corner" },
+      evidenceBackedPoles: ["traffic_signal_post", "subway_railing_cue", "street_sign_post"],
+      genericContext: ["sticker_post"],
+    },
+    evidenceRefs: [
+      "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-wide.jpg",
+      "docs/mvp-reference-images/greenpoint manhattan corner/northwest-grillpoint-deli-facade.jpg",
+    ],
+  },
+};
+
+const PLACE_RECOGNITION_PROFILES = {
+  "p4e1-manhattan-warm-brick-corner-wrap": {
+    referenceRole: "primary",
+    widthBoost: 1.26,
+    heightBoost: 1.18,
+    bayRatios: [0.18, 0.18, 0.2, 0.2, 0.24],
+    storefrontRatios: [0.2, 0.16, 0.22, 0.18, 0.24],
+    doorIndices: [2],
+    windowLayout: "tall-regular-corner",
+    signStyle: "green-black-deli-wrap",
+    awningStyle: "black-green-corner",
+    roofStyle: "antenna-parapet",
+    groundCueStyle: "subway-signal-crosswalk",
+    brickTexture: "painted-red",
+    accentDetails: ["sticker-post", "mta-entry", "traffic-signal"],
+    evidenceObservation: "Grillpoint/Deli corner evidence: tall warm red corner mass, dark storefront base, green/black sign band, glass deli frontage, sticker post, subway stair/rail and signal/crosswalk grounding.",
+    frontageSegments: [
+      { width: 0.16, role: "transit-edge", glassBeats: 1, backplateColor: 0x121716, signColor: 0x0b1211, signAccentColor: 0x4aa968, canopyColor: 0x0d1111, frameColor: 0x27453c, glassColor: 0x8eb4a7, lowerColor: 0x153c34 },
+      { width: 0.18, role: "poster-glass", glassBeats: 1, backplateColor: 0x171818, signColor: 0x111616, signAccentColor: 0x7ec26d, canopyColor: 0x101414, frameColor: 0x723b33, glassColor: 0x9ec3b7, lowerColor: 0xc13d33 },
+      { width: 0.22, role: "main-door", glassBeats: 2, door: "center", backplateColor: 0x101514, signColor: 0x0e1515, signAccentColor: 0x6ab56d, canopyColor: 0x0c1010, frameColor: 0xe6dfc7, glassColor: 0xa5c8ba, lowerColor: 0xf0d36d },
+      { width: 0.2, role: "food-panel-glass", glassBeats: 2, backplateColor: 0x111514, signColor: 0x101414, signAccentColor: 0xf0ede2, canopyColor: 0x101414, frameColor: 0xe6dfc7, glassColor: 0x9dbdac, lowerColor: 0xb74338 },
+      { width: 0.24, role: "corner-wrap-dark", glassBeats: 2, door: "right", backplateColor: 0x0f1313, signColor: 0x0e1515, signAccentColor: 0x7ec26d, canopyColor: 0x101414, frameColor: 0xe6dfc7, glassColor: 0x9ebfac, lowerColor: 0x18433a },
+    ],
+    scoreBias: {
+      massing: 4,
+      storefrontOrder: 3,
+      facadeRhythm: 4,
+      cornerWrap: 4,
+      material: 4,
+      grounding: 4,
+      readability: 3,
+    },
+  },
+  "p4e1-manhattan-bright-panel-corner": {
+    referenceRole: "supporting",
+    widthBoost: 1.18,
+    heightBoost: 0.82,
+    bayRatios: [0.24, 0.26, 0.26, 0.24],
+    storefrontRatios: [0.22, 0.24, 0.28, 0.26],
+    doorIndices: [2],
+    windowLayout: "long-horizontal-slits",
+    signStyle: "large-panel-letter-band",
+    awningStyle: "low-gray-canopy",
+    roofStyle: "flat-modern-rail",
+    groundCueStyle: "wide-corner-crosswalk",
+    brickTexture: "color-panel-mural",
+    accentDetails: ["mural-blocks", "flag-poles", "street-sign"],
+  },
+  "p4e1-manhattan-pale-stone-window-rhythm": {
+    referenceRole: "supporting",
+    widthBoost: 0.96,
+    heightBoost: 0.92,
+    bayRatios: [0.22, 0.2, 0.2, 0.2, 0.18],
+    storefrontRatios: [0.24, 0.18, 0.2, 0.2, 0.18],
+    doorIndices: [1],
+    windowLayout: "light-stone-regular",
+    signStyle: "thin-pale-bank-band",
+    awningStyle: "minimal-canopy",
+    roofStyle: "low-parapet",
+    groundCueStyle: "plain-sidewalk",
+    brickTexture: "pale-panel",
+  },
+  "p4e1-franklin-weathered-brick-glass-base": {
+    referenceRole: "supporting",
+    widthBoost: 1.08,
+    heightBoost: 0.82,
+    bayRatios: [0.34, 0.28, 0.38],
+    storefrontRatios: [0.36, 0.28, 0.36],
+    doorIndices: [2],
+    windowLayout: "low-industrial-wide-glass",
+    signStyle: "wood-window-frame",
+    awningStyle: "table-umbrella-sidewalk",
+    roofStyle: "low-brick-parapet",
+    groundCueStyle: "cafe-sidewalk",
+    brickTexture: "weathered-side-brick",
+    accentDetails: ["sidewalk-tables", "wood-panels", "corner-pole"],
+    evidenceObservation: "Franklin supporting weathered brick/glass base evidence: lower, wider storefront rhythm with wood/glass base and sidewalk occupation.",
+    frontageSegments: [
+      { width: 0.34, role: "wide-wood-glass", glassBeats: 2, backplateColor: 0x6f5b44, signColor: 0x8b6847, canopyColor: 0x2d2a20, frameColor: 0xa46f41, glassColor: 0x9db9aa, lowerColor: 0x6b513a },
+      { width: 0.28, role: "recessed-entry", glassBeats: 1, door: "center", backplateColor: 0x5d4b39, signColor: 0x7f5b3c, canopyColor: 0x25221d, frameColor: 0xa66f42, glassColor: 0x8fac9e, lowerColor: 0x564231 },
+      { width: 0.38, role: "side-glass", glassBeats: 2, backplateColor: 0x6f5b44, signColor: 0x8d6744, canopyColor: 0x2d2a20, frameColor: 0xa46f41, glassColor: 0x9db9aa, lowerColor: 0x6b513a },
+    ],
+  },
+  "p4e1-franklin-dark-brick-awned-base": {
+    referenceRole: "primary",
+    widthBoost: 1.24,
+    heightBoost: 1.1,
+    bayRatios: [0.17, 0.19, 0.2, 0.21, 0.23],
+    storefrontRatios: [0.16, 0.2, 0.22, 0.24, 0.18],
+    doorIndices: [2],
+    windowLayout: "purple-brick-black-lintels",
+    signStyle: "black-corner-band",
+    awningStyle: "black-scalloped-awning",
+    roofStyle: "heavy-black-cornice",
+    groundCueStyle: "franklin-traffic-corner",
+    brickTexture: "purple-red-brick",
+    accentDetails: ["fire-escape", "traffic-signal", "wood-window-frames"],
+    evidenceObservation: "Franklin southeast evidence: dark red/purple brick corner row, heavy black cornice, black sign/canopy band, wood-framed glass storefronts, fire-escape/side-return and traffic/crosswalk grounding.",
+    frontageSegments: [
+      { width: 0.16, role: "dark-entry", glassBeats: 1, backplateColor: 0x151312, signColor: 0x080a0a, canopyColor: 0x070808, frameColor: 0x8a5a35, glassColor: 0x8fb4a8, lowerColor: 0x231f1d },
+      { width: 0.2, role: "wood-glass", glassBeats: 2, backplateColor: 0x171514, signColor: 0x090b0b, canopyColor: 0x080909, frameColor: 0xa46a3a, glassColor: 0x9dbdae, lowerColor: 0x302621 },
+      { width: 0.22, role: "center-door", glassBeats: 2, door: "center", backplateColor: 0x141313, signColor: 0x080909, canopyColor: 0x060707, frameColor: 0xa46a3a, glassColor: 0xa0c0b1, lowerColor: 0x2b2421 },
+      { width: 0.24, role: "large-corner-glass", glassBeats: 2, backplateColor: 0x171514, signColor: 0x090b0b, canopyColor: 0x080909, frameColor: 0xaa7142, glassColor: 0xa0bfb0, lowerColor: 0x332820 },
+      { width: 0.18, role: "side-return", glassBeats: 1, door: "right", backplateColor: 0x121111, signColor: 0x080909, canopyColor: 0x060707, frameColor: 0xa46a3a, glassColor: 0x8fb4a8, lowerColor: 0x2b2421 },
+    ],
+    scoreBias: {
+      massing: 4,
+      storefrontOrder: 3,
+      facadeRhythm: 4,
+      cornerWrap: 4,
+      material: 4,
+      grounding: 3,
+      readability: 3,
+    },
+  },
+  "p4e1-franklin-red-brick-cornice-corner": {
+    referenceRole: "primary",
+    widthBoost: 1.42,
+    heightBoost: 1.24,
+    bayRatios: [0.14, 0.19, 0.2, 0.23, 0.24],
+    storefrontRatios: [0.14, 0.22, 0.22, 0.24, 0.18],
+    doorIndices: [2],
+    windowLayout: "premier-brick-corner",
+    signStyle: "wood-green-grocery-wrap",
+    awningStyle: "black-grocery-awning",
+    roofStyle: "ornate-stone-cornice",
+    groundCueStyle: "franklin-crosswalk-storefront",
+    brickTexture: "ornate-red-brick",
+    accentDetails: ["projecting-bay", "bike-signpost", "window-ac-units"],
+    evidenceObservation: "Franklin southwest evidence: Premier Organic-style red brick corner mass, ornate stone cornice/parapet, tan wood sign band with green center, black awning, glass grocery frontage, corner-wrap/side-return, sign pole and curb/crosswalk grounding.",
+    frontageSegments: [
+      { width: 0.14, role: "narrow-neighbor-entry", glassBeats: 1, backplateColor: 0x7f3f32, signColor: 0xa47a4f, signAccentColor: 0x26342c, canopyColor: 0x0b0d0d, frameColor: 0x9c653b, glassColor: 0x83a89e, lowerColor: 0x713728 },
+      { width: 0.22, role: "left-grocery-glass", glassBeats: 2, backplateColor: 0xb68b61, signColor: 0xb99062, signAccentColor: 0x5dbf66, canopyColor: 0x0a0d0d, frameColor: 0xa66e3f, glassColor: 0xa3c2b3, lowerColor: 0x5abf62 },
+      { width: 0.22, role: "main-grocery-door", glassBeats: 2, door: "center", backplateColor: 0xb68b61, signColor: 0xbc9163, signAccentColor: 0x57b86a, canopyColor: 0x080b0b, frameColor: 0xaa7142, glassColor: 0xa7c7b8, lowerColor: 0x4fa65b },
+      { width: 0.24, role: "corner-wrap-glass", glassBeats: 2, door: "right", backplateColor: 0xb1865b, signColor: 0xb99062, signAccentColor: 0x5ec66c, canopyColor: 0x090c0c, frameColor: 0xa66e3f, glassColor: 0xa3c2b3, lowerColor: 0x5abf62 },
+      { width: 0.18, role: "side-return-glass", glassBeats: 1, backplateColor: 0x8e4a3a, signColor: 0xa9794f, signAccentColor: 0x56b962, canopyColor: 0x080b0b, frameColor: 0x9a633a, glassColor: 0x8fb4a8, lowerColor: 0x3c6d43 },
+    ],
+    sideReturnOverride: {
+      edge: "right",
+      signColor: 0xb99062,
+      canopyColor: 0x080b0b,
+      glassColor: 0x91b4a8,
+      frameColor: 0xa66e3f,
+      brickColor: 0x8e4a3a,
+    },
+    scoreBias: {
+      massing: 4,
+      storefrontOrder: 4,
+      facadeRhythm: 4,
+      cornerWrap: 4,
+      material: 4,
+      grounding: 4,
+      readability: 3,
+    },
+  },
+};
+
 const HOME_CAMERA = {
   azimuth: -0.68,
   polar: 0.88,
@@ -83,26 +460,47 @@ const CAMERA_PRESETS = {
   manhattanFacadeReview: {
     azimuth: -1.08,
     polar: 0.98,
-    distance: 9.8,
-    zoom: 2.72,
+    distance: 7.8,
+    zoom: 3.7,
     target: new THREE.Vector3(3.9, 0.78, 0.42),
   },
   franklinFacadeReview: {
     azimuth: -1.08,
     polar: 0.98,
-    distance: 9.2,
-    zoom: 3.0,
-    target: new THREE.Vector3(-6.55, 0.78, 0.44),
+    distance: 7.4,
+    zoom: 4.0,
+    target: new THREE.Vector3(-6.55, 0.82, 0.44),
+  },
+  franklinBenchmarkReview: {
+    azimuth: -0.78,
+    polar: 0.82,
+    distance: 7.2,
+    zoom: 4.1,
+    target: new THREE.Vector3(-6.46, 0.92, 0.36),
+  },
+  franklinSideReturnReview: {
+    azimuth: -1.32,
+    polar: 0.94,
+    distance: 7.1,
+    zoom: 4.05,
+    target: new THREE.Vector3(-6.34, 0.82, 0.18),
+  },
+  franklinStreetLevelReview: {
+    azimuth: -1.02,
+    polar: 1.12,
+    distance: 6.7,
+    zoom: 4.15,
+    target: new THREE.Vector3(-6.38, 0.48, 0.34),
   },
 };
 
 const CAMERA_LIMITS = {
   minPolar: 0.32,
   maxPolar: 1.28,
-  minDistance: 9,
+  minDistance: 7,
   maxDistance: 24,
   minZoom: 0.68,
-  maxZoom: 3.1,
+  maxZoom: 4.2,
   panLimit: 9,
 };
 
@@ -379,11 +777,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4M-POC / endpoint visual fidelity patch</p>
+          <p className="phase4b-kicker">Batch 4M-R5 / Franklin hero corner fidelity layer</p>
           <h1>Greenpoint Ave endpoint visual POC</h1>
         </div>
         <p>
-          QA-only endpoint fidelity pass using the existing corridor scene, 4J frontage candidates, 4K recognizable cues, and 4L repo-local evidence. Normal mode stays protected; visual POC output is review-only and not business identity, exact public frontage, signage, entrance, active status, or production claim.
+          QA-only endpoint fidelity pass using the existing corridor scene, measured hero-corner overrides, repo-local Franklin evidence, and a benchmark image for fidelity only. Normal mode stays protected; visual POC output is review-only and not business identity, exact public frontage, signage, entrance, active status, or production claim.
         </p>
       </section>
 
@@ -496,6 +894,15 @@ export default function Phase4BRuntimePreview() {
           </button>
           <button type="button" onClick={() => runCameraCommand("franklinFacadeReview")} aria-label="Camera preset Franklin facade review">
             Franklin
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinBenchmarkReview")} aria-label="Camera preset Franklin benchmark review">
+            F bench
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinSideReturnReview")} aria-label="Camera preset Franklin side-return review">
+            F side
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinStreetLevelReview")} aria-label="Camera preset Franklin street-level review">
+            F street
           </button>
           <button type="button" onClick={() => runCameraCommand("orbit-left")} aria-label="Rotate view left">
             Rotate -
@@ -2345,8 +2752,10 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
 function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
   const plane = cue.geometryDerived.streetFacingPlane;
   const composition = getEvidenceComposition(facadeRecord);
+  const recognitionProfile = getPlaceRecognitionProfile(facadeRecord);
+  const heroOverride = getEndpointHeroFacadeOverride(facadeRecord);
   const sourceLength = Math.max(plane.xMax - plane.xMin, 0.2);
-  const length = Math.max(sourceLength * composition.widthScale, 0.16);
+  const length = Math.max(sourceLength * composition.widthScale * recognitionProfile.widthBoost * (heroOverride?.massing.widthMultiplier ?? 1), 0.16);
   const sourceCenterX = plane.xMin + sourceLength / 2;
   const centerX = sourceCenterX + composition.lateralOffsetUnits;
   const renderPlane = {
@@ -2354,10 +2763,10 @@ function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
     xMin: centerX - length / 2,
     xMax: centerX + length / 2,
   };
-  const height = Math.max(object.height, 0.58);
+  const height = Math.max(object.height * recognitionProfile.heightBoost * (heroOverride?.massing.heightMultiplier ?? 1), 0.58);
   const sideOffset = object.corridorSide === "left" ? 0.12 : -0.12;
   const z = plane.z + sideOffset * (0.8 + composition.recordSeparationIndex * composition.slotGapUnits * 0.16);
-  const depth = composition.facadeThicknessUnits;
+  const depth = heroOverride?.frontFacade.reliefPlaneDepthUnits ?? composition.facadeThicknessUnits;
   const palette = getEvidenceFacadePalette(facadeRecord.paletteFamily);
   const group = new THREE.Group();
 
@@ -2368,6 +2777,7 @@ function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
     plane: renderPlane,
     z,
     sideOffset,
+    recognitionProfile,
   });
   addEvidenceLayeredFacadeShell(group, {
     composition,
@@ -2379,23 +2789,38 @@ function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
     z,
     sideOffset,
     depth,
+    recognitionProfile,
+    heroOverride,
   });
 
   for (const cueRecord of facadeRecord.cues) {
     if (cueRecord.cueType === "facade-rhythm") {
-      addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth });
+      addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth, recognitionProfile });
     } else if (cueRecord.cueType === "sign-band-zone") {
-      addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth });
+      addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth, recognitionProfile });
     } else if (cueRecord.cueType === "awning-canopy") {
-      addEvidenceAwningCanopy(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset });
+      addEvidenceAwningCanopy(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, recognitionProfile });
     } else if (cueRecord.cueType === "window-glass-rhythm") {
-      addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth });
+      addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, length, plane: renderPlane, height, z, sideOffset, depth, recognitionProfile });
     } else if (cueRecord.cueType === "corner-emphasis") {
-      addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane: renderPlane, height, z, sideOffset });
+      addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane: renderPlane, height, z, sideOffset, recognitionProfile });
     } else if (cueRecord.cueType === "street-transit-detail-cue") {
-      addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane: renderPlane, z, sideOffset });
+      addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane: renderPlane, z, sideOffset, recognitionProfile });
     }
   }
+
+  addPlaceRecognitionLandmarks(group, {
+    recognitionProfile,
+    composition,
+    palette,
+    length,
+    plane: renderPlane,
+    height,
+    z,
+    sideOffset,
+    depth,
+    heroOverride,
+  });
 
   group.userData.semanticId = object.id;
   group.userData.stateRole = "evidenceFacadeCue";
@@ -3267,10 +3692,86 @@ function getEvidenceComposition(facadeRecord) {
   };
 }
 
-function addEvidenceLayeredFacadeShell(group, { composition, palette, length, centerX, plane, height, z, sideOffset, depth }) {
-  const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
+function getPlaceRecognitionProfile(facadeRecord) {
+  return PLACE_RECOGNITION_PROFILES[facadeRecord.cueRecordId] ?? {
+    referenceRole: "supporting",
+    widthBoost: 1,
+    heightBoost: 1,
+    bayRatios: [],
+    storefrontRatios: [],
+    doorIndices: [],
+    windowLayout: "regular",
+    signStyle: "generic",
+    awningStyle: "generic",
+    roofStyle: "simple",
+    groundCueStyle: "plain-sidewalk",
+    brickTexture: "plain",
+    accentDetails: [],
+  };
+}
+
+function getEndpointHeroFacadeOverride(facadeRecord) {
+  if (facadeRecord.cueRecordId === endpointHeroFacadeOverrides.franklin.targetCueRecordId) {
+    return endpointHeroFacadeOverrides.franklin;
+  }
+  if (facadeRecord.cueRecordId === endpointHeroFacadeOverrides.manhattan.targetCueRecordId) {
+    return endpointHeroFacadeOverrides.manhattan;
+  }
+  return null;
+}
+
+function getRatioCenters(plane, length, ratios) {
+  const normalized = Array.isArray(ratios) && ratios.length ? normalizeCadence(ratios) : [];
+  if (!normalized.length) return [];
+  let cursor = plane.xMin;
+  return normalized.map((ratio) => {
+    const segmentWidth = length * ratio;
+    const center = cursor + segmentWidth / 2;
+    cursor += segmentWidth;
+    return { center, width: segmentWidth };
+  });
+}
+
+function addProfileBrickTexture(group, { recognitionProfile, palette, length, plane, height, z, sideOffset, depth }) {
+  const texture = recognitionProfile.brickTexture;
+  if (texture === "color-panel-mural") {
+    const colors = [0xd3c54e, 0x54ae7f, 0x4b9fc0, 0xc34c65, 0xdc9841, 0x8abb4b];
+    const rows = 3;
+    const cols = 6;
+    const panelHeight = height / rows;
+    const panelWidth = length / cols;
+    for (let row = 0; row < rows; row += 1) {
+      for (let col = 0; col < cols; col += 1) {
+        addEvidenceFacadeBox(group, {
+          color: colors[(row * 2 + col) % colors.length],
+          opacity: 0.94,
+          position: [plane.xMin + panelWidth * col + panelWidth / 2, height * 0.34 + panelHeight * row * 0.64, z + sideOffset * (depth + 0.08)],
+          size: [panelWidth * 0.96, panelHeight * 0.58, depth * 0.95],
+        });
+      }
+    }
+    return;
+  }
+
+  if (!["painted-red", "purple-red-brick", "ornate-red-brick", "weathered-side-brick"].includes(texture)) return;
+  const rows = texture === "weathered-side-brick" ? 7 : 9;
+  const lineColor = texture === "purple-red-brick" ? 0x7b5b54 : 0xb78b73;
+  for (let row = 1; row < rows; row += 1) {
+    const y = height * (0.18 + row * 0.075);
+    addEvidenceFacadeBox(group, {
+      color: lineColor,
+      opacity: texture === "weathered-side-brick" ? 0.34 : 0.22,
+      position: [plane.xMin + length / 2, y, z + sideOffset * (depth + 0.032)],
+      size: [length * 0.88, 0.006, depth * 0.34],
+      opaque: false,
+    });
+  }
+}
+
+function addEvidenceLayeredFacadeShell(group, { composition, palette, length, centerX, plane, height, z, sideOffset, depth, recognitionProfile, heroOverride }) {
+  const baseHeight = clamp(height * (heroOverride?.massing.baseHeightRatio ?? composition.basePlaneRatio), 0.18, height * 0.58);
   const upperHeight = Math.max(height - baseHeight, 0.18);
-  const footprintDepth = composition.footprintDepthUnits;
+  const footprintDepth = heroOverride?.massing.depthUnits ?? composition.footprintDepthUnits;
   const wallThickness = composition.facadeThicknessUnits;
   const bodyZ = z - sideOffset * (footprintDepth / 2);
   const baseZ = z - sideOffset * composition.storefrontSetbackUnits;
@@ -3285,9 +3786,10 @@ function addEvidenceLayeredFacadeShell(group, { composition, palette, length, ce
 
   addEvidenceFacadeBox(group, {
     color: palette.body,
-    opacity: composition.renderLegibility.primaryMassOpacity,
+    opacity: heroOverride?.massing.bodyOpacity ?? composition.renderLegibility.primaryMassOpacity,
     position: [centerX, height / 2, bodyZ],
     size: [length, height, footprintDepth],
+    opaque: !heroOverride,
   });
 
   addEvidenceFacadeBox(group, {
@@ -3314,6 +3816,72 @@ function addEvidenceLayeredFacadeShell(group, { composition, palette, length, ce
     position: [centerX, height + composition.parapetDepthUnits * 0.55, z + sideOffset * composition.corniceProjectionUnits * 0.5],
     size: [length * 1.06, composition.parapetDepthUnits, wallThickness + composition.corniceProjectionUnits],
   });
+  if (recognitionProfile.roofStyle === "heavy-black-cornice" || recognitionProfile.roofStyle === "ornate-stone-cornice") {
+    const tiers = recognitionProfile.roofStyle === "heavy-black-cornice" ? 3 : 4;
+    for (let tier = 0; tier < tiers; tier += 1) {
+      addEvidenceFacadeBox(group, {
+        color: recognitionProfile.roofStyle === "heavy-black-cornice" ? palette.base : palette.cornice,
+        opacity: 1,
+        position: [centerX, height + 0.06 + tier * 0.055, z + sideOffset * (composition.corniceProjectionUnits * (0.6 + tier * 0.18))],
+        size: [length * (1.12 - tier * 0.06), 0.038, wallThickness + composition.corniceProjectionUnits * (1.2 + tier * 0.28)],
+      });
+    }
+  }
+  if (recognitionProfile.roofStyle === "antenna-parapet") {
+    for (let index = 0; index < 4; index += 1) {
+      addEvidenceFacadeCylinder(group, {
+        color: palette.post,
+        opacity: 0.9,
+        position: [plane.xMin + length * (0.2 + index * 0.18), height + 0.18, z - sideOffset * 0.12],
+        radius: 0.01,
+        height: 0.36,
+      });
+    }
+  }
+  if (recognitionProfile.signStyle === "green-black-deli-wrap") {
+    addEvidenceFacadeBox(group, {
+      color: 0x0e1515,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.82, z + sideOffset * (composition.signBandDepthUnits * 1.18)],
+      size: [length * 0.95, baseHeight * 0.18, wallThickness + composition.signBandDepthUnits * 1.4],
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x5aa871,
+      opacity: 1,
+      position: [centerX - length * 0.23, baseHeight * 0.99, z + sideOffset * (composition.signBandDepthUnits * 1.34)],
+      size: [length * 0.22, baseHeight * 0.12, wallThickness + composition.signBandDepthUnits],
+    });
+  }
+  if (recognitionProfile.signStyle === "wood-green-grocery-wrap") {
+    addEvidenceFacadeBox(group, {
+      color: 0xb68b61,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.9, z + sideOffset * (composition.signBandDepthUnits * 1.16)],
+      size: [length * 0.98, baseHeight * 0.17, wallThickness + composition.signBandDepthUnits * 1.3],
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x57b86a,
+      opacity: 1,
+      position: [centerX, baseHeight * 1.02, z + sideOffset * (composition.signBandDepthUnits * 1.34)],
+      size: [length * 0.32, baseHeight * 0.13, wallThickness + composition.signBandDepthUnits],
+    });
+  }
+  if (recognitionProfile.signStyle === "black-corner-band") {
+    addEvidenceFacadeBox(group, {
+      color: 0x111516,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.88, z + sideOffset * (composition.signBandDepthUnits * 1.2)],
+      size: [length * 1.02, baseHeight * 0.2, wallThickness + composition.signBandDepthUnits * 1.5],
+    });
+  }
+  if (recognitionProfile.roofStyle === "flat-modern-rail") {
+    addEvidenceFacadeBox(group, {
+      color: palette.trim,
+      opacity: 0.88,
+      position: [centerX, height + 0.16, z - sideOffset * 0.08],
+      size: [length * 1.02, 0.024, 0.035],
+    });
+  }
 
   if (composition.sideReturn.enabled) {
     const returnDepth = composition.cornerReturnDepthUnits;
@@ -3337,9 +3905,11 @@ function addEvidenceLayeredFacadeShell(group, { composition, palette, length, ce
       size: [0.065, height + 0.12, returnDepth * 0.92],
     });
   }
+
+  addProfileBrickTexture(group, { recognitionProfile, palette, length, plane, height, z, sideOffset, depth });
 }
 
-function addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
+function addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth, recognitionProfile }) {
   const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
   const bayCount = clampInteger(cueRecord.bayCount, 2, 8, 4);
   const baseBeatCount = clampInteger(cueRecord.baseBeatCount, 2, 8, bayCount);
@@ -3350,15 +3920,33 @@ function addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, lengt
   const bayWidth = length / bayCount;
   const baseBeatWidth = length / baseBeatCount;
   const reliefZ = z + sideOffset * (depth + composition.windowReliefDepthUnits * 0.62);
+  const upperSegments = getRatioCenters(plane, length, recognitionProfile.bayRatios);
+  const baseSegments = getRatioCenters(plane, length, recognitionProfile.storefrontRatios);
 
-  for (let bay = 1; bay < bayCount; bay += 1) {
-    const x = plane.xMin + bayWidth * bay;
+  const rhythmBreaks = upperSegments.length
+    ? upperSegments.slice(0, -1).map((segment) => segment.center + segment.width / 2)
+    : Array.from({ length: bayCount - 1 }, (_, index) => plane.xMin + bayWidth * (index + 1));
+  for (const x of rhythmBreaks) {
     addEvidenceFacadeBox(group, {
       color: palette.trim,
       opacity: 0.88,
       position: [x, baseHeight + (height - baseHeight) / 2, reliefZ],
       size: [0.018, Math.max(height - baseHeight - 0.12, 0.16), Math.max(composition.windowReliefDepthUnits * 0.55, 0.035)],
     });
+  }
+
+  if (recognitionProfile.windowLayout?.includes("black-lintels") || recognitionProfile.windowLayout === "premier-brick-corner") {
+    for (const segment of upperSegments.length ? upperSegments : getRatioCenters(plane, length, Array.from({ length: bayCount }, () => 1))) {
+      for (let row = 0; row < upperRows; row += 1) {
+        const y = upperRows === 1 ? upperStart + (upperEnd - upperStart) * 0.55 : upperStart + rowGap * row;
+        addEvidenceFacadeBox(group, {
+          color: palette.trim,
+          opacity: 0.92,
+          position: [segment.center, y + 0.085, reliefZ + sideOffset * 0.012],
+          size: [Math.min(segment.width * 0.5, 0.17), 0.024, Math.max(composition.windowReliefDepthUnits * 0.5, 0.035)],
+        });
+      }
+    }
   }
 
   for (let row = 0; row < upperRows; row += 1) {
@@ -3371,8 +3959,10 @@ function addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, lengt
     });
   }
 
-  for (let beat = 1; beat < baseBeatCount; beat += 1) {
-    const x = plane.xMin + baseBeatWidth * beat;
+  const baseBreaks = baseSegments.length
+    ? baseSegments.slice(0, -1).map((segment) => segment.center + segment.width / 2)
+    : Array.from({ length: baseBeatCount - 1 }, (_, index) => plane.xMin + baseBeatWidth * (index + 1));
+  for (const x of baseBreaks) {
     addEvidenceFacadeBox(group, {
       color: palette.trim,
       opacity: 0.9,
@@ -3380,20 +3970,40 @@ function addEvidenceFacadeRhythm(group, { cueRecord, composition, palette, lengt
       size: [0.024, baseHeight * 0.74, Math.max(composition.signBandDepthUnits * 0.52, 0.05)],
     });
   }
+
+  if (recognitionProfile.accentDetails?.includes("projecting-bay")) {
+    addEvidenceFacadeBox(group, {
+      color: palette.corner,
+      opacity: 0.94,
+      position: [plane.xMax - length * 0.2, height * 0.58, reliefZ + sideOffset * 0.14],
+      size: [length * 0.11, height * 0.42, 0.16],
+    });
+  }
 }
 
-function addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
+function addEvidenceSignBandZone(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth, recognitionProfile }) {
   const y = clamp(height * cueRecord.heightRatio, 0.16, Math.max(height * 0.58, 0.22));
-  const segmentCount = clampInteger(cueRecord.segmentCount, 1, 6, 2);
-  const segmentWidth = length / segmentCount;
+  const segments = getRatioCenters(plane, length, recognitionProfile.storefrontRatios);
+  const segmentCount = segments.length || clampInteger(cueRecord.segmentCount, 1, 6, 2);
+  const defaultWidth = length / segmentCount;
   for (let index = 0; index < segmentCount; index += 1) {
-    const x = plane.xMin + segmentWidth * index + segmentWidth / 2;
+    const segment = segments[index] ?? { center: plane.xMin + defaultWidth * index + defaultWidth / 2, width: defaultWidth };
+    const isBlackWrap = recognitionProfile.signStyle?.includes("black") || recognitionProfile.signStyle?.includes("grocery");
+    const isGreenBand = recognitionProfile.signStyle === "green-black-deli-wrap" || recognitionProfile.signStyle === "wood-green-grocery-wrap";
     addEvidenceFacadeBox(group, {
-      color: index % 2 ? palette.signAlt : palette.sign,
+      color: isBlackWrap && index % 2 === 0 ? palette.base : isGreenBand && index % 2 ? palette.signAlt : palette.sign,
       opacity: 1,
-      position: [x, y, z + sideOffset * (depth + composition.signBandDepthUnits * 0.65)],
-      size: [Math.max(segmentWidth * 0.68, 0.08), 0.115, Math.max(composition.signBandDepthUnits * 0.7, 0.06)],
+      position: [segment.center, y, z + sideOffset * (depth + composition.signBandDepthUnits * 0.65)],
+      size: [Math.max(segment.width * 0.74, 0.08), recognitionProfile.signStyle === "large-panel-letter-band" ? 0.16 : 0.115, Math.max(composition.signBandDepthUnits * 0.7, 0.06)],
     });
+    if (isGreenBand) {
+      addEvidenceFacadeBox(group, {
+        color: palette.signAlt,
+        opacity: 0.96,
+        position: [segment.center, y + 0.055, z + sideOffset * (depth + composition.signBandDepthUnits * 0.94)],
+        size: [Math.max(segment.width * 0.32, 0.05), 0.035, Math.max(composition.signBandDepthUnits * 0.52, 0.045)],
+      });
+    }
   }
 
   if (cueRecord.wrapsCorner) {
@@ -3412,22 +4022,24 @@ function addEvidenceSignBandZone(group, { cueRecord, composition, palette, lengt
   }
 }
 
-function addEvidenceAwningCanopy(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset }) {
-  const segmentCount = clampInteger(cueRecord.segmentCount, 1, 5, 2);
+function addEvidenceAwningCanopy(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, recognitionProfile }) {
+  const segments = getRatioCenters(plane, length, recognitionProfile.storefrontRatios);
+  const segmentCount = segments.length || clampInteger(cueRecord.segmentCount, 1, 5, 2);
   const segmentWidth = length / segmentCount;
   const y = clamp(height * 0.22, 0.12, 0.42);
   for (let index = 0; index < segmentCount; index += 1) {
-    const x = plane.xMin + segmentWidth * index + segmentWidth / 2;
+    const segment = segments[index] ?? { center: plane.xMin + segmentWidth * index + segmentWidth / 2, width: segmentWidth };
+    const isBlack = recognitionProfile.awningStyle?.includes("black");
     addEvidenceFacadeBox(group, {
-      color: index % 2 ? palette.awningAlt : palette.awning,
+      color: isBlack ? palette.base : index % 2 ? palette.awningAlt : palette.awning,
       opacity: 1,
-      position: [x, y, z + sideOffset * (composition.signBandDepthUnits + 0.08)],
-      size: [Math.max(segmentWidth * 0.68, 0.08), 0.075, composition.signBandDepthUnits * 0.72],
+      position: [segment.center, y, z + sideOffset * (composition.signBandDepthUnits + 0.08)],
+      size: [Math.max(segment.width * 0.72, 0.08), recognitionProfile.awningStyle?.includes("scalloped") ? 0.092 : 0.075, composition.signBandDepthUnits * 0.72],
     });
   }
 }
 
-function addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth }) {
+function addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, length, plane, height, z, sideOffset, depth, recognitionProfile }) {
   const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
   const bayCount = clampInteger(cueRecord.bayCount, 2, 8, 4);
   const upperRows = clampInteger(cueRecord.upperRows, 1, 5, 2);
@@ -3438,40 +4050,55 @@ function addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, 
   const bayWidth = length / bayCount;
   const glassBeatWidth = length / groundGlassBeats;
   const frontZ = z + sideOffset * (depth + composition.windowReliefDepthUnits * 0.96);
-  const windowWidth = Math.max(Math.min(bayWidth * 0.46, 0.18), 0.052);
-  const windowHeight = Math.max(Math.min((height - baseHeight) / Math.max(upperRows, 2) * 0.32, 0.18), 0.07);
+  const upperSegments = getRatioCenters(plane, length, recognitionProfile.bayRatios);
+  const groundSegments = getRatioCenters(plane, length, recognitionProfile.storefrontRatios);
+  const windowWidthScale = recognitionProfile.windowLayout === "long-horizontal-slits" ? 0.78 : 0.46;
+  const windowWidth = Math.max(Math.min(bayWidth * windowWidthScale, recognitionProfile.windowLayout === "long-horizontal-slits" ? 0.3 : 0.18), 0.052);
+  const windowHeight = Math.max(Math.min((height - baseHeight) / Math.max(upperRows, 2) * (recognitionProfile.windowLayout === "long-horizontal-slits" ? 0.2 : 0.32), 0.18), 0.07);
 
   for (let row = 0; row < upperRows; row += 1) {
     const y = upperRows === 1 ? upperStart + (upperEnd - upperStart) * 0.55 : upperStart + rowGap * row;
-    for (let bay = 0; bay < bayCount; bay += 1) {
-      const x = plane.xMin + bayWidth * bay + bayWidth / 2;
+    const segments = upperSegments.length ? upperSegments : Array.from({ length: bayCount }, (_, bay) => ({ center: plane.xMin + bayWidth * bay + bayWidth / 2, width: bayWidth }));
+    for (const segment of segments) {
+      const x = segment.center;
+      const localWindowWidth = Math.max(Math.min(segment.width * windowWidthScale, recognitionProfile.windowLayout === "long-horizontal-slits" ? 0.32 : 0.18), 0.052);
       addEvidenceFacadeBox(group, {
         color: palette.windowShadow,
         opacity: 0.95,
         position: [x, y, frontZ - sideOffset * 0.012],
-        size: [windowWidth * 1.24, windowHeight * 1.34, Math.max(composition.windowReliefDepthUnits * 0.52, 0.04)],
+        size: [localWindowWidth * 1.24, windowHeight * 1.34, Math.max(composition.windowReliefDepthUnits * 0.52, 0.04)],
       });
       addEvidenceFacadeBox(group, {
         color: palette.window,
         opacity: 0.94,
         position: [x, y + windowHeight * 0.04, frontZ + sideOffset * 0.014],
-        size: [windowWidth, windowHeight, Math.max(composition.windowReliefDepthUnits * 0.48, 0.035)],
+        size: [localWindowWidth, windowHeight, Math.max(composition.windowReliefDepthUnits * 0.48, 0.035)],
       });
       addEvidenceFacadeBox(group, {
         color: palette.trim,
         opacity: 0.72,
         position: [x, y - windowHeight * 0.68, frontZ + sideOffset * 0.018],
-        size: [windowWidth * 1.08, 0.018, Math.max(composition.windowReliefDepthUnits * 0.42, 0.03)],
+        size: [localWindowWidth * 1.08, 0.018, Math.max(composition.windowReliefDepthUnits * 0.42, 0.03)],
       });
+      if (recognitionProfile.accentDetails?.includes("window-ac-units") && row === 0) {
+        addEvidenceFacadeBox(group, {
+          color: 0xdad7cb,
+          opacity: 0.84,
+          position: [x + segment.width * 0.16, y - windowHeight * 0.72, frontZ + sideOffset * 0.045],
+          size: [localWindowWidth * 0.42, 0.032, 0.045],
+        });
+      }
     }
   }
 
-  for (let beat = 0; beat < groundGlassBeats; beat += 1) {
-    const x = plane.xMin + glassBeatWidth * beat + glassBeatWidth / 2;
-    const isDoor = beat === Math.floor(groundGlassBeats * 0.45) || (groundGlassBeats <= 3 && beat === 1);
+  const ground = groundSegments.length ? groundSegments : Array.from({ length: groundGlassBeats }, (_, beat) => ({ center: plane.xMin + glassBeatWidth * beat + glassBeatWidth / 2, width: glassBeatWidth }));
+  for (let beat = 0; beat < ground.length; beat += 1) {
+    const segment = ground[beat];
+    const x = segment.center;
+    const isDoor = recognitionProfile.doorIndices?.includes(beat) || beat === Math.floor(groundGlassBeats * 0.45) || (groundGlassBeats <= 3 && beat === 1);
     const glassHeight = isDoor ? baseHeight * 0.66 : baseHeight * 0.48;
     const glassY = isDoor ? baseHeight * 0.38 : baseHeight * 0.46;
-    const glassWidth = Math.max(glassBeatWidth * (isDoor ? 0.42 : 0.56), 0.055);
+    const glassWidth = Math.max(segment.width * (isDoor ? 0.42 : 0.62), 0.055);
     addEvidenceFacadeBox(group, {
       color: isDoor ? palette.door : palette.glass,
       opacity: 0.96,
@@ -3484,10 +4111,52 @@ function addEvidenceWindowGlassRhythm(group, { cueRecord, composition, palette, 
       position: [x, glassY + glassHeight * 0.52, frontZ + sideOffset * 0.05],
       size: [glassWidth * 1.06, 0.016, Math.max(composition.windowReliefDepthUnits * 0.52, 0.035)],
     });
+    if (recognitionProfile.signStyle === "green-black-deli-wrap" && !isDoor) {
+      addEvidenceFacadeBox(group, {
+        color: beat % 2 ? 0xf0d36d : 0xb74338,
+        opacity: 0.82,
+        position: [x, glassY - glassHeight * 0.15, frontZ + sideOffset * 0.065],
+        size: [glassWidth * 0.52, glassHeight * 0.16, 0.032],
+      });
+    }
+    if (recognitionProfile.signStyle === "wood-green-grocery-wrap") {
+      addEvidenceFacadeBox(group, {
+        color: 0x5cc66a,
+        opacity: 0.78,
+        position: [x, glassY + glassHeight * 0.18, frontZ + sideOffset * 0.066],
+        size: [glassWidth * 0.38, glassHeight * 0.14, 0.032],
+      });
+    }
+    if (recognitionProfile.accentDetails?.includes("wood-window-frames") && !isDoor) {
+      addEvidenceFacadeBox(group, {
+        color: 0xa96c3a,
+        opacity: 0.9,
+        position: [x, glassY, frontZ + sideOffset * 0.08],
+        size: [0.02, glassHeight * 0.96, 0.04],
+      });
+    }
+  }
+
+  if (recognitionProfile.accentDetails?.includes("fire-escape")) {
+    const fireX = plane.xMin + length * 0.18;
+    for (let level = 0; level < 3; level += 1) {
+      addEvidenceFacadeBox(group, {
+        color: palette.post,
+        opacity: 0.86,
+        position: [fireX, baseHeight + (height - baseHeight) * (0.28 + level * 0.2), frontZ + sideOffset * 0.16],
+        size: [length * 0.18, 0.018, 0.06],
+      });
+      addEvidenceFacadeBox(group, {
+        color: palette.post,
+        opacity: 0.82,
+        position: [fireX - length * 0.08, baseHeight + (height - baseHeight) * (0.2 + level * 0.2), frontZ + sideOffset * 0.16],
+        size: [0.018, (height - baseHeight) * 0.18, 0.055],
+      });
+    }
   }
 }
 
-function addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane, height, z, sideOffset }) {
+function addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, plane, height, z, sideOffset, recognitionProfile }) {
   const edge = cueRecord.edge === "right" ? plane.xMax : plane.xMin;
   const strength = cueRecord.strength === "strong" ? 1 : 0.72;
   addEvidenceFacadeBox(group, {
@@ -3502,9 +4171,17 @@ function addEvidenceCornerEmphasis(group, { cueRecord, composition, palette, pla
     position: [edge, height + 0.12, z + sideOffset * composition.corniceProjectionUnits * 0.4],
     size: [0.18 * strength, 0.08, composition.corniceProjectionUnits + 0.08],
   });
+  if (recognitionProfile.signStyle?.includes("corner")) {
+    addEvidenceFacadeBox(group, {
+      color: palette.signAlt,
+      opacity: 0.95,
+      position: [edge, height * 0.28, z + sideOffset * (composition.cornerReturnDepthUnits * 0.52)],
+      size: [0.12 * strength, 0.12, composition.cornerReturnDepthUnits * 0.5],
+    });
+  }
 }
 
-function addEvidenceSyntheticGrounding(group, { composition, palette, length, plane, z, sideOffset }) {
+function addEvidenceSyntheticGrounding(group, { composition, palette, length, plane, z, sideOffset, recognitionProfile }) {
   if (!composition.grounding.sidewalk && !composition.grounding.curb && !composition.grounding.crosswalk) return;
   const centerX = plane.xMin + length / 2;
   const sidewalkDepth = composition.groundPlaneExtent.sidewalkDepthUnits;
@@ -3534,18 +4211,33 @@ function addEvidenceSyntheticGrounding(group, { composition, palette, length, pl
     });
   }
   if (composition.grounding.crosswalk) {
-    for (let index = 0; index < 4; index += 1) {
+    const stripeCount = recognitionProfile.groundCueStyle?.includes("crosswalk") || recognitionProfile.groundCueStyle?.includes("corner") ? 7 : 4;
+    for (let index = 0; index < stripeCount; index += 1) {
       addEvidenceFacadeBox(group, {
         color: palette.crosswalk,
         opacity: 0.9,
-        position: [plane.xMin + length * (0.12 + index * 0.08), 0.038, z + sideOffset * (sidewalkDepth + curbDepth + 0.18 + index * 0.07)],
-        size: [0.16, 0.026, 0.045],
+        position: [plane.xMin + length * (0.09 + index * 0.07), 0.038, z + sideOffset * (sidewalkDepth + curbDepth + 0.18 + index * 0.065)],
+        size: [0.17, 0.026, 0.045],
       });
     }
   }
+  if (recognitionProfile.groundCueStyle === "subway-signal-crosswalk") {
+    addEvidenceFacadeBox(group, {
+      color: 0x15342f,
+      opacity: 0.92,
+      position: [plane.xMin + length * 0.1, 0.14, z + sideOffset * (sidewalkDepth * 0.74)],
+      size: [length * 0.18, 0.18, sidewalkDepth * 0.24],
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0xf0ead8,
+      opacity: 0.88,
+      position: [plane.xMin + length * 0.1, 0.24, z + sideOffset * (sidewalkDepth * 0.74)],
+      size: [length * 0.14, 0.035, sidewalkDepth * 0.12],
+    });
+  }
 }
 
-function addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane, z, sideOffset }) {
+function addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane, z, sideOffset, recognitionProfile }) {
   const detailTypes = Array.isArray(cueRecord.detailTypes) ? cueRecord.detailTypes : [];
   const detailCount = clampInteger(cueRecord.detailCount, 0, 6, detailTypes.length);
   const sidewalkZ = z + sideOffset * 0.72;
@@ -3568,11 +4260,26 @@ function addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane,
         position: [x + 0.04, 0.66, curbZ + sideOffset * 0.13],
         size: [0.12, 0.04, 0.024],
       });
+      if (recognitionProfile.accentDetails?.includes("traffic-signal") && index === 0) {
+        addEvidenceFacadeBox(group, {
+          color: 0xd0a03d,
+          opacity: 0.94,
+          position: [x - 0.035, 0.72, curbZ + sideOffset * 0.18],
+          size: [0.07, 0.14, 0.05],
+        });
+        addEvidenceFacadeBox(group, {
+          color: 0x4b8f57,
+          opacity: 0.9,
+          position: [x - 0.036, 0.695, curbZ + sideOffset * 0.215],
+          size: [0.028, 0.028, 0.018],
+        });
+      }
     }
   }
 
   if (detailTypes.includes("outdoor-table-zone")) {
-    for (let index = 0; index < 2; index += 1) {
+    const tableCount = recognitionProfile.accentDetails?.includes("sidewalk-tables") ? 4 : 2;
+    for (let index = 0; index < tableCount; index += 1) {
       const x = plane.xMin + length * (0.34 + index * 0.18);
       addEvidenceFacadeCylinder(group, {
         color: palette.table,
@@ -3590,6 +4297,25 @@ function addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane,
     }
   }
 
+  if (recognitionProfile.accentDetails?.includes("sticker-post")) {
+    const x = plane.xMin + length * 0.08;
+    addEvidenceFacadeCylinder(group, {
+      color: 0xc63732,
+      opacity: 0.92,
+      position: [x, 0.25, curbZ + sideOffset * 0.22],
+      radius: 0.035,
+      height: 0.5,
+    });
+    for (let index = 0; index < 4; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: index % 2 ? 0xf0d45f : 0xf2ece0,
+        opacity: 0.88,
+        position: [x, 0.12 + index * 0.07, curbZ + sideOffset * 0.258],
+        size: [0.052, 0.032, 0.018],
+      });
+    }
+  }
+
   if (detailTypes.includes("curb-crossing")) {
     for (let index = 0; index < 5; index += 1) {
       addEvidenceFacadeBox(group, {
@@ -3600,6 +4326,1653 @@ function addEvidenceStreetDetailCues(group, { cueRecord, palette, length, plane,
       });
     }
   }
+}
+
+function addEvidenceStructuredFrontage(group, { recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth }) {
+  const segments = Array.isArray(recognitionProfile.frontageSegments) ? recognitionProfile.frontageSegments : [];
+  if (!segments.length) return;
+
+  const ratios = normalizeCadence(segments.map((segment) => segment.width));
+  const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
+  const frontZ = z + sideOffset * (depth + composition.signBandDepthUnits + 0.2);
+  const frontLayer = { opaque: false, depthTest: false, renderOrder: 1 };
+  let cursor = plane.xMin;
+
+  for (let index = 0; index < segments.length; index += 1) {
+    const segment = segments[index];
+    const segmentWidth = length * ratios[index];
+    const centerX = cursor + segmentWidth / 2;
+    const segmentZ = frontZ + sideOffset * (segment.setbackUnits ?? 0);
+    const backplateColor = segment.backplateColor ?? palette.base;
+    const signColor = segment.signColor ?? palette.sign;
+    const signAccentColor = segment.signAccentColor ?? palette.signAlt;
+    const frameColor = segment.frameColor ?? palette.trim;
+    const glassColor = segment.glassColor ?? palette.glass;
+    const lowerColor = segment.lowerColor ?? palette.base;
+    const canopyColor = segment.canopyColor ?? palette.awning;
+    const glassBeats = clampInteger(segment.glassBeats, 1, 3, 1);
+    const hasDoor = Boolean(segment.door);
+
+    addEvidenceFacadeBox(group, {
+      color: backplateColor,
+      opacity: 0.98,
+      position: [centerX, baseHeight * 0.43, segmentZ],
+      size: [segmentWidth * 0.96, baseHeight * 0.78, 0.09],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: signColor,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.88, segmentZ + sideOffset * 0.035],
+      size: [segmentWidth * 0.9, baseHeight * 0.16, 0.095],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: signAccentColor,
+      opacity: 0.96,
+      position: [centerX, baseHeight * 0.96, segmentZ + sideOffset * 0.07],
+      size: [segmentWidth * (recognitionProfile.signStyle === "wood-green-grocery-wrap" ? 0.34 : 0.44), baseHeight * 0.06, 0.07],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: canopyColor,
+      opacity: 0.96,
+      position: [centerX, baseHeight * 0.68, segmentZ + sideOffset * 0.11],
+      size: [segmentWidth * 0.86, baseHeight * 0.075, 0.18],
+      ...frontLayer,
+    });
+
+    const lowerY = baseHeight * 0.16;
+    addEvidenceFacadeBox(group, {
+      color: lowerColor,
+      opacity: 0.9,
+      position: [centerX, lowerY, segmentZ + sideOffset * 0.08],
+      size: [segmentWidth * 0.82, baseHeight * 0.16, 0.07],
+      ...frontLayer,
+    });
+
+    const usableWidth = segmentWidth * 0.76;
+    const beatWidth = usableWidth / glassBeats;
+    const startX = centerX - usableWidth / 2;
+    for (let beat = 0; beat < glassBeats; beat += 1) {
+      const beatCenter = startX + beatWidth * beat + beatWidth / 2;
+      const isDoorBeat = hasDoor && (
+        segment.door === "center"
+          ? beat === Math.floor(glassBeats / 2)
+          : segment.door === "right"
+            ? beat === glassBeats - 1
+            : beat === 0
+      );
+      const glassHeight = isDoorBeat ? baseHeight * 0.56 : baseHeight * 0.38;
+      const glassY = isDoorBeat ? baseHeight * 0.36 : baseHeight * 0.42;
+      const glassWidth = Math.max(beatWidth * (isDoorBeat ? 0.56 : 0.72), 0.045);
+
+      addEvidenceFacadeBox(group, {
+        color: frameColor,
+        opacity: 0.92,
+        position: [beatCenter, glassY, segmentZ + sideOffset * 0.13],
+        size: [glassWidth * 1.16, glassHeight * 1.08, 0.055],
+        ...frontLayer,
+      });
+      addEvidenceFacadeBox(group, {
+        color: isDoorBeat ? palette.door : glassColor,
+        opacity: isDoorBeat ? 0.98 : 0.9,
+        position: [beatCenter, glassY, segmentZ + sideOffset * 0.17],
+        size: [glassWidth, glassHeight, 0.052],
+        ...frontLayer,
+      });
+      if (!isDoorBeat && beatWidth > 0.08) {
+        addEvidenceFacadeBox(group, {
+          color: frameColor,
+          opacity: 0.84,
+          position: [beatCenter, glassY, segmentZ + sideOffset * 0.205],
+          size: [0.012, glassHeight * 0.94, 0.04],
+          ...frontLayer,
+        });
+      }
+    }
+
+    if (index > 0) {
+      addEvidenceFacadeBox(group, {
+        color: palette.trim,
+        opacity: 0.98,
+        position: [cursor, baseHeight * 0.46, segmentZ + sideOffset * 0.19],
+        size: [0.028, baseHeight * 0.82, 0.06],
+        ...frontLayer,
+      });
+    }
+    cursor += segmentWidth;
+  }
+
+  addEvidenceFacadeBox(group, {
+    color: palette.trim,
+    opacity: 0.92,
+    position: [plane.xMin, baseHeight * 0.5, frontZ + sideOffset * 0.18],
+    size: [0.034, baseHeight * 0.92, 0.06],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: palette.trim,
+    opacity: 0.92,
+    position: [plane.xMax, baseHeight * 0.5, frontZ + sideOffset * 0.18],
+    size: [0.034, baseHeight * 0.92, 0.06],
+    ...frontLayer,
+  });
+
+  if (recognitionProfile.sideReturnOverride) {
+    const returnEdge = recognitionProfile.sideReturnOverride.edge === "left" ? plane.xMin : plane.xMax;
+    const returnDirection = recognitionProfile.sideReturnOverride.edge === "left" ? 1 : -1;
+    addEvidenceFacadeBox(group, {
+      color: recognitionProfile.sideReturnOverride.brickColor ?? palette.returnWall,
+      opacity: 0.96,
+      position: [returnEdge + returnDirection * length * 0.045, height * 0.48, z - sideOffset * composition.cornerReturnDepthUnits * 0.42],
+      size: [length * 0.09, height * 0.86, composition.cornerReturnDepthUnits * 0.82],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: recognitionProfile.sideReturnOverride.signColor ?? palette.sign,
+      opacity: 1,
+      position: [returnEdge + returnDirection * length * 0.045, baseHeight * 0.88, frontZ + sideOffset * 0.05],
+      size: [length * 0.1, baseHeight * 0.14, 0.1],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: recognitionProfile.sideReturnOverride.canopyColor ?? palette.awning,
+      opacity: 0.96,
+      position: [returnEdge + returnDirection * length * 0.045, baseHeight * 0.68, frontZ + sideOffset * 0.12],
+      size: [length * 0.09, baseHeight * 0.075, 0.18],
+      ...frontLayer,
+    });
+  }
+
+  if (recognitionProfile.groundCueStyle?.includes("franklin") || recognitionProfile.groundCueStyle?.includes("subway")) {
+    const sidewalkZ = z + sideOffset * (composition.groundPlaneExtent.sidewalkDepthUnits * 0.88);
+    addEvidenceFacadeBox(group, {
+      color: 0x9aa7a0,
+      opacity: 0.78,
+      position: [plane.xMin + length / 2, 0.055, sidewalkZ],
+      size: [length * 1.22, 0.032, 0.34],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x1d2523,
+      opacity: 0.9,
+      position: [plane.xMin + length / 2, 0.058, sidewalkZ + sideOffset * 0.42],
+      size: [length * 1.28, 0.032, 0.12],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0xded7c6,
+      opacity: 0.82,
+      position: [plane.xMin + length / 2, 0.078, sidewalkZ + sideOffset * 0.24],
+      size: [length * 1.18, 0.018, 0.035],
+      ...frontLayer,
+    });
+    const stripeCount = recognitionProfile.groundCueStyle?.includes("franklin") ? 6 : 4;
+    for (let index = 0; index < stripeCount; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: 0xf0ead8,
+        opacity: 0.78,
+        position: [plane.xMin + length * (0.08 + index * 0.08), 0.088, sidewalkZ + sideOffset * (0.5 + index * 0.035)],
+        size: [length * 0.055, 0.02, 0.18],
+        ...frontLayer,
+      });
+    }
+  }
+}
+
+function addPlaceRecognitionLandmarks(group, { recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth, heroOverride }) {
+  const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
+  const centerX = plane.xMin + length / 2;
+  const frontZ = z + sideOffset * (depth + composition.signBandDepthUnits + 0.18);
+  const frontLayer = { opaque: false, depthTest: false };
+
+  if (heroOverride) {
+    addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth });
+    return;
+  }
+
+  addEvidenceStructuredFrontage(group, { recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth });
+
+  if (recognitionProfile.signStyle === "green-black-deli-wrap") {
+    addEvidenceFacadeBox(group, {
+      color: 0x101514,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.52, frontZ],
+      size: [length * 0.92, baseHeight * 0.62, 0.07],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x7ec26d,
+      opacity: 1,
+      position: [centerX - length * 0.18, baseHeight * 0.88, frontZ + sideOffset * 0.045],
+      size: [length * 0.46, baseHeight * 0.12, 0.07],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0xf0ede2,
+      opacity: 1,
+      position: [centerX + length * 0.18, baseHeight * 0.88, frontZ + sideOffset * 0.05],
+      size: [length * 0.36, baseHeight * 0.11, 0.07],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x164139,
+      opacity: 0.96,
+      position: [plane.xMin + length * 0.1, 0.24, frontZ + sideOffset * 0.16],
+      size: [length * 0.2, 0.28, 0.16],
+      ...frontLayer,
+    });
+  }
+
+  if (recognitionProfile.signStyle === "large-panel-letter-band") {
+    const colors = [0xe0c74e, 0x5abf7b, 0x4ba8c8, 0xc94b63, 0xd9923d];
+    for (let index = 0; index < 5; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: colors[index],
+        opacity: 1,
+        position: [plane.xMin + length * (0.12 + index * 0.19), height * 0.58, frontZ + sideOffset * 0.02],
+        size: [length * 0.18, height * 0.28, 0.08],
+        ...frontLayer,
+      });
+    }
+    addEvidenceFacadeBox(group, {
+      color: 0xf1eee2,
+      opacity: 1,
+      position: [centerX + length * 0.12, height * 0.68, frontZ + sideOffset * 0.08],
+      size: [length * 0.5, height * 0.08, 0.08],
+      ...frontLayer,
+    });
+  }
+
+  if (recognitionProfile.signStyle === "black-corner-band") {
+    addEvidenceFacadeBox(group, {
+      color: 0x0b0e0f,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.76, frontZ],
+      size: [length * 1.02, baseHeight * 0.28, 0.08],
+      ...frontLayer,
+    });
+    for (let index = 0; index < 3; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: 0x101414,
+        opacity: 0.94,
+        position: [plane.xMin + length * (0.18 + index * 0.18), height * (0.48 + index * 0.1), frontZ + sideOffset * 0.16],
+        size: [length * 0.22, 0.02, 0.12],
+        ...frontLayer,
+      });
+    }
+  }
+
+  if (recognitionProfile.signStyle === "wood-green-grocery-wrap") {
+    addEvidenceFacadeBox(group, {
+      color: 0xb99062,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.88, frontZ],
+      size: [length * 0.96, baseHeight * 0.2, 0.08],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x5abf62,
+      opacity: 1,
+      position: [centerX, baseHeight * 0.98, frontZ + sideOffset * 0.055],
+      size: [length * 0.34, baseHeight * 0.12, 0.08],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: palette.corner,
+      opacity: 0.96,
+      position: [plane.xMax - length * 0.12, height * 0.54, frontZ + sideOffset * 0.18],
+      size: [length * 0.1, height * 0.42, 0.16],
+      ...frontLayer,
+    });
+  }
+
+  if (recognitionProfile.accentDetails?.includes("traffic-signal")) {
+    addEvidenceFacadeCylinder(group, {
+      color: 0x171b1b,
+      opacity: 0.94,
+      position: [plane.xMin + length * 0.05, 0.48, frontZ + sideOffset * 0.26],
+      radius: 0.022,
+      height: 0.96,
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0xd0a13d,
+      opacity: 0.96,
+      position: [plane.xMin + length * 0.05, 0.88, frontZ + sideOffset * 0.28],
+      size: [0.08, 0.16, 0.06],
+      ...frontLayer,
+    });
+  }
+}
+
+function addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth }) {
+  const materials = heroOverride.materialZones;
+  const baseHeight = clamp(height * heroOverride.massing.baseHeightRatio, 0.18, height * 0.54);
+  const upperHeight = Math.max(height - baseHeight, 0.18);
+  const centerX = plane.xMin + length / 2;
+  const facadeDepth = heroOverride.massing.frontReliefDepthUnits;
+  const frontZ = z + sideOffset * (depth + facadeDepth);
+  const frontLayer = { opaque: false, depthTest: false };
+  const hasHeroFidelityLayer = heroOverride.heroFidelityLayer && heroOverride === endpointHeroFacadeOverrides.franklin;
+  const backingShadowOpacity = hasHeroFidelityLayer ? 0.025 : 0.38;
+  const backingBodyOpacity = hasHeroFidelityLayer ? 0.055 : heroOverride.massing.bodyOpacity ?? 0.88;
+  const bayRatios = normalizeCadence(heroOverride.storefrontBays.map((bay) => bay.widthRatio));
+  const baySpans = [];
+  let cursor = plane.xMin;
+
+  addEvidenceFacadeBox(group, {
+    color: materials.brickShadow,
+    opacity: backingShadowOpacity,
+    position: [centerX, height * 0.52, frontZ - sideOffset * 0.035],
+    size: [length * 0.98, height * 0.92, 0.07],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.bodyBrick,
+    opacity: backingBodyOpacity,
+    position: [centerX, baseHeight + upperHeight / 2, frontZ + sideOffset * 0.012],
+    size: [length * 0.94, upperHeight * 0.98, 0.075],
+    ...frontLayer,
+  });
+  addMeasuredBrickRows(group, { materials, length, plane, height, baseHeight, frontZ, sideOffset, rowCount: heroOverride === endpointHeroFacadeOverrides.franklin ? 14 : 10, frontLayer });
+  addMeasuredFacadeBelts(group, { heroOverride, materials, length, plane, height, baseHeight, frontZ, sideOffset, frontLayer });
+
+  for (let index = 0; index < heroOverride.storefrontBays.length; index += 1) {
+    const bay = heroOverride.storefrontBays[index];
+    const width = length * bayRatios[index];
+    const bayCenter = cursor + width / 2;
+    const baySpan = { ...bay, index, center: bayCenter, width, xMin: cursor, xMax: cursor + width };
+    baySpans.push(baySpan);
+    addMeasuredStorefrontBay(group, { baySpan, heroOverride, materials, baseHeight, frontZ, sideOffset, frontLayer });
+    cursor += width;
+  }
+
+  addMeasuredCanopies(group, { heroOverride, materials, baySpans, baseHeight, frontZ, sideOffset, frontLayer });
+  addMeasuredUpperWindows(group, { heroOverride, materials, length, plane, height, baseHeight, frontZ, sideOffset, frontLayer });
+  addMeasuredCornice(group, { heroOverride, materials, length, plane, height, frontZ, sideOffset, frontLayer });
+  addMeasuredRoofline(group, { heroOverride, materials, length, plane, height, z, sideOffset, frontZ, frontLayer });
+  addMeasuredSideReturn(group, { heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, frontZ, frontLayer });
+  addMeasuredStreetGrounding(group, { heroOverride, materials, length, plane, z, sideOffset, frontLayer });
+  if (hasHeroFidelityLayer) {
+    addFranklinHeroFidelityLayer(group, { heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, baySpans });
+  }
+
+  if (recognitionProfile.accentDetails?.includes("traffic-signal") || heroOverride.streetGrounding.evidenceBackedPoles.includes("traffic_signal_post")) {
+    const signalX = heroOverride.sideReturn.edge === "right" ? plane.xMax + length * 0.04 : plane.xMin - length * 0.04;
+    addEvidenceFacadeCylinder(group, {
+      color: 0x171b1b,
+      opacity: 0.9,
+      position: [signalX, 0.48, frontZ + sideOffset * 0.36],
+      radius: 0.018,
+      height: 0.92,
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0xd0a13d,
+      opacity: 0.95,
+      position: [signalX, 0.82, frontZ + sideOffset * 0.4],
+      size: [0.075, 0.16, 0.055],
+      ...frontLayer,
+    });
+  }
+}
+
+function addFranklinHeroFidelityLayer(group, { materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, baySpans }) {
+  const upperHeight = Math.max(height - baseHeight, 0.18);
+  const centerX = plane.xMin + length / 2;
+  const hero = { opaque: true, depthTest: false, renderOrder: 12 };
+  const soft = { opaque: false, depthTest: false, renderOrder: 11 };
+  const masonryZ = frontZ + sideOffset * 0.22;
+
+  addHeroFidelityBox(group, {
+    color: 0x8f4538,
+    opacity: 1,
+    position: [centerX, baseHeight + upperHeight * 0.5, masonryZ],
+    size: [length * 0.86, upperHeight * 0.92, 0.042],
+    ...hero,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x643129,
+    opacity: 1,
+    position: [plane.xMin + length * 0.035, height * 0.49, masonryZ + sideOffset * 0.008],
+    size: [length * 0.06, height * 0.9, 0.05],
+    ...hero,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x6f332b,
+    opacity: 1,
+    position: [plane.xMax - length * 0.04, height * 0.52, masonryZ + sideOffset * 0.012],
+    size: [length * 0.07, height * 0.96, 0.06],
+    ...hero,
+  });
+
+  addHeroBrickRelief(group, { materials, length, plane, height, baseHeight, frontZ: masonryZ, sideOffset, layer: hero });
+  addHeroCorniceModule(group, { materials, length, plane, height, frontZ: masonryZ, sideOffset, layer: hero });
+  addHeroRoofInsetModule(group, { materials, length, plane, height, z, sideOffset, depth, layer: hero });
+
+  const upper = endpointHeroFacadeOverrides.franklin.upperWindows;
+  const windowCenters = getRatioCenters(plane, length, normalizeCadence(upper.bayRatios)).slice(0, 6);
+  const upperTop = height - Math.max(height * 0.18, 0.18);
+  const upperBottom = baseHeight + Math.max(upperHeight * 0.18, 0.12);
+  const rowGap = (upperTop - upperBottom) / 2;
+  for (let row = 0; row < 3; row += 1) {
+    const y = upperBottom + rowGap * row;
+    for (let index = 0; index < windowCenters.length; index += 1) {
+      const segment = windowCenters[index];
+      addHeroWindowModule(group, {
+        x: segment.center,
+        y,
+        z: masonryZ + sideOffset * 0.058,
+        width: Math.max(Math.min(segment.width * 0.34, 0.13), 0.06),
+        height: row === 2 ? 0.18 : 0.16,
+        archTop: row === 2,
+        ac: row === 0 && [1, 3, 5].includes(index),
+        materials,
+        sideOffset,
+        layer: hero,
+      });
+    }
+  }
+
+  addHeroStorefrontModule(group, { materials, baySpans, baseHeight, frontZ, sideOffset, layer: hero });
+  addHeroSideReturnModule(group, { materials, length, plane, height, baseHeight, z, sideOffset, frontZ, layer: hero });
+  addHeroStreetGroundingModule(group, { materials, length, plane, z, sideOffset, frontZ, layer: hero, softLayer: soft });
+}
+
+function addHeroBrickRelief(group, { materials, length, plane, height, baseHeight, frontZ, sideOffset, layer }) {
+  const rowCount = 18;
+  for (let row = 0; row < rowCount; row += 1) {
+    const y = baseHeight + (height - baseHeight) * (0.05 + row * 0.049);
+    if (y > height * 0.94) break;
+    addHeroFidelityBox(group, {
+      color: row % 2 ? 0xad5a45 : materials.mortarLine,
+      opacity: row % 2 ? 0.36 : 0.58,
+      position: [plane.xMin + length / 2, y, frontZ + sideOffset * 0.02],
+      size: [length * 0.78, 0.006, 0.022],
+      ...layer,
+    });
+    const tickCount = 7;
+    for (let tick = 0; tick < tickCount; tick += 1) {
+      if ((tick + row) % 2) continue;
+      addHeroFidelityBox(group, {
+        color: 0x6d352e,
+        opacity: 0.34,
+        position: [plane.xMin + length * (0.17 + tick * 0.1), y + 0.018, frontZ + sideOffset * 0.027],
+        size: [length * 0.018, 0.012, 0.018],
+        ...layer,
+      });
+    }
+  }
+}
+
+function addHeroCorniceModule(group, { materials, length, plane, height, frontZ, sideOffset, layer }) {
+  const centerX = plane.xMin + length / 2;
+  const bands = [
+    { y: height + 0.005, h: 0.045, z: 0.045, w: 1.0, color: 0xb49c73 },
+    { y: height + 0.07, h: 0.045, z: 0.08, w: 1.08, color: materials.stoneCornice },
+    { y: height + 0.135, h: 0.042, z: 0.12, w: 1.0, color: 0xf0dda6 },
+  ];
+  for (const band of bands) {
+    addHeroFidelityBox(group, {
+      color: band.color,
+      opacity: 1,
+      position: [centerX, band.y, frontZ + sideOffset * band.z],
+      size: [length * band.w, band.h, 0.07 + band.z],
+      ...layer,
+    });
+  }
+  const dentilCount = 18;
+  for (let index = 0; index < dentilCount; index += 1) {
+    if (index % 2) continue;
+    addHeroFidelityBox(group, {
+      color: 0x7d6a50,
+      opacity: 1,
+      position: [plane.xMin + length * (0.04 + index / dentilCount * 0.92), height + 0.038, frontZ + sideOffset * 0.17],
+      size: [length * 0.025, 0.035, 0.045],
+      ...layer,
+    });
+  }
+}
+
+function addHeroRoofInsetModule(group, { materials, length, plane, height, z, sideOffset, depth, layer }) {
+  const centerX = plane.xMin + length / 2;
+  addHeroFidelityBox(group, {
+    color: materials.roof ?? 0x403d38,
+    opacity: 1,
+    position: [centerX, height + 0.09, z - sideOffset * depth * 0.18],
+    size: [length * 0.72, 0.035, depth * 0.72],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x2c2b28,
+    opacity: 1,
+    position: [centerX, height + 0.125, z - sideOffset * depth * 0.18],
+    size: [length * 0.55, 0.018, depth * 0.5],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x2e302d,
+    opacity: 1,
+    position: [centerX + length * 0.06, height + 0.17, z - sideOffset * depth * 0.11],
+    size: [0.1, 0.055, 0.08],
+    ...layer,
+  });
+}
+
+function addHeroWindowModule(group, { x, y, z, width, height, archTop, ac, materials, sideOffset, layer }) {
+  addHeroFidelityBox(group, {
+    color: 0x251f1d,
+    opacity: 1,
+    position: [x, y, z],
+    size: [width * 1.42, height * 1.48, 0.048],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.glass,
+    opacity: 1,
+    position: [x, y + height * 0.02, z + sideOffset * 0.027],
+    size: [width, height * 1.02, 0.04],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x19201f,
+    opacity: 1,
+    position: [x, y + height * 0.02, z + sideOffset * 0.052],
+    size: [width * 0.08, height * 0.94, 0.028],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.stoneCornice,
+    opacity: 1,
+    position: [x, y - height * 0.68, z + sideOffset * 0.058],
+    size: [width * 1.45, 0.03, 0.052],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: archTop ? 0x744135 : materials.stoneCornice,
+    opacity: 1,
+    position: [x, y + height * 0.72, z + sideOffset * 0.056],
+    size: [width * (archTop ? 1.2 : 1.42), archTop ? 0.05 : 0.03, 0.048],
+    ...layer,
+  });
+  if (ac) {
+    addHeroFidelityBox(group, {
+      color: 0xd9d7cd,
+      opacity: 1,
+      position: [x + width * 0.42, y - height * 0.78, z + sideOffset * 0.09],
+      size: [width * 0.55, 0.045, 0.055],
+      ...layer,
+    });
+    addHeroFidelityBox(group, {
+      color: 0x7f8580,
+      opacity: 1,
+      position: [x + width * 0.42, y - height * 0.78, z + sideOffset * 0.123],
+      size: [width * 0.36, 0.018, 0.018],
+      ...layer,
+    });
+  }
+}
+
+function addHeroStorefrontModule(group, { materials, baySpans, baseHeight, frontZ, sideOffset, layer }) {
+  if (!baySpans.length) return;
+  const xMin = baySpans[1]?.xMin ?? baySpans[0].xMin;
+  const xMax = baySpans[5]?.xMax ?? baySpans[baySpans.length - 1].xMax;
+  const centerX = (xMin + xMax) / 2;
+  const width = xMax - xMin;
+  const shopZ = frontZ + sideOffset * 0.34;
+
+  addHeroFidelityBox(group, {
+    color: 0x1a1d1c,
+    opacity: 1,
+    position: [centerX, baseHeight * 0.38, shopZ],
+    size: [width * 0.98, baseHeight * 0.74, 0.08],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xb98558,
+    opacity: 1,
+    position: [centerX, baseHeight * 1.02, shopZ + sideOffset * 0.03],
+    size: [width * 0.96, baseHeight * 0.17, 0.095],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.greenSign,
+    opacity: 1,
+    position: [centerX - width * 0.03, baseHeight * 1.055, shopZ + sideOffset * 0.08],
+    size: [width * 0.34, baseHeight * 0.09, 0.045],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.blackCanopy,
+    opacity: 1,
+    position: [centerX, baseHeight * 0.73, shopZ + sideOffset * 0.18],
+    size: [width * 0.98, baseHeight * 0.11, 0.32],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x070808,
+    opacity: 1,
+    position: [centerX, baseHeight * 0.64, shopZ + sideOffset * 0.34],
+    size: [width * 0.96, baseHeight * 0.035, 0.18],
+    ...layer,
+  });
+
+  for (const bay of baySpans.slice(1, 6)) {
+    const paneCount = Math.max(1, bay.glassBeats ?? 1);
+    for (let pane = 0; pane < paneCount; pane += 1) {
+      const paneWidth = bay.width * 0.62 / paneCount;
+      const x = bay.center - bay.width * 0.25 + pane * paneWidth + paneWidth / 2;
+      const isDoor = bay.door && (pane === paneCount - 1 || bay.door === "center");
+      addHeroStorefrontPane(group, {
+        x,
+        y: isDoor ? baseHeight * 0.35 : baseHeight * 0.42,
+        z: shopZ + sideOffset * 0.12,
+        width: isDoor ? paneWidth * 0.7 : paneWidth * 0.78,
+        height: isDoor ? baseHeight * 0.58 : baseHeight * 0.38,
+        door: Boolean(isDoor),
+        materials,
+        sideOffset,
+        layer,
+      });
+    }
+    addHeroFidelityBox(group, {
+      color: 0x101313,
+      opacity: 1,
+      position: [bay.xMin, baseHeight * 0.43, shopZ + sideOffset * 0.18],
+      size: [0.026, baseHeight * 0.78, 0.08],
+      ...layer,
+    });
+  }
+}
+
+function addHeroStorefrontPane(group, { x, y, z, width, height, door, materials, sideOffset, layer }) {
+  addHeroFidelityBox(group, {
+    color: 0x0b0d0d,
+    opacity: 1,
+    position: [x, y, z],
+    size: [width * 1.22, height * 1.1, 0.05],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: door ? 0x141b1a : 0x8fb0a3,
+    opacity: 1,
+    position: [x, y, z + sideOffset * 0.035],
+    size: [width, height, 0.04],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.trim,
+    opacity: 1,
+    position: [x, y, z + sideOffset * 0.065],
+    size: [0.012, height * 0.9, 0.026],
+    ...layer,
+  });
+  if (!door) {
+    addHeroFidelityBox(group, {
+      color: 0xdfe8d8,
+      opacity: 0.76,
+      position: [x - width * 0.18, y + height * 0.22, z + sideOffset * 0.078],
+      size: [width * 0.22, height * 0.035, 0.018],
+      ...layer,
+    });
+  }
+}
+
+function addHeroSideReturnModule(group, { materials, length, plane, height, baseHeight, z, sideOffset, frontZ, layer }) {
+  const side = endpointHeroFacadeOverrides.franklin.sideReturn;
+  const sideWallX = plane.xMax - 0.085;
+  const sideDepth = side.depthUnits * 0.9;
+  const sideCenterZ = frontZ - sideOffset * sideDepth * 0.47;
+
+  addHeroFidelityBox(group, {
+    color: 0x6d322c,
+    opacity: 1,
+    position: [sideWallX, height * 0.53, sideCenterZ],
+    size: [0.08, height * 0.92, sideDepth],
+    ...layer,
+  });
+  for (let row = 0; row < 3; row += 1) {
+    const y = baseHeight + (height - baseHeight) * (0.24 + row * 0.21);
+    for (let col = 0; col < 4; col += 1) {
+      const wz = frontZ - sideOffset * sideDepth * (0.18 + col * 0.17);
+      addHeroSideWindow(group, {
+        x: sideWallX - 0.05,
+        y,
+        z: wz,
+        materials,
+        sideOffset,
+        ac: row === 0 && [0, 2].includes(col),
+        layer,
+      });
+    }
+  }
+  addHeroFidelityBox(group, {
+    color: materials.tanSign,
+    opacity: 1,
+    position: [sideWallX - 0.045, baseHeight * 0.96, frontZ - sideOffset * sideDepth * 0.23],
+    size: [0.08, baseHeight * 0.14, sideDepth * 0.45],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.blackCanopy,
+    opacity: 1,
+    position: [sideWallX - 0.075, baseHeight * 0.72, frontZ - sideOffset * sideDepth * 0.23],
+    size: [0.16, baseHeight * 0.09, sideDepth * 0.46],
+    ...layer,
+  });
+  addHeroSideBayModule(group, { x: sideWallX - 0.16, y: height * 0.56, z: frontZ - sideOffset * sideDepth * 0.62, materials, sideOffset, layer });
+  addHeroFireEscapeModule(group, { x: sideWallX - 0.22, baseHeight, height, z: frontZ - sideOffset * sideDepth * 0.76, materials, sideOffset, layer });
+  addHeroFidelityBox(group, {
+    color: materials.stoneCornice,
+    opacity: 1,
+    position: [sideWallX - 0.025, height + 0.09, sideCenterZ],
+    size: [0.105, 0.06, sideDepth],
+    ...layer,
+  });
+}
+
+function addHeroSideWindow(group, { x, y, z, materials, sideOffset, ac, layer }) {
+  addHeroFidelityBox(group, {
+    color: 0x221f1d,
+    opacity: 1,
+    position: [x, y, z],
+    size: [0.05, 0.16, 0.075],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.glass,
+    opacity: 1,
+    position: [x - 0.028, y, z],
+    size: [0.036, 0.12, 0.055],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.stoneCornice,
+    opacity: 1,
+    position: [x - 0.035, y - 0.08, z],
+    size: [0.028, 0.024, 0.085],
+    ...layer,
+  });
+  if (ac) {
+    addHeroFidelityBox(group, {
+      color: 0xdcdad0,
+      opacity: 1,
+      position: [x - 0.06, y - 0.095, z + sideOffset * 0.008],
+      size: [0.055, 0.042, 0.06],
+      ...layer,
+    });
+  }
+}
+
+function addHeroSideBayModule(group, { x, y, z, materials, sideOffset, layer }) {
+  addHeroFidelityBox(group, {
+    color: materials.sideBay ?? 0x735b44,
+    opacity: 1,
+    position: [x, y, z],
+    size: [0.22, 0.58, 0.24],
+    ...layer,
+  });
+  for (let row = 0; row < 3; row += 1) {
+    addHeroFidelityBox(group, {
+      color: 0x1f2422,
+      opacity: 1,
+      position: [x - 0.09, y - 0.2 + row * 0.2, z + sideOffset * 0.055],
+      size: [0.04, 0.13, 0.055],
+      ...layer,
+    });
+    addHeroFidelityBox(group, {
+      color: materials.glass,
+      opacity: 1,
+      position: [x - 0.118, y - 0.2 + row * 0.2, z + sideOffset * 0.06],
+      size: [0.026, 0.1, 0.04],
+      ...layer,
+    });
+  }
+}
+
+function addHeroFireEscapeModule(group, { x, baseHeight, height, z, materials, sideOffset, layer }) {
+  const railColor = materials.fireEscape ?? 0x111414;
+  for (let row = 0; row < 3; row += 1) {
+    const y = baseHeight + (height - baseHeight) * (0.22 + row * 0.2);
+    addHeroFidelityBox(group, {
+      color: railColor,
+      opacity: 1,
+      position: [x, y - 0.05, z],
+      size: [0.028, 0.022, 0.28],
+      ...layer,
+    });
+    for (let post = 0; post < 3; post += 1) {
+      addHeroFidelityBox(group, {
+        color: railColor,
+        opacity: 1,
+        position: [x, y + 0.015, z - sideOffset * (0.1 - post * 0.1)],
+        size: [0.02, 0.14, 0.016],
+        ...layer,
+      });
+    }
+  }
+}
+
+function addHeroStreetGroundingModule(group, { materials, length, plane, z, sideOffset, frontZ, layer, softLayer }) {
+  const centerX = plane.xMin + length / 2;
+  const sidewalkZ = z + sideOffset * 0.28;
+  const curbZ = z + sideOffset * 0.68;
+  const roadZ = z + sideOffset * 0.92;
+  addHeroFidelityBox(group, {
+    color: 0xa6ada5,
+    opacity: 1,
+    position: [centerX, 0.055, sidewalkZ],
+    size: [length * 1.18, 0.035, 0.58],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.curb,
+    opacity: 1,
+    position: [centerX, 0.078, curbZ],
+    size: [length * 1.2, 0.04, 0.08],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0x181f1e,
+    opacity: 0.88,
+    position: [centerX, 0.018, roadZ],
+    size: [length * 1.32, 0.022, 0.62],
+    ...softLayer,
+  });
+  for (let index = 0; index < 8; index += 1) {
+    addHeroFidelityBox(group, {
+      color: 0x5e6661,
+      opacity: 0.5,
+      position: [plane.xMin + length * (0.08 + index * 0.12), 0.084, sidewalkZ],
+      size: [0.01, 0.012, 0.5],
+      ...layer,
+    });
+  }
+  for (let index = 0; index < 7; index += 1) {
+    addHeroFidelityBox(group, {
+      color: materials.curb,
+      opacity: 1,
+      position: [plane.xMin + length * (0.1 + index * 0.08), 0.086, roadZ + sideOffset * (0.02 + index * 0.025)],
+      size: [length * 0.06, 0.025, 0.15],
+      ...layer,
+    });
+  }
+  addHeroFidelityBox(group, {
+    color: materials.tactilePaving ?? 0xb5554e,
+    opacity: 1,
+    position: [plane.xMax - length * 0.12, 0.096, curbZ - sideOffset * 0.1],
+    size: [length * 0.11, 0.018, 0.09],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.objectGreen ?? 0x6f8c56,
+    opacity: 1,
+    position: [plane.xMax - length * 0.34, 0.23, frontZ + sideOffset * 0.3],
+    size: [0.13, 0.32, 0.035],
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: materials.objectSticker ?? 0xd9d1b9,
+    opacity: 1,
+    position: [plane.xMax - length * 0.16, 0.18, frontZ + sideOffset * 0.36],
+    size: [0.13, 0.25, 0.11],
+    ...layer,
+  });
+  addHeroFidelityCylinder(group, {
+    color: 0x151817,
+    opacity: 1,
+    position: [plane.xMin + length * 0.08, 0.52, frontZ + sideOffset * 0.48],
+    radius: 0.018,
+    height: 1.04,
+    ...layer,
+  });
+  addHeroFidelityBox(group, {
+    color: 0xd1a13e,
+    opacity: 1,
+    position: [plane.xMin + length * 0.08, 0.86, frontZ + sideOffset * 0.52],
+    size: [0.075, 0.15, 0.055],
+    ...layer,
+  });
+  const bikeBaseX = plane.xMax + length * 0.02;
+  const bikeZ = z - sideOffset * 0.44;
+  for (let index = 0; index < 2; index += 1) {
+    addHeroFidelityCylinder(group, {
+      color: materials.trim,
+      opacity: 1,
+      position: [bikeBaseX + index * 0.11, 0.12, bikeZ - sideOffset * index * 0.05],
+      radius: 0.042,
+      height: 0.012,
+      ...layer,
+    });
+    addHeroFidelityBox(group, {
+      color: materials.trim,
+      opacity: 1,
+      position: [bikeBaseX + 0.05 + index * 0.11, 0.16, bikeZ - sideOffset * (0.02 + index * 0.05)],
+      size: [0.11, 0.016, 0.02],
+      ...layer,
+    });
+  }
+}
+
+function addHeroFidelityBox(group, options) {
+  addEvidenceFacadeBox(group, {
+    ...options,
+    opaque: options.opaque ?? true,
+    depthTest: options.depthTest ?? false,
+    renderOrder: options.renderOrder ?? 12,
+  });
+}
+
+function addHeroFidelityCylinder(group, options) {
+  addEvidenceFacadeCylinder(group, {
+    ...options,
+    opaque: options.opaque ?? true,
+    depthTest: options.depthTest ?? false,
+    renderOrder: options.renderOrder ?? 12,
+  });
+}
+
+function addMeasuredFacadeBelts(group, { heroOverride, materials, length, plane, height, baseHeight, frontZ, sideOffset, frontLayer }) {
+  const centerX = plane.xMin + length / 2;
+  const beltYs = [
+    baseHeight + (height - baseHeight) * 0.14,
+    baseHeight + (height - baseHeight) * 0.46,
+    height * 0.86,
+  ];
+
+  for (const y of beltYs) {
+    addEvidenceFacadeBox(group, {
+      color: materials.brickShadow,
+      opacity: 0.62,
+      position: [centerX, y, frontZ + sideOffset * 0.088],
+      size: [length * 0.9, 0.018, 0.038],
+      ...frontLayer,
+    });
+  }
+
+  const pierWidth = Math.max(length * (heroOverride.massing.cornerPierWidthRatio ?? 0.03), 0.026);
+  for (const x of [plane.xMin + pierWidth * 0.5, plane.xMax - pierWidth * 0.5]) {
+    addEvidenceFacadeBox(group, {
+      color: materials.brickShadow,
+      opacity: 0.72,
+      position: [x, baseHeight + (height - baseHeight) * 0.48, frontZ + sideOffset * 0.096],
+      size: [pierWidth, (height - baseHeight) * 0.9, 0.045],
+      ...frontLayer,
+    });
+  }
+}
+
+function addMeasuredRoofline(group, { heroOverride, materials, length, plane, height, z, sideOffset, frontZ, frontLayer }) {
+  const roofDepth = heroOverride.massing.roofInsetDepthUnits;
+  if (!roofDepth) return;
+
+  const centerX = plane.xMin + length / 2;
+  const roofWidth = length * (heroOverride.massing.roofInsetWidthRatio ?? 0.7);
+  const roofZ = z - sideOffset * roofDepth * 0.22;
+  const rimColor = materials.roofRim ?? materials.stoneCornice;
+
+  addEvidenceFacadeBox(group, {
+    color: materials.roof ?? 0x4b4640,
+    opacity: 0.82,
+    position: [centerX, height + 0.045, roofZ],
+    size: [roofWidth, 0.035, roofDepth],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: rimColor,
+    opacity: 0.92,
+    position: [centerX, height + 0.105, frontZ + sideOffset * 0.08],
+    size: [length * 1.05, 0.04, 0.11],
+    ...frontLayer,
+  });
+
+  const side = heroOverride.sideReturn;
+  const edgeX = side.edge === "right" ? plane.xMax : plane.xMin;
+  const returnDirection = side.edge === "right" ? -1 : 1;
+  addEvidenceFacadeBox(group, {
+    color: rimColor,
+    opacity: 0.88,
+    position: [edgeX + returnDirection * 0.028, height + 0.1, z - sideOffset * roofDepth * 0.28],
+    size: [0.07, 0.038, roofDepth * 0.92],
+    ...frontLayer,
+  });
+
+  for (let index = 0; index < 6; index += 1) {
+    addEvidenceFacadeBox(group, {
+      color: 0x2f2e2a,
+      opacity: 0.4,
+      position: [centerX - roofWidth * 0.36 + roofWidth * 0.14 * index, height + 0.072, roofZ],
+      size: [0.018, 0.012, roofDepth * 0.78],
+      ...frontLayer,
+    });
+  }
+}
+
+function addMeasuredStorefrontBay(group, { baySpan, heroOverride, materials, baseHeight, frontZ, sideOffset, frontLayer }) {
+  const signPalette = getMeasuredSignColors(baySpan.signBand, materials);
+  const lowerColor = getMeasuredLowerPanelColor(baySpan.lowerPanel, materials);
+  const glassBeats = clampInteger(baySpan.glassBeats, 1, 3, 1);
+  const bayZ = frontZ + sideOffset * (heroOverride.frontFacade.reliefPlaneDepthUnits * 0.7);
+  const isDarkNeighbor = baySpan.role.includes("neighbor") || baySpan.role.includes("dark");
+
+  addEvidenceFacadeBox(group, {
+    color: isDarkNeighbor ? materials.storefrontBase : materials.tanSign,
+    opacity: isDarkNeighbor ? 0.86 : 0.74,
+    position: [baySpan.center, baseHeight * 0.45, bayZ],
+    size: [baySpan.width * 0.96, baseHeight * 0.86, 0.06],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.trim,
+    opacity: 0.76,
+    position: [baySpan.center, baseHeight * 0.47, bayZ + sideOffset * 0.035],
+    size: [baySpan.width * 0.9, baseHeight * 0.82, 0.028],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: signPalette.base,
+    opacity: 0.98,
+    position: [baySpan.center, baseHeight * heroOverride.frontFacade.signBandHeightRatio / heroOverride.massing.baseHeightRatio, bayZ + sideOffset * 0.04],
+    size: [baySpan.width * 0.92, baseHeight * 0.15, 0.08],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.trim,
+    opacity: 0.72,
+    position: [baySpan.center, baseHeight * 1.02, bayZ + sideOffset * 0.018],
+    size: [baySpan.width * 0.94, baseHeight * 0.024, 0.09],
+    ...frontLayer,
+  });
+  if (signPalette.accent) {
+    addEvidenceFacadeBox(group, {
+      color: signPalette.accent,
+      opacity: 0.98,
+      position: [baySpan.center, baseHeight * 0.93, bayZ + sideOffset * 0.085],
+      size: [baySpan.width * 0.42, baseHeight * 0.06, 0.06],
+      ...frontLayer,
+    });
+    if (baySpan.signBand?.includes("primary")) {
+      const cueCount = 5;
+      for (let index = 0; index < cueCount; index += 1) {
+        addEvidenceFacadeBox(group, {
+          color: signPalette.accent,
+          opacity: 0.82,
+          position: [baySpan.center - baySpan.width * 0.18 + baySpan.width * 0.09 * index, baseHeight * 1.01, bayZ + sideOffset * 0.12],
+          size: [baySpan.width * 0.035, baseHeight * 0.105, 0.035],
+          ...frontLayer,
+        });
+      }
+    }
+  }
+  addEvidenceFacadeBox(group, {
+    color: lowerColor,
+    opacity: 0.88,
+    position: [baySpan.center, baseHeight * 0.15, bayZ + sideOffset * 0.06],
+    size: [baySpan.width * 0.84, baseHeight * 0.18, 0.055],
+    ...frontLayer,
+  });
+
+  const usableWidth = baySpan.width * 0.78;
+  const beatWidth = usableWidth / glassBeats;
+  const startX = baySpan.center - usableWidth / 2;
+  for (let beat = 0; beat < glassBeats; beat += 1) {
+    const beatCenter = startX + beatWidth * beat + beatWidth / 2;
+    const isDoor = baySpan.door === "center"
+      ? beat === Math.floor(glassBeats / 2)
+      : baySpan.door === "right"
+        ? beat === glassBeats - 1
+        : baySpan.door === "left" && beat === 0;
+    const glassWidth = Math.max(beatWidth * (isDoor ? 0.58 : 0.72), 0.045);
+    const glassHeight = isDoor ? baseHeight * 0.58 : baseHeight * heroOverride.frontFacade.storefrontGlassHeightRatio / heroOverride.massing.baseHeightRatio;
+    const glassY = isDoor ? baseHeight * 0.36 : baseHeight * 0.43;
+
+    addEvidenceFacadeBox(group, {
+      color: materials.trim,
+      opacity: 0.96,
+      position: [beatCenter, glassY, bayZ + sideOffset * 0.105],
+      size: [glassWidth * 1.18, glassHeight * 1.08, 0.052],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: isDoor ? 0x1b2321 : materials.glass,
+      opacity: isDoor ? 0.96 : 0.9,
+      position: [beatCenter, glassY, bayZ + sideOffset * 0.14],
+      size: [glassWidth, glassHeight, 0.05],
+      ...frontLayer,
+    });
+    if (!isDoor && glassBeats > 1) {
+      addEvidenceFacadeBox(group, {
+        color: materials.trim,
+        opacity: 0.78,
+        position: [beatCenter, glassY, bayZ + sideOffset * 0.172],
+        size: [0.012, glassHeight * 0.92, 0.035],
+        ...frontLayer,
+      });
+    }
+  }
+
+  if (baySpan.index > 0) {
+    addEvidenceFacadeBox(group, {
+      color: materials.trim,
+      opacity: 0.94,
+      position: [baySpan.xMin, baseHeight * 0.45, bayZ + sideOffset * 0.16],
+      size: [0.022, baseHeight * 0.84, 0.052],
+      ...frontLayer,
+    });
+  }
+  addEvidenceFacadeBox(group, {
+    color: materials.storefrontBase,
+    opacity: baySpan.role.includes("corner") ? 0.98 : 0.82,
+    position: [baySpan.xMax - baySpan.width * 0.02, baseHeight * 0.41, bayZ + sideOffset * 0.17],
+    size: [0.014, baseHeight * 0.68, 0.07],
+    ...frontLayer,
+  });
+}
+
+function addMeasuredCanopies(group, { heroOverride, materials, baySpans, baseHeight, frontZ, sideOffset, frontLayer }) {
+  for (const canopy of heroOverride.canopies) {
+    const startBay = baySpans[canopy.bayStart] ?? baySpans[0];
+    const endBay = baySpans[Math.max(canopy.bayEnd - 1, canopy.bayStart)] ?? baySpans[baySpans.length - 1];
+    if (!startBay || !endBay) continue;
+    const xMin = startBay.xMin;
+    const xMax = endBay.xMax;
+    addEvidenceFacadeBox(group, {
+      color: canopy.color ?? materials.blackCanopy,
+      opacity: 0.98,
+      position: [(xMin + xMax) / 2, baseHeight * 0.68, frontZ + sideOffset * (0.18 + canopy.depthUnits * 0.35)],
+      size: [(xMax - xMin) * 0.98, baseHeight * 0.09, canopy.depthUnits],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0x171918,
+      opacity: 0.92,
+      position: [(xMin + xMax) / 2, baseHeight * 0.61, frontZ + sideOffset * (0.2 + canopy.depthUnits * 0.54)],
+      size: [(xMax - xMin) * 0.96, baseHeight * 0.035, canopy.depthUnits * 0.78],
+      ...frontLayer,
+    });
+  }
+}
+
+function addMeasuredUpperWindows(group, { heroOverride, materials, length, plane, height, baseHeight, frontZ, sideOffset, frontLayer }) {
+  const upper = heroOverride.upperWindows;
+  const ratios = normalizeCadence(upper.bayRatios);
+  const centers = getRatioCenters(plane, length, ratios);
+  const upperTop = height - Math.max(height * 0.11, 0.12);
+  const upperBottom = baseHeight + Math.max((height - baseHeight) * 0.16, 0.1);
+  const rowGap = (upperTop - upperBottom) / Math.max(upper.rows - 1, 1);
+  const hardRelief = { opaque: false, depthTest: false, renderOrder: 4 };
+
+  for (let row = 0; row < upper.rows; row += 1) {
+    const y = upper.rows === 1 ? (upperTop + upperBottom) / 2 : upperBottom + rowGap * row;
+    const rowWindowHeight = heroOverride === endpointHeroFacadeOverrides.franklin ? 0.16 : 0.14;
+    for (let index = 0; index < centers.length; index += 1) {
+      const segment = centers[index];
+      const windowWidth = Math.max(Math.min(segment.width * 0.42, 0.16), 0.05);
+      const windowHeight = rowWindowHeight;
+      addEvidenceFacadeBox(group, {
+        color: upper.frameColor,
+        opacity: 1,
+        position: [segment.center, y, frontZ + sideOffset * 0.11],
+        size: [windowWidth * 1.32, windowHeight * 1.42, 0.052],
+        ...hardRelief,
+      });
+      addEvidenceFacadeBox(group, {
+        color: upper.glassColor,
+        opacity: 1,
+        position: [segment.center, y, frontZ + sideOffset * 0.145],
+        size: [windowWidth * 1.06, windowHeight * 1.04, 0.046],
+        ...hardRelief,
+      });
+      addEvidenceFacadeBox(group, {
+        color: upper.sillColor,
+        opacity: 1,
+        position: [segment.center, y - windowHeight * 0.74, frontZ + sideOffset * 0.15],
+        size: [windowWidth * 1.3, 0.024, 0.046],
+        ...hardRelief,
+      });
+      if (upper.archTop) {
+        addEvidenceFacadeBox(group, {
+          color: upper.sillColor,
+          opacity: 1,
+          position: [segment.center, y + windowHeight * 0.78, frontZ + sideOffset * 0.15],
+          size: [windowWidth * 0.82, 0.034, 0.045],
+          ...hardRelief,
+        });
+        addEvidenceFacadeBox(group, {
+          color: materials.brickShadow,
+          opacity: 0.86,
+          position: [segment.center, y + windowHeight * 0.94, frontZ + sideOffset * 0.132],
+          size: [windowWidth * 1.12, 0.018, 0.03],
+          ...hardRelief,
+        });
+      }
+      if (upper.acUnitBays?.includes(index) && row === 0) {
+        addEvidenceFacadeBox(group, {
+          color: 0xdedbd0,
+          opacity: 1,
+          position: [segment.center + segment.width * 0.13, y - windowHeight * 0.78, frontZ + sideOffset * 0.18],
+          size: [windowWidth * 0.5, 0.035, 0.045],
+          ...hardRelief,
+        });
+      }
+    }
+    if (upper.lintelPanelRows && row < upper.lintelPanelRows) {
+      addEvidenceFacadeBox(group, {
+        color: materials.brickShadow,
+        opacity: 0.58,
+        position: [plane.xMin + length / 2, y + rowWindowHeight * 1.2, frontZ + sideOffset * 0.095],
+        size: [length * 0.82, 0.018, 0.025],
+        ...frontLayer,
+      });
+      for (let panel = 0; panel < 7; panel += 1) {
+        addEvidenceFacadeBox(group, {
+          color: materials.mortarLine,
+          opacity: 0.42,
+          position: [plane.xMin + length * (0.15 + panel * 0.115), y + rowWindowHeight * 1.2, frontZ + sideOffset * 0.118],
+          size: [length * 0.048, 0.028, 0.026],
+          ...frontLayer,
+        });
+      }
+    }
+  }
+}
+
+function addMeasuredCornice(group, { heroOverride, materials, length, plane, height, frontZ, sideOffset, frontLayer }) {
+  const centerX = plane.xMin + length / 2;
+  for (const band of heroOverride.cornice.parapetBands) {
+    addEvidenceFacadeBox(group, {
+      color: band.color ?? materials.stoneCornice,
+      opacity: 0.96,
+      position: [centerX, height * band.heightRatio, frontZ + sideOffset * band.projectionUnits],
+      size: [length * 1.04, band.thicknessUnits, 0.065 + band.projectionUnits],
+      ...frontLayer,
+    });
+  }
+  if (heroOverride.cornice.dentilCount) {
+    const dentilWidth = length / heroOverride.cornice.dentilCount;
+    for (let index = 0; index < heroOverride.cornice.dentilCount; index += 1) {
+      if (index % 2) continue;
+      addEvidenceFacadeBox(group, {
+        color: materials.stoneCornice,
+        opacity: 0.78,
+        position: [plane.xMin + dentilWidth * index + dentilWidth / 2, height + 0.075, frontZ + sideOffset * 0.2],
+        size: [dentilWidth * 0.48, 0.04, 0.07],
+        ...frontLayer,
+      });
+    }
+  }
+  if (heroOverride.cornice.roofPosts) {
+    for (let index = 0; index < heroOverride.cornice.roofPosts; index += 1) {
+      addEvidenceFacadeCylinder(group, {
+        color: materials.trim,
+        opacity: 0.72,
+        position: [plane.xMin + length * (0.18 + index * 0.14), height + 0.19, frontZ - sideOffset * 0.08],
+        radius: 0.009,
+        height: 0.36,
+        ...frontLayer,
+      });
+    }
+  }
+}
+
+function addMeasuredSideReturn(group, { heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, frontZ, frontLayer }) {
+  const side = heroOverride.sideReturn;
+  const edgeX = side.edge === "right" ? plane.xMax : plane.xMin;
+  const returnDirection = side.edge === "right" ? -1 : 1;
+  const returnWidth = Math.max(length * side.visibleWidthRatio, 0.08);
+  const sideWallX = edgeX + returnDirection * 0.03;
+  const returnX = edgeX + returnDirection * returnWidth / 2;
+  const returnZ = z - sideOffset * (side.depthUnits * 0.4);
+  const returnBackZ = frontZ - sideOffset * (side.depthUnits * 0.92);
+  const hardRelief = { opaque: false, depthTest: false, renderOrder: 4 };
+  const hasHeroFidelityLayer = heroOverride.heroFidelityLayer && heroOverride === endpointHeroFacadeOverrides.franklin;
+  const sideShadowOpacity = hasHeroFidelityLayer ? 0.035 : 0.52;
+  const sideBodyOpacity = hasHeroFidelityLayer ? 0.07 : 0.82;
+  const sideBaseOpacity = hasHeroFidelityLayer ? 0.055 : 0.78;
+
+  addEvidenceFacadeBox(group, {
+    color: materials.brickShadow,
+    opacity: sideShadowOpacity,
+    position: [returnX, height * 0.5, returnZ],
+    size: [returnWidth, height * 0.94, side.depthUnits * 0.92],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.bodyBrick,
+    opacity: sideBodyOpacity,
+    position: [sideWallX, baseHeight + (height - baseHeight) * 0.5, returnZ],
+    size: [0.07, (height - baseHeight) * 0.98, side.depthUnits * 0.9],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.brickShadow,
+    opacity: sideBaseOpacity,
+    position: [sideWallX + returnDirection * 0.025, baseHeight * 0.5, returnZ],
+    size: [0.09, baseHeight * 0.92, side.depthUnits * 0.9],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.tanSign,
+    opacity: 0.9,
+    position: [sideWallX + returnDirection * 0.028, baseHeight * 0.9, frontZ - sideOffset * side.depthUnits * 0.26],
+    size: [0.08, baseHeight * 0.13, side.depthUnits * 0.48],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.blackCanopy,
+    opacity: 0.94,
+    position: [sideWallX + returnDirection * 0.055, baseHeight * 0.66, frontZ - sideOffset * side.depthUnits * 0.26],
+    size: [0.16, baseHeight * 0.08, side.depthUnits * 0.52],
+    ...frontLayer,
+  });
+
+  const returnBays = clampInteger(side.storefrontReturnBays, 1, 5, 2);
+  for (let index = 0; index < returnBays; index += 1) {
+    const bayZ = frontZ - sideOffset * (side.depthUnits * (0.12 + index * 0.18));
+    const bayHeight = index === 0 ? baseHeight * 0.56 : baseHeight * 0.42;
+    addEvidenceFacadeBox(group, {
+      color: materials.trim,
+      opacity: 0.94,
+      position: [sideWallX + returnDirection * 0.085, baseHeight * 0.38, bayZ],
+      size: [0.052, bayHeight * 1.12, side.depthUnits * 0.11],
+      ...hardRelief,
+    });
+    addEvidenceFacadeBox(group, {
+      color: index === 0 ? 0x1c2322 : materials.glass,
+      opacity: 0.92,
+      position: [sideWallX + returnDirection * 0.116, baseHeight * 0.38, bayZ],
+      size: [0.045, bayHeight, side.depthUnits * 0.085],
+      ...hardRelief,
+    });
+  }
+
+  for (let row = 0; row < side.upperWindowRows; row += 1) {
+    const y = baseHeight + (height - baseHeight) * (0.24 + row * 0.22);
+    for (let col = 0; col < side.upperWindowColumns; col += 1) {
+      const columnRatio = (col + 0.52) / Math.max(side.upperWindowColumns, 1);
+      const windowZ = frontZ - sideOffset * (side.depthUnits * (0.14 + columnRatio * 0.66));
+      addEvidenceFacadeBox(group, {
+        color: materials.trim,
+        opacity: 1,
+        position: [sideWallX + returnDirection * 0.09, y, windowZ],
+        size: [0.052, 0.17, side.depthUnits * 0.075],
+        ...hardRelief,
+      });
+      addEvidenceFacadeBox(group, {
+        color: materials.glass,
+        opacity: 1,
+        position: [sideWallX + returnDirection * 0.122, y, windowZ],
+        size: [0.046, 0.135, side.depthUnits * 0.055],
+        ...hardRelief,
+      });
+      if (side.acUnitSlots?.includes(col) && row === 0) {
+        addEvidenceFacadeBox(group, {
+          color: 0xdedbd0,
+          opacity: 0.96,
+          position: [sideWallX + returnDirection * 0.156, y - 0.08, windowZ + sideOffset * 0.012],
+          size: [0.06, 0.04, side.depthUnits * 0.052],
+          ...hardRelief,
+        });
+      }
+    }
+  }
+
+  if (side.hasProjectingBay) {
+    const bayZ = frontZ - sideOffset * side.depthUnits * 0.62;
+    addEvidenceFacadeBox(group, {
+      color: materials.sideBay ?? 0x7a6a59,
+      opacity: 0.9,
+      position: [sideWallX + returnDirection * 0.14, height * 0.57, bayZ],
+      size: [side.bayProjectionDepthUnits ?? 0.16, height * 0.44, side.depthUnits * 0.18],
+      ...frontLayer,
+    });
+    for (let row = 0; row < 3; row += 1) {
+      addEvidenceFacadeBox(group, {
+        color: materials.glass,
+        opacity: 0.9,
+        position: [sideWallX + returnDirection * 0.235, baseHeight + (height - baseHeight) * (0.25 + row * 0.19), bayZ],
+        size: [0.036, 0.12, side.depthUnits * 0.08],
+        ...hardRelief,
+      });
+    }
+  }
+
+  if (side.hasFireEscape) {
+    const railColor = materials.fireEscape ?? 0x121515;
+    const fireZ = frontZ - sideOffset * side.depthUnits * 0.73;
+    for (let row = 0; row < 3; row += 1) {
+      const y = baseHeight + (height - baseHeight) * (0.22 + row * 0.2);
+      addEvidenceFacadeBox(group, {
+        color: railColor,
+        opacity: 0.86,
+        position: [sideWallX + returnDirection * 0.205, y - 0.035, fireZ],
+        size: [0.022, 0.024, side.depthUnits * 0.24],
+        ...hardRelief,
+      });
+      addEvidenceFacadeBox(group, {
+        color: railColor,
+        opacity: 0.78,
+        position: [sideWallX + returnDirection * 0.205, y + 0.04, fireZ],
+        size: [0.02, 0.13, 0.018],
+        ...hardRelief,
+      });
+      addEvidenceFacadeBox(group, {
+        color: railColor,
+        opacity: 0.78,
+        position: [sideWallX + returnDirection * 0.205, y + 0.04, fireZ - sideOffset * side.depthUnits * 0.1],
+        size: [0.02, 0.13, 0.018],
+        ...hardRelief,
+      });
+    }
+  }
+
+  addEvidenceFacadeBox(group, {
+    color: materials.stoneCornice,
+    opacity: 0.84,
+    position: [sideWallX + returnDirection * 0.04, height + 0.06, returnZ],
+    size: [0.09, 0.055, side.depthUnits * 0.94],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.brickShadow,
+    opacity: sideShadowOpacity,
+    position: [sideWallX, height * 0.5, returnBackZ],
+    size: [0.075, height * 0.88, 0.035],
+    ...frontLayer,
+  });
+  for (const ratio of side.panelRhythm ?? []) {
+    const seamZ = frontZ - sideOffset * side.depthUnits * ratio;
+    addEvidenceFacadeBox(group, {
+      color: materials.mortarLine,
+      opacity: 0.28,
+      position: [sideWallX + returnDirection * 0.045, height * 0.56, seamZ],
+      size: [0.058, height * 0.72, 0.01],
+      ...frontLayer,
+    });
+  }
+}
+
+function addMeasuredStreetGrounding(group, { heroOverride, materials, length, plane, z, sideOffset, frontLayer }) {
+  const ground = heroOverride.streetGrounding;
+  const centerX = plane.xMin + length / 2;
+  const sidewalkZ = z + sideOffset * (ground.frontDepthUnits * 0.58);
+  const curbZ = z + sideOffset * (ground.frontDepthUnits + 0.08);
+  const roadZ = z + sideOffset * (ground.frontDepthUnits + 0.34);
+
+  addEvidenceFacadeBox(group, {
+    color: materials.sidewalk,
+    opacity: 0.78,
+    position: [centerX, 0.035, sidewalkZ],
+    size: [length * ground.slabWidthMultiplier, 0.035, ground.frontDepthUnits],
+    ...frontLayer,
+  });
+  if (ground.genericContext?.includes("sidewalk_slab_seams")) {
+    for (let index = 0; index < 7; index += 1) {
+      const x = plane.xMin + length * (0.08 + index * 0.14);
+      addEvidenceFacadeBox(group, {
+        color: 0x5d6460,
+        opacity: 0.34,
+        position: [x, 0.071, sidewalkZ],
+        size: [0.012, 0.012, ground.frontDepthUnits * 0.88],
+        ...frontLayer,
+      });
+    }
+    for (let index = 0; index < 3; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: 0x5d6460,
+        opacity: 0.3,
+        position: [centerX, 0.073, sidewalkZ - sideOffset * ground.frontDepthUnits * (0.28 - index * 0.28)],
+        size: [length * ground.slabWidthMultiplier * 0.9, 0.012, 0.012],
+        ...frontLayer,
+      });
+    }
+  }
+  addEvidenceFacadeBox(group, {
+    color: materials.sidewalk,
+    opacity: 0.68,
+    position: [heroOverride.sideReturn.edge === "right" ? plane.xMax - length * 0.08 : plane.xMin + length * 0.08, 0.032, z - sideOffset * (ground.sideDepthUnits * 0.28)],
+    size: [length * 0.22, 0.032, ground.sideDepthUnits],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.curb,
+    opacity: 0.9,
+    position: [centerX, 0.06, curbZ],
+    size: [length * ground.slabWidthMultiplier, 0.035, 0.08],
+    ...frontLayer,
+  });
+  addEvidenceFacadeBox(group, {
+    color: materials.road,
+    opacity: 0.82,
+    position: [centerX, 0.016, roadZ],
+    size: [length * (ground.slabWidthMultiplier + 0.08), 0.02, 0.5],
+    ...frontLayer,
+  });
+
+  if (ground.curbReturnRadiusUnits) {
+    const edgeX = heroOverride.sideReturn.edge === "right" ? plane.xMax : plane.xMin;
+    addEvidenceFacadeBox(group, {
+      color: materials.curb,
+      opacity: 0.86,
+      position: [edgeX, 0.062, curbZ - sideOffset * 0.06],
+      size: [ground.curbReturnRadiusUnits, 0.034, ground.curbReturnRadiusUnits],
+      ...frontLayer,
+    });
+    if (ground.genericContext?.includes("tactile_paving")) {
+      addEvidenceFacadeBox(group, {
+        color: materials.tactilePaving ?? 0xb5554e,
+        opacity: 0.86,
+        position: [edgeX - (heroOverride.sideReturn.edge === "right" ? length * 0.08 : -length * 0.08), 0.083, curbZ - sideOffset * 0.11],
+        size: [length * 0.1, 0.018, 0.09],
+        ...frontLayer,
+      });
+      addEvidenceFacadeBox(group, {
+        color: materials.tactilePaving ?? 0xb5554e,
+        opacity: 0.8,
+        position: [edgeX - (heroOverride.sideReturn.edge === "right" ? length * 0.02 : -length * 0.02), 0.083, z - sideOffset * (ground.sideDepthUnits * 0.55)],
+        size: [length * 0.08, 0.018, 0.09],
+        ...frontLayer,
+      });
+    }
+  }
+
+  if (ground.crosswalk?.enabled) {
+    const stripeCount = clampInteger(ground.crosswalk.stripeCount, 3, 9, 5);
+    for (let index = 0; index < stripeCount; index += 1) {
+      addEvidenceFacadeBox(group, {
+        color: materials.curb,
+        opacity: 0.78,
+        position: [plane.xMin + length * (0.1 + index * 0.075), 0.076, roadZ + sideOffset * (0.05 + index * 0.032)],
+        size: [length * 0.055, 0.02, 0.16],
+        ...frontLayer,
+      });
+    }
+  }
+
+  const objectX = heroOverride.sideReturn.edge === "right" ? plane.xMax - length * 0.16 : plane.xMin + length * 0.16;
+  if (ground.genericContext?.includes("a_frame_board")) {
+    addEvidenceFacadeBox(group, {
+      color: materials.objectGreen ?? 0x6f8c56,
+      opacity: 0.86,
+      position: [objectX - length * 0.13, 0.22, sidewalkZ + sideOffset * 0.04],
+      size: [0.13, 0.34, 0.035],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: 0xf0ead7,
+      opacity: 0.58,
+      position: [objectX - length * 0.13, 0.24, sidewalkZ + sideOffset * 0.062],
+      size: [0.08, 0.16, 0.02],
+      ...frontLayer,
+    });
+  }
+  if (ground.genericContext?.includes("newspaper_box")) {
+    addEvidenceFacadeBox(group, {
+      color: materials.objectSticker ?? 0xd9d1b9,
+      opacity: 0.86,
+      position: [objectX + length * 0.04, 0.17, sidewalkZ + sideOffset * 0.12],
+      size: [0.13, 0.25, 0.12],
+      ...frontLayer,
+    });
+    addEvidenceFacadeBox(group, {
+      color: materials.storefrontBase,
+      opacity: 0.6,
+      position: [objectX + length * 0.04, 0.23, sidewalkZ + sideOffset * 0.19],
+      size: [0.08, 0.06, 0.025],
+      ...frontLayer,
+    });
+  }
+  if (ground.genericContext?.includes("bike_cluster")) {
+    const bikeBaseX = heroOverride.sideReturn.edge === "right" ? plane.xMax + length * 0.04 : plane.xMin - length * 0.04;
+    const bikeZ = z - sideOffset * (ground.sideDepthUnits * 0.54);
+    for (let index = 0; index < 2; index += 1) {
+      const x = bikeBaseX + (index ? 0.11 : 0);
+      addEvidenceFacadeCylinder(group, {
+        color: materials.trim,
+        opacity: 0.82,
+        position: [x, 0.12, bikeZ - sideOffset * index * 0.05],
+        radius: 0.045,
+        height: 0.012,
+        ...frontLayer,
+      });
+      addEvidenceFacadeBox(group, {
+        color: materials.trim,
+        opacity: 0.76,
+        position: [x + 0.045, 0.16, bikeZ - sideOffset * (0.02 + index * 0.05)],
+        size: [0.12, 0.016, 0.02],
+        ...frontLayer,
+      });
+    }
+  }
+}
+
+function addMeasuredBrickRows(group, { materials, length, plane, height, baseHeight, frontZ, sideOffset, rowCount, frontLayer }) {
+  for (let row = 0; row < rowCount; row += 1) {
+    const y = baseHeight + (height - baseHeight) * (0.08 + row * 0.065);
+    if (y > height * 0.94) break;
+    addEvidenceFacadeBox(group, {
+      color: materials.mortarLine,
+      opacity: 0.26,
+      position: [plane.xMin + length / 2, y, frontZ + sideOffset * 0.08],
+      size: [length * 0.9, 0.006, 0.032],
+      ...frontLayer,
+    });
+  }
+}
+
+function getMeasuredSignColors(signBand, materials) {
+  if (signBand?.includes("green")) return { base: signBand.includes("black") ? materials.storefrontBase : materials.tanSign, accent: materials.greenSign };
+  if (signBand?.includes("black")) return { base: materials.storefrontBase, accent: null };
+  return { base: materials.tanSign, accent: null };
+}
+
+function getMeasuredLowerPanelColor(lowerPanel, materials) {
+  if (lowerPanel?.includes("red")) return materials.bodyBrick;
+  if (lowerPanel?.includes("green")) return materials.greenSign;
+  if (lowerPanel?.includes("poster")) return 0xb74338;
+  return materials.storefrontBase;
 }
 
 function addStreetBaseCadence(group, { modules, palette, length, plane, height, splitY, z, sideOffset, depth }) {
@@ -4053,18 +6426,22 @@ function addQAFacadeBox(group, { color, opacity, position, size }) {
   group.add(mesh);
 }
 
-function addEvidenceFacadeBox(group, { color, opacity, position, size, opaque = true }) {
+function addEvidenceFacadeBox(group, { color, opacity, position, size, opaque = true, depthTest = true, renderOrder = 0 }) {
   const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(...size),
     new THREE.MeshStandardMaterial({
       color,
+      emissive: color,
+      emissiveIntensity: 0.08,
       roughness: 0.72,
       metalness: 0.02,
       transparent: !opaque,
       opacity: opaque ? 1 : 0,
       depthWrite: opaque,
+      depthTest,
     }),
   );
+  mesh.renderOrder = renderOrder;
   mesh.position.set(...position);
   mesh.userData.stateRole = "evidenceFacadeCue";
   mesh.userData.qaOpacity = opacity;
@@ -4173,18 +6550,22 @@ function addSyntheticContextBox(group, { color, opacity, position, size }) {
   group.add(mesh);
 }
 
-function addEvidenceFacadeCylinder(group, { color, opacity, position, radius, height, opaque = true }) {
+function addEvidenceFacadeCylinder(group, { color, opacity, position, radius, height, opaque = true, depthTest = true, renderOrder = 0 }) {
   const mesh = new THREE.Mesh(
     new THREE.CylinderGeometry(radius, radius, height, 8),
     new THREE.MeshStandardMaterial({
       color,
+      emissive: color,
+      emissiveIntensity: 0.08,
       roughness: 0.66,
       metalness: 0.03,
       transparent: !opaque,
       opacity: opaque ? 1 : 0,
       depthWrite: opaque,
+      depthTest,
     }),
   );
+  mesh.renderOrder = renderOrder;
   mesh.position.set(...position);
   mesh.userData.stateRole = "evidenceFacadeCue";
   mesh.userData.qaOpacity = opacity;
@@ -4348,7 +6729,7 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             : isHovered
               ? 0.58
               : visualPoc
-                ? child.userData.hasEvidenceFacade ? 0.08 : 0.02
+                ? child.userData.hasEvidenceFacade ? 0.025 : 0.02
               : qaEnabled
                 ? child.userData.hasEvidenceFacade ? 0 : 0.003
                 : 0.4;
@@ -4358,7 +6739,7 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             : isHovered
               ? 0.72
               : visualPoc
-                ? child.userData.hasEvidenceFacade ? 0.12 : 0.035
+                ? child.userData.hasEvidenceFacade ? 0.025 : 0.035
               : qaEnabled
                 ? child.userData.hasEvidenceFacade ? 0 : 0.003
                 : 0.94;

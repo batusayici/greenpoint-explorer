@@ -55,15 +55,207 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4M-POC: Existing Runtime Endpoint Fidelity Patch` is complete and verified at the Batu review gate.
+- Current phase: `Batch 4M-R5: Franklin Hero Corner Fidelity Layer` is complete and verified at the Batu review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-POC Batu visual review gate with no executable batch and no pre-authorized queue.
-- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. Batu then opened a bounded 4M-POC acceleration patch to improve the existing Phase 4 runtime endpoint visuals directly using current 4J/4K/4L records and repo-local evidence only. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R5 Batu visual review gate with no executable batch and no pre-authorized queue.
+- Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. Batu then opened bounded 4M runtime passes through 4M-R5 to improve the existing Phase 4 endpoint visuals directly using measured overrides and repo-local evidence only. 4M-R5 adds a Franklin QA-only low-poly fidelity layer, lowers the older translucent backing, and improves brick/window/cornice/awning/storefront/side-return/street-grounding read while preserving QA-only status. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces, module boundaries, architecture changes, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-09 - Batch 4M-R5 Franklin Hero Corner Fidelity Layer
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Continue from 4M-R4 in the existing runtime scene and add a bounded Franklin QA-only low-poly fidelity layer so the hero corner reads less like translucent code-native boxes, without creating a new scaffold, renderer architecture, data lane, dependency, source integration, production asset, normal-mode exposure, exact claim, or commit.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r5-franklin-hero-corner-fidelity-layer.md`
+- `docs/review-screenshots/phase-4m-r5-franklin-hero-corner-fidelity-layer/franklin-benchmark-close-r5.png`
+- `docs/review-screenshots/phase-4m-r5-franklin-hero-corner-fidelity-layer/franklin-side-return-corner-wrap-r5.png`
+- `docs/review-screenshots/phase-4m-r5-franklin-hero-corner-fidelity-layer/franklin-street-level-lower-oblique-r5.png`
+- `docs/review-screenshots/phase-4m-r5-franklin-hero-corner-fidelity-layer/corridor-oblique-ghosted-r5.png`
+- `docs/review-screenshots/phase-4m-r5-franklin-hero-corner-fidelity-layer/manhattan-close-r5-shared-renderer-check.png`
+
+Verification:
+- `npm run build`
+- Browser Visual POC capture from the existing runtime scene on `http://127.0.0.1:5174/`.
+- Visual inspection of Franklin benchmark close, Franklin side-return/corner-wrap, Franklin street-level/lower oblique, corridor oblique, and Manhattan close regression screenshots.
+- Screenshot format check and conversion to true PNG files.
+
+Outcome:
+- Added `endpointHeroFacadeOverrides.franklin.heroFidelityLayer`.
+- Added a bounded Franklin opaque low-poly detail layer for masonry, windows, AC boxes, cornice/parapet, roof inset, sign/awning/storefront glass, side-return rhythm, side bay, fire-escape cue, and street grounding.
+- Added a Franklin street-level QA review camera.
+- Reduced older translucent measured backing dominance in Visual POC mode so the R5 geometry/detail layer reads first.
+- Manhattan was preserved and recaptured because shared renderer behavior changed.
+
+Unresolved decisions:
+- Batu owns whether Franklin is now close enough for the measured-runtime/benchmark-fidelity proof.
+- Remaining gaps: code-native low-poly fidelity, exact storefront/frontage measurements, exact side-return/corner-depth geometry, exact curb/intersection geometry, raster/art-directed detail, and all production/signage/business/address/material claims remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R5 Batu visual review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-09 - Batch 4M-R4 Franklin Benchmark Fidelity Convergence Pass
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Continue from 4M-R3 in the existing runtime scene and converge Franklin toward the supplied same-corner benchmark fidelity target and repo-local truth photos, without creating a new scaffold, renderer architecture, data lane, dependency, source integration, production asset, normal-mode exposure, exact claim, or commit.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass.md`
+- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/franklin-benchmark-close-r4.png`
+- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/franklin-side-return-corner-wrap-r4.png`
+- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/manhattan-close-r4-shared-renderer-check.png`
+- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/corridor-oblique-ghosted-r4.png`
+
+Verification:
+- `npm run build`
+- Browser Visual POC capture from the existing runtime scene on `http://127.0.0.1:5174/`.
+- Visual inspection of Franklin benchmark, Franklin side-return/corner-wrap, Manhattan close regression, and corridor oblique screenshots.
+- Screenshot format check and conversion to true PNG files.
+
+Outcome:
+- Strengthened `endpointHeroFacadeOverrides.franklin` with roof inset, side-return depth/rhythm, side bay, fire-escape cue, AC slots, tactile paving, sidewalk seams, and generic sidewalk-object context.
+- Improved the measured renderer with lower-dominance backing mass, draw-prioritized relief, roof/parapet wrap, denser upper-window/lintel/sill rhythm, deeper storefront sign/awning/glass relief, side-return storefront/window/bay/fire-escape/AC cues, and richer street grounding.
+- Added Franklin benchmark and Franklin side-return QA camera presets.
+- Manhattan was preserved and recaptured because shared measured-renderer draw behavior changed.
+
+Unresolved decisions:
+- Batu owns whether Franklin is now close enough for the measured-runtime proof.
+- Remaining gaps: code-native box fidelity, exact storefront/frontage measurements, exact side-return/corner-depth geometry, exact curb/intersection geometry, raster/art-directed detail, and all production/signage/business/address/material claims remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R4 Batu visual review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-09 - Batch 4M-R3 Measured Hero-Corner Reconstruction Pass
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Continue the current 4M evidence-derived runtime scene and convert endpoint symbolic profiles into structured measured 2.5D hero-corner reconstructions for Franklin first, Manhattan second, without a new scaffold, renderer, framework, package dependency, source lane, or production claim.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r3-measured-hero-corner-reconstruction-pass.md`
+- `docs/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/franklin-close-measured-poc.png`
+- `docs/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/manhattan-close-measured-poc.png`
+- `docs/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/corridor-oblique-measured-poc.png`
+
+Verification:
+- `npm run build`
+- Browser Visual POC capture from the existing runtime scene on `http://127.0.0.1:5189/`.
+- Visual inspection of Franklin close, Manhattan close, and corridor oblique screenshots.
+- Screenshot format check and conversion to true PNG files.
+
+Outcome:
+- Added `endpointHeroFacadeOverrides.franklin` and `.manhattan` with structured `massing`, `frontFacade`, `sideReturn`, `storefrontBays`, `upperWindows`, `cornice`, `canopies`, `materialZones`, `streetGrounding`, and `evidenceRefs`.
+- Added a measured 2.5D hero facade renderer for thin relief planes, inset glass, mullions, door frames, canopy depth, cornice bands, window rows, side-return panels, and corner grounding.
+- Franklin now reads from measured frontage rhythm, tan/green sign banding, black canopy span, corner wrap, side-return/cornice massing, and curb/crosswalk grounding more than from labels or decorative patches.
+- Manhattan was traced secondarily with deli/transit base rhythm, black/green sign band, glass/door spacing, and supporting-corner distinction.
+- Preserved normal-mode protection and did not add external sources, exact claims, production assets, new dependencies, new schemas, or renderer replacement.
+
+Unresolved decisions:
+- Batu owns whether Franklin is close enough to the supplied evidence for this measured-runtime proof.
+- Remaining gaps: chunky side-mass read, upper-window relief strength, exact storefront/frontage measurements, exact side-return/corner-depth geometry, exact curb/intersection geometry, and all production/signage/business/address/material claims remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R3 Batu visual review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-09 - Batch 4M-POC-R2 Existing Runtime Evidence-Derived Benchmark Pass
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Continue the current uncommitted Phase 4M runtime patch and convert renderer-local recognizability profiles into a stricter evidence-derived two-corner benchmark pass, prioritizing Franklin, without creating a new scene, renderer, scaffold, source lane, dependency, or public claim.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-evidence-derived-benchmark-pass.md`
+- `docs/review-screenshots/phase-4m-evidence-derived-benchmark-pass/corridor-oblique-benchmark-poc.png`
+- `docs/review-screenshots/phase-4m-evidence-derived-benchmark-pass/manhattan-endpoint-benchmark-poc.png`
+- `docs/review-screenshots/phase-4m-evidence-derived-benchmark-pass/franklin-endpoint-benchmark-poc.png`
+
+Verification:
+- `npm run build`
+- Browser Visual POC capture from the existing runtime scene on `http://127.0.0.1:5189/`.
+- Visual inspection of Franklin endpoint, Manhattan endpoint, and corridor oblique screenshots.
+- One correction loop tightened endpoint camera distance/zoom and strengthened street grounding after the first benchmark capture was still too distant and quiet.
+
+Outcome:
+- Added explicit evidence observations and frontage segment arrays to the existing renderer-local place profiles.
+- Added a structured frontage renderer for per-segment backplates, sign bands, green accents, canopies, lower panels, glass beats, door beats, separators, side-return cues, and street-grounding strips.
+- Franklin now reads less like a generic stylized storefront cluster: the red-brick grocery corner, tan/green/black sign/canopy banding, storefront order, dark southeast support corner, and curb/sidewalk grounding are more traceable to repo-local photos.
+- Manhattan was tightened secondarily while preserving deli/transit and modern color-panel cues.
+- Preserved normal-mode protection and did not add external sources, exact claims, production assets, new schemas, new dependencies, or renderer replacement.
+
+Unresolved decisions:
+- Batu owns whether this is close enough to prove the benchmark pipeline direction. It is not exact storefront/frontage reconstruction yet.
+- Remaining gaps: exact storefront count/order/measurements, exact side-return/corner-depth geometry, precise street/curb/intersection geometry, and any production/signage/business/address/material claims remain blocked.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-POC-R2 Batu visual review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-09 - Batch 4M-POC-R Existing Runtime Recognizable-Place Fidelity Refinement
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Refine the existing Phase 4 runtime endpoint visuals so Manhattan and Franklin read more like recognizable Greenpoint places, using existing scene objects, current 4J/4K/4L records, and repo-local reference photos only.
+
+Files changed:
+- `src/Phase4BRuntimePreview.jsx`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/reports/phase-4m-recognizable-place-fidelity-patch.md`
+- `docs/review-screenshots/phase-4m-recognizable-place-fidelity-patch/corridor-oblique-recognizable-poc.png`
+- `docs/review-screenshots/phase-4m-recognizable-place-fidelity-patch/manhattan-endpoint-recognizable-poc.png`
+- `docs/review-screenshots/phase-4m-recognizable-place-fidelity-patch/franklin-endpoint-recognizable-poc.png`
+
+Verification:
+- `npm run build`
+- Browser Visual POC capture from the existing runtime scene.
+- Visual review against the selected primary Manhattan and Franklin repo-local reference photos.
+
+Outcome:
+- Added renderer-local recognizability profiles keyed to the existing endpoint evidence cue IDs.
+- Strengthened Manhattan/Franklin place-recognition cues: larger black/green deli and grocery bands, vivid panel blocks, heavier cornice/awning cues, traffic/signal/transit-like corner cues, and foreground QA landmark shapes.
+- Preserved normal-mode protection and did not add external sources, exact claims, production assets, new schemas, new dependencies, or renderer replacement.
+
+Unresolved decisions:
+- Batu owns whether the output is recognizable enough for proof-of-pipeline purposes. The pass improves place-specific read but still does not meet exact storefront/frontage reconstruction.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-POC-R Batu visual review gate with no executable batch and no pre-authorized queue.
 
 ### 2026-06-09 - Batch 4M-POC Existing Runtime Endpoint Fidelity Patch
 
