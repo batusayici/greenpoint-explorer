@@ -1,76 +1,59 @@
-# Current Execution Brief - Phase 4M-R7 Franklin Hero Kit Extraction + Benchmark Render Proof Complete
+# Current Execution Brief - Phase 4M-R9 Franklin High-Recognition Detail Modules Complete
 
-Status: `Packet 4M-R7: Franklin Hero Kit Extraction + Benchmark Render Proof` is complete and verified.
+Status: `Batch 4M-R9: Franklin High-Recognition Detail Modules` is complete and verified.
 
 Current executable batch: none.
 
-Completed packet: `4M-R7 Franklin Hero Kit Extraction + Benchmark Render Proof`.
+Completed batch: `4M-R9 Franklin High-Recognition Detail Modules`.
 
 Opened from:
 
-- R5 commit `e585ff8`
-- R6 commit `9f9d55d`
-
-Completed batches:
-
-- `4M-R7A: Extraction architecture`
-- `4M-R7B: Authoring path decision`
-- `4M-R7C: Benchmark render spec`
-- `4M-R7D: Minimal implementation`
-- `4M-R7E: Review/report`
+- Completed and verified R8 Franklin data-driven facade assembly proof.
+- Batu review on 2026-06-09 confirming R8 as a systems milestone, not a benchmark-fidelity milestone.
+- Batu approval to run one more bounded code-native Franklin fidelity sprint before any GLB lane.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop for Batu review of the R7 Franklin hero kit extraction, workflow decision, benchmark render spec, and screenshots.
+Hard Batu gate: stop for Batu visual review of the R9 Franklin high-recognition detail-module screenshots and report.
 
-## R7 Outcome
+## R9 Outcome
 
-- R6 proved hybrid Franklin recognizability but not benchmark render fidelity.
-- R7 opened and completed a Franklin-only hero kit extraction/render proof.
-- Measured trace = alignment.
-- Hero kit = visual fidelity.
-- Runtime = assembly, QA gating, placement, camera review, and regression checks.
-- `Phase4BRuntimePreview.jsx` is no longer the Franklin fidelity sculpting surface.
-
-## Completed Output
-
-- Added `src/components/hero/FranklinHeroCorner.jsx`.
-- Updated `src/Phase4BRuntimePreview.jsx` so the runtime computes measured placement and calls the extracted Franklin hero kit only for the Franklin Visual POC path.
-- Added `docs/reports/phase-4m-r7-franklin-hero-kit-extraction-workflow-decision.md`.
-- Added `docs/reports/phase-4m-r7-franklin-benchmark-render-spec.md`.
-- Added `docs/reports/phase-4m-r7-franklin-hero-kit-extraction-report.md`.
-- Captured R7 review screenshots in `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/`.
+- Extended the QA-only Franklin facade record fixture with `detailModules` for candidate side projection, fire escape, AC/window utilities, deterministic rhythm variation, material/weathering bands, and street/context grounding props.
+- Extended the existing Franklin hero module so those detail fields drive native geometry callbacks inside `src/components/hero/FranklinHeroCorner.jsx`.
+- Preserved the R8 facade-record assembly architecture and kept Franklin visual fidelity logic out of `src/Phase4BRuntimePreview.jsx`.
+- Updated the runtime review status text only.
+- Added R9 verifier coverage for detail fields, QA-only status, blocked claims, prohibited technology paths, and runtime/module responsibility boundaries.
+- Captured Franklin benchmark close and side-return/corner-wrap R9 review PNGs.
 
 ## Review Artifacts
 
-- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/franklin-benchmark-close-r7.png`
-- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/franklin-side-return-corner-wrap-r7.png`
-- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/franklin-street-level-lower-oblique-r7.png`
-- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/corridor-oblique-ghosted-r7.png`
-- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/manhattan-close-r7-shared-renderer-check.png`
-- `docs/review-screenshots/phase-4m-r7-franklin-hero-kit-extraction/normal-mode-protection-smoke-r7.png`
+- `docs/reports/phase-4m-r9-franklin-high-recognition-detail-modules.md`
+- `docs/review-screenshots/phase-4m-r9-franklin-high-recognition-detail-modules/franklin-benchmark-close-r9.png`
+- `docs/review-screenshots/phase-4m-r9-franklin-high-recognition-detail-modules/franklin-side-return-corner-wrap-r9.png`
 
 ## Boundaries Preserved
 
-- No Manhattan expansion.
-- No new source lane.
-- No normal-mode Franklin hero exposure.
-- No real logos, readable sign text, business identity, active-status, exact storefront/frontage/entrance/address claims, production assets, or public/product claims.
-- No R8 opened.
-- Older unrelated untracked 4M artifacts were not staged.
+- Franklin hero only.
+- Manhattan regression capture was not required because shared renderer/runtime behavior did not change beyond review text.
+- No GLB/GLTF loader, Cesium, 3D Tiles, raster texture atlas, raster facade projection, custom shader pipeline, source expansion, new dependencies, package tooling, whole-corridor refactor, production assets, production asset direction, normal-mode exposure, public/product claims, real business identity, tenant identity, exact signage, exact frontage, exact entrance, exact address, exact facade, logo/trade-dress, or active-status claims.
+- Unrelated existing untracked report/screenshot files from earlier 4M work were not modified intentionally and were not staged.
+- No commit was made.
 
 ## Verification Completed
 
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
 - `npm run build`
-- Browser review/capture from `http://127.0.0.1:5176/`
-- PNG/file-format check for R7 screenshots
+- Browser review/capture from local runtime review URLs
+- PNG file-format check
+- Visual disk inspection of both R9 screenshots
 - `git diff --check`
-- Staging audit before commit
 
 ## Unresolved Decisions For Batu
 
-- Whether the extracted Franklin hero-kit boundary is the right workflow direction.
-- Whether the next fidelity batch should use a review-only GLB/GLTF asset path as recommended.
-- Whether to open a later Franklin benchmark asset-placement batch. Manhattan remains closed.
+- Whether R9's code-native detail modules improve Franklin recognition enough to continue this lane.
+- Whether a later GLB hero-injection lane should open because the R9 output remains visibly procedural/toy architecture.
+- Which R8/R9 facade-record fields should become durable schema versus remaining temporary QA-only authoring fields.
+- What evidence or asset path is still needed for true storefront/frontage fidelity.

@@ -10,6 +10,7 @@ import qaScaffoldPreviewExpansionFixture from "./data/corridor-scaffold/greenpoi
 import qaFrontageCandidateFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4j-1-qa-frontage-candidates.v0.1.json";
 import qaRecognizableAnchorCueFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4k-1-qa-recognizable-anchor-cues.v0.1.json";
 import localEvidenceCueEnrichmentFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4l-local-2-evidence-backed-qa-cue-enrichment.v0.1.json";
+import franklinHeroFacadeRecord from "./data/facade-cues/franklin-hero-records.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -271,6 +272,13 @@ const endpointHeroFacadeOverrides = {
   },
 };
 
+const matchingFranklinFacadeRecord =
+  franklinHeroFacadeRecord?.qaOnly === true &&
+  franklinHeroFacadeRecord.targetSemanticId === "p4b-object-nyc-footprint-bin-3064793" &&
+  franklinHeroFacadeRecord.targetCueRecordId === endpointHeroFacadeOverrides.franklin.targetCueRecordId
+    ? franklinHeroFacadeRecord
+    : null;
+
 const PLACE_RECOGNITION_PROFILES = {
   "p4e1-manhattan-warm-brick-corner-wrap": {
     referenceRole: "primary",
@@ -520,7 +528,30 @@ const CAMERA_LIMITS = {
   panLimit: 9,
 };
 
+const QA_LAYER_FOCUS_QUERY_VALUES = {
+  all: QA_LAYER_FOCUS_ALL,
+  "4l_local_evidence": QA_LAYER_FOCUS_4L_LOCAL,
+  "4l-local-evidence": QA_LAYER_FOCUS_4L_LOCAL,
+  visual_poc: QA_LAYER_FOCUS_VISUAL_POC,
+  "visual-poc": QA_LAYER_FOCUS_VISUAL_POC,
+};
+
+function getInitialReviewOptions() {
+  if (typeof window === "undefined") {
+    return { qaEnabled: false, qaLayerFocus: QA_LAYER_FOCUS_ALL, cameraPreset: HOME_CAMERA };
+  }
+  const params = new URLSearchParams(window.location.search);
+  const requestedFocus = QA_LAYER_FOCUS_QUERY_VALUES[params.get("qaLayerFocus")] ?? QA_LAYER_FOCUS_ALL;
+  const requestedCamera = CAMERA_PRESETS[params.get("camera")] ?? HOME_CAMERA;
+  return {
+    qaEnabled: params.get("qa") === "1" || requestedFocus !== QA_LAYER_FOCUS_ALL,
+    qaLayerFocus: requestedFocus,
+    cameraPreset: requestedCamera,
+  };
+}
+
 export default function Phase4BRuntimePreview() {
+  const initialReviewOptions = useMemo(() => getInitialReviewOptions(), []);
   const runtimeScene = useMemo(() => buildPhase4BRuntimeScene(manifest, geometryFixture), []);
   const facadeCueIndex = useMemo(() => buildFacadeCueIndex(facadeCueFixture), []);
   const qaFacadeSliceIndex = useMemo(() => buildQAFacadeSliceIndex(qaFacadeSliceFixture), []);
@@ -543,8 +574,8 @@ export default function Phase4BRuntimePreview() {
   const stateRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-  const [qaEnabled, setQaEnabled] = useState(false);
-  const [qaLayerFocus, setQALayerFocus] = useState(QA_LAYER_FOCUS_ALL);
+  const [qaEnabled, setQaEnabled] = useState(initialReviewOptions.qaEnabled);
+  const [qaLayerFocus, setQALayerFocus] = useState(initialReviewOptions.qaLayerFocus);
   const [qaScaffoldFamilyVisibility, setQAScaffoldFamilyVisibility] = useState(() => ({
     ...qaScaffoldPreviewExpansionFixture.familyVisibilityDefaults,
   }));
@@ -613,7 +644,7 @@ export default function Phase4BRuntimePreview() {
     const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 100);
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
-    const cameraState = cloneCameraState(HOME_CAMERA);
+    const cameraState = cloneCameraState(initialReviewOptions.cameraPreset);
     const pickTargets = [];
     const visualObjects = new Map();
     const pickObjects = new Map();
@@ -671,7 +702,7 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, initialReviewOptions.cameraPreset]);
 
   useEffect(() => {
     const state = stateRef.current;
@@ -793,11 +824,11 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4M-R7 / Franklin hero kit extraction</p>
+          <p className="phase4b-kicker">Batch 4M-R9 / Franklin high-recognition detail modules</p>
           <h1>Greenpoint Ave endpoint visual POC</h1>
         </div>
         <p>
-          QA-only Franklin hero kit extraction using the existing corridor scene, measured trace alignment, repo-local Franklin evidence, and benchmark image for fidelity workflow review only. Normal mode stays protected; visual POC output is review-only and not business identity, exact public frontage, signage, entrance, active status, or production claim.
+          QA-only Franklin facade record assembly with code-native high-recognition detail modules using the existing corridor scene, measured trace alignment, repo-local Franklin evidence, and native geometry callbacks for fidelity workflow review only. Normal mode stays protected; visual POC output is review-only and not business identity, exact public frontage, signage, entrance, active status, or production claim.
         </p>
       </section>
 
@@ -4724,6 +4755,7 @@ function addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, compos
       depth,
       frontZ,
       baySpans,
+      facadeRecord: matchingFranklinFacadeRecord,
       addBox: addEvidenceFacadeBox,
       addCylinder: addEvidenceFacadeCylinder,
     });

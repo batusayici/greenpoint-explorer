@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "qa-facade-record.v0.1",
+  "recordId": "qa-franklin-hero-facade-v0",
+  "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
+  "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064793",
+  "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+  "targetCueRecordId": "p4e1-franklin-red-brick-cornice-corner",
+  "bin": "3064793",
+  "associationStatus": "provisional_geometry_target_for_qa_render_only",
+  "targetVerification": {
+    "status": "verified_from_current_repo_fixtures_for_qa_binding",
+    "verifiedAgainst": [
+      "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json",
+      "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+      "src/data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json"
+    ],
+    "notes": "Current Franklin hero cue record p4e1-franklin-red-brick-cornice-corner targets p4b-object-nyc-footprint-bin-3064793. This binding remains provisional for QA rendering only."
+  },
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "allowedUse": "qa_visual_poc_data_driven_facade_assembly_only",
+  "facadeType": {
+    "value": "mixed_use_commercial_candidate",
+    "confidence": "medium"
+  },
+  "provenance": {
+    "sourceStatus": "repo_local_reference_and_existing_qa_records_only",
+    "claimStatus": "manual_draft_not_verified",
+    "sourceEvidenceRefs": [
+      {
+        "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+        "usage": "manual coarse facade assembly cue reference only"
+      },
+      {
+        "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg",
+        "usage": "manual coarse facade assembly cue reference only"
+      },
+      {
+        "evidencePath": "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest1.jpeg",
+        "usage": "manual side-return and sidewalk cue reference only"
+      }
+    ],
+    "existingCueRefs": [
+      "p4e1-franklin-red-brick-cornice-corner",
+      "qa-facade-plane-franklin-slot-03-east-corner"
+    ]
+  },
+  "faces": {
+    "front": {
+      "groundFloor": {
+        "bayCount": {
+          "value": 5,
+          "precision": "evidence_estimated"
+        },
+        "bayWidthRatios": [0.14, 0.22, 0.22, 0.24, 0.18],
+        "hasSignBand": {
+          "value": true,
+          "height": 0.8,
+          "projection": 0.18,
+          "confidence": "medium"
+        },
+        "hasAwning": {
+          "value": true,
+          "depth": 1.1,
+          "height": 0.16,
+          "confidence": "medium"
+        },
+        "storefrontRecess": 0.3,
+        "mullionDepth": 0.08,
+        "glassBeatPattern": [1, 2, 2, 2, 1],
+        "candidateDoorBays": [3, 4],
+        "status": "qa_manual_draft_not_exact_frontage"
+      },
+      "upperFloors": {
+        "rowCount": {
+          "value": 4,
+          "confidence": "medium"
+        },
+        "bayPattern": [3, 3, 3, 3],
+        "windowRecess": 0.16,
+        "windowTrimProjection": 0.08,
+        "sillProjection": 0.12,
+        "headerProjection": 0.1,
+        "paletteFamily": "classic-franklin-red-brick-candidate",
+        "status": "qa_manual_draft_window_rhythm_not_exact_facade"
+      },
+      "roof": {
+        "corniceStyle": "projecting_layered_candidate",
+        "corniceProjection": 0.4,
+        "corniceLayerCount": 3,
+        "hasBulkhead": {
+          "value": true,
+          "confidence": "low",
+          "status": "candidate_only"
+        }
+      }
+    },
+    "sideReturn": {
+      "visible": true,
+      "depthCue": "measured_or_estimated_from_review_camera",
+      "windowRhythm": "sparse_secondary_bays_candidate",
+      "sideWallRelief": true,
+      "sparseWindowRows": 3,
+      "sparseWindowColumns": 3,
+      "returnStorefrontBays": 2,
+      "status": "qa_corner_wrap_placeholder_not_exact_side_facade"
+    }
+  },
+  "detailModules": {
+    "status": "qa_manual_draft_high_recognition_cues_not_exact_facade",
+    "bayWindowProjection": {
+      "enabled": true,
+      "qaOnly": true,
+      "anchorFace": "sideReturn",
+      "side": "right",
+      "confidence": "low",
+      "status": "candidate_projection_for_review_camera_silhouette_only",
+      "columnCount": 1,
+      "rowCount": 3,
+      "width": 0.24,
+      "projectionDepth": 0.3,
+      "verticalSpanRatio": [0.34, 0.82],
+      "offsetAlongSideDepthRatio": 0.62,
+      "windowInsetDepth": 0.05,
+      "capProjection": 0.06
+    },
+    "fireEscape": {
+      "enabled": true,
+      "qaOnly": true,
+      "anchorFace": "sideReturn",
+      "side": "right",
+      "confidence": "low",
+      "status": "candidate_lightweight_silhouette_not_exact_metalwork",
+      "platformCount": 3,
+      "platformWidth": 0.24,
+      "platformDepth": 0.42,
+      "railHeight": 0.12,
+      "offsetAlongSideDepthRatio": 0.78,
+      "verticalStartRatio": 0.28,
+      "verticalSpacingRatio": 0.2,
+      "hasSimpleLadderCue": true
+    },
+    "windowUtilities": {
+      "enabled": true,
+      "qaOnly": true,
+      "confidence": "medium",
+      "status": "plausible_ac_and_utility_boxes_for_qa_depth_only",
+      "frontAcPlacements": [
+        { "row": 0, "bay": 0, "widthScale": 0.58 },
+        { "row": 0, "bay": 2, "widthScale": 0.62 },
+        { "row": 1, "bay": 1, "widthScale": 0.48 }
+      ],
+      "sideAcPlacements": [
+        { "row": 0, "column": 0 },
+        { "row": 1, "column": 2 }
+      ],
+      "utilityBoxPlacements": [
+        { "face": "front", "bayRatio": 0.08, "height": 0.28 },
+        { "face": "sideReturn", "depthRatio": 0.2, "height": 0.2 }
+      ]
+    },
+    "facadeRhythmVariation": {
+      "enabled": true,
+      "qaOnly": true,
+      "deterministic": true,
+      "seedLabel": "franklin-r9-fixed-cadence",
+      "status": "qa_deterministic_offsets_reduce_uniformity_not_exact_facade",
+      "trimDepthPattern": [0.0, 0.02, -0.01, 0.03],
+      "sillLengthPattern": [1.0, 1.14, 0.92, 1.08],
+      "headerLengthPattern": [1.06, 0.96, 1.12],
+      "windowYOffsetPattern": [0.0, 0.018, -0.012],
+      "reliefBandPattern": [
+        { "heightRatio": 0.39, "projection": 0.035, "color": "dark_brick_shadow" },
+        { "heightRatio": 0.64, "projection": 0.024, "color": "warm_brick_worn" }
+      ]
+    },
+    "materialBands": {
+      "enabled": true,
+      "qaOnly": true,
+      "confidence": "medium",
+      "status": "qa_code_native_weathering_color_bands_not_exact_materials_no_textures",
+      "darkerBaseCourse": {
+        "heightRatio": 0.16,
+        "color": "dark_plinth_brick"
+      },
+      "verticalWeatheringStrips": [
+        { "xRatio": 0.12, "widthRatio": 0.035, "opacity": 0.48 },
+        { "xRatio": 0.82, "widthRatio": 0.045, "opacity": 0.42 }
+      ],
+      "underCorniceShadow": true,
+      "sideWallShadowPanels": 3
+    },
+    "streetDressing": {
+      "enabled": true,
+      "qaOnly": true,
+      "confidence": "medium",
+      "status": "review_context_props_not_exact_street_furniture",
+      "curbAsphaltStrip": true,
+      "sidewalkScoring": {
+        "frontLines": 8,
+        "sideLines": 4
+      },
+      "crosswalkPaintHints": {
+        "enabled": true,
+        "stripeCount": 4,
+        "confidence": "low"
+      },
+      "contextProps": [
+        { "type": "utility_box", "face": "front", "xRatio": 0.08 },
+        { "type": "pole", "face": "front", "xRatio": 0.03 },
+        { "type": "bollards", "face": "corner", "count": 3 },
+        { "type": "bike_rack", "face": "sideReturn" },
+        { "type": "trash_can", "face": "front", "xRatio": 0.92 }
+      ]
+    }
+  },
+  "blockedClaims": [
+    "business_identity",
+    "tenant_identity",
+    "storefront_anchor",
+    "exact_frontage",
+    "exact_sign_text",
+    "production_asset",
+    "normal_mode",
+    "active_status",
+    "exact_entrance",
+    "exact_address",
+    "exact_facade",
+    "logo_or_trade_dress",
+    "public_claim"
+  ]
+}

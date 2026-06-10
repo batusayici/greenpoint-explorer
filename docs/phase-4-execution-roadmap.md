@@ -24,6 +24,10 @@ R6 supersession note: Batch 4M-R6 is complete and verified after 4M-R5. It teste
 
 R7 completion note: Batch 4M-R7 is complete and verified as a bounded Franklin-only extraction packet. It moved Franklin hero fidelity logic out of `Phase4BRuntimePreview.jsx` into a QA-only hero kit/module lane, kept the R6 measured trace as alignment scaffold, documented the DCC/GLB-vs-Three.js authoring decision, captured review screenshots, and stopped at Batu review. It did not open Manhattan, a new source lane, normal-mode exposure, production assets, real logos/text/business/active-status claims, or R8.
 
+R8 completion note: Batch 4M-R8 is complete and verified as a narrow Franklin-only data-driven facade assembly proof. It added a QA-only Franklin facade record fixture, used that record to drive native Three.js geometry callbacks inside the existing Franklin hero kit, bound it in the existing Visual POC runtime path, verified blocked claims and prohibited technology paths, captured Franklin review screenshots, and stopped at Batu visual review. It did not open Manhattan implementation, GLB/GLTF loaders, Cesium, 3D Tiles, raster texture atlases, source expansion, normal-mode exposure, production assets, exact claims, or whole-corridor refactoring.
+
+R9 completion note: Batu accepted R8 as a systems milestone but not a benchmark-fidelity milestone, and opened Batch 4M-R9 as one more bounded Franklin-only code-native fidelity sprint. R9 is complete and verified. It extends the R8 QA-only JSON facade record with high-recognition detail modules for side projection, fire escape, AC/utility units, deterministic rhythm variation, material/weathering bands, and street grounding context, while keeping visual detail logic in the Franklin hero module. GLB/GLTF, Cesium, 3D Tiles, raster texture atlases, custom shaders, normal-mode exposure, production/business/storefront identity claims, and whole-corridor refactoring remain blocked.
+
 The first visual proof after the primitive compiler must validate the actual 3D architecture: a deterministic, navigable, interactive graybox/isometric corridor scene generated from source geometry and the semantic manifest. It must not be a static image, 2D map, raster composition, hand-arranged illustration, or manifest-only artifact.
 
 ## Batch Plan
@@ -98,6 +102,7 @@ Current state:
 - 4M-R5 is complete and verified at the Batu visual review gate.
 - 4M-R6 is complete and verified; it proved hybrid recognizability but not benchmark render fidelity.
 - 4M-R7 is complete and verified at the Batu review gate.
+- 4M-R8 is complete and verified as a systems milestone. 4M-R9 is complete and verified at the Batu visual review gate.
 - There is no authoritative business linkage, exact storefront/frontage/entrance claim, production asset, normal-mode facade exposure, or full art-directed corridor.
 
 Planned sequence:
@@ -150,10 +155,12 @@ Planned sequence:
 46. 4M-R5: Franklin hero corner fidelity layer. Complete and verified; stop at Batu visual review gate.
 47. 4M-R6: Franklin hybrid benchmark-closure packet. Complete and verified; R6 proved hybrid recognizability but not benchmark render fidelity.
 48. 4M-R7: Franklin hero kit extraction + benchmark render proof. Complete and verified; stop at Batu visual review gate.
-49. Mapillary/KartaView source-use gate: recommended as a proposal only; not open.
-50. 4L external/scaled evidence-backed QA corridor render, deferred until Batu supplies or approves enough eligible evidence and opens a later packet.
-51. 4M production asset registry / visual system / art-direction translation, deferred until Batu opens production visual-system scope.
-52. 4N: normal-mode promotion + recognition QA, deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
+49. 4M-R8: Franklin data-driven facade assembly proof. Complete and verified; stop at Batu visual review gate.
+50. 4M-R9: Franklin high-recognition detail modules. Complete and verified; stop at Batu visual review gate.
+50. Mapillary/KartaView source-use gate: recommended as a proposal only; not open.
+51. 4L external/scaled evidence-backed QA corridor render, deferred until Batu supplies or approves enough eligible evidence and opens a later packet.
+52. 4M production asset registry / visual system / art-direction translation, deferred until Batu opens production visual-system scope.
+53. 4N: normal-mode promotion + recognition QA, deferred until QA render, spatial scaffold acceptance, provenance, optional asset/art translation, and Batu promotion gates clear.
 
 4G-A/4G-B/4H-1 must keep geometry confidence separate from facade evidence. For 4O planning, NYC Building Footprints are the candidate base geometry lane for building outlines, building IDs, massing, and footprint/frontage alignment. NYC 3-D Building Model / CityGML-style massing is the candidate height, roof-shape, setback, and massing lane where available. CSCL is the candidate street-alignment, corridor-bound, intersection, and street-width-hint lane. Sidewalk/curb/planimetric datasets are candidate sidewalk, curb, pedestrian-realm, and grounding lanes. PLUTO/MapPLUTO is the candidate parcel, land-use, building-class, floor-count, year-built, zoning/context lane. User-supplied facade photos remain evidence-backed manual override and facade cue validation material. Mapillary/street-level metadata remains experimental only and must not become automatic facade truth. POI/business sources remain separate from geometry truth: they may inform later cards or business identity, but not facade geometry, storefront/frontage, entrance, signage, active status, or exact placement. Google 3D Tiles/Street View remains benchmark-only discussion unless separately cleared, and must not become source-of-truth, stored facade reference, extracted geometry, texture source, training input, or production visual pipeline. Qwen/Oxen is deferred to 4M as a possible visual-system accelerator trained only from owned/approved references, deterministic cue blueprints, and Batu-approved style targets. No real source data download/cache/ingestion, image storage, render use, extraction, training use, source promotion, production use, new credentials, paid APIs, dependencies, or architecture changes are approved by this roadmap.
 
@@ -252,6 +259,8 @@ Planning-only future building/override record shape, not an implemented public c
 | 4M-R5: Franklin Hero Corner Fidelity Layer | Complete. | Added a bounded Franklin QA-only low-poly fidelity layer with opaque brick/window/cornice/roof/awning/storefront/side-return/street-grounding modules; quieted the older translucent backing; added Franklin street-level review camera; recaptured Franklin, Manhattan, and corridor PNG review artifacts. | No new scaffold, renderer architecture, framework, package dependency, source lane, external source access, Google 3D Tiles ingestion/cache/extraction/conversion/rendering, normal-mode rendering, exact claims, production assets, public interfaces, or public/product claims. | `npm run build`, browser Visual POC capture from `http://127.0.0.1:5174/`, PNG format check/conversion, and visual self-audit. | Existing runtime/report/control-doc boundary. | Superseded by Batu-opened 4M-R6. |
 | 4M-R6: Franklin Hybrid Benchmark-Closure Packet | Complete. | Decomposed Franklin into reusable implementation grammar, added a Franklin-specific opaque hybrid hero overlay over the R5 measured trace, captured R6 review artifacts, and recorded reusable facade/street module inventory. R6 proved hybrid recognizability but not benchmark render fidelity. | No new scaffold, renderer architecture, framework, package dependency, source lane, external source access, Google 3D Tiles ingestion/cache/extraction/conversion/rendering, normal-mode rendering, exact business/signage/active-status claims, production assets, public interfaces, or public/product claims. | `npm run build`, browser Visual POC capture from `http://127.0.0.1:5174/`, PNG format check/conversion, `git diff --check`, and visual self-audit. | Existing runtime/report/control-doc boundary. | Superseded by Batu-opened 4M-R7. |
 | 4M-R7: Franklin Hero Kit Extraction + Benchmark Render Proof | Complete. | Extracted Franklin-only hero fidelity logic from the runtime into a QA-only hero kit/module lane, preserved R6 measured trace alignment, documented the GLB/GLTF-vs-dedicated-Three.js authoring decision, specified benchmark asset groups, captured review artifacts, and stopped. | No Manhattan expansion, new source lane, normal-mode exposure, real logos/sign text/business/active-status claims, exact storefront/frontage/entrance/address claims, production assets, R8, or public/product claims. | `npm run build`, browser Visual POC review/capture, PNG check, `git diff --check`, and staging audit excluding older unrelated untracked 4M artifacts. | Internal Franklin QA hero module/runtime placement/report/control-doc boundary. | Stop at 4M-R7 Batu review gate. |
+| 4M-R8: Franklin Data-Driven Facade Assembly Proof | Complete. | Added a QA-only Franklin facade record, bound it to the verified Franklin hero target, and used record fields to drive native geometry callbacks for storefront bays, sign band, awning, recesses, mullions, upper-window rhythm, trim, cornice/parapet, candidate bulkhead, side-return relief, and contact grounding. | No Manhattan implementation, source expansion, Cesium, 3D Tiles, GLB/GLTF loader, raster texture atlas, production assets, normal-mode exposure, business/tenant identity, exact storefront/frontage/signage/entrance/address/active-status claims, public/product claims, dependencies, or whole-corridor refactor. | R8 verifier, build, browser Visual POC review/capture, PNG check, and visual disk inspection. | Franklin QA facade record/hero module/runtime binding/verifier/report/screenshots/control-doc boundary; commit not requested. | Stop at 4M-R8 Batu visual review gate. |
+| 4M-R9: Franklin High-Recognition Detail Modules | Complete. | Extended the R8 QA-only facade record and Franklin hero module with code-native high-recognition details: candidate side projection, fire escape cue, AC/utility boxes, deterministic rhythm variation, material/weathering bands, and street grounding props. | No Manhattan implementation, source expansion, Cesium, 3D Tiles, GLB/GLTF loader, raster texture atlas/projection, custom shader pipeline, production assets, normal-mode exposure, business/tenant identity, exact storefront/frontage/signage/entrance/address/active-status claims, public/product claims, dependencies, or whole-corridor refactor. | R9 verifier, R8 verifier, build, `git diff --check`, browser Visual POC review/capture, PNG check, and visual disk inspection. | Existing Franklin QA facade record/hero module/runtime assembly boundary; commit not requested. | Stop at 4M-R9 Batu visual review gate. |
 
 ## Phase 4A Success Criteria
 
@@ -361,13 +370,13 @@ A future Phase 4B visual batch is not acceptable if it only produces a static im
 
 ## Immediate Next Batch
 
-Current work packet: 4M-R7 Franklin hero kit extraction + benchmark render proof is complete.
+Current work packet: 4M-R9 Franklin high-recognition detail modules is complete.
 
-Current executable batch: none. 4M-R7 is complete and pending Batu review.
+Current executable batch: none. 4M-R9 is complete and pending Batu visual review.
 
 Pre-authorized queue: none.
 
-Self-advance allowed: no beyond R7. Stop at the 4M-R7 Batu visual review gate.
+Self-advance allowed: no beyond R9. Stop at the 4M-R9 Batu visual review gate after verification and review screenshots.
 
 Closed gate: `Batch 4B-3: Primitive compiler`, reviewed, approved, and closed.
 
@@ -497,4 +506,8 @@ Completed 4M-R6 output: added a Franklin hybrid benchmark-closure overlay with f
 
 Completed 4M-R7 output: extracted the Franklin-only hero fidelity lane out of `Phase4BRuntimePreview.jsx`, kept the R6 measured trace as alignment, used the hero kit for visual fidelity, kept runtime responsibility to assembly/review, documented the GLB/GLTF-vs-dedicated-Three.js workflow decision, captured R7 review screenshots, and preserved normal-mode/source/promotion gates.
 
-Hard review gate: stop after 4M-R7 verification and commit. Do not open R8 or Manhattan, implement 4L external/scaled render work, real source access, source download/cache/ingest/convert/render/use, new evidence intake, normal-mode rendering, public UI, procedural production scaffold rendering, production 4M asset/art-direction work, add dependencies or tooling, replace the renderer, broaden public interfaces or module boundaries beyond the internal Franklin QA hero module, open 4N/4P, start facade evidence intake, start business/source linkage, promote sources or claims, or make exact storefront/frontage/facade/entrance/address/signage/tenant/material/active-status/height/roof/public/product claims without Batu approval and an updated current brief.
+Completed 4M-R8 output: added a QA-only Franklin facade record bound to the verified Franklin hero target, extended the Franklin hero kit so record fields drive native geometry callbacks, added deterministic review URL hooks for camera/focus capture, captured Franklin benchmark and side-return screenshots, and preserved normal-mode/source/promotion gates.
+
+Completed 4M-R9 output: extended the existing Franklin QA facade record and Franklin hero module with code-native, JSON-driven high-recognition detail modules, verified the runtime/module boundary, and captured Franklin review screenshots.
+
+Hard review gate: stop after completed 4M-R9. Do not open GLB work, Manhattan implementation, 4L external/scaled render work, real source access, source download/cache/ingest/convert/render/use, new evidence intake, normal-mode rendering, public UI, procedural production scaffold rendering, production 4M asset/art-direction work, add dependencies or tooling, replace the renderer, broaden public interfaces or module boundaries beyond the internal Franklin QA hero module option, open 4N/4P, start facade evidence intake, start business/source linkage, promote sources or claims, or make exact storefront/frontage/facade/entrance/address/signage/tenant/material/active-status/height/roof/public/product claims without Batu approval and an updated current brief.

@@ -55,15 +55,148 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Packet 4M-R7: Franklin Hero Kit Extraction + Benchmark Render Proof` is complete and verified at the Batu review gate.
+- Current phase: `Batch 4M-R9: Franklin High-Recognition Detail Modules` is complete and verified at the Batu visual review gate.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R7 Batu review gate with no executable batch and no pre-authorized queue.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R9 Batu visual review gate with no executable batch and no pre-authorized queue.
 - Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. R6 proved hybrid recognizability but not benchmark render fidelity. R7 completed a Franklin-only hero kit extraction/render proof: measured trace = alignment, hero kit = visual fidelity, runtime = assembly/review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces beyond the internal Franklin QA hero module, broad module-boundary changes, architecture changes, Manhattan expansion, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-09 - Batch 4M-R9 Franklin High-Recognition Detail Modules
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Franklin-only extension of the R8 QA-only data-driven facade assembly. Add code-native, JSON-driven high-recognition detail modules for side projection, fire escape, AC/utilities, deterministic rhythm variation, material/weathering bands, and street grounding context. Stop before GLB, Manhattan implementation, source expansion, normal mode, production assets, or exact/business/storefront claims.
+
+Files changed:
+- `src/data/facade-cues/franklin-hero-records.v0.1.json`
+- `src/components/hero/FranklinHeroCorner.jsx`
+- `src/Phase4BRuntimePreview.jsx`
+- `scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r9-franklin-high-recognition-detail-modules.md`
+- `docs/review-screenshots/phase-4m-r9-franklin-high-recognition-detail-modules/franklin-benchmark-close-r9.png`
+- `docs/review-screenshots/phase-4m-r9-franklin-high-recognition-detail-modules/franklin-side-return-corner-wrap-r9.png`
+
+Verification:
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `npm run build`
+- Browser review/capture from local runtime review URLs.
+- PNG file-format check and visual disk inspection.
+- `git diff --check`
+
+Outcome:
+- R9 extends the R8 facade record with QA-only `detailModules` and renders those fields through native geometry callbacks inside the Franklin hero module.
+- Added candidate side projection, fire escape cue, AC/utility modules, deterministic irregular facade rhythm, code-native weathering/material bands, and stronger street/context grounding.
+- Runtime remains assembly/review text/target binding only and does not absorb Franklin visual detail logic.
+- The output is visibly denser than R8 but still recorded as procedural/toy architecture, not benchmark-fidelity closure.
+
+Unresolved decisions:
+- Batu owns visual pass/fail for R9 and whether to continue code-native details or open a later GLB hero-injection lane.
+- Batu owns which R8/R9 fields, if any, become durable schema.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R9 Batu visual review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-09 - Batch 4M-R9 Franklin High-Recognition Detail Modules Opened
+
+Status:
+- Superseded by completed R9 entry above.
+
+Scope:
+- Batu confirmed R8 as a systems milestone, not a benchmark-fidelity milestone, and opened a bounded Franklin-only R9 sprint to extend the R8 QA-only facade-record assembly with code-native high-recognition detail modules before any GLB lane.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- Control-doc reconciliation before implementation.
+
+Outcome:
+- R9 is the current executable batch. The task is Franklin-only, record-driven, and bounded to native Three.js detail modules owned by `src/components/hero/FranklinHeroCorner.jsx`.
+
+Unresolved decisions:
+- Batu owns R9 visual pass/fail and any later GLB hero-injection decision.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to active 4M-R9.
+
+### 2026-06-09 - Batch 4M-R8 Franklin Data-Driven Facade Assembly Proof
+
+Status:
+- Complete and verified; pending Batu visual review.
+
+Scope:
+- Franklin-only QA facade-record-driven assembly proof. Add one QA-only Franklin facade record, refactor the existing Franklin hero kit so record fields drive native geometry callbacks, bind the matching record in the existing Visual POC runtime path, add verifier coverage, capture Franklin review screenshots, and stop.
+
+Files changed:
+- `src/data/facade-cues/franklin-hero-records.v0.1.json`
+- `src/components/hero/FranklinHeroCorner.jsx`
+- `src/Phase4BRuntimePreview.jsx`
+- `scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+- `docs/reports/phase-4m-r8-franklin-data-driven-facade-assembly-proof.md`
+- `docs/review-screenshots/phase-4m-r8-franklin-data-driven-facade-assembly-proof/franklin-benchmark-close-r8.png`
+- `docs/review-screenshots/phase-4m-r8-franklin-data-driven-facade-assembly-proof/franklin-side-return-corner-wrap-r8.png`
+
+Verification:
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `npm run build`
+- Browser review/capture from local runtime review URLs.
+- PNG file-format check and visual disk inspection.
+
+Outcome:
+- Verified the Franklin hero target as `p4b-object-nyc-footprint-bin-3064793` / BIN `3064793` before binding.
+- Added a QA-only facade record and used it to drive storefront bays, sign band, awning/canopy, recesses, mullions, upper-window rhythm, trim, cornice/parapet, candidate bulkhead, side-return relief, sparse side windows, return storefront cues, and contact grounding.
+- Added a tiny internal URL review hook for deterministic screenshot capture.
+- Preserved blocks on normal mode, production assets, source expansion, exact claims, business/tenant identity, and public/product claims.
+
+Unresolved decisions:
+- Batu owns visual pass/fail for R8 and whether any R8 facade-record fields become durable schema.
+- Batu owns what evidence or asset path is still needed for true storefront/frontage fidelity.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now holds at the completed 4M-R8 Batu visual review gate with no executable batch and no pre-authorized queue.
+
+### 2026-06-09 - Batch 4M-R8 Franklin Data-Driven Facade Assembly Proof Opened
+
+Status:
+- Superseded by completed R8 entry above.
+
+Scope:
+- Batu explicitly opened a narrow Franklin-only R8 batch despite the stale R7 brief. The active task is to add a QA-only Franklin facade record, drive native Franklin hero geometry from that record, bind it in the existing Visual POC runtime path, add verifier coverage, capture Franklin review screenshots, and stop at Batu visual review.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+
+Verification:
+- Control-doc reconciliation only before implementation.
+
+Outcome:
+- R8 is now the current executable batch. No implementation work has been completed yet.
+
+Unresolved decisions:
+- Batu owns final visual review and future schema/asset/evidence direction after R8.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to active 4M-R8.
 
 ### 2026-06-09 - Packet 4M-R7 Franklin Hero Kit Extraction + Benchmark Render Proof
 
