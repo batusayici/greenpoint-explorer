@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "phase-4m-r10b-franklin-intersection-spatial-mapping.v0.1",
+  "fixtureId": "greenpoint-franklin.phase-4m-r10b-spatial-mapping",
+  "phase": "4M-R10B",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "status": "qa_spatial_reconciliation_for_batu_review",
+  "scope": {
+    "intersection": "Greenpoint Ave x Franklin Ave",
+    "sourceGeometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+    "semanticManifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+    "claimLimit": "QA placement references only. This fixture does not create business identity, tenant frontage, storefront anchor, exact address, entrance, signage, material, active-status, production, or public/product claims."
+  },
+  "intersectionModel": {
+    "greenpointCenterlineSourceIds": [
+      "nyc-centerline-physicalid-47238",
+      "nyc-centerline-physicalid-47237"
+    ],
+    "franklinSeparatorStatus": "derived_review_separator_missing_franklin_centerline_in_phase_3b_packet",
+    "franklinSeparatorBasis": "The Phase 3B source packet includes Greenpoint Ave centerline segments but no Franklin Ave cross-street centerline. For R10B QA review, Franklin separation is derived from the shared Greenpoint endpoint and WGS84 side classification, then rendered as a QA-only separator between mapped west/across-Franklin and east/corridor-side footprint clusters.",
+    "sharedGreenpointEndpointWgs84": {
+      "lon": -73.95759551445,
+      "lat": 40.729886989476,
+      "source": "nyc-centerline-physicalid-47237.wgs84Line[0] / nyc-centerline-physicalid-47238.wgs84Line[1]"
+    },
+    "greenpointSideRule": {
+      "method": "cross_product_against_west_to_east_greenpoint_centerline",
+      "westPointWgs84": {
+        "lon": -73.959244843819,
+        "lat": 40.729729995886
+      },
+      "eastPointWgs84": {
+        "lon": -73.954246485005,
+        "lat": 40.730205703344
+      },
+      "northCondition": "cross(greenpointAxis, footprintCentroid - westPoint) >= 0",
+      "southCondition": "cross(greenpointAxis, footprintCentroid - westPoint) < 0"
+    },
+    "franklinSideRule": {
+      "method": "local_longitude_side_test_at_shared_greenpoint_endpoint",
+      "westAcrossFranklinCondition": "footprintCentroid.lon < sharedGreenpointEndpointWgs84.lon",
+      "eastCorridorSideCondition": "footprintCentroid.lon > sharedGreenpointEndpointWgs84.lon",
+      "limitation": "QA review separator only because Franklin Ave centerline was not present in the Phase 3B source packet."
+    },
+    "artificialOffsetsUsedForCorrection": false
+  },
+  "requiredSpatialRelationship": {
+    "westAcrossFranklinPlaceIds": [
+      "premier-franklin-organic",
+      "sereneco"
+    ],
+    "eastCorridorSidePlaceIds": [
+      "sonnys-corner"
+    ],
+    "requiredCondition": "Franklin Ave separator must render between the west/across-Franklin place references and the east/corridor-side Sonny's cluster in QA spatial review mode."
+  },
+  "placeMappings": [
+    {
+      "placeId": "premier-franklin-organic",
+      "qaReferenceName": "Premier Organic / Franklin Organic",
+      "qaReferenceStatus": "batu_supplied_place_label_for_spatial_review_only",
+      "sourceBackedFootprintBin": "3322608",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3322608",
+      "sourceBackedSourceRecordId": "p4b-record-nyc-footprint-bin-3322608",
+      "sameBblSourceComponentBins": [
+        "3322608",
+        "3322609",
+        "3322610"
+      ],
+      "renderedComponentObjectIds": [
+        "p4b-object-nyc-footprint-bin-3322608",
+        "p4b-object-nyc-footprint-bin-3322609"
+      ],
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southwest_across_franklin_corner",
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+      ],
+      "reviewNotes": [
+        "The visible corner storefront wraps the southwest side of Greenpoint x Franklin in the supplied reference photos.",
+        "The NYC footprint packet splits this same-BBL corner condition into small adjacent footprint records; R10B uses 3322608 as the primary source-backed target and exposes adjacent rendered component 3322609 in the QA overlay.",
+        "The R10 GLB binding remains attached to this southwest QA target for later review, but R10B does not tune the GLB."
+      ]
+    },
+    {
+      "placeId": "sereneco",
+      "qaReferenceName": "Sereneco",
+      "qaReferenceStatus": "batu_supplied_place_label_for_spatial_review_only",
+      "sourceBackedFootprintBin": "3337033",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3337033",
+      "sourceBackedSourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+      "sameBblSourceComponentBins": [
+        "3337033"
+      ],
+      "renderedComponentObjectIds": [
+        "p4b-object-nyc-footprint-bin-3337033"
+      ],
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "north",
+      "cornerIntersectionRole": "northwest_across_franklin_corner",
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+      ],
+      "reviewNotes": [
+        "The supplied northwest reference photos show the low brick Sereneco-side building north of Greenpoint and across Franklin from the corridor-side Sonny's cluster.",
+        "This target is a source-backed Franklin cross-street context footprint included for QA spatial review."
+      ]
+    },
+    {
+      "placeId": "sonnys-corner",
+      "qaReferenceName": "Sonny's Corner",
+      "qaReferenceStatus": "batu_supplied_place_label_for_spatial_review_only",
+      "sourceBackedFootprintBin": "3064811",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3064811",
+      "sourceBackedSourceRecordId": "p4b-record-nyc-footprint-bin-3064811",
+      "sameBblSourceComponentBins": [
+        "3064811"
+      ],
+      "renderedComponentObjectIds": [
+        "p4b-object-nyc-footprint-bin-3064811"
+      ],
+      "sideOfFranklinAve": "east_corridor_side",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southeast_corridor_side_corner",
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+      ],
+      "reviewNotes": [
+        "The supplied southeast reference photos show the dark corner block on the Greenpoint corridor side of Franklin.",
+        "This target must not be assigned to the west/across-Franklin side."
+      ]
+    }
+  ],
+  "blockedClaimsPreserved": [
+    "business-identity",
+    "business-active-status",
+    "tenant-frontage",
+    "storefront-anchor",
+    "storefront-order",
+    "exact-frontage",
+    "exact-address-placement",
+    "entrance-location",
+    "facade-appearance",
+    "signage",
+    "material",
+    "production-public-readiness",
+    "normal-mode-rendering"
+  ]
+}
