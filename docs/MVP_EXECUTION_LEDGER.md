@@ -55,15 +55,47 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4M-R9: Franklin High-Recognition Detail Modules` is complete and verified at the Batu visual review gate.
+- Current phase: `Batch 4M-R9: Franklin High-Recognition Detail Modules` is complete, verified, and committed as `feb533f`; post-R9 planning is reconciled.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R9 Batu visual review gate with no executable batch and no pre-authorized queue.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R9 Batu visual review gate with no executable batch and no pre-authorized queue. R10/R11/R12 are future candidates only.
 - Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. R6 proved hybrid recognizability but not benchmark render fidelity. R7 completed a Franklin-only hero kit extraction/render proof: measured trace = alignment, hero kit = visual fidelity, runtime = assembly/review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces beyond the internal Franklin QA hero module, broad module-boundary changes, architecture changes, Manhattan expansion, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-10 - Post-R9 Franklin Hero Asset Sequence Planning Reconciliation
+
+Status:
+- Complete; docs-only planning reconciliation.
+
+Scope:
+- Encode the post-R9 candidate sequence: 4M-R10 Franklin hero asset ingestion spike, 4M-R11 R9 vs R10 visual/technical comparison, and 4M-R12 hero-kit standardization decision.
+
+Files changed:
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `git status --short` confirmed only approved unrelated Group B untracked artifacts before edits.
+- Docs consistency review.
+- `git diff --check`
+
+Outcome:
+- R8/R9 remain complete and committed as `feb533f`.
+- R10 is documented as a future candidate only: one QA-only Franklin GLB hero insert, structured record anchoring, procedural fallback, hero asset loader boundary outside `src/Phase4BRuntimePreview.jsx` where possible, and Batu visual review stop.
+- R11/R12 are documented as comparison and standardization gates, not implementation authorization.
+- No implementation files changed and no R10 work began.
+
+Unresolved decisions:
+- Batu owns whether to open R10 after R9 visual review.
+- Batu owns the later R11 recommendation and R12 hero-kit standard acceptance.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch; R10/R11/R12 are future candidates pending Batu approval.
 
 ### 2026-06-09 - Batch 4M-R9 Franklin High-Recognition Detail Modules
 

@@ -1,59 +1,69 @@
-# Current Execution Brief - Phase 4M-R9 Franklin High-Recognition Detail Modules Complete
+# Current Execution Brief - Post-R9 Franklin Hero Asset Sequence Pending
 
-Status: `Batch 4M-R9: Franklin High-Recognition Detail Modules` is complete and verified.
+Status: R8/R9 are complete, verified, and committed as `feb533f`. Post-R9 planning is reconciled; no implementation batch is open.
 
 Current executable batch: none.
 
-Completed batch: `4M-R9 Franklin High-Recognition Detail Modules`.
+Completed milestone: `4M-R9 Franklin High-Recognition Detail Modules`.
 
-Opened from:
+Post-R9 candidate sequence:
 
-- Completed and verified R8 Franklin data-driven facade assembly proof.
-- Batu review on 2026-06-09 confirming R8 as a systems milestone, not a benchmark-fidelity milestone.
-- Batu approval to run one more bounded code-native Franklin fidelity sprint before any GLB lane.
+1. `4M-R10 Franklin Hero Asset Ingestion Spike`
+2. `4M-R11 R9 vs R10 Visual/Technical Comparison`
+3. `4M-R12 Hero-Kit Standardization Decision`
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop for Batu visual review of the R9 Franklin high-recognition detail-module screenshots and report.
+Hard Batu gate: stop for Batu review before opening R10. R10 may open only if Batu explicitly approves a controlled QA-only Franklin hero asset ingestion spike.
 
-## R9 Outcome
+## Current State
 
-- Extended the QA-only Franklin facade record fixture with `detailModules` for candidate side projection, fire escape, AC/window utilities, deterministic rhythm variation, material/weathering bands, and street/context grounding props.
-- Extended the existing Franklin hero module so those detail fields drive native geometry callbacks inside `src/components/hero/FranklinHeroCorner.jsx`.
-- Preserved the R8 facade-record assembly architecture and kept Franklin visual fidelity logic out of `src/Phase4BRuntimePreview.jsx`.
-- Updated the runtime review status text only.
-- Added R9 verifier coverage for detail fields, QA-only status, blocked claims, prohibited technology paths, and runtime/module responsibility boundaries.
-- Captured Franklin benchmark close and side-return/corner-wrap R9 review PNGs.
+- R8 proved the QA-only Franklin facade record can drive native Franklin hero geometry from structured data.
+- R9 extended that record-driven scaffold with code-native high-recognition detail modules: candidate side projection, fire escape cue, AC/window utilities, irregular facade rhythm, material/weathering bands, and street/sidewalk grounding.
+- R9 remains a visual review milestone: the code-native Franklin detail modules improved the scaffold, but recognizable stylized fidelity under close isometric orthographic review still needs a controlled asset-ingestion test before any broader asset pipeline is considered.
+- The procedural scaffold remains the base; QA-only hero inserts are exceptions for high-recognition architectural features.
 
-## Review Artifacts
+## Candidate R10 Scope
 
-- `docs/reports/phase-4m-r9-franklin-high-recognition-detail-modules.md`
-- `docs/review-screenshots/phase-4m-r9-franklin-high-recognition-detail-modules/franklin-benchmark-close-r9.png`
-- `docs/review-screenshots/phase-4m-r9-franklin-high-recognition-detail-modules/franklin-side-return-corner-wrap-r9.png`
+`4M-R10 Franklin Hero Asset Ingestion Spike` is a future candidate only, not open in this brief.
 
-## Boundaries Preserved
+Objective:
 
-- Franklin hero only.
-- Manhattan regression capture was not required because shared renderer/runtime behavior did not change beyond review text.
-- No GLB/GLTF loader, Cesium, 3D Tiles, raster texture atlas, raster facade projection, custom shader pipeline, source expansion, new dependencies, package tooling, whole-corridor refactor, production assets, production asset direction, normal-mode exposure, public/product claims, real business identity, tenant identity, exact signage, exact frontage, exact entrance, exact address, exact facade, logo/trade-dress, or active-status claims.
-- Unrelated existing untracked report/screenshot files from earlier 4M work were not modified intentionally and were not staged.
-- No commit was made.
+- Prove that one QA-only authored GLB hero insert can be loaded, anchored, toggled, and visually compared against the procedural R9 scaffold without contaminating normal mode or the wider runtime architecture.
 
-## Verification Completed
+Allowed only if Batu opens R10:
 
-- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
-- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
-- `npm run build`
-- Browser review/capture from local runtime review URLs
-- PNG file-format check
-- Visual disk inspection of both R9 screenshots
-- `git diff --check`
+- One GLB module only.
+- Preferred first candidate: Franklin side bay/window projection or similarly high-recognition architectural insert.
+- Preserve the R9 procedural scaffold as fallback.
+- Position/scale the asset through the Franklin facade record or an adjacent QA-only hero asset binding record.
+- Keep asset loading out of `src/Phase4BRuntimePreview.jsx` where possible, using a hero asset registry/loader boundary under `src/components/hero/` or equivalent.
+- Runtime remains responsible for assembly, gating, and placement; the Franklin hero module owns visual fidelity choices.
 
-## Unresolved Decisions For Batu
+Blocked unless later explicitly approved:
 
-- Whether R9's code-native detail modules improve Franklin recognition enough to continue this lane.
-- Whether a later GLB hero-injection lane should open because the R9 output remains visibly procedural/toy architecture.
-- Which R8/R9 facade-record fields should become durable schema versus remaining temporary QA-only authoring fields.
-- What evidence or asset path is still needed for true storefront/frontage fidelity.
+- Full Franklin building replacement.
+- Manhattan implementation.
+- PBR registry, corridor UV mapping, Cesium, 3D Tiles, full asset streaming, raster texture atlas, custom shader pipeline, production assets, production claims, normal-mode exposure, exact storefront/frontage/signage/entrance/address/tenant/material/active-status claims, source expansion, package/tooling changes beyond an approved R10 boundary, or public/product claims.
+
+## Candidate R10 Success Criteria
+
+- One QA-only GLB asset loads in Franklin hero review mode.
+- Asset can be disabled to show the procedural fallback.
+- Asset is anchored from structured record data.
+- Screenshots show whether the insert materially improves recognition.
+- Verifiers, `npm run build`, and `git diff --check` pass.
+- Stop at Batu visual review gate.
+
+## R11/R12 Planning Horizon
+
+- `4M-R11` compares R9 procedural output against R10 GLB insert output and recommends primitive modules, GLB inserts, or a mixed hero-kit strategy.
+- `4M-R12` codifies the accepted Franklin hero-kit pattern before any Manhattan, landmark, or broader corridor expansion.
+
+## Verification Completed For This Reconciliation
+
+- Planning/control docs reconciled only.
+- No implementation files edited.
+- No R10 implementation started.
