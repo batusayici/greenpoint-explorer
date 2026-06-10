@@ -1,11 +1,11 @@
 {
   "schemaVersion": "qa-facade-record.v0.1",
   "recordId": "qa-franklin-hero-facade-v0",
-  "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
-  "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064793",
-  "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+  "targetSemanticId": "p4b-object-nyc-footprint-bin-3322608",
+  "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3322608",
+  "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3322608",
   "targetCueRecordId": "p4e1-franklin-red-brick-cornice-corner",
-  "bin": "3064793",
+  "bin": "3322608",
   "associationStatus": "provisional_geometry_target_for_qa_render_only",
   "targetVerification": {
     "status": "verified_from_current_repo_fixtures_for_qa_binding",
@@ -14,7 +14,7 @@
       "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
       "src/data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json"
     ],
-    "notes": "Current Franklin hero cue record p4e1-franklin-red-brick-cornice-corner targets p4b-object-nyc-footprint-bin-3064793. This binding remains provisional for QA rendering only."
+    "notes": "Current Franklin hero cue record p4e1-franklin-red-brick-cornice-corner now targets p4b-object-nyc-footprint-bin-3322608 for the southwest cross-Franklin QA placement. This binding remains provisional for QA rendering only."
   },
   "qaOnly": true,
   "normalModeExposure": "blocked",
@@ -42,7 +42,7 @@
     ],
     "existingCueRefs": [
       "p4e1-franklin-red-brick-cornice-corner",
-      "qa-facade-plane-franklin-slot-03-east-corner"
+      "qa-facade-plane-franklin-slot-southwest-cross-street"
     ]
   },
   "faces": {
@@ -52,7 +52,13 @@
           "value": 5,
           "precision": "evidence_estimated"
         },
-        "bayWidthRatios": [0.14, 0.22, 0.22, 0.24, 0.18],
+        "bayWidthRatios": [
+          0.14,
+          0.22,
+          0.22,
+          0.24,
+          0.18
+        ],
         "hasSignBand": {
           "value": true,
           "height": 0.8,
@@ -67,8 +73,17 @@
         },
         "storefrontRecess": 0.3,
         "mullionDepth": 0.08,
-        "glassBeatPattern": [1, 2, 2, 2, 1],
-        "candidateDoorBays": [3, 4],
+        "glassBeatPattern": [
+          1,
+          2,
+          2,
+          2,
+          1
+        ],
+        "candidateDoorBays": [
+          3,
+          4
+        ],
         "status": "qa_manual_draft_not_exact_frontage"
       },
       "upperFloors": {
@@ -76,7 +91,12 @@
           "value": 4,
           "confidence": "medium"
         },
-        "bayPattern": [3, 3, 3, 3],
+        "bayPattern": [
+          3,
+          3,
+          3,
+          3
+        ],
         "windowRecess": 0.16,
         "windowTrimProjection": 0.08,
         "sillProjection": 0.12,
@@ -108,6 +128,37 @@
   },
   "detailModules": {
     "status": "qa_manual_draft_high_recognition_cues_not_exact_facade",
+    "heroAssetBindings": {
+      "status": "qa_only_r10_one_asset_ingestion_spike_not_production",
+      "normalModeExposure": "blocked",
+      "reviewDefault": "enabled_in_visual_poc_only",
+      "bindings": [
+        {
+          "assetId": "franklin-side-bay-window-candidate",
+          "assetType": "glb",
+          "assetPath": "assets/windows/Bay_Window_10K_texture.glb",
+          "qaOnly": true,
+          "enabled": true,
+          "targetDetailModule": "bayWindowProjection",
+          "fallbackDetailModule": "bayWindowProjection",
+          "anchorFace": "sideReturn",
+          "anchorStatus": "structured_record_position_scale_candidate",
+          "normalModeExposure": "blocked",
+          "reviewToggleQueryParam": "r10HeroAsset",
+          "sourceBoundsUnitSize": 2,
+          "transform": {
+            "xScaleMultiplier": 1.05,
+            "yScaleMultiplier": 1,
+            "zScaleMultiplier": 1.08,
+            "xOffset": -0.01,
+            "yOffset": 0,
+            "zOffset": 0,
+            "rotationYRadians": 0
+          },
+          "status": "qa_manual_draft_asset_insert_not_exact_facade_not_production"
+        }
+      ]
+    },
     "bayWindowProjection": {
       "enabled": true,
       "qaOnly": true,
@@ -119,7 +170,10 @@
       "rowCount": 3,
       "width": 0.24,
       "projectionDepth": 0.3,
-      "verticalSpanRatio": [0.34, 0.82],
+      "verticalSpanRatio": [
+        0.34,
+        0.82
+      ],
       "offsetAlongSideDepthRatio": 0.62,
       "windowInsetDepth": 0.05,
       "capProjection": 0.06
@@ -146,17 +200,43 @@
       "confidence": "medium",
       "status": "plausible_ac_and_utility_boxes_for_qa_depth_only",
       "frontAcPlacements": [
-        { "row": 0, "bay": 0, "widthScale": 0.58 },
-        { "row": 0, "bay": 2, "widthScale": 0.62 },
-        { "row": 1, "bay": 1, "widthScale": 0.48 }
+        {
+          "row": 0,
+          "bay": 0,
+          "widthScale": 0.58
+        },
+        {
+          "row": 0,
+          "bay": 2,
+          "widthScale": 0.62
+        },
+        {
+          "row": 1,
+          "bay": 1,
+          "widthScale": 0.48
+        }
       ],
       "sideAcPlacements": [
-        { "row": 0, "column": 0 },
-        { "row": 1, "column": 2 }
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 2
+        }
       ],
       "utilityBoxPlacements": [
-        { "face": "front", "bayRatio": 0.08, "height": 0.28 },
-        { "face": "sideReturn", "depthRatio": 0.2, "height": 0.2 }
+        {
+          "face": "front",
+          "bayRatio": 0.08,
+          "height": 0.28
+        },
+        {
+          "face": "sideReturn",
+          "depthRatio": 0.2,
+          "height": 0.2
+        }
       ]
     },
     "facadeRhythmVariation": {
@@ -165,13 +245,39 @@
       "deterministic": true,
       "seedLabel": "franklin-r9-fixed-cadence",
       "status": "qa_deterministic_offsets_reduce_uniformity_not_exact_facade",
-      "trimDepthPattern": [0.0, 0.02, -0.01, 0.03],
-      "sillLengthPattern": [1.0, 1.14, 0.92, 1.08],
-      "headerLengthPattern": [1.06, 0.96, 1.12],
-      "windowYOffsetPattern": [0.0, 0.018, -0.012],
+      "trimDepthPattern": [
+        0,
+        0.02,
+        -0.01,
+        0.03
+      ],
+      "sillLengthPattern": [
+        1,
+        1.14,
+        0.92,
+        1.08
+      ],
+      "headerLengthPattern": [
+        1.06,
+        0.96,
+        1.12
+      ],
+      "windowYOffsetPattern": [
+        0,
+        0.018,
+        -0.012
+      ],
       "reliefBandPattern": [
-        { "heightRatio": 0.39, "projection": 0.035, "color": "dark_brick_shadow" },
-        { "heightRatio": 0.64, "projection": 0.024, "color": "warm_brick_worn" }
+        {
+          "heightRatio": 0.39,
+          "projection": 0.035,
+          "color": "dark_brick_shadow"
+        },
+        {
+          "heightRatio": 0.64,
+          "projection": 0.024,
+          "color": "warm_brick_worn"
+        }
       ]
     },
     "materialBands": {
@@ -184,8 +290,16 @@
         "color": "dark_plinth_brick"
       },
       "verticalWeatheringStrips": [
-        { "xRatio": 0.12, "widthRatio": 0.035, "opacity": 0.48 },
-        { "xRatio": 0.82, "widthRatio": 0.045, "opacity": 0.42 }
+        {
+          "xRatio": 0.12,
+          "widthRatio": 0.035,
+          "opacity": 0.48
+        },
+        {
+          "xRatio": 0.82,
+          "widthRatio": 0.045,
+          "opacity": 0.42
+        }
       ],
       "underCorniceShadow": true,
       "sideWallShadowPanels": 3
@@ -206,11 +320,30 @@
         "confidence": "low"
       },
       "contextProps": [
-        { "type": "utility_box", "face": "front", "xRatio": 0.08 },
-        { "type": "pole", "face": "front", "xRatio": 0.03 },
-        { "type": "bollards", "face": "corner", "count": 3 },
-        { "type": "bike_rack", "face": "sideReturn" },
-        { "type": "trash_can", "face": "front", "xRatio": 0.92 }
+        {
+          "type": "utility_box",
+          "face": "front",
+          "xRatio": 0.08
+        },
+        {
+          "type": "pole",
+          "face": "front",
+          "xRatio": 0.03
+        },
+        {
+          "type": "bollards",
+          "face": "corner",
+          "count": 3
+        },
+        {
+          "type": "bike_rack",
+          "face": "sideReturn"
+        },
+        {
+          "type": "trash_can",
+          "face": "front",
+          "xRatio": 0.92
+        }
       ]
     }
   },

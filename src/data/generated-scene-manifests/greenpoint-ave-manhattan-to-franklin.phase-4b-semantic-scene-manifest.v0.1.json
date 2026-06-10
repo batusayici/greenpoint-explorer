@@ -34,7 +34,7 @@
     "batch": "4B-5",
     "claimLimit": "Building coverage is contextual primitive massing only; not storefronts, frontage, entrances, facades, signage, address placement, or business verification.",
     "corridorSideCounts": {
-      "left": 63,
+      "left": 64,
       "right": 77
     },
     "labelsUsed": [
@@ -44,8 +44,8 @@
       "out-of-scope"
     ],
     "method": "compiler-promotes-corridor-adjacent-footprints-from-approved-normalized-geometry-fixture",
-    "renderedBuildingCount": 142,
-    "sourceBackedBuildingCount": 140,
+    "renderedBuildingCount": 143,
+    "sourceBackedBuildingCount": 141,
     "status": "source-backed-context-expanded"
   },
   "corridor": {
@@ -250,6 +250,7 @@
       "p4b-object-nyc-footprint-bin-3322609",
       "p4b-object-nyc-footprint-bin-3330079",
       "p4b-object-nyc-footprint-bin-3330080",
+      "p4b-object-nyc-footprint-bin-3337033",
       "p4b-object-nyc-footprint-bin-3337034",
       "p4b-object-nyc-footprint-bin-3337035",
       "p4b-object-nyc-footprint-bin-3337057",
@@ -16560,6 +16561,132 @@
         {
           "claimClass": "building-footprint-context",
           "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+          "status": "source_backed_contextual"
+        },
+        {
+          "claimClass": "building-height-context",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+          "status": "source_backed_contextual"
+        },
+        {
+          "claimClass": "tax-lot-building-context",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+          "status": "source_backed_contextual"
+        }
+      ],
+      "blockedClaimClasses": [
+        "business-active-status",
+        "business-category",
+        "business-identity",
+        "entrance-location",
+        "exact-address-placement",
+        "facade-appearance",
+        "production-public-readiness",
+        "raster-readiness",
+        "signage",
+        "storefront-anchor",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage"
+      ],
+      "corridorId": "p4b-corridor-greenpoint-ave-manhattan-to-franklin",
+      "geometryReference": {
+        "collection": "footprintRecords",
+        "geometryPresence": {
+          "hasSceneLine": false,
+          "hasScenePolygon": true,
+          "hasWgs84Line": false,
+          "hasWgs84Polygon": true
+        },
+        "geometryStatus": "source_backed_contextual",
+        "id": "nyc-footprint-bin-3337033",
+        "sourceGeometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+        "useForFutureRenderer": "extruded-footprint-graybox-candidate"
+      },
+      "id": "p4b-object-nyc-footprint-bin-3337033",
+      "primitiveMassing": {
+        "contextCoverageMethod": "deterministic-corridor-adjacent-footprint-selection-plus-franklin-cross-street-review-context",
+        "contextCoverageStatus": "source-backed",
+        "corridorSide": "left",
+        "corridorSideOffset": -28.3,
+        "exactFacadeClaim": false,
+        "exactStorefrontOrderClaim": false,
+        "extrusionAllowed": true,
+        "footprintReferenceId": "nyc-footprint-bin-3337033",
+        "heightSource": "sourceProperties.heightRoof",
+        "heightValue": "22.81",
+        "status": "source_backed_contextual"
+      },
+      "provenance": {
+        "attributionRequired": true,
+        "geometryReferenceId": "nyc-footprint-bin-3337033",
+        "provenancePath": "sourcePacket.normalizedPath:sources[nyc-open-data-building-footprints]",
+        "sourceFixtureId": "nyc-open-data-building-footprints",
+        "sourceLabel": "NYC Open Data Building Footprints",
+        "sourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+        "usageStatus": "public-open-data-review-only"
+      },
+      "qa": {
+        "businessPlacementClaim": false,
+        "contextCoverage": {
+          "corridorAxisT": -280.907,
+          "corridorCenterlineGeometryId": "nyc-centerline-physicalid-47237",
+          "corridorSide": "left",
+          "corridorSideOffset": -28.3,
+          "footprintAxisMax": -95.661,
+          "footprintAxisMin": -445.09,
+          "method": "deterministic-corridor-adjacent-footprint-selection-plus-franklin-cross-street-review-context",
+          "notClaims": [
+            "tenant-frontage",
+            "storefront-order",
+            "storefront-anchor",
+            "entrance-location",
+            "facade-appearance",
+            "exact-address-placement",
+            "business-identity",
+            "business-active-status"
+          ],
+          "reason": "Footprint is an approved Franklin cross-street corner review context needed to place the northwest repo-local evidence cluster; it remains contextual and QA-only.",
+          "sideLimit": 50,
+          "source": "approved-normalized-geometry-fixture",
+          "status": "source-backed"
+        },
+        "exactEntranceClaim": false,
+        "exactFacadeClaim": false,
+        "exactFrontageClaim": false,
+        "hiddenInferenceIntroduced": false,
+        "manualAssumptions": [
+          {
+            "id": "p4b-assumption-stylized-scene-projection",
+            "notClaims": [
+              "entrance-location",
+              "exact-address-placement",
+              "facade-appearance",
+              "raster-readiness",
+              "storefront-anchor",
+              "tenant-frontage"
+            ],
+            "status": "manual_draft",
+            "target": "corridor.sceneProjection"
+          }
+        ],
+        "sourceRecordStatus": "compiler-promoted-from-approved-geometry-fixture",
+        "status": "compiled-from-source-fixture"
+      },
+      "semanticRole": "future-graybox-building-massing",
+      "sourceId": "p4b-source-nyc-open-data-building-footprints",
+      "sourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+      "stableIdMethod": "p4b-object-{sourceRecordSourceKey}",
+      "type": "primitive-building-massing"
+    },
+    {
+      "allowedClaims": [
+        {
+          "claimClass": "building-footprint-context",
+          "provenanceSourceId": "p4b-source-nyc-open-data-building-footprints",
           "sourceRecordId": "p4b-record-nyc-footprint-bin-3337034",
           "status": "source_backed_contextual"
         },
@@ -19275,6 +19402,13 @@
       "sourceKey": "nyc-footprint-bin-3330080"
     },
     {
+      "id": "p4b-object-nyc-footprint-bin-3337033",
+      "method": "p4b-object-{sourceRecordSourceKey}",
+      "namespace": "object",
+      "origin": "compiler",
+      "sourceKey": "nyc-footprint-bin-3337033"
+    },
+    {
       "id": "p4b-object-nyc-footprint-bin-3337034",
       "method": "p4b-object-{sourceRecordSourceKey}",
       "namespace": "object",
@@ -20281,6 +20415,13 @@
       "namespace": "record",
       "origin": "compiler-4b-5-context-coverage",
       "sourceKey": "nyc-footprint-bin-3330080"
+    },
+    {
+      "id": "p4b-record-nyc-footprint-bin-3337033",
+      "method": "p4b-record-{sourceRecordSourceKey}",
+      "namespace": "record",
+      "origin": "compiler-4b-5-context-coverage",
+      "sourceKey": "nyc-footprint-bin-3337033"
     },
     {
       "id": "p4b-record-nyc-footprint-bin-3337034",

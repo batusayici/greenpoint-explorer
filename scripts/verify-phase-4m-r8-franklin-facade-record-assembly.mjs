@@ -44,11 +44,11 @@ async function main() {
   assertEqual(fixture.recordId, "qa-franklin-hero-facade-v0", "fixture.recordId", failures);
   assertEqual(fixture.qaOnly, true, "fixture.qaOnly", failures);
   assertEqual(fixture.normalModeExposure, "blocked", "fixture.normalModeExposure", failures);
-  assertEqual(fixture.targetSemanticId, "p4b-object-nyc-footprint-bin-3064793", "fixture.targetSemanticId", failures);
-  assertEqual(fixture.targetGeometryContainerId, "p4b-object-nyc-footprint-bin-3064793", "fixture.targetGeometryContainerId", failures);
-  assertEqual(fixture.targetSourceRecordId, "p4b-record-nyc-footprint-bin-3064793", "fixture.targetSourceRecordId", failures);
+  assertEqual(fixture.targetSemanticId, "p4b-object-nyc-footprint-bin-3322608", "fixture.targetSemanticId", failures);
+  assertEqual(fixture.targetGeometryContainerId, "p4b-object-nyc-footprint-bin-3322608", "fixture.targetGeometryContainerId", failures);
+  assertEqual(fixture.targetSourceRecordId, "p4b-record-nyc-footprint-bin-3322608", "fixture.targetSourceRecordId", failures);
   assertEqual(fixture.targetCueRecordId, "p4e1-franklin-red-brick-cornice-corner", "fixture.targetCueRecordId", failures);
-  assertEqual(fixture.bin, "3064793", "fixture.bin", failures);
+  assertEqual(fixture.bin, "3322608", "fixture.bin", failures);
   assertEqual(fixture.associationStatus, "provisional_geometry_target_for_qa_render_only", "fixture.associationStatus", failures);
 
   for (const claim of requiredBlockedClaims) {
@@ -71,7 +71,7 @@ async function main() {
   const runtimeSnippets = [
     "franklinHeroFacadeRecord",
     "matchingFranklinFacadeRecord",
-    "franklinHeroFacadeRecord.targetSemanticId === \"p4b-object-nyc-footprint-bin-3064793\"",
+    "franklinHeroFacadeRecord.targetSemanticId === \"p4b-object-nyc-footprint-bin-3322608\"",
     "franklinHeroFacadeRecord.targetCueRecordId === endpointHeroFacadeOverrides.franklin.targetCueRecordId",
     "facadeRecord: matchingFranklinFacadeRecord",
     "addFranklinHeroCorner(group",

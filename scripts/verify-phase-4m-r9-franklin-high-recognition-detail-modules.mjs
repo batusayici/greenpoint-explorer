@@ -55,8 +55,8 @@ async function main() {
   assertEqual(fixture.schemaVersion, "qa-facade-record.v0.1", "fixture.schemaVersion", failures);
   assertEqual(fixture.qaOnly, true, "fixture.qaOnly", failures);
   assertEqual(fixture.normalModeExposure, "blocked", "fixture.normalModeExposure", failures);
-  assertEqual(fixture.targetSemanticId, "p4b-object-nyc-footprint-bin-3064793", "fixture.targetSemanticId", failures);
-  assertEqual(fixture.bin, "3064793", "fixture.bin", failures);
+  assertEqual(fixture.targetSemanticId, "p4b-object-nyc-footprint-bin-3322608", "fixture.targetSemanticId", failures);
+  assertEqual(fixture.bin, "3322608", "fixture.bin", failures);
 
   for (const claim of requiredBlockedClaims) {
     if (!fixture.blockedClaims?.includes(claim)) failures.push(`Fixture blockedClaims missing ${claim}`);

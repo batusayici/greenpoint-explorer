@@ -62,21 +62,21 @@
     "blockBreakGapSceneUnits": ">= 0.62 between same-side generated building centroids"
   },
   "summary": {
-    "cueCount": 142,
-    "targetSemanticObjectCount": 142,
+    "cueCount": 143,
+    "targetSemanticObjectCount": 143,
     "widthTierCounts": {
       "narrow": 2,
-      "regular": 113,
-      "wide": 27
+      "regular": 125,
+      "wide": 16
     },
     "heightTierCounts": {
       "low": 6,
-      "mid": 72,
+      "mid": 73,
       "tall": 64
     },
     "depthTierCounts": {
-      "regular": 69,
-      "shallow": 73
+      "regular": 35,
+      "shallow": 108
     }
   },
   "manualReviewGates": [
@@ -119,9 +119,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.5583,
-          "xMax": -5.3508,
-          "z": -0.1819
+          "xMin": -4.1721,
+          "xMax": -3.1696,
+          "z": -0.151
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -132,12 +132,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.009,
-          "z": -0.2501
+          "x": -3.7161,
+          "z": -0.2077
         },
         "dimensions": {
-          "width": 1.2075,
-          "depth": 0.1319,
+          "width": 1.0026,
+          "depth": 0.1095,
           "height": 2.9652
         }
       },
@@ -195,9 +195,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -7.1242,
-          "xMax": -5.8071,
-          "z": -0.7159
+          "xMin": -4.6419,
+          "xMax": -3.5484,
+          "z": -0.5944
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -205,15 +205,15 @@
         "cornerOrEndpointRole": "franklin-end-review-band",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
-        "blockBreakBefore": false,
+        "blockBreakBefore": true,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.3466,
-          "z": -0.8488
+          "x": -3.9964,
+          "z": -0.7047
         },
         "dimensions": {
-          "width": 1.3171,
-          "depth": 0.3379,
+          "width": 1.0935,
+          "depth": 0.2805,
           "height": 2.9628
         }
       },
@@ -271,25 +271,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.8739,
-          "xMax": -5.5568,
-          "z": -0.7209
+          "xMin": -4.4342,
+          "xMax": -3.3406,
+          "z": -0.5986
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "depthTier": "shallow",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.898,
-          "z": -0.8063
+          "x": -3.6239,
+          "z": -0.6694
         },
         "dimensions": {
-          "width": 1.3171,
-          "depth": 0.3272,
+          "width": 1.0935,
+          "depth": 0.2717,
           "height": 2.937
         }
       },
@@ -347,9 +347,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.6236,
-          "xMax": -5.4823,
-          "z": -0.7799
+          "xMin": -4.2264,
+          "xMax": -3.2788,
+          "z": -0.6475
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -360,12 +360,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.0089,
-          "z": -0.9219
+          "x": -3.716,
+          "z": -0.7654
         },
         "dimensions": {
-          "width": 1.1413,
-          "depth": 0.2782,
+          "width": 0.9476,
+          "depth": 0.231,
           "height": 2.7918
         }
       },
@@ -423,25 +423,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.3624,
-          "xMax": -5.346,
-          "z": -0.8094
+          "xMin": -4.0095,
+          "xMax": -3.1656,
+          "z": -0.672
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.8659,
-          "z": -0.9301
+          "x": -3.5972,
+          "z": -0.7722
         },
         "dimensions": {
-          "width": 1.0164,
-          "depth": 0.2486,
+          "width": 0.8439,
+          "depth": 0.2064,
           "height": 2.562
         }
       },
@@ -499,25 +499,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.1122,
-          "xMax": -5.0437,
-          "z": -0.798
+          "xMin": -3.8017,
+          "xMax": -2.9146,
+          "z": -0.6625
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.3822,
-          "z": -0.8752
+          "x": -3.1957,
+          "z": -0.7266
         },
         "dimensions": {
-          "width": 1.0685,
-          "depth": 0.2544,
+          "width": 0.8871,
+          "depth": 0.2113,
           "height": 2.5554
         }
       },
@@ -575,25 +575,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.8515,
-          "xMax": -4.9588,
-          "z": -0.8355
+          "xMin": -3.5853,
+          "xMax": -2.8442,
+          "z": -0.6937
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.3222,
-          "z": -0.9317
+          "x": -3.1458,
+          "z": -0.7736
         },
         "dimensions": {
-          "width": 0.8927,
-          "depth": 0.2126,
+          "width": 0.7411,
+          "depth": 0.1765,
           "height": 2.562
         }
       },
@@ -651,25 +651,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.6324,
-          "xMax": -4.7502,
-          "z": -0.8548
+          "xMin": -3.4034,
+          "xMax": -2.6709,
+          "z": -0.7097
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.103,
-          "z": -0.9347
+          "x": -2.9638,
+          "z": -0.7761
         },
         "dimensions": {
-          "width": 0.8823,
-          "depth": 0.2101,
+          "width": 0.7325,
+          "depth": 0.1744,
           "height": 2.6334
         }
       },
@@ -727,25 +727,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.4233,
-          "xMax": -4.5207,
-          "z": -0.8514
+          "xMin": -3.2297,
+          "xMax": -2.4804,
+          "z": -0.7069
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.8838,
-          "z": -0.937
+          "x": -2.7819,
+          "z": -0.778
         },
         "dimensions": {
-          "width": 0.9025,
-          "depth": 0.2134,
+          "width": 0.7493,
+          "depth": 0.1772,
           "height": 2.511
         }
       },
@@ -803,25 +803,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.2042,
-          "xMax": -4.3225,
-          "z": -0.8514
+          "xMin": -3.0479,
+          "xMax": -2.3158,
+          "z": -0.7069
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.8288,
-          "z": -0.9832
+          "x": -2.7362,
+          "z": -0.8163
         },
         "dimensions": {
-          "width": 0.8817,
-          "depth": 0.2113,
+          "width": 0.7321,
+          "depth": 0.1754,
           "height": 2.5518
         }
       },
@@ -879,25 +879,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.9649,
-          "xMax": -4.093,
-          "z": -0.8423
+          "xMin": -2.8492,
+          "xMax": -2.1253,
+          "z": -0.6993
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.4177,
-          "z": -0.92
+          "x": -2.3949,
+          "z": -0.7639
         },
         "dimensions": {
-          "width": 0.8718,
-          "depth": 0.2138,
+          "width": 0.7239,
+          "depth": 0.1775,
           "height": 2.5368
         }
       },
@@ -955,25 +955,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.7453,
-          "xMax": -3.8948,
-          "z": -0.8483
+          "xMin": -2.6669,
+          "xMax": -1.9607,
+          "z": -0.7043
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.3558,
-          "z": -0.9515
+          "x": -2.3435,
+          "z": -0.79
         },
         "dimensions": {
-          "width": 0.8505,
-          "depth": 0.208,
+          "width": 0.7061,
+          "depth": 0.1727,
           "height": 2.5188
         }
       },
@@ -1031,9 +1031,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.4742,
-          "xMax": -3.696,
-          "z": -0.8697
+          "xMin": -2.4418,
+          "xMax": -1.7957,
+          "z": -0.7221
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -1044,12 +1044,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.0073,
-          "z": -0.9419
+          "x": -2.0541,
+          "z": -0.782
         },
         "dimensions": {
-          "width": 0.7782,
-          "depth": 0.1797,
+          "width": 0.6461,
+          "depth": 0.1492,
           "height": 2.0262
         }
       },
@@ -1107,25 +1107,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.2864,
-          "xMax": -3.0936,
-          "z": -0.7587
+          "xMin": -2.2859,
+          "xMax": -1.2955,
+          "z": -0.6299
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.5439,
-          "z": -0.863
+          "x": -1.6694,
+          "z": -0.7165
         },
         "dimensions": {
-          "width": 1.1928,
-          "depth": 0.2908,
+          "width": 0.9903,
+          "depth": 0.2415,
           "height": 2.2059
         }
       },
@@ -1183,25 +1183,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.0257,
-          "xMax": -2.8538,
-          "z": -0.7542
+          "xMin": -2.0694,
+          "xMax": -1.0964,
+          "z": -0.6262
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.4109,
-          "z": -0.9036
+          "x": -1.559,
+          "z": -0.7502
         },
         "dimensions": {
-          "width": 1.172,
-          "depth": 0.2885,
+          "width": 0.973,
+          "depth": 0.2395,
           "height": 2.5104
         }
       },
@@ -1259,9 +1259,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.7755,
-          "xMax": -2.7897,
-          "z": -0.8094
+          "xMin": -1.8616,
+          "xMax": -1.0432,
+          "z": -0.672
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -1272,12 +1272,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.0919,
-          "z": -0.8818
+          "x": -1.2941,
+          "z": -0.7322
         },
         "dimensions": {
-          "width": 0.9858,
-          "depth": 0.2478,
+          "width": 0.8184,
+          "depth": 0.2058,
           "height": 2.5836
         }
       },
@@ -1335,9 +1335,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.5559,
-          "xMax": -2.6539,
-          "z": -0.8201
+          "xMin": -1.6793,
+          "xMax": -0.9304,
+          "z": -0.6809
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -1348,12 +1348,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.9931,
-          "z": -0.9108
+          "x": -1.212,
+          "z": -0.7562
         },
         "dimensions": {
-          "width": 0.902,
-          "depth": 0.2385,
+          "width": 0.7489,
+          "depth": 0.198,
           "height": 2.0058
         }
       },
@@ -1411,9 +1411,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.368,
-          "xMax": -2.4765,
-          "z": -0.8215
+          "xMin": -1.5234,
+          "xMax": -0.7831,
+          "z": -0.6821
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -1424,12 +1424,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.8439,
-          "z": -0.9165
+          "x": -1.0882,
+          "z": -0.7609
         },
         "dimensions": {
-          "width": 0.8916,
-          "depth": 0.2371,
+          "width": 0.7402,
+          "depth": 0.1969,
           "height": 1.962
         }
       },
@@ -1487,9 +1487,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.1912,
-          "xMax": -2.299,
-          "z": -0.824
+          "xMin": -1.3765,
+          "xMax": -0.6358,
+          "z": -0.6842
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -1500,12 +1500,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.6962,
-          "z": -0.9224
+          "x": -0.9655,
+          "z": -0.7658
         },
         "dimensions": {
-          "width": 0.8921,
-          "depth": 0.2161,
+          "width": 0.7407,
+          "depth": 0.1794,
           "height": 1.9494
         }
       },
@@ -1563,9 +1563,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.0033,
-          "xMax": -1.9557,
-          "z": -0.788
+          "xMin": -1.2206,
+          "xMax": -0.3507,
+          "z": -0.6543
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -1576,12 +1576,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.3831,
-          "z": -0.8898
+          "x": -0.7056,
+          "z": -0.7388
         },
         "dimensions": {
-          "width": 1.0476,
-          "depth": 0.2712,
+          "width": 0.8698,
+          "depth": 0.2251,
           "height": 2.5044
         }
       },
@@ -1639,9 +1639,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -2.7941,
-          "xMax": -1.6331,
-          "z": -0.7412
+          "xMin": -1.0469,
+          "xMax": -0.0829,
+          "z": -0.6154
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -1652,12 +1652,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.2946,
-          "z": -0.9406
+          "x": -0.6322,
+          "z": -0.7809
         },
         "dimensions": {
-          "width": 1.161,
-          "depth": 0.3381,
+          "width": 0.964,
+          "depth": 0.2807,
           "height": 2.886
         }
       },
@@ -1715,25 +1715,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -2.6167,
-          "xMax": -1.4245,
-          "z": -0.7402
+          "xMin": -0.8996,
+          "xMax": 0.0903,
+          "z": -0.6145
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.1249,
-          "z": -0.9341
+          "x": -0.4912,
+          "z": -0.7756
         },
         "dimensions": {
-          "width": 1.1922,
-          "depth": 0.3369,
+          "width": 0.9899,
+          "depth": 0.2797,
           "height": 2.9028
         }
       },
@@ -1791,25 +1791,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -2.4081,
-          "xMax": -1.3089,
-          "z": -0.7826
+          "xMin": -0.7263,
+          "xMax": 0.1862,
+          "z": -0.6498
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.717,
-          "z": -0.8772
+          "x": -0.1526,
+          "z": -0.7283
         },
         "dimensions": {
-          "width": 1.0991,
-          "depth": 0.2807,
+          "width": 0.9126,
+          "depth": 0.2331,
           "height": 2.7168
         }
       },
@@ -1867,25 +1867,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -2.2098,
-          "xMax": -1.1003,
-          "z": -0.7818
+          "xMin": -0.5618,
+          "xMax": 0.3595,
+          "z": -0.6491
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.5441,
-          "z": -0.8944
+          "x": -0.009,
+          "z": -0.7426
         },
         "dimensions": {
-          "width": 1.1095,
-          "depth": 0.2815,
+          "width": 0.9212,
+          "depth": 0.2337,
           "height": 2.6508
         }
       },
@@ -1943,9 +1943,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -2.1151,
-          "xMax": -0.8714,
-          "z": -0.7561
+          "xMin": -0.4831,
+          "xMax": 0.5495,
+          "z": -0.6278
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -1956,12 +1956,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.7522,
-          "z": -1.0026
+          "x": -0.1818,
+          "z": -0.8324
         },
         "dimensions": {
-          "width": 1.2437,
-          "depth": 0.3414,
+          "width": 1.0326,
+          "depth": 0.2835,
           "height": 3.1422
         }
       },
@@ -2019,9 +2019,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.9169,
-          "xMax": -0.6836,
-          "z": -0.7561
+          "xMin": -0.3185,
+          "xMax": 0.7055,
+          "z": -0.6278
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2032,12 +2032,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.5736,
-          "z": -1.0121
+          "x": -0.0335,
+          "z": -0.8403
         },
         "dimensions": {
-          "width": 1.2333,
-          "depth": 0.3416,
+          "width": 1.024,
+          "depth": 0.2836,
           "height": 3.1284
         }
       },
@@ -2095,9 +2095,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.729,
-          "xMax": -0.4853,
-          "z": -0.7575
+          "xMin": -0.1626,
+          "xMax": 0.8701,
+          "z": -0.6289
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2108,12 +2108,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.2843,
-          "z": -0.9819
+          "x": 0.2067,
+          "z": -0.8152
         },
         "dimensions": {
-          "width": 1.2437,
-          "depth": 0.3416,
+          "width": 1.0326,
+          "depth": 0.2836,
           "height": 3.1386
         }
       },
@@ -2171,9 +2171,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.5412,
-          "xMax": -0.2975,
-          "z": -0.7577
+          "xMin": -0.0066,
+          "xMax": 1.026,
+          "z": -0.6291
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2184,12 +2184,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.9589,
-          "z": -0.9413
+          "x": 0.4769,
+          "z": -0.7815
         },
         "dimensions": {
-          "width": 1.2437,
-          "depth": 0.3428,
+          "width": 1.0326,
+          "depth": 0.2846,
           "height": 3.153
         }
       },
@@ -2247,9 +2247,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -0.3698,
-          "xMax": 0.9637,
-          "z": -0.6877
+          "xMin": 0.966,
+          "xMax": 2.0731,
+          "z": -0.5709
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2260,12 +2260,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.184,
-          "z": -0.7364
+          "x": 1.4258,
+          "z": -0.6114
         },
         "dimensions": {
-          "width": 1.3335,
-          "depth": 0.1019,
+          "width": 1.1071,
+          "depth": 0.0846,
           "height": 2.7798
         }
       },
@@ -2323,9 +2323,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 0.139,
-          "xMax": 1.295,
-          "z": -0.5832
+          "xMin": 1.3884,
+          "xMax": 2.3482,
+          "z": -0.4842
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2336,12 +2336,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.7298,
-          "z": -0.6354
+          "x": 1.8789,
+          "z": -0.5276
         },
         "dimensions": {
-          "width": 1.156,
-          "depth": 0.1241,
+          "width": 0.9598,
+          "depth": 0.103,
           "height": 2.7846
         }
       },
@@ -2399,9 +2399,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 0.616,
-          "xMax": 1.6263,
-          "z": -0.4941
+          "xMin": 1.7844,
+          "xMax": 2.6233,
+          "z": -0.4102
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2412,12 +2412,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.0374,
-          "z": -0.5445
+          "x": 2.1343,
+          "z": -0.4521
         },
         "dimensions": {
-          "width": 1.0104,
-          "depth": 0.1087,
+          "width": 0.8389,
+          "depth": 0.0903,
           "height": 2.7756
         }
       },
@@ -2475,9 +2475,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 0.5935,
-          "xMax": 1.9369,
-          "z": -0.3963
+          "xMin": 1.7658,
+          "xMax": 2.8811,
+          "z": -0.329
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2488,12 +2488,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.232,
-          "z": -0.4429
+          "x": 2.2959,
+          "z": -0.3677
         },
         "dimensions": {
-          "width": 1.3433,
-          "depth": 0.1074,
+          "width": 1.1153,
+          "depth": 0.0892,
           "height": 2.8962
         }
       },
@@ -2551,9 +2551,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 1.1335,
-          "xMax": 2.2474,
-          "z": -0.2941
+          "xMin": 2.2141,
+          "xMax": 3.1389,
+          "z": -0.2442
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -2564,12 +2564,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.8018,
-          "z": -0.3351
+          "x": 2.769,
+          "z": -0.2782
         },
         "dimensions": {
-          "width": 1.1139,
-          "depth": 0.1025,
+          "width": 0.9248,
+          "depth": 0.0851,
           "height": 2.793
         }
       },
@@ -2627,11 +2627,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 1.2146,
-          "xMax": 2.5787,
-          "z": -0.1897
+          "xMin": 2.2814,
+          "xMax": 3.414,
+          "z": -0.1575
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
         "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
@@ -2640,12 +2640,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.0642,
-          "z": -0.2272
+          "x": 2.9869,
+          "z": -0.1886
         },
         "dimensions": {
-          "width": 1.3641,
-          "depth": 0.1082,
+          "width": 1.1326,
+          "depth": 0.0898,
           "height": 2.8554
         }
       },
@@ -2703,25 +2703,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 0.3017,
-          "xMax": 1.5459,
-          "z": -0.1934
+          "xMin": 1.5235,
+          "xMax": 2.5565,
+          "z": -0.1605
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.8722,
-          "z": -0.3755
+          "x": 1.9971,
+          "z": -0.3118
         },
         "dimensions": {
-          "width": 1.2443,
-          "depth": 0.319,
+          "width": 1.0331,
+          "depth": 0.2649,
           "height": 2.703
         }
       },
@@ -2779,25 +2779,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -0.4601,
-          "xMax": 1.2956,
-          "z": -0.1959
+          "xMin": 0.891,
+          "xMax": 2.3487,
+          "z": -0.1626
         },
         "widthTier": "wide",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.4044,
-          "z": -0.3603
+          "x": 1.6087,
+          "z": -0.2991
         },
         "dimensions": {
-          "width": 1.7557,
-          "depth": 0.3165,
+          "width": 1.4577,
+          "depth": 0.2628,
           "height": 2.9546
         }
       },
@@ -2855,25 +2855,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -0.6999,
-          "xMax": 0.5547,
-          "z": -0.1924
+          "xMin": 0.6919,
+          "xMax": 1.7336,
+          "z": -0.1597
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.0671,
-          "z": -0.3653
+          "x": 1.2173,
+          "z": -0.3033
         },
         "dimensions": {
-          "width": 1.2547,
-          "depth": 0.3202,
+          "width": 1.0417,
+          "depth": 0.2658,
           "height": 2.7756
         }
       },
@@ -2931,25 +2931,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -0.9716,
-          "xMax": 0.3149,
-          "z": -0.1825
+          "xMin": 0.4664,
+          "xMax": 1.5344,
+          "z": -0.1515
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.133,
-          "z": -0.2888
+          "x": 1.1626,
+          "z": -0.2398
         },
         "dimensions": {
-          "width": 1.2864,
-          "depth": 0.3301,
+          "width": 1.0681,
+          "depth": 0.2741,
           "height": 2.8638
         }
       },
@@ -3007,25 +3007,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.2218,
-          "xMax": 0.0432,
-          "z": -0.1825
+          "xMin": 0.2586,
+          "xMax": 1.3089,
+          "z": -0.1515
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.4427,
-          "z": -0.3043
+          "x": 0.9055,
+          "z": -0.2526
         },
         "dimensions": {
-          "width": 1.2651,
-          "depth": 0.3214,
+          "width": 1.0503,
+          "depth": 0.2668,
           "height": 2.8206
         }
       },
@@ -3083,25 +3083,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.4929,
-          "xMax": -0.207,
-          "z": -0.1881
+          "xMin": 0.0335,
+          "xMax": 1.1011,
+          "z": -0.1562
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.7891,
-          "z": -0.3229
+          "x": 0.6179,
+          "z": -0.2681
         },
         "dimensions": {
-          "width": 1.2859,
-          "depth": 0.3237,
+          "width": 1.0676,
+          "depth": 0.2688,
           "height": 2.8206
         }
       },
@@ -3159,25 +3159,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.994,
-          "xMax": -0.5197,
-          "z": -0.2008
+          "xMin": -0.3825,
+          "xMax": 0.8415,
+          "z": -0.1667
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.2759,
-          "z": -0.3693
+          "x": 0.2137,
+          "z": -0.3066
         },
         "dimensions": {
-          "width": 1.4742,
-          "depth": 0.3111,
+          "width": 1.224,
+          "depth": 0.2583,
           "height": 2.8332
         }
       },
@@ -3235,25 +3235,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -2.5049,
-          "xMax": -1.0202,
-          "z": -0.1955
+          "xMin": -0.8067,
+          "xMax": 0.4259,
+          "z": -0.1623
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.7105,
-          "z": -0.3433
+          "x": -0.1472,
+          "z": -0.285
         },
         "dimensions": {
-          "width": 1.4847,
-          "depth": 0.3177,
+          "width": 1.2327,
+          "depth": 0.2637,
           "height": 2.8542
         }
       },
@@ -3311,25 +3311,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.0268,
-          "xMax": -1.5421,
-          "z": -0.1934
+          "xMin": -1.24,
+          "xMax": -0.0074,
+          "z": -0.1605
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.3019,
-          "z": -0.3633
+          "x": -0.6382,
+          "z": -0.3016
         },
         "dimensions": {
-          "width": 1.4847,
-          "depth": 0.3198,
+          "width": 1.2327,
+          "depth": 0.2655,
           "height": 2.8056
         }
       },
@@ -3387,25 +3387,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.2874,
-          "xMax": -2.0536,
-          "z": -0.1934
+          "xMin": -1.4564,
+          "xMax": -0.432,
+          "z": -0.1605
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.5638,
-          "z": -0.3304
+          "x": -0.8556,
+          "z": -0.2743
         },
         "dimensions": {
-          "width": 1.2338,
-          "depth": 0.3179,
+          "width": 1.0244,
+          "depth": 0.2639,
           "height": 2.7738
         }
       },
@@ -3463,25 +3463,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.5382,
-          "xMax": -2.3142,
-          "z": -0.2002
+          "xMin": -1.6647,
+          "xMax": -0.6484,
+          "z": -0.1662
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.8327,
-          "z": -0.332
+          "x": -1.0789,
+          "z": -0.2757
         },
         "dimensions": {
-          "width": 1.224,
-          "depth": 0.3111,
+          "width": 1.0162,
+          "depth": 0.2583,
           "height": 2.8116
         }
       },
@@ -3539,25 +3539,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.7989,
-          "xMax": -2.5645,
-          "z": -0.2058
+          "xMin": -1.8811,
+          "xMax": -0.8562,
+          "z": -0.1709
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.1823,
-          "z": -0.3616
+          "x": -1.3691,
+          "z": -0.3002
         },
         "dimensions": {
-          "width": 1.2344,
-          "depth": 0.2955,
+          "width": 1.0249,
+          "depth": 0.2453,
           "height": 2.814
         }
       },
@@ -3615,25 +3615,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.0492,
-          "xMax": -2.7945,
-          "z": -0.1867
+          "xMin": -2.0889,
+          "xMax": -1.0472,
+          "z": -0.155
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.1898,
-          "z": -0.2872
+          "x": -1.3754,
+          "z": -0.2384
         },
         "dimensions": {
-          "width": 1.2547,
-          "depth": 0.3202,
+          "width": 1.0417,
+          "depth": 0.2658,
           "height": 2.8026
         }
       },
@@ -3691,25 +3691,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.3098,
-          "xMax": -3.0448,
-          "z": -0.1924
+          "xMin": -2.3053,
+          "xMax": -1.255,
+          "z": -0.1597
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.5914,
-          "z": -0.3306
+          "x": -1.7088,
+          "z": -0.2745
         },
         "dimensions": {
-          "width": 1.2651,
-          "depth": 0.3214,
+          "width": 1.0503,
+          "depth": 0.2668,
           "height": 2.838
         }
       },
@@ -3767,25 +3767,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.571,
-          "xMax": -3.3054,
-          "z": -0.1825
+          "xMin": -2.5222,
+          "xMax": -1.4714,
+          "z": -0.1515
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.941,
-          "z": -0.357
+          "x": -1.9991,
+          "z": -0.2964
         },
         "dimensions": {
-          "width": 1.2656,
-          "depth": 0.3313,
+          "width": 1.0508,
+          "depth": 0.2751,
           "height": 2.8614
         }
       },
@@ -3843,25 +3843,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -4.8213,
-          "xMax": -3.5562,
-          "z": -0.1825
+          "xMin": -2.73,
+          "xMax": -1.6796,
+          "z": -0.1515
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.0643,
-          "z": -0.3112
+          "x": -2.1015,
+          "z": -0.2584
         },
         "dimensions": {
-          "width": 1.2651,
-          "depth": 0.3214,
+          "width": 1.0503,
+          "depth": 0.2668,
           "height": 2.8332
         }
       },
@@ -3919,25 +3919,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.0924,
-          "xMax": -3.8169,
-          "z": -0.1832
+          "xMin": -2.955,
+          "xMax": -1.8961,
+          "z": -0.1521
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "depthTier": "shallow",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.275,
-          "z": -0.2919
+          "x": -2.2764,
+          "z": -0.2424
         },
         "dimensions": {
-          "width": 1.2755,
-          "depth": 0.3286,
+          "width": 1.059,
+          "depth": 0.2728,
           "height": 2.8914
         }
       },
@@ -3995,25 +3995,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.3328,
-          "xMax": -4.088,
-          "z": -0.1973
+          "xMin": -3.1546,
+          "xMax": -2.1211,
+          "z": -0.1638
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "depthTier": "shallow",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.6081,
-          "z": -0.3229
+          "x": -2.5529,
+          "z": -0.2681
         },
         "dimensions": {
-          "width": 1.2448,
-          "depth": 0.3146,
+          "width": 1.0335,
+          "depth": 0.2612,
           "height": 2.8338
         }
       },
@@ -4071,25 +4071,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.5726,
-          "xMax": -4.3278,
-          "z": -0.1838
+          "xMin": -3.3538,
+          "xMax": -2.3203,
+          "z": -0.1526
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "depthTier": "shallow",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.9547,
-          "z": -0.3522
+          "x": -2.8407,
+          "z": -0.2924
         },
         "dimensions": {
-          "width": 1.2448,
-          "depth": 0.3146,
+          "width": 1.0335,
+          "depth": 0.2612,
           "height": 2.8134
         }
       },
@@ -4147,25 +4147,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.8541,
-          "xMax": -4.5682,
-          "z": -0.1838
+          "xMin": -3.5875,
+          "xMax": -2.5199,
+          "z": -0.1526
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "depthTier": "shallow",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.1971,
-          "z": -0.3329
+          "x": -3.042,
+          "z": -0.2764
         },
         "dimensions": {
-          "width": 1.2859,
-          "depth": 0.3237,
+          "width": 1.0676,
+          "depth": 0.2688,
           "height": 2.9411
         }
       },
@@ -4223,11 +4223,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.5408,
-          "xMax": -5.1,
-          "z": -0.1819
+          "xMin": -4.1576,
+          "xMax": -2.9613,
+          "z": -0.151
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
         "depthTier": "regular",
         "cornerOrEndpointRole": "franklin-end-review-band",
@@ -4236,12 +4236,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.9781,
-          "z": -0.4233
+          "x": -3.6904,
+          "z": -0.3514
         },
         "dimensions": {
-          "width": 1.4409,
-          "depth": 0.4027,
+          "width": 1.1963,
+          "depth": 0.3343,
           "height": 2.8902
         }
       },
@@ -4299,9 +4299,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -7.4563,
-          "xMax": -5.7564,
-          "z": 0.1652
+          "xMin": -4.9177,
+          "xMax": -3.5063,
+          "z": 0.1371
         },
         "widthTier": "wide",
         "heightTier": "mid",
@@ -4312,12 +4312,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.5245,
-          "z": 0.4099
+          "x": -4.1441,
+          "z": 0.3403
         },
         "dimensions": {
-          "width": 1.6999,
-          "depth": 0.4659,
+          "width": 1.4114,
+          "depth": 0.3868,
           "height": 2.5398
         }
       },
@@ -4375,9 +4375,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -7.2164,
-          "xMax": -5.5061,
-          "z": 0.1696
+          "xMin": -4.7186,
+          "xMax": -3.2986,
+          "z": 0.1408
         },
         "widthTier": "wide",
         "heightTier": "tall",
@@ -4388,12 +4388,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.3933,
-          "z": 0.3876
+          "x": -4.0352,
+          "z": 0.3218
         },
         "dimensions": {
-          "width": 1.7103,
-          "depth": 0.461,
+          "width": 1.42,
+          "depth": 0.3828,
           "height": 2.8182
         }
       },
@@ -4451,25 +4451,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -5.5845,
-          "xMax": -4.5747,
-          "z": 0.4005
+          "xMin": -3.3636,
+          "xMax": -2.5252,
+          "z": 0.3325
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.1159,
-          "z": 0.4565
+          "x": -2.9745,
+          "z": 0.379
         },
         "dimensions": {
-          "width": 1.0098,
-          "depth": 0.1262,
+          "width": 0.8384,
+          "depth": 0.1048,
           "height": 2.2386
         }
       },
@@ -4527,25 +4527,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -5.3364,
-          "xMax": -4.2329,
-          "z": 0.5108
+          "xMin": -3.1576,
+          "xMax": -2.2415,
+          "z": 0.4241
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.7875,
-          "z": 0.5739
+          "x": -2.7019,
+          "z": 0.4765
         },
         "dimensions": {
-          "width": 1.1035,
-          "depth": 0.1167,
+          "width": 0.9162,
+          "depth": 0.0969,
           "height": 2.2386
         }
       },
@@ -4603,25 +4603,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.7772,
-          "xMax": -3.8704,
-          "z": 0.6165
+          "xMin": -2.6934,
+          "xMax": -1.9404,
+          "z": 0.5118
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.3808,
-          "z": 0.6924
+          "x": -2.3643,
+          "z": 0.5749
         },
         "dimensions": {
-          "width": 0.9069,
-          "depth": 0.1144,
+          "width": 0.7529,
+          "depth": 0.095,
           "height": 2.2386
         }
       },
@@ -4679,9 +4679,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.4131,
-          "xMax": -3.4772,
-          "z": 0.7244
+          "xMin": -2.391,
+          "xMax": -1.614,
+          "z": 0.6015
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -4692,12 +4692,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.8515,
-          "z": 0.8073
+          "x": -1.9248,
+          "z": 0.6703
         },
         "dimensions": {
-          "width": 0.9359,
-          "depth": 0.1403,
+          "width": 0.7771,
+          "depth": 0.1164,
           "height": 2.7108
         }
       },
@@ -4755,9 +4755,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.0199,
-          "xMax": -3.0834,
-          "z": 0.8583
+          "xMin": -2.0645,
+          "xMax": -1.287,
+          "z": 0.7126
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -4768,12 +4768,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.458,
-          "z": 0.9277
+          "x": -1.598,
+          "z": 0.7702
         },
         "dimensions": {
-          "width": 0.9364,
-          "depth": 0.1179,
+          "width": 0.7775,
+          "depth": 0.0979,
           "height": 2.7708
         }
       },
@@ -4831,9 +4831,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.6261,
-          "xMax": -2.7729,
-          "z": 0.9697
+          "xMin": -1.7376,
+          "xMax": -1.0292,
+          "z": 0.8051
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -4844,12 +4844,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.2865,
-          "z": 1.0255
+          "x": -1.4556,
+          "z": 0.8514
         },
         "dimensions": {
-          "width": 0.8532,
-          "depth": 0.1085,
+          "width": 0.7084,
+          "depth": 0.0901,
           "height": 2.8098
         }
       },
@@ -4907,25 +4907,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -6.8938,
-          "xMax": -3.7953,
-          "z": 0.6139
+          "xMin": -4.4507,
+          "xMax": -1.8781,
+          "z": 0.5097
         },
         "widthTier": "wide",
         "heightTier": "mid",
         "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.5254,
-          "z": 0.793
+          "x": -3.3145,
+          "z": 0.6584
         },
         "dimensions": {
-          "width": 3.0985,
-          "depth": 0.4554,
+          "width": 2.5726,
+          "depth": 0.3781,
           "height": 1.458
         }
       },
@@ -4983,9 +4983,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -7.0931,
-          "xMax": -5.4332,
-          "z": 0.6674
+          "xMin": -4.6162,
+          "xMax": -3.238,
+          "z": 0.5541
         },
         "widthTier": "wide",
         "heightTier": "low",
@@ -4996,12 +4996,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.3265,
-          "z": 0.8471
+          "x": -3.9797,
+          "z": 0.7033
         },
         "dimensions": {
-          "width": 1.6599,
-          "depth": 0.4015,
+          "width": 1.3782,
+          "depth": 0.3334,
           "height": 1.1274
         }
       },
@@ -5059,9 +5059,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -7.5,
-          "xMax": -5.7985,
-          "z": 0.6758
+          "xMin": -4.954,
+          "xMax": -3.5413,
+          "z": 0.5611
         },
         "widthTier": "wide",
         "heightTier": "mid",
@@ -5072,12 +5072,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.6545,
-          "z": 0.8447
+          "x": -4.252,
+          "z": 0.7013
         },
         "dimensions": {
-          "width": 1.7015,
-          "depth": 0.3931,
+          "width": 1.4127,
+          "depth": 0.3264,
           "height": 1.4058
         }
       },
@@ -5135,9 +5135,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.4055,
-          "xMax": -1.5939,
-          "z": 0.9616
+          "xMin": -0.7242,
+          "xMax": -0.0503,
+          "z": 0.7983
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5148,12 +5148,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.0808,
-          "z": 1.0149
+          "x": -0.4546,
+          "z": 0.8426
         },
         "dimensions": {
-          "width": 0.8116,
-          "depth": 0.1249,
+          "width": 0.6738,
+          "depth": 0.1037,
           "height": 2.5794
         }
       },
@@ -5211,9 +5211,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.7779,
-          "xMax": -1.9564,
-          "z": 0.847
+          "xMin": -1.0334,
+          "xMax": -0.3513,
+          "z": 0.7032
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5224,12 +5224,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.3025,
-          "z": 0.9131
+          "x": -0.6387,
+          "z": 0.7581
         },
         "dimensions": {
-          "width": 0.8215,
-          "depth": 0.1315,
+          "width": 0.682,
+          "depth": 0.1092,
           "height": 2.5824
         }
       },
@@ -5287,9 +5287,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.1404,
-          "xMax": -2.319,
-          "z": 0.739
+          "xMin": -1.3344,
+          "xMax": -0.6524,
+          "z": 0.6136
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5300,12 +5300,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.7113,
-          "z": 0.8064
+          "x": -0.9781,
+          "z": 0.6695
         },
         "dimensions": {
-          "width": 0.8215,
-          "depth": 0.122,
+          "width": 0.682,
+          "depth": 0.1013,
           "height": 2.5452
         }
       },
@@ -5363,9 +5363,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.5029,
-          "xMax": -2.6919,
-          "z": 0.631
+          "xMin": -1.6354,
+          "xMax": -0.962,
+          "z": 0.5239
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5376,12 +5376,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.0946,
-          "z": 0.6961
+          "x": -1.2964,
+          "z": 0.5779
         },
         "dimensions": {
-          "width": 0.811,
-          "depth": 0.115,
+          "width": 0.6734,
+          "depth": 0.0955,
           "height": 2.5518
         }
       },
@@ -5439,9 +5439,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.8655,
-          "xMax": -3.0544,
-          "z": 0.5231
+          "xMin": -1.9364,
+          "xMax": -1.263,
+          "z": 0.4343
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5452,12 +5452,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.4188,
-          "z": 0.602
+          "x": -1.5655,
+          "z": 0.4999
         },
         "dimensions": {
-          "width": 0.811,
-          "depth": 0.1134,
+          "width": 0.6734,
+          "depth": 0.0942,
           "height": 2.5926
         }
       },
@@ -5515,9 +5515,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.2384,
-          "xMax": -3.417,
-          "z": 0.397
+          "xMin": -2.246,
+          "xMax": -1.564,
+          "z": 0.3296
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5528,12 +5528,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.7286,
-          "z": 0.4711
+          "x": -1.8227,
+          "z": 0.3912
         },
         "dimensions": {
-          "width": 0.8215,
-          "depth": 0.1315,
+          "width": 0.682,
+          "depth": 0.1092,
           "height": 2.58
         }
       },
@@ -5591,9 +5591,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.601,
-          "xMax": -3.5183,
-          "z": 0.297
+          "xMin": -2.5471,
+          "xMax": -1.6482,
+          "z": 0.2466
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5604,12 +5604,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.0169,
-          "z": 0.3659
+          "x": -2.0621,
+          "z": 0.3038
         },
         "dimensions": {
-          "width": 1.0827,
-          "depth": 0.1169,
+          "width": 0.8989,
+          "depth": 0.0971,
           "height": 2.5506
         }
       },
@@ -5667,25 +5667,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.963,
-          "xMax": -3.8809,
-          "z": 0.1757
+          "xMin": -2.8476,
+          "xMax": -1.9492,
+          "z": 0.1458
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.4163,
-          "z": 0.2498
+          "x": -2.3937,
+          "z": 0.2074
         },
         "dimensions": {
-          "width": 1.0821,
-          "depth": 0.1303,
+          "width": 0.8984,
+          "depth": 0.1082,
           "height": 2.5914
         }
       },
@@ -5743,25 +5743,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.9718,
-          "xMax": -2.8831,
-          "z": 0.1747
+          "xMin": -2.0247,
+          "xMax": -1.1207,
+          "z": 0.145
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.265,
-          "z": 0.3621
+          "x": -1.4378,
+          "z": 0.3006
         },
         "dimensions": {
-          "width": 1.0887,
-          "depth": 0.2875,
+          "width": 0.9039,
+          "depth": 0.2387,
           "height": 2.7
         }
       },
@@ -5819,9 +5819,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.7319,
-          "xMax": -2.7046,
-          "z": 0.1792
+          "xMin": -1.8255,
+          "xMax": -0.9725,
+          "z": 0.1488
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5832,12 +5832,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.1156,
-          "z": 0.3201
+          "x": -1.3138,
+          "z": 0.2657
         },
         "dimensions": {
-          "width": 1.0274,
-          "depth": 0.2441,
+          "width": 0.853,
+          "depth": 0.2027,
           "height": 2.6376
         }
       },
@@ -5895,9 +5895,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.4817,
-          "xMax": -2.4439,
-          "z": 0.1692
+          "xMin": -1.6177,
+          "xMax": -0.7561,
+          "z": 0.1405
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -5908,12 +5908,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.0453,
-          "z": 0.2599
+          "x": -1.2554,
+          "z": 0.2158
         },
         "dimensions": {
-          "width": 1.0378,
-          "depth": 0.2441,
+          "width": 0.8616,
+          "depth": 0.2027,
           "height": 2.6898
         }
       },
@@ -5971,9 +5971,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.2106,
-          "xMax": -2.1318,
-          "z": 0.1784
+          "xMin": -1.3927,
+          "xMax": -0.4969,
+          "z": 0.1481
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -5984,12 +5984,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.4418,
-          "z": 0.3737
+          "x": -0.7543,
+          "z": 0.3103
         },
         "dimensions": {
-          "width": 1.0789,
-          "depth": 0.2795,
+          "width": 0.8957,
+          "depth": 0.2321,
           "height": 2.634
         }
       },
@@ -6047,9 +6047,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.9598,
-          "xMax": -1.9434,
-          "z": 0.176
+          "xMin": -1.1844,
+          "xMax": -0.3405,
+          "z": 0.1462
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -6060,12 +6060,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.4481,
-          "z": 0.3007
+          "x": -0.7596,
+          "z": 0.2497
         },
         "dimensions": {
-          "width": 1.0164,
-          "depth": 0.2486,
+          "width": 0.8439,
+          "depth": 0.2064,
           "height": 2.7096
         }
       },
@@ -6123,9 +6123,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.72,
-          "xMax": -1.6822,
-          "z": 0.165
+          "xMin": -0.9853,
+          "xMax": -0.1236,
+          "z": 0.137
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -6136,12 +6136,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -2.1519,
-          "z": 0.2955
+          "x": -0.5136,
+          "z": 0.2454
         },
         "dimensions": {
-          "width": 1.0378,
-          "depth": 0.2597,
+          "width": 0.8616,
+          "depth": 0.2156,
           "height": 2.6568
         }
       },
@@ -6199,9 +6199,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.4587,
-          "xMax": -1.4319,
-          "z": 0.165
+          "xMin": -0.7684,
+          "xMax": 0.0841,
+          "z": 0.137
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -6212,12 +6212,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.9648,
-          "z": 0.2849
+          "x": -0.3583,
+          "z": 0.2365
         },
         "dimensions": {
-          "width": 1.0268,
-          "depth": 0.2511,
+          "width": 0.8525,
+          "depth": 0.2085,
           "height": 2.706
         }
       },
@@ -6275,9 +6275,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.157,
-          "xMax": -1.1816,
-          "z": 0.1821
+          "xMin": -0.5179,
+          "xMax": 0.2919,
+          "z": 0.1512
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -6288,12 +6288,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.5717,
-          "z": 0.3273
+          "x": -0.0319,
+          "z": 0.2717
         },
         "dimensions": {
-          "width": 0.9754,
-          "depth": 0.2383,
+          "width": 0.8098,
+          "depth": 0.1978,
           "height": 2.652
         }
       },
@@ -6351,9 +6351,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.6335,
-          "xMax": 1.0883,
-          "z": 0.1795
+          "xMin": 0.747,
+          "xMax": 2.1766,
+          "z": 0.1491
         },
         "widthTier": "wide",
         "heightTier": "low",
@@ -6364,12 +6364,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.4272,
-          "z": 0.441
+          "x": 1.6277,
+          "z": 0.3662
         },
         "dimensions": {
-          "width": 1.7218,
-          "depth": 0.432,
+          "width": 1.4296,
+          "depth": 0.3587,
           "height": 1
         }
       },
@@ -6427,11 +6427,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.2683,
-          "xMax": 1.2766,
-          "z": 0.1864
+          "xMin": 1.0503,
+          "xMax": 2.333,
+          "z": 0.1547
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "regular",
         "cornerOrEndpointRole": "mid-corridor",
@@ -6440,12 +6440,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.6587,
-          "z": 0.4249
+          "x": 1.8199,
+          "z": 0.3528
         },
         "dimensions": {
-          "width": 1.5449,
-          "depth": 0.3976,
+          "width": 1.2827,
+          "depth": 0.3301,
           "height": 1.9218
         }
       },
@@ -6503,9 +6503,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.018,
-          "xMax": 1.9535,
-          "z": 0.1916
+          "xMin": 1.2581,
+          "xMax": 2.8949,
+          "z": 0.1591
         },
         "widthTier": "wide",
         "heightTier": "mid",
@@ -6516,12 +6516,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.1079,
-          "z": 0.4417
+          "x": 2.1929,
+          "z": 0.3667
         },
         "dimensions": {
-          "width": 1.9715,
-          "depth": 0.4459,
+          "width": 1.6369,
+          "depth": 0.3702,
           "height": 2.3022
         }
       },
@@ -6579,11 +6579,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.3384,
-          "xMax": 2.8007,
-          "z": 0.1871
+          "xMin": 2.3843,
+          "xMax": 3.5983,
+          "z": 0.1554
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
         "depthTier": "regular",
         "cornerOrEndpointRole": "mid-corridor",
@@ -6592,12 +6592,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.3062,
-          "z": 0.434
+          "x": 3.1878,
+          "z": 0.3604
         },
         "dimensions": {
-          "width": 1.4622,
-          "depth": 0.3826,
+          "width": 1.214,
+          "depth": 0.3177,
           "height": 2.9388
         }
       },
@@ -6655,11 +6655,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.5887,
-          "xMax": 3.0405,
-          "z": 0.1867
+          "xMin": 2.592,
+          "xMax": 3.7974,
+          "z": 0.155
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "regular",
         "cornerOrEndpointRole": "mid-corridor",
@@ -6668,12 +6668,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.4064,
-          "z": 0.3999
+          "x": 3.271,
+          "z": 0.332
         },
         "dimensions": {
-          "width": 1.4518,
-          "depth": 0.3708,
+          "width": 1.2054,
+          "depth": 0.3078,
           "height": 1.6368
         }
       },
@@ -6731,9 +6731,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.4654,
-          "xMax": 4.6253,
-          "z": 0.179
+          "xMin": 3.32,
+          "xMax": 5.1133,
+          "z": 0.1486
         },
         "widthTier": "wide",
         "heightTier": "mid",
@@ -6744,12 +6744,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 3.764,
-          "z": 0.4115
+          "x": 4.3981,
+          "z": 0.3417
         },
         "dimensions": {
-          "width": 2.1599,
-          "depth": 0.428,
+          "width": 1.7933,
+          "depth": 0.3553,
           "height": 1.8528
         }
       },
@@ -6807,11 +6807,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 3.2688,
-          "xMax": 4.8487,
-          "z": 0.1768
+          "xMin": 3.987,
+          "xMax": 5.2987,
+          "z": 0.1468
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
@@ -6820,12 +6820,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 4.0193,
-          "z": 0.314
+          "x": 4.6101,
+          "z": 0.2607
         },
         "dimensions": {
-          "width": 1.5799,
-          "depth": 0.2471,
+          "width": 1.3118,
+          "depth": 0.2051,
           "height": 1.5114
         }
       },
@@ -6883,9 +6883,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.1205,
-          "xMax": 3.3538,
-          "z": 0.6266
+          "xMin": 3.0336,
+          "xMax": 4.0576,
+          "z": 0.5202
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -6896,12 +6896,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.7113,
-          "z": 0.7959
+          "x": 3.5241,
+          "z": 0.6608
         },
         "dimensions": {
-          "width": 1.2333,
-          "depth": 0.3474,
+          "width": 1.024,
+          "depth": 0.2885,
           "height": 2.1342
         }
       },
@@ -6959,9 +6959,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.9863,
-          "xMax": 4.856,
-          "z": 0.6235
+          "xMin": 3.7524,
+          "xMax": 5.3047,
+          "z": 0.5176
         },
         "widthTier": "wide",
         "heightTier": "tall",
@@ -6972,12 +6972,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 3.6384,
-          "z": 0.7229
+          "x": 4.2939,
+          "z": 0.6002
         },
         "dimensions": {
-          "width": 1.8696,
-          "depth": 0.385,
+          "width": 1.5523,
+          "depth": 0.3196,
           "height": 4.0362
         }
       },
@@ -7035,9 +7035,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.9513,
-          "xMax": 2.8845,
-          "z": 0.7174
+          "xMin": 2.8931,
+          "xMax": 3.6679,
+          "z": 0.5956
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7048,12 +7048,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.4345,
-          "z": 0.8625
+          "x": 3.2943,
+          "z": 0.7161
         },
         "dimensions": {
-          "width": 0.9332,
-          "depth": 0.2513,
+          "width": 0.7748,
+          "depth": 0.2087,
           "height": 2.298
         }
       },
@@ -7111,9 +7111,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.6944,
-          "xMax": 3.9173,
-          "z": 0.6225
+          "xMin": 3.5101,
+          "xMax": 4.5254,
+          "z": 0.5168
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7124,12 +7124,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 3.2552,
-          "z": 0.786
+          "x": 3.9757,
+          "z": 0.6526
         },
         "dimensions": {
-          "width": 1.2229,
-          "depth": 0.3546,
+          "width": 1.0153,
+          "depth": 0.2944,
           "height": 2.16
         }
       },
@@ -7187,9 +7187,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.5482,
-          "xMax": 3.7815,
-          "z": 0.6309
+          "xMin": 3.3887,
+          "xMax": 4.4127,
+          "z": 0.5238
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7200,12 +7200,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 3.0473,
-          "z": 0.7577
+          "x": 3.803,
+          "z": 0.6291
         },
         "dimensions": {
-          "width": 1.2333,
-          "depth": 0.3463,
+          "width": 1.024,
+          "depth": 0.2875,
           "height": 2.1432
         }
       },
@@ -7263,25 +7263,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.402,
-          "xMax": 3.6463,
-          "z": 0.6369
+          "xMin": 3.2673,
+          "xMax": 4.3004,
+          "z": 0.5288
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.9747,
-          "z": 0.7869
+          "x": 3.7428,
+          "z": 0.6533
         },
         "dimensions": {
-          "width": 1.2443,
-          "depth": 0.3311,
+          "width": 1.0331,
+          "depth": 0.2749,
           "height": 2.1096
         }
       },
@@ -7339,9 +7339,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.2563,
-          "xMax": 3.5001,
-          "z": 0.6266
+          "xMin": 3.1464,
+          "xMax": 4.179,
+          "z": 0.5202
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7352,12 +7352,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.8604,
-          "z": 0.7881
+          "x": 3.6479,
+          "z": 0.6544
         },
         "dimensions": {
-          "width": 1.2437,
-          "depth": 0.3474,
+          "width": 1.0326,
+          "depth": 0.2885,
           "height": 2.1786
         }
       },
@@ -7415,9 +7415,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.3988,
-          "xMax": 2.332,
-          "z": 0.7098
+          "xMin": 2.4344,
+          "xMax": 3.2092,
+          "z": 0.5894
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7428,12 +7428,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.8513,
-          "z": 0.8238
+          "x": 2.8101,
+          "z": 0.684
         },
         "dimensions": {
-          "width": 0.9332,
-          "depth": 0.2441,
+          "width": 0.7748,
+          "depth": 0.2027,
           "height": 1.6818
         }
       },
@@ -7491,9 +7491,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.2838,
-          "xMax": 2.1754,
-          "z": 0.7098
+          "xMin": 2.3389,
+          "xMax": 3.0791,
+          "z": 0.5894
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7504,12 +7504,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.6879,
-          "z": 0.8348
+          "x": 2.6744,
+          "z": 0.6931
         },
         "dimensions": {
-          "width": 0.8916,
-          "depth": 0.2467,
+          "width": 0.7402,
+          "depth": 0.2048,
           "height": 1.6932
         }
       },
@@ -7567,9 +7567,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.0663,
-          "xMax": 3.0724,
-          "z": 0.7102
+          "xMin": 2.9886,
+          "xMax": 3.8239,
+          "z": 0.5897
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7580,12 +7580,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.5259,
-          "z": 0.8202
+          "x": 3.3702,
+          "z": 0.681
         },
         "dimensions": {
-          "width": 1.006,
-          "depth": 0.256,
+          "width": 0.8353,
+          "depth": 0.2125,
           "height": 2.3028
         }
       },
@@ -7643,9 +7643,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.0642,
-          "xMax": 2.0292,
-          "z": 0.7301
+          "xMin": 2.1566,
+          "xMax": 2.9577,
+          "z": 0.6061
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7656,12 +7656,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.5702,
-          "z": 0.8468
+          "x": 2.5767,
+          "z": 0.7031
         },
         "dimensions": {
-          "width": 0.9649,
-          "depth": 0.2299,
+          "width": 0.8012,
+          "depth": 0.1909,
           "height": 1.5912
         }
       },
@@ -7719,9 +7719,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.7323,
-          "xMax": 2.6447,
-          "z": 0.7164
+          "xMin": 2.7113,
+          "xMax": 3.4688,
+          "z": 0.5948
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7732,12 +7732,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.1534,
-          "z": 0.8169
+          "x": 3.0609,
+          "z": 0.6782
         },
         "dimensions": {
-          "width": 0.9124,
-          "depth": 0.2453,
+          "width": 0.7575,
+          "depth": 0.2037,
           "height": 2.2548
         }
       },
@@ -7795,9 +7795,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.6282,
-          "xMax": 2.4782,
-          "z": 0.7131
+          "xMin": 2.6249,
+          "xMax": 3.3306,
+          "z": 0.5921
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7808,12 +7808,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.0861,
-          "z": 0.8567
+          "x": 3.0051,
+          "z": 0.7113
         },
         "dimensions": {
-          "width": 0.85,
-          "depth": 0.2418,
+          "width": 0.7057,
+          "depth": 0.2008,
           "height": 2.2746
         }
       },
@@ -7871,9 +7871,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.3364,
-          "xMax": 1.6009,
-          "z": 0.6353
+          "xMin": 1.5523,
+          "xMax": 2.6022,
+          "z": 0.5275
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7884,12 +7884,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.0401,
-          "z": 0.8266
+          "x": 2.1365,
+          "z": 0.6863
         },
         "dimensions": {
-          "width": 1.2645,
-          "depth": 0.3439,
+          "width": 1.0499,
+          "depth": 0.2855,
           "height": 1.6494
         }
       },
@@ -7947,9 +7947,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.9492,
-          "xMax": 1.8205,
-          "z": 0.7396
+          "xMin": 2.0611,
+          "xMax": 2.7845,
+          "z": 0.6141
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -7960,12 +7960,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.3624,
-          "z": 0.8596
+          "x": 2.4041,
+          "z": 0.7137
         },
         "dimensions": {
-          "width": 0.8713,
-          "depth": 0.2397,
+          "width": 0.7234,
+          "depth": 0.199,
           "height": 1.551
         }
       },
@@ -8023,9 +8023,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.5111,
-          "xMax": 1.3923,
-          "z": 0.7365
+          "xMin": 1.6974,
+          "xMax": 2.429,
+          "z": 0.6115
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8036,12 +8036,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.9373,
-          "z": 0.8575
+          "x": 2.0512,
+          "z": 0.7119
         },
         "dimensions": {
-          "width": 0.8812,
-          "depth": 0.2418,
+          "width": 0.7316,
+          "depth": 0.2008,
           "height": 1.593
         }
       },
@@ -8099,25 +8099,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.1469,
-          "xMax": 1.1732,
-          "z": 0.6921
+          "xMin": 1.395,
+          "xMax": 2.2471,
+          "z": 0.5747
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.5421,
-          "z": 0.7999
+          "x": 1.7231,
+          "z": 0.6641
         },
         "dimensions": {
-          "width": 1.0263,
-          "depth": 0.284,
+          "width": 0.8521,
+          "depth": 0.2358,
           "height": 2.5224
         }
       },
@@ -8175,25 +8175,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.1245,
-          "xMax": 1.1716,
-          "z": 0.7499
+          "xMin": 1.3764,
+          "xMax": 2.2457,
+          "z": 0.6226
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.6804,
-          "z": 0.9173
+          "x": 1.838,
+          "z": 0.7616
         },
         "dimensions": {
-          "width": 1.0471,
-          "depth": 0.3157,
+          "width": 0.8694,
+          "depth": 0.2621,
           "height": 1.5492
         }
       },
@@ -8251,25 +8251,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.1258,
-          "xMax": 0.9942,
-          "z": 0.7631
+          "xMin": 1.1686,
+          "xMax": 2.0984,
+          "z": 0.6336
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.3572,
-          "z": 0.8883
+          "x": 1.5696,
+          "z": 0.7376
         },
         "dimensions": {
-          "width": 1.1199,
-          "depth": 0.284,
+          "width": 0.9298,
+          "depth": 0.2358,
           "height": 2.7168
         }
       },
@@ -8327,9 +8327,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.4921,
-          "xMax": 0.5457,
-          "z": 0.7939
+          "xMin": 0.8644,
+          "xMax": 1.7261,
+          "z": 0.6591
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8340,12 +8340,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.1097,
-          "z": 0.9494
+          "x": 1.3641,
+          "z": 0.7882
         },
         "dimensions": {
-          "width": 1.0378,
-          "depth": 0.2644,
+          "width": 0.8616,
+          "depth": 0.2195,
           "height": 2.1786
         }
       },
@@ -8403,9 +8403,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.7424,
-          "xMax": 0.2746,
-          "z": 0.8061
+          "xMin": 0.6566,
+          "xMax": 1.501,
+          "z": 0.6693
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8416,12 +8416,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.231,
-          "z": 0.9212
+          "x": 1.0812,
+          "z": 0.7648
         },
         "dimensions": {
-          "width": 1.017,
-          "depth": 0.243,
+          "width": 0.8444,
+          "depth": 0.2017,
           "height": 2.319
         }
       },
@@ -8479,9 +8479,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.003,
-          "xMax": 0.055,
-          "z": 0.7886
+          "xMin": 0.4402,
+          "xMax": 1.3187,
+          "z": 0.6548
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8492,12 +8492,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.4794,
-          "z": 0.9131
+          "x": 0.875,
+          "z": 0.7581
         },
         "dimensions": {
-          "width": 1.0581,
-          "depth": 0.264,
+          "width": 0.8785,
+          "depth": 0.2192,
           "height": 2.2332
         }
       },
@@ -8555,9 +8555,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.2429,
-          "xMax": -0.1848,
-          "z": 0.7948
+          "xMin": 0.2411,
+          "xMax": 1.1195,
+          "z": 0.6599
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8568,12 +8568,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.5717,
-          "z": 0.9599
+          "x": 0.7983,
+          "z": 0.7969
         },
         "dimensions": {
-          "width": 1.0581,
-          "depth": 0.2533,
+          "width": 0.8785,
+          "depth": 0.2103,
           "height": 2.358
         }
       },
@@ -8631,9 +8631,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.744,
-          "xMax": -0.6755,
-          "z": 0.8059
+          "xMin": -0.175,
+          "xMax": 0.7121,
+          "z": 0.6691
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8644,12 +8644,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.1763,
-          "z": 0.9369
+          "x": 0.2964,
+          "z": 0.7779
         },
         "dimensions": {
-          "width": 1.0685,
-          "depth": 0.2544,
+          "width": 0.8871,
+          "depth": 0.2113,
           "height": 2.3922
         }
       },
@@ -8707,9 +8707,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.9734,
-          "xMax": -0.9258,
-          "z": 0.8026
+          "xMin": -0.3655,
+          "xMax": 0.5044,
+          "z": 0.6664
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8720,12 +8720,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.3915,
-          "z": 0.9477
+          "x": 0.1177,
+          "z": 0.7868
         },
         "dimensions": {
-          "width": 1.0476,
-          "depth": 0.2523,
+          "width": 0.8698,
+          "depth": 0.2095,
           "height": 2.331
         }
       },
@@ -8783,9 +8783,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -2.2133,
-          "xMax": -1.1552,
-          "z": 0.7981
+          "xMin": -0.5646,
+          "xMax": 0.3139,
+          "z": 0.6627
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -8796,12 +8796,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -1.5333,
-          "z": 0.9674
+          "x": 0,
+          "z": 0.8032
         },
         "dimensions": {
-          "width": 1.0581,
-          "depth": 0.2533,
+          "width": 0.8785,
+          "depth": 0.2103,
           "height": 2.4282
         }
       },
@@ -8859,25 +8859,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "not-classified-in-4b-5",
-          "xMin": 5.6276,
-          "xMax": 6.9765,
-          "z": 1.4249
+          "xMin": 5.9454,
+          "xMax": 7.0654,
+          "z": 1.1831
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "manhattan-end-review-band",
         "sideOfCorridor": "not-classified-in-4b-5",
         "coverageStatus": "source-backed-minimal-fixture-record",
         "blockBreakBefore": false,
-        "blockBreakAfter": true,
+        "blockBreakAfter": false,
         "centroid": {
-          "x": 6.2683,
-          "z": 1.5546
+          "x": 6.4774,
+          "z": 1.2907
         },
         "dimensions": {
-          "width": 1.3488,
-          "depth": 0.3144,
+          "width": 1.1199,
+          "depth": 0.261,
           "height": 1.8444
         }
       },
@@ -8935,25 +8935,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "not-classified-in-4b-5",
-          "xMin": 6.4217,
+          "xMin": 6.6047,
           "xMax": 7.5,
-          "z": 1.3724
+          "z": 1.1395
         },
         "widthTier": "regular",
         "heightTier": "mid",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "manhattan-end-review-band",
         "sideOfCorridor": "not-classified-in-4b-5",
         "coverageStatus": "source-backed-minimal-fixture-record",
-        "blockBreakBefore": true,
+        "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 6.9441,
-          "z": 1.52
+          "x": 7.0385,
+          "z": 1.262
         },
         "dimensions": {
-          "width": 1.0783,
-          "depth": 0.3075,
+          "width": 0.8953,
+          "depth": 0.2553,
           "height": 1.6728
         }
       },
@@ -9011,9 +9011,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.8198,
-          "xMax": 4.0844,
-          "z": 0.6225
+          "xMin": 3.6142,
+          "xMax": 4.6641,
+          "z": 0.5168
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -9024,12 +9024,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 3.3864,
-          "z": 0.7656
+          "x": 4.0846,
+          "z": 0.6356
         },
         "dimensions": {
-          "width": 1.2645,
-          "depth": 0.3474,
+          "width": 1.0499,
+          "depth": 0.2885,
           "height": 2.1216
         }
       },
@@ -9087,9 +9087,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.9743,
-          "xMax": 3.2082,
-          "z": 0.6268
+          "xMin": 2.9122,
+          "xMax": 3.9366,
+          "z": 0.5204
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -9100,12 +9100,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.4239,
-          "z": 0.7444
+          "x": 3.2855,
+          "z": 0.6181
         },
         "dimensions": {
-          "width": 1.2338,
-          "depth": 0.3381,
+          "width": 1.0244,
+          "depth": 0.2807,
           "height": 2.151
         }
       },
@@ -9163,9 +9163,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -0.2517,
-          "xMax": 0.7959,
-          "z": 0.7939
+          "xMin": 1.064,
+          "xMax": 1.9338,
+          "z": 0.6591
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -9176,12 +9176,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.415,
-          "z": 0.9584
+          "x": 1.6176,
+          "z": 0.7957
         },
         "dimensions": {
-          "width": 1.0476,
-          "depth": 0.2521,
+          "width": 0.8698,
+          "depth": 0.2093,
           "height": 2.1948
         }
       },
@@ -9239,9 +9239,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.4937,
-          "xMax": -0.4247,
-          "z": 0.7948
+          "xMin": 0.0328,
+          "xMax": 0.9204,
+          "z": 0.6599
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -9252,12 +9252,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.8695,
-          "z": 0.9489
+          "x": 0.551,
+          "z": 0.7878
         },
         "dimensions": {
-          "width": 1.069,
-          "depth": 0.2655,
+          "width": 0.8876,
+          "depth": 0.2205,
           "height": 2.34
         }
       },
@@ -9315,9 +9315,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -0.4717,
-          "xMax": 0.663,
-          "z": -0.7859
+          "xMin": 0.8814,
+          "xMax": 1.8235,
+          "z": -0.6525
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -9328,12 +9328,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 0.2071,
-          "z": -0.8281
+          "x": 1.4449,
+          "z": -0.6875
         },
         "dimensions": {
-          "width": 1.1347,
-          "depth": 0.1049,
+          "width": 0.9421,
+          "depth": 0.0871,
           "height": 2.8284
         }
       },
@@ -9391,9 +9391,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -0.7926,
-          "xMax": 0.3317,
-          "z": -0.8904
+          "xMin": 0.6149,
+          "xMax": 1.5484,
+          "z": -0.7392
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -9404,12 +9404,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.118,
-          "z": -0.9318
+          "x": 1.175,
+          "z": -0.7737
         },
         "dimensions": {
-          "width": 1.1243,
-          "depth": 0.1037,
+          "width": 0.9335,
+          "depth": 0.0861,
           "height": 2.8374
         }
       },
@@ -9467,9 +9467,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.1239,
-          "xMax": 0.0108,
-          "z": -0.9936
+          "xMin": 0.3398,
+          "xMax": 1.2819,
+          "z": -0.825
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -9480,12 +9480,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.392,
-          "z": -1.042
+          "x": 0.9476,
+          "z": -0.8652
         },
         "dimensions": {
-          "width": 1.1347,
-          "depth": 0.1049,
+          "width": 0.9421,
+          "depth": 0.0871,
           "height": 2.9154
         }
       },
@@ -9543,25 +9543,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -1.3534,
-          "xMax": -0.1507,
-          "z": -0.7874
+          "xMin": 0.1493,
+          "xMax": 1.1478,
+          "z": -0.6538
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.7946,
-          "z": -0.9662
+          "x": 0.6133,
+          "z": -0.8022
         },
         "dimensions": {
-          "width": 1.2026,
-          "depth": 0.3144,
+          "width": 0.9985,
+          "depth": 0.261,
           "height": 2.8092
         }
       },
@@ -9619,25 +9619,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -6.2357,
-          "xMax": -5.3929,
-          "z": 0.1675
+          "xMin": -3.9043,
+          "xMax": -3.2045,
+          "z": 0.1391
         },
         "widthTier": "regular",
         "heightTier": "tall",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.7322,
-          "z": 0.2285
+          "x": -3.4862,
+          "z": 0.1897
         },
         "dimensions": {
-          "width": 0.8428,
-          "depth": 0.101,
+          "width": 0.6998,
+          "depth": 0.0838,
           "height": 2.7498
         }
       },
@@ -9695,25 +9695,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -6.1546,
-          "xMax": -4.958,
-          "z": 0.262
+          "xMin": -3.837,
+          "xMax": -2.8435,
+          "z": 0.2176
         },
         "widthTier": "regular",
         "heightTier": "tall",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.5512,
-          "z": 0.3368
+          "x": -3.336,
+          "z": 0.2796
         },
         "dimensions": {
-          "width": 1.1966,
-          "depth": 0.1496,
+          "width": 0.9935,
+          "depth": 0.1242,
           "height": 2.7498
         }
       },
@@ -9771,25 +9771,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -5.9388,
-          "xMax": -3.5346,
-          "z": 0.4027
+          "xMin": -3.6578,
+          "xMax": -1.6617,
+          "z": 0.3343
         },
         "widthTier": "wide",
         "heightTier": "mid",
         "depthTier": "regular",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -4.6478,
-          "z": 0.7476
+          "x": -2.5859,
+          "z": 0.6207
         },
         "dimensions": {
-          "width": 2.4042,
-          "depth": 0.6735,
+          "width": 1.9961,
+          "depth": 0.5591,
           "height": 1.486
         }
       },
@@ -9847,9 +9847,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.8171,
-          "xMax": 2.695,
-          "z": 0.1735
+          "xMin": 1.9514,
+          "xMax": 3.5106,
+          "z": 0.1441
         },
         "widthTier": "wide",
         "heightTier": "tall",
@@ -9860,13 +9860,89 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.6788,
-          "z": 0.3487
+          "x": 2.6669,
+          "z": 0.2895
         },
         "dimensions": {
-          "width": 1.8779,
-          "depth": 0.435,
+          "width": 1.5591,
+          "depth": 0.3611,
           "height": 3.0174
+        }
+      },
+      "blockedClaims": [
+        "active-business-status",
+        "business-identity",
+        "business-storefront-anchor",
+        "entrance-location",
+        "exact-address-placement",
+        "exact-facade-appearance",
+        "facade-material",
+        "production-public-readiness",
+        "signage",
+        "storefront-order",
+        "storefront-segmentation",
+        "tenant-frontage",
+        "window-door-layout"
+      ],
+      "reviewNotes": [
+        "Geometry-only cue for QA placement/readability review.",
+        "This record does not verify facade appearance, frontage, tenant identity, signage, entrance, material, window, or door details."
+      ]
+    },
+    {
+      "id": "p4c-cue-p4b-object-nyc-footprint-bin-3337033-geometry-summary",
+      "cueFamily": "geometry-only",
+      "cueClass": "street-facing-plane",
+      "secondaryCueClasses": [
+        "building-width-rhythm",
+        "height-tier",
+        "corner-or-endpoint-role",
+        "setback-or-depth-tier",
+        "block-break",
+        "side-of-corridor",
+        "coverage-status"
+      ],
+      "claimStatus": "source_backed_contextual",
+      "confidence": "deterministic-from-existing-geometry",
+      "allowedUse": "qa-mode-review-only",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3337033",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+      "targetGeometryReferenceId": "nyc-footprint-bin-3337033",
+      "targetGeometryCollection": "footprintRecords",
+      "corridorSide": "left",
+      "evidenceInputs": [
+        {
+          "type": "source-backed-geometry",
+          "manifestPath": "src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json",
+          "geometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+          "sourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
+          "geometryReferenceId": "nyc-footprint-bin-3337033"
+        }
+      ],
+      "geometryDerived": {
+        "streetFacingPlane": {
+          "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
+          "corridorSide": "left",
+          "xMin": -7.5,
+          "xMax": -4.4772,
+          "z": -0.1638
+        },
+        "widthTier": "wide",
+        "heightTier": "mid",
+        "depthTier": "regular",
+        "cornerOrEndpointRole": "franklin-end-review-band",
+        "sideOfCorridor": "left",
+        "coverageStatus": "source-backed",
+        "blockBreakBefore": false,
+        "blockBreakAfter": true,
+        "centroid": {
+          "x": -5.9719,
+          "z": -0.4861
+        },
+        "dimensions": {
+          "width": 3.0228,
+          "depth": 0.7373,
+          "height": 1.3686
         }
       },
       "blockedClaims": [
@@ -9923,9 +9999,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -6.5392,
-          "xMax": -5.8125,
-          "z": -0.4838
+          "xMin": -4.1563,
+          "xMax": -3.5529,
+          "z": -0.4017
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -9936,12 +10012,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.0704,
-          "z": -0.5505
+          "x": -3.7671,
+          "z": -0.457
         },
         "dimensions": {
-          "width": 0.7267,
-          "depth": 0.1679,
+          "width": 0.6034,
+          "depth": 0.1394,
           "height": 1.4448
         }
       },
@@ -9999,25 +10075,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -5.7528,
-          "xMax": -4.8809,
-          "z": -0.1965
+          "xMin": -3.5033,
+          "xMax": -2.7795,
+          "z": -0.1631
         },
         "widthTier": "regular",
         "heightTier": "mid",
         "depthTier": "shallow",
-        "cornerOrEndpointRole": "franklin-end-review-band",
+        "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "left",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -5.2296,
-          "z": -0.276
+          "x": -3.0689,
+          "z": -0.2291
         },
         "dimensions": {
-          "width": 0.8718,
-          "depth": 0.2019,
+          "width": 0.7239,
+          "depth": 0.1676,
           "height": 1.4844
         }
       },
@@ -10075,9 +10151,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -6.7159,
-          "xMax": -5.6885,
-          "z": 0.1642
+          "xMin": -4.303,
+          "xMax": -3.45,
+          "z": 0.1363
         },
         "widthTier": "regular",
         "heightTier": "tall",
@@ -10088,12 +10164,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -6.1333,
-          "z": 0.3023
+          "x": -3.8193,
+          "z": 0.251
         },
         "dimensions": {
-          "width": 1.0274,
-          "depth": 0.2441,
+          "width": 0.853,
+          "depth": 0.2027,
           "height": 2.8182
         }
       },
@@ -10151,11 +10227,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 0.856,
-          "xMax": 2.2772,
-          "z": 0.2815
+          "xMin": 1.9837,
+          "xMax": 3.1636,
+          "z": 0.2337
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "low",
         "depthTier": "regular",
         "cornerOrEndpointRole": "mid-corridor",
@@ -10164,12 +10240,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 1.6903,
-          "z": 0.4983
+          "x": 2.6764,
+          "z": 0.4137
         },
         "dimensions": {
-          "width": 1.4211,
-          "depth": 0.356,
+          "width": 1.1799,
+          "depth": 0.2956,
           "height": 1.008
         }
       },
@@ -10227,9 +10303,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": -3.5115,
-          "xMax": -2.9917,
-          "z": -0.6396
+          "xMin": -1.6424,
+          "xMax": -1.2109,
+          "z": -0.531
         },
         "widthTier": "narrow",
         "heightTier": "low",
@@ -10240,12 +10316,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.2018,
-          "z": -0.6856
+          "x": -1.3854,
+          "z": -0.5692
         },
         "dimensions": {
-          "width": 0.5197,
-          "depth": 0.0986,
+          "width": 0.4315,
+          "depth": 0.0819,
           "height": 1
         }
       },
@@ -10303,9 +10379,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.1341,
-          "xMax": 0.723,
-          "z": 0.179
+          "xMin": 0.3314,
+          "xMax": 1.8733,
+          "z": 0.1486
         },
         "widthTier": "wide",
         "heightTier": "mid",
@@ -10316,12 +10392,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.0198,
-          "z": 0.4385
+          "x": 1.2565,
+          "z": 0.3641
         },
         "dimensions": {
-          "width": 1.8571,
-          "depth": 0.4326,
+          "width": 1.5419,
+          "depth": 0.3592,
           "height": 2.46
         }
       },
@@ -10379,9 +10455,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.9062,
-          "xMax": -0.2791,
-          "z": 0.1821
+          "xMin": -0.3096,
+          "xMax": 1.0413,
+          "z": 0.1512
         },
         "widthTier": "wide",
         "heightTier": "tall",
@@ -10392,12 +10468,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.8011,
-          "z": 0.4855
+          "x": 0.6079,
+          "z": 0.4031
         },
         "dimensions": {
-          "width": 1.6271,
-          "depth": 0.4519,
+          "width": 1.3509,
+          "depth": 0.3752,
           "height": 3.6
         }
       },
@@ -10455,25 +10531,25 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -4.2845,
-          "xMax": -3.1125,
-          "z": 0.162
+          "xMin": -2.2843,
+          "xMax": -1.3112,
+          "z": 0.1345
         },
         "widthTier": "regular",
         "heightTier": "tall",
-        "depthTier": "regular",
+        "depthTier": "shallow",
         "cornerOrEndpointRole": "mid-corridor",
         "sideOfCorridor": "right",
         "coverageStatus": "source-backed",
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.6239,
-          "z": 0.3323
+          "x": -1.7358,
+          "z": 0.2759
         },
         "dimensions": {
-          "width": 1.172,
-          "depth": 0.3146,
+          "width": 0.973,
+          "depth": 0.2612,
           "height": 2.7
         }
       },
@@ -10531,9 +10607,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "left",
-          "xMin": 2.0359,
-          "xMax": 2.7117,
-          "z": -0.4957
+          "xMin": 2.9634,
+          "xMax": 3.5244,
+          "z": -0.4115
         },
         "widthTier": "regular",
         "heightTier": "mid",
@@ -10544,12 +10620,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.4203,
-          "z": -0.5402
+          "x": 3.2825,
+          "z": -0.4485
         },
         "dimensions": {
-          "width": 0.6758,
-          "depth": 0.1175,
+          "width": 0.5611,
+          "depth": 0.0976,
           "height": 2.4385
         }
       },
@@ -10607,9 +10683,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 2.069,
-          "xMax": 3.822,
-          "z": 0.179
+          "xMin": 2.9908,
+          "xMax": 4.4463,
+          "z": 0.1486
         },
         "widthTier": "wide",
         "heightTier": "low",
@@ -10620,12 +10696,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 3.0415,
-          "z": 0.432
+          "x": 3.7982,
+          "z": 0.3587
         },
         "dimensions": {
-          "width": 1.753,
-          "depth": 0.4217,
+          "width": 1.4555,
+          "depth": 0.3502,
           "height": 1.02
         }
       },
@@ -10683,11 +10759,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": 1.839,
-          "xMax": 3.4255,
-          "z": 0.1794
+          "xMin": 2.7998,
+          "xMax": 4.1171,
+          "z": 0.1489
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "low",
         "depthTier": "regular",
         "cornerOrEndpointRole": "mid-corridor",
@@ -10696,12 +10772,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": 2.8326,
-          "z": 0.4557
+          "x": 3.6248,
+          "z": 0.3783
         },
         "dimensions": {
-          "width": 1.5865,
-          "depth": 0.4213,
+          "width": 1.3172,
+          "depth": 0.3498,
           "height": 1.02
         }
       },
@@ -10759,11 +10835,11 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -1.6767,
-          "xMax": -0.1088,
-          "z": 0.1698
+          "xMin": -0.1191,
+          "xMax": 1.1826,
+          "z": 0.141
         },
-        "widthTier": "wide",
+        "widthTier": "regular",
         "heightTier": "tall",
         "depthTier": "regular",
         "cornerOrEndpointRole": "mid-corridor",
@@ -10772,12 +10848,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -0.9202,
-          "z": 0.3431
+          "x": 0.509,
+          "z": 0.2849
         },
         "dimensions": {
-          "width": 1.5679,
-          "depth": 0.3428,
+          "width": 1.3018,
+          "depth": 0.2846,
           "height": 3.06
         }
       },
@@ -10835,9 +10911,9 @@
         "streetFacingPlane": {
           "status": "review-plane-from-building-footprint-edge-nearest-corridor-center",
           "corridorSide": "right",
-          "xMin": -3.8243,
-          "xMax": -3.3156,
-          "z": 0.9763
+          "xMin": -1.9022,
+          "xMax": -1.4798,
+          "z": 0.8106
         },
         "widthTier": "narrow",
         "heightTier": "tall",
@@ -10848,12 +10924,12 @@
         "blockBreakBefore": false,
         "blockBreakAfter": false,
         "centroid": {
-          "x": -3.5191,
-          "z": 1.0375
+          "x": -1.6488,
+          "z": 0.8614
         },
         "dimensions": {
-          "width": 0.5088,
-          "depth": 0.1019,
+          "width": 0.4224,
+          "depth": 0.0846,
           "height": 2.8098
         }
       },

@@ -322,9 +322,9 @@
           "slotOrder": 1,
           "slotCount": 3,
           "slotExtentUnits": {
-            "xMin": 2.503,
-            "xMax": 3.214,
-            "widthUnits": 0.711
+            "xMin": 3.148,
+            "xMax": 3.738,
+            "widthUnits": 0.59
           },
           "minimumVisualGapUnits": 0.12,
           "layoutStatus": "qa_slot_layout_only_not_frontage_order",
@@ -625,9 +625,9 @@
           "slotOrder": 2,
           "slotCount": 3,
           "slotExtentUnits": {
-            "xMin": 3.339,
-            "xMax": 4.311,
-            "widthUnits": 0.972
+            "xMin": 4.093,
+            "xMax": 4.9,
+            "widthUnits": 0.807
           },
           "minimumVisualGapUnits": 0.12,
           "layoutStatus": "qa_slot_layout_only_not_frontage_order",
@@ -927,9 +927,9 @@
           "slotOrder": 3,
           "slotCount": 3,
           "slotExtentUnits": {
-            "xMin": 4.485,
-            "xMax": 5.457,
-            "widthUnits": 0.972
+            "xMin": 5.175,
+            "xMax": 5.982,
+            "widthUnits": 0.807
           },
           "minimumVisualGapUnits": 0.12,
           "layoutStatus": "qa_slot_layout_only_not_frontage_order",
@@ -1013,9 +1013,9 @@
     },
     {
       "cueRecordId": "p4e1-franklin-weathered-brick-glass-base",
-      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064803",
-      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064803",
-      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3337033",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3337033",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
       "cornerScope": "franklin_greenpoint",
       "associationStatus": "provisional_geometry_target_for_qa_render_only",
       "renderStatus": "rendered_qa_only",
@@ -1033,7 +1033,7 @@
         "syntheticContextRole": "non-evidence-placeholder-context",
         "recordSeparationIndex": 0,
         "recordSeparationCount": 3,
-        "lateralOffsetUnits": -1.2,
+        "lateralOffsetUnits": 0,
         "widthScale": 0.45,
         "depthProfile": "low-storefront-recess",
         "basePlaneRatio": 0.42,
@@ -1052,7 +1052,7 @@
           "curb": true,
           "crosswalk": true
         },
-        "streetwallSlot": "franklin_slot_01_west_corner",
+        "streetwallSlot": "franklin_slot_northwest_cross_street",
         "slotGapUnits": 0.25,
         "footprintDepthUnits": 0.62,
         "facadeThicknessUnits": 0.1,
@@ -1184,7 +1184,7 @@
       "qaFacadeModel": {
         "modelPhase": "4F-1",
         "modelStatus": "qa_only_facade_cue_model_hardened",
-        "facadePlaneId": "qa-facade-plane-franklin-slot-01-west-corner",
+        "facadePlaneId": "qa-facade-plane-franklin-slot-northwest-cross-street",
         "facadePlaneRole": "qa_evidence_informed_facade_plane",
         "statusStates": [
           "manual_draft",
@@ -1203,25 +1203,25 @@
           "entrancePromotionGate": "blocked"
         },
         "facadePlane": {
-          "facadePlaneId": "qa-facade-plane-franklin-slot-01-west-corner",
+          "facadePlaneId": "qa-facade-plane-franklin-slot-northwest-cross-street",
           "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
-          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064803",
-          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064803",
-          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064803",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3337033",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3337033",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3337033",
           "associationStatus": "provisional_geometry_target_for_qa_render_only",
           "canBecomeAuthoritativeWithoutReview": false,
           "normalRuntimeGate": "blocked_not_rendered"
         },
         "streetwallLayout": {
           "streetwallId": "qa-streetwall-franklin-greenpoint-greenpoint-ave-north-streetwall",
-          "streetwallSlotId": "franklin_slot_01_west_corner",
+          "streetwallSlotId": "franklin_slot_northwest_cross_street",
           "streetEdgeAlignment": "greenpoint_ave_north_streetwall",
           "slotOrder": 1,
           "slotCount": 3,
           "slotExtentUnits": {
-            "xMin": -8.232,
-            "xMax": -7.466,
-            "widthUnits": 0.766
+            "xMin": -6.669,
+            "xMax": -5.309,
+            "widthUnits": 1.36
           },
           "minimumVisualGapUnits": 0.12,
           "layoutStatus": "qa_slot_layout_only_not_frontage_order",
@@ -1261,7 +1261,7 @@
         },
         "storefrontBayPlaceholders": [
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-01-west-corner-qa-bay-01",
+            "placeholderId": "qa-facade-plane-franklin-slot-northwest-cross-street-qa-bay-01",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 1,
             "bayCount": 3,
@@ -1277,7 +1277,7 @@
             "canLinkToBusinessEvidence": false
           },
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-01-west-corner-qa-bay-02",
+            "placeholderId": "qa-facade-plane-franklin-slot-northwest-cross-street-qa-bay-02",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 2,
             "bayCount": 3,
@@ -1293,7 +1293,7 @@
             "canLinkToBusinessEvidence": false
           },
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-01-west-corner-qa-bay-03",
+            "placeholderId": "qa-facade-plane-franklin-slot-northwest-cross-street-qa-bay-03",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 3,
             "bayCount": 3,
@@ -1321,9 +1321,9 @@
     },
     {
       "cueRecordId": "p4e1-franklin-dark-brick-awned-base",
-      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064792",
-      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064792",
-      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064811",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064811",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064811",
       "cornerScope": "franklin_greenpoint",
       "associationStatus": "provisional_geometry_target_for_qa_render_only",
       "renderStatus": "rendered_qa_only",
@@ -1341,7 +1341,7 @@
         "syntheticContextRole": "non-evidence-placeholder-context",
         "recordSeparationIndex": 1,
         "recordSeparationCount": 3,
-        "lateralOffsetUnits": -0.05,
+        "lateralOffsetUnits": 0,
         "widthScale": 0.45,
         "depthProfile": "dark-base-canopy",
         "basePlaneRatio": 0.4,
@@ -1360,7 +1360,7 @@
           "curb": true,
           "crosswalk": false
         },
-        "streetwallSlot": "franklin_slot_02_center_row",
+        "streetwallSlot": "franklin_slot_southeast_corridor_corner",
         "slotGapUnits": 0.24,
         "footprintDepthUnits": 0.56,
         "facadeThicknessUnits": 0.11,
@@ -1487,7 +1487,7 @@
       "qaFacadeModel": {
         "modelPhase": "4F-1",
         "modelStatus": "qa_only_facade_cue_model_hardened",
-        "facadePlaneId": "qa-facade-plane-franklin-slot-02-center-row",
+        "facadePlaneId": "qa-facade-plane-franklin-slot-southeast-corridor-corner",
         "facadePlaneRole": "qa_evidence_informed_facade_plane",
         "statusStates": [
           "manual_draft",
@@ -1506,25 +1506,25 @@
           "entrancePromotionGate": "blocked"
         },
         "facadePlane": {
-          "facadePlaneId": "qa-facade-plane-franklin-slot-02-center-row",
+          "facadePlaneId": "qa-facade-plane-franklin-slot-southeast-corridor-corner",
           "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
-          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064792",
-          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064792",
-          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064792",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064811",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064811",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064811",
           "associationStatus": "provisional_geometry_target_for_qa_render_only",
           "canBecomeAuthoritativeWithoutReview": false,
           "normalRuntimeGate": "blocked_not_rendered"
         },
         "streetwallLayout": {
           "streetwallId": "qa-streetwall-franklin-greenpoint-greenpoint-ave-south-streetwall",
-          "streetwallSlotId": "franklin_slot_02_center_row",
+          "streetwallSlotId": "franklin_slot_southeast_corridor_corner",
           "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
           "slotOrder": 2,
           "slotCount": 3,
           "slotExtentUnits": {
-            "xMin": -7.039,
-            "xMax": -6.274,
-            "widthUnits": 0.765
+            "xMin": -2.6,
+            "xMax": -2.196,
+            "widthUnits": 0.404
           },
           "minimumVisualGapUnits": 0.12,
           "layoutStatus": "qa_slot_layout_only_not_frontage_order",
@@ -1564,7 +1564,7 @@
         },
         "storefrontBayPlaceholders": [
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-02-center-row-qa-bay-01",
+            "placeholderId": "qa-facade-plane-franklin-slot-southeast-corridor-corner-qa-bay-01",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 1,
             "bayCount": 3,
@@ -1580,7 +1580,7 @@
             "canLinkToBusinessEvidence": false
           },
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-02-center-row-qa-bay-02",
+            "placeholderId": "qa-facade-plane-franklin-slot-southeast-corridor-corner-qa-bay-02",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 2,
             "bayCount": 3,
@@ -1596,7 +1596,7 @@
             "canLinkToBusinessEvidence": false
           },
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-02-center-row-qa-bay-03",
+            "placeholderId": "qa-facade-plane-franklin-slot-southeast-corridor-corner-qa-bay-03",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 3,
             "bayCount": 3,
@@ -1624,9 +1624,9 @@
     },
     {
       "cueRecordId": "p4e1-franklin-red-brick-cornice-corner",
-      "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
-      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064793",
-      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+      "targetSemanticId": "p4b-object-nyc-footprint-bin-3322608",
+      "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3322608",
+      "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3322608",
       "cornerScope": "franklin_greenpoint",
       "associationStatus": "provisional_geometry_target_for_qa_render_only",
       "renderStatus": "rendered_qa_only",
@@ -1644,7 +1644,7 @@
         "syntheticContextRole": "non-evidence-placeholder-context",
         "recordSeparationIndex": 2,
         "recordSeparationCount": 3,
-        "lateralOffsetUnits": 0.95,
+        "lateralOffsetUnits": 0,
         "widthScale": 0.48,
         "depthProfile": "cornice-corner-wrap",
         "basePlaneRatio": 0.35,
@@ -1663,7 +1663,7 @@
           "curb": true,
           "crosswalk": true
         },
-        "streetwallSlot": "franklin_slot_03_east_corner",
+        "streetwallSlot": "franklin_slot_southwest_cross_street",
         "slotGapUnits": 0.28,
         "footprintDepthUnits": 0.74,
         "facadeThicknessUnits": 0.12,
@@ -1790,7 +1790,7 @@
       "qaFacadeModel": {
         "modelPhase": "4F-1",
         "modelStatus": "qa_only_facade_cue_model_hardened",
-        "facadePlaneId": "qa-facade-plane-franklin-slot-03-east-corner",
+        "facadePlaneId": "qa-facade-plane-franklin-slot-southwest-cross-street",
         "facadePlaneRole": "qa_evidence_informed_facade_plane",
         "statusStates": [
           "manual_draft",
@@ -1809,25 +1809,25 @@
           "entrancePromotionGate": "blocked"
         },
         "facadePlane": {
-          "facadePlaneId": "qa-facade-plane-franklin-slot-03-east-corner",
+          "facadePlaneId": "qa-facade-plane-franklin-slot-southwest-cross-street",
           "source": "derived_from_existing_phase_4c_geometry_cue_plane_for_qa_only",
-          "targetSemanticId": "p4b-object-nyc-footprint-bin-3064793",
-          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3064793",
-          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3064793",
+          "targetSemanticId": "p4b-object-nyc-footprint-bin-3322608",
+          "targetGeometryContainerId": "p4b-object-nyc-footprint-bin-3322608",
+          "targetSourceRecordId": "p4b-record-nyc-footprint-bin-3322608",
           "associationStatus": "provisional_geometry_target_for_qa_render_only",
           "canBecomeAuthoritativeWithoutReview": false,
           "normalRuntimeGate": "blocked_not_rendered"
         },
         "streetwallLayout": {
           "streetwallId": "qa-streetwall-franklin-greenpoint-greenpoint-ave-south-streetwall",
-          "streetwallSlotId": "franklin_slot_03_east_corner",
+          "streetwallSlotId": "franklin_slot_southwest_cross_street",
           "streetEdgeAlignment": "greenpoint_ave_south_streetwall",
           "slotOrder": 3,
           "slotCount": 3,
           "slotExtentUnits": {
-            "xMin": -5.822,
-            "xMax": -5.001,
-            "widthUnits": 0.821
+            "xMin": -3.722,
+            "xMax": -3.386,
+            "widthUnits": 0.336
           },
           "minimumVisualGapUnits": 0.12,
           "layoutStatus": "qa_slot_layout_only_not_frontage_order",
@@ -1867,7 +1867,7 @@
         },
         "storefrontBayPlaceholders": [
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-03-east-corner-qa-bay-01",
+            "placeholderId": "qa-facade-plane-franklin-slot-southwest-cross-street-qa-bay-01",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 1,
             "bayCount": 2,
@@ -1883,7 +1883,7 @@
             "canLinkToBusinessEvidence": false
           },
           {
-            "placeholderId": "qa-facade-plane-franklin-slot-03-east-corner-qa-bay-02",
+            "placeholderId": "qa-facade-plane-franklin-slot-southwest-cross-street-qa-bay-02",
             "placeholderRole": "qa_non_claim_storefront_bay_placeholder",
             "bayOrder": 2,
             "bayCount": 2,

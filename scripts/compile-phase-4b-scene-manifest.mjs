@@ -14,6 +14,9 @@ const MANIFEST_SCHEMA_VERSION = "phase-4b-semantic-scene-manifest.v0.1";
 const BUILDING_FOOTPRINT_SOURCE_ID = "p4b-source-nyc-open-data-building-footprints";
 const CORRIDOR_CENTERLINE_GEOMETRY_ID = "nyc-centerline-physicalid-47237";
 const CONTEXT_FOOTPRINT_SIDE_LIMIT = 50;
+const FRANKLIN_CROSS_STREET_REVIEW_CONTEXT_IDS = new Set([
+  "nyc-footprint-bin-3337033",
+]);
 const REQUIRED_BLOCKED_CLAIMS = new Set([
   "tenant-frontage",
   "storefront-order",
@@ -234,11 +237,14 @@ function getFootprintContextCoverage(geometryRecord, centerline) {
   const maxT = Math.max(...polygonOffsets.map((point) => point.t));
   const overlapsCorridor = maxT >= 0 && minT <= axis.length;
   const withinSideBand = Math.abs(centroidOffsets.side) <= CONTEXT_FOOTPRINT_SIDE_LIMIT;
-  const status = overlapsCorridor && withinSideBand ? "source-backed" : "out-of-scope";
+  const isFranklinCrossStreetReviewContext = FRANKLIN_CROSS_STREET_REVIEW_CONTEXT_IDS.has(geometryRecord.id);
+  const status = (overlapsCorridor || isFranklinCrossStreetReviewContext) && withinSideBand ? "source-backed" : "out-of-scope";
 
   return {
     status,
-    method: "deterministic-corridor-adjacent-footprint-selection",
+    method: isFranklinCrossStreetReviewContext
+      ? "deterministic-corridor-adjacent-footprint-selection-plus-franklin-cross-street-review-context"
+      : "deterministic-corridor-adjacent-footprint-selection",
     source: "approved-normalized-geometry-fixture",
     corridorCenterlineGeometryId: CORRIDOR_CENTERLINE_GEOMETRY_ID,
     corridorAxisT: roundForManifest(centroidOffsets.t),
@@ -248,7 +254,9 @@ function getFootprintContextCoverage(geometryRecord, centerline) {
     footprintAxisMax: roundForManifest(maxT),
     sideLimit: CONTEXT_FOOTPRINT_SIDE_LIMIT,
     reason: status === "source-backed"
-      ? "Footprint overlaps the approved corridor centerline segment and its centroid is within the deterministic context side band."
+      ? isFranklinCrossStreetReviewContext
+        ? "Footprint is an approved Franklin cross-street corner review context needed to place the northwest repo-local evidence cluster; it remains contextual and QA-only."
+        : "Footprint overlaps the approved corridor centerline segment and its centroid is within the deterministic context side band."
       : "Footprint is outside the deterministic corridor-adjacent context band for 4B-5.",
     notClaims: [
       "tenant-frontage",
