@@ -1,39 +1,22 @@
-# Current Execution Brief - Post-R9 Franklin Hero Asset Sequence Pending
+# Current Execution Brief - 4M-R10 Franklin Hero Asset Ingestion Spike Open
 
-Status: R8/R9 are complete, verified, and committed as `feb533f`. Post-R9 planning is reconciled; no implementation batch is open.
+Status: Batu opened `4M-R10 Franklin Hero Asset Ingestion Spike` after the completed R8/R9 Franklin hero sequence. R8/R9 remain complete, verified, and committed as `feb533f`; post-R9 loose report/screenshot artifacts have been archived.
 
-Current executable batch: none.
+Current executable batch: `4M-R10 Franklin Hero Asset Ingestion Spike`.
 
 Completed milestone: `4M-R9 Franklin High-Recognition Detail Modules`.
-
-Post-R9 candidate sequence:
-
-1. `4M-R10 Franklin Hero Asset Ingestion Spike`
-2. `4M-R11 R9 vs R10 Visual/Technical Comparison`
-3. `4M-R12 Hero-Kit Standardization Decision`
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop for Batu review before opening R10. R10 may open only if Batu explicitly approves a controlled QA-only Franklin hero asset ingestion spike.
+Hard Batu gate: stop after R10 implementation and screenshot comparison for Batu visual review. Do not self-open R11 or R12.
 
-## Current State
+## Objective
 
-- R8 proved the QA-only Franklin facade record can drive native Franklin hero geometry from structured data.
-- R9 extended that record-driven scaffold with code-native high-recognition detail modules: candidate side projection, fire escape cue, AC/window utilities, irregular facade rhythm, material/weathering bands, and street/sidewalk grounding.
-- R9 remains a visual review milestone: the code-native Franklin detail modules improved the scaffold, but recognizable stylized fidelity under close isometric orthographic review still needs a controlled asset-ingestion test before any broader asset pipeline is considered.
-- The procedural scaffold remains the base; QA-only hero inserts are exceptions for high-recognition architectural features.
+Prove that one QA-only authored GLB hero insert can be loaded, anchored, toggled, and visually compared against the procedural R9 scaffold without contaminating normal mode or the wider runtime architecture.
 
-## Candidate R10 Scope
-
-`4M-R10 Franklin Hero Asset Ingestion Spike` is a future candidate only, not open in this brief.
-
-Objective:
-
-- Prove that one QA-only authored GLB hero insert can be loaded, anchored, toggled, and visually compared against the procedural R9 scaffold without contaminating normal mode or the wider runtime architecture.
-
-Allowed only if Batu opens R10:
+## Allowed Scope
 
 - One GLB module only.
 - Preferred first candidate: Franklin side bay/window projection or similarly high-recognition architectural insert.
@@ -41,20 +24,34 @@ Allowed only if Batu opens R10:
 - Position/scale the asset through the Franklin facade record or an adjacent QA-only hero asset binding record.
 - Keep asset loading out of `src/Phase4BRuntimePreview.jsx` where possible, using a hero asset registry/loader boundary under `src/components/hero/` or equivalent.
 - Runtime remains responsible for assembly, gating, and placement; the Franklin hero module owns visual fidelity choices.
+- Add the smallest verifier needed to prove QA-only gating, structured anchoring, fallback behavior, and blocked claims.
+- Capture R10 screenshots showing GLB-on and fallback/off comparison.
+- Update only the R10 report, screenshots, verifier, and required execution-control docs after implementation.
 
-Blocked unless later explicitly approved:
+## Blocked Scope
 
 - Full Franklin building replacement.
-- Manhattan implementation.
-- PBR registry, corridor UV mapping, Cesium, 3D Tiles, full asset streaming, raster texture atlas, custom shader pipeline, production assets, production claims, normal-mode exposure, exact storefront/frontage/signage/entrance/address/tenant/material/active-status claims, source expansion, package/tooling changes beyond an approved R10 boundary, or public/product claims.
+- Manhattan implementation except a narrow shared-renderer regression capture if R10 changes shared runtime behavior.
+- PBR registry, corridor UV mapping, Cesium, 3D Tiles, full asset streaming, raster texture atlas, custom shader pipeline, production assets, production claims, normal-mode exposure, exact storefront/frontage/signage/entrance/address/tenant/material/active-status claims, source expansion, package/tooling changes beyond the approved R10 boundary, or public/product claims.
+- R11 comparison work or R12 standardization work before Batu reviews R10.
 
-## Candidate R10 Success Criteria
+## Required Pre-Implementation Check
+
+Before source/runtime edits, confirm the GLB asset exists at the chosen repo-local path and report:
+
+- Expected path and filename.
+- Whether it is review-only / QA-only.
+- How it will be anchored from structured record data.
+
+If no suitable GLB exists, stop before implementation and report the missing asset rather than replacing it with SVG, canvas, CSS, DOM-drawn scene art, or a code-generated primary visual surface.
+
+## Success Criteria
 
 - One QA-only GLB asset loads in Franklin hero review mode.
 - Asset can be disabled to show the procedural fallback.
 - Asset is anchored from structured record data.
 - Screenshots show whether the insert materially improves recognition.
-- Verifiers, `npm run build`, and `git diff --check` pass.
+- Verifiers, `npm run build`, and `git diff --check` pass, or any non-blocking verification limitation is documented.
 - Stop at Batu visual review gate.
 
 ## R11/R12 Planning Horizon
@@ -62,8 +59,9 @@ Blocked unless later explicitly approved:
 - `4M-R11` compares R9 procedural output against R10 GLB insert output and recommends primitive modules, GLB inserts, or a mixed hero-kit strategy.
 - `4M-R12` codifies the accepted Franklin hero-kit pattern before any Manhattan, landmark, or broader corridor expansion.
 
-## Verification Completed For This Reconciliation
+## Verification Completed For This Opening
 
-- Planning/control docs reconciled only.
-- No implementation files edited.
-- No R10 implementation started.
+- `git status --short`
+- Archived old untracked 4M report/screenshot artifacts under `docs/archive/`.
+- Control-doc reconciliation only.
+- No source/runtime implementation files edited.

@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-09
+Last reconciled: 2026-06-10
 
 ## Purpose
 
@@ -55,15 +55,55 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4M-R9: Franklin High-Recognition Detail Modules` is complete, verified, and committed as `feb533f`; post-R9 planning is reconciled.
+- Current phase: `Batch 4M-R10: Franklin Hero Asset Ingestion Spike` is open after Batu approval; R8/R9 remain complete, verified, and committed as `feb533f`.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` holds at the completed 4M-R9 Batu visual review gate with no executable batch and no pre-authorized queue. R10/R11/R12 are future candidates only.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens the bounded 4M-R10 Franklin QA-only one-GLB hero asset ingestion spike. R11/R12 remain future candidates only; no pre-authorized queue exists.
 - Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. R6 proved hybrid recognizability but not benchmark render fidelity. R7 completed a Franklin-only hero kit extraction/render proof: measured trace = alignment, hero kit = visual fidelity, runtime = assembly/review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces beyond the internal Franklin QA hero module, broad module-boundary changes, architecture changes, Manhattan expansion, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-10 - Batch 4M-R10 Franklin Hero Asset Ingestion Spike Opened
+
+Status:
+- Complete; gate-opening and archive cleanup only.
+
+Scope:
+- Archive old untracked 4M report/screenshot artifacts and open R10 as a bounded Franklin-only QA hero asset ingestion spike.
+
+Files changed:
+- `docs/archive/reports/phase-4m/phase-4m-evidence-derived-benchmark-pass.md`
+- `docs/archive/reports/phase-4m/phase-4m-r3-measured-hero-corner-reconstruction-pass.md`
+- `docs/archive/reports/phase-4m/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass.md`
+- `docs/archive/reports/phase-4m/phase-4m-recognizable-place-fidelity-patch.md`
+- `docs/archive/reports/phase-4m/systems-review-franklin-runtime-data-asset-pipeline.md`
+- `docs/archive/review-screenshots/phase-4m-evidence-derived-benchmark-pass/`
+- `docs/archive/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/`
+- `docs/archive/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/`
+- `docs/archive/review-screenshots/phase-4m-recognizable-place-fidelity-patch/`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `git status --short`
+- Archive-path consistency update for moved report/screenshot references.
+- `git diff --check`
+
+Outcome:
+- R10 is now the current executable batch: one QA-only Franklin GLB hero insert, structured record anchoring, procedural fallback toggle, minimal verifier/report/screenshots, and Batu visual review stop.
+- R11/R12 remain future candidate gates.
+- No source/runtime implementation files changed and no R10 GLB ingestion work began during this opening step.
+
+Unresolved decisions:
+- Batu owns R10 visual pass/fail and any R11/R12 continuation.
+- The R10 implementation pass must confirm the repo-local GLB asset path before source/runtime edits.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to active 4M-R10.
 
 ### 2026-06-10 - Post-R9 Franklin Hero Asset Sequence Planning Reconciliation
 
@@ -374,11 +414,11 @@ Files changed:
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/phase-4-execution-roadmap.md`
-- `docs/reports/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass.md`
-- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/franklin-benchmark-close-r4.png`
-- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/franklin-side-return-corner-wrap-r4.png`
-- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/manhattan-close-r4-shared-renderer-check.png`
-- `docs/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/corridor-oblique-ghosted-r4.png`
+- `docs/archive/reports/phase-4m/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass.md`
+- `docs/archive/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/franklin-benchmark-close-r4.png`
+- `docs/archive/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/franklin-side-return-corner-wrap-r4.png`
+- `docs/archive/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/manhattan-close-r4-shared-renderer-check.png`
+- `docs/archive/review-screenshots/phase-4m-r4-franklin-benchmark-fidelity-convergence-pass/corridor-oblique-ghosted-r4.png`
 
 Verification:
 - `npm run build`
@@ -413,10 +453,10 @@ Files changed:
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/phase-4-execution-roadmap.md`
-- `docs/reports/phase-4m-r3-measured-hero-corner-reconstruction-pass.md`
-- `docs/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/franklin-close-measured-poc.png`
-- `docs/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/manhattan-close-measured-poc.png`
-- `docs/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/corridor-oblique-measured-poc.png`
+- `docs/archive/reports/phase-4m/phase-4m-r3-measured-hero-corner-reconstruction-pass.md`
+- `docs/archive/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/franklin-close-measured-poc.png`
+- `docs/archive/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/manhattan-close-measured-poc.png`
+- `docs/archive/review-screenshots/phase-4m-r3-measured-hero-corner-reconstruction-pass/corridor-oblique-measured-poc.png`
 
 Verification:
 - `npm run build`
@@ -452,10 +492,10 @@ Files changed:
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
 - `docs/phase-4-execution-roadmap.md`
-- `docs/reports/phase-4m-evidence-derived-benchmark-pass.md`
-- `docs/review-screenshots/phase-4m-evidence-derived-benchmark-pass/corridor-oblique-benchmark-poc.png`
-- `docs/review-screenshots/phase-4m-evidence-derived-benchmark-pass/manhattan-endpoint-benchmark-poc.png`
-- `docs/review-screenshots/phase-4m-evidence-derived-benchmark-pass/franklin-endpoint-benchmark-poc.png`
+- `docs/archive/reports/phase-4m/phase-4m-evidence-derived-benchmark-pass.md`
+- `docs/archive/review-screenshots/phase-4m-evidence-derived-benchmark-pass/corridor-oblique-benchmark-poc.png`
+- `docs/archive/review-screenshots/phase-4m-evidence-derived-benchmark-pass/manhattan-endpoint-benchmark-poc.png`
+- `docs/archive/review-screenshots/phase-4m-evidence-derived-benchmark-pass/franklin-endpoint-benchmark-poc.png`
 
 Verification:
 - `npm run build`
@@ -490,10 +530,10 @@ Files changed:
 - `docs/CURRENT_EXECUTION_BRIEF.md`
 - `docs/PLAN.md`
 - `docs/MVP_EXECUTION_LEDGER.md`
-- `docs/reports/phase-4m-recognizable-place-fidelity-patch.md`
-- `docs/review-screenshots/phase-4m-recognizable-place-fidelity-patch/corridor-oblique-recognizable-poc.png`
-- `docs/review-screenshots/phase-4m-recognizable-place-fidelity-patch/manhattan-endpoint-recognizable-poc.png`
-- `docs/review-screenshots/phase-4m-recognizable-place-fidelity-patch/franklin-endpoint-recognizable-poc.png`
+- `docs/archive/reports/phase-4m/phase-4m-recognizable-place-fidelity-patch.md`
+- `docs/archive/review-screenshots/phase-4m-recognizable-place-fidelity-patch/corridor-oblique-recognizable-poc.png`
+- `docs/archive/review-screenshots/phase-4m-recognizable-place-fidelity-patch/manhattan-endpoint-recognizable-poc.png`
+- `docs/archive/review-screenshots/phase-4m-recognizable-place-fidelity-patch/franklin-endpoint-recognizable-poc.png`
 
 Verification:
 - `npm run build`
