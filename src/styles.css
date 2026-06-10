@@ -236,6 +236,15 @@
   pointer-events: none;
 }
 
+.phase4b-runtime-franklin-truth .phase4b-qa-panel,
+.phase4b-runtime-franklin-truth .phase4b-inspector,
+.phase4b-runtime-franklin-truth .phase4b-ribbon,
+.phase4b-runtime-franklin-truth .phase4b-controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .phase4b-qa-panel li {
   display: grid;
   grid-template-columns: 12px minmax(0, 1fr);

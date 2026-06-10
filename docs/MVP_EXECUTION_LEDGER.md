@@ -55,15 +55,192 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4M-R10: Franklin Hero Asset Ingestion Spike` is open after Batu approval; R8/R9 remain complete, verified, and committed as `feb533f`.
+- Current phase: `Batch 4M-R10C/R10D: Franklin Map Truth Legibility` is complete for Batu visual review on top of the current dirty R10/R10A/R10B state; R8/R9 remain complete, verified, and committed as `feb533f`.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` opens the bounded 4M-R10 Franklin QA-only one-GLB hero asset ingestion spike. R11/R12 remain future candidates only; no pre-authorized queue exists.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the completed R10C/R10D map-truth visual review gate. GLB tuning, hero-kit tuning, R11/R12, Manhattan work, production mode, facade polish, materials, and asset fidelity remain future candidates only; no pre-authorized queue exists.
 - Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. R6 proved hybrid recognizability but not benchmark render fidelity. R7 completed a Franklin-only hero kit extraction/render proof: measured trace = alignment, hero kit = visual fidelity, runtime = assembly/review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces beyond the internal Franklin QA hero module, broad module-boundary changes, architecture changes, Manhattan expansion, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-10 - Batch 4M-R10C/R10D Franklin Map Truth Legibility
+
+Status:
+- Complete for Batu visual review.
+
+Scope:
+- Simplify the Franklin / Greenpoint Ave QA view until the three-corner relationship is visually truthful and readable before any GLB tuning, hero-kit tuning, R11/R12 work, Manhattan work, production mode, facade polish, materials, or asset fidelity resumes.
+
+Files changed:
+- `src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10c-r10d-map-truth.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `scripts/verify-phase-4m-r10c-r10d-franklin-map-truth.mjs`
+- `docs/reports/phase-4m-r10c-r10d-franklin-map-truth.md`
+- `docs/review-screenshots/phase-4m-r10c-r10d-franklin-map-truth/franklin-map-truth-top-down-r10c.png`
+- `docs/review-screenshots/phase-4m-r10c-r10d-franklin-map-truth/franklin-map-truth-oblique-r10d.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4m-r10c-r10d-franklin-map-truth.mjs`
+- `node scripts/verify-phase-4m-r10b-franklin-spatial-reconciliation.mjs`
+- `node scripts/verify-phase-4m-r10-franklin-hero-asset-ingestion-spike.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- Browser top-down and oblique screenshot capture from `/?qa=1&qaLayerFocus=franklin_truth&r10HeroAsset=0`
+- PNG format check
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Preserved the R10B ID mapping after re-checking supplied screenshots, GIS footprint centroids, street orientation, and scene transform.
+- Added a simplified `Franklin Truth` QA mode that suppresses corridor clutter and shows Greenpoint Ave, Franklin Ave, the three target footprints, lightly ghosted same-BBL Premier/Franklin adjacent parts, compact labels, footprint BINs, and north/south/east/west cues.
+- Rendered Franklin Ave as a visible perpendicular cross-street slab/centerline condition separating the west/across-Franklin businesses from the east/corridor-side Sonny's building.
+- Added verifier coverage for the required side-of-Franklin, side-of-Greenpoint, cross-street, no-artificial-offset, no-GLB-proof, and screenshot-artifact criteria.
+
+Unresolved decisions:
+- Batu owns the R10C/R10D visual legibility decision and whether any later GLB tuning, R11 comparison, R12 standardization, Manhattan work, production mode, facade polish, materials, or asset fidelity may open.
+- The current source geometry packet lacks a Franklin Ave centerline, so the verifier uses the shared Greenpoint Ave endpoint and WGS84 footprint centroids as a QA-only derived Franklin separator until a later approved source/geometry-confidence batch improves cross-street data.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10C/R10D Franklin map-truth visual review gate.
+
+### 2026-06-10 - Batch 4M-R10B Franklin Spatial Reconciliation
+
+Status:
+- Complete for Batu visual review.
+
+Scope:
+- Reconcile the QA-only Franklin / Greenpoint Ave three-corner spatial mapping on top of the current dirty R10/R10A state before any further GLB tuning, hero-kit tuning, R11 comparison, or R12 standardization.
+
+Files changed:
+- `src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10b-spatial-mapping.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `scripts/verify-phase-4m-r10b-franklin-spatial-reconciliation.mjs`
+- `docs/reports/phase-4m-r10b-franklin-spatial-reconciliation.md`
+- `docs/review-screenshots/phase-4m-r10b-franklin-spatial-reconciliation/franklin-map-overhead-r10b.png`
+- `docs/review-screenshots/phase-4m-r10b-franklin-spatial-reconciliation/franklin-map-oblique-r10b.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4m-r10b-franklin-spatial-reconciliation.mjs`
+- `npm run build`
+- Browser overhead and oblique screenshot capture from `/?qa=1&qaLayerFocus=franklin_spatial&r10HeroAsset=0`
+- PNG format/hash check
+
+Outcome:
+- Added a small QA-only Franklin intersection mapping fixture that records Premier Organic / Franklin Organic as BIN `3322608`, Sereneco as BIN `3337033`, and Sonny's Corner as BIN `3064811`, with side-of-Franklin, side-of-Greenpoint, corner role, and evidence screenshot references.
+- Added a verifier that checks Sonny's Corner remains on the east/corridor side of Franklin, Premier/Franklin Organic and Sereneco remain west/across Franklin, Franklin Ave is represented as the separating cross-street condition, and artificial lateral offsets are not used as the correction mechanism.
+- Added a compact `Franklin Map` QA overlay/camera pair for footprint IDs and QA business labels, plus overhead and oblique review screenshots.
+- Preserved the R10 GLB binding, R9 procedural fallback, normal-mode protection, and blocked production/business/exact-claim boundaries.
+
+Unresolved decisions:
+- Batu owns the R10B spatial mapping visual review decision and whether any later GLB tuning, R11 comparison, or R12 standardization may open.
+- The current source geometry packet lacks a Franklin Ave centerline, so the verifier uses the shared Greenpoint Ave endpoint and WGS84 footprint centroids as a QA-only derived Franklin separator until a later approved source/geometry-confidence batch improves cross-street data.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10B Franklin spatial mapping visual review gate.
+
+### 2026-06-10 - Batch 4M-R10A Franklin Placement Fix
+
+Status:
+- Complete for Batu visual review.
+
+Scope:
+- Correct Franklin NW/SW/SE QA placement targets on top of the dirty R10 state while preserving the existing R10 GLB binding and R9 procedural fallback.
+
+Files changed:
+- `scripts/compile-phase-4b-scene-manifest.mjs`
+- `src/data/generated-scene-manifests/greenpoint-ave-manhattan-to-franklin.phase-4b-semantic-scene-manifest.v0.1.json`
+- `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4c-geometry-only-facade-cues.v0.1.json`
+- `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json`
+- `src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4l-local-2-evidence-backed-qa-cue-enrichment.v0.1.json`
+- `src/data/facade-cues/franklin-hero-records.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `scripts/verify-phase-4m-r10a-franklin-placement-fix.mjs`
+- `docs/reports/phase-4m-r10a-franklin-placement-fix.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/compile-phase-4b-scene-manifest.mjs --check`
+- `node scripts/verify-phase-4c-geometry-cues.mjs`
+- `node scripts/verify-phase-4m-r10a-franklin-placement-fix.mjs`
+- `node scripts/verify-phase-4e-evidence-informed-facade-cues.mjs`
+- `node scripts/verify-phase-4f-facade-cue-model.mjs`
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `node scripts/verify-phase-4m-r10-franklin-hero-asset-ingestion-spike.mjs`
+- Browser overhead visual inspection at `/?qa=1&qaLayerFocus=visual_poc&camera=overhead&r10HeroAsset=0`
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Added a source-backed Franklin cross-street review-context exception for footprint `3337033`, regenerated the manifest and 4C cue fixture, corrected the QA-only northwest/southwest/southeast Franklin cue targets to `3337033`, `3322608`, and `3064811`, and removed artificial Franklin lateral offsets from those records.
+- Retargeted the Franklin hero record and R8/R9 verifier expectations to the corrected southwest cross-Franklin footprint while preserving `assets/windows/Bay_Window_10K_texture.glb` as the R10 GLB path.
+- Normal mode remains protected; R10A makes no production, exact facade/frontage/signage/entrance/address/tenant/material/active-status, or public/product claims.
+
+Unresolved decisions:
+- Batu owns the R10A visual placement review decision and whether to resume GLB placement tuning, R11 comparison, or R12 standardization.
+- `node scripts/verify-phase-4l-local-2-qa-cue-enrichment.mjs` still contains a historical current-brief handoff assertion for the old 4L-Local gate and fails that assertion in the R10A brief context; the corrected target mapping is covered by the new R10A verifier plus current R8/R9/R10 verifiers.
+- Browser overhead inspection displayed successfully, but the browser tool could not save a PNG screenshot into the repo due filesystem permission denial.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10A Franklin placement visual review gate.
+
+### 2026-06-10 - Batch 4M-R10 Franklin Hero Asset Ingestion Spike
+
+Status:
+- Complete for Batu visual review.
+
+Scope:
+- Use the supplied repo-local GLB as one QA-only Franklin hero insert, anchored from structured Franklin facade record data, with the procedural R9 bay-window module preserved as fallback.
+
+Files changed:
+- `assets/windows/Bay_Window_10K_texture.glb`
+- `src/data/facade-cues/franklin-hero-records.v0.1.json`
+- `src/components/hero/FranklinHeroAssetLoader.js`
+- `src/components/hero/FranklinHeroCorner.jsx`
+- `src/Phase4BRuntimePreview.jsx`
+- `scripts/verify-phase-4m-r10-franklin-hero-asset-ingestion-spike.mjs`
+- `docs/reports/phase-4m-r10-franklin-hero-asset-ingestion-spike.md`
+- `docs/review-screenshots/phase-4m-r10-franklin-hero-asset-ingestion-spike/franklin-side-return-glb-on-r10.png`
+- `docs/review-screenshots/phase-4m-r10-franklin-hero-asset-ingestion-spike/franklin-side-return-r9-fallback-r10.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4m-r10-franklin-hero-asset-ingestion-spike.mjs`
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `npm run build`
+- R10 PNG screenshot format/hash checks
+- `git diff --check`
+
+Outcome:
+- Added a Franklin hero asset loader boundary under `src/components/hero/`, kept GLB loading out of `src/Phase4BRuntimePreview.jsx`, wired the `r10HeroAsset` visual POC toggle, and captured GLB-on/off side-return review evidence.
+- Normal mode remains protected; R10 makes no production, exact facade/frontage/signage/entrance/address/tenant/material/active-status, or public/product claims.
+- Vite reports the expected large chunk/asset warning because the supplied GLB is approximately 46 MB and directly imported for this QA spike; this is a later R11/R12 asset-management concern, not an R10 blocker.
+
+Unresolved decisions:
+- Batu owns the R10 visual review decision and whether to open R11 comparison. R11/R12 remain future candidates only.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10 Batu visual review gate.
 
 ### 2026-06-10 - Batch 4M-R10 Franklin Hero Asset Ingestion Spike Opened
 

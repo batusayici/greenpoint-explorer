@@ -1,67 +1,88 @@
-# Current Execution Brief - 4M-R10 Franklin Hero Asset Ingestion Spike Open
+# Current Execution Brief - 4M-R10C/R10D Franklin Map Truth Legibility Complete
 
-Status: Batu opened `4M-R10 Franklin Hero Asset Ingestion Spike` after the completed R8/R9 Franklin hero sequence. R8/R9 remain complete, verified, and committed as `feb533f`; post-R9 loose report/screenshot artifacts have been archived.
+Status: `4M-R10C/R10D Franklin Map Truth Legibility` is complete for Batu visual review on top of the current dirty R10/R10A/R10B state. R8/R9 remain complete, verified, and committed as `feb533f`; R10 remains a dirty, uncommitted QA-only GLB ingestion spike.
 
-Current executable batch: `4M-R10 Franklin Hero Asset Ingestion Spike`.
+Current executable batch: none. Next implementation is pending Batu approval after R10C/R10D Franklin map-truth visual review.
 
-Completed milestone: `4M-R9 Franklin High-Recognition Detail Modules`.
+Completed milestone: `4M-R10C/R10D Franklin Map Truth Legibility`.
 
 Pre-authorized queue: none.
 
 Self-advance allowed: no.
 
-Hard Batu gate: stop after R10 implementation and screenshot comparison for Batu visual review. Do not self-open R11 or R12.
+Hard Batu gate: stopped after R10C/R10D Franklin / Greenpoint Ave map-truth legibility pass and top-down/oblique screenshot capture for Batu review. Do not self-open GLB tuning, hero-kit tuning, R11, R12, Manhattan work, broader asset work, production mode, facade polish, materials, or production visual-system work.
+
+## Completed Outcome
+
+R10C/R10D simplified the Franklin endpoint QA view before any further visual fidelity work:
+
+- `Premier Organic / Franklin Organic` is mapped QA-only to source-backed footprint BIN `3322608`, on the `west_across_franklin` / south side, with rendered components `3322608` and `3322609`.
+- `Sereneco` is mapped QA-only to source-backed footprint BIN `3337033`, on the `west_across_franklin` / north side.
+- `Sonny's Corner` is mapped QA-only to source-backed footprint BIN `3064811`, on the `east_corridor_side` / south side.
+- The R10B footprint-ID mapping is preserved because supplied screenshots and source-backed WGS84 centroid checks agree with the NW/SW/SE assignments.
+- Franklin Ave is rendered as a real perpendicular QA-only cross-street slab through the shared Greenpoint endpoint, separating the west/across-Franklin cluster from the east/corridor-side Sonny's cluster.
+- A dedicated `Franklin Truth` QA overlay suppresses corridor clutter and shows only Greenpoint Ave, Franklin Ave, the three target footprints, lightly ghosted same-BBL adjacent Premier/Franklin parts, compact footprint IDs, QA business labels, and orientation cues.
+- Artificial lateral offsets are not used as the correction mechanism.
+- The Franklin hero GLB binding remains unchanged at `assets/windows/Bay_Window_10K_texture.glb`.
+- The procedural R9 scaffold remains available as fallback, including the R10 toggle path.
+
+The QA business labels used during this reconciliation are placement-review labels only. They are not normal-mode, production, exact tenant, storefront, frontage, entrance, signage, address, material, active-status, or public/product claims.
 
 ## Objective
 
-Prove that one QA-only authored GLB hero insert can be loaded, anchored, toggled, and visually compared against the procedural R9 scaffold without contaminating normal mode or the wider runtime architecture.
+Make the Franklin x Greenpoint Ave intersection spatially truthful and immediately readable enough for Batu to judge whether Premier/Franklin Organic, Sereneco, and Sonny's Corner occupy the correct three-corner relationship before later GLB tuning, hero-kit tuning, R11 comparison, R12 standardization, Manhattan work, production mode, facade polish, materials, or asset-fidelity work.
 
 ## Allowed Scope
 
-- One GLB module only.
-- Preferred first candidate: Franklin side bay/window projection or similarly high-recognition architectural insert.
-- Preserve the R9 procedural scaffold as fallback.
-- Position/scale the asset through the Franklin facade record or an adjacent QA-only hero asset binding record.
-- Keep asset loading out of `src/Phase4BRuntimePreview.jsx` where possible, using a hero asset registry/loader boundary under `src/components/hero/` or equivalent.
-- Runtime remains responsible for assembly, gating, and placement; the Franklin hero module owns visual fidelity choices.
-- Add the smallest verifier needed to prove QA-only gating, structured anchoring, fallback behavior, and blocked claims.
-- Capture R10 screenshots showing GLB-on and fallback/off comparison.
-- Update only the R10 report, screenshots, verifier, and required execution-control docs after implementation.
+- Franklin / Greenpoint Ave spatial truth and legibility only.
+- Existing source-backed footprint/manifest/cue records only.
+- Existing QA facade cue, Franklin hero record, and repo-local reference evidence only.
+- Existing R10 GLB binding only; no new asset ingestion.
+- Existing runtime guard for the Franklin hero target.
+- Small Franklin intersection mapping fixture and verifier coverage for the corrected three-corner relationship.
+- Simplified Franklin Map Truth QA overlay mode for compact footprint IDs, QA business labels, street slabs/centerlines, and orientation cues.
+- Top-down and oblique screenshot evidence.
+- Required execution-control docs and one narrow report.
 
 ## Blocked Scope
 
+- Further GLB placement/scale/orientation tuning beyond preserving the current binding.
+- Hero-kit tuning, R11 comparison, or R12 standardization.
 - Full Franklin building replacement.
-- Manhattan implementation except a narrow shared-renderer regression capture if R10 changes shared runtime behavior.
-- PBR registry, corridor UV mapping, Cesium, 3D Tiles, full asset streaming, raster texture atlas, custom shader pipeline, production assets, production claims, normal-mode exposure, exact storefront/frontage/signage/entrance/address/tenant/material/active-status claims, source expansion, package/tooling changes beyond the approved R10 boundary, or public/product claims.
-- R11 comparison work or R12 standardization work before Batu reviews R10.
-
-## Required Pre-Implementation Check
-
-Before source/runtime edits, confirm the GLB asset exists at the chosen repo-local path and report:
-
-- Expected path and filename.
-- Whether it is review-only / QA-only.
-- How it will be anchored from structured record data.
-
-If no suitable GLB exists, stop before implementation and report the missing asset rather than replacing it with SVG, canvas, CSS, DOM-drawn scene art, or a code-generated primary visual surface.
+- Manhattan implementation.
+- PBR registry, texture atlas, UV mapping, Cesium, 3D Tiles, source expansion, new dependencies, production assets, normal-mode exposure, public UI, public/product claims, business/storefront linkage, exact storefront/frontage/entrance/signage/address/tenant/material/active-status claims, or broader renderer architecture changes.
 
 ## Success Criteria
 
-- One QA-only GLB asset loads in Franklin hero review mode.
-- Asset can be disabled to show the procedural fallback.
-- Asset is anchored from structured record data.
-- Screenshots show whether the insert materially improves recognition.
+- Correct Franklin / Greenpoint Ave QA mapping records the source-backed footprint IDs for Premier/Franklin Organic, Sereneco, and Sonny's Corner.
+- Premier/Franklin Organic and Sereneco are recorded on the opposite side of Franklin Ave from Sonny's Corner.
+- Franklin Ave is represented as a visible perpendicular cross-street slab/centerline condition, not only a label or marker.
+- Top-down screenshot alone makes the NW/SW/SE three-corner relationship readable without the report.
+- Verifier fails if Sonny is assigned to the wrong side of Franklin, if Premier/Sereneco share Sonny's Franklin side, if any target regresses to the wrong side of Greenpoint, if Franklin is not represented as a separating cross-street, or if artificial lateral offsets are used as the correction mechanism.
+- Compact QA overlay can show footprint IDs, QA business labels, street slabs/centerlines, and north/south/east/west cues while suppressing corridor clutter.
+- R10 GLB path remains unchanged.
+- Procedural R9 fallback remains preserved.
 - Verifiers, `npm run build`, and `git diff --check` pass, or any non-blocking verification limitation is documented.
 - Stop at Batu visual review gate.
 
-## R11/R12 Planning Horizon
+## Verification Completed For R10C/R10D
 
-- `4M-R11` compares R9 procedural output against R10 GLB insert output and recommends primitive modules, GLB inserts, or a mixed hero-kit strategy.
-- `4M-R12` codifies the accepted Franklin hero-kit pattern before any Manhattan, landmark, or broader corridor expansion.
+- `node scripts/verify-phase-4m-r10c-r10d-franklin-map-truth.mjs`
+- `node scripts/verify-phase-4m-r10b-franklin-spatial-reconciliation.mjs`
+- `node scripts/verify-phase-4m-r10-franklin-hero-asset-ingestion-spike.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- `npm run build`
+- `git diff --check`
+- Browser top-down screenshot at `/?qa=1&qaLayerFocus=franklin_truth&camera=franklinTruthTopDown&r10HeroAsset=0`
+- Browser oblique screenshot at `/?qa=1&qaLayerFocus=franklin_truth&camera=franklinTruthOblique&r10HeroAsset=0`
 
-## Verification Completed For This Opening
+Review artifacts:
 
-- `git status --short`
-- Archived old untracked 4M report/screenshot artifacts under `docs/archive/`.
-- Control-doc reconciliation only.
-- No source/runtime implementation files edited.
+- `docs/reports/phase-4m-r10c-r10d-franklin-map-truth.md`
+- `docs/review-screenshots/phase-4m-r10c-r10d-franklin-map-truth/franklin-map-truth-top-down-r10c.png`
+- `docs/review-screenshots/phase-4m-r10c-r10d-franklin-map-truth/franklin-map-truth-oblique-r10d.png`
+
+Known verification limitation: `node scripts/verify-phase-4l-local-2-qa-cue-enrichment.mjs` still contains a historical current-brief handoff assertion for the old 4L-Local gate and fails that assertion in the R10C/R10D brief context. The R10C/R10D map-truth verifier covers the corrected Franklin spatial relationship, and current R8/R9/R10 verifiers cover the preserved Franklin hero/GLB path.
+
+Build note: Vite continues to report the expected large chunk/asset warning from directly importing the approximately 46 MB QA GLB. This remains non-blocking for the dirty R10 spike and should be considered during any later R11/R12 asset strategy review.

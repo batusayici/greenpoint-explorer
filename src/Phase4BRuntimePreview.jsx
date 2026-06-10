@@ -11,6 +11,8 @@ import qaFrontageCandidateFixture from "./data/corridor-scaffold/greenpoint-ave-
 import qaRecognizableAnchorCueFixture from "./data/corridor-scaffold/greenpoint-ave-manhattan-to-franklin.phase-4k-1-qa-recognizable-anchor-cues.v0.1.json";
 import localEvidenceCueEnrichmentFixture from "./data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4l-local-2-evidence-backed-qa-cue-enrichment.v0.1.json";
 import franklinHeroFacadeRecord from "./data/facade-cues/franklin-hero-records.v0.1.json";
+import franklinIntersectionMappingFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10b-spatial-mapping.v0.1.json";
+import franklinMapTruthFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10c-r10d-map-truth.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -21,10 +23,14 @@ import { addFranklinHeroCorner } from "./components/hero/FranklinHeroCorner.jsx"
 const QA_LAYER_FOCUS_ALL = "all";
 const QA_LAYER_FOCUS_4L_LOCAL = "4l_local_evidence";
 const QA_LAYER_FOCUS_VISUAL_POC = "visual_poc";
+const QA_LAYER_FOCUS_FRANKLIN_SPATIAL = "franklin_spatial";
+const QA_LAYER_FOCUS_FRANKLIN_TRUTH = "franklin_truth";
 const QA_LAYER_FOCUS_OPTIONS = [
   { id: QA_LAYER_FOCUS_ALL, label: "All QA" },
   { id: QA_LAYER_FOCUS_4L_LOCAL, label: "4L Focus" },
   { id: QA_LAYER_FOCUS_VISUAL_POC, label: "Visual POC" },
+  { id: QA_LAYER_FOCUS_FRANKLIN_SPATIAL, label: "Franklin Map" },
+  { id: QA_LAYER_FOCUS_FRANKLIN_TRUTH, label: "Franklin Truth" },
 ];
 const QA_4L_LOCAL_FOCUS_VISIBLE_ROLES = new Set([
   "evidenceFacadeCue",
@@ -33,8 +39,22 @@ const QA_4L_LOCAL_FOCUS_VISIBLE_ROLES = new Set([
 ]);
 const QA_VISUAL_POC_VISIBLE_ROLES = new Set([
   "evidenceFacadeCue",
+  "franklinHeroAsset",
   "localEvidenceCue",
   "syntheticQAGrounding",
+]);
+const QA_FRANKLIN_SPATIAL_VISIBLE_ROLES = new Set([
+  "guideSurface",
+  "line",
+  "franklinIntersectionMapping",
+  "franklinIntersectionMappingLabel",
+  "franklinIntersectionSeparator",
+]);
+const QA_FRANKLIN_TRUTH_VISIBLE_ROLES = new Set([
+  "franklinMapTruth",
+  "franklinMapTruthStreet",
+  "franklinMapTruthLabel",
+  "franklinMapTruthOrientation",
 ]);
 
 const endpointHeroFacadeOverrides = {
@@ -274,7 +294,7 @@ const endpointHeroFacadeOverrides = {
 
 const matchingFranklinFacadeRecord =
   franklinHeroFacadeRecord?.qaOnly === true &&
-  franklinHeroFacadeRecord.targetSemanticId === "p4b-object-nyc-footprint-bin-3064793" &&
+  franklinHeroFacadeRecord.targetSemanticId === "p4b-object-nyc-footprint-bin-3322608" &&
   franklinHeroFacadeRecord.targetCueRecordId === endpointHeroFacadeOverrides.franklin.targetCueRecordId
     ? franklinHeroFacadeRecord
     : null;
@@ -467,6 +487,35 @@ const CAMERA_PRESETS = {
     zoom: 0.76,
     target: new THREE.Vector3(0, 0.55, 0),
   },
+  franklinSpatialOverhead: {
+    azimuth: -0.68,
+    polar: 0.18,
+    distance: 13.4,
+    zoom: 2.34,
+    target: new THREE.Vector3(-3.05, 0.72, 0.04),
+  },
+  franklinSpatialOblique: {
+    azimuth: -0.96,
+    polar: 0.74,
+    distance: 11.1,
+    zoom: 1.96,
+    target: new THREE.Vector3(-2.75, 0.9, 0.04),
+  },
+  franklinTruthTopDown: {
+    azimuth: 0,
+    polar: 0,
+    distance: 16,
+    zoom: 2.15,
+    target: new THREE.Vector3(0.2, 0.25, -0.12),
+    topDown: true,
+  },
+  franklinTruthOblique: {
+    azimuth: -0.82,
+    polar: 0.72,
+    distance: 12,
+    zoom: 2.05,
+    target: new THREE.Vector3(0.05, 0.55, -0.08),
+  },
   streetOblique: {
     azimuth: -0.48,
     polar: 1.02,
@@ -534,19 +583,30 @@ const QA_LAYER_FOCUS_QUERY_VALUES = {
   "4l-local-evidence": QA_LAYER_FOCUS_4L_LOCAL,
   visual_poc: QA_LAYER_FOCUS_VISUAL_POC,
   "visual-poc": QA_LAYER_FOCUS_VISUAL_POC,
+  franklin_spatial: QA_LAYER_FOCUS_FRANKLIN_SPATIAL,
+  "franklin-spatial": QA_LAYER_FOCUS_FRANKLIN_SPATIAL,
+  franklin_map: QA_LAYER_FOCUS_FRANKLIN_SPATIAL,
+  "franklin-map": QA_LAYER_FOCUS_FRANKLIN_SPATIAL,
+  franklin_truth: QA_LAYER_FOCUS_FRANKLIN_TRUTH,
+  "franklin-truth": QA_LAYER_FOCUS_FRANKLIN_TRUTH,
+  franklin_map_truth: QA_LAYER_FOCUS_FRANKLIN_TRUTH,
+  "franklin-map-truth": QA_LAYER_FOCUS_FRANKLIN_TRUTH,
 };
 
 function getInitialReviewOptions() {
   if (typeof window === "undefined") {
-    return { qaEnabled: false, qaLayerFocus: QA_LAYER_FOCUS_ALL, cameraPreset: HOME_CAMERA };
+    return { qaEnabled: false, qaLayerFocus: QA_LAYER_FOCUS_ALL, cameraPreset: HOME_CAMERA, heroAssetEnabled: false };
   }
   const params = new URLSearchParams(window.location.search);
   const requestedFocus = QA_LAYER_FOCUS_QUERY_VALUES[params.get("qaLayerFocus")] ?? QA_LAYER_FOCUS_ALL;
   const requestedCamera = CAMERA_PRESETS[params.get("camera")] ?? HOME_CAMERA;
+  const requestedHeroAsset = params.get("r10HeroAsset");
+  const visualPocRequested = requestedFocus === QA_LAYER_FOCUS_VISUAL_POC;
   return {
     qaEnabled: params.get("qa") === "1" || requestedFocus !== QA_LAYER_FOCUS_ALL,
     qaLayerFocus: requestedFocus,
     cameraPreset: requestedCamera,
+    heroAssetEnabled: requestedHeroAsset === "1" || (visualPocRequested && requestedHeroAsset !== "0"),
   };
 }
 
@@ -576,6 +636,7 @@ export default function Phase4BRuntimePreview() {
   const [selectedId, setSelectedId] = useState(null);
   const [qaEnabled, setQaEnabled] = useState(initialReviewOptions.qaEnabled);
   const [qaLayerFocus, setQALayerFocus] = useState(initialReviewOptions.qaLayerFocus);
+  const [heroAssetEnabled, setHeroAssetEnabled] = useState(initialReviewOptions.heroAssetEnabled);
   const [qaScaffoldFamilyVisibility, setQAScaffoldFamilyVisibility] = useState(() => ({
     ...qaScaffoldPreviewExpansionFixture.familyVisibilityDefaults,
   }));
@@ -651,9 +712,11 @@ export default function Phase4BRuntimePreview() {
 
     addLights(scene);
     addGround(scene, runtimeScene, visualObjects);
-    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, pickTargets, visualObjects, pickObjects);
+    addRuntimeObjects(scene, runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, pickTargets, visualObjects, pickObjects, { enabled: heroAssetEnabled });
     addQAScaffoldGroundingPreview(scene, runtimeScene, qaScaffoldPreviewAdapter.renderRecords, visualObjects);
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
+    addFranklinIntersectionMappingOverlay(scene, runtimeScene, franklinIntersectionMappingFixture, visualObjects);
+    addFranklinMapTruthOverlay(scene, franklinMapTruthFixture, geometryFixture, visualObjects);
 
     stateRef.current = {
       camera,
@@ -702,14 +765,14 @@ export default function Phase4BRuntimePreview() {
       renderer.dispose();
       stateRef.current = null;
     };
-  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, initialReviewOptions.cameraPreset]);
+  }, [runtimeScene, facadeCueIndex, qaFacadeSliceIndex, evidenceFacadeCueIndex, corridorFacadeCueIndex, qaScaffoldPreviewIndex, qaScaffoldPreviewAdapter, qaFrontageCandidateIndex, qaRecognizableAnchorCueIndex, localEvidenceCueIndex, initialReviewOptions.cameraPreset, heroAssetEnabled]);
 
   useEffect(() => {
     const state = stateRef.current;
     if (!state) return;
-    updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus);
+    updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus, heroAssetEnabled);
     renderFrame(state);
-  }, [hoveredId, selectedId, qaEnabled, qaLayerFocus]);
+  }, [hoveredId, selectedId, qaEnabled, qaLayerFocus, heroAssetEnabled]);
 
   function handlePointerDown(event) {
     const state = stateRef.current;
@@ -824,15 +887,15 @@ export default function Phase4BRuntimePreview() {
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4M-R9 / Franklin high-recognition detail modules</p>
-          <h1>Greenpoint Ave endpoint visual POC</h1>
+          <p className="phase4b-kicker">Batch 4M-R10C/R10D / Franklin map truth</p>
+          <h1>Franklin x Greenpoint intersection truth QA</h1>
         </div>
         <p>
-          QA-only Franklin facade record assembly with code-native high-recognition detail modules using the existing corridor scene, measured trace alignment, repo-local Franklin evidence, and native geometry callbacks for fidelity workflow review only. Normal mode stays protected; visual POC output is review-only and not business identity, exact public frontage, signage, entrance, active status, or production claim.
+          QA-only spatial legibility proof for Franklin x Greenpoint: Greenpoint and Franklin render as crossing street slabs, Sereneco and Premier/Franklin Organic sit west/across Franklin, and Sonny's stays east/corridor-side. GLB, facade, and hero-kit tuning are paused; normal mode stays protected.
         </p>
       </section>
 
-      <section className={`phase4b-runtime${qaEnabled ? " phase4b-runtime-qa" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC ? " phase4b-runtime-visual-poc" : ""}`} aria-label="Interactive 3D graybox corridor runtime">
+      <section className={`phase4b-runtime${qaEnabled ? " phase4b-runtime-qa" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC ? " phase4b-runtime-visual-poc" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH ? " phase4b-runtime-franklin-truth" : ""}`} aria-label="Interactive 3D graybox corridor runtime">
         <div
           ref={hostRef}
           className="phase4b-viewport"
@@ -921,6 +984,14 @@ export default function Phase4BRuntimePreview() {
               {option.label}
             </button>
           ))}
+          <button
+            type="button"
+            aria-pressed={heroAssetEnabled}
+            onClick={() => setHeroAssetEnabled((value) => !value)}
+            aria-label="Toggle R10 Franklin GLB hero asset"
+          >
+            GLB
+          </button>
           <button type="button" onClick={() => runCameraCommand("manhattanToFranklin")} aria-label="Camera preset Manhattan to Franklin">
             M to F
           </button>
@@ -929,6 +1000,18 @@ export default function Phase4BRuntimePreview() {
           </button>
           <button type="button" onClick={() => runCameraCommand("overhead")} aria-label="Camera preset overhead">
             Overhead
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinSpatialOverhead")} aria-label="Camera preset Franklin spatial overhead">
+            F map
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinSpatialOblique")} aria-label="Camera preset Franklin spatial oblique">
+            F map obq
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinTruthTopDown")} aria-label="Camera preset Franklin map truth top down">
+            F truth
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinTruthOblique")} aria-label="Camera preset Franklin map truth oblique">
+            F truth obq
           </button>
           <button type="button" onClick={() => runCameraCommand("streetOblique")} aria-label="Camera preset street-level oblique">
             Oblique
@@ -2428,6 +2511,7 @@ function addRuntimeObjects(
   pickTargets,
   visualObjects,
   pickObjects,
+  heroAssetOptions = { enabled: false },
 ) {
   for (const object of runtimeScene.lines) {
     const visual = createLineTube(object, {
@@ -2545,7 +2629,7 @@ function addRuntimeObjects(
     group.add(base, visual, outline, footprint, marker, anchorMarker);
     if (facadeCue) group.add(createFacadeCueMarker(object, facadeCue));
     if (facadeCue && qaFacadeSlice && !evidenceFacadeCue) group.add(createQAFacadeSliceLayer(object, facadeCue, qaFacadeSlice));
-    if (facadeCue && evidenceFacadeCue) group.add(createEvidenceInformedFacadeLayer(object, facadeCue, evidenceFacadeCue));
+    if (facadeCue && evidenceFacadeCue) group.add(createEvidenceInformedFacadeLayer(object, facadeCue, evidenceFacadeCue, heroAssetOptions));
     if (facadeCue && corridorFacadeCue && !evidenceFacadeCue) group.add(createCorridorFacadeCueLayer(object, facadeCue, corridorFacadeCue));
     if (qaScaffoldPreviewRecords.length) group.add(createQAScaffoldPreviewLayer(object, qaScaffoldPreviewRecords));
     if (qaFrontageCandidateRecords.length) group.add(createQAFrontageCandidateLayer(object, qaFrontageCandidateRecords));
@@ -2581,6 +2665,447 @@ function addCandidatePoiMarkers(scene, runtimeScene, fixture, visualObjects) {
     scene.add(group);
     visualObjects.set(candidate.id, group);
   }
+}
+
+function addFranklinIntersectionMappingOverlay(scene, runtimeScene, fixture, visualObjects) {
+  const buildingsById = new Map(runtimeScene.buildings.map((building) => [building.id, building]));
+  const group = new THREE.Group();
+  group.visible = false;
+  group.userData.semanticId = "__franklin-intersection-mapping";
+  group.userData.stateRole = "franklinIntersectionMapping";
+
+  const separatorX = getFranklinSeparatorPreviewX(fixture, buildingsById, runtimeScene);
+  const separatorExtent = getFranklinSeparatorExtent(runtimeScene);
+  const separatorBand = createFlatPolygonMesh([
+    { x: separatorX - 0.055, z: separatorExtent.minZ },
+    { x: separatorX + 0.055, z: separatorExtent.minZ },
+    { x: separatorX + 0.055, z: separatorExtent.maxZ },
+    { x: separatorX - 0.055, z: separatorExtent.maxZ },
+  ], {
+    color: 0x66d5ff,
+    opacity: 0,
+    y: 0.045,
+  });
+  separatorBand.userData.stateRole = "franklinIntersectionSeparator";
+  separatorBand.userData.qaColor = 0x66d5ff;
+  separatorBand.userData.qaOpacity = 0.36;
+  separatorBand.visible = false;
+  group.add(separatorBand);
+
+  const separatorLine = createPolyline([
+    { x: separatorX, z: separatorExtent.minZ },
+    { x: separatorX, z: separatorExtent.maxZ },
+  ], {
+    color: 0x9ee9ff,
+    opacity: 0,
+    y: 0.12,
+  });
+  separatorLine.userData.stateRole = "franklinIntersectionSeparator";
+  separatorLine.userData.qaColor = 0x9ee9ff;
+  separatorLine.userData.qaOpacity = 0.86;
+  separatorLine.visible = false;
+  group.add(separatorLine);
+
+  const separatorWall = new THREE.Mesh(
+    new THREE.BoxGeometry(0.075, 2.6, separatorExtent.maxZ - separatorExtent.minZ),
+    new THREE.MeshBasicMaterial({
+      color: 0x66d5ff,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    }),
+  );
+  separatorWall.position.set(separatorX, 1.32, (separatorExtent.minZ + separatorExtent.maxZ) / 2);
+  separatorWall.userData.stateRole = "franklinIntersectionSeparator";
+  separatorWall.userData.qaColor = 0x66d5ff;
+  separatorWall.userData.qaOpacity = 0.28;
+  separatorWall.visible = false;
+  group.add(separatorWall);
+
+  const separatorLabel = createTextSprite("Franklin Ave", {
+    accentColor: "rgba(158, 233, 255, 0.92)",
+    fontSize: 28,
+    scale: { x: 1.55, y: 0.38 },
+  });
+  separatorLabel.position.set(separatorX + 0.18, 1.18, separatorExtent.minZ + 0.62);
+  separatorLabel.userData.stateRole = "franklinIntersectionMappingLabel";
+  separatorLabel.userData.qaColor = 0x9ee9ff;
+  separatorLabel.userData.qaOpacity = 0.95;
+  separatorLabel.visible = false;
+  group.add(separatorLabel);
+
+  for (const place of fixture.placeMappings) {
+    const color = getFranklinIntersectionMappingColor(place);
+    const renderedIds = place.renderedComponentObjectIds?.length
+      ? place.renderedComponentObjectIds
+      : [place.sourceBackedObjectId];
+    const renderedBuildings = renderedIds
+      .map((id) => buildingsById.get(id))
+      .filter(Boolean);
+    if (!renderedBuildings.length) continue;
+
+    for (const building of renderedBuildings) {
+      const fill = createFlatPolygonMesh(building.points, {
+        color,
+        opacity: 0,
+        y: 0.075,
+      });
+      fill.userData.stateRole = "franklinIntersectionMapping";
+      fill.userData.qaColor = color;
+      fill.userData.qaOpacity = place.sourceBackedObjectId === building.id ? 0.34 : 0.18;
+      fill.visible = false;
+
+      const outline = createPolyline(building.points, {
+        color,
+        opacity: 0,
+        y: Math.max(building.height + 0.08, 0.28),
+        closed: true,
+      });
+      outline.userData.stateRole = "franklinIntersectionMapping";
+      outline.userData.qaColor = color;
+      outline.userData.qaOpacity = place.sourceBackedObjectId === building.id ? 0.95 : 0.55;
+      outline.visible = false;
+      group.add(fill, outline);
+    }
+
+    const primary = buildingsById.get(place.sourceBackedObjectId) ?? renderedBuildings[0];
+    const label = createTextSprite(getFranklinIntersectionMappingLabel(place), {
+      accentColor: getFranklinIntersectionMappingAccentColor(place),
+      fontSize: 26,
+      scale: { x: 1.45, y: 0.36 },
+    });
+    const labelOffset = getFranklinIntersectionLabelOffset(place);
+    label.position.set(
+      primary.centroid.x + labelOffset.x,
+      Math.max(primary.height + 0.75, 1.45),
+      primary.centroid.z + labelOffset.z,
+    );
+    label.userData.stateRole = "franklinIntersectionMappingLabel";
+    label.userData.qaColor = color;
+    label.userData.qaOpacity = 0.95;
+    label.visible = false;
+
+    const tether = createPolyline([
+      { x: primary.centroid.x, z: primary.centroid.z },
+      { x: label.position.x, z: label.position.z },
+    ], {
+      color,
+      opacity: 0,
+      y: Math.max(primary.height + 0.16, 0.45),
+    });
+    tether.userData.stateRole = "franklinIntersectionMapping";
+    tether.userData.qaColor = color;
+    tether.userData.qaOpacity = 0.58;
+    tether.visible = false;
+    group.add(label, tether);
+  }
+
+  scene.add(group);
+  visualObjects.set("__franklin-intersection-mapping", group);
+}
+
+function addFranklinMapTruthOverlay(scene, fixture, geometrySource, visualObjects) {
+  const group = new THREE.Group();
+  group.visible = false;
+  group.userData.semanticId = "__franklin-map-truth";
+  group.userData.stateRole = "franklinMapTruth";
+
+  const model = fixture.mapTruthModel;
+  const origin = model.sharedGreenpointEndpointWgs84;
+  const greenpointAxis = getMapTruthAxis(model.greenpointAxisWgs84, origin);
+  const franklinAxis = { x: -greenpointAxis.z, z: greenpointAxis.x };
+  const greenpointSlab = createStreetSlab(greenpointAxis, { x: 0, z: 0 }, 12.2, 1.05);
+  const franklinSlab = createStreetSlab(franklinAxis, { x: 0, z: 0 }, 8.6, 1.08);
+
+  const greenpointStreet = createFlatPolygonMesh(greenpointSlab, {
+    color: 0x2f3937,
+    opacity: 0,
+    y: 0.035,
+  });
+  greenpointStreet.userData.stateRole = "franklinMapTruthStreet";
+  greenpointStreet.userData.qaColor = 0x2f3937;
+  greenpointStreet.userData.qaOpacity = 0.96;
+  greenpointStreet.visible = false;
+
+  const franklinStreet = createFlatPolygonMesh(franklinSlab, {
+    color: 0x263b44,
+    opacity: 0,
+    y: 0.05,
+  });
+  franklinStreet.userData.stateRole = "franklinMapTruthStreet";
+  franklinStreet.userData.qaColor = 0x263b44;
+  franklinStreet.userData.qaOpacity = 0.96;
+  franklinStreet.visible = false;
+  group.add(greenpointStreet, franklinStreet);
+
+  addMapTruthStreetCenterline(group, greenpointAxis, 6.1, 0xe6eadc, "Greenpoint Ave", { x: 4.25, z: 0.72 });
+  addMapTruthStreetCenterline(group, franklinAxis, 4.3, 0x9ee9ff, "Franklin Ave", { x: 0.76, z: -2.9 });
+
+  for (const place of fixture.placeMappings) {
+    const color = getFranklinMapTruthColor(place);
+    for (const bin of place.ghostedAdjacentBins ?? []) {
+      const record = findGeometryRecordByBin(geometrySource, bin);
+      if (!record) continue;
+      addMapTruthFootprint(group, record, origin, color, {
+        role: "franklinMapTruth",
+        opacity: 0.18,
+        outlineOpacity: 0.42,
+        y: 0.11,
+      });
+    }
+    for (const bin of place.targetRenderBins ?? [place.sourceBackedFootprintBin]) {
+      const record = findGeometryRecordByBin(geometrySource, bin);
+      if (!record) continue;
+      addMapTruthFootprint(group, record, origin, color, {
+        role: "franklinMapTruth",
+        opacity: 0.74,
+        outlineOpacity: 1,
+        y: 0.14,
+      });
+    }
+    addMapTruthPlaceLabel(group, place, origin, color);
+  }
+
+  addMapTruthOrientation(group);
+  scene.add(group);
+  visualObjects.set("__franklin-map-truth", group);
+}
+
+function addMapTruthFootprint(group, record, origin, color, options) {
+  const points = record.wgs84Polygon.map((point) => projectWgsToMapTruth(point, origin));
+  const fill = createFlatPolygonMesh(points, {
+    color,
+    opacity: 0,
+    y: options.y,
+  });
+  fill.userData.stateRole = options.role;
+  fill.userData.qaColor = color;
+  fill.userData.qaOpacity = options.opacity;
+  fill.visible = false;
+
+  const outline = createPolyline(points, {
+    color,
+    opacity: 0,
+    y: options.y + 0.055,
+    closed: true,
+  });
+  outline.userData.stateRole = options.role;
+  outline.userData.qaColor = color;
+  outline.userData.qaOpacity = options.outlineOpacity;
+  outline.visible = false;
+  group.add(fill, outline);
+}
+
+function addMapTruthPlaceLabel(group, place, origin, color) {
+  const labelPoint = projectMeterOffsetToMapTruth(place.labelPlacement.offsetMeters, origin);
+  const label = createMapTruthLabel(place.shortLabel, place.sourceBackedFootprintBin, {
+    accentColor: getFranklinMapTruthAccentColor(place),
+  });
+  label.position.set(labelPoint.x, 0.78, labelPoint.z);
+  label.userData.stateRole = "franklinMapTruthLabel";
+  label.userData.qaColor = color;
+  label.userData.qaOpacity = 0.98;
+  label.visible = false;
+  group.add(label);
+
+  const targetRecord = findGeometryRecordByBin(geometryFixture, place.sourceBackedFootprintBin);
+  const targetCentroid = targetRecord ? getWgsPolygonCentroid(targetRecord.wgs84Polygon) : null;
+  if (!targetCentroid) return;
+  const targetPoint = projectWgsToMapTruth(targetCentroid, origin);
+  const tether = createPolyline([
+    targetPoint,
+    { x: labelPoint.x, z: labelPoint.z },
+  ], {
+    color,
+    opacity: 0,
+    y: 0.62,
+  });
+  tether.userData.stateRole = "franklinMapTruthLabel";
+  tether.userData.qaColor = color;
+  tether.userData.qaOpacity = 0.72;
+  tether.visible = false;
+  group.add(tether);
+}
+
+function addMapTruthStreetCenterline(group, axis, halfLength, color, labelText, labelPosition) {
+  const start = { x: -axis.x * halfLength, z: -axis.z * halfLength };
+  const end = { x: axis.x * halfLength, z: axis.z * halfLength };
+  const line = createPolyline([start, end], {
+    color,
+    opacity: 0,
+    y: 0.19,
+  });
+  line.userData.stateRole = "franklinMapTruthStreet";
+  line.userData.qaColor = color;
+  line.userData.qaOpacity = 0.9;
+  line.visible = false;
+  group.add(line);
+
+  const label = createTextSprite(labelText, {
+    accentColor: "rgba(230, 234, 220, 0.9)",
+    fontSize: 26,
+    scale: { x: 1.42, y: 0.34 },
+  });
+  label.position.set(labelPosition.x, 0.9, labelPosition.z);
+  label.material.depthTest = false;
+  label.renderOrder = 14;
+  label.userData.stateRole = "franklinMapTruthLabel";
+  label.userData.qaColor = color;
+  label.userData.qaOpacity = 0.96;
+  label.visible = false;
+  group.add(label);
+}
+
+function addMapTruthOrientation(group) {
+  const orientation = [
+    { label: "NORTH", point: { x: -5.15, z: -3.72 } },
+    { label: "SOUTH", point: { x: -5.15, z: 3.72 } },
+    { label: "WEST", point: { x: -5.18, z: -2.92 } },
+    { label: "EAST", point: { x: 4.95, z: 2.92 } },
+  ];
+  for (const item of orientation) {
+    const sprite = createTextSprite(item.label, {
+      accentColor: "rgba(158, 233, 255, 0.86)",
+      fontSize: 26,
+      scale: { x: 1.02, y: 0.28 },
+    });
+    sprite.position.set(item.point.x, 0.58, item.point.z);
+    sprite.userData.stateRole = "franklinMapTruthOrientation";
+    sprite.userData.qaColor = 0x9ee9ff;
+    sprite.userData.qaOpacity = 0.96;
+    sprite.visible = false;
+    group.add(sprite);
+  }
+}
+
+function createStreetSlab(axis, center, length, width) {
+  const halfLength = length / 2;
+  const halfWidth = width / 2;
+  const perpendicular = { x: -axis.z, z: axis.x };
+  return [
+    {
+      x: center.x - axis.x * halfLength - perpendicular.x * halfWidth,
+      z: center.z - axis.z * halfLength - perpendicular.z * halfWidth,
+    },
+    {
+      x: center.x + axis.x * halfLength - perpendicular.x * halfWidth,
+      z: center.z + axis.z * halfLength - perpendicular.z * halfWidth,
+    },
+    {
+      x: center.x + axis.x * halfLength + perpendicular.x * halfWidth,
+      z: center.z + axis.z * halfLength + perpendicular.z * halfWidth,
+    },
+    {
+      x: center.x - axis.x * halfLength + perpendicular.x * halfWidth,
+      z: center.z - axis.z * halfLength + perpendicular.z * halfWidth,
+    },
+  ];
+}
+
+function getMapTruthAxis(axisWgs84, origin) {
+  const west = projectWgsToMapTruth(axisWgs84.westPointWgs84, origin);
+  const east = projectWgsToMapTruth(axisWgs84.eastPointWgs84, origin);
+  const vector = { x: east.x - west.x, z: east.z - west.z };
+  const length = Math.hypot(vector.x, vector.z) || 1;
+  return { x: vector.x / length, z: vector.z / length };
+}
+
+function findGeometryRecordByBin(geometrySource, bin) {
+  return geometrySource.footprintRecords?.find((record) => record.sourceProperties?.bin === String(bin)) ?? null;
+}
+
+function projectWgsToMapTruth(point, origin) {
+  const metersPerLon = 111320 * Math.cos((origin.lat * Math.PI) / 180);
+  return {
+    x: (point.lon - origin.lon) * metersPerLon * 0.075,
+    z: -(point.lat - origin.lat) * 110540 * 0.075,
+  };
+}
+
+function projectMeterOffsetToMapTruth(offsetMeters) {
+  return {
+    x: offsetMeters.east * 0.075,
+    z: -offsetMeters.north * 0.075,
+  };
+}
+
+function getWgsPolygonCentroid(points) {
+  if (!points?.length) return null;
+  const unique = removeClosingWgsPoint(points);
+  return {
+    lon: unique.reduce((sum, point) => sum + point.lon, 0) / unique.length,
+    lat: unique.reduce((sum, point) => sum + point.lat, 0) / unique.length,
+  };
+}
+
+function removeClosingWgsPoint(points) {
+  if (points.length < 2) return points;
+  const first = points[0];
+  const last = points[points.length - 1];
+  if (first.lon === last.lon && first.lat === last.lat) return points.slice(0, -1);
+  return points;
+}
+
+function getFranklinMapTruthColor(place) {
+  if (place.placeId === "sereneco") return 0x75d796;
+  if (place.placeId === "sonnys-corner") return 0xffbd59;
+  return 0x72a9ff;
+}
+
+function getFranklinMapTruthAccentColor(place) {
+  if (place.placeId === "sereneco") return "rgba(117, 215, 150, 0.95)";
+  if (place.placeId === "sonnys-corner") return "rgba(255, 189, 89, 0.95)";
+  return "rgba(114, 169, 255, 0.95)";
+}
+
+function getFranklinSeparatorPreviewX(fixture, buildingsById, runtimeScene) {
+  const westX = [];
+  const eastX = [];
+  for (const place of fixture.placeMappings ?? []) {
+    const target = buildingsById.get(place.sourceBackedObjectId);
+    if (!target) continue;
+    if (place.sideOfFranklinAve === "west_across_franklin") westX.push(target.centroid.x);
+    if (place.sideOfFranklinAve === "east_corridor_side") eastX.push(target.centroid.x);
+  }
+  if (westX.length && eastX.length) return (Math.max(...westX) + Math.min(...eastX)) / 2;
+  return runtimeScene.guide?.centerline?.[0]?.x ?? -3.6;
+}
+
+function getFranklinSeparatorExtent(runtimeScene) {
+  const zValues = runtimeScene.buildings.flatMap((building) => building.points.map((point) => point.z));
+  const guideValues = runtimeScene.guide?.sidewalkBands?.flatMap((band) => band.map((point) => point.z)) ?? [];
+  const all = [...zValues, ...guideValues];
+  return {
+    minZ: Math.min(...all, -1.9) - 0.25,
+    maxZ: Math.max(...all, 1.9) + 0.25,
+  };
+}
+
+function getFranklinIntersectionMappingColor(place) {
+  if (place.placeId === "sereneco") return 0x7dd7a6;
+  if (place.placeId === "sonnys-corner") return 0xffcf73;
+  return 0x74b7ff;
+}
+
+function getFranklinIntersectionMappingAccentColor(place) {
+  if (place.placeId === "sereneco") return "rgba(125, 215, 166, 0.92)";
+  if (place.placeId === "sonnys-corner") return "rgba(255, 207, 115, 0.92)";
+  return "rgba(116, 183, 255, 0.92)";
+}
+
+function getFranklinIntersectionLabelOffset(place) {
+  if (place.placeId === "sereneco") return { x: -0.18, z: -0.46 };
+  if (place.placeId === "sonnys-corner") return { x: 0.46, z: 0.52 };
+  return { x: -0.44, z: 0.56 };
+}
+
+function getFranklinIntersectionMappingLabel(place) {
+  const labelByPlaceId = {
+    "premier-franklin-organic": "Premier",
+    sereneco: "Sereneco",
+    "sonnys-corner": "Sonny's",
+  };
+  return `${labelByPlaceId[place.placeId] ?? "QA place"} / ${place.sourceBackedFootprintBin}`;
 }
 
 function createCandidatePoiMarker(candidate, target, offset) {
@@ -2796,7 +3321,7 @@ function createQAFacadeSliceLayer(object, cue, facadeRecord) {
   return group;
 }
 
-function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
+function createEvidenceInformedFacadeLayer(object, cue, facadeRecord, heroAssetOptions = { enabled: false }) {
   const plane = cue.geometryDerived.streetFacingPlane;
   const composition = getEvidenceComposition(facadeRecord);
   const recognitionProfile = getPlaceRecognitionProfile(facadeRecord);
@@ -2838,6 +3363,7 @@ function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
     depth,
     recognitionProfile,
     heroOverride,
+    heroAssetOptions,
   });
 
   for (const cueRecord of facadeRecord.cues) {
@@ -2867,6 +3393,7 @@ function createEvidenceInformedFacadeLayer(object, cue, facadeRecord) {
     sideOffset,
     depth,
     heroOverride,
+    heroAssetOptions,
   });
 
   group.userData.semanticId = object.id;
@@ -4568,14 +5095,14 @@ function addEvidenceStructuredFrontage(group, { recognitionProfile, composition,
   }
 }
 
-function addPlaceRecognitionLandmarks(group, { recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth, heroOverride }) {
+function addPlaceRecognitionLandmarks(group, { recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth, heroOverride, heroAssetOptions }) {
   const baseHeight = clamp(height * composition.basePlaneRatio, 0.18, height * 0.58);
   const centerX = plane.xMin + length / 2;
   const frontZ = z + sideOffset * (depth + composition.signBandDepthUnits + 0.18);
   const frontLayer = { opaque: false, depthTest: false };
 
   if (heroOverride) {
-    addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth });
+    addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth, heroAssetOptions });
     return;
   }
 
@@ -4694,7 +5221,7 @@ function addPlaceRecognitionLandmarks(group, { recognitionProfile, composition, 
   }
 }
 
-function addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth }) {
+function addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, composition, palette, length, plane, height, z, sideOffset, depth, heroAssetOptions }) {
   const materials = heroOverride.materialZones;
   const baseHeight = clamp(height * heroOverride.massing.baseHeightRatio, 0.18, height * 0.54);
   const upperHeight = Math.max(height - baseHeight, 0.18);
@@ -4758,6 +5285,7 @@ function addMeasuredHeroFacade(group, { heroOverride, recognitionProfile, compos
       facadeRecord: matchingFranklinFacadeRecord,
       addBox: addEvidenceFacadeBox,
       addCylinder: addEvidenceFacadeCylinder,
+      heroAssetOptions,
     });
   }
 
@@ -6176,10 +6704,12 @@ function getHitFromEvent(state, event) {
 function isQALayerVisibleInFocus(role, qaLayerFocus) {
   if (qaLayerFocus === QA_LAYER_FOCUS_4L_LOCAL) return QA_4L_LOCAL_FOCUS_VISIBLE_ROLES.has(role);
   if (qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC) return QA_VISUAL_POC_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SPATIAL) return QA_FRANKLIN_SPATIAL_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH) return QA_FRANKLIN_TRUTH_VISIBLE_ROLES.has(role);
   return true;
 }
 
-function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus = QA_LAYER_FOCUS_ALL) {
+function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus = QA_LAYER_FOCUS_ALL, heroAssetEnabled = false) {
   for (const [id, visual] of state.visualObjects) {
     const isSelected = id === selectedId;
     const isHovered = id === hoveredId;
@@ -6192,6 +6722,7 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
           role === "facadeCue"
           || role === "qaFacadeSlice"
           || role === "evidenceFacadeCue"
+          || role === "franklinHeroAsset"
           || role === "corridorFacadeCue"
           || role === "qaScaffoldPreview"
           || role === "qaScaffoldPreviewOutline"
@@ -6205,6 +6736,13 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
           || role === "syntheticQAGrounding"
           || role === "candidatePoi"
           || role === "candidatePoiLabel"
+          || role === "franklinIntersectionMapping"
+          || role === "franklinIntersectionMappingLabel"
+          || role === "franklinIntersectionSeparator"
+          || role === "franklinMapTruth"
+          || role === "franklinMapTruthStreet"
+          || role === "franklinMapTruthLabel"
+          || role === "franklinMapTruthOrientation"
         ) {
           child.visible = role === "candidatePoiLabel" ? qaEnabled && qaLayerVisible && (isSelected || isHovered) : qaEnabled && qaLayerVisible;
         }
@@ -6220,11 +6758,17 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
       }
       if (child.material.opacity !== undefined) {
         const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
+        const franklinSpatial = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SPATIAL;
+        const franklinTruth = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH;
         if (child.userData.stateRole === "outline" || child.userData.stateRole === "footprint") {
           child.material.opacity = isSelected
             ? 0.95
             : isHovered
               ? 0.78
+              : franklinTruth
+                ? 0
+              : franklinSpatial
+                ? 0.28
               : visualPoc
                 ? child.userData.hasEvidenceFacade ? 0.12 : 0.045
               : qaEnabled
@@ -6235,6 +6779,10 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             ? 0.72
             : isHovered
               ? 0.58
+              : franklinTruth
+                ? 0
+              : franklinSpatial
+                ? 0.09
               : visualPoc
                 ? child.userData.hasEvidenceFacade ? 0.025 : 0.02
               : qaEnabled
@@ -6245,17 +6793,25 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             ? 0.86
             : isHovered
               ? 0.72
+              : franklinTruth
+                ? 0
+              : franklinSpatial
+                ? 0.22
               : visualPoc
                 ? child.userData.hasEvidenceFacade ? 0.025 : 0.035
               : qaEnabled
                 ? child.userData.hasEvidenceFacade ? 0 : 0.003
                 : 0.94;
         } else if (child.userData.stateRole === "anchor") {
-          child.material.opacity = isSelected ? 0.9 : isHovered ? 0.72 : qaEnabled ? 0.025 : 0.42;
+          child.material.opacity = isSelected ? 0.9 : isHovered ? 0.72 : franklinTruth ? 0 : qaEnabled ? 0.025 : 0.42;
         } else if (child.userData.stateRole === "line") {
           const isCenterline = child.userData.semanticType === "corridor-street-centerline";
           child.material.opacity = isSelected || isHovered
             ? 0.72
+            : franklinTruth
+              ? 0
+            : franklinSpatial && isCenterline
+              ? 0.32
             : qaEnabled && isCenterline
               ? 0.08
               : qaEnabled
@@ -6266,12 +6822,12 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
           child.visible = true;
           child.material.transparent = true;
           child.material.depthWrite = false;
-          child.material.opacity = visualPoc ? 0.055 : child.userData.baseOpacity ?? child.material.opacity;
+          child.material.opacity = franklinTruth ? 0 : franklinSpatial ? Math.min(child.userData.baseOpacity ?? 0.2, 0.24) : visualPoc ? 0.055 : child.userData.baseOpacity ?? child.material.opacity;
         } else if (child.userData.stateRole === "guideLabel") {
           const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
-          child.visible = !visualPoc;
+          child.visible = qaEnabled && qaLayerVisible && !visualPoc && !franklinTruth;
           child.material.transparent = true;
-          child.material.opacity = visualPoc ? 0 : child.userData.baseOpacity ?? child.material.opacity;
+          child.material.opacity = child.visible ? child.userData.baseOpacity ?? child.material.opacity : 0;
         } else if (child.userData.stateRole === "facadeCue") {
           child.visible = qaEnabled && qaLayerVisible && (isSelected || isHovered);
           child.material.opacity = qaEnabled && qaLayerVisible
@@ -6308,6 +6864,11 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
                   ? Math.min(child.userData.qaOpacity + 0.14, 0.94)
                   : child.userData.qaOpacity
             : 0;
+        } else if (child.userData.stateRole === "franklinHeroAsset") {
+          child.visible = qaEnabled && qaLayerVisible && heroAssetEnabled;
+          child.material.transparent = false;
+          child.material.depthWrite = true;
+          child.material.opacity = qaEnabled && qaLayerVisible && heroAssetEnabled ? 1 : 0;
         } else if (child.userData.stateRole === "corridorFacadeCue") {
           child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
@@ -6414,6 +6975,32 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
               ? Math.min((child.userData.qaOpacity ?? 0.28) + 0.12, 0.64)
               : child.userData.qaOpacity ?? 0.28
             : 0;
+        } else if (child.userData.stateRole === "franklinIntersectionMapping" || child.userData.stateRole === "franklinIntersectionSeparator") {
+          child.visible = qaEnabled && qaLayerVisible;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled && qaLayerVisible
+            ? isSelected || isHovered
+              ? Math.min((child.userData.qaOpacity ?? 0.4) + 0.12, 0.96)
+              : child.userData.qaOpacity ?? 0.4
+            : 0;
+        } else if (child.userData.stateRole === "franklinIntersectionMappingLabel") {
+          child.visible = qaEnabled && qaLayerVisible;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          child.material.opacity = qaEnabled && qaLayerVisible ? child.userData.qaOpacity ?? 0.94 : 0;
+        } else if (
+          child.userData.stateRole === "franklinMapTruth"
+          || child.userData.stateRole === "franklinMapTruthStreet"
+          || child.userData.stateRole === "franklinMapTruthLabel"
+          || child.userData.stateRole === "franklinMapTruthOrientation"
+        ) {
+          child.visible = qaEnabled && qaLayerVisible;
+          child.material.transparent = true;
+          child.material.depthWrite = false;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = qaEnabled && qaLayerVisible ? child.userData.qaOpacity ?? 0.9 : 0;
         } else if (child.userData.stateRole === "candidatePoi") {
           child.visible = qaEnabled && qaLayerVisible && (isSelected || isHovered);
           if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
@@ -6525,19 +7112,22 @@ function createPolyline(points, { color, opacity, y, closed = false }) {
   return new THREE.Line(geometry, material);
 }
 
-function createTextSprite(label) {
+function createTextSprite(label, options = {}) {
   const canvas = document.createElement("canvas");
   canvas.width = 384;
   canvas.height = 96;
   const context = canvas.getContext("2d");
+  const accentColor = options.accentColor ?? "rgba(240, 201, 106, 0.88)";
+  const fontSize = options.fontSize ?? 34;
+  const scale = options.scale ?? { x: 2.35, y: 0.58 };
   context.fillStyle = "rgba(16, 20, 20, 0.84)";
-  context.strokeStyle = "rgba(240, 201, 106, 0.88)";
+  context.strokeStyle = accentColor;
   context.lineWidth = 4;
   context.roundRect(8, 12, 368, 72, 10);
   context.fill();
   context.stroke();
   context.fillStyle = "rgba(255, 240, 210, 0.96)";
-  context.font = "700 34px Inter, sans-serif";
+  context.font = `700 ${fontSize}px Inter, sans-serif`;
   context.textAlign = "center";
   context.textBaseline = "middle";
   context.fillText(label, 192, 49);
@@ -6551,18 +7141,58 @@ function createTextSprite(label) {
       depthWrite: false,
     }),
   );
-  sprite.scale.set(2.35, 0.58, 1);
+  sprite.scale.set(scale.x, scale.y, 1);
+  return sprite;
+}
+
+function createMapTruthLabel(label, footprintId, options = {}) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 148;
+  const context = canvas.getContext("2d");
+  const accentColor = options.accentColor ?? "rgba(240, 201, 106, 0.9)";
+  context.fillStyle = "rgba(14, 18, 18, 0.9)";
+  context.strokeStyle = accentColor;
+  context.lineWidth = 5;
+  context.roundRect(10, 12, 492, 124, 12);
+  context.fill();
+  context.stroke();
+  context.fillStyle = "rgba(255, 244, 224, 0.98)";
+  context.font = "800 31px Inter, sans-serif";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillText(label, 256, 55);
+  context.fillStyle = accentColor;
+  context.font = "800 25px Inter, sans-serif";
+  context.fillText(`BIN ${footprintId}`, 256, 101);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(
+    new THREE.SpriteMaterial({
+      map: texture,
+      transparent: true,
+      depthWrite: false,
+    }),
+  );
+  sprite.scale.set(1.72, 0.5, 1);
   return sprite;
 }
 
 function updateCamera(state) {
   const { camera, cameraState } = state;
-  const sinPolar = Math.sin(cameraState.polar);
-  camera.position.set(
-    cameraState.target.x + cameraState.distance * sinPolar * Math.cos(cameraState.azimuth),
-    cameraState.target.y + cameraState.distance * Math.cos(cameraState.polar),
-    cameraState.target.z + cameraState.distance * sinPolar * Math.sin(cameraState.azimuth),
-  );
+  if (cameraState.topDown) {
+    camera.up.set(0, 0, -1);
+    camera.position.set(cameraState.target.x, cameraState.target.y + cameraState.distance, cameraState.target.z);
+  } else {
+    camera.up.set(0, 1, 0);
+    const sinPolar = Math.sin(cameraState.polar);
+    camera.position.set(
+      cameraState.target.x + cameraState.distance * sinPolar * Math.cos(cameraState.azimuth),
+      cameraState.target.y + cameraState.distance * Math.cos(cameraState.polar),
+      cameraState.target.z + cameraState.distance * sinPolar * Math.sin(cameraState.azimuth),
+    );
+  }
   camera.zoom = cameraState.zoom;
   camera.lookAt(cameraState.target);
   camera.updateProjectionMatrix();
@@ -6608,6 +7238,7 @@ function cloneCameraState(value) {
     distance: value.distance,
     zoom: value.zoom,
     target: value.target.clone(),
+    topDown: value.topDown === true,
   };
 }
 
