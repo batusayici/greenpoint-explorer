@@ -1,6 +1,8 @@
 // QA-only Franklin hero kit extraction for Phase 4M-R7.
 // Runtime supplies measured placement; this module owns Franklin visual fidelity authoring.
 
+import { addFranklinHeroAssetBindings, isFranklinHeroAssetBindingEnabled } from "./FranklinHeroAssetLoader.js";
+
 export function addFranklinHeroCorner(group, options) {
   const { heroOverride, facadeRecord } = options;
   if (!heroOverride?.heroFidelityLayer && !heroOverride?.hybridHeroLayer && !facadeRecord?.qaOnly) return;
@@ -18,7 +20,7 @@ export function addFranklinHeroCorner(group, options) {
   }
 }
 
-function addFranklinFacadeRecordAssembly(group, { facadeRecord, heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, addBox, addCylinder }) {
+function addFranklinFacadeRecordAssembly(group, { facadeRecord, heroOverride, materials, length, plane, height, baseHeight, z, sideOffset, depth, frontZ, addBox, addCylinder, heroAssetOptions }) {
   const front = facadeRecord.faces?.front ?? {};
   const groundFloor = front.groundFloor ?? {};
   const upperFloors = front.upperFloors ?? {};
@@ -64,6 +66,7 @@ function addFranklinFacadeRecordAssembly(group, { facadeRecord, heroOverride, ma
   addRecordSideReturn(group, { sideReturn, heroOverride, materials, facadeXMax, height, baseHeight, frontZ: recordFaceZ, z, depth, sideOffset, layer: recordLayer, shadowLayer });
   addRecordContactGrounding(group, { materials, facadeXMin, facadeWidth, centerX, z, recordFaceZ, sideOffset, baySpans, layer: recordLayer, shadowLayer });
   addRecordDetailModules(group, {
+    facadeRecord,
     detailModules,
     groundFloor,
     upperFloors,
@@ -81,6 +84,20 @@ function addFranklinFacadeRecordAssembly(group, { facadeRecord, heroOverride, ma
     sideOffset,
     layer: { ...recordLayer, renderOrder: 34 },
     shadowLayer: { ...shadowLayer, renderOrder: 33 },
+    heroAssetOptions,
+  });
+  addFranklinHeroAssetBindings(group, {
+    facadeRecord,
+    heroOverride,
+    facadeXMin,
+    facadeXMax,
+    facadeWidth,
+    centerX,
+    recordFaceZ,
+    baseHeight,
+    height,
+    sideOffset,
+    heroAssetOptions,
   });
 }
 
@@ -442,7 +459,9 @@ function addRecordDetailModules(group, options) {
   if (!detailModules || detailModules.enabled === false) return;
   addRecordMaterialBands(group, options);
   addRecordRhythmVariation(group, options);
-  addRecordBayWindowProjection(group, options);
+  if (!isFranklinHeroAssetBindingEnabled(options.facadeRecord, "bayWindowProjection", options.heroAssetOptions)) {
+    addRecordBayWindowProjection(group, options);
+  }
   addRecordFireEscape(group, options);
   addRecordWindowUtilities(group, options);
   addRecordStreetDressing(group, options);
