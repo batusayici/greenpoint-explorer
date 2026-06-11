@@ -64,8 +64,13 @@ export default function SceneView() {
     ground.position.y = -0.002;
     three.add(ground);
 
+    // The scene renders on demand (no animation loop). Textures decode async,
+    // so re-render when each finishes loading.
+    let renderScene = null;
+    const requestRender = () => renderScene?.();
+
     buildStreets(three, scene.streets);
-    buildBuildings(three, scene.buildings);
+    buildBuildings(three, scene.buildings, requestRender);
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200);
     const view = { target: new THREE.Vector3(-0.3, 0, 0.4), frustumHeight: 5.5 };
@@ -96,6 +101,7 @@ export default function SceneView() {
     function render() {
       renderer.render(three, camera);
     }
+    renderScene = render;
 
     // Pan: drag moves the target in the ground plane along the camera's
     // screen axes. Zoom: wheel scales the orthographic frustum.
@@ -199,7 +205,7 @@ function buildStreets(three, streets) {
   }
 }
 
-function buildBuildings(three, buildings) {
+function buildBuildings(three, buildings, requestRender) {
   const textureLoader = new THREE.TextureLoader();
   buildings.forEach((building, index) => {
     const shape = new THREE.Shape();
@@ -223,8 +229,8 @@ function buildBuildings(three, buildings) {
     three.add(body);
 
     if (building.isHero && building.frontages) {
-      addFrontagePlane(three, textureLoader, building, "greenpoint", building.frontages.greenpoint);
-      addFrontagePlane(three, textureLoader, building, "franklin", building.frontages.franklin);
+      addFrontagePlane(three, textureLoader, building, "greenpoint", building.frontages.greenpoint, requestRender);
+      addFrontagePlane(three, textureLoader, building, "franklin", building.frontages.franklin, requestRender);
     }
   });
 }
@@ -232,7 +238,7 @@ function buildBuildings(three, buildings) {
 // A frontage plane is the texture slot for a generated II-style facade.
 // Until a texture exists it renders as a subtle placeholder tint so the
 // slot is visible in review.
-function addFrontagePlane(three, textureLoader, building, streetKey, edge) {
+function addFrontagePlane(three, textureLoader, building, streetKey, edge, requestRender) {
   if (!edge) return;
   const key = `../assets/textures/franklin/${building.placeId}--${streetKey}.png`;
   const url = facadeTextureUrls[key];
@@ -241,10 +247,14 @@ function addFrontagePlane(three, textureLoader, building, streetKey, edge) {
     new THREE.PlaneGeometry(edge.length, building.height),
     new THREE.MeshBasicMaterial(
       url
-        ? { map: textureLoader.load(url, (texture) => {
-            texture.colorSpace = THREE.SRGBColorSpace;
-          }) }
-        : { color: 0xffffff, opacity: 0.18, transparent: true },
+        ? {
+            map: textureLoader.load(url, (texture) => {
+              texture.colorSpace = THREE.SRGBColorSpace;
+              requestRender?.();
+            }),
+            side: THREE.DoubleSide,
+          }
+        : { color: 0xffffff, opacity: 0.18, transparent: true, side: THREE.DoubleSide },
     ),
   );
 
