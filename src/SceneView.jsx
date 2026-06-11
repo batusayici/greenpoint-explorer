@@ -73,7 +73,7 @@ export default function SceneView() {
     buildBuildings(three, scene.buildings, requestRender);
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200);
-    const view = { target: new THREE.Vector3(-0.3, 0, 0.4), frustumHeight: 5.5 };
+    const view = { target: new THREE.Vector3(-0.7, 0, 0.9), frustumHeight: 3.4 };
 
     function applyCamera() {
       const aspect = mount.clientWidth / Math.max(mount.clientHeight, 1);
@@ -206,17 +206,14 @@ function buildStreets(three, streets) {
 }
 
 function buildBuildings(three, buildings, requestRender) {
-  const textureLoader = new THREE.TextureLoader();
   buildings.forEach((building, index) => {
-    const shape = new THREE.Shape();
-    building.polygon.forEach((point, pointIndex) => {
-      if (pointIndex === 0) shape.moveTo(point.x, -point.z);
-      else shape.lineTo(point.x, -point.z);
-    });
+    if (building.isHero && building.edges) {
+      buildHeroBuilding(three, building, requestRender);
+      return;
+    }
+    const shape = footprintShape(building.polygon);
     const geometry = new THREE.ExtrudeGeometry(shape, { depth: building.height, bevelEnabled: false });
-    const color = building.isHero
-      ? II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0]
-      : II_PALETTE.context[index % II_PALETTE.context.length];
+    const color = II_PALETTE.context[index % II_PALETTE.context.length];
     // ExtrudeGeometry material slots: 0 = caps (roof), 1 = side walls.
     // Darker inked roof caps keep large masses from reading as flat slabs.
     const roof = new THREE.Color(color).multiplyScalar(0.5);
@@ -227,51 +224,210 @@ function buildBuildings(three, buildings, requestRender) {
     body.rotation.x = -Math.PI / 2;
     body.userData = { bin: building.bin, placeId: building.placeId };
     three.add(body);
-
-    if (building.isHero && building.frontages) {
-      addFrontagePlane(three, textureLoader, building, "greenpoint", building.frontages.greenpoint, requestRender);
-      addFrontagePlane(three, textureLoader, building, "franklin", building.frontages.franklin, requestRender);
-    }
   });
 }
 
-// A frontage plane is the texture slot for a generated II-style facade.
-// Until a texture exists it renders as a subtle placeholder tint so the
-// slot is visible in review.
-function addFrontagePlane(three, textureLoader, building, streetKey, edge, requestRender) {
-  if (!edge) return;
-  const key = `../assets/textures/franklin/${building.placeId}--${streetKey}.png`;
-  const url = facadeTextureUrls[key];
+// Hero buildings are built wall-by-wall so generated II-style facade
+// elevations map directly onto the real footprint edges, the two street
+// faces share a crisp corner, the roof carries an inked parapet texture,
+// and an II-C cast-shadow shape grounds the mass.
+function buildHeroBuilding(three, building, requestRender) {
+  const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
+  // Benchmark-style face shading: lit street faces, darker returns.
+  const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
+  // The longest edge per street role carries the generated elevation.
+  const textureEdge = {};
+  for (const edge of building.edges) {
+    if (edge.role === "other") continue;
+    if (!textureEdge[edge.role] || edge.length > textureEdge[edge.role].length) {
+      textureEdge[edge.role] = edge;
+    }
+  }
 
-  const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(edge.length, building.height),
-    new THREE.MeshBasicMaterial(
-      url
-        ? {
-            map: textureLoader.load(url, (texture) => {
-              texture.colorSpace = THREE.SRGBColorSpace;
-              requestRender?.();
-            }),
-            side: THREE.DoubleSide,
-          }
-        : { color: 0xffffff, opacity: 0.18, transparent: true, side: THREE.DoubleSide },
-    ),
+  for (const edge of building.edges) {
+    const shade = faceShade[edge.role] ?? faceShade.other;
+    const url =
+      textureEdge[edge.role] === edge
+        ? facadeTextureUrls[`../assets/textures/franklin/${building.placeId}--${edge.role}.png`]
+        : undefined;
+
+    const material = url
+      ? new THREE.MeshBasicMaterial({ color: new THREE.Color(shade, shade, shade) })
+      : new THREE.MeshBasicMaterial({ color: new THREE.Color(baseColor).multiplyScalar(shade) });
+    if (url) {
+      loadTrimmedTexture(url, (texture) => {
+        material.map = texture;
+        material.color.setScalar(shade);
+        material.needsUpdate = true;
+        requestRender?.();
+      });
+      // Until the texture decodes, hold the wall at the base tone.
+      material.color.copy(new THREE.Color(baseColor).multiplyScalar(shade));
+    }
+
+    const wall = new THREE.Mesh(new THREE.PlaneGeometry(edge.length, building.height), material);
+    wall.position.set(edge.midpoint.x, building.height / 2, edge.midpoint.z);
+    wall.rotation.y = Math.atan2(edge.normal.x, edge.normal.z);
+    wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
+    three.add(wall);
+  }
+
+  // Roof field: warm membrane tone with paper-grain speckle. The texture
+  // transform maps the footprint bbox onto the canvas square (ShapeGeometry
+  // UVs equal the shape coordinates).
+  const shape = footprintShape(building.polygon);
+  const roofGeometry = new THREE.ShapeGeometry(shape);
+  const roofTexture = makeRoofTexture();
+  const box = new THREE.Box2().setFromPoints(building.polygon.map((p) => new THREE.Vector2(p.x, -p.z)));
+  roofTexture.repeat.set(1 / (box.max.x - box.min.x), 1 / (box.max.y - box.min.y));
+  roofTexture.offset.set(-box.min.x * roofTexture.repeat.x, -box.min.y * roofTexture.repeat.y);
+  const roofMesh = new THREE.Mesh(roofGeometry, new THREE.MeshBasicMaterial({ map: roofTexture }));
+  roofMesh.rotation.x = -Math.PI / 2;
+  roofMesh.position.y = building.height;
+  three.add(roofMesh);
+
+  // Parapet: a real cornice ring around the roofline — geometry, not paint,
+  // so the silhouette reads as a built mass like the benchmark's cornice.
+  const parapetHeight = 0.05;
+  const parapetThickness = 0.024;
+  const clean = building.polygon;
+  for (let index = 0; index < clean.length; index += 1) {
+    const start = clean[index];
+    const end = clean[(index + 1) % clean.length];
+    const length = Math.hypot(end.x - start.x, end.z - start.z);
+    if (length < 1e-6) continue;
+    const segment = new THREE.Mesh(
+      new THREE.BoxGeometry(length + parapetThickness, parapetHeight, parapetThickness),
+      new THREE.MeshLambertMaterial({ color: 0xc7b896 }),
+    );
+    segment.position.set(
+      (start.x + end.x) / 2,
+      building.height + parapetHeight / 2,
+      (start.z + end.z) / 2,
+    );
+    segment.rotation.y = -Math.atan2(end.z - start.z, end.x - start.x);
+    three.add(segment);
+    const edgeLines = new THREE.LineSegments(
+      new THREE.EdgesGeometry(segment.geometry),
+      new THREE.LineBasicMaterial({ color: II_PALETTE.ink, transparent: true, opacity: 0.5 }),
+    );
+    edgeLines.position.copy(segment.position);
+    edgeLines.rotation.copy(segment.rotation);
+    three.add(edgeLines);
+  }
+
+  // Inked cast shadow (II-C shadow-shape language). Thrown toward the
+  // east/Franklin side, which the fixed northeast camera can see — matching
+  // where the benchmark pools its shading.
+  const shadowMesh = new THREE.Mesh(
+    new THREE.ShapeGeometry(shape),
+    new THREE.MeshBasicMaterial({ color: II_PALETTE.ink, transparent: true, opacity: 0.16, depthWrite: false }),
   );
+  shadowMesh.rotation.x = -Math.PI / 2;
+  shadowMesh.position.set(building.height * 0.2, 0.004, building.height * 0.07);
+  three.add(shadowMesh);
+}
 
-  // Face outward: away from the footprint centroid.
-  const normal = { x: -(edge.end.z - edge.start.z) / edge.length, z: (edge.end.x - edge.start.x) / edge.length };
-  const toCentroid = {
-    x: building.centroid.x - edge.midpoint.x,
-    z: building.centroid.z - edge.midpoint.z,
+function footprintShape(polygon) {
+  const shape = new THREE.Shape();
+  polygon.forEach((point, pointIndex) => {
+    if (pointIndex === 0) shape.moveTo(point.x, -point.z);
+    else shape.lineTo(point.x, -point.z);
+  });
+  return shape;
+}
+
+// Generated elevations arrive with a paper margin around the artwork.
+// Trim it automatically: sample the corner color, find the content
+// bounding box, and crop via canvas before handing Three the texture.
+function loadTrimmedTexture(url, onReady) {
+  const image = new Image();
+  image.onload = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = image.width;
+    canvas.height = image.height;
+    const context = canvas.getContext("2d");
+    context.drawImage(image, 0, 0);
+    const { data, width, height } = context.getImageData(0, 0, canvas.width, canvas.height);
+
+    const border = [data[0], data[1], data[2]];
+    const differs = (x, y) => {
+      const at = (y * width + x) * 4;
+      return (
+        Math.abs(data[at] - border[0]) + Math.abs(data[at + 1] - border[1]) + Math.abs(data[at + 2] - border[2]) > 48
+      );
+    };
+    // Margins are paper-textured, not uniform, so a single differing pixel
+    // is noise. Trim by content density: a row/column only counts as
+    // artwork when a meaningful share of its pixels differ from the border.
+    const densityThreshold = 0.085;
+    const columnDensity = new Array(width).fill(0);
+    const rowDensity = new Array(height).fill(0);
+    for (let y = 0; y < height; y += 1) {
+      for (let x = 0; x < width; x += 1) {
+        if (!differs(x, y)) continue;
+        columnDensity[x] += 1;
+        rowDensity[y] += 1;
+      }
+    }
+    const columnLimit = height * densityThreshold;
+    const rowLimit = width * densityThreshold;
+    let minX = 0;
+    let maxX = width - 1;
+    let minY = 0;
+    let maxY = height - 1;
+    while (minX < maxX && columnDensity[minX] <= columnLimit) minX += 1;
+    while (maxX > minX && columnDensity[maxX] <= columnLimit) maxX -= 1;
+    while (minY < maxY && rowDensity[minY] <= rowLimit) minY += 1;
+    while (maxY > minY && rowDensity[maxY] <= rowLimit) maxY -= 1;
+    if (maxX - minX < width * 0.3 || maxY - minY < height * 0.3) {
+      minX = 0;
+      minY = 0;
+      maxX = width - 1;
+      maxY = height - 1;
+    }
+
+    const cropped = document.createElement("canvas");
+    cropped.width = maxX - minX + 1;
+    cropped.height = maxY - minY + 1;
+    cropped.getContext("2d").drawImage(canvas, minX, minY, cropped.width, cropped.height, 0, 0, cropped.width, cropped.height);
+
+    const texture = new THREE.CanvasTexture(cropped);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = 4;
+    onReady(texture);
   };
-  const sign = normal.x * toCentroid.x + normal.z * toCentroid.z > 0 ? -1 : 1;
-  const offset = 0.012;
-  plane.position.set(
-    edge.midpoint.x + normal.x * sign * offset,
-    building.height / 2,
-    edge.midpoint.z + normal.z * sign * offset,
-  );
-  plane.rotation.y = Math.atan2(normal.x * sign, normal.z * sign);
-  plane.userData = { facadeSlot: `${building.placeId}--${streetKey}` };
-  three.add(plane);
+  image.src = url;
+}
+
+// II-style flat roof: warm dark membrane, paper-grain speckle, and a
+// parapet band tracing the roofline.
+function makeRoofTexture() {
+  const size = 512;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const context = canvas.getContext("2d");
+
+  context.fillStyle = "#57504a";
+  context.fillRect(0, 0, size, size);
+
+  for (let index = 0; index < 2600; index += 1) {
+    const shade = Math.random() * 0.1;
+    context.fillStyle = `rgba(0, 0, 0, ${shade.toFixed(3)})`;
+    context.fillRect(Math.random() * size, Math.random() * size, 1.6, 1.6);
+  }
+
+  // Parapet band + inked inner line at the roof edge.
+  const band = size * 0.045;
+  context.strokeStyle = "#a99c82";
+  context.lineWidth = band;
+  context.strokeRect(band / 2, band / 2, size - band, size - band);
+  context.strokeStyle = "rgba(42, 36, 28, 0.85)";
+  context.lineWidth = size * 0.008;
+  context.strokeRect(band, band, size - band * 2, size - band * 2);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
 }

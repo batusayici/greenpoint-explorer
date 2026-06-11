@@ -63,9 +63,7 @@ export function assembleFranklinScene({ geometrySource, sceneGeometryFixture, wr
       placeId: hero?.placeId ?? null,
       label: hero?.shortLabel ?? null,
       cornerRole: hero?.cornerIntersectionRole ?? null,
-      frontages: hero
-        ? findHeroFrontages(polygon, { greenpointAxis, franklinAxis })
-        : null,
+      edges: hero ? classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis }) : null,
     });
   }
 
@@ -94,31 +92,30 @@ export function assembleFranklinScene({ geometrySource, sceneGeometryFixture, wr
   return { projection, buildings, streets, greenpointAxis, franklinAxis };
 }
 
-// For a hero footprint, pick the street-facing edges: the longest edge among
-// the closest to each street axis (Greenpoint, then Franklin), per the R10E
-// nearest-source-footprint-edge method extended edge-level in R10G.
-function findHeroFrontages(polygon, { greenpointAxis, franklinAxis }) {
-  const edges = polygonEdges(polygon);
-  return {
-    greenpoint: pickFrontageEdge(edges, greenpointAxis),
-    franklin: pickFrontageEdge(edges, franklinAxis),
-  };
-}
+// Classify every footprint edge of a hero by which street it faces, per the
+// R10G edge-level frontage method. The intersection origin sits at
+// (0, 0): Greenpoint Ave runs along the x-axis (buildings north of it have
+// negative-z centroids), Franklin along z. An edge faces a street when it
+// runs parallel to that street's axis and its outward normal points from the
+// building toward that street.
+function classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis }) {
+  return polygonEdges(polygon).map((edge) => {
+    // Outward normal: away from the footprint centroid.
+    let normal = { x: -edge.direction.z, z: edge.direction.x };
+    const toCentroid = { x: centroid.x - edge.midpoint.x, z: centroid.z - edge.midpoint.z };
+    if (normal.x * toCentroid.x + normal.z * toCentroid.z > 0) {
+      normal = { x: -normal.x, z: -normal.z };
+    }
 
-function pickFrontageEdge(edges, axis) {
-  let best = null;
-  for (const edge of edges) {
-    const distance = Math.abs(axis.x * edge.midpoint.z - axis.z * edge.midpoint.x);
-    const alignment = Math.abs(
-      (edge.direction.x * axis.x + edge.direction.z * axis.z),
-    );
-    // Prefer edges roughly parallel to the street and close to it; weight
-    // length so door-sized jogs don't win over the real frontage wall.
-    const score = distance - alignment * 0.4 - edge.length * 0.25;
-    if (alignment < 0.6) continue;
-    if (!best || score < best.score) best = { ...edge, score };
-  }
-  return best;
+    const alongGreenpoint = Math.abs(edge.direction.x * greenpointAxis.x + edge.direction.z * greenpointAxis.z) > 0.7;
+    const alongFranklin = Math.abs(edge.direction.x * franklinAxis.x + edge.direction.z * franklinAxis.z) > 0.7;
+
+    let role = "other";
+    if (alongGreenpoint && normal.z * Math.sign(centroid.z) < 0) role = "greenpoint";
+    else if (alongFranklin && normal.x * Math.sign(centroid.x) < 0) role = "franklin";
+
+    return { ...edge, normal, role };
+  });
 }
 
 function polygonEdges(polygon) {
