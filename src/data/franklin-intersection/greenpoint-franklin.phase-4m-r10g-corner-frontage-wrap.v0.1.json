@@ -1,0 +1,400 @@
+{
+  "schemaVersion": "phase-4m-r10g-corner-frontage-wrap.v0.1",
+  "fixtureId": "greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap",
+  "phase": "4M-R10G",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "status": "qa_corner_frontage_wrap_truth_for_batu_review",
+  "scope": {
+    "intersection": "Greenpoint Ave x Franklin Ave",
+    "sourceGeometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+    "sourceFacadeCueFixturePath": "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json",
+    "r10eSceneGeometryFixturePath": "src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json",
+    "r10fRenderedTruthFixturePath": "src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10f-rendered-building-frontage-truth.v0.1.json",
+    "runtimePreviewPath": "src/Phase4BRuntimePreview.jsx",
+    "claimLimit": "QA rendered corner-frontage review only. This fixture does not create production facade, exact storefront, exact entrance, tenant frontage, signage, active-status, exact address, normal-mode, or public/product claims."
+  },
+  "preservation": {
+    "targetBinMapping": "preserved",
+    "sourceFrameFromR10E": "preserved",
+    "sourceFootprintBasedPlacement": true,
+    "normalModeProtection": "preserved",
+    "glbAssessmentStatus": "blocked_until_r10g_visual_review",
+    "r11R12ManhattanProductionStatus": "blocked"
+  },
+  "projectionBasis": {
+    "method": "same_wgs84_to_franklin_local_scene_projection_as_r10e_and_r10f",
+    "scaleMetersToSceneUnits": 0.075,
+    "originWgs84": {
+      "lon": -73.95759551445,
+      "lat": 40.729886989476,
+      "source": "nyc-centerline-physicalid-47237.wgs84Line[0] / nyc-centerline-physicalid-47238.wgs84Line[1]"
+    },
+    "greenpointAxisWgs84": {
+      "westPointWgs84": {
+        "lon": -73.959244843819,
+        "lat": 40.729729995886
+      },
+      "eastPointWgs84": {
+        "lon": -73.954246485005,
+        "lat": 40.730205703344
+      }
+    },
+    "franklinStreetGeometry": {
+      "status": "bounded_review_only_derived_cross_street_missing_source_centerline",
+      "basis": "perpendicular_to_greenpoint_axis_through_shared_greenpoint_endpoint",
+      "notProductionTruth": true
+    }
+  },
+  "diagnosisTable": [
+    {
+      "targetBusiness": "Sereneco",
+      "binOrObjectId": "3337033 / p4b-object-nyc-footprint-bin-3337033",
+      "expectedGreenpointFrontage": "north side of Greenpoint; south-facing active low restaurant/cafe frontage",
+      "expectedFranklinFrontage": "west/across Franklin side; east-facing active return along Franklin where the corner evidence supports it",
+      "expectedCornerCondition": "low-rise northwest restaurant corner with the larger adjacent/background source mass visually separated from the active Sereneco corner frontage",
+      "currentRenderedMismatch": "R10F renders the weathered glass/base module mostly on the Greenpoint-facing edge, leaving the Franklin edge too blank and letting the larger source footprint read as the main restaurant mass.",
+      "rootCause": "R10F binds facade modules at building level to the nearest Greenpoint edge only.",
+      "exactFix": "Render edge-level Greenpoint and Franklin frontage segments plus a corner-wrap segment; mute the larger source-footprint body as context while keeping the active corner frontage distinct."
+    },
+    {
+      "targetBusiness": "Premier Organic / Franklin Organic",
+      "binOrObjectId": "3322608 / p4b-object-nyc-footprint-bin-3322608",
+      "expectedGreenpointFrontage": "south side of Greenpoint; north-facing grocery storefront frontage",
+      "expectedFranklinFrontage": "west/across Franklin side; east-facing Franklin return with retail base and upper brick/window rhythm",
+      "expectedCornerCondition": "strong southwest retail corner wrapping from Greenpoint onto Franklin",
+      "currentRenderedMismatch": "R10F makes the Greenpoint face active but the Franklin-facing side reads too empty.",
+      "rootCause": "The rendered facade cue is attached to one Greenpoint-facing edge, with side return treated as a small generic slab rather than a full street-facing frontage segment.",
+      "exactFix": "Render a full Franklin frontage segment using the same red-brick/grocery/cornice cue grammar, and add a visible corner-wrap retail module."
+    },
+    {
+      "targetBusiness": "Sonny's Corner",
+      "binOrObjectId": "3064811 / p4b-object-nyc-footprint-bin-3064811",
+      "expectedGreenpointFrontage": "south side of Greenpoint; north-facing dark storefront/bar base",
+      "expectedFranklinFrontage": "east/corridor side of Franklin; west-facing active corner return",
+      "expectedCornerCondition": "southeast corridor-side corner with dark awning/base wrapping both streets and upper windows continuing around the corner where supported",
+      "currentRenderedMismatch": "R10F places Sonny correctly but still reads primarily as a one-face Greenpoint module.",
+      "rootCause": "Facade assignment is building-level and Greenpoint-edge-only.",
+      "exactFix": "Render Greenpoint and Franklin segments as active frontages, continue upper window rhythm onto the Franklin return, and add a dark corner-wrap segment."
+    }
+  ],
+  "frontageSchema": {
+    "model": "edge_level_frontage_segments",
+    "requiredSegmentRoles": [
+      "greenpoint_frontage",
+      "franklin_frontage",
+      "corner_wrap",
+      "side_return"
+    ],
+    "segmentFields": [
+      "segmentId",
+      "street",
+      "edgeSelector",
+      "expectedFacing",
+      "activeFrontage",
+      "groundFloorTreatment",
+      "upperFloorTreatment",
+      "evidenceRefs",
+      "qaClaimStatus"
+    ],
+    "artificialOffsetsUsedForCorrection": false
+  },
+  "placeMappings": [
+    {
+      "placeId": "sereneco",
+      "qaReferenceName": "Sereneco",
+      "shortLabel": "Sereneco",
+      "sourceBackedFootprintBin": "3337033",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3337033",
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "north",
+      "cornerIntersectionRole": "northwest_across_franklin_corner",
+      "renderedCueRecordId": "p4e1-franklin-weathered-brick-glass-base",
+      "renderedModuleStatus": "qa_only_evidence_informed_not_exact",
+      "contextMassTreatment": "larger_source_footprint_body_muted_as_context_not_main_sereneco_frontage",
+      "renderProfile": {
+        "bodyColor": "#6b463c",
+        "facadeColor": "#8b4b3d",
+        "signColor": "#8b6847",
+        "canopyColor": "#2d2a20",
+        "glassColor": "#9db9aa",
+        "trimColor": "#d7c8ad",
+        "heightUnits": 0.92,
+        "bayCount": 4,
+        "upperRows": 1,
+        "roofStyle": "low_brick_parapet",
+        "storefrontRhythm": "wide_wood_glass",
+        "wrapStrength": "low_restaurant_corner"
+      },
+      "frontageSegments": [
+        {
+          "segmentId": "sereneco-greenpoint-frontage",
+          "segmentRole": "greenpoint_frontage",
+          "street": "Greenpoint Ave",
+          "edgeSelector": "nearest_greenpoint_axis_edge",
+          "expectedFacing": "south_toward_greenpoint",
+          "activeFrontage": true,
+          "groundFloorTreatment": "wide_wood_glass_restaurant_base",
+          "upperFloorTreatment": "low_brick_parapet_with_sparse_upper_openings",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "sereneco-franklin-frontage",
+          "segmentRole": "franklin_frontage",
+          "street": "Franklin Ave",
+          "edgeSelector": "nearest_franklin_axis_edge",
+          "expectedFacing": "east_toward_franklin",
+          "activeFrontage": true,
+          "groundFloorTreatment": "active_restaurant_return_with_wood_glass_panels",
+          "upperFloorTreatment": "low_brick_return",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "sereneco-corner-wrap",
+          "segmentRole": "corner_wrap",
+          "street": "Greenpoint Ave + Franklin Ave",
+          "edgeSelector": "shared_greenpoint_franklin_corner",
+          "expectedFacing": "southeast_corner_wrap",
+          "activeFrontage": true,
+          "groundFloorTreatment": "low_corner_glass_wood_wrap",
+          "upperFloorTreatment": "corner_parapet_cap",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "sereneco-side-return",
+          "segmentRole": "side_return",
+          "street": "Franklin Ave",
+          "edgeSelector": "nearest_franklin_axis_edge",
+          "expectedFacing": "east_toward_franklin",
+          "activeFrontage": true,
+          "groundFloorTreatment": "supporting_active_return",
+          "upperFloorTreatment": "muted_context_side",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        }
+      ]
+    },
+    {
+      "placeId": "premier-franklin-organic",
+      "qaReferenceName": "Premier Organic / Franklin Organic",
+      "shortLabel": "Premier / Franklin Organic",
+      "sourceBackedFootprintBin": "3322608",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3322608",
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southwest_across_franklin_corner",
+      "renderedCueRecordId": "p4e1-franklin-red-brick-cornice-corner",
+      "renderedModuleStatus": "qa_only_evidence_informed_not_exact",
+      "contextMassTreatment": "source_footprint_body_used_as_primary_corner_mass",
+      "renderProfile": {
+        "bodyColor": "#8f4b43",
+        "facadeColor": "#9f5548",
+        "signColor": "#ba8c5e",
+        "signAccentColor": "#52b864",
+        "canopyColor": "#080b0b",
+        "glassColor": "#9fbfb2",
+        "trimColor": "#cfba87",
+        "heightUnits": 1.58,
+        "bayCount": 5,
+        "upperRows": 4,
+        "roofStyle": "ornate_stone_cornice",
+        "storefrontRhythm": "grocery_wrap",
+        "wrapStrength": "strong_retail_corner"
+      },
+      "frontageSegments": [
+        {
+          "segmentId": "premier-greenpoint-frontage",
+          "segmentRole": "greenpoint_frontage",
+          "street": "Greenpoint Ave",
+          "edgeSelector": "nearest_greenpoint_axis_edge",
+          "expectedFacing": "north_toward_greenpoint",
+          "activeFrontage": true,
+          "groundFloorTreatment": "grocery_glass_green_sign_black_canopy",
+          "upperFloorTreatment": "red_brick_window_stack_and_cornice",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "premier-franklin-frontage",
+          "segmentRole": "franklin_frontage",
+          "street": "Franklin Ave",
+          "edgeSelector": "nearest_franklin_axis_edge",
+          "expectedFacing": "east_toward_franklin",
+          "activeFrontage": true,
+          "groundFloorTreatment": "retail_return_with_grocery_sign_band_and_glass",
+          "upperFloorTreatment": "red_brick_side_windows_and_cornice_return",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "premier-corner-wrap",
+          "segmentRole": "corner_wrap",
+          "street": "Greenpoint Ave + Franklin Ave",
+          "edgeSelector": "shared_greenpoint_franklin_corner",
+          "expectedFacing": "northeast_corner_wrap",
+          "activeFrontage": true,
+          "groundFloorTreatment": "strong_corner_retail_wrap",
+          "upperFloorTreatment": "red_brick_corner_pilaster_and_cornice",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "premier-side-return",
+          "segmentRole": "side_return",
+          "street": "Franklin Ave",
+          "edgeSelector": "nearest_franklin_axis_edge",
+          "expectedFacing": "east_toward_franklin",
+          "activeFrontage": true,
+          "groundFloorTreatment": "supporting_retail_side_return",
+          "upperFloorTreatment": "brick_return_windows",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        }
+      ]
+    },
+    {
+      "placeId": "sonnys-corner",
+      "qaReferenceName": "Sonny's Corner",
+      "shortLabel": "Sonny's Corner",
+      "sourceBackedFootprintBin": "3064811",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3064811",
+      "sideOfFranklinAve": "east_corridor_side",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southeast_corridor_side_corner",
+      "renderedCueRecordId": "p4e1-franklin-dark-brick-awned-base",
+      "renderedModuleStatus": "qa_only_evidence_informed_not_exact",
+      "contextMassTreatment": "source_footprint_body_used_as_primary_corner_mass",
+      "renderProfile": {
+        "bodyColor": "#5d303d",
+        "facadeColor": "#683848",
+        "signColor": "#080909",
+        "canopyColor": "#060707",
+        "glassColor": "#9dbdae",
+        "trimColor": "#111111",
+        "heightUnits": 1.42,
+        "bayCount": 5,
+        "upperRows": 3,
+        "roofStyle": "heavy_black_cornice",
+        "storefrontRhythm": "dark_awned_corner",
+        "wrapStrength": "dark_corner_bar_base"
+      },
+      "frontageSegments": [
+        {
+          "segmentId": "sonny-greenpoint-frontage",
+          "segmentRole": "greenpoint_frontage",
+          "street": "Greenpoint Ave",
+          "edgeSelector": "nearest_greenpoint_axis_edge",
+          "expectedFacing": "north_toward_greenpoint",
+          "activeFrontage": true,
+          "groundFloorTreatment": "dark_storefront_black_awning_base",
+          "upperFloorTreatment": "dark_brick_window_rhythm",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "sonny-franklin-frontage",
+          "segmentRole": "franklin_frontage",
+          "street": "Franklin Ave",
+          "edgeSelector": "nearest_franklin_axis_edge",
+          "expectedFacing": "west_toward_franklin",
+          "activeFrontage": true,
+          "groundFloorTreatment": "active_dark_bar_return_with_awning",
+          "upperFloorTreatment": "dark_brick_side_window_rhythm",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "sonny-corner-wrap",
+          "segmentRole": "corner_wrap",
+          "street": "Greenpoint Ave + Franklin Ave",
+          "edgeSelector": "shared_greenpoint_franklin_corner",
+          "expectedFacing": "northwest_corner_wrap",
+          "activeFrontage": true,
+          "groundFloorTreatment": "dark_corner_awning_wrap",
+          "upperFloorTreatment": "dark_corner_window_stack",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        },
+        {
+          "segmentId": "sonny-side-return",
+          "segmentRole": "side_return",
+          "street": "Franklin Ave",
+          "edgeSelector": "nearest_franklin_axis_edge",
+          "expectedFacing": "west_toward_franklin",
+          "activeFrontage": true,
+          "groundFloorTreatment": "supporting_active_dark_return",
+          "upperFloorTreatment": "continued_side_windows",
+          "evidenceRefs": [
+            "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+          ],
+          "qaClaimStatus": "manual_draft_evidence_informed_not_exact"
+        }
+      ]
+    }
+  ],
+  "requiredScreenshots": [
+    "docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap/franklin-rendered-wrap-truth-top-down-r10g.png",
+    "docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap/franklin-rendered-wrap-truth-oblique-r10g.png",
+    "docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap/franklin-rendered-wrap-truth-premier-r10g.png",
+    "docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap/franklin-rendered-wrap-truth-sonny-r10g.png",
+    "docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap/franklin-rendered-wrap-truth-sereneco-r10g.png"
+  ],
+  "screenshotCaptureStatus": "captured",
+  "successCriteria": [
+    "Premier, Sonny's, and Sereneco remain correctly placed at Franklin x Greenpoint.",
+    "Each target shows active frontage on both Greenpoint and Franklin where supported by evidence.",
+    "Facades visibly wrap corners instead of stopping at one face.",
+    "Franklin-facing sides are no longer blank.",
+    "Sereneco remains distinct from the larger context building.",
+    "The scene reads correctly with labels minimized.",
+    "Batu can identify the corner conditions from screenshots without opening Google Maps."
+  ],
+  "blockedClaimsPreserved": [
+    "glb-fidelity-judgment",
+    "business-active-status",
+    "tenant-frontage",
+    "storefront-anchor",
+    "storefront-order",
+    "exact-frontage",
+    "exact-address-placement",
+    "entrance-location",
+    "exact-facade-appearance",
+    "exact-signage",
+    "production-public-readiness",
+    "normal-mode-rendering"
+  ]
+}

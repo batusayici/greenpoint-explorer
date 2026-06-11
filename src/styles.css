@@ -245,6 +245,60 @@
   pointer-events: none;
 }
 
+.phase4b-runtime-franklin-scene-truth .phase4b-qa-panel,
+.phase4b-runtime-franklin-scene-truth .phase4b-inspector,
+.phase4b-runtime-franklin-scene-truth .phase4b-ribbon,
+.phase4b-runtime-franklin-scene-truth .phase4b-controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.phase4b-runtime-franklin-rendered-truth .phase4b-qa-panel,
+.phase4b-runtime-franklin-rendered-truth .phase4b-inspector,
+.phase4b-runtime-franklin-rendered-truth .phase4b-ribbon,
+.phase4b-runtime-franklin-rendered-truth .phase4b-controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.phase4b-runtime-franklin-rendered-wrap-truth .phase4b-qa-panel,
+.phase4b-runtime-franklin-rendered-wrap-truth .phase4b-inspector,
+.phase4b-runtime-franklin-rendered-wrap-truth .phase4b-ribbon,
+.phase4b-runtime-franklin-rendered-wrap-truth .phase4b-controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.phase4b-r10g-capture-tray {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 30;
+  display: grid;
+  gap: 6px;
+  width: min(360px, calc(100vw - 32px));
+  padding: 12px;
+  border: 1px solid rgba(232, 236, 217, 0.24);
+  background: rgba(16, 20, 20, 0.92);
+  color: #edf0db;
+  font: 600 0.72rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.phase4b-r10g-capture-tray a,
+.phase4b-r10g-capture-tray span {
+  color: rgba(237, 240, 219, 0.82);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.phase4b-r10g-capture-tray a[data-saved="false"] {
+  color: #ffd27a;
+  text-decoration: underline;
+}
+
 .phase4b-qa-panel li {
   display: grid;
   grid-template-columns: 12px minmax(0, 1fr);

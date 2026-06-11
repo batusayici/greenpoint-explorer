@@ -13,6 +13,9 @@ import localEvidenceCueEnrichmentFixture from "./data/facade-cues/greenpoint-ave
 import franklinHeroFacadeRecord from "./data/facade-cues/franklin-hero-records.v0.1.json";
 import franklinIntersectionMappingFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10b-spatial-mapping.v0.1.json";
 import franklinMapTruthFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10c-r10d-map-truth.v0.1.json";
+import franklinSceneTruthFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
+import franklinRenderedTruthFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10f-rendered-building-frontage-truth.v0.1.json";
+import franklinRenderedWrapTruthFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
 import geometryValidationReport from "./data/geometry-validation/greenpoint-ave-manhattan-to-franklin.phase-4d-geometry-validation-report.v0.1.json";
 import candidatePoiFixture from "./data/candidate-pois/greenpoint-ave-manhattan-to-franklin.phase-4d-candidate-pois.v0.1.json";
 import cornerAnchorCandidateFixture from "./data/facade-evidence/greenpoint-ave-manhattan-to-franklin.phase-4d-corner-anchor-candidates.v0.1.json";
@@ -25,12 +28,18 @@ const QA_LAYER_FOCUS_4L_LOCAL = "4l_local_evidence";
 const QA_LAYER_FOCUS_VISUAL_POC = "visual_poc";
 const QA_LAYER_FOCUS_FRANKLIN_SPATIAL = "franklin_spatial";
 const QA_LAYER_FOCUS_FRANKLIN_TRUTH = "franklin_truth";
+const QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH = "franklin_scene_truth";
+const QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH = "franklin_rendered_truth";
+const QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH = "franklin_rendered_wrap_truth";
 const QA_LAYER_FOCUS_OPTIONS = [
   { id: QA_LAYER_FOCUS_ALL, label: "All QA" },
   { id: QA_LAYER_FOCUS_4L_LOCAL, label: "4L Focus" },
   { id: QA_LAYER_FOCUS_VISUAL_POC, label: "Visual POC" },
   { id: QA_LAYER_FOCUS_FRANKLIN_SPATIAL, label: "Franklin Map" },
   { id: QA_LAYER_FOCUS_FRANKLIN_TRUTH, label: "Franklin Truth" },
+  { id: QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH, label: "Franklin Scene" },
+  { id: QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH, label: "Franklin Rendered" },
+  { id: QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH, label: "Franklin Wrap" },
 ];
 const QA_4L_LOCAL_FOCUS_VISIBLE_ROLES = new Set([
   "evidenceFacadeCue",
@@ -55,6 +64,32 @@ const QA_FRANKLIN_TRUTH_VISIBLE_ROLES = new Set([
   "franklinMapTruthStreet",
   "franklinMapTruthLabel",
   "franklinMapTruthOrientation",
+]);
+const QA_FRANKLIN_SCENE_TRUTH_VISIBLE_ROLES = new Set([
+  "franklinSceneTruthBuilding",
+  "franklinSceneTruthFootprint",
+  "franklinSceneTruthStreet",
+  "franklinSceneTruthFrontage",
+  "franklinSceneTruthLabel",
+  "franklinSceneTruthOrientation",
+]);
+const QA_FRANKLIN_RENDERED_TRUTH_VISIBLE_ROLES = new Set([
+  "franklinRenderedTruthBuilding",
+  "franklinRenderedTruthFacade",
+  "franklinRenderedTruthFootprint",
+  "franklinRenderedTruthStreet",
+  "franklinRenderedTruthFrontage",
+  "franklinRenderedTruthLabel",
+  "franklinRenderedTruthOrientation",
+]);
+const QA_FRANKLIN_RENDERED_WRAP_TRUTH_VISIBLE_ROLES = new Set([
+  "franklinRenderedWrapTruthBuilding",
+  "franklinRenderedWrapTruthFacade",
+  "franklinRenderedWrapTruthFootprint",
+  "franklinRenderedWrapTruthStreet",
+  "franklinRenderedWrapTruthFrontage",
+  "franklinRenderedWrapTruthLabel",
+  "franklinRenderedWrapTruthOrientation",
 ]);
 
 const endpointHeroFacadeOverrides = {
@@ -516,6 +551,93 @@ const CAMERA_PRESETS = {
     zoom: 2.05,
     target: new THREE.Vector3(0.05, 0.55, -0.08),
   },
+  franklinSceneTruthTopDown: {
+    azimuth: 0,
+    polar: 0,
+    distance: 16,
+    zoom: 2.05,
+    target: new THREE.Vector3(0.05, 0.45, -0.1),
+    topDown: true,
+  },
+  franklinSceneTruthOblique: {
+    azimuth: -0.78,
+    polar: 0.72,
+    distance: 12.4,
+    zoom: 1.95,
+    target: new THREE.Vector3(0.02, 0.72, -0.08),
+  },
+  franklinSceneTruthFrontage: {
+    azimuth: -1.58,
+    polar: 0.92,
+    distance: 9.8,
+    zoom: 2.1,
+    target: new THREE.Vector3(-1.72, 0.62, -0.72),
+  },
+  franklinRenderedTruthTopDown: {
+    azimuth: 0,
+    polar: 0,
+    distance: 16,
+    zoom: 2.0,
+    target: new THREE.Vector3(0.05, 0.56, -0.1),
+    topDown: true,
+  },
+  franklinRenderedTruthOblique: {
+    azimuth: -0.82,
+    polar: 0.76,
+    distance: 12.2,
+    zoom: 1.92,
+    target: new THREE.Vector3(0.02, 0.88, -0.08),
+  },
+  franklinRenderedTruthFrontageAcross: {
+    azimuth: -1.56,
+    polar: 0.9,
+    distance: 8.9,
+    zoom: 2.18,
+    target: new THREE.Vector3(-2.0, 0.86, -0.46),
+  },
+  franklinRenderedTruthSonny: {
+    azimuth: -1.04,
+    polar: 0.86,
+    distance: 8.8,
+    zoom: 2.24,
+    target: new THREE.Vector3(1.08, 0.82, 0.34),
+  },
+  franklinRenderedWrapTruthTopDown: {
+    azimuth: 0,
+    polar: 0,
+    distance: 16,
+    zoom: 2.04,
+    target: new THREE.Vector3(0.05, 0.58, -0.08),
+    topDown: true,
+  },
+  franklinRenderedWrapTruthOblique: {
+    azimuth: -0.82,
+    polar: 0.76,
+    distance: 12.2,
+    zoom: 1.96,
+    target: new THREE.Vector3(0.05, 0.92, -0.04),
+  },
+  franklinRenderedWrapTruthPremier: {
+    azimuth: -1.42,
+    polar: 0.88,
+    distance: 7.8,
+    zoom: 2.42,
+    target: new THREE.Vector3(-1.35, 0.92, 0.48),
+  },
+  franklinRenderedWrapTruthSonny: {
+    azimuth: -1.08,
+    polar: 0.86,
+    distance: 7.8,
+    zoom: 2.38,
+    target: new THREE.Vector3(1.04, 0.88, 0.42),
+  },
+  franklinRenderedWrapTruthSereneco: {
+    azimuth: -2.06,
+    polar: 0.86,
+    distance: 8.2,
+    zoom: 2.34,
+    target: new THREE.Vector3(-1.24, 0.72, -0.68),
+  },
   streetOblique: {
     azimuth: -0.48,
     polar: 1.02,
@@ -591,22 +713,59 @@ const QA_LAYER_FOCUS_QUERY_VALUES = {
   "franklin-truth": QA_LAYER_FOCUS_FRANKLIN_TRUTH,
   franklin_map_truth: QA_LAYER_FOCUS_FRANKLIN_TRUTH,
   "franklin-map-truth": QA_LAYER_FOCUS_FRANKLIN_TRUTH,
+  franklin_scene_truth: QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH,
+  "franklin-scene-truth": QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH,
+  franklin_scene: QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH,
+  "franklin-scene": QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH,
+  franklin_rendered_truth: QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH,
+  "franklin-rendered-truth": QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH,
+  franklin_rendered: QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH,
+  "franklin-rendered": QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH,
+  franklin_rendered_wrap_truth: QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH,
+  "franklin-rendered-wrap-truth": QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH,
+  franklin_wrap: QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH,
+  "franklin-wrap": QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH,
 };
+
+const R10G_CAPTURE_SEQUENCE = [
+  {
+    camera: "franklinRenderedWrapTruthTopDown",
+    filename: "franklin-rendered-wrap-truth-top-down-r10g.png",
+  },
+  {
+    camera: "franklinRenderedWrapTruthOblique",
+    filename: "franklin-rendered-wrap-truth-oblique-r10g.png",
+  },
+  {
+    camera: "franklinRenderedWrapTruthPremier",
+    filename: "franklin-rendered-wrap-truth-premier-r10g.png",
+  },
+  {
+    camera: "franklinRenderedWrapTruthSonny",
+    filename: "franklin-rendered-wrap-truth-sonny-r10g.png",
+  },
+  {
+    camera: "franklinRenderedWrapTruthSereneco",
+    filename: "franklin-rendered-wrap-truth-sereneco-r10g.png",
+  },
+];
 
 function getInitialReviewOptions() {
   if (typeof window === "undefined") {
-    return { qaEnabled: false, qaLayerFocus: QA_LAYER_FOCUS_ALL, cameraPreset: HOME_CAMERA, heroAssetEnabled: false };
+    return { qaEnabled: false, qaLayerFocus: QA_LAYER_FOCUS_ALL, cameraPreset: HOME_CAMERA, heroAssetEnabled: false, r10gCaptureRequested: false };
   }
   const params = new URLSearchParams(window.location.search);
   const requestedFocus = QA_LAYER_FOCUS_QUERY_VALUES[params.get("qaLayerFocus")] ?? QA_LAYER_FOCUS_ALL;
   const requestedCamera = CAMERA_PRESETS[params.get("camera")] ?? HOME_CAMERA;
   const requestedHeroAsset = params.get("r10HeroAsset");
   const visualPocRequested = requestedFocus === QA_LAYER_FOCUS_VISUAL_POC;
+  const r10gCaptureRequested = requestedFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH && params.get("r10gCapture") === "1";
   return {
     qaEnabled: params.get("qa") === "1" || requestedFocus !== QA_LAYER_FOCUS_ALL,
     qaLayerFocus: requestedFocus,
     cameraPreset: requestedCamera,
     heroAssetEnabled: requestedHeroAsset === "1" || (visualPocRequested && requestedHeroAsset !== "0"),
+    r10gCaptureRequested,
   };
 }
 
@@ -632,6 +791,7 @@ export default function Phase4BRuntimePreview() {
   const cornerAnchorCandidateIndex = useMemo(() => buildCornerAnchorCandidateIndex(cornerAnchorCandidateFixture), []);
   const hostRef = useRef(null);
   const stateRef = useRef(null);
+  const r10gCaptureStartedRef = useRef(false);
   const [hoveredId, setHoveredId] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [qaEnabled, setQaEnabled] = useState(initialReviewOptions.qaEnabled);
@@ -692,7 +852,7 @@ export default function Phase4BRuntimePreview() {
     const host = hostRef.current;
     if (!host) return undefined;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true });
     renderer.autoClear = true;
     renderer.setClearColor(0x101414, 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -717,6 +877,9 @@ export default function Phase4BRuntimePreview() {
     addCandidatePoiMarkers(scene, runtimeScene, candidatePoiFixture, visualObjects);
     addFranklinIntersectionMappingOverlay(scene, runtimeScene, franklinIntersectionMappingFixture, visualObjects);
     addFranklinMapTruthOverlay(scene, franklinMapTruthFixture, geometryFixture, visualObjects);
+    addFranklinSceneTruthOverlay(scene, franklinSceneTruthFixture, geometryFixture, visualObjects);
+    addFranklinRenderedTruthOverlay(scene, franklinRenderedTruthFixture, geometryFixture, evidenceFacadeCueFixture, visualObjects);
+    addFranklinRenderedWrapTruthOverlay(scene, franklinRenderedWrapTruthFixture, geometryFixture, evidenceFacadeCueFixture, visualObjects);
 
     stateRef.current = {
       camera,
@@ -773,6 +936,20 @@ export default function Phase4BRuntimePreview() {
     updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocus, heroAssetEnabled);
     renderFrame(state);
   }, [hoveredId, selectedId, qaEnabled, qaLayerFocus, heroAssetEnabled]);
+
+  useEffect(() => {
+    if (!initialReviewOptions.r10gCaptureRequested) return undefined;
+    if (!qaEnabled || qaLayerFocus !== QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH) return undefined;
+    if (r10gCaptureStartedRef.current) return undefined;
+    const state = stateRef.current;
+    if (!state) return undefined;
+
+    r10gCaptureStartedRef.current = true;
+    const timer = window.setTimeout(() => {
+      captureR10GReviewScreenshots(state);
+    }, 900);
+    return () => window.clearTimeout(timer);
+  }, [initialReviewOptions.r10gCaptureRequested, qaEnabled, qaLayerFocus]);
 
   function handlePointerDown(event) {
     const state = stateRef.current;
@@ -883,19 +1060,42 @@ export default function Phase4BRuntimePreview() {
     renderFrame(state);
   }
 
+  async function captureR10GReviewScreenshots(state) {
+    if (!state || typeof window === "undefined") return;
+    const tray = createR10GCaptureTray();
+    const results = [];
+
+    for (const shot of R10G_CAPTURE_SEQUENCE) {
+      state.cameraState = cloneCameraState(CAMERA_PRESETS[shot.camera]);
+      updateCamera(state);
+      renderFrame(state);
+      await waitForR10GCaptureFrame();
+      renderFrame(state);
+      await waitForR10GCaptureFrame();
+
+      const dataUrl = state.renderer.domElement.toDataURL("image/png");
+      const result = await saveR10GCapture(shot.filename, dataUrl);
+      results.push({ ...result, filename: shot.filename });
+      addR10GCaptureLink(tray, shot.filename, dataUrl, result);
+    }
+
+    window.__r10gCaptureResults = results;
+    tray.dataset.complete = "true";
+  }
+
   return (
     <main className="phase4b-shell" aria-label="Greenpoint Explorer Phase 4B runtime proof">
       <section className="phase4b-topline" aria-label="Runtime proof status">
         <div>
-          <p className="phase4b-kicker">Batch 4M-R10C/R10D / Franklin map truth</p>
-          <h1>Franklin x Greenpoint intersection truth QA</h1>
+          <p className="phase4b-kicker">Batch 4M-R10F / Franklin rendered truth</p>
+          <h1>Franklin x Greenpoint rendered frontage QA</h1>
         </div>
         <p>
-          QA-only spatial legibility proof for Franklin x Greenpoint: Greenpoint and Franklin render as crossing street slabs, Sereneco and Premier/Franklin Organic sit west/across Franklin, and Sonny's stays east/corridor-side. GLB, facade, and hero-kit tuning are paused; normal mode stays protected.
+          QA-only rendered-building/frontage proof for Franklin x Greenpoint: evidence-informed facade modules render on the corrected Franklin-local source footprints with frontage overlays and street control slabs. GLB assessment, R11/R12, Manhattan, and production mode stay paused.
         </p>
       </section>
 
-      <section className={`phase4b-runtime${qaEnabled ? " phase4b-runtime-qa" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC ? " phase4b-runtime-visual-poc" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH ? " phase4b-runtime-franklin-truth" : ""}`} aria-label="Interactive 3D graybox corridor runtime">
+      <section className={`phase4b-runtime${qaEnabled ? " phase4b-runtime-qa" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC ? " phase4b-runtime-visual-poc" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH ? " phase4b-runtime-franklin-truth" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH ? " phase4b-runtime-franklin-scene-truth" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH ? " phase4b-runtime-franklin-rendered-truth" : ""}${qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH ? " phase4b-runtime-franklin-rendered-wrap-truth" : ""}`} aria-label="Interactive 3D graybox corridor runtime">
         <div
           ref={hostRef}
           className="phase4b-viewport"
@@ -1012,6 +1212,42 @@ export default function Phase4BRuntimePreview() {
           </button>
           <button type="button" onClick={() => runCameraCommand("franklinTruthOblique")} aria-label="Camera preset Franklin map truth oblique">
             F truth obq
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinSceneTruthTopDown")} aria-label="Camera preset Franklin scene truth top down">
+            F scene
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinSceneTruthOblique")} aria-label="Camera preset Franklin scene truth oblique">
+            F scene obq
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinSceneTruthFrontage")} aria-label="Camera preset Franklin scene truth frontage">
+            F frontage
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedTruthTopDown")} aria-label="Camera preset Franklin rendered truth top down">
+            F render
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedTruthOblique")} aria-label="Camera preset Franklin rendered truth oblique">
+            F render obq
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedTruthFrontageAcross")} aria-label="Camera preset Franklin rendered truth frontage across Greenpoint">
+            F face
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedTruthSonny")} aria-label="Camera preset Franklin rendered truth Sonny southeast">
+            F Sonny
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedWrapTruthTopDown")} aria-label="Camera preset Franklin rendered wrap truth top down">
+            F wrap
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedWrapTruthOblique")} aria-label="Camera preset Franklin rendered wrap truth oblique">
+            F wrap obq
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedWrapTruthPremier")} aria-label="Camera preset Franklin rendered wrap Premier frontage">
+            F Premier
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedWrapTruthSonny")} aria-label="Camera preset Franklin rendered wrap Sonny frontage">
+            F Sonny wrap
+          </button>
+          <button type="button" onClick={() => runCameraCommand("franklinRenderedWrapTruthSereneco")} aria-label="Camera preset Franklin rendered wrap Sereneco frontage">
+            F Sereneco
           </button>
           <button type="button" onClick={() => runCameraCommand("streetOblique")} aria-label="Camera preset street-level oblique">
             Oblique
@@ -2871,6 +3107,1277 @@ function addFranklinMapTruthOverlay(scene, fixture, geometrySource, visualObject
   visualObjects.set("__franklin-map-truth", group);
 }
 
+function addFranklinSceneTruthOverlay(scene, fixture, geometrySource, visualObjects) {
+  const group = new THREE.Group();
+  group.visible = false;
+  group.userData.semanticId = "__franklin-scene-truth";
+  group.userData.stateRole = "franklinSceneTruthBuilding";
+
+  const model = fixture.sceneTruthModel;
+  const greenpointAxis = getSceneTruthAxis(model.projectionBasis);
+  const franklinAxis = { x: -greenpointAxis.z, z: greenpointAxis.x };
+  const greenpointSlab = createStreetSlab(greenpointAxis, { x: 0, z: 0 }, 12.4, 1.08);
+  const franklinSlab = createStreetSlab(franklinAxis, { x: 0, z: 0 }, 8.8, 1.12);
+
+  const greenpointStreet = createFlatPolygonMesh(greenpointSlab, {
+    color: 0x303d38,
+    opacity: 0,
+    y: 0.018,
+  });
+  greenpointStreet.userData.stateRole = "franklinSceneTruthStreet";
+  greenpointStreet.userData.qaColor = 0x303d38;
+  greenpointStreet.userData.qaOpacity = 0.96;
+  greenpointStreet.visible = false;
+
+  const franklinStreet = createFlatPolygonMesh(franklinSlab, {
+    color: 0x243f4a,
+    opacity: 0,
+    y: 0.03,
+  });
+  franklinStreet.userData.stateRole = "franklinSceneTruthStreet";
+  franklinStreet.userData.qaColor = 0x243f4a;
+  franklinStreet.userData.qaOpacity = 0.96;
+  franklinStreet.visible = false;
+  group.add(greenpointStreet, franklinStreet);
+
+  addSceneTruthStreetCenterline(group, greenpointAxis, 6.2, 0xe8ecd9, "Greenpoint Ave", { x: 4.18, z: 0.72 });
+  addSceneTruthStreetCenterline(group, franklinAxis, 4.4, 0x9ee9ff, "Franklin Ave", { x: 0.76, z: -3.05 });
+
+  for (const place of fixture.placeMappings) {
+    const color = getFranklinSceneTruthColor(place);
+    const accentColor = getFranklinSceneTruthAccentColor(place);
+    for (const bin of place.targetRenderBins ?? [place.sourceBackedFootprintBin]) {
+      const record = findGeometryRecordByBin(geometrySource, bin);
+      if (!record) continue;
+      createSceneTruthBuilding(group, record, model.projectionBasis, color, {
+        primary: bin === place.sourceBackedFootprintBin,
+      });
+      addSceneTruthFrontageEdge(group, record, model.projectionBasis, color, {
+        primary: bin === place.sourceBackedFootprintBin,
+      });
+    }
+
+    const labelPoint = projectMeterOffsetToSceneTruth(place.labelPlacement.offsetMeters, model.projectionBasis);
+    const label = createMapTruthLabel(place.shortLabel, place.sourceBackedFootprintBin, {
+      accentColor,
+    });
+    label.position.set(labelPoint.x, 1.2, labelPoint.z);
+    label.userData.stateRole = "franklinSceneTruthLabel";
+    label.userData.qaColor = color;
+    label.userData.qaOpacity = 0.82;
+    label.visible = false;
+    group.add(label);
+  }
+
+  addSceneTruthOrientation(group);
+  scene.add(group);
+  visualObjects.set("__franklin-scene-truth", group);
+}
+
+function createSceneTruthBuilding(group, record, projectionBasis, color, options = {}) {
+  const points = record.wgs84Polygon.map((point) => projectWgsToSceneTruth(point, projectionBasis));
+  const height = getSceneTruthHeight(record);
+  const base = createFlatPolygonMesh(points, {
+    color,
+    opacity: 0,
+    y: 0.07,
+  });
+  base.userData.stateRole = "franklinSceneTruthFootprint";
+  base.userData.qaColor = color;
+  base.userData.qaOpacity = options.primary ? 0.55 : 0.2;
+  base.visible = false;
+
+  const massing = new THREE.Mesh(
+    createPrismGeometry(points, height),
+    new THREE.MeshStandardMaterial({
+      color,
+      roughness: 0.86,
+      metalness: 0.02,
+      transparent: true,
+      opacity: 0,
+    }),
+  );
+  massing.userData.stateRole = "franklinSceneTruthBuilding";
+  massing.userData.qaColor = color;
+  massing.userData.qaOpacity = options.primary ? 0.84 : 0.34;
+  massing.visible = false;
+
+  const outline = new THREE.LineSegments(
+    new THREE.EdgesGeometry(massing.geometry),
+    new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0 }),
+  );
+  outline.userData.stateRole = "franklinSceneTruthFootprint";
+  outline.userData.qaColor = color;
+  outline.userData.qaOpacity = options.primary ? 0.95 : 0.5;
+  outline.visible = false;
+
+  group.add(base, massing, outline);
+}
+
+function addSceneTruthFrontageEdge(group, record, projectionBasis, color, options = {}) {
+  const points = record.wgs84Polygon.map((point) => projectWgsToSceneTruth(point, projectionBasis));
+  const edge = findSceneTruthFrontageEdge(points, projectionBasis);
+  if (!edge) return;
+  const ribbon = createEdgeRibbon(edge.start, edge.end, 0.12);
+  const frontage = createFlatPolygonMesh(ribbon, {
+    color: 0xfff1a8,
+    opacity: 0,
+    y: 0.24,
+  });
+  frontage.userData.stateRole = "franklinSceneTruthFrontage";
+  frontage.userData.qaColor = options.primary ? 0xfff1a8 : color;
+  frontage.userData.qaOpacity = options.primary ? 0.92 : 0.42;
+  frontage.visible = false;
+
+  const edgeLine = createPolyline([edge.start, edge.end], {
+    color: 0xfff1a8,
+    opacity: 0,
+    y: 0.31,
+  });
+  edgeLine.userData.stateRole = "franklinSceneTruthFrontage";
+  edgeLine.userData.qaColor = 0xfff1a8;
+  edgeLine.userData.qaOpacity = options.primary ? 0.98 : 0.5;
+  edgeLine.visible = false;
+  group.add(frontage, edgeLine);
+}
+
+function addSceneTruthStreetCenterline(group, axis, halfLength, color, labelText, labelPosition) {
+  const start = { x: -axis.x * halfLength, z: -axis.z * halfLength };
+  const end = { x: axis.x * halfLength, z: axis.z * halfLength };
+  const line = createPolyline([start, end], {
+    color,
+    opacity: 0,
+    y: 0.2,
+  });
+  line.userData.stateRole = "franklinSceneTruthStreet";
+  line.userData.qaColor = color;
+  line.userData.qaOpacity = 0.92;
+  line.visible = false;
+  group.add(line);
+
+  const label = createTextSprite(labelText, {
+    accentColor: "rgba(230, 234, 220, 0.9)",
+    fontSize: 26,
+    scale: { x: 1.42, y: 0.34 },
+  });
+  label.position.set(labelPosition.x, 1, labelPosition.z);
+  label.material.depthTest = false;
+  label.renderOrder = 14;
+  label.userData.stateRole = "franklinSceneTruthLabel";
+  label.userData.qaColor = color;
+  label.userData.qaOpacity = 0.9;
+  label.visible = false;
+  group.add(label);
+}
+
+function addSceneTruthOrientation(group) {
+  const orientation = [
+    { label: "NORTH", point: { x: -5.2, z: -3.78 } },
+    { label: "SOUTH", point: { x: -5.2, z: 3.78 } },
+    { label: "WEST", point: { x: -5.18, z: -2.96 } },
+    { label: "EAST", point: { x: 4.98, z: 2.96 } },
+  ];
+  for (const item of orientation) {
+    const sprite = createTextSprite(item.label, {
+      accentColor: "rgba(158, 233, 255, 0.86)",
+      fontSize: 26,
+      scale: { x: 1.02, y: 0.28 },
+    });
+    sprite.position.set(item.point.x, 0.66, item.point.z);
+    sprite.userData.stateRole = "franklinSceneTruthOrientation";
+    sprite.userData.qaColor = 0x9ee9ff;
+    sprite.userData.qaOpacity = 0.9;
+    sprite.visible = false;
+    group.add(sprite);
+  }
+}
+
+function addFranklinRenderedTruthOverlay(scene, fixture, geometrySource, facadeCueSource, visualObjects) {
+  const group = new THREE.Group();
+  group.visible = false;
+  group.userData.semanticId = "__franklin-rendered-truth";
+  group.userData.stateRole = "franklinRenderedTruthBuilding";
+
+  const model = fixture.renderedTruthModel;
+  const greenpointAxis = getSceneTruthAxis(model.projectionBasis);
+  const franklinAxis = { x: -greenpointAxis.z, z: greenpointAxis.x };
+  const greenpointSlab = createStreetSlab(greenpointAxis, { x: 0, z: 0 }, 12.4, 1.08);
+  const franklinSlab = createStreetSlab(franklinAxis, { x: 0, z: 0 }, 8.8, 1.12);
+
+  const greenpointStreet = createFlatPolygonMesh(greenpointSlab, {
+    color: 0x303d38,
+    opacity: 0,
+    y: 0.018,
+  });
+  greenpointStreet.userData.stateRole = "franklinRenderedTruthStreet";
+  greenpointStreet.userData.qaColor = 0x303d38;
+  greenpointStreet.userData.qaOpacity = 0.95;
+  greenpointStreet.visible = false;
+
+  const franklinStreet = createFlatPolygonMesh(franklinSlab, {
+    color: 0x243f4a,
+    opacity: 0,
+    y: 0.03,
+  });
+  franklinStreet.userData.stateRole = "franklinRenderedTruthStreet";
+  franklinStreet.userData.qaColor = 0x243f4a;
+  franklinStreet.userData.qaOpacity = 0.95;
+  franklinStreet.visible = false;
+  group.add(greenpointStreet, franklinStreet);
+
+  addRenderedTruthStreetCenterline(group, greenpointAxis, 6.2, 0xe8ecd9, "Greenpoint Ave", { x: 4.18, z: 0.72 });
+  addRenderedTruthStreetCenterline(group, franklinAxis, 4.4, 0x9ee9ff, "Franklin Ave", { x: 0.76, z: -3.05 });
+
+  for (const place of fixture.placeMappings) {
+    const record = findGeometryRecordByBin(geometrySource, place.sourceBackedFootprintBin);
+    if (!record) continue;
+    const cueRecord = facadeCueSource.facadeCueRecords?.find((cue) => cue.cueRecordId === place.renderedCueRecordId) ?? null;
+    createRenderedTruthBuilding(group, place, record, cueRecord, model.projectionBasis);
+
+    const labelPoint = projectRenderedTruthLabelPoint(place, record, model.projectionBasis);
+    const label = createMapTruthLabel(place.shortLabel, place.sourceBackedFootprintBin, {
+      accentColor: getFranklinRenderedTruthAccentColor(place),
+    });
+    label.position.set(labelPoint.x, 1.46, labelPoint.z);
+    label.scale.set(1.72, 0.5, 1);
+    label.userData.stateRole = "franklinRenderedTruthLabel";
+    label.userData.qaColor = getFranklinRenderedTruthColor(place);
+    label.userData.qaOpacity = 0.56;
+    label.visible = false;
+    group.add(label);
+  }
+
+  addRenderedTruthOrientation(group);
+  scene.add(group);
+  visualObjects.set("__franklin-rendered-truth", group);
+}
+
+function addFranklinRenderedWrapTruthOverlay(scene, fixture, geometrySource, facadeCueSource, visualObjects) {
+  const group = new THREE.Group();
+  group.visible = false;
+  group.userData.semanticId = "__franklin-rendered-wrap-truth";
+  group.userData.stateRole = "franklinRenderedWrapTruthBuilding";
+
+  const greenpointAxis = getSceneTruthAxis(fixture.projectionBasis);
+  const franklinAxis = getFranklinSceneAxis(fixture.projectionBasis);
+  const greenpointSlab = createStreetSlab(greenpointAxis, { x: 0, z: 0 }, 12.4, 1.08);
+  const franklinSlab = createStreetSlab(franklinAxis, { x: 0, z: 0 }, 8.8, 1.12);
+
+  const greenpointStreet = createFlatPolygonMesh(greenpointSlab, {
+    color: 0x303d38,
+    opacity: 0,
+    y: 0.018,
+  });
+  greenpointStreet.userData.stateRole = "franklinRenderedWrapTruthStreet";
+  greenpointStreet.userData.qaColor = 0x303d38;
+  greenpointStreet.userData.qaOpacity = 0.95;
+  greenpointStreet.visible = false;
+
+  const franklinStreet = createFlatPolygonMesh(franklinSlab, {
+    color: 0x243f4a,
+    opacity: 0,
+    y: 0.03,
+  });
+  franklinStreet.userData.stateRole = "franklinRenderedWrapTruthStreet";
+  franklinStreet.userData.qaColor = 0x243f4a;
+  franklinStreet.userData.qaOpacity = 0.95;
+  franklinStreet.visible = false;
+  group.add(greenpointStreet, franklinStreet);
+
+  addRenderedWrapTruthStreetCenterline(group, greenpointAxis, 6.2, 0xe8ecd9, "Greenpoint Ave", { x: 4.18, z: 0.72 });
+  addRenderedWrapTruthStreetCenterline(group, franklinAxis, 4.4, 0x9ee9ff, "Franklin Ave", { x: 0.76, z: -3.05 });
+
+  for (const place of fixture.placeMappings) {
+    const record = findGeometryRecordByBin(geometrySource, place.sourceBackedFootprintBin);
+    if (!record) continue;
+    const cueRecord = facadeCueSource.facadeCueRecords?.find((cue) => cue.cueRecordId === place.renderedCueRecordId) ?? null;
+    createRenderedWrapTruthBuilding(group, place, record, cueRecord, fixture.projectionBasis);
+
+    const labelPoint = projectRenderedTruthLabelPoint(place, record, fixture.projectionBasis);
+    const label = createMapTruthLabel(place.shortLabel, place.sourceBackedFootprintBin, {
+      accentColor: getFranklinRenderedTruthAccentColor(place),
+    });
+    label.position.set(labelPoint.x, 1.46, labelPoint.z);
+    label.scale.set(1.6, 0.46, 1);
+    label.userData.stateRole = "franklinRenderedWrapTruthLabel";
+    label.userData.qaColor = getFranklinRenderedTruthColor(place);
+    label.userData.qaOpacity = 0.46;
+    label.visible = false;
+    group.add(label);
+  }
+
+  addRenderedWrapTruthOrientation(group);
+  scene.add(group);
+  visualObjects.set("__franklin-rendered-wrap-truth", group);
+}
+
+function createRenderedWrapTruthBuilding(group, place, record, cueRecord, projectionBasis) {
+  const points = record.wgs84Polygon.map((point) => projectWgsToSceneTruth(point, projectionBasis));
+  const profile = place.renderProfile ?? {};
+  const bodyColor = parseCssColor(profile.bodyColor, getFranklinRenderedTruthColor(place));
+  const facadeColor = parseCssColor(profile.facadeColor, bodyColor);
+  const height = clamp(Number(profile.heightUnits) || getSceneTruthHeight(record), 0.72, 2.2);
+
+  const underlay = createFlatPolygonMesh(points, {
+    color: getFranklinRenderedTruthColor(place),
+    opacity: 0,
+    y: 0.055,
+  });
+  underlay.userData.stateRole = "franklinRenderedWrapTruthFootprint";
+  underlay.userData.qaColor = getFranklinRenderedTruthColor(place);
+  underlay.userData.qaOpacity = 0.22;
+  underlay.visible = false;
+
+  const body = new THREE.Mesh(
+    createPrismGeometry(points, height),
+    new THREE.MeshStandardMaterial({
+      color: bodyColor,
+      roughness: 0.84,
+      metalness: 0.02,
+      transparent: false,
+      opacity: 1,
+      depthWrite: true,
+    }),
+  );
+  body.userData.stateRole = "franklinRenderedWrapTruthBuilding";
+  body.userData.qaColor = bodyColor;
+  body.userData.qaOpacity = 1;
+  body.userData.semanticId = place.sourceBackedObjectId;
+  body.visible = false;
+
+  const outline = new THREE.LineSegments(
+    new THREE.EdgesGeometry(body.geometry),
+    new THREE.LineBasicMaterial({ color: getFranklinRenderedTruthColor(place), transparent: true, opacity: 0 }),
+  );
+  outline.userData.stateRole = "franklinRenderedWrapTruthFootprint";
+  outline.userData.qaColor = getFranklinRenderedTruthColor(place);
+  outline.userData.qaOpacity = 0.9;
+  outline.visible = false;
+
+  group.add(underlay, body, outline);
+  addRenderedWrapTruthFacadeModules(group, place, cueRecord, points, projectionBasis, { height, facadeColor });
+}
+
+function addRenderedWrapTruthFacadeModules(group, place, cueRecord, points, projectionBasis, options) {
+  const profile = place.renderProfile ?? {};
+  const height = options.height;
+  const facadeColor = options.facadeColor;
+  const edgeByRole = new Map();
+
+  for (const segment of place.frontageSegments ?? []) {
+    if (segment.segmentRole !== "greenpoint_frontage" && segment.segmentRole !== "franklin_frontage") continue;
+    const edge = findRenderedWrapTruthEdge(points, projectionBasis, segment.edgeSelector);
+    if (!edge) continue;
+    edgeByRole.set(segment.segmentRole, edge);
+    addRenderedWrapTruthFacadeOnEdge(group, place, segment, cueRecord, edge, projectionBasis, { height, facadeColor });
+  }
+
+  const greenpointEdge = edgeByRole.get("greenpoint_frontage");
+  const franklinEdge = edgeByRole.get("franklin_frontage");
+  if (greenpointEdge && franklinEdge) {
+    const cornerSelector = "shared_greenpoint_franklin_corner";
+    const cornerSegment = (place.frontageSegments ?? []).find((segment) => segment.segmentRole === "corner_wrap" && segment.edgeSelector === cornerSelector);
+    addRenderedWrapTruthCornerModule(group, place, cornerSegment, greenpointEdge, franklinEdge, projectionBasis, { height, facadeColor });
+  }
+
+  if (cueRecord?.sourceEvidenceRefs?.length && greenpointEdge) {
+    const axis = getSceneTruthAxis(projectionBasis);
+    const normal = getNormalTowardAxis(greenpointEdge.midpoint, axis);
+    const evidenceLabel = createTextSprite(`refs: ${cueRecord.sourceEvidenceRefs.length}`, {
+      accentColor: getFranklinRenderedTruthAccentColor(place),
+      fontSize: 20,
+      scale: { x: 0.74, y: 0.2 },
+    });
+    const evidencePoint = offsetScenePoint(greenpointEdge.midpoint, normal, 0.62);
+    evidenceLabel.position.set(evidencePoint.x, Math.max(0.74, height * 0.56), evidencePoint.z);
+    evidenceLabel.userData.stateRole = "franklinRenderedWrapTruthLabel";
+    evidenceLabel.userData.qaColor = getFranklinRenderedTruthColor(place);
+    evidenceLabel.userData.qaOpacity = 0.32;
+    evidenceLabel.visible = false;
+    group.add(evidenceLabel);
+  }
+}
+
+function addRenderedWrapTruthFacadeOnEdge(group, place, segment, cueRecord, edge, projectionBasis, options) {
+  const profile = place.renderProfile ?? {};
+  const axis = segment.edgeSelector === "nearest_franklin_axis_edge" ? getFranklinSceneAxis(projectionBasis) : getSceneTruthAxis(projectionBasis);
+  const normal = getNormalTowardAxis(edge.midpoint, axis);
+  const direction = normalizeSceneVector({
+    x: edge.end.x - edge.start.x,
+    z: edge.end.z - edge.start.z,
+  });
+  const length = Math.max(edge.length, 0.32);
+  const height = options.height;
+  const facadeColor = options.facadeColor;
+  const trimColor = parseCssColor(profile.trimColor, 0xe2d0a8);
+  const signColor = parseCssColor(profile.signColor, 0x9b7653);
+  const signAccentColor = parseCssColor(profile.signAccentColor, getFranklinRenderedTruthColor(place));
+  const canopyColor = parseCssColor(profile.canopyColor, 0x080b0b);
+  const glassColor = parseCssColor(profile.glassColor, 0x9fbfb2);
+  const facadeCenter = offsetScenePoint(edge.midpoint, normal, 0.1);
+  const streetScale = segment.segmentRole === "franklin_frontage" ? 0.86 : 1;
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: facadeColor,
+    opacity: 1,
+    center: { x: facadeCenter.x, y: height * 0.5, z: facadeCenter.z },
+    size: [length * 1.02, height * 0.92, 0.12],
+    direction,
+    renderOrder: 56,
+  });
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: signColor,
+    opacity: 1,
+    center: offsetScenePoint({ x: edge.midpoint.x, y: Math.max(0.32, height * 0.32), z: edge.midpoint.z }, normal, 0.22),
+    size: [length * 1.02, Math.max(0.09, height * 0.11), 0.13],
+    direction,
+    renderOrder: 60,
+  });
+
+  if (profile.signAccentColor) {
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedWrapTruthFacade",
+      color: signAccentColor,
+      opacity: 1,
+      center: offsetScenePoint({ x: edge.midpoint.x, y: Math.max(0.34, height * 0.34), z: edge.midpoint.z }, normal, 0.29),
+      size: [length * 0.28 * streetScale, Math.max(0.04, height * 0.04), 0.06],
+      direction,
+      renderOrder: 61,
+    });
+  }
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: canopyColor,
+    opacity: 1,
+    center: offsetScenePoint({ x: edge.midpoint.x, y: Math.max(0.235, height * 0.235), z: edge.midpoint.z }, normal, 0.34),
+    size: [length * 1.0, Math.max(0.055, height * 0.055), 0.34],
+    direction,
+    renderOrder: 62,
+  });
+
+  const recognitionProfile = PLACE_RECOGNITION_PROFILES[place.renderedCueRecordId] ?? {};
+  const bayCount = Math.max(2, Math.floor(Number(profile.bayCount) || 4));
+  const sourceSegments = Array.isArray(recognitionProfile.frontageSegments) && recognitionProfile.frontageSegments.length
+    ? recognitionProfile.frontageSegments
+    : Array.from({ length: bayCount }, () => ({
+      width: 1 / bayCount,
+      glassBeats: 1,
+      backplateColor: facadeColor,
+      signColor,
+      signAccentColor,
+      canopyColor,
+      frameColor: trimColor,
+      glassColor,
+      lowerColor: facadeColor,
+    }));
+  const segmentSource = segment.segmentRole === "franklin_frontage" ? sourceSegments.slice().reverse() : sourceSegments;
+  const totalSegmentWidth = segmentSource.reduce((sum, item) => sum + (Number(item.width) || 0), 0) || 1;
+  let segmentCursor = 0;
+  for (let index = 0; index < segmentSource.length; index += 1) {
+    const item = segmentSource[index];
+    const itemWidth = length * ((Number(item.width) || (1 / segmentSource.length)) / totalSegmentWidth);
+    const itemCenter = segmentCursor + itemWidth * 0.5;
+    const bayPoint = pointAlongEdge(edge.start, direction, itemCenter);
+    const bayWidth = itemWidth * 0.78 * streetScale;
+    const itemBackplate = item.backplateColor ?? facadeColor;
+    const itemSign = item.signColor ?? signColor;
+    const itemAccent = item.signAccentColor ?? signAccentColor;
+    const itemCanopy = item.canopyColor ?? canopyColor;
+    const itemFrame = item.frameColor ?? trimColor;
+    const itemGlass = item.glassColor ?? glassColor;
+    const itemLower = item.lowerColor ?? facadeColor;
+
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedWrapTruthFacade",
+      color: itemBackplate,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.19, height * 0.19), z: bayPoint.z }, normal, 0.34),
+      size: [itemWidth * 0.9, Math.max(0.23, height * 0.28), 0.08],
+      direction,
+      renderOrder: 63,
+    });
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedWrapTruthFacade",
+      color: itemLower,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.08, height * 0.08), z: bayPoint.z }, normal, 0.39),
+      size: [itemWidth * 0.82, Math.max(0.055, height * 0.07), 0.08],
+      direction,
+      renderOrder: 64,
+    });
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedWrapTruthFacade",
+      color: itemSign,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.32, height * 0.32), z: bayPoint.z }, normal, 0.43),
+      size: [itemWidth * 0.88, Math.max(0.07, height * 0.09), 0.07],
+      direction,
+      renderOrder: 65,
+    });
+    if (itemAccent) {
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedWrapTruthFacade",
+        color: itemAccent,
+        opacity: 1,
+        center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.335, height * 0.335), z: bayPoint.z }, normal, 0.48),
+        size: [itemWidth * 0.38, Math.max(0.032, height * 0.035), 0.04],
+        direction,
+        renderOrder: 66,
+      });
+    }
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedWrapTruthFacade",
+      color: itemCanopy,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.235, height * 0.235), z: bayPoint.z }, normal, 0.52),
+      size: [itemWidth * 0.9, Math.max(0.055, height * 0.052), 0.34],
+      direction,
+      renderOrder: 67,
+    });
+
+    const glassBeats = Math.max(1, Math.floor(Number(item.glassBeats) || 1));
+    for (let beat = 0; beat < glassBeats; beat += 1) {
+      const localOffset = ((beat + 0.5) / glassBeats - 0.5) * bayWidth;
+      const glassPoint = {
+        x: bayPoint.x + direction.x * localOffset,
+        z: bayPoint.z + direction.z * localOffset,
+      };
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedWrapTruthFacade",
+        color: itemGlass,
+        opacity: 1,
+        center: offsetScenePoint({ x: glassPoint.x, y: Math.max(0.17, height * 0.165), z: glassPoint.z }, normal, 0.56),
+        size: [Math.max(0.04, bayWidth / glassBeats * 0.7), Math.max(0.12, height * 0.16), 0.045],
+        direction,
+        renderOrder: 68,
+      });
+    }
+
+    if (item.door) {
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedWrapTruthFacade",
+        color: 0x101312,
+        opacity: 1,
+        center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.15, height * 0.145), z: bayPoint.z }, normal, 0.61),
+        size: [Math.max(0.04, bayWidth * 0.26), Math.max(0.18, height * 0.22), 0.05],
+        direction,
+        renderOrder: 69,
+      });
+    }
+
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedWrapTruthFacade",
+      color: itemFrame,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x - direction.x * itemWidth * 0.44, y: Math.max(0.19, height * 0.19), z: bayPoint.z - direction.z * itemWidth * 0.44 }, normal, 0.6),
+      size: [0.026, Math.max(0.23, height * 0.32), 0.06],
+      direction,
+      renderOrder: 70,
+    });
+    segmentCursor += itemWidth;
+  }
+
+  const upperRows = Math.max(1, Math.floor(Number(profile.upperRows) || 2));
+  for (let row = 0; row < upperRows; row += 1) {
+    if (place.placeId === "sereneco" && row > 0) continue;
+    const y = height * (0.48 + row * (0.38 / Math.max(upperRows - 1, 1)));
+    for (let index = 0; index < bayCount; index += 1) {
+      const ratio = (index + 0.5) / bayCount;
+      const windowPoint = pointAlongEdge(edge.start, direction, length * ratio);
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedWrapTruthFacade",
+        color: 0x111817,
+        opacity: 1,
+        center: offsetScenePoint({ x: windowPoint.x, y, z: windowPoint.z }, normal, 0.38),
+        size: [Math.max(0.07, length / bayCount * 0.32 * streetScale), Math.max(0.11, height * 0.1), 0.05],
+        direction,
+        renderOrder: 71,
+      });
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedWrapTruthFacade",
+        color: glassColor,
+        opacity: 1,
+        center: offsetScenePoint({ x: windowPoint.x, y: y + 0.01, z: windowPoint.z }, normal, 0.43),
+        size: [Math.max(0.05, length / bayCount * 0.22 * streetScale), Math.max(0.055, height * 0.052), 0.04],
+        direction,
+        renderOrder: 72,
+      });
+    }
+  }
+
+  const roofColor = profile.roofStyle === "heavy_black_cornice" ? 0x080808 : profile.roofStyle === "ornate_stone_cornice" ? trimColor : 0x3d2f2b;
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: roofColor,
+    opacity: 1,
+    center: offsetScenePoint({ x: edge.midpoint.x, y: height + 0.05, z: edge.midpoint.z }, normal, 0.16),
+    size: [length * 1.06, 0.085, 0.18],
+    direction,
+    renderOrder: 73,
+  });
+
+  addRenderedWrapTruthFrontageHighlight(group, edge, segment);
+}
+
+function addRenderedWrapTruthCornerModule(group, place, segment, greenpointEdge, franklinEdge, projectionBasis, options) {
+  const profile = place.renderProfile ?? {};
+  const height = options.height;
+  const facadeColor = options.facadeColor;
+  const corner = findClosestEdgeCorner(greenpointEdge, franklinEdge);
+  const greenpointNormal = getNormalTowardAxis(greenpointEdge.midpoint, getSceneTruthAxis(projectionBasis));
+  const franklinNormal = getNormalTowardAxis(franklinEdge.midpoint, getFranklinSceneAxis(projectionBasis));
+  const outward = normalizeSceneVector({
+    x: greenpointNormal.x + franklinNormal.x,
+    z: greenpointNormal.z + franklinNormal.z,
+  });
+  const cornerCenter = offsetScenePoint(corner, outward, 0.28);
+  const trimColor = parseCssColor(profile.trimColor, 0xe2d0a8);
+  const signColor = parseCssColor(profile.signColor, 0x9b7653);
+  const canopyColor = parseCssColor(profile.canopyColor, 0x080b0b);
+  const glassColor = parseCssColor(profile.glassColor, 0x9fbfb2);
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: facadeColor,
+    opacity: 1,
+    center: { x: cornerCenter.x, y: height * 0.42, z: cornerCenter.z },
+    size: [0.26, height * 0.78, 0.26],
+    direction: getSceneTruthAxis(projectionBasis),
+    renderOrder: 80,
+  });
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: signColor,
+    opacity: 1,
+    center: { x: cornerCenter.x, y: Math.max(0.34, height * 0.34), z: cornerCenter.z },
+    size: [0.34, Math.max(0.08, height * 0.1), 0.34],
+    direction: getSceneTruthAxis(projectionBasis),
+    renderOrder: 81,
+  });
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: canopyColor,
+    opacity: 1,
+    center: { x: cornerCenter.x, y: Math.max(0.24, height * 0.24), z: cornerCenter.z },
+    size: [0.4, Math.max(0.055, height * 0.052), 0.4],
+    direction: getSceneTruthAxis(projectionBasis),
+    renderOrder: 82,
+  });
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: glassColor,
+    opacity: 1,
+    center: { x: cornerCenter.x, y: Math.max(0.17, height * 0.16), z: cornerCenter.z },
+    size: [0.24, Math.max(0.12, height * 0.15), 0.24],
+    direction: getSceneTruthAxis(projectionBasis),
+    renderOrder: 83,
+  });
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedWrapTruthFacade",
+    color: trimColor,
+    opacity: 1,
+    center: { x: cornerCenter.x, y: height + 0.05, z: cornerCenter.z },
+    size: [0.42, 0.08, 0.42],
+    direction: getSceneTruthAxis(projectionBasis),
+    renderOrder: 84,
+  });
+
+  const marker = createPolyline([
+    { x: corner.x, z: corner.z },
+    { x: cornerCenter.x, z: cornerCenter.z },
+  ], {
+    color: getWrapSegmentColor(segment?.segmentRole ?? "corner_wrap"),
+    opacity: 0,
+    y: 0.52,
+  });
+  marker.userData.stateRole = "franklinRenderedWrapTruthFrontage";
+  marker.userData.qaColor = getWrapSegmentColor("corner_wrap");
+  marker.userData.qaOpacity = 0.9;
+  marker.visible = false;
+  group.add(marker);
+}
+
+function addRenderedWrapTruthFrontageHighlight(group, edge, segment) {
+  const color = getWrapSegmentColor(segment.segmentRole);
+  const ribbon = createEdgeRibbon(edge.start, edge.end, segment.segmentRole === "franklin_frontage" ? 0.16 : 0.13);
+  const frontage = createFlatPolygonMesh(ribbon, {
+    color,
+    opacity: 0,
+    y: 0.27,
+  });
+  frontage.userData.stateRole = "franklinRenderedWrapTruthFrontage";
+  frontage.userData.qaColor = color;
+  frontage.userData.qaOpacity = segment.segmentRole === "franklin_frontage" ? 0.95 : 0.78;
+  frontage.visible = false;
+
+  const edgeLine = createPolyline([edge.start, edge.end], {
+    color,
+    opacity: 0,
+    y: 0.38,
+  });
+  edgeLine.userData.stateRole = "franklinRenderedWrapTruthFrontage";
+  edgeLine.userData.qaColor = color;
+  edgeLine.userData.qaOpacity = 0.96;
+  edgeLine.visible = false;
+  group.add(frontage, edgeLine);
+}
+
+function addRenderedWrapTruthStreetCenterline(group, axis, halfLength, color, labelText, labelPosition) {
+  const start = { x: -axis.x * halfLength, z: -axis.z * halfLength };
+  const end = { x: axis.x * halfLength, z: axis.z * halfLength };
+  const line = createPolyline([start, end], {
+    color,
+    opacity: 0,
+    y: 0.2,
+  });
+  line.userData.stateRole = "franklinRenderedWrapTruthStreet";
+  line.userData.qaColor = color;
+  line.userData.qaOpacity = 0.88;
+  line.visible = false;
+  group.add(line);
+
+  const label = createTextSprite(labelText, {
+    accentColor: "rgba(230, 234, 220, 0.9)",
+    fontSize: 25,
+    scale: { x: 1.36, y: 0.32 },
+  });
+  label.position.set(labelPosition.x, 1, labelPosition.z);
+  label.material.depthTest = false;
+  label.renderOrder = 14;
+  label.userData.stateRole = "franklinRenderedWrapTruthLabel";
+  label.userData.qaColor = color;
+  label.userData.qaOpacity = 0.68;
+  label.visible = false;
+  group.add(label);
+}
+
+function addRenderedWrapTruthOrientation(group) {
+  const orientation = [
+    { label: "NORTH", point: { x: -5.2, z: -3.78 } },
+    { label: "SOUTH", point: { x: -5.2, z: 3.78 } },
+    { label: "WEST", point: { x: -5.18, z: -2.96 } },
+    { label: "EAST", point: { x: 4.98, z: 2.96 } },
+  ];
+  for (const item of orientation) {
+    const sprite = createTextSprite(item.label, {
+      accentColor: "rgba(158, 233, 255, 0.72)",
+      fontSize: 24,
+      scale: { x: 0.92, y: 0.24 },
+    });
+    sprite.position.set(item.point.x, 0.66, item.point.z);
+    sprite.userData.stateRole = "franklinRenderedWrapTruthOrientation";
+    sprite.userData.qaColor = 0x9ee9ff;
+    sprite.userData.qaOpacity = 0.68;
+    sprite.visible = false;
+    group.add(sprite);
+  }
+}
+
+function findRenderedWrapTruthEdge(points, projectionBasis, edgeSelector) {
+  const axis = edgeSelector === "nearest_franklin_axis_edge" ? getFranklinSceneAxis(projectionBasis) : getSceneTruthAxis(projectionBasis);
+  const clean = removeClosingPoint(points);
+  let best = null;
+  for (let index = 0; index < clean.length; index += 1) {
+    const start = clean[index];
+    const end = clean[(index + 1) % clean.length];
+    const midpoint = { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 };
+    const distanceToAxis = Math.abs(axis.x * midpoint.z - axis.z * midpoint.x);
+    const length = Math.hypot(end.x - start.x, end.z - start.z);
+    const candidate = { start, end, midpoint, distanceToAxis, length };
+    if (!best || candidate.distanceToAxis < best.distanceToAxis) best = candidate;
+  }
+  return best;
+}
+
+function getFranklinSceneAxis(projectionBasis) {
+  const greenpointAxis = getSceneTruthAxis(projectionBasis);
+  return { x: -greenpointAxis.z, z: greenpointAxis.x };
+}
+
+function findClosestEdgeCorner(edgeA, edgeB) {
+  const candidates = [
+    { point: edgeA.start, distance: distanceScenePoints(edgeA.start, edgeB.start) },
+    { point: edgeA.start, distance: distanceScenePoints(edgeA.start, edgeB.end) },
+    { point: edgeA.end, distance: distanceScenePoints(edgeA.end, edgeB.start) },
+    { point: edgeA.end, distance: distanceScenePoints(edgeA.end, edgeB.end) },
+    { point: edgeB.start, distance: distanceScenePoints(edgeB.start, edgeA.start) },
+    { point: edgeB.start, distance: distanceScenePoints(edgeB.start, edgeA.end) },
+    { point: edgeB.end, distance: distanceScenePoints(edgeB.end, edgeA.start) },
+    { point: edgeB.end, distance: distanceScenePoints(edgeB.end, edgeA.end) },
+  ];
+  return candidates.sort((a, b) => a.distance - b.distance)[0].point;
+}
+
+function distanceScenePoints(a, b) {
+  return Math.hypot(a.x - b.x, a.z - b.z);
+}
+
+function getWrapSegmentColor(segmentRole) {
+  if (segmentRole === "franklin_frontage") return 0x63d7ff;
+  if (segmentRole === "corner_wrap") return 0xffc45f;
+  return 0xfff1a8;
+}
+
+function createRenderedTruthBuilding(group, place, record, cueRecord, projectionBasis) {
+  const points = record.wgs84Polygon.map((point) => projectWgsToSceneTruth(point, projectionBasis));
+  const profile = place.renderProfile ?? {};
+  const bodyColor = parseCssColor(profile.bodyColor, getFranklinRenderedTruthColor(place));
+  const facadeColor = parseCssColor(profile.facadeColor, bodyColor);
+  const height = clamp(Number(profile.heightUnits) || getSceneTruthHeight(record), 0.72, 2.2);
+
+  const underlay = createFlatPolygonMesh(points, {
+    color: getFranklinRenderedTruthColor(place),
+    opacity: 0,
+    y: 0.055,
+  });
+  underlay.userData.stateRole = "franklinRenderedTruthFootprint";
+  underlay.userData.qaColor = getFranklinRenderedTruthColor(place);
+  underlay.userData.qaOpacity = 0.26;
+  underlay.visible = false;
+
+  const body = new THREE.Mesh(
+    createPrismGeometry(points, height),
+    new THREE.MeshStandardMaterial({
+      color: bodyColor,
+      roughness: 0.82,
+      metalness: 0.02,
+      transparent: false,
+      opacity: 1,
+      depthWrite: true,
+    }),
+  );
+  body.userData.stateRole = "franklinRenderedTruthBuilding";
+  body.userData.qaColor = bodyColor;
+  body.userData.qaOpacity = 0.98;
+  body.userData.semanticId = place.sourceBackedObjectId;
+  body.visible = false;
+
+  const outline = new THREE.LineSegments(
+    new THREE.EdgesGeometry(body.geometry),
+    new THREE.LineBasicMaterial({ color: getFranklinRenderedTruthColor(place), transparent: true, opacity: 0 }),
+  );
+  outline.userData.stateRole = "franklinRenderedTruthFootprint";
+  outline.userData.qaColor = getFranklinRenderedTruthColor(place);
+  outline.userData.qaOpacity = 0.92;
+  outline.visible = false;
+
+  group.add(underlay, body, outline);
+  addRenderedTruthFacadeModules(group, place, cueRecord, points, projectionBasis, { height, facadeColor });
+}
+
+function addRenderedTruthFacadeModules(group, place, cueRecord, points, projectionBasis, options) {
+  const edge = findSceneTruthFrontageEdge(points, projectionBasis);
+  if (!edge) return;
+  const profile = place.renderProfile ?? {};
+  const axis = getSceneTruthAxis(projectionBasis);
+  const normal = getNormalTowardAxis(edge.midpoint, axis);
+  const direction = normalizeSceneVector({
+    x: edge.end.x - edge.start.x,
+    z: edge.end.z - edge.start.z,
+  });
+  const length = Math.max(edge.length, 0.36);
+  const height = options.height;
+  const facadeColor = options.facadeColor;
+  const trimColor = parseCssColor(profile.trimColor, 0xe2d0a8);
+  const signColor = parseCssColor(profile.signColor, 0x9b7653);
+  const signAccentColor = parseCssColor(profile.signAccentColor, getFranklinRenderedTruthColor(place));
+  const canopyColor = parseCssColor(profile.canopyColor, 0x080b0b);
+  const glassColor = parseCssColor(profile.glassColor, 0x9fbfb2);
+  const facadeCenter = offsetScenePoint(edge.midpoint, normal, 0.08);
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedTruthFacade",
+    color: facadeColor,
+    opacity: 1,
+    center: { x: facadeCenter.x, y: height * 0.5, z: facadeCenter.z },
+    size: [length * 1.03, height * 0.92, 0.1],
+    direction,
+    renderOrder: 36,
+  });
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedTruthFacade",
+    color: signColor,
+    opacity: 1,
+    center: offsetScenePoint({ x: edge.midpoint.x, y: Math.max(0.32, height * 0.32), z: edge.midpoint.z }, normal, 0.19),
+    size: [length * 1.05, Math.max(0.1, height * 0.12), 0.12],
+    direction,
+    renderOrder: 39,
+  });
+
+  if (profile.signAccentColor) {
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: signAccentColor,
+      opacity: 1,
+      center: offsetScenePoint({ x: edge.midpoint.x, y: Math.max(0.34, height * 0.34), z: edge.midpoint.z }, normal, 0.26),
+      size: [length * 0.32, Math.max(0.045, height * 0.046), 0.06],
+      direction,
+      renderOrder: 40,
+    });
+  }
+
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedTruthFacade",
+    color: canopyColor,
+    opacity: 1,
+    center: offsetScenePoint({ x: edge.midpoint.x, y: Math.max(0.24, height * 0.24), z: edge.midpoint.z }, normal, 0.28),
+    size: [length * 1.02, Math.max(0.06, height * 0.06), 0.28],
+    direction,
+    renderOrder: 41,
+  });
+
+  const bayCount = Math.max(2, Math.floor(Number(profile.bayCount) || 4));
+  const recognitionProfile = PLACE_RECOGNITION_PROFILES[place.renderedCueRecordId] ?? {};
+  const sourceSegments = Array.isArray(recognitionProfile.frontageSegments) && recognitionProfile.frontageSegments.length
+    ? recognitionProfile.frontageSegments
+    : Array.from({ length: bayCount }, () => ({
+      width: 1 / bayCount,
+      glassBeats: 1,
+      backplateColor: facadeColor,
+      signColor,
+      signAccentColor,
+      canopyColor,
+      frameColor: trimColor,
+      glassColor,
+      lowerColor: facadeColor,
+    }));
+  const totalSegmentWidth = sourceSegments.reduce((sum, segment) => sum + (Number(segment.width) || 0), 0) || 1;
+  let segmentCursor = 0;
+  for (let index = 0; index < sourceSegments.length; index += 1) {
+    const segment = sourceSegments[index];
+    const segmentWidth = length * ((Number(segment.width) || (1 / sourceSegments.length)) / totalSegmentWidth);
+    const segmentCenter = segmentCursor + segmentWidth * 0.5;
+    const bayPoint = pointAlongEdge(edge.start, direction, segmentCenter);
+    const bayWidth = segmentWidth * 0.78;
+    const segmentBackplate = segment.backplateColor ?? facadeColor;
+    const segmentSign = segment.signColor ?? signColor;
+    const segmentAccent = segment.signAccentColor ?? signAccentColor;
+    const segmentCanopy = segment.canopyColor ?? canopyColor;
+    const segmentFrame = segment.frameColor ?? trimColor;
+    const segmentGlass = segment.glassColor ?? glassColor;
+    const segmentLower = segment.lowerColor ?? facadeColor;
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: segmentBackplate,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.19, height * 0.19), z: bayPoint.z }, normal, 0.29),
+      size: [segmentWidth * 0.92, Math.max(0.24, height * 0.3), 0.08],
+      direction,
+      renderOrder: 42,
+    });
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: segmentLower,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.08, height * 0.08), z: bayPoint.z }, normal, 0.34),
+      size: [segmentWidth * 0.86, Math.max(0.06, height * 0.08), 0.08],
+      direction,
+      renderOrder: 45,
+    });
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: segmentSign,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.32, height * 0.32), z: bayPoint.z }, normal, 0.36),
+      size: [segmentWidth * 0.9, Math.max(0.075, height * 0.1), 0.07],
+      direction,
+      renderOrder: 46,
+    });
+    if (segmentAccent) {
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedTruthFacade",
+        color: segmentAccent,
+        opacity: 1,
+        center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.335, height * 0.335), z: bayPoint.z }, normal, 0.41),
+        size: [segmentWidth * 0.42, Math.max(0.035, height * 0.038), 0.04],
+        direction,
+        renderOrder: 47,
+      });
+    }
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: segmentCanopy,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.235, height * 0.235), z: bayPoint.z }, normal, 0.45),
+      size: [segmentWidth * 0.92, Math.max(0.055, height * 0.055), 0.34],
+      direction,
+      renderOrder: 48,
+    });
+
+    const glassBeats = Math.max(1, Math.floor(Number(segment.glassBeats) || 1));
+    for (let beat = 0; beat < glassBeats; beat += 1) {
+      const localOffset = ((beat + 0.5) / glassBeats - 0.5) * bayWidth;
+      const glassPoint = {
+        x: bayPoint.x + direction.x * localOffset,
+        z: bayPoint.z + direction.z * localOffset,
+      };
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedTruthFacade",
+        color: segmentGlass,
+        opacity: 1,
+        center: offsetScenePoint({ x: glassPoint.x, y: Math.max(0.17, height * 0.165), z: glassPoint.z }, normal, 0.48),
+        size: [Math.max(0.045, bayWidth / glassBeats * 0.72), Math.max(0.13, height * 0.17), 0.045],
+        direction,
+        renderOrder: 49,
+      });
+    }
+
+    if (segment.door) {
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedTruthFacade",
+        color: 0x101312,
+        opacity: 1,
+        center: offsetScenePoint({ x: bayPoint.x, y: Math.max(0.15, height * 0.145), z: bayPoint.z }, normal, 0.53),
+        size: [Math.max(0.045, bayWidth * 0.28), Math.max(0.18, height * 0.23), 0.05],
+        direction,
+        renderOrder: 50,
+      });
+    }
+
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: segmentFrame,
+      opacity: 1,
+      center: offsetScenePoint({ x: bayPoint.x - direction.x * segmentWidth * 0.46, y: Math.max(0.19, height * 0.19), z: bayPoint.z - direction.z * segmentWidth * 0.46 }, normal, 0.52),
+      size: [0.028, Math.max(0.25, height * 0.34), 0.06],
+      direction,
+      renderOrder: 51,
+    });
+    segmentCursor += segmentWidth;
+  }
+
+  const upperRows = Math.max(1, Math.floor(Number(profile.upperRows) || 2));
+  for (let row = 0; row < upperRows; row += 1) {
+    const y = height * (0.48 + row * (0.38 / Math.max(upperRows - 1, 1)));
+    for (let index = 0; index < bayCount; index += 1) {
+      if (place.placeId === "sereneco" && row > 0) continue;
+      const ratio = (index + 0.5) / bayCount;
+      const windowPoint = pointAlongEdge(edge.start, direction, length * ratio);
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedTruthFacade",
+        color: 0x111817,
+        opacity: 1,
+        center: offsetScenePoint({ x: windowPoint.x, y, z: windowPoint.z }, normal, 0.28),
+        size: [Math.max(0.08, length / bayCount * 0.36), Math.max(0.12, height * 0.11), 0.05],
+        direction,
+        renderOrder: 42,
+      });
+      addRenderedTruthBox(group, {
+        role: "franklinRenderedTruthFacade",
+        color: glassColor,
+        opacity: 0.95,
+        center: offsetScenePoint({ x: windowPoint.x, y: y + 0.01, z: windowPoint.z }, normal, 0.32),
+        size: [Math.max(0.06, length / bayCount * 0.24), Math.max(0.06, height * 0.055), 0.04],
+        direction,
+        renderOrder: 43,
+      });
+    }
+  }
+
+  const roofColor = profile.roofStyle === "heavy_black_cornice" ? 0x080808 : profile.roofStyle === "ornate_stone_cornice" ? trimColor : 0x3d2f2b;
+  addRenderedTruthBox(group, {
+    role: "franklinRenderedTruthFacade",
+    color: roofColor,
+    opacity: 1,
+    center: offsetScenePoint({ x: edge.midpoint.x, y: height + 0.05, z: edge.midpoint.z }, normal, 0.12),
+    size: [length * 1.1, 0.09, 0.2],
+    direction,
+    renderOrder: 44,
+  });
+
+  if (place.renderProfile?.sideReturnEdge) {
+    const sideAnchor = place.renderProfile.sideReturnEdge === "left" ? edge.start : edge.end;
+    addRenderedTruthBox(group, {
+      role: "franklinRenderedTruthFacade",
+      color: facadeColor,
+      opacity: 0.92,
+      center: offsetScenePoint({ x: sideAnchor.x, y: height * 0.42, z: sideAnchor.z }, normal, -0.22),
+      size: [0.08, height * 0.72, Math.min(0.56, length * 0.28)],
+      direction: normal,
+      renderOrder: 37,
+    });
+  }
+
+  const ribbon = createEdgeRibbon(edge.start, edge.end, 0.13);
+  const frontage = createFlatPolygonMesh(ribbon, {
+    color: 0xfff1a8,
+    opacity: 0,
+    y: 0.24,
+  });
+  frontage.userData.stateRole = "franklinRenderedTruthFrontage";
+  frontage.userData.qaColor = 0xfff1a8;
+  frontage.userData.qaOpacity = 0.88;
+  frontage.visible = false;
+
+  const edgeLine = createPolyline([edge.start, edge.end], {
+    color: 0xfff1a8,
+    opacity: 0,
+    y: 0.34,
+  });
+  edgeLine.userData.stateRole = "franklinRenderedTruthFrontage";
+  edgeLine.userData.qaColor = 0xfff1a8;
+  edgeLine.userData.qaOpacity = 0.95;
+  edgeLine.visible = false;
+  group.add(frontage, edgeLine);
+
+  if (cueRecord?.sourceEvidenceRefs?.length) {
+    const evidenceLabel = createTextSprite(`refs: ${cueRecord.sourceEvidenceRefs.length}`, {
+      accentColor: getFranklinRenderedTruthAccentColor(place),
+      fontSize: 22,
+      scale: { x: 0.82, y: 0.22 },
+    });
+    const evidencePoint = offsetScenePoint(edge.midpoint, normal, 0.62);
+    evidenceLabel.position.set(evidencePoint.x, Math.max(0.74, height * 0.56), evidencePoint.z);
+    evidenceLabel.userData.stateRole = "franklinRenderedTruthLabel";
+    evidenceLabel.userData.qaColor = getFranklinRenderedTruthColor(place);
+    evidenceLabel.userData.qaOpacity = 0.42;
+    evidenceLabel.visible = false;
+    group.add(evidenceLabel);
+  }
+}
+
+function addRenderedTruthBox(group, { role, color, opacity, center, size, direction, renderOrder = 35 }) {
+  const geometry = new THREE.BoxGeometry(size[0], size[1], size[2]);
+  const material = new THREE.MeshStandardMaterial({
+    color,
+    roughness: 0.76,
+    metalness: 0.02,
+    transparent: false,
+    opacity: 1,
+    depthWrite: true,
+  });
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(center.x, center.y, center.z);
+  mesh.rotation.y = -Math.atan2(direction.z, direction.x);
+  mesh.renderOrder = renderOrder;
+  mesh.userData.stateRole = role;
+  mesh.userData.qaColor = color;
+  mesh.userData.qaOpacity = opacity;
+  mesh.visible = false;
+  group.add(mesh);
+  return mesh;
+}
+
+function addRenderedTruthStreetCenterline(group, axis, halfLength, color, labelText, labelPosition) {
+  const start = { x: -axis.x * halfLength, z: -axis.z * halfLength };
+  const end = { x: axis.x * halfLength, z: axis.z * halfLength };
+  const line = createPolyline([start, end], {
+    color,
+    opacity: 0,
+    y: 0.2,
+  });
+  line.userData.stateRole = "franklinRenderedTruthStreet";
+  line.userData.qaColor = color;
+  line.userData.qaOpacity = 0.88;
+  line.visible = false;
+  group.add(line);
+
+  const label = createTextSprite(labelText, {
+    accentColor: "rgba(230, 234, 220, 0.9)",
+    fontSize: 25,
+    scale: { x: 1.36, y: 0.32 },
+  });
+  label.position.set(labelPosition.x, 1, labelPosition.z);
+  label.material.depthTest = false;
+  label.renderOrder = 14;
+  label.userData.stateRole = "franklinRenderedTruthLabel";
+  label.userData.qaColor = color;
+  label.userData.qaOpacity = 0.74;
+  label.visible = false;
+  group.add(label);
+}
+
+function addRenderedTruthOrientation(group) {
+  const orientation = [
+    { label: "NORTH", point: { x: -5.2, z: -3.78 } },
+    { label: "SOUTH", point: { x: -5.2, z: 3.78 } },
+    { label: "WEST", point: { x: -5.18, z: -2.96 } },
+    { label: "EAST", point: { x: 4.98, z: 2.96 } },
+  ];
+  for (const item of orientation) {
+    const sprite = createTextSprite(item.label, {
+      accentColor: "rgba(158, 233, 255, 0.76)",
+      fontSize: 24,
+      scale: { x: 0.92, y: 0.24 },
+    });
+    sprite.position.set(item.point.x, 0.66, item.point.z);
+    sprite.userData.stateRole = "franklinRenderedTruthOrientation";
+    sprite.userData.qaColor = 0x9ee9ff;
+    sprite.userData.qaOpacity = 0.74;
+    sprite.visible = false;
+    group.add(sprite);
+  }
+}
+
+function getNormalTowardAxis(point, axis) {
+  const perpendicular = { x: -axis.z, z: axis.x };
+  const signed = crossScene2d(axis, point);
+  const direction = signed > 0 ? -1 : 1;
+  return {
+    x: perpendicular.x * direction,
+    z: perpendicular.z * direction,
+  };
+}
+
+function normalizeSceneVector(vector) {
+  const length = Math.hypot(vector.x, vector.z) || 1;
+  return { x: vector.x / length, z: vector.z / length };
+}
+
+function pointAlongEdge(start, direction, distance) {
+  return {
+    x: start.x + direction.x * distance,
+    z: start.z + direction.z * distance,
+  };
+}
+
+function offsetScenePoint(point, normal, distance) {
+  return {
+    x: point.x + normal.x * distance,
+    y: point.y,
+    z: point.z + normal.z * distance,
+  };
+}
+
+function crossScene2d(a, b) {
+  return a.x * b.z - a.z * b.x;
+}
+
+function projectRenderedTruthLabelPoint(place, record, projectionBasis) {
+  const centroid = getWgsPolygonCentroid(record.wgs84Polygon);
+  const projected = projectWgsToSceneTruth(centroid, projectionBasis);
+  const offset = place.placeId === "sereneco"
+    ? { x: -0.36, z: -0.58 }
+    : place.placeId === "sonnys-corner"
+      ? { x: 0.48, z: 0.52 }
+      : { x: -0.5, z: 0.52 };
+  return { x: projected.x + offset.x, z: projected.z + offset.z };
+}
+
+function parseCssColor(value, fallback) {
+  if (typeof value !== "string") return fallback;
+  const normalized = value.trim().replace("#", "");
+  if (!/^[0-9a-fA-F]{6}$/.test(normalized)) return fallback;
+  return Number.parseInt(normalized, 16);
+}
+
+function getFranklinRenderedTruthColor(place) {
+  if (place.placeId === "sereneco") return 0x73d694;
+  if (place.placeId === "sonnys-corner") return 0xffb84d;
+  return 0x6fa8ff;
+}
+
+function getFranklinRenderedTruthAccentColor(place) {
+  if (place.placeId === "sereneco") return "rgba(115, 214, 148, 0.9)";
+  if (place.placeId === "sonnys-corner") return "rgba(255, 184, 77, 0.9)";
+  return "rgba(111, 168, 255, 0.9)";
+}
+
 function addMapTruthFootprint(group, record, origin, color, options) {
   const points = record.wgs84Polygon.map((point) => projectWgsToMapTruth(point, origin));
   const fill = createFlatPolygonMesh(points, {
@@ -3056,6 +4563,79 @@ function getFranklinMapTruthAccentColor(place) {
   if (place.placeId === "sereneco") return "rgba(117, 215, 150, 0.95)";
   if (place.placeId === "sonnys-corner") return "rgba(255, 189, 89, 0.95)";
   return "rgba(114, 169, 255, 0.95)";
+}
+
+function getFranklinSceneTruthColor(place) {
+  if (place.placeId === "sereneco") return 0x73d694;
+  if (place.placeId === "sonnys-corner") return 0xffb84d;
+  return 0x6fa8ff;
+}
+
+function getFranklinSceneTruthAccentColor(place) {
+  if (place.placeId === "sereneco") return "rgba(115, 214, 148, 0.95)";
+  if (place.placeId === "sonnys-corner") return "rgba(255, 184, 77, 0.95)";
+  return "rgba(111, 168, 255, 0.95)";
+}
+
+function getSceneTruthHeight(record) {
+  const sourceHeight = Number.parseFloat(record.sourceProperties?.heightRoof);
+  return clamp(Number.isFinite(sourceHeight) ? sourceHeight * 0.06 : 1.1, 0.75, 2.45);
+}
+
+function getSceneTruthAxis(projectionBasis) {
+  const west = projectWgsToSceneTruth(projectionBasis.greenpointAxisWgs84.westPointWgs84, projectionBasis);
+  const east = projectWgsToSceneTruth(projectionBasis.greenpointAxisWgs84.eastPointWgs84, projectionBasis);
+  const vector = { x: east.x - west.x, z: east.z - west.z };
+  const length = Math.hypot(vector.x, vector.z) || 1;
+  return { x: vector.x / length, z: vector.z / length };
+}
+
+function projectWgsToSceneTruth(point, projectionBasis) {
+  const origin = projectionBasis.originWgs84;
+  const metersPerLon = 111320 * Math.cos((origin.lat * Math.PI) / 180);
+  const scale = projectionBasis.scaleMetersToSceneUnits ?? 0.075;
+  return {
+    x: (point.lon - origin.lon) * metersPerLon * scale,
+    z: -(point.lat - origin.lat) * 110540 * scale,
+  };
+}
+
+function projectMeterOffsetToSceneTruth(offsetMeters, projectionBasis) {
+  const scale = projectionBasis.scaleMetersToSceneUnits ?? 0.075;
+  return {
+    x: offsetMeters.east * scale,
+    z: -offsetMeters.north * scale,
+  };
+}
+
+function findSceneTruthFrontageEdge(points, projectionBasis) {
+  const clean = removeClosingPoint(points);
+  const axis = getSceneTruthAxis(projectionBasis);
+  let best = null;
+  for (let index = 0; index < clean.length; index += 1) {
+    const start = clean[index];
+    const end = clean[(index + 1) % clean.length];
+    const midpoint = { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 };
+    const distanceToGreenpointAxis = Math.abs(axis.x * midpoint.z - axis.z * midpoint.x);
+    const length = Math.hypot(end.x - start.x, end.z - start.z);
+    const candidate = { start, end, midpoint, distanceToGreenpointAxis, length };
+    if (!best || candidate.distanceToGreenpointAxis < best.distanceToGreenpointAxis) best = candidate;
+  }
+  return best;
+}
+
+function createEdgeRibbon(start, end, width) {
+  const dx = end.x - start.x;
+  const dz = end.z - start.z;
+  const length = Math.hypot(dx, dz) || 1;
+  const normal = { x: -dz / length, z: dx / length };
+  const halfWidth = width / 2;
+  return [
+    { x: start.x - normal.x * halfWidth, z: start.z - normal.z * halfWidth },
+    { x: end.x - normal.x * halfWidth, z: end.z - normal.z * halfWidth },
+    { x: end.x + normal.x * halfWidth, z: end.z + normal.z * halfWidth },
+    { x: start.x + normal.x * halfWidth, z: start.z + normal.z * halfWidth },
+  ];
 }
 
 function getFranklinSeparatorPreviewX(fixture, buildingsById, runtimeScene) {
@@ -6706,6 +8286,9 @@ function isQALayerVisibleInFocus(role, qaLayerFocus) {
   if (qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC) return QA_VISUAL_POC_VISIBLE_ROLES.has(role);
   if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SPATIAL) return QA_FRANKLIN_SPATIAL_VISIBLE_ROLES.has(role);
   if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH) return QA_FRANKLIN_TRUTH_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH) return QA_FRANKLIN_SCENE_TRUTH_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH) return QA_FRANKLIN_RENDERED_TRUTH_VISIBLE_ROLES.has(role);
+  if (qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH) return QA_FRANKLIN_RENDERED_WRAP_TRUTH_VISIBLE_ROLES.has(role);
   return true;
 }
 
@@ -6743,6 +8326,26 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
           || role === "franklinMapTruthStreet"
           || role === "franklinMapTruthLabel"
           || role === "franklinMapTruthOrientation"
+          || role === "franklinSceneTruthBuilding"
+          || role === "franklinSceneTruthFootprint"
+          || role === "franklinSceneTruthStreet"
+          || role === "franklinSceneTruthFrontage"
+          || role === "franklinSceneTruthLabel"
+          || role === "franklinSceneTruthOrientation"
+          || role === "franklinRenderedTruthBuilding"
+          || role === "franklinRenderedTruthFacade"
+          || role === "franklinRenderedTruthFootprint"
+          || role === "franklinRenderedTruthStreet"
+          || role === "franklinRenderedTruthFrontage"
+          || role === "franklinRenderedTruthLabel"
+          || role === "franklinRenderedTruthOrientation"
+          || role === "franklinRenderedWrapTruthBuilding"
+          || role === "franklinRenderedWrapTruthFacade"
+          || role === "franklinRenderedWrapTruthFootprint"
+          || role === "franklinRenderedWrapTruthStreet"
+          || role === "franklinRenderedWrapTruthFrontage"
+          || role === "franklinRenderedWrapTruthLabel"
+          || role === "franklinRenderedWrapTruthOrientation"
         ) {
           child.visible = role === "candidatePoiLabel" ? qaEnabled && qaLayerVisible && (isSelected || isHovered) : qaEnabled && qaLayerVisible;
         }
@@ -6760,11 +8363,17 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
         const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
         const franklinSpatial = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SPATIAL;
         const franklinTruth = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_TRUTH;
+        const franklinSceneTruth = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_SCENE_TRUTH;
+        const franklinRenderedTruth = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_TRUTH;
+        const franklinRenderedWrapTruth = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_FRANKLIN_RENDERED_WRAP_TRUTH;
+        const suppressOldStylizedTargetBodiesInFocus = franklinSceneTruth || franklinRenderedTruth || franklinRenderedWrapTruth;
         if (child.userData.stateRole === "outline" || child.userData.stateRole === "footprint") {
           child.material.opacity = isSelected
             ? 0.95
             : isHovered
               ? 0.78
+              : suppressOldStylizedTargetBodiesInFocus
+                ? 0
               : franklinTruth
                 ? 0
               : franklinSpatial
@@ -6779,6 +8388,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             ? 0.72
             : isHovered
               ? 0.58
+              : suppressOldStylizedTargetBodiesInFocus
+                ? 0
               : franklinTruth
                 ? 0
               : franklinSpatial
@@ -6793,6 +8404,8 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
             ? 0.86
             : isHovered
               ? 0.72
+              : suppressOldStylizedTargetBodiesInFocus
+                ? 0
               : franklinTruth
                 ? 0
               : franklinSpatial
@@ -6803,11 +8416,13 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
                 ? child.userData.hasEvidenceFacade ? 0 : 0.003
                 : 0.94;
         } else if (child.userData.stateRole === "anchor") {
-          child.material.opacity = isSelected ? 0.9 : isHovered ? 0.72 : franklinTruth ? 0 : qaEnabled ? 0.025 : 0.42;
+          child.material.opacity = isSelected ? 0.9 : isHovered ? 0.72 : suppressOldStylizedTargetBodiesInFocus || franklinTruth ? 0 : qaEnabled ? 0.025 : 0.42;
         } else if (child.userData.stateRole === "line") {
           const isCenterline = child.userData.semanticType === "corridor-street-centerline";
           child.material.opacity = isSelected || isHovered
             ? 0.72
+            : suppressOldStylizedTargetBodiesInFocus
+              ? 0
             : franklinTruth
               ? 0
             : franklinSpatial && isCenterline
@@ -6822,10 +8437,10 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
           child.visible = true;
           child.material.transparent = true;
           child.material.depthWrite = false;
-          child.material.opacity = franklinTruth ? 0 : franklinSpatial ? Math.min(child.userData.baseOpacity ?? 0.2, 0.24) : visualPoc ? 0.055 : child.userData.baseOpacity ?? child.material.opacity;
+          child.material.opacity = suppressOldStylizedTargetBodiesInFocus || franklinTruth ? 0 : franklinSpatial ? Math.min(child.userData.baseOpacity ?? 0.2, 0.24) : visualPoc ? 0.055 : child.userData.baseOpacity ?? child.material.opacity;
         } else if (child.userData.stateRole === "guideLabel") {
           const visualPoc = qaEnabled && qaLayerFocus === QA_LAYER_FOCUS_VISUAL_POC;
-          child.visible = qaEnabled && qaLayerVisible && !visualPoc && !franklinTruth;
+          child.visible = qaEnabled && qaLayerVisible && !visualPoc && !franklinTruth && !suppressOldStylizedTargetBodiesInFocus;
           child.material.transparent = true;
           child.material.opacity = child.visible ? child.userData.baseOpacity ?? child.material.opacity : 0;
         } else if (child.userData.stateRole === "facadeCue") {
@@ -6991,10 +8606,38 @@ function updateObjectStates(state, hoveredId, selectedId, qaEnabled, qaLayerFocu
           child.material.depthWrite = false;
           child.material.opacity = qaEnabled && qaLayerVisible ? child.userData.qaOpacity ?? 0.94 : 0;
         } else if (
+          child.userData.stateRole === "franklinRenderedTruthBuilding"
+          || child.userData.stateRole === "franklinRenderedTruthFacade"
+          || child.userData.stateRole === "franklinRenderedWrapTruthBuilding"
+          || child.userData.stateRole === "franklinRenderedWrapTruthFacade"
+        ) {
+          child.visible = qaEnabled && qaLayerVisible;
+          child.material.transparent = false;
+          child.material.depthWrite = true;
+          if (child.material.color && child.userData.qaColor) child.material.color.set(child.userData.qaColor);
+          child.material.opacity = child.visible ? 1 : 0;
+          child.material.needsUpdate = true;
+        } else if (
           child.userData.stateRole === "franklinMapTruth"
           || child.userData.stateRole === "franklinMapTruthStreet"
           || child.userData.stateRole === "franklinMapTruthLabel"
           || child.userData.stateRole === "franklinMapTruthOrientation"
+          || child.userData.stateRole === "franklinSceneTruthBuilding"
+          || child.userData.stateRole === "franklinSceneTruthFootprint"
+          || child.userData.stateRole === "franklinSceneTruthStreet"
+          || child.userData.stateRole === "franklinSceneTruthFrontage"
+          || child.userData.stateRole === "franklinSceneTruthLabel"
+          || child.userData.stateRole === "franklinSceneTruthOrientation"
+          || child.userData.stateRole === "franklinRenderedTruthFootprint"
+          || child.userData.stateRole === "franklinRenderedTruthStreet"
+          || child.userData.stateRole === "franklinRenderedTruthFrontage"
+          || child.userData.stateRole === "franklinRenderedTruthLabel"
+          || child.userData.stateRole === "franklinRenderedTruthOrientation"
+          || child.userData.stateRole === "franklinRenderedWrapTruthFootprint"
+          || child.userData.stateRole === "franklinRenderedWrapTruthStreet"
+          || child.userData.stateRole === "franklinRenderedWrapTruthFrontage"
+          || child.userData.stateRole === "franklinRenderedWrapTruthLabel"
+          || child.userData.stateRole === "franklinRenderedWrapTruthOrientation"
         ) {
           child.visible = qaEnabled && qaLayerVisible;
           child.material.transparent = true;
@@ -7240,6 +8883,48 @@ function cloneCameraState(value) {
     target: value.target.clone(),
     topDown: value.topDown === true,
   };
+}
+
+function waitForR10GCaptureFrame() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  });
+}
+
+async function saveR10GCapture(filename, dataUrl) {
+  try {
+    const response = await fetch("/__r10g-capture", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ filename, dataUrl }),
+    });
+    const result = await response.json();
+    if (!response.ok || !result.ok) throw new Error(result.error ?? "Capture endpoint failed.");
+    return { savedToRepo: true, path: result.path };
+  } catch (error) {
+    return { savedToRepo: false, error: error.message };
+  }
+}
+
+function createR10GCaptureTray() {
+  const existing = document.querySelector(".phase4b-r10g-capture-tray");
+  if (existing) existing.remove();
+  const tray = document.createElement("aside");
+  tray.className = "phase4b-r10g-capture-tray";
+  tray.setAttribute("aria-label", "R10G screenshot capture results");
+  tray.innerHTML = "<strong>R10G capture</strong><span>Saving review screenshots...</span>";
+  document.body.appendChild(tray);
+  return tray;
+}
+
+function addR10GCaptureLink(tray, filename, dataUrl, result) {
+  const link = document.createElement("a");
+  link.href = dataUrl;
+  link.download = filename;
+  link.textContent = result.savedToRepo ? `saved ${filename}` : `download ${filename}`;
+  link.dataset.saved = result.savedToRepo ? "true" : "false";
+  if (!result.savedToRepo) link.title = result.error ?? "Dev endpoint unavailable; use browser download.";
+  tray.appendChild(link);
 }
 
 function removeClosingPoint(points) {

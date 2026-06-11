@@ -2,7 +2,7 @@
 
 Status: Active task ledger
 Created: 2026-05-29
-Last reconciled: 2026-06-10
+Last reconciled: 2026-06-11
 
 ## Purpose
 
@@ -55,15 +55,104 @@ Next pointer:
 
 ## Current Control State
 
-- Current phase: `Batch 4M-R10C/R10D: Franklin Map Truth Legibility` is complete for Batu visual review on top of the current dirty R10/R10A/R10B state; R8/R9 remain complete, verified, and committed as `feb533f`.
+- Current phase: `Batch 4M-R10G: Franklin Corner Frontage Wrap Fix` is implemented with saved review screenshots and stopped for Batu visual review. The accumulated R10E/R10F/R10G review packet remains uncommitted until Batu approves commit behavior.
 - Current next pointer: `docs/CURRENT_EXECUTION_BRIEF.md`.
-- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the completed R10C/R10D map-truth visual review gate. GLB tuning, hero-kit tuning, R11/R12, Manhattan work, production mode, facade polish, materials, and asset fidelity remain future candidates only; no pre-authorized queue exists.
+- Current next state: `docs/CURRENT_EXECUTION_BRIEF.md` records the R10G corner-frontage wrap visual review gate. GLB assessment/tuning, hero-kit tuning, R11/R12, Manhattan work, production mode, facade polish, materials, and asset fidelity remain future candidates only; no pre-authorized queue exists.
 - Updated roadmap posture: Batu accepted the 4G-A/4G-B/4H-1 packet and opened a bounded Phase 4I packet. 4I-1 through 4I-4 are complete and verified. The roadmap is now reframed around spatial truth first, facade recognizability second, and art direction third. 4O-1 through 4O-20 completed the truth-first QA scaffold path. 4J-1 through 4J-3 added and reviewed QA-only frontage/bay candidates. 4K-1 through 4K-3 added, rendered, and reviewed QA-only recognizable anchor cues. 4L-Prep and 4L-Local-1 through 4L-Local-5 are complete and verified. 4M-R5 proved measured/procedural Franklin rendering can reach directional recognizability. 4M-R6 tested the hybrid hero-corner lane: Franklin-specific opaque final-look modules over the measured trace, with reusable facade/street grammar extracted for later scaling. R6 proved hybrid recognizability but not benchmark render fidelity. R7 completed a Franklin-only hero kit extraction/render proof: measured trace = alignment, hero kit = visual fidelity, runtime = assembly/review. Real source data download, cache, ingestion, conversion, render use, extraction, training, source promotion, business linkage, exact claims, production assets, normal-mode exposure, public/product claims, Qwen/Oxen, Google Street View / Google 3D Tiles use beyond benchmark-only discussion, new credentials, paid APIs, dependencies, renderer replacement, public interfaces beyond the internal Franklin QA hero module, broad module-boundary changes, architecture changes, Manhattan expansion, 4L external render implementation, production 4M work, and 4P remain blocked unless a later Batu gate explicitly approves them.
 - Stable roadmap: `docs/PLAN.md`.
 - Detailed MVP scope authority: `docs/MVP_SCOPE.md`.
 - Legacy tracker: `docs/archive/governance/TASKS.md` is orientation only and must defer to the plan, scope, current brief, and this ledger.
 
 ## Entries
+
+### 2026-06-11 - Batch 4M-R10G Franklin Corner Frontage Wrap Fix
+
+Status:
+- Implemented structurally; stopped for Batu visual review. Not approved for GLB assessment.
+
+Scope:
+- Preserve the R10B/R10F target BIN mapping and corrected R10E Franklin-local frame while changing the Franklin rendered QA proof from one Greenpoint-facing facade per building to edge-level Greenpoint, Franklin, side-return, and corner-wrap frontage segments.
+
+Files changed:
+- `src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `vite.config.js`
+- `scripts/verify-phase-4m-r10g-franklin-corner-frontage-wrap.mjs`
+- `scripts/verify-phase-4m-r10g-visual-approval-readiness.mjs`
+- `docs/reports/phase-4m-r10g-franklin-corner-frontage-wrap.md`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4m-r10g-franklin-corner-frontage-wrap.mjs`
+- `npm run build`
+
+Outcome:
+- Added an edge-level R10G fixture preserving Sereneco -> BIN `3337033`, Premier / Franklin Organic -> BIN `3322608`, and Sonny's Corner -> BIN `3064811`.
+- Added `Franklin Wrap` / `franklin_rendered_wrap_truth` QA mode.
+- Rendered active Greenpoint and Franklin frontage modules for each target, plus a physical corner-wrap module at the shared corner condition.
+- Added frontage highlights that distinguish Greenpoint frontage, Franklin frontage, and corner-wrap segments.
+- Kept old stylized target bodies suppressed in the wrap focus and kept GLB assessment blocked.
+- Added verifier guardrails for active two-street frontage, corner-wrap presence, preserved placement, non-negligible Franklin frontage, and the Sereneco context-mass distinction.
+
+Unresolved decisions:
+- Batu owns the R10G visual approval decision and whether any later GLB assessment/tuning, R11 comparison, R12 standardization, Manhattan work, production mode, facade polish, materials, or asset fidelity may open.
+- Saved R10G screenshots are captured in `docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap/`. Local Playwright/Chrome, localhost shell access, and desktop capture are blocked by sandbox/display permissions in this thread, so R10G uses `r10gCapture=1` plus a dev-only Vite endpoint to save PNGs from inside the browser page.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10G Franklin corner-frontage wrap visual review gate.
+
+### 2026-06-10 - Batch 4M-R10E Franklin Scene Geometry Root-Cause Fix
+
+Status:
+- Complete for Batu visual review.
+
+Scope:
+- Fix the actual rendered Franklin x Greenpoint Ave scene geometry so the building bodies, frontage edges, and street slabs match map truth before any GLB assessment/tuning, hero-kit tuning, R11/R12 work, Manhattan work, production mode, facade polish, materials, or asset fidelity resumes.
+
+Files changed:
+- `src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json`
+- `src/Phase4BRuntimePreview.jsx`
+- `src/styles.css`
+- `scripts/verify-phase-4m-r10e-franklin-scene-geometry-root-cause.mjs`
+- `docs/reports/phase-4m-r10e-franklin-scene-geometry-root-cause-fix.md`
+- `docs/review-screenshots/phase-4m-r10e-franklin-scene-geometry-root-cause-fix/franklin-scene-truth-top-down-r10e.png`
+- `docs/review-screenshots/phase-4m-r10e-franklin-scene-geometry-root-cause-fix/franklin-scene-truth-oblique-r10e.png`
+- `docs/review-screenshots/phase-4m-r10e-franklin-scene-geometry-root-cause-fix/franklin-scene-truth-frontage-r10e.png`
+- `docs/CURRENT_EXECUTION_BRIEF.md`
+- `docs/PLAN.md`
+- `docs/MVP_EXECUTION_LEDGER.md`
+- `docs/phase-4-execution-roadmap.md`
+
+Verification:
+- `node scripts/verify-phase-4m-r10e-franklin-scene-geometry-root-cause.mjs`
+- `node scripts/verify-phase-4m-r10c-r10d-franklin-map-truth.mjs`
+- `node scripts/verify-phase-4m-r10b-franklin-spatial-reconciliation.mjs`
+- `node scripts/verify-phase-4m-r10a-franklin-placement-fix.mjs`
+- `node scripts/verify-phase-4m-r10-franklin-hero-asset-ingestion-spike.mjs`
+- `node scripts/verify-phase-4m-r9-franklin-high-recognition-detail-modules.mjs`
+- `node scripts/verify-phase-4m-r8-franklin-facade-record-assembly.mjs`
+- Browser top-down, oblique, and frontage screenshot capture from `/?qa=1&qaLayerFocus=franklin_scene_truth&r10HeroAsset=0`
+- PNG format check
+- `npm run build`
+- `git diff --check`
+
+Outcome:
+- Preserved the R10B ID mapping after re-checking source WGS84 footprint geometry and runtime placement.
+- Diagnosed the scene-correctness failure as runtime transform/scaffold placement plus centroid-only validation, not incorrect target BINs.
+- Added a QA-only `Franklin Scene` mode that renders actual source-projected building bodies, footprint outlines, frontage highlights, Greenpoint Ave and bounded review-only Franklin Ave slabs/centerlines, compact labels, footprint IDs, and orientation cues.
+- Suppressed old stylized target bodies and corridor clutter in the Franklin Scene focus when they conflict with source-projected geometry.
+- Added frontage-aware verifier coverage for side-of-Franklin, side-of-Greenpoint, frontage street, scene position, no-artificial-offset, no-GLB-proof, and screenshot-artifact criteria.
+
+Unresolved decisions:
+- Batu owns the R10E visual scene-correctness decision and whether any later GLB assessment/tuning, R11 comparison, R12 standardization, Manhattan work, production mode, facade polish, materials, or asset fidelity may open.
+- The current source geometry packet lacks a Franklin Ave centerline, so R10E records a data gap and uses the smallest bounded review-only Franklin street geometry needed for this intersection. It is not production truth.
+
+Next pointer:
+- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10E Franklin actual-scene geometry review gate.
 
 ### 2026-06-10 - Batch 4M-R10C/R10D Franklin Map Truth Legibility
 
@@ -108,7 +197,7 @@ Unresolved decisions:
 - The current source geometry packet lacks a Franklin Ave centerline, so the verifier uses the shared Greenpoint Ave endpoint and WGS84 footprint centroids as a QA-only derived Franklin separator until a later approved source/geometry-confidence batch improves cross-street data.
 
 Next pointer:
-- `docs/CURRENT_EXECUTION_BRIEF.md` now points to no executable batch and stops at the R10C/R10D Franklin map-truth visual review gate.
+- Superseded by R10E after Batu rejected R10C/R10D for actual scene correctness. `docs/CURRENT_EXECUTION_BRIEF.md` now points to the R10E Franklin actual-scene geometry review gate.
 
 ### 2026-06-10 - Batch 4M-R10B Franklin Spatial Reconciliation
 

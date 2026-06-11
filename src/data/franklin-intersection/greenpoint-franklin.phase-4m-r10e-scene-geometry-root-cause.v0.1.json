@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "phase-4m-r10e-franklin-scene-geometry-root-cause.v0.1",
+  "fixtureId": "greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause",
+  "phase": "4M-R10E",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "status": "qa_scene_geometry_root_cause_fix_for_batu_review",
+  "scope": {
+    "intersection": "Greenpoint Ave x Franklin Ave",
+    "sourceGeometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+    "runtimeSceneBuilderPath": "src/phase4bRuntimeScene.js",
+    "runtimePreviewPath": "src/Phase4BRuntimePreview.jsx",
+    "claimLimit": "QA spatial review geometry only. This fixture does not create business identity, tenant frontage, storefront anchor, exact address, entrance, signage, material, active-status, production, or public/product claims."
+  },
+  "rootCauseDiagnosis": [
+    {
+      "symptom": "R10C/R10D labels were in correct quadrants, but the Visual POC/4L target building bodies did not read as the Franklin x Greenpoint three-corner condition.",
+      "likelyRootCause": "The runtime building bodies use the long Greenpoint corridor preview transform, not the Franklin-local map-truth frame.",
+      "responsibleFileFunctionOrRecord": "src/phase4bRuntimeScene.js:createTransform/toPreviewPoint",
+      "proposedFix": "Add a QA-only Franklin Scene Truth layer that renders the target building bodies from source WGS84 footprints in the Franklin-local street frame and hides the conflicting stylized corridor bodies in that focus.",
+      "verifierOrScreenshotProof": "R10E verifier checks runtime snippets and screenshot artifacts; top-down R10E screenshot must show bodies, not only labels."
+    },
+    {
+      "symptom": "Premier/Franklin Organic and Sonny's render close together on the same corridor-side band in the old scene, while Sereneco appears as a far-left corridor object instead of directly across Greenpoint.",
+      "likelyRootCause": "The corridor transform compresses perpendicular street depth and aligns the preview around Greenpoint's centerline only.",
+      "responsibleFileFunctionOrRecord": "src/phase4bRuntimeScene.js:PERPENDICULAR_SCALE_MULTIPLIER and createTransform; generated manifest coordinateSystems.stylized-scene-projection",
+      "proposedFix": "Use the shared Greenpoint/Franklin endpoint and WGS84 footprint polygons to project the three target bodies into a local Franklin review scene.",
+      "verifierOrScreenshotProof": "Verifier compares WGS side classification and projected scene position for all target BINs."
+    },
+    {
+      "symptom": "Franklin Ave was represented by QA labels/slabs but did not control the actual target building placement.",
+      "likelyRootCause": "The Phase 3B source packet includes Greenpoint centerline segments but no Franklin Ave centerline; R10B/R10C derived a separator after the runtime scene was already built.",
+      "responsibleFileFunctionOrRecord": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json streetCenterlineRecords",
+      "proposedFix": "Keep Franklin as an explicitly bounded QA-only derived cross-street slab through the shared Greenpoint endpoint, and use that same slab as the placement control in Franklin Scene Truth mode.",
+      "verifierOrScreenshotProof": "Verifier fails unless Franklin and Greenpoint slabs are required scene control geometry and the Franklin centerline gap is recorded."
+    },
+    {
+      "symptom": "Centroid-only checks passed but storefront/frontage readability failed.",
+      "likelyRootCause": "Prior verifier checked side of Franklin and Greenpoint from centroid only, not the street-facing footprint edge.",
+      "responsibleFileFunctionOrRecord": "scripts/verify-phase-4m-r10c-r10d-franklin-map-truth.mjs",
+      "proposedFix": "Add frontage-aware validation using the footprint edge nearest the Greenpoint street axis and require compact frontage edge highlights in the QA scene.",
+      "verifierOrScreenshotProof": "R10E verifier checks each target frontageStreet, frontageFacing, nearest-edge method, and runtime frontage highlight support."
+    }
+  ],
+  "sceneTruthModel": {
+    "sourceHypothesisFromR10B": "preserved",
+    "mappingDecision": "Target BINs remain preserved. The issue was not source identity; it was the runtime scene transform and centroid-only validation.",
+    "correctionType": "qa_only_source_projected_scene_geometry_layer",
+    "oldStylizedRuntimePlacementStatus": "disabled_in_franklin_scene_truth_focus_when_conflicting",
+    "artificialOffsetsUsedForCorrection": false,
+    "projectionBasis": {
+      "method": "wgs84_to_franklin_local_scene_projection",
+      "scaleMetersToSceneUnits": 0.075,
+      "originWgs84": {
+        "lon": -73.95759551445,
+        "lat": 40.729886989476,
+        "source": "nyc-centerline-physicalid-47237.wgs84Line[0] / nyc-centerline-physicalid-47238.wgs84Line[1]"
+      },
+      "greenpointAxisWgs84": {
+        "westPointWgs84": {
+          "lon": -73.959244843819,
+          "lat": 40.729729995886
+        },
+        "eastPointWgs84": {
+          "lon": -73.954246485005,
+          "lat": 40.730205703344
+        }
+      },
+      "franklinStreetGeometry": {
+        "status": "bounded_review_only_derived_cross_street_missing_source_centerline",
+        "basis": "perpendicular_to_greenpoint_axis_through_shared_greenpoint_endpoint",
+        "notProductionTruth": true
+      }
+    },
+    "renderingRules": {
+      "renderActualSourceFootprintBodies": true,
+      "renderActualFootprintOutlines": true,
+      "renderFrontageEdgeHighlights": true,
+      "renderGreenpointAveAsControlStreetSlab": true,
+      "renderFranklinAveAsControlStreetSlab": true,
+      "suppressOldStylizedTargetBodiesInFocus": true,
+      "suppressCorridorClutter": true,
+      "suppressLarge4LLabels": true,
+      "showCompactLabels": true
+    }
+  },
+  "placeMappings": [
+    {
+      "placeId": "premier-franklin-organic",
+      "qaReferenceName": "Premier Organic / Franklin Organic",
+      "shortLabel": "Premier / Franklin Organic",
+      "sourceBackedFootprintBin": "3322608",
+      "sameBblSourceComponentBins": [
+        "3322608",
+        "3322609",
+        "3322610"
+      ],
+      "targetRenderBins": [
+        "3322608",
+        "3322609",
+        "3322610"
+      ],
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southwest_across_franklin_corner",
+      "frontageStreet": "Greenpoint Ave",
+      "frontageFacing": "north_toward_greenpoint",
+      "frontageEdgeMethod": "nearest_source_footprint_edge_to_greenpoint_axis",
+      "labelPlacement": {
+        "offsetMeters": {
+          "east": -28,
+          "north": -42
+        }
+      },
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+      ]
+    },
+    {
+      "placeId": "sereneco",
+      "qaReferenceName": "Sereneco",
+      "shortLabel": "Sereneco",
+      "sourceBackedFootprintBin": "3337033",
+      "sameBblSourceComponentBins": [
+        "3337033"
+      ],
+      "targetRenderBins": [
+        "3337033"
+      ],
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "north",
+      "cornerIntersectionRole": "northwest_across_franklin_corner",
+      "frontageStreet": "Greenpoint Ave",
+      "frontageFacing": "south_toward_greenpoint",
+      "frontageEdgeMethod": "nearest_source_footprint_edge_to_greenpoint_axis",
+      "labelPlacement": {
+        "offsetMeters": {
+          "east": -44,
+          "north": 48
+        }
+      },
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+      ]
+    },
+    {
+      "placeId": "sonnys-corner",
+      "qaReferenceName": "Sonny's Corner",
+      "shortLabel": "Sonny's Corner",
+      "sourceBackedFootprintBin": "3064811",
+      "sameBblSourceComponentBins": [
+        "3064811"
+      ],
+      "targetRenderBins": [
+        "3064811"
+      ],
+      "sideOfFranklinAve": "east_corridor_side",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southeast_corridor_side_corner",
+      "frontageStreet": "Greenpoint Ave",
+      "frontageFacing": "north_toward_greenpoint",
+      "frontageEdgeMethod": "nearest_source_footprint_edge_to_greenpoint_axis",
+      "labelPlacement": {
+        "offsetMeters": {
+          "east": 42,
+          "north": -36
+        }
+      },
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+      ]
+    }
+  ],
+  "successCriteria": [
+    "Franklin Ave crosses Greenpoint Ave in the correct place.",
+    "Sereneco and Premier / Franklin Organic are on opposite sides of Greenpoint Ave.",
+    "Sereneco and Premier / Franklin Organic are both west/across Franklin.",
+    "Sonny's Corner is east/corridor-side of Franklin and south of Greenpoint.",
+    "The three building bodies form a real three-corner intersection relationship.",
+    "The storefront/frontage edges face the correct streets.",
+    "Building positions come from GIS/map reconciliation, not manual visual offsets.",
+    "The scene remains readable with labels turned down or removed.",
+    "The verifier fails if any target is assigned to the wrong side, wrong frontage, or wrong scene position.",
+    "Batu can identify which building is which from the scene without opening Google Maps."
+  ],
+  "blockedClaimsPreserved": [
+    "business-identity",
+    "business-active-status",
+    "tenant-frontage",
+    "storefront-anchor",
+    "storefront-order",
+    "exact-frontage",
+    "exact-address-placement",
+    "entrance-location",
+    "facade-appearance",
+    "signage",
+    "material",
+    "production-public-readiness",
+    "normal-mode-rendering"
+  ]
+}

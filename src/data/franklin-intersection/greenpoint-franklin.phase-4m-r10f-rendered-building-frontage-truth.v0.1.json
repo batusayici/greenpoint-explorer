@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "phase-4m-r10f-franklin-rendered-building-frontage-truth.v0.1",
+  "fixtureId": "greenpoint-franklin.phase-4m-r10f-rendered-building-frontage-truth",
+  "phase": "4M-R10F",
+  "reviewOnly": true,
+  "qaOnly": true,
+  "normalModeExposure": "blocked",
+  "status": "qa_rendered_building_frontage_truth_for_batu_review",
+  "scope": {
+    "intersection": "Greenpoint Ave x Franklin Ave",
+    "sourceGeometryFixturePath": "src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json",
+    "sourceFacadeCueFixturePath": "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json",
+    "r10eSceneGeometryFixturePath": "src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json",
+    "runtimePreviewPath": "src/Phase4BRuntimePreview.jsx",
+    "claimLimit": "QA rendered-building/frontage review only. This fixture does not create production facade, exact storefront, exact entrance, tenant frontage, signage, active-status, exact address, normal-mode, or public/product claims."
+  },
+  "rootCauseUpdate": [
+    {
+      "symptom": "R10E fixed the Franklin-local body placement but still used abstract source-projected QA bodies and yellow frontage ribbons.",
+      "likelyRootCause": "R10E intentionally stopped before proving that the evidence-informed facade modules align to the corrected footprints/frontage edges.",
+      "responsibleFileFunctionOrRecord": "src/Phase4BRuntimePreview.jsx:addFranklinSceneTruthOverlay and R10E fixture renderingRules",
+      "proposedFix": "Add a Franklin Rendered Truth QA mode that keeps the R10E scene frame but renders opaque, evidence-informed facade/frontage modules on the source frontage edge.",
+      "verifierOrScreenshotProof": "R10F verifier checks rendered module roles, frontage alignment, evidence refs, and four screenshot artifacts."
+    },
+    {
+      "symptom": "Premier had the strongest rendered hero/facade path while Sereneco and Sonny's mostly appeared as geometry/evidence cue records outside the corrected scene frame.",
+      "likelyRootCause": "Existing evidence-informed facade cues were authored in the older runtime slot layout, not in the Franklin-local map-truth frame.",
+      "responsibleFileFunctionOrRecord": "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json and src/Phase4BRuntimePreview.jsx",
+      "proposedFix": "Render all three cue profiles from the same R10E projection basis and attach their facade planes to the nearest Greenpoint-facing source footprint edge.",
+      "verifierOrScreenshotProof": "Verifier compares cue target IDs, source footprint positions, frontage edges, and runtime role support."
+    }
+  ],
+  "renderedTruthModel": {
+    "sourceHypothesisFromR10B": "preserved",
+    "sourceFrameFromR10E": "preserved",
+    "correctionType": "qa_only_source_projected_rendered_facade_module_layer",
+    "artificialOffsetsUsedForCorrection": false,
+    "glbAssessmentStatus": "blocked_until_r10f_visual_review",
+    "oldStylizedRuntimePlacementStatus": "disabled_in_franklin_rendered_truth_focus_when_conflicting",
+    "projectionBasis": {
+      "method": "same_wgs84_to_franklin_local_scene_projection_as_r10e",
+      "scaleMetersToSceneUnits": 0.075,
+      "originWgs84": {
+        "lon": -73.95759551445,
+        "lat": 40.729886989476,
+        "source": "nyc-centerline-physicalid-47237.wgs84Line[0] / nyc-centerline-physicalid-47238.wgs84Line[1]"
+      },
+      "greenpointAxisWgs84": {
+        "westPointWgs84": {
+          "lon": -73.959244843819,
+          "lat": 40.729729995886
+        },
+        "eastPointWgs84": {
+          "lon": -73.954246485005,
+          "lat": 40.730205703344
+        }
+      },
+      "franklinStreetGeometry": {
+        "status": "bounded_review_only_derived_cross_street_missing_source_centerline",
+        "basis": "perpendicular_to_greenpoint_axis_through_shared_greenpoint_endpoint",
+        "notProductionTruth": true
+      }
+    },
+    "renderingRules": {
+      "renderCorrectedStreetSlabs": true,
+      "renderActualRenderedBuildingModules": true,
+      "renderOpaqueFacadeModules": true,
+      "renderReferenceFootprintUnderlays": true,
+      "renderFootprintOutlines": true,
+      "renderFrontageEdgeHighlights": true,
+      "alignFacadePlaneToFrontageEdge": true,
+      "suppressOldStylizedTargetBodiesInFocus": true,
+      "suppressCorridorClutter": true,
+      "suppressLarge4LLabels": true,
+      "labelsSecondary": true
+    }
+  },
+  "diagnosisTable": [
+    {
+      "targetBusiness": "Sereneco",
+      "binOrObjectId": "3337033 / p4b-object-nyc-footprint-bin-3337033",
+      "expectedMapPosition": "northwest/across Franklin; north side of Greenpoint",
+      "expectedFrontageStreetOrEdge": "Greenpoint Ave south-facing frontage edge",
+      "expectedFacadeEvidenceImages": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+      ],
+      "currentRenderedBuildingOrFacadeModule": "p4e1-franklin-weathered-brick-glass-base",
+      "mismatchIfAny": "Before R10F, the corrected R10E view showed body/frontage truth but not the weathered brick, large glass, wood-panel, and cafe-sidewalk facade module in that frame.",
+      "fixRequired": "Render the weathered-brick/glass-base module on the north-side footprint with its frontage edge facing south toward Greenpoint."
+    },
+    {
+      "targetBusiness": "Premier Organic / Franklin Organic",
+      "binOrObjectId": "3322608 / p4b-object-nyc-footprint-bin-3322608",
+      "expectedMapPosition": "southwest/across Franklin; south side of Greenpoint",
+      "expectedFrontageStreetOrEdge": "Greenpoint Ave north-facing frontage edge",
+      "expectedFacadeEvidenceImages": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+      ],
+      "currentRenderedBuildingOrFacadeModule": "p4e1-franklin-red-brick-cornice-corner plus R8/R9 Franklin hero record binding",
+      "mismatchIfAny": "Before R10F, the stronger Premier module existed in the old Visual POC/hero path, while R10E's corrected frame showed only source-projected QA massing.",
+      "fixRequired": "Render a red-brick/cornice/grocery-frontage module on the southwest source footprint with its frontage edge facing north toward Greenpoint."
+    },
+    {
+      "targetBusiness": "Sonny's Corner",
+      "binOrObjectId": "3064811 / p4b-object-nyc-footprint-bin-3064811",
+      "expectedMapPosition": "southeast/corridor side; south side of Greenpoint",
+      "expectedFrontageStreetOrEdge": "Greenpoint Ave north-facing frontage edge",
+      "expectedFacadeEvidenceImages": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+      ],
+      "currentRenderedBuildingOrFacadeModule": "p4e1-franklin-dark-brick-awned-base",
+      "mismatchIfAny": "Before R10F, the Sonny's cue profile did not render as a corridor-side southeast building body in the corrected Franklin-local frame.",
+      "fixRequired": "Render a dark-brick/black-awning corner module on the southeast source footprint with its frontage edge facing north toward Greenpoint."
+    }
+  ],
+  "placeMappings": [
+    {
+      "placeId": "sereneco",
+      "qaReferenceName": "Sereneco",
+      "shortLabel": "Sereneco",
+      "sourceBackedFootprintBin": "3337033",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3337033",
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "north",
+      "cornerIntersectionRole": "northwest_across_franklin_corner",
+      "frontageStreet": "Greenpoint Ave",
+      "frontageFacing": "south_toward_greenpoint",
+      "frontageEdgeMethod": "nearest_source_footprint_edge_to_greenpoint_axis",
+      "renderedCueRecordId": "p4e1-franklin-weathered-brick-glass-base",
+      "renderedModuleStatus": "qa_only_evidence_informed_not_exact",
+      "renderProfile": {
+        "bodyColor": "#7b3f35",
+        "facadeColor": "#8b4b3d",
+        "signColor": "#8b6847",
+        "canopyColor": "#2d2a20",
+        "glassColor": "#9db9aa",
+        "trimColor": "#d7c8ad",
+        "heightUnits": 0.92,
+        "bayCount": 4,
+        "upperRows": 1,
+        "roofStyle": "low_brick_parapet",
+        "storefrontRhythm": "wide_wood_glass",
+        "sideReturnEdge": "left"
+      },
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+      ]
+    },
+    {
+      "placeId": "premier-franklin-organic",
+      "qaReferenceName": "Premier Organic / Franklin Organic",
+      "shortLabel": "Premier / Franklin Organic",
+      "sourceBackedFootprintBin": "3322608",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3322608",
+      "sideOfFranklinAve": "west_across_franklin",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southwest_across_franklin_corner",
+      "frontageStreet": "Greenpoint Ave",
+      "frontageFacing": "north_toward_greenpoint",
+      "frontageEdgeMethod": "nearest_source_footprint_edge_to_greenpoint_axis",
+      "renderedCueRecordId": "p4e1-franklin-red-brick-cornice-corner",
+      "renderedModuleStatus": "qa_only_evidence_informed_not_exact",
+      "renderProfile": {
+        "bodyColor": "#8f4b43",
+        "facadeColor": "#9f5548",
+        "signColor": "#ba8c5e",
+        "signAccentColor": "#52b864",
+        "canopyColor": "#080b0b",
+        "glassColor": "#9fbfb2",
+        "trimColor": "#cfba87",
+        "heightUnits": 1.58,
+        "bayCount": 5,
+        "upperRows": 4,
+        "roofStyle": "ornate_stone_cornice",
+        "storefrontRhythm": "grocery_wrap",
+        "sideReturnEdge": "right"
+      },
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+      ]
+    },
+    {
+      "placeId": "sonnys-corner",
+      "qaReferenceName": "Sonny's Corner",
+      "shortLabel": "Sonny's Corner",
+      "sourceBackedFootprintBin": "3064811",
+      "sourceBackedObjectId": "p4b-object-nyc-footprint-bin-3064811",
+      "sideOfFranklinAve": "east_corridor_side",
+      "sideOfGreenpointAve": "south",
+      "cornerIntersectionRole": "southeast_corridor_side_corner",
+      "frontageStreet": "Greenpoint Ave",
+      "frontageFacing": "north_toward_greenpoint",
+      "frontageEdgeMethod": "nearest_source_footprint_edge_to_greenpoint_axis",
+      "renderedCueRecordId": "p4e1-franklin-dark-brick-awned-base",
+      "renderedModuleStatus": "qa_only_evidence_informed_not_exact",
+      "renderProfile": {
+        "bodyColor": "#5d303d",
+        "facadeColor": "#683848",
+        "signColor": "#080909",
+        "canopyColor": "#060707",
+        "glassColor": "#9dbdae",
+        "trimColor": "#111111",
+        "heightUnits": 1.42,
+        "bayCount": 5,
+        "upperRows": 3,
+        "roofStyle": "heavy_black_cornice",
+        "storefrontRhythm": "dark_awned_corner",
+        "sideReturnEdge": "right"
+      },
+      "evidenceScreenshotReferences": [
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+        "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+      ]
+    }
+  ],
+  "requiredScreenshots": [
+    "docs/review-screenshots/phase-4m-r10f-franklin-rendered-building-frontage-truth/franklin-rendered-truth-top-down-r10f.png",
+    "docs/review-screenshots/phase-4m-r10f-franklin-rendered-building-frontage-truth/franklin-rendered-truth-oblique-r10f.png",
+    "docs/review-screenshots/phase-4m-r10f-franklin-rendered-building-frontage-truth/franklin-rendered-truth-frontage-across-r10f.png",
+    "docs/review-screenshots/phase-4m-r10f-franklin-rendered-building-frontage-truth/franklin-rendered-truth-sonny-r10f.png"
+  ],
+  "successCriteria": [
+    "The actual rendered Sereneco building is north of Greenpoint and west/across Franklin.",
+    "The actual rendered Premier / Franklin Organic building is south of Greenpoint and west/across Franklin.",
+    "Sereneco and Premier visually face each other across Greenpoint.",
+    "The actual rendered Sonny's building is south of Greenpoint and east/corridor side of Franklin.",
+    "Each rendered building sits on the correct footprint or documented footprint-derived placement.",
+    "Each storefront/frontage face points toward the correct street.",
+    "The facade/frontage treatment is traceable to supplied reference images.",
+    "Labels are secondary and minimized.",
+    "The verifier fails if rendered building placement, rotation, frontage edge, or side-of-street assignment regresses.",
+    "No GLB fidelity judgment is made until this rendered-scene truth pass is approved."
+  ],
+  "blockedClaimsPreserved": [
+    "glb-fidelity-judgment",
+    "business-active-status",
+    "tenant-frontage",
+    "storefront-anchor",
+    "storefront-order",
+    "exact-frontage",
+    "exact-address-placement",
+    "entrance-location",
+    "exact-facade-appearance",
+    "exact-signage",
+    "production-public-readiness",
+    "normal-mode-rendering"
+  ]
+}
