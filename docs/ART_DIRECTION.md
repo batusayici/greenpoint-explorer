@@ -25,16 +25,23 @@ The II-C system board defines:
 
 ## Reference Corpus
 
-Active references (style anchors for all generation and in-engine work):
+All active style references live in **`docs/reference/art/`** (style anchors for all generation and in-engine work):
 
-- System board: II-C Inked Indie Visual System (supplied by Batu; keep a copy in `docs/reference/`)
-- `docs/archive/visual-artifacts/batch-15-raster-production-proof/generated/II-assembled-mini-scene.png`
-- `docs/archive/visual-artifacts/batch-15-raster-production-proof/generated/II-life-integration-crop.png`
-- `docs/archive/visual-artifacts/phase-3-5-production-system-proof/generated/example-a-narrow-fictional-service-bay.png` (+ examples b, c)
-- `docs/archive/visual-artifacts/phase-3-8-fidelity-recovery-multi-module-stress-test/generated/shared-layer-system-board.png` (+ derivative-comparison, constrained-recombination, multi-module-finished-reads boards)
-- `docs/archive/visual-artifacts/phase-3-9-map-scale-integration-test/generated/map-scale-street-slice.png`, `hover-card-ui-pressure-test.png`, `zoom-readability-crop.png`
-- `docs/archive/visual-artifacts/phase-3-static-style-frame-inked-indie-compact-corner/inked-indie-compact-corner-style-frame-revision-a.png`
-- Approved reference corpus index: `docs/reference/approved-reference-corpus/`
+- `II-C-style-system-tile.png` — the system board (palette, line weights, hatching, libraries, markers, cards, density rules)
+- `II-assembled-mini-scene.png`, `II-life-integration-crop.png` — assembled scene reads
+- `example-a-narrow-fictional-service-bay.png`, `example-b-two-bay-fictional-retail-pair.png`, `example-c-symbolic-transit-edge-micro-corner.png` — storefront module examples
+- `shared-layer-system-board.png`, `phase-3-5-derivative-comparison-board.png`, `constrained-recombination-board.png`, `multi-module-finished-reads-board.png` — modular system boards
+- `map-scale-street-slice.png`, `hover-card-ui-pressure-test.png`, `zoom-readability-crop.png` — map-scale, UI, and zoom-readability proofs
+- `inked-indie-compact-corner-style-frame-revision-a.png` — the original approved style frame
+
+Index docs: `docs/reference/approved-reference-corpus/`
+
+## Evidence Photos (likeness truth)
+
+Field photos stay at their fixture-cited paths — do not move them:
+
+- `docs/mvp-reference-images/greenpoint franklin  corner/` — Franklin x Greenpoint (11 photos: northwest = Sereneco, southwest = Premier/Franklin Organic, southeast = Sonny's Corner)
+- `docs/mvp-reference-images/greenpoint manhattan corner/` — Manhattan x Greenpoint (McDonald's, Grillpoint deli, Citizens, subway entrance)
 
 ## Fallback Look
 
