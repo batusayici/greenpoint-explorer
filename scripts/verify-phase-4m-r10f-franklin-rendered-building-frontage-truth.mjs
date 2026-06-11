@@ -8,7 +8,6 @@ const geometryPath = "src/data/geometry-source/greenpoint-ave-manhattan-to-frank
 const facadeCuePath = "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json";
 const runtimePath = "src/Phase4BRuntimePreview.jsx";
 const stylesPath = "src/styles.css";
-const reportPath = "docs/reports/phase-4m-r10f-franklin-rendered-building-frontage-truth.md";
 
 const fixture = readJson(fixturePath);
 const r10eFixture = readJson(r10eFixturePath);
@@ -156,7 +155,6 @@ for (const screenshotPath of fixture.requiredScreenshots ?? []) {
     assert(header === "89504e470d0a1a0a", `Expected PNG screenshot but found different bytes: ${screenshotPath}`);
   }
 }
-assert(fs.existsSync(path.join(repoRoot, reportPath)), "R10F report must exist.");
 
 if (failures.length) {
   throw new Error(`4M-R10F Franklin rendered building/frontage truth verification failed:\n- ${failures.join("\n- ")}`);

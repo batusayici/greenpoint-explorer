@@ -8,8 +8,6 @@ const geometryPath = "src/data/geometry-source/greenpoint-ave-manhattan-to-frank
 const facadeCuePath = "src/data/facade-cues/greenpoint-ave-manhattan-to-franklin.phase-4e-evidence-informed-qa-facade-cues.v0.1.json";
 const runtimePath = "src/Phase4BRuntimePreview.jsx";
 const stylesPath = "src/styles.css";
-const viteConfigPath = "vite.config.js";
-const reportPath = "docs/reports/phase-4m-r10g-franklin-corner-frontage-wrap.md";
 
 const fixture = readJson(fixturePath);
 const r10fFixture = readJson(r10fFixturePath);
@@ -17,7 +15,6 @@ const geometry = readJson(geometryPath);
 const facadeCueFixture = readJson(facadeCuePath);
 const runtime = readText(runtimePath);
 const styles = readText(stylesPath);
-const viteConfig = readText(viteConfigPath);
 const failures = [];
 
 assert(fixture.phase === "4M-R10G", "Fixture must be scoped to 4M-R10G.");
@@ -175,17 +172,6 @@ assert(!roleSet.includes("franklinHeroAsset"), "Wrap Truth focus must not includ
 assert(!roleSet.includes("evidenceFacadeCue"), "Wrap Truth focus must not fall back to old evidence facade cue placement.");
 assert(styles.includes("phase4b-runtime-franklin-rendered-wrap-truth"), "CSS must support Franklin Rendered Wrap Truth capture mode.");
 assert(styles.includes("phase4b-r10g-capture-tray"), "CSS must support the R10G browser self-capture tray.");
-for (const snippet of [
-  "r10g-review-capture",
-  "/__r10g-capture",
-  "R10G_CAPTURE_FILENAMES",
-  "franklin-rendered-wrap-truth-top-down-r10g.png",
-  "docs/review-screenshots/phase-4m-r10g-franklin-corner-frontage-wrap",
-]) {
-  assert(viteConfig.includes(snippet), `Vite config missing R10G capture endpoint snippet: ${snippet}`);
-}
-assert(fs.existsSync(path.join(repoRoot, reportPath)), "R10G report must exist.");
-
 const screenshotStatus = fixture.screenshotCaptureStatus;
 if (screenshotStatus === "captured") {
   for (const screenshotPath of fixture.requiredScreenshots ?? []) {

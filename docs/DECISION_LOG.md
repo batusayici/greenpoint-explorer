@@ -4,6 +4,28 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-11 - Project Reset: Goal, Gates, Production Means, Camera
+
+Decisions (all Batu-approved in direct session):
+
+1. **Product goal restated:** a 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike — buildings/businesses located exactly where they are in real life and recognizably themselves. Art-directed (II-C Inked Indie), not hyperreal.
+2. **Real-faithful supersedes fictional-safe.** The fictional-safe storefront identity clause of the 2026-05-28 visual approval is retired. Real business names, signage, and likenesses are the goal.
+3. **Audience: public community demo.** Real names/likenesses are used freely during development; factual-claims discipline moves to a pre-launch review pass (verify names/placements, fix misattributions, optional business outreach).
+4. **Likeness bar: heroes exact, infill typological.** Corners, landmarks, and storefronts get exact treatment; rowhouse infill gets correct massing, floor count, material family, and rhythm.
+5. **Production means: agent-built procedural kit + AI asset generation.** The Visual Asset Responsibility Rule (prohibition on code-built primary art) is retired. AI image generation (GPT-5.5 class) and image-to-3D are authorized lanes.
+6. **Camera: fixed isometric + pan/zoom** (possibly 2–4 rotation steps). Free-cam becomes debug-only. This is the controlling assumption for asset cost.
+7. **Look hierarchy:** II-C Inked Indie Visual System is primary; the GPT-5.5 photo-render benchmark (Premier Organic image) is the fallback, decided at the Phase 2 style-feasibility gate — not by drift.
+8. **Governance collapse:** the v1 multi-party batch/gate contract, per-batch briefs, ledger reconciliation, and claim ladders are retired. AGENTS.md v2 (one page), PLAN.md v2, and this log are the living docs.
+
+Rationale:
+- Seven sub-batches (R10A–R10G) were needed to place three buildings; process mass exceeded product output.
+- The art pillar — the product's core value — had produced only voxel massing studies because every art-production path was gate-blocked.
+- Ecosystem evidence (June 2026) shows procedural Three.js city art is now cheap; the project's moat is its truth pipeline plus Batu's taste.
+
+Benchmark provenance: the Premier Organic benchmark image was rendered by GPT-5.5 from a reference photo, establishing the AI image-to-image lane as proven.
+
+Owner: Batu (all eight decisions). Agent executes inside them per AGENTS.md v2.
+
 ## 2026-06-04 - Phase 3 Real Corridor Direction Approved
 
 Decision:
