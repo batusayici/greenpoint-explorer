@@ -1,29 +1,72 @@
 # Franklin Hero Facade Generation Kit
 
-## Premier corner v3 re-render contract (when ready)
+## Registration Playbook — render once, measure, register
 
-The v2 composite works but has internal inconsistencies the renderer must
-compensate for. A v3 drawn to this contract maps perfectly:
+Locked in after the Premier Organic retro (2026-06-12: 4 renders and ~10 fix
+commits; root cause = spec coords authored from a contract instead of measured
+from the render). The order of truth per hero building:
+
+**Photos decide structure → render once → derive the spec from the render →
+overlay gate → one in-engine check.**
+
+1. **Pre-render (photos first).** From the evidence photos, fix the structural
+   facts: corner-fold position, floor counts, storefront breaks, bay/fire
+   escape presence. Bake them into the prompt with the proportional canvas
+   split (real wall meters → % positions, per the orthographic contract
+   below). The AI render will *still* not place features at the prescribed
+   pixels — expected and fine: structure is the prompt's job, registration
+   is the next step's.
+2. **Render once.** Re-render only for content or style failures (wrong floor
+   count, missing signage, perspective lean). **Never re-render to fix feature
+   placement by a few percent** — that loop never converges; it burned the
+   Premier v2→v3→v4 cycle.
+3. **Derive the spec mechanically:**
+   ```bash
+   node scripts/derive-facade-spec.mjs assets/textures/franklin/<file>.png \
+     --face "BIN:role=u0:u1" [--face ...]
+   ```
+   Face u-ranges are the `FACADE_COMPOSITES` numbers from `src/SceneView.jsx`.
+   The script replicates the runtime trim exactly, detects the painted
+   openings (not-wall mask → erosion to cut linework → connected components),
+   and writes a derived-spec JSON **plus an overlay PNG** to
+   `docs/visual-artifacts/facade-derivation/`.
+4. **Gate on the overlay, not the browser.** Every painted opening must be
+   boxed in the right place before any rect reaches the runtime spec. Known
+   detector gaps to fix by hand against the overlay: wall-toned doors (brick
+   door on brick wall) are missed; fire-escape ironwork can merge neighboring
+   windows into one box; bay oriels come out as stacked windows rather than
+   one bay rect.
+5. **Promote** the reviewed rects into
+   `src/data/facade-specs/<placeId>.v0.1.json` (schema `facade-spec.v0.5`),
+   explicit `windows.rects` only — never `rows×cols`, which manufactures
+   windows at empty grid cells. Then one `?specdebug=1` screenshot in-engine
+   confirms, and done.
+
+### Coordinate convention (one truth)
+
+- **Whole-u** is 0..1 across the runtime-**trimmed** composite image
+  (`loadTrimmedTexture` crops the paper margins — never measure the raw PNG).
+- Faces slice whole-u via `u0/u1` (`FACADE_COMPOSITES`, `src/SceneView.jsx`).
+- Spec rects are **face-local**: `x0/x1` from the face's *left* edge
+  (= `(u − u0)/(u1 − u0)`), `y0/y1` from the *ground up*.
+- The derivation script emits face-local coords directly; no hand conversion.
+
+### Orthographic render contract (structure, prompt-side)
+
+Proven by the Premier v4 render; reuse for every composite corner:
 
 - **One continuous head-on unwrap, strictly orthographic** — no 3/4
   perspective, no leaning window columns, no foreshortening.
-- **Canvas split proportional to the real walls:** Franklin St streetwall
-  (Franklin Pizza + premier ORGANIC storefronts) = 14.7m, then the corner,
-  then the Greenpoint Ave face (premier script, bay window, fire escapes,
-  door, AC units) = 16.1m. So the corner column sits at **47.7%** across
-  the artwork. Total real size 30.8m wide x 14.0m tall (aspect 2.2:1).
+- **Canvas split proportional to the real walls** (wall meters → % of canvas;
+  e.g. Premier: Franklin 14.7m + Greenpoint 16.1m → corner asked at 47.7%).
+  Expect the drawn fold to land within a few percent of the ask — **measure
+  the actual fold from the render** (the kink constant), never assume the
+  contract number, and settle disputes against the photos
+  (see DECISION_LOG 2026-06-12, `PREMIER_KINK = 0.478`).
 - **Continuous datums:** ground line at the bottom edge, parapet top at the
   top edge, sign band and cornice heights consistent across the full width.
-- Pizza party-wall pier at ~29.5% of the Franklin section (4.35m from its
-  south end).
 - Margins are fine (auto-trimmed); no sky, sidewalk, people, or vehicles.
-- Same II-C inked style as v2 (anchor: II-C-style-system-tile.png).
-
-Save as `assets/textures/franklin/premier-franklin-organic--corner-v3.png`
-and update `FACADE_COMPOSITES.key` + set `PREMIER_KINK = 0.477` in
-`src/SceneView.jsx`; component rects in
-`src/data/facade-specs/premier-franklin-organic.v0.1.json` then need one
-re-measure pass (grid-overlay method).
+- II-C inked style (anchor: II-C-style-system-tile.png).
 
 Phase 2.3 working doc. Generate II-C-style facade textures from evidence photos
 and drop them into `assets/textures/franklin/` — the Scene mode loads them by
