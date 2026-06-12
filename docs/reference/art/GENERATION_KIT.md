@@ -74,25 +74,49 @@ filename automatically (no code change needed).
 
 ## Output Contract
 
-- **Format:** PNG, flat orthographic storefront elevation. No perspective, no
-  sky, no street, no figures — the facade fills the full canvas edge to edge.
+- **Format:** PNG, strictly orthographic elevation. No perspective, no sky,
+  no street, no figures — the facade fills the full canvas edge to edge.
+- **Corner heroes render as ONE continuous corner unwrap** (both street faces
+  in a single image, proportional split) — never as separate per-face PNGs.
+  Separate faces can't hold datums or the corner seam consistent; this is the
+  Premier v1→v4 lesson.
 - **Style:** II-C Inked Indie (anchor on `II-C-style-system-tile.png` and
   `II-assembled-mini-scene.png` in this folder): confident linework, controlled
   hatching, muted warm palette, paper grain, drawn signage lettering.
-- **Naming:** `<placeId>--<street>.png` — exact names below.
+- **Naming:** `<placeId>--corner.png` for corner composites (version suffix on
+  re-renders, e.g. `--corner-v2.png`); `<placeId>--<street>.png` for true
+  single-face slots.
 - **Resolution:** long edge 2048px at the aspect ratio listed per slot.
 
 ## Prompt Scaffold (image-to-image, GPT-5.5)
 
-> Redraw this storefront photo as a flat orthographic facade elevation in the
-> attached hand-inked editorial illustration style (II-C system: confident
-> 1–4px linework, controlled hatching for shadow, muted warm palette, paper
-> texture). Keep the real architecture: floor count, window rhythm, cornice,
-> storefront base, awning shape, and signage lettering as drawn type. Facade
-> only, full bleed, no perspective, no sky, no sidewalk, no people.
+Premier v4-proven language. The orthographic clauses are load-bearing —
+the weaker "no perspective" alone let v2 come back with a 3/4 lean that cost
+a re-render and a day of diagnosis.
+
+> Redraw this storefront photo as a single continuous, strictly orthographic
+> facade elevation in the attached hand-inked editorial illustration style
+> (II-C system: confident 1–4px linework, controlled hatching for shadow,
+> muted warm palette, paper texture). Head-on flat projection: every vertical
+> edge plumb, no 3/4 view, no leaning window columns, no foreshortening.
+> [Corner heroes:] The image unwraps both street walls onto one canvas — the
+> <street A> face occupies the left <N>% and the <street B> face the rest,
+> with the corner at the <named landmark from photos, e.g. the storefront
+> sign break>. Ground line at the bottom edge and parapet at the top edge run
+> continuously across the full width; sign band and cornice heights stay
+> consistent.
+> Keep the real architecture: floor count, window rhythm, cornice, storefront
+> base, awning shape, and signage lettering as drawn type. Keep windows and
+> doors tonally distinct from the wall (no wall-colored doors). Facade only,
+> full bleed, no sky, no sidewalk, no people.
 
 Attach: (1) the evidence photo(s), (2) the II-C system tile, (3) one assembled
 scene for tone.
+
+The proportions are the prompt's job; exact placement is not. The render will
+land features a few percent off the ask — that's what
+`scripts/derive-facade-spec.mjs` absorbs. Re-render only for content or style
+failures, never for placement (see Registration Playbook above).
 
 ## Slots
 
@@ -104,10 +128,15 @@ Red-brick grocery corner: brick upper with window rhythm, cream cornice, dark
 storefront base, awning band. Photos: `franklin-southwest-wide.jpeg`,
 `franklin-southwest-zoom.jpeg`, `franklin-southwest1.jpeg`, `franklin-southwest2.jpeg`.
 
-| File | Real size (w × h) | Aspect | Pixels |
-|---|---|---|---|
-| `premier-franklin-organic--greenpoint.png` | 16.1m × 14.0m | 1.15 | 2048 × 1781 |
-| `premier-franklin-organic--franklin.png` | 6.1m × 14.0m | 0.44 | 896 × 2048 |
+**DONE** — shipped as the corner composite
+`premier-franklin-organic--corner-v4.png` (30.8m × 14.0m unwrap: Franklin
+14.7m then Greenpoint 16.1m, fold measured at u=0.478). The per-face slots
+below are retired; kept for the size data only.
+
+| Retired slot | Real size (w × h) |
+|---|---|
+| `premier-franklin-organic--greenpoint.png` | 16.1m × 14.0m |
+| `premier-franklin-organic--franklin.png` | 6.1m × 14.0m |
 
 ### Sonny's Corner — BIN 3064811 (southeast corner)
 
@@ -117,8 +146,12 @@ rhythm. Photos: `franklin-southeast-wide.jpeg`, `franklin-southeast-zoom.jpeg`,
 
 | File | Real size (w × h) | Aspect | Pixels |
 |---|---|---|---|
-| `sonnys-corner--greenpoint.png` | 19.9m × 13.2m | 1.52 | 2048 × 1344 |
-| `sonnys-corner--franklin.png` | 7.2m × 13.2m | 0.55 | 1126 × 2048 |
+| `sonnys-corner--corner.png` | 27.1m × 13.2m (Franklin 7.2m + Greenpoint 19.9m) | 2.05 | 2048 × 998 |
+
+Corner asked at 26.6% (Franklin-first reading) — **confirm the unwrap
+reading order against the camera-visible faces** (fixed NE iso camera;
+`faceFrame` `leftEnd` config) before prompting, then measure the actual
+drawn fold from the render as always.
 
 ### Sereneco — BIN 3337033 (northwest corner)
 
@@ -127,13 +160,14 @@ Low weathered-brick restaurant corner with glass base. Photos:
 
 | File | Real size (w × h) | Aspect | Pixels |
 |---|---|---|---|
-| `sereneco--greenpoint.png` | 11.8m × 7.0m | 1.70 | 2048 × 1204 |
-| `sereneco--franklin.png` | 57.1m × 7.0m | 8.22 | optional — see note |
+| `sereneco--corner.png` | ~23.8m × 7.0m (Greenpoint 11.8m + Franklin return ~12m) | 3.40 | 2048 × 602 |
 
 **Note:** Sereneco's source footprint (the full BIN parcel) runs 57m down
-Franklin; most of it is muted context mass (R10G finding). For the spike,
-either skip this slot or generate only the corner-adjacent ~12m return and
-we'll size the plane down to match.
+Franklin; most of it is muted context mass (R10G finding). The composite
+covers only the corner-adjacent ~12m return — the rest of the Franklin run
+stays untextured context mass, so size the plane down to match. Corner asked
+at ~50%; confirm reading order against the camera, measure the drawn fold
+from the render.
 
 ## Review Loop
 
