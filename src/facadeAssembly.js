@@ -16,7 +16,7 @@ import * as THREE from "three";
 const REVEAL = {
   top: 0x352c22, // shadow under the lintel
   side: 0x5d4c3e, // jamb
-  bottom: 0xcbbfa4, // sill catches light
+  bottom: 0xa6987c, // recess bottom / proud top — lit stone, never bright white
   soffit: 0x2f2820, // underside of storefront/awning/cornice returns
 };
 
@@ -74,7 +74,9 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   for (const rect of windowRects) {
     group.add(rectMesh(frame, rect, -windowRecess, texturedMaterial(texture, 1)));
     addReveals(group, frame, rect, 0, -windowRecess);
-    if (spec.windows.sill !== false) {
+    // Geometric sills only on request — the drawn elevations carry their
+    // own stone sills, and duplicating them reads as floating white bars.
+    if (spec.windows.sill === true) {
       const sill = { x0: rect.x0 - 0.004, x1: rect.x1 + 0.004, y0: rect.y0 - 0.008, y1: rect.y0 };
       group.add(rectMesh(frame, sill, meters(0.05), tintMaterial(REVEAL.bottom)));
       group.add(bridgeMesh(frame, sill, meters(0.05), 0, "bottom", tintMaterial(REVEAL.soffit)));

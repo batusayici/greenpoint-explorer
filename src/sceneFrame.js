@@ -80,6 +80,44 @@ export function assembleFranklinScene({
     });
   }
 
+  // Flush facade groups: the source records for sibling parcel components
+  // disagree on the streetwall line (the sister's Franklin edge sits ~1.3m
+  // east of the corner component's), so a continuous drawn elevation breaks
+  // at the parcel seam. The corner component is the spatial authority —
+  // snap group members' near-street vertices onto its frontage line, then
+  // reclassify their edges.
+  for (const member of buildings) {
+    if (!facadeGroupBins[member.bin]) continue;
+    const hero = buildings.find((b) => b.placeId === member.placeId && heroByBin.has(b.bin));
+    if (!hero) continue;
+    for (const role of ["greenpoint", "franklin"]) {
+      const heroEdge = hero.edges
+        .filter((edge) => edge.role === role)
+        .sort((a, b) => b.length - a.length)[0];
+      const memberEdge = member.edges
+        .filter((edge) => edge.role === role)
+        .sort((a, b) => b.length - a.length)[0];
+      if (!heroEdge || !memberEdge) continue;
+      const direction = heroEdge.direction;
+      const origin = heroEdge.start;
+      const distanceToLine = (point) => {
+        const dx = point.x - origin.x;
+        const dz = point.z - origin.z;
+        return dx * heroEdge.normal.x + dz * heroEdge.normal.z;
+      };
+      const snapLimit = projection.metersToUnits(2.0);
+      for (const vertex of member.polygon) {
+        const offset = distanceToLine(vertex);
+        if (Math.abs(offset) < snapLimit) {
+          vertex.x -= heroEdge.normal.x * offset;
+          vertex.z -= heroEdge.normal.z * offset;
+        }
+      }
+    }
+    member.centroid = getCentroid(member.polygon);
+    member.edges = classifyHeroEdges(member.polygon, member.centroid, { greenpointAxis, franklinAxis });
+  }
+
   const streets = geometrySource.streetCenterlineRecords.map((record) => ({
     id: record.id,
     name: record.fullStreetName,
