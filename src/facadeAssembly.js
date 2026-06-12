@@ -36,8 +36,10 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   openings.push(...windowRects);
   for (const storefront of spec.storefronts ?? []) openings.push(storefront);
   for (const band of spec.signBands ?? []) openings.push(band);
+  for (const door of spec.doors ?? []) openings.push(door);
+  for (const box of spec.boxes ?? []) openings.push(box);
   for (const awning of spec.awnings ?? []) {
-    openings.push({ x0: awning.x0, x1: awning.x1, y0: awning.yDrop, y1: awning.yWall });
+    openings.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
   }
   if (spec.bay) openings.push(spec.bay);
   if (spec.cornice) openings.push({ x0: 0, x1: 1, ...spec.cornice });
@@ -74,37 +76,64 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     addReveals(group, frame, band, proud, 0, { interior: false });
   }
 
-  // Awnings: angled canopy from the wall attachment line outward and down.
+  // Awnings: angled canopy from the wall attachment line outward and down,
+  // a textured valance skirt at the outer edge, and closed side panels.
   for (const awning of spec.awnings ?? []) {
     const projection = meters(awning.projectionM ?? 0.9);
-    const geometry = quadGeometry(
+    const yValance = awning.yValance ?? awning.yDrop;
+    const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
+
+    const canopy = quadGeometry(
       facePoint(frame, awning.x0, awning.yWall, 0),
       facePoint(frame, awning.x1, awning.yWall, 0),
       facePoint(frame, awning.x1, awning.yDrop, projection),
       facePoint(frame, awning.x0, awning.yDrop, projection),
-      rectUv(frame, { x0: awning.x0, x1: awning.x1, y0: awning.yDrop, y1: awning.yWall }),
+      [u(awning.x0), awning.yWall, u(awning.x1), awning.yWall, u(awning.x1), awning.yDrop, u(awning.x0), awning.yDrop],
     );
-    group.add(new THREE.Mesh(geometry, texturedMaterial(texture, 1)));
-    // Front valance: a short vertical lip at the outer edge.
-    group.add(
-      new THREE.Mesh(
-        quadGeometry(
-          facePoint(frame, awning.x0, awning.yDrop, projection),
-          facePoint(frame, awning.x1, awning.yDrop, projection),
-          facePoint(frame, awning.x1, awning.yDrop - 0.018, projection),
-          facePoint(frame, awning.x0, awning.yDrop - 0.018, projection),
-        ),
-        tintMaterial(0x241f18),
-      ),
-    );
+    group.add(new THREE.Mesh(canopy, texturedMaterial(texture, 1)));
+
+    if (yValance < awning.yDrop) {
+      const valance = quadGeometry(
+        facePoint(frame, awning.x0, awning.yDrop, projection),
+        facePoint(frame, awning.x1, awning.yDrop, projection),
+        facePoint(frame, awning.x1, yValance, projection),
+        facePoint(frame, awning.x0, yValance, projection),
+        [u(awning.x0), awning.yDrop, u(awning.x1), awning.yDrop, u(awning.x1), yValance, u(awning.x0), yValance],
+      );
+      group.add(new THREE.Mesh(valance, texturedMaterial(texture, 1)));
+    }
+
+    for (const xEnd of [awning.x0, awning.x1]) {
+      const panel = quadGeometry(
+        facePoint(frame, xEnd, awning.yWall, 0),
+        facePoint(frame, xEnd, awning.yDrop, projection),
+        facePoint(frame, xEnd, yValance, projection),
+        facePoint(frame, xEnd, yValance, 0),
+      );
+      group.add(new THREE.Mesh(panel, tintMaterial(0x241f18)));
+    }
   }
 
-  // Bay window: a real shallow volume — textured front, shadowed cheeks.
+  // Doors: shallow recess with reveals, open at the threshold.
+  for (const door of spec.doors ?? []) {
+    const recess = meters(door.recessM ?? 0.12);
+    group.add(rectMesh(frame, door, -recess, texturedMaterial(texture, 0.98)));
+    addReveals(group, frame, door, 0, -recess, { bottom: false });
+  }
+
+  // Boxes (AC units, utility): proud textured blocks.
+  for (const box of spec.boxes ?? []) {
+    const proud = meters(box.projectionM ?? 0.3);
+    group.add(rectMesh(frame, box, proud, texturedMaterial(texture, 1)));
+    addReveals(group, frame, box, proud, 0, { interior: false });
+  }
+
+  // Bay window: a real shallow volume — textured front, dark wood cheeks
+  // matching the drawn bay's joinery rather than the wall brick.
   if (spec.bay) {
     const projection = meters(spec.bay.projectionM ?? 0.5);
     group.add(rectMesh(frame, spec.bay, projection, texturedMaterial(texture, 1)));
-    const cheek = new THREE.Color(baseColor).multiplyScalar(0.58).getHex();
-    addReveals(group, frame, spec.bay, projection, 0, { interior: false, baseColor: cheek });
+    addReveals(group, frame, spec.bay, projection, 0, { interior: false, baseColor: 0x4a3a2c });
   }
 
   // Cornice: proud strip across the top with a shadowed soffit.

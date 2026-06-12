@@ -1,5 +1,30 @@
 # Franklin Hero Facade Generation Kit
 
+## Premier corner v3 re-render contract (when ready)
+
+The v2 composite works but has internal inconsistencies the renderer must
+compensate for. A v3 drawn to this contract maps perfectly:
+
+- **One continuous head-on unwrap, strictly orthographic** — no 3/4
+  perspective, no leaning window columns, no foreshortening.
+- **Canvas split proportional to the real walls:** Franklin St streetwall
+  (Franklin Pizza + premier ORGANIC storefronts) = 14.7m, then the corner,
+  then the Greenpoint Ave face (premier script, bay window, fire escapes,
+  door, AC units) = 16.1m. So the corner column sits at **47.7%** across
+  the artwork. Total real size 30.8m wide x 14.0m tall (aspect 2.2:1).
+- **Continuous datums:** ground line at the bottom edge, parapet top at the
+  top edge, sign band and cornice heights consistent across the full width.
+- Pizza party-wall pier at ~29.5% of the Franklin section (4.35m from its
+  south end).
+- Margins are fine (auto-trimmed); no sky, sidewalk, people, or vehicles.
+- Same II-C inked style as v2 (anchor: II-C-style-system-tile.png).
+
+Save as `assets/textures/franklin/premier-franklin-organic--corner-v3.png`
+and update `FACADE_COMPOSITES.key` + set `PREMIER_KINK = 0.477` in
+`src/SceneView.jsx`; component rects in
+`src/data/facade-specs/premier-franklin-organic.v0.1.json` then need one
+re-measure pass (grid-overlay method).
+
 Phase 2.3 working doc. Generate II-C-style facade textures from evidence photos
 and drop them into `assets/textures/franklin/` — the Scene mode loads them by
 filename automatically (no code change needed).

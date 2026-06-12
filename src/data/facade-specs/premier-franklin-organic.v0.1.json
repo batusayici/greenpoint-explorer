@@ -1,70 +1,250 @@
 {
-  "schemaVersion": "facade-spec.v0.1",
+  "schemaVersion": "facade-spec.v0.2",
   "placeId": "premier-franklin-organic",
   "status": "manual_draft_from_photo_evidence",
-  "note": "Component rects in normalized face coords (x: 0..1 along the drawn elevation slice, y: 0..1 ground to roofline). Depths in meters. Measured against premier-franklin-organic--greenpoint-v2.png via grid overlay; whole-image kink at u=0.56, BIN seam at u=0.328.",
+  "note": "Component rects in normalized face coords (x: 0..1 along the drawn elevation slice, y: 0..1 ground to roofline). Depths in meters. Measured per-face via zoomed grid overlays against premier-franklin-organic--greenpoint-v2.png. Whole-image: corner kink u=0.56, BIN seam u=0.328, drawn pizza party wall u=0.155.",
   "evidence": [
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
   ],
   "faces": {
     "3322608:greenpoint": {
-      "cornice": { "y0": 0.88, "y1": 0.97, "projectionM": 0.2 },
-      "signBands": [{ "x0": 0.057, "x1": 0.42, "y0": 0.285, "y1": 0.355, "projectionM": 0.1 }],
-      "awnings": [{ "x0": 0.09, "x1": 0.44, "yWall": 0.285, "yDrop": 0.235, "projectionM": 0.8 }],
+      "cornice": {
+        "y0": 0.855,
+        "y1": 1.0,
+        "projectionM": 0.2
+      },
+      "signBands": [
+        {
+          "x0": 0.04,
+          "x1": 0.32,
+          "y0": 0.255,
+          "y1": 0.325,
+          "projectionM": 0.1
+        }
+      ],
+      "awnings": [
+        {
+          "x0": 0.0,
+          "x1": 0.45,
+          "yWall": 0.245,
+          "yDrop": 0.205,
+          "yValance": 0.175,
+          "projectionM": 0.85
+        }
+      ],
       "windows": {
         "recessM": 0.16,
         "rows": [
-          { "y0": 0.38, "y1": 0.52 },
-          { "y0": 0.555, "y1": 0.69 },
-          { "y0": 0.73, "y1": 0.86 }
+          {
+            "y0": 0.345,
+            "y1": 0.495
+          },
+          {
+            "y0": 0.52,
+            "y1": 0.66
+          },
+          {
+            "y0": 0.74,
+            "y1": 0.855
+          }
         ],
         "cols": [
-          { "x0": 0.148, "x1": 0.25 },
-          { "x0": 0.636, "x1": 0.739 },
-          { "x0": 0.841, "x1": 0.943 }
+          {
+            "x0": 0.025,
+            "x1": 0.115
+          },
+          {
+            "x0": 0.55,
+            "x1": 0.617
+          },
+          {
+            "x0": 0.752,
+            "x1": 0.825
+          }
         ]
       },
-      "bay": { "x0": 0.318, "x1": 0.545, "y0": 0.355, "y1": 0.88, "projectionM": 0.5 },
-      "storefronts": []
+      "bay": {
+        "x0": 0.295,
+        "x1": 0.525,
+        "y0": 0.325,
+        "y1": 0.855,
+        "projectionM": 0.6
+      },
+      "doors": [
+        {
+          "x0": 0.355,
+          "x1": 0.45,
+          "y0": 0.0,
+          "y1": 0.21,
+          "recessM": 0.12
+        }
+      ],
+      "boxes": [
+        {
+          "x0": 0.475,
+          "x1": 0.56,
+          "y0": 0.19,
+          "y1": 0.3,
+          "projectionM": 0.3
+        }
+      ],
+      "storefronts": [
+        {
+          "x0": 0.0,
+          "x1": 0.3,
+          "y0": 0.0,
+          "y1": 0.175,
+          "recessM": 0.45
+        }
+      ]
     },
     "3322608:franklin": {
-      "cornice": { "y0": 0.88, "y1": 0.97, "projectionM": 0.2 },
-      "signBands": [{ "x0": 0.0, "x1": 1.0, "y0": 0.285, "y1": 0.355, "projectionM": 0.1 }],
-      "awnings": [{ "x0": 0.0, "x1": 1.0, "yWall": 0.285, "yDrop": 0.235, "projectionM": 0.8 }],
+      "cornice": {
+        "y0": 0.87,
+        "y1": 1.0,
+        "projectionM": 0.2
+      },
+      "signBands": [
+        {
+          "x0": 0.0,
+          "x1": 0.79,
+          "y0": 0.255,
+          "y1": 0.33,
+          "projectionM": 0.1
+        }
+      ],
+      "awnings": [
+        {
+          "x0": 0.0,
+          "x1": 0.741,
+          "yWall": 0.245,
+          "yDrop": 0.205,
+          "yValance": 0.175,
+          "projectionM": 0.85
+        }
+      ],
       "windows": {
         "recessM": 0.16,
         "rows": [
-          { "y0": 0.38, "y1": 0.52 },
-          { "y0": 0.555, "y1": 0.69 },
-          { "y0": 0.73, "y1": 0.86 }
+          {
+            "y0": 0.35,
+            "y1": 0.5
+          },
+          {
+            "y0": 0.53,
+            "y1": 0.67
+          },
+          {
+            "y0": 0.745,
+            "y1": 0.87
+          }
         ],
         "cols": [
-          { "x0": 0.31, "x1": 0.504 },
-          { "x0": 0.634, "x1": 0.828 }
+          {
+            "x0": 0.035,
+            "x1": 0.179
+          },
+          {
+            "x0": 0.324,
+            "x1": 0.469
+          },
+          {
+            "x0": 0.566,
+            "x1": 0.711
+          }
         ]
       },
-      "storefronts": [{ "x0": 0.0, "x1": 1.0, "y0": 0.0, "y1": 0.235, "recessM": 0.45 }]
+      "storefronts": [
+        {
+          "x0": 0.0,
+          "x1": 1.0,
+          "y0": 0.0,
+          "y1": 0.175,
+          "recessM": 0.45
+        }
+      ]
     },
     "3322609:franklin": {
-      "cornice": { "y0": 0.88, "y1": 0.97, "projectionM": 0.2 },
-      "signBands": [{ "x0": 0.49, "x1": 1.0, "y0": 0.285, "y1": 0.355, "projectionM": 0.1 }],
-      "awnings": [{ "x0": 0.47, "x1": 1.0, "yWall": 0.285, "yDrop": 0.235, "projectionM": 0.8 }],
+      "cornice": {
+        "y0": 0.87,
+        "y1": 1.0,
+        "projectionM": 0.2
+      },
+      "signBands": [
+        {
+          "x0": 0.473,
+          "x1": 1.0,
+          "y0": 0.255,
+          "y1": 0.33,
+          "projectionM": 0.1
+        }
+      ],
+      "awnings": [
+        {
+          "x0": 0.473,
+          "x1": 1.0,
+          "yWall": 0.245,
+          "yDrop": 0.205,
+          "yValance": 0.175,
+          "projectionM": 0.85
+        }
+      ],
       "windows": {
         "recessM": 0.16,
         "rows": [
-          { "y0": 0.38, "y1": 0.52 },
-          { "y0": 0.555, "y1": 0.69 },
-          { "y0": 0.73, "y1": 0.86 }
+          {
+            "y0": 0.35,
+            "y1": 0.5
+          },
+          {
+            "y0": 0.53,
+            "y1": 0.67
+          },
+          {
+            "y0": 0.745,
+            "y1": 0.87
+          }
         ],
         "cols": [
-          { "x0": 0.076, "x1": 0.198 },
-          { "x0": 0.305, "x1": 0.442 },
-          { "x0": 0.503, "x1": 0.64 },
-          { "x0": 0.762, "x1": 0.899 }
+          {
+            "x0": 0.077,
+            "x1": 0.179
+          },
+          {
+            "x0": 0.273,
+            "x1": 0.376
+          },
+          {
+            "x0": 0.418,
+            "x1": 0.521
+          },
+          {
+            "x0": 0.555,
+            "x1": 0.666
+          },
+          {
+            "x0": 0.785,
+            "x1": 0.896
+          }
         ]
       },
-      "storefronts": [{ "x0": 0.0, "x1": 1.0, "y0": 0.0, "y1": 0.235, "recessM": 0.45 }]
+      "storefronts": [
+        {
+          "x0": 0.0,
+          "x1": 0.473,
+          "y0": 0.0,
+          "y1": 0.235,
+          "recessM": 0.45
+        },
+        {
+          "x0": 0.533,
+          "x1": 1.0,
+          "y0": 0.0,
+          "y1": 0.175,
+          "recessM": 0.45
+        }
+      ]
     }
   }
 }

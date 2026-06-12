@@ -44,7 +44,12 @@ export default function SceneView() {
 
   useEffect(() => {
     const mount = mountRef.current;
-    const scene = assembleFranklinScene({ geometrySource, sceneGeometryFixture, wrapFixture });
+    const scene = assembleFranklinScene({
+      geometrySource,
+      sceneGeometryFixture,
+      wrapFixture,
+      facadeGroupBins: FACADE_GROUP_BINS,
+    });
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -73,9 +78,21 @@ export default function SceneView() {
 
     buildStreets(three, scene.streets);
     buildBuildings(three, scene, requestRender);
+    window.__three = three;
+    window.__scene = scene;
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200);
-    const view = { target: new THREE.Vector3(-0.75, 0.45, 0.7), frustumHeight: 2.2 };
+    // Dev framing override: ?t=x,y,z&f=frustumHeight
+    const params = new URLSearchParams(window.location.search);
+    const t = (params.get("t") ?? "").split(",").map(Number);
+    const view = {
+      target: new THREE.Vector3(
+        Number.isFinite(t[0]) ? t[0] : -0.95,
+        Number.isFinite(t[1]) ? t[1] : 0.4,
+        Number.isFinite(t[2]) ? t[2] : 1.05,
+      ),
+      frustumHeight: Number(params.get("f")) || 2.8,
+    };
 
     function applyCamera() {
       const aspect = mount.clientWidth / Math.max(mount.clientHeight, 1);
@@ -295,13 +312,21 @@ function buildHeroBuilding(three, building, scene, requestRender) {
   }
 
   for (const edge of building.edges) {
-    const shade = faceShade[edge.role] ?? faceShade.other;
     const face = composite?.byBin?.[building.bin]?.[edge.role];
     const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
     const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
+    // With a composite present, any face it doesn't cover is a party wall
+    // (e.g. the sister's lot-line edges behind Premier) — muted, never
+    // street-bright, even if it geometrically faces a street.
+    const effectiveRole = composite ? (face ? edge.role : "other") : edge.role;
+    const shade = faceShade[effectiveRole] ?? faceShade.other;
+    const wallColor =
+      composite && !face
+        ? new THREE.Color(baseColor).lerp(new THREE.Color(0x6b5e52), 0.5).multiplyScalar(shade)
+        : new THREE.Color(baseColor).multiplyScalar(shade);
 
     const material = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(baseColor).multiplyScalar(shade),
+      color: wallColor,
       side: THREE.DoubleSide,
     });
     const wall = new THREE.Mesh(wallQuad(edge, building.height, isTextured ? face : null, scene), material);
@@ -346,18 +371,16 @@ function buildHeroBuilding(three, building, scene, requestRender) {
   roofMesh.position.y = building.height;
   three.add(roofMesh);
 
-  // Parapet: a real cornice ring around the roofline — geometry, not paint,
-  // so the silhouette reads as a built mass like the benchmark's cornice.
+  // Parapet ring only on edges without a drawn cornice — spec'd street
+  // faces carry their own cornice-to-roofline assembly, so a second
+  // geometric parapet would double the roofline there.
   const parapetHeight = 0.05;
   const parapetThickness = 0.024;
-  const clean = building.polygon;
-  for (let index = 0; index < clean.length; index += 1) {
-    const start = clean[index];
-    const end = clean[(index + 1) % clean.length];
-    const length = Math.hypot(end.x - start.x, end.z - start.z);
-    if (length < 1e-6) continue;
+  for (const edge of building.edges) {
+    if (FACADE_SPECS[`${building.bin}:${edge.role}`]?.cornice) continue;
+    const { start, end } = edge;
     const segment = new THREE.Mesh(
-      new THREE.BoxGeometry(length + parapetThickness, parapetHeight, parapetThickness),
+      new THREE.BoxGeometry(edge.length + parapetThickness, parapetHeight, parapetThickness),
       new THREE.MeshLambertMaterial({ color: 0xc7b896 }),
     );
     segment.position.set(
@@ -374,6 +397,24 @@ function buildHeroBuilding(three, building, scene, requestRender) {
     edgeLines.position.copy(segment.position);
     edgeLines.rotation.copy(segment.rotation);
     three.add(edgeLines);
+  }
+
+  // Corner post: where two spec'd storefront faces meet, a slim pier closes
+  // the recess slit at the corner entrance.
+  const gpSpec = FACADE_SPECS[`${building.bin}:greenpoint`];
+  const fkSpec = FACADE_SPECS[`${building.bin}:franklin`];
+  if (gpSpec && fkSpec && textureEdge.greenpoint && textureEdge.franklin) {
+    const corner = sharedEndpoint(textureEdge.greenpoint, textureEdge.franklin);
+    if (corner) {
+      const size = scene.projection.scale * 0.35;
+      const postHeight = building.height * 0.245;
+      const post = new THREE.Mesh(
+        new THREE.BoxGeometry(size, postHeight, size),
+        new THREE.MeshBasicMaterial({ color: 0x241f18 }),
+      );
+      post.position.set(corner.x, postHeight / 2, corner.z);
+      three.add(post);
+    }
   }
 
   // Inked cast shadow (II-C shadow-shape language). Thrown toward the
@@ -439,6 +480,15 @@ function wallQuad(edge, height, face, scene) {
   geometry.setIndex([0, 1, 2, 0, 2, 3]);
   geometry.computeVertexNormals();
   return geometry;
+}
+
+function sharedEndpoint(edgeA, edgeB) {
+  for (const a of [edgeA.start, edgeA.end]) {
+    for (const b of [edgeB.start, edgeB.end]) {
+      if (Math.hypot(a.x - b.x, a.z - b.z) < 0.02) return a;
+    }
+  }
+  return null;
 }
 
 function footprintShape(polygon) {
@@ -531,14 +581,11 @@ function makeRoofTexture() {
     context.fillRect(Math.random() * size, Math.random() * size, 1.6, 1.6);
   }
 
-  // Parapet band + inked inner line at the roof edge.
-  const band = size * 0.045;
-  context.strokeStyle = "#a99c82";
-  context.lineWidth = band;
-  context.strokeRect(band / 2, band / 2, size - band, size - band);
-  context.strokeStyle = "rgba(42, 36, 28, 0.85)";
-  context.lineWidth = size * 0.008;
-  context.strokeRect(band, band, size - band * 2, size - band * 2);
+  // Thin inked edge line only — the roofline itself comes from the drawn
+  // cornice (spec'd faces) or the parapet ring (plain faces).
+  context.strokeStyle = "rgba(42, 36, 28, 0.6)";
+  context.lineWidth = size * 0.006;
+  context.strokeRect(size * 0.01, size * 0.01, size * 0.98, size * 0.98);
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
