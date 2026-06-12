@@ -20,28 +20,48 @@ const REVEAL = {
   soffit: 0x2f2820, // underside of storefront/awning/cornice returns
 };
 
-export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseColor }) {
+export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseColor, debug = false }) {
   const group = new THREE.Group();
   const meters = (value) => value * unitsPerMeter;
   const openings = [];
+  const debugRects = [];
+
+  // The v2 elevation is a flattened 3/4 view: drawn content leans right as
+  // it rises (ground floor true, upper floors shifted). `skewX` compensates
+  // linearly — a rect at height y shifts by skewX * y — so component
+  // geometry lands on the drawn feature. A true orthographic re-render sets
+  // skewX back to 0.
+  const skew = spec.skewX ?? 0;
+  const lean = (rect) => {
+    if (!skew) return rect;
+    const shift = skew * ((rect.y0 + rect.y1) / 2);
+    return { ...rect, x0: rect.x0 + shift, x1: rect.x1 + shift };
+  };
 
   const windowRects = [];
   if (spec.windows) {
     for (const row of spec.windows.rows) {
       for (const col of spec.windows.cols) {
-        windowRects.push({ x0: col.x0, x1: col.x1, y0: row.y0, y1: row.y1 });
+        windowRects.push(lean({ x0: col.x0, x1: col.x1, y0: row.y0, y1: row.y1 }));
       }
     }
   }
-  openings.push(...windowRects);
-  for (const storefront of spec.storefronts ?? []) openings.push(storefront);
-  for (const band of spec.signBands ?? []) openings.push(band);
-  for (const door of spec.doors ?? []) openings.push(door);
-  for (const box of spec.boxes ?? []) openings.push(box);
-  for (const awning of spec.awnings ?? []) {
+  const storefronts = (spec.storefronts ?? []).map(lean);
+  const signBands = (spec.signBands ?? []).map(lean);
+  const doors = (spec.doors ?? []).map(lean);
+  const boxes = (spec.boxes ?? []).map(lean);
+  const awnings = (spec.awnings ?? []).map((awning) => {
+    const yMid = ((awning.yValance ?? awning.yDrop) + awning.yWall) / 2;
+    const shift = skew * yMid;
+    return { ...awning, x0: awning.x0 + shift, x1: awning.x1 + shift };
+  });
+  const bay = spec.bay ? lean(spec.bay) : null;
+
+  openings.push(...windowRects, ...storefronts, ...signBands, ...doors, ...boxes);
+  for (const awning of awnings) {
     openings.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
   }
-  if (spec.bay) openings.push(spec.bay);
+  if (bay) openings.push(bay);
   if (spec.cornice) openings.push({ x0: 0, x1: 1, ...spec.cornice });
 
   // Wall mask: cover everything that is not an opening, at the wall plane.
@@ -63,14 +83,14 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   }
 
   // Storefront glass: deeper recess with a soffit and side reveals.
-  for (const storefront of spec.storefronts ?? []) {
+  for (const storefront of storefronts) {
     const recess = meters(storefront.recessM ?? 0.45);
     group.add(rectMesh(frame, storefront, -recess, texturedMaterial(texture, 0.97)));
     addReveals(group, frame, storefront, 0, -recess, { bottom: false });
   }
 
   // Sign bands: proud of the wall with thin returns.
-  for (const band of spec.signBands ?? []) {
+  for (const band of signBands) {
     const proud = meters(band.projectionM ?? 0.08);
     group.add(rectMesh(frame, band, proud, texturedMaterial(texture, 1)));
     addReveals(group, frame, band, proud, 0, { interior: false });
@@ -78,7 +98,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
 
   // Awnings: angled canopy from the wall attachment line outward and down,
   // a textured valance skirt at the outer edge, and closed side panels.
-  for (const awning of spec.awnings ?? []) {
+  for (const awning of awnings) {
     const projection = meters(awning.projectionM ?? 0.9);
     const yValance = awning.yValance ?? awning.yDrop;
     const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
@@ -115,25 +135,29 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   }
 
   // Doors: shallow recess with reveals, open at the threshold.
-  for (const door of spec.doors ?? []) {
+  for (const door of doors) {
     const recess = meters(door.recessM ?? 0.12);
     group.add(rectMesh(frame, door, -recess, texturedMaterial(texture, 0.98)));
     addReveals(group, frame, door, 0, -recess, { bottom: false });
   }
 
   // Boxes (AC units, utility): proud textured blocks.
-  for (const box of spec.boxes ?? []) {
+  for (const box of boxes) {
     const proud = meters(box.projectionM ?? 0.3);
     group.add(rectMesh(frame, box, proud, texturedMaterial(texture, 1)));
     addReveals(group, frame, box, proud, 0, { interior: false });
   }
 
   // Bay window: a real shallow volume — textured front, dark wood cheeks
-  // matching the drawn bay's joinery rather than the wall brick.
-  if (spec.bay) {
-    const projection = meters(spec.bay.projectionM ?? 0.5);
-    group.add(rectMesh(frame, spec.bay, projection, texturedMaterial(texture, 1)));
-    addReveals(group, frame, spec.bay, projection, 0, { interior: false, baseColor: 0x4a3a2c });
+  // matching the drawn bay's joinery, and a dark little roof (never a lit
+  // cap: the bay tucks under the cornice shadow).
+  if (bay) {
+    const projection = meters(bay.projectionM ?? 0.5);
+    group.add(rectMesh(frame, bay, projection, texturedMaterial(texture, 1)));
+    group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(0x352c22)));
+    group.add(bridgeMesh(frame, bay, projection, 0, "bottom", tintMaterial(REVEAL.soffit)));
+    group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(0x4a3a2c)));
+    group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(0x4a3a2c)));
   }
 
   // Cornice: proud strip across the top with a shadowed soffit.
@@ -142,6 +166,31 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const proud = meters(spec.cornice.projectionM ?? 0.18);
     group.add(rectMesh(frame, rect, proud, texturedMaterial(texture, 1)));
     addReveals(group, frame, rect, proud, 0, { interior: false });
+  }
+
+  // Spec-debug: outline every component rect directly on the wall so
+  // alignment against the drawn artwork is checkable in 3D (?specdebug=1).
+  if (debug) {
+    debugRects.push(...windowRects);
+    if (bay) debugRects.push(bay);
+    for (const list of [storefronts, signBands, doors, boxes]) {
+      debugRects.push(...list);
+    }
+    for (const awning of awnings) {
+      debugRects.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
+    }
+    if (spec.cornice) debugRects.push({ x0: 0, x1: 1, ...spec.cornice });
+    const material = new THREE.LineBasicMaterial({ color: 0x00ff44 });
+    for (const rect of debugRects) {
+      const points = [
+        facePoint(frame, rect.x0, rect.y0, 0.03),
+        facePoint(frame, rect.x1, rect.y0, 0.03),
+        facePoint(frame, rect.x1, rect.y1, 0.03),
+        facePoint(frame, rect.x0, rect.y1, 0.03),
+      ].map((p) => new THREE.Vector3(...p));
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      group.add(new THREE.LineLoop(geometry, material));
+    }
   }
 
   return group;

@@ -345,6 +345,7 @@ function buildHeroBuilding(three, building, scene, requestRender) {
               texture,
               unitsPerMeter: scene.projection.scale,
               baseColor: new THREE.Color(baseColor).multiplyScalar(shade).getHex(),
+              debug: new URLSearchParams(window.location.search).get("specdebug") === "1",
             }),
           );
         }
