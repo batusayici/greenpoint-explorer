@@ -153,7 +153,10 @@ export default function SceneView() {
     function onWheel(event) {
       event.preventDefault();
       const factor = Math.exp(event.deltaY * 0.001);
-      view.frustumHeight = THREE.MathUtils.clamp(view.frustumHeight * factor, 2.2, 18);
+      // Floor 0.85 ≈ a single storefront filling the frame (a ~14m hero is
+      // ~1.05 units tall) — the reference's readable-signage detail level.
+      // Ceiling 22 keeps the full three-corner intersection in view.
+      view.frustumHeight = THREE.MathUtils.clamp(view.frustumHeight * factor, 0.85, 22);
       applyCamera();
       render();
     }
@@ -625,7 +628,9 @@ function loadTrimmedTexture(url, onReady) {
 
     const texture = new THREE.CanvasTexture(cropped);
     texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = 4;
+    // Max anisotropy (Three clamps to the GPU limit): keeps facade signage and
+    // window detail crisp at the deep zoom and on the grazing Franklin returns.
+    texture.anisotropy = 16;
     onReady(texture);
   };
   image.src = url;
