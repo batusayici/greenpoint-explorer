@@ -238,11 +238,11 @@ function buildStreets(three, streets) {
 // window, fire escapes, residential windows) to u=1.
 // 3322609's east edge is contiguous just south of 3322608's, so the two
 // footprints share one continuous Franklin frontage.
-const PREMIER_KINK = 0.56; // measured corner column in the drawn elevation
+const PREMIER_KINK = 0.477; // v3 contract: corner at the real wall ratio 14.7m / 30.8m
 const PIZZA_SPLIT = 0.585; // BIN seam: sister east edge 8.6m of the 14.7m streetwall
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
-    key: "../assets/textures/franklin/premier-franklin-organic--greenpoint-v2.png",
+    key: "../assets/textures/franklin/premier-franklin-organic--corner-v3.png",
     byBin: {
       "3322609": {
         franklin: { u0: 0, u1: PREMIER_KINK * PIZZA_SPLIT, leftEnd: "south" },
@@ -515,10 +515,12 @@ function loadTrimmedTexture(url, onReady) {
     const { data, width, height } = context.getImageData(0, 0, canvas.width, canvas.height);
 
     const border = [data[0], data[1], data[2]];
+    // Threshold 80: paper margins carry grain/vignette up to ~55 against the
+    // corner pixel; drawn artwork differs by hundreds.
     const differs = (x, y) => {
       const at = (y * width + x) * 4;
       return (
-        Math.abs(data[at] - border[0]) + Math.abs(data[at + 1] - border[1]) + Math.abs(data[at + 2] - border[2]) > 48
+        Math.abs(data[at] - border[0]) + Math.abs(data[at + 1] - border[1]) + Math.abs(data[at + 2] - border[2]) > 80
       );
     };
     // Margins are paper-textured, not uniform, so a single differing pixel
