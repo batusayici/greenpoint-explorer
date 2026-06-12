@@ -40,9 +40,19 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
 
   const windowRects = [];
   if (spec.windows) {
-    for (const row of spec.windows.rows) {
-      for (const col of spec.windows.cols) {
-        windowRects.push(lean({ x0: col.x0, x1: col.x1, y0: row.y0, y1: row.y1 }));
+    if (spec.windows.rects) {
+      // Explicit per-window rects: each opening is registered directly to the
+      // drawn elevation, so irregular facades (missing bays, mixed floor
+      // counts) recess exactly on their painted windows. Preferred over the
+      // rows×cols product, which manufactures windows at empty grid cells.
+      for (const rect of spec.windows.rects) {
+        windowRects.push(lean({ x0: rect.x0, x1: rect.x1, y0: rect.y0, y1: rect.y1 }));
+      }
+    } else if (spec.windows.rows && spec.windows.cols) {
+      for (const row of spec.windows.rows) {
+        for (const col of spec.windows.cols) {
+          windowRects.push(lean({ x0: col.x0, x1: col.x1, y0: row.y0, y1: row.y1 }));
+        }
       }
     }
   }
