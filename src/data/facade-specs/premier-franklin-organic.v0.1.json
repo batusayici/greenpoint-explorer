@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "facade-spec.v0.3",
+  "schemaVersion": "facade-spec.v0.4",
   "placeId": "premier-franklin-organic",
   "status": "manual_draft_from_photo_evidence",
-  "note": "Measured against premier-franklin-organic--corner-v3.png (orthographic unwrap per GENERATION_KIT contract). Trimmed-image kink u=0.477, BIN seam u=0.279. Rows/cornice unified across faces (continuous floor datums).",
+  "note": "Measured against premier-franklin-organic--corner-v3.png. TRUE drawn corner kink u=0.52 (badge fully on Franklin per reference photos), BIN seam u=0.3046. All locals derived from whole-image u measurements.",
   "evidence": [
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
@@ -17,7 +17,7 @@
       "signBands": [
         {
           "x0": 0.0,
-          "x1": 0.36,
+          "x1": 0.306,
           "y0": 0.275,
           "y1": 0.34,
           "projectionM": 0.1
@@ -26,7 +26,7 @@
       "awnings": [
         {
           "x0": 0.0,
-          "x1": 0.47,
+          "x1": 0.423,
           "yWall": 0.265,
           "yDrop": 0.225,
           "yValance": 0.193,
@@ -51,34 +51,30 @@
         ],
         "cols": [
           {
-            "x0": 0.035,
-            "x1": 0.105
+            "x0": 0.129,
+            "x1": 0.212
           },
           {
-            "x0": 0.2,
-            "x1": 0.277
+            "x0": 0.615,
+            "x1": 0.712
           },
           {
-            "x0": 0.646,
-            "x1": 0.736
-          },
-          {
-            "x0": 0.895,
-            "x1": 0.971
+            "x0": 0.885,
+            "x1": 0.969
           }
         ]
       },
       "bay": {
-        "x0": 0.411,
-        "x1": 0.576,
+        "x0": 0.358,
+        "x1": 0.538,
         "y0": 0.3,
         "y1": 0.875,
         "projectionM": 0.6
       },
       "doors": [
         {
-          "x0": 0.36,
-          "x1": 0.425,
+          "x0": 0.302,
+          "x1": 0.373,
           "y0": 0.0,
           "y1": 0.26,
           "recessM": 0.12
@@ -86,15 +82,15 @@
       ],
       "boxes": [
         {
-          "x0": 0.585,
-          "x1": 0.695,
+          "x0": 0.548,
+          "x1": 0.669,
           "y0": 0.185,
           "y1": 0.3,
           "projectionM": 0.3
         },
         {
-          "x0": 0.845,
-          "x1": 0.955,
+          "x0": 0.831,
+          "x1": 0.95,
           "y0": 0.19,
           "y1": 0.3,
           "projectionM": 0.3
@@ -103,7 +99,7 @@
       "storefronts": [
         {
           "x0": 0.0,
-          "x1": 0.275,
+          "x1": 0.208,
           "y0": 0.0,
           "y1": 0.19,
           "recessM": 0.45
@@ -154,16 +150,12 @@
         ],
         "cols": [
           {
-            "x0": 0.095,
-            "x1": 0.208
+            "x0": 0.141,
+            "x1": 0.246
           },
           {
-            "x0": 0.283,
-            "x1": 0.397
-          },
-          {
-            "x0": 0.474,
-            "x1": 0.587
+            "x0": 0.317,
+            "x1": 0.421
           }
         ]
       },
@@ -186,14 +178,14 @@
       },
       "signBands": [
         {
-          "x0": 0.034,
-          "x1": 0.546,
+          "x0": 0.031,
+          "x1": 0.499,
           "y0": 0.25,
           "y1": 0.285,
           "projectionM": 0.08
         },
         {
-          "x0": 0.58,
+          "x0": 0.525,
           "x1": 1.0,
           "y0": 0.275,
           "y1": 0.34,
@@ -202,7 +194,7 @@
       ],
       "awnings": [
         {
-          "x0": 0.615,
+          "x0": 0.563,
           "x1": 1.0,
           "yWall": 0.265,
           "yDrop": 0.225,
@@ -228,33 +220,33 @@
         ],
         "cols": [
           {
-            "x0": 0.23,
-            "x1": 0.307
+            "x0": 0.211,
+            "x1": 0.281
           },
           {
-            "x0": 0.384,
-            "x1": 0.461
+            "x0": 0.352,
+            "x1": 0.422
           },
           {
-            "x0": 0.683,
-            "x1": 0.76
+            "x0": 0.626,
+            "x1": 0.696
           },
           {
-            "x0": 0.871,
-            "x1": 0.948
+            "x0": 0.798,
+            "x1": 0.868
           }
         ]
       },
       "storefronts": [
         {
           "x0": 0.0,
-          "x1": 0.555,
+          "x1": 0.509,
           "y0": 0.0,
           "y1": 0.245,
           "recessM": 0.45
         },
         {
-          "x0": 0.589,
+          "x0": 0.538,
           "x1": 1.0,
           "y0": 0.0,
           "y1": 0.19,
