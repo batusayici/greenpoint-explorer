@@ -15,6 +15,8 @@
 //     --face "3322608:greenpoint=0.478:1" \
 //     [--wall-threshold 70] [--out docs/visual-artifacts/facade-derivation]
 //
+// --wall R,G,B overrides auto wall-color estimation — needed when the wall
+// is not the majority surface of a face (e.g. Sonny's dense dark joinery).
 // Face u ranges are slices of the TRIMMED texture (same numbers as
 // FACADE_COMPOSITES in src/SceneView.jsx). Output rects are face-local:
 // x from the face's left edge, y from the GROUND UP — exactly the
@@ -199,40 +201,43 @@ function cropImage(img, { minX, minY, maxX, maxY }) {
 
 // ----------------------------------------------------- opening detection
 
-// Wall color per face: modal quantized color over the upper-wall band
-// (skips cornice top and storefront base, where wall barely appears).
+// Wall color per face: per-channel median over the whole face (minus a
+// sliver at top/bottom for residual paper edge). Wall is the majority
+// surface on every facade we render, and a median is robust both to grainy
+// wall texture (which fragments modal-bucket sampling — Sonny's mauve lost
+// to its flat dark joinery) and to large storefronts (which dominated
+// band-based sampling on low buildings like Sereneco).
 function estimateWallColor(img, x0, x1) {
   const { width, data } = img;
-  const yStart = Math.floor(img.height * 0.3);
-  const yEnd = Math.floor(img.height * 0.72);
-  const buckets = new Map();
+  const yStart = Math.floor(img.height * 0.02);
+  const yEnd = Math.floor(img.height * 0.98);
+  const histograms = [new Uint32Array(256), new Uint32Array(256), new Uint32Array(256)];
+  let total = 0;
   for (let y = yStart; y < yEnd; y += 1) {
     for (let x = x0; x < x1; x += 1) {
       const at = (y * width + x) * 4;
-      const key = ((data[at] >> 4) << 8) | ((data[at + 1] >> 4) << 4) | (data[at + 2] >> 4);
-      buckets.set(key, (buckets.get(key) ?? 0) + 1);
+      histograms[0][data[at]] += 1;
+      histograms[1][data[at + 1]] += 1;
+      histograms[2][data[at + 2]] += 1;
+      total += 1;
     }
   }
-  let modal = 0, best = -1;
-  for (const [key, count] of buckets) if (count > best) { best = count; modal = key; }
-  let r = 0, g = 0, b = 0, n = 0;
-  for (let y = yStart; y < yEnd; y += 1) {
-    for (let x = x0; x < x1; x += 1) {
-      const at = (y * width + x) * 4;
-      const key = ((data[at] >> 4) << 8) | ((data[at + 1] >> 4) << 4) | (data[at + 2] >> 4);
-      if (key !== modal) continue;
-      r += data[at]; g += data[at + 1]; b += data[at + 2]; n += 1;
+  return histograms.map((histogram) => {
+    let seen = 0;
+    for (let value = 0; value < 256; value += 1) {
+      seen += histogram[value];
+      if (seen >= total / 2) return value;
     }
-  }
-  return [Math.round(r / n), Math.round(g / n), Math.round(b / n)];
+    return 128;
+  });
 }
 
-function detectFace(img, face, wallThreshold) {
+function detectFace(img, face, wallThreshold, erodeOverride, wallOverride) {
   const { width, height, data } = img;
   const x0 = Math.round(face.u0 * width);
   const x1 = Math.round(face.u1 * width);
   const faceW = x1 - x0;
-  const wall = estimateWallColor(img, x0, x1);
+  const wall = wallOverride ?? estimateWallColor(img, x0, x1);
 
   // Not-wall mask. Linework and hatching also differ from wall, so the raw
   // mask is laced with 1-3px bridges connecting every feature into one blob.
@@ -248,7 +253,7 @@ function detectFace(img, face, wallThreshold) {
 
   // Erosion cuts the linework bridges: only solid not-wall areas (glass,
   // painted bands, dark bases) survive; ink lines and hatching vanish.
-  const erodeRadius = Math.max(2, Math.round(width * 0.002));
+  const erodeRadius = erodeOverride ?? Math.max(2, Math.round(width * 0.002));
   const eroded = erode(mask, faceW, height, erodeRadius);
 
   // Connected components over the eroded cores.
@@ -415,7 +420,7 @@ function drawOverlay(img, faces, results) {
 // ---------------------------------------------------------------- main
 
 function parseArgs(argv) {
-  const args = { faces: [], wallThreshold: 70, out: "docs/visual-artifacts/facade-derivation" };
+  const args = { faces: [], wallThreshold: 55, erode: null, wall: null, out: "docs/visual-artifacts/facade-derivation" };
   const positional = [];
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === "--face") {
@@ -423,12 +428,18 @@ function parseArgs(argv) {
       if (!match) throw new Error(`bad --face value (want NAME=u0:u1): ${argv[i]}`);
       args.faces.push({ name: match[1], u0: Number(match[2]), u1: Number(match[3]) });
     } else if (argv[i] === "--wall-threshold") args.wallThreshold = Number(argv[++i]);
+    else if (argv[i] === "--erode") args.erode = Number(argv[++i]);
+    else if (argv[i] === "--wall") {
+      const parts = argv[++i].split(",").map(Number);
+      if (parts.length !== 3 || parts.some(Number.isNaN)) throw new Error(`bad --wall value (want R,G,B): ${argv[i]}`);
+      args.wall = parts;
+    }
     else if (argv[i] === "--out") args.out = argv[++i];
     else positional.push(argv[i]);
   }
   if (positional.length !== 1 || args.faces.length === 0) {
     console.error(
-      'usage: node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1" [--face ...] [--wall-threshold N] [--out DIR]',
+      'usage: node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1" [--face ...] [--wall-threshold N] [--erode PX] [--wall R,G,B] [--out DIR]',
     );
     process.exit(1);
   }
@@ -446,7 +457,7 @@ console.log(
 );
 
 const results = args.faces.map((face) => {
-  const result = detectFace(trimmed, face, args.wallThreshold);
+  const result = detectFace(trimmed, face, args.wallThreshold, args.erode, args.wall);
   console.log(
     `${face.name} [u ${face.u0}..${face.u1}] wall rgb(${result.wallColor.join(",")}) -> ${result.rects.length} rects`,
   );

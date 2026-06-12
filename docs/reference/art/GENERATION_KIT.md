@@ -140,6 +140,13 @@ below are retired; kept for the size data only.
 
 ### Sonny's Corner — BIN 3064811 (southeast corner)
 
+**DONE** — shipped as `sonnys-corner--corner.png`, fold measured at u=0.734
+(Greenpoint-first reading; only the greenpoint face is camera-visible).
+Derivation needed `--wall 128,84,92 --wall-threshold 140 --erode 3`: the
+mauve wall is only ~34% of the face (dense dark joinery defeats auto wall
+estimation), and shadowed-mauve hatching bridges features at the default
+threshold. Spec: `src/data/facade-specs/sonnys-corner.v0.1.json`.
+
 Dark brick bar corner: dark awned base wrapping both streets, upper window
 rhythm. Photos: `franklin-southeast-wide.jpeg`, `franklin-southeast-zoom.jpeg`,
 `franklin-southeast-1.jpeg`.
@@ -154,6 +161,11 @@ reading order against the camera-visible faces** (fixed NE iso camera;
 drawn fold from the render as always.
 
 ### Sereneco — BIN 3337033 (northwest corner)
+
+**DONE** — shipped as `sereneco--corner.png`, fold at u=0.496 on a drawn
+brick seam (default derivation settings worked). Only the franklin face is
+camera-visible; it maps with `coverMeters: 12` onto the corner-adjacent end
+of the 57m footprint edge. Spec: `src/data/facade-specs/sereneco.v0.1.json`.
 
 Low weathered-brick restaurant corner with glass base. Photos:
 `franklin-northwest1.jpeg` through `franklin-northwest4.jpeg`.

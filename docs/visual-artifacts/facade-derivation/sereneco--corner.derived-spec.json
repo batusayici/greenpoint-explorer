@@ -1,0 +1,138 @@
+{
+  "source": "assets/textures/franklin/sereneco--corner.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 18,
+    "minY": 202,
+    "maxX": 1653,
+    "maxY": 755
+  },
+  "trimmedSize": {
+    "width": 1636,
+    "height": 554
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3337033:greenpoint": {
+      "u0": 0,
+      "u1": 0.496,
+      "wallColor": [
+        121,
+        75,
+        58
+      ],
+      "rects": [
+        {
+          "x0": 0.63,
+          "x1": 0.758,
+          "y0": 0.148,
+          "y1": 0.619,
+          "type": "bay"
+        },
+        {
+          "x0": 0.522,
+          "x1": 0.604,
+          "y0": 0.018,
+          "y1": 0.307,
+          "type": "door"
+        },
+        {
+          "x0": 0.853,
+          "x1": 0.956,
+          "y0": 0.588,
+          "y1": 0.619,
+          "type": "window"
+        },
+        {
+          "x0": 0.412,
+          "x1": 0.541,
+          "y0": 0.522,
+          "y1": 0.632,
+          "type": "window"
+        },
+        {
+          "x0": 0.021,
+          "x1": 0.067,
+          "y0": 0.291,
+          "y1": 0.379,
+          "type": "window"
+        },
+        {
+          "x0": 0.306,
+          "x1": 0.364,
+          "y0": 0.278,
+          "y1": 0.397,
+          "type": "window"
+        },
+        {
+          "x0": 0.126,
+          "x1": 0.171,
+          "y0": 0.276,
+          "y1": 0.35,
+          "type": "window"
+        },
+        {
+          "x0": 0.414,
+          "x1": 0.48,
+          "y0": 0.159,
+          "y1": 0.323,
+          "type": "window"
+        },
+        {
+          "x0": 0.313,
+          "x1": 0.361,
+          "y0": 0.153,
+          "y1": 0.262,
+          "type": "window"
+        },
+        {
+          "x0": 0.832,
+          "x1": 0.964,
+          "y0": 0.146,
+          "y1": 0.469,
+          "type": "window"
+        }
+      ]
+    },
+    "3337033:franklin": {
+      "u0": 0.496,
+      "u1": 1,
+      "wallColor": [
+        92,
+        62,
+        50
+      ],
+      "rects": [
+        {
+          "x0": 0.496,
+          "x1": 0.857,
+          "y0": 0.112,
+          "y1": 0.569,
+          "type": "bay"
+        },
+        {
+          "x0": 0.035,
+          "x1": 0.387,
+          "y0": 0.007,
+          "y1": 0.673,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.744,
+          "x1": 0.798,
+          "y0": 0.655,
+          "y1": 0.7,
+          "type": "window"
+        },
+        {
+          "x0": 0.891,
+          "x1": 0.973,
+          "y0": 0.466,
+          "y1": 0.531,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}

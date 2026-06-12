@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "sereneco",
+  "status": "derived_from_render_2026-06-12",
+  "note": "Rects derived from sereneco--corner.png via scripts/derive-facade-spec.mjs (default settings) and reviewed on the overlay. Only the franklin face is camera-visible (fixed NE iso camera) — the greenpoint face (south) is back-facing and unmapped. Fold SERENECO_KINK=0.496 sits on a drawn brick seam matching the kit ask (Greenpoint 11.8m : Franklin return ~12m). The franklin slice covers only the corner-adjacent 12m of the 57.1m footprint edge (coverMeters in FACADE_COMPOSITES); the rest is untextured context mass per the R10G finding. No cornice rect: the drawn parapet stays in-texture and the geometric parapet ring carries the roofline. Tenant signage 'AZURE GOURMET' is UNVERIFIED — check in the pre-launch factual pass.",
+  "evidence": [
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest1.jpeg",
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northwest2.jpeg"
+  ],
+  "faces": {
+    "3337033:franklin": {
+      "windows": {
+        "recessM": 0.12,
+        "rects": [
+          { "x0": 0.744, "x1": 0.798, "y0": 0.655, "y1": 0.700 },
+          { "x0": 0.891, "x1": 0.973, "y0": 0.466, "y1": 0.531 }
+        ]
+      },
+      "storefronts": [
+        {
+          "x0": 0.035,
+          "x1": 0.387,
+          "y0": 0.0,
+          "y1": 0.673,
+          "recessM": 0.25
+        },
+        {
+          "x0": 0.496,
+          "x1": 0.857,
+          "y0": 0.0,
+          "y1": 0.569,
+          "recessM": 0.3
+        }
+      ],
+      "skewX": 0
+    }
+  }
+}

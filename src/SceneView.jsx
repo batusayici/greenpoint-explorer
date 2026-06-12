@@ -3,6 +3,8 @@ import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
 import { buildFacadeAssembly } from "./facadeAssembly.js";
 import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1.json";
+import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
+import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
@@ -240,6 +242,14 @@ function buildStreets(three, streets) {
 // footprints share one continuous Franklin frontage.
 const PREMIER_KINK = 0.478; // v4 measured drawn corner (contract-compliant render)
 const PIZZA_SPLIT = 0.585; // BIN seam: sister east edge 8.6m of the 14.7m streetwall
+// Sonny's unwrap reads Greenpoint (fire-escape face) then Franklin (ALTER
+// return); fold measured on the drawn pier, matching the real 19.9m : 7.2m.
+const SONNYS_KINK = 0.734;
+// Sereneco unwrap reads Greenpoint then the Franklin return; fold sits on a
+// drawn brick seam at the kit's 11.8m : ~12m ask. Only the franklin slice is
+// mapped (the greenpoint face is back-facing to the fixed camera), and it
+// covers just the corner-adjacent 12m of the 57m footprint edge (R10G).
+const SERENECO_KINK = 0.496;
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
     key: "../assets/textures/franklin/premier-franklin-organic--corner-v4.png",
@@ -253,12 +263,33 @@ const FACADE_COMPOSITES = {
       },
     },
   },
+  "sonnys-corner": {
+    key: "../assets/textures/franklin/sonnys-corner--corner.png",
+    byBin: {
+      "3064811": {
+        greenpoint: { u0: 0, u1: SONNYS_KINK, leftEnd: "east" },
+        franklin: { u0: SONNYS_KINK, u1: 1, leftEnd: "north" },
+      },
+    },
+  },
+  sereneco: {
+    key: "../assets/textures/franklin/sereneco--corner.png",
+    byBin: {
+      "3337033": {
+        franklin: { u0: SERENECO_KINK, u1: 1, leftEnd: "south", coverMeters: 12 },
+      },
+    },
+  },
 };
 
 const FACADE_GROUP_BINS = { "3322609": "premier-franklin-organic" };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
-const FACADE_SPECS = { ...premierFacadeSpec.faces };
+const FACADE_SPECS = {
+  ...premierFacadeSpec.faces,
+  ...sonnysFacadeSpec.faces,
+  ...serenecoFacadeSpec.faces,
+};
 
 function buildBuildings(three, scene, requestRender) {
   scene.buildings.forEach((building, index) => {
@@ -311,32 +342,59 @@ function buildHeroBuilding(three, building, scene, requestRender) {
     }
   }
 
+  // Multi-BIN composites (Premier + its Pizza sister) are facade flats whose
+  // uncovered edges are interior party walls along the lot line. Single-BIN
+  // composites (Sonny's, Sereneco) keep their uncovered edges — those are
+  // real exterior walls (e.g. Sonny's camera-facing east wall).
+  const isGroupComposite = Boolean(composite) && Object.keys(composite.byBin).length > 1;
+
   for (const edge of building.edges) {
     const face = composite?.byBin?.[building.bin]?.[edge.role];
-    // Composite hero buildings (Premier + its Pizza sister) are facade flats:
-    // every edge the composite doesn't cover is an interior party wall shared
-    // along the lot line. Rendered as a muted wall it sits at the Premier/Pizza
-    // seam and, seen nearly edge-on from the fixed iso camera, reads as a thin
-    // "floating plane" in front of the recessed storefront. The camera only
-    // ever sees the street faces, so drop the party walls entirely.
-    if (composite && !face) continue;
+    // Group-composite party walls, seen nearly edge-on from the fixed iso
+    // camera, read as a thin "floating plane" in front of the recessed
+    // storefront. The camera only ever sees the street faces, so drop them.
+    if (isGroupComposite && !face) continue;
     const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
     const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
-    // With a composite present, any face it doesn't cover is a party wall
-    // (e.g. the sister's lot-line edges behind Premier) — muted, never
+    // In a facade group, any face the composite doesn't cover is a party
+    // wall (e.g. the sister's lot-line edges behind Premier) — muted, never
     // street-bright, even if it geometrically faces a street.
-    const effectiveRole = composite ? (face ? edge.role : "other") : edge.role;
+    const effectiveRole = isGroupComposite ? (face ? edge.role : "other") : edge.role;
     const shade = faceShade[effectiveRole] ?? faceShade.other;
     const wallColor =
-      composite && !face
+      isGroupComposite && !face
         ? new THREE.Color(baseColor).lerp(new THREE.Color(0x6b5e52), 0.5).multiplyScalar(shade)
         : new THREE.Color(baseColor).multiplyScalar(shade);
+
+    // A face with coverMeters maps its texture slice onto only the first N
+    // meters of the wall from the slice's left end (Sereneco: the 12m
+    // corner-adjacent return of a 57m footprint edge). The remainder renders
+    // as a plain context-toned wall.
+    let renderEdge = edge;
+    if (isTextured && face.coverMeters) {
+      const frame = faceFrame(edge, building.height, face, scene);
+      const coverUnits = Math.min(face.coverMeters * scene.projection.scale, edge.length);
+      const dx = (frame.right.x - frame.left.x) / edge.length;
+      const dz = (frame.right.z - frame.left.z) / edge.length;
+      const cut = { x: frame.left.x + dx * coverUnits, z: frame.left.z + dz * coverUnits };
+      renderEdge = { ...edge, start: frame.left, end: cut, length: coverUnits };
+      if (edge.length - coverUnits > 1e-6) {
+        const rest = new THREE.Mesh(
+          wallQuad({ ...edge, start: cut, end: frame.right, length: edge.length - coverUnits }, building.height, null, scene),
+          new THREE.MeshBasicMaterial({
+            color: new THREE.Color(baseColor).multiplyScalar(faceShade.other),
+            side: THREE.DoubleSide,
+          }),
+        );
+        three.add(rest);
+      }
+    }
 
     const material = new THREE.MeshBasicMaterial({
       color: wallColor,
       side: THREE.DoubleSide,
     });
-    const wall = new THREE.Mesh(wallQuad(edge, building.height, isTextured ? face : null, scene), material);
+    const wall = new THREE.Mesh(wallQuad(renderEdge, building.height, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     three.add(wall);
 
@@ -347,7 +405,7 @@ function buildHeroBuilding(three, building, scene, requestRender) {
           three.remove(wall);
           three.add(
             buildFacadeAssembly({
-              frame: faceFrame(edge, building.height, face, scene),
+              frame: faceFrame(renderEdge, building.height, face, scene),
               spec: specFace,
               texture,
               unitsPerMeter: scene.projection.scale,

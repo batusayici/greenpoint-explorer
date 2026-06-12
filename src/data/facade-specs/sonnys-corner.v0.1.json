@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "sonnys-corner",
+  "status": "derived_from_render_2026-06-12",
+  "note": "Rects derived from sonnys-corner--corner.png via scripts/derive-facade-spec.mjs (--wall 128,84,92 --wall-threshold 140 --erode 3) and reviewed on the overlay. Window x per-column as detected; row y harmonized across each row where the fire escape fragmented detection. Only the greenpoint face is camera-visible (fixed NE iso camera) — the franklin face (west, carrying the ALTER return) maps as a flat texture slice with no component spec. Fold SONNYS_KINK=0.734 (real walls 19.9m + 7.2m), confirmed on the drawn pier left of the ALTER storefront. Tenant signage 'ALTER BROOKLYN' on the franklin return is UNVERIFIED — check in the pre-launch factual pass.",
+  "evidence": [
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"
+  ],
+  "faces": {
+    "3064811:greenpoint": {
+      "cornice": {
+        "y0": 0.89,
+        "y1": 1.0,
+        "projectionM": 0.18
+      },
+      "signBands": [
+        {
+          "x0": 0.0,
+          "x1": 1.0,
+          "y0": 0.32,
+          "y1": 0.395,
+          "projectionM": 0.08
+        }
+      ],
+      "windows": {
+        "recessM": 0.14,
+        "rects": [
+          { "x0": 0.044, "x1": 0.108, "y0": 0.793, "y1": 0.878 },
+          { "x0": 0.172, "x1": 0.223, "y0": 0.793, "y1": 0.878 },
+          { "x0": 0.307, "x1": 0.359, "y0": 0.793, "y1": 0.878 },
+          { "x0": 0.422, "x1": 0.472, "y0": 0.793, "y1": 0.878 },
+          { "x0": 0.536, "x1": 0.595, "y0": 0.793, "y1": 0.878 },
+          { "x0": 0.681, "x1": 0.743, "y0": 0.793, "y1": 0.878 },
+          { "x0": 0.794, "x1": 0.847, "y0": 0.785, "y1": 0.869 },
+          { "x0": 0.897, "x1": 0.953, "y0": 0.791, "y1": 0.875 },
+          { "x0": 0.049, "x1": 0.108, "y0": 0.564, "y1": 0.657 },
+          { "x0": 0.167, "x1": 0.224, "y0": 0.564, "y1": 0.657 },
+          { "x0": 0.298, "x1": 0.364, "y0": 0.564, "y1": 0.657 },
+          { "x0": 0.415, "x1": 0.478, "y0": 0.564, "y1": 0.657 },
+          { "x0": 0.542, "x1": 0.600, "y0": 0.564, "y1": 0.657 },
+          { "x0": 0.675, "x1": 0.743, "y0": 0.564, "y1": 0.656 },
+          { "x0": 0.795, "x1": 0.847, "y0": 0.564, "y1": 0.638 },
+          { "x0": 0.898, "x1": 0.953, "y0": 0.564, "y1": 0.638 }
+        ]
+      },
+      "boxes": [
+        {
+          "x0": 0.561,
+          "x1": 0.596,
+          "y0": 0.486,
+          "y1": 0.531,
+          "projectionM": 0.25
+        },
+        {
+          "x0": 0.811,
+          "x1": 0.847,
+          "y0": 0.485,
+          "y1": 0.524,
+          "projectionM": 0.25
+        },
+        {
+          "x0": 0.280,
+          "x1": 0.351,
+          "y0": 0.472,
+          "y1": 0.508,
+          "projectionM": 0.25
+        }
+      ],
+      "storefronts": [
+        {
+          "x0": 0.0,
+          "x1": 1.0,
+          "y0": 0.0,
+          "y1": 0.32,
+          "recessM": 0.4
+        }
+      ],
+      "skewX": 0
+    }
+  }
+}
