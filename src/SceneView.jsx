@@ -70,10 +70,10 @@ export default function SceneView() {
     const requestRender = () => renderScene?.();
 
     buildStreets(three, scene.streets);
-    buildBuildings(three, scene.buildings, requestRender);
+    buildBuildings(three, scene, requestRender);
 
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200);
-    const view = { target: new THREE.Vector3(-0.7, 0, 0.9), frustumHeight: 3.4 };
+    const view = { target: new THREE.Vector3(-0.75, 0.45, 0.7), frustumHeight: 2.2 };
 
     function applyCamera() {
       const aspect = mount.clientWidth / Math.max(mount.clientHeight, 1);
@@ -205,10 +205,43 @@ function buildStreets(three, streets) {
   }
 }
 
-function buildBuildings(three, buildings, requestRender) {
-  buildings.forEach((building, index) => {
+// Composite facade elevations: one head-on drawn image unwrapped across the
+// street faces of a corner streetwall, possibly spanning multiple footprint
+// components (facade group). `u` is the horizontal slice of the (trimmed)
+// image per wall; `leftEnd` names the world end of the wall where the
+// slice's left side sits. Corner/seam continuity is automatic because
+// adjacent slices share their boundary coordinate.
+//
+// Premier v2 reads left-to-right: Franklin Pizza (far/south end of the
+// Franklin St streetwall, on sister building 3322609) -> premier ORGANIC +
+// corner storefront (Premier's Franklin face 3322608) -> the corner column at
+// u=PREMIER_KINK -> Premier's long Greenpoint Ave face (premier script, bay
+// window, fire escapes, residential windows) to u=1.
+// 3322609's east edge is contiguous just south of 3322608's, so the two
+// footprints share one continuous Franklin frontage.
+const PREMIER_KINK = 0.5;
+const PIZZA_SPLIT = 0.585; // share of the Franklin portion that is the pizza sister
+const FACADE_COMPOSITES = {
+  "premier-franklin-organic": {
+    key: "../assets/textures/franklin/premier-franklin-organic--greenpoint-v2.png",
+    byBin: {
+      "3322609": {
+        franklin: { u0: 0, u1: PREMIER_KINK * PIZZA_SPLIT, leftEnd: "south" },
+      },
+      "3322608": {
+        franklin: { u0: PREMIER_KINK * PIZZA_SPLIT, u1: PREMIER_KINK, leftEnd: "south" },
+        greenpoint: { u0: PREMIER_KINK, u1: 1, leftEnd: "east" },
+      },
+    },
+  },
+};
+
+const FACADE_GROUP_BINS = { "3322609": "premier-franklin-organic" };
+
+function buildBuildings(three, scene, requestRender) {
+  scene.buildings.forEach((building, index) => {
     if (building.isHero && building.edges) {
-      buildHeroBuilding(three, building, requestRender);
+      buildHeroBuilding(three, building, scene, requestRender);
       return;
     }
     const shape = footprintShape(building.polygon);
@@ -231,11 +264,23 @@ function buildBuildings(three, buildings, requestRender) {
 // elevations map directly onto the real footprint edges, the two street
 // faces share a crisp corner, the roof carries an inked parapet texture,
 // and an II-C cast-shadow shape grounds the mass.
-function buildHeroBuilding(three, building, requestRender) {
+function buildHeroBuilding(three, building, scene, requestRender) {
   const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
   // Benchmark-style face shading: lit street faces, darker returns.
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
-  // The longest edge per street role carries the generated elevation.
+
+  const composite = FACADE_COMPOSITES[building.placeId];
+  const compositeWaiters = [];
+  let compositeTexture = null;
+  if (composite && facadeTextureUrls[composite.key]) {
+    loadTrimmedTexture(facadeTextureUrls[composite.key], (texture) => {
+      compositeTexture = texture;
+      for (const apply of compositeWaiters) apply(texture);
+      requestRender?.();
+    });
+  }
+
+  // The longest edge per street role carries the elevation slice.
   const textureEdge = {};
   for (const edge of building.edges) {
     if (edge.role === "other") continue;
@@ -246,28 +291,31 @@ function buildHeroBuilding(three, building, requestRender) {
 
   for (const edge of building.edges) {
     const shade = faceShade[edge.role] ?? faceShade.other;
-    const url =
-      textureEdge[edge.role] === edge
-        ? facadeTextureUrls[`../assets/textures/franklin/${building.placeId}--${edge.role}.png`]
-        : undefined;
+    const face = composite?.byBin?.[building.bin]?.[edge.role];
+    const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
 
-    const material = url
-      ? new THREE.MeshBasicMaterial({ color: new THREE.Color(shade, shade, shade) })
-      : new THREE.MeshBasicMaterial({ color: new THREE.Color(baseColor).multiplyScalar(shade) });
-    if (url) {
-      loadTrimmedTexture(url, (texture) => {
+    const material = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(baseColor).multiplyScalar(shade),
+      side: THREE.DoubleSide,
+    });
+    if (isTextured) {
+      compositeWaiters.push((texture) => {
         material.map = texture;
         material.color.setScalar(shade);
         material.needsUpdate = true;
-        requestRender?.();
       });
-      // Until the texture decodes, hold the wall at the base tone.
-      material.color.copy(new THREE.Color(baseColor).multiplyScalar(shade));
+      if (compositeTexture) {
+        material.map = compositeTexture;
+        material.color.setScalar(shade);
+      }
     }
 
-    const wall = new THREE.Mesh(new THREE.PlaneGeometry(edge.length, building.height), material);
-    wall.position.set(edge.midpoint.x, building.height / 2, edge.midpoint.z);
-    wall.rotation.y = Math.atan2(edge.normal.x, edge.normal.z);
+    const wall = new THREE.Mesh(
+      isTextured
+        ? wallQuad(edge, building.height, face, scene)
+        : wallQuad(edge, building.height, null, scene),
+      material,
+    );
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     three.add(wall);
   }
@@ -326,6 +374,50 @@ function buildHeroBuilding(three, building, requestRender) {
   shadowMesh.rotation.x = -Math.PI / 2;
   shadowMesh.position.set(building.height * 0.2, 0.004, building.height * 0.07);
   three.add(shadowMesh);
+}
+
+// World-space wall quad for one footprint edge. For textured faces the UV
+// slice comes from the composite config, and the edge endpoints are ordered
+// so the image slice's left side lands on the named world end (e.g. the
+// drawn elevation reads west-to-east along Greenpoint, then wraps the
+// corner and reads north-to-south down Franklin).
+function wallQuad(edge, height, face, scene) {
+  let left = edge.start;
+  let right = edge.end;
+  if (face) {
+    // Axis chosen so the smaller dot product identifies the named end:
+    // greenpointAxis points east, franklinAxis points south.
+    const gp = scene.greenpointAxis;
+    const fk = scene.franklinAxis;
+    const axis = {
+      west: gp,
+      east: { x: -gp.x, z: -gp.z },
+      north: fk,
+      south: { x: -fk.x, z: -fk.z },
+    }[face.leftEnd];
+    const dotStart = edge.start.x * axis.x + edge.start.z * axis.z;
+    const dotEnd = edge.end.x * axis.x + edge.end.z * axis.z;
+    if (dotEnd < dotStart) {
+      left = edge.end;
+      right = edge.start;
+    }
+  }
+  let u0 = face ? face.u0 : 0;
+  let u1 = face ? face.u1 : 1;
+  if (face?.flip) [u0, u1] = [u1, u0];
+
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array([
+    left.x, 0, left.z,
+    right.x, 0, right.z,
+    right.x, height, right.z,
+    left.x, height, left.z,
+  ]);
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([u0, 0, u1, 0, u1, 1, u0, 1]), 2));
+  geometry.setIndex([0, 1, 2, 0, 2, 3]);
+  geometry.computeVertexNormals();
+  return geometry;
 }
 
 function footprintShape(polygon) {

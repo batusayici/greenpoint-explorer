@@ -26,7 +26,13 @@ export function createProjection(projectionBasis) {
   };
 }
 
-export function assembleFranklinScene({ geometrySource, sceneGeometryFixture, wrapFixture, contextRadiusMeters = 130 }) {
+export function assembleFranklinScene({
+  geometrySource,
+  sceneGeometryFixture,
+  wrapFixture,
+  contextRadiusMeters = 130,
+  facadeGroupBins = {},
+}) {
   const projectionBasis = sceneGeometryFixture.sceneTruthModel.projectionBasis;
   const projection = createProjection(projectionBasis);
   const contextRadiusUnits = projection.metersToUnits(contextRadiusMeters);
@@ -48,6 +54,10 @@ export function assembleFranklinScene({ geometrySource, sceneGeometryFixture, wr
 
     const bin = String(record.sourceProperties?.bin ?? "");
     const hero = heroByBin.get(bin) ?? null;
+    // Facade-group members (e.g. the sibling parcel component carrying the
+    // rest of a hero's streetwall) get the full hero wall treatment under
+    // the group's placeId.
+    const groupPlaceId = facadeGroupBins[bin] ?? null;
     const heightFeet = Number.parseFloat(record.sourceProperties?.heightRoof);
     const heightUnits = projection.metersToUnits(
       (Number.isFinite(heightFeet) ? heightFeet : 30) * FEET_TO_METERS,
@@ -59,11 +69,14 @@ export function assembleFranklinScene({ geometrySource, sceneGeometryFixture, wr
       centroid,
       height: Math.max(heightUnits, 0.3),
       constructionYear: record.sourceProperties?.constructionYear ?? null,
-      isHero: Boolean(hero),
-      placeId: hero?.placeId ?? null,
+      isHero: Boolean(hero) || Boolean(groupPlaceId),
+      placeId: hero?.placeId ?? groupPlaceId,
       label: hero?.shortLabel ?? null,
       cornerRole: hero?.cornerIntersectionRole ?? null,
-      edges: hero ? classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis }) : null,
+      edges:
+        hero || groupPlaceId
+          ? classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis })
+          : null,
     });
   }
 
