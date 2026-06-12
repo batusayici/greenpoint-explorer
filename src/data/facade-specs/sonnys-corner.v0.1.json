@@ -1,8 +1,8 @@
 {
   "schemaVersion": "facade-spec.v0.5",
   "placeId": "sonnys-corner",
-  "status": "derived_from_render_2026-06-12",
-  "note": "Rects derived from sonnys-corner--corner.png via scripts/derive-facade-spec.mjs (--wall 128,84,92 --wall-threshold 140 --erode 3) and reviewed on the overlay. Window x per-column as detected; row y harmonized across each row where the fire escape fragmented detection. Only the greenpoint face is camera-visible (fixed NE iso camera) — the franklin face (west, carrying the ALTER return) maps as a flat texture slice with no component spec. Fold SONNYS_KINK=0.734 (real walls 19.9m + 7.2m), confirmed on the drawn pier left of the ALTER storefront. Tenant signage 'ALTER BROOKLYN' on the franklin return is UNVERIFIED — check in the pre-launch factual pass.",
+  "status": "PROVISIONAL_INVALID_pending_v2_rerender",
+  "note": "DO NOT TRUST — derived from sonnys-corner--corner.png (v1), which has Batu-confirmed content errors (2026-06-12): only 3 upper window rows instead of 4, storefront band one floor too high, and a flat storefront strip instead of the real corner-entrance wrap (entrance on the chamfer with one display window per frontage). These rects are registered to a structurally wrong texture, so they are worthless until the corrected v2 render lands. See docs/reference/art/GENERATION_KIT.md (Sonny's slot) for the v2 re-render brief and the post-v2 re-derive command. Fold SONNYS_KINK=0.734 stays correct (geometry truth: 19.9m + 7.2m). Tenant signage 'ALTER BROOKLYN' is UNVERIFIED.",
   "evidence": [
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-zoom.jpeg"

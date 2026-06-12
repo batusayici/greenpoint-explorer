@@ -9,17 +9,19 @@ from the render). The order of truth per hero building:
 **Photos decide structure → render once → derive the spec from the render →
 overlay gate → one in-engine check.**
 
-1. **Pre-render (photos first).** From the evidence photos, fix the structural
-   facts: corner-fold position, floor counts, storefront breaks, bay/fire
-   escape presence. Bake them into the prompt with the proportional canvas
-   split (real wall meters → % positions, per the orthographic contract
-   below). The AI render will *still* not place features at the prescribed
-   pixels — expected and fine: structure is the prompt's job, registration
-   is the next step's.
-2. **Render once.** Re-render only for content or style failures (wrong floor
-   count, missing signage, perspective lean). **Never re-render to fix feature
-   placement by a few percent** — that loop never converges; it burned the
-   Premier v2→v3→v4 cycle.
+1. **Pre-render (photos first).** Gather evidence photos that fully cover the
+   building — at least one wide shot per street face and one corner shot; the
+   photos ARE the structural truth the model copies from, so a face the
+   photos don't show is a face the render will invent. Fill the reusable
+   prompt scaffold's mechanical slots only (street names, fold % from real
+   wall meters, canvas px) — never describe the architecture in prose; the
+   prompt makes the model count floors/openings from the photos itself.
+2. **Render once, audit before accepting.** Run the scaffold's audit checklist
+   on the raw render against the photos (window-row count, column count per
+   face, ground-floor openings in order, corner condition). Re-render only
+   for truthfulness or style failures — the checklist is the gate. **Never
+   re-render to fix feature placement by a few percent** — that loop never
+   converges; it burned the Premier v2→v3→v4 cycle.
 3. **Derive the spec mechanically:**
    ```bash
    node scripts/derive-facade-spec.mjs assets/textures/franklin/<file>.png \
@@ -88,35 +90,77 @@ filename automatically (no code change needed).
   single-face slots.
 - **Resolution:** long edge 2048px at the aspect ratio listed per slot.
 
-## Prompt Scaffold (image-to-image, GPT-5.5)
+## Prompt Scaffold (image-to-image, GPT-5.5) — REUSABLE
 
-Premier v4-proven language. The orthographic clauses are load-bearing —
-the weaker "no perspective" alone let v2 come back with a 3/4 lean that cost
-a re-render and a day of diagnosis.
+One prompt for every building. **The photos are the binding truth source, not
+prose.** The prompt never describes the building's architecture — describing
+it by hand is how transcription errors enter (and a hand-zone-listed prompt is
+not reusable). Instead it forces the model to *count and copy* from the
+attached photos, then audit its own draft against them.
 
-> Redraw this storefront photo as a single continuous, strictly orthographic
-> facade elevation in the attached hand-inked editorial illustration style
-> (II-C system: confident 1–4px linework, controlled hatching for shadow,
-> muted warm palette, paper texture). Head-on flat projection: every vertical
-> edge plumb, no 3/4 view, no leaning window columns, no foreshortening.
-> [Corner heroes:] The image unwraps both street walls onto one canvas — the
-> <street A> face occupies the left <N>% and the <street B> face the rest,
-> with the corner at the <named landmark from photos, e.g. the storefront
-> sign break>. Ground line at the bottom edge and parapet at the top edge run
-> continuously across the full width; sign band and cornice heights stay
-> consistent.
-> Keep the real architecture: floor count, window rhythm, cornice, storefront
-> base, awning shape, and signage lettering as drawn type. Keep windows and
-> doors tonally distinct from the wall (no wall-colored doors). Facade only,
-> full bleed, no sky, no sidewalk, no people.
+The only fill-ins are mechanical facts that come from geometry/code, never
+from looking at the photos:
 
-Attach: (1) the evidence photo(s), (2) the II-C system tile, (3) one assembled
-scene for tone.
+| Fill-in | Source |
+|---|---|
+| `<street A>`, `<street B>` | the slot |
+| `<X>%` corner fold | real wall meters (slot table) |
+| `<W>×<H>` / aspect | slot table |
 
-The proportions are the prompt's job; exact placement is not. The render will
-land features a few percent off the ask — that's what
-`scripts/derive-facade-spec.mjs` absorbs. Re-render only for content or style
-failures, never for placement (see Registration Playbook above).
+Hardened against known failure modes: Premier v2's 3/4 lean (orthographic
+clauses), Sonny's v1 dropped floor + flat-strip ground floor (count-first and
+corner-condition clauses, self-audit).
+
+> Redraw the building in the attached photos as a single continuous, strictly
+> orthographic facade elevation in the attached hand-inked editorial
+> illustration style (II-C system: confident 1–4px linework, controlled
+> hatching for shadow, muted warm palette, paper texture). Head-on flat
+> projection: every vertical edge plumb, no 3/4 view, no leaning window
+> columns, no foreshortening.
+>
+> **The photos are the only source of architectural truth.** Before drawing,
+> read off from them:
+> – the number of window rows above the ground floor — draw exactly that many,
+>   no more, no fewer; the commercial/storefront band occupies the ground
+>   floor only, below ALL of those rows;
+> – the number and rhythm of window columns on each street face;
+> – every ground-floor opening in left-to-right order — each door, display
+>   window, and neighbor storefront appears exactly once, in photo order;
+> – the corner condition exactly as photographed: if the entrance sits on a
+>   chamfered/cut corner, draw it there at the fold with whatever flanks it in
+>   the photos — never relocate it onto a flat face or merge tenants into one
+>   continuous shopfront strip;
+> – materials, cornice, sills/hoods, awnings, fire escapes, and signage
+>   lettering as drawn type, all as photographed. Do not invent, omit,
+>   simplify, regularize, or rearrange anything.
+>
+> **[Corner heroes — unwrap]:** the image unwraps both street walls onto one
+> canvas: the <street A> face occupies the left <X>%, the <street B> face the
+> rest, the building corner at <X>% across. Ground line at the bottom edge and
+> roofline at the top edge run continuously across the full width; window-row
+> and sign-band heights stay consistent across the fold.
+>
+> Keep windows and doors tonally distinct from the wall (no wall-colored
+> doors). Facade only, full bleed, no sky, no sidewalk, no people, no street
+> furniture. Output exactly <W>×<H> px — do not change the canvas proportions.
+>
+> **Before finalizing, audit your draft against the photos:** (1) window-row
+> count matches; (2) window-column count per face matches; (3) every
+> ground-floor opening from the photos appears exactly once, in the same
+> order, and the corner condition matches; (4) nothing was added that is not
+> in the photos. If any check fails, correct the draft before outputting.
+
+Attach: (1) the evidence photos — include at least one wide shot per street
+face and one corner shot, (2) the II-C system tile, (3) one assembled scene
+for tone.
+
+Feature *proportions* are the prompt's job; exact pixel placement is not — the
+render lands a few percent off and `derive-facade-spec.mjs` absorbs that.
+**Re-render for truthfulness failures** (window-row count off, openings
+missing/invented/reordered, corner condition wrong, aspect changed) — run the
+same audit checklist yourself on the raw render against the photos *before*
+deriving a spec; a structurally wrong render makes the derived spec worthless.
+**Never re-render for placement** (see Registration Playbook).
 
 ## Slots
 
@@ -140,25 +184,46 @@ below are retired; kept for the size data only.
 
 ### Sonny's Corner — BIN 3064811 (southeast corner)
 
-**DONE** — shipped as `sonnys-corner--corner.png`, fold measured at u=0.734
-(Greenpoint-first reading; only the greenpoint face is camera-visible).
-Derivation needed `--wall 128,84,92 --wall-threshold 140 --erode 3`: the
-mauve wall is only ~34% of the face (dense dark joinery defeats auto wall
-estimation), and shadowed-mauve hatching bridges features at the default
-threshold. Spec: `src/data/facade-specs/sonnys-corner.v0.1.json`.
+**NEEDS RE-RENDER (v1 has content errors).** The shipped
+`sonnys-corner--corner.png` and the derived
+`src/data/facade-specs/sonnys-corner.v0.1.json` are provisional and wrong —
+do not trust them in Scene until v2 lands. Batu-identified v1 errors
+(2026-06-12), against `franklin-southeast-wide.jpeg` /
+`franklin-southeast-zoom.jpeg`:
 
-Dark brick bar corner: dark awned base wrapping both streets, upper window
-rhythm. Photos: `franklin-southeast-wide.jpeg`, `franklin-southeast-zoom.jpeg`,
-`franklin-southeast-1.jpeg`.
+1. **Dropped a floor** — drew 3 upper window rows; the real building has **4**.
+2. **Storefront too high** — the commercial base must sit below all **4** rows
+   (ground floor only); v1 placed it under 3.
+3. **Mapping/structure** — the bar **wraps the corner**: a single recessed
+   entrance on the chamfered corner with **one display window on each
+   frontage**. v1 drew a flat strip of storefronts with the entrance floating
+   mid-Greenpoint and ALTER dumped at the far edge.
+
+Real building: **5 storeys** = 4 upper floors of windows over a ground-floor
+commercial base, mauve-painted brick, heavy black cornice, black window hoods,
+fire escape on the long Greenpoint face. Ground floor is multi-tenant: Sonny's
+corner bar (corner entrance + a window each side) and a neighbor storefront
+(ALTER BROOKLYN, hanging sign) further east along Greenpoint.
 
 | File | Real size (w × h) | Aspect | Pixels |
 |---|---|---|---|
-| `sonnys-corner--corner.png` | 27.1m × 13.2m (Franklin 7.2m + Greenpoint 19.9m) | 2.05 | 2048 × 998 |
+| `sonnys-corner--corner-v2.png` | 27.1m × 13.2m (Greenpoint 19.9m + Franklin 7.2m) | 2.05 | 2048 × 998 |
 
-Corner asked at 26.6% (Franklin-first reading) — **confirm the unwrap
-reading order against the camera-visible faces** (fixed NE iso camera;
-`faceFrame` `leftEnd` config) before prompting, then measure the actual
-drawn fold from the render as always.
+**v2 re-render: use the reusable scaffold above** with these fill-ins —
+`<street A>` = Greenpoint Ave, `<street B>` = Franklin Ave (return),
+`<X>` = **73.4**, output **2048×998 px**. Attach all three southeast photos
+(the wide shot covers both faces; the zoom shows the corner-entrance
+condition the v1 audit missed). The unwrap matches the wired composite
+(`SONNYS_KINK = 0.734`, Greenpoint-first, `leftEnd: "east"`): texture left
+edge = Greenpoint east end, corner at 73.4%, Franklin return on the right.
+
+Audit the v2 raw render against the photos per the scaffold checklist — the
+three v1 errors above are exactly what checks (1)–(3) catch.
+
+After v2 lands: re-derive with
+`node scripts/derive-facade-spec.mjs assets/textures/franklin/sonnys-corner--corner-v2.png --face "3064811:greenpoint=0:0.734" --face "3064811:franklin=0.734:1"`
+(retune `--wall`/`--erode` as before; the mauve wall is a minority surface),
+gate on the overlay, then update `FACADE_COMPOSITES.key` to the v2 file.
 
 ### Sereneco — BIN 3337033 (northwest corner)
 
