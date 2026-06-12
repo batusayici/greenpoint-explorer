@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
+import { buildFacadeAssembly } from "./facadeAssembly.js";
+import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
@@ -219,8 +221,8 @@ function buildStreets(three, streets) {
 // window, fire escapes, residential windows) to u=1.
 // 3322609's east edge is contiguous just south of 3322608's, so the two
 // footprints share one continuous Franklin frontage.
-const PREMIER_KINK = 0.5;
-const PIZZA_SPLIT = 0.585; // share of the Franklin portion that is the pizza sister
+const PREMIER_KINK = 0.56; // measured corner column in the drawn elevation
+const PIZZA_SPLIT = 0.585; // BIN seam: sister east edge 8.6m of the 14.7m streetwall
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
     key: "../assets/textures/franklin/premier-franklin-organic--greenpoint-v2.png",
@@ -237,6 +239,9 @@ const FACADE_COMPOSITES = {
 };
 
 const FACADE_GROUP_BINS = { "3322609": "premier-franklin-organic" };
+
+// Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
+const FACADE_SPECS = { ...premierFacadeSpec.faces };
 
 function buildBuildings(three, scene, requestRender) {
   scene.buildings.forEach((building, index) => {
@@ -293,31 +298,38 @@ function buildHeroBuilding(three, building, scene, requestRender) {
     const shade = faceShade[edge.role] ?? faceShade.other;
     const face = composite?.byBin?.[building.bin]?.[edge.role];
     const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
+    const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
 
     const material = new THREE.MeshBasicMaterial({
       color: new THREE.Color(baseColor).multiplyScalar(shade),
       side: THREE.DoubleSide,
     });
-    if (isTextured) {
-      compositeWaiters.push((texture) => {
-        material.map = texture;
-        material.color.setScalar(shade);
-        material.needsUpdate = true;
-      });
-      if (compositeTexture) {
-        material.map = compositeTexture;
-        material.color.setScalar(shade);
-      }
-    }
-
-    const wall = new THREE.Mesh(
-      isTextured
-        ? wallQuad(edge, building.height, face, scene)
-        : wallQuad(edge, building.height, null, scene),
-      material,
-    );
+    const wall = new THREE.Mesh(wallQuad(edge, building.height, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     three.add(wall);
+
+    if (!isTextured) continue;
+    const apply = specFace
+      ? (texture) => {
+          // Structured facade: swap the flat wall for the component assembly.
+          three.remove(wall);
+          three.add(
+            buildFacadeAssembly({
+              frame: faceFrame(edge, building.height, face, scene),
+              spec: specFace,
+              texture,
+              unitsPerMeter: scene.projection.scale,
+              baseColor: new THREE.Color(baseColor).multiplyScalar(shade).getHex(),
+            }),
+          );
+        }
+      : (texture) => {
+          material.map = texture;
+          material.color.setScalar(shade);
+          material.needsUpdate = true;
+        };
+    compositeWaiters.push(apply);
+    if (compositeTexture) apply(compositeTexture);
   }
 
   // Roof field: warm membrane tone with paper-grain speckle. The texture
@@ -381,7 +393,11 @@ function buildHeroBuilding(three, building, scene, requestRender) {
 // so the image slice's left side lands on the named world end (e.g. the
 // drawn elevation reads west-to-east along Greenpoint, then wraps the
 // corner and reads north-to-south down Franklin).
-function wallQuad(edge, height, face, scene) {
+// The face frame fixes the drawn-elevation coordinate system on a wall:
+// `left` is the world end carrying the image slice's left side, and u0/u1
+// are the texture coordinates across the slice. Both the flat wall quad and
+// the structured facade assembly build from it.
+function faceFrame(edge, height, face, scene) {
   let left = edge.start;
   let right = edge.end;
   if (face) {
@@ -405,6 +421,11 @@ function wallQuad(edge, height, face, scene) {
   let u0 = face ? face.u0 : 0;
   let u1 = face ? face.u1 : 1;
   if (face?.flip) [u0, u1] = [u1, u0];
+  return { left, right, normal: edge.normal, height, u0, u1 };
+}
+
+function wallQuad(edge, height, face, scene) {
+  const { left, right, u0, u1 } = faceFrame(edge, height, face, scene);
 
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array([

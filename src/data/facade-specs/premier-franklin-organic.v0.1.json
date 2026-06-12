@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "facade-spec.v0.1",
+  "placeId": "premier-franklin-organic",
+  "status": "manual_draft_from_photo_evidence",
+  "note": "Component rects in normalized face coords (x: 0..1 along the drawn elevation slice, y: 0..1 ground to roofline). Depths in meters. Measured against premier-franklin-organic--greenpoint-v2.png via grid overlay; whole-image kink at u=0.56, BIN seam at u=0.328.",
+  "evidence": [
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
+  ],
+  "faces": {
+    "3322608:greenpoint": {
+      "cornice": { "y0": 0.88, "y1": 0.97, "projectionM": 0.2 },
+      "signBands": [{ "x0": 0.057, "x1": 0.42, "y0": 0.285, "y1": 0.355, "projectionM": 0.1 }],
+      "awnings": [{ "x0": 0.09, "x1": 0.44, "yWall": 0.285, "yDrop": 0.235, "projectionM": 0.8 }],
+      "windows": {
+        "recessM": 0.16,
+        "rows": [
+          { "y0": 0.38, "y1": 0.52 },
+          { "y0": 0.555, "y1": 0.69 },
+          { "y0": 0.73, "y1": 0.86 }
+        ],
+        "cols": [
+          { "x0": 0.148, "x1": 0.25 },
+          { "x0": 0.636, "x1": 0.739 },
+          { "x0": 0.841, "x1": 0.943 }
+        ]
+      },
+      "bay": { "x0": 0.318, "x1": 0.545, "y0": 0.355, "y1": 0.88, "projectionM": 0.5 },
+      "storefronts": []
+    },
+    "3322608:franklin": {
+      "cornice": { "y0": 0.88, "y1": 0.97, "projectionM": 0.2 },
+      "signBands": [{ "x0": 0.0, "x1": 1.0, "y0": 0.285, "y1": 0.355, "projectionM": 0.1 }],
+      "awnings": [{ "x0": 0.0, "x1": 1.0, "yWall": 0.285, "yDrop": 0.235, "projectionM": 0.8 }],
+      "windows": {
+        "recessM": 0.16,
+        "rows": [
+          { "y0": 0.38, "y1": 0.52 },
+          { "y0": 0.555, "y1": 0.69 },
+          { "y0": 0.73, "y1": 0.86 }
+        ],
+        "cols": [
+          { "x0": 0.31, "x1": 0.504 },
+          { "x0": 0.634, "x1": 0.828 }
+        ]
+      },
+      "storefronts": [{ "x0": 0.0, "x1": 1.0, "y0": 0.0, "y1": 0.235, "recessM": 0.45 }]
+    },
+    "3322609:franklin": {
+      "cornice": { "y0": 0.88, "y1": 0.97, "projectionM": 0.2 },
+      "signBands": [{ "x0": 0.49, "x1": 1.0, "y0": 0.285, "y1": 0.355, "projectionM": 0.1 }],
+      "awnings": [{ "x0": 0.47, "x1": 1.0, "yWall": 0.285, "yDrop": 0.235, "projectionM": 0.8 }],
+      "windows": {
+        "recessM": 0.16,
+        "rows": [
+          { "y0": 0.38, "y1": 0.52 },
+          { "y0": 0.555, "y1": 0.69 },
+          { "y0": 0.73, "y1": 0.86 }
+        ],
+        "cols": [
+          { "x0": 0.076, "x1": 0.198 },
+          { "x0": 0.305, "x1": 0.442 },
+          { "x0": 0.503, "x1": 0.64 },
+          { "x0": 0.762, "x1": 0.899 }
+        ]
+      },
+      "storefronts": [{ "x0": 0.0, "x1": 1.0, "y0": 0.0, "y1": 0.235, "recessM": 0.45 }]
+    }
+  }
+}
