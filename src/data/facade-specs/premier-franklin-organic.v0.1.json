@@ -1,8 +1,8 @@
 {
-  "schemaVersion": "facade-spec.v0.4",
+  "schemaVersion": "facade-spec.v0.5",
   "placeId": "premier-franklin-organic",
   "status": "manual_draft_from_photo_evidence",
-  "note": "Measured against premier-franklin-organic--corner-v3.png. TRUE drawn corner kink u=0.52 (badge fully on Franklin per reference photos), BIN seam u=0.3046. All locals derived from whole-image u measurements.",
+  "note": "Measured against premier-franklin-organic--corner-v4.png (orthographic, contract-compliant). Drawn corner kink u=0.478, BIN seam u=0.280. All locals derived from whole-image u.",
   "evidence": [
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-wide.jpeg",
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southwest-zoom.jpeg"
@@ -10,26 +10,26 @@
   "faces": {
     "3322608:greenpoint": {
       "cornice": {
-        "y0": 0.875,
+        "y0": 0.935,
         "y1": 1.0,
         "projectionM": 0.2
       },
       "signBands": [
         {
           "x0": 0.0,
-          "x1": 0.306,
-          "y0": 0.275,
-          "y1": 0.34,
+          "x1": 0.234,
+          "y0": 0.315,
+          "y1": 0.43,
           "projectionM": 0.1
         }
       ],
       "awnings": [
         {
           "x0": 0.0,
-          "x1": 0.423,
-          "yWall": 0.265,
-          "yDrop": 0.225,
-          "yValance": 0.193,
+          "x1": 0.282,
+          "yWall": 0.31,
+          "yDrop": 0.27,
+          "yValance": 0.24,
           "projectionM": 0.85
         }
       ],
@@ -37,71 +37,75 @@
         "recessM": 0.16,
         "rows": [
           {
-            "y0": 0.35,
-            "y1": 0.5
+            "y0": 0.378,
+            "y1": 0.512
           },
           {
-            "y0": 0.515,
-            "y1": 0.66
+            "y0": 0.588,
+            "y1": 0.722
           },
           {
-            "y0": 0.75,
-            "y1": 0.875
+            "y0": 0.79,
+            "y1": 0.928
           }
         ],
         "cols": [
           {
-            "x0": 0.129,
-            "x1": 0.212
+            "x0": 0.057,
+            "x1": 0.142
           },
           {
-            "x0": 0.615,
-            "x1": 0.712
+            "x0": 0.492,
+            "x1": 0.569
           },
           {
-            "x0": 0.885,
-            "x1": 0.969
+            "x0": 0.684,
+            "x1": 0.761
+          },
+          {
+            "x0": 0.843,
+            "x1": 0.921
           }
         ]
       },
       "bay": {
-        "x0": 0.358,
-        "x1": 0.538,
+        "x0": 0.282,
+        "x1": 0.454,
         "y0": 0.3,
-        "y1": 0.875,
+        "y1": 0.91,
         "projectionM": 0.6
       },
       "doors": [
         {
-          "x0": 0.302,
-          "x1": 0.373,
+          "x0": 0.358,
+          "x1": 0.416,
           "y0": 0.0,
-          "y1": 0.26,
+          "y1": 0.23,
           "recessM": 0.12
         }
       ],
       "boxes": [
         {
-          "x0": 0.548,
-          "x1": 0.669,
-          "y0": 0.185,
-          "y1": 0.3,
+          "x0": 0.511,
+          "x1": 0.607,
+          "y0": 0.155,
+          "y1": 0.245,
           "projectionM": 0.3
         },
         {
-          "x0": 0.831,
-          "x1": 0.95,
-          "y0": 0.19,
-          "y1": 0.3,
+          "x0": 0.818,
+          "x1": 0.914,
+          "y0": 0.16,
+          "y1": 0.245,
           "projectionM": 0.3
         }
       ],
       "storefronts": [
         {
           "x0": 0.0,
-          "x1": 0.208,
+          "x1": 0.144,
           "y0": 0.0,
-          "y1": 0.19,
+          "y1": 0.24,
           "recessM": 0.45
         }
       ],
@@ -109,7 +113,7 @@
     },
     "3322608:franklin": {
       "cornice": {
-        "y0": 0.875,
+        "y0": 0.935,
         "y1": 1.0,
         "projectionM": 0.2
       },
@@ -117,8 +121,8 @@
         {
           "x0": 0.0,
           "x1": 1.0,
-          "y0": 0.275,
-          "y1": 0.34,
+          "y0": 0.315,
+          "y1": 0.43,
           "projectionM": 0.1
         }
       ],
@@ -126,9 +130,9 @@
         {
           "x0": 0.0,
           "x1": 1.0,
-          "yWall": 0.265,
-          "yDrop": 0.225,
-          "yValance": 0.193,
+          "yWall": 0.31,
+          "yDrop": 0.27,
+          "yValance": 0.24,
           "projectionM": 0.85
         }
       ],
@@ -136,26 +140,30 @@
         "recessM": 0.16,
         "rows": [
           {
-            "y0": 0.35,
-            "y1": 0.5
+            "y0": 0.378,
+            "y1": 0.512
           },
           {
-            "y0": 0.515,
-            "y1": 0.66
+            "y0": 0.588,
+            "y1": 0.722
           },
           {
-            "y0": 0.75,
-            "y1": 0.875
+            "y0": 0.79,
+            "y1": 0.928
           }
         ],
         "cols": [
           {
-            "x0": 0.141,
-            "x1": 0.246
+            "x0": 0.025,
+            "x1": 0.227
           },
           {
-            "x0": 0.317,
-            "x1": 0.421
+            "x0": 0.455,
+            "x1": 0.657
+          },
+          {
+            "x0": 0.783,
+            "x1": 0.975
           }
         ]
       },
@@ -164,7 +172,7 @@
           "x0": 0.0,
           "x1": 1.0,
           "y0": 0.0,
-          "y1": 0.19,
+          "y1": 0.24,
           "recessM": 0.45
         }
       ],
@@ -172,33 +180,33 @@
     },
     "3322609:franklin": {
       "cornice": {
-        "y0": 0.875,
+        "y0": 0.935,
         "y1": 1.0,
         "projectionM": 0.2
       },
       "signBands": [
         {
-          "x0": 0.031,
-          "x1": 0.499,
-          "y0": 0.25,
-          "y1": 0.285,
+          "x0": 0.018,
+          "x1": 0.572,
+          "y0": 0.27,
+          "y1": 0.315,
           "projectionM": 0.08
         },
         {
-          "x0": 0.525,
+          "x0": 0.625,
           "x1": 1.0,
-          "y0": 0.275,
-          "y1": 0.34,
+          "y0": 0.315,
+          "y1": 0.43,
           "projectionM": 0.1
         }
       ],
       "awnings": [
         {
-          "x0": 0.563,
+          "x0": 0.625,
           "x1": 1.0,
-          "yWall": 0.265,
-          "yDrop": 0.225,
-          "yValance": 0.193,
+          "yWall": 0.31,
+          "yDrop": 0.27,
+          "yValance": 0.24,
           "projectionM": 0.85
         }
       ],
@@ -206,50 +214,46 @@
         "recessM": 0.16,
         "rows": [
           {
-            "y0": 0.35,
-            "y1": 0.5
+            "y0": 0.378,
+            "y1": 0.512
           },
           {
-            "y0": 0.515,
-            "y1": 0.66
+            "y0": 0.588,
+            "y1": 0.722
           },
           {
-            "y0": 0.75,
-            "y1": 0.875
+            "y0": 0.79,
+            "y1": 0.928
           }
         ],
         "cols": [
           {
-            "x0": 0.211,
-            "x1": 0.281
+            "x0": 0.125,
+            "x1": 0.268
           },
           {
-            "x0": 0.352,
-            "x1": 0.422
+            "x0": 0.411,
+            "x1": 0.554
           },
           {
-            "x0": 0.626,
-            "x1": 0.696
-          },
-          {
-            "x0": 0.798,
-            "x1": 0.868
+            "x0": 0.714,
+            "x1": 0.857
           }
         ]
       },
       "storefronts": [
         {
           "x0": 0.0,
-          "x1": 0.509,
+          "x1": 0.589,
           "y0": 0.0,
-          "y1": 0.245,
+          "y1": 0.265,
           "recessM": 0.45
         },
         {
-          "x0": 0.538,
+          "x0": 0.625,
           "x1": 1.0,
           "y0": 0.0,
-          "y1": 0.19,
+          "y1": 0.24,
           "recessM": 0.45
         }
       ],

@@ -238,11 +238,11 @@ function buildStreets(three, streets) {
 // window, fire escapes, residential windows) to u=1.
 // 3322609's east edge is contiguous just south of 3322608's, so the two
 // footprints share one continuous Franklin frontage.
-const PREMIER_KINK = 0.52; // true drawn corner in v3 (badge fully on Franklin, script on Greenpoint)
+const PREMIER_KINK = 0.478; // v4 measured drawn corner (contract-compliant render)
 const PIZZA_SPLIT = 0.585; // BIN seam: sister east edge 8.6m of the 14.7m streetwall
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
-    key: "../assets/textures/franklin/premier-franklin-organic--corner-v3.png",
+    key: "../assets/textures/franklin/premier-franklin-organic--corner-v4.png",
     byBin: {
       "3322609": {
         franklin: { u0: 0, u1: PREMIER_KINK * PIZZA_SPLIT, leftEnd: "south" },
