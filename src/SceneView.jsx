@@ -313,6 +313,13 @@ function buildHeroBuilding(three, building, scene, requestRender) {
 
   for (const edge of building.edges) {
     const face = composite?.byBin?.[building.bin]?.[edge.role];
+    // Composite hero buildings (Premier + its Pizza sister) are facade flats:
+    // every edge the composite doesn't cover is an interior party wall shared
+    // along the lot line. Rendered as a muted wall it sits at the Premier/Pizza
+    // seam and, seen nearly edge-on from the fixed iso camera, reads as a thin
+    // "floating plane" in front of the recessed storefront. The camera only
+    // ever sees the street faces, so drop the party walls entirely.
+    if (composite && !face) continue;
     const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
     const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
     // With a composite present, any face it doesn't cover is a party wall

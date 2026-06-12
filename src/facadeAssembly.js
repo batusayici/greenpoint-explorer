@@ -95,10 +95,18 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   }
 
   // Storefront glass: deeper recess with a soffit and side reveals.
+  // A side reveal can be suppressed (revealLeft/revealRight: false) where the
+  // storefront edge falls on a footprint bin seam that the drawn artwork
+  // crosses with continuous glass — otherwise the jamb floats in front of the
+  // painted window (e.g. the Premier/Pizza seam at u≈0.28).
   for (const storefront of storefronts) {
     const recess = meters(storefront.recessM ?? 0.45);
     group.add(rectMesh(frame, storefront, -recess, texturedMaterial(texture, 0.97)));
-    addReveals(group, frame, storefront, 0, -recess, { bottom: false });
+    addReveals(group, frame, storefront, 0, -recess, {
+      bottom: false,
+      left: storefront.revealLeft !== false,
+      right: storefront.revealRight !== false,
+    });
   }
 
   // Sign bands: proud of the wall with thin returns.

@@ -4,6 +4,22 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-12 - Premier Corner Fold Fixed at PREMIER_KINK = 0.478
+
+Decision (Batu-approved in session):
+- `PREMIER_KINK` stays **0.478**. The Premier facade fold (Franklin↔Greenpoint boundary in the v4 corner texture) is settled; do not move it to ~0.52.
+
+Evidence:
+- Resolved against the likeness-truth photos, not the commissioned contour. In `franklin-southwest-zoom.jpeg` the real building corner is the storefront sign break — the vertical seam between green "ORGANIC" (Franklin face) and the right-hand "premier" (Greenpoint face), sitting on the corner post. The bay oriel is a Greenpoint feature set *just past* the corner, not the corner itself.
+- That sign break maps to whole-u ≈ 0.48–0.50 in `premier-franklin-organic--corner-v4.png` — i.e. the current 0.478. Content right of ~0.50 ("premier" word → bay → fire escapes) is Greenpoint in both photo and texture.
+- Moving to 0.52 would push the fold right of the real storefront corner, dragging the corner storefront onto the receding Greenpoint plane — contradicted by the evidence.
+
+Known minor artifact (accepted): the window column at whole-u ≈ 0.477–0.511 physically straddles the corner, so no kink value renders it cleanly frontal. It is currently assigned to the Greenpoint face at local-x [0, 0.063]. If revisited, fix it *locally* (tighten that one window's assignment/recess) — never by relocating the fold.
+
+Supersedes the git-history oscillation ("true drawn corner at u=0.52" → v4 "proportional corner at 0.478"). The fold is closed; reopen only with new photo evidence.
+
+Owner: Batu.
+
 ## 2026-06-11 - Project Reset: Goal, Gates, Production Means, Camera
 
 Decisions (all Batu-approved in direct session):
