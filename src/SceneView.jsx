@@ -267,7 +267,7 @@ const FACADE_COMPOSITES = {
     },
   },
   "sonnys-corner": {
-    key: "../assets/textures/franklin/sonnys-corner--corner.png",
+    key: "../assets/textures/franklin/sonnys-corner--corner-v3.png",
     byBin: {
       "3064811": {
         greenpoint: { u0: 0, u1: SONNYS_KINK, leftEnd: "east" },

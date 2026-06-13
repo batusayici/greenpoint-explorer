@@ -150,7 +150,7 @@ export function assembleFranklinScene({
 // runs parallel to that street's axis and its outward normal points from the
 // building toward that street.
 function classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis }) {
-  return polygonEdges(polygon).map((edge) => {
+  const classified = polygonEdges(polygon).map((edge) => {
     // Outward normal: away from the footprint centroid.
     let normal = { x: -edge.direction.z, z: edge.direction.x };
     const toCentroid = { x: centroid.x - edge.midpoint.x, z: centroid.z - edge.midpoint.z };
@@ -167,6 +167,64 @@ function classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis }) 
 
     return { ...edge, normal, role };
   });
+  return mergeCollinearRoledEdges(classified);
+}
+
+// Footprints often split one flat street frontage into several collinear
+// edges (an extra vertex with no real kink). Only the longest edge per role
+// carries the elevation texture, so a short collinear off-cut (e.g. Sonny's
+// 1.5m Greenpoint segment at the corner) renders as a bare wall. Merge
+// consecutive same-role edges whose directions are parallel (dot > 0.999) so
+// each frontage is one continuous textured face. Truly distinct walls (any
+// real corner) are not parallel and never merge, so this is a no-op
+// everywhere except genuine micro-splits.
+function mergeCollinearRoledEdges(edges) {
+  if (edges.length < 2) return edges;
+  const merged = [];
+  for (const edge of edges) {
+    const prev = merged[merged.length - 1];
+    if (
+      prev &&
+      prev.role === edge.role &&
+      prev.direction.x * edge.direction.x + prev.direction.z * edge.direction.z > 0.999
+    ) {
+      const start = prev.start;
+      const end = edge.end;
+      const length = Math.hypot(end.x - start.x, end.z - start.z);
+      merged[merged.length - 1] = {
+        ...prev,
+        end,
+        length,
+        midpoint: { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 },
+        direction: { x: (end.x - start.x) / length, z: (end.z - start.z) / length },
+      };
+    } else {
+      merged.push(edge);
+    }
+  }
+  // Polygon edges are cyclic: the last edge may also continue into the first.
+  if (merged.length > 2) {
+    const first = merged[0];
+    const last = merged[merged.length - 1];
+    if (
+      first.role === last.role &&
+      last.direction.x * first.direction.x + last.direction.z * first.direction.z > 0.999 &&
+      Math.hypot(last.end.x - first.start.x, last.end.z - first.start.z) < 1e-6
+    ) {
+      const start = last.start;
+      const end = first.end;
+      const length = Math.hypot(end.x - start.x, end.z - start.z);
+      merged[0] = {
+        ...first,
+        start,
+        length,
+        midpoint: { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 },
+        direction: { x: (end.x - start.x) / length, z: (end.z - start.z) / length },
+      };
+      merged.pop();
+    }
+  }
+  return merged;
 }
 
 function polygonEdges(polygon) {

@@ -41,8 +41,32 @@ overlay gate → one in-engine check.**
 5. **Promote** the reviewed rects into
    `src/data/facade-specs/<placeId>.v0.1.json` (schema `facade-spec.v0.5`),
    explicit `windows.rects` only — never `rows×cols`, which manufactures
-   windows at empty grid cells. Then one `?specdebug=1` screenshot in-engine
+   windows at empty grid cells. Then a `?specdebug=1` screenshot in-engine
    confirms, and done.
+   **Verify the window grid on the FLAT texture, not in 3D.** Draw the spec
+   rects back onto the trimmed face image (a throwaway overlay script) and
+   eyeball them against the painted openings — the iso recess parallax in
+   the 3D view masks real misregistration (Sonny's v3 looked "close" in 3D
+   while every rect was on bare brick). For low-contrast facades where blob
+   detection fails (mauve-on-mauve, dark fire escape contaminating columns),
+   measure the grid by **density profiles**: column positions from not-wall
+   density inside a clean row band (the top row, clear of fire escapes),
+   row positions from density inside a clean column. Even-spaced grids fall
+   out of the two 1-D profiles far more reliably than 2-D blob detection.
+6. **Don't spec only the windows.** The Sonny's v3 pass measured the window
+   grid carefully but eyeballed the ground floor, and the storefront recess
+   cut bare wall above the painted shopfront while the awning read flat.
+   Measure the **storefront band top** and **awning band** explicitly
+   (dark-fraction-per-row, as for the window grid) — recess the storefront
+   only to the painted shopfront top, and add an `awnings` component so a
+   painted valance projects instead of being recessed flat.
+7. **In-engine, inspect the corner and EVERY camera-visible edge — not just
+   the main frontage.** Sonny's looked fine head-on but the corner showed a
+   bare brown wall (a collinear footprint off-cut that wasn't textured; now
+   merged in `sceneFrame.js`). Orbit-equivalent: pan to the building corner
+   and each return face at zoom before calling a facade done. A face that
+   renders flat-color instead of textured is a geometry/wiring bug, not a
+   spec bug.
 
 ### Coordinate convention (one truth)
 
@@ -103,13 +127,16 @@ from looking at the photos:
 
 | Fill-in | Source |
 |---|---|
+| `<subject>` — how to identify the one building | the slot (tenant/corner/address — never its architecture) |
+| `<neighbors>` — the adjacent buildings to exclude | the slot (which side, what distinguishes them) |
 | `<street A>`, `<street B>` | the slot |
 | `<X>%` corner fold | real wall meters (slot table) |
 | `<W>×<H>` / aspect | slot table |
 
 Hardened against known failure modes: Premier v2's 3/4 lean (orthographic
 clauses), Sonny's v1 dropped floor + flat-strip ground floor (count-first and
-corner-condition clauses, self-audit).
+corner-condition clauses, self-audit), Sonny's v2 spilling into the next
+building (subject-isolation + party-wall clauses).
 
 > Redraw the building in the attached photos as a single continuous, strictly
 > orthographic facade elevation in the attached hand-inked editorial
@@ -118,14 +145,24 @@ corner-condition clauses, self-audit).
 > projection: every vertical edge plumb, no 3/4 view, no leaning window
 > columns, no foreshortening.
 >
-> **The photos are the only source of architectural truth.** Before drawing,
-> read off from them:
+> **Draw ONE building only — the subject: <subject>.** The photos show a
+> continuous streetscape; the subject is flanked by separate neighbor
+> buildings (<neighbors>). Render the subject alone, bounded by its two party
+> walls — the vertical seams where its brick, cornice line, and roofline meet
+> the differently-styled neighbors. The elevation starts at one party wall and
+> ends at the other. Do NOT continue the facade past a party wall, and do NOT
+> borrow a neighbor's windows, doors, cornice, materials, storefronts, or
+> signage — a sign or shopfront on an adjacent building is not the subject's,
+> even though it appears in the photos.
+>
+> **The photos are the only source of architectural truth.** Within the
+> subject's party walls, read off from the photos:
 > – the number of window rows above the ground floor — draw exactly that many,
 >   no more, no fewer; the commercial/storefront band occupies the ground
 >   floor only, below ALL of those rows;
 > – the number and rhythm of window columns on each street face;
-> – every ground-floor opening in left-to-right order — each door, display
->   window, and neighbor storefront appears exactly once, in photo order;
+> – every ground-floor opening (door, display window, storefront) belonging to
+>   the subject, in left-to-right order, each exactly once, in photo order;
 > – the corner condition exactly as photographed: if the entrance sits on a
 >   chamfered/cut corner, draw it there at the fold with whatever flanks it in
 >   the photos — never relocate it onto a flat face or merge tenants into one
@@ -134,31 +171,39 @@ corner-condition clauses, self-audit).
 >   lettering as drawn type, all as photographed. Do not invent, omit,
 >   simplify, regularize, or rearrange anything.
 >
-> **[Corner heroes — unwrap]:** the image unwraps both street walls onto one
-> canvas: the <street A> face occupies the left <X>%, the <street B> face the
-> rest, the building corner at <X>% across. Ground line at the bottom edge and
-> roofline at the top edge run continuously across the full width; window-row
-> and sign-band heights stay consistent across the fold.
+> **[Corner heroes — unwrap]:** the image unwraps the subject's two street
+> walls onto one canvas: the <street A> face occupies the left <X>%, the
+> <street B> face the rest, the building corner at <X>% across. The canvas's
+> left edge is the subject's far (non-corner) party wall on <street A>; the
+> right edge is its far party wall on <street B>. Nothing beyond either party
+> wall. Ground line at the bottom edge and roofline at the top edge run
+> continuously across the full width; window-row and sign-band heights stay
+> consistent across the fold.
 >
 > Keep windows and doors tonally distinct from the wall (no wall-colored
 > doors). Facade only, full bleed, no sky, no sidewalk, no people, no street
 > furniture. Output exactly <W>×<H> px — do not change the canvas proportions.
 >
-> **Before finalizing, audit your draft against the photos:** (1) window-row
-> count matches; (2) window-column count per face matches; (3) every
-> ground-floor opening from the photos appears exactly once, in the same
-> order, and the corner condition matches; (4) nothing was added that is not
-> in the photos. If any check fails, correct the draft before outputting.
+> **Before finalizing, audit your draft against the photos:** (1) it is ONE
+> building, bounded by its party walls — no neighbor facade, windows, doors,
+> or signage included; (2) window-row count matches; (3) window-column count
+> per face matches; (4) every subject ground-floor opening appears exactly
+> once, in order, and the corner condition matches; (5) nothing was added that
+> is not on the subject in the photos. If any check fails, correct the draft
+> before outputting.
 
-Attach: (1) the evidence photos — include at least one wide shot per street
-face and one corner shot, (2) the II-C system tile, (3) one assembled scene
-for tone.
+Attach: (1) the evidence photos — at least one wide shot per street face that
+shows the subject **from party wall to party wall** (so its boundaries are
+visible) plus one corner shot, (2) the II-C system tile, (3) one assembled
+scene for tone. If the only available shot crops a party wall, say so in
+`<neighbors>` and name where the subject ends.
 
 Feature *proportions* are the prompt's job; exact pixel placement is not — the
 render lands a few percent off and `derive-facade-spec.mjs` absorbs that.
-**Re-render for truthfulness failures** (window-row count off, openings
-missing/invented/reordered, corner condition wrong, aspect changed) — run the
-same audit checklist yourself on the raw render against the photos *before*
+**Re-render for truthfulness failures** (spilled into a neighbor building,
+window-row count off, openings missing/invented/reordered, corner condition
+wrong, aspect changed) — run the same audit checklist yourself on the raw
+render against the photos *before*
 deriving a spec; a structurally wrong render makes the derived spec worthless.
 **Never re-render for placement** (see Registration Playbook).
 
@@ -184,46 +229,56 @@ below are retired; kept for the size data only.
 
 ### Sonny's Corner — BIN 3064811 (southeast corner)
 
-**NEEDS RE-RENDER (v1 has content errors).** The shipped
-`sonnys-corner--corner.png` and the derived
-`src/data/facade-specs/sonnys-corner.v0.1.json` are provisional and wrong —
-do not trust them in Scene until v2 lands. Batu-identified v1 errors
-(2026-06-12), against `franklin-southeast-wide.jpeg` /
-`franklin-southeast-zoom.jpeg`:
+**NEEDS RE-RENDER → v3.** v2 (reusable photo-truth prompt) fixed the v1 errors
+— floor count and corner-wrap now match the photos — but **spilled past the
+subject into the next building**: it rendered a long residential stretch +
+the neighbor's frontage, so the elevation is ~1.5 buildings wide, the corner
+no longer lands at the fold, and the width exceeds 2.05. The shipped
+`sonnys-corner--corner.png` / `sonnys-corner.v0.1.json` stay
+PROVISIONAL_INVALID until v3.
 
-1. **Dropped a floor** — drew 3 upper window rows; the real building has **4**.
-2. **Storefront too high** — the commercial base must sit below all **4** rows
-   (ground floor only); v1 placed it under 3.
-3. **Mapping/structure** — the bar **wraps the corner**: a single recessed
-   entrance on the chamfered corner with **one display window on each
-   frontage**. v1 drew a flat strip of storefronts with the entrance floating
-   mid-Greenpoint and ALTER dumped at the far edge.
+Root cause (now fixed in the scaffold): the old prompt told the model to draw
+"every ground-floor opening incl. **neighbor storefront**," and the v2 brief
+named **ALTER BROOKLYN** as a tenant to include — but ALTER is on the
+**separate unpainted red-brick building east of the subject**, not the
+subject. So the model dutifully extended past the party wall. The scaffold now
+draws ONE subject bounded by its party walls and excludes named neighbors.
 
-Real building: **5 storeys** = 4 upper floors of windows over a ground-floor
-commercial base, mauve-painted brick, heavy black cornice, black window hoods,
-fire escape on the long Greenpoint face. Ground floor is multi-tenant: Sonny's
-corner bar (corner entrance + a window each side) and a neighbor storefront
-(ALTER BROOKLYN, hanging sign) further east along Greenpoint.
+The subject is the **mauve-painted corner building** with the chamfered-corner
+bar entrance. Ground floor (let the photos govern, subject only): the corner
+bar wrapping the chamfer with a display window per frontage, a vacant
+commercial bay, and a residential entrance ("142") — **no ALTER**. Do not
+hand-state the floor count; the photo-count instruction got it right in v2.
 
 | File | Real size (w × h) | Aspect | Pixels |
 |---|---|---|---|
-| `sonnys-corner--corner-v2.png` | 27.1m × 13.2m (Greenpoint 19.9m + Franklin 7.2m) | 2.05 | 2048 × 998 |
+| `sonnys-corner--corner-v3.png` | 27.1m × 13.2m (Greenpoint 19.9m + Franklin 7.2m) | 2.05 | 2048 × 998 |
 
-**v2 re-render: use the reusable scaffold above** with these fill-ins —
-`<street A>` = Greenpoint Ave, `<street B>` = Franklin Ave (return),
-`<X>` = **73.4**, output **2048×998 px**. Attach all three southeast photos
-(the wide shot covers both faces; the zoom shows the corner-entrance
-condition the v1 audit missed). The unwrap matches the wired composite
-(`SONNYS_KINK = 0.734`, Greenpoint-first, `leftEnd: "east"`): texture left
-edge = Greenpoint east end, corner at 73.4%, Franklin return on the right.
+**v3 re-render: reusable scaffold above**, fill-ins:
+- `<subject>` = the mauve-painted corner building whose ground floor is the
+  corner bar (chamfered-corner entrance).
+- `<neighbors>` = **east on Greenpoint:** a separate unpainted red-brick
+  building — the "ALTER BROOKLYN" hanging sign is on IT, exclude it.
+  **west on Greenpoint:** the next storefront building. Exclude both.
+- `<street A>` = Greenpoint Ave, `<street B>` = Franklin Ave (return),
+  `<X>` = **73.4**, output **2048×998 px**.
 
-Audit the v2 raw render against the photos per the scaffold checklist — the
-three v1 errors above are exactly what checks (1)–(3) catch.
+Attach the southeast photos that show the subject from party wall to party
+wall (the frontal `142` shot bounds it west; a corner shot shows where the
+mauve meets the red-brick neighbor east). Unwrap matches the wired composite
+(`SONNYS_KINK = 0.734`, Greenpoint-first, `leftEnd: "east"`): left edge =
+Greenpoint east party wall, corner at 73.4%, Franklin return on the right.
+**Confirm the BIN 3064811 footprint (19.9m Greenpoint) ends where the mauve
+meets the red brick** — if ALTER's building is the same BIN, revisit before
+re-rendering.
 
-After v2 lands: re-derive with
-`node scripts/derive-facade-spec.mjs assets/textures/franklin/sonnys-corner--corner-v2.png --face "3064811:greenpoint=0:0.734" --face "3064811:franklin=0.734:1"`
-(retune `--wall`/`--erode` as before; the mauve wall is a minority surface),
-gate on the overlay, then update `FACADE_COMPOSITES.key` to the v2 file.
+Audit v3 against the photos per the scaffold checklist — check (1)
+(party-wall boundary, no neighbor) is the one v2 failed.
+
+After v3 lands: re-derive with
+`node scripts/derive-facade-spec.mjs assets/textures/franklin/sonnys-corner--corner-v3.png --face "3064811:greenpoint=0:0.734" --face "3064811:franklin=0.734:1"`
+(retune `--wall`/`--erode`; the mauve wall is a minority surface), gate on the
+overlay, then update `FACADE_COMPOSITES.key` to the v3 file.
 
 ### Sereneco — BIN 3337033 (northwest corner)
 

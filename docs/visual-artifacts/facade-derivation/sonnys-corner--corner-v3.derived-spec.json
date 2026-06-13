@@ -1,0 +1,173 @@
+{
+  "source": "assets/textures/franklin/sonnys-corner--corner-v3.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 117,
+    "minY": 28,
+    "maxX": 1748,
+    "maxY": 808
+  },
+  "trimmedSize": {
+    "width": 1632,
+    "height": 781
+  },
+  "wallThreshold": 70,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064811:greenpoint": {
+      "u0": 0,
+      "u1": 0.734,
+      "wallColor": [
+        138,
+        93,
+        99
+      ],
+      "rects": [
+        {
+          "x0": 0.149,
+          "x1": 0.204,
+          "y0": 0.014,
+          "y1": 0.214,
+          "type": "door"
+        },
+        {
+          "x0": 0.342,
+          "x1": 0.437,
+          "y0": 0.008,
+          "y1": 0.214,
+          "type": "door"
+        },
+        {
+          "x0": 0.517,
+          "x1": 1,
+          "y0": 0,
+          "y1": 0.464,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.003,
+          "x1": 1,
+          "y0": 0.703,
+          "y1": 1,
+          "type": "window"
+        },
+        {
+          "x0": 0.636,
+          "x1": 0.7,
+          "y0": 0.643,
+          "y1": 0.676,
+          "type": "window"
+        },
+        {
+          "x0": 0.032,
+          "x1": 0.101,
+          "y0": 0.631,
+          "y1": 0.675,
+          "type": "window"
+        },
+        {
+          "x0": 0.369,
+          "x1": 0.44,
+          "y0": 0.572,
+          "y1": 0.667,
+          "type": "window"
+        },
+        {
+          "x0": 0.956,
+          "x1": 0.997,
+          "y0": 0.56,
+          "y1": 0.622,
+          "type": "window"
+        },
+        {
+          "x0": 0.187,
+          "x1": 0.25,
+          "y0": 0.513,
+          "y1": 0.579,
+          "type": "window"
+        },
+        {
+          "x0": 0.962,
+          "x1": 1,
+          "y0": 0.513,
+          "y1": 0.544,
+          "type": "window"
+        },
+        {
+          "x0": 0.516,
+          "x1": 0.721,
+          "y0": 0.476,
+          "y1": 0.566,
+          "type": "window"
+        },
+        {
+          "x0": 0.183,
+          "x1": 0.256,
+          "y0": 0.353,
+          "y1": 0.451,
+          "type": "window"
+        },
+        {
+          "x0": 0.032,
+          "x1": 0.102,
+          "y0": 0.288,
+          "y1": 0.457,
+          "type": "window"
+        },
+        {
+          "x0": 0.038,
+          "x1": 0.104,
+          "y0": 0.069,
+          "y1": 0.222,
+          "type": "window"
+        }
+      ]
+    },
+    "3064811:franklin": {
+      "u0": 0.734,
+      "u1": 1,
+      "wallColor": [
+        102,
+        78,
+        78
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0,
+          "y1": 0.283,
+          "type": "storefront"
+        },
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0.798,
+          "y1": 1,
+          "type": "window"
+        },
+        {
+          "x0": 0.774,
+          "x1": 0.859,
+          "y0": 0.595,
+          "y1": 0.643,
+          "type": "window"
+        },
+        {
+          "x0": 0.18,
+          "x1": 0.276,
+          "y0": 0.588,
+          "y1": 0.654,
+          "type": "window"
+        },
+        {
+          "x0": 0.422,
+          "x1": 0.567,
+          "y0": 0.581,
+          "y1": 0.668,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}
