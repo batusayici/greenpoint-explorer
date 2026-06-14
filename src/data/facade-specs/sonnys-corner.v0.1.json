@@ -12,7 +12,7 @@
       "cornice": {
         "y0": 0.935,
         "y1": 1,
-        "projectionM": 0.2
+        "projectionM": 0.5
       },
       "windows": {
         "recessM": 0.06,
