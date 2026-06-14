@@ -27,6 +27,13 @@ export function clearFacadeFaces() {
   notify();
 }
 
+// Update faceSpec in an existing entry (called after Save so face-switching
+// reads the saved state rather than reverting to the static import value).
+export function updateFacadeFaceSpec(faceKey, faceSpec) {
+  const entry = registry.get(faceKey);
+  if (entry) entry.faceSpec = faceSpec;
+}
+
 export function subscribeFacadeFaces(fn) {
   subscribers.add(fn);
   return () => subscribers.delete(fn);
