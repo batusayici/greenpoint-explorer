@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { faceRectToPanel, panelDeltaToFace, panelPointToFace, moveRect, resizeRect, leanShift } from "./facadeCoords.js";
-import { listEditableRecesses, patchRecess } from "./facadeSpecPatch.js";
+import { listEditableRecesses, patchDepth, patchRecess } from "./facadeSpecPatch.js";
 
 const view = { width: 400, height: 500, skewX: 0 };
 const close = (a, b, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} ≈ ${b}`);
@@ -83,4 +83,30 @@ test("patchRecess on cornice writes only y0/y1, no x keys", () => {
 test("patchRecess rounds to 3 decimals", () => {
   const next = patchRecess(sonnyLike, ["windows", "rects", 0], { x0: 0.0421234, x1: 0.087, y0: 0.067, y1: 0.223 });
   assert.equal(next.windows.rects[0].x0, 0.042);
+});
+
+const proudLike = {
+  windows: { recessM: 0.14, rects: [{ x0: 0.1, x1: 0.2, y0: 0.5, y1: 0.7 }] },
+  boxes: [{ x0: 0.6, x1: 0.7, y0: 0.4, y1: 0.6, projectionM: 0.3 }],
+  signBands: [{ x0: 0, x1: 1, y0: 0.2, y1: 0.28, projectionM: 0.1 }],
+  bay: { x0: 0.3, x1: 0.5, y0: 0.3, y1: 0.9, projectionM: 0.6 },
+};
+
+test("listEditableRecesses surfaces proud boxes, sign bands, and bay with depth", () => {
+  const items = listEditableRecesses(proudLike);
+  const box = items.find((i) => i.kind === "box");
+  assert.equal(box.depth.key, "projectionM");
+  assert.equal(box.depth.sign, 1);
+  assert.equal(box.depth.value, 0.3);
+  assert.deepEqual(box.depth.path, ["boxes", 0, "projectionM"]);
+  const win = items.find((i) => i.kind === "window");
+  assert.equal(win.depth.sign, -1); // recessed
+  assert.deepEqual(win.depth.path, ["windows", "recessM"]); // shared
+});
+
+test("patchDepth writes only the depth key, rounds, and is immutable", () => {
+  const next = patchDepth(proudLike, ["boxes", 0, "projectionM"], 0.4712);
+  assert.equal(next.boxes[0].projectionM, 0.471);
+  assert.equal(next.boxes[0].x0, 0.6); // rect untouched
+  assert.equal(proudLike.boxes[0].projectionM, 0.3); // original untouched
 });

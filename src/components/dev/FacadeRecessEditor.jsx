@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { facadeFaceKeys, getFacadeFace, subscribeFacadeFaces, updateFacadeFaceSpec } from "../../dev/facadeFaceRegistry.js";
-import { listEditableRecesses, patchRecess } from "../../dev/facadeSpecPatch.js";
+import { listEditableRecesses, patchDepth, patchRecess } from "../../dev/facadeSpecPatch.js";
 import { faceRectToPanel, moveRect, panelDeltaToFace, panelPointToFace, resizeRect } from "../../dev/facadeCoords.js";
 
 const HANDLES = ["n", "s", "e", "w", "ne", "nw", "se", "sw"];
@@ -92,6 +92,10 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
     specRef.current = nextSpec;
     setStatus("unsaved");
     scheduleRebuild(nextSpec);
+  }
+
+  function setDepth(item, value) {
+    updateSpec(patchDepth(specRef.current, item.depth.path, value));
   }
 
   const items = useMemo(() => listEditableRecesses(spec), [spec]);
@@ -238,16 +242,17 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
           {items.map((item) => {
             const box = faceRectToPanel(item.rect, view);
             const isSel = item.id === selected;
+            const proud = PROUD.has(item.kind);
             return (
               <div
                 key={item.id}
                 onPointerDown={(e) => onBoxPointerDown(e, item)}
-                title={item.label}
+                title={`${item.label}${proud ? " (proud)" : ""}`}
                 style={{
                   position: "absolute",
                   left: box.left, top: box.top, width: box.width, height: box.height,
-                  border: `1.5px solid ${isSel ? "#ffcf3f" : kindColor(item.kind)}`,
-                  background: isSel ? "rgba(255,207,63,0.16)" : "rgba(0,255,68,0.06)",
+                  border: `1.5px ${proud ? "dashed" : "solid"} ${isSel ? "#ffcf3f" : kindColor(item.kind)}`,
+                  background: isSel ? "rgba(255,207,63,0.16)" : proud ? "rgba(255,179,71,0.08)" : "rgba(0,255,68,0.06)",
                   boxSizing: "border-box", cursor: "move",
                 }}
               >
@@ -267,6 +272,8 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
           <span style={{ opacity: 0.6 }}>click a building to load it · drag boxes to move · handles resize · arrows nudge (⇧ ×5)</span>
         )}
       </div>
+
+      {selectedItem?.depth && <DepthControl item={selectedItem} onChange={setDepth} />}
 
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
         <button onClick={save} style={buttonStyle}>Save → JSON</button>
@@ -302,7 +309,37 @@ function Shell({ children, onGripPointerDown }) {
   );
 }
 
-const kindColor = (kind) => ({ window: "#5fd0ff", storefront: "#9b8cff", door: "#ff9b6b", cornice: "#7CFC9A" }[kind] || "#00ff44");
+// Cool hues = recessed (step back), warm hues = proud (project out).
+const kindColor = (kind) => ({
+  window: "#5fd0ff", storefront: "#9b8cff", door: "#ff9b6b", cornice: "#7CFC9A",
+  box: "#ffb347", signBand: "#ffd166", bay: "#ff7eb6",
+}[kind] || "#00ff44");
+
+const PROUD = new Set(["box", "signBand", "bay"]);
+
+// Depth slider + number for the selected component. Proud items push out
+// (projectionM), recessed items step back (recessM); the flat preview can't
+// show this axis, so it lives here. Live-rebuilds the 3D as you drag.
+function DepthControl({ item, onChange }) {
+  const { value, min, max, sign } = item.depth;
+  const label = sign > 0 ? "projection" : "recess";
+  return (
+    <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8, fontSize: 11 }}>
+      <span style={{ opacity: 0.85, minWidth: 64 }}>{label}</span>
+      <input
+        type="range" min={min} max={max} step={0.01} value={value}
+        onChange={(e) => onChange(item, Number(e.target.value))}
+        style={{ flex: 1, accentColor: "#d9a43b" }}
+      />
+      <input
+        type="number" min={min} max={max} step={0.01} value={value}
+        onChange={(e) => onChange(item, Number(e.target.value))}
+        style={{ width: 56, background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 5px", fontFamily: "inherit", fontSize: 11 }}
+      />
+      <span style={{ opacity: 0.6 }}>m</span>
+    </div>
+  );
+}
 
 function handleStyle(h) {
   const s = 9, c = -s / 2, mid = `calc(50% - ${s / 2}px)`;

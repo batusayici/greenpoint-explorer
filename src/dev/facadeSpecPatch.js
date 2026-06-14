@@ -1,36 +1,80 @@
 // Immutable spec helpers for the facade recess editor.
 //
-// A "recess" is one opening rect inside a face spec. v1 edits the flat-rect
-// kinds only: window rects, storefronts, doors, and the cornice band.
+// An editable "component" is one rect inside a face spec. Recessed kinds
+// (windows, storefronts, doors, cornice) step behind the wall; proud kinds
+// (boxes/AC units, sign bands, bay) project in front of it. Each item also
+// carries a `depth` descriptor so the editor can tune how far it sits in or
+// out — the one dimension the flat 2D texture preview can't show.
 
 const round = (v) => Math.round(v * 1000) / 1000; // match spec precision (3dp)
 
-// Flatten a face spec into the editable recess items, each carrying a `path`
-// back to its home in the spec tree and its current rect in face coords.
+// Per-kind depth metadata: which spec key holds the offset, its default
+// (mirrors facadeAssembly.js fallbacks), and which way it points. `sign` is
+// +1 proud / -1 recessed; `max` bounds the slider (meters).
+const DEPTH = {
+  window:     { key: "recessM",     def: 0.14, sign: -1, max: 1.0 },
+  storefront: { key: "recessM",     def: 0.45, sign: -1, max: 1.2 },
+  door:       { key: "recessM",     def: 0.12, sign: -1, max: 1.0 },
+  box:        { key: "projectionM", def: 0.3,  sign: 1,  max: 1.5 },
+  signBand:   { key: "projectionM", def: 0.08, sign: 1,  max: 0.8 },
+  bay:        { key: "projectionM", def: 0.5,  sign: 1,  max: 1.5 },
+};
+
+// Flatten a face spec into editable component items, each carrying a `path`
+// back to its home in the spec tree, its current rect in face coords, and
+// (where applicable) a `depth` descriptor pointing at its offset key.
 export function listEditableRecesses(faceSpec) {
   if (!faceSpec) return [];
   const items = [];
+
   const rects = faceSpec.windows?.rects ?? [];
   rects.forEach((r, i) =>
-    items.push({ id: `window-${i}`, label: `window ${i + 1}`, kind: "window", path: ["windows", "rects", i], rect: rectOf(r) }),
+    items.push(mk(`window-${i}`, `window ${i + 1}`, "window", ["windows", "rects", i], rectOf(r), {
+      // windows share one recessM; depth edits the whole set.
+      key: "recessM", path: ["windows", "recessM"], value: faceSpec.windows?.recessM,
+    })),
   );
   (faceSpec.storefronts ?? []).forEach((r, i) =>
-    items.push({ id: `storefront-${i}`, label: `storefront ${i + 1}`, kind: "storefront", path: ["storefronts", i], rect: rectOf(r) }),
+    items.push(mk(`storefront-${i}`, `storefront ${i + 1}`, "storefront", ["storefronts", i], rectOf(r), depthAt(r, "storefront", ["storefronts", i]))),
   );
   (faceSpec.doors ?? []).forEach((r, i) =>
-    items.push({ id: `door-${i}`, label: `door ${i + 1}`, kind: "door", path: ["doors", i], rect: rectOf(r) }),
+    items.push(mk(`door-${i}`, `door ${i + 1}`, "door", ["doors", i], rectOf(r), depthAt(r, "door", ["doors", i]))),
   );
+  (faceSpec.boxes ?? []).forEach((r, i) =>
+    items.push(mk(`box-${i}`, `box ${i + 1}`, "box", ["boxes", i], rectOf(r), depthAt(r, "box", ["boxes", i]))),
+  );
+  (faceSpec.signBands ?? []).forEach((r, i) =>
+    items.push(mk(`signBand-${i}`, `sign band ${i + 1}`, "signBand", ["signBands", i], rectOf(r), depthAt(r, "signBand", ["signBands", i]))),
+  );
+  if (faceSpec.bay) {
+    items.push(mk("bay", "bay", "bay", ["bay"], rectOf(faceSpec.bay), depthAt(faceSpec.bay, "bay", ["bay"])));
+  }
   if (faceSpec.cornice) {
-    items.push({
-      id: "cornice",
-      label: "cornice",
-      kind: "cornice",
-      path: ["cornice"],
-      lockX: true, // full-width band; only the top/bottom edges move
-      rect: { x0: 0, x1: 1, y0: faceSpec.cornice.y0, y1: faceSpec.cornice.y1 },
-    });
+    items.push(mk("cornice", "cornice", "cornice", ["cornice"], { x0: 0, x1: 1, y0: faceSpec.cornice.y0, y1: faceSpec.cornice.y1 }, null, true));
   }
   return items;
+}
+
+function mk(id, label, kind, path, rect, depthOverride, lockX = false) {
+  const meta = DEPTH[kind];
+  let depth = null;
+  if (depthOverride) {
+    depth = {
+      key: depthOverride.key,
+      path: depthOverride.path,
+      sign: meta.sign,
+      min: 0,
+      max: meta.max,
+      value: depthOverride.value ?? meta.def,
+    };
+  }
+  return { id, label, kind, path, rect, depth, ...(lockX ? { lockX: true } : {}) };
+}
+
+// Depth descriptor for a per-item component (offset key lives on the rect).
+function depthAt(node, kind, path) {
+  const meta = DEPTH[kind];
+  return { key: meta.key, path: [...path, meta.key], value: node[meta.key] };
 }
 
 function rectOf(r) {
@@ -56,5 +100,18 @@ export function patchRecess(faceSpec, path, nextRect) {
     y0: round(nextRect.y0),
     y1: round(nextRect.y1),
   };
+  return clone;
+}
+
+// Return a new face spec with the depth key at `depthPath` set to `value`
+// (meters, rounded to spec precision). Used by the depth slider.
+export function patchDepth(faceSpec, depthPath, value) {
+  const clone = structuredClone(faceSpec);
+  let node = clone;
+  for (let k = 0; k < depthPath.length - 1; k += 1) {
+    if (node[depthPath[k]] == null) node[depthPath[k]] = {};
+    node = node[depthPath[k]];
+  }
+  node[depthPath[depthPath.length - 1]] = round(value);
   return clone;
 }
