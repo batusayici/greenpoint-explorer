@@ -83,9 +83,15 @@ export default function SceneView() {
     let renderScene = null;
     const requestRender = () => renderScene?.();
 
+    // StrictMode double-mounts this effect, and facade textures load async.
+    // `active` lets a disposed run's late texture callbacks bail out instead
+    // of registering a rebuild closure that points at an orphaned scene.
+    let active = true;
+    const isActive = () => active;
+
     clearFacadeFaces();
     buildStreets(three, scene.streets);
-    buildBuildings(three, scene, requestRender);
+    buildBuildings(three, scene, requestRender, isActive);
     window.__three = three;
     window.__scene = scene;
 
@@ -214,6 +220,7 @@ export default function SceneView() {
       window.removeEventListener("pointerup", onPointerUp);
       renderer.domElement.removeEventListener("wheel", onWheel);
       window.removeEventListener("resize", resize);
+      active = false;
       renderer.dispose();
       mount.removeChild(renderer.domElement);
       clearFacadeFaces();
@@ -387,10 +394,10 @@ function disposeGroup(group) {
   });
 }
 
-function buildBuildings(three, scene, requestRender) {
+function buildBuildings(three, scene, requestRender, isActive = () => true) {
   scene.buildings.forEach((building, index) => {
     if (building.isHero && building.edges) {
-      buildHeroBuilding(three, building, scene, requestRender);
+      buildHeroBuilding(three, building, scene, requestRender, isActive);
       return;
     }
     const shape = footprintShape(building.polygon);
@@ -413,7 +420,7 @@ function buildBuildings(three, scene, requestRender) {
 // elevations map directly onto the real footprint edges, the two street
 // faces share a crisp corner, the roof carries an inked parapet texture,
 // and an II-C cast-shadow shape grounds the mass.
-function buildHeroBuilding(three, building, scene, requestRender) {
+function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true) {
   const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
   // Benchmark-style face shading: lit street faces, darker returns.
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
@@ -423,6 +430,9 @@ function buildHeroBuilding(three, building, scene, requestRender) {
   let compositeTexture = null;
   if (composite && facadeTextureUrls[composite.key]) {
     loadTrimmedTexture(facadeTextureUrls[composite.key], (texture) => {
+      // Bail if this effect run was torn down (StrictMode) before the texture
+      // resolved — otherwise it would register a rebuild into a dead scene.
+      if (!isActive()) return;
       compositeTexture = texture;
       for (const apply of compositeWaiters) apply(texture);
       requestRender?.();
