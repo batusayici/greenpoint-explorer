@@ -20,6 +20,17 @@ const REVEAL = {
   soffit: 0x2f2820, // underside of storefront/awning/cornice returns
 };
 
+// Reveals are textured by edge-stretching the wall artwork into the recess
+// (see bridgeMesh) instead of flat tints, so a jamb/sill continues the brick
+// rather than floating as a grey/tan bar. These multipliers darken that
+// stretched texture per face to fake the cast light: a recess has a dark
+// lintel, mid jambs, and a lit sill; a proud element catches light on top
+// and throws its underside into soffit shadow.
+const REVEAL_SHADE = {
+  recess: { top: 0.32, bottom: 0.9, left: 0.55, right: 0.55 },
+  proud: { top: 0.9, bottom: 0.34, left: 0.62, right: 0.62 },
+};
+
 export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseColor, debug = false }) {
   const group = new THREE.Group();
   const meters = (value) => value * unitsPerMeter;
@@ -83,7 +94,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   const windowRecess = meters(spec.windows?.recessM ?? 0.14);
   for (const rect of windowRects) {
     group.add(rectMesh(frame, rect, -windowRecess, texturedMaterial(texture, 1)));
-    addReveals(group, frame, rect, 0, -windowRecess);
+    addReveals(group, frame, rect, 0, -windowRecess, texture);
     // Geometric sills only on request — the drawn elevations carry their
     // own stone sills, and duplicating them reads as floating white bars.
     if (spec.windows.sill === true) {
@@ -102,7 +113,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   for (const storefront of storefronts) {
     const recess = meters(storefront.recessM ?? 0.45);
     group.add(rectMesh(frame, storefront, -recess, texturedMaterial(texture, 0.97)));
-    addReveals(group, frame, storefront, 0, -recess, {
+    addReveals(group, frame, storefront, 0, -recess, texture, {
       bottom: false,
       top: storefront.revealTop !== false,
       left: storefront.revealLeft !== false,
@@ -114,7 +125,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   for (const band of signBands) {
     const proud = meters(band.projectionM ?? 0.08);
     group.add(rectMesh(frame, band, proud, texturedMaterial(texture, 1)));
-    addReveals(group, frame, band, proud, 0, { interior: false });
+    addReveals(group, frame, band, proud, 0, texture, { interior: false });
   }
 
   // Awnings: angled canopy from the wall attachment line outward and down,
@@ -167,14 +178,14 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   for (const door of doors) {
     const recess = meters(door.recessM ?? 0.12);
     group.add(rectMesh(frame, door, -recess, texturedMaterial(texture, 0.98)));
-    addReveals(group, frame, door, 0, -recess, { bottom: false });
+    addReveals(group, frame, door, 0, -recess, texture, { bottom: false });
   }
 
   // Boxes (AC units, utility): proud textured blocks.
   for (const box of boxes) {
     const proud = meters(box.projectionM ?? 0.3);
     group.add(rectMesh(frame, box, proud, texturedMaterial(texture, 1)));
-    addReveals(group, frame, box, proud, 0, { interior: false });
+    addReveals(group, frame, box, proud, 0, texture, { interior: false });
   }
 
   // Bay window: a real shallow volume — textured front, dark wood cheeks
@@ -307,18 +318,12 @@ function rectMesh(frame, rect, offset, material) {
 }
 
 // A reveal bridges the wall plane and a recessed/proud plane along one rect
-// edge. `sides.interior` (default) tints for a recess (lintel dark, sill
-// lit); proud elements get uniform soffit/return tones.
-function addReveals(group, frame, rect, fromOffset, toOffset, sides = {}) {
-  const recessLook = sides.interior !== false;
-  // Recess: lintel in shadow, sill lit. Proud: top catches light, the
-  // underside is the shadowed soffit.
-  const tones = {
-    top: recessLook ? REVEAL.top : REVEAL.bottom,
-    bottom: recessLook ? REVEAL.bottom : REVEAL.soffit,
-    left: recessLook ? REVEAL.side : (sides.baseColor ?? REVEAL.side),
-    right: recessLook ? REVEAL.side : (sides.baseColor ?? REVEAL.side),
-  };
+// edge. The bridge is textured with the wall artwork stretched off that edge
+// (so it continues the brick), then darkened per face for cast light:
+// `sides.interior` (default) reads as a recess (dark lintel, lit sill); proud
+// elements catch light on top and fall into soffit shadow underneath.
+function addReveals(group, frame, rect, fromOffset, toOffset, texture, sides = {}) {
+  const shade = (sides.interior !== false) ? REVEAL_SHADE.recess : REVEAL_SHADE.proud;
   const edges = [
     ["top", sides.top !== false],
     ["bottom", sides.bottom !== false],
@@ -327,7 +332,7 @@ function addReveals(group, frame, rect, fromOffset, toOffset, sides = {}) {
   ];
   for (const [edge, enabled] of edges) {
     if (!enabled) continue;
-    group.add(bridgeMesh(frame, rect, fromOffset, toOffset, edge, tintMaterial(tones[edge])));
+    group.add(bridgeMesh(frame, rect, fromOffset, toOffset, edge, texturedMaterial(texture, shade[edge])));
   }
 }
 
@@ -347,11 +352,21 @@ function bridgeMesh(frame, rect, fromOffset, toOffset, edge, material) {
     a = [rect.x1, rect.y0];
     b = [rect.x1, rect.y1];
   }
+  // Edge-stretch UVs: both depth ends sample the same edge line in the
+  // texture (the column at x for a jamb, the row at y for a sill/lintel), so
+  // the wall artwork bleeds into the recess instead of a flat fill. Only set
+  // when the material is textured — flat tints (e.g. bay cheeks) keep none.
+  let uv;
+  if (material.map) {
+    const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
+    uv = [u(a[0]), a[1], u(b[0]), b[1], u(b[0]), b[1], u(a[0]), a[1]];
+  }
   const geometry = quadGeometry(
     facePoint(frame, a[0], a[1], fromOffset),
     facePoint(frame, b[0], b[1], fromOffset),
     facePoint(frame, b[0], b[1], toOffset),
     facePoint(frame, a[0], a[1], toOffset),
+    uv,
   );
   return new THREE.Mesh(geometry, material);
 }
