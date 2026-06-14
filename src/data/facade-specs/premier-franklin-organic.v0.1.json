@@ -12,7 +12,8 @@
       "cornice": {
         "y0": 0.953,
         "y1": 1,
-        "projectionM": 0.5
+        "projectionM": 0.5,
+        "cornerLeft": true
       },
       "signBands": [
         {
@@ -30,7 +31,8 @@
           "yWall": 0.31,
           "yDrop": 0.27,
           "yValance": 0.24,
-          "projectionM": 0.85
+          "projectionM": 0.85,
+          "capLeft": false
         }
       ],
       "windows": {
@@ -128,7 +130,8 @@
       "cornice": {
         "y0": 0.935,
         "y1": 1,
-        "projectionM": 0.5
+        "projectionM": 0.5,
+        "cornerRight": true
       },
       "signBands": [
         {
@@ -146,7 +149,8 @@
           "yWall": 0.31,
           "yDrop": 0.27,
           "yValance": 0.24,
-          "projectionM": 0.85
+          "projectionM": 0.85,
+          "capRight": false
         }
       ],
       "windows": {

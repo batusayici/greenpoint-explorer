@@ -245,22 +245,24 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       facePoint(frame, rect.x0, rect.y1, 0),
     ), tintMaterial(REVEAL.bottom)));
 
-    // Return ends: close the crown box only at a *free* end — a cornice that
-    // stops mid-wall. A full-width end (x0=0 / x1=1) abuts the building edge,
-    // where the neighbouring wall or the perpendicular face's own crown
-    // continues around the corner; capping it there makes the two faces' caps
-    // poke out and overlap into a blocky corner artifact. Skip those.
-    const ends = [];
-    if (rect.x0 > 1e-4) ends.push(rect.x0);
-    if (rect.x1 < 1 - 1e-4) ends.push(rect.x1);
-    for (const x of ends) {
-      group.add(new THREE.Mesh(quadGeometry(
-        facePoint(frame, x, rect.y0, 0),
-        facePoint(frame, x, rect.y0, proj),
-        facePoint(frame, x, yCap, proj),
-        facePoint(frame, x, yCap, 0),
-      ), tintMaterial(REVEAL.side)));
-    }
+    // Return ends close the crown box at one side.
+    const drawReturn = (x, color) => group.add(new THREE.Mesh(quadGeometry(
+      facePoint(frame, x, rect.y0, 0),
+      facePoint(frame, x, rect.y0, proj),
+      facePoint(frame, x, yCap, proj),
+      facePoint(frame, x, yCap, 0),
+    ), tintMaterial(color)));
+
+    // Free ends — a cornice that stops mid-wall — get a cut-stone grey return.
+    // A full-width end (x0=0 / x1=1) abuts the building edge and is skipped by
+    // default (a flat party-wall seam needs nothing). But where that edge is a
+    // *folded* corner (cornerLeft/cornerRight), the perpendicular face's crown
+    // is proud too, leaving an open notch between them; close it with a dark
+    // molding return matching the crown so the two crowns read as continuous.
+    if (rect.x0 > 1e-4) drawReturn(rect.x0, REVEAL.side);
+    else if (spec.cornice.cornerLeft) drawReturn(rect.x0, CROWN);
+    if (rect.x1 < 1 - 1e-4) drawReturn(rect.x1, REVEAL.side);
+    else if (spec.cornice.cornerRight) drawReturn(rect.x1, CROWN);
   }
 
   // Spec-debug: outline every component rect directly on the wall so
