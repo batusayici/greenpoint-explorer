@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
 import { buildFacadeAssembly } from "./facadeAssembly.js";
@@ -45,6 +45,9 @@ const facadeTextureUrls = import.meta.glob("../assets/textures/franklin/*.png", 
 
 export default function SceneView() {
   const mountRef = useRef(null);
+  const facadeEdit = new URLSearchParams(window.location.search).get("facadeedit") === "1";
+  const [editorOpen, setEditorOpen] = useState(facadeEdit);
+  const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -133,10 +136,34 @@ export default function SceneView() {
     const panRight = new THREE.Vector3(Math.cos(ISO_AZIMUTH), 0, -Math.sin(ISO_AZIMUTH));
     const panUp = new THREE.Vector3(-Math.sin(ISO_AZIMUTH), 0, -Math.cos(ISO_AZIMUTH));
 
+    // Click-to-edit: a no-drag click on a spec'd face opens the recess editor
+    // for that face (edit mode only). Assembly groups carry userData.faceKey.
+    const raycaster = new THREE.Raycaster();
+    const down = { x: 0, y: 0, onCanvas: false };
+    function faceKeyAt(event) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      const ndc = new THREE.Vector2(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1,
+      );
+      raycaster.setFromCamera(ndc, camera);
+      for (const hit of raycaster.intersectObjects(three.children, true)) {
+        let object = hit.object;
+        while (object) {
+          if (object.userData?.faceKey) return object.userData.faceKey;
+          object = object.parent;
+        }
+      }
+      return null;
+    }
+
     function onPointerDown(event) {
       drag.active = true;
       drag.lastX = event.clientX;
       drag.lastY = event.clientY;
+      down.x = event.clientX;
+      down.y = event.clientY;
+      down.onCanvas = true;
     }
     function onPointerMove(event) {
       if (!drag.active) return;
@@ -150,8 +177,18 @@ export default function SceneView() {
       applyCamera();
       render();
     }
-    function onPointerUp() {
+    function onPointerUp(event) {
       drag.active = false;
+      const wasCanvas = down.onCanvas;
+      down.onCanvas = false;
+      if (!facadeEdit || !wasCanvas) return;
+      const moved = Math.hypot(event.clientX - down.x, event.clientY - down.y);
+      if (moved > 4) return; // a pan, not a click
+      const faceKey = faceKeyAt(event);
+      if (faceKey) {
+        setEditorFace(faceKey);
+        setEditorOpen(true);
+      }
     }
     function onWheel(event) {
       event.preventDefault();
@@ -183,8 +220,6 @@ export default function SceneView() {
     };
   }, []);
 
-  const facadeEdit = new URLSearchParams(window.location.search).get("facadeedit") === "1";
-
   return (
     <div style={{ position: "fixed", inset: 0 }}>
       <div ref={mountRef} style={{ position: "absolute", inset: 0 }} />
@@ -210,7 +245,13 @@ export default function SceneView() {
           Debug runtime →
         </a>
       </div>
-      {facadeEdit && <FacadeRecessEditor />}
+      {facadeEdit && editorOpen && (
+        <FacadeRecessEditor
+          faceKey={editorFace}
+          onSelectFace={setEditorFace}
+          onClose={() => setEditorOpen(false)}
+        />
+      )}
     </div>
   );
 }

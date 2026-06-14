@@ -3,67 +3,61 @@ import { facadeFaceKeys, getFacadeFace, subscribeFacadeFaces, updateFacadeFaceSp
 import { listEditableRecesses, patchRecess } from "../../dev/facadeSpecPatch.js";
 import { faceRectToPanel, moveRect, panelDeltaToFace, panelPointToFace, resizeRect } from "../../dev/facadeCoords.js";
 
-const MAX_W = 400;
-const MAX_H = 540;
 const HANDLES = ["n", "s", "e", "w", "ne", "nw", "se", "sw"];
+const MIN_W = 280;
+const MAX_W = 1100;
 
-// Dev-only (?facadeedit=1) panel: drag recess boxes over the flat texture to
-// snap them onto the painted openings; the 3D scene re-snaps live, and Save
-// writes the coords back to the spec JSON.
-export default function FacadeRecessEditor() {
+// Dev-only (?facadeedit=1) panel. Drag recess boxes over the flat texture to
+// snap them onto the painted openings; the 3D scene re-snaps live, Save writes
+// the coords back to the spec JSON. `faceKey` is controlled by SceneView so a
+// building click can drive which face is shown; onClose hides the panel.
+export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
   const [keys, setKeys] = useState(facadeFaceKeys());
-  const [faceKey, setFaceKey] = useState(null);
   const [spec, setSpec] = useState(null);
   const [selected, setSelected] = useState(null);
   const [status, setStatus] = useState("");
+  const [previewW, setPreviewW] = useState(400);
 
   const canvasRef = useRef(null);
   const previewRef = useRef(null);
   const rebuildRaf = useRef(0);
   const drag = useRef(null);
 
-  // Refs that drag handlers always read fresh — no stale closure.
+  // Refs the drag/key handlers read fresh — no stale closure.
   const specRef = useRef(spec);
   const entryRef = useRef(null);
   const viewRef = useRef(null);
   const itemsRef = useRef([]);
 
   const entry = faceKey ? getFacadeFace(faceKey) : null;
-
-  // Keep refs in sync on every render.
   specRef.current = spec;
   entryRef.current = entry;
 
   // Track which faces the scene has registered (textures load async).
   useEffect(() => subscribeFacadeFaces(() => setKeys(facadeFaceKeys())), []);
 
-  // Default to the first registered face once one appears.
+  // Auto-pick the first face when none is selected yet.
   useEffect(() => {
-    if (!faceKey && keys.length) loadFace(keys[0]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keys, faceKey]);
+    if (!faceKey && keys.length) onSelectFace(keys[0]);
+  }, [keys, faceKey, onSelectFace]);
 
-  function loadFace(key) {
-    const e = getFacadeFace(key);
+  // Load the working spec whenever the controlled face changes.
+  useEffect(() => {
+    if (!faceKey) return;
+    const e = getFacadeFace(faceKey);
     if (!e) return;
-    setFaceKey(key);
     setSpec(structuredClone(e.faceSpec));
     setSelected(null);
     setStatus("");
-  }
+  }, [faceKey]);
 
-  // Preview size from the texture slice aspect, capped to MAX_W x MAX_H.
+  // Preview size: user-controlled width, height locked to slice aspect.
   const view = useMemo(() => {
     if (!entry?.texture?.image) return null;
     const img = entry.texture.image;
-    const sliceW = (entry.u1 - entry.u0) * img.width;
-    const aspect = sliceW / img.height;
-    let width = MAX_W;
-    let height = width / aspect;
-    if (height > MAX_H) { height = MAX_H; width = height * aspect; }
-    return { width, height, skewX: spec?.skewX ?? 0 };
-  }, [entry, spec]);
-
+    const aspect = ((entry.u1 - entry.u0) * img.width) / img.height;
+    return { width: previewW, height: previewW / aspect, skewX: spec?.skewX ?? 0 };
+  }, [entry, spec, previewW]);
   viewRef.current = view;
 
   // Draw the texture slice (mirrored if the face is flipped).
@@ -102,13 +96,9 @@ export default function FacadeRecessEditor() {
 
   const items = useMemo(() => listEditableRecesses(spec), [spec]);
   itemsRef.current = items;
-
   const selectedItem = items.find((it) => it.id === selected) || null;
 
-  // --- drag plumbing --------------------------------------------------
-  // Handlers are defined once (stable refs) and read from *Ref.current so
-  // they always see the latest spec/items/view regardless of render cycle.
-
+  // --- recess drag ----------------------------------------------------
   function panelPoint(event) {
     const r = previewRef.current.getBoundingClientRect();
     return { px: event.clientX - r.left, py: event.clientY - r.top };
@@ -134,43 +124,33 @@ export default function FacadeRecessEditor() {
     }
     updateSpec(patchRecess(currentSpec, item.path, nextRect));
   }
-
-  function onPointerUp() {
-    drag.current = null;
-    window.removeEventListener("pointermove", onPointerMove);
-    window.removeEventListener("pointerup", onPointerUp);
-  }
-
-  // Stable refs so add/removeEventListener always match the same function.
-  const onPointerMoveRef = useRef(onPointerMove);
-  const onPointerUpRef = useRef(onPointerUp);
-  onPointerMoveRef.current = onPointerMove;
-  onPointerUpRef.current = onPointerUp;
-
-  function startDrag(d) {
+  function beginDrag(d) {
     drag.current = d;
-    window.addEventListener("pointermove", (e) => onPointerMoveRef.current(e), { signal: drag.current._abort?.signal });
-    window.addEventListener("pointerup", (e) => onPointerUpRef.current(e), { once: true });
+    const mv = (e) => onPointerMove(e);
+    const up = () => {
+      window.removeEventListener("pointermove", mv);
+      window.removeEventListener("pointerup", up);
+      drag.current = null;
+    };
+    window.addEventListener("pointermove", mv);
+    window.addEventListener("pointerup", up);
   }
 
   function onBoxPointerDown(event, item) {
     event.stopPropagation();
     setSelected(item.id);
-    startDrag({ mode: "move", item, start: panelPoint(event), startRect: item.rect });
+    beginDrag({ mode: "move", item, start: panelPoint(event), startRect: item.rect });
   }
 
   function onHandlePointerDown(event, item, handle) {
     event.stopPropagation();
     setSelected(item.id);
-    startDrag({ mode: "resize", item, handle });
+    beginDrag({ mode: "resize", item, handle });
   }
 
-  // Cleanup: remove stray pointermove listeners when component unmounts.
-  useEffect(() => {
-    return () => cancelAnimationFrame(rebuildRaf.current);
-  }, []);
+  useEffect(() => () => cancelAnimationFrame(rebuildRaf.current), []);
 
-  // Arrow-key nudge — reads from refs so it's always fresh too.
+  // Arrow-key nudge.
   useEffect(() => {
     if (!selected) return;
     function onKey(event) {
@@ -181,12 +161,29 @@ export default function FacadeRecessEditor() {
       event.preventDefault();
       const item = itemsRef.current.find((it) => it.id === selected);
       if (!item) return;
-      const dx = item.lockX ? 0 : move[0];
-      updateSpec(patchRecess(specRef.current, item.path, moveRect(item.rect, dx, move[1])));
+      updateSpec(patchRecess(specRef.current, item.path, moveRect(item.rect, item.lockX ? 0 : move[0], move[1])));
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [selected]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // --- panel resize grip ---------------------------------------------
+  function onGripPointerDown(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    const startX = event.clientX;
+    const startW = previewW;
+    function mv(e) {
+      // panel is top-right anchored, so dragging left grows it
+      setPreviewW(Math.max(MIN_W, Math.min(MAX_W, startW + (startX - e.clientX))));
+    }
+    function up() {
+      window.removeEventListener("pointermove", mv);
+      window.removeEventListener("pointerup", up);
+    }
+    window.addEventListener("pointermove", mv);
+    window.addEventListener("pointerup", up);
+  }
 
   async function save() {
     if (!entry || !faceKey || !spec) return;
@@ -199,7 +196,6 @@ export default function FacadeRecessEditor() {
       });
       const json = await res.json();
       if (json.ok) {
-        // Update registry so switching faces and back keeps saved state.
         updateFacadeFaceSpec(faceKey, structuredClone(spec));
         setStatus("saved ✓");
       } else {
@@ -210,24 +206,33 @@ export default function FacadeRecessEditor() {
     }
   }
 
-  if (!keys.length) {
-    return <Shell><div style={{ opacity: 0.7 }}>waiting for facade textures to load…</div></Shell>;
+  function revert() {
+    const e = getFacadeFace(faceKey);
+    if (!e) return;
+    const restored = structuredClone(e.faceSpec);
+    setSpec(restored);
+    setSelected(null);
+    setStatus("");
+    scheduleRebuild(restored);
   }
 
   return (
-    <Shell>
+    <Shell onGripPointerDown={onGripPointerDown}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
         <strong>Recess editor</strong>
-        <select value={faceKey ?? ""} onChange={(e) => loadFace(e.target.value)} style={selectStyle}>
+        <select value={faceKey ?? ""} onChange={(e) => onSelectFace(e.target.value)} style={selectStyle}>
           {keys.map((k) => <option key={k} value={k}>{k}</option>)}
         </select>
+        <button onClick={onClose} title="close" style={closeStyle}>✕</button>
       </div>
+
+      {!keys.length && <div style={{ opacity: 0.7 }}>waiting for facade textures to load…</div>}
 
       {view && (
         <div
           ref={previewRef}
           onPointerDown={() => setSelected(null)}
-          style={{ position: "relative", width: view.width, height: view.height, cursor: "default", userSelect: "none", touchAction: "none" }}
+          style={{ position: "relative", width: view.width, height: view.height, userSelect: "none", touchAction: "none" }}
         >
           <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, width: view.width, height: view.height, outline: "1px solid rgba(0,0,0,0.4)" }} />
           {items.map((item) => {
@@ -240,12 +245,10 @@ export default function FacadeRecessEditor() {
                 title={item.label}
                 style={{
                   position: "absolute",
-                  left: box.left, top: box.top,
-                  width: box.width, height: box.height,
+                  left: box.left, top: box.top, width: box.width, height: box.height,
                   border: `1.5px solid ${isSel ? "#ffcf3f" : kindColor(item.kind)}`,
                   background: isSel ? "rgba(255,207,63,0.16)" : "rgba(0,255,68,0.06)",
-                  boxSizing: "border-box",
-                  cursor: "move",
+                  boxSizing: "border-box", cursor: "move",
                 }}
               >
                 {isSel && HANDLES.filter((h) => !(item.lockX && /[ew]/.test(h))).map((h) => (
@@ -261,30 +264,40 @@ export default function FacadeRecessEditor() {
         {selectedItem ? (
           <code style={{ color: "#ffcf3f" }}>{selectedItem.label}: {fmt(selectedItem.rect)}</code>
         ) : (
-          <span style={{ opacity: 0.6 }}>click a box to select · drag to move · handles resize · arrows nudge (⇧ ×5)</span>
+          <span style={{ opacity: 0.6 }}>click a building to load it · drag boxes to move · handles resize · arrows nudge (⇧ ×5)</span>
         )}
       </div>
 
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
         <button onClick={save} style={buttonStyle}>Save → JSON</button>
-        <button onClick={() => loadFace(faceKey)} style={{ ...buttonStyle, background: "#3a3228" }}>Revert</button>
+        <button onClick={revert} style={{ ...buttonStyle, background: "#3a3228", color: "#eae1ce" }}>Revert</button>
         <span style={{ fontSize: 11, opacity: 0.85 }}>{status}</span>
       </div>
     </Shell>
   );
 }
 
-function Shell({ children }) {
+function Shell({ children, onGripPointerDown }) {
   return (
     <div style={{
       position: "absolute", top: 14, right: 14,
       maxHeight: "calc(100vh - 28px)", overflow: "auto",
-      padding: 12,
+      padding: 12, paddingBottom: 16,
       background: "rgba(28, 24, 18, 0.94)", color: "#eae1ce",
       fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: 12,
       borderRadius: 6, boxShadow: "0 6px 24px rgba(0,0,0,0.4)", zIndex: 50,
     }}>
       {children}
+      <div
+        onPointerDown={onGripPointerDown}
+        title="drag to resize"
+        style={{
+          position: "absolute", left: 0, bottom: 0, width: 16, height: 16,
+          cursor: "nesw-resize",
+          background: "linear-gradient(45deg, transparent 50%, #d9a43b 50%, #d9a43b 65%, transparent 65%, transparent 78%, #d9a43b 78%, #d9a43b 93%, transparent 93%)",
+          opacity: 0.8,
+        }}
+      />
     </div>
   );
 }
@@ -308,5 +321,6 @@ function handleStyle(h) {
 }
 
 const fmt = (r) => `x0 ${r.x0.toFixed(3)} x1 ${r.x1.toFixed(3)} y0 ${r.y0.toFixed(3)} y1 ${r.y1.toFixed(3)}`;
-const selectStyle = { background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 6px", fontFamily: "inherit", fontSize: 11 };
+const selectStyle = { background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 6px", fontFamily: "inherit", fontSize: 11, flex: 1, minWidth: 0 };
 const buttonStyle = { background: "#d9a43b", color: "#241c10", border: "none", borderRadius: 4, padding: "6px 10px", fontWeight: 700, cursor: "pointer", fontFamily: "inherit", fontSize: 12 };
+const closeStyle = { background: "transparent", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "2px 7px", cursor: "pointer", fontFamily: "inherit", fontSize: 12, lineHeight: 1 };
