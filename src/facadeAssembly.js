@@ -189,61 +189,50 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(0x4a3a2c)));
   }
 
-  // Cornice: the defining Brooklyn roofline — not a flat band but a crown
-  // that overhangs the wall and rises above the roof. The painted cornice
-  // artwork (dentils, brackets, crown molding) is split across the faces so
-  // the texture wraps the projecting geometry instead of stopping at a flat
-  // box: the lower band stays on the wall frieze, the upper band wraps the
-  // overhanging fascia, and the top edge reads from above on the cap. Only
-  // the underside soffit and side returns stay dark — they are genuinely in
-  // shadow. This is what reads as 3D from iso.
+  // Cornice: the defining Brooklyn roofline — a crown that overhangs the wall
+  // and rises above the roof. The painted artwork is a head-on elevation, so
+  // it only ever depicts the cornice *face*; there is no painted data for the
+  // molding's top or underside. Rather than stretch a sliver of texture over
+  // those surfaces (which smears and artifacts), the full cornice rect is
+  // rendered at its natural UVs on the projecting front face, and the rising
+  // crown lip, top cap, and underside soffit are solid molding tints.
   if (spec.cornice) {
     const rect = { x0: 0, x1: 1, ...spec.cornice };
-    const proj = meters(spec.cornice.projectionM ?? 0.45); // crown overhang
-    const bed = meters(spec.cornice.bedM ?? 0.12); // frieze proud of wall
-    const riseY = meters(spec.cornice.crownRiseM ?? 0.3) / frame.height; // above roof
-    const dropY = meters(spec.cornice.crownDropM ?? 0.05) / frame.height; // soffit below roof
-    const ySoffit = rect.y1 - dropY;
+    const proj = meters(spec.cornice.projectionM ?? 0.5); // crown overhang
+    const riseY = meters(spec.cornice.crownRiseM ?? 0.22) / frame.height; // lip above roof
     const yCap = rect.y1 + riseY;
-    const uL = frame.u0 + (frame.u1 - frame.u0) * rect.x0;
-    const uR = frame.u0 + (frame.u1 - frame.u0) * rect.x1;
+    const CROWN = 0x241f18; // near-black painted crown lip (matches refs)
 
-    // Frieze band: lower cornice artwork on the wall, with a shadow soffit
-    // underneath and jamb returns at the sides.
-    const frieze = { x0: rect.x0, x1: rect.x1, y0: rect.y0, y1: ySoffit };
-    group.add(rectMesh(frame, frieze, bed, texturedMaterial(texture, 1)));
-    addReveals(group, frame, frieze, bed, 0, { interior: false, top: false });
+    // Front face: the full painted cornice pushed proud of the wall, at its
+    // own natural UVs — same fidelity as the flat wall, no stretching.
+    group.add(rectMesh(frame, rect, proj, texturedMaterial(texture, 1)));
 
-    // Underside soffit: horizontal plane from the frieze out to the overhang,
-    // facing down — deep shadow.
+    // Underside soffit: from the wall out to the projected front at the
+    // cornice base, facing down — deep shadow.
     group.add(new THREE.Mesh(quadGeometry(
-      facePoint(frame, rect.x0, ySoffit, bed),
-      facePoint(frame, rect.x1, ySoffit, bed),
-      facePoint(frame, rect.x1, ySoffit, proj),
-      facePoint(frame, rect.x0, ySoffit, proj),
+      facePoint(frame, rect.x0, rect.y0, 0),
+      facePoint(frame, rect.x1, rect.y0, 0),
+      facePoint(frame, rect.x1, rect.y0, proj),
+      facePoint(frame, rect.x0, rect.y0, proj),
     ), tintMaterial(REVEAL.soffit)));
 
-    // Fascia: the crown's vertical front, fully proud of the footprint. The
-    // upper sliver of the cornice artwork (ySoffit..top) wraps onto it so the
-    // painted crown molding continues off the wall.
+    // Crown lip: a solid dark strip rising above the roofline at the front of
+    // the overhang — the bold dark edge of a Brooklyn cornice.
     group.add(new THREE.Mesh(quadGeometry(
-      facePoint(frame, rect.x0, ySoffit, proj),
-      facePoint(frame, rect.x1, ySoffit, proj),
+      facePoint(frame, rect.x0, rect.y1, proj),
+      facePoint(frame, rect.x1, rect.y1, proj),
       facePoint(frame, rect.x1, yCap, proj),
       facePoint(frame, rect.x0, yCap, proj),
-      [uL, ySoffit, uR, ySoffit, uR, rect.y1, uL, rect.y1],
-    ), texturedMaterial(texture, 1)));
+    ), tintMaterial(CROWN)));
 
-    // Top cap: horizontal plane facing up, the same upper artwork read across
-    // its depth (back edge = soffit line, front edge = the painted top) so the
-    // molding profile carries over the overhang against the sky.
+    // Top cap: horizontal plane sloping back to the roof, facing up — the lit
+    // edge that draws the angular roofline against the sky.
     group.add(new THREE.Mesh(quadGeometry(
       facePoint(frame, rect.x0, yCap, proj),
       facePoint(frame, rect.x1, yCap, proj),
-      facePoint(frame, rect.x1, yCap, bed),
-      facePoint(frame, rect.x0, yCap, bed),
-      [uL, rect.y1, uR, rect.y1, uR, ySoffit, uL, ySoffit],
-    ), texturedMaterial(texture, 1)));
+      facePoint(frame, rect.x1, rect.y1, 0),
+      facePoint(frame, rect.x0, rect.y1, 0),
+    ), tintMaterial(REVEAL.bottom)));
 
     // Return ends: close the crown box only at a *free* end — a cornice that
     // stops mid-wall. A full-width end (x0=0 / x1=1) abuts the building edge,
@@ -255,10 +244,10 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     if (rect.x1 < 1 - 1e-4) ends.push(rect.x1);
     for (const x of ends) {
       group.add(new THREE.Mesh(quadGeometry(
-        facePoint(frame, x, ySoffit, bed),
-        facePoint(frame, x, ySoffit, proj),
+        facePoint(frame, x, rect.y0, 0),
+        facePoint(frame, x, rect.y0, proj),
         facePoint(frame, x, yCap, proj),
-        facePoint(frame, x, yCap, bed),
+        facePoint(frame, x, yCap, 0),
       ), tintMaterial(REVEAL.side)));
     }
   }
