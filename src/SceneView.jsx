@@ -8,6 +8,8 @@ import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
+import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
+import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -78,6 +80,7 @@ export default function SceneView() {
     let renderScene = null;
     const requestRender = () => renderScene?.();
 
+    clearFacadeFaces();
     buildStreets(three, scene.streets);
     buildBuildings(three, scene, requestRender);
     window.__three = three;
@@ -176,8 +179,11 @@ export default function SceneView() {
       window.removeEventListener("resize", resize);
       renderer.dispose();
       mount.removeChild(renderer.domElement);
+      clearFacadeFaces();
     };
   }, []);
+
+  const facadeEdit = new URLSearchParams(window.location.search).get("facadeedit") === "1";
 
   return (
     <div style={{ position: "fixed", inset: 0 }}>
@@ -204,6 +210,7 @@ export default function SceneView() {
           Debug runtime →
         </a>
       </div>
+      {facadeEdit && <FacadeRecessEditor />}
     </div>
   );
 }
@@ -293,6 +300,29 @@ const FACADE_SPECS = {
   ...sonnysFacadeSpec.faces,
   ...serenecoFacadeSpec.faces,
 };
+
+// Maps each "BIN:role" face to the spec file it lives in, so the dev recess
+// editor can write an edit back to the right JSON.
+const SPEC_FILE_BY_FACE = {};
+for (const [file, spec] of [
+  ["premier-franklin-organic.v0.1.json", premierFacadeSpec],
+  ["sonnys-corner.v0.1.json", sonnysFacadeSpec],
+  ["sereneco.v0.1.json", serenecoFacadeSpec],
+]) {
+  for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
+}
+
+// Free geometry/materials of a discarded facade assembly (textures are shared
+// and left intact) — keeps live editor rebuilds from leaking GPU memory.
+function disposeGroup(group) {
+  group.traverse((object) => {
+    if (object.geometry) object.geometry.dispose();
+    if (object.material) {
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      for (const material of materials) material.dispose();
+    }
+  });
+}
 
 function buildBuildings(three, scene, requestRender) {
   scene.buildings.forEach((building, index) => {
@@ -410,20 +440,29 @@ function buildHeroBuilding(three, building, scene, requestRender) {
     three.add(wall);
 
     if (!isTextured) continue;
+    const faceKey = `${building.bin}:${edge.role}`;
     const apply = specFace
       ? (texture) => {
           // Structured facade: swap the flat wall for the component assembly.
+          // The build is wrapped in a rebuild closure so the dev recess editor
+          // can re-snap this one face live (remove old group, build new).
           three.remove(wall);
-          three.add(
-            buildFacadeAssembly({
-              frame: faceFrame(renderEdge, building.height, face, scene),
-              spec: specFace,
-              texture,
-              unitsPerMeter: scene.projection.scale,
-              baseColor: new THREE.Color(baseColor).multiplyScalar(shade).getHex(),
-              debug: new URLSearchParams(window.location.search).get("specdebug") === "1",
-            }),
-          );
+          const frame = faceFrame(renderEdge, building.height, face, scene);
+          const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
+          const hexBase = new THREE.Color(baseColor).multiplyScalar(shade).getHex();
+          let current = null;
+          const rebuild = (specOverride) => {
+            if (current) {
+              three.remove(current);
+              disposeGroup(current);
+            }
+            current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
+            current.userData.faceKey = faceKey;
+            three.add(current);
+            requestRender?.();
+          };
+          rebuild(specFace);
+          registerFacadeFace(faceKey, { rebuild, texture, u0: face.u0, u1: face.u1, flip: Boolean(face.flip), file: SPEC_FILE_BY_FACE[faceKey], faceSpec: specFace });
         }
       : (texture) => {
           material.map = texture;
