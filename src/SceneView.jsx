@@ -357,6 +357,14 @@ function buildHeroBuilding(three, building, scene, requestRender) {
     // camera, read as a thin "floating plane" in front of the recessed
     // storefront. The camera only ever sees the street faces, so drop them.
     if (isGroupComposite && !face) continue;
+    // Skip walls the fixed NE camera can never see — a back-facing return
+    // (e.g. Sonny's west-facing Franklin wall) would otherwise show its
+    // mirrored dark texture as a wedge poking past the corner. FrontSide
+    // culling is unreliable here because adjacent faces wind oppositely
+    // (different `leftEnd`), so test the real outward normal against the
+    // camera direction instead.
+    const facing = edge.normal.x * Math.sin(ISO_AZIMUTH) + edge.normal.z * Math.cos(ISO_AZIMUTH);
+    if (facing < -0.3) continue;
     const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
     const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
     // In a facade group, any face the composite doesn't cover is a party

@@ -43,16 +43,27 @@ overlay gate → one in-engine check.**
    explicit `windows.rects` only — never `rows×cols`, which manufactures
    windows at empty grid cells. Then a `?specdebug=1` screenshot in-engine
    confirms, and done.
-   **Verify the window grid on the FLAT texture, not in 3D.** Draw the spec
-   rects back onto the trimmed face image (a throwaway overlay script) and
-   eyeball them against the painted openings — the iso recess parallax in
-   the 3D view masks real misregistration (Sonny's v3 looked "close" in 3D
-   while every rect was on bare brick). For low-contrast facades where blob
-   detection fails (mauve-on-mauve, dark fire escape contaminating columns),
-   measure the grid by **density profiles**: column positions from not-wall
-   density inside a clean row band (the top row, clear of fire escapes),
-   row positions from density inside a clean column. Even-spaced grids fall
-   out of the two 1-D profiles far more reliably than 2-D blob detection.
+   **Verify the window grid on the FLAT texture, not in 3D — at HIGH
+   resolution.** Draw the spec rects back onto the trimmed face image (a
+   throwaway overlay script) and eyeball them against the painted openings.
+   Two hard-won rules from Sonny's v3 (which took THREE wrong window passes):
+   - **Crop to 2x and inspect individual windows.** A downscaled full-face
+     overlay hides a 0.03–0.05 vertical offset (~30px in the texture, ~7px
+     on screen) — it looks aligned but isn't. The error is only visible
+     zoomed in.
+   - **Vertical misalignment is NEVER parallax.** The recess normal is
+     horizontal, so the iso recess parallax is purely horizontal. If rects
+     look vertically off, they ARE off — do not rationalize it as a viewing
+     artifact (this is exactly the mistake that shipped a broken grid twice).
+   - Measure the grid by **density/brightness profiles**, not even-spacing
+     guesses: columns from not-wall density in a clean row band (top row,
+     clear of fire escapes); rows from a per-row brightness profile down a
+     clean column (lintel = dark bar, glass = bright/dim block, sill = dark
+     bar). The profile gives true per-row extents; an even-spacing assumption
+     anchored on one row drifts and lands rects on AC units and doors.
+   - **A window rect is a window, not a door/AC/storefront.** At the ground
+     floor, columns may align with entrance doors or the storefront, not
+     windows — place a window rect only where the profile shows glass.
 6. **Don't spec only the windows.** The Sonny's v3 pass measured the window
    grid carefully but eyeballed the ground floor, and the storefront recess
    cut bare wall above the painted shopfront while the awning read flat.

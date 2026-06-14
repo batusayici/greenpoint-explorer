@@ -104,6 +104,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     group.add(rectMesh(frame, storefront, -recess, texturedMaterial(texture, 0.97)));
     addReveals(group, frame, storefront, 0, -recess, {
       bottom: false,
+      top: storefront.revealTop !== false,
       left: storefront.revealLeft !== false,
       right: storefront.revealRight !== false,
     });
@@ -143,7 +144,15 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       group.add(new THREE.Mesh(valance, texturedMaterial(texture, 1)));
     }
 
-    for (const xEnd of [awning.x0, awning.x1]) {
+    // Closed end panels — but suppress an end that meets the building corner
+    // (capLeft/capRight: false), where the awning wraps onto the return face
+    // rather than terminating, so no dark side panel juts into the corner.
+    const ends = [
+      [awning.x0, awning.capLeft !== false],
+      [awning.x1, awning.capRight !== false],
+    ];
+    for (const [xEnd, capped] of ends) {
+      if (!capped) continue;
       const panel = quadGeometry(
         facePoint(frame, xEnd, awning.yWall, 0),
         facePoint(frame, xEnd, awning.yDrop, projection),
