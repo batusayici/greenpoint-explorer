@@ -46,7 +46,7 @@ const facadeTextureUrls = import.meta.glob("../assets/textures/franklin/*.png", 
 export default function SceneView() {
   const mountRef = useRef(null);
   const facadeEdit = new URLSearchParams(window.location.search).get("facadeedit") === "1";
-  const [editorOpen, setEditorOpen] = useState(facadeEdit);
+  const [editorOpen, setEditorOpen] = useState(false);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
 
   useEffect(() => {
@@ -245,6 +245,28 @@ export default function SceneView() {
           Debug runtime →
         </a>
       </div>
+      {facadeEdit && !editorOpen && (
+        <button
+          onClick={() => setEditorOpen(true)}
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            padding: "8px 14px",
+            background: "#d9a43b",
+            color: "#241c10",
+            border: "none",
+            borderRadius: 6,
+            fontWeight: 700,
+            fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+            fontSize: 12,
+            cursor: "pointer",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.35)",
+          }}
+        >
+          ✎ Recess editor
+        </button>
+      )}
       {facadeEdit && editorOpen && (
         <FacadeRecessEditor
           faceKey={editorFace}
