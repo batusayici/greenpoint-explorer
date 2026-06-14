@@ -1,0 +1,103 @@
+# Hero Facade Build Log
+
+Append-only ledger of every hero facade we build, so the pipeline gets cheaper
+as we scale. Pair with the **Registration Playbook** in `GENERATION_KIT.md`.
+
+**The loop (every building):**
+1. **Before:** read the Registration Playbook + this whole log.
+2. **Build** per the playbook.
+3. **After:** append an entry below — render version, derive settings, the
+   building's quirks, what went wrong + **iteration count**, and the one-line
+   lesson. Promote any *durable* lesson up into the playbook (and, if
+   cross-session-critical, into agent memory).
+
+**Score to beat (fix commits / re-derive rounds):** Premier ~10 · Sonny's ~15
+→ **target ≤2.** If a build approaches the old numbers, stop and check whether
+a banked fix regressed or a playbook rule was skipped.
+
+---
+
+## Standing checklist (distilled — run top to bottom)
+
+- [ ] **Photos cover every face** the render must draw (a face not photographed
+      is a face the render invents). Wide per face + a corner shot.
+- [ ] **Render once**; audit the raw render against the photos (storey count,
+      columns/face, ground-floor openings in order, corner condition).
+      Re-render only for content/structure, never for a few-percent placement.
+- [ ] **Derive on the FLAT texture; gate on a 2× overlay**, not 3D, not
+      downscaled. Vertical misalignment is never parallax.
+- [ ] **Measure every opening individually** (density/brightness profiles).
+      Each window full lintel→sill; no uniform-grid or uniform-height guesses.
+- [ ] **Spec the ground floor too** (storefront top, awning band, doors), not
+      just windows.
+- [ ] **In-engine: inspect the corner + every camera-visible return at zoom.**
+      Flat-color-where-texture-expected = geometry/wiring bug.
+- [ ] **For any artifact: name the mesh before editing** (query the scene).
+
+## Reusable scene-graph inspector (paste into preview_eval)
+
+```js
+// Find meshes near a world point [X,Y,Z]; reports color/map/slot/bbox.
+(() => { let s=null; for(const k of Object.keys(window)){const v=window[k]; if(v&&v.isScene){s=v;break;}}
+  s.updateMatrixWorld(true); const out=[];
+  s.traverse(o=>{ if(!o.isMesh||!o.geometry) return;
+    const g=o.geometry.clone(); g.applyMatrix4(o.matrixWorld); g.computeBoundingBox(); const b=g.boundingBox;
+    if(b.max.x>X-0.15&&b.min.x<X+0.15&&b.max.y>Y-0.15&&b.min.y<Y+0.15&&b.max.z>Z-0.15&&b.min.z<Z+0.15){
+      const m=o.material; out.push({col:m&&m.color?m.color.getHexString():'?', map:!!(m&&m.map), slot:o.userData&&o.userData.facadeSlot||null,
+        bx:[+b.min.x.toFixed(2),+b.max.x.toFixed(2)], by:[+b.min.y.toFixed(2),+b.max.y.toFixed(2)], bz:[+b.min.z.toFixed(2),+b.max.z.toFixed(2)]}); }});
+  return JSON.stringify(out); })()
+// To confirm: set the suspect o.visible=false, then force a render with a 1px drag:
+// const c=document.querySelector('canvas'); ['pointerdown','pointermove','pointerup'].forEach((t,i)=>c.dispatchEvent(new PointerEvent(t,{clientX:400+i,clientY:400,buttons:t==='pointerup'?0:1,bubbles:true,pointerId:1})));
+```
+
+---
+
+## Per-building entries
+
+### Premier / Franklin Organic — BIN 3322608 (SW corner) — SHIPPED
+- **Texture:** `premier-franklin-organic--corner-v4.png`. Fold `PREMIER_KINK=0.478`.
+- **Quirks:** facade group (Premier + Pizza sister); the contract said the
+  corner was at 0.52, photos said 0.478 — photos won (DECISION_LOG 2026-06-12).
+- **Cost:** ~4 renders, ~10 fix commits. The expensive lesson: specs were
+  *authored from a contract*, not measured from the render → built the whole
+  "derive from the render" doctrine and `derive-facade-spec.mjs`.
+
+### Sonny's Corner — BIN 3064811 (SE corner) — SHIPPED (v3)
+- **Texture:** `sonnys-corner--corner-v3.png`. Fold `SONNYS_KINK=0.734`.
+- **Derive settings:** mauve-on-mauve, so blob detection failed. Used
+  `--wall 138,93,99`; columns from not-wall density in the top row band; rows
+  from a per-row brightness profile down a clean column; each window snapped to
+  its full lintel→sill extent. Only the greenpoint face is camera-visible.
+- **Quirks (each a first for the pipeline):** split collinear Greenpoint
+  frontage (1.47m off-cut + 19.95m); back-facing Franklin return at the corner;
+  corner-wrapping bar storefront; ALTER BROOKLYN is a *separate* neighbor
+  (excluded); irregular AI render (windows drift vertically per column, ~0.17
+  tall double-hung).
+- **Cost:** ~15+ rounds. Where it went and the lessons (all now in playbook):
+  - v1 render wrong (dropped floor, flat strip, neighbor) → reusable
+    photo-truth prompt + subject isolation.
+  - Brown corner wall → collinear edge merge (engine, banked).
+  - Corner "wedge" → ~6 guesses before naming the mesh → **name-the-mesh rule**;
+    real causes: awning caps, storefront top-reveal, back-facing wall (all banked).
+  - Windows: 5 rounds → blob-fail → phantom column → rows too high → boxes too
+    short. **Verify on 2× flat overlay; measure every opening full-height.**
+- **Net new durable assets:** engine fixes (collinear merge, back-face cull,
+  awning caps, storefront `revealTop`); the scene-graph inspector above.
+
+### Sereneco — BIN 3337033 (NW corner) — PENDING
+- Texture `sereneco--corner.png` exists; spec predates the Sonny's fixes —
+  re-run the playbook fresh. Only the franklin face is camera-visible;
+  `coverMeters: 12` on a 57m footprint edge. **Expect the corner-artifact
+  class to be zero iterations** (banked). Watch for: low contrast (weathered
+  brick) → may need `--wall`/profile measurement like Sonny's.
+
+---
+
+## Top pending tooling improvement
+
+`derive-facade-spec.mjs` still ships the blob detector that failed on Sonny's;
+the methods that worked (density-profile columns, per-window lintel→sill
+frame-snap, 2× annotated overlay as the gate) were hand-rolled in throwaway
+scripts. **Folding them into the tool is the highest-leverage change** — it
+turns the ~5 window rounds into one (run → review overlay → ship). Do this
+before/with Sereneco.

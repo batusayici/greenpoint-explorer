@@ -9,6 +9,16 @@ from the render). The order of truth per hero building:
 **Photos decide structure → render once → derive the spec from the render →
 overlay gate → one in-engine check.**
 
+> **Learning loop (do this every building).** BEFORE starting a building, read
+> this playbook AND `HERO_FACADE_LOG.md` (the per-building ledger). AFTER
+> finishing, append an entry to the log: render version, derive settings used
+> (`--wall`/`--erode`/etc.), the building's structural quirks, what went wrong
+> + iteration count, and the one-line lesson. If a lesson is durable (applies
+> to all buildings), promote it up into this playbook. The point is that each
+> building makes the next cheaper — the log is how we compound. The score to
+> beat is on record: Premier ~10 fix commits, Sonny's ~15+ across the window
+> rounds; the target is ≤2.
+
 1. **Pre-render (photos first).** Gather evidence photos that fully cover the
    building — at least one wide shot per street face and one corner shot; the
    photos ARE the structural truth the model copies from, so a face the
@@ -64,6 +74,13 @@ overlay gate → one in-engine check.**
    - **A window rect is a window, not a door/AC/storefront.** At the ground
      floor, columns may align with entrance doors or the storefront, not
      windows — place a window rect only where the profile shows glass.
+   - **Measure each window's FULL extent (lintel→sill); never force a uniform
+     height.** Sonny's windows are double-hung (~0.17 tall); forcing every
+     box to 0.13 put the recess bottom on the *meeting rail*, so the reveal
+     read mid-window instead of at the sill (the v3 round-4 bug). Snap each
+     box down until it hits true wall below the sill. Only fall back to the
+     median height for outliers where the fire escape / AC / cornice corrupts
+     the measurement — and cap the top row below the cornice.
 6. **Don't spec only the windows.** The Sonny's v3 pass measured the window
    grid carefully but eyeballed the ground floor, and the storefront recess
    cut bare wall above the painted shopfront while the awning read flat.
@@ -78,6 +95,36 @@ overlay gate → one in-engine check.**
    and each return face at zoom before calling a facade done. A face that
    renders flat-color instead of textured is a geometry/wiring bug, not a
    spec bug.
+8. **Name the mesh before you fix an artifact.** The Sonny's corner "wedge"
+   cost ~6 guess-and-reload edits because I changed code hoping to fix it
+   (awning canopy? Franklin face? storefront jamb?) before identifying what
+   it actually was. The moment I queried the scene graph for the mesh at that
+   exact world location it resolved in one. **Rule:** for any unexplained
+   visual artifact, query the scene first — walk meshes, print color / map /
+   `userData.facadeSlot` / world-bbox near the artifact, and hide-to-confirm
+   (`o.visible=false` + a 1px pointer-drag to force a render) — *then* edit.
+   The snippet that worked is in `docs/reference/art/HERO_FACADE_LOG.md`.
+
+### What the engine now handles structurally (banked — don't re-derive per building)
+
+Sonny's was the first building to exercise these; the fixes are permanent, so
+the whole "corner artifact" class should be **zero iterations** on the next
+corner. If you hit one of these, it's a regression, not new work:
+
+- **Collinear split frontages** — `sceneFrame.js` merges consecutive same-role
+  edges that are parallel, so a footprint's extra mid-wall vertices don't
+  leave an untextured off-cut at the corner (the brown-wall bug).
+- **Back-facing return walls** — `SceneView.jsx` skips walls whose outward
+  normal faces away from the fixed NE camera (the Franklin return showing its
+  mirrored dark texture as a wedge). FrontSide culling is unreliable here
+  because adjacent faces wind oppositely — test the real normal vs the camera.
+- **Awning end-caps** — `awnings[].capLeft/capRight: false` suppresses the dark
+  side panel where an awning meets the corner instead of terminating.
+- **Storefront top reveal** — `storefronts[].revealTop: false` drops the dark
+  soffit where the awning already covers the storefront head; combine with a
+  shallow `recessM` (~0.2, not 0.35) so the soffit isn't a deep dark wedge.
+- **Reveal weight** — window `recessM ~0.06` reads as a thin shadow line;
+  0.14 reads as a thick lit ledge. Default shallow.
 
 ### Coordinate convention (one truth)
 
