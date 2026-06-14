@@ -245,8 +245,15 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       [uL, rect.y1, uR, rect.y1, uR, ySoffit, uL, ySoffit],
     ), texturedMaterial(texture, 1)));
 
-    // Return ends: close the crown box at each side — thin shadowed faces.
-    for (const x of [rect.x0, rect.x1]) {
+    // Return ends: close the crown box only at a *free* end — a cornice that
+    // stops mid-wall. A full-width end (x0=0 / x1=1) abuts the building edge,
+    // where the neighbouring wall or the perpendicular face's own crown
+    // continues around the corner; capping it there makes the two faces' caps
+    // poke out and overlap into a blocky corner artifact. Skip those.
+    const ends = [];
+    if (rect.x0 > 1e-4) ends.push(rect.x0);
+    if (rect.x1 < 1 - 1e-4) ends.push(rect.x1);
+    for (const x of ends) {
       group.add(new THREE.Mesh(quadGeometry(
         facePoint(frame, x, ySoffit, bed),
         facePoint(frame, x, ySoffit, proj),
