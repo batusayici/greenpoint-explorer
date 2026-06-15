@@ -162,7 +162,7 @@ export default function SceneView() {
     const anchorWorld = new Map(
       scene.buildings
         .filter((b) => b.placeId)
-        .map((b) => [b.placeId, new THREE.Vector3(b.centroid.x, Math.max(b.height * 0.32, 0.3), b.centroid.z)]),
+        .map((b) => [b.placeId, new THREE.Vector3(b.centroid.x, Math.max(b.height * 0.22, 0.22), b.centroid.z)]),
     );
 
     function projectAnchor(placeId) {
@@ -381,10 +381,10 @@ export default function SceneView() {
           )}
           {anchor && (
             <div style={{
-              position: "absolute", left: anchor.x - 7, top: anchor.y - 20,
+              position: "absolute", left: anchor.x - 7, top: anchor.y - 17,
               width: 14, height: 14, background: "#d9a43b",
               border: "1.5px solid #2a241c", borderRadius: "50% 50% 50% 0",
-              transform: "rotate(45deg)", pointerEvents: "none",
+              transform: "rotate(-45deg)", pointerEvents: "none",
               boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
             }} />
           )}
