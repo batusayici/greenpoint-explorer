@@ -588,23 +588,9 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     three.add(edgeLines);
   }
 
-  // Corner post: where two spec'd storefront faces meet, a slim pier closes
-  // the recess slit at the corner entrance.
-  const gpSpec = FACADE_SPECS[`${building.bin}:greenpoint`];
-  const fkSpec = FACADE_SPECS[`${building.bin}:franklin`];
-  if (gpSpec && fkSpec && textureEdge.greenpoint && textureEdge.franklin) {
-    const corner = sharedEndpoint(textureEdge.greenpoint, textureEdge.franklin);
-    if (corner) {
-      const size = scene.projection.scale * 0.35;
-      const postHeight = building.height * 0.245;
-      const post = new THREE.Mesh(
-        new THREE.BoxGeometry(size, postHeight, size),
-        new THREE.MeshBasicMaterial({ color: 0x241f18 }),
-      );
-      post.position.set(corner.x, postHeight / 2, corner.z);
-      three.add(post);
-    }
-  }
+  // (The corner storefronts now wrap the fold themselves — recessed glass,
+  // awning, and cornice each extend past the corner edge to meet the
+  // perpendicular face — so no corner pier is needed to mask a seam.)
 
   // Inked cast shadow (II-C shadow-shape language). Thrown toward the
   // east/Franklin side, which the fixed northeast camera can see — matching

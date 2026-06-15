@@ -112,12 +112,24 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // painted window (e.g. the Premier/Pizza seam at u≈0.28).
   for (const storefront of storefronts) {
     const recess = meters(storefront.recessM ?? 0.45);
-    group.add(rectMesh(frame, storefront, -recess, texturedMaterial(texture, 0.97)));
-    addReveals(group, frame, storefront, 0, -recess, texture, {
+    // Wrap a corner end (cornerLeft/cornerRight): a recessed storefront turns a
+    // convex corner where this face's recessed plane crosses the perpendicular
+    // face's at the inner corner — a point that sits one recess-depth inboard
+    // of the fold. Trim the glass to that crossing line so it doesn't overhang
+    // past it as a fin; the perpendicular shopfront fills the corner mouth
+    // behind. Also drop the corner-side reveal (a deep jamb that would smear).
+    const ext = recess / faceWidth(frame);
+    const glass = {
+      ...storefront,
+      x0: storefront.cornerLeft ? storefront.x0 + ext : storefront.x0,
+      x1: storefront.cornerRight ? storefront.x1 - ext : storefront.x1,
+    };
+    group.add(rectMesh(frame, glass, -recess, texturedMaterial(texture, 0.97)));
+    addReveals(group, frame, glass, 0, -recess, texture, {
       bottom: false,
       top: storefront.revealTop !== false,
-      left: storefront.revealLeft !== false,
-      right: storefront.revealRight !== false,
+      left: storefront.revealLeft !== false && !storefront.cornerLeft,
+      right: storefront.revealRight !== false && !storefront.cornerRight,
     });
   }
 
@@ -135,32 +147,44 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const yValance = awning.yValance ?? awning.yDrop;
     const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
 
+    // Wrap a folded-corner end (cornerLeft/cornerRight) by extending the canopy
+    // past the edge by its projection depth — the tangential reach that lands
+    // on the outer miter point, where the perpendicular face's awning meets it.
+    // The composite's slices are adjacent at the kink, so the extended UVs
+    // sample straight into the neighbour's awning artwork; the canopy turns the
+    // corner as one continuous skirt instead of two ends meeting in a gap.
+    // (Distinct from capLeft/capRight, which only suppress an end panel — e.g.
+    // a mid-wall end that abuts a neighbouring awning, never extended.)
+    const ext = projection / faceWidth(frame);
+    const x0 = awning.cornerLeft ? awning.x0 - ext : awning.x0;
+    const x1 = awning.cornerRight ? awning.x1 + ext : awning.x1;
+
     const canopy = quadGeometry(
-      facePoint(frame, awning.x0, awning.yWall, 0),
-      facePoint(frame, awning.x1, awning.yWall, 0),
-      facePoint(frame, awning.x1, awning.yDrop, projection),
-      facePoint(frame, awning.x0, awning.yDrop, projection),
-      [u(awning.x0), awning.yWall, u(awning.x1), awning.yWall, u(awning.x1), awning.yDrop, u(awning.x0), awning.yDrop],
+      facePoint(frame, x0, awning.yWall, 0),
+      facePoint(frame, x1, awning.yWall, 0),
+      facePoint(frame, x1, awning.yDrop, projection),
+      facePoint(frame, x0, awning.yDrop, projection),
+      [u(x0), awning.yWall, u(x1), awning.yWall, u(x1), awning.yDrop, u(x0), awning.yDrop],
     );
     group.add(new THREE.Mesh(canopy, texturedMaterial(texture, 1)));
 
     if (yValance < awning.yDrop) {
       const valance = quadGeometry(
-        facePoint(frame, awning.x0, awning.yDrop, projection),
-        facePoint(frame, awning.x1, awning.yDrop, projection),
-        facePoint(frame, awning.x1, yValance, projection),
-        facePoint(frame, awning.x0, yValance, projection),
-        [u(awning.x0), awning.yDrop, u(awning.x1), awning.yDrop, u(awning.x1), yValance, u(awning.x0), yValance],
+        facePoint(frame, x0, awning.yDrop, projection),
+        facePoint(frame, x1, awning.yDrop, projection),
+        facePoint(frame, x1, yValance, projection),
+        facePoint(frame, x0, yValance, projection),
+        [u(x0), awning.yDrop, u(x1), awning.yDrop, u(x1), yValance, u(x0), yValance],
       );
       group.add(new THREE.Mesh(valance, texturedMaterial(texture, 1)));
     }
 
-    // Closed end panels — but suppress an end that meets the building corner
-    // (capLeft/capRight: false), where the awning wraps onto the return face
-    // rather than terminating, so no dark side panel juts into the corner.
+    // Closed end panels — suppressed at a corner-wrapped end (cornerLeft/
+    // cornerRight, the canopy turns the fold) or where capLeft/capRight: false
+    // marks a mid-wall end that abuts a neighbouring awning.
     const ends = [
-      [awning.x0, awning.capLeft !== false],
-      [awning.x1, awning.capRight !== false],
+      [awning.x0, awning.capLeft !== false && !awning.cornerLeft],
+      [awning.x1, awning.capRight !== false && !awning.cornerRight],
     ];
     for (const [xEnd, capped] of ends) {
       if (!capped) continue;
@@ -214,55 +238,54 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const yCap = rect.y1 + riseY;
     const CROWN = 0x241f18; // near-black painted crown lip (matches refs)
 
-    // Front face: the full painted cornice pushed proud of the wall, at its
-    // own natural UVs — same fidelity as the flat wall, no stretching.
-    group.add(rectMesh(frame, rect, proj, texturedMaterial(texture, 1)));
+    // Corner wrap: at a folded corner (cornerLeft/cornerRight) the crown turns
+    // 90° onto the perpendicular face. Rather than cap the end (a flat patch)
+    // or leave it open (a notch), extend the crown past the corner edge by its
+    // own overhang depth — the tangential reach that lands on the outer miter
+    // point. The neighbour face does the same from its side, so the two crowns
+    // meet there. Because the composite's two slices are adjacent at the kink,
+    // pushing x past the end samples straight into the neighbour's artwork, so
+    // the painted cornice carries continuously around the corner.
+    const ext = proj / faceWidth(frame);
+    const xL = spec.cornice.cornerLeft ? rect.x0 - ext : rect.x0;
+    const xR = spec.cornice.cornerRight ? rect.x1 + ext : rect.x1;
+    const span = { x0: xL, x1: xR };
 
-    // Underside soffit: from the wall out to the projected front at the
-    // cornice base, facing down — deep shadow.
+    // Front face: the painted cornice pushed proud of the wall, at natural UVs.
+    group.add(rectMesh(frame, { ...span, y0: rect.y0, y1: rect.y1 }, proj, texturedMaterial(texture, 1)));
+
+    // Underside soffit: from the wall out to the projected front at the cornice
+    // base, facing down — deep shadow.
     group.add(new THREE.Mesh(quadGeometry(
-      facePoint(frame, rect.x0, rect.y0, 0),
-      facePoint(frame, rect.x1, rect.y0, 0),
-      facePoint(frame, rect.x1, rect.y0, proj),
-      facePoint(frame, rect.x0, rect.y0, proj),
+      facePoint(frame, xL, rect.y0, 0),
+      facePoint(frame, xR, rect.y0, 0),
+      facePoint(frame, xR, rect.y0, proj),
+      facePoint(frame, xL, rect.y0, proj),
     ), tintMaterial(REVEAL.soffit)));
 
     // Crown lip: a solid dark strip rising above the roofline at the front of
     // the overhang — the bold dark edge of a Brooklyn cornice.
     group.add(new THREE.Mesh(quadGeometry(
-      facePoint(frame, rect.x0, rect.y1, proj),
-      facePoint(frame, rect.x1, rect.y1, proj),
-      facePoint(frame, rect.x1, yCap, proj),
-      facePoint(frame, rect.x0, yCap, proj),
+      facePoint(frame, xL, rect.y1, proj),
+      facePoint(frame, xR, rect.y1, proj),
+      facePoint(frame, xR, yCap, proj),
+      facePoint(frame, xL, yCap, proj),
     ), tintMaterial(CROWN)));
 
     // Top cap: horizontal plane sloping back to the roof, facing up — the lit
     // edge that draws the angular roofline against the sky.
     group.add(new THREE.Mesh(quadGeometry(
-      facePoint(frame, rect.x0, yCap, proj),
-      facePoint(frame, rect.x1, yCap, proj),
-      facePoint(frame, rect.x1, rect.y1, 0),
-      facePoint(frame, rect.x0, rect.y1, 0),
+      facePoint(frame, xL, yCap, proj),
+      facePoint(frame, xR, yCap, proj),
+      facePoint(frame, xR, rect.y1, 0),
+      facePoint(frame, xL, rect.y1, 0),
     ), tintMaterial(REVEAL.bottom)));
 
-    // Return ends close the crown box at one side.
-    const drawReturn = (x, color) => group.add(new THREE.Mesh(quadGeometry(
-      facePoint(frame, x, rect.y0, 0),
-      facePoint(frame, x, rect.y0, proj),
-      facePoint(frame, x, yCap, proj),
-      facePoint(frame, x, yCap, 0),
-    ), tintMaterial(color)));
-
     // Free ends — a cornice that stops mid-wall — get a cut-stone grey return.
-    // A full-width end (x0=0 / x1=1) abuts the building edge and is skipped by
-    // default (a flat party-wall seam needs nothing). But where that edge is a
-    // *folded* corner (cornerLeft/cornerRight), the perpendicular face's crown
-    // is proud too, leaving an open notch between them; close it with a dark
-    // molding return matching the crown so the two crowns read as continuous.
-    if (rect.x0 > 1e-4) drawReturn(rect.x0, REVEAL.side);
-    else if (spec.cornice.cornerLeft) drawReturn(rect.x0, CROWN);
-    if (rect.x1 < 1 - 1e-4) drawReturn(rect.x1, REVEAL.side);
-    else if (spec.cornice.cornerRight) drawReturn(rect.x1, CROWN);
+    // Folded-corner ends extend (above) instead; flat party-wall ends need
+    // nothing (the neighbouring wall hides the seam).
+    if (rect.x0 > 1e-4) group.add(returnEnd(frame, rect.x0, rect.y0, yCap, proj, REVEAL.side));
+    if (rect.x1 < 1 - 1e-4) group.add(returnEnd(frame, rect.x1, rect.y0, yCap, proj, REVEAL.side));
   }
 
   // Spec-debug: outline every component rect directly on the wall so
@@ -294,6 +317,23 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
 }
 
 // --- geometry helpers -------------------------------------------------
+
+// World width of the face along its elevation axis — used to convert a
+// projection depth (units) into the face-x reach that lands on the corner
+// miter point when a component wraps a folded corner.
+function faceWidth(frame) {
+  return Math.hypot(frame.right.x - frame.left.x, frame.right.z - frame.left.z);
+}
+
+// A vertical return panel closing a component's end (cornice free end, etc.).
+function returnEnd(frame, x, y0, y1, proj, color) {
+  return new THREE.Mesh(quadGeometry(
+    facePoint(frame, x, y0, 0),
+    facePoint(frame, x, y0, proj),
+    facePoint(frame, x, y1, proj),
+    facePoint(frame, x, y1, 0),
+  ), tintMaterial(color));
+}
 
 function facePoint(frame, x, y, offset) {
   return [
