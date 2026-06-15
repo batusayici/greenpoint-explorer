@@ -3,11 +3,11 @@
     "id": "premier-franklin-organic",
     "placeId": "premier-franklin-organic",
     "name": "Premier Organic Corp",
-    "category": "Grocery / Deli",
+    "category": "Bodega / Deli / Grocery",
     "tags": ["grocery", "deli"],
     "address": "111 Franklin St, Brooklyn, NY 11222",
     "description": "A retail food store operating at 111 Franklin Street in Greenpoint, registered with New York State as Premier Organic Corp.",
-    "status": "unknown",
+    "status": "active",
     "verificationStatus": "partial",
     "lastVerified": "2026-06-15",
     "sources": [
