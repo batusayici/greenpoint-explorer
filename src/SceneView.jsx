@@ -54,6 +54,32 @@ const II_PALETTE = {
 const ISO_AZIMUTH = Math.PI * 0.75;
 const ISO_ELEVATION = Math.atan(1 / Math.SQRT2); // true isometric, 35.264°
 
+// Phase 3.2 — Scene mode rotates through four fixed iso steps (90° each).
+// ISO_AZIMUTH is step 0 (the dialed-in NE composition). Rather than dropping
+// back-facing hero walls at build time (which left holes once the camera could
+// rotate behind them), every wall is built once and its visibility is toggled
+// per current view via its outward normal. CULL_T matches the old fixed test.
+const CULL_T = -0.3;
+const ROTATE_MS = 440; // snap-tween duration between adjacent 90° steps
+const facingDot = (normal, azimuth) =>
+  normal.x * Math.sin(azimuth) + normal.z * Math.cos(azimuth);
+
+const rotateButtonStyle = {
+  width: 28,
+  height: 28,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  background: "rgba(217, 164, 59, 0.92)",
+  color: "#241c10",
+  border: "none",
+  borderRadius: 6,
+  fontSize: 16,
+  lineHeight: 1,
+  cursor: "pointer",
+  fontFamily: "Georgia, serif",
+};
+
 const facadeTextureUrls = import.meta.glob("../assets/textures/franklin/*.png", {
   eager: true,
   query: "?url",
@@ -67,7 +93,9 @@ export default function SceneView() {
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
   const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
   const [anchor, setAnchor] = useState(null); // {x, y} screen px of the pin, or null
+  const [viewStep, setViewStep] = useState(0); // 0..3, which of the four iso angles
   const updateAnchorRef = useRef(() => {});
+  const rotateRef = useRef(() => {}); // imperative rotate(dir) from the effect
   const selectedPlaceIdRef = useRef(null);
 
   useEffect(() => {
@@ -110,6 +138,26 @@ export default function SceneView() {
     let active = true;
     const isActive = () => active;
 
+    // Camera rotation state (Phase 3.2). `currentAzimuth` is the live (possibly
+    // mid-tween) angle; `stepIndex` is unbounded so the snap always travels the
+    // shortest 90°. Hero walls register here as cullables and have their
+    // visibility recomputed for `currentAzimuth` on every frame of a snap.
+    let currentAzimuth = ISO_AZIMUTH;
+    let targetAzimuth = ISO_AZIMUTH;
+    let stepIndex = 0;
+    let rotRaf = null;
+    let animFromAz = ISO_AZIMUTH;
+    let animStartMs = 0;
+    const cullables = []; // [{ object, normal }] — object is mutable (wall → assembly)
+    const addCullable = (object, normal) => {
+      const record = { object, normal };
+      cullables.push(record);
+      return record;
+    };
+    function applyCulling() {
+      for (const c of cullables) c.object.visible = facingDot(c.normal, currentAzimuth) >= CULL_T;
+    }
+
     clearFacadeFaces();
     const groundData = buildGroundLayer({
       projection: scene.projection,
@@ -124,7 +172,7 @@ export default function SceneView() {
       franklinAxis: scene.franklinAxis,
     });
     buildFurniture(three, furniture);
-    buildBuildings(three, scene, requestRender, isActive);
+    buildBuildings(three, scene, requestRender, isActive, addCullable);
     window.__three = three;
     window.__scene = scene;
 
@@ -150,14 +198,44 @@ export default function SceneView() {
       camera.bottom = -halfH;
       const distance = 60;
       camera.position.set(
-        view.target.x + distance * Math.cos(ISO_ELEVATION) * Math.sin(ISO_AZIMUTH),
+        view.target.x + distance * Math.cos(ISO_ELEVATION) * Math.sin(currentAzimuth),
         view.target.y + distance * Math.sin(ISO_ELEVATION),
-        view.target.z + distance * Math.cos(ISO_ELEVATION) * Math.cos(ISO_AZIMUTH),
+        view.target.z + distance * Math.cos(ISO_ELEVATION) * Math.cos(currentAzimuth),
       );
       camera.lookAt(view.target);
       camera.updateProjectionMatrix();
       updateAnchorRef.current(selectedPlaceIdRef.current);
     }
+
+    // Snap the iso view by ±1 quarter-turn. The tween eases `currentAzimuth`
+    // toward the new step, re-culling and re-rendering each frame; pan and zoom
+    // carry across steps untouched.
+    function rotate(direction) {
+      stepIndex += direction;
+      targetAzimuth = ISO_AZIMUTH + stepIndex * (Math.PI / 2);
+      animFromAz = currentAzimuth;
+      animStartMs = performance.now();
+      setViewStep(((stepIndex % 4) + 4) % 4);
+      if (rotRaf == null) rotRaf = requestAnimationFrame(rotTick);
+    }
+    function rotTick(now) {
+      const t = Math.min(1, (now - animStartMs) / ROTATE_MS);
+      const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // easeInOutQuad
+      currentAzimuth = animFromAz + (targetAzimuth - animFromAz) * eased;
+      applyCamera();
+      applyCulling();
+      render();
+      if (t < 1) {
+        rotRaf = requestAnimationFrame(rotTick);
+      } else {
+        rotRaf = null;
+        currentAzimuth = targetAzimuth;
+        applyCamera();
+        applyCulling();
+        render();
+      }
+    }
+    rotateRef.current = rotate;
 
     const anchorWorld = new Map(
       scene.buildings
@@ -191,8 +269,6 @@ export default function SceneView() {
     // Pan: drag moves the target in the ground plane along the camera's
     // screen axes. Zoom: wheel scales the orthographic frustum.
     const drag = { active: false, lastX: 0, lastY: 0 };
-    const panRight = new THREE.Vector3(Math.cos(ISO_AZIMUTH), 0, -Math.sin(ISO_AZIMUTH));
-    const panUp = new THREE.Vector3(-Math.sin(ISO_AZIMUTH), 0, -Math.cos(ISO_AZIMUTH));
 
     // Click-to-edit: a no-drag click on a spec'd face opens the recess editor
     // for that face (edit mode only). Assembly groups carry userData.faceKey.
@@ -242,6 +318,10 @@ export default function SceneView() {
     }
     function onPointerMove(event) {
       if (!drag.active) return;
+      // Pan axes follow the current view, so dragging always moves the scene
+      // in screen space regardless of which of the four angles is active.
+      const panRight = new THREE.Vector3(Math.cos(currentAzimuth), 0, -Math.sin(currentAzimuth));
+      const panUp = new THREE.Vector3(-Math.sin(currentAzimuth), 0, -Math.cos(currentAzimuth));
       const unitsPerPixel = view.frustumHeight / Math.max(mount.clientHeight, 1);
       const dx = (event.clientX - drag.lastX) * unitsPerPixel;
       const dy = (event.clientY - drag.lastY) * unitsPerPixel;
@@ -293,11 +373,20 @@ export default function SceneView() {
       render();
     }
 
+    function onKeyDown(event) {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      const k = event.key.toLowerCase();
+      if (k === "e" || k === "]" || event.key === "ArrowRight") rotate(1);
+      else if (k === "q" || k === "[" || event.key === "ArrowLeft") rotate(-1);
+    }
+
     renderer.domElement.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointermove", onPointerMove);
     window.addEventListener("pointerup", onPointerUp);
     renderer.domElement.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("keydown", onKeyDown);
     window.addEventListener("resize", resize);
+    applyCulling(); // hide back-facing hero walls for the initial NE view
     resize();
 
     return () => {
@@ -305,7 +394,9 @@ export default function SceneView() {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerup", onPointerUp);
       renderer.domElement.removeEventListener("wheel", onWheel);
+      window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", resize);
+      if (rotRaf != null) cancelAnimationFrame(rotRaf);
       active = false;
       renderer.dispose();
       mount.removeChild(renderer.domElement);
@@ -332,8 +423,27 @@ export default function SceneView() {
       >
         <strong>Scene v0</strong> — Franklin x Greenpoint
         <br />
-        <span style={{ opacity: 0.75 }}>drag to pan · wheel to zoom</span>
+        <span style={{ opacity: 0.75 }}>drag to pan · wheel to zoom · Q/E to rotate</span>
         <br />
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 6 }}>
+          <button
+            onClick={() => rotateRef.current(-1)}
+            aria-label="Rotate view left"
+            style={rotateButtonStyle}
+          >
+            ↺
+          </button>
+          <span style={{ opacity: 0.6, fontSize: 11, minWidth: 64, textAlign: "center" }}>
+            angle {viewStep + 1} / 4
+          </span>
+          <button
+            onClick={() => rotateRef.current(1)}
+            aria-label="Rotate view right"
+            style={rotateButtonStyle}
+          >
+            ↻
+          </button>
+        </div>
         <a href="?debug=1" style={{ color: "#d9a43b" }}>
           Debug runtime →
         </a>
@@ -637,10 +747,10 @@ function disposeGroup(group) {
   });
 }
 
-function buildBuildings(three, scene, requestRender, isActive = () => true) {
+function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   scene.buildings.forEach((building, index) => {
     if (building.isHero && building.edges) {
-      buildHeroBuilding(three, building, scene, requestRender, isActive);
+      buildHeroBuilding(three, building, scene, requestRender, isActive, addCullable);
       return;
     }
     const shape = footprintShape(building.polygon);
@@ -663,7 +773,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true) {
 // elevations map directly onto the real footprint edges, the two street
 // faces share a crisp corner, the roof carries an inked parapet texture,
 // and an II-C cast-shadow shape grounds the mass.
-function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true) {
+function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   // All of this hero's meshes go under one group tagged with its placeId, so a
   // click anywhere on the building (walls, storefront assembly, roof, parapet,
   // shadow) resolves to a selectable place. The group sits at identity/origin,
@@ -710,14 +820,11 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // camera, read as a thin "floating plane" in front of the recessed
     // storefront. The camera only ever sees the street faces, so drop them.
     if (isGroupComposite && !face) continue;
-    // Skip walls the fixed NE camera can never see — a back-facing return
-    // (e.g. Sonny's west-facing Franklin wall) would otherwise show its
-    // mirrored dark texture as a wedge poking past the corner. FrontSide
-    // culling is unreliable here because adjacent faces wind oppositely
-    // (different `leftEnd`), so test the real outward normal against the
-    // camera direction instead.
-    const facing = edge.normal.x * Math.sin(ISO_AZIMUTH) + edge.normal.z * Math.cos(ISO_AZIMUTH);
-    if (facing < -0.3) continue;
+    // Every wall is built; back-facing returns are hidden per current view via
+    // their outward normal (registered as a cullable below), not dropped here.
+    // This is real back-face culling — needed because adjacent faces wind
+    // oppositely (different `leftEnd`), so FrontSide culling is unreliable —
+    // and it now follows the rotating camera instead of the old fixed azimuth.
     const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
     const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
     // In a facade group, any face the composite doesn't cover is a party
@@ -751,6 +858,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           }),
         );
         heroGroup.add(rest);
+        addCullable(rest, edge.normal);
       }
     }
 
@@ -761,6 +869,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     const wall = new THREE.Mesh(wallQuad(renderEdge, building.height, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     heroGroup.add(wall);
+    const cull = addCullable(wall, edge.normal);
 
     if (!isTextured) continue;
     const faceKey = `${building.bin}:${edge.role}`;
@@ -781,7 +890,9 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
             }
             current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
             current.userData.faceKey = faceKey;
+            current.visible = wall.visible; // inherit the flat wall's culling state
             heroGroup.add(current);
+            cull.object = current; // rotation re-culls the assembly, not the discarded wall
             requestRender?.();
           };
           rebuild(specFace);

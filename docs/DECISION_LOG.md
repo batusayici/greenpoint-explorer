@@ -4,6 +4,16 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-15 - Multi-Angle Camera Rig Shipped; Hero Culling Now Follows the Camera (Phase 3.2)
+
+Decision (execution, within the approved 3.2 scope): Scene mode now rotates through **four fixed iso steps** (90°) with an eased snap, retaining pan/zoom; free-cam stays debug-only. Rotation via ↺/↻ buttons + Q/E/`[`/`]`/arrow keys, with an "angle N/4" indicator. Contained to `SceneView.jsx`.
+
+Implementation note worth recording (the plan's "no geometry change" assumption was incomplete): the hero back-face cull was computed once at build time against the single fixed `ISO_AZIMUTH`. With a rotating camera that left **see-through holes** when viewing a building's back. Chosen fix: build every (non-party) wall and **toggle `.visible` per current view** from each wall's outward normal — true back-face culling that tracks the live azimuth, recomputed each snap frame. No geometry/rebuild; the step-0 NE composition is byte-identical to before.
+
+Known limitation, explicitly deferred to **3.3.1**: Premier is a multi-BIN *facade flat* (only its two street faces exist; uncovered edges are interior party walls), so it disappears from the full-rear angle. Single-BIN solid heroes (Sonny's, Sereneco) read correctly from all four angles. Giving Premier party walls/rears is 3.3.1's job.
+
+Owner: Agent (execution). Verified: `npm run build` green, 14/14 node tests, four-angle rotation screenshotted.
+
 ## 2026-06-15 - Hero Business Cards Inserted as the Next Phase (feedback vehicle)
 
 Decision (Batu-approved in session): insert a **business-card demo phase (3.15) ahead of the camera rig (3.2)**, so Batu can start collecting feedback and ideas from local businesses while the rest of Phase 3 is built. Objective: clicking a hero corner opens a paper II-C place card with real, sourced business data for the three heroes (Premier/Franklin Organic, Sonny's, Sereneco).
