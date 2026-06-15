@@ -155,20 +155,27 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     // corner, since it sits on the brick that folds there. That differential
     // makes each canopy a miter trapezoid that shares the diagonal seam with
     // its neighbour, instead of two flat ends overlapping into stray flaps.
-    // The composite's slices are adjacent at the kink, so the fanned UVs sample
-    // straight into the neighbour's awning artwork.
+    // The miter sliver's UV is edge-clamped to this awning's own slice (ux0/
+    // ux1) rather than fanned into the neighbour's: the canopy carries text
+    // (the 347 phone, the 111 address banner) that sits right at the kink, so
+    // sampling across the fold would repeat the banner on the return face. The
+    // sliver instead stretches the corner column — uniform dark fabric — so the
+    // fold reads clean. (Brick/dentil/storefront wraps still sample across,
+    // where continuous artwork is exactly what's wanted.)
     const ext = projection / faceWidth(frame);
     const wx0 = awning.x0; // wall-attachment edge — pinned at the corner
     const wx1 = awning.x1;
     const dx0 = awning.cornerLeft ? awning.x0 - ext : awning.x0; // outer edge — fans to miter
     const dx1 = awning.cornerRight ? awning.x1 + ext : awning.x1;
+    const ux0 = u(awning.x0); // own-slice UV bounds — clamp the miter sliver here
+    const ux1 = u(awning.x1);
 
     const canopy = quadGeometry(
       facePoint(frame, wx0, awning.yWall, 0),
       facePoint(frame, wx1, awning.yWall, 0),
       facePoint(frame, dx1, awning.yDrop, projection),
       facePoint(frame, dx0, awning.yDrop, projection),
-      [u(wx0), awning.yWall, u(wx1), awning.yWall, u(dx1), awning.yDrop, u(dx0), awning.yDrop],
+      [ux0, awning.yWall, ux1, awning.yWall, ux1, awning.yDrop, ux0, awning.yDrop],
     );
     group.add(new THREE.Mesh(canopy, texturedMaterial(texture, 1)));
 
@@ -178,7 +185,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
         facePoint(frame, dx1, awning.yDrop, projection),
         facePoint(frame, dx1, yValance, projection),
         facePoint(frame, dx0, yValance, projection),
-        [u(dx0), awning.yDrop, u(dx1), awning.yDrop, u(dx1), yValance, u(dx0), yValance],
+        [ux0, awning.yDrop, ux1, awning.yDrop, ux1, yValance, ux0, yValance],
       );
       group.add(new THREE.Mesh(valance, texturedMaterial(texture, 1)));
     }
