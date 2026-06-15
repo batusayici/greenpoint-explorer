@@ -4,6 +4,23 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-15 - Multi-Angle Viewing Is a Firm Requirement (revises the camera decision)
+
+Decision (Batu-approved in session): the scene must be **viewable from all four orthogonal isometric angles** (90° rotation steps), with pan/zoom. This revises the 2026-06-11 camera decision (item 4), which left rotation as "possibly 2–4 steps" — it is now a requirement, not optional.
+
+Why:
+- A single fixed iso angle renders only **two of every building's four sides**. Every street frontage that faces away is permanently invisible — and that is structurally ~half of all frontages once the scene extends past a corner. Those hidden frontages are **businesses that would never be seen**. Four orthogonal rotations make every street frontage visible from at least one angle.
+- This is **not** free-cam (which stays debug-only). It is four discrete, composed isometric viewpoints.
+
+Scope implications:
+- A building's street frontages must be treated for whichever angle(s) reveal them (hero-exact where notable, typological otherwise). "All visible faces" now means all four angles.
+- Scene/corner completeness and the Phase-3 acceptance gate are judged **from all four angles**, not one.
+- Existing work is unaffected: b1 ground is symmetric; hero facade textures live on world-space faces (corner fold, kinks, etc. are geometric), so rotation views them correctly rather than breaking them.
+
+Sequencing consequence (PLAN.md): the **multi-angle camera rig (Phase 3.2)** and **all-angle corner completion (Phase 3.3)** come before the Franklin→Milton extension (Phase 4.1 / c) — complete the template corner from all angles before replicating it down the block.
+
+Owner: Batu.
+
 ## 2026-06-15 - Street Layer + Franklin Extension Direction (Phase 3.1 / Phase 4.1)
 
 Context: MVP corner (Franklin × Greenpoint heroes — Premier, Sonny's, Sereneco) is complete. Next work is the ground/street layer (b1), corner signals (b2), then a Franklin block-face extension (c). Decisions (Batu-approved in session):

@@ -8,6 +8,7 @@ Owner: Batu (taste, product, approvals) / Agent (execution)
 
 A 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike: every building and business is located exactly where it is in real life and is recognizably itself. Art-directed and stylized — not hyperrealistic.
 
+- **Multi-angle (firm requirement):** the scene is viewable from **all four orthogonal isometric angles** (90° rotation steps), with pan/zoom. A single fixed angle shows only two of every building's four sides, structurally hiding ~half of all street frontages — and the businesses on them. Four rotations make every street frontage visible from at least one angle. This is not free-cam (which stays debug-only); it is four discrete, composed iso viewpoints. **Implication:** a building's street frontages must be treated for whichever angle(s) reveal them, and scene completeness is judged from all four angles, not one.
 - **Primary look:** II-C Inked Indie Visual System (hand-inked editorial illustration). See `docs/ART_DIRECTION.md`.
 - **Fallback look:** GPT-5.5 photo-render fidelity (the Premier Organic benchmark image) if II-C proves infeasible in-engine. Decided at the Phase 2 gate.
 - **Geometry truth:** NYC Open Data (footprints, BINs). **Likeness truth:** field photos in `src/data/facade-evidence/`.
@@ -19,7 +20,7 @@ Recorded in `docs/DECISION_LOG.md`:
 1. Audience: public community demo. Real names/likenesses used freely in development; factual-claims review happens at publish time.
 2. Likeness bar: heroes exact (corners, landmarks, storefronts), infill typological (correct massing, floors, material family, rhythm).
 3. Production means: agent-built procedural/parametric kit + AI asset generation. The code-built-art prohibition is retired.
-4. Camera: fixed isometric + pan/zoom (possibly 2–4 rotation steps). Free-cam is debug-only.
+4. Camera: isometric + pan/zoom with **four fixed 90° rotation steps (firm — see Product Goal)**. Free-cam is debug-only. (Revised 2026-06-15: the rotation steps are a requirement, not optional, so no street frontage is permanently hidden.)
 5. Real-faithful supersedes fictional-safe storefront identity.
 
 ## Architecture Spine
@@ -78,14 +79,22 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
   - 3.1b2.2 `buildFurniture` renderer: restrained II-C massing (dark ink poles, small signal heads, muted R/A/G). Hydrant/signs/tree-pits deferred.
   - 3.1b2.3 Verifier: signal count + within-curb placement. + screenshot.
 
-3.2 Hero facade completion: all visible faces, corner wraps, exact signage/awnings
-3.3 Lighting, shadow shapes, and composition pass
-3.4 Interaction v0: hover/select highlight + paper place card (II-C sections 8–9)
-3.5 **Acceptance (Batu):** would a Greenpoint local recognize this corner instantly? Does it hold against the reference boards?
+  **Status:** b1 (ground) and b2 (corner signals) **DONE** — merged to `main`, modules `groundLayer.js` / `streetFurniture.js` + verifiers. Signal look is a typological first pass (refine later).
+
+**3.2 Multi-angle camera rig (the enabler — do next).** Four fixed iso rotation steps (90°) with animated snap, keeping pan/zoom; free-cam stays debug-only. Contained to `SceneView.jsx` (azimuth becomes one of four; pan axes + composition recompute per step). No geometry change. Existing hero textures live on world-space faces, so rotation views them correctly — it does not break the corner fold / kinks. **Acceptance:** rotate through all four; scene stays coherent and framed at each.
+
+**3.3 All-angle corner completion** (raises the corner to the multi-angle bar — what 3.2 exposes):
+  - 3.3.1 Hero non-street faces: party walls, rears, and exposed sides for Premier, Sonny's, Sereneco get at least typological treatment (brick party wall, sparse rear windows) so rotated views are never blank boxes.
+  - 3.3.2 The other intersection corners: bring the currently-rough corner buildings up to street-frontage treatment (hero-exact where a corner carries a notable storefront, typological otherwise) so every frontage revealed by rotation reads as a real building.
+  - 3.3.3 Corner wraps + exact signage/awnings on the heroes (the old 3.2 scope), now validated from all four angles.
+
+3.4 Lighting, shadow shapes, and composition pass — composed at each of the four angles.
+3.5 Interaction v0: hover/select highlight + paper place card (II-C sections 8–9).
+3.6 **Acceptance (Batu):** would a Greenpoint local recognize this corner instantly, **from any of the four angles**? Does it hold against the reference boards?
 
 ### Phase 4: MVP Scene — Greenpoint x Manhattan Ave + corridor
 
-**4.1 (c) Franklin block-face extension — Greenpoint Ave → Milton St**, typological massing (correct floors/height/material family, no hero facades). Heroes deferred. Proves the b1 ground system generalizes beyond the corner.
+**4.1 (c) Franklin block-face extension — Greenpoint Ave → Milton St**, typological massing (correct floors/height/material family, no hero facades). Heroes deferred. Proves the b1 ground system generalizes beyond the corner. **Comes after 3.2–3.3** so it inherits the multi-angle camera and a complete all-angle corner template; block faces get frontage treatment on the sides revealed by rotation, not just one.
   - 4.1c.0 **Data pull (prerequisite):** the Greenpoint→Milton Franklin block is not in the current footprint set (existing 291 records are a Greenpoint-Ave buffer; `crossAxisOffset` ≈ 0). Pull those footprints from NYC Open Data and project into the R10E frame.
   - 4.1c.1 Extrude typological massing for the pulled footprints along the Franklin axis.
   - 4.1c.2 Extend `groundLayer.js`'s Franklin sidewalk/roadbed run to cover the block to the Milton corner.
