@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-15 - Hero Business Cards Inserted as the Next Phase (feedback vehicle)
+
+Decision (Batu-approved in session): insert a **business-card demo phase (3.15) ahead of the camera rig (3.2)**, so Batu can start collecting feedback and ideas from local businesses while the rest of Phase 3 is built. Objective: clicking a hero corner opens a paper II-C place card with real, sourced business data for the three heroes (Premier/Franklin Organic, Sonny's, Sereneco).
+
+Decisions on shape:
+1. **Reference:** build to `docs/reference/art/II-B-place-card-marker-hover-state.png` + ART_DIRECTION §9 (paper card, pin + tether), with a **trimmed IA** — name, category, tag row, address, neutral description, disclaimer. **No Save/Share/Details, no hours/OPEN-NOW** in v0 (avoids implying app features we won't build and dodges the staleness-prone hours field).
+2. **Data:** agent does documented public-source research and **proposes** static local records (per `PLACE_SOURCE_POLICY.md`: public facts only, cited sources, `lastVerified`, no scraping/APIs/live data). **Batu approves before any public/demo use** — records carry `approvalStatus: proposed` until then.
+3. **Hours/status:** omitted in v0; uncertain status surfaces as `unknown`/under-review, never as a live claim.
+4. **Feedback mechanism:** display-only card with an unofficial-prototype disclaimer; Batu demos in person and captures reactions (no in-app submissions, per policy).
+
+Detailed plan: `docs/superpowers/plans/2026-06-15-hero-business-cards.md`. This pulls forward and focuses the place-card half of the old Phase 3.5 onto the three heroes with real data.
+
+Owner: Batu (public representation + data approval). Agent proposes.
+
 ## 2026-06-15 - Multi-Angle Viewing Is a Firm Requirement (revises the camera decision)
 
 Decision (Batu-approved in session): the scene must be **viewable from all four orthogonal isometric angles** (90° rotation steps), with pan/zoom. This revises the 2026-06-11 camera decision (item 4), which left rotation as "possibly 2–4 steps" — it is now a requirement, not optional.
