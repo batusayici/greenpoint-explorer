@@ -128,14 +128,13 @@
       ],
       "awnings": [
         {
-          "x0": 0.5,
-          "x1": 0.9,
+          "x0": 0.72,
+          "x1": 0.92,
           "yWall": 0.235,
           "yDrop": 0.205,
-          "yValance": 0.18,
-          "projectionM": 0.5,
-          "capLeft": false,
-          "capRight": false
+          "yValance": 0.185,
+          "projectionM": 0.45,
+          "color": 2040349
         }
       ],
       "doors": [

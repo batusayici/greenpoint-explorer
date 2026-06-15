@@ -170,6 +170,16 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const ux0 = u(awning.x0); // own-slice UV bounds — clamp the miter sliver here
     const ux1 = u(awning.x1);
 
+    // A `color` awning is a solid-fabric awning — for storefronts whose drawn
+    // elevation has no awning art (e.g. Sonny's, where the band is just wall
+    // and lintel). It renders as flat dark cloth, shaded by face (lit top,
+    // shadowed front skirt) so it still reads 3D, instead of stretching the
+    // brick/lintel behind it into a smear. Textured awnings (Premier) keep the
+    // painted artwork.
+    const tinted = (f) => tintMaterial(new THREE.Color(awning.color).multiplyScalar(f).getHex());
+    const canopyMat = awning.color != null ? tinted(0.92) : texturedMaterial(texture, 1);
+    const valanceMat = awning.color != null ? tinted(0.78) : texturedMaterial(texture, 1);
+
     // Canopy top: a flat-elevation has no art for the awning's upper surface,
     // and stretching the front band across the projection smears the text. So
     // the top samples a single dark row at the canopy/valance seam (yDrop) —
@@ -182,7 +192,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       facePoint(frame, dx0, awning.yDrop, projection),
       [ux0, awning.yDrop, ux1, awning.yDrop, ux1, awning.yDrop, ux0, awning.yDrop],
     );
-    group.add(new THREE.Mesh(canopy, texturedMaterial(texture, 1)));
+    group.add(new THREE.Mesh(canopy, canopyMat));
 
     if (yValance < awning.yDrop) {
       const valance = quadGeometry(
@@ -192,7 +202,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
         facePoint(frame, dx0, yValance, projection),
         [ux0, awning.yDrop, ux1, awning.yDrop, ux1, yValance, ux0, yValance],
       );
-      group.add(new THREE.Mesh(valance, texturedMaterial(texture, 1)));
+      group.add(new THREE.Mesh(valance, valanceMat));
     }
 
     // Closed end panels — suppressed at a corner-wrapped end (cornerLeft/
@@ -210,7 +220,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
         facePoint(frame, xEnd, yValance, projection),
         facePoint(frame, xEnd, yValance, 0),
       );
-      group.add(new THREE.Mesh(panel, tintMaterial(0x241f18)));
+      group.add(new THREE.Mesh(panel, awning.color != null ? tinted(0.6) : tintMaterial(0x241f18)));
     }
   }
 
