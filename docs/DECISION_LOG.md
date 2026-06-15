@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-15 - Street Layer + Franklin Extension Direction (Phase 3.1 / Phase 4.1)
+
+Context: MVP corner (Franklin × Greenpoint heroes — Premier, Sonny's, Sereneco) is complete. Next work is the ground/street layer (b1), corner signals (b2), then a Franklin block-face extension (c). Decisions (Batu-approved in session):
+
+1. **Ground render = procedural inked, in-engine.** Roadbed, sidewalk, curbs, and crosswalks are built as geometry with II-C inked treatment (asphalt/concrete tones, paper grain, slab score-lines, painted-stripe geometry). No AI ground textures in v0; reserve image-to-image upgrade only if the surface reads flat next to the textured facades.
+2. **Curb/sidewalk geometry = hybrid (real where present, derived where not).** Project the existing `sidewalkLineRecords` into the R10E frame for real curb edges — these exist for **Greenpoint Ave (×1) and Franklin St (×3)** in `geometry-source/...phase-3b.json`. Greenpoint roadbed from its real centerline + recorded width (50). Franklin has no source centerline (known gap), so reconstruct its curb edges + a derived centerline from its sidewalk-line pair. Anything derived renders under the existing `II_PALETTE.streetDerived` flag. Fallback to frontage-offset-by-width only if projection proves noisy.
+3. **Street furniture = typological-standard, signals first.** Standard NYC mast-arm traffic + pedestrian signals at curb-return positions, marked typological (infill truth rule). Hydrant/signs/tree-pits deferred. Exact placement deferred to the pre-publish truth pass.
+4. **Franklin extension (c) scope = full block face, Greenpoint Ave → Milton St**, typological massing (correct floors/height/material family, no hero facades). Heroes deferred.
+5. **Prerequisite for c:** the Greenpoint→Milton Franklin block face is **not in the current footprint set** (the existing 291 records are a Greenpoint-Ave-axis buffer; `crossAxisOffset` ≈ 0 across all — no up-Franklin coverage). c is gated on a bounded NYC Open Data footprint pull (step c.0) before massing.
+
+Sequencing: b1 → b2 → c. b1 is load-bearing — b2's signals sit on b1's curb returns, and c extends b1's Franklin ground run. b1+b2 complete Phase 3.1; c opens Phase 4.1.
+
+Owner: Batu.
+
 ## 2026-06-12 - Premier Corner Fold Fixed at PREMIER_KINK = 0.478
 
 Decision (Batu-approved in session):

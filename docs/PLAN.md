@@ -63,7 +63,21 @@ Known risks this phase exists to answer: AI texture style drift between building
 
 ### Phase 3: Vertical Slice — Franklin corner at full quality (chosen style)
 
-3.1 Full street layer: sidewalk slabs, curbs, crosswalks, corner props per II-C library
+MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings: **DONE**. Remaining: the ground layer and corner props (3.1), then composition/interaction.
+
+**3.1 Street layer + corner props** — design + decisions in `DECISION_LOG.md` (2026-06-15). Procedural inked, in-engine. New deep modules `groundLayer.js` / `streetFurniture.js` (pure geometry, Node-runnable like `sceneFrame.js`) + thin `buildGround` / `buildFurniture` renderers in `SceneView.jsx`, replacing the ad-hoc per-building strips in `addRecordContactGrounding`.
+
+  **b1 — Intersection ground system**
+  - 3.1b1.1 `groundLayer.js`: project `sidewalkLineRecords` (Greenpoint ×1, Franklin ×3) into the R10E frame → real curb edges. Greenpoint roadbed from real centerline ± width (50); reconstruct Franklin curb edges + derived centerline from its sidewalk-line pair. Output `{ roadbeds, sidewalks, crosswalks, curbs, derived[] }`. Fallback: frontage-offset-by-width if projection noisy.
+  - 3.1b1.2 Sidewalk polygon between frontage and curb, wrapping the corner return; crosswalk bands at the intersection mouth; thin raised curb lip catching II-C edge-ink + cast shadow.
+  - 3.1b1.3 `buildGround(three, groundLayer)` renderer: asphalt + paper grain + restrained typological lane hint; concrete sidewalk with inked slab score-lines; ivory crosswalk stripes. Remove per-building sidewalk strips. Derived geometry uses `II_PALETTE.streetDerived`.
+  - 3.1b1.4 Node verifier: curbs outside frontages, sidewalk width ∈ ~3–6 m, crosswalks inside curb returns, roadbed widths match recorded widths. + `npm run build` + iso screenshot.
+
+  **b2 — Corner signals**
+  - 3.1b2.1 `streetFurniture.js`: `placeCornerSignals({ curbReturns })` → mast-arm traffic + pedestrian signals at curb-return points, marked typological.
+  - 3.1b2.2 `buildFurniture` renderer: restrained II-C massing (dark ink poles, small signal heads, muted R/A/G). Hydrant/signs/tree-pits deferred.
+  - 3.1b2.3 Verifier: signal count + within-curb placement. + screenshot.
+
 3.2 Hero facade completion: all visible faces, corner wraps, exact signage/awnings
 3.3 Lighting, shadow shapes, and composition pass
 3.4 Interaction v0: hover/select highlight + paper place card (II-C sections 8–9)
@@ -71,7 +85,13 @@ Known risks this phase exists to answer: AI texture style drift between building
 
 ### Phase 4: MVP Scene — Greenpoint x Manhattan Ave + corridor
 
-4.1 Second intersection built entirely through the pipeline; measure hours-per-corner and what needed hand-tuning
+**4.1 (c) Franklin block-face extension — Greenpoint Ave → Milton St**, typological massing (correct floors/height/material family, no hero facades). Heroes deferred. Proves the b1 ground system generalizes beyond the corner.
+  - 4.1c.0 **Data pull (prerequisite):** the Greenpoint→Milton Franklin block is not in the current footprint set (existing 291 records are a Greenpoint-Ave buffer; `crossAxisOffset` ≈ 0). Pull those footprints from NYC Open Data and project into the R10E frame.
+  - 4.1c.1 Extrude typological massing for the pulled footprints along the Franklin axis.
+  - 4.1c.2 Extend `groundLayer.js`'s Franklin sidewalk/roadbed run to cover the block to the Milton corner.
+  - 4.1c.3 Verifier: footprints at real positions, ground extends without gaps. + iso screenshot.
+
+4.1b Second intersection built entirely through the pipeline; measure hours-per-corner and what needed hand-tuning
 4.2 Kit-ify what repeated: texture prompt templates, prop placement rules, facade parameter schema
 4.3 Corridor infill v0: typological block faces connecting the two corners
 4.4 **MVP review (Batu)**
