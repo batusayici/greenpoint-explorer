@@ -99,7 +99,9 @@ git commit -m "feat(b1): add ground-geometry measurement probe"
 
 ## Task 2: `groundLayer.js` — roadbeds, curbs, sidewalks
 
-The module classifies each projected sidewalk line by street (`fullStreetName`) and by side (sign of its perpendicular offset). Per street, the nearest real line on each side sets that side's curb position; where a side has no line, the recorded street width fills it (derived). Roadbed = polygon between the two curbs; sidewalk = a `SIDEWALK_WIDTH_M` band from each curb outward.
+> **Probe correction (Task 1 finding, 2026-06-15):** the `sidewalkLineRecords` are NOT curb-edge lines — all four project onto their street's centerline (perpendicular offset ≈ 0). So they cannot be classified to curb sides. What they DO give: Franklin St's real centerline trace (along `franklinAxis` through the origin — the R10E gap, now corroborated by real data) and its **real recorded width of 40 ft**. Greenpoint's width is 50 ft from its centerline record. Corrected derivation below: each street's roadbed is `centerline ± recordedWidth/2` (symmetric); curbs are those two roadbed edges; sidewalks are `SIDEWALK_WIDTH_M` bands outside them. Widths are real (source-backed); Franklin's centerline stays `derived: true` (no official centerline record), but its width no longer is.
+
+The module reads each street's recorded width (Greenpoint 50 ft, Franklin 40 ft), builds the roadbed symmetrically about the centerline (`greenpointAxis` through the real centerline; `franklinAxis` through the origin), and places curbs at the roadbed edges with sidewalk bands outside.
 
 **Files:**
 - Create: `src/groundLayer.js`
@@ -191,29 +193,30 @@ Expected: FAIL — `Cannot find module './groundLayer.js'` / `buildGroundLayer i
 // Pure geometry for the intersection ground surface — roadbeds, curbs, and
 // sidewalks. No Three.js; runnable in Node, same discipline as sceneFrame.js.
 //
-// Geometry truth: real NYC sidewalkLineRecords set curb positions where present
-// (Greenpoint x1, Franklin x3); the recorded street width fills any side with no
-// line. The Greenpoint centerline is real; Franklin has none (known R10E gap) so
-// its street carries derived: true. Origin (0,0) is the intersection.
+// Geometry truth: recorded street widths (Greenpoint 50ft, Franklin 40ft —
+// both source-backed) drive symmetric roadbeds about each centerline. The
+// Greenpoint centerline is the real record; Franklin has no centerline record
+// (known R10E gap) so its street carries derived: true, though its width is
+// real. The sidewalkLineRecords are NOT curb edges (they trace the centerline,
+// Task 1 finding); they are used only to source Franklin's recorded width.
+// Origin (0,0) is the intersection.
 
 const FEET_TO_METERS = 0.3048;
 export const SIDEWALK_WIDTH_M = 4.0; // NYC-typical; curb-to-frontage band width
-const DEFAULT_FRANKLIN_WIDTH_FT = 50; // fallback if no curb line resolves a side
+const DEFAULT_STREET_WIDTH_FT = 40; // fallback if a width record is missing
 const ROADBED_HALF_LENGTH_M = 110; // how far each roadbed/sidewalk run is drawn
 
 export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource }) {
   const swUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
   const halfLen = projection.metersToUnits(ROADBED_HALF_LENGTH_M);
-  const curbLines = classifySidewalkLines(geometrySource, projection, { greenpointAxis, franklinAxis });
 
   const streets = [
     makeStreet({
       id: "greenpoint-ave",
       axis: greenpointAxis,
       perp: franklinAxis,
-      recordedWidthFt: 50,
-      derivedCenterline: false,
-      curbLines: curbLines.filter((c) => c.name === "GREENPOINT AVE"),
+      widthFt: streetWidthFt(geometrySource, "GREENPOINT AVE", 50),
+      derived: false, // real centerline record
       projection,
       halfLen,
     }),
@@ -221,9 +224,8 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       id: "franklin-st",
       axis: franklinAxis,
       perp: greenpointAxis,
-      recordedWidthFt: DEFAULT_FRANKLIN_WIDTH_FT,
-      derivedCenterline: true,
-      curbLines: curbLines.filter((c) => c.name === "FRANKLIN ST"),
+      widthFt: streetWidthFt(geometrySource, "FRANKLIN ST", DEFAULT_STREET_WIDTH_FT),
+      derived: true, // no centerline record (R10E gap); width is real, centerline inferred
       projection,
       halfLen,
     }),
@@ -232,48 +234,41 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
   const roadbeds = streets.map((s) => ({
     streetId: s.id,
     derived: s.derived,
-    polygon: bandPolygon(s, -s.halfWidth.neg, s.halfWidth.pos),
+    polygon: bandPolygon(s, -s.halfWidth, s.halfWidth),
   }));
 
   const curbs = streets.flatMap((s) => [
-    { streetId: s.id, derived: s.curbDerived.pos, line: edgeLine(s, s.halfWidth.pos) },
-    { streetId: s.id, derived: s.curbDerived.neg, line: edgeLine(s, -s.halfWidth.neg) },
+    { streetId: s.id, derived: s.derived, line: edgeLine(s, s.halfWidth) },
+    { streetId: s.id, derived: s.derived, line: edgeLine(s, -s.halfWidth) },
   ]);
 
   const sidewalks = streets.flatMap((s) => [
-    { streetId: s.id, derived: s.curbDerived.pos, side: "pos", polygon: bandPolygon(s, s.halfWidth.pos, s.halfWidth.pos + swUnits) },
-    { streetId: s.id, derived: s.curbDerived.neg, side: "neg", polygon: bandPolygon(s, -(s.halfWidth.neg + swUnits), -s.halfWidth.neg) },
+    { streetId: s.id, derived: s.derived, side: "pos", polygon: bandPolygon(s, s.halfWidth, s.halfWidth + swUnits) },
+    { streetId: s.id, derived: s.derived, side: "neg", polygon: bandPolygon(s, -(s.halfWidth + swUnits), -s.halfWidth) },
   ]);
 
   return { streets, roadbeds, curbs, sidewalks, crosswalks: [] };
 }
 
-// Project each real sidewalk line and tag it with street name and the signed
-// perpendicular offset of its midpoint (which curb side it marks).
-function classifySidewalkLines(geometrySource, projection, { greenpointAxis, franklinAxis }) {
-  return (geometrySource.sidewalkLineRecords ?? []).map((record) => {
-    const line = record.wgs84Line.map((pt) => projection.project(pt));
-    const mid = { x: (line[0].x + line.at(-1).x) / 2, z: (line[0].z + line.at(-1).z) / 2 };
-    const perp = record.fullStreetName === "GREENPOINT AVE" ? franklinAxis : greenpointAxis;
-    return { name: record.fullStreetName, line, offset: mid.x * perp.x + mid.z * perp.z };
-  });
+// Real recorded width (feet) for a street, from the centerline record or, if
+// absent, the sidewalkLineRecords (which carry streetWidth too); else fallback.
+function streetWidthFt(geometrySource, name, fallback) {
+  const fromCenterline = (geometrySource.streetCenterlineRecords ?? []).find((r) => r.fullStreetName === name);
+  if (fromCenterline?.streetWidth) return Number.parseFloat(fromCenterline.streetWidth);
+  const fromSidewalk = (geometrySource.sidewalkLineRecords ?? []).find((r) => r.fullStreetName === name);
+  if (fromSidewalk?.streetWidth) return Number.parseFloat(fromSidewalk.streetWidth);
+  return fallback;
 }
 
-function makeStreet({ id, axis, perp, recordedWidthFt, derivedCenterline, curbLines, projection, halfLen }) {
-  const recordedHalf = projection.metersToUnits((recordedWidthFt * FEET_TO_METERS) / 2);
-  const posLines = curbLines.filter((c) => c.offset > 0.05).sort((a, b) => a.offset - b.offset);
-  const negLines = curbLines.filter((c) => c.offset < -0.05).sort((a, b) => b.offset - a.offset);
-  const posHalf = posLines.length ? posLines[0].offset : recordedHalf;
-  const negHalf = negLines.length ? Math.abs(negLines[0].offset) : recordedHalf;
+function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
   return {
     id,
     axis,
     perp,
     center: { x: 0, z: 0 },
     halfLen,
-    halfWidth: { pos: posHalf, neg: negHalf },
-    curbDerived: { pos: posLines.length === 0, neg: negLines.length === 0 },
-    derived: derivedCenterline || (posLines.length === 0 && negLines.length === 0),
+    halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
+    derived,
   };
 }
 
@@ -298,7 +293,7 @@ function edgeLine(street, off) {
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `node --test src/groundLayer.test.mjs`
-Expected: PASS — all 5 tests. If the Greenpoint roadbed-width assertion fails, check the probe output from Task 1: the lone Greenpoint sidewalk line may sit on one side only, so that side's curb comes from real data and the other from `recordedHalf` — the width assertion (which sums both halves) still holds because `recordedHalf` = 25ft each. If a real Greenpoint curb offset differs from 25ft by >0.15 units, widen the tolerance to `0.3` and note the real value in a comment.
+Expected: PASS — all 5 tests. The roadbed is built symmetrically from the recorded width, so the Greenpoint width assertion should match `metersToUnits(50 * 0.3048)` to within float error; if it fails, the axis or width lookup is wrong, not a tolerance issue — do not widen the tolerance to mask it.
 
 - [ ] **Step 5: Commit**
 
@@ -330,7 +325,7 @@ test("each street has one crosswalk with the right stripe count, inside the road
     assert.ok(cw, `${s.id} crosswalk exists`);
     assert.equal(cw.stripes.length, CROSSWALK_STRIPE_COUNT);
     const perp = s.perp;
-    const half = Math.max(s.halfWidth.pos, s.halfWidth.neg) + 0.01;
+    const half = s.halfWidth + 0.01;
     for (const stripe of cw.stripes) {
       for (const p of stripe) {
         const off = p.x * perp.x + p.z * perp.z;
@@ -361,8 +356,7 @@ Replace the `return` line of `buildGroundLayer` with a crosswalk build, computin
   const depth = projection.metersToUnits(CROSSWALK_DEPTH_M);
   const crosswalks = streets.map((s) => {
     const other = streets.find((o) => o.id !== s.id);
-    const setback = Math.max(other.halfWidth.pos, other.halfWidth.neg);
-    return { streetId: s.id, derived: s.derived, stripes: crosswalkStripes(s, setback, depth) };
+    return { streetId: s.id, derived: s.derived, stripes: crosswalkStripes(s, other.halfWidth, depth) };
   });
 
   return { streets, roadbeds, curbs, sidewalks, crosswalks };
@@ -375,8 +369,8 @@ function crosswalkStripes(street, setback, depth) {
   const { axis, perp, center } = street;
   const t0 = setback;
   const t1 = setback + depth;
-  const wPos = street.halfWidth.pos;
-  const wNeg = -street.halfWidth.neg;
+  const wPos = street.halfWidth;
+  const wNeg = -street.halfWidth;
   const slot = (t1 - t0) / (CROSSWALK_STRIPE_COUNT * 2 - 1);
   const at = (t, off) => ({ x: center.x + axis.x * t + perp.x * off, z: center.z + axis.z * t + perp.z * off });
   const stripes = [];
