@@ -147,34 +147,38 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const yValance = awning.yValance ?? awning.yDrop;
     const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
 
-    // Wrap a folded-corner end (cornerLeft/cornerRight) by extending the canopy
-    // past the edge by its projection depth — the tangential reach that lands
-    // on the outer miter point, where the perpendicular face's awning meets it.
-    // The composite's slices are adjacent at the kink, so the extended UVs
-    // sample straight into the neighbour's awning artwork; the canopy turns the
-    // corner as one continuous skirt instead of two ends meeting in a gap.
-    // (Distinct from capLeft/capRight, which only suppress an end panel — e.g.
-    // a mid-wall end that abuts a neighbouring awning, never extended.)
+    // Wrap a folded-corner end (cornerLeft/cornerRight): the awning turns the
+    // corner as one continuous box-canopy. Only the *outer* edges (at the
+    // projection depth — the canopy's drop line and the whole valance) fan past
+    // the corner to the outer miter point, where the perpendicular face's
+    // awning meets them; the wall-attachment line stays pinned to the true
+    // corner, since it sits on the brick that folds there. That differential
+    // makes each canopy a miter trapezoid that shares the diagonal seam with
+    // its neighbour, instead of two flat ends overlapping into stray flaps.
+    // The composite's slices are adjacent at the kink, so the fanned UVs sample
+    // straight into the neighbour's awning artwork.
     const ext = projection / faceWidth(frame);
-    const x0 = awning.cornerLeft ? awning.x0 - ext : awning.x0;
-    const x1 = awning.cornerRight ? awning.x1 + ext : awning.x1;
+    const wx0 = awning.x0; // wall-attachment edge — pinned at the corner
+    const wx1 = awning.x1;
+    const dx0 = awning.cornerLeft ? awning.x0 - ext : awning.x0; // outer edge — fans to miter
+    const dx1 = awning.cornerRight ? awning.x1 + ext : awning.x1;
 
     const canopy = quadGeometry(
-      facePoint(frame, x0, awning.yWall, 0),
-      facePoint(frame, x1, awning.yWall, 0),
-      facePoint(frame, x1, awning.yDrop, projection),
-      facePoint(frame, x0, awning.yDrop, projection),
-      [u(x0), awning.yWall, u(x1), awning.yWall, u(x1), awning.yDrop, u(x0), awning.yDrop],
+      facePoint(frame, wx0, awning.yWall, 0),
+      facePoint(frame, wx1, awning.yWall, 0),
+      facePoint(frame, dx1, awning.yDrop, projection),
+      facePoint(frame, dx0, awning.yDrop, projection),
+      [u(wx0), awning.yWall, u(wx1), awning.yWall, u(dx1), awning.yDrop, u(dx0), awning.yDrop],
     );
     group.add(new THREE.Mesh(canopy, texturedMaterial(texture, 1)));
 
     if (yValance < awning.yDrop) {
       const valance = quadGeometry(
-        facePoint(frame, x0, awning.yDrop, projection),
-        facePoint(frame, x1, awning.yDrop, projection),
-        facePoint(frame, x1, yValance, projection),
-        facePoint(frame, x0, yValance, projection),
-        [u(x0), awning.yDrop, u(x1), awning.yDrop, u(x1), yValance, u(x0), yValance],
+        facePoint(frame, dx0, awning.yDrop, projection),
+        facePoint(frame, dx1, awning.yDrop, projection),
+        facePoint(frame, dx1, yValance, projection),
+        facePoint(frame, dx0, yValance, projection),
+        [u(dx0), awning.yDrop, u(dx1), awning.yDrop, u(dx1), yValance, u(dx0), yValance],
       );
       group.add(new THREE.Mesh(valance, texturedMaterial(texture, 1)));
     }
