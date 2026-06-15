@@ -710,6 +710,11 @@ const FACADE_COMPOSITES = {
     byBin: {
       "3337033": {
         franklin: { u0: SERENECO_KINK, u1: 1, leftEnd: "south", coverMeters: 12 },
+        // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning). Its own
+        // v2 re-render maps full-width onto the 22.6m greenpoint edge; franklin
+        // keeps the accurate corner.png above. Flat map for now (no recess
+        // spec yet) — orientation/coverage settled in-engine.
+        greenpoint: { key: "../assets/textures/franklin/sereneco--corner-v2.png", u0: 0, u1: 1, leftEnd: "west" },
       },
     },
   },
@@ -786,18 +791,30 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
 
   const composite = FACADE_COMPOSITES[building.placeId];
-  const compositeWaiters = [];
-  let compositeTexture = null;
-  if (composite && facadeTextureUrls[composite.key]) {
-    loadTrimmedTexture(facadeTextureUrls[composite.key], (texture) => {
-      // Bail if this effect run was torn down (StrictMode) before the texture
-      // resolved — otherwise it would register a rebuild into a dead scene.
-      if (!isActive()) return;
-      compositeTexture = texture;
-      for (const apply of compositeWaiters) apply(texture);
-      requestRender?.();
-    });
-  }
+  // A face may override composite.key with its own texture (Sereneco's
+  // greenpoint face uses the v2 re-render while franklin keeps the original
+  // corner.png). Load each distinct texture once and fan it out to its faces.
+  const faceTextureUrl = (face) =>
+    composite ? facadeTextureUrls[face?.key ?? composite.key] : undefined;
+  const textureCache = new Map(); // url -> { texture, waiters[] }
+  const loadFaceTexture = (url, apply) => {
+    if (!url) return;
+    let entry = textureCache.get(url);
+    if (!entry) {
+      entry = { texture: null, waiters: [] };
+      textureCache.set(url, entry);
+      loadTrimmedTexture(url, (texture) => {
+        // Bail if this effect run was torn down (StrictMode) before the
+        // texture resolved — otherwise it registers a rebuild into a dead scene.
+        if (!isActive()) return;
+        entry.texture = texture;
+        for (const w of entry.waiters) w(texture);
+        requestRender?.();
+      });
+    }
+    entry.waiters.push(apply);
+    if (entry.texture) apply(entry.texture);
+  };
 
   // The longest edge per street role carries the elevation slice.
   const textureEdge = {};
@@ -825,7 +842,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // This is real back-face culling — needed because adjacent faces wind
     // oppositely (different `leftEnd`), so FrontSide culling is unreliable —
     // and it now follows the rotating camera instead of the old fixed azimuth.
-    const isTextured = Boolean(face) && textureEdge[edge.role] === edge && facadeTextureUrls[composite.key];
+    const isTextured = Boolean(face) && textureEdge[edge.role] === edge && Boolean(faceTextureUrl(face));
     const specFace = isTextured ? FACADE_SPECS[`${building.bin}:${edge.role}`] : null;
     // In a facade group, any face the composite doesn't cover is a party
     // wall (e.g. the sister's lot-line edges behind Premier) — muted, never
@@ -903,8 +920,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           material.color.setScalar(shade);
           material.needsUpdate = true;
         };
-    compositeWaiters.push(apply);
-    if (compositeTexture) apply(compositeTexture);
+    loadFaceTexture(faceTextureUrl(face), apply);
   }
 
   // Roof field: warm membrane tone with paper-grain speckle. The texture

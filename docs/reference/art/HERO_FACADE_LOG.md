@@ -84,12 +84,29 @@ a banked fix regressed or a playbook rule was skipped.
 - **Net new durable assets:** engine fixes (collinear merge, back-face cull,
   awning caps, storefront `revealTop`); the scene-graph inspector above.
 
-### Sereneco — BIN 3337033 (NW corner) — PENDING
-- Texture `sereneco--corner.png` exists; spec predates the Sonny's fixes —
-  re-run the playbook fresh. Only the franklin face is camera-visible;
-  `coverMeters: 12` on a 57m footprint edge. **Expect the corner-artifact
-  class to be zero iterations** (banked). Watch for: low contrast (weathered
-  brick) → may need `--wall`/profile measurement like Sonny's.
+### Sereneco — BIN 3337033 (NW corner) — greenpoint shipped (flat), franklin stable
+- **Faces:** franklin (east, 57m Franklin St) keeps `sereneco--corner.png`
+  (`coverMeters: 12`, `SERENECO_KINK=0.496`) — Batu confirmed accurate, left
+  untouched. **greenpoint (south, 22.6m Greenpoint Ave)** — the green
+  "Dinner·Brunch·Bar" awning frontage — was never drawn right and never shown
+  (back-facing at the old fixed camera). The multi-angle rig (3.2) exposed it.
+- **Render:** Batu re-rendered the greenpoint frontage as
+  `sereneco--corner-v2.png` (1916×821). Wired as a **per-face texture**: that
+  face overrides `composite.key` with its own PNG, mapped full-width
+  (`u0:0→u1:1`, `leftEnd:"west"`) onto the greenpoint edge. **Flat map, no
+  recess spec yet** — windows/storefront depth is the open polish step.
+- **Quirks:** the two street faces are **separate textures meeting at the real
+  90° brick corner** — no single-image unwrap needed, because Sereneco's
+  storefronts don't wrap the chamfer (unlike Premier/Sonny's). `AZURE GOURMET`
+  on the corner-end storefront is still the render's **invented/UNVERIFIED**
+  sign (flag for the pre-launch truth pass).
+- **Cost:** ~1 iteration — green awning read correct and unmirrored on the
+  first in-engine check (orientation `leftEnd:"west"` right first try).
+- **Durable lesson (banked):** a face can carry its **own** texture via a
+  `key` override on the composite face entry (`FACADE_COMPOSITES`), so one
+  building can mix an accurate old slot with a fresh re-render without one
+  regressing the other. Corner heroes whose storefronts **don't** wrap the
+  chamfer can use two single-face textures instead of a corner unwrap.
 
 ---
 
