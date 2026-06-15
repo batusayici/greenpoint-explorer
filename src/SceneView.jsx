@@ -12,6 +12,8 @@ import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-frankl
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
 import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
+import PlaceCard from "./components/PlaceCard.jsx";
+import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -63,6 +65,10 @@ export default function SceneView() {
   const facadeEdit = new URLSearchParams(window.location.search).get("facadeedit") === "1";
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
+  const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
+  const [anchor, setAnchor] = useState(null); // {x, y} screen px of the pin, or null
+  const updateAnchorRef = useRef(() => {});
+  const selectedPlaceIdRef = useRef(null);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -150,7 +156,26 @@ export default function SceneView() {
       );
       camera.lookAt(view.target);
       camera.updateProjectionMatrix();
+      updateAnchorRef.current(selectedPlaceIdRef.current);
     }
+
+    const anchorWorld = new Map(
+      scene.buildings
+        .filter((b) => b.placeId)
+        .map((b) => [b.placeId, new THREE.Vector3(b.centroid.x, Math.max(b.height * 0.32, 0.3), b.centroid.z)]),
+    );
+
+    function projectAnchor(placeId) {
+      const w = anchorWorld.get(placeId);
+      if (!w) return null;
+      const v = w.clone().project(camera);
+      return {
+        x: (v.x * 0.5 + 0.5) * mount.clientWidth,
+        y: (-v.y * 0.5 + 0.5) * mount.clientHeight,
+      };
+    }
+    // Exposed so the imperative camera code can refresh the React pin position.
+    updateAnchorRef.current = (placeId) => setAnchor(placeId ? projectAnchor(placeId) : null);
 
     function resize() {
       renderer.setSize(mount.clientWidth, mount.clientHeight);
@@ -190,6 +215,23 @@ export default function SceneView() {
       return null;
     }
 
+    function placeIdAt(event) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      const ndc = new THREE.Vector2(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1,
+      );
+      raycaster.setFromCamera(ndc, camera);
+      for (const hit of raycaster.intersectObjects(three.children, true)) {
+        let object = hit.object;
+        while (object) {
+          if (object.userData?.placeId) return object.userData.placeId;
+          object = object.parent;
+        }
+      }
+      return null;
+    }
+
     function onPointerDown(event) {
       drag.active = true;
       drag.lastX = event.clientX;
@@ -214,13 +256,30 @@ export default function SceneView() {
       drag.active = false;
       const wasCanvas = down.onCanvas;
       down.onCanvas = false;
-      if (!facadeEdit || !wasCanvas) return;
+      if (!wasCanvas) return;
       const moved = Math.hypot(event.clientX - down.x, event.clientY - down.y);
       if (moved > 4) return; // a pan, not a click
-      const faceKey = faceKeyAt(event);
-      if (faceKey) {
-        setEditorFace(faceKey);
-        setEditorOpen(true);
+
+      if (facadeEdit) {
+        const faceKey = faceKeyAt(event);
+        if (faceKey) {
+          setEditorFace(faceKey);
+          setEditorOpen(true);
+        }
+        return;
+      }
+
+      // Normal mode: click-to-select a hero place; click elsewhere deselects.
+      const placeId = placeIdAt(event);
+      const place = placeId ? getPlaceByPlaceId(placeId) : null;
+      if (place) {
+        selectedPlaceIdRef.current = place.placeId;
+        setSelectedPlace(place);
+        setAnchor(projectAnchor(place.placeId));
+      } else {
+        selectedPlaceIdRef.current = null;
+        setSelectedPlace(null);
+        setAnchor(null);
       }
     }
     function onWheel(event) {
@@ -307,6 +366,36 @@ export default function SceneView() {
           onSelectFace={setEditorFace}
           onClose={() => setEditorOpen(false)}
         />
+      )}
+      {selectedPlace && (
+        <>
+          {anchor && (
+            <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
+              <line
+                x1={anchor.x} y1={anchor.y}
+                x2={typeof window !== "undefined" ? window.innerWidth - 340 : anchor.x}
+                y2={Math.min(Math.max(anchor.y, 120), 360)}
+                stroke="#2a241c" strokeWidth="1.5" strokeDasharray="3 3"
+              />
+            </svg>
+          )}
+          {anchor && (
+            <div style={{
+              position: "absolute", left: anchor.x - 7, top: anchor.y - 20,
+              width: 14, height: 14, background: "#d9a43b",
+              border: "1.5px solid #2a241c", borderRadius: "50% 50% 50% 0",
+              transform: "rotate(45deg)", pointerEvents: "none",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+            }} />
+          )}
+          <div style={{ position: "absolute", top: 120, right: 24 }}>
+            <PlaceCard
+              place={selectedPlace}
+              disclaimer={PLACE_DISCLAIMER}
+              onClose={() => { selectedPlaceIdRef.current = null; setSelectedPlace(null); setAnchor(null); }}
+            />
+          </div>
+        </>
       )}
     </div>
   );
@@ -575,6 +664,13 @@ function buildBuildings(three, scene, requestRender, isActive = () => true) {
 // faces share a crisp corner, the roof carries an inked parapet texture,
 // and an II-C cast-shadow shape grounds the mass.
 function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true) {
+  // All of this hero's meshes go under one group tagged with its placeId, so a
+  // click anywhere on the building (walls, storefront assembly, roof, parapet,
+  // shadow) resolves to a selectable place. The group sits at identity/origin,
+  // so geometry is unchanged. Raycasting recurses into it; faceKeyAt still
+  // walks parents, so the recess editor keeps working one level deeper.
+  const heroGroup = new THREE.Group();
+  heroGroup.userData.placeId = building.placeId;
   const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
   // Benchmark-style face shading: lit street faces, darker returns.
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
@@ -654,7 +750,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
             side: THREE.DoubleSide,
           }),
         );
-        three.add(rest);
+        heroGroup.add(rest);
       }
     }
 
@@ -664,7 +760,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     });
     const wall = new THREE.Mesh(wallQuad(renderEdge, building.height, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
-    three.add(wall);
+    heroGroup.add(wall);
 
     if (!isTextured) continue;
     const faceKey = `${building.bin}:${edge.role}`;
@@ -673,19 +769,19 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           // Structured facade: swap the flat wall for the component assembly.
           // The build is wrapped in a rebuild closure so the dev recess editor
           // can re-snap this one face live (remove old group, build new).
-          three.remove(wall);
+          heroGroup.remove(wall);
           const frame = faceFrame(renderEdge, building.height, face, scene);
           const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
           const hexBase = new THREE.Color(baseColor).multiplyScalar(shade).getHex();
           let current = null;
           const rebuild = (specOverride) => {
             if (current) {
-              three.remove(current);
+              heroGroup.remove(current);
               disposeGroup(current);
             }
             current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
             current.userData.faceKey = faceKey;
-            three.add(current);
+            heroGroup.add(current);
             requestRender?.();
           };
           rebuild(specFace);
@@ -712,7 +808,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   const roofMesh = new THREE.Mesh(roofGeometry, new THREE.MeshBasicMaterial({ map: roofTexture }));
   roofMesh.rotation.x = -Math.PI / 2;
   roofMesh.position.y = building.height;
-  three.add(roofMesh);
+  heroGroup.add(roofMesh);
 
   // Parapet ring only on edges without a drawn cornice — spec'd street
   // faces carry their own cornice-to-roofline assembly, so a second
@@ -732,14 +828,14 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       (start.z + end.z) / 2,
     );
     segment.rotation.y = -Math.atan2(end.z - start.z, end.x - start.x);
-    three.add(segment);
+    heroGroup.add(segment);
     const edgeLines = new THREE.LineSegments(
       new THREE.EdgesGeometry(segment.geometry),
       new THREE.LineBasicMaterial({ color: II_PALETTE.ink, transparent: true, opacity: 0.5 }),
     );
     edgeLines.position.copy(segment.position);
     edgeLines.rotation.copy(segment.rotation);
-    three.add(edgeLines);
+    heroGroup.add(edgeLines);
   }
 
   // (The corner storefronts now wrap the fold themselves — recessed glass,
@@ -755,7 +851,9 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   );
   shadowMesh.rotation.x = -Math.PI / 2;
   shadowMesh.position.set(building.height * 0.2, 0.004, building.height * 0.07);
-  three.add(shadowMesh);
+  heroGroup.add(shadowMesh);
+
+  three.add(heroGroup);
 }
 
 // World-space wall quad for one footprint edge. For textured faces the UV
