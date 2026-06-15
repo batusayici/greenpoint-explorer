@@ -710,11 +710,14 @@ const FACADE_COMPOSITES = {
     byBin: {
       "3337033": {
         franklin: { u0: SERENECO_KINK, u1: 1, leftEnd: "south", coverMeters: 12 },
-        // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning). Its own
-        // v2 re-render maps full-width onto the 22.6m greenpoint edge; franklin
-        // keeps the accurate corner.png above. Flat map for now (no recess
-        // spec yet) — orientation/coverage settled in-engine.
-        greenpoint: { key: "../assets/textures/franklin/sereneco--corner-v2.png", u0: 0, u1: 1, leftEnd: "west" },
+        // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning → bays →
+        // Sereneco corner entrance). v2 is a corner UNWRAP: its left 0..0.80 is
+        // the Greenpoint face, its right 0.80..1 is the Franklin return
+        // (AZURE GOURMET). Map only the greenpoint slice here so AZURE GOURMET
+        // doesn't duplicate onto this face — it lives on the franklin face
+        // (corner.png) above, where Batu confirmed it's correct. 0.80 ≈ the
+        // real 22.6m Greenpoint edge, so the slice fills the wall undistorted.
+        greenpoint: { key: "../assets/textures/franklin/sereneco--corner-v2.png", u0: 0, u1: 0.8, leftEnd: "west" },
       },
     },
   },
