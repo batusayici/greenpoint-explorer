@@ -305,7 +305,7 @@ export default function SceneView() {
 // the muted "...Derived" tones.
 const Y = { roadbed: 0.0008, sidewalk: 0.0018, crosswalk: 0.0028, score: 0.0024 };
 
-function addGroundQuad(three, pts, y, color, opacity = 1) {
+function addGroundQuad(three, pts, y, color) {
   const v = new Float32Array([
     pts[0].x, y, pts[0].z, pts[1].x, y, pts[1].z, pts[2].x, y, pts[2].z,
     pts[0].x, y, pts[0].z, pts[2].x, y, pts[2].z, pts[3].x, y, pts[3].z,
@@ -313,9 +313,7 @@ function addGroundQuad(three, pts, y, color, opacity = 1) {
   const g = new THREE.BufferGeometry();
   g.setAttribute("position", new THREE.BufferAttribute(v, 3));
   g.computeVertexNormals();
-  three.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({
-    color, transparent: opacity < 1, opacity,
-  })));
+  three.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color })));
 }
 
 function addCurbStone(three, line, color) {
@@ -357,17 +355,22 @@ function addSidewalkScoreLines(three, poly) {
 
 function buildGround(three, ground) {
   for (const road of ground.roadbeds) {
-    addGroundQuad(three, road.polygon, Y.roadbed, road.derived ? II_PALETTE.asphaltDerived : II_PALETTE.asphalt);
+    // Derived (Franklin) roadbed sits a hair lower so the two coplanar roadbeds
+    // don't z-fight where they overlap at the intersection square.
+    const y = road.derived ? Y.roadbed - 0.0003 : Y.roadbed;
+    addGroundQuad(three, road.polygon, y, road.derived ? II_PALETTE.asphaltDerived : II_PALETTE.asphalt);
   }
   for (const walk of ground.sidewalks) {
-    addGroundQuad(three, walk.polygon, Y.sidewalk, walk.derived ? II_PALETTE.concreteDerived : II_PALETTE.concrete);
-    addSidewalkScoreLines(three, walk.polygon);
+    for (const seg of walk.segments) {
+      addGroundQuad(three, seg, Y.sidewalk, walk.derived ? II_PALETTE.concreteDerived : II_PALETTE.concrete);
+      addSidewalkScoreLines(three, seg);
+    }
   }
   for (const cw of ground.crosswalks) {
     for (const stripe of cw.stripes) addGroundQuad(three, stripe, Y.crosswalk, II_PALETTE.crosswalkPaint);
   }
   for (const curb of ground.curbs) {
-    addCurbStone(three, curb.line, II_PALETTE.curbStone);
+    for (const seg of curb.segments) addCurbStone(three, seg, II_PALETTE.curbStone);
   }
 }
 

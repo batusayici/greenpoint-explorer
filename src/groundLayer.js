@@ -48,15 +48,33 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
     polygon: bandPolygon(s, -s.halfWidth, s.halfWidth),
   }));
 
-  const curbs = streets.flatMap((s) => [
-    { streetId: s.id, derived: s.derived, line: edgeLine(s, s.halfWidth) },
-    { streetId: s.id, derived: s.derived, line: edgeLine(s, -s.halfWidth) },
-  ]);
+  // Sidewalks and curbs run the length of their street EXCEPT across the cross
+  // street's roadbed — otherwise the concrete (drawn above the asphalt) would
+  // paint over the crossing roadway at each corner. Split each into the two
+  // segments outside the other street's roadbed half-width.
+  const otherHalf = (s) => streets.find((o) => o.id !== s.id).halfWidth;
 
-  const sidewalks = streets.flatMap((s) => [
-    { streetId: s.id, derived: s.derived, side: "pos", polygon: bandPolygon(s, s.halfWidth, s.halfWidth + swUnits) },
-    { streetId: s.id, derived: s.derived, side: "neg", polygon: bandPolygon(s, -(s.halfWidth + swUnits), -s.halfWidth) },
-  ]);
+  const curbs = streets.flatMap((s) =>
+    [s.halfWidth, -s.halfWidth].map((off) => ({
+      streetId: s.id,
+      derived: s.derived,
+      segments: axisSegments(s.halfLen, otherHalf(s)).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
+    })),
+  );
+
+  const sidewalks = streets.flatMap((s) => {
+    const gap = otherHalf(s);
+    const bands = [
+      { side: "pos", a: s.halfWidth, b: s.halfWidth + swUnits },
+      { side: "neg", a: -(s.halfWidth + swUnits), b: -s.halfWidth },
+    ];
+    return bands.map(({ side, a, b }) => ({
+      streetId: s.id,
+      derived: s.derived,
+      side,
+      segments: axisSegments(s.halfLen, gap).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
+    }));
+  });
 
   const depth = projection.metersToUnits(CROSSWALK_DEPTH_M);
   const crosswalks = streets.map((s) => {
@@ -89,21 +107,29 @@ function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
   };
 }
 
-// A polygon spanning the street's drawn length (along axis) between two
-// perpendicular offsets offA..offB.
-function bandPolygon(street, offA, offB) {
-  const { axis, perp, center, halfLen } = street;
+// The along-axis spans that remain after removing the cross street's roadbed
+// (|t| < gap) from a full-length [-halfLen, halfLen] run. Returns up to two
+// [t0, t1] segments; empty if the gap swallows the whole run.
+function axisSegments(halfLen, gap) {
+  if (gap >= halfLen) return [];
+  return [[-halfLen, -gap], [gap, halfLen]];
+}
+
+// A polygon between two perpendicular offsets offA..offB, spanning along-axis
+// t from tMin to tMax (defaults to the full street length).
+function bandPolygon(street, offA, offB, tMin = -street.halfLen, tMax = street.halfLen) {
+  const { axis, perp, center } = street;
   const at = (t, off) => ({
     x: center.x + axis.x * t + perp.x * off,
     z: center.z + axis.z * t + perp.z * off,
   });
-  return [at(-halfLen, offA), at(halfLen, offA), at(halfLen, offB), at(-halfLen, offB)];
+  return [at(tMin, offA), at(tMax, offA), at(tMax, offB), at(tMin, offB)];
 }
 
-function edgeLine(street, off) {
-  const { axis, perp, center, halfLen } = street;
+function edgeLine(street, off, tMin = -street.halfLen, tMax = street.halfLen) {
+  const { axis, perp, center } = street;
   const at = (t) => ({ x: center.x + axis.x * t + perp.x * off, z: center.z + axis.z * t + perp.z * off });
-  return [at(-halfLen), at(halfLen)];
+  return [at(tMin), at(tMax)];
 }
 
 // Continental crossing: bars spanning the street's roadbed width (perp),

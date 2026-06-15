@@ -54,7 +54,7 @@ test("every street yields exactly two curb lines, both off-center on opposite si
     const curbs = ground.curbs.filter((c) => c.streetId === s.id);
     assert.equal(curbs.length, 2, `${s.id} has 2 curbs`);
     const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
-    const sides = curbs.map((c) => Math.sign(c.line[0].x * perp.x + c.line[0].z * perp.z));
+    const sides = curbs.map((c) => Math.sign(c.segments[0][0].x * perp.x + c.segments[0][0].z * perp.z));
     assert.notEqual(sides[0], sides[1], `${s.id} curbs on opposite sides`);
   }
 });
@@ -66,7 +66,24 @@ test("each curb carries a sidewalk band ~SIDEWALK_WIDTH_M wide", () => {
     const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
     assert.equal(walks.length, 2, `${s.id} has 2 sidewalk bands`);
     for (const w of walks) {
-      assert.ok(Math.abs(polyWidth(w.polygon, perp) - wantUnits) < 0.05, "band width ≈ SIDEWALK_WIDTH_M");
+      for (const seg of w.segments) {
+        assert.ok(Math.abs(polyWidth(seg, perp) - wantUnits) < 0.05, "band width ≈ SIDEWALK_WIDTH_M");
+      }
+    }
+  }
+});
+
+test("sidewalks never intrude past the cross street's roadbed (no concrete on the crossing)", () => {
+  for (const s of ground.streets) {
+    const other = ground.streets.find((o) => o.id !== s.id);
+    const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
+    for (const w of walks) {
+      for (const seg of w.segments) {
+        for (const p of seg) {
+          const along = Math.abs(p.x * s.axis.x + p.z * s.axis.z);
+          assert.ok(along >= other.halfWidth - 1e-9, `${s.id} sidewalk stays clear of the crossing`);
+        }
+      }
     }
   }
 });

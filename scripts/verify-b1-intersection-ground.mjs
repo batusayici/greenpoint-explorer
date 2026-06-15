@@ -47,7 +47,9 @@ for (const s of ground.streets) {
   const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
   assert(walks.length === 2, `${s.id} must have 2 sidewalk bands.`);
   for (const w of walks) {
-    assert(Math.abs(span(w.polygon, perp) - projection.metersToUnits(SIDEWALK_WIDTH_M)) < 0.05, `${s.id} sidewalk width ≈ ${SIDEWALK_WIDTH_M}m.`);
+    for (const seg of w.segments) {
+      assert(Math.abs(span(seg, perp) - projection.metersToUnits(SIDEWALK_WIDTH_M)) < 0.05, `${s.id} sidewalk width ≈ ${SIDEWALK_WIDTH_M}m.`);
+    }
   }
   const cw = ground.crosswalks.find((c) => c.streetId === s.id);
   assert(cw && cw.stripes.length === CROSSWALK_STRIPE_COUNT, `${s.id} crosswalk must have ${CROSSWALK_STRIPE_COUNT} stripes.`);
@@ -59,7 +61,7 @@ for (const s of ground.streets) {
   const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
   const curbs = ground.curbs.filter((c) => c.streetId === s.id);
   for (const c of curbs) {
-    const off = Math.abs(c.line[0].x * perp.x + c.line[0].z * perp.z);
+    const off = Math.abs(c.segments[0][0].x * perp.x + c.segments[0][0].z * perp.z);
     assert(off > 0.2, `${s.id} curb must be off-center (got ${off.toFixed(3)}).`);
   }
 }

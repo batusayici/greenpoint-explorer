@@ -64,7 +64,7 @@ function addFranklinFacadeRecordAssembly(group, { facadeRecord, heroOverride, ma
   addRecordUpperFloors(group, { upperFloors, materials, facadeXMin, facadeWidth, height, baseHeight, recordFaceZ, sideOffset, layer: recordLayer });
   addRecordRoof(group, { roof, materials, centerX, facadeWidth, height, z, depth, recordFaceZ, sideOffset, layer: recordLayer });
   addRecordSideReturn(group, { sideReturn, heroOverride, materials, facadeXMax, height, baseHeight, frontZ: recordFaceZ, z, depth, sideOffset, layer: recordLayer, shadowLayer });
-  addRecordContactGrounding(group, { facadeXMin, facadeWidth, centerX, recordFaceZ, sideOffset, baySpans, shadowLayer });
+  addRecordContactGrounding(group, { facadeWidth, centerX, recordFaceZ, sideOffset, baySpans, shadowLayer });
   addRecordDetailModules(group, {
     facadeRecord,
     detailModules,
@@ -397,7 +397,7 @@ function addRecordSideReturn(group, { sideReturn, heroOverride, materials, facad
   }
 }
 
-function addRecordContactGrounding(group, { facadeXMin, facadeWidth, centerX, recordFaceZ, sideOffset, baySpans, shadowLayer }) {
+function addRecordContactGrounding(group, { facadeWidth, centerX, recordFaceZ, sideOffset, baySpans, shadowLayer }) {
   // Sidewalk, curb, and joint scoring now come from the global groundLayer
   // (src/groundLayer.js). Keep only the cast-shadow contact that grounds the
   // building mass against that surface.
