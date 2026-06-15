@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
 import { buildFacadeAssembly } from "./facadeAssembly.js";
 import { buildGroundLayer } from "./groundLayer.js";
+import { buildStreetFurniture } from "./streetFurniture.js";
 import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1.json";
 import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
@@ -29,6 +30,12 @@ const II_PALETTE = {
   crosswalkPaint: 0xe7dcc2,
   curbStone: 0xcabfa7,
   scoreLine: 0x9b9079,
+  signalPole: 0x2a241c,
+  signalHead: 0x1d201e,
+  signalRed: 0xb24a3a,
+  signalAmber: 0xcc9a3b,
+  signalGreen: 0x4f7d52,
+  pedSignal: 0x26211a,
   ink: 0x2a241c,
   context: [0xd9cdb4, 0xcfc0a6, 0xd4c5ad, 0xc8bba4],
   heroes: {
@@ -105,6 +112,12 @@ export default function SceneView() {
       geometrySource,
     });
     buildGround(three, groundData);
+    const furniture = buildStreetFurniture({
+      streets: groundData.streets,
+      greenpointAxis: scene.greenpointAxis,
+      franklinAxis: scene.franklinAxis,
+    });
+    buildFurniture(three, furniture);
     buildBuildings(three, scene, requestRender, isActive);
     window.__three = three;
     window.__scene = scene;
@@ -372,6 +385,79 @@ function buildGround(three, ground) {
   for (const curb of ground.curbs) {
     for (const seg of curb.segments) addCurbStone(three, seg, II_PALETTE.curbStone);
   }
+}
+
+// Restrained typological corner signals: a dark ink pole, a mast arm reaching
+// over the roadway, a three-light head, and a small pedestrian-signal box. Sizes
+// are in scene units (~0.075/m); a hero building is ~0.9 tall for reference.
+const SIGNAL = { poleH: 0.4, poleR: 0.012, armLen: 0.34, armR: 0.009, head: 0.05, lamp: 0.013 };
+
+function buildFurniture(three, furniture) {
+  for (const sig of furniture.signals) {
+    buildSignal(three, sig);
+  }
+}
+
+function buildSignal(three, sig) {
+  const { position, mastArmDir } = sig;
+  const group = new THREE.Group();
+
+  const pole = new THREE.Mesh(
+    new THREE.CylinderGeometry(SIGNAL.poleR, SIGNAL.poleR, SIGNAL.poleH, 8),
+    new THREE.MeshLambertMaterial({ color: II_PALETTE.signalPole }),
+  );
+  pole.position.set(position.x, SIGNAL.poleH / 2, position.z);
+  group.add(pole);
+
+  const armMid = {
+    x: position.x + mastArmDir.x * (SIGNAL.armLen / 2),
+    z: position.z + mastArmDir.z * (SIGNAL.armLen / 2),
+  };
+  const arm = new THREE.Mesh(
+    new THREE.BoxGeometry(SIGNAL.armLen, SIGNAL.armR * 2, SIGNAL.armR * 2),
+    new THREE.MeshLambertMaterial({ color: II_PALETTE.signalPole }),
+  );
+  arm.position.set(armMid.x, SIGNAL.poleH - SIGNAL.armR, armMid.z);
+  arm.rotation.y = -Math.atan2(mastArmDir.z, mastArmDir.x);
+  group.add(arm);
+
+  const headPos = {
+    x: position.x + mastArmDir.x * SIGNAL.armLen,
+    z: position.z + mastArmDir.z * SIGNAL.armLen,
+  };
+  const head = new THREE.Mesh(
+    new THREE.BoxGeometry(SIGNAL.head * 0.7, SIGNAL.head * 1.8, SIGNAL.head * 0.7),
+    new THREE.MeshLambertMaterial({ color: II_PALETTE.signalHead }),
+  );
+  const headY = SIGNAL.poleH - SIGNAL.armR - SIGNAL.head * 0.9;
+  head.position.set(headPos.x, headY, headPos.z);
+  group.add(head);
+
+  const faceX = -mastArmDir.x * SIGNAL.head * 0.4;
+  const faceZ = -mastArmDir.z * SIGNAL.head * 0.4;
+  const lampColors = [II_PALETTE.signalRed, II_PALETTE.signalAmber, II_PALETTE.signalGreen];
+  lampColors.forEach((color, i) => {
+    const lamp = new THREE.Mesh(
+      new THREE.SphereGeometry(SIGNAL.lamp, 8, 8),
+      new THREE.MeshLambertMaterial({ color, emissive: color, emissiveIntensity: 0.35 }),
+    );
+    lamp.position.set(headPos.x + faceX, headY + SIGNAL.head * (0.55 - i * 0.55), headPos.z + faceZ);
+    group.add(lamp);
+  });
+
+  const ped = new THREE.Mesh(
+    new THREE.BoxGeometry(SIGNAL.head * 0.6, SIGNAL.head * 0.7, SIGNAL.head * 0.35),
+    new THREE.MeshLambertMaterial({ color: II_PALETTE.pedSignal }),
+  );
+  ped.position.set(
+    position.x + mastArmDir.x * 0.02,
+    SIGNAL.poleH * 0.62,
+    position.z + mastArmDir.z * 0.02,
+  );
+  ped.rotation.y = -Math.atan2(mastArmDir.z, mastArmDir.x);
+  group.add(ped);
+
+  three.add(group);
 }
 
 // Composite facade elevations: one head-on drawn image unwrapped across the
