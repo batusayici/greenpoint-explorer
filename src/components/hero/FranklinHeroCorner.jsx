@@ -64,7 +64,7 @@ function addFranklinFacadeRecordAssembly(group, { facadeRecord, heroOverride, ma
   addRecordUpperFloors(group, { upperFloors, materials, facadeXMin, facadeWidth, height, baseHeight, recordFaceZ, sideOffset, layer: recordLayer });
   addRecordRoof(group, { roof, materials, centerX, facadeWidth, height, z, depth, recordFaceZ, sideOffset, layer: recordLayer });
   addRecordSideReturn(group, { sideReturn, heroOverride, materials, facadeXMax, height, baseHeight, frontZ: recordFaceZ, z, depth, sideOffset, layer: recordLayer, shadowLayer });
-  addRecordContactGrounding(group, { materials, facadeXMin, facadeWidth, centerX, z, recordFaceZ, sideOffset, baySpans, layer: recordLayer, shadowLayer });
+  addRecordContactGrounding(group, { facadeXMin, facadeWidth, centerX, recordFaceZ, sideOffset, baySpans, shadowLayer });
   addRecordDetailModules(group, {
     facadeRecord,
     detailModules,
@@ -397,23 +397,10 @@ function addRecordSideReturn(group, { sideReturn, heroOverride, materials, facad
   }
 }
 
-function addRecordContactGrounding(group, { materials, facadeXMin, facadeWidth, centerX, z, recordFaceZ, sideOffset, baySpans, layer, shadowLayer }) {
-  const sidewalkZ = z + sideOffset * 0.36;
-  const curbZ = z + sideOffset * 0.78;
-  addHeroFidelityBox(group, {
-    color: materials.sidewalk ?? 0x99a59e,
-    opacity: 1,
-    position: [centerX, 0.07, sidewalkZ],
-    size: [facadeWidth * 1.28, 0.04, 0.7],
-    ...layer,
-  });
-  addHeroFidelityBox(group, {
-    color: materials.curb ?? 0xe4ddcb,
-    opacity: 1,
-    position: [centerX, 0.1, curbZ],
-    size: [facadeWidth * 1.32, 0.045, 0.09],
-    ...layer,
-  });
+function addRecordContactGrounding(group, { facadeXMin, facadeWidth, centerX, recordFaceZ, sideOffset, baySpans, shadowLayer }) {
+  // Sidewalk, curb, and joint scoring now come from the global groundLayer
+  // (src/groundLayer.js). Keep only the cast-shadow contact that grounds the
+  // building mass against that surface.
   addHeroFidelityBox(group, {
     color: 0x0c0f0e,
     opacity: 0.55,
@@ -428,15 +415,6 @@ function addRecordContactGrounding(group, { materials, facadeXMin, facadeWidth, 
       position: [bay.center, 0.13, recordFaceZ + sideOffset * 0.1],
       size: [bay.width * 0.74, 0.016, 0.12],
       ...shadowLayer,
-    });
-  }
-  for (let seam = 0; seam < 7; seam += 1) {
-    addHeroFidelityBox(group, {
-      color: 0x5e6661,
-      opacity: 0.5,
-      position: [facadeXMin + facadeWidth * (0.08 + seam * 0.14), 0.103, sidewalkZ],
-      size: [0.012, 0.012, 0.54],
-      ...layer,
     });
   }
 }
