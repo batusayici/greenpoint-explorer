@@ -28,7 +28,7 @@ const II_PALETTE = {
   concreteDerived: 0xb2a994,
   crosswalkPaint: 0xe7dcc2,
   curbStone: 0xcabfa7,
-  scoreLine: 0x4a443a,
+  scoreLine: 0x9b9079,
   ink: 0x2a241c,
   context: [0xd9cdb4, 0xcfc0a6, 0xd4c5ad, 0xc8bba4],
   heroes: {
@@ -303,7 +303,7 @@ export default function SceneView() {
 // score-lines, ivory crosswalk bars, raised curbs. Surfaces stack just above
 // the paper ground plane (y=-0.002). Derived geometry (the Franklin gap) takes
 // the muted "...Derived" tones.
-const Y = { roadbed: 0.0008, sidewalk: 0.0018, crosswalk: 0.0028, score: 0.004 };
+const Y = { roadbed: 0.0008, sidewalk: 0.0018, crosswalk: 0.0028, score: 0.0024 };
 
 function addGroundQuad(three, pts, y, color, opacity = 1) {
   const v = new Float32Array([
@@ -331,11 +331,13 @@ function addCurbStone(three, line, color) {
   three.add(box);
 }
 
-// Inked expansion joints across a sidewalk band, ~1.5m apart along its long edge.
+// Subtle inked expansion joints across a sidewalk band, ~2.4m apart along its
+// long edge. Kept flush and low-contrast (a hairline tone just off the concrete)
+// so they read as joints, not raised ties.
 function addSidewalkScoreLines(three, poly) {
   const edgeA = { x: poly[1].x - poly[0].x, z: poly[1].z - poly[0].z };
   const len = Math.hypot(edgeA.x, edgeA.z);
-  const count = Math.max(1, Math.round(len / (1.5 * 0.075)));
+  const count = Math.max(1, Math.round(len / (2.4 * 0.075)));
   const across0 = { x: poly[3].x - poly[0].x, z: poly[3].z - poly[0].z };
   const acrossLen = Math.hypot(across0.x, across0.z);
   for (let i = 1; i < count; i += 1) {
@@ -344,8 +346,8 @@ function addSidewalkScoreLines(three, poly) {
     const p1 = { x: p0.x + across0.x, z: p0.z + across0.z };
     const mid = { x: (p0.x + p1.x) / 2, z: (p0.z + p1.z) / 2 };
     const score = new THREE.Mesh(
-      new THREE.BoxGeometry(0.012, 0.004, acrossLen),
-      new THREE.MeshLambertMaterial({ color: II_PALETTE.scoreLine }),
+      new THREE.BoxGeometry(0.009, 0.0008, acrossLen * 0.9),
+      new THREE.MeshLambertMaterial({ color: II_PALETTE.scoreLine, transparent: true, opacity: 0.5 }),
     );
     score.position.set(mid.x, Y.score, mid.z);
     score.rotation.y = -Math.atan2(across0.z, across0.x) + Math.PI / 2;
