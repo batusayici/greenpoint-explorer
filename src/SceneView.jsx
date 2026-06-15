@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
 import { buildFacadeAssembly } from "./facadeAssembly.js";
+import { buildGroundLayer } from "./groundLayer.js";
 import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1.json";
 import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
@@ -21,6 +22,13 @@ const II_PALETTE = {
   paper: 0xeae1ce,
   street: 0xcabfa7,
   streetDerived: 0xc4b9a2,
+  asphalt: 0x6f6a60,
+  asphaltDerived: 0x6a655c,
+  concrete: 0xb8ae99,
+  concreteDerived: 0xb2a994,
+  crosswalkPaint: 0xe7dcc2,
+  curbStone: 0xcabfa7,
+  scoreLine: 0x4a443a,
   ink: 0x2a241c,
   context: [0xd9cdb4, 0xcfc0a6, 0xd4c5ad, 0xc8bba4],
   heroes: {
@@ -90,7 +98,13 @@ export default function SceneView() {
     const isActive = () => active;
 
     clearFacadeFaces();
-    buildStreets(three, scene.streets);
+    const groundData = buildGroundLayer({
+      projection: scene.projection,
+      greenpointAxis: scene.greenpointAxis,
+      franklinAxis: scene.franklinAxis,
+      geometrySource,
+    });
+    buildGround(three, groundData);
     buildBuildings(three, scene, requestRender, isActive);
     window.__three = three;
     window.__scene = scene;
@@ -285,24 +299,73 @@ export default function SceneView() {
   );
 }
 
-function buildStreets(three, streets) {
-  for (const street of streets) {
-    for (let index = 0; index < street.line.length - 1; index += 1) {
-      const start = street.line[index];
-      const end = street.line[index + 1];
-      const length = Math.hypot(end.x - start.x, end.z - start.z);
-      if (length < 1e-6) continue;
-      const slab = new THREE.Mesh(
-        new THREE.PlaneGeometry(length, street.widthUnits),
-        new THREE.MeshLambertMaterial({
-          color: street.derived ? II_PALETTE.streetDerived : II_PALETTE.street,
-        }),
-      );
-      slab.rotation.x = -Math.PI / 2;
-      slab.rotation.z = -Math.atan2(end.z - start.z, end.x - start.x);
-      slab.position.set((start.x + end.x) / 2, 0.001, (start.z + end.z) / 2);
-      three.add(slab);
-    }
+// Procedural inked ground: warm asphalt roadbeds, concrete sidewalks with
+// score-lines, ivory crosswalk bars, raised curbs. Surfaces stack just above
+// the paper ground plane (y=-0.002). Derived geometry (the Franklin gap) takes
+// the muted "...Derived" tones.
+const Y = { roadbed: 0.0008, sidewalk: 0.0018, crosswalk: 0.0028, score: 0.004 };
+
+function addGroundQuad(three, pts, y, color, opacity = 1) {
+  const v = new Float32Array([
+    pts[0].x, y, pts[0].z, pts[1].x, y, pts[1].z, pts[2].x, y, pts[2].z,
+    pts[0].x, y, pts[0].z, pts[2].x, y, pts[2].z, pts[3].x, y, pts[3].z,
+  ]);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.BufferAttribute(v, 3));
+  g.computeVertexNormals();
+  three.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({
+    color, transparent: opacity < 1, opacity,
+  })));
+}
+
+function addCurbStone(three, line, color) {
+  const [a, b] = line;
+  const len = Math.hypot(b.x - a.x, b.z - a.z);
+  if (len < 1e-6) return;
+  const box = new THREE.Mesh(
+    new THREE.BoxGeometry(len, 0.05, 0.04),
+    new THREE.MeshLambertMaterial({ color }),
+  );
+  box.position.set((a.x + b.x) / 2, 0.025, (a.z + b.z) / 2);
+  box.rotation.y = -Math.atan2(b.z - a.z, b.x - a.x);
+  three.add(box);
+}
+
+// Inked expansion joints across a sidewalk band, ~1.5m apart along its long edge.
+function addSidewalkScoreLines(three, poly) {
+  const edgeA = { x: poly[1].x - poly[0].x, z: poly[1].z - poly[0].z };
+  const len = Math.hypot(edgeA.x, edgeA.z);
+  const count = Math.max(1, Math.round(len / (1.5 * 0.075)));
+  const across0 = { x: poly[3].x - poly[0].x, z: poly[3].z - poly[0].z };
+  const acrossLen = Math.hypot(across0.x, across0.z);
+  for (let i = 1; i < count; i += 1) {
+    const t = i / count;
+    const p0 = { x: poly[0].x + edgeA.x * t, z: poly[0].z + edgeA.z * t };
+    const p1 = { x: p0.x + across0.x, z: p0.z + across0.z };
+    const mid = { x: (p0.x + p1.x) / 2, z: (p0.z + p1.z) / 2 };
+    const score = new THREE.Mesh(
+      new THREE.BoxGeometry(0.012, 0.004, acrossLen),
+      new THREE.MeshLambertMaterial({ color: II_PALETTE.scoreLine }),
+    );
+    score.position.set(mid.x, Y.score, mid.z);
+    score.rotation.y = -Math.atan2(across0.z, across0.x) + Math.PI / 2;
+    three.add(score);
+  }
+}
+
+function buildGround(three, ground) {
+  for (const road of ground.roadbeds) {
+    addGroundQuad(three, road.polygon, Y.roadbed, road.derived ? II_PALETTE.asphaltDerived : II_PALETTE.asphalt);
+  }
+  for (const walk of ground.sidewalks) {
+    addGroundQuad(three, walk.polygon, Y.sidewalk, walk.derived ? II_PALETTE.concreteDerived : II_PALETTE.concrete);
+    addSidewalkScoreLines(three, walk.polygon);
+  }
+  for (const cw of ground.crosswalks) {
+    for (const stripe of cw.stripes) addGroundQuad(three, stripe, Y.crosswalk, II_PALETTE.crosswalkPaint);
+  }
+  for (const curb of ground.curbs) {
+    addCurbStone(three, curb.line, II_PALETTE.curbStone);
   }
 }
 
