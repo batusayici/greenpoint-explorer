@@ -170,12 +170,17 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const ux0 = u(awning.x0); // own-slice UV bounds — clamp the miter sliver here
     const ux1 = u(awning.x1);
 
+    // Canopy top: a flat-elevation has no art for the awning's upper surface,
+    // and stretching the front band across the projection smears the text. So
+    // the top samples a single dark row at the canopy/valance seam (yDrop) —
+    // uniform dark fabric, grain intact, no smear. The front-facing art lives
+    // entirely on the vertical valance below, where it reads undistorted.
     const canopy = quadGeometry(
       facePoint(frame, wx0, awning.yWall, 0),
       facePoint(frame, wx1, awning.yWall, 0),
       facePoint(frame, dx1, awning.yDrop, projection),
       facePoint(frame, dx0, awning.yDrop, projection),
-      [ux0, awning.yWall, ux1, awning.yWall, ux1, awning.yDrop, ux0, awning.yDrop],
+      [ux0, awning.yDrop, ux1, awning.yDrop, ux1, awning.yDrop, ux0, awning.yDrop],
     );
     group.add(new THREE.Mesh(canopy, texturedMaterial(texture, 1)));
 

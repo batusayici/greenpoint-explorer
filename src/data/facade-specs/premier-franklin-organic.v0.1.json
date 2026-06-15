@@ -29,9 +29,9 @@
           "x0": 0,
           "x1": 0.282,
           "yWall": 0.31,
-          "yDrop": 0.27,
+          "yDrop": 0.30,
           "yValance": 0.24,
-          "projectionM": 0.85,
+          "projectionM": 0.6,
           "cornerLeft": true
         }
       ],
@@ -148,9 +148,9 @@
           "x0": 0,
           "x1": 1,
           "yWall": 0.31,
-          "yDrop": 0.27,
+          "yDrop": 0.30,
           "yValance": 0.24,
-          "projectionM": 0.85,
+          "projectionM": 0.6,
           "cornerRight": true
         }
       ],
@@ -223,9 +223,9 @@
           "x0": 0.625,
           "x1": 1,
           "yWall": 0.31,
-          "yDrop": 0.27,
+          "yDrop": 0.30,
           "yValance": 0.24,
-          "projectionM": 0.85
+          "projectionM": 0.6
         }
       ],
       "windows": {
