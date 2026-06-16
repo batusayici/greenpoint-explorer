@@ -4,12 +4,12 @@
 import fs from "node:fs";
 
 const records = JSON.parse(fs.readFileSync("src/data/places/franklin-greenpoint-heroes.v0.1.json", "utf8"));
-const HERO_IDS = ["premier-franklin-organic", "sonnys-corner", "sereneco"];
+const HERO_IDS = ["premier-franklin-organic", "sonnys-corner", "sereneco", "azure-gourmet"];
 const failures = [];
 const assert = (c, m) => { if (!c) failures.push(m); };
 
-assert(records.length === 3, "Expected exactly 3 hero records.");
-assert(HERO_IDS.every((id) => records.some((r) => r.placeId === id)), "All three hero placeIds present.");
+assert(records.length === 4, "Expected exactly 4 hero records.");
+assert(HERO_IDS.every((id) => records.some((r) => r.placeId === id)), "All four hero placeIds present.");
 
 for (const r of records) {
   assert(r.name && r.category && r.address, `${r.placeId}: name/category/address required.`);
@@ -26,4 +26,4 @@ if (failures.length) {
   console.error("FAIL place-data verifier:\n - " + failures.join("\n - "));
   process.exit(1);
 }
-console.log(`PASS place-data verifier: 3 sourced hero records. Approval states: ${records.map((r) => `${r.placeId}=${r.approvalStatus}`).join(", ")}`);
+console.log(`PASS place-data verifier: ${records.length} sourced hero records. Approval states: ${records.map((r) => `${r.placeId}=${r.approvalStatus}`).join(", ")}`);

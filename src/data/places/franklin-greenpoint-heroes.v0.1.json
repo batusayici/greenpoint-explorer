@@ -49,5 +49,22 @@
       { "label": "NYC Tourism restaurant listing for Sereneco", "url": "https://www.nyctourism.com/restaurants/sereneco/" }
     ],
     "approvalStatus": "proposed"
+  },
+  {
+    "id": "azure-gourmet",
+    "placeId": "azure-gourmet",
+    "name": "Azure Gourmet",
+    "category": "Deli",
+    "tags": ["deli", "grocery", "market"],
+    "address": "113 Franklin St, Brooklyn, NY 11222",
+    "description": "An upscale deli and corner market at 113 Franklin Street in Greenpoint, stocking bodega essentials alongside specialty and Brooklyn-made groceries, fresh produce, and an in-store deli counter.",
+    "status": "active",
+    "verificationStatus": "verified",
+    "lastVerified": "2026-06-16",
+    "sources": [
+      { "label": "Greenpointers — Azure Gourmet Opens Upscale Deli on Franklin Street", "url": "https://greenpointers.com/2020/07/09/azure-gourmet-opens-upscale-deli-on-franklin-street/" },
+      { "label": "Yelp listing for Azure Gourmet (113 Franklin St)", "url": "https://www.yelp.com/biz/azure-gourmet-brooklyn" }
+    ],
+    "approvalStatus": "approved"
   }
 ]
