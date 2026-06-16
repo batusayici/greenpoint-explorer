@@ -196,6 +196,31 @@ a banked fix regressed or a playbook rule was skipped.
   `assets/textures/franklin/` — a superseded/faulty render left in the folder
   ships ~3MB of dead weight. Delete faulty textures, don't just stop
   referencing them.
+- **Kink correction (2026-06-15, against the Franklin-face reference photo):**
+  the first pass shipped `0.155`, which BISECTED the giant Franklin arch — half
+  the Franklin bay (arch, 2nd-floor window, base door+window) spilled onto the
+  Greenpoint slice. The reference made it obvious: the Franklin face is the
+  whole giant-arch bay. Real fold is `0.29` (arch spans u0.03..0.28; matches the
+  10.5m:25.3m wall proportion). **Lesson — the earlier "drawn-fold-wins" call
+  was right in principle but I read the wrong pier:** an interior pilaster at
+  0.155 is NOT the corner. Confirm the fold against the SINGLE-FACE reference
+  photo (which face shows what), not just the unwrap — count the openings that
+  belong to each face and put the fold after the last one. The px/m match
+  (39 vs 40) is the tell that the fold is proportionally right.
+- **Cornice corner-notch (the "white notch" — same family as Sonny's cap):**
+  a bright sliver at the fold was an **outer-miter GAP**, not a light texture
+  pixel. Cause: the `cornerLeft`/`cornerRight` wrap flags were on the WRONG
+  ends. The flag must sit on the **corner-adjacent face-local edge**: with the
+  unwrap reading Franklin→Greenpoint, the corner is the Franklin slice's *right*
+  edge (`cornerRight`) and the Greenpoint slice's *left* edge (`cornerLeft`).
+  I'd set them inverted, so each crown extended at its OUTER end and the corner
+  stayed open. **Rule:** corner edge = the slice edge at the kink; map it from
+  `leftEnd` (leftEnd names which world end is texture-x0, so the *other* end is
+  the kink/corner unless the neighbour slice begins at x0). Verify by querying
+  the two cornice-front meshes — their corner ends must share a point (here
+  they met at (0.612,-0.919) after the fix; before, 0.65 vs -0.96 = the gap).
+  **Gotcha:** JSON-spec edits don't always hot-reload — the geometry kept the
+  old flags until a full page reload. Reload before re-judging a spec change.
 
 ---
 

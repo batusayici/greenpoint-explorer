@@ -699,14 +699,16 @@ const SONNYS_KINK = 0.734;
 // covers just the corner-adjacent 12m of the 57m footprint edge (R10G).
 const SERENECO_KINK = 0.496;
 // 144 Franklin Ave (NE corner, BIN 3064675) — 1895 Romanesque Revival hero.
-// One continuous head-on unwrap: the leftmost single bay (Franklin St return,
-// west face) reads left of the drawn corner pier; the long 5-bay run right of
-// it is the Greenpoint Ave frontage (south face). The artist drew the Franklin
-// return narrow (~1 bay) though the real wall is ~2 bays (10.5m : 25.3m →
-// proportional fold ≈0.29); per the playbook the DRAWN fold is registration
-// truth, so the kink sits on the painted pier (~0.155) and Franklin coverMeters
-// caps the stretch onto its real wall.
-const FRANKLIN_144_KINK = 0.155;
+// One continuous head-on unwrap: the Franklin St return (west face) is the
+// single giant-arch bay left of the corner pier; the long 5-bay run right of
+// it is the Greenpoint Ave frontage (south face). The fold sits on the corner
+// pier at u≈0.29 — the giant Franklin arch spans u0.03..0.28 (3rd-floor arch,
+// 2nd-floor window, base door + arched window all end there), and 0.29 matches
+// the true wall proportion (Franklin 10.5m : Greenpoint 25.3m). NOTE: an
+// earlier pass used 0.155, which bisected the giant arch and pushed half the
+// Franklin bay onto the Greenpoint slice — corrected per the Franklin-face
+// reference photo (2026-06-15).
+const FRANKLIN_144_KINK = 0.29;
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
     key: "../assets/textures/franklin/premier-franklin-organic--corner-v4.png",
