@@ -1,0 +1,8 @@
+{
+  "id": "franklin-milton",
+  "label": "Franklin St — Greenpoint Ave to Milton St",
+  "bbox": { "minLon": -73.9586, "minLat": 40.7299, "maxLon": -73.9568, "maxLat": 40.7313 },
+  "streetSegments": [
+    { "name": "Franklin St", "from": "Greenpoint Ave", "to": "Milton St" }
+  ]
+}
