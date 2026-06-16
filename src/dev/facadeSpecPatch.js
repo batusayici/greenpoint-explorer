@@ -32,13 +32,13 @@ export function listEditableRecesses(faceSpec) {
     items.push(mk(`window-${i}`, `window ${i + 1}`, "window", ["windows", "rects", i], rectOf(r), {
       // windows share one recessM; depth edits the whole set.
       key: "recessM", path: ["windows", "recessM"], value: faceSpec.windows?.recessM,
-    })),
+    }, false, r)),
   );
   (faceSpec.storefronts ?? []).forEach((r, i) =>
     items.push(mk(`storefront-${i}`, `storefront ${i + 1}`, "storefront", ["storefronts", i], rectOf(r), depthAt(r, "storefront", ["storefronts", i]))),
   );
   (faceSpec.doors ?? []).forEach((r, i) =>
-    items.push(mk(`door-${i}`, `door ${i + 1}`, "door", ["doors", i], rectOf(r), depthAt(r, "door", ["doors", i]))),
+    items.push(mk(`door-${i}`, `door ${i + 1}`, "door", ["doors", i], rectOf(r), depthAt(r, "door", ["doors", i]), false, r)),
   );
   (faceSpec.boxes ?? []).forEach((r, i) =>
     items.push(mk(`box-${i}`, `box ${i + 1}`, "box", ["boxes", i], rectOf(r), depthAt(r, "box", ["boxes", i]))),
@@ -55,7 +55,7 @@ export function listEditableRecesses(faceSpec) {
   return items;
 }
 
-function mk(id, label, kind, path, rect, depthOverride, lockX = false) {
+function mk(id, label, kind, path, rect, depthOverride, lockX = false, src = null) {
   const meta = DEPTH[kind];
   let depth = null;
   if (depthOverride) {
@@ -68,7 +68,8 @@ function mk(id, label, kind, path, rect, depthOverride, lockX = false) {
       value: depthOverride.value ?? meta.def,
     };
   }
-  return { id, label, kind, path, rect, depth, ...(lockX ? { lockX: true } : {}) };
+  const shapeMeta = src ? { shape: src.shape ?? "rect", springY: src.springY } : {};
+  return { id, label, kind, path, rect, depth, ...shapeMeta, ...(lockX ? { lockX: true } : {}) };
 }
 
 // Depth descriptor for a per-item component (offset key lives on the rect).
@@ -113,5 +114,36 @@ export function patchDepth(faceSpec, depthPath, value) {
     node = node[depthPath[k]];
   }
   node[depthPath[depthPath.length - 1]] = round(value);
+  return clone;
+}
+
+// Set the opening shape at `path`. Switching to "arch" seeds springY at the
+// box midpoint if absent; switching back to "rect" strips shape/springY so
+// the saved spec stays clean.
+export function patchShape(faceSpec, path, shape) {
+  const clone = structuredClone(faceSpec);
+  let node = clone;
+  for (let k = 0; k < path.length - 1; k += 1) node = node[path[k]];
+  const i = path[path.length - 1];
+  const rect = node[i];
+  if (shape === "rect") {
+    const { shape: _s, springY: _y, ...rest } = rect;
+    node[i] = rest;
+  } else if (shape === "arch") {
+    node[i] = { ...rect, shape, springY: rect.springY ?? round((rect.y0 + rect.y1) / 2) };
+  } else {
+    const { springY: _y, ...rest } = rect;
+    node[i] = { ...rest, shape };
+  }
+  return clone;
+}
+
+// Set springY (arch spring line) at `path`, rounded to spec precision.
+export function patchSpring(faceSpec, path, value) {
+  const clone = structuredClone(faceSpec);
+  let node = clone;
+  for (let k = 0; k < path.length - 1; k += 1) node = node[path[k]];
+  const i = path[path.length - 1];
+  node[i] = { ...node[i], springY: round(value) };
   return clone;
 }

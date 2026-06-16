@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { faceRectToPanel, panelDeltaToFace, panelPointToFace, moveRect, resizeRect, leanShift } from "./facadeCoords.js";
-import { listEditableRecesses, patchDepth, patchRecess } from "./facadeSpecPatch.js";
+import { listEditableRecesses, patchDepth, patchRecess, patchShape, patchSpring } from "./facadeSpecPatch.js";
 
 const view = { width: 400, height: 500, skewX: 0 };
 const close = (a, b, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} ≈ ${b}`);
@@ -109,4 +109,37 @@ test("patchDepth writes only the depth key, rounds, and is immutable", () => {
   assert.equal(next.boxes[0].projectionM, 0.471);
   assert.equal(next.boxes[0].x0, 0.6); // rect untouched
   assert.equal(proudLike.boxes[0].projectionM, 0.3); // original untouched
+});
+
+test("listEditableRecesses surfaces shape and springY on window items", () => {
+  const spec = { windows: { recessM: 0.12, rects: [
+    { x0: 0.1, x1: 0.2, y0: 0.0, y1: 0.6, shape: "arch", springY: 0.4 },
+    { x0: 0.3, x1: 0.4, y0: 0.7, y1: 0.9, shape: "circle" },
+  ] } };
+  const items = listEditableRecesses(spec);
+  assert.equal(items[0].shape, "arch");
+  close(items[0].springY, 0.4);
+  assert.equal(items[1].shape, "circle");
+});
+
+test("patchShape sets shape and seeds springY midpoint when switching to arch", () => {
+  const spec = { windows: { rects: [{ x0: 0.1, x1: 0.2, y0: 0.0, y1: 0.6 }] } };
+  const next = patchShape(spec, ["windows", "rects", 0], "arch");
+  assert.equal(next.windows.rects[0].shape, "arch");
+  close(next.windows.rects[0].springY, 0.3);
+  assert.equal(spec.windows.rects[0].shape, undefined);
+});
+
+test("patchShape back to rect drops shape and springY", () => {
+  const spec = { windows: { rects: [{ x0: 0.1, x1: 0.2, y0: 0.0, y1: 0.6, shape: "arch", springY: 0.3 }] } };
+  const next = patchShape(spec, ["windows", "rects", 0], "rect");
+  assert.equal(next.windows.rects[0].shape, undefined);
+  assert.equal(next.windows.rects[0].springY, undefined);
+});
+
+test("patchSpring updates springY rounded to 3dp and preserves coords", () => {
+  const spec = { windows: { rects: [{ x0: 0.1, x1: 0.2, y0: 0.0, y1: 0.6, shape: "arch", springY: 0.3 }] } };
+  const next = patchSpring(spec, ["windows", "rects", 0], 0.41666);
+  close(next.windows.rects[0].springY, 0.417);
+  close(next.windows.rects[0].x0, 0.1);
 });
