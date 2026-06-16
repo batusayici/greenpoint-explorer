@@ -39,7 +39,8 @@
           "x1": 0.834,
           "y0": 0,
           "y1": 0.391,
-          "recessM": 0.3
+          "recessM": 0.3,
+          "placeId": "azure-gourmet"
         }
       ],
       "skewX": 0

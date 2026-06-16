@@ -278,6 +278,15 @@ export default function SceneView() {
         .filter((b) => b.placeId)
         .map((b) => [b.placeId, new THREE.Vector3(b.centroid.x, Math.max(b.height * 0.22, 0.22), b.centroid.z)]),
     );
+    // Azure Gourmet is a storefront tenant on the Sereneco building's Franklin
+    // elevation, not its own footprint — anchor its pin to that shared building.
+    const serenecoForAzure = scene.buildings.find((b) => b.placeId === "sereneco");
+    if (serenecoForAzure) {
+      anchorWorld.set(
+        "azure-gourmet",
+        new THREE.Vector3(serenecoForAzure.centroid.x, Math.max(serenecoForAzure.height * 0.22, 0.22), serenecoForAzure.centroid.z),
+      );
+    }
 
     function projectAnchor(placeId) {
       const w = anchorWorld.get(placeId);

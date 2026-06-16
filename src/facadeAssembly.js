@@ -129,13 +129,23 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       x0: storefront.cornerLeft ? storefront.x0 + ext : storefront.x0,
       x1: storefront.cornerRight ? storefront.x1 - ext : storefront.x1,
     };
-    group.add(rectMesh(frame, glass, -recess, texturedMaterial(texture, 0.97)));
-    addReveals(group, frame, glass, 0, -recess, texture, {
+    // A storefront can belong to a different tenant than the building's primary
+    // place (e.g. Azure Gourmet shares Sereneco's Franklin elevation). Tagging
+    // its meshes' parent group with that placeId makes click-to-select resolve
+    // this storefront to its own card — the handler walks up to the first
+    // userData.placeId, which is this group, not the building's hero group.
+    const target = storefront.placeId ? new THREE.Group() : group;
+    target.add(rectMesh(frame, glass, -recess, texturedMaterial(texture, 0.97)));
+    addReveals(target, frame, glass, 0, -recess, texture, {
       bottom: false,
       top: storefront.revealTop !== false,
       left: storefront.revealLeft !== false && !storefront.cornerLeft,
       right: storefront.revealRight !== false && !storefront.cornerRight,
     });
+    if (storefront.placeId) {
+      target.userData.placeId = storefront.placeId;
+      group.add(target);
+    }
   }
 
   // Sign bands: proud of the wall with thin returns.
