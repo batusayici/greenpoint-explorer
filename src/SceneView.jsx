@@ -172,14 +172,21 @@ export default function SceneView() {
     let rotRaf = null;
     let animFromAz = ISO_AZIMUTH;
     let animStartMs = 0;
-    const cullables = []; // [{ object, normal }] — object is mutable (wall → assembly)
+    const cullables = []; // [{ object, normal, refresh }] — object is mutable (wall → assembly)
     const addCullable = (object, normal) => {
+      // `refresh` recomputes this record's visibility from the LIVE azimuth, so
+      // a live rebuild (recess editor) can re-cull the freshly-built assembly
+      // instead of inheriting a stale value. Closes over `record` so it works
+      // regardless of call site.
       const record = { object, normal };
+      record.refresh = () => {
+        record.object.visible = facingDot(record.normal, currentAzimuth) >= CULL_T;
+      };
       cullables.push(record);
       return record;
     };
     function applyCulling() {
-      for (const c of cullables) c.object.visible = facingDot(c.normal, currentAzimuth) >= CULL_T;
+      for (const c of cullables) c.refresh();
     }
 
     clearFacadeFaces();
@@ -970,9 +977,11 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
             }
             current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
             current.userData.faceKey = faceKey;
-            current.visible = wall.visible; // inherit the flat wall's culling state
             heroGroup.add(current);
             cull.object = current; // rotation re-culls the assembly, not the discarded wall
+            cull.refresh(); // re-cull for the live azimuth — never inherit the
+            // stale flat-wall visibility (frozen at load), which would hide any
+            // face that wasn't camera-facing at first build on every live edit.
             requestRender?.();
           };
           rebuild(specFace);
