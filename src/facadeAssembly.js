@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { openingProfile, springYOf } from "./facadeProfiles.js";
 
 // Structured facade assembly: turns a flat elevation slice into a shallow
 // relief. The facade spec names components in normalized face coordinates
@@ -57,7 +58,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       // counts) recess exactly on their painted windows. Preferred over the
       // rows×cols product, which manufactures windows at empty grid cells.
       for (const rect of spec.windows.rects) {
-        windowRects.push(lean({ x0: rect.x0, x1: rect.x1, y0: rect.y0, y1: rect.y1 }));
+        windowRects.push(lean({ x0: rect.x0, x1: rect.x1, y0: rect.y0, y1: rect.y1, shape: rect.shape, springY: rect.springY }));
       }
     } else if (spec.windows.rows && spec.windows.cols) {
       for (const row of spec.windows.rows) {
@@ -93,6 +94,10 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // Windows: recessed pane + tinted reveals + protruding sill.
   const windowRecess = meters(spec.windows?.recessM ?? 0.14);
   for (const rect of windowRects) {
+    if (rect.shape && rect.shape !== "rect") {
+      addShapedOpening(group, frame, rect, windowRecess, texture);
+      continue;
+    }
     group.add(rectMesh(frame, rect, -windowRecess, texturedMaterial(texture, 1)));
     addReveals(group, frame, rect, 0, -windowRecess, texture);
     // Geometric sills only on request — the drawn elevations carry their
@@ -227,6 +232,10 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // Doors: shallow recess with reveals, open at the threshold.
   for (const door of doors) {
     const recess = meters(door.recessM ?? 0.12);
+    if (door.shape && door.shape !== "rect") {
+      addShapedOpening(group, frame, door, recess, texture);
+      continue;
+    }
     group.add(rectMesh(frame, door, -recess, texturedMaterial(texture, 0.98)));
     addReveals(group, frame, door, 0, -recess, texture, { bottom: false });
   }
@@ -385,6 +394,42 @@ function rectMesh(frame, rect, offset, material) {
     material.map ? rectUv(frame, rect) : undefined,
   );
   return new THREE.Mesh(geometry, material);
+}
+
+// Triangulate a convex/star-shaped face-coord polygon as a fan from points[0],
+// at a constant normal offset, textured by each vertex's own (x,y) UV so the
+// painted artwork registers. `points` are {x,y} in face-coords.
+function fanGeometry(frame, points, offset, withUv) {
+  const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
+  const position = [];
+  const uv = [];
+  for (const p of points) {
+    position.push(...facePoint(frame, p.x, p.y, offset));
+    if (withUv) uv.push(u(p.x), p.y);
+  }
+  const index = [];
+  for (let i = 1; i < points.length - 1; i += 1) index.push(0, i, i + 1);
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(new Float32Array(position), 3));
+  if (withUv) geometry.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(uv), 2));
+  geometry.setIndex(index);
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+// A shaped opening (arch/circle): recessed silhouette pane + flush spandrel/
+// corner fillers (textured wall, so the corners read flush) + straight reveals
+// on the lower jambs/sill only (the curved head is pane-only — accepted seam).
+function addShapedOpening(group, frame, rect, recess, texture) {
+  const profile = openingProfile(rect);
+  group.add(new THREE.Mesh(fanGeometry(frame, profile.outline, -recess, true), texturedMaterial(texture, 1)));
+  for (const filler of profile.fillers) {
+    group.add(new THREE.Mesh(fanGeometry(frame, filler, 0, true), texturedMaterial(texture, 1)));
+  }
+  if ((rect.shape ?? "rect") === "arch") {
+    const lower = { x0: rect.x0, x1: rect.x1, y0: rect.y0, y1: springYOf(rect) };
+    addReveals(group, frame, lower, 0, -recess, texture, { top: false });
+  }
 }
 
 // A reveal bridges the wall plane and a recessed/proud plane along one rect
