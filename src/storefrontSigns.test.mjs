@@ -62,42 +62,16 @@ test("no unclaimed band label equals its roster name", () => {
   }
 });
 
-test("loud-trade bays get a blade in addition to a band; others do not", () => {
+test("only band placements are produced (blades dropped — unreadable at iso angles)", () => {
   const out = planStorefrontSigns({ bays, storeys: 4 });
-  const blades = out.filter((p) => p.kind === "blade");
-  assert.equal(blades.length, 1);
-  assert.equal(blades[0].bayName, "Joe's");
-  assert.equal(blades[0].label, "Barbershop");
+  assert.equal(out.filter((p) => p.kind === "blade").length, 0);
+  assert.equal(out.filter((p) => p.kind === "band").length, bays.length);
 });
 
-test("bar and pub are loud trades; cafe and deli are not", () => {
-  const mk = (category) => planStorefrontSigns({
-    bays: [{ bin: "1", name: "X", category, slotIndex: 0 }], storeys: 3,
-  }).filter((p) => p.kind === "blade").length;
-  assert.equal(mk("bar"), 1);
-  assert.equal(mk("pub"), 1);
-  assert.equal(mk("hairdresser"), 1);
-  assert.equal(mk("cafe"), 0);
-  assert.equal(mk("deli"), 0);
-  assert.equal(mk("restaurant"), 0);
-});
-
-test("blade carries a positive projection and a mount within the ground storey", () => {
-  const blade = planStorefrontSigns({
-    bays: [{ bin: "1", name: "X", category: "bar", slotIndex: 0 }], storeys: 4,
-  }).find((p) => p.kind === "blade");
-  const gy = 1 / 4;
-  assert.ok(blade.projectMeters > 0);
-  assert.ok(blade.mountY > 0 && blade.mountY < gy);
-  assert.ok(blade.panelHeightFrac > 0 && blade.panelHeightFrac < gy);
-  assert.equal(blade.off, 0.02);
-});
-
-test("no bay yields more than one band or more than one blade (no stacking)", () => {
+test("each bay yields exactly one band (no duplicates)", () => {
   const out = planStorefrontSigns({ bays, storeys: 4 });
   for (const bay of bays) {
     assert.equal(out.filter((p) => p.kind === "band" && p.bayName === bay.name).length, 1);
-    assert.ok(out.filter((p) => p.kind === "blade" && p.bayName === bay.name).length <= 1);
   }
 });
 

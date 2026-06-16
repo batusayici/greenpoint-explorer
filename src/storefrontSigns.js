@@ -31,11 +31,6 @@ export function resolveSignLabel(bay) {
   return categoryLabel(bay && bay.category);
 }
 
-// "Loud trades" earn a projecting blade sign — the idiom that actually beats
-// iso occlusion (perpendicular to the wall, so a face catches every angle).
-// Category-gated to ~1-in-4 shops so the block reads varied, not cluttered.
-const LOUD_TRADES = new Set(["bar", "pub", "hairdresser", "barber"]);
-
 // Plan all sign placements for the bays of a single building.
 // Returns face-local placement descriptors; the renderer maps them to world
 // geometry. `bays` are the storefront bays assigned to one building (sharing a
@@ -63,23 +58,6 @@ export function planStorefrontSigns({ bays, storeys }) {
       y1: gy * 0.90,
       off: 0.02,
     });
-
-    if (LOUD_TRADES.has(bay.category)) {
-      placements.push({
-        kind: "blade",
-        bayName: bay.name,
-        label,
-        claimed,
-        cx,
-        // mountY / panelHeightFrac are fractions of TOTAL building height
-        // (gy = 1/storeys), matching the band's y0/y1 convention — the renderer
-        // multiplies them by building height, it does not re-scale by storey.
-        mountY: gy * 0.78,        // sign center, high on the ground storey
-        panelHeightFrac: gy * 0.34,
-        projectMeters: 1.1,       // real-world blade reach; renderer * scale
-        off: 0.02,
-      });
-    }
   }
 
   return placements;

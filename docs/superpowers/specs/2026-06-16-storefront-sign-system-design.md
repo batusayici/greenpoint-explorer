@@ -50,12 +50,14 @@ existing identity, everything else falls through to category label.
 
 ## Idiom palette (full system)
 
-| Idiom | Role | This batch? |
+| Idiom | Role | Status |
 |---|---|---|
-| **Raised/enlarged flat band** | Baseline — every commercial bay | YES |
-| **Projecting blade sign** | Perpendicular panel; the occlusion fix | YES |
-| Awning-valance name | Name on the sloped awning flap (food trades) | Fast-follow |
+| **Raised/enlarged flat band** | Baseline — every commercial bay | SHIPPED |
+| **Projecting blade sign** | Perpendicular panel; intended occlusion fix | TRIALLED & DROPPED — did not read at the fixed iso angles (Batu call, 2026-06-16). Code removed. |
+| Awning-valance name | Name on the sloped awning flap (food trades) | Fast-follow — now the leading candidate for iso legibility (valance faces the camera) |
 | Ghost upper-wall lettering | Faded painted wall sign, heroes/landmarks only | Fast-follow |
+
+> **Outcome note (2026-06-16):** the band-enlargement + category-label/claim model shipped. The blade idiom was built, reviewed, and removed after in-engine review showed it didn't read at the four fixed iso angles. Iso occlusion of coplanar bands therefore remains partly open; the awning-valance idiom is the designed next attempt.
 
 ## Assignment rule (anti-clutter engine)
 
