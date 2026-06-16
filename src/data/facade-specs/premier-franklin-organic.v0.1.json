@@ -87,7 +87,9 @@
         "x1": 0.479,
         "y0": 0.266,
         "y1": 0.895,
-        "projectionM": 0.6
+        "projectionM": 0.6,
+        "plan": "oriel3",
+        "centerFraction": 0.36
       },
       "doors": [
         {
