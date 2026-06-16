@@ -27,6 +27,73 @@ function dist2(a, b) {
   return Math.sqrt(dx * dx + dz * dz);
 }
 
+/** Normalize a business name for fuzzy duplicate detection: lowercase, drop a
+ * leading "the ", collapse non-alphanumerics to single spaces, trim. */
+function normName(n) {
+  return String(n ?? "")
+    .toLowerCase()
+    .replace(/^the\s+/, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+/** True when two names plausibly denote the same business: equal after
+ * normalization, or one normalized name contains the other (length-guarded so
+ * short generic tokens like "deli" don't swallow distinct shops). */
+function namesSimilar(a, b) {
+  const x = normName(a);
+  const y = normName(b);
+  if (!x || !y) return false;
+  if (x === y) return true;
+  const [short, long] = x.length <= y.length ? [x, y] : [y, x];
+  return short.length >= 5 && long.includes(short);
+}
+
+/** Rank a storefront's trustworthiness for dedup tie-breaks: verified/active
+ * records win, then those with an explicit (non-"overflow") confidence. */
+function dedupRank(s) {
+  let r = 0;
+  const status = String(s?.activeStatus ?? "").toLowerCase();
+  if (status === "active" || status === "verified") r += 2;
+  if (s?.confidence && s.confidence !== "overflow") r += 1;
+  return r;
+}
+
+/**
+ * Collapse storefronts that denote the same physical business surfaced more
+ * than once (e.g. overlapping block bboxes returning "Land of Barbers" and
+ * "The Land of Barbers" at near-identical points). Two records merge when their
+ * scenePoints are within `radiusUnits` AND their names are similar; the
+ * higher-ranked record survives. Records without a scenePoint pass through.
+ *
+ * Pure and order-stable: the first survivor's slot in the output is preserved,
+ * only its fields are upgraded if a stronger duplicate appears later.
+ *
+ * @param {Array<{name:string, scenePoint?:{x:number,z:number}|null}>} storefronts
+ * @param {number} radiusUnits proximity threshold in scene units
+ */
+export function dedupeByProximity(storefronts, radiusUnits) {
+  const kept = [];
+  for (const s of storefronts) {
+    if (!s.scenePoint) {
+      kept.push(s);
+      continue;
+    }
+    const dup = kept.find(
+      (k) =>
+        k.scenePoint &&
+        dist2(k.scenePoint, s.scenePoint) <= radiusUnits &&
+        namesSimilar(k.name, s.name)
+    );
+    if (dup) {
+      if (dedupRank(s) > dedupRank(dup)) Object.assign(dup, s);
+      continue;
+    }
+    kept.push(s);
+  }
+  return kept;
+}
+
 /**
  * @param {Array<{bin:string, groundFloorUse:string, frontage:{houseNumberHint?:number, scenePoint?:{x:number,z:number}}}>} buildings
  * @param {Array<{name:string, category?:string, houseNumber?:string|null, scenePoint?:{x:number,z:number}|null, sourceId?:string|null, confidence?:string, activeStatus?:string}>} roster

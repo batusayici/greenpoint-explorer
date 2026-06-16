@@ -56,8 +56,8 @@ only a descriptor + data extracts + a registration line. That delta is the exper
 - Hero protection (name + proximity guards) carried over without change.
 
 **Findings carried / new**
-- **OSM roster overlap:** the two block bboxes overlap near the shared corner, so an OSM business ("Land of Barbers" / "The Land of Barbers") appears in both rosters. Distinct name strings + points mean a simple dedup wouldn't fully collapse them. A future block-aware dedup (by point proximity) is worth adding before many blocks.
+- ~~**OSM roster overlap:**~~ **Resolved (2026-06-16).** The two block bboxes overlap near the shared corner, so businesses appear in both rosters. `dedupeByProximity()` (`storefrontRoster.js`) now collapses records within ~4m whose names are similar (equal-after-normalization or length-guarded containment), keeping the higher-ranked one. In practice it merged the two exact-point cross-roster duplicates — `Land of Barbers` (hairdresser) and `Big Night` (deli) — while correctly keeping `The Land of Barbers` (~37m away) distinct. Distinct name strings are no longer a problem because matching is point-proximity-gated, not string-exact.
 - ~~**Sign prominence** (from Block A) still applies block-wide.~~ Resolved block-wide by the `storefrontSigns.js` system (band + category-gated blade, category-label default) — see the Block A note above.
 - **Material uniformity:** both blocks classify mostly brick-prewar — true to Greenpoint stock; storefront signage carries recognizability.
 
-**Verdict:** The recipe scales. The marginal cost of a new typological+truthful block is now **data acquisition (two scripted pulls) + ~4 lines of registration**, not engineering. Remaining work to make it production-grade is polish (sign craft) and a dedup pass, not architecture.
+**Verdict:** The recipe scales. The marginal cost of a new typological+truthful block is now **data acquisition (two scripted pulls) + ~4 lines of registration**, not engineering. Remaining work to make it production-grade is polish (sign craft) — the dedup pass is now done — not architecture.

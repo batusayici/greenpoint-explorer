@@ -21,7 +21,7 @@ import { classifyBuilding } from "./buildingTypology.js";
 import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0.1.json";
 import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-storefronts.v0.1.json";
 import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
-import { assignStorefronts } from "./storefrontRoster.js";
+import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
 import { planStorefrontSigns } from "./storefrontSigns.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
@@ -1016,9 +1016,14 @@ function buildBlockStorefronts(three, scene) {
 
   // Step 1: project roster points into scene units; drop any without a point.
   const allStorefronts = BLOCK_STOREFRONT_ROSTERS.flatMap((r) => r.storefronts);
-  const projected = allStorefronts
+  const projectedRaw = allStorefronts
     .map((s) => ({ ...s, scenePoint: s.point ? scene.projection.project(s.point) : null }))
     .filter((s) => s.scenePoint != null);
+
+  // Step 1b: dedup-by-proximity — overlapping block bboxes surface the same
+  // business twice ("Land of Barbers" / "The Land of Barbers") at near-identical
+  // points; collapse those before assignment. ~4m in scene units (SCALING_LOG).
+  const projected = dedupeByProximity(projectedRaw, 4 * scene.projection.scale);
 
   // Step 2a: hero-name guard — drop any storefront whose name is already
   // claimed by a hero business regardless of spatial proximity.
