@@ -22,6 +22,7 @@ import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0
 import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-storefronts.v0.1.json";
 import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts } from "./storefrontRoster.js";
+import { planStorefrontSigns } from "./storefrontSigns.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -881,6 +882,74 @@ function disposeGroup(group) {
 // assigned to the nearest commercial block-extract building. Hero buildings
 // (already getting full hero treatment) are excluded from assignment.
 // No interactive card is wired — clicking does nothing for these meshes.
+// Render planned storefront signs (band + blade) for one building's bays.
+// `frame` carries the street face basis: { left, right, normal, height, point }
+// where point(x, y, off) maps face-local coords to world (the same helper the
+// bay loop already builds). Signs add to `three` and sit on the building's
+// street face, so they inherit the existing per-view culling.
+function buildStorefrontSigns(three, placements, frame, scene) {
+  const { left, right, normal, height, point } = frame;
+  for (const pl of placements) {
+    if (pl.kind === "band") {
+      const positions = new Float32Array([
+        ...point(pl.cx - pl.width / 2, pl.y0, pl.off),
+        ...point(pl.cx + pl.width / 2, pl.y0, pl.off),
+        ...point(pl.cx + pl.width / 2, pl.y1, pl.off),
+        ...point(pl.cx - pl.width / 2, pl.y1, pl.off),
+      ]);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      // U flipped so the label reads correctly from the street side (preserves
+      // the 2026-06-15 mirror fix, commit 9f6ff2b).
+      geo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1,0, 0,0, 0,1, 1,1]), 2));
+      geo.setIndex([0,1,2, 0,2,3]);
+      three.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+        map: makeStorefrontSignTexture(pl.label),
+        transparent: true,
+        side: THREE.DoubleSide,
+      })));
+    } else if (pl.kind === "blade") {
+      // A panel perpendicular to the facade: vertical, spanning from the wall
+      // (off) outward by projectMeters*scale along the face normal. Its face
+      // normal is parallel to the wall, so a face catches every iso angle.
+      const reach = pl.projectMeters * scene.projection.scale;
+      const yTop = (pl.mountY + pl.panelHeightFrac / 2) * height;
+      const yBot = (pl.mountY - pl.panelHeightFrac / 2) * height;
+      const baseX = left.x + (right.x - left.x) * pl.cx + normal.x * pl.off;
+      const baseZ = left.z + (right.z - left.z) * pl.cx + normal.z * pl.off;
+      const outX = baseX + normal.x * reach;
+      const outZ = baseZ + normal.z * reach;
+      const positions = new Float32Array([
+        baseX, yBot, baseZ,
+        outX,  yBot, outZ,
+        outX,  yTop, outZ,
+        baseX, yTop, baseZ,
+      ]);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      geo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1,0, 0,0, 0,1, 1,1]), 2));
+      geo.setIndex([0,1,2, 0,2,3]);
+      three.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+        map: makeStorefrontSignTexture(pl.label),
+        transparent: true,
+        side: THREE.DoubleSide,
+      })));
+      // Thin dark bracket arm along the top edge, wall -> panel.
+      const armGeo = new THREE.BufferGeometry();
+      armGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array([
+        baseX, yTop, baseZ,
+        outX,  yTop, outZ,
+        outX,  yTop - 0.04 * height, outZ,
+        baseX, yTop - 0.04 * height, baseZ,
+      ]), 3));
+      armGeo.setIndex([0,1,2, 0,2,3]);
+      three.add(new THREE.Mesh(armGeo, new THREE.MeshBasicMaterial({
+        color: II_PALETTE.ink, side: THREE.DoubleSide,
+      })));
+    }
+  }
+}
+
 function buildBlockStorefronts(three, scene) {
   // Build a normalized set of hero business names sourced from the hero-places
   // file. heroPlaces is a top-level array; each record carries name at record.name
@@ -1029,38 +1098,12 @@ function buildBlockStorefronts(three, scene) {
 
     const baysPerBin = binBays.length;
 
+    // Awning strips stay inline (one per bay, just below the sign band).
     for (const bay of binBays) {
       const cx = (bay.slotIndex + 0.5) / Math.max(1, baysPerBin);
       const w = Math.min(0.4, 0.9 / baysPerBin);
       const off = 0.02; // proud of wall surface
 
-      // Sign-band: upper portion of ground storey (above the glazed base).
-      const y0 = gy * 0.55;
-      const y1 = gy * 0.90;
-
-      const signPositions = new Float32Array([
-        ...point(cx - w / 2, y0, off),
-        ...point(cx + w / 2, y0, off),
-        ...point(cx + w / 2, y1, off),
-        ...point(cx - w / 2, y1, off),
-      ]);
-      const signGeo = new THREE.BufferGeometry();
-      signGeo.setAttribute("position", new THREE.BufferAttribute(signPositions, 3));
-      // U flipped (1->0 across start->end) so the name reads correctly from the
-      // outward/street side; the edge winding otherwise mirrors the text.
-      signGeo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1,0, 0,0, 0,1, 1,1]), 2));
-      signGeo.setIndex([0,1,2, 0,2,3]);
-      const signMesh = new THREE.Mesh(
-        signGeo,
-        new THREE.MeshBasicMaterial({
-          map: makeStorefrontSignTexture(bay.name),
-          transparent: true,
-          side: THREE.DoubleSide,
-        }),
-      );
-      three.add(signMesh);
-
-      // Thin awning strip just below the sign band.
       const ay0 = gy * 0.42;
       const ay1 = gy * 0.50;
       const awningPositions = new Float32Array([
@@ -1079,6 +1122,13 @@ function buildBlockStorefronts(three, scene) {
       );
       three.add(awningMesh);
     }
+
+    // Signs (band + blade) come from the pure planner; the renderer maps the
+    // face-local placements to world geometry on this building's street face.
+    // Labels are category defaults (real branding only when a bay is claimed).
+    const frame = { left, right, normal, height: building.height, point };
+    const placements = planStorefrontSigns({ bays: binBays, storeys });
+    buildStorefrontSigns(three, placements, frame, scene);
   }
 }
 
