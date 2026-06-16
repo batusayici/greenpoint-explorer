@@ -83,6 +83,38 @@ a banked fix regressed or a playbook rule was skipped.
     short. **Verify on 2× flat overlay; measure every opening full-height.**
 - **Net new durable assets:** engine fixes (collinear merge, back-face cull,
   awning caps, storefront `revealTop`); the scene-graph inspector above.
+- **Multi-angle pass (2026-06-15):** rotation (3.2) exposed two corner defects
+  the fixed NE camera hid. (1) **Cornice corner notch + non-flush Franklin
+  return:** the Franklin face had no cornice spec, so it fell back to the
+  geometric parapet ring while Greenpoint carried a drawn cornice — they didn't
+  meet, leaving a light top-cap (`REVEAL.bottom`) notch at the fold. Fix: give
+  the Franklin face its own cornice entry **and** add `cornerRight`/`cornerLeft`
+  to both cornices so the crown extends past the fold and samples the
+  neighbour's artwork (same trick Premier uses). **Rule:** every camera-visible
+  return of a corner hero needs its own cornice + matching corner-wrap flag, or
+  rotation reveals a parapet-ring/cornice mismatch. (2) **Window wrapping the
+  corner:** v3 painted the C5 Greenpoint column hard against the fold (glass
+  faceX 0.921-1.012, straddling onto the Franklin return) — no brick pier. The
+  recess follows the paint, so the box couldn't just be moved (it would land on
+  blank brick while the painted window stayed). Fix without a re-render: a
+  **surgical texture patch** — snapshot the PNG, shift the C5 brick-wall band
+  left 110px (~1.6m), clone clean pier brick into the vacated corner strip
+  (full-height vertical move keeps mortar lines continuous), then shift the
+  recess rects by the same 110px. **Rule:** a window painted across the fold is
+  a *render* error; for a one-column setback a snapshot-based pixel move beats a
+  full re-render (git keeps the original). For multi-column drift, re-render.
+  **Cost:** ~1 pass each, caught and fixed live at angle 2/4.
+- **Cornice "white band" follow-up:** a bright cream band read along the Franklin
+  cornice from the elevated angles. Two layered causes: (a) the cornice **top cap**
+  used `REVEAL.bottom` (lit-stone tan) — fine grazed by the fixed NE camera, but a
+  bright slab when looked down on; switched it to `CROWN` (dark) so a Brooklyn
+  cornice top reads as tar/metal. (b) the render left a **light coping/sky strip at
+  the texture top** (faceY ~0.985-1.0, thicker on the Franklin slice) — geometry
+  top is taller than the painted molding, so the cornice front face sampled it.
+  Darkened that top strip in the PNG (repaint light pixels in the top ~18 rows to
+  the molding tone). **Rule:** the cornice top cap should be dark, and the painted
+  cornice must reach the texture top — a light margin there becomes a "roof higher
+  than texture" band once the camera can look down on the roofline.
 
 ### Sereneco — BIN 3337033 (NW corner) — greenpoint shipped (flat), franklin stable
 - **Faces:** franklin (east, 57m Franklin St) keeps `sereneco--corner.png`

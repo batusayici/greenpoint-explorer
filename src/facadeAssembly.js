@@ -298,14 +298,16 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       facePoint(frame, xL, yCap, proj),
     ), tintMaterial(CROWN)));
 
-    // Top cap: horizontal plane sloping back to the roof, facing up — the lit
-    // edge that draws the angular roofline against the sky.
+    // Top cap: horizontal plane sloping back to the roof, facing up. Painted
+    // dark to match the crown lip (CROWN) — a Brooklyn cornice top is tar/metal,
+    // not lit stone. The fixed NE camera only grazed it, but the multi-angle
+    // rig looks down onto it, where a light tint read as a bright white band.
     group.add(new THREE.Mesh(quadGeometry(
       facePoint(frame, xL, yCap, proj),
       facePoint(frame, xR, yCap, proj),
       facePoint(frame, xR, rect.y1, 0),
       facePoint(frame, xL, rect.y1, 0),
-    ), tintMaterial(REVEAL.bottom)));
+    ), tintMaterial(CROWN)));
 
     // Free ends — a cornice that stops mid-wall — get a cut-stone grey return.
     // Folded-corner ends extend (above) instead; flat party-wall ends need
