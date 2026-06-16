@@ -381,6 +381,67 @@ function rectUv(frame, rect) {
   return [u(rect.x0), rect.y0, u(rect.x1), rect.y0, u(rect.x1), rect.y1, u(rect.x0), rect.y1];
 }
 
+// 3-facet oriel bay plan in face-coords. A trapezoid: wide at the wall
+// (x0..x1 @ depth 0), narrowing to a center front facet (xc0..xc1 @ depth 1)
+// flanked by two angled return facets. `centerFraction` is the center facet's
+// share of the opening; clamped to keep the trapezoid from inverting. Each
+// facet's `quad` is its two vertical edges as [x, depthMul] (0 = wall, 1 = front).
+export function oriel3Plan(bay) {
+  const cf = Math.min(0.9, Math.max(0.1, bay.centerFraction ?? 0.36));
+  const side = (1 - cf) / 2;
+  const span = bay.x1 - bay.x0;
+  const xc0 = bay.x0 + side * span;
+  const xc1 = bay.x1 - side * span;
+  return {
+    xc0,
+    xc1,
+    facets: [
+      { id: "left", quad: [[bay.x0, 0], [xc0, 1]] },
+      { id: "center", quad: [[xc0, 1], [xc1, 1]] },
+      { id: "right", quad: [[xc1, 1], [bay.x1, 0]] },
+    ],
+  };
+}
+
+// Build the 3-facet oriel: 3 textured facet quads (returns + center, each
+// sampling its own slice of the bay's texture strip so the painted side
+// windows fold onto the angled returns) + 2 flat-tinted trapezoidal caps
+// (top in cornice shadow, bottom soffit). `projection` is units along normal.
+export function oriel3Meshes(frame, bay, projection, texture) {
+  const plan = oriel3Plan(bay);
+  const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
+  const depth = (mul) => mul * projection;
+  const meshes = [];
+
+  for (const facet of plan.facets) {
+    const [a, b] = facet.quad; // [x, depthMul]
+    const uv = texture
+      ? [u(a[0]), bay.y0, u(b[0]), bay.y0, u(b[0]), bay.y1, u(a[0]), bay.y1]
+      : undefined;
+    const geometry = quadGeometry(
+      facePoint(frame, a[0], bay.y0, depth(a[1])),
+      facePoint(frame, b[0], bay.y0, depth(b[1])),
+      facePoint(frame, b[0], bay.y1, depth(b[1])),
+      facePoint(frame, a[0], bay.y1, depth(a[1])),
+      uv,
+    );
+    meshes.push(new THREE.Mesh(geometry, texturedMaterial(texture, 1)));
+  }
+
+  // Trapezoidal caps close the plan at top (y1) and bottom (y0): wall corners
+  // at depth 0, front corners at full projection. Flat-tinted, no texture.
+  const cap = (y) => quadGeometry(
+    facePoint(frame, bay.x0, y, 0),
+    facePoint(frame, plan.xc0, y, projection),
+    facePoint(frame, plan.xc1, y, projection),
+    facePoint(frame, bay.x1, y, 0),
+  );
+  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(0x352c22)));     // top: under-cornice shadow
+  meshes.push(new THREE.Mesh(cap(bay.y0), tintMaterial(REVEAL.soffit))); // bottom: soffit
+
+  return meshes;
+}
+
 function rectMesh(frame, rect, offset, material) {
   const geometry = quadGeometry(
     facePoint(frame, rect.x0, rect.y0, offset),
