@@ -18,6 +18,7 @@ import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
 import { classifyBuilding } from "./buildingTypology.js";
 import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0.1.json";
+import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts } from "./storefrontRoster.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
@@ -874,26 +875,43 @@ function disposeGroup(group) {
 // (already getting full hero treatment) are excluded from assignment.
 // No interactive card is wired — clicking does nothing for these meshes.
 function buildBlockStorefronts(three, scene) {
+  // Build a normalized set of hero business names sourced from the hero-places
+  // file. heroPlaces is a top-level array; each record carries name at record.name
+  // or record.business?.name. This keeps the exclusion set in sync with the file
+  // automatically — no hardcoded literal array needed.
+  const heroNameArr = Array.isArray(heroPlaces)
+    ? heroPlaces
+    : (heroPlaces.places ?? heroPlaces.records ?? heroPlaces.heroes ?? []);
+  const heroNames = new Set(
+    heroNameArr
+      .map((r) => (r.name ?? r.business?.name ?? "").trim().toLowerCase())
+      .filter(Boolean),
+  );
+
   // Step 1: project roster points into scene units; drop any without a point.
   const projected = blockStorefronts.storefronts
     .map((s) => ({ ...s, scenePoint: s.point ? scene.projection.project(s.point) : null }))
     .filter((s) => s.scenePoint != null);
 
-  // Step 2: hero-proximity guard — if the nearest building to a storefront
-  // is a hero, the storefront belongs to that hero's treatment; drop it here.
-  const heroes = scene.buildings.filter((b) => b.isHero);
+  // Step 2a: hero-name guard — drop any storefront whose name is already
+  // claimed by a hero business regardless of spatial proximity.
+  const nonHeroByName = projected.filter(
+    (s) => !heroNames.has(s.name.trim().toLowerCase()),
+  );
 
-  function dist2(a, b) {
-    const dx = a.x - b.x, dz = a.z - b.z;
-    return Math.sqrt(dx * dx + dz * dz);
+  // Step 2b: hero-proximity guard — if the nearest building to a storefront
+  // is a hero, the storefront belongs to that hero's treatment; drop it here.
+
+  function dist(a, b) {
+    return Math.hypot(a.x - b.x, a.z - b.z);
   }
 
-  const survivors = projected.filter((s) => {
+  const survivors = nonHeroByName.filter((s) => {
     let nearest = null;
     let nearestDist = Infinity;
     for (const bldg of scene.buildings) {
       if (!bldg.centroid) continue;
-      const d = dist2(s.scenePoint, bldg.centroid);
+      const d = dist(s.scenePoint, bldg.centroid);
       if (d < nearestDist) { nearestDist = d; nearest = bldg; }
     }
     // Drop if nearest building is a hero.
@@ -927,6 +945,11 @@ function buildBlockStorefronts(three, scene) {
   }));
   const bays = assignStorefronts(blockCommercial, roster, { axis: "x" });
 
+  // Build a name→scenePoint lookup so each bay can recover the OSM point that
+  // identifies which building edge faces the street. Names are unique enough
+  // within the survivors list; first-match is fine.
+  const pointByName = new Map(survivors.map((s) => [s.name, s.scenePoint]));
+
   // Step 5: group bays by bin so we know the per-building slot count for
   // horizontal offset calculation.
   const baysByBin = new Map();
@@ -957,10 +980,35 @@ function buildBlockStorefronts(three, scene) {
     const storeys = Math.max(1, typology.storeyCount);
     const gy = 1 / storeys; // fraction of total height = one storey
 
-    // Longest edge = street-facing frontage.
+    // Street-frontage edge: the edge whose midpoint is nearest the storefront's
+    // OSM scenePoint. That point sits at the real shop location on the street,
+    // so the closest midpoint identifies the street face — not the longest edge,
+    // which for a deep narrow rowhouse would be the party-wall side.
     const edges = footprintEdges(building.polygon, building.centroid);
     if (!edges.length) continue;
-    const edge = [...edges].sort((a, b) => b.length - a.length)[0];
+
+    // Collect the scenePoints of all bays assigned to this building so we can
+    // pick the edge closest to the cluster of storefronts on the block.
+    const bayScenePoints = binBays
+      .map((bay) => pointByName.get(bay.name))
+      .filter(Boolean);
+
+    // Average the bay scenePoints to get a single representative street point.
+    // Fallback: use building centroid (preserves longest-edge behaviour).
+    const refPoint =
+      bayScenePoints.length > 0
+        ? {
+            x: bayScenePoints.reduce((s, p) => s + p.x, 0) / bayScenePoints.length,
+            z: bayScenePoints.reduce((s, p) => s + p.z, 0) / bayScenePoints.length,
+          }
+        : building.centroid;
+
+    const MIN_EDGE_METERS = 3;
+    const edge =
+      edges
+        .filter((e) => e.length / scene.projection.scale > MIN_EDGE_METERS)
+        .sort((a, b) => dist(a.midpoint, refPoint) - dist(b.midpoint, refPoint))[0]
+      ?? edges.sort((a, b) => b.length - a.length)[0]; // fallback: longest
 
     const { left, right, normal } = faceFrame(edge, building.height, null, scene);
 
