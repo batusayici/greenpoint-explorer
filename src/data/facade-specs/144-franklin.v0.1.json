@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "facade-spec.v0.5",
+  "schemaVersion": "facade-spec.v0.6",
   "placeId": "144-franklin",
-  "status": "derived_2026-06-15 (kink corrected 0.155->0.29 per franklin-face reference; franklin hand-set, greenpoint regularized)",
+  "status": "derived_2026-06-16 (curved openings added: ground-floor round-arch windows registered; giant 2nd-floor round arches + 3rd-floor oculi are a first-pass overlay-derived registration on the greenpoint face — fine-tune positions in the curve-capable recess editor before public release)",
   "note": "144 Franklin Ave, NE corner of Greenpoint x Franklin (BIN 3064675). 1895 Romanesque Revival, 3 storeys: rusticated brownstone base with arched ground openings, terracotta/red-brick upper floors, giant round-arch 2nd-floor windows, oculi + rect windows at the 3rd floor, ornate carved cornice. Texture: 144-franklin-v2.png — one continuous unwrap, Franklin return (1 drawn bay) left of the corner pier, Greenpoint 5-bay frontage right of it (kink FRANKLIN_144_KINK=0.155). Rects to be derived via scripts/derive-facade-spec.mjs and reviewed on the overlay; this stub keeps the import valid. Residential identity — no storefront, no place card yet (facade-only pass).",
   "evidence": [
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northeast-wide.png",
@@ -72,21 +72,70 @@
             "x1": 0.112,
             "y0": 0.04,
             "y1": 0.3,
-            "recessM": 0.12
+            "recessM": 0.12,
+            "shape": "arch",
+            "springY": 0.22
           },
           {
             "x0": 0.277,
             "x1": 0.362,
             "y0": 0.04,
             "y1": 0.3,
-            "recessM": 0.12
+            "recessM": 0.12,
+            "shape": "arch",
+            "springY": 0.22
           },
           {
             "x0": 0.643,
             "x1": 0.723,
             "y0": 0.04,
             "y1": 0.3,
-            "recessM": 0.12
+            "recessM": 0.12,
+            "shape": "arch",
+            "springY": 0.22
+          },
+          {
+            "x0": 0.02,
+            "x1": 0.18,
+            "y0": 0.56,
+            "y1": 0.81,
+            "recessM": 0.14,
+            "shape": "arch",
+            "springY": 0.7
+          },
+          {
+            "x0": 0.31,
+            "x1": 0.47,
+            "y0": 0.56,
+            "y1": 0.81,
+            "recessM": 0.14,
+            "shape": "arch",
+            "springY": 0.7
+          },
+          {
+            "x0": 0.6,
+            "x1": 0.76,
+            "y0": 0.56,
+            "y1": 0.81,
+            "recessM": 0.14,
+            "shape": "arch",
+            "springY": 0.7
+          },
+          {
+            "x0": 0.215,
+            "x1": 0.275,
+            "y0": 0.675,
+            "y1": 0.755,
+            "recessM": 0.12,
+            "shape": "circle"
+          },
+          {
+            "x0": 0.505,
+            "x1": 0.565,
+            "y0": 0.675,
+            "y1": 0.755,
+            "recessM": 0.12,
+            "shape": "circle"
           }
         ]
       },
@@ -135,7 +184,9 @@
             "x1": 0.732,
             "y0": 0.05,
             "y1": 0.3,
-            "recessM": 0.12
+            "recessM": 0.12,
+            "shape": "arch",
+            "springY": 0.22
           }
         ]
       },
