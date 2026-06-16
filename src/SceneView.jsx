@@ -101,6 +101,15 @@ export default function SceneView() {
   const updateAnchorRef = useRef(() => {});
   const rotateRef = useRef(() => {}); // imperative rotate(dir) from the effect
   const selectedPlaceIdRef = useRef(null);
+  // The main scene effect runs once ([] deps), so its pointer handler would
+  // otherwise read the mount-time editor flags. Mirror them into refs so a
+  // click resolves against the LIVE state (e.g. after Shift+E opens the editor).
+  const facadeEditRef = useRef(facadeEdit);
+  const editorOpenRef = useRef(editorOpen);
+  useEffect(() => {
+    facadeEditRef.current = facadeEdit;
+    editorOpenRef.current = editorOpen;
+  }, [facadeEdit, editorOpen]);
 
   useEffect(() => {
     function onKey(e) {
@@ -355,7 +364,9 @@ export default function SceneView() {
       const moved = Math.hypot(event.clientX - down.x, event.clientY - down.y);
       if (moved > 4) return; // a pan, not a click
 
-      if (facadeEdit) {
+      // Click-to-edit: while the editor is open (or in ?facadeedit mode),
+      // a click loads the hit face into the recess editor.
+      if (facadeEditRef.current || editorOpenRef.current) {
         const faceKey = faceKeyAt(event);
         if (faceKey) {
           setEditorFace(faceKey);

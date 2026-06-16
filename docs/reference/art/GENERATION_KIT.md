@@ -126,6 +126,49 @@ corner. If you hit one of these, it's a regression, not new work:
 - **Reveal weight** — window `recessM ~0.06` reads as a thin shadow line;
   0.14 reads as a thick lit ledge. Default shallow.
 
+### Shaped openings — arch / oculus (banked v0.6, from 144 Franklin)
+
+The recess system now models curved openings, not just rects. A window/door
+rect gains an optional `shape: "arch" | "circle"` (default `"rect"` = unchanged);
+arches take an optional `springY` (the rect-to-cap transition; defaults to the
+box midpoint). The curve math lives in exactly one pure module —
+`openingProfile` in `src/facadeProfiles.js` — and the cap is a half-ellipse in
+**face-coords**, so it registers to *whatever arc the artwork painted* (round or
+segmental) via the same `(x,y)→u` UV mapping; there is no forced geometric
+semicircle. Accepted tradeoff (locked in the design spec): the curved pane meets
+a flush filler with no bridging soffit, so a hairline seam can show at recess
+depth — a curved archivolt/oculus ring is a clean follow-up, not a bug.
+
+What the build taught (so the next ornate hero is cheaper):
+
+- **A curved opening is a fold diagnostic.** An arch or oculus *bisected by the
+  kink* is an unmistakable "the fold is wrong" tell that flat rects hid — 144's
+  fold shipped at 0.155 (splitting the giant Franklin arch) before the
+  single-face reference forced it to 0.29. When a hero has ornate openings,
+  read the fold by which face owns each whole arch, then confirm against the
+  single-face photo (per the Registration Playbook).
+- **Don't hand-author `springY`/curve positions — they're SEEDs for the editor.**
+  Same doctrine as window rects: tag the shape, take the midpoint default, then
+  drag the spring line onto the painted spring in the recess editor
+  (`?facadeedit=1`, shape selector + spring handle + SVG curve preview). 144's
+  upper arches + oculi shipped as a first-pass *overlay-derived* registration
+  and still owe an editor fine-tune — that's expected, not done.
+- **Capability and full authoring are two passes, not one.** Building the shape
+  system AND pixel-registering every opening on an ornate facade in a single
+  plan overruns; land the capability + rough placement, then schedule a
+  dedicated editor authoring pass. Mark partial registration honestly in the
+  spec `status`.
+
+The repeatable pattern behind the ~1-pass geometry: **design spec (lock scope +
+tradeoffs) → task plan → subagents, with the new primitive's math isolated in a
+pure, unit-tested module before any render/overlay/editor wiring.** Schema
+changes are additive optional fields whose default reproduces current behavior
+byte-for-byte (`complementRects` stayed untouched). Reuse this shape for any new
+geometry primitive. **Tooling gap still open:** `derive-facade-spec.mjs` can't
+seed `shape`/`springY`, so curved openings are fully manual — fold curve
+auto-detection in alongside the density-profile work flagged in
+`HERO_FACADE_LOG.md`.
+
 ### Coordinate convention (one truth)
 
 - **Whole-u** is 0..1 across the runtime-**trimmed** composite image

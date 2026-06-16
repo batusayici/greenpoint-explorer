@@ -33,6 +33,11 @@ a banked fix regressed or a playbook rule was skipped.
 - [ ] **In-engine: inspect the corner + every camera-visible return at zoom.**
       Flat-color-where-texture-expected = geometry/wiring bug.
 - [ ] **For any artifact: name the mesh before editing** (query the scene).
+- [ ] **Ornate openings? Use them to check the fold.** An arch/oculus split by
+      the kink means the fold is wrong (see 144 Franklin). Tag `shape` + seed
+      `springY`, then register curves in the editor — never hand-author them.
+      Capability and full pixel-registration are two passes; mark partial
+      registration in the spec `status`, don't claim "done."
 
 ## Reusable scene-graph inspector (paste into preview_eval)
 
@@ -221,6 +226,30 @@ a banked fix regressed or a playbook rule was skipped.
   they met at (0.612,-0.919) after the fix; before, 0.65 vs -0.96 = the gap).
   **Gotcha:** JSON-spec edits don't always hot-reload — the geometry kept the
   old flags until a full page reload. Reload before re-judging a spec change.
+- **Curved recess profiles (arch + oculus) — capability build, 2026-06-15/16:**
+  first hero to need non-rect openings (giant 2nd-floor round arches, 3rd-floor
+  oculi, rusticated ground arches). Shipped via design-spec → 6-task plan →
+  subagents (`docs/superpowers/{specs,plans}/2026-06-15-curved-recess-profiles*`).
+  - **Cost: ~1 in-engine pass for the geometry.** What bought that: the curve
+    math was isolated in one pure unit-tested module (`facadeProfiles.js`
+    `openingProfile`) — closed-loop / crown-at-y1 / spring-tangent / circle
+    symmetry asserted before any wiring — and the schema bump (v0.5→v0.6) was an
+    additive optional `shape` field defaulting to `"rect"`, so `complementRects`
+    and every existing building stayed byte-for-byte. **Bank the pattern for any
+    new geometry primitive.** Durable rules promoted to the kit's "Shaped
+    openings" section.
+  - **Where iterations went (all now playbook rules):** fold read off the wrong
+    pier (0.155 bisected the giant arch → 0.29, caught on the single-face photo)
+    — *a bisected arch is the fold-error tell*; cornice corner-wrap flags on the
+    wrong ends (open miter gap); JSON spec edits not hot-reloading.
+  - **Open authoring tail (the lesson):** only the ground-floor arches are truly
+    editor-registered; the giant arches + oculi are a first-pass *overlay-derived*
+    placement (spec `status` says so) still owing an editor fine-tune. Building
+    the shape *system* and pixel-registering an ornate facade in one plan
+    overran — land capability + rough placement, then a dedicated editor pass.
+  - **Accepted tradeoff (locked in spec, not a bug):** curved pane meets flush
+    filler with no soffit bridge → hairline seam at recess depth; curved
+    archivolt/oculus ring is the clean follow-up.
 
 ---
 
@@ -232,3 +261,10 @@ frame-snap, 2× annotated overlay as the gate) were hand-rolled in throwaway
 scripts. **Folding them into the tool is the highest-leverage change** — it
 turns the ~5 window rounds into one (run → review overlay → ship). Do this
 before/with Sereneco.
+
+Second gap, surfaced by 144 Franklin: the tool emits **rects only** — it can't
+detect or seed `shape: "arch"|"circle"`/`springY`, so every curved opening on an
+ornate hero is hand-tagged and hand-seeded, then dragged in the editor. A
+bright-glass + curvature pass that proposes a shape and a spring-line guess
+(even rough) would remove the most manual step on Romanesque/arched buildings.
+Fold it in alongside the density-profile work above.
