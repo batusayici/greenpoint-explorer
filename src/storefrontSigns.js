@@ -71,7 +71,10 @@ export function planStorefrontSigns({ bays, storeys }) {
         label,
         claimed,
         cx,
-        mountY: gy * 0.78,        // high on the ground storey
+        // mountY / panelHeightFrac are fractions of TOTAL building height
+        // (gy = 1/storeys), matching the band's y0/y1 convention — the renderer
+        // multiplies them by building height, it does not re-scale by storey.
+        mountY: gy * 0.78,        // sign center, high on the ground storey
         panelHeightFrac: gy * 0.34,
         projectMeters: 1.1,       // real-world blade reach; renderer * scale
         off: 0.02,

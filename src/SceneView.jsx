@@ -915,6 +915,8 @@ function buildStorefrontSigns(three, placements, frame, scene) {
       const reach = pl.projectMeters * scene.projection.scale;
       const yTop = (pl.mountY + pl.panelHeightFrac / 2) * height;
       const yBot = (pl.mountY - pl.panelHeightFrac / 2) * height;
+      // Inlines point()'s XZ formula (rather than calling point) because the
+      // blade needs the separate X/Z pair to build the outward reach vector.
       const baseX = left.x + (right.x - left.x) * pl.cx + normal.x * pl.off;
       const baseZ = left.z + (right.z - left.z) * pl.cx + normal.z * pl.off;
       const outX = baseX + normal.x * reach;
