@@ -57,3 +57,19 @@ check("total fallback", () => {
 });
 
 console.log(`\n${passed}/7 typology checks passed`);
+
+// --- real-data coverage report (Block A) ---
+import { readFile } from "node:fs/promises";
+try {
+  const path = "src/data/geometry-source/block-franklin-milton.nyc-open-geometry.v0.1.json";
+  const data = JSON.parse(await readFile(path, "utf8"));
+  const tallies = { massingClass: {}, materialFamily: {}, groundFloorUse: {}, storeyConfidence: {} };
+  for (const rec of data.footprintRecords) {
+    const t = classifyBuilding(rec);
+    tallies.massingClass[t.massingClass] = (tallies.massingClass[t.massingClass] ?? 0) + 1;
+    tallies.materialFamily[t.materialFamily] = (tallies.materialFamily[t.materialFamily] ?? 0) + 1;
+    tallies.groundFloorUse[t.groundFloorUse] = (tallies.groundFloorUse[t.groundFloorUse] ?? 0) + 1;
+    tallies.storeyConfidence[t.confidence.storeyCount] = (tallies.storeyConfidence[t.confidence.storeyCount] ?? 0) + 1;
+  }
+  console.log("\nBlock A typology coverage:", JSON.stringify(tallies, null, 2));
+} catch (e) { console.log("\n(skipped coverage report:", e.message, ")"); }
