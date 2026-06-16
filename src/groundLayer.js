@@ -15,7 +15,7 @@ export const SIDEWALK_WIDTH_M = 4.0; // NYC-typical; curb-to-frontage band width
 export const CROSSWALK_STRIPE_COUNT = 6;
 const CROSSWALK_DEPTH_M = 3.5; // along-street depth of the crossing band
 const DEFAULT_STREET_WIDTH_FT = 40; // fallback if a width record is missing
-const ROADBED_HALF_LENGTH_M = 110; // how far each roadbed/sidewalk run is drawn
+const ROADBED_HALF_LENGTH_M = 150; // how far each roadbed/sidewalk run is drawn (covers the Franklin→Milton block ~124m and the east-Greenpoint block)
 
 export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource }) {
   const swUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
