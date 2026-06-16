@@ -23,6 +23,7 @@ import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-
 import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
 import { planStorefrontSigns } from "./storefrontSigns.js";
+import { composeInkedFacade } from "./inkedFacadeCompose.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -230,6 +231,7 @@ export default function SceneView() {
     buildFurniture(three, furniture);
     buildBuildings(three, scene, requestRender, isActive, addCullable);
     buildBlockStorefronts(three, scene);
+    buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
     window.__three = three;
     window.__scene = scene;
 
@@ -996,6 +998,81 @@ function buildStorefrontAwnings(three, placements, frame) {
       sideGeo.setAttribute("position", new THREE.BufferAttribute(sidePos, 3));
       sideGeo.setIndex([0, 1, 2]);
       three.add(new THREE.Mesh(sideGeo, new THREE.MeshBasicMaterial({ color: AWNING_SOFFIT, side: THREE.DoubleSide })));
+    }
+  }
+}
+
+// SPIKE (2026-06-16): compose one brick building from inked components and tint
+// it, to judge the modular inked-component approach. Throwaway; gated by
+// INKED_FACADE_TEST (empty = no-op). Does NOT touch decorateTypologicalWall.
+const INKED_FACADE_TEST = []; // e.g. [{ bin: "3071234567", tint: 0xb5664a }]
+
+function loadInkedComponent(file, { repeat, transparent } = {}) {
+  const tex = new THREE.TextureLoader().load(
+    new URL(`../assets/inked/${file}`, import.meta.url).href,
+  );
+  tex.colorSpace = THREE.SRGBColorSpace;
+  if (repeat) {
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(repeat[0], repeat[1]);
+  }
+  return new THREE.MeshBasicMaterial({ map: tex, transparent: !!transparent, side: THREE.DoubleSide });
+}
+
+function buildInkedFacadeTest(three, scene) {
+  if (!INKED_FACADE_TEST.length) return;
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+
+  for (const { bin, tint } of INKED_FACADE_TEST) {
+    const building = byBin.get(bin);
+    if (!building || !building.polygon || !building.centroid) continue;
+    const typ = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
+    const storeys = Math.max(2, typ.storeyCount ?? 4);
+    const bays = 3;
+
+    const edges = footprintEdges(building.polygon, building.centroid);
+    if (!edges.length) continue;
+    const edge = edges.slice().sort((a, b) => b.length - a.length)[0];
+    const { left, right, normal } = faceFrame(edge, building.height, null, scene);
+    const point = (x, y, off) => [
+      left.x + (right.x - left.x) * x + normal.x * off,
+      y * building.height,
+      left.z + (right.z - left.z) * x + normal.z * off,
+    ];
+    const quad = (r, off, uvFlip = true) => {
+      const positions = new Float32Array([
+        ...point(r.x0, r.y0, off), ...point(r.x1, r.y0, off),
+        ...point(r.x1, r.y1, off), ...point(r.x0, r.y1, off),
+      ]);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      const uv = uvFlip ? [1,0, 0,0, 0,1, 1,1] : [0,0, 1,0, 1,1, 0,1];
+      geo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(uv), 2));
+      geo.setIndex([0, 1, 2, 0, 2, 3]);
+      return geo;
+    };
+
+    const f = composeInkedFacade({ storeys, bays });
+
+    // Wall (tiled brick), tinted.
+    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [bays, storeys] });
+    wallMat.color.setHex(tint);
+    three.add(new THREE.Mesh(quad(f.wall, 0.02), wallMat));
+
+    // Ground floor band (opaque), tinted.
+    const groundMat = loadInkedComponent("brick-ground.v1.png");
+    groundMat.color.setHex(tint);
+    three.add(new THREE.Mesh(quad(f.ground, 0.03), groundMat));
+
+    // Cornice strip (alpha), tinted.
+    const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true });
+    corniceMat.color.setHex(tint);
+    three.add(new THREE.Mesh(quad(f.cornice, 0.04), corniceMat));
+
+    // Windows (alpha), NOT tinted (frames read as painted trim).
+    for (const w of f.windows) {
+      const winMat = loadInkedComponent("brick-window.v1.png", { transparent: true });
+      three.add(new THREE.Mesh(quad(w, 0.035), winMat));
     }
   }
 }
