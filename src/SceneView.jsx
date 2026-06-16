@@ -1046,7 +1046,9 @@ function buildBlockStorefronts(three, scene) {
       ]);
       const signGeo = new THREE.BufferGeometry();
       signGeo.setAttribute("position", new THREE.BufferAttribute(signPositions, 3));
-      signGeo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([0,0, 1,0, 1,1, 0,1]), 2));
+      // U flipped (1->0 across start->end) so the name reads correctly from the
+      // outward/street side; the edge winding otherwise mirrors the text.
+      signGeo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1,0, 0,0, 0,1, 1,1]), 2));
       signGeo.setIndex([0,1,2, 0,2,3]);
       const signMesh = new THREE.Mesh(
         signGeo,
