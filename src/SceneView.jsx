@@ -1007,14 +1007,19 @@ function buildStorefrontAwnings(three, placements, frame) {
 // INKED_FACADE_TEST (empty = no-op). Does NOT touch decorateTypologicalWall.
 const INKED_FACADE_TEST = []; // e.g. [{ bin: "3071234567", tint: 0xb5664a }]
 
-function loadInkedComponent(file, { repeat, transparent } = {}) {
-  const tex = new THREE.TextureLoader().load(
-    new URL(`../assets/inked/${file}`, import.meta.url).href,
-  );
-  tex.colorSpace = THREE.SRGBColorSpace;
-  if (repeat) {
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-    tex.repeat.set(repeat[0], repeat[1]);
+function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
+  let tex;
+  if (getTexture) {
+    tex = getTexture(file, { repeat });
+  } else {
+    tex = new THREE.TextureLoader().load(
+      new URL(`../assets/inked/${file}`, import.meta.url).href,
+    );
+    tex.colorSpace = THREE.SRGBColorSpace;
+    if (repeat) {
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(repeat[0], repeat[1]);
+    }
   }
   return new THREE.MeshBasicMaterial({ map: tex, transparent: !!transparent, side: THREE.DoubleSide });
 }
@@ -1023,15 +1028,33 @@ function buildInkedFacadeTest(three, scene) {
   if (!INKED_FACADE_TEST.length) return;
   const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
 
+  // Cache: keyed by filename → THREE.Texture. Each distinct file loads at most
+  // once per invocation, so identical component PNGs aren't re-uploaded N times.
+  const texCache = new Map();
+  function cachedTexture(file, { repeat } = {}) {
+    if (texCache.has(file)) return texCache.get(file);
+    const tex = new THREE.TextureLoader().load(
+      new URL(`../assets/inked/${file}`, import.meta.url).href,
+    );
+    tex.colorSpace = THREE.SRGBColorSpace;
+    if (repeat) {
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(repeat[0], repeat[1]);
+    }
+    texCache.set(file, tex);
+    return tex;
+  }
+
   for (const { bin, tint } of INKED_FACADE_TEST) {
     const building = byBin.get(bin);
     if (!building || !building.polygon || !building.centroid) continue;
     const typ = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
     const storeys = Math.max(2, typ.storeyCount ?? 4);
-    const bays = 3;
+    const bays = 3; // fixed for spike; derive from edge.length at promotion
 
     const edges = footprintEdges(building.polygon, building.centroid);
     if (!edges.length) continue;
+    // longest edge (spike simplification; real face selection needs street-proximity)
     const edge = edges.slice().sort((a, b) => b.length - a.length)[0];
     const { left, right, normal } = faceFrame(edge, building.height, null, scene);
     const point = (x, y, off) => [
@@ -1055,23 +1078,28 @@ function buildInkedFacadeTest(three, scene) {
     const f = composeInkedFacade({ storeys, bays });
 
     // Wall (tiled brick), tinted.
-    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [bays, storeys] });
+    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [bays, storeys] }, cachedTexture);
     wallMat.color.setHex(tint);
     three.add(new THREE.Mesh(quad(f.wall, 0.02), wallMat));
 
     // Ground floor band (opaque), tinted.
-    const groundMat = loadInkedComponent("brick-ground.v1.png");
+    const groundMat = loadInkedComponent("brick-ground.v1.png", {}, cachedTexture);
     groundMat.color.setHex(tint);
     three.add(new THREE.Mesh(quad(f.ground, 0.03), groundMat));
 
     // Cornice strip (alpha), tinted.
-    const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true });
+    const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true }, cachedTexture);
     corniceMat.color.setHex(tint);
     three.add(new THREE.Mesh(quad(f.cornice, 0.04), corniceMat));
 
-    // Windows (alpha), NOT tinted (frames read as painted trim).
+    // Windows (alpha), NOT tinted. All windows share one material — same file,
+    // same alpha config, no tint — so we build it once and reuse the instance.
+    const winMat = new THREE.MeshBasicMaterial({
+      map: cachedTexture("brick-window.v1.png"),
+      transparent: true,
+      side: THREE.DoubleSide,
+    });
     for (const w of f.windows) {
-      const winMat = loadInkedComponent("brick-window.v1.png", { transparent: true });
       three.add(new THREE.Mesh(quad(w, 0.035), winMat));
     }
   }
