@@ -20,10 +20,33 @@ scaled block.
 
 A storefront **sign system** that assigns sign idioms per storefront by a
 believable category rule, so an extended block reads varied and alive (not one
-repeated treatment, not cluttered), and names carry from all four iso angles.
+repeated treatment, not cluttered), and signs carry from all four iso angles.
 
 This batch ships the two highest-leverage idioms. Two more are designed here as
 fast-follow.
+
+## Claim model (sign content + monetization mechanic)
+
+Signs do **not** display real business names by default. Each storefront sign
+shows its **category label** ("Barbershop", "Café", "Deli", "Bar") — generic,
+truthful-by-construction (no factual claim to verify), and the product hook: a
+business can "claim" its location for a small fee to attach real branding.
+
+- **Unclaimed (default):** sign text = category label from a category→label map.
+- **Claimed:** the storefront entry carries `{ claimed: true, brandName }` (and
+  optionally brand color later); sign text = `brandName`.
+- **Existing heroes** (Premier Organic, Sonny's, Sereneco, Azure Gourmet,
+  144 Franklin) are modeled as **claimed showcase examples** — they keep their
+  real branding + place cards and demonstrate "what claiming gets you." Their
+  roster entries get `claimed: true`. All other businesses default to category.
+
+Truth consequence: unclaimed signs need no factual review. Only `claimed`
+entries carry real-world claims and go through the Phase 5.4 truth/approval gate.
+
+Data mechanism: a `claimed` flag + `brandName` on the storefront/bay entry in
+the roster (no backend; a future payment flow simply flips the flag). The hero
+place data already supplies real names — heroes are wired to claimed via their
+existing identity, everything else falls through to category label.
 
 ## Idiom palette (full system)
 
@@ -51,7 +74,21 @@ carry an upgraded band. Density is self-limiting by category, not by a tuning
 pass.
 
 Category source: the storefront's OSM category / `storefrontRoster` tag, same
-field that already drives `AWNING_TINT` in `SceneView.jsx`.
+field that already drives `AWNING_TINT` in `SceneView.jsx`. The **same category
+field** drives both idiom assignment and the default sign label.
+
+### Category → display label map
+
+A small explicit map (in `storefrontSigns.js`) turns OSM category tags into
+title-case display labels for unclaimed signs:
+
+```
+bar/pub → "Bar"   hairdresser/barber → "Barbershop"   cafe → "Café"
+deli → "Deli"     restaurant → "Restaurant"   convenience → "Corner Store"
+clothes → "Clothing"   interior_decoration → "Home & Decor"   (fallback → "Shop")
+```
+
+Labels are a taste surface — easy to tune. Unknown categories fall back to "Shop".
 
 ## Architecture
 
@@ -61,13 +98,21 @@ Same idiom as `groundLayer.js` / `buildingTypology.js`: data in, plain geometry
 descriptors out, **no Three.js import**, fully unit-testable.
 
 ```
-planStorefrontSigns({ building, bays, faceFrame, classification, isHero, scale })
+planStorefrontSigns({ building, bays, faceFrame, classification, scale })
   -> SignPlacement[]
 
+// per bay, the display label is resolved BEFORE geometry:
+//   bay.claimed && bay.brandName  ? bay.brandName : categoryLabel(bay.category)
+
 SignPlacement =
-  | { kind: 'band',  name, cx, width, y0, y1, off }
-  | { kind: 'blade', name, cx, mountY, project, panelW, panelH, off, faceFrame }
+  | { kind: 'band',  label, claimed, cx, width, y0, y1, off }
+  | { kind: 'blade', label, claimed, cx, mountY, project, panelW, panelH, off, faceFrame }
 ```
+
+`label` is the resolved text (brand name if claimed, else category label).
+`claimed` is passed through so the renderer can later style claimed signs
+differently (brand color, bolder) — out of scope this batch, but the flag is
+carried so a follow-up needs no signature change.
 
 - `band`: the existing flat-band rect, enlarged (taller type, bolder) and given
   real depth at render time (proud box vs. a single quad).
@@ -84,8 +129,11 @@ output, it does not re-derive the street face).
 ### Thin renderer: `buildStorefrontSigns(three, placements)` in `SceneView.jsx`
 
 Replaces the inline sign geometry (~lines 1032–1061). Walks placements:
-- `band` → proud box (or quad + thin side faces) with `makeStorefrontSignTexture(name)`, U-flipped exactly as today (the 2026-06-15 mirror fix, commit `9f6ff2b`, must be preserved).
-- `blade` → two opposed textured quads (double-sided panel) + a thin dark bracket arm; reuses `makeStorefrontSignTexture`.
+- `band` → proud box (or quad + thin side faces) with `makeStorefrontSignTexture(label)`, U-flipped exactly as today (the 2026-06-15 mirror fix, commit `9f6ff2b`, must be preserved).
+- `blade` → two opposed textured quads (double-sided panel) + a thin dark bracket arm; reuses `makeStorefrontSignTexture(label)`.
+
+`makeStorefrontSignTexture` is fed the resolved `label`, not a business name —
+no other change to that texture function.
 
 II-C flat-inked material (`MeshBasicMaterial`, transparent, as today). Sign
 meshes parent under the building/wall group so they inherit the existing
@@ -116,6 +164,11 @@ buildStorefrontSigns(three, placements)         NEW thin renderer
     normal is perpendicular to the band's plane.
   - no bay yields more than one of {blade, awning} (mutual exclusion).
   - non-commercial bays yield no signs.
+  - **label resolution:** an unclaimed barber bay yields `label: "Barbershop"`
+    (category), not its OSM name; a `claimed` bay with `brandName` yields
+    `label: brandName`; unknown category falls back to `"Shop"`.
+  - **no real names leak:** for every unclaimed bay, `label` equals its category
+    label and never the roster's `name` field.
 - In-engine verification: rotate through all four iso angles; confirm blade
   names are readable and not edge-on; confirm the U-flip fix still holds (names
   not mirrored). Screenshot proof at ≥2 angles.
@@ -126,7 +179,12 @@ buildStorefrontSigns(three, placements)         NEW thin renderer
 - Awning-valance name printing and ghost upper-wall lettering — designed above,
   deferred to a fast-follow batch.
 - Re-deriving which edge is the street face — unchanged.
-- Sign content/truth (names come from the existing roster; truth pass is Phase 5.4).
+- A real claim/payment backend or UI — out of scope. This batch only honors a
+  `claimed` flag already present in data; heroes are the seeded claimed examples.
+- Claimed-sign styling (brand color, bolder type) — the `claimed` flag is
+  carried through placements but rendered identically this batch.
+- Sign content/truth for claimed entries — claimed names go through Phase 5.4;
+  unclaimed category labels need no review.
 - The OSM dedup-by-proximity finding — separate scaling-debt item.
 
 ## Risks
