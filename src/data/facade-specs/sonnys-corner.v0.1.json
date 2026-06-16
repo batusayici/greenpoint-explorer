@@ -1,7 +1,7 @@
 {
   "schemaVersion": "facade-spec.v0.5",
   "placeId": "sonnys-corner",
-  "status": "derived_from_render_v3_2026-06-13 (corner-window patch 2026-06-15)",
+  "status": "derived_from_render_v3_2026-06-13 (corner-window patch 2026-06-15) | franklin-return windows added 2026-06-15 (3x3 grid, greenpoint floor bands)",
   "note": "PATCH 2026-06-15 (multi-angle pass): the v3 render drew the corner-side Greenpoint window column (C5) hard against the fold — its painted glass spanned faceX 0.921-1.012, literally straddling the corner (kink u0.734) onto the Franklin return, so it read as a window wrapping the corner with no brick pier. Fixed by a surgical texture edit (scripts-free, snapshot-based pixel move in sonnys-corner--corner-v3.png): the C5 brick-wall band (rawX 1216-1331, rows 92-620) was shifted left 110px (~1.6m) and the vacated corner strip cloned with clean pier brick, leaving a real brick pier at the fold on both faces (the Franklin-side bleed at rawX 1315-1331 was brick-filled too). The C5 recess rects were shifted by the same 110px (0.092 faceX): 0.956-1.0 -> 0.864-0.908. Also added a cornice to the Franklin face (was getting the geometric parapet ring) and cornerRight/cornerLeft wrap flags to both cornices so the crown turns the fold continuously (was a light top-cap notch at the corner). Pre-patch render recoverable via git: `git show HEAD:assets/textures/franklin/sonnys-corner--corner-v3.png`. ORIGINAL DERIVE NOTE: Re-derived from sonnys-corner--corner-v3.png (subject-isolated, no neighbor overrun, 4 upper floors, corner-wrap bar). Window grid = 5 columns, rows R2-R4 on all + a grilled R1 garden window at C1 only (C2/C3 ground = entrance doors, C4/C5 ground = storefront). 16 windows. Columns from not-wall density in the top row band; row y-extents from a per-row BRIGHTNESS profile down a clean column (lintel/glass/sill structure). Verified on 2x flat-texture crops. Took three passes: blob detection failed (mauve-on-mauve, dark fire escape contaminated columns); the second pass had a phantom fire-escape column + corner column ~0.045 left; the third had rows ~0.03-0.05 too HIGH (even-spacing guess, AC units included) — caught only by zooming the flat overlay to 2x. Two rules: verify window grids on HIGH-RES flat crops not 3D; vertical misalignment is never parallax (the recess normal is horizontal, so its parallax is horizontal-only). Storefront top (y0.205) and awning band (yWall 0.235 / yValance 0.18) measured by dark-fraction-per-row — the storefront is the corner half only (x0.50-1.0); the painted scalloped awning projects via the awnings component. Greenpoint face is the camera-visible frontage; the franklin return is a flat texture slice. Corner fix: the Greenpoint frontage is two collinear footprint edges (1.47m + 19.95m); sceneFrame.js now merges collinear same-role edges so the full 21.42m frontage textures as one face (was: the 1.47m corner off-cut rendered as a bare brown wall). SONNYS_KINK stays 0.734 — windows are at fixed texture-u fractions, so registration survives the merge. ALTER BROOKLYN is a SEPARATE red-brick neighbor east of the subject, correctly absent from v3.",
   "evidence": [
     "docs/mvp-reference-images/greenpoint franklin  corner/franklin-southeast-wide.jpeg",
@@ -162,7 +162,67 @@
         "y1": 1,
         "projectionM": 0.5,
         "cornerLeft": true
-      }
+      },
+      "windows": {
+        "recessM": 0.06,
+        "rects": [
+          {
+            "x0": 0.02,
+            "x1": 0.13,
+            "y0": 0.305,
+            "y1": 0.432
+          },
+          {
+            "x0": 0.182,
+            "x1": 0.327,
+            "y0": 0.305,
+            "y1": 0.432
+          },
+          {
+            "x0": 0.449,
+            "x1": 0.596,
+            "y0": 0.305,
+            "y1": 0.432
+          },
+          {
+            "x0": 0.02,
+            "x1": 0.13,
+            "y0": 0.528,
+            "y1": 0.652
+          },
+          {
+            "x0": 0.182,
+            "x1": 0.327,
+            "y0": 0.528,
+            "y1": 0.652
+          },
+          {
+            "x0": 0.449,
+            "x1": 0.596,
+            "y0": 0.528,
+            "y1": 0.652
+          },
+          {
+            "x0": 0.02,
+            "x1": 0.13,
+            "y0": 0.745,
+            "y1": 0.865
+          },
+          {
+            "x0": 0.182,
+            "x1": 0.327,
+            "y0": 0.745,
+            "y1": 0.865
+          },
+          {
+            "x0": 0.449,
+            "x1": 0.596,
+            "y0": 0.745,
+            "y1": 0.865
+          }
+        ]
+      },
+      "skewX": 0
     }
   }
 }
