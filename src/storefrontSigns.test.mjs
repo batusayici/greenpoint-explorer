@@ -100,3 +100,13 @@ test("no bay yields more than one band or more than one blade (no stacking)", ()
     assert.ok(out.filter((p) => p.kind === "blade" && p.bayName === bay.name).length <= 1);
   }
 });
+
+test("empty bays array yields no placements", () => {
+  assert.deepEqual(planStorefrontSigns({ bays: [], storeys: 3 }), []);
+});
+
+test("a bay missing slotIndex still produces a finite cx (no NaN)", () => {
+  const out = planStorefrontSigns({ bays: [{ bin: "1", name: "X", category: "deli" }], storeys: 3 });
+  const band = out.find((p) => p.kind === "band");
+  assert.ok(Number.isFinite(band.cx));
+});

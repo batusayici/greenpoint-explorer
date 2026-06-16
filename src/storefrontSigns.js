@@ -46,7 +46,7 @@ export function planStorefrontSigns({ bays, storeys }) {
   const placements = [];
 
   for (const bay of bays) {
-    const cx = (bay.slotIndex + 0.5) / baysPerBin;
+    const cx = ((bay.slotIndex ?? 0) + 0.5) / baysPerBin;
     const width = Math.min(0.4, 0.9 / baysPerBin);
     const label = resolveSignLabel(bay);
     const claimed = Boolean(bay.claimed && bay.brandName);
