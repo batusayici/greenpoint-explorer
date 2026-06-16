@@ -157,6 +157,46 @@ a banked fix regressed or a playbook rule was skipped.
   regressing the other. Corner heroes whose storefronts **don't** wrap the
   chamfer can use two single-face textures instead of a corner unwrap.
 
+### 144 Franklin Ave — BIN 3064675 (NE corner) — SHIPPED (facade-only, no card)
+- **Texture:** `144-franklin-v2.png` (1491×1055). Fold `FRANKLIN_144_KINK=0.155`.
+  One continuous unwrap: leftmost single bay = Franklin return (west face),
+  the long 5-bay run = Greenpoint frontage (south). 1895 Romanesque Revival —
+  rusticated brownstone base with arched openings, terracotta upper floors,
+  giant round-arch 2nd-floor windows, oculi + rect windows at the 3rd floor.
+- **Registration quirk (new):** standalone hero with NO entry in the R10G wrap
+  truth fixture. Registered via `FACADE_GROUP_BINS["3064675"]="144-franklin"`
+  — gives it a placeId + wall-by-wall hero build; the vertex-snap flush in
+  `sceneFrame.js` skips it (no same-placeId hero in the fixture), so it keeps
+  its own classified edges. Clean path for adding a hero without touching truth
+  data or adding a place card. **Banked:** facade-group bins double as a
+  standalone-hero registration hook.
+- **Kink vs proportion (lesson confirmed):** real walls are 10.5m : 25.3m
+  (proportional fold ≈0.29) but the render DREW the Franklin return as ~1 bay
+  (fold ≈0.155). Per the playbook the drawn fold wins — and it was right: the
+  single drawn Franklin bay maps onto the real wall as the giant-arch bay,
+  matching `franklin-northeast-franklin.png` exactly. The feared horizontal
+  stretch never materialised; don't pre-emptively add `coverMeters` to "fix" a
+  proportion gap before checking the render in-engine.
+- **Derive settings:** the default not-wall detector FAILED hard (picked the
+  brownstone base rgb(149,103,77) as wall → whole red-brick run read as one
+  blob). Switched to a **bright-glass detector** (lum>158 mask → 2× erode →
+  connected components → consolidate sash splits within a floor by x-overlap +
+  small vertical gap), plus a dark-on-brownstone pass for the base openings.
+  Far better than the wall detector on a dense ornate facade. Regularised into
+  two upper window bands + base openings; wrap-cornice on both faces.
+- **Cost:** ~1 in-engine pass. Geometry/wiring correct first try (fold, faces,
+  orientation, no mirroring). 165 textured recess meshes built.
+- **Open polish:** (1) small light notch where the cornice wraps the corner
+  (Sonny's "white cap" class — top cap wants CROWN tone). (2) recess rects are
+  regularised, not pixel-perfect — refine in the recess editor. (3) per-view
+  back-face cull doesn't toggle for 144 (`visTot` constant at 176 across
+  angles) — harmless (solid box, no see-through) but means rear walls always
+  render; wire 144 into the cull registry later.
+- **Gotcha:** the `import.meta.glob` texture loader bundles EVERY png in
+  `assets/textures/franklin/` — a superseded/faulty render left in the folder
+  ships ~3MB of dead weight. Delete faulty textures, don't just stop
+  referencing them.
+
 ---
 
 ## Top pending tooling improvement

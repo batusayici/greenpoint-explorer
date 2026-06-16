@@ -1,0 +1,103 @@
+{
+  "source": "assets/textures/franklin/144-franklin-v2.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 43,
+    "minY": 53,
+    "maxX": 1468,
+    "maxY": 1002
+  },
+  "trimmedSize": {
+    "width": 1426,
+    "height": 950
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064675:franklin": {
+      "u0": 0,
+      "u1": 0.155,
+      "wallColor": [
+        149,
+        103,
+        77
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0.887,
+          "y1": 1,
+          "type": "band"
+        },
+        {
+          "x0": 0.43,
+          "x1": 0.995,
+          "y0": 0.409,
+          "y1": 0.556,
+          "type": "band"
+        },
+        {
+          "x0": 0.023,
+          "x1": 1,
+          "y0": 0.336,
+          "y1": 0.383,
+          "type": "band"
+        },
+        {
+          "x0": 0.068,
+          "x1": 0.706,
+          "y0": 0.006,
+          "y1": 0.308,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.267,
+          "x1": 0.362,
+          "y0": 0.816,
+          "y1": 0.848,
+          "type": "window"
+        },
+        {
+          "x0": 0,
+          "x1": 0.041,
+          "y0": 0.728,
+          "y1": 0.837,
+          "type": "window"
+        },
+        {
+          "x0": 0.407,
+          "x1": 1,
+          "y0": 0.646,
+          "y1": 0.818,
+          "type": "window"
+        },
+        {
+          "x0": 0,
+          "x1": 0.036,
+          "y0": 0.459,
+          "y1": 0.673,
+          "type": "window"
+        }
+      ]
+    },
+    "3064675:greenpoint": {
+      "u0": 0.155,
+      "u1": 1,
+      "wallColor": [
+        148,
+        103,
+        77
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0.019,
+          "y1": 1,
+          "type": "storefront"
+        }
+      ]
+    }
+  }
+}

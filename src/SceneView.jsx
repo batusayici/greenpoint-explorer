@@ -7,6 +7,7 @@ import { buildStreetFurniture } from "./streetFurniture.js";
 import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1.json";
 import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
+import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
@@ -44,6 +45,7 @@ const II_PALETTE = {
     "premier-franklin-organic": 0xa04432, // red brick grocery corner
     "sonnys-corner": 0x4a4039, // dark brick / awned base
     sereneco: 0x9a7e58, // weathered brick, low restaurant corner
+    "144-franklin": 0xa85a3c, // 1895 Romanesque Revival, terracotta/red brick
   },
 };
 
@@ -696,6 +698,15 @@ const SONNYS_KINK = 0.734;
 // mapped (the greenpoint face is back-facing to the fixed camera), and it
 // covers just the corner-adjacent 12m of the 57m footprint edge (R10G).
 const SERENECO_KINK = 0.496;
+// 144 Franklin Ave (NE corner, BIN 3064675) — 1895 Romanesque Revival hero.
+// One continuous head-on unwrap: the leftmost single bay (Franklin St return,
+// west face) reads left of the drawn corner pier; the long 5-bay run right of
+// it is the Greenpoint Ave frontage (south face). The artist drew the Franklin
+// return narrow (~1 bay) though the real wall is ~2 bays (10.5m : 25.3m →
+// proportional fold ≈0.29); per the playbook the DRAWN fold is registration
+// truth, so the kink sits on the painted pier (~0.155) and Franklin coverMeters
+// caps the stretch onto its real wall.
+const FRANKLIN_144_KINK = 0.155;
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
     key: "../assets/textures/franklin/premier-franklin-organic--corner-v4.png",
@@ -715,6 +726,19 @@ const FACADE_COMPOSITES = {
       "3064811": {
         greenpoint: { u0: 0, u1: SONNYS_KINK, leftEnd: "east" },
         franklin: { u0: SONNYS_KINK, u1: 1, leftEnd: "north" },
+      },
+    },
+  },
+  "144-franklin": {
+    key: "../assets/textures/franklin/144-franklin-v2.png",
+    byBin: {
+      "3064675": {
+        // Franklin return (west face): unwrap left edge is the north end of the
+        // wall, reading south toward the corner pier at the kink.
+        franklin: { u0: 0, u1: FRANKLIN_144_KINK, leftEnd: "north" },
+        // Greenpoint frontage (south face): begins at the corner pier (west end)
+        // and reads east along the long 5-bay run.
+        greenpoint: { u0: FRANKLIN_144_KINK, u1: 1, leftEnd: "west" },
       },
     },
   },
@@ -738,13 +762,21 @@ const FACADE_COMPOSITES = {
   },
 };
 
-const FACADE_GROUP_BINS = { "3322609": "premier-franklin-organic" };
+const FACADE_GROUP_BINS = {
+  "3322609": "premier-franklin-organic",
+  // 144 Franklin is a standalone hero with no entry in the R10G truth fixture;
+  // registering its BIN here gives it a placeId + wall-by-wall hero treatment.
+  // The vertex-snap flush in sceneFrame.js skips it (no same-placeId hero in
+  // the wrap fixture), so it keeps its own classified edges.
+  "3064675": "144-franklin",
+};
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
 const FACADE_SPECS = {
   ...premierFacadeSpec.faces,
   ...sonnysFacadeSpec.faces,
   ...serenecoFacadeSpec.faces,
+  ...franklin144FacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess

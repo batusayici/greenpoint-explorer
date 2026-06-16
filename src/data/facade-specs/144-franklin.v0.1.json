@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "144-franklin",
+  "status": "derived_2026-06-15 (glass-blob detect + regularized; gate via recess editor)",
+  "note": "144 Franklin Ave, NE corner of Greenpoint x Franklin (BIN 3064675). 1895 Romanesque Revival, 3 storeys: rusticated brownstone base with arched ground openings, terracotta/red-brick upper floors, giant round-arch 2nd-floor windows, oculi + rect windows at the 3rd floor, ornate carved cornice. Texture: 144-franklin-v2.png — one continuous unwrap, Franklin return (1 drawn bay) left of the corner pier, Greenpoint 5-bay frontage right of it (kink FRANKLIN_144_KINK=0.155). Rects to be derived via scripts/derive-facade-spec.mjs and reviewed on the overlay; this stub keeps the import valid. Residential identity — no storefront, no place card yet (facade-only pass).",
+  "evidence": [
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northeast-wide.png",
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northeast-greenpoint.png",
+    "docs/mvp-reference-images/greenpoint franklin  corner/franklin-northeast-franklin.png"
+  ],
+  "faces": {
+    "3064675:greenpoint": {
+      "cornice": {
+        "y0": 0.9,
+        "y1": 1,
+        "projectionM": 0.5,
+        "cornerRight": true
+      },
+      "windows": {
+        "recessM": 0.12,
+        "rects": [
+          {
+            "x0": 0.013,
+            "x1": 0.046,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.169,
+            "x1": 0.206,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.398,
+            "x1": 0.432,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.452,
+            "x1": 0.486,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.506,
+            "x1": 0.544,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.609,
+            "x1": 0.64,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.724,
+            "x1": 0.763,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.783,
+            "x1": 0.822,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.842,
+            "x1": 0.88,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.012,
+            "x1": 0.047,
+            "y0": 0.665,
+            "y1": 0.775
+          },
+          {
+            "x0": 0.21,
+            "x1": 0.235,
+            "y0": 0.665,
+            "y1": 0.775
+          },
+          {
+            "x0": 0.397,
+            "x1": 0.432,
+            "y0": 0.665,
+            "y1": 0.775
+          },
+          {
+            "x0": 0.724,
+            "x1": 0.763,
+            "y0": 0.665,
+            "y1": 0.775
+          },
+          {
+            "x0": 0.84,
+            "x1": 0.881,
+            "y0": 0.665,
+            "y1": 0.775
+          },
+          {
+            "x0": 0.004,
+            "x1": 0.068,
+            "y0": 0.04,
+            "y1": 0.3,
+            "recessM": 0.12
+          },
+          {
+            "x0": 0.189,
+            "x1": 0.254,
+            "y0": 0.04,
+            "y1": 0.3,
+            "recessM": 0.12
+          },
+          {
+            "x0": 0.393,
+            "x1": 0.464,
+            "y0": 0.04,
+            "y1": 0.3,
+            "recessM": 0.12
+          },
+          {
+            "x0": 0.7,
+            "x1": 0.768,
+            "y0": 0.04,
+            "y1": 0.3,
+            "recessM": 0.12
+          }
+        ]
+      },
+      "doors": [
+        {
+          "x0": 0.527,
+          "x1": 0.597,
+          "y0": 0,
+          "y1": 0.3,
+          "recessM": 0.14
+        },
+        {
+          "x0": 0.851,
+          "x1": 0.924,
+          "y0": 0,
+          "y1": 0.3,
+          "recessM": 0.14
+        }
+      ],
+      "skewX": 0
+    },
+    "3064675:franklin": {
+      "cornice": {
+        "y0": 0.9,
+        "y1": 1,
+        "projectionM": 0.5,
+        "cornerLeft": true
+      },
+      "windows": {
+        "recessM": 0.12,
+        "rects": [
+          {
+            "x0": 0.502,
+            "x1": 0.679,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.787,
+            "x1": 0.964,
+            "y0": 0.42,
+            "y1": 0.54
+          },
+          {
+            "x0": 0.489,
+            "x1": 0.679,
+            "y0": 0.665,
+            "y1": 0.775
+          },
+          {
+            "x0": 0.783,
+            "x1": 0.968,
+            "y0": 0.665,
+            "y1": 0.775
+          }
+        ]
+      },
+      "doors": [
+        {
+          "x0": 0.33,
+          "x1": 0.701,
+          "y0": 0,
+          "y1": 0.3,
+          "recessM": 0.14
+        }
+      ],
+      "skewX": 0
+    }
+  }
+}
