@@ -806,6 +806,7 @@ for (const [file, spec] of [
   ["premier-franklin-organic.v0.1.json", premierFacadeSpec],
   ["sonnys-corner.v0.1.json", sonnysFacadeSpec],
   ["sereneco.v0.1.json", serenecoFacadeSpec],
+  ["144-franklin.v0.1.json", franklin144FacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
