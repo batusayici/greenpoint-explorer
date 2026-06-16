@@ -11,6 +11,7 @@ import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
+import blockFranklinMilton from "./data/geometry-source/block-franklin-milton.nyc-open-geometry.v0.1.json";
 import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
@@ -134,6 +135,7 @@ export default function SceneView() {
       sceneGeometryFixture,
       wrapFixture,
       facadeGroupBins: FACADE_GROUP_BINS,
+      blockExtracts: [blockFranklinMilton],
     });
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });

@@ -32,6 +32,7 @@ export function assembleFranklinScene({
   wrapFixture,
   contextRadiusMeters = 130,
   facadeGroupBins = {},
+  blockExtracts = [],
 }) {
   const projectionBasis = sceneGeometryFixture.sceneTruthModel.projectionBasis;
   const projection = createProjection(projectionBasis);
@@ -116,6 +117,40 @@ export function assembleFranklinScene({
     }
     member.centroid = getCentroid(member.polygon);
     member.edges = classifyHeroEdges(member.polygon, member.centroid, { greenpointAxis, franklinAxis });
+  }
+
+  // Block extracts: pre-bounded footprint pulls for adjacent blocks (Franklin→Milton, etc.).
+  // They are spatially bounded by their pull bbox, so they bypass the origin-radius cull.
+  // Dedupe by BIN against everything already added. Carry sourceProperties so the renderer
+  // can classify typology; tag fromBlockExtract so it gets typological (non-hero) treatment.
+  const seenBins = new Set(buildings.map((b) => b.bin));
+  for (const extract of blockExtracts) {
+    for (const record of extract.footprintRecords ?? []) {
+      const bin = String(record.sourceProperties?.bin ?? "");
+      if (!bin || seenBins.has(bin)) continue;
+      const polygon = projectPolygon(record.wgs84Polygon, projection);
+      if (!polygon.length) continue;
+      seenBins.add(bin);
+      const centroid = getCentroid(polygon);
+      const heightFeet = Number.parseFloat(record.sourceProperties?.heightRoof);
+      const heightUnits = projection.metersToUnits(
+        (Number.isFinite(heightFeet) ? heightFeet : 30) * FEET_TO_METERS,
+      );
+      buildings.push({
+        bin,
+        polygon,
+        centroid,
+        height: Math.max(heightUnits, 0.3),
+        constructionYear: record.sourceProperties?.constructionYear ?? null,
+        sourceProperties: record.sourceProperties ?? null,
+        isHero: false,
+        placeId: null,
+        label: null,
+        cornerRole: null,
+        edges: null,
+        fromBlockExtract: true,
+      });
+    }
   }
 
   const streets = geometrySource.streetCenterlineRecords.map((record) => ({
