@@ -977,7 +977,13 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     heroGroup.add(wall);
     const cull = addCullable(wall, edge.normal);
 
-    if (!isTextured) continue;
+    // Exposed exterior non-street faces (rears/sides; interior party walls
+    // already dropped at the group-composite guard) get a typological brick
+    // back-wall treatment instead of staying a flat colored slab.
+    if (!isTextured) {
+      decorateTypologicalWall(wall, renderEdge, building.height, wallColor.getHex(), scene);
+      continue;
+    }
     const faceKey = `${building.bin}:${edge.role}`;
     const apply = specFace
       ? (texture) => {
@@ -1143,6 +1149,69 @@ function footprintShape(polygon) {
     else shape.lineTo(point.x, -point.z);
   });
   return shape;
+}
+
+// Typological back-wall treatment for a hero's exposed non-street faces:
+// faint storey score-lines + a sparse grid of dark "punched" windows, drawn
+// in the II-C flat-inked idiom (windows are dark shapes sitting a hair proud
+// of the brick, not real recesses) so rotated views read as real building
+// backs instead of flat colored slabs. The decoration meshes are parented
+// under `wall`, so they inherit its per-view cull visibility for free.
+function decorateTypologicalWall(wall, edge, height, baseColorHex, scene) {
+  const { left, right, normal } = faceFrame(edge, height, null, scene);
+  const upm = scene.projection.scale;
+  const lengthM = edge.length / upm;
+  const heightM = height / upm;
+  if (lengthM < 2 || heightM < 2) return; // too small to read; leave flat
+
+  const point = (x, y, off) => [
+    left.x + (right.x - left.x) * x + normal.x * off,
+    y * height,
+    left.z + (right.z - left.z) * x + normal.z * off,
+  ];
+  const quad = (x0, x1, y0, y1, off, color, opacity) => {
+    const g = new THREE.BufferGeometry();
+    const p = [point(x0, y0, off), point(x1, y0, off), point(x1, y1, off), point(x0, y1, off)];
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({
+      color,
+      side: THREE.DoubleSide,
+      transparent: opacity < 1,
+      opacity,
+    });
+    return new THREE.Mesh(g, m);
+  };
+
+  const base = new THREE.Color(baseColorHex);
+  const courseColor = base.clone().multiplyScalar(0.72);
+  const windowColor = base.clone().multiplyScalar(0.34);
+  const lintelColor = new THREE.Color(II_PALETTE.ink);
+
+  const floors = Math.min(6, Math.max(2, Math.round(heightM / 3.5)));
+  const cols = Math.min(6, Math.max(1, Math.floor(lengthM / 4.5)));
+
+  // Faint horizontal storey lines (skip ground line and roofline).
+  for (let f = 1; f < floors; f += 1) {
+    const y = f / floors;
+    wall.add(quad(0.04, 0.96, y - 0.004, y + 0.004, 0.006, courseColor, 0.35));
+  }
+
+  // Sparse window grid: one column band per `cols`, one row per storey, inset
+  // from the edges and from each storey's floor/ceiling.
+  const winW = Math.min(0.5 / cols, (1.1 * upm) / edge.length);
+  for (let c = 0; c < cols; c += 1) {
+    const cx = (c + 0.5) / cols;
+    for (let f = 0; f < floors; f += 1) {
+      const cyBottom = (f + 0.26) / floors;
+      const cyTop = (f + 0.78) / floors;
+      const x0 = cx - winW / 2;
+      const x1 = cx + winW / 2;
+      wall.add(quad(x0, x1, cyBottom, cyTop, 0.004, windowColor, 1));
+      // thin ink lintel shadow above the opening
+      wall.add(quad(x0, x1, cyTop, cyTop + 0.012, 0.008, lintelColor, 0.3));
+    }
+  }
 }
 
 // Even-odd ray cast in the scene's x/z plane. Used to tell an interior party
