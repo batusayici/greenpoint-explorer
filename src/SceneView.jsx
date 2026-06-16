@@ -1102,7 +1102,7 @@ function buildBlockStorefronts(three, scene) {
 
     // Awning strips stay inline (one per bay, just below the sign band).
     for (const bay of binBays) {
-      const cx = (bay.slotIndex + 0.5) / Math.max(1, baysPerBin);
+      const cx = ((bay.slotIndex ?? 0) + 0.5) / Math.max(1, baysPerBin);
       const w = Math.min(0.4, 0.9 / baysPerBin);
       const off = 0.02; // proud of wall surface
 
