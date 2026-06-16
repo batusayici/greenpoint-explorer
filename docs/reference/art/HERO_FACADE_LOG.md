@@ -152,8 +152,12 @@ a banked fix regressed or a playbook rule was skipped.
 - **Quirks:** the two street faces are **separate textures meeting at the real
   90° brick corner** — no single-image unwrap needed, because Sereneco's
   storefronts don't wrap the chamfer (unlike Premier/Sonny's). `AZURE GOURMET`
-  on the corner-end storefront is still the render's **invented/UNVERIFIED**
-  sign (flag for the pre-launch truth pass).
+  on the corner-end storefront is a **real, Batu-verified separate tenant**
+  (2026-06-16) — upscale deli at 113 Franklin. It now has its own place card
+  (`azure-gourmet`, active/verified) and its storefront `{x0:0.51,x1:0.834}`
+  carries `placeId:"azure-gourmet"`, so clicking it selects Azure (not Sereneco)
+  while the rest of the building stays Sereneco. (Earlier flagged as an invented
+  sign — that flag is cleared.)
 - **Cost:** ~1 iteration — green awning read correct and unmirrored on the
   first in-engine check (orientation `leftEnd:"west"` right first try).
 - **Durable lesson (banked):** a face can carry its **own** texture via a
