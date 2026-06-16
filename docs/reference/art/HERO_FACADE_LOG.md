@@ -251,6 +251,36 @@ a banked fix regressed or a playbook rule was skipped.
     filler with no soffit bridge → hairline seam at recess depth; curved
     archivolt/oculus ring is the clean follow-up.
 
+### Premier Organic — Greenpoint bay → 3-facet oriel (2026-06-16)
+
+- **What:** the projecting bay was a flat rectangular box (one textured front
+  quad + four perpendicular tinted cheeks) — it read as a billboard. Converted
+  it to a real trapezoidal oriel: a flat center facet + two angled return
+  facets, narrowing from the wall opening to a center front face.
+- **Approach (zero re-render — the whole win):** the painted elevation already
+  contains the bay's three window columns side-by-side, so the geometry just
+  *folds* that flat texture. Each facet samples its own slice of the bay's
+  texture u-range (`x0..xc0` left return, `xc0..xc1` center, `xc1..x1` right
+  return); UVs are continuous at the `xc0`/`xc1` seams, so the side windows land
+  on the angled returns foreshortened. Top/bottom close with flat-tinted dark
+  trapezoidal caps (cornice-shadow / soffit) — never textured.
+- **How it's authored:** opt-in per spec — `bay.plan: "oriel3"` +
+  `centerFraction` (default 0.36, the reference-sheet ratio). Absent `plan` ⇒
+  the old flat-box path, byte-identical (proven by the integration diff). Splay
+  angle is *emergent* from `centerFraction` + `projectionM` + face width, not
+  authored directly. Premier kept `projectionM: 0.6`.
+- **Iterations: ~0 placement rounds.** Pure-math `oriel3Plan` unit-verified
+  (`scripts/verify-oriel3-bay.mjs`: inset math, seam continuity, clamping,
+  5-mesh count), then verified live in-engine — the angled left return with its
+  folded side window read correctly on the first build, no z-fighting at the
+  wall seam, dark caps tucked under the cornice.
+- **Lesson (durable):** a faceted projection is a *texture fold*, not new
+  artwork — partition the element's existing u-range across the facets and keep
+  the seam UVs shared. Reusable for any future oriel/bow window.
+- **Verification gotcha:** the runtime canvas has no `preserveDrawingBuffer`, so
+  `canvas.toDataURL()` returns a blank frame — use `preview_screenshot` (the
+  presented frame) for proof shots, not a DOM-side data URL.
+
 ---
 
 ## Top pending tooling improvement
