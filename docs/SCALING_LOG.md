@@ -34,3 +34,30 @@ only a descriptor + data extracts + a registration line. That delta is the exper
 - The preview MCP serves the **main checkout**, not the worktree. A `dev-wt` launch config (`npm --prefix <worktree> run dev` on port 5192) was added so the worktree could be visually verified. Remove it after merge.
 
 **Replication hypothesis for Block B**: the only NEW artifacts should be a descriptor JSON, two committed data extracts, and ~1–3 registration lines in SceneView/sceneFrame. If Block B needs new module code, that's a recipe-generality gap to record here.
+
+---
+
+## Block B — east-Greenpoint  (the replication test)
+
+## Block: greenpoint-east  (delta since block-a-done)
+
+- Buildings: 39 (storey source-backed: 38/39, 97%)
+- materialFamily: {"brick-prewar":37,"painted-masonry":2}
+- groundFloorUse: {"commercial":18,"residential":21}
+- Storefronts (OSM): 6 (address-backed: 2)
+- src code files changed: 1 -> src/SceneView.jsx
+- diff: 4 files changed, 2023 insertions(+), 2 deletions(-)
+
+**Replication result:** Block B required **no new modules and no script edits** — only data (a descriptor + two committed extracts) plus ~6 net-new lines in one existing file (`src/SceneView.jsx`): two imports, a 2-entry block registry, one assemble argument, and one `flatMap`. Both pull scripts and every pure module (`buildingTypology`, `storefrontRoster`, the `sceneFrame` block loop, `groundLayer`) ran **unchanged**. The registry refactor is a one-time generalization; a third block is now pure data + two array entries.
+
+**What generalized cleanly**
+- Footprint+PLUTO pull, OSM storefront pull — descriptor-driven, zero edits.
+- Typology classify, storefront assignment, typology-aware walls, truthful signage, ground run — all reused as-is.
+- Hero protection (name + proximity guards) carried over without change.
+
+**Findings carried / new**
+- **OSM roster overlap:** the two block bboxes overlap near the shared corner, so an OSM business ("Land of Barbers" / "The Land of Barbers") appears in both rosters. Distinct name strings + points mean a simple dedup wouldn't fully collapse them. A future block-aware dedup (by point proximity) is worth adding before many blocks.
+- **Sign prominence** (from Block A) still applies block-wide — the ground-floor name bands are small/occluded at iso zoom; a taste call for a polish pass.
+- **Material uniformity:** both blocks classify mostly brick-prewar — true to Greenpoint stock; storefront signage carries recognizability.
+
+**Verdict:** The recipe scales. The marginal cost of a new typological+truthful block is now **data acquisition (two scripted pulls) + ~4 lines of registration**, not engineering. Remaining work to make it production-grade is polish (sign craft) and a dedup pass, not architecture.

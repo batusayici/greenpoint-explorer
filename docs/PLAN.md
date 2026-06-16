@@ -103,14 +103,14 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
 
 ### Phase 4: MVP Scene — Greenpoint x Manhattan Ave + corridor
 
-**4.1 (c) Franklin block-face extension — Greenpoint Ave → Milton St**, typological massing (correct floors/height/material family, no hero facades). Heroes deferred. Proves the b1 ground system generalizes beyond the corner. **Comes after 3.2–3.3** so it inherits the multi-angle camera and a complete all-angle corner template; block faces get frontage treatment on the sides revealed by rotation, not just one.
-  - 4.1c.0 **Data pull (prerequisite):** the Greenpoint→Milton Franklin block is not in the current footprint set (existing 291 records are a Greenpoint-Ave buffer; `crossAxisOffset` ≈ 0). Pull those footprints from NYC Open Data and project into the R10E frame.
-  - 4.1c.1 Extrude typological massing for the pulled footprints along the Franklin axis.
-  - 4.1c.2 Extend `groundLayer.js`'s Franklin sidewalk/roadbed run to cover the block to the Milton corner.
-  - 4.1c.3 Verifier: footprints at real positions, ground extends without gaps. + iso screenshot.
+**4.1 (c) Franklin block-face extension — Greenpoint Ave → Milton St** — **DONE** via the procedural block recipe (worktree `procedural-block-scaling`). 53 buildings (Block A: Franklin→Milton) + 39 buildings (Block B: east-Greenpoint) pulled, typed, and rendered with OSM storefronts. New artifacts: `scripts/pull-footprints.mjs`, `scripts/pull-storefronts.mjs`, `src/buildingTypology.js`, `src/storefrontRoster.js`, `src/data/blocks/*.block.json`, `docs/SCALING_LOG.md`. Block B required only 1 src file touched (6 net-new lines in `src/SceneView.jsx`); all modules reused unchanged. See `docs/SCALING_LOG.md` for the full scorecard + verdict.
+  - 4.1c.0 ~~Data pull~~: done — `pull-footprints.mjs` + `pull-storefronts.mjs` are descriptor-driven; bounded NYC Open Data + PLUTO pull surfaces and enriches the Franklin/Greenpoint footprints (they were present in the 291-record set but radius-culled and lacking PLUTO).
+  - 4.1c.1 ~~Extrude typological massing~~: done — `buildingTypology.js` classifies all footprints; walls + windows rendered via existing pipeline.
+  - 4.1c.2 ~~Extend groundLayer~~: done — block loop in `sceneFrame.js` extended the ground run to cover both blocks.
+  - 4.1c.3 ~~Verifier~~: `score-block-build.mjs` scorecard; both blocks verified.
 
 4.1b Second intersection built entirely through the pipeline; measure hours-per-corner and what needed hand-tuning
-4.2 Kit-ify what repeated: texture prompt templates, prop placement rules, facade parameter schema
+4.2 Kit-ify what repeated: texture prompt templates, prop placement rules, facade parameter schema. **Substantially realized** — the descriptor+registry pattern is the kit; a third block is pure data + 2 array entries. Remaining: sign craft polish + OSM dedup-by-proximity pass (see SCALING_LOG Block B findings).
 4.3 Corridor infill v0: typological block faces connecting the two corners
 4.4 **MVP review (Batu)**
 
@@ -130,6 +130,7 @@ Dynamic life (people, pets, vehicles — sprites/cel-shaded fit the II look), am
 
 - Franklin Ave centerline missing from the source packet (R10E finding); current cross-street slab is derived, review-only.
 - Footprint confidence classes from 4D-1: 126 safe / 14 uncertain / 2 blocked across the 142 corridor buildings.
+- ~~"291-record buffer has crossAxisOffset≈0 ⇒ no Franklin coverage"~~ — corrected: the Franklin/Greenpoint block footprints were present in the 291-record set but radius-culled and lacking PLUTO storey data. The procedural recipe surfaces and enriches them via a bounded NYC Open Data + PLUTO pull (`pull-footprints.mjs`).
 
 ## What Survives From v1
 
