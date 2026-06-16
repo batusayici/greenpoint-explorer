@@ -946,26 +946,41 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   for (const edge of building.edges) {
     const face = composite?.byBin?.[building.bin]?.[edge.role];
     // In a facade group (Premier + its Pizza sister) the uncovered edges are
-    // either the shared interior lot-line wall between the two parcels or a
-    // real exterior rear/side wall of the whole mass. The interior wall must
-    // stay dropped — under the rotating camera it would read as a thin
-    // "floating plane" inside the building. The exterior walls must be kept,
-    // or the facade flat vanishes the moment the camera rotates behind it.
-    // Tell them apart by nudging the edge midpoint just past its own outward
-    // normal: if that lands inside a sibling parcel of this group, the wall is
-    // interior; otherwise it faces open air and is a true rear/side.
+    // partly the shared interior lot-line wall between the two parcels and
+    // partly real exterior rear/side wall of the whole mass. The interior runs
+    // must stay dropped — under the rotating camera they'd read as a "floating
+    // plane" inside the building — while the exposed runs must be rendered, or
+    // the facade flat shows see-through holes the moment the camera rotates.
+    // A whole edge can be both (different-width parcels), so clip to the
+    // exposed sub-segments rather than keep/drop the edge on one sample.
     if (isGroupComposite && !face) {
-      const probe = {
-        x: edge.midpoint.x + edge.normal.x * 1e-3,
-        z: edge.midpoint.z + edge.normal.z * 1e-3,
-      };
-      const interior = scene.buildings.some(
-        (other) =>
-          other !== building &&
-          other.placeId === building.placeId &&
-          pointInPolygon(probe, other.polygon),
+      const siblings = scene.buildings.filter(
+        (other) => other !== building && other.placeId === building.placeId,
       );
-      if (interior) continue;
+      const segments = exposedSegments(edge, siblings);
+      if (!segments.length) continue; // fully interior — nothing exposed
+      const segShade = faceShade.other;
+      const segColor = new THREE.Color(baseColor)
+        .lerp(new THREE.Color(0x6b5e52), 0.5)
+        .multiplyScalar(segShade);
+      for (const seg of segments) {
+        const segEdge = {
+          ...edge,
+          start: seg.start,
+          end: seg.end,
+          length: seg.length,
+          midpoint: { x: (seg.start.x + seg.end.x) / 2, z: (seg.start.z + seg.end.z) / 2 },
+        };
+        const segWall = new THREE.Mesh(
+          wallQuad(segEdge, building.height, null, scene),
+          new THREE.MeshBasicMaterial({ color: segColor, side: THREE.DoubleSide }),
+        );
+        segWall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
+        heroGroup.add(segWall);
+        addCullable(segWall, edge.normal);
+        decorateTypologicalWall(segWall, segEdge, building.height, segColor.getHex(), scene);
+      }
+      continue;
     }
     // Every wall is built; back-facing returns are hidden per current view via
     // their outward normal (registered as a cullable below), not dropped here.
@@ -1299,6 +1314,40 @@ function pointInPolygon(point, polygon) {
     if (intersects) inside = !inside;
   }
   return inside;
+}
+
+// Split a footprint edge into the runs that are actually EXPOSED — i.e. whose
+// outward side is open air, not inside a sibling parcel of the same facade
+// group. A facade flat's shared seam can be partly interior and partly exposed
+// when the two parcels are different widths (Premier: 3322609's 22.7m front is
+// ~6/9 behind 3322608 and ~3/9 sticking out). A single midpoint test would
+// drop the whole edge and leave the exposed third as a see-through hole, so
+// clip to the exposed sub-segments and render walls only there.
+function exposedSegments(edge, siblings) {
+  if (!siblings.length) return [{ start: edge.start, end: edge.end, length: edge.length }];
+  const lerp = (f) => ({
+    x: edge.start.x + (edge.end.x - edge.start.x) * f,
+    z: edge.start.z + (edge.end.z - edge.start.z) * f,
+  });
+  const n = Math.max(16, Math.min(96, Math.round(edge.length / 0.02))); // ~0.27 m samples
+  const open = [];
+  for (let i = 0; i < n; i += 1) {
+    const c = lerp((i + 0.5) / n);
+    const probe = { x: c.x + edge.normal.x * 1e-3, z: c.z + edge.normal.z * 1e-3 };
+    open.push(!siblings.some((s) => pointInPolygon(probe, s.polygon)));
+  }
+  const segments = [];
+  let i = 0;
+  while (i < n) {
+    if (!open[i]) { i += 1; continue; }
+    let j = i;
+    while (j < n && open[j]) j += 1;
+    const start = lerp(i / n);
+    const end = lerp(j / n);
+    segments.push({ start, end, length: (edge.length * (j - i)) / n });
+    i = j;
+  }
+  return segments;
 }
 
 // Generated elevations arrive with a paper margin around the artwork.
