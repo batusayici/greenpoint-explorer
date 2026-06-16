@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { facadeFaceKeys, getFacadeFace, subscribeFacadeFaces, updateFacadeFaceSpec } from "../../dev/facadeFaceRegistry.js";
-import { listEditableRecesses, patchDepth, patchRecess } from "../../dev/facadeSpecPatch.js";
+import { listEditableRecesses, patchDepth, patchRecess, patchShape, patchSpring } from "../../dev/facadeSpecPatch.js";
 import { faceRectToPanel, moveRect, panelDeltaToFace, panelPointToFace, resizeRect } from "../../dev/facadeCoords.js";
 
 const HANDLES = ["n", "s", "e", "w", "ne", "nw", "se", "sw"];
@@ -96,6 +96,14 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
 
   function setDepth(item, value) {
     updateSpec(patchDepth(specRef.current, item.depth.path, value));
+  }
+
+  function setShape(item, shape) {
+    updateSpec(patchShape(specRef.current, item.path, shape));
+  }
+
+  function setSpring(item, value) {
+    updateSpec(patchSpring(specRef.current, item.path, value));
   }
 
   const items = useMemo(() => listEditableRecesses(spec), [spec]);
@@ -256,6 +264,14 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
                   boxSizing: "border-box", cursor: "move",
                 }}
               >
+                {(item.shape === "arch" || item.shape === "circle") && (
+                  <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", overflow: "visible" }}>
+                    {item.shape === "circle"
+                      ? <ellipse cx="50" cy="50" rx="50" ry="50" fill="none" stroke={isSel ? "#ffcf3f" : "#5fd0ff"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+                      : <ArchPath springFrac={springFrac(item)} selected={isSel} kind={item.kind} />}
+                  </svg>
+                )}
                 {isSel && HANDLES.filter((h) => !(item.lockX && /[ew]/.test(h))).map((h) => (
                   <div key={h} onPointerDown={(e) => onHandlePointerDown(e, item, h)} style={handleStyle(h)} />
                 ))}
@@ -274,6 +290,10 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
       </div>
 
       {selectedItem?.depth && <DepthControl item={selectedItem} onChange={setDepth} />}
+
+      {selectedItem && (selectedItem.kind === "window" || selectedItem.kind === "door") && (
+        <ShapeControl item={selectedItem} onShape={setShape} onSpring={setSpring} />
+      )}
 
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
         <button onClick={save} style={buttonStyle}>Save → JSON</button>
@@ -337,6 +357,63 @@ function DepthControl({ item, onChange }) {
         style={{ width: 56, background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 5px", fontFamily: "inherit", fontSize: 11 }}
       />
       <span style={{ opacity: 0.6 }}>m</span>
+    </div>
+  );
+}
+
+// Fraction of the box height (from the bottom) where the arch springs.
+// Face-y grows up; SVG-y grows down — so a spring at face springY sits at
+// SVG y = (1 - (springY - y0)/(y1 - y0)) * 100.
+function springFrac(item) {
+  const sy = item.springY ?? (item.rect.y0 + item.rect.y1) / 2;
+  return (sy - item.rect.y0) / (item.rect.y1 - item.rect.y0);
+}
+
+function ArchPath({ springFrac, selected, kind }) {
+  const ySpring = (1 - springFrac) * 100; // SVG space
+  const stroke = selected ? "#ffcf3f" : kind === "door" ? "#ff9b6b" : "#5fd0ff";
+  // Jambs up to the spring line, then a semi-ellipse cap to the top.
+  const d = `M 0 100 L 0 ${ySpring} A 50 ${ySpring} 0 0 1 100 ${ySpring} L 100 100`;
+  return (
+    <>
+      <path d={d} fill="none" stroke={stroke} strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+      <line x1="0" y1={ySpring} x2="100" y2={ySpring} stroke={stroke} strokeOpacity="0.4" strokeWidth="1" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />
+    </>
+  );
+}
+
+// Shape selector for a window/door + an arch spring-line slider. The flat
+// preview shows the curve; this picks the profile and tunes where it springs.
+function ShapeControl({ item, onShape, onSpring }) {
+  const shape = item.shape ?? "rect";
+  const springY = item.springY ?? (item.rect.y0 + item.rect.y1) / 2;
+  return (
+    <div style={{ marginTop: 8, fontSize: 11 }}>
+      <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        <span style={{ opacity: 0.85, minWidth: 64 }}>shape</span>
+        {["rect", "arch", "circle"].map((s) => (
+          <button key={s} onClick={() => onShape(item, s)}
+            style={{
+              flex: 1, padding: "4px 6px", borderRadius: 4, cursor: "pointer",
+              fontFamily: "inherit", fontSize: 11,
+              border: "1px solid #5a4d3e",
+              background: shape === s ? "#d9a43b" : "#3a3228",
+              color: shape === s ? "#241c10" : "#eae1ce",
+              fontWeight: shape === s ? 700 : 400,
+            }}>
+            {s}
+          </button>
+        ))}
+      </div>
+      {shape === "arch" && (
+        <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 6 }}>
+          <span style={{ opacity: 0.85, minWidth: 64 }}>spring y</span>
+          <input type="range" min={item.rect.y0} max={item.rect.y1} step={0.002} value={springY}
+            onChange={(e) => onSpring(item, Number(e.target.value))}
+            style={{ flex: 1, accentColor: "#d9a43b" }} />
+          <span style={{ width: 44, textAlign: "right" }}>{springY.toFixed(3)}</span>
+        </div>
+      )}
     </div>
   );
 }
