@@ -904,10 +904,28 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
 
   for (const edge of building.edges) {
     const face = composite?.byBin?.[building.bin]?.[edge.role];
-    // Group-composite party walls, seen nearly edge-on from the fixed iso
-    // camera, read as a thin "floating plane" in front of the recessed
-    // storefront. The camera only ever sees the street faces, so drop them.
-    if (isGroupComposite && !face) continue;
+    // In a facade group (Premier + its Pizza sister) the uncovered edges are
+    // either the shared interior lot-line wall between the two parcels or a
+    // real exterior rear/side wall of the whole mass. The interior wall must
+    // stay dropped — under the rotating camera it would read as a thin
+    // "floating plane" inside the building. The exterior walls must be kept,
+    // or the facade flat vanishes the moment the camera rotates behind it.
+    // Tell them apart by nudging the edge midpoint just past its own outward
+    // normal: if that lands inside a sibling parcel of this group, the wall is
+    // interior; otherwise it faces open air and is a true rear/side.
+    if (isGroupComposite && !face) {
+      const probe = {
+        x: edge.midpoint.x + edge.normal.x * 1e-3,
+        z: edge.midpoint.z + edge.normal.z * 1e-3,
+      };
+      const interior = scene.buildings.some(
+        (other) =>
+          other !== building &&
+          other.placeId === building.placeId &&
+          pointInPolygon(probe, other.polygon),
+      );
+      if (interior) continue;
+    }
     // Every wall is built; back-facing returns are hidden per current view via
     // their outward normal (registered as a cullable below), not dropped here.
     // This is real back-face culling — needed because adjacent faces wind
@@ -1125,6 +1143,24 @@ function footprintShape(polygon) {
     else shape.lineTo(point.x, -point.z);
   });
   return shape;
+}
+
+// Even-odd ray cast in the scene's x/z plane. Used to tell an interior party
+// wall (its outward side lands inside a sibling parcel of the same facade
+// group) from a true exterior rear/side wall (its outward side is open air).
+function pointInPolygon(point, polygon) {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i, i += 1) {
+    const xi = polygon[i].x;
+    const zi = polygon[i].z;
+    const xj = polygon[j].x;
+    const zj = polygon[j].z;
+    const intersects =
+      zi > point.z !== zj > point.z &&
+      point.x < ((xj - xi) * (point.z - zi)) / (zj - zi) + xi;
+    if (intersects) inside = !inside;
+  }
+  return inside;
 }
 
 // Generated elevations arrive with a paper margin around the artwork.
