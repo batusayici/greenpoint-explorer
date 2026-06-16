@@ -63,6 +63,11 @@ const ISO_ELEVATION = Math.atan(1 / Math.SQRT2); // true isometric, 35.264°
 // per current view via its outward normal. CULL_T matches the old fixed test.
 const CULL_T = -0.3;
 const ROTATE_MS = 440; // snap-tween duration between adjacent 90° steps
+
+// Phase 3.3.2 — context buildings within this radius of the intersection get
+// the typological brick/window treatment so the corner reads as a real block
+// from every angle. Beyond it, buildings stay cheap graybox massing.
+const CONTEXT_TREATMENT_RADIUS_UNITS = 0.075 * 48; // ~48 m at 0.075 units/m
 const facingDot = (normal, azimuth) =>
   normal.x * Math.sin(azimuth) + normal.z * Math.cos(azimuth);
 
@@ -842,6 +847,19 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     body.rotation.x = -Math.PI / 2;
     body.userData = { bin: building.bin, placeId: building.placeId };
     three.add(body);
+
+    // Context buildings framing the intersection get the same typological
+    // brick treatment as the hero backs, so rotated corner views read as real
+    // buildings rather than flat graybox boxes. The opaque extrude self-occludes
+    // its own back-wall decoration, so no per-view culling is needed here.
+    const dist = Math.hypot(building.centroid.x, building.centroid.z);
+    if (dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
+      const deco = new THREE.Group();
+      for (const edge of footprintEdges(building.polygon, building.centroid)) {
+        decorateTypologicalWall(deco, edge, building.height, color, scene, true);
+      }
+      three.add(deco);
+    }
   });
 }
 
@@ -1151,13 +1169,35 @@ function footprintShape(polygon) {
   return shape;
 }
 
+// World-space edges of a footprint with outward normals (away from centroid).
+// Lighter-weight than the hero edge classification — context buildings don't
+// need street-role tagging, just walls to hang the typological treatment on.
+function footprintEdges(polygon, centroid) {
+  const edges = [];
+  const n = polygon.length;
+  for (let i = 0; i < n; i += 1) {
+    const start = polygon[i];
+    const end = polygon[(i + 1) % n];
+    const length = Math.hypot(end.x - start.x, end.z - start.z);
+    if (length < 1e-6) continue;
+    const dir = { x: (end.x - start.x) / length, z: (end.z - start.z) / length };
+    let normal = { x: -dir.z, z: dir.x };
+    const mid = { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 };
+    if (normal.x * (centroid.x - mid.x) + normal.z * (centroid.z - mid.z) > 0) {
+      normal = { x: -normal.x, z: -normal.z };
+    }
+    edges.push({ start, end, length, normal, midpoint: mid });
+  }
+  return edges;
+}
+
 // Typological back-wall treatment for a hero's exposed non-street faces:
 // faint storey score-lines + a sparse grid of dark "punched" windows, drawn
 // in the II-C flat-inked idiom (windows are dark shapes sitting a hair proud
 // of the brick, not real recesses) so rotated views read as real building
 // backs instead of flat colored slabs. The decoration meshes are parented
 // under `wall`, so they inherit its per-view cull visibility for free.
-function decorateTypologicalWall(wall, edge, height, baseColorHex, scene) {
+function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   const lengthM = edge.length / upm;
@@ -1169,12 +1209,18 @@ function decorateTypologicalWall(wall, edge, height, baseColorHex, scene) {
     y * height,
     left.z + (right.z - left.z) * x + normal.z * off,
   ];
+  // `lit` matches the host surface's shading: hero walls are flat MeshBasic, so
+  // their decoration is too; context masses are MeshLambert (sun-shaded), so
+  // their decoration must be Lambert as well or a flat-bright window can end up
+  // lighter than the shadowed wall it sits on.
   const quad = (x0, x1, y0, y1, off, color, opacity) => {
     const g = new THREE.BufferGeometry();
     const p = [point(x0, y0, off), point(x1, y0, off), point(x1, y1, off), point(x0, y1, off)];
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
     g.setIndex([0, 1, 2, 0, 2, 3]);
-    const m = new THREE.MeshBasicMaterial({
+    if (lit) g.computeVertexNormals();
+    const Material = lit ? THREE.MeshLambertMaterial : THREE.MeshBasicMaterial;
+    const m = new Material({
       color,
       side: THREE.DoubleSide,
       transparent: opacity < 1,
@@ -1194,7 +1240,7 @@ function decorateTypologicalWall(wall, edge, height, baseColorHex, scene) {
   // Faint horizontal storey lines (skip ground line and roofline).
   for (let f = 1; f < floors; f += 1) {
     const y = f / floors;
-    wall.add(quad(0.04, 0.96, y - 0.004, y + 0.004, 0.006, courseColor, 0.35));
+    target.add(quad(0.04, 0.96, y - 0.004, y + 0.004, 0.006, courseColor, 0.35));
   }
 
   // Sparse window grid: one column band per `cols`, one row per storey, inset
@@ -1207,9 +1253,9 @@ function decorateTypologicalWall(wall, edge, height, baseColorHex, scene) {
       const cyTop = (f + 0.78) / floors;
       const x0 = cx - winW / 2;
       const x1 = cx + winW / 2;
-      wall.add(quad(x0, x1, cyBottom, cyTop, 0.004, windowColor, 1));
+      target.add(quad(x0, x1, cyBottom, cyTop, 0.004, windowColor, 1));
       // thin ink lintel shadow above the opening
-      wall.add(quad(x0, x1, cyTop, cyTop + 0.012, 0.008, lintelColor, 0.3));
+      target.add(quad(x0, x1, cyTop, cyTop + 0.012, 0.008, lintelColor, 0.3));
     }
   }
 }
