@@ -723,14 +723,16 @@ const FACADE_COMPOSITES = {
     byBin: {
       "3337033": {
         franklin: { u0: SERENECO_KINK, u1: 1, leftEnd: "south", coverMeters: 12 },
-        // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning → bays →
-        // Sereneco corner entrance). v2 is a corner UNWRAP: its left 0..0.80 is
-        // the Greenpoint face, its right 0.80..1 is the Franklin return
-        // (AZURE GOURMET). Map only the greenpoint slice here so AZURE GOURMET
-        // doesn't duplicate onto this face — it lives on the franklin face
-        // (corner.png) above, where Batu confirmed it's correct. 0.80 ≈ the
-        // real 22.6m Greenpoint edge, so the slice fills the wall undistorted.
-        greenpoint: { key: "../assets/textures/franklin/sereneco--corner-v2.png", u0: 0, u1: 0.8, leftEnd: "west" },
+        // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning → black
+        // door → WINE·BEER·COCKTAILS → BRUNCH·DINNER bays). v2 is a corner
+        // UNWRAP and the fold sits at u≈0.585: left 0..0.585 is the Greenpoint
+        // face; right of it is the Franklin return (Sereneco green-tile corner
+        // ENTRANCE + wood door, then AZURE GOURMET). The Sereneco entrance/door
+        // is on FRANKLIN, not Greenpoint — the franklin face (corner.png, u0
+        // 0.496) already begins exactly at the green-tile entrance. Cut here so
+        // the door + entrance don't duplicate onto this face. (Derived: bay
+        // BRUNCH·DINNER ends u≈0.576, wood door u≈0.615–0.66 — past the cut.)
+        greenpoint: { key: "../assets/textures/franklin/sereneco--corner-v2.png", u0: 0, u1: 0.585, leftEnd: "west" },
       },
     },
   },

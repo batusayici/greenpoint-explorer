@@ -123,20 +123,27 @@ a banked fix regressed or a playbook rule was skipped.
   "Dinner·Brunch·Bar" awning frontage — was never drawn right and never shown
   (back-facing at the old fixed camera). The multi-angle rig (3.2) exposed it.
 - **Render:** Batu re-rendered as `sereneco--corner-v2.png` (1916×821) — a
-  corner UNWRAP: left `0..0.80` is the Greenpoint face (Dinner·Brunch·Bar →
-  bays → Sereneco corner entrance), right `0.80..1` is the Franklin return
-  (AZURE GOURMET, a *real separate* tenant — Batu-confirmed correct on
-  Franklin). Wired as a **per-face texture**: the greenpoint face overrides
-  `composite.key` with its own PNG, mapping only `u0:0→u1:0.80` onto the 22.6m
-  greenpoint edge; franklin keeps the original `corner.png` slice. **Flat map,
-  no recess spec yet** — windows/storefront depth is the open polish step.
-- **Bug caught (1 fix):** first wired greenpoint at `u0:0→u1:1`, which pulled
-  AZURE GOURMET (Franklin content) onto the Greenpoint face → it duplicated
-  against the franklin slice. Fixed by cutting the greenpoint slice at the
-  corner fold (`u1:0.80`, measured: AZURE GOURMET's bay starts at u≈0.82 in the
-  derive overlay; 0.80 × the ~28.6m unwrap ≈ the real 22.6m greenpoint edge).
-  **Lesson:** a "corner-vN" re-render is a two-face unwrap — split it at the
-  fold, don't map full-width onto one face.
+  corner UNWRAP. The real corner fold sits at **u≈0.585**: left `0..0.585` is
+  the Greenpoint face (Dinner·Brunch·Bar awning → black door →
+  WINE·BEER·COCKTAILS → BRUNCH·DINNER bays); everything right of it is the
+  **Franklin return** (Sereneco green-tile corner ENTRANCE + wood door, then
+  AZURE GOURMET — a *real separate* tenant, Batu-confirmed correct on Franklin).
+  Wired as a **per-face texture**: the greenpoint face overrides `composite.key`
+  with its own PNG, mapping `u0:0→u1:0.585` onto the 22.6m greenpoint edge;
+  franklin keeps the original `corner.png` slice (`u0:0.496→1`), which begins
+  exactly at the green-tile entrance — so the two walls meet at the corner with
+  no gap or overlap. **Flat map, no recess spec yet** — depth is open polish.
+- **Bug caught (2 fixes):** (1) first wired greenpoint at `u0:0→u1:1`, pulling
+  AZURE GOURMET onto the Greenpoint face → duplicated the franklin slice.
+  (2) Then cut to `u1:0.80` to drop AZURE GOURMET — but `0.80` still sat *past*
+  the fold, so the **Sereneco green-tile entrance + wood door** (u≈0.585–0.66,
+  derived) duplicated onto Greenpoint when they belong on Franklin (Batu: "the
+  door is on the franklin side, not greenpoint"). Final cut `u1:0.585` lands on
+  the brick corner right after BRUNCH·DINNER (bay ends u≈0.576; wood door
+  u≈0.615–0.66 — now past the cut). Verified in-engine at angle 4.
+  **Lesson:** the corner fold is where the *Greenpoint storefronts end*, not
+  where AZURE GOURMET begins — find the fold by the last Greenpoint feature,
+  cross-check that the franklin texture picks up at that same physical edge.
 - **Quirks:** the two street faces are **separate textures meeting at the real
   90° brick corner** — no single-image unwrap needed, because Sereneco's
   storefronts don't wrap the chamfer (unlike Premier/Sonny's). `AZURE GOURMET`
