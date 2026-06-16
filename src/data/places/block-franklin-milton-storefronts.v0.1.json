@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "block-storefront-roster.v0.1",
+  "blockId": "franklin-milton",
+  "source": {
+    "provider": "OSM Overpass",
+    "endpoint": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "query": "[out:json][timeout:30];(node[\"shop\"](40.7299,-73.9586,40.7313,-73.9568);way[\"shop\"](40.7299,-73.9586,40.7313,-73.9568);node[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7299,-73.9586,40.7313,-73.9568);way[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7299,-73.9586,40.7313,-73.9568););out center tags;"
+  },
+  "recordCount": 12,
+  "storefronts": [
+    {
+      "name": "Sereneco",
+      "category": "restaurant",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9577527,
+        "lat": 40.7300079
+      },
+      "sourceId": "osm:node/2268953873",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Elder Greene",
+      "category": "restaurant",
+      "houseNumber": "160",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.957596,
+        "lat": 40.7307172
+      },
+      "sourceId": "osm:node/2276324841",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Vamos al Tequila",
+      "category": "restaurant",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9576081,
+        "lat": 40.7307935
+      },
+      "sourceId": "osm:node/2276325688",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Madeline's",
+      "category": "bar",
+      "houseNumber": "113",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578047,
+        "lat": 40.7302402
+      },
+      "sourceId": "osm:node/2843008383",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Seven Wonders Collective",
+      "category": "clothes",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9576201,
+        "lat": 40.7310053
+      },
+      "sourceId": "osm:node/5082647023",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Maman",
+      "category": "cafe",
+      "houseNumber": "80",
+      "addrStreet": "Kent Street",
+      "point": {
+        "lon": -73.9581342,
+        "lat": 40.7304598
+      },
+      "sourceId": "osm:node/6800262485",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Threes Brewing",
+      "category": "pub",
+      "houseNumber": "113",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578334,
+        "lat": 40.7303713
+      },
+      "sourceId": "osm:node/7424179953",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Azure Gourmet",
+      "category": "convenience",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9577837,
+        "lat": 40.7300909
+      },
+      "sourceId": "osm:node/10355265207",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Kennaland",
+      "category": "hairdresser",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9578058,
+        "lat": 40.730162
+      },
+      "sourceId": "osm:node/10355265208",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Tania Kovalenko",
+      "category": "interior_decoration",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9578076,
+        "lat": 40.7302055
+      },
+      "sourceId": "osm:node/10357823709",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Land of Barbers",
+      "category": "hairdresser",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9574917,
+        "lat": 40.7300949
+      },
+      "sourceId": "osm:node/10357823710",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Big Night",
+      "category": "deli",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9575209,
+        "lat": 40.7303611
+      },
+      "sourceId": "osm:node/10357823712",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    }
+  ]
+}
