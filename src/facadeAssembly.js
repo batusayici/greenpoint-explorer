@@ -339,12 +339,8 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     if (spec.cornice) debugRects.push({ x0: 0, x1: 1, ...spec.cornice });
     const material = new THREE.LineBasicMaterial({ color: 0x00ff44 });
     for (const rect of debugRects) {
-      const points = [
-        facePoint(frame, rect.x0, rect.y0, 0.03),
-        facePoint(frame, rect.x1, rect.y0, 0.03),
-        facePoint(frame, rect.x1, rect.y1, 0.03),
-        facePoint(frame, rect.x0, rect.y1, 0.03),
-      ].map((p) => new THREE.Vector3(...p));
+      const { outline } = openingProfile(rect);
+      const points = outline.map((p) => new THREE.Vector3(...facePoint(frame, p.x, p.y, 0.03)));
       const geometry = new THREE.BufferGeometry().setFromPoints(points);
       group.add(new THREE.LineLoop(geometry, material));
     }
