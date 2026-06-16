@@ -88,7 +88,9 @@ const facadeTextureUrls = import.meta.glob("../assets/textures/franklin/*.png", 
 
 export default function SceneView() {
   const mountRef = useRef(null);
-  const facadeEdit = new URLSearchParams(window.location.search).get("facadeedit") === "1";
+  const [facadeEdit, setFacadeEdit] = useState(
+    () => new URLSearchParams(window.location.search).get("facadeedit") === "1"
+  );
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
   const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
@@ -97,6 +99,17 @@ export default function SceneView() {
   const updateAnchorRef = useRef(() => {});
   const rotateRef = useRef(() => {}); // imperative rotate(dir) from the effect
   const selectedPlaceIdRef = useRef(null);
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.shiftKey && e.key === "E") {
+        setFacadeEdit(true);
+        setEditorOpen((open) => !open);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -374,7 +387,7 @@ export default function SceneView() {
     }
 
     function onKeyDown(event) {
-      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
       const k = event.key.toLowerCase();
       if (k === "e" || k === "]" || event.key === "ArrowRight") rotate(1);
       else if (k === "q" || k === "[" || event.key === "ArrowLeft") rotate(-1);
