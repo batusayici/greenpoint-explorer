@@ -17,3 +17,6 @@ build/
 coverage/
 .cache/
 .vercel
+
+# Visual-companion brainstorm artifacts
+.superpowers/
