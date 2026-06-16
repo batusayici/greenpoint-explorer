@@ -121,22 +121,30 @@ export function assembleFranklinScene({
 
   // Block extracts: pre-bounded footprint pulls for adjacent blocks (Franklin→Milton, etc.).
   // They are spatially bounded by their pull bbox, so they bypass the origin-radius cull.
-  // Dedupe by BIN against everything already added. Carry sourceProperties so the renderer
-  // can classify typology; tag fromBlockExtract so it gets typological (non-hero) treatment.
-  const seenBins = new Set(buildings.map((b) => b.bin));
+  // Carry sourceProperties so the renderer can classify typology; tag fromBlockExtract so
+  // it gets typological (non-hero) treatment.
+  //
+  // Override rule: if a BIN already exists in buildings as a plain (non-hero) entry, REPLACE
+  // it in place so it gains rich sourceProperties (PLUTO fields) from the block extract.
+  // Never override heroes or facade-group members — they must stay exactly as the main loop
+  // built them. Dedupe within block-vs-block by tracking pushed block BINs separately.
+  const pushedBlockBins = new Set();
   for (const extract of blockExtracts) {
     for (const record of extract.footprintRecords ?? []) {
       const bin = String(record.sourceProperties?.bin ?? "");
-      if (!bin || seenBins.has(bin)) continue;
+      if (!bin) continue;
+      // Never override a hero or facade-group member.
+      if (heroByBin.has(bin) || facadeGroupBins[bin]) continue;
+      // Dedupe within multiple block extracts.
+      if (pushedBlockBins.has(bin)) continue;
       const polygon = projectPolygon(record.wgs84Polygon, projection);
       if (!polygon.length) continue;
-      seenBins.add(bin);
       const centroid = getCentroid(polygon);
       const heightFeet = Number.parseFloat(record.sourceProperties?.heightRoof);
       const heightUnits = projection.metersToUnits(
         (Number.isFinite(heightFeet) ? heightFeet : 30) * FEET_TO_METERS,
       );
-      buildings.push({
+      const blockBuilding = {
         bin,
         polygon,
         centroid,
@@ -149,7 +157,18 @@ export function assembleFranklinScene({
         cornerRole: null,
         edges: null,
         fromBlockExtract: true,
-      });
+      };
+      const idx = buildings.findIndex((b) => b.bin === bin);
+      if (idx >= 0) {
+        if (!buildings[idx].isHero) {
+          // Replace the plain main-loop version in place (preserves array order).
+          buildings[idx] = blockBuilding;
+        }
+        // If somehow isHero is true here (shouldn't happen given guard above), skip.
+      } else {
+        buildings.push(blockBuilding);
+      }
+      pushedBlockBins.add(bin);
     }
   }
 
