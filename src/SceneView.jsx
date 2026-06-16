@@ -17,6 +17,8 @@ import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
 import { classifyBuilding } from "./buildingTypology.js";
+import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0.1.json";
+import { assignStorefronts } from "./storefrontRoster.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -223,6 +225,7 @@ export default function SceneView() {
     });
     buildFurniture(three, furniture);
     buildBuildings(three, scene, requestRender, isActive, addCullable);
+    buildBlockStorefronts(three, scene);
     window.__three = three;
     window.__scene = scene;
 
@@ -865,6 +868,162 @@ function disposeGroup(group) {
   });
 }
 
+// Render truthful storefront sign bands on block commercial frontages.
+// Each storefront in the OSM roster that has a projected scenePoint is
+// assigned to the nearest commercial block-extract building. Hero buildings
+// (already getting full hero treatment) are excluded from assignment.
+// No interactive card is wired — clicking does nothing for these meshes.
+function buildBlockStorefronts(three, scene) {
+  // Step 1: project roster points into scene units; drop any without a point.
+  const projected = blockStorefronts.storefronts
+    .map((s) => ({ ...s, scenePoint: s.point ? scene.projection.project(s.point) : null }))
+    .filter((s) => s.scenePoint != null);
+
+  // Step 2: hero-proximity guard — if the nearest building to a storefront
+  // is a hero, the storefront belongs to that hero's treatment; drop it here.
+  const heroes = scene.buildings.filter((b) => b.isHero);
+
+  function dist2(a, b) {
+    const dx = a.x - b.x, dz = a.z - b.z;
+    return Math.sqrt(dx * dx + dz * dz);
+  }
+
+  const survivors = projected.filter((s) => {
+    let nearest = null;
+    let nearestDist = Infinity;
+    for (const bldg of scene.buildings) {
+      if (!bldg.centroid) continue;
+      const d = dist2(s.scenePoint, bldg.centroid);
+      if (d < nearestDist) { nearestDist = d; nearest = bldg; }
+    }
+    // Drop if nearest building is a hero.
+    return nearest ? !nearest.isHero : true;
+  });
+
+  // Step 3: build list of commercial block-extract buildings for the assigner.
+  const blockCommercial = scene.buildings
+    .filter((b) => b.fromBlockExtract && b.sourceProperties)
+    .map((b) => ({ b, t: classifyBuilding({ sourceProperties: b.sourceProperties }) }))
+    .filter((x) => x.t.groundFloorUse === "commercial")
+    .map((x) => ({
+      bin: x.b.bin,
+      groundFloorUse: "commercial",
+      frontage: { scenePoint: x.b.centroid },
+    }));
+
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+
+  if (blockCommercial.length === 0 || survivors.length === 0) return;
+
+  // Step 4: assign — force point-only path (houseNumber null for all survivors).
+  const roster = survivors.map((s) => ({
+    name: s.name,
+    category: s.category,
+    houseNumber: null,
+    scenePoint: s.scenePoint,
+    sourceId: s.sourceId,
+    confidence: s.confidence,
+    activeStatus: s.activeStatus,
+  }));
+  const bays = assignStorefronts(blockCommercial, roster, { axis: "x" });
+
+  // Step 5: group bays by bin so we know the per-building slot count for
+  // horizontal offset calculation.
+  const baysByBin = new Map();
+  for (const bay of bays) {
+    if (!baysByBin.has(bay.bin)) baysByBin.set(bay.bin, []);
+    baysByBin.get(bay.bin).push(bay);
+  }
+
+  // Step 6: render sign + awning for each bay.
+  // Category tints for awning strip (muted II-C tones).
+  const AWNING_TINT = {
+    restaurant: 0x6b3a2a,
+    cafe:       0x4a3825,
+    bar:        0x2e3b32,
+    pub:        0x2e3b32,
+    clothes:    0x3b4a5c,
+    hairdresser:0x3d4030,
+    convenience:0x4a4030,
+    deli:       0x5c4030,
+    interior_decoration: 0x4a3b4a,
+  };
+
+  for (const [bin, binBays] of baysByBin) {
+    const building = byBin.get(bin);
+    if (!building || !building.polygon || !building.centroid) continue;
+
+    const typology = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
+    const storeys = Math.max(1, typology.storeyCount);
+    const gy = 1 / storeys; // fraction of total height = one storey
+
+    // Longest edge = street-facing frontage.
+    const edges = footprintEdges(building.polygon, building.centroid);
+    if (!edges.length) continue;
+    const edge = [...edges].sort((a, b) => b.length - a.length)[0];
+
+    const { left, right, normal } = faceFrame(edge, building.height, null, scene);
+
+    // Local point helper: face-unit coords → world coords.
+    const point = (x, y, off) => [
+      left.x + (right.x - left.x) * x + normal.x * off,
+      y * building.height,
+      left.z + (right.z - left.z) * x + normal.z * off,
+    ];
+
+    const baysPerBin = binBays.length;
+
+    for (const bay of binBays) {
+      const cx = (bay.slotIndex + 0.5) / Math.max(1, baysPerBin);
+      const w = Math.min(0.4, 0.9 / baysPerBin);
+      const off = 0.02; // proud of wall surface
+
+      // Sign-band: upper portion of ground storey (above the glazed base).
+      const y0 = gy * 0.55;
+      const y1 = gy * 0.90;
+
+      const signPositions = new Float32Array([
+        ...point(cx - w / 2, y0, off),
+        ...point(cx + w / 2, y0, off),
+        ...point(cx + w / 2, y1, off),
+        ...point(cx - w / 2, y1, off),
+      ]);
+      const signGeo = new THREE.BufferGeometry();
+      signGeo.setAttribute("position", new THREE.BufferAttribute(signPositions, 3));
+      signGeo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([0,0, 1,0, 1,1, 0,1]), 2));
+      signGeo.setIndex([0,1,2, 0,2,3]);
+      const signMesh = new THREE.Mesh(
+        signGeo,
+        new THREE.MeshBasicMaterial({
+          map: makeStorefrontSignTexture(bay.name),
+          transparent: true,
+          side: THREE.DoubleSide,
+        }),
+      );
+      three.add(signMesh);
+
+      // Thin awning strip just below the sign band.
+      const ay0 = gy * 0.42;
+      const ay1 = gy * 0.50;
+      const awningPositions = new Float32Array([
+        ...point(cx - w / 2, ay0, off + 0.005),
+        ...point(cx + w / 2, ay0, off + 0.005),
+        ...point(cx + w / 2, ay1, off + 0.005),
+        ...point(cx - w / 2, ay1, off + 0.005),
+      ]);
+      const awningGeo = new THREE.BufferGeometry();
+      awningGeo.setAttribute("position", new THREE.BufferAttribute(awningPositions, 3));
+      awningGeo.setIndex([0,1,2, 0,2,3]);
+      const awningColor = AWNING_TINT[bay.category] ?? II_PALETTE.ink;
+      const awningMesh = new THREE.Mesh(
+        awningGeo,
+        new THREE.MeshBasicMaterial({ color: awningColor, side: THREE.DoubleSide }),
+      );
+      three.add(awningMesh);
+    }
+  }
+}
+
 function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   scene.buildings.forEach((building, index) => {
     if (building.isHero && building.edges) {
@@ -1456,6 +1615,23 @@ function loadTrimmedTexture(url, onReady) {
     onReady(texture);
   };
   image.src = url;
+}
+
+// II-C sign band texture: inked border on paper-tone ground, uppercase serif name.
+// Font size auto-shrinks until the label fits within the border inset.
+function makeStorefrontSignTexture(name) {
+  const c = document.createElement("canvas");
+  c.width = 512; c.height = 128;
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = "#efe7d6"; ctx.fillRect(0, 0, c.width, c.height);                 // II-C paper
+  ctx.strokeStyle = "#23201c"; ctx.lineWidth = 7; ctx.strokeRect(10, 10, c.width - 20, c.height - 20);
+  ctx.fillStyle = "#23201c"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  let fs = 58; ctx.font = `700 ${fs}px Georgia, serif`;
+  const label = String(name).toUpperCase();
+  while (ctx.measureText(label).width > c.width - 56 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
+  ctx.fillText(label, c.width / 2, c.height / 2);
+  const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
+  return tex;
 }
 
 // II-style flat roof: warm dark membrane, paper-grain speckle, and a
