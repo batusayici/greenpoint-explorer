@@ -12,12 +12,14 @@ import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-f
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
 import blockFranklinMilton from "./data/geometry-source/block-franklin-milton.nyc-open-geometry.v0.1.json";
+import blockGreenpointEast from "./data/geometry-source/block-greenpoint-east.nyc-open-geometry.v0.1.json";
 import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
 import { classifyBuilding } from "./buildingTypology.js";
 import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0.1.json";
+import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-storefronts.v0.1.json";
 import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts } from "./storefrontRoster.js";
 
@@ -150,7 +152,7 @@ export default function SceneView() {
       sceneGeometryFixture,
       wrapFixture,
       facadeGroupBins: FACADE_GROUP_BINS,
-      blockExtracts: [blockFranklinMilton],
+      blockExtracts: BLOCK_EXTRACTS,
     });
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -828,6 +830,11 @@ const FACADE_COMPOSITES = {
   },
 };
 
+// Registered blocks: add a block's footprint extract + storefront roster here to
+// include it in the scene. (Adding a future block = pull data + append two entries.)
+const BLOCK_EXTRACTS = [blockFranklinMilton, blockGreenpointEast];
+const BLOCK_STOREFRONT_ROSTERS = [blockStorefronts, blockGreenpointEastStorefronts];
+
 const FACADE_GROUP_BINS = {
   "3322609": "premier-franklin-organic",
   // 144 Franklin is a standalone hero with no entry in the R10G truth fixture;
@@ -889,7 +896,8 @@ function buildBlockStorefronts(three, scene) {
   );
 
   // Step 1: project roster points into scene units; drop any without a point.
-  const projected = blockStorefronts.storefronts
+  const allStorefronts = BLOCK_STOREFRONT_ROSTERS.flatMap((r) => r.storefronts);
+  const projected = allStorefronts
     .map((s) => ({ ...s, scenePoint: s.point ? scene.projection.project(s.point) : null }))
     .filter((s) => s.scenePoint != null);
 
