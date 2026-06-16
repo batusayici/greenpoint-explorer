@@ -319,7 +319,14 @@ export default function SceneView() {
     // for that face (edit mode only). Assembly groups carry userData.faceKey.
     const raycaster = new THREE.Raycaster();
     const down = { x: 0, y: 0, onCanvas: false };
-    function faceKeyAt(event) {
+    // Resolve the surface under a screen point. Returns the nearest *visible
+    // mesh* the ray hits — skipping (1) NPR outline LineSegments (decoration,
+    // not selectable; and with the default Line pick-threshold ≈ 1 unit ≈ 13 m
+    // at this scene scale they get "hit" from a whole building away, so a click
+    // anywhere lands on some distant building's edge lines first) and (2) meshes
+    // hidden by per-view back-face culling (so selection follows what the
+    // current angle actually shows, not a culled mesh nearer along the ray).
+    function pickSurface(event) {
       const rect = renderer.domElement.getBoundingClientRect();
       const ndc = new THREE.Vector2(
         ((event.clientX - rect.left) / rect.width) * 2 - 1,
@@ -327,30 +334,37 @@ export default function SceneView() {
       );
       raycaster.setFromCamera(ndc, camera);
       for (const hit of raycaster.intersectObjects(three.children, true)) {
-        let object = hit.object;
-        while (object) {
-          if (object.userData?.faceKey) return object.userData.faceKey;
-          object = object.parent;
+        const object = hit.object;
+        if (!object.isMesh) continue; // skip outline LineSegments / Points
+        let node = object;
+        let hidden = false;
+        while (node) {
+          if (!node.visible) { hidden = true; break; }
+          node = node.parent;
         }
+        if (hidden) continue; // skip culled back-faces
+        return object;
       }
       return null;
     }
 
-    function placeIdAt(event) {
-      const rect = renderer.domElement.getBoundingClientRect();
-      const ndc = new THREE.Vector2(
-        ((event.clientX - rect.left) / rect.width) * 2 - 1,
-        -((event.clientY - rect.top) / rect.height) * 2 + 1,
-      );
-      raycaster.setFromCamera(ndc, camera);
-      for (const hit of raycaster.intersectObjects(three.children, true)) {
-        let object = hit.object;
-        while (object) {
-          if (object.userData?.placeId) return object.userData.placeId;
-          object = object.parent;
-        }
+    function ancestorUserData(object, key) {
+      let node = object;
+      while (node) {
+        if (node.userData?.[key] != null) return node.userData[key];
+        node = node.parent;
       }
       return null;
+    }
+
+    function faceKeyAt(event) {
+      const surface = pickSurface(event);
+      return surface ? ancestorUserData(surface, "faceKey") : null;
+    }
+
+    function placeIdAt(event) {
+      const surface = pickSurface(event);
+      return surface ? ancestorUserData(surface, "placeId") : null;
     }
 
     function onPointerDown(event) {
