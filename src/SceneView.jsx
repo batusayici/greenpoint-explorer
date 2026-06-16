@@ -16,6 +16,7 @@ import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.j
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
+import { classifyBuilding } from "./buildingTypology.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -49,6 +50,17 @@ const II_PALETTE = {
     "144-franklin": 0xa85a3c, // 1895 Romanesque Revival, terracotta/red brick
   },
 };
+
+// Material-family wall tones for data-differentiated typological infill (II-C muted).
+const TYPOLOGY_PALETTE = {
+  "typological.brick": 0xb89a7e,
+  "typological.painted": 0xc8c2b2,
+  "typological.commercial": 0xb4a890,
+  "typological.warehouse": 0x968b78,
+};
+function resolveTypologyColor(typology) {
+  return TYPOLOGY_PALETTE[typology?.palette] ?? II_PALETTE.context[0];
+}
 
 // Camera sits northeast of the intersection looking southwest, so the
 // Greenpoint-facing (north) and Franklin-facing (east) hero frontages —
@@ -861,7 +873,17 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     }
     const shape = footprintShape(building.polygon);
     const geometry = new THREE.ExtrudeGeometry(shape, { depth: building.height, bevelEnabled: false });
-    const color = II_PALETTE.context[index % II_PALETTE.context.length];
+    // Block-extract buildings carry PLUTO sourceProperties — classify them for
+    // data-differentiated wall tone and typological decoration. Non-block
+    // context buildings keep the existing rotating palette.
+    let typology = null;
+    let color;
+    if (building.fromBlockExtract && building.sourceProperties) {
+      typology = classifyBuilding({ sourceProperties: building.sourceProperties });
+      color = resolveTypologyColor(typology);
+    } else {
+      color = II_PALETTE.context[index % II_PALETTE.context.length];
+    }
     // ExtrudeGeometry material slots: 0 = caps (roof), 1 = side walls.
     // Darker inked roof caps keep large masses from reading as flat slabs.
     const roof = new THREE.Color(color).multiplyScalar(0.5);
@@ -873,15 +895,15 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     body.userData = { bin: building.bin, placeId: building.placeId };
     three.add(body);
 
-    // Context buildings framing the intersection get the same typological
-    // brick treatment as the hero backs, so rotated corner views read as real
-    // buildings rather than flat graybox boxes. The opaque extrude self-occludes
-    // its own back-wall decoration, so no per-view culling is needed here.
+    // Block buildings always get typological decoration (storey lines + windows)
+    // regardless of distance to intersection. Context buildings keep the existing
+    // 48 m radius gate. The opaque extrude self-occludes its own back-wall
+    // decoration, so no per-view culling is needed here.
     const dist = Math.hypot(building.centroid.x, building.centroid.z);
-    if (dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
+    if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
       const deco = new THREE.Group();
       for (const edge of footprintEdges(building.polygon, building.centroid)) {
-        decorateTypologicalWall(deco, edge, building.height, color, scene, true);
+        decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology);
       }
       three.add(deco);
     }
@@ -1237,7 +1259,7 @@ function footprintEdges(polygon, centroid) {
 // of the brick, not real recesses) so rotated views read as real building
 // backs instead of flat colored slabs. The decoration meshes are parented
 // under `wall`, so they inherit its per-view cull visibility for free.
-function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false) {
+function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false, typology = null) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   const lengthM = edge.length / upm;
@@ -1274,7 +1296,11 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
   const windowColor = base.clone().multiplyScalar(0.34);
   const lintelColor = new THREE.Color(II_PALETTE.ink);
 
-  const floors = Math.min(6, Math.max(2, Math.round(heightM / 3.5)));
+  // When typology is provided (block-extract buildings), use the real storey
+  // count from PLUTO data instead of deriving it from the mesh height.
+  const floors = typology
+    ? Math.min(8, Math.max(1, typology.storeyCount))
+    : Math.min(6, Math.max(2, Math.round(heightM / 3.5)));
   const cols = Math.min(6, Math.max(1, Math.floor(lengthM / 4.5)));
 
   // Faint horizontal storey lines (skip ground line and roofline).
@@ -1283,12 +1309,25 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
     target.add(quad(0.04, 0.96, y - 0.004, y + 0.004, 0.006, courseColor, 0.35));
   }
 
+  // Commercial ground floor: a wide glazed shop base replaces the punched
+  // window on floor 0, giving the building a distinct commercial reading.
+  const isCommercial = typology && typology.groundFloorUse === "commercial";
+  if (isCommercial) {
+    // Wide dark glazing across the full ground-storey bay.
+    const glassColor = base.clone().multiplyScalar(0.30);
+    target.add(quad(0.06, 0.94, 0.06 / floors, 0.82 / floors, 0.004, glassColor, 1));
+    // Thin lintel / sign-shelf line just above the glazing.
+    target.add(quad(0.04, 0.96, 0.84 / floors, 0.9 / floors, 0.008, lintelColor, 0.4));
+  }
+
   // Sparse window grid: one column band per `cols`, one row per storey, inset
-  // from the edges and from each storey's floor/ceiling.
+  // from the edges and from each storey's floor/ceiling. For commercial
+  // buildings the ground floor (f=0) is handled above; skip it here.
   const winW = Math.min(0.5 / cols, (1.1 * upm) / edge.length);
+  const floorStart = isCommercial ? 1 : 0;
   for (let c = 0; c < cols; c += 1) {
     const cx = (c + 0.5) / cols;
-    for (let f = 0; f < floors; f += 1) {
+    for (let f = floorStart; f < floors; f += 1) {
       const cyBottom = (f + 0.26) / floors;
       const cyTop = (f + 0.78) / floors;
       const x0 = cx - winW / 2;
