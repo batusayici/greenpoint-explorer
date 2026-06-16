@@ -110,7 +110,7 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
   - 4.1c.3 ~~Verifier~~: `score-block-build.mjs` scorecard; both blocks verified.
 
 4.1b Second intersection built entirely through the pipeline; measure hours-per-corner and what needed hand-tuning
-4.2 Kit-ify what repeated: texture prompt templates, prop placement rules, facade parameter schema. **Substantially realized** — the descriptor+registry pattern is the kit; a third block is pure data + 2 array entries. Remaining: sign craft polish + OSM dedup-by-proximity pass (see SCALING_LOG Block B findings).
+4.2 Kit-ify what repeated: texture prompt templates, prop placement rules, facade parameter schema. **Substantially realized** — the descriptor+registry pattern is the kit; a third block is pure data + 2 array entries. **Sign prominence DONE (2026-06-16, `feat/storefront-sign-system`):** the `storefrontSigns.js` system replaces flat coplanar bands with an enlarged band + category-gated projecting blade signs (the loud trades), so names carry at the iso angle. Signs now default to **category labels** ("Barbershop", "Café", "Deli") for unclaimed businesses; a `claimed`-flag + `brandName` path attaches real branding (the monetization experiment — businesses pay to claim their location). Existing heroes are the seeded claimed showcase. Awning-valance names + ghost upper-wall lettering remain fast-follow idioms (designed in the spec). Remaining 4.2 polish: OSM dedup-by-proximity pass (see SCALING_LOG Block B findings).
 4.3 Corridor infill v0: typological block faces connecting the two corners
 4.4 **MVP review (Batu)**
 

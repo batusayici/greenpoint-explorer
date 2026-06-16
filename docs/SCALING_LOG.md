@@ -27,7 +27,7 @@ only a descriptor + data extracts + a registration line. That delta is the exper
 3. **Sign facing.** "Longest edge" placed signs on party-wall sides; switched to "edge nearest the storefront's OSM point" so signs face the street.
 
 **Open craft / polish items (taste calls — not blockers)**
-- **Sign prominence is low** at iso zoom: ground-floor name bands are small and often occluded by the iso angle / neighboring masses. Candidate polish: larger or projecting blade signs, or raised sign band. Deferred for Batu's taste direction.
+- ~~**Sign prominence is low** at iso zoom: ground-floor name bands are small and often occluded by the iso angle / neighboring masses.~~ **RESOLVED (2026-06-16, `feat/storefront-sign-system`).** New `storefrontSigns.js` system: enlarged band + category-gated projecting **blade signs** (perpendicular to the facade, so a face catches every iso angle and pokes past neighbors). Signs default to **category labels** for unclaimed shops ("Bar", "Deli", "Barbershop") and show real branding only when `claimed` (the monetization experiment). Awning-valance names + ghost lettering designed as fast-follow. See `docs/superpowers/plans/2026-06-16-storefront-sign-system.md`.
 - Material differentiation is subtle because 49/53 buildings classify brick-prewar (true to Franklin St's uniform rowhouse stock) — correct, but the block reads uniform; storefront signage is what carries recognizability.
 
 **Infra finding**
@@ -57,7 +57,7 @@ only a descriptor + data extracts + a registration line. That delta is the exper
 
 **Findings carried / new**
 - **OSM roster overlap:** the two block bboxes overlap near the shared corner, so an OSM business ("Land of Barbers" / "The Land of Barbers") appears in both rosters. Distinct name strings + points mean a simple dedup wouldn't fully collapse them. A future block-aware dedup (by point proximity) is worth adding before many blocks.
-- **Sign prominence** (from Block A) still applies block-wide — the ground-floor name bands are small/occluded at iso zoom; a taste call for a polish pass.
+- ~~**Sign prominence** (from Block A) still applies block-wide.~~ Resolved block-wide by the `storefrontSigns.js` system (band + category-gated blade, category-label default) — see the Block A note above.
 - **Material uniformity:** both blocks classify mostly brick-prewar — true to Greenpoint stock; storefront signage carries recognizability.
 
 **Verdict:** The recipe scales. The marginal cost of a new typological+truthful block is now **data acquisition (two scripted pulls) + ~4 lines of registration**, not engineering. Remaining work to make it production-grade is polish (sign craft) and a dedup pass, not architecture.
