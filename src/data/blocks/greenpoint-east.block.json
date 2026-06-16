@@ -1,0 +1,8 @@
+{
+  "id": "greenpoint-east",
+  "label": "Greenpoint Ave — Franklin St to the east (toward Manhattan Ave)",
+  "bbox": { "minLon": -73.9576, "minLat": 40.7295, "maxLon": -73.9558, "maxLat": 40.7305 },
+  "streetSegments": [
+    { "name": "Greenpoint Ave", "from": "Franklin St", "to": "east" }
+  ]
+}

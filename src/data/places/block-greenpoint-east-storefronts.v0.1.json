@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "block-storefront-roster.v0.1",
+  "blockId": "greenpoint-east",
+  "source": {
+    "provider": "OSM Overpass",
+    "endpoint": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "query": "[out:json][timeout:30];(node[\"shop\"](40.7295,-73.9576,40.7305,-73.9558);way[\"shop\"](40.7295,-73.9576,40.7305,-73.9558);node[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7295,-73.9576,40.7305,-73.9558);way[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7295,-73.9576,40.7305,-73.9558););out center tags;"
+  },
+  "recordCount": 6,
+  "storefronts": [
+    {
+      "name": "The Pencil Factory",
+      "category": "bar",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9574255,
+        "lat": 40.729763
+      },
+      "sourceId": "osm:node/2015482687",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Alter",
+      "category": "clothes",
+      "houseNumber": "140",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9574215,
+        "lat": 40.7296848
+      },
+      "sourceId": "osm:node/2268954141",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Black Rabbit",
+      "category": "bar",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9564221,
+        "lat": 40.7300934
+      },
+      "sourceId": "osm:node/2275479427",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "The Land of Barbers",
+      "category": "hairdresser",
+      "houseNumber": "86",
+      "addrStreet": "Greenpoint Avenue",
+      "point": {
+        "lon": -73.9573009,
+        "lat": 40.7297836
+      },
+      "sourceId": "osm:node/6373087185",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Land of Barbers",
+      "category": "hairdresser",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9574917,
+        "lat": 40.7300949
+      },
+      "sourceId": "osm:node/10357823710",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Big Night",
+      "category": "deli",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9575209,
+        "lat": 40.7303611
+      },
+      "sourceId": "osm:node/10357823712",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    }
+  ]
+}
