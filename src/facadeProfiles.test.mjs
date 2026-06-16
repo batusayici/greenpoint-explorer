@@ -51,3 +51,25 @@ test("circle silhouette is symmetric and bbox-inscribed with four fillers", () =
     assert.ok(corners.some((c) => Math.abs(c[0]-f[0].x) < 1e-9 && Math.abs(c[1]-f[0].y) < 1e-9), "apex is a bbox corner");
   }
 });
+
+test("rect has no revealCurve", () => {
+  const { revealCurve } = openingProfile({ x0: 0.2, x1: 0.4, y0: 0.1, y1: 0.5 });
+  assert.equal(revealCurve, null);
+});
+
+test("arch revealCurve is the open head arc (spring → crown → spring)", () => {
+  const rect = { x0: 0.2, x1: 0.4, y0: 0.0, y1: 0.6, shape: "arch", springY: 0.4 };
+  const { revealCurve } = openingProfile(rect, 8);
+  assert.equal(revealCurve.closed, false);
+  assert.equal(revealCurve.points.length, 9); // segments + 1
+  // endpoints at the jamb tops, crown at center-top
+  has(revealCurve.points, 0.4, 0.4); has(revealCurve.points, 0.2, 0.4);
+  has(revealCurve.points, 0.3, 0.6);
+});
+
+test("circle revealCurve is the closed ring (== outline)", () => {
+  const rect = { x0: 0.0, x1: 0.4, y0: 0.0, y1: 0.4, shape: "circle" };
+  const { outline, revealCurve } = openingProfile(rect, 16);
+  assert.equal(revealCurve.closed, true);
+  assert.equal(revealCurve.points.length, outline.length);
+});

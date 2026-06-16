@@ -481,8 +481,11 @@ function fanGeometry(frame, points, offset, withUv) {
 }
 
 // A shaped opening (arch/circle): recessed silhouette pane + flush spandrel/
-// corner fillers (textured wall, so the corners read flush) + straight reveals
-// on the lower jambs/sill only (the curved head is pane-only — accepted seam).
+// corner fillers (textured wall, so the corners read flush) + reveals. Straight
+// reveals on the arch's lower jambs/sill via addReveals; the curved edge (arch
+// head / oculus ring) gets a textured edge-stretched reveal via addCurvedReveal
+// so it reads as cut brick — the same treatment rectangular recesses get, not a
+// grey seam at the recess depth.
 function addShapedOpening(group, frame, rect, recess, texture) {
   const profile = openingProfile(rect);
   group.add(new THREE.Mesh(fanGeometry(frame, profile.outline, -recess, true), texturedMaterial(texture, 1)));
@@ -492,6 +495,48 @@ function addShapedOpening(group, frame, rect, recess, texture) {
   if ((rect.shape ?? "rect") === "arch") {
     const lower = { x0: rect.x0, x1: rect.x1, y0: rect.y0, y1: springYOf(rect) };
     addReveals(group, frame, lower, 0, -recess, texture, { top: false });
+  }
+  if (profile.revealCurve) {
+    addCurvedReveal(group, frame, profile.revealCurve, 0, -recess, texture);
+  }
+}
+
+// Curved reveal: a tessellated ribbon bridging the wall plane (fromOffset) to
+// the recessed plane (toOffset) along a curve, edge-stretching the wall artwork
+// into the reveal (both depth ends sample the same edge point's UV) and
+// darkening it per segment — the same treatment straight reveals (bridgeMesh)
+// get, so an arch head / oculus ring continues the brick instead of leaving a
+// grey seam. Per-segment shade blends the rectangular recess cardinals around
+// the curve: dark lintel at the top, lit sill at the bottom, mid jambs at the
+// sides.
+function addCurvedReveal(group, frame, curve, fromOffset, toOffset, texture) {
+  const { points, closed } = curve;
+  const u = (x) => frame.u0 + (frame.u1 - frame.u0) * x;
+  const shade = REVEAL_SHADE.recess;
+  let cx = 0;
+  let cy = 0;
+  for (const p of points) { cx += p.x; cy += p.y; }
+  cx /= points.length;
+  cy /= points.length;
+  const segments = closed ? points.length : points.length - 1;
+  for (let i = 0; i < segments; i += 1) {
+    const a = points[i];
+    const b = points[(i + 1) % points.length];
+    // Outward direction of the segment midpoint → +1 top (lintel), −1 bottom
+    // (sill), 0 sides (jambs). Blend the cardinal recess shades accordingly.
+    const dx = (a.x + b.x) / 2 - cx;
+    const dy = (a.y + b.y) / 2 - cy;
+    const ny = dy / (Math.hypot(dx, dy) || 1);
+    const s = ny >= 0 ? shade.left + (shade.top - shade.left) * ny : shade.left + (shade.bottom - shade.left) * -ny;
+    const uv = [u(a.x), a.y, u(b.x), b.y, u(b.x), b.y, u(a.x), a.y];
+    const geometry = quadGeometry(
+      facePoint(frame, a.x, a.y, fromOffset),
+      facePoint(frame, b.x, b.y, fromOffset),
+      facePoint(frame, b.x, b.y, toOffset),
+      facePoint(frame, a.x, a.y, toOffset),
+      uv,
+    );
+    group.add(new THREE.Mesh(geometry, texturedMaterial(texture, s)));
   }
 }
 

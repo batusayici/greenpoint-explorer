@@ -8,6 +8,10 @@
 // `outline` is the recessed-pane silhouette (closed, convex → fan from [0]).
 // `fillers` are the flush corner/spandrel regions the curve leaves uncovered;
 // each is a fan whose apex (the bbox corner it sweeps from) is element [0].
+// `revealCurve` is the curved edge that needs a textured reveal bridging the
+// wall plane to the recessed pane (arch head / oculus ring) so the curve reads
+// as cut brick, not a grey seam — `{ points, closed }`, or null for a rect
+// (whose straight reveals are handled by addReveals).
 // Tessellation is done in face-coords so the silhouette registers to the
 // painted arc regardless of world aspect — the drawing defines the curve.
 
@@ -29,6 +33,7 @@ export function openingProfile(rect, segments = ARC_SEGMENTS) {
       { x: rect.x0, y: rect.y1 },
     ],
     fillers: [],
+    revealCurve: null,
   };
 }
 
@@ -60,7 +65,9 @@ function archProfile(rect, segments) {
   const mid = Math.floor(segments / 2);
   const right = [{ x: x1, y: y1 }, ...arc.slice(0, mid + 1)];
   const left = [{ x: x0, y: y1 }, ...arc.slice(mid)];
-  return { outline, fillers: [left, right] };
+  // The head arc gets a textured reveal (open — the straight jambs/sill below
+  // are revealed separately by addReveals).
+  return { outline, fillers: [left, right], revealCurve: { points: arc, closed: false } };
 }
 
 function circleProfile(rect, segments) {
@@ -95,5 +102,6 @@ function circleProfile(rect, segments) {
     }
     fillers.push(fan);
   }
-  return { outline, fillers };
+  // The whole ring gets a textured reveal (closed loop).
+  return { outline, fillers, revealCurve: { points: outline, closed: true } };
 }
