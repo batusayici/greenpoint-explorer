@@ -252,11 +252,17 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // cap: the bay tucks under the cornice shadow).
   if (bay) {
     const projection = meters(bay.projectionM ?? 0.5);
-    group.add(rectMesh(frame, bay, projection, texturedMaterial(texture, 1)));
-    group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(0x352c22)));
-    group.add(bridgeMesh(frame, bay, projection, 0, "bottom", tintMaterial(REVEAL.soffit)));
-    group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(0x4a3a2c)));
-    group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(0x4a3a2c)));
+    if (bay.plan === "oriel3") {
+      // Faceted oriel: angled returns carry the painted side windows.
+      for (const mesh of oriel3Meshes(frame, bay, projection, texture)) group.add(mesh);
+    } else {
+      // Flat box: textured front, dark wood cheeks, dark roof under the cornice.
+      group.add(rectMesh(frame, bay, projection, texturedMaterial(texture, 1)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(0x352c22)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "bottom", tintMaterial(REVEAL.soffit)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(0x4a3a2c)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(0x4a3a2c)));
+    }
   }
 
   // Cornice: the defining Brooklyn roofline — a crown that overhangs the wall
