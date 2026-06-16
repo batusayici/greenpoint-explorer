@@ -1,0 +1,106 @@
+{
+  "source": "assets/textures/franklin/sereneco--corner-v2.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 26,
+    "minY": 177,
+    "maxX": 1892,
+    "maxY": 696
+  },
+  "trimmedSize": {
+    "width": 1867,
+    "height": 520
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3337033:greenpoint": {
+      "u0": 0,
+      "u1": 0.585,
+      "wallColor": [
+        105,
+        66,
+        46
+      ],
+      "rects": [
+        {
+          "x0": 0.696,
+          "x1": 0.81,
+          "y0": 0.19,
+          "y1": 0.658,
+          "type": "bay"
+        },
+        {
+          "x0": 0.601,
+          "x1": 0.657,
+          "y0": 0.017,
+          "y1": 0.375,
+          "type": "door"
+        },
+        {
+          "x0": 0.051,
+          "x1": 0.294,
+          "y0": 0.013,
+          "y1": 0.342,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.923,
+          "x1": 0.989,
+          "y0": 0.61,
+          "y1": 0.658,
+          "type": "window"
+        },
+        {
+          "x0": 0.406,
+          "x1": 0.516,
+          "y0": 0.535,
+          "y1": 0.646,
+          "type": "window"
+        },
+        {
+          "x0": 0.095,
+          "x1": 0.245,
+          "y0": 0.529,
+          "y1": 0.64,
+          "type": "window"
+        },
+        {
+          "x0": 0.412,
+          "x1": 0.454,
+          "y0": 0.394,
+          "y1": 0.462,
+          "type": "window"
+        },
+        {
+          "x0": 0.019,
+          "x1": 0.055,
+          "y0": 0.385,
+          "y1": 0.448,
+          "type": "window"
+        },
+        {
+          "x0": 0.092,
+          "x1": 0.145,
+          "y0": 0.383,
+          "y1": 0.448,
+          "type": "window"
+        },
+        {
+          "x0": 0.879,
+          "x1": 0.984,
+          "y0": 0.187,
+          "y1": 0.533,
+          "type": "window"
+        },
+        {
+          "x0": 0.314,
+          "x1": 0.511,
+          "y0": 0.163,
+          "y1": 0.337,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}
