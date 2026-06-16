@@ -2,7 +2,7 @@
 // Run: node --test src/storefrontSigns.test.mjs
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { categoryLabel, resolveSignLabel, planStorefrontSigns } from "./storefrontSigns.js";
+import { categoryLabel, resolveSignLabel, planStorefrontSigns, isFoodTrade } from "./storefrontSigns.js";
 
 test("categoryLabel maps known OSM categories to title-case labels", () => {
   assert.equal(categoryLabel("hairdresser"), "Barbershop");
@@ -73,6 +73,53 @@ test("each bay yields exactly one band (no duplicates)", () => {
   for (const bay of bays) {
     assert.equal(out.filter((p) => p.kind === "band" && p.bayName === bay.name).length, 1);
   }
+});
+
+test("isFoodTrade flags awning-bearing food/drink categories", () => {
+  for (const c of ["cafe", "deli", "restaurant", "convenience"]) assert.equal(isFoodTrade(c), true);
+  for (const c of ["hairdresser", "clothes", "bar", undefined, ""]) assert.equal(isFoodTrade(c), false);
+});
+
+test("every bay yields exactly one awning placement", () => {
+  const out = planStorefrontSigns({ bays, storeys: 4 });
+  assert.equal(out.filter((p) => p.kind === "awning").length, bays.length);
+  for (const bay of bays) {
+    assert.equal(out.filter((p) => p.kind === "awning" && p.bayName === bay.name).length, 1);
+  }
+});
+
+test("food-trade bays get a canopy awning whose valance carries the resolved label", () => {
+  const out = planStorefrontSigns({
+    bays: [{ bin: "1", name: "Sereneco", category: "restaurant", slotIndex: 0 }],
+    storeys: 4,
+  });
+  const awning = out.find((p) => p.kind === "awning");
+  assert.equal(awning.variant, "canopy");
+  assert.equal(awning.label, "Restaurant");
+  // valance hangs below the front lip, which sits below the wall attachment:
+  // yWall > yDrop > yValance, and it projects out from the wall.
+  assert.ok(awning.yWall > awning.yDrop && awning.yDrop > awning.yValance);
+  assert.ok(awning.projectionM > 0);
+});
+
+test("canopy valance shows real branding only when claimed", () => {
+  const out = planStorefrontSigns({
+    bays: [{ bin: "1", name: "Joe's", category: "cafe", slotIndex: 0, claimed: true, brandName: "Joe's Café" }],
+    storeys: 3,
+  });
+  assert.equal(out.find((p) => p.kind === "awning").label, "Joe's Café");
+});
+
+test("non-food bays get a flat awning strip (legacy coplanar geometry)", () => {
+  const out = planStorefrontSigns({
+    bays: [{ bin: "1", name: "Joe's", category: "hairdresser", slotIndex: 0 }],
+    storeys: 4,
+  });
+  const awning = out.find((p) => p.kind === "awning");
+  const gy = 1 / 4;
+  assert.equal(awning.variant, "flat");
+  assert.ok(Math.abs(awning.y0 - gy * 0.42) < 1e-9);
+  assert.ok(Math.abs(awning.y1 - gy * 0.50) < 1e-9);
 });
 
 test("empty bays array yields no placements", () => {

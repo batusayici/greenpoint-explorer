@@ -913,6 +913,93 @@ function buildStorefrontSigns(three, placements, frame) {
   }
 }
 
+// Category fabric tints for awnings (muted II-C tones). Shared by the flat
+// strip and the projecting canopy/valance.
+const AWNING_TINT = {
+  restaurant: 0x6b3a2a,
+  cafe:       0x4a3825,
+  bar:        0x2e3b32,
+  pub:        0x2e3b32,
+  clothes:    0x3b4a5c,
+  hairdresser:0x3d4030,
+  convenience:0x4a4030,
+  deli:       0x5c4030,
+  interior_decoration: 0x4a3b4a,
+};
+const AWNING_SOFFIT = 0x2f2820; // dark underside/side closers
+
+// Render planned awnings for one building's bays. `frame` is the same street-
+// face basis used for signs, plus `scale` (scene units per metre) for canopy
+// projection. Flat awnings are the legacy coplanar tint strip; canopy awnings
+// project a sloped top + a vertical valance carrying the name (the iso-legible
+// idiom — the valance is perpendicular to the wall band, so it reads front-on
+// from whichever angle flattens the band). See PLAN 4.2a.
+function buildStorefrontAwnings(three, placements, frame) {
+  const { point, scale = 0.075 } = frame;
+  for (const pl of placements) {
+    if (pl.kind !== "awning") continue;
+    const tint = AWNING_TINT[pl.category] ?? II_PALETTE.ink;
+    const xl = pl.cx - pl.width / 2;
+    const xr = pl.cx + pl.width / 2;
+
+    if (pl.variant === "flat") {
+      const off = pl.off ?? 0.025;
+      const pos = new Float32Array([
+        ...point(xl, pl.y0, off), ...point(xr, pl.y0, off),
+        ...point(xr, pl.y1, off), ...point(xl, pl.y1, off),
+      ]);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      geo.setIndex([0, 1, 2, 0, 2, 3]);
+      three.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: tint, side: THREE.DoubleSide })));
+      continue;
+    }
+
+    // Canopy: sloped top from the wall (yWall) out to a front lip (yDrop).
+    const wallOff = 0.02;
+    const projOff = Math.max(0.04, (pl.projectionM ?? 0.9) * scale);
+    const topPos = new Float32Array([
+      ...point(xl, pl.yWall, wallOff), ...point(xr, pl.yWall, wallOff),
+      ...point(xr, pl.yDrop, projOff), ...point(xl, pl.yDrop, projOff),
+    ]);
+    const topGeo = new THREE.BufferGeometry();
+    topGeo.setAttribute("position", new THREE.BufferAttribute(topPos, 3));
+    topGeo.setIndex([0, 1, 2, 0, 2, 3]);
+    three.add(new THREE.Mesh(topGeo, new THREE.MeshBasicMaterial({
+      color: new THREE.Color(tint).multiplyScalar(0.92), side: THREE.DoubleSide,
+    })));
+
+    // Valance: vertical skirt at the front edge, faces the street → iso-legible.
+    const valPos = new Float32Array([
+      ...point(xl, pl.yDrop, projOff), ...point(xr, pl.yDrop, projOff),
+      ...point(xr, pl.yValance, projOff), ...point(xl, pl.yValance, projOff),
+    ]);
+    const valGeo = new THREE.BufferGeometry();
+    valGeo.setAttribute("position", new THREE.BufferAttribute(valPos, 3));
+    // U flipped to read from the street side (mirror fix 9f6ff2b).
+    valGeo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1, 0, 0, 0, 0, 1, 1, 1]), 2));
+    valGeo.setIndex([0, 1, 2, 0, 2, 3]);
+    three.add(new THREE.Mesh(valGeo, new THREE.MeshBasicMaterial({
+      map: makeStorefrontValanceTexture(pl.label, tint),
+      transparent: true,
+      side: THREE.DoubleSide,
+    })));
+
+    // Side closers so the canopy reads solid, not as a floating flap.
+    for (const sx of [xl, xr]) {
+      const sidePos = new Float32Array([
+        ...point(sx, pl.yWall, wallOff),
+        ...point(sx, pl.yDrop, projOff),
+        ...point(sx, pl.yValance, projOff),
+      ]);
+      const sideGeo = new THREE.BufferGeometry();
+      sideGeo.setAttribute("position", new THREE.BufferAttribute(sidePos, 3));
+      sideGeo.setIndex([0, 1, 2]);
+      three.add(new THREE.Mesh(sideGeo, new THREE.MeshBasicMaterial({ color: AWNING_SOFFIT, side: THREE.DoubleSide })));
+    }
+  }
+}
+
 function buildBlockStorefronts(three, scene) {
   // Build a normalized set of hero business names sourced from the hero-places
   // file. heroPlaces is a top-level array; each record carries name at record.name
@@ -999,26 +1086,12 @@ function buildBlockStorefronts(three, scene) {
   }
 
   // Step 6: render sign + awning for each bay.
-  // Category tints for awning strip (muted II-C tones).
-  const AWNING_TINT = {
-    restaurant: 0x6b3a2a,
-    cafe:       0x4a3825,
-    bar:        0x2e3b32,
-    pub:        0x2e3b32,
-    clothes:    0x3b4a5c,
-    hairdresser:0x3d4030,
-    convenience:0x4a4030,
-    deli:       0x5c4030,
-    interior_decoration: 0x4a3b4a,
-  };
-
   for (const [bin, binBays] of baysByBin) {
     const building = byBin.get(bin);
     if (!building || !building.polygon || !building.centroid) continue;
 
     const typology = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
     const storeys = Math.max(1, typology.storeyCount);
-    const gy = 1 / storeys; // fraction of total height = one storey
 
     // Street-frontage edge: the edge whose midpoint is nearest the storefront's
     // OSM scenePoint. That point sits at the real shop location on the street,
@@ -1059,39 +1132,14 @@ function buildBlockStorefronts(three, scene) {
       left.z + (right.z - left.z) * x + normal.z * off,
     ];
 
-    const baysPerBin = binBays.length;
-
-    // Awning strips stay inline (one per bay, just below the sign band).
-    for (const bay of binBays) {
-      const cx = ((bay.slotIndex ?? 0) + 0.5) / Math.max(1, baysPerBin);
-      const w = Math.min(0.4, 0.9 / baysPerBin);
-      const off = 0.02; // proud of wall surface
-
-      const ay0 = gy * 0.42;
-      const ay1 = gy * 0.50;
-      const awningPositions = new Float32Array([
-        ...point(cx - w / 2, ay0, off + 0.005),
-        ...point(cx + w / 2, ay0, off + 0.005),
-        ...point(cx + w / 2, ay1, off + 0.005),
-        ...point(cx - w / 2, ay1, off + 0.005),
-      ]);
-      const awningGeo = new THREE.BufferGeometry();
-      awningGeo.setAttribute("position", new THREE.BufferAttribute(awningPositions, 3));
-      awningGeo.setIndex([0,1,2, 0,2,3]);
-      const awningColor = AWNING_TINT[bay.category] ?? II_PALETTE.ink;
-      const awningMesh = new THREE.Mesh(
-        awningGeo,
-        new THREE.MeshBasicMaterial({ color: awningColor, side: THREE.DoubleSide }),
-      );
-      three.add(awningMesh);
-    }
-
-    // Signs (category-label band) come from the pure planner; the renderer maps
-    // the face-local placements to world geometry on this building's street face.
-    // Labels are category defaults (real branding only when a bay is claimed).
-    const frame = { left, right, normal, height: building.height, point };
+    // Signs + awnings (category-label band, flat strip, or projecting canopy/
+    // valance) come from the pure planner; the renderer maps the face-local
+    // placements to world geometry on this building's street face. Labels are
+    // category defaults (real branding only when a bay is claimed).
+    const frame = { left, right, normal, height: building.height, point, scale: scene.projection.scale };
     const placements = planStorefrontSigns({ bays: binBays, storeys });
     buildStorefrontSigns(three, placements, frame);
+    buildStorefrontAwnings(three, placements, frame);
   }
 }
 
@@ -1701,6 +1749,29 @@ function makeStorefrontSignTexture(name) {
   const label = String(name).toUpperCase();
   while (ctx.measureText(label).width > c.width - 56 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
   ctx.fillText(label, c.width / 2, c.height / 2);
+  const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
+  return tex;
+}
+
+// II-C awning valance texture: the shop name in cream on the awning's own
+// fabric tint, with a thin light hem line. Unlike the paper band, the valance
+// reads as printed fabric — light type on colored ground. `tintHex` is the
+// category fabric color so the canvas matches the canopy mesh.
+function makeStorefrontValanceTexture(name, tintHex) {
+  const c = document.createElement("canvas");
+  c.width = 512; c.height = 96;
+  const ctx = c.getContext("2d");
+  const tint = new THREE.Color(tintHex);
+  ctx.fillStyle = `#${tint.getHexString()}`; ctx.fillRect(0, 0, c.width, c.height);
+  // hem lines top and bottom (where real valances are bound)
+  ctx.strokeStyle = "rgba(239, 231, 214, 0.55)"; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(0, 8); ctx.lineTo(c.width, 8);
+  ctx.moveTo(0, c.height - 8); ctx.lineTo(c.width, c.height - 8); ctx.stroke();
+  ctx.fillStyle = "#efe7d6"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  let fs = 48; ctx.font = `700 ${fs}px Georgia, serif`;
+  const label = String(name).toUpperCase();
+  while (ctx.measureText(label).width > c.width - 48 && fs > 18) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
+  ctx.fillText(label, c.width / 2, c.height / 2 + 2);
   const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
   return tex;
 }

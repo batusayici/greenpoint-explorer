@@ -23,6 +23,16 @@ export function categoryLabel(category) {
   return CATEGORY_LABELS[category] ?? "Shop";
 }
 
+// Food/drink trades that conventionally carry a projecting fabric awning. These
+// bays get the awning-valance idiom: a name on the vertical valance skirt, which
+// faces the street and so reads front-on at the fixed iso angles (where the
+// coplanar wall band foreshortens to an edge). Other trades keep the flat strip.
+const FOOD_TRADES = new Set(["cafe", "deli", "restaurant", "convenience"]);
+
+export function isFoodTrade(category) {
+  return FOOD_TRADES.has(category);
+}
+
 // Resolve the text shown on a bay's sign: real brand only when claimed AND a
 // brandName is present; otherwise the generic category label. Never the raw
 // roster name for an unclaimed bay.
@@ -58,6 +68,41 @@ export function planStorefrontSigns({ bays, storeys }) {
       y1: gy * 0.90,
       off: 0.02,
     });
+
+    if (isFoodTrade(bay.category)) {
+      // Projecting canopy with a vertical valance carrying the name. The valance
+      // is perpendicular to the wall band, so whichever iso angle flattens the
+      // band shows the valance front-on (the legibility win). yWall > yDrop >
+      // yValance: the canopy slopes from the wall down to a front lip, then the
+      // valance hangs below it.
+      placements.push({
+        kind: "awning",
+        variant: "canopy",
+        bayName: bay.name,
+        label,
+        claimed,
+        category: bay.category,
+        cx,
+        width,
+        yWall: gy * 0.50,
+        yDrop: gy * 0.42,
+        yValance: gy * 0.30,
+        projectionM: 0.9,
+      });
+    } else {
+      // Non-food: the legacy flat coplanar tint strip just below the band.
+      placements.push({
+        kind: "awning",
+        variant: "flat",
+        bayName: bay.name,
+        category: bay.category,
+        cx,
+        width,
+        y0: gy * 0.42,
+        y1: gy * 0.50,
+        off: 0.025,
+      });
+    }
   }
 
   return placements;
