@@ -21,10 +21,15 @@ pipeline yet) so we test the *kit's* recognizability ceiling cheaply.
 
 ## Staged steps (each gates the next)
 
-### Step 0 — Window v2 re-render — OWNER: Batu — PENDING
+### Step 0 — Window v2 re-render — ✅ DONE (2026-06-16)
 Windows must read before any recognizability judgment (v1 washed to white blocks).
-Re-render `brick-window` bolder/darker per `docs/reference/art/prompts/inked-components-brick.v1.md`
-(flat near-white keyable bg, NOT "transparent"). Key with `scripts/key_inked_alpha.py`.
+Batu re-rendered `brick-window.v1` bolder/darker per
+`docs/reference/art/prompts/inked-components-brick.v1.md` (dark charcoal glass, bold ink
+outlines, flat ~245-luminance keyable bg — NOT "transparent"). Keyed in place with
+`scripts/key_inked_alpha.py` (threshold 236): 46.1% of pixels cleared to alpha=0, corners
+transparent, glass walled-off and retained opaque. **Verified in-engine** on the
+block-stamped facades — windows now read as dark double-hung units at facade scale, no
+white block. Commit `d756ad2`.
 
 ### Step 1 — Scalability (engineering) — ✅ DONE (2026-06-16)
 Block-stamp harness (`INKED_FACADE_BLOCK` in `buildInkedFacadeTest`): auto-selected 8
