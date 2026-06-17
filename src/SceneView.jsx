@@ -1032,7 +1032,10 @@ const INKED_FACADE_REAL = {
     "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
     "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103" },
     "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Juice's", storefront: { label: "JUICE BAR", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20, door: "left" } },
+    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
+      { label: "SANDWICH", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x2a2018 },
+      { label: "JUICE BAR", widthFrac: 0.5, door: "right", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20 },
+    ] } },
     "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
   },
 };
@@ -1961,58 +1964,72 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
 // 0.011); the awning canopy projects ~1.2m forward via quad3.
 function decorateStorefront(ctx, band, storefront, params) {
   const { quad, quad3, point, edgeLen, height } = ctx;
-  const s = composeStorefront(storefront);
   const bw = band.x1 - band.x0;
   const bh = band.y1 - band.y0;
-  const map = (r) => ({
-    x0: band.x0 + r.x0 * bw, x1: band.x0 + r.x1 * bw,
-    y0: band.y0 + r.y0 * bh, y1: band.y0 + r.y1 * bh,
-  });
-  // World aspect (width/height) of a mapped face-local rect — face x spans the
-  // full edge (edgeLen), face y spans the building height. Used to size canvas
-  // textures (e.g. the sign) so letters map 1:1 and never stretch.
-  const worldAspect = (r) => ((r.x1 - r.x0) * edgeLen) / ((r.y1 - r.y0) * height);
   const dark = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
   const tint = params.tint;
-  const frameTint = storefront.frameTint ?? dark(tint, 0.45);
+  // World aspect (width/height) of a mapped (face-local 0..1) rect — face x
+  // spans the full edge (edgeLen), face y spans the building height. Sizes
+  // canvas textures (the sign) so letters map 1:1 and never stretch.
+  const worldAspect = (r) => ((r.x1 - r.x0) * edgeLen) / ((r.y1 - r.y0) * height);
 
-  // Masonry kickplate: tinted brick-ground, matches the building's brick tone.
-  quad(map(s.bulkhead), 0.006, inkedTexture("brick-ground.v1.png"), { tint });
-  // Display glass: shared inked-glazing texture (self-contained dark glass).
-  const glazeTex = makeInkedGlazingTexture();
-  for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
-  // Mullion, transom, door, frame: solid inked tints.
-  quad(map(s.mullion), 0.009, null, { tint: frameTint });
-  quad(map(s.transom), 0.009, null, { tint: 0xcdbfa6 });          // light transom band
-  quad(map(s.door), 0.009, null, { tint: dark(frameTint, 0.7) }); // recessed entry, darker
-  for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
-  // Category sign band: paper ground + uppercase serif label (no real names).
-  // Canvas aspect matched to the band's world aspect so letters don't stretch.
-  const signRect = map(s.sign);
-  quad(signRect, 0.010, makeStorefrontSignTexture(storefront.label, worldAspect(signRect)), {});
-  // Awning: a short projecting canopy (sloped top + scalloped valance) so it
-  // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
-  if (s.awning) {
-    const a = map(s.awning);          // face-local: a.y1 = attach (under sign), a.y0 = front edge
-    const color = storefront.awning?.color ?? 0x2a2622;
-    const offBack = 0.012;            // canopy root, just proud of the frame
-    const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
-    const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
-    // Sloped top face: from the wall (attach, a.y1) out and down to the proud front edge (a.y0).
-    quad3(
-      point(a.x0, a.y1, offBack), point(a.x1, a.y1, offBack),
-      point(a.x1, a.y0, offFront), point(a.x0, a.y0, offFront),
-      null, { tint: color },
-    );
-    // Valance: scalloped fringe hanging from the front edge. flipY=false so the
-    // canvas hem (drawn at the bottom) lands at the bottom of the valance face.
-    const valTex = makeAwningTexture(color);
-    valTex.flipY = false; valTex.needsUpdate = true;
-    quad3(
-      point(a.x0, a.y0, offFront), point(a.x1, a.y0, offFront),
-      point(a.x1, a.y0 - valH, offFront), point(a.x0, a.y0 - valH, offFront),
-      valTex, { transparent: true },
-    );
+  // Draw one tenant unit into the horizontal sub-range [ux0,ux1] of the band.
+  const drawUnit = (unit, ux0, ux1) => {
+    const s = composeStorefront(unit);
+    const uw = ux1 - ux0;
+    const map = (r) => ({
+      x0: band.x0 + (ux0 + r.x0 * uw) * bw, x1: band.x0 + (ux0 + r.x1 * uw) * bw,
+      y0: band.y0 + r.y0 * bh, y1: band.y0 + r.y1 * bh,
+    });
+    const frameTint = unit.frameTint ?? dark(tint, 0.45);
+    // Masonry kickplate: tinted brick-ground, matches the building's brick tone.
+    quad(map(s.bulkhead), 0.006, inkedTexture("brick-ground.v1.png"), { tint });
+    // Display glass: shared inked-glazing texture (self-contained dark glass).
+    const glazeTex = makeInkedGlazingTexture();
+    for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
+    // Mullion, transom, door, frame: solid inked tints.
+    quad(map(s.mullion), 0.009, null, { tint: frameTint });
+    quad(map(s.transom), 0.009, null, { tint: 0xcdbfa6 });          // light transom band
+    quad(map(s.door), 0.009, null, { tint: dark(frameTint, 0.7) }); // recessed entry, darker
+    for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
+    // Category sign band: paper ground + uppercase serif label (no real names).
+    // Canvas aspect matched to the band's world aspect so letters don't stretch.
+    const signRect = map(s.sign);
+    quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect)), {});
+    // Awning: a short projecting canopy (sloped top + scalloped valance) so it
+    // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
+    if (s.awning) {
+      const a = map(s.awning);          // face-local: a.y1 = attach (under sign), a.y0 = front edge
+      const color = unit.awning?.color ?? 0x2a2622;
+      const offBack = 0.012;            // canopy root, just proud of the frame
+      const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
+      const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
+      // Sloped top face: from the wall (attach, a.y1) out and down to the proud front edge (a.y0).
+      quad3(
+        point(a.x0, a.y1, offBack), point(a.x1, a.y1, offBack),
+        point(a.x1, a.y0, offFront), point(a.x0, a.y0, offFront),
+        null, { tint: color },
+      );
+      // Valance: scalloped fringe hanging from the front edge. flipY=false so the
+      // canvas hem (drawn at the bottom) lands at the bottom of the valance face.
+      const valTex = makeAwningTexture(color);
+      valTex.flipY = false; valTex.needsUpdate = true;
+      quad3(
+        point(a.x0, a.y0, offFront), point(a.x1, a.y0, offFront),
+        point(a.x1, a.y0 - valH, offFront), point(a.x0, a.y0 - valH, offFront),
+        valTex, { transparent: true },
+      );
+    }
+  };
+
+  // One or more tenant units split the frontage horizontally (e.g. 99 =
+  // SANDWICH + JUICE BAR). Default: a single unit spanning the full width.
+  const units = storefront.units ?? [storefront];
+  let cursor = 0;
+  for (const unit of units) {
+    const wf = unit.widthFrac ?? 1 / units.length;
+    drawUnit(unit, cursor, cursor + wf);
+    cursor += wf;
   }
 }
 
