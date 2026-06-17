@@ -1028,7 +1028,7 @@ const INKED_FACADE_REAL = {
   // muted), grounded in the two photo families. storeys/bays counted off the photos;
   // fireEscape flagged where the photos show one.
   buildings: {
-    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", fireEscape: true, storefront: { label: "VINTAGE", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
+    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", fireEscape: true, storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
     "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
     "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103", fireEscape: true },
     "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
@@ -1884,13 +1884,27 @@ function decorateInkedWall(target, edge, height, params, scene) {
     if (tint != null) m.color.setHex(tint);
     target.add(new THREE.Mesh(g, m));
   };
+  // Free-form quad from four explicit world-space corners (each a [x,y,z] from
+  // `point`). Lets callers build surfaces that project out of the wall plane —
+  // e.g. a storefront awning's sloped top + valance — which the planar `quad`
+  // (single normal offset) cannot. uv order matches `quad` (p0..p3 → corners).
+  const quad3 = (p0, p1, p2, p3, tex, { tint, transparent } = {}) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array([p0, p1, p2, p3].flat()), 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1, 0, 0, 0, 0, 1, 1, 1]), 2));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
+    if (tex) m.map = tex;
+    if (tint != null) m.color.setHex(tint);
+    target.add(new THREE.Mesh(g, m));
+  };
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
   const f = composeInkedFacade({ storeys: params.storeys, bays: params.bays });
   quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", [params.bays, params.storeys]), { tint: params.tint });
   // Commercial BINs carry a `storefront` block → draw the inked storefront
   // vocabulary in the ground band. Everything else keeps the generic stoop.
   if (params.storefront) {
-    decorateStorefront(quad, f.ground, params.storefront, params);
+    decorateStorefront(quad, quad3, point, f.ground, params.storefront, params);
   } else {
     quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
   }
@@ -1920,11 +1934,13 @@ function decorateInkedWall(target, edge, height, params, scene) {
 }
 
 // Draw the inked storefront vocabulary into the ground band of a commercial
-// building. `quad` is decorateInkedWall's face-local quad helper; `band` is the
-// face-local ground rect (f.ground). composeStorefront returns BAND-LOCAL rects,
-// which we map into the band before drawing. Offsets stay just proud of the wall
-// (0.006–0.011) except the awning, which projects forward (0.030).
-function decorateStorefront(quad, band, storefront, params) {
+// building. `quad` is decorateInkedWall's face-local quad helper; `quad3` builds
+// free-form quads from explicit corners (for the projecting awning); `point`
+// maps face-local (x,y,normalOffset) → world. `band` is the face-local ground
+// rect (f.ground). composeStorefront returns BAND-LOCAL rects, which we map into
+// the band before drawing. Flat elements stay just proud of the wall (0.006–
+// 0.011); the awning canopy projects ~1.2m forward via quad3.
+function decorateStorefront(quad, quad3, point, band, storefront, params) {
   const s = composeStorefront(storefront);
   const bw = band.x1 - band.x0;
   const bh = band.y1 - band.y0;
@@ -1948,10 +1964,29 @@ function decorateStorefront(quad, band, storefront, params) {
   for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
   // Category sign band: paper ground + uppercase serif label (no real names).
   quad(map(s.sign), 0.010, makeStorefrontSignTexture(storefront.label), {});
-  // Awning: proud scalloped canopy in the category color.
+  // Awning: a short projecting canopy (sloped top + scalloped valance) so it
+  // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
   if (s.awning) {
-    const aw = makeAwningTexture(storefront.awning?.color ?? 0x2a2622);
-    quad(map(s.awning), 0.030, aw, { transparent: true });
+    const a = map(s.awning);          // face-local: a.y1 = attach (under sign), a.y0 = front edge
+    const color = storefront.awning?.color ?? 0x2a2622;
+    const offBack = 0.012;            // canopy root, just proud of the frame
+    const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
+    const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
+    // Sloped top face: from the wall (attach, a.y1) out and down to the proud front edge (a.y0).
+    quad3(
+      point(a.x0, a.y1, offBack), point(a.x1, a.y1, offBack),
+      point(a.x1, a.y0, offFront), point(a.x0, a.y0, offFront),
+      null, { tint: color },
+    );
+    // Valance: scalloped fringe hanging from the front edge. flipY=false so the
+    // canvas hem (drawn at the bottom) lands at the bottom of the valance face.
+    const valTex = makeAwningTexture(color);
+    valTex.flipY = false; valTex.needsUpdate = true;
+    quad3(
+      point(a.x0, a.y0, offFront), point(a.x1, a.y0, offFront),
+      point(a.x1, a.y0 - valH, offFront), point(a.x0, a.y0 - valH, offFront),
+      valTex, { transparent: true },
+    );
   }
 }
 
