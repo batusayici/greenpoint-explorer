@@ -1010,6 +1010,19 @@ const INKED_FACADE_TEST = [
   { bin: "3064809", tint: 0x7d5a44 }, // muted brown (4-storey, 1855)
 ];
 
+// SPIKE scalability pass (2026-06-16): stamp the brick kit across EVERY brick-prewar
+// building on the block via typology (bays derived from frontage, tint varied per BIN),
+// to judge whether auto-composition holds at density (occlusion, perf, variety) before
+// building the full kit. Throwaway. enabled=false → no-op.
+const INKED_FACADE_BLOCK = {
+  enabled: true,
+  radiusUnits: CONTEXT_TREATMENT_RADIUS_UNITS, // cluster around the Franklin corner
+  minStoreys: 2,
+  maxStoreys: 6,
+  bayMeters: 3.6, // typical Greenpoint rowhouse bay width
+  palette: [0xb5664a, 0x7d5a44, 0x9c5a3c, 0xa8704f, 0x6f4a39, 0xc07a55], // brick tones
+};
+
 function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
   let tex;
   if (getTexture) {
@@ -1037,7 +1050,7 @@ function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
 }
 
 function buildInkedFacadeTest(three, scene) {
-  if (!INKED_FACADE_TEST.length) return;
+  if (!INKED_FACADE_TEST.length && !INKED_FACADE_BLOCK.enabled) return;
   const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
 
   // Cache: keyed by filename → THREE.Texture. Each distinct file loads at most
@@ -1065,15 +1078,15 @@ function buildInkedFacadeTest(three, scene) {
     three.add(mesh);
   }
 
-  for (const { bin, tint } of INKED_FACADE_TEST) {
-    const building = byBin.get(bin);
-    if (!building || !building.polygon || !building.centroid) continue;
+  // Compose + render one building's inked facade. `bays` null → derive from the
+  // chosen frontage width. Shared by the explicit-BIN list and the block stamp.
+  function stampInkedFacade(building, tint, bays) {
+    if (!building || !building.polygon || !building.centroid) return;
     const typ = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
     const storeys = Math.max(2, typ.storeyCount ?? 4);
-    const bays = 3; // fixed for spike; derive from edge.length at promotion
 
     const edges = footprintEdges(building.polygon, building.centroid);
-    if (!edges.length) continue;
+    if (!edges.length) return;
     // SPIKE: pick the edge whose outward normal best faces the fixed iso camera,
     // weighted by width. Longest-edge alone lands the facade on an interior party
     // wall (occluded). At ISO step 0 the visible faces point toward (-x,+z) in
@@ -1082,6 +1095,11 @@ function buildInkedFacadeTest(three, scene) {
     const CAM_X = -Math.SQRT1_2, CAM_Z = Math.SQRT1_2;
     const faceScore = (e) => (e.normal.x * CAM_X + e.normal.z * CAM_Z) * e.length;
     const edge = edges.slice().sort((a, b) => faceScore(b) - faceScore(a))[0];
+
+    // Derive bays from frontage width when not given.
+    const frontageM = edge.length / scene.projection.scale;
+    const resolvedBays = bays ?? Math.min(6, Math.max(2, Math.round(frontageM / INKED_FACADE_BLOCK.bayMeters)));
+
     const { left, right, normal } = faceFrame(edge, building.height, null, scene);
     const point = (x, y, off) => [
       left.x + (right.x - left.x) * x + normal.x * off,
@@ -1101,10 +1119,10 @@ function buildInkedFacadeTest(three, scene) {
       return geo;
     };
 
-    const f = composeInkedFacade({ storeys, bays });
+    const f = composeInkedFacade({ storeys, bays: resolvedBays });
 
     // Wall (tiled brick), tinted.
-    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [bays, storeys] }, cachedTexture);
+    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [resolvedBays, storeys] }, cachedTexture);
     wallMat.color.setHex(tint);
     addInked(quad(f.wall, 0.02), wallMat);
 
@@ -1131,6 +1149,31 @@ function buildInkedFacadeTest(three, scene) {
     for (const w of f.windows) {
       addInked(quad(w, 0.035), winMat);
     }
+  }
+
+  // Work list: explicit BIN picks (fixed tint, fixed 3 bays), then — if the block
+  // stamp is on — every brick-prewar building in range, tinted by a per-BIN hash so
+  // we can judge variety, with bays derived from each frontage.
+  const explicitBins = new Set();
+  for (const { bin, tint } of INKED_FACADE_TEST) {
+    explicitBins.add(bin);
+    stampInkedFacade(byBin.get(bin), tint, 3);
+  }
+  if (INKED_FACADE_BLOCK.enabled) {
+    let stamped = 0;
+    for (const b of scene.buildings) {
+      if (!b.fromBlockExtract || !b.sourceProperties || !b.polygon || !b.centroid) continue;
+      if (explicitBins.has(b.bin)) continue;
+      if (Math.hypot(b.centroid.x, b.centroid.z) > INKED_FACADE_BLOCK.radiusUnits) continue;
+      const typ = classifyBuilding({ sourceProperties: b.sourceProperties });
+      if (typ.materialFamily !== "brick-prewar") continue;
+      if (typ.storeyCount < INKED_FACADE_BLOCK.minStoreys || typ.storeyCount > INKED_FACADE_BLOCK.maxStoreys) continue;
+      let h = 0;
+      for (const ch of b.bin) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+      stampInkedFacade(b, INKED_FACADE_BLOCK.palette[h % INKED_FACADE_BLOCK.palette.length], null);
+      stamped += 1;
+    }
+    if (typeof window !== "undefined") window.__inkedStamped = stamped;
   }
 }
 
