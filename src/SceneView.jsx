@@ -1028,15 +1028,17 @@ const INKED_FACADE_REAL = {
   // muted), grounded in the two photo families. storeys/bays counted off the photos;
   // fireEscape flagged where the photos show one.
   buildings: {
-    "3064795": { tint: 0xc17a5c, storeys: 4, bays: 2, addr: "107 Awoke Vintage", storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
-    "3064796": { tint: 0xa86a5e, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
-    "3064797": { tint: 0x9a5e66, storeys: 4, bays: 3, addr: "103" },
-    "3064798": { tint: 0x8c5560, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0x97606a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
+    // Warm trio (near the Premier hero, Greenpoint end) — close to its rust brick.
+    "3064795": { tint: 0xa85b40, storeys: 4, bays: 2, addr: "107 Awoke Vintage", storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
+    "3064796": { tint: 0xa0563c, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
+    "3064797": { tint: 0x9a5340, storeys: 4, bays: 3, addr: "103" },
+    // Maroon trio (Milton corner end) — similar deep oxblood shades.
+    "3064798": { tint: 0x8e585a, storeys: 4, bays: 2, addr: "101" },
+    "3064799": { tint: 0x8a555a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
       { label: "JUICE BAR", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x3a2c20 },
-      { label: "SANDWICH", widthFrac: 0.5, door: "right", awning: { has: false }, frameTint: 0x2a2018 },
+      { label: "SANDWICH", widthFrac: 0.5, door: "right", awning: { has: true, color: 0x27314d }, frameTint: 0x2a2018 },
     ] } },
-    "3064800": { tint: 0xb06e62, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
+    "3064800": { tint: 0x875258, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
   },
 };
 
@@ -1974,10 +1976,32 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Cornice crown. Real color: a per-BIN corniceColor (painted/metal cornices)
-    // when known; otherwise a gentle darken of the brick so the corbelled crown
-    // reads as the building's own masonry rather than a heavy shadow.
-    quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? darken(params.tint, 0.72), transparent: true });
+    // Projecting cornice crown so the shape reads (not a flat strip): a front
+    // frieze (decorative inked cornice texture) proud of the wall, a top cap
+    // catching light, and a dark soffit underneath. Real color via per-BIN
+    // corniceColor, else a gentle darken of the brick.
+    const cTex = inkedTexture("brick-cornice.v1.png");
+    const cCol = params.corniceColor ?? darken(params.tint, 0.72);
+    const cBot = f.cornice.y0;          // bottom of the cornice band (face-local y)
+    const cProj = 0.045;                // ~0.6m projection (upm≈0.075)
+    // Front frieze: vertical face at the proud offset, carries the cornice texture.
+    quad3(
+      point(0, cBot, cProj), point(1, cBot, cProj),
+      point(1, 1, cProj), point(0, 1, cProj),
+      cTex, { tint: cCol, transparent: true },
+    );
+    // Top cap: from the wall roofline out to the frieze top (lit, lighter).
+    quad3(
+      point(0, 1, 0.004), point(1, 1, 0.004),
+      point(1, 1, cProj), point(0, 1, cProj),
+      null, { tint: darken(params.tint, 0.92) },
+    );
+    // Soffit: underside from the wall out to the frieze bottom (in shadow).
+    quad3(
+      point(0, cBot, 0.004), point(1, cBot, 0.004),
+      point(1, cBot, cProj), point(0, cBot, cProj),
+      null, { tint: darken(params.tint, 0.4) },
+    );
   }
   // Party-wall seams: thin dark verticals at both edges so abutting buildings
   // read as distinct. Drawn on every face; back ones are occluded.
