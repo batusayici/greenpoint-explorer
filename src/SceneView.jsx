@@ -1972,13 +1972,18 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const heightM = height / upm;
   const storeys = Math.max(2, params.storeys);
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-  const corniceFrac = clamp(0.66 / heightM, 0.04, 0.09);
+  // Cornice: match the hero facade's proportion (~4.7% of height) so it scales
+  // with the building and sits flush at the very top edge.
+  const corniceFrac = 0.05;
   const bays = clamp(Math.round(frontM / 2.8), 1, 6);
   const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
-  const winHFrac = clamp(1.7 / rowHm, 0.35, 0.72);
-  const winWFrac = clamp(1.0 / (frontM / bays), 0.3, 0.66);
+  // Windows tuned up to read even with the hero (~1.25m wide × ~2.0m tall).
+  const winHFrac = clamp(2.0 / rowHm, 0.35, 0.78);
+  const winWFrac = clamp(1.25 / (frontM / bays), 0.3, 0.7);
   const f = composeInkedFacade({ storeys, bays, corniceFrac, winWFrac, winHFrac });
-  const brickRepeat = [clamp(Math.round(frontM / 2.6), 1, 8), clamp(Math.round(heightM / 2.6), 1, 8)];
+  // Brick: ~0.9m tile (the texture shows ~11 courses → ~0.08m/course, real
+  // brick) so course size is fine and matches the hero (was ~3× too coarse).
+  const brickRepeat = [clamp(Math.round(frontM / 1.0), 1, 16), clamp(Math.round(heightM / 0.9), 1, 24)];
   // Wall (full-height tiled brick): every face, so side/rear read as brick.
   quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", brickRepeat), { tint: params.tint });
   if (streetFace) {
@@ -1990,9 +1995,12 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Cornice: inked cornice asset at its true cream tone, sized to the hero's
-    // ~0.66m crown via corniceFrac (f.cornice), proud of the wall.
-    quad(f.cornice, 0.022, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? 0xe8dcc6, transparent: true });
+    // Cornice: the inked cornice asset, sized to the hero proportion and sitting
+    // flush at the top. Color follows the reference photos — these are dark
+    // corbelled-brick cornices, so a dark tone of the building's own brick
+    // (per-BIN corniceColor override). The texture's internal contrast keeps the
+    // modillion/dentil detail legible against the dark ground.
+    quad(f.cornice, 0.02, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? darken(params.tint, 0.5), transparent: true });
   }
   // Party-wall seams: thin dark verticals at both edges so abutting buildings
   // read as distinct. Drawn on every face; back ones are occluded.
