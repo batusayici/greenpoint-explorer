@@ -1005,7 +1005,10 @@ function buildStorefrontAwnings(three, placements, frame) {
 // SPIKE (2026-06-16): compose one brick building from inked components and tint
 // it, to judge the modular inked-component approach. Throwaway; gated by
 // INKED_FACADE_TEST (empty = no-op). Does NOT touch decorateTypologicalWall.
-const INKED_FACADE_TEST = []; // e.g. [{ bin: "3071234567", tint: 0xb5664a }]
+const INKED_FACADE_TEST = [
+  { bin: "3064810", tint: 0xb5664a }, // warm brick red (4-storey, 1855)
+  { bin: "3064809", tint: 0x7d5a44 }, // muted brown (4-storey, 1855)
+];
 
 function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
   let tex;
@@ -1021,7 +1024,16 @@ function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
       tex.repeat.set(repeat[0], repeat[1]);
     }
   }
-  return new THREE.MeshBasicMaterial({ map: tex, transparent: !!transparent, side: THREE.DoubleSide });
+  return new THREE.MeshBasicMaterial({
+    map: tex,
+    transparent: !!transparent,
+    side: THREE.DoubleSide,
+    // Decal bias: the facade sits ~coplanar with the host massing wall; nudge it
+    // forward in the depth buffer so it wins over the flat massing without z-fight.
+    polygonOffset: true,
+    polygonOffsetFactor: -4,
+    polygonOffsetUnits: -4,
+  });
 }
 
 function buildInkedFacadeTest(three, scene) {
@@ -1045,6 +1057,14 @@ function buildInkedFacadeTest(three, scene) {
     return tex;
   }
 
+  // Hand-built BufferGeometry has no reliable bounding sphere for frustum culling;
+  // disable it so these (few, spike-only) meshes never get wrongly culled.
+  function addInked(geo, mat) {
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.frustumCulled = false;
+    three.add(mesh);
+  }
+
   for (const { bin, tint } of INKED_FACADE_TEST) {
     const building = byBin.get(bin);
     if (!building || !building.polygon || !building.centroid) continue;
@@ -1054,8 +1074,14 @@ function buildInkedFacadeTest(three, scene) {
 
     const edges = footprintEdges(building.polygon, building.centroid);
     if (!edges.length) continue;
-    // longest edge (spike simplification; real face selection needs street-proximity)
-    const edge = edges.slice().sort((a, b) => b.length - a.length)[0];
+    // SPIKE: pick the edge whose outward normal best faces the fixed iso camera,
+    // weighted by width. Longest-edge alone lands the facade on an interior party
+    // wall (occluded). At ISO step 0 the visible faces point toward (-x,+z) in
+    // footprintEdges' normal convention (verified in-engine). (real face selection
+    // needs street-proximity)
+    const CAM_X = -Math.SQRT1_2, CAM_Z = Math.SQRT1_2;
+    const faceScore = (e) => (e.normal.x * CAM_X + e.normal.z * CAM_Z) * e.length;
+    const edge = edges.slice().sort((a, b) => faceScore(b) - faceScore(a))[0];
     const { left, right, normal } = faceFrame(edge, building.height, null, scene);
     const point = (x, y, off) => [
       left.x + (right.x - left.x) * x + normal.x * off,
@@ -1080,17 +1106,17 @@ function buildInkedFacadeTest(three, scene) {
     // Wall (tiled brick), tinted.
     const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [bays, storeys] }, cachedTexture);
     wallMat.color.setHex(tint);
-    three.add(new THREE.Mesh(quad(f.wall, 0.02), wallMat));
+    addInked(quad(f.wall, 0.02), wallMat);
 
     // Ground floor band (opaque), tinted.
     const groundMat = loadInkedComponent("brick-ground.v1.png", {}, cachedTexture);
     groundMat.color.setHex(tint);
-    three.add(new THREE.Mesh(quad(f.ground, 0.03), groundMat));
+    addInked(quad(f.ground, 0.03), groundMat);
 
     // Cornice strip (alpha), tinted.
     const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true }, cachedTexture);
     corniceMat.color.setHex(tint);
-    three.add(new THREE.Mesh(quad(f.cornice, 0.04), corniceMat));
+    addInked(quad(f.cornice, 0.04), corniceMat);
 
     // Windows (alpha), NOT tinted. All windows share one material — same file,
     // same alpha config, no tint — so we build it once and reuse the instance.
@@ -1098,9 +1124,12 @@ function buildInkedFacadeTest(three, scene) {
       map: cachedTexture("brick-window.v1.png"),
       transparent: true,
       side: THREE.DoubleSide,
+      polygonOffset: true,
+      polygonOffsetFactor: -6,
+      polygonOffsetUnits: -6,
     });
     for (const w of f.windows) {
-      three.add(new THREE.Mesh(quad(w, 0.035), winMat));
+      addInked(quad(w, 0.035), winMat);
     }
   }
 }
