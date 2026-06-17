@@ -475,6 +475,12 @@ export default function SceneView() {
     renderer.domElement.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("resize", resize);
+    // Track the mount's own size, not just window resizes: in an embedded
+    // preview pane (split view, iframe) the container can change height
+    // without a window "resize" event, which left the canvas stuck at its
+    // initial (e.g. half) height. ResizeObserver fires on container changes too.
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(mount);
     applyCulling(); // hide back-facing hero walls for the initial NE view
     resize();
 
@@ -485,6 +491,7 @@ export default function SceneView() {
       renderer.domElement.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", resize);
+      resizeObserver.disconnect();
       if (rotRaf != null) cancelAnimationFrame(rotRaf);
       active = false;
       renderer.dispose();
