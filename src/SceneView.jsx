@@ -1971,7 +1971,6 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     target.add(new THREE.Mesh(g, m));
   };
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
-  const lighten = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex(); // k>1 brightens (channels clamp at 1)
   // Hero-matched world-unit sizing (measured off Premier): windows ~1.0×1.7m,
   // ~2.8m bay rhythm, ~0.66m cornice, ~2.6m brick tile. Deriving brick course,
   // window, bay, and cornice sizes from world dimensions keeps every procedural
@@ -1980,9 +1979,11 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const heightM = height / upm;
   const storeys = Math.max(2, params.storeys);
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-  // Cornice: a deep crown to match the Premier hero corner (the 0.05 flush band
-  // read too thin). Taller fraction + real forward projection below.
-  const corniceFrac = 0.115;
+  // Cornice: a fixed ~0.95m-tall crown (like the Premier hero) regardless of
+  // building height, so it reads at a real-world scale and sits flush at the
+  // roofline. Metric, not a fixed fraction, so tall buildings don't get a giant
+  // band and short ones a sliver.
+  const corniceFrac = clamp(0.95 / heightM, 0.05, 0.085);
   const bays = clamp(Math.round(frontM / 2.8), 1, 6);
   const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
   // Windows tuned up to read even with the hero (~1.25m wide × ~2.0m tall).
@@ -2003,34 +2004,33 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Cornice: a projecting crown (soffit + fascia + top cap), like the Premier
-    // hero, instead of a flat strip on the wall. Color follows the reference
-    // photos — dark corbelled-brick cornices — so a dark tone of the building's
-    // own brick (per-BIN corniceColor override). ~0.5m forward projection.
+    // Cornice: the painted elevation crown (its own dentils/molding/shadow) on a
+    // projecting front face, top edge flush at the roofline (y=1) so no brick
+    // shows above it. Soffit + top cap are dark molding tints — a Brooklyn
+    // cornice top is dark tar/metal, never lit stone. Mirrors the hero
+    // (facadeAssembly.js): face at natural UVs, dark underside + cap.
     const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
-    const corniceProj = 0.052;        // ~0.7m proud (upm≈0.075)
+    const CROWN = darken(corniceColor, 0.5); // dark underside/top molding
+    const corniceProj = 0.034;               // ~0.45m overhang (upm≈0.075)
     const yBot = 1 - corniceFrac;
     const corniceTex = inkedTexture("brick-cornice.v1.png");
-    // Soffit (shadowed underside) from wall out to the projected front edge.
-    quad3(
-      point(0, yBot, 0.006), point(1, yBot, 0.006),
-      point(1, yBot, corniceProj), point(0, yBot, corniceProj),
-      null, { tint: darken(corniceColor, 0.6) },
-    );
-    // Fascia: the inked cornice texture on the projected front face (same vertex
-    // order as the flat quad so the modillion/dentil detail stays upright).
+    // Painted face, proud of the wall, top flush at the roofline.
     quad3(
       point(0, yBot, corniceProj), point(1, yBot, corniceProj),
       point(1, 1, corniceProj), point(0, 1, corniceProj),
       corniceTex, { tint: corniceColor, transparent: true },
     );
-    // Top cap: lit stone coping from the projected crown back to the roofline —
-    // a lighter tone than the fascia so the deep crown stays legible against the
-    // dark roof (otherwise a dark cornice on a dark roof reads as no cornice).
+    // Underside soffit (deep shadow) from the wall out to the projected front.
+    quad3(
+      point(0, yBot, 0.006), point(1, yBot, 0.006),
+      point(1, yBot, corniceProj), point(0, yBot, corniceProj),
+      null, { tint: CROWN },
+    );
+    // Top cap sloping back to the roof — dark molding, not lit stone.
     quad3(
       point(0, 1, corniceProj), point(1, 1, corniceProj),
       point(1, 1, 0.006), point(0, 1, 0.006),
-      null, { tint: lighten(corniceColor, 1.5) },
+      null, { tint: CROWN },
     );
   }
   // Party-wall seams: hairline shadow lines at both edges so abutting buildings
