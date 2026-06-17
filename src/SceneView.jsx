@@ -1842,6 +1842,7 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
 // distinct (image, tiling) loads at most once. Repeat varies per building (bays ×
 // storeys), so a handful of brick-wall variants is expected.
 const __inkedTexCache = new Map();
+let __glazingTex = null; // shared inked-glass texture (built once)
 function inkedTexture(file, repeat) {
   const key = repeat ? `${file}@${repeat[0]}x${repeat[1]}` : file;
   if (__inkedTexCache.has(key)) return __inkedTexCache.get(key);
@@ -2067,6 +2068,50 @@ function makeStorefrontValanceTexture(name, tintHex) {
   while (ctx.measureText(label).width > c.width - 48 && fs > 18) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
   ctx.fillText(label, c.width / 2, c.height / 2 + 2);
   const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
+  return tex;
+}
+
+// Inked display glass: dark warm-grey pane with a few cream diagonal reflection
+// strokes so the glazing reads as inked glass rather than flat black. Built once
+// and shared across every storefront panel.
+function makeInkedGlazingTexture() {
+  if (__glazingTex) return __glazingTex;
+  const c = document.createElement("canvas");
+  c.width = 256; c.height = 256;
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = "#2b2f31"; ctx.fillRect(0, 0, 256, 256);
+  ctx.strokeStyle = "rgba(239, 231, 214, 0.16)"; ctx.lineWidth = 10;
+  for (let i = -1; i < 4; i += 1) {
+    ctx.beginPath(); ctx.moveTo(i * 80, 256); ctx.lineTo(i * 80 + 170, 0); ctx.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  __glazingTex = tex;
+  return tex;
+}
+
+// Inked awning: a solid-fabric canopy in the tenant's category color with a
+// scalloped valance hem. Scallop gaps and the area below the hem are left
+// transparent (alpha 0) so the canopy edge reads as rounded fabric, not a
+// rectangle. `tintHex` is the category fabric color.
+function makeAwningTexture(tintHex) {
+  const c = document.createElement("canvas");
+  c.width = 256; c.height = 128;
+  const ctx = c.getContext("2d");
+  const tint = new THREE.Color(tintHex);
+  ctx.fillStyle = `#${tint.getHexString()}`;
+  const hemY = 90;
+  ctx.fillRect(0, 0, 256, hemY);               // canopy body
+  const n = 8, w = 256 / n;
+  for (let i = 0; i < n; i += 1) {              // scalloped valance (lower semicircles)
+    ctx.beginPath(); ctx.arc(i * w + w / 2, hemY, w / 2, 0, Math.PI); ctx.fill();
+  }
+  ctx.strokeStyle = "rgba(239, 231, 214, 0.5)"; ctx.lineWidth = 4; // hem line
+  ctx.beginPath(); ctx.moveTo(0, hemY); ctx.lineTo(256, hemY); ctx.stroke();
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
   return tex;
 }
 
