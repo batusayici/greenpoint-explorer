@@ -192,9 +192,13 @@ export default function SceneView() {
     // mid-tween) angle; `stepIndex` is unbounded so the snap always travels the
     // shortest 90°. Hero walls register here as cullables and have their
     // visibility recomputed for `currentAzimuth` on every frame of a snap.
-    let currentAzimuth = ISO_AZIMUTH;
-    let targetAzimuth = ISO_AZIMUTH;
-    let stepIndex = 0;
+    // Dev framing override: ?a=<0..3> sets the initial rotation step (for deterministic
+    // screenshots). Defaults to 0.
+    const __aParam = Number(new URLSearchParams(window.location.search).get("a"));
+    const __initStep = Number.isInteger(__aParam) ? __aParam : 0;
+    let currentAzimuth = ISO_AZIMUTH + __initStep * (Math.PI / 2);
+    let targetAzimuth = currentAzimuth;
+    let stepIndex = __initStep;
     let rotRaf = null;
     let animFromAz = ISO_AZIMUTH;
     let animStartMs = 0;
@@ -1002,20 +1006,33 @@ function buildStorefrontAwnings(three, placements, frame) {
   }
 }
 
-// SPIKE (2026-06-16): compose one brick building from inked components and tint
-// it, to judge the modular inked-component approach. Throwaway; gated by
-// INKED_FACADE_TEST (empty = no-op). Does NOT touch decorateTypologicalWall.
-const INKED_FACADE_TEST = [
-  { bin: "3064810", tint: 0xb5664a }, // warm brick red (4-storey, 1855)
-  { bin: "3064809", tint: 0x7d5a44 }, // muted brown (4-storey, 1855)
-];
+// SPIKE (2026-06-16): floating-quad spike for the inked-component approach. Superseded
+// by the wall-path integration (decorateInkedWall in buildBuildings) — disabled so it
+// stops fighting the real block. Kept gated for reference. Empty/false = no-op.
+const INKED_FACADE_TEST = [];
 
-// SPIKE scalability pass (2026-06-16): stamp the brick kit across EVERY brick-prewar
-// building on the block via typology (bays derived from frontage, tint varied per BIN),
-// to judge whether auto-composition holds at density (occlusion, perf, variety) before
-// building the full kit. Throwaway. enabled=false → no-op.
-const INKED_FACADE_BLOCK = {
+// STEP 3 (2026-06-16): the inked brick kit on the real mid-block of Franklin — the
+// blockface SOUTH of Premier Organic (same row/face), per Batu's photo. Corners are
+// bespoke heroes and excluded. BINs are the consecutive south run off Premier
+// (3322608/9): 3064795→3064800, ordered Premier-adjacent → south. Batu confirmed the
+// building next to Premier is Awoke Vintage (107), so the block runs 107→105→103→101→99→97.
+// Params (tint/storeys/bays) read from the field photos in
+// docs/mvp-reference-images/franklin-greenpoint-to-milton-block/. Consumed by buildBuildings
+// → decorateInkedWall (wall-mesh path: registers + self-occludes like decorateTypologicalWall).
+const INKED_FACADE_REAL = {
   enabled: true,
+  buildings: {
+    "3064795": { tint: 0xbd6446, storeys: 4, bays: 2, addr: "107 Awoke Vintage" },
+    "3064796": { tint: 0xaa5b46, storeys: 3, bays: 2, addr: "105 Broken Land" },
+    "3064797": { tint: 0xb35f43, storeys: 4, bays: 3, addr: "103" },
+    "3064798": { tint: 0x9e5340, storeys: 4, bays: 2, addr: "101" },
+    "3064799": { tint: 0xa55641, storeys: 5, bays: 2, addr: "99 Juice's" },
+    "3064800": { tint: 0x9c4f3e, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
+  },
+};
+
+const INKED_FACADE_BLOCK = {
+  enabled: false,
   radiusUnits: CONTEXT_TREATMENT_RADIUS_UNITS, // cluster around the Franklin corner
   minStoreys: 2,
   maxStoreys: 6,
@@ -1050,6 +1067,7 @@ function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
 }
 
 function buildInkedFacadeTest(three, scene) {
+  // INKED_FACADE_REAL is consumed by buildBuildings (wall path), not here.
   if (!INKED_FACADE_TEST.length && !INKED_FACADE_BLOCK.enabled) return;
   const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
 
@@ -1080,20 +1098,23 @@ function buildInkedFacadeTest(three, scene) {
 
   // Compose + render one building's inked facade. `bays` null → derive from the
   // chosen frontage width. Shared by the explicit-BIN list and the block stamp.
-  function stampInkedFacade(building, tint, bays) {
+  function stampInkedFacade(building, tint, bays, storeysOverride, faceDir) {
     if (!building || !building.polygon || !building.centroid) return;
     const typ = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
-    const storeys = Math.max(2, typ.storeyCount ?? 4);
+    const storeys = storeysOverride ?? Math.max(2, typ.storeyCount ?? 4);
 
     const edges = footprintEdges(building.polygon, building.centroid);
     if (!edges.length) return;
-    // SPIKE: pick the edge whose outward normal best faces the fixed iso camera,
+    // SPIKE: pick the edge whose outward normal best faces a target direction,
     // weighted by width. Longest-edge alone lands the facade on an interior party
-    // wall (occluded). At ISO step 0 the visible faces point toward (-x,+z) in
-    // footprintEdges' normal convention (verified in-engine). (real face selection
-    // needs street-proximity)
-    const CAM_X = -Math.SQRT1_2, CAM_Z = Math.SQRT1_2;
-    const faceScore = (e) => (e.normal.x * CAM_X + e.normal.z * CAM_Z) * e.length;
+    // wall (occluded). Default target = the camera at ISO step 0 (visible faces point
+    // toward (-x,+z), verified in-engine). A caller can pass `faceDir` to aim the
+    // facade at the actual STREET instead (the block-stamp / Step-3 case, where the
+    // street frontage is NOT the camera-facing edge). (proper face selection needs
+    // per-building street-proximity geometry.)
+    const dirX = faceDir ? faceDir.x : -Math.SQRT1_2;
+    const dirZ = faceDir ? faceDir.z : Math.SQRT1_2;
+    const faceScore = (e) => (e.normal.x * dirX + e.normal.z * dirZ) * e.length;
     const edge = edges.slice().sort((a, b) => faceScore(b) - faceScore(a))[0];
 
     // Derive bays from frontage width when not given.
@@ -1151,16 +1172,13 @@ function buildInkedFacadeTest(three, scene) {
     }
   }
 
-  // Work list: explicit BIN picks (fixed tint, fixed 3 bays), then — if the block
-  // stamp is on — every brick-prewar building in range, tinted by a per-BIN hash so
-  // we can judge variety, with bays derived from each frontage.
+  // Throwaway floating-quad passes (superseded by decorateInkedWall in buildBuildings).
   const explicitBins = new Set();
   for (const { bin, tint } of INKED_FACADE_TEST) {
     explicitBins.add(bin);
     stampInkedFacade(byBin.get(bin), tint, 3);
   }
   if (INKED_FACADE_BLOCK.enabled) {
-    let stamped = 0;
     for (const b of scene.buildings) {
       if (!b.fromBlockExtract || !b.sourceProperties || !b.polygon || !b.centroid) continue;
       if (explicitBins.has(b.bin)) continue;
@@ -1171,9 +1189,7 @@ function buildInkedFacadeTest(three, scene) {
       let h = 0;
       for (const ch of b.bin) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
       stampInkedFacade(b, INKED_FACADE_BLOCK.palette[h % INKED_FACADE_BLOCK.palette.length], null);
-      stamped += 1;
     }
-    if (typeof window !== "undefined") window.__inkedStamped = stamped;
   }
 }
 
@@ -1336,17 +1352,28 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // Block-extract buildings carry PLUTO sourceProperties — classify them for
     // data-differentiated wall tone and typological decoration. Non-block
     // context buildings keep the existing rotating palette.
+    // Step-3 inked mid-block buildings: tint the massing to the building's brick
+    // tone so any peek of the extrude (roof, party-wall sliver) matches the inked
+    // facade that gets hung on it below.
+    const inkedParams = INKED_FACADE_REAL.enabled
+      ? INKED_FACADE_REAL.buildings[building.bin]
+      : null;
     let typology = null;
     let color;
-    if (building.fromBlockExtract && building.sourceProperties) {
+    if (inkedParams) {
+      color = inkedParams.tint;
+    } else if (building.fromBlockExtract && building.sourceProperties) {
       typology = classifyBuilding({ sourceProperties: building.sourceProperties });
       color = resolveTypologyColor(typology);
     } else {
       color = II_PALETTE.context[index % II_PALETTE.context.length];
     }
     // ExtrudeGeometry material slots: 0 = caps (roof), 1 = side walls.
-    // Darker inked roof caps keep large masses from reading as flat slabs.
-    const roof = new THREE.Color(color).multiplyScalar(0.5);
+    // Darker inked roof caps keep large masses from reading as flat slabs. Inked
+    // buildings keep a neutral dark roof (the brick tint is for the walls only).
+    const roof = inkedParams
+      ? new THREE.Color(0x46443f)
+      : new THREE.Color(color).multiplyScalar(0.5);
     const body = new THREE.Mesh(geometry, [
       new THREE.MeshLambertMaterial({ color: roof }),
       new THREE.MeshLambertMaterial({ color }),
@@ -1360,7 +1387,14 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // 48 m radius gate. The opaque extrude self-occludes its own back-wall
     // decoration, so no per-view culling is needed here.
     const dist = Math.hypot(building.centroid.x, building.centroid.z);
-    if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
+    if (inkedParams) {
+      // Inked component kit on every edge; the opaque mass occludes back walls.
+      const deco = new THREE.Group();
+      for (const edge of footprintEdges(building.polygon, building.centroid)) {
+        decorateInkedWall(deco, edge, building.height, inkedParams, scene);
+      }
+      three.add(deco);
+    } else if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
       const deco = new THREE.Group();
       for (const edge of footprintEdges(building.polygon, building.centroid)) {
         decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology);
@@ -1797,6 +1831,56 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
       target.add(quad(x0, x1, cyTop, cyTop + 0.012, 0.008, lintelColor, 0.3));
     }
   }
+}
+
+// Module-memoized inked-component textures. Keyed by file (+ repeat) so each
+// distinct (image, tiling) loads at most once. Repeat varies per building (bays ×
+// storeys), so a handful of brick-wall variants is expected.
+const __inkedTexCache = new Map();
+function inkedTexture(file, repeat) {
+  const key = repeat ? `${file}@${repeat[0]}x${repeat[1]}` : file;
+  if (__inkedTexCache.has(key)) return __inkedTexCache.get(key);
+  const tex = new THREE.TextureLoader().load(new URL(`../assets/inked/${file}`, import.meta.url).href);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  if (repeat) {
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(repeat[0], repeat[1]);
+  }
+  __inkedTexCache.set(key, tex);
+  return tex;
+}
+
+// Inked component-kit facade on one wall edge. Same registration model as
+// decorateTypologicalWall: quads sit a hair proud of the wall (outward normal
+// offset), parented under `target`, relying on the opaque massing to occlude
+// back walls — so this works at block density where scene-root floating quads
+// mis-register/bleed. Composes wall (tiled brick) + ground band + window grid +
+// cornice from `params` (tint, storeys, bays); window/cornice are alpha-keyed.
+function decorateInkedWall(target, edge, height, params, scene) {
+  const { left, right, normal } = faceFrame(edge, height, null, scene);
+  const upm = scene.projection.scale;
+  if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
+  const point = (x, y, off) => [
+    left.x + (right.x - left.x) * x + normal.x * off,
+    y * height,
+    left.z + (right.z - left.z) * x + normal.z * off,
+  ];
+  const quad = (r, off, tex, { tint, transparent } = {}) => {
+    const g = new THREE.BufferGeometry();
+    const p = [point(r.x0, r.y0, off), point(r.x1, r.y0, off), point(r.x1, r.y1, off), point(r.x0, r.y1, off)];
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1, 0, 0, 0, 0, 1, 1, 1]), 2));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({ map: tex, side: THREE.DoubleSide, transparent: !!transparent });
+    if (tint != null) m.color.setHex(tint);
+    target.add(new THREE.Mesh(g, m));
+  };
+  const f = composeInkedFacade({ storeys: params.storeys, bays: params.bays });
+  quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", [params.bays, params.storeys]), { tint: params.tint });
+  quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
+  const winTex = inkedTexture("brick-window.v1.png");
+  for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
+  quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: params.tint, transparent: true });
 }
 
 // Even-odd ray cast in the scene's x/z plane. Used to tell an interior party
