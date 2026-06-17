@@ -1034,11 +1034,11 @@ const INKED_FACADE_REAL = {
     "3064797": { tint: 0x9a5340, storeys: 4, bays: 3, addr: "103" },
     // Maroon trio (Milton corner end) — similar deep oxblood shades.
     "3064798": { tint: 0x8e585a, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0x8a555a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
+    "3064799": { tint: 0x8a555a, storeys: 4, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
       { label: "JUICE BAR", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x3a2c20 },
       { label: "SANDWICH", widthFrac: 0.5, door: "right", awning: { has: true, color: 0x27314d }, frameTint: 0x2a2018 },
     ] } },
-    "3064800": { tint: 0x875258, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
+    "3064800": { tint: 0x875258, storeys: 4, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
   },
 };
 
@@ -1964,9 +1964,23 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     target.add(new THREE.Mesh(g, m));
   };
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
-  const f = composeInkedFacade({ storeys: params.storeys, bays: params.bays });
+  // Hero-matched world-unit sizing (measured off Premier): windows ~1.0×1.7m,
+  // ~2.8m bay rhythm, ~0.66m cornice, ~2.6m brick tile. Deriving brick course,
+  // window, bay, and cornice sizes from world dimensions keeps every procedural
+  // building consistent with the hero corner regardless of its height/width.
+  const frontM = edge.length / upm;
+  const heightM = height / upm;
+  const storeys = Math.max(2, params.storeys);
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  const corniceFrac = clamp(0.66 / heightM, 0.04, 0.09);
+  const bays = clamp(Math.round(frontM / 2.8), 1, 6);
+  const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
+  const winHFrac = clamp(1.7 / rowHm, 0.35, 0.72);
+  const winWFrac = clamp(1.0 / (frontM / bays), 0.3, 0.66);
+  const f = composeInkedFacade({ storeys, bays, corniceFrac, winWFrac, winHFrac });
+  const brickRepeat = [clamp(Math.round(frontM / 2.6), 1, 8), clamp(Math.round(heightM / 2.6), 1, 8)];
   // Wall (full-height tiled brick): every face, so side/rear read as brick.
-  quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", [params.bays, params.storeys]), { tint: params.tint });
+  quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", brickRepeat), { tint: params.tint });
   if (streetFace) {
     // Front facade only: ground band (storefront or stoop), windows, cornice.
     if (params.storefront) {
@@ -1976,12 +1990,9 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Cornice: the inked cornice asset (modillions + dentils + crown) rendered at
-    // its TRUE light color so the detail reads. A heavy brick tint previously
-    // destroyed it; we keep it near its painted-cream tone (per-BIN corniceColor
-    // override). A taller band + a small proud offset gives the crown presence.
-    const corniceRect = { x0: 0, y0: 0.90, x1: 1, y1: 1 };
-    quad(corniceRect, 0.022, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? 0xe8dcc6, transparent: true });
+    // Cornice: inked cornice asset at its true cream tone, sized to the hero's
+    // ~0.66m crown via corniceFrac (f.cornice), proud of the wall.
+    quad(f.cornice, 0.022, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? 0xe8dcc6, transparent: true });
   }
   // Party-wall seams: thin dark verticals at both edges so abutting buildings
   // read as distinct. Drawn on every face; back ones are occluded.

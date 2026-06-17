@@ -5,12 +5,11 @@
 // fill, a window grid (one per upper-storey bay), a cornice strip at the top,
 // and a ground-floor band at the bottom. The renderer maps these to world geom.
 
-export function composeInkedFacade({ storeys, bays }) {
+export function composeInkedFacade({ storeys, bays, corniceFrac = 0.06, winWFrac = 0.5, winHFrac = 0.55 }) {
   const s = Math.max(2, storeys);
   const b = Math.max(1, bays);
 
   const groundFrac = 1 / s;          // ground floor = one storey tall
-  const corniceFrac = 0.06;          // thin cap at the very top
   const wall = { x0: 0, y0: 0, x1: 1, y1: 1 };
   const ground = { x0: 0, y0: 0, x1: 1, y1: groundFrac };
   const cornice = { x0: 0, y0: 1 - corniceFrac, x1: 1, y1: 1 };
@@ -21,10 +20,9 @@ export function composeInkedFacade({ storeys, bays }) {
   const rows = s - 1;
   const rowH = (upperTop - upperBot) / rows;
 
-  // Window sizing: centered in each row/bay cell with margins.
+  // Window sizing: centered in each row/bay cell. winWFrac/winHFrac are the
+  // window's share of its bay/row cell (caller passes hero-matched values).
   const cellW = 1 / b;
-  const winWFrac = 0.5;   // window occupies 50% of its bay width
-  const winHFrac = 0.55;  // and 55% of its row height
   const windows = [];
   for (let r = 0; r < rows; r += 1) {
     const cy0 = upperBot + r * rowH;
