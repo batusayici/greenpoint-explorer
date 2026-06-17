@@ -1036,7 +1036,7 @@ const INKED_FACADE_REAL = {
       { label: "SANDWICH", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x2a2018 },
       { label: "JUICE BAR", widthFrac: 0.5, door: "right", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20 },
     ] } },
-    "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
+    "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
   },
 };
 
@@ -1403,8 +1403,15 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       const deco = new THREE.Group();
       const inkedEdges = footprintEdges(building.polygon, building.centroid);
       const frontIndex = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+      // Corner buildings (e.g. 97 bodega) get a second street face — the
+      // cross-street — so their storefront + windows wrap around the corner.
+      const streetSet = new Set([frontIndex]);
+      if (inkedParams.corner) {
+        const second = inkedCornerSecondEdgeIndex(inkedEdges, frontIndex, scene);
+        if (second >= 0) streetSet.add(second);
+      }
       inkedEdges.forEach((edge, i) => {
-        decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === frontIndex);
+        decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i));
       });
       three.add(deco);
     } else if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
@@ -1780,6 +1787,27 @@ function inkedFrontEdgeIndex(edges, centroid, scene) {
   let bestScore = -Infinity;
   for (let i = 0; i < edges.length; i += 1) {
     const score = edges[i].normal.x * toStreet.x + edges[i].normal.z * toStreet.z;
+    if (score > bestScore) { bestScore = score; best = i; }
+  }
+  return best;
+}
+
+// For a corner building, the index of its SECOND street face (the cross-street),
+// or -1. Among edges roughly perpendicular to the front, pick the one whose
+// outward normal points most along +franklinAxis — i.e. toward the cross street
+// at the south (Milton) end of the block, where the only corner (97) sits.
+// (Assumes a south-end corner; revisit if a north-end corner is added.)
+function inkedCornerSecondEdgeIndex(edges, frontIndex, scene) {
+  const fa = scene.franklinAxis;
+  if (!fa || frontIndex < 0) return -1;
+  const fn = edges[frontIndex].normal;
+  let best = -1;
+  let bestScore = -Infinity;
+  for (let i = 0; i < edges.length; i += 1) {
+    if (i === frontIndex) continue;
+    const n = edges[i].normal;
+    if (Math.abs(n.x * fn.x + n.z * fn.z) >= 0.5) continue; // keep only ~perpendicular faces
+    const score = n.x * fa.x + n.z * fa.z;
     if (score > bestScore) { bestScore = score; best = i; }
   }
   return best;
