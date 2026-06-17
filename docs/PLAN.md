@@ -6,12 +6,39 @@ Owner: Batu (taste, product, approvals) / Agent (execution)
 
 ## Product Goal
 
-A 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike: every building and business is located exactly where it is in real life and is recognizably itself. Art-directed and stylized — not hyperrealistic.
+**Greenpoint Explorer is a neighborhood exploration platform** — it helps people discover Greenpoint through stories, landmarks, events, history, and curated routes, not through search. The lifelike, hand-inked 3D map is the **recognition layer / container**; the location-linked context attached to places is the product. (Core belief: people don't travel to browse business listings — they travel to discover places; businesses benefit when discovery happens. See the Product Frame below.)
+
+The container is: a 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike — every building and business located exactly where it is in real life and recognizably itself. Art-directed and stylized, not hyperrealistic. The recognition bar ("yes, that's *my* neighborhood") is real and load-bearing, but it serves the platform; it is not the end in itself.
 
 - **Multi-angle (firm requirement):** the scene is viewable from **all four orthogonal isometric angles** (90° rotation steps), with pan/zoom. A single fixed angle shows only two of every building's four sides, structurally hiding ~half of all street frontages — and the businesses on them. Four rotations make every street frontage visible from at least one angle. This is not free-cam (which stays debug-only); it is four discrete, composed iso viewpoints. **Implication:** a building's street frontages must be treated for whichever angle(s) reveal them, and scene completeness is judged from all four angles, not one.
 - **Primary look:** II-C Inked Indie Visual System (hand-inked editorial illustration). See `docs/ART_DIRECTION.md`.
 - **Fallback look:** GPT-5.5 photo-render fidelity (the Premier Organic benchmark image) if II-C proves infeasible in-engine. Decided at the Phase 2 gate.
 - **Geometry truth:** NYC Open Data (footprints, BINs). **Likeness truth:** field photos in `src/data/facade-evidence/`.
+
+## Product Frame (adopted 2026-06-17)
+
+The strategy below was previously held only in `docs/context/` and the session memory, footed "not yet in PLAN.md." It is now adopted here as the strategic spine. Full sources: `docs/context/strategy-blueprint.md` (master), `docs/context/resident-feedback-michael-2026-06.md`, `docs/context/greenpoint-editorial-context.md`, `docs/context/landmark-strategy-v1.md`.
+
+**Six V1 content layers:** 1. Places · 2. Stories · 3. History · 4. Events · 5. Curated Routes · 6. Neighborhood Layers.
+
+**Why people use it (ordering matters):** Stories → Local knowledge → Exploration → Events → History → Businesses. *Stories generate attention; events create urgency; businesses monetize the resulting discovery.*
+
+**Growth loop:** stories make the map worth exploring → events bring people in → visitors discover businesses → businesses promote the platform → more content added → the map gets more useful and more defensible.
+
+**North-Star metric — Verified Local Exploration:** visitor journeys that produce meaningful engagement (route starts, story views/listens, event saves, profile views, check-ins, multi-stop visits, signups, intent).
+
+**Defensibility:** a neighborhood knowledge graph. *Google Maps knows where places are; we aim to know why they matter.*
+
+**Core hypotheses (what the build must validate):**
+- **H1 — Stories drive engagement** (vs. directory-style info).
+- **H2 — Routes drive exploration** (multi-stop + business discovery).
+- **H3 — Events drive acquisition** (fastest path to new + repeat visitors and business adoption).
+- **H4 — Businesses pay after attention exists.**
+- **H5 — The model is repeatable** to other neighborhoods.
+
+**Landmark strategy — curated density, not coverage:** V1 does not map all of Greenpoint. It is a dense, memorable set of ~10–15 story-rich anchors on a story-dense spine (Franklin/Greenpoint corridor, Manhattan Ave, Transmitter Park/WNYC, Eberhard Faber, Bushwick Inlet, St. Anthony's, McGolrick/Monitor, Newtown Creek). Each anchor is a tappable **story object**, not a static POI. The `Landmark` and `PlaceStory` schemas (in the context docs) carry verification gates — lore stays unverified until address + photo + archival confirmation.
+
+**Resident signal (Michael, n=1, June 2026):** the map is the container, hyperlocal context is the product; people attach to *people, not listings*; owner/origin stories and on-location audio validated; stoop sales / local news drive recurring traffic; community orgs (Greenpointers, Save the Inlet, historians) are the better *early* content + distribution partners. Acquisition sequence: visitors → engagement → businesses. This is n=1 — widening it is itself part of the work.
 
 ## Locked Decisions (2026-06-11)
 
@@ -39,6 +66,8 @@ NYC footprints (BIN-mapped, WGS84)
 Stack stays React + Three.js + Vite. No renderer replacement. PixiJS retained only if the 2D overlay earns its keep.
 
 ## Phases
+
+> **Track A — Layer 1: Place / The Container.** Everything in Phases 1–5 below builds the render engine: geometry truth, massing, the II-C inked look, facades, ground/props, multi-angle camera, hero place cards, and block scaling. This is *one layer* of the platform (Places + recognition), not the whole product. The phase records are kept intact as the execution history. The **content & exploration layers (Track B)** that test H1–H5 are a separate section below.
 
 ### Phase 1: Reset & Clean Baseline — DONE (this commit)
 
@@ -121,6 +150,23 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
 5.3 Performance pass (instancing, draw-call budget, zoom-range texture resolution)
 5.4 **Pre-launch truth pass:** verify names/placements, fix misattributions, optional goodwill outreach to featured businesses
 5.5 Public community demo
+
+## Track B — Content & Exploration Layers + Instrumentation
+
+This is the half of the platform that tests the hypotheses. None of it is built yet; the schemas are designed (in the context docs). **Sequencing is intentionally OPEN — see "Priority Re-decision" below.** Each layer is listed with the hypothesis it exercises:
+
+- **B1 — Story layer (H1).** Implement the `PlaceStory` schema as structured, source-backed JSON (editorial truth kept separate from geometry/business truth). Author a small set of *real* story objects on existing places (owner/origin stories, lore, hidden-gem). Surface them in the place-card UI (a "story" section). Tests whether story/context out-pulls directory info.
+- **B2 — History / Then·Now·Lost (H1, defensibility).** Historical photos + former uses anchored to locations (OLDNYC-sourced). Populatable *without* businesses or UGC → candidate lead acquisition vector.
+- **B3 — Landmark anchors (curated density).** The ~15-pin story-object set via the `Landmark` schema + verification gates. The spine the other layers hang on.
+- **B4 — Curated Routes (H2).** Thematic multi-stop trails across the anchors (e.g. First-Time Greenpoint, Vintage Trail, Polish Greenpoint). Tests multi-stop exploration + discovery.
+- **B5 — Events / What's-Happening-Now (H3).** Time-bound pins (markets, open studios, stoop sales). Tests urgency, repeat visitation, acquisition.
+- **B6 — Instrumentation toward the North Star.** Lightweight event logging (story opens, pin clicks, dwell, route starts, multi-stop) so demos and pilots produce Verified-Local-Exploration signal instead of anecdote. Cross-cutting; likely a prerequisite for *measuring* any of H1–H3.
+- **B7 — Business participation & monetization (H4).** Builds on the existing claim-to-brand hook (the `storefrontSigns.js` `claimed`/`brandName` path; see Phase 4.2). Sequenced *after* attention is demonstrated.
+- **B8 — Repeatability (H5).** Generalize the playbook to a second neighborhood. Last.
+
+## Priority Re-decision (OPEN — 2026-06-17)
+
+With Track A and Track B now in one document, the next call is the **now / next / later ordering across both tracks** — specifically how much further to push the container (window v2, full inked component kit, more blocks) versus standing up the first Track-B content slice to start validating H1–H3 on the corner that already exists. This decision is deliberately left to Batu and is to be made from this reconciled plan. Until it's made, the active branch (`feat/inked-facade-look`) continues Track A.
 
 ## Deferred (vision-compatible, not in scope)
 
