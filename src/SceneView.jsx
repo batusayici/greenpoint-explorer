@@ -2087,7 +2087,7 @@ function makeStorefrontSignTexture(name) {
   const label = String(name).toUpperCase();
   while (ctx.measureText(label).width > c.width - 56 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
   ctx.fillText(label, c.width / 2, c.height / 2);
-  const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8; tex.needsUpdate = true;
   return tex;
 }
 
