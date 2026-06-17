@@ -1028,15 +1028,15 @@ const INKED_FACADE_REAL = {
   // muted), grounded in the two photo families. storeys/bays counted off the photos;
   // fireEscape flagged where the photos show one.
   buildings: {
-    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
-    "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
-    "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103" },
-    "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
+    "3064795": { tint: 0xc17a5c, storeys: 4, bays: 2, addr: "107 Awoke Vintage", storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
+    "3064796": { tint: 0xa86a5e, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
+    "3064797": { tint: 0x9a5e66, storeys: 4, bays: 3, addr: "103" },
+    "3064798": { tint: 0x8c5560, storeys: 4, bays: 2, addr: "101" },
+    "3064799": { tint: 0x97606a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
       { label: "JUICE BAR", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x3a2c20 },
       { label: "SANDWICH", widthFrac: 0.5, door: "right", awning: { has: false }, frameTint: 0x2a2018 },
     ] } },
-    "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
+    "3064800": { tint: 0xb06e62, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
   },
 };
 
@@ -1974,8 +1974,10 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Darkened cornice so the crown reads as inked shadow rather than wall-color.
-    quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: darken(params.tint, 0.55), transparent: true });
+    // Cornice crown. Real color: a per-BIN corniceColor (painted/metal cornices)
+    // when known; otherwise a gentle darken of the brick so the corbelled crown
+    // reads as the building's own masonry rather than a heavy shadow.
+    quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? darken(params.tint, 0.72), transparent: true });
   }
   // Party-wall seams: thin dark verticals at both edges so abutting buildings
   // read as distinct. Drawn on every face; back ones are occluded.
