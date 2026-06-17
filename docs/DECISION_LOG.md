@@ -4,6 +4,27 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-16 - Inked Look Gate + Modular Component Kit (spike: conditional GO)
+
+Decision (Batu-approved in session, after the in-engine feasibility spike on branch `feat/inked-facade-look`):
+
+1. **Look gate:** the whole scene speaks **one II-C inked language** (`docs/ART_DIRECTION.md`). Heroes/landmarks get bespoke renders but *in the inked style* (re-rendered over time); everything else is procedurally rendered in the inked system. Heroes and infill differ in **craft tier, not style**. This ends the drift into the documented fallback (photo-real heroes + flat-color typological infill).
+
+2. **Non-hero facades = a modular inked COMPONENT KIT, not whole-building tiles.** Batu's domain fact: ~80% of Greenpoint is four facade systems (brick, wood-frame/clapboard, brownstone, modern) recolored/recombined. Whole-building tiles are combinatorially explosive and stretch wrong on the next building; a small library of inked components (wall/window/cornice/ground/etc.) recombines infinitely, driven by `buildingTypology.js`, reusing the `facadeAssembly.js` composition idea.
+
+3. **Tintable-neutral components + shader tint.** Components are generated dark-ink on light warm-grey (~#EDE8E0), no saturated color; material color is applied in-engine as a `MeshBasicMaterial.color` multiply. Collapses "4 systems × many colors" from dozens of renders to ~4 material renders + a color parameter.
+
+4. **Technique order: AI inked assets (#3) first; NPR screen-space post-pass (#1) is the fallback.** Modular components are what make #3 worth it (generate once, recombine forever).
+
+**Spike result — conditional GO.** Generated a brick component set (wall/window/cornice/ground), composed two adjacent 1855 rowhouses in-engine via a pure `inkedFacadeCompose.js` + a gated `buildInkedFacadeTest` in `SceneView.jsx`, and recolored to two tints.
+- ✅ Components **compose** into a facade. ✅ **Shader-tint recolor works** — same neutral brick texture × two tints, ink stays dark (this validates the mechanism the whole Tier-B color pipeline depends on). ✅ Brick wall + ground-floor stoop **read as hand-inked**; no ugly wall seams.
+- ❌ **Window component washes to bright white blocks** at building scale (near-white glass/frame, untinted) — finding #1 for the full kit: re-render the window darker/bolder (and consider a faint tint).
+- Engineering notes: GPT returned "transparent" window/cornice as a **baked checkerboard** (no alpha) → keyed to real alpha with `scripts/key_inked_alpha.py` (border-seeded flood, stops at ink). Spike also forced camera-facing edge selection, polygon-offset decal bias, and frustum-cull disable in `buildInkedFacadeTest`.
+
+**Next:** brainstorm the **full inked component kit spec** — the other 3 materials (clapboard/brownstone/modern), more component variants, typology-driven composition across the block, and the hero inked re-render track. Re-render the brick window component (bolder ink) as the first concrete fix. The facade-truth/recognizability pipeline (per-BIN parameter vector grounded by tiered evidence; Mapillary-primary, Street-View-extract-only; spine-first) is the data half that feeds this kit. The throwaway spike wiring is gated by `INKED_FACADE_TEST` and trivially removable; keep for now as a working reference.
+
+Spec/plan: `docs/superpowers/specs/2026-06-16-ai-inked-component-kit-spike-design.md`, `docs/superpowers/plans/2026-06-16-ai-inked-component-kit-spike.md`. Owner: Batu (taste/approval) / Agent (execution).
+
 ## 2026-06-15 - Multi-Angle Camera Rig Shipped; Hero Culling Now Follows the Camera (Phase 3.2)
 
 Decision (execution, within the approved 3.2 scope): Scene mode now rotates through **four fixed iso steps** (90°) with an eased snap, retaining pan/zoom; free-cam stays debug-only. Rotation via ↺/↻ buttons + Q/E/`[`/`]`/arrow keys, with an "angle N/4" indicator. Contained to `SceneView.jsx`.
