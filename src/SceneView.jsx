@@ -1394,11 +1394,15 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // decoration, so no per-view culling is needed here.
     const dist = Math.hypot(building.centroid.x, building.centroid.z);
     if (inkedParams) {
-      // Inked component kit on every edge; the opaque mass occludes back walls.
+      // Inked component kit. Only the street-facing front edge gets windows /
+      // storefront / cornice; side & rear walls render as plain party-wall brick
+      // (no punched windows on side facades). The opaque mass occludes back walls.
       const deco = new THREE.Group();
-      for (const edge of footprintEdges(building.polygon, building.centroid)) {
-        decorateInkedWall(deco, edge, building.height, inkedParams, scene);
-      }
+      const inkedEdges = footprintEdges(building.polygon, building.centroid);
+      const frontIndex = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+      inkedEdges.forEach((edge, i) => {
+        decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === frontIndex);
+      });
       three.add(deco);
     } else if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
       const deco = new THREE.Group();
@@ -1753,6 +1757,31 @@ function footprintEdges(polygon, centroid) {
   return edges;
 }
 
+// Index of a building's STREET-facing front edge among `edges`. The inked
+// Franklin block all fronts onto the Franklin centerline (the derived street
+// line through the origin along franklinAxis). The front edge is the one whose
+// outward normal points most directly toward that centerline. Used so inked
+// buildings only carry windows/storefront/cornice on the street face — side and
+// rear walls render as plain party-wall brick (no punched windows). Returns 0
+// if axes are unavailable.
+function inkedFrontEdgeIndex(edges, centroid, scene) {
+  const fa = scene.franklinAxis;
+  if (!fa || !edges.length) return 0;
+  // Component of the centroid offset perpendicular to the Franklin line, then
+  // point from the building back toward the line = the street direction.
+  const cdotf = centroid.x * fa.x + centroid.z * fa.z;
+  const perp = { x: centroid.x - cdotf * fa.x, z: centroid.z - cdotf * fa.z };
+  const mag = Math.hypot(perp.x, perp.z) || 1;
+  const toStreet = { x: -perp.x / mag, z: -perp.z / mag };
+  let best = 0;
+  let bestScore = -Infinity;
+  for (let i = 0; i < edges.length; i += 1) {
+    const score = edges[i].normal.x * toStreet.x + edges[i].normal.z * toStreet.z;
+    if (score > bestScore) { bestScore = score; best = i; }
+  }
+  return best;
+}
+
 // Typological back-wall treatment for a hero's exposed non-street faces:
 // faint storey score-lines + a sparse grid of dark "punched" windows, drawn
 // in the II-C flat-inked idiom (windows are dark shapes sitting a hair proud
@@ -1863,7 +1892,10 @@ function inkedTexture(file, repeat) {
 // back walls — so this works at block density where scene-root floating quads
 // mis-register/bleed. Composes wall (tiled brick) + ground band + window grid +
 // cornice from `params` (tint, storeys, bays); window/cornice are alpha-keyed.
-function decorateInkedWall(target, edge, height, params, scene) {
+// `streetFace` gates the front-facade elements: when false (side/rear walls)
+// only plain brick + party seams are drawn — no windows, storefront, or cornice
+// — so side facades read as blank party-wall brick.
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -1900,20 +1932,22 @@ function decorateInkedWall(target, edge, height, params, scene) {
   };
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
   const f = composeInkedFacade({ storeys: params.storeys, bays: params.bays });
+  // Wall (full-height tiled brick): every face, so side/rear read as brick.
   quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", [params.bays, params.storeys]), { tint: params.tint });
-  // Commercial BINs carry a `storefront` block → draw the inked storefront
-  // vocabulary in the ground band. Everything else keeps the generic stoop.
-  if (params.storefront) {
-    decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
-  } else {
-    quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
+  if (streetFace) {
+    // Front facade only: ground band (storefront or stoop), windows, cornice.
+    if (params.storefront) {
+      decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
+    } else {
+      quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
+    }
+    const winTex = inkedTexture("brick-window.v1.png");
+    for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
+    // Darkened cornice so the crown reads as inked shadow rather than wall-color.
+    quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: darken(params.tint, 0.55), transparent: true });
   }
-  const winTex = inkedTexture("brick-window.v1.png");
-  for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-  // Darkened cornice so the crown reads as inked shadow rather than wall-color.
-  quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: darken(params.tint, 0.55), transparent: true });
-  // Party-wall seams: thin dark verticals at both street-face edges so abutting
-  // buildings read as distinct. Drawn on every edge; back ones are occluded.
+  // Party-wall seams: thin dark verticals at both edges so abutting buildings
+  // read as distinct. Drawn on every face; back ones are occluded.
   quad({ x0: 0, y0: 0, x1: 0.02, y1: 1 }, 0.02, null, { tint: 0x241a15 });
   quad({ x0: 0.98, y0: 0, x1: 1, y1: 1 }, 0.02, null, { tint: 0x241a15 });
 }
