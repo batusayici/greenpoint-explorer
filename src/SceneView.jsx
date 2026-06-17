@@ -1028,11 +1028,11 @@ const INKED_FACADE_REAL = {
   // muted), grounded in the two photo families. storeys/bays counted off the photos;
   // fireEscape flagged where the photos show one.
   buildings: {
-    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", fireEscape: true },
-    "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land" },
+    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", fireEscape: true, storefront: { label: "VINTAGE", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
+    "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
     "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103", fireEscape: true },
     "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Juice's", fireEscape: true },
+    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Juice's", fireEscape: true, storefront: { label: "JUICE BAR", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20, door: "left" } },
     "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
   },
 };
