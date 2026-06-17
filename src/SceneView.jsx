@@ -24,6 +24,7 @@ import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
 import { planStorefrontSigns } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
+import { composeStorefront } from "./storefrontCompose.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -1886,7 +1887,13 @@ function decorateInkedWall(target, edge, height, params, scene) {
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
   const f = composeInkedFacade({ storeys: params.storeys, bays: params.bays });
   quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", [params.bays, params.storeys]), { tint: params.tint });
-  quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
+  // Commercial BINs carry a `storefront` block → draw the inked storefront
+  // vocabulary in the ground band. Everything else keeps the generic stoop.
+  if (params.storefront) {
+    decorateStorefront(quad, f.ground, params.storefront, params);
+  } else {
+    quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
+  }
   const winTex = inkedTexture("brick-window.v1.png");
   for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
   // Darkened cornice so the crown reads as inked shadow rather than wall-color.
@@ -1909,6 +1916,42 @@ function decorateInkedWall(target, edge, height, params, scene) {
       const y = gf + r * rowH + rowH * 0.12;
       quad({ x0: fx0, y0: y, x1: fx1, y1: y + 0.02 }, 0.032, null, { tint: rail });
     }
+  }
+}
+
+// Draw the inked storefront vocabulary into the ground band of a commercial
+// building. `quad` is decorateInkedWall's face-local quad helper; `band` is the
+// face-local ground rect (f.ground). composeStorefront returns BAND-LOCAL rects,
+// which we map into the band before drawing. Offsets stay just proud of the wall
+// (0.006–0.011) except the awning, which projects forward (0.030).
+function decorateStorefront(quad, band, storefront, params) {
+  const s = composeStorefront(storefront);
+  const bw = band.x1 - band.x0;
+  const bh = band.y1 - band.y0;
+  const map = (r) => ({
+    x0: band.x0 + r.x0 * bw, x1: band.x0 + r.x1 * bw,
+    y0: band.y0 + r.y0 * bh, y1: band.y0 + r.y1 * bh,
+  });
+  const dark = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
+  const tint = params.tint;
+  const frameTint = storefront.frameTint ?? dark(tint, 0.45);
+
+  // Masonry kickplate: tinted brick-ground, matches the building's brick tone.
+  quad(map(s.bulkhead), 0.006, inkedTexture("brick-ground.v1.png"), { tint });
+  // Display glass: shared inked-glazing texture (self-contained dark glass).
+  const glazeTex = makeInkedGlazingTexture();
+  for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
+  // Mullion, transom, door, frame: solid inked tints.
+  quad(map(s.mullion), 0.009, null, { tint: frameTint });
+  quad(map(s.transom), 0.009, null, { tint: 0xcdbfa6 });          // light transom band
+  quad(map(s.door), 0.009, null, { tint: dark(frameTint, 0.7) }); // recessed entry, darker
+  for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
+  // Category sign band: paper ground + uppercase serif label (no real names).
+  quad(map(s.sign), 0.010, makeStorefrontSignTexture(storefront.label), {});
+  // Awning: proud scalloped canopy in the category color.
+  if (s.awning) {
+    const aw = makeAwningTexture(storefront.awning.color ?? 0x2a2622);
+    quad(map(s.awning), 0.030, aw, { transparent: true });
   }
 }
 
