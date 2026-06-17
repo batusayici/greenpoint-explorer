@@ -1028,11 +1028,11 @@ const INKED_FACADE_REAL = {
   // muted), grounded in the two photo families. storeys/bays counted off the photos;
   // fireEscape flagged where the photos show one.
   buildings: {
-    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", fireEscape: true, storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
+    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
     "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
-    "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103", fireEscape: true },
+    "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103" },
     "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Juice's", fireEscape: true, storefront: { label: "JUICE BAR", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20, door: "left" } },
+    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Juice's", storefront: { label: "JUICE BAR", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20, door: "left" } },
     "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
   },
 };
@@ -1904,7 +1904,7 @@ function decorateInkedWall(target, edge, height, params, scene) {
   // Commercial BINs carry a `storefront` block → draw the inked storefront
   // vocabulary in the ground band. Everything else keeps the generic stoop.
   if (params.storefront) {
-    decorateStorefront(quad, quad3, point, f.ground, params.storefront, params);
+    decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
   } else {
     quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
   }
@@ -1916,21 +1916,6 @@ function decorateInkedWall(target, edge, height, params, scene) {
   // buildings read as distinct. Drawn on every edge; back ones are occluded.
   quad({ x0: 0, y0: 0, x1: 0.02, y1: 1 }, 0.02, null, { tint: 0x241a15 });
   quad({ x0: 0.98, y0: 0, x1: 1, y1: 1 }, 0.02, null, { tint: 0x241a15 });
-
-  // Minimal inked fire escape (no new art): two dark rails + a platform bar per
-  // upper storey, caged over the left bays. Sits proud of the windows it fronts.
-  if (params.fireEscape) {
-    const s = Math.max(2, params.storeys);
-    const gf = 1 / s, top = 1 - 0.06, rail = 0x1c1512;
-    const fx0 = 0.28, fx1 = 0.52;
-    quad({ x0: fx0, y0: gf, x1: fx0 + 0.012, y1: top }, 0.03, null, { tint: rail });
-    quad({ x0: fx1 - 0.012, y0: gf, x1: fx1, y1: top }, 0.03, null, { tint: rail });
-    const rows = s - 1, rowH = (top - gf) / rows;
-    for (let r = 0; r < rows; r += 1) {
-      const y = gf + r * rowH + rowH * 0.12;
-      quad({ x0: fx0, y0: y, x1: fx1, y1: y + 0.02 }, 0.032, null, { tint: rail });
-    }
-  }
 }
 
 // Draw the inked storefront vocabulary into the ground band of a commercial
@@ -1940,7 +1925,8 @@ function decorateInkedWall(target, edge, height, params, scene) {
 // rect (f.ground). composeStorefront returns BAND-LOCAL rects, which we map into
 // the band before drawing. Flat elements stay just proud of the wall (0.006–
 // 0.011); the awning canopy projects ~1.2m forward via quad3.
-function decorateStorefront(quad, quad3, point, band, storefront, params) {
+function decorateStorefront(ctx, band, storefront, params) {
+  const { quad, quad3, point, edgeLen, height } = ctx;
   const s = composeStorefront(storefront);
   const bw = band.x1 - band.x0;
   const bh = band.y1 - band.y0;
@@ -1948,6 +1934,10 @@ function decorateStorefront(quad, quad3, point, band, storefront, params) {
     x0: band.x0 + r.x0 * bw, x1: band.x0 + r.x1 * bw,
     y0: band.y0 + r.y0 * bh, y1: band.y0 + r.y1 * bh,
   });
+  // World aspect (width/height) of a mapped face-local rect — face x spans the
+  // full edge (edgeLen), face y spans the building height. Used to size canvas
+  // textures (e.g. the sign) so letters map 1:1 and never stretch.
+  const worldAspect = (r) => ((r.x1 - r.x0) * edgeLen) / ((r.y1 - r.y0) * height);
   const dark = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
   const tint = params.tint;
   const frameTint = storefront.frameTint ?? dark(tint, 0.45);
@@ -1963,7 +1953,9 @@ function decorateStorefront(quad, quad3, point, band, storefront, params) {
   quad(map(s.door), 0.009, null, { tint: dark(frameTint, 0.7) }); // recessed entry, darker
   for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
   // Category sign band: paper ground + uppercase serif label (no real names).
-  quad(map(s.sign), 0.010, makeStorefrontSignTexture(storefront.label), {});
+  // Canvas aspect matched to the band's world aspect so letters don't stretch.
+  const signRect = map(s.sign);
+  quad(signRect, 0.010, makeStorefrontSignTexture(storefront.label, worldAspect(signRect)), {});
   // Awning: a short projecting canopy (sloped top + scalloped valance) so it
   // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
   if (s.awning) {
@@ -2111,14 +2103,19 @@ function loadTrimmedTexture(url, onReady) {
 
 // II-C sign band texture: inked border on paper-tone ground, uppercase serif name.
 // Font size auto-shrinks until the label fits within the border inset.
-function makeStorefrontSignTexture(name) {
+// `aspect` (width/height of the destination quad in world units) sizes the
+// canvas to match, so letters map 1:1 and never stretch/compress. Height is
+// fixed at 128; width tracks the aspect (clamped). Default 4 keeps the prior
+// 512×128 behaviour for any caller that doesn't pass an aspect.
+function makeStorefrontSignTexture(name, aspect = 4) {
   const c = document.createElement("canvas");
-  c.width = 512; c.height = 128;
+  c.height = 128;
+  c.width = Math.max(256, Math.min(4096, Math.round(c.height * aspect)));
   const ctx = c.getContext("2d");
   ctx.fillStyle = "#efe7d6"; ctx.fillRect(0, 0, c.width, c.height);                 // II-C paper
   ctx.strokeStyle = "#23201c"; ctx.lineWidth = 7; ctx.strokeRect(10, 10, c.width - 20, c.height - 20);
   ctx.fillStyle = "#23201c"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-  let fs = 58; ctx.font = `700 ${fs}px Georgia, serif`;
+  let fs = 84; ctx.font = `700 ${fs}px Georgia, serif`;
   const label = String(name).toUpperCase();
   while (ctx.measureText(label).width > c.width - 56 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
   ctx.fillText(label, c.width / 2, c.height / 2);
