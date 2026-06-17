@@ -1033,8 +1033,8 @@ const INKED_FACADE_REAL = {
     "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103" },
     "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
     "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
-      { label: "SANDWICH", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x2a2018 },
-      { label: "JUICE BAR", widthFrac: 0.5, door: "right", awning: { has: true, color: 0xd98a2b }, frameTint: 0x3a2c20 },
+      { label: "JUICE BAR", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x3a2c20 },
+      { label: "SANDWICH", widthFrac: 0.5, door: "right", awning: { has: false }, frameTint: 0x2a2018 },
     ] } },
     "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
   },
