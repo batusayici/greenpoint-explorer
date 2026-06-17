@@ -1964,6 +1964,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     target.add(new THREE.Mesh(g, m));
   };
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
+  const lighten = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex(); // k>1 brightens (channels clamp at 1)
   // Hero-matched world-unit sizing (measured off Premier): windows ~1.0×1.7m,
   // ~2.8m bay rhythm, ~0.66m cornice, ~2.6m brick tile. Deriving brick course,
   // window, bay, and cornice sizes from world dimensions keeps every procedural
@@ -1972,9 +1973,9 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const heightM = height / upm;
   const storeys = Math.max(2, params.storeys);
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-  // Cornice: match the hero facade's proportion (~4.7% of height) so it scales
-  // with the building and sits flush at the very top edge.
-  const corniceFrac = 0.05;
+  // Cornice: a deep crown to match the Premier hero corner (the 0.05 flush band
+  // read too thin). Taller fraction + real forward projection below.
+  const corniceFrac = 0.115;
   const bays = clamp(Math.round(frontM / 2.8), 1, 6);
   const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
   // Windows tuned up to read even with the hero (~1.25m wide × ~2.0m tall).
@@ -1995,17 +1996,43 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Cornice: the inked cornice asset, sized to the hero proportion and sitting
-    // flush at the top. Color follows the reference photos — these are dark
-    // corbelled-brick cornices, so a dark tone of the building's own brick
-    // (per-BIN corniceColor override). The texture's internal contrast keeps the
-    // modillion/dentil detail legible against the dark ground.
-    quad(f.cornice, 0.02, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? darken(params.tint, 0.5), transparent: true });
+    // Cornice: a projecting crown (soffit + fascia + top cap), like the Premier
+    // hero, instead of a flat strip on the wall. Color follows the reference
+    // photos — dark corbelled-brick cornices — so a dark tone of the building's
+    // own brick (per-BIN corniceColor override). ~0.5m forward projection.
+    const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
+    const corniceProj = 0.052;        // ~0.7m proud (upm≈0.075)
+    const yBot = 1 - corniceFrac;
+    const corniceTex = inkedTexture("brick-cornice.v1.png");
+    // Soffit (shadowed underside) from wall out to the projected front edge.
+    quad3(
+      point(0, yBot, 0.006), point(1, yBot, 0.006),
+      point(1, yBot, corniceProj), point(0, yBot, corniceProj),
+      null, { tint: darken(corniceColor, 0.6) },
+    );
+    // Fascia: the inked cornice texture on the projected front face (same vertex
+    // order as the flat quad so the modillion/dentil detail stays upright).
+    quad3(
+      point(0, yBot, corniceProj), point(1, yBot, corniceProj),
+      point(1, 1, corniceProj), point(0, 1, corniceProj),
+      corniceTex, { tint: corniceColor, transparent: true },
+    );
+    // Top cap: lit stone coping from the projected crown back to the roofline —
+    // a lighter tone than the fascia so the deep crown stays legible against the
+    // dark roof (otherwise a dark cornice on a dark roof reads as no cornice).
+    quad3(
+      point(0, 1, corniceProj), point(1, 1, corniceProj),
+      point(1, 1, 0.006), point(0, 1, 0.006),
+      null, { tint: lighten(corniceColor, 1.5) },
+    );
   }
-  // Party-wall seams: thin dark verticals at both edges so abutting buildings
-  // read as distinct. Drawn on every face; back ones are occluded.
-  quad({ x0: 0, y0: 0, x1: 0.02, y1: 1 }, 0.02, null, { tint: 0x241a15 });
-  quad({ x0: 0.98, y0: 0, x1: 1, y1: 1 }, 0.02, null, { tint: 0x241a15 });
+  // Party-wall seams: hairline shadow lines at both edges so abutting buildings
+  // read as distinct without becoming black columns. A dark tone of the
+  // building's own brick (in palette), drawn nearly flush (0.005, just proud of
+  // the 0.004 wall) so they stay flat instead of projecting as ribs.
+  const seamTint = darken(params.tint, 0.55);
+  quad({ x0: 0, y0: 0, x1: 0.008, y1: 1 }, 0.005, null, { tint: seamTint });
+  quad({ x0: 0.992, y0: 0, x1: 1, y1: 1 }, 0.005, null, { tint: seamTint });
 }
 
 // Draw the inked storefront vocabulary into the ground band of a commercial
@@ -2035,8 +2062,9 @@ function decorateStorefront(ctx, band, storefront, params) {
       y0: band.y0 + r.y0 * bh, y1: band.y0 + r.y1 * bh,
     });
     const frameTint = unit.frameTint ?? dark(tint, 0.45);
-    // Masonry kickplate: tinted brick-ground, matches the building's brick tone.
-    quad(map(s.bulkhead), 0.006, inkedTexture("brick-ground.v1.png"), { tint });
+    // Low painted kickplate in the shopfront's own trim color — no brick under
+    // the glass, so the display windows read as meeting the sidewalk.
+    quad(map(s.bulkhead), 0.007, null, { tint: frameTint });
     // Display glass: shared inked-glazing texture (self-contained dark glass).
     const glazeTex = makeInkedGlazingTexture();
     for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
@@ -2045,10 +2073,12 @@ function decorateStorefront(ctx, band, storefront, params) {
     quad(map(s.transom), 0.009, null, { tint: 0xcdbfa6 });          // light transom band
     quad(map(s.door), 0.009, null, { tint: dark(frameTint, 0.7) }); // recessed entry, darker
     for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
-    // Category sign band: paper ground + uppercase serif label (no real names).
-    // Canvas aspect matched to the band's world aspect so letters don't stretch.
+    // Category sign band: painted board in the shopfront's trim color with cream
+    // serif lettering (II-C palette — never a bright white panel). Canvas aspect
+    // matched to the band's world aspect so letters don't stretch.
     const signRect = map(s.sign);
-    quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect)), {});
+    const boardColor = unit.signColor ?? frameTint;
+    quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect), boardColor), {});
     // Awning: a short projecting canopy (sloped top + scalloped valance) so it
     // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
     if (s.awning) {
@@ -2057,15 +2087,17 @@ function decorateStorefront(ctx, band, storefront, params) {
       const offBack = 0.012;            // canopy root, just proud of the frame
       const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
       const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
-      // Sloped top face: from the wall (attach, a.y1) out and down to the proud front edge (a.y0).
+      // Sloped top face: striped fabric from the wall (attach, a.y1) out and down
+      // to the proud front edge (a.y0). Stripe positions match the valance below.
+      const topTex = makeAwningTexture(color, { valance: false });
       quad3(
         point(a.x0, a.y1, offBack), point(a.x1, a.y1, offBack),
         point(a.x1, a.y0, offFront), point(a.x0, a.y0, offFront),
-        null, { tint: color },
+        topTex, {},
       );
-      // Valance: scalloped fringe hanging from the front edge. flipY=false so the
-      // canvas hem (drawn at the bottom) lands at the bottom of the valance face.
-      const valTex = makeAwningTexture(color);
+      // Valance: scalloped striped fringe hanging from the front edge. flipY=false
+      // so the canvas hem (drawn at the bottom) lands at the bottom of the face.
+      const valTex = makeAwningTexture(color, { valance: true });
       valTex.flipY = false; valTex.needsUpdate = true;
       quad3(
         point(a.x0, a.y0, offFront), point(a.x1, a.y0, offFront),
@@ -2211,18 +2243,26 @@ function loadTrimmedTexture(url, onReady) {
 // canvas to match, so letters map 1:1 and never stretch/compress. Height is
 // fixed at 128; width tracks the aspect (clamped). Default 4 keeps the prior
 // 512×128 behaviour for any caller that doesn't pass an aspect.
-function makeStorefrontSignTexture(name, aspect = 4) {
+function makeStorefrontSignTexture(name, aspect = 4, boardHex = 0x2c3530) {
   const c = document.createElement("canvas");
   c.height = 128;
   c.width = Math.max(256, Math.min(4096, Math.round(c.height * aspect)));
   const ctx = c.getContext("2d");
-  ctx.fillStyle = "#efe7d6"; ctx.fillRect(0, 0, c.width, c.height);                 // II-C paper
-  ctx.strokeStyle = "#23201c"; ctx.lineWidth = 7; ctx.strokeRect(10, 10, c.width - 20, c.height - 20);
-  ctx.fillStyle = "#23201c"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-  let fs = 84; ctx.font = `700 ${fs}px Georgia, serif`;
+  const board = new THREE.Color(boardHex);
+  const cream = "#ece3cf"; // II-C cream — used for lettering + keyline, never as the panel
+  ctx.fillStyle = `#${board.getHexString()}`; ctx.fillRect(0, 0, c.width, c.height); // painted board
+  // Inked top/bottom shading so the board reads as a solid painted plank.
+  ctx.fillStyle = `#${board.clone().multiplyScalar(0.7).getHexString()}`;
+  ctx.fillRect(0, c.height - 14, c.width, 14);
+  ctx.fillStyle = `#${board.clone().multiplyScalar(1.25).getHexString()}`;
+  ctx.fillRect(0, 0, c.width, 5);
+  // Thin cream keyline inset.
+  ctx.strokeStyle = "rgba(236, 227, 207, 0.65)"; ctx.lineWidth = 4; ctx.strokeRect(12, 12, c.width - 24, c.height - 24);
+  ctx.fillStyle = cream; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  let fs = 80; ctx.font = `700 ${fs}px Georgia, serif`;
   const label = String(name).toUpperCase();
-  while (ctx.measureText(label).width > c.width - 56 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
-  ctx.fillText(label, c.width / 2, c.height / 2);
+  while (ctx.measureText(label).width > c.width - 64 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
+  ctx.fillText(label, c.width / 2, c.height / 2 + 2);
   const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8; tex.needsUpdate = true;
   return tex;
 }
@@ -2258,11 +2298,33 @@ function makeInkedGlazingTexture() {
   const c = document.createElement("canvas");
   c.width = 256; c.height = 256;
   const ctx = c.getContext("2d");
-  ctx.fillStyle = "#2b2f31"; ctx.fillRect(0, 0, 256, 256);
-  ctx.strokeStyle = "rgba(239, 231, 214, 0.16)"; ctx.lineWidth = 10;
-  for (let i = -1; i < 4; i += 1) {
-    ctx.beginPath(); ctx.moveTo(i * 80, 256); ctx.lineTo(i * 80 + 170, 0); ctx.stroke();
-  }
+  // Cool dark teal-charcoal pane with a warm interior glow welling up from the
+  // bottom — reads as a lit shop interior behind the glass, not flat black.
+  const base = ctx.createLinearGradient(0, 0, 0, 256);
+  base.addColorStop(0, "#27302f");      // cool top (sky reflection)
+  base.addColorStop(0.62, "#2c2e2c");
+  base.addColorStop(1, "#3f352433");    // warm lamp glow near the floor
+  ctx.fillStyle = "#262d2d"; ctx.fillRect(0, 0, 256, 256);
+  ctx.fillStyle = base; ctx.fillRect(0, 0, 256, 256);
+  // Soft warm interior bloom (goods/lamp behind the glass).
+  const glow = ctx.createRadialGradient(128, 210, 8, 128, 210, 150);
+  glow.addColorStop(0, "rgba(196, 150, 92, 0.30)");
+  glow.addColorStop(1, "rgba(196, 150, 92, 0)");
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, 256, 256);
+  // Hinted interior shelving — low warm horizontal strokes.
+  ctx.strokeStyle = "rgba(150, 116, 74, 0.22)"; ctx.lineWidth = 5;
+  for (const y of [150, 188]) { ctx.beginPath(); ctx.moveTo(28, y); ctx.lineTo(228, y); ctx.stroke(); }
+  // Crisp diagonal reflection streaks (the inked-glass signature).
+  ctx.strokeStyle = "rgba(236, 227, 207, 0.20)"; ctx.lineWidth = 7;
+  for (let i = -1; i < 4; i += 1) { ctx.beginPath(); ctx.moveTo(i * 80, 256); ctx.lineTo(i * 80 + 150, 0); ctx.stroke(); }
+  ctx.strokeStyle = "rgba(236, 227, 207, 0.10)"; ctx.lineWidth = 3;
+  for (let i = -1; i < 5; i += 1) { ctx.beginPath(); ctx.moveTo(i * 64 + 24, 256); ctx.lineTo(i * 64 + 134, 0); ctx.stroke(); }
+  // Inked mullion grid + frame so the pane reads as divided shopfront glass.
+  ctx.strokeStyle = "rgba(24, 22, 18, 0.85)"; ctx.lineWidth = 8;
+  ctx.strokeRect(4, 4, 248, 248);
+  ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(128, 4); ctx.lineTo(128, 252); ctx.stroke();   // vertical mullion
+  ctx.beginPath(); ctx.moveTo(4, 48); ctx.lineTo(252, 48); ctx.stroke();     // transom bar
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.anisotropy = 8;
@@ -2270,24 +2332,40 @@ function makeInkedGlazingTexture() {
   return tex;
 }
 
-// Inked awning: a solid-fabric canopy in the tenant's category color with a
-// scalloped valance hem. Scallop gaps and the area below the hem are left
-// transparent (alpha 0) so the canopy edge reads as rounded fabric, not a
-// rectangle. `tintHex` is the category fabric color.
-function makeAwningTexture(tintHex) {
+// Inked awning fabric: striped canvas in the tenant's category color alternating
+// with II-C cream, plus inked seam lines so it reads as real awning fabric, not a
+// flat slab. Two variants share the same vertical stripe positions so the canopy
+// top and the valance line up across the fold:
+//   valance=false → opaque canopy top (full height, no scallop)
+//   valance=true  → scalloped hem; gaps + below-hem left transparent for the fringe
+function makeAwningTexture(tintHex, { valance = false } = {}) {
   const c = document.createElement("canvas");
   c.width = 256; c.height = 128;
   const ctx = c.getContext("2d");
   const tint = new THREE.Color(tintHex);
-  ctx.fillStyle = `#${tint.getHexString()}`;
-  const hemY = 90;
-  ctx.fillRect(0, 0, 256, hemY);               // canopy body
-  const n = 8, w = 256 / n;
-  for (let i = 0; i < n; i += 1) {              // scalloped valance (lower semicircles)
-    ctx.beginPath(); ctx.arc(i * w + w / 2, hemY, w / 2, 0, Math.PI); ctx.fill();
+  const tintHexStr = `#${tint.getHexString()}`;
+  const cream = "#e3d9c2";
+  const n = 7, w = 256 / n;
+  const stripeColor = (i) => (i % 2 === 0 ? tintHexStr : cream);
+  const bodyH = valance ? 90 : 128;
+  for (let i = 0; i < n; i += 1) {
+    ctx.fillStyle = stripeColor(i);
+    ctx.fillRect(i * w, 0, w + 1, bodyH);       // +1 avoids hairline seams
   }
-  ctx.strokeStyle = "rgba(239, 231, 214, 0.5)"; ctx.lineWidth = 4; // hem line
-  ctx.beginPath(); ctx.moveTo(0, hemY); ctx.lineTo(256, hemY); ctx.stroke();
+  // Inked seam between every stripe (fabric panel joins).
+  ctx.strokeStyle = "rgba(28, 24, 18, 0.28)"; ctx.lineWidth = 2;
+  for (let i = 1; i < n; i += 1) { ctx.beginPath(); ctx.moveTo(i * w, 0); ctx.lineTo(i * w, bodyH); ctx.stroke(); }
+  if (valance) {
+    for (let i = 0; i < n; i += 1) {            // scalloped hem, each in its stripe color
+      ctx.fillStyle = stripeColor(i);
+      ctx.beginPath(); ctx.arc(i * w + w / 2, bodyH, w / 2, 0, Math.PI); ctx.fill();
+    }
+    ctx.strokeStyle = "rgba(28, 24, 18, 0.35)"; ctx.lineWidth = 3; // bound hem line
+    ctx.beginPath(); ctx.moveTo(0, bodyH); ctx.lineTo(256, bodyH); ctx.stroke();
+  } else {
+    // Top sheen: a faint cream highlight band so the canopy catches light.
+    ctx.fillStyle = "rgba(236, 227, 207, 0.10)"; ctx.fillRect(0, 0, 256, 18);
+  }
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.anisotropy = 8;

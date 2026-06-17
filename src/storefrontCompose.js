@@ -5,7 +5,7 @@
 // maps these into face-local coords and assigns materials. Geometry only —
 // colors/labels live in the params and are applied at draw time.
 
-const BULKHEAD_TOP = 0.18; // masonry kickplate height (band fraction)
+const BULKHEAD_TOP = 0.06; // low painted kickplate — glazing meets the ground (no brick base)
 const GLAZE_TOP = 0.74;    // top of the display glass
 const TRANSOM_TOP = 0.84;  // top of the light transom band; sign = [TRANSOM_TOP, 1]
 const DOOR_W = 0.18;       // recessed entry column width
