@@ -48,3 +48,9 @@ test("awning is null without one and proud (above glazing) with one", () => {
   const s = composeStorefront({ awning: { has: true } });
   assert.ok(s.awning.y0 >= s.glazing[0].y1 - 1e-9, "awning sits at/above glazing top");
 });
+
+test("throws on an invalid door value", () => {
+  assert.throws(() => composeStorefront({ door: "center" }), RangeError);
+});
+
+
