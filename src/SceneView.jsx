@@ -1021,13 +1021,18 @@ const INKED_FACADE_TEST = [];
 // → decorateInkedWall (wall-mesh path: registers + self-occludes like decorateTypologicalWall).
 const INKED_FACADE_REAL = {
   enabled: true,
+  // Tints spread for legible separation (alternating brighter warm-red / deep maroon /
+  // muted), grounded in the two photo families. storeys/bays counted off the photos.
+  // Tints spread for legible separation (alternating brighter warm-red / deep maroon /
+  // muted), grounded in the two photo families. storeys/bays counted off the photos;
+  // fireEscape flagged where the photos show one.
   buildings: {
-    "3064795": { tint: 0xbd6446, storeys: 4, bays: 2, addr: "107 Awoke Vintage" },
-    "3064796": { tint: 0xaa5b46, storeys: 3, bays: 2, addr: "105 Broken Land" },
-    "3064797": { tint: 0xb35f43, storeys: 4, bays: 3, addr: "103" },
-    "3064798": { tint: 0x9e5340, storeys: 4, bays: 2, addr: "101" },
-    "3064799": { tint: 0xa55641, storeys: 5, bays: 2, addr: "99 Juice's" },
-    "3064800": { tint: 0x9c4f3e, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
+    "3064795": { tint: 0xc4724a, storeys: 4, bays: 2, addr: "107 Awoke Vintage", fireEscape: true },
+    "3064796": { tint: 0x86504a, storeys: 3, bays: 2, addr: "105 Broken Land" },
+    "3064797": { tint: 0xb45e3c, storeys: 4, bays: 3, addr: "103", fireEscape: true },
+    "3064798": { tint: 0x744336, storeys: 4, bays: 2, addr: "101" },
+    "3064799": { tint: 0xb0644a, storeys: 5, bays: 2, addr: "99 Juice's", fireEscape: true },
+    "3064800": { tint: 0x6d4038, storeys: 5, bays: 3, addr: "97 Deli/Compton's" },
   },
 };
 
@@ -1865,22 +1870,45 @@ function decorateInkedWall(target, edge, height, params, scene) {
     y * height,
     left.z + (right.z - left.z) * x + normal.z * off,
   ];
+  // tex null → solid-color quad (used for party-wall seams).
   const quad = (r, off, tex, { tint, transparent } = {}) => {
     const g = new THREE.BufferGeometry();
     const p = [point(r.x0, r.y0, off), point(r.x1, r.y0, off), point(r.x1, r.y1, off), point(r.x0, r.y1, off)];
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
     g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1, 0, 0, 0, 0, 1, 1, 1]), 2));
     g.setIndex([0, 1, 2, 0, 2, 3]);
-    const m = new THREE.MeshBasicMaterial({ map: tex, side: THREE.DoubleSide, transparent: !!transparent });
+    const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
+    if (tex) m.map = tex;
     if (tint != null) m.color.setHex(tint);
     target.add(new THREE.Mesh(g, m));
   };
+  const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
   const f = composeInkedFacade({ storeys: params.storeys, bays: params.bays });
   quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", [params.bays, params.storeys]), { tint: params.tint });
   quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
   const winTex = inkedTexture("brick-window.v1.png");
   for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-  quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: params.tint, transparent: true });
+  // Darkened cornice so the crown reads as inked shadow rather than wall-color.
+  quad(f.cornice, 0.014, inkedTexture("brick-cornice.v1.png"), { tint: darken(params.tint, 0.55), transparent: true });
+  // Party-wall seams: thin dark verticals at both street-face edges so abutting
+  // buildings read as distinct. Drawn on every edge; back ones are occluded.
+  quad({ x0: 0, y0: 0, x1: 0.02, y1: 1 }, 0.02, null, { tint: 0x241a15 });
+  quad({ x0: 0.98, y0: 0, x1: 1, y1: 1 }, 0.02, null, { tint: 0x241a15 });
+
+  // Minimal inked fire escape (no new art): two dark rails + a platform bar per
+  // upper storey, caged over the left bays. Sits proud of the windows it fronts.
+  if (params.fireEscape) {
+    const s = Math.max(2, params.storeys);
+    const gf = 1 / s, top = 1 - 0.06, rail = 0x1c1512;
+    const fx0 = 0.28, fx1 = 0.52;
+    quad({ x0: fx0, y0: gf, x1: fx0 + 0.012, y1: top }, 0.03, null, { tint: rail });
+    quad({ x0: fx1 - 0.012, y0: gf, x1: fx1, y1: top }, 0.03, null, { tint: rail });
+    const rows = s - 1, rowH = (top - gf) / rows;
+    for (let r = 0; r < rows; r += 1) {
+      const y = gf + r * rowH + rowH * 0.12;
+      quad({ x0: fx0, y0: y, x1: fx1, y1: y + 0.02 }, 0.032, null, { tint: rail });
+    }
+  }
 }
 
 // Even-odd ray cast in the scene's x/z plane. Used to tell an interior party
