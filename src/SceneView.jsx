@@ -1976,32 +1976,12 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
-    // Projecting cornice crown so the shape reads (not a flat strip): a front
-    // frieze (decorative inked cornice texture) proud of the wall, a top cap
-    // catching light, and a dark soffit underneath. Real color via per-BIN
-    // corniceColor, else a gentle darken of the brick.
-    const cTex = inkedTexture("brick-cornice.v1.png");
-    const cCol = params.corniceColor ?? darken(params.tint, 0.72);
-    const cBot = f.cornice.y0;          // bottom of the cornice band (face-local y)
-    const cProj = 0.045;                // ~0.6m projection (upm≈0.075)
-    // Front frieze: vertical face at the proud offset, carries the cornice texture.
-    quad3(
-      point(0, cBot, cProj), point(1, cBot, cProj),
-      point(1, 1, cProj), point(0, 1, cProj),
-      cTex, { tint: cCol, transparent: true },
-    );
-    // Top cap: from the wall roofline out to the frieze top (lit, lighter).
-    quad3(
-      point(0, 1, 0.004), point(1, 1, 0.004),
-      point(1, 1, cProj), point(0, 1, cProj),
-      null, { tint: darken(params.tint, 0.92) },
-    );
-    // Soffit: underside from the wall out to the frieze bottom (in shadow).
-    quad3(
-      point(0, cBot, 0.004), point(1, cBot, 0.004),
-      point(1, cBot, cProj), point(0, cBot, cProj),
-      null, { tint: darken(params.tint, 0.4) },
-    );
+    // Cornice: the inked cornice asset (modillions + dentils + crown) rendered at
+    // its TRUE light color so the detail reads. A heavy brick tint previously
+    // destroyed it; we keep it near its painted-cream tone (per-BIN corniceColor
+    // override). A taller band + a small proud offset gives the crown presence.
+    const corniceRect = { x0: 0, y0: 0.90, x1: 1, y1: 1 };
+    quad(corniceRect, 0.022, inkedTexture("brick-cornice.v1.png"), { tint: params.corniceColor ?? 0xe8dcc6, transparent: true });
   }
   // Party-wall seams: thin dark verticals at both edges so abutting buildings
   // read as distinct. Drawn on every face; back ones are occluded.
