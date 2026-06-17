@@ -1420,7 +1420,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         if (second >= 0) streetSet.add(second);
       }
       inkedEdges.forEach((edge, i) => {
-        decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i));
+        decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender);
       });
       three.add(deco);
     } else if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
@@ -1926,6 +1926,50 @@ function inkedTexture(file, repeat) {
   return tex;
 }
 
+// The cornice PNG is a head-on elevation with transparent margins around the
+// painted molding. Mapped raw, the top margin sits just below the roofline
+// (exposing brick above) and the bottom margin floats the soffit off the
+// molding. Trim to the alpha bounding box so the painted crown lands exactly at
+// the band top and the molding bottom is where the soffit attaches. Async
+// (canvas), cached; callers pass onReady to draw + re-render once it resolves.
+let __corniceTex = null;
+let __corniceLoading = false;
+const __corniceWaiters = [];
+function inkedCorniceTexture(onReady) {
+  if (__corniceTex) return __corniceTex; // cached → caller draws synchronously
+  if (onReady) __corniceWaiters.push(onReady);
+  if (__corniceLoading) return null;
+  __corniceLoading = true;
+  const img = new Image();
+  img.onload = () => {
+    const c = document.createElement("canvas");
+    c.width = img.width; c.height = img.height;
+    const ctx = c.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    const px = ctx.getImageData(0, 0, c.width, c.height);
+    let minX = c.width, minY = c.height, maxX = -1, maxY = -1;
+    for (let y = 0; y < c.height; y += 1) {
+      for (let x = 0; x < c.width; x += 1) {
+        if (px.data[(y * c.width + x) * 4 + 3] > 24) {
+          if (x < minX) minX = x; if (x > maxX) maxX = x;
+          if (y < minY) minY = y; if (y > maxY) maxY = y;
+        }
+      }
+    }
+    if (maxX < minX) { minX = 0; minY = 0; maxX = c.width - 1; maxY = c.height - 1; }
+    const cr = document.createElement("canvas");
+    cr.width = maxX - minX + 1; cr.height = maxY - minY + 1;
+    cr.getContext("2d").drawImage(c, minX, minY, cr.width, cr.height, 0, 0, cr.width, cr.height);
+    const tex = new THREE.CanvasTexture(cr);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 16;
+    __corniceTex = tex;
+    for (const w of __corniceWaiters.splice(0)) w(tex);
+  };
+  img.src = new URL("../assets/inked/brick-cornice.v1.png", import.meta.url).href;
+  return null;
+}
+
 // Inked component-kit facade on one wall edge. Same registration model as
 // decorateTypologicalWall: quads sit a hair proud of the wall (outward normal
 // offset), parented under `target`, relying on the opaque massing to occlude
@@ -1935,7 +1979,7 @@ function inkedTexture(file, repeat) {
 // `streetFace` gates the front-facade elements: when false (side/rear walls)
 // only plain brick + party seams are drawn — no windows, storefront, or cornice
 // — so side facades read as blank party-wall brick.
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true) {
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -1979,11 +2023,12 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const heightM = height / upm;
   const storeys = Math.max(2, params.storeys);
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-  // Cornice: a fixed ~0.95m-tall crown (like the Premier hero) regardless of
-  // building height, so it reads at a real-world scale and sits flush at the
-  // roofline. Metric, not a fixed fraction, so tall buildings don't get a giant
-  // band and short ones a sliver.
-  const corniceFrac = clamp(0.95 / heightM, 0.05, 0.085);
+  // Cornice: a deep crown to match the Premier hero. Metric (~1.7m) so it reads
+  // at real-world scale on any building height, clamped so it never shrinks to a
+  // sliver or eats a whole storey. The trimmed texture (alpha bbox) fills this
+  // band exactly, so the crown lands at the roofline and the molding bottom is
+  // where the soffit attaches — no brick above, no floating plane.
+  const corniceFrac = clamp(1.7 / heightM, 0.085, 0.14);
   const bays = clamp(Math.round(frontM / 2.8), 1, 6);
   const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
   // Windows tuned up to read even with the hero (~1.25m wide × ~2.0m tall).
@@ -2005,33 +2050,37 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.012, winTex, { transparent: true });
     // Cornice: the painted elevation crown (its own dentils/molding/shadow) on a
-    // projecting front face, top edge flush at the roofline (y=1) so no brick
-    // shows above it. Soffit + top cap are dark molding tints — a Brooklyn
-    // cornice top is dark tar/metal, never lit stone. Mirrors the hero
-    // (facadeAssembly.js): face at natural UVs, dark underside + cap.
+    // projecting front face, drawn once the alpha-trimmed texture resolves so the
+    // crown sits flush at the roofline (y=1, no brick above) and the molding
+    // bottom (yBot) is exactly where the soffit attaches (no floating plane).
+    // Soffit + cap are dark molding tints — a Brooklyn cornice top is dark
+    // tar/metal, never lit stone. Mirrors the hero (facadeAssembly.js).
     const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
     const CROWN = darken(corniceColor, 0.5); // dark underside/top molding
-    const corniceProj = 0.034;               // ~0.45m overhang (upm≈0.075)
+    const corniceProj = 0.04;                // ~0.55m overhang (upm≈0.075)
     const yBot = 1 - corniceFrac;
-    const corniceTex = inkedTexture("brick-cornice.v1.png");
-    // Painted face, proud of the wall, top flush at the roofline.
-    quad3(
-      point(0, yBot, corniceProj), point(1, yBot, corniceProj),
-      point(1, 1, corniceProj), point(0, 1, corniceProj),
-      corniceTex, { tint: corniceColor, transparent: true },
-    );
-    // Underside soffit (deep shadow) from the wall out to the projected front.
-    quad3(
-      point(0, yBot, 0.006), point(1, yBot, 0.006),
-      point(1, yBot, corniceProj), point(0, yBot, corniceProj),
-      null, { tint: CROWN },
-    );
-    // Top cap sloping back to the roof — dark molding, not lit stone.
-    quad3(
-      point(0, 1, corniceProj), point(1, 1, corniceProj),
-      point(1, 1, 0.006), point(0, 1, 0.006),
-      null, { tint: CROWN },
-    );
+    const drawCornice = (corniceTex) => {
+      // Painted face, proud of the wall, top flush at the roofline.
+      quad3(
+        point(0, yBot, corniceProj), point(1, yBot, corniceProj),
+        point(1, 1, corniceProj), point(0, 1, corniceProj),
+        corniceTex, { tint: corniceColor, transparent: true },
+      );
+      // Underside soffit (deep shadow) from the wall out to the projected front.
+      quad3(
+        point(0, yBot, 0.006), point(1, yBot, 0.006),
+        point(1, yBot, corniceProj), point(0, yBot, corniceProj),
+        null, { tint: CROWN },
+      );
+      // Top cap sloping back to the roof — dark molding, not lit stone.
+      quad3(
+        point(0, 1, corniceProj), point(1, 1, corniceProj),
+        point(1, 1, 0.006), point(0, 1, 0.006),
+        null, { tint: CROWN },
+      );
+    };
+    const ready = inkedCorniceTexture((tex) => { drawCornice(tex); requestRender?.(); });
+    if (ready) drawCornice(ready);
   }
   // Party-wall seams: hairline shadow lines at both edges so abutting buildings
   // read as distinct without becoming black columns. A dark tone of the
