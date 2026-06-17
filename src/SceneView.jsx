@@ -1950,7 +1950,7 @@ function decorateStorefront(quad, band, storefront, params) {
   quad(map(s.sign), 0.010, makeStorefrontSignTexture(storefront.label), {});
   // Awning: proud scalloped canopy in the category color.
   if (s.awning) {
-    const aw = makeAwningTexture(storefront.awning.color ?? 0x2a2622);
+    const aw = makeAwningTexture(storefront.awning?.color ?? 0x2a2622);
     quad(map(s.awning), 0.030, aw, { transparent: true });
   }
 }
