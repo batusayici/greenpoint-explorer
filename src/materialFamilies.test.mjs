@@ -2,6 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { familyList, componentList, isValidCell, validCells } from "./materialFamilies.js";
+import { ROOF_TONES } from "./visualSystem/palette.js";
 
 test("exposes the six canonical families", () => {
   assert.deepEqual(familyList(), [
@@ -29,4 +30,10 @@ test("known real cells are included", () => {
 test("isValidCell is false for unknown family or component", () => {
   assert.equal(isValidCell("nope", "wall"), false);
   assert.equal(isValidCell("brick", "nope"), false);
+});
+
+test("every material family has a roof tone", () => {
+  for (const fam of familyList()) {
+    assert.equal(typeof ROOF_TONES[fam], "number", `${fam} roof tone`);
+  }
 });

@@ -59,6 +59,18 @@ export const MATERIAL_WALL_TONES = {
   warehouse: [0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c],
 };
 
+// Phase 7.3 — typological roof TONE per family (flat + quiet, multi-angle-safe).
+// NOT detailed roofs — a tone the four-angle camera can show without noise.
+// Darker/cooler than walls; sits in the MASSING.roofCap family.
+export const ROOF_TONES = {
+  brick: 0x46443f,
+  clapboard: 0x4a4f44,
+  brownstone: 0x3f3a33,
+  "painted-masonry": 0x4a473f,
+  "modern-flat": 0x3a3a36,
+  warehouse: 0x3c3a34,
+};
+
 export function resolveTypologyColor(typology) {
   return TYPOLOGY_PALETTE[typology?.palette] ?? II_PALETTE.context[0];
 }
