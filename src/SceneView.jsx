@@ -34,6 +34,7 @@ import {
   MASSING,
   BRICK_TONES,
 } from "./visualSystem/palette.js";
+import { selectTreatment } from "./visualSystem/treatmentMap.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -1326,7 +1327,17 @@ function buildBlockStorefronts(three, scene) {
 
 function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   scene.buildings.forEach((building, index) => {
-    if (building.isHero && building.edges) {
+    const inkedParamsPre = INKED_FACADE_REAL.enabled
+      ? INKED_FACADE_REAL.buildings[building.bin]
+      : null;
+    const distPre = Math.hypot(building.centroid.x, building.centroid.z);
+    const treatment = selectTreatment({
+      building,
+      dist: distPre,
+      inkedParams: inkedParamsPre,
+      contextRadius: CONTEXT_TREATMENT_RADIUS_UNITS,
+    });
+    if (treatment === "hero") {
       buildHeroBuilding(three, building, scene, requestRender, isActive, addCullable);
       return;
     }
@@ -1338,9 +1349,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // Step-3 inked mid-block buildings: tint the massing to the building's brick
     // tone so any peek of the extrude (roof, party-wall sliver) matches the inked
     // facade that gets hung on it below.
-    const inkedParams = INKED_FACADE_REAL.enabled
-      ? INKED_FACADE_REAL.buildings[building.bin]
-      : null;
+    const inkedParams = inkedParamsPre;
     let typology = null;
     let color;
     if (inkedParams) {
@@ -1369,8 +1378,8 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // regardless of distance to intersection. Context buildings keep the existing
     // 48 m radius gate. The opaque extrude self-occludes its own back-wall
     // decoration, so no per-view culling is needed here.
-    const dist = Math.hypot(building.centroid.x, building.centroid.z);
-    if (inkedParams) {
+    const dist = distPre;
+    if (treatment === "inkedKit") {
       // Inked component kit. Only the street-facing front edge gets windows /
       // storefront / cornice; side & rear walls render as plain party-wall brick
       // (no punched windows on side facades). The opaque mass occludes back walls.
@@ -1398,7 +1407,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender, miter);
       });
       three.add(deco);
-    } else if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
+    } else if (treatment === "typological") {
       const deco = new THREE.Group();
       for (const edge of footprintEdges(building.polygon, building.centroid)) {
         decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology);
