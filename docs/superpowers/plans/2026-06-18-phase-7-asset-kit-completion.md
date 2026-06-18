@@ -569,7 +569,7 @@ Notify Batu: "7.0 intake structure is ready. Please supply reference photos for 
 **Interfaces:**
 - Consumes: `validCells()` (Task 1), `scripts/key_inked_alpha.py` (existing), `scripts/verify-inked-component.mjs` (Task 4), and the existing reference repo (windows+sills, doors+stoops, cornices, wall material) the user already holds.
 
-**Note:** This is an ASSET-PRODUCTION task, not a code TDD loop. It uses GPT image generation + the existing alpha-keying tool. Follow the generation playbook in `docs/GENERATION_KIT.md` and the `hero-facade-build-loop` memory. Generate per family from ONE shared reference scaffold to suppress style drift (spec §Risks).
+**Note:** This is an ASSET-PRODUCTION task, not a code TDD loop. It uses GPT image generation + the existing alpha-keying tool. Follow the generation playbook in `docs/reference/art/GENERATION_KIT.md` and the `hero-facade-build-loop` memory. Generate per family from ONE shared reference scaffold to suppress style drift (spec §Risks).
 
 - [ ] **Step 1: Enumerate the target cells**
 
@@ -578,7 +578,7 @@ Expected: the list of have-refs cells. Brick's four already exist — skip those
 
 - [ ] **Step 2: Generate each component tintable-neutral**
 
-For each target cell, follow `docs/GENERATION_KIT.md`: generate the component as dark ink on warm grey (NO baked color), isolated subject, on a keyable background. Save the raw GPT output to a scratch path (outside `assets/`).
+For each target cell, follow `docs/reference/art/GENERATION_KIT.md`: generate the component as dark ink on warm grey (NO baked color), isolated subject, on a keyable background. Save the raw GPT output to a scratch path (outside `assets/`).
 
 - [ ] **Step 3: Alpha-key each**
 
@@ -628,7 +628,7 @@ Expected: `refs present`. If it throws, STOP — references not yet supplied.
 
 - [ ] **Step 2: Generate, key, validate (per cell)**
 
-For each valid bay-frame/awning/roll-gate cell: generate tintable-neutral from the supplied photos (`docs/GENERATION_KIT.md`), key via `scripts/key_inked_alpha.py`, then `node scripts/verify-inked-component.mjs` until the cell is OK.
+For each valid bay-frame/awning/roll-gate cell: generate tintable-neutral from the supplied photos (`docs/reference/art/GENERATION_KIT.md`), key via `scripts/key_inked_alpha.py`, then `node scripts/verify-inked-component.mjs` until the cell is OK.
 
 - [ ] **Step 3: Inventory + flip intake status**
 
@@ -663,7 +663,7 @@ git commit -m "feat(7.2): generate gather-dependent columns (bay-frame/awning/ro
 
 - [ ] **Step 1: Generate each weathering overlay tintable-neutral**
 
-For each valid `*-weathering` cell, generate a sparse ink/grain overlay (dark ink on transparent/warm grey, low chroma) per `docs/GENERATION_KIT.md`. Keep it restrained — it is the "truth texture" that makes gates/infill read real, not a decorative layer.
+For each valid `*-weathering` cell, generate a sparse ink/grain overlay (dark ink on transparent/warm grey, low chroma) per `docs/reference/art/GENERATION_KIT.md`. Keep it restrained — it is the "truth texture" that makes gates/infill read real, not a decorative layer.
 
 - [ ] **Step 2: Key + validate**
 
