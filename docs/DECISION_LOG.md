@@ -4,6 +4,22 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-18 - Sequenced Roadmap Locked (Phases 6–9): spine-first, container + content together
+
+Decision (Batu-approved in session): the now/next/later ordering across the container (Track A) and content (Track B) is **locked** in `docs/PLAN.md` as Phases 6–9. This closes the OPEN priority re-decision recorded 2026-06-17.
+
+**Governing principle:** don't fill the neighborhood and then add content. Build out the **story-dense spine** (curated density, not coverage) and dress it with both inked craft and editorial content at once — the spine is where the landmarks and stories live, so container and content stop competing.
+
+Locked sequence:
+- **Phase 6 — Curation & Visual-System Lock (NOW).** 6.1 one curation pass yielding both the hero visual tier and the landmark story-object tier (Agent drafts, Batu approves before anything scales). 6.2 codify `ART_DIRECTION.md` into a machine-checkable contract — palette token module, component inventory, conformance gate (out-of-token color fails + per-material regression screenshot). This is the explicit answer to the styling-consistency watchout; it ends ad-hoc per-building tuning (the recent cornice churn).
+- **Phase 7 — Asset Kit Completion (NEXT).** Add the 3 missing material families (clapboard/wood-frame, brownstone, modern) + a flat typological roof tone (multi-angle-safe). Brick is the only family today.
+- **Phase 8 — Spine Expansion + Story Attachment (NEXT, parallel).** Expand procedurally along the curated corridor; hero treatment only on the 6.1 set. Implement `PlaceStory` in code and attach 3–5 real stories to built landmarks to begin testing H1 *during* expansion. Absorbs Track-A 4.3/5.1 and Track-B B1.
+- **Phase 9 — Validate & Scale (LATER).** Track-B B3–B8 + Track-A 5.x: landmark completion, routes (H2), events (H3), North-Star instrumentation, business-claim monetization (H4), roof/pavement/sidewalk detail, publish, repeatability (H5).
+
+**Deferred explicitly:** roof *detail*, pavement/sidewalk detail, business-claim monetization, second neighborhood. **Not deferred:** a flat roof *tone* (the 4-angle camera shows rooftops).
+
+Owner: Batu (taste/curation/approvals) / Agent (execution). Source of truth: `docs/PLAN.md` "Sequenced Roadmap — LOCKED 2026-06-18".
+
 ## 2026-06-16 - Inked Look Gate + Modular Component Kit (spike: conditional GO)
 
 Decision (Batu-approved in session, after the in-engine feasibility spike on branch `feat/inked-facade-look`):

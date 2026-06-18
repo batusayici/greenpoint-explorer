@@ -164,9 +164,43 @@ This is the half of the platform that tests the hypotheses. None of it is built 
 - **B7 — Business participation & monetization (H4).** Builds on the existing claim-to-brand hook (the `storefrontSigns.js` `claimed`/`brandName` path; see Phase 4.2). Sequenced *after* attention is demonstrated.
 - **B8 — Repeatability (H5).** Generalize the playbook to a second neighborhood. Last.
 
-## Priority Re-decision (OPEN — 2026-06-17)
+## Sequenced Roadmap — LOCKED 2026-06-18
 
-With Track A and Track B now in one document, the next call is the **now / next / later ordering across both tracks** — specifically how much further to push the container (window v2, full inked component kit, more blocks) versus standing up the first Track-B content slice to start validating H1–H3 on the corner that already exists. This decision is deliberately left to Batu and is to be made from this reconciled plan. Until it's made, the active branch (`feat/inked-facade-look`) continues Track A.
+Resolves the (formerly open) priority re-decision. **Principle:** don't fill the neighborhood and *then* add content. Build out the **story-dense spine** and dress it with both craft and content at once — curated density, not coverage. Container and content stop competing, because the spine is exactly where the landmarks and stories live. Phase numbering continues Track A (1–5); where a new phase absorbs an older Track-A or Track-B item, it's noted.
+
+**Deferred for now (explicit):** roof *detail*, pavement/sidewalk detail, business-claim monetization, second neighborhood. *(Watchout: a flat roof **tone** is NOT deferred — see 7.4 — because the four-angle camera shows rooftops.)*
+
+### Phase 6 — Curation & Visual-System Lock — NOW
+
+Cheap, decision-shaped, and gates everything downstream. Nothing scales until this lands.
+
+- **6.1 Hero + Landmark tiering (one pass).** A single curation producing two views of the same set: the **hero visual tier** (which buildings earn bespoke inked craft for recognizability) and the **landmark story-object tier** (which carry `Landmark`/`PlaceStory` content). Output: an approved tiered list — visual tier (hero / typological / graybox) and landmark tier (tier1 / tier1.5 / tier2) — seeded from the existing block data + `landmark-strategy-v1`. Agent drafts candidates; **Batu approves the list before 6.2 / Phase 7.**
+- **6.2 Visual-system contract (the consistency engine).** Codify `ART_DIRECTION.md` into machine-checkable form so styling can't drift as we scale. This is the concrete answer to the consistency watchout.
+  - 6.2.1 **Palette token module** — single source for every color; enforces the "palette is a no-miss" rule in code.
+  - 6.2.2 **Component inventory** — kit pieces × material families × variants × tiers, mapped to the modules that render them.
+  - 6.2.3 **Conformance gate** — fails on any out-of-token color + a per-material regression screenshot. All building rendering routes through the kit; ad-hoc per-building tuning (the recent cornice churn) ends here.
+
+### Phase 7 — Asset Kit Completion — NEXT
+
+Today the kit is one material family (brick). Greenpoint is four. Each family: components generated tintable-neutral (dark ink on warm grey) → keyed to alpha → composed via `inkedFacadeCompose.js` → passes the 6.2.3 gate.
+
+- **7.1 Clapboard / wood-frame** (non-negotiable for Greenpoint).
+- **7.2 Brownstone.**
+- **7.3 Modern / flat.**
+- **7.4 Typological roof tone** — flat, quiet, multi-angle-safe (NOT detailed roofs). Closes the rotated-view rooftop gap.
+
+### Phase 8 — Spine Expansion + Story Attachment — NEXT (8.1 follows 7.1; 8.2–8.3 run parallel)
+
+Absorbs Track-A 4.3 (corridor infill) and 5.1 (typological infill kit), and Track-B B1.
+
+- **8.1 Expand along the story-dense spine** — extend the procedural scene down the curated corridor (not all of Greenpoint). Hero treatment only on the 6.1 set; everything else typological through the completed kit.
+- **8.2 `PlaceStory` schema in code** — structured, source-backed JSON; editorial truth kept separate from geometry/business truth; verification gates honored.
+- **8.3 Attach 3–5 real story objects to built landmarks** and surface them in the place card (a "story" section). Starts testing **H1** with residents/orgs *during* expansion, not after — the insurance against polishing an empty container.
+- **8.4 Lightweight instrumentation hooks** (Track-B B6 seed) — log story opens / pin clicks / dwell so demos produce signal, not anecdote.
+
+### Phase 9 — Validate & Scale — LATER
+
+Track-B B3–B8 + remaining Track-A 5.x: landmark-set completion, curated routes (H2), events (H3), instrumentation toward the North-Star metric, business-claim monetization (H4), roof/pavement/sidewalk detail, pre-launch truth pass, public demo, repeatability (H5).
 
 ## Deferred (vision-compatible, not in scope)
 
