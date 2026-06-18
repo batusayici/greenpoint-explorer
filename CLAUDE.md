@@ -39,7 +39,7 @@ A 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifel
 - `corridor-scaffold/` — corridor fixtures, typological input data
 - `geometry-source/` — source footprint records
 
-**Assets** (`assets/`): GLB experiments. The 46MB bay-window GLB import causes an expected large-chunk build warning.
+**Assets** (`assets/`): generated facade textures. (The 46MB QA-only bay-window GLB was removed 2026-06-18 — it was never loaded in production.)
 
 ## Key Constraints
 

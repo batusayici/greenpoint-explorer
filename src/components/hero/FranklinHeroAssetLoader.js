@@ -1,13 +1,10 @@
-import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import franklinSideBayWindowUrl from "../../../assets/windows/Bay_Window_10K_texture.glb?url";
 
-const HERO_ASSET_REGISTRY = {
-  "franklin-side-bay-window-candidate": {
-    url: franklinSideBayWindowUrl,
-    status: "qa_only_review_asset_not_production",
-  },
-};
+// The QA-only bay-window GLB review asset was removed (never loaded in
+// production — heroAssetOptions defaults to { enabled: false } and nothing
+// flips it on). Registry is intentionally empty; the binding functions below
+// safely no-op until a real production asset is registered here.
+const HERO_ASSET_REGISTRY = {};
 
 const loader = new GLTFLoader();
 const loadCache = new Map();
