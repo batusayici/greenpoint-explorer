@@ -46,6 +46,9 @@ shippable and gate-checkable on its own.
 1. **Reference gap → gather first, then full grid.** Awnings, storefronts, and roll
    gates have no reference repo. Phase 7 front-loads collecting them (7.0) before
    generating those columns. "Photos are truth" is preserved for every component.
+   **Handoff: Batu supplies the photos; the agent builds the intake structure.** 7.0 is
+   a "you supply / I structure" gate — the gather-dependent columns (bay frame, awning,
+   roll gate) cannot generate until the photos land.
 2. **Material taxonomy → reconcile to real Greenpoint materials.** One shared taxonomy;
    Phase 7 *defines* it, Phase 8 makes the classifier emit it.
 3. **Done-line → assets/data only, no renderer wiring.**
