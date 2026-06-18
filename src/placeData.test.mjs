@@ -4,9 +4,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { getPlaceByPlaceId, allPlaces, PLACE_DISCLAIMER } from "./placeData.js";
 
-const HERO_IDS = ["premier-franklin-organic", "sonnys-corner", "sereneco"];
+const HERO_IDS = ["premier-franklin-organic", "sonnys-corner", "sereneco", "azure-gourmet"];
 
-test("exposes the three hero places", () => {
+test("exposes the hero places", () => {
   const ids = allPlaces().map((p) => p.placeId).sort();
   assert.deepEqual(ids, [...HERO_IDS].sort());
 });

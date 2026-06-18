@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "building-tiers.v0.1",
+  "approvedBy": "Batu",
+  "approvedDate": "2026-06-18",
+  "heroBudget": 12,
+  "doc": "docs/CURATION_TIERS.md",
+  "defaults": { "visualTier": "typological", "landmarkTier": null },
+  "entries": [
+    { "key": "premier-franklin-organic", "placeId": "premier-franklin-organic", "name": "Premier / Franklin Organic", "address": "111 Franklin St", "visualTier": "hero", "landmarkTier": "tier2", "buildStatus": "built" },
+    { "key": "sonnys-corner", "placeId": "sonnys-corner", "name": "Sonny's Corner", "address": "142 Franklin St", "visualTier": "hero", "landmarkTier": "tier1_5", "buildStatus": "built", "note": "occupies the former Pencil Factory bar space" },
+    { "key": "sereneco", "placeId": "sereneco", "name": "Sereneco", "address": "113 Franklin St", "visualTier": "hero", "landmarkTier": "tier2", "buildStatus": "built" },
+    { "key": "azure-gourmet", "placeId": "azure-gourmet", "name": "Azure Gourmet", "address": "113 Franklin St", "visualTier": "hero", "landmarkTier": "tier2", "buildStatus": "built", "note": "shares Sereneco's building" },
+    { "key": "144-franklin", "matchName": "144 franklin", "name": "144 Franklin (Romanesque)", "address": "144 Franklin St", "visualTier": "hero", "landmarkTier": "tier1_5", "buildStatus": "built", "note": "architecturally distinctive corner" },
+    { "key": "black-rabbit", "matchName": "black rabbit", "name": "Black Rabbit", "visualTier": "hero", "landmarkTier": "tier2", "buildStatus": "built", "note": "promoted 2026-06-18; longtime Greenpoint bar" },
+    { "key": "brouwerij-lane", "matchName": "brouwerij lane", "name": "Brouwerij Lane", "address": "~78 Greenpoint Ave (verify)", "visualTier": "hero", "landmarkTier": "tier2", "buildStatus": "data-missing", "verificationStatus": "pending", "note": "Batu-designated hero; not in any roster. Confirm current open status + exact address before render (truth gate)." },
+
+    { "key": "eberhard-faber", "name": "Eberhard Faber Pencil Factory", "address": "Greenpoint Ave / Kent St cluster", "visualTier": "hero", "landmarkTier": "tier1", "buildStatus": "planned", "note": "Franklin-north spine (this cycle). The landmark building itself — distinct from the closed bar of the same name." },
+    { "key": "astral-apartments", "name": "Astral Apartments", "address": "184 Franklin St", "visualTier": "hero", "landmarkTier": "tier1", "buildStatus": "planned", "note": "Franklin-north spine (this cycle); Pratt worker housing, Queen Anne." },
+    { "key": "st-anthony-st-alphonsus", "name": "St. Anthony–St. Alphonsus Church", "address": "862 Manhattan Ave", "visualTier": "hero", "landmarkTier": "tier1", "buildStatus": "planned", "note": "later Manhattan Ave node; skyline / orientation marker." },
+    { "key": "keramos-hall", "name": "Keramos Hall / CVS Chalet", "address": "857–861 Manhattan Ave", "visualTier": "hero", "landmarkTier": "tier1_5", "buildStatus": "planned", "note": "later Manhattan Ave node." },
+
+    { "key": "threes-brewing", "matchName": "threes brewing", "name": "Threes Brewing", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built", "note": "considered for hero; held typological 2026-06-18" },
+    { "key": "maman", "matchName": "maman", "name": "Maman", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built", "note": "considered for hero; held typological 2026-06-18" },
+    { "key": "elder-greene", "matchName": "elder greene", "name": "Elder Greene", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "vamos-al-tequila", "matchName": "vamos al tequila", "name": "Vamos al Tequila", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "madelines", "matchName": "madeline's", "name": "Madeline's", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "seven-wonders-collective", "matchName": "seven wonders collective", "name": "Seven Wonders Collective", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "kennaland", "matchName": "kennaland", "name": "Kennaland", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "tania-kovalenko", "matchName": "tania kovalenko", "name": "Tania Kovalenko", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "land-of-barbers", "matchName": "land of barbers", "name": "Land of Barbers", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built", "note": "also surfaced as 'The Land of Barbers'; runtime dedup collapses them" },
+    { "key": "big-night", "matchName": "big night", "name": "Big Night", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" },
+    { "key": "alter", "matchName": "alter", "name": "Alter", "visualTier": "typological", "landmarkTier": null, "buildStatus": "built" }
+  ]
+}

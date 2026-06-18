@@ -6,21 +6,8 @@
     "endpoint": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
     "query": "[out:json][timeout:30];(node[\"shop\"](40.7295,-73.9576,40.7305,-73.9558);way[\"shop\"](40.7295,-73.9576,40.7305,-73.9558);node[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7295,-73.9576,40.7305,-73.9558);way[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7295,-73.9576,40.7305,-73.9558););out center tags;"
   },
-  "recordCount": 6,
+  "recordCount": 5,
   "storefronts": [
-    {
-      "name": "The Pencil Factory",
-      "category": "bar",
-      "houseNumber": null,
-      "addrStreet": null,
-      "point": {
-        "lon": -73.9574255,
-        "lat": 40.729763
-      },
-      "sourceId": "osm:node/2015482687",
-      "confidence": "point-only",
-      "activeStatus": "unverified"
-    },
     {
       "name": "Alter",
       "category": "clothes",

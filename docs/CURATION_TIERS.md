@@ -66,8 +66,12 @@ The `landmark-strategy-v1` 15-pin launch cut. Heroes among these are listed abov
 2. **Spine reach this cycle:** **Franklin-north first** — extend along Franklin to Astral Apartments + the Eberhard Faber / Kent cluster (one corridor, two tier-1 landmarks). Manhattan Avenue (Clock / Church / Keramos) is a later, separate node.
 3. **Hero budget:** ~10–12 total for v1.
 
+## Machine-readable encoding
+
+This doc is the human source of truth; the data encoding is `src/data/curation/building-tiers.v0.1.json`, read via the pure loader `src/curationTiers.js` (`visualTierFor`, `landmarkTierFor`, `isHero`, `heroesNotRenderable`; default = typological). Covered by `src/curationTiers.test.mjs`. **Phase 6.2** will wire the renderer/kit to read `visualTier` from here for treatment selection.
+
 ## Data corrections / open items
 
-- **Stale roster record:** `"The Pencil Factory"` in `block-greenpoint-east-storefronts.v0.1.json` is the **closed bar** (now Sonny's at 142 Franklin). Truth rule: don't render a closed business as active. Action: drop/remap that storefront record; keep the Pencil Factory *building* as the Eberhard Faber landmark (hero #8).
-- **Brouwerij Lane:** confirm current operating status + exact address before rendering (hero #7). Designated by Batu; not yet in any data file.
-- **Code tagging (next):** add a `tier` field so the renderer/kit reads visual tier from data rather than ad-hoc per-building code. Decide where it lives (hero data file vs a tier registry) as the first Phase 6.1 execution step.
+- **Stale roster record — DONE (2026-06-18).** `"The Pencil Factory"` (the **closed bar**, now Sonny's at 142 Franklin) was removed from `block-greenpoint-east-storefronts.v0.1.json` (recordCount 6→5). The Pencil Factory *building* survives as the Eberhard Faber landmark (hero #8), to build in Phase 8.
+- **Brouwerij Lane — tracked, not rendered.** In the registry as `buildStatus:data-missing, verificationStatus:pending` (hero #7). **Confirm current open status + exact address before any render.**
+- **6.2 hand-off:** the registry exists and is tested; what remains is having the renderer *consume* `visualTier` (with the component inventory) instead of the current hero detection paths in `sceneFrame.js` / `SceneView.jsx`.
