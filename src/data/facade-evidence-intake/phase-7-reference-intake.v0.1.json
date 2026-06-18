@@ -1,0 +1,25 @@
+{
+  "_doc": "Phase 7.0 reference intake. Batu supplies photos into the slots below; the agent generates the gather-dependent component columns (bay-frame, awning, roll-gate) only once a slot's photos are present. Photos-are-truth gate.",
+  "version": "0.1",
+  "status": "awaiting-batu-supply",
+  "components": {
+    "bay-frame": {
+      "applies_to": ["brick", "painted-masonry", "modern-flat"],
+      "need": "storefront bay structure: columns/piers, transom band, bulkhead. Front-on + 3/4.",
+      "min_refs_per_family": 2,
+      "supplied": []
+    },
+    "awning": {
+      "applies_to": ["brick", "painted-masonry", "modern-flat"],
+      "need": "fixed storefront awnings: straight-drop + canopy, fabric + frame. Side profile readable.",
+      "min_refs_per_family": 2,
+      "supplied": []
+    },
+    "roll-gate": {
+      "applies_to": ["brick", "painted-masonry", "modern-flat", "warehouse"],
+      "need": "closed + open security roll gates: slat texture, side housing, lock box.",
+      "min_refs_per_family": 2,
+      "supplied": []
+    }
+  }
+}
