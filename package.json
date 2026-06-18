@@ -10,7 +10,8 @@
     "test": "node --test \"src/**/*.test.mjs\"",
     "verify:conformance": "node scripts/verify-visual-conformance.mjs",
     "verify:visual": "node scripts/verify-visual-baseline.mjs",
-    "verify": "npm run test && npm run verify:conformance && npm run verify:visual"
+    "verify:components": "node scripts/verify-inked-component.mjs",
+    "verify": "npm run test && npm run verify:conformance && npm run verify:visual && npm run verify:components"
   },
   "dependencies": {
     "pixi.js": "^8.18.1",
