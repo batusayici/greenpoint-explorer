@@ -2089,25 +2089,18 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
     }
     // Windows: a pane recessed just in front of the building mass, framed by
-    // shaded brick reveals (deep-shadow head, mid jambs, lit interior sill) and
-    // fronted by a projecting stone sill — the main depth cue, since the mass
-    // behind caps how far the pane can sink.
+    // shaded brick reveals at the four opening edges. The texture already paints
+    // the lintel (top) and sill (bottom), so NO sill/lintel geometry is added —
+    // only the recess depth, entirely within the window borders.
     const winTex = inkedTexture("brick-window.v1.png");
     const WALL = 0.004, BACK = 0.0008;        // wall plane vs recessed pane
-    const sillStone = 0xb3a484;               // muted tan (in palette, never white)
     for (const w of f.windows) {
       quad(w, BACK, winTex, { transparent: true });
-      // Reveals: head (deep shadow), jambs (mid), interior sill (lit) — brick.
-      quad3(point(w.x0, w.y1, WALL), point(w.x1, w.y1, WALL), point(w.x1, w.y1, BACK), point(w.x0, w.y1, BACK), null, { tint: darken(params.tint, 0.36) });
-      quad3(point(w.x0, w.y0, WALL), point(w.x0, w.y1, WALL), point(w.x0, w.y1, BACK), point(w.x0, w.y0, BACK), null, { tint: darken(params.tint, 0.6) });
-      quad3(point(w.x1, w.y0, WALL), point(w.x1, w.y1, WALL), point(w.x1, w.y1, BACK), point(w.x1, w.y0, BACK), null, { tint: darken(params.tint, 0.6) });
-      quad3(point(w.x0, w.y0, WALL), point(w.x1, w.y0, WALL), point(w.x1, w.y0, BACK), point(w.x0, w.y0, BACK), null, { tint: darken(sillStone, 0.85) });
-      // Projecting stone sill: top (lit), front, underside (shadow).
-      const ov = 0.01, drop = clamp(0.16 / heightM, 0.01, 0.05), proud = 0.014;
-      const sx0 = w.x0 - ov, sx1 = w.x1 + ov;
-      quad3(point(sx0, w.y0, WALL), point(sx1, w.y0, WALL), point(sx1, w.y0, proud), point(sx0, w.y0, proud), null, { tint: sillStone });
-      quad3(point(sx0, w.y0, proud), point(sx1, w.y0, proud), point(sx1, w.y0 - drop, proud), point(sx0, w.y0 - drop, proud), null, { tint: darken(sillStone, 0.8) });
-      quad3(point(sx0, w.y0 - drop, proud), point(sx1, w.y0 - drop, proud), point(sx1, w.y0 - drop, WALL), point(sx0, w.y0 - drop, WALL), null, { tint: darken(sillStone, 0.5) });
+      // Reveals bridge the wall plane → recessed pane along each opening edge.
+      quad3(point(w.x0, w.y1, WALL), point(w.x1, w.y1, WALL), point(w.x1, w.y1, BACK), point(w.x0, w.y1, BACK), null, { tint: darken(params.tint, 0.36) }); // head (shadow)
+      quad3(point(w.x0, w.y0, WALL), point(w.x0, w.y1, WALL), point(w.x0, w.y1, BACK), point(w.x0, w.y0, BACK), null, { tint: darken(params.tint, 0.6) });  // left jamb
+      quad3(point(w.x1, w.y0, WALL), point(w.x1, w.y1, WALL), point(w.x1, w.y1, BACK), point(w.x1, w.y0, BACK), null, { tint: darken(params.tint, 0.6) });  // right jamb
+      quad3(point(w.x0, w.y0, WALL), point(w.x1, w.y0, WALL), point(w.x1, w.y0, BACK), point(w.x0, w.y0, BACK), null, { tint: darken(params.tint, 0.72) }); // recess floor
     }
   }
   // Cornice on the street face(s): the painted crown miters at corners (standard
