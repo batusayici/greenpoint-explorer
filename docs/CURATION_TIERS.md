@@ -27,7 +27,7 @@ A building is scored on two axes, because they don't always coincide (the Sidewa
 | 4 | Azure Gourmet | 113 Franklin St | tier2 | **built** | shares Sereneco's building |
 | 5 | 144 Franklin (Romanesque) | 144 Franklin St | tier1.5 | **built** | architecturally distinctive corner |
 | 6 | Black Rabbit | (east block) | tier2 | **built** (typological today → promote) | longtime Greenpoint bar; strong local memory |
-| 7 | Brouwerij Lane | ~78 Greenpoint Ave (verify) | tier2 | **data missing → add** | Batu-designated hero; not in current roster; **confirm current status + address before render** |
+| 7 | Brouwerij Lane | 78 Greenpoint Ave, Brooklyn, NY 11222 | tier2 | **data missing → add** | Batu-designated hero; across from the Pencil Factory bldg. Address confirmed by Batu; **confirm a citable open status before render** |
 | 8 | Eberhard Faber Pencil Factory (the building) | Greenpoint Ave / Kent St cluster | tier1 | **Phase 8** (Franklin-north spine) | the industrial-history landmark itself — distinct from the closed bar of the same name |
 | 9 | Astral Apartments | 184 Franklin St | tier1 | **Phase 8** (short Franklin-north extension) | Pratt worker housing; Queen Anne; archival-photo potential |
 | 10 | St. Anthony–St. Alphonsus Church | 862 Manhattan Ave | tier1 | **later node** (Manhattan Ave) | skyline / orientation marker |
@@ -73,5 +73,5 @@ This doc is the human source of truth; the data encoding is `src/data/curation/b
 ## Data corrections / open items
 
 - **Stale roster record — DONE (2026-06-18).** `"The Pencil Factory"` (the **closed bar**, now Sonny's at 142 Franklin) was removed from `block-greenpoint-east-storefronts.v0.1.json` (recordCount 6→5). The Pencil Factory *building* survives as the Eberhard Faber landmark (hero #8), to build in Phase 8.
-- **Brouwerij Lane — tracked, not rendered.** In the registry as `buildStatus:data-missing, verificationStatus:pending` (hero #7). **Confirm current open status + exact address before any render.**
+- **Brouwerij Lane — tracked, not rendered.** In the registry as `buildStatus:data-missing, verificationStatus:pending` (hero #7). Address confirmed by Batu: **78 Greenpoint Ave, Brooklyn, NY 11222** (across from the Pencil Factory building). **Still needs a citable current open status before any render.**
 - **6.2 hand-off:** the registry exists and is tested; what remains is having the renderer *consume* `visualTier` (with the component inventory) instead of the current hero detection paths in `sceneFrame.js` / `SceneView.jsx`.
