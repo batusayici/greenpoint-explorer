@@ -1415,12 +1415,22 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       // Corner buildings (e.g. 97 bodega) get a second street face — the
       // cross-street — so their storefront + windows wrap around the corner.
       const streetSet = new Set([frontIndex]);
+      let secondIndex = -1;
       if (inkedParams.corner) {
-        const second = inkedCornerSecondEdgeIndex(inkedEdges, frontIndex, scene);
-        if (second >= 0) streetSet.add(second);
+        secondIndex = inkedCornerSecondEdgeIndex(inkedEdges, frontIndex, scene);
+        if (secondIndex >= 0) streetSet.add(secondIndex);
       }
+      // The convex corner shared by the two street faces is the only end whose
+      // cornice should miter (overhang to wrap the corner); party-line ends must
+      // not, or the crown spills onto the neighbour.
+      const corner = secondIndex >= 0 ? sharedEndpoint(inkedEdges[frontIndex], inkedEdges[secondIndex]) : null;
       inkedEdges.forEach((edge, i) => {
-        decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender);
+        let miter = null;
+        if (corner && streetSet.has(i)) {
+          const near = (p) => Math.hypot(p.x - corner.x, p.z - corner.z) < 0.02;
+          miter = { start: near(edge.start), end: near(edge.end) };
+        }
+        decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender, miter);
       });
       three.add(deco);
     } else if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
@@ -1979,7 +1989,7 @@ function inkedCorniceTexture(onReady) {
 // `streetFace` gates the front-facade elements: when false (side/rear walls)
 // only plain brick + party seams are drawn — no windows, storefront, or cornice
 // — so side facades read as blank party-wall brick.
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender) {
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -2053,10 +2063,10 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.008, winTex, { transparent: true });
   }
-  // Cornice on the street face(s): a projecting painted crown that spans only its
-  // own edge and butts against the neighbour at the party line (no overhang, so
-  // it never spills onto the next building; no end caps, so meeting runs don't
-  // overlap into z-fighting blocks). The painted elevation crown sits flush at
+  // Cornice on the street face(s): a projecting painted crown that butts against
+  // the neighbour at party lines (no overhang there, so it never spills onto the
+  // next building) but miters/overhangs at a corner building's convex corner so
+  // the two faces' crowns wrap it. The painted elevation crown sits flush at
   // the roofline (y=1, no brick above) with the molding bottom (yBot) where the
   // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
   // — a Brooklyn cornice top is dark tar/metal.
@@ -2065,27 +2075,30 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const CROWN = darken(corniceColor, 0.5); // dark underside / top / end molding
     const corniceProj = 0.038;               // ~0.5m overhang (upm≈0.075)
     const yBot = 1 - corniceFrac;
-    // Span exactly this face's own edge — no tangential overhang — so the crown
-    // never spills onto the neighbouring building. Adjacent buildings' crowns
-    // butt at the party line (the real-life look). No end caps, so meeting runs
-    // don't overlap into z-fighting blocks at the seam.
+    // Span this face's own edge. At a convex corner of a corner building, the
+    // shared-corner end overhangs by the projection depth so the two faces' crowns
+    // meet at the outer corner and wrap it; every other end stays flush at [0,1]
+    // so the crown never spills onto the neighbour and meeting runs don't overlap.
+    const ext = clamp(corniceProj / edge.length, 0, 0.25);
+    const x0 = miter?.start ? -ext : 0;
+    const x1 = miter?.end ? 1 + ext : 1;
     const drawCornice = (corniceTex) => {
       // Painted face, proud of the wall, top flush at the roofline.
       quad3(
-        point(0, yBot, corniceProj), point(1, yBot, corniceProj),
-        point(1, 1, corniceProj), point(0, 1, corniceProj),
+        point(x0, yBot, corniceProj), point(x1, yBot, corniceProj),
+        point(x1, 1, corniceProj), point(x0, 1, corniceProj),
         corniceTex, { tint: corniceColor, transparent: true },
       );
       // Underside soffit (deep shadow) from the wall out to the projected front.
       quad3(
-        point(0, yBot, 0.006), point(1, yBot, 0.006),
-        point(1, yBot, corniceProj), point(0, yBot, corniceProj),
+        point(x0, yBot, 0.006), point(x1, yBot, 0.006),
+        point(x1, yBot, corniceProj), point(x0, yBot, corniceProj),
         null, { tint: CROWN },
       );
       // Top cap sloping back to the roof — dark molding, not lit stone.
       quad3(
-        point(0, 1, corniceProj), point(1, 1, corniceProj),
-        point(1, 1, 0.006), point(0, 1, 0.006),
+        point(x0, 1, corniceProj), point(x1, 1, corniceProj),
+        point(x1, 1, 0.006), point(x0, 1, 0.006),
         null, { tint: CROWN },
       );
     };
