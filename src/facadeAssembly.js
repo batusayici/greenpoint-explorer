@@ -453,7 +453,7 @@ export function oriel3Meshes(frame, bay, projection, texture) {
     facePoint(frame, plan.xc1, y, projection),
     facePoint(frame, bay.x1, y, 0),
   );
-  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(0x352c22)));     // top: under-cornice shadow
+  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(FACADE_RELIEF.lintelShadow))); // top: under-cornice shadow
   meshes.push(new THREE.Mesh(cap(bay.y0), tintMaterial(REVEAL.soffit))); // bottom: soffit
 
   return meshes;

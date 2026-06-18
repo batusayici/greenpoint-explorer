@@ -20,3 +20,10 @@ coverage/
 
 # Visual-companion brainstorm artifacts
 .superpowers/
+
+# Playwright MCP scratch
+.playwright-mcp/
+
+# Visual-baseline gate transients (committed baselines live in tests/visual-baselines/)
+tests/.candidates/
+tests/.diffs/

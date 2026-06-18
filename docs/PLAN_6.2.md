@@ -1,6 +1,6 @@
 # Phase 6.2 — Visual-System Contract (the consistency engine)
 
-Status: Proposed (awaiting Batu approval)
+Status: DONE (2026-06-18) — 6.2.1 (8167e87), 6.2.2 (ecf1658), 6.2.3 (this commit)
 Parent: `docs/PLAN.md` → Phase 6 → 6.2
 Date: 2026-06-18
 
@@ -65,6 +65,26 @@ This is consolidation + enforcement over things that already half-exist:
   single source).
 - 6.2.2 may overlap 6.2.1's tail.
 - 6.2.3 last.
+
+## Outcome (2026-06-18)
+
+- **6.2.3.1 color-token gate** shipped: `scripts/verify-visual-conformance.mjs` +
+  `scripts/visual-conformance-allowlist.json`. Scans all of `src`, accounts for every
+  color literal (token-source / reference / authored-data region / exempt), fails loud on
+  any raw `0x` in a product file. Negative-tested. Debug runtime + dev tools + data + CSS
+  are explicit allowlist entries with reasons (Scene-vs-Debug constraint). `#hex` string
+  colors in product files (canvas/CSS registry) are reported as tracked debt, non-fatal.
+- **6.2.3.2 visual baseline gate** shipped: `scripts/verify-visual-baseline.mjs` (pngjs +
+  pixelmatch) diffs a captured candidate against the committed brick baseline
+  (`tests/visual-baselines/brick-scene.baseline.png`), 2% mismatch budget, writes a diff
+  PNG on failure. Keyed by material → Phase 7 drops in 3 more. `scripts/capture-visual-
+  baseline.mjs` is the Playwright capture path (soft dep; degrades with a clear message).
+  No-candidate run is a safe no-op pass. Self-tested (identical→pass, mutated→fail).
+- **6.2.3.4** npm scripts: `test`, `verify:conformance`, `verify:visual`, `verify`.
+- **Deferred honestly:** automated CI capture (Playwright as a hard dep) waits for Phase 7
+  when 4 materials make the harness pay for itself; today's committed baseline + manual/
+  scripted capture suffice. The `#hex`→token migration and `INKED_FACADE_REAL`→data-file
+  moves are tracked debt (see COMPONENT_INVENTORY.md), not silent passes.
 
 ## Acceptance (Batu)
 - Zero raw color literals in src outside the documented allowlist; gate enforces it.

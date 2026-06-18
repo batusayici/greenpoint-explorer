@@ -1,0 +1,41 @@
+{
+  "_doc": "Phase 6.2.3 conformance allowlist. Every color literal in src is scanned and must be ACCOUNTED FOR here or be a token reference. Nothing is silently skipped. Raw 0x color in a product file that is not covered by an authoredData region is a hard failure.",
+  "tokenSource": [
+    "src/visualSystem/palette.js"
+  ],
+  "productFiles": [
+    "src/SceneView.jsx",
+    "src/facadeAssembly.js",
+    "src/facadeProfiles.js",
+    "src/groundLayer.js",
+    "src/streetFurniture.js",
+    "src/buildingTypology.js",
+    "src/inkedFacadeCompose.js",
+    "src/storefrontCompose.js",
+    "src/storefrontSigns.js",
+    "src/storefrontRoster.js",
+    "src/curationTiers.js",
+    "src/visualSystem/treatmentMap.js"
+  ],
+  "authoredDataRegions": {
+    "src/SceneView.jsx": [
+      {
+        "const": "INKED_FACADE_REAL",
+        "reason": "Photo-grounded per-building tint/awning/frame DATA, not style tokens. Phase 6.2.2 relocates this into the tier x material registry; allowlisted until then."
+      }
+    ]
+  },
+  "exemptGlobs": [
+    { "glob": "src/Phase4BRuntimePreview.jsx", "reason": "Debug-mode runtime (?debug=1) — explicitly NOT the product look; Scene-vs-Debug constraint." },
+    { "glob": "src/components/hero/FranklinHeroCorner.jsx", "reason": "Imported only by the Debug runtime." },
+    { "glob": "src/components/dev/", "reason": "Dev-only tools (FacadeRecessEditor)." },
+    { "glob": "src/data/", "reason": "Data fixtures / specs (JSON), not code." },
+    { "glob": ".test.mjs", "reason": "Test files reference tokens and color bounds, not product style." },
+    { "glob": "src/styles.css", "reason": "UI/CSS chrome — parallel CSS-variable registry, separate axis from the 3D scene tokens." },
+    { "glob": "src/components/PlaceCard.jsx", "reason": "DOM place card — UI/CSS registry." }
+  ],
+  "hexStringDebt": {
+    "_doc": "#rrggbb string colors in product files are the canvas-texture / CSS registry (e.g. makeStorefrontSignTexture). Reported loudly as tracked debt; not yet fatal. Migration tracked in COMPONENT_INVENTORY.md.",
+    "fatal": false
+  }
+}
