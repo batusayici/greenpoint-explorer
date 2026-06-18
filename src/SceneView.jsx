@@ -2053,52 +2053,41 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const winTex = inkedTexture("brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.008, winTex, { transparent: true });
   }
-  // Cornice on the street face(s): the painted crown miters at corners (standard
-  // masonry behavior — see the Premier hero). Each run extends past both ends by
-  // its own projection depth so it reaches the outer corner — where two street
-  // faces meet (a corner building) the perpendicular crown meets it, and across a
-  // rowhouse party line adjacent runs overlap into one continuous cornice; a dark
-  // end-cap closes the box where it actually terminates. The painted elevation
-  // crown sits flush at the roofline (y=1, no brick above) with the molding
-  // bottom (yBot) where the soffit attaches (no floating plane). Soffit + cap are
-  // dark molding tints — a Brooklyn cornice top is dark tar/metal.
+  // Cornice on the street face(s): a projecting painted crown that spans only its
+  // own edge and butts against the neighbour at the party line (no overhang, so
+  // it never spills onto the next building; no end caps, so meeting runs don't
+  // overlap into z-fighting blocks). The painted elevation crown sits flush at
+  // the roofline (y=1, no brick above) with the molding bottom (yBot) where the
+  // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
+  // — a Brooklyn cornice top is dark tar/metal.
   if (streetFace) {
     const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
     const CROWN = darken(corniceColor, 0.5); // dark underside / top / end molding
     const corniceProj = 0.038;               // ~0.5m overhang (upm≈0.075)
     const yBot = 1 - corniceFrac;
-    // Miter overhang: extend each end tangentially by the projection depth so it
-    // reaches the outer corner where the perpendicular face's crown meets it.
-    const ext = clamp(corniceProj / edge.length, 0, 0.25);
-    const x0 = -ext, x1 = 1 + ext;
+    // Span exactly this face's own edge — no tangential overhang — so the crown
+    // never spills onto the neighbouring building. Adjacent buildings' crowns
+    // butt at the party line (the real-life look). No end caps, so meeting runs
+    // don't overlap into z-fighting blocks at the seam.
     const drawCornice = (corniceTex) => {
       // Painted face, proud of the wall, top flush at the roofline.
       quad3(
-        point(x0, yBot, corniceProj), point(x1, yBot, corniceProj),
-        point(x1, 1, corniceProj), point(x0, 1, corniceProj),
+        point(0, yBot, corniceProj), point(1, yBot, corniceProj),
+        point(1, 1, corniceProj), point(0, 1, corniceProj),
         corniceTex, { tint: corniceColor, transparent: true },
       );
       // Underside soffit (deep shadow) from the wall out to the projected front.
       quad3(
-        point(x0, yBot, 0.006), point(x1, yBot, 0.006),
-        point(x1, yBot, corniceProj), point(x0, yBot, corniceProj),
+        point(0, yBot, 0.006), point(1, yBot, 0.006),
+        point(1, yBot, corniceProj), point(0, yBot, corniceProj),
         null, { tint: CROWN },
       );
       // Top cap sloping back to the roof — dark molding, not lit stone.
       quad3(
-        point(x0, 1, corniceProj), point(x1, 1, corniceProj),
-        point(x1, 1, 0.006), point(x0, 1, 0.006),
+        point(0, 1, corniceProj), point(1, 1, corniceProj),
+        point(1, 1, 0.006), point(0, 1, 0.006),
         null, { tint: CROWN },
       );
-      // End caps: close the projecting box cross-section at each end so it never
-      // reads as an open stub (hidden inside the perpendicular crown at a corner).
-      for (const xe of [x0, x1]) {
-        quad3(
-          point(xe, yBot, 0.006), point(xe, yBot, corniceProj),
-          point(xe, 1, corniceProj), point(xe, 1, 0.006),
-          null, { tint: CROWN },
-        );
-      }
     };
     const ready = inkedCorniceTexture((tex) => { drawCornice(tex); requestRender?.(); });
     if (ready) drawCornice(ready);
