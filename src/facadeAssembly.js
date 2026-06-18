@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { openingProfile, springYOf } from "./facadeProfiles.js";
+import { FACADE_RELIEF, DEBUG_PALETTE } from "./visualSystem/palette.js";
 
 // Structured facade assembly: turns a flat elevation slice into a shallow
 // relief. The facade spec names components in normalized face coordinates
@@ -15,10 +16,10 @@ import { openingProfile, springYOf } from "./facadeProfiles.js";
 // lit 3D — the artwork carries the light.
 
 const REVEAL = {
-  top: 0x352c22, // shadow under the lintel
-  side: 0x5d4c3e, // jamb
-  bottom: 0xa6987c, // recess bottom / proud top — lit stone, never bright white
-  soffit: 0x2f2820, // underside of storefront/awning/cornice returns
+  top: FACADE_RELIEF.lintelShadow, // shadow under the lintel
+  side: FACADE_RELIEF.jamb, // jamb
+  bottom: FACADE_RELIEF.sillLit, // recess bottom / proud top — lit stone, never bright white
+  soffit: FACADE_RELIEF.soffit, // underside of storefront/awning/cornice returns
 };
 
 // Reveals are textured by edge-stretching the wall artwork into the recess
@@ -235,7 +236,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
         facePoint(frame, xEnd, yValance, projection),
         facePoint(frame, xEnd, yValance, 0),
       );
-      group.add(new THREE.Mesh(panel, awning.color != null ? tinted(0.6) : tintMaterial(0x241f18)));
+      group.add(new THREE.Mesh(panel, awning.color != null ? tinted(0.6) : tintMaterial(FACADE_RELIEF.darkReturn)));
     }
   }
 
@@ -268,10 +269,10 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     } else {
       // Flat box: textured front, dark wood cheeks, dark roof under the cornice.
       group.add(rectMesh(frame, bay, projection, texturedMaterial(texture, 1)));
-      group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(0x352c22)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(FACADE_RELIEF.lintelShadow)));
       group.add(bridgeMesh(frame, bay, projection, 0, "bottom", tintMaterial(REVEAL.soffit)));
-      group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(0x4a3a2c)));
-      group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(0x4a3a2c)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(FACADE_RELIEF.joineryCheek)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(FACADE_RELIEF.joineryCheek)));
     }
   }
 
@@ -287,7 +288,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const proj = meters(spec.cornice.projectionM ?? 0.5); // crown overhang
     const riseY = meters(spec.cornice.crownRiseM ?? 0.22) / frame.height; // lip above roof
     const yCap = rect.y1 + riseY;
-    const CROWN = 0x241f18; // near-black painted crown lip (matches refs)
+    const CROWN = FACADE_RELIEF.darkReturn; // near-black painted crown lip (matches refs)
 
     // Corner wrap: at a folded corner (cornerLeft/cornerRight) the crown turns
     // 90° onto the perpendicular face. Rather than cap the end (a flat patch)
@@ -353,7 +354,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       debugRects.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
     }
     if (spec.cornice) debugRects.push({ x0: 0, x1: 1, ...spec.cornice });
-    const material = new THREE.LineBasicMaterial({ color: 0x00ff44 });
+    const material = new THREE.LineBasicMaterial({ color: DEBUG_PALETTE.rectOutline });
     for (const rect of debugRects) {
       const { outline } = openingProfile(rect);
       const points = outline.map((p) => new THREE.Vector3(...facePoint(frame, p.x, p.y, 0.03)));

@@ -25,50 +25,21 @@ import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
 import { planStorefrontSigns } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
 import { composeStorefront } from "./storefrontCompose.js";
+import {
+  II_PALETTE,
+  resolveTypologyColor,
+  FACADE_RELIEF,
+  LIGHTING,
+  TRADE_AWNING_TINT,
+  MASSING,
+  BRICK_TONES,
+} from "./visualSystem/palette.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
 // planes on the hero frontages are texture slots — drop generated II-style
 // textures into assets/textures/franklin/ and they load by name:
 //   <placeId>--greenpoint.png / <placeId>--franklin.png
-
-const II_PALETTE = {
-  paper: 0xeae1ce,
-  street: 0xcabfa7,
-  streetDerived: 0xc4b9a2,
-  asphalt: 0x6f6a60,
-  asphaltDerived: 0x6a655c,
-  concrete: 0xb8ae99,
-  concreteDerived: 0xb2a994,
-  crosswalkPaint: 0xe7dcc2,
-  curbStone: 0xcabfa7,
-  scoreLine: 0x9b9079,
-  signalPole: 0x2a241c,
-  signalHead: 0x1d201e,
-  signalRed: 0xb24a3a,
-  signalAmber: 0xcc9a3b,
-  signalGreen: 0x4f7d52,
-  pedSignal: 0x26211a,
-  ink: 0x2a241c,
-  context: [0xd9cdb4, 0xcfc0a6, 0xd4c5ad, 0xc8bba4],
-  heroes: {
-    "premier-franklin-organic": 0xa04432, // red brick grocery corner
-    "sonnys-corner": 0x4a4039, // dark brick / awned base
-    sereneco: 0x9a7e58, // weathered brick, low restaurant corner
-    "144-franklin": 0xa85a3c, // 1895 Romanesque Revival, terracotta/red brick
-  },
-};
-
-// Material-family wall tones for data-differentiated typological infill (II-C muted).
-const TYPOLOGY_PALETTE = {
-  "typological.brick": 0xb89a7e,
-  "typological.painted": 0xc8c2b2,
-  "typological.commercial": 0xb4a890,
-  "typological.warehouse": 0x968b78,
-};
-function resolveTypologyColor(typology) {
-  return TYPOLOGY_PALETTE[typology?.palette] ?? II_PALETTE.context[0];
-}
 
 // Camera sits northeast of the intersection looking southwest, so the
 // Greenpoint-facing (north) and Franklin-facing (east) hero frontages —
@@ -165,8 +136,8 @@ export default function SceneView() {
     const three = new THREE.Scene();
     three.background = new THREE.Color(II_PALETTE.paper);
 
-    three.add(new THREE.AmbientLight(0xfff6e8, 0.95));
-    const sun = new THREE.DirectionalLight(0xffeed8, 0.65);
+    three.add(new THREE.AmbientLight(LIGHTING.ambient, 0.95));
+    const sun = new THREE.DirectionalLight(LIGHTING.sun, 0.65);
     sun.position.set(-6, 9, 4);
     three.add(sun);
 
@@ -927,20 +898,9 @@ function buildStorefrontSigns(three, placements, frame) {
   }
 }
 
-// Category fabric tints for awnings (muted II-C tones). Shared by the flat
-// strip and the projecting canopy/valance.
-const AWNING_TINT = {
-  restaurant: 0x6b3a2a,
-  cafe:       0x4a3825,
-  bar:        0x2e3b32,
-  pub:        0x2e3b32,
-  clothes:    0x3b4a5c,
-  hairdresser:0x3d4030,
-  convenience:0x4a4030,
-  deli:       0x5c4030,
-  interior_decoration: 0x4a3b4a,
-};
-const AWNING_SOFFIT = 0x2f2820; // dark underside/side closers
+// Category fabric tints for awnings live in the visual-system palette module.
+const AWNING_TINT = TRADE_AWNING_TINT;
+const AWNING_SOFFIT = FACADE_RELIEF.soffit; // dark underside/side closers
 
 // Render planned awnings for one building's bays. `frame` is the same street-
 // face basis used for signs, plus `scale` (scene units per metre) for canopy
@@ -1027,6 +987,11 @@ const INKED_FACADE_TEST = [];
 // Params (tint/storeys/bays) read from the field photos in
 // docs/mvp-reference-images/franklin-greenpoint-to-milton-block/. Consumed by buildBuildings
 // → decorateInkedWall (wall-mesh path: registers + self-occludes like decorateTypologicalWall).
+// 6.2.1 allowlist: the per-building tint/awning/frame colors in this table are
+// photo-grounded AUTHORED DATA, not style tokens. They are the ad-hoc
+// per-building tuning that Phase 6.2.2 relocates into the tier × material
+// treatment registry. Left inline here on purpose; the conformance gate (6.2.3)
+// allowlists this block by name (INKED_FACADE_REAL) until 6.2.2 migrates it.
 const INKED_FACADE_REAL = {
   enabled: true,
   // Tints spread for legible separation (alternating brighter warm-red / deep maroon /
@@ -1055,7 +1020,7 @@ const INKED_FACADE_BLOCK = {
   minStoreys: 2,
   maxStoreys: 6,
   bayMeters: 3.6, // typical Greenpoint rowhouse bay width
-  palette: [0xb5664a, 0x7d5a44, 0x9c5a3c, 0xa8704f, 0x6f4a39, 0xc07a55], // brick tones
+  palette: BRICK_TONES, // brick tones
 };
 
 function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
@@ -1390,7 +1355,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // Darker inked roof caps keep large masses from reading as flat slabs. Inked
     // buildings keep a neutral dark roof (the brick tint is for the walls only).
     const roof = inkedParams
-      ? new THREE.Color(0x46443f)
+      ? new THREE.Color(MASSING.roofCap)
       : new THREE.Color(color).multiplyScalar(0.5);
     const body = new THREE.Mesh(geometry, [
       new THREE.MeshLambertMaterial({ color: roof }),
@@ -1518,7 +1483,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       if (!segments.length) continue; // fully interior — nothing exposed
       const segShade = faceShade.other;
       const segColor = new THREE.Color(baseColor)
-        .lerp(new THREE.Color(0x6b5e52), 0.5)
+        .lerp(new THREE.Color(MASSING.partyWallBlend), 0.5)
         .multiplyScalar(segShade);
       for (const seg of segments) {
         const segEdge = {
@@ -1553,7 +1518,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     const shade = faceShade[effectiveRole] ?? faceShade.other;
     const wallColor =
       isGroupComposite && !face
-        ? new THREE.Color(baseColor).lerp(new THREE.Color(0x6b5e52), 0.5).multiplyScalar(shade)
+        ? new THREE.Color(baseColor).lerp(new THREE.Color(MASSING.partyWallBlend), 0.5).multiplyScalar(shade)
         : new THREE.Color(baseColor).multiplyScalar(shade);
 
     // A face with coverMeters maps its texture slice onto only the first N
@@ -1657,7 +1622,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     const { start, end } = edge;
     const segment = new THREE.Mesh(
       new THREE.BoxGeometry(edge.length + parapetThickness, parapetHeight, parapetThickness),
-      new THREE.MeshLambertMaterial({ color: 0xc7b896 }),
+      new THREE.MeshLambertMaterial({ color: MASSING.parapet }),
     );
     segment.position.set(
       (start.x + end.x) / 2,
@@ -2149,7 +2114,7 @@ function decorateStorefront(ctx, band, storefront, params) {
     for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
     // Mullion, transom, door, frame: solid inked tints.
     quad(map(s.mullion), 0.009, null, { tint: frameTint });
-    quad(map(s.transom), 0.009, null, { tint: 0xcdbfa6 });          // light transom band
+    quad(map(s.transom), 0.009, null, { tint: MASSING.transomBand });          // light transom band
     // Door: leaf recessed behind the shopfront frame with shaded reveals, so the
     // entry reads as a real set-back doorway, not a flat painted panel.
     const d = map(s.door);
@@ -2169,7 +2134,7 @@ function decorateStorefront(ctx, band, storefront, params) {
     // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
     if (s.awning) {
       const a = map(s.awning);          // face-local: a.y1 = attach (under sign), a.y0 = front edge
-      const color = unit.awning?.color ?? 0x2a2622;
+      const color = unit.awning?.color ?? MASSING.awningDefault;
       const offBack = 0.012;            // canopy root, just proud of the frame
       const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
       const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
@@ -2329,7 +2294,7 @@ function loadTrimmedTexture(url, onReady) {
 // canvas to match, so letters map 1:1 and never stretch/compress. Height is
 // fixed at 128; width tracks the aspect (clamped). Default 4 keeps the prior
 // 512×128 behaviour for any caller that doesn't pass an aspect.
-function makeStorefrontSignTexture(name, aspect = 4, boardHex = 0x2c3530) {
+function makeStorefrontSignTexture(name, aspect = 4, boardHex = MASSING.signBoardDefault) {
   const c = document.createElement("canvas");
   c.height = 128;
   c.width = Math.max(256, Math.min(4096, Math.round(c.height * aspect)));
