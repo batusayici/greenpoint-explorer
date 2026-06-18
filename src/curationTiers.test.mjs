@@ -64,9 +64,11 @@ test("all placeData heroes are tagged hero in the registry", () => {
 test("designated-but-unrenderable heroes are flagged, not silently active", () => {
   const pending = heroesNotRenderable();
   const brouwerij = pending.find((e) => e.key === "brouwerij-lane");
-  assert.ok(brouwerij, "Brouwerij Lane is flagged not-renderable");
+  assert.ok(brouwerij, "Brouwerij Lane is flagged not-renderable (no scene geometry yet)");
   assert.equal(brouwerij.buildStatus, "data-missing");
-  assert.equal(brouwerij.verificationStatus, "pending");
+  // Verified active (cited), but still has no scene geometry — not-renderable
+  // is driven by buildStatus, not verification.
+  assert.equal(brouwerij.verificationStatus, "verified");
   // Eberhard Faber + Astral are planned heroes, not yet built.
   assert.ok(pending.some((e) => e.key === "eberhard-faber"));
   assert.ok(pending.some((e) => e.key === "astral-apartments"));
