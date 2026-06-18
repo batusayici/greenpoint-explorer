@@ -1979,34 +1979,6 @@ function inkedCorniceTexture(onReady) {
 // `streetFace` gates the front-facade elements: when false (side/rear walls)
 // only plain brick + party seams are drawn — no windows, storefront, or cornice
 // — so side facades read as blank party-wall brick.
-// Subdivide the unit face into the brick pieces that remain once the window
-// openings are removed (horizontal bands, split at each window's x-span). Lets
-// the wall be drawn with holes so recessed panes read as set into the masonry.
-// Ported from facadeAssembly.complementRects.
-function wallComplement(openings) {
-  const c01 = (v) => Math.min(1, Math.max(0, v));
-  const cuts = new Set([0, 1]);
-  for (const r of openings) { cuts.add(c01(r.y0)); cuts.add(c01(r.y1)); }
-  const ys = [...cuts].sort((a, b) => a - b);
-  const rects = [];
-  for (let i = 0; i < ys.length - 1; i += 1) {
-    const y0 = ys[i], y1 = ys[i + 1];
-    if (y1 - y0 < 1e-5) continue;
-    const yMid = (y0 + y1) / 2;
-    const spans = openings
-      .filter((r) => r.y0 < yMid && r.y1 > yMid)
-      .map((r) => [c01(r.x0), c01(r.x1)])
-      .sort((a, b) => a[0] - b[0]);
-    let cursor = 0;
-    for (const [x0, x1] of spans) {
-      if (x0 - cursor > 1e-5) rects.push({ x0: cursor, x1: x0, y0, y1 });
-      cursor = Math.max(cursor, x1);
-    }
-    if (1 - cursor > 1e-5) rects.push({ x0: cursor, x1: 1, y0, y1 });
-  }
-  return rects;
-}
-
 function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
@@ -2064,23 +2036,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // Brick: ~0.9m tile (the texture shows ~11 courses → ~0.08m/course, real
   // brick) so course size is fine and matches the hero (was ~3× too coarse).
   const brickRepeat = [clamp(Math.round(frontM / 1.0), 1, 16), clamp(Math.round(heightM / 0.9), 1, 24)];
-  const brickTex = inkedTexture("brick-wall.v1.png", brickRepeat);
-  // Brick wall piece with continuous UVs (each piece samples its own sub-region
-  // of the repeating brick) so cutting window holes never breaks the tiling.
-  const wallPiece = (r) => {
-    const g = new THREE.BufferGeometry();
-    const p = [point(r.x0, r.y0, 0.004), point(r.x1, r.y0, 0.004), point(r.x1, r.y1, 0.004), point(r.x0, r.y1, 0.004)];
-    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
-    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1 - r.x0, r.y0, 1 - r.x1, r.y0, 1 - r.x1, r.y1, 1 - r.x0, r.y1]), 2));
-    g.setIndex([0, 1, 2, 0, 2, 3]);
-    const m = new THREE.MeshBasicMaterial({ map: brickTex, side: THREE.DoubleSide });
-    m.color.setHex(params.tint);
-    target.add(new THREE.Mesh(g, m));
-  };
-  // Wall (tiled brick): every face reads as brick. On the street face, punch
-  // holes at the windows so the recessed panes (below) read as set into the
-  // masonry rather than stuck on the surface.
-  for (const r of streetFace ? wallComplement(f.windows) : [f.wall]) wallPiece(r);
+  // Wall (full-height tiled brick): every face, so side/rear read as brick.
+  quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", brickRepeat), { tint: params.tint });
   if (streetFace) {
     // Front facade only: ground band (storefront or stoop), windows, cornice.
     if (params.storefront) {
@@ -2088,20 +2045,13 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     } else {
       quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
     }
-    // Windows: a pane recessed just in front of the building mass, framed by
-    // shaded brick reveals at the four opening edges. The texture already paints
-    // the lintel (top) and sill (bottom), so NO sill/lintel geometry is added —
-    // only the recess depth, entirely within the window borders.
+    // Windows: the painted elevation (frame + glass + lintel + sill, with its own
+    // depth shading) drawn flush over the brick. Its transparent margins show the
+    // brick behind, so there is no geometric recess and no dark border ringing the
+    // frame. A true set-back glass would need the glass keyed transparent in the
+    // art (the painted glass is opaque, so a recessed pane behind it can't show).
     const winTex = inkedTexture("brick-window.v1.png");
-    const WALL = 0.004, BACK = 0.0008;        // wall plane vs recessed pane
-    for (const w of f.windows) {
-      quad(w, BACK, winTex, { transparent: true });
-      // Reveals bridge the wall plane → recessed pane along each opening edge.
-      quad3(point(w.x0, w.y1, WALL), point(w.x1, w.y1, WALL), point(w.x1, w.y1, BACK), point(w.x0, w.y1, BACK), null, { tint: darken(params.tint, 0.36) }); // head (shadow)
-      quad3(point(w.x0, w.y0, WALL), point(w.x0, w.y1, WALL), point(w.x0, w.y1, BACK), point(w.x0, w.y0, BACK), null, { tint: darken(params.tint, 0.6) });  // left jamb
-      quad3(point(w.x1, w.y0, WALL), point(w.x1, w.y1, WALL), point(w.x1, w.y1, BACK), point(w.x1, w.y0, BACK), null, { tint: darken(params.tint, 0.6) });  // right jamb
-      quad3(point(w.x0, w.y0, WALL), point(w.x1, w.y0, WALL), point(w.x1, w.y0, BACK), point(w.x0, w.y0, BACK), null, { tint: darken(params.tint, 0.72) }); // recess floor
-    }
+    for (const w of f.windows) quad(w, 0.008, winTex, { transparent: true });
   }
   // Cornice on the street face(s): the painted crown miters at corners (standard
   // masonry behavior — see the Premier hero). Each run extends past both ends by
