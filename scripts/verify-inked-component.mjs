@@ -80,6 +80,10 @@ function analyze(png) {
 }
 
 const CHROMA_MAX = 29; // raised from 28: brick-cornice.v1.png ships at meanChroma≈28.6; threshold must admit shipped assets
+
+// Components that are opaque full-bleed fills — alpha channel not required.
+const OPAQUE_FILL_COMPONENTS = new Set(["wall", "ground"]);
+
 const results = { ok: [], pending: [], fail: [] };
 
 for (const { family, component } of validCells()) {
@@ -88,8 +92,7 @@ for (const { family, component } of validCells()) {
   try {
     const png = readPng(readFileSync(p));
     const a = analyze(png);
-    // RGB PNG (colorType 2, no alpha channel) — keyed check N/A; valid for opaque fills (wall/ground)
-    const keyedOk = png.channels === 3 || a.keyed;
+    const keyedOk = OPAQUE_FILL_COMPONENTS.has(component) || a.keyed;
     if (!keyedOk) results.fail.push(`${family}-${component}: not alpha-keyed (no transparency)`);
     else if (a.meanChroma > CHROMA_MAX)
       results.fail.push(`${family}-${component}: baked color (meanChroma ${a.meanChroma.toFixed(1)} > ${CHROMA_MAX})`);
