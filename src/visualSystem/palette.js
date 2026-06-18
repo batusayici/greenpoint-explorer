@@ -46,6 +46,19 @@ export const TYPOLOGY_PALETTE = {
   "typological.warehouse": 0x968b78,
 };
 
+// Phase 7.4 — color-binding candidate sets. Per material family, the in-palette
+// wall tones a building's TRUE color may snap to. nearestPaletteToken (colorBinding.js)
+// picks the closest of these; every entry is already a no-miss palette tone, so
+// snapping can never leave the palette. Spec-only: NOT applied by the renderer (Phase 8).
+export const MATERIAL_WALL_TONES = {
+  brick: [0xb5664a, 0x9c5a3c, 0x7d5a44, 0x6f4a39],
+  clapboard: [0xc8c2b2, 0x9a9c86, 0x6f7a6a, 0x4a4f44],
+  brownstone: [0x8a5a3c, 0x6f4632, 0x5a3a28],
+  "painted-masonry": [0xc8c2b2, 0xa8a090, 0x7c766a, 0x46443f],
+  "modern-flat": [0xcabfa7, 0x968b78, 0x46443f, 0x1d201e],
+  warehouse: [0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c],
+};
+
 export function resolveTypologyColor(typology) {
   return TYPOLOGY_PALETTE[typology?.palette] ?? II_PALETTE.context[0];
 }
