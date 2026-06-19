@@ -31,7 +31,7 @@ end-to-end proof. It does not author a corpus of stories (that is 8.3).
 4. **A story is audio, image, and/or text.** All three media are first-class and optional.
 5. **Card omits the section entirely** when a place has no surfacing story (no placeholder).
 6. **Seed story ships unverified.** The 137 Oak St *story* is "locally known" lore. It ships
-   `verificationStatus: "unverified"`, `approvalStatus: "proposed"` — visible in dev with the
+   `verificationStatus: "unresolved"`, `approvalStatus: "proposed"` — visible in dev with the
    under-review badge, hidden in public mode until approved. It is the worked example of the
    truth gate.
 7. **137 Oak St is a hero (promoted now, render deferred).** It was omitted earlier only for
@@ -59,7 +59,7 @@ body?: string                   // longer text (optional)
 audioUrl?: string               // narration / on-location audio
 imageUrls?: string[]            // image(s), incl. then/now
 sources: [{ label, url }]       // gated like place records
-verificationStatus:             // verified | proposed | unverified
+verificationStatus:             // verified | partial | unresolved
 approvalStatus:                 // approved | proposed   (public gate)
 featured?: boolean              // selects the one card story
 yearStart?: number, yearEnd?: number
@@ -124,10 +124,10 @@ place selected (placeId)
 
 - **Hero record:** registry entry + `landmark-heroes.v0.1.json` record,
   `placeId: "137-oak-haunted-house"`, name "137 Oak Street", category "Landmark",
-  address "137 Oak St, Brooklyn, NY 11222", `verificationStatus: "proposed"`,
+  address "137 Oak St, Brooklyn, NY 11222", `verificationStatus: "unresolved"`,
   `approvalStatus: "proposed"`, `buildStatus: "data-missing"` (registry).
 - **Story:** `storyType: "local_memory"`, `featured: true`, `audioUrl` pointing at the
-  supplied file, `verificationStatus: "unverified"`, `approvalStatus: "proposed"`,
+  supplied file, `verificationStatus: "unresolved"`, `approvalStatus: "proposed"`,
   `editorialTags: ["hidden_greenpoint", "local_ritual"]`. Summary/body authored from what
   Batu provides; sources cite the audio + any provided origin.
 - **Audio file — Batu supplies.** Drop the audio into `assets/audio/137-oak-haunted-house.*`
