@@ -30,10 +30,16 @@ end-to-end proof. It does not author a corpus of stories (that is 8.3).
    fallback. Multiple-stories-per-card is out of scope.
 4. **A story is audio, image, and/or text.** All three media are first-class and optional.
 5. **Card omits the section entirely** when a place has no surfacing story (no placeholder).
-6. **Seed story ships unverified.** 137 Oak St is "locally known" lore on the CURATION_TIERS
-   hold set ("verify first"). It ships `verificationStatus: "unverified"`,
-   `approvalStatus: "proposed"` — visible in dev with the under-review badge, hidden in
-   public mode until approved. It is the worked example of the truth gate.
+6. **Seed story ships unverified.** The 137 Oak St *story* is "locally known" lore. It ships
+   `verificationStatus: "unverified"`, `approvalStatus: "proposed"` — visible in dev with the
+   under-review badge, hidden in public mode until approved. It is the worked example of the
+   truth gate.
+7. **137 Oak St is a hero (promoted now, render deferred).** It was omitted earlier only for
+   being off the Franklin/Greenpoint spine. It is promoted into the curated hero set as a
+   record now; its bespoke geometry/facade render + map placement are deferred and tracked
+   exactly like **Brouwerij Lane** (`buildStatus: "data-missing"`). The *building/place* and
+   the *story* gate independently: the place record's verification tracks the real address;
+   the story stays unverified lore.
 
 ## Schema — `PlaceStory`
 
@@ -74,15 +80,24 @@ Pure, Node-importable, JSON-import pattern matching `placeData.js`.
   - Returns `null` when no story qualifies.
 - `allStories() -> PlaceStory[]` (for verifiers / future use).
 
-### Place anchor for 137 Oak St
-137 Oak St is not a hero and has no place record. Add a **minimal place anchor** so the
-story has a `placeId` to attach to. It reuses the existing place-record shape
-(`id, placeId, name, category, address, status, verificationStatus, approvalStatus,
-sources`) and lives in a new `src/data/places/landmark-anchors.v0.1.json`, loaded
-alongside heroes by `placeData.js`. The anchor ships `verificationStatus: "unverified"`,
-`approvalStatus: "proposed"` (hold tier). **Map placement / selectability of the anchor is
-out of scope** — this phase only needs the record so the card can resolve the story; wiring
-the anchor to a clickable map position is Phase 8.x.
+### 137 Oak St hero promotion (record now, render deferred)
+137 Oak St becomes a curated hero, mirroring the Brouwerij Lane precedent:
+
+- **Curation registry** — add an entry to `src/data/curation/building-tiers.v0.1.json`:
+  `key/placeId: "137-oak-haunted-house"`, `name: "137 Oak Street"`, `address`,
+  `visualTier: "hero"`, `landmarkTier` (tier per CURATION_TIERS — promoted off the hold set),
+  `buildStatus: "data-missing"`, with a `note` that geometry/render lands later. This keeps
+  the hero budget honest and records the promotion.
+- **Hero place record** — heroes today live in `franklin-greenpoint-heroes.v0.1.json`, which
+  is spine-specific. 137 Oak is off-spine, so add a new `src/data/places/landmark-heroes.v0.1.json`
+  (same record shape: `id, placeId, name, category, address, status, verificationStatus,
+  approvalStatus, sources, lastVerified`). `placeData.js` merges this file with the heroes
+  file so `getPlaceByPlaceId` resolves it. The record's `verificationStatus`/`approvalStatus`
+  reflect the real address's confirmation state (ships `proposed` until the address is
+  cross-checked) — independent of the story's lore gate.
+- **Deferred (tracked, not an oversight):** bespoke massing/facade render and clickable map
+  placement. `buildStatus: "data-missing"` is the marker; the off-spine hero build is a later
+  phase. The card resolves and renders the story from data without needing the geometry.
 
 ### Card — story section in `PlaceCard.jsx`
 A new section below the description. Given a `story` prop (the featured story or null):
@@ -107,9 +122,10 @@ place selected (placeId)
 
 ## Seed content — 137 Oak St "Haunted House"
 
-- **Place anchor:** `landmark-anchors.v0.1.json` — `placeId: "137-oak-haunted-house"`,
-  name "The 'Haunted House' (137 Oak St)", address "137 Oak St, Brooklyn, NY 11222",
-  `verificationStatus: "unverified"`, `approvalStatus: "proposed"`.
+- **Hero record:** registry entry + `landmark-heroes.v0.1.json` record,
+  `placeId: "137-oak-haunted-house"`, name "137 Oak Street", category "Landmark",
+  address "137 Oak St, Brooklyn, NY 11222", `verificationStatus: "proposed"`,
+  `approvalStatus: "proposed"`, `buildStatus: "data-missing"` (registry).
 - **Story:** `storyType: "local_memory"`, `featured: true`, `audioUrl` pointing at the
   supplied file, `verificationStatus: "unverified"`, `approvalStatus: "proposed"`,
   `editorialTags: ["hidden_greenpoint", "local_ritual"]`. Summary/body authored from what
@@ -134,7 +150,8 @@ place selected (placeId)
 
 - Authoring a story corpus (3–5+ real stories) — **8.3**.
 - Multiple-stories-per-card UI; story browsing/index.
-- Mapping/selectability of the 137 Oak anchor as a clickable pin.
+- **137 Oak St geometry/facade render + clickable map placement** (off-spine hero build;
+  `buildStatus: "data-missing"`, mirrors Brouwerij Lane) — later phase.
 - Instrumentation of story opens/dwell — **8.4**.
 - Audio/image asset production (Batu supplies the seed audio).
 
@@ -142,7 +159,8 @@ place selected (placeId)
 
 - **Unverified lore leaking to public.** Mitigated by the `approvalStatus` gate + the
   verifier rule (approved ⇒ verified) + the dev-only default.
-- **Anchor without map placement** could confuse later work — explicitly noted as a known,
-  deferred gap, not an oversight.
+- **Hero record without geometry** could read as an oversight — mitigated by the
+  `buildStatus: "data-missing"` marker (Brouwerij Lane precedent), which is the agreed
+  tracking convention for a promoted-but-unbuilt hero.
 - **Audio file absent** blocks only the seed card, not the mechanism/tests (fixtures cover
   the rest) — consistent with not letting media block progress.
