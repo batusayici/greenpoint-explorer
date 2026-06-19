@@ -6,7 +6,7 @@
 const PAPER = "#eae1ce";
 const INK = "#2a241c";
 
-export default function PlaceCard({ place, disclaimer, onClose }) {
+export default function PlaceCard({ place, story, disclaimer, onClose }) {
   if (!place) return null;
   const unverified = place.verificationStatus && place.verificationStatus !== "verified";
   const closed = place.status === "closed";
@@ -69,6 +69,42 @@ export default function PlaceCard({ place, disclaimer, onClose }) {
       {(unverified || closed || unknown) && (
         <div style={{ fontSize: 10.5, marginTop: 10, padding: "4px 7px", border: `1px dashed ${INK}`, opacity: 0.85, borderRadius: 2 }}>
           {closed ? "Reported closed — unconfirmed." : unknown ? "Current status unconfirmed." : "Details under review — unverified."}
+        </div>
+      )}
+
+      {story && (
+        <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid rgba(42,36,28,0.25)` }}>
+          <div style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", opacity: 0.7 }}>
+            Story · {String(story.storyType || "").replace(/_/g, " ")}
+          </div>
+          <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.15, marginTop: 4 }}>
+            {story.title}
+          </div>
+          {story.summary && (
+            <div style={{ fontSize: 12.5, marginTop: 6, lineHeight: 1.45, opacity: 0.9 }}>
+              {story.summary}
+            </div>
+          )}
+          {story.body && (
+            <div style={{ fontSize: 12.5, marginTop: 6, lineHeight: 1.45, opacity: 0.9 }}>
+              {story.body}
+            </div>
+          )}
+          {Array.isArray(story.imageUrls) && story.imageUrls[0] && (
+            <img
+              src={story.imageUrls[0]}
+              alt={story.title}
+              style={{ width: "100%", marginTop: 8, border: `1px solid ${INK}`, borderRadius: 2, display: "block" }}
+            />
+          )}
+          {story.audioUrl && (
+            <audio controls src={story.audioUrl} style={{ width: "100%", marginTop: 8 }} />
+          )}
+          {story.verificationStatus && story.verificationStatus !== "verified" && (
+            <div style={{ fontSize: 10.5, marginTop: 8, padding: "4px 7px", border: `1px dashed ${INK}`, opacity: 0.85, borderRadius: 2 }}>
+              Local lore — unverified.
+            </div>
+          )}
         </div>
       )}
 

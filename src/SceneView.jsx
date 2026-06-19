@@ -17,6 +17,7 @@ import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.j
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
+import { getFeaturedStoryForPlace } from "./placeStories.js";
 import { classifyBuilding } from "./buildingTypology.js";
 import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0.1.json";
 import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-storefronts.v0.1.json";
@@ -569,6 +570,7 @@ export default function SceneView() {
           <div style={{ position: "absolute", top: 120, right: 24 }}>
             <PlaceCard
               place={selectedPlace}
+              story={selectedPlace ? getFeaturedStoryForPlace(selectedPlace.placeId) : null}
               disclaimer={PLACE_DISCLAIMER}
               onClose={() => { selectedPlaceIdRef.current = null; setSelectedPlace(null); setAnchor(null); }}
             />
