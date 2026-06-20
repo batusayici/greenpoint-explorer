@@ -58,3 +58,42 @@ several components, so they appear in more than one folder.
 Detail close-ups (cornices, windows, textures, weathering) are already tightly framed and
 need no crop. The whole-facade shots could be cropped to isolate a component — flag any you
 want tightened and I'll crop those specifically.
+
+---
+
+# Batch 2 — IMG_0818–IMG_0891 (added, cropped & sorted 2026-06-20)
+
+49 new photos cleaned, **cropped** (declutter: sky/street/cars/sign-poles removed), and
+cross-listed; 2 rejected. EXIF-corrected to upright before cropping (orient=6 sources were
+re-cropped in display/upright space). Originals kept in the user's Downloads (untouched).
+
+## Gaps now filled / changed
+- **roll-gate/** — was EMPTY → **3**: `0857` (white gate on brick), `0864` (4 gates on
+  rusticated stone, graffiti), **`0865`** standout (single closed slat gate, rusticated
+  stone + graffiti).
+- **brownstone/** — was EMPTY → **11**: rusticated/cut-stone bases & door surrounds from
+  dual-material buildings (`0819`, `0834`, `0873`/`0874` Film Noir Cinema, `0877`/`0878`/
+  `0879` Leonard St surrounds) + fieldstone base `0825`.
+- **modern flat/** → **10**: corrugated metal w/ fire escape `0867`/`0868`/`0884`/`0885`;
+  mixed `0849`/`0876`.
+- **storefront / awning / signs** — real storefronts at last: `0839`/`0840` (Florist +
+  Beyond Deli, fabric awnings), `0870` (Edy's Grocer green canopy), `0872` (Office + Your
+  Spoiled Pet), `0873`/`0874` (Film Noir Cinema), `0875` (VIDEO), `0838` (Laundromat).
+- **bay-frame** — added `0819` (stacked oriel bays).
+- Still thin: **industrial:warehouse/** (1 — `0859`).
+
+## DUAL-MATERIAL facades (flagged per request — copied into BOTH material folders)
+- **`0825` — WOOD + STONE** (clapboard/shingle upper over a rubble fieldstone base) — the
+  clearest wood+stone facade in the set.
+- `0879` — brick + brownstone surround + **aged wood door** (wood+stone at the entry).
+- `0887` — arched **wood door** in a brick surround.
+- `0819`, `0834`, `0873`, `0874`, `0877`, `0878` — brick + brownstone / cut-stone.
+- `0842`, `0843` — clapboard + painted masonry.
+- `0849`, `0876` — metal (modern flat) + brick.
+- `0890` — stone-faced masonry + brick.   `0859` — brick + industrial/warehouse.
+
+The kit taxonomy treats materials singly; these mixed facades (esp. **stone/masonry base +
+lighter upper**) are a real Greenpoint pattern worth a future "base-course" treatment.
+
+## Rejected (batch 2)
+- `0883` (extreme upward angle, sky-dominated), `0886` (street sign, no architecture).
