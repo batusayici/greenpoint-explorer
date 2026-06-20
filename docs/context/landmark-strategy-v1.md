@@ -338,6 +338,15 @@ Primary sources and leads reviewed:
 - Historic Districts Council Greenpoint pages: https://hdc.org/borough/greenpoint/
 - Keramos Hall / Historic Districts Council: https://6tocelebrate.org/site/keramos-hall/
 - Newtown Creek Nature Walk / NYC DEP: https://www.nyc.gov/site/dep/environment/newtown-creek-nature-walk.page
+- The Clio Greenpoint historical tour ("From Pencils to the 'Other Smithsonian'"): https://theclio.com/tour/2151
+  - Stop 1 — Eberhard Faber Pencil Factory: https://theclio.com/tour/2151/1
+  - Stop 2 — Astral Apartments: https://theclio.com/tour/2151/2
+  - Stop 3 — Smithsonian Hall: https://theclio.com/tour/2151/3
+  - Stop 4 — Greenpoint Savings Bank: https://theclio.com/tour/2151/4
+  - Stop 5 — McGolrick Park (WWI monument): https://theclio.com/tour/2151/5
+- Brownstoner — 144 Franklin Street history: https://www.brownstoner.com/history/greenpoint-brooklyn-history-144-franklin-street/
+- Brownstoner — Building of the Day, 144 Franklin Street: https://www.brownstoner.com/architecture/building-of-the-day-144-franklin-street/
+- Brooklyn Relics — public bath on Huron Street, Greenpoint: https://brooklynrelics.blogspot.com/2013/12/public-bath-on-huron-street-greenpoint.html
 - Local-landmarks Reddit export: `/mnt/data/local landmarks reddit`
 
 ## Strategic recommendation

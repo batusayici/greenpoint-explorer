@@ -1,0 +1,234 @@
+{
+  "schema": "Landmark (docs/context/landmark-strategy-v1.md)",
+  "stage": "research-staging",
+  "provenance": "Extracted from the five sources added to the Source list in landmark-strategy-v1.md (2026-06-20). NOT independently verified — every entry requires a verification pass before public copy is written.",
+  "lastUpdated": "2026-06-20",
+  "landmarks": [
+    {
+      "id": "mechanics-traders-bank-144-franklin",
+      "name": "Mechanics and Traders Bank of Brooklyn",
+      "address": "144 Franklin St, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1_5",
+      "layers": ["official_landmark", "historic_district", "architecture", "then_now"],
+      "summary": "1895 Renaissance/Romanesque Revival bank at the Franklin/Greenpoint Ave corner; later home to Polish community organizations, converted to co-op in 1984. Within the Greenpoint Historic District.",
+      "storyHooks": [
+        "Grandest building on its block on the old Williamsburg-Astoria turnpike",
+        "Bank merged into Corn Exchange Bank (1902) -> eventually Chase",
+        "Former logo image for Brownstoner"
+      ],
+      "sourceUrls": [
+        "https://www.brownstoner.com/history/greenpoint-brooklyn-history-144-franklin-street/",
+        "https://www.brownstoner.com/architecture/building-of-the-day-144-franklin-street/"
+      ],
+      "verificationNotes": "Source-derived; architect unknown in sources. Confirm Historic District inclusion against LPC designation report."
+    },
+    {
+      "id": "huron-street-public-bath",
+      "name": "Public Bath on Huron Street (Greenpoint Bathhouse)",
+      "address": "139 Huron St, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1_5",
+      "layers": ["civic_history", "architecture", "then_now"],
+      "summary": "1904 Classical Revival public bath by architect Louis A. Voss; served ~1,000 bathers/day and was Brooklyn's last operating public bath before closing in 1960. Later used by a gilding/framing shop and artist studios.",
+      "storyHooks": [
+        "Public bath movement / tenement-era sanitation reform (Dr. Simon Baruch)",
+        "~89 shower stalls and tubs, separate gender entrances",
+        "WPA renovation in the late 1930s"
+      ],
+      "sourceUrls": [
+        "https://brooklynrelics.blogspot.com/2013/12/public-bath-on-huron-street-greenpoint.html"
+      ],
+      "verificationNotes": "Source-derived (Brooklyn Relics blog). Confirm address, dates, and architect against a primary/LPC source."
+    },
+    {
+      "id": "astral-apartments",
+      "name": "Astral Apartments",
+      "address": "184 Franklin St, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1",
+      "layers": ["official_landmark", "architecture", "civic_history"],
+      "summary": "1885-1886 model worker housing built by Charles Pratt for Astral Oil Works employees; brick and terracotta in Queen Anne style.",
+      "storyHooks": [
+        "Industrial paternalism and early apartment reform",
+        "Charles Pratt's Greenpoint footprint",
+        "\"Why this building looks different\" explainer"
+      ],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/",
+        "https://theclio.com/tour/2151/2",
+        "https://www.theclio.com/web/entry?id=14937"
+      ],
+      "verificationNotes": "Already a v1 Tier 1 priority in landmark-strategy-v1.md."
+    },
+    {
+      "id": "eberhard-faber-pencil-factory",
+      "name": "Eberhard Faber Pencil Factory Historic District",
+      "address": "47-61 Greenpoint Ave, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1",
+      "layers": ["official_landmark", "industrial_history", "then_now", "architecture"],
+      "summary": "Oldest pencil factory in America; the firm moved from Manhattan to Greenpoint in 1872 and the complex operated until 1956. Iconic German Renaissance Revival / Art Deco factory architecture with star-and-diamond motif.",
+      "storyHooks": [
+        "Pencil manufacturing and colored-pencil history",
+        "Giant pencil facade elements; star-and-diamond motif",
+        "Industrial adaptive reuse"
+      ],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/",
+        "https://theclio.com/tour/2151/1",
+        "https://theclio.com/entry/147219"
+      ],
+      "verificationNotes": "Already a v1 Tier 1 priority. Note source discrepancy on dates (Greenpoint move 1872 vs. district building dates); reconcile against LPC report."
+    },
+    {
+      "id": "greenpoint-historic-district",
+      "name": "Greenpoint Historic District",
+      "address": "Java, Franklin, Kent, Milton, Noble, Calyer, Leonard, Oak, Guernsey, Lorimer Sts and surrounds",
+      "addressStatus": "approximate",
+      "priority": "tier1",
+      "layers": ["official_landmark", "historic_district", "architecture"],
+      "summary": "Residential district developed from 1832 around the shipbuilding industry; homes built by and for shipyard workers. Designated 1982. Base historic layer for v1 (render as a translucent overlay, not a pin).",
+      "storyHooks": [
+        "Shipbuilding-era residential growth",
+        "Protected district boundaries and streetscape continuity"
+      ],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "Already a v1 Tier 1 priority. Use LPC boundary data for the overlay."
+    },
+    {
+      "id": "manhattan-ave-sidewalk-clock",
+      "name": "Manhattan Avenue Sidewalk Clock",
+      "address": "753 Manhattan Ave, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1_5",
+      "layers": ["official_landmark", "local_lore"],
+      "summary": "Cast-iron street clock from the 1860s, the last remaining sidewalk clock in Brooklyn; originally advertised Bomelstein Jewelers.",
+      "storyHooks": ["Last sidewalk clock in Brooklyn", "Original jeweler advertising function"],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "On the v1 shortlist. Confirm date (1860s vs. later individual-landmark designation)."
+    },
+    {
+      "id": "ps-34-oliver-perry",
+      "name": "PS 34 (Oliver H. Perry Elementary School)",
+      "address": "131 Norman Ave, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1_5",
+      "layers": ["official_landmark", "civic_history", "architecture"],
+      "summary": "Oldest continuously operational primary school in Brooklyn, built 1867 in Romanesque style.",
+      "storyHooks": ["Oldest continuously operating primary school in Brooklyn"],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "On the v1 shortlist."
+    },
+    {
+      "id": "winthrop-park-shelter-pavilion",
+      "name": "Winthrop Park Shelter Pavilion (McGolrick Park)",
+      "address": "McGolrick Park, Monitor/Russell/Nassau/Driggs Ave, Brooklyn, NY 11222",
+      "addressStatus": "approximate",
+      "priority": "tier1_5",
+      "layers": ["official_landmark", "civic_history", "architecture"],
+      "summary": "1910 park shelter pavilion in McGolrick Park (formerly Winthrop Park), with French-inspired radial landscaping. Tour endpoint includes the WWI monument to Greenpointers.",
+      "storyHooks": [
+        "1910 pavilion; radial landscape design",
+        "WWI monument to Greenpointers",
+        "USS Monitor / McGolrick memory cluster"
+      ],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/",
+        "https://theclio.com/tour/2151/5"
+      ],
+      "verificationNotes": "On the v1 shortlist. Distinguish the pavilion landmark from the Monitor Monument."
+    },
+    {
+      "id": "19th-precinct-station-house-stable",
+      "name": "19th Police Precinct Station House and Stable",
+      "address": "43 Herbert St, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier2",
+      "layers": ["official_landmark", "civic_history", "architecture"],
+      "summary": "Romanesque Revival police complex built 1891-92; an example of late-19th-century Brooklyn precinct architecture.",
+      "storyHooks": ["Romanesque Revival civic architecture", "Station house + stable pairing"],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "New from source. Confirm address and designation status."
+    },
+    {
+      "id": "mccarren-play-center",
+      "name": "McCarren Play Center",
+      "address": "776 Lorimer St, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier2",
+      "layers": ["official_landmark", "civic_history", "industrial_history"],
+      "summary": "Largest of eleven WPA-funded public pool complexes, built 1936 under Robert Moses.",
+      "storyHooks": ["WPA pool program", "Robert Moses-era public works"],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "New from source. Sits at the Greenpoint/Williamsburg edge near McCarren Park; check spine fit."
+    },
+    {
+      "id": "cathedral-transfiguration",
+      "name": "Russian Orthodox Cathedral of the Transfiguration of Our Lord",
+      "address": "228 North 12th St, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier2",
+      "layers": ["official_landmark", "architecture", "civic_history"],
+      "summary": "Byzantine-style church completed 1921, with distinctive onion domes.",
+      "storyHooks": ["Onion-dome silhouette", "Greenpoint's Eastern European religious heritage"],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "New from source. Southern edge of the neighborhood; check spine fit."
+    },
+    {
+      "id": "greenpoint-savings-bank",
+      "name": "Greenpoint Savings Bank",
+      "address": "807 Manhattan Ave, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1_5",
+      "layers": ["architecture", "civic_history", "business_culture"],
+      "summary": "1906 neo-Classical bank at the southwest corner of Manhattan Ave and Calyer St, with a low dome and columned portico entrance.",
+      "storyHooks": ["Manhattan Ave commercial spine", "\"Where locals stored their money\" tour theme"],
+      "sourceUrls": [
+        "https://theclio.com/tour/2151/4"
+      ],
+      "verificationNotes": "New from Clio. Confirm landmark/designation status and current tenant."
+    },
+    {
+      "id": "smithsonian-hall",
+      "name": "Smithsonian Hall",
+      "address": "896 Manhattan Ave, Brooklyn, NY 11222",
+      "addressStatus": "verified",
+      "priority": "tier1_5",
+      "layers": ["architecture", "civic_history", "business_culture", "then_now"],
+      "summary": "Three-story cast-iron building (1878-early 1879) built to hold a ground-floor clothing store with a performance hall on the upper stories — the tour's namesake \"Other Smithsonian.\"",
+      "storyHooks": ["Cast-iron commercial architecture", "Neighborhood performance hall", "Tour namesake"],
+      "sourceUrls": [
+        "https://theclio.com/tour/2151/3",
+        "https://theclio.com/entry/146931"
+      ],
+      "verificationNotes": "New from Clio. Confirm address, dates, and current condition/use."
+    },
+    {
+      "id": "hecla-iron-works",
+      "name": "Hecla Iron Works Building",
+      "address": "100-118 North 11th St, Brooklyn, NY 11249",
+      "addressStatus": "verified",
+      "priority": "hold",
+      "layers": ["official_landmark", "industrial_history", "architecture"],
+      "summary": "1896-97 headquarters and showroom for a Scandinavian-founded ironworks whose decorative metalwork appears across NYC.",
+      "storyHooks": ["Decorative ironwork seen citywide", "Industrial showroom architecture"],
+      "sourceUrls": [
+        "https://greenpointers.com/2018/01/02/hist-list-every-official-historic-landmark-greenpoint/"
+      ],
+      "verificationNotes": "New from source but located in WILLIAMSBURG, outside the v1 Greenpoint spine. Held pending scope decision."
+    }
+  ]
+}
