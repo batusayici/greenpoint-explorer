@@ -34,8 +34,9 @@ several components, so they appear in more than one folder.
   `0750` scalloped fish-scale shingle.
 - **modern flat/** (5) — standing-seam metal: `0708`/`0709` red corrugated, `0748` red
   standing-seam, `0720` salmon, `0713` red+grey.
-- **brownstone/** — **EMPTY (gap).** No clean brownstone in this set (`0752`'s surround is the
-  closest terracotta/brownstone detail).
+- **brownstone/** (9, filled in batch 2 — 2026-06-20) — `0819`, `0825`, `0834`, `0864`,
+  `0865`, `0877`, `0878`, `0879`, `0749`. Now covers the brownstone packet
+  (wall/cornice/window/door-stoop/weathering/ground). (Originally EMPTY.)
 - **industrial:warehouse/** — **EMPTY (gap).** No clear industrial/warehouse facade.
 
 ## Gaps to fill (blocking parts of Phase 7.2)

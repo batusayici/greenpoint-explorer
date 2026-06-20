@@ -54,3 +54,24 @@ The isolation harness `src/dev/AssetKitProof.js` initially sized the proof by ar
 **Gate B:** isolation scene proof `docs/visual-artifacts/asset-kit-boards/clapboard-scene-proof.jpg` — approved after the proportion fix.
 
 **One-line lesson:** Generate tintable-neutral from photos, but tune the in-scene COMPOSE ratios to real meters or the kit reads wrong even when the art is right.
+
+## Fan-out — packets prepared 2026-06-20 (awaiting GPT generation)
+
+Division of labor: the agent prepares the generation packet (recipe + exact photo
+attachments + output filename + dims + QA) per family; Batu runs GPT-5.5 image-to-image
+and drops the raw PNGs; the agent then runs the downstream pipeline (alpha-key → mechanical
+gate → Gate A board → Gate B scene proof → register + ledger).
+
+**Raw-PNG drop convention:** `.scratch/asset-kit-raw/<family>/<component>.png` (gitignored).
+
+**Packets ready** (in `docs/reference/art/prompts/`):
+- `inked-components-brownstone.v1.md` — 6 cells: wall, cornice, window, door-stoop, weathering, ground. Refs: 9-photo brownstone set + cornice/window/door-stoop/weathering folders.
+- `inked-components-modern-flat.v1.md` — 4 cells: wall, window, weathering, ground (bay-frame/awning/roll-gate blocked on gather).
+- `inked-components-brick-fill.v1.md` — 2 cells: door-stoop, weathering (extends shipped brick wall/cornice/window/ground; bay-frame/awning/roll-gate blocked).
+- `inked-components-clapboard-shingle.v1.md` — 1 cell: shingle wall sub-type (carryover from the pilot).
+
+**Generatable-now count:** 13 components across 4 packets. **Gather-blocked:** bay-frame,
+awning, roll-gate for brick + modern-flat (+ painted-masonry, warehouse not yet packeted).
+
+Order to generate (per Batu, 2026-06-20): clapboard-shingle + brick-fill → brownstone →
+modern-flat.
