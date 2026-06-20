@@ -45,16 +45,41 @@ export function mountAssetKitProofIsolation(THREE, three, family, inkedTexture, 
     draw(quad);
   };
 
-  // Test facade (left of anchor).
-  const f = composeInkedFacade({ storeys: 3, bays: 2 });
-  const tex = (comp) => (want.has(`${family}-${comp}.v1.png`) ? inkedTexture(`${family}-${comp}.v1.png`, undefined, requestRender) : null);
+  // Test facade (left of anchor). Sized in REAL METERS for a representative
+  // Greenpoint wood-frame rowhouse (~6.5 m wide x ~9 m tall, 3 storeys) so the
+  // composed ratios are truthful — the same real-meter discipline the production
+  // brick path uses. The panel (Wf x Hf) stands in for that facade; its aspect
+  // (1.6/2.2 = 0.73) matches 6.5/9.
+  const frontM = 6.0, storeys = 3, heightM = 8.5;
+  const bays = 2;
+  const corniceFrac = 0.8 / heightM;                 // ~0.8 m bracketed wood cornice
+  const f = composeInkedFacade({
+    storeys, bays, corniceFrac,
+    winWFrac: 1.05 / (frontM / bays),                // ~1.05 m window within its 3 m bay
+    winHFrac: 0.78,                                   // tall parlor-style double-hung sash
+  });
+  // Clapboard lap exposure ~0.15 m: tile vertically so courses read fine, not
+  // one stretched giant tile. The wall art shows ~9 lap courses per tile.
+  const wallRepeat = [Math.max(2, Math.round(frontM / 2.4)), Math.round(heightM / (9 * 0.15))];
+  const texR = (comp, repeat) => (want.has(`${family}-${comp}.v1.png`)
+    ? inkedTexture(`${family}-${comp}.v1.png`, repeat, requestRender) : null);
   const cTest = new THREE.Vector3().copy(anchor).addScaledVector(right, -1.1);
   panel(cTest, 1.6, 2.2, (quad) => {
-    if (tex("wall")) quad(f.wall, 0.0, tex("wall"), { useTint: true });
-    if (tex("weathering")) quad(f.wall, 0.02, tex("weathering"), { transparent: true });
-    if (tex("cornice")) quad(f.cornice, 0.03, tex("cornice"), { transparent: true, useTint: true });
-    if (tex("window")) for (const w of f.windows) quad(w, 0.04, tex("window"), { transparent: true });
-    if (tex("door-stoop")) quad({ x0: 0.4, x1: 0.6, y0: 0, y1: f.ground.y1 }, 0.04, tex("door-stoop"), { transparent: true });
+    const wall = texR("wall", wallRepeat);
+    if (wall) quad(f.wall, 0.0, wall, { useTint: true });
+    const weather = texR("weathering", [2, 3]);
+    if (weather) quad(f.wall, 0.02, weather, { transparent: true });
+    const cornice = texR("cornice");
+    if (cornice) quad(f.cornice, 0.03, cornice, { transparent: true, useTint: true });
+    const win = texR("window");
+    if (win) for (const w of f.windows) quad(w, 0.04, win, { transparent: true });
+    const door = texR("door-stoop");
+    // Door+stoop unit at grade, aspect-preserving (asset 1086x1448). hF ~0.33 of an
+    // 8.5 m facade => ~2.8 m tall (door + transom + stoop), filling the ground floor.
+    if (door) {
+      const hF = 0.33, wF = hF * (2.2 / 1.6) * (1086 / 1448);
+      quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.04, door, { transparent: true });
+    }
   });
 
   // Hero reference (right of anchor) — flat textured quad, sized to the hero's wide aspect.
