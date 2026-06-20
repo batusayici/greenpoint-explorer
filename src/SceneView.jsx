@@ -92,6 +92,9 @@ export default function SceneView() {
   const [facadeEdit, setFacadeEdit] = useState(
     () => new URLSearchParams(window.location.search).get("facadeedit") === "1"
   );
+  // Gate B dev harness: ?assetkit=<family> composes + tints a family's inked
+  // components onto a test quad. Additive dev surface — never touches production.
+  const assetKitFamily = new URLSearchParams(window.location.search).get("assetkit");
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
   const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
@@ -210,6 +213,12 @@ export default function SceneView() {
     buildBuildings(three, scene, requestRender, isActive, addCullable);
     buildBlockStorefronts(three, scene);
     buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
+    // Gate B: dev-only composed proof for a material family (?assetkit=<family>).
+    if (assetKitFamily) {
+      import("./dev/AssetKitProof.js").then(({ mountAssetKitProof }) =>
+        mountAssetKitProof(THREE, three, assetKitFamily, inkedTexture)
+      );
+    }
     window.__three = three;
     window.__scene = scene;
 
