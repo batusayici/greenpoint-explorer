@@ -35,10 +35,15 @@ the window unit, no surrounding wall, no decorative lintel."
 Structure refs: `window/` — `IMG_0698`, `IMG_0849`, `IMG_0842`.
 
 ## 3. Weathering — assets/inked/modern-flat-weathering.v1.png  (1024×1024, tileable overlay, ink/grain only)
-"...a SEAMLESS TILING weathering overlay for painted metal: faint streaking, light
-oxidation/scuffing along seams — INK AND GRAIN ONLY, very low contrast, NO fill color and
-NO solid shapes (multiplies over the tinted wall). VERY subtle (modern cladding weathers
-little). Tiles cleanly on all four edges."
+"...a SEAMLESS TILING weathering overlay for painted metal on a PURE WHITE (#FFFFFF)
+BACKGROUND: faint streaking, light oxidation/scuffing along seams drawn as dark marks ONLY
+— background pure white, NOT warm grey, NO solid grey fill (clean areas must key to
+transparent). VERY subtle (modern cladding weathers little). Tiles cleanly on all four
+edges."
+
+> WEATHERING LESSON (see brick-fill / brownstone packet): if GPT returns a grey field
+> instead of marks-on-white, key with a luminance ramp (whitePoint≈210, blackPoint≈150),
+> not a border flood.
 Structure refs: `weathering/` — `IMG_0738`, `IMG_0739` (light streaking only; ignore brick).
 
 ## 4. Ground floor — assets/inked/modern-flat-ground.v1.png  (1024×512, opaque)

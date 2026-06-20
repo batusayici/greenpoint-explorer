@@ -55,10 +55,17 @@ Structure refs: `door:stoop/` — `IMG_0752` (carved door + terracotta surround)
 `IMG_0834`, `IMG_0878`, `IMG_0879`.
 
 ## 5. Weathering — assets/inked/brownstone-weathering.v1.png  (1024×1024, tileable overlay, ink/grain only)
-"...a SEAMLESS TILING weathering overlay for brownstone: faint spalling/sugaring of the
-stone face, hairline cracks, soot streaking below ledges — INK AND GRAIN ONLY, very low
-contrast, NO fill color and NO solid shapes (this multiplies over the tinted wall). Tiles
-cleanly on all four edges."
+"...a SEAMLESS TILING weathering overlay for brownstone on a PURE WHITE (#FFFFFF)
+BACKGROUND: faint spalling/sugaring of the stone face, hairline cracks, soot streaking
+below ledges drawn as dark marks ONLY — the background must be pure white, NOT warm grey,
+NO solid grey fill (this overlays the tinted wall; clean areas must be white so they key to
+transparent). Tiles cleanly on all four edges."
+
+> WEATHERING LESSON (brick-fill v1, 2026-06-20): GPT returned a solid mid-grey tile (0%
+> transparent) when asked for "warm-grey fill" — that paints a grey rectangle over the
+> wall. Demand a PURE WHITE bg with marks only. If it still returns a grey field, key with a
+> luminance ramp (whitePoint≈210, blackPoint≈150) instead of a border flood → ~80%+
+> transparent overlay.
 Structure refs: `weathering/` — `IMG_0749`, `IMG_0864`, `IMG_0865`, `IMG_0879`.
 
 ## 6. Ground floor — assets/inked/brownstone-ground.v1.png  (1024×512, opaque)

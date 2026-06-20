@@ -75,3 +75,17 @@ awning, roll-gate for brick + modern-flat (+ painted-masonry, warehouse not yet 
 
 Order to generate (per Batu, 2026-06-20): clapboard-shingle + brick-fill → brownstone →
 modern-flat.
+
+### brick-fill — keyed + mechanical gate PASS 2026-06-20 (Gate A/B pending, batched)
+
+- **brick-door-stoop.v1.png** — keyed at threshold 210 (58.5% cleared). Art strong (door +
+  transom + stone surround + cheek-walled stoop). Gate-A note: GPT added flanking brick wall
+  whose light mortar keyed ragged at the edges; core unit clean, composites fine. Regen
+  "draw ONLY the unit, no flanking wall" if pristine edges wanted.
+- **brick-weathering.v1.png** — **needed a fix.** GPT ignored "ink/grain on near-white" and
+  returned a SOLID grey tile (0% transparent) → would paint a grey rectangle over the wall
+  via the `transparent:true` overlay quad. Converted with a LUMINANCE-KEYED alpha ramp
+  (whitePoint 210, blackPoint 150) → 83.6% transparent / 2.2% opaque, matching clapboard's
+  overlay profile. **Recipe fix applied to brownstone + modern-flat weathering prompts:**
+  demand PURE WHITE (#FFFFFF) bg with marks only; fall back to the luminance ramp if needed.
+- Raws backed up at `.scratch/asset-kit/brick-{door-stoop,weathering}.raw.png`.
