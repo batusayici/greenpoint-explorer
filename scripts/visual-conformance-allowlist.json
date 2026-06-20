@@ -29,6 +29,7 @@
     { "glob": "src/Phase4BRuntimePreview.jsx", "reason": "Debug-mode runtime (?debug=1) — explicitly NOT the product look; Scene-vs-Debug constraint." },
     { "glob": "src/components/hero/FranklinHeroCorner.jsx", "reason": "Imported only by the Debug runtime." },
     { "glob": "src/components/dev/", "reason": "Dev-only tools (FacadeRecessEditor)." },
+    { "glob": "src/dev/AssetKitProof.js", "reason": "Dev-only Gate B isolation proof (?assetkit=<family>); the neutral backdrop tone + tint fallback are review-harness color, never product scene color." },
     { "glob": "src/data/", "reason": "Data fixtures / specs (JSON), not code." },
     { "glob": ".test.mjs", "reason": "Test files reference tokens and color bounds, not product style." },
     { "glob": "src/styles.css", "reason": "UI/CSS chrome — parallel CSS-variable registry, separate axis from the 3D scene tokens." },
