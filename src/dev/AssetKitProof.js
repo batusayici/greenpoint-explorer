@@ -62,4 +62,15 @@ export function mountAssetKitProofIsolation(THREE, three, family, inkedTexture, 
     const cHero = new THREE.Vector3().copy(anchor).addScaledVector(right, 1.3);
     panel(cHero, 2.6, 1.2, (quad) => quad({ x0: 0, x1: 1, y0: 0, y1: 1 }, 0.0, heroTexture, { transparent: false }));
   }
+
+  // On-demand renderer: requestRender is a no-op until renderScene is assigned
+  // (after this synchronous mount). Texture onLoads that resolve mid-mount (small
+  // browser-cached PNGs) are therefore lost. Schedule deferred kicks that run once
+  // renderScene exists so the panels paint without user interaction.
+  if (requestRender) {
+    const kick = () => requestRender();
+    requestAnimationFrame(kick);
+    requestAnimationFrame(() => requestAnimationFrame(kick));
+    setTimeout(kick, 300);
+  }
 }
