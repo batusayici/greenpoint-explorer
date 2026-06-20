@@ -71,6 +71,23 @@ export const ROOF_TONES = {
   warehouse: 0x3c3a34,
 };
 
+// Bridge the buildingTypology.classifyBuilding vocabulary (brick-prewar,
+// commercial-storefront, …) onto the canonical ROOF_TONES family keys.
+const ROOF_FAMILY_ALIAS = {
+  "brick-prewar": "brick",
+  "commercial-storefront": "brick", // 1-storey taxpayers: quiet dark tar roof
+  painted: "painted-masonry",
+};
+
+// Resolve a flat, quiet roof tone for any material family — accepts both the
+// canonical ROOF_TONES keys and the classifyBuilding vocabulary. Safe default:
+// brick (the Greenpoint massing default, == MASSING.roofCap), so an unknown or
+// missing family never produces a bright slab.
+export function roofToneFor(family) {
+  const key = ROOF_FAMILY_ALIAS[family] ?? family;
+  return ROOF_TONES[key] ?? ROOF_TONES.brick;
+}
+
 export function resolveTypologyColor(typology) {
   return TYPOLOGY_PALETTE[typology?.palette] ?? II_PALETTE.context[0];
 }

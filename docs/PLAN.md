@@ -194,7 +194,7 @@ Each family: components generated tintable-neutral (dark ink on warm grey) → k
 - **7.1 Clapboard / wood-frame — SHIPPED.** (horizontal-lap; shingle sub-type is carry-over)
 - **7.2 Brownstone.**
 - **7.3 Modern / flat.**
-- **7.4 Typological roof tone** — flat, quiet, multi-angle-safe (NOT detailed roofs). Closes the rotated-view rooftop gap.
+- **7.4 Typological roof tone — DONE (2026-06-20).** Per-family flat/quiet roof TONE wired into the procedural extrude caps so the four-angle camera never shows a bright slab. `ROOF_TONES` tokens (Phase-7 foundation) + new pure `roofToneFor(family)` resolver in `palette.js` bridge the `classifyBuilding` vocabulary (`brick-prewar`/`commercial-storefront`/`painted`) onto the canonical family keys, safe-defaulting to brick. Inked rowhouses resolve to `brick` (== legacy `MASSING.roofCap`, so the hero corner is byte-stable); block-extract buildings get their classified family's tone; plain context masses keep the cheap wall-darken. 7 palette tests, conformance/build green, verified in-engine (flat quiet caps, no bright slabs). NOT detailed roofs.
 
 ### Phase 8 — Spine Expansion + Story Attachment — NOW (8.2 done; 8.1 / 8.3 / 8.4 live)
 

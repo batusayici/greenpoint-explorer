@@ -34,6 +34,7 @@ import {
   TRADE_AWNING_TINT,
   MASSING,
   BRICK_TONES,
+  roofToneFor,
 } from "./visualSystem/palette.js";
 import { selectTreatment } from "./visualSystem/treatmentMap.js";
 import { mountAssetKitProofIsolation } from "./dev/AssetKitProof.js";
@@ -1384,11 +1385,19 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       color = II_PALETTE.context[index % II_PALETTE.context.length];
     }
     // ExtrudeGeometry material slots: 0 = caps (roof), 1 = side walls.
-    // Darker inked roof caps keep large masses from reading as flat slabs. Inked
-    // buildings keep a neutral dark roof (the brick tint is for the walls only).
-    const roof = inkedParams
-      ? new THREE.Color(MASSING.roofCap)
-      : new THREE.Color(color).multiplyScalar(0.5);
+    // Phase 7.4 — flat, quiet, per-family roof TONE so the four-angle camera
+    // never shows a bright slab on top. Inked rowhouses are brick (roofToneFor
+    // "brick" == legacy MASSING.roofCap, so the hero corner is unchanged);
+    // block-extract buildings get their classified family's tone; plain context
+    // masses keep the cheap wall-darken.
+    let roof;
+    if (inkedParams) {
+      roof = new THREE.Color(roofToneFor("brick"));
+    } else if (typology) {
+      roof = new THREE.Color(roofToneFor(typology.materialFamily));
+    } else {
+      roof = new THREE.Color(color).multiplyScalar(0.5);
+    }
     const body = new THREE.Mesh(geometry, [
       new THREE.MeshLambertMaterial({ color: roof }),
       new THREE.MeshLambertMaterial({ color }),
