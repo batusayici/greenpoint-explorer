@@ -1,0 +1,10 @@
+{
+  "_doc": "Define-only signature shape (recognizable-silhouette layer). A per-BIN, evidence-bound override of a FEW typological signatures on top of the generic kit base. NOT authored for real buildings and NOT wired into any renderer in this phase. Application rule: a signature key, when present, WINS over the typological base for that one aspect; absent keys fall through to the base kit. Allowed keys: cornice (a named bespoke cornice asset/profile id), corner (a named corner condition), color (a true hex snapped via colorBinding.nearestPaletteToken at apply time).",
+  "version": "0.1",
+  "bin": "0000000",
+  "signatures": {
+    "cornice": "bracketed-dentil-deep",
+    "corner": "chamfered-entry",
+    "color": "0x8a5a3c"
+  }
+}
