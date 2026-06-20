@@ -9,7 +9,7 @@ import { assetKitComponentFiles } from "../assetKitProof.js";
 
 const ISO_AZIMUTH = Math.PI * 0.75;
 
-export function mountAssetKitProofIsolation(THREE, three, family, inkedTexture, heroTexture) {
+export function mountAssetKitProofIsolation(THREE, three, family, inkedTexture, heroTexture, requestRender) {
   const want = new Set(assetKitComponentFiles(family)); // wall/cornice/window/door-stoop/weathering
   const tint = MATERIAL_WALL_TONES[family]?.[0] ?? 0xffffff;
 
@@ -47,7 +47,7 @@ export function mountAssetKitProofIsolation(THREE, three, family, inkedTexture, 
 
   // Test facade (left of anchor).
   const f = composeInkedFacade({ storeys: 3, bays: 2 });
-  const tex = (comp) => (want.has(`${family}-${comp}.v1.png`) ? inkedTexture(`${family}-${comp}.v1.png`) : null);
+  const tex = (comp) => (want.has(`${family}-${comp}.v1.png`) ? inkedTexture(`${family}-${comp}.v1.png`, undefined, requestRender) : null);
   const cTest = new THREE.Vector3().copy(anchor).addScaledVector(right, -1.1);
   panel(cTest, 1.6, 2.2, (quad) => {
     if (tex("wall")) quad(f.wall, 0.0, tex("wall"), { useTint: true });

@@ -203,9 +203,10 @@ export default function SceneView() {
       // beside a shipped hero composite on a neutral ground framed by iso camera.
       const heroTex = new THREE.TextureLoader().load(
         new URL("../assets/textures/franklin/premier-franklin-organic--corner-v4.png", import.meta.url).href,
+        () => requestRender?.(),
       );
       heroTex.colorSpace = THREE.SRGBColorSpace;
-      mountAssetKitProofIsolation(THREE, three, assetKitFamily, inkedTexture, heroTex);
+      mountAssetKitProofIsolation(THREE, three, assetKitFamily, inkedTexture, heroTex, requestRender);
     } else {
       const groundData = buildGroundLayer({
         projection: scene.projection,
@@ -1919,10 +1920,19 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
 // storeys), so a handful of brick-wall variants is expected.
 const __inkedTexCache = new Map();
 let __glazingTex = null; // shared inked-glass texture (built once)
-function inkedTexture(file, repeat) {
+function inkedTexture(file, repeat, onLoad) {
   const key = repeat ? `${file}@${repeat[0]}x${repeat[1]}` : file;
-  if (__inkedTexCache.has(key)) return __inkedTexCache.get(key);
-  const tex = new THREE.TextureLoader().load(new URL(`../assets/inked/${file}`, import.meta.url).href);
+  if (__inkedTexCache.has(key)) {
+    // Cache hit: texture already created. Call onLoad immediately so late
+    // callers (e.g. isolation path) still get a repaint even though the
+    // TextureLoader callback will never fire again.
+    if (onLoad) onLoad();
+    return __inkedTexCache.get(key);
+  }
+  const tex = new THREE.TextureLoader().load(
+    new URL(`../assets/inked/${file}`, import.meta.url).href,
+    onLoad,
+  );
   tex.colorSpace = THREE.SRGBColorSpace;
   if (repeat) {
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
