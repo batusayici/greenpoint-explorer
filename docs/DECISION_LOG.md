@@ -4,6 +4,26 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-20 - Asset Kit Process: Recognizable-Silhouette Model + Two-Gate Taste Review + Real-Meter Isolation Proof
+
+Decision (Batu-approved in session, closing the clapboard vertical-slice pilot):
+
+**Recognizable-silhouette model:** the inked component kit uses a typological base layer (tintable-neutral components: wall/cornice/window/door/weathering) plus a define-only **signature layer** for distinctive per-building silhouette features (bay windows, stoops, oriel projections, etc.). The signature layer is defined as a contract today; BUILD into the renderer is Phase 7+/8 work. This keeps each subsequent family cheap: generate the base set from the proven recipe, add signature features as curated overlays.
+
+**Two human taste gates (on top of the mechanical gate):**
+1. **Gate A — Contact-sheet board** (`docs/visual-artifacts/asset-kit-boards/<family>-board.png`): all components at scale on one sheet, reviewed for II-C style fidelity.
+2. **Gate B — Isolation scene proof** (`docs/visual-artifacts/asset-kit-boards/<family>-scene-proof.jpg`): components composed in the harness (`src/dev/AssetKitProof.js`) into a representative building massing and reviewed for system coherence at render scale.
+
+The mechanical gate (`node scripts/verify-inked-component.mjs`, chained in `npm run verify`) is a prerequisite but not sufficient — both taste gates are required before a family ships.
+
+**Isolation proof must size by real meters:** the harness must use physically accurate dimensions (representative building footprint in metres, real lap/cornice/window/door heights) or the composition reads wrong at render scale regardless of art quality. Clapboard pilot lesson: arbitrary fractions produced a stretched giant lap and undersized openings; real-meter sizing fixed both immediately.
+
+**Clapboard as the consistency anchor:** the clapboard family (5 components: wall/cornice/window/door-stoop/weathering) is the first family through both taste gates and is designated the anchor for style consistency across all subsequent families. The recipe (generation prompt scaffold, alpha-key workflow, real-meter compose harness) is now proven and reusable.
+
+**Vertical-slice method:** generate one full family end-to-end (all components → mechanical gate → Gate A → Gate B) before scaling. De-risks the generation + compose workflow before committing effort to all families.
+
+Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/reference/art/ASSET_KIT_LOG.md` (clapboard entry), `docs/COMPONENT_INVENTORY.md`, `docs/superpowers/plans/2026-06-19-asset-kit-generation.md`.
+
 ## 2026-06-18 - Sequenced Roadmap Locked (Phases 6–9): spine-first, container + content together
 
 Decision (Batu-approved in session): the now/next/later ordering across the container (Track A) and content (Track B) is **locked** in `docs/PLAN.md` as Phases 6–9. This closes the OPEN priority re-decision recorded 2026-06-17.
