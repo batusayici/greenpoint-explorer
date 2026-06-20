@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --test \"src/**/*.test.mjs\"",
+    "board": "python3 scripts/asset_kit_board.py",
     "verify:conformance": "node scripts/verify-visual-conformance.mjs",
     "verify:visual": "node scripts/verify-visual-baseline.mjs",
     "verify:components": "node scripts/verify-inked-component.mjs",
