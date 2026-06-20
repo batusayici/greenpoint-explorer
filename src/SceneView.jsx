@@ -34,8 +34,11 @@ import {
   TRADE_AWNING_TINT,
   MASSING,
   BRICK_TONES,
+  MATERIAL_WALL_TONES,
 } from "./visualSystem/palette.js";
 import { selectTreatment } from "./visualSystem/treatmentMap.js";
+import { assetKitComponentFiles } from "./assetKitProof.js";
+import { isValidCell } from "./materialFamilies.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
@@ -214,10 +217,10 @@ export default function SceneView() {
     buildBlockStorefronts(three, scene);
     buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
     // Gate B: dev-only composed proof for a material family (?assetkit=<family>).
+    // Anchored to the scene frame (picks best camera-facing building) so the result
+    // is visible and in-context beside the hero, not at world origin off-camera.
     if (assetKitFamily) {
-      import("./dev/AssetKitProof.js").then(({ mountAssetKitProof }) =>
-        mountAssetKitProof(THREE, three, assetKitFamily, inkedTexture)
-      );
+      mountAssetKitProof(three, scene, assetKitFamily);
     }
     window.__three = three;
     window.__scene = scene;
@@ -1092,8 +1095,10 @@ function buildInkedFacadeTest(three, scene) {
   }
 
   // Compose + render one building's inked facade. `bays` null → derive from the
-  // chosen frontage width. Shared by the explicit-BIN list and the block stamp.
-  function stampInkedFacade(building, tint, bays, storeysOverride, faceDir) {
+  // chosen frontage width. Shared by the explicit-BIN list, the block stamp, and
+  // the Gate-B dev proof. `family` defaults to "brick" so all existing callers are
+  // byte-identical.
+  function stampInkedFacade(building, tint, bays, storeysOverride, faceDir, family = "brick") {
     if (!building || !building.polygon || !building.centroid) return;
     const typ = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
     const storeys = storeysOverride ?? Math.max(2, typ.storeyCount ?? 4);
@@ -1135,35 +1140,48 @@ function buildInkedFacadeTest(three, scene) {
       return geo;
     };
 
+    // Guard: only draw components this family legally has. For wall/cornice/window
+    // use assetKitComponentFiles; for ground use isValidCell directly (ground is
+    // excluded from the assetKitComponentFiles list by design).
+    const want = new Set(assetKitComponentFiles(family));
+
     const f = composeInkedFacade({ storeys, bays: resolvedBays });
 
-    // Wall (tiled brick), tinted.
-    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [resolvedBays, storeys] }, cachedTexture);
-    wallMat.color.setHex(tint);
-    addInked(quad(f.wall, 0.02), wallMat);
+    // Wall (tiled), tinted.
+    if (want.has(`${family}-wall.v1.png`)) {
+      const wallMat = loadInkedComponent(`${family}-wall.v1.png`, { repeat: [resolvedBays, storeys] }, cachedTexture);
+      wallMat.color.setHex(tint);
+      addInked(quad(f.wall, 0.02), wallMat);
+    }
 
     // Ground floor band (opaque), tinted.
-    const groundMat = loadInkedComponent("brick-ground.v1.png", {}, cachedTexture);
-    groundMat.color.setHex(tint);
-    addInked(quad(f.ground, 0.03), groundMat);
+    if (isValidCell(family, "ground")) {
+      const groundMat = loadInkedComponent(`${family}-ground.v1.png`, {}, cachedTexture);
+      groundMat.color.setHex(tint);
+      addInked(quad(f.ground, 0.03), groundMat);
+    }
 
     // Cornice strip (alpha), tinted.
-    const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true }, cachedTexture);
-    corniceMat.color.setHex(tint);
-    addInked(quad(f.cornice, 0.04), corniceMat);
+    if (want.has(`${family}-cornice.v1.png`)) {
+      const corniceMat = loadInkedComponent(`${family}-cornice.v1.png`, { transparent: true }, cachedTexture);
+      corniceMat.color.setHex(tint);
+      addInked(quad(f.cornice, 0.04), corniceMat);
+    }
 
     // Windows (alpha), NOT tinted. All windows share one material — same file,
     // same alpha config, no tint — so we build it once and reuse the instance.
-    const winMat = new THREE.MeshBasicMaterial({
-      map: cachedTexture("brick-window.v1.png"),
-      transparent: true,
-      side: THREE.DoubleSide,
-      polygonOffset: true,
-      polygonOffsetFactor: -6,
-      polygonOffsetUnits: -6,
-    });
-    for (const w of f.windows) {
-      addInked(quad(w, 0.035), winMat);
+    if (want.has(`${family}-window.v1.png`)) {
+      const winMat = new THREE.MeshBasicMaterial({
+        map: cachedTexture(`${family}-window.v1.png`),
+        transparent: true,
+        side: THREE.DoubleSide,
+        polygonOffset: true,
+        polygonOffsetFactor: -6,
+        polygonOffsetUnits: -6,
+      });
+      for (const w of f.windows) {
+        addInked(quad(w, 0.035), winMat);
+      }
     }
   }
 
@@ -1185,6 +1203,125 @@ function buildInkedFacadeTest(three, scene) {
       for (const ch of b.bin) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
       stampInkedFacade(b, INKED_FACADE_BLOCK.palette[h % INKED_FACADE_BLOCK.palette.length], null);
     }
+  }
+}
+
+// Gate B dev proof — compose a material family's inked components onto a REAL
+// building in the scene frame so the result can be judged in-context, beside a
+// hero. Dev-only; called only under ?assetkit=<family>. Placed after
+// buildInkedFacadeTest so it can reuse `stampInkedFacade` (defined inside that
+// function's closure) via the scene-scoped helper below.
+//
+// NOTE: stampInkedFacade is defined inside buildInkedFacadeTest's closure and
+// captures `scene`, `three`, `cachedTexture`, and `addInked` from that scope.
+// We cannot call it from here directly. Instead this function replicates the
+// minimal scene-anchored stamp using the same scene-frame helpers (footprintEdges,
+// faceFrame) that are module-level, then delegates to buildInkedFacadeTest with
+// a targeted single building — achieved by temporarily setting INKED_FACADE_TEST.
+// SIMPLER APPROACH: just call stampInkedFacade inline here with scene access.
+// Both footprintEdges and faceFrame are module-level. We need our own cachedTexture
+// and addInked. This function therefore owns its own texture cache (acceptable:
+// it's one shot, dev-only) and adds directly to `three`.
+function mountAssetKitProof(three, scene, family) {
+  // Pick the camera-facing building deterministically: maximum face-score
+  // (same formula as stampInkedFacade default) weighted by edge length.
+  // This picks a large, front-and-center building in the hero corner frame.
+  const dirX = -Math.SQRT1_2;
+  const dirZ = Math.SQRT1_2;
+  let bestBuilding = null;
+  let bestScore = -Infinity;
+  for (const b of scene.buildings) {
+    if (!b.polygon || !b.centroid) continue;
+    const edges = footprintEdges(b.polygon, b.centroid);
+    if (!edges.length) continue;
+    const topEdge = edges.slice().sort(
+      (a, b) => ((b.normal.x * dirX + b.normal.z * dirZ) * b.length) - ((a.normal.x * dirX + a.normal.z * dirZ) * a.length)
+    )[0];
+    const score = (topEdge.normal.x * dirX + topEdge.normal.z * dirZ) * topEdge.length;
+    if (score > bestScore) { bestScore = score; bestBuilding = b; }
+  }
+  if (!bestBuilding) return;
+
+  const tint = MATERIAL_WALL_TONES[family]?.[0] ?? 0xffffff;
+
+  // Own texture cache (dev-only; one-shot load).
+  const texCache = new Map();
+  function cachedTexture(file, { repeat } = {}) {
+    if (texCache.has(file)) return texCache.get(file);
+    const tex = new THREE.TextureLoader().load(
+      new URL(`../assets/inked/${file}`, import.meta.url).href,
+    );
+    tex.colorSpace = THREE.SRGBColorSpace;
+    if (repeat) {
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(repeat[0], repeat[1]);
+    }
+    texCache.set(file, tex);
+    return tex;
+  }
+  function addInked(geo, mat) {
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.frustumCulled = false;
+    three.add(mesh);
+  }
+
+  // Re-implement the same stamp logic as stampInkedFacade with the chosen
+  // building and family, using module-level helpers (footprintEdges, faceFrame).
+  const b = bestBuilding;
+  const typ = classifyBuilding({ sourceProperties: b.sourceProperties ?? {} });
+  const storeys = Math.max(2, typ.storeyCount ?? 4);
+  const edges = footprintEdges(b.polygon, b.centroid);
+  const faceScore = (e) => (e.normal.x * dirX + e.normal.z * dirZ) * e.length;
+  const edge = edges.slice().sort((a, b) => faceScore(b) - faceScore(a))[0];
+  const frontageM = edge.length / scene.projection.scale;
+  const resolvedBays = Math.min(6, Math.max(2, Math.round(frontageM / INKED_FACADE_BLOCK.bayMeters)));
+  const { left, right, normal } = faceFrame(edge, b.height, null, scene);
+  const point = (x, y, off) => [
+    left.x + (right.x - left.x) * x + normal.x * off,
+    y * b.height,
+    left.z + (right.z - left.z) * x + normal.z * off,
+  ];
+  const quad = (r, off, uvFlip = true) => {
+    const positions = new Float32Array([
+      ...point(r.x0, r.y0, off), ...point(r.x1, r.y0, off),
+      ...point(r.x1, r.y1, off), ...point(r.x0, r.y1, off),
+    ]);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const uv = uvFlip ? [1,0, 0,0, 0,1, 1,1] : [0,0, 1,0, 1,1, 0,1];
+    geo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(uv), 2));
+    geo.setIndex([0, 1, 2, 0, 2, 3]);
+    return geo;
+  };
+
+  const want = new Set(assetKitComponentFiles(family));
+  const f = composeInkedFacade({ storeys, bays: resolvedBays });
+
+  if (want.has(`${family}-wall.v1.png`)) {
+    const wallMat = loadInkedComponent(`${family}-wall.v1.png`, { repeat: [resolvedBays, storeys] }, cachedTexture);
+    wallMat.color.setHex(tint);
+    addInked(quad(f.wall, 0.02), wallMat);
+  }
+  if (isValidCell(family, "ground")) {
+    const groundMat = loadInkedComponent(`${family}-ground.v1.png`, {}, cachedTexture);
+    groundMat.color.setHex(tint);
+    addInked(quad(f.ground, 0.03), groundMat);
+  }
+  if (want.has(`${family}-cornice.v1.png`)) {
+    const corniceMat = loadInkedComponent(`${family}-cornice.v1.png`, { transparent: true }, cachedTexture);
+    corniceMat.color.setHex(tint);
+    addInked(quad(f.cornice, 0.04), corniceMat);
+  }
+  if (want.has(`${family}-window.v1.png`)) {
+    const winMat = new THREE.MeshBasicMaterial({
+      map: cachedTexture(`${family}-window.v1.png`),
+      transparent: true,
+      side: THREE.DoubleSide,
+      polygonOffset: true,
+      polygonOffsetFactor: -6,
+      polygonOffsetUnits: -6,
+    });
+    for (const w of f.windows) addInked(quad(w, 0.035), winMat);
   }
 }
 
