@@ -170,7 +170,7 @@ Resolves the (formerly open) priority re-decision. **Principle:** don't fill the
 
 **Deferred for now (explicit):** roof *detail*, pavement/sidewalk detail, business-claim monetization, second neighborhood. *(Watchout: a flat roof **tone** is NOT deferred — see 7.4 — because the four-angle camera shows rooftops.)*
 
-### Phase 6 — Curation & Visual-System Lock — NOW
+### Phase 6 — Curation & Visual-System Lock — DONE (2026-06-18)
 
 Cheap, decision-shaped, and gates everything downstream. Nothing scales until this lands.
 
@@ -180,16 +180,16 @@ Cheap, decision-shaped, and gates everything downstream. Nothing scales until th
   - 6.2.2 **Component inventory** — kit pieces × material families × variants × tiers, mapped to the modules that render them.
   - 6.2.3 **Conformance gate** — fails on any out-of-token color + a per-material regression screenshot. All building rendering routes through the kit; ad-hoc per-building tuning (the recent cornice churn) ends here.
 
-### Phase 7 — Asset Kit Completion — NEXT
+### Phase 7 — Asset Kit Completion — IN PROGRESS (foundation done; generation parked on refs)
 
-Today the kit is one material family (brick). Greenpoint is four. Each family: components generated tintable-neutral (dark ink on warm grey) → keyed to alpha → composed via `inkedFacadeCompose.js` → passes the 6.2.3 gate.
+Today the kit is one material family (brick). Greenpoint is six (reconciled). Each family: components generated tintable-neutral (dark ink on warm grey) → keyed to alpha → composed via `inkedFacadeCompose.js` → passes the 6.2.3 gate. Full scope/plan in `docs/superpowers/` (2026-06-18). **Foundation done (Tasks 1–5):** 6-family taxonomy + valid-cell matrix (`src/materialFamilies.js`), `nearestPaletteToken` color contract, roof-tone tokens, headless component verifier (`scripts/verify-inked-component.mjs`, chained into `npm run verify`), reference-intake manifest. 56-photo reference corpus organized in `docs/reference/asset-reference/`. **Parked (Tasks 6–8):** the GPT asset-generation pass — gated on the generation workflow + missing references (roll-gate, brownstone, warehouse, tight storefront/bay-frame). Classifier rewrite + renderer wiring are Phase 8.
 
 - **7.1 Clapboard / wood-frame** (non-negotiable for Greenpoint).
 - **7.2 Brownstone.**
 - **7.3 Modern / flat.**
 - **7.4 Typological roof tone** — flat, quiet, multi-angle-safe (NOT detailed roofs). Closes the rotated-view rooftop gap.
 
-### Phase 8 — Spine Expansion + Story Attachment — NEXT (8.1 follows 7.1; 8.2–8.3 run parallel)
+### Phase 8 — Spine Expansion + Story Attachment — NOW (8.2 done; 8.1 / 8.3 / 8.4 live)
 
 Absorbs Track-A 4.3 (corridor infill) and 5.1 (typological infill kit), and Track-B B1.
 
