@@ -54,11 +54,36 @@ def first_photo(folder: Path):
     return None
 
 
+def family_photos(family: str):
+    """Filenames present in the family's material folder."""
+    folder = REF / "facade material" / FAMILY_FOLDER.get(family, "")
+    if not folder.is_dir():
+        return {}
+    return {p.name: p for p in folder.iterdir()
+            if p.suffix.lower() in (".jpeg", ".jpg", ".png", ".webp")}
+
+
 def source_photo(family: str, component: str):
-    if component == "wall":
+    """Prefer a FAMILY-MATCHED reference: a photo cross-filed in both the
+    component folder and the family's material folder (the corpus dual-files by
+    component + material). Fall back to the component folder's first photo.
+    wall/ground come straight from the material folder."""
+    mats = family_photos(family)
+    if component.endswith("wall") or component == "ground":
+        if component == "shingle-wall":  # prefer an actual shingle photo
+            for name, p in sorted(mats.items()):
+                if "shingle" in name.lower():
+                    return p
         return first_photo(REF / "facade material" / FAMILY_FOLDER.get(family, ""))
     sub = COMPONENT_FOLDER.get(component)
-    return first_photo(REF / sub) if sub else None
+    if not sub:
+        return None
+    comp_folder = REF / sub
+    if comp_folder.is_dir() and mats:  # family-matched cross-file
+        for p in sorted(comp_folder.iterdir()):
+            if p.name in mats:
+                return p
+    return first_photo(comp_folder)
 
 
 def fit(path: Path, size: int):
