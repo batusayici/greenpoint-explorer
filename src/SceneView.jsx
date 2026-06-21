@@ -2082,13 +2082,38 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       const groundFile = kitFile(family, "ground");
       if (groundFile) quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
     }
+    // Door + stoop unit at grade (kit only). Centered, aspect-preserving for the
+    // 1086x1448 asset. Skipped if the family lacks the cell or the override turns
+    // it off. INKED_FACADE_REAL (no params.family) never reaches this.
+    if (isKit && params.components?.["door-stoop"] !== false) {
+      const doorFile = kitFile(family, "door-stoop");
+      if (doorFile) {
+        const hF = Math.min(0.34, f.ground.y1);          // ~ground-floor tall
+        const wF = (hF * heightM) * (1086 / 1448) / frontM; // preserve asset aspect in face-units
+        quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(doorFile), { transparent: true });
+      }
+    }
     // Windows: the painted elevation (frame + glass + lintel + sill, with its own
     // depth shading) drawn flush over the brick. Its transparent margins show the
     // brick behind, so there is no geometric recess and no dark border ringing the
     // frame. A true set-back glass would need the glass keyed transparent in the
     // art (the painted glass is opaque, so a recessed pane behind it can't show).
     const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
-    for (const w of f.windows) quad(w, 0.008, winTex, { transparent: true });
+    const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
+    const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
+    for (const w of f.windows) {
+      if (recessProj > 0) {
+        const o = 0.006, op = 0.006 + recessProj; // wall plane vs proud outer lip
+        // head (top, deep shadow), jambs (sides, shadow), sill (bottom, lighter)
+        quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: darken2(0.4) });
+        quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: darken2(0.45) });
+        quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: darken2(0.45) });
+        quad3(point(w.x0, w.y0, o), point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x0, w.y0, op), null, { tint: darken2(0.7) });
+        quad(w, o, winTex, { transparent: true });
+      } else {
+        quad(w, 0.008, winTex, { transparent: true });
+      }
+    }
   }
   // Cornice on the street face(s): a projecting painted crown that butts against
   // the neighbour at party lines (no overhang there, so it never spills onto the
