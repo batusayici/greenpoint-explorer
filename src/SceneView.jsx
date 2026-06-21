@@ -2060,6 +2060,31 @@ function inkedCorniceTexture(onReady) {
   return null;
 }
 
+// Procedural OPEN-IRONWORK railing texture: dark balusters + top/bottom rails on a
+// transparent ground, so fire-escape rails read as see-through iron (not solid dark
+// shelves). Drawn once, tinted in-engine, tiled horizontally. No GPT asset needed.
+let __railTex = null;
+function inkedRailingTexture() {
+  if (__railTex) return __railTex;
+  const W = 128, H = 64, c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const ctx = c.getContext("2d");
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = "#000"; // opaque where iron is; rest stays transparent → see-through
+  ctx.fillRect(0, 3, W, 6);        // top rail
+  ctx.fillRect(0, H - 9, W, 6);    // bottom rail
+  const n = 11, bw = 3;
+  for (let i = 0; i < n; i += 1) {
+    ctx.fillRect(Math.round((i + 0.5) * (W / n) - bw / 2), 3, bw, H - 6); // balusters
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.anisotropy = 8;
+  __railTex = tex;
+  return tex;
+}
+
 // Inked component-kit facade on one wall edge. Same registration model as
 // decorateTypologicalWall: quads sit a hair proud of the wall (outward normal
 // offset), parented under `target`, relying on the opaque massing to occlude
@@ -2149,15 +2174,6 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
     quad(f.wall, 0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
   }
-  // Maps a pure module's face-local meter quads ([u,v,w]) into the wall frame.
-  // Defined here (after frontM/heightM/upm) so no temporal-dead-zone risk.
-  const drawMeterQuads = (quads, tint) => {
-    for (const q of quads) {
-      const [a, b, c, d] = q.corners.map(([u, v, w]) =>
-        point(u / frontM, v / heightM, w * upm));
-      quad3(a, b, c, d, null, { tint });
-    }
-  };
   // One window unit: recessed glass (depth) + a projecting stone sill, or a flush
   // decal for non-kit. `exposedRanges` (0..1 along the edge) clips a window off the
   // abutted part of a party-ish face so openings never land on covered wall.
@@ -2274,13 +2290,24 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     // exposed runs. Perpendicular side (lot-line/party) walls stay blank.
     for (const w of f.windows) drawWindow(w);
   }
-  // Front fire escape (street face only, prewar masonry >=4 storeys). Dark iron
-  // as a family-palette tint; geometry-only, no texture asset. Projects proud of
-  // the wall like the cornice, so the solid mass occludes it from rear angles.
+  // Front fire escape (street face only, prewar masonry >=4 storeys). Rails read as
+  // OPEN ironwork via the procedural railing texture (see-through balusters), not
+  // solid shelves; decks are thin platforms; the ladder is a slender stringer. Dark
+  // iron tint from the family palette. Projects proud, occluded from the rear by mass.
   if (streetFace && isKit && wantsFireEscape(family, storeys)) {
-    const variant = params.fireEscapeVariant ?? "relief";
-    const fe = buildFireEscapeGeometry({ frontM, heightM, storeys, variant });
-    drawMeterQuads(fe.quads, darken(params.tint, 0.32));
+    const fe = buildFireEscapeGeometry({ frontM, heightM, storeys });
+    const iron = darken(params.tint, 0.26);
+    const railTex = inkedRailingTexture();
+    for (const q of fe.quads) {
+      const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
+      if (q.role === "rail") {
+        quad3(a, b, c, d, railTex, { tint: iron, transparent: true }); // open balusters
+      } else if (q.role === "deck") {
+        quad3(a, b, c, d, null, { tint: darken(params.tint, 0.34) });   // thin platform
+      } else { // ladder (+ any baluster geometry) — slender solid members
+        quad3(a, b, c, d, null, { tint: iron });
+      }
+    }
   }
   // Cornice on the street face(s): a projecting painted crown that butts against
   // the neighbour at party lines (no overhang there, so it never spills onto the
