@@ -2119,10 +2119,21 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
+  const isKit = params.family != null;
+  const family = params.family ?? "brick";
+  const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
+  // True carved recess: the solid massing sits ~coplanar behind the inked skin, so
+  // glass can't recede behind the wall plane without the mass occluding it. Instead
+  // push the WHOLE skin proud of the mass by SKIN_BASE, then carve openings back
+  // toward (never behind) the mass. Baked into `point` so every coplanar element
+  // (wall, ground, cornice, stoop, seams) shifts together and keeps its relations;
+  // openings subtract recessProj locally to sink the glass. Non-recessed walls keep
+  // the old flush offset (SKIN_BASE = 0) so nothing else moves.
+  const SKIN_BASE = recessProj > 0 ? recessProj + 0.006 : 0;
   const point = (x, y, off) => [
-    left.x + (right.x - left.x) * x + normal.x * off,
+    left.x + (right.x - left.x) * x + normal.x * (off + SKIN_BASE),
     y * height,
-    left.z + (right.z - left.z) * x + normal.z * off,
+    left.z + (right.z - left.z) * x + normal.z * (off + SKIN_BASE),
   ];
   // tex null → solid-color quad (used for party-wall seams).
   const quad = (r, off, tex, { tint, transparent, opacity } = {}) => {
@@ -2163,8 +2174,6 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // Cornice height: ~0.85m, matching the Premier hero (the trimmed texture fills
   // the band 1:1, so the band height IS the real cornice height — 1.7m read as
   // double the hero). Metric so it stays consistent across building heights.
-  const isKit = params.family != null;
-  const family = params.family ?? "brick";
   const corniceFrac = params.corniceFrac ?? clamp(0.85 / heightM, 0.045, 0.08);
   const bays = params.bays ?? clamp(Math.round(frontM / 2.8), 1, 6);
   const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
@@ -2179,45 +2188,85 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // Wall (full-height tiled, family texture): every face, so side/rear read in
   // material. kitFile("brick","wall") === the legacy file, so non-kit is unchanged.
   const wallFile = kitFile(family, "wall") ?? "brick-wall.v1.png";
-  quad(f.wall, 0.004, inkedTexture(wallFile, brickRepeat), { tint: params.tint });
-  // Weathering wash (kit only): a transparent grime pass over the wall at the
-  // requested opacity. INKED_FACADE_REAL has no params.weathering → skipped.
-  if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
-    quad(f.wall, 0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
-  }
-  // One window unit: recessed glass (depth) + a projecting stone sill, or a flush
-  // decal for non-kit. `exposedRanges` (0..1 along the edge) clips a window off the
-  // abutted part of a party-ish face so openings never land on covered wall.
+  const wallTex = inkedTexture(wallFile, brickRepeat);
+  // Recessed openings (windows/doors) carve TRUE holes out of the wall plane so the
+  // sunk glass is visible through them instead of being occluded by a full quad.
+  // Collected during the opening passes, then the wall (+ weathering) is emitted as
+  // a holed ShapeGeometry at the end. `WALL_PLANE` is the outer skin surface (the
+  // hole rim); openings sink to WALL_PLANE - recessProj toward the mass.
+  const WALL_PLANE = 0.004;
+  const wallHoles = [];
+  const emitWall = () => {
+    const drawSkin = (off, tex, opts) => {
+      if (wallHoles.length === 0) { quad(f.wall, off, tex, opts); return; }
+      const shape = new THREE.Shape();
+      shape.moveTo(0, 0); shape.lineTo(1, 0); shape.lineTo(1, 1); shape.lineTo(0, 1); shape.lineTo(0, 0);
+      for (const h of wallHoles) {
+        const path = new THREE.Path();
+        path.moveTo(h.x0, h.y0); path.lineTo(h.x1, h.y0); path.lineTo(h.x1, h.y1); path.lineTo(h.x0, h.y1); path.lineTo(h.x0, h.y0);
+        shape.holes.push(path);
+      }
+      const sg = new THREE.ShapeGeometry(shape);
+      const src = sg.attributes.position, n = src.count;
+      const pos = new Float32Array(n * 3), uvs = new Float32Array(n * 2);
+      for (let i = 0; i < n; i += 1) {
+        const x = src.getX(i), y = src.getY(i);
+        const wp = point(x, y, off);
+        pos[i * 3] = wp[0]; pos[i * 3 + 1] = wp[1]; pos[i * 3 + 2] = wp[2];
+        uvs[i * 2] = 1 - x; uvs[i * 2 + 1] = y; // match the flat wall quad's flip
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      g.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+      g.setIndex(Array.from(sg.index.array));
+      const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!opts?.transparent });
+      if (tex) m.map = tex;
+      if (opts?.tint != null) m.color.setHex(opts.tint);
+      if (opts?.opacity != null) m.opacity = opts.opacity;
+      target.add(new THREE.Mesh(g, m));
+    };
+    drawSkin(WALL_PLANE, wallTex, { tint: params.tint });
+    // Weathering wash (kit only): a transparent grime pass over the wall at the
+    // requested opacity. INKED_FACADE_REAL has no params.weathering → skipped.
+    if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
+      drawSkin(0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
+    }
+  };
   const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
   const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
-  const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
   const inExposed = (xc) => !exposedRanges || exposedRanges.some(([a, b]) => xc >= a - 1e-6 && xc <= b + 1e-6);
   const [spanX, spanY] = WINDOW_CONTENT_SPAN[family] ?? WINDOW_CONTENT_SPAN.brick;
-  // Recess reveals edge-stretch the WALL material into the recess (the hero
-  // approach — facadeAssembly.bridgeMesh) and darken per face, so jambs/lintels
-  // continue the wall instead of reading as flat grey/tan bars. Dark head (lintel
-  // shadow), mid jambs; no bottom reveal (the decal carries its own sill, or none).
-  const wallTex = inkedTexture(wallFile, brickRepeat);
-  const REVEAL = { head: 0.34, jamb: 0.58 };
-  const drawReveals = (r, o, op) => {
-    quad3(point(r.x0, r.y1, op), point(r.x1, r.y1, op), point(r.x1, r.y1, o), point(r.x0, r.y1, o), wallTex,
+  // Reveals bridge the wall plane (outer rim, at the hole edge) INWARD to the sunk
+  // glass plane, edge-stretching the WALL material so jambs/head/sill continue the
+  // wall (the hero approach — facadeAssembly.bridgeMesh). The head reads as a
+  // shadowed lintel soffit (dark), the sill catches light (lit), jambs are mid —
+  // the classical drawn-shadow language that makes a carved opening read.
+  const REVEAL = { head: 0.3, sill: 0.82, jamb: 0.56 };
+  // r = opening rect; W = wall-plane off (rim), D = sunk off (glass), D < W.
+  const drawReveals = (r, W, D) => {
+    // head soffit — faces down, deepest shadow
+    quad3(point(r.x0, r.y1, W), point(r.x1, r.y1, W), point(r.x1, r.y1, D), point(r.x0, r.y1, D), wallTex,
       { tint: darken(params.tint, REVEAL.head), uv: [1 - r.x0, r.y1, 1 - r.x1, r.y1, 1 - r.x1, r.y1, 1 - r.x0, r.y1] });
-    quad3(point(r.x0, r.y0, op), point(r.x0, r.y0, o), point(r.x0, r.y1, o), point(r.x0, r.y1, op), wallTex,
+    // sill — faces up, catches light
+    quad3(point(r.x0, r.y0, D), point(r.x1, r.y0, D), point(r.x1, r.y0, W), point(r.x0, r.y0, W), wallTex,
+      { tint: darken(params.tint, REVEAL.sill), uv: [1 - r.x0, r.y0, 1 - r.x1, r.y0, 1 - r.x1, r.y0, 1 - r.x0, r.y0] });
+    // left jamb
+    quad3(point(r.x0, r.y0, W), point(r.x0, r.y0, D), point(r.x0, r.y1, D), point(r.x0, r.y1, W), wallTex,
       { tint: darken(params.tint, REVEAL.jamb), uv: [1 - r.x0, r.y0, 1 - r.x0, r.y0, 1 - r.x0, r.y1, 1 - r.x0, r.y1] });
-    quad3(point(r.x1, r.y0, o), point(r.x1, r.y0, op), point(r.x1, r.y1, op), point(r.x1, r.y1, o), wallTex,
+    // right jamb
+    quad3(point(r.x1, r.y0, D), point(r.x1, r.y0, W), point(r.x1, r.y1, W), point(r.x1, r.y1, D), wallTex,
       { tint: darken(params.tint, REVEAL.jamb), uv: [1 - r.x1, r.y0, 1 - r.x1, r.y0, 1 - r.x1, r.y1, 1 - r.x1, r.y1] });
   };
   const drawWindow = (w) => {
     if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
     if (recessProj > 0) {
-      const o = 0.006, op = 0.006 + recessProj; // recessed glass plane vs proud surround
-      drawReveals(w, o, op);
+      const D = WALL_PLANE - recessProj; // sunk glass plane (toward the mass; SKIN_BASE keeps it proud)
+      wallHoles.push({ x0: w.x0, y0: w.y0, x1: w.x1, y1: w.y1 });
+      drawReveals(w, WALL_PLANE, D);
       // Expand the decal so its painted content (which has transparent margins) fills
       // the opening exactly — recess hugs the glass instead of enveloping a small window.
       const cx = (w.x0 + w.x1) / 2, cy = (w.y0 + w.y1) / 2, hw = (w.x1 - w.x0) / 2, hh = (w.y1 - w.y0) / 2;
-      quad({ x0: cx - hw / spanX, y0: cy - hh / spanY, x1: cx + hw / spanX, y1: cy + hh / spanY }, o, winTex, { transparent: true });
-      // No separate geometry sill — the window decal already paints its own
-      // lintel + sill; the recess gives the depth. (A doubled sill looked wrong.)
+      quad({ x0: cx - hw / spanX, y0: cy - hh / spanY, x1: cx + hw / spanX, y1: cy + hh / spanY }, D, winTex, { transparent: true });
     } else {
       quad(w, 0.008, winTex, { transparent: true });
     }
@@ -2227,14 +2276,17 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // A real recessed entry door (dark leaf + transom + proud frame), drawn on the
   // plain wall after the stoop. Replaces the old flat panel that the ground band hid.
   const drawDoor = (dx0, dx1, dy0, dy1) => {
-    const o = 0.006, op = 0.006 + Math.max(recessProj, 0.008) * 1.3;
-    drawReveals({ x0: dx0, y0: dy0, x1: dx1, y1: dy1 }, o, op);
+    // Doors sink deeper than windows; clamp so the leaf stays just proud of the mass.
+    const D = Math.max(WALL_PLANE - Math.max(recessProj, 0.008) * 1.3, 0.002 - SKIN_BASE);
+    const rect = { x0: dx0, y0: dy0, x1: dx1, y1: dy1 };
+    wallHoles.push(rect);
+    drawReveals(rect, WALL_PLANE, D);
     // Textured paneled door (+ transom), cropped from the family's door-stoop art.
     const doorFile = kitHas(family, "door-stoop") ? `${family}-door.v1.png` : null;
     if (doorFile) {
-      quad({ x0: dx0, y0: dy0, x1: dx1, y1: dy1 }, o, inkedTexture(doorFile), { tint: darken2(0.72), transparent: true });
+      quad(rect, D, inkedTexture(doorFile), { tint: darken2(0.72), transparent: true });
     } else {
-      quad({ x0: dx0, y0: dy0, x1: dx1, y1: dy1 }, o, null, { tint: darken2(0.3) }); // flat fallback leaf
+      quad(rect, D, null, { tint: darken2(0.3) }); // flat fallback leaf
     }
   };
   if (streetFace) {
@@ -2304,6 +2356,10 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     // exposed runs. Perpendicular side (lot-line/party) walls stay blank.
     for (const w of f.windows) drawWindow(w);
   }
+  // Emit the wall last, now that every recessed opening has registered its hole, so
+  // the sunk glass/reveals are visible through true cutouts instead of behind a
+  // solid quad. (Opaque; draw order vs. the earlier proud bands is depth-sorted.)
+  emitWall();
   // Front fire escape (street face only, prewar masonry >=4 storeys). Rails read as
   // OPEN ironwork via the procedural railing texture (see-through balusters), not
   // solid shelves; decks are thin platforms; the ladder is a slender stringer. Dark
