@@ -187,8 +187,32 @@ proof. Gate B verdict: pending Batu.
 
 ## Ground-floor regen — brick + brownstone (Phase 8.0 craft follow-up, `task_f39b0155`)
 
-**Status:** packet prepared 2026-06-21, AWAITING GPT generation. Packet:
+**Status:** SHIPPED 2026-06-21 (mechanical gate + Gate-B scene proof passed; final 8.0 look
+re-gate pending Batu, also gated on the fire-escape ironwork follow-up). Packet:
 `docs/reference/art/prompts/inked-components-ground-regen.v1.md`.
+
+**Result (2026-06-21):** Batu ran both cells in GPT-5.5, raws → Downloads (staged at
+`.scratch/asset-kit-raw/{brick,brownstone}/ground.png`). Both delivered at 1774×887 RGBA, no
+painted stairs/door — correct. **One fix on intake:** GPT baked sepia chroma (brick
+meanChroma 51.7, brownstone 34.0) above the tintable-neutral ceiling (≤29). Applied a
+saturation pass (`ImageEnhance.Color`, factors 0.435 / 0.662) → 22.7 / 22.4, matching the
+shipped kit (~22–23). Structure/ink untouched. Overwrote `assets/inked/{brick,brownstone}-ground.v1.png`.
+- **Mechanical gate:** `verify-inked-component.mjs` → both OK (opaque fill, tintable-neutral).
+  Full `npm run verify` GREEN (136 tests + conformance/visual/components/stories/coverage/overrides).
+- **Gate B (in-engine):** framed the brownstone pilot (3064541) and brick pilot (3064677) at
+  angle 2/4, zoomed to the base. Both: plain masonry ground band + parlor window, **3D stoop
+  projects cleanly in front, NO double-stairs.** Console clean. The objective is met.
+- **Lesson:** GPT bakes warm chroma into "warm-grey" ground fills (same class as the
+  brick-weathering grey-tile lesson). Desaturate on intake to ~22–23 meanChroma; it's a
+  legitimate tintable-neutral fix, not a regen. Recipe note added below.
+- **Out of scope (unchanged by this task):** the stoop geometry reads boxy and the fire-escape
+  rails read as solid shelves — both are the *other* 8.0 follow-ups / approved geometry, not
+  the ground texture.
+
+> GROUND-FILL CHROMA LESSON (2026-06-21): GPT-5.5 returns "dark ink on warm grey" ground/wall
+> fills with too much baked sepia (meanChroma 34–52 vs the ≤29 kit ceiling). Fix on intake
+> with a saturation scale-down to ~22–23 meanChroma (`ImageEnhance.Color(im).enhance(f)`),
+> hue preserved, ink/structure intact. Apply to future opaque-fill regens before the gate.
 
 **Why:** the 3D stoop (Phase 8.0) renders in front of the painted ground band, but the brick
 + brownstone ground textures bake in painted stairs + entry door → double-stairs. Batu's call
