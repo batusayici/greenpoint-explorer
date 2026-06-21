@@ -25,6 +25,7 @@ import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
 import { planStorefrontSigns } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
+import { kitFile, kitHas } from "./kitCoverage.js";
 import { composeStorefront } from "./storefrontCompose.js";
 import {
   II_PALETTE,
@@ -2014,7 +2015,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     left.z + (right.z - left.z) * x + normal.z * off,
   ];
   // tex null → solid-color quad (used for party-wall seams).
-  const quad = (r, off, tex, { tint, transparent } = {}) => {
+  const quad = (r, off, tex, { tint, transparent, opacity } = {}) => {
     const g = new THREE.BufferGeometry();
     const p = [point(r.x0, r.y0, off), point(r.x1, r.y0, off), point(r.x1, r.y1, off), point(r.x0, r.y1, off)];
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
@@ -2023,6 +2024,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
     if (tex) m.map = tex;
     if (tint != null) m.color.setHex(tint);
+    if (opacity != null) m.opacity = opacity;
     target.add(new THREE.Mesh(g, m));
   };
   // Free-form quad from four explicit world-space corners (each a [x,y,z] from
@@ -2051,8 +2053,10 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // Cornice height: ~0.85m, matching the Premier hero (the trimmed texture fills
   // the band 1:1, so the band height IS the real cornice height — 1.7m read as
   // double the hero). Metric so it stays consistent across building heights.
-  const corniceFrac = clamp(0.85 / heightM, 0.045, 0.08);
-  const bays = clamp(Math.round(frontM / 2.8), 1, 6);
+  const isKit = params.family != null;
+  const family = params.family ?? "brick";
+  const corniceFrac = params.corniceFrac ?? clamp(0.85 / heightM, 0.045, 0.08);
+  const bays = params.bays ?? clamp(Math.round(frontM / 2.8), 1, 6);
   const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
   // Windows tuned up to read even with the hero (~1.25m wide × ~2.0m tall).
   const winHFrac = clamp(2.0 / rowHm, 0.35, 0.78);
@@ -2061,21 +2065,29 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // Brick: ~0.9m tile (the texture shows ~11 courses → ~0.08m/course, real
   // brick) so course size is fine and matches the hero (was ~3× too coarse).
   const brickRepeat = [clamp(Math.round(frontM / 1.0), 1, 16), clamp(Math.round(heightM / 0.9), 1, 24)];
-  // Wall (full-height tiled brick): every face, so side/rear read as brick.
-  quad(f.wall, 0.004, inkedTexture("brick-wall.v1.png", brickRepeat), { tint: params.tint });
+  // Wall (full-height tiled, family texture): every face, so side/rear read in
+  // material. kitFile("brick","wall") === the legacy file, so non-kit is unchanged.
+  const wallFile = kitFile(family, "wall") ?? "brick-wall.v1.png";
+  quad(f.wall, 0.004, inkedTexture(wallFile, brickRepeat), { tint: params.tint });
+  // Weathering wash (kit only): a transparent grime pass over the wall at the
+  // requested opacity. INKED_FACADE_REAL has no params.weathering → skipped.
+  if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
+    quad(f.wall, 0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
+  }
   if (streetFace) {
     // Front facade only: ground band (storefront or stoop), windows, cornice.
     if (params.storefront) {
       decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
     } else {
-      quad(f.ground, 0.006, inkedTexture("brick-ground.v1.png"), { tint: params.tint });
+      const groundFile = kitFile(family, "ground");
+      if (groundFile) quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
     }
     // Windows: the painted elevation (frame + glass + lintel + sill, with its own
     // depth shading) drawn flush over the brick. Its transparent margins show the
     // brick behind, so there is no geometric recess and no dark border ringing the
     // frame. A true set-back glass would need the glass keyed transparent in the
     // art (the painted glass is opaque, so a recessed pane behind it can't show).
-    const winTex = inkedTexture("brick-window.v1.png");
+    const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
     for (const w of f.windows) quad(w, 0.008, winTex, { transparent: true });
   }
   // Cornice on the street face(s): a projecting painted crown that butts against
@@ -2085,7 +2097,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // the roofline (y=1, no brick above) with the molding bottom (yBot) where the
   // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
   // — a Brooklyn cornice top is dark tar/metal.
-  if (streetFace) {
+  if (streetFace && kitHas(family, "cornice") && params.components?.["cornice"] !== false) {
     const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
     const CROWN = darken(corniceColor, 0.5); // dark underside / top / end molding
     const corniceProj = 0.038;               // ~0.5m overhang (upm≈0.075)
