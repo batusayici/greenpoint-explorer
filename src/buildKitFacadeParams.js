@@ -9,6 +9,10 @@ import { MATERIAL_WALL_TONES } from "./visualSystem/palette.js";
 import { nearestPaletteToken } from "./visualSystem/colorBinding.js";
 
 const KIT_DEFAULT_WEATHERING = 0.35;
+// Kit windows recess into the wall by default so glass reads with depth + a
+// projecting sill (≈0.12 m reveal ≈ "thick lit ledge" per GENERATION_KIT). An
+// override still wins; INKED_FACADE_REAL params have no family and are untouched.
+const KIT_DEFAULT_WINDOW_RECESS = 0.12;
 
 export function buildKitFacadeParams(building, family, override = undefined) {
   const tones = MATERIAL_WALL_TONES[family];
@@ -22,7 +26,7 @@ export function buildKitFacadeParams(building, family, override = undefined) {
     storeys: ov.storeys ?? Math.max(2, t.storeyCount),
     weathering: ov.weathering ?? KIT_DEFAULT_WEATHERING,
     components: ov.components ?? {},
-    windowRecess: ov.windowRecess ?? 0,
+    windowRecess: ov.windowRecess ?? KIT_DEFAULT_WINDOW_RECESS,
     // Commercial ground floors are dressed by the storefront-sign system, not the
     // kit; kit-routed buildings use the stoop/ground-band path. Corner wrap on
     // kit buildings is out of scope (geometric), so single street face.

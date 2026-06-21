@@ -6,12 +6,12 @@ import { MATERIAL_WALL_TONES } from "./visualSystem/palette.js";
 
 const rec = { bin: "1", sourceProperties: { numFloors: 3 } };
 
-test("family defaults: tint = first family tone, storeys from classify, flush + default weathering", () => {
+test("family defaults: tint = first family tone, storeys from classify, recessed windows + default weathering", () => {
   const p = buildKitFacadeParams(rec, "clapboard");
   assert.equal(p.family, "clapboard");
   assert.equal(p.tint, MATERIAL_WALL_TONES.clapboard[0]);
   assert.equal(p.storeys, 3);
-  assert.equal(p.windowRecess, 0);
+  assert.equal(p.windowRecess, 0.12); // kit default: depth + projecting sill
   assert.equal(p.weathering, 0.35);
   assert.deepEqual(p.components, {});
   assert.equal("bays" in p, false);       // renderer derives

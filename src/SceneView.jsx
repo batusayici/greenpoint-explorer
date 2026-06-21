@@ -1453,10 +1453,12 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           (o) => o !== building && o.polygon && o.centroid &&
             Math.hypot(o.centroid.x - building.centroid.x, o.centroid.z - building.centroid.z) < reach,
         );
-        const exposed = inkedEdges.map((e) => {
-          const len = exposedSegments(e, siblings).reduce((s, seg) => s + seg.length, 0);
-          return len > e.length * 0.25; // face is "open" if >25% of it is uncovered
-        });
+        const exposedSegs = inkedEdges.map((e) => exposedSegments(e, siblings));
+        const exposed = inkedEdges.map((e, i) => exposedSegs[i].reduce((s, seg) => s + seg.length, 0) > e.length * 0.25); // open if >25% uncovered
+        // 0..1 ranges along each edge that are actually open, so windows clip off
+        // the abutted (party) portion of a partially-covered face.
+        const fracAlong = (e, p) => Math.hypot(p.x - e.start.x, p.z - e.start.z) / (e.length || 1);
+        const exposedRanges = inkedEdges.map((e, i) => exposedSegs[i].map((seg) => [fracAlong(e, seg.start), fracAlong(e, seg.end)]));
         // Street face: prefer the Franklin-facing edge when it is itself exposed,
         // else the longest exposed edge. (True per-street orientation needs street
         // centrelines — a follow-on; this is the best street proxy from geometry.)
@@ -1481,7 +1483,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           }
         }
         inkedEdges.forEach((edge, i) => {
-          decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i]);
+          decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i], exposedRanges[i]);
         });
       } else {
         // INKED_FACADE_REAL: existing Franklin front-face path (unchanged).
@@ -2068,7 +2070,7 @@ function inkedCorniceTexture(onReady) {
 // `streetFace` gates the front-facade elements: when false (side/rear walls)
 // only plain brick + party seams are drawn — no windows, storefront, or cornice
 // — so side facades read as blank party-wall brick.
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace) {
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -2146,18 +2148,55 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       quad3(a, b, c, d, null, { tint });
     }
   };
+  // One window unit: recessed glass (depth) + a projecting stone sill, or a flush
+  // decal for non-kit. `exposedRanges` (0..1 along the edge) clips a window off the
+  // abutted part of a party-ish face so openings never land on covered wall.
+  const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
+  const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
+  const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
+  const inExposed = (xc) => !exposedRanges || exposedRanges.some(([a, b]) => xc >= a - 1e-6 && xc <= b + 1e-6);
+  const drawWindow = (w) => {
+    if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
+    if (recessProj > 0) {
+      const o = 0.006, op = 0.006 + recessProj; // recessed glass plane vs proud surround
+      quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: darken2(0.4) });
+      quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: darken2(0.45) });
+      quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: darken2(0.45) });
+      quad(w, o, winTex, { transparent: true });
+      // Projecting stone sill: a lit ledge under the window, proud of the wall.
+      const sillOut = op + 0.006;
+      const sx0 = w.x0 - 0.012, sx1 = w.x1 + 0.012, yb = w.y0, yt = w.y0 - 0.013;
+      quad3(point(sx0, yb, sillOut), point(sx1, yb, sillOut), point(sx1, yb, 0.006), point(sx0, yb, 0.006), null, { tint: darken2(0.95) }); // top (lit)
+      quad3(point(sx0, yt, sillOut), point(sx1, yt, sillOut), point(sx1, yb, sillOut), point(sx0, yb, sillOut), null, { tint: darken2(0.78) }); // front
+      quad3(point(sx0, yt, 0.006), point(sx1, yt, 0.006), point(sx1, yt, sillOut), point(sx0, yt, sillOut), null, { tint: darken2(0.5) }); // underside
+    } else {
+      quad(w, 0.008, winTex, { transparent: true });
+    }
+  };
+  // A real recessed entry door (dark leaf + transom + proud frame), drawn on the
+  // plain wall after the stoop. Replaces the old flat panel that the ground band hid.
+  const drawDoor = (dx0, dx1, dy0, dy1) => {
+    const o = 0.006, op = 0.006 + Math.max(recessProj, 0.008) * 1.3;
+    quad3(point(dx0, dy1, op), point(dx1, dy1, op), point(dx1, dy1, o), point(dx0, dy1, o), null, { tint: darken2(0.4) });  // head reveal
+    quad3(point(dx0, dy0, op), point(dx0, dy0, o), point(dx0, dy1, o), point(dx0, dy1, op), null, { tint: darken2(0.45) }); // left reveal
+    quad3(point(dx1, dy0, o), point(dx1, dy0, op), point(dx1, dy1, op), point(dx1, dy1, o), null, { tint: darken2(0.45) }); // right reveal
+    const tY = dy1 - (dy1 - dy0) * 0.16;
+    quad({ x0: dx0, y0: tY, x1: dx1, y1: dy1 }, o, null, { tint: darken2(0.62) }); // transom (lighter glass)
+    quad({ x0: dx0, y0: dy0, x1: dx1, y1: tY }, o, null, { tint: darken2(0.3) });  // dark door leaf
+    quad({ x0: (dx0 + dx1) / 2 - 0.004, y0: dy0, x1: (dx0 + dx1) / 2 + 0.004, y1: tY }, o + 0.001, null, { tint: darken2(0.22) }); // center stile
+  };
   if (streetFace) {
-    // Street face only: ground band (storefront) OR a door-stoop unit — never both.
+    // Street face only: storefront band, OR a 3D stoop + door (kit rowhouse), OR a
+    // ground-band/door-stoop unit (non-stoop kit family).
     if (params.storefront) {
       decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
     } else {
-      const drewStoop = isKit && !params.storefront && wantsStoop(family);
+      const drewStoop = isKit && wantsStoop(family);
       if (drewStoop) {
         const stoop = buildStoopGeometry({ frontM, doorCenterM: frontM / 2 });
         // Per-face stone read so it looks like a 3D stoop, not a flat box: smooth
         // dressed treads/landing (lit) vs shadowed risers, with the family masonry
-        // texture on the raked side walls + newel posts. All tints derive from
-        // params.tint (palette-safe), like the cornice.
+        // texture on the raked side walls + newel posts. Tints derive from params.tint.
         const stoopWallTex = inkedTexture(wallFile);
         const STOOP_STYLE = {
           tread:    { tint: darken(params.tint, 0.92) },
@@ -2172,44 +2211,44 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
           const st = STOOP_STYLE[q.role] ?? { tint: darken(params.tint, 0.72) };
           quad3(a, b, c, d, st.tex ?? null, { tint: st.tint });
         }
-        // Door panel set into the wall at the platform top (dark, recessed read).
+        // Plain wall is the full-height wall texture (no painted ground band), so the
+        // door + parlor windows are rendered by the kit — identical to upper floors.
         const doorWf = (stoop.uR - stoop.uL) / frontM;
-        const doorTopV = Math.min((stoop.topV + 2.1) / heightM, 1 - corniceFrac - 0.01); // ~2.1m door leaf, clamped below cornice
-        quad({ x0: 0.5 - doorWf / 2, x1: 0.5 + doorWf / 2, y0: stoop.topV / heightM, y1: doorTopV },
-          0.004, null, { tint: darken(params.tint, 0.45) });
-      }
-      const groundFile = kitFile(family, "ground");
-      if (groundFile) {
-        quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
-      } else if (!drewStoop && isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
-        // No ground band for this family (e.g. clapboard) → the door-stoop unit is
-        // the entry. Families WITH a ground asset (brick/brownstone/modern-flat)
-        // carry their entry in the ground band, so the separate unit is suppressed
-        // (it would overlap/compete — gate feedback #3a).
-        const hF = Math.min(0.34, f.ground.y1);
-        const wF = (hF * heightM) * (1086 / 1448) / frontM;
-        quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(kitFile(family, "door-stoop")), { transparent: true });
+        const dx0 = 0.5 - doorWf / 2, dx1 = 0.5 + doorWf / 2;
+        const doorTopV = Math.min((stoop.topV + 2.1) / heightM, 1 - corniceFrac - 0.01); // ~2.1m leaf, below cornice
+        drawDoor(dx0, dx1, stoop.topV / heightM, doorTopV);
+        // Parlor-floor windows in the bay rhythm, skipping the door bay.
+        const ref = f.windows[0];
+        if (ref) {
+          const winW = ref.x1 - ref.x0, winH = ref.y1 - ref.y0;
+          const yb = Math.min(stoop.topV / heightM + 0.03, f.ground.y1 - winH - 0.02);
+          const yt = yb + winH;
+          if (yt < f.ground.y1) {
+            for (let c = 0; c < bays; c += 1) {
+              const xc = (c + 0.5) / bays;
+              const wx0 = xc - winW / 2, wx1 = xc + winW / 2;
+              if (wx1 > dx0 - 0.015 && wx0 < dx1 + 0.015) continue; // skip the door bay
+              if (wx0 < 0.02 || wx1 > 0.98) continue;
+              drawWindow({ x0: wx0, x1: wx1, y0: yb, y1: yt });
+            }
+          }
+        }
+      } else {
+        const groundFile = kitFile(family, "ground");
+        if (groundFile) {
+          quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
+        } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
+          const hF = Math.min(0.34, f.ground.y1);
+          const wF = (hF * heightM) * (1086 / 1448) / frontM;
+          quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(kitFile(family, "door-stoop")), { transparent: true });
+        }
       }
     }
   }
   if (openingsFace) {
-    // Windows on every EXPOSED face (street + backyard + uncovered sides). Painted
-    // elevation drawn flush; transparent margins show the wall behind.
-    const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
-    const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
-    const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
-    for (const w of f.windows) {
-      if (recessProj > 0) {
-        const o = 0.006, op = 0.006 + recessProj; // wall plane vs proud outer lip
-        quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: darken2(0.4) });
-        quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: darken2(0.45) });
-        quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: darken2(0.45) });
-        quad3(point(w.x0, w.y0, o), point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x0, w.y0, op), null, { tint: darken2(0.7) });
-        quad(w, o, winTex, { transparent: true });
-      } else {
-        quad(w, 0.008, winTex, { transparent: true });
-      }
-    }
+    // Windows on every EXPOSED face (street + backyard + uncovered sides), clipped
+    // to the exposed runs so they never land on a covered party wall.
+    for (const w of f.windows) drawWindow(w);
   }
   // Front fire escape (street face only, prewar masonry >=4 storeys). Dark iron
   // as a family-palette tint; geometry-only, no texture asset. Projects proud of
@@ -2228,35 +2267,44 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // — a Brooklyn cornice top is dark tar/metal.
   if (openingsFace && kitHas(family, "cornice") && params.components?.["cornice"] !== false) {
     const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
-    const CROWN = darken(corniceColor, 0.5); // dark underside / top / end molding
-    const corniceProj = 0.038;               // ~0.5m overhang (upm≈0.075)
+    const CROWN = darken(corniceColor, 0.5); // dark molding (crown/soffit/cap/returns)
+    // Molded profile (matches the reference): a bracket FRIEZE at a modest
+    // projection with an oversailing CROWN above that projects furthest at the top.
+    const wallO = 0.006;
+    const projFrieze = 0.020; // ~0.27m
+    const projCrown = 0.046;  // ~0.61m — the crown corona juts out furthest
     const yBot = 1 - corniceFrac;
-    // Span this face's own edge. At a convex corner of a corner building, the
-    // shared-corner end overhangs by the projection depth so the two faces' crowns
-    // meet at the outer corner and wrap it; every other end stays flush at [0,1]
-    // so the crown never spills onto the neighbour and meeting runs don't overlap.
-    const ext = clamp(corniceProj / edge.length, 0, 0.25);
+    const yMid = yBot + corniceFrac * 0.58; // frieze top / crown bottom
+    // Span this face's edge; at a corner building's convex corner the shared end
+    // overhangs so the two faces' crowns wrap it (INKED_FACADE_REAL miter path).
+    const ext = clamp(projCrown / edge.length, 0, 0.25);
     const x0 = miter?.start ? -ext : 0;
     const x1 = miter?.end ? 1 + ext : 1;
     const drawCornice = (corniceTex) => {
-      // Painted face, proud of the wall, top flush at the roofline.
-      quad3(
-        point(x0, yBot, corniceProj), point(x1, yBot, corniceProj),
-        point(x1, 1, corniceProj), point(x0, 1, corniceProj),
-        corniceTex, { tint: corniceColor, transparent: true },
-      );
-      // Underside soffit (deep shadow) from the wall out to the projected front.
-      quad3(
-        point(x0, yBot, 0.006), point(x1, yBot, 0.006),
-        point(x1, yBot, corniceProj), point(x0, yBot, corniceProj),
-        null, { tint: CROWN },
-      );
-      // Top cap sloping back to the roof — dark molding, not lit stone.
-      quad3(
-        point(x0, 1, corniceProj), point(x1, 1, corniceProj),
-        point(x1, 1, 0.006), point(x0, 1, 0.006),
-        null, { tint: CROWN },
-      );
+      // Bracket frieze (textured), modest projection.
+      quad3(point(x0, yBot, projFrieze), point(x1, yBot, projFrieze),
+        point(x1, yMid, projFrieze), point(x0, yMid, projFrieze),
+        corniceTex, { tint: corniceColor, transparent: true });
+      // Bottom soffit (deep shadow) from the wall out to the frieze.
+      quad3(point(x0, yBot, wallO), point(x1, yBot, wallO),
+        point(x1, yBot, projFrieze), point(x0, yBot, projFrieze), null, { tint: CROWN });
+      // Crown soffit step: frieze depth out to the crown oversail, at yMid.
+      quad3(point(x0, yMid, projFrieze), point(x1, yMid, projFrieze),
+        point(x1, yMid, projCrown), point(x0, yMid, projCrown), null, { tint: CROWN });
+      // Crown corona face — oversailing dark molding, yMid → roofline.
+      quad3(point(x0, yMid, projCrown), point(x1, yMid, projCrown),
+        point(x1, 1, projCrown), point(x0, 1, projCrown), null, { tint: CROWN });
+      // Top cap sloping back to the roof.
+      quad3(point(x0, 1, projCrown), point(x1, 1, projCrown),
+        point(x1, 1, wallO), point(x0, 1, wallO), null, { tint: CROWN });
+      // End-return caps (both ends) so the cornice reads as a solid box, not an
+      // open band with hollow sides at the corner.
+      for (const ex of [x0, x1]) {
+        quad3(point(ex, yBot, wallO), point(ex, yBot, projFrieze),
+          point(ex, yMid, projFrieze), point(ex, yMid, wallO), null, { tint: CROWN }); // frieze return
+        quad3(point(ex, yMid, wallO), point(ex, yMid, projCrown),
+          point(ex, 1, projCrown), point(ex, 1, wallO), null, { tint: CROWN });        // crown return
+      }
     };
     const ready = inkedCorniceTexture((tex) => { drawCornice(tex); requestRender?.(); });
     if (ready) drawCornice(ready);
