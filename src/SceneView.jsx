@@ -30,6 +30,7 @@ import { resolveFacadeFamily } from "./facadeFamily.js";
 import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
+import { edgeClearance, mostOpenExposedEdge, pickStreetFrontEdge } from "./streetFaceSelect.js";
 import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
@@ -1462,8 +1463,22 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
         let streetIndex = exposed[frontIdx] ? frontIdx : -1;
         if (streetIndex < 0) {
-          let bestLen = -1;
-          inkedEdges.forEach((e, i) => { if (exposed[i] && e.length > bestLen) { bestLen = e.length; streetIndex = i; } });
+          // Franklin front blocked (cross-street / interior rowhouse). Front the
+          // exposed edge that faces a street running PARALLEL to it — a rowhouse
+          // fronts the street its frontage is parallel to. (clapboard pilot 3064605:
+          // a ±x row whose open ends front Greenpoint-parallel, so it faces +z, not
+          // the open −z backyard.) Fall back to the most-open exposed edge.
+          const streetSegs = scene.streets.map((s) => ({ a: s.line[0], b: s.line[s.line.length - 1] }));
+          const oriented = inkedEdges.map((e) => {
+            const t = Math.hypot(e.end.x - e.start.x, e.end.z - e.start.z) || 1;
+            return { ...e, tangent: { x: (e.end.x - e.start.x) / t, z: (e.end.z - e.start.z) / t } };
+          });
+          streetIndex = pickStreetFrontEdge(oriented, exposed, streetSegs);
+          if (streetIndex < 0) {
+            const sibPts = siblings.map((o) => o.centroid);
+            const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
+            streetIndex = mostOpenExposedEdge(inkedEdges, exposed, clearance);
+          }
         }
         inkedEdges.forEach((edge, i) => {
           decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i]);
@@ -2139,7 +2154,24 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       const drewStoop = isKit && !params.storefront && wantsStoop(family);
       if (drewStoop) {
         const stoop = buildStoopGeometry({ frontM, doorCenterM: frontM / 2 });
-        drawMeterQuads(stoop.quads, darken(params.tint, 0.72)); // family-tinted stone
+        // Per-face stone read so it looks like a 3D stoop, not a flat box: smooth
+        // dressed treads/landing (lit) vs shadowed risers, with the family masonry
+        // texture on the raked side walls + newel posts. All tints derive from
+        // params.tint (palette-safe), like the cornice.
+        const stoopWallTex = inkedTexture(wallFile);
+        const STOOP_STYLE = {
+          tread:    { tint: darken(params.tint, 0.92) },
+          platform: { tint: darken(params.tint, 0.95) },
+          riser:    { tint: darken(params.tint, 0.58) },
+          coping:   { tint: darken(params.tint, 0.78) },
+          cheek:    { tex: stoopWallTex, tint: darken(params.tint, 0.72) },
+          newel:    { tex: stoopWallTex, tint: darken(params.tint, 0.84) },
+        };
+        for (const q of stoop.quads) {
+          const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
+          const st = STOOP_STYLE[q.role] ?? { tint: darken(params.tint, 0.72) };
+          quad3(a, b, c, d, st.tex ?? null, { tint: st.tint });
+        }
         // Door panel set into the wall at the platform top (dark, recessed read).
         const doorWf = (stoop.uR - stoop.uL) / frontM;
         const doorTopV = Math.min((stoop.topV + 2.1) / heightM, 1 - corniceFrac - 0.01); // ~2.1m door leaf, clamped below cornice
