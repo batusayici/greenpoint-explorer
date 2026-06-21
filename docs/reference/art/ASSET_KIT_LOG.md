@@ -89,3 +89,20 @@ modern-flat.
   overlay profile. **Recipe fix applied to brownstone + modern-flat weathering prompts:**
   demand PURE WHITE (#FFFFFF) bg with marks only; fall back to the luminance ramp if needed.
 - Raws backed up at `.scratch/asset-kit/brick-{door-stoop,weathering}.raw.png`.
+
+### brownstone — 5/6 keyed + mechanical gate PASS 2026-06-20 (weathering skipped; Gate A/B pending)
+
+Generated from `inked-components-brownstone.v1.md`. Excellent set — the door-stoop (high
+stoop, arched double door, brackets, newel posts) and window (hooded carved surround) are
+textbook brownstone.
+- **Naming fix on intake:** the two delivered "wall" files were mislabeled —
+  `brownstone-wall.v1.png` was actually the CORNICE, `brownstone-wall.v1.png.png` was the
+  ashlar wall. Re-mapped on stage-in (cornice ← the strip, wall ← the .png.png).
+- **Keyed (236, alpha decals):** cornice (40.2% cleared), window (58.6%), door-stoop (50.1%,
+  pure-white bg → flawless). No holes in the light stone (border-flood stops at the ink).
+- **Opaque tiles (no key):** wall, ground.
+- **Wall seam note (Gate A):** 2×2 tile shows a faint continuous horizontal mortar line at
+  the top↔bottom join (running-bond offset doesn't fully carry); vertical join near-invisible.
+  Mild + forgiving for ashlar — accept-or-regen decision at Gate A.
+- **weathering:** skipped by Batu this pass — still PENDING.
+- Raws backed up at `.scratch/asset-kit/brownstone-*.raw.png`.
