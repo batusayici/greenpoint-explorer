@@ -1439,32 +1439,51 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // decoration, so no per-view culling is needed here.
     const dist = distPre;
     if (treatment === "inkedKit") {
-      // Inked component kit. Only the street-facing front edge gets windows /
-      // storefront / cornice; side & rear walls render as plain party-wall brick
-      // (no punched windows on side facades). The opaque mass occludes back walls.
       const deco = new THREE.Group();
       const inkedEdges = footprintEdges(building.polygon, building.centroid);
-      const frontIndex = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
-      // Corner buildings (e.g. 97 bodega) get a second street face — the
-      // cross-street — so their storefront + windows wrap around the corner.
-      const streetSet = new Set([frontIndex]);
-      let secondIndex = -1;
-      if (inkedParams.corner) {
-        secondIndex = inkedCornerSecondEdgeIndex(inkedEdges, frontIndex, scene);
-        if (secondIndex >= 0) streetSet.add(secondIndex);
-      }
-      // The convex corner shared by the two street faces is the only end whose
-      // cornice should miter (overhang to wrap the corner); party-line ends must
-      // not, or the crown spills onto the neighbour.
-      const corner = secondIndex >= 0 ? sharedEndpoint(inkedEdges[frontIndex], inkedEdges[secondIndex]) : null;
-      inkedEdges.forEach((edge, i) => {
-        let miter = null;
-        if (corner && streetSet.has(i)) {
-          const near = (p) => Math.hypot(p.x - corner.x, p.z - corner.z) < 0.02;
-          miter = { start: near(edge.start), end: near(edge.end) };
+      if (inkedParams.family != null) {
+        // Kit-routed: decorate every EXPOSED face (street + backyard + uncovered
+        // sides) with openings; door/ground on one street face; party walls blank.
+        const reach = 40 * scene.projection.scale; // ~40 m: adjacent footprints only
+        const siblings = scene.buildings.filter(
+          (o) => o !== building && o.polygon && o.centroid &&
+            Math.hypot(o.centroid.x - building.centroid.x, o.centroid.z - building.centroid.z) < reach,
+        );
+        const exposed = inkedEdges.map((e) => {
+          const len = exposedSegments(e, siblings).reduce((s, seg) => s + seg.length, 0);
+          return len > e.length * 0.25; // face is "open" if >25% of it is uncovered
+        });
+        // Street face: prefer the Franklin-facing edge when it is itself exposed,
+        // else the longest exposed edge. (True per-street orientation needs street
+        // centrelines — a follow-on; this is the best street proxy from geometry.)
+        const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+        let streetIndex = exposed[frontIdx] ? frontIdx : -1;
+        if (streetIndex < 0) {
+          let bestLen = -1;
+          inkedEdges.forEach((e, i) => { if (exposed[i] && e.length > bestLen) { bestLen = e.length; streetIndex = i; } });
         }
-        decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender, miter);
-      });
+        inkedEdges.forEach((edge, i) => {
+          decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i]);
+        });
+      } else {
+        // INKED_FACADE_REAL: existing Franklin front-face path (unchanged).
+        const frontIndex = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+        const streetSet = new Set([frontIndex]);
+        let secondIndex = -1;
+        if (inkedParams.corner) {
+          secondIndex = inkedCornerSecondEdgeIndex(inkedEdges, frontIndex, scene);
+          if (secondIndex >= 0) streetSet.add(secondIndex);
+        }
+        const corner = secondIndex >= 0 ? sharedEndpoint(inkedEdges[frontIndex], inkedEdges[secondIndex]) : null;
+        inkedEdges.forEach((edge, i) => {
+          let miter = null;
+          if (corner && streetSet.has(i)) {
+            const near = (p) => Math.hypot(p.x - corner.x, p.z - corner.z) < 0.02;
+            miter = { start: near(edge.start), end: near(edge.end) };
+          }
+          decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender, miter);
+        });
+      }
       three.add(deco);
     } else if (treatment === "typological") {
       const deco = new THREE.Group();
@@ -2031,7 +2050,7 @@ function inkedCorniceTexture(onReady) {
 // `streetFace` gates the front-facade elements: when false (side/rear walls)
 // only plain brick + party seams are drawn — no windows, storefront, or cornice
 // — so side facades read as blank party-wall brick.
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null) {
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -2101,36 +2120,33 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     quad(f.wall, 0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
   }
   if (streetFace) {
-    // Front facade only: ground band (storefront or stoop), windows, cornice.
+    // Street face only: ground band (storefront) OR a door-stoop unit — never both.
     if (params.storefront) {
       decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
     } else {
       const groundFile = kitFile(family, "ground");
-      if (groundFile) quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
-    }
-    // Door + stoop unit at grade (kit only). Centered, aspect-preserving for the
-    // 1086x1448 asset. Skipped if the family lacks the cell or the override turns
-    // it off. INKED_FACADE_REAL (no params.family) never reaches this.
-    if (isKit && params.components?.["door-stoop"] !== false) {
-      const doorFile = kitFile(family, "door-stoop");
-      if (doorFile) {
-        const hF = Math.min(0.34, f.ground.y1);          // ~ground-floor tall
-        const wF = (hF * heightM) * (1086 / 1448) / frontM; // preserve asset aspect in face-units
-        quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(doorFile), { transparent: true });
+      if (groundFile) {
+        quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
+      } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
+        // No ground band for this family (e.g. clapboard) → the door-stoop unit is
+        // the entry. Families WITH a ground asset (brick/brownstone/modern-flat)
+        // carry their entry in the ground band, so the separate unit is suppressed
+        // (it would overlap/compete — gate feedback #3a).
+        const hF = Math.min(0.34, f.ground.y1);
+        const wF = (hF * heightM) * (1086 / 1448) / frontM;
+        quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(kitFile(family, "door-stoop")), { transparent: true });
       }
     }
-    // Windows: the painted elevation (frame + glass + lintel + sill, with its own
-    // depth shading) drawn flush over the brick. Its transparent margins show the
-    // brick behind, so there is no geometric recess and no dark border ringing the
-    // frame. A true set-back glass would need the glass keyed transparent in the
-    // art (the painted glass is opaque, so a recessed pane behind it can't show).
+  }
+  if (openingsFace) {
+    // Windows on every EXPOSED face (street + backyard + uncovered sides). Painted
+    // elevation drawn flush; transparent margins show the wall behind.
     const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
     const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
     const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
     for (const w of f.windows) {
       if (recessProj > 0) {
         const o = 0.006, op = 0.006 + recessProj; // wall plane vs proud outer lip
-        // head (top, deep shadow), jambs (sides, shadow), sill (bottom, lighter)
         quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: darken2(0.4) });
         quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: darken2(0.45) });
         quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: darken2(0.45) });
@@ -2148,7 +2164,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // the roofline (y=1, no brick above) with the molding bottom (yBot) where the
   // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
   // — a Brooklyn cornice top is dark tar/metal.
-  if (streetFace && kitHas(family, "cornice") && params.components?.["cornice"] !== false) {
+  if (openingsFace && kitHas(family, "cornice") && params.components?.["cornice"] !== false) {
     const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
     const CROWN = darken(corniceColor, 0.5); // dark underside / top / end molding
     const corniceProj = 0.038;               // ~0.5m overhang (upm≈0.075)
