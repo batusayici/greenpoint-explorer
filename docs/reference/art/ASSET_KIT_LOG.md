@@ -106,3 +106,18 @@ textbook brownstone.
   Mild + forgiving for ashlar — accept-or-regen decision at Gate A.
 - **weathering:** skipped by Batu this pass — still PENDING.
 - Raws backed up at `.scratch/asset-kit/brownstone-*.raw.png`.
+
+### modern-flat — 4/4 generatable-now keyed + mechanical gate PASS 2026-06-20 (Gate A/B pending)
+
+Generated from `inked-components-modern-flat.v1.md`. wall, window, ground, weathering.
+- **wall** (opaque) — vertical standing-seam cladding; 2×2 tile SEAMLESS (standing-seam is
+  naturally vertical → trivially continuous top↔bottom).
+- **window** (alpha decal) — needed threshold 224, not 236: the background margin sat ~235
+  and border-flood stalled at 236, leaving a cream halo box around the unit. 224 cleared the
+  margin (48% transparent), no holes (frame dark, glass mid-grey). **Lesson:** when the
+  generated bg comes back ~235 instead of ≥240, drop the key threshold to ~224.
+- **ground** (opaque) — flush door + storefront window at grade, no stoop (correct modern type).
+- **weathering** (overlay) — the PURE-WHITE-bg recipe fix WORKED: keyed 98.9% transparent at
+  236 with a plain border flood (no luminance ramp needed, unlike brick-weathering).
+- **Blocked (no refs):** bay-frame, awning, roll-gate.
+- Raws backed up at `.scratch/asset-kit/modern-flat-*.raw.png`.
