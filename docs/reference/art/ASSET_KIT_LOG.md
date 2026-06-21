@@ -136,3 +136,51 @@ Generated from `inked-components-modern-flat.v1.md`. wall, window, ground, weath
 **All generatable-now components are now keyed + mechanical-gate PASS (21 OK).** Remaining
 PENDING are gather-blocked only: brick/modern-flat bay-frame+awning+roll-gate,
 painted-masonry (whole family), warehouse (whole family). Next: batched Gate A + Gate B.
+
+### Gate A — APPROVED 2026-06-20 (Batu), with a VARIATION backlog
+
+All four family boards approved. Approval came with 6 notes — these define the
+**variation / recognizability layer** the single-component base kit doesn't yet cover.
+Backlog for Phase 7+/8 (kit additions + signature layer), NOT blocking Gate B:
+
+1. **Stoop is OPTIONAL.** Many Greenpoint entrances have a stoop, but not all — yet every
+   current door-stoop asset bakes in a stoop (only modern-flat is stoopless). Need a
+   **flush/low door variant** per family so ~some buildings sit at grade.
+2. **Brick sub-types unaccounted for.** Real brick varies: mortar thickness (thick vs
+   tight), coursing uniformity (uniform vs varied). One brick-wall tile ≠ the range. Need
+   **2–3 brick wall variants**.
+3. **Window AC units.** ~1 in 4 windows has a through-window AC unit — a recognizable
+   Greenpoint signal. New small overlay/decal component, applied to a subset of windows.
+4. **Dual-material facades.** ~1 in 10 buildings mixes materials (e.g. brick + clapboard).
+   The `dual-material/` reference folder exists; needs a compose rule (two families on one
+   facade, split by storey or bay).
+5. **4–5 door + window TYPES per family.** Variation is load-bearing for recognizability;
+   one door + one window per family reads repetitive at block scale. Generate a small set
+   per family and vary by BIN.
+6. **Fire escapes** are a MAJOR facade element, entirely missing from the kit. New component
+   (front-mounted zig-zag fire escape overlay), applied to a large subset of street facades.
+
+Implication: the base 6×9 grid is the floor, not the ceiling. Items 1/5 expand the door+
+window columns; 2 expands the wall column; 3/6 are NEW component types; 4 is a compose rule.
+Several of these (per-BIN door/window choice, fire escape placement, AC subset, dual-material
+split) are exactly the **signature-layer** wiring deferred to Phase 8 — fold them in there.
+
+### Gate B — isolation compose proof run 2026-06-20 (all 4 families)
+
+Ran `?assetkit=<family>` (src/dev/AssetKitProof.js) for brick, brownstone, modern-flat,
+clapboard — each composed+tinted onto the real-meter test panel beside the Premier hero
+composite (tone reference). All four read convincingly in-scene and tone-match the hero:
+- **brick** — red-brick wall, white-lintel windows, bracketed cornice, door-stoop at grade. ✓
+- **brownstone** — chocolate ashlar, hooded windows, heavy cornice, high-stoop arched entry,
+  faint spalling weathering. ✓ (strongest set)
+- **modern-flat** — tan standing-seam cladding + flush windows; quiet by design. Cornice/door
+  absent (modern has no cornice cell; its door is in the `ground` component, which the
+  isolation harness doesn't composite — harness limitation, not an asset gap). ✓
+- **clapboard** — grey-green lap, white double-hung, cornice, door+stoop, weathering. ✓
+  (consistent with the 2026-06-19 pilot approval; shingle variant not composited by the
+  harness, which uses `wall`.)
+
+Proofs reviewed inline by Batu (not persisted to disk this run). **Harness real-meter
+constants are clapboard-tuned** (lap 0.15 m, wood-frame repeat) — fine for a tone/legibility
+proof, but per-family wall repeat (ashlar/coursing) would need tuning for a pixel-accurate
+proof. Gate B verdict: pending Batu.
