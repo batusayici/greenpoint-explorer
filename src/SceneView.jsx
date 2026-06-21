@@ -2141,7 +2141,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         drawMeterQuads(stoop.quads, darken(params.tint, 0.72)); // family-tinted stone
         // Door panel set into the wall at the platform top (dark, recessed read).
         const doorWf = (stoop.uR - stoop.uL) / frontM;
-        const doorTopV = (stoop.topV + 2.1) / heightM; // ~2.1m door leaf above landing
+        const doorTopV = Math.min((stoop.topV + 2.1) / heightM, 1 - corniceFrac - 0.01); // ~2.1m door leaf, clamped below cornice
         quad({ x0: 0.5 - doorWf / 2, x1: 0.5 + doorWf / 2, y0: stoop.topV / heightM, y1: doorTopV },
           0.004, null, { tint: darken(params.tint, 0.45) });
       }
