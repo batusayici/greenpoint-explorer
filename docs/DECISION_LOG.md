@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-21 - Phase 8.0 Structural Depth Pass: geometry approved, look gated on two craft follow-ups
+
+Decision (Batu, live pilot review at the Task 6 gate). The Phase 8.0 depth geometry — 3D stoops and front fire escapes, parametric and family/storey-gated — is **built, gated, tested, and verified** on the 4-BIN pilot (commits `905315f..f9ba537`; pure modules `facadeDepthGates.js` / `stoopGeometry.js` / `fireEscapeGeometry.js` + renderer wiring in `decorateInkedWall`; 136 tests + full `npm run verify` green). In-engine confirmed: brownstone (168 Franklin) stoop + fire escape; brick (148 Franklin) stoop, no escape; modern (94 Greenpoint Ave) bare; clapboard (95 Kent) clean stoop path.
+
+**The geometry is approved; the LOOK is gated on two craft follow-ups before fan-out (8.1):**
+
+1. **Regenerate brick + brownstone ground textures (do `task_f39b0155`).** The 3D stoop suppresses the legacy *flat door-stoop PNG* but not the painted *ground band*; families with a ground asset (brick, brownstone) render both, and the brownstone-ground texture already depicts painted stairs → double-stairs. Batu chose to **regenerate the ground textures without painted stairs/door** (over the cheaper "suppress the ground band" or "clapboard-only" options) so the painted ground-floor wall and the 3D stoop coexist cleanly. Until done, brick/brownstone stoops are a known-wrong interim state on the branch; geometry left as-is per Batu (not suppressed).
+
+2. **Open up the fire-escape ironwork before locking a variant.** Both `relief` and `lattice` render rails/balconies as opaque quads that merge into solid dark bands (reads as shelves, not see-through ironwork). Batu chose **"neither yet — open up the ironwork first"** (alpha-textured open railings) rather than locking relief vs lattice now. The `3064541` lattice override stays as a placeholder; the relief/lattice default decision is deferred until the ironwork reads as iron.
+
+**Not merged to main; not fanned out.** 8.1 spine fan-out stays blocked until both craft items land and the look re-gates. Basement/areaway (Phase 8.5) remains its own ref-gated mini-design pending Batu's photos.
+
+Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/superpowers/specs/2026-06-21-structural-depth-pass-design.md`, `docs/superpowers/plans/2026-06-21-structural-depth-pass.md`.
+
 ## 2026-06-20 - Asset Kit Process: Recognizable-Silhouette Model + Two-Gate Taste Review + Real-Meter Isolation Proof
 
 Decision (Batu-approved in session, closing the clapboard vertical-slice pilot):
