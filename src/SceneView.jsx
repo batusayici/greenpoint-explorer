@@ -2105,6 +2105,16 @@ const WINDOW_CONTENT_SPAN = {
   clapboard: [0.505, 0.752],
   "modern-flat": [0.618, 0.845],
 };
+// Real-world meters one wall tile spans [width, height], per family — sets the
+// texture repeat so the masonry/siding reads at life scale. Brick ≈0.9m tile
+// (~11 courses). Clapboard laps ≈0.18m (taller tile = fewer, bigger laps).
+// Brownstone ashlar courses ≈0.35m (coarser than brick). Default = brick.
+const WALL_TILE_M = {
+  brick: [1.0, 0.9],
+  "modern-flat": [1.0, 0.9],
+  clapboard: [2.0, 2.0],
+  brownstone: [2.0, 2.1],
+};
 function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
@@ -2164,7 +2174,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const f = composeInkedFacade({ storeys, bays, corniceFrac, winWFrac, winHFrac });
   // Brick: ~0.9m tile (the texture shows ~11 courses → ~0.08m/course, real
   // brick) so course size is fine and matches the hero (was ~3× too coarse).
-  const brickRepeat = [clamp(Math.round(frontM / 1.0), 1, 16), clamp(Math.round(heightM / 0.9), 1, 24)];
+  const [tileW, tileH] = WALL_TILE_M[family] ?? WALL_TILE_M.brick;
+  const brickRepeat = [clamp(Math.round(frontM / tileW), 1, 16), clamp(Math.round(heightM / tileH), 1, 24)];
   // Wall (full-height tiled, family texture): every face, so side/rear read in
   // material. kitFile("brick","wall") === the legacy file, so non-kit is unchanged.
   const wallFile = kitFile(family, "wall") ?? "brick-wall.v1.png";
@@ -2194,12 +2205,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       // the opening exactly — recess hugs the glass instead of enveloping a small window.
       const cx = (w.x0 + w.x1) / 2, cy = (w.y0 + w.y1) / 2, hw = (w.x1 - w.x0) / 2, hh = (w.y1 - w.y0) / 2;
       quad({ x0: cx - hw / spanX, y0: cy - hh / spanY, x1: cx + hw / spanX, y1: cy + hh / spanY }, o, winTex, { transparent: true });
-      // Projecting stone sill: a lit ledge under the window, proud of the wall.
-      const sillOut = op + 0.006;
-      const sx0 = w.x0 - 0.012, sx1 = w.x1 + 0.012, yb = w.y0, yt = w.y0 - 0.013;
-      quad3(point(sx0, yb, sillOut), point(sx1, yb, sillOut), point(sx1, yb, 0.006), point(sx0, yb, 0.006), null, { tint: darken2(0.95) }); // top (lit)
-      quad3(point(sx0, yt, sillOut), point(sx1, yt, sillOut), point(sx1, yb, sillOut), point(sx0, yb, sillOut), null, { tint: darken2(0.78) }); // front
-      quad3(point(sx0, yt, 0.006), point(sx1, yt, 0.006), point(sx1, yt, sillOut), point(sx0, yt, sillOut), null, { tint: darken2(0.5) }); // underside
+      // No separate geometry sill — the window decal already paints its own
+      // lintel + sill; the recess gives the depth. (A doubled sill looked wrong.)
     } else {
       quad(w, 0.008, winTex, { transparent: true });
     }
@@ -2213,16 +2220,12 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     quad3(point(dx0, dy1, op), point(dx1, dy1, op), point(dx1, dy1, o), point(dx0, dy1, o), null, { tint: darken2(0.4) });  // head reveal
     quad3(point(dx0, dy0, op), point(dx0, dy0, o), point(dx0, dy1, o), point(dx0, dy1, op), null, { tint: darken2(0.45) }); // left reveal
     quad3(point(dx1, dy0, o), point(dx1, dy0, op), point(dx1, dy1, op), point(dx1, dy1, o), null, { tint: darken2(0.45) }); // right reveal
-    const tY = dy1 - (dy1 - dy0) * 0.16;
-    quad({ x0: dx0, y0: tY, x1: dx1, y1: dy1 }, o, null, { tint: darken2(0.62) }); // transom (lighter glass)
-    quad({ x0: dx0, y0: dy0, x1: dx1, y1: tY }, o, null, { tint: darken2(0.28) });  // door-leaf base (dark stiles/rails)
-    // Two leaves (double door), each with a raised upper + lower panel (proud of the
-    // leaf base so the dark base reads as the grooves between panels).
-    const midX = (dx0 + dx1) / 2, sw = 0.004, pe = o + 0.0015;
-    for (const [lx0, lx1] of [[dx0, midX - sw], [midX + sw, dx1]]) {
-      const bx = (lx1 - lx0) * 0.18, by = (tY - dy0) * 0.07, midY = (dy0 + tY) / 2;
-      quad({ x0: lx0 + bx, y0: midY + by * 0.7, x1: lx1 - bx, y1: tY - by }, pe, null, { tint: darken2(0.46) });   // upper panel
-      quad({ x0: lx0 + bx, y0: dy0 + by, x1: lx1 - bx, y1: midY - by * 0.7 }, pe, null, { tint: darken2(0.46) });  // lower panel
+    // Textured paneled door (+ transom), cropped from the family's door-stoop art.
+    const doorFile = kitHas(family, "door-stoop") ? `${family}-door.v1.png` : null;
+    if (doorFile) {
+      quad({ x0: dx0, y0: dy0, x1: dx1, y1: dy1 }, o, inkedTexture(doorFile), { tint: darken2(0.72), transparent: true });
+    } else {
+      quad({ x0: dx0, y0: dy0, x1: dx1, y1: dy1 }, o, null, { tint: darken2(0.3) }); // flat fallback leaf
     }
   };
   if (streetFace) {
