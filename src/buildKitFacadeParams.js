@@ -26,9 +26,7 @@ export function buildKitFacadeParams(building, family, override = undefined) {
     storeys: ov.storeys ?? Math.max(2, t.storeyCount),
     weathering: ov.weathering ?? KIT_DEFAULT_WEATHERING,
     components: ov.components ?? {},
-    // Modern/flat buildings have flush windows (no masonry reveal or stone sill);
-    // the recess + sill geometry suits prewar masonry + clapboard only.
-    windowRecess: ov.windowRecess ?? (family === "modern-flat" ? 0 : KIT_DEFAULT_WINDOW_RECESS),
+    windowRecess: ov.windowRecess ?? KIT_DEFAULT_WINDOW_RECESS,
     // Commercial ground floors are dressed by the storefront-sign system, not the
     // kit; kit-routed buildings use the stoop/ground-band path. Corner wrap on
     // kit buildings is out of scope (geometric), so single street face.

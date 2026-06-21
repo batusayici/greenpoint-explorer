@@ -2193,14 +2193,20 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
   const inExposed = (xc) => !exposedRanges || exposedRanges.some(([a, b]) => xc >= a - 1e-6 && xc <= b + 1e-6);
   const [spanX, spanY] = WINDOW_CONTENT_SPAN[family] ?? WINDOW_CONTENT_SPAN.brick;
+  // Recess-reveal tints. Masonry recesses read as deep shadow (dark); modern/flat
+  // walls want WALL-TONED reveals so the recess reads as the cladding stepping back,
+  // not a grey frame around the glass.
+  const flatWall = family === "modern-flat";
+  const revealHead = darken2(flatWall ? 0.62 : 0.4);
+  const revealJamb = darken2(flatWall ? 0.78 : 0.45);
   const drawWindow = (w) => {
     if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
     if (recessProj > 0) {
       const o = 0.006, op = 0.006 + recessProj; // recessed glass plane vs proud surround
-      // Recess reveals + sill align to the OPENING `w` (= the painted window).
-      quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: darken2(0.4) });
-      quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: darken2(0.45) });
-      quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: darken2(0.45) });
+      // Recess reveals align to the OPENING `w` (= the painted window).
+      quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: revealHead });
+      quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: revealJamb });
+      quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: revealJamb });
       // Expand the decal so its painted content (which has transparent margins) fills
       // the opening exactly — recess hugs the glass instead of enveloping a small window.
       const cx = (w.x0 + w.x1) / 2, cy = (w.y0 + w.y1) / 2, hw = (w.x1 - w.x0) / 2, hh = (w.y1 - w.y0) / 2;
@@ -2280,6 +2286,15 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         const groundFile = kitFile(family, "ground");
         if (groundFile) {
           quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
+          // Modern/flat: the door + storefront live in the ground texture. Frame the
+          // door with proud wall-toned reveals so it reads recessed (no stoop, no sill).
+          if (family === "modern-flat" && recessProj > 0) {
+            const o = 0.006, op = 0.006 + recessProj;
+            const ddx0 = 0.205, ddx1 = 0.335, ddy0 = f.ground.y0, ddy1 = f.ground.y1 * 0.86;
+            quad3(point(ddx0, ddy1, op), point(ddx1, ddy1, op), point(ddx1, ddy1, o), point(ddx0, ddy1, o), null, { tint: revealHead }); // head
+            quad3(point(ddx0, ddy0, op), point(ddx0, ddy0, o), point(ddx0, ddy1, o), point(ddx0, ddy1, op), null, { tint: revealJamb }); // left jamb
+            quad3(point(ddx1, ddy0, o), point(ddx1, ddy0, op), point(ddx1, ddy1, op), point(ddx1, ddy1, o), null, { tint: revealJamb }); // right jamb
+          }
         } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
           const hF = Math.min(0.34, f.ground.y1);
           const wF = (hF * heightM) * (1086 / 1448) / frontM;
