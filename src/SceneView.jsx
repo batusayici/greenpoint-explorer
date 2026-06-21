@@ -2290,44 +2290,37 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
   // — a Brooklyn cornice top is dark tar/metal.
   if (openingsFace && kitHas(family, "cornice") && params.components?.["cornice"] !== false) {
-    const corniceColor = params.corniceColor ?? darken(params.tint, 0.5);
-    const CROWN = darken(corniceColor, 0.5); // dark molding (crown/soffit/cap/returns)
-    // Molded profile (matches the reference): a bracket FRIEZE at a modest
-    // projection with an oversailing CROWN above that projects furthest at the top.
+    // The cornice asset is a COMPLETE painted molding (crown + brackets + dentils).
+    // It carries its own light/shadow, so tint it only lightly (keep the detail
+    // legible) rather than darkening it into mud.
+    const corniceColor = params.corniceColor ?? darken(params.tint, 0.82);
+    const CROWN = darken(params.tint, 0.42); // dark soffit/cap/returns (deep shadow)
     const wallO = 0.006;
-    const projFrieze = 0.020; // ~0.27m
-    const projCrown = 0.046;  // ~0.61m — the crown corona juts out furthest
+    const pBot = 0.012; // bottom projection (near the wall)
+    const pTop = 0.046; // top projection — the crown oversails furthest
     const yBot = 1 - corniceFrac;
-    const yMid = yBot + corniceFrac * 0.58; // frieze top / crown bottom
     // Span this face's edge; at a corner building's convex corner the shared end
     // overhangs so the two faces' crowns wrap it (INKED_FACADE_REAL miter path).
-    const ext = clamp(projCrown / edge.length, 0, 0.25);
+    const ext = clamp(pTop / edge.length, 0, 0.25);
     const x0 = miter?.start ? -ext : 0;
     const x1 = miter?.end ? 1 + ext : 1;
     const drawCornice = (corniceTex) => {
-      // Bracket frieze (textured), modest projection.
-      quad3(point(x0, yBot, projFrieze), point(x1, yBot, projFrieze),
-        point(x1, yMid, projFrieze), point(x0, yMid, projFrieze),
+      // Full molding on a face that leans OUT toward the top, so the crown projects
+      // furthest (a molded profile, not a flat extrusion) AND the texture reads.
+      quad3(point(x0, yBot, pBot), point(x1, yBot, pBot),
+        point(x1, 1, pTop), point(x0, 1, pTop),
         corniceTex, { tint: corniceColor, transparent: true });
-      // Bottom soffit (deep shadow) from the wall out to the frieze.
+      // Underside soffit (wall → bottom of the molding).
       quad3(point(x0, yBot, wallO), point(x1, yBot, wallO),
-        point(x1, yBot, projFrieze), point(x0, yBot, projFrieze), null, { tint: CROWN });
-      // Crown soffit step: frieze depth out to the crown oversail, at yMid.
-      quad3(point(x0, yMid, projFrieze), point(x1, yMid, projFrieze),
-        point(x1, yMid, projCrown), point(x0, yMid, projCrown), null, { tint: CROWN });
-      // Crown corona face — oversailing dark molding, yMid → roofline.
-      quad3(point(x0, yMid, projCrown), point(x1, yMid, projCrown),
-        point(x1, 1, projCrown), point(x0, 1, projCrown), null, { tint: CROWN });
-      // Top cap sloping back to the roof.
-      quad3(point(x0, 1, projCrown), point(x1, 1, projCrown),
+        point(x1, yBot, pBot), point(x0, yBot, pBot), null, { tint: CROWN });
+      // Top cap (crown front → back to the roof).
+      quad3(point(x0, 1, pTop), point(x1, 1, pTop),
         point(x1, 1, wallO), point(x0, 1, wallO), null, { tint: CROWN });
-      // End-return caps (both ends) so the cornice reads as a solid box, not an
-      // open band with hollow sides at the corner.
+      // End-return caps (both ends): the tilted side profile, so the cornice reads
+      // as a solid box, not an open band with hollow corners.
       for (const ex of [x0, x1]) {
-        quad3(point(ex, yBot, wallO), point(ex, yBot, projFrieze),
-          point(ex, yMid, projFrieze), point(ex, yMid, wallO), null, { tint: CROWN }); // frieze return
-        quad3(point(ex, yMid, wallO), point(ex, yMid, projCrown),
-          point(ex, 1, projCrown), point(ex, 1, wallO), null, { tint: CROWN });        // crown return
+        quad3(point(ex, yBot, wallO), point(ex, yBot, pBot),
+          point(ex, 1, pTop), point(ex, 1, wallO), null, { tint: CROWN });
       }
     };
     const ready = inkedCorniceTexture((tex) => { drawCornice(tex); requestRender?.(); });
