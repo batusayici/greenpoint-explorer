@@ -25,7 +25,10 @@ import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
 import { planStorefrontSigns } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
-import { kitFile, kitHas } from "./kitCoverage.js";
+import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
+import { resolveFacadeFamily } from "./facadeFamily.js";
+import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
+import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
 import {
   II_PALETTE,
@@ -1040,6 +1043,19 @@ const INKED_FACADE_REAL = {
   },
 };
 
+const FACADE_OVERRIDES = facadeOverridesData.overrides ?? {};
+
+// Phase 8.1 pilot gate — dev-only family assignments (tier pilot-unverified) on
+// real loaded block-extract BINs, one per asset-backed family. While non-empty,
+// the kit path applies ONLY to these BINs; emptying it (after Batu approves the
+// four in-scene) opens the kit to every kit-eligible building (the full flip).
+const KIT_PILOT_BINS = {
+  "3064677": "brick",       // 3-storey 1864 rowhouse — genuine heuristic brick
+  "3064605": "clapboard",   // 3-storey 1868 rowhouse — pilot-unverified
+  "3064541": "brownstone",  // 4-storey 1896 C1        — pilot-unverified
+  "3398449": "modern-flat", // 4-storey 2014           — pilot-unverified
+};
+
 const INKED_FACADE_BLOCK = {
   enabled: false,
   radiusUnits: CONTEXT_TREATMENT_RADIUS_UNITS, // cluster around the Franklin corner
@@ -1356,10 +1372,21 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       ? INKED_FACADE_REAL.buildings[building.bin]
       : null;
     const distPre = Math.hypot(building.centroid.x, building.centroid.z);
+    // Phase 8.1 — kit-route asset-backed typological buildings through the same
+    // inkedKit channel as the hand-authored set. Pilot mode restricts to
+    // KIT_PILOT_BINS; full mode (empty map) opens to every kit-eligible building.
+    let kitParams = null;
+    const pilotMode = Object.keys(KIT_PILOT_BINS).length > 0;
+    const pilotEligible = !pilotMode || building.bin in KIT_PILOT_BINS;
+    if (!inkedParamsPre && pilotEligible && building.fromBlockExtract && building.sourceProperties) {
+      const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
+      if (familyHasKit(family)) kitParams = buildKitFacadeParams(building, family, FACADE_OVERRIDES[building.bin]);
+    }
+    const inkedParams = inkedParamsPre ?? kitParams;
     const treatment = selectTreatment({
       building,
       dist: distPre,
-      inkedParams: inkedParamsPre,
+      inkedParams,
       contextRadius: CONTEXT_TREATMENT_RADIUS_UNITS,
     });
     if (treatment === "hero") {
@@ -1374,7 +1401,6 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // Step-3 inked mid-block buildings: tint the massing to the building's brick
     // tone so any peek of the extrude (roof, party-wall sliver) matches the inked
     // facade that gets hung on it below.
-    const inkedParams = inkedParamsPre;
     let typology = null;
     let color;
     if (inkedParams) {
@@ -1393,7 +1419,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // masses keep the cheap wall-darken.
     let roof;
     if (inkedParams) {
-      roof = new THREE.Color(roofToneFor("brick"));
+      roof = new THREE.Color(roofToneFor(inkedParams.family ?? "brick"));
     } else if (typology) {
       roof = new THREE.Color(roofToneFor(typology.materialFamily));
     } else {
