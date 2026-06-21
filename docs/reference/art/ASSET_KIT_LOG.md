@@ -184,3 +184,30 @@ Proofs reviewed inline by Batu (not persisted to disk this run). **Harness real-
 constants are clapboard-tuned** (lap 0.15 m, wood-frame repeat) — fine for a tone/legibility
 proof, but per-family wall repeat (ashlar/coursing) would need tuning for a pixel-accurate
 proof. Gate B verdict: pending Batu.
+
+## Ground-floor regen — brick + brownstone (Phase 8.0 craft follow-up, `task_f39b0155`)
+
+**Status:** packet prepared 2026-06-21, AWAITING GPT generation. Packet:
+`docs/reference/art/prompts/inked-components-ground-regen.v1.md`.
+
+**Why:** the 3D stoop (Phase 8.0) renders in front of the painted ground band, but the brick
++ brownstone ground textures bake in painted stairs + entry door → double-stairs. Batu's call
+(DECISION_LOG 2026-06-21): regenerate the two ground textures **without painted stairs/door**
+so the painted parlor wall and the 3D stoop coexist.
+
+**Scope (Batu, 2026-06-21): minimal now, defer 8.5.** Each ground texture = parlor masonry +
+parlor window(s) only. No stoop/door/railing/basement/areaway — the basement reference corpus
+(`asset-reference/basement/`, 11 photos: high stoop + iron areaway + garden door + barred
+basement window) is the **Phase 8.5** subject and stays deferred. Key constraints baked into
+the packet: (1) the parlor window MUST stay — the window-decal grid covers upper storeys only
+(`composeInkedFacade` starts windows at `groundFrac`), so the ground texture is the parlor
+floor's only window; (2) the **central third stays plain wall** because the 3D entry is
+centered (`doorCenterM = frontM/2`) — window(s) go to the side(s).
+
+**Intake:** overwrite `{brick,brownstone}-ground.v1.png` (filename kept, no wiring change;
+opaque tiles → no alpha key). Raws → `.scratch/asset-kit-raw/{brick,brownstone}/ground.png`.
+Old painted-stairs files backed up at `.scratch/asset-kit/{brick,brownstone}-ground.painted-stairs.png`.
+
+**Downstream (agent, after raws land):** no-entry QA → `verify-inked-component.mjs` → Gate B
+scene proof on the pilot (brick 148 Franklin, brownstone 168 Franklin) confirming no
+double-stairs → re-gate the 8.0 look → ledger + DECISION_LOG.
