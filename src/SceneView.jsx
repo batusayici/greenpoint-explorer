@@ -27,6 +27,8 @@ import { planStorefrontSigns } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
 import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
 import { resolveFacadeFamily } from "./facadeFamily.js";
+import { wantsStoop } from "./facadeDepthGates.js";
+import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
@@ -2119,15 +2121,34 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
     quad(f.wall, 0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
   }
+  // Maps a pure module's face-local meter quads ([u,v,w]) into the wall frame.
+  // Defined here (after frontM/heightM/upm) so no temporal-dead-zone risk.
+  const drawMeterQuads = (quads, tint) => {
+    for (const q of quads) {
+      const [a, b, c, d] = q.corners.map(([u, v, w]) =>
+        point(u / frontM, v / heightM, w * upm));
+      quad3(a, b, c, d, null, { tint });
+    }
+  };
   if (streetFace) {
     // Street face only: ground band (storefront) OR a door-stoop unit — never both.
     if (params.storefront) {
       decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
     } else {
+      const drewStoop = isKit && !params.storefront && wantsStoop(family);
+      if (drewStoop) {
+        const stoop = buildStoopGeometry({ frontM, doorCenterM: frontM / 2 });
+        drawMeterQuads(stoop.quads, darken(params.tint, 0.72)); // family-tinted stone
+        // Door panel set into the wall at the platform top (dark, recessed read).
+        const doorWf = (stoop.uR - stoop.uL) / frontM;
+        const doorTopV = (stoop.topV + 2.1) / heightM; // ~2.1m door leaf above landing
+        quad({ x0: 0.5 - doorWf / 2, x1: 0.5 + doorWf / 2, y0: stoop.topV / heightM, y1: doorTopV },
+          0.004, null, { tint: darken(params.tint, 0.45) });
+      }
       const groundFile = kitFile(family, "ground");
       if (groundFile) {
         quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
-      } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
+      } else if (!drewStoop && isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
         // No ground band for this family (e.g. clapboard) → the door-stoop unit is
         // the entry. Families WITH a ground asset (brick/brownstone/modern-flat)
         // carry their entry in the ground band, so the separate unit is suppressed
