@@ -121,3 +121,18 @@ Generated from `inked-components-modern-flat.v1.md`. wall, window, ground, weath
   236 with a plain border flood (no luminance ramp needed, unlike brick-weathering).
 - **Blocked (no refs):** bay-frame, awning, roll-gate.
 - Raws backed up at `.scratch/asset-kit/modern-flat-*.raw.png`.
+
+### gap pieces — keyed + mechanical gate PASS 2026-06-20
+
+- **clapboard-shingle-wall.v1.png** (opaque tile) — overlapping shingle courses, running
+  offset, inked bottom edges + vertical breaks. 2×2 tile clean (left↔right seamless,
+  top↔bottom courses flow). Closes the clapboard shingle sub-type carryover. (Matrix: a wall
+  VARIANT within the clapboard family — no new family row; verifier treats it as a generated
+  clapboard wall asset.)
+- **brownstone-weathering.v1.png** (overlay) — pure-white-bg recipe → keyed 94.6% transparent
+  at 236, plain border flood. Closes the brownstone family (now 6/6).
+- Raws backed up at `.scratch/asset-kit/{clapboard-shingle-wall,brownstone-weathering}.raw.png`.
+
+**All generatable-now components are now keyed + mechanical-gate PASS (21 OK).** Remaining
+PENDING are gather-blocked only: brick/modern-flat bay-frame+awning+roll-gate,
+painted-masonry (whole family), warehouse (whole family). Next: batched Gate A + Gate B.
