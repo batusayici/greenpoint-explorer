@@ -32,5 +32,6 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   if (ov.bays != null) params.bays = ov.bays;
   if (ov.corniceFrac != null) params.corniceFrac = ov.corniceFrac;
   if (ov.corniceProj != null) params.corniceProj = ov.corniceProj;
+  if (ov.fireEscapeVariant != null) params.fireEscapeVariant = ov.fireEscapeVariant;
   return params;
 }

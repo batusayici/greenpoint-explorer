@@ -1,5 +1,7 @@
 {
   "_doc": "Per-BIN facade overrides — where pilot/gate feedback lands. `family` (set with evidence) asserts material truth (tier curated) and is the only path to clapboard/brownstone/modern-flat. Other fields are RENDER tuning applied on top of family defaults (tint, storeys, bays, weathering 0..1, components on/off, corniceFrac, corniceProj m, windowRecess m). Editing this file + re-checking in the scene preview is the gate loop — NO asset regeneration. Absent BINs fall through to the heuristic. Component-ART defects are a Gate A/B backlog item, not a tuning field.",
   "version": "0.1",
-  "overrides": {}
+  "overrides": {
+    "3064541": { "fireEscapeVariant": "lattice" }
+  }
 }

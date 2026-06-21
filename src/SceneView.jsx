@@ -27,8 +27,9 @@ import { planStorefrontSigns } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
 import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
 import { resolveFacadeFamily } from "./facadeFamily.js";
-import { wantsStoop } from "./facadeDepthGates.js";
+import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
+import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
 import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
@@ -2177,6 +2178,14 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         quad(w, 0.008, winTex, { transparent: true });
       }
     }
+  }
+  // Front fire escape (street face only, prewar masonry >=4 storeys). Dark iron
+  // as a family-palette tint; geometry-only, no texture asset. Projects proud of
+  // the wall like the cornice, so the solid mass occludes it from rear angles.
+  if (streetFace && isKit && wantsFireEscape(family, storeys)) {
+    const variant = params.fireEscapeVariant ?? "relief";
+    const fe = buildFireEscapeGeometry({ frontM, heightM, storeys, variant });
+    drawMeterQuads(fe.quads, darken(params.tint, 0.32));
   }
   // Cornice on the street face(s): a projecting painted crown that butts against
   // the neighbour at party lines (no overhang there, so it never spills onto the
