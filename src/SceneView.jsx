@@ -1459,31 +1459,30 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         // the abutted (party) portion of a partially-covered face.
         const fracAlong = (e, p) => Math.hypot(p.x - e.start.x, p.z - e.start.z) / (e.length || 1);
         const exposedRanges = inkedEdges.map((e, i) => exposedSegs[i].map((seg) => [fracAlong(e, seg.start), fracAlong(e, seg.end)]));
-        // Street face: prefer the Franklin-facing edge when it is itself exposed,
-        // else the longest exposed edge. (True per-street orientation needs street
-        // centrelines — a follow-on; this is the best street proxy from geometry.)
-        const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
-        let streetIndex = exposed[frontIdx] ? frontIdx : -1;
+        // Street face: the exposed edge that fronts a street running PARALLEL to it —
+        // correct for BOTH Franklin- and Greenpoint-fronting buildings (a Greenpoint
+        // building must not be forced onto its Franklin-facing side). Falls back to
+        // the Franklin-oriented front, then the most-open exposed edge.
+        const streetSegs = scene.streets.map((s) => ({ a: s.line[0], b: s.line[s.line.length - 1] }));
+        const oriented = inkedEdges.map((e) => {
+          const t = Math.hypot(e.end.x - e.start.x, e.end.z - e.start.z) || 1;
+          return { ...e, tangent: { x: (e.end.x - e.start.x) / t, z: (e.end.z - e.start.z) / t } };
+        });
+        let streetIndex = pickStreetFrontEdge(oriented, exposed, streetSegs);
         if (streetIndex < 0) {
-          // Franklin front blocked (cross-street / interior rowhouse). Front the
-          // exposed edge that faces a street running PARALLEL to it — a rowhouse
-          // fronts the street its frontage is parallel to. (clapboard pilot 3064605:
-          // a ±x row whose open ends front Greenpoint-parallel, so it faces +z, not
-          // the open −z backyard.) Fall back to the most-open exposed edge.
-          const streetSegs = scene.streets.map((s) => ({ a: s.line[0], b: s.line[s.line.length - 1] }));
-          const oriented = inkedEdges.map((e) => {
-            const t = Math.hypot(e.end.x - e.start.x, e.end.z - e.start.z) || 1;
-            return { ...e, tangent: { x: (e.end.x - e.start.x) / t, z: (e.end.z - e.start.z) / t } };
-          });
-          streetIndex = pickStreetFrontEdge(oriented, exposed, streetSegs);
-          if (streetIndex < 0) {
-            const sibPts = siblings.map((o) => o.centroid);
-            const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
-            streetIndex = mostOpenExposedEdge(inkedEdges, exposed, clearance);
-          }
+          const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+          streetIndex = exposed[frontIdx] ? frontIdx : -1;
         }
+        if (streetIndex < 0) {
+          const sibPts = siblings.map((o) => o.centroid);
+          const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
+          streetIndex = mostOpenExposedEdge(inkedEdges, exposed, clearance);
+        }
+        // Windows only on the street face + the faces aligned with it (front/rear);
+        // perpendicular SIDE walls are lot-line/party walls and stay blank.
+        const streetNormal = streetIndex >= 0 ? inkedEdges[streetIndex].normal : null;
         inkedEdges.forEach((edge, i) => {
-          decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i], exposedRanges[i]);
+          decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i], exposedRanges[i], streetNormal);
         });
       } else {
         // INKED_FACADE_REAL: existing Franklin front-face path (unchanged).
@@ -2070,7 +2069,18 @@ function inkedCorniceTexture(onReady) {
 // `streetFace` gates the front-facade elements: when false (side/rear walls)
 // only plain brick + party seams are drawn — no windows, storefront, or cornice
 // — so side facades read as blank party-wall brick.
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null) {
+// Painted-content span (width,height as fractions of the decal rect) of each
+// family's window PNG — the alpha bbox, measured from the assets. The transparent
+// margin means the painted window is smaller than its rect; we expand the decal so
+// its content fills the opening and the recess reveals align to the glass, not the
+// rect (otherwise the recess "envelopes" a too-small window).
+const WINDOW_CONTENT_SPAN = {
+  brick: [0.708, 0.836],
+  brownstone: [0.617, 0.859],
+  clapboard: [0.505, 0.752],
+  "modern-flat": [0.618, 0.845],
+};
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -2155,14 +2165,19 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
   const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
   const inExposed = (xc) => !exposedRanges || exposedRanges.some(([a, b]) => xc >= a - 1e-6 && xc <= b + 1e-6);
+  const [spanX, spanY] = WINDOW_CONTENT_SPAN[family] ?? WINDOW_CONTENT_SPAN.brick;
   const drawWindow = (w) => {
     if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
     if (recessProj > 0) {
       const o = 0.006, op = 0.006 + recessProj; // recessed glass plane vs proud surround
+      // Recess reveals + sill align to the OPENING `w` (= the painted window).
       quad3(point(w.x0, w.y1, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), point(w.x0, w.y1, o), null, { tint: darken2(0.4) });
       quad3(point(w.x0, w.y0, op), point(w.x0, w.y0, o), point(w.x0, w.y1, o), point(w.x0, w.y1, op), null, { tint: darken2(0.45) });
       quad3(point(w.x1, w.y0, o), point(w.x1, w.y0, op), point(w.x1, w.y1, op), point(w.x1, w.y1, o), null, { tint: darken2(0.45) });
-      quad(w, o, winTex, { transparent: true });
+      // Expand the decal so its painted content (which has transparent margins) fills
+      // the opening exactly — recess hugs the glass instead of enveloping a small window.
+      const cx = (w.x0 + w.x1) / 2, cy = (w.y0 + w.y1) / 2, hw = (w.x1 - w.x0) / 2, hh = (w.y1 - w.y0) / 2;
+      quad({ x0: cx - hw / spanX, y0: cy - hh / spanY, x1: cx + hw / spanX, y1: cy + hh / spanY }, o, winTex, { transparent: true });
       // Projecting stone sill: a lit ledge under the window, proud of the wall.
       const sillOut = op + 0.006;
       const sx0 = w.x0 - 0.012, sx1 = w.x1 + 0.012, yb = w.y0, yt = w.y0 - 0.013;
@@ -2173,6 +2188,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       quad(w, 0.008, winTex, { transparent: true });
     }
   };
+  const windowFace = openingsFace && (streetFace || !streetNormal ||
+    Math.abs(edge.normal.x * streetNormal.x + edge.normal.z * streetNormal.z) > 0.5);
   // A real recessed entry door (dark leaf + transom + proud frame), drawn on the
   // plain wall after the stoop. Replaces the old flat panel that the ground band hid.
   const drawDoor = (dx0, dx1, dy0, dy1) => {
@@ -2182,8 +2199,15 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     quad3(point(dx1, dy0, o), point(dx1, dy0, op), point(dx1, dy1, op), point(dx1, dy1, o), null, { tint: darken2(0.45) }); // right reveal
     const tY = dy1 - (dy1 - dy0) * 0.16;
     quad({ x0: dx0, y0: tY, x1: dx1, y1: dy1 }, o, null, { tint: darken2(0.62) }); // transom (lighter glass)
-    quad({ x0: dx0, y0: dy0, x1: dx1, y1: tY }, o, null, { tint: darken2(0.3) });  // dark door leaf
-    quad({ x0: (dx0 + dx1) / 2 - 0.004, y0: dy0, x1: (dx0 + dx1) / 2 + 0.004, y1: tY }, o + 0.001, null, { tint: darken2(0.22) }); // center stile
+    quad({ x0: dx0, y0: dy0, x1: dx1, y1: tY }, o, null, { tint: darken2(0.28) });  // door-leaf base (dark stiles/rails)
+    // Two leaves (double door), each with a raised upper + lower panel (proud of the
+    // leaf base so the dark base reads as the grooves between panels).
+    const midX = (dx0 + dx1) / 2, sw = 0.004, pe = o + 0.0015;
+    for (const [lx0, lx1] of [[dx0, midX - sw], [midX + sw, dx1]]) {
+      const bx = (lx1 - lx0) * 0.18, by = (tY - dy0) * 0.07, midY = (dy0 + tY) / 2;
+      quad({ x0: lx0 + bx, y0: midY + by * 0.7, x1: lx1 - bx, y1: tY - by }, pe, null, { tint: darken2(0.46) });   // upper panel
+      quad({ x0: lx0 + bx, y0: dy0 + by, x1: lx1 - bx, y1: midY - by * 0.7 }, pe, null, { tint: darken2(0.46) });  // lower panel
+    }
   };
   if (streetFace) {
     // Street face only: storefront band, OR a 3D stoop + door (kit rowhouse), OR a
@@ -2245,9 +2269,9 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       }
     }
   }
-  if (openingsFace) {
-    // Windows on every EXPOSED face (street + backyard + uncovered sides), clipped
-    // to the exposed runs so they never land on a covered party wall.
+  if (windowFace) {
+    // Windows on the street + front/rear-aligned exposed faces, clipped to the
+    // exposed runs. Perpendicular side (lot-line/party) walls stay blank.
     for (const w of f.windows) drawWindow(w);
   }
   // Front fire escape (street face only, prewar masonry >=4 storeys). Dark iron
