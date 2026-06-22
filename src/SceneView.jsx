@@ -224,6 +224,11 @@ export default function SceneView() {
         greenpointAxis: scene.greenpointAxis,
         franklinAxis: scene.franklinAxis,
         geometrySource,
+        // contextRadiusMeters omitted → defaults to 130, the SAME default
+        // assembleFranklinScene uses to cull distant buildings (sceneFrame.js).
+        // Cross-street reach is clamped to this radius, so the two MUST match:
+        // if the scene's cull radius ever becomes a non-default override, pass
+        // the same value here, or asphalt will extend past the culled buildings.
       });
       buildGround(three, groundData);
       const furniture = buildStreetFurniture({
