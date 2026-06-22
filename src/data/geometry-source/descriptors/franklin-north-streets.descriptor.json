@@ -1,0 +1,5 @@
+{
+  "id": "franklin-north",
+  "label": "Franklin Ave corridor streets, Greenpoint Ave → Huron St",
+  "bbox": { "minLon": -73.9595, "minLat": 40.7290, "maxLon": -73.9520, "maxLat": 40.7360 }
+}
