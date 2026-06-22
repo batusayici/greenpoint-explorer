@@ -20,9 +20,35 @@ test("decks project out from the wall by the requested depth", () => {
   assert.ok(Math.abs(maxW - 0.9) < 1e-9);
 });
 
-test("ladders connect consecutive balconies", () => {
+test("each flight is an OPEN stair: two stringers + stepped treads + a handrail", () => {
   const fe = buildFireEscapeGeometry(base);
-  assert.equal(fe.quads.filter((q) => q.role === "ladder").length, fe.balconies.length - 1);
+  const flights = fe.balconies.length - 1;
+  assert.equal(fe.quads.filter((q) => q.role === "stringer").length, flights * 2);
+  assert.equal(fe.quads.filter((q) => q.role === "handrail").length, flights);
+  assert.ok(fe.quads.filter((q) => q.role === "tread").length >= flights * 2, "treads march down");
+});
+
+test("a stringer is diagonal: it spans two floor lines and slants horizontally", () => {
+  const fe = buildFireEscapeGeometry(base);
+  const s = fe.quads.find((q) => q.role === "stringer");
+  const ys = s.corners.map((c) => c[1]);
+  const xs = s.corners.map((c) => c[0]);
+  assert.ok(Math.max(...ys) - Math.min(...ys) > 1e-6, "spans a storey in height");
+  const top = s.corners.filter((c) => c[1] === Math.max(...ys)).map((c) => c[0]);
+  const bot = s.corners.filter((c) => c[1] === Math.min(...ys)).map((c) => c[0]);
+  assert.ok(Math.abs(Math.min(...top) - Math.min(...bot)) > 1e-6, "ends offset horizontally");
+  assert.ok(Math.max(...xs) <= base.frontM, "stays within the front");
+});
+
+test("a rungs drop-ladder hangs off the lowest balcony", () => {
+  const fe = buildFireEscapeGeometry(base);
+  const rails = fe.quads.filter((q) => q.role === "ladderRail");
+  const rungs = fe.quads.filter((q) => q.role === "rung");
+  assert.equal(rails.length, 2, "two side rails");
+  assert.ok(rungs.length >= 2, "has rungs");
+  const lowest = Math.min(...fe.balconies);
+  const ladderBottom = Math.min(...rails.flatMap((r) => r.corners.map((c) => c[1])));
+  assert.ok(ladderBottom < lowest, "descends below the lowest balcony");
 });
 
 test("relief variant has no balusters; lattice variant adds them", () => {

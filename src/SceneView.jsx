@@ -2112,7 +2112,10 @@ const WINDOW_CONTENT_SPAN = {
 // fraction of the recess depth (0 = flush — modern-flat windows have no stone trim).
 const WINDOW_TRIM = {
   brick: { lintel: 0.17, sill: 0.12, proj: 0.6 },
-  brownstone: { lintel: 0.19, sill: 0.13, proj: 0.7 },
+  // lintel split sits ABOVE the arched glass apex (~0.15 of the painted height) so
+  // only the crown cornice projects — otherwise the arched top of the glass bleeds
+  // a sliver onto the projecting cap. Just the crown projects; arch + glass recess.
+  brownstone: { lintel: 0.12, sill: 0.13, proj: 0.7 },
   clapboard: { lintel: 0.14, sill: 0.11, proj: 0.5 },
   "modern-flat": { lintel: 0.08, sill: 0.08, proj: 0.0 },
 };
@@ -2293,25 +2296,27 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     slice(x0e, yS, x1e, yL, D);   // recessed body (glass + pilasters)
     slice(x0e, yL, x1e, y1e, P);  // projecting lintel cap (+ its top margin)
     slice(x0e, y0e, x1e, yS, P);  // projecting sill (+ its bottom margin)
-    // Reveals seal the zones. Side jambs (wall -> recessed body) — wall-toned so the
-    // masonry continues into the reveal. Lintel soffit (cap front -> body), faces
-    // down = shadow. Sill top (body -> sill front), faces up = lit. Cap-top and
-    // sill-underside tie the projecting trim back to the wall (no float; the sill
-    // underside casts the downward shadow the real stone sill throws).
+    // Reveals seal the zones. Side jambs are the masonry thickness between the brick
+    // wall and the recessed frame, so they stay WALL-toned. The cap/sill connector
+    // faces are the 3D sides of the projecting STONE trim, so they take stone tones
+    // (lit sill stone / lintel shadow) — never the brown wall tint, which read as
+    // mismatched brown shelves around the cream trim.
     const jambT = darken(params.tint, REVEAL.jamb);
+    const stoneLit = FACADE_RELIEF.sillLit;        // lit stone top surface
+    const stoneShade = FACADE_RELIEF.lintelShadow; // stone in shadow (soffit / underside)
     quad3(point(w.x0, yS, WALL_PLANE), point(w.x0, yS, D), point(w.x0, yL, D), point(w.x0, yL, WALL_PLANE), wallTex,
       { tint: jambT, uv: [1 - w.x0, yS, 1 - w.x0, yS, 1 - w.x0, yL, 1 - w.x0, yL] });
     quad3(point(w.x1, yS, D), point(w.x1, yS, WALL_PLANE), point(w.x1, yL, WALL_PLANE), point(w.x1, yL, D), wallTex,
       { tint: jambT, uv: [1 - w.x1, yS, 1 - w.x1, yS, 1 - w.x1, yL, 1 - w.x1, yL] });
     quad3(point(w.x0, yL, P), point(w.x1, yL, P), point(w.x1, yL, D), point(w.x0, yL, D), null,
-      { tint: darken(params.tint, REVEAL.head) });   // lintel soffit (down, shadow)
+      { tint: stoneShade });   // lintel soffit (down, shadow)
     quad3(point(w.x0, yS, D), point(w.x1, yS, D), point(w.x1, yS, P), point(w.x0, yS, P), null,
-      { tint: darken(params.tint, REVEAL.sill) });   // sill top (up, lit)
+      { tint: stoneLit });     // sill top (up, lit)
     if (trim.proj > 0) {
       quad3(point(w.x0, w.y1, WALL_PLANE), point(w.x1, w.y1, WALL_PLANE), point(w.x1, w.y1, P), point(w.x0, w.y1, P), null,
-        { tint: darken(params.tint, REVEAL.sill) });  // cap top (up, lit)
+        { tint: stoneLit });   // cap top (up, lit)
       quad3(point(w.x0, w.y0, P), point(w.x1, w.y0, P), point(w.x1, w.y0, WALL_PLANE), point(w.x0, w.y0, WALL_PLANE), null,
-        { tint: darken(params.tint, REVEAL.head) });  // sill underside (down, cast shadow)
+        { tint: stoneShade });  // sill underside (down, cast shadow)
     }
   };
   const windowFace = openingsFace && (streetFace || !streetNormal ||
@@ -2409,16 +2414,20 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // iron tint from the family palette. Projects proud, occluded from the rear by mass.
   if (streetFace && isKit && wantsFireEscape(family, storeys)) {
     const fe = buildFireEscapeGeometry({ frontM, heightM, storeys });
-    const iron = darken(params.tint, 0.26);
+    // Dark iron is NEUTRAL near-black — NOT a brick tint, or the members read as
+    // painted wood. Slightly warm charcoal so it sits in the II-C palette; the
+    // open-rail texture renders true black on its iron pixels (so it matches).
+    const IRON = 0x161413;        // stringers, treads, ladder, handrails
+    const IRON_DECK = 0x201c1a;   // platform floor, a hair lifted so its edge reads
     const railTex = inkedRailingTexture();
     for (const q of fe.quads) {
       const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
       if (q.role === "rail") {
-        quad3(a, b, c, d, railTex, { tint: iron, transparent: true }); // open balusters
+        quad3(a, b, c, d, railTex, { tint: IRON, transparent: true }); // open balusters
       } else if (q.role === "deck") {
-        quad3(a, b, c, d, null, { tint: darken(params.tint, 0.34) });   // thin platform
-      } else { // ladder (+ any baluster geometry) — slender solid members
-        quad3(a, b, c, d, null, { tint: iron });
+        quad3(a, b, c, d, null, { tint: IRON_DECK });                   // thin platform
+      } else { // stringer, tread, handrail, ladderRail, rung, baluster — solid iron
+        quad3(a, b, c, d, null, { tint: IRON });
       }
     }
   }
