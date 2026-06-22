@@ -33,7 +33,7 @@ import { resolveFacadeFamily } from "./facadeFamily.js";
 import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
-import { edgeClearance, mostOpenExposedEdge, pickStreetFrontEdge, pickStreetFrontages } from "./streetFaceSelect.js";
+import { edgeClearance, mostOpenExposedEdge, pickStreetFrontages } from "./streetFaceSelect.js";
 import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
@@ -241,8 +241,9 @@ export default function SceneView() {
         franklinAxis: scene.franklinAxis,
       });
       buildFurniture(three, furniture);
-      buildBuildings(three, scene, requestRender, isActive, addCullable);
-      buildBlockStorefronts(three, scene);
+      const { baysByBin, pointByName: storefrontPointByName } = computeStorefrontBays(scene);
+      buildBuildings(three, scene, requestRender, isActive, addCullable, baysByBin);
+      buildBlockStorefronts(three, scene, baysByBin, storefrontPointByName);
       buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
     }
     window.__three = three;
@@ -1231,7 +1232,10 @@ function buildInkedFacadeTest(three, scene) {
   }
 }
 
-function buildBlockStorefronts(three, scene) {
+// Roster assignment, computed once and shared by the kit storefront wiring and
+// the block sign/awning system so both agree on which tenant sits where.
+// Returns { baysByBin: Map<bin, Array<bay>>, pointByName: Map<name, scenePoint> }.
+function computeStorefrontBays(scene) {
   // Build a normalized set of hero business names sourced from the hero-places
   // file. heroPlaces is a top-level array; each record carries name at record.name
   // or record.business?.name. This keeps the exclusion set in sync with the file
@@ -1264,7 +1268,6 @@ function buildBlockStorefronts(three, scene) {
 
   // Step 2b: hero-proximity guard — if the nearest building to a storefront
   // is a hero, the storefront belongs to that hero's treatment; drop it here.
-
   function dist(a, b) {
     return Math.hypot(a.x - b.x, a.z - b.z);
   }
@@ -1292,9 +1295,9 @@ function buildBlockStorefronts(three, scene) {
       frontage: { scenePoint: x.b.centroid },
     }));
 
-  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
-
-  if (blockCommercial.length === 0 || survivors.length === 0) return;
+  if (blockCommercial.length === 0 || survivors.length === 0) {
+    return { baysByBin: new Map(), pointByName: new Map() };
+  }
 
   // Step 4: assign — force point-only path (houseNumber null for all survivors).
   const roster = survivors.map((s) => ({
@@ -1320,6 +1323,16 @@ function buildBlockStorefronts(three, scene) {
     if (!baysByBin.has(bay.bin)) baysByBin.set(bay.bin, []);
     baysByBin.get(bay.bin).push(bay);
   }
+
+  return { baysByBin, pointByName };
+}
+
+function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+
+  if (!baysByBin || baysByBin.size === 0) return;
+
+  function dist(a, b) { return Math.hypot(a.x - b.x, a.z - b.z); }
 
   // Step 6: render sign + awning for each bay.
   for (const [bin, binBays] of baysByBin) {
@@ -1379,7 +1392,7 @@ function buildBlockStorefronts(three, scene) {
   }
 }
 
-function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
+function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map()) {
   scene.buildings.forEach((building, index) => {
     const inkedParamsPre = INKED_FACADE_REAL.enabled
       ? INKED_FACADE_REAL.buildings[building.bin]
