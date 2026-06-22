@@ -9,6 +9,7 @@ import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
+import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
 import blockFranklinMilton from "./data/geometry-source/block-franklin-milton.nyc-open-geometry.v0.1.json";
@@ -219,16 +220,19 @@ export default function SceneView() {
       heroTex.colorSpace = THREE.SRGBColorSpace;
       mountAssetKitProofIsolation(THREE, three, assetKitFamily, inkedTexture, heroTex, requestRender);
     } else {
+      const centerlineKey = (r) =>
+        r.physicalid != null ? `pid:${r.physicalid}` : `nm:${r.fullStreetName}:${r.wgs84Line?.[0]?.lon},${r.wgs84Line?.[0]?.lat}`;
+      const mergedGeometrySource = (() => {
+        const byKey = new Map();
+        for (const r of geometrySource.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r);
+        for (const r of corridorStreetCenterlines.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r); // corridor wins
+        return { ...geometrySource, streetCenterlineRecords: [...byKey.values()] };
+      })();
       const groundData = buildGroundLayer({
         projection: scene.projection,
         greenpointAxis: scene.greenpointAxis,
         franklinAxis: scene.franklinAxis,
-        geometrySource,
-        // contextRadiusMeters omitted → defaults to 130, the SAME default
-        // assembleFranklinScene uses to cull distant buildings (sceneFrame.js).
-        // Cross-street reach is clamped to this radius, so the two MUST match:
-        // if the scene's cull radius ever becomes a non-default override, pass
-        // the same value here, or asphalt will extend past the culled buildings.
+        geometrySource: mergedGeometrySource,
       });
       buildGround(three, groundData);
       const furniture = buildStreetFurniture({

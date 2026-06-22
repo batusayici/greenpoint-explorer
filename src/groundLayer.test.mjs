@@ -194,3 +194,20 @@ test("Franklin is still flagged derived (no source centerline in this packet)", 
   const fr = ground.streets.find((s) => s.id === "franklin-st");
   assert.equal(fr.derived, true);
 });
+
+import corridorStreets from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json" with { type: "json" };
+
+test("merged corridor source paves Huron and Franklin gets a real centerline", () => {
+  const merged = {
+    ...geometrySource,
+    streetCenterlineRecords: [
+      ...geometrySource.streetCenterlineRecords,
+      ...corridorStreets.streetCenterlineRecords,
+    ],
+  };
+  const g = buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource: merged });
+  const ids = g.streets.map((s) => s.id);
+  assert.ok(ids.includes("cross-huron-st"), "Huron paved from corridor pull");
+  const fr = g.streets.find((s) => s.id === "franklin-st");
+  assert.equal(fr.derived, false, "Franklin now source-backed (real centerline present)");
+});
