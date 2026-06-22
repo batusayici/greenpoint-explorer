@@ -29,6 +29,10 @@ export const II_PALETTE = {
   signalGreen: 0x4f7d52,
   pedSignal: 0x26211a,
   ink: 0x2a241c,
+  // Fire-escape ironwork (Phase 8.0). Neutral warm-charcoal near-black so the
+  // members read as iron, not painted wood; deck a hair lifted so its edge reads.
+  fireEscapeIron: 0x161413,
+  fireEscapeIronDeck: 0x201c1a,
   context: [0xd9cdb4, 0xcfc0a6, 0xd4c5ad, 0xc8bba4],
   heroes: {
     "premier-franklin-organic": 0xa04432, // red brick grocery corner

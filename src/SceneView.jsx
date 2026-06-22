@@ -2417,8 +2417,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     // Dark iron is NEUTRAL near-black — NOT a brick tint, or the members read as
     // painted wood. Slightly warm charcoal so it sits in the II-C palette; the
     // open-rail texture renders true black on its iron pixels (so it matches).
-    const IRON = 0x161413;        // stringers, treads, ladder, handrails
-    const IRON_DECK = 0x201c1a;   // platform floor, a hair lifted so its edge reads
+    const IRON = II_PALETTE.fireEscapeIron;        // stringers, treads, ladder, handrails
+    const IRON_DECK = II_PALETTE.fireEscapeIronDeck; // platform floor, a hair lifted so its edge reads
     const railTex = inkedRailingTexture();
     for (const q of fe.quads) {
       const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
