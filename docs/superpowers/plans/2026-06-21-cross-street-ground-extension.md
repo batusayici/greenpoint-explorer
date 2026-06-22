@@ -2,9 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add source-backed cross-streets (Kent, Java, Milton) off Greenpoint Ave — with roadbed, curbs, and sidewalk — so buildings showcased along the spine have ground beneath their street frontage for alignment and completeness validation.
+**Goal:** Add source-backed cross-streets (Kent, Milton — both crossing Franklin St, parallel to Greenpoint) with roadbed, curbs, and sidewalk, so buildings showcased along the spine have ground beneath their street frontage for alignment and completeness validation.
 
-**Architecture:** Generalize the pure module `src/groundLayer.js` from two origin-crossing streets to an N-street list built from real projected centerlines, with multi-gap corner clipping and context-radius reach clamping. A prerequisite data step promotes the cross-street sidewalk records from the raw NYC packet into the processed geometry-source file. Three.js rendering in `SceneView.jsx` is untouched — it already loops over the ground arrays.
+**Architecture:** Generalize the pure module `src/groundLayer.js` from two origin-crossing streets to an N-street list built from real projected LION centerlines, with multi-gap corner clipping and context-radius reach clamping. A prerequisite data step widened the NYC `inkn-q76z` fetch to add the real Kent/Java/Milton street centerlines (`streetCenterlineRecords`) — these run parallel to Greenpoint and cross Franklin. Within the 130m radius the crossers are Kent and Milton (Java falls outside). Three.js rendering in `SceneView.jsx` is untouched — it already loops over the ground arrays.
+
+**Geography note (verified):** Kent/Java/Milton run *parallel* to Greenpoint and cross *Franklin*; they do not cross Greenpoint. An earlier premise (that sidewalkLine records traced cross-street centerlines) was false — see the spec's CORRECTION block. Tasks 1's promoted sidewalk strips are harmless but unused; the centerline source is `streetCenterlineRecords`.
 
 **Tech Stack:** JavaScript ES modules, `node --test` (node:test), Three.js (downstream only), Vite dev server for visual verification.
 
@@ -185,44 +187,55 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 
 ---
 
-### Task 3: Build the street list from projected centerlines (cross-streets included)
+### Task 3: Build the street list from real LION centerlines (cross-streets crossing Franklin)
 
-Add the geometry that turns sidewalk centerline records into positioned cross-streets and assembles the full street list.
+**GEOGRAPHIC TRUTH (verified):** Kent, Java, Milton run **parallel to Greenpoint**
+and cross **Franklin** — they are spaced along Franklin, not off Greenpoint. The
+source is the real LION `streetCenterlineRecords` (added to the processed packet
+by the widened `inkn-q76z` fetch), each present as two segments east/west of
+Franklin. Within the 130m radius the crossers are **Kent (d=5.93u)** and
+**Milton (d=5.94u)**; **Java (d=11.86u) is excluded** by the radius rule.
+
+Add the geometry that turns these centerline records into positioned
+cross-streets and assembles the full street list.
 
 **Files:**
 - Modify: `src/groundLayer.js` (new helpers + rework the `streets` array in `buildGroundLayer`)
 - Test: `src/groundLayer.test.mjs`
 
 **Interfaces:**
-- Consumes: `geometrySource.sidewalkLineRecords` (Task 1), `projection`, `greenpointAxis`, `franklinAxis`, `contextRadiusMeters` (new optional arg, default 130).
-- Produces: each street object now carries `center`, `axis`, `perp`, `halfWidth`, `halfLen`, `derived`. Cross-streets ids are `cross-<slug>` (e.g. `cross-kent-st`). Consumed by Task 4/5.
+- Consumes: `geometrySource.streetCenterlineRecords` (real LION centerlines), `projection`, `greenpointAxis`, `franklinAxis`, `contextRadiusMeters` (new optional arg, default 130).
+- Produces: each street object carries `center`, `axis`, `perp`, `halfWidth`, `halfLen`, `derived`. Cross-street ids are `cross-<slug>` (e.g. `cross-kent-st`). Consumed by Task 4/5.
 
 - [ ] **Step 1: Write the failing test**
 
 Add to `src/groundLayer.test.mjs`:
 
 ```javascript
-test("street list includes source-backed crossers within the context radius", () => {
+test("street list includes source-backed crossers within the context radius (Kent, Milton; not Java)", () => {
   const ids = ground.streets.map((s) => s.id);
   assert.ok(ids.includes("greenpoint-ave") && ids.includes("franklin-st"), "spine present");
-  for (const id of ["cross-kent-st", "cross-java-st", "cross-milton-st"]) {
-    assert.ok(ids.includes(id), `${id} present`);
-  }
+  assert.ok(ids.includes("cross-kent-st"), "cross-kent-st present (d≈5.9u, within radius)");
+  assert.ok(ids.includes("cross-milton-st"), "cross-milton-st present (d≈5.9u, within radius)");
+  assert.ok(!ids.includes("cross-java-st"), "cross-java-st excluded (d≈11.9u, outside radius)");
 });
 
-test("cross-streets are marked derived:false and centered on the Greenpoint line", () => {
-  for (const id of ["cross-kent-st", "cross-java-st", "cross-milton-st"]) {
+test("cross-streets are derived:false and centered on the Franklin line", () => {
+  for (const id of ["cross-kent-st", "cross-milton-st"]) {
     const s = ground.streets.find((x) => x.id === id);
     assert.equal(s.derived, false, `${id} is source-backed`);
-    // center lies on the Greenpoint centerline (through origin along greenpointAxis):
-    const perpOff = s.center.x * franklinAxis.x + s.center.z * franklinAxis.z;
-    assert.ok(Math.abs(perpOff) < 0.2, `${id} center on Greenpoint line`);
+    // center lies on the Franklin centerline (through origin along franklinAxis),
+    // so its component along greenpointAxis (perpendicular to Franklin) is ~0:
+    const offFromFranklin = s.center.x * greenpointAxis.x + s.center.z * greenpointAxis.z;
+    assert.ok(Math.abs(offFromFranklin) < 0.5, `${id} center on Franklin line`);
+    // and its axis runs parallel to Greenpoint (perpendicular to Franklin):
+    assert.ok(Math.abs(s.axis.x * greenpointAxis.x + s.axis.z * greenpointAxis.z) > 0.9, `${id} parallel to Greenpoint`);
   }
 });
 
 test("cross-street reach is clamped to the context circle", () => {
   const R = projection.metersToUnits(130);
-  for (const id of ["cross-kent-st", "cross-java-st", "cross-milton-st"]) {
+  for (const id of ["cross-kent-st", "cross-milton-st"]) {
     const s = ground.streets.find((x) => x.id === id);
     const d = Math.hypot(s.center.x, s.center.z);
     assert.ok(Math.abs(s.halfLen - Math.sqrt(R * R - d * d)) < 0.05, `${id} halfLen = sqrt(R^2 - d^2)`);
@@ -240,8 +253,10 @@ Expected: FAIL — no `cross-kent-st` in the street list yet.
 In `src/groundLayer.js`, add these helpers near the other pure functions:
 
 ```javascript
-// Merge a street's (possibly multi-segment) sidewalk centerline records into a
-// single projected polyline, then reduce to the two furthest-apart endpoints.
+// Merge a street's (possibly multi-segment) centerline records into a single
+// projected polyline, then reduce to the two furthest-apart endpoints. This
+// recovers the street's true direction even when its segments are split at the
+// crossing (e.g. east/west of Franklin).
 function projectStreetEndpoints(records, projection) {
   const pts = records.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
   let best = [pts[0], pts[1]];
@@ -265,11 +280,12 @@ function lineIntersect(p0, dp, q0, dq) {
 
 const slug = (name) => "cross-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-// Source-backed cross-streets off Greenpoint, within the context radius, each
-// positioned at its real intersection with the Greenpoint centerline and
-// reach-clamped to the context circle.
-function buildCrossStreets({ geometrySource, projection, greenpointAxis, contextRadiusUnits }) {
-  const records = geometrySource.sidewalkLineRecords ?? [];
+// Source-backed cross-streets that cross Franklin, within the context radius,
+// each positioned at its real intersection with the Franklin centerline and
+// reach-clamped to the context circle. franklinAxis is the spine these streets
+// cross; the streets themselves run roughly parallel to Greenpoint.
+function buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits }) {
+  const records = geometrySource.streetCenterlineRecords ?? [];
   const byName = new Map();
   for (const r of records) {
     const n = r.fullStreetName;
@@ -277,17 +293,17 @@ function buildCrossStreets({ geometrySource, projection, greenpointAxis, context
     if (!byName.has(n)) byName.set(n, []);
     byName.get(n).push(r);
   }
-  const gpOrigin = { x: 0, z: 0 }; // Greenpoint passes through the intersection origin
+  const origin = { x: 0, z: 0 }; // Franklin passes through the intersection origin
   const out = [];
   for (const [name, recs] of byName) {
     const [a, b] = projectStreetEndpoints(recs, projection);
     const v = { x: b.x - a.x, z: b.z - a.z };
     const len = Math.hypot(v.x, v.z) || 1;
     const axis = { x: v.x / len, z: v.z / len };
-    const center = lineIntersect(a, axis, gpOrigin, greenpointAxis);
-    if (!center) continue; // near-parallel to Greenpoint — no usable crossing
+    const center = lineIntersect(a, axis, origin, franklinAxis);
+    if (!center) continue; // parallel to Franklin — does not cross the spine
     const d = Math.hypot(center.x, center.z);
-    if (d >= contextRadiusUnits) continue; // outside the build boundary
+    if (d >= contextRadiusUnits) continue; // outside the build boundary (e.g. Java)
     const widthFt = Number.parseFloat(recs[0].streetWidth ?? String(DEFAULT_STREET_WIDTH_FT));
     out.push({
       id: slug(name),
@@ -304,7 +320,7 @@ function buildCrossStreets({ geometrySource, projection, greenpointAxis, context
 }
 ```
 
-Update `makeStreet` to record `center` and `perp` explicitly (the spine streets pass through the origin):
+Update `makeStreet` to record `center` explicitly (the spine streets pass through the origin):
 
 ```javascript
 function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
@@ -320,7 +336,7 @@ function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
 }
 ```
 
-In `buildGroundLayer`, accept the new arg and append cross-streets to the list. Change the signature and the `streets` assembly:
+In `buildGroundLayer`, accept the new arg and append cross-streets to the list:
 
 ```javascript
 export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource, contextRadiusMeters = 130 }) {
@@ -334,21 +350,27 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
     makeStreet({ id: "franklin-st", axis: franklinAxis, perp: greenpointAxis,
       widthFt: streetWidthFt(geometrySource, "FRANKLIN ST", DEFAULT_STREET_WIDTH_FT), derived: true, projection, halfLen }),
   ];
-  const crosses = buildCrossStreets({ geometrySource, projection, greenpointAxis, contextRadiusUnits });
+  const crosses = buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits });
   const streets = [...spine, ...crosses];
   // ... rest reworked in Task 4
 ```
 
+**Note for this task only:** to keep the suite green at this step, the existing
+roadbed/curb/sidewalk/crosswalk blocks may continue to iterate the spine streets
+(the cross-streets join those arrays in Task 4). Whatever scoping the prior
+implementation used to keep those tests passing (e.g. iterating a `spine`-only
+subset) is acceptable here and gets generalized in Task 4.
+
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `node --test src/groundLayer.test.mjs`
-Expected: the three new Task-3 tests PASS. (Roadbed/curb/sidewalk/crosswalk tests still fail until Task 4 — expected.)
+Expected: the three new Task-3 tests PASS. (Roadbed/curb/sidewalk/crosswalk tests still only cover the spine until Task 4 — keep them green.)
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add src/groundLayer.js src/groundLayer.test.mjs
-git commit -m "feat(ground): build source-backed cross-streets from projected centerlines
+git commit -m "feat(ground): build source-backed cross-streets from real LION centerlines
 
 Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 ```
@@ -372,19 +394,23 @@ Replace the single-crosser clipping with per-street crossing detection so the sp
 Update the existing curb/sidewalk count tests to not assume two streets, and add a crossing-gap test. Replace the `"every street yields exactly two curb lines…"` and `"each curb carries a sidewalk band…"` tests' hard-coded `perp` selection with the street's own `perp`, and add:
 
 ```javascript
-test("Greenpoint sidewalk is split into a segment per crossing gap", () => {
+test("Franklin sidewalk is split into a segment per crossing gap", () => {
+  // The cross-streets (Kent, Milton) cross FRANKLIN, not Greenpoint. So Franklin
+  // gets a gap at Greenpoint AND at each cross-street; Greenpoint keeps just the
+  // single Franklin gap.
   const crossers = ground.streets.filter((s) => s.id.startsWith("cross-"));
-  const gp = ground.streets.find((s) => s.id === "greenpoint-ave");
-  const walk = ground.sidewalks.find((w) => w.streetId === "greenpoint-ave");
-  // one gap at Franklin (origin) + one per cross-street ⇒ at least crossers+2 segments
-  assert.ok(walk.segments.length >= crossers.length + 1, "greenpoint sidewalk split at each crossing");
-  // every segment stays clear of each crosser's roadbed half-width along greenpoint
+  const fr = ground.streets.find((s) => s.id === "franklin-st");
+  const walk = ground.sidewalks.find((w) => w.streetId === "franklin-st");
+  // one gap at Greenpoint (origin) + one per cross-street ⇒ at least crossers+2 segments
+  assert.ok(walk.segments.length >= crossers.length + 2, "franklin sidewalk split at each crossing");
+  // every segment stays clear of each crossing street's roadbed half-width along Franklin
+  const greenpoint = ground.streets.find((s) => s.id === "greenpoint-ave");
   for (const seg of walk.segments) {
     for (const p of seg) {
-      const t = (p.x - gp.center.x) * gp.axis.x + (p.z - gp.center.z) * gp.axis.z;
-      for (const c of [...crossers, ground.streets.find((s) => s.id === "franklin-st")]) {
-        const tc = (c.center.x - gp.center.x) * gp.axis.x + (c.center.z - gp.center.z) * gp.axis.z;
-        assert.ok(Math.abs(t - tc) >= c.halfWidth - 1e-6, "greenpoint sidewalk clear of crossing");
+      const t = (p.x - fr.center.x) * fr.axis.x + (p.z - fr.center.z) * fr.axis.z;
+      for (const c of [...crossers, greenpoint]) {
+        const tc = (c.center.x - fr.center.x) * fr.axis.x + (c.center.z - fr.center.z) * fr.axis.z;
+        assert.ok(Math.abs(t - tc) >= c.halfWidth - 1e-6, "franklin sidewalk clear of crossing");
       }
     }
   }
@@ -415,12 +441,12 @@ test("each curb carries a sidewalk band ~SIDEWALK_WIDTH_M wide", () => {
 });
 ```
 
-Delete the old `"sidewalks never intrude past the cross street's roadbed"` test (it assumes a single `other` street); the new Greenpoint-split test supersedes it.
+Delete the old `"sidewalks never intrude past the cross street's roadbed"` test (it assumes a single `other` street); the new Franklin-split test supersedes it.
 
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `node --test src/groundLayer.test.mjs`
-Expected: FAIL — current code still uses `otherHalf`/scalar gaps; Greenpoint has only the single Franklin gap.
+Expected: FAIL — current code still uses `otherHalf`/scalar gaps; Franklin has only the single Greenpoint gap, so the per-crosser split is missing.
 
 - [ ] **Step 3: Rework the roadbed/curb/sidewalk blocks**
 

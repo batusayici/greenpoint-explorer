@@ -41,12 +41,29 @@ Confirmed in
   WEST ST, MANHATTAN AVE, KENT ST, JAVA ST (block-segmented; multiple records
   per street).
 
-**Verified:** a GREENPOINT sidewalkLine vertex
-`[-73.9575942, 40.7298787]` matches the GREENPOINT centerline vertex
-`[-73.9575955, 40.7298869]` to ~1m. The `sidewalkLine` records **trace street
-centerlines**, not curb edges (consistent with the existing comment in
-`groundLayer.js`). Therefore cross-streets can be positioned and oriented
-directly from their projected `sidewalkLine` geometry.
+**CORRECTION (2026-06-22): this premise was wrong.** A GREENPOINT sidewalkLine
+vertex matches the GREENPOINT centerline to ~1m, but that holds only because
+Greenpoint's own sidewalk runs along Greenpoint. The `KENT/JAVA/MILTON`
+sidewalkLine records were verified to run **parallel to Greenpoint**
+(`|dot(greenpointAxis)| = 1.000`) — they are strips of Greenpoint-adjacent
+sidewalk attributed to the nearby street, **not** the cross-street centerlines.
+The phase-3b packet contains **no cross-street centerline geometry** (its only
+`streetCenterline` records are both GREENPOINT, because the LION query filtered
+`full_street_name like %GREENPOINT%`).
+
+**Geographic truth (verified with real LION centerlines):** Kent, Java, and
+Milton run **parallel to Greenpoint** and cross **Franklin** (not Greenpoint) —
+they are spaced along Franklin (Kent ~south, Milton ~north, Java further south).
+Greenpoint Ave is itself one of this parallel family. The streets that cross
+Greenpoint are the avenues (West, Manhattan), which fall outside the radius.
+
+**Resolution (Batu, widen-the-fetch):** the NYC `inkn-q76z` LION query was
+widened to pull the real source-traced centerlines for Kent/Java/Milton (stored
+as `streetCenterlineRecords`, each two segments east/west of Franklin). Within
+the 130m context radius the source-backed crossers are **Kent (d=5.93u) and
+Milton (d=5.94u)**; Java (11.86u) and the Greenpoint-crossing avenues are
+outside. Cross-streets are built from these real centerlines and are genuinely
+`derived: false`.
 
 ## The core change
 
