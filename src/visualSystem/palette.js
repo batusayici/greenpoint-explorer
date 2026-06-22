@@ -63,6 +63,20 @@ export const MATERIAL_WALL_TONES = {
   warehouse: [0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c],
 };
 
+// Per-building TRIM tones (window frame/sash + door leaf) for frontage facade
+// truth. Independent of wall tone: a maroon-brick building can carry black trim.
+// All are inked II-C values (never pure #000/#fff). The truth editor snaps a
+// sampled pixel to the nearest of these; genuinely-new trims are appended here
+// as a deliberate commit, keeping the no-miss rule intact.
+export const TRIM_TONES = [
+  0x1d1a16, // near-black inked (dark painted trim — the "black" frame/door)
+  0xcdbfa6, // warm cream (light painted trim; == MASSING.transomBand)
+  0x2e3b32, // forest green (== bar awning tint)
+  0x6b2f28, // oxblood / barn red
+  0x3f4650, // slate blue-grey
+  0x4a3a2c, // dark stained wood (== FACADE_RELIEF.joineryCheek family)
+];
+
 // Phase 7.3 — typological roof TONE per family (flat + quiet, multi-angle-safe).
 // NOT detailed roofs — a tone the four-angle camera can show without noise.
 // Darker/cooler than walls; sits in the MASSING.roofCap family.

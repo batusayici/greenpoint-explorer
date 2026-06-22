@@ -5,7 +5,7 @@
 // material's plausible range, and every candidate is already a no-miss palette
 // color. NOT wired into the renderer; per-building authoring + a dominant-color
 // sampler are Phase 8.
-import { MATERIAL_WALL_TONES } from "./palette.js";
+import { MATERIAL_WALL_TONES, TRIM_TONES } from "./palette.js";
 
 const rgb = (hex) => [(hex >> 16) & 0xff, (hex >> 8) & 0xff, hex & 0xff];
 
@@ -16,6 +16,21 @@ export function nearestPaletteToken(trueColorHex, family) {
   let best = candidates[0];
   let bestD = Infinity;
   for (const c of candidates) {
+    const [r, g, b] = rgb(c);
+    const d = (r - tr) ** 2 + (g - tg) ** 2 + (b - tb) ** 2;
+    if (d < bestD) { bestD = d; best = c; }
+  }
+  return best;
+}
+
+// Snap a sampled window/door pixel to the nearest sanctioned trim token. Same
+// Euclidean-RGB rule as nearestPaletteToken, against the family-agnostic
+// TRIM_TONES set (trim color is not constrained by wall material).
+export function nearestTrimToken(trueColorHex) {
+  const [tr, tg, tb] = rgb(trueColorHex);
+  let best = TRIM_TONES[0];
+  let bestD = Infinity;
+  for (const c of TRIM_TONES) {
     const [r, g, b] = rgb(c);
     const d = (r - tr) ** 2 + (g - tg) ** 2 + (b - tb) ** 2;
     if (d < bestD) { bestD = d; best = c; }
