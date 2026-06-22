@@ -41,6 +41,7 @@ assert(ground.streets.some((s) => s.id === "cross-huron-st"), "Huron paved from 
 assert(ground.streets.some((s) => s.id === "greenpoint-ave" && s.derived === false), "Greenpoint must be source-backed.");
 // Franklin: corridor packet supplies real centerline records, so derived is false in the merged model.
 assert(ground.streets.some((s) => s.id === "franklin-st"), "Franklin must be present.");
+assert(ground.streets.some((s) => s.id === "franklin-st" && s.derived === false), "Franklin must be source-backed (real FRANKLIN ST centerline in merged packet).");
 
 for (const s of ground.streets) {
   assert(typeof s.tMin === "number" && s.tMax > s.tMin, `${s.id} has a non-empty tMin/tMax span.`);
@@ -50,6 +51,7 @@ for (const s of ground.streets) {
 // every cross-street's extent matches its real endpoint span (±tolerance)
 for (const s of ground.streets.filter((x) => x.id.startsWith("cross-"))) {
   const recs = merged.streetCenterlineRecords.filter((r) => `cross-${r.fullStreetName.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}` === s.id);
+  assert(recs.length > 0, `${s.id}: no centerline records matched (slug mismatch or missing record).`);
   const pts = recs.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
   const ts = pts.map((p) => (p.x - s.center.x) * s.axis.x + (p.z - s.center.z) * s.axis.z);
   assert(Math.abs(s.tMin - Math.min(...ts)) < 1.0 && Math.abs(s.tMax - Math.max(...ts)) < 1.0, `${s.id} extent ≈ real endpoints.`);
