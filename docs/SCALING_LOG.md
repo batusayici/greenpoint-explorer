@@ -61,3 +61,48 @@ only a descriptor + data extracts + a registration line. That delta is the exper
 - **Material uniformity:** both blocks classify mostly brick-prewar — true to Greenpoint stock; storefront signage carries recognizability.
 
 **Verdict:** The recipe scales. The marginal cost of a new typological+truthful block is now **data acquisition (two scripted pulls) + ~4 lines of registration**, not engineering. Remaining work to make it production-grade is polish (sign craft) — the dedup pass is now done — not architecture.
+
+---
+
+## Block C — franklin-north  (the kit-flip test: does the inked craft travel?)
+
+## Block: franklin-north  (delta since the 8.1a flip)
+
+- Buildings: 160 (storey source-backed: 159/160, 99%)
+- materialFamily: {"brick-prewar":138,"painted-masonry":18,"commercial-storefront":2,"warehouse":2}
+- Kit routing: **140 → inked kit** (138 brick-prewar + 2 commercial-storefront → brick) / **20 → cheap typological** (18 painted-masonry + 2 warehouse, no kit assets — left as-is per the Phase-8.1 "covered residential families" rule)
+- groundFloorUse: {"residential":125,"commercial":35}
+- Storefronts (OSM): 26 (address-backed: 15)
+- src code files changed: **1** -> src/SceneView.jsx (2 imports + 2 array entries)
+
+**Why this block mattered:** it was the first real test of whether the 8.0
+structural-depth craft (recesses, sills, stoops, fire escapes, cornices,
+per-family material) **travels** to brand-new buildings or has to be hand-tuned
+per BIN. It travels. After the 8.1a flip (`KIT_PILOT_BINS = {}`), all 140
+kit-eligible buildings rendered through `decorateInkedWall` with material/recess/
+street-face resolved entirely from PLUTO + family/storey gates — **zero
+per-building overrides added**. Verified in-engine across all four angles: inked
+front craft on street faces, plain typological backs on rears/party walls.
+
+**Findings carried / new**
+- **bbox is the only real tuning knob.** The first pull used a wide rectangle and
+  caught 388 buildings across ~3 parallel streets (Franklin runs ~N–S here, so a
+  wide axis-aligned box over-reaches into West St + the Manhattan-Ave side).
+  Tightening lon to Franklin's own band (−73.9586…−73.9568, ~141m deep — same
+  depth character as franklin-milton) brought it to 160 along one corridor. A
+  diagonal street would need either segmented boxes or a centerline-distance
+  filter; Franklin's near-N–S run made a single box workable.
+- **Density is a curation dial, not an engineering limit.** 160 (Greenpoint Ave →
+  Huron, ~4 blocks, both sides + ~2 lots deep) is the honest corridor count at the
+  existing blocks' depth. Trimming to Franklin frontage-only (~1 lot deep) would
+  roughly halve it — a "spine vs. coverage" call for Batu, not a recipe change.
+- **Material uniformity holds** — 138/160 brick-prewar, true to Franklin's
+  rowhouse stock; the painted-masonry/warehouse minority correctly degrades.
+- **Heroes-pending:** Brouwerij Lane / Eberhard Faber building / Astral fall in
+  this corridor and render typological for now (no field photos); hero promotion
+  is a later, photo-gated cycle. Their `building-tiers` hero flag is intact.
+
+**Verdict:** The kit travels. Marginal cost of extending the *crafted* spine is now
+the same as the old typological recipe — **data (two scripted pulls, one bbox
+iteration) + ~4 lines of registration** — with the full inked treatment applied
+automatically. The traveling-learnings requirement (Batu, 2026-06-21) is met.
