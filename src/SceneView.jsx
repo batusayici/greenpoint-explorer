@@ -1520,6 +1520,13 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         const frontages = pickStreetFrontages(oriented, exposed, streetSegs.map((s, k) => ({ ...s, width: scene.streets[k]?.widthUnits ?? 0 })));
         let streetSet = new Set(frontages.indices);
         let primary = frontages.primary;
+        // Door/stoop/storefront edge. Window-wrapping (streetSet/primary) is left
+        // as-is, but the ENTRY must land on the street the building physically
+        // fronts. `primary` ranks by street width, so a mid-block lot whose rear
+        // wall is over-detected as a frontage (it runs parallel to the wider
+        // avenue one block back) puts its door on the backyard. `nearest` is the
+        // closest frontage — the true front — so the entry faces the street.
+        let doorEdge = frontages.nearest;
         if (streetSet.size === 0) {
           // No exposed edge fronts a parallel street — fall back to the Franklin-
           // oriented front, then the most-open exposed edge (single frontage).
@@ -1532,6 +1539,9 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           }
           if (primary >= 0) streetSet.add(primary);
         }
+        // With detected frontages, the entry goes on the nearest; otherwise it
+        // shares the single fallback edge so every building still gets a door.
+        if (doorEdge < 0) doorEdge = primary;
         // Outward normals of the chosen frontages — a face parallel to any
         // frontage (e.g. the rear wall) still carries windows; perpendicular
         // non-frontage faces stay blank party walls.
@@ -1558,7 +1568,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           );
           decorateInkedWall(
             deco, edge, building.height, inkedParams, scene,
-            i === primary, requestRender, miter, openings, exposedRanges[i],
+            i === doorEdge, requestRender, miter, openings, exposedRanges[i],
             primaryNormal, streetSet.has(i),
           );
         });

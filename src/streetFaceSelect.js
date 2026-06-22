@@ -72,16 +72,22 @@ export function edgeClearance(edge, neighborPoints, conePerp = 0.5) {
 // Among EXPOSED edges, every one that fronts a parallel street (the multi-
 // frontage generalization of pickStreetFrontEdge: a corner lot returns two
 // perpendicular frontages). Each frontage records the width of the street it
-// faces so a primary can be chosen. Returns { indices, primary } where primary
-// = the frontage on the widest street (tie -> longer edge -> lower index), or
-// -1 when nothing fronts a street.
+// faces (for primary ranking) and its perpendicular distance to that street's
+// centreline (for nearest ranking). Returns { indices, primary, nearest } where
+//   primary = the frontage on the widest street (tie -> longer edge -> lower idx),
+//   nearest = the frontage CLOSEST to its street (tie -> longer edge -> lower idx),
+// or -1 each when nothing fronts a street. `nearest` is the frontage the building
+// physically fronts: a mid-block lot's rear wall is over-detected as a frontage
+// (it runs parallel to the street one block over) and can even be the *widest*
+// street, so `primary` lands on the backyard; `nearest` stays on the true front.
 export function pickStreetFrontages(edges, exposed, streets, minParallel = 0.6) {
-  const found = []; // { i, width }
+  const found = []; // { i, width, dist }
   for (let i = 0; i < edges.length; i += 1) {
     if (!exposed[i]) continue;
     const e = edges[i];
     let score = 0;
     let width = 0;
+    let bestDist = Infinity;
     for (const st of streets) {
       let sdx = st.b.x - st.a.x;
       let sdz = st.b.z - st.a.z;
@@ -96,25 +102,28 @@ export function pickStreetFrontages(edges, exposed, streets, minParallel = 0.6) 
       const facing = (e.normal.x * tx + e.normal.z * tz) / dist;
       if (facing <= 0.2) continue; // edge must point toward the street
       const s = (parallel * facing) / dist;
-      if (s > score) { score = s; width = st.width ?? 0; }
+      if (s > score) { score = s; width = st.width ?? 0; bestDist = dist; }
     }
-    if (score > 0) found.push({ i, width });
+    if (score > 0) found.push({ i, width, dist: bestDist });
   }
   const indices = found.map((f) => f.i);
-  let primary = -1;
-  if (found.length) {
+  // Pick the single best frontage under a comparator, breaking ties by longer edge
+  // then lower index (the array is already in ascending-index order).
+  const pickBest = (better) => {
     let best = found[0];
     for (const f of found) {
-      const bw = best.width, fw = f.width;
-      if (fw > bw + 1e-9) best = f;
-      else if (Math.abs(fw - bw) <= 1e-9) {
-        if (edges[f.i].length > edges[best.i].length + 1e-9) best = f; // tie -> longer edge
-        // (further ties resolve to the lower index, which is already `best`)
-      }
+      if (better(f, best)) best = f;
+      else if (!better(best, f) && edges[f.i].length > edges[best.i].length + 1e-9) best = f;
     }
-    primary = best.i;
+    return best.i;
+  };
+  let primary = -1;
+  let nearest = -1;
+  if (found.length) {
+    primary = pickBest((a, b) => a.width > b.width + 1e-9);
+    nearest = pickBest((a, b) => a.dist < b.dist - 1e-9);
   }
-  return { indices, primary };
+  return { indices, primary, nearest };
 }
 
 // Among EXPOSED edges, the one facing the most open direction (max clearance).

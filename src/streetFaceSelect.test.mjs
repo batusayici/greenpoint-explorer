@@ -109,4 +109,30 @@ test("no parallel street: empty result", () => {
   const r = pickStreetFrontages(SQUARE, [true, true, true, true], []);
   assert.deepEqual(r.indices, []);
   assert.equal(r.primary, -1);
+  assert.equal(r.nearest, -1);
+});
+
+test("nearest frontage = the street the building actually fronts, not the wider avenue a block away", () => {
+  // South edge fronts a NARROW street just below it (dist 0.5). The North edge's
+  // rear faces a WIDE avenue one block away (dist 9) — over-detected as a frontage
+  // because it runs parallel. `primary` (widest street) lands on the rear avenue;
+  // `nearest` must pick the near front so the DOOR doesn't end up on the backyard.
+  const streets = [
+    { a: { x: -5, z: -1.5 }, b: { x: 5, z: -1.5 }, width: 30 }, // near front  -> edge 0, dist 0.5
+    { a: { x: -5, z: 10 },   b: { x: 5, z: 10 },   width: 60 }, // far rear ave -> edge 2, dist 9
+  ];
+  const r = pickStreetFrontages(SQUARE, [true, true, true, true], streets);
+  assert.deepEqual(r.indices, [0, 2], "both the near front and the far rear get detected as frontages");
+  assert.equal(r.primary, 2, "primary = the wider avenue (the mis-pick the door fix routes around)");
+  assert.equal(r.nearest, 0, "nearest = the near street the building actually fronts");
+});
+
+test("nearest tie breaks to the longer edge (matches primary's tie rule)", () => {
+  // Equidistant perpendicular frontages: south (edge 0) and east (edge 1), both dist 2.
+  const streets = [
+    { a: { x: -5, z: -3 }, b: { x: 5, z: -3 }, width: 30 },
+    { a: { x: 3, z: -5 }, b: { x: 3, z: 5 }, width: 30 },
+  ];
+  const r = pickStreetFrontages(SQUARE, [true, true, true, true], streets);
+  assert.equal(r.nearest, 0, "tie on distance -> longer edge -> lower index = edge 0");
 });
