@@ -4,7 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createProjection } from "./sceneFrame.js";
-import { buildGroundLayer, SIDEWALK_WIDTH_M, CROSSWALK_STRIPE_COUNT } from "./groundLayer.js";
+import { buildGroundLayer, axisSegments, SIDEWALK_WIDTH_M, CROSSWALK_STRIPE_COUNT } from "./groundLayer.js";
 
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const geometrySource = read("src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json");
@@ -114,4 +114,18 @@ test("each street has one crosswalk with the right stripe count, inside the road
       }
     }
   }
+});
+
+test("axisSegments subtracts multiple gaps and returns ordered spans", () => {
+  const segs = axisSegments(10, [{ t0: -6, t1: -4 }, { t0: 1, t1: 3 }]);
+  assert.deepEqual(segs, [[-10, -6], [-4, 1], [3, 10]]);
+});
+
+test("axisSegments with no gaps returns the full span", () => {
+  assert.deepEqual(axisSegments(10, []), [[-10, 10]]);
+});
+
+test("axisSegments clamps gaps to the run and drops empty spans", () => {
+  assert.deepEqual(axisSegments(5, [{ t0: -9, t1: -5 }, { t0: 5, t1: 9 }]), []);
+  assert.deepEqual(axisSegments(5, [{ t0: -1, t1: 1 }]), [[-5, -1], [1, 5]]);
 });

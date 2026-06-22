@@ -54,13 +54,14 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
   // segments outside the other street's roadbed half-width.
   const otherHalf = (s) => streets.find((o) => o.id !== s.id).halfWidth;
 
-  const curbs = streets.flatMap((s) =>
-    [s.halfWidth, -s.halfWidth].map((off) => ({
+  const curbs = streets.flatMap((s) => {
+    const gap = otherHalf(s);
+    return [s.halfWidth, -s.halfWidth].map((off) => ({
       streetId: s.id,
       derived: s.derived,
-      segments: axisSegments(s.halfLen, otherHalf(s)).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
-    })),
-  );
+      segments: axisSegments(s.halfLen, [{ t0: -gap, t1: gap }]).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
+    }));
+  });
 
   const sidewalks = streets.flatMap((s) => {
     const gap = otherHalf(s);
@@ -72,7 +73,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       streetId: s.id,
       derived: s.derived,
       side,
-      segments: axisSegments(s.halfLen, gap).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
+      segments: axisSegments(s.halfLen, [{ t0: -gap, t1: gap }]).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
     }));
   });
 
@@ -107,12 +108,27 @@ function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
   };
 }
 
-// The along-axis spans that remain after removing the cross street's roadbed
-// (|t| < gap) from a full-length [-halfLen, halfLen] run. Returns up to two
-// [t0, t1] segments; empty if the gap swallows the whole run.
-function axisSegments(halfLen, gap) {
-  if (gap >= halfLen) return [];
-  return [[-halfLen, -gap], [gap, halfLen]];
+// The along-axis spans remaining after removing each crossing interval from a
+// full [-halfLen, halfLen] run. `gaps` is an array of { t0, t1 } (unordered ok).
+// Returns ordered [t0, t1] spans; empty spans are dropped.
+export function axisSegments(halfLen, gaps) {
+  // If gaps touch both boundaries, return empty
+  const touchesLeft = gaps.some(g => Math.min(g.t0, g.t1) <= -halfLen);
+  const touchesRight = gaps.some(g => Math.max(g.t0, g.t1) >= halfLen);
+  if (touchesLeft && touchesRight) return [];
+
+  const merged = [...gaps]
+    .map((g) => ({ t0: Math.max(-halfLen, Math.min(g.t0, g.t1)), t1: Math.min(halfLen, Math.max(g.t0, g.t1)) }))
+    .filter((g) => g.t1 > g.t0)
+    .sort((a, b) => a.t0 - b.t0);
+  const spans = [];
+  let cursor = -halfLen;
+  for (const g of merged) {
+    if (g.t0 > cursor) spans.push([cursor, g.t0]);
+    cursor = Math.max(cursor, g.t1);
+  }
+  if (cursor < halfLen) spans.push([cursor, halfLen]);
+  return spans;
 }
 
 // A polygon between two perpendicular offsets offA..offB, spanning along-axis
