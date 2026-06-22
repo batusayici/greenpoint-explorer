@@ -7,6 +7,14 @@ import { buildGroundLayer, SIDEWALK_WIDTH_M, CROSSWALK_STRIPE_COUNT } from "../s
 
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const geometrySource = read("src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json");
+const corridor = read("src/data/geometry-source/block-franklin-north.street-centerlines.v0.1.json");
+const merged = {
+  ...geometrySource,
+  streetCenterlineRecords: [
+    ...(geometrySource.streetCenterlineRecords ?? []),
+    ...(corridor.streetCenterlineRecords ?? []),
+  ],
+};
 const fixture = read("src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json");
 const basis = fixture.sceneTruthModel.projectionBasis;
 const projection = createProjection(basis);
@@ -19,7 +27,7 @@ const axisOf = (a) => {
 };
 const greenpointAxis = axisOf(basis.greenpointAxisWgs84);
 const franklinAxis = { x: -greenpointAxis.z, z: greenpointAxis.x };
-const ground = buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource });
+const ground = buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource: merged });
 
 const failures = [];
 const assert = (cond, msg) => { if (!cond) failures.push(msg); };
@@ -28,9 +36,24 @@ const span = (poly, perp) => {
   return Math.max(...offs) - Math.min(...offs);
 };
 
-assert(ground.streets.length === 2, "Expected 2 streets (Greenpoint, Franklin).");
+assert(ground.streets.length >= 6, "Expected the spine + corridor cross-streets (>=6).");
+assert(ground.streets.some((s) => s.id === "cross-huron-st"), "Huron paved from corridor pull.");
 assert(ground.streets.some((s) => s.id === "greenpoint-ave" && s.derived === false), "Greenpoint must be source-backed.");
-assert(ground.streets.some((s) => s.id === "franklin-st" && s.derived === true), "Franklin must be flagged derived.");
+// Franklin: corridor packet supplies real centerline records, so derived is false in the merged model.
+assert(ground.streets.some((s) => s.id === "franklin-st"), "Franklin must be present.");
+
+for (const s of ground.streets) {
+  assert(typeof s.tMin === "number" && s.tMax > s.tMin, `${s.id} has a non-empty tMin/tMax span.`);
+  assert(s.halfLen === undefined, `${s.id} carries no legacy halfLen.`);
+}
+
+// every cross-street's extent matches its real endpoint span (±tolerance)
+for (const s of ground.streets.filter((x) => x.id.startsWith("cross-"))) {
+  const recs = merged.streetCenterlineRecords.filter((r) => `cross-${r.fullStreetName.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}` === s.id);
+  const pts = recs.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
+  const ts = pts.map((p) => (p.x - s.center.x) * s.axis.x + (p.z - s.center.z) * s.axis.z);
+  assert(Math.abs(s.tMin - Math.min(...ts)) < 1.0 && Math.abs(s.tMax - Math.max(...ts)) < 1.0, `${s.id} extent ≈ real endpoints.`);
+}
 
 const gpRoad = ground.roadbeds.find((r) => r.streetId === "greenpoint-ave");
 const gpWidth = projection.metersToUnits(50 * 0.3048);
@@ -43,27 +66,33 @@ assert(Math.abs(span(frRoad.polygon, greenpointAxis) - frWidth) < 0.3, "Franklin
 for (const s of ground.streets) {
   const curbs = ground.curbs.filter((c) => c.streetId === s.id);
   assert(curbs.length === 2, `${s.id} must have exactly 2 curbs.`);
-  const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
   const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
   assert(walks.length === 2, `${s.id} must have 2 sidewalk bands.`);
   for (const w of walks) {
     for (const seg of w.segments) {
-      assert(Math.abs(span(seg, perp) - projection.metersToUnits(SIDEWALK_WIDTH_M)) < 0.05, `${s.id} sidewalk width ≈ ${SIDEWALK_WIDTH_M}m.`);
+      assert(Math.abs(span(seg, s.perp) - projection.metersToUnits(SIDEWALK_WIDTH_M)) < 0.05, `${s.id} sidewalk width ≈ ${SIDEWALK_WIDTH_M}m.`);
     }
   }
-  const cw = ground.crosswalks.find((c) => c.streetId === s.id);
-  assert(cw && cw.stripes.length === CROSSWALK_STRIPE_COUNT, `${s.id} crosswalk must have ${CROSSWALK_STRIPE_COUNT} stripes.`);
+  const cws = ground.crosswalks.filter((c) => c.streetId === s.id);
+  assert(cws.length >= 1, `${s.id} must have at least 1 crosswalk.`);
+  for (const cw of cws) {
+    assert(cw.stripes.length === CROSSWALK_STRIPE_COUNT, `${s.id} crosswalk must have ${CROSSWALK_STRIPE_COUNT} stripes.`);
+  }
 }
 
 // Curbs must sit off the centerline by a real margin (the roadbed has width and
 // the sidewalk band hangs outside it).
 for (const s of ground.streets) {
-  const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
   const curbs = ground.curbs.filter((c) => c.streetId === s.id);
   for (const c of curbs) {
-    const off = Math.abs(c.segments[0][0].x * perp.x + c.segments[0][0].z * perp.z);
+    const off = Math.abs(c.segments[0][0].x * s.perp.x + c.segments[0][0].z * s.perp.z);
     assert(off > 0.2, `${s.id} curb must be off-center (got ${off.toFixed(3)}).`);
   }
+}
+
+console.log(`Streets paved (${ground.streets.length}):`);
+for (const s of ground.streets) {
+  console.log(`  ${s.id} (tMin=${s.tMin.toFixed(2)}, tMax=${s.tMax.toFixed(2)}, derived=${s.derived})`);
 }
 
 if (failures.length) {
