@@ -112,11 +112,6 @@ function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
 // full [-halfLen, halfLen] run. `gaps` is an array of { t0, t1 } (unordered ok).
 // Returns ordered [t0, t1] spans; empty spans are dropped.
 export function axisSegments(halfLen, gaps) {
-  // If gaps touch both boundaries, return empty
-  const touchesLeft = gaps.some(g => Math.min(g.t0, g.t1) <= -halfLen);
-  const touchesRight = gaps.some(g => Math.max(g.t0, g.t1) >= halfLen);
-  if (touchesLeft && touchesRight) return [];
-
   const merged = [...gaps]
     .map((g) => ({ t0: Math.max(-halfLen, Math.min(g.t0, g.t1)), t1: Math.min(halfLen, Math.max(g.t0, g.t1)) }))
     .filter((g) => g.t1 > g.t0)

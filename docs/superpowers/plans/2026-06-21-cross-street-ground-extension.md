@@ -132,8 +132,11 @@ test("axisSegments with no gaps returns the full span", () => {
 });
 
 test("axisSegments clamps gaps to the run and drops empty spans", () => {
-  assert.deepEqual(axisSegments(5, [{ t0: -9, t1: -5 }, { t0: 5, t1: 9 }]), []);
+  // gaps that only touch the run's ends clamp to empty and remove nothing
+  assert.deepEqual(axisSegments(5, [{ t0: -9, t1: -5 }, { t0: 5, t1: 9 }]), [[-5, 5]]);
   assert.deepEqual(axisSegments(5, [{ t0: -1, t1: 1 }]), [[-5, -1], [1, 5]]);
+  // a gap that fully covers the run leaves nothing
+  assert.deepEqual(axisSegments(5, [{ t0: -6, t1: 6 }]), []);
 });
 ```
 
