@@ -6,7 +6,7 @@
 // params have no family and stay byte-stable. Pure + Node-testable.
 import { classifyBuilding } from "./buildingTypology.js";
 import { MATERIAL_WALL_TONES } from "./visualSystem/palette.js";
-import { nearestPaletteToken } from "./visualSystem/colorBinding.js";
+import { nearestPaletteToken, nearestTrimToken } from "./visualSystem/colorBinding.js";
 
 const KIT_DEFAULT_WEATHERING = 0.35;
 // Kit windows recess into the wall by default so glass reads with depth + a
@@ -54,5 +54,10 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   if (ov.corniceFrac != null) params.corniceFrac = ov.corniceFrac;
   if (ov.corniceProj != null) params.corniceProj = ov.corniceProj;
   if (ov.fireEscapeVariant != null) params.fireEscapeVariant = ov.fireEscapeVariant;
+  // Explicit per-building trim color (window frame/sash, door leaf), snapped to a
+  // sanctioned TRIM_TONES token. Independent of wall tint. Absent => undefined, so
+  // the renderer falls back to today's wall-derived darkening (byte-stable).
+  if (ov.windowTint != null) params.windowTint = nearestTrimToken(Number(ov.windowTint));
+  if (ov.doorTint != null) params.doorTint = nearestTrimToken(Number(ov.doorTint));
   return params;
 }

@@ -63,3 +63,21 @@ test("explicit groundTint snaps into the ground family palette", () => {
   const p = buildKitFacadeParams(rec, "brick", { groundFamily: "brownstone", groundTint: "0x000000" });
   assert.ok(MATERIAL_WALL_TONES.brownstone.includes(p.groundTint)); // snapped, not 0x000000
 });
+
+import { nearestTrimToken } from "./visualSystem/colorBinding.js";
+
+test("trim tints are absent without an override (byte-stable default)", () => {
+  const p = buildKitFacadeParams({ bin: "1", sourceProperties: { yearBuilt: 1890 } }, "brick");
+  assert.equal(p.windowTint, undefined);
+  assert.equal(p.doorTint, undefined);
+});
+
+test("trim tints snap to TRIM_TONES when overridden", () => {
+  const p = buildKitFacadeParams(
+    { bin: "1", sourceProperties: { yearBuilt: 1890 } },
+    "brick",
+    { windowTint: "0x000000", doorTint: "0x6b2f28" },
+  );
+  assert.equal(p.windowTint, nearestTrimToken(0x000000));
+  assert.equal(p.doorTint, nearestTrimToken(0x6b2f28));
+});
