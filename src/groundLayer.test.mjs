@@ -120,48 +120,53 @@ test("a crosswalk band sits at every real street crossing, inside the roadbed", 
 });
 
 test("axisSegments subtracts multiple gaps and returns ordered spans", () => {
-  const segs = axisSegments(10, [{ t0: -6, t1: -4 }, { t0: 1, t1: 3 }]);
+  const segs = axisSegments(-10, 10, [{ t0: -6, t1: -4 }, { t0: 1, t1: 3 }]);
   assert.deepEqual(segs, [[-10, -6], [-4, 1], [3, 10]]);
 });
 
 test("axisSegments with no gaps returns the full span", () => {
-  assert.deepEqual(axisSegments(10, []), [[-10, 10]]);
+  assert.deepEqual(axisSegments(-10, 10, []), [[-10, 10]]);
 });
 
-test("street list includes source-backed crossers within the context radius (Kent, Milton; not Java)", () => {
+// Java is no longer excluded — there is no radius. All three crossers appear.
+test("street list includes every source-backed crosser (no radius exclusion)", () => {
   const ids = ground.streets.map((s) => s.id);
   assert.ok(ids.includes("greenpoint-ave") && ids.includes("franklin-st"), "spine present");
-  assert.ok(ids.includes("cross-kent-st"), "cross-kent-st present (d≈5.9u, within radius)");
-  assert.ok(ids.includes("cross-milton-st"), "cross-milton-st present (d≈5.9u, within radius)");
-  assert.ok(!ids.includes("cross-java-st"), "cross-java-st excluded (d≈11.9u, outside radius)");
+  for (const id of ["cross-kent-st", "cross-milton-st", "cross-java-st"])
+    assert.ok(ids.includes(id), `${id} present (no radius gate)`);
 });
 
 test("cross-streets are derived:false and centered on the Franklin line", () => {
-  for (const id of ["cross-kent-st", "cross-milton-st"]) {
+  for (const id of ["cross-kent-st", "cross-milton-st", "cross-java-st"]) {
     const s = ground.streets.find((x) => x.id === id);
     assert.equal(s.derived, false, `${id} is source-backed`);
-    // center lies on the Franklin centerline (through origin along franklinAxis),
-    // so its component along greenpointAxis (perpendicular to Franklin) is ~0:
     const offFromFranklin = s.center.x * greenpointAxis.x + s.center.z * greenpointAxis.z;
     assert.ok(Math.abs(offFromFranklin) < 0.5, `${id} center on Franklin line`);
-    // and its axis runs parallel to Greenpoint (perpendicular to Franklin):
     assert.ok(Math.abs(s.axis.x * greenpointAxis.x + s.axis.z * greenpointAxis.z) > 0.9, `${id} parallel to Greenpoint`);
   }
 });
 
-test("cross-street reach is clamped to the context circle", () => {
-  const R = projection.metersToUnits(130);
-  for (const id of ["cross-kent-st", "cross-milton-st"]) {
-    const s = ground.streets.find((x) => x.id === id);
-    const d = Math.hypot(s.center.x, s.center.z);
-    assert.ok(Math.abs(s.halfLen - Math.sqrt(R * R - d * d)) < 0.05, `${id} halfLen = sqrt(R^2 - d^2)`);
+test("each street carries a tMin/tMax span and no halfLen", () => {
+  for (const s of ground.streets) {
+    assert.ok(typeof s.tMin === "number" && typeof s.tMax === "number", `${s.id} has tMin/tMax`);
+    assert.ok(s.tMax > s.tMin, `${s.id} span is non-empty`);
+    assert.equal(s.halfLen, undefined, `${s.id} no legacy halfLen`);
   }
 });
 
+// A cross-street's paved extent equals the projected span of its real centerline
+// endpoints about its Franklin crossing (not a circle chord).
+test("cross-street extent matches its real centerline endpoint span", () => {
+  const recs = geometrySource.streetCenterlineRecords.filter((r) => r.fullStreetName === "KENT ST");
+  const pts = recs.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
+  const s = ground.streets.find((x) => x.id === "cross-kent-st");
+  const ts = pts.map((p) => (p.x - s.center.x) * s.axis.x + (p.z - s.center.z) * s.axis.z);
+  assert.ok(Math.abs(s.tMin - Math.min(...ts)) < 0.5, "tMin ≈ nearest real endpoint");
+  assert.ok(Math.abs(s.tMax - Math.max(...ts)) < 0.5, "tMax ≈ farthest real endpoint");
+});
+
 test("axisSegments clamps gaps to the run and drops empty spans", () => {
-  // gaps that only touch the run's ends clamp to empty and remove nothing
-  assert.deepEqual(axisSegments(5, [{ t0: -9, t1: -5 }, { t0: 5, t1: 9 }]), [[-5, 5]]);
-  assert.deepEqual(axisSegments(5, [{ t0: -1, t1: 1 }]), [[-5, -1], [1, 5]]);
-  // a gap that fully covers the run leaves nothing
-  assert.deepEqual(axisSegments(5, [{ t0: -6, t1: 6 }]), []);
+  assert.deepEqual(axisSegments(-5, 5, [{ t0: -9, t1: -5 }, { t0: 5, t1: 9 }]), [[-5, 5]]);
+  assert.deepEqual(axisSegments(-5, 5, [{ t0: -1, t1: 1 }]), [[-5, -1], [1, 5]]);
+  assert.deepEqual(axisSegments(-5, 5, [{ t0: -6, t1: 6 }]), []);
 });

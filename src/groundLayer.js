@@ -17,32 +17,20 @@ const CROSSWALK_DEPTH_M = 3.5; // along-street depth of the crossing band
 const DEFAULT_STREET_WIDTH_FT = 40; // fallback if a width record is missing
 const ROADBED_HALF_LENGTH_M = 150; // how far each roadbed/sidewalk run is drawn (covers the Franklin→Milton block ~124m and the east-Greenpoint block)
 
-export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource, contextRadiusMeters = 130 }) {
+export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource }) {
   const swUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
-  const halfLen = projection.metersToUnits(ROADBED_HALF_LENGTH_M);
-  const contextRadiusUnits = projection.metersToUnits(contextRadiusMeters);
+  // (no halfLen, no contextRadiusUnits)
 
+  const SPINE_REACH = projection.metersToUnits(165); // TEMP: Task 2 replaces with real/derived extent (165m ensures Java's gap ~162.6m fits within Franklin's span)
   const spine = [
-    makeStreet({
-      id: "greenpoint-ave",
-      axis: greenpointAxis,
-      perp: franklinAxis,
-      widthFt: streetWidthFt(geometrySource, "GREENPOINT AVE", 50),
-      derived: false,
-      projection,
-      halfLen,
-    }),
-    makeStreet({
-      id: "franklin-st",
-      axis: franklinAxis,
-      perp: greenpointAxis,
-      widthFt: streetWidthFt(geometrySource, "FRANKLIN ST", DEFAULT_STREET_WIDTH_FT),
-      derived: true,
-      projection,
-      halfLen,
-    }),
+    makeStreet({ id: "greenpoint-ave", axis: greenpointAxis, perp: franklinAxis,
+      widthFt: streetWidthFt(geometrySource, "GREENPOINT AVE", 50), derived: false,
+      projection, tMin: -SPINE_REACH, tMax: SPINE_REACH }),
+    makeStreet({ id: "franklin-st", axis: franklinAxis, perp: greenpointAxis,
+      widthFt: streetWidthFt(geometrySource, "FRANKLIN ST", DEFAULT_STREET_WIDTH_FT), derived: true,
+      projection, tMin: -SPINE_REACH, tMax: SPINE_REACH }),
   ];
-  const crosses = buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits });
+  const crosses = buildCrossStreets({ geometrySource, projection, franklinAxis });
   const streets = [...spine, ...crosses];
 
   // Every street that this street crosses within its own extent contributes a
@@ -54,7 +42,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       const cross = lineIntersect(s.center, s.axis, o.center, o.axis);
       if (!cross) continue;
       const t = (cross.x - s.center.x) * s.axis.x + (cross.z - s.center.z) * s.axis.z;
-      if (Math.abs(t) > s.halfLen) continue; // crossing is off this street's drawn run
+      if (t < s.tMin || t > s.tMax) continue; // crossing is off this street's drawn run
       gaps.push({ t0: t - o.halfWidth, t1: t + o.halfWidth });
     }
     return gaps;
@@ -71,7 +59,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
     return [s.halfWidth, -s.halfWidth].map((off) => ({
       streetId: s.id,
       derived: s.derived,
-      segments: axisSegments(s.halfLen, gaps).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
+      segments: axisSegments(s.tMin, s.tMax, gaps).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
     }));
   });
 
@@ -85,7 +73,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       streetId: s.id,
       derived: s.derived,
       side,
-      segments: axisSegments(s.halfLen, gaps).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
+      segments: axisSegments(s.tMin, s.tMax, gaps).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
     }));
   });
 
@@ -97,7 +85,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       const cross = lineIntersect(s.center, s.axis, o.center, o.axis);
       if (!cross) continue;
       const t = (cross.x - s.center.x) * s.axis.x + (cross.z - s.center.z) * s.axis.z;
-      if (Math.abs(t) > s.halfLen) continue;
+      if (t < s.tMin || t > s.tMax) continue;
       crosswalks.push({
         streetId: s.id,
         atStreetId: o.id,
@@ -147,11 +135,7 @@ function lineIntersect(p0, dp, q0, dq) {
 
 const slug = (name) => "cross-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-// Source-backed cross-streets that cross Franklin, within the context radius,
-// each positioned at its real intersection with the Franklin centerline and
-// reach-clamped to the context circle. franklinAxis is the spine these streets
-// cross; the streets themselves run roughly parallel to Greenpoint.
-function buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits }) {
+function buildCrossStreets({ geometrySource, projection, franklinAxis }) {
   const records = geometrySource.streetCenterlineRecords ?? [];
   const byName = new Map();
   for (const r of records) {
@@ -169,8 +153,8 @@ function buildCrossStreets({ geometrySource, projection, franklinAxis, contextRa
     const axis = { x: v.x / len, z: v.z / len };
     const center = lineIntersect(a, axis, origin, franklinAxis);
     if (!center) continue; // parallel to Franklin — does not cross the spine
-    const d = Math.hypot(center.x, center.z);
-    if (d >= contextRadiusUnits) continue; // outside the build boundary (e.g. Java)
+    const tA = (a.x - center.x) * axis.x + (a.z - center.z) * axis.z;
+    const tB = (b.x - center.x) * axis.x + (b.z - center.z) * axis.z;
     const widthFt = Number.parseFloat(recs[0].streetWidth ?? String(DEFAULT_STREET_WIDTH_FT));
     out.push({
       id: slug(name),
@@ -180,45 +164,44 @@ function buildCrossStreets({ geometrySource, projection, franklinAxis, contextRa
       axis,
       perp: { x: -axis.z, z: axis.x },
       halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
-      halfLen: Math.sqrt(contextRadiusUnits * contextRadiusUnits - d * d),
+      tMin: Math.min(tA, tB),
+      tMax: Math.max(tA, tB),
     });
   }
   return out.sort((s1, s2) => s1.id.localeCompare(s2.id));
 }
 
-function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
+function makeStreet({ id, axis, perp, widthFt, derived, projection, tMin, tMax }) {
   return {
-    id,
-    axis,
-    perp,
+    id, axis, perp,
     center: { x: 0, z: 0 },
-    halfLen,
+    tMin, tMax,
     halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
     derived,
   };
 }
 
 // The along-axis spans remaining after removing each crossing interval from a
-// full [-halfLen, halfLen] run. `gaps` is an array of { t0, t1 } (unordered ok).
+// full [tMin, tMax] run. `gaps` is an array of { t0, t1 } (unordered ok).
 // Returns ordered [t0, t1] spans; empty spans are dropped.
-export function axisSegments(halfLen, gaps) {
+export function axisSegments(tMin, tMax, gaps) {
   const merged = [...gaps]
-    .map((g) => ({ t0: Math.max(-halfLen, Math.min(g.t0, g.t1)), t1: Math.min(halfLen, Math.max(g.t0, g.t1)) }))
+    .map((g) => ({ t0: Math.max(tMin, Math.min(g.t0, g.t1)), t1: Math.min(tMax, Math.max(g.t0, g.t1)) }))
     .filter((g) => g.t1 > g.t0)
     .sort((a, b) => a.t0 - b.t0);
   const spans = [];
-  let cursor = -halfLen;
+  let cursor = tMin;
   for (const g of merged) {
     if (g.t0 > cursor) spans.push([cursor, g.t0]);
     cursor = Math.max(cursor, g.t1);
   }
-  if (cursor < halfLen) spans.push([cursor, halfLen]);
+  if (cursor < tMax) spans.push([cursor, tMax]);
   return spans;
 }
 
 // A polygon between two perpendicular offsets offA..offB, spanning along-axis
-// t from tMin to tMax (defaults to the full street length).
-function bandPolygon(street, offA, offB, tMin = -street.halfLen, tMax = street.halfLen) {
+// t from tMin to tMax (defaults to the full street span).
+function bandPolygon(street, offA, offB, tMin = street.tMin, tMax = street.tMax) {
   const { axis, perp, center } = street;
   const at = (t, off) => ({
     x: center.x + axis.x * t + perp.x * off,
@@ -227,7 +210,7 @@ function bandPolygon(street, offA, offB, tMin = -street.halfLen, tMax = street.h
   return [at(tMin, offA), at(tMax, offA), at(tMax, offB), at(tMin, offB)];
 }
 
-function edgeLine(street, off, tMin = -street.halfLen, tMax = street.halfLen) {
+function edgeLine(street, off, tMin = street.tMin, tMax = street.tMax) {
   const { axis, perp, center } = street;
   const at = (t) => ({ x: center.x + axis.x * t + perp.x * off, z: center.z + axis.z * t + perp.z * off });
   return [at(tMin), at(tMax)];
