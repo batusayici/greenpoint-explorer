@@ -50,7 +50,8 @@ test("Franklin street is flagged derived (no source centerline) but uses real 40
 });
 
 test("every street yields exactly two curb lines, both off-center on opposite sides", () => {
-  for (const s of ground.streets) {
+  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
+  for (const s of spineStreets) {
     const curbs = ground.curbs.filter((c) => c.streetId === s.id);
     assert.equal(curbs.length, 2, `${s.id} has 2 curbs`);
     const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
@@ -61,7 +62,8 @@ test("every street yields exactly two curb lines, both off-center on opposite si
 
 test("each curb carries a sidewalk band ~SIDEWALK_WIDTH_M wide", () => {
   const wantUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
-  for (const s of ground.streets) {
+  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
+  for (const s of spineStreets) {
     const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
     const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
     assert.equal(walks.length, 2, `${s.id} has 2 sidewalk bands`);
@@ -74,8 +76,9 @@ test("each curb carries a sidewalk band ~SIDEWALK_WIDTH_M wide", () => {
 });
 
 test("sidewalks never intrude past the cross street's roadbed (no concrete on the crossing)", () => {
-  for (const s of ground.streets) {
-    const other = ground.streets.find((o) => o.id !== s.id);
+  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
+  for (const s of spineStreets) {
+    const other = spineStreets.find((o) => o.id !== s.id);
     const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
     for (const w of walks) {
       for (const seg of w.segments) {
@@ -100,8 +103,9 @@ test("processed geometry source carries Kent/Java/Milton sidewalk centerlines", 
 });
 
 test("each street has one crosswalk with the right stripe count, inside the roadbed", () => {
-  assert.equal(ground.crosswalks.length, 2, "one crosswalk per street");
-  for (const s of ground.streets) {
+  assert.equal(ground.crosswalks.length, 2, "one crosswalk per spine street");
+  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
+  for (const s of spineStreets) {
     const cw = ground.crosswalks.find((c) => c.streetId === s.id);
     assert.ok(cw, `${s.id} crosswalk exists`);
     assert.equal(cw.stripes.length, CROSSWALK_STRIPE_COUNT);
@@ -123,6 +127,33 @@ test("axisSegments subtracts multiple gaps and returns ordered spans", () => {
 
 test("axisSegments with no gaps returns the full span", () => {
   assert.deepEqual(axisSegments(10, []), [[-10, 10]]);
+});
+
+test("street list includes source-backed crossers within the context radius", () => {
+  const ids = ground.streets.map((s) => s.id);
+  assert.ok(ids.includes("greenpoint-ave") && ids.includes("franklin-st"), "spine present");
+  for (const id of ["cross-kent-st", "cross-java-st", "cross-milton-st"]) {
+    assert.ok(ids.includes(id), `${id} present`);
+  }
+});
+
+test("cross-streets are marked derived:false and centered on the Greenpoint line", () => {
+  for (const id of ["cross-kent-st", "cross-java-st", "cross-milton-st"]) {
+    const s = ground.streets.find((x) => x.id === id);
+    assert.equal(s.derived, false, `${id} is source-backed`);
+    // center lies on the Greenpoint centerline (through origin along greenpointAxis):
+    const perpOff = s.center.x * franklinAxis.x + s.center.z * franklinAxis.z;
+    assert.ok(Math.abs(perpOff) < 0.2, `${id} center on Greenpoint line`);
+  }
+});
+
+test("cross-street reach is clamped to the context circle", () => {
+  const R = projection.metersToUnits(130);
+  for (const id of ["cross-kent-st", "cross-java-st", "cross-milton-st"]) {
+    const s = ground.streets.find((x) => x.id === id);
+    const d = Math.hypot(s.center.x, s.center.z);
+    assert.ok(Math.abs(s.halfLen - Math.sqrt(R * R - d * d)) < 0.05, `${id} halfLen = sqrt(R^2 - d^2)`);
+  }
 });
 
 test("axisSegments clamps gaps to the run and drops empty spans", () => {
