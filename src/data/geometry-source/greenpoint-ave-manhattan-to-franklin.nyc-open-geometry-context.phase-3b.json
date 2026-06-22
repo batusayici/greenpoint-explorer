@@ -306,6 +306,82 @@
       ],
       "geometryStatus": "source_backed_contextual",
       "claimLimit": "Official planimetrics line context only; not a sidewalk surface polygon, curb, frontage, entrance, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-sidewalk-line-physicalid-88245",
+      "source": "nyc-open-data-sidewalk-line-planimetrics",
+      "physicalid": "88245",
+      "fullStreetName": "MILTON ST",
+      "streetWidth": "30.0",
+      "wgs84Line": [
+        {
+          "lon": -73.95913285088542,
+          "lat": 40.729011147937015
+        },
+        {
+          "lon": -73.95747834247767,
+          "lat": 40.72916950647689
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official geometry context only; traces street centerline, not curb edge or tenant frontage."
+    },
+    {
+      "id": "nyc-sidewalk-line-physicalid-46717",
+      "source": "nyc-open-data-sidewalk-line-planimetrics",
+      "physicalid": "46717",
+      "fullStreetName": "KENT ST",
+      "streetWidth": "30.0",
+      "wgs84Line": [
+        {
+          "lon": -73.9577109092341,
+          "lat": 40.73058907278322
+        },
+        {
+          "lon": -73.95437858532677,
+          "lat": 40.73090672497193
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official geometry context only; traces street centerline, not curb edge or tenant frontage."
+    },
+    {
+      "id": "nyc-sidewalk-line-physicalid-64766",
+      "source": "nyc-open-data-sidewalk-line-planimetrics",
+      "physicalid": "64766",
+      "fullStreetName": "JAVA ST",
+      "streetWidth": "30.0",
+      "wgs84Line": [
+        {
+          "lon": -73.95947699184597,
+          "lat": 40.73114151238524
+        },
+        {
+          "lon": -73.95782734482442,
+          "lat": 40.73129875217931
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official geometry context only; traces street centerline, not curb edge or tenant frontage."
+    },
+    {
+      "id": "nyc-sidewalk-line-physicalid-46718",
+      "source": "nyc-open-data-sidewalk-line-planimetrics",
+      "physicalid": "46718",
+      "fullStreetName": "KENT ST",
+      "streetWidth": "30.0",
+      "wgs84Line": [
+        {
+          "lon": -73.95935688102874,
+          "lat": 40.7304330222871
+        },
+        {
+          "lon": -73.9577109092341,
+          "lat": 40.73058907278322
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official geometry context only; traces street centerline, not curb edge or tenant frontage."
     }
   ],
   "footprintRecords": [

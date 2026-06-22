@@ -88,6 +88,17 @@ test("sidewalks never intrude past the cross street's roadbed (no concrete on th
   }
 });
 
+test("processed geometry source carries Kent/Java/Milton sidewalk centerlines", () => {
+  const names = new Set(geometrySource.sidewalkLineRecords.map((r) => r.fullStreetName));
+  for (const n of ["KENT ST", "JAVA ST", "MILTON ST"]) assert.ok(names.has(n), `${n} present`);
+  for (const r of geometrySource.sidewalkLineRecords) {
+    if (["KENT ST", "JAVA ST", "MILTON ST"].includes(r.fullStreetName)) {
+      assert.ok(Array.isArray(r.wgs84Line) && r.wgs84Line.length >= 2, `${r.fullStreetName} has wgs84Line`);
+      assert.ok(typeof r.wgs84Line[0].lon === "number", "wgs84 point has lon");
+    }
+  }
+});
+
 test("each street has one crosswalk with the right stripe count, inside the roadbed", () => {
   assert.equal(ground.crosswalks.length, 2, "one crosswalk per street");
   for (const s of ground.streets) {
