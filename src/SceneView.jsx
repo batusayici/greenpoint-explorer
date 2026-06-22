@@ -1186,10 +1186,9 @@ function buildInkedFacadeTest(three, scene) {
     wallMat.color.setHex(tint);
     addInked(quad(f.wall, 0.02), wallMat);
 
-    // Ground floor band (opaque), tinted.
-    const groundMat = loadInkedComponent("brick-ground.v1.png", {}, cachedTexture);
-    groundMat.color.setHex(tint);
-    addInked(quad(f.ground, 0.03), groundMat);
+    // (Ground-floor band dropped in 8.1d: the *-ground.v1.png flat textures were
+    // removed when the kit moved to composed recessed windows + door. This
+    // throwaway scaffold no longer draws f.ground.)
 
     // Cornice strip (alpha), tinted.
     const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true }, cachedTexture);
@@ -1232,6 +1231,12 @@ function buildInkedFacadeTest(three, scene) {
   }
 }
 
+// Planar (x,z) distance in scene units. Shared by the storefront-bay roster
+// assignment and the block sign/awning renderer.
+function dist(a, b) {
+  return Math.hypot(a.x - b.x, a.z - b.z);
+}
+
 // Roster assignment, computed once and shared by the kit storefront wiring and
 // the block sign/awning system so both agree on which tenant sits where.
 // Returns { baysByBin: Map<bin, Array<bay>>, pointByName: Map<name, scenePoint> }.
@@ -1268,10 +1273,6 @@ function computeStorefrontBays(scene) {
 
   // Step 2b: hero-proximity guard — if the nearest building to a storefront
   // is a hero, the storefront belongs to that hero's treatment; drop it here.
-  function dist(a, b) {
-    return Math.hypot(a.x - b.x, a.z - b.z);
-  }
-
   const survivors = nonHeroByName.filter((s) => {
     let nearest = null;
     let nearestDist = Infinity;
@@ -1331,8 +1332,6 @@ function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
   const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
 
   if (!baysByBin || baysByBin.size === 0) return;
-
-  function dist(a, b) { return Math.hypot(a.x - b.x, a.z - b.z); }
 
   // Step 6: render sign + awning for each bay.
   for (const [bin, binBays] of baysByBin) {
