@@ -1049,16 +1049,14 @@ const INKED_FACADE_REAL = {
 
 const FACADE_OVERRIDES = facadeOverridesData.overrides ?? {};
 
-// Phase 8.1 pilot gate — dev-only family assignments (tier pilot-unverified) on
-// real loaded block-extract BINs, one per asset-backed family. While non-empty,
-// the kit path applies ONLY to these BINs; emptying it (after Batu approves the
-// four in-scene) opens the kit to every kit-eligible building (the full flip).
-const KIT_PILOT_BINS = {
-  "3064677": "brick",       // 3-storey 1864 rowhouse — genuine heuristic brick
-  "3064605": "clapboard",   // 3-storey 1868 rowhouse — pilot-unverified
-  "3064541": "brownstone",  // 4-storey 1896 C1        — pilot-unverified
-  "3398449": "modern-flat", // 4-storey 2014           — pilot-unverified
-};
+// Phase 8.1a — FULL FLIP. Empty map ⇒ pilotMode=false ⇒ the inked kit applies to
+// every kit-eligible block-extract building via the heuristic family resolver
+// (Batu approved the four pilots in-scene at the 8.0 re-gate, 2026-06-21). Only
+// kit-COVERED families render through the kit: brick is auto-emitted; brownstone/
+// clapboard appear only via evidence-bound FACADE_OVERRIDES. painted-masonry,
+// warehouse and modern-flat are left on the cheap typological path (no/partial
+// assets, never auto-emitted) — see the plan's "covered residential families" rule.
+const KIT_PILOT_BINS = {};
 
 const INKED_FACADE_BLOCK = {
   enabled: false,

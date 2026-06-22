@@ -28,6 +28,16 @@ test("heuristic bridge maps the classify vocab (tier inferred-unverified)", () =
   assert.equal(resolveFacadeFamily(warehouseRec, {}).family, "warehouse");
 });
 
+test("full mode (empty pilotBins) resolves a heuristic family for any block building", () => {
+  // Phase 8.1a — the flip relies on this: with no override and an empty pilot map,
+  // resolveFacadeFamily must NOT return null/undefined; it falls to the heuristic.
+  const r = resolveFacadeFamily(brickRec, { overrides: {}, pilotBins: {} });
+  assert.ok(r.family, "family resolved");
+  assert.equal(r.evidenceTier, "inferred-unverified");
+  // The heuristic may only emit the SAFE families — never a material lie.
+  assert.ok(["brick", "painted-masonry", "warehouse"].includes(r.family));
+});
+
 test("isValidFacadeOverride accepts a full record and rejects bad fields", () => {
   assert.equal(isValidFacadeOverride({ family: "clapboard", tint: "0x6e4a36", storeys: 4, bays: 3, weathering: 0.4, components: { cornice: false }, corniceFrac: 0.06, corniceProj: 0.04, windowRecess: 0.12 }), true);
   assert.equal(isValidFacadeOverride({ family: "marble" }), false);     // not a family
