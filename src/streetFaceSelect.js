@@ -123,7 +123,14 @@ export function pickStreetFrontages(edges, exposed, streets, minParallel = 0.6) 
     primary = pickBest((a, b) => a.width > b.width + 1e-9);
     nearest = pickBest((a, b) => a.dist < b.dist - 1e-9);
   }
-  return { indices, primary, nearest };
+  // dists/widths run parallel to `indices`: the perpendicular distance to the
+  // fronted street's centreline and that street's recorded width. A real frontage
+  // sits ~half-a-street-width out; an over-detected rear (parallel street a block
+  // away) sits a full block out — so the caller can keep only truly-addressed
+  // faces with an absolute distance gate.
+  const dists = found.map((f) => f.dist);
+  const widths = found.map((f) => f.width);
+  return { indices, primary, nearest, dists, widths };
 }
 
 // Among EXPOSED edges, the one facing the most open direction (max clearance).

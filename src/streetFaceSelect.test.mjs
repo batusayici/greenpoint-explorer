@@ -127,6 +127,23 @@ test("nearest frontage = the street the building actually fronts, not the wider 
   assert.equal(r.nearest, 0, "nearest = the near street the building actually fronts");
 });
 
+test("dists/widths run parallel to indices so callers can gate truly-addressed faces", () => {
+  // South edge fronts a near street (dist 0.5); the north rear faces a parallel
+  // street a block away (dist 9). Both detected, but an absolute distance gate
+  // keeps only the near front.
+  const streets = [
+    { a: { x: -5, z: -1.5 }, b: { x: 5, z: -1.5 }, width: 30 }, // edge 0, dist 0.5
+    { a: { x: -5, z: 10 },   b: { x: 5, z: 10 },   width: 60 }, // edge 2, dist 9
+  ];
+  const r = pickStreetFrontages(SQUARE, [true, true, true, true], streets);
+  assert.deepEqual(r.indices, [0, 2]);
+  assert.ok(Math.abs(r.dists[0] - 0.5) < 1e-9, "near front dist");
+  assert.ok(Math.abs(r.dists[1] - 9) < 1e-9, "far rear dist");
+  assert.deepEqual(r.widths, [30, 60]);
+  const addressed = r.indices.filter((_, k) => r.dists[k] <= 1.5);
+  assert.deepEqual(addressed, [0], "only the near front is within an absolute gate");
+});
+
 test("nearest tie breaks to the longer edge (matches primary's tie rule)", () => {
   // Equidistant perpendicular frontages: south (edge 0) and east (edge 1), both dist 2.
   const streets = [

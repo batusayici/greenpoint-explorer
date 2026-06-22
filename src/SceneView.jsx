@@ -1526,7 +1526,6 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         // wall is over-detected as a frontage (it runs parallel to the wider
         // avenue one block back) puts its door on the backyard. `nearest` is the
         // closest frontage — the true front — so the entry faces the street.
-        let doorEdge = frontages.nearest;
         if (streetSet.size === 0) {
           // No exposed edge fronts a parallel street — fall back to the Franklin-
           // oriented front, then the most-open exposed edge (single frontage).
@@ -1539,9 +1538,53 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           }
           if (primary >= 0) streetSet.add(primary);
         }
-        // With detected frontages, the entry goes on the nearest; otherwise it
-        // shares the single fallback edge so every building still gets a door.
-        if (doorEdge < 0) doorEdge = primary;
+        // Entry placement. A building must show a door on EVERY street it actually
+        // fronts, not just one. pickStreetFrontages over-detects frontages (a rear
+        // wall runs parallel to the street a block back; a mid-block side runs
+        // parallel to the cross street at the block end) — but those sit a full
+        // block out, while a truly-fronted face sits ~half a street-width out. So
+        // an absolute distance gate keeps the front + any real corner side and
+        // drops the rear/far faces. The widest addressed street gets the full
+        // treatment (stoop or storefront); the others get a plain recessed door.
+        const ADDR_DIST = 20 * scene.projection.scale; // ~20m: real frontage in, rear out
+        // Candidate frontages within the gate, then GROUPED by outward-normal
+        // direction: a front wall split into collinear segments by a mid-wall
+        // vertex is ONE street face and must get ONE entry (not a door per
+        // segment). Each group keeps its longest edge as the entry-bearing face;
+        // a true corner's perpendicular frontage has a very different normal, so
+        // it forms its own group and still gets its own door.
+        const groups = []; // { idx, len, w, n }
+        frontages.indices.forEach((idx, k) => {
+          if (frontages.dists[k] > ADDR_DIST) return;
+          const n = inkedEdges[idx].normal;
+          const len = inkedEdges[idx].length;
+          const w = frontages.widths[k] || 0;
+          const g = groups.find((gr) => gr.n.x * n.x + gr.n.z * n.z > 0.95);
+          if (g) { if (len > g.len) { g.idx = idx; g.len = len; } if (w > g.w) g.w = w; }
+          else groups.push({ idx, len, w, n });
+        });
+        const addressed = new Set(groups.map((g) => g.idx));
+        let fullEntry = -1, bestW = -Infinity, bestLen = -Infinity;
+        for (const g of groups) {
+          if (g.w > bestW + 1e-9 || (Math.abs(g.w - bestW) <= 1e-9 && g.len > bestLen + 1e-9)) {
+            bestW = g.w; bestLen = g.len; fullEntry = g.idx;
+          }
+        }
+        if (addressed.size === 0) {
+          // No face fronts a NEARBY street (partial centerline data, or a lot set
+          // back from the spine). Fall back to the geometric front — the most-open
+          // exposed edge, which faces the street/open space — so the door still
+          // lands on a street-facing wall, not a backyard.
+          const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+          fullEntry = exposed[frontIdx] ? frontIdx : -1;
+          if (fullEntry < 0) {
+            const sibPts = siblings.map((o) => o.centroid);
+            const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
+            fullEntry = mostOpenExposedEdge(inkedEdges, exposed, clearance);
+          }
+          if (fullEntry < 0) fullEntry = frontages.nearest >= 0 ? frontages.nearest : primary;
+          if (fullEntry >= 0) addressed.add(fullEntry);
+        }
         // Outward normals of the chosen frontages — a face parallel to any
         // frontage (e.g. the rear wall) still carries windows; perpendicular
         // non-frontage faces stay blank party walls.
@@ -1568,8 +1611,8 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           );
           decorateInkedWall(
             deco, edge, building.height, inkedParams, scene,
-            i === doorEdge, requestRender, miter, openings, exposedRanges[i],
-            primaryNormal, streetSet.has(i),
+            addressed.has(i), requestRender, miter, openings, exposedRanges[i],
+            primaryNormal, streetSet.has(i), i !== fullEntry,
           );
         });
         // Close the wall-skin notch at every convex corner (broad corner-connection
@@ -2221,7 +2264,7 @@ const WALL_TILE_M = {
   clapboard: [2.0, 2.0],
   brownstone: [2.0, 2.1],
 };
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null, isFrontage = streetFace) {
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null, isFrontage = streetFace, plainEntry = false) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -2449,14 +2492,17 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     }
   };
   if (streetFace) {
-    // Street face only: storefront band, OR a 3D stoop + door (kit rowhouse), OR a
-    // ground-band/door-stoop unit (non-stoop kit family).
-    if (params.storefront) {
+    // Street face: storefront band, OR a 3D stoop + door (kit rowhouse), OR a
+    // recessed entry door + ground windows (non-stoop kit family). `plainEntry`
+    // marks a SECONDARY frontage of the same building (a corner lot's other
+    // street): it still gets a door so no frontage reads as blank, but the
+    // storefront / 3D stoop / fire escape stay on the primary frontage only.
+    if (params.storefront && !plainEntry) {
       decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
     } else {
       // Commercial ground floors carry a storefront (drawn separately) — never a
       // residential 3D stoop, even for stoop-eligible families.
-      const drewStoop = isKit && wantsStoop(family) && !params.commercialGround;
+      const drewStoop = isKit && wantsStoop(family) && !params.commercialGround && !plainEntry;
       if (drewStoop) {
         const stoop = buildStoopGeometry({ frontM, doorCenterM: frontM / 2 });
         // Per-face stone read so it looks like a 3D stoop, not a flat box: smooth
@@ -2524,7 +2570,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // OPEN ironwork via the procedural railing texture (see-through balusters), not
   // solid shelves; decks are thin platforms; the ladder is a slender stringer. Dark
   // iron tint from the family palette. Projects proud, occluded from the rear by mass.
-  if (streetFace && isKit && wantsFireEscape(family, storeys)) {
+  if (streetFace && !plainEntry && isKit && wantsFireEscape(family, storeys)) {
     const fe = buildFireEscapeGeometry({ frontM, heightM, storeys });
     // Dark iron is NEUTRAL near-black — NOT a brick tint, or the members read as
     // painted wood. Slightly warm charcoal so it sits in the II-C palette; the
@@ -2642,7 +2688,11 @@ function addInkedCornerFillers(deco, edges, exposed, height, params, scene) {
     const C = a.end;
     if (Math.hypot(C.x - b.start.x, C.z - b.start.z) > 0.02) continue; // not a shared corner
     const turn = (a.end.x - a.start.x) * (b.end.z - b.start.z) - (a.end.z - a.start.z) * (b.end.x - b.start.x);
-    if (Math.abs(turn) < 1e-9 || Math.sign(turn) !== wind) continue;   // collinear or reflex
+    // Normalize to sin(angle): a mid-wall vertex in an otherwise straight frontage
+    // is a near-collinear "corner" that must NOT spawn a filler plane. Keep only
+    // genuine bends (≳13°); reflex corners (wrong winding) are skipped too.
+    const sinAngle = turn / ((a.length || 1) * (b.length || 1));
+    if (Math.abs(sinAngle) < 0.22 || Math.sign(turn) !== wind) continue;
     const nA = a.normal, nB = b.normal;
     const A = [C.x + nA.x * skinOff, C.z + nA.z * skinOff];
     const B = [C.x + nB.x * skinOff, C.z + nB.z * skinOff];
