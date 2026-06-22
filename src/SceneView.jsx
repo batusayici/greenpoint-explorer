@@ -2418,16 +2418,13 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
           }
         }
       } else {
-        const groundFile = kitFile(groundFamily, "ground");
-        if (groundFile) {
-          // Modern/flat: door + storefront are baked flush in the ground texture
-          // (correct for a flat-front building); only the upper windows recess.
-          quad(f.ground, 0.006, inkedTexture(groundFile), { tint: groundTint });
-        } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(groundFamily, "door-stoop")) {
-          const hF = Math.min(0.34, f.ground.y1);
-          const wF = (hF * heightM) * (1086 / 1448) / frontM;
-          quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(kitFile(groundFamily, "door-stoop")), { transparent: true });
-        }
+        // Residential non-stoop: recessed ground-floor windows + one recessed
+        // entry door, mirroring the upper-floor rhythm (replaces the old flat
+        // ground-band texture / flat door-stoop PNG / draw-nothing paths). The
+        // door is part of the composed row, so EVERY residential building gets
+        // an entry regardless of whether its family has door-stoop art.
+        for (const w of f.groundWindows) drawWindow(w);
+        if (f.door) drawDoor(f.door.x0, f.door.x1, f.door.y0, f.door.y1);
       }
     }
   }
