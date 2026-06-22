@@ -30,7 +30,9 @@ const isNum = (v) => typeof v === "number" && Number.isFinite(v);
 export function isValidFacadeOverride(obj) {
   if (!obj || typeof obj !== "object") return false;
   if ("family" in obj && !familyList().includes(obj.family)) return false;
+  if ("groundFamily" in obj && !familyList().includes(obj.groundFamily)) return false;
   if ("tint" in obj && !(typeof obj.tint === "string" && /^0x[0-9a-fA-F]{6}$/.test(obj.tint))) return false;
+  if ("groundTint" in obj && !(typeof obj.groundTint === "string" && /^0x[0-9a-fA-F]{6}$/.test(obj.groundTint))) return false;
   if ("storeys" in obj && !isPosInt(obj.storeys)) return false;
   if ("bays" in obj && !isPosInt(obj.bays)) return false;
   if ("weathering" in obj && !(isNum(obj.weathering) && obj.weathering >= 0 && obj.weathering <= 1)) return false;

@@ -20,9 +20,22 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   const ov = override ?? {};
   const t = classifyBuilding({ sourceProperties: building?.sourceProperties ?? {} });
 
+  // Dual-material (e.g. brownstone ground floor under brick above): groundFamily
+  // overrides the GROUND-floor material (band / stoop / door); family stays the
+  // wall. Both default to the single wall family, so single-material buildings
+  // are unchanged. groundTint defaults to the ground family's first tone.
+  const groundFamily = ov.groundFamily ?? family;
+  const groundTones = MATERIAL_WALL_TONES[groundFamily];
+  if (!groundTones) throw new Error(`unknown groundFamily: ${groundFamily}`);
+  const wallTint = ov.tint != null ? nearestPaletteToken(Number(ov.tint), family) : tones[0];
+
   const params = {
     family,
-    tint: ov.tint != null ? nearestPaletteToken(Number(ov.tint), family) : tones[0],
+    groundFamily,
+    tint: wallTint,
+    groundTint: ov.groundTint != null
+      ? nearestPaletteToken(Number(ov.groundTint), groundFamily)
+      : (groundFamily === family ? wallTint : groundTones[0]),
     storeys: ov.storeys ?? Math.max(2, t.storeyCount),
     weathering: ov.weathering ?? KIT_DEFAULT_WEATHERING,
     components: ov.components ?? {},

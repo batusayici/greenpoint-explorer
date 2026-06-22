@@ -36,3 +36,23 @@ test("override wins field-by-field; tint snaps into the family palette", () => {
 test("throws on unknown family", () => {
   assert.throws(() => buildKitFacadeParams(rec, "marble"), /unknown family/i);
 });
+
+test("groundFamily/groundTint default to the wall family (single-material)", () => {
+  const p = buildKitFacadeParams(rec, "brick");
+  assert.equal(p.groundFamily, "brick");
+  assert.equal(p.groundTint, p.tint); // same as wall when not dual-material
+});
+
+test("dual-material: groundFamily override sets a distinct ground material + its own tint", () => {
+  // 168 Franklin: brownstone ground floor, light brick above.
+  const p = buildKitFacadeParams(rec, "brick", { groundFamily: "brownstone" });
+  assert.equal(p.family, "brick");                              // upper wall stays brick
+  assert.equal(p.groundFamily, "brownstone");                  // ground floor is brownstone
+  assert.equal(p.groundTint, MATERIAL_WALL_TONES.brownstone[0]); // default ground tint = brownstone tone
+  assert.notEqual(p.groundTint, p.tint);                       // distinct from the brick wall tint
+});
+
+test("explicit groundTint snaps into the ground family palette", () => {
+  const p = buildKitFacadeParams(rec, "brick", { groundFamily: "brownstone", groundTint: "0x000000" });
+  assert.ok(MATERIAL_WALL_TONES.brownstone.includes(p.groundTint)); // snapped, not 0x000000
+});

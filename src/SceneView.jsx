@@ -2135,6 +2135,13 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
   const isKit = params.family != null;
   const family = params.family ?? "brick";
+  // Dual-material: the ground floor (band / stoop / door) renders in groundFamily
+  // while the wall above stays `family`. Both default to `family`, so single-
+  // material buildings are byte-identical. (e.g. 168 Franklin: brownstone base,
+  // light brick above.)
+  const groundFamily = params.groundFamily ?? family;
+  const groundTint = params.groundTint ?? params.tint;
+  const dualMaterial = isKit && groundFamily !== family;
   const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
   // True carved recess: the solid massing sits ~coplanar behind the inked skin, so
   // glass can't recede behind the wall plane without the mass occluding it. Instead
@@ -2211,13 +2218,17 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const WALL_PLANE = 0.004;
   const wallHoles = [];
   const emitWall = () => {
-    const drawSkin = (off, tex, opts) => {
-      if (wallHoles.length === 0) { quad(f.wall, off, tex, opts); return; }
+    const drawSkin = (off, tex, opts, yTop = 1) => {
+      // yTop < 1 clips the skin to a base band [0, yTop] (dual-material ground floor).
+      const band = yTop < 1;
+      if (wallHoles.length === 0 && !band) { quad(f.wall, off, tex, opts); return; }
       const shape = new THREE.Shape();
-      shape.moveTo(0, 0); shape.lineTo(1, 0); shape.lineTo(1, 1); shape.lineTo(0, 1); shape.lineTo(0, 0);
+      shape.moveTo(0, 0); shape.lineTo(1, 0); shape.lineTo(1, yTop); shape.lineTo(0, yTop); shape.lineTo(0, 0);
       for (const h of wallHoles) {
+        if (h.y0 >= yTop) continue; // skip openings entirely above the band
+        const hy1 = Math.min(h.y1, yTop);
         const path = new THREE.Path();
-        path.moveTo(h.x0, h.y0); path.lineTo(h.x1, h.y0); path.lineTo(h.x1, h.y1); path.lineTo(h.x0, h.y1); path.lineTo(h.x0, h.y0);
+        path.moveTo(h.x0, h.y0); path.lineTo(h.x1, h.y0); path.lineTo(h.x1, hy1); path.lineTo(h.x0, hy1); path.lineTo(h.x0, h.y0);
         shape.holes.push(path);
       }
       const sg = new THREE.ShapeGeometry(shape);
@@ -2240,6 +2251,13 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
       target.add(new THREE.Mesh(g, m));
     };
     drawSkin(WALL_PLANE, wallTex, { tint: params.tint });
+    // Dual-material ground floor: a band of the GROUND family's wall texture over
+    // the parlor level, proud of the (brick) skin so it reads as a brownstone base
+    // under brick above. Carved openings show through (same holes, clipped).
+    if (dualMaterial && kitHas(groundFamily, "wall")) {
+      const gReps = [brickRepeat[0], Math.max(1, Math.round(brickRepeat[1] * f.ground.y1))];
+      drawSkin(WALL_PLANE + 0.0009, inkedTexture(kitFile(groundFamily, "wall"), gReps), { tint: groundTint }, f.ground.y1);
+    }
     // Weathering wash (kit only): a transparent grime pass over the wall at the
     // requested opacity. INKED_FACADE_REAL has no params.weathering → skipped.
     if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
@@ -2329,10 +2347,11 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const rect = { x0: dx0, y0: dy0, x1: dx1, y1: dy1 };
     wallHoles.push(rect);
     drawReveals(rect, WALL_PLANE, D);
-    // Textured paneled door (+ transom), cropped from the family's door-stoop art.
-    const doorFile = kitHas(family, "door-stoop") ? `${family}-door.v1.png` : null;
+    // Textured paneled door (+ transom), cropped from the GROUND family's door-stoop
+    // art (dual-material: the entry belongs to the ground floor, not the wall above).
+    const doorFile = kitHas(groundFamily, "door-stoop") ? `${groundFamily}-door.v1.png` : null;
     if (doorFile) {
-      quad(rect, D, inkedTexture(doorFile), { tint: darken2(0.72), transparent: true });
+      quad(rect, D, inkedTexture(doorFile), { tint: darken(groundTint, 0.72), transparent: true });
     } else {
       quad(rect, D, null, { tint: darken2(0.3) }); // flat fallback leaf
     }
@@ -2349,18 +2368,20 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         // Per-face stone read so it looks like a 3D stoop, not a flat box: smooth
         // dressed treads/landing (lit) vs shadowed risers, with the family masonry
         // texture on the raked side walls + newel posts. Tints derive from params.tint.
-        const stoopWallTex = inkedTexture(wallFile);
+        // Stoop masonry follows the GROUND family/tint (a brownstone base keeps its
+        // brownstone stoop even when the wall above is brick).
+        const stoopWallTex = inkedTexture(kitFile(groundFamily, "wall") ?? wallFile);
         const STOOP_STYLE = {
-          tread:    { tint: darken(params.tint, 0.92) },
-          platform: { tint: darken(params.tint, 0.95) },
-          riser:    { tint: darken(params.tint, 0.58) },
-          coping:   { tint: darken(params.tint, 0.78) },
-          cheek:    { tex: stoopWallTex, tint: darken(params.tint, 0.72) },
-          newel:    { tex: stoopWallTex, tint: darken(params.tint, 0.84) },
+          tread:    { tint: darken(groundTint, 0.92) },
+          platform: { tint: darken(groundTint, 0.95) },
+          riser:    { tint: darken(groundTint, 0.58) },
+          coping:   { tint: darken(groundTint, 0.78) },
+          cheek:    { tex: stoopWallTex, tint: darken(groundTint, 0.72) },
+          newel:    { tex: stoopWallTex, tint: darken(groundTint, 0.84) },
         };
         for (const q of stoop.quads) {
           const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
-          const st = STOOP_STYLE[q.role] ?? { tint: darken(params.tint, 0.72) };
+          const st = STOOP_STYLE[q.role] ?? { tint: darken(groundTint, 0.72) };
           quad3(a, b, c, d, st.tex ?? null, { tint: st.tint });
         }
         // Plain wall is the full-height wall texture (no painted ground band), so the
@@ -2386,15 +2407,15 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
           }
         }
       } else {
-        const groundFile = kitFile(family, "ground");
+        const groundFile = kitFile(groundFamily, "ground");
         if (groundFile) {
           // Modern/flat: door + storefront are baked flush in the ground texture
           // (correct for a flat-front building); only the upper windows recess.
-          quad(f.ground, 0.006, inkedTexture(groundFile), { tint: params.tint });
-        } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(family, "door-stoop")) {
+          quad(f.ground, 0.006, inkedTexture(groundFile), { tint: groundTint });
+        } else if (isKit && params.components?.["door-stoop"] !== false && kitHas(groundFamily, "door-stoop")) {
           const hF = Math.min(0.34, f.ground.y1);
           const wF = (hF * heightM) * (1086 / 1448) / frontM;
-          quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(kitFile(family, "door-stoop")), { transparent: true });
+          quad({ x0: 0.5 - wF / 2, x1: 0.5 + wF / 2, y0: 0, y1: hF }, 0.01, inkedTexture(kitFile(groundFamily, "door-stoop")), { transparent: true });
         }
       }
     }

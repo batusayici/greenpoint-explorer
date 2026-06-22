@@ -45,4 +45,7 @@ test("isValidFacadeOverride accepts a full record and rejects bad fields", () =>
   assert.equal(isValidFacadeOverride({ storeys: 0 }), false);           // not positive int
   assert.equal(isValidFacadeOverride({ windowRecess: -1 }), false);     // negative meters
   assert.equal(isValidFacadeOverride({}), true);                        // all fields optional
+  assert.equal(isValidFacadeOverride({ groundFamily: "brownstone", groundTint: "0x6f4632" }), true); // dual-material
+  assert.equal(isValidFacadeOverride({ groundFamily: "marble" }), false); // not a family
+  assert.equal(isValidFacadeOverride({ groundTint: "nope" }), false);     // not a 0xRRGGBB hex
 });
