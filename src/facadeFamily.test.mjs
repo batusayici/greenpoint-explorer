@@ -49,3 +49,13 @@ test("isValidFacadeOverride accepts a full record and rejects bad fields", () =>
   assert.equal(isValidFacadeOverride({ groundFamily: "marble" }), false); // not a family
   assert.equal(isValidFacadeOverride({ groundTint: "nope" }), false);     // not a 0xRRGGBB hex
 });
+
+test("override accepts windowTint and doorTint as 0x-hex strings", () => {
+  assert.equal(isValidFacadeOverride({ windowTint: "0x1d1a16", doorTint: "0x6b2f28" }), true);
+});
+
+test("override rejects malformed trim tints", () => {
+  assert.equal(isValidFacadeOverride({ windowTint: "1d1a16" }), false); // missing 0x
+  assert.equal(isValidFacadeOverride({ doorTint: "0x12345" }), false);  // 5 hex digits
+  assert.equal(isValidFacadeOverride({ windowTint: 123 }), false);      // not a string
+});
