@@ -1515,7 +1515,10 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           const t = Math.hypot(e.end.x - e.start.x, e.end.z - e.start.z) || 1;
           return { ...e, tangent: { x: (e.end.x - e.start.x) / t, z: (e.end.z - e.start.z) / t } };
         });
-        const frontages = pickStreetFrontages(oriented, exposed, streetSegs.map((s, k) => ({ ...s, width: scene.streets[k]?.halfWidth ?? 0 })));
+        // scene.streets records carry `widthUnits` (full street width in scene
+        // units; see sceneFrame.js) — used only for relative primary-frontage
+        // ranking, so the full width (not a half) is correct.
+        const frontages = pickStreetFrontages(oriented, exposed, streetSegs.map((s, k) => ({ ...s, width: scene.streets[k]?.widthUnits ?? 0 })));
         let streetSet = new Set(frontages.indices);
         let primary = frontages.primary;
         if (streetSet.size === 0) {
