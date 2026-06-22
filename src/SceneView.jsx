@@ -18,6 +18,7 @@ import blockFranklinNorth from "./data/geometry-source/block-franklin-north.nyc-
 import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
 import { registerBuildingTruth, resetBuildingTruth } from "./dev/facadeTruthRegistry.js";
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
+import FacadeTruthEditor from "./components/dev/FacadeTruthEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
 import { getFeaturedStoryForPlace } from "./placeStories.js";
@@ -598,6 +599,7 @@ export default function SceneView() {
           onClose={() => setEditorOpen(false)}
         />
       )}
+      {(facadeEdit || editorOpen) && <FacadeTruthEditor bin={selectedBin} />}
       {selectedPlace && (
         <>
           {anchor && (
