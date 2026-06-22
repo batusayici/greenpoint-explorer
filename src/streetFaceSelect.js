@@ -69,6 +69,54 @@ export function edgeClearance(edge, neighborPoints, conePerp = 0.5) {
   return best;
 }
 
+// Among EXPOSED edges, every one that fronts a parallel street (the multi-
+// frontage generalization of pickStreetFrontEdge: a corner lot returns two
+// perpendicular frontages). Each frontage records the width of the street it
+// faces so a primary can be chosen. Returns { indices, primary } where primary
+// = the frontage on the widest street (tie -> longer edge -> lower index), or
+// -1 when nothing fronts a street.
+export function pickStreetFrontages(edges, exposed, streets, minParallel = 0.6) {
+  const found = []; // { i, width }
+  for (let i = 0; i < edges.length; i += 1) {
+    if (!exposed[i]) continue;
+    const e = edges[i];
+    let score = 0;
+    let width = 0;
+    for (const st of streets) {
+      let sdx = st.b.x - st.a.x;
+      let sdz = st.b.z - st.a.z;
+      const sl = Math.hypot(sdx, sdz) || 1;
+      sdx /= sl; sdz /= sl;
+      const parallel = Math.abs(e.tangent.x * sdx + e.tangent.z * sdz);
+      if (parallel < minParallel) continue;
+      const np = nearestOnLine(e.midpoint, st);
+      const tx = np.x - e.midpoint.x;
+      const tz = np.z - e.midpoint.z;
+      const dist = Math.hypot(tx, tz) || 1e-6;
+      const facing = (e.normal.x * tx + e.normal.z * tz) / dist;
+      if (facing <= 0.2) continue; // edge must point toward the street
+      const s = (parallel * facing) / dist;
+      if (s > score) { score = s; width = st.width ?? 0; }
+    }
+    if (score > 0) found.push({ i, width });
+  }
+  const indices = found.map((f) => f.i);
+  let primary = -1;
+  if (found.length) {
+    let best = found[0];
+    for (const f of found) {
+      const bw = best.width, fw = f.width;
+      if (fw > bw + 1e-9) best = f;
+      else if (Math.abs(fw - bw) <= 1e-9) {
+        if (edges[f.i].length > edges[best.i].length + 1e-9) best = f; // tie -> longer edge
+        // (further ties resolve to the lower index, which is already `best`)
+      }
+    }
+    primary = best.i;
+  }
+  return { indices, primary };
+}
+
 // Among EXPOSED edges, the one facing the most open direction (max clearance).
 // Ties break to the longer edge. Returns -1 if no edge is exposed.
 export function mostOpenExposedEdge(edges, exposed, clearance) {

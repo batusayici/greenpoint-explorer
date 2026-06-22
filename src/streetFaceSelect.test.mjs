@@ -65,3 +65,48 @@ test("mostOpenExposedEdge picks the exposed edge with the most clearance, not th
 test("mostOpenExposedEdge returns -1 when nothing is exposed", () => {
   assert.equal(mostOpenExposedEdge([{ length: 1 }], [false], [Infinity]), -1);
 });
+
+// ── pickStreetFrontages ───────────────────────────────────────────────────────
+import { pickStreetFrontages } from "./streetFaceSelect.js";
+
+// A unit square footprint centered at origin, edges with outward normals.
+// edge 0: south side (normal -z), edge 1: east (normal +x),
+// edge 2: north (normal +z), edge 3: west (normal -x).
+const SQUARE = [
+  { tangent: { x: 1, z: 0 }, normal: { x: 0, z: -1 }, midpoint: { x: 0, z: -1 }, length: 2 },
+  { tangent: { x: 0, z: 1 }, normal: { x: 1, z: 0 }, midpoint: { x: 1, z: 0 }, length: 2 },
+  { tangent: { x: 1, z: 0 }, normal: { x: 0, z: 1 }, midpoint: { x: 0, z: 1 }, length: 2 },
+  { tangent: { x: 0, z: 1 }, normal: { x: -1, z: 0 }, midpoint: { x: -1, z: 0 }, length: 2 },
+];
+
+test("corner lot: two perpendicular frontages, primary is the wider street", () => {
+  // A street parallel to the south edge (runs along x) below it, width 50;
+  // a street parallel to the east edge (runs along z) to its right, width 30.
+  const streets = [
+    { a: { x: -5, z: -3 }, b: { x: 5, z: -3 }, width: 50 }, // south frontage (edge 0)
+    { a: { x: 3, z: -5 }, b: { x: 3, z: 5 }, width: 30 },   // east frontage (edge 1)
+  ];
+  const r = pickStreetFrontages(SQUARE, [true, true, true, true], streets);
+  assert.deepEqual(r.indices, [0, 1], "both perpendicular street faces are frontages");
+  assert.equal(r.primary, 0, "primary = the wider (50ft) street face");
+});
+
+test("mid-block lot: one frontage", () => {
+  const streets = [{ a: { x: -5, z: -3 }, b: { x: 5, z: -3 }, width: 40 }];
+  const r = pickStreetFrontages(SQUARE, [true, true, true, true], streets);
+  assert.deepEqual(r.indices, [0]);
+  assert.equal(r.primary, 0);
+});
+
+test("a blocked (non-exposed) frontage is not selected", () => {
+  const streets = [{ a: { x: -5, z: -3 }, b: { x: 5, z: -3 }, width: 40 }];
+  const r = pickStreetFrontages(SQUARE, [false, true, true, true], streets);
+  assert.deepEqual(r.indices, [], "south face fronts the street but is party-walled");
+  assert.equal(r.primary, -1);
+});
+
+test("no parallel street: empty result", () => {
+  const r = pickStreetFrontages(SQUARE, [true, true, true, true], []);
+  assert.deepEqual(r.indices, []);
+  assert.equal(r.primary, -1);
+});
