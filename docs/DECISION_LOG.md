@@ -4,6 +4,16 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-22 - Phase 8.1c: ground extent driven by the real street network, not a radius
+
+Decision (Batu-approved in session). The ground/paving layer's fixed 130m context-radius circle is replaced by a **per-street real-centerline extent model**: each street is paved along its real LION centerline for its full loaded extent, no circle and no fixed run-length. Chosen over a building-bounding-box or an enlarged-circle alternative because a neighborhood is a street network, not a shape — a box/circle would pave over Newtown Creek, Bushwick Inlet, and the parks, and would need re-tuning as the footprint grows. This makes scaling a data pull, not a geometry-logic change (the H5 repeatability story).
+
+**Why now:** side streets + parts of Franklin render unpaved where buildings already stand. Block extracts bypass the building cull (`sceneFrame.js:132`, no distance check), so the 8.1b Franklin-north block placed 160 buildings out to ~620m — far past the 130m asphalt circle that the ground layer borrowed from the cull. The shared-radius coupling (documented at `SceneView.jsx:227`) predated the real street network and the block-extract expansion.
+
+**Scope decisions locked:** (a) close the long-standing R10E "Franklin has no centerline" gap opportunistically if the corridor LION pull returns Franklin's centerline; (b) **ground-only decouple** this pass — the building cull in `sceneFrame.js` is left untouched (whether its radius should also grow is a separate later call); (c) missing corridor streets (Huron/Freeman/India + Franklin) sourced via a **real LION pull**, not grid-derivation, per the source-backed rule; (d) scope is the currently-loaded three blocks, not neighborhood-wide — the model *enables* scale but this task only paves what's loaded.
+
+Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/superpowers/specs/2026-06-22-street-network-ground-extent-design.md`.
+
 ## 2026-06-21 - Phase 8.0 Structural Depth Pass: geometry approved, look gated on two craft follow-ups
 
 Decision (Batu, live pilot review at the Task 6 gate). The Phase 8.0 depth geometry — 3D stoops and front fire escapes, parametric and family/storey-gated — is **built, gated, tested, and verified** on the 4-BIN pilot (commits `905315f..f9ba537`; pure modules `facadeDepthGates.js` / `stoopGeometry.js` / `fireEscapeGeometry.js` + renderer wiring in `decorateInkedWall`; 136 tests + full `npm run verify` green). In-engine confirmed: brownstone (168 Franklin) stoop + fire escape; brick (148 Franklin) stoop, no escape; modern (94 Greenpoint Ave) bare; clapboard (95 Kent) clean stoop path.
