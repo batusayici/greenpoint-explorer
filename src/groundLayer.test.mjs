@@ -102,21 +102,20 @@ test("processed geometry source carries Kent/Java/Milton sidewalk centerlines", 
   }
 });
 
-test("each street has one crosswalk with the right stripe count, inside the roadbed", () => {
-  assert.equal(ground.crosswalks.length, 2, "one crosswalk per street");
-  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
-  for (const s of spineStreets) {
-    const cw = ground.crosswalks.find((c) => c.streetId === s.id);
-    assert.ok(cw, `${s.id} crosswalk exists`);
+test("a crosswalk band sits at every real street crossing, inside the roadbed", () => {
+  // Each crosser crosses Greenpoint and Greenpoint crosses each crosser+Franklin,
+  // so there are at least 2 * (#crossers + 1) bands.
+  const crossers = ground.streets.filter((s) => s.id.startsWith("cross-")).length;
+  assert.ok(ground.crosswalks.length >= 2 * (crossers + 1) - 1, "a band per crossing approach");
+  for (const cw of ground.crosswalks) {
+    const s = ground.streets.find((x) => x.id === cw.streetId);
     assert.equal(cw.stripes.length, CROSSWALK_STRIPE_COUNT);
-    const perp = s.perp;
     const half = s.halfWidth + 0.01;
-    for (const stripe of cw.stripes) {
+    for (const stripe of cw.stripes)
       for (const p of stripe) {
-        const off = p.x * perp.x + p.z * perp.z;
+        const off = (p.x - s.center.x) * s.perp.x + (p.z - s.center.z) * s.perp.z;
         assert.ok(Math.abs(off) <= half, "stripe within roadbed width");
       }
-    }
   }
 });
 

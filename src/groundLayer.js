@@ -90,10 +90,22 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
   });
 
   const depth = projection.metersToUnits(CROSSWALK_DEPTH_M);
-  const crosswalks = spine.map((s) => {
-    const other = spine.find((o) => o.id !== s.id);
-    return { streetId: s.id, derived: s.derived, stripes: crosswalkStripes(s, other.halfWidth, depth) };
-  });
+  const crosswalks = [];
+  for (const s of streets) {
+    for (const o of streets) {
+      if (o === s) continue;
+      const cross = lineIntersect(s.center, s.axis, o.center, o.axis);
+      if (!cross) continue;
+      const t = (cross.x - s.center.x) * s.axis.x + (cross.z - s.center.z) * s.axis.z;
+      if (Math.abs(t) > s.halfLen) continue;
+      crosswalks.push({
+        streetId: s.id,
+        atStreetId: o.id,
+        derived: s.derived,
+        stripes: crosswalkStripes(s, t, o.halfWidth, depth),
+      });
+    }
+  }
 
   return { streets, roadbeds, curbs, sidewalks, crosswalks };
 }
@@ -224,17 +236,20 @@ function edgeLine(street, off, tMin = -street.halfLen, tMax = street.halfLen) {
 // Continental crossing: bars spanning the street's roadbed width (perp),
 // arrayed along the axis within a depth band set just past the other street's
 // curb (the intersection-mouth side the camera sees).
-function crosswalkStripes(street, setback, depth) {
+function crosswalkStripes(street, tCenter, setback, depth) {
   const { axis, perp, center } = street;
-  const t0 = setback;
-  const t1 = setback + depth;
+  const dir = tCenter >= 0 ? 1 : -1;       // approach band on the origin-facing side of the crossing
+  const inner = tCenter - dir * setback;   // just past the crossed street's curb
+  const t0 = inner - dir * depth;
+  const lo = Math.min(t0, inner);
+  const hi = Math.max(t0, inner);
   const wPos = street.halfWidth;
   const wNeg = -street.halfWidth;
-  const slot = (t1 - t0) / (CROSSWALK_STRIPE_COUNT * 2 - 1);
+  const slot = (hi - lo) / (CROSSWALK_STRIPE_COUNT * 2 - 1);
   const at = (t, off) => ({ x: center.x + axis.x * t + perp.x * off, z: center.z + axis.z * t + perp.z * off });
   const stripes = [];
   for (let i = 0; i < CROSSWALK_STRIPE_COUNT; i += 1) {
-    const a = t0 + slot * (i * 2);
+    const a = lo + slot * (i * 2);
     const b = a + slot;
     stripes.push([at(a, wNeg), at(b, wNeg), at(b, wPos), at(a, wPos)]);
   }
