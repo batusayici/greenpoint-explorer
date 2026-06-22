@@ -33,7 +33,7 @@ import { resolveFacadeFamily } from "./facadeFamily.js";
 import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
-import { edgeClearance, mostOpenExposedEdge, pickStreetFrontEdge } from "./streetFaceSelect.js";
+import { edgeClearance, mostOpenExposedEdge, pickStreetFrontEdge, pickStreetFrontages } from "./streetFaceSelect.js";
 import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
@@ -1477,21 +1477,50 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           const t = Math.hypot(e.end.x - e.start.x, e.end.z - e.start.z) || 1;
           return { ...e, tangent: { x: (e.end.x - e.start.x) / t, z: (e.end.z - e.start.z) / t } };
         });
-        let streetIndex = pickStreetFrontEdge(oriented, exposed, streetSegs);
-        if (streetIndex < 0) {
+        const frontages = pickStreetFrontages(oriented, exposed, streetSegs.map((s, k) => ({ ...s, width: scene.streets[k]?.halfWidth ?? 0 })));
+        let streetSet = new Set(frontages.indices);
+        let primary = frontages.primary;
+        if (streetSet.size === 0) {
+          // No exposed edge fronts a parallel street — fall back to the Franklin-
+          // oriented front, then the most-open exposed edge (single frontage).
           const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
-          streetIndex = exposed[frontIdx] ? frontIdx : -1;
+          primary = exposed[frontIdx] ? frontIdx : -1;
+          if (primary < 0) {
+            const sibPts = siblings.map((o) => o.centroid);
+            const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
+            primary = mostOpenExposedEdge(inkedEdges, exposed, clearance);
+          }
+          if (primary >= 0) streetSet.add(primary);
         }
-        if (streetIndex < 0) {
-          const sibPts = siblings.map((o) => o.centroid);
-          const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
-          streetIndex = mostOpenExposedEdge(inkedEdges, exposed, clearance);
-        }
-        // Windows only on the street face + the faces aligned with it (front/rear);
-        // perpendicular SIDE walls are lot-line/party walls and stay blank.
-        const streetNormal = streetIndex >= 0 ? inkedEdges[streetIndex].normal : null;
+        // Outward normals of the chosen frontages — a face parallel to any
+        // frontage (e.g. the rear wall) still carries windows; perpendicular
+        // non-frontage faces stay blank party walls.
+        const frontageNormals = [...streetSet].map((i) => inkedEdges[i].normal);
+        const primaryNormal = primary >= 0 ? inkedEdges[primary].normal : null;
         inkedEdges.forEach((edge, i) => {
-          decorateInkedWall(deco, edge, building.height, inkedParams, scene, i === streetIndex, requestRender, null, exposed[i], exposedRanges[i], streetNormal);
+          // Miter the cornice where this frontage meets another frontage at a
+          // shared corner, so the cornice closes across the corner.
+          let miter = null;
+          if (streetSet.has(i)) {
+            for (const j of streetSet) {
+              if (j === i) continue;
+              const c = sharedEndpoint(inkedEdges[i], inkedEdges[j]);
+              if (c) {
+                const near = (p) => Math.hypot(p.x - c.x, p.z - c.z) < 0.02;
+                miter = { start: near(edge.start), end: near(edge.end) };
+                break;
+              }
+            }
+          }
+          const openings = exposed[i] && (
+            streetSet.has(i) ||
+            frontageNormals.some((n) => Math.abs(edge.normal.x * n.x + edge.normal.z * n.z) > 0.5)
+          );
+          decorateInkedWall(
+            deco, edge, building.height, inkedParams, scene,
+            i === primary, requestRender, miter, openings, exposedRanges[i],
+            primaryNormal, streetSet.has(i),
+          );
         });
       } else {
         // INKED_FACADE_REAL: existing Franklin front-face path (unchanged).
@@ -2138,7 +2167,7 @@ const WALL_TILE_M = {
   clapboard: [2.0, 2.0],
   brownstone: [2.0, 2.1],
 };
-function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null) {
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null, isFrontage = streetFace) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
@@ -2346,7 +2375,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         { tint: stoneShade });  // sill underside (down, cast shadow)
     }
   };
-  const windowFace = openingsFace && (streetFace || !streetNormal ||
+  const windowFace = openingsFace && (streetFace || isFrontage || !streetNormal ||
     Math.abs(edge.normal.x * streetNormal.x + edge.normal.z * streetNormal.z) > 0.5);
   // A real recessed entry door (dark leaf + transom + proud frame), drawn on the
   // plain wall after the stoop. Replaces the old flat panel that the ground band hid.
