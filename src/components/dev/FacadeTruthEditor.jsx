@@ -7,6 +7,23 @@ import { TRIM_TONES, MATERIAL_WALL_TONES } from "../../visualSystem/palette.js";
 const hex6 = (n) => "0x" + (n >>> 0).toString(16).padStart(6, "0").slice(-6);
 const cssHex = (n) => "#" + (n >>> 0).toString(16).padStart(6, "0").slice(-6);
 
+// After a Save, reload so the scene picks up the written override JSON — but carry
+// the current camera framing through the existing ?t/?f/?a params (and ?truthbin to
+// re-select the same building) so it visually re-renders in place instead of
+// snapping home. window.__gpCamera is the dev getter exposed by SceneView.
+function reloadPreservingView(bin) {
+  const params = new URLSearchParams();
+  params.set("facadeedit", "1");
+  const cam = typeof window.__gpCamera === "function" ? window.__gpCamera() : null;
+  if (cam) {
+    params.set("t", cam.t.map((n) => n.toFixed(4)).join(","));
+    params.set("f", cam.f.toFixed(4));
+    params.set("a", String(cam.a));
+  }
+  if (bin) params.set("truthbin", String(bin));
+  window.location.href = `${window.location.origin}/?${params.toString()}`;
+}
+
 // Dev-only (?facadeedit=1) per-BIN facade-truth panel. Click a building to load
 // its BIN; eyedrop facade/window/door from Street View open beside the app;
 // each sample snaps to a sanctioned palette token; Save merges the override JSON.
@@ -21,14 +38,17 @@ export default function FacadeTruthEditor({ bin }) {
   const [door, setDoor] = useState(null);
   const [status, setStatus] = useState("");
 
-  // Seed controls from the registered truth whenever the selected BIN changes.
+  // Seed controls from the registered truth whenever the selected BIN changes —
+  // and re-seed when the registry entry first appears. With ?truthbin the panel
+  // mounts before the scene build registers the building, so the entry is null at
+  // mount; depending on its fields re-runs this once the registry populates.
   useEffect(() => {
     setFamily(entry?.family ?? null);
     setWall(entry?.tint ?? null);
     setWin(entry?.windowTint ?? null);
     setDoor(entry?.doorTint ?? null);
     setStatus("");
-  }, [bin]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [bin, entry?.family, entry?.tint, entry?.windowTint, entry?.doorTint]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const eyedropper = typeof window !== "undefined" && "EyeDropper" in window;
 
@@ -48,7 +68,12 @@ export default function FacadeTruthEditor({ bin }) {
 
   async function save() {
     if (!bin) return;
-    const override = { family };
+    // Never persist an invalid family (e.g. null before the registry seeded the
+    // panel). Fall back to the registered family; omit it if still unknown so the
+    // building keeps its heuristic family rather than getting `family: null`.
+    const fam = family ?? entry?.family ?? null;
+    const override = {};
+    if (fam != null) override.family = fam;
     if (wall != null) override.tint = hex6(wall);
     if (win != null) override.windowTint = hex6(win);
     if (door != null) override.doorTint = hex6(door);
@@ -60,7 +85,9 @@ export default function FacadeTruthEditor({ bin }) {
         body: JSON.stringify({ bin, override }),
       });
       const json = await res.json();
-      setStatus(json.ok ? "saved ✓ (HMR will re-render)" : `error: ${json.error}`);
+      if (!json.ok) { setStatus(`error: ${json.error}`); return; }
+      setStatus("saved ✓ — re-rendering…");
+      reloadPreservingView(bin);
     } catch (error) {
       setStatus(`error: ${error.message}`);
     }

@@ -112,7 +112,11 @@ export default function SceneView() {
   const assetKitFamily = new URLSearchParams(window.location.search).get("assetkit");
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
-  const [selectedBin, setSelectedBin] = useState(null); // facade-truth: clicked building BIN
+  // facade-truth: clicked building BIN. Seeded from ?truthbin so a Save-triggered
+  // reload re-opens the panel on the same building.
+  const [selectedBin, setSelectedBin] = useState(
+    () => new URLSearchParams(window.location.search).get("truthbin"),
+  );
   const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
   const [anchor, setAnchor] = useState(null); // {x, y} screen px of the pin, or null
   const [viewStep, setViewStep] = useState(0); // 0..3, which of the four iso angles
@@ -526,6 +530,13 @@ export default function SceneView() {
         const rect = renderer.domElement.getBoundingClientRect();
         return { x: Math.round((v.x * 0.5 + 0.5) * rect.width), y: Math.round((-v.y * 0.5 + 0.5) * rect.height) };
       };
+      // Current framing as the URL params the scene reads on init (?t/?f/?a), so a
+      // reload after a Save can restore the exact view instead of snapping home.
+      window.__gpCamera = () => ({
+        t: [view.target.x, view.target.y, view.target.z],
+        f: view.frustumHeight,
+        a: ((stepIndex % 4) + 4) % 4,
+      });
     }
 
     return () => {
@@ -538,7 +549,7 @@ export default function SceneView() {
       resizeObserver.disconnect();
       if (rotRaf != null) cancelAnimationFrame(rotRaf);
       active = false;
-      if (import.meta.env.DEV) delete window.__gpLocate;
+      if (import.meta.env.DEV) { delete window.__gpLocate; delete window.__gpCamera; }
       renderer.dispose();
       mount.removeChild(renderer.domElement);
       clearFacadeFaces();
