@@ -188,6 +188,162 @@
       ],
       "geometryStatus": "source_backed_contextual",
       "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-centerline-physicalid-64765",
+      "source": "nyc-open-data-street-centerline",
+      "physicalid": "64765",
+      "fullStreetName": "JAVA ST",
+      "addressRanges": {
+        "leftLow": "81",
+        "leftHigh": "155",
+        "rightLow": "86",
+        "rightHigh": "158"
+      },
+      "segmentLength": "930.81078371",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.957828631081,
+          "lat": 40.731306997147
+        },
+        {
+          "lon": -73.95449573964,
+          "lat": 40.731621959982
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-centerline-physicalid-64766",
+      "source": "nyc-open-data-street-centerline",
+      "physicalid": "64766",
+      "fullStreetName": "JAVA ST",
+      "addressRanges": {
+        "leftLow": "47",
+        "leftHigh": "79",
+        "rightLow": "50",
+        "rightHigh": "84"
+      },
+      "segmentLength": "460.77647357",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.959478121573,
+          "lat": 40.73114944645
+        },
+        {
+          "lon": -73.957828631081,
+          "lat": 40.731306997147
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-centerline-physicalid-46718",
+      "source": "nyc-open-data-street-centerline",
+      "physicalid": "46718",
+      "fullStreetName": "KENT ST",
+      "addressRanges": {
+        "leftLow": "49",
+        "leftHigh": "83",
+        "rightLow": "50",
+        "rightHigh": "84"
+      },
+      "segmentLength": "459.71664977",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.959358169834,
+          "lat": 40.730440340444
+        },
+        {
+          "lon": -73.957712195412,
+          "lat": 40.730597317615
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-centerline-physicalid-46717",
+      "source": "nyc-open-data-street-centerline",
+      "physicalid": "46717",
+      "fullStreetName": "KENT ST",
+      "addressRanges": {
+        "leftLow": "85",
+        "leftHigh": "159",
+        "rightLow": "86",
+        "rightHigh": "160"
+      },
+      "segmentLength": "930.78627233",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.957712195412,
+          "lat": 40.730597317615
+        },
+        {
+          "lon": -73.954379870452,
+          "lat": 40.730914969977
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-centerline-physicalid-88245",
+      "source": "nyc-open-data-street-centerline",
+      "physicalid": "88245",
+      "fullStreetName": "MILTON ST",
+      "addressRanges": {
+        "leftLow": "39",
+        "leftHigh": "83",
+        "rightLow": "44",
+        "rightHigh": "78"
+      },
+      "segmentLength": "462.17856961",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.95913413743,
+          "lat": 40.72901939241
+        },
+        {
+          "lon": -73.9574796285,
+          "lat": 40.729177751036
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
+    },
+    {
+      "id": "nyc-centerline-physicalid-88246",
+      "source": "nyc-open-data-street-centerline",
+      "physicalid": "88246",
+      "fullStreetName": "MILTON ST",
+      "addressRanges": {
+        "leftLow": "85",
+        "leftHigh": "163",
+        "rightLow": "80",
+        "rightHigh": "160"
+      },
+      "segmentLength": "983.5608925",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.9574796285,
+          "lat": 40.729177751036
+        },
+        {
+          "lon": -73.953958045946,
+          "lat": 40.729511026141
+        }
+      ],
+      "geometryStatus": "source_backed_contextual",
+      "claimLimit": "Official street centerline context only; not sidewalk surface, curb, crosswalk, entrance, frontage, facade, business identity, or raster readiness."
     }
   ],
   "sidewalkLineRecords": [
