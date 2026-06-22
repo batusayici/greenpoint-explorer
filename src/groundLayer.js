@@ -17,11 +17,12 @@ const CROSSWALK_DEPTH_M = 3.5; // along-street depth of the crossing band
 const DEFAULT_STREET_WIDTH_FT = 40; // fallback if a width record is missing
 const ROADBED_HALF_LENGTH_M = 150; // how far each roadbed/sidewalk run is drawn (covers the Franklin→Milton block ~124m and the east-Greenpoint block)
 
-export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource }) {
+export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource, contextRadiusMeters = 130 }) {
   const swUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
   const halfLen = projection.metersToUnits(ROADBED_HALF_LENGTH_M);
+  const contextRadiusUnits = projection.metersToUnits(contextRadiusMeters);
 
-  const streets = [
+  const spine = [
     makeStreet({
       id: "greenpoint-ave",
       axis: greenpointAxis,
@@ -41,8 +42,10 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       halfLen,
     }),
   ];
+  const crosses = buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits });
+  const streets = [...spine, ...crosses];
 
-  const roadbeds = streets.map((s) => ({
+  const roadbeds = spine.map((s) => ({
     streetId: s.id,
     derived: s.derived,
     polygon: bandPolygon(s, -s.halfWidth, s.halfWidth),
@@ -52,9 +55,10 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
   // street's roadbed — otherwise the concrete (drawn above the asphalt) would
   // paint over the crossing roadway at each corner. Split each into the two
   // segments outside the other street's roadbed half-width.
-  const otherHalf = (s) => streets.find((o) => o.id !== s.id).halfWidth;
+  // Note: curbs/sidewalks/crosswalks operate on spine streets only until Task 4.
+  const otherHalf = (s) => spine.find((o) => o.id !== s.id).halfWidth;
 
-  const curbs = streets.flatMap((s) => {
+  const curbs = spine.flatMap((s) => {
     const gap = otherHalf(s);
     return [s.halfWidth, -s.halfWidth].map((off) => ({
       streetId: s.id,
@@ -63,7 +67,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
     }));
   });
 
-  const sidewalks = streets.flatMap((s) => {
+  const sidewalks = spine.flatMap((s) => {
     const gap = otherHalf(s);
     const bands = [
       { side: "pos", a: s.halfWidth, b: s.halfWidth + swUnits },
@@ -78,8 +82,8 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
   });
 
   const depth = projection.metersToUnits(CROSSWALK_DEPTH_M);
-  const crosswalks = streets.map((s) => {
-    const other = streets.find((o) => o.id !== s.id);
+  const crosswalks = spine.map((s) => {
+    const other = spine.find((o) => o.id !== s.id);
     return { streetId: s.id, derived: s.derived, stripes: crosswalkStripes(s, other.halfWidth, depth) };
   });
 
@@ -94,6 +98,72 @@ function streetWidthFt(geometrySource, name, fallback) {
   const fromSidewalk = (geometrySource.sidewalkLineRecords ?? []).find((r) => r.fullStreetName === name);
   if (fromSidewalk?.streetWidth) return Number.parseFloat(fromSidewalk.streetWidth);
   return fallback;
+}
+
+// Merge a street's (possibly multi-segment) centerline records into a single
+// projected polyline, then reduce to the two furthest-apart endpoints. This
+// recovers the street's true direction even when its segments are split at the
+// crossing (e.g. east/west of Franklin).
+function projectStreetEndpoints(records, projection) {
+  const pts = records.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
+  let best = [pts[0], pts[1]];
+  let bestD = -1;
+  for (let i = 0; i < pts.length; i += 1)
+    for (let j = i + 1; j < pts.length; j += 1) {
+      const d = Math.hypot(pts[i].x - pts[j].x, pts[i].z - pts[j].z);
+      if (d > bestD) { bestD = d; best = [pts[i], pts[j]]; }
+    }
+  return best;
+}
+
+// Intersection of line P (point p0, dir dp) with line Q (point q0, dir dq).
+// Returns the point, or null if near-parallel.
+function lineIntersect(p0, dp, q0, dq) {
+  const denom = dp.x * dq.z - dp.z * dq.x;
+  if (Math.abs(denom) < 1e-6) return null;
+  const t = ((q0.x - p0.x) * dq.z - (q0.z - p0.z) * dq.x) / denom;
+  return { x: p0.x + dp.x * t, z: p0.z + dp.z * t };
+}
+
+const slug = (name) => "cross-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+// Source-backed cross-streets that cross Franklin, within the context radius,
+// each positioned at its real intersection with the Franklin centerline and
+// reach-clamped to the context circle. franklinAxis is the spine these streets
+// cross; the streets themselves run roughly parallel to Greenpoint.
+function buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits }) {
+  const records = geometrySource.streetCenterlineRecords ?? [];
+  const byName = new Map();
+  for (const r of records) {
+    const n = r.fullStreetName;
+    if (n === "GREENPOINT AVE" || n === "FRANKLIN ST") continue; // spine handled separately
+    if (!byName.has(n)) byName.set(n, []);
+    byName.get(n).push(r);
+  }
+  const origin = { x: 0, z: 0 }; // Franklin passes through the intersection origin
+  const out = [];
+  for (const [name, recs] of byName) {
+    const [a, b] = projectStreetEndpoints(recs, projection);
+    const v = { x: b.x - a.x, z: b.z - a.z };
+    const len = Math.hypot(v.x, v.z) || 1;
+    const axis = { x: v.x / len, z: v.z / len };
+    const center = lineIntersect(a, axis, origin, franklinAxis);
+    if (!center) continue; // parallel to Franklin — does not cross the spine
+    const d = Math.hypot(center.x, center.z);
+    if (d >= contextRadiusUnits) continue; // outside the build boundary (e.g. Java)
+    const widthFt = Number.parseFloat(recs[0].streetWidth ?? String(DEFAULT_STREET_WIDTH_FT));
+    out.push({
+      id: slug(name),
+      name,
+      derived: false,
+      center,
+      axis,
+      perp: { x: -axis.z, z: axis.x },
+      halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
+      halfLen: Math.sqrt(contextRadiusUnits * contextRadiusUnits - d * d),
+    });
+  }
+  return out.sort((s1, s2) => s1.id.localeCompare(s2.id));
 }
 
 function makeStreet({ id, axis, perp, widthFt, derived, projection, halfLen }) {
