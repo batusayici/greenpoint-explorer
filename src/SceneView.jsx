@@ -510,6 +510,24 @@ export default function SceneView() {
     applyCulling(); // hide back-facing hero walls for the initial NE view
     resize();
 
+    // Dev-only BIN locator: pan the camera onto a building by BIN and return its
+    // screen position. Lets the facade-truth editor (and dev scripts) jump to a
+    // building without hunting for its thin wall sliver in the iso projection.
+    if (import.meta.env.DEV) {
+      window.__gpLocate = (bin) => {
+        let found = null;
+        three.traverse((o) => { if (!found && o.userData?.bin === String(bin)) found = o; });
+        if (!found) return null;
+        const center = new THREE.Box3().setFromObject(found).getCenter(new THREE.Vector3());
+        view.target.copy(center);
+        applyCamera();
+        render();
+        const v = center.clone().project(camera);
+        const rect = renderer.domElement.getBoundingClientRect();
+        return { x: Math.round((v.x * 0.5 + 0.5) * rect.width), y: Math.round((-v.y * 0.5 + 0.5) * rect.height) };
+      };
+    }
+
     return () => {
       renderer.domElement.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointermove", onPointerMove);
@@ -520,6 +538,7 @@ export default function SceneView() {
       resizeObserver.disconnect();
       if (rotRaf != null) cancelAnimationFrame(rotRaf);
       active = false;
+      if (import.meta.env.DEV) delete window.__gpLocate;
       renderer.dispose();
       mount.removeChild(renderer.domElement);
       clearFacadeFaces();
