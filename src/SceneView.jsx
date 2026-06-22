@@ -26,7 +26,7 @@ import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-
 import blockFranklinNorthStorefronts from "./data/places/block-franklin-north-storefronts.v0.1.json";
 import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
-import { planStorefrontSigns } from "./storefrontSigns.js";
+import { planStorefrontSigns, resolveSignLabel, isFoodTrade } from "./storefrontSigns.js";
 import { composeInkedFacade } from "./inkedFacadeCompose.js";
 import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
 import { resolveFacadeFamily } from "./facadeFamily.js";
@@ -1338,6 +1338,12 @@ function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
   for (const [bin, binBays] of baysByBin) {
     const building = byBin.get(bin);
     if (!building || !building.polygon || !building.centroid) continue;
+    // Kit-routed commercial buildings draw their own shopfront + category sign
+    // via decorateStorefront; skip the block sign/awning here to avoid doubles.
+    if (building.fromBlockExtract && building.sourceProperties) {
+      const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
+      if (familyHasKit(family)) continue;
+    }
 
     const typology = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
     const storeys = Math.max(1, typology.storeyCount);
@@ -1406,7 +1412,22 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     const pilotEligible = !pilotMode || building.bin in KIT_PILOT_BINS;
     if (!inkedParamsPre && pilotEligible && building.fromBlockExtract && building.sourceProperties) {
       const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
-      if (familyHasKit(family)) kitParams = buildKitFacadeParams(building, family, FACADE_OVERRIDES[building.bin]);
+      if (familyHasKit(family)) {
+        kitParams = buildKitFacadeParams(building, family, FACADE_OVERRIDES[building.bin]);
+        const binBays = baysByBin.get(building.bin);
+        if (binBays && binBays.length) {
+          // Truthful category-label signs (real brand only on a claimed bay);
+          // food trades get an awning. One unit per assigned tenant bay.
+          kitParams.storefront = {
+            units: binBays.map((bay, k) => ({
+              label: resolveSignLabel(bay),
+              door: k % 2 === 0 ? "left" : "right",
+              awning: { has: isFoodTrade(bay.category) },
+              widthFrac: 1 / binBays.length,
+            })),
+          };
+        }
+      }
     }
     const inkedParams = inkedParamsPre ?? kitParams;
     const treatment = selectTreatment({
