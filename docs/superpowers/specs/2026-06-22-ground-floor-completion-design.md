@@ -1,4 +1,4 @@
-# Phase 8.1d — Ground-Floor Completion for Kit/Inked Buildings
+# Phase 8.1d — Ground-Floor Completion + Frontage Accuracy for Kit/Inked Buildings
 
 Date: 2026-06-22
 Owner: Batu (taste/approval) / Agent (execution)
@@ -31,6 +31,20 @@ The stoop path (4+ storey brick, `SceneView.jsx:2376–2419`) already does the
 right thing: a 3D stoop, a recessed entry door (`drawDoor`), and parlor windows
 in the bay rhythm. The gap is everything that is *not* a stoop building.
 
+4. **Frontage is inaccurate — some street faces are blank wall.** The kit path
+   picks a *single* `streetIndex` and puts windows only on that face and faces
+   parallel to it; every perpendicular face is treated as a party wall and left
+   blank (`SceneView.jsx:1480–1495`). Two failures result: (a) **corner lots**
+   that genuinely front two streets (e.g. Franklin × a side street) show a blank
+   brick wall on the second frontage; (b) **side-street buildings** whose true
+   frontage is perpendicular to Franklin can have their openings land on the
+   wrong face, presenting wall to the street. The hero (INKED_FACADE_REAL) path
+   already solves the corner case — `inkedParams.corner` finds a second street
+   edge (`inkedCornerSecondEdgeIndex`) and miters the cornice at the shared
+   corner (`SceneView.jsx:1498–1513`) — but the kit path does not use it
+   (`miter` is hardcoded `null`, the same gap as the deferred corner-connection
+   issue).
+
 ## Decision
 
 Give every kit/inked building a finished ground floor with two modes driven by
@@ -40,12 +54,16 @@ real land-use data:
   roster-matched commercial buildings.
 - **Residential → recessed entry door + ground-floor windows**, mirroring the
   upper-floor bay rhythm.
+- **Accurate frontage:** openings (windows + ground treatment) land on every
+  face that truly fronts a street, including **both** frontages of a corner lot.
 
 This pass is **kit/inked buildings only** (the `decorateInkedWall` path). Hero
 buildings (spec-driven) and typological far-context buildings
 (`decorateTypologicalWall`) are unchanged. Building **color** (every building
-the same brick tone) and **corner/cornice connection** are known, separate
-issues explicitly out of scope here.
+the same brick tone) is a known, separate issue out of scope here. The broad
+**corner-connection** fix (the wall-skin offset gap at corners) also stays out
+— *except* the cornice miter at a wrapped corner, which corner wrap requires and
+this pass therefore includes.
 
 ## Design
 
@@ -112,7 +130,42 @@ windows (4+ storey brick, `wantsStoop(family) && !commercialGround`) keep that
 working path. The storefront-vs-stoop mutual exclusion (`commercialGround` gates
 out the stoop) is preserved.
 
-### 4. Testing
+### 4. Accurate frontage + corner wrap
+
+Generalize the kit face-selection from one street face to the **set of faces
+that front a street**, mirroring the machinery the hero path already uses:
+
+- **Identify street frontages.** An exposed face is a street frontage when it
+  faces a street centerline running parallel to it (the existing
+  `pickStreetFrontEdge` test, now run over `scene.streets` — which since 8.1c
+  includes the full corridor network, not just Franklin). A corner lot yields
+  **two** such faces (e.g. one parallel to Franklin, one parallel to the side
+  street); a mid-block lot yields one. The existing fallbacks
+  (`inkedFrontEdgeIndex` → most-open exposed edge) remain for buildings no
+  street parallels.
+- **Windows wrap all street frontages.** Each street frontage gets the upper-
+  floor window grid (and the ground-floor row from §3); faces parallel to a
+  frontage keep windows as today; perpendicular non-street faces (true party /
+  lot-line walls) stay blank.
+- **Ground treatment on the primary frontage.** The entry door (residential) or
+  storefront (commercial) goes on the **primary** frontage, chosen
+  deterministically: the street frontage whose street has the greatest recorded
+  width (`streetWidth`); ties broken by the longer exposed frontage length, then
+  lower edge index. The secondary frontage gets windows only. One entrance per
+  building this pass; a wrapped corner storefront is future polish.
+- **Cornice miter at the wrapped corner.** When two frontages meet at a shared
+  convex corner, compute the miter for both faces (reusing `sharedEndpoint` +
+  the `miter = {start,end}` logic the hero path runs at `SceneView.jsx:1505–1511`)
+  so the cornice closes across the corner instead of leaving the notch. This is
+  the slice of the corner-connection issue that corner wrap forces; the broader
+  wall-skin corner offset gap remains a separate pass and its seam may still be
+  faintly visible until then.
+
+This replaces the single-`streetIndex` selection (`SceneView.jsx:1480–1495`) with
+a street-frontage **set** + per-face miter, structured like the hero branch
+(`1498–1513`) rather than a parallel re-implementation.
+
+### 5. Testing
 
 - **Composer unit tests** (`src/inkedFacadeCompose.test.mjs`): the ground row
   emits `bays` openings with exactly one door bay and `bays − 1` windows; door
@@ -123,17 +176,26 @@ out the stoop) is preserved.
   and is unaffected.
 - **Mutual-exclusion test**: a commercial stoop-eligible family does not draw a
   stoop (existing `commercialGround` gate still holds).
+- **Frontage selection test**: face-selection returns the correct street-frontage
+  set — one face for a mid-block lot, two perpendicular faces for a corner lot,
+  the primary frontage flagged for ground treatment, and a miter computed for
+  each wrapped corner face. (Test the pure selection helper, not the renderer.)
 - **Build + four-angle visual proof**: every kit building shows a door;
   residential ground windows are recessed and colored (match upper floors);
   commercial buildings show storefronts with category signs; no flat dark ground
-  bands remain along the corridor.
+  bands remain; **no kit building presents a blank wall to a street it fronts**,
+  including Franklin-corner and side-street lots; wrapped-corner cornices close.
 
 ## Non-goals
 
-- **Not** building color / material variation (#4) — deferred to its own pass
+- **Not** building color / material variation — deferred to its own pass
   pending a truthfulness discussion.
-- **Not** corner/cornice connection (#3) — separate geometry fix (port the hero
-  miter logic to kit buildings).
+- **Not** the broad corner-connection fix (the wall-skin offset gap at every
+  kit corner) — separate pass. *Exception:* the cornice miter at a wrapped
+  street corner is included here because corner wrap requires it (§4).
+- **Not** a wrapped-corner storefront — corner commercial lots get the storefront
+  on the primary frontage + windows on the secondary; wrapping the shopfront
+  around the corner is future polish.
 - **Not** reworking the storefront *appearance* — the existing storefront system
   is reused as-is; a detail-polish pass on shopfronts is future work.
 - **Not** the typological far-context path or hero buildings.
@@ -149,6 +211,12 @@ out the stoop) is preserved.
 - `src/SceneView.jsx` (`decorateInkedWall`, ~2368–2433) — residential non-stoop
   branch consumes the composed ground row via `drawWindow`/`drawDoor`; commercial
   branch already calls `decorateStorefront` once `params.storefront` is set.
+- `src/SceneView.jsx` (kit branch of `buildBuildings`, ~1457–1495) — replace the
+  single-`streetIndex` selection with a street-frontage **set** + per-face miter,
+  reusing `pickStreetFrontEdge`, `inkedCornerSecondEdgeIndex`/`sharedEndpoint`,
+  and the miter logic from the hero branch. Extract the street-frontage selection
+  into a pure helper so it can be unit-tested without Three.js.
 - Roster plumbing: pass the per-building storefront unit assignment from
   `assignStorefronts` into `buildKitFacadeParams` (or the kit call site).
-- Tests: `src/inkedFacadeCompose.test.mjs`, kit-params test.
+- Tests: `src/inkedFacadeCompose.test.mjs`, kit-params test, frontage-selection
+  helper test.
