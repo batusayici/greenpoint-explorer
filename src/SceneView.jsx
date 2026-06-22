@@ -16,6 +16,7 @@ import blockFranklinMilton from "./data/geometry-source/block-franklin-milton.ny
 import blockGreenpointEast from "./data/geometry-source/block-greenpoint-east.nyc-open-geometry.v0.1.json";
 import blockFranklinNorth from "./data/geometry-source/block-franklin-north.nyc-open-geometry.v0.1.json";
 import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
+import { registerBuildingTruth, resetBuildingTruth } from "./dev/facadeTruthRegistry.js";
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
@@ -110,6 +111,7 @@ export default function SceneView() {
   const assetKitFamily = new URLSearchParams(window.location.search).get("assetkit");
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
+  const [selectedBin, setSelectedBin] = useState(null); // facade-truth: clicked building BIN
   const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
   const [anchor, setAnchor] = useState(null); // {x, y} screen px of the pin, or null
   const [viewStep, setViewStep] = useState(0); // 0..3, which of the four iso angles
@@ -405,6 +407,11 @@ export default function SceneView() {
       return surface ? ancestorUserData(surface, "faceKey") : null;
     }
 
+    function binAt(event) {
+      const surface = pickSurface(event);
+      return surface ? ancestorUserData(surface, "bin") : null;
+    }
+
     function placeIdAt(event) {
       const surface = pickSurface(event);
       return surface ? ancestorUserData(surface, "placeId") : null;
@@ -445,6 +452,9 @@ export default function SceneView() {
       // Click-to-edit: while the editor is open (or in ?facadeedit mode),
       // a click loads the hit face into the recess editor.
       if (facadeEditRef.current || editorOpenRef.current) {
+        // Facade-truth: a building-body/facade click (userData.bin) selects that BIN.
+        const clickedBin = binAt(event);
+        if (clickedBin != null) setSelectedBin(String(clickedBin));
         const faceKey = faceKeyAt(event);
         if (faceKey) {
           setEditorFace(faceKey);
@@ -1402,6 +1412,7 @@ function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
 }
 
 function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map()) {
+  resetBuildingTruth(); // dev: rebuild the per-BIN facade-truth registry fresh each scene build
   scene.buildings.forEach((building, index) => {
     const inkedParamsPre = INKED_FACADE_REAL.enabled
       ? INKED_FACADE_REAL.buildings[building.bin]
@@ -1417,6 +1428,13 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
       if (familyHasKit(family)) {
         kitParams = buildKitFacadeParams(building, family, FACADE_OVERRIDES[building.bin]);
+        registerBuildingTruth(building.bin, {
+          family,
+          tint: kitParams.tint,
+          windowTint: kitParams.windowTint,
+          doorTint: kitParams.doorTint,
+          addr: building.address ?? building.sourceProperties?.address,
+        });
         const binBays = baysByBin.get(building.bin);
         if (binBays && binBays.length) {
           // Truthful category-label signs (real brand only on a claimed bay);
@@ -1490,6 +1508,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     const dist = distPre;
     if (treatment === "inkedKit") {
       const deco = new THREE.Group();
+      deco.userData = { bin: building.bin }; // facade clicks resolve the BIN (facade-truth editor)
       const inkedEdges = footprintEdges(building.polygon, building.centroid);
       if (inkedParams.family != null) {
         // Kit-routed: decorate every EXPOSED face (street + backyard + uncovered
@@ -1641,6 +1660,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       three.add(deco);
     } else if (treatment === "typological") {
       const deco = new THREE.Group();
+      deco.userData = { bin: building.bin }; // facade clicks resolve the BIN (facade-truth editor)
       for (const edge of footprintEdges(building.polygon, building.centroid)) {
         decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology);
       }
