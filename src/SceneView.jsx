@@ -2387,6 +2387,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   };
   const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
   const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
+  const winTint = params.windowTint; // undefined => window decal renders untinted (today's look)
   const inExposed = (xc) => !exposedRanges || exposedRanges.some(([a, b]) => xc >= a - 1e-6 && xc <= b + 1e-6);
   const [spanX, spanY] = WINDOW_CONTENT_SPAN[family] ?? WINDOW_CONTENT_SPAN.brick;
   // Reveals bridge the wall plane (outer rim, at the hole edge) INWARD to the sunk
@@ -2412,7 +2413,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   };
   const drawWindow = (w) => {
     if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
-    if (recessProj <= 0) { quad(w, 0.008, winTex, { transparent: true }); return; }
+    if (recessProj <= 0) { quad(w, 0.008, winTex, { transparent: true, tint: winTint }); return; }
     // The decal is a COMPLETE inked window — its projecting stone lintel and sill
     // (with their cast shadows) are PAINTED INTO the art. It already carries the full
     // depth read, so it renders as ONE intact, alpha-keyed plane a hair proud of the
@@ -2427,7 +2428,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const x0e = cx - hw / spanX, x1e = cx + hw / spanX, y0e = cy - hh / spanY, y1e = cy + hh / spanY;
     const off = WALL_PLANE + 0.004; // a hair proud of the wall skin so the painted trim sits in front of the brick
     quad3(point(x0e, y0e, off), point(x1e, y0e, off), point(x1e, y1e, off), point(x0e, y1e, off), winTex,
-      { transparent: true }); // default uv maps the full decal across the expanded rect
+      { transparent: true, tint: winTint }); // default uv maps the full decal across the expanded rect
   };
   const windowFace = openingsFace && (streetFace || isFrontage || !streetNormal ||
     Math.abs(edge.normal.x * streetNormal.x + edge.normal.z * streetNormal.z) > 0.5);
@@ -2443,9 +2444,10 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     // art (dual-material: the entry belongs to the ground floor, not the wall above).
     const doorFile = kitHas(groundFamily, "door-stoop") ? `${groundFamily}-door.v1.png` : null;
     if (doorFile) {
-      quad(rect, D, inkedTexture(doorFile), { tint: darken(groundTint, 0.72), transparent: true });
+      quad(rect, D, inkedTexture(doorFile),
+        { tint: params.doorTint != null ? params.doorTint : darken(groundTint, 0.72), transparent: true });
     } else {
-      quad(rect, D, null, { tint: darken2(0.3) }); // flat fallback leaf
+      quad(rect, D, null, { tint: params.doorTint != null ? params.doorTint : darken2(0.3) }); // flat fallback leaf
     }
   };
   if (streetFace) {
