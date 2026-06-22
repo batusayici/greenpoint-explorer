@@ -1572,6 +1572,10 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
             primaryNormal, streetSet.has(i),
           );
         });
+        // Close the wall-skin notch at every convex corner (broad corner-connection
+        // fix): each face's skin is pushed proud along its own normal,
+        // so adjacent skins separate at a corner and bare the dark mass between.
+        addInkedCornerFillers(deco, inkedEdges, exposed, building.height, inkedParams, scene);
       } else {
         // INKED_FACADE_REAL: existing Franklin front-face path (unchanged).
         const frontIndex = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
@@ -2590,6 +2594,62 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const seamTint = darken(params.tint, 0.55);
   quad({ x0: 0, y0: 0, x1: 0.008, y1: 1 }, 0.005, null, { tint: seamTint });
   quad({ x0: 0.992, y0: 0, x1: 1, y1: 1 }, 0.005, null, { tint: seamTint });
+}
+
+// Broad corner-connection fix. decorateInkedWall pushes each face's inked skin
+// proud of the mass by SKIN_BASE along that face's OWN outward normal, so at a
+// convex corner the two skins separate and a vertical notch bares the dark mass
+// between them. Bridge each convex corner with two thin brick quads that meet at
+// the mitered outer corner M = C + (nA+nB)·skinOff — the point where the two
+// offset skin planes intersect — so the masonry wraps the corner. Purely
+// additive (emits into `deco`; the per-face wall geometry is untouched). Skips
+// reflex corners (skins overlap, no gap) and corners where a face is a buried
+// party wall (its skin isn't visible, so there's nothing to close).
+function addInkedCornerFillers(deco, edges, exposed, height, params, scene) {
+  const upm = scene.projection.scale;
+  if (height / upm < 2) return;                          // matches decorateInkedWall's size gate
+  const recessProj = (params.windowRecess ?? 0) * upm;
+  const SKIN_BASE = recessProj > 0 ? recessProj + 0.006 : 0;
+  if (SKIN_BASE <= 0) return;                            // flush skin → no corner gap
+  const skinOff = 0.004 + SKIN_BASE;                     // WALL_PLANE + SKIN_BASE = outer skin surface
+  const family = params.family ?? "brick";
+  const [tileW, tileH] = WALL_TILE_M[family] ?? WALL_TILE_M.brick;
+  const heightM = height / upm;
+  const vReps = Math.min(24, Math.max(1, Math.round(heightM / tileH)));
+  const cornerWm = skinOff / upm;                        // strip width ≈ SKIN_BASE in meters
+  const hReps = Math.max(0.04, cornerWm / tileW);        // keep brick courses at life scale
+  const wallFile = kitFile(family, "wall") ?? "brick-wall.v1.png";
+  const tex = inkedTexture(wallFile, [hReps, vReps]);
+  const tint = new THREE.Color(params.tint).multiplyScalar(0.9).getHex(); // slight corner self-shadow
+  // Polygon winding (xz signed area): a corner is convex iff its turn matches it.
+  let area = 0;
+  for (const e of edges) area += e.start.x * e.end.z - e.end.x * e.start.z;
+  const wind = Math.sign(area);
+  const fill = (p0, p1, p2, p3) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array([p0, p1, p2, p3].flat()), 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]), 2));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({ map: tex, side: THREE.DoubleSide });
+    m.color.setHex(tint);
+    deco.add(new THREE.Mesh(g, m));
+  };
+  const n = edges.length;
+  for (let i = 0; i < n; i += 1) {
+    const a = edges[i], b = edges[(i + 1) % n];
+    if (!exposed[i] || !exposed[(i + 1) % n]) continue;            // buried party-wall corner
+    if (a.length / upm < 2 || b.length / upm < 2) continue;        // a face was too small to draw
+    const C = a.end;
+    if (Math.hypot(C.x - b.start.x, C.z - b.start.z) > 0.02) continue; // not a shared corner
+    const turn = (a.end.x - a.start.x) * (b.end.z - b.start.z) - (a.end.z - a.start.z) * (b.end.x - b.start.x);
+    if (Math.abs(turn) < 1e-9 || Math.sign(turn) !== wind) continue;   // collinear or reflex
+    const nA = a.normal, nB = b.normal;
+    const A = [C.x + nA.x * skinOff, C.z + nA.z * skinOff];
+    const B = [C.x + nB.x * skinOff, C.z + nB.z * skinOff];
+    const M = [C.x + (nA.x + nB.x) * skinOff, C.z + (nA.z + nB.z) * skinOff];
+    fill([A[0], 0, A[1]], [M[0], 0, M[1]], [M[0], height, M[1]], [A[0], height, A[1]]);
+    fill([M[0], 0, M[1]], [B[0], 0, B[1]], [B[0], height, B[1]], [M[0], height, M[1]]);
+  }
 }
 
 // Draw the inked storefront vocabulary into the ground band of a commercial
