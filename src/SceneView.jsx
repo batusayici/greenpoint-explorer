@@ -2240,20 +2240,6 @@ const WINDOW_CONTENT_SPAN = {
   clapboard: [0.505, 0.752],
   "modern-flat": [0.618, 0.845],
 };
-// The window decal is a projecting trim assembly: a molded lintel cap (top band)
-// and a bracketed sill (bottom band) that PROJECT proud of the wall, with the
-// glass + side frame RECESSED between them. `lintel`/`sill` are the cap/sill bands
-// as a fraction of the painted window height; `proj` is how far they project, as a
-// fraction of the recess depth (0 = flush — modern-flat windows have no stone trim).
-const WINDOW_TRIM = {
-  brick: { lintel: 0.17, sill: 0.12, proj: 0.6 },
-  // lintel split sits ABOVE the arched glass apex (~0.15 of the painted height) so
-  // only the crown cornice projects — otherwise the arched top of the glass bleeds
-  // a sliver onto the projecting cap. Just the crown projects; arch + glass recess.
-  brownstone: { lintel: 0.12, sill: 0.13, proj: 0.7 },
-  clapboard: { lintel: 0.14, sill: 0.11, proj: 0.5 },
-  "modern-flat": { lintel: 0.08, sill: 0.08, proj: 0.0 },
-};
 // Real-world meters one wall tile spans [width, height], per family — sets the
 // texture repeat so the masonry/siding reads at life scale. Brick ≈0.9m tile
 // (~11 courses). Clapboard laps ≈0.18m (taller tile = fewer, bigger laps).
@@ -2427,50 +2413,21 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   const drawWindow = (w) => {
     if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
     if (recessProj <= 0) { quad(w, 0.008, winTex, { transparent: true }); return; }
-    // Three depth zones (matches the stone trim the decal paints): the lintel cap
-    // and sill PROJECT proud of the wall; the glass + side frame RECESS between them.
-    // Only the body carves a hole — the cap/sill sit on solid wall above/below it.
-    const trim = WINDOW_TRIM[family] ?? WINDOW_TRIM.brick;
+    // The decal is a COMPLETE inked window — its projecting stone lintel and sill
+    // (with their cast shadows) are PAINTED INTO the art. It already carries the full
+    // depth read, so it renders as ONE intact, alpha-keyed plane a hair proud of the
+    // wall skin. We deliberately carve NO hole and add NO wall reveals: recessing a
+    // flat illustration of a *projecting* sill puts that painted sill at the BACK of
+    // the opening with a wall-toned ledge bridging in FRONT of it — the disconnected,
+    // floating-shelf artifact. The decal's own drawn ledges are the only ledges;
+    // nothing is cut, nothing floats, nothing untextured is added.
     const h = w.y1 - w.y0;
-    const yL = w.y1 - trim.lintel * h;       // cap bottom = body top
-    const yS = w.y0 + trim.sill * h;         // sill top = body bottom
-    const D = WALL_PLANE - recessProj;       // recessed glass/body (toward the mass)
-    const P = WALL_PLANE + trim.proj * recessProj; // projecting cap + sill
-    wallHoles.push({ x0: w.x0, y0: yS, x1: w.x1, y1: yL });
     // Expanded-decal frame: painted content fills the opening, transparent margins beyond.
     const cx = (w.x0 + w.x1) / 2, cy = (w.y0 + w.y1) / 2, hw = (w.x1 - w.x0) / 2, hh = h / 2;
     const x0e = cx - hw / spanX, x1e = cx + hw / spanX, y0e = cy - hh / spanY, y1e = cy + hh / spanY;
-    const slice = (xa, ya, xb, yb, off) => {
-      const ua = 1 - (xa - x0e) / (x1e - x0e), ub = 1 - (xb - x0e) / (x1e - x0e);
-      const va = (ya - y0e) / (y1e - y0e), vb = (yb - y0e) / (y1e - y0e);
-      quad3(point(xa, ya, off), point(xb, ya, off), point(xb, yb, off), point(xa, yb, off), winTex,
-        { transparent: true, uv: [ua, va, ub, va, ub, vb, ua, vb] });
-    };
-    slice(x0e, yS, x1e, yL, D);   // recessed body (glass + pilasters)
-    slice(x0e, yL, x1e, y1e, P);  // projecting lintel cap (+ its top margin)
-    slice(x0e, y0e, x1e, yS, P);  // projecting sill (+ its bottom margin)
-    // Reveals seal the zones. Side jambs are the masonry thickness between the brick
-    // wall and the recessed frame, so they stay WALL-toned. The cap/sill connector
-    // faces are the 3D sides of the projecting STONE trim, so they take stone tones
-    // (lit sill stone / lintel shadow) — never the brown wall tint, which read as
-    // mismatched brown shelves around the cream trim.
-    const jambT = darken(params.tint, REVEAL.jamb);
-    const stoneLit = FACADE_RELIEF.sillLit;        // lit stone top surface
-    const stoneShade = FACADE_RELIEF.lintelShadow; // stone in shadow (soffit / underside)
-    quad3(point(w.x0, yS, WALL_PLANE), point(w.x0, yS, D), point(w.x0, yL, D), point(w.x0, yL, WALL_PLANE), wallTex,
-      { tint: jambT, uv: [1 - w.x0, yS, 1 - w.x0, yS, 1 - w.x0, yL, 1 - w.x0, yL] });
-    quad3(point(w.x1, yS, D), point(w.x1, yS, WALL_PLANE), point(w.x1, yL, WALL_PLANE), point(w.x1, yL, D), wallTex,
-      { tint: jambT, uv: [1 - w.x1, yS, 1 - w.x1, yS, 1 - w.x1, yL, 1 - w.x1, yL] });
-    quad3(point(w.x0, yL, P), point(w.x1, yL, P), point(w.x1, yL, D), point(w.x0, yL, D), null,
-      { tint: stoneShade });   // lintel soffit (down, shadow)
-    quad3(point(w.x0, yS, D), point(w.x1, yS, D), point(w.x1, yS, P), point(w.x0, yS, P), null,
-      { tint: stoneLit });     // sill top (up, lit)
-    if (trim.proj > 0) {
-      quad3(point(w.x0, w.y1, WALL_PLANE), point(w.x1, w.y1, WALL_PLANE), point(w.x1, w.y1, P), point(w.x0, w.y1, P), null,
-        { tint: stoneLit });   // cap top (up, lit)
-      quad3(point(w.x0, w.y0, P), point(w.x1, w.y0, P), point(w.x1, w.y0, WALL_PLANE), point(w.x0, w.y0, WALL_PLANE), null,
-        { tint: stoneShade });  // sill underside (down, cast shadow)
-    }
+    const off = WALL_PLANE + 0.004; // a hair proud of the wall skin so the painted trim sits in front of the brick
+    quad3(point(x0e, y0e, off), point(x1e, y0e, off), point(x1e, y1e, off), point(x0e, y1e, off), winTex,
+      { transparent: true }); // default uv maps the full decal across the expanded rect
   };
   const windowFace = openingsFace && (streetFace || isFrontage || !streetNormal ||
     Math.abs(edge.normal.x * streetNormal.x + edge.normal.z * streetNormal.z) > 0.5);
