@@ -56,10 +56,13 @@ export const TYPOLOGY_PALETTE = {
 // snapping can never leave the palette. Spec-only: NOT applied by the renderer (Phase 8).
 export const MATERIAL_WALL_TONES = {
   brick: [0xb5664a, 0x9c5a3c, 0x7d5a44, 0x6f4a39],
-  clapboard: [0xc8c2b2, 0x9a9c86, 0x6f7a6a, 0x4a4f44],
+  // clapboard / painted-masonry / modern-flat carry LIGHT painted-facade tones
+  // (Greenpoint has many pale-painted rowhouses) alongside the darker stains —
+  // muted, paper-adjacent II-C values so a light building stays in-palette.
+  clapboard: [0xe2dcc9, 0xd6dccf, 0xc7cfd2, 0xd8c8a4, 0xc8c2b2, 0x9a9c86, 0x6f7a6a, 0x4a4f44],
   brownstone: [0x8a5a3c, 0x6f4632, 0x5a3a28],
-  "painted-masonry": [0xc8c2b2, 0xa8a090, 0x7c766a, 0x46443f],
-  "modern-flat": [0xcabfa7, 0x968b78, 0x46443f, 0x1d201e],
+  "painted-masonry": [0xe6dfce, 0xd8d2c0, 0xc8c2b2, 0xa8a090, 0x7c766a, 0x46443f],
+  "modern-flat": [0xdad3c4, 0xcabfa7, 0x968b78, 0x46443f, 0x1d201e],
   warehouse: [0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c],
 };
 
@@ -70,10 +73,12 @@ export const MATERIAL_WALL_TONES = {
 // as a deliberate commit, keeping the no-miss rule intact.
 export const TRIM_TONES = [
   0x1d1a16, // near-black inked (dark painted trim — the "black" frame/door)
+  0xe2dcc9, // off-white (white-painted sash/cornice; lighter than the cream below)
   0xcdbfa6, // warm cream (light painted trim; == MASSING.transomBand)
   0x2e3b32, // forest green (== bar awning tint)
   0x6b2f28, // oxblood / barn red
   0x3f4650, // slate blue-grey
+  0x8a8270, // warm mid-grey (greige painted trim)
   0x4a3a2c, // dark stained wood (== FACADE_RELIEF.joineryCheek family)
 ];
 

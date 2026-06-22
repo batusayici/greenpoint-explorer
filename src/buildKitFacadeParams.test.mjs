@@ -81,3 +81,17 @@ test("trim tints snap to TRIM_TONES when overridden", () => {
   assert.equal(p.windowTint, nearestTrimToken(0x000000));
   assert.equal(p.doorTint, nearestTrimToken(0x6b2f28));
 });
+
+test("corniceColor is absent without an override (byte-stable default)", () => {
+  const p = buildKitFacadeParams({ bin: "1", sourceProperties: { yearBuilt: 1890 } }, "brick");
+  assert.equal(p.corniceColor, undefined);
+});
+
+test("corniceColor snaps to TRIM_TONES when overridden", () => {
+  const p = buildKitFacadeParams(
+    { bin: "1", sourceProperties: { yearBuilt: 1890 } },
+    "brick",
+    { corniceTint: "0xe2dcc9" },
+  );
+  assert.equal(p.corniceColor, nearestTrimToken(0xe2dcc9));
+});

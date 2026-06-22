@@ -1465,6 +1465,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           tint: kitParams.tint,
           windowTint: kitParams.windowTint,
           doorTint: kitParams.doorTint,
+          corniceColor: kitParams.corniceColor,
           addr: building.address ?? building.sourceProperties?.address,
         });
         const binBays = baysByBin.get(building.bin);
@@ -2302,6 +2303,27 @@ const WALL_TILE_M = {
   clapboard: [2.0, 2.0],
   brownstone: [2.0, 2.1],
 };
+// Luminance-masked tint for the window decal: multiply only the LIGHT pixels (the
+// painted frame / sash / muntins / stone surround) by the trim color, leaving the
+// DARK glass panes untouched — "color the frame, not the glass". A flat material
+// tint would recolor the glass too. Injected into MeshBasicMaterial's fragment
+// shader; the closure source is identical across calls so all window materials
+// share one compiled program (only the uFrameTint uniform differs).
+function applyFrameTint(material, tintHex) {
+  const c = new THREE.Color(tintHex);
+  material.onBeforeCompile = (shader) => {
+    shader.uniforms.uFrameTint = { value: c };
+    shader.fragmentShader =
+      "uniform vec3 uFrameTint;\n" +
+      shader.fragmentShader.replace(
+        "#include <map_fragment>",
+        "#include <map_fragment>\n" +
+          "  float _lum = dot(diffuseColor.rgb, vec3(0.299, 0.587, 0.114));\n" +
+          "  diffuseColor.rgb *= mix(vec3(1.0), uFrameTint, smoothstep(0.10, 0.45, _lum));",
+      );
+  };
+}
+
 function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null, isFrontage = streetFace, plainEntry = false) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
@@ -2330,7 +2352,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     left.z + (right.z - left.z) * x + normal.z * (off + SKIN_BASE),
   ];
   // tex null → solid-color quad (used for party-wall seams).
-  const quad = (r, off, tex, { tint, transparent, opacity } = {}) => {
+  const quad = (r, off, tex, { tint, transparent, opacity, frameTint } = {}) => {
     const g = new THREE.BufferGeometry();
     const p = [point(r.x0, r.y0, off), point(r.x1, r.y0, off), point(r.x1, r.y1, off), point(r.x0, r.y1, off)];
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
@@ -2338,7 +2360,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     g.setIndex([0, 1, 2, 0, 2, 3]);
     const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
     if (tex) m.map = tex;
-    if (tint != null) m.color.setHex(tint);
+    if (frameTint != null) applyFrameTint(m, frameTint);
+    else if (tint != null) m.color.setHex(tint);
     if (opacity != null) m.opacity = opacity;
     target.add(new THREE.Mesh(g, m));
   };
@@ -2346,14 +2369,15 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // `point`). Lets callers build surfaces that project out of the wall plane —
   // e.g. a storefront awning's sloped top + valance — which the planar `quad`
   // (single normal offset) cannot. uv order matches `quad` (p0..p3 → corners).
-  const quad3 = (p0, p1, p2, p3, tex, { tint, transparent, uv } = {}) => {
+  const quad3 = (p0, p1, p2, p3, tex, { tint, transparent, uv, frameTint } = {}) => {
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.BufferAttribute(new Float32Array([p0, p1, p2, p3].flat()), 3));
     g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(uv ?? [1, 0, 0, 0, 0, 1, 1, 1]), 2));
     g.setIndex([0, 1, 2, 0, 2, 3]);
     const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
     if (tex) m.map = tex;
-    if (tint != null) m.color.setHex(tint);
+    if (frameTint != null) applyFrameTint(m, frameTint);
+    else if (tint != null) m.color.setHex(tint);
     target.add(new THREE.Mesh(g, m));
   };
   const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
@@ -2465,7 +2489,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   };
   const drawWindow = (w) => {
     if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
-    if (recessProj <= 0) { quad(w, 0.008, winTex, { transparent: true, tint: winTint }); return; }
+    if (recessProj <= 0) { quad(w, 0.008, winTex, { transparent: true, frameTint: winTint }); return; }
     // The decal is a COMPLETE inked window — its projecting stone lintel and sill
     // (with their cast shadows) are PAINTED INTO the art. It already carries the full
     // depth read, so it renders as ONE intact, alpha-keyed plane a hair proud of the
@@ -2480,7 +2504,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     const x0e = cx - hw / spanX, x1e = cx + hw / spanX, y0e = cy - hh / spanY, y1e = cy + hh / spanY;
     const off = WALL_PLANE + 0.004; // a hair proud of the wall skin so the painted trim sits in front of the brick
     quad3(point(x0e, y0e, off), point(x1e, y0e, off), point(x1e, y1e, off), point(x0e, y1e, off), winTex,
-      { transparent: true, tint: winTint }); // default uv maps the full decal across the expanded rect
+      { transparent: true, frameTint: winTint }); // frame-only tint (glass untouched); default uv maps the decal
   };
   const windowFace = openingsFace && (streetFace || isFrontage || !streetNormal ||
     Math.abs(edge.normal.x * streetNormal.x + edge.normal.z * streetNormal.z) > 0.5);

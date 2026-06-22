@@ -59,3 +59,8 @@ test("override rejects malformed trim tints", () => {
   assert.equal(isValidFacadeOverride({ doorTint: "0x12345" }), false);  // 5 hex digits
   assert.equal(isValidFacadeOverride({ windowTint: 123 }), false);      // not a string
 });
+
+test("override accepts corniceTint as a 0x-hex string", () => {
+  assert.equal(isValidFacadeOverride({ corniceTint: "0xe2dcc9" }), true);
+  assert.equal(isValidFacadeOverride({ corniceTint: "e2dcc9" }), false);
+});

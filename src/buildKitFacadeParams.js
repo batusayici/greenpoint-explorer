@@ -59,5 +59,8 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   // the renderer falls back to today's wall-derived darkening (byte-stable).
   if (ov.windowTint != null) params.windowTint = nearestTrimToken(Number(ov.windowTint));
   if (ov.doorTint != null) params.doorTint = nearestTrimToken(Number(ov.doorTint));
+  // Cornice molding color (decorateInkedWall reads params.corniceColor; falls back
+  // to a darkened wall tone when absent). Snapped to the trim set like window/door.
+  if (ov.corniceTint != null) params.corniceColor = nearestTrimToken(Number(ov.corniceTint));
   return params;
 }

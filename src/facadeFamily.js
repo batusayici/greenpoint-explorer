@@ -35,6 +35,7 @@ export function isValidFacadeOverride(obj) {
   if ("groundTint" in obj && !(typeof obj.groundTint === "string" && /^0x[0-9a-fA-F]{6}$/.test(obj.groundTint))) return false;
   if ("windowTint" in obj && !(typeof obj.windowTint === "string" && /^0x[0-9a-fA-F]{6}$/.test(obj.windowTint))) return false;
   if ("doorTint" in obj && !(typeof obj.doorTint === "string" && /^0x[0-9a-fA-F]{6}$/.test(obj.doorTint))) return false;
+  if ("corniceTint" in obj && !(typeof obj.corniceTint === "string" && /^0x[0-9a-fA-F]{6}$/.test(obj.corniceTint))) return false;
   if ("storeys" in obj && !isPosInt(obj.storeys)) return false;
   if ("bays" in obj && !isPosInt(obj.bays)) return false;
   if ("weathering" in obj && !(isNum(obj.weathering) && obj.weathering >= 0 && obj.weathering <= 1)) return false;

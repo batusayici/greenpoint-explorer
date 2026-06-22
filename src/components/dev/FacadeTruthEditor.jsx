@@ -36,6 +36,7 @@ export default function FacadeTruthEditor({ bin }) {
   const [wall, setWall] = useState(null);   // snapped hex number or null
   const [win, setWin] = useState(null);
   const [door, setDoor] = useState(null);
+  const [cornice, setCornice] = useState(null);
   const [status, setStatus] = useState("");
 
   // Seed controls from the registered truth whenever the selected BIN changes —
@@ -47,8 +48,9 @@ export default function FacadeTruthEditor({ bin }) {
     setWall(entry?.tint ?? null);
     setWin(entry?.windowTint ?? null);
     setDoor(entry?.doorTint ?? null);
+    setCornice(entry?.corniceColor ?? null);
     setStatus("");
-  }, [bin, entry?.family, entry?.tint, entry?.windowTint, entry?.doorTint]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [bin, entry?.family, entry?.tint, entry?.windowTint, entry?.doorTint, entry?.corniceColor]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const eyedropper = typeof window !== "undefined" && "EyeDropper" in window;
 
@@ -59,6 +61,7 @@ export default function FacadeTruthEditor({ bin }) {
       const raw = parseInt(sRGBHex.slice(1), 16);
       if (kind === "wall") setWall(nearestPaletteToken(raw, family ?? "brick"));
       else if (kind === "win") setWin(nearestTrimToken(raw));
+      else if (kind === "cornice") setCornice(nearestTrimToken(raw));
       else setDoor(nearestTrimToken(raw));
       setStatus("sampled → snapped");
     } catch {
@@ -77,6 +80,7 @@ export default function FacadeTruthEditor({ bin }) {
     if (wall != null) override.tint = hex6(wall);
     if (win != null) override.windowTint = hex6(win);
     if (door != null) override.doorTint = hex6(door);
+    if (cornice != null) override.corniceTint = hex6(cornice);
     setStatus("saving…");
     try {
       const res = await fetch("/__facade-override", {
@@ -106,9 +110,10 @@ export default function FacadeTruthEditor({ bin }) {
               {familyList().map((f) => <option key={f} value={f}>{f}</option>)}
             </select>
           </Row>
-          <ColorRow label="facade" value={wall} onSample={() => sample("wall")} tokens={MATERIAL_WALL_TONES[family] ?? []} />
-          <ColorRow label="window" value={win} onSample={() => sample("win")} tokens={TRIM_TONES} />
-          <ColorRow label="door" value={door} onSample={() => sample("door")} tokens={TRIM_TONES} />
+          <ColorRow label="facade" value={wall} onSample={() => sample("wall")} onPick={setWall} tokens={MATERIAL_WALL_TONES[family] ?? []} />
+          <ColorRow label="window" value={win} onSample={() => sample("win")} onPick={setWin} tokens={TRIM_TONES} />
+          <ColorRow label="door" value={door} onSample={() => sample("door")} onPick={setDoor} tokens={TRIM_TONES} />
+          <ColorRow label="cornice" value={cornice} onSample={() => sample("cornice")} onPick={setCornice} tokens={TRIM_TONES} />
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
             <button onClick={save} style={button}>Save → JSON</button>
             <span style={{ fontSize: 11, opacity: 0.85 }}>{status}</span>
@@ -129,16 +134,27 @@ function Row({ label, children }) {
   );
 }
 
-function ColorRow({ label, value, onSample, tokens }) {
+function ColorRow({ label, value, onSample, onPick, tokens }) {
   return (
     <Row label={label}>
       <button onClick={onSample} style={button}>eyedrop</button>
-      <span title="snapped token" style={{ width: 22, height: 22, borderRadius: 4, border: "1px solid #5a4d3e",
-        background: value != null ? cssHex(value) : "transparent" }} />
-      <code style={{ fontSize: 11, opacity: 0.85 }}>{value != null ? hex6(value) : "—"}</code>
-      <span style={{ display: "flex", gap: 2, marginLeft: "auto" }}>
-        {tokens.map((t) => <span key={t} style={{ width: 12, height: 12, background: cssHex(t), borderRadius: 2,
-          outline: t === value ? "2px solid #ffcf3f" : "none" }} />)}
+      <span
+        title={value != null ? "click to clear" : "no color set"}
+        onClick={() => value != null && onPick(null)}
+        style={{ width: 22, height: 22, borderRadius: 4, border: "1px solid #5a4d3e", cursor: value != null ? "pointer" : "default",
+          background: value != null ? cssHex(value) : "transparent" }}
+      />
+      <code style={{ fontSize: 11, opacity: 0.85, minWidth: 56 }}>{value != null ? hex6(value) : "—"}</code>
+      <span style={{ display: "flex", flexWrap: "wrap", gap: 3, marginLeft: "auto", maxWidth: 132, justifyContent: "flex-end" }}>
+        {tokens.map((t) => (
+          <span
+            key={t}
+            title={hex6(t) + " — click to select"}
+            onClick={() => onPick(t)}
+            style={{ width: 14, height: 14, background: cssHex(t), borderRadius: 2, cursor: "pointer",
+              outline: t === value ? "2px solid #ffcf3f" : "1px solid rgba(255,255,255,0.12)", outlineOffset: t === value ? 0 : -1 }}
+          />
+        ))}
       </span>
     </Row>
   );
