@@ -1340,6 +1340,10 @@ function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
     if (!building || !building.polygon || !building.centroid) continue;
     // Kit-routed commercial buildings draw their own shopfront + category sign
     // via decorateStorefront; skip the block sign/awning here to avoid doubles.
+    // Invariant: KIT_PILOT_BINS is {} (full-flip), so the buildBuildings call
+    // site routes every kit-eligible bin to the kit path. If pilot mode is
+    // re-enabled, mirror its `pilotEligible` gate here too, or pilot-ineligible
+    // commercial buildings would be skipped here yet not kit-routed = signless.
     if (building.fromBlockExtract && building.sourceProperties) {
       const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
       if (familyHasKit(family)) continue;
