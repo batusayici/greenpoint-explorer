@@ -197,17 +197,42 @@ test("Franklin is still flagged derived (no source centerline in this packet)", 
 
 import corridorStreets from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json" with { type: "json" };
 
+// Replicates SceneView's physicalid Map-dedup (corridor wins over phase-3b).
+// centerlineKey matches the exact expression from SceneView.jsx lines 223-224.
+const centerlineKey = (r) =>
+  r.physicalid != null ? `pid:${r.physicalid}` : `nm:${r.fullStreetName}:${r.wgs84Line?.[0]?.lon},${r.wgs84Line?.[0]?.lat}`;
+
+function mergeWithMapDedup(base, corridor) {
+  const byKey = new Map();
+  for (const r of base.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r);
+  for (const r of corridor.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r); // corridor wins
+  return { ...base, streetCenterlineRecords: [...byKey.values()] };
+}
+
 test("merged corridor source paves Huron and Franklin gets a real centerline", () => {
-  const merged = {
-    ...geometrySource,
-    streetCenterlineRecords: [
-      ...geometrySource.streetCenterlineRecords,
-      ...corridorStreets.streetCenterlineRecords,
-    ],
-  };
+  const merged = mergeWithMapDedup(geometrySource, corridorStreets);
   const g = buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource: merged });
   const ids = g.streets.map((s) => s.id);
   assert.ok(ids.includes("cross-huron-st"), "Huron paved from corridor pull");
   const fr = g.streets.find((s) => s.id === "franklin-st");
   assert.equal(fr.derived, false, "Franklin now source-backed (real centerline present)");
+});
+
+test("near-parallel streets (Manhattan Ave, McGuinness, West St, Pulaski) are NOT paved as cross-streets", () => {
+  // This test exercises the near-parallel guard in buildCrossStreets.
+  // Streets parallel to Franklin produce a distant false crossing via lineIntersect
+  // (which only rejects exactly parallel lines). The guard must reject them.
+  const merged = mergeWithMapDedup(geometrySource, corridorStreets);
+  const g = buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource: merged });
+  const ids = g.streets.map((s) => s.id);
+  // Bogus near-parallel false-crossers must be absent
+  for (const bogusId of ["cross-manhattan-ave", "cross-mcguinness-blvd", "cross-west-st"]) {
+    assert.ok(!ids.includes(bogusId), `${bogusId} must NOT be paved (near-parallel to Franklin)`);
+  }
+  const pulaski = ids.filter((id) => id.startsWith("cross-pulaski-"));
+  assert.equal(pulaski.length, 0, "no cross-pulaski-* streets (near-parallel to Franklin)");
+  // Real perpendicular cross-streets must still be present
+  for (const realId of ["cross-huron-st", "cross-eagle-st", "cross-green-st", "cross-dupont-st", "cross-kent-st", "cross-java-st", "cross-milton-st"]) {
+    assert.ok(ids.includes(realId), `${realId} must be paved (real cross-street)`);
+  }
 });

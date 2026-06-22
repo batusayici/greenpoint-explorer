@@ -16,6 +16,11 @@ export const CROSSWALK_STRIPE_COUNT = 6;
 const CROSSWALK_DEPTH_M = 3.5; // along-street depth of the crossing band
 const DEFAULT_STREET_WIDTH_FT = 40; // fallback if a width record is missing
 const FRANKLIN_END_MARGIN_M = 25; // how far Franklin's roadbed runs past its outermost crossing
+// Streets whose axis dot-product with Franklin's exceeds this threshold are
+// near-parallel (e.g. Manhattan Ave, McGuinness Blvd, West St, Pulaski paths).
+// lineIntersect only rejects *exactly* parallel lines; near-parallel ones yield
+// a distant phantom crossing thousands of units away. Reject before paving.
+const NEAR_PARALLEL_DOT = 0.99;
 
 export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource }) {
   const swUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
@@ -122,7 +127,7 @@ function spineFromCenterline({ id, name, axis, perp, widthFt, geometrySource, pr
   return {
     id, name, axis, perp, center, tMin, tMax,
     halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
-    derived: false,
+    derived: recs.length === 0, // true only for the 150m-fallback (no real records)
   };
 }
 
@@ -139,8 +144,8 @@ function buildFranklin({ geometrySource, projection, greenpointAxis, franklinAxi
   const center = { x: 0, z: 0 };
   const margin = projection.metersToUnits(FRANKLIN_END_MARGIN_M);
   const crossTs = crosses.map((c) => (c.center.x - center.x) * franklinAxis.x + (c.center.z - center.z) * franklinAxis.z);
-  const lo = crossTs.length ? Math.min(...crossTs, 0) : -projection.metersToUnits(150);
-  const hi = crossTs.length ? Math.max(...crossTs, 0) : projection.metersToUnits(150);
+  const lo = Math.min(...crossTs, 0);
+  const hi = Math.max(...crossTs, 0);
   return {
     id: "franklin-st", name: "FRANKLIN ST", axis: franklinAxis, perp: greenpointAxis,
     center, tMin: lo - margin, tMax: hi + margin,
@@ -192,6 +197,9 @@ function buildCrossStreets({ geometrySource, projection, franklinAxis }) {
     const v = { x: b.x - a.x, z: b.z - a.z };
     const len = Math.hypot(v.x, v.z) || 1;
     const axis = { x: v.x / len, z: v.z / len };
+    // Near-parallel to Franklin: lineIntersect yields a distant false crossing
+    // (a parallel arterial is not a real cross-street). Reject before paving.
+    if (Math.abs(axis.x * franklinAxis.x + axis.z * franklinAxis.z) > NEAR_PARALLEL_DOT) continue;
     const center = lineIntersect(a, axis, origin, franklinAxis);
     if (!center) continue; // parallel to Franklin — does not cross the spine
     const tA = (a.x - center.x) * axis.x + (a.z - center.z) * axis.z;

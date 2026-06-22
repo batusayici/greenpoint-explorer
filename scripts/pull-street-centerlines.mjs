@@ -5,7 +5,10 @@
  *
  * Pulls NYC LION Street Centerline (inkn-q76z) for a bbox and writes a packet
  * in the streetCenterlineRecords shape the ground layer reads.
- * Columns: physicalid, full_stree, st_width, the_geom (MultiLineString [lon,lat]).
+ * Columns: physicalid, full_street_name (fallback: full_stree), streetwidth
+ *   (fallback: st_width), the_geom (MultiLineString [lon,lat]).
+ *   Old column names (full_stree, st_width) are kept as code fallbacks for
+ *   older API responses; current LION v2 names are full_street_name/streetwidth.
  */
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { resolve, dirname, join } from "path";

@@ -8,13 +8,16 @@ import { buildGroundLayer, SIDEWALK_WIDTH_M, CROSSWALK_STRIPE_COUNT } from "../s
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const geometrySource = read("src/data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json");
 const corridor = read("src/data/geometry-source/block-franklin-north.street-centerlines.v0.1.json");
-const merged = {
-  ...geometrySource,
-  streetCenterlineRecords: [
-    ...(geometrySource.streetCenterlineRecords ?? []),
-    ...(corridor.streetCenterlineRecords ?? []),
-  ],
-};
+// Replicate SceneView's physicalid Map-dedup (corridor wins) so verifier uses
+// the same merged source as production — avoids counting duplicate records.
+const centerlineKey = (r) =>
+  r.physicalid != null ? `pid:${r.physicalid}` : `nm:${r.fullStreetName}:${r.wgs84Line?.[0]?.lon},${r.wgs84Line?.[0]?.lat}`;
+const merged = (() => {
+  const byKey = new Map();
+  for (const r of geometrySource.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r);
+  for (const r of corridor.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r); // corridor wins
+  return { ...geometrySource, streetCenterlineRecords: [...byKey.values()] };
+})();
 const fixture = read("src/data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json");
 const basis = fixture.sceneTruthModel.projectionBasis;
 const projection = createProjection(basis);
