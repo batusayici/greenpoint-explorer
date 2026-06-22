@@ -15,23 +15,23 @@ export const SIDEWALK_WIDTH_M = 4.0; // NYC-typical; curb-to-frontage band width
 export const CROSSWALK_STRIPE_COUNT = 6;
 const CROSSWALK_DEPTH_M = 3.5; // along-street depth of the crossing band
 const DEFAULT_STREET_WIDTH_FT = 40; // fallback if a width record is missing
-const ROADBED_HALF_LENGTH_M = 150; // how far each roadbed/sidewalk run is drawn (covers the Franklin→Milton block ~124m and the east-Greenpoint block)
+const FRANKLIN_END_MARGIN_M = 25; // how far Franklin's roadbed runs past its outermost crossing
 
 export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geometrySource }) {
   const swUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
   // (no halfLen, no contextRadiusUnits)
 
-  const SPINE_REACH = projection.metersToUnits(165); // TEMP: Task 2 replaces with real/derived extent (165m ensures Java's gap ~162.6m fits within Franklin's span)
-  const spine = [
-    makeStreet({ id: "greenpoint-ave", axis: greenpointAxis, perp: franklinAxis,
-      widthFt: streetWidthFt(geometrySource, "GREENPOINT AVE", 50), derived: false,
-      projection, tMin: -SPINE_REACH, tMax: SPINE_REACH }),
-    makeStreet({ id: "franklin-st", axis: franklinAxis, perp: greenpointAxis,
-      widthFt: streetWidthFt(geometrySource, "FRANKLIN ST", DEFAULT_STREET_WIDTH_FT), derived: true,
-      projection, tMin: -SPINE_REACH, tMax: SPINE_REACH }),
-  ];
+  const greenpoint = spineFromCenterline({
+    id: "greenpoint-ave", name: "GREENPOINT AVE", axis: greenpointAxis, perp: franklinAxis,
+    widthFt: streetWidthFt(geometrySource, "GREENPOINT AVE", 50), geometrySource, projection,
+  });
   const crosses = buildCrossStreets({ geometrySource, projection, franklinAxis });
-  const streets = [...spine, ...crosses];
+
+  // Franklin: if a real centerline exists, use its span; else derive extent from
+  // the crossings it must reach (R10E gap — no Franklin centerline in the packet).
+  const franklin = buildFranklin({ geometrySource, projection, greenpointAxis, franklinAxis, crosses });
+
+  const streets = [greenpoint, franklin, ...crosses];
 
   // Every street that this street crosses within its own extent contributes a
   // gap (centered at the crossing, as wide as the crossed street's roadbed).
@@ -108,6 +108,47 @@ function streetWidthFt(geometrySource, name, fallback) {
   return fallback;
 }
 
+// A spine street that runs through the origin along a known axis, with its
+// extent taken from its real centerline endpoints projected onto that axis.
+function spineFromCenterline({ id, name, axis, perp, widthFt, geometrySource, projection }) {
+  const recs = (geometrySource.streetCenterlineRecords ?? []).filter((r) => r.fullStreetName === name);
+  const center = { x: 0, z: 0 };
+  let tMin = -projection.metersToUnits(150), tMax = projection.metersToUnits(150);
+  if (recs.length) {
+    const pts = recs.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
+    const ts = pts.map((p) => (p.x - center.x) * axis.x + (p.z - center.z) * axis.z);
+    tMin = Math.min(...ts); tMax = Math.max(...ts);
+  }
+  return {
+    id, name, axis, perp, center, tMin, tMax,
+    halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
+    derived: false,
+  };
+}
+
+function buildFranklin({ geometrySource, projection, greenpointAxis, franklinAxis, crosses }) {
+  const hasReal = (geometrySource.streetCenterlineRecords ?? []).some((r) => r.fullStreetName === "FRANKLIN ST");
+  const widthFt = streetWidthFt(geometrySource, "FRANKLIN ST", DEFAULT_STREET_WIDTH_FT);
+  if (hasReal) {
+    return spineFromCenterline({
+      id: "franklin-st", name: "FRANKLIN ST", axis: franklinAxis, perp: greenpointAxis,
+      widthFt, geometrySource, projection,
+    });
+  }
+  // Derived extent: span the crossings (their center projected onto Franklin's axis) + margin.
+  const center = { x: 0, z: 0 };
+  const margin = projection.metersToUnits(FRANKLIN_END_MARGIN_M);
+  const crossTs = crosses.map((c) => (c.center.x - center.x) * franklinAxis.x + (c.center.z - center.z) * franklinAxis.z);
+  const lo = crossTs.length ? Math.min(...crossTs, 0) : -projection.metersToUnits(150);
+  const hi = crossTs.length ? Math.max(...crossTs, 0) : projection.metersToUnits(150);
+  return {
+    id: "franklin-st", name: "FRANKLIN ST", axis: franklinAxis, perp: greenpointAxis,
+    center, tMin: lo - margin, tMax: hi + margin,
+    halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
+    derived: true,
+  };
+}
+
 // Merge a street's (possibly multi-segment) centerline records into a single
 // projected polyline, then reduce to the two furthest-apart endpoints. This
 // recovers the street's true direction even when its segments are split at the
@@ -169,16 +210,6 @@ function buildCrossStreets({ geometrySource, projection, franklinAxis }) {
     });
   }
   return out.sort((s1, s2) => s1.id.localeCompare(s2.id));
-}
-
-function makeStreet({ id, axis, perp, widthFt, derived, projection, tMin, tMax }) {
-  return {
-    id, axis, perp,
-    center: { x: 0, z: 0 },
-    tMin, tMax,
-    halfWidth: projection.metersToUnits((widthFt * FEET_TO_METERS) / 2),
-    derived,
-  };
 }
 
 // The along-axis spans remaining after removing each crossing interval from a

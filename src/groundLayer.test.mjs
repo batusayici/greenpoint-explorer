@@ -170,3 +170,27 @@ test("axisSegments clamps gaps to the run and drops empty spans", () => {
   assert.deepEqual(axisSegments(-5, 5, [{ t0: -1, t1: 1 }]), [[-5, -1], [1, 5]]);
   assert.deepEqual(axisSegments(-5, 5, [{ t0: -6, t1: 6 }]), []);
 });
+
+test("Greenpoint extent matches its real centerline endpoint span", () => {
+  const recs = geometrySource.streetCenterlineRecords.filter((r) => r.fullStreetName === "GREENPOINT AVE");
+  const pts = recs.flatMap((r) => r.wgs84Line.map((p) => projection.project(p)));
+  const gp = ground.streets.find((s) => s.id === "greenpoint-ave");
+  const ts = pts.map((p) => (p.x - gp.center.x) * gp.axis.x + (p.z - gp.center.z) * gp.axis.z);
+  assert.ok(Math.abs(gp.tMin - Math.min(...ts)) < 0.5, "tMin ≈ nearest real endpoint");
+  assert.ok(Math.abs(gp.tMax - Math.max(...ts)) < 0.5, "tMax ≈ farthest real endpoint");
+});
+
+test("Franklin extent spans all of its crossings plus a margin", () => {
+  const fr = ground.streets.find((s) => s.id === "franklin-st");
+  const crossers = ground.streets.filter((s) => s.id.startsWith("cross-"));
+  // t of each crosser's center projected onto Franklin's axis (Franklin center is origin)
+  const crossTs = crossers.map((c) => c.center.x * fr.axis.x + c.center.z * fr.axis.z);
+  const margin = projection.metersToUnits(25);
+  assert.ok(fr.tMin <= Math.min(...crossTs) - margin + 1e-6, "covers southernmost crossing + margin");
+  assert.ok(fr.tMax >= Math.max(...crossTs) + margin - 1e-6, "covers northernmost crossing + margin");
+});
+
+test("Franklin is still flagged derived (no source centerline in this packet)", () => {
+  const fr = ground.streets.find((s) => s.id === "franklin-st");
+  assert.equal(fr.derived, true);
+});
