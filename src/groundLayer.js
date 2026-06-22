@@ -45,30 +45,38 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
   const crosses = buildCrossStreets({ geometrySource, projection, franklinAxis, contextRadiusUnits });
   const streets = [...spine, ...crosses];
 
-  const roadbeds = spine.map((s) => ({
+  // Every street that this street crosses within its own extent contributes a
+  // gap (centered at the crossing, as wide as the crossed street's roadbed).
+  const crossingGaps = (s) => {
+    const gaps = [];
+    for (const o of streets) {
+      if (o === s) continue;
+      const cross = lineIntersect(s.center, s.axis, o.center, o.axis);
+      if (!cross) continue;
+      const t = (cross.x - s.center.x) * s.axis.x + (cross.z - s.center.z) * s.axis.z;
+      if (Math.abs(t) > s.halfLen) continue; // crossing is off this street's drawn run
+      gaps.push({ t0: t - o.halfWidth, t1: t + o.halfWidth });
+    }
+    return gaps;
+  };
+
+  const roadbeds = streets.map((s) => ({
     streetId: s.id,
     derived: s.derived,
     polygon: bandPolygon(s, -s.halfWidth, s.halfWidth),
   }));
 
-  // Sidewalks and curbs run the length of their street EXCEPT across the cross
-  // street's roadbed — otherwise the concrete (drawn above the asphalt) would
-  // paint over the crossing roadway at each corner. Split each into the two
-  // segments outside the other street's roadbed half-width.
-  // Note: curbs/sidewalks/crosswalks operate on spine streets only until Task 4.
-  const otherHalf = (s) => spine.find((o) => o.id !== s.id).halfWidth;
-
-  const curbs = spine.flatMap((s) => {
-    const gap = otherHalf(s);
+  const curbs = streets.flatMap((s) => {
+    const gaps = crossingGaps(s);
     return [s.halfWidth, -s.halfWidth].map((off) => ({
       streetId: s.id,
       derived: s.derived,
-      segments: axisSegments(s.halfLen, [{ t0: -gap, t1: gap }]).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
+      segments: axisSegments(s.halfLen, gaps).map(([t0, t1]) => edgeLine(s, off, t0, t1)),
     }));
   });
 
-  const sidewalks = spine.flatMap((s) => {
-    const gap = otherHalf(s);
+  const sidewalks = streets.flatMap((s) => {
+    const gaps = crossingGaps(s);
     const bands = [
       { side: "pos", a: s.halfWidth, b: s.halfWidth + swUnits },
       { side: "neg", a: -(s.halfWidth + swUnits), b: -s.halfWidth },
@@ -77,7 +85,7 @@ export function buildGroundLayer({ projection, greenpointAxis, franklinAxis, geo
       streetId: s.id,
       derived: s.derived,
       side,
-      segments: axisSegments(s.halfLen, [{ t0: -gap, t1: gap }]).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
+      segments: axisSegments(s.halfLen, gaps).map(([t0, t1]) => bandPolygon(s, a, b, t0, t1)),
     }));
   });
 

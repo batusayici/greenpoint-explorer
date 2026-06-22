@@ -50,42 +50,42 @@ test("Franklin street is flagged derived (no source centerline) but uses real 40
 });
 
 test("every street yields exactly two curb lines, both off-center on opposite sides", () => {
-  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
-  for (const s of spineStreets) {
+  for (const s of ground.streets) {
     const curbs = ground.curbs.filter((c) => c.streetId === s.id);
     assert.equal(curbs.length, 2, `${s.id} has 2 curbs`);
-    const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
-    const sides = curbs.map((c) => Math.sign(c.segments[0][0].x * perp.x + c.segments[0][0].z * perp.z));
+    const sides = curbs.map((c) => Math.sign((c.segments[0]?.[0].x - s.center.x) * s.perp.x + (c.segments[0]?.[0].z - s.center.z) * s.perp.z));
     assert.notEqual(sides[0], sides[1], `${s.id} curbs on opposite sides`);
   }
 });
 
 test("each curb carries a sidewalk band ~SIDEWALK_WIDTH_M wide", () => {
   const wantUnits = projection.metersToUnits(SIDEWALK_WIDTH_M);
-  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
-  for (const s of spineStreets) {
-    const perp = s.id === "greenpoint-ave" ? franklinAxis : greenpointAxis;
+  for (const s of ground.streets) {
     const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
     assert.equal(walks.length, 2, `${s.id} has 2 sidewalk bands`);
-    for (const w of walks) {
-      for (const seg of w.segments) {
-        assert.ok(Math.abs(polyWidth(seg, perp) - wantUnits) < 0.05, "band width ≈ SIDEWALK_WIDTH_M");
-      }
-    }
+    for (const w of walks)
+      for (const seg of w.segments)
+        assert.ok(Math.abs(polyWidth(seg, s.perp) - wantUnits) < 0.05, "band width ≈ SIDEWALK_WIDTH_M");
   }
 });
 
-test("sidewalks never intrude past the cross street's roadbed (no concrete on the crossing)", () => {
-  const spineStreets = ground.streets.filter((s) => s.id === "greenpoint-ave" || s.id === "franklin-st");
-  for (const s of spineStreets) {
-    const other = spineStreets.find((o) => o.id !== s.id);
-    const walks = ground.sidewalks.filter((w) => w.streetId === s.id);
-    for (const w of walks) {
-      for (const seg of w.segments) {
-        for (const p of seg) {
-          const along = Math.abs(p.x * s.axis.x + p.z * s.axis.z);
-          assert.ok(along >= other.halfWidth - 1e-9, `${s.id} sidewalk stays clear of the crossing`);
-        }
+test("Franklin sidewalk is split into a segment per crossing gap", () => {
+  // The cross-streets (Kent, Milton) cross FRANKLIN, not Greenpoint. So Franklin
+  // gets a gap at Greenpoint AND at each cross-street; Greenpoint keeps just the
+  // single Franklin gap.
+  const crossers = ground.streets.filter((s) => s.id.startsWith("cross-"));
+  const fr = ground.streets.find((s) => s.id === "franklin-st");
+  const walk = ground.sidewalks.find((w) => w.streetId === "franklin-st");
+  // one gap at Greenpoint (origin) + one per cross-street ⇒ at least crossers+2 segments
+  assert.ok(walk.segments.length >= crossers.length + 2, "franklin sidewalk split at each crossing");
+  // every segment stays clear of each crossing street's roadbed half-width along Franklin
+  const greenpoint = ground.streets.find((s) => s.id === "greenpoint-ave");
+  for (const seg of walk.segments) {
+    for (const p of seg) {
+      const t = (p.x - fr.center.x) * fr.axis.x + (p.z - fr.center.z) * fr.axis.z;
+      for (const c of [...crossers, greenpoint]) {
+        const tc = (c.center.x - fr.center.x) * fr.axis.x + (c.center.z - fr.center.z) * fr.axis.z;
+        assert.ok(Math.abs(t - tc) >= c.halfWidth - 1e-6, "franklin sidewalk clear of crossing");
       }
     }
   }
