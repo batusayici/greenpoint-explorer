@@ -2362,7 +2362,9 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     if (params.storefront) {
       decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
     } else {
-      const drewStoop = isKit && wantsStoop(family);
+      // Commercial ground floors carry a storefront (drawn separately) — never a
+      // residential 3D stoop, even for stoop-eligible families.
+      const drewStoop = isKit && wantsStoop(family) && !params.commercialGround;
       if (drewStoop) {
         const stoop = buildStoopGeometry({ frontM, doorCenterM: frontM / 2 });
         // Per-face stone read so it looks like a 3D stoop, not a flat box: smooth

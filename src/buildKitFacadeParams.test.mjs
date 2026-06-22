@@ -37,6 +37,13 @@ test("throws on unknown family", () => {
   assert.throws(() => buildKitFacadeParams(rec, "marble"), /unknown family/i);
 });
 
+test("commercialGround flag follows classifyBuilding ground-floor use (storefronts ≠ stoops)", () => {
+  const residential = buildKitFacadeParams({ bin: "1", sourceProperties: { numFloors: 3 } }, "brick");
+  assert.equal(residential.commercialGround, false); // gets a stoop
+  const commercial = buildKitFacadeParams({ bin: "2", sourceProperties: { numFloors: 3, comArea: 1200 } }, "brick");
+  assert.equal(commercial.commercialGround, true);    // must NOT get a stoop
+});
+
 test("groundFamily/groundTint default to the wall family (single-material)", () => {
   const p = buildKitFacadeParams(rec, "brick");
   assert.equal(p.groundFamily, "brick");

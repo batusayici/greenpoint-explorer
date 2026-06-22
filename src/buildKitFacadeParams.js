@@ -37,6 +37,10 @@ export function buildKitFacadeParams(building, family, override = undefined) {
       ? nearestPaletteToken(Number(ov.groundTint), groundFamily)
       : (groundFamily === family ? wallTint : groundTones[0]),
     storeys: ov.storeys ?? Math.max(2, t.storeyCount),
+    // Commercial ground floors carry a storefront (drawn by the storefront-sign
+    // system), so they must NOT also get a residential 3D stoop. Gates the stoop
+    // in decorateInkedWall.
+    commercialGround: t.groundFloorUse === "commercial",
     weathering: ov.weathering ?? KIT_DEFAULT_WEATHERING,
     components: ov.components ?? {},
     windowRecess: ov.windowRecess ?? KIT_DEFAULT_WINDOW_RECESS,
