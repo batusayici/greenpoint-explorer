@@ -1862,7 +1862,12 @@ function keyPaperAboveRoofline(texture, roofV) {
     const mn = Math.min(r, g, b);
     const light = mx / 255;
     const sat = mx ? (mx - mn) / mx : 0;
-    if (light > 0.72 && sat < 0.18) px[i + 3] = 0; // cream paper → transparent
+    // The render's paper is a WARM cream (~rgb 230,205,178 → L~0.9, S~0.2-0.3),
+    // not a neutral off-white, so it sits well above an 0.18 sat cut. Separate it
+    // from the building by lightness: the lightest brick/terracotta above the
+    // roofline is L~0.76 and the iron railing is dark, so L>0.80 keys the paper
+    // sky while leaving every painted parapet/gable/railing pixel opaque.
+    if (light > 0.8 && sat < 0.4) px[i + 3] = 0; // cream paper → transparent
   }
   ctx.putImageData(data, 0, 0);
   const keyed = new THREE.CanvasTexture(canvas);
@@ -1888,6 +1893,16 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
 
   const composite = FACADE_COMPOSITES[building.placeId];
+  // A segmented-frontage hero whose bespoke texture carries a parapet + gable
+  // ABOVE the main cornice sets `frontage.roofV` (the texture fraction where the
+  // true roofline sits). For those, `building.height` is the top of the PAINTED
+  // parapet — only the frontage segment's texture should reach it. Every
+  // structural wall (sides, rears, interior light-court walls, blank franklin
+  // perimeter) caps at the real roofline `wallTop`, so they sit flush with the
+  // dropped roof instead of floating a 14% lip above it. Default roofV 1 ⇒
+  // wallTop === building.height (every other hero), unchanged.
+  const heroRoofV = composite?.frontage?.roofV ?? 1;
+  const wallTop = building.height * heroRoofV;
   // A face may override composite.key with its own texture (Sereneco's
   // greenpoint face uses the v2 re-render while franklin keeps the original
   // corner.png). Load each distinct texture once and fan it out to its faces.
@@ -1957,13 +1972,13 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           midpoint: { x: (seg.start.x + seg.end.x) / 2, z: (seg.start.z + seg.end.z) / 2 },
         };
         const segWall = new THREE.Mesh(
-          wallQuad(segEdge, building.height, null, scene),
+          wallQuad(segEdge, wallTop, null, scene),
           new THREE.MeshBasicMaterial({ color: segColor, side: THREE.DoubleSide }),
         );
         segWall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
         heroGroup.add(segWall);
         addCullable(segWall, edge.normal);
-        decorateTypologicalWall(segWall, segEdge, building.height, segColor.getHex(), scene);
+        decorateTypologicalWall(segWall, segEdge, wallTop, segColor.getHex(), scene);
       }
       continue;
     }
@@ -1990,7 +2005,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // as a plain context-toned wall.
     let renderEdge = edge;
     if (isTextured && face.coverMeters) {
-      const frame = faceFrame(edge, building.height, face, scene);
+      const frame = faceFrame(edge, wallTop, face, scene);
       const coverUnits = Math.min(face.coverMeters * scene.projection.scale, edge.length);
       const dx = (frame.right.x - frame.left.x) / edge.length;
       const dz = (frame.right.z - frame.left.z) / edge.length;
@@ -1998,7 +2013,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       renderEdge = { ...edge, start: frame.left, end: cut, length: coverUnits };
       if (edge.length - coverUnits > 1e-6) {
         const rest = new THREE.Mesh(
-          wallQuad({ ...edge, start: cut, end: frame.right, length: edge.length - coverUnits }, building.height, null, scene),
+          wallQuad({ ...edge, start: cut, end: frame.right, length: edge.length - coverUnits }, wallTop, null, scene),
           new THREE.MeshBasicMaterial({
             color: new THREE.Color(baseColor).multiplyScalar(faceShade.other),
             side: THREE.DoubleSide,
@@ -2013,7 +2028,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       color: wallColor,
       side: THREE.DoubleSide,
     });
-    const wall = new THREE.Mesh(wallQuad(renderEdge, building.height, isTextured ? face : null, scene), material);
+    const wall = new THREE.Mesh(wallQuad(renderEdge, wallTop, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     heroGroup.add(wall);
     const cull = addCullable(wall, edge.normal);
@@ -2022,7 +2037,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // already dropped at the group-composite guard) get a typological brick
     // back-wall treatment instead of staying a flat colored slab.
     if (!isTextured) {
-      decorateTypologicalWall(wall, renderEdge, building.height, wallColor.getHex(), scene);
+      decorateTypologicalWall(wall, renderEdge, wallTop, wallColor.getHex(), scene);
       continue;
     }
     const faceKey = `${building.bin}:${edge.role}`;
@@ -2032,7 +2047,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           // The build is wrapped in a rebuild closure so the dev recess editor
           // can re-snap this one face live (remove old group, build new).
           heroGroup.remove(wall);
-          const frame = faceFrame(renderEdge, building.height, face, scene);
+          const frame = faceFrame(renderEdge, wallTop, face, scene);
           const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
           const hexBase = new THREE.Color(baseColor).multiplyScalar(shade).getHex();
           let current = null;
@@ -2143,14 +2158,10 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // Roof field: warm membrane tone with paper-grain speckle. The texture
   // transform maps the footprint bbox onto the canvas square (ShapeGeometry
   // UVs equal the shape coordinates).
-  // A segmented-frontage hero whose bespoke texture carries a parapet + gable
-  // ABOVE the main cornice sets `frontage.roofV` — the texture fraction where
-  // the true roofline sits. Drop the flat roof + parapet to that line so the
-  // painted parapet/gable on the upper facade projects above the roof instead
-  // of being squashed into it. Default 1 = roof at the wall top (every other
-  // hero), unchanged.
-  const roofV = composite?.frontage?.roofV ?? 1;
-  const roofTop = building.height * roofV;
+  // The roof sits at `wallTop` (= height·roofV) — the real roofline — flush with
+  // every structural wall. Only the frontage segment's painted parapet/gable
+  // rises above it. (roofV 1 ⇒ wallTop === building.height for every other hero.)
+  const roofTop = wallTop;
   const shape = footprintShape(building.polygon);
   const roofGeometry = new THREE.ShapeGeometry(shape);
   const roofTexture = makeRoofTexture();
