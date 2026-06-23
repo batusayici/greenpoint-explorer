@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { resolveHasCornice, resolveFireEscape } from "./facadeToggleResolve.js";
+import { resolveHasCornice, resolveFireEscape, resolveHasStoop } from "./facadeToggleResolve.js";
 
 test("hasCornice wins when set", () => {
   assert.equal(resolveHasCornice({ hasCornice: false }), false);
@@ -37,4 +37,11 @@ test("fireEscapeVariant lattice with absent fireEscape and auto=false", () => {
 
 test("fireEscape standard wins over fireEscapeVariant lattice", () => {
   assert.deepEqual(resolveFireEscape({ fireEscape: "standard", fireEscapeVariant: "lattice" }, false), { on: true, variant: "relief" });
+});
+
+test("hasStoop wins when set; else defers to heuristic", () => {
+  assert.equal(resolveHasStoop({ hasStoop: false }, true), false);
+  assert.equal(resolveHasStoop({ hasStoop: true }, false), true);
+  assert.equal(resolveHasStoop({}, true), true);
+  assert.equal(resolveHasStoop({}, false), false);
 });

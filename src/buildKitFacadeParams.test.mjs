@@ -119,3 +119,8 @@ test("structural toggles pass through verbatim when set", () => {
   assert.equal(p.doorAlign, "center");
   assert.equal(p.fireEscape, "lattice");
 });
+
+test("hasStoop passes through", () => {
+  assert.equal(buildKitFacadeParams(rec, "brownstone", { hasStoop: false }).hasStoop, false);
+  assert.equal(buildKitFacadeParams(rec, "brownstone", {}).hasStoop, undefined);
+});

@@ -68,6 +68,7 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   if (ov.hasCornice != null) params.hasCornice = ov.hasCornice;
   if (ov.doorAwning != null) params.doorAwning = ov.doorAwning;
   if (ov.doorAlign != null) params.doorAlign = ov.doorAlign;
+  if (ov.hasStoop != null) params.hasStoop = ov.hasStoop;
   // storefrontAwning: false=suppress, true=default fabric, hex number=color.
   if (ov.storefrontAwning != null) {
     params.storefrontAwning = typeof ov.storefrontAwning === "string"

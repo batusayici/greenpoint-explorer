@@ -18,3 +18,8 @@ export function resolveFireEscape(params, auto) {
   if (fev != null) return { on: auto, variant: fev === "lattice" ? "lattice" : "relief" };
   return { on: auto, variant: "relief" };
 }
+
+export function resolveHasStoop(params, auto) {
+  if (params?.hasStoop != null) return params.hasStoop;
+  return auto;
+}
