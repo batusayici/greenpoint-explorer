@@ -44,7 +44,9 @@ All absent-means-fall-through.
   "storefrontAwning": false | true | "0xRRGGBB",   // false=suppress, true=default fabric, hex=color
   "doorAwning": true | false,
   "doorAlign": "left" | "center" | "right",
-  "fireEscape": false | "standard" | "lattice"     // unifies on/off + variant
+  "fireEscape": false | "standard" | "lattice",     // unifies on/off + variant
+  "hasStoop": true | false,                          // override wantsStoop heuristic; false => standard recessed door
+  "fireEscapeColor": "0xRRGGBB"                       // iron tint, snapped to TRIM_TONES (deck = brighter face)
 }
 ```
 

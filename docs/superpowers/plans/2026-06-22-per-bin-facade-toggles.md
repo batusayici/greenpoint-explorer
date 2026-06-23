@@ -741,3 +741,260 @@ git commit -m "feat(facade-truth): door awning canopy for non-storefront entries
 - **Independence:** Tasks 1-5 ship the four cheap gates and are independently useful. Tasks 6-7 (new/extended geometry) are isolated and can be deferred without breaking 1-5 (door C clamps to L; door awning simply does nothing until Task 7).
 - **Type consistency:** `resolveHasCornice`/`resolveFireEscape` (Task 2) consumed in Tasks 2-3; `resolveStorefrontUnit` (Task 4) returns `{door,awning,widthFrac}` matching `composeStorefront`'s `{door,awning}` input; `buildDoorAwningGeometry` mirrors `buildFireEscapeGeometry`'s `{quads:[{role,corners}]}` shape.
 - **Verification dependencies flagged:** Task 6 and Task 7 contain "verify the consumer normalizes arrays / handles 3-corner quads" checks because the exact `decorateStorefront` / `quad3` internals must be confirmed at implementation time against the live code — both reference the existing precedent to follow rather than guessing.
+
+---
+
+## Addendum (2026-06-22, round 2) — Tasks 8-9
+
+Two further per-BIN toggles, same loop. Both build on the Task 1/2/5 plumbing
+(`buildKitFacadeParams` passthrough, `facadeToggleResolve.js` resolver, the
+truth editor + `registerBuildingTruth` payload).
+
+### Task 8: Stoop on/off
+
+`hasStoop` overrides the `wantsStoop(family)` heuristic. `false` → the existing
+`else` path already draws the standard recessed door (so "off replaces with
+standard door" needs no new geometry); `true` forces a stoop on a family the
+heuristic skips.
+
+**Files:**
+- Modify: `src/buildKitFacadeParams.js` (passthrough `hasStoop`)
+- Modify: `src/facadeToggleResolve.js` (add `resolveHasStoop`)
+- Modify: `src/SceneView.jsx:2546` (`drewStoop` gate) + the `registerBuildingTruth` payload
+- Modify: `src/components/dev/FacadeTruthEditor.jsx` (a `Seg` control)
+- Test: `src/buildKitFacadeParams.test.mjs`, `src/facadeToggleResolve.test.mjs`
+
+**Interfaces:**
+- Consumes: `params.hasStoop` (`boolean|undefined`), `wantsStoop(family)` (existing).
+- Produces: `resolveHasStoop(params, auto)` → `boolean`.
+
+- [ ] **Step 1: Failing tests**
+
+Add to `src/buildKitFacadeParams.test.mjs` (extend the existing toggle tests):
+
+```js
+test("hasStoop passes through", () => {
+  assert.equal(buildKitFacadeParams(rec, "brownstone", { hasStoop: false }).hasStoop, false);
+  assert.equal(buildKitFacadeParams(rec, "brownstone", {}).hasStoop, undefined);
+});
+```
+
+(Use the same fixture variable the other tests in this file use — it is `rec`.)
+
+Add to `src/facadeToggleResolve.test.mjs`:
+
+```js
+import { resolveHasStoop } from "./facadeToggleResolve.js";
+
+test("hasStoop wins when set; else defers to heuristic", () => {
+  assert.equal(resolveHasStoop({ hasStoop: false }, true), false);
+  assert.equal(resolveHasStoop({ hasStoop: true }, false), true);
+  assert.equal(resolveHasStoop({}, true), true);
+  assert.equal(resolveHasStoop({}, false), false);
+});
+```
+
+- [ ] **Step 2: Run, verify fail**
+
+Run: `node --test src/buildKitFacadeParams.test.mjs src/facadeToggleResolve.test.mjs`
+Expected: FAIL (`resolveHasStoop` not exported; `hasStoop` undefined on the set case).
+
+- [ ] **Step 3: Implement**
+
+In `src/buildKitFacadeParams.js`, beside the other structural passthroughs (after `if (ov.doorAlign != null) ...`):
+
+```js
+  if (ov.hasStoop != null) params.hasStoop = ov.hasStoop;
+```
+
+In `src/facadeToggleResolve.js`, add:
+
+```js
+export function resolveHasStoop(params, auto) {
+  if (params?.hasStoop != null) return params.hasStoop;
+  return auto;
+}
+```
+
+In `src/SceneView.jsx`, change the `drewStoop` line (2546) from:
+
+```js
+      const drewStoop = isKit && wantsStoop(family) && !params.commercialGround && !plainEntry;
+```
+
+to:
+
+```js
+      const drewStoop = isKit && resolveHasStoop(params, wantsStoop(family)) && !params.commercialGround && !plainEntry;
+```
+
+Add `resolveHasStoop` to the existing `facadeToggleResolve.js` import in `SceneView.jsx`.
+
+- [ ] **Step 4: Run + build**
+
+Run: `node --test src/buildKitFacadeParams.test.mjs src/facadeToggleResolve.test.mjs && npm run build`
+Expected: PASS, build succeeds.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add src/buildKitFacadeParams.js src/facadeToggleResolve.js src/SceneView.jsx src/buildKitFacadeParams.test.mjs src/facadeToggleResolve.test.mjs
+git commit -m "feat(facade-truth): per-BIN stoop on/off (off => standard door)"
+```
+
+(The editor `Seg` control + registry payload field for `hasStoop` ride along
+in Task 10's editor pass below — keep this task render-focused.)
+
+---
+
+### Task 9: Fire escape color
+
+`fireEscapeColor` tints the iron, snapped to `TRIM_TONES`. Deck stays the
+brighter face: `iron = darken(color, 0.7)`, `deck = color`.
+
+**Files:**
+- Modify: `src/buildKitFacadeParams.js` (passthrough `fireEscapeColor`, snapped)
+- Modify: `src/SceneView.jsx:2633-2634` (IRON/IRON_DECK from `params.fireEscapeColor`)
+- Test: `src/buildKitFacadeParams.test.mjs`
+
+**Interfaces:**
+- Consumes: `params.fireEscapeColor` (`number|undefined`), local `darken(hex,k)` (line 2389), `nearestTrimToken` (already imported in buildKitFacadeParams).
+- Produces: `params.fireEscapeColor` (a TRIM token number) when set.
+
+- [ ] **Step 1: Failing test**
+
+Add to `src/buildKitFacadeParams.test.mjs`:
+
+```js
+test("fireEscapeColor snaps to a trim token; absent => undefined", () => {
+  const set = buildKitFacadeParams(rec, "brick", { fireEscapeColor: "0x3a1f1a" });
+  assert.equal(typeof set.fireEscapeColor, "number");
+  assert.equal(buildKitFacadeParams(rec, "brick", {}).fireEscapeColor, undefined);
+});
+```
+
+- [ ] **Step 2: Run, verify fail**
+
+Run: `node --test src/buildKitFacadeParams.test.mjs`
+Expected: FAIL (`fireEscapeColor` undefined on the set case).
+
+- [ ] **Step 3: Implement**
+
+In `src/buildKitFacadeParams.js`, beside the other trim-snapped colors (after the `corniceTint` line):
+
+```js
+  if (ov.fireEscapeColor != null) params.fireEscapeColor = nearestTrimToken(Number(ov.fireEscapeColor));
+```
+
+In `src/SceneView.jsx`, change lines 2633-2634 from:
+
+```js
+    const IRON = II_PALETTE.fireEscapeIron;        // stringers, treads, ladder, handrails
+    const IRON_DECK = II_PALETTE.fireEscapeIronDeck; // platform floor, a hair lifted so its edge reads
+```
+
+to:
+
+```js
+    // Per-BIN painted-iron override (snapped to TRIM_TONES); deck stays the
+    // brighter face so the platform edge still reads. Falls back to the neutral
+    // near-black iron palette when unset (byte-stable).
+    const IRON = params.fireEscapeColor != null ? darken(params.fireEscapeColor, 0.7) : II_PALETTE.fireEscapeIron;
+    const IRON_DECK = params.fireEscapeColor != null ? params.fireEscapeColor : II_PALETTE.fireEscapeIronDeck;
+```
+
+- [ ] **Step 4: Run + build**
+
+Run: `node --test src/buildKitFacadeParams.test.mjs && npm run build`
+Expected: PASS, build succeeds.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add src/buildKitFacadeParams.js src/SceneView.jsx src/buildKitFacadeParams.test.mjs
+git commit -m "feat(facade-truth): per-BIN fire escape color (trim-snapped iron tint)"
+```
+
+---
+
+### Task 10: Editor controls for stoop + fire escape color
+
+Add the two new controls to the truth editor and seed them from the registry,
+matching the Task 5 pattern.
+
+**Files:**
+- Modify: `src/SceneView.jsx` (`registerBuildingTruth` payload: add `hasStoop`, `fireEscapeColor` from kitParams)
+- Modify: `src/components/dev/FacadeTruthEditor.jsx`
+
+- [ ] **Step 1: Registry payload**
+
+In `src/SceneView.jsx`, extend the `registerBuildingTruth(building.bin, {...})` payload with:
+
+```js
+          hasStoop: kitParams.hasStoop,
+          fireEscapeColor: kitParams.fireEscapeColor,
+```
+
+- [ ] **Step 2: Editor state + seeding**
+
+In `src/components/dev/FacadeTruthEditor.jsx`, add state beside the other toggles:
+
+```js
+  const [hasStoop, setHasStoop] = useState(null);
+  const [fireEscapeColor, setFireEscapeColor] = useState(null);
+```
+
+Seed in the existing `useEffect`:
+
+```js
+    setHasStoop(entry?.hasStoop ?? null);
+    setFireEscapeColor(entry?.fireEscapeColor ?? null);
+```
+
+and append `entry?.hasStoop, entry?.fireEscapeColor` to that effect's dependency array.
+
+- [ ] **Step 3: Controls + save**
+
+In the JSX, add a `Seg` for stoop beside the other toggles and a `ColorRow`
+for the fire-escape color (it is a trim color, so reuse `ColorRow` + `TRIM_TONES`,
+mirroring the cornice color row):
+
+```jsx
+          <Seg label="stoop" value={hasStoop} onPick={setHasStoop}
+               options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
+          <ColorRow label="fire escape" value={fireEscapeColor}
+               onSample={() => sample("fireEscape")} onPick={setFireEscapeColor} tokens={TRIM_TONES} />
+```
+
+Extend the eyedropper `sample()` kind handling so `"fireEscape"` snaps via
+`nearestTrimToken` (mirror the `"cornice"` case):
+
+```js
+      else if (kind === "fireEscape") setFireEscapeColor(nearestTrimToken(raw));
+```
+
+In `save()`, after the other toggle writes:
+
+```js
+    if (hasStoop != null) override.hasStoop = hasStoop;
+    if (fireEscapeColor != null) override.fireEscapeColor = hex6(fireEscapeColor);
+```
+
+- [ ] **Step 4: Build**
+
+Run: `npm run build`
+Expected: build succeeds.
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add src/SceneView.jsx src/components/dev/FacadeTruthEditor.jsx
+git commit -m "feat(facade-truth): editor controls for stoop on/off + fire escape color"
+```
+
+---
+
+### Addendum self-review
+- **Coverage:** stoop on/off → Task 8 (render) + Task 10 (editor); fire escape color → Task 9 (render) + Task 10 (editor). Both schema fields land in `buildKitFacadeParams` (Tasks 8/9).
+- **Type consistency:** `resolveHasStoop(params, auto)` mirrors `resolveFireEscape`'s `(params, auto)` shape; `fireEscapeColor` is a trim-token number like `windowTint`/`doorTint`/`corniceColor`; `darken` is the local helper at SceneView.jsx:2389, in scope at the 2633 fire-escape draw.
+- **Byte-stable:** both fields absent → `resolveHasStoop` returns `auto` (today's `wantsStoop`), IRON/IRON_DECK fall back to the palette constants — unchanged render.
