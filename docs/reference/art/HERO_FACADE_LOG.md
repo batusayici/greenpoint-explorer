@@ -285,6 +285,28 @@ a banked fix regressed or a playbook rule was skipped.
   `canvas.toDataURL()` returns a blank frame — use `preview_screenshot` (the
   presented frame) for proof shots, not a DOM-side data URL.
 
+### The Astral — BIN 3064408 (184 Franklin) — IN PROGRESS (first full-block hero)
+- **Status (2026-06-23):** center-segment render accepted + ingested
+  (`astral-apartments--franklin-center.png`, 1161×1355). Build **checkpointed**
+  pending the full-block frontage-plane model (design:
+  `docs/superpowers/specs/2026-06-23-astral-frontage-plane-design.md`).
+- **Why different from every prior hero:** first full-block, not a corner.
+  59-vertex segmented frontage (~5 long edges 39/22/20/19/18m + ~49 oriel
+  facets). `buildHeroBuilding`'s "longest-edge-per-role" texturing (`:1845`)
+  was built for clean 1–2-edge corners and cannot place a *segment* of a long
+  frontage → needs the frontage-plane model (one flat plane along the chord,
+  segment textures across its u-range, oriels as `oriel3` folds, arches as
+  `shape:"arch"` recesses).
+- **Approach (locked):** segmented high-res unwrap (one giant 65m render = ~24
+  px/m, detail dies; ~18m segments = ~85 px/m). Vertical slice = center
+  entrance pavilion (flat → only hard primitive is the curved recess, proven on
+  144). Render package: `docs/reference/art/prompts/astral-center-segment.v1.md`.
+- **Lesson (durable, pre-build):** a full-block hero is a different capability
+  from a corner hero — don't assume the corner-unwrap pipeline scales. The
+  frontage is a *plane*, the oriels fold off it, the bespoke texture is
+  segmented for resolution. Bank the frontage-plane model for all future
+  block-fronts (H5).
+
 ---
 
 ## Top pending tooling improvement
