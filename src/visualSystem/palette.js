@@ -91,23 +91,39 @@ const _ramp = (anchors) => {
   return out;
 };
 
+// Pale painted/whitewashed top end shared by every family — Greenpoint has
+// painted-light brick/masonry as well as pale clapboard, so the facade picker
+// always offers near-white + light-tan options. II-C never goes pure white; the
+// lightest is the warm paper tone. Appended (not anchor[0]) so family defaults
+// are unchanged; the editor's luminance sort floats these to the top.
+const PALE_FACADE = [
+  0xece3cf, // warm near-white (II-C paper / TONE_PAPER) — the "white" option
+  0xe2dcc9, // off-white cream
+  0xd9cdb4, // light tan (== II_PALETTE.context)
+];
+const _withPale = (arr) => {
+  const seen = new Set(arr);
+  return [...arr, ...PALE_FACADE.filter((c) => !seen.has(c))];
+};
+
 // Phase 7.4 / Phase 8 — per-family wall-tone gamut. Each family is a broad
-// light→dark ramp generated from real II-C material hue anchors; nearestPaletteToken
-// snaps a building's true color to the closest, and the ?facadeedit=1 facade picker
-// shows the same set. anchors[0] is the family default (== element [0]).
+// light→dark ramp generated from real II-C material hue anchors, plus the shared
+// pale top end; nearestPaletteToken snaps a building's true color to the closest,
+// and the ?facadeedit=1 facade picker shows the same set. anchors[0] is the family
+// default (== element [0]).
 export const MATERIAL_WALL_TONES = {
   // warm red → terracotta → brown, each lifted toward paper and shaded toward ink
-  brick: _ramp([0xb5664a, 0xa85a3c, 0x7d5a44]),
+  brick: _withPale(_ramp([0xb5664a, 0xa85a3c, 0x7d5a44])),
   // pale painted facades (cream, sage) through to a dark muted green stain
-  clapboard: _ramp([0xe2dcc9, 0x9a9c86, 0x6f7a6a]),
+  clapboard: _withPale(_ramp([0xe2dcc9, 0x9a9c86, 0x6f7a6a])),
   // chocolate brownstone range
-  brownstone: _ramp([0x8a5a3c, 0x6f4632]),
+  brownstone: _withPale(_ramp([0x8a5a3c, 0x6f4632])),
   // painted masonry: cream → greige → taupe
-  "painted-masonry": _ramp([0xe6dfce, 0xa8a090, 0x7c766a]),
+  "painted-masonry": _withPale(_ramp([0xe6dfce, 0xa8a090, 0x7c766a])),
   // neutral modern: light warm-grey → mid grey → charcoal
-  "modern-flat": _ramp([0xdad3c4, 0x968b78, 0x46443f]),
+  "modern-flat": _withPale(_ramp([0xdad3c4, 0x968b78, 0x46443f])),
   // industrial: warm grey, brick-brown, charcoal
-  warehouse: _ramp([0x968b78, 0x7d5a44, 0x5a564c]),
+  warehouse: _withPale(_ramp([0x968b78, 0x7d5a44, 0x5a564c])),
 };
 
 // Per-building TRIM tones (window frame/sash + door leaf + cornice) for frontage
