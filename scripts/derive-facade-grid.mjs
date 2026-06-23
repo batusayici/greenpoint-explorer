@@ -45,6 +45,7 @@ const opts = {
   out: "docs/visual-artifacts/astral-full-derivation",
   write: null,
   face: null,
+  noTrim: false, // map coords to the FULL image (for textures already baked to a tight crop)
 };
 let texturePath = null;
 for (let i = 0; i < argv.length; i += 1) {
@@ -59,6 +60,7 @@ for (let i = 0; i < argv.length; i += 1) {
   else if (a === "--col-thresh") opts.colThresh = Number(argv[++i]);
   else if (a === "--cell") opts.cell = Number(argv[++i]);
   else if (a === "--arch-top") opts.archTop = true;
+  else if (a === "--no-trim") opts.noTrim = true;
   else if (a === "--out") opts.out = argv[++i];
   else if (a === "--write") opts.write = argv[++i];
   else if (!a.startsWith("--")) texturePath = a;
@@ -141,7 +143,7 @@ function median(xs) {
 }
 
 // ----------------------------------------------------------------- detect
-const box = trim();
+const box = opts.noTrim ? { x0: 0, x1: width, y0: 0, y1: height } : trim();
 const W = box.x1 - box.x0;
 const H = box.y1 - box.y0;
 console.log(`trim: ${width}x${height} -> ${W}x${H} (x ${box.x0}..${box.x1}, y ${box.y0}..${box.y1})`);

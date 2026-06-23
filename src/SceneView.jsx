@@ -958,11 +958,12 @@ const FACADE_COMPOSITES = {
     key: "../assets/textures/franklin/astral-apartments--franklin-full.png",
     byBin: {},
     frontage: {
-      // The texture's main cornice/roofline sits at ~0.86 of its height; the
-      // parapet railing + stepped gablets + central gable cartouche rise above
-      // it. Drop the flat roof to this line so they project above the roofline
-      // (see buildHeroBuilding).
-      roofV: 0.86,
+      // The baked texture's main cornice/roofline (top of the last solid wall
+      // course) sits at v≈0.887; the parapet railing + stepped gablets + central
+      // gable cartouche rise above it. Drop the flat roof to this line so only
+      // those elements project above the roofline (measured off the baked crop;
+      // see buildHeroBuilding + keyPaperAboveRoofline).
+      roofV: 0.887,
       // ONE continuous full-facade render across the whole 60.6m frontage chord
       // (replaced the 3-segment plan: separate sheets drifted on floor lines and
       // dropped a residential floor — see docs/reference/art/prompts/
@@ -3204,6 +3205,12 @@ function exposedSegments(edge, siblings) {
 // Generated elevations arrive with a paper margin around the artwork.
 // Trim it automatically: sample the corner color, find the content
 // bounding box, and crop via canvas before handing Three the texture.
+// Textures already baked to a tight content crop (no cream margin) — the
+// density-based auto-trim below would re-crop their sparse parapet/gable top
+// (it reads as low-density paper) and shift every UV, so skip it and map the
+// baked image 1:1. Match by filename suffix.
+const PRETRIMMED_TEXTURES = ["astral-apartments--franklin-full.png"];
+
 function loadTrimmedTexture(url, onReady) {
   const image = new Image();
   image.onload = () => {
@@ -3212,6 +3219,15 @@ function loadTrimmedTexture(url, onReady) {
     canvas.height = image.height;
     const context = canvas.getContext("2d");
     context.drawImage(image, 0, 0);
+
+    if (PRETRIMMED_TEXTURES.some((suffix) => url.endsWith(suffix))) {
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.anisotropy = 16;
+      onReady(texture);
+      return;
+    }
+
     const { data, width, height } = context.getImageData(0, 0, canvas.width, canvas.height);
 
     const border = [data[0], data[1], data[2]];
