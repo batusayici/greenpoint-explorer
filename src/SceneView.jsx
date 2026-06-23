@@ -2606,8 +2606,9 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // OPEN ironwork via the procedural railing texture (see-through balusters), not
   // solid shelves; decks are thin platforms; the ladder is a slender stringer. Dark
   // iron tint from the family palette. Projects proud, occluded from the rear by mass.
-  if (streetFace && !plainEntry && isKit && wantsFireEscape(family, storeys)) {
-    const fe = buildFireEscapeGeometry({ frontM, heightM, storeys });
+  const feDecision = resolveFireEscape(params, isKit && wantsFireEscape(family, storeys));
+  if (streetFace && !plainEntry && feDecision.on) {
+    const fe = buildFireEscapeGeometry({ frontM, heightM, storeys, variant: feDecision.variant });
     // Dark iron is NEUTRAL near-black — NOT a brick tint, or the members read as
     // painted wood. Slightly warm charcoal so it sits in the II-C palette; the
     // open-rail texture renders true black on its iron pixels (so it matches).
