@@ -164,7 +164,31 @@ This is the half of the platform that tests the hypotheses. None of it is built 
 - **B7 — Business participation & monetization (H4).** Builds on the existing claim-to-brand hook (the `storefrontSigns.js` `claimed`/`brandName` path; see Phase 4.2). Sequenced *after* attention is demonstrated.
 - **B8 — Repeatability (H5).** Generalize the playbook to a second neighborhood. Last.
 
-## Sequenced Roadmap — LOCKED 2026-06-18
+## Reprioritization — 2026-06-23 (Batu): make the spine alive before expanding
+
+A review at the end of the inked-facade cycle re-sequenced the remaining work. **Finding:** the container (Track A) is ~85% built and deeply polished; the product (Track B — stories/events/routes/history/instrumentation) is ~5% built. The map is gorgeous and mute. Three of Batu's four review notes converge on one move — *make the existing Franklin spine recognizable and fast, then give it a voice; stop widening it.*
+
+**Locked direction (Batu):**
+- **Interleave two parallel tracks, both starting now:** Track P (performance/load architecture) and Track R (recognizability — hero anchors + signature-layer storefronts + corners). Performance is the enabler that gates demoing; recognizability is the headline visible value.
+- **Recognizable storefronts are the first content lever** — recognizability comes *before* attaching story/event content. A mute-but-recognizable map can already be shown to residents to test recognition; stories/events/instrumentation slot in right behind (they test H1/H3 on a map that already reads as real).
+- **Deferred (was "now"):** 8.1c street-network paving, further block/neighborhood expansion, Phase-9 scale, roof/pavement detail, business-claim monetization, second neighborhood. All coverage/polish — they wait until the loop is proven alive.
+
+**Track P — Performance & Load Architecture** (invisible, gates every demo; runtime today has no instancing/merging and regenerates ~18 per-building `CanvasTexture` factories synchronously on load across ~340 buildings):
+- P1 — Merge/instance static massing + wall decoration to cut draw calls.
+- P2 — Pre-bake/atlas/cache the per-building canvas textures instead of regenerating per building.
+- P3 — Async/progressive scene build with a real loading state.
+- P4 — Budget: measure time-to-first-paint + time-to-interactive before/after.
+
+**Track R — Spine Comes Alive: Recognizability** (Batu review notes #3 + #4):
+- R1 — **Astral Apartments (184 Franklin)** as the proof anchor — built **bespoke** like the Franklin heroes (fastest path to "that's my neighborhood"), then generalize.
+- R2 — **Recognizable storefronts:** wire the dormant **signature layer** (defined in the 8.0 contract, never built into the renderer) so storefronts read as *specific real shops* — silhouette + category, real-looking but unbranded per the claim model. Corner treatment emphasized (corners carry recognition).
+- R3 — **Eberhard Faber building, Brouwerij Lane, Oak St haunted house** — remaining anchors, photo-gated.
+
+**Next (right behind R, not deferred indefinitely):** attach 3–5 real stories (the old 8.3), seed events, lightweight instrumentation, and a shareable demo URL for resident testing.
+
+The Phase 6–9 records below are kept intact as execution history; the tracks above supersede the "NOW" tags on Phase 8/9 for sequencing.
+
+## Sequenced Roadmap — LOCKED 2026-06-18 (superseded for sequencing by the 2026-06-23 reprioritization above)
 
 Resolves the (formerly open) priority re-decision. **Principle:** don't fill the neighborhood and *then* add content. Build out the **story-dense spine** and dress it with both craft and content at once — curated density, not coverage. Container and content stop competing, because the spine is exactly where the landmarks and stories live. Phase numbering continues Track A (1–5); where a new phase absorbs an older Track-A or Track-B item, it's noted.
 

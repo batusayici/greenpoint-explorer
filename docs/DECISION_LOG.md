@@ -4,6 +4,19 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-06-23 - Reprioritization: make the spine alive before expanding (interleave perf + recognizability)
+
+Decision (Batu, end-of-cycle review). After the inked-facade craft cycle, the container (Track A) is ~85% built and polished while the product (Track B — stories/events/routes/history/instrumentation) is ~5% built: one `PlaceStory` schema, one unverified seed story, zero stories attached to built landmarks, no events/routes/instrumentation. The map is recognizably-shaped but mute and slow to load. The remaining work is re-sequenced to make the *existing* Franklin spine recognizable and fast — not wider.
+
+**Locked:**
+1. **Interleave two parallel tracks now:** Track P (performance/load architecture — instancing/merge, texture pre-bake/cache, async build, TTFP/TTI budget) and Track R (recognizability — Astral bespoke anchor, signature-layer storefronts, corner treatment, then Eberhard Faber / Brouwerij Lane / Oak St). Chosen over perf-first or recognizability-first so the architectural track and the visible-value track advance together.
+2. **Recognizable storefronts are the first content lever**, ahead of attaching story/event content — a recognizable map can already be resident-tested for recognition; stories/events/instrumentation (H1/H3) follow on a map that reads as real.
+3. **Deferred:** 8.1c street-network paving, further block/neighborhood expansion, Phase-9 scale, roof/pavement detail, business-claim monetization, second neighborhood — all coverage/polish, gated behind a proven-alive loop.
+
+**Why now:** Batu's review notes converge — (#1) spine alive before expanding, (#2) load/render performance creeping in, (#3) recognizability needs real-looking storefronts + corners + anchors, (#4) add Astral / Oak St haunted house / Brouwerij Lane / Eberhard Faber (already curated heroes #7–9 + the Oak landmark, but rendering typological today). Performance is treated as the enabler that gates demoing the rest.
+
+Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/PLAN.md` "Reprioritization — 2026-06-23".
+
 ## 2026-06-22 - Phase 8.1c: ground extent driven by the real street network, not a radius
 
 Decision (Batu-approved in session). The ground/paving layer's fixed 130m context-radius circle is replaced by a **per-street real-centerline extent model**: each street is paved along its real LION centerline for its full loaded extent, no circle and no fixed run-length. Chosen over a building-bounding-box or an enlarged-circle alternative because a neighborhood is a street network, not a shape — a box/circle would pave over Newtown Creek, Bushwick Inlet, and the parks, and would need re-tuning as the footprint grows. This makes scaling a data pull, not a geometry-logic change (the H5 repeatability story).
