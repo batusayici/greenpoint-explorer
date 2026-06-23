@@ -286,10 +286,29 @@ a banked fix regressed or a playbook rule was skipped.
   presented frame) for proof shots, not a DOM-side data URL.
 
 ### The Astral — BIN 3064408 (184 Franklin) — IN PROGRESS (first full-block hero)
-- **Status (2026-06-23):** center-segment render accepted + ingested
-  (`astral-apartments--franklin-center.png`, 1161×1355). Build **checkpointed**
-  pending the full-block frontage-plane model (design:
-  `docs/superpowers/specs/2026-06-23-astral-frontage-plane-design.md`).
+- **Status (2026-06-23):** center segment **BUILT (v1)** end-to-end — placed on
+  the frontage chord, flat with hand-seeded arched recesses; verified in-engine
+  at all four angles. Pending: recess-editor refinement of opening positions
+  (approximate seed), centering confirm vs IMG_0971, flank renders + oriels,
+  buildStatus→built. Render: `astral-apartments--franklin-center.png` (1161×1355).
+  Design + status: `docs/superpowers/specs/2026-06-23-astral-frontage-plane-design.md`.
+- **Build (frontage-plane model, 5 commits `b38ea6b`..`15ef9cf`):** pure
+  `frontagePlane.js` (chord + segment u-map + oriel detect, TDD) → block-extract
+  hero promotion in `sceneFrame.js` → `composite.frontage.segments` schema +
+  chord placement in `buildHeroBuilding` → hand-seeded arched recess spec routed
+  through `buildFacadeAssembly`. Auto-derive FAILED on the ornate facade (as
+  predicted) → openings hand-seeded, editor-refined.
+- **Durable lessons (promoted):**
+  (1) A full-block hero from a **block extract** is unreachable by the bare
+  `FACADE_GROUP_BINS` path — it's past the 130m main-loop radius cull; the block
+  loop must promote it to a hero. Don't assume the 144-Franklin registration
+  path scales to corridor heroes.
+  (2) **Frontage chord must select the street-most edge band** — a U-shaped
+  footprint's interior light-court walls also face the street axis and will drag
+  an averaged plane metres backward. `frontageBandM` locks onto the real frontage.
+  (3) The frontage-plane model (one flat chord plane, segment textures across its
+  u-range, recesses via the standard spec/assembly path) is **reusable for every
+  future block-front** — banked for H5.
 - **Why different from every prior hero:** first full-block, not a corner.
   59-vertex segmented frontage (~5 long edges 39/22/20/19/18m + ~49 oriel
   facets). `buildHeroBuilding`'s "longest-edge-per-role" texturing (`:1845`)
