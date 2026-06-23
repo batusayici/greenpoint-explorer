@@ -113,8 +113,12 @@ const _withPale = (arr) => {
 // and the ?facadeedit=1 facade picker shows the same set. anchors[0] is the family
 // default (== element [0]).
 export const MATERIAL_WALL_TONES = {
-  // warm red → terracotta → brown, each lifted toward paper and shaded toward ink
-  brick: _withPale(_ramp([0xb5664a, 0xa85a3c, 0x7d5a44])),
+  // warm red → terracotta → brown, plus a true red-brick range (saturated red,
+  // deep red, dark oxblood/maroon — grounded in the Premier/Astral hero reds);
+  // each anchor lifted toward paper and shaded toward ink. anchors[0] unchanged,
+  // so the brick default is byte-stable. TONE_INK appended last = a painted-black
+  // brick option (the single II-C near-black), adjacent to the brick swatches.
+  brick: _withPale([..._ramp([0xb5664a, 0xa85a3c, 0x7d5a44, 0xa23a2c, 0x8a3328, 0x6e2b25]), TONE_INK]),
   // painted wood: pale cream/sage neutrals + the full painted-house gamut
   // (muted red, blue, yellow/ochre, green, dark grey) — each anchor expands to a
   // light/mid/dark set via _ramp, so clapboard offers tones of every house color.
