@@ -1,21 +1,6 @@
 {
-  "schemaVersion": "facade-spec.v0.6",
-  "placeId": "astral-apartments",
-  "status": "flat_2026-06-23 (FULL-FACADE texture wired — openings emptied for the alignment-first verify pass. The previous center-only recess spec is archived at docs/visual-artifacts/astral-center-derivation/astral-apartments.center-segment-spec.archived.json; it no longer maps because the texture changed from the ~17.9m center segment to the whole 60.6m frontage. Re-derive openings on astral-apartments--franklin-full.png next, via derive-facade-spec.mjs + the recess editor.)",
-  "note": "Astral Apartments, 184 Franklin St (BIN 3064408). Face 3064408:frontage now carries ONE full-facade render across the entire Franklin frontage chord (fromM 0 / toM 60.6). 6 storeys: rusticated brownstone base, 4 floors red-brick punched windows + oriel bays, round-arch top-floor arcade, bracketed cornice + parapet railing + stepped gablets + central gable with oculus. Coords are face-local fractions across the FULL width (x from the north end, y from ground up).",
-  "evidence": [
-    "docs/reference/hero-evidence/astral/FACADE_GRAMMAR.md",
-    "docs/reference/art/prompts/astral-full-facade.v1.md",
-    "assets/textures/franklin/astral-apartments--franklin-full.png"
-  ],
   "faces": {
     "3064408:frontage": {
-      "cornice": {
-        "y0": 0.9,
-        "y1": 0.928,
-        "projectionM": 0.45
-      },
-      "doors": [],
       "windows": {
         "recessM": 0.18,
         "sill": true,
@@ -569,7 +554,8 @@
             "y1": 0.336
           }
         ]
-      }
+      },
+      "doors": []
     }
   }
 }
