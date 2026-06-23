@@ -12,7 +12,10 @@ test("a near-black true color snaps to the darkest in-family token", () => {
 test("a red-brick true color snaps to a warm brick token", () => {
   const tok = nearestPaletteToken(0xb05030, "brick");
   assert.ok(MATERIAL_WALL_TONES.brick.includes(tok));
-  assert.equal(tok, 0x9c5a3c); // RGB Euclidean: (156,90,60) is 644 units from (176,80,48); (181,102,74) is 1185 units
+  // RGB Euclidean from true (176,80,48): 0xa85a3c (168,90,60) is 308 units — the
+  // nearest after the gamut expansion added the 144-franklin terracotta token;
+  // the original 0x9c5a3c (156,90,60) is 644 units, now the runner-up.
+  assert.equal(tok, 0xa85a3c);
 });
 
 test("result is always a member of the family candidate set", () => {

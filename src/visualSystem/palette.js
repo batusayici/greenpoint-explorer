@@ -54,16 +54,50 @@ export const TYPOLOGY_PALETTE = {
 // wall tones a building's TRUE color may snap to. nearestPaletteToken (colorBinding.js)
 // picks the closest of these; every entry is already a no-miss palette tone, so
 // snapping can never leave the palette. Spec-only: NOT applied by the renderer (Phase 8).
+// Element [0] is the family DEFAULT (used when no tint override is set) and is
+// pinned by buildKitFacadeParams tests — keep it first. Appended tones widen the
+// authoring/snapping gamut; every added value is already a sanctioned token
+// elsewhere in this module (BRICK_TONES / heroes / TYPOLOGY_PALETTE / II_PALETTE.
+// context / MASSING), so the per-family set stays no-miss and material-plausible.
 export const MATERIAL_WALL_TONES = {
-  brick: [0xb5664a, 0x9c5a3c, 0x7d5a44, 0x6f4a39],
+  brick: [
+    0xb5664a, 0x9c5a3c, 0x7d5a44, 0x6f4a39, // original spread
+    0xa8704f, 0xc07a55, // BRICK_TONES — lighter terracotta + bright warm brick
+    0xa04432, 0xa85a3c, // heroes premier-franklin / 144-franklin red-brick + terracotta
+    0x4a4039, // heroes sonnys-corner — dark brick
+    0x9a7e58, // heroes sereneco — weathered buff brick
+    0xb89a7e, // TYPOLOGY_PALETTE typological.brick — light buff
+  ],
   // clapboard / painted-masonry / modern-flat carry LIGHT painted-facade tones
   // (Greenpoint has many pale-painted rowhouses) alongside the darker stains —
   // muted, paper-adjacent II-C values so a light building stays in-palette.
-  clapboard: [0xe2dcc9, 0xd6dccf, 0xc7cfd2, 0xd8c8a4, 0xc8c2b2, 0x9a9c86, 0x6f7a6a, 0x4a4f44],
-  brownstone: [0x8a5a3c, 0x6f4632, 0x5a3a28],
-  "painted-masonry": [0xe6dfce, 0xd8d2c0, 0xc8c2b2, 0xa8a090, 0x7c766a, 0x46443f],
-  "modern-flat": [0xdad3c4, 0xcabfa7, 0x968b78, 0x46443f, 0x1d201e],
-  warehouse: [0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c],
+  clapboard: [
+    0xe2dcc9, 0xd6dccf, 0xc7cfd2, 0xd8c8a4, 0xc8c2b2, 0x9a9c86, 0x6f7a6a, 0x4a4f44, // original spread
+    0xd9cdb4, 0xcfc0a6, // II_PALETTE.context — warm pale paint
+    0xc7b896, // MASSING.parapet — warm cream
+  ],
+  brownstone: [
+    0x8a5a3c, 0x6f4632, 0x5a3a28, // original spread
+    0x7d5a44, // brick/brown crossover — mid chocolate
+    0x6b5e52, // MASSING.partyWallBlend — warm brown-grey
+    0x4a3a2c, // FACADE_RELIEF.joineryCheek — deep brown
+  ],
+  "painted-masonry": [
+    0xe6dfce, 0xd8d2c0, 0xc8c2b2, 0xa8a090, 0x7c766a, 0x46443f, // original spread
+    0xb4a890, // TYPOLOGY_PALETTE typological.commercial — greige
+    0xd9cdb4, // II_PALETTE.context — warm pale
+    0xc7b896, // MASSING.parapet — warm cream
+  ],
+  "modern-flat": [
+    0xdad3c4, 0xcabfa7, 0x968b78, 0x46443f, 0x1d201e, // original spread
+    0xb8ae99, // II_PALETTE.concrete — pale concrete
+    0x6f6a60, // II_PALETTE.asphalt — neutral mid-grey
+  ],
+  warehouse: [
+    0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c, // original spread
+    0x6b5e52, // MASSING.partyWallBlend — warm brown-grey
+    0x5a3a28, // dark brown — stained timber/industrial brick
+  ],
 };
 
 // Per-building TRIM tones (window frame/sash + door leaf) for frontage facade
