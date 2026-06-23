@@ -124,3 +124,9 @@ test("hasStoop passes through", () => {
   assert.equal(buildKitFacadeParams(rec, "brownstone", { hasStoop: false }).hasStoop, false);
   assert.equal(buildKitFacadeParams(rec, "brownstone", {}).hasStoop, undefined);
 });
+
+test("fireEscapeColor snaps to a trim token; absent => undefined", () => {
+  const set = buildKitFacadeParams(rec, "brick", { fireEscapeColor: "0x3a1f1a" });
+  assert.equal(typeof set.fireEscapeColor, "number");
+  assert.equal(buildKitFacadeParams(rec, "brick", {}).fireEscapeColor, undefined);
+});

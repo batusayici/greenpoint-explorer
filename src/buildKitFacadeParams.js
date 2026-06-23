@@ -62,6 +62,9 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   // Cornice molding color (decorateInkedWall reads params.corniceColor; falls back
   // to a darkened wall tone when absent). Snapped to the trim set like window/door.
   if (ov.corniceTint != null) params.corniceColor = nearestTrimToken(Number(ov.corniceTint));
+  // Fire escape painted iron tint (SceneView.jsx lines 2633-2634 read params.fireEscapeColor;
+  // falls back to the neutral palette constants when absent). Snapped to the trim set.
+  if (ov.fireEscapeColor != null) params.fireEscapeColor = nearestTrimToken(Number(ov.fireEscapeColor));
   // Structural per-BIN toggles (Phase 8 facade-truth). Each is absent-means-
   // fall-through: undefined leaves today's heuristic/allowlist default intact.
   // booleans/enums — NOT colors — so no token snapping.
