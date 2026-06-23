@@ -33,6 +33,7 @@ import { composeInkedFacade } from "./inkedFacadeCompose.js";
 import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
 import { resolveFacadeFamily } from "./facadeFamily.js";
 import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
+import { resolveHasCornice, resolveFireEscape } from "./facadeToggleResolve.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
 import { edgeClearance, mostOpenExposedEdge, pickStreetFrontages } from "./streetFaceSelect.js";
@@ -2631,7 +2632,7 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // the roofline (y=1, no brick above) with the molding bottom (yBot) where the
   // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
   // — a Brooklyn cornice top is dark tar/metal.
-  if (openingsFace && kitHas(family, "cornice") && params.components?.["cornice"] !== false) {
+  if (openingsFace && kitHas(family, "cornice") && resolveHasCornice(params)) {
     // The cornice asset is a COMPLETE painted molding (crown + brackets + dentils).
     // It carries its own light/shadow, so tint it only lightly (keep the detail
     // legible) rather than darkening it into mud.
