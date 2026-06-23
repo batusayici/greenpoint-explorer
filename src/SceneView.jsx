@@ -958,6 +958,10 @@ const FACADE_COMPOSITES = {
     key: "../assets/textures/franklin/astral-apartments--franklin-center.png",
     byBin: {},
     frontage: {
+      // The texture's main cornice/roofline sits at ~0.86 of its height; the
+      // parapet + stepped gable cartouche rise above it. Drop the flat roof to
+      // this line so they project above the roofline (see buildHeroBuilding).
+      roofV: 0.86,
       segments: [
         {
           key: "../assets/textures/franklin/astral-apartments--franklin-center.png",
@@ -1833,6 +1837,43 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
 // elevations map directly onto the real footprint edges, the two street
 // faces share a crisp corner, the roof carries an inked parapet texture,
 // and an II-C cast-shadow shape grounds the mass.
+// Key the cream paper background out of a full-block hero texture ABOVE its
+// roofline (the rows whose ground-up fraction exceeds `roofV`), so the painted
+// parapet/gable projects as a clean silhouette instead of a flat paper panel.
+// Paper = bright + desaturated; the saturated brick/terracotta/dark railing of
+// the parapet stay opaque. Returns a CanvasTexture matching the source's
+// orientation/colorspace; caller renders it with alphaTest.
+function keyPaperAboveRoofline(texture, roofV) {
+  const img = texture.image;
+  if (!img?.width) return texture;
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(img, 0, 0);
+  const cutRow = Math.floor((1 - roofV) * canvas.height); // image is top-down → above-roofline rows are the top band
+  const data = ctx.getImageData(0, 0, canvas.width, cutRow);
+  const px = data.data;
+  for (let i = 0; i < px.length; i += 4) {
+    const r = px[i];
+    const g = px[i + 1];
+    const b = px[i + 2];
+    const mx = Math.max(r, g, b);
+    const mn = Math.min(r, g, b);
+    const light = mx / 255;
+    const sat = mx ? (mx - mn) / mx : 0;
+    if (light > 0.72 && sat < 0.18) px[i + 3] = 0; // cream paper → transparent
+  }
+  ctx.putImageData(data, 0, 0);
+  const keyed = new THREE.CanvasTexture(canvas);
+  keyed.colorSpace = texture.colorSpace;
+  keyed.flipY = texture.flipY;
+  keyed.wrapS = texture.wrapS;
+  keyed.wrapT = texture.wrapT;
+  keyed.needsUpdate = true;
+  return keyed;
+}
+
 function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   // All of this hero's meshes go under one group tagged with its placeId, so a
   // click anywhere on the building (walls, storefront assembly, roof, parapet,
@@ -2062,8 +2103,14 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       // arches live. Keyed `BIN:frontage` (distinct from the per-edge roles).
       const segFaceKey = `${building.bin}:frontage`;
       const segSpec = FACADE_SPECS[segFaceKey];
+      const segRoofV = composite.frontage.roofV ?? 1;
       const segApply = segSpec
-        ? (texture) => {
+        ? (rawTexture) => {
+            // Key the cream paper background out of the above-roofline band so
+            // the projecting parapet/gable reads as silhouette, not a flat
+            // billboard. Limited to rows above roofV — protects the sign band
+            // and bright windows below.
+            const texture = segRoofV < 1 ? keyPaperAboveRoofline(rawTexture, segRoofV) : rawTexture;
             heroGroup.remove(segWall);
             const frame = faceFrame(segEdge, building.height, segFace, scene);
             const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
@@ -2096,6 +2143,14 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // Roof field: warm membrane tone with paper-grain speckle. The texture
   // transform maps the footprint bbox onto the canvas square (ShapeGeometry
   // UVs equal the shape coordinates).
+  // A segmented-frontage hero whose bespoke texture carries a parapet + gable
+  // ABOVE the main cornice sets `frontage.roofV` — the texture fraction where
+  // the true roofline sits. Drop the flat roof + parapet to that line so the
+  // painted parapet/gable on the upper facade projects above the roof instead
+  // of being squashed into it. Default 1 = roof at the wall top (every other
+  // hero), unchanged.
+  const roofV = composite?.frontage?.roofV ?? 1;
+  const roofTop = building.height * roofV;
   const shape = footprintShape(building.polygon);
   const roofGeometry = new THREE.ShapeGeometry(shape);
   const roofTexture = makeRoofTexture();
@@ -2104,7 +2159,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   roofTexture.offset.set(-box.min.x * roofTexture.repeat.x, -box.min.y * roofTexture.repeat.y);
   const roofMesh = new THREE.Mesh(roofGeometry, new THREE.MeshBasicMaterial({ map: roofTexture }));
   roofMesh.rotation.x = -Math.PI / 2;
-  roofMesh.position.y = building.height;
+  roofMesh.position.y = roofTop;
   heroGroup.add(roofMesh);
 
   // Parapet ring only on edges without a drawn cornice — spec'd street
@@ -2121,7 +2176,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     );
     segment.position.set(
       (start.x + end.x) / 2,
-      building.height + parapetHeight / 2,
+      roofTop + parapetHeight / 2,
       (start.z + end.z) / 2,
     );
     segment.rotation.y = -Math.atan2(end.z - start.z, end.x - start.x);

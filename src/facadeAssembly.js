@@ -619,6 +619,10 @@ function texturedMaterial(texture, shade) {
     map: texture,
     color: new THREE.Color(shade, shade, shade),
     side: THREE.DoubleSide,
+    // Honor keyed alpha (e.g. a full-block hero's paper background above the
+    // roofline keyed transparent). Opaque textures have alpha 1 everywhere, so
+    // the cutout passes every fragment and these heroes are unchanged.
+    alphaTest: 0.5,
   });
 }
 
