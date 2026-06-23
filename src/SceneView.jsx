@@ -2266,7 +2266,11 @@ function inkedRailingTexture() {
   c.width = W; c.height = H;
   const ctx = c.getContext("2d");
   ctx.clearRect(0, 0, W, H);
-  ctx.fillStyle = "#000"; // opaque where iron is; rest stays transparent → see-through
+  // White iron pixels (alpha-keyed): MeshBasicMaterial multiplies map × tint, so
+  // white lets the per-member IRON tint show through (a black texture would clamp
+  // every rail to black regardless of tint — see fireEscapeColor). Rest stays
+  // transparent → see-through balusters.
+  ctx.fillStyle = "#fff";
   ctx.fillRect(0, 3, W, 6);        // top rail
   ctx.fillRect(0, H - 9, W, 6);    // bottom rail
   const n = 11, bw = 3;
