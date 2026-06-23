@@ -13,10 +13,34 @@ const MULLION_W = 0.02;    // divider between the two glazing panels
 const FRAME_W = 0.015;     // thin storefront frame border
 
 export function composeStorefront({ door = "left", awning } = {}) {
-  if (door !== "left" && door !== "right") {
-    throw new RangeError(`composeStorefront: door must be "left" or "right", got ${JSON.stringify(door)}`);
+  if (door !== "left" && door !== "right" && door !== "center") {
+    throw new RangeError(`composeStorefront: door must be "left", "right", or "center", got ${JSON.stringify(door)}`);
   }
   const hasAwning = !!(awning && awning.has);
+
+  if (door === "center") {
+    const dx0 = 0.5 - DOOR_W / 2;
+    const dx1 = 0.5 + DOOR_W / 2;
+    const doorRect = { x0: dx0, y0: 0, x1: dx1, y1: GLAZE_TOP };
+    const glazing = [
+      { x0: 0, y0: BULKHEAD_TOP, x1: dx0, y1: GLAZE_TOP },
+      { x0: dx1, y0: BULKHEAD_TOP, x1: 1, y1: GLAZE_TOP },
+    ];
+    const mullion = [
+      { x0: dx0 - FRAME_W, y0: BULKHEAD_TOP, x1: dx0, y1: TRANSOM_TOP },
+      { x0: dx1, y0: BULKHEAD_TOP, x1: dx1 + FRAME_W, y1: TRANSOM_TOP },
+    ];
+    const transom = { x0: 0, y0: GLAZE_TOP, x1: 1, y1: TRANSOM_TOP };
+    const bulkhead = { x0: 0, y0: 0, x1: 1, y1: BULKHEAD_TOP };
+    const sign = { x0: 0, y0: TRANSOM_TOP, x1: 1, y1: 1 };
+    const frame = [
+      { x0: 0, y0: BULKHEAD_TOP, x1: FRAME_W, y1: TRANSOM_TOP },
+      { x0: 1 - FRAME_W, y0: BULKHEAD_TOP, x1: 1, y1: TRANSOM_TOP },
+    ];
+    const awningRect = hasAwning ? { x0: 0, y0: GLAZE_TOP, x1: 1, y1: TRANSOM_TOP } : null;
+    return { bulkhead, glazing, mullion, transom, door: doorRect, sign, frame, awning: awningRect };
+  }
+
   const doorLeft = door === "left";
 
   // Horizontal: entry column on `door` side; glazing fills the remainder.

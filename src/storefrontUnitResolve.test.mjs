@@ -25,7 +25,10 @@ test("storefrontAwning color sets has+color", () => {
   assert.equal(u.awning.color, 0x27314d);
 });
 
-test("doorAlign overrides; center clamps to left", () => {
+test("doorAlign overrides left/right", () => {
   assert.equal(resolveStorefrontUnit({ bay, index: 1, params: { doorAlign: "left" }, count: 2 }).door, "left");
-  assert.equal(resolveStorefrontUnit({ bay, index: 0, params: { doorAlign: "center" }, count: 1 }).door, "left");
+});
+
+test("doorAlign center passes through", () => {
+  assert.equal(resolveStorefrontUnit({ bay, index: 0, params: { doorAlign: "center" }, count: 1 }).door, "center");
 });

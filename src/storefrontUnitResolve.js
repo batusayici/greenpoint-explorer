@@ -1,12 +1,10 @@
 // Pure per-bay storefront unit resolution. Precedence: per-BIN params →
-// today's defaults (alternating door, awning on food trades). `composeStorefront`
-// supports door "left"|"right" only — "center" is clamped here until Task 6.
+// today's defaults (alternating door, awning on food trades).
 import { isFoodTrade } from "./storefrontSigns.js";
 
 export function resolveStorefrontUnit({ bay, index, params = {}, count = 1 }) {
   let door = index % 2 === 0 ? "left" : "right";
-  if (params.doorAlign === "left" || params.doorAlign === "right") door = params.doorAlign;
-  else if (params.doorAlign === "center") door = "left"; // clamp until Task 6
+  if (params.doorAlign === "left" || params.doorAlign === "right" || params.doorAlign === "center") door = params.doorAlign;
 
   let has = isFoodTrade(bay.category);
   let color;

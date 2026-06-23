@@ -2777,11 +2777,11 @@ function decorateStorefront(ctx, band, storefront, params) {
     const glazeTex = makeInkedGlazingTexture();
     for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
     // Mullion, transom, door, frame: solid inked tints.
-    quad(map(s.mullion), 0.009, null, { tint: frameTint });
+    for (const m of (Array.isArray(s.mullion) ? s.mullion : [s.mullion])) quad(map(m), 0.009, null, { tint: frameTint });
     quad(map(s.transom), 0.009, null, { tint: MASSING.transomBand });          // light transom band
     // Door: leaf recessed behind the shopfront frame with shaded reveals, so the
     // entry reads as a real set-back doorway, not a flat painted panel.
-    const d = map(s.door);
+    const d = map(Array.isArray(s.door) ? s.door[0] : s.door);
     const dFront = 0.011, dBack = 0.005;
     quad(d, dBack, null, { tint: dark(frameTint, 0.55) });
     quad3(point(d.x0, d.y1, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x0, d.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head shadow

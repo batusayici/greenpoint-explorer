@@ -50,7 +50,17 @@ test("awning is null without one and proud (above glazing) with one", () => {
 });
 
 test("throws on an invalid door value", () => {
-  assert.throws(() => composeStorefront({ door: "center" }), RangeError);
+  assert.throws(() => composeStorefront({ door: "banana" }), RangeError);
+});
+
+test("center door: glazing flanks a centered door column", () => {
+  const c = composeStorefront({ door: "center" });
+  const doors = Array.isArray(c.door) ? c.door : [c.door];
+  const d = doors[0];
+  const mid = (d.x0 + d.x1) / 2;
+  assert.ok(Math.abs(mid - 0.5) < 1e-9, "door centered");
+  const glaze = Array.isArray(c.glazing) ? c.glazing : [c.glazing];
+  assert.equal(glaze.length, 2, "glazing on both sides");
 });
 
 
