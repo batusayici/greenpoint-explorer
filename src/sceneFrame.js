@@ -133,8 +133,8 @@ export function assembleFranklinScene({
     for (const record of extract.footprintRecords ?? []) {
       const bin = String(record.sourceProperties?.bin ?? "");
       if (!bin) continue;
-      // Never override a hero or facade-group member.
-      if (heroByBin.has(bin) || facadeGroupBins[bin]) continue;
+      // Never override a real wrap-fixture hero.
+      if (heroByBin.has(bin)) continue;
       // Dedupe within multiple block extracts.
       if (pushedBlockBins.has(bin)) continue;
       const polygon = projectPolygon(record.wgs84Polygon, projection);
@@ -144,6 +144,12 @@ export function assembleFranklinScene({
       const heightUnits = projection.metersToUnits(
         (Number.isFinite(heightFeet) ? heightFeet : 30) * FEET_TO_METERS,
       );
+      // A block-extract BIN registered in facadeGroupBins is a full-block hero
+      // (e.g. Astral) that lives only in a block pull, beyond the main loop's
+      // context-radius cull. Promote it here — classified hero edges + placeId
+      // so it reaches buildHeroBuilding — while keeping fromBlockExtract so the
+      // ground/context paths still treat its data as block-sourced.
+      const groupPlaceId = facadeGroupBins[bin] ?? null;
       const blockBuilding = {
         bin,
         polygon,
@@ -151,11 +157,13 @@ export function assembleFranklinScene({
         height: Math.max(heightUnits, 0.3),
         constructionYear: record.sourceProperties?.constructionYear ?? null,
         sourceProperties: record.sourceProperties ?? null,
-        isHero: false,
-        placeId: null,
+        isHero: Boolean(groupPlaceId),
+        placeId: groupPlaceId,
         label: null,
         cornerRole: null,
-        edges: null,
+        edges: groupPlaceId
+          ? classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis })
+          : null,
         fromBlockExtract: true,
       };
       const idx = buildings.findIndex((b) => b.bin === bin);

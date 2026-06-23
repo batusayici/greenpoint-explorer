@@ -46,6 +46,8 @@ Rhythmic Queen Anne worker housing (Charles Pratt, for Astral Oil Works employee
 **Vertical slice first:** build the **center entrance segment** end-to-end (render → derive on flat → wire composite + oriel3 + curved recesses → verify all four angles) before rendering the flanks.
 
 ## Registration path (per HERO_FACADE_LOG, the 144-Franklin pattern)
+**Prerequisite (added 2026-06-23):** unlike 144 Franklin, Astral is **not** in the within-radius main packet — it lives only in the `block-franklin-north` extract, past the 130m cull. `sceneFrame.js` now promotes a `facadeGroupBins` BIN found in a block extract to a hero (classified edges + placeId); without that, registering Astral drops it. See design spec step 1b + `src/sceneFrame.heroPromotion.test.mjs`.
+
 `FACADE_GROUP_BINS["3064408"]="astral-apartments"` → placeId + wall-by-wall hero build; vertex-snap flush skips it (no fixture entry). Then `FACADE_COMPOSITES["astral-apartments"]` (texture key + per-face u0/u1/leftEnd + `ASTRAL_KINK` if a corner fold), spec import → `FACADE_SPECS`/`SPEC_FILE_BY_FACE`, an `II_PALETTE.heroes` hue, flip `building-tiers` buildStatus→built, update `curationTiers.test.mjs`.
 
 ## Open items (resolve before the phase that needs them)
