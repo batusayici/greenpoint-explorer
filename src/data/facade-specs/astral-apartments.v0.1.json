@@ -1,12 +1,12 @@
 {
   "schemaVersion": "facade-spec.v0.6",
   "placeId": "astral-apartments",
-  "status": "seed_2026-06-23 (first-pass HAND-SEEDED recesses for the Astral center entrance segment — auto-derive failed on this ornate facade, so openings were read off the render by hand. APPROXIMATE: fine-tune every rect/arch in the curve-capable recess editor (?facadeedit=1) against astral-apartments--franklin-center.png before public release. Five window columns + center entrance pavilion; round-arch entrance, top-floor arcade, and the giant center bay tagged shape:arch.)",
-  "note": "Astral Apartments, 184 Franklin St (BIN 3064408). 1886 Queen Anne worker housing, 6 storeys: rusticated brownstone base with a round-arch entrance under the carved 'THE ASTRAL' band, red-brick body with punched windows, round-arch top-floor arcade, bracketed cornice + stepped gable. This face is the CENTER ENTRANCE SEGMENT only (~17.9m of the ~60.6m frontage) — keyed 3064408:frontage, placed on the frontage chord by frontagePlane.js, not the per-edge loop. Coords are face-local (x from left edge of the segment texture, y from ground up).",
+  "status": "flat_2026-06-23 (FULL-FACADE texture wired — openings emptied for the alignment-first verify pass. The previous center-only recess spec is archived at docs/visual-artifacts/astral-center-derivation/astral-apartments.center-segment-spec.archived.json; it no longer maps because the texture changed from the ~17.9m center segment to the whole 60.6m frontage. Re-derive openings on astral-apartments--franklin-full.png next, via derive-facade-spec.mjs + the recess editor.)",
+  "note": "Astral Apartments, 184 Franklin St (BIN 3064408). Face 3064408:frontage now carries ONE full-facade render across the entire Franklin frontage chord (fromM 0 / toM 60.6). 6 storeys: rusticated brownstone base, 4 floors red-brick punched windows + oriel bays, round-arch top-floor arcade, bracketed cornice + parapet railing + stepped gablets + central gable with oculus. Coords are face-local fractions across the FULL width (x from the north end, y from ground up).",
   "evidence": [
     "docs/reference/hero-evidence/astral/FACADE_GRAMMAR.md",
-    "assets/textures/franklin/astral-apartments--franklin-center.png",
-    "docs/visual-artifacts/astral-center-derivation/astral-apartments--franklin-center.overlay.png"
+    "docs/reference/art/prompts/astral-full-facade.v1.md",
+    "assets/textures/franklin/astral-apartments--franklin-full.png"
   ],
   "faces": {
     "3064408:frontage": {
@@ -15,184 +15,11 @@
         "y1": 0.928,
         "projectionM": 0.45
       },
-      "doors": [
-        {
-          "x0": 0.352,
-          "x1": 0.635,
-          "y0": 0,
-          "y1": 0.147,
-          "recessM": 0.25,
-          "shape": "arch",
-          "springY": 0.032
-        }
-      ],
+      "doors": [],
       "windows": {
         "recessM": 0.18,
         "sill": true,
-        "rects": [
-          {
-            "x0": 0.514,
-            "x1": 0.595,
-            "y0": 0.756,
-            "y1": 0.841,
-            "shape": "arch",
-            "springY": 0.806
-          },
-          {
-            "x0": 0.095,
-            "x1": 0.168,
-            "y0": 0.321,
-            "y1": 0.41
-          },
-          {
-            "x0": 0.087,
-            "x1": 0.164,
-            "y0": 0.466,
-            "y1": 0.558
-          },
-          {
-            "x0": 0.089,
-            "x1": 0.165,
-            "y0": 0.613,
-            "y1": 0.692
-          },
-          {
-            "x0": 0.095,
-            "x1": 0.17,
-            "y0": 0.753,
-            "y1": 0.831,
-            "shape": "arch",
-            "springY": 0.79
-          },
-          {
-            "x0": 0.056,
-            "x1": 0.202,
-            "y0": 0.218,
-            "y1": 0.26
-          },
-          {
-            "x0": 0.248,
-            "x1": 0.315,
-            "y0": 0.329,
-            "y1": 0.425
-          },
-          {
-            "x0": 0.251,
-            "x1": 0.315,
-            "y0": 0.473,
-            "y1": 0.565
-          },
-          {
-            "x0": 0.255,
-            "x1": 0.315,
-            "y0": 0.616,
-            "y1": 0.715
-          },
-          {
-            "x0": 0.235,
-            "x1": 0.315,
-            "y0": 0.761,
-            "y1": 0.835,
-            "shape": "arch",
-            "springY": 0.79
-          },
-          {
-            "x0": 0.43,
-            "x1": 0.56,
-            "y0": 0.331,
-            "y1": 0.414,
-            "shape": "arch",
-            "springY": 0.369
-          },
-          {
-            "x0": 0.433,
-            "x1": 0.558,
-            "y0": 0.482,
-            "y1": 0.546,
-            "shape": "arch",
-            "springY": 0.518
-          },
-          {
-            "x0": 0.432,
-            "x1": 0.556,
-            "y0": 0.603,
-            "y1": 0.682,
-            "shape": "arch",
-            "springY": 0.64
-          },
-          {
-            "x0": 0.401,
-            "x1": 0.477,
-            "y0": 0.76,
-            "y1": 0.841,
-            "shape": "arch",
-            "springY": 0.795
-          },
-          {
-            "x0": 0.785,
-            "x1": 0.932,
-            "y0": 0.012,
-            "y1": 0.203
-          },
-          {
-            "x0": 0.685,
-            "x1": 0.737,
-            "y0": 0.333,
-            "y1": 0.425
-          },
-          {
-            "x0": 0.685,
-            "x1": 0.741,
-            "y0": 0.478,
-            "y1": 0.565
-          },
-          {
-            "x0": 0.685,
-            "x1": 0.734,
-            "y0": 0.62,
-            "y1": 0.705
-          },
-          {
-            "x0": 0.682,
-            "x1": 0.745,
-            "y0": 0.764,
-            "y1": 0.828,
-            "shape": "arch",
-            "springY": 0.79
-          },
-          {
-            "x0": 0.049,
-            "x1": 0.2,
-            "y0": 0.01,
-            "y1": 0.205
-          },
-          {
-            "x0": 0.828,
-            "x1": 0.897,
-            "y0": 0.319,
-            "y1": 0.411
-          },
-          {
-            "x0": 0.83,
-            "x1": 0.896,
-            "y0": 0.464,
-            "y1": 0.56
-          },
-          {
-            "x0": 0.824,
-            "x1": 0.891,
-            "y0": 0.614,
-            "y1": 0.694
-          },
-          {
-            "x0": 0.83,
-            "x1": 0.896,
-            "y0": 0.755,
-            "y1": 0.827,
-            "shape": "arch",
-            "springY": 0.79
-          }
-        ]
+        "rects": []
       }
     }
   }

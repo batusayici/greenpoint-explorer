@@ -955,18 +955,24 @@ const FACADE_COMPOSITES = {
   // chord); flanks + oriels + arched recesses follow. fromM/toM are meters
   // along the chord from its north end — adjust against IMG_0971 in-engine.
   "astral-apartments": {
-    key: "../assets/textures/franklin/astral-apartments--franklin-center.png",
+    key: "../assets/textures/franklin/astral-apartments--franklin-full.png",
     byBin: {},
     frontage: {
       // The texture's main cornice/roofline sits at ~0.86 of its height; the
-      // parapet + stepped gable cartouche rise above it. Drop the flat roof to
-      // this line so they project above the roofline (see buildHeroBuilding).
+      // parapet railing + stepped gablets + central gable cartouche rise above
+      // it. Drop the flat roof to this line so they project above the roofline
+      // (see buildHeroBuilding).
       roofV: 0.86,
+      // ONE continuous full-facade render across the whole 60.6m frontage chord
+      // (replaced the 3-segment plan: separate sheets drifted on floor lines and
+      // dropped a residential floor — see docs/reference/art/prompts/
+      // astral-full-facade.v1.md). Recesses re-derived on this texture; the
+      // archived center-only spec is in docs/visual-artifacts/.
       segments: [
         {
-          key: "../assets/textures/franklin/astral-apartments--franklin-center.png",
-          fromM: 21.35,
-          toM: 39.25,
+          key: "../assets/textures/franklin/astral-apartments--franklin-full.png",
+          fromM: 0,
+          toM: 60.6,
           leftEnd: "north",
         },
       ],
