@@ -1468,6 +1468,11 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           windowTint: kitParams.windowTint,
           doorTint: kitParams.doorTint,
           corniceColor: kitParams.corniceColor,
+          hasCornice: kitParams.hasCornice,
+          storefrontAwning: kitParams.storefrontAwning,
+          doorAwning: kitParams.doorAwning,
+          doorAlign: kitParams.doorAlign,
+          fireEscape: kitParams.fireEscape,
           addr: building.address ?? building.sourceProperties?.address,
         });
         const binBays = baysByBin.get(building.bin);

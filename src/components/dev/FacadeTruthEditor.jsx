@@ -39,6 +39,11 @@ export default function FacadeTruthEditor({ bin }) {
   const [win, setWin] = useState(null);
   const [door, setDoor] = useState(null);
   const [cornice, setCornice] = useState(null);
+  const [hasCornice, setHasCornice] = useState(null);
+  const [storefrontAwning, setStorefrontAwning] = useState(null); // null | false | true
+  const [doorAwning, setDoorAwning] = useState(null);
+  const [doorAlign, setDoorAlign] = useState(null);
+  const [fireEscape, setFireEscape] = useState(null); // null | false | "standard" | "lattice"
   const [status, setStatus] = useState("");
 
   // Seed controls from the registered truth whenever the selected BIN changes —
@@ -51,8 +56,14 @@ export default function FacadeTruthEditor({ bin }) {
     setWin(entry?.windowTint ?? null);
     setDoor(entry?.doorTint ?? null);
     setCornice(entry?.corniceColor ?? null);
+    setHasCornice(entry?.hasCornice ?? null);
+    setStorefrontAwning(entry?.storefrontAwning ?? null);
+    setDoorAwning(entry?.doorAwning ?? null);
+    setDoorAlign(entry?.doorAlign ?? null);
+    setFireEscape(entry?.fireEscape ?? null);
     setStatus("");
-  }, [bin, entry?.family, entry?.tint, entry?.windowTint, entry?.doorTint, entry?.corniceColor]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [bin, entry?.family, entry?.tint, entry?.windowTint, entry?.doorTint, entry?.corniceColor,
+      entry?.hasCornice, entry?.storefrontAwning, entry?.doorAwning, entry?.doorAlign, entry?.fireEscape]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const eyedropper = typeof window !== "undefined" && "EyeDropper" in window;
 
@@ -83,6 +94,11 @@ export default function FacadeTruthEditor({ bin }) {
     if (win != null) override.windowTint = hex6(win);
     if (door != null) override.doorTint = hex6(door);
     if (cornice != null) override.corniceTint = hex6(cornice);
+    if (hasCornice != null) override.hasCornice = hasCornice;
+    if (storefrontAwning != null) override.storefrontAwning = storefrontAwning;
+    if (doorAwning != null) override.doorAwning = doorAwning;
+    if (doorAlign != null) override.doorAlign = doorAlign;
+    if (fireEscape != null) override.fireEscape = fireEscape;
     setStatus("saving…");
     try {
       const res = await fetch("/__facade-override", {
@@ -116,6 +132,16 @@ export default function FacadeTruthEditor({ bin }) {
           <ColorRow label="window" value={win} onSample={() => sample("win")} onPick={setWin} tokens={TRIM_TONES} />
           <ColorRow label="door" value={door} onSample={() => sample("door")} onPick={setDoor} tokens={TRIM_TONES} />
           <ColorRow label="cornice" value={cornice} onSample={() => sample("cornice")} onPick={setCornice} tokens={TRIM_TONES} />
+          <Seg label="cornice" value={hasCornice} onPick={setHasCornice}
+               options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
+          <Seg label="storefront awning" value={storefrontAwning} onPick={setStorefrontAwning}
+               options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
+          <Seg label="door awning" value={doorAwning} onPick={setDoorAwning}
+               options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
+          <Seg label="door" value={doorAlign} onPick={setDoorAlign}
+               options={[{ v: "left", t: "L" }, { v: "center", t: "C" }, { v: "right", t: "R" }]} />
+          <Seg label="fire escape" value={fireEscape} onPick={setFireEscape}
+               options={[{ v: false, t: "none" }, { v: "standard", t: "std" }, { v: "lattice", t: "lattice" }]} />
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
             <button onClick={save} style={button}>Save → JSON</button>
             <span style={{ fontSize: 11, opacity: 0.85 }}>{status}</span>
@@ -133,6 +159,20 @@ function Row({ label, children }) {
       <span style={{ opacity: 0.85, minWidth: 56 }}>{label}</span>
       {children}
     </div>
+  );
+}
+
+function Seg({ label, value, options, onPick }) {
+  return (
+    <Row label={label}>
+      {options.map((opt) => (
+        <button
+          key={String(opt.v)}
+          onClick={() => onPick(value === opt.v ? null : opt.v)}
+          style={{ ...button, opacity: value === opt.v ? 1 : 0.5 }}
+        >{opt.t}</button>
+      ))}
+    </Row>
   );
 }
 
