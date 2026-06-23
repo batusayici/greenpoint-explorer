@@ -31,7 +31,7 @@ A faithful, **reusable full-block-hero** rendering path: a long segmented street
 ## Build phasing (next session)
 
 Per the project's new-primitive pattern (design → pure unit-tested module → wire → verify; cf. `facadeProfiles.js`):
-1. **Pure module + tests:** `frontageChord(edges, axis)` → chord + extent; segment u-mapping; `orielPlacementsFromPolygon`. Unit-tested before any render/wiring (chord projection, segment range clamping, oriel-facet detection).
+1. **Pure module + tests — DONE (2026-06-23).** `src/frontagePlane.js`: `frontageChord(edges, axis)` → chord + extent + `outwardSign`; `segmentURange(chord, {fromM,toM}, {unitsPerMeter, fromEnd})` → clamped normalized chord range + world endpoints; `orielPlacementsFromPolygon(polygon, chord, {unitsPerMeter, thresholdM})` → facet-run placements. Pure (no THREE), 9 unit tests in `src/frontagePlane.test.mjs` (chord projection incl. rotated axis + role filtering, segment meters→chord with unitsPerMeter scale + clamp + far-end, oriel facet-run detection + flat-frontage empty). 216/216 suite green. Resolved open question: segment ranges are **meters** (`fromM/toM`) converted via `unitsPerMeter` (== `projection.scale`), not normalized u.
 2. **Composite schema bump:** segment-list face descriptor, backward-compatible with single-`key`. Update `FACADE_COMPOSITES` consumption in `buildHeroBuilding`.
 3. **Register Astral + wire the center segment:** `FACADE_GROUP_BINS["3064408"]="astral-apartments"`, composite with one `franklin-center` segment, `II_PALETTE.heroes` hue, derive + arched recesses.
 4. **Verify** center segment in-engine at all four angles. Append a `HERO_FACADE_LOG` entry.
