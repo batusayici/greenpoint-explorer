@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
+import { frontageChord, segmentURange } from "./frontagePlane.js";
 import { buildFacadeAssembly } from "./facadeAssembly.js";
 import { buildGroundLayer } from "./groundLayer.js";
 import { buildStreetFurniture } from "./streetFurniture.js";
@@ -944,6 +945,28 @@ const FACADE_COMPOSITES = {
       },
     },
   },
+  // Astral (184 Franklin) — first FULL-BLOCK hero. The bespoke texture covers
+  // only a SEGMENT of a ~60.6m oriel-segmented street wall, so it can't ride
+  // "the longest edge per role." `frontage.segments` place each render on the
+  // frontage chord (frontagePlane.js) instead; no `byBin` ⇒ every footprint
+  // edge renders typological brick, with the bespoke segment(s) proud on top.
+  // v1: the flat center entrance pavilion (~17.9m, centered on the 60.6m
+  // chord); flanks + oriels + arched recesses follow. fromM/toM are meters
+  // along the chord from its north end — adjust against IMG_0971 in-engine.
+  "astral-apartments": {
+    key: "../assets/textures/franklin/astral-apartments--franklin-center.png",
+    byBin: {},
+    frontage: {
+      segments: [
+        {
+          key: "../assets/textures/franklin/astral-apartments--franklin-center.png",
+          fromM: 21.35,
+          toM: 39.25,
+          leftEnd: "north",
+        },
+      ],
+    },
+  },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
     byBin: {
@@ -976,6 +999,9 @@ const FACADE_GROUP_BINS = {
   // The vertex-snap flush in sceneFrame.js skips it (no same-placeId hero in
   // the wrap fixture), so it keeps its own classified edges.
   "3064675": "144-franklin",
+  // Astral (184 Franklin) — block-extract BIN; sceneFrame.js promotes it to a
+  // hero (it's past the 130m main-loop radius cull). See FACADE_COMPOSITES.
+  "3064408": "astral-apartments",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
@@ -1812,6 +1838,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // walks parents, so the recess editor keeps working one level deeper.
   const heroGroup = new THREE.Group();
   heroGroup.userData.placeId = building.placeId;
+  heroGroup.userData.bin = building.bin; // lets __gpLocate(bin) center on heroes too
   const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
   // Benchmark-style face shading: lit street faces, darker returns.
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
@@ -1988,6 +2015,49 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           material.needsUpdate = true;
         };
     loadFaceTexture(faceTextureUrl(face), apply);
+  }
+
+  // Full-block segmented frontage (Astral): the bespoke texture covers only a
+  // segment of a long, oriel-segmented street wall, so it can't ride "the
+  // longest edge per role." Place each segment on the frontage chord — the
+  // straight street line through the franklin edges (street-most band, so
+  // interior light courts don't drag the plane backward) — a hair proud of the
+  // typological frontage built by the loop above. Flat v1; oriels/recesses next.
+  if (composite?.frontage) {
+    const upm = scene.projection.scale;
+    const chord = frontageChord(building.edges, scene.franklinAxis, { unitsPerMeter: upm, frontageBandM: 3 });
+    const outward = { x: chord.cross.x * chord.outwardSign, z: chord.cross.z * chord.outwardSign };
+    const proud = 0.02;
+    for (const seg of composite.frontage.segments) {
+      const placed = segmentURange(chord, seg, { unitsPerMeter: upm });
+      const start = { x: placed.start.x + outward.x * proud, z: placed.start.z + outward.z * proud };
+      const end = { x: placed.end.x + outward.x * proud, z: placed.end.z + outward.z * proud };
+      const length = Math.hypot(end.x - start.x, end.z - start.z);
+      if (length < 1e-6) continue;
+      const segEdge = {
+        start,
+        end,
+        length,
+        midpoint: { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 },
+        direction: { x: (end.x - start.x) / length, z: (end.z - start.z) / length },
+        normal: outward,
+        role: "franklin",
+      };
+      const segFace = { key: seg.key, u0: 0, u1: 1, leftEnd: seg.leftEnd ?? "north", flip: Boolean(seg.flip) };
+      const segMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(baseColor).multiplyScalar(faceShade.franklin),
+        side: THREE.DoubleSide,
+      });
+      const segWall = new THREE.Mesh(wallQuad(segEdge, building.height, segFace, scene), segMat);
+      segWall.userData = { facadeSlot: `${building.placeId}--frontage` };
+      heroGroup.add(segWall);
+      addCullable(segWall, outward);
+      loadFaceTexture(facadeTextureUrls[seg.key], (texture) => {
+        segMat.map = texture;
+        segMat.color.setScalar(faceShade.franklin);
+        segMat.needsUpdate = true;
+      });
+    }
   }
 
   // Roof field: warm membrane tone with paper-grain speckle. The texture

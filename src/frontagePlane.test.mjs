@@ -50,6 +50,22 @@ test("frontageChord ignores non-franklin edges (oriel facets, cross-street ends)
   close(chord.lengthUnits, 65);
 });
 
+test("frontageChord uses the street-most edges, ignoring interior court walls", () => {
+  // Astral has light-court walls that also face the street axis but sit ~5-18m
+  // back from the frontage. The chord must lock onto the street-most band
+  // (z=5 here), not average the court (z=0) in and slide the plane backward.
+  const edges = [
+    ...flatFrontageEdges, // street frontage at z=5
+    { start: { x: 18, z: 0 }, end: { x: 30, z: 0 }, length: 12, role: "franklin", normal: { x: 0, z: 1 } }, // court wall, 5m back
+    { start: { x: 40, z: 1 }, end: { x: 52, z: 1 }, length: 12, role: "franklin", normal: { x: 0, z: 1 } }, // court wall, 4m back
+  ];
+  const chord = frontageChord(edges, franklinAxis, { unitsPerMeter: 1, frontageBandM: 3 });
+  close(chord.crossOffset, 5);
+  closePt(chord.start, 0, 5);
+  closePt(chord.end, 65, 5);
+  close(chord.lengthUnits, 65);
+});
+
 test("frontageChord works off a rotated axis", () => {
   // Same frontage rotated 90°: street along +z, interior toward -x.
   const axis = { x: 0, z: 1 };

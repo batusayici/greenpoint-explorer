@@ -22,19 +22,46 @@ const perp = (axis) => ({ x: -axis.z, z: axis.x });
 // [alongMin, alongMax] at the (length-weighted) average cross-axis offset.
 // `outwardSign` records which cross direction faces the street (from the edge
 // normals), so oriel detection knows which way the bays project.
-export function frontageChord(edges, axis, { role = "franklin" } = {}) {
+//
+// A full-block hero can have interior light-court walls that also face the
+// street axis but sit metres back from the frontage (Astral). `frontageBandM`
+// (in meters, via `unitsPerMeter`) keeps only edges within that band of the
+// street-most offset, so the plane locks onto the real frontage instead of
+// sliding backward into the averaged court. Default `Infinity` = all edges
+// (legacy single-plane heroes, whose frontage edges are already coplanar).
+const edgeMidCross = (edge, cross) => (dot(edge.start, cross) + dot(edge.end, cross)) / 2;
+
+export function frontageChord(edges, axis, { role = "franklin", frontageBandM = Infinity, unitsPerMeter = 1 } = {}) {
   const cross = perp(axis);
   // Caller usually pre-classifies; fall back to all edges if none carry the
   // role (e.g. a caller that already filtered to the frontage).
-  const frontage = edges.some((e) => e.role === role)
+  const candidates = edges.some((e) => e.role === role)
     ? edges.filter((e) => e.role === role)
     : edges;
+
+  // Outward direction (toward the street) from the length-weighted edge normals.
+  let normalSign = 0;
+  for (const edge of candidates) {
+    if (edge.normal) normalSign += dot(edge.normal, cross) * (edge.length ?? 0);
+  }
+  const outwardSign = normalSign >= 0 ? 1 : -1;
+
+  // Keep only the street-most band: edges whose outward cross offset is within
+  // `frontageBandM` of the most-outward edge. Rejects interior court walls.
+  let maxOutward = -Infinity;
+  for (const edge of candidates) {
+    const out = edgeMidCross(edge, cross) * outwardSign;
+    if (out > maxOutward) maxOutward = out;
+  }
+  const bandUnits = frontageBandM === Infinity ? Infinity : frontageBandM * unitsPerMeter;
+  const frontage = candidates.filter(
+    (edge) => maxOutward - edgeMidCross(edge, cross) * outwardSign <= bandUnits,
+  );
 
   let alongMin = Infinity;
   let alongMax = -Infinity;
   let crossSum = 0;
   let lengthSum = 0;
-  let normalCrossSum = 0;
   for (const edge of frontage) {
     for (const point of [edge.start, edge.end]) {
       const a = dot(point, axis);
@@ -42,13 +69,10 @@ export function frontageChord(edges, axis, { role = "franklin" } = {}) {
       if (a > alongMax) alongMax = a;
     }
     const len = edge.length ?? Math.hypot(edge.end.x - edge.start.x, edge.end.z - edge.start.z);
-    const midCross = (dot(edge.start, cross) + dot(edge.end, cross)) / 2;
-    crossSum += midCross * len;
+    crossSum += edgeMidCross(edge, cross) * len;
     lengthSum += len;
-    if (edge.normal) normalCrossSum += dot(edge.normal, cross) * len;
   }
   const crossOffset = lengthSum > 0 ? crossSum / lengthSum : 0;
-  const outwardSign = normalCrossSum >= 0 ? 1 : -1;
   const lengthUnits = alongMax - alongMin;
 
   const at = (along) => ({
