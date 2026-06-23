@@ -8423,29 +8423,29 @@
         "landUse": "2",
         "resArea": 20016,
         "_massingSplit": "tower",
-        "_footprintSource": "imagery-derived from aerial; biased toward India St (south) corner; rises from 2-story podium",
+        "_footprintSource": "imagery-derived from aerial; centered on the parcel depth axis between India St and the rear; rises from 2-story podium",
         "_baseHeightFt": 26
       },
       "wgs84Polygon": [
         {
-          "lon": -73.95761102,
-          "lat": 40.73227525
+          "lon": -73.95762216,
+          "lat": 40.73233251
         },
         {
-          "lon": -73.95775149,
-          "lat": 40.73225929
+          "lon": -73.95776262,
+          "lat": 40.73231655
         },
         {
-          "lon": -73.95772887,
-          "lat": 40.73214298
+          "lon": -73.95774,
+          "lat": 40.73220024
         },
         {
-          "lon": -73.9575884,
-          "lat": 40.73215894
+          "lon": -73.95759954,
+          "lat": 40.7322162
         },
         {
-          "lon": -73.95761102,
-          "lat": 40.73227525
+          "lon": -73.95762216,
+          "lat": 40.73233251
         }
       ]
     }
