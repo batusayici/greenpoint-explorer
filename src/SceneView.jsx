@@ -37,6 +37,7 @@ import { resolveStorefrontUnit } from "./storefrontUnitResolve.js";
 import { resolveHasCornice, resolveFireEscape } from "./facadeToggleResolve.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
+import { buildDoorAwningGeometry } from "./doorAwningGeometry.js";
 import { edgeClearance, mostOpenExposedEdge, pickStreetFrontages } from "./streetFaceSelect.js";
 import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
@@ -2594,6 +2595,19 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         // an entry regardless of whether its family has door-stoop art.
         for (const w of f.groundWindows) drawWindow(w);
         if (f.door) drawDoor(f.door.x0, f.door.x1, f.door.y0, f.door.y1);
+        if (params.doorAwning === true && streetFace) {
+          const da = buildDoorAwningGeometry({ frontM, heightM, doorCenterM: frontM / 2, doorTopM: 2.2 });
+          for (const q of da.quads) {
+            const corners = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
+            const [a, b, c, d] = corners;
+            const tint = q.role === "side" ? FACADE_RELIEF.soffit : II_PALETTE.ink;
+            if (d !== undefined) {
+              quad3(a, b, c, d, null, { tint }); // 4-corner top or valance
+            } else {
+              quad3(a, b, c, a, null, { tint }); // 3-corner side closer: repeat first point to collapse degenerate quad
+            }
+          }
+        }
       }
     }
   }
