@@ -9,6 +9,7 @@ import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1
 import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
+import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
@@ -1010,6 +1011,7 @@ const FACADE_SPECS = {
   ...sonnysFacadeSpec.faces,
   ...serenecoFacadeSpec.faces,
   ...franklin144FacadeSpec.faces,
+  ...astralFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -1020,6 +1022,7 @@ for (const [file, spec] of [
   ["sonnys-corner.v0.1.json", sonnysFacadeSpec],
   ["sereneco.v0.1.json", serenecoFacadeSpec],
   ["144-franklin.v0.1.json", franklin144FacadeSpec],
+  ["astral-apartments.v0.1.json", astralFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
@@ -2051,12 +2054,42 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       const segWall = new THREE.Mesh(wallQuad(segEdge, building.height, segFace, scene), segMat);
       segWall.userData = { facadeSlot: `${building.placeId}--frontage` };
       heroGroup.add(segWall);
-      addCullable(segWall, outward);
-      loadFaceTexture(facadeTextureUrls[seg.key], (texture) => {
-        segMat.map = texture;
-        segMat.color.setScalar(faceShade.franklin);
-        segMat.needsUpdate = true;
-      });
+      const segCull = addCullable(segWall, outward);
+
+      // A spec (e.g. Astral's hand-seeded openings) swaps the flat segment for
+      // the carved component assembly — same rebuild closure + recess-editor
+      // registration as the per-edge specFace path, so ?facadeedit=1 snaps the
+      // arches live. Keyed `BIN:frontage` (distinct from the per-edge roles).
+      const segFaceKey = `${building.bin}:frontage`;
+      const segSpec = FACADE_SPECS[segFaceKey];
+      const segApply = segSpec
+        ? (texture) => {
+            heroGroup.remove(segWall);
+            const frame = faceFrame(segEdge, building.height, segFace, scene);
+            const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
+            const hexBase = new THREE.Color(baseColor).multiplyScalar(faceShade.franklin).getHex();
+            let current = null;
+            const rebuild = (specOverride) => {
+              if (current) {
+                heroGroup.remove(current);
+                disposeGroup(current);
+              }
+              current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
+              current.userData.faceKey = segFaceKey;
+              heroGroup.add(current);
+              segCull.object = current;
+              segCull.refresh();
+              requestRender?.();
+            };
+            rebuild(segSpec);
+            registerFacadeFace(segFaceKey, { rebuild, texture, u0: segFace.u0, u1: segFace.u1, flip: Boolean(segFace.flip), file: SPEC_FILE_BY_FACE[segFaceKey], faceSpec: segSpec });
+          }
+        : (texture) => {
+            segMat.map = texture;
+            segMat.color.setScalar(faceShade.franklin);
+            segMat.needsUpdate = true;
+          };
+      loadFaceTexture(facadeTextureUrls[seg.key], segApply);
     }
   }
 

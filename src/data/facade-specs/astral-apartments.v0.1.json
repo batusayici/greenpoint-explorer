@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "facade-spec.v0.6",
+  "placeId": "astral-apartments",
+  "status": "seed_2026-06-23 (first-pass HAND-SEEDED recesses for the Astral center entrance segment — auto-derive failed on this ornate facade, so openings were read off the render by hand. APPROXIMATE: fine-tune every rect/arch in the curve-capable recess editor (?facadeedit=1) against astral-apartments--franklin-center.png before public release. Five window columns + center entrance pavilion; round-arch entrance, top-floor arcade, and the giant center bay tagged shape:arch.)",
+  "note": "Astral Apartments, 184 Franklin St (BIN 3064408). 1886 Queen Anne worker housing, 6 storeys: rusticated brownstone base with a round-arch entrance under the carved 'THE ASTRAL' band, red-brick body with punched windows, round-arch top-floor arcade, bracketed cornice + stepped gable. This face is the CENTER ENTRANCE SEGMENT only (~17.9m of the ~60.6m frontage) — keyed 3064408:frontage, placed on the frontage chord by frontagePlane.js, not the per-edge loop. Coords are face-local (x from left edge of the segment texture, y from ground up).",
+  "evidence": [
+    "docs/reference/hero-evidence/astral/FACADE_GRAMMAR.md",
+    "assets/textures/franklin/astral-apartments--franklin-center.png",
+    "docs/visual-artifacts/astral-center-derivation/astral-apartments--franklin-center.overlay.png"
+  ],
+  "faces": {
+    "3064408:frontage": {
+      "cornice": {
+        "y0": 0.86,
+        "y1": 0.975,
+        "projectionM": 0.45
+      },
+      "doors": [
+        {
+          "x0": 0.415,
+          "x1": 0.585,
+          "y0": 0.0,
+          "y1": 0.155,
+          "recessM": 0.16,
+          "shape": "arch",
+          "springY": 0.095
+        }
+      ],
+      "windows": {
+        "recessM": 0.1,
+        "sill": true,
+        "rects": [
+          { "x0": 0.095, "x1": 0.170, "y0": 0.175, "y1": 0.285 },
+          { "x0": 0.095, "x1": 0.170, "y0": 0.315, "y1": 0.425 },
+          { "x0": 0.095, "x1": 0.170, "y0": 0.455, "y1": 0.565 },
+          { "x0": 0.095, "x1": 0.170, "y0": 0.600, "y1": 0.705 },
+          { "x0": 0.095, "x1": 0.170, "y0": 0.735, "y1": 0.835, "shape": "arch", "springY": 0.790 },
+
+          { "x0": 0.235, "x1": 0.315, "y0": 0.175, "y1": 0.285 },
+          { "x0": 0.235, "x1": 0.315, "y0": 0.315, "y1": 0.425 },
+          { "x0": 0.235, "x1": 0.315, "y0": 0.455, "y1": 0.565 },
+          { "x0": 0.235, "x1": 0.315, "y0": 0.600, "y1": 0.705 },
+          { "x0": 0.235, "x1": 0.315, "y0": 0.735, "y1": 0.835, "shape": "arch", "springY": 0.790 },
+
+          { "x0": 0.450, "x1": 0.560, "y0": 0.185, "y1": 0.455, "shape": "arch", "springY": 0.370 },
+          { "x0": 0.455, "x1": 0.555, "y0": 0.490, "y1": 0.585 },
+          { "x0": 0.455, "x1": 0.555, "y0": 0.620, "y1": 0.710 },
+          { "x0": 0.450, "x1": 0.560, "y0": 0.735, "y1": 0.845, "shape": "arch", "springY": 0.795 },
+
+          { "x0": 0.685, "x1": 0.765, "y0": 0.175, "y1": 0.285 },
+          { "x0": 0.685, "x1": 0.765, "y0": 0.315, "y1": 0.425 },
+          { "x0": 0.685, "x1": 0.765, "y0": 0.455, "y1": 0.565 },
+          { "x0": 0.685, "x1": 0.765, "y0": 0.600, "y1": 0.705 },
+          { "x0": 0.685, "x1": 0.765, "y0": 0.735, "y1": 0.835, "shape": "arch", "springY": 0.790 },
+
+          { "x0": 0.830, "x1": 0.905, "y0": 0.175, "y1": 0.285 },
+          { "x0": 0.830, "x1": 0.905, "y0": 0.315, "y1": 0.425 },
+          { "x0": 0.830, "x1": 0.905, "y0": 0.455, "y1": 0.565 },
+          { "x0": 0.830, "x1": 0.905, "y0": 0.600, "y1": 0.705 },
+          { "x0": 0.830, "x1": 0.905, "y0": 0.735, "y1": 0.835, "shape": "arch", "springY": 0.790 }
+        ]
+      }
+    }
+  }
+}
