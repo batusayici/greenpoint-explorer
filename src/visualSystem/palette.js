@@ -114,8 +114,19 @@ const _withPale = (arr) => {
 export const MATERIAL_WALL_TONES = {
   // warm red → terracotta → brown, each lifted toward paper and shaded toward ink
   brick: _withPale(_ramp([0xb5664a, 0xa85a3c, 0x7d5a44])),
-  // pale painted facades (cream, sage) through to a dark muted green stain
-  clapboard: _withPale(_ramp([0xe2dcc9, 0x9a9c86, 0x6f7a6a])),
+  // painted wood: pale cream/sage neutrals + the full painted-house gamut
+  // (muted red, blue, yellow/ochre, green, dark grey) — each anchor expands to a
+  // light/mid/dark set via _ramp, so clapboard offers tones of every house color.
+  clapboard: _withPale(_ramp([
+    0xe2dcc9, // cream (default, == element [0])
+    0x9a9c86, // sage
+    0x6f7a6a, // slate-green
+    0x9a4a3e, // muted barn red
+    0x52647a, // muted slate blue
+    0xc4a85c, // muted ochre / mustard yellow
+    0x5e6b4a, // muted olive green
+    0x44474a, // cool dark grey
+  ])),
   // chocolate brownstone range
   brownstone: _withPale(_ramp([0x8a5a3c, 0x6f4632])),
   // painted masonry: cream → greige → taupe

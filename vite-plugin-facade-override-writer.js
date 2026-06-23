@@ -8,6 +8,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { normalizePath } from "vite";
 
 const OVERRIDE_FILE = "src/data/facade-overrides/greenpoint-corridor.v0.1.json";
 
@@ -40,6 +41,15 @@ export default function facadeOverrideWriter() {
 
             const eof = original.endsWith("\n") ? "\n" : "";
             fs.writeFileSync(full, `${JSON.stringify(json, null, 2)}${eof}`);
+
+            // Invalidate the JSON module in Vite's graph SYNCHRONOUSLY, before
+            // responding. The client reloads the page the instant it gets `ok`;
+            // if we left invalidation to the (async) file-watcher, that reload
+            // could outrun it and re-import the STALE cached transform — the
+            // bug where the first Save "didn't take" and a second Save fixed it.
+            // Forcing invalidation here means the reload always reads the new file.
+            const mods = server.moduleGraph.getModulesByFile(normalizePath(full));
+            if (mods) for (const m of mods) server.moduleGraph.invalidateModule(m);
 
             res.setHeader("content-type", "application/json");
             res.end(JSON.stringify({ ok: true, bin }));
