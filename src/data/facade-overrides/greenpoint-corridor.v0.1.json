@@ -2,7 +2,129 @@
   "_doc": "Per-BIN facade overrides — where pilot/gate feedback lands. `family` (set with evidence) asserts material truth (tier curated) and is the only path to clapboard/brownstone/modern-flat. Other fields are RENDER tuning applied on top of family defaults (tint, storeys, bays, weathering 0..1, components on/off, corniceFrac, corniceProj m, windowRecess m). Editing this file + re-checking in the scene preview is the gate loop — NO asset regeneration. Absent BINs fall through to the heuristic. Component-ART defects are a Gate A/B backlog item, not a tuning field.",
   "version": "0.1",
   "overrides": {
-    "3064541": { "fireEscapeVariant": "lattice" },
-    "3064605": { "family": "clapboard" }
+    "3064134": {
+      "family": "clapboard",
+      "tint": "0xece3cf",
+      "windowTint": "0xe2dcc9",
+      "corniceTint": "0xe2dcc9",
+      "doorAlign": "right"
+    },
+    "3064135": {
+      "family": "brick",
+      "tint": "0xac947e",
+      "windowTint": "0xcdbfa6",
+      "fireEscape": false
+    },
+    "3064137": {
+      "family": "clapboard",
+      "tint": "0x9a4a3e",
+      "windowTint": "0x8a8270",
+      "doorTint": "0x8a8270",
+      "hasCornice": false,
+      "fireEscape": false
+    },
+    "3064138": {
+      "family": "clapboard",
+      "tint": "0xece3cf",
+      "windowTint": "0x57504a",
+      "hasCornice": false,
+      "storefrontAwning": false
+    },
+    "3064254": {
+      "family": "clapboard",
+      "tint": "0xece3cf",
+      "windowTint": "0xe2dcc9",
+      "doorTint": "0xe2dcc9",
+      "hasCornice": false,
+      "fireEscape": "standard",
+      "doorAwning": false,
+      "hasStoop": false,
+      "fireEscapeColor": "0x6b2f28"
+    },
+    "3064256": {
+      "family": "clapboard",
+      "tint": "0xe2dcc9",
+      "windowTint": "0xe2dcc9",
+      "doorTint": "0x4a2622",
+      "doorAlign": "right"
+    },
+    "3064541": {
+      "fireEscapeVariant": "lattice",
+      "family": "brick",
+      "tint": "0xc18066",
+      "windowTint": "0x8a6f54",
+      "doorTint": "0x6b2f28",
+      "corniceTint": "0x57504a"
+    },
+    "3064544": {
+      "family": "brick",
+      "tint": "0xb5664a",
+      "windowTint": "0x8a6f54",
+      "corniceTint": "0xcdbfa6"
+    },
+    "3064545": {
+      "family": "brick",
+      "tint": "0xb5664a",
+      "corniceTint": "0x3f4650",
+      "doorAlign": "center"
+    },
+    "3064605": {
+      "family": "clapboard"
+    },
+    "3064676": {
+      "family": "brick",
+      "tint": "0xb5664a",
+      "windowTint": "0x4a3a2c",
+      "corniceTint": "0x4a3a2c"
+    },
+    "3064677": {
+      "family": "brick",
+      "tint": "0xb5664a",
+      "doorTint": "0x2a241c",
+      "corniceTint": "0x2e3b32",
+      "windowTint": "0x2a241c"
+    },
+    "3064678": {
+      "family": "brick",
+      "tint": "0xece3cf",
+      "windowTint": "0x1d1a16",
+      "doorTint": "0x1d1a16",
+      "corniceTint": "0x1d1a16"
+    },
+    "3064679": {
+      "family": "brick",
+      "tint": "0xb6775b",
+      "doorTint": "0xe2dcc9",
+      "corniceTint": "0x4a3a2c",
+      "windowTint": "0x4a3a2c"
+    },
+    "3064680": {
+      "family": "brick",
+      "tint": "0xc5947a",
+      "windowTint": "0x2a241c",
+      "doorTint": "0x2a241c"
+    },
+    "3064681": {
+      "family": "brick",
+      "tint": "0xc5947a",
+      "windowTint": "0x9a6258",
+      "doorTint": "0x8a8270",
+      "corniceTint": "0x8a8270"
+    },
+    "3064682": {
+      "family": "brick",
+      "tint": "0xc18066",
+      "windowTint": "0xe2dcc9",
+      "doorTint": "0x1d1a16",
+      "corniceTint": "0xe2dcc9"
+    },
+    "3336922": {
+      "family": "modern-flat",
+      "tint": "0xece3cf",
+      "windowTint": "0x1d1a16",
+      "doorTint": "0x1d1a16",
+      "corniceTint": "0x57504a",
+      "storefrontAwning": true
+    }
   }
 }
