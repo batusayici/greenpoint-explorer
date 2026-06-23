@@ -44,6 +44,8 @@ export default function FacadeTruthEditor({ bin }) {
   const [doorAwning, setDoorAwning] = useState(null);
   const [doorAlign, setDoorAlign] = useState(null);
   const [fireEscape, setFireEscape] = useState(null); // null | false | "standard" | "lattice"
+  const [hasStoop, setHasStoop] = useState(null);
+  const [fireEscapeColor, setFireEscapeColor] = useState(null);
   const [status, setStatus] = useState("");
 
   // Seed controls from the registered truth whenever the selected BIN changes —
@@ -61,9 +63,12 @@ export default function FacadeTruthEditor({ bin }) {
     setDoorAwning(entry?.doorAwning ?? null);
     setDoorAlign(entry?.doorAlign ?? null);
     setFireEscape(entry?.fireEscape ?? null);
+    setHasStoop(entry?.hasStoop ?? null);
+    setFireEscapeColor(entry?.fireEscapeColor ?? null);
     setStatus("");
   }, [bin, entry?.family, entry?.tint, entry?.windowTint, entry?.doorTint, entry?.corniceColor,
-      entry?.hasCornice, entry?.storefrontAwning, entry?.doorAwning, entry?.doorAlign, entry?.fireEscape]); // eslint-disable-line react-hooks/exhaustive-deps
+      entry?.hasCornice, entry?.storefrontAwning, entry?.doorAwning, entry?.doorAlign, entry?.fireEscape,
+      entry?.hasStoop, entry?.fireEscapeColor]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const eyedropper = typeof window !== "undefined" && "EyeDropper" in window;
 
@@ -75,6 +80,7 @@ export default function FacadeTruthEditor({ bin }) {
       if (kind === "wall") setWall(nearestPaletteToken(raw, family ?? "brick"));
       else if (kind === "win") setWin(nearestTrimToken(raw));
       else if (kind === "cornice") setCornice(nearestTrimToken(raw));
+      else if (kind === "fireEscape") setFireEscapeColor(nearestTrimToken(raw));
       else setDoor(nearestTrimToken(raw));
       setStatus("sampled → snapped");
     } catch {
@@ -99,6 +105,8 @@ export default function FacadeTruthEditor({ bin }) {
     if (doorAwning != null) override.doorAwning = doorAwning;
     if (doorAlign != null) override.doorAlign = doorAlign;
     if (fireEscape != null) override.fireEscape = fireEscape;
+    if (hasStoop != null) override.hasStoop = hasStoop;
+    if (fireEscapeColor != null) override.fireEscapeColor = hex6(fireEscapeColor);
     setStatus("saving…");
     try {
       const res = await fetch("/__facade-override", {
@@ -142,6 +150,10 @@ export default function FacadeTruthEditor({ bin }) {
                options={[{ v: "left", t: "L" }, { v: "center", t: "C" }, { v: "right", t: "R" }]} />
           <Seg label="fire escape" value={fireEscape} onPick={setFireEscape}
                options={[{ v: false, t: "none" }, { v: "standard", t: "std" }, { v: "lattice", t: "lattice" }]} />
+          <Seg label="stoop" value={hasStoop} onPick={setHasStoop}
+               options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
+          <ColorRow label="fire escape" value={fireEscapeColor}
+               onSample={() => sample("fireEscape")} onPick={setFireEscapeColor} tokens={TRIM_TONES} />
           <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
             <button onClick={save} style={button}>Save → JSON</button>
             <span style={{ fontSize: 11, opacity: 0.85 }}>{status}</span>
