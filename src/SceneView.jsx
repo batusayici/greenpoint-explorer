@@ -149,6 +149,12 @@ export default function SceneView() {
 
   useEffect(() => {
     const mount = mountRef.current;
+    // P4 load instrumentation (Phase 2026-06-23 perf track). Gated behind ?perf=1
+    // so it's silent in normal use. Brackets scene assembly, the building build,
+    // and first render, then dumps draw-call / geometry / texture counts from
+    // renderer.info — the hard before/after numbers for the P1/P2 merge + cache work.
+    const __perf = new URLSearchParams(window.location.search).has("perf");
+    const __mark = { start: performance.now() };
     const scene = assembleFranklinScene({
       geometrySource,
       sceneGeometryFixture,
@@ -156,6 +162,7 @@ export default function SceneView() {
       facadeGroupBins: FACADE_GROUP_BINS,
       blockExtracts: BLOCK_EXTRACTS,
     });
+    __mark.assembled = performance.now();
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -180,7 +187,37 @@ export default function SceneView() {
     // The scene renders on demand (no animation loop). Textures decode async,
     // so re-render when each finishes loading.
     let renderScene = null;
-    const requestRender = () => renderScene?.();
+    let __renderCount = 0;
+    let __lastRenderMs = 0;
+    let __renderQueued = false;
+    // Coalesce bursts of async-texture repaints into one render per frame. Each
+    // decoded texture used to call render() synchronously; a load burst meant
+    // hundreds of redundant full renders in a few ms. rAF collapses them to one.
+    // (The rotation tween and resize call render() directly, so they're unaffected.)
+    const requestRender = () => {
+      __renderCount += 1;
+      __lastRenderMs = performance.now();
+      if (__renderQueued) return;
+      __renderQueued = true;
+      requestAnimationFrame(() => {
+        __renderQueued = false;
+        if (active) renderScene?.();
+      });
+    };
+    // Live perf probe: async textures (hero trim scans, inked decals) settle
+    // AFTER first paint via requestRender callbacks. Poll this to get the real
+    // time-to-settled (≈ what the user perceives as "done rendering").
+    window.__gpPerfLive = () =>
+      __perf
+        ? {
+            renderCount: __renderCount,
+            settleMsAfterFirstPaint: Math.round(__lastRenderMs - (__mark.firstRender ?? __mark.start)),
+            settleMsTotal: Math.round(__lastRenderMs - __mark.start),
+            drawCalls: renderer.info.render.calls,
+            geometries: renderer.info.memory.geometries,
+            textures: renderer.info.memory.textures,
+          }
+        : null;
 
     // StrictMode double-mounts this effect, and facade textures load async.
     // `active` lets a disposed run's late texture callbacks bail out instead
@@ -256,6 +293,7 @@ export default function SceneView() {
       buildBlockStorefronts(three, scene, baysByBin, storefrontPointByName);
       buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
     }
+    __mark.built = performance.now();
     window.__three = three;
     window.__scene = scene;
 
@@ -516,6 +554,26 @@ export default function SceneView() {
     resizeObserver.observe(mount);
     applyCulling(); // hide back-facing hero walls for the initial NE view
     resize();
+    __mark.firstRender = performance.now();
+    if (__perf) {
+      const info = renderer.info;
+      const ms = (a, b) => Math.round(b - a);
+      const report = {
+        buildings: scene.buildings.length,
+        assembleMs: ms(__mark.start, __mark.assembled),
+        buildMeshesMs: ms(__mark.assembled, __mark.built),
+        firstRenderMs: ms(__mark.built, __mark.firstRender),
+        totalToFirstPaintMs: ms(__mark.start, __mark.firstRender),
+        drawCalls: info.render.calls,
+        triangles: info.render.triangles,
+        geometries: info.memory.geometries,
+        textures: info.memory.textures,
+        programs: info.programs?.length ?? null,
+      };
+      window.__gpPerf = report;
+      // eslint-disable-next-line no-console
+      console.log("[GP perf]", JSON.stringify(report));
+    }
 
     // Dev-only BIN locator: pan the camera onto a building by BIN and return its
     // screen position. Lets the facade-truth editor (and dev scripts) jump to a
@@ -2222,30 +2280,53 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
   }
 }
 
-// Module-memoized inked-component textures. Keyed by file (+ repeat) so each
-// distinct (image, tiling) loads at most once. Repeat varies per building (bays ×
-// storeys), so a handful of brick-wall variants is expected.
-const __inkedTexCache = new Map();
+// Module-memoized inked-component textures. `repeat` (bays × storeys) is
+// effectively unique per building, so keying the whole texture by file+repeat
+// meant the same PNG was fetched + decoded hundreds of times — each decode firing
+// a full re-render (measured: ~795 renders / ~22s settle). Instead we decode each
+// PNG's *image* exactly once (`__inkedImage`, keyed by file) and share it across
+// lightweight per-repeat Texture objects (`__inkedTexCache`), which only differ in
+// their wrap/repeat. Result: N decodes = N distinct files, not N buildings.
+const __inkedImage = new Map(); // file -> { image, waiters:[{tex,onLoad}] }
+const __inkedTexCache = new Map(); // file@repeat -> Texture sharing the decoded image
 let __glazingTex = null; // shared inked-glass texture (built once)
 function inkedTexture(file, repeat, onLoad) {
   const key = repeat ? `${file}@${repeat[0]}x${repeat[1]}` : file;
   if (__inkedTexCache.has(key)) {
-    // Cache hit: texture already created. Call onLoad immediately so late
-    // callers (e.g. isolation path) still get a repaint even though the
-    // TextureLoader callback will never fire again.
-    if (onLoad) onLoad();
+    if (onLoad) onLoad(); // late caller still gets a repaint
     return __inkedTexCache.get(key);
   }
-  const tex = new THREE.TextureLoader().load(
-    new URL(`../assets/inked/${file}`, import.meta.url).href,
-    onLoad,
-  );
+  const tex = new THREE.Texture();
   tex.colorSpace = THREE.SRGBColorSpace;
   if (repeat) {
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
     tex.repeat.set(repeat[0], repeat[1]);
   }
   __inkedTexCache.set(key, tex);
+
+  let entry = __inkedImage.get(file);
+  if (entry?.image) {
+    tex.image = entry.image;
+    tex.needsUpdate = true;
+    if (onLoad) onLoad();
+    return tex;
+  }
+  if (!entry) {
+    entry = { image: null, waiters: [] };
+    __inkedImage.set(file, entry);
+    const img = new Image();
+    img.onload = () => {
+      entry.image = img;
+      for (const w of entry.waiters) {
+        w.tex.image = img;
+        w.tex.needsUpdate = true;
+        if (w.onLoad) w.onLoad();
+      }
+      entry.waiters = [];
+    };
+    img.src = new URL(`../assets/inked/${file}`, import.meta.url).href;
+  }
+  entry.waiters.push({ tex, onLoad });
   return tex;
 }
 
