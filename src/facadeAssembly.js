@@ -80,7 +80,15 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   });
   const bay = spec.bay ? lean(spec.bay) : null;
 
-  openings.push(...windowRects, ...storefronts, ...signBands, ...doors, ...boxes);
+  // Flush windows: the hero texture paints its own windows/sills/lintels (a
+  // complete full-facade illustration). Keep the rects authored in the spec for
+  // registration/interaction, but model NO relief — the wall mask must cover the
+  // openings so the painted art shows, and the recess/sill pass is skipped.
+  // Carving here just stamps misaligned wall-toned panes + duplicate stone sills
+  // over the drawing (the clutter bug). See window-decal-is-flush-not-recessed.
+  const flushWindows = spec.windows?.flush === true;
+  if (!flushWindows) openings.push(...windowRects);
+  openings.push(...storefronts, ...signBands, ...doors, ...boxes);
   for (const awning of awnings) {
     openings.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
   }
@@ -94,7 +102,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
 
   // Windows: recessed pane + tinted reveals + protruding sill.
   const windowRecess = meters(spec.windows?.recessM ?? 0.14);
-  for (const rect of windowRects) {
+  for (const rect of flushWindows ? [] : windowRects) {
     if (rect.shape && rect.shape !== "rect") {
       addShapedOpening(group, frame, rect, windowRecess, texture);
       continue;

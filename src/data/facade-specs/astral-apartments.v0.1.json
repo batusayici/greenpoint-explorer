@@ -1,7 +1,7 @@
 {
   "schemaVersion": "facade-spec.v0.6",
   "placeId": "astral-apartments",
-  "status": "flat_2026-06-23 (FULL-FACADE texture wired — openings emptied for the alignment-first verify pass. The previous center-only recess spec is archived at docs/visual-artifacts/astral-center-derivation/astral-apartments.center-segment-spec.archived.json; it no longer maps because the texture changed from the ~17.9m center segment to the whole 60.6m frontage. Re-derive openings on astral-apartments--franklin-full.png next, via derive-facade-spec.mjs + the recess editor.)",
+  "status": "flush_2026-06-23 (FULL-FACADE texture renders FLUSH — windows.flush:true. The full-facade render is a complete II-C illustration: windows, arched openings, stone sills, fire escapes and cornice are all PAINTED IN. Carving procedural recesses (recessM) over it stamped misaligned wall-toned panes, and sill:true stamped duplicate floating tan sill bars (FACADE_RELIEF.sillLit) — the clutter bug. flush:true keeps the authored rects (for future registration/interaction) but models NO relief: the wall mask covers the openings so the drawing shows, and the recess/sill pass is skipped. Same principle as the cornice de-dup (commit f2608ce) and window-decal-is-flush-not-recessed. The previous center-only recess spec is archived at docs/visual-artifacts/astral-center-derivation/astral-apartments.center-segment-spec.archived.json; it no longer maps because the texture changed from the ~17.9m center segment to the whole 60.6m frontage.)",
   "note": "Astral Apartments, 184 Franklin St (BIN 3064408). Face 3064408:frontage now carries ONE full-facade render across the entire Franklin frontage chord (fromM 0 / toM 60.6). 6 storeys: rusticated brownstone base, 4 floors red-brick punched windows + oriel bays, round-arch top-floor arcade, bracketed cornice + parapet railing + stepped gablets + central gable with oculus. Coords are face-local fractions across the FULL width (x from the north end, y from ground up).",
   "evidence": [
     "docs/reference/hero-evidence/astral/FACADE_GRAMMAR.md",
@@ -10,15 +10,9 @@
   ],
   "faces": {
     "3064408:frontage": {
-      "cornice": {
-        "y0": 0.9,
-        "y1": 0.928,
-        "projectionM": 0.45
-      },
       "doors": [],
       "windows": {
-        "recessM": 0.18,
-        "sill": true,
+        "flush": true,
         "rects": [
           {
             "x0": 0.071,
@@ -205,10 +199,10 @@
             "springY": 0.792
           },
           {
-            "x0": 0.02,
-            "x1": 0.041,
-            "y0": 0.626,
-            "y1": 0.693
+            "x0": 0.022,
+            "x1": 0.037,
+            "y0": 0.615,
+            "y1": 0.682
           },
           {
             "x0": 0.071,
@@ -349,10 +343,10 @@
             "y1": 0.693
           },
           {
-            "x0": 0.02,
-            "x1": 0.041,
-            "y0": 0.504,
-            "y1": 0.571
+            "x0": 0.022,
+            "x1": 0.038,
+            "y0": 0.486,
+            "y1": 0.566
           },
           {
             "x0": 0.071,
@@ -481,10 +475,10 @@
             "y1": 0.571
           },
           {
-            "x0": 0.02,
-            "x1": 0.041,
-            "y0": 0.379,
-            "y1": 0.447
+            "x0": 0.022,
+            "x1": 0.038,
+            "y0": 0.362,
+            "y1": 0.438
           },
           {
             "x0": 0.071,
@@ -601,10 +595,10 @@
             "y1": 0.447
           },
           {
-            "x0": 0.02,
-            "x1": 0.041,
-            "y0": 0.248,
-            "y1": 0.315
+            "x0": 0.023,
+            "x1": 0.038,
+            "y0": 0.243,
+            "y1": 0.313
           },
           {
             "x0": 0.181,
