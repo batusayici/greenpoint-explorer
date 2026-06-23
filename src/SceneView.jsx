@@ -2182,11 +2182,15 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
 
   // Parapet ring only on edges without a drawn cornice — spec'd street
   // faces carry their own cornice-to-roofline assembly, so a second
-  // geometric parapet would double the roofline there.
+  // geometric parapet would double the roofline there. A segmented frontage
+  // (Astral) paints its parapet/gable on the texture under the `:frontage` face
+  // key, NOT the per-edge `:role` key, so the cornice check below misses it —
+  // skip the franklin-role edges it covers so the painted parapet stands alone.
   const parapetHeight = 0.05;
   const parapetThickness = 0.024;
   for (const edge of building.edges) {
     if (FACADE_SPECS[`${building.bin}:${edge.role}`]?.cornice) continue;
+    if (composite?.frontage && edge.role === "franklin") continue;
     const { start, end } = edge;
     const segment = new THREE.Mesh(
       new THREE.BoxGeometry(edge.length + parapetThickness, parapetHeight, parapetThickness),
