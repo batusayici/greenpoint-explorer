@@ -33,6 +33,7 @@ import { composeInkedFacade } from "./inkedFacadeCompose.js";
 import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
 import { resolveFacadeFamily } from "./facadeFamily.js";
 import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
+import { resolveStorefrontUnit } from "./storefrontUnitResolve.js";
 import { resolveHasCornice, resolveFireEscape } from "./facadeToggleResolve.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
@@ -1476,9 +1477,7 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           kitParams.storefront = {
             units: binBays.map((bay, k) => ({
               label: resolveSignLabel(bay),
-              door: k % 2 === 0 ? "left" : "right",
-              awning: { has: isFoodTrade(bay.category) },
-              widthFrac: 1 / binBays.length,
+              ...resolveStorefrontUnit({ bay, index: k, params: kitParams, count: binBays.length }),
             })),
           };
         }
