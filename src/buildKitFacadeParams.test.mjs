@@ -95,3 +95,27 @@ test("corniceColor snaps to TRIM_TONES when overridden", () => {
   );
   assert.equal(p.corniceColor, nearestTrimToken(0xe2dcc9));
 });
+
+test("structural toggles fall through to undefined when absent", () => {
+  const p = buildKitFacadeParams(rec, "brick", {});
+  assert.equal(p.hasCornice, undefined);
+  assert.equal(p.storefrontAwning, undefined);
+  assert.equal(p.doorAwning, undefined);
+  assert.equal(p.doorAlign, undefined);
+  assert.equal(p.fireEscape, undefined);
+});
+
+test("structural toggles pass through verbatim when set", () => {
+  const p = buildKitFacadeParams(rec, "brick", {
+    hasCornice: false,
+    storefrontAwning: 0x27314d,
+    doorAwning: true,
+    doorAlign: "center",
+    fireEscape: "lattice",
+  });
+  assert.equal(p.hasCornice, false);
+  assert.equal(p.storefrontAwning, 0x27314d);
+  assert.equal(p.doorAwning, true);
+  assert.equal(p.doorAlign, "center");
+  assert.equal(p.fireEscape, "lattice");
+});

@@ -62,5 +62,19 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   // Cornice molding color (decorateInkedWall reads params.corniceColor; falls back
   // to a darkened wall tone when absent). Snapped to the trim set like window/door.
   if (ov.corniceTint != null) params.corniceColor = nearestTrimToken(Number(ov.corniceTint));
+  // Structural per-BIN toggles (Phase 8 facade-truth). Each is absent-means-
+  // fall-through: undefined leaves today's heuristic/allowlist default intact.
+  // booleans/enums — NOT colors — so no token snapping.
+  if (ov.hasCornice != null) params.hasCornice = ov.hasCornice;
+  if (ov.doorAwning != null) params.doorAwning = ov.doorAwning;
+  if (ov.doorAlign != null) params.doorAlign = ov.doorAlign;
+  // storefrontAwning: false=suppress, true=default fabric, hex number=color.
+  if (ov.storefrontAwning != null) {
+    params.storefrontAwning = typeof ov.storefrontAwning === "string"
+      ? Number(ov.storefrontAwning)        // "0xRRGGBB" → number
+      : ov.storefrontAwning;               // boolean or number, verbatim
+  }
+  // fireEscape: false=off, "standard"|"lattice"=on+variant, true=on(default).
+  if (ov.fireEscape != null) params.fireEscape = ov.fireEscape;
   return params;
 }
