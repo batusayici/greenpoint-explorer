@@ -26,3 +26,15 @@ test("fireEscape string forces on + selects variant", () => {
   assert.deepEqual(resolveFireEscape({ fireEscape: "lattice" }, false), { on: true, variant: "lattice" });
   assert.deepEqual(resolveFireEscape({ fireEscape: "standard" }, false), { on: true, variant: "relief" });
 });
+
+test("fireEscapeVariant lattice with absent fireEscape and auto=true", () => {
+  assert.deepEqual(resolveFireEscape({ fireEscapeVariant: "lattice" }, true), { on: true, variant: "lattice" });
+});
+
+test("fireEscapeVariant lattice with absent fireEscape and auto=false", () => {
+  assert.deepEqual(resolveFireEscape({ fireEscapeVariant: "lattice" }, false), { on: false, variant: "lattice" });
+});
+
+test("fireEscape standard wins over fireEscapeVariant lattice", () => {
+  assert.deepEqual(resolveFireEscape({ fireEscape: "standard", fireEscapeVariant: "lattice" }, false), { on: true, variant: "relief" });
+});

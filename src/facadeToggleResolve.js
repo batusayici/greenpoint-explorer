@@ -11,7 +11,10 @@ export function resolveHasCornice(params) {
 export function resolveFireEscape(params, auto) {
   const fe = params?.fireEscape;
   if (fe === false) return { on: false, variant: "relief" };
-  if (fe == null) return { on: auto, variant: "relief" };
   if (fe === "lattice") return { on: true, variant: "lattice" };
-  return { on: true, variant: "relief" }; // true | "standard"
+  if (fe != null) return { on: true, variant: "relief" }; // true | "standard"
+  // fe is null/undefined — check legacy fireEscapeVariant
+  const fev = params?.fireEscapeVariant;
+  if (fev != null) return { on: auto, variant: fev === "lattice" ? "lattice" : "relief" };
+  return { on: auto, variant: "relief" };
 }

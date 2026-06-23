@@ -132,13 +132,13 @@ export default function FacadeTruthEditor({ bin }) {
           <ColorRow label="window" value={win} onSample={() => sample("win")} onPick={setWin} tokens={TRIM_TONES} />
           <ColorRow label="door" value={door} onSample={() => sample("door")} onPick={setDoor} tokens={TRIM_TONES} />
           <ColorRow label="cornice" value={cornice} onSample={() => sample("cornice")} onPick={setCornice} tokens={TRIM_TONES} />
-          <Seg label="cornice" value={hasCornice} onPick={setHasCornice}
+          <Seg label="cornice on/off" value={hasCornice} onPick={setHasCornice}
                options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
           <Seg label="storefront awning" value={storefrontAwning} onPick={setStorefrontAwning}
                options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
           <Seg label="door awning" value={doorAwning} onPick={setDoorAwning}
                options={[{ v: true, t: "on" }, { v: false, t: "off" }]} />
-          <Seg label="door" value={doorAlign} onPick={setDoorAlign}
+          <Seg label="door align" value={doorAlign} onPick={setDoorAlign}
                options={[{ v: "left", t: "L" }, { v: "center", t: "C" }, { v: "right", t: "R" }]} />
           <Seg label="fire escape" value={fireEscape} onPick={setFireEscape}
                options={[{ v: false, t: "none" }, { v: "standard", t: "std" }, { v: "lattice", t: "lattice" }]} />
