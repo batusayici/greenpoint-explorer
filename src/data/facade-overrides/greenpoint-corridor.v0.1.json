@@ -118,6 +118,39 @@
       "doorTint": "0x1d1a16",
       "corniceTint": "0xe2dcc9"
     },
+    "3064795": {
+      "family": "brick",
+      "tint": "0xa85b40",
+      "windowTint": "0xcdbfa6",
+      "corniceTint": "0x9a6258",
+      "doorAlign": "center",
+      "fireEscape": "standard"
+    },
+    "3064796": {
+      "family": "brick",
+      "tint": "0x7e4731",
+      "windowTint": "0x6b2f28",
+      "fireEscape": "standard"
+    },
+    "3064797": {
+      "family": "brick",
+      "tint": "0xa85a3c",
+      "windowTint": "0x6b2f28",
+      "doorTint": "0x6b2f28",
+      "corniceTint": "0x6b2f28",
+      "fireEscape": false,
+      "hasStoop": false
+    },
+    "3064798": {
+      "family": "brick",
+      "tint": "0x7e4731",
+      "windowTint": "0xe2dcc9",
+      "doorTint": "0x4a3a2c",
+      "corniceTint": "0x4a3a2c",
+      "doorAlign": "center",
+      "fireEscape": false,
+      "hasStoop": false
+    },
     "3064799": {
       "tint": "0x7e4731",
       "windowTint": "0x9a6258",
