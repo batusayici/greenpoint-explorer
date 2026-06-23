@@ -39,7 +39,7 @@ import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
 import { buildDoorAwningGeometry } from "./doorAwningGeometry.js";
 import { edgeClearance, mostOpenExposedEdge, pickStreetFrontages } from "./streetFaceSelect.js";
-import { buildKitFacadeParams } from "./buildKitFacadeParams.js";
+import { buildKitFacadeParams, applyInkedOverride } from "./buildKitFacadeParams.js";
 import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
 import { composeStorefront } from "./storefrontCompose.js";
 import {
@@ -1449,8 +1449,12 @@ function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
 function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map()) {
   resetBuildingTruth(); // dev: rebuild the per-BIN facade-truth registry fresh each scene build
   scene.buildings.forEach((building, index) => {
-    const inkedParamsPre = INKED_FACADE_REAL.enabled
-      ? INKED_FACADE_REAL.buildings[building.bin]
+    // Hand-authored INKED_FACADE_REAL run: apply the per-BIN facade-truth override
+    // on top of the manual table so the editor's saves take effect on these BINs
+    // (corner 3064800 + its neighbors). Truth is registered below so the editor
+    // panel can also seed from them.
+    const inkedParamsPre = INKED_FACADE_REAL.enabled && INKED_FACADE_REAL.buildings[building.bin]
+      ? applyInkedOverride(INKED_FACADE_REAL.buildings[building.bin], FACADE_OVERRIDES[building.bin])
       : null;
     const distPre = Math.hypot(building.centroid.x, building.centroid.z);
     // Phase 8.1 — kit-route asset-backed typological buildings through the same
@@ -1492,6 +1496,28 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
       }
     }
     const inkedParams = inkedParamsPre ?? kitParams;
+    // Register truth for hand-authored INKED_FACADE_REAL buildings too. The kit
+    // path already registered above; this covers the manual run (corner 3064800 +
+    // neighbors) so the facade-truth editor can seed + persist them. family is
+    // undefined on the manual path unless the override set one — fall back to brick
+    // so the editor's material select has a valid value.
+    if (inkedParamsPre) {
+      registerBuildingTruth(building.bin, {
+        family: inkedParamsPre.family ?? "brick",
+        tint: inkedParamsPre.tint,
+        windowTint: inkedParamsPre.windowTint,
+        doorTint: inkedParamsPre.doorTint,
+        corniceColor: inkedParamsPre.corniceColor,
+        hasCornice: inkedParamsPre.hasCornice,
+        storefrontAwning: inkedParamsPre.storefrontAwning,
+        doorAwning: inkedParamsPre.doorAwning,
+        doorAlign: inkedParamsPre.doorAlign,
+        fireEscape: inkedParamsPre.fireEscape,
+        hasStoop: inkedParamsPre.hasStoop,
+        fireEscapeColor: inkedParamsPre.fireEscapeColor,
+        addr: inkedParamsPre.addr ?? building.address ?? building.sourceProperties?.address,
+      });
+    }
     const treatment = selectTreatment({
       building,
       dist: distPre,

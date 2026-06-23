@@ -82,3 +82,40 @@ export function buildKitFacadeParams(building, family, override = undefined) {
   if (ov.fireEscape != null) params.fireEscape = ov.fireEscape;
   return params;
 }
+
+// Merge a per-BIN facade-truth override onto a HAND-AUTHORED INKED_FACADE_REAL
+// params object (the corner/hero-adjacent run that has no `family` and renders on
+// the manual decorateInkedWall path). Mirrors the override conversions in
+// buildKitFacadeParams so the editor's saves take effect on these BINs too —
+// previously the manual table was consumed verbatim and FACADE_OVERRIDES was
+// never applied to them. Returns a new object; `base` is left untouched.
+// decorateInkedWall reads windowTint/doorTint/corniceColor/fireEscapeColor/
+// hasCornice/fireEscape/hasStoop/doorAwning/doorAlign directly (not gated on
+// family), so merged fields render without flipping these onto the kit path.
+export function applyInkedOverride(base, override = undefined) {
+  if (!override || typeof override !== "object") return base;
+  const ov = override;
+  const out = { ...base };
+  // family/material is the kit-layer signal; only set it if the override does,
+  // otherwise the byte-stable manual entry keeps family: undefined.
+  if (ov.family != null) out.family = ov.family;
+  const palFamily = out.family ?? base.family ?? "brick";
+  if (ov.tint != null) out.tint = nearestPaletteToken(Number(ov.tint), palFamily);
+  if (ov.storeys != null) out.storeys = ov.storeys;
+  if (ov.bays != null) out.bays = ov.bays;
+  if (ov.windowTint != null) out.windowTint = nearestTrimToken(Number(ov.windowTint));
+  if (ov.doorTint != null) out.doorTint = nearestTrimToken(Number(ov.doorTint));
+  if (ov.corniceTint != null) out.corniceColor = nearestTrimToken(Number(ov.corniceTint));
+  if (ov.fireEscapeColor != null) out.fireEscapeColor = nearestTrimToken(Number(ov.fireEscapeColor));
+  if (ov.hasCornice != null) out.hasCornice = ov.hasCornice;
+  if (ov.doorAwning != null) out.doorAwning = ov.doorAwning;
+  if (ov.doorAlign != null) out.doorAlign = ov.doorAlign;
+  if (ov.hasStoop != null) out.hasStoop = ov.hasStoop;
+  if (ov.storefrontAwning != null) {
+    out.storefrontAwning = typeof ov.storefrontAwning === "string"
+      ? Number(ov.storefrontAwning)
+      : ov.storefrontAwning;
+  }
+  if (ov.fireEscape != null) out.fireEscape = ov.fireEscape;
+  return out;
+}
