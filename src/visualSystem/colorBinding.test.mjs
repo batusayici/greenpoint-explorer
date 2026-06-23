@@ -6,7 +6,11 @@ import { MATERIAL_WALL_TONES } from "./palette.js";
 
 test("a near-black true color snaps to the darkest in-family token", () => {
   const tok = nearestPaletteToken(0x050505, "modern-flat");
-  assert.equal(tok, 0x1d201e); // black-adjacent, still in palette
+  // Robust to gamut changes: a near-black sample must resolve to the family's
+  // lowest-luminance member (the darkest ramp stop), not a hard-coded literal.
+  const lumSum = (h) => ((h >> 16) & 255) + ((h >> 8) & 255) + (h & 255);
+  const darkest = MATERIAL_WALL_TONES["modern-flat"].reduce((a, b) => (lumSum(b) < lumSum(a) ? b : a));
+  assert.equal(tok, darkest);
 });
 
 test("a red-brick true color snaps to a warm brick token", () => {

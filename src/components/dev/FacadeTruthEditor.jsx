@@ -6,6 +6,8 @@ import { TRIM_TONES, MATERIAL_WALL_TONES } from "../../visualSystem/palette.js";
 
 const hex6 = (n) => "0x" + (n >>> 0).toString(16).padStart(6, "0").slice(-6);
 const cssHex = (n) => "#" + (n >>> 0).toString(16).padStart(6, "0").slice(-6);
+// Perceptual luminance — orders the swatch pickers light→dark for a clean ramp.
+const lum = (n) => 0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255);
 
 // After a Save, reload so the scene picks up the written override JSON — but carry
 // the current camera framing through the existing ?t/?f/?a params (and ?truthbin to
@@ -145,8 +147,8 @@ function ColorRow({ label, value, onSample, onPick, tokens }) {
           background: value != null ? cssHex(value) : "transparent" }}
       />
       <code style={{ fontSize: 11, opacity: 0.85, minWidth: 56 }}>{value != null ? hex6(value) : "—"}</code>
-      <span style={{ display: "flex", flexWrap: "wrap", gap: 3, marginLeft: "auto", maxWidth: 132, justifyContent: "flex-end" }}>
-        {tokens.map((t) => (
+      <span style={{ display: "flex", flexWrap: "wrap", gap: 3, marginLeft: "auto", maxWidth: 180, justifyContent: "flex-end" }}>
+        {[...tokens].sort((a, b) => lum(b) - lum(a)).map((t) => (
           <span
             key={t}
             title={hex6(t) + " — click to select"}

@@ -54,66 +54,85 @@ export const TYPOLOGY_PALETTE = {
 // wall tones a building's TRUE color may snap to. nearestPaletteToken (colorBinding.js)
 // picks the closest of these; every entry is already a no-miss palette tone, so
 // snapping can never leave the palette. Spec-only: NOT applied by the renderer (Phase 8).
-// Element [0] is the family DEFAULT (used when no tint override is set) and is
-// pinned by buildKitFacadeParams tests — keep it first. Appended tones widen the
-// authoring/snapping gamut; every added value is already a sanctioned token
-// elsewhere in this module (BRICK_TONES / heroes / TYPOLOGY_PALETTE / II_PALETTE.
-// context / MASSING), so the per-family set stays no-miss and material-plausible.
-export const MATERIAL_WALL_TONES = {
-  brick: [
-    0xb5664a, 0x9c5a3c, 0x7d5a44, 0x6f4a39, // original spread
-    0xa8704f, 0xc07a55, // BRICK_TONES — lighter terracotta + bright warm brick
-    0xa04432, 0xa85a3c, // heroes premier-franklin / 144-franklin red-brick + terracotta
-    0x4a4039, // heroes sonnys-corner — dark brick
-    0x9a7e58, // heroes sereneco — weathered buff brick
-    0xb89a7e, // TYPOLOGY_PALETTE typological.brick — light buff
-  ],
-  // clapboard / painted-masonry / modern-flat carry LIGHT painted-facade tones
-  // (Greenpoint has many pale-painted rowhouses) alongside the darker stains —
-  // muted, paper-adjacent II-C values so a light building stays in-palette.
-  clapboard: [
-    0xe2dcc9, 0xd6dccf, 0xc7cfd2, 0xd8c8a4, 0xc8c2b2, 0x9a9c86, 0x6f7a6a, 0x4a4f44, // original spread
-    0xd9cdb4, 0xcfc0a6, // II_PALETTE.context — warm pale paint
-    0xc7b896, // MASSING.parapet — warm cream
-  ],
-  brownstone: [
-    0x8a5a3c, 0x6f4632, 0x5a3a28, // original spread
-    0x7d5a44, // brick/brown crossover — mid chocolate
-    0x6b5e52, // MASSING.partyWallBlend — warm brown-grey
-    0x4a3a2c, // FACADE_RELIEF.joineryCheek — deep brown
-  ],
-  "painted-masonry": [
-    0xe6dfce, 0xd8d2c0, 0xc8c2b2, 0xa8a090, 0x7c766a, 0x46443f, // original spread
-    0xb4a890, // TYPOLOGY_PALETTE typological.commercial — greige
-    0xd9cdb4, // II_PALETTE.context — warm pale
-    0xc7b896, // MASSING.parapet — warm cream
-  ],
-  "modern-flat": [
-    0xdad3c4, 0xcabfa7, 0x968b78, 0x46443f, 0x1d201e, // original spread
-    0xb8ae99, // II_PALETTE.concrete — pale concrete
-    0x6f6a60, // II_PALETTE.asphalt — neutral mid-grey
-  ],
-  warehouse: [
-    0x968b78, 0x7d5a44, 0x5a564c, 0x2a241c, // original spread
-    0x6b5e52, // MASSING.partyWallBlend — warm brown-grey
-    0x5a3a28, // dark brown — stained timber/industrial brick
-  ],
+// Tonal-ramp helpers — broaden the authoring gamut with lighter + darker shades
+// while staying inside the II-C warm range: lighter shades lerp toward PAPER,
+// darker toward INK (never pure #fff/#000). Generated shades are palette tokens
+// by construction (defined in this module), so the truth-editor pickers stay
+// no-miss. Pure + deterministic; computed once at module load.
+const TONE_PAPER = 0xece3cf; // II-C lightest (warm paper)
+const TONE_INK = 0x1d1a16; // II-C darkest (warm near-black)
+const _ch = (h) => [(h >> 16) & 255, (h >> 8) & 255, h & 255];
+const _mix = (a, b, t) => {
+  const [ar, ag, ab] = _ch(a);
+  const [br, bg, bb] = _ch(b);
+  const r = Math.round(ar + (br - ar) * t);
+  const g = Math.round(ag + (bg - ag) * t);
+  const bl = Math.round(ab + (bb - ab) * t);
+  return (r << 16) | (g << 8) | bl;
+};
+// Per hue anchor → [+2 lighter, anchor, +2 darker]. Two lift/shade steps each so
+// every material spans a broad, evenly-stepped light→dark range.
+const _shades = (anchor) => [
+  _mix(anchor, TONE_PAPER, 0.42),
+  _mix(anchor, TONE_PAPER, 0.21),
+  anchor,
+  _mix(anchor, TONE_INK, 0.3),
+  _mix(anchor, TONE_INK, 0.58),
+];
+// Build a family ramp from hue anchors. anchors[0]'s true value is pushed first
+// so element [0] stays the family DEFAULT (buildKitFacadeParams uses tones[0]);
+// remaining slots are each anchor's light→dark shades, exact-deduped.
+const _ramp = (anchors) => {
+  const out = [];
+  const seen = new Set();
+  const push = (v) => { if (!seen.has(v)) { seen.add(v); out.push(v); } };
+  push(anchors[0]);
+  for (const a of anchors) for (const s of _shades(a)) push(s);
+  return out;
 };
 
-// Per-building TRIM tones (window frame/sash + door leaf) for frontage facade
-// truth. Independent of wall tone: a maroon-brick building can carry black trim.
-// All are inked II-C values (never pure #000/#fff). The truth editor snaps a
-// sampled pixel to the nearest of these; genuinely-new trims are appended here
-// as a deliberate commit, keeping the no-miss rule intact.
+// Phase 7.4 / Phase 8 — per-family wall-tone gamut. Each family is a broad
+// light→dark ramp generated from real II-C material hue anchors; nearestPaletteToken
+// snaps a building's true color to the closest, and the ?facadeedit=1 facade picker
+// shows the same set. anchors[0] is the family default (== element [0]).
+export const MATERIAL_WALL_TONES = {
+  // warm red → terracotta → brown, each lifted toward paper and shaded toward ink
+  brick: _ramp([0xb5664a, 0xa85a3c, 0x7d5a44]),
+  // pale painted facades (cream, sage) through to a dark muted green stain
+  clapboard: _ramp([0xe2dcc9, 0x9a9c86, 0x6f7a6a]),
+  // chocolate brownstone range
+  brownstone: _ramp([0x8a5a3c, 0x6f4632]),
+  // painted masonry: cream → greige → taupe
+  "painted-masonry": _ramp([0xe6dfce, 0xa8a090, 0x7c766a]),
+  // neutral modern: light warm-grey → mid grey → charcoal
+  "modern-flat": _ramp([0xdad3c4, 0x968b78, 0x46443f]),
+  // industrial: warm grey, brick-brown, charcoal
+  warehouse: _ramp([0x968b78, 0x7d5a44, 0x5a564c]),
+};
+
+// Per-building TRIM tones (window frame/sash + door leaf + cornice) for frontage
+// facade truth. Independent of wall tone: a maroon-brick building can carry black
+// trim. All are inked II-C values (never pure #000/#fff). A neutral warm spine
+// (off-white → near-black) plus four accent hues, each with light / mid / dark
+// shades, gives the ?facadeedit=1 window/door/cornice pickers a broad selection.
+// Invariant: 0x1d1a16 is the single darkest token (lowest luminance) so a near-
+// black sample resolves there; keep any new accent dark lighter than it.
 export const TRIM_TONES = [
-  0x1d1a16, // near-black inked (dark painted trim — the "black" frame/door)
-  0xe2dcc9, // off-white (white-painted sash/cornice; lighter than the cream below)
-  0xcdbfa6, // warm cream (light painted trim; == MASSING.transomBand)
-  0x2e3b32, // forest green (== bar awning tint)
-  0x6b2f28, // oxblood / barn red
-  0x3f4650, // slate blue-grey
+  // neutral warm spine — off-white → near-black
+  0xe2dcc9, // off-white (white-painted sash/cornice)
+  0xcdbfa6, // warm cream (== MASSING.transomBand)
   0x8a8270, // warm mid-grey (greige painted trim)
-  0x4a3a2c, // dark stained wood (== FACADE_RELIEF.joineryCheek family)
+  0x57504a, // deep warm taupe
+  0x2a241c, // near-black brown (== MASSING.awningDefault family)
+  0x1d1a16, // near-black inked — DARKEST (the "black" frame/door)
+  // forest green — light / mid / dark
+  0x6f7a6a, 0x4f5b48, 0x2e3b32,
+  // oxblood / barn red — light / mid / dark
+  0x9a6258, 0x6b2f28, 0x4a2622,
+  // slate blue-grey — light / mid / dark
+  0x6b7480, 0x3f4650, 0x2a313a,
+  // stained wood — light / mid / dark (mid == FACADE_RELIEF.joineryCheek)
+  0x8a6f54, 0x4a3a2c, 0x352c22,
 ];
 
 // Phase 7.3 — typological roof TONE per family (flat + quiet, multi-angle-safe).
