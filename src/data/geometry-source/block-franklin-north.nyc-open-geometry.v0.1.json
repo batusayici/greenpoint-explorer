@@ -10,9 +10,9 @@
   "source": {
     "footprints": "https://data.cityofnewyork.us/resource/5zhs-2jue.json",
     "pluto": "https://data.cityofnewyork.us/resource/64uk-42ks.json",
-    "pulledFor": "Franklin St — Greenpoint Ave to Huron St"
+    "pulledFor": "Franklin St \u2014 Greenpoint Ave to Huron St"
   },
-  "recordCount": 160,
+  "recordCount": 161,
   "footprintRecords": [
     {
       "id": "3063897",
@@ -8345,19 +8345,21 @@
     },
     {
       "id": "3064253",
-      "source": "nyc-open-5zhs-2jue+pluto-64uk-42ks",
+      "source": "nyc-open-5zhs-2jue+pluto-64uk-42ks+podium-split-imagery-derived",
       "sourceProperties": {
         "bin": "3064253",
         "baseBbl": "3025320001",
         "mapplutoBbl": "3025320001",
-        "heightRoof": "128.28857873",
+        "heightRoof": "26.0",
         "constructionYear": "1949",
-        "numFloors": 12,
+        "numFloors": 2,
         "yearBuilt": 1949,
         "bldgClass": "D7",
         "landUse": "4",
         "comArea": 18966,
-        "resArea": 20016
+        "resArea": 20016,
+        "_massingSplit": "podium",
+        "_heightSource": "imagery-derived (PLUTO heightRoof is the tower max, not the podium)"
       },
       "wgs84Polygon": [
         {
@@ -8403,6 +8405,47 @@
         {
           "lon": -73.95752377408,
           "lat": 40.732321013062
+        }
+      ]
+    },
+    {
+      "id": "3064253-tower",
+      "source": "nyc-open-5zhs-2jue+pluto-64uk-42ks+tower-split-imagery-derived",
+      "sourceProperties": {
+        "bin": "3064253-tower",
+        "baseBbl": "3025320001",
+        "mapplutoBbl": "3025320001",
+        "heightRoof": "128.28857873",
+        "constructionYear": "1949",
+        "numFloors": 12,
+        "yearBuilt": 1949,
+        "bldgClass": "D7",
+        "landUse": "2",
+        "resArea": 20016,
+        "_massingSplit": "tower",
+        "_footprintSource": "imagery-derived from aerial; biased toward India St (south) corner; rises from 2-story podium",
+        "_baseHeightFt": 26
+      },
+      "wgs84Polygon": [
+        {
+          "lon": -73.95761102,
+          "lat": 40.73227525
+        },
+        {
+          "lon": -73.95775149,
+          "lat": 40.73225929
+        },
+        {
+          "lon": -73.95772887,
+          "lat": 40.73214298
+        },
+        {
+          "lon": -73.9575884,
+          "lat": 40.73215894
+        },
+        {
+          "lon": -73.95761102,
+          "lat": 40.73227525
         }
       ]
     }

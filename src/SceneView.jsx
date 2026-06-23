@@ -1702,8 +1702,14 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     } else if (treatment === "typological") {
       const deco = new THREE.Group();
       deco.userData = { bin: building.bin }; // facade clicks resolve the BIN (facade-truth editor)
+      // A tower rising from a shorter podium (_baseHeightFt) suppresses its window
+      // rows within the podium zone so they don't cut into the commercial mass.
+      const baseHeightFt = Number.parseFloat(building.sourceProperties?._baseHeightFt);
+      const baseFraction = Number.isFinite(baseHeightFt) && building.height > 0
+        ? Math.min(0.9, (baseHeightFt * 0.3048 * scene.projection.scale) / building.height)
+        : 0;
       for (const edge of footprintEdges(building.polygon, building.centroid)) {
-        decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology);
+        decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology, baseFraction);
       }
       three.add(deco);
     }
@@ -2105,7 +2111,10 @@ function inkedCornerSecondEdgeIndex(edges, frontIndex, scene) {
 // of the brick, not real recesses) so rotated views read as real building
 // backs instead of flat colored slabs. The decoration meshes are parented
 // under `wall`, so they inherit its per-view cull visibility for free.
-function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false, typology = null) {
+// `baseFraction` (0..1): a podium zone at the bottom of the wall where no windows
+// or storey lines are drawn — used by a tower that rises from a shorter commercial
+// podium so its lowest rows don't cut into the podium mass.
+function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false, typology = null, baseFraction = 0) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   const lengthM = edge.length / upm;
@@ -2149,9 +2158,10 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
     : Math.min(6, Math.max(2, Math.round(heightM / 3.5)));
   const cols = Math.min(6, Math.max(1, Math.floor(lengthM / 4.5)));
 
-  // Faint horizontal storey lines (skip ground line and roofline).
+  // Faint horizontal storey lines (skip ground line, roofline, and podium zone).
   for (let f = 1; f < floors; f += 1) {
     const y = f / floors;
+    if (y < baseFraction) continue;
     target.add(quad(0.04, 0.96, y - 0.004, y + 0.004, 0.006, courseColor, 0.35));
   }
 
@@ -2176,6 +2186,7 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
     for (let f = floorStart; f < floors; f += 1) {
       const cyBottom = (f + 0.26) / floors;
       const cyTop = (f + 0.78) / floors;
+      if (cyBottom < baseFraction) continue; // window sits in the podium zone — skip
       const x0 = cx - winW / 2;
       const x1 = cx + winW / 2;
       target.add(quad(x0, x1, cyBottom, cyTop, 0.004, windowColor, 1));
