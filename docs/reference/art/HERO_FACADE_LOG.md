@@ -286,6 +286,25 @@ a banked fix regressed or a playbook rule was skipped.
   presented frame) for proof shots, not a DOM-side data URL.
 
 ### The Astral — BIN 3064408 (184 Franklin) — IN PROGRESS (first full-block hero)
+- **Update (2026-06-23, v2 oriel/recess pass):** v1's full-facade render drew the
+  oriels FLAT (single punched windows) → `oriel3` had no side-panes to fold (would
+  smear grey). Re-rendered as `astral-apartments--franklin-full-v2.png` with the
+  bays drawn as **3-window canted bays** (render pkg `astral-full-facade.v2.md`),
+  2 per flank. Wired: composite→v2, `flush` removed, recessed windows
+  (recessM 0.16, sill:false), 4 `oriel3` bays (projM 0.6, cf 0.36, floors 2-5),
+  floor-6 arch arcade. **Engine:** added `spec.bays[]` (array) to facadeAssembly —
+  a frontage carries several oriels; singular `spec.bay` unchanged (230 tests green).
+  - **Bug nearly mis-fixed:** bays first read as thin dark shelves → I suspected an
+    inverted frontage normal. An **exaggerate-depth test** (recessM 0.8 / projM 3)
+    proved the direction is CORRECT (bays bulge toward the street) — they were just
+    subtle at scene scale; the shelves are the (correct) dark top-caps. **Lesson:
+    disambiguate depth direction by exaggerating, don't flip the normal on a hunch.**
+  - **Open (editor pass):** offline grid is rough → windows GHOST (recess pane vs
+    painted opening misalign); pixel-register in `?facadeedit=1`. Bay caps read as
+    prominent dark shelves (they end just below the arcade, not under a cornice);
+    center pavilion is a seed; India/Java faces unbuilt. Spec `status` marks it
+    firstpass, not done. **Auto-derive + offline grid both FAIL on this inked,
+    fire-escape-dense facade** — the editor is the registration tool here.
 - **Status (2026-06-23):** center segment **BUILT (v1)** end-to-end — placed on
   the frontage chord, flat with hand-seeded arched recesses; verified in-engine
   at all four angles. Pending: recess-editor refinement of opening positions

@@ -956,7 +956,7 @@ const FACADE_COMPOSITES = {
   // along the chord from its north end — adjust against india corner.jpeg
   // (the full-frontage oblique, formerly IMG_0971) in-engine.
   "astral-apartments": {
-    key: "../assets/textures/franklin/astral-apartments--franklin-full.png",
+    key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.png",
     byBin: {},
     frontage: {
       // The baked texture's main cornice/roofline (top of the last solid wall
@@ -972,7 +972,7 @@ const FACADE_COMPOSITES = {
       // archived center-only spec is in docs/visual-artifacts/.
       segments: [
         {
-          key: "../assets/textures/franklin/astral-apartments--franklin-full.png",
+          key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.png",
           fromM: 0,
           toM: 60.6,
           leftEnd: "north",
@@ -3214,7 +3214,10 @@ function exposedSegments(edge, siblings) {
 // density-based auto-trim below would re-crop their sparse parapet/gable top
 // (it reads as low-density paper) and shift every UV, so skip it and map the
 // baked image 1:1. Match by filename suffix.
-const PRETRIMMED_TEXTURES = ["astral-apartments--franklin-full.png"];
+// v1 Astral was a tight content crop (pretrimmed); v2 carries a cream margin and
+// is auto-trimmed by loadTrimmedTexture — its spec coords are authored on that
+// trim (derive-facade-spec.mjs replicates it), so it must NOT be listed here.
+const PRETRIMMED_TEXTURES = [];
 
 function loadTrimmedTexture(url, onReady) {
   const image = new Image();

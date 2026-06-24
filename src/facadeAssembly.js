@@ -78,7 +78,13 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const shift = skew * yMid;
     return { ...awning, x0: awning.x0 + shift, x1: awning.x1 + shift };
   });
-  const bay = spec.bay ? lean(spec.bay) : null;
+  // One face may carry several oriels (e.g. a full-block frontage). `spec.bay`
+  // (singular) stays valid for single-bay corners (Premier); `spec.bays` (array)
+  // adds the rest. Both lean with the facade skew like every other opening.
+  const bays = [
+    ...(spec.bay ? [spec.bay] : []),
+    ...(Array.isArray(spec.bays) ? spec.bays : []),
+  ].map(lean);
 
   // Flush windows: the hero texture paints its own windows/sills/lintels (a
   // complete full-facade illustration). Keep the rects authored in the spec for
@@ -92,7 +98,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   for (const awning of awnings) {
     openings.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
   }
-  if (bay) openings.push(bay);
+  openings.push(...bays);
   if (spec.cornice) openings.push({ x0: 0, x1: 1, ...spec.cornice });
 
   // Wall mask: cover everything that is not an opening, at the wall plane.
@@ -269,7 +275,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // Bay window: a real shallow volume — textured front, dark wood cheeks
   // matching the drawn bay's joinery, and a dark little roof (never a lit
   // cap: the bay tucks under the cornice shadow).
-  if (bay) {
+  for (const bay of bays) {
     const projection = meters(bay.projectionM ?? 0.5);
     if (bay.plan === "oriel3") {
       // Faceted oriel: angled returns carry the painted side windows.
@@ -354,7 +360,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // alignment against the drawn artwork is checkable in 3D (?specdebug=1).
   if (debug) {
     debugRects.push(...windowRects);
-    if (bay) debugRects.push(bay);
+    debugRects.push(...bays);
     for (const list of [storefronts, signBands, doors, boxes]) {
       debugRects.push(...list);
     }
