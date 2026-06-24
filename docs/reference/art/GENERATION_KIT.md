@@ -22,10 +22,15 @@ overlay gate → one in-engine check.**
 1. **Pre-render (photos first).** Gather evidence photos that fully cover the
    building — at least one wide shot per street face and one corner shot; the
    photos ARE the structural truth the model copies from, so a face the
-   photos don't show is a face the render will invent. Fill the reusable
-   prompt scaffold's mechanical slots only (street names, fold % from real
-   wall meters, canvas px) — never describe the architecture in prose; the
-   prompt makes the model count floors/openings from the photos itself.
+   photos don't show is a face the render will invent. For ordinary brick
+   corner/mid-block heroes, paste the universal prompt in
+   [`HERO_PROMPT.md`](HERO_PROMPT.md) as-is and swap only the attached photos —
+   no per-building fill-ins; the photos carry the subject's identity and the
+   fold gets measured from the render later (step 3). The fill-in scaffold
+   below remains the precision variant for landmarks or a building that needs
+   an explicit corner fold / neighbor-exclusion line. Either way, never
+   describe the architecture in prose — the prompt makes the model count
+   floors/openings from the photos itself.
 2. **Render once, audit before accepting.** Run the scaffold's audit checklist
    on the raw render against the photos (window-row count, column count per
    face, ground-floor openings in order, corner condition). Re-render only
@@ -274,7 +279,12 @@ filename automatically (no code change needed).
   single-face slots.
 - **Resolution:** long edge 2048px at the aspect ratio listed per slot.
 
-## Prompt Scaffold (image-to-image, GPT-5.5) — REUSABLE
+## Prompt Scaffold (image-to-image, GPT-5.5) — PRECISION VARIANT
+
+> For ordinary heroes use the zero-fill-in universal prompt in
+> [`HERO_PROMPT.md`](HERO_PROMPT.md). Use this fill-in scaffold only when you
+> want explicit control — a landmark, an awkward corner fold, or a building
+> that keeps borrowing a neighbor and needs it named to exclude.
 
 One prompt for every building. **The photos are the binding truth source, not
 prose.** The prompt never describes the building's architecture — describing
