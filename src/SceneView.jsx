@@ -38,6 +38,7 @@ import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
 import { resolveStorefrontUnit } from "./storefrontUnitResolve.js";
 import { signatureFor, tokenColor } from "./storefrontSignatures.js";
 import { planStorefrontSeating } from "./storefrontSeating.js";
+import { planParapetInsets } from "./parapetInsets.js";
 import { resolveHasCornice, resolveFireEscape, resolveHasStoop } from "./facadeToggleResolve.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
@@ -1758,6 +1759,11 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
             // the corner like the real shop), not just the primary face.
             wrapCorner: binSigs.some((s) => s?.awning?.wrapCorner === true),
           };
+          // R2 building signature (per-BIN roofline/window cues — Elder Greene's
+          // stone-diamond parapet + a through-window AC). Once per building: the
+          // first signed bay that carries a `building` block wins.
+          const buildingSig = binSigs.find((s) => s?.building)?.building;
+          if (buildingSig) kitParams.buildingSignature = buildingSig;
         }
       }
     }
@@ -3287,6 +3293,47 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     };
     const ready = inkedCorniceTexture((tex) => { drawCornice(tex); requestRender?.(); });
     if (ready) drawCornice(ready);
+  }
+  // R2 building signature (per-BIN roofline/window cues; absent => byte-stable).
+  // Elder Greene: a row of light-stone DIAMOND insets across the parapet band +
+  // a through-window AC unit. Street faces only (openingsFace).
+  const bSig = params.buildingSignature;
+  if (bSig && openingsFace && edge.length / upm > 4) {
+    const edgeLengthM = edge.length / upm;
+    // Stone diamonds on the upper parapet band, just below the cornice molding.
+    if (bSig.parapet?.insets === "diamond") {
+      const stone = tokenColor(bSig.parapet.tintToken) ?? MASSING.parapet;
+      const { insets } = planParapetInsets({ edgeLengthM });
+      const ry = 0.35 / heightM;            // ~0.35 m tall half-height
+      const rx = 0.26 / edgeLengthM;        // ~0.26 m wide half-width
+      const cy = (1 - corniceFrac) - ry - 0.012; // sit on the brick just under the crown
+      const off = WALL_PLANE + 0.01;        // proud, reads as a raised stone inset
+      for (const d of insets) {
+        const cx = d.u;
+        quad3(point(cx, cy + ry, off), point(cx + rx, cy, off),
+          point(cx, cy - ry, off), point(cx - rx, cy, off), null, { tint: stone });
+      }
+    }
+    // Through-window AC: a small grey box under one upper-floor window (right-ish,
+    // matching the photo). Picks the highest window nearest cx≈0.65.
+    if (bSig.windowAC && Array.isArray(f.windows) && f.windows.length) {
+      const ac = tokenColor(bSig.windowAC.tintToken) ?? II_PALETTE.context[1];
+      const upper = f.windows.filter((w) => w.y0 > 0.45);
+      const pick = (upper.length ? upper : f.windows)
+        .slice().sort((a, b) => Math.abs((a.x0 + a.x1) / 2 - 0.65) - Math.abs((b.x0 + b.x1) / 2 - 0.65))[0];
+      if (pick) {
+        const cxw = (pick.x0 + pick.x1) / 2;
+        const halfW = Math.min((pick.x1 - pick.x0) * 0.34, 0.45 / edgeLengthM);
+        const ax0 = cxw - halfW, ax1 = cxw + halfW;
+        const ay1 = pick.y0 - 0.004, ay0 = ay1 - 0.55 / heightM; // hangs ~0.55 m below the sill
+        const projF = WALL_PLANE + 0.4 * upm, projB = WALL_PLANE + 0.006; // ~0.4 m proud (upm = units/m)
+        // front, bottom, two sides — a boxy unit jutting from the wall
+        quad3(point(ax0, ay0, projF), point(ax1, ay0, projF), point(ax1, ay1, projF), point(ax0, ay1, projF), null, { tint: ac });
+        quad3(point(ax0, ay0, projB), point(ax1, ay0, projB), point(ax1, ay0, projF), point(ax0, ay0, projF), null, { tint: darken(ac, 0.5) });
+        quad3(point(ax0, ay0, projB), point(ax0, ay0, projF), point(ax0, ay1, projF), point(ax0, ay1, projB), null, { tint: darken(ac, 0.7) });
+        quad3(point(ax1, ay0, projF), point(ax1, ay0, projB), point(ax1, ay1, projB), point(ax1, ay1, projF), null, { tint: darken(ac, 0.7) });
+      }
+    }
   }
   // Party-wall seams: hairline shadow lines at both edges so abutting buildings
   // read as distinct without becoming black columns. A dark tone of the

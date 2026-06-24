@@ -242,6 +242,8 @@ export const SIGNATURE_PALETTE = {
   inkBlack: 0x1d1a16, // storefront millwork / black frame (== TRIM_TONES darkest)
   signalAmber: 0xcc9a3b, // gold transom text / blade sign (== II_PALETTE.signalAmber)
   sage: 0x9a9c86, // sage bistro chairs (== MATERIAL_WALL_TONES clapboard sage anchor)
+  stoneLight: 0xc7b896, // light-stone parapet diamond insets (== MASSING.parapet)
+  acGrey: 0x8a8270, // through-window AC unit metal (== TRIM_TONES warm mid-grey)
 };
 
 // Massing/shading tones used by the typological wall + roof pass.
