@@ -956,15 +956,17 @@ const FACADE_COMPOSITES = {
   // along the chord from its north end — adjust against india corner.jpeg
   // (the full-frontage oblique, formerly IMG_0971) in-engine.
   "astral-apartments": {
-    key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.png",
+    key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.trim.png",
     byBin: {},
     frontage: {
-      // The baked texture's main cornice/roofline (top of the last solid wall
-      // course) sits at v≈0.887; the parapet railing + stepped gablets + central
-      // gable cartouche rise above it. Drop the flat roof to this line so only
-      // those elements project above the roofline (measured off the baked crop;
-      // see buildHeroBuilding + keyPaperAboveRoofline).
-      roofV: 0.887,
+      // The texture's main cornice/roofline (top of the last solid wall course)
+      // sits at v≈0.86 of the pretrimmed --v2.trim.png crop; the parapet railing
+      // + stepped gablets + central gable cartouche rise above it. Drop the flat
+      // roof to this line so only those elements project above the roofline (see
+      // buildHeroBuilding + keyPaperAboveRoofline). Was 0.887 against the old
+      // runtime-trimmed crop, which flat-cut the crown's sparse top rows; the
+      // .trim.png keeps the full crown and y-coords scaled ×0.9696 to suit.
+      roofV: 0.86,
       // ONE continuous full-facade render across the whole 60.6m frontage chord
       // (replaced the 3-segment plan: separate sheets drifted on floor lines and
       // dropped a residential floor — see docs/reference/art/prompts/
@@ -972,7 +974,7 @@ const FACADE_COMPOSITES = {
       // archived center-only spec is in docs/visual-artifacts/.
       segments: [
         {
-          key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.png",
+          key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.trim.png",
           fromM: 0,
           toM: 60.6,
           leftEnd: "north",
@@ -3225,7 +3227,14 @@ function exposedSegments(edge, siblings) {
 // v1 Astral was a tight content crop (pretrimmed); v2 carries a cream margin and
 // is auto-trimmed by loadTrimmedTexture — its spec coords are authored on that
 // trim (derive-facade-spec.mjs replicates it), so it must NOT be listed here.
-const PRETRIMMED_TEXTURES = [];
+// Textures already cropped to their content bounds at bake time — the runtime
+// content-density trim is SKIPPED for these. Astral's full-facade render carries
+// a tall, sparse crown (central gable peak + thin parapet railing + corner
+// gablets); those topmost rows fall under the density threshold and the runtime
+// trim would shave them off, flat-cutting the crown. The `.trim.png` is
+// pre-cropped to keep the whole crown; the spec's y-coords + composite roofV are
+// scaled to match (crop is 723 px tall vs the 701 px the runtime trim produced).
+const PRETRIMMED_TEXTURES = ["astral-apartments--franklin-full-v2.trim.png"];
 
 function loadTrimmedTexture(url, onReady) {
   const image = new Image();
