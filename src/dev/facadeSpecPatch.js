@@ -49,6 +49,13 @@ export function listEditableRecesses(faceSpec) {
   if (faceSpec.bay) {
     items.push(mk("bay", "bay", "bay", ["bay"], rectOf(faceSpec.bay), depthAt(faceSpec.bay, "bay", ["bay"])));
   }
+  // `bays` (array) carries the multi-oriel faces (Astral frontage/java/india).
+  // Each gets its own draggable box; patchRecess writes x/y back while keeping
+  // plan/centerFraction/projectionM, so drag-snapping the box registers the
+  // oriel to the painted bay without re-authoring the fold params.
+  (faceSpec.bays ?? []).forEach((r, i) =>
+    items.push(mk(`bay-${i}`, `bay ${i + 1}`, "bay", ["bays", i], rectOf(r), depthAt(r, "bay", ["bays", i]))),
+  );
   if (faceSpec.cornice) {
     items.push(mk("cornice", "cornice", "cornice", ["cornice"], { x0: 0, x1: 1, y0: faceSpec.cornice.y0, y1: faceSpec.cornice.y1 }, null, true));
   }
