@@ -386,6 +386,36 @@ a banked fix regressed or a playbook rule was skipped.
     confirm India corner-pavilion projection; confirm Java oriel3 fold extents.
   - **Cost:** ~0 re-renders, 0 fix commits — wired + seeded + verified in one pass.
     No engine change (spec data + one composite entry); 230/230 tests green.
+- **Update (2026-06-24, second review pass — three integration fixes):**
+  - **Crown cut off (India + Java):** the runtime content-density trim
+    (`loadTrimmedTexture`, 8.5%) shaved the sparse stepped-gable rows (India
+    ~46px, Java ~53px) — the SAME trap the Franklin frontage hit. Fix mirrors
+    Franklin: pre-crop tight but crown-preserving (`scripts/pretrim-astral-side.mjs`),
+    ship `.trim.png` in `PRETRIMMED_TEXTURES`, recompute `roofV` on the new crop
+    (India 0.903, Java 0.929), regenerate recess seeds in crop coords.
+    **Rule (promote): any hero whose render has a parapet/gable/finial above a
+    sparse skyline MUST be pre-trimmed + PRETRIMMED_TEXTURES — the density trim
+    shaves sparse crown rows. Don't ship the raw render and rely on runtime trim.**
+  - **"Transparent backside" / red threads in light wells:** a full-block hero's
+    street elevations are thin chord PLANES with no solid mass behind them at the
+    courtyard, so the lenient `CULL_T -0.3` left their bare backs + recess reveals
+    showing through the open wells as red lines. Fix: per-record cull threshold —
+    chord faces use `CHORD_CULL_T 0.02` (hide the instant they turn away); solid
+    masses keep the lenient default. **Rule: thin facade planes need a stricter
+    back-cull than solid returns; a building assembled from planes (not a closed
+    shell) shows plane-backs through any opening unless culled tight.**
+  - **Open-rear regression (from wiring India to catch-all role `other`):** fixed
+    earlier this day via `frontageBandEdges` (cover only the side's frontage-band
+    edges, not the whole catch-all role) — banked.
+  - **Corner seam strip:** the pretrim removed the pale cream texture-edge that the
+    `cornerOverlap` extension dragged past the Franklin↔Java corner. **Tight crops
+    keep corners clean — a cream margin at a texture edge becomes a white seam once
+    a face is extended to close a corner.**
+  - **Verification gotcha:** the preview viewport/screenshot scale got unreliable
+    after repeated force-render pointer hacks; programmatic checks of mesh
+    `.visible` per `?a=` step (via `window.__three`) verified the cull fix without
+    screenshots. Bank: assert culling by reading `.visible`, not just by eye.
+  - **Cost:** 1 commit, 0 re-renders; 236/236 tests green.
 - **Update (2026-06-24, side-face integration fixes — Batu review):** the first
   wiring pass left four defects, all now fixed (engine, `buildHeroBuilding`):
   1. **Crown clipped + cream-paper band over the roof** (same class as 144/Sonny's
