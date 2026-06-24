@@ -232,6 +232,18 @@ export const TRADE_AWNING_TINT = {
   interior_decoration: 0x4a3b4a,
 };
 
+// Phase 8 R2 — storefront-signature named tones. The per-storefront signature
+// data (src/data/facade-signatures/storefront-signatures.*.json) carries token
+// NAMES, never hex; this map resolves them. Every value is an existing II-C token
+// re-exposed by friendly name, so signatures are in-palette by construction
+// (the no-miss rule holds) and the data files stay human-editable.
+export const SIGNATURE_PALETTE = {
+  slateBlueDark: 0x2a313a, // navy awning (== TRIM_TONES slate-blue, dark)
+  inkBlack: 0x1d1a16, // storefront millwork / black frame (== TRIM_TONES darkest)
+  signalAmber: 0xcc9a3b, // gold transom text / blade sign (== II_PALETTE.signalAmber)
+  sage: 0x9a9c86, // sage bistro chairs (== MATERIAL_WALL_TONES clapboard sage anchor)
+};
+
 // Massing/shading tones used by the typological wall + roof pass.
 export const MASSING = {
   partyWallBlend: 0x6b5e52, // lerp target for composite party-wall faces

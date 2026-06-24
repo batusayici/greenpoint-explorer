@@ -36,6 +36,8 @@ import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
 import { resolveFacadeFamily } from "./facadeFamily.js";
 import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
 import { resolveStorefrontUnit } from "./storefrontUnitResolve.js";
+import { signatureFor, tokenColor } from "./storefrontSignatures.js";
+import { planStorefrontSeating } from "./storefrontSeating.js";
 import { resolveHasCornice, resolveFireEscape, resolveHasStoop } from "./facadeToggleResolve.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
@@ -301,6 +303,7 @@ export default function SceneView() {
       const { baysByBin, pointByName: storefrontPointByName } = computeStorefrontBays(scene);
       buildBuildings(three, scene, requestRender, isActive, addCullable, baysByBin);
       buildBlockStorefronts(three, scene, baysByBin, storefrontPointByName);
+      buildStorefrontSeating(three, scene, baysByBin, storefrontPointByName);
       buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
     }
     __mark.built = performance.now();
@@ -1631,6 +1634,73 @@ function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
   }
 }
 
+// R2 signature seating: a row of small sage bistro tables + chairs on the
+// sidewalk in front of a signed shop's frontage (e.g. Elder Greene). Its own
+// pass so it covers KIT buildings too (buildBlockStorefronts skips kit families).
+// Placement is typological-along-the-frontage; layout math is the pure
+// planStorefrontSeating, this maps it to world via the face frame.
+function buildStorefrontSeating(three, scene, baysByBin, pointByName) {
+  if (!baysByBin || baysByBin.size === 0) return;
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+  const scale = scene.projection.scale;
+
+  const buildBistroSet = (wp, uc, offU, sage) => {
+    const m = scale; // units per meter
+    const metal = II_PALETTE.ink; // black bistro-table frame
+    const box = (cx, cy, cz, w, h, d, color) => {
+      const g = new THREE.BoxGeometry(w, h, d);
+      const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color }));
+      mesh.position.set(cx, cy, cz); three.add(mesh);
+    };
+    const cyl = (cx, cy, cz, r, h, color) => {
+      const g = new THREE.CylinderGeometry(r, r, h, 10);
+      const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color }));
+      mesh.position.set(cx, cy, cz); three.add(mesh);
+    };
+    // Table: thin round top on a slender post.
+    const c = wp(uc, offU, 0);
+    cyl(c.x, 0.72 * m, c.z, 0.30 * m, 0.045 * m, metal);
+    cyl(c.x, 0.36 * m, c.z, 0.04 * m, 0.72 * m, metal);
+    // Two sage chairs flanking the table along the frontage (a hair closer in).
+    const du = (0.5 * m) / Math.max(1e-6, Math.hypot(wp(1, 0, 0).x - wp(0, 0, 0).x, wp(1, 0, 0).z - wp(0, 0, 0).z));
+    for (const s of [-1, 1]) {
+      const cc = wp(uc + s * du, offU - 0.18 * m, 0);
+      box(cc.x, 0.44 * m, cc.z, 0.40 * m, 0.05 * m, 0.40 * m, sage); // seat
+      const back = wp(uc + s * du, offU - 0.18 * m - 0.18 * m, 0);   // back set toward table-out side
+      box(back.x, 0.66 * m, back.z, 0.40 * m, 0.42 * m, 0.05 * m, sage);
+    }
+  };
+
+  for (const [bin, binBays] of baysByBin) {
+    let sage = null;
+    for (const bay of binBays) {
+      const sig = signatureFor(bay.signatureKey ?? bay.name)?.signature;
+      if (sig?.seating) { sage = tokenColor(sig.seating.tintToken) ?? II_PALETTE.context[0]; break; }
+    }
+    if (sage == null) continue;
+    const building = byBin.get(bin);
+    if (!building || !building.polygon || !building.centroid) continue;
+    const edges = footprintEdges(building.polygon, building.centroid);
+    if (!edges.length) continue;
+    const bayPts = binBays.map((b) => pointByName.get(b.name)).filter(Boolean);
+    const refPoint = bayPts.length
+      ? { x: bayPts.reduce((s, p) => s + p.x, 0) / bayPts.length, z: bayPts.reduce((s, p) => s + p.z, 0) / bayPts.length }
+      : building.centroid;
+    const edge = edges.filter((e) => e.length / scale > 3).sort((a, b) => dist(a.midpoint, refPoint) - dist(b.midpoint, refPoint))[0]
+      ?? edges.sort((a, b) => b.length - a.length)[0];
+    const { left, right, normal } = faceFrame(edge, building.height, null, scene);
+    const edgeLengthM = edge.length / scale;
+    const { tables, offsetM } = planStorefrontSeating({ edgeLengthM });
+    if (!tables.length) continue;
+    const offU = offsetM * scale;
+    const wp = (u, off, y = 0) => ({
+      x: left.x + (right.x - left.x) * u + normal.x * off,
+      z: left.z + (right.z - left.z) * u + normal.z * off,
+    });
+    for (const t of tables) buildBistroSet(wp, t.u, offU, sage);
+  }
+}
+
 function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map()) {
   resetBuildingTruth(); // dev: rebuild the per-BIN facade-truth registry fresh each scene build
   scene.buildings.forEach((building, index) => {
@@ -1671,11 +1741,22 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
         if (binBays && binBays.length) {
           // Truthful category-label signs (real brand only on a claimed bay);
           // food trades get an awning. One unit per assigned tenant bay.
+          const binSigs = binBays.map((bay) => signatureFor(bay.signatureKey ?? bay.name)?.signature ?? null);
           kitParams.storefront = {
             units: binBays.map((bay, k) => ({
               label: resolveSignLabel(bay),
-              ...resolveStorefrontUnit({ bay, index: k, params: kitParams, count: binBays.length }),
+              // R2 signature layer: a recognized shop (by curation key / name)
+              // overrides the generic category storefront with its own FORM
+              // (navy awning, black frame, gold transom) — see storefrontSignatures.js.
+              ...resolveStorefrontUnit({
+                bay, index: k, params: kitParams, count: binBays.length,
+                signature: binSigs[k],
+              }),
             })),
+            // Corner-wrap: if any signed unit asks for it, the storefront also draws
+            // on the corner lot's SECONDARY street frontage (the awning/glazing turn
+            // the corner like the real shop), not just the primary face.
+            wrapCorner: binSigs.some((s) => s?.awning?.wrapCorner === true),
           };
         }
       }
@@ -3051,8 +3132,11 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     // marks a SECONDARY frontage of the same building (a corner lot's other
     // street): it still gets a door so no frontage reads as blank, but the
     // storefront / 3D stoop / fire escape stay on the primary frontage only.
-    if (params.storefront && !plainEntry) {
-      decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params);
+    if (params.storefront && (!plainEntry || params.storefront.wrapCorner)) {
+      // On the SECONDARY frontage of a wrap-corner shop, continue the awning +
+      // glazing but suppress the duplicate prominent entry (door stays on the
+      // primary corner face) — `secondary` flags that to decorateStorefront.
+      decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params, { secondary: plainEntry });
     } else {
       // Commercial ground floors carry a storefront (drawn separately) — never a
       // residential 3D stoop, even for stoop-eligible families.
@@ -3280,8 +3364,9 @@ function addInkedCornerFillers(deco, edges, exposed, height, params, scene) {
 // rect (f.ground). composeStorefront returns BAND-LOCAL rects, which we map into
 // the band before drawing. Flat elements stay just proud of the wall (0.006–
 // 0.011); the awning canopy projects ~1.2m forward via quad3.
-function decorateStorefront(ctx, band, storefront, params) {
+function decorateStorefront(ctx, band, storefront, params, opts = {}) {
   const { quad, quad3, point, edgeLen, height } = ctx;
+  const secondary = !!opts.secondary; // corner-wrap's secondary frontage: glass, no entry
   const bw = band.x1 - band.x0;
   const bh = band.y1 - band.y0;
   const dark = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
@@ -3310,20 +3395,27 @@ function decorateStorefront(ctx, band, storefront, params) {
     for (const m of (Array.isArray(s.mullion) ? s.mullion : [s.mullion])) quad(map(m), 0.009, null, { tint: frameTint });
     quad(map(s.transom), 0.009, null, { tint: MASSING.transomBand });          // light transom band
     // Door: leaf recessed behind the shopfront frame with shaded reveals, so the
-    // entry reads as a real set-back doorway, not a flat painted panel.
+    // entry reads as a real set-back doorway, not a flat painted panel. On a
+    // corner-wrap SECONDARY face the door bay becomes display glass instead — the
+    // single entry stays on the primary corner face, so the wrap reads as one
+    // continuous shopfront rather than two doorways.
     const d = map(Array.isArray(s.door) ? s.door[0] : s.door);
-    const dFront = 0.011, dBack = 0.005;
-    quad(d, dBack, null, { tint: dark(frameTint, 0.55) });
-    quad3(point(d.x0, d.y1, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x0, d.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head shadow
-    quad3(point(d.x0, d.y0, dFront), point(d.x0, d.y1, dFront), point(d.x0, d.y1, dBack), point(d.x0, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
-    quad3(point(d.x1, d.y0, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x1, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
+    if (secondary) {
+      quad(d, 0.008, glazeTex, {});
+    } else {
+      const dFront = 0.011, dBack = 0.005;
+      quad(d, dBack, null, { tint: dark(frameTint, 0.55) });
+      quad3(point(d.x0, d.y1, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x0, d.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head shadow
+      quad3(point(d.x0, d.y0, dFront), point(d.x0, d.y1, dFront), point(d.x0, d.y1, dBack), point(d.x0, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
+      quad3(point(d.x1, d.y0, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x1, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
+    }
     for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
     // Category sign band: painted board in the shopfront's trim color with cream
     // serif lettering (II-C palette — never a bright white panel). Canvas aspect
     // matched to the band's world aspect so letters don't stretch.
     const signRect = map(s.sign);
     const boardColor = unit.signColor ?? frameTint;
-    quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect), boardColor), {});
+    quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect), boardColor, unit.textHex), {});
     // Awning: a short projecting canopy (sloped top + scalloped valance) so it
     // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
     if (s.awning) {
@@ -3517,13 +3609,16 @@ function loadTrimmedTexture(url, onReady) {
 // canvas to match, so letters map 1:1 and never stretch/compress. Height is
 // fixed at 128; width tracks the aspect (clamped). Default 4 keeps the prior
 // 512×128 behaviour for any caller that doesn't pass an aspect.
-function makeStorefrontSignTexture(name, aspect = 4, boardHex = MASSING.signBoardDefault) {
+function makeStorefrontSignTexture(name, aspect = 4, boardHex = MASSING.signBoardDefault, textHex = null) {
   const c = document.createElement("canvas");
   c.height = 128;
   c.width = Math.max(256, Math.min(4096, Math.round(c.height * aspect)));
   const ctx = c.getContext("2d");
   const board = new THREE.Color(boardHex);
   const cream = "#ece3cf"; // II-C cream — used for lettering + keyline, never as the panel
+  // Optional signature lettering color (e.g. Elder Greene's gold transom). Derived
+  // from a palette token (never a raw literal), so the no-miss gate holds.
+  const lettering = textHex != null ? `#${new THREE.Color(textHex).getHexString()}` : cream;
   ctx.fillStyle = `#${board.getHexString()}`; ctx.fillRect(0, 0, c.width, c.height); // painted board
   // Inked top/bottom shading so the board reads as a solid painted plank.
   ctx.fillStyle = `#${board.clone().multiplyScalar(0.7).getHexString()}`;
@@ -3532,7 +3627,7 @@ function makeStorefrontSignTexture(name, aspect = 4, boardHex = MASSING.signBoar
   ctx.fillRect(0, 0, c.width, 5);
   // Thin cream keyline inset.
   ctx.strokeStyle = "rgba(236, 227, 207, 0.65)"; ctx.lineWidth = 4; ctx.strokeRect(12, 12, c.width - 24, c.height - 24);
-  ctx.fillStyle = cream; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.fillStyle = lettering; ctx.textAlign = "center"; ctx.textBaseline = "middle";
   let fs = 80; ctx.font = `700 ${fs}px Georgia, serif`;
   const label = String(name).toUpperCase();
   while (ctx.measureText(label).width > c.width - 64 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }

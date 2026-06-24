@@ -32,3 +32,45 @@ test("doorAlign overrides left/right", () => {
 test("doorAlign center passes through", () => {
   assert.equal(resolveStorefrontUnit({ bay, index: 0, params: { doorAlign: "center" }, count: 1 }).door, "center");
 });
+
+// --- R2 signature layer: a present signature wins over category/param defaults ---
+
+const eg = {
+  category: "bar",
+  signature: {
+    awning: { profile: "scalloped", tintToken: "slateBlueDark", wrapCorner: true },
+    frame: { tintToken: "inkBlack" },
+    transom: { text: "COCKTAILS · COLD BEER", tintToken: "signalAmber" },
+    blade: { shape: "oval", tintToken: "signalAmber" },
+  },
+};
+
+test("signature forces the awning on (even for a non-food bar) with its navy tint", () => {
+  const u = resolveStorefrontUnit({ bay, index: 1, params: {}, count: 1, signature: eg.signature });
+  assert.equal(u.awning.has, true);
+  assert.equal(u.awning.color, 0x2a313a); // slateBlueDark
+  assert.equal(u.awning.profile, "scalloped");
+  assert.equal(u.awning.wrapCorner, true);
+});
+
+test("signature sets black frame + dark sign board + gold lettering + transom label", () => {
+  const u = resolveStorefrontUnit({ bay, index: 0, params: {}, count: 1, signature: eg.signature });
+  assert.equal(u.frameTint, 0x1d1a16); // inkBlack
+  assert.equal(u.signColor, 0x1d1a16);
+  assert.equal(u.textHex, 0xcc9a3b); // signalAmber gold
+  assert.equal(u.label, "COCKTAILS · COLD BEER");
+});
+
+test("signature awning wins over a param storefrontAwning=false", () => {
+  const u = resolveStorefrontUnit({ bay, index: 0, params: { storefrontAwning: false }, count: 1, signature: eg.signature });
+  assert.equal(u.awning.has, true);
+});
+
+test("absent signature is byte-stable (no signature fields leak in)", () => {
+  const u = resolveStorefrontUnit({ bay: food, index: 0, params: {}, count: 1 });
+  assert.equal(u.frameTint, undefined);
+  assert.equal(u.signColor, undefined);
+  assert.equal(u.textHex, undefined);
+  assert.equal(u.label, undefined);
+  assert.equal(u.awning.profile, undefined);
+});

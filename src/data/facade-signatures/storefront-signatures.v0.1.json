@@ -1,0 +1,20 @@
+{
+  "_doc": "Per-storefront SIGNATURE layer (R2 — recognizable storefronts). Keyed by the storefront's curation key (building-tiers.*.json), with a matchName fallback. A thin, evidence-bound override that makes a specific shop read as itself by FORM (awning profile/color, frame, transom text, glazing, blade shape, sidewalk seating) — never by real name (claim model: text stays category-true, not branded). Colors are token NAMES resolved against SIGNATURE_PALETTE in palette.js at apply time (no raw hex here, so the no-miss conformance gate holds). Application rule: a present key wins over the kit default; absent keys fall through. Building-level signals (parapet, AC) use the BIN-keyed signatureContract.js surface, not this file.",
+  "version": "0.1",
+  "storefronts": [
+    {
+      "key": "elder-greene",
+      "matchName": "elder greene",
+      "category": "bar",
+      "evidence": "docs/reference/asset-reference/storefront/proof-set/elder-greene/",
+      "signature": {
+        "awning": { "profile": "scalloped", "tintToken": "slateBlueDark", "wrapCorner": true },
+        "frame": { "tintToken": "inkBlack" },
+        "transom": { "text": "COCKTAILS · COLD BEER", "tintToken": "signalAmber" },
+        "glazing": { "rhythm": "tall-multipane" },
+        "blade": { "shape": "oval", "tintToken": "signalAmber" },
+        "seating": { "kind": "bistro", "tintToken": "sage" }
+      }
+    }
+  ]
+}
