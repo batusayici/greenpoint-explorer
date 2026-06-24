@@ -1013,10 +1013,19 @@ const FACADE_COMPOSITES = {
         shade: 0.85,
         // PRETRIMMED crop (.trim.png): the runtime 8.5%-density trim shaved the
         // sparse stepped-gable crown (~53px), so we pre-crop tight while keeping
-        // the full crown and skip the runtime trim (PRETRIMMED_TEXTURES). roofV
-        // 0.929 = the cornice fraction on that crop; it anchors the roofline to
-        // the shared roof so the crown projects + the cream keys out.
-        roofV: 0.929,
+        // the full crown and skip the runtime trim (PRETRIMMED_TEXTURES).
+        // roofV anchors the texture to the shared roof via faceHeight =
+        // wallTop/roofV: it sets the WHOLE face's vertical scale, not just the
+        // crown. At 0.90 this face rendered SHORTER than the Franklin frontage
+        // (roofV 0.86 → the largest faceHeight), so its brown floor bands + roof
+        // line sat lower than Franklin's at the shared corner. Drop it to ~0.86
+        // so this face renders at the frontage's scale and the horizontal courses
+        // wrap the corner continuously. Java's cornice sits at ~v0.928 — the same
+        // as the frontage's — so 0.861 (≈ heroRoofV) lands its ROOFLINE on
+        // Franklin's at the corner. Java's render spaces its floors ~2% lower than
+        // the frontage, so the mid-facade courses still sag a hair; the roof seam
+        // (the prominent one against the sky) is what we hold exact.
+        roofV: 0.861,
         key: "../assets/textures/franklin/astral-apartments--java-full.trim.png",
         segments: [
           {
@@ -1039,10 +1048,12 @@ const FACADE_COMPOSITES = {
         selectRole: "other",
         axis: "greenpoint",
         shade: 0.85,
-        // PRETRIMMED crop (.trim.png) — see the java note. roofV 0.903 = cornice
-        // fraction on the crop (bracketed cornice + stepped gablets + central
-        // gable/oculus above it).
-        roofV: 0.903,
+        // PRETRIMMED crop (.trim.png) — see the java note. roofV sets this face's
+        // whole vertical scale (faceHeight = wallTop/roofV); at 0.876 it rendered
+        // shorter than the Franklin frontage so its floor bands + roofline sat low
+        // at the corner. India's render shares the frontage's proportions, so
+        // 0.840 lands BOTH its floor courses and its cornice on Franklin's.
+        roofV: 0.840,
         key: "../assets/textures/franklin/astral-apartments--india-full.trim.png",
         segments: [
           {
@@ -2271,7 +2282,14 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // close. Each segment is also extended by `cornerOverlap` along its own run
     // so adjacent perpendicular planes overlap instead of leaving a seam.
     const proud = 0.006;
-    const cornerOverlap = 0.02;
+    // Each plane is pushed `proud` along its OWN normal, so a perpendicular
+    // neighbour's surface sits ~proud past the shared corner along this plane's
+    // run. Extend by just that much (a hair over, for chord-endpoint slop) so the
+    // two planes MEET at the outer miter line instead of over-shooting past it —
+    // 0.025 fanned each plane a brick-width beyond the corner, and the two
+    // textured DoubleSide quads crossed there as a doubled/z-fighting seam with a
+    // tab poking through at the sidewalk.
+    const cornerOverlap = 0.009;
     for (const cf of chordFaces) {
       const chord = frontageChord(building.edges, cf.axis, { role: cf.role, unitsPerMeter: upm, frontageBandM: 3 });
       const outward = { x: chord.cross.x * chord.outwardSign, z: chord.cross.z * chord.outwardSign };
