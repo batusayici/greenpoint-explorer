@@ -990,6 +990,11 @@ const FACADE_COMPOSITES = {
           fromM: 0,
           toM: 60.6,
           leftEnd: "north",
+          // Crop the render's cream paper edge (measured ~6px left / ~4px right on
+          // the 2079px sheet). These map to the two front corners (Java SW, India
+          // NW); uncropped they showed as a faint pale hairline down the corner.
+          u0: 0.005,
+          u1: 0.996,
         },
       ],
     },
@@ -1037,6 +1042,12 @@ const FACADE_COMPOSITES = {
             fromM: 0,
             toM: 19.6,
             leftEnd: "west",
+            // Crop the cream paper frame so the corner with Franklin shows brick,
+            // not paper. The margin runs to col ~24 left / from col ~1121 right on
+            // the 1127px sheet (incl. the anti-aliased cream→brick transition), so
+            // an under-crop left a 1–2px pale hairline down the corner.
+            u0: 0.024,
+            u1: 0.993,
           },
         ],
       },
@@ -1065,6 +1076,11 @@ const FACADE_COMPOSITES = {
             fromM: 0,
             toM: 38,
             leftEnd: "west",
+            // Crop the cream paper frame so both India corners show brick, not
+            // paper. The margin runs to col ~19 left / from col ~1490 right on the
+            // 1508px sheet (incl. the cream→brick transition).
+            u0: 0.016,
+            u1: 0.986,
           },
         ],
       },
@@ -2048,7 +2064,16 @@ function keyPaperAboveRoofline(texture, roofV) {
     // from the building by lightness: the lightest brick/terracotta above the
     // roofline is L~0.76 and the iron railing is dark, so L>0.80 keys the paper
     // sky while leaving every painted parapet/gable/railing pixel opaque.
-    if (light > 0.8 && sat < 0.4) px[i + 3] = 0; // cream paper → transparent
+    if (light > 0.8 && sat < 0.4) {
+      px[i + 3] = 0; // cream paper → transparent
+      // Also clear the RGB to a dark ink. The texture is mipmapped/bilinear-
+      // filtered, and a transparent pixel's RGB still bleeds into its opaque
+      // neighbours during filtering. Left as cream, that washed the thin black
+      // railing/balustrade bars (sparse dark-on-cream above the side cornices)
+      // out to a pale band — the "white roof fence". Bleeding dark ink instead
+      // keeps the bars reading as a dark silhouette, matching the frontage crown.
+      px[i] = px[i + 1] = px[i + 2] = 24;
+    }
   }
   ctx.putImageData(data, 0, 0);
   const keyed = new THREE.CanvasTexture(canvas);
@@ -2408,7 +2433,12 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           normal: outward,
           role: cf.role,
         };
-        const segFace = { key: seg.key, u0: 0, u1: 1, leftEnd: seg.leftEnd ?? "north", flip: Boolean(seg.flip) };
+        // Crop the render's cream paper side-margins out of the U range so they
+        // don't map onto the plane edges and read as a pale vertical strip at the
+        // Franklin↔side corners. keyPaperAboveRoofline only clears cream ABOVE the
+        // roofline, so the full-height left/right margins survived until here.
+        // Defaults to the full sheet (0..1) for tightly-pretrimmed renders.
+        const segFace = { key: seg.key, u0: seg.u0 ?? 0, u1: seg.u1 ?? 1, leftEnd: seg.leftEnd ?? "north", flip: Boolean(seg.flip) };
         const segMat = new THREE.MeshBasicMaterial({
           color: new THREE.Color(baseColor).multiplyScalar(cf.shade),
           side: THREE.DoubleSide,
