@@ -1,7 +1,7 @@
 {
   "schemaVersion": "facade-spec.v0.6",
   "placeId": "astral-apartments",
-  "status": "firstpass_v2_2026-06-23 (offline grid first-pass on astral-apartments--franklin-full-v2.png: recessed windows recessM0.14 sill:false + 4 oriel3 bays + floor-6 arch arcade + center-pavilion seed. NOT pixel-registered — drag-snap in ?facadeedit=1. flush removed.)",
+  "status": "firstpass_v2_2026-06-23 — recessed windows (recessM 0.16, sill:false) + 4 oriel3 bays (3-window canted, ~0.055w, symmetric about 0.503) + floor-6 arch arcade + center seed; flush removed. Bays were re-cut from 1-column-too-wide (they pulled a flat window into the fold). NOT pixel-registered — windows still ghost; drag-snap in ?facadeedit=1.",
   "note": "Astral Apartments, 184 Franklin St (BIN 3064408). Face 3064408:frontage now carries ONE full-facade render across the entire Franklin frontage chord (fromM 0 / toM 60.6). 6 storeys: rusticated brownstone base, 4 floors red-brick punched windows + oriel bays, round-arch top-floor arcade, bracketed cornice + parapet railing + stepped gablets + central gable with oculus. Coords are face-local fractions across the FULL width (x from the north end, y from ground up). [v2 re-render with 3-window canted bays; 4 oriel3 bays (2 per flank) + flat windows + arched top floor.]",
   "evidence": [
     "docs/reference/hero-evidence/astral/FACADE_GRAMMAR.md",
@@ -40,8 +40,8 @@
             "y1": 0.29
           },
           {
-            "x0": 0.248,
-            "x1": 0.272,
+            "x0": 0.161,
+            "x1": 0.185,
             "y0": 0.19,
             "y1": 0.29
           },
@@ -58,8 +58,20 @@
             "y1": 0.29
           },
           {
-            "x0": 0.54,
-            "x1": 0.564,
+            "x0": 0.335,
+            "x1": 0.359,
+            "y0": 0.19,
+            "y1": 0.29
+          },
+          {
+            "x0": 0.358,
+            "x1": 0.382,
+            "y0": 0.19,
+            "y1": 0.29
+          },
+          {
+            "x0": 0.626,
+            "x1": 0.65,
             "y0": 0.19,
             "y1": 0.29
           },
@@ -78,6 +90,12 @@
           {
             "x0": 0.714,
             "x1": 0.738,
+            "y0": 0.19,
+            "y1": 0.29
+          },
+          {
+            "x0": 0.8,
+            "x1": 0.824,
             "y0": 0.19,
             "y1": 0.29
           },
@@ -130,8 +148,8 @@
             "y1": 0.44
           },
           {
-            "x0": 0.248,
-            "x1": 0.272,
+            "x0": 0.161,
+            "x1": 0.185,
             "y0": 0.34,
             "y1": 0.44
           },
@@ -148,8 +166,20 @@
             "y1": 0.44
           },
           {
-            "x0": 0.54,
-            "x1": 0.564,
+            "x0": 0.335,
+            "x1": 0.359,
+            "y0": 0.34,
+            "y1": 0.44
+          },
+          {
+            "x0": 0.358,
+            "x1": 0.382,
+            "y0": 0.34,
+            "y1": 0.44
+          },
+          {
+            "x0": 0.626,
+            "x1": 0.65,
             "y0": 0.34,
             "y1": 0.44
           },
@@ -168,6 +198,12 @@
           {
             "x0": 0.714,
             "x1": 0.738,
+            "y0": 0.34,
+            "y1": 0.44
+          },
+          {
+            "x0": 0.8,
+            "x1": 0.824,
             "y0": 0.34,
             "y1": 0.44
           },
@@ -220,8 +256,8 @@
             "y1": 0.59
           },
           {
-            "x0": 0.248,
-            "x1": 0.272,
+            "x0": 0.161,
+            "x1": 0.185,
             "y0": 0.49,
             "y1": 0.59
           },
@@ -238,8 +274,20 @@
             "y1": 0.59
           },
           {
-            "x0": 0.54,
-            "x1": 0.564,
+            "x0": 0.335,
+            "x1": 0.359,
+            "y0": 0.49,
+            "y1": 0.59
+          },
+          {
+            "x0": 0.358,
+            "x1": 0.382,
+            "y0": 0.49,
+            "y1": 0.59
+          },
+          {
+            "x0": 0.626,
+            "x1": 0.65,
             "y0": 0.49,
             "y1": 0.59
           },
@@ -258,6 +306,12 @@
           {
             "x0": 0.714,
             "x1": 0.738,
+            "y0": 0.49,
+            "y1": 0.59
+          },
+          {
+            "x0": 0.8,
+            "x1": 0.824,
             "y0": 0.49,
             "y1": 0.59
           },
@@ -310,8 +364,8 @@
             "y1": 0.738
           },
           {
-            "x0": 0.248,
-            "x1": 0.272,
+            "x0": 0.161,
+            "x1": 0.185,
             "y0": 0.638,
             "y1": 0.738
           },
@@ -328,8 +382,20 @@
             "y1": 0.738
           },
           {
-            "x0": 0.54,
-            "x1": 0.564,
+            "x0": 0.335,
+            "x1": 0.359,
+            "y0": 0.638,
+            "y1": 0.738
+          },
+          {
+            "x0": 0.358,
+            "x1": 0.382,
+            "y0": 0.638,
+            "y1": 0.738
+          },
+          {
+            "x0": 0.626,
+            "x1": 0.65,
             "y0": 0.638,
             "y1": 0.738
           },
@@ -348,6 +414,12 @@
           {
             "x0": 0.714,
             "x1": 0.738,
+            "y0": 0.638,
+            "y1": 0.738
+          },
+          {
+            "x0": 0.8,
+            "x1": 0.824,
             "y0": 0.638,
             "y1": 0.738
           },
@@ -488,14 +560,6 @@
             "springY": 0.845
           },
           {
-            "x0": 0.54,
-            "x1": 0.564,
-            "y0": 0.792,
-            "y1": 0.892,
-            "shape": "arch",
-            "springY": 0.845
-          },
-          {
             "x0": 0.571,
             "x1": 0.595,
             "y0": 0.792,
@@ -626,8 +690,8 @@
       },
       "bays": [
         {
-          "x0": 0.163,
-          "x1": 0.25,
+          "x0": 0.201,
+          "x1": 0.256,
           "y0": 0.175,
           "y1": 0.76,
           "projectionM": 0.6,
@@ -635,8 +699,8 @@
           "centerFraction": 0.36
         },
         {
-          "x0": 0.34,
-          "x1": 0.427,
+          "x0": 0.388,
+          "x1": 0.443,
           "y0": 0.175,
           "y1": 0.76,
           "projectionM": 0.6,
@@ -644,8 +708,8 @@
           "centerFraction": 0.36
         },
         {
-          "x0": 0.573,
-          "x1": 0.66,
+          "x0": 0.563,
+          "x1": 0.618,
           "y0": 0.175,
           "y1": 0.76,
           "projectionM": 0.6,
@@ -654,7 +718,7 @@
         },
         {
           "x0": 0.75,
-          "x1": 0.837,
+          "x1": 0.805,
           "y0": 0.175,
           "y1": 0.76,
           "projectionM": 0.6,
