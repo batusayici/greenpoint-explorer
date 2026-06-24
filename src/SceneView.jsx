@@ -76,6 +76,12 @@ const ISO_ELEVATION = Math.atan(1 / Math.SQRT2); // true isometric, 35.264°
 // rotate behind them), every wall is built once and its visibility is toggled
 // per current view via its outward normal. CULL_T matches the old fixed test.
 const CULL_T = -0.3;
+// Thin facade chord planes (full-block hero street elevations) have no solid
+// mass behind them at the courtyard, so their bare back must hide the instant
+// they turn away from camera — otherwise the recess reveals read as red threads
+// through the open light wells. Stricter than CULL_T (which keeps grazing returns
+// of SOLID masses visible).
+const CHORD_CULL_T = 0.02;
 const ROTATE_MS = 440; // snap-tween duration between adjacent 90° steps
 
 // Phase 3.3.2 — context buildings within this radius of the intersection get
@@ -242,14 +248,16 @@ export default function SceneView() {
     let animFromAz = ISO_AZIMUTH;
     let animStartMs = 0;
     const cullables = []; // [{ object, normal, refresh }] — object is mutable (wall → assembly)
-    const addCullable = (object, normal) => {
+    const addCullable = (object, normal, threshold = CULL_T) => {
       // `refresh` recomputes this record's visibility from the LIVE azimuth, so
       // a live rebuild (recess editor) can re-cull the freshly-built assembly
       // instead of inheriting a stale value. Closes over `record` so it works
-      // regardless of call site.
-      const record = { object, normal };
+      // regardless of call site. `threshold` defaults to the lenient CULL_T
+      // (keep grazing returns of solid masses visible); thin facade PLANES pass
+      // a stricter one so their bare back never shows through an open courtyard.
+      const record = { object, normal, threshold };
       record.refresh = () => {
-        record.object.visible = facingDot(record.normal, currentAzimuth) >= CULL_T;
+        record.object.visible = facingDot(record.normal, currentAzimuth) >= record.threshold;
       };
       cullables.push(record);
       return record;
@@ -1003,15 +1011,16 @@ const FACADE_COMPOSITES = {
         selectRole: "greenpoint",
         axis: "greenpoint",
         shade: 0.85,
-        // The painted cornice/roofline sits at v≈0.90 of the trimmed crop (the
-        // parapet railing + cream sky rise above). roofV anchors that line to the
-        // shared roof height so the crown projects + the cream keys out, and the
-        // floors/ground band register to the frontage at the SE corner.
-        roofV: 0.9,
-        key: "../assets/textures/franklin/astral-apartments--java-full.png",
+        // PRETRIMMED crop (.trim.png): the runtime 8.5%-density trim shaved the
+        // sparse stepped-gable crown (~53px), so we pre-crop tight while keeping
+        // the full crown and skip the runtime trim (PRETRIMMED_TEXTURES). roofV
+        // 0.929 = the cornice fraction on that crop; it anchors the roofline to
+        // the shared roof so the crown projects + the cream keys out.
+        roofV: 0.929,
+        key: "../assets/textures/franklin/astral-apartments--java-full.trim.png",
         segments: [
           {
-            key: "../assets/textures/franklin/astral-apartments--java-full.png",
+            key: "../assets/textures/franklin/astral-apartments--java-full.trim.png",
             fromM: 0,
             toM: 19.6,
             leftEnd: "west",
@@ -1030,13 +1039,14 @@ const FACADE_COMPOSITES = {
         selectRole: "other",
         axis: "greenpoint",
         shade: 0.85,
-        // Cornice/roofline at v≈0.91 (bracketed cornice + stepped gablets +
-        // central gable/oculus above). See the java roofV note.
-        roofV: 0.91,
-        key: "../assets/textures/franklin/astral-apartments--india-full.png",
+        // PRETRIMMED crop (.trim.png) — see the java note. roofV 0.903 = cornice
+        // fraction on the crop (bracketed cornice + stepped gablets + central
+        // gable/oculus above it).
+        roofV: 0.903,
+        key: "../assets/textures/franklin/astral-apartments--india-full.trim.png",
         segments: [
           {
-            key: "../assets/textures/franklin/astral-apartments--india-full.png",
+            key: "../assets/textures/franklin/astral-apartments--india-full.trim.png",
             fromM: 0,
             toM: 38,
             leftEnd: "west",
@@ -2301,7 +2311,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
         const segWall = new THREE.Mesh(wallQuad(segEdge, faceHeight, segFace, scene), segMat);
         segWall.userData = { facadeSlot: `${building.placeId}--${cf.face}` };
         heroGroup.add(segWall);
-        const segCull = addCullable(segWall, outward);
+        const segCull = addCullable(segWall, outward, CHORD_CULL_T);
 
         const segFaceKey = `${building.bin}:${cf.face}`;
         const segSpec = FACADE_SPECS[segFaceKey];
@@ -3404,7 +3414,11 @@ function exposedSegments(edge, siblings) {
 // trim would shave them off, flat-cutting the crown. The `.trim.png` is
 // pre-cropped to keep the whole crown; the spec's y-coords + composite roofV are
 // scaled to match (crop is 723 px tall vs the 701 px the runtime trim produced).
-const PRETRIMMED_TEXTURES = ["astral-apartments--franklin-full-v2.trim.png"];
+const PRETRIMMED_TEXTURES = [
+  "astral-apartments--franklin-full-v2.trim.png",
+  "astral-apartments--india-full.trim.png",
+  "astral-apartments--java-full.trim.png",
+];
 
 function loadTrimmedTexture(url, onReady) {
   const image = new Image();
