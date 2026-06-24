@@ -467,7 +467,13 @@ export function oriel3Meshes(frame, bay, projection, texture) {
     facePoint(frame, plan.xc1, y, projection),
     facePoint(frame, bay.x1, y, 0),
   );
-  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(FACADE_RELIEF.lintelShadow))); // top: under-cornice shadow
+  // The iso camera looks DOWN ~35°, so the top cap shows its upper face. A LIT
+  // stone tint (sillLit) made that face read as a pale shelf floating above the
+  // bay — it caught more light than the inked brick around it and detached. Use
+  // the bay-roof shadow tone (lintelShadow), the same the flat-box bay top uses,
+  // so the oriel top recedes into the cornice/floor-line shadow under the storey
+  // above instead of glowing. The bottom cap faces down (soffit-dark) as before.
+  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(FACADE_RELIEF.lintelShadow))); // top: bay-roof shadow
   meshes.push(new THREE.Mesh(cap(bay.y0), tintMaterial(REVEAL.soffit))); // bottom: soffit
 
   return meshes;
