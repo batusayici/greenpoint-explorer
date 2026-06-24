@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { faceRectToPanel, panelDeltaToFace, panelPointToFace, moveRect, resizeRect, leanShift } from "./facadeCoords.js";
-import { listEditableRecesses, patchDepth, patchRecess, patchShape, patchSpring } from "./facadeSpecPatch.js";
+import { addRecess, deleteRecess, listEditableRecesses, patchDepth, patchRecess, patchShape, patchSpring } from "./facadeSpecPatch.js";
 
 const view = { width: 400, height: 500, skewX: 0 };
 const close = (a, b, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} ≈ ${b}`);
@@ -142,4 +142,63 @@ test("patchSpring updates springY rounded to 3dp and preserves coords", () => {
   const next = patchSpring(spec, ["windows", "rects", 0], 0.41666);
   close(next.windows.rects[0].springY, 0.417);
   close(next.windows.rects[0].x0, 0.1);
+});
+
+test("addRecess('window') into an empty face seeds windows.rects + recessM", () => {
+  const spec = {};
+  const { spec: next, id } = addRecess(spec, "window");
+  assert.equal(next.windows.recessM, 0.14);
+  assert.equal(next.windows.rects.length, 1);
+  assert.deepEqual(next.windows.rects[0], { x0: 0.45, x1: 0.55, y0: 0.4, y1: 0.6 });
+  assert.equal(id, "window-0");
+  assert.deepEqual(spec, {}); // original untouched
+});
+
+test("addRecess('window') appends to an existing window set, preserving recessM", () => {
+  const { spec: next, id } = addRecess(sonnyLike, "window");
+  assert.equal(next.windows.recessM, 0.06); // existing recessM kept, not reseeded
+  assert.equal(next.windows.rects.length, 2);
+  assert.equal(id, "window-1");
+  assert.equal(sonnyLike.windows.rects.length, 1); // original untouched
+});
+
+test("addRecess('door') into an empty face creates a grounded default with recessM", () => {
+  const { spec: next, id } = addRecess({}, "door");
+  assert.equal(next.doors.length, 1);
+  assert.deepEqual(next.doors[0], { x0: 0.45, x1: 0.55, y0: 0, y1: 0.3, recessM: 0.12 });
+  assert.equal(id, "door-0");
+});
+
+test("addRecess('door') appends to existing doors with the right id", () => {
+  const { spec: next, id } = addRecess(sonnyLike, "door");
+  assert.equal(next.doors.length, 2);
+  assert.equal(id, "door-1");
+});
+
+test("addRecess returns an id that matches the new listEditableRecesses item", () => {
+  const { spec: next, id } = addRecess(sonnyLike, "window");
+  const items = listEditableRecesses(next);
+  assert.ok(items.some((it) => it.id === id));
+});
+
+test("deleteRecess splices the correct window rect and is immutable", () => {
+  const spec = { windows: { recessM: 0.1, rects: [
+    { x0: 0, x1: 0.1, y0: 0, y1: 0.1 },
+    { x0: 0.2, x1: 0.3, y0: 0, y1: 0.1 },
+  ] } };
+  const next = deleteRecess(spec, ["windows", "rects", 0]);
+  assert.equal(next.windows.rects.length, 1);
+  assert.equal(next.windows.rects[0].x0, 0.2); // the survivor is the second rect
+  assert.equal(spec.windows.rects.length, 2); // original untouched
+});
+
+test("deleteRecess splices the correct door", () => {
+  const next = deleteRecess(sonnyLike, ["doors", 0]);
+  assert.equal(next.doors.length, 0);
+  assert.equal(sonnyLike.doors.length, 1); // original untouched
+});
+
+test("deleteRecess on a singleton path is a no-op", () => {
+  const next = deleteRecess(sonnyLike, ["cornice"]);
+  assert.deepEqual(next.cornice, sonnyLike.cornice);
 });

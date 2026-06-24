@@ -138,6 +138,46 @@ export function patchShape(faceSpec, path, shape) {
   return clone;
 }
 
+// Default rects for newly-added openings (face coords). Window sits mid-wall;
+// door is grounded (y0 = 0) and carries its own recess.
+const NEW_WINDOW = { x0: 0.45, x1: 0.55, y0: 0.4, y1: 0.6 };
+const NEW_DOOR = { x0: 0.45, x1: 0.55, y0: 0, y1: 0.3, recessM: 0.12 };
+const DEFAULT_WINDOW_RECESS = 0.14;
+
+// Append a new opening of `kind` ("window" | "door") to the face spec.
+// Windows share one `windows.recessM` (seeded when the set is created fresh);
+// doors carry per-item recess. Returns the new spec plus the `id` the editor
+// uses to auto-select the freshly-added box (matches listEditableRecesses).
+export function addRecess(faceSpec, kind) {
+  const clone = structuredClone(faceSpec ?? {});
+  if (kind === "window") {
+    if (!clone.windows) clone.windows = { recessM: DEFAULT_WINDOW_RECESS, rects: [] };
+    if (!clone.windows.rects) clone.windows.rects = [];
+    clone.windows.rects.push({ ...NEW_WINDOW });
+    return { spec: clone, id: `window-${clone.windows.rects.length - 1}` };
+  }
+  if (kind === "door") {
+    if (!clone.doors) clone.doors = [];
+    clone.doors.push({ ...NEW_DOOR });
+    return { spec: clone, id: `door-${clone.doors.length - 1}` };
+  }
+  return { spec: clone, id: null };
+}
+
+// Remove the array-backed opening at `path` (e.g. ["windows","rects",i] or
+// ["doors",i]). Singleton paths (cornice/bay) are left untouched — a defensive
+// no-op so a stray Delete can't destroy them.
+export function deleteRecess(faceSpec, path) {
+  const clone = structuredClone(faceSpec);
+  const i = path[path.length - 1];
+  if (typeof i !== "number") return clone;
+  let parent = clone;
+  for (let k = 0; k < path.length - 1; k += 1) parent = parent[path[k]];
+  if (!Array.isArray(parent)) return clone;
+  parent.splice(i, 1);
+  return clone;
+}
+
 // Set springY (arch spring line) at `path`, rounded to spec precision.
 export function patchSpring(faceSpec, path, value) {
   const clone = structuredClone(faceSpec);
