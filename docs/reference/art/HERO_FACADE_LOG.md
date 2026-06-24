@@ -299,12 +299,30 @@ a banked fix regressed or a playbook rule was skipped.
     proved the direction is CORRECT (bays bulge toward the street) — they were just
     subtle at scene scale; the shelves are the (correct) dark top-caps. **Lesson:
     disambiguate depth direction by exaggerating, don't flip the normal on a hunch.**
+  - **Oriel width (Batu caught):** the 4 bays were each one column too wide,
+    folding an adjacent FLAT window into the oriel. An oriel bay rect must bound
+    EXACTLY the painted 3-window canted group (center pane + two narrow canted
+    side panes), nothing more; the extra column belongs to the flat rhythm. Re-cut
+    to ~0.055 wide, symmetric about face-center, freed columns → flat windows.
+    **Rule: a bay rect that includes a 4th column smears a flat window onto a
+    return — size oriel rects to the 3-window group only.**
+  - **Red panels above recessM ~0.14 (the frontage-hero gotcha):** deepening a
+    window recess past ~0.14m made flat base-color (red) panels appear in the
+    openings. Cause: the frontage chord is drawn only ~0.02 units proud of a
+    redundant **typological wall** built on the same Franklin edges; a recess
+    deeper than that proud gap sank the textured pane BEHIND that wall, so its
+    flat color showed through. Fix: skip the typological wall on the franklin
+    edges a `composite.frontage` covers (the hero assembly's panes+reveals
+    enclose each opening). **Rule for every frontage-plane hero: don't build a
+    typological wall under the frontage, or deep recesses punch through to it.**
   - **Open (editor pass):** offline grid is rough → windows GHOST (recess pane vs
     painted opening misalign); pixel-register in `?facadeedit=1`. Bay caps read as
     prominent dark shelves (they end just below the arcade, not under a cornice);
     center pavilion is a seed; India/Java faces unbuilt. Spec `status` marks it
     firstpass, not done. **Auto-derive + offline grid both FAIL on this inked,
     fire-escape-dense facade** — the editor is the registration tool here.
+  - **Cost:** ~3 commits (build + 2 fixes), 0 re-renders after v2. Bay-width and
+    red-panel both caught at the in-engine/Batu review, not by tests.
 - **Status (2026-06-23):** center segment **BUILT (v1)** end-to-end — placed on
   the frontage chord, flat with hand-seeded arched recesses; verified in-engine
   at all four angles. Pending: recess-editor refinement of opening positions
