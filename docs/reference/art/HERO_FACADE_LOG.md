@@ -362,6 +362,65 @@ a banked fix regressed or a playbook rule was skipped.
   frontage is a *plane*, the oriels fold off it, the bespoke texture is
   segmented for resolution. Bank the frontage-plane model for all future
   block-fronts (H5).
+- **Update (2026-06-24, India + Java side faces wired + recess seed):** brought
+  in the re-rendered side textures (`astral-apartments--india-full.png` 1774×887
+  ≈2:1 full ~38m N wall; `astral-apartments--java-full.png` 1227×1281 ≈1:1 v3
+  ~19.6m S corner). Java was already in `composite.sides`; **wired India** as a
+  second side (role `other`, axis `greenpoint`, band 3m). In-engine bbox proved
+  India locked onto the **full 38m north wall** (sx 2.83 = 37.7m), NOT the West-St
+  rear it shares `other` with — the 3m frontage band rejects the rear (projects
+  ~0 onto greenpointAxis, sits centre-N). **The feared axis+normal selector was
+  unnecessary.** Both faces verified rendering at two angles with carving recesses.
+  - **Recess seed (the "pass"):** the shipped blob deriver and a luminance
+    bright-mask BOTH failed (muted, muntin-split inked panes + fire escapes — as
+    predicted). **What worked: a red-channel-dominance detector** (brick R≫B,
+    glass R≈B) — `r-b<28 && lum>55`, banded into cols×rows, sash-halves merged.
+    Clean regular grids (India 71 windows over 15 cols×5 floors; Java 24 + a
+    corner `oriel3` seed), overlay-verified on the texture before wiring. Tool:
+    `scripts/seed-window-grid.mjs`. **Bank: for red-brick inked facades, detect
+    windows by REDNESS (R−B), not luminance — it ignores fire escapes and muntins.**
+  - **NOT pixel-registered** — seed grids ghost slightly; spec `status` says so.
+    Batu finalizes in `?facadeedit=1`. **Finalize tail:** top-floor arched windows
+    (both faces) + India oculus + India ground-floor round arches + Java
+    COFFEE/WINES storefronts + Java central arch entrance need `shape` tags;
+    confirm India corner-pavilion projection; confirm Java oriel3 fold extents.
+  - **Cost:** ~0 re-renders, 0 fix commits — wired + seeded + verified in one pass.
+    No engine change (spec data + one composite entry); 230/230 tests green.
+- **Update (2026-06-24, side-face integration fixes — Batu review):** the first
+  wiring pass left four defects, all now fixed (engine, `buildHeroBuilding`):
+  1. **Crown clipped + cream-paper band over the roof** (same class as 144/Sonny's
+     white-cap). Side textures had no `roofV`, so `keyPaperAboveRoofline` never ran
+     (cream showed) and the wall mapped 0..1 over full `building.height`, floating
+     the cornice. Fix: each chord face now maps to **`faceHeight = wallTop /
+     roofV`** so its painted roofline (India v≈0.91, Java v≈0.90) lands exactly at
+     the shared roof; crown projects as silhouette, cream keys out. Frontage
+     (`roofV === heroRoofV`) is unchanged by construction.
+  2. **Ground-floor lines didn't match at the corner** — same root as (1); the
+     `faceHeight` anchor lands floors/base consistently against the frontage.
+  3. **Corner gap (sidewalk wedge ~0.4m)** — each chord plane was pushed `proud`
+     0.02 along its OWN normal, so perpendicular planes missed at the corner. The
+     band-filter (below) removed the typological wall the big proud gap protected
+     against, so `proud`→**0.006** + each segment extended **`cornerOverlap` 0.02**
+     along its run → perpendicular planes overlap, corners close crisp.
+  4. **Open rear/courtyard** (regression from wiring India to catch-all role
+     `other`): adding `other` to `chordCoveredRoles` made EVERY `other` edge skip
+     its wall, but only the north India plane was drawn → rear + light courts
+     undrawn. Fix: **`frontageBandEdges()`** computes the exact street-most band a
+     side covers (mirrors `frontageChord`'s filter) and only those edges skip the
+     wall (`chordCoveredEdges`); set-back rear/court edges keep structural walls.
+  - **Plus:** interior light-court walls flashed as bright flat-red "threads" in
+    the wells (flat MeshBasic shows full base color edge-on; short returns < 2m get
+    no brick). Sank the whole back complex to a dim shaft tone on frontage heroes
+    (`!isTextured && composite?.frontage` → ×0.32 short / ×0.5 long) — wells read as
+    shadowed shafts; corner heroes' lit returns untouched.
+  - **Durable rules (promoted):** (a) a bespoke SIDE texture needs its own
+    `roofV`, and the wall must map to `wallTop/roofV` (not `building.height`) or
+    its cornice/floors/crown float off the frontage at the corner. (b) Two
+    perpendicular chord planes need `cornerOverlap` + small `proud` to close — a
+    proud offset alone opens a corner wedge. (c) Wiring a side face to a CATCH-ALL
+    role (`other`) must cover edges by BAND, never by role, or it strips the
+    rear/court walls. (d) Frontage-hero back-of-building walls want a shadow tone,
+    not the lit hero base. **Cost:** 1 review round, 0 re-renders; 230/230 green.
 
 ---
 

@@ -981,6 +981,69 @@ const FACADE_COMPOSITES = {
         },
       ],
     },
+    // Bespoke side faces, each drawn from a CHORD through its own classified
+    // edges (same frontage-plane model as the Franklin chord, on a different
+    // axis). The Java (south) end runs E–W along greenpointAxis; its edges
+    // classify as role "greenpoint" (the only cross-street end facing back
+    // toward Greenpoint Ave). `face` keys the spec/registration (3064408:java),
+    // decoupled from the geometric `selectRole`. leftEnd "west" puts the
+    // texture's left edge (Franklin-corner pavilion) at the chord's west end.
+    //
+    // GEOMETRY TRUTH (measured in-engine 2026-06-23): the Java STREET wall is
+    // only ~19.6m — the Franklin-corner (SW) section. East of it the south side
+    // steps ~10m back behind interior light courts (not street-facing). So the
+    // bespoke texture is the TRUE ~19.6m frontage (one corner pavilion + the
+    // central entrance), ~1:1 aspect — re-rendered per astral-java-facade.v3.md.
+    // (The earlier 41m v2 render squished 2:1 onto this chord.) India (north,
+    // role "other") is the full ~38m wall and follows in a later pass — it needs
+    // an axis+normal selector since "other" also covers the West-St rear.
+    sides: [
+      {
+        face: "java",
+        selectRole: "greenpoint",
+        axis: "greenpoint",
+        shade: 0.85,
+        // The painted cornice/roofline sits at v≈0.90 of the trimmed crop (the
+        // parapet railing + cream sky rise above). roofV anchors that line to the
+        // shared roof height so the crown projects + the cream keys out, and the
+        // floors/ground band register to the frontage at the SE corner.
+        roofV: 0.9,
+        key: "../assets/textures/franklin/astral-apartments--java-full.png",
+        segments: [
+          {
+            key: "../assets/textures/franklin/astral-apartments--java-full.png",
+            fromM: 0,
+            toM: 19.6,
+            leftEnd: "west",
+          },
+        ],
+      },
+      // India (north cross-street, ~38m full wall — runs E–W along greenpointAxis
+      // like Java, at the opposite N end). Its edges classify as role "other"
+      // (shared with the West-St rear), but the 3m frontage band in frontageChord
+      // locks onto the street-most north wall and the rear (which projects ~0 onto
+      // greenpointAxis and sits centre-N) drops out. `face: india` keys the spec.
+      // ~2:1 render maps full-width across the chord; symmetric, so leftEnd is
+      // near-moot — "west" matches Java. Verify the wall + orientation in-engine.
+      {
+        face: "india",
+        selectRole: "other",
+        axis: "greenpoint",
+        shade: 0.85,
+        // Cornice/roofline at v≈0.91 (bracketed cornice + stepped gablets +
+        // central gable/oculus above). See the java roofV note.
+        roofV: 0.91,
+        key: "../assets/textures/franklin/astral-apartments--india-full.png",
+        segments: [
+          {
+            key: "../assets/textures/franklin/astral-apartments--india-full.png",
+            fromM: 0,
+            toM: 38,
+            leftEnd: "west",
+          },
+        ],
+      },
+    ],
   },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
@@ -1889,6 +1952,30 @@ function keyPaperAboveRoofline(texture, roofV) {
   return keyed;
 }
 
+// The footprint edges a chord plane actually covers: the street-most band of
+// `role` edges on `axis`, within `bandUnits` of the most-outward offset — the
+// same filter frontageChord() applies internally. Used so a side face built
+// from a catch-all role (`other` = north India wall + rear + light courts) only
+// suppresses the structural walls under its OWN plane, not every same-role edge.
+function frontageBandEdges(edges, axis, role, bandUnits) {
+  const cross = { x: -axis.z, z: axis.x };
+  const candidates = edges.filter((e) => e.role === role);
+  if (!candidates.length) return [];
+  const midCross = (e) =>
+    ((e.start.x * cross.x + e.start.z * cross.z) + (e.end.x * cross.x + e.end.z * cross.z)) / 2;
+  let normalSign = 0;
+  for (const e of candidates) {
+    if (e.normal) normalSign += (e.normal.x * cross.x + e.normal.z * cross.z) * (e.length ?? 0);
+  }
+  const outwardSign = normalSign >= 0 ? 1 : -1;
+  let maxOutward = -Infinity;
+  for (const e of candidates) {
+    const out = midCross(e) * outwardSign;
+    if (out > maxOutward) maxOutward = out;
+  }
+  return candidates.filter((e) => maxOutward - midCross(e) * outwardSign <= bandUnits);
+}
+
 function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   // All of this hero's meshes go under one group tagged with its placeId, so a
   // click anywhere on the building (walls, storefront assembly, roof, parapet,
@@ -1953,6 +2040,30 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // real exterior walls (e.g. Sonny's camera-facing east wall).
   const isGroupComposite = Boolean(composite) && Object.keys(composite.byBin).length > 1;
 
+  // Roles/edges drawn from a chord plane (the Franklin frontage + any bespoke
+  // side face) instead of the per-edge "longest edge" path. Their footprint
+  // edges must NOT also get a typological wall or a geometric parapet — the
+  // chord plane covers them, and a kept typological wall shows through as a flat
+  // base-color panel behind a deep recess (see the frontage note below).
+  //
+  // Frontage covers the whole "franklin" role (Astral's east wall is one solid
+  // street frontage). Side faces select by role too, but `other` is a CATCH-ALL
+  // that also holds the rear (West St) wall + interior light-court walls; the
+  // greenpoint role likewise includes the set-back SE wall behind a light court.
+  // Skipping the whole role would leave those undrawn → open geometry. So cover
+  // only the edges each side's frontage band actually selects (the same band
+  // frontageChord uses below), letting set-back rear/court edges keep their
+  // structural walls.
+  const chordCoveredRoles = new Set();
+  if (composite?.frontage) chordCoveredRoles.add("franklin");
+  const chordCoveredEdges = new Set();
+  for (const side of composite?.sides ?? []) {
+    const axis = side.axis === "greenpoint" ? scene.greenpointAxis : scene.franklinAxis;
+    for (const e of frontageBandEdges(building.edges, axis, side.selectRole, 3 * scene.projection.scale)) {
+      chordCoveredEdges.add(e);
+    }
+  }
+
   for (const edge of building.edges) {
     const face = composite?.byBin?.[building.bin]?.[edge.role];
     // In a facade group (Premier + its Pizza sister) the uncovered edges are
@@ -2011,7 +2122,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // shows through as a flat base-color (red) panel once a window recess is
     // pushed deeper than the proud gap. The hero assembly's recessed panes +
     // reveals fully enclose each opening, so nothing shows through without it.
-    if (composite?.frontage && !face && edge.role === "franklin") continue;
+    if (!face && (chordCoveredRoles.has(edge.role) || chordCoveredEdges.has(edge))) continue;
     const wallColor =
       isGroupComposite && !face
         ? new THREE.Color(baseColor).lerp(new THREE.Color(MASSING.partyWallBlend), 0.5).multiplyScalar(shade)
@@ -2042,6 +2153,21 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       }
     }
 
+    // Interior light-court walls (the rear `other`-role complex of well dividers
+    // + returns) read as bright flat-red "threads" hanging in the wells when seen
+    // near edge-on from above — flat MeshBasic walls show full base color at any
+    // grazing angle, and the short returns fall under decorateTypologicalWall's
+    // 2m floor so they get no brick to break it up. On a full-block hero the
+    // three street elevations are textured chord faces, so EVERY non-textured
+    // wall here is back-of-building (rear + the set-back light-court complex,
+    // roles `other` AND the set-back `greenpoint`). The wells sit in shadow, so
+    // sink the whole back complex to a dim shaft tone — slivers recede, decorated
+    // court faces just read as dimmer brick. Scoped to frontage heroes so corner
+    // heroes (Sonny's camera-visible east wall, etc.) keep their lit returns.
+    if (!isTextured && composite?.frontage) {
+      const undecorated = renderEdge.length / scene.projection.scale < 2;
+      wallColor.multiplyScalar(undecorated ? 0.32 : 0.5);
+    }
     const material = new THREE.MeshBasicMaterial({
       color: wallColor,
       side: THREE.DoubleSide,
@@ -2094,82 +2220,126 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     loadFaceTexture(faceTextureUrl(face), apply);
   }
 
-  // Full-block segmented frontage (Astral): the bespoke texture covers only a
-  // segment of a long, oriel-segmented street wall, so it can't ride "the
-  // longest edge per role." Place each segment on the frontage chord — the
-  // straight street line through the franklin edges (street-most band, so
-  // interior light courts don't drag the plane backward) — a hair proud of the
-  // typological frontage built by the loop above. Flat v1; oriels/recesses next.
+  // Full-block hero chord faces (Astral): a bespoke texture covers a long,
+  // oriel-segmented wall that "longest edge per role" can't carry, so each such
+  // wall is drawn from a straight CHORD through its classified edges — the
+  // street-most band, so interior light courts don't drag the plane backward —
+  // a hair proud of the typological wall. The Franklin frontage rides
+  // franklinAxis/role "franklin"; bespoke side faces (Java now; India later)
+  // ride greenpointAxis and their classification role. Each chord face is keyed
+  // `BIN:<face>` (frontage/java/…), distinct from the per-edge `BIN:role` keys,
+  // so a spec swaps the flat segment for the carved oriel/recess assembly.
+  const chordFaces = [];
   if (composite?.frontage) {
+    chordFaces.push({
+      axis: scene.franklinAxis,
+      role: "franklin",
+      face: "frontage",
+      shade: faceShade.franklin,
+      roofV: composite.frontage.roofV ?? 1,
+      segments: composite.frontage.segments,
+    });
+  }
+  for (const side of composite?.sides ?? []) {
+    chordFaces.push({
+      axis: side.axis === "greenpoint" ? scene.greenpointAxis : scene.franklinAxis,
+      role: side.selectRole,
+      face: side.face,
+      shade: side.shade ?? faceShade.other,
+      roofV: side.roofV ?? 1,
+      segments: side.segments,
+    });
+  }
+  if (chordFaces.length) {
     const upm = scene.projection.scale;
-    const chord = frontageChord(building.edges, scene.franklinAxis, { unitsPerMeter: upm, frontageBandM: 3 });
-    const outward = { x: chord.cross.x * chord.outwardSign, z: chord.cross.z * chord.outwardSign };
-    const proud = 0.02;
-    for (const seg of composite.frontage.segments) {
-      const placed = segmentURange(chord, seg, { unitsPerMeter: upm });
-      const start = { x: placed.start.x + outward.x * proud, z: placed.start.z + outward.z * proud };
-      const end = { x: placed.end.x + outward.x * proud, z: placed.end.z + outward.z * proud };
-      const length = Math.hypot(end.x - start.x, end.z - start.z);
-      if (length < 1e-6) continue;
-      const segEdge = {
-        start,
-        end,
-        length,
-        midpoint: { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 },
-        direction: { x: (end.x - start.x) / length, z: (end.z - start.z) / length },
-        normal: outward,
-        role: "franklin",
-      };
-      const segFace = { key: seg.key, u0: 0, u1: 1, leftEnd: seg.leftEnd ?? "north", flip: Boolean(seg.flip) };
-      const segMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(baseColor).multiplyScalar(faceShade.franklin),
-        side: THREE.DoubleSide,
-      });
-      const segWall = new THREE.Mesh(wallQuad(segEdge, building.height, segFace, scene), segMat);
-      segWall.userData = { facadeSlot: `${building.placeId}--frontage` };
-      heroGroup.add(segWall);
-      const segCull = addCullable(segWall, outward);
+    // Tiny clearance proud of the footprint edge. Each chord plane is pushed out
+    // along its OWN normal, so two perpendicular planes meet at a corner offset
+    // by ~proud·√2 — at 0.02 that opened a ~0.4m wedge to the sidewalk at the
+    // Franklin↔Java/India corners. The band-filter (chordCoveredEdges) now drops
+    // the typological wall that used to sit behind the chord, so the large proud
+    // gap it needed is gone; a hair (0.006) keeps z-clearance while the corners
+    // close. Each segment is also extended by `cornerOverlap` along its own run
+    // so adjacent perpendicular planes overlap instead of leaving a seam.
+    const proud = 0.006;
+    const cornerOverlap = 0.02;
+    for (const cf of chordFaces) {
+      const chord = frontageChord(building.edges, cf.axis, { role: cf.role, unitsPerMeter: upm, frontageBandM: 3 });
+      const outward = { x: chord.cross.x * chord.outwardSign, z: chord.cross.z * chord.outwardSign };
+      // Map this texture so its painted roofline (v = cf.roofV) lands at the
+      // shared roof height `wallTop`, with the parapet/gable crown projecting
+      // above. faceHeight = wallTop / roofV. For the frontage (roofV ===
+      // heroRoofV) this equals building.height — unchanged. For a side texture
+      // whose cornice sits at a different fraction (India/Java ≈0.90 vs the
+      // frontage's 0.86), it rescales the wall so cornice, floor lines and the
+      // ground band all register to the frontage at the corner instead of
+      // floating a few % high.
+      const faceHeight = wallTop / cf.roofV;
+      for (const seg of cf.segments) {
+        const placed = segmentURange(chord, seg, { unitsPerMeter: upm });
+        // Unit direction along the chord run, to extend each end past the corner.
+        const rawLen = Math.hypot(placed.end.x - placed.start.x, placed.end.z - placed.start.z) || 1;
+        const ux = (placed.end.x - placed.start.x) / rawLen;
+        const uz = (placed.end.z - placed.start.z) / rawLen;
+        const start = { x: placed.start.x + outward.x * proud - ux * cornerOverlap, z: placed.start.z + outward.z * proud - uz * cornerOverlap };
+        const end = { x: placed.end.x + outward.x * proud + ux * cornerOverlap, z: placed.end.z + outward.z * proud + uz * cornerOverlap };
+        const length = Math.hypot(end.x - start.x, end.z - start.z);
+        if (length < 1e-6) continue;
+        const segEdge = {
+          start,
+          end,
+          length,
+          midpoint: { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 },
+          direction: { x: (end.x - start.x) / length, z: (end.z - start.z) / length },
+          normal: outward,
+          role: cf.role,
+        };
+        const segFace = { key: seg.key, u0: 0, u1: 1, leftEnd: seg.leftEnd ?? "north", flip: Boolean(seg.flip) };
+        const segMat = new THREE.MeshBasicMaterial({
+          color: new THREE.Color(baseColor).multiplyScalar(cf.shade),
+          side: THREE.DoubleSide,
+        });
+        const segWall = new THREE.Mesh(wallQuad(segEdge, faceHeight, segFace, scene), segMat);
+        segWall.userData = { facadeSlot: `${building.placeId}--${cf.face}` };
+        heroGroup.add(segWall);
+        const segCull = addCullable(segWall, outward);
 
-      // A spec (e.g. Astral's hand-seeded openings) swaps the flat segment for
-      // the carved component assembly — same rebuild closure + recess-editor
-      // registration as the per-edge specFace path, so ?facadeedit=1 snaps the
-      // arches live. Keyed `BIN:frontage` (distinct from the per-edge roles).
-      const segFaceKey = `${building.bin}:frontage`;
-      const segSpec = FACADE_SPECS[segFaceKey];
-      const segRoofV = composite.frontage.roofV ?? 1;
-      const segApply = segSpec
-        ? (rawTexture) => {
-            // Key the cream paper background out of the above-roofline band so
-            // the projecting parapet/gable reads as silhouette, not a flat
-            // billboard. Limited to rows above roofV — protects the sign band
-            // and bright windows below.
-            const texture = segRoofV < 1 ? keyPaperAboveRoofline(rawTexture, segRoofV) : rawTexture;
-            heroGroup.remove(segWall);
-            const frame = faceFrame(segEdge, building.height, segFace, scene);
-            const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
-            const hexBase = new THREE.Color(baseColor).multiplyScalar(faceShade.franklin).getHex();
-            let current = null;
-            const rebuild = (specOverride) => {
-              if (current) {
-                heroGroup.remove(current);
-                disposeGroup(current);
-              }
-              current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
-              current.userData.faceKey = segFaceKey;
-              heroGroup.add(current);
-              segCull.object = current;
-              segCull.refresh();
-              requestRender?.();
+        const segFaceKey = `${building.bin}:${cf.face}`;
+        const segSpec = FACADE_SPECS[segFaceKey];
+        const segRoofV = cf.roofV;
+        const segApply = segSpec
+          ? (rawTexture) => {
+              // Key the cream paper background out of the above-roofline band so
+              // the projecting parapet/gable reads as silhouette, not a flat
+              // billboard. Limited to rows above roofV — protects the sign band
+              // and bright windows below.
+              const texture = segRoofV < 1 ? keyPaperAboveRoofline(rawTexture, segRoofV) : rawTexture;
+              heroGroup.remove(segWall);
+              const frame = faceFrame(segEdge, faceHeight, segFace, scene);
+              const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
+              const hexBase = new THREE.Color(baseColor).multiplyScalar(cf.shade).getHex();
+              let current = null;
+              const rebuild = (specOverride) => {
+                if (current) {
+                  heroGroup.remove(current);
+                  disposeGroup(current);
+                }
+                current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
+                current.userData.faceKey = segFaceKey;
+                heroGroup.add(current);
+                segCull.object = current;
+                segCull.refresh();
+                requestRender?.();
+              };
+              rebuild(segSpec);
+              registerFacadeFace(segFaceKey, { rebuild, texture, u0: segFace.u0, u1: segFace.u1, flip: Boolean(segFace.flip), file: SPEC_FILE_BY_FACE[segFaceKey], faceSpec: segSpec });
+            }
+          : (texture) => {
+              segMat.map = texture;
+              segMat.color.setScalar(cf.shade);
+              segMat.needsUpdate = true;
             };
-            rebuild(segSpec);
-            registerFacadeFace(segFaceKey, { rebuild, texture, u0: segFace.u0, u1: segFace.u1, flip: Boolean(segFace.flip), file: SPEC_FILE_BY_FACE[segFaceKey], faceSpec: segSpec });
-          }
-        : (texture) => {
-            segMat.map = texture;
-            segMat.color.setScalar(faceShade.franklin);
-            segMat.needsUpdate = true;
-          };
-      loadFaceTexture(facadeTextureUrls[seg.key], segApply);
+        loadFaceTexture(facadeTextureUrls[seg.key], segApply);
+      }
     }
   }
 
@@ -2201,7 +2371,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   const parapetThickness = 0.024;
   for (const edge of building.edges) {
     if (FACADE_SPECS[`${building.bin}:${edge.role}`]?.cornice) continue;
-    if (composite?.frontage && edge.role === "franklin") continue;
+    if (chordCoveredRoles.has(edge.role) || chordCoveredEdges.has(edge)) continue;
     const { start, end } = edge;
     const segment = new THREE.Mesh(
       new THREE.BoxGeometry(edge.length + parapetThickness, parapetHeight, parapetThickness),
