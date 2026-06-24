@@ -8,13 +8,16 @@
       "category": "bar",
       "evidence": "docs/reference/asset-reference/storefront/proof-set/elder-greene/",
       "signature": {
-        "awning": { "profile": "scalloped", "tintToken": "slateBlueDark", "wrapCorner": true },
+        "awning": { "profile": "straight", "stripe": "pinstripe", "tintToken": "slateBlueDark", "wrapCorner": true },
         "frame": { "tintToken": "inkBlack" },
         "transom": { "text": "COCKTAILS · COLD BEER", "tintToken": "signalAmber" },
         "glazing": { "rhythm": "tall-multipane" },
         "blade": { "shape": "oval", "tintToken": "signalAmber" },
         "seating": { "kind": "bistro", "tintToken": "sage" },
         "building": {
+          "corner": { "type": "chamfer", "insetM": 2.4, "entrance": true },
+          "wallHex": "0x5a3a2c",
+          "cornice": false,
           "parapet": { "insets": "diamond", "tintToken": "stoneLight" },
           "windowAC": { "tintToken": "acGrey" }
         }

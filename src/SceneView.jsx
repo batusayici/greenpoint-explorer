@@ -39,6 +39,8 @@ import { resolveStorefrontUnit } from "./storefrontUnitResolve.js";
 import { signatureFor, tokenColor } from "./storefrontSignatures.js";
 import { planStorefrontSeating } from "./storefrontSeating.js";
 import { planParapetInsets } from "./parapetInsets.js";
+import { chamferCorner } from "./chamferCorner.js";
+import { nearestPaletteToken } from "./visualSystem/colorBinding.js";
 import { resolveHasCornice, resolveFireEscape, resolveHasStoop } from "./facadeToggleResolve.js";
 import { buildStoopGeometry } from "./stoopGeometry.js";
 import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
@@ -302,7 +304,7 @@ export default function SceneView() {
       });
       buildFurniture(three, furniture);
       const { baysByBin, pointByName: storefrontPointByName } = computeStorefrontBays(scene);
-      buildBuildings(three, scene, requestRender, isActive, addCullable, baysByBin);
+      buildBuildings(three, scene, requestRender, isActive, addCullable, baysByBin, storefrontPointByName);
       buildBlockStorefronts(three, scene, baysByBin, storefrontPointByName);
       buildStorefrontSeating(three, scene, baysByBin, storefrontPointByName);
       buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
@@ -1718,7 +1720,7 @@ function buildStorefrontSeating(three, scene, baysByBin, pointByName) {
   }
 }
 
-function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map()) {
+function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map(), pointByName = new Map()) {
   resetBuildingTruth(); // dev: rebuild the per-BIN facade-truth registry fresh each scene build
   scene.buildings.forEach((building, index) => {
     // Hand-authored INKED_FACADE_REAL run: apply the per-BIN facade-truth override
@@ -1779,7 +1781,16 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           // stone-diamond parapet + a through-window AC). Once per building: the
           // first signed bay that carries a `building` block wins.
           const buildingSig = binSigs.find((s) => s?.building)?.building;
-          if (buildingSig) kitParams.buildingSignature = buildingSig;
+          if (buildingSig) {
+            kitParams.buildingSignature = buildingSig;
+            // Darker brown brick, snapped to the brick palette (no-miss).
+            if (buildingSig.wallHex != null) kitParams.tint = nearestPaletteToken(Number(buildingSig.wallHex), family);
+            // Elder Greene has no classical cornice — plain brick parapet.
+            if (buildingSig.cornice === false) kitParams.hasCornice = false;
+            // Pass the chamfer entrance-face midpoint so decorateInkedWall can put
+            // the door (and no awning) on the diagonal, glazing on the flanks.
+            if (building.chamferMid) kitParams.chamferMid = building.chamferMid;
+          }
         }
       }
     }
@@ -1815,6 +1826,33 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     if (treatment === "hero") {
       buildHeroBuilding(three, building, scene, requestRender, isActive, addCullable);
       return;
+    }
+    // R2 bespoke corner: a signed corner shop (Elder Greene) whose real building
+    // has a 45° chamfer the square footprint lacks. Cut it into building.polygon
+    // BEFORE the extrude/inked-wall pass so the chamfer propagates to the massing,
+    // the inked faces, and the storefront face-selection automatically. Target the
+    // vertex nearest the storefront's scenePoint (the street corner).
+    {
+      const cBays = baysByBin.get(building.bin);
+      const cSig = cBays && cBays.map((bay) => signatureFor(bay.signatureKey ?? bay.name)?.signature)
+        .find((s) => s?.building?.corner?.type === "chamfer")?.building?.corner;
+      if (cSig) {
+        const pts = (cBays || []).map((b) => pointByName.get(b.name)).filter(Boolean);
+        if (pts.length) {
+          const ref = { x: pts.reduce((s, p) => s + p.x, 0) / pts.length, z: pts.reduce((s, p) => s + p.z, 0) / pts.length };
+          let bi = 0, bd = Infinity;
+          building.polygon.forEach((p, i) => { const d = (p.x - ref.x) ** 2 + (p.z - ref.z) ** 2; if (d < bd) { bd = d; bi = i; } });
+          const n = building.polygon.length;
+          const corner = building.polygon[bi];
+          const prev = building.polygon[(bi - 1 + n) % n], next = building.polygon[(bi + 1) % n];
+          const inset = (cSig.insetM ?? 2.2) * scene.projection.scale;
+          const lerp = (f, t) => { const dx = t.x - f.x, dz = t.z - f.z, l = Math.hypot(dx, dz) || 1, k = Math.min(inset / l, 0.49); return { x: f.x + dx * k, z: f.z + dz * k }; };
+          const A = lerp(corner, prev), B = lerp(corner, next);
+          // The chamfer EDGE midpoint identifies the diagonal entrance face downstream.
+          if (cSig.entrance) building.chamferMid = { x: (A.x + B.x) / 2, z: (A.z + B.z) / 2 };
+          building.polygon = chamferCorner(building.polygon, corner, inset);
+        }
+      }
     }
     const shape = footprintShape(building.polygon);
     const geometry = new THREE.ExtrudeGeometry(shape, { depth: building.height, bevelEnabled: false });
@@ -3169,10 +3207,14 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
     // street): it still gets a door so no frontage reads as blank, but the
     // storefront / 3D stoop / fire escape stay on the primary frontage only.
     if (params.storefront && (!plainEntry || params.storefront.wrapCorner)) {
-      // On the SECONDARY frontage of a wrap-corner shop, continue the awning +
-      // glazing but suppress the duplicate prominent entry (door stays on the
-      // primary corner face) — `secondary` flags that to decorateStorefront.
-      decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params, { secondary: plainEntry });
+      // Entrance routing (chamfer corner): the DIAGONAL face carries the single
+      // door and NO awning (it's the open corner entry); the Franklin/Kent flanks
+      // are continuous glazing under the awning. Without a chamferMid, fall back to
+      // the old rule (door on the primary face, glass on plainEntry frontages).
+      const entranceRouting = !!params.chamferMid;
+      const isChamfer = entranceRouting && dist(edge.midpoint, params.chamferMid) < 0.08;
+      const secondary = entranceRouting ? !isChamfer : plainEntry;
+      decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params, { secondary, suppressAwning: isChamfer, entrance: isChamfer });
     } else {
       // Commercial ground floors carry a storefront (drawn separately) — never a
       // residential 3D stoop, even for stoop-eligible families.
@@ -3444,6 +3486,8 @@ function addInkedCornerFillers(deco, edges, exposed, height, params, scene) {
 function decorateStorefront(ctx, band, storefront, params, opts = {}) {
   const { quad, quad3, point, edgeLen, height } = ctx;
   const secondary = !!opts.secondary; // corner-wrap's secondary frontage: glass, no entry
+  const suppressAwning = !!opts.suppressAwning; // the open corner entrance carries no awning
+  const entrance = !!opts.entrance; // the diagonal corner face IS the door (no display glass)
   const bw = band.x1 - band.x0;
   const bh = band.y1 - band.y0;
   const dark = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
@@ -3465,27 +3509,45 @@ function decorateStorefront(ctx, band, storefront, params, opts = {}) {
     // Low painted kickplate in the shopfront's own trim color — no brick under
     // the glass, so the display windows read as meeting the sidewalk.
     quad(map(s.bulkhead), 0.007, null, { tint: frameTint });
-    // Display glass: shared inked-glazing texture (self-contained dark glass).
     const glazeTex = makeInkedGlazingTexture();
-    for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
-    // Mullion, transom, door, frame: solid inked tints.
-    for (const m of (Array.isArray(s.mullion) ? s.mullion : [s.mullion])) quad(map(m), 0.009, null, { tint: frameTint });
-    quad(map(s.transom), 0.009, null, { tint: MASSING.transomBand });          // light transom band
-    // Door: leaf recessed behind the shopfront frame with shaded reveals, so the
-    // entry reads as a real set-back doorway, not a flat painted panel. On a
-    // corner-wrap SECONDARY face the door bay becomes display glass instead — the
-    // single entry stays on the primary corner face, so the wrap reads as one
-    // continuous shopfront rather than two doorways.
-    const d = map(Array.isArray(s.door) ? s.door[0] : s.door);
-    if (secondary) {
-      quad(d, 0.008, glazeTex, {});
+    if (entrance) {
+      // The DIAGONAL corner face is the entrance: a wide recessed double glass
+      // door fills the bay (no display windows). Glass leaves set back behind a
+      // frame, a center stile, and shaded head/jamb reveals so it reads as a real
+      // set-back doorway — the corner you walk in through.
+      const gz = s.glazing && s.glazing.length ? s.glazing : [s.door].flat();
+      const gx0 = Math.min(...gz.map((g) => g.x0)), gx1 = Math.max(...gz.map((g) => g.x1));
+      const gy0 = Math.min(...gz.map((g) => g.y0)), gy1 = Math.max(...gz.map((g) => g.y1));
+      const dr = map({ x0: gx0, x1: gx1, y0: gy0, y1: gy1 });
+      const dFront = 0.011, dBack = -0.006; // leaves sunk behind the wall plane
+      quad(dr, dBack, glazeTex, {});                                        // glass door leaves
+      const cx = (gx0 + gx1) / 2;
+      quad(map({ x0: cx - 0.012, x1: cx + 0.012, y0: gy0, y1: gy1 }), dBack + 0.003, null, { tint: dark(frameTint, 0.8) }); // center stile
+      quad3(point(dr.x0, dr.y1, dFront), point(dr.x1, dr.y1, dFront), point(dr.x1, dr.y1, dBack), point(dr.x0, dr.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head
+      quad3(point(dr.x0, dr.y0, dFront), point(dr.x0, dr.y1, dFront), point(dr.x0, dr.y1, dBack), point(dr.x0, dr.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
+      quad3(point(dr.x1, dr.y0, dFront), point(dr.x1, dr.y1, dFront), point(dr.x1, dr.y1, dBack), point(dr.x1, dr.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
     } else {
-      const dFront = 0.011, dBack = 0.005;
-      quad(d, dBack, null, { tint: dark(frameTint, 0.55) });
-      quad3(point(d.x0, d.y1, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x0, d.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head shadow
-      quad3(point(d.x0, d.y0, dFront), point(d.x0, d.y1, dFront), point(d.x0, d.y1, dBack), point(d.x0, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
-      quad3(point(d.x1, d.y0, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x1, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
+      // Display glass: shared inked-glazing texture (self-contained dark glass).
+      for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
+      // Mullion, transom, door, frame: solid inked tints.
+      for (const m of (Array.isArray(s.mullion) ? s.mullion : [s.mullion])) quad(map(m), 0.009, null, { tint: frameTint });
+      // Door: leaf recessed behind the shopfront frame with shaded reveals, so the
+      // entry reads as a real set-back doorway, not a flat painted panel. On a
+      // corner-wrap SECONDARY face the door bay becomes display glass instead — the
+      // single entry stays on the primary corner face, so the wrap reads as one
+      // continuous shopfront rather than two doorways.
+      const d = map(Array.isArray(s.door) ? s.door[0] : s.door);
+      if (secondary) {
+        quad(d, 0.008, glazeTex, {});
+      } else {
+        const dFront = 0.011, dBack = 0.005;
+        quad(d, dBack, null, { tint: dark(frameTint, 0.55) });
+        quad3(point(d.x0, d.y1, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x0, d.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head shadow
+        quad3(point(d.x0, d.y0, dFront), point(d.x0, d.y1, dFront), point(d.x0, d.y1, dBack), point(d.x0, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
+        quad3(point(d.x1, d.y0, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x1, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
+      }
     }
+    quad(map(s.transom), 0.009, null, { tint: MASSING.transomBand });          // light transom band
     for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
     // Category sign band: painted board in the shopfront's trim color with cream
     // serif lettering (II-C palette — never a bright white panel). Canvas aspect
@@ -3495,15 +3557,16 @@ function decorateStorefront(ctx, band, storefront, params, opts = {}) {
     quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect), boardColor, unit.textHex), {});
     // Awning: a short projecting canopy (sloped top + scalloped valance) so it
     // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
-    if (s.awning) {
+    if (s.awning && !suppressAwning) {
       const a = map(s.awning);          // face-local: a.y1 = attach (under sign), a.y0 = front edge
       const color = unit.awning?.color ?? MASSING.awningDefault;
+      const stripe = unit.awning?.stripe ?? "block"; // signature fabric (e.g. "pinstripe")
       const offBack = 0.012;            // canopy root, just proud of the frame
       const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
       const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
       // Sloped top face: striped fabric from the wall (attach, a.y1) out and down
       // to the proud front edge (a.y0). Stripe positions match the valance below.
-      const topTex = makeAwningTexture(color, { valance: false });
+      const topTex = makeAwningTexture(color, { valance: false, stripe });
       quad3(
         point(a.x0, a.y1, offBack), point(a.x1, a.y1, offBack),
         point(a.x1, a.y0, offFront), point(a.x0, a.y0, offFront),
@@ -3511,7 +3574,7 @@ function decorateStorefront(ctx, band, storefront, params, opts = {}) {
       );
       // Valance: scalloped striped fringe hanging from the front edge. flipY=false
       // so the canvas hem (drawn at the bottom) lands at the bottom of the face.
-      const valTex = makeAwningTexture(color, { valance: true });
+      const valTex = makeAwningTexture(color, { valance: true, stripe });
       valTex.flipY = false; valTex.needsUpdate = true;
       quad3(
         point(a.x0, a.y0, offFront), point(a.x1, a.y0, offFront),
@@ -3784,16 +3847,33 @@ function makeInkedGlazingTexture() {
 // top and the valance line up across the fold:
 //   valance=false → opaque canopy top (full height, no scallop)
 //   valance=true  → scalloped hem; gaps + below-hem left transparent for the fringe
-function makeAwningTexture(tintHex, { valance = false } = {}) {
+function makeAwningTexture(tintHex, { valance = false, stripe = "block" } = {}) {
   const c = document.createElement("canvas");
   c.width = 256; c.height = 128;
   const ctx = c.getContext("2d");
   const tint = new THREE.Color(tintHex);
   const tintHexStr = `#${tint.getHexString()}`;
   const cream = "#e3d9c2";
+  const bodyH = valance ? 90 : 128;
+
+  if (stripe === "pinstripe") {
+    // Deep solid ground with fine, widely spaced cream pinstripes + a straight
+    // bound hem (Elder Greene's navy awning). NOT chunky alternating blocks.
+    ctx.fillStyle = tintHexStr; ctx.fillRect(0, 0, 256, 128);
+    ctx.strokeStyle = "rgba(227, 217, 194, 0.92)"; ctx.lineWidth = 1.5;
+    for (let x = 14; x < 256; x += 30) { ctx.beginPath(); ctx.moveTo(x + 0.5, 0); ctx.lineTo(x + 0.5, bodyH); ctx.stroke(); }
+    if (valance) {
+      ctx.strokeStyle = "rgba(20, 18, 14, 0.45)"; ctx.lineWidth = 3; // straight bound hem
+      ctx.beginPath(); ctx.moveTo(0, bodyH - 1); ctx.lineTo(256, bodyH - 1); ctx.stroke();
+    } else {
+      ctx.fillStyle = "rgba(236, 227, 207, 0.08)"; ctx.fillRect(0, 0, 256, 16); // faint top sheen
+    }
+    const tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 8;
+    return tx;
+  }
+
   const n = 7, w = 256 / n;
   const stripeColor = (i) => (i % 2 === 0 ? tintHexStr : cream);
-  const bodyH = valance ? 90 : 128;
   for (let i = 0; i < n; i += 1) {
     ctx.fillStyle = stripeColor(i);
     ctx.fillRect(i * w, 0, w + 1, bodyH);       // +1 avoids hairline seams

@@ -27,6 +27,7 @@ export function resolveStorefrontUnit({ bay, index, params = {}, count = 1, sign
       const c = tokenColor(sig.awning.tintToken);
       if (c != null) color = c;
       if (sig.awning.profile) unit.profile = sig.awning.profile;
+      if (sig.awning.stripe) unit.stripe = sig.awning.stripe; // fabric style (e.g. "pinstripe")
       if (sig.awning.wrapCorner != null) unit.wrapCorner = sig.awning.wrapCorner;
     }
     if (sig.frame) {
@@ -42,8 +43,10 @@ export function resolveStorefrontUnit({ bay, index, params = {}, count = 1, sign
 
   unit.awning = color != null ? { has, color } : { has };
   if (unit.profile != null) unit.awning.profile = unit.profile;
+  if (unit.stripe != null) unit.awning.stripe = unit.stripe;
   if (unit.wrapCorner != null) unit.awning.wrapCorner = unit.wrapCorner;
   delete unit.profile;
+  delete unit.stripe;
   delete unit.wrapCorner;
   return unit;
 }

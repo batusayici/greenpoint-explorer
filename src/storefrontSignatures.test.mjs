@@ -8,7 +8,8 @@ test("resolves Elder Greene by curation key", () => {
   const sig = signatureFor("elder-greene");
   assert.ok(sig, "expected a signature for elder-greene");
   assert.equal(sig.category, "bar");
-  assert.equal(sig.signature.awning.profile, "scalloped");
+  assert.equal(sig.signature.awning.profile, "straight");
+  assert.equal(sig.signature.awning.stripe, "pinstripe");
   assert.equal(sig.signature.awning.wrapCorner, true);
 });
 
