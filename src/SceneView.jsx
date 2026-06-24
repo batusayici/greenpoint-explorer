@@ -2002,6 +2002,14 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // street-bright, even if it geometrically faces a street.
     const effectiveRole = isGroupComposite ? (face ? edge.role : "other") : edge.role;
     const shade = faceShade[effectiveRole] ?? faceShade.other;
+
+    // A frontage-hero building (Astral) draws its Franklin wall from the frontage
+    // chord built below, proud of the footprint edges. Skip the typological wall
+    // on those covered edges: kept, it sits a hair behind the hero plane and
+    // shows through as a flat base-color (red) panel once a window recess is
+    // pushed deeper than the proud gap. The hero assembly's recessed panes +
+    // reveals fully enclose each opening, so nothing shows through without it.
+    if (composite?.frontage && !face && edge.role === "franklin") continue;
     const wallColor =
       isGroupComposite && !face
         ? new THREE.Color(baseColor).lerp(new THREE.Color(MASSING.partyWallBlend), 0.5).multiplyScalar(shade)
