@@ -20,7 +20,7 @@ Produces `astral-apartments--india-full.png` — the entire India (north) elevat
 
 → **FIVE residential floors above the ground floor, the top one arched. Five.** Do not draw four; do not merge two into one.
 
-**Central entrance pavilion (mid-face, taller/richer — its own vertical composition, does NOT line up row-for-row with the wings):** the rusticated brownstone **round-arch entrance** → the **carved sign band** → a vertical stack of **tall windows / round-arched windows** rising through the brick → terminating in a **stepped brick gable** crowned with a **round-arch top window + terracotta cartouche / oculus medallion** above the main cornice (see `india.png`, `india.jpeg`).
+**Central entrance pavilion (mid-face, taller/richer — its own vertical composition, does NOT line up row-for-row with the wings):** the rusticated brownstone **round-arch entrance** → the **carved sign band** → a vertical stack of **tall windows / round-arched windows** rising through the brick → terminating in a **stepped brick gable** crowned with a **round-arch top window + terracotta cartouche / oculus medallion** above the main cornice (read it off `india.png`; `india.jpeg` — the Franklin center entrance — is a cross-ref for the shared arch grammar only).
 
 **Roofline:** main corbelled brick cornice with an **iron parapet railing**; the **central stepped gable** over the pavilion; **terracotta cartouche medallions** where the photos show them.
 
@@ -28,8 +28,8 @@ Produces `astral-apartments--india-full.png` — the entire India (north) elevat
 
 ## Photos to attach (truth source — all in `docs/reference/hero-evidence/astral/`)
 Re-orient upright first (the `.jpeg` field shots are EXIF-rotated 90°; the `.png` web refs are upright).
-- **Straight-on full India elevation (the master — count floors AND axes from this):** `india.png`
-- **Central entrance pavilion detail (rusticated round-arch + carved sign band + gable/oculus):** `india.jpeg`
+- **Straight-on full India elevation (the master — read the central pavilion, floor count AND axes from this):** `india.png`
+- **Shared entrance grammar cross-ref (NOT the India face):** `india.jpeg` is the **Franklin** center "THE ASTRAL" entrance (hash-verified = old IMG_0973). Use it only as a style exemplar for the rusticated round-arch / carved-band / gable language the entrances share — the India entrance's actual form comes from `india.png`.
 - **Franklin↔India rounded corner pavilion (how the corner turns, round-arch base arcade):** `india corner2.jpeg`, `india corner.jpeg`
 - **Cross-reference for shared grammar (brick, cornice, cartouches, arched top, fire escapes):** `IMG_0969`, `IMG_0970`, `IMG_0964`, `IMG_0962`
 - Plus the II-C style tiles: `II-C-style-system-tile.png` + `II-assembled-mini-scene.png` (in `docs/reference/art/`).
@@ -63,6 +63,6 @@ Re-orient upright first (the `.jpeg` field shots are EXIF-rotated 90°; the `.pn
 4. Verify in-engine at all four angles; blank-box / cornice-notch / corner-seam-with-Franklin checks. Append a HERO_FACADE_LOG entry.
 
 ## Open decisions for Batu
-- **Carved sign-band text on the India entrance:** I'll copy what's legible in `india.jpeg`; tell me if you know the exact lettering so I can sanity-check the render (do not let the model invent text).
+- **Carved sign-band text on the India entrance:** I'll copy only what's legible in `india.png` (the India entrance may or may not carry a carved band — don't assume it mirrors Franklin's "THE ASTRAL"). Tell me the exact lettering if you know it; do not let the model invent text.
 - **Aspect:** seed ~2:1 from the ~41 m × ~21 m face; final proportion settles against the derive overlay (drawn fold wins, measured not assumed).
 - **Corners-only fallback:** if you'd rather keep the central India pavilion procedural and only render the two corner-pavilion wraps, say so and I'll cut the prompt down — but the central pavilion is the recognizable element, so full-face is the recommendation.

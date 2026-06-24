@@ -17,14 +17,14 @@ Rhythmic Queen Anne worker housing (Charles Pratt, for Astral Oil Works employee
 
 **Horizontal (the module grammar):**
 - **Center entrance pavilion** — the signature: a grand **rusticated round-arch entrance** ("No 184", brownstone voussoirs) under the carved **"THE ASTRAL"** stone sign band, gable + cartouche above (IMG_0966, 0967, 0973). This is the single most recognizable element → the vertical-slice segment.
-- **Typical oriel-bay module** — projecting 3-facet bay + flanking punched windows + round-arch top + fire escape. Repeats ~5–7× across the frontage (IMG_0971 full-frontage).
-- **End pavilions** — the frontage terminates in pavilions; one end shows a rounded/arched corner element (IMG_0957). Exact end count/condition: confirm against IMG_0971/0957 when cutting segment boundaries.
+- **Typical oriel-bay module** — projecting 3-facet bay + flanking punched windows + round-arch top + fire escape. Repeats ~5–7× across the frontage (`india corner.jpeg` full-frontage).
+- **End pavilions** — the frontage terminates in pavilions; one end shows a rounded/arched corner element (`java.jpeg`). Exact end count/condition: confirm against `india corner.jpeg`/`java.jpeg` when cutting segment boundaries.
 
 ## Photo index (which shot proves which element)
 
 | Element | Photos |
 |---|---|
-| Full frontage / rhythm | IMG_0971 (best oblique end-to-end), 0957, 0958, 0973 |
+| Full frontage / rhythm | `india corner.jpeg` (best oblique end-to-end), `java.jpeg`, `java corner.jpeg`, `india.jpeg` |
 | Center entrance + "THE ASTRAL" + No 184 arch | IMG_0966, 0967, 0973 |
 | Oriel bays + fire escapes | IMG_0962, 0965, 0971 |
 | Round-arch top-floor windows / oculi | IMG_0964, 0967 |
@@ -33,6 +33,8 @@ Rhythmic Queen Anne worker housing (Charles Pratt, for Astral Oil Works employee
 | Ground-floor commercial (vermouth bar) | IMG_0959, 0960, 0963 |
 
 > Orientation note: phones captured these in portrait; several read rotated 90° (EXIF). Re-orient upright when building the render contact sheet (Phase B); evidence stored as-shot.
+
+> **Rename map (2026-06-23, hash-verified content-identical).** The five full-frontage obliques were renamed by the corner they look toward: `IMG_0957→java.jpeg`, `IMG_0958→java corner.jpeg`, `IMG_0971→india corner.jpeg`, `IMG_0972→india corner2.jpeg`, `IMG_0973→india.jpeg`. They remain **Franklin-frontage** shots (so `india.jpeg` is the Franklin center "THE ASTRAL" entrance, not an India-face shot). The genuinely new **side-elevation** evidence is `india.png` (India straight-on master), `java1.png`/`java2.png`/`java ground.png` (Java) — used by `astral-india-facade.v1.md` / `astral-java-facade.v1.md`.
 
 ## Build approach (locked recommendation — see PLAN.md 2026-06-23 Track R)
 
@@ -52,5 +54,5 @@ Rhythmic Queen Anne worker housing (Charles Pratt, for Astral Oil Works employee
 
 ## Open items (resolve before the phase that needs them)
 - **Camera-visible faces (Phase E):** Franklin (west) is the bespoke full-facade hero. The two cross-street ends are **NOT plainer brick** — field photos (2026-06-23: `india*.png/jpeg`, `java*.png/jpeg`) show each side street carries a fully articulated elevation with its **own central entrance pavilion** (India = north, Java = south; Batu-confirmed). Both upgraded from typological returns to **bespoke side heroes** — render packages: `docs/reference/art/prompts/astral-india-facade.v1.md` + `astral-java-facade.v1.md`. Only the **rear (West St, east)** stays a typological brick return. Blank-box / corner-seam checks at all four angles.
-- **Exact segment boundaries + bay count:** finalize against IMG_0971 when cutting the render segments (Phase B).
+- **Exact segment boundaries + bay count:** finalize against `india corner.jpeg` when cutting the render segments (Phase B).
 - **Ground-floor tenancy truth:** the vermouth bar is a real tenant — needs a place/story record + the factual-review gate before public release (real names fine in dev).

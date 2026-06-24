@@ -17,17 +17,17 @@ Produces `astral-apartments--franklin-full.png` — the entire Franklin (west) e
 
 **Roofline:** flat roof with an **iron parapet railing**; small **stepped brick gablets / piers with terracotta cartouche medallions** spaced along the top; the **central tall stepped gable** over the loggia.
 
-**Horizontal — match the straight-on photo exactly.** The facade is **symmetric** about the center entrance pavilion: central pavilion → on each side a regular rhythm of **projecting 3-part oriel bays (each with a fire escape) alternating with flat single-window bays** → terminating in **end pavilions**, one of which carries a small **rounded/arched corner niche with a lamp** (top corner, see IMG_0957 + the existing center render). **Count the window axes and the number of oriel bays directly off the attached straight-on elevation photo and reproduce that exact count** — every residential floor shares the same strict vertical grid of window axes (windows stack dead-plumb).
+**Horizontal — match the straight-on photo exactly.** The facade is **symmetric** about the center entrance pavilion: central pavilion → on each side a regular rhythm of **projecting 3-part oriel bays (each with a fire escape) alternating with flat single-window bays** → terminating in **end pavilions**, one of which carries a small **rounded/arched corner niche with a lamp** (top corner, see `java.jpeg` + the existing center render). **Count the window axes and the number of oriel bays directly off the attached straight-on elevation photo and reproduce that exact count** — every residential floor shares the same strict vertical grid of window axes (windows stack dead-plumb).
 
 ## Photos to attach (truth source — all in `docs/reference/hero-evidence/astral/` unless noted)
 Re-orient upright first (several are EXIF-rotated 90°).
-- **Straight-on full frontage (the master — count floors AND bays from this):** the clear bare-tree frontal elevation photo (Batu's web ref) + IMG_0971, IMG_0958, IMG_0973
-- **Center entrance + "THE ASTRAL" + No 184 arch + loggia + gable oculus:** IMG_0966, IMG_0967, IMG_0973
+- **Straight-on full frontage (the master — count floors AND bays from this):** the clear bare-tree frontal elevation photo (Batu's web ref) + `india corner.jpeg`, `java corner.jpeg`, `india.jpeg` (these are the original Franklin obliques, renamed 2026-06-23 by the corner they look toward — see the rename note in FACADE_GRAMMAR.md)
+- **Center entrance + "THE ASTRAL" + No 184 arch + loggia + gable oculus:** IMG_0966, IMG_0967, `india.jpeg`
 - **Round-arch top-floor arcade:** IMG_0964, IMG_0967
-- **Oriel bays + fire escapes:** IMG_0962, IMG_0965, IMG_0971
+- **Oriel bays + fire escapes:** IMG_0962, IMG_0965, `india corner.jpeg`
 - **Terracotta gable cartouche medallions:** IMG_0969, IMG_0970
 - **Brownstone base + entrances + shopfronts:** IMG_0959, IMG_0960, IMG_0961, IMG_0963
-- **End pavilion / rounded corner niche:** IMG_0957
+- **End pavilion / rounded corner niche:** `java.jpeg`
 - Plus the II-C style tiles: `II-C-style-system-tile.png` + `II-assembled-mini-scene.png` (in `docs/reference/art/`).
 
 ## Prompt (image-to-image, GPT-5.5 / paste verbatim)

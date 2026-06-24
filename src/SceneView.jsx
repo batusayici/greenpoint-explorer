@@ -953,7 +953,8 @@ const FACADE_COMPOSITES = {
   // edge renders typological brick, with the bespoke segment(s) proud on top.
   // v1: the flat center entrance pavilion (~17.9m, centered on the 60.6m
   // chord); flanks + oriels + arched recesses follow. fromM/toM are meters
-  // along the chord from its north end — adjust against IMG_0971 in-engine.
+  // along the chord from its north end — adjust against india corner.jpeg
+  // (the full-frontage oblique, formerly IMG_0971) in-engine.
   "astral-apartments": {
     key: "../assets/textures/franklin/astral-apartments--franklin-full.png",
     byBin: {},

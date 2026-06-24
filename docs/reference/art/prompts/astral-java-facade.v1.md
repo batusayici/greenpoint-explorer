@@ -15,25 +15,25 @@ Produces `astral-apartments--java-full.png` — the entire Java (south) elevatio
 
 **Vertical — SIX storeys, bottom → top:**
 1. **Ground floor** — rusticated, rock-faced **brownstone base**: round-arch openings, a **central grand round-arch residential entrance** (brownstone voussoirs, `java ground.png`), and a **corner storefront** at the Franklin↔Java corner (the coffee shop — big shop windows, copy any signage exactly as legible, do not invent text).
-2.–5. **Four floors of red brick** with **rectangular punched windows** (stone sills, brick hoods); a **projecting canted/rounded oriel bay** rising at the Franklin-corner pavilion (`java1.png`, `java2.png`); **fire-escape ironwork** as photographed; a **terracotta roundel / cartouche medallion** set into the brick where the photo shows it (`java corner.jpeg`).
+2.–5. **Four floors of red brick** with **rectangular punched windows** (stone sills, brick hoods); a **projecting canted/rounded oriel bay** rising at the Franklin-corner pavilion (`java1.png`, `java2.png`); **fire-escape ironwork** as photographed; **terracotta cartouche / roundel medallions** (the building's shared ornament grammar) drawn where `java2.png` shows them on the Java face.
 6. **Top floor** — **round-ARCHED windows** beneath a corbelled brick cornice.
 
 → **FIVE residential floors above the ground floor, the top one arched. Five.** Do not draw four; do not merge two into one.
 
-**Central entrance pavilion (mid-face):** the rusticated brownstone **round-arch entrance** rising into a vertical stack of windows, terminating in a **stepped brick gable** with a **round-arch top window + terracotta cartouche** above the main cornice (`java2.png`, `java.jpeg`).
+**Central entrance pavilion (mid-face):** the rusticated brownstone **round-arch entrance** rising into a vertical stack of windows, terminating in a **stepped brick gable** with a **round-arch top window + terracotta cartouche** above the main cornice (`java2.png`).
 
 **Franklin↔Java corner pavilion (LEFT edge):** a **rounded/canted corner bay** projecting through the upper floors, crowned by its own **stepped brick gable** with round-arch top windows (`java1.png`), over the corner storefront.
 
 **Roofline:** main corbelled brick cornice with an **iron parapet railing**; **stepped brick gables** (the central one + the corner-pavilion one) and **terracotta cartouche medallions** where the photos show them.
 
-**Horizontal — copy the photos exactly, including the asymmetry.** Left edge = Franklin↔Java corner pavilion (canted bay + corner shop); then the regular grid of **punched-window axes with fire escapes**; the **central round-arch entrance pavilion**; continuing to the **Java↔West St corner**. **Count the window axes off `java2.png` / `java.jpeg` and reproduce exactly that many** — every residential floor shares the strict vertical grid (windows stack dead-plumb, floor lines unbroken) except where the corner bay and central pavilion break it as photographed.
+**Horizontal — copy the photos exactly, including the asymmetry.** Left edge = Franklin↔Java corner pavilion (canted bay + corner shop); then the regular grid of **punched-window axes with fire escapes**; the **central round-arch entrance pavilion**; continuing to the **Java↔West St corner**. **Count the window axes off `java2.png` and reproduce exactly that many** — every residential floor shares the strict vertical grid (windows stack dead-plumb, floor lines unbroken) except where the corner bay and central pavilion break it as photographed.
 
 ## Photos to attach (truth source — all in `docs/reference/hero-evidence/astral/`)
 Re-orient upright first (the `.jpeg` field shots are EXIF-rotated 90°; the `.png` web/Street-View refs are upright).
-- **Java elevation, near-straight-on (count floors AND axes from these):** `java2.png`, `java.jpeg`
+- **Java elevation, near-straight-on (the master — count floors AND axes from this):** `java2.png`
 - **Franklin↔Java corner pavilion (rounded/canted bay + stepped gable):** `java1.png`
 - **Ground floor — central round-arch entrance + corner coffee shop + brownstone base:** `java ground.png`
-- **Brownstone base detail + terracotta roundel cartouche + fire escape:** `java corner.jpeg`
+- **Franklin obliques that catch the Java corner (corner pavilion + shared base/cartouche grammar — NOT the Java elevation head-on):** `java.jpeg` (= old IMG_0957) and `java corner.jpeg` (= old IMG_0958) are Franklin-frontage obliques renamed by the corner they look toward (hash-verified; see FACADE_GRAMMAR rename map). Use for the corner pavilion read and the shared terracotta-cartouche grammar; the Java elevation proper comes from `java2.png` / `java ground.png`.
 - **Cross-reference for shared grammar (brick, cornice, cartouches, arched top, fire escapes):** `IMG_0969`, `IMG_0970`, `IMG_0964`, `IMG_0962`
 - Plus the II-C style tiles: `II-C-style-system-tile.png` + `II-assembled-mini-scene.png` (in `docs/reference/art/`).
 
@@ -41,7 +41,7 @@ Re-orient upright first (the `.jpeg` field shots are EXIF-rotated 90°; the `.pn
 
 > Redraw the **Java Street side elevation** of the building in the attached photos — **The Astral, 184 Franklin Street, Brooklyn** (the red-brick-and-brownstone 1886 Queen Anne apartment block) — as ONE single, strictly orthographic, head-on architectural elevation in the attached hand-inked editorial illustration style (II-C system: confident 1–4 px linework, controlled hatching for shadow, muted warm red-brick + brownstone palette, paper texture). Flat projection only: every vertical plumb, every floor line dead horizontal, no 3/4 view, no perspective, no foreshortening, no leaning columns. Draw the WHOLE width of this side of the building in one image, corner pavilion to corner pavilion.
 >
-> **Draw ONE building only — The Astral.** Do not borrow windows, cornices, materials, or signage from any neighbor. This is the building's **south (Java Street) face**, shown in `java2.png` / `java.jpeg`.
+> **Draw ONE building only — The Astral.** Do not borrow windows, cornices, materials, or signage from any neighbor. This is the building's **south (Java Street) face**, shown in `java2.png` / `java ground.png`.
 >
 > **GET THE FLOOR COUNT RIGHT — the building has SIX storeys:**
 > 1. a ground floor of **rusticated rock-faced brownstone**: round-arch residential openings, a **central grand round-arch entrance**, and a **corner storefront (coffee shop)** at the left (Franklin-corner) end — copy the shopfront and any signage exactly as legible, do not invent words;
