@@ -30,3 +30,6 @@ coverage/
 # Visual-baseline gate transients (committed baselines live in tests/visual-baselines/)
 tests/.candidates/
 tests/.diffs/
+
+# Local agent worktrees (never commit)
+.claude/worktrees/
