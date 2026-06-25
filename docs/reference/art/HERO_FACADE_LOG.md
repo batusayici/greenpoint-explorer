@@ -638,6 +638,72 @@ a banked fix regressed or a playbook rule was skipped.
   taller west neighbor); add a `II_PALETTE.heroes` base color if they show.
   (4) Place card.
 
+### Elder Greene — BINs 3064538 + 3064539 (160–162 Franklin × Kent) — SHIPPED (firstpass + chamfer + keyed crown)
+- **Texture:** `elder-greene--corner.trim.png` (RGBA PRETRIMMED 1441×704, baked-alpha
+  keyed crown). 2-storey 1924 red-brick corner; first **two-tenant** hero (Elder
+  Greene bar 160 + Vamos al Tequila 162) under one continuous facade. Reads
+  Franklin (Vamos→COCKTAILS/COLD BEER bar) → chamfer entrance → Kent (corner→east
+  service door). Folds from the render's storefront-band column profile (redness +
+  limestone-pilaster luminance): Vamos|bar seam **u0.26**, chamfer **u0.52–0.64**,
+  Kent fold **u0.64**.
+- **Render iteration (3 GPT rounds — the cost was prompt-side, not registration):**
+  r1 over-multiplied Franklin windows (~9 vs ~4) + invented a storefront/"87" door
+  past the corner; r2 skipped the Elder Greene bar+awning on Franklin (pushed
+  COCKTAILS/COLD BEER onto Kent) + too few Kent windows; r3 approved. **Lesson
+  (promoted to HERO_PROMPT precision lines): a multi-tenant corner needs the prompt
+  to PIN each face's storefront ORDER + window COUNT and say "Franklin ends at the
+  corner entrance" — else the model regularizes columns, reorders tenants, and
+  bleeds past the corner.** Package: `prompts/elder-greene-corner.v2.md`.
+- **First chamfered corner (new reusable capability):** the OpenData footprint corner
+  is a square 90° point — the real building cuts it ~45° for the angled "ELDER GREENE
+  Nº160" entrance. `carveFootprint.chamferCorner` cuts the street corner (the vertex
+  shared by the longest franklin + longest greenpoint edge) back `cutBackM` along each
+  edge; `CHAMFER_CORNER` config in sceneFrame; `classifyHeroEdges` tags the new
+  diagonal edge role **"chamfer"** (both axis-dots >0.6); the composite carries a
+  `chamfer` face slice. The wall builder already textures any non-`other` role with a
+  composite face, so the new role dropped in with only a `faceShade.chamfer`. **Bank:
+  a chamfered corner = footprint surgery + a "chamfer" role; reusable for any cut-corner
+  hero.**
+- **The registration gotcha (one debug round):** the chamfer was dead code at first —
+  both BINs are in the **main `geometrySource` (phase-3b), within radius**, so the
+  MAIN loop builds them, and the block-extract loop (where Verge's carve lives) skips
+  them via the `isHero` guard. **Bank: a block-extract BIN that ALSO sits in the main
+  geometrySource is built by the MAIN loop — per-building footprint surgery
+  (carve/chamfer) must run there, not only in the block loop.** Fixed with a shared
+  `maybeChamferCorner` helper called in both loops.
+- **Keyed crown (stepped parapet + diamond insets + curved pediment):** the render's
+  PAPER sky reads near the **cream limestone diamonds/coping**, so a color key would
+  punch holes in them — used a **flood-fill from the top edge bounded by the dark
+  parapet outline** (`scripts/key-elder-greene-crown.cjs`), preserving interior
+  limestone. `roofV` + `noParapet` + alphaTest project the crown above the roofline
+  (the byBin path's `texturedMaterial` already keys, so recesses keep the crown).
+- **Per-face roofV (the Kent "slip"):** the render drew the **Kent cornice ~0.3m lower**
+  (v≈0.795) than the Franklin face (v≈0.832), so a shared roofV slipped the whole Kent
+  texture down at the corner. Gave the greenpoint face its **own roofV 0.795** → its
+  cornice lifts to the shared structural roof; geometry already aligned (all faces share
+  the top), so it was purely a texture-anchor fix. **Bank: a corner unwrap can have its
+  two faces drawn at different cornice heights — give each face its own roofV; verify
+  the cornice is continuous across the corner, don't assume one roofV fits both.**
+- **"White band" at the wall foot:** the crown-preserving crop bottom (CY1) included ~9
+  rows of cream paper/sidewalk below the building base (v<0.013, lum~185). Re-cropped
+  the bake bottom to the dark storefront base. **Bank: a pretrim must cut the bottom at
+  the building base too, not just preserve the top crown.**
+- **Recess seed (firstpass):** `derive-facade-spec` **re-trims even a PRETRIMMED**
+  texture (shaved 26px off the keyed-sky top → coords shift) — converted with
+  `native_v = derive_y × 0.963`, then hand-cleaned (split merged windows, dropped
+  parapet/AC false-positives). Windows recessM 0.1, storefronts 0.2, chamfer entrance +
+  Kent service door as recessed doors. **Batu refined in `?facadeedit=1`** (snapped
+  window/storefront rects, added the projecting navy + red **awnings**, tightened the
+  Kent storefront to the corner glazing). **Bank: derive re-trims pretrimmed textures —
+  convert its output or author on native coords.**
+- **Cost:** geometry (folds/orientation/faces/no-mirror) correct **first in-engine try**;
+  ~2 rounds for crown + chamfer + slip; 1 debug round for the main-vs-block-loop gotcha.
+  262/262 tests throughout.
+- **Open follow-up:** project the remaining painted awnings if wanted; place cards for
+  Elder Greene + Vamos al Tequila (two tenants, split storefront `placeId`s like
+  Sereneco/Azure); reconcile `storefront-signatures.v0.1.json` (keep category/transom/
+  seating, drop the now-redundant kit awning/parapet signals).
+
 ---
 
 ## Top pending tooling improvement
