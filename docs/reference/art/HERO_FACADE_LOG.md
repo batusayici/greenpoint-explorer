@@ -731,12 +731,24 @@ a banked fix regressed or a playbook rule was skipped.
   brick with the corner at the seam, culls correctly (both `3337033:franklin` +
   `sereneco--franklin-then` visible together only when the east face faces the
   camera — Sereneco's Franklin frontage shows at one fixed angle, not the default).
-- **Open (flat ship, per every hero's first pass):** (1) derive recess spec on the
-  flat texture (4 storefronts + low paired KENNALAND windows; redness-seed should
-  work — lit glass); (2) per-tenant placeIds (kennaland/chama-mama/madelines/
-  threes-brewing), the Azure split-tenant trick; (3) seam precision — confirm
-  `coverMeters:12` lands exactly at the Azure↔Kennaland boundary; (4) Kent return
-  if Threes wraps. Package: `docs/reference/art/prompts/sereneco-franklin-south.v1.md`.
+- **Recess pass (2026-06-25, firstpass_seed):** extended the `then` capability so a
+  continuation slice can CARVE — if `face.then.specKey` names a spec, the flat quad
+  is swapped for a `buildFacadeAssembly` on texture load (mirrors the main per-edge
+  flat→spec path: rebuild closure + `registerFacadeFace`, so the recess editor can
+  drag-snap it live). New spec `sereneco-franklin-south.v0.1.json`
+  (face `3337033:franklin-south`): 4 storefronts w/ per-tenant placeIds
+  (kennaland/chama-mama/madelines/threes-brewing — the Azure split-tenant trick),
+  2 projecting awnings (chama, threes), 6 upper paired windows. In-engine: 94-mesh
+  assembly, awnings project + glazing/windows recess cleanly, no NaN/floating
+  ledges, culls with the corner. **The blob deriver under-segmented (11 rough rects)
+  as the playbook predicts for dense dark joinery — coords are a SEED off the overlay,
+  NOT pixel-registered.** Status `firstpass_seed`; Batu finalizes positions in
+  `?facadeedit=1`. 262/262 tests throughout.
+- **Open:** (1) editor pass — micro-place the storefront/window/awning rects (seed);
+  (2) seam precision — confirm `coverMeters:12` lands exactly at the Azure↔Kennaland
+  boundary; (3) Threes industrial glazing + Madeline's bay may want bespoke
+  sub-elements beyond the seed; (4) Kent return if Threes wraps. Package:
+  `docs/reference/art/prompts/sereneco-franklin-south.v1.md`.
 
 ---
 

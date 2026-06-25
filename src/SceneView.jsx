@@ -8,6 +8,7 @@ import { buildStreetFurniture } from "./streetFurniture.js";
 import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1.json";
 import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
+import serenecoSouthFacadeSpec from "./data/facade-specs/sereneco-franklin-south.v0.1.json";
 import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
 import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.json";
@@ -1222,7 +1223,7 @@ const FACADE_COMPOSITES = {
           u1: 1,
           leftEnd: "south",
           coverMeters: 12,
-          then: { key: "../assets/textures/franklin/sereneco--franklin-south.png", u0: 0, u1: 1, leftEnd: "south" },
+          then: { key: "../assets/textures/franklin/sereneco--franklin-south.png", u0: 0, u1: 1, leftEnd: "south", specKey: "3337033:franklin-south" },
         },
         // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning → black
         // door → WINE·BEER·COCKTAILS → BRUNCH·DINNER bays). v2 is a corner
@@ -1311,6 +1312,7 @@ const FACADE_SPECS = {
   ...premierFacadeSpec.faces,
   ...sonnysFacadeSpec.faces,
   ...serenecoFacadeSpec.faces,
+  ...serenecoSouthFacadeSpec.faces,
   ...franklin144FacadeSpec.faces,
   ...astralFacadeSpec.faces,
   ...landOfBarbersFacadeSpec.faces,
@@ -1327,6 +1329,7 @@ for (const [file, spec] of [
   ["premier-franklin-organic.v0.1.json", premierFacadeSpec],
   ["sonnys-corner.v0.1.json", sonnysFacadeSpec],
   ["sereneco.v0.1.json", serenecoFacadeSpec],
+  ["sereneco-franklin-south.v0.1.json", serenecoSouthFacadeSpec],
   ["144-franklin.v0.1.json", franklin144FacadeSpec],
   ["astral-apartments.v0.1.json", astralFacadeSpec],
   ["land-of-barbers.v0.1.json", landOfBarbersFacadeSpec],
@@ -2530,9 +2533,10 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           // first texture's cover. Sereneco's 57m Franklin edge is two renders:
           // the 12m corner-adjacent return (`coverMeters`, the Batu-confirmed
           // corner) plus the remaining ~45m south run (Kennaland → Chama Mama →
-          // Madeline's → Threes). Flat first pass — a textured wall quad over the
-          // remainder, UVs from the `then` face's u0/u1/leftEnd. Recesses are a
-          // later derive pass, like every hero's flat-first ship.
+          // Madeline's → Threes). A flat textured quad first; if the `then` face
+          // names a `specKey`, the quad is swapped for the carved component
+          // assembly on texture load — the same flat→spec path the main per-edge
+          // face uses, so the continuation gets recesses/storefronts/awnings too.
           const restShade = faceShade[edge.role] ?? faceShade.other;
           const restMat = new THREE.MeshBasicMaterial({
             color: new THREE.Color(baseColor).multiplyScalar(restShade),
@@ -2541,11 +2545,36 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           const rest = new THREE.Mesh(wallQuad(restEdge, wallTop, face.then, scene), restMat);
           rest.userData = { facadeSlot: `${building.placeId}--${edge.role}-then` };
           heroGroup.add(rest);
-          addCullable(rest, edge.normal);
+          const restCull = addCullable(rest, edge.normal);
+          const thenSpec = face.then.specKey ? FACADE_SPECS[face.then.specKey] : null;
           loadFaceTexture(faceTextureUrl(face.then), (texture) => {
-            restMat.map = texture;
-            restMat.color.setScalar(restShade);
-            restMat.needsUpdate = true;
+            if (!thenSpec) {
+              restMat.map = texture;
+              restMat.color.setScalar(restShade);
+              restMat.needsUpdate = true;
+              return;
+            }
+            // Carved assembly (mirrors the main specFace path) for the slice.
+            heroGroup.remove(rest);
+            const frame = faceFrame(restEdge, wallTop, face.then, scene);
+            const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
+            const hexBase = new THREE.Color(baseColor).multiplyScalar(restShade).getHex();
+            const faceKey = face.then.specKey;
+            let current = null;
+            const rebuild = (specOverride) => {
+              if (current) {
+                heroGroup.remove(current);
+                disposeGroup(current);
+              }
+              current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
+              current.userData.faceKey = faceKey;
+              heroGroup.add(current);
+              restCull.object = current;
+              restCull.refresh();
+              requestRender?.();
+            };
+            rebuild(thenSpec);
+            registerFacadeFace(faceKey, { rebuild, texture, u0: face.then.u0, u1: face.then.u1, flip: Boolean(face.then.flip), file: SPEC_FILE_BY_FACE[faceKey], faceSpec: thenSpec });
           });
         } else {
           const rest = new THREE.Mesh(
