@@ -560,9 +560,19 @@ a banked fix regressed or a playbook rule was skipped.
   hero base color or they fall back to cream context.** (3) **Franklin recesses**
   — 3-col×3-row grid derived cleanly (Verge glass is lit enough for the blob
   deriver) + storefront; recessM 0.1.
-- **FOLLOW-UP (optional):** India face yin-yang wrap via the Astral `sides`
-  role-"other" pattern (the dark context wall reads decently without it); confirm
-  the 0.57 carve fraction vs the real lot line; place card.
+- **India wrap DONE (2026-06-25):** the yin-yang return now renders via the
+  Astral `sides` role-"other" pattern — `sides:[{face:"india", selectRole:"other",
+  axis:"greenpoint", segments:[{fromM:0, toM:16.09, leftEnd:"east", u0:0.5,
+  u1:1.0}]}]`. So "VERGE" wraps the corner: **VE** on Franklin (u0..0.5), **RGE**
+  on India (u0.5..1) — they meet at the drawn R-line, the corner. **Gotcha banked:
+  `sides` skips the typological wall on every covered edge, so a PARTIAL cover
+  (corner-adjacent only) punches a see-through hole — cover the WHOLE chord
+  (fromM:0→toM:wallLength) for a single-edge side, or the uncovered run has no
+  wall.** The render's sparse India half reads fine stretched across the 16m wall.
+  `fromM` measures from the chord's `alongMin` (smallest greenpoint-axis
+  projection) end; `leftEnd` orients the texture independently.
+- **FOLLOW-UP (optional):** India-face recess spec (currently flat); confirm the
+  0.57 carve fraction vs the real lot line; place card.
 
 ---
 

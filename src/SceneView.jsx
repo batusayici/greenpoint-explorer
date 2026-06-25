@@ -1133,11 +1133,10 @@ const FACADE_COMPOSITES = {
   // Render is a corner unwrap: VERGE storefront (fire escape + 3 window cols +
   // VERGE sign + "159" door) = the ~7m EAST Franklin frontage (u0:0→u1:0.50,
   // the drawn corner line at the "R" of VERGE, right of the 3rd window);
-  // the yin-yang return = the India (north, role "other") long wall, a FOLLOW-UP
-  // wrap via the Astral `sides` pattern. This first pass wires only the Franklin
-  // face; the India wall stays dark context mass (matches Verge's tone). leftEnd
-  // "south" = render-left (fire escape) at the south end, reading north to the
-  // NE corner. Fold u1=0.60 is the measured Franklin/India seam — tune in-engine.
+  // the yin-yang return = the India (north, role "other") long wall, wrapped via
+  // the Astral `sides` pattern. leftEnd "south" = render-left (fire escape) at the
+  // south end, reading north to the NE corner. Fold u1=0.50 is the drawn corner
+  // line at the "R" of VERGE.
   verge: {
     key: "../assets/textures/franklin/verge--franklin.png",
     byBin: {
@@ -1145,6 +1144,24 @@ const FACADE_COMPOSITES = {
         franklin: { u0: 0, u1: 0.5, leftEnd: "south" },
       },
     },
+    // India face = the north 16.09m "other" wall (the corner with Franklin is its
+    // EAST end). The render's right half (u 0.50→1.0, the yin-yang return) maps
+    // across the full wall; `sides` skips the typological wall on covered edges,
+    // so cover the whole chord (a partial cover would punch a hole). leftEnd
+    // "east" puts the texture's left edge (u0.5 = the corner line) at the
+    // corner/east end, reading west toward the yin-yang.
+    sides: [
+      {
+        face: "india",
+        selectRole: "other",
+        axis: "greenpoint",
+        shade: 0.9,
+        key: "../assets/textures/franklin/verge--franklin.png",
+        segments: [
+          { key: "../assets/textures/franklin/verge--franklin.png", fromM: 0, toM: 16.09, leftEnd: "east", u0: 0.5, u1: 1.0 },
+        ],
+      },
+    ],
   },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
