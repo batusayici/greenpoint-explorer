@@ -1139,6 +1139,9 @@ const FACADE_COMPOSITES = {
   // line at the "R" of VERGE.
   verge: {
     key: "../assets/textures/franklin/verge--franklin.png",
+    // Flat-roof building — the render carries no cornice/coping, so suppress the
+    // geometric parapet ring (it read as a flat-topped tan border on the roof).
+    noParapet: true,
     byBin: {
       "3064387": {
         franklin: { u0: 0, u1: 0.5, leftEnd: "south" },
@@ -2655,6 +2658,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   const parapetHeight = 0.05;
   const parapetThickness = 0.024;
   for (const edge of building.edges) {
+    if (composite?.noParapet) continue;
     if (FACADE_SPECS[`${building.bin}:${edge.role}`]?.cornice) continue;
     if (chordCoveredRoles.has(edge.role) || chordCoveredEdges.has(edge)) continue;
     const { start, end } = edge;
