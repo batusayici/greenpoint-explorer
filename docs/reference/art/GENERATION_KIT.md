@@ -130,6 +130,14 @@ corner. If you hit one of these, it's a regression, not new work:
   shallow `recessM` (~0.2, not 0.35) so the soffit isn't a deep dark wedge.
 - **Reveal weight** — window `recessM ~0.06` reads as a thin shadow line;
   0.14 reads as a thick lit ledge. Default shallow.
+- **`awnings` need all three Y fields** — an awning entry must carry `yWall`
+  (top, at wall) > `yDrop` (canopy front fold) > `yValance` (skirt bottom).
+  The canopy mesh reads `awning.yDrop` *directly* (no `?? yValance` fallback in
+  the geometry build), so authoring only `yValance`+`yWall` makes every awning
+  vertex NaN — and a NaN in the assembly silently DROPS the whole textured face
+  (the other walls still render, so it mimics a wiring bug). If a face's hero
+  texture vanishes after adding a spec, traverse for NaN `position` attributes to
+  name it. (banked from Land of Barbers, 2026-06-24.)
 - **Multiple oriels per face** — `spec.bays[]` (array) carries several `oriel3`
   bays on one face (a full-block frontage); singular `spec.bay` still works for a
   single-bay corner (Premier). Both fold the flat texture; see "Projecting oriel

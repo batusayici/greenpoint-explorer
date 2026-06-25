@@ -452,6 +452,52 @@ a banked fix regressed or a playbook rule was skipped.
     rear/court walls. (d) Frontage-hero back-of-building walls want a shadow tone,
     not the lit hero base. **Cost:** 1 review round, 0 re-renders; 230/230 green.
 
+### Land of Barbers — BIN 3064676 (Franklin St, east side) — SHIPPED (firstpass)
+- **Texture:** `land-of-barbers--franklin.png` (1122×1402, runtime-trimmed to
+  1029×1383). Single WEST Franklin frontage (~7.4m), one lot north of the
+  144-Franklin (3064675) corner. First MID-BLOCK single-face hero (vs corners).
+- **Registration:** `FACADE_COMPOSITES["land-of-barbers"]` byBin single face
+  `franklin {u0:0,u1:1,leftEnd:"north"}` (no coverMeters — texture covers the
+  full frontage) + `FACADE_GROUP_BINS["3064676"]`. A plain block-extract context
+  box (1 mesh) promoted to a hero by the group-bin registration alone.
+- **Face classification was automatic & unambiguous:** centroid.x +0.94 ⇒
+  classifyHeroEdges gives the WEST street edge role `franklin` (its normal.x<0
+  points to the street) and the 7.4m EAST back edge role `other`. So the
+  "longest edge per role" texturing has exactly one franklin edge — no
+  front/back ambiguity to guard against. The south edge (toward 144) classifies
+  `greenpoint` (party wall, untextured, occluded). **Bank: for a mid-block
+  single-face hero, confirm the centroid-sign rule yields ONE edge of the target
+  role before worrying about front/back disambiguation.**
+- **Derive settings:** the shipped blob deriver over-grew the storefront to the
+  bottom 60% (merged the dark middle-floor windows into the ground blob) and
+  found only the top window row — the same low-contrast failure as Sonny's
+  mauve / 144's brownstone. The redness seed (`seed-window-grid.mjs`, R−B<28)
+  found both rows but fragmented panes on AC units / blinds. So the 3-col × 2-row
+  upper grid + ground storefront were **hand-authored off the trimmed overlay and
+  gated on a 2× overlay** (`/tmp/gate-lob.mjs` draws the authored rects per
+  component colour). Windows recessM 0.1 (shallow → thin shadow, not a floating
+  ledge, per [[window-decal-is-flush-not-recessed]]); doors real recess; two
+  display `storefronts` (recessM 0.2, revealTop:false under the awning); one
+  projecting `awning`; arched residential door (`shape:"arch"`).
+- **The one fix (NaN that dropped the whole face):** the awning was authored with
+  `yValance` + `yWall` but NO `yDrop`. The canopy geometry reads `awning.yDrop`
+  DIRECTLY (`facadeAssembly.js` ~L221) — `??`-falls back to yValance only in the
+  *opening* push (L99) and yMid (L77), NOT in the mesh build. Undefined yDrop →
+  NaN positions → `computeBoundingBox/Sphere NaN` spam and the entire franklin
+  assembly silently dropped (greenpoint/other walls still rendered, so it looked
+  like a wiring bug, not a spec bug). **Rule (promoted below): an `awnings` entry
+  needs all three of yWall (top) > yDrop (canopy front fold) > yValance (skirt
+  bottom); yValance alone NaNs the face.** Diagnosed by traversing for NaN
+  position attributes (0 after the fix) rather than chasing the stale console.
+- **Cost: ~1 iteration** (the awning yDrop). Flat-texture + composite wiring
+  landed correct first try (orientation non-mirrored — sign reads L→R — roofline
+  clean, lands on the right face). 252/252 tests + overrides + conformance green.
+- **Open polish (spec `status: firstpass_seed`):** micro-nudge the window rects +
+  central shop-door x in `?facadeedit=1`; residential arch springY is a seed;
+  cornice projection vs the 144 party wall unconfirmed. Camera note: an east-side
+  Franklin frontage is back-facing at the DEFAULT angle (a=0 shows its roof) —
+  it presents at **angle 3/4 (a=2)**, like every east-Franklin face.
+
 ---
 
 ## Top pending tooling improvement

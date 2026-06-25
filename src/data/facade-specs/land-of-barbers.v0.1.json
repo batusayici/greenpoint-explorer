@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "land-of-barbers",
+  "status": "firstpass_seed_2026-06-24",
+  "note": "BIN 3064676, single WEST Franklin frontage (~7.4m), one lot north of the 144-Franklin corner. Rects hand-authored from land-of-barbers--franklin.png: the shipped blob deriver over-grew the storefront to the bottom 60% and the redness seed (scripts/seed-window-grid.mjs) fragmented the inked/AC-occluded panes, so the 3-col x 2-row upper grid + ground-floor storefront were measured by hand off the trimmed overlay (1029x1383) and gated on a 2x overlay. A SEED for the recess editor (?facadeedit=1) — refine against the painted openings. Recesses kept SHALLOW per the window-decal-flush lesson (the inked window already paints its own lintel/sill; recessM 0.1 reads as a thin shadow, not a floating ledge). Doors keep a real recess. POLISH TAIL: residential door arched transom (shape:arch springY seeded), display-glass extents, cornice projection vs the 144 party wall.",
+  "evidence": [
+    "assets/textures/franklin/land-of-barbers--franklin.png"
+  ],
+  "faces": {
+    "3064676:franklin": {
+      "cornice": { "y0": 0.905, "y1": 1.0, "projectionM": 0.35 },
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          { "x0": 0.125, "x1": 0.265, "y0": 0.700, "y1": 0.875 },
+          { "x0": 0.440, "x1": 0.575, "y0": 0.700, "y1": 0.875 },
+          { "x0": 0.745, "x1": 0.890, "y0": 0.700, "y1": 0.875 },
+          { "x0": 0.125, "x1": 0.265, "y0": 0.405, "y1": 0.580 },
+          { "x0": 0.440, "x1": 0.575, "y0": 0.405, "y1": 0.580 },
+          { "x0": 0.745, "x1": 0.890, "y0": 0.405, "y1": 0.580 }
+        ]
+      },
+      "storefronts": [
+        { "x0": 0.020, "x1": 0.350, "y0": 0, "y1": 0.235, "recessM": 0.2, "revealTop": false },
+        { "x0": 0.500, "x1": 0.740, "y0": 0, "y1": 0.235, "recessM": 0.2, "revealTop": false }
+      ],
+      "awnings": [
+        { "x0": 0.0, "x1": 0.755, "yWall": 0.336, "yDrop": 0.305, "yValance": 0.235, "projectionM": 0.7 }
+      ],
+      "doors": [
+        { "x0": 0.360, "x1": 0.470, "y0": 0, "y1": 0.215, "recessM": 0.18 },
+        { "x0": 0.775, "x1": 0.895, "y0": 0, "y1": 0.300, "recessM": 0.15, "shape": "arch", "springY": 0.260 }
+      ],
+      "skewX": 0
+    }
+  }
+}

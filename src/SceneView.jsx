@@ -10,6 +10,7 @@ import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
+import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
@@ -1088,6 +1089,21 @@ const FACADE_COMPOSITES = {
       },
     ],
   },
+  // Land of Barbers — BIN 3064676, a narrow 1864 rowhouse on the EAST side of
+  // Franklin St, one lot north of the 144-Franklin (3064675) corner. Single
+  // street face: the ~7.4m WEST edge classifies as role "franklin" (centroid.x
+  // +0.94 ⇒ only the west edge's normal points -x toward the street; the 7.4m
+  // east back edge classifies "other"). The bespoke elevation covers the full
+  // frontage, so u0:0→u1:1 with no coverMeters. leftEnd "north" matches the
+  // east-side franklin convention (144-franklin) — flip to "south" if mirrored.
+  "land-of-barbers": {
+    key: "../assets/textures/franklin/land-of-barbers--franklin.png",
+    byBin: {
+      "3064676": {
+        franklin: { u0: 0, u1: 1, leftEnd: "north" },
+      },
+    },
+  },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
     byBin: {
@@ -1123,6 +1139,9 @@ const FACADE_GROUP_BINS = {
   // Astral (184 Franklin) — block-extract BIN; sceneFrame.js promotes it to a
   // hero (it's past the 130m main-loop radius cull). See FACADE_COMPOSITES.
   "3064408": "astral-apartments",
+  // Land of Barbers — block-extract BIN promoted to a single-face hero
+  // (west Franklin frontage). See FACADE_COMPOSITES["land-of-barbers"].
+  "3064676": "land-of-barbers",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
@@ -1132,6 +1151,7 @@ const FACADE_SPECS = {
   ...serenecoFacadeSpec.faces,
   ...franklin144FacadeSpec.faces,
   ...astralFacadeSpec.faces,
+  ...landOfBarbersFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -1143,6 +1163,7 @@ for (const [file, spec] of [
   ["sereneco.v0.1.json", serenecoFacadeSpec],
   ["144-franklin.v0.1.json", franklin144FacadeSpec],
   ["astral-apartments.v0.1.json", astralFacadeSpec],
+  ["land-of-barbers.v0.1.json", landOfBarbersFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
