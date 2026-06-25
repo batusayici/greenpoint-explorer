@@ -63,5 +63,6 @@ file keyed to this map.
   resolve treatment geometrically (radius) rather than via `visualTierFor`. Attaching
   registry linkage to infill is Phase 8 work.
 - **Gather-dependent columns (bay-frame / awning / roll-gate)** — pending field photos; carry-over from the clapboard pilot scope.
-- **Signature layer** — recognizable-silhouette model defines this layer in contract only; BUILD is Phase 7+ work.
+- **Signature layer** — recognizable-silhouette model defines this layer in contract only; wiring it into the renderer is **Track R / R2** (recognizable storefronts).
+- **Dual-material kit capability (dormant)** — a `groundFamily`/`groundTint` override (ground floor renders a distinct material from the wall above) is built + unit-tested but **unused and never verified in-engine**; defaults to no-op (single-material buildings byte-identical). Available when a real dual-material building is evidence-confirmed.
 - **Brick missing columns** — brick kit generated in the 6.2 spike but brick's bay-frame, awning, and roll-gate components were not generated in that pass; carry-over to Phase 7.
