@@ -126,7 +126,7 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
   - 3.3.3 Corner wraps + exact signage/awnings on the heroes (the old 3.2 scope), now validated from all four angles.
     - **Largely pre-built + validated (2026-06-16).** Corner-wrap awnings/signage on the heroes were built in prior sessions and hold at all four angles (Premier's "premier ORGANIC" awning wraps the corner cleanly; all heroes carry textured Greenpoint+Franklin frontages). Validation surfaced one real item, now resolved: **Azure Gourmet** — a real, Batu-verified deli sharing Sereneco's 113 Franklin building — got its own place card (`azure-gourmet`, active/verified, `bf73bba`) and per-storefront click selection (`3fce782`): tagging a storefront spec entry with `placeId` makes it resolve to its own card. **3.3.3 effectively complete** (remaining signage exactness folds into the Phase 5.4 pre-publish truth pass).
 
-3.4 Lighting, shadow shapes, and composition pass — composed at each of the four angles.
+3.4 Lighting, shadow shapes, and composition pass — composed at each of the four angles. **(Open — absorbed into Phase 10 "Living Scene," which expands it from a static composition pass into time-of-day grades + illustrated shadows.)**
 3.5 Interaction v0: hover/select highlight + paper place card (II-C sections 8–9).
 3.6 **Acceptance (Batu):** would a Greenpoint local recognize this corner instantly, **from any of the four angles**? Does it hold against the reference boards?
 
@@ -173,11 +173,11 @@ A review at the end of the inked-facade cycle re-sequenced the remaining work. *
 - **Recognizable storefronts are the first content lever** — recognizability comes *before* attaching story/event content. A mute-but-recognizable map can already be shown to residents to test recognition; stories/events/instrumentation slot in right behind (they test H1/H3 on a map that already reads as real).
 - **Deferred (was "now"):** 8.1c street-network paving, further block/neighborhood expansion, Phase-9 scale, roof/pavement detail, business-claim monetization, second neighborhood. All coverage/polish — they wait until the loop is proven alive.
 
-**Track P — Performance & Load Architecture** (invisible, gates every demo; runtime today has no instancing/merging and regenerates ~18 per-building `CanvasTexture` factories synchronously on load across ~340 buildings):
-- P1 — Merge/instance static massing + wall decoration to cut draw calls.
-- P2 — Pre-bake/atlas/cache the per-building canvas textures instead of regenerating per building.
-- P3 — Async/progressive scene build with a real loading state.
-- P4 — Budget: measure time-to-first-paint + time-to-interactive before/after.
+**Track P — Performance & Load Architecture** (invisible, gates every demo). **Lightweight pass landed (2026-06-23 perf track):** texture caching + the measurement harness are in; geometry merge/instancing and async build are not.
+- P1 — Merge/instance static massing + wall decoration to cut draw calls. **OPEN** — no `InstancedMesh`/geometry merge yet; each building still builds discrete meshes.
+- P2 — Pre-bake/atlas/cache the per-building canvas textures instead of regenerating per building. **PARTLY DONE** — shared texture caches landed (`texCache`/`textureCache`/`__inkedTexCache`/`__corniceTex`/`loadCache` in `SceneView.jsx`): distinct files + decoded images load once and are shared across all buildings instead of regenerating per building. **Open:** true atlasing (packing many components into one texture).
+- P3 — Async/progressive scene build with a real loading state. **OPEN** — scene assembly + building build still run synchronously on mount.
+- P4 — Budget: measure time-to-first-paint + time-to-interactive before/after. **DONE** — `?perf=1` instrumentation in `SceneView.jsx:173` brackets assembly / building build / first render and dumps `renderer.info` draw-call / geometry / texture counts (silent in normal use).
 
 **Track R — Spine Comes Alive: Recognizability** (Batu review notes #3 + #4):
 - R1 — **Astral Apartments (184 Franklin)** as the proof anchor — built **bespoke** like the Franklin heroes (fastest path to "that's my neighborhood"), then generalize.
@@ -188,11 +188,9 @@ A review at the end of the inked-facade cycle re-sequenced the remaining work. *
 
 The Phase 6–9 records below are kept intact as execution history; the tracks above supersede the "NOW" tags on Phase 8/9 for sequencing.
 
-## Sequenced Roadmap — LOCKED 2026-06-18 (superseded for sequencing by the 2026-06-23 reprioritization above)
+## Phase Records (6–10) — execution history
 
-Resolves the (formerly open) priority re-decision. **Principle:** don't fill the neighborhood and *then* add content. Build out the **story-dense spine** and dress it with both craft and content at once — curated density, not coverage. Container and content stop competing, because the spine is exactly where the landmarks and stories live. Phase numbering continues Track A (1–5); where a new phase absorbs an older Track-A or Track-B item, it's noted.
-
-**Deferred for now (explicit):** roof *detail*, pavement/sidewalk detail, business-claim monetization, second neighborhood. *(Watchout: a flat roof **tone** is NOT deferred — see 7.4 — because the four-angle camera shows rooftops.)*
+> **Sequencing authority is the 2026-06-23 reprioritization above** (Track R → Phase 10), not the per-phase headers below. The phases are kept as the execution record. The original 2026-06-18 framing that introduced them — *don't fill the neighborhood then add content; build the story-dense spine and dress it with craft + content at once (curated density, not coverage)* — still holds as principle; it was only re-sequenced, not reversed.
 
 ### Phase 6 — Curation & Visual-System Lock — DONE (2026-06-18)
 
@@ -248,9 +246,26 @@ Absorbs Track-A 4.3 (corridor infill) and 5.1 (typological infill kit), and Trac
 
 Track-B B3–B8 + remaining Track-A 5.x: landmark-set completion, curated routes (H2), events (H3), instrumentation toward the North-Star metric, business-claim monetization (H4), roof/pavement/sidewalk detail, pre-launch truth pass, public demo, repeatability (H5).
 
+### Phase 10 — Living Scene: Dynamism & Light — PLANNED (sequenced behind the alive-loop proof)
+
+Scoped 2026-06-25 (Batu). Makes the scene "come alive" in a second sense — *animated* and *time-aware* — distinct from the 2026-06-23 "alive = recognizable + voiced" reprioritization. This is **Road B: illustrated dynamism**, not photoreal. Engine cost is trivial (Three.js); the real cost is art-production (every dynamic element must be drawn in the II-C idiom) and a foundational architecture change.
+
+**Governing constraint (from the pipeline as built):** hero facades are unlit `MeshBasicMaterial` (lighting baked into the inked texture); context massing is `MeshLambert`; there are no shadow maps; the render loop is static (no animation clock). Therefore: global light changes must flow through **uniforms / palette grading**, NOT scene lights — moving a real sun would light the Lambert context while the Basic heroes sat frozen, splitting the scene. This phase **completes the dormant Phase 3.4** (lighting/shadow/composition) rather than being net-new there.
+
+**Sequencing (Batu, 2026-06-25):** sits **behind Track R** (recognizability). The lightweight Track P pass (texture caching + `?perf=1` harness) is enough to start on; full P1 merge/instancing is **not** a hard gate — but Phase 10 adds draw load, so use the P4 harness to watch the budget as motion lands, and pull P1 forward if numbers degrade. Rationale: the differentiator is hyperlocal *content*, not motion, so recognizability + first stories still come first. **Split — the informational half ships sooner:**
+
+- **10-INFO — Informational dynamism (the moat half) → folds into Track B / events (B5), not deferred behind the visual work.** Time-of-day wired to **real local Greenpoint time**; business sign lit when open per real hours; events/markets that appear when live; story-pins that pulse. This is dynamism a 3D world model *cannot* fake — it's the hyperlocal-truth thesis expressed as motion. Stays on the verified-truth side of the existing gates.
+- **10.1 — Animation foundation.** Add a clock + update system to the render loop (today `setAnimationLoop` only re-renders). Prerequisite for everything else here.
+- **10.2 — Time-of-day as authored palette grades.** ~4–5 curated moods (dawn/day/dusk/night) as bundles of uniforms (paper tint, ink warmth, fog, atmospheric wash, light colors) cross-faded — not a continuous physical sun. Plus **night window glow** (flip a curated subset of existing window meshes to `emissive` at dusk) — highest alive-per-dollar signal. Drawn/illustrated shadow shapes (baked blob/hatch from a fixed, step-rotated sun), never shadow maps.
+- **10.3 — Ambient micro-motion.** Awnings/signs stirring, vent steam, flags, water shimmer — looped vertex/shader wiggle. Cheap, large payoff; the inked style wants a little hand-drawn jitter.
+- **10.4 — Inked sprite agents.** 2D inked sprites / flat cutouts (NOT skinned 3D models — off-brand + costly) walking the **existing street/sidewalk graph** (LION centerlines + sidewalk strips already built). Curated density of a few dozen pooled/instanced agents in the visible iso frame, not crowd/traffic simulation.
+- **10.5 — Weather mood states** (reuses 10.2 machinery): rain hatch, snow, fog density. Pairs with hyperlocal ("Greenpoint in the snow").
+
+**Limits / watchouts:** texture memory is the perf ceiling (sprite atlases must be tight, ref the LFS size history); the II-C idiom is the gating art cost; informational dynamism must not cross the truth wall.
+
 ## Deferred (vision-compatible, not in scope)
 
-Dynamic life (people, pets, vehicles — sprites/cel-shaded fit the II look), ambient audio, business interaction features.
+~~Dynamic life (people, pets, vehicles), ambient audio~~ → **now scoped as Phase 10 (Living Scene)**, sequenced behind the alive-loop proof. Remaining deferred: business interaction features, ambient audio bed (folds into Phase 10 later).
 
 ## Known Data Gaps
 

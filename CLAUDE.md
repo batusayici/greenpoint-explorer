@@ -9,7 +9,7 @@ npm run dev       # dev server at http://127.0.0.1:5173
 npm run build     # production build to dist/
 npm run preview   # preview production build
 node scripts/verify-phase-4m-r10g-franklin-corner-frontage-wrap.mjs   # live Franklin geometry verifier (also r10b, r10e, r10f)
-node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1"  # measure rendered facade -> spec rects + overlay PNG (see GENERATION_KIT.md playbook)
+node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1"  # measure rendered facade -> spec rects + overlay PNG (see docs/reference/art/GENERATION_KIT.md playbook)
 ```
 
 ## Read First

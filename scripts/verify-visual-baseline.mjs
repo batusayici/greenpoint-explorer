@@ -7,7 +7,7 @@
 // clapboard/brownstone/modern/roof by dropping in baselines + capture targets.
 //
 // Capture the candidate first (see scripts/capture-visual-baseline.mjs / the
-// procedure in docs/PLAN_6.2.md), then run this. Re-baseline intentionally by
+// procedure in docs/archive/PLAN_6.2.md), then run this. Re-baseline intentionally by
 // re-capturing into tests/visual-baselines/<material>.baseline.png and
 // committing — never silently overwrite.
 //

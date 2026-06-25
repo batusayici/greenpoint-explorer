@@ -106,7 +106,7 @@
       "id": "mvp-29b",
       "sourceType": "review-packet",
       "label": "MVP-29B evidence and business validation packet",
-      "url": "/docs/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md",
+      "url": "/docs/archive/mvp-review/mvp-29b-four-corner-evidence-business-validation-packet/README.md",
       "reviewedOn": "2026-05-31",
       "claimTypesSupported": [
         "candidate-set",
@@ -123,7 +123,7 @@
       "id": "mvp-29c",
       "sourceType": "review-packet",
       "label": "MVP-29C visual-reference completeness gate",
-      "url": "/docs/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md",
+      "url": "/docs/archive/mvp-review/mvp-29c-four-corner-visual-reference-completeness-gate/README.md",
       "reviewedOn": "2026-05-31",
       "claimTypesSupported": [
         "visual-reference-status",
@@ -140,7 +140,7 @@
       "id": "mvp-29d",
       "sourceType": "review-packet",
       "label": "MVP-29D translation and composition brief",
-      "url": "/docs/mvp-review/mvp-29d-four-corner-translation-composition-brief/README.md",
+      "url": "/docs/archive/mvp-review/mvp-29d-four-corner-translation-composition-brief/README.md",
       "reviewedOn": "2026-05-31",
       "claimTypesSupported": [
         "composition-brief",
@@ -157,7 +157,7 @@
       "id": "mvp-29e-raster-review-output",
       "sourceType": "review-output",
       "label": "MVP-29E review-only raster baseline",
-      "url": "/docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+      "url": "/docs/archive/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
       "reviewedOn": "2026-06-01",
       "claimTypesSupported": [
         "review-only-raster-plate",
@@ -173,7 +173,7 @@
       "id": "dtr-11-feedback-demo-package",
       "sourceType": "review-output",
       "label": "Phase 2DTR-11 feedback demo hero raster",
-      "url": "/docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+      "url": "/docs/archive/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
       "reviewedOn": "2026-06-03",
       "claimTypesSupported": [
         "review-only-raster-plate",
@@ -2012,7 +2012,7 @@
         "id": "asset-dtr-11-interactive-demo-raster",
         "role": "primary-raster-plate",
         "localPath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
-        "sourcePath": "docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+        "sourcePath": "docs/archive/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
         "visibleBounds": {
           "x": 0,
           "y": 0,
@@ -2030,7 +2030,7 @@
         "id": "asset-mvp-29e-raster",
         "role": "baseline-raster-reference",
         "localPath": "src/assets/review-only/mvp-29e-four-corner-manhattan-greenpoint-review.png",
-        "sourcePath": "docs/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
+        "sourcePath": "docs/archive/mvp-review/mvp-29e-four-corner-raster-scene-production/generated/four-corner-manhattan-greenpoint-review.png",
         "label": "MVP-29E review-only four-corner raster baseline retained for comparison. Non-production, art-directed, and not an exact facade, frontage, address, or station-geometry representation.",
         "usageStatus": "approved-review-only",
         "productionStatus": "blocked",
@@ -2118,8 +2118,8 @@
       "activeSceneSource": "Phase 2DTR-11 feedback demo hero raster",
       "approvedRasterPath": "src/assets/review-only/dtr-11-reference-facade-fidelity-interactive-demo-review-only.png",
       "approvedReferencePaths": [
-        "docs/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
-        "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-raster.png",
+        "docs/archive/mvp-review/mvp-feedback-demo-package/generated/hero-reference-facade-fidelity-raster.png",
+        "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/reference-facade-fidelity-raster.png",
         "src/assets/review-only/mvp-22-grillpoint-real-corner-slice.png",
         "docs/archive/visual-artifacts/phase-4-fictional-safe-identity-ui-integration-proof/generated/fictional-safe-street-slice.png",
         "docs/archive/visual-artifacts/phase-4-5-reusable-system-scalability-proof/generated/mini-street-slice-scalability-proof.png",
