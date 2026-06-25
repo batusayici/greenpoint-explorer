@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "verge",
+  "status": "firstpass_seed_2026-06-25",
+  "note": "BIN 3064387, EAST Franklin frontage of the carved corner building (the merged footprint's tall east lot; west 1-story buildings re-emitted separately). Franklin face = u0:0→u1:0.50 of verge--franklin.png (the VERGE storefront half, corner line at the 'R'). Face-local rects derived from the render (3-col x 3-row window grid detected cleanly; storefront display windows hand-added). Dark charcoal brick. Windows recessM 0.1 (shallow, per window-decal-flush). The VERGE entrance door + '159' fall just past the corner on the India return (not on this face). POLISH TAIL: India-face wrap (yin-yang) via Astral `sides`; refine storefront-glass extents + add cornice depth in ?facadeedit=1.",
+  "evidence": [
+    "assets/textures/franklin/verge--franklin.png"
+  ],
+  "faces": {
+    "3064387:franklin": {
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          { "x0": 0.185, "x1": 0.285, "y0": 0.795, "y1": 0.920 },
+          { "x0": 0.460, "x1": 0.560, "y0": 0.795, "y1": 0.920 },
+          { "x0": 0.735, "x1": 0.840, "y0": 0.795, "y1": 0.920 },
+          { "x0": 0.185, "x1": 0.285, "y0": 0.595, "y1": 0.725 },
+          { "x0": 0.460, "x1": 0.560, "y0": 0.595, "y1": 0.725 },
+          { "x0": 0.735, "x1": 0.840, "y0": 0.595, "y1": 0.725 },
+          { "x0": 0.185, "x1": 0.285, "y0": 0.375, "y1": 0.505 },
+          { "x0": 0.460, "x1": 0.560, "y0": 0.375, "y1": 0.505 },
+          { "x0": 0.735, "x1": 0.840, "y0": 0.375, "y1": 0.505 }
+        ]
+      },
+      "storefronts": [
+        { "x0": 0.085, "x1": 0.385, "y0": 0.020, "y1": 0.190, "recessM": 0.18, "revealTop": false },
+        { "x0": 0.420, "x1": 0.690, "y0": 0.020, "y1": 0.190, "recessM": 0.18, "revealTop": false }
+      ],
+      "doors": [],
+      "skewX": 0
+    }
+  }
+}

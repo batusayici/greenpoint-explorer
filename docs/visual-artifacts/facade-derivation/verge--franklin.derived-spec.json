@@ -1,0 +1,120 @@
+{
+  "source": "assets/textures/franklin/verge--franklin.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 94,
+    "minY": 71,
+    "maxX": 1385,
+    "maxY": 1035
+  },
+  "trimmedSize": {
+    "width": 1292,
+    "height": 965
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064387:franklin": {
+      "u0": 0,
+      "u1": 0.5,
+      "wallColor": [
+        56,
+        53,
+        49
+      ],
+      "rects": [
+        {
+          "x0": 0.87,
+          "x1": 0.955,
+          "y0": 0.031,
+          "y1": 0.094,
+          "type": "door"
+        },
+        {
+          "x0": 0.467,
+          "x1": 0.556,
+          "y0": 0.837,
+          "y1": 0.919,
+          "type": "window"
+        },
+        {
+          "x0": 0.187,
+          "x1": 0.28,
+          "y0": 0.799,
+          "y1": 0.919,
+          "type": "window"
+        },
+        {
+          "x0": 0.738,
+          "x1": 0.831,
+          "y0": 0.798,
+          "y1": 0.919,
+          "type": "window"
+        },
+        {
+          "x0": 0.387,
+          "x1": 0.424,
+          "y0": 0.773,
+          "y1": 0.808,
+          "type": "window"
+        },
+        {
+          "x0": 0.187,
+          "x1": 0.28,
+          "y0": 0.625,
+          "y1": 0.724,
+          "type": "window"
+        },
+        {
+          "x0": 0.464,
+          "x1": 0.557,
+          "y0": 0.599,
+          "y1": 0.721,
+          "type": "window"
+        },
+        {
+          "x0": 0.741,
+          "x1": 0.831,
+          "y0": 0.597,
+          "y1": 0.723,
+          "type": "window"
+        },
+        {
+          "x0": 0.198,
+          "x1": 0.28,
+          "y0": 0.439,
+          "y1": 0.498,
+          "type": "window"
+        },
+        {
+          "x0": 0.204,
+          "x1": 0.269,
+          "y0": 0.377,
+          "y1": 0.433,
+          "type": "window"
+        },
+        {
+          "x0": 0.74,
+          "x1": 0.836,
+          "y0": 0.377,
+          "y1": 0.501,
+          "type": "window"
+        },
+        {
+          "x0": 0.467,
+          "x1": 0.557,
+          "y0": 0.376,
+          "y1": 0.501,
+          "type": "window"
+        },
+        {
+          "x0": 0.952,
+          "x1": 0.992,
+          "y0": 0.135,
+          "y1": 0.2,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}
