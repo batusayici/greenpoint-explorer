@@ -704,6 +704,40 @@ a banked fix regressed or a playbook rule was skipped.
   Sereneco/Azure); reconcile `storefront-signatures.v0.1.json` (keep category/transom/
   seating, drop the now-redundant kit awning/parapet signals).
 
+### Sereneco — Franklin SOUTH run (BIN 3337033) — flat first pass (2026-06-25)
+- **What:** the southern ~45m of Sereneco's 57m Franklin (east) frontage —
+  everything past the existing 12m corner (`sereneco--corner.png`, `coverMeters:12`):
+  Kennaland → Chama Mama → Madeline's → Threes, to the Kent corner. Texture
+  `sereneco--franklin-south.png` (1753×600, ~2.9:1). Same BIN as the corner hero
+  (Batu calls it "the Sereneco building" — it is).
+- **New engine capability — `then` continuation on a `coverMeters` face (banked):**
+  the franklin face's `coverMeters` block already built a FLAT context quad over
+  the uncovered remainder `[cut → frame.right]`. Added an optional `face.then`
+  ({key,u0,u1,leftEnd}) that TEXTURES that same quad instead of flat-filling it —
+  a second bespoke render continuing one street frontage past the first texture's
+  cover. Fully additive (no `then` ⇒ byte-identical flat remainder; 262/262
+  green). Reuses `wallQuad`+`faceFrame` (UVs/leftEnd) + `loadFaceTexture`. The
+  lightweight alternative to converting Sereneco's franklin to the Astral
+  frontage-chord/segments model — **bank it for any wall that needs a 2nd bespoke
+  slice past `coverMeters` without disturbing the confirmed first slice.**
+- **Truth correction (Batu):** the grey Art-Deco rooftop penthouse with gold-star
+  gables in the photos is a **separate, taller building set back BEHIND** this
+  warehouse — a neighbor, correctly excluded. This roof is FLAT. The v2 render
+  prompt (re-adding the pavilion) was wrong-premise, marked superseded.
+  **Lesson: a set-back, different-material rooftop mass can be a genuine neighbor
+  — confirm before forcing it into the elevation.**
+- **Cost: ~0 fix rounds for the flat wiring.** Read non-mirrored first try
+  (leftEnd "south", same as the corner), correct length (~3.36u ≈ 45m), continuous
+  brick with the corner at the seam, culls correctly (both `3337033:franklin` +
+  `sereneco--franklin-then` visible together only when the east face faces the
+  camera — Sereneco's Franklin frontage shows at one fixed angle, not the default).
+- **Open (flat ship, per every hero's first pass):** (1) derive recess spec on the
+  flat texture (4 storefronts + low paired KENNALAND windows; redness-seed should
+  work — lit glass); (2) per-tenant placeIds (kennaland/chama-mama/madelines/
+  threes-brewing), the Azure split-tenant trick; (3) seam precision — confirm
+  `coverMeters:12` lands exactly at the Azure↔Kennaland boundary; (4) Kent return
+  if Threes wraps. Package: `docs/reference/art/prompts/sereneco-franklin-south.v1.md`.
+
 ---
 
 ## Top pending tooling improvement
