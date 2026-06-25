@@ -574,6 +574,70 @@ a banked fix regressed or a playbook rule was skipped.
 - **FOLLOW-UP (optional):** India-face recess spec (currently flat); confirm the
   0.57 carve fraction vs the real lot line; place card.
 
+### Brouwerij Lane — BIN 3322610 (78 Greenpoint Ave) — SHIPPED (firstpass, flat + keyed gable)
+- **Texture:** `brouwerij-lane.trim.png` (RGBA, PRETRIMMED 1:1). Batu then
+  hand-cropped the cream borders below the doors + on the sides → **1067×1192**
+  (aspect 0.895). The original render `brouwerij-lane.png` was `git rm`'d (the
+  trim supersedes it; restore from git for the recess pass). 2-storey 1930 bottle
+  shop immediately
+  WEST of the Premier corner on Greenpoint Ave — Batu pointed me at it ("the
+  2-storey building next to Premier on Greenpoint Ave"); located via the live
+  scene (nearest low neighbor on Premier's frontage line, `3322` tax-block prefix).
+- **Two firsts:** (1) first **GREENPOINT** single-face hero (centroid.z +1.39 ⇒
+  the street edge's normal points -z to the avenue ⇒ role "greenpoint", its only
+  one — automatic, no front/back ambiguity). (2) first **BESPOKE ROOF**: a
+  stepped Dutch/corbie gable with an oculus.
+- **New engine capability — per-face `roofV` on the byBin path (banked):** the
+  keyed-silhouette roof machinery (`keyPaperAboveRoofline` + `faceHeight =
+  wallTop/roofV`) lived ONLY in the chord path (Astral). Extended the simple
+  byBin per-edge path so a face can carry `roofV`: the textured face maps to
+  `faceTop = wallTop/roofV` (gable projects above the structural roof, which
+  caps at wallTop) and gets `transparent + alphaTest 0.5` to drop the keyed sky.
+  Default (no roofV) ⇒ faceTop === wallTop, opaque — byte-identical for every
+  other byBin hero (262/262 green). `noParapet:true` drops the geometric ring.
+- **Keying lesson (durable, banked):** this render's PAPER is a warm **tan**
+  (L≈0.85, S≈0.30) and the building's cream brick is **lighter** than it
+  (L≈0.90, S≈0.23) — so the default color key (`L>0.8 & S<0.4`) erases BOTH.
+  **Color-keying fails when paper ≈ brick tone.** What worked: a **border
+  flood-fill** (`scripts/key-brouwerij-gable.cjs`) seeded from the top + upper
+  side edges, 8-connected, bounded by the dark inked gable outline + a warm/light
+  discriminator (`r≥g≥b, 0.5<L≤0.89, S≥0.235`), restricted to the gable band.
+  Bakes alpha=0 into the `.trim.png` sky; runtime just uses alphaTest. **Bank:
+  for an inked render where the paper and the wall are near the same value,
+  border-flood-fill + bake alpha — don't fight a color threshold.**
+- **Floating "dust" cleanup (banked):** the color-fill leaves isolated OPAQUE
+  cream specks in the sky (pixels that read as brick to the discriminator). A
+  second **connectivity** pass fixes it deterministically: keep only opaque
+  pixels reachable from the bottom edge (the building is one connected mass,
+  gable included); drop every floating island. `scripts/key-brouwerij-gable.cjs`
+  now does this + re-measures the cornice roofV from the alpha (first row where
+  both 4%-inset side columns are opaque). **Bank: remove keying speckle by
+  opaque-connectivity-from-the-base, not by another color pass.**
+- **Final values (Batu's cropped trim):** roofV **0.856**, `heightUnits`
+  **0.478** (faceTop = 0.5u/0.895 = 0.559u peak ⇒ cornice 0.559·0.856 ≈ 0.478u).
+- **`heightUnits` override (durable, banked):** the footprint roof height
+  (~4.8m/0.36u) was far too low for a 2-storey-plus-gable building (Premier next
+  door is 14m) and squashed the portrait texture (aspect 0.80) onto a
+  wider-than-tall face (~35% horizontal stretch). Added a `heightUnits` composite
+  override DERIVED from the elevation: `faceTop = frontageWidth / textureAspect`
+  (0.5u/0.80 = 0.625u peak ⇒ cornice ≈ 0.484u) — undistorts the render AND is
+  more accurate than the bad OpenData value. **Bank: when a hero's OpenData
+  height distorts its bespoke elevation, derive the height from frontageWidth /
+  textureAspect; it's a derivation, not an invention.**
+- **Cost: ~2 in-engine rounds, 0 re-renders, 0 fix commits.** Round 1: render
+  read MIRRORED → flipped `leftEnd` west→east. Round 2: proportion squish →
+  `heightUnits`. Geometry/wiring/cull correct first try; back-face cull verified
+  at angle 3 (flat-top mass, gable is a front parapet only, no see-through).
+- **Open follow-up (`status: firstpass` — flat, no recess spec yet):** (1) recess
+  spec (2 storefront bays, doors, sign band, **oculus as `shape:"circle"`**) —
+  the assembly's wall material needs alphaTest for the gable region above the
+  openings, so it's a deliberate second pass (same capability-then-authoring
+  split as 144/Astral). (2) Flood-fill leaves minor speckle at the gable's
+  keyed edge — reads as weathered inked brick, refine if Batu wants. (3) Returns
+  fall back to cream context (fine — party walls, occluded by Premier + the
+  taller west neighbor); add a `II_PALETTE.heroes` base color if they show.
+  (4) Place card.
+
 ---
 
 ## Top pending tooling improvement

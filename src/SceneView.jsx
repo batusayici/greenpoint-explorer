@@ -13,6 +13,7 @@ import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
 import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.json";
 import oakAndIronFacadeSpec from "./data/facade-specs/oak-and-iron.v0.1.json";
 import vergeFacadeSpec from "./data/facade-specs/verge.v0.1.json";
+import brouwerijFacadeSpec from "./data/facade-specs/brouwerij-lane.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
@@ -1126,6 +1127,32 @@ const FACADE_COMPOSITES = {
       },
     },
   },
+  // Brouwerij Lane — BIN 3322610, the 2-storey 1930 bottle shop immediately WEST
+  // of the Premier corner on Greenpoint Ave (78 Greenpoint Ave). Single
+  // GREENPOINT frontage: centroid.z +1.39 ⇒ the street edge's outward normal
+  // points -z toward the avenue ⇒ role "greenpoint" (its only greenpoint edge).
+  // The bespoke elevation covers the full ~6.7m frontage (u0:0→u1:1, no
+  // coverMeters). BESPOKE ROOF: a stepped Dutch/corbie gable. roofV 0.856 = the
+  // cornice (side-wall top) fraction; the gable above maps via faceTop =
+  // wallTop/0.856 so it projects above the structural roof, and its paper sky is
+  // baked transparent in the .trim.png (dropped by alphaTest). noParapet drops
+  // the geometric parapet ring (it would slap a flat tan border across the
+  // gable). leftEnd "east" (the render read mirrored at "west").
+  "brouwerij-lane": {
+    key: "../assets/textures/franklin/brouwerij-lane.trim.png",
+    noParapet: true,
+    // Footprint roof height (~4.8m) is too low for this 2-storey-plus-gable
+    // building and squashed the portrait texture. Derived from the elevation:
+    // faceTop = frontageWidth(0.5u) / textureAspect(0.895, Batu's cropped trim
+    // 1067×1192) = 0.559u to the gable peak ⇒ cornice 0.559·roofV(0.856) ≈ 0.478u.
+    // See buildHeroBuilding.
+    heightUnits: 0.478,
+    byBin: {
+      "3322610": {
+        greenpoint: { u0: 0, u1: 1, leftEnd: "east", roofV: 0.856 },
+      },
+    },
+  },
   // Verge — BIN 3064387, a 1931 dark-brick CORNER building at Franklin & India.
   // The BIN footprint actually merges THREE buildings (the tall Verge corner
   // building + two 1-story structures extending west along India, per Batu's
@@ -1210,6 +1237,10 @@ const FACADE_GROUP_BINS = {
   // Verge — block-extract corner BIN promoted to a hero (Franklin face this pass;
   // India wrap is a follow-up). See FACADE_COMPOSITES["verge"].
   "3064387": "verge",
+  // Brouwerij Lane — intersection-block BIN (within the main-loop radius, so the
+  // bare group-bin path reaches it, like Land of Barbers). Single Greenpoint
+  // frontage hero with a keyed stepped-gable roof. See FACADE_COMPOSITES.
+  "3322610": "brouwerij-lane",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
@@ -1222,6 +1253,7 @@ const FACADE_SPECS = {
   ...landOfBarbersFacadeSpec.faces,
   ...oakAndIronFacadeSpec.faces,
   ...vergeFacadeSpec.faces,
+  ...brouwerijFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -1236,6 +1268,7 @@ for (const [file, spec] of [
   ["land-of-barbers.v0.1.json", landOfBarbersFacadeSpec],
   ["oak-and-iron.v0.1.json", oakAndIronFacadeSpec],
   ["verge.v0.1.json", vergeFacadeSpec],
+  ["brouwerij-lane.v0.1.json", brouwerijFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
@@ -2275,7 +2308,16 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // dropped roof instead of floating a 14% lip above it. Default roofV 1 ⇒
   // wallTop === building.height (every other hero), unchanged.
   const heroRoofV = composite?.frontage?.roofV ?? 1;
-  const wallTop = building.height * heroRoofV;
+  // `heightUnits` overrides the footprint roof height for a hero whose NYC
+  // Open-Data height is a poor estimate that would distort its bespoke
+  // elevation. Brouwerij Lane's footprint reports ~4.8m — far too low for a
+  // 2-storey-plus-gable building (Premier next door is 14m) — which squashed the
+  // portrait texture (aspect 0.80) onto a wider-than-tall face. The override is
+  // DERIVED, not invented: faceTop = frontageWidth / textureAspect keeps the
+  // elevation undistorted (0.5u / 0.80 = 0.625u to the gable peak), so the
+  // cornice = 0.625·roofV ≈ 0.484u. Default ⇒ the footprint height, unchanged.
+  const heroHeight = composite?.heightUnits ?? building.height;
+  const wallTop = heroHeight * heroRoofV;
   // A face may override composite.key with its own texture (Sereneco's
   // greenpoint face uses the v2 re-render while franklin keeps the original
   // corner.png). Load each distinct texture once and fan it out to its faces.
@@ -2444,11 +2486,26 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       const undecorated = renderEdge.length / scene.projection.scale < 2;
       wallColor.multiplyScalar(undecorated ? 0.32 : 0.5);
     }
+    // A byBin face whose bespoke texture carries a parapet/gable ABOVE the main
+    // cornice sets `roofV` (the texture v-fraction where the real roofline sits).
+    // That textured face maps to faceTop = wallTop/roofV so the painted crown
+    // projects ABOVE the structural roof (sides/rear/roof slab still cap at
+    // wallTop), and its baked-alpha sky (keyed transparent above the gable in the
+    // .trim.png) is dropped via alphaTest. No roofV ⇒ faceTop === wallTop and the
+    // material is opaque — byte-identical for every other byBin hero (Land of
+    // Barbers, Oak & Iron, Verge, Sereneco). Same mechanism as the chord path's
+    // faceHeight = wallTop/roofV (Astral); here on the single-face per-edge path.
+    const faceRoofV = isTextured && face.roofV != null ? face.roofV : 1;
+    const faceTop = wallTop / faceRoofV;
     const material = new THREE.MeshBasicMaterial({
       color: wallColor,
       side: THREE.DoubleSide,
     });
-    const wall = new THREE.Mesh(wallQuad(renderEdge, wallTop, isTextured ? face : null, scene), material);
+    if (faceRoofV < 1) {
+      material.transparent = true;
+      material.alphaTest = 0.5; // drop the keyed-out paper sky above the gable
+    }
+    const wall = new THREE.Mesh(wallQuad(renderEdge, faceTop, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     heroGroup.add(wall);
     const cull = addCullable(wall, edge.normal);
@@ -2467,7 +2524,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           // The build is wrapped in a rebuild closure so the dev recess editor
           // can re-snap this one face live (remove old group, build new).
           heroGroup.remove(wall);
-          const frame = faceFrame(renderEdge, wallTop, face, scene);
+          const frame = faceFrame(renderEdge, faceTop, face, scene);
           const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
           const hexBase = new THREE.Color(baseColor).multiplyScalar(shade).getHex();
           let current = null;
@@ -2694,7 +2751,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     new THREE.MeshBasicMaterial({ color: II_PALETTE.ink, transparent: true, opacity: 0.16, depthWrite: false }),
   );
   shadowMesh.rotation.x = -Math.PI / 2;
-  shadowMesh.position.set(building.height * 0.2, 0.004, building.height * 0.07);
+  shadowMesh.position.set(heroHeight * 0.2, 0.004, heroHeight * 0.07);
   heroGroup.add(shadowMesh);
 
   three.add(heroGroup);
@@ -3801,6 +3858,11 @@ const PRETRIMMED_TEXTURES = [
   "astral-apartments--franklin-full-v2.trim.png",
   "astral-apartments--india-full.trim.png",
   "astral-apartments--java-full.trim.png",
+  // Brouwerij Lane — the render is already a tight content crop; the .trim.png
+  // adds a baked-alpha sky above the stepped gable (sky keyed transparent) and
+  // is mapped 1:1, so its roofV/spec coords stay exact (skip the density trim,
+  // which would also shave the sparse gable crown — the Astral trap).
+  "brouwerij-lane.trim.png",
 ];
 
 function loadTrimmedTexture(url, onReady) {
