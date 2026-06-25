@@ -5,9 +5,37 @@
 // Franklin-local scene frame proven in 4M-R10E (origin at the intersection,
 // 0.075 scene units per meter).
 
-import { carveEastFraction } from "./carveFootprint.js";
+import { carveEastFraction, chamferCorner } from "./carveFootprint.js";
 
 const FEET_TO_METERS = 0.3048;
+
+// BINs whose real building cuts its street corner at ~45° for an angled entrance
+// — a chamfer the NYC-Open-Data footprint (square corner) omits. We cut it back
+// `cutBackM` along each street edge, creating a diagonal "chamfer" face that
+// carries the corner-entrance texture slice. Elder Greene (3064538): the
+// "ELDER GREENE Nº160" door sits on a chamfered Franklin × Kent corner.
+const CHAMFER_CORNER = { "3064538": { cutBackM: 2.1 } };
+
+// If `bin` is configured for a corner chamfer, cut its street corner (the vertex
+// shared by the longest franklin + longest greenpoint edge) back along both edges
+// so a diagonal "chamfer" face appears for the angled entrance. No-op otherwise.
+function maybeChamferCorner(polygon, bin, projection, axes) {
+  const cfg = CHAMFER_CORNER[bin];
+  if (!cfg) return polygon;
+  const tmp = classifyHeroEdges(polygon, getCentroid(polygon), axes);
+  const longest = (role) => tmp.filter((e) => e.role === role).sort((a, b) => b.length - a.length)[0];
+  const fE = longest("franklin");
+  const gE = longest("greenpoint");
+  if (!fE || !gE) return polygon;
+  let corner = null;
+  for (const ge of [gE.start, gE.end]) {
+    for (const fe of [fE.start, fE.end]) {
+      if (Math.hypot(ge.x - fe.x, ge.z - fe.z) < 0.05) corner = ge;
+    }
+  }
+  if (!corner) return polygon;
+  return chamferCorner(polygon, corner, projection.metersToUnits(cfg.cutBackM));
+}
 
 // BINs whose single NYC-Open-Data footprint merges several real buildings, with
 // the tall corner building on the EAST (Franklin) end and lower structures
@@ -59,12 +87,13 @@ export function assembleFranklinScene({
 
   const buildings = [];
   for (const record of geometrySource.footprintRecords) {
-    const polygon = projectPolygon(record.wgs84Polygon, projection);
+    let polygon = projectPolygon(record.wgs84Polygon, projection);
     if (!polygon.length) continue;
+    const bin = String(record.sourceProperties?.bin ?? "");
+    polygon = maybeChamferCorner(polygon, bin, projection, { greenpointAxis, franklinAxis });
     const centroid = getCentroid(polygon);
     if (Math.hypot(centroid.x, centroid.z) > contextRadiusUnits) continue;
 
-    const bin = String(record.sourceProperties?.bin ?? "");
     const hero = heroByBin.get(bin) ?? null;
     // Facade-group members (e.g. the sibling parcel component carrying the
     // rest of a hero's streetwall) get the full hero wall treatment under
@@ -161,6 +190,11 @@ export function assembleFranklinScene({
           if (rest.length >= 3) carvedWest = rest;
         }
       }
+      // Chamfer the street corner (square in OpenData) for an angled entrance —
+      // the classify below re-runs on the chamfered polygon and tags the new
+      // diagonal edge role "chamfer". (For block-only corner buildings; Elder
+      // Greene is reached by the main loop, which chamfers there.)
+      polygon = maybeChamferCorner(polygon, bin, projection, { greenpointAxis, franklinAxis });
       const centroid = getCentroid(polygon);
       const heightFeet = Number.parseFloat(record.sourceProperties?.heightRoof);
       const heightUnits = projection.metersToUnits(
@@ -261,11 +295,17 @@ function classifyHeroEdges(polygon, centroid, { greenpointAxis, franklinAxis }) 
       normal = { x: -normal.x, z: -normal.z };
     }
 
-    const alongGreenpoint = Math.abs(edge.direction.x * greenpointAxis.x + edge.direction.z * greenpointAxis.z) > 0.7;
-    const alongFranklin = Math.abs(edge.direction.x * franklinAxis.x + edge.direction.z * franklinAxis.z) > 0.7;
+    const dotGreenpoint = Math.abs(edge.direction.x * greenpointAxis.x + edge.direction.z * greenpointAxis.z);
+    const dotFranklin = Math.abs(edge.direction.x * franklinAxis.x + edge.direction.z * franklinAxis.z);
+    const alongGreenpoint = dotGreenpoint > 0.7;
+    const alongFranklin = dotFranklin > 0.7;
 
     let role = "other";
-    if (alongGreenpoint && normal.z * Math.sign(centroid.z) < 0) role = "greenpoint";
+    // A ~45° diagonal edge (both axis-dots high) that faces outward is a cut
+    // street corner — the chamfer face (Elder Greene's angled entrance). Checked
+    // first so a 45° edge isn't mis-claimed by the greenpoint/franklin tests.
+    if (dotGreenpoint > 0.6 && dotFranklin > 0.6) role = "chamfer";
+    else if (alongGreenpoint && normal.z * Math.sign(centroid.z) < 0) role = "greenpoint";
     else if (alongFranklin && normal.x * Math.sign(centroid.x) < 0) role = "franklin";
 
     return { ...edge, normal, role };

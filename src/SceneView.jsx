@@ -14,6 +14,7 @@ import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.js
 import oakAndIronFacadeSpec from "./data/facade-specs/oak-and-iron.v0.1.json";
 import vergeFacadeSpec from "./data/facade-specs/verge.v0.1.json";
 import brouwerijFacadeSpec from "./data/facade-specs/brouwerij-lane.v0.1.json";
+import elderGreeneFacadeSpec from "./data/facade-specs/elder-greene.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
@@ -935,6 +936,21 @@ const SERENECO_KINK = 0.496;
 // Franklin bay onto the Greenpoint slice — corrected per the Franklin-face
 // reference photo (2026-06-15).
 const FRANKLIN_144_KINK = 0.29;
+// Elder Greene (160–162 Franklin, Franklin × Kent SW corner) — two-BIN corner
+// unwrap. Reads Franklin (left) → corner entrance → Kent (right). Folds measured
+// from the render's storefront-band column profile (drawn-fold-wins):
+//   u0.26  = the brick pier seam between Vamos al Tequila (162, BIN 3064539, north)
+//            and the Elder Greene COCKTAILS/COLD BEER bar (BIN 3064538).
+//   u0.52  = LEFT limestone pilaster of the chamfered "ELDER GREENE Nº160" corner
+//            entrance — the Franklin face ends here and the chamfer face begins.
+//   u0.64  = RIGHT limestone pilaster — the chamfer ends and the Kent face begins.
+// The entrance (u0.52..0.64) maps onto a real 45° chamfer edge cut into the SW
+// corner (CHAMFER_CORNER in sceneFrame.js; role "chamfer"), so the door faces the
+// street corner diagonally as built. Kent (role "greenpoint", parallel to
+// Greenpoint Ave) runs the corner→east service door over u0.64..1.0.
+const ELDER_GREENE_SEAM = 0.26;
+const ELDER_GREENE_CHAMFER_L = 0.52;
+const ELDER_GREENE_KINK = 0.64;
 const FACADE_COMPOSITES = {
   "premier-franklin-organic": {
     key: "../assets/textures/franklin/premier-franklin-organic--corner-v4.png",
@@ -1197,7 +1213,17 @@ const FACADE_COMPOSITES = {
     key: "../assets/textures/franklin/sereneco--corner.png",
     byBin: {
       "3337033": {
-        franklin: { u0: SERENECO_KINK, u1: 1, leftEnd: "south", coverMeters: 12 },
+        // The 12m corner-adjacent return (Sereneco storefronts + Azure Gourmet),
+        // then the remaining ~45m south Franklin run continues via `then` — a
+        // second bespoke render (Kennaland → Chama Mama → Madeline's → Threes,
+        // to the Kent corner). Flat first pass; leftEnd verified in-engine.
+        franklin: {
+          u0: SERENECO_KINK,
+          u1: 1,
+          leftEnd: "south",
+          coverMeters: 12,
+          then: { key: "../assets/textures/franklin/sereneco--franklin-south.png", u0: 0, u1: 1, leftEnd: "south" },
+        },
         // Greenpoint Ave frontage (green "Dinner·Brunch·Bar" awning → black
         // door → WINE·BEER·COCKTAILS → BRUNCH·DINNER bays). v2 is a corner
         // UNWRAP and the fold sits at u≈0.585: left 0..0.585 is the Greenpoint
@@ -1208,6 +1234,37 @@ const FACADE_COMPOSITES = {
         // the door + entrance don't duplicate onto this face. (Derived: bay
         // BRUNCH·DINNER ends u≈0.576, wood door u≈0.615–0.66 — past the cut.)
         greenpoint: { key: "../assets/textures/franklin/sereneco--corner-v2.png", u0: 0, u1: 0.585, leftEnd: "west" },
+      },
+    },
+  },
+  // Elder Greene (160–162 Franklin) — two-BIN corner unwrap (Vamos al Tequila on
+  // 3064539 + the Elder Greene bar/corner on 3064538). See the ELDER_GREENE_* note.
+  // BESPOKE CROWN: a stepped brick parapet (diamond insets) + curved central
+  // pediment. roofV 0.835 = the cornice v-fraction; the parapet projects above the
+  // structural roof via faceTop = wallTop/roofV, and its baked-alpha sky (keyed
+  // transparent above the silhouette in the .trim.png) is dropped by alphaTest.
+  // noParapet drops the geometric ring (the painted parapet is the crown). The
+  // stepped-DOWN Kent parapet was showing cream paper above it ("leaning white"
+  // band) until this keying — same class as Astral/Sonny's cream-above-roofline.
+  "elder-greene": {
+    key: "../assets/textures/franklin/elder-greene--corner.trim.png",
+    noParapet: true,
+    byBin: {
+      // Vamos al Tequila (162, north on Franklin): texture-left (u0) = the north
+      // end of the Franklin wall, reading south toward the Vamos|bar pier.
+      "3064539": {
+        franklin: { u0: 0, u1: ELDER_GREENE_SEAM, leftEnd: "north", roofV: 0.832 },
+      },
+      // Elder Greene (160): the COCKTAILS/COLD BEER bar on the Franklin slice, the
+      // corner entrance on the chamfer face, then the Kent return (role
+      // "greenpoint", corner→east).
+      "3064538": {
+        franklin: { u0: ELDER_GREENE_SEAM, u1: ELDER_GREENE_CHAMFER_L, leftEnd: "north", roofV: 0.832 },
+        chamfer: { u0: ELDER_GREENE_CHAMFER_L, u1: ELDER_GREENE_KINK, leftEnd: "north", roofV: 0.832 },
+        // The render's unwrap drew the Kent face's cornice ~0.3m lower (v≈0.795)
+        // than the Franklin face (v≈0.832), so a shared roofV slipped the Kent
+        // content down. Its own roofV lifts the Kent cornice to the shared roof.
+        greenpoint: { u0: ELDER_GREENE_KINK, u1: 1, leftEnd: "west", roofV: 0.795 },
       },
     },
   },
@@ -1241,6 +1298,12 @@ const FACADE_GROUP_BINS = {
   // bare group-bin path reaches it, like Land of Barbers). Single Greenpoint
   // frontage hero with a keyed stepped-gable roof. See FACADE_COMPOSITES.
   "3322610": "brouwerij-lane",
+  // Elder Greene (160–162 Franklin, Franklin × Kent SW corner) — two-BIN block-extract
+  // corner hero (both within main-loop radius, like Verge). 3064538 = corner mass
+  // (Franklin bar + Kent return); 3064539 = Vamos al Tequila (162, Franklin north).
+  // Both share an exact party-wall edge, so no group-flush snap is needed.
+  "3064538": "elder-greene",
+  "3064539": "elder-greene",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
@@ -1254,6 +1317,7 @@ const FACADE_SPECS = {
   ...oakAndIronFacadeSpec.faces,
   ...vergeFacadeSpec.faces,
   ...brouwerijFacadeSpec.faces,
+  ...elderGreeneFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -1269,6 +1333,7 @@ for (const [file, spec] of [
   ["oak-and-iron.v0.1.json", oakAndIronFacadeSpec],
   ["verge.v0.1.json", vergeFacadeSpec],
   ["brouwerij-lane.v0.1.json", brouwerijFacadeSpec],
+  ["elder-greene.v0.1.json", elderGreeneFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
@@ -2296,7 +2361,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   heroGroup.userData.bin = building.bin; // lets __gpLocate(bin) center on heroes too
   const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
   // Benchmark-style face shading: lit street faces, darker returns.
-  const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
+  const faceShade = { greenpoint: 1.0, franklin: 0.9, chamfer: 0.95, other: 0.78 };
 
   const composite = FACADE_COMPOSITES[building.placeId];
   // A segmented-frontage hero whose bespoke texture carries a parapet + gable
@@ -2459,15 +2524,40 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       const cut = { x: frame.left.x + dx * coverUnits, z: frame.left.z + dz * coverUnits };
       renderEdge = { ...edge, start: frame.left, end: cut, length: coverUnits };
       if (edge.length - coverUnits > 1e-6) {
-        const rest = new THREE.Mesh(
-          wallQuad({ ...edge, start: cut, end: frame.right, length: edge.length - coverUnits }, wallTop, null, scene),
-          new THREE.MeshBasicMaterial({
-            color: new THREE.Color(baseColor).multiplyScalar(faceShade.other),
+        const restEdge = { ...edge, start: cut, end: frame.right, length: edge.length - coverUnits };
+        if (face.then) {
+          // A second bespoke slice continues the SAME street frontage past the
+          // first texture's cover. Sereneco's 57m Franklin edge is two renders:
+          // the 12m corner-adjacent return (`coverMeters`, the Batu-confirmed
+          // corner) plus the remaining ~45m south run (Kennaland → Chama Mama →
+          // Madeline's → Threes). Flat first pass — a textured wall quad over the
+          // remainder, UVs from the `then` face's u0/u1/leftEnd. Recesses are a
+          // later derive pass, like every hero's flat-first ship.
+          const restShade = faceShade[edge.role] ?? faceShade.other;
+          const restMat = new THREE.MeshBasicMaterial({
+            color: new THREE.Color(baseColor).multiplyScalar(restShade),
             side: THREE.DoubleSide,
-          }),
-        );
-        heroGroup.add(rest);
-        addCullable(rest, edge.normal);
+          });
+          const rest = new THREE.Mesh(wallQuad(restEdge, wallTop, face.then, scene), restMat);
+          rest.userData = { facadeSlot: `${building.placeId}--${edge.role}-then` };
+          heroGroup.add(rest);
+          addCullable(rest, edge.normal);
+          loadFaceTexture(faceTextureUrl(face.then), (texture) => {
+            restMat.map = texture;
+            restMat.color.setScalar(restShade);
+            restMat.needsUpdate = true;
+          });
+        } else {
+          const rest = new THREE.Mesh(
+            wallQuad(restEdge, wallTop, null, scene),
+            new THREE.MeshBasicMaterial({
+              color: new THREE.Color(baseColor).multiplyScalar(faceShade.other),
+              side: THREE.DoubleSide,
+            }),
+          );
+          heroGroup.add(rest);
+          addCullable(rest, edge.normal);
+        }
       }
     }
 
@@ -3863,6 +3953,11 @@ const PRETRIMMED_TEXTURES = [
   // is mapped 1:1, so its roofV/spec coords stay exact (skip the density trim,
   // which would also shave the sparse gable crown — the Astral trap).
   "brouwerij-lane.trim.png",
+  // Elder Greene — .trim.png adds a baked-alpha sky above the stepped parapet +
+  // curved pediment (flood-fill from the top edge, so the cream limestone diamond
+  // insets/coping stay opaque). Crown-preserving crop (keeps the pediment the
+  // density trim would shave); width matches the runtime trim so the u-folds hold.
+  "elder-greene--corner.trim.png",
 ];
 
 function loadTrimmedTexture(url, onReady) {

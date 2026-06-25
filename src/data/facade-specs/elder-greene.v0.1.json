@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "elder-greene",
+  "status": "firstpass_seed_2026-06-25",
+  "note": "BINs 3064538 (corner: Franklin bar + chamfer entrance + Kent return) + 3064539 (Vamos al Tequila, 162 Franklin, north). Authored against elder-greene--corner.trim.png (PRETRIMMED 1441x704, baked-alpha keyed crown). x = face-local fraction of the face's u-slice; y = texture-v from ground (= spec frame fraction; the per-face roofV faceTop is applied by the frame). Seed derived from derive-facade-spec on the .trim.png (re-trim 26px off top → native_v = derive_y*0.963) then hand-cleaned (merged windows split, parapet/AC false-positives dropped). Windows recessM 0.1 (shallow — the inked window paints its own lintel/sill; deeper floats a ledge per the window-decal-flush lesson). Storefronts recessM 0.2, revealTop:false (under the painted awning). Doors keep a real recess. POLISH TAIL (?facadeedit=1): pixel-snap each opening; the navy/red painted awnings are NOT yet projected (3D awning components are a refinement); confirm Kent window count vs the painted render; Vamos entry door sits inside its storefront band.",
+  "evidence": [
+    "assets/textures/franklin/elder-greene--corner.trim.png",
+    "docs/reference/asset-reference/storefront/proof-set/elder-greene/"
+  ],
+  "faces": {
+    "3064539:franklin": {
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          { "x0": 0.20, "x1": 0.42, "y0": 0.554, "y1": 0.770 },
+          { "x0": 0.55, "x1": 0.78, "y0": 0.554, "y1": 0.770 }
+        ]
+      },
+      "storefronts": [
+        { "x0": 0.15, "x1": 0.88, "y0": 0.0, "y1": 0.35, "recessM": 0.2, "revealTop": false }
+      ],
+      "doors": [],
+      "skewX": 0
+    },
+    "3064538:franklin": {
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          { "x0": 0.053, "x1": 0.254, "y0": 0.550, "y1": 0.762 },
+          { "x0": 0.532, "x1": 0.749, "y0": 0.550, "y1": 0.762 }
+        ]
+      },
+      "storefronts": [
+        { "x0": 0.02, "x1": 1.0, "y0": 0.0, "y1": 0.44, "recessM": 0.2, "revealTop": false }
+      ],
+      "doors": [],
+      "skewX": 0
+    },
+    "3064538:chamfer": {
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          { "x0": 0.25, "x1": 0.70, "y0": 0.564, "y1": 0.762 }
+        ]
+      },
+      "storefronts": [],
+      "doors": [
+        { "x0": 0.22, "x1": 0.78, "y0": 0.0, "y1": 0.52, "recessM": 0.18 }
+      ],
+      "skewX": 0
+    },
+    "3064538:greenpoint": {
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          { "x0": 0.03, "x1": 0.13, "y0": 0.55, "y1": 0.74 },
+          { "x0": 0.21, "x1": 0.31, "y0": 0.55, "y1": 0.74 },
+          { "x0": 0.40, "x1": 0.50, "y0": 0.55, "y1": 0.74 },
+          { "x0": 0.56, "x1": 0.65, "y0": 0.55, "y1": 0.74 },
+          { "x0": 0.71, "x1": 0.79, "y0": 0.55, "y1": 0.74 },
+          { "x0": 0.85, "x1": 0.93, "y0": 0.55, "y1": 0.74 }
+        ]
+      },
+      "storefronts": [
+        { "x0": 0.0, "x1": 0.31, "y0": 0.0, "y1": 0.42, "recessM": 0.2, "revealTop": false }
+      ],
+      "doors": [
+        { "x0": 0.62, "x1": 0.76, "y0": 0.0, "y1": 0.50, "recessM": 0.18 }
+      ],
+      "skewX": 0
+    }
+  }
+}

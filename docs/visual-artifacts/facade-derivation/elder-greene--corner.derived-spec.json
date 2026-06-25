@@ -1,0 +1,184 @@
+{
+  "source": "assets/textures/franklin/elder-greene--corner.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 29,
+    "minY": 225,
+    "maxX": 1469,
+    "maxY": 912
+  },
+  "trimmedSize": {
+    "width": 1441,
+    "height": 688
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064539:franklin": {
+      "u0": 0,
+      "u1": 0.255,
+      "wallColor": [
+        84,
+        53,
+        42
+      ],
+      "rects": [
+        {
+          "x0": 0.163,
+          "x1": 1,
+          "y0": 0.89,
+          "y1": 1,
+          "type": "band"
+        },
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0,
+          "y1": 0.416,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.218,
+          "x1": 0.643,
+          "y0": 0.58,
+          "y1": 0.801,
+          "type": "window"
+        }
+      ]
+    },
+    "3064538:franklin": {
+      "u0": 0.255,
+      "u1": 0.57,
+      "wallColor": [
+        71,
+        49,
+        40
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 0.813,
+          "y0": 0.94,
+          "y1": 1,
+          "type": "band"
+        },
+        {
+          "x0": 0.048,
+          "x1": 1,
+          "y0": 0.035,
+          "y1": 0.529,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.511,
+          "x1": 0.575,
+          "y0": 0.885,
+          "y1": 0.93,
+          "type": "window"
+        },
+        {
+          "x0": 0.932,
+          "x1": 1,
+          "y0": 0.596,
+          "y1": 0.792,
+          "type": "window"
+        },
+        {
+          "x0": 0.456,
+          "x1": 0.634,
+          "y0": 0.586,
+          "y1": 0.794,
+          "type": "window"
+        },
+        {
+          "x0": 0.062,
+          "x1": 0.227,
+          "y0": 0.574,
+          "y1": 0.792,
+          "type": "window"
+        }
+      ]
+    },
+    "3064538:greenpoint": {
+      "u0": 0.57,
+      "u1": 1,
+      "wallColor": [
+        95,
+        62,
+        48
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0,
+          "y1": 0.512,
+          "type": "storefront"
+        },
+        {
+          "x0": 0,
+          "x1": 0.042,
+          "y0": 0.9,
+          "y1": 0.942,
+          "type": "window"
+        },
+        {
+          "x0": 0.147,
+          "x1": 1,
+          "y0": 0.814,
+          "y1": 1,
+          "type": "window"
+        },
+        {
+          "x0": 0.629,
+          "x1": 0.703,
+          "y0": 0.641,
+          "y1": 0.728,
+          "type": "window"
+        },
+        {
+          "x0": 0.189,
+          "x1": 0.276,
+          "y0": 0.624,
+          "y1": 0.772,
+          "type": "window"
+        },
+        {
+          "x0": 0,
+          "x1": 0.079,
+          "y0": 0.592,
+          "y1": 0.794,
+          "type": "window"
+        },
+        {
+          "x0": 0.873,
+          "x1": 0.945,
+          "y0": 0.574,
+          "y1": 0.701,
+          "type": "window"
+        },
+        {
+          "x0": 0.339,
+          "x1": 0.427,
+          "y0": 0.567,
+          "y1": 0.759,
+          "type": "window"
+        },
+        {
+          "x0": 0.5,
+          "x1": 0.577,
+          "y0": 0.563,
+          "y1": 0.743,
+          "type": "window"
+        },
+        {
+          "x0": 0.756,
+          "x1": 0.826,
+          "y0": 0.549,
+          "y1": 0.712,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}

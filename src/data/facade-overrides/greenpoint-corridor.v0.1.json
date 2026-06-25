@@ -273,7 +273,9 @@
       "tint": "0xece3cf",
       "windowTint": "0x1d1a16",
       "doorTint": "0x1d1a16",
-      "corniceTint": "0x1d1a16"
+      "corniceTint": "0x1d1a16",
+      "storefrontAwning": true,
+      "fireEscape": "standard"
     },
     "3064679": {
       "family": "brick",
