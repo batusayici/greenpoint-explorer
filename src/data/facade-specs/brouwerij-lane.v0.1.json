@@ -9,37 +9,30 @@
   "faces": {
     "3322610:greenpoint": {
       "windows": {
-        "recessM": 0.1,
-        "rects": [
-          {
-            "x0": 0.43,
-            "x1": 0.52,
-            "y0": 0.895,
-            "y1": 0.975,
-            "shape": "circle"
-          }
-        ]
+        "recessM": 0.05,
+        "rects": []
       },
       "storefronts": [
         {
-          "x0": 0.03,
-          "x1": 0.43,
+          "x0": 0.055,
+          "x1": 0.418,
           "y0": 0,
-          "y1": 0.55,
+          "y1": 0.514,
           "recessM": 0.15,
           "revealTop": false
         },
         {
-          "x0": 0.5,
-          "x1": 0.88,
+          "x0": 0.548,
+          "x1": 0.928,
           "y0": 0,
-          "y1": 0.55,
+          "y1": 0.52,
           "recessM": 0.15,
           "revealTop": false
         }
       ],
       "doors": [],
-      "skewX": 0
+      "skewX": 0,
+      "awnings": []
     }
   }
 }
