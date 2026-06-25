@@ -40,6 +40,7 @@ export const II_PALETTE = {
     sereneco: 0x9a7e58, // weathered brick, low restaurant corner
     "144-franklin": 0xa85a3c, // 1895 Romanesque Revival, terracotta/red brick
     "astral-apartments": 0x9e4b35, // 1886 Queen Anne worker housing, red brick + brownstone base
+    verge: 0x3e3a36, // 1931 dark charcoal-brick corner (Franklin & India) — sampled from the render
   },
 };
 
