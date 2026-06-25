@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "oak-and-iron",
+  "status": "firstpass_seed_2026-06-24",
+  "note": "BIN 3064393, single EAST Franklin frontage (~7.65m, 25ft tenement lot) on the WEST side of Franklin, ~174m north of the corner (block-franklin-north extract). 5 stories: ground-floor slate bar storefront + 4 residential floors of 4 windows each (central 2 columns behind a fire escape). Rects hand-authored from oak-and-iron--franklin.png (trimmed 929x1359): the blob deriver + redness seed (scripts/seed-window-grid.mjs) both fragmented on the fire-escape ironwork and AC units, so the 4x4 grid + storefront were measured by hand off the overlay and gated on a 2x overlay. Windows recessM 0.1 (shallow) per the window-decal-flush lesson; the painted fire escape stays flat on the wall, drawn over the recessed panes. Doors real recess. POLISH TAIL: micro-nudge the fire-escape-occluded central columns, bar-window extents, '147' awning depth, residential-door transom in ?facadeedit=1.",
+  "evidence": [
+    "assets/textures/franklin/oak-and-iron--franklin.png"
+  ],
+  "faces": {
+    "3064393:franklin": {
+      "cornice": {
+        "y0": 0.964,
+        "y1": 1,
+        "projectionM": 0.4
+      },
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          {
+            "x0": 0.095,
+            "x1": 0.184,
+            "y0": 0.733,
+            "y1": 0.848
+          },
+          {
+            "x0": 0.316,
+            "x1": 0.405,
+            "y0": 0.74,
+            "y1": 0.855
+          },
+          {
+            "x0": 0.53,
+            "x1": 0.624,
+            "y0": 0.74,
+            "y1": 0.855
+          },
+          {
+            "x0": 0.78,
+            "x1": 0.873,
+            "y0": 0.735,
+            "y1": 0.855
+          },
+          {
+            "x0": 0.097,
+            "x1": 0.181,
+            "y0": 0.526,
+            "y1": 0.657
+          },
+          {
+            "x0": 0.305,
+            "x1": 0.406,
+            "y0": 0.55,
+            "y1": 0.66
+          },
+          {
+            "x0": 0.529,
+            "x1": 0.618,
+            "y0": 0.545,
+            "y1": 0.655
+          },
+          {
+            "x0": 0.78,
+            "x1": 0.874,
+            "y0": 0.518,
+            "y1": 0.66
+          },
+          {
+            "x0": 0.09,
+            "x1": 0.19,
+            "y0": 0.311,
+            "y1": 0.44
+          },
+          {
+            "x0": 0.313,
+            "x1": 0.397,
+            "y0": 0.319,
+            "y1": 0.429
+          },
+          {
+            "x0": 0.538,
+            "x1": 0.623,
+            "y0": 0.319,
+            "y1": 0.429
+          },
+          {
+            "x0": 0.785,
+            "x1": 0.874,
+            "y0": 0.312,
+            "y1": 0.431
+          }
+        ]
+      },
+      "awnings": [
+        {
+          "x0": 0.198,
+          "x1": 0.995,
+          "yWall": 0.27,
+          "yDrop": 0.27,
+          "yValance": 0.21,
+          "projectionM": 0.36
+        }
+      ],
+      "storefronts": [
+        {
+          "x0": 0.037,
+          "x1": 0.185,
+          "y0": 0.005,
+          "y1": 0.257,
+          "recessM": 0.17,
+          "revealTop": false
+        },
+        {
+          "x0": 0.775,
+          "x1": 0.92,
+          "y0": 0,
+          "y1": 0.145,
+          "recessM": 0.18,
+          "revealTop": false
+        }
+      ],
+      "doors": [],
+      "skewX": 0
+    }
+  }
+}

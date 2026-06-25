@@ -6,12 +6,39 @@ Owner: Batu (taste, product, approvals) / Agent (execution)
 
 ## Product Goal
 
-A 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike: every building and business is located exactly where it is in real life and is recognizably itself. Art-directed and stylized — not hyperrealistic.
+**Greenpoint Explorer is a neighborhood exploration platform** — it helps people discover Greenpoint through stories, landmarks, events, history, and curated routes, not through search. The lifelike, hand-inked 3D map is the **recognition layer / container**; the location-linked context attached to places is the product. (Core belief: people don't travel to browse business listings — they travel to discover places; businesses benefit when discovery happens. See the Product Frame below.)
+
+The container is: a 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike — every building and business located exactly where it is in real life and recognizably itself. Art-directed and stylized, not hyperrealistic. The recognition bar ("yes, that's *my* neighborhood") is real and load-bearing, but it serves the platform; it is not the end in itself.
 
 - **Multi-angle (firm requirement):** the scene is viewable from **all four orthogonal isometric angles** (90° rotation steps), with pan/zoom. A single fixed angle shows only two of every building's four sides, structurally hiding ~half of all street frontages — and the businesses on them. Four rotations make every street frontage visible from at least one angle. This is not free-cam (which stays debug-only); it is four discrete, composed iso viewpoints. **Implication:** a building's street frontages must be treated for whichever angle(s) reveal them, and scene completeness is judged from all four angles, not one.
 - **Primary look:** II-C Inked Indie Visual System (hand-inked editorial illustration). See `docs/ART_DIRECTION.md`.
 - **Fallback look:** GPT-5.5 photo-render fidelity (the Premier Organic benchmark image) if II-C proves infeasible in-engine. Decided at the Phase 2 gate.
 - **Geometry truth:** NYC Open Data (footprints, BINs). **Likeness truth:** field photos in `src/data/facade-evidence/`.
+
+## Product Frame (adopted 2026-06-17)
+
+The strategy below was previously held only in `docs/context/` and the session memory, footed "not yet in PLAN.md." It is now adopted here as the strategic spine. Full sources: `docs/context/strategy-blueprint.md` (master), `docs/context/resident-feedback-michael-2026-06.md`, `docs/context/greenpoint-editorial-context.md`, `docs/context/landmark-strategy-v1.md`.
+
+**Six V1 content layers:** 1. Places · 2. Stories · 3. History · 4. Events · 5. Curated Routes · 6. Neighborhood Layers.
+
+**Why people use it (ordering matters):** Stories → Local knowledge → Exploration → Events → History → Businesses. *Stories generate attention; events create urgency; businesses monetize the resulting discovery.*
+
+**Growth loop:** stories make the map worth exploring → events bring people in → visitors discover businesses → businesses promote the platform → more content added → the map gets more useful and more defensible.
+
+**North-Star metric — Verified Local Exploration:** visitor journeys that produce meaningful engagement (route starts, story views/listens, event saves, profile views, check-ins, multi-stop visits, signups, intent).
+
+**Defensibility:** a neighborhood knowledge graph. *Google Maps knows where places are; we aim to know why they matter.*
+
+**Core hypotheses (what the build must validate):**
+- **H1 — Stories drive engagement** (vs. directory-style info).
+- **H2 — Routes drive exploration** (multi-stop + business discovery).
+- **H3 — Events drive acquisition** (fastest path to new + repeat visitors and business adoption).
+- **H4 — Businesses pay after attention exists.**
+- **H5 — The model is repeatable** to other neighborhoods.
+
+**Landmark strategy — curated density, not coverage:** V1 does not map all of Greenpoint. It is a dense, memorable set of ~10–15 story-rich anchors on a story-dense spine (Franklin/Greenpoint corridor, Manhattan Ave, Transmitter Park/WNYC, Eberhard Faber, Bushwick Inlet, St. Anthony's, McGolrick/Monitor, Newtown Creek). Each anchor is a tappable **story object**, not a static POI. The `Landmark` and `PlaceStory` schemas (in the context docs) carry verification gates — lore stays unverified until address + photo + archival confirmation.
+
+**Resident signal (Michael, n=1, June 2026):** the map is the container, hyperlocal context is the product; people attach to *people, not listings*; owner/origin stories and on-location audio validated; stoop sales / local news drive recurring traffic; community orgs (Greenpointers, Save the Inlet, historians) are the better *early* content + distribution partners. Acquisition sequence: visitors → engagement → businesses. This is n=1 — widening it is itself part of the work.
 
 ## Locked Decisions (2026-06-11)
 
@@ -39,6 +66,8 @@ NYC footprints (BIN-mapped, WGS84)
 Stack stays React + Three.js + Vite. No renderer replacement. PixiJS retained only if the 2D overlay earns its keep.
 
 ## Phases
+
+> **Track A — Layer 1: Place / The Container.** Everything in Phases 1–5 below builds the render engine: geometry truth, massing, the II-C inked look, facades, ground/props, multi-angle camera, hero place cards, and block scaling. This is *one layer* of the platform (Places + recognition), not the whole product. The phase records are kept intact as the execution history. The **content & exploration layers (Track B)** that test H1–H5 are a separate section below.
 
 ### Phase 1: Reset & Clean Baseline — DONE (this commit)
 
@@ -97,7 +126,7 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
   - 3.3.3 Corner wraps + exact signage/awnings on the heroes (the old 3.2 scope), now validated from all four angles.
     - **Largely pre-built + validated (2026-06-16).** Corner-wrap awnings/signage on the heroes were built in prior sessions and hold at all four angles (Premier's "premier ORGANIC" awning wraps the corner cleanly; all heroes carry textured Greenpoint+Franklin frontages). Validation surfaced one real item, now resolved: **Azure Gourmet** — a real, Batu-verified deli sharing Sereneco's 113 Franklin building — got its own place card (`azure-gourmet`, active/verified, `bf73bba`) and per-storefront click selection (`3fce782`): tagging a storefront spec entry with `placeId` makes it resolve to its own card. **3.3.3 effectively complete** (remaining signage exactness folds into the Phase 5.4 pre-publish truth pass).
 
-3.4 Lighting, shadow shapes, and composition pass — composed at each of the four angles.
+3.4 Lighting, shadow shapes, and composition pass — composed at each of the four angles. **(Open — absorbed into Phase 10 "Living Scene," which expands it from a static composition pass into time-of-day grades + illustrated shadows.)**
 3.5 Interaction v0: hover/select highlight + paper place card (II-C sections 8–9).
 3.6 **Acceptance (Batu):** would a Greenpoint local recognize this corner instantly, **from any of the four angles**? Does it hold against the reference boards?
 
@@ -122,13 +151,125 @@ MVP corner (Premier, Sonny's, Sereneco heroes) facades/massing/cornices/awnings:
 5.4 **Pre-launch truth pass:** verify names/placements, fix misattributions, optional goodwill outreach to featured businesses
 5.5 Public community demo
 
+## Track B — Content & Exploration Layers + Instrumentation
+
+This is the half of the platform that tests the hypotheses. None of it is built yet; the schemas are designed (in the context docs). **Sequencing is intentionally OPEN — see "Priority Re-decision" below.** Each layer is listed with the hypothesis it exercises:
+
+- **B1 — Story layer (H1).** Implement the `PlaceStory` schema as structured, source-backed JSON (editorial truth kept separate from geometry/business truth). Author a small set of *real* story objects on existing places (owner/origin stories, lore, hidden-gem). Surface them in the place-card UI (a "story" section). Tests whether story/context out-pulls directory info.
+- **B2 — History / Then·Now·Lost (H1, defensibility).** Historical photos + former uses anchored to locations (OLDNYC-sourced). Populatable *without* businesses or UGC → candidate lead acquisition vector.
+- **B3 — Landmark anchors (curated density).** The ~15-pin story-object set via the `Landmark` schema + verification gates. The spine the other layers hang on.
+- **B4 — Curated Routes (H2).** Thematic multi-stop trails across the anchors (e.g. First-Time Greenpoint, Vintage Trail, Polish Greenpoint). Tests multi-stop exploration + discovery.
+- **B5 — Events / What's-Happening-Now (H3).** Time-bound pins (markets, open studios, stoop sales). Tests urgency, repeat visitation, acquisition.
+- **B6 — Instrumentation toward the North Star.** Lightweight event logging (story opens, pin clicks, dwell, route starts, multi-stop) so demos and pilots produce Verified-Local-Exploration signal instead of anecdote. Cross-cutting; likely a prerequisite for *measuring* any of H1–H3.
+- **B7 — Business participation & monetization (H4).** Builds on the existing claim-to-brand hook (the `storefrontSigns.js` `claimed`/`brandName` path; see Phase 4.2). Sequenced *after* attention is demonstrated.
+- **B8 — Repeatability (H5).** Generalize the playbook to a second neighborhood. Last.
+
+## Reprioritization — 2026-06-23 (Batu): make the spine alive before expanding
+
+A review at the end of the inked-facade cycle re-sequenced the remaining work. **Finding:** the container (Track A) is ~85% built and deeply polished; the product (Track B — stories/events/routes/history/instrumentation) is ~5% built. The map is gorgeous and mute. Three of Batu's four review notes converge on one move — *make the existing Franklin spine recognizable and fast, then give it a voice; stop widening it.*
+
+**Locked direction (Batu):**
+- **Interleave two parallel tracks, both starting now:** Track P (performance/load architecture) and Track R (recognizability — hero anchors + signature-layer storefronts + corners). Performance is the enabler that gates demoing; recognizability is the headline visible value.
+- **Recognizable storefronts are the first content lever** — recognizability comes *before* attaching story/event content. A mute-but-recognizable map can already be shown to residents to test recognition; stories/events/instrumentation slot in right behind (they test H1/H3 on a map that already reads as real).
+- **Deferred (was "now"):** 8.1c street-network paving, further block/neighborhood expansion, Phase-9 scale, roof/pavement detail, business-claim monetization, second neighborhood. All coverage/polish — they wait until the loop is proven alive.
+
+**Track P — Performance & Load Architecture** (invisible, gates every demo). **Lightweight pass landed (2026-06-23 perf track):** texture caching + the measurement harness are in; geometry merge/instancing and async build are not.
+- P1 — Merge/instance static massing + wall decoration to cut draw calls. **OPEN** — no `InstancedMesh`/geometry merge yet; each building still builds discrete meshes.
+- P2 — Pre-bake/atlas/cache the per-building canvas textures instead of regenerating per building. **PARTLY DONE** — shared texture caches landed (`texCache`/`textureCache`/`__inkedTexCache`/`__corniceTex`/`loadCache` in `SceneView.jsx`): distinct files + decoded images load once and are shared across all buildings instead of regenerating per building. **Open:** true atlasing (packing many components into one texture).
+- P3 — Async/progressive scene build with a real loading state. **OPEN** — scene assembly + building build still run synchronously on mount.
+- P4 — Budget: measure time-to-first-paint + time-to-interactive before/after. **DONE** — `?perf=1` instrumentation in `SceneView.jsx:173` brackets assembly / building build / first render and dumps `renderer.info` draw-call / geometry / texture counts (silent in normal use).
+
+**Track R — Spine Comes Alive: Recognizability** (Batu review notes #3 + #4):
+- R1 — **Astral Apartments (184 Franklin)** as the proof anchor — built **bespoke** like the Franklin heroes (fastest path to "that's my neighborhood"), then generalize.
+- R2 — **Recognizable storefronts:** wire the dormant **signature layer** (defined in the 8.0 contract, never built into the renderer) so storefronts read as *specific real shops* — silhouette + category, real-looking but unbranded per the claim model. Corner treatment emphasized (corners carry recognition).
+- R3 — **Eberhard Faber building, Brouwerij Lane, Oak St haunted house** — remaining anchors, photo-gated.
+
+**Next (right behind R, not deferred indefinitely):** attach 3–5 real stories (the old 8.3), seed events, lightweight instrumentation, and a shareable demo URL for resident testing.
+
+The Phase 6–9 records below are kept intact as execution history; the tracks above supersede the "NOW" tags on Phase 8/9 for sequencing.
+
+## Phase Records (6–10) — execution history
+
+> **Sequencing authority is the 2026-06-23 reprioritization above** (Track R → Phase 10), not the per-phase headers below. The phases are kept as the execution record. The original 2026-06-18 framing that introduced them — *don't fill the neighborhood then add content; build the story-dense spine and dress it with craft + content at once (curated density, not coverage)* — still holds as principle; it was only re-sequenced, not reversed.
+
+### Phase 6 — Curation & Visual-System Lock — DONE (2026-06-18)
+
+Cheap, decision-shaped, and gates everything downstream. Nothing scales until this lands.
+
+- **6.1 Hero + Landmark tiering (one pass) — APPROVED 2026-06-18.** A single curation producing two views of the same set: the **hero visual tier** and the **landmark story-object tier**. Output landed in **`docs/CURATION_TIERS.md`** (the authoritative list): 11 v1 heroes (within the ~10–12 budget), the typological default, the landmark spine, and locked decisions (Black Rabbit + Brouwerij Lane + Eberhard Faber building promoted to hero; Franklin-north spine first; Manhattan Ave a later node). **6.1 execution complete (2026-06-18):** tiers encoded as data in `src/data/curation/building-tiers.v0.1.json` + pure loader `src/curationTiers.js` (`visualTierFor`/`landmarkTierFor`/`isHero`, default = typological) + `curationTiers.test.mjs` (7 tests); stale closed-bar "The Pencil Factory" record removed from the east roster (6→5); Brouwerij Lane tracked as `buildStatus:data-missing, verificationStatus:pending` (not rendered, truth gate). Also fixed a pre-existing stale `placeData.test.mjs` (azure-gourmet hero). 62/62 tests, build green. **Deferred to 6.2:** wiring the renderer/kit to *read* `visualTier` from the registry for treatment selection (belongs with the component inventory).
+- **6.2 Visual-system contract (the consistency engine).** Codify `ART_DIRECTION.md` into machine-checkable form so styling can't drift as we scale. This is the concrete answer to the consistency watchout.
+  - 6.2.1 **Palette token module** — single source for every color; enforces the "palette is a no-miss" rule in code.
+  - 6.2.2 **Component inventory** — kit pieces × material families × variants × tiers, mapped to the modules that render them.
+  - 6.2.3 **Conformance gate** — fails on any out-of-token color + a per-material regression screenshot. All building rendering routes through the kit; ad-hoc per-building tuning (the recent cornice churn) ends here.
+
+### Phase 7 — Asset Kit Completion — IN PROGRESS (clapboard anchor shipped; fan-out next)
+
+Each family: components generated tintable-neutral (dark ink on warm grey) → keyed to alpha → composed via `inkedFacadeCompose.js` → passes the 6.2.3 gate. Full scope/plan in `docs/superpowers/` (2026-06-18). **Foundation done (Tasks 1–5):** 6-family taxonomy + valid-cell matrix (`src/materialFamilies.js`), `nearestPaletteToken` color contract, roof-tone tokens, headless component verifier (`scripts/verify-inked-component.mjs`, chained into `npm run verify`), reference-intake manifest. 56-photo reference corpus organized in `docs/reference/asset-reference/`.
+
+**Clapboard vertical-slice pilot — SHIPPED (2026-06-20).** Gate A (contact-sheet board) + Gate B (isolation scene proof composed at real-meter dimensions — ~6 m × 8.5 m 3-storey rowhouse) both built and approved by Batu. 5 components through both taste gates: `clapboard-{wall,cornice,window,door-stoop,weathering}.v1.png`. This is now the consistency anchor for all subsequent families — the generation recipe, alpha-key workflow, and real-meter compose harness (`src/dev/AssetKitProof.js`) are proven.
+
+**Carryover (fan-out to remaining families):**
+- Fan out to have-refs families using the proven recipe (brownstone, modern/flat; warehouse pending gather photos).
+- Gather-dependent columns: bay-frame / awning / roll-gate — pending field photos.
+- BUILD the signature layer (recognizable-silhouette model) — defined in contract only today; wiring into the renderer is Phase 7+/8.
+
+- **7.1 Clapboard / wood-frame — SHIPPED.** (horizontal-lap; shingle sub-type is carry-over)
+- **7.2 Brownstone.**
+- **7.3 Modern / flat.**
+- **7.4 Typological roof tone — DONE (2026-06-20).** Per-family flat/quiet roof TONE wired into the procedural extrude caps so the four-angle camera never shows a bright slab. `ROOF_TONES` tokens (Phase-7 foundation) + new pure `roofToneFor(family)` resolver in `palette.js` bridge the `classifyBuilding` vocabulary (`brick-prewar`/`commercial-storefront`/`painted`) onto the canonical family keys, safe-defaulting to brick. Inked rowhouses resolve to `brick` (== legacy `MASSING.roofCap`, so the hero corner is byte-stable); block-extract buildings get their classified family's tone; plain context masses keep the cheap wall-darken. 7 palette tests, conformance/build green, verified in-engine (flat quiet caps, no bright slabs). NOT detailed roofs.
+
+### Phase 8 — Spine Expansion + Story Attachment — NOW (8.0 / 8.1 / 8.2 done; 8.3 / 8.4 live)
+
+Absorbs Track-A 4.3 (corridor infill) and 5.1 (typological infill kit), and Track-B B1.
+
+- **8.0 Structural Depth Pass — DONE + look re-gate APPROVED (2026-06-21).** Real extruded depth (3D stoops + front fire escapes), parametric and family/storey-gated, built + tested + verified on the 4-BIN pilot (pure modules `facadeDepthGates.js`/`stoopGeometry.js`/`fireEscapeGeometry.js` + `decorateInkedWall` wiring; commits `905315f..` through the craft pass). Batu approved the geometry at the Task 6 gate; design + plan in `docs/superpowers/`, decisions in `DECISION_LOG.md` (2026-06-21). **Both craft follow-ups landed + the look re-gated (Batu approved 2026-06-21):**
+  - **(a) Ground-texture regen — DONE (`291d0bf`).** Batu regenerated brick + brownstone ground cells in GPT-5.5 from the regen packet with no painted stairs/door; intake fixed the baked sepia chroma (saturation pass to ~22.5 meanChroma) so they pass the tintable-neutral gate. Verified in-engine on both pilots (brick `3064677`, brownstone `3064541`): plain masonry ground band + parlor window, 3D stoop projects in front, no double-stairs.
+  - **(b) Open ironwork — DONE (`3cd298d`, `1107491`).** Procedural OPEN-IRONWORK railing texture (dark balusters + top/bottom rails on transparent, tiled, tinted in-engine) — the wall shows through the balusters so it reads as iron; decks are thin platforms, ladder a slender stringer. The openwork lives in the texture, so the relief-vs-lattice variant decision is moot (resolved). Brooklyn-style 3D stair flights added.
+  - **Craft pass that rode along:** stoop reads as a stoop (raked walls + newels + stone texture, `27ff7c0`); doors/window-depth consistency + party-wall clip + molded cornice (`ef02445`, `b6544fd`); true carved window/door recesses with sill + lintel cap (`b0e7b54`, `4c487d6`); modern-flat street-face/lot-line walls (`78efa7e`).
+  - **Conformance cleanup — DONE (this session).** The Brooklyn fire-escape commit had introduced raw `IRON`/`IRON_DECK` hex literals that failed the 6.2.3 gate; both moved into `II_PALETTE` (`fireEscapeIron`/`fireEscapeIronDeck`). 147 tests + full `npm run verify` GREEN.
+  - Basement/areaway = **Phase 8.5**, its own ref-gated mini-design pending Batu photos (photos now in `docs/reference/asset-reference/basement/`).
+- **8.1 Expand along the story-dense spine — DONE (2026-06-21).** Extended the procedural scene up the curated Franklin corridor. Done in two steps:
+  - **8.1a — Full kit flip (the traveling-learnings step).** Emptied `KIT_PILOT_BINS` so the 8.0 inked craft (recesses, sills, stoops, fire escapes, cornices, per-family material) applies to every kit-eligible building via the heuristic family resolver, not just the 4 pilots. Validated at scale on the ~92 existing buildings (franklin-milton + greenpoint-east): 86 brick → kit, 6 painted-masonry/warehouse → cheap (left as-is); material/recess/street-face all resolved from PLUTO + family/storey gates with **zero per-building tuning**. Verified across all four angles (inked fronts, plain typological backs). Commit `f96a2d0`.
+  - **8.1b — Franklin-north corridor (Greenpoint Ave → Huron).** New `franklin-north` block via the proven recipe (descriptor + two scripted pulls + ~4 registration lines, 1 src file): 160 buildings (99% storey-backed), 140 → inked kit (brick), 20 → cheap (painted-masonry/warehouse), 26 storefronts. The kit **traveled automatically** — no per-building work. The 3 new heroes (Brouwerij Lane / Eberhard Faber building / Astral) fall in this corridor and render typological for now; hero promotion is a later, photo-gated cycle (their `building-tiers` hero flag is intact). Commits `fd68d34`, `7348849`. Full scorecard + findings in `docs/SCALING_LOG.md` (Block C). **Open curation dial:** 160 is the corridor at ~2-lot depth (matching the existing blocks); trimming to frontage-only is a Batu spine-vs-coverage call, not a recipe change.
+  - **Scope decision (Batu, 2026-06-21):** kit applied to `brick`/`brownstone`/`clapboard`; `brownstone`/`clapboard` only via evidence-bound overrides; `painted-masonry`/`warehouse`/`modern-flat` left as-is. Spec/plan in `docs/superpowers/`.
+  - **Evidence-backed material showcase (Batu-confirmed, 2026-06-21).** **95 Kent St (3064605) → clapboard** override restores a visible clapboard building after the flip reverted the unverified pilots to brick. **168 Franklin (3064541) is full brick** (Batu corrected an earlier dual-material reading) — reverted to the brick heuristic; no brownstone showcase building is confirmed yet.
+  - **Dual-material kit capability (dormant).** A `groundFamily`/`groundTint` override (ground floor — band/stoop/door — renders in a distinct material from the wall above) was built + unit-tested, shipping the "dual-material" variation from the facade-variation-layer plan. Currently **unused** (defaults to no-op; single-material buildings byte-identical) and **never visually verified in-engine** — available for when a real dual-material building is confirmed with evidence.
+  - **Storefront-stoop fix (2026-06-21).** Commercial ground floors carry a storefront (drawn by the storefront-sign system) and no longer get a residential 3D stoop — kit params carried `storefront:null` so commercial kit buildings wrongly fell into the stoop branch. Gated `drewStoop` on a `commercialGround` flag (from `classifyBuilding` ground-floor use). Verified in-engine (corridor storefronts show clean bases).
+  - **Source-backed cross-street ground (2026-06-22, pushed to `origin/feat/inked-facade-look`).** The ground layer now builds real cross-streets (Kent/Java/Milton) from LION centerlines (inkn-q76z), positioned at their true intersection with Franklin, with multi-gap roadbed/curb/sidewalk clipping for N crossing streets and a crosswalk band at every real crossing. `buildCrossStreets` + `axisSegments` in `groundLayer.js`; real LION centerlines promoted into the geometry-source packet. **Limitation that 8.1c resolves:** cross-streets are still clamped to the legacy **130m context radius** (shared with the building cull), so streets/buildings beyond the circle (the whole Franklin-north corridor) stay unpaved.
+
+- **8.1c Street-network-driven ground extent — DESIGNED 2026-06-22 (plan pending).** Resolves "buildings standing on bare ground": block extracts bypass the building cull (`sceneFrame.js:132`), so the 8.1b Franklin-north block placed 160 buildings out to ~620m, far past the 130m asphalt circle. Replaces the fixed radius with a **per-street real-centerline extent model** — each street paved along its real LION centerline for its full loaded extent, no circle, no fixed run-length; the regional data pull defines the scene boundary, so paving degrades into the neighborhood's true shape (water/parks) as it scales (H5). Locked scope: close the R10E Franklin-centerline gap opportunistically; **ground-only decouple** (building cull left untouched); missing corridor streets (Huron/Freeman/India + Franklin) via a **real LION pull**, not derivation; scoped to the loaded three blocks, not neighborhood-wide. Spec: `docs/superpowers/specs/2026-06-22-street-network-ground-extent-design.md`; decision in `DECISION_LOG.md` (2026-06-22).
+- **8.2 `PlaceStory` schema in code — DONE (2026-06-19).** Structured, source-backed JSON in its own file (`src/data/stories/place-stories.v0.1.json`) + pure loader (`src/placeStories.js`, `getFeaturedStoryForPlace`/`selectFeaturedStory`, one featured story per place, `publicMode` gate). Editorial truth kept separate from geometry/business truth; gated like place records (`sources`/`verificationStatus`/`approvalStatus`) and enforced by `scripts/verify-place-stories.mjs` (incl. `approved⇒verified` + FK), chained into `npm run verify`. Featured-story section added to `PlaceCard.jsx` (text/image/audio + lore badge). **137 Oak St promoted to off-spine hero record** (`landmark-heroes.v0.1.json` + registry, `buildStatus:data-missing`, render/map-placement deferred, Brouwerij Lane precedent) carrying the first seed story ("Haunted House", unverified lore). Spec/plan in `docs/superpowers/`. Open: Batu supplies the audio file; 137 Oak in-scene clickability is the deferred hero build.
+- **8.3 Attach 3–5 real story objects to built landmarks** and surface them in the place card (a "story" section). Starts testing **H1** with residents/orgs *during* expansion, not after — the insurance against polishing an empty container.
+- **8.4 Lightweight instrumentation hooks** (Track-B B6 seed) — log story opens / pin clicks / dwell so demos produce signal, not anecdote.
+
+### Phase 9 — Validate & Scale — LATER
+
+Track-B B3–B8 + remaining Track-A 5.x: landmark-set completion, curated routes (H2), events (H3), instrumentation toward the North-Star metric, business-claim monetization (H4), roof/pavement/sidewalk detail, pre-launch truth pass, public demo, repeatability (H5).
+
+### Phase 10 — Living Scene: Dynamism & Light — PLANNED (sequenced behind the alive-loop proof)
+
+Scoped 2026-06-25 (Batu). Makes the scene "come alive" in a second sense — *animated* and *time-aware* — distinct from the 2026-06-23 "alive = recognizable + voiced" reprioritization. This is **Road B: illustrated dynamism**, not photoreal. Engine cost is trivial (Three.js); the real cost is art-production (every dynamic element must be drawn in the II-C idiom) and a foundational architecture change.
+
+**Governing constraint (from the pipeline as built):** hero facades are unlit `MeshBasicMaterial` (lighting baked into the inked texture); context massing is `MeshLambert`; there are no shadow maps; the render loop is static (no animation clock). Therefore: global light changes must flow through **uniforms / palette grading**, NOT scene lights — moving a real sun would light the Lambert context while the Basic heroes sat frozen, splitting the scene. This phase **completes the dormant Phase 3.4** (lighting/shadow/composition) rather than being net-new there.
+
+**Sequencing (Batu, 2026-06-25):** sits **behind Track R** (recognizability). The lightweight Track P pass (texture caching + `?perf=1` harness) is enough to start on; full P1 merge/instancing is **not** a hard gate — but Phase 10 adds draw load, so use the P4 harness to watch the budget as motion lands, and pull P1 forward if numbers degrade. Rationale: the differentiator is hyperlocal *content*, not motion, so recognizability + first stories still come first. **Split — the informational half ships sooner:**
+
+- **10-INFO — Informational dynamism (the moat half) → folds into Track B / events (B5), not deferred behind the visual work.** Time-of-day wired to **real local Greenpoint time**; business sign lit when open per real hours; events/markets that appear when live; story-pins that pulse. This is dynamism a 3D world model *cannot* fake — it's the hyperlocal-truth thesis expressed as motion. Stays on the verified-truth side of the existing gates.
+- **10.1 — Animation foundation.** Add a clock + update system to the render loop (today `setAnimationLoop` only re-renders). Prerequisite for everything else here.
+- **10.2 — Time-of-day as authored palette grades.** ~4–5 curated moods (dawn/day/dusk/night) as bundles of uniforms (paper tint, ink warmth, fog, atmospheric wash, light colors) cross-faded — not a continuous physical sun. Plus **night window glow** (flip a curated subset of existing window meshes to `emissive` at dusk) — highest alive-per-dollar signal. Drawn/illustrated shadow shapes (baked blob/hatch from a fixed, step-rotated sun), never shadow maps.
+- **10.3 — Ambient micro-motion.** Awnings/signs stirring, vent steam, flags, water shimmer — looped vertex/shader wiggle. Cheap, large payoff; the inked style wants a little hand-drawn jitter.
+- **10.4 — Inked sprite agents.** 2D inked sprites / flat cutouts (NOT skinned 3D models — off-brand + costly) walking the **existing street/sidewalk graph** (LION centerlines + sidewalk strips already built). Curated density of a few dozen pooled/instanced agents in the visible iso frame, not crowd/traffic simulation.
+- **10.5 — Weather mood states** (reuses 10.2 machinery): rain hatch, snow, fog density. Pairs with hyperlocal ("Greenpoint in the snow").
+
+**Limits / watchouts:** texture memory is the perf ceiling (sprite atlases must be tight, ref the LFS size history); the II-C idiom is the gating art cost; informational dynamism must not cross the truth wall.
+
 ## Deferred (vision-compatible, not in scope)
 
-Dynamic life (people, pets, vehicles — sprites/cel-shaded fit the II look), ambient audio, business interaction features.
+~~Dynamic life (people, pets, vehicles), ambient audio~~ → **now scoped as Phase 10 (Living Scene)**, sequenced behind the alive-loop proof. Remaining deferred: business interaction features, ambient audio bed (folds into Phase 10 later).
 
 ## Known Data Gaps
 
-- Franklin Ave centerline missing from the source packet (R10E finding); current cross-street slab is derived, review-only.
+- Franklin Ave centerline missing from the source packet (R10E finding); current Franklin roadbed is `derived: true` (real width, derived extent). **Phase 8.1c will attempt to close this** via the corridor LION pull — if it returns Franklin's centerline, the gap closes; otherwise Franklin's extent is derived from its cross-street crossings.
 - Footprint confidence classes from 4D-1: 126 safe / 14 uncertain / 2 blocked across the 142 corridor buildings.
 - ~~"291-record buffer has crossAxisOffset≈0 ⇒ no Franklin coverage"~~ — corrected: the Franklin/Greenpoint block footprints were present in the 291-record set but radius-culled and lacking PLUTO storey data. The procedural recipe surfaces and enriches them via a bounded NYC Open Data + PLUTO pull (`pull-footprints.mjs`).
 

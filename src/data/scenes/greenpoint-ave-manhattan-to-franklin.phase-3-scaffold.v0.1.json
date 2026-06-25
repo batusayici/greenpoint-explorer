@@ -1125,7 +1125,7 @@
             "label": "DTR-11 facade/reference evidence",
             "shortLabel": "facade",
             "status": "manual_draft",
-            "sourcePath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+            "sourcePath": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
             "supports": "Reference-photo-derived review specs for facade cues and claim limits on the four existing west-anchor businesses.",
             "doesNotSupport": "Production texture, exact storefront tracing, exact entrance/frontage geometry, or final visual acceptance."
           },
@@ -1208,7 +1208,7 @@
         "facadeEvidence": {
           "label": "DTR-11 reference-photo-derived facade evidence status",
           "status": "manual_draft",
-          "sourcePath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+          "sourcePath": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
           "artifactId": "phase-2dtr-11.facade-extraction-specs",
           "generatedOn": "2026-06-03",
           "usageLimit": "Reference-photo-derived review specs may guide facade-cue review only. They do not create production textures, exact tenant frontage, exact entrances, exact geometry, or raster readiness.",
@@ -1218,7 +1218,7 @@
               "label": "Grillpoint Deli",
               "status": "manual_draft",
               "referenceImagesExist": true,
-              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/grillpoint-deli-reference-crop.png",
+              "primaryReferenceCropPath": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/grillpoint-deli-reference-crop.png",
               "keyCues": "Maroon/green/black identity, central entry, poster/window rhythm, adjacent dark doorway cue.",
               "blockedClaims": "Phone number as exact scene text, exact food poster text, pedestrians, public exact-address claim."
             },
@@ -1227,7 +1227,7 @@
               "label": "McDonald's",
               "status": "manual_draft",
               "referenceImagesExist": true,
-              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/mcdonalds-reference-crop.png",
+              "primaryReferenceCropPath": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/mcdonalds-reference-crop.png",
               "keyCues": "Gray/yellow/dark-glass facade, brown slats, golden arch cue, mural mass above.",
               "blockedClaims": "Exact promo poster text, unrelated tenant signs, public exact-geometry claim."
             },
@@ -1236,7 +1236,7 @@
               "label": "Dunkin'",
               "status": "manual_draft",
               "referenceImagesExist": true,
-              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/dunkin-reference-crop.png",
+              "primaryReferenceCropPath": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/dunkin-reference-crop.png",
               "keyCues": "Black/orange/pink sign band, side/corner sign cue, dark recessed entry, beige mass.",
               "blockedClaims": "Exact side street traffic details, extra primary G cue, public exact-address claim."
             },
@@ -1245,7 +1245,7 @@
               "label": "Citizens Bank",
               "status": "manual_draft",
               "referenceImagesExist": true,
-              "primaryReferenceCropPath": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/citizens-bank-reference-crop.png",
+              "primaryReferenceCropPath": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/crops/citizens-bank-reference-crop.png",
               "keyCues": "Green sign on white sign box, recessed black-framed entry, black railings, reddish-brown trim rhythm.",
               "blockedClaims": "Exact bank interior text, extra station entrances, public exact station geometry claim."
             }
@@ -1333,7 +1333,7 @@
           {
             "id": "dtr-11-facade-extraction-specs",
             "label": "DTR-11 facade extraction specs",
-            "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+            "path": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
             "status": "manual_draft",
             "notes": "Reference-constrained facade review specs; not production texture, tracing, or exact facade approval."
           },
@@ -2210,7 +2210,7 @@
           {
             "id": "dtr-11-west-anchor-facade-specs",
             "label": "DTR-11 facade extraction specs",
-            "path": "docs/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
+            "path": "docs/archive/mvp-review/phase-2dtr-11-reference-image-facade-fidelity-pass/generated/facade-extraction-specs.json",
             "status": "manual_draft",
             "notes": "Facade specs cover the existing MVP targets only; no mid-corridor facade readiness is claimed."
           },

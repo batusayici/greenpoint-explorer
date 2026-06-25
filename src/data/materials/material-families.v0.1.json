@@ -1,0 +1,14 @@
+{
+  "_doc": "Phase 7.1 — canonical Greenpoint material families + valid (material x component) matrix. DATA ONLY. buildingTypology.js classifying INTO these is Phase 8.",
+  "version": "0.1",
+  "families": ["brick", "clapboard", "brownstone", "painted-masonry", "modern-flat", "warehouse"],
+  "components": ["wall", "cornice", "window", "door-stoop", "bay-frame", "awning", "roll-gate", "weathering", "ground"],
+  "cells": {
+    "brick":           ["wall", "cornice", "window", "door-stoop", "bay-frame", "awning", "roll-gate", "weathering", "ground"],
+    "clapboard":       ["wall", "cornice", "window", "door-stoop", "weathering"],
+    "brownstone":      ["wall", "cornice", "window", "door-stoop", "weathering", "ground"],
+    "painted-masonry": ["wall", "cornice", "window", "door-stoop", "bay-frame", "awning", "roll-gate", "weathering", "ground"],
+    "modern-flat":     ["wall", "window", "bay-frame", "awning", "roll-gate", "weathering", "ground"],
+    "warehouse":       ["wall", "window", "door-stoop", "roll-gate", "weathering", "ground"]
+  }
+}

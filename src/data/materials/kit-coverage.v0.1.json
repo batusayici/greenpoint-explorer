@@ -1,0 +1,10 @@
+{
+  "_doc": "Phase 8.1 — which (family, component) inked PNGs exist in assets/inked/ today. familyHasKit == has a wall. Kept honest against the asset folder by scripts/verify-kit-coverage.mjs. painted-masonry and warehouse are intentionally absent (no assets yet).",
+  "version": "0.1",
+  "coverage": {
+    "brick": ["wall", "cornice", "window", "door-stoop", "weathering"],
+    "clapboard": ["wall", "cornice", "window", "door-stoop", "weathering"],
+    "brownstone": ["wall", "cornice", "window", "door-stoop", "weathering"],
+    "modern-flat": ["wall", "window", "weathering"]
+  }
+}

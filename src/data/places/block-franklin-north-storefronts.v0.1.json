@@ -1,0 +1,350 @@
+{
+  "schemaVersion": "block-storefront-roster.v0.1",
+  "blockId": "franklin-north",
+  "source": {
+    "provider": "OSM Overpass",
+    "endpoint": "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+    "query": "[out:json][timeout:30];(node[\"shop\"](40.7312,-73.9586,40.7359,-73.9568);way[\"shop\"](40.7312,-73.9586,40.7359,-73.9568);node[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7312,-73.9586,40.7359,-73.9568);way[\"amenity\"~\"cafe|restaurant|bar|pub|fast_food|pharmacy|bank|deli\"](40.7312,-73.9586,40.7359,-73.9568););out center tags;"
+  },
+  "recordCount": 26,
+  "storefronts": [
+    {
+      "name": "Eagle Trading Company",
+      "category": "cafe",
+      "houseNumber": "258",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9582704,
+        "lat": 40.734967
+      },
+      "sourceId": "osm:node/2268953602",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Bar Americano",
+      "category": "bar",
+      "houseNumber": "180",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9576915,
+        "lat": 40.7314241
+      },
+      "sourceId": "osm:node/2275469171",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Shanghai Lee",
+      "category": "restaurant",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9580677,
+        "lat": 40.7318079
+      },
+      "sourceId": "osm:node/2275470587",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Dandelion Wine",
+      "category": "alcohol",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9580478,
+        "lat": 40.7316709
+      },
+      "sourceId": "osm:node/2275471894",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Jose Deli Grocery",
+      "category": "convenience",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9583282,
+        "lat": 40.7352584
+      },
+      "sourceId": "osm:node/2705021826",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Franklin Convenience",
+      "category": "tobacco",
+      "houseNumber": "200",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578365,
+        "lat": 40.7323531
+      },
+      "sourceId": "osm:node/2793692881",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Musk Ox",
+      "category": "hairdresser",
+      "houseNumber": "200",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578207,
+        "lat": 40.7322535
+      },
+      "sourceId": "osm:node/2843008347",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "The Moonlight Mile",
+      "category": "bar",
+      "houseNumber": "200",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578047,
+        "lat": 40.7321469
+      },
+      "sourceId": "osm:node/2843008352",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "UPS Store",
+      "category": "shipping",
+      "houseNumber": "200",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578129,
+        "lat": 40.7321988
+      },
+      "sourceId": "osm:node/2843008374",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Oak & Iron",
+      "category": "bar",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9580086,
+        "lat": 40.7314664
+      },
+      "sourceId": "osm:node/5082647022",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Deli Point",
+      "category": "convenience",
+      "houseNumber": "145",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.957997,
+        "lat": 40.7313931
+      },
+      "sourceId": "osm:node/5082651821",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Leroy's",
+      "category": "restaurant",
+      "houseNumber": "195",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9583596,
+        "lat": 40.7335223
+      },
+      "sourceId": "osm:node/5747443416",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Bakeri",
+      "category": "bakery",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9575298,
+        "lat": 40.7343048
+      },
+      "sourceId": "osm:node/6006289990",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Café Alula",
+      "category": "cafe",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9582212,
+        "lat": 40.7345902
+      },
+      "sourceId": "osm:node/6800246087",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Tend",
+      "category": "florist",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9582262,
+        "lat": 40.7346228
+      },
+      "sourceId": "osm:node/9272913704",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Sippy Cafe",
+      "category": "cafe",
+      "houseNumber": "200",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.95783,
+        "lat": 40.7323041
+      },
+      "sourceId": "osm:node/9272996385",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Franklin Corner Cafe",
+      "category": "convenience",
+      "houseNumber": "210",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9579297,
+        "lat": 40.7328298
+      },
+      "sourceId": "osm:node/9472435822",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Local Color NYC",
+      "category": "clothes",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9578861,
+        "lat": 40.7325365
+      },
+      "sourceId": "osm:node/10357823723",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Kestane Kebab",
+      "category": "fast_food",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9578749,
+        "lat": 40.7326188
+      },
+      "sourceId": "osm:node/10357823724",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Madre",
+      "category": "restaurant",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9579216,
+        "lat": 40.7331177
+      },
+      "sourceId": "osm:node/10357823726",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Greenpoint Convenience",
+      "category": "convenience",
+      "houseNumber": "197",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9583571,
+        "lat": 40.7335751
+      },
+      "sourceId": "osm:node/10357823729",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Otis & Finn",
+      "category": "hairdresser",
+      "houseNumber": null,
+      "addrStreet": null,
+      "point": {
+        "lon": -73.9583606,
+        "lat": 40.733614
+      },
+      "sourceId": "osm:node/10357823730",
+      "confidence": "point-only",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Mystica",
+      "category": "restaurant",
+      "houseNumber": "222",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.958002,
+        "lat": 40.7332567
+      },
+      "sourceId": "osm:node/11870170730",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Clown show prison books & fine objects",
+      "category": "books",
+      "houseNumber": "100",
+      "addrStreet": "Freeman St",
+      "point": {
+        "lon": -73.9577034,
+        "lat": 40.7340942
+      },
+      "sourceId": "osm:node/13578053493",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "Standards Manual",
+      "category": "books",
+      "houseNumber": "212",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9578774,
+        "lat": 40.7329192
+      },
+      "sourceId": "osm:way/274688986",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    },
+    {
+      "name": "The Springs",
+      "category": "bar",
+      "houseNumber": "224",
+      "addrStreet": "Franklin Street",
+      "point": {
+        "lon": -73.9577456,
+        "lat": 40.7332611
+      },
+      "sourceId": "osm:way/491213356",
+      "confidence": "address-backed",
+      "activeStatus": "unverified"
+    }
+  ]
+}

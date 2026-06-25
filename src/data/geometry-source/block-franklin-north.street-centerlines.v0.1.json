@@ -1,0 +1,1075 @@
+{
+  "schemaVersion": "block-street-centerlines.v0.1",
+  "blockId": "franklin-north",
+  "bbox": {
+    "minLon": -73.9595,
+    "minLat": 40.729,
+    "maxLon": -73.952,
+    "maxLat": 40.736
+  },
+  "source": {
+    "lion": "https://data.cityofnewyork.us/resource/inkn-q76z.json",
+    "pulledFor": "Franklin Ave corridor streets, Greenpoint Ave → Huron St"
+  },
+  "recordCount": 58,
+  "streetCenterlineRecords": [
+    {
+      "id": "nyc-centerline-physicalid-71816-0",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "71816",
+      "fullStreetName": "HURON ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.952219707593,
+          "lat": 40.733279099911
+        },
+        {
+          "lon": -73.952129412664,
+          "lat": 40.733287734257
+        },
+        {
+          "lon": -73.952049417374,
+          "lat": 40.733295246707
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-201473-1",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "201473",
+      "fullStreetName": "PULASKI BRIDGE TO MCGUINESS BLVD",
+      "streetWidth": "14",
+      "wgs84Line": [
+        {
+          "lon": -73.952672928248,
+          "lat": 40.734863064852
+        },
+        {
+          "lon": -73.952703144424,
+          "lat": 40.735201799797
+        },
+        {
+          "lon": -73.952703486906,
+          "lat": 40.735390435959
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-65998-2",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "65998",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.952219707593,
+          "lat": 40.733279099911
+        },
+        {
+          "lon": -73.952341783996,
+          "lat": 40.73398787742
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-65999-3",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "65999",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.95210335092,
+          "lat": 40.732570918462
+        },
+        {
+          "lon": -73.952219707593,
+          "lat": 40.733279099911
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-63820-4",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "63820",
+      "fullStreetName": "GREEN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.952341783996,
+          "lat": 40.73398787742
+        },
+        {
+          "lon": -73.952259552416,
+          "lat": 40.733995852134
+        },
+        {
+          "lon": -73.952159747148,
+          "lat": 40.73400563196
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-65989-5",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "65989",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "48",
+      "wgs84Line": [
+        {
+          "lon": -73.952341783996,
+          "lat": 40.73398787742
+        },
+        {
+          "lon": -73.952560600605,
+          "lat": 40.734687653549
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44545-6",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44545",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954379870452,
+          "lat": 40.730914969977
+        },
+        {
+          "lon": -73.95449573964,
+          "lat": 40.731621959982
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64765-7",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64765",
+      "fullStreetName": "JAVA ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.957828631081,
+          "lat": 40.731306997147
+        },
+        {
+          "lon": -73.95449573964,
+          "lat": 40.731621959982
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-46718-8",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "46718",
+      "fullStreetName": "KENT ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.959358169834,
+          "lat": 40.730440340444
+        },
+        {
+          "lon": -73.957712195412,
+          "lat": 40.730597317615
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47237-9",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47237",
+      "fullStreetName": "GREENPOINT AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.95759551445,
+          "lat": 40.729886989476
+        },
+        {
+          "lon": -73.954246485005,
+          "lat": 40.730205703344
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44544-10",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44544",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954246485005,
+          "lat": 40.730205703344
+        },
+        {
+          "lon": -73.954379870452,
+          "lat": 40.730914969977
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64736-11",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64736",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.957712195412,
+          "lat": 40.730597317615
+        },
+        {
+          "lon": -73.957828631081,
+          "lat": 40.731306997147
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-88245-12",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "88245",
+      "fullStreetName": "MILTON ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.95913413743,
+          "lat": 40.72901939241
+        },
+        {
+          "lon": -73.9574796285,
+          "lat": 40.729177751036
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47236-13",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47236",
+      "fullStreetName": "GREENPOINT AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954246485005,
+          "lat": 40.730205703344
+        },
+        {
+          "lon": -73.953470672609,
+          "lat": 40.730279090297
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64738-14",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64738",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.9574796285,
+          "lat": 40.729177751036
+        },
+        {
+          "lon": -73.95759551445,
+          "lat": 40.729886989476
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-46717-15",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "46717",
+      "fullStreetName": "KENT ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.957712195412,
+          "lat": 40.730597317615
+        },
+        {
+          "lon": -73.954379870452,
+          "lat": 40.730914969977
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64737-16",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64737",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.95759551445,
+          "lat": 40.729886989476
+        },
+        {
+          "lon": -73.957712195412,
+          "lat": 40.730597317615
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-95443-17",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "95443",
+      "fullStreetName": "WEST ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.959244843819,
+          "lat": 40.729729995886
+        },
+        {
+          "lon": -73.959358169834,
+          "lat": 40.730440340444
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47235-18",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47235",
+      "fullStreetName": "GREENPOINT AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.953470672609,
+          "lat": 40.730279090297
+        },
+        {
+          "lon": -73.95250789728,
+          "lat": 40.73036825314
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-88246-19",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "88246",
+      "fullStreetName": "MILTON ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.9574796285,
+          "lat": 40.729177751036
+        },
+        {
+          "lon": -73.953958045946,
+          "lat": 40.729511026141
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64766-20",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64766",
+      "fullStreetName": "JAVA ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.959478121573,
+          "lat": 40.73114944645
+        },
+        {
+          "lon": -73.957828631081,
+          "lat": 40.731306997147
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47238-21",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47238",
+      "fullStreetName": "GREENPOINT AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.959244843819,
+          "lat": 40.729729995886
+        },
+        {
+          "lon": -73.95759551445,
+          "lat": 40.729886989476
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44543-22",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44543",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "36",
+      "wgs84Line": [
+        {
+          "lon": -73.953958045946,
+          "lat": 40.729511026141
+        },
+        {
+          "lon": -73.954246485005,
+          "lat": 40.730205703344
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-95442-23",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "95442",
+      "fullStreetName": "WEST ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.959358169834,
+          "lat": 40.730440340444
+        },
+        {
+          "lon": -73.959478121573,
+          "lat": 40.73114944645
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-95444-24",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "95444",
+      "fullStreetName": "WEST ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.95913413743,
+          "lat": 40.72901939241
+        },
+        {
+          "lon": -73.959244843819,
+          "lat": 40.729729995886
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44551-25",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44551",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.955075294927,
+          "lat": 40.735167984478
+        },
+        {
+          "lon": -73.955191876821,
+          "lat": 40.735875964056
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64734-26",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64734",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.957944357879,
+          "lat": 40.732017405978
+        },
+        {
+          "lon": -73.958060681826,
+          "lat": 40.732724212348
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-71813-27",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "71813",
+      "fullStreetName": "HURON ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.958060681826,
+          "lat": 40.732724212348
+        },
+        {
+          "lon": -73.954728490745,
+          "lat": 40.733039173429
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64750-28",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64750",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.958293593624,
+          "lat": 40.734143218977
+        },
+        {
+          "lon": -73.958409402652,
+          "lat": 40.734852392753
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64751-29",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64751",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.958409402652,
+          "lat": 40.734852392753
+        },
+        {
+          "lon": -73.958525475027,
+          "lat": 40.735560666316
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44548-30",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44548",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954728490745,
+          "lat": 40.733039173429
+        },
+        {
+          "lon": -73.954843951483,
+          "lat": 40.733748504063
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44547-31",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44547",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954610413911,
+          "lat": 40.732332506589
+        },
+        {
+          "lon": -73.954728490745,
+          "lat": 40.733039173429
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-65990-32",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "65990",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "34",
+      "wgs84Line": [
+        {
+          "lon": -73.952560600605,
+          "lat": 40.734687653549
+        },
+        {
+          "lon": -73.952593021483,
+          "lat": 40.734876377652
+        },
+        {
+          "lon": -73.952657929157,
+          "lat": 40.735254196745
+        },
+        {
+          "lon": -73.952681691404,
+          "lat": 40.735392512878
+        },
+        {
+          "lon": -73.952707620052,
+          "lat": 40.735505942826
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44546-33",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44546",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.95449573964,
+          "lat": 40.731621959982
+        },
+        {
+          "lon": -73.954610413911,
+          "lat": 40.732332506589
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47148-34",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47148",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "34",
+      "wgs84Line": [
+        {
+          "lon": -73.952344644201,
+          "lat": 40.734706889074
+        },
+        {
+          "lon": -73.952398791458,
+          "lat": 40.734890894622
+        },
+        {
+          "lon": -73.95251201047,
+          "lat": 40.735275615913
+        },
+        {
+          "lon": -73.952550286879,
+          "lat": 40.735405678665
+        },
+        {
+          "lon": -73.952567384089,
+          "lat": 40.735519284593
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-46940-35",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "46940",
+      "fullStreetName": "EAGLE ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.958409402652,
+          "lat": 40.734852392753
+        },
+        {
+          "lon": -73.955075294927,
+          "lat": 40.735167984478
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64748-36",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64748",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.958060681826,
+          "lat": 40.732724212348
+        },
+        {
+          "lon": -73.958177184143,
+          "lat": 40.733433927025
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-71835-37",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "71835",
+      "fullStreetName": "INDIA ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.957944357879,
+          "lat": 40.732017405978
+        },
+        {
+          "lon": -73.954610413911,
+          "lat": 40.732332506589
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-71812-38",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "71812",
+      "fullStreetName": "HURON ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.954728490745,
+          "lat": 40.733039173429
+        },
+        {
+          "lon": -73.952219707593,
+          "lat": 40.733279099911
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44549-39",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44549",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954843951483,
+          "lat": 40.733748504063
+        },
+        {
+          "lon": -73.954960066602,
+          "lat": 40.734457465204
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-44550-40",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "44550",
+      "fullStreetName": "MANHATTAN AVE",
+      "streetWidth": "50",
+      "wgs84Line": [
+        {
+          "lon": -73.954960066602,
+          "lat": 40.734457465204
+        },
+        {
+          "lon": -73.955075294927,
+          "lat": 40.735167984478
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-85319-41",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "85319",
+      "fullStreetName": "DUPONT ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.958525475027,
+          "lat": 40.735560666316
+        },
+        {
+          "lon": -73.955191876821,
+          "lat": 40.735875964056
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64749-42",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64749",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.958177184143,
+          "lat": 40.733433927025
+        },
+        {
+          "lon": -73.958293593624,
+          "lat": 40.734143218977
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-63816-43",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "63816",
+      "fullStreetName": "GREEN ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.958177184143,
+          "lat": 40.733433927025
+        },
+        {
+          "lon": -73.954843951483,
+          "lat": 40.733748504063
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-65991-44",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "65991",
+      "fullStreetName": "PULASKI BRIDGE TO MCGUINESS BLVD",
+      "streetWidth": "14",
+      "wgs84Line": [
+        {
+          "lon": -73.952703486906,
+          "lat": 40.735390435959
+        },
+        {
+          "lon": -73.952707620052,
+          "lat": 40.735505942826
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-71834-45",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "71834",
+      "fullStreetName": "INDIA ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.954610413911,
+          "lat": 40.732332506589
+        },
+        {
+          "lon": -73.95210335092,
+          "lat": 40.732570918462
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64783-46",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64783",
+      "fullStreetName": "FREEMAN ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.954960066602,
+          "lat": 40.734457465204
+        },
+        {
+          "lon": -73.952560600605,
+          "lat": 40.734687653549
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64782-47",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64782",
+      "fullStreetName": "FREEMAN ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.958293593624,
+          "lat": 40.734143218977
+        },
+        {
+          "lon": -73.954960066602,
+          "lat": 40.734457465204
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-46939-48",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "46939",
+      "fullStreetName": "EAGLE ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.955075294927,
+          "lat": 40.735167984478
+        },
+        {
+          "lon": -73.952858475162,
+          "lat": 40.735375854004
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-64735-49",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "64735",
+      "fullStreetName": "FRANKLIN ST",
+      "streetWidth": "40",
+      "wgs84Line": [
+        {
+          "lon": -73.957828631081,
+          "lat": 40.731306997147
+        },
+        {
+          "lon": -73.957944357879,
+          "lat": 40.732017405978
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47147-50",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47147",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "32",
+      "wgs84Line": [
+        {
+          "lon": -73.952159747148,
+          "lat": 40.73400563196
+        },
+        {
+          "lon": -73.952344644201,
+          "lat": 40.734706889074
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47146-51",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47146",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.952344644201,
+          "lat": 40.734706889074
+        },
+        {
+          "lon": -73.952343379647,
+          "lat": 40.734901767797
+        },
+        {
+          "lon": -73.952400405505,
+          "lat": 40.735289321587
+        },
+        {
+          "lon": -73.952419274585,
+          "lat": 40.735417556184
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-63819-52",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "63819",
+      "fullStreetName": "GREEN ST",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.954843951483,
+          "lat": 40.733748504063
+        },
+        {
+          "lon": -73.952341783996,
+          "lat": 40.73398787742
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-47149-53",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "47149",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.952049417374,
+          "lat": 40.733295246707
+        },
+        {
+          "lon": -73.952159747148,
+          "lat": 40.73400563196
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-194041-54",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "194041",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.952672928248,
+          "lat": 40.734863064852
+        },
+        {
+          "lon": -73.952807522122,
+          "lat": 40.735235038162
+        },
+        {
+          "lon": -73.952858475162,
+          "lat": 40.735375854004
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-65988-55",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "65988",
+      "fullStreetName": "MCGUINNESS BLVD",
+      "streetWidth": "30",
+      "wgs84Line": [
+        {
+          "lon": -73.952560600605,
+          "lat": 40.734687653549
+        },
+        {
+          "lon": -73.952672928248,
+          "lat": 40.734863064852
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-206536-56",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "206536",
+      "fullStreetName": "PULASKI BRIDGE BIKE PATH",
+      "streetWidth": null,
+      "wgs84Line": [
+        {
+          "lon": -73.952858475162,
+          "lat": 40.735375854004
+        },
+        {
+          "lon": -73.952842234087,
+          "lat": 40.735358192752
+        },
+        {
+          "lon": -73.95282793801,
+          "lat": 40.735339583975
+        },
+        {
+          "lon": -73.952815681923,
+          "lat": 40.735320151317
+        },
+        {
+          "lon": -73.952805547262,
+          "lat": 40.735300023901
+        }
+      ]
+    },
+    {
+      "id": "nyc-centerline-physicalid-206536-57",
+      "source": "nyc-open-data-street-centerline-inkn-q76z",
+      "physicalid": "206536",
+      "fullStreetName": "PULASKI BRIDGE BIKE PATH",
+      "streetWidth": null,
+      "wgs84Line": [
+        {
+          "lon": -73.952805547262,
+          "lat": 40.735300023901
+        },
+        {
+          "lon": -73.95279760141,
+          "lat": 40.735279335487
+        },
+        {
+          "lon": -73.952791897112,
+          "lat": 40.735258223519
+        },
+        {
+          "lon": -73.952788472272,
+          "lat": 40.735236828277
+        },
+        {
+          "lon": -73.952787349645,
+          "lat": 40.73521529192
+        }
+      ]
+    }
+  ]
+}

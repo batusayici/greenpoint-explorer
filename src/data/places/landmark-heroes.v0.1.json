@@ -1,0 +1,21 @@
+[
+  {
+    "id": "137-oak-haunted-house",
+    "placeId": "137-oak-haunted-house",
+    "name": "137 Oak Street",
+    "category": "Landmark",
+    "tags": ["local lore", "hidden greenpoint"],
+    "address": "137 Oak St, Brooklyn, NY 11222",
+    "description": "A residential building on Oak Street, locally known as the \"Haunted House.\" Identity and history are under review.",
+    "status": "unknown",
+    "verificationStatus": "unresolved",
+    "lastVerified": "2026-06-19",
+    "sources": [
+      {
+        "label": "Local resident knowledge (Greenpoint, June 2026) — pending documentary confirmation",
+        "url": "https://www.openstreetmap.org/search?query=137%20Oak%20St%20Brooklyn"
+      }
+    ],
+    "approvalStatus": "proposed"
+  }
+]

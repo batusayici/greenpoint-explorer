@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { facadeFaceKeys, getFacadeFace, subscribeFacadeFaces, updateFacadeFaceSpec } from "../../dev/facadeFaceRegistry.js";
-import { listEditableRecesses, patchDepth, patchRecess, patchShape, patchSpring } from "../../dev/facadeSpecPatch.js";
+import { addRecess, deleteRecess, listEditableRecesses, patchDepth, patchRecess, patchShape, patchSpring } from "../../dev/facadeSpecPatch.js";
 import { faceRectToPanel, moveRect, panelDeltaToFace, panelPointToFace, resizeRect } from "../../dev/facadeCoords.js";
 
 const HANDLES = ["n", "s", "e", "w", "ne", "nw", "se", "sw"];
@@ -106,6 +106,18 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
     updateSpec(patchSpring(specRef.current, item.path, value));
   }
 
+  function addItem(kind) {
+    const { spec: next, id } = addRecess(specRef.current ?? {}, kind);
+    updateSpec(next);
+    setSelected(id);
+  }
+
+  function deleteItem(item) {
+    if (!item || !DELETABLE.has(item.kind)) return;
+    updateSpec(deleteRecess(specRef.current, item.path));
+    setSelected(null);
+  }
+
   const items = useMemo(() => listEditableRecesses(spec), [spec]);
   itemsRef.current = items;
   const selectedItem = items.find((it) => it.id === selected) || null;
@@ -166,13 +178,18 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
   useEffect(() => {
     if (!selected) return;
     function onKey(event) {
+      const item = itemsRef.current.find((it) => it.id === selected);
+      if (!item) return;
+      if ((event.key === "Delete" || event.key === "Backspace") && DELETABLE.has(item.kind)) {
+        event.preventDefault();
+        deleteItem(item);
+        return;
+      }
       const step = event.shiftKey ? 0.01 : 0.002;
       const map = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, step], ArrowDown: [0, -step] };
       const move = map[event.key];
       if (!move) return;
       event.preventDefault();
-      const item = itemsRef.current.find((it) => it.id === selected);
-      if (!item) return;
       updateSpec(patchRecess(specRef.current, item.path, moveRect(item.rect, item.lockX ? 0 : move[0], move[1])));
     }
     window.addEventListener("keydown", onKey);
@@ -230,13 +247,22 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
 
   return (
     <Shell onGripPointerDown={onGripPointerDown}>
-      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+      <button onClick={onClose} title="close" style={closeStyle}>✕</button>
+      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8, paddingRight: 28 }}>
         <strong>Recess editor</strong>
         <select value={faceKey ?? ""} onChange={(e) => onSelectFace(e.target.value)} style={selectStyle}>
           {keys.map((k) => <option key={k} value={k}>{k}</option>)}
         </select>
-        <button onClick={onClose} title="close" style={closeStyle}>✕</button>
       </div>
+
+      {keys.length > 0 && (
+        <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 8 }}>
+          <span style={{ opacity: 0.6, fontSize: 11 }}>add</span>
+          <button onClick={() => addItem("window")} disabled={!faceKey} style={addStyle}>+ window</button>
+          <button onClick={() => addItem("door")} disabled={!faceKey} style={addStyle}>+ door</button>
+          <button onClick={() => addItem("awning")} disabled={!faceKey} style={addStyle}>+ awning</button>
+        </div>
+      )}
 
       {!keys.length && <div style={{ opacity: 0.7 }}>waiting for facade textures to load…</div>}
 
@@ -275,6 +301,14 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
                 {isSel && HANDLES.filter((h) => !(item.lockX && /[ew]/.test(h))).map((h) => (
                   <div key={h} onPointerDown={(e) => onHandlePointerDown(e, item, h)} style={handleStyle(h)} />
                 ))}
+                {isSel && DELETABLE.has(item.kind) && (
+                  <button
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={(e) => { e.stopPropagation(); deleteItem(item); }}
+                    title="delete (⌫)"
+                    style={deleteBadgeStyle}
+                  >✕</button>
+                )}
               </div>
             );
           })}
@@ -283,9 +317,14 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
 
       <div style={{ marginTop: 8, fontSize: 11, lineHeight: 1.5 }}>
         {selectedItem ? (
-          <code style={{ color: "#ffcf3f" }}>{selectedItem.label}: {fmt(selectedItem.rect)}</code>
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            <code style={{ color: "#ffcf3f", flex: 1 }}>{selectedItem.label}: {fmt(selectedItem.rect)}</code>
+            {DELETABLE.has(selectedItem.kind) && (
+              <button onClick={() => deleteItem(selectedItem)} title="delete (⌫)" style={deleteBtnStyle}>Delete</button>
+            )}
+          </div>
         ) : (
-          <span style={{ opacity: 0.6 }}>click a building to load it · drag boxes to move · handles resize · arrows nudge (⇧ ×5)</span>
+          <span style={{ opacity: 0.6 }}>click a building to load it · add/drag boxes · handles resize · arrows nudge (⇧ ×5) · ⌫ deletes</span>
         )}
       </div>
 
@@ -332,10 +371,14 @@ function Shell({ children, onGripPointerDown }) {
 // Cool hues = recessed (step back), warm hues = proud (project out).
 const kindColor = (kind) => ({
   window: "#5fd0ff", storefront: "#9b8cff", door: "#ff9b6b", cornice: "#7CFC9A",
-  box: "#ffb347", signBand: "#ffd166", bay: "#ff7eb6",
+  box: "#ffb347", signBand: "#ffd166", bay: "#ff7eb6", awning: "#ff6b6b",
 }[kind] || "#00ff44");
 
-const PROUD = new Set(["box", "signBand", "bay"]);
+const PROUD = new Set(["box", "signBand", "bay", "awning"]);
+
+// Only openings added in-editor can be removed in-editor; cornice/bay/etc.
+// stay author-by-JSON so a stray Delete can't destroy them.
+const DELETABLE = new Set(["window", "door", "awning"]);
 
 // Depth slider + number for the selected component. Proud items push out
 // (projectionM), recessed items step back (recessM); the flat preview can't
@@ -437,4 +480,7 @@ function handleStyle(h) {
 const fmt = (r) => `x0 ${r.x0.toFixed(3)} x1 ${r.x1.toFixed(3)} y0 ${r.y0.toFixed(3)} y1 ${r.y1.toFixed(3)}`;
 const selectStyle = { background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 6px", fontFamily: "inherit", fontSize: 11, flex: 1, minWidth: 0 };
 const buttonStyle = { background: "#d9a43b", color: "#241c10", border: "none", borderRadius: 4, padding: "6px 10px", fontWeight: 700, cursor: "pointer", fontFamily: "inherit", fontSize: 12 };
-const closeStyle = { background: "transparent", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "2px 7px", cursor: "pointer", fontFamily: "inherit", fontSize: 12, lineHeight: 1 };
+const closeStyle = { position: "absolute", top: 8, right: 8, width: 22, height: 22, padding: 0, background: "transparent", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, lineHeight: 1, zIndex: 1 };
+const addStyle = { background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontFamily: "inherit", fontSize: 11 };
+const deleteBtnStyle = { background: "#5a2e26", color: "#ffd9cf", border: "1px solid #8a4435", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontFamily: "inherit", fontSize: 11 };
+const deleteBadgeStyle = { position: "absolute", top: -9, right: -9, width: 16, height: 16, lineHeight: "14px", textAlign: "center", padding: 0, background: "#5a2e26", color: "#ffd9cf", border: "1px solid #8a4435", borderRadius: "50%", cursor: "pointer", fontFamily: "inherit", fontSize: 10 };

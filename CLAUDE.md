@@ -9,7 +9,7 @@ npm run dev       # dev server at http://127.0.0.1:5173
 npm run build     # production build to dist/
 npm run preview   # preview production build
 node scripts/verify-phase-4m-r10g-franklin-corner-frontage-wrap.mjs   # live Franklin geometry verifier (also r10b, r10e, r10f)
-node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1"  # measure rendered facade -> spec rects + overlay PNG (see GENERATION_KIT.md playbook)
+node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1"  # measure rendered facade -> spec rects + overlay PNG (see docs/reference/art/GENERATION_KIT.md playbook)
 ```
 
 ## Read First
@@ -39,7 +39,7 @@ A 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifel
 - `corridor-scaffold/` — corridor fixtures, typological input data
 - `geometry-source/` — source footprint records
 
-**Assets** (`assets/`): GLB experiments. The 46MB bay-window GLB import causes an expected large-chunk build warning.
+**Assets** (`assets/`): generated facade textures. (The 46MB QA-only bay-window GLB was removed 2026-06-18 — it was never loaded in production.)
 
 ## Key Constraints
 

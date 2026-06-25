@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "facade-spec.v0.6",
+  "placeId": "brouwerij-lane",
+  "status": "firstpass_seed_2026-06-25",
+  "note": "BIN 3322610, single GREENPOINT frontage (~6.7m), the 2-storey 1930 bottle shop W of the Premier corner on Greenpoint Ave. Rects hand-authored off a 5% read-grid of the cleaned trim brouwerij-lane.trim.png (1067x1192, Batu-cropped + flood-fill/connectivity/despeckle keyed sky above the stepped Dutch gable). Texture-space coords (x: 0=left, 1=right; y: 0=ground, 1=gable peak). A SEED for the recess editor (?facadeedit=1). Recesses kept SHALLOW per the window-decal-flush lesson. POLISH TAIL: split the left double-door + right gated entrance as deeper doors; sign-band recess; oculus spring/extent; far-right iron fence.",
+  "evidence": [
+    "assets/textures/franklin/brouwerij-lane.trim.png"
+  ],
+  "faces": {
+    "3322610:greenpoint": {
+      "windows": {
+        "recessM": 0.05,
+        "rects": []
+      },
+      "storefronts": [
+        {
+          "x0": 0.055,
+          "x1": 0.418,
+          "y0": 0,
+          "y1": 0.514,
+          "recessM": 0.15,
+          "revealTop": false
+        },
+        {
+          "x0": 0.548,
+          "x1": 0.928,
+          "y0": 0,
+          "y1": 0.52,
+          "recessM": 0.15,
+          "revealTop": false
+        }
+      ],
+      "doors": [],
+      "skewX": 0,
+      "awnings": []
+    }
+  }
+}

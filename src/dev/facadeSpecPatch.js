@@ -18,7 +18,25 @@ const DEPTH = {
   box:        { key: "projectionM", def: 0.3,  sign: 1,  max: 1.5 },
   signBand:   { key: "projectionM", def: 0.08, sign: 1,  max: 0.8 },
   bay:        { key: "projectionM", def: 0.5,  sign: 1,  max: 1.5 },
+  awning:     { key: "projectionM", def: 0.9,  sign: 1,  max: 2.0 },
 };
+
+// An awning isn't a y0/y1 rect — it's three stacked face-y lines: yWall (wall
+// attachment, top), yDrop (canopy/valance seam, middle), yValance (front lip,
+// bottom). The editor drives it as a box whose top edge = yWall and bottom
+// edge = yValance; yDrop rides at a fixed fraction of that span so dragging or
+// resizing keeps the canopy proportions. These two helpers convert between the
+// three-line spec form and the editor's rect form.
+function awningRect(a) {
+  const yValance = a.yValance ?? a.yDrop;
+  return { x0: a.x0, x1: a.x1, y0: yValance, y1: a.yWall };
+}
+function awningDropFrac(a) {
+  const yValance = a.yValance ?? a.yDrop;
+  const span = a.yWall - yValance;
+  if (!(span > 0)) return 0.5;
+  return (a.yDrop - yValance) / span;
+}
 
 // Flatten a face spec into editable component items, each carrying a `path`
 // back to its home in the spec tree, its current rect in face coords, and
@@ -46,9 +64,19 @@ export function listEditableRecesses(faceSpec) {
   (faceSpec.signBands ?? []).forEach((r, i) =>
     items.push(mk(`signBand-${i}`, `sign band ${i + 1}`, "signBand", ["signBands", i], rectOf(r), depthAt(r, "signBand", ["signBands", i]))),
   );
+  (faceSpec.awnings ?? []).forEach((a, i) =>
+    items.push(mk(`awning-${i}`, `awning ${i + 1}`, "awning", ["awnings", i], awningRect(a), depthAt(a, "awning", ["awnings", i]))),
+  );
   if (faceSpec.bay) {
     items.push(mk("bay", "bay", "bay", ["bay"], rectOf(faceSpec.bay), depthAt(faceSpec.bay, "bay", ["bay"])));
   }
+  // `bays` (array) carries the multi-oriel faces (Astral frontage/java/india).
+  // Each gets its own draggable box; patchRecess writes x/y back while keeping
+  // plan/centerFraction/projectionM, so drag-snapping the box registers the
+  // oriel to the painted bay without re-authoring the fold params.
+  (faceSpec.bays ?? []).forEach((r, i) =>
+    items.push(mk(`bay-${i}`, `bay ${i + 1}`, "bay", ["bays", i], rectOf(r), depthAt(r, "bay", ["bays", i]))),
+  );
   if (faceSpec.cornice) {
     items.push(mk("cornice", "cornice", "cornice", ["cornice"], { x0: 0, x1: 1, y0: faceSpec.cornice.y0, y1: faceSpec.cornice.y1 }, null, true));
   }
@@ -89,6 +117,24 @@ export function patchRecess(faceSpec, path, nextRect) {
   const clone = structuredClone(faceSpec);
   if (path[0] === "cornice") {
     clone.cornice = { ...clone.cornice, y0: round(nextRect.y0), y1: round(nextRect.y1) };
+    return clone;
+  }
+  if (path[0] === "awnings") {
+    // Map the editor rect back onto the three awning lines, holding the
+    // canopy drop fraction so the valance proportion survives drag/resize.
+    const prev = clone.awnings[path[1]];
+    const frac = awningDropFrac(prev);
+    const yWall = nextRect.y1;
+    const yValance = nextRect.y0;
+    const yDrop = yValance + frac * (yWall - yValance);
+    clone.awnings[path[1]] = {
+      ...prev,
+      x0: round(nextRect.x0),
+      x1: round(nextRect.x1),
+      yWall: round(yWall),
+      yDrop: round(yDrop),
+      yValance: round(yValance),
+    };
     return clone;
   }
   let node = clone;
@@ -135,6 +181,55 @@ export function patchShape(faceSpec, path, shape) {
     const { springY: _y, ...rest } = rect;
     node[i] = { ...rest, shape };
   }
+  return clone;
+}
+
+// Default rects for newly-added openings (face coords). Window sits mid-wall;
+// door is grounded (y0 = 0) and carries its own recess.
+const NEW_WINDOW = { x0: 0.45, x1: 0.55, y0: 0.4, y1: 0.6 };
+const NEW_DOOR = { x0: 0.45, x1: 0.55, y0: 0, y1: 0.3, recessM: 0.12 };
+// Storefront-height awning band: yWall (top) down to yValance (front lip),
+// with the canopy seam (yDrop) sitting between. projectionM is how far it
+// cantilevers forward.
+const NEW_AWNING = { x0: 0.05, x1: 0.95, yWall: 0.3, yDrop: 0.27, yValance: 0.2, projectionM: 0.9 };
+const DEFAULT_WINDOW_RECESS = 0.14;
+
+// Append a new opening of `kind` ("window" | "door") to the face spec.
+// Windows share one `windows.recessM` (seeded when the set is created fresh);
+// doors carry per-item recess. Returns the new spec plus the `id` the editor
+// uses to auto-select the freshly-added box (matches listEditableRecesses).
+export function addRecess(faceSpec, kind) {
+  const clone = structuredClone(faceSpec ?? {});
+  if (kind === "window") {
+    if (!clone.windows) clone.windows = { recessM: DEFAULT_WINDOW_RECESS, rects: [] };
+    if (!clone.windows.rects) clone.windows.rects = [];
+    clone.windows.rects.push({ ...NEW_WINDOW });
+    return { spec: clone, id: `window-${clone.windows.rects.length - 1}` };
+  }
+  if (kind === "door") {
+    if (!clone.doors) clone.doors = [];
+    clone.doors.push({ ...NEW_DOOR });
+    return { spec: clone, id: `door-${clone.doors.length - 1}` };
+  }
+  if (kind === "awning") {
+    if (!clone.awnings) clone.awnings = [];
+    clone.awnings.push({ ...NEW_AWNING });
+    return { spec: clone, id: `awning-${clone.awnings.length - 1}` };
+  }
+  return { spec: clone, id: null };
+}
+
+// Remove the array-backed opening at `path` (e.g. ["windows","rects",i] or
+// ["doors",i]). Singleton paths (cornice/bay) are left untouched — a defensive
+// no-op so a stray Delete can't destroy them.
+export function deleteRecess(faceSpec, path) {
+  const clone = structuredClone(faceSpec);
+  const i = path[path.length - 1];
+  if (typeof i !== "number") return clone;
+  let parent = clone;
+  for (let k = 0; k < path.length - 1; k += 1) parent = parent[path[k]];
+  if (!Array.isArray(parent)) return clone;
+  parent.splice(i, 1);
   return clone;
 }
 

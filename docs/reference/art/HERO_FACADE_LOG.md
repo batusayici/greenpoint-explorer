@@ -285,6 +285,359 @@ a banked fix regressed or a playbook rule was skipped.
   `canvas.toDataURL()` returns a blank frame — use `preview_screenshot` (the
   presented frame) for proof shots, not a DOM-side data URL.
 
+### The Astral — BIN 3064408 (184 Franklin) — IN PROGRESS (first full-block hero)
+- **Update (2026-06-23, v2 oriel/recess pass):** v1's full-facade render drew the
+  oriels FLAT (single punched windows) → `oriel3` had no side-panes to fold (would
+  smear grey). Re-rendered as `astral-apartments--franklin-full-v2.png` with the
+  bays drawn as **3-window canted bays** (render pkg `astral-full-facade.v2.md`),
+  2 per flank. Wired: composite→v2, `flush` removed, recessed windows
+  (recessM 0.16, sill:false), 4 `oriel3` bays (projM 0.6, cf 0.36, floors 2-5),
+  floor-6 arch arcade. **Engine:** added `spec.bays[]` (array) to facadeAssembly —
+  a frontage carries several oriels; singular `spec.bay` unchanged (230 tests green).
+  - **Bug nearly mis-fixed:** bays first read as thin dark shelves → I suspected an
+    inverted frontage normal. An **exaggerate-depth test** (recessM 0.8 / projM 3)
+    proved the direction is CORRECT (bays bulge toward the street) — they were just
+    subtle at scene scale; the shelves are the (correct) dark top-caps. **Lesson:
+    disambiguate depth direction by exaggerating, don't flip the normal on a hunch.**
+  - **Oriel width (Batu caught):** the 4 bays were each one column too wide,
+    folding an adjacent FLAT window into the oriel. An oriel bay rect must bound
+    EXACTLY the painted 3-window canted group (center pane + two narrow canted
+    side panes), nothing more; the extra column belongs to the flat rhythm. Re-cut
+    to ~0.055 wide, symmetric about face-center, freed columns → flat windows.
+    **Rule: a bay rect that includes a 4th column smears a flat window onto a
+    return — size oriel rects to the 3-window group only.**
+  - **Red panels above recessM ~0.14 (the frontage-hero gotcha):** deepening a
+    window recess past ~0.14m made flat base-color (red) panels appear in the
+    openings. Cause: the frontage chord is drawn only ~0.02 units proud of a
+    redundant **typological wall** built on the same Franklin edges; a recess
+    deeper than that proud gap sank the textured pane BEHIND that wall, so its
+    flat color showed through. Fix: skip the typological wall on the franklin
+    edges a `composite.frontage` covers (the hero assembly's panes+reveals
+    enclose each opening). **Rule for every frontage-plane hero: don't build a
+    typological wall under the frontage, or deep recesses punch through to it.**
+  - **Open (editor pass):** offline grid is rough → windows GHOST (recess pane vs
+    painted opening misalign); pixel-register in `?facadeedit=1`. Bay caps read as
+    prominent dark shelves (they end just below the arcade, not under a cornice);
+    center pavilion is a seed; India/Java faces unbuilt. Spec `status` marks it
+    firstpass, not done. **Auto-derive + offline grid both FAIL on this inked,
+    fire-escape-dense facade** — the editor is the registration tool here.
+  - **Cost:** ~3 commits (build + 2 fixes), 0 re-renders after v2. Bay-width and
+    red-panel both caught at the in-engine/Batu review, not by tests.
+- **Status (2026-06-23):** center segment **BUILT (v1)** end-to-end — placed on
+  the frontage chord, flat with hand-seeded arched recesses; verified in-engine
+  at all four angles. Pending: recess-editor refinement of opening positions
+  (approximate seed), centering confirm vs IMG_0971, flank renders + oriels,
+  buildStatus→built. Render: `astral-apartments--franklin-center.png` (1161×1355).
+  Design + status: `docs/superpowers/specs/2026-06-23-astral-frontage-plane-design.md`.
+- **Build (frontage-plane model, 5 commits `b38ea6b`..`15ef9cf`):** pure
+  `frontagePlane.js` (chord + segment u-map + oriel detect, TDD) → block-extract
+  hero promotion in `sceneFrame.js` → `composite.frontage.segments` schema +
+  chord placement in `buildHeroBuilding` → hand-seeded arched recess spec routed
+  through `buildFacadeAssembly`. Auto-derive FAILED on the ornate facade (as
+  predicted) → openings hand-seeded, editor-refined.
+- **Durable lessons (promoted):**
+  (1) A full-block hero from a **block extract** is unreachable by the bare
+  `FACADE_GROUP_BINS` path — it's past the 130m main-loop radius cull; the block
+  loop must promote it to a hero. Don't assume the 144-Franklin registration
+  path scales to corridor heroes.
+  (2) **Frontage chord must select the street-most edge band** — a U-shaped
+  footprint's interior light-court walls also face the street axis and will drag
+  an averaged plane metres backward. `frontageBandM` locks onto the real frontage.
+  (3) The frontage-plane model (one flat chord plane, segment textures across its
+  u-range, recesses via the standard spec/assembly path) is **reusable for every
+  future block-front** — banked for H5.
+- **Why different from every prior hero:** first full-block, not a corner.
+  59-vertex segmented frontage (~5 long edges 39/22/20/19/18m + ~49 oriel
+  facets). `buildHeroBuilding`'s "longest-edge-per-role" texturing (`:1845`)
+  was built for clean 1–2-edge corners and cannot place a *segment* of a long
+  frontage → needs the frontage-plane model (one flat plane along the chord,
+  segment textures across its u-range, oriels as `oriel3` folds, arches as
+  `shape:"arch"` recesses).
+- **Approach (locked):** segmented high-res unwrap (one giant 65m render = ~24
+  px/m, detail dies; ~18m segments = ~85 px/m). Vertical slice = center
+  entrance pavilion (flat → only hard primitive is the curved recess, proven on
+  144). Render package: `docs/reference/art/prompts/astral-center-segment.v1.md`.
+- **Lesson (durable, pre-build):** a full-block hero is a different capability
+  from a corner hero — don't assume the corner-unwrap pipeline scales. The
+  frontage is a *plane*, the oriels fold off it, the bespoke texture is
+  segmented for resolution. Bank the frontage-plane model for all future
+  block-fronts (H5).
+- **Update (2026-06-24, India + Java side faces wired + recess seed):** brought
+  in the re-rendered side textures (`astral-apartments--india-full.png` 1774×887
+  ≈2:1 full ~38m N wall; `astral-apartments--java-full.png` 1227×1281 ≈1:1 v3
+  ~19.6m S corner). Java was already in `composite.sides`; **wired India** as a
+  second side (role `other`, axis `greenpoint`, band 3m). In-engine bbox proved
+  India locked onto the **full 38m north wall** (sx 2.83 = 37.7m), NOT the West-St
+  rear it shares `other` with — the 3m frontage band rejects the rear (projects
+  ~0 onto greenpointAxis, sits centre-N). **The feared axis+normal selector was
+  unnecessary.** Both faces verified rendering at two angles with carving recesses.
+  - **Recess seed (the "pass"):** the shipped blob deriver and a luminance
+    bright-mask BOTH failed (muted, muntin-split inked panes + fire escapes — as
+    predicted). **What worked: a red-channel-dominance detector** (brick R≫B,
+    glass R≈B) — `r-b<28 && lum>55`, banded into cols×rows, sash-halves merged.
+    Clean regular grids (India 71 windows over 15 cols×5 floors; Java 24 + a
+    corner `oriel3` seed), overlay-verified on the texture before wiring. Tool:
+    `scripts/seed-window-grid.mjs`. **Bank: for red-brick inked facades, detect
+    windows by REDNESS (R−B), not luminance — it ignores fire escapes and muntins.**
+  - **NOT pixel-registered** — seed grids ghost slightly; spec `status` says so.
+    Batu finalizes in `?facadeedit=1`. **Finalize tail:** top-floor arched windows
+    (both faces) + India oculus + India ground-floor round arches + Java
+    COFFEE/WINES storefronts + Java central arch entrance need `shape` tags;
+    confirm India corner-pavilion projection; confirm Java oriel3 fold extents.
+  - **Cost:** ~0 re-renders, 0 fix commits — wired + seeded + verified in one pass.
+    No engine change (spec data + one composite entry); 230/230 tests green.
+- **Update (2026-06-24, second review pass — three integration fixes):**
+  - **Crown cut off (India + Java):** the runtime content-density trim
+    (`loadTrimmedTexture`, 8.5%) shaved the sparse stepped-gable rows (India
+    ~46px, Java ~53px) — the SAME trap the Franklin frontage hit. Fix mirrors
+    Franklin: pre-crop tight but crown-preserving (`scripts/pretrim-astral-side.mjs`),
+    ship `.trim.png` in `PRETRIMMED_TEXTURES`, recompute `roofV` on the new crop
+    (India 0.903, Java 0.929), regenerate recess seeds in crop coords.
+    **Rule (promote): any hero whose render has a parapet/gable/finial above a
+    sparse skyline MUST be pre-trimmed + PRETRIMMED_TEXTURES — the density trim
+    shaves sparse crown rows. Don't ship the raw render and rely on runtime trim.**
+  - **"Transparent backside" / red threads in light wells:** a full-block hero's
+    street elevations are thin chord PLANES with no solid mass behind them at the
+    courtyard, so the lenient `CULL_T -0.3` left their bare backs + recess reveals
+    showing through the open wells as red lines. Fix: per-record cull threshold —
+    chord faces use `CHORD_CULL_T 0.02` (hide the instant they turn away); solid
+    masses keep the lenient default. **Rule: thin facade planes need a stricter
+    back-cull than solid returns; a building assembled from planes (not a closed
+    shell) shows plane-backs through any opening unless culled tight.**
+  - **Open-rear regression (from wiring India to catch-all role `other`):** fixed
+    earlier this day via `frontageBandEdges` (cover only the side's frontage-band
+    edges, not the whole catch-all role) — banked.
+  - **Corner seam strip:** the pretrim removed the pale cream texture-edge that the
+    `cornerOverlap` extension dragged past the Franklin↔Java corner. **Tight crops
+    keep corners clean — a cream margin at a texture edge becomes a white seam once
+    a face is extended to close a corner.**
+  - **Verification gotcha:** the preview viewport/screenshot scale got unreliable
+    after repeated force-render pointer hacks; programmatic checks of mesh
+    `.visible` per `?a=` step (via `window.__three`) verified the cull fix without
+    screenshots. Bank: assert culling by reading `.visible`, not just by eye.
+  - **Cost:** 1 commit, 0 re-renders; 236/236 tests green.
+- **Update (2026-06-24, side-face integration fixes — Batu review):** the first
+  wiring pass left four defects, all now fixed (engine, `buildHeroBuilding`):
+  1. **Crown clipped + cream-paper band over the roof** (same class as 144/Sonny's
+     white-cap). Side textures had no `roofV`, so `keyPaperAboveRoofline` never ran
+     (cream showed) and the wall mapped 0..1 over full `building.height`, floating
+     the cornice. Fix: each chord face now maps to **`faceHeight = wallTop /
+     roofV`** so its painted roofline (India v≈0.91, Java v≈0.90) lands exactly at
+     the shared roof; crown projects as silhouette, cream keys out. Frontage
+     (`roofV === heroRoofV`) is unchanged by construction.
+  2. **Ground-floor lines didn't match at the corner** — same root as (1); the
+     `faceHeight` anchor lands floors/base consistently against the frontage.
+  3. **Corner gap (sidewalk wedge ~0.4m)** — each chord plane was pushed `proud`
+     0.02 along its OWN normal, so perpendicular planes missed at the corner. The
+     band-filter (below) removed the typological wall the big proud gap protected
+     against, so `proud`→**0.006** + each segment extended **`cornerOverlap` 0.02**
+     along its run → perpendicular planes overlap, corners close crisp.
+  4. **Open rear/courtyard** (regression from wiring India to catch-all role
+     `other`): adding `other` to `chordCoveredRoles` made EVERY `other` edge skip
+     its wall, but only the north India plane was drawn → rear + light courts
+     undrawn. Fix: **`frontageBandEdges()`** computes the exact street-most band a
+     side covers (mirrors `frontageChord`'s filter) and only those edges skip the
+     wall (`chordCoveredEdges`); set-back rear/court edges keep structural walls.
+  - **Plus:** interior light-court walls flashed as bright flat-red "threads" in
+    the wells (flat MeshBasic shows full base color edge-on; short returns < 2m get
+    no brick). Sank the whole back complex to a dim shaft tone on frontage heroes
+    (`!isTextured && composite?.frontage` → ×0.32 short / ×0.5 long) — wells read as
+    shadowed shafts; corner heroes' lit returns untouched.
+  - **Durable rules (promoted):** (a) a bespoke SIDE texture needs its own
+    `roofV`, and the wall must map to `wallTop/roofV` (not `building.height`) or
+    its cornice/floors/crown float off the frontage at the corner. (b) Two
+    perpendicular chord planes need `cornerOverlap` + small `proud` to close — a
+    proud offset alone opens a corner wedge. (c) Wiring a side face to a CATCH-ALL
+    role (`other`) must cover edges by BAND, never by role, or it strips the
+    rear/court walls. (d) Frontage-hero back-of-building walls want a shadow tone,
+    not the lit hero base. **Cost:** 1 review round, 0 re-renders; 230/230 green.
+
+### Land of Barbers — BIN 3064676 (Franklin St, east side) — SHIPPED (firstpass)
+- **Texture:** `land-of-barbers--franklin.png` (1122×1402, runtime-trimmed to
+  1029×1383). Single WEST Franklin frontage (~7.4m), one lot north of the
+  144-Franklin (3064675) corner. First MID-BLOCK single-face hero (vs corners).
+- **Registration:** `FACADE_COMPOSITES["land-of-barbers"]` byBin single face
+  `franklin {u0:0,u1:1,leftEnd:"north"}` (no coverMeters — texture covers the
+  full frontage) + `FACADE_GROUP_BINS["3064676"]`. A plain block-extract context
+  box (1 mesh) promoted to a hero by the group-bin registration alone.
+- **Face classification was automatic & unambiguous:** centroid.x +0.94 ⇒
+  classifyHeroEdges gives the WEST street edge role `franklin` (its normal.x<0
+  points to the street) and the 7.4m EAST back edge role `other`. So the
+  "longest edge per role" texturing has exactly one franklin edge — no
+  front/back ambiguity to guard against. The south edge (toward 144) classifies
+  `greenpoint` (party wall, untextured, occluded). **Bank: for a mid-block
+  single-face hero, confirm the centroid-sign rule yields ONE edge of the target
+  role before worrying about front/back disambiguation.**
+- **Derive settings:** the shipped blob deriver over-grew the storefront to the
+  bottom 60% (merged the dark middle-floor windows into the ground blob) and
+  found only the top window row — the same low-contrast failure as Sonny's
+  mauve / 144's brownstone. The redness seed (`seed-window-grid.mjs`, R−B<28)
+  found both rows but fragmented panes on AC units / blinds. So the 3-col × 2-row
+  upper grid + ground storefront were **hand-authored off the trimmed overlay and
+  gated on a 2× overlay** (`/tmp/gate-lob.mjs` draws the authored rects per
+  component colour). Windows recessM 0.1 (shallow → thin shadow, not a floating
+  ledge, per [[window-decal-is-flush-not-recessed]]); doors real recess; two
+  display `storefronts` (recessM 0.2, revealTop:false under the awning); one
+  projecting `awning`; arched residential door (`shape:"arch"`).
+- **The one fix (NaN that dropped the whole face):** the awning was authored with
+  `yValance` + `yWall` but NO `yDrop`. The canopy geometry reads `awning.yDrop`
+  DIRECTLY (`facadeAssembly.js` ~L221) — `??`-falls back to yValance only in the
+  *opening* push (L99) and yMid (L77), NOT in the mesh build. Undefined yDrop →
+  NaN positions → `computeBoundingBox/Sphere NaN` spam and the entire franklin
+  assembly silently dropped (greenpoint/other walls still rendered, so it looked
+  like a wiring bug, not a spec bug). **Rule (promoted below): an `awnings` entry
+  needs all three of yWall (top) > yDrop (canopy front fold) > yValance (skirt
+  bottom); yValance alone NaNs the face.** Diagnosed by traversing for NaN
+  position attributes (0 after the fix) rather than chasing the stale console.
+- **Cost: ~1 iteration** (the awning yDrop). Flat-texture + composite wiring
+  landed correct first try (orientation non-mirrored — sign reads L→R — roofline
+  clean, lands on the right face). 252/252 tests + overrides + conformance green.
+- **Open polish (spec `status: firstpass_seed`):** micro-nudge the window rects +
+  central shop-door x in `?facadeedit=1`; residential arch springY is a seed;
+  cornice projection vs the 144 party wall unconfirmed. Camera note: an east-side
+  Franklin frontage is back-facing at the DEFAULT angle (a=0 shows its roof) —
+  it presents at **angle 3/4 (a=2)**, like every east-Franklin face.
+
+### Oak & Iron — BIN 3064393 (Franklin St, west side) — SHIPPED (firstpass)
+- **Texture:** `oak-and-iron--franklin.png` (1122×1402, trimmed 929×1359). Single
+  EAST Franklin frontage (~7.65m, a 25ft tenement lot) on the WEST side of
+  Franklin, ~174m north of the corner (block-franklin-north extract). 1930
+  5-story: ground-floor slate bar storefront + 4 floors × 4 windows, central 2
+  columns behind a fire escape.
+- **Mirror of Land of Barbers' orientation:** WEST-side building ⇒ EAST frontage.
+  centroid.x −3.22 ⇒ the east edge's normal points +x toward the street ⇒ role
+  franklin (only that edge). `leftEnd: "south"` read non-mirrored first try (the
+  opposite of Land of Barbers' east-side `north`). An east frontage is
+  FRONT-facing at the DEFAULT angle (a=0) — opposite to east-side heroes.
+- **Fire-escape-dense derive (the hard one):** both the blob deriver and the
+  redness seed fragmented on the fire-escape ironwork + AC units (phantom column
+  slivers, half-height rows, fire-escape ladder polluting any center-column
+  brightness profile). **What worked: a gridded crop.** A throwaway
+  `/tmp/crop.mjs` rendered the trimmed face with horizontal `fy` gridlines every
+  0.05; reading the 4×4 grid + storefront bands off that BY EYE beat every
+  detector. Took ~3 gate rounds (no re-renders, no in-engine fix commits): the
+  storefront ran taller than first estimated (awning at fy≈0.15–0.20, not 0.11),
+  and row D was ~0.03 low. **Bank: for a dense/occluded facade, a gridded crop
+  (fy rules every 0.05) is the fastest registration tool — skip the profile
+  scripts, read coordinates against the rules.** Windows recessM 0.1; the painted
+  fire escape stays flat on the wall, drawn over the recessed panes.
+- **Cost: ~3 gate rounds, 0 re-renders, 0 fix commits.** Awning carried all three
+  Y fields from the start (Land of Barbers lesson held), so no NaN. 252/252 tests
+  + overrides + conformance green; 0 NaN meshes confirmed by scene traverse.
+- **Open polish (`firstpass_seed`):** micro-nudge fire-escape-occluded central
+  columns + bar-window/door extents in `?facadeedit=1`; the slate storefront has
+  more sub-elements (central bar door, Coors panel) than the 2-window+2-door seed.
+
+### Verge — BIN 3064387 (Franklin & India corner) — IN PROGRESS (Franklin face + carve)
+- **Texture:** `verge--franklin.png` (corner unwrap, trimmed 1292×965). 1931
+  dark-brick corner building. Render reads VERGE storefront (fire escape + 3
+  window cols + VERGE sign + "159" door) on the LEFT = the ~7m EAST Franklin
+  frontage (u0:0→u1:0.60), then the corner fold, then the India return (yin-yang
+  + door) on the RIGHT = the India (north, role "other") long wall.
+- **Merged-footprint carve (the new capability):** BIN 3064387's single
+  NYC-Open-Data footprint MERGES three real buildings — the tall Verge corner +
+  two 1-story structures extending west along India (Batu's India-St Street View,
+  2026-06-25). Rendered as-is it was one 13.7m mass with a too-tall cream India
+  wall over the low buildings. Fix: `src/carveFootprint.js` (pure Sutherland–
+  Hodgman half-plane clip, 5 tests) splits the footprint at x = xMax − frac·width;
+  `sceneFrame.js` keeps the EAST `CARVE_EAST_FRACTION` (0.57) as the Verge hero
+  mass and re-emits the WEST remainder as a 1-story (4.2m) context building.
+  **Bank: a merged multi-building BIN can be split by a vertical half-plane clip
+  in the block-extract promotion — keep the corner as the hero, re-emit the
+  remainder low. Reusable for any over-merged corridor footprint.**
+- **Done this pass:** Franklin face wired + carved massing verified in-engine
+  (dark VERGE facade, fire escape, storefront, "159" — not mirrored, 0 NaN,
+  257/257 tests). The east edge stays the only role-`franklin` edge after the
+  carve (the new cut edge faces west ⇒ role `other`).
+- **Done (2026-06-25 follow-up):** (1) **corner-line alignment** — Batu flagged
+  the fold must sit on the DRAWN corner line (the "R" of VERGE, right of the 3rd
+  window), not the eyeballed 0.60; cut u1=0.50 so the dark line lands on the
+  building's corner edge (also cut window squish). **Rule: on a corner unwrap,
+  read the fold off the drawn corner line in the render, not a proportional
+  guess.** (2) **dark tone** — added `verge: 0x3e3a36` (sampled from the render)
+  to `II_PALETTE.heroes` so the uncovered India wall reads dark charcoal, not the
+  cream context fallback. **Rule: a hero whose uncovered returns show needs a
+  hero base color or they fall back to cream context.** (3) **Franklin recesses**
+  — 3-col×3-row grid derived cleanly (Verge glass is lit enough for the blob
+  deriver) + storefront; recessM 0.1.
+- **India wrap DONE (2026-06-25):** the yin-yang return now renders via the
+  Astral `sides` role-"other" pattern — `sides:[{face:"india", selectRole:"other",
+  axis:"greenpoint", segments:[{fromM:0, toM:16.09, leftEnd:"east", u0:0.5,
+  u1:1.0}]}]`. So "VERGE" wraps the corner: **VE** on Franklin (u0..0.5), **RGE**
+  on India (u0.5..1) — they meet at the drawn R-line, the corner. **Gotcha banked:
+  `sides` skips the typological wall on every covered edge, so a PARTIAL cover
+  (corner-adjacent only) punches a see-through hole — cover the WHOLE chord
+  (fromM:0→toM:wallLength) for a single-edge side, or the uncovered run has no
+  wall.** The render's sparse India half reads fine stretched across the 16m wall.
+  `fromM` measures from the chord's `alongMin` (smallest greenpoint-axis
+  projection) end; `leftEnd` orients the texture independently.
+- **FOLLOW-UP (optional):** India-face recess spec (currently flat); confirm the
+  0.57 carve fraction vs the real lot line; place card.
+
+### Brouwerij Lane — BIN 3322610 (78 Greenpoint Ave) — SHIPPED (firstpass, flat + keyed gable)
+- **Texture:** `brouwerij-lane.trim.png` (RGBA, PRETRIMMED 1:1). Batu then
+  hand-cropped the cream borders below the doors + on the sides → **1067×1192**
+  (aspect 0.895). The original render `brouwerij-lane.png` was `git rm`'d (the
+  trim supersedes it; restore from git for the recess pass). 2-storey 1930 bottle
+  shop immediately
+  WEST of the Premier corner on Greenpoint Ave — Batu pointed me at it ("the
+  2-storey building next to Premier on Greenpoint Ave"); located via the live
+  scene (nearest low neighbor on Premier's frontage line, `3322` tax-block prefix).
+- **Two firsts:** (1) first **GREENPOINT** single-face hero (centroid.z +1.39 ⇒
+  the street edge's normal points -z to the avenue ⇒ role "greenpoint", its only
+  one — automatic, no front/back ambiguity). (2) first **BESPOKE ROOF**: a
+  stepped Dutch/corbie gable with an oculus.
+- **New engine capability — per-face `roofV` on the byBin path (banked):** the
+  keyed-silhouette roof machinery (`keyPaperAboveRoofline` + `faceHeight =
+  wallTop/roofV`) lived ONLY in the chord path (Astral). Extended the simple
+  byBin per-edge path so a face can carry `roofV`: the textured face maps to
+  `faceTop = wallTop/roofV` (gable projects above the structural roof, which
+  caps at wallTop) and gets `transparent + alphaTest 0.5` to drop the keyed sky.
+  Default (no roofV) ⇒ faceTop === wallTop, opaque — byte-identical for every
+  other byBin hero (262/262 green). `noParapet:true` drops the geometric ring.
+- **Keying lesson (durable, banked):** this render's PAPER is a warm **tan**
+  (L≈0.85, S≈0.30) and the building's cream brick is **lighter** than it
+  (L≈0.90, S≈0.23) — so the default color key (`L>0.8 & S<0.4`) erases BOTH.
+  **Color-keying fails when paper ≈ brick tone.** What worked: a **border
+  flood-fill** (`scripts/key-brouwerij-gable.cjs`) seeded from the top + upper
+  side edges, 8-connected, bounded by the dark inked gable outline + a warm/light
+  discriminator (`r≥g≥b, 0.5<L≤0.89, S≥0.235`), restricted to the gable band.
+  Bakes alpha=0 into the `.trim.png` sky; runtime just uses alphaTest. **Bank:
+  for an inked render where the paper and the wall are near the same value,
+  border-flood-fill + bake alpha — don't fight a color threshold.**
+- **Floating "dust" cleanup (banked):** the color-fill leaves isolated OPAQUE
+  cream specks in the sky (pixels that read as brick to the discriminator). A
+  second **connectivity** pass fixes it deterministically: keep only opaque
+  pixels reachable from the bottom edge (the building is one connected mass,
+  gable included); drop every floating island. `scripts/key-brouwerij-gable.cjs`
+  now does this + re-measures the cornice roofV from the alpha (first row where
+  both 4%-inset side columns are opaque). **Bank: remove keying speckle by
+  opaque-connectivity-from-the-base, not by another color pass.**
+- **Final values (Batu's cropped trim):** roofV **0.856**, `heightUnits`
+  **0.478** (faceTop = 0.5u/0.895 = 0.559u peak ⇒ cornice 0.559·0.856 ≈ 0.478u).
+- **`heightUnits` override (durable, banked):** the footprint roof height
+  (~4.8m/0.36u) was far too low for a 2-storey-plus-gable building (Premier next
+  door is 14m) and squashed the portrait texture (aspect 0.80) onto a
+  wider-than-tall face (~35% horizontal stretch). Added a `heightUnits` composite
+  override DERIVED from the elevation: `faceTop = frontageWidth / textureAspect`
+  (0.5u/0.80 = 0.625u peak ⇒ cornice ≈ 0.484u) — undistorts the render AND is
+  more accurate than the bad OpenData value. **Bank: when a hero's OpenData
+  height distorts its bespoke elevation, derive the height from frontageWidth /
+  textureAspect; it's a derivation, not an invention.**
+- **Cost: ~2 in-engine rounds, 0 re-renders, 0 fix commits.** Round 1: render
+  read MIRRORED → flipped `leftEnd` west→east. Round 2: proportion squish →
+  `heightUnits`. Geometry/wiring/cull correct first try; back-face cull verified
+  at angle 3 (flat-top mass, gable is a front parapet only, no see-through).
+- **Open follow-up (`status: firstpass` — flat, no recess spec yet):** (1) recess
+  spec (2 storefront bays, doors, sign band, **oculus as `shape:"circle"`**) —
+  the assembly's wall material needs alphaTest for the gable region above the
+  openings, so it's a deliberate second pass (same capability-then-authoring
+  split as 144/Astral). (2) Flood-fill leaves minor speckle at the gable's
+  keyed edge — reads as weathered inked brick, refine if Batu wants. (3) Returns
+  fall back to cream context (fine — party walls, occluded by Premier + the
+  taller west neighbor); add a `II_PALETTE.heroes` base color if they show.
+  (4) Place card.
+
 ---
 
 ## Top pending tooling improvement

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "facade-spec.v0.5",
+  "placeId": "verge",
+  "status": "firstpass_seed_2026-06-25",
+  "note": "BIN 3064387, EAST Franklin frontage of the carved corner building (the merged footprint's tall east lot; west 1-story buildings re-emitted separately). Franklin face = u0:0→u1:0.50 of verge--franklin.png (the VERGE storefront half, corner line at the 'R'). Face-local rects derived from the render (3-col x 3-row window grid detected cleanly; storefront display windows hand-added). Dark charcoal brick. Windows recessM 0.1 (shallow, per window-decal-flush). The VERGE entrance door + '159' fall just past the corner on the India return (not on this face). POLISH TAIL: India-face wrap (yin-yang) via Astral `sides`; refine storefront-glass extents + add cornice depth in ?facadeedit=1.",
+  "evidence": [
+    "assets/textures/franklin/verge--franklin.png"
+  ],
+  "faces": {
+    "3064387:franklin": {
+      "windows": {
+        "recessM": 0.1,
+        "rects": [
+          {
+            "x0": 0.182,
+            "x1": 0.282,
+            "y0": 0.798,
+            "y1": 0.923
+          },
+          {
+            "x0": 0.46,
+            "x1": 0.56,
+            "y0": 0.795,
+            "y1": 0.92
+          },
+          {
+            "x0": 0.735,
+            "x1": 0.84,
+            "y0": 0.795,
+            "y1": 0.92
+          },
+          {
+            "x0": 0.185,
+            "x1": 0.285,
+            "y0": 0.595,
+            "y1": 0.725
+          },
+          {
+            "x0": 0.46,
+            "x1": 0.56,
+            "y0": 0.595,
+            "y1": 0.725
+          },
+          {
+            "x0": 0.735,
+            "x1": 0.84,
+            "y0": 0.595,
+            "y1": 0.725
+          },
+          {
+            "x0": 0.185,
+            "x1": 0.285,
+            "y0": 0.375,
+            "y1": 0.505
+          },
+          {
+            "x0": 0.46,
+            "x1": 0.56,
+            "y0": 0.375,
+            "y1": 0.505
+          },
+          {
+            "x0": 0.735,
+            "x1": 0.84,
+            "y0": 0.375,
+            "y1": 0.505
+          }
+        ]
+      },
+      "storefronts": [
+        {
+          "x0": 0.106,
+          "x1": 0.336,
+          "y0": 0.109,
+          "y1": 0.217,
+          "recessM": 0.18,
+          "revealTop": false
+        },
+        {
+          "x0": 0.401,
+          "x1": 0.659,
+          "y0": 0.107,
+          "y1": 0.21,
+          "recessM": 0.18,
+          "revealTop": false
+        }
+      ],
+      "doors": [],
+      "skewX": 0
+    },
+    "3064387:india": {
+      "windows": {
+        "recessM": 0.22,
+        "rects": [
+          {
+            "x0": 0.446,
+            "x1": 0.558,
+            "y0": 0.811,
+            "y1": 0.915
+          },
+          {
+            "x0": 0.452,
+            "x1": 0.556,
+            "y0": 0.608,
+            "y1": 0.731
+          },
+          {
+            "x0": 0.456,
+            "x1": 0.555,
+            "y0": 0.396,
+            "y1": 0.516
+          },
+          {
+            "x0": 0.442,
+            "x1": 0.562,
+            "y0": 0.028,
+            "y1": 0.274
+          }
+        ]
+      },
+      "doors": [
+        {
+          "x0": 0.052,
+          "x1": 0.221,
+          "y0": 0.032,
+          "y1": 0.25,
+          "recessM": 0.32
+        }
+      ],
+      "skewX": 0
+    }
+  }
+}

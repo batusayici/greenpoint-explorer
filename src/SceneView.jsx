@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { assembleFranklinScene } from "./sceneFrame.js";
+import { frontageChord, segmentURange } from "./frontagePlane.js";
 import { buildFacadeAssembly } from "./facadeAssembly.js";
 import { buildGroundLayer } from "./groundLayer.js";
 import { buildStreetFurniture } from "./streetFurniture.js";
@@ -8,65 +9,68 @@ import premierFacadeSpec from "./data/facade-specs/premier-franklin-organic.v0.1
 import sonnysFacadeSpec from "./data/facade-specs/sonnys-corner.v0.1.json";
 import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
+import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
+import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.json";
+import oakAndIronFacadeSpec from "./data/facade-specs/oak-and-iron.v0.1.json";
+import vergeFacadeSpec from "./data/facade-specs/verge.v0.1.json";
+import brouwerijFacadeSpec from "./data/facade-specs/brouwerij-lane.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
+import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
 import wrapFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10g-corner-frontage-wrap.v0.1.json";
 import blockFranklinMilton from "./data/geometry-source/block-franklin-milton.nyc-open-geometry.v0.1.json";
 import blockGreenpointEast from "./data/geometry-source/block-greenpoint-east.nyc-open-geometry.v0.1.json";
+import blockFranklinNorth from "./data/geometry-source/block-franklin-north.nyc-open-geometry.v0.1.json";
 import { registerFacadeFace, clearFacadeFaces } from "./dev/facadeFaceRegistry.js";
+import { registerBuildingTruth, resetBuildingTruth } from "./dev/facadeTruthRegistry.js";
 import FacadeRecessEditor from "./components/dev/FacadeRecessEditor.jsx";
+import FacadeTruthEditor from "./components/dev/FacadeTruthEditor.jsx";
 import PlaceCard from "./components/PlaceCard.jsx";
 import { getPlaceByPlaceId, PLACE_DISCLAIMER } from "./placeData.js";
+import { getFeaturedStoryForPlace } from "./placeStories.js";
 import { classifyBuilding } from "./buildingTypology.js";
 import blockStorefronts from "./data/places/block-franklin-milton-storefronts.v0.1.json";
 import blockGreenpointEastStorefronts from "./data/places/block-greenpoint-east-storefronts.v0.1.json";
+import blockFranklinNorthStorefronts from "./data/places/block-franklin-north-storefronts.v0.1.json";
 import heroPlaces from "./data/places/franklin-greenpoint-heroes.v0.1.json";
 import { assignStorefronts, dedupeByProximity } from "./storefrontRoster.js";
-import { planStorefrontSigns } from "./storefrontSigns.js";
+import { planStorefrontSigns, resolveSignLabel, isFoodTrade } from "./storefrontSigns.js";
+import { composeInkedFacade } from "./inkedFacadeCompose.js";
+import { kitFile, kitHas, familyHasKit } from "./kitCoverage.js";
+import { resolveFacadeFamily } from "./facadeFamily.js";
+import { wantsStoop, wantsFireEscape } from "./facadeDepthGates.js";
+import { resolveStorefrontUnit } from "./storefrontUnitResolve.js";
+import { signatureFor, tokenColor } from "./storefrontSignatures.js";
+import { planStorefrontSeating } from "./storefrontSeating.js";
+import { planParapetInsets } from "./parapetInsets.js";
+import { chamferCorner } from "./chamferCorner.js";
+import { nearestPaletteToken } from "./visualSystem/colorBinding.js";
+import { resolveHasCornice, resolveFireEscape, resolveHasStoop } from "./facadeToggleResolve.js";
+import { buildStoopGeometry } from "./stoopGeometry.js";
+import { buildFireEscapeGeometry } from "./fireEscapeGeometry.js";
+import { buildDoorAwningGeometry } from "./doorAwningGeometry.js";
+import { edgeClearance, mostOpenExposedEdge, pickStreetFrontages } from "./streetFaceSelect.js";
+import { buildKitFacadeParams, applyInkedOverride } from "./buildKitFacadeParams.js";
+import facadeOverridesData from "./data/facade-overrides/greenpoint-corridor.v0.1.json" with { type: "json" };
+import { composeStorefront } from "./storefrontCompose.js";
+import {
+  II_PALETTE,
+  resolveTypologyColor,
+  FACADE_RELIEF,
+  LIGHTING,
+  TRADE_AWNING_TINT,
+  MASSING,
+  BRICK_TONES,
+  roofToneFor,
+} from "./visualSystem/palette.js";
+import { selectTreatment } from "./visualSystem/treatmentMap.js";
+import { mountAssetKitProofIsolation } from "./dev/AssetKitProof.js";
 
 // Scene mode: the product view. Fixed isometric camera, II-C paper-toned
 // stage, real NYC footprints in the proven Franklin-local frame. Facade
 // planes on the hero frontages are texture slots — drop generated II-style
 // textures into assets/textures/franklin/ and they load by name:
 //   <placeId>--greenpoint.png / <placeId>--franklin.png
-
-const II_PALETTE = {
-  paper: 0xeae1ce,
-  street: 0xcabfa7,
-  streetDerived: 0xc4b9a2,
-  asphalt: 0x6f6a60,
-  asphaltDerived: 0x6a655c,
-  concrete: 0xb8ae99,
-  concreteDerived: 0xb2a994,
-  crosswalkPaint: 0xe7dcc2,
-  curbStone: 0xcabfa7,
-  scoreLine: 0x9b9079,
-  signalPole: 0x2a241c,
-  signalHead: 0x1d201e,
-  signalRed: 0xb24a3a,
-  signalAmber: 0xcc9a3b,
-  signalGreen: 0x4f7d52,
-  pedSignal: 0x26211a,
-  ink: 0x2a241c,
-  context: [0xd9cdb4, 0xcfc0a6, 0xd4c5ad, 0xc8bba4],
-  heroes: {
-    "premier-franklin-organic": 0xa04432, // red brick grocery corner
-    "sonnys-corner": 0x4a4039, // dark brick / awned base
-    sereneco: 0x9a7e58, // weathered brick, low restaurant corner
-    "144-franklin": 0xa85a3c, // 1895 Romanesque Revival, terracotta/red brick
-  },
-};
-
-// Material-family wall tones for data-differentiated typological infill (II-C muted).
-const TYPOLOGY_PALETTE = {
-  "typological.brick": 0xb89a7e,
-  "typological.painted": 0xc8c2b2,
-  "typological.commercial": 0xb4a890,
-  "typological.warehouse": 0x968b78,
-};
-function resolveTypologyColor(typology) {
-  return TYPOLOGY_PALETTE[typology?.palette] ?? II_PALETTE.context[0];
-}
 
 // Camera sits northeast of the intersection looking southwest, so the
 // Greenpoint-facing (north) and Franklin-facing (east) hero frontages —
@@ -81,6 +85,12 @@ const ISO_ELEVATION = Math.atan(1 / Math.SQRT2); // true isometric, 35.264°
 // rotate behind them), every wall is built once and its visibility is toggled
 // per current view via its outward normal. CULL_T matches the old fixed test.
 const CULL_T = -0.3;
+// Thin facade chord planes (full-block hero street elevations) have no solid
+// mass behind them at the courtyard, so their bare back must hide the instant
+// they turn away from camera — otherwise the recess reveals read as red threads
+// through the open light wells. Stricter than CULL_T (which keeps grazing returns
+// of SOLID masses visible).
+const CHORD_CULL_T = 0.02;
 const ROTATE_MS = 440; // snap-tween duration between adjacent 90° steps
 
 // Phase 3.3.2 — context buildings within this radius of the intersection get
@@ -117,8 +127,20 @@ export default function SceneView() {
   const [facadeEdit, setFacadeEdit] = useState(
     () => new URLSearchParams(window.location.search).get("facadeedit") === "1"
   );
+  // Gate B dev harness: ?assetkit=<family> composes + tints a family's inked
+  // components onto a test quad. Additive dev surface — never touches production.
+  const assetKitFamily = new URLSearchParams(window.location.search).get("assetkit");
   const [editorOpen, setEditorOpen] = useState(false);
+  // Facade-truth panel visibility — closeable via its ✕; a new building click
+  // (setSelectedBin below) reopens it so closing is dismiss-until-next, not
+  // gone-until-reload.
+  const [truthOpen, setTruthOpen] = useState(true);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
+  // facade-truth: clicked building BIN. Seeded from ?truthbin so a Save-triggered
+  // reload re-opens the panel on the same building.
+  const [selectedBin, setSelectedBin] = useState(
+    () => new URLSearchParams(window.location.search).get("truthbin"),
+  );
   const [selectedPlace, setSelectedPlace] = useState(null); // place record or null
   const [anchor, setAnchor] = useState(null); // {x, y} screen px of the pin, or null
   const [viewStep, setViewStep] = useState(0); // 0..3, which of the four iso angles
@@ -148,6 +170,12 @@ export default function SceneView() {
 
   useEffect(() => {
     const mount = mountRef.current;
+    // P4 load instrumentation (Phase 2026-06-23 perf track). Gated behind ?perf=1
+    // so it's silent in normal use. Brackets scene assembly, the building build,
+    // and first render, then dumps draw-call / geometry / texture counts from
+    // renderer.info — the hard before/after numbers for the P1/P2 merge + cache work.
+    const __perf = new URLSearchParams(window.location.search).has("perf");
+    const __mark = { start: performance.now() };
     const scene = assembleFranklinScene({
       geometrySource,
       sceneGeometryFixture,
@@ -155,6 +183,7 @@ export default function SceneView() {
       facadeGroupBins: FACADE_GROUP_BINS,
       blockExtracts: BLOCK_EXTRACTS,
     });
+    __mark.assembled = performance.now();
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -163,8 +192,8 @@ export default function SceneView() {
     const three = new THREE.Scene();
     three.background = new THREE.Color(II_PALETTE.paper);
 
-    three.add(new THREE.AmbientLight(0xfff6e8, 0.95));
-    const sun = new THREE.DirectionalLight(0xffeed8, 0.65);
+    three.add(new THREE.AmbientLight(LIGHTING.ambient, 0.95));
+    const sun = new THREE.DirectionalLight(LIGHTING.sun, 0.65);
     sun.position.set(-6, 9, 4);
     three.add(sun);
 
@@ -179,7 +208,37 @@ export default function SceneView() {
     // The scene renders on demand (no animation loop). Textures decode async,
     // so re-render when each finishes loading.
     let renderScene = null;
-    const requestRender = () => renderScene?.();
+    let __renderCount = 0;
+    let __lastRenderMs = 0;
+    let __renderQueued = false;
+    // Coalesce bursts of async-texture repaints into one render per frame. Each
+    // decoded texture used to call render() synchronously; a load burst meant
+    // hundreds of redundant full renders in a few ms. rAF collapses them to one.
+    // (The rotation tween and resize call render() directly, so they're unaffected.)
+    const requestRender = () => {
+      __renderCount += 1;
+      __lastRenderMs = performance.now();
+      if (__renderQueued) return;
+      __renderQueued = true;
+      requestAnimationFrame(() => {
+        __renderQueued = false;
+        if (active) renderScene?.();
+      });
+    };
+    // Live perf probe: async textures (hero trim scans, inked decals) settle
+    // AFTER first paint via requestRender callbacks. Poll this to get the real
+    // time-to-settled (≈ what the user perceives as "done rendering").
+    window.__gpPerfLive = () =>
+      __perf
+        ? {
+            renderCount: __renderCount,
+            settleMsAfterFirstPaint: Math.round(__lastRenderMs - (__mark.firstRender ?? __mark.start)),
+            settleMsTotal: Math.round(__lastRenderMs - __mark.start),
+            drawCalls: renderer.info.render.calls,
+            geometries: renderer.info.memory.geometries,
+            textures: renderer.info.memory.textures,
+          }
+        : null;
 
     // StrictMode double-mounts this effect, and facade textures load async.
     // `active` lets a disposed run's late texture callbacks bail out instead
@@ -191,21 +250,27 @@ export default function SceneView() {
     // mid-tween) angle; `stepIndex` is unbounded so the snap always travels the
     // shortest 90°. Hero walls register here as cullables and have their
     // visibility recomputed for `currentAzimuth` on every frame of a snap.
-    let currentAzimuth = ISO_AZIMUTH;
-    let targetAzimuth = ISO_AZIMUTH;
-    let stepIndex = 0;
+    // Dev framing override: ?a=<0..3> sets the initial rotation step (for deterministic
+    // screenshots). Defaults to 0.
+    const __aParam = Number(new URLSearchParams(window.location.search).get("a"));
+    const __initStep = Number.isInteger(__aParam) ? __aParam : 0;
+    let currentAzimuth = ISO_AZIMUTH + __initStep * (Math.PI / 2);
+    let targetAzimuth = currentAzimuth;
+    let stepIndex = __initStep;
     let rotRaf = null;
     let animFromAz = ISO_AZIMUTH;
     let animStartMs = 0;
     const cullables = []; // [{ object, normal, refresh }] — object is mutable (wall → assembly)
-    const addCullable = (object, normal) => {
+    const addCullable = (object, normal, threshold = CULL_T) => {
       // `refresh` recomputes this record's visibility from the LIVE azimuth, so
       // a live rebuild (recess editor) can re-cull the freshly-built assembly
       // instead of inheriting a stale value. Closes over `record` so it works
-      // regardless of call site.
-      const record = { object, normal };
+      // regardless of call site. `threshold` defaults to the lenient CULL_T
+      // (keep grazing returns of solid masses visible); thin facade PLANES pass
+      // a stricter one so their bare back never shows through an open courtyard.
+      const record = { object, normal, threshold };
       record.refresh = () => {
-        record.object.visible = facingDot(record.normal, currentAzimuth) >= CULL_T;
+        record.object.visible = facingDot(record.normal, currentAzimuth) >= record.threshold;
       };
       cullables.push(record);
       return record;
@@ -215,21 +280,44 @@ export default function SceneView() {
     }
 
     clearFacadeFaces();
-    const groundData = buildGroundLayer({
-      projection: scene.projection,
-      greenpointAxis: scene.greenpointAxis,
-      franklinAxis: scene.franklinAxis,
-      geometrySource,
-    });
-    buildGround(three, groundData);
-    const furniture = buildStreetFurniture({
-      streets: groundData.streets,
-      greenpointAxis: scene.greenpointAxis,
-      franklinAxis: scene.franklinAxis,
-    });
-    buildFurniture(three, furniture);
-    buildBuildings(three, scene, requestRender, isActive, addCullable);
-    buildBlockStorefronts(three, scene);
+    if (assetKitFamily) {
+      // Gate B: isolation proof view. Skip city build; render composed kit facade
+      // beside a shipped hero composite on a neutral ground framed by iso camera.
+      const heroTex = new THREE.TextureLoader().load(
+        new URL("../assets/textures/franklin/premier-franklin-organic--corner-v4.png", import.meta.url).href,
+        () => requestRender?.(),
+      );
+      heroTex.colorSpace = THREE.SRGBColorSpace;
+      mountAssetKitProofIsolation(THREE, three, assetKitFamily, inkedTexture, heroTex, requestRender);
+    } else {
+      const centerlineKey = (r) =>
+        r.physicalid != null ? `pid:${r.physicalid}` : `nm:${r.fullStreetName}:${r.wgs84Line?.[0]?.lon},${r.wgs84Line?.[0]?.lat}`;
+      const mergedGeometrySource = (() => {
+        const byKey = new Map();
+        for (const r of geometrySource.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r);
+        for (const r of corridorStreetCenterlines.streetCenterlineRecords ?? []) byKey.set(centerlineKey(r), r); // corridor wins
+        return { ...geometrySource, streetCenterlineRecords: [...byKey.values()] };
+      })();
+      const groundData = buildGroundLayer({
+        projection: scene.projection,
+        greenpointAxis: scene.greenpointAxis,
+        franklinAxis: scene.franklinAxis,
+        geometrySource: mergedGeometrySource,
+      });
+      buildGround(three, groundData);
+      const furniture = buildStreetFurniture({
+        streets: groundData.streets,
+        greenpointAxis: scene.greenpointAxis,
+        franklinAxis: scene.franklinAxis,
+      });
+      buildFurniture(three, furniture);
+      const { baysByBin, pointByName: storefrontPointByName } = computeStorefrontBays(scene);
+      buildBuildings(three, scene, requestRender, isActive, addCullable, baysByBin, storefrontPointByName);
+      buildBlockStorefronts(three, scene, baysByBin, storefrontPointByName);
+      buildStorefrontSeating(three, scene, baysByBin, storefrontPointByName);
+      buildInkedFacadeTest(three, scene); // SPIKE 2026-06-16
+    }
+    __mark.built = performance.now();
     window.__three = three;
     window.__scene = scene;
 
@@ -237,13 +325,19 @@ export default function SceneView() {
     // Dev framing override: ?t=x,y,z&f=frustumHeight
     const params = new URLSearchParams(window.location.search);
     const t = (params.get("t") ?? "").split(",").map(Number);
+    const hasExplicitTarget = Number.isFinite(t[0]) && Number.isFinite(t[1]) && Number.isFinite(t[2]);
+    const hasExplicitFrustum = !!Number(params.get("f"));
+    // Isolation view defaults: frame the neutral anchor (0,0.7,0) at a wider
+    // frustum so the kit facade + hero reference both fit. Explicit ?t/?f override.
+    const defaultTarget = assetKitFamily
+      ? new THREE.Vector3(0, 0.7, 0)
+      : new THREE.Vector3(-0.95, 0.4, 1.05);
+    const defaultFrustum = assetKitFamily ? 4.6 : 2.8;
     const view = {
-      target: new THREE.Vector3(
-        Number.isFinite(t[0]) ? t[0] : -0.95,
-        Number.isFinite(t[1]) ? t[1] : 0.4,
-        Number.isFinite(t[2]) ? t[2] : 1.05,
-      ),
-      frustumHeight: Number(params.get("f")) || 2.8,
+      target: hasExplicitTarget
+        ? new THREE.Vector3(t[0], t[1], t[2])
+        : defaultTarget,
+      frustumHeight: hasExplicitFrustum ? Number(params.get("f")) : defaultFrustum,
     };
 
     function applyCamera() {
@@ -383,6 +477,11 @@ export default function SceneView() {
       return surface ? ancestorUserData(surface, "faceKey") : null;
     }
 
+    function binAt(event) {
+      const surface = pickSurface(event);
+      return surface ? ancestorUserData(surface, "bin") : null;
+    }
+
     function placeIdAt(event) {
       const surface = pickSurface(event);
       return surface ? ancestorUserData(surface, "placeId") : null;
@@ -423,6 +522,9 @@ export default function SceneView() {
       // Click-to-edit: while the editor is open (or in ?facadeedit mode),
       // a click loads the hit face into the recess editor.
       if (facadeEditRef.current || editorOpenRef.current) {
+        // Facade-truth: a building-body/facade click (userData.bin) selects that BIN.
+        const clickedBin = binAt(event);
+        if (clickedBin != null) { setSelectedBin(String(clickedBin)); setTruthOpen(true); }
         const faceKey = faceKeyAt(event);
         if (faceKey) {
           setEditorFace(faceKey);
@@ -468,8 +570,59 @@ export default function SceneView() {
     renderer.domElement.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("resize", resize);
+    // Track the mount's own size, not just window resizes: in an embedded
+    // preview pane (split view, iframe) the container can change height
+    // without a window "resize" event, which left the canvas stuck at its
+    // initial (e.g. half) height. ResizeObserver fires on container changes too.
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(mount);
     applyCulling(); // hide back-facing hero walls for the initial NE view
     resize();
+    __mark.firstRender = performance.now();
+    if (__perf) {
+      const info = renderer.info;
+      const ms = (a, b) => Math.round(b - a);
+      const report = {
+        buildings: scene.buildings.length,
+        assembleMs: ms(__mark.start, __mark.assembled),
+        buildMeshesMs: ms(__mark.assembled, __mark.built),
+        firstRenderMs: ms(__mark.built, __mark.firstRender),
+        totalToFirstPaintMs: ms(__mark.start, __mark.firstRender),
+        drawCalls: info.render.calls,
+        triangles: info.render.triangles,
+        geometries: info.memory.geometries,
+        textures: info.memory.textures,
+        programs: info.programs?.length ?? null,
+      };
+      window.__gpPerf = report;
+      // eslint-disable-next-line no-console
+      console.log("[GP perf]", JSON.stringify(report));
+    }
+
+    // Dev-only BIN locator: pan the camera onto a building by BIN and return its
+    // screen position. Lets the facade-truth editor (and dev scripts) jump to a
+    // building without hunting for its thin wall sliver in the iso projection.
+    if (import.meta.env.DEV) {
+      window.__gpLocate = (bin) => {
+        let found = null;
+        three.traverse((o) => { if (!found && o.userData?.bin === String(bin)) found = o; });
+        if (!found) return null;
+        const center = new THREE.Box3().setFromObject(found).getCenter(new THREE.Vector3());
+        view.target.copy(center);
+        applyCamera();
+        render();
+        const v = center.clone().project(camera);
+        const rect = renderer.domElement.getBoundingClientRect();
+        return { x: Math.round((v.x * 0.5 + 0.5) * rect.width), y: Math.round((-v.y * 0.5 + 0.5) * rect.height) };
+      };
+      // Current framing as the URL params the scene reads on init (?t/?f/?a), so a
+      // reload after a Save can restore the exact view instead of snapping home.
+      window.__gpCamera = () => ({
+        t: [view.target.x, view.target.y, view.target.z],
+        f: view.frustumHeight,
+        a: ((stepIndex % 4) + 4) % 4,
+      });
+    }
 
     return () => {
       renderer.domElement.removeEventListener("pointerdown", onPointerDown);
@@ -478,8 +631,10 @@ export default function SceneView() {
       renderer.domElement.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("resize", resize);
+      resizeObserver.disconnect();
       if (rotRaf != null) cancelAnimationFrame(rotRaf);
       active = false;
+      if (import.meta.env.DEV) { delete window.__gpLocate; delete window.__gpCamera; }
       renderer.dispose();
       mount.removeChild(renderer.domElement);
       clearFacadeFaces();
@@ -559,6 +714,9 @@ export default function SceneView() {
           onClose={() => setEditorOpen(false)}
         />
       )}
+      {(facadeEdit || editorOpen) && truthOpen && (
+        <FacadeTruthEditor bin={selectedBin} onClose={() => setTruthOpen(false)} />
+      )}
       {selectedPlace && (
         <>
           {anchor && (
@@ -583,6 +741,7 @@ export default function SceneView() {
           <div style={{ position: "absolute", top: 120, right: 24 }}>
             <PlaceCard
               place={selectedPlace}
+              story={selectedPlace ? getFeaturedStoryForPlace(selectedPlace.placeId) : null}
               disclaimer={PLACE_DISCLAIMER}
               onClose={() => { selectedPlaceIdRef.current = null; setSelectedPlace(null); setAnchor(null); }}
             />
@@ -811,6 +970,229 @@ const FACADE_COMPOSITES = {
       },
     },
   },
+  // Astral (184 Franklin) — first FULL-BLOCK hero. The bespoke texture covers
+  // only a SEGMENT of a ~60.6m oriel-segmented street wall, so it can't ride
+  // "the longest edge per role." `frontage.segments` place each render on the
+  // frontage chord (frontagePlane.js) instead; no `byBin` ⇒ every footprint
+  // edge renders typological brick, with the bespoke segment(s) proud on top.
+  // v1: the flat center entrance pavilion (~17.9m, centered on the 60.6m
+  // chord); flanks + oriels + arched recesses follow. fromM/toM are meters
+  // along the chord from its north end — adjust against india corner.jpeg
+  // (the full-frontage oblique, formerly IMG_0971) in-engine.
+  "astral-apartments": {
+    key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.trim.png",
+    byBin: {},
+    frontage: {
+      // The texture's main cornice/roofline (top of the last solid wall course)
+      // sits at v≈0.86 of the pretrimmed --v2.trim.png crop; the parapet railing
+      // + stepped gablets + central gable cartouche rise above it. Drop the flat
+      // roof to this line so only those elements project above the roofline (see
+      // buildHeroBuilding + keyPaperAboveRoofline). Was 0.887 against the old
+      // runtime-trimmed crop, which flat-cut the crown's sparse top rows; the
+      // .trim.png keeps the full crown and y-coords scaled ×0.9696 to suit.
+      roofV: 0.86,
+      // ONE continuous full-facade render across the whole 60.6m frontage chord
+      // (replaced the 3-segment plan: separate sheets drifted on floor lines and
+      // dropped a residential floor — see docs/reference/art/prompts/
+      // astral-full-facade.v1.md). Recesses re-derived on this texture; the
+      // archived center-only spec is in docs/visual-artifacts/.
+      segments: [
+        {
+          key: "../assets/textures/franklin/astral-apartments--franklin-full-v2.trim.png",
+          fromM: 0,
+          toM: 60.6,
+          leftEnd: "north",
+          // Crop the render's cream paper edge (measured ~6px left / ~4px right on
+          // the 2079px sheet). These map to the two front corners (Java SW, India
+          // NW); uncropped they showed as a faint pale hairline down the corner.
+          u0: 0.005,
+          u1: 0.996,
+        },
+      ],
+    },
+    // Bespoke side faces, each drawn from a CHORD through its own classified
+    // edges (same frontage-plane model as the Franklin chord, on a different
+    // axis). The Java (south) end runs E–W along greenpointAxis; its edges
+    // classify as role "greenpoint" (the only cross-street end facing back
+    // toward Greenpoint Ave). `face` keys the spec/registration (3064408:java),
+    // decoupled from the geometric `selectRole`. leftEnd "west" puts the
+    // texture's left edge (Franklin-corner pavilion) at the chord's west end.
+    //
+    // GEOMETRY TRUTH (measured in-engine 2026-06-23): the Java STREET wall is
+    // only ~19.6m — the Franklin-corner (SW) section. East of it the south side
+    // steps ~10m back behind interior light courts (not street-facing). So the
+    // bespoke texture is the TRUE ~19.6m frontage (one corner pavilion + the
+    // central entrance), ~1:1 aspect — re-rendered per astral-java-facade.v3.md.
+    // (The earlier 41m v2 render squished 2:1 onto this chord.) India (north,
+    // role "other") is the full ~38m wall and follows in a later pass — it needs
+    // an axis+normal selector since "other" also covers the West-St rear.
+    sides: [
+      {
+        face: "java",
+        selectRole: "greenpoint",
+        axis: "greenpoint",
+        shade: 0.85,
+        // PRETRIMMED crop (.trim.png): the runtime 8.5%-density trim shaved the
+        // sparse stepped-gable crown (~53px), so we pre-crop tight while keeping
+        // the full crown and skip the runtime trim (PRETRIMMED_TEXTURES).
+        // roofV anchors the texture to the shared roof via faceHeight =
+        // wallTop/roofV: it sets the WHOLE face's vertical scale, not just the
+        // crown. At 0.90 this face rendered SHORTER than the Franklin frontage
+        // (roofV 0.86 → the largest faceHeight), so its brown floor bands + roof
+        // line sat lower than Franklin's at the shared corner. Drop it to ~0.86
+        // so this face renders at the frontage's scale and the horizontal courses
+        // wrap the corner continuously. Java's cornice sits at ~v0.928 — the same
+        // as the frontage's — so 0.861 (≈ heroRoofV) lands its ROOFLINE on
+        // Franklin's at the corner. Java's render spaces its floors ~2% lower than
+        // the frontage, so the mid-facade courses still sag a hair; the roof seam
+        // (the prominent one against the sky) is what we hold exact.
+        roofV: 0.861,
+        key: "../assets/textures/franklin/astral-apartments--java-full.trim.png",
+        segments: [
+          {
+            key: "../assets/textures/franklin/astral-apartments--java-full.trim.png",
+            fromM: 0,
+            toM: 19.6,
+            leftEnd: "west",
+            // Crop the cream paper frame so the corner with Franklin shows brick,
+            // not paper. The margin runs to col ~24 left / from col ~1121 right on
+            // the 1127px sheet (incl. the anti-aliased cream→brick transition), so
+            // an under-crop left a 1–2px pale hairline down the corner.
+            u0: 0.024,
+            u1: 0.993,
+          },
+        ],
+      },
+      // India (north cross-street, ~38m full wall — runs E–W along greenpointAxis
+      // like Java, at the opposite N end). Its edges classify as role "other"
+      // (shared with the West-St rear), but the 3m frontage band in frontageChord
+      // locks onto the street-most north wall and the rear (which projects ~0 onto
+      // greenpointAxis and sits centre-N) drops out. `face: india` keys the spec.
+      // ~2:1 render maps full-width across the chord; symmetric, so leftEnd is
+      // near-moot — "west" matches Java. Verify the wall + orientation in-engine.
+      {
+        face: "india",
+        selectRole: "other",
+        axis: "greenpoint",
+        shade: 0.85,
+        // PRETRIMMED crop (.trim.png) — see the java note. roofV sets this face's
+        // whole vertical scale (faceHeight = wallTop/roofV); at 0.876 it rendered
+        // shorter than the Franklin frontage so its floor bands + roofline sat low
+        // at the corner. India's render shares the frontage's proportions, so
+        // 0.840 lands BOTH its floor courses and its cornice on Franklin's.
+        roofV: 0.840,
+        key: "../assets/textures/franklin/astral-apartments--india-full.trim.png",
+        segments: [
+          {
+            key: "../assets/textures/franklin/astral-apartments--india-full.trim.png",
+            fromM: 0,
+            toM: 38,
+            leftEnd: "west",
+            // Crop the cream paper frame so both India corners show brick, not
+            // paper. The margin runs to col ~19 left / from col ~1490 right on the
+            // 1508px sheet (incl. the cream→brick transition).
+            u0: 0.016,
+            u1: 0.986,
+          },
+        ],
+      },
+    ],
+  },
+  // Land of Barbers — BIN 3064676, a narrow 1864 rowhouse on the EAST side of
+  // Franklin St, one lot north of the 144-Franklin (3064675) corner. Single
+  // street face: the ~7.4m WEST edge classifies as role "franklin" (centroid.x
+  // +0.94 ⇒ only the west edge's normal points -x toward the street; the 7.4m
+  // east back edge classifies "other"). The bespoke elevation covers the full
+  // frontage, so u0:0→u1:1 with no coverMeters. leftEnd "north" matches the
+  // east-side franklin convention (144-franklin) — flip to "south" if mirrored.
+  "land-of-barbers": {
+    key: "../assets/textures/franklin/land-of-barbers--franklin.png",
+    byBin: {
+      "3064676": {
+        franklin: { u0: 0, u1: 1, leftEnd: "north" },
+      },
+    },
+  },
+  // Oak & Iron — BIN 3064393, a 1930 ~25ft-lot tenement on the WEST side of
+  // Franklin St (~174m north of the corner, block-franklin-north extract). Single
+  // EAST Franklin frontage (~7.65m, edge 5) — centroid.x -3.22 ⇒ the east edge's
+  // normal points +x toward the street ⇒ role "franklin". leftEnd "south" (a
+  // west-side building's east frontage reads opposite to Land of Barbers' west
+  // frontage) — flip to "north" if mirrored.
+  "oak-and-iron": {
+    key: "../assets/textures/franklin/oak-and-iron--franklin.png",
+    byBin: {
+      "3064393": {
+        franklin: { u0: 0, u1: 1, leftEnd: "south" },
+      },
+    },
+  },
+  // Brouwerij Lane — BIN 3322610, the 2-storey 1930 bottle shop immediately WEST
+  // of the Premier corner on Greenpoint Ave (78 Greenpoint Ave). Single
+  // GREENPOINT frontage: centroid.z +1.39 ⇒ the street edge's outward normal
+  // points -z toward the avenue ⇒ role "greenpoint" (its only greenpoint edge).
+  // The bespoke elevation covers the full ~6.7m frontage (u0:0→u1:1, no
+  // coverMeters). BESPOKE ROOF: a stepped Dutch/corbie gable. roofV 0.856 = the
+  // cornice (side-wall top) fraction; the gable above maps via faceTop =
+  // wallTop/0.856 so it projects above the structural roof, and its paper sky is
+  // baked transparent in the .trim.png (dropped by alphaTest). noParapet drops
+  // the geometric parapet ring (it would slap a flat tan border across the
+  // gable). leftEnd "east" (the render read mirrored at "west").
+  "brouwerij-lane": {
+    key: "../assets/textures/franklin/brouwerij-lane.trim.png",
+    noParapet: true,
+    // Footprint roof height (~4.8m) is too low for this 2-storey-plus-gable
+    // building and squashed the portrait texture. Derived from the elevation:
+    // faceTop = frontageWidth(0.5u) / textureAspect(0.895, Batu's cropped trim
+    // 1067×1192) = 0.559u to the gable peak ⇒ cornice 0.559·roofV(0.856) ≈ 0.478u.
+    // See buildHeroBuilding.
+    heightUnits: 0.478,
+    byBin: {
+      "3322610": {
+        greenpoint: { u0: 0, u1: 1, leftEnd: "east", roofV: 0.856 },
+      },
+    },
+  },
+  // Verge — BIN 3064387, a 1931 dark-brick CORNER building at Franklin & India.
+  // The BIN footprint actually merges THREE buildings (the tall Verge corner
+  // building + two 1-story structures extending west along India, per Batu's
+  // India-St photo) — so the texture covers only the corner building's faces.
+  // Render is a corner unwrap: VERGE storefront (fire escape + 3 window cols +
+  // VERGE sign + "159" door) = the ~7m EAST Franklin frontage (u0:0→u1:0.50,
+  // the drawn corner line at the "R" of VERGE, right of the 3rd window);
+  // the yin-yang return = the India (north, role "other") long wall, wrapped via
+  // the Astral `sides` pattern. leftEnd "south" = render-left (fire escape) at the
+  // south end, reading north to the NE corner. Fold u1=0.50 is the drawn corner
+  // line at the "R" of VERGE.
+  verge: {
+    key: "../assets/textures/franklin/verge--franklin.png",
+    // Flat-roof building — the render carries no cornice/coping, so suppress the
+    // geometric parapet ring (it read as a flat-topped tan border on the roof).
+    noParapet: true,
+    byBin: {
+      "3064387": {
+        franklin: { u0: 0, u1: 0.5, leftEnd: "south" },
+      },
+    },
+    // India face = the north 16.09m "other" wall (the corner with Franklin is its
+    // EAST end). The render's right half (u 0.50→1.0, the yin-yang return) maps
+    // across the full wall; `sides` skips the typological wall on covered edges,
+    // so cover the whole chord (a partial cover would punch a hole). leftEnd
+    // "east" puts the texture's left edge (u0.5 = the corner line) at the
+    // corner/east end, reading west toward the yin-yang.
+    sides: [
+      {
+        face: "india",
+        selectRole: "other",
+        axis: "greenpoint",
+        shade: 0.9,
+        key: "../assets/textures/franklin/verge--franklin.png",
+        segments: [
+          { key: "../assets/textures/franklin/verge--franklin.png", fromM: 0, toM: 16.09, leftEnd: "east", u0: 0.5, u1: 1.0 },
+        ],
+      },
+    ],
+  },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
     byBin: {
@@ -833,8 +1215,8 @@ const FACADE_COMPOSITES = {
 
 // Registered blocks: add a block's footprint extract + storefront roster here to
 // include it in the scene. (Adding a future block = pull data + append two entries.)
-const BLOCK_EXTRACTS = [blockFranklinMilton, blockGreenpointEast];
-const BLOCK_STOREFRONT_ROSTERS = [blockStorefronts, blockGreenpointEastStorefronts];
+const BLOCK_EXTRACTS = [blockFranklinMilton, blockGreenpointEast, blockFranklinNorth];
+const BLOCK_STOREFRONT_ROSTERS = [blockStorefronts, blockGreenpointEastStorefronts, blockFranklinNorthStorefronts];
 
 const FACADE_GROUP_BINS = {
   "3322609": "premier-franklin-organic",
@@ -843,6 +1225,22 @@ const FACADE_GROUP_BINS = {
   // The vertex-snap flush in sceneFrame.js skips it (no same-placeId hero in
   // the wrap fixture), so it keeps its own classified edges.
   "3064675": "144-franklin",
+  // Astral (184 Franklin) — block-extract BIN; sceneFrame.js promotes it to a
+  // hero (it's past the 130m main-loop radius cull). See FACADE_COMPOSITES.
+  "3064408": "astral-apartments",
+  // Land of Barbers — block-extract BIN promoted to a single-face hero
+  // (west Franklin frontage). See FACADE_COMPOSITES["land-of-barbers"].
+  "3064676": "land-of-barbers",
+  // Oak & Iron — block-extract BIN promoted to a single-face hero (east Franklin
+  // frontage). See FACADE_COMPOSITES["oak-and-iron"].
+  "3064393": "oak-and-iron",
+  // Verge — block-extract corner BIN promoted to a hero (Franklin face this pass;
+  // India wrap is a follow-up). See FACADE_COMPOSITES["verge"].
+  "3064387": "verge",
+  // Brouwerij Lane — intersection-block BIN (within the main-loop radius, so the
+  // bare group-bin path reaches it, like Land of Barbers). Single Greenpoint
+  // frontage hero with a keyed stepped-gable roof. See FACADE_COMPOSITES.
+  "3322610": "brouwerij-lane",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
@@ -851,6 +1249,11 @@ const FACADE_SPECS = {
   ...sonnysFacadeSpec.faces,
   ...serenecoFacadeSpec.faces,
   ...franklin144FacadeSpec.faces,
+  ...astralFacadeSpec.faces,
+  ...landOfBarbersFacadeSpec.faces,
+  ...oakAndIronFacadeSpec.faces,
+  ...vergeFacadeSpec.faces,
+  ...brouwerijFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -861,6 +1264,11 @@ for (const [file, spec] of [
   ["sonnys-corner.v0.1.json", sonnysFacadeSpec],
   ["sereneco.v0.1.json", serenecoFacadeSpec],
   ["144-franklin.v0.1.json", franklin144FacadeSpec],
+  ["astral-apartments.v0.1.json", astralFacadeSpec],
+  ["land-of-barbers.v0.1.json", landOfBarbersFacadeSpec],
+  ["oak-and-iron.v0.1.json", oakAndIronFacadeSpec],
+  ["verge.v0.1.json", vergeFacadeSpec],
+  ["brouwerij-lane.v0.1.json", brouwerijFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
@@ -913,20 +1321,9 @@ function buildStorefrontSigns(three, placements, frame) {
   }
 }
 
-// Category fabric tints for awnings (muted II-C tones). Shared by the flat
-// strip and the projecting canopy/valance.
-const AWNING_TINT = {
-  restaurant: 0x6b3a2a,
-  cafe:       0x4a3825,
-  bar:        0x2e3b32,
-  pub:        0x2e3b32,
-  clothes:    0x3b4a5c,
-  hairdresser:0x3d4030,
-  convenience:0x4a4030,
-  deli:       0x5c4030,
-  interior_decoration: 0x4a3b4a,
-};
-const AWNING_SOFFIT = 0x2f2820; // dark underside/side closers
+// Category fabric tints for awnings live in the visual-system palette module.
+const AWNING_TINT = TRADE_AWNING_TINT;
+const AWNING_SOFFIT = FACADE_RELIEF.soffit; // dark underside/side closers
 
 // Render planned awnings for one building's bays. `frame` is the same street-
 // face basis used for signs, plus `scale` (scene units per metre) for canopy
@@ -1000,7 +1397,228 @@ function buildStorefrontAwnings(three, placements, frame) {
   }
 }
 
-function buildBlockStorefronts(three, scene) {
+// SPIKE (2026-06-16): floating-quad spike for the inked-component approach. Superseded
+// by the wall-path integration (decorateInkedWall in buildBuildings) — disabled so it
+// stops fighting the real block. Kept gated for reference. Empty/false = no-op.
+const INKED_FACADE_TEST = [];
+
+// STEP 3 (2026-06-16): the inked brick kit on the real mid-block of Franklin — the
+// blockface SOUTH of Premier Organic (same row/face), per Batu's photo. Corners are
+// bespoke heroes and excluded. BINs are the consecutive south run off Premier
+// (3322608/9): 3064795→3064800, ordered Premier-adjacent → south. Batu confirmed the
+// building next to Premier is Awoke Vintage (107), so the block runs 107→105→103→101→99→97.
+// Params (tint/storeys/bays) read from the field photos in
+// docs/mvp-reference-images/franklin-greenpoint-to-milton-block/. Consumed by buildBuildings
+// → decorateInkedWall (wall-mesh path: registers + self-occludes like decorateTypologicalWall).
+// 6.2.1 allowlist: the per-building tint/awning/frame colors in this table are
+// photo-grounded AUTHORED DATA, not style tokens. They are the ad-hoc
+// per-building tuning that Phase 6.2.2 relocates into the tier × material
+// treatment registry. Left inline here on purpose; the conformance gate (6.2.3)
+// allowlists this block by name (INKED_FACADE_REAL) until 6.2.2 migrates it.
+const INKED_FACADE_REAL = {
+  enabled: true,
+  // Tints spread for legible separation (alternating brighter warm-red / deep maroon /
+  // muted), grounded in the two photo families. storeys/bays counted off the photos.
+  // Tints spread for legible separation (alternating brighter warm-red / deep maroon /
+  // muted), grounded in the two photo families. storeys/bays counted off the photos;
+  // fireEscape flagged where the photos show one.
+  buildings: {
+    // Warm trio (near the Premier hero, Greenpoint end) — close to its rust brick.
+    "3064795": { tint: 0xa85b40, storeys: 4, bays: 2, addr: "107 Awoke Vintage", storefront: { label: "VINTAGE", awning: { has: true, color: 0x4a4038 }, frameTint: 0x1c1714, door: "right" } },
+    "3064796": { tint: 0xa0563c, storeys: 3, bays: 2, addr: "105 Broken Land", storefront: { label: "BAR", awning: { has: false }, frameTint: 0x241a15, door: "left" } },
+    "3064797": { tint: 0x9a5340, storeys: 4, bays: 3, addr: "103" },
+    // Maroon trio (Milton corner end) — similar deep oxblood shades.
+    "3064798": { tint: 0x8e585a, storeys: 4, bays: 2, addr: "101" },
+    "3064799": { tint: 0x8a555a, storeys: 4, bays: 2, addr: "99 Compton's + Juice's", storefront: { units: [
+      { label: "JUICE BAR", widthFrac: 0.5, door: "left", awning: { has: false }, frameTint: 0x3a2c20 },
+      { label: "SANDWICH", widthFrac: 0.5, door: "right", awning: { has: true, color: 0x27314d }, frameTint: 0x2a2018 },
+    ] } },
+    "3064800": { tint: 0x875258, storeys: 4, bays: 3, addr: "97 Deli & Grill (corner)", corner: true, storefront: { label: "BODEGA", awning: { has: true, color: 0x2a2622 }, frameTint: 0x1c1714, door: "right" } },
+  },
+};
+
+const FACADE_OVERRIDES = facadeOverridesData.overrides ?? {};
+
+// Phase 8.1a — FULL FLIP. Empty map ⇒ pilotMode=false ⇒ the inked kit applies to
+// every kit-eligible block-extract building via the heuristic family resolver
+// (Batu approved the four pilots in-scene at the 8.0 re-gate, 2026-06-21). Only
+// kit-COVERED families render through the kit: brick is auto-emitted; brownstone/
+// clapboard appear only via evidence-bound FACADE_OVERRIDES. painted-masonry,
+// warehouse and modern-flat are left on the cheap typological path (no/partial
+// assets, never auto-emitted) — see the plan's "covered residential families" rule.
+const KIT_PILOT_BINS = {};
+
+const INKED_FACADE_BLOCK = {
+  enabled: false,
+  radiusUnits: CONTEXT_TREATMENT_RADIUS_UNITS, // cluster around the Franklin corner
+  minStoreys: 2,
+  maxStoreys: 6,
+  bayMeters: 3.6, // typical Greenpoint rowhouse bay width
+  palette: BRICK_TONES, // brick tones
+};
+
+function loadInkedComponent(file, { repeat, transparent } = {}, getTexture) {
+  let tex;
+  if (getTexture) {
+    tex = getTexture(file, { repeat });
+  } else {
+    tex = new THREE.TextureLoader().load(
+      new URL(`../assets/inked/${file}`, import.meta.url).href,
+    );
+    tex.colorSpace = THREE.SRGBColorSpace;
+    if (repeat) {
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(repeat[0], repeat[1]);
+    }
+  }
+  return new THREE.MeshBasicMaterial({
+    map: tex,
+    transparent: !!transparent,
+    side: THREE.DoubleSide,
+    // Decal bias: the facade sits ~coplanar with the host massing wall; nudge it
+    // forward in the depth buffer so it wins over the flat massing without z-fight.
+    polygonOffset: true,
+    polygonOffsetFactor: -4,
+    polygonOffsetUnits: -4,
+  });
+}
+
+function buildInkedFacadeTest(three, scene) {
+  // INKED_FACADE_REAL is consumed by buildBuildings (wall path), not here.
+  if (!INKED_FACADE_TEST.length && !INKED_FACADE_BLOCK.enabled) return;
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+
+  // Cache: keyed by filename → THREE.Texture. Each distinct file loads at most
+  // once per invocation, so identical component PNGs aren't re-uploaded N times.
+  const texCache = new Map();
+  function cachedTexture(file, { repeat } = {}) {
+    if (texCache.has(file)) return texCache.get(file);
+    const tex = new THREE.TextureLoader().load(
+      new URL(`../assets/inked/${file}`, import.meta.url).href,
+    );
+    tex.colorSpace = THREE.SRGBColorSpace;
+    if (repeat) {
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(repeat[0], repeat[1]);
+    }
+    texCache.set(file, tex);
+    return tex;
+  }
+
+  // Hand-built BufferGeometry has no reliable bounding sphere for frustum culling;
+  // disable it so these (few, spike-only) meshes never get wrongly culled.
+  function addInked(geo, mat) {
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.frustumCulled = false;
+    three.add(mesh);
+  }
+
+  // Compose + render one building's inked facade. `bays` null → derive from the
+  // chosen frontage width. Shared by the explicit-BIN list and the block stamp.
+  function stampInkedFacade(building, tint, bays, storeysOverride, faceDir) {
+    if (!building || !building.polygon || !building.centroid) return;
+    const typ = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
+    const storeys = storeysOverride ?? Math.max(2, typ.storeyCount ?? 4);
+
+    const edges = footprintEdges(building.polygon, building.centroid);
+    if (!edges.length) return;
+    // SPIKE: pick the edge whose outward normal best faces a target direction,
+    // weighted by width. Longest-edge alone lands the facade on an interior party
+    // wall (occluded). Default target = the camera at ISO step 0 (visible faces point
+    // toward (-x,+z), verified in-engine). A caller can pass `faceDir` to aim the
+    // facade at the actual STREET instead (the block-stamp / Step-3 case, where the
+    // street frontage is NOT the camera-facing edge). (proper face selection needs
+    // per-building street-proximity geometry.)
+    const dirX = faceDir ? faceDir.x : -Math.SQRT1_2;
+    const dirZ = faceDir ? faceDir.z : Math.SQRT1_2;
+    const faceScore = (e) => (e.normal.x * dirX + e.normal.z * dirZ) * e.length;
+    const edge = edges.slice().sort((a, b) => faceScore(b) - faceScore(a))[0];
+
+    // Derive bays from frontage width when not given.
+    const frontageM = edge.length / scene.projection.scale;
+    const resolvedBays = bays ?? Math.min(6, Math.max(2, Math.round(frontageM / INKED_FACADE_BLOCK.bayMeters)));
+
+    const { left, right, normal } = faceFrame(edge, building.height, null, scene);
+    const point = (x, y, off) => [
+      left.x + (right.x - left.x) * x + normal.x * off,
+      y * building.height,
+      left.z + (right.z - left.z) * x + normal.z * off,
+    ];
+    const quad = (r, off, uvFlip = true) => {
+      const positions = new Float32Array([
+        ...point(r.x0, r.y0, off), ...point(r.x1, r.y0, off),
+        ...point(r.x1, r.y1, off), ...point(r.x0, r.y1, off),
+      ]);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      const uv = uvFlip ? [1,0, 0,0, 0,1, 1,1] : [0,0, 1,0, 1,1, 0,1];
+      geo.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(uv), 2));
+      geo.setIndex([0, 1, 2, 0, 2, 3]);
+      return geo;
+    };
+
+    const f = composeInkedFacade({ storeys, bays: resolvedBays });
+
+    // Wall (tiled brick), tinted.
+    const wallMat = loadInkedComponent("brick-wall.v1.png", { repeat: [resolvedBays, storeys] }, cachedTexture);
+    wallMat.color.setHex(tint);
+    addInked(quad(f.wall, 0.02), wallMat);
+
+    // (Ground-floor band dropped in 8.1d: the *-ground.v1.png flat textures were
+    // removed when the kit moved to composed recessed windows + door. This
+    // throwaway scaffold no longer draws f.ground.)
+
+    // Cornice strip (alpha), tinted.
+    const corniceMat = loadInkedComponent("brick-cornice.v1.png", { transparent: true }, cachedTexture);
+    corniceMat.color.setHex(tint);
+    addInked(quad(f.cornice, 0.04), corniceMat);
+
+    // Windows (alpha), NOT tinted. All windows share one material — same file,
+    // same alpha config, no tint — so we build it once and reuse the instance.
+    const winMat = new THREE.MeshBasicMaterial({
+      map: cachedTexture("brick-window.v1.png"),
+      transparent: true,
+      side: THREE.DoubleSide,
+      polygonOffset: true,
+      polygonOffsetFactor: -6,
+      polygonOffsetUnits: -6,
+    });
+    for (const w of f.windows) {
+      addInked(quad(w, 0.035), winMat);
+    }
+  }
+
+  // Throwaway floating-quad passes (superseded by decorateInkedWall in buildBuildings).
+  const explicitBins = new Set();
+  for (const { bin, tint } of INKED_FACADE_TEST) {
+    explicitBins.add(bin);
+    stampInkedFacade(byBin.get(bin), tint, 3);
+  }
+  if (INKED_FACADE_BLOCK.enabled) {
+    for (const b of scene.buildings) {
+      if (!b.fromBlockExtract || !b.sourceProperties || !b.polygon || !b.centroid) continue;
+      if (explicitBins.has(b.bin)) continue;
+      if (Math.hypot(b.centroid.x, b.centroid.z) > INKED_FACADE_BLOCK.radiusUnits) continue;
+      const typ = classifyBuilding({ sourceProperties: b.sourceProperties });
+      if (typ.materialFamily !== "brick-prewar") continue;
+      if (typ.storeyCount < INKED_FACADE_BLOCK.minStoreys || typ.storeyCount > INKED_FACADE_BLOCK.maxStoreys) continue;
+      let h = 0;
+      for (const ch of b.bin) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+      stampInkedFacade(b, INKED_FACADE_BLOCK.palette[h % INKED_FACADE_BLOCK.palette.length], null);
+    }
+  }
+}
+
+// Planar (x,z) distance in scene units. Shared by the storefront-bay roster
+// assignment and the block sign/awning renderer.
+function dist(a, b) {
+  return Math.hypot(a.x - b.x, a.z - b.z);
+}
+
+// Roster assignment, computed once and shared by the kit storefront wiring and
+// the block sign/awning system so both agree on which tenant sits where.
+// Returns { baysByBin: Map<bin, Array<bay>>, pointByName: Map<name, scenePoint> }.
+function computeStorefrontBays(scene) {
   // Build a normalized set of hero business names sourced from the hero-places
   // file. heroPlaces is a top-level array; each record carries name at record.name
   // or record.business?.name. This keeps the exclusion set in sync with the file
@@ -1033,11 +1651,6 @@ function buildBlockStorefronts(three, scene) {
 
   // Step 2b: hero-proximity guard — if the nearest building to a storefront
   // is a hero, the storefront belongs to that hero's treatment; drop it here.
-
-  function dist(a, b) {
-    return Math.hypot(a.x - b.x, a.z - b.z);
-  }
-
   const survivors = nonHeroByName.filter((s) => {
     let nearest = null;
     let nearestDist = Infinity;
@@ -1061,9 +1674,9 @@ function buildBlockStorefronts(three, scene) {
       frontage: { scenePoint: x.b.centroid },
     }));
 
-  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
-
-  if (blockCommercial.length === 0 || survivors.length === 0) return;
+  if (blockCommercial.length === 0 || survivors.length === 0) {
+    return { baysByBin: new Map(), pointByName: new Map() };
+  }
 
   // Step 4: assign — force point-only path (houseNumber null for all survivors).
   const roster = survivors.map((s) => ({
@@ -1090,10 +1703,28 @@ function buildBlockStorefronts(three, scene) {
     baysByBin.get(bay.bin).push(bay);
   }
 
+  return { baysByBin, pointByName };
+}
+
+function buildBlockStorefronts(three, scene, baysByBin, pointByName) {
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+
+  if (!baysByBin || baysByBin.size === 0) return;
+
   // Step 6: render sign + awning for each bay.
   for (const [bin, binBays] of baysByBin) {
     const building = byBin.get(bin);
     if (!building || !building.polygon || !building.centroid) continue;
+    // Kit-routed commercial buildings draw their own shopfront + category sign
+    // via decorateStorefront; skip the block sign/awning here to avoid doubles.
+    // Invariant: KIT_PILOT_BINS is {} (full-flip), so the buildBuildings call
+    // site routes every kit-eligible bin to the kit path. If pilot mode is
+    // re-enabled, mirror its `pilotEligible` gate here too, or pilot-ineligible
+    // commercial buildings would be skipped here yet not kit-routed = signless.
+    if (building.fromBlockExtract && building.sourceProperties) {
+      const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
+      if (familyHasKit(family)) continue;
+    }
 
     const typology = classifyBuilding({ sourceProperties: building.sourceProperties ?? {} });
     const storeys = Math.max(1, typology.storeyCount);
@@ -1148,28 +1779,251 @@ function buildBlockStorefronts(three, scene) {
   }
 }
 
-function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
+// R2 signature seating: a row of small sage bistro tables + chairs on the
+// sidewalk in front of a signed shop's frontage (e.g. Elder Greene). Its own
+// pass so it covers KIT buildings too (buildBlockStorefronts skips kit families).
+// Placement is typological-along-the-frontage; layout math is the pure
+// planStorefrontSeating, this maps it to world via the face frame.
+function buildStorefrontSeating(three, scene, baysByBin, pointByName) {
+  if (!baysByBin || baysByBin.size === 0) return;
+  const byBin = new Map(scene.buildings.map((b) => [b.bin, b]));
+  const scale = scene.projection.scale;
+
+  const buildBistroSet = (wp, uc, offU, sage) => {
+    const m = scale; // units per meter
+    const metal = II_PALETTE.ink; // black bistro-table frame
+    const box = (cx, cy, cz, w, h, d, color) => {
+      const g = new THREE.BoxGeometry(w, h, d);
+      const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color }));
+      mesh.position.set(cx, cy, cz); three.add(mesh);
+    };
+    const cyl = (cx, cy, cz, r, h, color) => {
+      const g = new THREE.CylinderGeometry(r, r, h, 10);
+      const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color }));
+      mesh.position.set(cx, cy, cz); three.add(mesh);
+    };
+    // Table: thin round top on a slender dark pedestal.
+    const c = wp(uc, offU, 0);
+    cyl(c.x, 0.72 * m, c.z, 0.27 * m, 0.04 * m, metal);
+    cyl(c.x, 0.36 * m, c.z, 0.035 * m, 0.72 * m, metal);
+    // Two sage bistro chairs flanking the table: slim seat + backrest + 4 dark
+    // ink legs, so they read as drawn chairs rather than flat blocks.
+    const edgeLen = Math.max(1e-6, Math.hypot(wp(1, 0, 0).x - wp(0, 0, 0).x, wp(1, 0, 0).z - wp(0, 0, 0).z));
+    const du = (0.5 * m) / edgeLen;
+    const uM = du / (0.5 * m);            // u per scene-unit, for leg spread
+    const seatY = 0.42 * m;
+    for (const s of [-1, 1]) {
+      const su = uc + s * du, soff = offU - 0.16 * m;
+      const seat = wp(su, soff, 0);
+      box(seat.x, seatY, seat.z, 0.34 * m, 0.05 * m, 0.34 * m, sage);            // seat
+      const back = wp(su, soff + 0.15 * m, 0);
+      box(back.x, 0.63 * m, back.z, 0.34 * m, 0.40 * m, 0.04 * m, sage);         // backrest
+      for (const lu of [-0.14, 0.14]) for (const lo of [-0.14, 0.14]) {
+        const lp = wp(su + lu * m * uM, soff + lo * m, 0);
+        box(lp.x, seatY * 0.5, lp.z, 0.03 * m, seatY, 0.03 * m, metal);          // dark ink leg
+      }
+    }
+  };
+
+  for (const [bin, binBays] of baysByBin) {
+    let sage = null;
+    for (const bay of binBays) {
+      const sig = signatureFor(bay.signatureKey ?? bay.name)?.signature;
+      if (sig?.seating) { sage = tokenColor(sig.seating.tintToken) ?? II_PALETTE.context[0]; break; }
+    }
+    if (sage == null) continue;
+    const building = byBin.get(bin);
+    if (!building || !building.polygon || !building.centroid) continue;
+    const edges = footprintEdges(building.polygon, building.centroid);
+    if (!edges.length) continue;
+    const bayPts = binBays.map((b) => pointByName.get(b.name)).filter(Boolean);
+    const refPoint = bayPts.length
+      ? { x: bayPts.reduce((s, p) => s + p.x, 0) / bayPts.length, z: bayPts.reduce((s, p) => s + p.z, 0) / bayPts.length }
+      : building.centroid;
+    const edge = edges.filter((e) => e.length / scale > 3).sort((a, b) => dist(a.midpoint, refPoint) - dist(b.midpoint, refPoint))[0]
+      ?? edges.sort((a, b) => b.length - a.length)[0];
+    const { left, right, normal } = faceFrame(edge, building.height, null, scene);
+    const edgeLengthM = edge.length / scale;
+    const { tables, offsetM } = planStorefrontSeating({ edgeLengthM });
+    if (!tables.length) continue;
+    const offU = offsetM * scale;
+    const wp = (u, off, y = 0) => ({
+      x: left.x + (right.x - left.x) * u + normal.x * off,
+      z: left.z + (right.z - left.z) * u + normal.z * off,
+    });
+    for (const t of tables) buildBistroSet(wp, t.u, offU, sage);
+  }
+}
+
+function buildBuildings(three, scene, requestRender, isActive = () => true, addCullable = () => ({}), baysByBin = new Map(), pointByName = new Map()) {
+  resetBuildingTruth(); // dev: rebuild the per-BIN facade-truth registry fresh each scene build
   scene.buildings.forEach((building, index) => {
-    if (building.isHero && building.edges) {
+    // Hand-authored INKED_FACADE_REAL run: apply the per-BIN facade-truth override
+    // on top of the manual table so the editor's saves take effect on these BINs
+    // (corner 3064800 + its neighbors). Truth is registered below so the editor
+    // panel can also seed from them.
+    const inkedParamsPre = INKED_FACADE_REAL.enabled && INKED_FACADE_REAL.buildings[building.bin]
+      ? applyInkedOverride(INKED_FACADE_REAL.buildings[building.bin], FACADE_OVERRIDES[building.bin])
+      : null;
+    const distPre = Math.hypot(building.centroid.x, building.centroid.z);
+    // Phase 8.1 — kit-route asset-backed typological buildings through the same
+    // inkedKit channel as the hand-authored set. Pilot mode restricts to
+    // KIT_PILOT_BINS; full mode (empty map) opens to every kit-eligible building.
+    let kitParams = null;
+    const pilotMode = Object.keys(KIT_PILOT_BINS).length > 0;
+    const pilotEligible = !pilotMode || building.bin in KIT_PILOT_BINS;
+    if (!inkedParamsPre && pilotEligible && building.fromBlockExtract && building.sourceProperties) {
+      const { family } = resolveFacadeFamily(building, { overrides: FACADE_OVERRIDES, pilotBins: KIT_PILOT_BINS });
+      if (familyHasKit(family)) {
+        kitParams = buildKitFacadeParams(building, family, FACADE_OVERRIDES[building.bin]);
+        registerBuildingTruth(building.bin, {
+          family,
+          tint: kitParams.tint,
+          windowTint: kitParams.windowTint,
+          doorTint: kitParams.doorTint,
+          corniceColor: kitParams.corniceColor,
+          hasCornice: kitParams.hasCornice,
+          storefrontAwning: kitParams.storefrontAwning,
+          doorAwning: kitParams.doorAwning,
+          doorAlign: kitParams.doorAlign,
+          fireEscape: kitParams.fireEscape,
+          hasStoop: kitParams.hasStoop,
+          fireEscapeColor: kitParams.fireEscapeColor,
+          addr: building.address ?? building.sourceProperties?.address,
+        });
+        const binBays = baysByBin.get(building.bin);
+        if (binBays && binBays.length) {
+          // Truthful category-label signs (real brand only on a claimed bay);
+          // food trades get an awning. One unit per assigned tenant bay.
+          const binSigs = binBays.map((bay) => signatureFor(bay.signatureKey ?? bay.name)?.signature ?? null);
+          kitParams.storefront = {
+            units: binBays.map((bay, k) => ({
+              label: resolveSignLabel(bay),
+              // R2 signature layer: a recognized shop (by curation key / name)
+              // overrides the generic category storefront with its own FORM
+              // (navy awning, black frame, gold transom) — see storefrontSignatures.js.
+              ...resolveStorefrontUnit({
+                bay, index: k, params: kitParams, count: binBays.length,
+                signature: binSigs[k],
+              }),
+            })),
+            // Corner-wrap: if any signed unit asks for it, the storefront also draws
+            // on the corner lot's SECONDARY street frontage (the awning/glazing turn
+            // the corner like the real shop), not just the primary face.
+            wrapCorner: binSigs.some((s) => s?.awning?.wrapCorner === true),
+          };
+          // R2 building signature (per-BIN roofline/window cues — Elder Greene's
+          // stone-diamond parapet + a through-window AC). Once per building: the
+          // first signed bay that carries a `building` block wins.
+          const buildingSig = binSigs.find((s) => s?.building)?.building;
+          if (buildingSig) {
+            kitParams.buildingSignature = buildingSig;
+            // Darker brown brick, snapped to the brick palette (no-miss).
+            if (buildingSig.wallHex != null) kitParams.tint = nearestPaletteToken(Number(buildingSig.wallHex), family);
+            // Elder Greene has no classical cornice — plain brick parapet.
+            if (buildingSig.cornice === false) kitParams.hasCornice = false;
+            // (chamferMid is set on kitParams AFTER the chamfer block below, which
+            // runs later in this iteration — see the entrance-face wiring there.)
+          }
+        }
+      }
+    }
+    const inkedParams = inkedParamsPre ?? kitParams;
+    // Register truth for hand-authored INKED_FACADE_REAL buildings too. The kit
+    // path already registered above; this covers the manual run (corner 3064800 +
+    // neighbors) so the facade-truth editor can seed + persist them. family is
+    // undefined on the manual path unless the override set one — fall back to brick
+    // so the editor's material select has a valid value.
+    if (inkedParamsPre) {
+      registerBuildingTruth(building.bin, {
+        family: inkedParamsPre.family ?? "brick",
+        tint: inkedParamsPre.tint,
+        windowTint: inkedParamsPre.windowTint,
+        doorTint: inkedParamsPre.doorTint,
+        corniceColor: inkedParamsPre.corniceColor,
+        hasCornice: inkedParamsPre.hasCornice,
+        storefrontAwning: inkedParamsPre.storefrontAwning,
+        doorAwning: inkedParamsPre.doorAwning,
+        doorAlign: inkedParamsPre.doorAlign,
+        fireEscape: inkedParamsPre.fireEscape,
+        hasStoop: inkedParamsPre.hasStoop,
+        fireEscapeColor: inkedParamsPre.fireEscapeColor,
+        addr: inkedParamsPre.addr ?? building.address ?? building.sourceProperties?.address,
+      });
+    }
+    const treatment = selectTreatment({
+      building,
+      dist: distPre,
+      inkedParams,
+      contextRadius: CONTEXT_TREATMENT_RADIUS_UNITS,
+    });
+    if (treatment === "hero") {
       buildHeroBuilding(three, building, scene, requestRender, isActive, addCullable);
       return;
+    }
+    // R2 bespoke corner: a signed corner shop (Elder Greene) whose real building
+    // has a 45° chamfer the square footprint lacks. Cut it into building.polygon
+    // BEFORE the extrude/inked-wall pass so the chamfer propagates to the massing,
+    // the inked faces, and the storefront face-selection automatically. Target the
+    // vertex nearest the storefront's scenePoint (the street corner).
+    {
+      const cBays = baysByBin.get(building.bin);
+      const cSig = cBays && cBays.map((bay) => signatureFor(bay.signatureKey ?? bay.name)?.signature)
+        .find((s) => s?.building?.corner?.type === "chamfer")?.building?.corner;
+      if (cSig) {
+        const pts = (cBays || []).map((b) => pointByName.get(b.name)).filter(Boolean);
+        if (pts.length) {
+          const ref = { x: pts.reduce((s, p) => s + p.x, 0) / pts.length, z: pts.reduce((s, p) => s + p.z, 0) / pts.length };
+          let bi = 0, bd = Infinity;
+          building.polygon.forEach((p, i) => { const d = (p.x - ref.x) ** 2 + (p.z - ref.z) ** 2; if (d < bd) { bd = d; bi = i; } });
+          const n = building.polygon.length;
+          const corner = building.polygon[bi];
+          const prev = building.polygon[(bi - 1 + n) % n], next = building.polygon[(bi + 1) % n];
+          const inset = (cSig.insetM ?? 2.2) * scene.projection.scale;
+          const lerp = (f, t) => { const dx = t.x - f.x, dz = t.z - f.z, l = Math.hypot(dx, dz) || 1, k = Math.min(inset / l, 0.49); return { x: f.x + dx * k, z: f.z + dz * k }; };
+          const A = lerp(corner, prev), B = lerp(corner, next);
+          // The chamfer EDGE midpoint identifies the diagonal entrance face downstream.
+          if (cSig.entrance) building.chamferMid = { x: (A.x + B.x) / 2, z: (A.z + B.z) / 2 };
+          building.polygon = chamferCorner(building.polygon, corner, inset);
+          // Now that building.chamferMid exists, hand it to the params decorateInkedWall
+          // reads (inkedParams === kitParams object), so the diagonal face is routed
+          // to door + no-awning. (The kit block ran earlier, before chamferMid existed.)
+          if (kitParams && building.chamferMid) kitParams.chamferMid = building.chamferMid;
+        }
+      }
     }
     const shape = footprintShape(building.polygon);
     const geometry = new THREE.ExtrudeGeometry(shape, { depth: building.height, bevelEnabled: false });
     // Block-extract buildings carry PLUTO sourceProperties — classify them for
     // data-differentiated wall tone and typological decoration. Non-block
     // context buildings keep the existing rotating palette.
+    // Step-3 inked mid-block buildings: tint the massing to the building's brick
+    // tone so any peek of the extrude (roof, party-wall sliver) matches the inked
+    // facade that gets hung on it below.
     let typology = null;
     let color;
-    if (building.fromBlockExtract && building.sourceProperties) {
+    if (inkedParams) {
+      color = inkedParams.tint;
+    } else if (building.fromBlockExtract && building.sourceProperties) {
       typology = classifyBuilding({ sourceProperties: building.sourceProperties });
       color = resolveTypologyColor(typology);
     } else {
       color = II_PALETTE.context[index % II_PALETTE.context.length];
     }
     // ExtrudeGeometry material slots: 0 = caps (roof), 1 = side walls.
-    // Darker inked roof caps keep large masses from reading as flat slabs.
-    const roof = new THREE.Color(color).multiplyScalar(0.5);
+    // Phase 7.4 — flat, quiet, per-family roof TONE so the four-angle camera
+    // never shows a bright slab on top. Inked rowhouses are brick (roofToneFor
+    // "brick" == legacy MASSING.roofCap, so the hero corner is unchanged);
+    // block-extract buildings get their classified family's tone; plain context
+    // masses keep the cheap wall-darken.
+    let roof;
+    if (inkedParams) {
+      roof = new THREE.Color(roofToneFor(inkedParams.family ?? "brick"));
+    } else if (typology) {
+      roof = new THREE.Color(roofToneFor(typology.materialFamily));
+    } else {
+      roof = new THREE.Color(color).multiplyScalar(0.5);
+    }
     const body = new THREE.Mesh(geometry, [
       new THREE.MeshLambertMaterial({ color: roof }),
       new THREE.MeshLambertMaterial({ color }),
@@ -1182,11 +2036,170 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
     // regardless of distance to intersection. Context buildings keep the existing
     // 48 m radius gate. The opaque extrude self-occludes its own back-wall
     // decoration, so no per-view culling is needed here.
-    const dist = Math.hypot(building.centroid.x, building.centroid.z);
-    if (building.fromBlockExtract || dist <= CONTEXT_TREATMENT_RADIUS_UNITS) {
+    const dist = distPre;
+    if (treatment === "inkedKit") {
       const deco = new THREE.Group();
+      deco.userData = { bin: building.bin }; // facade clicks resolve the BIN (facade-truth editor)
+      const inkedEdges = footprintEdges(building.polygon, building.centroid);
+      if (inkedParams.family != null) {
+        // Kit-routed: decorate every EXPOSED face (street + backyard + uncovered
+        // sides) with openings; door/ground on one street face; party walls blank.
+        const reach = 40 * scene.projection.scale; // ~40 m: adjacent footprints only
+        const siblings = scene.buildings.filter(
+          (o) => o !== building && o.polygon && o.centroid &&
+            Math.hypot(o.centroid.x - building.centroid.x, o.centroid.z - building.centroid.z) < reach,
+        );
+        const exposedSegs = inkedEdges.map((e) => exposedSegments(e, siblings));
+        const exposed = inkedEdges.map((e, i) => exposedSegs[i].reduce((s, seg) => s + seg.length, 0) > e.length * 0.25); // open if >25% uncovered
+        // 0..1 ranges along each edge that are actually open, so windows clip off
+        // the abutted (party) portion of a partially-covered face.
+        const fracAlong = (e, p) => Math.hypot(p.x - e.start.x, p.z - e.start.z) / (e.length || 1);
+        const exposedRanges = inkedEdges.map((e, i) => exposedSegs[i].map((seg) => [fracAlong(e, seg.start), fracAlong(e, seg.end)]));
+        // Street face: the exposed edge that fronts a street running PARALLEL to it —
+        // correct for BOTH Franklin- and Greenpoint-fronting buildings (a Greenpoint
+        // building must not be forced onto its Franklin-facing side). Falls back to
+        // the Franklin-oriented front, then the most-open exposed edge.
+        const streetSegs = scene.streets.map((s) => ({ a: s.line[0], b: s.line[s.line.length - 1] }));
+        const oriented = inkedEdges.map((e) => {
+          const t = Math.hypot(e.end.x - e.start.x, e.end.z - e.start.z) || 1;
+          return { ...e, tangent: { x: (e.end.x - e.start.x) / t, z: (e.end.z - e.start.z) / t } };
+        });
+        // scene.streets records carry `widthUnits` (full street width in scene
+        // units; see sceneFrame.js) — used only for relative primary-frontage
+        // ranking, so the full width (not a half) is correct.
+        const frontages = pickStreetFrontages(oriented, exposed, streetSegs.map((s, k) => ({ ...s, width: scene.streets[k]?.widthUnits ?? 0 })));
+        let streetSet = new Set(frontages.indices);
+        let primary = frontages.primary;
+        // Door/stoop/storefront edge. Window-wrapping (streetSet/primary) is left
+        // as-is, but the ENTRY must land on the street the building physically
+        // fronts. `primary` ranks by street width, so a mid-block lot whose rear
+        // wall is over-detected as a frontage (it runs parallel to the wider
+        // avenue one block back) puts its door on the backyard. `nearest` is the
+        // closest frontage — the true front — so the entry faces the street.
+        if (streetSet.size === 0) {
+          // No exposed edge fronts a parallel street — fall back to the Franklin-
+          // oriented front, then the most-open exposed edge (single frontage).
+          const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+          primary = exposed[frontIdx] ? frontIdx : -1;
+          if (primary < 0) {
+            const sibPts = siblings.map((o) => o.centroid);
+            const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
+            primary = mostOpenExposedEdge(inkedEdges, exposed, clearance);
+          }
+          if (primary >= 0) streetSet.add(primary);
+        }
+        // Entry placement. A building must show a door on EVERY street it actually
+        // fronts, not just one. pickStreetFrontages over-detects frontages (a rear
+        // wall runs parallel to the street a block back; a mid-block side runs
+        // parallel to the cross street at the block end) — but those sit a full
+        // block out, while a truly-fronted face sits ~half a street-width out. So
+        // an absolute distance gate keeps the front + any real corner side and
+        // drops the rear/far faces. The widest addressed street gets the full
+        // treatment (stoop or storefront); the others get a plain recessed door.
+        const ADDR_DIST = 20 * scene.projection.scale; // ~20m: real frontage in, rear out
+        // Candidate frontages within the gate, then GROUPED by outward-normal
+        // direction: a front wall split into collinear segments by a mid-wall
+        // vertex is ONE street face and must get ONE entry (not a door per
+        // segment). Each group keeps its longest edge as the entry-bearing face;
+        // a true corner's perpendicular frontage has a very different normal, so
+        // it forms its own group and still gets its own door.
+        const groups = []; // { idx, len, w, n }
+        frontages.indices.forEach((idx, k) => {
+          if (frontages.dists[k] > ADDR_DIST) return;
+          const n = inkedEdges[idx].normal;
+          const len = inkedEdges[idx].length;
+          const w = frontages.widths[k] || 0;
+          const g = groups.find((gr) => gr.n.x * n.x + gr.n.z * n.z > 0.95);
+          if (g) { if (len > g.len) { g.idx = idx; g.len = len; } if (w > g.w) g.w = w; }
+          else groups.push({ idx, len, w, n });
+        });
+        const addressed = new Set(groups.map((g) => g.idx));
+        let fullEntry = -1, bestW = -Infinity, bestLen = -Infinity;
+        for (const g of groups) {
+          if (g.w > bestW + 1e-9 || (Math.abs(g.w - bestW) <= 1e-9 && g.len > bestLen + 1e-9)) {
+            bestW = g.w; bestLen = g.len; fullEntry = g.idx;
+          }
+        }
+        if (addressed.size === 0) {
+          // No face fronts a NEARBY street (partial centerline data, or a lot set
+          // back from the spine). Fall back to the geometric front — the most-open
+          // exposed edge, which faces the street/open space — so the door still
+          // lands on a street-facing wall, not a backyard.
+          const frontIdx = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+          fullEntry = exposed[frontIdx] ? frontIdx : -1;
+          if (fullEntry < 0) {
+            const sibPts = siblings.map((o) => o.centroid);
+            const clearance = inkedEdges.map((e) => edgeClearance(e, sibPts));
+            fullEntry = mostOpenExposedEdge(inkedEdges, exposed, clearance);
+          }
+          if (fullEntry < 0) fullEntry = frontages.nearest >= 0 ? frontages.nearest : primary;
+          if (fullEntry >= 0) addressed.add(fullEntry);
+        }
+        // Outward normals of the chosen frontages — a face parallel to any
+        // frontage (e.g. the rear wall) still carries windows; perpendicular
+        // non-frontage faces stay blank party walls.
+        const frontageNormals = [...streetSet].map((i) => inkedEdges[i].normal);
+        const primaryNormal = primary >= 0 ? inkedEdges[primary].normal : null;
+        inkedEdges.forEach((edge, i) => {
+          // Miter the cornice where this frontage meets another frontage at a
+          // shared corner, so the cornice closes across the corner.
+          let miter = null;
+          if (streetSet.has(i)) {
+            for (const j of streetSet) {
+              if (j === i) continue;
+              const c = sharedEndpoint(inkedEdges[i], inkedEdges[j]);
+              if (c) {
+                const near = (p) => Math.hypot(p.x - c.x, p.z - c.z) < 0.02;
+                miter = { start: near(edge.start), end: near(edge.end) };
+                break;
+              }
+            }
+          }
+          const openings = exposed[i] && (
+            streetSet.has(i) ||
+            frontageNormals.some((n) => Math.abs(edge.normal.x * n.x + edge.normal.z * n.z) > 0.5)
+          );
+          decorateInkedWall(
+            deco, edge, building.height, inkedParams, scene,
+            addressed.has(i), requestRender, miter, openings, exposedRanges[i],
+            primaryNormal, streetSet.has(i), i !== fullEntry,
+          );
+        });
+        // Close the wall-skin notch at every convex corner (broad corner-connection
+        // fix): each face's skin is pushed proud along its own normal,
+        // so adjacent skins separate at a corner and bare the dark mass between.
+        addInkedCornerFillers(deco, inkedEdges, exposed, building.height, inkedParams, scene);
+      } else {
+        // INKED_FACADE_REAL: existing Franklin front-face path (unchanged).
+        const frontIndex = inkedFrontEdgeIndex(inkedEdges, building.centroid, scene);
+        const streetSet = new Set([frontIndex]);
+        let secondIndex = -1;
+        if (inkedParams.corner) {
+          secondIndex = inkedCornerSecondEdgeIndex(inkedEdges, frontIndex, scene);
+          if (secondIndex >= 0) streetSet.add(secondIndex);
+        }
+        const corner = secondIndex >= 0 ? sharedEndpoint(inkedEdges[frontIndex], inkedEdges[secondIndex]) : null;
+        inkedEdges.forEach((edge, i) => {
+          let miter = null;
+          if (corner && streetSet.has(i)) {
+            const near = (p) => Math.hypot(p.x - corner.x, p.z - corner.z) < 0.02;
+            miter = { start: near(edge.start), end: near(edge.end) };
+          }
+          decorateInkedWall(deco, edge, building.height, inkedParams, scene, streetSet.has(i), requestRender, miter);
+        });
+      }
+      three.add(deco);
+    } else if (treatment === "typological") {
+      const deco = new THREE.Group();
+      deco.userData = { bin: building.bin }; // facade clicks resolve the BIN (facade-truth editor)
+      // A tower rising from a shorter podium (_baseHeightFt) suppresses its window
+      // rows within the podium zone so they don't cut into the commercial mass.
+      const baseHeightFt = Number.parseFloat(building.sourceProperties?._baseHeightFt);
+      const baseFraction = Number.isFinite(baseHeightFt) && building.height > 0
+        ? Math.min(0.9, (baseHeightFt * 0.3048 * scene.projection.scale) / building.height)
+        : 0;
       for (const edge of footprintEdges(building.polygon, building.centroid)) {
-        decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology);
+        decorateTypologicalWall(deco, edge, building.height, color, scene, true, typology, baseFraction);
       }
       three.add(deco);
     }
@@ -1197,6 +2210,81 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
 // elevations map directly onto the real footprint edges, the two street
 // faces share a crisp corner, the roof carries an inked parapet texture,
 // and an II-C cast-shadow shape grounds the mass.
+// Key the cream paper background out of a full-block hero texture ABOVE its
+// roofline (the rows whose ground-up fraction exceeds `roofV`), so the painted
+// parapet/gable projects as a clean silhouette instead of a flat paper panel.
+// Paper = bright + desaturated; the saturated brick/terracotta/dark railing of
+// the parapet stay opaque. Returns a CanvasTexture matching the source's
+// orientation/colorspace; caller renders it with alphaTest.
+function keyPaperAboveRoofline(texture, roofV) {
+  const img = texture.image;
+  if (!img?.width) return texture;
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(img, 0, 0);
+  const cutRow = Math.floor((1 - roofV) * canvas.height); // image is top-down → above-roofline rows are the top band
+  const data = ctx.getImageData(0, 0, canvas.width, cutRow);
+  const px = data.data;
+  for (let i = 0; i < px.length; i += 4) {
+    const r = px[i];
+    const g = px[i + 1];
+    const b = px[i + 2];
+    const mx = Math.max(r, g, b);
+    const mn = Math.min(r, g, b);
+    const light = mx / 255;
+    const sat = mx ? (mx - mn) / mx : 0;
+    // The render's paper is a WARM cream (~rgb 230,205,178 → L~0.9, S~0.2-0.3),
+    // not a neutral off-white, so it sits well above an 0.18 sat cut. Separate it
+    // from the building by lightness: the lightest brick/terracotta above the
+    // roofline is L~0.76 and the iron railing is dark, so L>0.80 keys the paper
+    // sky while leaving every painted parapet/gable/railing pixel opaque.
+    if (light > 0.8 && sat < 0.4) {
+      px[i + 3] = 0; // cream paper → transparent
+      // Also clear the RGB to a dark ink. The texture is mipmapped/bilinear-
+      // filtered, and a transparent pixel's RGB still bleeds into its opaque
+      // neighbours during filtering. Left as cream, that washed the thin black
+      // railing/balustrade bars (sparse dark-on-cream above the side cornices)
+      // out to a pale band — the "white roof fence". Bleeding dark ink instead
+      // keeps the bars reading as a dark silhouette, matching the frontage crown.
+      px[i] = px[i + 1] = px[i + 2] = 24;
+    }
+  }
+  ctx.putImageData(data, 0, 0);
+  const keyed = new THREE.CanvasTexture(canvas);
+  keyed.colorSpace = texture.colorSpace;
+  keyed.flipY = texture.flipY;
+  keyed.wrapS = texture.wrapS;
+  keyed.wrapT = texture.wrapT;
+  keyed.needsUpdate = true;
+  return keyed;
+}
+
+// The footprint edges a chord plane actually covers: the street-most band of
+// `role` edges on `axis`, within `bandUnits` of the most-outward offset — the
+// same filter frontageChord() applies internally. Used so a side face built
+// from a catch-all role (`other` = north India wall + rear + light courts) only
+// suppresses the structural walls under its OWN plane, not every same-role edge.
+function frontageBandEdges(edges, axis, role, bandUnits) {
+  const cross = { x: -axis.z, z: axis.x };
+  const candidates = edges.filter((e) => e.role === role);
+  if (!candidates.length) return [];
+  const midCross = (e) =>
+    ((e.start.x * cross.x + e.start.z * cross.z) + (e.end.x * cross.x + e.end.z * cross.z)) / 2;
+  let normalSign = 0;
+  for (const e of candidates) {
+    if (e.normal) normalSign += (e.normal.x * cross.x + e.normal.z * cross.z) * (e.length ?? 0);
+  }
+  const outwardSign = normalSign >= 0 ? 1 : -1;
+  let maxOutward = -Infinity;
+  for (const e of candidates) {
+    const out = midCross(e) * outwardSign;
+    if (out > maxOutward) maxOutward = out;
+  }
+  return candidates.filter((e) => maxOutward - midCross(e) * outwardSign <= bandUnits);
+}
+
 function buildHeroBuilding(three, building, scene, requestRender, isActive = () => true, addCullable = () => ({})) {
   // All of this hero's meshes go under one group tagged with its placeId, so a
   // click anywhere on the building (walls, storefront assembly, roof, parapet,
@@ -1205,11 +2293,31 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // walks parents, so the recess editor keeps working one level deeper.
   const heroGroup = new THREE.Group();
   heroGroup.userData.placeId = building.placeId;
+  heroGroup.userData.bin = building.bin; // lets __gpLocate(bin) center on heroes too
   const baseColor = II_PALETTE.heroes[building.placeId] ?? II_PALETTE.context[0];
   // Benchmark-style face shading: lit street faces, darker returns.
   const faceShade = { greenpoint: 1.0, franklin: 0.9, other: 0.78 };
 
   const composite = FACADE_COMPOSITES[building.placeId];
+  // A segmented-frontage hero whose bespoke texture carries a parapet + gable
+  // ABOVE the main cornice sets `frontage.roofV` (the texture fraction where the
+  // true roofline sits). For those, `building.height` is the top of the PAINTED
+  // parapet — only the frontage segment's texture should reach it. Every
+  // structural wall (sides, rears, interior light-court walls, blank franklin
+  // perimeter) caps at the real roofline `wallTop`, so they sit flush with the
+  // dropped roof instead of floating a 14% lip above it. Default roofV 1 ⇒
+  // wallTop === building.height (every other hero), unchanged.
+  const heroRoofV = composite?.frontage?.roofV ?? 1;
+  // `heightUnits` overrides the footprint roof height for a hero whose NYC
+  // Open-Data height is a poor estimate that would distort its bespoke
+  // elevation. Brouwerij Lane's footprint reports ~4.8m — far too low for a
+  // 2-storey-plus-gable building (Premier next door is 14m) — which squashed the
+  // portrait texture (aspect 0.80) onto a wider-than-tall face. The override is
+  // DERIVED, not invented: faceTop = frontageWidth / textureAspect keeps the
+  // elevation undistorted (0.5u / 0.80 = 0.625u to the gable peak), so the
+  // cornice = 0.625·roofV ≈ 0.484u. Default ⇒ the footprint height, unchanged.
+  const heroHeight = composite?.heightUnits ?? building.height;
+  const wallTop = heroHeight * heroRoofV;
   // A face may override composite.key with its own texture (Sereneco's
   // greenpoint face uses the v2 re-render while franklin keeps the original
   // corner.png). Load each distinct texture once and fan it out to its faces.
@@ -1250,6 +2358,30 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   // real exterior walls (e.g. Sonny's camera-facing east wall).
   const isGroupComposite = Boolean(composite) && Object.keys(composite.byBin).length > 1;
 
+  // Roles/edges drawn from a chord plane (the Franklin frontage + any bespoke
+  // side face) instead of the per-edge "longest edge" path. Their footprint
+  // edges must NOT also get a typological wall or a geometric parapet — the
+  // chord plane covers them, and a kept typological wall shows through as a flat
+  // base-color panel behind a deep recess (see the frontage note below).
+  //
+  // Frontage covers the whole "franklin" role (Astral's east wall is one solid
+  // street frontage). Side faces select by role too, but `other` is a CATCH-ALL
+  // that also holds the rear (West St) wall + interior light-court walls; the
+  // greenpoint role likewise includes the set-back SE wall behind a light court.
+  // Skipping the whole role would leave those undrawn → open geometry. So cover
+  // only the edges each side's frontage band actually selects (the same band
+  // frontageChord uses below), letting set-back rear/court edges keep their
+  // structural walls.
+  const chordCoveredRoles = new Set();
+  if (composite?.frontage) chordCoveredRoles.add("franklin");
+  const chordCoveredEdges = new Set();
+  for (const side of composite?.sides ?? []) {
+    const axis = side.axis === "greenpoint" ? scene.greenpointAxis : scene.franklinAxis;
+    for (const e of frontageBandEdges(building.edges, axis, side.selectRole, 3 * scene.projection.scale)) {
+      chordCoveredEdges.add(e);
+    }
+  }
+
   for (const edge of building.edges) {
     const face = composite?.byBin?.[building.bin]?.[edge.role];
     // In a facade group (Premier + its Pizza sister) the uncovered edges are
@@ -1268,7 +2400,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       if (!segments.length) continue; // fully interior — nothing exposed
       const segShade = faceShade.other;
       const segColor = new THREE.Color(baseColor)
-        .lerp(new THREE.Color(0x6b5e52), 0.5)
+        .lerp(new THREE.Color(MASSING.partyWallBlend), 0.5)
         .multiplyScalar(segShade);
       for (const seg of segments) {
         const segEdge = {
@@ -1279,13 +2411,13 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           midpoint: { x: (seg.start.x + seg.end.x) / 2, z: (seg.start.z + seg.end.z) / 2 },
         };
         const segWall = new THREE.Mesh(
-          wallQuad(segEdge, building.height, null, scene),
+          wallQuad(segEdge, wallTop, null, scene),
           new THREE.MeshBasicMaterial({ color: segColor, side: THREE.DoubleSide }),
         );
         segWall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
         heroGroup.add(segWall);
         addCullable(segWall, edge.normal);
-        decorateTypologicalWall(segWall, segEdge, building.height, segColor.getHex(), scene);
+        decorateTypologicalWall(segWall, segEdge, wallTop, segColor.getHex(), scene);
       }
       continue;
     }
@@ -1301,9 +2433,17 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // street-bright, even if it geometrically faces a street.
     const effectiveRole = isGroupComposite ? (face ? edge.role : "other") : edge.role;
     const shade = faceShade[effectiveRole] ?? faceShade.other;
+
+    // A frontage-hero building (Astral) draws its Franklin wall from the frontage
+    // chord built below, proud of the footprint edges. Skip the typological wall
+    // on those covered edges: kept, it sits a hair behind the hero plane and
+    // shows through as a flat base-color (red) panel once a window recess is
+    // pushed deeper than the proud gap. The hero assembly's recessed panes +
+    // reveals fully enclose each opening, so nothing shows through without it.
+    if (!face && (chordCoveredRoles.has(edge.role) || chordCoveredEdges.has(edge))) continue;
     const wallColor =
       isGroupComposite && !face
-        ? new THREE.Color(baseColor).lerp(new THREE.Color(0x6b5e52), 0.5).multiplyScalar(shade)
+        ? new THREE.Color(baseColor).lerp(new THREE.Color(MASSING.partyWallBlend), 0.5).multiplyScalar(shade)
         : new THREE.Color(baseColor).multiplyScalar(shade);
 
     // A face with coverMeters maps its texture slice onto only the first N
@@ -1312,7 +2452,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // as a plain context-toned wall.
     let renderEdge = edge;
     if (isTextured && face.coverMeters) {
-      const frame = faceFrame(edge, building.height, face, scene);
+      const frame = faceFrame(edge, wallTop, face, scene);
       const coverUnits = Math.min(face.coverMeters * scene.projection.scale, edge.length);
       const dx = (frame.right.x - frame.left.x) / edge.length;
       const dz = (frame.right.z - frame.left.z) / edge.length;
@@ -1320,7 +2460,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       renderEdge = { ...edge, start: frame.left, end: cut, length: coverUnits };
       if (edge.length - coverUnits > 1e-6) {
         const rest = new THREE.Mesh(
-          wallQuad({ ...edge, start: cut, end: frame.right, length: edge.length - coverUnits }, building.height, null, scene),
+          wallQuad({ ...edge, start: cut, end: frame.right, length: edge.length - coverUnits }, wallTop, null, scene),
           new THREE.MeshBasicMaterial({
             color: new THREE.Color(baseColor).multiplyScalar(faceShade.other),
             side: THREE.DoubleSide,
@@ -1331,11 +2471,41 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
       }
     }
 
+    // Interior light-court walls (the rear `other`-role complex of well dividers
+    // + returns) read as bright flat-red "threads" hanging in the wells when seen
+    // near edge-on from above — flat MeshBasic walls show full base color at any
+    // grazing angle, and the short returns fall under decorateTypologicalWall's
+    // 2m floor so they get no brick to break it up. On a full-block hero the
+    // three street elevations are textured chord faces, so EVERY non-textured
+    // wall here is back-of-building (rear + the set-back light-court complex,
+    // roles `other` AND the set-back `greenpoint`). The wells sit in shadow, so
+    // sink the whole back complex to a dim shaft tone — slivers recede, decorated
+    // court faces just read as dimmer brick. Scoped to frontage heroes so corner
+    // heroes (Sonny's camera-visible east wall, etc.) keep their lit returns.
+    if (!isTextured && composite?.frontage) {
+      const undecorated = renderEdge.length / scene.projection.scale < 2;
+      wallColor.multiplyScalar(undecorated ? 0.32 : 0.5);
+    }
+    // A byBin face whose bespoke texture carries a parapet/gable ABOVE the main
+    // cornice sets `roofV` (the texture v-fraction where the real roofline sits).
+    // That textured face maps to faceTop = wallTop/roofV so the painted crown
+    // projects ABOVE the structural roof (sides/rear/roof slab still cap at
+    // wallTop), and its baked-alpha sky (keyed transparent above the gable in the
+    // .trim.png) is dropped via alphaTest. No roofV ⇒ faceTop === wallTop and the
+    // material is opaque — byte-identical for every other byBin hero (Land of
+    // Barbers, Oak & Iron, Verge, Sereneco). Same mechanism as the chord path's
+    // faceHeight = wallTop/roofV (Astral); here on the single-face per-edge path.
+    const faceRoofV = isTextured && face.roofV != null ? face.roofV : 1;
+    const faceTop = wallTop / faceRoofV;
     const material = new THREE.MeshBasicMaterial({
       color: wallColor,
       side: THREE.DoubleSide,
     });
-    const wall = new THREE.Mesh(wallQuad(renderEdge, building.height, isTextured ? face : null, scene), material);
+    if (faceRoofV < 1) {
+      material.transparent = true;
+      material.alphaTest = 0.5; // drop the keyed-out paper sky above the gable
+    }
+    const wall = new THREE.Mesh(wallQuad(renderEdge, faceTop, isTextured ? face : null, scene), material);
     wall.userData = { facadeSlot: `${building.placeId}--${edge.role}` };
     heroGroup.add(wall);
     const cull = addCullable(wall, edge.normal);
@@ -1344,7 +2514,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     // already dropped at the group-composite guard) get a typological brick
     // back-wall treatment instead of staying a flat colored slab.
     if (!isTextured) {
-      decorateTypologicalWall(wall, renderEdge, building.height, wallColor.getHex(), scene);
+      decorateTypologicalWall(wall, renderEdge, wallTop, wallColor.getHex(), scene);
       continue;
     }
     const faceKey = `${building.bin}:${edge.role}`;
@@ -1354,7 +2524,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
           // The build is wrapped in a rebuild closure so the dev recess editor
           // can re-snap this one face live (remove old group, build new).
           heroGroup.remove(wall);
-          const frame = faceFrame(renderEdge, building.height, face, scene);
+          const frame = faceFrame(renderEdge, faceTop, face, scene);
           const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
           const hexBase = new THREE.Color(baseColor).multiplyScalar(shade).getHex();
           let current = null;
@@ -1383,9 +2553,148 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     loadFaceTexture(faceTextureUrl(face), apply);
   }
 
+  // Full-block hero chord faces (Astral): a bespoke texture covers a long,
+  // oriel-segmented wall that "longest edge per role" can't carry, so each such
+  // wall is drawn from a straight CHORD through its classified edges — the
+  // street-most band, so interior light courts don't drag the plane backward —
+  // a hair proud of the typological wall. The Franklin frontage rides
+  // franklinAxis/role "franklin"; bespoke side faces (Java now; India later)
+  // ride greenpointAxis and their classification role. Each chord face is keyed
+  // `BIN:<face>` (frontage/java/…), distinct from the per-edge `BIN:role` keys,
+  // so a spec swaps the flat segment for the carved oriel/recess assembly.
+  const chordFaces = [];
+  if (composite?.frontage) {
+    chordFaces.push({
+      axis: scene.franklinAxis,
+      role: "franklin",
+      face: "frontage",
+      shade: faceShade.franklin,
+      roofV: composite.frontage.roofV ?? 1,
+      segments: composite.frontage.segments,
+    });
+  }
+  for (const side of composite?.sides ?? []) {
+    chordFaces.push({
+      axis: side.axis === "greenpoint" ? scene.greenpointAxis : scene.franklinAxis,
+      role: side.selectRole,
+      face: side.face,
+      shade: side.shade ?? faceShade.other,
+      roofV: side.roofV ?? 1,
+      segments: side.segments,
+    });
+  }
+  if (chordFaces.length) {
+    const upm = scene.projection.scale;
+    // Tiny clearance proud of the footprint edge. Each chord plane is pushed out
+    // along its OWN normal, so two perpendicular planes meet at a corner offset
+    // by ~proud·√2 — at 0.02 that opened a ~0.4m wedge to the sidewalk at the
+    // Franklin↔Java/India corners. The band-filter (chordCoveredEdges) now drops
+    // the typological wall that used to sit behind the chord, so the large proud
+    // gap it needed is gone; a hair (0.006) keeps z-clearance while the corners
+    // close. Each segment is also extended by `cornerOverlap` along its own run
+    // so adjacent perpendicular planes overlap instead of leaving a seam.
+    const proud = 0.006;
+    // Each plane is pushed `proud` along its OWN normal, so a perpendicular
+    // neighbour's surface sits ~proud past the shared corner along this plane's
+    // run. Extend by just that much (a hair over, for chord-endpoint slop) so the
+    // two planes MEET at the outer miter line instead of over-shooting past it —
+    // 0.025 fanned each plane a brick-width beyond the corner, and the two
+    // textured DoubleSide quads crossed there as a doubled/z-fighting seam with a
+    // tab poking through at the sidewalk.
+    const cornerOverlap = 0.009;
+    for (const cf of chordFaces) {
+      const chord = frontageChord(building.edges, cf.axis, { role: cf.role, unitsPerMeter: upm, frontageBandM: 3 });
+      const outward = { x: chord.cross.x * chord.outwardSign, z: chord.cross.z * chord.outwardSign };
+      // Map this texture so its painted roofline (v = cf.roofV) lands at the
+      // shared roof height `wallTop`, with the parapet/gable crown projecting
+      // above. faceHeight = wallTop / roofV. For the frontage (roofV ===
+      // heroRoofV) this equals building.height — unchanged. For a side texture
+      // whose cornice sits at a different fraction (India/Java ≈0.90 vs the
+      // frontage's 0.86), it rescales the wall so cornice, floor lines and the
+      // ground band all register to the frontage at the corner instead of
+      // floating a few % high.
+      const faceHeight = wallTop / cf.roofV;
+      for (const seg of cf.segments) {
+        const placed = segmentURange(chord, seg, { unitsPerMeter: upm });
+        // Unit direction along the chord run, to extend each end past the corner.
+        const rawLen = Math.hypot(placed.end.x - placed.start.x, placed.end.z - placed.start.z) || 1;
+        const ux = (placed.end.x - placed.start.x) / rawLen;
+        const uz = (placed.end.z - placed.start.z) / rawLen;
+        const start = { x: placed.start.x + outward.x * proud - ux * cornerOverlap, z: placed.start.z + outward.z * proud - uz * cornerOverlap };
+        const end = { x: placed.end.x + outward.x * proud + ux * cornerOverlap, z: placed.end.z + outward.z * proud + uz * cornerOverlap };
+        const length = Math.hypot(end.x - start.x, end.z - start.z);
+        if (length < 1e-6) continue;
+        const segEdge = {
+          start,
+          end,
+          length,
+          midpoint: { x: (start.x + end.x) / 2, z: (start.z + end.z) / 2 },
+          direction: { x: (end.x - start.x) / length, z: (end.z - start.z) / length },
+          normal: outward,
+          role: cf.role,
+        };
+        // Crop the render's cream paper side-margins out of the U range so they
+        // don't map onto the plane edges and read as a pale vertical strip at the
+        // Franklin↔side corners. keyPaperAboveRoofline only clears cream ABOVE the
+        // roofline, so the full-height left/right margins survived until here.
+        // Defaults to the full sheet (0..1) for tightly-pretrimmed renders.
+        const segFace = { key: seg.key, u0: seg.u0 ?? 0, u1: seg.u1 ?? 1, leftEnd: seg.leftEnd ?? "north", flip: Boolean(seg.flip) };
+        const segMat = new THREE.MeshBasicMaterial({
+          color: new THREE.Color(baseColor).multiplyScalar(cf.shade),
+          side: THREE.DoubleSide,
+        });
+        const segWall = new THREE.Mesh(wallQuad(segEdge, faceHeight, segFace, scene), segMat);
+        segWall.userData = { facadeSlot: `${building.placeId}--${cf.face}` };
+        heroGroup.add(segWall);
+        const segCull = addCullable(segWall, outward, CHORD_CULL_T);
+
+        const segFaceKey = `${building.bin}:${cf.face}`;
+        const segSpec = FACADE_SPECS[segFaceKey];
+        const segRoofV = cf.roofV;
+        const segApply = segSpec
+          ? (rawTexture) => {
+              // Key the cream paper background out of the above-roofline band so
+              // the projecting parapet/gable reads as silhouette, not a flat
+              // billboard. Limited to rows above roofV — protects the sign band
+              // and bright windows below.
+              const texture = segRoofV < 1 ? keyPaperAboveRoofline(rawTexture, segRoofV) : rawTexture;
+              heroGroup.remove(segWall);
+              const frame = faceFrame(segEdge, faceHeight, segFace, scene);
+              const debug = new URLSearchParams(window.location.search).get("specdebug") === "1";
+              const hexBase = new THREE.Color(baseColor).multiplyScalar(cf.shade).getHex();
+              let current = null;
+              const rebuild = (specOverride) => {
+                if (current) {
+                  heroGroup.remove(current);
+                  disposeGroup(current);
+                }
+                current = buildFacadeAssembly({ frame, spec: specOverride, texture, unitsPerMeter: scene.projection.scale, baseColor: hexBase, debug });
+                current.userData.faceKey = segFaceKey;
+                heroGroup.add(current);
+                segCull.object = current;
+                segCull.refresh();
+                requestRender?.();
+              };
+              rebuild(segSpec);
+              registerFacadeFace(segFaceKey, { rebuild, texture, u0: segFace.u0, u1: segFace.u1, flip: Boolean(segFace.flip), file: SPEC_FILE_BY_FACE[segFaceKey], faceSpec: segSpec });
+            }
+          : (texture) => {
+              segMat.map = texture;
+              segMat.color.setScalar(cf.shade);
+              segMat.needsUpdate = true;
+            };
+        loadFaceTexture(facadeTextureUrls[seg.key], segApply);
+      }
+    }
+  }
+
   // Roof field: warm membrane tone with paper-grain speckle. The texture
   // transform maps the footprint bbox onto the canvas square (ShapeGeometry
   // UVs equal the shape coordinates).
+  // The roof sits at `wallTop` (= height·roofV) — the real roofline — flush with
+  // every structural wall. Only the frontage segment's painted parapet/gable
+  // rises above it. (roofV 1 ⇒ wallTop === building.height for every other hero.)
+  const roofTop = wallTop;
   const shape = footprintShape(building.polygon);
   const roofGeometry = new THREE.ShapeGeometry(shape);
   const roofTexture = makeRoofTexture();
@@ -1394,24 +2703,29 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
   roofTexture.offset.set(-box.min.x * roofTexture.repeat.x, -box.min.y * roofTexture.repeat.y);
   const roofMesh = new THREE.Mesh(roofGeometry, new THREE.MeshBasicMaterial({ map: roofTexture }));
   roofMesh.rotation.x = -Math.PI / 2;
-  roofMesh.position.y = building.height;
+  roofMesh.position.y = roofTop;
   heroGroup.add(roofMesh);
 
   // Parapet ring only on edges without a drawn cornice — spec'd street
   // faces carry their own cornice-to-roofline assembly, so a second
-  // geometric parapet would double the roofline there.
+  // geometric parapet would double the roofline there. A segmented frontage
+  // (Astral) paints its parapet/gable on the texture under the `:frontage` face
+  // key, NOT the per-edge `:role` key, so the cornice check below misses it —
+  // skip the franklin-role edges it covers so the painted parapet stands alone.
   const parapetHeight = 0.05;
   const parapetThickness = 0.024;
   for (const edge of building.edges) {
+    if (composite?.noParapet) continue;
     if (FACADE_SPECS[`${building.bin}:${edge.role}`]?.cornice) continue;
+    if (chordCoveredRoles.has(edge.role) || chordCoveredEdges.has(edge)) continue;
     const { start, end } = edge;
     const segment = new THREE.Mesh(
       new THREE.BoxGeometry(edge.length + parapetThickness, parapetHeight, parapetThickness),
-      new THREE.MeshLambertMaterial({ color: 0xc7b896 }),
+      new THREE.MeshLambertMaterial({ color: MASSING.parapet }),
     );
     segment.position.set(
       (start.x + end.x) / 2,
-      building.height + parapetHeight / 2,
+      roofTop + parapetHeight / 2,
       (start.z + end.z) / 2,
     );
     segment.rotation.y = -Math.atan2(end.z - start.z, end.x - start.x);
@@ -1437,7 +2751,7 @@ function buildHeroBuilding(three, building, scene, requestRender, isActive = () 
     new THREE.MeshBasicMaterial({ color: II_PALETTE.ink, transparent: true, opacity: 0.16, depthWrite: false }),
   );
   shadowMesh.rotation.x = -Math.PI / 2;
-  shadowMesh.position.set(building.height * 0.2, 0.004, building.height * 0.07);
+  shadowMesh.position.set(heroHeight * 0.2, 0.004, heroHeight * 0.07);
   heroGroup.add(shadowMesh);
 
   three.add(heroGroup);
@@ -1536,13 +2850,62 @@ function footprintEdges(polygon, centroid) {
   return edges;
 }
 
+// Index of a building's STREET-facing front edge among `edges`. The inked
+// Franklin block all fronts onto the Franklin centerline (the derived street
+// line through the origin along franklinAxis). The front edge is the one whose
+// outward normal points most directly toward that centerline. Used so inked
+// buildings only carry windows/storefront/cornice on the street face — side and
+// rear walls render as plain party-wall brick (no punched windows). Returns 0
+// if axes are unavailable.
+function inkedFrontEdgeIndex(edges, centroid, scene) {
+  const fa = scene.franklinAxis;
+  if (!fa || !edges.length) return 0;
+  // Component of the centroid offset perpendicular to the Franklin line, then
+  // point from the building back toward the line = the street direction.
+  const cdotf = centroid.x * fa.x + centroid.z * fa.z;
+  const perp = { x: centroid.x - cdotf * fa.x, z: centroid.z - cdotf * fa.z };
+  const mag = Math.hypot(perp.x, perp.z) || 1;
+  const toStreet = { x: -perp.x / mag, z: -perp.z / mag };
+  let best = 0;
+  let bestScore = -Infinity;
+  for (let i = 0; i < edges.length; i += 1) {
+    const score = edges[i].normal.x * toStreet.x + edges[i].normal.z * toStreet.z;
+    if (score > bestScore) { bestScore = score; best = i; }
+  }
+  return best;
+}
+
+// For a corner building, the index of its SECOND street face (the cross-street),
+// or -1. Among edges roughly perpendicular to the front, pick the one whose
+// outward normal points most along +franklinAxis — i.e. toward the cross street
+// at the south (Milton) end of the block, where the only corner (97) sits.
+// (Assumes a south-end corner; revisit if a north-end corner is added.)
+function inkedCornerSecondEdgeIndex(edges, frontIndex, scene) {
+  const fa = scene.franklinAxis;
+  if (!fa || frontIndex < 0) return -1;
+  const fn = edges[frontIndex].normal;
+  let best = -1;
+  let bestScore = -Infinity;
+  for (let i = 0; i < edges.length; i += 1) {
+    if (i === frontIndex) continue;
+    const n = edges[i].normal;
+    if (Math.abs(n.x * fn.x + n.z * fn.z) >= 0.5) continue; // keep only ~perpendicular faces
+    const score = n.x * fa.x + n.z * fa.z;
+    if (score > bestScore) { bestScore = score; best = i; }
+  }
+  return best;
+}
+
 // Typological back-wall treatment for a hero's exposed non-street faces:
 // faint storey score-lines + a sparse grid of dark "punched" windows, drawn
 // in the II-C flat-inked idiom (windows are dark shapes sitting a hair proud
 // of the brick, not real recesses) so rotated views read as real building
 // backs instead of flat colored slabs. The decoration meshes are parented
 // under `wall`, so they inherit its per-view cull visibility for free.
-function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false, typology = null) {
+// `baseFraction` (0..1): a podium zone at the bottom of the wall where no windows
+// or storey lines are drawn — used by a tower that rises from a shorter commercial
+// podium so its lowest rows don't cut into the podium mass.
+function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit = false, typology = null, baseFraction = 0) {
   const { left, right, normal } = faceFrame(edge, height, null, scene);
   const upm = scene.projection.scale;
   const lengthM = edge.length / upm;
@@ -1586,9 +2949,10 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
     : Math.min(6, Math.max(2, Math.round(heightM / 3.5)));
   const cols = Math.min(6, Math.max(1, Math.floor(lengthM / 4.5)));
 
-  // Faint horizontal storey lines (skip ground line and roofline).
+  // Faint horizontal storey lines (skip ground line, roofline, and podium zone).
   for (let f = 1; f < floors; f += 1) {
     const y = f / floors;
+    if (y < baseFraction) continue;
     target.add(quad(0.04, 0.96, y - 0.004, y + 0.004, 0.006, courseColor, 0.35));
   }
 
@@ -1613,12 +2977,811 @@ function decorateTypologicalWall(target, edge, height, baseColorHex, scene, lit 
     for (let f = floorStart; f < floors; f += 1) {
       const cyBottom = (f + 0.26) / floors;
       const cyTop = (f + 0.78) / floors;
+      if (cyBottom < baseFraction) continue; // window sits in the podium zone — skip
       const x0 = cx - winW / 2;
       const x1 = cx + winW / 2;
       target.add(quad(x0, x1, cyBottom, cyTop, 0.004, windowColor, 1));
       // thin ink lintel shadow above the opening
       target.add(quad(x0, x1, cyTop, cyTop + 0.012, 0.008, lintelColor, 0.3));
     }
+  }
+}
+
+// Module-memoized inked-component textures. `repeat` (bays × storeys) is
+// effectively unique per building, so keying the whole texture by file+repeat
+// meant the same PNG was fetched + decoded hundreds of times — each decode firing
+// a full re-render (measured: ~795 renders / ~22s settle). Instead we decode each
+// PNG's *image* exactly once (`__inkedImage`, keyed by file) and share it across
+// lightweight per-repeat Texture objects (`__inkedTexCache`), which only differ in
+// their wrap/repeat. Result: N decodes = N distinct files, not N buildings.
+const __inkedImage = new Map(); // file -> { image, waiters:[{tex,onLoad}] }
+const __inkedTexCache = new Map(); // file@repeat -> Texture sharing the decoded image
+let __glazingTex = null; // shared inked-glass texture (built once)
+function inkedTexture(file, repeat, onLoad) {
+  const key = repeat ? `${file}@${repeat[0]}x${repeat[1]}` : file;
+  if (__inkedTexCache.has(key)) {
+    if (onLoad) onLoad(); // late caller still gets a repaint
+    return __inkedTexCache.get(key);
+  }
+  const tex = new THREE.Texture();
+  tex.colorSpace = THREE.SRGBColorSpace;
+  if (repeat) {
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(repeat[0], repeat[1]);
+  }
+  __inkedTexCache.set(key, tex);
+
+  let entry = __inkedImage.get(file);
+  if (entry?.image) {
+    tex.image = entry.image;
+    tex.needsUpdate = true;
+    if (onLoad) onLoad();
+    return tex;
+  }
+  if (!entry) {
+    entry = { image: null, waiters: [] };
+    __inkedImage.set(file, entry);
+    const img = new Image();
+    img.onload = () => {
+      entry.image = img;
+      for (const w of entry.waiters) {
+        w.tex.image = img;
+        w.tex.needsUpdate = true;
+        if (w.onLoad) w.onLoad();
+      }
+      entry.waiters = [];
+    };
+    img.src = new URL(`../assets/inked/${file}`, import.meta.url).href;
+  }
+  entry.waiters.push({ tex, onLoad });
+  return tex;
+}
+
+// The cornice PNG is a head-on elevation with transparent margins around the
+// painted molding. Mapped raw, the top margin sits just below the roofline
+// (exposing brick above) and the bottom margin floats the soffit off the
+// molding. Trim to the alpha bounding box so the painted crown lands exactly at
+// the band top and the molding bottom is where the soffit attaches. Async
+// (canvas), cached; callers pass onReady to draw + re-render once it resolves.
+let __corniceTex = null;
+let __corniceLoading = false;
+const __corniceWaiters = [];
+function inkedCorniceTexture(onReady) {
+  if (__corniceTex) return __corniceTex; // cached → caller draws synchronously
+  if (onReady) __corniceWaiters.push(onReady);
+  if (__corniceLoading) return null;
+  __corniceLoading = true;
+  const img = new Image();
+  img.onload = () => {
+    const c = document.createElement("canvas");
+    c.width = img.width; c.height = img.height;
+    const ctx = c.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    const px = ctx.getImageData(0, 0, c.width, c.height);
+    let minX = c.width, minY = c.height, maxX = -1, maxY = -1;
+    for (let y = 0; y < c.height; y += 1) {
+      for (let x = 0; x < c.width; x += 1) {
+        if (px.data[(y * c.width + x) * 4 + 3] > 24) {
+          if (x < minX) minX = x; if (x > maxX) maxX = x;
+          if (y < minY) minY = y; if (y > maxY) maxY = y;
+        }
+      }
+    }
+    if (maxX < minX) { minX = 0; minY = 0; maxX = c.width - 1; maxY = c.height - 1; }
+    const cr = document.createElement("canvas");
+    cr.width = maxX - minX + 1; cr.height = maxY - minY + 1;
+    cr.getContext("2d").drawImage(c, minX, minY, cr.width, cr.height, 0, 0, cr.width, cr.height);
+    const tex = new THREE.CanvasTexture(cr);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 16;
+    __corniceTex = tex;
+    for (const w of __corniceWaiters.splice(0)) w(tex);
+  };
+  img.src = new URL("../assets/inked/brick-cornice.v1.png", import.meta.url).href;
+  return null;
+}
+
+// Procedural OPEN-IRONWORK railing texture: dark balusters + top/bottom rails on a
+// transparent ground, so fire-escape rails read as see-through iron (not solid dark
+// shelves). Drawn once, tinted in-engine, tiled horizontally. No GPT asset needed.
+let __railTex = null;
+function inkedRailingTexture() {
+  if (__railTex) return __railTex;
+  const W = 128, H = 64, c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const ctx = c.getContext("2d");
+  ctx.clearRect(0, 0, W, H);
+  // White iron pixels (alpha-keyed): MeshBasicMaterial multiplies map × tint, so
+  // white lets the per-member IRON tint show through (a black texture would clamp
+  // every rail to black regardless of tint — see fireEscapeColor). Rest stays
+  // transparent → see-through balusters.
+  ctx.fillStyle = "#fff";
+  ctx.fillRect(0, 3, W, 6);        // top rail
+  ctx.fillRect(0, H - 9, W, 6);    // bottom rail
+  const n = 11, bw = 3;
+  for (let i = 0; i < n; i += 1) {
+    ctx.fillRect(Math.round((i + 0.5) * (W / n) - bw / 2), 3, bw, H - 6); // balusters
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.anisotropy = 8;
+  __railTex = tex;
+  return tex;
+}
+
+// Inked component-kit facade on one wall edge. Same registration model as
+// decorateTypologicalWall: quads sit a hair proud of the wall (outward normal
+// offset), parented under `target`, relying on the opaque massing to occlude
+// back walls — so this works at block density where scene-root floating quads
+// mis-register/bleed. Composes wall (tiled brick) + ground band + window grid +
+// cornice from `params` (tint, storeys, bays); window/cornice are alpha-keyed.
+// `streetFace` gates the front-facade elements: when false (side/rear walls)
+// only plain brick + party seams are drawn — no windows, storefront, or cornice
+// — so side facades read as blank party-wall brick.
+// Painted-content span (width,height as fractions of the decal rect) of each
+// family's window PNG — the alpha bbox, measured from the assets. The transparent
+// margin means the painted window is smaller than its rect; we expand the decal so
+// its content fills the opening and the recess reveals align to the glass, not the
+// rect (otherwise the recess "envelopes" a too-small window).
+const WINDOW_CONTENT_SPAN = {
+  brick: [0.708, 0.836],
+  brownstone: [0.617, 0.859],
+  clapboard: [0.505, 0.752],
+  "modern-flat": [0.618, 0.845],
+};
+// Real-world meters one wall tile spans [width, height], per family — sets the
+// texture repeat so the masonry/siding reads at life scale. Brick ≈0.9m tile
+// (~11 courses). Clapboard laps ≈0.18m (taller tile = fewer, bigger laps).
+// Brownstone ashlar courses ≈0.35m (coarser than brick). Default = brick.
+const WALL_TILE_M = {
+  brick: [1.0, 0.9],
+  "modern-flat": [1.0, 0.9],
+  clapboard: [2.0, 2.0],
+  brownstone: [2.0, 2.1],
+};
+// Luminance-masked tint for the window decal: multiply only the LIGHT pixels (the
+// painted frame / sash / muntins / stone surround) by the trim color, leaving the
+// DARK glass panes untouched — "color the frame, not the glass". A flat material
+// tint would recolor the glass too. Injected into MeshBasicMaterial's fragment
+// shader; the closure source is identical across calls so all window materials
+// share one compiled program (only the uFrameTint uniform differs).
+function applyFrameTint(material, tintHex) {
+  const c = new THREE.Color(tintHex);
+  material.onBeforeCompile = (shader) => {
+    shader.uniforms.uFrameTint = { value: c };
+    shader.fragmentShader =
+      "uniform vec3 uFrameTint;\n" +
+      shader.fragmentShader.replace(
+        "#include <map_fragment>",
+        "#include <map_fragment>\n" +
+          "  float _lum = dot(diffuseColor.rgb, vec3(0.299, 0.587, 0.114));\n" +
+          "  diffuseColor.rgb *= mix(vec3(1.0), uFrameTint, smoothstep(0.10, 0.45, _lum));",
+      );
+  };
+}
+
+function decorateInkedWall(target, edge, height, params, scene, streetFace = true, requestRender, miter = null, openingsFace = streetFace, exposedRanges = null, streetNormal = null, isFrontage = streetFace, plainEntry = false) {
+  const { left, right, normal } = faceFrame(edge, height, null, scene);
+  const upm = scene.projection.scale;
+  if (edge.length / upm < 2 || height / upm < 2) return; // too small to read
+  const isKit = params.family != null;
+  const family = params.family ?? "brick";
+  // Dual-material: the ground floor (band / stoop / door) renders in groundFamily
+  // while the wall above stays `family`. Both default to `family`, so single-
+  // material buildings are byte-identical. (e.g. 168 Franklin: brownstone base,
+  // light brick above.)
+  const groundFamily = params.groundFamily ?? family;
+  const groundTint = params.groundTint ?? params.tint;
+  const dualMaterial = isKit && groundFamily !== family;
+  const recessProj = isKit ? (params.windowRecess ?? 0) * upm : 0; // meters -> scene units
+  // True carved recess: the solid massing sits ~coplanar behind the inked skin, so
+  // glass can't recede behind the wall plane without the mass occluding it. Instead
+  // push the WHOLE skin proud of the mass by SKIN_BASE, then carve openings back
+  // toward (never behind) the mass. Baked into `point` so every coplanar element
+  // (wall, ground, cornice, stoop, seams) shifts together and keeps its relations;
+  // openings subtract recessProj locally to sink the glass. Non-recessed walls keep
+  // the old flush offset (SKIN_BASE = 0) so nothing else moves.
+  const SKIN_BASE = recessProj > 0 ? recessProj + 0.006 : 0;
+  const point = (x, y, off) => [
+    left.x + (right.x - left.x) * x + normal.x * (off + SKIN_BASE),
+    y * height,
+    left.z + (right.z - left.z) * x + normal.z * (off + SKIN_BASE),
+  ];
+  // tex null → solid-color quad (used for party-wall seams).
+  const quad = (r, off, tex, { tint, transparent, opacity, frameTint } = {}) => {
+    const g = new THREE.BufferGeometry();
+    const p = [point(r.x0, r.y0, off), point(r.x1, r.y0, off), point(r.x1, r.y1, off), point(r.x0, r.y1, off)];
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array(p.flat()), 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([1, 0, 0, 0, 0, 1, 1, 1]), 2));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
+    if (tex) m.map = tex;
+    if (frameTint != null) applyFrameTint(m, frameTint);
+    else if (tint != null) m.color.setHex(tint);
+    if (opacity != null) m.opacity = opacity;
+    target.add(new THREE.Mesh(g, m));
+  };
+  // Free-form quad from four explicit world-space corners (each a [x,y,z] from
+  // `point`). Lets callers build surfaces that project out of the wall plane —
+  // e.g. a storefront awning's sloped top + valance — which the planar `quad`
+  // (single normal offset) cannot. uv order matches `quad` (p0..p3 → corners).
+  const quad3 = (p0, p1, p2, p3, tex, { tint, transparent, uv, frameTint } = {}) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array([p0, p1, p2, p3].flat()), 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(uv ?? [1, 0, 0, 0, 0, 1, 1, 1]), 2));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!transparent });
+    if (tex) m.map = tex;
+    if (frameTint != null) applyFrameTint(m, frameTint);
+    else if (tint != null) m.color.setHex(tint);
+    target.add(new THREE.Mesh(g, m));
+  };
+  const darken = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
+  // Hero-matched world-unit sizing (measured off Premier): windows ~1.0×1.7m,
+  // ~2.8m bay rhythm, ~0.66m cornice, ~2.6m brick tile. Deriving brick course,
+  // window, bay, and cornice sizes from world dimensions keeps every procedural
+  // building consistent with the hero corner regardless of its height/width.
+  const frontM = edge.length / upm;
+  const heightM = height / upm;
+  const storeys = Math.max(2, params.storeys);
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  // Cornice height: ~0.85m, matching the Premier hero (the trimmed texture fills
+  // the band 1:1, so the band height IS the real cornice height — 1.7m read as
+  // double the hero). Metric so it stays consistent across building heights.
+  const corniceFrac = params.corniceFrac ?? clamp(0.85 / heightM, 0.045, 0.08);
+  const bays = params.bays ?? clamp(Math.round(frontM / 2.8), 1, 6);
+  const rowHm = ((1 - 1 / storeys - corniceFrac) / Math.max(1, storeys - 1)) * heightM;
+  // Windows tuned up to read even with the hero (~1.25m wide × ~2.0m tall).
+  const winHFrac = clamp(2.0 / rowHm, 0.35, 0.78);
+  const winWFrac = clamp(1.25 / (frontM / bays), 0.3, 0.7);
+  const f = composeInkedFacade({ storeys, bays, corniceFrac, winWFrac, winHFrac });
+  // Brick: ~0.9m tile (the texture shows ~11 courses → ~0.08m/course, real
+  // brick) so course size is fine and matches the hero (was ~3× too coarse).
+  const [tileW, tileH] = WALL_TILE_M[family] ?? WALL_TILE_M.brick;
+  const brickRepeat = [clamp(Math.round(frontM / tileW), 1, 16), clamp(Math.round(heightM / tileH), 1, 24)];
+  // Wall (full-height tiled, family texture): every face, so side/rear read in
+  // material. kitFile("brick","wall") === the legacy file, so non-kit is unchanged.
+  const wallFile = kitFile(family, "wall") ?? "brick-wall.v1.png";
+  const wallTex = inkedTexture(wallFile, brickRepeat);
+  // Recessed openings (windows/doors) carve TRUE holes out of the wall plane so the
+  // sunk glass is visible through them instead of being occluded by a full quad.
+  // Collected during the opening passes, then the wall (+ weathering) is emitted as
+  // a holed ShapeGeometry at the end. `WALL_PLANE` is the outer skin surface (the
+  // hole rim); openings sink to WALL_PLANE - recessProj toward the mass.
+  const WALL_PLANE = 0.004;
+  const wallHoles = [];
+  const emitWall = () => {
+    const drawSkin = (off, tex, opts, yTop = 1) => {
+      // yTop < 1 clips the skin to a base band [0, yTop] (dual-material ground floor).
+      const band = yTop < 1;
+      if (wallHoles.length === 0 && !band) { quad(f.wall, off, tex, opts); return; }
+      const shape = new THREE.Shape();
+      shape.moveTo(0, 0); shape.lineTo(1, 0); shape.lineTo(1, yTop); shape.lineTo(0, yTop); shape.lineTo(0, 0);
+      for (const h of wallHoles) {
+        if (h.y0 >= yTop) continue; // skip openings entirely above the band
+        const hy1 = Math.min(h.y1, yTop);
+        const path = new THREE.Path();
+        path.moveTo(h.x0, h.y0); path.lineTo(h.x1, h.y0); path.lineTo(h.x1, hy1); path.lineTo(h.x0, hy1); path.lineTo(h.x0, h.y0);
+        shape.holes.push(path);
+      }
+      const sg = new THREE.ShapeGeometry(shape);
+      const src = sg.attributes.position, n = src.count;
+      const pos = new Float32Array(n * 3), uvs = new Float32Array(n * 2);
+      for (let i = 0; i < n; i += 1) {
+        const x = src.getX(i), y = src.getY(i);
+        const wp = point(x, y, off);
+        pos[i * 3] = wp[0]; pos[i * 3 + 1] = wp[1]; pos[i * 3 + 2] = wp[2];
+        uvs[i * 2] = 1 - x; uvs[i * 2 + 1] = y; // match the flat wall quad's flip
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      g.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+      g.setIndex(Array.from(sg.index.array));
+      const m = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, transparent: !!opts?.transparent });
+      if (tex) m.map = tex;
+      if (opts?.tint != null) m.color.setHex(opts.tint);
+      if (opts?.opacity != null) m.opacity = opts.opacity;
+      target.add(new THREE.Mesh(g, m));
+    };
+    drawSkin(WALL_PLANE, wallTex, { tint: params.tint });
+    // Dual-material ground floor: a band of the GROUND family's wall texture over
+    // the parlor level, proud of the (brick) skin so it reads as a brownstone base
+    // under brick above. Carved openings show through (same holes, clipped).
+    if (dualMaterial && kitHas(groundFamily, "wall")) {
+      const gReps = [brickRepeat[0], Math.max(1, Math.round(brickRepeat[1] * f.ground.y1))];
+      drawSkin(WALL_PLANE + 0.0009, inkedTexture(kitFile(groundFamily, "wall"), gReps), { tint: groundTint }, f.ground.y1);
+    }
+    // Weathering wash (kit only): a transparent grime pass over the wall at the
+    // requested opacity. INKED_FACADE_REAL has no params.weathering → skipped.
+    if (isKit && params.weathering > 0 && kitHas(family, "weathering")) {
+      drawSkin(0.005, inkedTexture(`${family}-weathering.v1.png`, [2, 3]), { transparent: true, opacity: params.weathering });
+    }
+  };
+  const darken2 = (k) => new THREE.Color(params.tint).multiplyScalar(k).getHex();
+  const winTex = inkedTexture(kitFile(family, "window") ?? "brick-window.v1.png");
+  const winTint = params.windowTint; // undefined => window decal renders untinted (today's look)
+  const inExposed = (xc) => !exposedRanges || exposedRanges.some(([a, b]) => xc >= a - 1e-6 && xc <= b + 1e-6);
+  const [spanX, spanY] = WINDOW_CONTENT_SPAN[family] ?? WINDOW_CONTENT_SPAN.brick;
+  // Reveals bridge the wall plane (outer rim, at the hole edge) INWARD to the sunk
+  // glass plane, edge-stretching the WALL material so jambs/head/sill continue the
+  // wall (the hero approach — facadeAssembly.bridgeMesh). The head reads as a
+  // shadowed lintel soffit (dark), the sill catches light (lit), jambs are mid —
+  // the classical drawn-shadow language that makes a carved opening read.
+  const REVEAL = { head: 0.3, sill: 0.82, jamb: 0.56 };
+  // r = opening rect; W = wall-plane off (rim), D = sunk off (glass), D < W.
+  const drawReveals = (r, W, D) => {
+    // head soffit — faces down, deepest shadow
+    quad3(point(r.x0, r.y1, W), point(r.x1, r.y1, W), point(r.x1, r.y1, D), point(r.x0, r.y1, D), wallTex,
+      { tint: darken(params.tint, REVEAL.head), uv: [1 - r.x0, r.y1, 1 - r.x1, r.y1, 1 - r.x1, r.y1, 1 - r.x0, r.y1] });
+    // sill — faces up, catches light
+    quad3(point(r.x0, r.y0, D), point(r.x1, r.y0, D), point(r.x1, r.y0, W), point(r.x0, r.y0, W), wallTex,
+      { tint: darken(params.tint, REVEAL.sill), uv: [1 - r.x0, r.y0, 1 - r.x1, r.y0, 1 - r.x1, r.y0, 1 - r.x0, r.y0] });
+    // left jamb
+    quad3(point(r.x0, r.y0, W), point(r.x0, r.y0, D), point(r.x0, r.y1, D), point(r.x0, r.y1, W), wallTex,
+      { tint: darken(params.tint, REVEAL.jamb), uv: [1 - r.x0, r.y0, 1 - r.x0, r.y0, 1 - r.x0, r.y1, 1 - r.x0, r.y1] });
+    // right jamb
+    quad3(point(r.x1, r.y0, D), point(r.x1, r.y0, W), point(r.x1, r.y1, W), point(r.x1, r.y1, D), wallTex,
+      { tint: darken(params.tint, REVEAL.jamb), uv: [1 - r.x1, r.y0, 1 - r.x1, r.y0, 1 - r.x1, r.y1, 1 - r.x1, r.y1] });
+  };
+  const drawWindow = (w) => {
+    if (!inExposed((w.x0 + w.x1) / 2)) return; // skip the covered (party) part of a face
+    if (recessProj <= 0) { quad(w, 0.008, winTex, { transparent: true, frameTint: winTint }); return; }
+    // The decal is a COMPLETE inked window — its projecting stone lintel and sill
+    // (with their cast shadows) are PAINTED INTO the art. It already carries the full
+    // depth read, so it renders as ONE intact, alpha-keyed plane a hair proud of the
+    // wall skin. We deliberately carve NO hole and add NO wall reveals: recessing a
+    // flat illustration of a *projecting* sill puts that painted sill at the BACK of
+    // the opening with a wall-toned ledge bridging in FRONT of it — the disconnected,
+    // floating-shelf artifact. The decal's own drawn ledges are the only ledges;
+    // nothing is cut, nothing floats, nothing untextured is added.
+    const h = w.y1 - w.y0;
+    // Expanded-decal frame: painted content fills the opening, transparent margins beyond.
+    const cx = (w.x0 + w.x1) / 2, cy = (w.y0 + w.y1) / 2, hw = (w.x1 - w.x0) / 2, hh = h / 2;
+    const x0e = cx - hw / spanX, x1e = cx + hw / spanX, y0e = cy - hh / spanY, y1e = cy + hh / spanY;
+    const off = WALL_PLANE + 0.004; // a hair proud of the wall skin so the painted trim sits in front of the brick
+    quad3(point(x0e, y0e, off), point(x1e, y0e, off), point(x1e, y1e, off), point(x0e, y1e, off), winTex,
+      { transparent: true, frameTint: winTint }); // frame-only tint (glass untouched); default uv maps the decal
+  };
+  const windowFace = openingsFace && (streetFace || isFrontage || !streetNormal ||
+    Math.abs(edge.normal.x * streetNormal.x + edge.normal.z * streetNormal.z) > 0.5);
+  // A real recessed entry door (dark leaf + transom + proud frame), drawn on the
+  // plain wall after the stoop. Replaces the old flat panel that the ground band hid.
+  const drawDoor = (dx0, dx1, dy0, dy1) => {
+    // Doors sink deeper than windows; clamp so the leaf stays just proud of the mass.
+    const D = Math.max(WALL_PLANE - Math.max(recessProj, 0.008) * 1.3, 0.002 - SKIN_BASE);
+    const rect = { x0: dx0, y0: dy0, x1: dx1, y1: dy1 };
+    wallHoles.push(rect);
+    drawReveals(rect, WALL_PLANE, D);
+    // Textured paneled door (+ transom), cropped from the GROUND family's door-stoop
+    // art (dual-material: the entry belongs to the ground floor, not the wall above).
+    const doorFile = kitHas(groundFamily, "door-stoop") ? `${groundFamily}-door.v1.png` : null;
+    if (doorFile) {
+      quad(rect, D, inkedTexture(doorFile),
+        { tint: params.doorTint != null ? params.doorTint : darken(groundTint, 0.72), transparent: true });
+    } else {
+      quad(rect, D, null, { tint: params.doorTint != null ? params.doorTint : darken2(0.3) }); // flat fallback leaf
+    }
+  };
+  if (streetFace) {
+    // Street face: storefront band, OR a 3D stoop + door (kit rowhouse), OR a
+    // recessed entry door + ground windows (non-stoop kit family). `plainEntry`
+    // marks a SECONDARY frontage of the same building (a corner lot's other
+    // street): it still gets a door so no frontage reads as blank, but the
+    // storefront / 3D stoop / fire escape stay on the primary frontage only.
+    if (params.storefront && (!plainEntry || params.storefront.wrapCorner)) {
+      // Entrance routing (chamfer corner): the DIAGONAL face carries the single
+      // door and NO awning (it's the open corner entry); the Franklin/Kent flanks
+      // are continuous glazing under the awning. Without a chamferMid, fall back to
+      // the old rule (door on the primary face, glass on plainEntry frontages).
+      const entranceRouting = !!params.chamferMid;
+      const isChamfer = entranceRouting && dist(edge.midpoint, params.chamferMid) < 0.08;
+      const secondary = entranceRouting ? !isChamfer : plainEntry;
+      decorateStorefront({ quad, quad3, point, edgeLen: edge.length, height }, f.ground, params.storefront, params, { secondary, suppressAwning: isChamfer, entrance: isChamfer });
+    } else {
+      // Commercial ground floors carry a storefront (drawn separately) — never a
+      // residential 3D stoop, even for stoop-eligible families.
+      const drewStoop = isKit && resolveHasStoop(params, wantsStoop(family)) && !params.commercialGround && !plainEntry;
+      if (drewStoop) {
+        const stoop = buildStoopGeometry({ frontM, doorCenterM: frontM / 2 });
+        // Per-face stone read so it looks like a 3D stoop, not a flat box: smooth
+        // dressed treads/landing (lit) vs shadowed risers, with the family masonry
+        // texture on the raked side walls + newel posts. Tints derive from params.tint.
+        // Stoop masonry follows the GROUND family/tint (a brownstone base keeps its
+        // brownstone stoop even when the wall above is brick).
+        const stoopWallTex = inkedTexture(kitFile(groundFamily, "wall") ?? wallFile);
+        const STOOP_STYLE = {
+          tread:    { tint: darken(groundTint, 0.92) },
+          platform: { tint: darken(groundTint, 0.95) },
+          riser:    { tint: darken(groundTint, 0.58) },
+          coping:   { tint: darken(groundTint, 0.78) },
+          cheek:    { tex: stoopWallTex, tint: darken(groundTint, 0.72) },
+          newel:    { tex: stoopWallTex, tint: darken(groundTint, 0.84) },
+        };
+        for (const q of stoop.quads) {
+          const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
+          const st = STOOP_STYLE[q.role] ?? { tint: darken(groundTint, 0.72) };
+          quad3(a, b, c, d, st.tex ?? null, { tint: st.tint });
+        }
+        // Plain wall is the full-height wall texture (no painted ground band), so the
+        // door + parlor windows are rendered by the kit — identical to upper floors.
+        const doorWf = (stoop.uR - stoop.uL) / frontM;
+        const dx0 = 0.5 - doorWf / 2, dx1 = 0.5 + doorWf / 2;
+        const doorTopV = Math.min((stoop.topV + 2.1) / heightM, 1 - corniceFrac - 0.01); // ~2.1m leaf, below cornice
+        drawDoor(dx0, dx1, stoop.topV / heightM, doorTopV);
+        // Parlor-floor windows in the bay rhythm, skipping the door bay.
+        const ref = f.windows[0];
+        if (ref) {
+          const winW = ref.x1 - ref.x0, winH = ref.y1 - ref.y0;
+          const yb = Math.min(stoop.topV / heightM + 0.03, f.ground.y1 - winH - 0.02);
+          const yt = yb + winH;
+          if (yt < f.ground.y1) {
+            for (let c = 0; c < bays; c += 1) {
+              const xc = (c + 0.5) / bays;
+              const wx0 = xc - winW / 2, wx1 = xc + winW / 2;
+              if (wx1 > dx0 - 0.015 && wx0 < dx1 + 0.015) continue; // skip the door bay
+              if (wx0 < 0.02 || wx1 > 0.98) continue;
+              drawWindow({ x0: wx0, x1: wx1, y0: yb, y1: yt });
+            }
+          }
+        }
+      } else {
+        // Residential non-stoop: recessed ground-floor windows + one recessed
+        // entry door, mirroring the upper-floor rhythm (replaces the old flat
+        // ground-band texture / flat door-stoop PNG / draw-nothing paths). The
+        // door is part of the composed row, so EVERY residential building gets
+        // an entry regardless of whether its family has door-stoop art.
+        for (const w of f.groundWindows) drawWindow(w);
+        if (f.door) drawDoor(f.door.x0, f.door.x1, f.door.y0, f.door.y1);
+        if (params.doorAwning === true && streetFace) {
+          const da = buildDoorAwningGeometry({ frontM, heightM, doorCenterM: frontM / 2, doorTopM: 2.2 });
+          for (const q of da.quads) {
+            const corners = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
+            const [a, b, c, d] = corners;
+            const tint = q.role === "side" ? FACADE_RELIEF.soffit : II_PALETTE.ink;
+            if (d !== undefined) {
+              quad3(a, b, c, d, null, { tint }); // 4-corner top or valance
+            } else {
+              quad3(a, b, c, a, null, { tint }); // 3-corner side closer: repeat first point to collapse degenerate quad
+            }
+          }
+        }
+      }
+    }
+  }
+  if (windowFace) {
+    // Windows on the street + front/rear-aligned exposed faces, clipped to the
+    // exposed runs. Perpendicular side (lot-line/party) walls stay blank.
+    for (const w of f.windows) drawWindow(w);
+  }
+  // Emit the wall last, now that every recessed opening has registered its hole, so
+  // the sunk glass/reveals are visible through true cutouts instead of behind a
+  // solid quad. (Opaque; draw order vs. the earlier proud bands is depth-sorted.)
+  emitWall();
+  // Front fire escape (street face only, prewar masonry >=4 storeys). Rails read as
+  // OPEN ironwork via the procedural railing texture (see-through balusters), not
+  // solid shelves; decks are thin platforms; the ladder is a slender stringer. Dark
+  // iron tint from the family palette. Projects proud, occluded from the rear by mass.
+  const feDecision = resolveFireEscape(params, isKit && wantsFireEscape(family, storeys));
+  if (streetFace && !plainEntry && feDecision.on) {
+    const fe = buildFireEscapeGeometry({ frontM, heightM, storeys, variant: feDecision.variant });
+    // Dark iron is NEUTRAL near-black — NOT a brick tint, or the members read as
+    // painted wood. Slightly warm charcoal so it sits in the II-C palette; the
+    // open-rail texture renders true black on its iron pixels (so it matches).
+    // Per-BIN painted-iron override (snapped to TRIM_TONES); deck stays the
+    // brighter face so the platform edge still reads. Falls back to the neutral
+    // near-black iron palette when unset (byte-stable).
+    const IRON = params.fireEscapeColor != null ? darken(params.fireEscapeColor, 0.7) : II_PALETTE.fireEscapeIron;
+    const IRON_DECK = params.fireEscapeColor != null ? params.fireEscapeColor : II_PALETTE.fireEscapeIronDeck;
+    const railTex = inkedRailingTexture();
+    for (const q of fe.quads) {
+      const [a, b, c, d] = q.corners.map(([u, v, w]) => point(u / frontM, v / heightM, w * upm));
+      if (q.role === "rail") {
+        quad3(a, b, c, d, railTex, { tint: IRON, transparent: true }); // open balusters
+      } else if (q.role === "deck") {
+        quad3(a, b, c, d, null, { tint: IRON_DECK });                   // thin platform
+      } else { // stringer, tread, handrail, ladderRail, rung, baluster — solid iron
+        quad3(a, b, c, d, null, { tint: IRON });
+      }
+    }
+  }
+  // Cornice on the street face(s): a projecting painted crown that butts against
+  // the neighbour at party lines (no overhang there, so it never spills onto the
+  // next building) but miters/overhangs at a corner building's convex corner so
+  // the two faces' crowns wrap it. The painted elevation crown sits flush at
+  // the roofline (y=1, no brick above) with the molding bottom (yBot) where the
+  // soffit attaches (no floating plane). Soffit + top cap are dark molding tints
+  // — a Brooklyn cornice top is dark tar/metal.
+  if (openingsFace && kitHas(family, "cornice") && resolveHasCornice(params)) {
+    // The cornice asset is a COMPLETE painted molding (crown + brackets + dentils).
+    // It carries its own light/shadow, so tint it only lightly (keep the detail
+    // legible) rather than darkening it into mud.
+    const corniceColor = params.corniceColor ?? darken(params.tint, 0.82);
+    const CROWN = darken(params.tint, 0.42); // dark soffit/cap/returns (deep shadow)
+    const wallO = 0.006;
+    const pBot = 0.012; // bottom projection (near the wall)
+    const pTop = 0.046; // top projection — the crown oversails furthest
+    const yBot = 1 - corniceFrac;
+    // Span this face's edge; at a corner building's convex corner the shared end
+    // overhangs so the two faces' crowns wrap it (INKED_FACADE_REAL miter path).
+    const ext = clamp(pTop / edge.length, 0, 0.25);
+    const x0 = miter?.start ? -ext : 0;
+    const x1 = miter?.end ? 1 + ext : 1;
+    const drawCornice = (corniceTex) => {
+      // Full molding on a face that leans OUT toward the top, so the crown projects
+      // furthest (a molded profile, not a flat extrusion) AND the texture reads.
+      quad3(point(x0, yBot, pBot), point(x1, yBot, pBot),
+        point(x1, 1, pTop), point(x0, 1, pTop),
+        corniceTex, { tint: corniceColor, transparent: true });
+      // Underside soffit (wall → bottom of the molding).
+      quad3(point(x0, yBot, wallO), point(x1, yBot, wallO),
+        point(x1, yBot, pBot), point(x0, yBot, pBot), null, { tint: CROWN });
+      // Top cap (crown front → back to the roof).
+      quad3(point(x0, 1, pTop), point(x1, 1, pTop),
+        point(x1, 1, wallO), point(x0, 1, wallO), null, { tint: CROWN });
+      // End-return caps (both ends): the tilted side profile, so the cornice reads
+      // as a solid box, not an open band with hollow corners.
+      for (const ex of [x0, x1]) {
+        quad3(point(ex, yBot, wallO), point(ex, yBot, pBot),
+          point(ex, 1, pTop), point(ex, 1, wallO), null, { tint: CROWN });
+      }
+    };
+    const ready = inkedCorniceTexture((tex) => { drawCornice(tex); requestRender?.(); });
+    if (ready) drawCornice(ready);
+  }
+  // R2 building signature (per-BIN roofline/window cues; absent => byte-stable).
+  // Elder Greene: a row of light-stone DIAMOND insets across the parapet band +
+  // a through-window AC unit. Street faces only (openingsFace).
+  const bSig = params.buildingSignature;
+  const isChamferFace = bSig && params.chamferMid && dist(edge.midpoint, params.chamferMid) < 0.08;
+  // Curved brick GABLE over the chamfer corner — runs FIRST, regardless of the
+  // >4 m gate below (the chamfer edge is short, ~3.4 m, and would otherwise be skipped).
+  if (isChamferFace && bSig.corner?.gable === "curved") {
+    const segs = 28;
+    const gH = 0.26;                                  // peak height above the roofline (height-fraction)
+    const goff = WALL_PLANE + 0.006;
+    const prof = (x) => 1 + gH * (0.5 + 0.5 * Math.sin(Math.PI * Math.min(1, Math.max(0, x)))); // raised across, peaks center
+    const cop = tokenColor(bSig.parapet?.tintToken) ?? MASSING.parapet;
+    for (let i = 0; i < segs; i += 1) {
+      const x0 = i / segs, x1 = (i + 1) / segs;
+      const t0 = prof(x0), t1 = prof(x1);
+      quad3(point(x0, 1, goff), point(x1, 1, goff), point(x1, t1, goff), point(x0, t0, goff), wallTex,
+        { tint: params.tint, uv: [1 - x0, 0, 1 - x1, 0, 1 - x1, 1, 1 - x0, 1] });
+      quad3(point(x0, t0 - 0.03, goff + 0.004), point(x1, t1 - 0.03, goff + 0.004),
+        point(x1, t1, goff + 0.004), point(x0, t0, goff + 0.004), null, { tint: cop }); // stone coping
+      quad3(point(x0, 1, goff - 0.012), point(x1, 1, goff - 0.012), point(x1, t1, goff - 0.012), point(x0, t0, goff - 0.012), null,
+        { tint: darken(params.tint, 0.4) }); // dark back so it isn't see-through
+    }
+  }
+  if (bSig && openingsFace && edge.length / upm > 4) {
+    const edgeLengthM = edge.length / upm;
+    // Stone diamonds in the parapet band ABOVE the upper-window heads. Banded off
+    // the REAL window rects (max y1) + the roofline, so they never collide with a
+    // window — the overlap was placing them at window-head height.
+    if (bSig.parapet?.insets === "diamond") {
+      const stone = tokenColor(bSig.parapet.tintToken) ?? MASSING.parapet;
+      const winTop = (Array.isArray(f.windows) && f.windows.length)
+        ? Math.max(...f.windows.map((w) => w.y1)) : 0.82;
+      const bandBot = winTop + 0.025, bandTop = 0.985;
+      if (bandTop - bandBot > 0.05) {
+        const cy = (bandBot + bandTop) / 2;
+        const ry = Math.min(0.06, (bandTop - bandBot) / 2 - 0.004); // fit inside the band
+        const rx = 0.26 / edgeLengthM;        // ~0.26 m wide half-width
+        const off = WALL_PLANE + 0.01;        // proud, reads as a raised stone inset
+        const { insets } = planParapetInsets({ edgeLengthM, spacingM: 3.0 });
+        for (const d of insets) {
+          const cx = d.u;
+          quad3(point(cx, cy + ry, off), point(cx + rx, cy, off),
+            point(cx, cy - ry, off), point(cx - rx, cy, off), null, { tint: stone });
+        }
+      }
+    }
+    // Through-window AC: a small grey box under one upper-floor window (right-ish,
+    // matching the photo). Picks the highest window nearest cx≈0.65.
+    if (bSig.windowAC && Array.isArray(f.windows) && f.windows.length) {
+      const ac = tokenColor(bSig.windowAC.tintToken) ?? II_PALETTE.context[1];
+      const upper = f.windows.filter((w) => w.y0 > 0.45);
+      const pick = (upper.length ? upper : f.windows)
+        .slice().sort((a, b) => Math.abs((a.x0 + a.x1) / 2 - 0.65) - Math.abs((b.x0 + b.x1) / 2 - 0.65))[0];
+      if (pick) {
+        const cxw = (pick.x0 + pick.x1) / 2;
+        const halfW = Math.min((pick.x1 - pick.x0) * 0.34, 0.45 / edgeLengthM);
+        const ax0 = cxw - halfW, ax1 = cxw + halfW;
+        const ay1 = pick.y0 - 0.004, ay0 = ay1 - 0.55 / heightM; // hangs ~0.55 m below the sill
+        const projF = WALL_PLANE + 0.4 * upm, projB = WALL_PLANE + 0.006; // ~0.4 m proud (upm = units/m)
+        // front (louvred grille + inked outline), bottom, two sides — a unit jutting from the wall
+        quad3(point(ax0, ay0, projF), point(ax1, ay0, projF), point(ax1, ay1, projF), point(ax0, ay1, projF), makeACGrilleTexture(ac), {});
+        quad3(point(ax0, ay0, projB), point(ax1, ay0, projB), point(ax1, ay0, projF), point(ax0, ay0, projF), null, { tint: darken(ac, 0.5) });
+        quad3(point(ax0, ay0, projB), point(ax0, ay0, projF), point(ax0, ay1, projF), point(ax0, ay1, projB), null, { tint: darken(ac, 0.7) });
+        quad3(point(ax1, ay0, projF), point(ax1, ay0, projB), point(ax1, ay1, projB), point(ax1, ay1, projF), null, { tint: darken(ac, 0.7) });
+      }
+    }
+  }
+  // Party-wall seams: hairline shadow lines at both edges so abutting buildings
+  // read as distinct without becoming black columns. A dark tone of the
+  // building's own brick (in palette), drawn nearly flush (0.005, just proud of
+  // the 0.004 wall) so they stay flat instead of projecting as ribs.
+  const seamTint = darken(params.tint, 0.55);
+  quad({ x0: 0, y0: 0, x1: 0.008, y1: 1 }, 0.005, null, { tint: seamTint });
+  quad({ x0: 0.992, y0: 0, x1: 1, y1: 1 }, 0.005, null, { tint: seamTint });
+}
+
+// Broad corner-connection fix. decorateInkedWall pushes each face's inked skin
+// proud of the mass by SKIN_BASE along that face's OWN outward normal, so at a
+// convex corner the two skins separate and a vertical notch bares the dark mass
+// between them. Bridge each convex corner with two thin brick quads that meet at
+// the mitered outer corner M = C + (nA+nB)·skinOff — the point where the two
+// offset skin planes intersect — so the masonry wraps the corner. Purely
+// additive (emits into `deco`; the per-face wall geometry is untouched). Skips
+// reflex corners (skins overlap, no gap) and corners where a face is a buried
+// party wall (its skin isn't visible, so there's nothing to close).
+function addInkedCornerFillers(deco, edges, exposed, height, params, scene) {
+  const upm = scene.projection.scale;
+  if (height / upm < 2) return;                          // matches decorateInkedWall's size gate
+  const recessProj = (params.windowRecess ?? 0) * upm;
+  const SKIN_BASE = recessProj > 0 ? recessProj + 0.006 : 0;
+  if (SKIN_BASE <= 0) return;                            // flush skin → no corner gap
+  const skinOff = 0.004 + SKIN_BASE;                     // WALL_PLANE + SKIN_BASE = outer skin surface
+  const family = params.family ?? "brick";
+  const [tileW, tileH] = WALL_TILE_M[family] ?? WALL_TILE_M.brick;
+  const heightM = height / upm;
+  const vReps = Math.min(24, Math.max(1, Math.round(heightM / tileH)));
+  const cornerWm = skinOff / upm;                        // strip width ≈ SKIN_BASE in meters
+  const hReps = Math.max(0.04, cornerWm / tileW);        // keep brick courses at life scale
+  const wallFile = kitFile(family, "wall") ?? "brick-wall.v1.png";
+  const tex = inkedTexture(wallFile, [hReps, vReps]);
+  const tint = new THREE.Color(params.tint).multiplyScalar(0.9).getHex(); // slight corner self-shadow
+  // Polygon winding (xz signed area): a corner is convex iff its turn matches it.
+  let area = 0;
+  for (const e of edges) area += e.start.x * e.end.z - e.end.x * e.start.z;
+  const wind = Math.sign(area);
+  const fill = (p0, p1, p2, p3) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(new Float32Array([p0, p1, p2, p3].flat()), 3));
+    g.setAttribute("uv", new THREE.BufferAttribute(new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]), 2));
+    g.setIndex([0, 1, 2, 0, 2, 3]);
+    const m = new THREE.MeshBasicMaterial({ map: tex, side: THREE.DoubleSide });
+    m.color.setHex(tint);
+    deco.add(new THREE.Mesh(g, m));
+  };
+  const n = edges.length;
+  for (let i = 0; i < n; i += 1) {
+    const a = edges[i], b = edges[(i + 1) % n];
+    if (!exposed[i] || !exposed[(i + 1) % n]) continue;            // buried party-wall corner
+    if (a.length / upm < 2 || b.length / upm < 2) continue;        // a face was too small to draw
+    const C = a.end;
+    if (Math.hypot(C.x - b.start.x, C.z - b.start.z) > 0.02) continue; // not a shared corner
+    const turn = (a.end.x - a.start.x) * (b.end.z - b.start.z) - (a.end.z - a.start.z) * (b.end.x - b.start.x);
+    // Normalize to sin(angle): a mid-wall vertex in an otherwise straight frontage
+    // is a near-collinear "corner" that must NOT spawn a filler plane. Keep only
+    // genuine bends (≳13°); reflex corners (wrong winding) are skipped too.
+    const sinAngle = turn / ((a.length || 1) * (b.length || 1));
+    if (Math.abs(sinAngle) < 0.22 || Math.sign(turn) !== wind) continue;
+    const nA = a.normal, nB = b.normal;
+    const A = [C.x + nA.x * skinOff, C.z + nA.z * skinOff];
+    const B = [C.x + nB.x * skinOff, C.z + nB.z * skinOff];
+    const M = [C.x + (nA.x + nB.x) * skinOff, C.z + (nA.z + nB.z) * skinOff];
+    fill([A[0], 0, A[1]], [M[0], 0, M[1]], [M[0], height, M[1]], [A[0], height, A[1]]);
+    fill([M[0], 0, M[1]], [B[0], 0, B[1]], [B[0], height, B[1]], [M[0], height, M[1]]);
+  }
+}
+
+// Draw the inked storefront vocabulary into the ground band of a commercial
+// building. `quad` is decorateInkedWall's face-local quad helper; `quad3` builds
+// free-form quads from explicit corners (for the projecting awning); `point`
+// maps face-local (x,y,normalOffset) → world. `band` is the face-local ground
+// rect (f.ground). composeStorefront returns BAND-LOCAL rects, which we map into
+// the band before drawing. Flat elements stay just proud of the wall (0.006–
+// 0.011); the awning canopy projects ~1.2m forward via quad3.
+function decorateStorefront(ctx, band, storefront, params, opts = {}) {
+  const { quad, quad3, point, edgeLen, height } = ctx;
+  const secondary = !!opts.secondary; // corner-wrap's secondary frontage: glass, no entry
+  const suppressAwning = !!opts.suppressAwning; // the open corner entrance carries no awning
+  const entrance = !!opts.entrance; // the diagonal corner face IS the door (no display glass)
+  const bw = band.x1 - band.x0;
+  const bh = band.y1 - band.y0;
+  const dark = (hex, k) => new THREE.Color(hex).multiplyScalar(k).getHex();
+  const tint = params.tint;
+  // World aspect (width/height) of a mapped (face-local 0..1) rect — face x
+  // spans the full edge (edgeLen), face y spans the building height. Sizes
+  // canvas textures (the sign) so letters map 1:1 and never stretch.
+  const worldAspect = (r) => ((r.x1 - r.x0) * edgeLen) / ((r.y1 - r.y0) * height);
+
+  // Draw one tenant unit into the horizontal sub-range [ux0,ux1] of the band.
+  const drawUnit = (unit, ux0, ux1) => {
+    const s = composeStorefront(unit);
+    const uw = ux1 - ux0;
+    const map = (r) => ({
+      x0: band.x0 + (ux0 + r.x0 * uw) * bw, x1: band.x0 + (ux0 + r.x1 * uw) * bw,
+      y0: band.y0 + r.y0 * bh, y1: band.y0 + r.y1 * bh,
+    });
+    const frameTint = unit.frameTint ?? dark(tint, 0.45);
+    // Low painted kickplate in the shopfront's own trim color — no brick under
+    // the glass, so the display windows read as meeting the sidewalk.
+    quad(map(s.bulkhead), 0.007, null, { tint: frameTint });
+    const glazeTex = makeInkedGlazingTexture();
+    if (entrance) {
+      // The DIAGONAL corner face is the entrance: a wide recessed double glass
+      // door fills the bay (no display windows). Glass leaves set back behind a
+      // frame, a center stile, and shaded head/jamb reveals so it reads as a real
+      // set-back doorway — the corner you walk in through.
+      const gz = s.glazing && s.glazing.length ? s.glazing : [s.door].flat();
+      const gx0 = Math.min(...gz.map((g) => g.x0)), gx1 = Math.max(...gz.map((g) => g.x1));
+      const gy0 = Math.min(...gz.map((g) => g.y0)), gy1 = Math.max(...gz.map((g) => g.y1));
+      const dr = map({ x0: gx0, x1: gx1, y0: gy0, y1: gy1 });
+      const dFront = 0.011, dBack = -0.006; // leaves sunk behind the wall plane
+      quad(dr, dBack, glazeTex, {});                                        // glass door leaves
+      const cx = (gx0 + gx1) / 2;
+      quad(map({ x0: cx - 0.012, x1: cx + 0.012, y0: gy0, y1: gy1 }), dBack + 0.003, null, { tint: dark(frameTint, 0.8) }); // center stile
+      quad3(point(dr.x0, dr.y1, dFront), point(dr.x1, dr.y1, dFront), point(dr.x1, dr.y1, dBack), point(dr.x0, dr.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head
+      quad3(point(dr.x0, dr.y0, dFront), point(dr.x0, dr.y1, dFront), point(dr.x0, dr.y1, dBack), point(dr.x0, dr.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
+      quad3(point(dr.x1, dr.y0, dFront), point(dr.x1, dr.y1, dFront), point(dr.x1, dr.y1, dBack), point(dr.x1, dr.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
+    } else {
+      // Display glass: shared inked-glazing texture (self-contained dark glass).
+      for (const g of s.glazing) quad(map(g), 0.008, glazeTex, {});
+      // Mullion, transom, door, frame: solid inked tints.
+      for (const m of (Array.isArray(s.mullion) ? s.mullion : [s.mullion])) quad(map(m), 0.009, null, { tint: frameTint });
+      // Door: leaf recessed behind the shopfront frame with shaded reveals, so the
+      // entry reads as a real set-back doorway, not a flat painted panel. On a
+      // corner-wrap SECONDARY face the door bay becomes display glass instead — the
+      // single entry stays on the primary corner face, so the wrap reads as one
+      // continuous shopfront rather than two doorways.
+      const d = map(Array.isArray(s.door) ? s.door[0] : s.door);
+      if (secondary) {
+        quad(d, 0.008, glazeTex, {});
+      } else {
+        const dFront = 0.011, dBack = 0.005;
+        quad(d, dBack, null, { tint: dark(frameTint, 0.55) });
+        quad3(point(d.x0, d.y1, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x0, d.y1, dBack), null, { tint: dark(frameTint, 0.4) }); // head shadow
+        quad3(point(d.x0, d.y0, dFront), point(d.x0, d.y1, dFront), point(d.x0, d.y1, dBack), point(d.x0, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // left jamb
+        quad3(point(d.x1, d.y0, dFront), point(d.x1, d.y1, dFront), point(d.x1, d.y1, dBack), point(d.x1, d.y0, dBack), null, { tint: dark(frameTint, 0.6) }); // right jamb
+      }
+    }
+    quad(map(s.transom), 0.009, null, { tint: MASSING.transomBand });          // light transom band
+    for (const fr of s.frame) quad(map(fr), 0.011, null, { tint: frameTint });
+    // Category sign band: painted board in the shopfront's trim color with cream
+    // serif lettering (II-C palette — never a bright white panel). Canvas aspect
+    // matched to the band's world aspect so letters don't stretch.
+    const signRect = map(s.sign);
+    const boardColor = unit.signColor ?? frameTint;
+    quad(signRect, 0.010, makeStorefrontSignTexture(unit.label, worldAspect(signRect), boardColor, unit.textHex), {});
+    // Awning: a short projecting canopy (sloped top + scalloped valance) so it
+    // reads as fabric jutting over the sidewalk, not a flat strip on the wall.
+    if (s.awning && !suppressAwning) {
+      const a = map(s.awning);          // face-local: a.y1 = attach (under sign), a.y0 = front edge
+      const color = unit.awning?.color ?? MASSING.awningDefault;
+      const stripe = unit.awning?.stripe ?? "block"; // signature fabric (e.g. "pinstripe")
+      const offBack = 0.012;            // canopy root, just proud of the frame
+      const offFront = 0.09;            // ~1.2m projection (upm≈0.075) — clearly proud
+      const valH = (a.y1 - a.y0) * 1.6; // valance drop below the front edge
+      // Sloped top face: striped fabric from the wall (attach, a.y1) out and down
+      // to the proud front edge (a.y0). Stripe positions match the valance below.
+      const topTex = makeAwningTexture(color, { valance: false, stripe });
+      quad3(
+        point(a.x0, a.y1, offBack), point(a.x1, a.y1, offBack),
+        point(a.x1, a.y0, offFront), point(a.x0, a.y0, offFront),
+        topTex, {},
+      );
+      // Valance: scalloped striped fringe hanging from the front edge. flipY=false
+      // so the canvas hem (drawn at the bottom) lands at the bottom of the face.
+      const valTex = makeAwningTexture(color, { valance: true, stripe });
+      valTex.flipY = false; valTex.needsUpdate = true;
+      quad3(
+        point(a.x0, a.y0, offFront), point(a.x1, a.y0, offFront),
+        point(a.x1, a.y0 - valH, offFront), point(a.x0, a.y0 - valH, offFront),
+        valTex, { transparent: true },
+      );
+    }
+  };
+
+  // One or more tenant units split the frontage horizontally (e.g. 99 =
+  // SANDWICH + JUICE BAR). Default: a single unit spanning the full width.
+  const units = storefront.units ?? [storefront];
+  let cursor = 0;
+  for (const unit of units) {
+    const wf = unit.widthFrac ?? 1 / units.length;
+    drawUnit(unit, cursor, cursor + wf);
+    cursor += wf;
   }
 }
 
@@ -1677,6 +3840,31 @@ function exposedSegments(edge, siblings) {
 // Generated elevations arrive with a paper margin around the artwork.
 // Trim it automatically: sample the corner color, find the content
 // bounding box, and crop via canvas before handing Three the texture.
+// Textures already baked to a tight content crop (no cream margin) — the
+// density-based auto-trim below would re-crop their sparse parapet/gable top
+// (it reads as low-density paper) and shift every UV, so skip it and map the
+// baked image 1:1. Match by filename suffix.
+// v1 Astral was a tight content crop (pretrimmed); v2 carries a cream margin and
+// is auto-trimmed by loadTrimmedTexture — its spec coords are authored on that
+// trim (derive-facade-spec.mjs replicates it), so it must NOT be listed here.
+// Textures already cropped to their content bounds at bake time — the runtime
+// content-density trim is SKIPPED for these. Astral's full-facade render carries
+// a tall, sparse crown (central gable peak + thin parapet railing + corner
+// gablets); those topmost rows fall under the density threshold and the runtime
+// trim would shave them off, flat-cutting the crown. The `.trim.png` is
+// pre-cropped to keep the whole crown; the spec's y-coords + composite roofV are
+// scaled to match (crop is 723 px tall vs the 701 px the runtime trim produced).
+const PRETRIMMED_TEXTURES = [
+  "astral-apartments--franklin-full-v2.trim.png",
+  "astral-apartments--india-full.trim.png",
+  "astral-apartments--java-full.trim.png",
+  // Brouwerij Lane — the render is already a tight content crop; the .trim.png
+  // adds a baked-alpha sky above the stepped gable (sky keyed transparent) and
+  // is mapped 1:1, so its roofV/spec coords stay exact (skip the density trim,
+  // which would also shave the sparse gable crown — the Astral trap).
+  "brouwerij-lane.trim.png",
+];
+
 function loadTrimmedTexture(url, onReady) {
   const image = new Image();
   image.onload = () => {
@@ -1685,6 +3873,15 @@ function loadTrimmedTexture(url, onReady) {
     canvas.height = image.height;
     const context = canvas.getContext("2d");
     context.drawImage(image, 0, 0);
+
+    if (PRETRIMMED_TEXTURES.some((suffix) => url.endsWith(suffix))) {
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.anisotropy = 16;
+      onReady(texture);
+      return;
+    }
+
     const { data, width, height } = context.getImageData(0, 0, canvas.width, canvas.height);
 
     const border = [data[0], data[1], data[2]];
@@ -1743,18 +3940,34 @@ function loadTrimmedTexture(url, onReady) {
 
 // II-C sign band texture: inked border on paper-tone ground, uppercase serif name.
 // Font size auto-shrinks until the label fits within the border inset.
-function makeStorefrontSignTexture(name) {
+// `aspect` (width/height of the destination quad in world units) sizes the
+// canvas to match, so letters map 1:1 and never stretch/compress. Height is
+// fixed at 128; width tracks the aspect (clamped). Default 4 keeps the prior
+// 512×128 behaviour for any caller that doesn't pass an aspect.
+function makeStorefrontSignTexture(name, aspect = 4, boardHex = MASSING.signBoardDefault, textHex = null) {
   const c = document.createElement("canvas");
-  c.width = 512; c.height = 128;
+  c.height = 128;
+  c.width = Math.max(256, Math.min(4096, Math.round(c.height * aspect)));
   const ctx = c.getContext("2d");
-  ctx.fillStyle = "#efe7d6"; ctx.fillRect(0, 0, c.width, c.height);                 // II-C paper
-  ctx.strokeStyle = "#23201c"; ctx.lineWidth = 7; ctx.strokeRect(10, 10, c.width - 20, c.height - 20);
-  ctx.fillStyle = "#23201c"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-  let fs = 58; ctx.font = `700 ${fs}px Georgia, serif`;
+  const board = new THREE.Color(boardHex);
+  const cream = "#ece3cf"; // II-C cream — used for lettering + keyline, never as the panel
+  // Optional signature lettering color (e.g. Elder Greene's gold transom). Derived
+  // from a palette token (never a raw literal), so the no-miss gate holds.
+  const lettering = textHex != null ? `#${new THREE.Color(textHex).getHexString()}` : cream;
+  ctx.fillStyle = `#${board.getHexString()}`; ctx.fillRect(0, 0, c.width, c.height); // painted board
+  // Inked top/bottom shading so the board reads as a solid painted plank.
+  ctx.fillStyle = `#${board.clone().multiplyScalar(0.7).getHexString()}`;
+  ctx.fillRect(0, c.height - 14, c.width, 14);
+  ctx.fillStyle = `#${board.clone().multiplyScalar(1.25).getHexString()}`;
+  ctx.fillRect(0, 0, c.width, 5);
+  // Thin cream keyline inset.
+  ctx.strokeStyle = "rgba(236, 227, 207, 0.65)"; ctx.lineWidth = 4; ctx.strokeRect(12, 12, c.width - 24, c.height - 24);
+  ctx.fillStyle = lettering; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  let fs = 80; ctx.font = `700 ${fs}px Georgia, serif`;
   const label = String(name).toUpperCase();
-  while (ctx.measureText(label).width > c.width - 56 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
-  ctx.fillText(label, c.width / 2, c.height / 2);
-  const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
+  while (ctx.measureText(label).width > c.width - 64 && fs > 22) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
+  ctx.fillText(label, c.width / 2, c.height / 2 + 2);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8; tex.needsUpdate = true;
   return tex;
 }
 
@@ -1778,6 +3991,122 @@ function makeStorefrontValanceTexture(name, tintHex) {
   while (ctx.measureText(label).width > c.width - 48 && fs > 18) { fs -= 4; ctx.font = `700 ${fs}px Georgia, serif`; }
   ctx.fillText(label, c.width / 2, c.height / 2 + 2);
   const tex = new THREE.CanvasTexture(c); tex.anisotropy = 8; tex.needsUpdate = true;
+  return tex;
+}
+
+// Inked display glass: dark warm-grey pane with a few cream diagonal reflection
+// strokes so the glazing reads as inked glass rather than flat black. Built once
+// and shared across every storefront panel.
+function makeInkedGlazingTexture() {
+  if (__glazingTex) return __glazingTex;
+  const c = document.createElement("canvas");
+  c.width = 256; c.height = 256;
+  const ctx = c.getContext("2d");
+  // Cool dark teal-charcoal pane with a warm interior glow welling up from the
+  // bottom — reads as a lit shop interior behind the glass, not flat black.
+  const base = ctx.createLinearGradient(0, 0, 0, 256);
+  base.addColorStop(0, "#27302f");      // cool top (sky reflection)
+  base.addColorStop(0.62, "#2c2e2c");
+  base.addColorStop(1, "#3f352433");    // warm lamp glow near the floor
+  ctx.fillStyle = "#262d2d"; ctx.fillRect(0, 0, 256, 256);
+  ctx.fillStyle = base; ctx.fillRect(0, 0, 256, 256);
+  // Soft warm interior bloom (goods/lamp behind the glass).
+  const glow = ctx.createRadialGradient(128, 210, 8, 128, 210, 150);
+  glow.addColorStop(0, "rgba(196, 150, 92, 0.30)");
+  glow.addColorStop(1, "rgba(196, 150, 92, 0)");
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, 256, 256);
+  // Hinted interior shelving — low warm horizontal strokes.
+  ctx.strokeStyle = "rgba(150, 116, 74, 0.22)"; ctx.lineWidth = 5;
+  for (const y of [150, 188]) { ctx.beginPath(); ctx.moveTo(28, y); ctx.lineTo(228, y); ctx.stroke(); }
+  // Crisp diagonal reflection streaks (the inked-glass signature).
+  ctx.strokeStyle = "rgba(236, 227, 207, 0.20)"; ctx.lineWidth = 7;
+  for (let i = -1; i < 4; i += 1) { ctx.beginPath(); ctx.moveTo(i * 80, 256); ctx.lineTo(i * 80 + 150, 0); ctx.stroke(); }
+  ctx.strokeStyle = "rgba(236, 227, 207, 0.10)"; ctx.lineWidth = 3;
+  for (let i = -1; i < 5; i += 1) { ctx.beginPath(); ctx.moveTo(i * 64 + 24, 256); ctx.lineTo(i * 64 + 134, 0); ctx.stroke(); }
+  // Inked mullion grid + frame so the pane reads as divided shopfront glass.
+  ctx.strokeStyle = "rgba(24, 22, 18, 0.85)"; ctx.lineWidth = 8;
+  ctx.strokeRect(4, 4, 248, 248);
+  ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(128, 4); ctx.lineTo(128, 252); ctx.stroke();   // vertical mullion
+  ctx.beginPath(); ctx.moveTo(4, 48); ctx.lineTo(252, 48); ctx.stroke();     // transom bar
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  __glazingTex = tex;
+  return tex;
+}
+
+// Inked awning fabric: striped canvas in the tenant's category color alternating
+// with II-C cream, plus inked seam lines so it reads as real awning fabric, not a
+// flat slab. Two variants share the same vertical stripe positions so the canopy
+// top and the valance line up across the fold:
+//   valance=false → opaque canopy top (full height, no scallop)
+//   valance=true  → scalloped hem; gaps + below-hem left transparent for the fringe
+// Through-window AC unit face: a body panel + louvred vent grille + an inked
+// outline, so it reads as a hand-drawn AC, not a flat grey box.
+function makeACGrilleTexture(bodyHex) {
+  const c = document.createElement("canvas"); c.width = 80; c.height = 56;
+  const ctx = c.getContext("2d");
+  const body = new THREE.Color(bodyHex);
+  ctx.fillStyle = `#${body.getHexString()}`; ctx.fillRect(0, 0, 80, 56);
+  // left ~40% solid panel (slightly lighter), right = vent grille
+  const gx = 32;
+  ctx.fillStyle = `#${body.clone().multiplyScalar(1.1).getHexString()}`; ctx.fillRect(2, 2, gx - 2, 52);
+  ctx.fillStyle = `#${body.clone().multiplyScalar(0.9).getHexString()}`; ctx.fillRect(gx, 2, 78 - gx, 52); // grille recess
+  ctx.strokeStyle = "rgba(22, 19, 15, 0.5)"; ctx.lineWidth = 1.5;
+  for (let y = 7; y < 52; y += 5) { ctx.beginPath(); ctx.moveTo(gx + 2, y); ctx.lineTo(76, y); ctx.stroke(); } // louvres
+  ctx.strokeStyle = "rgba(22, 19, 15, 0.6)"; ctx.lineWidth = 2.5; ctx.strokeRect(1.5, 1.5, 77, 53); // inked outline
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+
+function makeAwningTexture(tintHex, { valance = false, stripe = "block" } = {}) {
+  const c = document.createElement("canvas");
+  c.width = 256; c.height = 128;
+  const ctx = c.getContext("2d");
+  const tint = new THREE.Color(tintHex);
+  const tintHexStr = `#${tint.getHexString()}`;
+  const cream = "#e3d9c2";
+  const bodyH = valance ? 90 : 128;
+
+  if (stripe === "pinstripe") {
+    // Deep solid ground with fine, widely spaced cream pinstripes + a straight
+    // bound hem (Elder Greene's navy awning). NOT chunky alternating blocks.
+    ctx.fillStyle = tintHexStr; ctx.fillRect(0, 0, 256, 128);
+    ctx.strokeStyle = "rgba(227, 217, 194, 0.92)"; ctx.lineWidth = 1.5;
+    for (let x = 14; x < 256; x += 30) { ctx.beginPath(); ctx.moveTo(x + 0.5, 0); ctx.lineTo(x + 0.5, bodyH); ctx.stroke(); }
+    if (valance) {
+      ctx.strokeStyle = "rgba(20, 18, 14, 0.45)"; ctx.lineWidth = 3; // straight bound hem
+      ctx.beginPath(); ctx.moveTo(0, bodyH - 1); ctx.lineTo(256, bodyH - 1); ctx.stroke();
+    } else {
+      ctx.fillStyle = "rgba(236, 227, 207, 0.08)"; ctx.fillRect(0, 0, 256, 16); // faint top sheen
+    }
+    const tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 8;
+    return tx;
+  }
+
+  const n = 7, w = 256 / n;
+  const stripeColor = (i) => (i % 2 === 0 ? tintHexStr : cream);
+  for (let i = 0; i < n; i += 1) {
+    ctx.fillStyle = stripeColor(i);
+    ctx.fillRect(i * w, 0, w + 1, bodyH);       // +1 avoids hairline seams
+  }
+  // Inked seam between every stripe (fabric panel joins).
+  ctx.strokeStyle = "rgba(28, 24, 18, 0.28)"; ctx.lineWidth = 2;
+  for (let i = 1; i < n; i += 1) { ctx.beginPath(); ctx.moveTo(i * w, 0); ctx.lineTo(i * w, bodyH); ctx.stroke(); }
+  if (valance) {
+    for (let i = 0; i < n; i += 1) {            // scalloped hem, each in its stripe color
+      ctx.fillStyle = stripeColor(i);
+      ctx.beginPath(); ctx.arc(i * w + w / 2, bodyH, w / 2, 0, Math.PI); ctx.fill();
+    }
+    ctx.strokeStyle = "rgba(28, 24, 18, 0.35)"; ctx.lineWidth = 3; // bound hem line
+    ctx.beginPath(); ctx.moveTo(0, bodyH); ctx.lineTo(256, bodyH); ctx.stroke();
+  } else {
+    // Top sheen: a faint cream highlight band so the canopy catches light.
+    ctx.fillStyle = "rgba(236, 227, 207, 0.10)"; ctx.fillRect(0, 0, 256, 18);
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
   return tex;
 }
 

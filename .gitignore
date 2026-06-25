@@ -17,3 +17,19 @@ build/
 coverage/
 .cache/
 .vercel
+
+# Visual-companion brainstorm artifacts
+.superpowers/
+
+# Playwright MCP scratch
+.playwright-mcp/
+
+# Asset-kit raw GPT renders (keyed outputs live in assets/inked/)
+.scratch/
+
+# Visual-baseline gate transients (committed baselines live in tests/visual-baselines/)
+tests/.candidates/
+tests/.diffs/
+
+# Local agent worktrees (never commit)
+.claude/worktrees/

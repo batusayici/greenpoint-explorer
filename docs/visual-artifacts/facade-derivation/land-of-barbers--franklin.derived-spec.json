@@ -1,0 +1,64 @@
+{
+  "source": "assets/textures/franklin/land-of-barbers--franklin.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 45,
+    "minY": 8,
+    "maxX": 1073,
+    "maxY": 1390
+  },
+  "trimmedSize": {
+    "width": 1029,
+    "height": 1383
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064676:franklin": {
+      "u0": 0,
+      "u1": 1,
+      "wallColor": [
+        109,
+        68,
+        54
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0.905,
+          "y1": 1,
+          "type": "band"
+        },
+        {
+          "x0": 0,
+          "x1": 1,
+          "y0": 0.006,
+          "y1": 0.597,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.437,
+          "x1": 0.57,
+          "y0": 0.714,
+          "y1": 0.873,
+          "type": "window"
+        },
+        {
+          "x0": 0.741,
+          "x1": 0.873,
+          "y0": 0.714,
+          "y1": 0.872,
+          "type": "window"
+        },
+        {
+          "x0": 0.117,
+          "x1": 0.27,
+          "y0": 0.688,
+          "y1": 0.872,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}

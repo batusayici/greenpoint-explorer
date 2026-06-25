@@ -4,9 +4,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { getPlaceByPlaceId, allPlaces, PLACE_DISCLAIMER } from "./placeData.js";
 
-const HERO_IDS = ["premier-franklin-organic", "sonnys-corner", "sereneco"];
+const HERO_IDS = ["premier-franklin-organic", "sonnys-corner", "sereneco", "azure-gourmet", "137-oak-haunted-house"];
 
-test("exposes the three hero places", () => {
+test("exposes the hero places", () => {
   const ids = allPlaces().map((p) => p.placeId).sort();
   assert.deepEqual(ids, [...HERO_IDS].sort());
 });
@@ -28,4 +28,11 @@ test("each record has the required sourced fields", () => {
 test("unknown placeId returns null; disclaimer is non-empty", () => {
   assert.equal(getPlaceByPlaceId("nope"), null);
   assert.ok(PLACE_DISCLAIMER.length > 0);
+});
+
+test("resolves the off-spine 137 Oak St landmark hero", () => {
+  const p = getPlaceByPlaceId("137-oak-haunted-house");
+  assert.ok(p, "137 Oak record present");
+  assert.equal(p.name, "137 Oak Street");
+  assert.equal(p.approvalStatus, "proposed");
 });

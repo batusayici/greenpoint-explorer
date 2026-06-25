@@ -22,10 +22,15 @@ overlay gate → one in-engine check.**
 1. **Pre-render (photos first).** Gather evidence photos that fully cover the
    building — at least one wide shot per street face and one corner shot; the
    photos ARE the structural truth the model copies from, so a face the
-   photos don't show is a face the render will invent. Fill the reusable
-   prompt scaffold's mechanical slots only (street names, fold % from real
-   wall meters, canvas px) — never describe the architecture in prose; the
-   prompt makes the model count floors/openings from the photos itself.
+   photos don't show is a face the render will invent. For ordinary brick
+   corner/mid-block heroes, paste the universal prompt in
+   [`HERO_PROMPT.md`](HERO_PROMPT.md) as-is and swap only the attached photos —
+   no per-building fill-ins; the photos carry the subject's identity and the
+   fold gets measured from the render later (step 3). The fill-in scaffold
+   below remains the precision variant for landmarks or a building that needs
+   an explicit corner fold / neighbor-exclusion line. Either way, never
+   describe the architecture in prose — the prompt makes the model count
+   floors/openings from the photos itself.
 2. **Render once, audit before accepting.** Run the scaffold's audit checklist
    on the raw render against the photos (window-row count, column count per
    face, ground-floor openings in order, corner condition). Re-render only
@@ -125,6 +130,24 @@ corner. If you hit one of these, it's a regression, not new work:
   shallow `recessM` (~0.2, not 0.35) so the soffit isn't a deep dark wedge.
 - **Reveal weight** — window `recessM ~0.06` reads as a thin shadow line;
   0.14 reads as a thick lit ledge. Default shallow.
+- **`awnings` need all three Y fields** — an awning entry must carry `yWall`
+  (top, at wall) > `yDrop` (canopy front fold) > `yValance` (skirt bottom).
+  The canopy mesh reads `awning.yDrop` *directly* (no `?? yValance` fallback in
+  the geometry build), so authoring only `yValance`+`yWall` makes every awning
+  vertex NaN — and a NaN in the assembly silently DROPS the whole textured face
+  (the other walls still render, so it mimics a wiring bug). If a face's hero
+  texture vanishes after adding a spec, traverse for NaN `position` attributes to
+  name it. (banked from Land of Barbers, 2026-06-24.)
+- **Multiple oriels per face** — `spec.bays[]` (array) carries several `oriel3`
+  bays on one face (a full-block frontage); singular `spec.bay` still works for a
+  single-bay corner (Premier). Both fold the flat texture; see "Projecting oriel
+  bays" below. (banked from Astral.)
+- **Frontage-plane heroes don't get a typological wall under them** — when a
+  building has `composite.frontage`, `SceneView.jsx` skips the typological wall
+  on the franklin edges the frontage chord covers. Kept, that wall sits a hair
+  behind the hero plane and shows through as a flat base-color (red) panel once a
+  recess goes deeper than the ~0.02 proud gap. The hero assembly's panes+reveals
+  enclose each opening, so the building stays solid without it. (banked from Astral.)
 
 ### Shaped openings — arch / oculus (banked v0.6, from 144 Franklin)
 
@@ -169,6 +192,38 @@ seed `shape`/`springY`, so curved openings are fully manual — fold curve
 auto-detection in alongside the density-profile work flagged in
 `HERO_FACADE_LOG.md`.
 
+### Projecting oriel bays — oriel3 (banked, Premier + Astral)
+
+A projecting bay is modelled as a **texture fold**, not new artwork: `oriel3`
+slices the bay's painted u-range into left / center / right facets and angles the
+two outer thirds back to the wall, so the painted side windows land on the
+canted returns (`oriel3Plan`/`oriel3Meshes` in `facadeAssembly.js`). Authored as
+`bay: {x0,x1,y0,y1, plan:"oriel3", projectionM, centerFraction}` (or several in
+`spec.bays[]`). Hard-won rules so the next bay-heavy hero is cheap:
+
+- **The render must draw the bay as a 3-window canted bay, in-plane.** This is a
+  *texture* requirement, not a geometry one — the flat elevation must already
+  contain, within each oriel, a wider center pane + a **narrower window on each
+  side** with mullions, drawn head-on (the two sides appear narrow, as a canted
+  bay does straight-on), shaded a touch deeper so it reads as projecting. Astral
+  v1 drew the oriels as single flat punched windows → `oriel3` had no side panes
+  to fold and smeared grey; v2 re-rendered with the 3-window form fixed it. **If
+  a building has projecting bays, say this explicitly in the render prompt** (and
+  bump resolution ~4096px wide so the mullions are crisp).
+- **Size the bay rect to the 3-window group ONLY.** One column too wide folds an
+  adjacent FLAT window onto a return (Astral, caught by Batu). The 4th column
+  belongs to the flat rhythm — exclude it and add a flat rect there. Keep bays
+  symmetric about face-center.
+- **`centerFraction ≈ 0.36`**, tuned so the two facet breaks land on the painted
+  mullions (the center-pane edges). Splay angle is emergent from
+  `centerFraction` + `projectionM` + face width — don't author it.
+- **Depth reads subtle at scene scale.** A realistic `projectionM ~0.5–0.6m` is
+  only ~0.03 units on a ~1.4-unit-tall facade, so the bay's dark top-cap is the
+  loudest cue, not a dramatic bulge. **Don't "fix" a subtle bay by flipping the
+  frame normal — verify direction with an exaggerate-depth test** (set projM/recessM
+  huge, screenshot: out toward the street = correct). Astral nearly ate a bad
+  normal-flip this way.
+
 ### Coordinate convention (one truth)
 
 - **Whole-u** is 0..1 across the runtime-**trimmed** composite image
@@ -177,6 +232,17 @@ auto-detection in alongside the density-profile work flagged in
 - Spec rects are **face-local**: `x0/x1` from the face's *left* edge
   (= `(u − u0)/(u1 − u0)`), `y0/y1` from the *ground up*.
 - The derivation script emits face-local coords directly; no hand conversion.
+- **Trim must match between derive-time and runtime, or every coord shifts.**
+  Spec coords are authored on the *trimmed* image. `loadTrimmedTexture`
+  auto-trims the cream margin at runtime and `derive-facade-spec.mjs` replicates
+  that trim, so they agree by default. The `PRETRIMMED_TEXTURES` list opts a
+  texture OUT of auto-trim (maps 1:1) — only for renders baked to a tight content
+  crop. A re-render that arrives with a margin must NOT be in that list (Astral
+  v1 was a tight crop and listed; v2 has a margin → removed it), else the runtime
+  skips the trim the coords assume and the whole grid slides.
+- **A superseded texture left in `assets/textures/franklin/` ships as dead
+  weight** — `import.meta.glob` bundles every PNG. Delete the old file on
+  re-render (144-Franklin + Astral).
 
 ### Orthographic render contract (structure, prompt-side)
 
@@ -192,6 +258,12 @@ Proven by the Premier v4 render; reuse for every composite corner:
   (see DECISION_LOG 2026-06-12, `PREMIER_KINK = 0.478`).
 - **Continuous datums:** ground line at the bottom edge, parapet top at the
   top edge, sign band and cornice heights consistent across the full width.
+- **Projecting bays → draw them as 3-window canted bays, in-plane.** If the
+  building has oriels, the prompt must require each bay drawn head-on as a wider
+  center pane + a narrower window on each side, mullions visible, shaded as
+  projecting — so the engine can fold them with `oriel3` (see "Projecting oriel
+  bays"). A bay drawn as one flat window cannot be folded. Don't draw the
+  projection itself; the texture stays flat and the engine carves depth.
 - Margins are fine (auto-trimmed); no sky, sidewalk, people, or vehicles.
 - II-C inked style (anchor: II-C-style-system-tile.png).
 
@@ -215,7 +287,12 @@ filename automatically (no code change needed).
   single-face slots.
 - **Resolution:** long edge 2048px at the aspect ratio listed per slot.
 
-## Prompt Scaffold (image-to-image, GPT-5.5) — REUSABLE
+## Prompt Scaffold (image-to-image, GPT-5.5) — PRECISION VARIANT
+
+> For ordinary heroes use the zero-fill-in universal prompt in
+> [`HERO_PROMPT.md`](HERO_PROMPT.md). Use this fill-in scaffold only when you
+> want explicit control — a landmark, an awkward corner fold, or a building
+> that keeps borrowing a neighbor and needs it named to exclude.
 
 One prompt for every building. **The photos are the binding truth source, not
 prose.** The prompt never describes the building's architecture — describing

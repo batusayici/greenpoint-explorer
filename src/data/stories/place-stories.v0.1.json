@@ -1,0 +1,21 @@
+[
+  {
+    "id": "137-oak-haunted-house-lore",
+    "placeId": "137-oak-haunted-house",
+    "title": "The \"Haunted House\" of Oak Street",
+    "storyType": "local_memory",
+    "summary": "Neighbors have long called this Oak Street building the \"Haunted House.\" The lore is local memory — its documented history is still being confirmed.",
+    "audioUrl": "/assets/audio/137-oak-haunted-house.m4a",
+    "sources": [
+      {
+        "label": "Resident oral account (Greenpoint, June 2026) — audio",
+        "url": "/assets/audio/137-oak-haunted-house.m4a"
+      }
+    ],
+    "verificationStatus": "unresolved",
+    "approvalStatus": "proposed",
+    "featured": true,
+    "locationConfidence": "exact",
+    "editorialTags": ["hidden_greenpoint", "local_ritual"]
+  }
+]

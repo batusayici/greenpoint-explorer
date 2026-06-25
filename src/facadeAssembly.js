@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { openingProfile, springYOf } from "./facadeProfiles.js";
+import { FACADE_RELIEF, DEBUG_PALETTE } from "./visualSystem/palette.js";
 
 // Structured facade assembly: turns a flat elevation slice into a shallow
 // relief. The facade spec names components in normalized face coordinates
@@ -15,10 +16,10 @@ import { openingProfile, springYOf } from "./facadeProfiles.js";
 // lit 3D — the artwork carries the light.
 
 const REVEAL = {
-  top: 0x352c22, // shadow under the lintel
-  side: 0x5d4c3e, // jamb
-  bottom: 0xa6987c, // recess bottom / proud top — lit stone, never bright white
-  soffit: 0x2f2820, // underside of storefront/awning/cornice returns
+  top: FACADE_RELIEF.lintelShadow, // shadow under the lintel
+  side: FACADE_RELIEF.jamb, // jamb
+  bottom: FACADE_RELIEF.sillLit, // recess bottom / proud top — lit stone, never bright white
+  soffit: FACADE_RELIEF.soffit, // underside of storefront/awning/cornice returns
 };
 
 // Reveals are textured by edge-stretching the wall artwork into the recess
@@ -77,13 +78,27 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const shift = skew * yMid;
     return { ...awning, x0: awning.x0 + shift, x1: awning.x1 + shift };
   });
-  const bay = spec.bay ? lean(spec.bay) : null;
+  // One face may carry several oriels (e.g. a full-block frontage). `spec.bay`
+  // (singular) stays valid for single-bay corners (Premier); `spec.bays` (array)
+  // adds the rest. Both lean with the facade skew like every other opening.
+  const bays = [
+    ...(spec.bay ? [spec.bay] : []),
+    ...(Array.isArray(spec.bays) ? spec.bays : []),
+  ].map(lean);
 
-  openings.push(...windowRects, ...storefronts, ...signBands, ...doors, ...boxes);
+  // Flush windows: the hero texture paints its own windows/sills/lintels (a
+  // complete full-facade illustration). Keep the rects authored in the spec for
+  // registration/interaction, but model NO relief — the wall mask must cover the
+  // openings so the painted art shows, and the recess/sill pass is skipped.
+  // Carving here just stamps misaligned wall-toned panes + duplicate stone sills
+  // over the drawing (the clutter bug). See window-decal-is-flush-not-recessed.
+  const flushWindows = spec.windows?.flush === true;
+  if (!flushWindows) openings.push(...windowRects);
+  openings.push(...storefronts, ...signBands, ...doors, ...boxes);
   for (const awning of awnings) {
     openings.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
   }
-  if (bay) openings.push(bay);
+  openings.push(...bays);
   if (spec.cornice) openings.push({ x0: 0, x1: 1, ...spec.cornice });
 
   // Wall mask: cover everything that is not an opening, at the wall plane.
@@ -93,7 +108,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
 
   // Windows: recessed pane + tinted reveals + protruding sill.
   const windowRecess = meters(spec.windows?.recessM ?? 0.14);
-  for (const rect of windowRects) {
+  for (const rect of flushWindows ? [] : windowRects) {
     if (rect.shape && rect.shape !== "rect") {
       addShapedOpening(group, frame, rect, windowRecess, texture);
       continue;
@@ -235,7 +250,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
         facePoint(frame, xEnd, yValance, projection),
         facePoint(frame, xEnd, yValance, 0),
       );
-      group.add(new THREE.Mesh(panel, awning.color != null ? tinted(0.6) : tintMaterial(0x241f18)));
+      group.add(new THREE.Mesh(panel, awning.color != null ? tinted(0.6) : tintMaterial(FACADE_RELIEF.darkReturn)));
     }
   }
 
@@ -260,7 +275,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // Bay window: a real shallow volume — textured front, dark wood cheeks
   // matching the drawn bay's joinery, and a dark little roof (never a lit
   // cap: the bay tucks under the cornice shadow).
-  if (bay) {
+  for (const bay of bays) {
     const projection = meters(bay.projectionM ?? 0.5);
     if (bay.plan === "oriel3") {
       // Faceted oriel: angled returns carry the painted side windows.
@@ -268,10 +283,10 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     } else {
       // Flat box: textured front, dark wood cheeks, dark roof under the cornice.
       group.add(rectMesh(frame, bay, projection, texturedMaterial(texture, 1)));
-      group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(0x352c22)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "top", tintMaterial(FACADE_RELIEF.lintelShadow)));
       group.add(bridgeMesh(frame, bay, projection, 0, "bottom", tintMaterial(REVEAL.soffit)));
-      group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(0x4a3a2c)));
-      group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(0x4a3a2c)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "left", tintMaterial(FACADE_RELIEF.joineryCheek)));
+      group.add(bridgeMesh(frame, bay, projection, 0, "right", tintMaterial(FACADE_RELIEF.joineryCheek)));
     }
   }
 
@@ -287,7 +302,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
     const proj = meters(spec.cornice.projectionM ?? 0.5); // crown overhang
     const riseY = meters(spec.cornice.crownRiseM ?? 0.22) / frame.height; // lip above roof
     const yCap = rect.y1 + riseY;
-    const CROWN = 0x241f18; // near-black painted crown lip (matches refs)
+    const CROWN = FACADE_RELIEF.darkReturn; // near-black painted crown lip (matches refs)
 
     // Corner wrap: at a folded corner (cornerLeft/cornerRight) the crown turns
     // 90° onto the perpendicular face. Rather than cap the end (a flat patch)
@@ -345,7 +360,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
   // alignment against the drawn artwork is checkable in 3D (?specdebug=1).
   if (debug) {
     debugRects.push(...windowRects);
-    if (bay) debugRects.push(bay);
+    debugRects.push(...bays);
     for (const list of [storefronts, signBands, doors, boxes]) {
       debugRects.push(...list);
     }
@@ -353,7 +368,7 @@ export function buildFacadeAssembly({ frame, spec, texture, unitsPerMeter, baseC
       debugRects.push({ x0: awning.x0, x1: awning.x1, y0: awning.yValance ?? awning.yDrop, y1: awning.yWall });
     }
     if (spec.cornice) debugRects.push({ x0: 0, x1: 1, ...spec.cornice });
-    const material = new THREE.LineBasicMaterial({ color: 0x00ff44 });
+    const material = new THREE.LineBasicMaterial({ color: DEBUG_PALETTE.rectOutline });
     for (const rect of debugRects) {
       const { outline } = openingProfile(rect);
       const points = outline.map((p) => new THREE.Vector3(...facePoint(frame, p.x, p.y, 0.03)));
@@ -452,7 +467,13 @@ export function oriel3Meshes(frame, bay, projection, texture) {
     facePoint(frame, plan.xc1, y, projection),
     facePoint(frame, bay.x1, y, 0),
   );
-  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(0x352c22)));     // top: under-cornice shadow
+  // The iso camera looks DOWN ~35°, so the top cap shows its upper face. A LIT
+  // stone tint (sillLit) made that face read as a pale shelf floating above the
+  // bay — it caught more light than the inked brick around it and detached. Use
+  // the bay-roof shadow tone (lintelShadow), the same the flat-box bay top uses,
+  // so the oriel top recedes into the cornice/floor-line shadow under the storey
+  // above instead of glowing. The bottom cap faces down (soffit-dark) as before.
+  meshes.push(new THREE.Mesh(cap(bay.y1), tintMaterial(FACADE_RELIEF.lintelShadow))); // top: bay-roof shadow
   meshes.push(new THREE.Mesh(cap(bay.y0), tintMaterial(REVEAL.soffit))); // bottom: soffit
 
   return meshes;
@@ -618,6 +639,10 @@ function texturedMaterial(texture, shade) {
     map: texture,
     color: new THREE.Color(shade, shade, shade),
     side: THREE.DoubleSide,
+    // Honor keyed alpha (e.g. a full-block hero's paper background above the
+    // roofline keyed transparent). Opaque textures have alpha 1 everywhere, so
+    // the cutout passes every fragment and these heroes are unchanged.
+    alphaTest: 0.5,
   });
 }
 

@@ -1,0 +1,78 @@
+{
+  "source": "assets/textures/franklin/verge--franklin.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 94,
+    "minY": 71,
+    "maxX": 1385,
+    "maxY": 1035
+  },
+  "trimmedSize": {
+    "width": 1292,
+    "height": 965
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064387:india": {
+      "u0": 0.5,
+      "u1": 1,
+      "wallColor": [
+        58,
+        54,
+        50
+      ],
+      "rects": [
+        {
+          "x0": 0.68,
+          "x1": 0.793,
+          "y0": 0.051,
+          "y1": 0.162,
+          "type": "door"
+        },
+        {
+          "x0": 0.272,
+          "x1": 0.316,
+          "y0": 0.047,
+          "y1": 0.128,
+          "type": "door"
+        },
+        {
+          "x0": 0,
+          "x1": 0.228,
+          "y0": 0.048,
+          "y1": 0.253,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.457,
+          "x1": 0.546,
+          "y0": 0.813,
+          "y1": 0.917,
+          "type": "window"
+        },
+        {
+          "x0": 0.46,
+          "x1": 0.545,
+          "y0": 0.611,
+          "y1": 0.726,
+          "type": "window"
+        },
+        {
+          "x0": 0.458,
+          "x1": 0.548,
+          "y0": 0.397,
+          "y1": 0.514,
+          "type": "window"
+        },
+        {
+          "x0": 0.447,
+          "x1": 0.551,
+          "y0": 0.086,
+          "y1": 0.236,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}

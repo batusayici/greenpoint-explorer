@@ -1,0 +1,134 @@
+{
+  "source": "assets/textures/franklin/astral-apartments--franklin-center.png",
+  "derivedBy": "scripts/derive-facade-spec.mjs",
+  "trim": {
+    "minX": 8,
+    "minY": 40,
+    "maxX": 1154,
+    "maxY": 1347
+  },
+  "trimmedSize": {
+    "width": 1147,
+    "height": 1308
+  },
+  "wallThreshold": 55,
+  "note": "Rects are face-local (x from face left edge, y from ground up) against the runtime-trimmed texture. Classification is heuristic — review on the overlay before promoting into a facade-spec JSON.",
+  "faces": {
+    "3064408:franklin": {
+      "u0": 0,
+      "u1": 1,
+      "wallColor": [
+        127,
+        74,
+        58
+      ],
+      "rects": [
+        {
+          "x0": 0,
+          "x1": 0.519,
+          "y0": 0.872,
+          "y1": 1,
+          "type": "band"
+        },
+        {
+          "x0": 0.529,
+          "x1": 1,
+          "y0": 0.872,
+          "y1": 1,
+          "type": "band"
+        },
+        {
+          "x0": 0.34,
+          "x1": 1,
+          "y0": 0.174,
+          "y1": 0.843,
+          "type": "bay"
+        },
+        {
+          "x0": 0.356,
+          "x1": 0.613,
+          "y0": 0.006,
+          "y1": 0.142,
+          "type": "storefront"
+        },
+        {
+          "x0": 0.242,
+          "x1": 0.315,
+          "y0": 0.755,
+          "y1": 0.834,
+          "type": "window"
+        },
+        {
+          "x0": 0.098,
+          "x1": 0.163,
+          "y0": 0.738,
+          "y1": 0.825,
+          "type": "window"
+        },
+        {
+          "x0": 0.188,
+          "x1": 0.23,
+          "y0": 0.728,
+          "y1": 0.761,
+          "type": "window"
+        },
+        {
+          "x0": 0.09,
+          "x1": 0.168,
+          "y0": 0.612,
+          "y1": 0.699,
+          "type": "window"
+        },
+        {
+          "x0": 0.255,
+          "x1": 0.308,
+          "y0": 0.61,
+          "y1": 0.707,
+          "type": "window"
+        },
+        {
+          "x0": 0.249,
+          "x1": 0.311,
+          "y0": 0.478,
+          "y1": 0.573,
+          "type": "window"
+        },
+        {
+          "x0": 0.089,
+          "x1": 0.168,
+          "y0": 0.456,
+          "y1": 0.56,
+          "type": "window"
+        },
+        {
+          "x0": 0.248,
+          "x1": 0.328,
+          "y0": 0.324,
+          "y1": 0.424,
+          "type": "window"
+        },
+        {
+          "x0": 0,
+          "x1": 0.046,
+          "y0": 0.308,
+          "y1": 0.413,
+          "type": "window"
+        },
+        {
+          "x0": 0.089,
+          "x1": 0.24,
+          "y0": 0.304,
+          "y1": 0.417,
+          "type": "window"
+        },
+        {
+          "x0": 0.169,
+          "x1": 0.315,
+          "y0": 0.249,
+          "y1": 0.28,
+          "type": "window"
+        }
+      ]
+    }
+  }
+}
