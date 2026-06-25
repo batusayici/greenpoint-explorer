@@ -260,6 +260,7 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
           <span style={{ opacity: 0.6, fontSize: 11 }}>add</span>
           <button onClick={() => addItem("window")} disabled={!faceKey} style={addStyle}>+ window</button>
           <button onClick={() => addItem("door")} disabled={!faceKey} style={addStyle}>+ door</button>
+          <button onClick={() => addItem("awning")} disabled={!faceKey} style={addStyle}>+ awning</button>
         </div>
       )}
 
@@ -370,14 +371,14 @@ function Shell({ children, onGripPointerDown }) {
 // Cool hues = recessed (step back), warm hues = proud (project out).
 const kindColor = (kind) => ({
   window: "#5fd0ff", storefront: "#9b8cff", door: "#ff9b6b", cornice: "#7CFC9A",
-  box: "#ffb347", signBand: "#ffd166", bay: "#ff7eb6",
+  box: "#ffb347", signBand: "#ffd166", bay: "#ff7eb6", awning: "#ff6b6b",
 }[kind] || "#00ff44");
 
-const PROUD = new Set(["box", "signBand", "bay"]);
+const PROUD = new Set(["box", "signBand", "bay", "awning"]);
 
 // Only openings added in-editor can be removed in-editor; cornice/bay/etc.
 // stay author-by-JSON so a stray Delete can't destroy them.
-const DELETABLE = new Set(["window", "door"]);
+const DELETABLE = new Set(["window", "door", "awning"]);
 
 // Depth slider + number for the selected component. Proud items push out
 // (projectionM), recessed items step back (recessM); the flat preview can't

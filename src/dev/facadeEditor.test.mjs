@@ -202,3 +202,56 @@ test("deleteRecess on a singleton path is a no-op", () => {
   const next = deleteRecess(sonnyLike, ["cornice"]);
   assert.deepEqual(next.cornice, sonnyLike.cornice);
 });
+
+// --- awnings -------------------------------------------------------------
+const awningLike = {
+  awnings: [{ x0: 0.13, x1: 0.84, yWall: 0.195, yDrop: 0.175, yValance: 0.15, projectionM: 0.5 }],
+};
+
+test("listEditableRecesses surfaces an awning as a proud rect spanning yValance..yWall", () => {
+  const items = listEditableRecesses(awningLike);
+  const a = items.find((i) => i.kind === "awning");
+  assert.ok(a);
+  close(a.rect.x0, 0.13);
+  close(a.rect.x1, 0.84);
+  close(a.rect.y0, 0.15); // yValance -> bottom
+  close(a.rect.y1, 0.195); // yWall -> top
+  assert.equal(a.depth.key, "projectionM");
+  assert.equal(a.depth.sign, 1); // proud
+  close(a.depth.value, 0.5);
+  assert.deepEqual(a.depth.path, ["awnings", 0, "projectionM"]);
+});
+
+test("patchRecess moving an awning rebuilds the three lines, holding the drop fraction", () => {
+  // original drop fraction: (0.175 - 0.15) / (0.195 - 0.15) = 0.5556
+  const next = patchRecess(awningLike, ["awnings", 0], { x0: 0.13, x1: 0.84, y0: 0.30, y1: 0.345 });
+  const a = next.awnings[0];
+  close(a.yWall, 0.345);
+  close(a.yValance, 0.30);
+  close(a.yDrop, 0.325); // 0.30 + 0.5556 * 0.045
+  close(a.projectionM, 0.5); // preserved
+  close(awningLike.awnings[0].yWall, 0.195); // original untouched
+});
+
+test("patchDepth tunes an awning projection", () => {
+  const next = patchDepth(awningLike, ["awnings", 0, "projectionM"], 0.82);
+  close(next.awnings[0].projectionM, 0.82);
+  close(awningLike.awnings[0].projectionM, 0.5);
+});
+
+test("addRecess('awning') seeds a default awning band", () => {
+  const { spec: next, id } = addRecess({}, "awning");
+  assert.equal(next.awnings.length, 1);
+  assert.equal(id, "awning-0");
+  assert.ok(next.awnings[0].yWall > next.awnings[0].yValance);
+});
+
+test("deleteRecess splices the correct awning", () => {
+  const two = { awnings: [
+    { x0: 0, x1: 0.5, yWall: 0.3, yDrop: 0.27, yValance: 0.2, projectionM: 0.5 },
+    { x0: 0.5, x1: 1, yWall: 0.3, yDrop: 0.27, yValance: 0.2, projectionM: 0.5 },
+  ] };
+  const next = deleteRecess(two, ["awnings", 0]);
+  assert.equal(next.awnings.length, 1);
+  close(next.awnings[0].x0, 0.5);
+});
