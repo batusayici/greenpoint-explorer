@@ -549,12 +549,20 @@ a banked fix regressed or a playbook rule was skipped.
   (dark VERGE facade, fire escape, storefront, "159" — not mirrored, 0 NaN,
   257/257 tests). The east edge stays the only role-`franklin` edge after the
   carve (the new cut edge faces west ⇒ role `other`).
-- **FOLLOW-UP (not done):** (1) India face wrap (the yin-yang return) via the
-  Astral `sides` role-"other" pattern, corner-adjacent coverage like Sereneco;
-  (2) the Verge mass renders a CREAM context India wall — its typology baseColor
-  needs to be the dark brick tone so uncovered walls read as Verge, not cream;
-  (3) per-face recess specs (Franklin currently flat); (4) confirm the 0.57 carve
-  fraction against the real Verge/café lot line. Spec/cards pending.
+- **Done (2026-06-25 follow-up):** (1) **corner-line alignment** — Batu flagged
+  the fold must sit on the DRAWN corner line (the "R" of VERGE, right of the 3rd
+  window), not the eyeballed 0.60; cut u1=0.50 so the dark line lands on the
+  building's corner edge (also cut window squish). **Rule: on a corner unwrap,
+  read the fold off the drawn corner line in the render, not a proportional
+  guess.** (2) **dark tone** — added `verge: 0x3e3a36` (sampled from the render)
+  to `II_PALETTE.heroes` so the uncovered India wall reads dark charcoal, not the
+  cream context fallback. **Rule: a hero whose uncovered returns show needs a
+  hero base color or they fall back to cream context.** (3) **Franklin recesses**
+  — 3-col×3-row grid derived cleanly (Verge glass is lit enough for the blob
+  deriver) + storefront; recessM 0.1.
+- **FOLLOW-UP (optional):** India face yin-yang wrap via the Astral `sides`
+  role-"other" pattern (the dark context wall reads decently without it); confirm
+  the 0.57 carve fraction vs the real lot line; place card.
 
 ---
 
