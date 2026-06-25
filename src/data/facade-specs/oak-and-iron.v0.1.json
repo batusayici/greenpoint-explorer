@@ -92,18 +92,18 @@
       },
       "awnings": [
         {
-          "x0": 0.13,
-          "x1": 0.84,
-          "yWall": 0.285,
-          "yDrop": 0.255,
-          "yValance": 0.175,
-          "projectionM": 0.5
+          "x0": 0.198,
+          "x1": 0.995,
+          "yWall": 0.27,
+          "yDrop": 0.27,
+          "yValance": 0.21,
+          "projectionM": 0.36
         }
       ],
       "storefronts": [
         {
           "x0": 0.037,
-          "x1": 0.177,
+          "x1": 0.185,
           "y0": 0.005,
           "y1": 0.257,
           "recessM": 0.17,
