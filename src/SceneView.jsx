@@ -1124,7 +1124,8 @@ const FACADE_COMPOSITES = {
   // building + two 1-story structures extending west along India, per Batu's
   // India-St photo) — so the texture covers only the corner building's faces.
   // Render is a corner unwrap: VERGE storefront (fire escape + 3 window cols +
-  // VERGE sign + "159" door) = the ~7m EAST Franklin frontage (u0:0→u1:0.60);
+  // VERGE sign + "159" door) = the ~7m EAST Franklin frontage (u0:0→u1:0.50,
+  // the drawn corner line at the "R" of VERGE, right of the 3rd window);
   // the yin-yang return = the India (north, role "other") long wall, a FOLLOW-UP
   // wrap via the Astral `sides` pattern. This first pass wires only the Franklin
   // face; the India wall stays dark context mass (matches Verge's tone). leftEnd
@@ -1134,7 +1135,7 @@ const FACADE_COMPOSITES = {
     key: "../assets/textures/franklin/verge--franklin.png",
     byBin: {
       "3064387": {
-        franklin: { u0: 0, u1: 0.6, leftEnd: "south" },
+        franklin: { u0: 0, u1: 0.5, leftEnd: "south" },
       },
     },
   },
