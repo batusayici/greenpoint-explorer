@@ -247,12 +247,12 @@ export default function FacadeRecessEditor({ faceKey, onSelectFace, onClose }) {
 
   return (
     <Shell onGripPointerDown={onGripPointerDown}>
-      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
+      <button onClick={onClose} title="close" style={closeStyle}>✕</button>
+      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8, paddingRight: 28 }}>
         <strong>Recess editor</strong>
         <select value={faceKey ?? ""} onChange={(e) => onSelectFace(e.target.value)} style={selectStyle}>
           {keys.map((k) => <option key={k} value={k}>{k}</option>)}
         </select>
-        <button onClick={onClose} title="close" style={closeStyle}>✕</button>
       </div>
 
       {keys.length > 0 && (
@@ -480,7 +480,7 @@ function handleStyle(h) {
 const fmt = (r) => `x0 ${r.x0.toFixed(3)} x1 ${r.x1.toFixed(3)} y0 ${r.y0.toFixed(3)} y1 ${r.y1.toFixed(3)}`;
 const selectStyle = { background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 6px", fontFamily: "inherit", fontSize: 11, flex: 1, minWidth: 0 };
 const buttonStyle = { background: "#d9a43b", color: "#241c10", border: "none", borderRadius: 4, padding: "6px 10px", fontWeight: 700, cursor: "pointer", fontFamily: "inherit", fontSize: 12 };
-const closeStyle = { background: "transparent", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "2px 7px", cursor: "pointer", fontFamily: "inherit", fontSize: 12, lineHeight: 1 };
+const closeStyle = { position: "absolute", top: 8, right: 8, width: 22, height: 22, padding: 0, background: "transparent", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, lineHeight: 1, zIndex: 1 };
 const addStyle = { background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontFamily: "inherit", fontSize: 11 };
 const deleteBtnStyle = { background: "#5a2e26", color: "#ffd9cf", border: "1px solid #8a4435", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontFamily: "inherit", fontSize: 11 };
 const deleteBadgeStyle = { position: "absolute", top: -9, right: -9, width: 16, height: 16, lineHeight: "14px", textAlign: "center", padding: 0, background: "#5a2e26", color: "#ffd9cf", border: "1px solid #8a4435", borderRadius: "50%", cursor: "pointer", fontFamily: "inherit", fontSize: 10 };

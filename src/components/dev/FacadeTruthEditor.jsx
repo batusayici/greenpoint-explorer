@@ -29,7 +29,7 @@ function reloadPreservingView(bin) {
 // Dev-only (?facadeedit=1) per-BIN facade-truth panel. Click a building to load
 // its BIN; eyedrop facade/window/door from Street View open beside the app;
 // each sample snaps to a sanctioned palette token; Save merges the override JSON.
-export default function FacadeTruthEditor({ bin }) {
+export default function FacadeTruthEditor({ bin, onClose }) {
   const [, force] = useState(0);
   useEffect(() => subscribeBuildingTruth(() => force((n) => n + 1)), []);
 
@@ -125,6 +125,7 @@ export default function FacadeTruthEditor({ bin }) {
 
   return (
     <div style={shell}>
+      {onClose && <button onClick={onClose} title="close" style={closeBtn}>✕</button>}
       <strong>Facade truth</strong>
       <div style={{ fontSize: 11, opacity: 0.7, marginTop: 4 }}>
         {bin ? `BIN ${bin}${entry?.addr ? ` · ${entry.addr}` : ""}` : "click a building to load it"}
@@ -219,6 +220,11 @@ const shell = {
   background: "rgba(28,24,18,0.94)", color: "#eae1ce",
   fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: 12,
   borderRadius: 6, boxShadow: "0 6px 24px rgba(0,0,0,0.4)", zIndex: 50,
+};
+const closeBtn = {
+  position: "absolute", top: 8, right: 8, width: 22, height: 22, lineHeight: 1,
+  background: "transparent", color: "#eae1ce", border: "1px solid #5a4d3e",
+  borderRadius: 4, cursor: "pointer", fontFamily: "inherit", fontSize: 12, padding: 0,
 };
 const select = { flex: 1, background: "#3a3228", color: "#eae1ce", border: "1px solid #5a4d3e", borderRadius: 4, padding: "3px 6px", fontFamily: "inherit", fontSize: 11 };
 const button = { background: "#d9a43b", color: "#241c10", border: "none", borderRadius: 4, padding: "5px 9px", fontWeight: 700, cursor: "pointer", fontFamily: "inherit", fontSize: 11 };

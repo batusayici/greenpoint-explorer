@@ -12,6 +12,7 @@ import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
 import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.json";
 import oakAndIronFacadeSpec from "./data/facade-specs/oak-and-iron.v0.1.json";
+import vergeFacadeSpec from "./data/facade-specs/verge.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
@@ -129,6 +130,10 @@ export default function SceneView() {
   // components onto a test quad. Additive dev surface — never touches production.
   const assetKitFamily = new URLSearchParams(window.location.search).get("assetkit");
   const [editorOpen, setEditorOpen] = useState(false);
+  // Facade-truth panel visibility — closeable via its ✕; a new building click
+  // (setSelectedBin below) reopens it so closing is dismiss-until-next, not
+  // gone-until-reload.
+  const [truthOpen, setTruthOpen] = useState(true);
   const [editorFace, setEditorFace] = useState(null); // null = editor auto-picks first face
   // facade-truth: clicked building BIN. Seeded from ?truthbin so a Save-triggered
   // reload re-opens the panel on the same building.
@@ -518,7 +523,7 @@ export default function SceneView() {
       if (facadeEditRef.current || editorOpenRef.current) {
         // Facade-truth: a building-body/facade click (userData.bin) selects that BIN.
         const clickedBin = binAt(event);
-        if (clickedBin != null) setSelectedBin(String(clickedBin));
+        if (clickedBin != null) { setSelectedBin(String(clickedBin)); setTruthOpen(true); }
         const faceKey = faceKeyAt(event);
         if (faceKey) {
           setEditorFace(faceKey);
@@ -708,7 +713,9 @@ export default function SceneView() {
           onClose={() => setEditorOpen(false)}
         />
       )}
-      {(facadeEdit || editorOpen) && <FacadeTruthEditor bin={selectedBin} />}
+      {(facadeEdit || editorOpen) && truthOpen && (
+        <FacadeTruthEditor bin={selectedBin} onClose={() => setTruthOpen(false)} />
+      )}
       {selectedPlace && (
         <>
           {anchor && (
@@ -1194,6 +1201,7 @@ const FACADE_SPECS = {
   ...astralFacadeSpec.faces,
   ...landOfBarbersFacadeSpec.faces,
   ...oakAndIronFacadeSpec.faces,
+  ...vergeFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -1207,6 +1215,7 @@ for (const [file, spec] of [
   ["astral-apartments.v0.1.json", astralFacadeSpec],
   ["land-of-barbers.v0.1.json", landOfBarbersFacadeSpec],
   ["oak-and-iron.v0.1.json", oakAndIronFacadeSpec],
+  ["verge.v0.1.json", vergeFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
