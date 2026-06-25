@@ -34,7 +34,6 @@ test("tintTokens resolve to in-palette colors (no-miss)", () => {
     sig.signature.frame.tintToken,
     sig.signature.transom.tintToken,
     sig.signature.blade.tintToken,
-    sig.signature.seating.tintToken,
   ];
   const palette = new Set(Object.values(SIGNATURE_PALETTE));
   for (const t of tokens) {
@@ -51,7 +50,6 @@ test("every tintToken used in the data is a known SIGNATURE_PALETTE name", () =>
     sig.signature.frame.tintToken,
     sig.signature.transom.tintToken,
     sig.signature.blade.tintToken,
-    sig.signature.seating.tintToken,
   ];
   for (const t of used) {
     assert.ok(SIGNATURE_TOKEN_NAMES.has(t), `${t} must be a declared signature token`);

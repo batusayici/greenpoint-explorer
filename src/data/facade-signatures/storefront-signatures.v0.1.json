@@ -13,13 +13,11 @@
         "transom": { "text": "COCKTAILS · COLD BEER", "tintToken": "signalAmber" },
         "glazing": { "rhythm": "tall-multipane" },
         "blade": { "shape": "oval", "tintToken": "signalAmber" },
-        "seating": { "kind": "bistro", "tintToken": "sage" },
         "building": {
           "corner": { "type": "chamfer", "insetM": 2.4, "entrance": true, "gable": "curved" },
           "wallHex": "0x5a3a2c",
           "cornice": false,
-          "parapet": { "insets": "diamond", "tintToken": "stoneLight" },
-          "windowAC": { "tintToken": "acGrey" }
+          "parapet": { "insets": "diamond", "tintToken": "stoneLight" }
         }
       }
     }
