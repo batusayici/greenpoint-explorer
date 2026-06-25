@@ -1119,6 +1119,25 @@ const FACADE_COMPOSITES = {
       },
     },
   },
+  // Verge — BIN 3064387, a 1931 dark-brick CORNER building at Franklin & India.
+  // The BIN footprint actually merges THREE buildings (the tall Verge corner
+  // building + two 1-story structures extending west along India, per Batu's
+  // India-St photo) — so the texture covers only the corner building's faces.
+  // Render is a corner unwrap: VERGE storefront (fire escape + 3 window cols +
+  // VERGE sign + "159" door) = the ~7m EAST Franklin frontage (u0:0→u1:0.60);
+  // the yin-yang return = the India (north, role "other") long wall, a FOLLOW-UP
+  // wrap via the Astral `sides` pattern. This first pass wires only the Franklin
+  // face; the India wall stays dark context mass (matches Verge's tone). leftEnd
+  // "south" = render-left (fire escape) at the south end, reading north to the
+  // NE corner. Fold u1=0.60 is the measured Franklin/India seam — tune in-engine.
+  verge: {
+    key: "../assets/textures/franklin/verge--franklin.png",
+    byBin: {
+      "3064387": {
+        franklin: { u0: 0, u1: 0.6, leftEnd: "south" },
+      },
+    },
+  },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
     byBin: {
@@ -1160,6 +1179,9 @@ const FACADE_GROUP_BINS = {
   // Oak & Iron — block-extract BIN promoted to a single-face hero (east Franklin
   // frontage). See FACADE_COMPOSITES["oak-and-iron"].
   "3064393": "oak-and-iron",
+  // Verge — block-extract corner BIN promoted to a hero (Franklin face this pass;
+  // India wrap is a follow-up). See FACADE_COMPOSITES["verge"].
+  "3064387": "verge",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.

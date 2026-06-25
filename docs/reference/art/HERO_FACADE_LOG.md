@@ -528,6 +528,34 @@ a banked fix regressed or a playbook rule was skipped.
   columns + bar-window/door extents in `?facadeedit=1`; the slate storefront has
   more sub-elements (central bar door, Coors panel) than the 2-window+2-door seed.
 
+### Verge — BIN 3064387 (Franklin & India corner) — IN PROGRESS (Franklin face + carve)
+- **Texture:** `verge--franklin.png` (corner unwrap, trimmed 1292×965). 1931
+  dark-brick corner building. Render reads VERGE storefront (fire escape + 3
+  window cols + VERGE sign + "159" door) on the LEFT = the ~7m EAST Franklin
+  frontage (u0:0→u1:0.60), then the corner fold, then the India return (yin-yang
+  + door) on the RIGHT = the India (north, role "other") long wall.
+- **Merged-footprint carve (the new capability):** BIN 3064387's single
+  NYC-Open-Data footprint MERGES three real buildings — the tall Verge corner +
+  two 1-story structures extending west along India (Batu's India-St Street View,
+  2026-06-25). Rendered as-is it was one 13.7m mass with a too-tall cream India
+  wall over the low buildings. Fix: `src/carveFootprint.js` (pure Sutherland–
+  Hodgman half-plane clip, 5 tests) splits the footprint at x = xMax − frac·width;
+  `sceneFrame.js` keeps the EAST `CARVE_EAST_FRACTION` (0.57) as the Verge hero
+  mass and re-emits the WEST remainder as a 1-story (4.2m) context building.
+  **Bank: a merged multi-building BIN can be split by a vertical half-plane clip
+  in the block-extract promotion — keep the corner as the hero, re-emit the
+  remainder low. Reusable for any over-merged corridor footprint.**
+- **Done this pass:** Franklin face wired + carved massing verified in-engine
+  (dark VERGE facade, fire escape, storefront, "159" — not mirrored, 0 NaN,
+  257/257 tests). The east edge stays the only role-`franklin` edge after the
+  carve (the new cut edge faces west ⇒ role `other`).
+- **FOLLOW-UP (not done):** (1) India face wrap (the yin-yang return) via the
+  Astral `sides` role-"other" pattern, corner-adjacent coverage like Sereneco;
+  (2) the Verge mass renders a CREAM context India wall — its typology baseColor
+  needs to be the dark brick tone so uncovered walls read as Verge, not cream;
+  (3) per-face recess specs (Franklin currently flat); (4) confirm the 0.57 carve
+  fraction against the real Verge/café lot line. Spec/cards pending.
+
 ---
 
 ## Top pending tooling improvement

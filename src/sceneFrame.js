@@ -5,7 +5,18 @@
 // Franklin-local scene frame proven in 4M-R10E (origin at the intersection,
 // 0.075 scene units per meter).
 
+import { carveEastFraction } from "./carveFootprint.js";
+
 const FEET_TO_METERS = 0.3048;
+
+// BINs whose single NYC-Open-Data footprint merges several real buildings, with
+// the tall corner building on the EAST (Franklin) end and lower structures
+// extending west. We carve the east `frac` of the x-extent as the real corner
+// building (it gets the hero massing + facade) and re-emit the west remainder as
+// a low context mass. Verge (3064387): tall corner at Franklin & India + two
+// 1-story buildings west along India (Batu's India-St photo, 2026-06-25).
+const CARVE_EAST_FRACTION = { "3064387": 0.57 };
+const CARVE_WEST_STORIES_M = 4.2; // 1-story height for the carved-off remainder
 
 export function createProjection(projectionBasis) {
   const origin = projectionBasis.originWgs84;
@@ -137,8 +148,19 @@ export function assembleFranklinScene({
       if (heroByBin.has(bin)) continue;
       // Dedupe within multiple block extracts.
       if (pushedBlockBins.has(bin)) continue;
-      const polygon = projectPolygon(record.wgs84Polygon, projection);
+      let polygon = projectPolygon(record.wgs84Polygon, projection);
       if (!polygon.length) continue;
+      // Carve a merged multi-building footprint: keep the east corner building as
+      // the hero mass, re-emit the west remainder as a low context structure.
+      let carvedWest = null;
+      const carveFrac = CARVE_EAST_FRACTION[bin];
+      if (carveFrac) {
+        const { keep, rest } = carveEastFraction(polygon, carveFrac);
+        if (keep.length >= 3) {
+          polygon = keep;
+          if (rest.length >= 3) carvedWest = rest;
+        }
+      }
       const centroid = getCentroid(polygon);
       const heightFeet = Number.parseFloat(record.sourceProperties?.heightRoof);
       const heightUnits = projection.metersToUnits(
@@ -177,6 +199,25 @@ export function assembleFranklinScene({
         buildings.push(blockBuilding);
       }
       pushedBlockBins.add(bin);
+
+      // Re-emit the carved-off west remainder as a low (1-story) context mass so
+      // the merged footprint's short buildings don't render at the hero's height.
+      if (carvedWest) {
+        buildings.push({
+          bin: `${bin}-west`,
+          polygon: carvedWest,
+          centroid: getCentroid(carvedWest),
+          height: Math.max(projection.metersToUnits(CARVE_WEST_STORIES_M), 0.3),
+          constructionYear: record.sourceProperties?.constructionYear ?? null,
+          sourceProperties: record.sourceProperties ?? null,
+          isHero: false,
+          placeId: null,
+          label: null,
+          cornerRole: null,
+          edges: null,
+          fromBlockExtract: true,
+        });
+      }
     }
   }
 
