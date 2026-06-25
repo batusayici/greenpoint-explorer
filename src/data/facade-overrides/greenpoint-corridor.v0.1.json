@@ -167,7 +167,8 @@
       "tint": "0xb25d4e",
       "windowTint": "0x8a6f54",
       "doorAlign": "right",
-      "corniceTint": "0x8a6f54"
+      "corniceTint": "0x8a6f54",
+      "storefrontAwning": false
     },
     "3064394": {
       "family": "brick",
@@ -541,6 +542,14 @@
       "windowTint": "0x8a8270",
       "doorTint": "0x8a6f54",
       "corniceTint": "0x8a8270"
+    },
+    "3064387-west": {
+      "family": "brick",
+      "tint": "0x1d1a16"
+    },
+    "3064253-tower": {
+      "tint": "0x453529",
+      "windowTint": "0x2a241c"
     }
   }
 }
