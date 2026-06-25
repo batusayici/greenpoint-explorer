@@ -11,6 +11,7 @@ import serenecoFacadeSpec from "./data/facade-specs/sereneco.v0.1.json";
 import franklin144FacadeSpec from "./data/facade-specs/144-franklin.v0.1.json";
 import astralFacadeSpec from "./data/facade-specs/astral-apartments.v0.1.json";
 import landOfBarbersFacadeSpec from "./data/facade-specs/land-of-barbers.v0.1.json";
+import oakAndIronFacadeSpec from "./data/facade-specs/oak-and-iron.v0.1.json";
 import geometrySource from "./data/geometry-source/greenpoint-ave-manhattan-to-franklin.nyc-open-geometry-context.phase-3b.json";
 import corridorStreetCenterlines from "./data/geometry-source/block-franklin-north.street-centerlines.v0.1.json";
 import sceneGeometryFixture from "./data/franklin-intersection/greenpoint-franklin.phase-4m-r10e-scene-geometry-root-cause.v0.1.json";
@@ -1104,6 +1105,20 @@ const FACADE_COMPOSITES = {
       },
     },
   },
+  // Oak & Iron — BIN 3064393, a 1930 ~25ft-lot tenement on the WEST side of
+  // Franklin St (~174m north of the corner, block-franklin-north extract). Single
+  // EAST Franklin frontage (~7.65m, edge 5) — centroid.x -3.22 ⇒ the east edge's
+  // normal points +x toward the street ⇒ role "franklin". leftEnd "south" (a
+  // west-side building's east frontage reads opposite to Land of Barbers' west
+  // frontage) — flip to "north" if mirrored.
+  "oak-and-iron": {
+    key: "../assets/textures/franklin/oak-and-iron--franklin.png",
+    byBin: {
+      "3064393": {
+        franklin: { u0: 0, u1: 1, leftEnd: "south" },
+      },
+    },
+  },
   sereneco: {
     key: "../assets/textures/franklin/sereneco--corner.png",
     byBin: {
@@ -1142,6 +1157,9 @@ const FACADE_GROUP_BINS = {
   // Land of Barbers — block-extract BIN promoted to a single-face hero
   // (west Franklin frontage). See FACADE_COMPOSITES["land-of-barbers"].
   "3064676": "land-of-barbers",
+  // Oak & Iron — block-extract BIN promoted to a single-face hero (east Franklin
+  // frontage). See FACADE_COMPOSITES["oak-and-iron"].
+  "3064393": "oak-and-iron",
 };
 
 // Structured facade specs, keyed "bin:face" — see facadeAssembly.js.
@@ -1152,6 +1170,7 @@ const FACADE_SPECS = {
   ...franklin144FacadeSpec.faces,
   ...astralFacadeSpec.faces,
   ...landOfBarbersFacadeSpec.faces,
+  ...oakAndIronFacadeSpec.faces,
 };
 
 // Maps each "BIN:role" face to the spec file it lives in, so the dev recess
@@ -1164,6 +1183,7 @@ for (const [file, spec] of [
   ["144-franklin.v0.1.json", franklin144FacadeSpec],
   ["astral-apartments.v0.1.json", astralFacadeSpec],
   ["land-of-barbers.v0.1.json", landOfBarbersFacadeSpec],
+  ["oak-and-iron.v0.1.json", oakAndIronFacadeSpec],
 ]) {
   for (const key of Object.keys(spec.faces)) SPEC_FILE_BY_FACE[key] = file;
 }
@@ -1697,17 +1717,26 @@ function buildStorefrontSeating(three, scene, baysByBin, pointByName) {
       const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color }));
       mesh.position.set(cx, cy, cz); three.add(mesh);
     };
-    // Table: thin round top on a slender post.
+    // Table: thin round top on a slender dark pedestal.
     const c = wp(uc, offU, 0);
-    cyl(c.x, 0.72 * m, c.z, 0.30 * m, 0.045 * m, metal);
-    cyl(c.x, 0.36 * m, c.z, 0.04 * m, 0.72 * m, metal);
-    // Two sage chairs flanking the table along the frontage (a hair closer in).
-    const du = (0.5 * m) / Math.max(1e-6, Math.hypot(wp(1, 0, 0).x - wp(0, 0, 0).x, wp(1, 0, 0).z - wp(0, 0, 0).z));
+    cyl(c.x, 0.72 * m, c.z, 0.27 * m, 0.04 * m, metal);
+    cyl(c.x, 0.36 * m, c.z, 0.035 * m, 0.72 * m, metal);
+    // Two sage bistro chairs flanking the table: slim seat + backrest + 4 dark
+    // ink legs, so they read as drawn chairs rather than flat blocks.
+    const edgeLen = Math.max(1e-6, Math.hypot(wp(1, 0, 0).x - wp(0, 0, 0).x, wp(1, 0, 0).z - wp(0, 0, 0).z));
+    const du = (0.5 * m) / edgeLen;
+    const uM = du / (0.5 * m);            // u per scene-unit, for leg spread
+    const seatY = 0.42 * m;
     for (const s of [-1, 1]) {
-      const cc = wp(uc + s * du, offU - 0.18 * m, 0);
-      box(cc.x, 0.44 * m, cc.z, 0.40 * m, 0.05 * m, 0.40 * m, sage); // seat
-      const back = wp(uc + s * du, offU - 0.18 * m - 0.18 * m, 0);   // back set toward table-out side
-      box(back.x, 0.66 * m, back.z, 0.40 * m, 0.42 * m, 0.05 * m, sage);
+      const su = uc + s * du, soff = offU - 0.16 * m;
+      const seat = wp(su, soff, 0);
+      box(seat.x, seatY, seat.z, 0.34 * m, 0.05 * m, 0.34 * m, sage);            // seat
+      const back = wp(su, soff + 0.15 * m, 0);
+      box(back.x, 0.63 * m, back.z, 0.34 * m, 0.40 * m, 0.04 * m, sage);         // backrest
+      for (const lu of [-0.14, 0.14]) for (const lo of [-0.14, 0.14]) {
+        const lp = wp(su + lu * m * uM, soff + lo * m, 0);
+        box(lp.x, seatY * 0.5, lp.z, 0.03 * m, seatY, 0.03 * m, metal);          // dark ink leg
+      }
     }
   };
 
@@ -1808,9 +1837,8 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
             if (buildingSig.wallHex != null) kitParams.tint = nearestPaletteToken(Number(buildingSig.wallHex), family);
             // Elder Greene has no classical cornice — plain brick parapet.
             if (buildingSig.cornice === false) kitParams.hasCornice = false;
-            // Pass the chamfer entrance-face midpoint so decorateInkedWall can put
-            // the door (and no awning) on the diagonal, glazing on the flanks.
-            if (building.chamferMid) kitParams.chamferMid = building.chamferMid;
+            // (chamferMid is set on kitParams AFTER the chamfer block below, which
+            // runs later in this iteration — see the entrance-face wiring there.)
           }
         }
       }
@@ -1872,6 +1900,10 @@ function buildBuildings(three, scene, requestRender, isActive = () => true, addC
           // The chamfer EDGE midpoint identifies the diagonal entrance face downstream.
           if (cSig.entrance) building.chamferMid = { x: (A.x + B.x) / 2, z: (A.z + B.z) / 2 };
           building.polygon = chamferCorner(building.polygon, corner, inset);
+          // Now that building.chamferMid exists, hand it to the params decorateInkedWall
+          // reads (inkedParams === kitParams object), so the diagonal face is routed
+          // to door + no-awning. (The kit block ran earlier, before chamferMid existed.)
+          if (kitParams && building.chamferMid) kitParams.chamferMid = building.chamferMid;
         }
       }
     }
@@ -3391,20 +3423,47 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
   // Elder Greene: a row of light-stone DIAMOND insets across the parapet band +
   // a through-window AC unit. Street faces only (openingsFace).
   const bSig = params.buildingSignature;
+  const isChamferFace = bSig && params.chamferMid && dist(edge.midpoint, params.chamferMid) < 0.08;
+  // Curved brick GABLE over the chamfer corner — runs FIRST, regardless of the
+  // >4 m gate below (the chamfer edge is short, ~3.4 m, and would otherwise be skipped).
+  if (isChamferFace && bSig.corner?.gable === "curved") {
+    const segs = 28;
+    const gH = 0.26;                                  // peak height above the roofline (height-fraction)
+    const goff = WALL_PLANE + 0.006;
+    const prof = (x) => 1 + gH * (0.5 + 0.5 * Math.sin(Math.PI * Math.min(1, Math.max(0, x)))); // raised across, peaks center
+    const cop = tokenColor(bSig.parapet?.tintToken) ?? MASSING.parapet;
+    for (let i = 0; i < segs; i += 1) {
+      const x0 = i / segs, x1 = (i + 1) / segs;
+      const t0 = prof(x0), t1 = prof(x1);
+      quad3(point(x0, 1, goff), point(x1, 1, goff), point(x1, t1, goff), point(x0, t0, goff), wallTex,
+        { tint: params.tint, uv: [1 - x0, 0, 1 - x1, 0, 1 - x1, 1, 1 - x0, 1] });
+      quad3(point(x0, t0 - 0.03, goff + 0.004), point(x1, t1 - 0.03, goff + 0.004),
+        point(x1, t1, goff + 0.004), point(x0, t0, goff + 0.004), null, { tint: cop }); // stone coping
+      quad3(point(x0, 1, goff - 0.012), point(x1, 1, goff - 0.012), point(x1, t1, goff - 0.012), point(x0, t0, goff - 0.012), null,
+        { tint: darken(params.tint, 0.4) }); // dark back so it isn't see-through
+    }
+  }
   if (bSig && openingsFace && edge.length / upm > 4) {
     const edgeLengthM = edge.length / upm;
-    // Stone diamonds on the upper parapet band, just below the cornice molding.
+    // Stone diamonds in the parapet band ABOVE the upper-window heads. Banded off
+    // the REAL window rects (max y1) + the roofline, so they never collide with a
+    // window — the overlap was placing them at window-head height.
     if (bSig.parapet?.insets === "diamond") {
       const stone = tokenColor(bSig.parapet.tintToken) ?? MASSING.parapet;
-      const { insets } = planParapetInsets({ edgeLengthM });
-      const ry = 0.35 / heightM;            // ~0.35 m tall half-height
-      const rx = 0.26 / edgeLengthM;        // ~0.26 m wide half-width
-      const cy = (1 - corniceFrac) - ry - 0.012; // sit on the brick just under the crown
-      const off = WALL_PLANE + 0.01;        // proud, reads as a raised stone inset
-      for (const d of insets) {
-        const cx = d.u;
-        quad3(point(cx, cy + ry, off), point(cx + rx, cy, off),
-          point(cx, cy - ry, off), point(cx - rx, cy, off), null, { tint: stone });
+      const winTop = (Array.isArray(f.windows) && f.windows.length)
+        ? Math.max(...f.windows.map((w) => w.y1)) : 0.82;
+      const bandBot = winTop + 0.025, bandTop = 0.985;
+      if (bandTop - bandBot > 0.05) {
+        const cy = (bandBot + bandTop) / 2;
+        const ry = Math.min(0.06, (bandTop - bandBot) / 2 - 0.004); // fit inside the band
+        const rx = 0.26 / edgeLengthM;        // ~0.26 m wide half-width
+        const off = WALL_PLANE + 0.01;        // proud, reads as a raised stone inset
+        const { insets } = planParapetInsets({ edgeLengthM, spacingM: 3.0 });
+        for (const d of insets) {
+          const cx = d.u;
+          quad3(point(cx, cy + ry, off), point(cx + rx, cy, off),
+            point(cx, cy - ry, off), point(cx - rx, cy, off), null, { tint: stone });
+        }
       }
     }
     // Through-window AC: a small grey box under one upper-floor window (right-ish,
@@ -3420,8 +3479,8 @@ function decorateInkedWall(target, edge, height, params, scene, streetFace = tru
         const ax0 = cxw - halfW, ax1 = cxw + halfW;
         const ay1 = pick.y0 - 0.004, ay0 = ay1 - 0.55 / heightM; // hangs ~0.55 m below the sill
         const projF = WALL_PLANE + 0.4 * upm, projB = WALL_PLANE + 0.006; // ~0.4 m proud (upm = units/m)
-        // front, bottom, two sides — a boxy unit jutting from the wall
-        quad3(point(ax0, ay0, projF), point(ax1, ay0, projF), point(ax1, ay1, projF), point(ax0, ay1, projF), null, { tint: ac });
+        // front (louvred grille + inked outline), bottom, two sides — a unit jutting from the wall
+        quad3(point(ax0, ay0, projF), point(ax1, ay0, projF), point(ax1, ay1, projF), point(ax0, ay1, projF), makeACGrilleTexture(ac), {});
         quad3(point(ax0, ay0, projB), point(ax1, ay0, projB), point(ax1, ay0, projF), point(ax0, ay0, projF), null, { tint: darken(ac, 0.5) });
         quad3(point(ax0, ay0, projB), point(ax0, ay0, projF), point(ax0, ay1, projF), point(ax0, ay1, projB), null, { tint: darken(ac, 0.7) });
         quad3(point(ax1, ay0, projF), point(ax1, ay0, projB), point(ax1, ay1, projB), point(ax1, ay1, projF), null, { tint: darken(ac, 0.7) });
@@ -3868,6 +3927,23 @@ function makeInkedGlazingTexture() {
 // top and the valance line up across the fold:
 //   valance=false → opaque canopy top (full height, no scallop)
 //   valance=true  → scalloped hem; gaps + below-hem left transparent for the fringe
+// Through-window AC unit face: a body panel + louvred vent grille + an inked
+// outline, so it reads as a hand-drawn AC, not a flat grey box.
+function makeACGrilleTexture(bodyHex) {
+  const c = document.createElement("canvas"); c.width = 80; c.height = 56;
+  const ctx = c.getContext("2d");
+  const body = new THREE.Color(bodyHex);
+  ctx.fillStyle = `#${body.getHexString()}`; ctx.fillRect(0, 0, 80, 56);
+  // left ~40% solid panel (slightly lighter), right = vent grille
+  const gx = 32;
+  ctx.fillStyle = `#${body.clone().multiplyScalar(1.1).getHexString()}`; ctx.fillRect(2, 2, gx - 2, 52);
+  ctx.fillStyle = `#${body.clone().multiplyScalar(0.9).getHexString()}`; ctx.fillRect(gx, 2, 78 - gx, 52); // grille recess
+  ctx.strokeStyle = "rgba(22, 19, 15, 0.5)"; ctx.lineWidth = 1.5;
+  for (let y = 7; y < 52; y += 5) { ctx.beginPath(); ctx.moveTo(gx + 2, y); ctx.lineTo(76, y); ctx.stroke(); } // louvres
+  ctx.strokeStyle = "rgba(22, 19, 15, 0.6)"; ctx.lineWidth = 2.5; ctx.strokeRect(1.5, 1.5, 77, 53); // inked outline
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+
 function makeAwningTexture(tintHex, { valance = false, stripe = "block" } = {}) {
   const c = document.createElement("canvas");
   c.width = 256; c.height = 128;

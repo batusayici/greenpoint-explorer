@@ -498,6 +498,36 @@ a banked fix regressed or a playbook rule was skipped.
   Franklin frontage is back-facing at the DEFAULT angle (a=0 shows its roof) —
   it presents at **angle 3/4 (a=2)**, like every east-Franklin face.
 
+### Oak & Iron — BIN 3064393 (Franklin St, west side) — SHIPPED (firstpass)
+- **Texture:** `oak-and-iron--franklin.png` (1122×1402, trimmed 929×1359). Single
+  EAST Franklin frontage (~7.65m, a 25ft tenement lot) on the WEST side of
+  Franklin, ~174m north of the corner (block-franklin-north extract). 1930
+  5-story: ground-floor slate bar storefront + 4 floors × 4 windows, central 2
+  columns behind a fire escape.
+- **Mirror of Land of Barbers' orientation:** WEST-side building ⇒ EAST frontage.
+  centroid.x −3.22 ⇒ the east edge's normal points +x toward the street ⇒ role
+  franklin (only that edge). `leftEnd: "south"` read non-mirrored first try (the
+  opposite of Land of Barbers' east-side `north`). An east frontage is
+  FRONT-facing at the DEFAULT angle (a=0) — opposite to east-side heroes.
+- **Fire-escape-dense derive (the hard one):** both the blob deriver and the
+  redness seed fragmented on the fire-escape ironwork + AC units (phantom column
+  slivers, half-height rows, fire-escape ladder polluting any center-column
+  brightness profile). **What worked: a gridded crop.** A throwaway
+  `/tmp/crop.mjs` rendered the trimmed face with horizontal `fy` gridlines every
+  0.05; reading the 4×4 grid + storefront bands off that BY EYE beat every
+  detector. Took ~3 gate rounds (no re-renders, no in-engine fix commits): the
+  storefront ran taller than first estimated (awning at fy≈0.15–0.20, not 0.11),
+  and row D was ~0.03 low. **Bank: for a dense/occluded facade, a gridded crop
+  (fy rules every 0.05) is the fastest registration tool — skip the profile
+  scripts, read coordinates against the rules.** Windows recessM 0.1; the painted
+  fire escape stays flat on the wall, drawn over the recessed panes.
+- **Cost: ~3 gate rounds, 0 re-renders, 0 fix commits.** Awning carried all three
+  Y fields from the start (Land of Barbers lesson held), so no NaN. 252/252 tests
+  + overrides + conformance green; 0 NaN meshes confirmed by scene traverse.
+- **Open polish (`firstpass_seed`):** micro-nudge fire-escape-occluded central
+  columns + bar-window/door extents in `?facadeedit=1`; the slate storefront has
+  more sub-elements (central bar door, Coors panel) than the 2-window+2-door seed.
+
 ---
 
 ## Top pending tooling improvement
