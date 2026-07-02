@@ -1,5 +1,9 @@
-import React from "react";
-import { FILTERS } from "./filterCards.js";
+import React, { useEffect, useRef } from "react";
+import { FILTERS, pinKind } from "./filterCards.js";
+
+// Filters that map 1:1 onto a pin color get a matching swatch in their chip —
+// the color key lives in the controls people already use, not a legend box.
+const CHIP_KIND = { new: "business", events: "event", clubs_signups: "club", g_train: "gtrain" };
 
 const SIGNUP_MAILTO =
   "mailto:bsayici@gmail.com?subject=Weekly%20Greenpoint%20updates&body=Sign%20me%20up%20for%20the%20weekly%20map.";
@@ -74,6 +78,15 @@ function CardDetail({ card }) {
 }
 
 export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday, selectedId, onSelect }) {
+  const listRef = useRef(null);
+
+  // Tapping a pin brings its card to the top of the feed.
+  useEffect(() => {
+    if (!selectedId) return;
+    const el = listRef.current?.querySelector(".july-card.is-open");
+    el?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }, [selectedId]);
+
   return (
     <aside className="july-panel">
       <nav className="july-filters" aria-label="Filter the map">
@@ -84,6 +97,7 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
             className={`july-chip${filter === f.id ? " is-active" : ""}`}
             onClick={() => onFilter(f.id)}
           >
+            {CHIP_KIND[f.id] && <span className={`july-dot july-dot--${CHIP_KIND[f.id]}`} aria-hidden="true" />}
             {f.label}
           </button>
         ))}
@@ -96,7 +110,7 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
           {todayOnly ? "Today" : "This week"}
         </button>
       </nav>
-      <ol className="july-list">
+      <ol className="july-list" ref={listRef}>
         {cards.map((card) => {
           const open = card.id === selectedId;
           return (
@@ -107,7 +121,10 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
                 aria-expanded={open}
                 onClick={() => onSelect(open ? null : card.id)}
               >
-                <span className="july-card-title">{card.title}</span>
+                <span className="july-card-titlerow">
+                  <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
+                  <span className="july-card-title">{card.title}</span>
+                </span>
                 {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
               </button>
               {open && <CardDetail card={card} />}

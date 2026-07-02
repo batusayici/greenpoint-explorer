@@ -119,6 +119,9 @@ body { margin: 0; }
 }
 
 .july-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   min-height: 32px;
   padding: 6px 12px;
   border: 1px solid var(--line);
@@ -170,8 +173,29 @@ body { margin: 0; }
 .july-card-head:hover { background: rgba(42, 36, 28, 0.05); }
 .july-card.is-open { background: var(--paper-lift); box-shadow: inset 3px 0 0 var(--ink); }
 
+.july-card-titlerow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .july-card-title { font-size: 0.95rem; font-weight: 800; }
-.july-card-loc { font-size: 0.76rem; color: var(--ink-soft); }
+.july-card-loc { margin-left: 18px; font-size: 0.76rem; color: var(--ink-soft); }
+
+/* pin-color key — the same swatches appear on pins, chips, and card rows */
+.july-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+}
+
+.july-dot--business { background: var(--paper-lift); }
+.july-dot--event { background: var(--amber); }
+.july-dot--gtrain { background: var(--g-green); }
+.july-dot--club { background: var(--brick); }
 
 .july-detail { padding: 0 16px 14px; }
 .july-detail-summary { margin: 0 0 6px; font-size: 0.84rem; line-height: 1.45; }

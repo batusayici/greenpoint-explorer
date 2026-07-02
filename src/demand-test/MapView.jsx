@@ -28,6 +28,14 @@ export default function MapView({ cards, selectedId, onSelect }) {
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
+    // Compact attribution starts collapsed (just the ⓘ) — MapLibre auto-opens
+    // it on load, which covers the map's bottom edge.
+    map.once("load", () => {
+      const attrib = containerRef.current?.querySelector(".maplibregl-ctrl-attrib");
+      attrib?.classList.remove("maplibregl-compact-show");
+      attrib?.removeAttribute("open");
+    });
+
     // Open framed on the actual pin extent (not a fixed center), so the
     // neighborhood — not the river — fills the first view at any aspect.
     const pts = [];
