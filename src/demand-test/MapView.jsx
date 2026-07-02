@@ -11,6 +11,9 @@ export default function MapView({ cards, selectedId, onSelect }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
+  // Snapshot of the mount-time card set for the initial fitBounds only —
+  // later filter changes must not re-frame the camera.
+  const initialCardsRef = useRef(cards);
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -24,6 +27,22 @@ export default function MapView({ cards, selectedId, onSelect }) {
       attributionControl: { compact: true },
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+
+    // Open framed on the actual pin extent (not a fixed center), so the
+    // neighborhood — not the river — fills the first view at any aspect.
+    const pts = [];
+    for (const card of initialCardsRef.current) {
+      if (card.lat != null) pts.push([card.lng, card.lat]);
+      for (const v of card.venues ?? []) if (v.lat != null) pts.push([v.lng, v.lat]);
+    }
+    if (pts.length > 0) {
+      const bounds = pts.reduce(
+        (b, p) => b.extend(p),
+        new maplibregl.LngLatBounds(pts[0], pts[0]),
+      );
+      map.fitBounds(bounds, { padding: 56, animate: false });
+    }
+
     mapRef.current = map;
     return () => map.remove();
   }, []);

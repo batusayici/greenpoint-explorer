@@ -11,6 +11,7 @@
   --ink-faint: rgba(42, 36, 28, 0.14);
   --line: #9b9079;
   --g-green: #4f7d52;
+  --g-green-deep: #2e3b32; /* TRIM_TONES forest green, dark — AA bed for paper text */
   --amber: #cc9a3b;
   --brick: #a04432;
   --street: #cabfa7;
@@ -39,7 +40,7 @@ body { margin: 0; }
 .july-kicker {
   display: inline-block;
   margin-bottom: 4px;
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -67,7 +68,8 @@ body { margin: 0; }
   align-items: center;
   padding: 8px 22px;
   border-bottom: 1px solid var(--ink);
-  background: var(--g-green);
+  /* deep forest bed: 13px paper text needs 4.5:1 — signalGreen only gives 3.8:1 */
+  background: var(--g-green-deep);
   color: var(--paper-lift);
   font-size: 0.82rem;
 }
@@ -80,6 +82,7 @@ body { margin: 0; }
   flex: none;
   border: 2px solid var(--paper-lift);
   border-radius: 50%;
+  background: var(--g-green);
   font-weight: 850;
   font-size: 0.8rem;
 }
@@ -116,15 +119,17 @@ body { margin: 0; }
 }
 
 .july-chip {
-  padding: 4px 10px;
+  min-height: 32px;
+  padding: 6px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: transparent;
   color: var(--ink);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .july-chip.is-active {
@@ -166,7 +171,7 @@ body { margin: 0; }
 .july-card.is-open { background: var(--paper-lift); box-shadow: inset 3px 0 0 var(--ink); }
 
 .july-card-title { font-size: 0.95rem; font-weight: 800; }
-.july-card-loc { font-size: 0.74rem; color: var(--ink-soft); }
+.july-card-loc { font-size: 0.76rem; color: var(--ink-soft); }
 
 .july-detail { padding: 0 16px 14px; }
 .july-detail-summary { margin: 0 0 6px; font-size: 0.84rem; line-height: 1.45; }
@@ -185,12 +190,13 @@ body { margin: 0; }
 
 .july-action {
   display: inline-block;
-  padding: 5px 10px;
+  min-height: 32px;
+  padding: 7px 11px;
   border: 1px solid var(--ink);
   border-radius: 4px;
   background: var(--paper-lift);
   color: var(--ink);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 750;
   text-decoration: none;
   cursor: pointer;
@@ -203,7 +209,7 @@ body { margin: 0; }
 
 .july-source {
   margin: 4px 0 0;
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -240,8 +246,10 @@ body { margin: 0; }
     flex-direction: column;
     height: auto;
   }
-  .july-map { position: relative; height: 46vh; min-height: 320px; }
+  /* The map is the value proposition — it leads on mobile. */
+  .july-map { position: relative; order: 1; height: 46vh; min-height: 320px; }
   .july-panel {
+    order: 2;
     border-right: 0;
     border-top: 1px solid var(--ink);
     max-height: none;
@@ -297,7 +305,16 @@ body { margin: 0; }
   display: block;
 }
 
+/* expand the touch/click area past the 18px visual without growing the mark */
+.ii-pin::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+}
+
 .ii-venue-dot {
+  position: relative;
   width: 10px;
   height: 10px;
   padding: 0;
@@ -305,4 +322,22 @@ body { margin: 0; }
   border-radius: 50%;
   background: var(--amber);
   cursor: pointer;
+}
+
+.ii-venue-dot::after {
+  content: "";
+  position: absolute;
+  inset: -11px;
+  border-radius: 50%;
+}
+
+/* explicit focus ring on every interactive element (paper theme swallows defaults) */
+.july-chip:focus-visible,
+.july-action:focus-visible,
+.july-cta:focus-visible,
+.july-card-head:focus-visible,
+.ii-pin:focus-visible,
+.ii-venue-dot:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }

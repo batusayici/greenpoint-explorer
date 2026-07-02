@@ -46,6 +46,13 @@ function ActionLink({ action }) {
   return <span className={`${cls} july-action--static`}>{action.label}</span>;
 }
 
+// List-row subline: prefer the street address (sans city boilerplate); fall
+// back to locationName only when it adds something the title doesn't.
+function cardSubline(card) {
+  if (card.address) return card.address.replace(/,\s*Brooklyn.*$/i, "");
+  return card.locationName !== card.title ? card.locationName : null;
+}
+
 function CardDetail({ card }) {
   const when = formatWindow(card);
   return (
@@ -101,7 +108,7 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
                 onClick={() => onSelect(open ? null : card.id)}
               >
                 <span className="july-card-title">{card.title}</span>
-                <span className="july-card-loc">{card.locationName}</span>
+                {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
               </button>
               {open && <CardDetail card={card} />}
             </li>
