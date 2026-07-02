@@ -258,9 +258,13 @@ body { margin: 0; }
   .july-header p { display: none; }
 }
 
-/* --- pins (DOM markers) --- */
+/* --- pins (DOM markers) ---
+   NEVER set `position` or `transform` on .ii-pin/.ii-venue-dot: they ARE the
+   maplibregl-marker elements — MapLibre anchors them with position:absolute +
+   an inline transform, and overriding either detaches pins from their geo
+   anchor (they slide against buildings on zoom). absolute already makes the
+   pin the containing block for the label and ::after hit area. */
 .ii-pin {
-  position: relative;
   width: 18px;
   height: 18px;
   padding: 0;
@@ -278,7 +282,10 @@ body { margin: 0; }
 
 .ii-pin.is-selected {
   z-index: 3;
-  transform: scale(1.35);
+  /* grow via box size, not transform — MapLibre owns the marker transform;
+     translate(-50%,-50%) keeps the grown pin centered on its anchor */
+  width: 24px;
+  height: 24px;
   background: var(--ink);
   border-color: var(--ink);
   box-shadow: 0 0 0 4px rgba(42, 36, 28, 0.22);
@@ -314,7 +321,6 @@ body { margin: 0; }
 }
 
 .ii-venue-dot {
-  position: relative;
   width: 10px;
   height: 10px;
   padding: 0;
