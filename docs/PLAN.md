@@ -41,15 +41,19 @@ NYC footprints (BIN-mapped, WGS84)
 
 Stack: React + Three.js + Vite. No renderer replacement.
 
-## Where we are (2026-06-25)
+## Where we are (2026-07-02)
 
 The **container** (Track A — geometry, inked look, facades, ground, multi-angle camera, place cards, block scaling) is ~85% built and polished along the Franklin spine. The **content/product layers** (Track B — stories, events, routes, history, instrumentation) are ~5% built. The map reads as real but is largely **mute**. Milestone trail: `DECISION_LOG.md`.
 
-## Active sequencing — make the spine alive, then expand (Batu, 2026-06-23 / -06-25)
+**As of 2026-07-02 the near-term priority is Track V (below), not Track R.** Two strategy inputs (the *Unmet Needs & Opportunity Context* and the *Shop Small Greenpoint* July newsletter) say: validate that the spatial layer pulls real demand — cheaply, off the 3D runtime — before more container polish. Track R (`feat/r2-recognizable-storefronts`) is **paused, backed up to origin**, and resumes only if the demand test earns it.
 
-Don't widen the map; make the existing spine recognizable, then give it a voice.
+## Active sequencing — validate demand, then make the spine alive (Batu, 2026-07-02)
 
-1. **Track R — Recognizability (NOW).**
+0. **Track V — Spatial Demand Test (NOW).** A standalone, independently deployable **2D real-map** page in the II-C inked identity — "July in Greenpoint + G-Train Support" — that amplifies SSG's July content and the live G-train disruption with ~15 static seed cards (discovery + events + a G-train support layer, filters, signup/submission CTAs). Zero Three.js; own shareable URL. SSG is a **source we amplify**, not a partner-dependency. Card schema is throwaway JSON shaped to graduate later (`PlaceStory`/`Landmark` reconciliation deferred). Go/no-go on Doc 1's thresholds **+ does SSG want it** — Perri (WonderMart / SSG) is a named tester. Hook: the Jul 10–13 (+ overnights Jul 13–17) G closures through Greenpoint; recurring, so hook-not-hard-gate — aim the Perri-ready cut at an early recurring window. Spec: `docs/superpowers/specs/2026-07-02-spatial-demand-test-design.md`.
+
+**If Track V validates → resume the container work below. If it pauses/reframes → revisit the wedge before more 3D craft.**
+
+1. **Track R — Recognizability (PAUSED — resumes after Track V validates).**
    - **R1 — Astral Apartments (184 Franklin)** as the proof anchor, built bespoke like the Franklin heroes, then generalize.
    - **R2 — Recognizable storefronts:** wire the dormant signature layer so storefronts read as *specific real shops* (silhouette + category, unbranded per the claim model). Corners carry recognition. Specs: `docs/superpowers/specs/2026-06-24-r2-*`, `…elder-greene-signature-design.md`.
    - **R3 — Eberhard Faber building, Brouwerij Lane, Oak St haunted house** — remaining anchors, photo-gated.
@@ -63,12 +67,14 @@ Don't widen the map; make the existing spine recognizable, then give it a voice.
 ## Roadmap at a glance
 
 - **Done:** Reset baseline · style spike + look gate · Franklin corner vertical slice (facades, ground, corner signals, place cards, multi-angle camera) · MVP scene + procedural block scaling · curation + visual-system contract (Phase 6) · asset kit clapboard slice + roof tones (Phase 7, fan-out pending) · structural depth (8.0) · spine expansion — full kit flip + Franklin-north corridor (8.1) · `PlaceStory` schema (8.2).
-- **Now:** Track R recognizability → stories / events / instrumentation.
-- **Next:** Phase 10 — Living Scene.
+- **Now:** Track V — Spatial Demand Test (2D SSG/G-train validation map, off the 3D runtime).
+- **Next (gated on Track V validating):** Track R recognizability → stories / events / instrumentation.
+- **Then:** Phase 10 — Living Scene.
 - **Later (Phase 9 — Validate & Scale):** landmark-set completion, curated routes (H2), events at scale (H3), North-Star instrumentation, monetization (H4), roof/pavement detail, pre-launch truth pass, public demo, repeatability (H5).
 
 ## Open items & known gaps
 
+- **Track V follow-ups (post-validation):** reconcile the demand-test card schema with `PlaceStory`/`Landmark` into one canonical content model; fold change/civic layers + the recognizable-container fusion in as v2; refresh seed from the ~Aug 5 SSG issue. (Spec: `2026-07-02-spatial-demand-test-design.md`.)
 - **Signature layer** defined in the 8.0 contract but not yet wired into the renderer — that's R2. (`COMPONENT_INVENTORY.md`)
 - **Asset-kit fan-out** — brownstone / modern-flat / warehouse families + gather-dependent columns (bay-frame / awning / roll-gate) pending; clapboard is the proven anchor. (`COMPONENT_INVENTORY.md`)
 - **Dual-material kit capability** built + unit-tested but dormant, unverified in-engine — available when a real dual-material building is evidence-confirmed.
