@@ -8,13 +8,16 @@ const seed = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/july-2026-cards.json", import.meta.url)), "utf8"),
 );
 
-test("seed has exactly 17 cards across the four layers", () => {
-  assert.equal(seed.cards.length, 17);
+test("seed has exactly 15 cards across the four layers", () => {
+  // The two per-station G-closure cards were cut 2026-07-02 (Batu): redundant
+  // with the always-visible closure banner. Closure context lives there; the
+  // G-train layer keeps the action cards (adopt + advocacy).
+  assert.equal(seed.cards.length, 15);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
   assert.equal(count((c) => c.category === "event"), 4, "4 event cards (incl. Dandelion Wine micro-event)");
   assert.equal(count((c) => c.category === "subscription"), 1, "1 subscription card (Falu House)");
-  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "4 G-train layer cards");
+  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 2, "2 G-train action cards");
 });
 
 test("the hidden-engagement addendum cards carry their contract", () => {

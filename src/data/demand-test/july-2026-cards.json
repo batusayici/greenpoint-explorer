@@ -594,103 +594,6 @@
       "updatedAt": "2026-07-02"
     },
     {
-      "id": "g-closure-greenpoint-av",
-      "title": "Greenpoint Av — G closed Jul 10–13 + overnights",
-      "category": "g_train_support",
-      "filters": [
-        "g_train"
-      ],
-      "sourceCampaign": "shop_small_greenpoint_july_2026",
-      "locationName": "Greenpoint Av station",
-      "address": null,
-      "geocodeQuery": "Greenpoint Avenue Station, Brooklyn, NY",
-      "lat": 40.731352,
-      "lng": -73.954449,
-      "corridor": "manhattan-ave",
-      "summary": "No G trains Fri Jul 10 9:45 PM → Mon Jul 13 5 AM, then overnight closures (9:45 PM–5 AM) Mon Jul 13–Fri Jul 17. Court Sq ↔ Bedford–Nostrand segment. Free T403 shuttle bus runs the route.",
-      "whyItMatters": "Weekend foot traffic is what carries the Manhattan Ave corridor — when the G stops, the shops feel it immediately.",
-      "audience": [
-        "resident",
-        "visitor",
-        "business"
-      ],
-      "actions": [
-        {
-          "label": "MTA service alerts",
-          "type": "learn_more",
-          "url": "https://new.mta.info/alerts"
-        },
-        {
-          "label": "Share the closure dates",
-          "type": "share"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "MTA G-line 2026 service changes",
-          "publisher": "MTA"
-        },
-        {
-          "title": "Shop Small Greenpoint — July 2026 newsletter",
-          "publisher": "Shop Small Greenpoint",
-          "date": "2026-07-01"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "high",
-      "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
-    },
-    {
-      "id": "g-closure-nassau-av",
-      "title": "Nassau Av — G closed Jul 10–13 + overnights",
-      "category": "g_train_support",
-      "filters": [
-        "g_train"
-      ],
-      "sourceCampaign": "shop_small_greenpoint_july_2026",
-      "locationName": "Nassau Av station",
-      "address": null,
-      "geocodeQuery": "Nassau Avenue Station, Brooklyn, NY",
-      "lat": 40.724635,
-      "lng": -73.951277,
-      "corridor": "manhattan-ave",
-      "summary": "Same closure window as Greenpoint Av: full weekend Jul 10–13, overnights Jul 13–17. Free T403 shuttle replaces service.",
-      "audience": [
-        "resident",
-        "visitor",
-        "business"
-      ],
-      "actions": [
-        {
-          "label": "MTA service alerts",
-          "type": "learn_more",
-          "url": "https://new.mta.info/alerts"
-        },
-        {
-          "label": "Share the closure dates",
-          "type": "share"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "MTA G-line 2026 service changes",
-          "publisher": "MTA"
-        },
-        {
-          "title": "Shop Small Greenpoint — July 2026 newsletter",
-          "publisher": "Shop Small Greenpoint",
-          "date": "2026-07-01"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "high",
-      "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
-    },
-    {
       "id": "adopt-a-business",
       "title": "Adopt a business for shutdown weekends",
       "category": "support_local",
@@ -729,11 +632,7 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02",
-      "anchorBetween": [
-        "g-closure-greenpoint-av",
-        "g-closure-nassau-av"
-      ]
+      "updatedAt": "2026-07-02"
     },
     {
       "id": "g-advocacy-mta",
