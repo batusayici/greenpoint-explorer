@@ -260,6 +260,27 @@ export const MASSING = {
 // Brick-tone spread for the inked typological cluster (warm/oxblood family).
 export const BRICK_TONES = [0xb5664a, 0x7d5a44, 0x9c5a3c, 0xa8704f, 0x6f4a39, 0xc07a55];
 
+// Track V — 2D demand-test real-map tokens ("July in Greenpoint" page).
+// II-C identity off the 3D runtime. Every tone is an existing II-C token, or an
+// existing anchor lifted toward paper with the same _mix discipline as the wall
+// ramps — no new hues. 0x52647a is the clapboard slate-blue anchor (East River
+// water reads as a muted paper-washed slate, never a bright map blue).
+export const MAP_PALETTE = {
+  land: II_PALETTE.paper,
+  water: _mix(0x52647a, TONE_PAPER, 0.38),
+  park: _mix(II_PALETTE.signalGreen, TONE_PAPER, 0.62),
+  roadMinor: II_PALETTE.crosswalkPaint,
+  roadMajor: II_PALETTE.street,
+  roadCasing: II_PALETTE.scoreLine,
+  building: II_PALETTE.context[0],
+  buildingLine: II_PALETTE.scoreLine,
+  label: II_PALETTE.ink,
+  labelHalo: II_PALETTE.paper,
+  gLine: II_PALETTE.signalGreen,
+  pinInk: II_PALETTE.ink,
+  pinPaper: TONE_PAPER,
+};
+
 // Dev-only debug overlays (not part of the Scene product look).
 export const DEBUG_PALETTE = {
   rectOutline: 0x00ff44, // bright green facade-rect debug outline

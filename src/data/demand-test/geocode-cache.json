@@ -1,0 +1,582 @@
+{
+  "817 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "817 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:02.519Z",
+    "hit": {
+      "place_id": 359117376,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842929271,
+      "lat": "40.7282646",
+      "lon": "-73.9534885",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "817, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7282146",
+        "40.7283146",
+        "-73.9535385",
+        "-73.9534385"
+      ]
+    }
+  },
+  "211 Franklin St, Brooklyn, NY 11222": {
+    "query": "211 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:04.048Z",
+    "hit": {
+      "place_id": 360706840,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2843058926,
+      "lat": "40.7342125",
+      "lon": "-73.9584420",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "211, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7341625",
+        "40.7342625",
+        "-73.9584920",
+        "-73.9583920"
+      ]
+    }
+  },
+  "128 India St, Brooklyn, NY 11222": {
+    "query": "128 India St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:05.332Z",
+    "hit": {
+      "place_id": 359741793,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 274688954,
+      "lat": "40.7321556",
+      "lon": "-73.9550482",
+      "category": "building",
+      "type": "apartments",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "128, India Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7320512",
+        "40.7322010",
+        "-73.9550983",
+        "-73.9549981"
+      ]
+    }
+  },
+  "42 West St, Brooklyn, NY 11222": {
+    "query": "42 West St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:06.817Z",
+    "hit": {
+      "place_id": 357200551,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 9895127454,
+      "lat": "40.7280776",
+      "lon": "-73.9586649",
+      "category": "office",
+      "type": "lawyer",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "office",
+      "name": "Gilmer Law Firm, PLLC",
+      "display_name": "Gilmer Law Firm, PLLC, 42, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7280276",
+        "40.7281276",
+        "-73.9587149",
+        "-73.9586149"
+      ]
+    }
+  },
+  "963 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "963 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:08.297Z",
+    "hit": {
+      "place_id": 360526636,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 274689016,
+      "lat": "40.7320760",
+      "lon": "-73.9548144",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "963, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7320304",
+        "40.7321217",
+        "-73.9549176",
+        "-73.9547111"
+      ]
+    }
+  },
+  "685 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "685 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:09.596Z",
+    "hit": {
+      "place_id": 359214358,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081506,
+      "lat": "40.7250111",
+      "lon": "-73.9517264",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Vegan QuickBites by Next Stop Vegan",
+      "display_name": "Vegan QuickBites by Next Stop Vegan, 685, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7249505",
+        "40.7250716",
+        "-73.9518350",
+        "-73.9516178"
+      ]
+    }
+  },
+  "46 Norman Ave, Brooklyn, NY 11222": {
+    "query": "46 Norman Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:11.111Z",
+    "hit": {
+      "place_id": 359117771,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842861225,
+      "lat": "40.7246593",
+      "lon": "-73.9537088",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "46, Norman Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7246093",
+        "40.7247093",
+        "-73.9537588",
+        "-73.9536588"
+      ]
+    }
+  },
+  "105 Franklin St, Brooklyn, NY 11222": {
+    "query": "105 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:12.625Z",
+    "hit": {
+      "place_id": 360104658,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132029,
+      "lat": "40.7295190",
+      "lon": "-73.9577986",
+      "category": "building",
+      "type": "apartments",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "105, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294822",
+        "40.7295611",
+        "-73.9579370",
+        "-73.9576596"
+      ]
+    }
+  },
+  "Panzón, Greenpoint, Brooklyn, NY": {
+    "query": "Panzón, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:14.079Z",
+    "hit": null
+  },
+  "Rounders, Greenpoint, Brooklyn, NY": {
+    "query": "Rounders, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:15.608Z",
+    "hit": null
+  },
+  "Greenpoint Palace, Greenpoint, Brooklyn, NY": {
+    "query": "Greenpoint Palace, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:17.140Z",
+    "hit": null
+  },
+  "113 Franklin St, Brooklyn, NY 11222": {
+    "query": "113 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:18.690Z",
+    "hit": {
+      "place_id": 360154224,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2843008383,
+      "lat": "40.7302402",
+      "lon": "-73.9578047",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Madeline's",
+      "display_name": "Madeline's, 113, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7301902",
+        "40.7302902",
+        "-73.9578547",
+        "-73.9577547"
+      ]
+    }
+  },
+  "77 Box St, Brooklyn, NY 11222": {
+    "query": "77 Box St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:20.178Z",
+    "hit": {
+      "place_id": 360646948,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280146674,
+      "lat": "40.7378293",
+      "lon": "-73.9536851",
+      "category": "tourism",
+      "type": "hotel",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "tourism",
+      "name": "Box House Hotel",
+      "display_name": "Box House Hotel, 77, Box Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7375078",
+        "40.7381038",
+        "-73.9540414",
+        "-73.9533287"
+      ]
+    }
+  },
+  "Zum Schneider, Greenpoint, Brooklyn, NY": {
+    "query": "Zum Schneider, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:21.660Z",
+    "hit": null
+  },
+  "261 Driggs Ave, Brooklyn, NY 11222": {
+    "query": "261 Driggs Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:23.091Z",
+    "hit": {
+      "place_id": 358986515,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842569793,
+      "lat": "40.7225402",
+      "lon": "-73.9483180",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "261, Driggs Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7224902",
+        "40.7225902",
+        "-73.9483680",
+        "-73.9482680"
+      ]
+    }
+  },
+  "Good Bar, Greenpoint, Brooklyn, NY": {
+    "query": "Good Bar, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:24.550Z",
+    "hit": null
+  },
+  "Yoseka Stationery, Greenpoint, Brooklyn, NY": {
+    "query": "Yoseka Stationery, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:25.958Z",
+    "hit": {
+      "place_id": 359134144,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 8975338362,
+      "lat": "40.7284298",
+      "lon": "-73.9591590",
+      "category": "shop",
+      "type": "stationery",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "shop",
+      "name": "Yoseka Stationery",
+      "display_name": "Yoseka Stationery, 63, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7283798",
+        "40.7284798",
+        "-73.9592090",
+        "-73.9591090"
+      ]
+    }
+  },
+  "153 Franklin St, Brooklyn, NY 11222": {
+    "query": "153 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:27.457Z",
+    "hit": {
+      "place_id": 358108488,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140688,
+      "lat": "40.7316640",
+      "lon": "-73.9581134",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "153, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7316220",
+        "40.7317058",
+        "-73.9582186",
+        "-73.9580081"
+      ]
+    }
+  },
+  "34 Norman Ave, Brooklyn, NY 11222": {
+    "query": "34 Norman Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:28.993Z",
+    "hit": {
+      "place_id": 360562645,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280118668,
+      "lat": "40.7243190",
+      "lon": "-73.9545960",
+      "category": "building",
+      "type": "warehouse",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "34, Norman Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7241363",
+        "40.7244801",
+        "-73.9549661",
+        "-73.9542443"
+      ]
+    }
+  },
+  "Greenpoint Avenue Station, Brooklyn, NY": {
+    "query": "Greenpoint Avenue Station, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:30.602Z",
+    "hit": {
+      "place_id": 356872748,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 622035832,
+      "lat": "40.7313520",
+      "lon": "-73.9544490",
+      "category": "railway",
+      "type": "station",
+      "place_rank": 30,
+      "importance": 0.3268260957230098,
+      "addresstype": "railway",
+      "name": "Greenpoint Avenue",
+      "display_name": "Greenpoint Avenue, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7263520",
+        "40.7363520",
+        "-73.9594490",
+        "-73.9494490"
+      ]
+    }
+  },
+  "Nassau Avenue Station, Brooklyn, NY": {
+    "query": "Nassau Avenue Station, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:32.107Z",
+    "hit": {
+      "place_id": 360939703,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 1423440756,
+      "lat": "40.7246350",
+      "lon": "-73.9512770",
+      "category": "railway",
+      "type": "station",
+      "place_rank": 30,
+      "importance": 0.33029660482760953,
+      "addresstype": "railway",
+      "name": "Nassau Avenue",
+      "display_name": "Nassau Avenue, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7196350",
+        "40.7296350",
+        "-73.9562770",
+        "-73.9462770"
+      ]
+    }
+  },
+  "Manhattan Avenue and Meserole Avenue, Brooklyn, NY": {
+    "query": "Manhattan Avenue and Meserole Avenue, Brooklyn, NY",
+    "fetchedAt": "2026-07-02T19:31:33.655Z",
+    "hit": null
+  },
+  "141 India St, Brooklyn, NY 11222": {
+    "query": "141 India St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:31:34.972Z",
+    "hit": {
+      "place_id": 356878677,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11257620878,
+      "lat": "40.7324624",
+      "lon": "-73.9541519",
+      "category": "shop",
+      "type": "gift",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "shop",
+      "name": "The Wondermart",
+      "display_name": "The Wondermart, 141, India Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7324124",
+        "40.7325124",
+        "-73.9542019",
+        "-73.9541019"
+      ]
+    }
+  },
+  "23 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "23 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:33:13.642Z",
+    "hit": {
+      "place_id": 358348168,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140745,
+      "lat": "40.7299364",
+      "lon": "-73.9598797",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "23, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7297669",
+        "40.7300351",
+        "-73.9599240",
+        "-73.9598134"
+      ]
+    }
+  },
+  "999 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "999 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:33:14.964Z",
+    "hit": {
+      "place_id": 359116795,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 274689030,
+      "lat": "40.7331947",
+      "lon": "-73.9550248",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "999, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7331461",
+        "40.7332365",
+        "-73.9551625",
+        "-73.9548848"
+      ]
+    }
+  },
+  "206 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "206 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:33:16.416Z",
+    "hit": {
+      "place_id": 359547004,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842680246,
+      "lat": "40.7255051",
+      "lon": "-73.9446335",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "206, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7254551",
+        "40.7255551",
+        "-73.9446835",
+        "-73.9445835"
+      ]
+    }
+  },
+  "12 Franklin St, Brooklyn, NY 11222": {
+    "query": "12 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:33:17.913Z",
+    "hit": {
+      "place_id": 355552094,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 4843834324,
+      "lat": "40.7253891",
+      "lon": "-73.9572625",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "12, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7253391",
+        "40.7254391",
+        "-73.9573125",
+        "-73.9572125"
+      ]
+    }
+  },
+  "1 Bedford Ave, Brooklyn, NY 11222": {
+    "query": "1 Bedford Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-02T19:33:19.382Z",
+    "hit": {
+      "place_id": 359679506,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842613054,
+      "lat": "40.7238537",
+      "lon": "-73.9510984",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Nights and Weekends",
+      "display_name": "Nights and Weekends, 1, Bedford Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7238037",
+        "40.7239037",
+        "-73.9511484",
+        "-73.9510484"
+      ]
+    }
+  }
+}

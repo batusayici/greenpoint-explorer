@@ -4,6 +4,25 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-07-02 - Pivot: validate spatial demand (Track V) before more container craft
+
+Decision (Batu, alignment interview). Two strategy inputs — the *Greenpoint Unmet Needs & Opportunity Context* and the inaugural *Shop Small Greenpoint* (SSG) July 2026 newsletter — reframe near-term priority. The Unmet Needs doc's mandate is to **prove demand cheaply before polishing the map** (*"a beautiful neighborhood map is not necessarily a useful product"*). The SSG newsletter shows a real, operating volunteer initiative already owning the newsletter/directory/events/profiles/G-train-advocacy space. Conclusion: don't build another newsletter or directory; the differentiated wedge is the **spatial + visual + action layer**, and it must be **demand-tested off the 3D runtime first**.
+
+**Locked (from the interview):**
+1. **New Track V — Spatial Demand Test jumps ahead of Track R.** A standalone, independently deployable **2D real-map** page in the II-C inked identity ("July in Greenpoint + G-Train Support"), ~15 static seed cards, own shareable URL, zero Three.js. **Track R (`feat/r2-recognizable-storefronts`) pauses** — backed up to origin (`1f1c210`), resumes only if Track V validates. Work proceeds on `feat/spatial-demand-test` off `main`.
+2. **SSG is a content/information source we amplify spatially — not a partner-dependency or a brand we sit under** (win-win, independent). (Interview Q1.)
+3. **v1 leads discovery-forward** (new openings + events + support-local, G-train woven through), riding the live July window; change/civic layers are v2. (Q2.)
+4. **Substrate = real 2D map in the II-C inked identity** (MapLibre GL lead, Leaflet fallback) — spatial *and* recognizably ours; not a generic list, not the 3D runtime. (Q3.)
+5. **Card schema = throwaway JSON now, shaped to graduate later**; reconciliation with `PlaceStory`/`Landmark` is a deferred follow-up, not v1 work. (Q4.)
+6. **SSG (Perri / WonderMart) is a named tester** alongside residents/businesses/visitors — tests the win-win directly. Go/no-go = Doc 1's thresholds (≥5 check-weekly, ≥3 subscribe, ≥2 businesses want in, ≥1 unprompted share) **+ does SSG want it.** (Q6.)
+7. **Timeline = hook, not hard gate.** MTA G closures hit Greenpoint (Court Sq↔Bedford-Nostrand incl. Greenpoint Av + Nassau Av) **Jul 10–13 weekend + Jul 13–17 overnights**, recurring after. Build with urgency; aim the polished, Perri-ready cut at an early recurring window; refresh seed from the ~Aug 5 SSG issue. (Q5-timeline.)
+
+**Relationship to prior decisions:** supersedes the *near-term ordering* of the 2026-06-23 "spine alive before expanding" decision (Track R/P). Those tracks are not cancelled — they resume behind a validated Track V. The Product Goal and platform thesis in `PLAN.md` are unchanged; this is a sequencing/validation decision.
+
+**Addendum (Batu, same day) — hidden business engagement.** Businesses run events and subscriptions invisible unless you already follow their Instagram/email (exemplars: Dandelion Wine's same-day tasting emails, 153 Franklin St; Falu House's Tinned Fish Club membership, 34 Norman Ave). Track V v1 explicitly amplifies these: an events **Today lens** (date/time on event cards) and a **subscription/signup card type** (`subscription` category, `join` action, one-tap signup). v1 stays hand-curated seed; automated ingestion / business submission pipeline is a post-validation follow-up. This is the concrete shape of "business support flows" and feeds the business-side validation question directly.
+
+Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/superpowers/specs/2026-07-02-spatial-demand-test-design.md`. **Status: design approved, build not started — begins in a fresh thread.**
+
 ## 2026-06-23 - Reprioritization: make the spine alive before expanding (interleave perf + recognizability)
 
 Decision (Batu, end-of-cycle review). After the inked-facade craft cycle, the container (Track A) is ~85% built and polished while the product (Track B — stories/events/routes/history/instrumentation) is ~5% built: one `PlaceStory` schema, one unverified seed story, zero stories attached to built landmarks, no events/routes/instrumentation. The map is recognizably-shaped but mute and slow to load. The remaining work is re-sequenced to make the *existing* Franklin spine recognizable and fast — not wider.
