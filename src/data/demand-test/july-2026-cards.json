@@ -1,0 +1,784 @@
+{
+  "version": "2026-07-02",
+  "sourceCampaign": "shop_small_greenpoint_july_2026",
+  "cards": [
+    {
+      "id": "sailor-and-siren",
+      "title": "Sailor + Siren",
+      "category": "new_business",
+      "filters": [
+        "new",
+        "food_drink",
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Sailor + Siren",
+      "address": "817 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.728265,
+      "lng": -73.953488,
+      "corridor": "manhattan-ave",
+      "summary": "New seafood bar bringing lobster rolls to Manhattan Ave. Grand opening July 3–5.",
+      "whyItMatters": "Opening straight into a G-shutdown month — early local support decides whether a debut like this sticks.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "actions": [
+        {
+          "label": "Stop by opening weekend (Jul 3–5)",
+          "type": "visit"
+        },
+        {
+          "label": "Buy a gift card for closure weekends",
+          "type": "buy_gift_card"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "core-press",
+      "title": "Core Press",
+      "category": "service",
+      "filters": [
+        "new",
+        "services"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Core Press",
+      "address": "211 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.734213,
+      "lng": -73.958442,
+      "corridor": "franklin-st",
+      "summary": "Reformer Pilates studio with a juice bar, new on Franklin St.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Check it out",
+          "type": "visit"
+        },
+        {
+          "label": "Book a first class",
+          "type": "rsvp"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "poochs-parlor",
+      "title": "Pooch's Parlor",
+      "category": "service",
+      "filters": [
+        "new",
+        "services"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Pooch's Parlor",
+      "address": "128 India St, Brooklyn, NY 11222",
+      "lat": 40.732156,
+      "lng": -73.955048,
+      "corridor": "india-st",
+      "summary": "Appointment-only pet grooming with a big brand personality, new on India St.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Book an appointment",
+          "type": "rsvp"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "giggles-and-wiggles",
+      "title": "Giggles & Wiggles",
+      "category": "shopping",
+      "filters": [
+        "new",
+        "shopping",
+        "family_kids"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Giggles & Wiggles",
+      "address": "42 West St, Brooklyn, NY 11222",
+      "lat": 40.728078,
+      "lng": -73.958665,
+      "corridor": "west-st",
+      "summary": "Children's shoes and toys in the West St building — entrance on Noble St.",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "actions": [
+        {
+          "label": "Visit (entrance on Noble)",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "cookies-n-cream",
+      "title": "Cookies N' Cream",
+      "category": "food_drink",
+      "filters": [
+        "new",
+        "food_drink",
+        "family_kids"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Cookies N' Cream",
+      "address": "963 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.732076,
+      "lng": -73.954814,
+      "corridor": "manhattan-ave",
+      "summary": "Late-night cookies, milkshakes, and sundaes at the north end of Manhattan Ave.",
+      "audience": [
+        "resident",
+        "family",
+        "visitor"
+      ],
+      "actions": [
+        {
+          "label": "Late-night sweets run",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "sotteatery",
+      "title": "Sotteatery",
+      "category": "food_drink",
+      "filters": [
+        "new",
+        "food_drink",
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Sotteatery",
+      "address": "685 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.725011,
+      "lng": -73.951726,
+      "corridor": "manhattan-ave",
+      "summary": "Plant-based Dominican-Caribbean seafood — dine-in, takeout, delivery, and catering.",
+      "whyItMatters": "Delivery and takeout keep a new kitchen earning even on shutdown weekends.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "actions": [
+        {
+          "label": "Dine in",
+          "type": "visit"
+        },
+        {
+          "label": "Order pickup or delivery",
+          "type": "order"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "socceria",
+      "title": "Socceria",
+      "category": "food_drink",
+      "filters": [
+        "new",
+        "food_drink",
+        "events"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Socceria",
+      "address": "46 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.724659,
+      "lng": -73.953709,
+      "corridor": "norman-ave",
+      "summary": "Soccer sports cantina on Norman Ave — a World Cup home base through Jul 19.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "actions": [
+        {
+          "label": "Catch a match",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "dreams-on-command",
+      "title": "Dreams on Command",
+      "category": "arts_culture",
+      "filters": [
+        "new",
+        "arts_culture"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Dreams on Command",
+      "address": "42 West St, Brooklyn, NY 11222",
+      "lat": 40.728078,
+      "lng": -73.958665,
+      "corridor": "west-st",
+      "summary": "Contemporary art gallery (Suite 105) with a social and political focus.",
+      "audience": [
+        "resident",
+        "visitor",
+        "creator"
+      ],
+      "actions": [
+        {
+          "label": "See the current show",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "world-cup-watch",
+      "title": "Watch the World Cup",
+      "category": "event",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "10 bars across Greenpoint",
+      "address": null,
+      "lat": 40.728267,
+      "lng": -73.953921,
+      "corridor": "greenpoint",
+      "summary": "Through Jul 19 — the neighborhood's watch cluster: Broken Land, Panzón, Rounders, Greenpoint Palace, Threes Brewing, Box House Hotel, Zum Schneider, Socceria, Warsaw, and Good Bar.",
+      "whyItMatters": "One event, ten doors — the map shows the whole cluster at a glance; a list can't.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "endsAt": "2026-07-19T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Pick a bar near you",
+          "type": "visit"
+        }
+      ],
+      "venues": [
+        {
+          "name": "Broken Land",
+          "address": "105 Franklin St, Brooklyn, NY 11222",
+          "lat": 40.729519,
+          "lng": -73.957799
+        },
+        {
+          "name": "Panzón",
+          "address": "23 Greenpoint Ave, Brooklyn, NY 11222",
+          "lat": 40.729936,
+          "lng": -73.95988
+        },
+        {
+          "name": "Rounders",
+          "address": "999 Manhattan Ave, Brooklyn, NY 11222",
+          "lat": 40.733195,
+          "lng": -73.955025
+        },
+        {
+          "name": "Greenpoint Palace",
+          "address": "206 Nassau Ave, Brooklyn, NY 11222",
+          "lat": 40.725505,
+          "lng": -73.944633
+        },
+        {
+          "name": "Threes Brewing Greenpoint",
+          "address": "113 Franklin St, Brooklyn, NY 11222",
+          "lat": 40.73024,
+          "lng": -73.957805
+        },
+        {
+          "name": "Box House Hotel",
+          "address": "77 Box St, Brooklyn, NY 11222",
+          "lat": 40.737829,
+          "lng": -73.953685
+        },
+        {
+          "name": "Zum Schneider",
+          "address": "12 Franklin St, Brooklyn, NY 11222",
+          "lat": 40.725389,
+          "lng": -73.957262
+        },
+        {
+          "name": "Socceria",
+          "address": "46 Norman Ave, Brooklyn, NY 11222",
+          "lat": 40.724659,
+          "lng": -73.953709
+        },
+        {
+          "name": "Warsaw",
+          "address": "261 Driggs Ave, Brooklyn, NY 11222",
+          "lat": 40.72254,
+          "lng": -73.948318
+        },
+        {
+          "name": "Good Bar",
+          "address": "1 Bedford Ave, Brooklyn, NY 11222",
+          "lat": 40.723854,
+          "lng": -73.951098
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "yoseka-sticker-buffet",
+      "title": "Sticker Buffet at Yoseka Land",
+      "category": "event",
+      "filters": [
+        "events",
+        "shopping",
+        "family_kids"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Yoseka Land",
+      "address": null,
+      "geocodeQuery": "Yoseka Stationery, Greenpoint, Brooklyn, NY",
+      "lat": 40.72843,
+      "lng": -73.959159,
+      "corridor": "manhattan-ave",
+      "summary": "Jul 4–12 — Yoseka's sticker buffet retail event.",
+      "audience": [
+        "resident",
+        "family",
+        "creator"
+      ],
+      "startsAt": "2026-07-04T00:00:00-04:00",
+      "endsAt": "2026-07-12T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Go sticker hunting (Jul 4–12)",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "threes-summer-guest-series",
+      "title": "Summer Guest Series at Threes Brewing",
+      "category": "event",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Threes Brewing Greenpoint",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.73024,
+      "lng": -73.957805,
+      "corridor": "franklin-st",
+      "summary": "From Jul 6 — guest takeovers: Dante + NYC Cocktail Co (Jul 6), The Irish Exit Pub (Jul 13), Nom Wah (Jul 20).",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "startsAt": "2026-07-06T00:00:00-04:00",
+      "endsAt": "2026-07-20T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Catch a takeover night",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "dandelion-wine-tasting",
+      "title": "Tasting tonight: The New American Sparkling Wine",
+      "category": "event",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Dandelion Wine",
+      "address": "153 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.731664,
+      "lng": -73.958113,
+      "corridor": "franklin-st",
+      "summary": "Free in-store tasting, Thu Jul 2, 6–8 PM — the founder pours new American sparkling wines, with Mongers Palate cheese, She Wolf bread, vinyl on the turntable, and scratch-offs.",
+      "whyItMatters": "Announced only to Dandelion's email list — the kind of same-day, around-the-corner event no listing site surfaces.",
+      "audience": [
+        "resident"
+      ],
+      "startsAt": "2026-07-02T18:00:00-04:00",
+      "endsAt": "2026-07-02T20:00:00-04:00",
+      "actions": [
+        {
+          "label": "Drop in tonight, 6–8 PM",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Dandelion Wine email newsletter",
+          "publisher": "Dandelion Wine",
+          "date": "2026-07-02"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "falu-tinned-fish-club",
+      "title": "Falu House Tinned Fish Club",
+      "category": "subscription",
+      "filters": [
+        "clubs_signups",
+        "food_drink"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Falu House",
+      "address": "34 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.724319,
+      "lng": -73.954596,
+      "corridor": "norman-ave",
+      "summary": "A curated monthly tinned-fish membership box from the Norman Ave shop — a standing relationship with the store, not a one-time visit.",
+      "whyItMatters": "It lives only on Falu's website and Instagram — invisible unless you already follow them.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Join the Tinned Fish Club",
+          "type": "join",
+          "url": "https://www.faluhouse.com/tinned-fish-club-sign-up"
+        },
+        {
+          "label": "Visit the shop",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Falu House website / Instagram",
+          "publisher": "Falu House",
+          "url": "https://www.faluhouse.com/tinned-fish-club-sign-up"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "g-closure-greenpoint-av",
+      "title": "Greenpoint Av — G closed Jul 10–13 + overnights",
+      "category": "g_train_support",
+      "filters": [
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Greenpoint Av station",
+      "address": null,
+      "geocodeQuery": "Greenpoint Avenue Station, Brooklyn, NY",
+      "lat": 40.731352,
+      "lng": -73.954449,
+      "corridor": "manhattan-ave",
+      "summary": "No G trains Fri Jul 10 9:45 PM → Mon Jul 13 5 AM, then overnight closures (9:45 PM–5 AM) Mon Jul 13–Fri Jul 17. Court Sq ↔ Bedford–Nostrand segment. Free T403 shuttle bus runs the route.",
+      "whyItMatters": "Weekend foot traffic is what carries the Manhattan Ave corridor — when the G stops, the shops feel it immediately.",
+      "audience": [
+        "resident",
+        "visitor",
+        "business"
+      ],
+      "actions": [
+        {
+          "label": "MTA service alerts",
+          "type": "learn_more",
+          "url": "https://new.mta.info/alerts"
+        },
+        {
+          "label": "Share the closure dates",
+          "type": "share"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "MTA G-line 2026 service changes",
+          "publisher": "MTA"
+        },
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "g-closure-nassau-av",
+      "title": "Nassau Av — G closed Jul 10–13 + overnights",
+      "category": "g_train_support",
+      "filters": [
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Nassau Av station",
+      "address": null,
+      "geocodeQuery": "Nassau Avenue Station, Brooklyn, NY",
+      "lat": 40.724635,
+      "lng": -73.951277,
+      "corridor": "manhattan-ave",
+      "summary": "Same closure window as Greenpoint Av: full weekend Jul 10–13, overnights Jul 13–17. Free T403 shuttle replaces service.",
+      "audience": [
+        "resident",
+        "visitor",
+        "business"
+      ],
+      "actions": [
+        {
+          "label": "MTA service alerts",
+          "type": "learn_more",
+          "url": "https://new.mta.info/alerts"
+        },
+        {
+          "label": "Share the closure dates",
+          "type": "share"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "MTA G-line 2026 service changes",
+          "publisher": "MTA"
+        },
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "adopt-a-business",
+      "title": "Adopt a business for shutdown weekends",
+      "category": "support_local",
+      "filters": [
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Manhattan Ave corridor",
+      "address": null,
+      "lat": 40.727994,
+      "lng": -73.952863,
+      "corridor": "manhattan-ave",
+      "summary": "SSG's ask for closure weekends: commit to spending locally, post about your visits, and encourage friends to \"adopt\" a favorite shop. Can't make it? Order pickup/delivery or buy a gift card — immediate cash flow is what carries small shops through.",
+      "audience": [
+        "resident",
+        "business"
+      ],
+      "actions": [
+        {
+          "label": "Pick a shop to adopt this weekend",
+          "type": "visit"
+        },
+        {
+          "label": "Post about your visit",
+          "type": "share"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02",
+      "anchorBetween": [
+        "g-closure-greenpoint-av",
+        "g-closure-nassau-av"
+      ]
+    },
+    {
+      "id": "g-advocacy-mta",
+      "title": "Weigh in on how the G closures are run",
+      "category": "civic_action",
+      "filters": [
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Shop Small Greenpoint",
+      "address": "141 India St, Brooklyn, NY 11222",
+      "lat": 40.732462,
+      "lng": -73.954152,
+      "corridor": "india-st",
+      "summary": "What SSG is asking the MTA for: non-consecutive weekend closures, overnight-only work where possible, better shuttle frequency, clearer signage, and recognition of the retail-corridor impact. You can file a complaint or write to the electeds who represent Greenpoint (Restler, Gallagher, González).",
+      "whyItMatters": "Closures are recurring (more weekends reported for Aug–Dec) — how they're scheduled is still an open question.",
+      "audience": [
+        "resident",
+        "business",
+        "civic_actor"
+      ],
+      "actions": [
+        {
+          "label": "File an MTA complaint",
+          "type": "file_complaint",
+          "url": "https://contact.mta.info/s/customer-feedback"
+        },
+        {
+          "label": "Find your representatives",
+          "type": "learn_more",
+          "url": "https://www.mygovnyc.org"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "high",
+      "createdAt": "2026-07-02",
+      "updatedAt": "2026-07-02"
+    }
+  ]
+}
