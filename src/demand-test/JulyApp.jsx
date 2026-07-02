@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useCallback } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { FILTERS, matchesFilter, isActiveOn } from "./filterCards.js";
+import { matchesFilter, isActiveOn } from "./filterCards.js";
 import MapView from "./MapView.jsx";
+import CardPanel from "./CardPanel.jsx";
 
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
@@ -42,27 +43,15 @@ export default function JulyApp() {
         </span>
       </div>
       <main className="july-main">
-        {/* CardPanel lands in Task 8; filters render here so the map is testable now */}
-        <nav className="july-filters" aria-label="Filter the map">
-          {FILTERS.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              className={`july-chip${filter === f.id ? " is-active" : ""}`}
-              onClick={() => onFilter(f.id)}
-            >
-              {f.label}
-            </button>
-          ))}
-          <button
-            type="button"
-            className={`july-chip july-chip--today${todayOnly ? " is-active" : ""}`}
-            aria-pressed={todayOnly}
-            onClick={() => setTodayOnly((v) => !v)}
-          >
-            {todayOnly ? "Today" : "This week"}
-          </button>
-        </nav>
+        <CardPanel
+          cards={visible}
+          filter={filter}
+          onFilter={onFilter}
+          todayOnly={todayOnly}
+          onToday={setTodayOnly}
+          selectedId={selectedId}
+          onSelect={setSelectedId}
+        />
         <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
       </main>
     </div>
