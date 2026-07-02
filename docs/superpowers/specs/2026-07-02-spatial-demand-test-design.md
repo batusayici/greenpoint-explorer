@@ -1,6 +1,6 @@
 # Track V — Spatial Demand Test ("July in Greenpoint + G-Train Support")
 
-Status: **Design approved (Batu, 2026-07-02) · not yet started** — build begins in a fresh thread.
+Status: **Design approved (Batu, 2026-07-02) · v1 built — in visual review with Batu.** Dev URL: `/july.html` · plan: `docs/superpowers/plans/2026-07-02-track-v-spatial-demand-test.md` · deploy (Task 11) gated on Batu.
 Branch: `feat/spatial-demand-test` (off `main`). Track R / `feat/r2-recognizable-storefronts` is **paused, not abandoned** (backed up to origin at `1f1c210`).
 Owner: Batu (taste/approvals) / Agent (execution). Supersedes the near-term ordering of the 2026-06-23 "spine alive before expanding" decision.
 
