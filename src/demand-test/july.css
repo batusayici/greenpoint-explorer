@@ -1,0 +1,12 @@
+/* Track V demand-test page. CSS is conformance-exempt, but every color below
+   mirrors a palette.js token (noted inline) — the II-C no-miss rule holds. */
+:root {
+  --paper: #eae1ce; /* II_PALETTE.paper */
+  --ink: #2a241c; /* II_PALETTE.ink */
+}
+
+.july-shell {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
