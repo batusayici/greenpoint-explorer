@@ -1,14 +1,70 @@
-import React from "react";
+import React, { useMemo, useState, useCallback } from "react";
+import seed from "../data/demand-test/july-2026-cards.json";
+import { FILTERS, matchesFilter, isActiveOn } from "./filterCards.js";
+import MapView from "./MapView.jsx";
 
-// Track V — "July in Greenpoint + G-Train Support" page shell.
-// Standalone 2D demand-test page; must never import the 3D runtime.
+// Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
+// page; must never import the 3D runtime.
 export default function JulyApp() {
+  const [filter, setFilter] = useState("all");
+  const [todayOnly, setTodayOnly] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
+
+  const visible = useMemo(() => {
+    const now = new Date();
+    return seed.cards
+      .filter((c) => matchesFilter(c, filter))
+      .filter((c) => !todayOnly || isActiveOn(c, now));
+  }, [filter, todayOnly]);
+
+  const onFilter = useCallback((id) => {
+    setFilter(id);
+    setSelectedId((sel) => {
+      const still = seed.cards.find((c) => c.id === sel && matchesFilter(c, id));
+      return still ? sel : null;
+    });
+  }, []);
+
   return (
     <div className="july-shell">
       <header className="july-header">
-        <span className="july-kicker">Greenpoint Explorer</span>
-        <h1>July in Greenpoint</h1>
+        <div className="july-header-text">
+          <span className="july-kicker">Greenpoint Explorer</span>
+          <h1>July in Greenpoint</h1>
+          <p>New spots, what&rsquo;s on, and how to support local through the G-train closures &mdash; mapped.</p>
+        </div>
       </header>
+      <div className="july-gbanner" role="status">
+        <span className="july-gbadge">G</span>
+        <span>
+          <strong>No G trains</strong> Fri Jul 10 9:45 PM &rarr; Mon Jul 13 5 AM, plus overnights Jul 13&ndash;17
+          &middot; Greenpoint Av + Nassau Av &middot; free T403 shuttle
+        </span>
+      </div>
+      <main className="july-main">
+        {/* CardPanel lands in Task 8; filters render here so the map is testable now */}
+        <nav className="july-filters" aria-label="Filter the map">
+          {FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={`july-chip${filter === f.id ? " is-active" : ""}`}
+              onClick={() => onFilter(f.id)}
+            >
+              {f.label}
+            </button>
+          ))}
+          <button
+            type="button"
+            className={`july-chip july-chip--today${todayOnly ? " is-active" : ""}`}
+            aria-pressed={todayOnly}
+            onClick={() => setTodayOnly((v) => !v)}
+          >
+            {todayOnly ? "Today" : "This week"}
+          </button>
+        </nav>
+        <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
+      </main>
     </div>
   );
 }
