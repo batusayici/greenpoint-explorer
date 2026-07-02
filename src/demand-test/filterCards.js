@@ -16,7 +16,7 @@ const LABELS = {
 };
 
 export const FILTERS = [
-  { id: "all", label: "Everything" },
+  { id: "all", label: "All" },
   ...FILTER_IDS.map((id) => ({ id, label: LABELS[id] })),
 ];
 
@@ -33,6 +33,20 @@ export function isActiveOn(card, date) {
   if (card.startsAt != null && Date.parse(card.startsAt) > dayEnd.getTime()) return false;
   if (card.endsAt != null && Date.parse(card.endsAt) < dayStart.getTime()) return false;
   return true;
+}
+
+// Feed priority: what's live TODAY leads the feed, most time-specific first —
+// a 6–8 PM tasting outranks a weeks-long series, which outranks undated cards.
+// Undated and not-active-today cards keep their authored order (stable sort).
+const OPEN_ENDED_SPAN = 30 * 86400000; // open-ended window ~ a month, still beats undated
+export function sortTodayFirst(cards, date) {
+  const score = (c) => {
+    const dated = c.startsAt != null || c.endsAt != null;
+    if (!dated || !isActiveOn(c, date)) return Number.POSITIVE_INFINITY;
+    if (c.startsAt == null || c.endsAt == null) return OPEN_ENDED_SPAN;
+    return Date.parse(c.endsAt) - Date.parse(c.startsAt);
+  };
+  return [...cards].sort((a, b) => score(a) - score(b));
 }
 
 const GTRAIN_CATEGORIES = new Set(["g_train_support", "civic_action", "support_local"]);

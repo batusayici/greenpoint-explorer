@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { matchesFilter, isActiveOn } from "./filterCards.js";
+import { matchesFilter, isActiveOn, sortTodayFirst } from "./filterCards.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
 
@@ -13,9 +13,10 @@ export default function JulyApp() {
 
   const visible = useMemo(() => {
     const now = new Date();
-    return seed.cards
+    const shown = seed.cards
       .filter((c) => matchesFilter(c, filter))
       .filter((c) => !todayOnly || isActiveOn(c, now));
+    return sortTodayFirst(shown, now);
   }, [filter, todayOnly]);
 
   const onFilter = useCallback((id) => {

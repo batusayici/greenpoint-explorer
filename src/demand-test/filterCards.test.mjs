@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, pinKind } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the spec's nine, in order, with display labels", () => {
@@ -30,6 +30,24 @@ test("isActiveOn: undated cards always pass; dated cards pass only inside their 
   assert.ok(!isActiveOn(tasting, jul8), "past event inactive");
   assert.ok(isActiveOn(openEnded, jul8), "running series active before endsAt");
   assert.ok(!isActiveOn(openEnded, new Date("2026-07-25T12:00:00-04:00")), "series over");
+});
+
+test("FILTERS[0] label is All", () => {
+  assert.deepEqual(FILTERS[0], { id: "all", label: "All" });
+});
+
+test("sortTodayFirst: today's time-specific events lead, then live windows, then the rest (stable)", () => {
+  const jul2 = new Date("2026-07-02T12:00:00-04:00");
+  const shopA = { id: "shop-a" };
+  const shopB = { id: "shop-b" };
+  const tasting = { id: "tasting", startsAt: "2026-07-02T18:00:00-04:00", endsAt: "2026-07-02T20:00:00-04:00" };
+  const series = { id: "series", startsAt: "2026-06-11T00:00:00-04:00", endsAt: "2026-07-19T23:59:00-04:00" };
+  const openEnded = { id: "open", endsAt: "2026-07-19T23:59:00-04:00" };
+  const notYet = { id: "not-yet", startsAt: "2026-07-04T00:00:00-04:00", endsAt: "2026-07-12T23:59:00-04:00" };
+  const sorted = sortTodayFirst([shopA, notYet, openEnded, series, tasting, shopB], jul2);
+  // tasting (2h) < open-ended (~30d constant) < series (38d window); undated +
+  // not-yet-started keep authored order at the back
+  assert.deepEqual(sorted.map((c) => c.id), ["tasting", "open", "series", "shop-a", "not-yet", "shop-b"]);
 });
 
 test("pinKind maps categories to the four pin treatments", () => {
