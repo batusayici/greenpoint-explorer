@@ -45,6 +45,15 @@ SSG's asks (mirror as card actions):
 - Mon Jul 13 → Fri Jul 17, overnights 9:45 PM–5 AM (Mon–Thu).
 - Later (reported, MTA-unconfirmed): Aug 8/15, Sep 12, Dec 5/12/19.
 
+## Beyond SSG — hidden business engagement exemplars (Batu, 2026-07-02; non-SSG sources)
+
+Events/subscriptions invisible unless you follow the business's own Instagram/email — the map surfaces them spatially, by day, with one-tap signup:
+
+| Business | Address | Pattern | Facts |
+|---|---|---|---|
+| **Dandelion Wine** | 153 Franklin St (on the Franklin spine) | Same-day micro-event (→ `event` + Today lens) | Free in-store tasting "The New American Sparkling Wine," Jul 2 6–8 PM, announced by email only — founder pouring, Mongers Palate cheese, She Wolf Bakery bread, vinyl DJ, scratch-offs for first 20; wines $45–$105, delivery, 347-689-4563. Exemplar of the recurring tasting-email pattern; source fresh events at build time. |
+| **Falu House** | 34 Norman Ave | Membership signup (→ `subscription` + `join` action) | Scandinavian deli, 8 AM–5 PM daily, (718) 554-3796. **Tinned Fish Club**: curated monthly box of cans + pairings; members get boxes, events, updates. Signup: faluhouse.com/tinned-fish-club-sign-up. |
+
 ## `GreenpointMapCard` schema (Track V shape — throwaway JSON, graduate later)
 
 ```ts
@@ -54,14 +63,16 @@ type GreenpointMapCard = {
   category:
     | "new_business" | "food_drink" | "shopping" | "service" | "event"
     | "arts_culture" | "family_kids" | "job" | "shopkeeper_profile"
-    | "g_train_support" | "civic_action" | "discount" | "support_local";
+    | "g_train_support" | "civic_action" | "discount" | "support_local"
+    | "subscription";                       // hidden-engagement addendum
+  startsAt?: string; endsAt?: string;       // ISO datetime on events → "Today" lens
   sourceCampaign?: "shop_small_greenpoint_july_2026" | string;
   locationName: string;
   address?: string; lat?: number; lng?: number; corridor?: string;
   summary: string; whyItMatters?: string;
   audience: Array<"resident"|"business"|"visitor"|"creator"|"family"|"job_seeker"|"civic_actor">;
   actions: Array<{ label: string; url?: string;
-    type: "visit"|"learn_more"|"rsvp"|"buy_gift_card"|"order"|"apply"|"signup"|"file_complaint"|"share"|"submit_update"; }>;
+    type: "visit"|"learn_more"|"rsvp"|"buy_gift_card"|"order"|"apply"|"signup"|"join"|"file_complaint"|"share"|"submit_update"; }>;
   sourceLinks?: Array<{ title: string; url?: string; publisher?: string; date?: string; }>;
   evidenceStrength: "high"|"medium_high"|"medium"|"low";
   monetizationRelevance: "direct"|"indirect"|"none";

@@ -19,6 +19,8 @@ Decision (Batu, alignment interview). Two strategy inputs — the *Greenpoint Un
 
 **Relationship to prior decisions:** supersedes the *near-term ordering* of the 2026-06-23 "spine alive before expanding" decision (Track R/P). Those tracks are not cancelled — they resume behind a validated Track V. The Product Goal and platform thesis in `PLAN.md` are unchanged; this is a sequencing/validation decision.
 
+**Addendum (Batu, same day) — hidden business engagement.** Businesses run events and subscriptions invisible unless you already follow their Instagram/email (exemplars: Dandelion Wine's same-day tasting emails, 153 Franklin St; Falu House's Tinned Fish Club membership, 34 Norman Ave). Track V v1 explicitly amplifies these: an events **Today lens** (date/time on event cards) and a **subscription/signup card type** (`subscription` category, `join` action, one-tap signup). v1 stays hand-curated seed; automated ingestion / business submission pipeline is a post-validation follow-up. This is the concrete shape of "business support flows" and feeds the business-side validation question directly.
+
 Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/superpowers/specs/2026-07-02-spatial-demand-test-design.md`. **Status: design approved, build not started — begins in a fresh thread.**
 
 ## 2026-06-23 - Reprioritization: make the spine alive before expanding (interleave perf + recognizability)
