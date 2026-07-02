@@ -63,7 +63,8 @@ function CardDetail({ card }) {
     <div className="july-detail">
       {when && <p className="july-detail-when">{when}</p>}
       <p className="july-detail-summary">{card.summary}</p>
-      {card.whyItMatters && <p className="july-detail-why">{card.whyItMatters}</p>}
+      {/* card.whyItMatters is data-only (editorial/partner context) — cut from
+          the reader UI 2026-07-02: it read as the product pitching itself */}
       {(card.venues ?? []).length > 0 && (
         <p className="july-detail-venues">{card.venues.map((v) => v.name).join(" · ")}</p>
       )}

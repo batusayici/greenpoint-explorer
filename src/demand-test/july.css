@@ -199,14 +199,6 @@ body { margin: 0; }
 
 .july-detail { padding: 0 16px 14px; }
 .july-detail-summary { margin: 0 0 6px; font-size: 0.84rem; line-height: 1.45; }
-.july-detail-why {
-  margin: 0 0 6px;
-  padding-left: 10px;
-  border-left: 2px solid var(--amber);
-  font-size: 0.8rem;
-  font-style: italic;
-  color: var(--ink-soft);
-}
 .july-detail-venues { margin: 0 0 8px; font-size: 0.74rem; color: var(--ink-soft); }
 .july-detail-when { margin: 0 0 6px; font-size: 0.74rem; font-weight: 750; color: var(--ink); }
 
