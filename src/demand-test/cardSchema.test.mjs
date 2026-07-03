@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateCard, inGreenpoint, FILTER_IDS } from "./cardSchema.js";
+import { validateCard, inGreenpoint, FILTER_IDS, TRUST_RISKS } from "./cardSchema.js";
 
 const good = {
   id: "test-card",
@@ -20,6 +20,7 @@ const good = {
   evidenceStrength: "medium_high",
   monetizationRelevance: "direct",
   partnerRelevance: "high",
+  trustRisk: "low",
   createdAt: "2026-07-02",
   updatedAt: "2026-07-02",
 };
@@ -92,4 +93,26 @@ test("dated cards: valid ISO window accepted, malformed or inverted rejected", (
     validateCard({ ...good, startsAt: "2026-07-10T00:00:00-04:00", endsAt: "2026-07-02T00:00:00-04:00" }).ok,
     false,
   );
+});
+
+test("place-graph fields: trustRisk is required and enum-locked", () => {
+  assert.deepEqual(TRUST_RISKS, ["low", "medium", "high"]);
+  const { trustRisk, ...missing } = good;
+  assert.equal(validateCard(missing).ok, false);
+  assert.equal(validateCard({ ...good, trustRisk: "none" }).ok, false);
+});
+
+test("relatedCardIds: optional, but must be non-empty string ids without self-reference", () => {
+  assert.deepEqual(validateCard({ ...good, relatedCardIds: ["other-card"] }).errors, []);
+  assert.equal(validateCard({ ...good, relatedCardIds: [] }).ok, false);
+  assert.equal(validateCard({ ...good, relatedCardIds: [42] }).ok, false);
+  assert.equal(validateCard({ ...good, relatedCardIds: ["test-card"] }).ok, false, "self-reference");
+});
+
+test("timeline: optional, entries need an ISO date and a title", () => {
+  const entry = { date: "2026-07-10", title: "Weekend closure begins", sourceUrl: "https://new.mta.info" };
+  assert.deepEqual(validateCard({ ...good, timeline: [entry] }).errors, []);
+  assert.equal(validateCard({ ...good, timeline: [] }).ok, false);
+  assert.equal(validateCard({ ...good, timeline: [{ date: "not-a-date", title: "x" }] }).ok, false);
+  assert.equal(validateCard({ ...good, timeline: [{ date: "2026-07-10" }] }).ok, false, "missing title");
 });

@@ -65,3 +65,17 @@ test("world-cup cluster carries geocoded venues", () => {
 test("ids are unique", () => {
   assert.equal(new Set(seed.cards.map((c) => c.id)).size, seed.cards.length);
 });
+
+test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
+  const ids = new Set(seed.cards.map((c) => c.id));
+  for (const c of seed.cards) {
+    for (const rid of c.relatedCardIds ?? []) {
+      assert.ok(ids.has(rid), `${c.id} links to unknown card "${rid}"`);
+    }
+  }
+  // Sparse v1 seed (spec): the two G-train action cards reference each other.
+  const adopt = seed.cards.find((c) => c.id === "adopt-a-business");
+  const advocacy = seed.cards.find((c) => c.id === "g-advocacy-mta");
+  assert.deepEqual(adopt.relatedCardIds, ["g-advocacy-mta"]);
+  assert.deepEqual(advocacy.relatedCardIds, ["adopt-a-business"]);
+});

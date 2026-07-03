@@ -51,6 +51,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
       "updatedAt": "2026-07-03",
       "startsAt": "2026-07-03T13:00:00-04:00",
@@ -94,8 +95,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "poochs-parlor",
@@ -131,8 +133,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "giggles-and-wiggles",
@@ -170,8 +173,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "cookies-n-cream",
@@ -210,8 +214,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "sotteatery",
@@ -254,8 +259,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "socceria",
@@ -293,8 +299,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "dreams-on-command",
@@ -332,8 +339,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "world-cup-watch",
@@ -434,8 +442,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "yoseka-sticker-buffet",
@@ -477,8 +486,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "threes-summer-guest-series",
@@ -517,8 +527,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "dandelion-wine-tasting",
@@ -557,8 +568,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "falu-tinned-fish-club",
@@ -600,8 +612,9 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
+      "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "adopt-a-business",
@@ -641,8 +654,12 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
+      "trustRisk": "medium",
+      "relatedCardIds": [
+        "g-advocacy-mta"
+      ],
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "g-advocacy-mta",
@@ -686,8 +703,12 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "high",
+      "trustRisk": "medium",
+      "relatedCardIds": [
+        "adopt-a-business"
+      ],
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03"
     },
     {
       "id": "parade-of-sail",
@@ -729,6 +750,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -771,6 +793,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -812,6 +835,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -854,6 +878,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -895,6 +920,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -938,6 +964,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -979,6 +1006,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -1020,6 +1048,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -1082,6 +1111,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -1122,6 +1152,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     },
@@ -1165,6 +1196,7 @@
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
       "createdAt": "2026-07-03",
       "updatedAt": "2026-07-03"
     }

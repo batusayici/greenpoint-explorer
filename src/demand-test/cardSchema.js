@@ -4,7 +4,9 @@
 // seed-doc type, all from the spec + its hidden-engagement addendum: `filters`
 // (authored filter-bar membership), `venues` (multi-venue event cluster, e.g. the
 // World Cup bars), `subscription` category, `join` action, `startsAt`/`endsAt`
-// (ISO window for the Today lens).
+// (ISO window for the Today lens). 2026-07-03 place-graph moat fields (spec
+// revision): `trustRisk` (required enum), `relatedCardIds` (optional, cross-card
+// linking), `timeline` (optional, dated history entries) — see DECISION_LOG.
 export const CATEGORIES = [
   "new_business", "food_drink", "shopping", "service", "event",
   "arts_culture", "family_kids", "job", "shopkeeper_profile",
@@ -23,6 +25,8 @@ export const ACTION_TYPES = [
 ];
 
 export const EVIDENCE_LEVELS = ["high", "medium_high", "medium", "low"];
+
+export const TRUST_RISKS = ["low", "medium", "high"];
 
 // Filter-bar ids, in display order (spec + addendum: New · Food & Drink ·
 // Shopping · Services · Arts/Culture · Family/Kids · Events · Clubs & Signups ·
@@ -83,6 +87,32 @@ export function validateCard(card) {
   if (!["direct", "indirect", "none"].includes(card.monetizationRelevance)) err("bad monetizationRelevance");
   if (!["high", "medium", "low"].includes(card.partnerRelevance)) err("bad partnerRelevance");
   if (!str(card.createdAt) || !str(card.updatedAt)) err("missing created/updated dates");
+
+  // Place-graph moat fields (2026-07-03 spec revision): cheap to carry now,
+  // they make cards durable objects instead of pins. v1 populates sparsely.
+  if (!TRUST_RISKS.includes(card.trustRisk)) err("bad trustRisk");
+  if (card.relatedCardIds != null) {
+    if (!Array.isArray(card.relatedCardIds) || card.relatedCardIds.length === 0) {
+      err("relatedCardIds must be a non-empty array when present");
+    } else {
+      for (const rid of card.relatedCardIds) {
+        if (!str(rid)) err("relatedCardIds entries must be card-id strings");
+        else if (rid === card.id) err("relatedCardIds must not self-reference");
+      }
+    }
+  }
+  if (card.timeline != null) {
+    if (!Array.isArray(card.timeline) || card.timeline.length === 0) {
+      err("timeline must be a non-empty array when present");
+    } else {
+      for (const t of card.timeline) {
+        if (Number.isNaN(Date.parse(t?.date))) err("timeline entry needs an ISO date");
+        if (!str(t?.title)) err("timeline entry needs a title");
+        if (t?.summary != null && !str(t.summary)) err("timeline summary must be a string");
+        if (t?.sourceUrl != null && !str(t.sourceUrl)) err("timeline sourceUrl must be a string");
+      }
+    }
+  }
 
   const venues = Array.isArray(card.venues) ? card.venues : [];
   const hasCoords = card.lat != null || card.lng != null;
