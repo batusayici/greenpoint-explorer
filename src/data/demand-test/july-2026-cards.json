@@ -18,7 +18,7 @@
       "lat": 40.728265,
       "lng": -73.953488,
       "corridor": "manhattan-ave",
-      "summary": "New seafood bar bringing lobster rolls to Manhattan Ave. Grand opening July 3–5.",
+      "summary": "New seafood bar bringing lobster rolls to the avenue.",
       "whyItMatters": "Opening straight into a G-shutdown month — early local support decides whether a debut like this sticks.",
       "audience": [
         "resident",
@@ -31,7 +31,7 @@
           "url": "https://partiful.com/e/wa7aUrxxjnOek1H2qLrt"
         },
         {
-          "label": "Buy a gift card for closure weekends",
+          "label": "Gift cards carry them through the G-train weekends",
           "type": "buy_gift_card"
         }
       ],
@@ -357,7 +357,7 @@
       "lat": 40.728267,
       "lng": -73.953921,
       "corridor": "greenpoint",
-      "summary": "Through Jul 19 — the neighborhood's watch cluster: Broken Land, Panzón, Rounders, Greenpoint Palace, Threes Brewing, Box House Hotel, Zum Schneider, Socceria, Warsaw, and Good Bar.",
+      "summary": "All ten have the tournament on, right through the final.",
       "whyItMatters": "One event, ten doors — the map shows the whole cluster at a glance; a list can't.",
       "audience": [
         "resident",

@@ -20,10 +20,30 @@ const WINDOW_FMT = new Intl.DateTimeFormat("en-US", {
   timeZone: "America/New_York",
 });
 
+const DAY_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "America/New_York",
+});
+
+const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZone: "America/New_York",
+});
+
+// 23:59 endsAt is the card schema's end-of-day sentinel (the Today filter
+// needs a real instant); readers get the date, not a fake closing time.
+function fmtEnd(iso) {
+  const d = new Date(iso);
+  return (CLOCK_FMT.format(d) === "23:59" ? DAY_FMT : WINDOW_FMT).format(d);
+}
+
 function formatWindow(card) {
   if (!card.startsAt && !card.endsAt) return null;
   const from = card.startsAt ? WINDOW_FMT.format(new Date(card.startsAt)) : null;
-  const to = card.endsAt ? WINDOW_FMT.format(new Date(card.endsAt)) : null;
+  const to = card.endsAt ? fmtEnd(card.endsAt) : null;
   if (from && to) return `${from} → ${to}`;
   return from ? `From ${from}` : `Through ${to}`;
 }
@@ -77,7 +97,11 @@ function CardDetail({ card }) {
           <ActionLink key={a.label} action={a} cardId={card.id} />
         ))}
       </div>
-      <p className="july-source">Source: {card.sourceLinks.map((s) => s.title).join(" · ")}</p>
+      {/* Publisher only — full issue titles live in data as the citation of
+          record but read as noise at label size */}
+      <p className="july-source">
+        Source: {[...new Set(card.sourceLinks.map((s) => s.publisher || s.title))].join(" · ")}
+      </p>
     </div>
   );
 }
