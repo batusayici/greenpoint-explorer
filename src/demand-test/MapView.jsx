@@ -3,6 +3,7 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { buildIIMapStyle, GREENPOINT_CENTER, GREENPOINT_MAX_BOUNDS } from "./iiMapStyle.js";
 import { pinKind } from "./filterCards.js";
+import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Track V — the 2D II-C map. Thin component: style comes from iiMapStyle.js,
 // pin classification from filterCards.js; markers are DOM elements styled in
@@ -78,6 +79,7 @@ export default function MapView({ cards, selectedId, onSelect }) {
         dot.setAttribute("aria-label", `${v.name} (${card.title})`);
         dot.addEventListener("click", (e) => {
           e.stopPropagation();
+          trackEvent(EVENTS.PIN_TAP, { cardId: card.id, kind: "venue" });
           onSelect(card.id);
         });
         addMarker([v.lng, v.lat], dot);
@@ -89,6 +91,7 @@ export default function MapView({ cards, selectedId, onSelect }) {
       el.setAttribute("aria-label", card.locationName);
       el.addEventListener("click", (e) => {
         e.stopPropagation();
+        trackEvent(EVENTS.PIN_TAP, { cardId: card.id, kind: pinKind(card) });
         onSelect(card.id);
       });
       const label = document.createElement("span");

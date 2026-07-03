@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { FILTERS, pinKind } from "./filterCards.js";
+import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
 // the color key lives in the controls people already use, not a legend box.
@@ -26,10 +27,12 @@ function formatWindow(card) {
   return from ? `From ${from}` : `Through ${to}`;
 }
 
-function ActionLink({ action }) {
+function ActionLink({ action, cardId }) {
   const cls = "july-action";
+  const onTap = () => trackEvent(EVENTS.ACTION_TAP, { cardId, actionType: action.type });
   if (action.type === "share") {
     const onShare = async () => {
+      onTap();
       const data = { title: "July in Greenpoint", url: window.location.href };
       if (navigator.share) await navigator.share(data).catch(() => {});
       else await navigator.clipboard.writeText(window.location.href);
@@ -42,7 +45,7 @@ function ActionLink({ action }) {
   }
   if (action.url) {
     return (
-      <a className={cls} href={action.url} target="_blank" rel="noreferrer">
+      <a className={cls} href={action.url} target="_blank" rel="noreferrer" onClick={onTap}>
         {action.label} ↗
       </a>
     );
@@ -70,7 +73,7 @@ function CardDetail({ card }) {
       )}
       <div className="july-actions">
         {card.actions.map((a) => (
-          <ActionLink key={a.label} action={a} />
+          <ActionLink key={a.label} action={a} cardId={card.id} />
         ))}
       </div>
       <p className="july-source">Source: {card.sourceLinks.map((s) => s.title).join(" · ")}</p>
@@ -96,7 +99,10 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
             key={f.id}
             type="button"
             className={`july-chip${filter === f.id ? " is-active" : ""}`}
-            onClick={() => onFilter(f.id)}
+            onClick={() => {
+              trackEvent(EVENTS.FILTER_TAP, { filter: f.id });
+              onFilter(f.id);
+            }}
           >
             {CHIP_KIND[f.id] && <span className={`july-dot july-dot--${CHIP_KIND[f.id]}`} aria-hidden="true" />}
             {f.label}
@@ -106,7 +112,10 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
           type="button"
           className={`july-chip july-chip--today${todayOnly ? " is-active" : ""}`}
           aria-pressed={todayOnly}
-          onClick={() => onToday(!todayOnly)}
+          onClick={() => {
+            trackEvent(EVENTS.TODAY_TOGGLE, { on: !todayOnly });
+            onToday(!todayOnly);
+          }}
         >
           {todayOnly ? "Today" : "This week"}
         </button>
@@ -120,7 +129,10 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
                 type="button"
                 className="july-card-head"
                 aria-expanded={open}
-                onClick={() => onSelect(open ? null : card.id)}
+                onClick={() => {
+                  if (!open) trackEvent(EVENTS.CARD_OPEN, { cardId: card.id });
+                  onSelect(open ? null : card.id);
+                }}
               >
                 <span className="july-card-titlerow">
                   <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
@@ -135,10 +147,18 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
         {cards.length === 0 && <li className="july-empty">Nothing in this layer yet.</li>}
       </ol>
       <footer className="july-ctas">
-        <a className="july-cta july-cta--primary" href={SIGNUP_MAILTO}>
+        <a
+          className="july-cta july-cta--primary"
+          href={SIGNUP_MAILTO}
+          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup" })}
+        >
           Get weekly Greenpoint updates
         </a>
-        <a className="july-cta" href={SUBMIT_MAILTO}>
+        <a
+          className="july-cta"
+          href={SUBMIT_MAILTO}
+          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "submit" })}
+        >
           Add your business or event
         </a>
       </footer>
