@@ -13,9 +13,11 @@ Two strategy inputs reframe near-term priority:
 
 **Consequence:** don't build another newsletter/directory. Greenpoint Explorer's differentiated wedge is the **spatial + visual + action layer**. This track is a throwaway *demand test* of exactly that wedge — proving spatial context pulls real usage — before resuming container (Track R) craft.
 
-## Positioning (locked in the 2026-07-02 interview)
+## Positioning (locked in the 2026-07-02 interview; Greenpointers added 2026-07-03)
 
-- **SSG is a content/information source layer we amplify spatially — not a partner-dependency, not a brand we sit under.** We add the spatial element; the value flows both ways. Independent, SSG-informed. (Interview Q1 = B.)
+- **SSG is a content/information source layer we amplify spatially — not a partner-dependency, not a brand we sit under.** We add the spatial element; the value flows both ways. Independent, SSG-informed. (Interview Q1 = B.) **No "SSG companion" branding or partner CTA** — attribution on cards + Perri as tester, nothing more.
+- **Greenpointers is the third actor** (added 2026-07-03, `docs/context/2026-07-03-greenpointers-differentiation.md`): the stronger incumbent in the "what's happening" lane. Treat as source / distribution partner / editorial authority / **potential map-embed customer** — never compete as a news product. Differentiation is structural: they answer *"what happened?"*; we answer *"where is it, how does it connect to my block, what changed over time, and what can I do?"* A generic news map is explicitly rejected — too easy to compare to Greenpointers, too easy for them to copy.
+- **Moat = structure behind the pins, not pins.** Place graph (`relatedCardIds`), source-backed timelines, action workflows, measurable impact (clicks/signups/visits/orders). Pins alone are not defensible.
 
 ## Thesis to validate
 
@@ -60,7 +62,7 @@ Closure context + per-business actions: adopt-a-business, buy gift card / order 
 
 ## Card schema — disposable shape, canonical discipline (Interview Q4 = C)
 
-Author cards as **plain static JSON now** (no backend, no DB). Shape them from a **graduate-able schema** based on ChatGPT's `GreenpointMapCard` (fields: `id`, `title`, `category`, `sourceCampaign`, `locationName`/`address`/`lat`/`lng`/`corridor`, `summary`, `whyItMatters?`, `audience[]`, `actions[]`, `sourceLinks[]?`, `evidenceStrength`, `monetizationRelevance`, `partnerRelevance`, `createdAt`/`updatedAt`), **extended for the hidden-engagement patterns**: add `"subscription"` to `category`, `"join"` to action types, and optional `startsAt`/`endsAt` (ISO datetime) on events so the Today lens works.
+Author cards as **plain static JSON now** (no backend, no DB). Shape them from a **graduate-able schema** based on ChatGPT's `GreenpointMapCard` (fields: `id`, `title`, `category`, `sourceCampaign`, `locationName`/`address`/`lat`/`lng`/`corridor`, `summary`, `whyItMatters?`, `audience[]`, `actions[]`, `sourceLinks[]?`, `evidenceStrength`, `monetizationRelevance`, `partnerRelevance`, `createdAt`/`updatedAt`), **extended for the hidden-engagement patterns**: add `"subscription"` to `category`, `"join"` to action types, and optional `startsAt`/`endsAt` (ISO datetime) on events so the Today lens works; **and for the place-graph moat** (2026-07-03): optional `relatedCardIds?: string[]`, `timeline?: Array<{date, title, summary?, sourceUrl?}>`, and `trustRisk: "low"|"medium"|"high"` restored. These graph/timeline fields are cheap to carry now and are what make cards durable objects rather than pins; v1 may populate them sparsely (e.g. related G-train cards) — full dossiers are v2. Keep the shape **neighborhood-agnostic** (don't brand-lock to Greenpoint).
 
 **Reconciliation with `PlaceStory` / `Landmark` into one canonical content model is a documented follow-up — NOT v1 work.** v1 must not fragment the existing schemas; it just must not paint us into a corner.
 
@@ -82,11 +84,13 @@ Authoritative MTA G-line 2026 service changes (closed segment **Court Sq ↔ Bed
 - **Audience (Interview Q6 = B):** residents / businesses / visitors **and Perri (WonderMart; SSG lead organizer) among the testers** — framed as "here's a spatial layer that amplifies your issue — useful?" Tests the win-win directly.
 - **Go/no-go bar (approved):** continue if ≥5 say they'd check a weekly version · ≥3 ask to subscribe · ≥2 businesses ask how to be included · ≥1 unprompted share · **and SSG signals they'd want it.**
 - **Business-side question (hidden-engagement addendum):** for businesses like Dandelion Wine / Falu House — *"your tastings/club live in your email list and Instagram; would a map card that surfaces them to nearby people get you turnout or signups? What would you put on it this week?"* A business offering a real event/subscription for listing counts toward the "≥1 business provides an offer/event/signup" signal.
+- **Interview scripts (2026-07-03):** full Perri/business/resident question sets in `docs/context/2026-07-03-greenpointers-differentiation.md` — highlights: *"what do merchants ask SSG for most often?"*, *"what should NOT be built because SSG already handles it well?"*, *"which card would you click first?"*
+- **Sharpened bar:** the test must prove **action, not just interest** — pause if the spatial layer doesn't change behavior or the artifact reads as "a pretty version of existing content."
 - **Pause/reframe if:** people say "cool" but do nothing · businesses see no customer value · residents find it redundant with SSG/Reddit/Instagram/Google Maps · civic content creates unhandleable trust concerns · it reads as generic local media with no spatial advantage.
 
 ## Explicitly out of scope for v1
 
-Backend/infrastructure · a full change/civic database · the Meeker Plume/environmental layer · a jobs-map layer (parked until demand shown) · monetization infra · integration into the 3D runtime · schema reconciliation · **automated event/subscription ingestion** (scraping Instagram/email/websites) — v1 events and subscriptions are **hand-curated seed**; an ingestion/submission pipeline is a post-validation follow-up, and the business submission CTA is its manual precursor. Change/civic layers and the recognizable-container fusion are v2 concerns.
+Backend/infrastructure · a full change/civic database · the Meeker Plume/environmental layer · a jobs-map layer (parked until demand shown) · monetization infra · integration into the 3D runtime · schema reconciliation · **automated event/subscription ingestion** (scraping Instagram/email/websites) — v1 events and subscriptions are **hand-curated seed**; an ingestion/submission pipeline is a post-validation follow-up, and the business submission CTA is its manual precursor. Change/civic layers and the recognizable-container fusion are v2 concerns — **v2 now has a named shape: living place dossiers** ("encapsulate and go deeper" — turn Greenpointers articles into linked spatial objects with timeline, status, both sides' claims, meetings, related places, actions; journalism-respecting, not journalism-replacing). Also explicitly rejected for v1 (2026-07-03, superseded by the interview): "SSG companion" branding/partner CTA · Jobs filter · civic cards (Monitor Point/McGuinness). **Post-validation business-model sequence** (do not build now): no charging individual small businesses first — sponsored campaign maps → partner tooling for SSG/Greenpointers → featured action cards paid only after evidence of clicks/signups/turnout. Details: `docs/context/2026-07-03-greenpointers-differentiation.md`.
 
 ## Trust rules
 

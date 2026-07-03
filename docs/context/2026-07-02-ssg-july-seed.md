@@ -74,9 +74,13 @@ type GreenpointMapCard = {
   actions: Array<{ label: string; url?: string;
     type: "visit"|"learn_more"|"rsvp"|"buy_gift_card"|"order"|"apply"|"signup"|"join"|"file_complaint"|"share"|"submit_update"; }>;
   sourceLinks?: Array<{ title: string; url?: string; publisher?: string; date?: string; }>;
+  relatedCardIds?: string[];                // place graph (moat) — sparse in v1
+  timeline?: Array<{ date: string; title: string; summary?: string; sourceUrl?: string; }>; // dossiers are v2; field carried now
   evidenceStrength: "high"|"medium_high"|"medium"|"low";
+  trustRisk: "low"|"medium"|"high";         // restored 2026-07-03
   monetizationRelevance: "direct"|"indirect"|"none";
   partnerRelevance: "high"|"medium"|"low";
   createdAt: string; updatedAt: string;
 };
+// Shape is neighborhood-agnostic by design — don't brand-lock to Greenpoint.
 ```

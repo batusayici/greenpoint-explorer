@@ -4,6 +4,21 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-07-03 - Greenpointers positioned; place-graph moat; dossiers named as v2
+
+Decision (Batu-approved review of the ChatGPT "Differentiation vs Greenpointers" context update). The doc is ~70% convergent with the 2026-07-02 Track V pivot; five adoptions and four rejections were made explicit so the build thread doesn't resurrect superseded ideas.
+
+**Adopted:**
+1. **Greenpointers is the named third actor** — stronger incumbent in the "what's happening" lane; treat as source / distribution partner / editorial authority / potential **map-embed customer**, never compete as a news product. Differentiation is structural: they answer *"what happened?"*, we answer *"where, how it connects to my block, what changed over time, what can I do."* A generic news map is rejected (too comparable, too copyable).
+2. **Moat = structure behind the pins** — place graph, source-backed timelines, action workflows, measurable impact; pins alone are indefensible. Schema consequence: `relatedCardIds?`, `timeline[]?`, `trustRisk` restored to the Track V card shape (populated sparsely in v1; kept neighborhood-agnostic, not brand-locked to Greenpoint).
+3. **v2 has a named shape: living place dossiers** ("encapsulate and go deeper" — Greenpointers articles become linked spatial objects with timeline/status/claims/meetings/related places/actions; journalism-respecting).
+4. **Business-model sequencing (post-validation, not built now):** never charge individual small businesses first — sponsored campaign maps → partner tooling for SSG/Greenpointers → featured action cards paid only after evidence of clicks/signups/turnout.
+5. **Validation sharpened:** Perri/business/resident interview scripts adopted; bar is **action, not interest** — pause if the spatial layer doesn't change behavior.
+
+**Rejected (superseded by the 2026-07-02 interview):** "SSG companion" branding/partner CTA (Q1: SSG is a source layer, we're independent) · Jobs filter in v1 (parked pending demand) · civic cards (Monitor Point/McGuinness) in v1 (Q2: discovery-forward; dossiers are v2) · any schema merge drops the hidden-engagement additions (`subscription`/`join`/Today lens are kept).
+
+Owner: Batu (taste/approvals) / Agent (execution). Source: `docs/context/2026-07-03-greenpointers-differentiation.md`; spec updated in place.
+
 ## 2026-07-02 - Pivot: validate spatial demand (Track V) before more container craft
 
 Decision (Batu, alignment interview). Two strategy inputs — the *Greenpoint Unmet Needs & Opportunity Context* and the inaugural *Shop Small Greenpoint* (SSG) July 2026 newsletter — reframe near-term priority. The Unmet Needs doc's mandate is to **prove demand cheaply before polishing the map** (*"a beautiful neighborhood map is not necessarily a useful product"*). The SSG newsletter shows a real, operating volunteer initiative already owning the newsletter/directory/events/profiles/G-train-advocacy space. Conclusion: don't build another newsletter or directory; the differentiated wedge is the **spatial + visual + action layer**, and it must be **demand-tested off the 3D runtime first**.
