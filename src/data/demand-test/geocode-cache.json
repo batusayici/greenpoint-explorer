@@ -578,5 +578,310 @@
         "-73.9510484"
       ]
     }
+  },
+  "Marsha P. Johnson State Park, Brooklyn, NY": {
+    "query": "Marsha P. Johnson State Park, Brooklyn, NY",
+    "fetchedAt": "2026-07-03T16:48:39.331Z",
+    "hit": {
+      "place_id": 360011660,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 33819583,
+      "lat": "40.7217727",
+      "lon": "-73.9621944",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.43196118896284763,
+      "addresstype": "park",
+      "name": "Marsha P. Johnson State Park",
+      "display_name": "Marsha P. Johnson State Park, 90, Williamsburg, Brooklyn, Kings County, New York, 11249, United States",
+      "boundingbox": [
+        "40.7204517",
+        "40.7227254",
+        "-73.9635071",
+        "-73.9606395"
+      ]
+    }
+  },
+  "Fernanda Uribe Studio, Greenpoint, Brooklyn, NY": {
+    "query": "Fernanda Uribe Studio, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-03T16:48:40.878Z",
+    "hit": null
+  },
+  "303 Bedford Ave, Brooklyn, NY 11249": {
+    "query": "303 Bedford Ave, Brooklyn, NY 11249",
+    "fetchedAt": "2026-07-03T16:48:42.246Z",
+    "hit": {
+      "place_id": 359277972,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 241837928,
+      "lat": "40.7134988",
+      "lon": "-73.9617159",
+      "category": "amenity",
+      "type": "pub",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Lucky Dog",
+      "display_name": "Lucky Dog, 303, Bedford Avenue, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7134449",
+        "40.7135527",
+        "-73.9618122",
+        "-73.9616196"
+      ]
+    }
+  },
+  "61 Guernsey St, Brooklyn, NY 11222": {
+    "query": "61 Guernsey St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-03T16:48:43.725Z",
+    "hit": {
+      "place_id": 360928255,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11830155819,
+      "lat": "40.7234811",
+      "lon": "-73.9527856",
+      "category": "craft",
+      "type": "winery",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "craft",
+      "name": "Brooklyn Winery",
+      "display_name": "Brooklyn Winery, 61, Guernsey Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7234311",
+        "40.7235311",
+        "-73.9528356",
+        "-73.9527356"
+      ]
+    }
+  },
+  "1 Noble St, Brooklyn, NY 11222": {
+    "query": "1 Noble St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-03T16:48:45.160Z",
+    "hit": {
+      "place_id": 402052782,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1359212495,
+      "lat": "40.7282410",
+      "lon": "-73.9605890",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "1, Noble Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7281910",
+        "40.7282910",
+        "-73.9606390",
+        "-73.9605390"
+      ]
+    }
+  },
+  "McCarren Park, Brooklyn, NY": {
+    "query": "McCarren Park, Brooklyn, NY",
+    "fetchedAt": "2026-07-03T16:48:46.559Z",
+    "hit": {
+      "place_id": 356312754,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 13902286,
+      "lat": "40.7211592",
+      "lon": "-73.9528793",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.39696805131781304,
+      "addresstype": "park",
+      "name": "McCarren Park",
+      "display_name": "McCarren Park, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7188867",
+        "40.7233443",
+        "-73.9558801",
+        "-73.9486541"
+      ]
+    }
+  },
+  "WNYC Transmitter Park, Brooklyn, NY": {
+    "query": "WNYC Transmitter Park, Brooklyn, NY",
+    "fetchedAt": "2026-07-03T16:48:47.995Z",
+    "hit": {
+      "place_id": 359297431,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 48686595,
+      "lat": "40.7298554",
+      "lon": "-73.9607289",
+      "category": "leisure",
+      "type": "nature_reserve",
+      "place_rank": 24,
+      "importance": 0.38307540422660474,
+      "addresstype": "nature_reserve",
+      "name": "WNYC Transmitter Park",
+      "display_name": "WNYC Transmitter Park, Manhattan Community Board 6, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7294491",
+        "40.7302564",
+        "-73.9625550",
+        "-73.9602457"
+      ]
+    }
+  },
+  "Banks Tavern, Greenpoint, Brooklyn, NY": {
+    "query": "Banks Tavern, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-03T16:48:49.476Z",
+    "hit": {
+      "place_id": 359238876,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11868399780,
+      "lat": "40.7297911",
+      "lon": "-73.9599975",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Banks Tavern",
+      "display_name": "Banks Tavern, 19, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7297411",
+        "40.7298411",
+        "-73.9600475",
+        "-73.9599475"
+      ]
+    }
+  },
+  "Madeline's, Greenpoint, Brooklyn, NY": {
+    "query": "Madeline's, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-03T16:48:51.124Z",
+    "hit": {
+      "place_id": 360554332,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2843008383,
+      "lat": "40.7302402",
+      "lon": "-73.9578047",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Madeline's",
+      "display_name": "Madeline's, 113, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7301902",
+        "40.7302902",
+        "-73.9578547",
+        "-73.9577547"
+      ]
+    }
+  },
+  "60 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "60 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-03T16:48:52.413Z",
+    "hit": {
+      "place_id": 358905323,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132487,
+      "lat": "40.7295441",
+      "lon": "-73.9585711",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "60, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294104",
+        "40.7296776",
+        "-73.9586327",
+        "-73.9585095"
+      ]
+    }
+  },
+  "107 Norman Ave, Brooklyn, NY 11222": {
+    "query": "107 Norman Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-03T16:48:53.676Z",
+    "hit": {
+      "place_id": 359176745,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1180777608,
+      "lat": "40.7260596",
+      "lon": "-73.9507089",
+      "category": "amenity",
+      "type": "library",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Greenpoint Library and Environmental Education Center",
+      "display_name": "Greenpoint Library and Environmental Education Center, 107, Norman Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7259187",
+        "40.7262001",
+        "-73.9509363",
+        "-73.9504489"
+      ]
+    }
+  },
+  "275 N 8th St, Brooklyn, NY 11211": {
+    "query": "275 N 8th St, Brooklyn, NY 11211",
+    "fetchedAt": "2026-07-03T16:48:55.218Z",
+    "hit": {
+      "place_id": 359658183,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280075421,
+      "lat": "40.7158039",
+      "lon": "-73.9525745",
+      "category": "amenity",
+      "type": "place_of_worship",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Our Lady of Mount Carmel Roman Catholic Church",
+      "display_name": "Our Lady of Mount Carmel Roman Catholic Church, 275, North 8th Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7156909",
+        "40.7159127",
+        "-73.9527435",
+        "-73.9524423"
+      ]
+    }
+  },
+  "67 West St, Brooklyn, NY 11222": {
+    "query": "67 West St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-03T16:49:19.944Z",
+    "hit": {
+      "place_id": 360664341,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10620349394,
+      "lat": "40.7285606",
+      "lon": "-73.9591840",
+      "category": "office",
+      "type": "advertising_agency",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "office",
+      "name": "Adience",
+      "display_name": "Adience, 67, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7285106",
+        "40.7286106",
+        "-73.9592340",
+        "-73.9591340"
+      ]
+    }
   }
 }

@@ -9,7 +9,8 @@
       "filters": [
         "new",
         "food_drink",
-        "g_train"
+        "g_train",
+        "events"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Sailor + Siren",
@@ -25,8 +26,9 @@
       ],
       "actions": [
         {
-          "label": "Stop by opening weekend (Jul 3–5)",
-          "type": "visit"
+          "label": "RSVP for opening weekend",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/wa7aUrxxjnOek1H2qLrt"
         },
         {
           "label": "Buy a gift card for closure weekends",
@@ -38,13 +40,21 @@
           "title": "Shop Small Greenpoint — July 2026 newsletter",
           "publisher": "Shop Small Greenpoint",
           "date": "2026-07-01"
+        },
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
         }
       ],
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "direct",
       "partnerRelevance": "high",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-02"
+      "updatedAt": "2026-07-03",
+      "startsAt": "2026-07-03T13:00:00-04:00",
+      "endsAt": "2026-07-05T23:59:00-04:00"
     },
     {
       "id": "core-press",
@@ -678,6 +688,485 @@
       "partnerRelevance": "high",
       "createdAt": "2026-07-02",
       "updatedAt": "2026-07-02"
+    },
+    {
+      "id": "parade-of-sail",
+      "title": "Parade of Sail on the East River",
+      "category": "event",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Marsha P. Johnson State Park",
+      "address": null,
+      "geocodeQuery": "Marsha P. Johnson State Park, Brooklyn, NY",
+      "lat": 40.721773,
+      "lng": -73.962194,
+      "corridor": "waterfront",
+      "summary": "Fri Jul 3, 1 PM — the Sail 4th 250 Parade of Sail: tall ships from around the world head down the East River, Hell Gate Bridge to Gravesend Bay. Free, no RSVP needed.",
+      "audience": [
+        "resident",
+        "family",
+        "visitor"
+      ],
+      "startsAt": "2026-07-03T13:00:00-04:00",
+      "endsAt": "2026-07-03T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Watch from the waterfront",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "drink-and-draw-uribe",
+      "title": "Drink & Draw at Fernanda Uribe Studio",
+      "category": "event",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Fernanda Uribe Studio",
+      "address": "67 West St, Brooklyn, NY 11222",
+      "lat": 40.728561,
+      "lng": -73.959184,
+      "corridor": "greenpoint",
+      "summary": "Fri Jul 3, 6:30 PM — sip wine and draw from a live model at the artist's 67 West St studio (Suite 613). $45.",
+      "audience": [
+        "resident",
+        "creator"
+      ],
+      "startsAt": "2026-07-03T18:30:00-04:00",
+      "endsAt": "2026-07-03T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get a spot",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/JKaKJsLWGSnAwCdoFizT"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "luckydog-beer-chug",
+      "title": "15th Annual Beer-Chugging Contest",
+      "category": "event",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Luckydog",
+      "address": "303 Bedford Ave, Brooklyn, NY 11249",
+      "lat": 40.713499,
+      "lng": -73.961716,
+      "corridor": "bedford-ave",
+      "summary": "Sat Jul 4, 3 PM — hot dogs, beer, and cash prizes at the dog-friendly bar's 15th annual contest and free hot dog fest.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "startsAt": "2026-07-04T15:00:00-04:00",
+      "endsAt": "2026-07-04T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Show up thirsty",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "rose-white-blue",
+      "title": "Rosé, White & Blue",
+      "category": "event",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Brooklyn Winery",
+      "address": "61 Guernsey St, Brooklyn, NY 11222",
+      "lat": 40.723481,
+      "lng": -73.952786,
+      "corridor": "guernsey-st",
+      "summary": "Sat Jul 4, 3 PM — open bar, unlimited food, raffles, and a live vinyl DJ set. $89.15.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "startsAt": "2026-07-04T15:00:00-04:00",
+      "endsAt": "2026-07-04T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/rose-white-blue-tickets-1987565256185"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "noble-st-block-party",
+      "title": "4th of July Block Party",
+      "category": "event",
+      "filters": [
+        "events"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "1 Noble St",
+      "address": "1 Noble St, Brooklyn, NY 11222",
+      "lat": 40.728241,
+      "lng": -73.960589,
+      "corridor": "noble-st",
+      "summary": "Sat Jul 4, 3 PM — DJ sets from Snakehips, Emmit Fenn, and Lost Kings, plus a beer garden, yard games, flash tattoos, and a Gotham Burger Social Club pop-up. $38.07.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "startsAt": "2026-07-04T15:00:00-04:00",
+      "endsAt": "2026-07-04T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/4th-of-july-block-party-ft-snakehips-emmit-fenn-lost-kings-tickets-1991477576039"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "macys-fireworks-viewing",
+      "title": "Macy's Fireworks Viewing",
+      "category": "event",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Marsha P. Johnson State Park",
+      "address": null,
+      "geocodeQuery": "Marsha P. Johnson State Park, Brooklyn, NY",
+      "lat": 40.721773,
+      "lng": -73.962194,
+      "corridor": "waterfront",
+      "summary": "Sat Jul 4, 7 PM — watch the 50th Macy's fireworks from the park (view partially obstructed). Free; wristbands first-come first-served at the park entrance from 4:30 PM.",
+      "audience": [
+        "resident",
+        "family",
+        "visitor"
+      ],
+      "startsAt": "2026-07-04T19:00:00-04:00",
+      "endsAt": "2026-07-04T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Grab a wristband from 4:30",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "mccarren-softball-tournament",
+      "title": "Charity Co-ed Softball Tournament",
+      "category": "event",
+      "filters": [
+        "events"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "McCarren Park",
+      "address": null,
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "lat": 40.721159,
+      "lng": -73.952879,
+      "corridor": "mccarren",
+      "summary": "Sun Jul 5, 10 AM — slow-pitch softball across two brackets, after-party at Roebling Sporting Club with a hot dog eating contest and raffles. $25 entry supports the VOLO Kids Foundation.",
+      "audience": [
+        "resident"
+      ],
+      "startsAt": "2026-07-05T10:00:00-04:00",
+      "endsAt": "2026-07-05T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/july-4th-celebration-tournament-presented-by-roc-athletics-mssl-and-wsl-tickets-1990428116076"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "transmitter-morning-yoga",
+      "title": "Morning Yoga at Transmitter Park",
+      "category": "event",
+      "filters": [
+        "events"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "WNYC Transmitter Park",
+      "address": null,
+      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "corridor": "waterfront",
+      "summary": "Tue Jul 7, 7 AM — a gentle practice by the water to start the day. Free, RSVP required.",
+      "audience": [
+        "resident"
+      ],
+      "startsAt": "2026-07-07T07:00:00-04:00",
+      "endsAt": "2026-07-07T09:00:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://forms.gle/yZvtYAFoD5qS8n1K7"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "tuesday-comedy-triangle",
+      "title": "Tuesday Comedy Triangle",
+      "category": "event",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "3 spots, a stone's throw apart",
+      "address": null,
+      "lat": 40.729858,
+      "lng": -73.958791,
+      "corridor": "greenpoint",
+      "summary": "Tue Jul 7, 7 & 8 PM — three comedy shows within a few blocks of each other: Banks Tavern, Madeline's, and Paulie Gee's.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "startsAt": "2026-07-07T19:00:00-04:00",
+      "endsAt": "2026-07-07T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Pick a show",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/the-cool-kids-comedy-show-tickets-1990247737559"
+        }
+      ],
+      "venues": [
+        {
+          "name": "Banks Tavern",
+          "address": null,
+          "lat": 40.729791,
+          "lng": -73.959997
+        },
+        {
+          "name": "Madeline's",
+          "address": null,
+          "lat": 40.73024,
+          "lng": -73.957805
+        },
+        {
+          "name": "Paulie Gee's",
+          "address": "60 Greenpoint Ave, Brooklyn, NY 11222",
+          "lat": 40.729544,
+          "lng": -73.958571
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "teen-diy-greenpoint-library",
+      "title": "Teen DIY at Greenpoint Library",
+      "category": "event",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "corridor": "norman-ave",
+      "summary": "Wed Jul 8, 4 PM — teens 13–19 decorate steel water bottles with stickers, markers, and more. Free.",
+      "audience": [
+        "family"
+      ],
+      "startsAt": "2026-07-08T16:00:00-04:00",
+      "endsAt": "2026-07-08T18:00:00-04:00",
+      "actions": [
+        {
+          "label": "Drop in",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
+      "id": "mt-carmel-feast-opening",
+      "title": "Williamsburg Feast — Opening Night",
+      "category": "event",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "sourceCampaign": "greenpointers_week_2026-07-02",
+      "locationName": "Our Lady of Mount Carmel",
+      "address": "275 N 8th St, Brooklyn, NY 11211",
+      "lat": 40.715804,
+      "lng": -73.952574,
+      "corridor": "williamsburg",
+      "summary": "Wed Jul 8, 7 PM — opening night of one of NYC's oldest and largest Italian American feasts, with the Italian Caucus walking the feast. Free.",
+      "audience": [
+        "resident",
+        "visitor",
+        "family"
+      ],
+      "startsAt": "2026-07-08T19:00:00-04:00",
+      "endsAt": "2026-07-08T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Sign up",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/williamsburg-feast-with-the-italian-caucus-tickets-1992393899788"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening (7/2–7/8)",
+          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
     }
   ]
 }
