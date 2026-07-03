@@ -6,10 +6,13 @@ import { EVENTS, trackEvent } from "./trackEvents.js";
 // the color key lives in the controls people already use, not a legend box.
 const CHIP_KIND = { new: "business", events: "event", clubs_signups: "club", g_train: "gtrain" };
 
-const SIGNUP_MAILTO =
-  "mailto:bsayici@gmail.com?subject=Weekly%20Greenpoint%20updates&body=Sign%20me%20up%20for%20the%20weekly%20map.";
-const SUBMIT_MAILTO =
-  "mailto:bsayici@gmail.com?subject=Add%20to%20the%20Greenpoint%20map&body=Business%20%2F%20event%20%2F%20offer%20%2F%20update%3A%0A%0AName%3A%0AAddress%3A%0AWhat%20should%20the%20card%20say%3F%3A";
+// ONE ask, lowest friction (lean test: the tap is the interest signal, the
+// form response is the commitment signal — CTA_TAP vs Tally responses is the
+// conversion funnel). Business/event submissions are an optional field INSIDE
+// the form, not a second button. Swap in the Tally URL when Batu creates it;
+// until then the mailto keeps the CTA functional (taps are tracked either way).
+const SIGNUP_URL =
+  "mailto:bsayici@gmail.com?subject=Weekly%20Greenpoint%20map&body=Sign%20me%20up.";
 
 const WINDOW_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -149,17 +152,12 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
       <footer className="july-ctas">
         <a
           className="july-cta july-cta--primary"
-          href={SIGNUP_MAILTO}
+          href={SIGNUP_URL}
+          target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
+          rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
           onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup" })}
         >
-          Get weekly Greenpoint updates
-        </a>
-        <a
-          className="july-cta"
-          href={SUBMIT_MAILTO}
-          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "submit" })}
-        >
-          Add your business or event
+          Get next week&rsquo;s map
         </a>
       </footer>
     </aside>
