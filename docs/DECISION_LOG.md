@@ -4,6 +4,17 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-07-03 — Track V measurement: Vercel custom events + Tally forms
+
+Instrumentation for the demand test go/no-go: six named tap events
+(pin_tap / card_open / filter_tap / today_toggle / action_tap / cta_tap)
+through a transport seam (`trackEvents.js`) bound to @vercel/analytics —
+vendor-swappable if plan gating blocks custom events. CTAs moved to Tally
+hosted forms so signup/submission counts are dashboard-countable (form
+URLs pending, decision made; CTAs still mailto, tracked). Place-graph fields
+(trustRisk required, relatedCardIds/timeline optional) landed in
+cardSchema.js; sparse seed links the two G-train action cards.
+
 ## 2026-07-03 - Greenpointers positioned; place-graph moat; dossiers named as v2
 
 Decision (Batu-approved review of the ChatGPT "Differentiation vs Greenpointers" context update). The doc is ~70% convergent with the 2026-07-02 Track V pivot; five adoptions and four rejections were made explicit so the build thread doesn't resurrect superseded ideas.

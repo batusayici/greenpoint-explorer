@@ -1,7 +1,7 @@
 # Track V — Spatial Demand Test ("July in Greenpoint + G-Train Support")
 
 Status: **v1 live (2026-07-02, updated 2026-07-03) — main (PR #4), deployed: <https://greenpoint-explorer.vercel.app/july.html>.** 26 cards (8 discovery · 15 events incl. the Greenpointers 7/2–7/8 week w/ one-tap ticket links · 1 subscription · 2 G-train actions). Plan: `docs/superpowers/plans/2026-07-02-track-v-spatial-demand-test.md`.
-**Next (plan review, Batu + agent, 2026-07-03 — product ready, experiment isn't):** 1) instrumentation (Vercel Analytics + events on pin/filter/action/CTA taps — the sharpened bar needs *action* evidence) · 2) real signup/submission forms replacing the mailtos · 3) schema catch-up: `relatedCardIds`/`timeline[]`/`trustRisk` into `cardSchema.js` + sparse seed links · 4) factual review + Jul-10-weekend refresh · 5) distribute to cohort + Perri walkthrough over the Jul 10–13 closure; **go/no-go review ~Jul 15**.
+**Next (plan review, Batu + agent, 2026-07-03):** 1) instrumentation — DONE 2026-07-03 (named tap events via trackEvents.js + Vercel Web Analytics) · 2) forms — DONE 2026-07-03 (Tally; response counts = signup signals; form URLs pending — CTAs still mailto, tracked) · 3) schema catch-up — DONE 2026-07-03 (relatedCardIds/timeline/trustRisk in cardSchema.js, sparse seed links) · 4) factual review + Jul-10-weekend refresh · 5) distribute to cohort + Perri walkthrough over Jul 10–13 closure; **go/no-go review ~Jul 15**.
 Branch: `feat/spatial-demand-test` (off `main`). Track R / `feat/r2-recognizable-storefronts` is **paused, not abandoned** (backed up to origin at `1f1c210`).
 Owner: Batu (taste/approvals) / Agent (execution). Supersedes the near-term ordering of the 2026-06-23 "spine alive before expanding" decision.
 
