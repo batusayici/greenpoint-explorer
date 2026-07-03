@@ -9,10 +9,8 @@ const CHIP_KIND = { new: "business", events: "event", clubs_signups: "club", g_t
 // ONE ask, lowest friction (lean test: the tap is the interest signal, the
 // form response is the commitment signal — CTA_TAP vs Tally responses is the
 // conversion funnel). Business/event submissions are an optional field INSIDE
-// the form, not a second button. Swap in the Tally URL when Batu creates it;
-// until then the mailto keeps the CTA functional (taps are tracked either way).
-const SIGNUP_URL =
-  "mailto:bsayici@gmail.com?subject=Weekly%20Greenpoint%20map&body=Sign%20me%20up.";
+// the form ("July in Greenpoint — weekly map" on Batu's Tally), not a second button.
+const SIGNUP_URL = "https://tally.so/r/44daZo";
 
 const WINDOW_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
