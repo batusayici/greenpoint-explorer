@@ -18,7 +18,7 @@
 - Event data properties must be primitives (string/number/boolean) — Vercel aggregates on low-cardinality values.
 - Run `git status --short` before editing; commit per task with the repo's `feat(track-v):` / `content(track-v):` / `docs(track-v):` style.
 - **Never `git push` and never `npx vercel deploy --prod` without Batu's explicit approval** (Task 5 checkpoint).
-- Task 3 is blocked on Batu creating two Tally forms and providing their share URLs (specs in Task 3, Step 0). Tasks 1, 2, 4 do not depend on it.
+- Task 3 is blocked on Batu creating ONE Tally form and providing its share URL (spec in Task 3, Step 0; single-CTA revision per Batu's commit `3455063`). Tasks 1, 2, 4 do not depend on it.
 
 ## File structure
 
@@ -371,7 +371,9 @@ git commit -m "feat(track-v): instrument pin/filter/card/action/CTA taps with na
 
 ---
 
-### Task 3: Tally CTAs (countable signups) — **blocked on Batu's two form URLs**
+### Task 3: Tally CTA (countable signups) — **blocked on Batu's form URL**
+
+> **REVISED 2026-07-03 (Batu, commit `3455063`):** one CTA, not two. The submission button was dropped; business/event intake is an optional field inside the signup form. `CardPanel.jsx` now has a single `SIGNUP_URL` constant (mailto interim) with conditional `target`/`rel` that activate for http(s) URLs.
 
 **Files:**
 - Create: `src/demand-test/ctaLinks.js`
@@ -379,14 +381,12 @@ git commit -m "feat(track-v): instrument pin/filter/card/action/CTA taps with na
 - Modify: `src/demand-test/CardPanel.jsx`
 
 **Interfaces:**
-- Consumes: the Task 2 footer block (CTA anchors already tracking `cta_tap`).
-- Produces: `SIGNUP_FORM_URL: string`, `SUBMIT_FORM_URL: string` from `ctaLinks.js`.
+- Consumes: the single footer CTA anchor (already tracking `cta_tap {cta:"signup"}`) and its `SIGNUP_URL` constant in `CardPanel.jsx`.
+- Produces: `SIGNUP_FORM_URL: string` from `ctaLinks.js`.
 
-- [ ] **Step 0 (Batu, manual — ~10 min):** Create two Tally forms at tally.so and provide both share URLs (`https://tally.so/r/<id>`):
-  1. **"Get weekly Greenpoint updates"** — fields: Email (required) · "Where in Greenpoint are you?" (short text, optional) · "What should a weekly version show you?" (long text, optional).
-  2. **"Add your business or event to the map"** — fields: Business/event name (required) · Address (short text, required) · "What should the card say?" (long text, required) · Link — Instagram/site/tickets (URL, optional) · Your email (email, required).
+- [ ] **Step 0 (Batu, manual — ~10 min):** Create ONE Tally form at tally.so and provide its share URL (`https://tally.so/r/<id>`): **"Get next week's map"** — fields: Email (required) · "Where in Greenpoint are you?" (short text, optional) · "Got a business, event, or update for the map? Tell us" (long text, optional) · Link — Instagram/site/tickets (URL, optional).
 
-  Response counts in Tally = the "≥3 ask to subscribe" and "≥2 businesses ask to be included" go/no-go signals.
+  Tally response count = the "≥3 ask to subscribe" signal; responses with the business/event field filled = the "≥2 businesses ask to be included" signal.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -395,14 +395,12 @@ Create `src/demand-test/ctaLinks.test.mjs`:
 ```js
 import test from "node:test";
 import assert from "node:assert/strict";
-import { SIGNUP_FORM_URL, SUBMIT_FORM_URL } from "./ctaLinks.js";
+import { SIGNUP_FORM_URL } from "./ctaLinks.js";
 
-// Regression guard: the launch mailtos were uncountable — CTA targets must
-// stay hosted forms so the go/no-go signup signals are measurable.
-test("both CTAs point at Tally share URLs, not mailtos", () => {
-  const tally = /^https:\/\/tally\.so\/r\/[A-Za-z0-9]+$/;
-  assert.match(SIGNUP_FORM_URL, tally);
-  assert.match(SUBMIT_FORM_URL, tally);
+// Regression guard: the launch mailto was uncountable — the CTA target must
+// stay a hosted form so the go/no-go signup signals are measurable.
+test("the CTA points at a Tally share URL, not a mailto", () => {
+  assert.match(SIGNUP_FORM_URL, /^https:\/\/tally\.so\/r\/[A-Za-z0-9]+$/);
 });
 ```
 
@@ -411,61 +409,38 @@ test("both CTAs point at Tally share URLs, not mailtos", () => {
 Run: `node --test src/demand-test/ctaLinks.test.mjs`
 Expected: FAIL — `Cannot find module ... ctaLinks.js`
 
-- [ ] **Step 3: Create `src/demand-test/ctaLinks.js`** (substitute the real URLs from Step 0)
+- [ ] **Step 3: Create `src/demand-test/ctaLinks.js`** (substitute the real URL from Step 0)
 
 ```js
-// Countable CTAs (Tally, decided 2026-07-03) — replaced the launch mailtos so
-// the go/no-go signals ("≥3 ask to subscribe", "≥2 businesses ask in") are
-// dashboard-countable instead of inbox-dependent.
-export const SIGNUP_FORM_URL = "https://tally.so/r/REPLACE_WITH_SIGNUP_ID";
-export const SUBMIT_FORM_URL = "https://tally.so/r/REPLACE_WITH_SUBMIT_ID";
+// Countable CTA (Tally, decided 2026-07-03; single-ask funnel per 3455063) —
+// replaced the launch mailto so the go/no-go signals ("≥3 ask to subscribe",
+// "≥2 businesses ask in" via the optional intake field) are dashboard-countable
+// instead of inbox-dependent. CTA_TAP = intent; Tally responses = commitment.
+export const SIGNUP_FORM_URL = "https://tally.so/r/REPLACE_WITH_ID";
 ```
 
-(The test's `[A-Za-z0-9]+$` pattern fails on `REPLACE_WITH_*` because of the underscores — the task cannot pass with placeholder URLs left in.)
+(The test's `[A-Za-z0-9]+$` pattern fails on `REPLACE_WITH_ID` because of the underscores — the task cannot pass with a placeholder URL left in.)
 
 - [ ] **Step 4: Run the test to verify it passes**
 
 Run: `node --test src/demand-test/ctaLinks.test.mjs`
 Expected: PASS (only with real Tally ids substituted).
 
-- [ ] **Step 5: Swap the CTA hrefs in `CardPanel.jsx`**
+- [ ] **Step 5: Swap the CTA href in `CardPanel.jsx`**
 
-5a. Delete the `SIGNUP_MAILTO` and `SUBMIT_MAILTO` constants (lines 8–11 in the pre-Task-2 file) and add the import next to the other local imports:
-
-```jsx
-import { SIGNUP_FORM_URL, SUBMIT_FORM_URL } from "./ctaLinks.js";
-```
-
-5b. Replace the footer block from Task 2 Step 2f with:
+5a. Delete the local `SIGNUP_URL` constant (and its interim-mailto comment block) and add the import next to the other local imports:
 
 ```jsx
-      <footer className="july-ctas">
-        <a
-          className="july-cta july-cta--primary"
-          href={SIGNUP_FORM_URL}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup" })}
-        >
-          Get weekly Greenpoint updates
-        </a>
-        <a
-          className="july-cta"
-          href={SUBMIT_FORM_URL}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "submit" })}
-        >
-          Add your business or event
-        </a>
-      </footer>
+import { SIGNUP_FORM_URL } from "./ctaLinks.js";
 ```
+
+5b. In the footer anchor, replace the three `SIGNUP_URL` references with `SIGNUP_FORM_URL` (the conditional `target`/`rel` from `3455063` activate automatically once the value is https). Keep the label ("Get next week's map") and the `cta_tap` handler untouched.
 
 - [ ] **Step 6: Verify**
 
 Run: `npm run test` — expected PASS (+1 ctaLinks test), zero failures.
 Run: `grep -rn "mailto" src/demand-test/` — expected: no matches.
-Dev-server check: both footer CTAs open the correct Tally form in a new tab and log a `cta_tap` debug event.
+Dev-server check: the footer CTA opens the Tally form in a new tab and logs a `cta_tap` debug event.
 
 - [ ] **Step 7: Commit**
 
