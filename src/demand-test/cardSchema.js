@@ -69,6 +69,9 @@ export function validateCard(card) {
   else for (const a of card.actions) {
     if (!str(a.label)) err("action missing label");
     if (!ACTION_TYPES.includes(a.type)) err(`unknown action type "${a.type}"`);
+    // Internal action (2026-07-03): tapping switches the filter bar instead of
+    // leaving the page — campaign cards use it to open their layer.
+    if (a.filterId != null && !FILTER_IDS.includes(a.filterId)) err(`unknown action filterId "${a.filterId}"`);
   }
 
   if (!Array.isArray(card.sourceLinks) || card.sourceLinks.length === 0) {

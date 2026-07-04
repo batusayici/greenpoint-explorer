@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { FILTERS, pinKind } from "./filterCards.js";
+import { actionHref } from "./cardActions.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
@@ -48,9 +49,9 @@ function formatWindow(card) {
   return from ? `From ${from}` : `Through ${to}`;
 }
 
-function ActionLink({ action, cardId }) {
+function ActionLink({ action, card, onFilter }) {
   const cls = "july-action";
-  const onTap = () => trackEvent(EVENTS.ACTION_TAP, { cardId, actionType: action.type });
+  const onTap = () => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type });
   if (action.type === "share") {
     const onShare = async () => {
       onTap();
@@ -64,9 +65,25 @@ function ActionLink({ action, cardId }) {
       </button>
     );
   }
-  if (action.url) {
+  // Internal action: switches the filter bar instead of leaving the page
+  // (campaign cards open their layer — "see who's open nearby" → G-Train).
+  if (action.filterId) {
+    const onSwitch = () => {
+      trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type, filter: action.filterId });
+      onFilter(action.filterId);
+    };
     return (
-      <a className={cls} href={action.url} target="_blank" rel="noreferrer" onClick={onTap}>
+      <button type="button" className={cls} onClick={onSwitch}>
+        {action.label}
+      </button>
+    );
+  }
+  // url, or directions derived from the card's own address/coords (visit only) —
+  // every action rendered here is tappable and therefore produces action_tap.
+  const href = actionHref(action, card);
+  if (href) {
+    return (
+      <a className={cls} href={href} target="_blank" rel="noreferrer" onClick={onTap}>
         {action.label} ↗
       </a>
     );
@@ -81,8 +98,29 @@ function cardSubline(card) {
   return card.locationName !== card.title ? card.locationName : null;
 }
 
-function CardDetail({ card }) {
+// Timeline dates are date-only ISO strings — format in UTC so "2026-07-10"
+// doesn't roll back to Jul 9 in New York.
+const TIMELINE_DAY_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
+function CardDetail({ card, cardsById, onFilter, onRelated }) {
   const when = formatWindow(card);
+  const related = (card.relatedCardIds ?? [])
+    .map((id) => cardsById.get(id))
+    .filter(Boolean);
+  // Publisher only — full issue titles live in data as the citation of record
+  // but read as noise at label size. First URL per publisher makes it tappable
+  // (credibility via links, and the tap is source_tap evidence).
+  const sources = [];
+  for (const s of card.sourceLinks) {
+    const name = s.publisher || s.title;
+    const seen = sources.find((x) => x.name === name);
+    if (!seen) sources.push({ name, url: s.url });
+    else if (!seen.url && s.url) seen.url = s.url;
+  }
   return (
     <div className="july-detail">
       {when && <p className="july-detail-when">{when}</p>}
@@ -92,21 +130,64 @@ function CardDetail({ card }) {
       {(card.venues ?? []).length > 0 && (
         <p className="july-detail-venues">{card.venues.map((v) => v.name).join(" · ")}</p>
       )}
+      {(card.timeline ?? []).length > 0 && (
+        <ol className="july-timeline">
+          {card.timeline.map((t) => (
+            <li key={t.date + t.title}>
+              <span className="july-timeline-date">{TIMELINE_DAY_FMT.format(new Date(t.date))}</span>
+              <span>
+                <strong>{t.title}</strong>
+                {t.summary && <> — {t.summary}</>}
+              </span>
+            </li>
+          ))}
+        </ol>
+      )}
       <div className="july-actions">
         {card.actions.map((a) => (
-          <ActionLink key={a.label} action={a} cardId={card.id} />
+          <ActionLink key={a.label} action={a} card={card} onFilter={onFilter} />
         ))}
       </div>
-      {/* Publisher only — full issue titles live in data as the citation of
-          record but read as noise at label size */}
+      {related.length > 0 && (
+        <p className="july-related">
+          <span className="july-related-label">Connected</span>
+          {related.map((r) => (
+            <button
+              key={r.id}
+              type="button"
+              className="july-related-chip"
+              onClick={() => onRelated(card.id, r.id)}
+            >
+              {r.title}
+            </button>
+          ))}
+        </p>
+      )}
       <p className="july-source">
-        Source: {[...new Set(card.sourceLinks.map((s) => s.publisher || s.title))].join(" · ")}
+        Source:{" "}
+        {sources.map((s, i) => (
+          <React.Fragment key={s.name}>
+            {i > 0 && " · "}
+            {s.url ? (
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackEvent(EVENTS.SOURCE_TAP, { cardId: card.id, publisher: s.name })}
+              >
+                {s.name}
+              </a>
+            ) : (
+              s.name
+            )}
+          </React.Fragment>
+        ))}
       </p>
     </div>
   );
 }
 
-export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday, selectedId, onSelect }) {
+export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated }) {
   const listRef = useRef(null);
 
   // Tapping a pin brings its card to the top of the feed.
@@ -165,7 +246,7 @@ export default function CardPanel({ cards, filter, onFilter, todayOnly, onToday,
                 </span>
                 {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
               </button>
-              {open && <CardDetail card={card} />}
+              {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onRelated={onRelated} />}
             </li>
           );
         })}

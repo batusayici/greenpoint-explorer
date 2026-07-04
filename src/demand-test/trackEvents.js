@@ -11,6 +11,8 @@ export const EVENTS = Object.freeze({
   TODAY_TOGGLE: "today_toggle",
   ACTION_TAP: "action_tap",
   CTA_TAP: "cta_tap",
+  RELATED_TAP: "related_tap",
+  SOURCE_TAP: "source_tap",
 });
 
 const NAMES = new Set(Object.values(EVENTS));

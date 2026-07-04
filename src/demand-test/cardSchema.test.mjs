@@ -31,6 +31,14 @@ test("a complete card validates", () => {
   assert.equal(r.ok, true);
 });
 
+test("an action may target a filter view (internal action), but only a known one", () => {
+  // 2026-07-03: campaign cards link INTO the map ("see who's open nearby" →
+  // the G-Train layer) — an action carrying filterId instead of url.
+  const internal = { ...good, actions: [{ label: "See who's open nearby", type: "visit", filterId: "g_train" }] };
+  assert.deepEqual(validateCard(internal).errors, []);
+  assert.equal(validateCard({ ...good, actions: [{ label: "x", type: "visit", filterId: "jobs" }] }).ok, false);
+});
+
 test("rejects unknown category, filter, action type, audience", () => {
   assert.equal(validateCard({ ...good, category: "nope" }).ok, false);
   assert.equal(validateCard({ ...good, filters: ["nope"] }).ok, false);

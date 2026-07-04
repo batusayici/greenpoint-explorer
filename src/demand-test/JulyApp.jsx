@@ -1,8 +1,11 @@
 import React, { useMemo, useState, useCallback } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
 import { matchesFilter, isActiveOn, sortTodayFirst } from "./filterCards.js";
+import { EVENTS, trackEvent } from "./trackEvents.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
+
+const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
 
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
@@ -27,6 +30,20 @@ export default function JulyApp() {
     });
   }, []);
 
+  // Place-graph traversal: tapping a related chip must always land somewhere
+  // visible, so widen the lens if the target card is filtered out right now.
+  const onRelated = useCallback(
+    (fromCardId, toCardId) => {
+      const target = CARDS_BY_ID.get(toCardId);
+      if (!target) return;
+      trackEvent(EVENTS.RELATED_TAP, { fromCardId, toCardId });
+      if (!matchesFilter(target, filter)) setFilter("all");
+      if (todayOnly && !isActiveOn(target, new Date())) setTodayOnly(false);
+      setSelectedId(toCardId);
+    },
+    [filter, todayOnly],
+  );
+
   return (
     <div className="july-shell">
       <header className="july-header">
@@ -46,12 +63,14 @@ export default function JulyApp() {
       <main className="july-main">
         <CardPanel
           cards={visible}
+          cardsById={CARDS_BY_ID}
           filter={filter}
           onFilter={onFilter}
           todayOnly={todayOnly}
           onToday={setTodayOnly}
           selectedId={selectedId}
           onSelect={setSelectedId}
+          onRelated={onRelated}
         />
         <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
       </main>

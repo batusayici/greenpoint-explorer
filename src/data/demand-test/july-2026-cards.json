@@ -18,7 +18,7 @@
       "lat": 40.728265,
       "lng": -73.953488,
       "corridor": "manhattan-ave",
-      "summary": "New seafood bar bringing lobster rolls to the avenue.",
+      "summary": "New seafood bar bringing lobster rolls to the avenue. Gift cards carry a brand-new spot through the closure weekends.",
       "whyItMatters": "Opening straight into a G-shutdown month — early local support decides whether a debut like this sticks.",
       "audience": [
         "resident",
@@ -29,10 +29,6 @@
           "label": "RSVP for opening weekend",
           "type": "rsvp",
           "url": "https://partiful.com/e/wa7aUrxxjnOek1H2qLrt"
-        },
-        {
-          "label": "Gift cards carry them through the G-train weekends",
-          "type": "buy_gift_card"
         }
       ],
       "sourceLinks": [
@@ -55,7 +51,10 @@
       "createdAt": "2026-07-02",
       "updatedAt": "2026-07-03",
       "startsAt": "2026-07-03T13:00:00-04:00",
-      "endsAt": "2026-07-05T23:59:00-04:00"
+      "endsAt": "2026-07-05T23:59:00-04:00",
+      "relatedCardIds": [
+        "g-train-closures"
+      ]
     },
     {
       "id": "core-press",
@@ -63,7 +62,8 @@
       "category": "service",
       "filters": [
         "new",
-        "services"
+        "services",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Core Press",
@@ -79,10 +79,6 @@
         {
           "label": "Check it out",
           "type": "visit"
-        },
-        {
-          "label": "Book a first class",
-          "type": "rsvp"
         }
       ],
       "sourceLinks": [
@@ -105,7 +101,8 @@
       "category": "service",
       "filters": [
         "new",
-        "services"
+        "services",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Pooch's Parlor",
@@ -119,8 +116,8 @@
       ],
       "actions": [
         {
-          "label": "Book an appointment",
-          "type": "rsvp"
+          "label": "Directions (appointment only)",
+          "type": "visit"
         }
       ],
       "sourceLinks": [
@@ -144,7 +141,8 @@
       "filters": [
         "new",
         "shopping",
-        "family_kids"
+        "family_kids",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Giggles & Wiggles",
@@ -184,7 +182,8 @@
       "filters": [
         "new",
         "food_drink",
-        "family_kids"
+        "family_kids",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Cookies N' Cream",
@@ -243,10 +242,6 @@
         {
           "label": "Dine in",
           "type": "visit"
-        },
-        {
-          "label": "Order pickup or delivery",
-          "type": "order"
         }
       ],
       "sourceLinks": [
@@ -261,7 +256,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-03",
+      "relatedCardIds": [
+        "g-train-closures"
+      ]
     },
     {
       "id": "socceria",
@@ -270,7 +268,8 @@
       "filters": [
         "new",
         "food_drink",
-        "events"
+        "events",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Socceria",
@@ -301,7 +300,10 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-03",
+      "relatedCardIds": [
+        "world-cup-watch"
+      ]
     },
     {
       "id": "dreams-on-command",
@@ -309,7 +311,8 @@
       "category": "arts_culture",
       "filters": [
         "new",
-        "arts_culture"
+        "arts_culture",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Dreams on Command",
@@ -357,7 +360,7 @@
       "lat": 40.728267,
       "lng": -73.953921,
       "corridor": "greenpoint",
-      "summary": "All ten have the tournament on, right through the final.",
+      "summary": "All ten have the tournament on, right through the final — pick the bar nearest you.",
       "whyItMatters": "One event, ten doors — the map shows the whole cluster at a glance; a list can't.",
       "audience": [
         "resident",
@@ -366,8 +369,8 @@
       "endsAt": "2026-07-19T23:59:00-04:00",
       "actions": [
         {
-          "label": "Pick a bar near you",
-          "type": "visit"
+          "label": "Share the watch map",
+          "type": "share"
         }
       ],
       "venues": [
@@ -444,7 +447,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-03",
+      "relatedCardIds": [
+        "socceria"
+      ]
     },
     {
       "id": "yoseka-sticker-buffet",
@@ -578,7 +584,8 @@
       "category": "subscription",
       "filters": [
         "clubs_signups",
-        "food_drink"
+        "food_drink",
+        "g_train"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Falu House",
@@ -617,6 +624,86 @@
       "updatedAt": "2026-07-03"
     },
     {
+      "id": "g-train-closures",
+      "title": "G-train closures: July and beyond",
+      "category": "g_train_support",
+      "filters": [
+        "g_train"
+      ],
+      "sourceCampaign": "shop_small_greenpoint_july_2026",
+      "locationName": "Greenpoint Av station",
+      "address": "Manhattan Ave & Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.731352,
+      "lng": -73.954259,
+      "corridor": "manhattan-ave",
+      "summary": "Track work closes the G between Court Sq and Bedford–Nostrand Avs — Greenpoint Av and Nassau Av included — on the weekends and overnights below. A free T403 shuttle covers the gap, and the shops and bars on this map stay open through it.",
+      "whyItMatters": "Closure weekends are when local spending decides which storefronts make it — this card tracks each window as it's confirmed.",
+      "audience": [
+        "resident",
+        "business",
+        "visitor"
+      ],
+      "actions": [
+        {
+          "label": "See who's open nearby",
+          "type": "visit",
+          "filterId": "g_train"
+        },
+        {
+          "label": "File an MTA complaint",
+          "type": "file_complaint",
+          "url": "https://contact.mta.info/s/customer-feedback"
+        },
+        {
+          "label": "Check live G service",
+          "type": "learn_more",
+          "url": "https://new.mta.info/alerts"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-07-10",
+          "title": "Weekend closure",
+          "summary": "No G between Court Sq and Bedford–Nostrand Avs from Fri 9:45 PM to Mon 5 AM. Free T403 shuttle covers the closed stops."
+        },
+        {
+          "date": "2026-07-13",
+          "title": "Overnight closures",
+          "summary": "Same segment closed 9:45 PM–5 AM each night, Monday through Friday morning Jul 17."
+        },
+        {
+          "date": "2026-08-08",
+          "title": "More weekends reported",
+          "summary": "Aug 8, Aug 15, Sep 12 and Dec 5/12/19 weekend closures reported — not yet MTA-confirmed."
+        }
+      ],
+      "relatedCardIds": [
+        "adopt-a-business",
+        "g-advocacy-mta",
+        "sailor-and-siren",
+        "sotteatery"
+      ],
+      "sourceLinks": [
+        {
+          "title": "MTA planned service changes — G line",
+          "publisher": "MTA",
+          "url": "https://new.mta.info/alerts",
+          "date": "2026-07-01"
+        },
+        {
+          "title": "Shop Small Greenpoint — July 2026 newsletter",
+          "publisher": "Shop Small Greenpoint",
+          "date": "2026-07-01"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "medium",
+      "createdAt": "2026-07-03",
+      "updatedAt": "2026-07-03"
+    },
+    {
       "id": "adopt-a-business",
       "title": "Adopt a business for shutdown weekends",
       "category": "support_local",
@@ -629,7 +716,7 @@
       "lat": 40.727994,
       "lng": -73.952863,
       "corridor": "manhattan-ave",
-      "summary": "SSG's ask for closure weekends: commit to spending locally, post about your visits, and encourage friends to \"adopt\" a favorite shop. Can't make it? Order pickup/delivery or buy a gift card — immediate cash flow is what carries small shops through.",
+      "summary": "Shop Small Greenpoint's ask for closure weekends: commit to spending locally, post about your visits, and encourage friends to \"adopt\" a favorite shop. Can't make it? Order pickup/delivery or buy a gift card — immediate cash flow is what carries small shops through.",
       "audience": [
         "resident",
         "business"
@@ -637,7 +724,8 @@
       "actions": [
         {
           "label": "Pick a shop to adopt this weekend",
-          "type": "visit"
+          "type": "visit",
+          "filterId": "g_train"
         },
         {
           "label": "Post about your visit",
@@ -656,6 +744,7 @@
       "partnerRelevance": "high",
       "trustRisk": "medium",
       "relatedCardIds": [
+        "g-train-closures",
         "g-advocacy-mta"
       ],
       "createdAt": "2026-07-02",
@@ -674,7 +763,7 @@
       "lat": 40.732462,
       "lng": -73.954152,
       "corridor": "india-st",
-      "summary": "What SSG is asking the MTA for: non-consecutive weekend closures, overnight-only work where possible, better shuttle frequency, clearer signage, and recognition of the retail-corridor impact. You can file a complaint or write to the electeds who represent Greenpoint (Restler, Gallagher, González).",
+      "summary": "What Shop Small Greenpoint is asking the MTA for: non-consecutive weekend closures, overnight-only work where possible, better shuttle frequency, clearer signage, and recognition of the retail-corridor impact. You can file a complaint or write to the electeds who represent Greenpoint (Restler, Gallagher, González).",
       "whyItMatters": "Closures are recurring (more weekends reported for Aug–Dec) — how they're scheduled is still an open question.",
       "audience": [
         "resident",
@@ -705,6 +794,7 @@
       "partnerRelevance": "high",
       "trustRisk": "medium",
       "relatedCardIds": [
+        "g-train-closures",
         "adopt-a-business"
       ],
       "createdAt": "2026-07-02",

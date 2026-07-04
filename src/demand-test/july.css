@@ -232,13 +232,80 @@ body { margin: 0; }
 }
 .july-action--static:hover { background: none; color: var(--ink-soft); }
 
+/* --- timeline (campaign cards: source-backed change history) --- */
+.july-timeline {
+  margin: 8px 0;
+  padding: 0;
+  list-style: none;
+  border-left: 2px solid var(--line);
+}
+
+.july-timeline li {
+  display: flex;
+  gap: 8px;
+  padding: 3px 0 3px 10px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.july-timeline-date {
+  flex: none;
+  min-width: 44px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.july-timeline strong { font-weight: 750; }
+
+/* --- related chips (place-graph traversal) --- */
+.july-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 0;
+}
+
+.july-related-label {
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.july-related-chip {
+  padding: 4px 9px;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.july-related-chip:hover {
+  border-style: solid;
+  border-color: var(--ink);
+}
+
 .july-source {
-  margin: 4px 0 0;
+  margin: 8px 0 0;
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+
+.july-source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.july-source a:hover { color: var(--ink); }
 
 .july-empty { padding: 18px 16px; font-size: 0.84rem; color: var(--ink-soft); }
 
@@ -367,6 +434,8 @@ body { margin: 0; }
 .july-action:focus-visible,
 .july-cta:focus-visible,
 .july-card-head:focus-visible,
+.july-related-chip:focus-visible,
+.july-source a:focus-visible,
 .ii-pin:focus-visible,
 .ii-venue-dot:focus-visible {
   outline: 2px solid var(--ink);

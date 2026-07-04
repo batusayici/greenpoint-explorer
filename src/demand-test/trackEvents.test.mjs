@@ -9,7 +9,9 @@ test("forwards a known event with its properties to the bound transport", () => 
   assert.deepEqual(calls, [{ name: "pin_tap", data: { cardId: "core-press", kind: "business" } }]);
 });
 
-test("exposes the six agreed tap events by stable wire name", () => {
+test("exposes the eight agreed tap events by stable wire name", () => {
+  // related_tap + source_tap added 2026-07-03: the place-graph traversal and
+  // the source-credibility link are go/no-go evidence, same as action taps.
   assert.deepEqual(EVENTS, {
     PIN_TAP: "pin_tap",
     CARD_OPEN: "card_open",
@@ -17,6 +19,8 @@ test("exposes the six agreed tap events by stable wire name", () => {
     TODAY_TOGGLE: "today_toggle",
     ACTION_TAP: "action_tap",
     CTA_TAP: "cta_tap",
+    RELATED_TAP: "related_tap",
+    SOURCE_TAP: "source_tap",
   });
 });
 
