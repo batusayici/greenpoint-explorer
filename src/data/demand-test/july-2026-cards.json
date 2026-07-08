@@ -471,7 +471,7 @@
       "lat": 40.72843,
       "lng": -73.959159,
       "corridor": "manhattan-ave",
-      "summary": "Jul 4–12 — Yoseka's sticker buffet retail event.",
+      "summary": "Yoseka Land's sticker buffet retail event.",
       "audience": [
         "resident",
         "family",
@@ -497,7 +497,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08"
     },
     {
       "id": "threes-summer-guest-series",
@@ -513,7 +513,7 @@
       "lat": 40.73024,
       "lng": -73.957805,
       "corridor": "franklin-st",
-      "summary": "From Jul 6 — guest takeovers: Dante + NYC Cocktail Co (Jul 6), The Irish Exit Pub (Jul 13), Nom Wah (Jul 20).",
+      "summary": "Guest bar takeovers at Threes: Dante + NYC Cocktail Co (Jul 6), The Irish Exit Pub (Jul 13), Nom Wah (Jul 20).",
       "audience": [
         "resident",
         "visitor"
@@ -538,7 +538,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08"
     },
     {
       "id": "falu-tinned-fish-club",
@@ -776,7 +776,7 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "corridor": "norman-ave",
-      "summary": "Wed Jul 8, 4 PM — teens 13–19 decorate steel water bottles with stickers, markers, and more. Free.",
+      "summary": "Teens 13–19 decorate steel water bottles with stickers, markers, and more. Free.",
       "audience": [
         "family"
       ],
@@ -801,7 +801,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08"
     },
     {
       "id": "mt-carmel-feast-opening",
@@ -817,7 +817,7 @@
       "lat": 40.715804,
       "lng": -73.952574,
       "corridor": "williamsburg",
-      "summary": "Wed Jul 8, 7 PM — opening night of one of NYC's oldest and largest Italian American feasts, with the Italian Caucus walking the feast. Free.",
+      "summary": "Opening night of one of NYC's oldest and largest Italian American feasts, with the Italian Caucus walking the feast. Free.",
       "audience": [
         "resident",
         "visitor",
@@ -845,7 +845,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08"
     },
     {
       "category": "event",
@@ -879,7 +879,7 @@
         "arts_culture"
       ],
       "locationName": "Artudio",
-      "summary": "Tuesdays 5–6:30 PM through August — a process-art workshop for ages 8–12 with illustrator Caroline Draws.",
+      "summary": "A process-art workshop for ages 8–12 with illustrator Caroline Draws — Tuesdays through August.",
       "startsAt": "2026-07-07T17:00:00-04:00",
       "endsAt": "2026-08-31T23:59:00-04:00",
       "actions": [
@@ -919,7 +919,7 @@
         "events"
       ],
       "locationName": "WNYC Transmitter Park",
-      "summary": "Thu Jul 9, 7 PM — a free evening practice by the water with Kindred Co.",
+      "summary": "A free evening practice by the water with Kindred Co.",
       "startsAt": "2026-07-09T19:00:00-04:00",
       "endsAt": "2026-07-09T23:59:00-04:00",
       "actions": [
@@ -959,7 +959,7 @@
         "events"
       ],
       "locationName": "The Movement Loft",
-      "summary": "Thu Jul 9, 7:15–8:30 PM — movement and meditation session with The Movement Loft and We All Feel.",
+      "summary": "Movement and meditation with The Movement Loft and We All Feel.",
       "startsAt": "2026-07-09T19:15:00-04:00",
       "endsAt": "2026-07-09T20:30:00-04:00",
       "actions": [
@@ -999,7 +999,7 @@
         "events"
       ],
       "locationName": "Scrappleland",
-      "summary": "Kicks off Fri Jul 10, 5 PM at the pinball hall on upper Manhattan Ave — finals run all weekend.",
+      "summary": "Women's pinball tournament at the hall on upper Manhattan Ave — finals run all weekend.",
       "startsAt": "2026-07-10T17:00:00-04:00",
       "endsAt": "2026-07-12T23:59:00-04:00",
       "actions": [
@@ -1040,7 +1040,7 @@
         "arts_culture"
       ],
       "locationName": "Joy Flower Pot",
-      "summary": "Fri Jul 10, 6 PM — a floral sculpture workshop at the Lorimer St flower shop.",
+      "summary": "A floral sculpture workshop at the Lorimer St flower shop.",
       "startsAt": "2026-07-10T18:00:00-04:00",
       "endsAt": "2026-07-10T23:59:00-04:00",
       "actions": [
@@ -1080,7 +1080,7 @@
         "events"
       ],
       "locationName": "Reforesters",
-      "summary": "Fri Jul 10, 6:30 PM — a guided serendipity practice with K. Russell Sprouts at the plant lab.",
+      "summary": "A guided serendipity practice with K. Russell Sprouts at the plant lab.",
       "startsAt": "2026-07-10T18:30:00-04:00",
       "endsAt": "2026-07-10T23:59:00-04:00",
       "actions": [
@@ -1121,7 +1121,7 @@
         "arts_culture"
       ],
       "locationName": "Flower Cat",
-      "summary": "Fri Jul 10, 8–10 PM — open mic at the Noble St flower shop and café.",
+      "summary": "Open mic at the Noble St flower shop and café.",
       "startsAt": "2026-07-10T20:00:00-04:00",
       "endsAt": "2026-07-10T22:00:00-04:00",
       "actions": [
@@ -1163,7 +1163,7 @@
       ],
       "locationName": "Marsha P. Johnson State Park",
       "geocodeQuery": "Marsha P. Johnson State Park, Brooklyn, NY",
-      "summary": "Sat Jul 11, 1–4 PM — an all-ages look at what swims off the North Brooklyn waterfront, at the state park.",
+      "summary": "An all-ages look at what swims off the North Brooklyn waterfront, at the state park.",
       "startsAt": "2026-07-11T13:00:00-04:00",
       "endsAt": "2026-07-11T16:00:00-04:00",
       "actions": [
@@ -1204,7 +1204,7 @@
         "food_drink"
       ],
       "locationName": "Kettl Tea",
-      "summary": "Sat Jul 11, 1 PM — the two tea founders in conversation at Kettl's Greenpoint Ave shop.",
+      "summary": "The two tea founders in conversation at Kettl's Greenpoint Ave shop.",
       "startsAt": "2026-07-11T13:00:00-04:00",
       "endsAt": "2026-07-11T23:59:00-04:00",
       "actions": [
@@ -1245,7 +1245,7 @@
         "arts_culture"
       ],
       "locationName": "Dreams on Command",
-      "summary": "Sat Jul 11, 6–9 PM — the debut exhibition at Greenpoint's newest contemporary gallery (Suite 105).",
+      "summary": "The debut exhibition at Greenpoint's newest contemporary gallery (Suite 105).",
       "startsAt": "2026-07-11T18:00:00-04:00",
       "endsAt": "2026-07-11T21:00:00-04:00",
       "actions": [
@@ -1289,7 +1289,7 @@
         "arts_culture"
       ],
       "locationName": "Reforesters",
-      "summary": "Sat Jul 11, 6:30–9:30 PM — sound night at the plant lab with A Space for Sound and Lost Verb.",
+      "summary": "Sound night at the plant lab with A Space for Sound and Lost Verb.",
       "startsAt": "2026-07-11T18:30:00-04:00",
       "endsAt": "2026-07-11T21:30:00-04:00",
       "actions": [
@@ -1329,7 +1329,7 @@
         "events"
       ],
       "locationName": "Heldspace",
-      "summary": "Sat Jul 11, 7–8:30 PM — a guided movement lab with Moving Souls at the 4th-floor studio.",
+      "summary": "A guided movement lab with Moving Souls at the 4th-floor studio.",
       "startsAt": "2026-07-11T19:00:00-04:00",
       "endsAt": "2026-07-11T20:30:00-04:00",
       "actions": [
@@ -1369,7 +1369,7 @@
         "events"
       ],
       "locationName": "Heldspace",
-      "summary": "Sun Jul 12, 8:45–9:45 AM — community class with Just Body Pilates at the 4th-floor studio.",
+      "summary": "Community class with Just Body Pilates at the 4th-floor studio.",
       "startsAt": "2026-07-12T08:45:00-04:00",
       "endsAt": "2026-07-12T09:45:00-04:00",
       "actions": [
@@ -1410,7 +1410,7 @@
         "family_kids"
       ],
       "locationName": "McCarren Park (the Parkhouse)",
-      "summary": "Sun Jul 12, 10 AM — family picnic with Birdhouse Childcare, Giggles & Wiggles, Maman's Brooklyn, Mr. Chazz, and the McCarren Parkhouse.",
+      "summary": "Family picnic with Birdhouse Childcare, Giggles & Wiggles, Maman's Brooklyn, Mr. Chazz, and the McCarren Parkhouse.",
       "startsAt": "2026-07-12T10:00:00-04:00",
       "endsAt": "2026-07-12T23:59:00-04:00",
       "actions": [
@@ -1454,7 +1454,7 @@
       ],
       "locationName": "Domino Park",
       "geocodeQuery": "Domino Park, Brooklyn, NY",
-      "summary": "Sun Jul 12, 10–11 AM — every other Sunday through August, down at the Domino Park lawn.",
+      "summary": "A yoga series on the Domino Park lawn — every other Sunday through August.",
       "startsAt": "2026-07-12T10:00:00-04:00",
       "endsAt": "2026-08-31T23:59:00-04:00",
       "actions": [
@@ -1494,7 +1494,7 @@
         "events"
       ],
       "locationName": "Heldspace",
-      "summary": "Sun Jul 12, 12–1 PM — a restorative nidra meditation with Anna Hull at the 4th-floor studio.",
+      "summary": "A restorative nidra meditation with Anna Hull at the 4th-floor studio.",
       "startsAt": "2026-07-12T12:00:00-04:00",
       "endsAt": "2026-07-12T13:00:00-04:00",
       "actions": [
@@ -1535,7 +1535,7 @@
         "food_drink"
       ],
       "locationName": "Flower Cat",
-      "summary": "Sun Jul 12, from noon till sold out — bakery pop-up at the Noble St flower shop and café.",
+      "summary": "My Favorite Things bakery pop-up at the Noble St flower shop and café — going till sold out.",
       "startsAt": "2026-07-12T12:00:00-04:00",
       "endsAt": "2026-07-12T23:59:00-04:00",
       "actions": [

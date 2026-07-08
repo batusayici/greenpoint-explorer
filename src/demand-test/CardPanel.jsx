@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { FILTERS, pinKind } from "./filterCards.js";
 import { actionHref } from "./cardActions.js";
+import { formatWindow } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
@@ -12,42 +13,6 @@ const CHIP_KIND = { new: "business", events: "event", clubs_signups: "club", g_t
 // conversion funnel). Business/event submissions are an optional field INSIDE
 // the form ("July in Greenpoint — weekly map" on Batu's Tally), not a second button.
 const SIGNUP_URL = "https://tally.so/r/44daZo";
-
-const WINDOW_FMT = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/New_York",
-});
-
-const DAY_FMT = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  timeZone: "America/New_York",
-});
-
-const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: false,
-  timeZone: "America/New_York",
-});
-
-// 23:59 endsAt is the card schema's end-of-day sentinel (the Today filter
-// needs a real instant); readers get the date, not a fake closing time.
-function fmtEnd(iso) {
-  const d = new Date(iso);
-  return (CLOCK_FMT.format(d) === "23:59" ? DAY_FMT : WINDOW_FMT).format(d);
-}
-
-function formatWindow(card) {
-  if (!card.startsAt && !card.endsAt) return null;
-  const from = card.startsAt ? WINDOW_FMT.format(new Date(card.startsAt)) : null;
-  const to = card.endsAt ? fmtEnd(card.endsAt) : null;
-  if (from && to) return `${from} → ${to}`;
-  return from ? `From ${from}` : `Through ${to}`;
-}
 
 function ActionLink({ action, card, onFilter }) {
   const cls = "july-action";
