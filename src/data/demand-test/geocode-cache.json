@@ -883,5 +883,230 @@
         "-73.9591340"
       ]
     }
+  },
+  "4 Diamond St, Brooklyn, NY 11222": {
+    "query": "4 Diamond St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-08T14:25:21.281Z",
+    "hit": {
+      "place_id": 402464648,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 276050427,
+      "lat": "40.7231688",
+      "lon": "-73.9453536",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "4, Diamond Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7231188",
+        "40.7232188",
+        "-73.9454036",
+        "-73.9453036"
+      ]
+    }
+  },
+  "8 Berry St, Brooklyn, NY 11249": {
+    "query": "8 Berry St, Brooklyn, NY 11249",
+    "fetchedAt": "2026-07-08T14:25:22.908Z",
+    "hit": {
+      "place_id": 414148737,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1258745685,
+      "lat": "40.7206571",
+      "lon": "-73.9566929",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "8, Berry Street, Williamsburg, Brooklyn, Kings County, New York, 11249, United States",
+      "boundingbox": [
+        "40.7206071",
+        "40.7207071",
+        "-73.9567429",
+        "-73.9566429"
+      ]
+    }
+  },
+  "1150 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "1150 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-08T14:25:24.441Z",
+    "hit": {
+      "place_id": 359910054,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280146598,
+      "lat": "40.7376711",
+      "lon": "-73.9551547",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "1150, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7375862",
+        "40.7377509",
+        "-73.9553366",
+        "-73.9549677"
+      ]
+    }
+  },
+  "713 Lorimer St, Brooklyn, NY 11211": {
+    "query": "713 Lorimer St, Brooklyn, NY 11211",
+    "fetchedAt": "2026-07-08T14:25:25.964Z",
+    "hit": {
+      "place_id": 358177315,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280075429,
+      "lat": "40.7181580",
+      "lon": "-73.9502148",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "713, Lorimer Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7181136",
+        "40.7182023",
+        "-73.9502790",
+        "-73.9501506"
+      ]
+    }
+  },
+  "147 Metropolitan Ave, Brooklyn, NY 11211": {
+    "query": "147 Metropolitan Ave, Brooklyn, NY 11211",
+    "fetchedAt": "2026-07-08T14:25:27.306Z",
+    "hit": {
+      "place_id": 359723315,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 13308349706,
+      "lat": "40.7161413",
+      "lon": "-73.9620378",
+      "category": "amenity",
+      "type": "cafe",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Reforester’s Labratory",
+      "display_name": "Reforester’s Labratory, 147, Metropolitan Avenue, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7160913",
+        "40.7161913",
+        "-73.9620878",
+        "-73.9619878"
+      ]
+    }
+  },
+  "162 Noble St, Brooklyn, NY 11222": {
+    "query": "162 Noble St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-08T14:25:28.856Z",
+    "hit": {
+      "place_id": 415938864,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 273326374,
+      "lat": "40.7286775",
+      "lon": "-73.9542583",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "162, Noble Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7286275",
+        "40.7287275",
+        "-73.9543083",
+        "-73.9542083"
+      ]
+    }
+  },
+  "70 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "70 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-08T14:25:30.351Z",
+    "hit": {
+      "place_id": 361616519,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132511,
+      "lat": "40.7295230",
+      "lon": "-73.9581592",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "70, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294492",
+        "40.7297173",
+        "-73.9582346",
+        "-73.9581041"
+      ]
+    }
+  },
+  "960 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "960 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-08T14:25:31.895Z",
+    "hit": {
+      "place_id": 358348605,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280136870,
+      "lat": "40.7320620",
+      "lon": "-73.9542784",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "960, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7319806",
+        "40.7321434",
+        "-73.9544329",
+        "-73.9541238"
+      ]
+    }
+  },
+  "Domino Park, Brooklyn, NY": {
+    "query": "Domino Park, Brooklyn, NY",
+    "fetchedAt": "2026-07-08T14:25:33.411Z",
+    "hit": {
+      "place_id": 356313205,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 608663280,
+      "lat": "40.7141055",
+      "lon": "-73.9682746",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.3933592766861344,
+      "addresstype": "park",
+      "name": "Domino Park",
+      "display_name": "Domino Park, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7128470",
+        "40.7165105",
+        "-73.9688346",
+        "-73.9667694"
+      ]
+    }
   }
 }

@@ -8,19 +8,30 @@ const seed = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/july-2026-cards.json", import.meta.url)), "utf8"),
 );
 
-test("seed has exactly 27 cards across the four layers", () => {
+test("seed has exactly 34 cards across the four layers", () => {
   // 2026-07-02 (Batu): per-station G-closure cards cut — closure context lives
   // in the banner; the layer keeps the action cards (adopt + advocacy).
   // 2026-07-03: +11 events from the Greenpointers 7/2–7/8 roundup (Jul 2
   // entries skipped as already past at ingest time). Later that day: +1
   // campaign card (g-train-closures) — the closure becomes a durable place
   // object with a timeline, not just a banner.
-  assert.equal(seed.cards.length, 27);
+  // 2026-07-08 weekly refresh: 10 past events (Jul 2–7) deleted, 17 added from
+  // the Greenpointers Jul 7–12 roundup (the two Jul 7 one-offs were already
+  // past at ingest time and were skipped, not added-then-deleted).
+  assert.equal(seed.cards.length, 34);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 15, "15 event cards (SSG + Greenpointers week)");
+  assert.equal(count((c) => c.category === "event"), 22, "22 event cards (5 held + 17 from the Jul 7–12 roundup)");
   assert.equal(count((c) => c.category === "subscription"), 1, "1 subscription card (Falu House)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 3, "3 G-train campaign/action cards");
+});
+
+test("no fully-past events linger in the seed (refresh discipline)", () => {
+  // Refreshed 2026-07-08; recurring series carry their series end date.
+  const refreshDay = Date.parse("2026-07-08T00:00:00-04:00");
+  for (const c of seed.cards.filter((x) => x.category === "event")) {
+    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-08 refresh`);
+  }
 });
 
 test("the G-closure campaign card is a durable object: timeline, graph links, actions", () => {
@@ -80,9 +91,8 @@ test("every dated event carries a Today-lens window (start and end)", () => {
 });
 
 test("the hidden-engagement addendum cards carry their contract", () => {
-  const tasting = seed.cards.find((c) => c.id === "dandelion-wine-tasting");
-  assert.ok(tasting, "Dandelion Wine micro-event exists");
-  assert.ok(tasting.startsAt && tasting.endsAt, "tasting has a Today-lens window");
+  // The Dandelion Wine tasting exemplar (Jul 2) aged out in the 2026-07-08
+  // refresh — the pattern lives on in the spec; the subscription half stays.
   const club = seed.cards.find((c) => c.id === "falu-tinned-fish-club");
   assert.ok(club, "Falu House Tinned Fish Club exists");
   assert.ok(club.filters.includes("clubs_signups"));
@@ -132,4 +142,9 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.ok(byId("sotteatery").relatedCardIds.includes("g-train-closures"));
   assert.deepEqual(byId("world-cup-watch").relatedCardIds, ["socceria"]);
   assert.deepEqual(byId("socceria").relatedCardIds, ["world-cup-watch"]);
+  // 2026-07-08 refresh: events at/with an on-map business link both ways.
+  assert.deepEqual(byId("dreams-on-command").relatedCardIds, ["dreams-debut-exhibition"]);
+  assert.deepEqual(byId("dreams-debut-exhibition").relatedCardIds, ["dreams-on-command"]);
+  assert.deepEqual(byId("giggles-and-wiggles").relatedCardIds, ["rooted-family-picnic"]);
+  assert.deepEqual(byId("rooted-family-picnic").relatedCardIds, ["giggles-and-wiggles"]);
 });
