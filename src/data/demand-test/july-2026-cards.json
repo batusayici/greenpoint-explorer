@@ -51,7 +51,8 @@
       "updatedAt": "2026-07-08",
       "relatedCardIds": [
         "g-train-closures"
-      ]
+      ],
+      "kicker": "New seafood bar"
     },
     {
       "id": "core-press",
@@ -90,7 +91,8 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Reformer Pilates + juice bar"
     },
     {
       "id": "poochs-parlor",
@@ -129,7 +131,8 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Pet grooming, by appointment"
     },
     {
       "id": "giggles-and-wiggles",
@@ -173,7 +176,8 @@
       "updatedAt": "2026-07-08",
       "relatedCardIds": [
         "rooted-family-picnic"
-      ]
+      ],
+      "kicker": "Kids' shoes & toys shop"
     },
     {
       "id": "cookies-n-cream",
@@ -215,7 +219,8 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Late-night dessert shop"
     },
     {
       "id": "sotteatery",
@@ -256,10 +261,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03",
+      "updatedAt": "2026-07-08",
       "relatedCardIds": [
         "g-train-closures"
-      ]
+      ],
+      "kicker": "Plant-based Caribbean seafood"
     },
     {
       "id": "socceria",
@@ -300,10 +306,11 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03",
+      "updatedAt": "2026-07-08",
       "relatedCardIds": [
         "world-cup-watch"
-      ]
+      ],
+      "kicker": "Soccer sports cantina"
     },
     {
       "id": "dreams-on-command",
@@ -347,7 +354,8 @@
       "updatedAt": "2026-07-08",
       "relatedCardIds": [
         "dreams-debut-exhibition"
-      ]
+      ],
+      "kicker": "Contemporary art gallery"
     },
     {
       "id": "world-cup-watch",
@@ -450,10 +458,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03",
+      "updatedAt": "2026-07-08",
       "relatedCardIds": [
         "socceria"
-      ]
+      ],
+      "kicker": "Every match, through the final"
     },
     {
       "id": "yoseka-sticker-buffet",
@@ -497,7 +506,8 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08"
+      "updatedAt": "2026-07-08",
+      "kicker": "Pick-your-own at the stationery shop"
     },
     {
       "id": "threes-summer-guest-series",
@@ -538,7 +548,8 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08"
+      "updatedAt": "2026-07-08",
+      "kicker": "Guest-bar takeover nights"
     },
     {
       "id": "falu-tinned-fish-club",
@@ -583,7 +594,8 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Monthly tinned-fish membership"
     },
     {
       "id": "g-train-closures",
@@ -663,7 +675,8 @@
       "partnerRelevance": "high",
       "trustRisk": "medium",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Dates, shuttle, who's open"
     },
     {
       "id": "adopt-a-business",
@@ -710,7 +723,8 @@
         "g-advocacy-mta"
       ],
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Shop-local pledge"
     },
     {
       "id": "g-advocacy-mta",
@@ -760,7 +774,8 @@
         "adopt-a-business"
       ],
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-03"
+      "updatedAt": "2026-07-08",
+      "kicker": "Ask the MTA for better closures"
     },
     {
       "id": "teen-diy-greenpoint-library",
@@ -801,7 +816,9 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-08"
+      "updatedAt": "2026-07-08",
+      "kicker": "Teen craft session (ages 13–19)",
+      "free": true
     },
     {
       "id": "mt-carmel-feast-opening",
@@ -845,7 +862,9 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-08"
+      "updatedAt": "2026-07-08",
+      "kicker": "Italian feast opening night",
+      "free": true
     },
     {
       "category": "event",
@@ -887,7 +906,8 @@
           "label": "Find the studio",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Kids' art workshop (ages 8–12)"
     },
     {
       "category": "event",
@@ -914,11 +934,11 @@
       "createdAt": "2026-07-08",
       "updatedAt": "2026-07-08",
       "id": "sunset-yoga-transmitter",
-      "title": "Free sunset yoga at Transmitter Park",
+      "title": "Sunset yoga at Transmitter Park",
       "filters": [
         "events"
       ],
-      "locationName": "WNYC Transmitter Park",
+      "locationName": "Transmitter Park",
       "summary": "A free evening practice by the water with Kindred Co.",
       "startsAt": "2026-07-09T19:00:00-04:00",
       "endsAt": "2026-07-09T23:59:00-04:00",
@@ -927,7 +947,9 @@
           "label": "Head to the water",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Evening practice by the water",
+      "free": true
     },
     {
       "category": "event",
@@ -967,7 +989,8 @@
           "label": "Directions (3rd floor)",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Movement + meditation session"
     },
     {
       "category": "event",
@@ -1007,7 +1030,8 @@
           "label": "Catch the finals",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Women's pinball, finals all weekend"
     },
     {
       "category": "event",
@@ -1048,7 +1072,8 @@
           "label": "Find the shop",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Floral sculpture workshop"
     },
     {
       "category": "event",
@@ -1088,7 +1113,8 @@
           "label": "Find the lab",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Guided serendipity practice"
     },
     {
       "category": "event",
@@ -1129,7 +1155,8 @@
           "label": "Grab a seat",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Open mic at the flower café"
     },
     {
       "category": "event",
@@ -1171,7 +1198,8 @@
           "label": "Meet at the park",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "All-ages waterfront nature program"
     },
     {
       "category": "event",
@@ -1212,7 +1240,8 @@
           "label": "Find the shop",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Tea founders in conversation"
     },
     {
       "category": "event",
@@ -1256,7 +1285,8 @@
       ],
       "relatedCardIds": [
         "dreams-on-command"
-      ]
+      ],
+      "kicker": "Gallery opening night"
     },
     {
       "category": "event",
@@ -1297,7 +1327,8 @@
           "label": "Find the lab",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Listening session at the plant lab"
     },
     {
       "category": "event",
@@ -1337,7 +1368,8 @@
           "label": "Directions (4th floor)",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Guided movement lab"
     },
     {
       "category": "event",
@@ -1377,7 +1409,8 @@
           "label": "Directions (4th floor)",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Morning group class"
     },
     {
       "category": "event",
@@ -1421,7 +1454,8 @@
       ],
       "relatedCardIds": [
         "giggles-and-wiggles"
-      ]
+      ],
+      "kicker": "All-ages family picnic"
     },
     {
       "category": "event",
@@ -1462,7 +1496,8 @@
           "label": "Head to the lawn",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Biweekly park yoga through August"
     },
     {
       "category": "event",
@@ -1502,7 +1537,8 @@
           "label": "Directions (4th floor)",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Restorative nidra meditation"
     },
     {
       "category": "event",
@@ -1543,7 +1579,8 @@
           "label": "Get there early",
           "type": "visit"
         }
-      ]
+      ],
+      "kicker": "Bakery pop-up till sold out"
     }
   ]
 }

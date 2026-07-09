@@ -11,7 +11,8 @@ const LABELS = {
   arts_culture: "Arts & Culture",
   family_kids: "Family & Kids",
   events: "Events",
-  clubs_signups: "Clubs & Signups",
+  clubs_signups: "Memberships", // was "Clubs & Signups" — read as nightclubs
+
   g_train: "G-Train Support",
 };
 

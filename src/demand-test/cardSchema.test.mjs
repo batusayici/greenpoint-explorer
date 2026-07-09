@@ -14,6 +14,7 @@ const good = {
   lng: -73.9538,
   corridor: "manhattan-ave",
   summary: "A test.",
+  kicker: "Test spot",
   audience: ["resident"],
   actions: [{ label: "Visit", type: "visit" }],
   sourceLinks: [{ title: "SSG July 2026", publisher: "Shop Small Greenpoint", date: "2026-07-01" }],
@@ -29,6 +30,22 @@ test("a complete card validates", () => {
   const r = validateCard(good);
   assert.deepEqual(r.errors, []);
   assert.equal(r.ok, true);
+});
+
+test("kicker is required and glance-length (tester feedback 2026-07-08: rows must scan without a tap)", () => {
+  const { kicker, ...missing } = good;
+  assert.equal(validateCard(missing).ok, false, "missing kicker");
+  assert.equal(validateCard({ ...good, kicker: "" }).ok, false, "empty kicker");
+  assert.equal(
+    validateCard({ ...good, kicker: "a phrase far too long to scan in a list row at a glance" }).ok,
+    false,
+    "over 44 chars",
+  );
+});
+
+test("free is optional but must be a boolean (truth rule: only sourced free-ness)", () => {
+  assert.deepEqual(validateCard({ ...good, free: true }).errors, []);
+  assert.equal(validateCard({ ...good, free: "yes" }).ok, false);
 });
 
 test("an action may target a filter view (internal action), but only a known one", () => {

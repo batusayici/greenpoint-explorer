@@ -50,7 +50,12 @@ export default function JulyApp() {
         <div className="july-header-text">
           <span className="july-kicker">Greenpoint Explorer</span>
           <h1>July in Greenpoint</h1>
-          <p>New spots, what&rsquo;s on, and how to support local through the G-train closures &mdash; mapped.</p>
+          {/* Leads with time + action, not directory-speak (tester feedback
+              2026-07-08: "what's different from Google Maps?") */}
+          <p>
+            What&rsquo;s happening near you this week &mdash; and how to support local through the
+            G-train closures. Every business on this map is locally owned.
+          </p>
         </div>
       </header>
       <div className="july-gbanner" role="status">

@@ -8,7 +8,8 @@ test("FILTERS = 'all' + the spec's nine, in order, with display labels", () => {
   assert.deepEqual(FILTERS.slice(1).map((f) => f.id), FILTER_IDS);
   assert.equal(FILTERS.find((f) => f.id === "g_train").label, "G-Train Support");
   assert.equal(FILTERS.find((f) => f.id === "food_drink").label, "Food & Drink");
-  assert.equal(FILTERS.find((f) => f.id === "clubs_signups").label, "Clubs & Signups");
+  // Renamed from "Clubs & Signups" 2026-07-08 — tester read "club" as nightclub.
+  assert.equal(FILTERS.find((f) => f.id === "clubs_signups").label, "Memberships");
 });
 
 test("matchesFilter: 'all' passes everything; others check authored membership", () => {

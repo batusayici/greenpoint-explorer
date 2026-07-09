@@ -64,6 +64,15 @@ test("every action is tappable — url, share, internal filter, or derivable dir
   }
 });
 
+test("free-ness is designated only where the source states it (tester feedback #2)", () => {
+  const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
+  assert.deepEqual(free, [
+    "mt-carmel-feast-opening",
+    "sunset-yoga-transmitter",
+    "teen-diy-greenpoint-library",
+  ]);
+});
+
 test("reader-facing copy spells out Shop Small Greenpoint (no bare acronym)", () => {
   for (const c of seed.cards) {
     for (const text of [c.title, c.summary, c.whyItMatters ?? "", ...c.actions.map((a) => a.label)]) {

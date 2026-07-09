@@ -56,11 +56,19 @@ function ActionLink({ action, card, onFilter }) {
   return <span className={`${cls} july-action--static`}>{action.label}</span>;
 }
 
-// List-row subline: prefer the street address (sans city boilerplate); fall
-// back to locationName only when it adds something the title doesn't.
+// List-row subline: the authored kicker (glanceability contract — the row must
+// explain itself without a tap) plus the street address (sans city boilerplate)
+// or venue name when it adds something the title doesn't.
 function cardSubline(card) {
-  if (card.address) return card.address.replace(/,\s*Brooklyn.*$/i, "");
-  return card.locationName !== card.title ? card.locationName : null;
+  // A venue already named in the title ("Sticker Buffet at Yoseka Land") is
+  // not repeated in the row.
+  const named = (s) => s && card.title.toLowerCase().includes(s.toLowerCase());
+  const where = card.address
+    ? card.address.replace(/,\s*Brooklyn.*$/i, "")
+    : !named(card.locationName)
+      ? card.locationName
+      : null;
+  return [card.kicker, named(where) ? null : where].filter(Boolean).join(" · ");
 }
 
 // Timeline dates are date-only ISO strings — format in UTC so "2026-07-10"
@@ -208,6 +216,7 @@ export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnl
                 <span className="july-card-titlerow">
                   <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
                   <span className="july-card-title">{card.title}</span>
+                  {card.free && <span className="july-free">Free</span>}
                 </span>
                 {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
               </button>

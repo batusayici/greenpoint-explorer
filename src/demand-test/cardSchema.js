@@ -57,6 +57,11 @@ export function validateCard(card) {
   if (!str(card.title)) err("missing title");
   if (!str(card.locationName)) err("missing locationName");
   if (!str(card.summary)) err("missing summary");
+  // Glanceability contract (tester feedback 2026-07-08): every card carries a
+  // one-phrase kicker so the list scans without opening the detail.
+  if (!str(card.kicker)) err("missing kicker");
+  else if (card.kicker.length > 44) err(`kicker over 44 chars ("${card.kicker}")`);
+  if (card.free != null && typeof card.free !== "boolean") err("free must be a boolean");
   if (!CATEGORIES.includes(card.category)) err(`unknown category "${card.category}"`);
 
   if (!Array.isArray(card.filters) || card.filters.length === 0) err("missing filters");
