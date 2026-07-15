@@ -1108,5 +1108,285 @@
         "-73.9667694"
       ]
     }
+  },
+  "Bushwick Inlet Park, Brooklyn, NY": {
+    "query": "Bushwick Inlet Park, Brooklyn, NY",
+    "fetchedAt": "2026-07-15T19:10:54.227Z",
+    "hit": {
+      "place_id": 359868231,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 239795718,
+      "lat": "40.7223494",
+      "lon": "-73.9613823",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.40432454964183334,
+      "addresstype": "park",
+      "name": "Bushwick Inlet Park",
+      "display_name": "Bushwick Inlet Park, Williamsburg, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7214672",
+        "40.7239733",
+        "-73.9626633",
+        "-73.9601084"
+      ]
+    }
+  },
+  "122 Meserole Ave, Brooklyn, NY 11222": {
+    "query": "122 Meserole Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:10:55.649Z",
+    "hit": {
+      "place_id": 358814778,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 7310807558,
+      "lat": "40.7273136",
+      "lon": "-73.9516080",
+      "category": "amenity",
+      "type": "cinema",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Film Noir Cinema",
+      "display_name": "Film Noir Cinema, 122, Meserole Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7272636",
+        "40.7273636",
+        "-73.9516580",
+        "-73.9515580"
+      ]
+    }
+  },
+  "68 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "68 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:10:57.097Z",
+    "hit": {
+      "place_id": 359195384,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132505,
+      "lat": "40.7295188",
+      "lon": "-73.9582448",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "68, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294411",
+        "40.7297086",
+        "-73.9583176",
+        "-73.9581909"
+      ]
+    }
+  },
+  "106 Calyer St, Brooklyn, NY 11222": {
+    "query": "106 Calyer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:10:58.583Z",
+    "hit": {
+      "place_id": 359552692,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10988277105,
+      "lat": "40.7269717",
+      "lon": "-73.9565605",
+      "category": "amenity",
+      "type": "arts_centre",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Triskelion Arts",
+      "display_name": "Triskelion Arts, 106, Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7269217",
+        "40.7270217",
+        "-73.9566105",
+        "-73.9565105"
+      ]
+    }
+  },
+  "Choplet, Brooklyn, NY": {
+    "query": "Choplet, Brooklyn, NY",
+    "fetchedAt": "2026-07-15T19:11:00.042Z",
+    "hit": {
+      "place_id": 360262506,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 13519781082,
+      "lat": "40.7273202",
+      "lon": "-73.9523429",
+      "category": "craft",
+      "type": "pottery",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "craft",
+      "name": "Choplet Ceramic Studio & Gallery",
+      "display_name": "Choplet Ceramic Studio & Gallery, 121, Meserole Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7272702",
+        "40.7273702",
+        "-73.9523929",
+        "-73.9522929"
+      ]
+    }
+  },
+  "Transmitter Park, Brooklyn, NY": {
+    "query": "Transmitter Park, Brooklyn, NY",
+    "fetchedAt": "2026-07-15T19:11:01.453Z",
+    "hit": {
+      "place_id": 359297431,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 48686595,
+      "lat": "40.7298554",
+      "lon": "-73.9607289",
+      "category": "leisure",
+      "type": "nature_reserve",
+      "place_rank": 24,
+      "importance": 0.38307540422660474,
+      "addresstype": "nature_reserve",
+      "name": "WNYC Transmitter Park",
+      "display_name": "WNYC Transmitter Park, Manhattan Community Board 6, Brooklyn, Kings County, New York, United States",
+      "boundingbox": [
+        "40.7294491",
+        "40.7302564",
+        "-73.9625550",
+        "-73.9602457"
+      ]
+    }
+  },
+  "79 N 11th St, Brooklyn, NY 11249": {
+    "query": "79 N 11th St, Brooklyn, NY 11249",
+    "fetchedAt": "2026-07-15T19:11:02.901Z",
+    "hit": {
+      "place_id": 359930363,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2402042259,
+      "lat": "40.7216221",
+      "lon": "-73.9576075",
+      "category": "amenity",
+      "type": "pub",
+      "place_rank": 30,
+      "importance": 0.33711216279521466,
+      "addresstype": "amenity",
+      "name": "Brooklyn Brewery",
+      "display_name": "Brooklyn Brewery, 79, North 11th Street, Williamsburg, Brooklyn, Kings County, New York, 11249, United States",
+      "boundingbox": [
+        "40.7215721",
+        "40.7216721",
+        "-73.9576575",
+        "-73.9575575"
+      ]
+    }
+  },
+  "651 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "651 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:11:04.443Z",
+    "hit": {
+      "place_id": 359012671,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081462,
+      "lat": "40.7243149",
+      "lon": "-73.9513424",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "651, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7242478",
+        "40.7243820",
+        "-73.9514648",
+        "-73.9512200"
+      ]
+    }
+  },
+  "114 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "114 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:11:05.788Z",
+    "hit": {
+      "place_id": 359236143,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081671,
+      "lat": "40.7241562",
+      "lon": "-73.9491141",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Greenpoint Fish & Lobster Co",
+      "display_name": "Greenpoint Fish & Lobster Co, 114, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7240538",
+        "40.7242284",
+        "-73.9491781",
+        "-73.9490501"
+      ]
+    }
+  },
+  "807 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "807 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:11:07.234Z",
+    "hit": {
+      "place_id": 360280919,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842897638,
+      "lat": "40.7279624",
+      "lon": "-73.9533113",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "807, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7279124",
+        "40.7280124",
+        "-73.9533613",
+        "-73.9532613"
+      ]
+    }
+  },
+  "McCarren Park Tennis Courts, Brooklyn, NY": {
+    "query": "McCarren Park Tennis Courts, Brooklyn, NY",
+    "fetchedAt": "2026-07-15T19:11:08.778Z",
+    "hit": null
+  },
+  "148 Green St, Brooklyn, NY 11222": {
+    "query": "148 Green St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T19:11:10.386Z",
+    "hit": {
+      "place_id": 358541039,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 274688976,
+      "lat": "40.7334619",
+      "lon": "-73.9555835",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "148, Green Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7332848",
+        "40.7336098",
+        "-73.9559135",
+        "-73.9552593"
+      ]
+    }
   }
 }

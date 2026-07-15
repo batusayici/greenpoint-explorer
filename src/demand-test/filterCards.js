@@ -13,6 +13,8 @@ const LABELS = {
   events: "Events",
   clubs_signups: "Memberships", // was "Clubs & Signups" — read as nightclubs
 
+  deals: "Deals",
+  news: "News",
   g_train: "G-Train Support",
 };
 
@@ -50,11 +52,21 @@ export function sortTodayFirst(cards, date) {
   return [...cards].sort((a, b) => score(a) - score(b));
 }
 
+// A deal is dead the moment its window closes — unlike events (which the
+// weekly refresh purges), an expired offer must vanish at render time so
+// nobody walks in waving a lapsed discount. Undated non-deals never expire.
+export function isExpiredDeal(card, date) {
+  if (card.category !== "discount" || card.endsAt == null) return false;
+  return Date.parse(card.endsAt) < date.getTime();
+}
+
 const GTRAIN_CATEGORIES = new Set(["g_train_support", "civic_action", "support_local"]);
 
 export function pinKind(card) {
   if (GTRAIN_CATEGORIES.has(card.category)) return "gtrain";
   if (card.category === "event") return "event";
   if (card.category === "subscription") return "club";
+  if (card.category === "discount") return "deal";
+  if (card.category === "news") return "news";
   return "business";
 }

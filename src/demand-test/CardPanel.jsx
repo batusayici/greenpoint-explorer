@@ -6,13 +6,28 @@ import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
 // the color key lives in the controls people already use, not a legend box.
-const CHIP_KIND = { new: "business", events: "event", clubs_signups: "club", g_train: "gtrain" };
+const CHIP_KIND = {
+  new: "business",
+  events: "event",
+  clubs_signups: "club",
+  deals: "deal",
+  news: "news",
+  g_train: "gtrain",
+};
 
 // ONE ask, lowest friction (lean test: the tap is the interest signal, the
 // form response is the commitment signal — CTA_TAP vs Tally responses is the
 // conversion funnel). Business/event submissions are an optional field INSIDE
 // the form ("July in Greenpoint — weekly map" on Batu's Tally), not a second button.
 const SIGNUP_URL = "https://tally.so/r/44daZo";
+
+// Limited-launch feedback channel (2026-07-15): a short Tally form once Batu
+// creates it; until then the mailto fallback keeps the channel live. Both are
+// feedback_tap evidence either way.
+const FEEDBACK_FORM_URL = ""; // ← drop in the Tally feedback form URL
+const CONTACT_EMAIL = "bsayici@gmail.com";
+const FEEDBACK_HREF =
+  FEEDBACK_FORM_URL || `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("July in Greenpoint — feedback")}`;
 
 function ActionLink({ action, card, onFilter }) {
   const cls = "july-action";
@@ -56,6 +71,14 @@ function ActionLink({ action, card, onFilter }) {
   return <span className={`${cls} july-action--static`}>{action.label}</span>;
 }
 
+// Deals carry their deadline in the row itself — an offer you have to open to
+// discover has expired is a trust miss. Date-only (the detail line has times).
+const DEAL_END_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "America/New_York",
+});
+
 // List-row subline: the authored kicker (glanceability contract — the row must
 // explain itself without a tap) plus the street address (sans city boilerplate)
 // or venue name when it adds something the title doesn't.
@@ -68,7 +91,13 @@ function cardSubline(card) {
     : !named(card.locationName)
       ? card.locationName
       : null;
-  return [card.kicker, named(where) ? null : where].filter(Boolean).join(" · ");
+  // Recurring deals (standing happy hours): endsAt is only the verified-through
+  // date, so printing "ends Jul 22" would state a deadline the source doesn't.
+  const ends =
+    card.category === "discount" && card.endsAt && !card.recurring
+      ? `ends ${DEAL_END_FMT.format(new Date(card.endsAt))}`
+      : null;
+  return [card.kicker, named(where) ? null : where, ends].filter(Boolean).join(" · ");
 }
 
 // Timeline dates are date-only ISO strings — format in UTC so "2026-07-10"
@@ -80,7 +109,9 @@ const TIMELINE_DAY_FMT = new Intl.DateTimeFormat("en-US", {
 });
 
 function CardDetail({ card, cardsById, onFilter, onRelated }) {
-  const when = formatWindow(card);
+  // Recurring deals carry their schedule in kicker/summary (sourced wording);
+  // the window formatter would misread verified-through as "Through Jul 22".
+  const when = card.recurring ? null : formatWindow(card);
   const related = (card.relatedCardIds ?? [])
     .map((id) => cardsById.get(id))
     .filter(Boolean);
@@ -160,7 +191,7 @@ function CardDetail({ card, cardsById, onFilter, onRelated }) {
   );
 }
 
-export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated }) {
+export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
 
   // Tapping a pin brings its card to the top of the feed.
@@ -225,16 +256,60 @@ export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnl
           );
         })}
         {cards.length === 0 && <li className="july-empty">Nothing in this layer yet.</li>}
+        {/* Feedback is a standing card at the end of every layer's feed — the
+            reader who scrolled the list is exactly who knows what's missing. */}
+        <li className="july-feedback">
+          <a
+            href={FEEDBACK_HREF}
+            target={FEEDBACK_HREF.startsWith("http") ? "_blank" : undefined}
+            rel={FEEDBACK_HREF.startsWith("http") ? "noreferrer" : undefined}
+            onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "list" })}
+          >
+            Something missing or wrong? Tell me &rarr;
+          </a>
+          <span className="july-feedback-email">{CONTACT_EMAIL}</span>
+        </li>
       </ol>
+      {showSignupPrompt && (
+        <div className="july-prompt" role="status">
+          <p>Finding this useful? Get next week&rsquo;s edition in your inbox.</p>
+          <div className="july-prompt-row">
+            <a
+              className="july-cta july-cta--primary"
+              href={SIGNUP_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => {
+                trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "postvalue" });
+                onSignupPromptDone();
+              }}
+            >
+              Get next week&rsquo;s map
+            </a>
+            <button type="button" className="july-prompt-dismiss" onClick={onSignupPromptDone}>
+              Not now
+            </button>
+          </div>
+        </div>
+      )}
       <footer className="july-ctas">
         <a
           className="july-cta july-cta--primary"
           href={SIGNUP_URL}
           target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
           rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
-          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup" })}
+          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
         >
           Get next week&rsquo;s map
+        </a>
+        <a
+          className="july-cta july-cta--quiet"
+          href={FEEDBACK_HREF}
+          target={FEEDBACK_HREF.startsWith("http") ? "_blank" : undefined}
+          rel={FEEDBACK_HREF.startsWith("http") ? "noreferrer" : undefined}
+          onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "footer" })}
+        >
+          Feedback
         </a>
       </footer>
     </aside>

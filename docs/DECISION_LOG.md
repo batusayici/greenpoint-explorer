@@ -4,6 +4,21 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-07-15 — Track V limited launch: go, free MVP, newsletter ingest, no login
+
+Decision (Batu, launch-scope interview on the original go/no-go date). Track V proceeds to a **limited launch** to validate value & adoption of a free version.
+
+**Locked:**
+1. **Scope:** the evolved 2D page only (`/july.html`); 3D container stays out.
+2. **Audience:** warm network (~20–50) as wave 1, community orgs (Shop Small Greenpoint / Perri) as wave-2 distributors. Invite links carry `?src=` channel tags; all analytics events segment by channel.
+3. **Success signals (2-week checkpoint, ~Jul 29):** content-type pull ranking (events vs memberships vs deals vs news), subscribe/commit actions, qualitative feedback. Retention deliberately not the primary bar at this scale. Bar + measurement runbook: `docs/launch/2026-07-15-limited-launch-kit.md`.
+4. **Content types under test:** `discount` (deals — requires `endsAt`; `recurring` marks a verified-through date, not a stated deadline; expired deals vanish at render time) and `news` (requires publisher attribution) join events/memberships. Stories and routes deferred.
+5. **Ingestion — Architecture A:** a Claude-run weekly ritual (`.claude/skills/ingest-newsletters/SKILL.md`): Gmail newsletters + Greenpointers roundup → schema-valid draft cards → **Batu-approved review diff** (nothing ships unreviewed) → geocode → tests → commit → deploy. Ledger: `src/data/demand-test/ingest-ledger.json`. No standalone backend for v1; sources are business newsletters + org newsletters + Greenpointers as one-of-many. Prerequisites on Batu: reconnect Gmail connector with read scope; subscribe to the starter newsletter list (in the launch kit).
+6. **No accounts/login.** A login wall at this scale measures friction tolerance, not commitment, and no shipping feature needs identity. Instead: a **post-value email prompt** (once per browser, after 2nd card open or 1st action tap → existing Tally form; `cta_tap` `placement=postvalue`) gives both stated jobs — commitment measurement and an owned re-engagement list. Revisit accounts when star/save ships.
+7. **Feedback channel:** persistent "Something missing or wrong?" at the end of every feed + quiet footer link (`feedback_tap`); mailto for now, Tally feedback form URL drops into `FEEDBACK_FORM_URL` when created.
+
+Owner: Batu (approvals, sending every invite) / Agent (build, ingest, drafts). Plan of record: `~/.claude/plans/i-want-to-launch-foamy-dongarra.md`; ops kit: `docs/launch/2026-07-15-limited-launch-kit.md`.
+
 ## 2026-07-03 — Track V measurement: Vercel custom events + Tally forms
 
 Instrumentation for the demand test go/no-go: six named tap events

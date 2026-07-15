@@ -1,7 +1,8 @@
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { matchesFilter, isActiveOn, sortTodayFirst } from "./filterCards.js";
-import { EVENTS, trackEvent } from "./trackEvents.js";
+import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredDeal } from "./filterCards.js";
+import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
+import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
 
@@ -13,10 +14,38 @@ export default function JulyApp() {
   const [filter, setFilter] = useState("all");
   const [todayOnly, setTodayOnly] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [showSignupPrompt, setShowSignupPrompt] = useState(false);
+
+  // Post-value email prompt (limited launch): observe the tap stream and offer
+  // the weekly signup once, only after value is demonstrated (2nd card open or
+  // 1st action tap). localStorage makes "once" mean once per browser, not per
+  // load — signing up or dismissing both spend it.
+  useEffect(() => {
+    let done = false;
+    try {
+      done = localStorage.getItem(POST_VALUE_DONE_KEY) != null;
+    } catch {
+      /* storage blocked: prompt at most once per load */
+    }
+    const gate = createPostValueGate({ done });
+    return onEvent((name) => {
+      if (gate.record(name)) setShowSignupPrompt(true);
+    });
+  }, []);
+
+  const onSignupPromptDone = useCallback(() => {
+    setShowSignupPrompt(false);
+    try {
+      localStorage.setItem(POST_VALUE_DONE_KEY, new Date().toISOString());
+    } catch {
+      /* storage blocked */
+    }
+  }, []);
 
   const visible = useMemo(() => {
     const now = new Date();
     const shown = seed.cards
+      .filter((c) => !isExpiredDeal(c, now))
       .filter((c) => matchesFilter(c, filter))
       .filter((c) => !todayOnly || isActiveOn(c, now));
     return sortTodayFirst(shown, now);
@@ -61,7 +90,7 @@ export default function JulyApp() {
       <div className="july-gbanner" role="status">
         <span className="july-gbadge">G</span>
         <span>
-          <strong>No G trains</strong> Fri Jul 10 9:45 PM &rarr; Mon Jul 13 5 AM, plus overnights Jul 13&ndash;17
+          <strong>No G trains overnight</strong> 9:45 PM&ndash;5 AM through Fri Jul 17
           &middot; Greenpoint Av + Nassau Av &middot; free T403 shuttle
         </span>
       </div>
@@ -76,6 +105,8 @@ export default function JulyApp() {
           selectedId={selectedId}
           onSelect={setSelectedId}
           onRelated={onRelated}
+          showSignupPrompt={showSignupPrompt}
+          onSignupPromptDone={onSignupPromptDone}
         />
         <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
       </main>

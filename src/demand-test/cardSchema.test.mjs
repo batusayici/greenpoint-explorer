@@ -92,11 +92,39 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the spec's filter bar (incl. Clubs & Signups)", () => {
+test("FILTER_IDS matches the spec's filter bar (incl. Deals + News, 2026-07-15)", () => {
   assert.deepEqual(FILTER_IDS, [
     "new", "food_drink", "shopping", "services",
-    "arts_culture", "family_kids", "events", "clubs_signups", "g_train",
+    "arts_culture", "family_kids", "events", "clubs_signups",
+    "deals", "news", "g_train",
   ]);
+});
+
+test("a deal (discount) must carry an end date — offers expire", () => {
+  const deal = {
+    ...good,
+    id: "deal",
+    category: "discount",
+    filters: ["deals"],
+    startsAt: "2026-07-14T00:00:00-04:00",
+    endsAt: "2026-07-20T23:59:00-04:00",
+  };
+  assert.deepEqual(validateCard(deal).errors, []);
+  const { startsAt, endsAt, ...open } = deal;
+  assert.equal(validateCard(open).ok, false, "deal without endsAt");
+});
+
+test("a news card must name its publisher (attribution truth rule)", () => {
+  const news = {
+    ...good,
+    id: "news",
+    category: "news",
+    filters: ["news"],
+    sourceLinks: [{ title: "July service notice", publisher: "MTA", url: "https://new.mta.info" }],
+  };
+  assert.deepEqual(validateCard(news).errors, []);
+  const unattributed = { ...news, sourceLinks: [{ title: "heard around" }] };
+  assert.equal(validateCard(unattributed).ok, false, "news without publisher");
 });
 
 test("subscription category and join action are accepted (addendum)", () => {

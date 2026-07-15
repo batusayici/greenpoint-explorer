@@ -1,15 +1,18 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredDeal } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
-test("FILTERS = 'all' + the spec's nine, in order, with display labels", () => {
+test("FILTERS = 'all' + the spec's eleven, in order, with display labels", () => {
   assert.equal(FILTERS[0].id, "all");
   assert.deepEqual(FILTERS.slice(1).map((f) => f.id), FILTER_IDS);
   assert.equal(FILTERS.find((f) => f.id === "g_train").label, "G-Train Support");
   assert.equal(FILTERS.find((f) => f.id === "food_drink").label, "Food & Drink");
   // Renamed from "Clubs & Signups" 2026-07-08 — tester read "club" as nightclub.
   assert.equal(FILTERS.find((f) => f.id === "clubs_signups").label, "Memberships");
+  // Limited-launch content types (2026-07-15).
+  assert.equal(FILTERS.find((f) => f.id === "deals").label, "Deals");
+  assert.equal(FILTERS.find((f) => f.id === "news").label, "News");
 });
 
 test("matchesFilter: 'all' passes everything; others check authored membership", () => {
@@ -51,7 +54,7 @@ test("sortTodayFirst: today's time-specific events lead, then live windows, then
   assert.deepEqual(sorted.map((c) => c.id), ["tasting", "open", "series", "shop-a", "not-yet", "shop-b"]);
 });
 
-test("pinKind maps categories to the four pin treatments", () => {
+test("pinKind maps categories to the six pin treatments", () => {
   assert.equal(pinKind({ category: "new_business" }), "business");
   assert.equal(pinKind({ category: "service" }), "business");
   assert.equal(pinKind({ category: "event" }), "event");
@@ -59,4 +62,17 @@ test("pinKind maps categories to the four pin treatments", () => {
   assert.equal(pinKind({ category: "g_train_support" }), "gtrain");
   assert.equal(pinKind({ category: "civic_action" }), "gtrain");
   assert.equal(pinKind({ category: "support_local" }), "gtrain");
+  assert.equal(pinKind({ category: "discount" }), "deal");
+  assert.equal(pinKind({ category: "news" }), "news");
+});
+
+test("isExpiredDeal: only a past-endsAt deal expires; events and undated cards never do", () => {
+  const jul15 = new Date("2026-07-15T12:00:00-04:00");
+  const liveDeal = { category: "discount", endsAt: "2026-07-20T23:59:00-04:00" };
+  const deadDeal = { category: "discount", endsAt: "2026-07-10T23:59:00-04:00" };
+  const pastEvent = { category: "event", endsAt: "2026-07-10T23:59:00-04:00" };
+  assert.ok(!isExpiredDeal(liveDeal, jul15));
+  assert.ok(isExpiredDeal(deadDeal, jul15));
+  assert.ok(!isExpiredDeal(pastEvent, jul15), "events are purged by refresh, not hidden");
+  assert.ok(!isExpiredDeal({ category: "new_business" }, jul15));
 });

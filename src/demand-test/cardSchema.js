@@ -12,6 +12,7 @@ export const CATEGORIES = [
   "arts_culture", "family_kids", "job", "shopkeeper_profile",
   "g_train_support", "civic_action", "discount", "support_local",
   "subscription",
+  "news",
 ];
 
 export const AUDIENCES = [
@@ -30,10 +31,12 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 
 // Filter-bar ids, in display order (spec + addendum: New · Food & Drink ·
 // Shopping · Services · Arts/Culture · Family/Kids · Events · Clubs & Signups ·
-// G-Train Support). The Today lens is a separate toggle, not a filter id.
+// Deals · News · G-Train Support). The Today lens is a separate toggle, not a
+// filter id. `deals`/`news` added 2026-07-15 (limited-launch content-type test).
 export const FILTER_IDS = [
   "new", "food_drink", "shopping", "services",
-  "arts_culture", "family_kids", "events", "clubs_signups", "g_train",
+  "arts_culture", "family_kids", "events", "clubs_signups",
+  "deals", "news", "g_train",
 ];
 
 // Generous Greenpoint envelope (Newtown Creek → McCarren, East River → BQE).
@@ -89,6 +92,23 @@ export function validateCard(card) {
   }
   if (card.startsAt && card.endsAt && Date.parse(card.startsAt) > Date.parse(card.endsAt)) {
     err("startsAt after endsAt");
+  }
+
+  // Limited-launch content types (2026-07-15). A deal (`discount`) must carry
+  // an end date so stale offers can never linger on the map — the UI drops
+  // expired deals at render time. On a `recurring` deal (standing happy hour,
+  // open-ended intro offer) endsAt is the VERIFIED-THROUGH date, not a stated
+  // deadline — the UI suppresses the "ends" line and the weekly ingest
+  // re-verifies or drops it. A `news` card must name its publisher: news is
+  // only as credible as its attribution (truth rule, stricter than title).
+  if (card.category === "discount" && card.endsAt == null) {
+    err("discount (deal) needs endsAt — offers must expire");
+  }
+  if (card.recurring != null && typeof card.recurring !== "boolean") {
+    err("recurring must be a boolean");
+  }
+  if (card.category === "news" && !(card.sourceLinks ?? []).some((s) => str(s?.publisher))) {
+    err("news needs a sourceLink with a publisher");
   }
 
   if (!EVIDENCE_LEVELS.includes(card.evidenceStrength)) err("bad evidenceStrength");

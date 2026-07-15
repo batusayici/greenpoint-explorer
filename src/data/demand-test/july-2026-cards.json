@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-02",
+  "version": "2026-07-15",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -131,8 +131,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
-      "kicker": "Pet grooming, by appointment"
+      "updatedAt": "2026-07-15",
+      "kicker": "Pet grooming, by appointment",
+      "relatedCardIds": [
+        "poochs-parlor-first-groom"
+      ]
     },
     {
       "id": "giggles-and-wiggles",
@@ -173,11 +176,11 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
+      "updatedAt": "2026-07-15",
+      "kicker": "Kids' shoes & toys shop",
       "relatedCardIds": [
-        "rooted-family-picnic"
-      ],
-      "kicker": "Kids' shoes & toys shop"
+        "infant-cpr-giggles"
+      ]
     },
     {
       "id": "cookies-n-cream",
@@ -351,10 +354,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
-      "relatedCardIds": [
-        "dreams-debut-exhibition"
-      ],
+      "updatedAt": "2026-07-15",
       "kicker": "Contemporary art gallery"
     },
     {
@@ -465,51 +465,6 @@
       "kicker": "Every match, through the final"
     },
     {
-      "id": "yoseka-sticker-buffet",
-      "title": "Sticker Buffet at Yoseka Land",
-      "category": "event",
-      "filters": [
-        "events",
-        "shopping",
-        "family_kids"
-      ],
-      "sourceCampaign": "shop_small_greenpoint_july_2026",
-      "locationName": "Yoseka Land",
-      "address": null,
-      "geocodeQuery": "Yoseka Stationery, Greenpoint, Brooklyn, NY",
-      "lat": 40.72843,
-      "lng": -73.959159,
-      "corridor": "manhattan-ave",
-      "summary": "Yoseka Land's sticker buffet retail event.",
-      "audience": [
-        "resident",
-        "family",
-        "creator"
-      ],
-      "startsAt": "2026-07-04T00:00:00-04:00",
-      "endsAt": "2026-07-12T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Go sticker hunting (Jul 4–12)",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Shop Small Greenpoint — July 2026 newsletter",
-          "publisher": "Shop Small Greenpoint",
-          "date": "2026-07-01"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
-      "kicker": "Pick-your-own at the stationery shop"
-    },
-    {
       "id": "threes-summer-guest-series",
       "title": "Summer Guest Series at Threes Brewing",
       "category": "event",
@@ -594,8 +549,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
-      "kicker": "Monthly tinned-fish membership"
+      "updatedAt": "2026-07-15",
+      "kicker": "Monthly tinned-fish membership",
+      "relatedCardIds": [
+        "falu-tinned-fish-jazz"
+      ]
     },
     {
       "id": "g-train-closures",
@@ -778,95 +736,6 @@
       "kicker": "Ask the MTA for better closures"
     },
     {
-      "id": "teen-diy-greenpoint-library",
-      "title": "Teen DIY at Greenpoint Library",
-      "category": "event",
-      "filters": [
-        "events",
-        "family_kids"
-      ],
-      "sourceCampaign": "greenpointers_week_2026-07-02",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "corridor": "norman-ave",
-      "summary": "Teens 13–19 decorate steel water bottles with stickers, markers, and more. Free.",
-      "audience": [
-        "family"
-      ],
-      "startsAt": "2026-07-08T16:00:00-04:00",
-      "endsAt": "2026-07-08T18:00:00-04:00",
-      "actions": [
-        {
-          "label": "Drop in",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening (7/2–7/8)",
-          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-01"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-08",
-      "kicker": "Teen craft session (ages 13–19)",
-      "free": true
-    },
-    {
-      "id": "mt-carmel-feast-opening",
-      "title": "Williamsburg Feast — Opening Night",
-      "category": "event",
-      "filters": [
-        "events",
-        "family_kids"
-      ],
-      "sourceCampaign": "greenpointers_week_2026-07-02",
-      "locationName": "Our Lady of Mount Carmel",
-      "address": "275 N 8th St, Brooklyn, NY 11211",
-      "lat": 40.715804,
-      "lng": -73.952574,
-      "corridor": "williamsburg",
-      "summary": "Opening night of one of NYC's oldest and largest Italian American feasts, with the Italian Caucus walking the feast. Free.",
-      "audience": [
-        "resident",
-        "visitor",
-        "family"
-      ],
-      "startsAt": "2026-07-08T19:00:00-04:00",
-      "endsAt": "2026-07-08T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/williamsburg-feast-with-the-italian-caucus-tickets-1992393899788"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening (7/2–7/8)",
-          "url": "https://greenpointers.com/2026/07/01/watch-fireworks-eat-seafood-and-more-whats-happening-greenpoint-7-2-8/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-01"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-03",
-      "updatedAt": "2026-07-08",
-      "kicker": "Italian feast opening night",
-      "free": true
-    },
-    {
       "category": "event",
       "sourceCampaign": "greenpointers_week_2026_07_07",
       "address": "4 Diamond St, Brooklyn, NY 11222",
@@ -913,554 +782,6 @@
       "category": "event",
       "sourceCampaign": "greenpointers_week_2026_07_07",
       "address": null,
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "sunset-yoga-transmitter",
-      "title": "Sunset yoga at Transmitter Park",
-      "filters": [
-        "events"
-      ],
-      "locationName": "Transmitter Park",
-      "summary": "A free evening practice by the water with Kindred Co.",
-      "startsAt": "2026-07-09T19:00:00-04:00",
-      "endsAt": "2026-07-09T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Head to the water",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Evening practice by the water",
-      "free": true
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "8 Berry St, Brooklyn, NY 11249",
-      "lat": 40.720657,
-      "lng": -73.956693,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "move-meditate-mingle",
-      "title": "Move, Meditate, Mingle",
-      "filters": [
-        "events"
-      ],
-      "locationName": "The Movement Loft",
-      "summary": "Movement and meditation with The Movement Loft and We All Feel.",
-      "startsAt": "2026-07-09T19:15:00-04:00",
-      "endsAt": "2026-07-09T20:30:00-04:00",
-      "actions": [
-        {
-          "label": "Directions (3rd floor)",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Movement + meditation session"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.737671,
-      "lng": -73.955155,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "womens-pinball-tournament",
-      "title": "Oops! All Williams: women's pinball tournament",
-      "filters": [
-        "events"
-      ],
-      "locationName": "Scrappleland",
-      "summary": "Women's pinball tournament at the hall on upper Manhattan Ave — finals run all weekend.",
-      "startsAt": "2026-07-10T17:00:00-04:00",
-      "endsAt": "2026-07-12T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Catch the finals",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Women's pinball, finals all weekend"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "713 Lorimer St, Brooklyn, NY 11211",
-      "lat": 40.718158,
-      "lng": -73.950215,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "summer-sculptures-joy-flower-pot",
-      "title": "Summer sculptures workshop",
-      "filters": [
-        "events",
-        "arts_culture"
-      ],
-      "locationName": "Joy Flower Pot",
-      "summary": "A floral sculpture workshop at the Lorimer St flower shop.",
-      "startsAt": "2026-07-10T18:00:00-04:00",
-      "endsAt": "2026-07-10T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Find the shop",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Floral sculpture workshop"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "147 Metropolitan Ave, Brooklyn, NY 11211",
-      "lat": 40.716141,
-      "lng": -73.962038,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "serendipity-seeking-lab",
-      "title": "The Serendipity Seeking Lab",
-      "filters": [
-        "events"
-      ],
-      "locationName": "Reforesters",
-      "summary": "A guided serendipity practice with K. Russell Sprouts at the plant lab.",
-      "startsAt": "2026-07-10T18:30:00-04:00",
-      "endsAt": "2026-07-10T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Find the lab",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Guided serendipity practice"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "lat": 40.728678,
-      "lng": -73.954258,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "open-mic-flower-cat",
-      "title": "Open mic night at Flower Cat",
-      "filters": [
-        "events",
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "summary": "Open mic at the Noble St flower shop and café.",
-      "startsAt": "2026-07-10T20:00:00-04:00",
-      "endsAt": "2026-07-10T22:00:00-04:00",
-      "actions": [
-        {
-          "label": "Grab a seat",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Open mic at the flower café"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": null,
-      "lat": 40.721773,
-      "lng": -73.962194,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "nature-neighborhood-fish",
-      "title": "Nature in Your Neighborhood: Fish",
-      "filters": [
-        "events",
-        "family_kids"
-      ],
-      "locationName": "Marsha P. Johnson State Park",
-      "geocodeQuery": "Marsha P. Johnson State Park, Brooklyn, NY",
-      "summary": "An all-ages look at what swims off the North Brooklyn waterfront, at the state park.",
-      "startsAt": "2026-07-11T13:00:00-04:00",
-      "endsAt": "2026-07-11T16:00:00-04:00",
-      "actions": [
-        {
-          "label": "Meet at the park",
-          "type": "visit"
-        }
-      ],
-      "kicker": "All-ages waterfront nature program"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "70 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729523,
-      "lng": -73.958159,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "kettl-te-company-conversation",
-      "title": "Kettl × Té Company: sourcing tea & founding a business",
-      "filters": [
-        "events",
-        "food_drink"
-      ],
-      "locationName": "Kettl Tea",
-      "summary": "The two tea founders in conversation at Kettl's Greenpoint Ave shop.",
-      "startsAt": "2026-07-11T13:00:00-04:00",
-      "endsAt": "2026-07-11T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Find the shop",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Tea founders in conversation"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "42 West St, Brooklyn, NY 11222",
-      "lat": 40.728078,
-      "lng": -73.958665,
-      "corridor": "west-st",
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "dreams-debut-exhibition",
-      "title": "“There Are People Here” — opening night",
-      "filters": [
-        "events",
-        "arts_culture"
-      ],
-      "locationName": "Dreams on Command",
-      "summary": "The debut exhibition at Greenpoint's newest contemporary gallery (Suite 105).",
-      "startsAt": "2026-07-11T18:00:00-04:00",
-      "endsAt": "2026-07-11T21:00:00-04:00",
-      "actions": [
-        {
-          "label": "See the show",
-          "type": "visit"
-        }
-      ],
-      "relatedCardIds": [
-        "dreams-on-command"
-      ],
-      "kicker": "Gallery opening night"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "147 Metropolitan Ave, Brooklyn, NY 11211",
-      "lat": 40.716141,
-      "lng": -73.962038,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "lift-5-reforesters",
-      "title": "Lift #5: a listening session",
-      "filters": [
-        "events",
-        "arts_culture"
-      ],
-      "locationName": "Reforesters",
-      "summary": "Sound night at the plant lab with A Space for Sound and Lost Verb.",
-      "startsAt": "2026-07-11T18:30:00-04:00",
-      "endsAt": "2026-07-11T21:30:00-04:00",
-      "actions": [
-        {
-          "label": "Find the lab",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Listening session at the plant lab"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "960 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.732062,
-      "lng": -73.954278,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "bodycompass-heldspace",
-      "title": "BodyCompass: 360 Emergence movement lab",
-      "filters": [
-        "events"
-      ],
-      "locationName": "Heldspace",
-      "summary": "A guided movement lab with Moving Souls at the 4th-floor studio.",
-      "startsAt": "2026-07-11T19:00:00-04:00",
-      "endsAt": "2026-07-11T20:30:00-04:00",
-      "actions": [
-        {
-          "label": "Directions (4th floor)",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Guided movement lab"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "960 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.732062,
-      "lng": -73.954278,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "community-pilates-heldspace",
-      "title": "Community Pilates class",
-      "filters": [
-        "events"
-      ],
-      "locationName": "Heldspace",
-      "summary": "Community class with Just Body Pilates at the 4th-floor studio.",
-      "startsAt": "2026-07-12T08:45:00-04:00",
-      "endsAt": "2026-07-12T09:45:00-04:00",
-      "actions": [
-        {
-          "label": "Directions (4th floor)",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Morning group class"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": null,
-      "lat": 40.721159,
-      "lng": -73.952879,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "rooted-family-picnic",
-      "title": "Rooted family picnic at McCarren Park",
-      "filters": [
-        "events",
-        "family_kids"
-      ],
-      "locationName": "McCarren Park (the Parkhouse)",
-      "summary": "Family picnic with Birdhouse Childcare, Giggles & Wiggles, Maman's Brooklyn, Mr. Chazz, and the McCarren Parkhouse.",
-      "startsAt": "2026-07-12T10:00:00-04:00",
-      "endsAt": "2026-07-12T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Join the picnic",
-          "type": "visit"
-        }
-      ],
-      "relatedCardIds": [
-        "giggles-and-wiggles"
-      ],
-      "kicker": "All-ages family picnic"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": null,
       "lat": 40.714106,
       "lng": -73.968275,
       "corridor": null,
@@ -1500,87 +821,780 @@
       "kicker": "Biweekly park yoga through August"
     },
     {
+      "id": "open-studio-library",
       "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "960 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.732062,
-      "lng": -73.954278,
-      "corridor": null,
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Open studio time at Greenpoint Library",
+      "kicker": "Free self-guided art studio time",
+      "locationName": "Greenpoint Library",
+      "summary": "Uninterrupted self-guided studio time for drawing, sketching, and painting — register or just drop in.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
       "audience": [
         "resident"
       ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "moon-nidra-heldspace",
-      "title": "Moon Centering Nidra meditation",
-      "filters": [
-        "events"
-      ],
-      "locationName": "Heldspace",
-      "summary": "A restorative nidra meditation with Anna Hull at the 4th-floor studio.",
-      "startsAt": "2026-07-12T12:00:00-04:00",
-      "endsAt": "2026-07-12T13:00:00-04:00",
+      "corridor": null,
+      "startsAt": "2026-07-16T17:30:00-04:00",
+      "endsAt": "2026-07-16T23:59:00-04:00",
       "actions": [
         {
-          "label": "Directions (4th floor)",
+          "label": "Visit",
           "type": "visit"
         }
       ],
-      "kicker": "Restorative nidra meditation"
-    },
-    {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "lat": 40.728678,
-      "lng": -73.954258,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
       "sourceLinks": [
         {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
           "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
         }
       ],
       "evidenceStrength": "medium_high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "bakery-popup-flower-cat",
-      "title": "My Favorite Things bakery pop-up",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "free": true,
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "summer-music-bushwick-inlet",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Summer Music Series kickoff",
+      "kicker": "Waterfront music series kickoff, free",
+      "locationName": "Bushwick Inlet Park",
+      "summary": "Kickoff of the sixth annual weekly music series on the waterfront, featuring Reggie Woods in partnership with the Jazz Foundation of America.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-16T18:30:00-04:00",
+      "endsAt": "2026-07-16T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
+      "free": true,
+      "lat": 40.722349,
+      "lng": -73.961382
+    },
+    {
+      "id": "falu-tinned-fish-jazz",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Tinned Fish & Jazz Summer Soiree",
+      "kicker": "Tinned fish + live jazz night",
+      "locationName": "Falu House",
+      "summary": "Pop open a tin of fish to a soundtrack of live jazz at the Norman Ave shop. $55.20, ticketed.",
       "filters": [
         "events",
         "food_drink"
       ],
-      "locationName": "Flower Cat",
-      "summary": "My Favorite Things bakery pop-up at the Noble St flower shop and café — going till sold out.",
-      "startsAt": "2026-07-12T12:00:00-04:00",
-      "endsAt": "2026-07-12T23:59:00-04:00",
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-16T19:00:00-04:00",
+      "endsAt": "2026-07-16T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "34 Norman Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "falu-tinned-fish-club"
+      ],
+      "lat": 40.724319,
+      "lng": -73.954596
+    },
+    {
+      "id": "coffin-doc-film-noir",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "C.O.F.F.I.N documentary premiere",
+      "kicker": "Aussie rock doc premiere, $15",
+      "locationName": "Film Noir Cinema",
+      "summary": "A short documentary tracing C.O.F.F.I.N from Northern Beaches teenagers to one of Australia's most respected rock bands. $15.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-17T19:00:00-04:00",
+      "endsAt": "2026-07-17T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "id": "off-the-grid-comedy-threes",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Off the Grid comedy show",
+      "kicker": "Live comedy off the G, $23",
+      "locationName": "Threes Brewing",
+      "summary": "Stand-up from Stephon Hightower, Grant Yanney, Onika Mclean, Kareen Green, Niles Abston, and Zadid Dewji. $23.18.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-17T21:00:00-04:00",
+      "endsAt": "2026-07-17T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "id": "infant-cpr-giggles",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Infant CPR workshop",
+      "kicker": "Infant CPR + first aid, $95",
+      "locationName": "Giggles & Wiggles",
+      "summary": "A CPR and first-aid class geared specifically toward infants — gain confidence in choking relief. $95, registration required.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-18T09:30:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "42 West St, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "giggles-and-wiggles"
+      ],
+      "lat": 40.728078,
+      "lng": -73.958665
+    },
+    {
+      "id": "kombucha-workshop-library",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Kombucha for beginners",
+      "kicker": "Free kombucha brewing workshop",
+      "locationName": "Greenpoint Library",
+      "summary": "Ferment your own kombucha and learn about the SCOBY with environmental educator Gil Lopez. Free, register ahead.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-18T10:30:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "free": true,
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "onigiri-popup-di-an-di",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Onigiri pop-up at Di An Di",
+      "kicker": "Vietnamese-inspired onigiri till sold out",
+      "locationName": "Di An Di",
+      "summary": "Vietnamese-inspired onigiri and other flavors, a collaboration with owner Caroline Hahm and Amenohi — until they sell out.",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-18T11:00:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
       "actions": [
         {
           "label": "Get there early",
           "type": "visit"
         }
       ],
-      "kicker": "Bakery pop-up till sold out"
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "68 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729519,
+      "lng": -73.958245
+    },
+    {
+      "id": "healing-hour-calyer",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "The Healing Hour",
+      "kicker": "Journal, meditate, reset — $39",
+      "locationName": "106 Calyer St",
+      "summary": "A space to journal, meditate, and reconnect — a breather in the middle of 2026. $39.19, registration required.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-18T12:00:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "106 Calyer St, Brooklyn, NY 11222",
+      "lat": 40.726972,
+      "lng": -73.95656
+    },
+    {
+      "id": "clay-wheel-choplet",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Clay wheel-throwing workshop",
+      "kicker": "Wheel-throwing workshop, $98",
+      "locationName": "Choplet Ceramics Studio",
+      "summary": "Get your hands dirty creating something unique on the wheel at the Greenpoint ceramics studio. $97.88, registration required.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-18T15:00:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "geocodeQuery": "Choplet, Brooklyn, NY",
+      "lat": 40.72732,
+      "lng": -73.952343
+    },
+    {
+      "id": "morning-yoga-transmitter",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Morning yoga at Transmitter Park",
+      "kicker": "Free sunrise yoga on the waterfront",
+      "locationName": "Transmitter Park",
+      "summary": "A gentle morning practice in the park. Free, RSVP required.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-21T07:00:00-04:00",
+      "endsAt": "2026-07-21T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "geocodeQuery": "Transmitter Park, Brooklyn, NY",
+      "free": true,
+      "lat": 40.729855,
+      "lng": -73.960729
+    },
+    {
+      "id": "summer-of-horrors-brooklyn-brewery",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "The Twisted Spine's Summer of Horrors",
+      "kicker": "12 horror authors, free tickets",
+      "locationName": "Brooklyn Brewery",
+      "summary": "The Twisted Spine's mini-convention hosted by Christopher Golden: 12 authors, two panel discussions, and signings. Free, ticketed.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-21T17:00:00-04:00",
+      "endsAt": "2026-07-21T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "address": "79 N 11th St, Brooklyn, NY 11249",
+      "free": true,
+      "lat": 40.721622,
+      "lng": -73.957607
+    },
+    {
+      "id": "elborn-wine-night",
+      "category": "discount",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Wine Night at El Born",
+      "kicker": "Wine bottles 50% off, Monday only",
+      "locationName": "El Born",
+      "address": "651 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Bottles of wine are 50% off for Wine Night at the Manhattan Ave Spanish restaurant. Weekday happy hour runs 5–6 PM too.",
+      "filters": [
+        "deals",
+        "food_drink"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-20T17:00:00-04:00",
+      "endsAt": "2026-07-20T22:00:00-04:00",
+      "actions": [
+        {
+          "label": "See the specials",
+          "type": "learn_more",
+          "url": "https://elbornnyc.com/brooklyn-greenpoint-brooklyn-el-born-happy-hours-specials"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "El Born — weekly specials page",
+          "publisher": "El Born",
+          "url": "https://elbornnyc.com/brooklyn-greenpoint-brooklyn-el-born-happy-hours-specials",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.724315,
+      "lng": -73.951342
+    },
+    {
+      "id": "poochs-parlor-first-groom",
+      "category": "discount",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "20% off a first groom at Pooch's Parlor",
+      "kicker": "Mention Greenpointers for 20% off",
+      "locationName": "Pooch's Parlor",
+      "address": "128 India St, Brooklyn, NY 11222",
+      "summary": "Greenpoint's newest dog grooming salon — mention Greenpointers for 20% off your first appointment. The vibe: tattoo shop meets dive bar.",
+      "filters": [
+        "deals"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "recurring": true,
+      "endsAt": "2026-07-22T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Read about it",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Pup need a summer cut? Get 'em groomed at Pooch's Parlor (sponsored)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+          "date": "2026-06-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.732156,
+      "lng": -73.955048,
+      "relatedCardIds": [
+        "poochs-parlor"
+      ]
+    },
+    {
+      "id": "greenpoint-fish-oyster-hh",
+      "category": "discount",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Oyster happy hour at Greenpoint Fish & Lobster",
+      "kicker": "$1 oysters w/ a drink, wkdays 2–6 PM",
+      "locationName": "Greenpoint Fish & Lobster Co.",
+      "address": "114 Nassau Ave, Brooklyn, NY 11222",
+      "summary": "Weekday afternoon oyster happy hour at the Nassau Ave fish market and raw bar — $1 oysters with a drink plus $5 beers, per the June 2026 neighborhood guide. Worth confirming before you go.",
+      "filters": [
+        "deals",
+        "food_drink"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "recurring": true,
+      "endsAt": "2026-07-22T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Guide listing",
+          "type": "learn_more",
+          "url": "https://happy-hour.nyc/brooklyn/greenpoint-happy-hour"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Happy Hour Guide (updated June 2026)",
+          "publisher": "happy-hour.nyc",
+          "url": "https://happy-hour.nyc/brooklyn/greenpoint-happy-hour",
+          "date": "2026-06-30"
+        }
+      ],
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "medium",
+      "trustRisk": "medium",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.724156,
+      "lng": -73.949114
+    },
+    {
+      "id": "vault-gallery-culture-house",
+      "category": "news",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "An art gallery opens inside the old bank vault",
+      "kicker": "Inaugural show runs six weeks",
+      "locationName": "Culture House",
+      "address": "807 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Culture House, in the former Greenpoint Savings Bank, opened The Vault Gallery in the building's actual vault. The inaugural show, Forces of Nature, pairs Kevin Pineda Gould's monochrome NYC photographs with Simi Mahtani's botanical cyanotypes — opening reception Friday, July 17, 6–9 PM; the show runs six weeks.",
+      "filters": [
+        "news",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": "manhattan-ave",
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/07/15/culture-house-opens-new-art-gallery-in-former-bank-vault-space/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Culture House Opens New Art Gallery in Former Bank Vault Space",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/15/culture-house-opens-new-art-gallery-in-former-bank-vault-space/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.727962,
+      "lng": -73.953311
+    },
+    {
+      "id": "light-up-mccarren",
+      "category": "news",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Light Up McCarren breaks ground",
+      "kicker": "Community-funded court lights underway",
+      "locationName": "McCarren Park tennis courts",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "summary": "McCarren Tennis Association, the volunteer-run nonprofit behind free public court access, broke ground July 7 on its community-funded Light Up McCarren project — new LED lighting for courts that have none, upgrades for the rest.",
+      "filters": [
+        "news"
+      ],
+      "audience": [
+        "resident",
+        "civic_actor"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/07/14/mccarren-tennis-association-breaks-ground-on-lighting-project/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Tennis Association Breaks Ground on Lighting Project",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/14/mccarren-tennis-association-breaks-ground-on-lighting-project/",
+          "date": "2026-07-14"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.721159,
+      "lng": -73.952879
+    },
+    {
+      "id": "green-st-condos",
+      "category": "news",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "Faurschou/Ilis site on Green St sold for condos",
+      "kicker": "Gallery-and-restaurant site turns condo",
+      "locationName": "148-150 Green St",
+      "address": "148 Green St, Brooklyn, NY 11222",
+      "summary": "The one-story building that housed the Faurschou contemporary art gallery and Nordic restaurant Ilis has officially been sold for condo development, Crain's reports via Greenpointers.",
+      "filters": [
+        "news"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/07/02/greenpoints-faurschou-ilis-building-site-officially-turning-into-condos/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint's Faurschou/Ilis Building Site Officially Turning into Condos",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/02/greenpoints-faurschou-ilis-building-site-officially-turning-into-condos/",
+          "date": "2026-07-02"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733462,
+      "lng": -73.955583
     }
   ]
 }

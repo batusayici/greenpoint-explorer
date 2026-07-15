@@ -1,0 +1,69 @@
+{
+  "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
+  "lastRunAt": "2026-07-15T00:00:00-04:00",
+  "processedItems": [
+    {
+      "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-15",
+      "outcome": "12 events added (Jul 16-22 roundup); Williamsburg-only + unresolvable-venue items skipped"
+    },
+    {
+      "id": "https://elbornnyc.com/brooklyn-greenpoint-brooklyn-el-born-happy-hours-specials",
+      "kind": "web",
+      "publisher": "El Born",
+      "processedAt": "2026-07-15",
+      "outcome": "1 deal added (elborn-wine-night)"
+    },
+    {
+      "id": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-15",
+      "outcome": "1 recurring deal added (poochs-parlor-first-groom)"
+    },
+    {
+      "id": "https://happy-hour.nyc/brooklyn/greenpoint-happy-hour",
+      "kind": "web",
+      "publisher": "happy-hour.nyc",
+      "processedAt": "2026-07-15",
+      "outcome": "1 recurring deal added (greenpoint-fish-oyster-hh), evidence medium"
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/15/culture-house-opens-new-art-gallery-in-former-bank-vault-space/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-15",
+      "outcome": "1 news added (vault-gallery-culture-house)"
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/14/mccarren-tennis-association-breaks-ground-on-lighting-project/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-15",
+      "outcome": "1 news added (light-up-mccarren)"
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/02/greenpoints-faurschou-ilis-building-site-officially-turning-into-condos/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-15",
+      "outcome": "1 news added (green-st-condos)"
+    }
+  ],
+  "senderRegistry": [
+    {
+      "publisher": "Greenpointers",
+      "match": "greenpointers.com",
+      "kinds": ["event", "news"],
+      "note": "weekly What's Happening roundup + news; one of many sources, never the only one"
+    },
+    {
+      "publisher": "Shop Small Greenpoint",
+      "match": "shopsmallgreenpoint",
+      "kinds": ["event", "discount", "support_local"],
+      "note": "org newsletter; spell out in reader copy, never 'SSG'"
+    }
+  ]
+}

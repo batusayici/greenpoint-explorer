@@ -13,6 +13,7 @@ export const EVENTS = Object.freeze({
   CTA_TAP: "cta_tap",
   RELATED_TAP: "related_tap",
   SOURCE_TAP: "source_tap",
+  FEEDBACK_TAP: "feedback_tap",
 });
 
 const NAMES = new Set(Object.values(EVENTS));
@@ -23,6 +24,29 @@ export function bindTransport(fn) {
   transport = fn;
 }
 
+// Session-wide event context (limited launch, 2026-07-15): main.jsx reads the
+// invite link's ?src= channel tag once and sets it here, so every event a
+// visitor fires carries its acquisition channel (wave1 vs perri vs …) without
+// each call site knowing. Explicit per-event data wins on key collision.
+let context = {};
+
+export function setEventContext(ctx = {}) {
+  context = {};
+  for (const [key, value] of Object.entries(ctx)) {
+    const t = typeof value;
+    if (t === "string" || t === "number" || t === "boolean") context[key] = value;
+  }
+}
+
+// In-page observers (post-value prompt gate). Listener errors must never
+// break a tap, same contract as the transport.
+const listeners = new Set();
+
+export function onEvent(fn) {
+  listeners.add(fn);
+  return () => listeners.delete(fn);
+}
+
 export function trackEvent(name, data = {}) {
   if (!NAMES.has(name)) throw new Error(`unknown analytics event "${name}"`);
   for (const [key, value] of Object.entries(data)) {
@@ -31,10 +55,18 @@ export function trackEvent(name, data = {}) {
       throw new Error(`event "${name}": property "${key}" must be a primitive`);
     }
   }
+  const payload = { ...context, ...data };
   try {
-    transport?.(name, data);
+    transport?.(name, payload);
   } catch (error) {
     // A dead analytics endpoint must never break a tester's tap.
     console.error("[trackEvent]", error);
+  }
+  for (const listener of listeners) {
+    try {
+      listener(name, payload);
+    } catch (error) {
+      console.error("[trackEvent listener]", error);
+    }
   }
 }
