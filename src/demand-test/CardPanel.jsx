@@ -9,6 +9,7 @@ import { EVENTS, trackEvent } from "./trackEvents.js";
 const CHIP_KIND = {
   new: "business",
   events: "event",
+  live_music: "event", // show nights are events; venues keep their business pin
   clubs_signups: "club",
   deals: "deal",
   news: "news",

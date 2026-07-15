@@ -458,9 +458,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-08",
+      "updatedAt": "2026-07-15",
       "relatedCardIds": [
-        "socceria"
+        "socceria",
+        "warsaw-concerts"
       ],
       "kicker": "Every match, through the final"
     },
@@ -873,7 +874,8 @@
       "summary": "Kickoff of the sixth annual weekly music series on the waterfront, featuring Reggie Woods in partnership with the Jazz Foundation of America.",
       "filters": [
         "events",
-        "arts_culture"
+        "arts_culture",
+        "live_music"
       ],
       "audience": [
         "resident"
@@ -916,7 +918,8 @@
       "summary": "Pop open a tin of fish to a soundtrack of live jazz at the Norman Ave shop. $55.20, ticketed.",
       "filters": [
         "events",
-        "food_drink"
+        "food_drink",
+        "live_music"
       ],
       "audience": [
         "resident"
@@ -1678,6 +1681,299 @@
       "updatedAt": "2026-07-15",
       "lat": 40.731769,
       "lng": -73.960549
+    },
+    {
+      "id": "good-room",
+      "category": "arts_culture",
+      "sourceCampaign": "live_music_layer_2026_07_15",
+      "title": "Good Room",
+      "kicker": "Dance club by music lovers, since 2014",
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "Launched in 2014 by nightclub veterans, fusing the Greenpoint bar scene with a club vibe — an open, inclusive floor (cap. 500) with a d&b audiotechnik sound system. Weekly Friday/Saturday parties.",
+      "filters": [
+        "live_music",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://ra.co/clubs/97606"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room — Resident Advisor club page",
+          "publisher": "Resident Advisor",
+          "url": "https://ra.co/clubs/97606",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "relatedCardIds": [
+        "good-room-analog-soul",
+        "good-room-bda"
+      ],
+      "lat": 40.726909,
+      "lng": -73.95281
+    },
+    {
+      "id": "troost",
+      "category": "food_drink",
+      "sourceCampaign": "live_music_layer_2026_07_15",
+      "title": "Troost",
+      "kicker": "Neighborhood bar with free jazz nights",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "The Manhattan Ave bar hosts free jazz in the back — open every day 4 PM to 2 AM. Schedule lives on their site and Instagram.",
+      "filters": [
+        "live_music",
+        "food_drink"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Their site",
+          "type": "learn_more",
+          "url": "https://www.troostny.com/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — site (hours, free jazz)",
+          "publisher": "Troost",
+          "url": "https://www.troostny.com/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "warsaw-concerts",
+      "category": "arts_culture",
+      "sourceCampaign": "live_music_layer_2026_07_15",
+      "title": "Warsaw",
+      "kicker": "Concerts in the Polish National Home",
+      "locationName": "Warsaw",
+      "address": "261 Driggs Ave, Brooklyn, NY 11222",
+      "summary": "Greenpoint's big room — the concert hall in the Polish National Home. Summer calendar resumes Aug 13 with Yard Act, then Eagles of Death Metal, Kim Gordon, and a packed fall.",
+      "filters": [
+        "live_music",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Shows & tickets",
+          "type": "learn_more",
+          "url": "https://www.warsawconcerts.com/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Warsaw — upcoming shows",
+          "publisher": "Warsaw",
+          "url": "https://www.warsawconcerts.com/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "relatedCardIds": [
+        "world-cup-watch"
+      ],
+      "lat": 40.72254,
+      "lng": -73.948318
+    },
+    {
+      "id": "le-fanfare",
+      "category": "food_drink",
+      "sourceCampaign": "live_music_layer_2026_07_15",
+      "title": "Le Fanfare",
+      "kicker": "Italian kitchen with a live jazz soundtrack",
+      "locationName": "Le Fanfare",
+      "address": "1103 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Rustic Italian cooking with live jazz in the room, up at the north end of Manhattan Ave. No published calendar — call or check Instagram for who's playing.",
+      "filters": [
+        "live_music",
+        "food_drink"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Their site",
+          "type": "learn_more",
+          "url": "https://www.lefanfare.com/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Le Fanfare — site",
+          "publisher": "Le Fanfare",
+          "url": "https://www.lefanfare.com/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.73623,
+      "lng": -73.955497
+    },
+    {
+      "id": "good-room-analog-soul",
+      "category": "event",
+      "sourceCampaign": "live_music_layer_2026_07_15",
+      "title": "Analog Soul all night at Good Room",
+      "kicker": "Analog Soul + Gee Dee, all night",
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "House and disco all night with Analog Soul, plus Gee Dee + Extra Andrew. Lineup via Resident Advisor.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-17T00:00:00-04:00",
+      "endsAt": "2026-07-17T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Lineup & tickets",
+          "type": "learn_more",
+          "url": "https://ra.co/clubs/97606"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room — Resident Advisor listings",
+          "publisher": "Resident Advisor",
+          "url": "https://ra.co/clubs/97606",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "good-room"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.726909,
+      "lng": -73.95281
+    },
+    {
+      "id": "good-room-bda",
+      "category": "event",
+      "sourceCampaign": "live_music_layer_2026_07_15",
+      "title": "BDA at Good Room",
+      "kicker": "Toribio, Colored Craig, Carozilla + more",
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "BDA takes over with Toribio, Colored Craig, Carozilla, and Mikki Afflick. Lineup via Resident Advisor.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-18T00:00:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Lineup & tickets",
+          "type": "learn_more",
+          "url": "https://ra.co/clubs/97606"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Good Room — Resident Advisor listings",
+          "publisher": "Resident Advisor",
+          "url": "https://ra.co/clubs/97606",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "good-room"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.726909,
+      "lng": -73.95281
     }
   ]
 }

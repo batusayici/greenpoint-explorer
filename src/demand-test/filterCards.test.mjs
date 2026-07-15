@@ -13,6 +13,7 @@ test("FILTERS = 'all' + the spec's eleven, in order, with display labels", () =>
   // Limited-launch content types (2026-07-15).
   assert.equal(FILTERS.find((f) => f.id === "deals").label, "Deals");
   assert.equal(FILTERS.find((f) => f.id === "news").label, "News");
+  assert.equal(FILTERS.find((f) => f.id === "live_music").label, "Live Music");
 });
 
 test("matchesFilter: 'all' passes everything; others check authored membership", () => {

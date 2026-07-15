@@ -17,12 +17,14 @@ test("seed has exactly 34 cards across the six layers", () => {
   // test — 3 deals (`discount`) and 3 `news` cards.
   // Evening of 2026-07-15: first Gmail ingest run — +1 event (WORD Journal
   // Club) +1 news (Rockaway Rocket); PRESS deal dropped by Batu (multi-location).
-  assert.equal(seed.cards.length, 36);
+  // Same evening: live-music layer (Batu) — 4 venue cards + 2 Good Room nights.
+  assert.equal(seed.cards.length, 42);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 17, "17 event cards (4 held + 12 roundup + 1 WORD newsletter)");
+  assert.equal(count((c) => c.category === "event"), 19, "19 event cards (17 + 2 Good Room nights)");
   assert.equal(count((c) => c.category === "discount"), 3, "3 deal cards");
   assert.equal(count((c) => c.category === "news"), 4, "4 news cards");
+  assert.equal(count((c) => c.filters.includes("live_music")), 8, "8 in the Live Music layer (4 venues, 2 club nights, 2 jazz events)");
   assert.equal(count((c) => c.category === "subscription"), 1, "1 subscription card (Falu House)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 3, "3 G-train campaign/action cards");
 });
@@ -178,8 +180,11 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.deepEqual(byId("g-advocacy-mta").relatedCardIds, ["g-train-closures", "adopt-a-business"]);
   assert.ok(byId("sailor-and-siren").relatedCardIds.includes("g-train-closures"));
   assert.ok(byId("sotteatery").relatedCardIds.includes("g-train-closures"));
-  assert.deepEqual(byId("world-cup-watch").relatedCardIds, ["socceria"]);
+  assert.deepEqual(byId("world-cup-watch").relatedCardIds, ["socceria", "warsaw-concerts"]);
   assert.deepEqual(byId("socceria").relatedCardIds, ["world-cup-watch"]);
+  // Live-music layer: venue ↔ its show nights.
+  assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-analog-soul", "good-room-bda"]);
+  assert.deepEqual(byId("good-room-analog-soul").relatedCardIds, ["good-room"]);
   // 2026-07-15 refresh: events at/with an on-map business link both ways.
   // (The Jul 7–12 pairs aged out with their events.)
   assert.deepEqual(byId("giggles-and-wiggles").relatedCardIds, ["infant-cpr-giggles"]);

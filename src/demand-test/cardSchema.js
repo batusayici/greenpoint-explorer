@@ -32,10 +32,12 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // Filter-bar ids, in display order (spec + addendum: New · Food & Drink ·
 // Shopping · Services · Arts/Culture · Family/Kids · Events · Clubs & Signups ·
 // Deals · News · G-Train Support). The Today lens is a separate toggle, not a
-// filter id. `deals`/`news` added 2026-07-15 (limited-launch content-type test).
+// filter id. `deals`/`news` added 2026-07-15 (limited-launch content-type test);
+// `live_music` added same day (Batu: clubs/music bars are a key category —
+// venues + show nights share the layer).
 export const FILTER_IDS = [
   "new", "food_drink", "shopping", "services",
-  "arts_culture", "family_kids", "events", "clubs_signups",
+  "arts_culture", "family_kids", "events", "live_music", "clubs_signups",
   "deals", "news", "g_train",
 ];
 

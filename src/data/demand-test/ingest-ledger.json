@@ -78,6 +78,41 @@
       "publisher": "Greenpointers",
       "processedAt": "2026-07-15",
       "outcome": "digest duplicates website articles already ingested"
+    },
+    {
+      "id": "https://ra.co/clubs/97606",
+      "kind": "web",
+      "publisher": "Resident Advisor",
+      "processedAt": "2026-07-15",
+      "outcome": "live-music layer: good-room venue card + 2 show nights (Jul 17, Jul 18)"
+    },
+    {
+      "id": "https://www.warsawconcerts.com/",
+      "kind": "web",
+      "publisher": "Warsaw",
+      "processedAt": "2026-07-15",
+      "outcome": "venue card; no shows this week — calendar resumes Aug 13 (re-check in Aug)"
+    },
+    {
+      "id": "https://www.troostny.com/",
+      "kind": "web",
+      "publisher": "Troost",
+      "processedAt": "2026-07-15",
+      "outcome": "venue card (free jazz, no published calendar)"
+    },
+    {
+      "id": "https://www.lefanfare.com/",
+      "kind": "web",
+      "publisher": "Le Fanfare",
+      "processedAt": "2026-07-15",
+      "outcome": "venue card (live jazz soundtrack, no published calendar)"
+    },
+    {
+      "id": "gmail:19f3d52bd09a903d",
+      "kind": "gmail",
+      "publisher": "GUNK",
+      "processedAt": "2026-07-15",
+      "outcome": "July issue is show reviews, no forward Greenpoint listings; LEAD: 12-hour 3rd-anniversary show 8/15 at Secret Riso Club"
     }
   ],
   "senderRegistry": [
@@ -146,6 +181,14 @@
       "match": "pressmodernmassage.com",
       "kinds": [],
       "note": "EXCLUDED by Batu 2026-07-15 — 5-location business vs locally-owned framing; do not re-propose"
+    },
+    {
+      "publisher": "GUNK",
+      "match": "gunkyard@substack.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "North Brooklyn DIY show newsletter (monthly); mostly reviews — scan for forward Greenpoint listings; partner venue L&SD is in Greenpoint"
     }
   ]
 }

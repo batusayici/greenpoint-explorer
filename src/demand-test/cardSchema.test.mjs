@@ -92,10 +92,10 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the spec's filter bar (incl. Deals + News, 2026-07-15)", () => {
+test("FILTER_IDS matches the spec's filter bar (incl. Deals + News + Live Music, 2026-07-15)", () => {
   assert.deepEqual(FILTER_IDS, [
     "new", "food_drink", "shopping", "services",
-    "arts_culture", "family_kids", "events", "clubs_signups",
+    "arts_culture", "family_kids", "events", "live_music", "clubs_signups",
     "deals", "news", "g_train",
   ]);
 });

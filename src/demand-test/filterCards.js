@@ -11,6 +11,7 @@ const LABELS = {
   arts_culture: "Arts & Culture",
   family_kids: "Family & Kids",
   events: "Events",
+  live_music: "Live Music",
   clubs_signups: "Memberships", // was "Clubs & Signups" — read as nightclubs
 
   deals: "Deals",
