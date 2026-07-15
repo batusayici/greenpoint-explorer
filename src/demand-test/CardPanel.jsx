@@ -79,6 +79,28 @@ const DEAL_END_FMT = new Intl.DateTimeFormat("en-US", {
   timeZone: "America/New_York",
 });
 
+// Row-level start time (2026-07-15 review: time-sensitive cards must scan
+// without a tap). The day is carried by the group header; the row carries the
+// clock. A 00:00 start is the all-day sentinel — no fake time reaches a row.
+const ROW_TIME_FMT = new Intl.DateTimeFormat("en-US", {
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: "America/New_York",
+});
+const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZone: "America/New_York",
+});
+
+function rowTime(card) {
+  if (card.startsAt == null || card.recurring) return null;
+  const d = new Date(card.startsAt);
+  if (CLOCK_FMT.format(d) === "00:00") return null; // all-day sentinel
+  return ROW_TIME_FMT.format(d).replace(":00", "");
+}
+
 // List-row subline: the authored kicker (glanceability contract — the row must
 // explain itself without a tap) plus the street address (sans city boilerplate)
 // or venue name when it adds something the title doesn't.
@@ -97,7 +119,7 @@ function cardSubline(card) {
     card.category === "discount" && card.endsAt && !card.recurring
       ? `ends ${DEAL_END_FMT.format(new Date(card.endsAt))}`
       : null;
-  return [card.kicker, named(where) ? null : where, ends].filter(Boolean).join(" · ");
+  return [rowTime(card), card.kicker, named(where) ? null : where, ends].filter(Boolean).join(" · ");
 }
 
 // Timeline dates are date-only ISO strings — format in UTC so "2026-07-10"
@@ -191,7 +213,7 @@ function CardDetail({ card, cardsById, onFilter, onRelated }) {
   );
 }
 
-export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
+export default function CardPanel({ groups, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
 
   // Tapping a pin brings its card to the top of the feed.
@@ -231,31 +253,40 @@ export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnl
         </button>
       </nav>
       <ol className="july-list" ref={listRef}>
-        {cards.map((card) => {
-          const open = card.id === selectedId;
-          return (
-            <li key={card.id} className={`july-card${open ? " is-open" : ""}`}>
-              <button
-                type="button"
-                className="july-card-head"
-                aria-expanded={open}
-                onClick={() => {
-                  if (!open) trackEvent(EVENTS.CARD_OPEN, { cardId: card.id });
-                  onSelect(open ? null : card.id);
-                }}
-              >
-                <span className="july-card-titlerow">
-                  <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
-                  <span className="july-card-title">{card.title}</span>
-                  {card.free && <span className="july-free">Free</span>}
-                </span>
-                {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
-              </button>
-              {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onRelated={onRelated} />}
-            </li>
-          );
-        })}
-        {cards.length === 0 && <li className="july-empty">Nothing in this layer yet.</li>}
+        {groups.map((group) => (
+          <React.Fragment key={group.key}>
+            {/* Calendar scan (2026-07-15 review): a lone Ongoing group needs no
+                header — headers appear once dated cards give days to scan. */}
+            {(groups.length > 1 || group.key !== "ongoing") && (
+              <li className="july-day" aria-hidden="true">{group.label}</li>
+            )}
+            {group.cards.map((card) => {
+              const open = card.id === selectedId;
+              return (
+                <li key={card.id} className={`july-card${open ? " is-open" : ""}`}>
+                  <button
+                    type="button"
+                    className="july-card-head"
+                    aria-expanded={open}
+                    onClick={() => {
+                      if (!open) trackEvent(EVENTS.CARD_OPEN, { cardId: card.id });
+                      onSelect(open ? null : card.id);
+                    }}
+                  >
+                    <span className="july-card-titlerow">
+                      <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
+                      <span className="july-card-title">{card.title}</span>
+                      {card.free && <span className="july-free">Free</span>}
+                    </span>
+                    {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
+                  </button>
+                  {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onRelated={onRelated} />}
+                </li>
+              );
+            })}
+          </React.Fragment>
+        ))}
+        {groups.length === 0 && <li className="july-empty">Nothing in this layer yet.</li>}
         {/* Feedback is a standing row at the end of every layer's feed — the
             reader who scrolled the list is exactly who knows what's missing.
             ONE affordance only (2026-07-15 review: two read as redundant). */}

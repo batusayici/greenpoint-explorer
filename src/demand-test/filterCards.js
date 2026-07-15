@@ -53,6 +53,44 @@ export function sortTodayFirst(cards, date) {
   return [...cards].sort((a, b) => score(a) - score(b));
 }
 
+// Day-grouped feed (2026-07-15 review: events & live music must be scannable
+// by date). Dated cards bucket under the calendar day they happen — a window
+// covering today reads "Today"; future starts read their start day. Undated
+// cards and recurring deals (standing offers) trail in "Ongoing". Group order:
+// Today, then future days ascending, then Ongoing. Within a day: earliest
+// start first (all-day sentinels lead), authored order as tiebreak.
+const DAY_LABEL = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" });
+
+export function groupByDay(cards, date) {
+  const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
+  const groups = new Map(); // key -> { key, order, label, cards }
+  const put = (key, order, label, card) => {
+    if (!groups.has(key)) groups.set(key, { key, order, label, cards: [] });
+    groups.get(key).cards.push(card);
+  };
+  for (const card of cards) {
+    const dated = card.startsAt != null || card.endsAt != null;
+    if (!dated || card.recurring) {
+      put("ongoing", Number.POSITIVE_INFINITY, "Ongoing", card);
+    } else if (isActiveOn(card, date)) {
+      put("today", 0, `Today · ${DAY_LABEL.format(date)}`, card);
+    } else {
+      const start = new Date(card.startsAt ?? card.endsAt);
+      const day = new Date(start); day.setHours(0, 0, 0, 0);
+      const offset = Math.round((day - dayStart) / 86400000);
+      const label = offset === 1 ? `Tomorrow · ${DAY_LABEL.format(day)}` : DAY_LABEL.format(day);
+      put(`d${offset}`, offset, label, card);
+    }
+  }
+  const byStart = (a, b) => {
+    const t = (c) => (c.startsAt != null ? Date.parse(c.startsAt) : 0);
+    return t(a) - t(b);
+  };
+  return [...groups.values()]
+    .sort((a, b) => a.order - b.order)
+    .map((g) => ({ ...g, cards: g.key === "ongoing" ? g.cards : [...g.cards].sort(byStart) }));
+}
+
 // A deal is dead the moment its window closes — unlike events (which the
 // weekly refresh purges), an expired offer must vanish at render time so
 // nobody walks in waving a lapsed discount. Undated non-deals never expire.

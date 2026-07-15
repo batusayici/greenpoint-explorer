@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredDeal } from "./filterCards.js";
+import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredDeal, groupByDay } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import MapView from "./MapView.jsx";
@@ -42,13 +42,14 @@ export default function JulyApp() {
     }
   }, []);
 
-  const visible = useMemo(() => {
+  const { visible, groups } = useMemo(() => {
     const now = new Date();
     const shown = seed.cards
       .filter((c) => !isExpiredDeal(c, now))
       .filter((c) => matchesFilter(c, filter))
       .filter((c) => !todayOnly || isActiveOn(c, now));
-    return sortTodayFirst(shown, now);
+    // Map keeps the flat set; the list scans as a calendar (day groups).
+    return { visible: sortTodayFirst(shown, now), groups: groupByDay(shown, now) };
   }, [filter, todayOnly]);
 
   const onFilter = useCallback((id) => {
@@ -96,7 +97,7 @@ export default function JulyApp() {
       </div>
       <main className="july-main">
         <CardPanel
-          cards={visible}
+          groups={groups}
           cardsById={CARDS_BY_ID}
           filter={filter}
           onFilter={onFilter}

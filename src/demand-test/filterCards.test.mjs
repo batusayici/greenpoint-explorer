@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredDeal } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredDeal, groupByDay } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the spec's eleven, in order, with display labels", () => {
@@ -65,6 +65,32 @@ test("pinKind maps categories to the six pin treatments", () => {
   assert.equal(pinKind({ category: "support_local" }), "gtrain");
   assert.equal(pinKind({ category: "discount" }), "deal");
   assert.equal(pinKind({ category: "news" }), "news");
+});
+
+test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2026-07-15 review)", () => {
+  const wed = new Date("2026-07-15T12:00:00-04:00");
+  const shop = { id: "shop" };
+  const club = { id: "club", category: "discount", recurring: true, endsAt: "2026-07-22T23:59:00-04:00" };
+  const runningSeries = { id: "series", startsAt: "2026-07-01T00:00:00-04:00", endsAt: "2026-07-19T23:59:00-04:00" };
+  const thuLate = { id: "thu-late", startsAt: "2026-07-16T19:00:00-04:00", endsAt: "2026-07-16T23:59:00-04:00" };
+  const thuEarly = { id: "thu-early", startsAt: "2026-07-16T17:30:00-04:00", endsAt: "2026-07-16T23:59:00-04:00" };
+  const sat = { id: "sat", startsAt: "2026-07-18T00:00:00-04:00", endsAt: "2026-07-18T23:59:00-04:00" };
+  const groups = groupByDay([shop, sat, thuLate, club, runningSeries, thuEarly], wed);
+  assert.deepEqual(groups.map((g) => g.label), [
+    "Today · Wed, Jul 15",
+    "Tomorrow · Thu, Jul 16",
+    "Sat, Jul 18",
+    "Ongoing",
+  ]);
+  assert.deepEqual(groups[0].cards.map((c) => c.id), ["series"], "running window is live today");
+  assert.deepEqual(groups[1].cards.map((c) => c.id), ["thu-early", "thu-late"], "within a day: earliest first");
+  assert.deepEqual(groups[3].cards.map((c) => c.id), ["shop", "club"], "undated + recurring deals trail as Ongoing");
+});
+
+test("groupByDay: an all-undated layer is a single Ongoing group", () => {
+  const groups = groupByDay([{ id: "a" }, { id: "b" }], new Date("2026-07-15T12:00:00-04:00"));
+  assert.equal(groups.length, 1);
+  assert.equal(groups[0].key, "ongoing");
 });
 
 test("isExpiredDeal: only a past-endsAt deal expires; events and undated cards never do", () => {
