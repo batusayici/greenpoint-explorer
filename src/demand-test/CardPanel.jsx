@@ -21,13 +21,12 @@ const CHIP_KIND = {
 // the form ("July in Greenpoint — weekly map" on Batu's Tally), not a second button.
 const SIGNUP_URL = "https://tally.so/r/44daZo";
 
-// Limited-launch feedback channel (2026-07-15): a short Tally form once Batu
-// creates it; until then the mailto fallback keeps the channel live. Both are
-// feedback_tap evidence either way.
-const FEEDBACK_FORM_URL = ""; // ← drop in the Tally feedback form URL
-const CONTACT_EMAIL = "bsayici@gmail.com";
-const FEEDBACK_HREF =
-  FEEDBACK_FORM_URL || `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("July in Greenpoint — feedback")}`;
+// Limited-launch feedback channel (2026-07-15): hosted form only — Batu's
+// email stays private (2026-07-15 review note), so no mailto anywhere. Until
+// a dedicated feedback Tally exists, the signup form (which carries a free-
+// text field) is the target; swap in the feedback form URL when created.
+const FEEDBACK_FORM_URL = ""; // ← drop in the dedicated Tally feedback form URL
+const FEEDBACK_HREF = FEEDBACK_FORM_URL || "https://tally.so/r/44daZo";
 
 function ActionLink({ action, card, onFilter }) {
   const cls = "july-action";
@@ -35,7 +34,7 @@ function ActionLink({ action, card, onFilter }) {
   if (action.type === "share") {
     const onShare = async () => {
       onTap();
-      const data = { title: "July in Greenpoint", url: window.location.href };
+      const data = { title: "Greenpoint Life", url: window.location.href };
       if (navigator.share) await navigator.share(data).catch(() => {});
       else await navigator.clipboard.writeText(window.location.href);
     };
@@ -256,18 +255,18 @@ export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnl
           );
         })}
         {cards.length === 0 && <li className="july-empty">Nothing in this layer yet.</li>}
-        {/* Feedback is a standing card at the end of every layer's feed — the
-            reader who scrolled the list is exactly who knows what's missing. */}
+        {/* Feedback is a standing row at the end of every layer's feed — the
+            reader who scrolled the list is exactly who knows what's missing.
+            ONE affordance only (2026-07-15 review: two read as redundant). */}
         <li className="july-feedback">
           <a
             href={FEEDBACK_HREF}
-            target={FEEDBACK_HREF.startsWith("http") ? "_blank" : undefined}
-            rel={FEEDBACK_HREF.startsWith("http") ? "noreferrer" : undefined}
+            target="_blank"
+            rel="noreferrer"
             onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "list" })}
           >
             Something missing or wrong? Tell me &rarr;
           </a>
-          <span className="july-feedback-email">{CONTACT_EMAIL}</span>
         </li>
       </ol>
       {showSignupPrompt && (
@@ -301,15 +300,6 @@ export default function CardPanel({ cards, cardsById, filter, onFilter, todayOnl
           onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
         >
           Get next week&rsquo;s map
-        </a>
-        <a
-          className="july-cta july-cta--quiet"
-          href={FEEDBACK_HREF}
-          target={FEEDBACK_HREF.startsWith("http") ? "_blank" : undefined}
-          rel={FEEDBACK_HREF.startsWith("http") ? "noreferrer" : undefined}
-          onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "footer" })}
-        >
-          Feedback
         </a>
       </footer>
     </aside>

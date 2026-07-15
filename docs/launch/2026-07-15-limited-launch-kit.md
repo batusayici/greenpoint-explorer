@@ -5,7 +5,7 @@ The free-MVP validation launch of `greenpoint-explorer.vercel.app/july.html`. Pl
 ## Launch surface (what's new this ship)
 
 - **Content types under test:** Events · Memberships · **Deals** (new) · **News** (new) — plus discovery + G-train layers.
-- **Feedback channel:** "Something missing or wrong? Tell me →" at the end of every feed + quiet footer link (`feedback_tap` in analytics). Currently a mailto to bsayici@gmail.com — swap in a Tally form URL at `FEEDBACK_FORM_URL` in `src/demand-test/CardPanel.jsx` when created.
+- **Feedback channel:** ONE affordance — "Something missing or wrong? Tell me →" at the end of every feed (`feedback_tap` in analytics). Hosted form only; Batu's email never appears on the page (2026-07-15 review). Points at the signup Tally until the dedicated feedback form URL lands in `FEEDBACK_FORM_URL` in `src/demand-test/CardPanel.jsx`.
 - **Post-value email prompt:** appears once per browser after the 2nd card open or 1st action tap (`cta_tap` with `placement: "postvalue"`). No accounts/login by design — decision rationale in the DECISION_LOG entry.
 - **Channel attribution:** every invite link carries `?src=`; all events segment by it.
 

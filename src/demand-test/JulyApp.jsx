@@ -78,7 +78,7 @@ export default function JulyApp() {
       <header className="july-header">
         <div className="july-header-text">
           <span className="july-kicker">Greenpoint Explorer</span>
-          <h1>July in Greenpoint</h1>
+          <h1>Greenpoint Life</h1>
           {/* Leads with time + action, not directory-speak (tester feedback
               2026-07-08: "what's different from Google Maps?") */}
           <p>

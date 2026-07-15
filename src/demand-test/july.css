@@ -347,7 +347,6 @@ body { margin: 0; }
   text-underline-offset: 2px;
 }
 
-.july-feedback-email { font-size: 0.72rem; color: var(--ink-soft); }
 
 /* --- post-value signup prompt: appears once, after the map proves useful --- */
 .july-prompt {
@@ -403,20 +402,6 @@ body { margin: 0; }
 }
 
 .july-cta--primary { background: var(--ink); color: var(--paper-lift); }
-
-/* quiet secondary (feedback): present, never competing with the one ask */
-.july-cta--quiet {
-  padding: 4px;
-  border: none;
-  background: none;
-  font-weight: 700;
-  font-size: 0.74rem;
-  color: var(--ink-soft);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.july-cta--quiet:hover { color: var(--ink); }
 
 /* --- responsive: map on top, panel below --- */
 @media (max-width: 760px) {
