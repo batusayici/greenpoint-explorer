@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-15T00:00:00-04:00",
+  "lastRunAt": "2026-07-15T20:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -50,20 +50,102 @@
       "publisher": "Greenpointers",
       "processedAt": "2026-07-15",
       "outcome": "1 news added (green-st-condos)"
+    },
+    {
+      "id": "gmail:19f5890bfbaebcd9",
+      "kind": "gmail",
+      "publisher": "WORD Bookstore",
+      "processedAt": "2026-07-15",
+      "outcome": "1 event added (word-journal-club); Jul 14 reading past, JC open mic out of area"
+    },
+    {
+      "id": "gmail:19f41e1ef6040d96",
+      "kind": "gmail",
+      "publisher": "NYC Ferry",
+      "processedAt": "2026-07-15",
+      "outcome": "1 news added (rockaway-rocket)"
+    },
+    {
+      "id": "gmail:19f65a85fedbddd6",
+      "kind": "gmail",
+      "publisher": "PRESS Modern Massage",
+      "processedAt": "2026-07-15",
+      "outcome": "12-pack sale card DROPPED by Batu (multi-location business vs locally-owned framing)"
+    },
+    {
+      "id": "gmail:19f4cdc0beae4e8f",
+      "kind": "gmail",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-15",
+      "outcome": "digest duplicates website articles already ingested"
     }
   ],
   "senderRegistry": [
     {
       "publisher": "Greenpointers",
       "match": "greenpointers.com",
-      "kinds": ["event", "news"],
+      "kinds": [
+        "event",
+        "news"
+      ],
       "note": "weekly What's Happening roundup + news; one of many sources, never the only one"
     },
     {
       "publisher": "Shop Small Greenpoint",
-      "match": "shopsmallgreenpoint",
-      "kinds": ["event", "discount", "support_local"],
-      "note": "org newsletter; spell out in reader copy, never 'SSG'"
+      "match": "shopsmallgp",
+      "kinds": [
+        "event",
+        "discount",
+        "support_local"
+      ],
+      "note": "sends via fdske.com relay (shopsmallgp.gmail.com@...); spell out in reader copy, never 'SSG'"
+    },
+    {
+      "publisher": "Falu House",
+      "match": "faluhouse.com",
+      "kinds": [
+        "event",
+        "subscription"
+      ],
+      "note": "34 Norman Ave; Tinned Fish Club + soirees"
+    },
+    {
+      "publisher": "Dandelion Wine",
+      "match": "dandelionwinenyc.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "153 Franklin; announces SAME-DAY tastings — only catchable on morning-of runs"
+    },
+    {
+      "publisher": "WORD Bookstore",
+      "match": "wordbookstores.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "126 Franklin St; monthly newsletter with events block"
+    },
+    {
+      "publisher": "NYC Ferry",
+      "match": "em.ferry.nyc",
+      "kinds": [
+        "news"
+      ],
+      "note": "Greenpoint landing service changes only"
+    },
+    {
+      "publisher": "Tend Greenpoint",
+      "match": "d4sh8s6s9jcvd@squaremktg.com",
+      "kinds": [
+        "discount"
+      ],
+      "note": "plant shop; sends via Square marketing relay"
+    },
+    {
+      "publisher": "PRESS Modern Massage",
+      "match": "pressmodernmassage.com",
+      "kinds": [],
+      "note": "EXCLUDED by Batu 2026-07-15 — 5-location business vs locally-owned framing; do not re-propose"
     }
   ]
 }

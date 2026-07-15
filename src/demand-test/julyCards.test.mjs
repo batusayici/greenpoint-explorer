@@ -15,12 +15,14 @@ test("seed has exactly 34 cards across the six layers", () => {
   // 2026-07-15 limited-launch refresh: 18 past events out, 12 in from the
   // Greenpointers Jul 16–22 roundup, plus the two content-type seeds under
   // test — 3 deals (`discount`) and 3 `news` cards.
-  assert.equal(seed.cards.length, 34);
+  // Evening of 2026-07-15: first Gmail ingest run — +1 event (WORD Journal
+  // Club) +1 news (Rockaway Rocket); PRESS deal dropped by Batu (multi-location).
+  assert.equal(seed.cards.length, 36);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 16, "16 event cards (4 held + 12 from the Jul 16–22 roundup)");
+  assert.equal(count((c) => c.category === "event"), 17, "17 event cards (4 held + 12 roundup + 1 WORD newsletter)");
   assert.equal(count((c) => c.category === "discount"), 3, "3 deal cards");
-  assert.equal(count((c) => c.category === "news"), 3, "3 news cards");
+  assert.equal(count((c) => c.category === "news"), 4, "4 news cards");
   assert.equal(count((c) => c.category === "subscription"), 1, "1 subscription card (Falu House)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 3, "3 G-train campaign/action cards");
 });
@@ -51,7 +53,7 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
 
 test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
-  assert.equal(news.length, 3);
+  assert.equal(news.length, 4);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -96,6 +98,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     "open-studio-library",
     "summer-music-bushwick-inlet",
     "summer-of-horrors-brooklyn-brewery",
+    "word-journal-club",
   ]);
 });
 

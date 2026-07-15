@@ -1595,6 +1595,89 @@
       "updatedAt": "2026-07-15",
       "lat": 40.733462,
       "lng": -73.955583
+    },
+    {
+      "id": "word-journal-club",
+      "category": "event",
+      "sourceCampaign": "newsletter_ingest_2026_07_15",
+      "title": "Journal Club at WORD",
+      "kicker": "Free bookstore journal night",
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St, Brooklyn, NY 11222",
+      "summary": "The Greenpoint bookstore's free Journal Club evening — listed in WORD's July newsletter.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-20T19:00:00-04:00",
+      "endsAt": "2026-07-20T23:59:00-04:00",
+      "free": true,
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's the WORD: July Newsletter (email)",
+          "publisher": "WORD Bookstore",
+          "url": "https://www.wordbookstores.com/events",
+          "date": "2026-07-12"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.729072,
+      "lng": -73.957317
+    },
+    {
+      "id": "rockaway-rocket",
+      "category": "news",
+      "sourceCampaign": "newsletter_ingest_2026_07_15",
+      "title": "The Rockaway Rocket is back",
+      "kicker": "Beach ferry from the India St pier",
+      "locationName": "Greenpoint ferry landing (India St)",
+      "geocodeQuery": "India Street, Greenpoint, Brooklyn, NY",
+      "summary": "NYC Ferry's seasonal Rockaway Rocket returned July 11 and runs for a limited time between Long Island City, Greenpoint, and Rockaway — tickets on ferry.nyc.",
+      "filters": [
+        "news"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Tickets & schedule",
+          "type": "learn_more",
+          "url": "https://www.ferry.nyc/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NYC Ferry service alert — Rockaway Rocket returns July 11 (email)",
+          "publisher": "NYC Ferry",
+          "url": "https://www.ferry.nyc/",
+          "date": "2026-07-08"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.731769,
+      "lng": -73.960549
     }
   ]
 }

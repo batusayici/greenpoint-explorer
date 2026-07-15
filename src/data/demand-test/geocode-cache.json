@@ -1388,5 +1388,60 @@
         "-73.9552593"
       ]
     }
+  },
+  "126 Franklin St, Brooklyn, NY 11222": {
+    "query": "126 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-15T22:51:16.508Z",
+    "hit": {
+      "place_id": 355721447,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2015475513,
+      "lat": "40.7290724",
+      "lon": "-73.9573175",
+      "category": "shop",
+      "type": "books",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "shop",
+      "name": "Word Bookstore",
+      "display_name": "Word Bookstore, 126, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7290224",
+        "40.7291224",
+        "-73.9573675",
+        "-73.9572675"
+      ]
+    }
+  },
+  "India Street Pier, Brooklyn, NY": {
+    "query": "India Street Pier, Brooklyn, NY",
+    "fetchedAt": "2026-07-15T22:51:18.054Z",
+    "hit": null
+  },
+  "India Street, Greenpoint, Brooklyn, NY": {
+    "query": "India Street, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-15T22:51:30.203Z",
+    "hit": {
+      "place_id": 359162227,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 5679155,
+      "lat": "40.7317688",
+      "lon": "-73.9605486",
+      "category": "highway",
+      "type": "residential",
+      "place_rank": 26,
+      "importance": 0.05342509269855799,
+      "addresstype": "road",
+      "name": "India Street",
+      "display_name": "India Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7316797",
+        "40.7318577",
+        "-73.9615130",
+        "-73.9595841"
+      ]
+    }
   }
 }
