@@ -17,14 +17,15 @@ test("seed has exactly 34 cards across the six layers", () => {
   // test — 3 deals (`discount`) and 3 `news` cards.
   // Evening of 2026-07-15: first Gmail ingest run — +1 event (WORD Journal
   // Club) +1 news (Rockaway Rocket); PRESS deal dropped by Batu (multi-location).
-  // Same evening: live-music layer (Batu) — 4 venue cards + 2 Good Room nights.
-  assert.equal(seed.cards.length, 42);
+  // Same evening: live-music layer (Batu) — 4 venue cards + 2 Good Room nights,
+  // then the full Troost nightly program (troostny.com/calendar/, Jul 15–22).
+  assert.equal(seed.cards.length, 50);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 19, "19 event cards (17 + 2 Good Room nights)");
+  assert.equal(count((c) => c.category === "event"), 27, "27 event cards (19 + 8 Troost nights)");
   assert.equal(count((c) => c.category === "discount"), 3, "3 deal cards");
   assert.equal(count((c) => c.category === "news"), 4, "4 news cards");
-  assert.equal(count((c) => c.filters.includes("live_music")), 8, "8 in the Live Music layer (4 venues, 2 club nights, 2 jazz events)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 16, "16 in the Live Music layer (4 venues, 10 show nights, 2 jazz events)");
   assert.equal(count((c) => c.category === "subscription"), 1, "1 subscription card (Falu House)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 3, "3 G-train campaign/action cards");
 });
@@ -185,6 +186,8 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // Live-music layer: venue ↔ its show nights.
   assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-analog-soul", "good-room-bda"]);
   assert.deepEqual(byId("good-room-analog-soul").relatedCardIds, ["good-room"]);
+  assert.equal(byId("troost").relatedCardIds.length, 8, "Troost links its 8 program nights");
+  assert.deepEqual(byId("troost-trom-yorke").relatedCardIds, ["troost"]);
   // 2026-07-15 refresh: events at/with an on-map business link both ways.
   // (The Jul 7–12 pairs aged out with their events.)
   assert.deepEqual(byId("giggles-and-wiggles").relatedCardIds, ["infant-cpr-giggles"]);

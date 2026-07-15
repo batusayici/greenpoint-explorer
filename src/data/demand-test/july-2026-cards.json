@@ -1737,10 +1737,10 @@
       "category": "food_drink",
       "sourceCampaign": "live_music_layer_2026_07_15",
       "title": "Troost",
-      "kicker": "Neighborhood bar with free jazz nights",
+      "kicker": "Live music or DJs nearly every night",
       "locationName": "Troost",
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "The Manhattan Ave bar hosts free jazz in the back — open every day 4 PM to 2 AM. Schedule lives on their site and Instagram.",
+      "summary": "The Manhattan Ave bar programs live music or DJs nearly every night — open daily 4 PM to 2 AM, full calendar on their site.",
       "filters": [
         "live_music",
         "food_drink"
@@ -1752,9 +1752,9 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Their site",
+          "label": "See the calendar",
           "type": "learn_more",
-          "url": "https://www.troostny.com/"
+          "url": "https://troostny.com/calendar/"
         },
         {
           "label": "Visit",
@@ -1769,14 +1769,24 @@
           "date": "2026-07-15"
         }
       ],
-      "evidenceStrength": "medium_high",
+      "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
       "updatedAt": "2026-07-15",
       "lat": 40.733463,
-      "lng": -73.955035
+      "lng": -73.955035,
+      "relatedCardIds": [
+        "troost-trom-yorke",
+        "troost-barba-yiorgi",
+        "troost-danny-ramos",
+        "troost-dj-gutzilla",
+        "troost-invisible-scissors",
+        "troost-bobby-hawk",
+        "troost-radio-brass",
+        "troost-yallah-yallah"
+      ]
     },
     {
       "id": "warsaw-concerts",
@@ -1974,6 +1984,414 @@
       "updatedAt": "2026-07-15",
       "lat": 40.726909,
       "lng": -73.95281
+    },
+    {
+      "id": "troost-trom-yorke",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "Trom Yorke at Troost",
+      "kicker": "Radiohead x Beethoven x Portishead, in space",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Somewhat Social Music — Radiohead, Beethoven and Portishead go to space: Jonathan Goldberger (guitar), Tim Kuhl (drums), Rick Parker (trombone and synths).",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-15T00:00:00-04:00",
+      "endsAt": "2026-07-15T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-barba-yiorgi",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove DJ set",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "World Psychedelic Groove — Barba Yiorgi's recurring Thursday set at the Manhattan Ave bar.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-16T00:00:00-04:00",
+      "endsAt": "2026-07-16T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-danny-ramos",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "Danny Ramos at Troost",
+      "kicker": "Live at Troost",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Danny Ramos plays the bar's nightly live music program.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-17T00:00:00-04:00",
+      "endsAt": "2026-07-17T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-dj-gutzilla",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "DJ Gutzilla at Troost",
+      "kicker": "Yé-yé glam disco funk DJ set",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Yé-yé, glam, disco, funk — WTF?, per the bar's own calendar.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-18T00:00:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-invisible-scissors",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "Invisible Scissors + Alice Cohen + Jaye Bartell",
+      "kicker": "Triple bill: guitars, synths, songs",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Invisible Scissors (electric guitar, vocals, electronics), Alice Cohen with Simon Hanes (keyboard, vocals, electric guitar), and Jaye Bartell (acoustic guitar, vocals).",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-19T00:00:00-04:00",
+      "endsAt": "2026-07-19T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-bobby-hawk",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "Bobby Hawk at Troost",
+      "kicker": "Live at Troost",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Bobby Hawk plays the bar's nightly live music program.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-20T00:00:00-04:00",
+      "endsAt": "2026-07-20T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-radio-brass",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "Radio Brass tape release at Troost",
+      "kicker": "Brass tape-release show",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Radio Brass celebrates a tape release at the Manhattan Ave bar.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-21T00:00:00-04:00",
+      "endsAt": "2026-07-21T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "id": "troost-yallah-yallah",
+      "category": "event",
+      "sourceCampaign": "troost_calendar_2026_07_15",
+      "title": "Yallah Yallah at Troost",
+      "kicker": "Live at Troost",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "Yallah Yallah plays the bar's nightly live music program.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": "manhattan-ave",
+      "startsAt": "2026-07-22T00:00:00-04:00",
+      "endsAt": "2026-07-22T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost — calendar",
+          "publisher": "Troost",
+          "url": "https://troostny.com/calendar/",
+          "date": "2026-07-15"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "troost"
+      ],
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-07-15",
+      "lat": 40.733463,
+      "lng": -73.955035
     }
   ]
 }
