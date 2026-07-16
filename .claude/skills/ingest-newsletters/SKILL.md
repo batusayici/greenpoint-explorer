@@ -30,6 +30,10 @@ Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live 
   - Hide & Seek — hideandseek.nyc (recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat)
   - Scrappleland — scrappleland.com (ScrappleLeague Wednesdays; re-verify season is running)
   - WORD — wordbookstores.com/events (Brooklyn filter)
+- **Community-institution roster** (2026-07-16, the ChatGPT-gap check): not businesses, so the locally-owned gate doesn't apply — these are the free/family backbone of the feed:
+  - Greenpoint Library — bklynlibrary.org/locations/greenpoint (rich weekly calendar; group into per-day cards, don't flood)
+  - Go Green Brooklyn — gogreenbk.org (Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days)
+- **Aggregator claims rule**: events cited only by aggregators/AI answers (allevents.in, Moviefone, dead Eventbrite links) are NOT sources — verify at the organizer's own page or skip with a ledger note (precedents: Self Love Journaling 404, phantom Film Noir 9pm show).
 - **Locally-owned hard gate** (Batu, 2026-07-16): only locally owned small businesses & venues get cards. Corporate-operated venues are skipped entirely — check site footers/careers pages for operator identity (precedent: Warsaw removed, Live Nation-operated; PRESS dropped, multi-location).
 - **Senders worth subscribing to** (Batu action, then add to registry): Flower Cat, Dandelion Wine (tastings are newsletter-only), Archestratus, Hide & Seek.
 - Skip anything whose Gmail message ID / URL is already in `processedItems`.

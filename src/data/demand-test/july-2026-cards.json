@@ -858,11 +858,14 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-16",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "free": true,
       "lat": 40.72606,
-      "lng": -73.950709
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ]
     },
     {
       "id": "summer-music-bushwick-inlet",
@@ -1127,11 +1130,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-16",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "free": true,
       "lat": 40.72606,
-      "lng": -73.950709
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library",
+        "library-period-pantry"
+      ]
     },
     {
       "id": "onigiri-popup-di-an-di",
@@ -3662,6 +3669,412 @@
       "address": "1120 Manhattan Ave, Brooklyn, NY 11222",
       "lat": 40.736778,
       "lng": -73.955172
+    },
+    {
+      "id": "greenpoint-library",
+      "category": "arts_culture",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Greenpoint Library & Eco Center",
+      "kicker": "The neighborhood's free program engine",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "Full-service branch and environmental education center on Norman Ave — storytimes, teen tech, garden hours, English classes and studio time nearly every day, plus a rooftop demonstration garden.",
+      "filters": [
+        "family_kids",
+        "arts_culture",
+        "events"
+      ],
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "relatedCardIds": [
+        "open-studio-library",
+        "kombucha-workshop-library",
+        "library-sunset-storytime",
+        "library-garden-friday",
+        "library-period-pantry",
+        "library-chair-yoga",
+        "library-tuesday-programs",
+        "library-wednesday-programs"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "library-sunset-storytime",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Sunset Storytime",
+      "kicker": "Evening storytime for families, 6pm",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "The branch's evening storytime — held inside today, per the calendar. Pairs with the 5:30pm open studio time upstairs.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family",
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-16T18:00:00-04:00",
+      "endsAt": "2026-07-16T23:59:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "library-garden-friday",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Garden Friday at the library",
+      "kicker": "Sensory garden 10:30am, movie + garden 3pm",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "Sensory Garden Hour in the morning, then the after-school movie and open garden hours with a garden educator in the afternoon.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family",
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-17T10:30:00-04:00",
+      "endsAt": "2026-07-17T23:59:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "library-period-pantry",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "The Cycle Alliance's Period Pantry",
+      "kicker": "Free period products in the teen lab",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "The Cycle Alliance sets up in Eco Lab 3 — same morning as the kombucha brewing workshop downstairs.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-18T10:00:00-04:00",
+      "endsAt": "2026-07-18T23:59:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library",
+        "kombucha-workshop-library"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "library-chair-yoga",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Chair Yoga for Adults",
+      "kicker": "Gentle midday session at the library",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "The branch's adult chair yoga session — all levels.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-20T13:30:00-04:00",
+      "endsAt": "2026-07-20T23:59:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "library-tuesday-programs",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Tuesday at the library",
+      "kicker": "Free notary + English 2pm, knitting 5:30pm",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "Free notary services and the free English class in the afternoon, then Keep Calm & Carry Yarn in the evening.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-21T14:00:00-04:00",
+      "endsAt": "2026-07-21T23:59:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "free": true,
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "library-wednesday-programs",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Wednesday at the library",
+      "kicker": "Toddler Time am; roof garden + play 1pm",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "summary": "Toddler Time twice in the morning, then open roof-garden hours, Read and Play, and Computer Basics through the afternoon.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family",
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Full calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library — branch page & event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-22T10:30:00-04:00",
+      "endsAt": "2026-07-22T23:59:00-04:00",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "id": "longevity-stick-transmitter",
+      "category": "event",
+      "sourceCampaign": "community_institutions_2026_07_16",
+      "title": "Longevity Stick at Transmitter Park",
+      "kicker": "Free tai chi-style class, sticks provided",
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "summary": "Friends of WNYC Transmitter Park's free morning class at the pier entrance — a tai chi/yoga flow made accessible by the stick. Registering helps them reach you on rain delays.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Sign up (free)",
+          "type": "signup",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-07-23/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Longevity Stick (Transmitter Park) — series schedule",
+          "publisher": "Friends of WNYC Transmitter Park / Go Green Brooklyn",
+          "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-07-12/",
+          "date": "2026-07-16"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-16",
+      "updatedAt": "2026-07-16",
+      "startsAt": "2026-07-23T08:00:00-04:00",
+      "endsAt": "2026-07-23T08:45:00-04:00",
+      "free": true,
+      "lat": 40.729537,
+      "lng": -73.960287
     }
   ]
 }

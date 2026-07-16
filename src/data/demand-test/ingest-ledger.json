@@ -204,6 +204,34 @@
    "publisher": "Le Fanfare",
    "processedAt": "2026-07-16",
    "outcome": "no published performer calendar (hours only) — no dated cards possible; venue card unchanged"
+  },
+  {
+   "id": "https://www.bklynlibrary.org/locations/greenpoint",
+   "kind": "web",
+   "publisher": "Brooklyn Public Library",
+   "processedAt": "2026-07-16",
+   "outcome": "library venue card + 6 day cards (Jul 16-22) from the branch calendar; confirms existing open-studio + kombucha cards"
+  },
+  {
+   "id": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-07-12/",
+   "kind": "web",
+   "publisher": "Friends of WNYC Transmitter Park",
+   "processedAt": "2026-07-16",
+   "outcome": "1 free event added (Longevity Stick Thu Jul 23 8am; today's 8am instance already past)"
+  },
+  {
+   "id": "https://www.eventbrite.com/e/self-love-journaling-in-mccarren-park-tickets-1993344857127",
+   "kind": "web",
+   "publisher": "Eventbrite",
+   "processedAt": "2026-07-16",
+   "outcome": "SKIPPED — ChatGPT-cited event; Eventbrite page 404s, only aggregator echoes exist (unverifiable)"
+  },
+  {
+   "id": "moviefone-greenpoint-showtimes-2026-06-22",
+   "kind": "web",
+   "publisher": "Moviefone",
+   "processedAt": "2026-07-16",
+   "outcome": "SKIPPED — ChatGPT claimed 'Film Noir (2007) 9pm Jul 16'; cinema's own July calendar shows Jul 16 dark (stale June source)"
   }
  ],
  "senderRegistry": [

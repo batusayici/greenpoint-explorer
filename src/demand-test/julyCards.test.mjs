@@ -24,10 +24,13 @@ test("seed has exactly 34 cards across the six layers", () => {
   // +7 venue/business cards (Eavesdrop, Lot Radio, Greenpoint Comedy Club,
   // Film Noir Cinema, Scrappleland, Flower Cat, Hide & Seek), +17 events from
   // their published calendars, +1 subscription, +1 support, +1 news.
-  assert.equal(seed.cards.length, 75);
+  // Later on 2026-07-16 (ChatGPT-gap check): community-institution sweep —
+  // Greenpoint Library venue + 6 day cards from the branch's own calendar,
+  // plus the Friends of Transmitter Park Longevity Stick class (Jul 23).
+  assert.equal(seed.cards.length, 83);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 43, "43 event cards (26 carried + 17 expansion)");
+  assert.equal(count((c) => c.category === "event"), 50, "50 event cards (43 + 7 community-institution days)");
   assert.equal(count((c) => c.category === "discount"), 3, "3 deal cards");
   assert.equal(count((c) => c.category === "news"), 5, "5 news cards");
   assert.equal(count((c) => c.filters.includes("live_music")), 26, "26 in the Live Music layer (venues + show nights + jazz events)");
@@ -103,6 +106,8 @@ test("free-ness is designated only where the source states it (tester feedback #
   assert.deepEqual(free, [
     "archestratus-golden-hour-hang",
     "kombucha-workshop-library",
+    "library-tuesday-programs",
+    "longevity-stick-transmitter",
     "morning-yoga-transmitter",
     "open-studio-library",
     "summer-music-bushwick-inlet",

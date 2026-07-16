@@ -1673,5 +1673,30 @@
         "-73.9555591"
       ]
     }
+  },
+  "10 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "10 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:22:47.385Z",
+    "hit": {
+      "place_id": 402067352,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 875360680,
+      "lat": "40.7295374",
+      "lon": "-73.9602868",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "10, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294874",
+        "40.7295874",
+        "-73.9603368",
+        "-73.9602368"
+      ]
+    }
   }
 }
