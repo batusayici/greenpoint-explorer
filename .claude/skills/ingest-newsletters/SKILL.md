@@ -19,6 +19,19 @@ Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live 
 
 - **Gmail** (connector): search threads from each `senderRegistry` sender (`from:<match> newer_than:Xd`), plus a discovery pass (`{greenpoint "manhattan ave" "franklin st"} newer_than:Xd`) for senders not yet in the registry. New plausible senders → propose adding to the registry in the review step. If the Gmail connector errors with a permissions message, tell Batu to reconnect it with read access and continue with web sources only.
 - **Web**: the newest Greenpointers "What's Happening" weekly roundup (greenpointers.com blocks WebFetch — use the Browser tools), plus re-verification of any `recurring` deal whose `endsAt` (verified-through date) has passed.
+- **Business-as-venue roster** (2026-07-16, the Flower Cat lesson): locally owned spots whose event programs never reach newsletters or Greenpointers. Check each published calendar every run for the coming week:
+  - Troost — troostny.com/calendar/
+  - Eavesdrop — eavesdrop.nyc/calendar
+  - Greenpoint Comedy Club — tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index
+  - Film Noir Cinema — filmnoircinema.com (month grid; also watch the "Keep Us Alive" banner)
+  - Good Room — donyc.com/venues/good-room (their own site is JS-thin)
+  - Archestratus — archestrat.us/pages/events
+  - Flower Cat — flowercat.nyc/events (often empty — they announce late; venue card carries the "check their channels" note)
+  - Hide & Seek — hideandseek.nyc (recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat)
+  - Scrappleland — scrappleland.com (ScrappleLeague Wednesdays; re-verify season is running)
+  - WORD — wordbookstores.com/events (Brooklyn filter)
+- **Locally-owned hard gate** (Batu, 2026-07-16): only locally owned small businesses & venues get cards. Corporate-operated venues are skipped entirely — check site footers/careers pages for operator identity (precedent: Warsaw removed, Live Nation-operated; PRESS dropped, multi-location).
+- **Senders worth subscribing to** (Batu action, then add to registry): Flower Cat, Dandelion Wine (tastings are newsletter-only), Archestratus, Hide & Seek.
 - Skip anything whose Gmail message ID / URL is already in `processedItems`.
 
 ### 2. Parse into draft cards — truth rules (hard)
@@ -31,7 +44,7 @@ Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live 
 - Cross-link: if a card is at/with a business already on the map, add reciprocal `relatedCardIds`.
 - Conflicting sources (e.g. two articles disagree on a date): prefer the dedicated article over a roundup line, note the conflict, set `trustRisk: "medium"`.
 
-### 3. Expiry hygiene
+### 3. Expiry hygiene (auto-delete — no approval needed, Batu 2026-07-16)
 
 - Delete `event` cards with `endsAt` before today.
 - Drop or re-verify `discount` cards past their `endsAt` (recurring ones: re-verify against the source; if unverifiable, delete).

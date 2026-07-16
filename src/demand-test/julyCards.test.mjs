@@ -19,15 +19,20 @@ test("seed has exactly 34 cards across the six layers", () => {
   // Club) +1 news (Rockaway Rocket); PRESS deal dropped by Batu (multi-location).
   // Same evening: live-music layer (Batu) — 4 venue cards + 2 Good Room nights,
   // then the full Troost nightly program (troostny.com/calendar/, Jul 15–22).
-  assert.equal(seed.cards.length, 50);
+  // 2026-07-16 venue-calendar expansion (Batu): locally-owned-only hard gate —
+  // Warsaw removed (Live Nation-operated), Trom Yorke night expired out;
+  // +7 venue/business cards (Eavesdrop, Lot Radio, Greenpoint Comedy Club,
+  // Film Noir Cinema, Scrappleland, Flower Cat, Hide & Seek), +17 events from
+  // their published calendars, +1 subscription, +1 support, +1 news.
+  assert.equal(seed.cards.length, 75);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 27, "27 event cards (19 + 8 Troost nights)");
+  assert.equal(count((c) => c.category === "event"), 43, "43 event cards (26 carried + 17 expansion)");
   assert.equal(count((c) => c.category === "discount"), 3, "3 deal cards");
-  assert.equal(count((c) => c.category === "news"), 4, "4 news cards");
-  assert.equal(count((c) => c.filters.includes("live_music")), 16, "16 in the Live Music layer (4 venues, 10 show nights, 2 jazz events)");
-  assert.equal(count((c) => c.category === "subscription"), 1, "1 subscription card (Falu House)");
-  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 3, "3 G-train campaign/action cards");
+  assert.equal(count((c) => c.category === "news"), 5, "5 news cards");
+  assert.equal(count((c) => c.filters.includes("live_music")), 26, "26 in the Live Music layer (venues + show nights + jazz events)");
+  assert.equal(count((c) => c.category === "subscription"), 2, "2 subscription cards (Falu House, Flower Cat)");
+  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
@@ -56,7 +61,7 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
 
 test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
-  assert.equal(news.length, 4);
+  assert.equal(news.length, 5);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -96,6 +101,7 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   assert.deepEqual(free, [
+    "archestratus-golden-hour-hang",
     "kombucha-workshop-library",
     "morning-yoga-transmitter",
     "open-studio-library",
@@ -181,13 +187,21 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.deepEqual(byId("g-advocacy-mta").relatedCardIds, ["g-train-closures", "adopt-a-business"]);
   assert.ok(byId("sailor-and-siren").relatedCardIds.includes("g-train-closures"));
   assert.ok(byId("sotteatery").relatedCardIds.includes("g-train-closures"));
-  assert.deepEqual(byId("world-cup-watch").relatedCardIds, ["socceria", "warsaw-concerts"]);
+  // 2026-07-16: Warsaw card removed (locally-owned gate); the comedy club's
+  // watch party joins the cluster instead.
+  assert.deepEqual(byId("world-cup-watch").relatedCardIds, ["socceria", "gcc-world-cup-final"]);
   assert.deepEqual(byId("socceria").relatedCardIds, ["world-cup-watch"]);
   // Live-music layer: venue ↔ its show nights.
   assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-analog-soul", "good-room-bda"]);
   assert.deepEqual(byId("good-room-analog-soul").relatedCardIds, ["good-room"]);
-  assert.equal(byId("troost").relatedCardIds.length, 8, "Troost links its 8 program nights");
-  assert.deepEqual(byId("troost-trom-yorke").relatedCardIds, ["troost"]);
+  assert.equal(byId("troost").relatedCardIds.length, 7, "Troost links its 7 remaining program nights (Jul 15 expired out)");
+  assert.deepEqual(byId("troost-barba-yiorgi").relatedCardIds, ["troost"]);
+  // 2026-07-16 expansion: each new venue links its program and back.
+  assert.equal(byId("eavesdrop").relatedCardIds.length, 5, "Eavesdrop links its 5 calendar days");
+  assert.deepEqual(byId("eavesdrop-subcultures").relatedCardIds, ["eavesdrop"]);
+  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 5);
+  assert.ok(byId("coffin-doc-film-noir").relatedCardIds.includes("film-noir-cinema"), "existing screening joins the venue graph");
+  assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
   // 2026-07-15 refresh: events at/with an on-map business link both ways.
   // (The Jul 7–12 pairs aged out with their events.)
   assert.deepEqual(byId("giggles-and-wiggles").relatedCardIds, ["infant-cpr-giggles"]);

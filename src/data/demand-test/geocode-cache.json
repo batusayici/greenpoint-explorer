@@ -1518,5 +1518,160 @@
         "-73.9553902"
       ]
     }
+  },
+  "674 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "674 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:00:35.238Z",
+    "hit": {
+      "place_id": 358955549,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081490,
+      "lat": "40.7248940",
+      "lon": "-73.9511812",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "674, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7248232",
+        "40.7249620",
+        "-73.9513150",
+        "-73.9510552"
+      ]
+    }
+  },
+  "17 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "17 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:00:36.764Z",
+    "hit": {
+      "place_id": 358196672,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 4796441725,
+      "lat": "40.7227979",
+      "lon": "-73.9540539",
+      "category": "amenity",
+      "type": "studio",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "The Lot Radio",
+      "display_name": "The Lot Radio, 17, Nassau Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7227479",
+        "40.7228479",
+        "-73.9541039",
+        "-73.9540039"
+      ]
+    }
+  },
+  "66 Greenpoint Ave, Brooklyn, NY 11222": {
+    "query": "66 Greenpoint Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:00:38.300Z",
+    "hit": {
+      "place_id": 359179739,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132499,
+      "lat": "40.7295668",
+      "lon": "-73.9583373",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "66, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294330",
+        "40.7297005",
+        "-73.9584006",
+        "-73.9582739"
+      ]
+    }
+  },
+  "593 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "593 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:00:39.608Z",
+    "hit": {
+      "place_id": 359165124,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081400,
+      "lat": "40.7229297",
+      "lon": "-73.9506173",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "593, Manhattan Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7228537",
+        "40.7230056",
+        "-73.9507898",
+        "-73.9504447"
+      ]
+    }
+  },
+  "West Street & Commercial Street, Brooklyn, NY 11222": {
+    "query": "West Street & Commercial Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:00:41.389Z",
+    "hit": null
+  },
+  "1120 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "1120 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:00:42.972Z",
+    "hit": {
+      "place_id": 356858227,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 8940100208,
+      "lat": "40.7367784",
+      "lon": "-73.9551724",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.24782860043147328,
+      "addresstype": "amenity",
+      "name": "Saint Vitus Bar",
+      "display_name": "Saint Vitus Bar, 1120, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7367284",
+        "40.7368284",
+        "-73.9552224",
+        "-73.9551224"
+      ]
+    }
+  },
+  "Commercial Street, Greenpoint, Brooklyn, NY 11222": {
+    "query": "Commercial Street, Greenpoint, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-16T15:01:04.521Z",
+    "hit": {
+      "place_id": 360026299,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 221747614,
+      "lat": "40.7376174",
+      "lon": "-73.9560416",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.05342509269855799,
+      "addresstype": "road",
+      "name": "Commercial Street",
+      "display_name": "Commercial Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7373530",
+        "40.7378918",
+        "-73.9565297",
+        "-73.9555591"
+      ]
+    }
   }
 }
