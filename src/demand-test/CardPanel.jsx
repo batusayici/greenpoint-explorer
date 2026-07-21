@@ -23,11 +23,13 @@ const CHIP_KIND = {
 const SIGNUP_URL = "https://tally.so/r/44daZo";
 
 // Limited-launch feedback channel (2026-07-15): hosted form only — Batu's
-// email stays private (2026-07-15 review note), so no mailto anywhere. Until
-// a dedicated feedback Tally exists, the signup form (which carries a free-
-// text field) is the target; swap in the feedback form URL when created.
-const FEEDBACK_FORM_URL = ""; // ← drop in the dedicated Tally feedback form URL
-const FEEDBACK_HREF = FEEDBACK_FORM_URL || "https://tally.so/r/44daZo";
+// email stays private (2026-07-15 review note), so no mailto anywhere.
+// Dedicated feedback form created 2026-07-21 ("Greenpoint Life — what's
+// missing or wrong?"): two optional text boxes + optional email, so error
+// reports stay anonymous-friendly and the signup form's count stays a clean
+// commitment metric.
+const FEEDBACK_FORM_URL = "https://tally.so/r/LZqEj1";
+const FEEDBACK_HREF = FEEDBACK_FORM_URL || SIGNUP_URL;
 
 function ActionLink({ action, card, onFilter }) {
   const cls = "july-action";
