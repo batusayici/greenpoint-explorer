@@ -10,7 +10,12 @@ Plan of record for the launch → learn → PMF campaign. Decided in the 2026-07
 - **Claude — PM / Designer / PMM / Analyst:** runs the weekly loop, spawns subagents, drafts everything.
 - **Weekly rhythm:** Mon `/ingest-newsletters` (review-gated) + analytics pull → Tue readout + top-3 proposals → Wed–Fri approved ships (TDD, preview-verified, gated deploy).
 - **Gates:** no unapproved prod deploys · truth rules (nothing invented; sources required) · II-C palette on anything visual · decisions land in `DECISION_LOG.md`.
-- **Token policy:** Haiku subagents for mechanical work (scans, geocode, verifiers) · Sonnet for implementation/parsing/drafts · full model only for synthesis, taste gates, and checkpoint judgment.
+- **Model policy (refined 2026-07-21, Batu):** capability first, cost second — complex tasks go to the most capable model for the job; savings come only from work whose output is mechanically verifiable.
+  - **Fable (main thread, never delegated below):** product judgment, taste gates, strategy, checkpoint analysis, final synthesis, review of every gated ship.
+  - **Fable/Opus subagents:** anything complex or ambiguous when delegated — multi-file features, design-sensitive implementation, voice-critical marketing drafts, open-ended research, ingest calls with judgment (locally-owned gate, dedup, category).
+  - **Sonnet subagents:** only work fully constrained by a spec + tests/rubric where a miss is cheap and catchable.
+  - **Haiku subagents:** mechanical only — scans, geocoding, transforms, verifier runs (output test-checkable).
+  - **Escalation bias:** unsure → one tier up. Complexity is judged per task, not per phase.
 
 ## Phase 1 — Checkpoint prep (→ Jul 28)
 
