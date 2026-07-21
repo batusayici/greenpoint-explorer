@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-07-21 — PMF ops regime: checkpoint-gated public launch at greenpoint.life; Claude runs PM/Design/PMM/Analyst loop
+
+Decision (Batu, operating-model interview). The product's consumer name is **Greenpoint Life** (already on `july.html`); the bought-but-unwired **greenpoint.life** domain becomes canonical *only if* the Jul 29 checkpoint passes. Repo/3D prototype keep the Explorer name.
+
+**Locked:**
+1. **Sequence:** run the ~Jul 29 checkpoint rigorously against the 2026-07-15 kit bar; widen to public channels + domain cutover only on pass. Fail → no public push; ~5 qualitative interviews and a wedge reframe instead.
+2. **PMF bar is two-sided pull** (not the threshold ladder alone): residents return weekly unprompted AND businesses/orgs proactively submit/ask in. Draft numbers (confirm at checkpoint): ≥30 locals at ≥2 visits/week for 3 consecutive weeks by ~Sep 15; ≥5 supply-side actors, ≥1 recurring.
+3. **Operating model:** Claude acts as PM/Designer/PMM/Analyst on a weekly cycle (Mon ingest + analytics → Tue readout + proposals → gated ships). Nothing user-visible deploys unapproved; Batu sends every message; token-tiering policy (Haiku mechanical / Sonnet build / full model for synthesis + taste).
+4. **Data access:** self-serve readouts via Vercel MCP (Batu to authorize) + Tally exports; fallback Monday dashboard screenshots. *(Same-day amendment: the Vercel MCP exposes no analytics tools; the real path is the Web Analytics REST API / CLI `metrics` + Tally exports. Audit also found Web Analytics was never enabled on the project — nothing collected Jul 15–21; fix + events-transport decision in ops plan 1.1–1.2.)*
+5. **Public launch cut (gates the push):** OG + per-card deep links · save/star + day filter (the validated Laura/Edmond asks) · business submission path. De-July reframe does **not** gate but must ship by Aug 1.
+6. **Channels prepared:** Reddit + local groups, physical II-C QR window card. Greenpointers pitch + further SSG amplification deliberately held for later.
+
+Owner: Batu (verdicts, sends) / Agent (build, drafts, readouts). Ops plan: `docs/launch/2026-07-21-pmf-ops-plan.md`; interview plan of record: `~/.claude/plans/you-will-act-as-rippling-seal.md`.
+
 ## 2026-07-15 — Track V limited launch: go, free MVP, newsletter ingest, no login
 
 Decision (Batu, launch-scope interview on the original go/no-go date). Track V proceeds to a **limited launch** to validate value & adoption of a free version.

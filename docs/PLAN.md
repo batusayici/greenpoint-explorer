@@ -8,6 +8,8 @@ Status: Active roadmap · Reset 2026-06-11 · Owner: Batu (taste/product/approva
 
 **Greenpoint Explorer is a neighborhood exploration platform** — it helps people discover Greenpoint through stories, landmarks, events, history, and curated routes, not through search. The lifelike, hand-inked 3D map is the **recognition layer / container**; the location-linked context attached to places is the product. (People don't travel to browse listings — they travel to discover places; businesses benefit when discovery happens.)
 
+**Naming (2026-07-21):** the consumer product is **Greenpoint Life**; the bought domain **greenpoint.life** becomes canonical only if the Jul 29 checkpoint passes. Repo + 3D prototype keep the Explorer name.
+
 The container: a 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike — every building and business where it is in real life and recognizably itself. Art-directed and stylized, not hyperrealistic. The recognition bar ("yes, that's *my* neighborhood") is load-bearing but serves the platform; it is not the end in itself.
 
 - **Multi-angle (firm):** viewable from all four orthogonal iso angles (90° steps) + pan/zoom. A single angle structurally hides ~half of all frontages and their businesses; four rotations reveal every frontage. Scene completeness is judged from all four angles. (Not free-cam, which stays debug-only.)
@@ -67,8 +69,9 @@ The **container** (Track A — geometry, inked look, facades, ground, multi-angl
 ## Roadmap at a glance
 
 - **Done:** Reset baseline · style spike + look gate · Franklin corner vertical slice (facades, ground, corner signals, place cards, multi-angle camera) · MVP scene + procedural block scaling · curation + visual-system contract (Phase 6) · asset kit clapboard slice + roof tones (Phase 7, fan-out pending) · structural depth (8.0) · spine expansion — full kit flip + Franklin-north corridor (8.1) · `PlaceStory` schema (8.2).
-- **Now:** Track V — **limited launch** (2026-07-15 go): deals + news content types, weekly newsletter ingest (`/ingest-newsletters` skill + ledger), feedback channel, post-value email prompt (no login), `?src=` channel attribution. Two invite waves (warm network → Shop Small Greenpoint); 2-week checkpoint ~Jul 29 against `docs/launch/2026-07-15-limited-launch-kit.md`.
-- **Next (gated on Track V validating):** Track R recognizability → stories / events / instrumentation.
+- **Now:** Track V — **checkpoint week** (PMF ops regime 2026-07-21 → `docs/launch/2026-07-21-pmf-ops-plan.md`): both waves out; scorecard pre-registered (`docs/launch/2026-07-29-checkpoint-readout.md`) + Mon Jul 27 ingest → **~Jul 29 checkpoint** against the 2026-07-15 kit bar. Weekly loop: Mon ingest + analytics → Tue readout → gated ships.
+- **Next (gated on checkpoint pass):** public launch cut — OG + per-card deep links, save/star + day filter, business submission path, **greenpoint.life cutover**, Reddit/local-groups + QR window card (drafted, Batu sends) → weekly PMF loop toward the two-sided bar (~mid-Sep).
+- **Then (gated on PMF signal):** Track R recognizability → stories / events / instrumentation.
 - **Then:** Phase 10 — Living Scene.
 - **Later (Phase 9 — Validate & Scale):** landmark-set completion, curated routes (H2), events at scale (H3), North-Star instrumentation, monetization (H4), roof/pavement detail, pre-launch truth pass, public demo, repeatability (H5).
 
