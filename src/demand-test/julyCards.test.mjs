@@ -47,7 +47,7 @@ test("no fully-past events linger in the seed (refresh discipline)", () => {
 });
 
 test("deals carry the expiry contract; recurring deals are flagged, dated deals are not", () => {
-  // Limited launch: expired deals vanish at render time (isExpiredDeal), so
+  // Limited launch: expired dated cards vanish at render time (isExpiredCard), so
   // endsAt is load-bearing on every deal. recurring marks endsAt as merely
   // verified-through (UI suppresses the "ends" line) — a dated one-night deal
   // must NOT carry it.

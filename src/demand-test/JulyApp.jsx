@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredDeal, groupByDay } from "./filterCards.js";
+import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
+import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
@@ -42,10 +43,14 @@ export default function JulyApp() {
     }
   }, []);
 
+  // Computed per render, not memoized — the banner must flip phase on the
+  // day boundaries even in a long-lived tab.
+  const gtrainPhase = bannerPhase(new Date());
+
   const { visible, groups } = useMemo(() => {
     const now = new Date();
     const shown = seed.cards
-      .filter((c) => !isExpiredDeal(c, now))
+      .filter((c) => !isExpiredCard(c, now))
       .filter((c) => matchesFilter(c, filter))
       .filter((c) => !todayOnly || isActiveOn(c, now));
     // Map keeps the flat set; the list scans as a calendar (day groups).
@@ -88,13 +93,15 @@ export default function JulyApp() {
           </p>
         </div>
       </header>
-      <div className="july-gbanner" role="status">
-        <span className="july-gbadge">G</span>
-        <span>
-          <strong>No G trains overnight</strong> 9:45 PM&ndash;5 AM through Fri Jul 17
-          &middot; Greenpoint Av + Nassau Av &middot; free T403 shuttle
-        </span>
-      </div>
+      {gtrainPhase != null && (
+        <div className="july-gbanner" role="status">
+          <span className="july-gbadge">G</span>
+          <span>
+            <strong>{gtrainPhase === "active" ? "No G trains" : "Next G closure"}</strong>{" "}
+            {GTRAIN_WINDOW.dates} &middot; {GTRAIN_WINDOW.stops} &middot; {GTRAIN_WINDOW.shuttle}
+          </span>
+        </div>
+      )}
       <main className="july-main">
         <CardPanel
           groups={groups}

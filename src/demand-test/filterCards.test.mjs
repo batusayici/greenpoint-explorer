@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredDeal, groupByDay } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the spec's eleven, in order, with display labels", () => {
@@ -93,13 +93,19 @@ test("groupByDay: an all-undated layer is a single Ongoing group", () => {
   assert.equal(groups[0].key, "ongoing");
 });
 
-test("isExpiredDeal: only a past-endsAt deal expires; events and undated cards never do", () => {
+// 2026-07-21 live-page regression: an event that ended Jul 20 survived to
+// Jul 21 (ingest is weekly) and regrouped under its stale START day, sorting
+// ABOVE Today. Any dated card with a passed window must vanish at render time.
+test("isExpiredCard: any past-endsAt card expires; open windows and undated cards never do", () => {
   const jul15 = new Date("2026-07-15T12:00:00-04:00");
   const liveDeal = { category: "discount", endsAt: "2026-07-20T23:59:00-04:00" };
   const deadDeal = { category: "discount", endsAt: "2026-07-10T23:59:00-04:00" };
   const pastEvent = { category: "event", endsAt: "2026-07-10T23:59:00-04:00" };
-  assert.ok(!isExpiredDeal(liveDeal, jul15));
-  assert.ok(isExpiredDeal(deadDeal, jul15));
-  assert.ok(!isExpiredDeal(pastEvent, jul15), "events are purged by refresh, not hidden");
-  assert.ok(!isExpiredDeal({ category: "new_business" }, jul15));
+  const liveEvent = { category: "event", startsAt: "2026-07-06T00:00:00-04:00", endsAt: "2026-07-20T23:59:00-04:00" };
+  assert.ok(!isExpiredCard(liveDeal, jul15));
+  assert.ok(isExpiredCard(deadDeal, jul15));
+  assert.ok(isExpiredCard(pastEvent, jul15), "expired events must vanish, not wait for the weekly refresh");
+  assert.ok(!isExpiredCard(liveEvent, jul15), "a window still open is live");
+  assert.ok(!isExpiredCard({ category: "new_business" }, jul15), "undated cards never expire");
+  assert.ok(!isExpiredCard({ category: "news", startsAt: "2026-07-01T00:00:00-04:00" }, jul15), "no endsAt → never expires");
 });

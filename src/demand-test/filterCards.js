@@ -91,11 +91,13 @@ export function groupByDay(cards, date) {
     .map((g) => ({ ...g, cards: g.key === "ongoing" ? g.cards : [...g.cards].sort(byStart) }));
 }
 
-// A deal is dead the moment its window closes — unlike events (which the
-// weekly refresh purges), an expired offer must vanish at render time so
-// nobody walks in waving a lapsed discount. Undated non-deals never expire.
-export function isExpiredDeal(card, date) {
-  if (card.category !== "discount" || card.endsAt == null) return false;
+// A dated card is dead the moment its window closes — expiry can't wait for
+// the weekly refresh: a card ending mid-week would linger up to six days
+// (someone walks in waving a lapsed deal, or shows up to a finished event)
+// and, worse, groupByDay would regroup it under its stale start day ABOVE
+// Today (the 2026-07-21 live-page bug). Undated cards never expire.
+export function isExpiredCard(card, date) {
+  if (card.endsAt == null) return false;
   return Date.parse(card.endsAt) < date.getTime();
 }
 
