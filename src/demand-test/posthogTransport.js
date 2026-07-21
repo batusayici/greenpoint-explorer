@@ -21,11 +21,18 @@ export function createCaptureTransport(posthog) {
   return (name, payload) => posthog.capture(name, payload);
 }
 
+// posthog-js MUTATES the config object it is given (it writes the token and
+// merged defaults into it) — handing it the frozen contract object above made
+// the token write fail silently and every capture drop. Always pass a copy.
+export function buildInitConfig() {
+  return { ...POSTHOG_CONFIG };
+}
+
 // No key → resolve null and change nothing (the page ships dark until
 // VITE_POSTHOG_KEY lands in the Vercel env / .env.local).
 export async function initPostHog(key) {
   if (!key) return null;
   const { default: posthog } = await import("posthog-js");
-  posthog.init(key, POSTHOG_CONFIG);
+  posthog.init(key, buildInitConfig());
   return posthog;
 }

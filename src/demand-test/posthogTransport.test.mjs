@@ -2,9 +2,23 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   POSTHOG_CONFIG,
+  buildInitConfig,
   createCaptureTransport,
   initPostHog,
 } from "./posthogTransport.js";
+
+// Regression (2026-07-21): posthog-js mutates the config it receives (writes
+// the token into it). Passing the frozen contract object made that write fail
+// silently — initialized instance, null token, every capture dropped. init
+// must always get a fresh mutable copy.
+test("buildInitConfig returns a mutable copy of the frozen contract", () => {
+  const cfg = buildInitConfig();
+  assert.deepEqual(cfg, { ...POSTHOG_CONFIG });
+  assert.ok(!Object.isFrozen(cfg), "posthog-js must be able to write into its config");
+  cfg.token = "phc_test";
+  assert.equal(cfg.token, "phc_test");
+  assert.notEqual(buildInitConfig(), cfg, "each call yields a fresh object");
+});
 
 test("createCaptureTransport forwards name + payload to posthog.capture", () => {
   const calls = [];
