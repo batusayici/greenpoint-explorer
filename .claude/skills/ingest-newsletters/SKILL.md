@@ -17,6 +17,7 @@ Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live 
 
 ### 1. Gather (since ledger.lastRunAt)
 
+- **Coverage-scan report first** (2026-07-21): read the newest report in `docs/launch/coverage-scans/` (written by the scheduled `greenpoint-coverage-scan-sunday` / `-thursday` tasks — external sweep diffed against live cards). Its MISSING list is a pre-built work queue: verify each item at the organizer's page and carry it into the draft cards; its stale/wrong list feeds expiry hygiene; its new-source candidates feed the registry/roster proposals. The internal target the scans measure is **100% coverage of on-concept local events and openings** — report the current coverage score in the review diff.
 - **Gmail** (connector): search threads from each `senderRegistry` sender (`from:<match> newer_than:Xd`), plus a discovery pass (`{greenpoint "manhattan ave" "franklin st"} newer_than:Xd`) for senders not yet in the registry. New plausible senders → propose adding to the registry in the review step. If the Gmail connector errors with a permissions message, tell Batu to reconnect it with read access and continue with web sources only.
 - **Web**: the newest Greenpointers "What's Happening" weekly roundup (greenpointers.com blocks WebFetch — use the Browser tools), plus re-verification of any `recurring` deal whose `endsAt` (verified-through date) has passed.
 - **Business-as-venue roster** (2026-07-16, the Flower Cat lesson): locally owned spots whose event programs never reach newsletters or Greenpointers. Check each published calendar every run for the coming week:
@@ -30,9 +31,17 @@ Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live 
   - Hide & Seek — hideandseek.nyc (recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat)
   - Scrappleland — scrappleland.com (ScrappleLeague Wednesdays; re-verify season is running)
   - WORD — wordbookstores.com/events (Brooklyn filter)
+  - Brooklyn Craft Company — brooklyncraftcompany.com/collections/all-workshops (165 Greenpoint Ave; workshop calendar, sells out fast — note availability)
+  - Yaro Studios — yarostudios.com/workshops-1 (76 Kent St; ceramics/fiber/print classes) + yarostudios.com/kidsclayclasses (kids-lens events)
 - **Community-institution roster** (2026-07-16, the ChatGPT-gap check): not businesses, so the locally-owned gate doesn't apply — these are the free/family backbone of the feed:
   - Greenpoint Library — bklynlibrary.org/locations/greenpoint (rich weekly calendar; group into per-day cards, don't flood)
   - Go Green Brooklyn — gogreenbk.org (Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days)
+  - NYC Parks (Greenpoint-filtered) — nycgovparks.org/events, filtered to "in or near Greenpoint" (McGolrick, McCarren, WNYC Transmitter Park, Msgr. McGolrick programming, It's My Park days). Batu's Gmail also carries the NYC Parks "Weekly Highlights" newsletter set to the Greenpoint neighborhood (subscribed 2026-07-21) — once a first email lands, add its sender to `senderRegistry` and treat the site as the fallback, not the primary check.
+- **Roster discovery sweep** (2026-07-21, closes the gap Gmail already has and the web roster didn't): the Gmail side self-discovers new senders every run via the broad search query; the web roster only grows when someone notices a venue by hand. Run this sweep monthly (first Monday run of the month, not every week):
+  - Scan the last 4–6 weeks of Greenpointers posts tagged "new business"/"now open" for venues with a public events/calendar page.
+  - Cross-check any senders newly added to `senderRegistry` for a companion website calendar the newsletter doesn't fully cover (newsletters and calendars often diverge — see Brooklyn Craft Company/Yaro precedent).
+  - Spot-check Google Maps "new" listings + geotagged Greenpoint Instagram posts for storefronts opened in the last ~90 days.
+  - Any hit → propose the roster addition in the review gate, same treatment as a new Gmail sender proposal.
 - **Aggregator claims rule**: events cited only by aggregators/AI answers (allevents.in, Moviefone, dead Eventbrite links) are NOT sources — verify at the organizer's own page or skip with a ledger note (precedents: Self Love Journaling 404, phantom Film Noir 9pm show).
 - **Locally-owned hard gate** (Batu, 2026-07-16): only locally owned small businesses & venues get cards. Corporate-operated venues are skipped entirely — check site footers/careers pages for operator identity (precedent: Warsaw removed, Live Nation-operated; PRESS dropped, multi-location).
 - **Senders worth subscribing to** (Batu action, then add to registry): Flower Cat, Dandelion Wine (tastings are newsletter-only), Archestratus, Hide & Seek.
@@ -68,4 +77,4 @@ Present one compact diff: **adds** (id, title, category, when, source), **update
 
 ## Cadence
 
-Weekly, Monday morning (a scheduled reminder exists). Also run on demand before sending any new invite wave.
+Weekly, Monday morning (a scheduled reminder exists). Also run on demand before sending any new invite wave. The **roster discovery sweep** runs monthly, folded into the first Monday run of the month. Two scheduled **coverage scans** (Sun 6pm feeds Monday's ingest; Thu 9am catches mid-week-announced weekend events) write gap reports to `docs/launch/coverage-scans/` — if the Thursday scan flags weekend-urgent gaps, Batu may trigger an off-cycle mini-ingest.
