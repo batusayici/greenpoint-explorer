@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/e/:slug", "destination": "/" }
+  ],
   "redirects": [
     { "source": "/july.html", "destination": "/", "permanent": false }
   ]

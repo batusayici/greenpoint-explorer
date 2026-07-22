@@ -4,18 +4,33 @@ import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay } 
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
+import { cardIdFromPath, deepLinkUrl } from "./deepLink.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
 
 const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
+
+// Deep link (/e/<slug>): open that card on load if it's live; expired or
+// unknown slugs fall back to the plain feed (the URL normalizes to / below).
+function initialSelectedId() {
+  const id = cardIdFromPath(window.location.pathname);
+  const card = id != null ? CARDS_BY_ID.get(id) : undefined;
+  return card && !isExpiredCard(card, new Date()) ? card.id : null;
+}
 
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
 export default function JulyApp() {
   const [filter, setFilter] = useState("all");
   const [todayOnly, setTodayOnly] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(initialSelectedId);
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
+
+  // Keep the address bar on the card's shareable path (?src= rides along).
+  // replaceState, not pushState: back should leave the page, not unwind taps.
+  useEffect(() => {
+    window.history.replaceState(null, "", deepLinkUrl(selectedId, window.location.search));
+  }, [selectedId]);
 
   // Post-value email prompt (limited launch): observe the tap stream and offer
   // the weekly signup once, only after value is demonstrated (2nd card open or

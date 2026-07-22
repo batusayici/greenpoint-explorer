@@ -239,3 +239,10 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.ok(byId("film-noir-jackie-stripper-0724").relatedCardIds.includes("film-noir-cinema"), "screening joins the venue graph");
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
 });
+
+test("every card id is a URL-safe slug (deep-link contract, Phase 3.1)", () => {
+  // Card ids double as public /e/<slug> paths — must stay lowercase kebab.
+  for (const card of seed.cards) {
+    assert.match(card.id, /^[a-z0-9]+(-[a-z0-9]+)*$/, `card id not URL-safe: ${card.id}`);
+  }
+});
