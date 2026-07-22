@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-21",
+  "version": "2026-07-22",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -131,9 +131,10 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-22",
       "kicker": "Pet grooming, by appointment",
       "relatedCardIds": [
+        "poochs-adoption-0725",
         "poochs-parlor-first-groom"
       ]
     },
@@ -176,8 +177,11 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-15",
-      "kicker": "Kids' shoes & toys shop"
+      "updatedAt": "2026-07-22",
+      "kicker": "Kids' shoes & toys shop",
+      "relatedCardIds": [
+        "giggles-run-club-0725"
+      ]
     },
     {
       "id": "cookies-n-cream",
@@ -669,91 +673,6 @@
       "kicker": "Biweekly park yoga through August"
     },
     {
-      "id": "morning-yoga-transmitter",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_16",
-      "title": "Morning yoga at Transmitter Park",
-      "kicker": "Free sunrise yoga on the waterfront",
-      "locationName": "Transmitter Park",
-      "summary": "A gentle morning practice in the park. Free, RSVP required.",
-      "filters": [
-        "events"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-21T07:00:00-04:00",
-      "endsAt": "2026-07-21T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
-          "date": "2026-07-15"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
-      "geocodeQuery": "Transmitter Park, Brooklyn, NY",
-      "free": true,
-      "lat": 40.729855,
-      "lng": -73.960729
-    },
-    {
-      "id": "summer-of-horrors-brooklyn-brewery",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_16",
-      "title": "The Twisted Spine's Summer of Horrors",
-      "kicker": "12 horror authors, free tickets",
-      "locationName": "Brooklyn Brewery",
-      "summary": "The Twisted Spine's mini-convention hosted by Christopher Golden: 12 authors, two panel discussions, and signings. Free, ticketed.",
-      "filters": [
-        "events",
-        "arts_culture"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-21T17:00:00-04:00",
-      "endsAt": "2026-07-21T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 16–22)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
-          "date": "2026-07-15"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
-      "address": "79 N 11th St, Brooklyn, NY 11249",
-      "free": true,
-      "lat": 40.721622,
-      "lng": -73.957607
-    },
-    {
       "id": "poochs-parlor-first-groom",
       "category": "discount",
       "sourceCampaign": "greenpointers_week_2026_07_16",
@@ -770,7 +689,7 @@
       ],
       "corridor": null,
       "recurring": true,
-      "endsAt": "2026-07-22T23:59:00-04:00",
+      "endsAt": "2026-07-29T23:59:00-04:00",
       "actions": [
         {
           "label": "Read about it",
@@ -795,7 +714,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-22",
       "lat": 40.732156,
       "lng": -73.955048,
       "relatedCardIds": [
@@ -1103,7 +1022,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-22",
       "lat": 40.733463,
       "lng": -73.955035,
       "relatedCardIds": [
@@ -1112,7 +1031,6 @@
         "troost-jonny-compolo-0724",
         "troost-lupe-mela-0725",
         "troost-nice-try-kid-0727",
-        "troost-radio-brass",
         "troost-yallah-yallah"
       ]
     },
@@ -1161,57 +1079,6 @@
       "updatedAt": "2026-07-15",
       "lat": 40.73623,
       "lng": -73.955497
-    },
-    {
-      "id": "troost-radio-brass",
-      "category": "event",
-      "sourceCampaign": "troost_calendar_2026_07_15",
-      "title": "Radio Brass tape release at Troost",
-      "kicker": "Brass tape-release show",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "Radio Brass celebrates a tape release at the Manhattan Ave bar.",
-      "filters": [
-        "events",
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-21T00:00:00-04:00",
-      "endsAt": "2026-07-21T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Full calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost — calendar",
-          "publisher": "Troost",
-          "url": "https://troostny.com/calendar/",
-          "date": "2026-07-15"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "relatedCardIds": [
-        "troost"
-      ],
-      "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
-      "lat": 40.733463,
-      "lng": -73.955035
     },
     {
       "id": "troost-yallah-yallah",
@@ -1459,10 +1326,9 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-16",
+      "updatedAt": "2026-07-22",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "film-noir-cult-cinema",
         "film-noir-film-club-0723",
         "film-noir-jackie-stripper-0724",
         "film-noir-jackie-stripper-0727",
@@ -1682,57 +1548,6 @@
       ],
       "lat": 40.724894,
       "lng": -73.951181
-    },
-    {
-      "id": "film-noir-cult-cinema",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_expansion_2026_07_16",
-      "title": "Cult Cinema Tuesday",
-      "kicker": "The cinema's weekly cult screening",
-      "locationName": "Film Noir Cinema",
-      "summary": "The standing Tuesday cult series at the Meserole Ave indie cinema.",
-      "filters": [
-        "events",
-        "arts_culture"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "actions": [
-        {
-          "label": "Full calendar",
-          "type": "learn_more",
-          "url": "https://filmnoircinema.com/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema — July calendar",
-          "publisher": "Film Noir Cinema",
-          "url": "https://filmnoircinema.com/",
-          "date": "2026-07-16"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-16",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "startsAt": "2026-07-21T00:00:00-04:00",
-      "endsAt": "2026-07-21T23:59:00-04:00",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
     },
     {
       "id": "scrappleland-league",
@@ -2065,65 +1880,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-16",
+      "updatedAt": "2026-07-22",
       "relatedCardIds": [
+        "library-childrens-book-club-0729",
         "library-friday-programs",
         "library-monday-programs",
         "library-saturday-storytime",
         "library-thursday-programs",
-        "library-tuesday-programs",
         "library-wednesday-programs"
       ],
-      "lat": 40.72606,
-      "lng": -73.950709
-    },
-    {
-      "id": "library-tuesday-programs",
-      "category": "event",
-      "sourceCampaign": "community_institutions_2026_07_16",
-      "title": "Tuesday at the library",
-      "kicker": "Free notary + English 2pm, knitting 5:30pm",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "summary": "Free notary services and the free English class in the afternoon, then Keep Calm & Carry Yarn in the evening.",
-      "filters": [
-        "events"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "corridor": null,
-      "actions": [
-        {
-          "label": "Full calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library — branch page & event calendar",
-          "publisher": "Brooklyn Public Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "date": "2026-07-16"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-16",
-      "startsAt": "2026-07-21T14:00:00-04:00",
-      "endsAt": "2026-07-21T23:59:00-04:00",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "free": true,
       "lat": 40.72606,
       "lng": -73.950709
     },
@@ -3497,6 +3262,740 @@
       ],
       "lat": 40.72606,
       "lng": -73.950709
+    },
+    {
+      "id": "bushwick-inlet-jazz-0723",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Summer Music Series: George Gray Jazz Coalition",
+      "kicker": "Free jazz on the waterfront",
+      "locationName": "Bushwick Inlet Park",
+      "summary": "The sixth annual weekly music series on the waterfront — this week the George Gray Jazz Coalition, in partnership with the Jazz Foundation of America. No RSVP needed.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-23T18:30:00-04:00",
+      "endsAt": "2026-07-23T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "More info",
+          "type": "learn_more",
+          "url": "https://bushwickinletpark.org/event/summer-music-series-2026-jazz-foundation-concert-2/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "free": true,
+      "geocodeQuery": "Bushwick Inlet Park, Brooklyn, NY",
+      "lat": 40.722349,
+      "lng": -73.961382
+    },
+    {
+      "id": "madelines-acrylics-0723",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Acrylics on Paper at Madeline's",
+      "kicker": "Guided painting, all skill levels",
+      "locationName": "Madeline's",
+      "summary": "Explore acrylics on paper in a relaxing, gently guided atmosphere for creatives of all skill levels. $100, via Make Art in NYC.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "creator"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-23T19:00:00-04:00",
+      "endsAt": "2026-07-23T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Register ($100)",
+          "type": "rsvp",
+          "url": "https://www.makeartinnyc.xyz/myclasses/p/open-studio-session-5f9zy-96krm"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "113 Franklin Street, Brooklyn, NY 11222",
+      "lat": 40.730371,
+      "lng": -73.957833
+    },
+    {
+      "id": "cannabis-botany-0723",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Cannabis Botany: the science behind the smoke",
+      "kicker": "Plant-science session on the loft floors",
+      "locationName": "67 West St, Unit 335",
+      "summary": "A session delving into the biology of the cannabis plant and its different strains. Tickets $71.21.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-23T19:30:00-04:00",
+      "endsAt": "2026-07-23T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets ($71.21)",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/cannabis-botany-learn-the-science-behind-the-smoke-tickets-1992309396035"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "67 West St, Brooklyn, NY 11222",
+      "geocodeQuery": "67 West Street, Brooklyn, NY 11222",
+      "lat": 40.728561,
+      "lng": -73.959184
+    },
+    {
+      "id": "mccarren-makers-terrace-0724",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Summer Makers Terrace at McCarren Park",
+      "kicker": "Outdoor market of local makers",
+      "locationName": "McCarren Park",
+      "summary": "Meet local artisans, boutique brands, food vendors, and other creatives — and buy their wares — at a lively outdoor market.",
+      "filters": [
+        "events",
+        "shopping"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-24T10:00:00-04:00",
+      "endsAt": "2026-07-24T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP (free)",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/summer-makers-terrace-tickets-1992414807323"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "free": true,
+      "lat": 40.721159,
+      "lng": -73.952879
+    },
+    {
+      "id": "play-kids-movie-night-0724",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Drop-Off Movie Night at PLAY Kids",
+      "kicker": "Kids' night in, parents' night out",
+      "locationName": "PLAY Kids Greenpoint",
+      "summary": "Drop off the kiddos for a showing of Goat, with open playtime, dinner, and snacks. Ages 4 to 8. Tickets $47.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-24T17:30:00-04:00",
+      "endsAt": "2026-07-24T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets ($47)",
+          "type": "rsvp",
+          "url": "https://www.hisawyer.com/play-greenpoint/schedules/activity-set/1937435"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "33 Nassau Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "33 Nassau Avenue, Brooklyn, NY 11222",
+      "lat": 40.723104,
+      "lng": -73.953158
+    },
+    {
+      "id": "bcc-crafty-hour-hats-0724",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Crafty Hour: Embroidered Hats",
+      "kicker": "Stitch your own hat after work",
+      "locationName": "Brooklyn Craft Company",
+      "summary": "A hands-on session on embroidery basics — bring your own hat to adorn or buy one during class. Brooklyn Craft Company workshops tend to sell out fast. Tickets $28.52.",
+      "filters": [
+        "events",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "creator"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-24T18:00:00-04:00",
+      "endsAt": "2026-07-24T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets ($28.52)",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/crafty-hour-embroidered-hats-tickets-1993031623236"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "165 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730461,
+      "lng": -73.953114
+    },
+    {
+      "id": "gp-pilates-breath-body-0724",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Breath to Body at Greenpoint Pilates Studio",
+      "kicker": "Breathwork, then Pilates — 90 minutes",
+      "locationName": "Greenpoint Pilates Studio",
+      "summary": "Regulate your nervous system with 45 minutes of breathwork followed by 45 minutes of Pilates. Tickets $55.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-24T19:00:00-04:00",
+      "endsAt": "2026-07-24T20:30:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets ($55)",
+          "type": "rsvp",
+          "url": "https://luma.com/5tentmtm"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "61 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "61 Greenpoint Avenue, Brooklyn, NY 11222",
+      "lat": 40.730012,
+      "lng": -73.95837
+    },
+    {
+      "id": "threes-pat-sophie-0724",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "P_A_T b2b Sophie Jones at Threes Brewing",
+      "kicker": "Free DJ night on Franklin St",
+      "locationName": "Threes Brewing Greenpoint",
+      "summary": "Pop, hip-hop, and house music with dancing, cold beer, and drink specials at the Greenpoint taproom.",
+      "filters": [
+        "events",
+        "live_music"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-24T21:00:00-04:00",
+      "endsAt": "2026-07-24T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP (free)",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/p-a-t-b2b-sophie-jones-dj-set-tickets-1994256594157"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "free": true,
+      "geocodeQuery": "113 Franklin Street, Brooklyn, NY 11222",
+      "lat": 40.730371,
+      "lng": -73.957833
+    },
+    {
+      "id": "giggles-run-club-0725",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Strong (As a Mother) Run Club",
+      "kicker": "All-paces mom run, coffee after",
+      "locationName": "Giggles & Wiggles",
+      "summary": "Run a few miles with your mom crew in a no-pressure, all-paces-welcome environment, followed by coffee.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family",
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-25T09:00:00-04:00",
+      "endsAt": "2026-07-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Register (free)",
+          "type": "rsvp",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSfmRKlTkOZfFxtldv0ycGjNHCRdEI03MTaf_SmwZ6Mc-kIJgw/viewform"
+        },
+        {
+          "label": "Visit (entrance on Noble)",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "42 West St, Brooklyn, NY 11222",
+      "free": true,
+      "lat": 40.728078,
+      "lng": -73.958665,
+      "relatedCardIds": [
+        "giggles-and-wiggles"
+      ]
+    },
+    {
+      "id": "city-of-water-day-0725",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "City of Water Day at Transmitter Park",
+      "kicker": "Harbor day: cleanup, oysters, movement",
+      "locationName": "WNYC Transmitter Park",
+      "summary": "The 19th annual region-wide event from Waterfront Alliance and the NY-NJ Harbor & Estuary Program championing climate-resilient harbors — a longevity stick movement class, shoreline cleanup, oyster station monitoring, and more.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-25T10:00:00-04:00",
+      "endsAt": "2026-07-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Register (free)",
+          "type": "rsvp",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSd7uxgNaiakSUaW45zI8rEBURJzA3KmpE5R008X0YcxVl_3Sg/viewform"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "free": true,
+      "lat": 40.729537,
+      "lng": -73.960287
+    },
+    {
+      "id": "poochs-adoption-0725",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Adoption day at Pooch's Parlor",
+      "kicker": "Meet rescue dogs (margaritas too)",
+      "locationName": "Pooch's Parlor",
+      "summary": "NYC Second Chance Rescue partners with the grooming salon for a chance to find your forever furry friend — and enjoy a bit of paradise in the form of margaritas. No RSVP needed.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-25T11:00:00-04:00",
+      "endsAt": "2026-07-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Read the roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "128 India St, Brooklyn, NY 11222",
+      "lat": 40.732156,
+      "lng": -73.955048,
+      "relatedCardIds": [
+        "poochs-parlor"
+      ]
+    },
+    {
+      "id": "held-space-astrology-0725",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Leo Season flash astrology readings",
+      "kicker": "Flash readings for Leo season",
+      "locationName": "Held Space",
+      "summary": "Hear your horoscope, get a vibe check, or learn where Leo falls in your chart in a flash reading with Anna Hull. Sessions $95.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-25T12:00:00-04:00",
+      "endsAt": "2026-07-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Sign up ($95)",
+          "type": "rsvp",
+          "url": "https://annahull.as.me/schedule/9c4cf906/appointment/94965460/calendar/14251100"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "960 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "960 Manhattan Avenue, Brooklyn, NY 11222",
+      "lat": 40.732062,
+      "lng": -73.954278
+    },
+    {
+      "id": "disabled-hungry-launch-0725",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Disabled & Hungry launch party",
+      "kicker": "Disability Pride Month celebration",
+      "locationName": "BK Backyard Bar",
+      "summary": "A launch party for Disabled & Hungry, a new blog helping people with disabilities discover restaurants, travel, and community spaces that are truly accessible — with bites, drinks, and merch for purchase, 36 years after the ADA.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-25T14:00:00-04:00",
+      "endsAt": "2026-07-25T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP (free)",
+          "type": "rsvp",
+          "url": "https://partiful.com/e/Qm9FS5FkEaRTHg2bsSlH"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "151 Banker St, Brooklyn, NY 11222",
+      "free": true,
+      "geocodeQuery": "151 Banker Street, Brooklyn, NY 11222",
+      "lat": 40.724078,
+      "lng": -73.954879
+    },
+    {
+      "id": "library-childrens-book-club-0729",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Children's Book Club at the library",
+      "kicker": "Grades 3-6 discuss Speak Up, Santiago",
+      "locationName": "Greenpoint Library",
+      "summary": "Kids in grades 3 to 6 discuss Speak Up, Santiago by Julio Anta, illustrated by Gabi Mendez, in an encouraging, friendly atmosphere, with related activities.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-29T15:30:00-04:00",
+      "endsAt": "2026-07-29T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Register (free)",
+          "type": "rsvp",
+          "url": "https://www.bklynlibrary.org/calendar/childrens-book-club-speak-greenpoint-library-20260729-0330pm"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        },
+        {
+          "title": "Greenpoint Library - branch event calendar",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/calendar/childrens-book-club-speak-greenpoint-library-20260729-0330pm",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "free": true,
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "relatedCardIds": [
+        "greenpoint-library"
+      ]
+    },
+    {
+      "id": "ecstatic-dance-loft-0729",
+      "category": "event",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Ecstatic Dance at Greenpoint Loft",
+      "kicker": "Substance-free, phone-free dancing",
+      "locationName": "Greenpoint Loft",
+      "summary": "An evening of drug-free, smoke-free, alcohol-free, and phone-free dancing for anyone looking to truly let go. Tickets $33.85.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-29T18:30:00-04:00",
+      "endsAt": "2026-07-29T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Get tickets ($33.85)",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/ecstatic-dance-at-greenpoint-loft-tickets-1992599314188"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "What's Happening, Greenpoint? (7/23-29)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "address": "67 West St, Brooklyn, NY 11222",
+      "geocodeQuery": "67 West Street, Brooklyn, NY 11222",
+      "lat": 40.728561,
+      "lng": -73.959184
     }
   ]
 }

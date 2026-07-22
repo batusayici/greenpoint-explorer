@@ -1723,5 +1723,180 @@
         "-73.9580399"
       ]
     }
+  },
+  "113 Franklin Street, Brooklyn, NY 11222": {
+    "query": "113 Franklin Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:51.578Z",
+    "hit": {
+      "place_id": 359770121,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 7424179953,
+      "lat": "40.7303713",
+      "lon": "-73.9578334",
+      "category": "amenity",
+      "type": "pub",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Threes Brewing",
+      "display_name": "Threes Brewing, 113, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303213",
+        "40.7304213",
+        "-73.9578834",
+        "-73.9577834"
+      ]
+    }
+  },
+  "67 West Street, Brooklyn, NY 11222": {
+    "query": "67 West Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:53.040Z",
+    "hit": {
+      "place_id": 360393270,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10620349394,
+      "lat": "40.7285606",
+      "lon": "-73.9591840",
+      "category": "office",
+      "type": "advertising_agency",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "office",
+      "name": "Adience",
+      "display_name": "Adience, 67, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7285106",
+        "40.7286106",
+        "-73.9592340",
+        "-73.9591340"
+      ]
+    }
+  },
+  "33 Nassau Avenue, Brooklyn, NY 11222": {
+    "query": "33 Nassau Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:54.530Z",
+    "hit": {
+      "place_id": 359132391,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12398830776,
+      "lat": "40.7231042",
+      "lon": "-73.9531580",
+      "category": "amenity",
+      "type": "kindergarten",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Play Greenpoint",
+      "display_name": "Play Greenpoint, 33, Nassau Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7230542",
+        "40.7231542",
+        "-73.9532080",
+        "-73.9531080"
+      ]
+    }
+  },
+  "165 Greenpoint Avenue, Brooklyn, NY 11222": {
+    "query": "165 Greenpoint Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:55.835Z",
+    "hit": {
+      "place_id": 359681864,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137465,
+      "lat": "40.7304606",
+      "lon": "-73.9531143",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "165, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303871",
+        "40.7305462",
+        "-73.9531708",
+        "-73.9530597"
+      ]
+    }
+  },
+  "61 Greenpoint Avenue, Brooklyn, NY 11222": {
+    "query": "61 Greenpoint Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:57.155Z",
+    "hit": {
+      "place_id": 358905276,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140861,
+      "lat": "40.7300118",
+      "lon": "-73.9583704",
+      "category": "amenity",
+      "type": "studio",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Salt Mastering",
+      "display_name": "Salt Mastering, 61, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7298858",
+        "40.7301655",
+        "-73.9587393",
+        "-73.9580060"
+      ]
+    }
+  },
+  "960 Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "960 Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:58.480Z",
+    "hit": {
+      "place_id": 359116135,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280136870,
+      "lat": "40.7320620",
+      "lon": "-73.9542784",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "960, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7319806",
+        "40.7321434",
+        "-73.9544329",
+        "-73.9541238"
+      ]
+    }
+  },
+  "151 Banker Street, Brooklyn, NY 11222": {
+    "query": "151 Banker Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T15:49:59.784Z",
+    "hit": {
+      "place_id": 402054113,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 275390344,
+      "lat": "40.7240783",
+      "lon": "-73.9548786",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "151, Banker Street, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7240283",
+        "40.7241283",
+        "-73.9549286",
+        "-73.9548286"
+      ]
+    }
   }
 }

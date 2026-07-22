@@ -33,22 +33,31 @@ test("seed has exactly 71 cards across the six layers", () => {
   // Seek weekend DJs) plus the Tend x Franca sidewalk seconds sale (Gmail), then
   // +4 Greenpoint Library day cards (Thu/Fri/Sat/Mon; Fri had garden + movie,
   // Sun had no branch programming) from the BPL branch calendar sweep.
-  assert.equal(seed.cards.length, 71);
+  // 2026-07-22 Wednesday Greenpointers pull (first same-day roundup ingest):
+  // 5 Jul-21 events expired out; +15 events from the 7/23–29 roundup (BIP jazz,
+  // Madeline's acrylics, cannabis botany, Makers Terrace, PLAY Kids movie night,
+  // BCC crafty hour, Pilates breathwork, Threes DJ night, mom run club, City of
+  // Water Day, Pooch's adoption day, Held Space astrology, Disabled & Hungry
+  // launch, library book club 7/29, Greenpoint Loft ecstatic dance). 6 roundup
+  // items verified to Williamsburg addresses and skipped (Salotto→84 Withers,
+  // Twisted Spine workshop→306 Grand, Artful Souls→105 S 5th, Rude Mouth→359
+  // Metropolitan, Joy Flower Pot→713 Lorimer, Tracksmith→Grand St + MPJ Park).
+  assert.equal(seed.cards.length, 81);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 39, "39 event cards");
+  assert.equal(count((c) => c.category === "event"), 49, "49 event cards");
   assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
   assert.equal(count((c) => c.category === "news"), 5, "5 news cards");
-  assert.equal(count((c) => c.filters.includes("live_music")), 26, "26 in the Live Music layer (venues + show nights + jazz events)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 27, "27 in the Live Music layer (venues + show nights + jazz events)");
   assert.equal(count((c) => c.category === "subscription"), 2, "2 subscription cards (Falu House, Flower Cat)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
-  // Refreshed 2026-07-21; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-07-21T00:00:00-04:00");
+  // Refreshed 2026-07-22; recurring series carry their series end date.
+  const refreshDay = Date.parse("2026-07-22T00:00:00-04:00");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
-    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-15 refresh`);
+    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-22 refresh`);
   }
 });
 
@@ -111,12 +120,16 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   assert.deepEqual(free, [
+    "bushwick-inlet-jazz-0723",
+    "city-of-water-day-0725",
+    "disabled-hungry-launch-0725",
+    "giggles-run-club-0725",
+    "library-childrens-book-club-0729",
     "library-thursday-programs",
-    "library-tuesday-programs",
     "longevity-stick-transmitter",
-    "morning-yoga-transmitter",
-    "summer-of-horrors-brooklyn-brewery",
+    "mccarren-makers-terrace-0724",
     "tend-franca-seconds-sale",
+    "threes-pat-sophie-0724",
   ]);
 });
 
@@ -196,7 +209,7 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // Jul 23–27 nights in).
   assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-juan-maclean-0725", "good-room-members-lloyd-0724"]);
   assert.deepEqual(byId("good-room-juan-maclean-0725").relatedCardIds, ["good-room"]);
-  assert.equal(byId("troost").relatedCardIds.length, 7, "Troost links its 7 current program nights");
+  assert.equal(byId("troost").relatedCardIds.length, 6, "Troost links its 6 current program nights (Radio Brass expired 7/22)");
   assert.deepEqual(byId("troost-barba-yiorgi-0723").relatedCardIds, ["troost"]);
   assert.equal(byId("eavesdrop").relatedCardIds.length, 7, "Eavesdrop links its 7 current calendar nights");
   assert.deepEqual(byId("eavesdrop-subcultures").relatedCardIds, ["eavesdrop"]);

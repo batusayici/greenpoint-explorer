@@ -1,6 +1,6 @@
 {
  "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
- "lastRunAt": "2026-07-21T12:00:00-04:00",
+ "lastRunAt": "2026-07-22T12:30:00-04:00",
  "processedItems": [
   {
    "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -337,6 +337,13 @@
    "publisher": "Brooklyn Public Library",
    "processedAt": "2026-07-21",
    "outcome": "Greenpoint branch calendar sweep (filtered) — 4 day cards added (Thu Jul 23, Fri Jul 24, Sat Jul 25, Mon Jul 27); Fri had garden storytime + after-school movie; Sun Jul 26 no branch programming"
+  },
+  {
+   "id": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
+   "kind": "web",
+   "publisher": "Greenpointers",
+   "processedAt": "2026-07-22",
+   "outcome": "First same-day Wednesday pull (new cadence). 15 events added (Jul 23-29 roundup); 5 expired Jul-21 events auto-deleted; Pooch's first-groom deal re-verified through 7/29 via today's sponsored homepage post. 6 items skipped after address verification resolved them to Williamsburg (Salotto=84 Withers, Twisted Spine workshop=306 Grand, Artful Souls=105 S 5th, Rude Mouth=359 Metropolitan, Joy Flower Pot=713 Lorimer per Greenpointers' own opening article, Tracksmith Trackhouse) plus 2 Marsha P Johnson State Park items and the Bedford Slip mural festival (Williamsburg proper); mural fest's McCarren day 2 also skipped (Williamsburg-branded, Batu did not opt in)."
   }
  ],
  "senderRegistry": [
