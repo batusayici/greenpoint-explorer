@@ -35,6 +35,9 @@ export default function MapView({ cards, selectedId, onSelect }) {
       const attrib = containerRef.current?.querySelector(".maplibregl-ctrl-attrib");
       attrib?.classList.remove("maplibregl-compact-show");
       attrib?.removeAttribute("open");
+      // Insurance against init racing layout: twice in the 2026-07-22 UX eval
+      // the canvas froze at its pre-layout size until a viewport resize.
+      map.resize();
     });
 
     // Open framed on the actual pin extent (not a fixed center), so the
@@ -88,7 +91,12 @@ export default function MapView({ cards, selectedId, onSelect }) {
       const el = document.createElement("button");
       el.type = "button";
       el.className = `ii-pin ii-pin--${pinKind(card)}${card.id === selectedId ? " is-selected" : ""}`;
-      el.setAttribute("aria-label", card.locationName);
+      // Venue + card title, like the venue dots below — venue alone left screen
+      // readers with seven identical "Troost" buttons (UX eval, F10).
+      el.setAttribute(
+        "aria-label",
+        card.locationName === card.title ? card.title : `${card.locationName} — ${card.title}`,
+      );
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         trackEvent(EVENTS.PIN_TAP, { cardId: card.id, kind: pinKind(card) });

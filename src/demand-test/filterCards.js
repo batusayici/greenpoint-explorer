@@ -58,8 +58,22 @@ export function sortTodayFirst(cards, date) {
 // covering today reads "Today"; future starts read their start day. Undated
 // cards and recurring deals (standing offers) trail in "Ongoing". Group order:
 // Today, then future days ascending, then Ongoing. Within a day: earliest
-// start first (all-day sentinels lead), authored order as tiebreak.
+// start first (all-day sentinels lead), authored order as tiebreak. Today
+// sorts by today's CLOCK, not absolute startsAt — an in-window series anchored
+// weeks ago must not outrank this morning's event (2026-07-22 UX eval, F4).
 const DAY_LABEL = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" });
+const NY_CLOCK = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZone: "America/New_York",
+});
+
+function minutesOfDayNY(iso) {
+  const parts = NY_CLOCK.formatToParts(new Date(iso));
+  const get = (type) => Number(parts.find((p) => p.type === type).value);
+  return (get("hour") % 24) * 60 + get("minute");
+}
 
 export function groupByDay(cards, date) {
   const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
@@ -86,9 +100,16 @@ export function groupByDay(cards, date) {
     const t = (c) => (c.startsAt != null ? Date.parse(c.startsAt) : 0);
     return t(a) - t(b);
   };
+  const byClock = (a, b) => {
+    const t = (c) => (c.startsAt != null ? minutesOfDayNY(c.startsAt) : 0);
+    return t(a) - t(b);
+  };
   return [...groups.values()]
     .sort((a, b) => a.order - b.order)
-    .map((g) => ({ ...g, cards: g.key === "ongoing" ? g.cards : [...g.cards].sort(byStart) }));
+    .map((g) => {
+      if (g.key === "ongoing") return g;
+      return { ...g, cards: [...g.cards].sort(g.key === "today" ? byClock : byStart) };
+    });
 }
 
 // A dated card is dead the moment its window closes — expiry can't wait for

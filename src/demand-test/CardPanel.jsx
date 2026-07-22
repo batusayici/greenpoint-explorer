@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind } from "./filterCards.js";
 import { actionHref } from "./cardActions.js";
 import { formatWindow } from "./eventWindow.js";
@@ -35,17 +35,7 @@ function ActionLink({ action, card, onFilter }) {
   const cls = "july-action";
   const onTap = () => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type });
   if (action.type === "share") {
-    const onShare = async () => {
-      onTap();
-      const data = { title: "Greenpoint Life", url: window.location.href };
-      if (navigator.share) await navigator.share(data).catch(() => {});
-      else await navigator.clipboard.writeText(window.location.href);
-    };
-    return (
-      <button type="button" className={cls} onClick={onShare}>
-        {action.label}
-      </button>
-    );
+    return <ShareAction action={action} card={card} cls={cls} />;
   }
   // Internal action: switches the filter bar instead of leaving the page
   // (campaign cards open their layer — "see who's open nearby" → G-Train).
@@ -66,11 +56,41 @@ function ActionLink({ action, card, onFilter }) {
   if (href) {
     return (
       <a className={cls} href={href} target="_blank" rel="noreferrer" onClick={onTap}>
-        {action.label} ↗
+        {action.label} <span aria-hidden="true">↗</span>
+        <span className="sr-only">(opens in new tab)</span>
       </a>
     );
   }
   return <span className={`${cls} july-action--static`}>{action.label}</span>;
+}
+
+// The clipboard fallback (every desktop browser) used to succeed in total
+// silence, under a label that promised a post (UX eval, F5). The button now
+// confirms in place, and action_tap only fires for shares that actually
+// happened — a cancelled share sheet is not a share.
+function ShareAction({ action, card, cls }) {
+  const [copied, setCopied] = useState(false);
+  useEffect(() => {
+    if (!copied) return;
+    const t = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(t);
+  }, [copied]);
+  const onShare = async () => {
+    const done = () => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type });
+    if (navigator.share) {
+      await navigator.share({ title: "Greenpoint Life", url: window.location.href }).then(done).catch(() => {});
+    } else {
+      await navigator.clipboard.writeText(window.location.href).then(() => {
+        setCopied(true);
+        done();
+      }).catch(() => {});
+    }
+  };
+  return (
+    <button type="button" className={cls} onClick={onShare} aria-live="polite">
+      {copied ? "Link copied ✓" : action.label}
+    </button>
+  );
 }
 
 // Deals carry their deadline in the row itself — an offer you have to open to
@@ -217,12 +237,20 @@ function CardDetail({ card, cardsById, onFilter, onRelated }) {
 
 export default function CardPanel({ groups, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
+  const firstScrollRef = useRef(true);
 
-  // Tapping a pin brings its card to the top of the feed.
+  // Tapping a pin brings its card to the top of the feed. The initial
+  // deep-link scroll must be instant ("auto"): smooth scrolling is animation-
+  // driven and never progresses in a hidden document, so a /e/ link opened in
+  // a background tab would land unscrolled. In-session taps glide — except
+  // under prefers-reduced-motion.
   useEffect(() => {
+    const first = firstScrollRef.current;
+    firstScrollRef.current = false;
     if (!selectedId) return;
     const el = listRef.current?.querySelector(".july-card.is-open");
-    el?.scrollIntoView({ block: "start", behavior: "smooth" });
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    el?.scrollIntoView({ block: "start", behavior: first || reduce ? "auto" : "smooth" });
   }, [selectedId]);
 
   return (
@@ -233,6 +261,7 @@ export default function CardPanel({ groups, cardsById, filter, onFilter, todayOn
             key={f.id}
             type="button"
             className={`july-chip${filter === f.id ? " is-active" : ""}`}
+            aria-pressed={filter === f.id}
             onClick={() => {
               trackEvent(EVENTS.FILTER_TAP, { filter: f.id });
               onFilter(f.id);
@@ -258,30 +287,34 @@ export default function CardPanel({ groups, cardsById, filter, onFilter, todayOn
         {groups.map((group) => (
           <React.Fragment key={group.key}>
             {/* Calendar scan (2026-07-15 review): a lone Ongoing group needs no
-                header — headers appear once dated cards give days to scan. */}
+                header — headers appear once dated cards give days to scan.
+                Not aria-hidden: the calendar exists for screen readers too
+                (UX eval, F25). */}
             {(groups.length > 1 || group.key !== "ongoing") && (
-              <li className="july-day" aria-hidden="true">{group.label}</li>
+              <li className="july-day">{group.label}</li>
             )}
             {group.cards.map((card) => {
               const open = card.id === selectedId;
               return (
                 <li key={card.id} className={`july-card${open ? " is-open" : ""}`}>
-                  <button
-                    type="button"
-                    className="july-card-head"
-                    aria-expanded={open}
-                    onClick={() => {
-                      if (!open) trackEvent(EVENTS.CARD_OPEN, { cardId: card.id });
-                      onSelect(open ? null : card.id);
-                    }}
-                  >
-                    <span className="july-card-titlerow">
-                      <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
-                      <span className="july-card-title">{card.title}</span>
-                      {card.free && <span className="july-free">Free</span>}
-                    </span>
-                    {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
-                  </button>
+                  <h3 className="july-card-heading">
+                    <button
+                      type="button"
+                      className="july-card-head"
+                      aria-expanded={open}
+                      onClick={() => {
+                        if (!open) trackEvent(EVENTS.CARD_OPEN, { cardId: card.id });
+                        onSelect(open ? null : card.id);
+                      }}
+                    >
+                      <span className="july-card-titlerow">
+                        <span className={`july-dot july-dot--${pinKind(card)}`} aria-hidden="true" />
+                        <span className="july-card-title">{card.title}</span>
+                        {card.free && <span className="july-free">Free</span>}
+                      </span>
+                      {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
+                    </button>
+                  </h3>
                   {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onRelated={onRelated} />}
                 </li>
               );

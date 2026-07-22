@@ -87,6 +87,24 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
   assert.deepEqual(groups[3].cards.map((c) => c.id), ["shop", "club"], "undated + recurring deals trail as Ongoing");
 });
 
+// 2026-07-22 UX eval (F4): the live Today group scanned 5 PM → 10 AM → 7 PM,
+// because in-window series cards sort by their ORIGINAL startsAt date. Within
+// Today, order must follow today's clock; all-day sentinels (00:00) lead.
+test("groupByDay: Today sorts by today's time of day, not the original start date", () => {
+  const wed = new Date("2026-07-22T08:00:00-04:00");
+  const series5pm = { id: "series-5pm", startsAt: "2026-07-07T17:00:00-04:00", endsAt: "2026-08-31T23:59:00-04:00" };
+  const today10am = { id: "today-10am", startsAt: "2026-07-22T10:00:00-04:00", endsAt: "2026-07-22T11:00:00-04:00" };
+  const today7pm = { id: "today-7pm", startsAt: "2026-07-22T19:00:00-04:00", endsAt: "2026-07-22T22:00:00-04:00" };
+  const allDay = { id: "all-day", startsAt: "2026-07-22T00:00:00-04:00", endsAt: "2026-07-22T23:59:00-04:00" };
+  const groups = groupByDay([series5pm, today7pm, today10am, allDay], wed);
+  assert.equal(groups[0].key, "today");
+  assert.deepEqual(
+    groups[0].cards.map((c) => c.id),
+    ["all-day", "today-10am", "series-5pm", "today-7pm"],
+    "today's clock decides: 00:00 sentinel, 10 AM, 5 PM (series), 7 PM",
+  );
+});
+
 test("groupByDay: an all-undated layer is a single Ongoing group", () => {
   const groups = groupByDay([{ id: "a" }, { id: "b" }], new Date("2026-07-15T12:00:00-04:00"));
   assert.equal(groups.length, 1);

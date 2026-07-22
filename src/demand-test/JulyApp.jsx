@@ -58,6 +58,15 @@ export default function JulyApp() {
     }
   }, []);
 
+  // Escape closes the open card (UX eval, F27).
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setSelectedId(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   // Computed per render, not memoized — the banner must flip phase on the
   // day boundaries even in a long-lived tab.
   const gtrainPhase = bannerPhase(new Date());
