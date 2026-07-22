@@ -3900,7 +3900,7 @@
       "title": "Children's Book Club at the library",
       "kicker": "Grades 3-6 discuss Speak Up, Santiago",
       "locationName": "Greenpoint Library",
-      "summary": "Kids in grades 3 to 6 discuss Speak Up, Santiago by Julio Anta, illustrated by Gabi Mendez, in an encouraging, friendly atmosphere, with related activities.",
+      "summary": "Kids in grades 3 to 6 discuss Speak Up, Santiago by Julio Anta, illustrated by Gabi Mendez, in an encouraging, friendly atmosphere, with related activities. Earlier that day the rooftop Demonstration Garden is open for quiet study, 1-4pm, weather permitting.",
       "filters": [
         "events",
         "family_kids"
@@ -4082,6 +4082,159 @@
       "updatedAt": "2026-07-22",
       "lat": 40.714254,
       "lng": -73.949597
+    },
+    {
+      "id": "greenpoint-trash-club",
+      "category": "subscription",
+      "sourceCampaign": "tab_review_2026_07_22",
+      "title": "Greenpoint Trash Club",
+      "kicker": "Wednesday-night litter pickup crew",
+      "locationName": "Broken Land (this week's meetup)",
+      "address": "105 Franklin St, Brooklyn, NY 11222",
+      "summary": "Every Wednesday night at 7:30 — rain, snow, or freezing cold — about 50 volunteers meet at a rotating neighborhood bar to clean the streets of North Brooklyn. 9,400+ lbs of litter picked up since August 2024. All supplies provided, just show up; this week's meetup is at Broken Land.",
+      "filters": [
+        "clubs_signups"
+      ],
+      "audience": [
+        "resident",
+        "civic_actor"
+      ],
+      "corridor": null,
+      "free": true,
+      "startsAt": "2026-07-22T19:30:00-04:00",
+      "endsAt": "2026-07-22T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Join in — this week's spot",
+          "type": "join",
+          "url": "https://www.instagram.com/greenpointtrashclub/"
+        },
+        {
+          "label": "Impact report + donate",
+          "type": "learn_more",
+          "url": "https://greenpointtrashclub.org"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Trash Club — @greenpointtrashclub (bio: every Wednesday 7:30; Jul 20 post: Broken Land meetup)",
+          "publisher": "Greenpoint Trash Club",
+          "url": "https://www.instagram.com/greenpointtrashclub/",
+          "date": "2026-07-20"
+        },
+        {
+          "title": "greenpointtrashclub.org — mission & impact",
+          "publisher": "Greenpoint Trash Club",
+          "url": "https://greenpointtrashclub.org",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "geocodeQuery": "105 Franklin Street, Brooklyn, NY 11222",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "lat": 40.729519,
+      "lng": -73.957799
+    },
+    {
+      "id": "summerstarz-princess-bride-0724",
+      "category": "event",
+      "sourceCampaign": "tab_review_2026_07_22",
+      "title": "SummerStarz movie night: The Princess Bride",
+      "kicker": "Free waterfront movie at sunset",
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "summary": "Town Square's outdoor movie series on the waterfront — bring a picnic blanket, friends, and family. This week: The Princess Bride. The series runs Fridays through August 21.",
+      "filters": [
+        "events",
+        "family_kids"
+      ],
+      "audience": [
+        "family",
+        "resident"
+      ],
+      "corridor": null,
+      "free": true,
+      "startsAt": "2026-07-24T20:00:00-04:00",
+      "endsAt": "2026-07-24T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Series details",
+          "type": "learn_more",
+          "url": "https://www.townsquarebk.org/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Town Square BK — SummerStarz Outdoor Movies",
+          "publisher": "Town Square BK",
+          "url": "https://www.townsquarebk.org/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "lat": 40.729537,
+      "lng": -73.960287,
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22"
+    },
+    {
+      "id": "acme-fish-friday-0724",
+      "category": "event",
+      "sourceCampaign": "tab_review_2026_07_22",
+      "title": "Fish Friday at Acme Smoked Fish",
+      "kicker": "Smoked-fish factory pickup, 8am-1pm",
+      "locationName": "Acme Smoked Fish",
+      "address": "30 Gem St, Brooklyn, NY 11222",
+      "summary": "The Gem St smokehouse opens its doors for the weekly pre-order pickup — salmon, herring, caviar, and specialty items straight from the source. Pre-orders close Friday 11:30am; a new order window opens every Saturday.",
+      "filters": [
+        "events",
+        "food_drink"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-24T08:00:00-04:00",
+      "endsAt": "2026-07-24T13:00:00-04:00",
+      "actions": [
+        {
+          "label": "Pre-order",
+          "type": "order",
+          "url": "https://acmesmokedfish.com/collections/fish-friday"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Acme Smoked Fish — Fish Friday",
+          "publisher": "Acme Smoked Fish",
+          "url": "https://acmesmokedfish.com/collections/fish-friday",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "geocodeQuery": "30 Gem Street, Brooklyn, NY 11222",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "lat": 40.725409,
+      "lng": -73.956615
     }
   ]
 }

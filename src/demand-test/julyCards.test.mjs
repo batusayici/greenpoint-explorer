@@ -46,14 +46,20 @@ test("seed has exactly 71 cards across the six layers", () => {
   // page — Wasabi closing Jul 27 after 26 years (638 Manhattan Ave) and
   // Swaine's fall opening at 577 Lorimer (boundary call: Williamsburg side of
   // the envelope, added on Batu's explicit ask, Domino-yoga precedent).
-  assert.equal(seed.cards.length, 83);
+  // Evening of 2026-07-22 (Batu's open-tab review): +1 subscription (Greenpoint
+  // Trash Club — Wednesday 7:30pm cleanups, rotating bar meetup pinned weekly),
+  // +2 events (Town Square SummerStarz free movie at Transmitter Park;
+  // Acme Fish Friday pickup at 30 Gem St). Skipped: CIBONE Hozubag (Tokyo
+  // multi-location brand, locally-owned gate), Newtown Creek CAG meeting (LIC
+  // address, out of bbox), Dashi Okume + Dobbin St (no current listings).
+  assert.equal(seed.cards.length, 86);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 49, "49 event cards");
+  assert.equal(count((c) => c.category === "event"), 51, "51 event cards");
   assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
   assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
   assert.equal(count((c) => c.filters.includes("live_music")), 27, "27 in the Live Music layer (venues + show nights + jazz events)");
-  assert.equal(count((c) => c.category === "subscription"), 2, "2 subscription cards (Falu House, Flower Cat)");
+  assert.equal(count((c) => c.category === "subscription"), 3, "3 subscription cards (Falu House, Flower Cat, Trash Club)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
 });
 
@@ -128,10 +134,12 @@ test("free-ness is designated only where the source states it (tester feedback #
     "city-of-water-day-0725",
     "disabled-hungry-launch-0725",
     "giggles-run-club-0725",
+    "greenpoint-trash-club",
     "library-childrens-book-club-0729",
     "library-thursday-programs",
     "longevity-stick-transmitter",
     "mccarren-makers-terrace-0724",
+    "summerstarz-princess-bride-0724",
     "tend-franca-seconds-sale",
     "threes-pat-sophie-0724",
   ]);
@@ -147,9 +155,12 @@ test("reader-facing copy spells out Shop Small Greenpoint (no bare acronym)", ()
 
 test("the G-Train layer covers who's open during the shutdown, not just the asks", () => {
   // "Still open this weekend" framing (spec v1 scope): every new business and
-  // the subscription club are in the affected corridors and stay reachable.
+  // business subscription club is in the affected corridors and stays
+  // reachable. Community clubs (monetizationRelevance "none", e.g. the Trash
+  // Club) aren't businesses and sit outside the corridor contract.
   for (const c of seed.cards) {
-    if (c.filters.includes("new") || c.category === "subscription") {
+    const businessSub = c.category === "subscription" && c.monetizationRelevance !== "none";
+    if (c.filters.includes("new") || businessSub) {
       assert.ok(c.filters.includes("g_train"), `${c.id} missing g_train`);
     }
   }

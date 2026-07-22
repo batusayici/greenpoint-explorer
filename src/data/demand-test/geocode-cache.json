@@ -1948,5 +1948,55 @@
         "-73.9495103"
       ]
     }
+  },
+  "105 Franklin Street, Brooklyn, NY 11222": {
+    "query": "105 Franklin Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T17:14:09.428Z",
+    "hit": {
+      "place_id": 381886620,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280132029,
+      "lat": "40.7295190",
+      "lon": "-73.9577986",
+      "category": "building",
+      "type": "apartments",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "105, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7294822",
+        "40.7295611",
+        "-73.9579370",
+        "-73.9576596"
+      ]
+    }
+  },
+  "30 Gem Street, Brooklyn, NY 11222": {
+    "query": "30 Gem Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T17:14:10.869Z",
+    "hit": {
+      "place_id": 358918866,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842878644,
+      "lat": "40.7254089",
+      "lon": "-73.9566147",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "30, Gem Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7253589",
+        "40.7254589",
+        "-73.9566647",
+        "-73.9565647"
+      ]
+    }
   }
 }

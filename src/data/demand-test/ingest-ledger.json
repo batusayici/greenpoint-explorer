@@ -358,6 +358,55 @@
    "publisher": "Greenpointers",
    "processedAt": "2026-07-22",
    "outcome": "1 news added (swaines-fall-opening) — 577 Lorimer, Williamsburg side of the bbox; added on Batu's explicit ask (Domino-yoga precedent), article itself tagged Williamsburg"
+  },
+  {
+   "id": "https://www.instagram.com/greenpointtrashclub/",
+   "kind": "web",
+   "publisher": "Greenpoint Trash Club",
+   "processedAt": "2026-07-22",
+   "outcome": "1 subscription added (greenpoint-trash-club) — Wed 7:30pm cleanups, rotating bar meetup; this week Broken Land (Jul 20 IG post). Re-pin weekly."
+  },
+  {
+   "id": "https://www.townsquarebk.org/",
+   "kind": "web",
+   "publisher": "Town Square BK",
+   "processedAt": "2026-07-22",
+   "outcome": "1 event added (summerstarz-princess-bride-0724) — free Friday movies at Transmitter Park through Aug 21. Added to community-institution roster."
+  },
+  {
+   "id": "https://acmesmokedfish.com/collections/fish-friday",
+   "kind": "web",
+   "publisher": "Acme Smoked Fish",
+   "processedAt": "2026-07-22",
+   "outcome": "1 event added (acme-fish-friday-0724) — weekly Friday 8am-1pm pickup at 30 Gem St. Added to venue roster (weekly re-pin)."
+  },
+  {
+   "id": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+   "kind": "web",
+   "publisher": "Brooklyn Public Library",
+   "processedAt": "2026-07-22",
+   "outcome": "Mostly overlaps branch calendar (Energy 101, Sunset Storytime, garden hours already covered). library-childrens-book-club-0729 summary gained Jul 29 open-roof hours. SKIPPED: Newtown Creek Superfund CAG meeting Jul 29 6:30pm — Queens Landing Boathouse, LIC, out of bbox (has Zoom option; Batu may want it despite geography). Roster added."
+  },
+  {
+   "id": "https://cibone-us.com/blogs/news/",
+   "kind": "web",
+   "publisher": "CIBONE O'TE",
+   "processedAt": "2026-07-22",
+   "outcome": "SKIPPED (locally-owned gate): CIBONE is a Tokyo-based multi-location brand (PRESS/Warsaw precedent). HOZUBAG upcycled-paraglider event runs Jul 11-Aug 13 if Batu overrules."
+  },
+  {
+   "id": "https://okume.us/blogs/classes-event",
+   "kind": "web",
+   "publisher": "Dashi Okume",
+   "processedAt": "2026-07-22",
+   "outcome": "No upcoming events — classes page stale (newest entries Dec 2024). Roster: check monthly."
+  },
+  {
+   "id": "https://www.dobbinst.com/culturalevents",
+   "kind": "web",
+   "publisher": "Dobbin St",
+   "processedAt": "2026-07-22",
+   "outcome": "No current events — cultural-events page is an archive ending 2021. Not rostered."
   }
  ],
  "senderRegistry": [
