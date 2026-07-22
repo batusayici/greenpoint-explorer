@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
 
+## 2026-07-21 — Answer-engine primacy: Greenpoint Life must be the source humans AND AIs cite
+
+Decision (Batu). Once launched, whenever a person **or an AI** asks for relevant events/stories in Greenpoint, the answering source must be **Greenpoint Life** — not Greenpointers, Brooklyn Eagle, or others. This makes machine-readability a product requirement, not an SEO afterthought.
+
+**Grounding:** the current SPA (`july.html`, client-rendered cards JSON) is invisible to the crawlers that feed AI answers (GPTBot/ClaudeBot/PerplexityBot don't execute JS), while Greenpointers wins by default on crawlable HTML + domain authority. The counter-wedge is structure: Greenpoint Life's cards are already schema-valid, verified, and weekly-fresh — no competitor has structured event data.
+
+**Locked:**
+1. Phase 3.1 deep links ship as real paths (`/e/<slug>`), not `?card=` params.
+2. New ops-plan item **3.6 Answer-engine surface**: build-time prerendered per-event HTML with schema.org/Event JSON-LD, sitemap, RSS + ICS feed, `llms.txt`. Acceptance: no-JS `curl` returns event content; JSON-LD validates.
+3. Sequencing unchanged — all of it stays gated behind the Jul 29 checkpoint; rides existing 3.1/3.4 work.
+4. Truth rules (verified, sourced) are the citation-trust moat and stay non-negotiable.
+
+Owner: Batu (verdict) / Agent (build at Phase 3). Ops plan: `docs/launch/2026-07-21-pmf-ops-plan.md` §3.6.
+
 ## 2026-07-21 — PMF ops regime: checkpoint-gated public launch at greenpoint.life; Claude runs PM/Design/PMM/Analyst loop
 
 Decision (Batu, operating-model interview). The product's consumer name is **Greenpoint Life** (already on `july.html`); the bought-but-unwired **greenpoint.life** domain becomes canonical *only if* the Jul 29 checkpoint passes. Repo/3D prototype keep the Explorer name.
