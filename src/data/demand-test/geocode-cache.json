@@ -1898,5 +1898,55 @@
         "-73.9548286"
       ]
     }
+  },
+  "638 Manhattan Avenue, Brooklyn, NY 11222": {
+    "query": "638 Manhattan Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T16:02:03.759Z",
+    "hit": {
+      "place_id": 359111204,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081445,
+      "lat": "40.7241484",
+      "lon": "-73.9507359",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "638, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7240685",
+        "40.7242135",
+        "-73.9508774",
+        "-73.9506026"
+      ]
+    }
+  },
+  "577 Lorimer Street, Brooklyn, NY 11211": {
+    "query": "577 Lorimer Street, Brooklyn, NY 11211",
+    "fetchedAt": "2026-07-22T16:02:05.314Z",
+    "hit": {
+      "place_id": 359116951,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280042094,
+      "lat": "40.7142539",
+      "lon": "-73.9495971",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "577, Lorimer Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7142214",
+        "40.7142863",
+        "-73.9496840",
+        "-73.9495103"
+      ]
+    }
   }
 }

@@ -3996,6 +3996,92 @@
       "geocodeQuery": "67 West Street, Brooklyn, NY 11222",
       "lat": 40.728561,
       "lng": -73.959184
+    },
+    {
+      "id": "wasabi-closing",
+      "category": "news",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Wasabi is closing after 26 years",
+      "kicker": "Sushi staple's last day is July 27",
+      "locationName": "Wasabi",
+      "address": "638 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "After 26 years serving sushi to Greenpoint, owners Robby and Cristin Wijaya are closing the Japanese mainstay. Last day of service is Monday, July 27 — one more week to say goodbye.",
+      "filters": [
+        "news"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/07/21/greenpoint-sushi-staple-wasabi-closing-after-26-years/"
+        },
+        {
+          "label": "Visit before it closes",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint sushi staple Wasabi closing after 26 years",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/21/greenpoint-sushi-staple-wasabi-closing-after-26-years/",
+          "date": "2026-07-21"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "geocodeQuery": "638 Manhattan Avenue, Brooklyn, NY 11222",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "lat": 40.724148,
+      "lng": -73.950736
+    },
+    {
+      "id": "swaines-fall-opening",
+      "category": "news",
+      "sourceCampaign": "greenpointers_week_2026_07_22",
+      "title": "Swaine's to open this fall on Lorimer St",
+      "kicker": "Seasonal Italian-leaning spot, Sept aim",
+      "locationName": "577 Lorimer St (former Pomp and Circumstance)",
+      "address": "577 Lorimer St, Brooklyn, NY 11211",
+      "summary": "Chef Emily Swaine — ex-head chef of Forsythia, with Union Square Cafe, Maialino, and Blue Hill at Stone Barns on the resume — and her sister Hannah, a Greenpoint local, are opening a seasonal cafe and restaurant in the former Pomp and Circumstance space, aiming for September.",
+      "filters": [
+        "news"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "actions": [
+        {
+          "label": "Read the story",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/07/22/new-seasonal-spot-swaines-to-open-this-fall-in-former-home-of-pomp-and-circumstance/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "New seasonal spot Swaine's to open this fall in former home of Pomp and Circumstance",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/22/new-seasonal-spot-swaines-to-open-this-fall-in-former-home-of-pomp-and-circumstance/",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "geocodeQuery": "577 Lorimer Street, Brooklyn, NY 11211",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "lat": 40.714254,
+      "lng": -73.949597
     }
   ]
 }

@@ -42,12 +42,16 @@ test("seed has exactly 71 cards across the six layers", () => {
   // items verified to Williamsburg addresses and skipped (Salotto→84 Withers,
   // Twisted Spine workshop→306 Grand, Artful Souls→105 S 5th, Rude Mouth→359
   // Metropolitan, Joy Flower Pot→713 Lorimer, Tracksmith→Grand St + MPJ Park).
-  assert.equal(seed.cards.length, 81);
+  // Later on 2026-07-22 (Batu): +2 news from this week's Greenpointers front
+  // page — Wasabi closing Jul 27 after 26 years (638 Manhattan Ave) and
+  // Swaine's fall opening at 577 Lorimer (boundary call: Williamsburg side of
+  // the envelope, added on Batu's explicit ask, Domino-yoga precedent).
+  assert.equal(seed.cards.length, 83);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
   assert.equal(count((c) => c.category === "event"), 49, "49 event cards");
   assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
-  assert.equal(count((c) => c.category === "news"), 5, "5 news cards");
+  assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
   assert.equal(count((c) => c.filters.includes("live_music")), 27, "27 in the Live Music layer (venues + show nights + jazz events)");
   assert.equal(count((c) => c.category === "subscription"), 2, "2 subscription cards (Falu House, Flower Cat)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
@@ -80,7 +84,7 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
 
 test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
-  assert.equal(news.length, 5);
+  assert.equal(news.length, 7);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
