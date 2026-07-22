@@ -3750,6 +3750,54 @@
       "lng": -73.960287
     },
     {
+      "id": "its-my-park-transmitter-0726",
+      "category": "event",
+      "sourceCampaign": "coverage_scan_2026_07_22",
+      "title": "It's My Park at Transmitter Park",
+      "kicker": "Volunteer stewardship morning",
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "summary": "A volunteer day at the waterfront park through NYC Parks' It's My Park program — neighbors pitch in to help care for the green space. Free.",
+      "filters": [
+        "events"
+      ],
+      "audience": [
+        "resident",
+        "civic_actor"
+      ],
+      "corridor": null,
+      "free": true,
+      "startsAt": "2026-07-26T10:00:00-04:00",
+      "endsAt": "2026-07-26T12:00:00-04:00",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/parks/transmitter-park/events"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "WNYC Transmitter Park — Events (It's My Park, Jul 26)",
+          "publisher": "NYC Parks",
+          "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "lat": 40.729537,
+      "lng": -73.960287,
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22"
+    },
+    {
       "id": "poochs-adoption-0725",
       "category": "event",
       "sourceCampaign": "greenpointers_week_2026_07_22",

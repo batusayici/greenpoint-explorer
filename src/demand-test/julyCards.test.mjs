@@ -55,10 +55,13 @@ test("seed has exactly 71 cards across the six layers", () => {
   // Queens Landing Boathouse) was first skipped as LIC, then added on Batu's
   // call as civic_action — Greenpoint-related, nearby, pinned at the exact
   // spot across the creek (geocodes inside the envelope).
-  assert.equal(seed.cards.length, 87);
+  // 2026-07-22 (coverage scan → Batu's ask): +1 event — It's My Park volunteer
+  // day at Transmitter Park (Jul 26), from the NYC Parks per-park page (missed
+  // by Greenpointers + newsletters; the residual-gap catch this scan exists for).
+  assert.equal(seed.cards.length, 88);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 51, "51 event cards");
+  assert.equal(count((c) => c.category === "event"), 52, "52 event cards");
   assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
   assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
   assert.equal(count((c) => c.filters.includes("live_music")), 27, "27 in the Live Music layer (venues + show nights + jazz events)");
@@ -138,6 +141,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     "disabled-hungry-launch-0725",
     "giggles-run-club-0725",
     "greenpoint-trash-club",
+    "its-my-park-transmitter-0726",
     "library-childrens-book-club-0729",
     "library-thursday-programs",
     "longevity-stick-transmitter",
