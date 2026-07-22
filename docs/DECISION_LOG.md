@@ -4,6 +4,14 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
+
+Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.
+
+**Tradeoff accepted:** early-week (Mon–Wed) events announced Fri–Sun may sit uncovered until Thursday — the low-density, low-stakes window. **Earn-back criterion:** the Sunday scan (paused in the scheduler, not deleted) re-enables if Thursday reports repeatedly flag gaps a Sunday run would have caught; the scan's "learned" section tracks this explicitly. Context: zero scans had run when decided, so the twice-weekly cadence was untested theory. Coverage bar itself (100% of on-concept events + openings) is unchanged; measurement is now weekly.
+
+Owner: Batu.
+
 ## 2026-07-22 — 3D isometric explorer parked indefinitely; Greenpoint Life (2D map + feed) is the product
 
 Decision (Batu). The isometric 3D explorable Greenpoint — the repo's original goal — is **parked indefinitely**. The direction remains exciting and may be picked up later, but the sole goal going forward is **real value and PMF**, pursued through the 2D map + feed MVP (Track V, consumer name Greenpoint Life). This converts the 2026-07-02 "Track R paused behind Track V" ordering into an open-ended park: resuming 3D is a separate, explicit future decision, not an automatic unlock at any milestone.

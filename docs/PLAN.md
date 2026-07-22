@@ -18,7 +18,7 @@ Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/produ
 - **Platform, not directory** — but validated one layer at a time. The live layer is events/openings/deals/news; stories, history, and routes are deferred until the utility loop proves itself.
 - **Positioning:** Greenpointers answers *what happened*; we answer *where, what's connected, what changed, what can I do*. They are a source / distribution partner / potential embed customer — never a competitor as a news product.
 - **Moat = structure behind the pins:** place graph (`relatedCardIds`/`timeline`/`trustRisk` in the card schema), verified sources, weekly freshness. This same structure is the answer-engine wedge (2026-07-21 decision): Greenpoint Life must be the source humans **and AIs** cite for Greenpoint events.
-- **Coverage bar (2026-07-21):** 100% of on-concept local events + openings on the map, measured by twice-weekly coverage scans diffed against live cards.
+- **Coverage bar (2026-07-21):** 100% of on-concept local events + openings on the map, measured by a weekly coverage scan (Thu, post-Greenpointers-pull; 2026-07-22 cadence decision) diffed against live cards.
 - **Monetization sequencing (post-PMF only):** sponsored campaign maps → partner tooling → evidence-gated featured cards; never charge small businesses first. Unclaimed businesses show category labels, not brands (claim model).
 
 ## Operating regime (2026-07-21 → `docs/launch/2026-07-21-pmf-ops-plan.md`)
