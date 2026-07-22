@@ -8,7 +8,7 @@ const seed = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/july-2026-cards.json", import.meta.url)), "utf8"),
 );
 
-test("seed has exactly 34 cards across the six layers", () => {
+test("seed has exactly 71 cards across the six layers", () => {
   // 2026-07-02 (Batu): per-station G-closure cards cut — closure context lives
   // in the banner; the layer keeps the action cards (adopt + advocacy).
   // 2026-07-08 weekly refresh: Jul 7–12 roundup in, 10 past events out.
@@ -27,11 +27,17 @@ test("seed has exactly 34 cards across the six layers", () => {
   // Later on 2026-07-16 (ChatGPT-gap check): community-institution sweep —
   // Greenpoint Library venue + 6 day cards from the branch's own calendar,
   // plus the Friends of Transmitter Park Longevity Stick class (Jul 23).
-  assert.equal(seed.cards.length, 83);
+  // 2026-07-21 weekly refresh: 36 past events + the one-night El Born deal
+  // expired out; +21 events from the venue-calendar re-pull for the Jul 23–27
+  // back half (Troost 5, Eavesdrop 6, Good Room 2, Film Noir 3, GCC 3, Hide &
+  // Seek weekend DJs) plus the Tend x Franca sidewalk seconds sale (Gmail), then
+  // +4 Greenpoint Library day cards (Thu/Fri/Sat/Mon; Fri had garden + movie,
+  // Sun had no branch programming) from the BPL branch calendar sweep.
+  assert.equal(seed.cards.length, 71);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
-  assert.equal(count((c) => c.category === "event"), 50, "50 event cards (43 + 7 community-institution days)");
-  assert.equal(count((c) => c.category === "discount"), 3, "3 deal cards");
+  assert.equal(count((c) => c.category === "event"), 39, "39 event cards");
+  assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
   assert.equal(count((c) => c.category === "news"), 5, "5 news cards");
   assert.equal(count((c) => c.filters.includes("live_music")), 26, "26 in the Live Music layer (venues + show nights + jazz events)");
   assert.equal(count((c) => c.category === "subscription"), 2, "2 subscription cards (Falu House, Flower Cat)");
@@ -39,8 +45,8 @@ test("seed has exactly 34 cards across the six layers", () => {
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
-  // Refreshed 2026-07-15; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-07-15T00:00:00-04:00");
+  // Refreshed 2026-07-21; recurring series carry their series end date.
+  const refreshDay = Date.parse("2026-07-21T00:00:00-04:00");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
     assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-15 refresh`);
   }
@@ -52,12 +58,13 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // verified-through (UI suppresses the "ends" line) — a dated one-night deal
   // must NOT carry it.
   const deals = seed.cards.filter((c) => c.category === "discount");
-  assert.equal(deals.length, 3);
+  assert.equal(deals.length, 2);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals"), `${c.id} missing deals filter`);
   }
-  assert.equal(seed.cards.find((c) => c.id === "elborn-wine-night").recurring, undefined, "one-night deal is not recurring");
+  // 2026-07-21: the one-night El Born wine-night deal expired out; the two
+  // survivors are both recurring standing offers (verified-through dated).
   assert.equal(seed.cards.find((c) => c.id === "poochs-parlor-first-groom").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "greenpoint-fish-oyster-hh").recurring, true);
 });
@@ -104,15 +111,12 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   assert.deepEqual(free, [
-    "archestratus-golden-hour-hang",
-    "kombucha-workshop-library",
+    "library-thursday-programs",
     "library-tuesday-programs",
     "longevity-stick-transmitter",
     "morning-yoga-transmitter",
-    "open-studio-library",
-    "summer-music-bushwick-inlet",
     "summer-of-horrors-brooklyn-brewery",
-    "word-journal-club",
+    "tend-franca-seconds-sale",
   ]);
 });
 
@@ -164,15 +168,10 @@ test("every card is geocoded inside Greenpoint (run scripts/geocode-demand-cards
   }
 });
 
-test("world-cup cluster carries geocoded venues", () => {
-  const wc = seed.cards.find((c) => c.id === "world-cup-watch");
-  assert.ok(wc, "world-cup-watch card exists");
-  assert.ok(wc.venues.length >= 6, "at least 6 of the 10 bars resolved");
-  for (const v of wc.venues) {
-    if (v.lat != null) assert.ok(inGreenpoint(v), `venue ${v.name}`);
-  }
-  assert.ok(wc.venues.filter((v) => v.lat != null).length >= 6, "at least 6 venues have coords");
-});
+// The World Cup watch-party cluster (world-cup-watch) aged out in the
+// 2026-07-21 refresh (final was Jul 19) — its multi-venue coverage test
+// retired with it. The `venues[]` cluster path stays exercised via schema
+// validation on any future cluster card.
 
 test("ids are unique", () => {
   assert.equal(new Set(seed.cards.map((c) => c.id)).size, seed.cards.length);
@@ -192,25 +191,16 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.deepEqual(byId("g-advocacy-mta").relatedCardIds, ["g-train-closures", "adopt-a-business"]);
   assert.ok(byId("sailor-and-siren").relatedCardIds.includes("g-train-closures"));
   assert.ok(byId("sotteatery").relatedCardIds.includes("g-train-closures"));
-  // 2026-07-16: Warsaw card removed (locally-owned gate); the comedy club's
-  // watch party joins the cluster instead.
-  assert.deepEqual(byId("world-cup-watch").relatedCardIds, ["socceria", "gcc-world-cup-final"]);
-  assert.deepEqual(byId("socceria").relatedCardIds, ["world-cup-watch"]);
-  // Live-music layer: venue ↔ its show nights.
-  assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-analog-soul", "good-room-bda"]);
-  assert.deepEqual(byId("good-room-analog-soul").relatedCardIds, ["good-room"]);
-  assert.equal(byId("troost").relatedCardIds.length, 7, "Troost links its 7 remaining program nights (Jul 15 expired out)");
-  assert.deepEqual(byId("troost-barba-yiorgi").relatedCardIds, ["troost"]);
-  // 2026-07-16 expansion: each new venue links its program and back.
-  assert.equal(byId("eavesdrop").relatedCardIds.length, 5, "Eavesdrop links its 5 calendar days");
+  // Live-music layer: venue ↔ its show nights. Rebuilt each refresh from the
+  // show cards that point back at the venue (2026-07-21: expired nights out,
+  // Jul 23–27 nights in).
+  assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-juan-maclean-0725", "good-room-members-lloyd-0724"]);
+  assert.deepEqual(byId("good-room-juan-maclean-0725").relatedCardIds, ["good-room"]);
+  assert.equal(byId("troost").relatedCardIds.length, 7, "Troost links its 7 current program nights");
+  assert.deepEqual(byId("troost-barba-yiorgi-0723").relatedCardIds, ["troost"]);
+  assert.equal(byId("eavesdrop").relatedCardIds.length, 7, "Eavesdrop links its 7 current calendar nights");
   assert.deepEqual(byId("eavesdrop-subcultures").relatedCardIds, ["eavesdrop"]);
-  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 5);
-  assert.ok(byId("coffin-doc-film-noir").relatedCardIds.includes("film-noir-cinema"), "existing screening joins the venue graph");
+  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 4);
+  assert.ok(byId("film-noir-jackie-stripper-0724").relatedCardIds.includes("film-noir-cinema"), "screening joins the venue graph");
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
-  // 2026-07-15 refresh: events at/with an on-map business link both ways.
-  // (The Jul 7–12 pairs aged out with their events.)
-  assert.deepEqual(byId("giggles-and-wiggles").relatedCardIds, ["infant-cpr-giggles"]);
-  assert.deepEqual(byId("infant-cpr-giggles").relatedCardIds, ["giggles-and-wiggles"]);
-  assert.deepEqual(byId("falu-tinned-fish-club").relatedCardIds, ["falu-tinned-fish-jazz"]);
-  assert.deepEqual(byId("falu-tinned-fish-jazz").relatedCardIds, ["falu-tinned-fish-club"]);
 });

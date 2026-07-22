@@ -1698,5 +1698,30 @@
         "-73.9602368"
       ]
     }
+  },
+  "252 Franklin Street, Brooklyn, NY 11222": {
+    "query": "252 Franklin Street, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-22T02:19:33.939Z",
+    "hit": {
+      "place_id": 360369708,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280146089,
+      "lat": "40.7346118",
+      "lon": "-73.9581444",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "252, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7345694",
+        "40.7346542",
+        "-73.9582490",
+        "-73.9580399"
+      ]
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
  "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
- "lastRunAt": "2026-07-16T12:00:00-04:00",
+ "lastRunAt": "2026-07-21T12:00:00-04:00",
  "processedItems": [
   {
    "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -232,6 +232,111 @@
    "publisher": "Moviefone",
    "processedAt": "2026-07-16",
    "outcome": "SKIPPED — ChatGPT claimed 'Film Noir (2007) 9pm Jul 16'; cinema's own July calendar shows Jul 16 dark (stale June source)"
+  },
+  {
+   "id": "gmail:19f81fa3af903678",
+   "kind": "gmail",
+   "publisher": "Tend Greenpoint",
+   "processedAt": "2026-07-21",
+   "outcome": "1 event added (tend-franca-seconds-sale, Jul 25 seconds sale w/ Franca); email body 12-5pm vs flyer 1-6pm -> trustRisk medium"
+  },
+  {
+   "id": "gmail:19f80c9be672062b",
+   "kind": "gmail",
+   "publisher": "le Botaniste",
+   "processedAt": "2026-07-21",
+   "outcome": "skip - Manhattan multi-location, corporate (locally-owned gate)"
+  },
+  {
+   "id": "gmail:19f7b18644e42eca",
+   "kind": "gmail",
+   "publisher": "GUNK",
+   "processedAt": "2026-07-21",
+   "outcome": "skip - Guppy show is at Baby's All Right (Williamsburg), out of area"
+  },
+  {
+   "id": "gmail:19f6c2fb865e3076",
+   "kind": "gmail",
+   "publisher": "Dandelion Wine",
+   "processedAt": "2026-07-21",
+   "outcome": "skip - Jul 16 same-day tasting already past"
+  },
+  {
+   "id": "gmail:19f721ca5dd91cc9",
+   "kind": "gmail",
+   "publisher": "Greenpointers",
+   "processedAt": "2026-07-21",
+   "outcome": "skip - Greenpoint This Week digest duplicates already-ingested website articles"
+  },
+  {
+   "id": "https://troostny.com/calendar/",
+   "kind": "web",
+   "publisher": "Troost",
+   "processedAt": "2026-07-21",
+   "outcome": "5 events added (Jul 23-27: barba-yiorgi, dj-frantz, jonny-compolo, lupe-mela, nice-try-kid)"
+  },
+  {
+   "id": "https://www.eavesdrop.nyc/calendar",
+   "kind": "web",
+   "publisher": "Eavesdrop",
+   "processedAt": "2026-07-21",
+   "outcome": "6 events added (Jul 23-26); subcultures Jul 22 already carded"
+  },
+  {
+   "id": "https://donyc.com/venues/good-room",
+   "kind": "web",
+   "publisher": "Good Room",
+   "processedAt": "2026-07-21",
+   "outcome": "2 events added (Jul 24 Members Party/Lloyd, Jul 25 Juan Maclean)"
+  },
+  {
+   "id": "https://filmnoircinema.com/2026-07-21",
+   "kind": "web",
+   "publisher": "Film Noir Cinema",
+   "processedAt": "2026-07-21",
+   "outcome": "3 events added (Jul 23 Film Club, Jul 24 + Jul 27 Jackie the Stripper); Keep Us Alive fundraiser already carded (film-noir-support)"
+  },
+  {
+   "id": "https://tickets.greenpointcomedyclub.com/2026-07-21",
+   "kind": "web",
+   "publisher": "Greenpoint Comedy Club",
+   "processedAt": "2026-07-21",
+   "outcome": "3 grouped events added (Thu Jul 23, Fri Jul 24 x2, Sat Jul 25 x3 incl Adam Pally)"
+  },
+  {
+   "id": "https://www.hideandseek.nyc/2026-07-21",
+   "kind": "web",
+   "publisher": "Hide & Seek",
+   "processedAt": "2026-07-21",
+   "outcome": "1 weekend-DJs card (Jul 24-25); Wine Down Wed Jul 22 already carded, next Jul 29 out of window"
+  },
+  {
+   "id": "https://archestrat.us/pages/events-2026-07-21",
+   "kind": "web",
+   "publisher": "Archestratus",
+   "processedAt": "2026-07-21",
+   "outcome": "checked - no new in-person Greenpoint items for Jul 23-27 (upcoming are Aug or Zoom)"
+  },
+  {
+   "id": "https://www.wordbookstores.com/events-2026-07-21",
+   "kind": "web",
+   "publisher": "WORD",
+   "processedAt": "2026-07-21",
+   "outcome": "checked - no July events posted"
+  },
+  {
+   "id": "https://www.scrappleland.com/2026-07-21",
+   "kind": "web",
+   "publisher": "Scrappleland",
+   "processedAt": "2026-07-21",
+   "outcome": "checked - ScrappleLeague Weds season running; next Jul 29 out of window"
+  },
+  {
+   "id": "https://discover.bklynlibrary.org/?f[event_building][]=Greenpoint%20Library-2026-07-21",
+   "kind": "web",
+   "publisher": "Brooklyn Public Library",
+   "processedAt": "2026-07-21",
+   "outcome": "Greenpoint branch calendar sweep (filtered) — 4 day cards added (Thu Jul 23, Fri Jul 24, Sat Jul 25, Mon Jul 27); Fri had garden storytime + after-school movie; Sun Jul 26 no branch programming"
   }
  ],
  "senderRegistry": [
