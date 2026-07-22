@@ -4235,6 +4235,60 @@
       "updatedAt": "2026-07-22",
       "lat": 40.725409,
       "lng": -73.956615
+    },
+    {
+      "id": "newtown-creek-cag-0729",
+      "category": "civic_action",
+      "sourceCampaign": "tab_review_2026_07_22",
+      "title": "Newtown Creek Superfund CAG meeting",
+      "kicker": "Have a say in the creek cleanup",
+      "locationName": "Queens Landing Boathouse & Environmental Center",
+      "address": "56-27 2nd St, Unit 105, Long Island City, NY 11101",
+      "summary": "The Community Advisory Group for the Newtown Creek Superfund cleanup meets in person at the Queens Landing Boathouse, just across the creek — with a Zoom option for joining virtually (advance registration required for the virtual side). CBI posts the agenda before the meeting.",
+      "filters": [
+        "events",
+        "news"
+      ],
+      "audience": [
+        "civic_actor",
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-29T18:30:00-04:00",
+      "endsAt": "2026-07-29T20:30:00-04:00",
+      "actions": [
+        {
+          "label": "Register for Zoom",
+          "type": "rsvp",
+          "url": "https://cbi-org.zoom.us/meeting/register/DpWHhdKDTVi6Vlu5JR1PaQ"
+        },
+        {
+          "label": "Event listing",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "North Brooklyn Environmental Community Calendar — Newtown Creek Superfund CAG meeting",
+          "publisher": "Brooklyn Public Library",
+          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+          "date": "2026-07-22"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "geocodeQuery": "56-27 2nd Street, Long Island City, NY 11101",
+      "createdAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "lat": 40.738582,
+      "lng": -73.960566
     }
   ]
 }

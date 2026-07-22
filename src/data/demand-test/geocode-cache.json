@@ -1998,5 +1998,30 @@
         "-73.9565647"
       ]
     }
+  },
+  "56-27 2nd Street, Long Island City, NY 11101": {
+    "query": "56-27 2nd Street, Long Island City, NY 11101",
+    "fetchedAt": "2026-07-22T17:20:49.360Z",
+    "hit": {
+      "place_id": 359022698,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1132080798,
+      "lat": "40.7385821",
+      "lon": "-73.9605658",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "Gotham Point South Tower",
+      "display_name": "Gotham Point South Tower, 56-27, 2nd Street, Hunters Point, Long Island City, Queens, Queens County, New York, 11101, United States",
+      "boundingbox": [
+        "40.7383265",
+        "40.7388627",
+        "-73.9609620",
+        "-73.9601430"
+      ]
+    }
   }
 }

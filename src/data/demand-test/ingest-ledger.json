@@ -407,6 +407,13 @@
    "publisher": "Dobbin St",
    "processedAt": "2026-07-22",
    "outcome": "No current events — cultural-events page is an archive ending 2021. Not rostered."
+  },
+  {
+   "id": "https://www.bklynlibrary.org/north-brooklyn-community-calendar#newtown-creek-cag-0729",
+   "kind": "web",
+   "publisher": "Brooklyn Public Library",
+   "processedAt": "2026-07-22",
+   "outcome": "1 civic_action added (newtown-creek-cag-0729) on Batu's overrule of the earlier LIC skip: Greenpoint-related event nearby, pinned at the exact Queens Landing Boathouse location (geocodes inside the envelope at 40.7386,-73.9606). Zoom registration link included. PRECEDENT: Greenpoint-related civic events just across the creek can ship as civic_action pinned at their true location."
   }
  ],
  "senderRegistry": [

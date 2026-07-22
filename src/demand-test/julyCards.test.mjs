@@ -50,9 +50,12 @@ test("seed has exactly 71 cards across the six layers", () => {
   // Trash Club — Wednesday 7:30pm cleanups, rotating bar meetup pinned weekly),
   // +2 events (Town Square SummerStarz free movie at Transmitter Park;
   // Acme Fish Friday pickup at 30 Gem St). Skipped: CIBONE Hozubag (Tokyo
-  // multi-location brand, locally-owned gate), Newtown Creek CAG meeting (LIC
-  // address, out of bbox), Dashi Okume + Dobbin St (no current listings).
-  assert.equal(seed.cards.length, 86);
+  // multi-location brand, locally-owned gate), Dashi Okume + Dobbin St (no
+  // current listings). The Newtown Creek Superfund CAG meeting (Jul 29,
+  // Queens Landing Boathouse) was first skipped as LIC, then added on Batu's
+  // call as civic_action — Greenpoint-related, nearby, pinned at the exact
+  // spot across the creek (geocodes inside the envelope).
+  assert.equal(seed.cards.length, 87);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
   assert.equal(count((c) => c.category === "event"), 51, "51 event cards");
@@ -60,7 +63,7 @@ test("seed has exactly 71 cards across the six layers", () => {
   assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
   assert.equal(count((c) => c.filters.includes("live_music")), 27, "27 in the Live Music layer (venues + show nights + jazz events)");
   assert.equal(count((c) => c.category === "subscription"), 3, "3 subscription cards (Falu House, Flower Cat, Trash Club)");
-  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
+  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
