@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/july.html", "destination": "/", "permanent": false }
+  ]
+}

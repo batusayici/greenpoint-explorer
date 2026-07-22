@@ -1,86 +1,47 @@
-# Greenpoint Explorer — Plan
+# Greenpoint Life — Plan
 
-Status: Active roadmap · Reset 2026-06-11 · Owner: Batu (taste/product/approvals), Agent (execution)
+Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/product/approvals), Agent (execution)
 
-> **Roadmap only — milestone granularity.** Detail lives where it belongs: decisions & rationale → `docs/DECISION_LOG.md` · per-task designs → `docs/superpowers/specs/` · scaling scorecards → `docs/SCALING_LOG.md` · hero/landmark list → `docs/CURATION_TIERS.md` · kit inventory → `docs/COMPONENT_INVENTORY.md` · look → `docs/ART_DIRECTION.md` · strategy → `docs/context/`. Completed-work specifics (commits, files, tests) live in git history, not here.
+> **Roadmap only — milestone granularity.** Detail lives where it belongs: decisions & rationale → `docs/DECISION_LOG.md` · launch/PMF ops → `docs/launch/` · per-task designs → `docs/superpowers/specs/` · strategy → `docs/context/` · parked 3D track → `docs/parked/3d-explorer/`. Completed-work specifics (commits, files, tests) live in git history, not here.
 
 ## Product Goal
 
-**Greenpoint Explorer is a neighborhood exploration platform** — it helps people discover Greenpoint through stories, landmarks, events, history, and curated routes, not through search. The lifelike, hand-inked 3D map is the **recognition layer / container**; the location-linked context attached to places is the product. (People don't travel to browse listings — they travel to discover places; businesses benefit when discovery happens.)
+**Greenpoint Life is a hyperlocal map + feed for Greenpoint, Brooklyn** — the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, on a 2D map in the II-C inked identity. The sole goal is **real value and PMF**: residents return weekly because it's genuinely useful, and businesses/orgs want on it.
 
-**Naming (2026-07-21):** the consumer product is **Greenpoint Life**; the bought domain **greenpoint.life** becomes canonical only if the Jul 29 checkpoint passes. Repo + 3D prototype keep the Explorer name.
-
-The container: a 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike — every building and business where it is in real life and recognizably itself. Art-directed and stylized, not hyperrealistic. The recognition bar ("yes, that's *my* neighborhood") is load-bearing but serves the platform; it is not the end in itself.
-
-- **Multi-angle (firm):** viewable from all four orthogonal iso angles (90° steps) + pan/zoom. A single angle structurally hides ~half of all frontages and their businesses; four rotations reveal every frontage. Scene completeness is judged from all four angles. (Not free-cam, which stays debug-only.)
-- **Look:** II-C Inked Indie Visual System. Fallback: GPT-5.5 photo-render fidelity. See `docs/ART_DIRECTION.md`.
-- **Truth:** geometry = NYC Open Data (footprints, BINs); likeness = field photos in `src/data/facade-evidence/`.
+- **Product = the structured, trustworthy content layer.** Truth rules are non-negotiable: nothing invented, everything sourced, review-gated before ship.
+- **Naming (2026-07-21):** consumer product is **Greenpoint Life**; the bought domain **greenpoint.life** becomes canonical only if the Jul 29 checkpoint passes. Repo keeps the `greenpoint-explorer` name.
+- **Entry (2026-07-22):** the app serves at the site root (`index.html` → `src/demand-test/`); the old `/july.html` URL redirects with query params preserved.
+- **Look:** II-C palette carries over from the parked art direction (`docs/parked/3d-explorer/ART_DIRECTION.md`) via `src/demand-test/iiMapStyle.js`. Out-of-palette color is a hard miss.
 
 ## Strategy (in brief — full frame in `docs/context/`)
 
-- **Platform, not directory.** Six content layers: Places · Stories · History · Events · Curated Routes · Neighborhood Layers.
-- **Use order:** Stories → Local knowledge → Exploration → Events → History → Businesses. Stories attract; events create urgency; businesses monetize discovery.
-- **North-Star — Verified Local Exploration:** journeys with meaningful engagement (route starts, story listens, event saves, multi-stop, signups).
-- **Defensibility:** a neighborhood knowledge graph — *why* places matter, not just where.
-- **Landmark strategy:** curated density, not coverage — ~10–15 story-rich anchors on the Franklin/Greenpoint spine; each a tappable story object, not a POI.
-- **Hypotheses to validate:** H1 stories drive engagement · H2 routes drive exploration · H3 events drive acquisition · H4 businesses pay after attention · H5 model repeats to other neighborhoods.
+- **Platform, not directory** — but validated one layer at a time. The live layer is events/openings/deals/news; stories, history, and routes are deferred until the utility loop proves itself.
+- **Positioning:** Greenpointers answers *what happened*; we answer *where, what's connected, what changed, what can I do*. They are a source / distribution partner / potential embed customer — never a competitor as a news product.
+- **Moat = structure behind the pins:** place graph (`relatedCardIds`/`timeline`/`trustRisk` in the card schema), verified sources, weekly freshness. This same structure is the answer-engine wedge (2026-07-21 decision): Greenpoint Life must be the source humans **and AIs** cite for Greenpoint events.
+- **Coverage bar (2026-07-21):** 100% of on-concept local events + openings on the map, measured by twice-weekly coverage scans diffed against live cards.
+- **Monetization sequencing (post-PMF only):** sponsored campaign maps → partner tooling → evidence-gated featured cards; never charge small businesses first. Unclaimed businesses show category labels, not brands (claim model).
 
-## Locked constraints (`DECISION_LOG.md`, 2026-06-11)
+## Operating regime (2026-07-21 → `docs/launch/2026-07-21-pmf-ops-plan.md`)
 
-Audience: public community demo (real names in dev, factual review at publish) · Likeness: heroes exact, infill typological · Production: procedural/parametric kit + AI asset generation · Camera: iso + pan/zoom, four fixed 90° steps (firm), free-cam debug-only · Real-faithful supersedes fictional-safe identity.
+Weekly loop: **Mon** `/ingest-newsletters` (review-gated) + analytics pull → **Tue** readout + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Batu sends every outbound message; nothing user-visible deploys unapproved; decisions land in `DECISION_LOG.md`.
 
-## Architecture spine
+## Roadmap
 
-```
-NYC footprints (BIN-mapped, WGS84)
-  → local scene frame projection      [proven: R10E/R10G]
-  → extruded massing + facade planes
-  → II-style facade textures          [AI image-to-image; heroes bespoke, infill from kit]
-  → II prop/ground layer              [sidewalks, crosswalks, street furniture]
-  → NPR post pass                     [outline, paper grain, palette grade]
-  → DOM paper-card UI                 [II-C marker states + place cards]
-```
-
-Stack: React + Three.js + Vite. No renderer replacement.
-
-## Where we are (2026-07-02)
-
-The **container** (Track A — geometry, inked look, facades, ground, multi-angle camera, place cards, block scaling) is ~85% built and polished along the Franklin spine. The **content/product layers** (Track B — stories, events, routes, history, instrumentation) are ~5% built. The map reads as real but is largely **mute**. Milestone trail: `DECISION_LOG.md`.
-
-**As of 2026-07-02 the near-term priority is Track V (below), not Track R.** Two strategy inputs (the *Unmet Needs & Opportunity Context* and the *Shop Small Greenpoint* July newsletter) say: validate that the spatial layer pulls real demand — cheaply, off the 3D runtime — before more container polish. Track R (`feat/r2-recognizable-storefronts`) is **paused, backed up to origin**, and resumes only if the demand test earns it.
-
-## Active sequencing — validate demand, then make the spine alive (Batu, 2026-07-02)
-
-0. **Track V — Spatial Demand Test (NOW).** A standalone, independently deployable **2D real-map** page in the II-C inked identity — "July in Greenpoint + G-Train Support" — that amplifies SSG's July content and the live G-train disruption with ~15 static seed cards (discovery + events with a **Today lens** + **subscription/signup cards** + a G-train support layer, filters, signup/submission CTAs). Includes the **hidden-business-engagement thesis**: events and memberships buried in businesses' own Instagram/email channels (exemplars: Dandelion Wine same-day tastings, 153 Franklin; Falu House Tinned Fish Club, 34 Norman) surfaced spatially, by day, with one-tap signup. Zero Three.js; own shareable URL. SSG is a **source we amplify**, not a partner-dependency; **Greenpointers** is source/distribution/editorial authority/potential embed customer — never compete as a news product (differentiation: they answer *what happened*, we answer *where, what's connected, what changed over time, what can I do*). **Moat = structure behind the pins** (place graph, timelines, actions, measurable impact), so the throwaway-JSON card schema carries `relatedCardIds`/`timeline`/`trustRisk` from day one (`PlaceStory`/`Landmark` reconciliation deferred). Go/no-go on Doc 1's thresholds **+ does SSG want it** — Perri (WonderMart / SSG) is a named tester. Hook: the Jul 10–13 (+ overnights Jul 13–17) G closures through Greenpoint; recurring, so hook-not-hard-gate — aim the Perri-ready cut at an early recurring window. Spec: `docs/superpowers/specs/2026-07-02-spatial-demand-test-design.md`.
-
-**If Track V validates → resume the container work below. If it pauses/reframes → revisit the wedge before more 3D craft.**
-
-1. **Track R — Recognizability (PAUSED — resumes after Track V validates).**
-   - **R1 — Astral Apartments (184 Franklin)** as the proof anchor, built bespoke like the Franklin heroes, then generalize.
-   - **R2 — Recognizable storefronts:** wire the dormant signature layer so storefronts read as *specific real shops* (silhouette + category, unbranded per the claim model). Corners carry recognition. Specs: `docs/superpowers/specs/2026-06-24-r2-*`, `…elder-greene-signature-design.md`.
-   - **R3 — Eberhard Faber building, Brouwerij Lane, Oak St haunted house** — remaining anchors, photo-gated.
-2. **Stories + signal (right behind R).** Attach 3–5 real stories (H1), seed events (H3), lightweight instrumentation, a shareable demo URL for resident testing.
-3. **Phase 10 — Living Scene (behind R).** Dynamism + light, as *illustrated* (Road B), not photoreal. Design: `docs/superpowers/specs/2026-06-25-phase-10-living-scene-design.md`. The informational half (real-time lighting, open/closed, live events) folds in earlier with Track B events.
-
-**Track P — Performance** runs as-needed: lightweight pass done (shared texture caches + `?perf=1` budget harness); P1 merge/instancing + P3 async build still open — pulled forward if the budget degrades. Not a hard gate on the above.
-
-**Deferred (coverage/polish — wait until the loop is proven alive):** street-network paving (8.1c, designed — spec in `superpowers/specs/`), further block/neighborhood expansion, roof/pavement detail, business-claim monetization (H4), basement/areaway (Phase 8.5, photo-gated), second neighborhood (H5).
-
-## Roadmap at a glance
-
-- **Done:** Reset baseline · style spike + look gate · Franklin corner vertical slice (facades, ground, corner signals, place cards, multi-angle camera) · MVP scene + procedural block scaling · curation + visual-system contract (Phase 6) · asset kit clapboard slice + roof tones (Phase 7, fan-out pending) · structural depth (8.0) · spine expansion — full kit flip + Franklin-north corridor (8.1) · `PlaceStory` schema (8.2).
-- **Now:** Track V — **checkpoint week** (PMF ops regime 2026-07-21 → `docs/launch/2026-07-21-pmf-ops-plan.md`): both waves out; scorecard pre-registered (`docs/launch/2026-07-29-checkpoint-readout.md`) + Mon Jul 27 ingest → **~Jul 29 checkpoint** against the 2026-07-15 kit bar. Weekly loop: Mon ingest + analytics → Tue readout → gated ships.
-- **Next (gated on checkpoint pass):** public launch cut — OG + per-card deep links (real `/e/<slug>` paths), save/star + day filter, business submission path, **answer-engine surface** (prerendered event pages + JSON-LD + feeds + llms.txt — 2026-07-21 decision: Greenpoint Life must be the source humans *and AIs* cite; ops plan §3.6), **greenpoint.life cutover**, Reddit/local-groups + QR window card (drafted, Batu sends) → weekly PMF loop toward the two-sided bar (~mid-Sep).
-- **Then (gated on PMF signal):** Track R recognizability → stories / events / instrumentation.
-- **Then:** Phase 10 — Living Scene.
-- **Later (Phase 9 — Validate & Scale):** landmark-set completion, curated routes (H2), events at scale (H3), North-Star instrumentation, monetization (H4), roof/pavement detail, pre-launch truth pass, public demo, repeatability (H5).
+- **Now — checkpoint week:** both invite waves out; scorecard pre-registered (`docs/launch/2026-07-29-checkpoint-readout.md`); Mon Jul 27 ingest → **~Jul 29 checkpoint** against the 2026-07-15 kit bar (weekly-check intents, postvalue signups, business asks, unprompted shares, content-type ranking), segmented by `?src=`.
+- **Next (gated on checkpoint pass) — public cut + greenpoint.life:** OG tags + per-card deep links as real `/e/<slug>` paths · save/star + day filter (validated Laura/Edmond asks) · business submission path · **answer-engine surface** (prerendered per-event HTML + schema.org JSON-LD, sitemap, RSS/ICS, `llms.txt` — ops plan §3.6) · domain cutover · Reddit/local-groups + II-C QR window card. De-July reframe ships by Aug 1 regardless.
+- **Then — weekly PMF loop (Aug → ~mid-Sep):** retention sensor, iterate from observed pull. **Two-sided PMF bar:** ≥30 locals at ≥2 visits/week for 3 consecutive weeks by ~Sep 15, majority unprompted; ≥5 supply-side actors proactively in, ≥1 recurring.
+- **Fail at checkpoint → no public push:** ~5 qualitative interviews with warmest users; wedge-reframe proposal.
 
 ## Open items & known gaps
 
-- **Track V follow-ups (post-validation):** reconcile the demand-test card schema with `PlaceStory`/`Landmark` into one canonical content model; fold change/civic layers + the recognizable-container fusion in as v2 — **v2 shape: living place dossiers** (articles → linked spatial objects with timelines/claims/actions); refresh seed from the ~Aug 5 SSG issue; ~~event/subscription ingestion~~ **ingest pipeline v1 shipped 2026-07-15** (`.claude/skills/ingest-newsletters/` — Claude-run weekly review-queue ritual; business submission pipeline still open); post-validation business-model sequence (sponsored campaign maps → partner tooling → evidence-gated featured cards; never charge small businesses first). (Spec: `2026-07-02-spatial-demand-test-design.md` · context: `2026-07-03-greenpointers-differentiation.md`.)
-- **Newsletter/calendar source audit (opened 2026-07-21):** Batu's personal newsletter-signup sweep (bars/restaurants/cafes/bookstores/kids-family + Parks/Library/McGolrick Bird Club/Brooklyn Craft Co/Yaro) surfaced gaps to close before the next ingest run. Resolved: Frankel's Delicatessen (loyalty-rewards signup, not an editorial newsletter — different consent shape, worth noting if it ever feeds the ingest pipeline), Leaves Bookstore (AJAX widget accepted the submit — field cleared, no explicit confirmation text, treat as likely-succeeded). **Manual-only, batu to finish by hand:** Warsaw's signup form and PLAY Kids Greenpoint's footer form both sit behind animated/hidden containers that never mount reliably under browser automation (confirmed across repeated attempts) — a human click resolves each in ~30s, script retries won't. Still open: whole categories never swept for newsletters/calendars at all — retail & services (hardware, salons, gyms, dry cleaners, etc.) and other civic/nonprofit orgs beyond the four just added. Roster additions + the monthly discovery-sweep step are now in `ingest-newsletters/SKILL.md`; this bullet is the reminder to actually run the backlog audit, not just the mechanism. **Coverage metric (Batu, 2026-07-21): 100% of on-concept local events + openings represented on the map.** Measured by two scheduled coverage scans (Sun 6pm → feeds Mon ingest; Thu 9am → catches mid-week-announced weekend events) that diff external sources against live cards and write gap reports to `docs/launch/coverage-scans/`; scans audit only — all card changes still go through the review gate.
-- **Signature layer** defined in the 8.0 contract but not yet wired into the renderer — that's R2. (`COMPONENT_INVENTORY.md`)
-- **Asset-kit fan-out** — brownstone / modern-flat / warehouse families + gather-dependent columns (bay-frame / awning / roll-gate) pending; clapboard is the proven anchor. (`COMPONENT_INVENTORY.md`)
-- **Dual-material kit capability** built + unit-tested but dormant, unverified in-engine — available when a real dual-material building is evidence-confirmed.
-- **Franklin Ave centerline** missing from the source packet; roadbed is derived (real width, derived extent) — 8.1c may close it via a LION pull.
-- **Footprint confidence:** 126 safe / 14 uncertain / 2 blocked across the 142 corridor buildings.
+- **Post-validation follow-ups:** reconcile the card schema with `PlaceStory`/`Landmark` into one canonical content model; v2 shape = **living place dossiers** (articles → linked spatial objects with timelines/claims/actions); business submission pipeline; refresh seed from the ~Aug 5 SSG issue. (Spec: `2026-07-02-spatial-demand-test-design.md` · context: `2026-07-03-greenpointers-differentiation.md`.)
+- **Newsletter/calendar source audit (opened 2026-07-21):** roster additions + monthly discovery sweep are in `ingest-newsletters/SKILL.md`; still unswept: retail & services categories, additional civic/nonprofit orgs. Manual-only signups Batu finishes by hand: Warsaw, PLAY Kids Greenpoint (forms unreachable under automation). Coverage scans write gap reports to `docs/launch/coverage-scans/`; scans audit only — all card changes go through the review gate.
+- **De-July design (by Aug 1):** evergreen "this week in Greenpoint" frame; `july-2026-cards.json` → month-agnostic filename with ingest-skill migration note.
+
+## Parked: 3D isometric explorer (indefinite, 2026-07-22)
+
+The original goal — a lifelike, hand-inked, isometric 3D Greenpoint — is **parked indefinitely** (DECISION_LOG 2026-07-22). It remains exciting and may be picked up later; resuming is an explicit Batu decision, not a milestone unlock. Everything is preserved:
+
+- **Docs:** `docs/parked/3d-explorer/` (art direction, component inventory, curation tiers, scaling log, reference corpus).
+- **Code:** parked in place on `main` — entry `explorer.html` → `src/main.jsx`; verifiers via `npm run verify`.
+- **State at park:** container ~85% built along the Franklin spine (geometry, inked look, facades, multi-angle camera, place cards, block scaling); content layers ~5%. Paused branch: `feat/r2-recognizable-storefronts`.

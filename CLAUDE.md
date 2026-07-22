@@ -5,46 +5,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev       # dev server at http://127.0.0.1:5173
+npm run dev       # dev server at http://127.0.0.1:5173 — the product serves at /
+npm test          # unit tests (node --test src/**/*.test.mjs)
 npm run build     # production build to dist/
 npm run preview   # preview production build
-node scripts/verify-phase-4m-r10g-franklin-corner-frontage-wrap.mjs   # live Franklin geometry verifier (also r10b, r10e, r10f)
-node scripts/derive-facade-spec.mjs <texture.png> --face "BIN:role=u0:u1"  # measure rendered facade -> spec rects + overlay PNG (see docs/reference/art/GENERATION_KIT.md playbook)
+node scripts/geocode-demand-cards.mjs   # geocode new cards (Nominatim → geocode-cache.json)
 ```
+
+Weekly content refresh runs via the `/ingest-newsletters` skill (review-gated; nothing ships unreviewed).
 
 ## Read First
 
-1. `AGENTS.md` — one-page operating contract (roles, working loop, truth rules)
-2. `docs/PLAN.md` — active roadmap, phases, current state
-3. `docs/DECISION_LOG.md` — durable decisions, newest first (the 2026-06-11 reset entry defines the current regime)
-4. `docs/ART_DIRECTION.md` — the approved II-C Inked Indie look + reference corpus paths
+1. `AGENTS.md` — operating contract v3 (roles, weekly loop, truth rules)
+2. `docs/PLAN.md` — active roadmap and current state
+3. `docs/DECISION_LOG.md` — durable decisions, newest first (the 2026-07-22 entry defines the current regime)
+4. `docs/launch/2026-07-21-pmf-ops-plan.md` — the launch → PMF operating plan
 
-Everything in `docs/archive/` and `scripts/archive/` is history, not authority.
+Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history or parked work, not current authority.
 
 ## Project Goal
 
-A 3D, isometric, interactive, explorable, browser-based Greenpoint that is lifelike: buildings/businesses exactly where they are in real life, recognizably themselves, rendered in the approved hand-inked II-C style (fallback: GPT-5.5 photo-render look). Geometry truth = NYC Open Data; likeness truth = evidence photos.
+**Greenpoint Life** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, in the II-C inked visual identity. Sole goal: real value and PMF. Consumer domain `greenpoint.life` (cutover gated on the Jul 29 checkpoint).
 
 ## Architecture
 
-**Stack:** React 19 + Three.js + Vite. Fixed isometric camera (free-cam is debug-only). No router, no state library.
+**Stack:** React 19 + MapLibre GL + Vite. No router, no state library, no backend — cards are static JSON refreshed weekly through a review-gated ingest ritual.
 
-**Entry:** `src/main.jsx` → `src/App.jsx` → `src/Phase4BRuntimePreview.jsx` (active runtime: canvas, scene assembly, mode switching, UI overlays). Scene building in `src/phase4bRuntimeScene.js`; fixture→runtime mapping in `src/sceneManifest.js`.
+**Entry:** `index.html` → `src/demand-test/main.jsx` (analytics wiring: Vercel Analytics pageviews + PostHog custom events via `trackEvents.js`/`posthogTransport.js`; `?src=` channel tags) → `JulyApp.jsx` (root) → `MapView.jsx` (MapLibre map, II-C style from `iiMapStyle.js`) + `CardPanel.jsx` (feed).
 
-**Pipeline spine:** NYC footprints (BIN-mapped WGS84) → local scene frame projection (proven in the 4M-R10 series) → extruded massing + facade planes → AI-generated II-style facade textures (heroes bespoke from photos, infill kit) → prop/ground layer → NPR post pass → DOM paper-card UI.
+**Logic modules** (each with a sibling `.test.mjs`): `cardSchema.js` (card model incl. place-graph fields `relatedCardIds`/`timeline`/`trustRisk`), `filterCards.js`, `eventWindow.js` (Today lens, dated/ongoing/expiry), `cardActions.js`, `postValue.js` (post-value email prompt), `gtrainBanner.js`.
 
-**Key data** (`src/data/`):
-- `franklin-intersection/` — Franklin x Greenpoint projected geometry truth (the proven spine)
-- `facade-evidence/` — field photos = likeness source for hero treatment
-- `corridor-scaffold/` — corridor fixtures, typological input data
-- `geometry-source/` — source footprint records
+**Data** (`src/data/demand-test/`): `july-2026-cards.json` (live feed — month-agnostic rename pending), `geocode-cache.json`, `ingest-ledger.json` (ingest run state + sender registry).
 
-**Assets** (`assets/`): generated facade textures. (The 46MB QA-only bay-window GLB was removed 2026-06-18 — it was never loaded in production.)
+**Old `/july.html` URL** redirects to `/` via `vercel.json` (query params preserved — live invite links depend on this).
 
 ## Key Constraints
 
-- **Scene vs Debug mode:** Scene is the product; Debug holds truth overlays and unverified data. Debug-only data never ships in Scene.
-- **Truth rules:** don't invent real-world facts (tenants, hours, active status); derive from sources or mark unverified. Real names/likenesses are fine in development; a factual review pass gates public release.
-- **Look:** II-C system rules in `docs/ART_DIRECTION.md` (palette, line weights, density zones, card UI). No new visual metaphors without Batu approval.
+- **Truth rules:** nothing invented, everything sourced. Events/hours/deals/status come from named sources or don't ship; cards are schema-valid, geocoded, review-gated. Unclaimed businesses show category labels, not brands.
+- **Look:** every color from the II-C palette (source of truth: `docs/parked/3d-explorer/ART_DIRECTION.md`, applied via `iiMapStyle.js`). Out-of-palette is a hard miss.
 - Run `git status --short` before editing; report unrelated dirty files.
-- Commit when a coherent step lands and builds; never push without Batu.
+- Commit when a coherent step lands and builds; **never push without Batu — push = production deploy** (Vercel-linked).
+
+## Parked: 3D isometric explorer
+
+The original 3D explorable Greenpoint (Three.js, II-C facade textures, Franklin spine) is **parked indefinitely** as of 2026-07-22 — do not work on it unless Batu explicitly reopens it. It stays runnable: entry `explorer.html` → `src/main.jsx`; the bulk of `src/`, `assets/` (~88MB textures), and `scripts/verify-*` belong to it (`npm run verify` covers its checks). Docs: `docs/parked/3d-explorer/`.

@@ -2,7 +2,7 @@
 
 Plan of record for the launch → learn → PMF campaign. Decided in the 2026-07-21 interview (see `DECISION_LOG.md` same date); full interview plan: `~/.claude/plans/you-will-act-as-rippling-seal.md`. Supersedes nothing — it extends the 2026-07-15 launch kit with what happens at and after the checkpoint.
 
-**Naming:** the consumer product is **Greenpoint Life** (already the brand on `july.html`), destined for **greenpoint.life** (domain bought, not yet wired). The repo and 3D prototype keep the Greenpoint Explorer name.
+**Naming:** the consumer product is **Greenpoint Life**, destined for **greenpoint.life** (domain bought, not yet wired). The repo and 3D prototype keep the Greenpoint Explorer name. *(Updated 2026-07-22: the feed now serves at the root `/` — the old `/july.html` URL redirects there, query params preserved; the parked 3D prototype moved to `/explorer.html`.)*
 
 ## Roles & operating model
 
@@ -32,10 +32,10 @@ Readout against the kit's bar (≥5 weekly-check intents · ≥3 postvalue signu
 ## Phase 3 — Public cut + greenpoint.life (gated on pass; target ~Aug 1–8)
 
 Product (each TDD, preview-verified, gated deploy):
-- 3.1 Share infra: site-wide OG tags + II-C preview image on `july.html`; per-card deep links as **real paths** (`/e/<slug>`, `history.replaceState` on open) rather than `?card=` params — same UX, but each event gets a crawlable URL (see 3.6). Per-card OG images deferred (YAGNI).
+- 3.1 Share infra: site-wide OG tags + II-C preview image on the root page; per-card deep links as **real paths** (`/e/<slug>`, `history.replaceState` on open) rather than `?card=` params — same UX, but each event gets a crawlable URL (see 3.6). Per-card OG images deferred (YAGNI).
 - 3.2 Save/star (localStorage, no login) + Saved filter chip; day-picker chips over `groupByDay()` buckets. New events: `save_tap`, day `filter_tap` variant.
 - 3.3 Business submission path: "Add your event/offer (free)" Tally + pinned CTA card; submissions join the Monday review queue (ingest-skill section). `submit_tap` event. Supply-side PMF sensor.
-- 3.4 Domain cutover: greenpoint.life → Vercel project; root serves the feed via rewrite (`/` → `/july.html`); 3D prototype stays unlinked; verify `?src=` + events on the new domain.
+- 3.4 Domain cutover: greenpoint.life → Vercel project; root already serves the feed directly (entry swap 2026-07-22 — no rewrite needed); 3D prototype stays unlinked; verify `?src=` + events on the new domain.
 - 3.5 De-July ships here if not already.
 - 3.6 Answer-engine surface (AEO) — *decision 2026-07-21 (Batu): post-launch north star is that humans **and AIs** asking "what's happening in Greenpoint" get Greenpoint Life as the source, not Greenpointers/Brooklyn Eagle.* The SPA is invisible to LLM crawlers (GPTBot/ClaudeBot/PerplexityBot don't execute JS), so the structured card data must exist as static HTML: build-time prerender of per-event pages at `/e/<slug>` from the cards JSON (content + schema.org/Event JSON-LD in raw HTML), `sitemap.xml`, RSS + ICS feed of current cards, `llms.txt`. Acceptance: `curl` (no JS) of an event URL returns the event's name/date/venue; JSON-LD passes Google's Rich Results test. Rides the 3.1 deep-link work and the 3.4 cutover; no framework change — a Vite build step over data that is already schema-valid. Truth rules double as the citation-trust moat; freshness (weekly ingest) is the ranking edge event queries reward.
 
@@ -48,4 +48,4 @@ Marketing (Claude drafts, Batu sends): Reddit + local-group posts (per-channel `
 - **Pre-registered two-sided PMF bar (numbers to confirm at checkpoint):**
   - Demand: ≥30 unique locals at ≥2 visits/week, 3 consecutive weeks by ~Sep 15, majority arriving without a fresh invite push.
   - Supply: ≥5 businesses/orgs proactively submitted or asked in; ≥1 recurring submitter.
-- PMF verdict unlocks the existing gates: Track R resumes; monetization sequencing becomes discussable (sponsored maps first; never charge small businesses first).
+- PMF verdict unlocks the existing gates: monetization sequencing becomes discussable (sponsored maps first; never charge small businesses first). *(2026-07-22: Track R / the 3D explorer is parked indefinitely — reopening it is a separate, explicit decision by Batu, not an automatic unlock.)*

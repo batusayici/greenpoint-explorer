@@ -5,7 +5,7 @@ description: Weekly Track V content ingest — read Greenpoint business/org news
 
 # Ingest Newsletters → July-in-Greenpoint Map
 
-Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live map at `/july.html`. **Nothing ships unreviewed; nothing is invented.**
+Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing ships unreviewed; nothing is invented.**
 
 ## Files
 

@@ -2,7 +2,21 @@
 
 ## Current Use Note
 
-This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority.
+This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
+
+## 2026-07-22 — 3D isometric explorer parked indefinitely; Greenpoint Life (2D map + feed) is the product
+
+Decision (Batu). The isometric 3D explorable Greenpoint — the repo's original goal — is **parked indefinitely**. The direction remains exciting and may be picked up later, but the sole goal going forward is **real value and PMF**, pursued through the 2D map + feed MVP (Track V, consumer name Greenpoint Life). This converts the 2026-07-02 "Track R paused behind Track V" ordering into an open-ended park: resuming 3D is a separate, explicit future decision, not an automatic unlock at any milestone.
+
+**Locked / executed same day:**
+1. **Entry swap:** the 2D app now serves at the root — `index.html` → `src/demand-test/main.jsx`. The parked 3D prototype moved to `explorer.html` (kept runnable). `july.html` deleted; `vercel.json` redirects `/july.html` → `/` (query params preserved, so live `?src=` invite links keep working).
+2. **Code parks in place:** 3D runtime (`src/`), scene data, textures (`assets/`), and `verify:*` scripts stay on `main` untouched; `npm run build` still builds both entries.
+3. **Docs reorganized:** 3D-only living docs (ART_DIRECTION, COMPONENT_INVENTORY, CURATION_TIERS, SCALING_LOG, reference/, mvp-reference-images/, visual-artifacts/) moved to `docs/parked/3d-explorer/`. `CLAUDE.md`, `AGENTS.md`, and `docs/PLAN.md` rewritten around the 2D product. Root `README.md` added.
+4. **II-C carries over:** the II-C palette (in the parked ART_DIRECTION.md) remains the visual source of truth for the 2D map (`iiMapStyle.js`) and all product surfaces.
+5. **GitHub identity:** repo keeps the `greenpoint-explorer` name; description updated to lead with Greenpoint Life.
+6. Truth rules, launch gates, and the PMF ops plan (`docs/launch/2026-07-21-pmf-ops-plan.md`) are unchanged and remain the operating regime.
+
+Owner: Batu.
 
 ## 2026-07-21 — Answer-engine primacy: Greenpoint Life must be the source humans AND AIs cite
 

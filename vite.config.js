@@ -9,10 +9,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        // 3D explorer (existing product)
+        // Greenpoint Life — the product (2D map + feed)
         main: fileURLToPath(new URL("./index.html", import.meta.url)),
-        // Track V demand test — standalone 2D map page, zero Three.js
-        july: fileURLToPath(new URL("./july.html", import.meta.url)),
+        // Parked 3D isometric prototype (kept runnable, not the product)
+        explorer: fileURLToPath(new URL("./explorer.html", import.meta.url)),
       },
     },
   },
