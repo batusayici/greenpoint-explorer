@@ -601,15 +601,30 @@ body { margin: 0; }
     flex-direction: column;
     flex: none;
     height: auto;
+    /* single source of truth for the anchored map's height */
+    --peek: 25vh;
   }
-  .july-mapzone { order: 1; flex: none; height: 25vh; min-height: 170px; }
-  .july-mapzone.is-expanded { height: 55vh; }
+  .july-main:has(.july-mapzone.is-expanded) { --peek: 55vh; }
+  /* Map and filter bar anchor to the top while the feed scrolls beneath
+     (2026-07-23 live review: "I don't want to keep scrolling to come back
+     to the map and filters"). Header scrolls away; map sticks, chips stick
+     under it, everything else slides below. */
+  .july-mapzone {
+    order: 1;
+    flex: none;
+    height: var(--peek);
+    min-height: 170px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid var(--ink);
+  }
   .july-mapexpand { display: inline-block; }
   .july-panel {
     order: 2;
     display: block;
     border-right: 0;
-    border-top: 1px solid var(--ink);
+    border-top: 0;
   }
   .july-list { overflow: visible; }
   /* one scrollable chip row instead of five stacked rows — filter
@@ -619,13 +634,23 @@ body { margin: 0; }
     overflow-x: auto;
     padding: 10px 12px;
     scrollbar-width: none;
+    position: sticky;
+    top: var(--peek);
+    z-index: 19;
+    background: var(--paper);
   }
   .july-filters::-webkit-scrollbar { display: none; }
   .july-chip, .july-seg button { white-space: nowrap; }
+  /* day headers ride normally — the pinned map+chips already hold context,
+     and a mis-set sticky offset under them would read as a glitch */
+  .july-day { position: static; }
+  /* deep-link scroll must clear the pinned map + chip bar */
+  .july-card { scroll-margin-top: calc(var(--peek) + 64px); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .july-mapzone { transition: height 0.25s ease; }
+  .july-filters { transition: top 0.25s ease; }
 }
 
 /* --- pins (DOM markers) ---
@@ -651,25 +676,6 @@ body { margin: 0; }
 .ii-pin--club { background: var(--brick); }
 .ii-pin--deal { background: var(--slate); }
 .ii-pin--news { background: var(--line); }
-
-/* stack badge (F1-A): how many cards share this location */
-.ii-pin-count {
-  position: absolute;
-  top: -7px;
-  right: -8px;
-  min-width: 15px;
-  height: 15px;
-  padding: 0 3px;
-  border: 1.5px solid var(--ink);
-  border-radius: 8px;
-  background: var(--brick);
-  color: var(--paper-lift);
-  font-size: 9.5px;
-  font-weight: 800;
-  line-height: 13px;
-  text-align: center;
-  pointer-events: none;
-}
 
 .ii-pin.is-selected {
   z-index: 3;

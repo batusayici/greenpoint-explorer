@@ -54,11 +54,11 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
-    // Compact attribution starts collapsed (just the ⓘ) — MapLibre re-opens
-    // it whenever source attributions update during load, which covers the
-    // map's bottom edge (and the mobile peek). One-shot listeners kept losing
-    // the race, so an observer suppresses auto-opens for the first seconds,
-    // then disconnects — the user's ⓘ toggle works normally after.
+    // Compact attribution must stay collapsed (just the ⓘ): MapLibre re-opens
+    // it whenever source attributions update — at load AND after camera moves
+    // pull new tiles — covering the map's bottom edge (worst on the mobile
+    // peek). A permanent observer closes every auto-open; a recent tap on the
+    // control marks an open as user-intended and is left alone.
     const attribEl = () => containerRef.current?.querySelector(".maplibregl-ctrl-attrib");
     const collapseAttrib = () => {
       const attrib = attribEl();
@@ -66,15 +66,20 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
       attrib?.removeAttribute("open");
     };
     let attribObserver;
+    let userToggleUntil = 0;
     map.once("load", () => {
       collapseAttrib();
       const attrib = attribEl();
       if (attrib) {
+        attrib.addEventListener("click", () => {
+          userToggleUntil = Date.now() + 15000;
+        });
         attribObserver = new MutationObserver(() => {
-          if (attrib.classList.contains("maplibregl-compact-show")) collapseAttrib();
+          if (Date.now() > userToggleUntil && attrib.classList.contains("maplibregl-compact-show")) {
+            collapseAttrib();
+          }
         });
         attribObserver.observe(attrib, { attributes: true, attributeFilter: ["class", "open"] });
-        setTimeout(() => attribObserver?.disconnect(), 4000);
       }
       // Insurance against init racing layout: twice in the 2026-07-22 UX eval
       // the canvas froze at its pre-layout size until a viewport resize.
@@ -157,12 +162,8 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
       label.className = "ii-pin-label";
       label.textContent = name;
       el.appendChild(label);
-      if (!single) {
-        const count = document.createElement("span");
-        count.className = "ii-pin-count";
-        count.textContent = String(stack.length);
-        el.appendChild(count);
-      }
+      // No count badge (2026-07-23, Batu: numbers on the map add cognitive
+      // load, not value) — the aria-label still carries the count.
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         // Every pin tap focuses the feed on its location (2026-07-23, Batu's
