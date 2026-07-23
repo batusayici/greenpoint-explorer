@@ -622,13 +622,14 @@
       "summary": "A process-art workshop for ages 8–12 with illustrator Caroline Draws — Tuesdays through August.",
       "startsAt": "2026-07-07T17:00:00-04:00",
       "endsAt": "2026-08-31T23:59:00-04:00",
+      "recurring": true,
       "actions": [
         {
           "label": "Find the studio",
           "type": "visit"
         }
       ],
-      "kicker": "Kids' art workshop (ages 8–12)"
+      "kicker": "Ages 8–12 · Tuesdays 5 PM"
     },
     {
       "category": "event",
@@ -664,13 +665,14 @@
       "summary": "A yoga series on the Domino Park lawn — every other Sunday through August.",
       "startsAt": "2026-07-12T10:00:00-04:00",
       "endsAt": "2026-08-31T23:59:00-04:00",
+      "recurring": true,
       "actions": [
         {
           "label": "Head to the lawn",
           "type": "visit"
         }
       ],
-      "kicker": "Biweekly park yoga through August"
+      "kicker": "Biweekly park yoga through August · 10 AM"
     },
     {
       "id": "poochs-parlor-first-groom",

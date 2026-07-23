@@ -54,3 +54,11 @@ test("end-only card reads 'Through <date>'", () => {
 test("start-only card reads 'From <instant>'", () => {
   assert.equal(formatWindow({ startsAt: "2026-07-10T17:00:00-04:00" }), "From Jul 10, 5:00 PM");
 });
+
+// 2026-07-23 (UX eval F23, decision Q4-B): the header kicker becomes the
+// edition date — the rolling week the feed actually covers, self-maintaining.
+test("editionLabel: same-month week compresses, cross-month spells both", async () => {
+  const { editionLabel } = await import("./eventWindow.js");
+  assert.equal(editionLabel(new Date("2026-07-23T12:00:00-04:00")), "Jul 23–29 edition");
+  assert.equal(editionLabel(new Date("2026-07-30T12:00:00-04:00")), "Jul 30 – Aug 5 edition");
+});

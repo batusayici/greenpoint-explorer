@@ -118,12 +118,48 @@ body { margin: 0; }
   background: var(--paper);
 }
 
+/* dead /e/ link greeting (Q1-A) — one warm line, dismissible */
+.july-notice {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper-lift);
+  font-size: 0.84rem;
+}
+
+.july-notice p { margin: 0; flex: 1; }
+
+.july-notice-dismiss {
+  border: none;
+  background: none;
+  padding: 0 2px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.july-notice-dismiss:hover { color: var(--ink); }
+
 .july-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   padding: 12px 14px;
   border-bottom: 1px solid var(--ink-faint);
+}
+
+/* filter-switch card actions always answer visibly (Q7-A) */
+@media (prefers-reduced-motion: no-preference) {
+  .july-filters.is-flash { animation: july-filter-flash 0.7s ease; }
+}
+
+@keyframes july-filter-flash {
+  0%, 55% { background: var(--paper-lift); box-shadow: inset 0 0 0 2px var(--ink); }
+  100% { background: transparent; box-shadow: none; }
 }
 
 .july-chip {
@@ -368,6 +404,20 @@ body { margin: 0; }
 .july-source a:hover { color: var(--ink); }
 
 .july-empty { padding: 18px 16px; font-size: 0.84rem; color: var(--ink-soft); }
+
+.july-empty-reset {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.july-empty-reset:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 /* --- feedback (limited launch): a standing row at the end of the feed --- */
 .july-feedback {

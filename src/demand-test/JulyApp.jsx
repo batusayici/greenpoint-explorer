@@ -4,18 +4,18 @@ import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay } 
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
-import { cardIdFromPath, deepLinkUrl } from "./deepLink.js";
+import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
+import { editionLabel } from "./eventWindow.js";
 import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
 
 const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
 
-// Deep link (/e/<slug>): open that card on load if it's live; expired or
-// unknown slugs fall back to the plain feed (the URL normalizes to / below).
-function initialSelectedId() {
-  const id = cardIdFromPath(window.location.pathname);
-  const card = id != null ? CARDS_BY_ID.get(id) : undefined;
-  return card && !isExpiredCard(card, new Date()) ? card.id : null;
+// Deep link (/e/<slug>): open that card on load if it's live. A dead link
+// (expired or unknown) falls back to the plain feed WITH a notice — the
+// person who clicked a friend's link must not wonder what happened (Q1-A).
+function initialDeepLink() {
+  return resolveDeepLink(window.location.pathname, CARDS_BY_ID, new Date());
 }
 
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
@@ -23,7 +23,9 @@ function initialSelectedId() {
 export default function JulyApp() {
   const [filter, setFilter] = useState("all");
   const [todayOnly, setTodayOnly] = useState(false);
-  const [selectedId, setSelectedId] = useState(initialSelectedId);
+  const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
+  const [selectedId, setSelectedId] = useState(initialId);
+  const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
 
   // Keep the address bar on the card's shareable path (?src= rides along).
@@ -107,7 +109,9 @@ export default function JulyApp() {
     <div className="july-shell">
       <header className="july-header">
         <div className="july-header-text">
-          <span className="july-kicker">Greenpoint Explorer</span>
+          {/* One brand only (Q4-B): the kicker slot carries the edition week —
+              a freshness signal, computed per render like the banner phase. */}
+          <span className="july-kicker">{editionLabel(new Date())}</span>
           <h1>Greenpoint Life</h1>
           {/* Leads with time + action, not directory-speak (tester feedback
               2026-07-08: "what's different from Google Maps?") */}
@@ -130,6 +134,8 @@ export default function JulyApp() {
         <CardPanel
           groups={groups}
           cardsById={CARDS_BY_ID}
+          deadLinkNotice={showDeadLinkNotice}
+          onDismissDeadLink={() => setShowDeadLinkNotice(false)}
           filter={filter}
           onFilter={onFilter}
           todayOnly={todayOnly}

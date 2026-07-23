@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind } from "./filterCards.js";
 import { actionHref } from "./cardActions.js";
 import { formatWindow } from "./eventWindow.js";
@@ -31,7 +31,7 @@ const SIGNUP_URL = "https://tally.so/r/44daZo";
 const FEEDBACK_FORM_URL = "https://tally.so/r/LZqEj1";
 const FEEDBACK_HREF = FEEDBACK_FORM_URL || SIGNUP_URL;
 
-function ActionLink({ action, card, onFilter }) {
+function ActionLink({ action, card, onFilter, onFilterAction }) {
   const cls = "july-action";
   const onTap = () => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type });
   if (action.type === "share") {
@@ -39,10 +39,12 @@ function ActionLink({ action, card, onFilter }) {
   }
   // Internal action: switches the filter bar instead of leaving the page
   // (campaign cards open their layer — "see who's open nearby" → G-Train).
+  // Routed through onFilterAction so the tap is always visibly answered
+  // (bar flash + list to top) even when the layer is already active (Q7-A).
   if (action.filterId) {
     const onSwitch = () => {
       trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type, filter: action.filterId });
-      onFilter(action.filterId);
+      onFilterAction(action.filterId);
     };
     return (
       <button type="button" className={cls} onClick={onSwitch}>
@@ -152,7 +154,7 @@ const TIMELINE_DAY_FMT = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 
-function CardDetail({ card, cardsById, onFilter, onRelated }) {
+function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   // Recurring deals carry their schedule in kicker/summary (sourced wording);
   // the window formatter would misread verified-through as "Through Jul 22".
   const when = card.recurring ? null : formatWindow(card);
@@ -193,7 +195,7 @@ function CardDetail({ card, cardsById, onFilter, onRelated }) {
       )}
       <div className="july-actions">
         {card.actions.map((a) => (
-          <ActionLink key={a.label} action={a} card={card} onFilter={onFilter} />
+          <ActionLink key={a.label} action={a} card={card} onFilter={onFilter} onFilterAction={onFilterAction} />
         ))}
       </div>
       {related.length > 0 && (
@@ -235,9 +237,27 @@ function CardDetail({ card, cardsById, onFilter, onRelated }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
+  const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
+
+  // Filter-switch card actions must always answer visibly, even when their
+  // layer is already active: flash the bar, bring the list to its top (Q7-A).
+  const onFilterAction = useCallback(
+    (id) => {
+      onFilter(id);
+      const nav = filtersRef.current;
+      if (nav) {
+        nav.classList.remove("is-flash");
+        void nav.offsetWidth; // restart the animation
+        nav.classList.add("is-flash");
+      }
+      const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      listRef.current?.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    },
+    [onFilter],
+  );
 
   // Tapping a pin brings its card to the top of the feed. The initial
   // deep-link scroll must be instant ("auto"): smooth scrolling is animation-
@@ -255,7 +275,17 @@ export default function CardPanel({ groups, cardsById, filter, onFilter, todayOn
 
   return (
     <aside className="july-panel">
-      <nav className="july-filters" aria-label="Filter the map">
+      {/* Dead /e/ link greeting (Q1-A): the visitor followed a share whose
+          event has passed — say so once, warmly, then get out of the way. */}
+      {deadLinkNotice && (
+        <div className="july-notice" role="status">
+          <p>That one&rsquo;s wrapped &mdash; here&rsquo;s what&rsquo;s on this week.</p>
+          <button type="button" className="july-notice-dismiss" onClick={onDismissDeadLink} aria-label="Dismiss">
+            &times;
+          </button>
+        </div>
+      )}
+      <nav className="july-filters" aria-label="Filter the map" ref={filtersRef}>
         {FILTERS.map((f) => (
           <button
             key={f.id}
@@ -315,13 +345,28 @@ export default function CardPanel({ groups, cardsById, filter, onFilter, todayOn
                       {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
                     </button>
                   </h3>
-                  {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onRelated={onRelated} />}
+                  {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onFilterAction={onFilterAction} onRelated={onRelated} />}
                 </li>
               );
             })}
           </React.Fragment>
         ))}
-        {groups.length === 0 && <li className="july-empty">Nothing in this layer yet.</li>}
+        {/* Empty layer (Q2-C): plain words, one-tap recovery — no "layer" jargon. */}
+        {groups.length === 0 && (
+          <li className="july-empty">
+            Nothing here this week.{" "}
+            <button
+              type="button"
+              className="july-empty-reset"
+              onClick={() => {
+                onFilter("all");
+                onToday(false);
+              }}
+            >
+              Show all
+            </button>
+          </li>
+        )}
         {/* Feedback is a standing row at the end of every layer's feed — the
             reader who scrolled the list is exactly who knows what's missing.
             ONE affordance only (2026-07-15 review: two read as redundant). */}
@@ -332,7 +377,7 @@ export default function CardPanel({ groups, cardsById, filter, onFilter, todayOn
             rel="noreferrer"
             onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "list" })}
           >
-            Something missing or wrong? Tell me &rarr;
+            Something missing or wrong? Tell us &rarr;
           </a>
         </li>
       </ol>
@@ -366,7 +411,8 @@ export default function CardPanel({ groups, cardsById, filter, onFilter, todayOn
           rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
           onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
         >
-          Get next week&rsquo;s map
+          {/* Q3-A: the ask is an email signup — say so before the form does. */}
+          Get next week&rsquo;s map by email
         </a>
       </footer>
     </aside>

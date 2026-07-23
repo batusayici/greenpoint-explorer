@@ -40,3 +40,16 @@ export function formatWindow(card) {
   if (s) return `From ${instant(s, isStartSentinel)}`;
   return `Through ${instant(e, isEndSentinel)}`;
 }
+
+// Header kicker (UX eval F23 / Q4-B): the edition date — the rolling week the
+// feed covers, today through six days out. Self-maintaining, no data field.
+const MONTH = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: TZ });
+const DAYNUM = new Intl.DateTimeFormat("en-US", { day: "numeric", timeZone: TZ });
+
+export function editionLabel(date) {
+  const end = new Date(date.getTime() + 6 * 86400000);
+  const sameMonth = MONTH.format(date) === MONTH.format(end);
+  return sameMonth
+    ? `${MONTH.format(date)} ${DAYNUM.format(date)}–${DAYNUM.format(end)} edition`
+    : `${DATE.format(date)} – ${DATE.format(end)} edition`;
+}
