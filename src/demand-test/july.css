@@ -69,6 +69,35 @@ body { margin: 0; }
   color: var(--ink-soft);
 }
 
+/* --- G chip (distant closure, F24-A): one line, opens the G-Train layer --- */
+.july-gchip-row {
+  padding: 6px 22px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.july-gchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--g-green-deep);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--g-green-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 4px 12px 5px;
+  cursor: pointer;
+}
+
+.july-gchip .july-gbadge {
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  border-color: var(--g-green-deep);
+  color: var(--paper-lift);
+}
+
 /* --- G banner --- */
 .july-gbanner {
   display: flex;
@@ -104,9 +133,43 @@ body { margin: 0; }
   min-height: 480px;
 }
 
-.july-map {
+.july-mapzone {
   position: relative;
   grid-column: 2;
+}
+
+.july-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* mobile-only map grow/shrink (F3-B); hidden on desktop */
+.july-mapexpand {
+  display: none;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 5;
+  border: 1px solid var(--ink);
+  border-radius: 5px;
+  background: var(--paper-lift);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 750;
+  font-family: inherit;
+  padding: 7px 10px;
+  box-shadow: 0 2px 0 rgba(42, 36, 28, 0.3);
+  cursor: pointer;
+}
+
+/* MapLibre's cooperative-gesture hint, in II-C ink (F2-A) */
+.maplibregl-cooperative-gesture-screen {
+  background: rgba(42, 36, 28, 0.5);
+  color: var(--paper-lift);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 /* --- panel --- */
@@ -185,10 +248,37 @@ body { margin: 0; }
   color: var(--paper-lift);
 }
 
-.july-chip--today {
+/* thin layers wait behind "More" until the ingest stocks them (F16-B) */
+.july-chip--more { border-style: dashed; color: var(--ink-soft); }
+
+/* time lens as a segmented control (F11-B): both states visible, one active */
+.july-seg {
+  display: inline-flex;
   margin-left: auto;
-  border-style: dashed;
+  flex: none;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
 }
+
+.july-seg button {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-family: inherit;
+  padding: 7px 12px 8px;
+  cursor: pointer;
+}
+
+.july-seg button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper-lift);
+}
+
+.july-seg button:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 
 .july-list {
   flex: 1;
@@ -505,31 +595,50 @@ body { margin: 0; }
   border: 0;
 }
 
-/* --- responsive: map on top, panel below --- */
+/* --- responsive (F3-B): list-first, map peek ---
+   The list owns the first screen; the map starts compact and grows on request
+   (Expand map). Same fixed-viewport model as desktop, so the list is its own
+   scroller and pin taps never move the page (F14-B). */
 @media (max-width: 760px) {
-  /* natural page flow on mobile — the fixed-height shell is desktop-only */
   .july-shell {
-    height: auto;
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh; /* iOS toolbars */
   }
+  .july-header { padding: 12px 16px 8px; }
+  /* The value prop stays visible on mobile (2026-07-08: testers asked "how is
+     this different from Google Maps" — the answer can't be display:none). */
+  .july-header p { font-size: 0.78rem; }
+  .july-gchip-row { padding: 6px 16px; }
   .july-main {
     display: flex;
     flex-direction: column;
-    flex: none;
+    flex: 1;
+    min-height: 0;
     height: auto;
   }
-  /* The map is the value proposition — it leads on mobile. */
-  .july-map { position: relative; order: 1; height: 46vh; min-height: 320px; }
+  .july-mapzone { order: 1; flex: none; height: 25vh; min-height: 170px; }
+  .july-mapzone.is-expanded { height: 55vh; }
+  .july-mapexpand { display: inline-block; }
   .july-panel {
     order: 2;
+    flex: 1;
+    min-height: 0;
     border-right: 0;
     border-top: 1px solid var(--ink);
-    max-height: none;
   }
-  .july-list { max-height: 44vh; }
-  /* The value prop stays visible on mobile (2026-07-08: testers asked "how is
-     this different from Google Maps" — the answer can't be display:none). */
-  .july-header p { font-size: 0.8rem; }
+  /* one scrollable chip row instead of five stacked rows */
+  .july-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 12px;
+    scrollbar-width: none;
+  }
+  .july-filters::-webkit-scrollbar { display: none; }
+  .july-chip, .july-seg button { white-space: nowrap; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .july-mapzone { transition: height 0.25s ease; }
 }
 
 /* --- pins (DOM markers) ---
@@ -555,6 +664,28 @@ body { margin: 0; }
 .ii-pin--club { background: var(--brick); }
 .ii-pin--deal { background: var(--slate); }
 .ii-pin--news { background: var(--line); }
+
+/* stack badge (F1-A): how many cards share this location */
+.ii-pin-count {
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  background: var(--brick);
+  color: var(--paper-lift);
+  font-size: 9.5px;
+  font-weight: 800;
+  line-height: 13px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* fanned-out satellites sit above their stack pin */
+.ii-pin--sat { z-index: 2; }
 
 .ii-pin.is-selected {
   z-index: 3;

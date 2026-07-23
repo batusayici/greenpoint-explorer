@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay } from "./filterCards.js";
+import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
@@ -27,6 +27,13 @@ export default function JulyApp() {
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
+  // Mobile map peek (UX eval F3, decision B): the list owns the first screen;
+  // the map starts compact and grows on request. Desktop ignores this.
+  const [mapExpanded, setMapExpanded] = useState(false);
+
+  // Chip-fold input (F16-B): live counts per layer, fixed at mount — they only
+  // drift at expiry boundaries, and the bar must not reshuffle mid-session.
+  const [filterCounts] = useState(() => liveFilterCounts(seed.cards, new Date()));
 
   // Keep the address bar on the card's shareable path (?src= rides along).
   // replaceState, not pushState: back should leave the page, not unwind taps.
@@ -121,7 +128,20 @@ export default function JulyApp() {
           </p>
         </div>
       </header>
-      {gtrainPhase != null && (
+      {/* Banner prominence follows proximity (UX eval F24, decision A):
+          one-line chip while the closure is distant, full banner in the final
+          week, alert during. The chip opens the G-Train layer. */}
+      {gtrainPhase === "distant" && (
+        <div className="july-gchip-row">
+          <button type="button" className="july-gchip" onClick={() => onFilter("g_train")}>
+            <span className="july-gbadge">G</span>
+            <span>
+              <strong>G closure {GTRAIN_WINDOW.shortDates}</strong> &middot; plan ahead &rarr;
+            </span>
+          </button>
+        </div>
+      )}
+      {(gtrainPhase === "near" || gtrainPhase === "active") && (
         <div className="july-gbanner" role="status">
           <span className="july-gbadge">G</span>
           <span>
@@ -138,6 +158,7 @@ export default function JulyApp() {
           onDismissDeadLink={() => setShowDeadLinkNotice(false)}
           filter={filter}
           onFilter={onFilter}
+          filterCounts={filterCounts}
           todayOnly={todayOnly}
           onToday={setTodayOnly}
           selectedId={selectedId}
@@ -146,7 +167,17 @@ export default function JulyApp() {
           showSignupPrompt={showSignupPrompt}
           onSignupPromptDone={onSignupPromptDone}
         />
-        <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
+        <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
+          <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
+          <button
+            type="button"
+            className="july-mapexpand"
+            aria-pressed={mapExpanded}
+            onClick={() => setMapExpanded((x) => !x)}
+          >
+            {mapExpanded ? "Shrink map" : "Expand map"}
+          </button>
+        </div>
       </main>
     </div>
   );

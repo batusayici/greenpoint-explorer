@@ -12,13 +12,19 @@ export const GTRAIN_WINDOW = Object.freeze({
   startsAt: "2026-08-07T21:45:00-04:00",
   endsAt: "2026-08-10T05:00:00-04:00",
   dates: "Fri Aug 7, 9:45 PM – Mon Aug 10, 5 AM",
+  shortDates: "Aug 7–10",
   stops: "Greenpoint Av + Nassau Av",
   shuttle: "free T403 shuttle",
 });
 
-// "upcoming" before the window, "active" inside it, null once it has passed.
+// Prominence follows proximity (UX eval F24, decision A): "distant" more than
+// 7 days before the window (compact chip), "near" inside the final week (full
+// banner), "active" inside it (alert), null once it has passed.
+const NEAR_MS = 7 * 86400000;
+
 export function bannerPhase(now, window = GTRAIN_WINDOW) {
   const t = now.getTime();
   if (t >= Date.parse(window.endsAt)) return null;
-  return t >= Date.parse(window.startsAt) ? "active" : "upcoming";
+  if (t >= Date.parse(window.startsAt)) return "active";
+  return Date.parse(window.startsAt) - t > NEAR_MS ? "distant" : "near";
 }

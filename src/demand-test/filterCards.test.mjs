@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the spec's eleven, in order, with display labels", () => {
@@ -126,4 +126,33 @@ test("isExpiredCard: any past-endsAt card expires; open windows and undated card
   assert.ok(!isExpiredCard(liveEvent, jul15), "a window still open is live");
   assert.ok(!isExpiredCard({ category: "new_business" }, jul15), "undated cards never expire");
   assert.ok(!isExpiredCard({ category: "news", startsAt: "2026-07-01T00:00:00-04:00" }, jul15), "no endsAt → never expires");
+});
+
+// 2026-07-23 (UX eval F16, decision B): thin layers fold into a "More" chip
+// until the weekly ingest stocks them — a 2-card Deals chip promising a full
+// shelf reads as breakage.
+test("liveFilterCounts counts only non-expired cards per authored filter", () => {
+  const now = new Date("2026-07-23T12:00:00-04:00");
+  const cards = [
+    { filters: ["deals"], endsAt: "2026-07-25T23:59:00-04:00" },
+    { filters: ["deals"], endsAt: "2026-07-10T23:59:00-04:00" }, // expired
+    { filters: ["events", "deals"] },
+    { filters: ["events"] },
+  ];
+  const counts = liveFilterCounts(cards, now);
+  assert.equal(counts.deals, 2);
+  assert.equal(counts.events, 2);
+  assert.equal(counts.news, undefined);
+});
+
+test("partitionFilters: 'all' always shows; layers under the threshold fold", () => {
+  const filters = [
+    { id: "all", label: "All" },
+    { id: "events", label: "Events" },
+    { id: "deals", label: "Deals" },
+    { id: "services", label: "Services" },
+  ];
+  const { shown, folded } = partitionFilters(filters, { events: 58, deals: 2, services: 2 }, 5);
+  assert.deepEqual(shown.map((f) => f.id), ["all", "events"]);
+  assert.deepEqual(folded.map((f) => f.id), ["deals", "services"]);
 });

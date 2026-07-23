@@ -10,8 +10,21 @@ const W = {
   endsAt: "2026-08-10T05:00:00-04:00",
 };
 
-test("before the window → upcoming (heads-up copy, not an active alert)", () => {
-  assert.equal(bannerPhase(new Date("2026-07-21T12:00:00-04:00"), W), "upcoming");
+// 2026-07-23 (UX eval F24, decision A): prominence follows proximity — a
+// closure 16 days out is a one-line chip, the final week gets the full
+// banner, the closure weekend is the alert.
+test("more than 7 days before the window → distant (compact chip)", () => {
+  assert.equal(bannerPhase(new Date("2026-07-23T12:00:00-04:00"), W), "distant");
+  assert.equal(bannerPhase(new Date("2026-07-31T21:44:00-04:00"), W), "distant");
+});
+
+test("within 7 days of the start → near (full banner)", () => {
+  assert.equal(bannerPhase(new Date("2026-07-31T21:46:00-04:00"), W), "near");
+  assert.equal(bannerPhase(new Date("2026-08-07T12:00:00-04:00"), W), "near");
+});
+
+test("shortDates carries the chip-sized wording for the sourced window", () => {
+  assert.equal(GTRAIN_WINDOW.shortDates, "Aug 7–10");
 });
 
 test("inside the window → active (including the exact start instant)", () => {

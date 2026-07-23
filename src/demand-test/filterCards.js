@@ -122,6 +122,28 @@ export function isExpiredCard(card, date) {
   return Date.parse(card.endsAt) < date.getTime();
 }
 
+// Thin-layer folding (UX eval F16, decision B): a 2-card Deals chip promising
+// a full shelf reads as breakage, so layers under the threshold fold into a
+// "More" chip until the weekly ingest stocks them.
+export function liveFilterCounts(cards, date) {
+  const counts = {};
+  for (const card of cards) {
+    if (isExpiredCard(card, date)) continue;
+    for (const id of card.filters ?? []) counts[id] = (counts[id] ?? 0) + 1;
+  }
+  return counts;
+}
+
+export function partitionFilters(filters, counts, threshold) {
+  const shown = [];
+  const folded = [];
+  for (const f of filters) {
+    if (f.id === "all" || (counts[f.id] ?? 0) >= threshold) shown.push(f);
+    else folded.push(f);
+  }
+  return { shown, folded };
+}
+
 const GTRAIN_CATEGORIES = new Set(["g_train_support", "civic_action", "support_local"]);
 
 export function pinKind(card) {

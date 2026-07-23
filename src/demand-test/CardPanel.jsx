@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FILTERS, pinKind } from "./filterCards.js";
+import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
 import { actionHref } from "./cardActions.js";
 import { formatWindow } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
@@ -237,10 +237,37 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
+// Layers with fewer live cards than this fold into "More" until the weekly
+// ingest stocks them (UX eval F16, decision B).
+const FOLD_THRESHOLD = 5;
+
+function FilterChip({ f, filter, onFilter }) {
+  return (
+    <button
+      type="button"
+      className={`july-chip${filter === f.id ? " is-active" : ""}`}
+      aria-pressed={filter === f.id}
+      onClick={() => {
+        trackEvent(EVENTS.FILTER_TAP, { filter: f.id });
+        onFilter(f.id);
+      }}
+    >
+      {CHIP_KIND[f.id] && <span className={`july-dot july-dot--${CHIP_KIND[f.id]}`} aria-hidden="true" />}
+      {f.label}
+    </button>
+  );
+}
+
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const { shown, folded } = partitionFilters(FILTERS, filterCounts ?? {}, FOLD_THRESHOLD);
+  // An active folded filter (e.g. reached through a card action) must stay
+  // visible even while the fold is closed.
+  const activeIsFolded = folded.some((f) => f.id === filter);
+  const showFolded = moreOpen || activeIsFolded;
 
   // Filter-switch card actions must always answer visibly, even when their
   // layer is already active: flash the bar, bring the list to its top (Q7-A).
@@ -259,18 +286,24 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     [onFilter],
   );
 
-  // Tapping a pin brings its card to the top of the feed. The initial
-  // deep-link scroll must be instant ("auto"): smooth scrolling is animation-
-  // driven and never progresses in a hidden document, so a /e/ link opened in
-  // a background tab would land unscrolled. In-session taps glide — except
-  // under prefers-reduced-motion.
+  // Tapping a pin brings its card to the top of the feed — by scrolling the
+  // LIST only, never the page (UX eval F14, decision B: a pin tap must not
+  // throw the map out of the viewport). The initial deep-link scroll must be
+  // instant ("auto"): smooth scrolling is animation-driven and never
+  // progresses in a hidden document, so a /e/ link opened in a background tab
+  // would land unscrolled. In-session taps glide — except under
+  // prefers-reduced-motion.
   useEffect(() => {
     const first = firstScrollRef.current;
     firstScrollRef.current = false;
     if (!selectedId) return;
-    const el = listRef.current?.querySelector(".july-card.is-open");
+    const list = listRef.current;
+    const el = list?.querySelector(".july-card.is-open");
+    if (!list || !el) return;
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    el?.scrollIntoView({ block: "start", behavior: first || reduce ? "auto" : "smooth" });
+    // 28px = sticky day header; align the card just below it.
+    const top = el.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop - 28;
+    list.scrollTo({ top: Math.max(0, top), behavior: first || reduce ? "auto" : "smooth" });
   }, [selectedId]);
 
   return (
@@ -286,32 +319,49 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
         </div>
       )}
       <nav className="july-filters" aria-label="Filter the map" ref={filtersRef}>
-        {FILTERS.map((f) => (
+        {shown.map((f) => (
+          <FilterChip key={f.id} f={f} filter={filter} onFilter={onFilter} />
+        ))}
+        {/* Thin layers wait inside "More" until the ingest stocks them (F16-B). */}
+        {folded.length > 0 && showFolded && folded.map((f) => (
+          <FilterChip key={f.id} f={f} filter={filter} onFilter={onFilter} />
+        ))}
+        {folded.length > 0 && !showFolded && (
+          <button type="button" className="july-chip july-chip--more" onClick={() => setMoreOpen(true)}>
+            More +{folded.length}
+          </button>
+        )}
+        {folded.length > 0 && moreOpen && !activeIsFolded && (
+          <button type="button" className="july-chip july-chip--more" onClick={() => setMoreOpen(false)}>
+            Less
+          </button>
+        )}
+        {/* Time lens as a segmented control (UX eval F11, decision B): both
+            states visible, one always active — nothing to infer. */}
+        <div className="july-seg" role="group" aria-label="Time lens">
           <button
-            key={f.id}
             type="button"
-            className={`july-chip${filter === f.id ? " is-active" : ""}`}
-            aria-pressed={filter === f.id}
+            aria-pressed={!todayOnly}
             onClick={() => {
-              trackEvent(EVENTS.FILTER_TAP, { filter: f.id });
-              onFilter(f.id);
+              if (!todayOnly) return;
+              trackEvent(EVENTS.TODAY_TOGGLE, { on: false });
+              onToday(false);
             }}
           >
-            {CHIP_KIND[f.id] && <span className={`july-dot july-dot--${CHIP_KIND[f.id]}`} aria-hidden="true" />}
-            {f.label}
+            This week
           </button>
-        ))}
-        <button
-          type="button"
-          className={`july-chip july-chip--today${todayOnly ? " is-active" : ""}`}
-          aria-pressed={todayOnly}
-          onClick={() => {
-            trackEvent(EVENTS.TODAY_TOGGLE, { on: !todayOnly });
-            onToday(!todayOnly);
-          }}
-        >
-          {todayOnly ? "Today" : "This week"}
-        </button>
+          <button
+            type="button"
+            aria-pressed={todayOnly}
+            onClick={() => {
+              if (todayOnly) return;
+              trackEvent(EVENTS.TODAY_TOGGLE, { on: true });
+              onToday(true);
+            }}
+          >
+            Today
+          </button>
+        </div>
       </nav>
       <ol className="july-list" ref={listRef}>
         {groups.map((group) => (
