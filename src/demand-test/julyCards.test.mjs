@@ -114,7 +114,6 @@ test("the G-closure campaign card is a durable object: timeline, graph links, ac
     assert.ok(c.relatedCardIds.includes(rid), `links to ${rid}`);
   }
   assert.ok(c.actions.some((a) => a.type === "file_complaint" && a.url), "complaint action");
-  assert.ok(c.actions.some((a) => a.filterId === "g_train"), "internal action opens the G-Train layer");
   assert.ok(c.sourceLinks.some((s) => s.publisher === "MTA"), "MTA is cited for closure dates");
 });
 
@@ -160,16 +159,12 @@ test("reader-facing copy spells out Shop Small Greenpoint (no bare acronym)", ()
   }
 });
 
-test("the G-Train layer covers who's open during the shutdown, not just the asks", () => {
-  // "Still open this weekend" framing (spec v1 scope): every new business and
-  // business subscription club is in the affected corridors and stays
-  // reachable. Community clubs (monetizationRelevance "none", e.g. the Trash
-  // Club) aren't businesses and sit outside the corridor contract.
+test("the g_train layer is retired — no card references it (2026-07-23)", () => {
+  // Batu: a campaign as a content category read as confusing. G cards live in
+  // their real categories; future ingests must not resurrect the layer.
   for (const c of seed.cards) {
-    const businessSub = c.category === "subscription" && c.monetizationRelevance !== "none";
-    if (c.filters.includes("new") || businessSub) {
-      assert.ok(c.filters.includes("g_train"), `${c.id} missing g_train`);
-    }
+    assert.ok(!c.filters.includes("g_train"), `${c.id} still carries g_train`);
+    assert.ok(!c.actions.some((a) => a.filterId === "g_train"), `${c.id} action opens the retired layer`);
   }
 });
 

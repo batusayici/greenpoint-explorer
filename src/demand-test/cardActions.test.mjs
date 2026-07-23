@@ -39,5 +39,5 @@ test("directions are only derived for visits — a url-less rsvp stays href-less
 
 test("share and internal filter actions carry no href (component-handled)", () => {
   assert.equal(actionHref({ type: "share" }, shop), null);
-  assert.equal(actionHref({ type: "visit", filterId: "g_train" }, shop), null);
+  assert.equal(actionHref({ type: "visit", filterId: "deals" }, shop), null);
 });

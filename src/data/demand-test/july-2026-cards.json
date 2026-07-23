@@ -9,7 +9,6 @@
       "filters": [
         "new",
         "food_drink",
-        "g_train",
         "events"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
@@ -60,8 +59,7 @@
       "category": "service",
       "filters": [
         "new",
-        "services",
-        "g_train"
+        "services"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Core Press",
@@ -100,8 +98,7 @@
       "category": "service",
       "filters": [
         "new",
-        "services",
-        "g_train"
+        "services"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Pooch's Parlor",
@@ -145,8 +142,7 @@
       "filters": [
         "new",
         "shopping",
-        "family_kids",
-        "g_train"
+        "family_kids"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Giggles & Wiggles",
@@ -190,8 +186,7 @@
       "filters": [
         "new",
         "food_drink",
-        "family_kids",
-        "g_train"
+        "family_kids"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Cookies N' Cream",
@@ -232,8 +227,7 @@
       "category": "food_drink",
       "filters": [
         "new",
-        "food_drink",
-        "g_train"
+        "food_drink"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Sotteatery",
@@ -278,8 +272,7 @@
       "filters": [
         "new",
         "food_drink",
-        "events",
-        "g_train"
+        "events"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Socceria",
@@ -319,8 +312,7 @@
       "category": "arts_culture",
       "filters": [
         "new",
-        "arts_culture",
-        "g_train"
+        "arts_culture"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Dreams on Command",
@@ -361,8 +353,7 @@
       "category": "subscription",
       "filters": [
         "clubs_signups",
-        "food_drink",
-        "g_train"
+        "food_drink"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Falu House",
@@ -406,7 +397,7 @@
       "title": "G-train closures: July and beyond",
       "category": "g_train_support",
       "filters": [
-        "g_train"
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Greenpoint Av station",
@@ -422,11 +413,6 @@
         "visitor"
       ],
       "actions": [
-        {
-          "label": "See who's open nearby",
-          "type": "visit",
-          "filterId": "g_train"
-        },
         {
           "label": "File an MTA complaint",
           "type": "file_complaint",
@@ -493,7 +479,7 @@
       "title": "Adopt a business for shutdown weekends",
       "category": "support_local",
       "filters": [
-        "g_train"
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Manhattan Ave corridor",
@@ -507,11 +493,6 @@
         "business"
       ],
       "actions": [
-        {
-          "label": "Pick a shop to adopt this weekend",
-          "type": "visit",
-          "filterId": "g_train"
-        },
         {
           "label": "Share this card",
           "type": "share"
@@ -541,7 +522,7 @@
       "title": "Weigh in on how the G closures are run",
       "category": "civic_action",
       "filters": [
-        "g_train"
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Shop Small Greenpoint",
@@ -1713,8 +1694,7 @@
       "summary": "Monthly floral subscriptions from the Noble St florist-café — bud vase to branches tiers ($250–$400/month), arranged weekly.",
       "filters": [
         "clubs_signups",
-        "shopping",
-        "g_train"
+        "shopping"
       ],
       "audience": [
         "resident"

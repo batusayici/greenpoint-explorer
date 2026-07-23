@@ -3,10 +3,11 @@ import assert from "node:assert/strict";
 import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
-test("FILTERS = 'all' + the spec's eleven, in order, with display labels", () => {
+test("FILTERS = 'all' + the spec's ten, in order, with display labels", () => {
   assert.equal(FILTERS[0].id, "all");
   assert.deepEqual(FILTERS.slice(1).map((f) => f.id), FILTER_IDS);
-  assert.equal(FILTERS.find((f) => f.id === "g_train").label, "G-Train Support");
+  // g_train filter removed 2026-07-23 (Batu: campaign-as-category was confusing)
+  assert.equal(FILTERS.find((f) => f.id === "g_train"), undefined);
   assert.equal(FILTERS.find((f) => f.id === "food_drink").label, "Food & Drink");
   // Renamed from "Clubs & Signups" 2026-07-08 — tester read "club" as nightclub.
   assert.equal(FILTERS.find((f) => f.id === "clubs_signups").label, "Memberships");
@@ -21,7 +22,7 @@ test("matchesFilter: 'all' passes everything; others check authored membership",
   assert.ok(matchesFilter(card, "all"));
   assert.ok(matchesFilter(card, "new"));
   assert.ok(matchesFilter(card, "food_drink"));
-  assert.ok(!matchesFilter(card, "g_train"));
+  assert.ok(!matchesFilter(card, "deals"));
 });
 
 test("isActiveOn: undated cards always pass; dated cards pass only inside their window", () => {

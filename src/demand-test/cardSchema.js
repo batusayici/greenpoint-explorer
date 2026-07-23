@@ -35,10 +35,13 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // filter id. `deals`/`news` added 2026-07-15 (limited-launch content-type test);
 // `live_music` added same day (Batu: clubs/music bars are a key category —
 // venues + show nights share the layer).
+// g_train removed 2026-07-23 (Batu: a campaign as a content category read as
+// confusing) — G-related cards live in their real categories; the exclusive
+// campaign/civic cards moved to news.
 export const FILTER_IDS = [
   "new", "food_drink", "shopping", "services",
   "arts_culture", "family_kids", "events", "live_music", "clubs_signups",
-  "deals", "news", "g_train",
+  "deals", "news",
 ];
 
 // Generous Greenpoint envelope (Newtown Creek → McCarren, East River → BQE).

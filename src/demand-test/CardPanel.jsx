@@ -13,7 +13,6 @@ const CHIP_KIND = {
   clubs_signups: "club",
   deals: "deal",
   news: "news",
-  g_train: "gtrain",
 };
 
 // ONE ask, lowest friction (lean test: the tap is the interest signal, the
@@ -258,7 +257,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -268,6 +267,11 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // visible even while the fold is closed.
   const activeIsFolded = folded.some((f) => f.id === filter);
   const showFolded = moreOpen || activeIsFolded;
+
+  // Location focus engaged (pin tap): start the narrowed feed at its top.
+  useEffect(() => {
+    if (focus) listRef.current?.scrollTo({ top: 0 });
+  }, [focus]);
 
   // Filter-switch card actions must always answer visibly, even when their
   // layer is already active: flash the bar, bring the list to its top (Q7-A).
@@ -363,6 +367,18 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           </button>
         </div>
       </nav>
+      {/* Location focus (pin tap): the feed is narrowed to one spot — say so,
+          with the way back (the announce-the-narrowing pattern from F13). */}
+      {focus && (
+        <div className="july-focus" role="status">
+          <p>
+            <strong>{focus.name}</strong> &middot; {focus.count} on the map here
+          </p>
+          <button type="button" className="july-empty-reset" onClick={onClearFocus}>
+            Show everything
+          </button>
+        </div>
+      )}
       <ol className="july-list" ref={listRef}>
         {groups.map((group) => (
           <React.Fragment key={group.key}>

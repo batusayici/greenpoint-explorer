@@ -69,35 +69,6 @@ body { margin: 0; }
   color: var(--ink-soft);
 }
 
-/* --- G chip (distant closure, F24-A): one line, opens the G-Train layer --- */
-.july-gchip-row {
-  padding: 6px 22px;
-  border-bottom: 1px solid var(--ink);
-}
-
-.july-gchip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--g-green-deep);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--g-green-deep);
-  font-size: 0.78rem;
-  font-weight: 700;
-  font-family: inherit;
-  padding: 4px 12px 5px;
-  cursor: pointer;
-}
-
-.july-gchip .july-gbadge {
-  width: 18px;
-  height: 18px;
-  font-size: 0.7rem;
-  border-color: var(--g-green-deep);
-  color: var(--paper-lift);
-}
-
 /* --- G banner --- */
 .july-gbanner {
   display: flex;
@@ -109,6 +80,19 @@ body { margin: 0; }
   background: var(--g-green-deep);
   color: var(--paper-lift);
   font-size: 0.82rem;
+}
+
+/* distant-phase variant (F24-A): one quiet line, plain status, no control */
+.july-gbanner--compact {
+  padding: 5px 22px;
+  font-size: 0.78rem;
+}
+
+.july-gbanner--compact .july-gbadge {
+  width: 17px;
+  height: 17px;
+  font-size: 0.66rem;
+  border-width: 1.5px;
 }
 
 .july-gbadge {
@@ -144,7 +128,7 @@ body { margin: 0; }
   height: 100%;
 }
 
-/* mobile-only map grow/shrink (F3-B); hidden on desktop */
+/* mobile-only map grow/shrink icon (F3-B); hidden on desktop */
 .july-mapexpand {
   display: none;
   position: absolute;
@@ -155,10 +139,8 @@ body { margin: 0; }
   border-radius: 5px;
   background: var(--paper-lift);
   color: var(--ink);
-  font-size: 0.75rem;
-  font-weight: 750;
-  font-family: inherit;
-  padding: 7px 10px;
+  padding: 8px;
+  line-height: 0;
   box-shadow: 0 2px 0 rgba(42, 36, 28, 0.3);
   cursor: pointer;
 }
@@ -206,6 +188,19 @@ body { margin: 0; }
 }
 
 .july-notice-dismiss:hover { color: var(--ink); }
+
+/* location focus (pin tap): the feed is narrowed to one spot */
+.july-focus {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--ink-faint);
+  background: var(--paper-lift);
+  font-size: 0.82rem;
+}
+
+.july-focus p { margin: 0; flex: 1; }
 
 .july-filters {
   display: flex;
@@ -683,9 +678,6 @@ body { margin: 0; }
   text-align: center;
   pointer-events: none;
 }
-
-/* fanned-out satellites sit above their stack pin */
-.ii-pin--sat { z-index: 2; }
 
 .ii-pin.is-selected {
   z-index: 3;

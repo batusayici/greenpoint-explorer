@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { buildIIMapStyle, GREENPOINT_CENTER, GREENPOINT_MAX_BOUNDS } from "./iiMapStyle.js";
 import { pinKind } from "./filterCards.js";
-import { groupByLocation, fanOffsets } from "./mapPins.js";
+import { groupByLocation } from "./mapPins.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Track V — the 2D II-C map. Thin component: style comes from iiMapStyle.js,
@@ -21,12 +21,19 @@ function stackKind(cards) {
   return [...tally.entries()].sort((a, b) => b[1] - a[1])[0][0];
 }
 
-export default function MapView({ cards, selectedId, onSelect }) {
+// Tapping a multi-card pin focuses the FEED on that location (2026-07-23,
+// Batu: the fan-out cluttered an already dense mobile map); onFocusLocation
+// receives the group, or null when the bare map is tapped.
+export default function MapView({ cards, selectedId, focusKey, onSelect, onFocusLocation }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
-  // Fan-out (UX eval F1-A): the location key whose stack is spread open.
-  const [expandedKey, setExpandedKey] = useState(null);
+  // The bare-map click handler is bound once at mount; the ref keeps it
+  // pointed at the current callback.
+  const onFocusLocationRef = useRef(onFocusLocation);
+  useEffect(() => {
+    onFocusLocationRef.current = onFocusLocation;
+  });
   // Snapshot of the mount-time card set for the initial fitBounds only —
   // later filter changes must not re-frame the camera.
   const initialCardsRef = useRef(cards);
@@ -47,25 +54,35 @@ export default function MapView({ cards, selectedId, onSelect }) {
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
-    // Compact attribution starts collapsed (just the ⓘ) — MapLibre auto-opens
-    // it on load, which covers the map's bottom edge. The auto-open can land
-    // after "load" (seen expanded over the mobile peek), so collapse again on
-    // the first "idle".
+    // Compact attribution starts collapsed (just the ⓘ) — MapLibre re-opens
+    // it whenever source attributions update during load, which covers the
+    // map's bottom edge (and the mobile peek). One-shot listeners kept losing
+    // the race, so an observer suppresses auto-opens for the first seconds,
+    // then disconnects — the user's ⓘ toggle works normally after.
+    const attribEl = () => containerRef.current?.querySelector(".maplibregl-ctrl-attrib");
     const collapseAttrib = () => {
-      const attrib = containerRef.current?.querySelector(".maplibregl-ctrl-attrib");
+      const attrib = attribEl();
       attrib?.classList.remove("maplibregl-compact-show");
       attrib?.removeAttribute("open");
     };
+    let attribObserver;
     map.once("load", () => {
       collapseAttrib();
+      const attrib = attribEl();
+      if (attrib) {
+        attribObserver = new MutationObserver(() => {
+          if (attrib.classList.contains("maplibregl-compact-show")) collapseAttrib();
+        });
+        attribObserver.observe(attrib, { attributes: true, attributeFilter: ["class", "open"] });
+        setTimeout(() => attribObserver?.disconnect(), 4000);
+      }
       // Insurance against init racing layout: twice in the 2026-07-22 UX eval
       // the canvas froze at its pre-layout size until a viewport resize.
       map.resize();
     });
-    map.once("idle", collapseAttrib);
 
-    // Tapping bare map closes any open fan.
-    map.on("click", () => setExpandedKey(null));
+    // Tapping bare map clears any location focus.
+    map.on("click", () => onFocusLocationRef.current?.(null));
 
     // Open framed on the actual pin extent (not a fixed center), so the
     // neighborhood — not the river — fills the first view at any aspect.
@@ -83,23 +100,21 @@ export default function MapView({ cards, selectedId, onSelect }) {
     }
 
     mapRef.current = map;
-    return () => map.remove();
+    return () => {
+      attribObserver?.disconnect();
+      map.remove();
+    };
   }, []);
 
-  // A filter change rebuilds the pin set — any open fan closes with it.
-  useEffect(() => {
-    setExpandedKey(null);
-  }, [cards]);
-
-  // Sync markers with the filtered card set + selection + fan state.
+  // Sync markers with the filtered card set + selection + focus state.
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
     for (const m of markersRef.current) m.remove();
     markersRef.current = [];
 
-    const addMarker = (lngLat, el, offset = [0, 0]) => {
-      const marker = new maplibregl.Marker({ element: el, anchor: "center", offset })
+    const addMarker = (lngLat, el) => {
+      const marker = new maplibregl.Marker({ element: el, anchor: "center" })
         .setLngLat(lngLat)
         .addTo(map);
       markersRef.current.push(marker);
@@ -125,10 +140,10 @@ export default function MapView({ cards, selectedId, onSelect }) {
       const { key, lat, lng, cards: stack } = group;
       const single = stack.length === 1;
       const kind = single ? pinKind(stack[0]) : stackKind(stack);
-      const hasSelected = stack.some((c) => c.id === selectedId);
+      const active = stack.some((c) => c.id === selectedId) || key === focusKey;
       const el = document.createElement("button");
       el.type = "button";
-      el.className = `ii-pin ii-pin--${kind}${hasSelected ? " is-selected" : ""}`;
+      el.className = `ii-pin ii-pin--${kind}${active ? " is-selected" : ""}`;
       const name = stack[0].locationName;
       el.setAttribute(
         "aria-label",
@@ -136,7 +151,7 @@ export default function MapView({ cards, selectedId, onSelect }) {
           ? name === stack[0].title
             ? stack[0].title
             : `${name} — ${stack[0].title}`
-          : `${name} — ${stack.length} cards, tap to spread them`,
+          : `${name} — show its ${stack.length} cards in the list`,
       );
       const label = document.createElement("span");
       label.className = "ii-pin-label";
@@ -154,35 +169,15 @@ export default function MapView({ cards, selectedId, onSelect }) {
           trackEvent(EVENTS.PIN_TAP, { cardId: stack[0].id, kind });
           onSelect(stack[0].id);
         } else {
+          // Multi-card pin: focus the feed on this location (toggle off if
+          // it's already the focus).
           trackEvent(EVENTS.PIN_TAP, { cardId: stack[0].id, kind: "stack", count: stack.length });
-          setExpandedKey((k) => (k === key ? null : key));
+          onFocusLocation(key === focusKey ? null : group);
         }
       });
       addMarker([lng, lat], el);
-
-      // Fan-out: each card in the open stack gets its own tappable satellite,
-      // as a MapLibre pixel offset so everything stays geo-anchored.
-      if (!single && expandedKey === key) {
-        const offs = fanOffsets(stack.length);
-        stack.forEach((c, i) => {
-          const sat = document.createElement("button");
-          sat.type = "button";
-          sat.className = `ii-pin ii-pin--sat ii-pin--${pinKind(c)}${c.id === selectedId ? " is-selected" : ""}`;
-          sat.setAttribute("aria-label", c.title);
-          const satLabel = document.createElement("span");
-          satLabel.className = "ii-pin-label";
-          satLabel.textContent = c.title;
-          sat.appendChild(satLabel);
-          sat.addEventListener("click", (e) => {
-            e.stopPropagation();
-            trackEvent(EVENTS.PIN_TAP, { cardId: c.id, kind: pinKind(c) });
-            onSelect(c.id);
-          });
-          addMarker([lng, lat], sat, offs[i]);
-        });
-      }
     }
-  }, [cards, selectedId, onSelect, expandedKey]);
+  }, [cards, selectedId, focusKey, onSelect, onFocusLocation]);
 
   // Ease to the selected card.
   useEffect(() => {

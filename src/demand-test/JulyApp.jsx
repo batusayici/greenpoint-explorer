@@ -30,6 +30,10 @@ export default function JulyApp() {
   // Mobile map peek (UX eval F3, decision B): the list owns the first screen;
   // the map starts compact and grows on request. Desktop ignores this.
   const [mapExpanded, setMapExpanded] = useState(false);
+  // Location focus (2026-07-23): tapping a multi-card pin filters the FEED to
+  // that location — the fan-out it replaces cluttered the dense mobile map.
+  // { key, name, count, ids:Set }
+  const [pinFocus, setPinFocus] = useState(null);
 
   // Chip-fold input (F16-B): live counts per layer, fixed at mount — they only
   // drift at expiry boundaries, and the bar must not reshuffle mid-session.
@@ -82,19 +86,46 @@ export default function JulyApp() {
 
   const { visible, groups } = useMemo(() => {
     const now = new Date();
-    const shown = seed.cards
-      .filter((c) => !isExpiredCard(c, now))
+    const live = seed.cards.filter((c) => !isExpiredCard(c, now));
+    const shown = live
       .filter((c) => matchesFilter(c, filter))
       .filter((c) => !todayOnly || isActiveOn(c, now));
-    // Map keeps the flat set; the list scans as a calendar (day groups).
-    return { visible: sortTodayFirst(shown, now), groups: groupByDay(shown, now) };
-  }, [filter, todayOnly]);
+    // Map keeps the flat set (full context even while focused); the list
+    // scans as a calendar (day groups), narrowed to the focused location.
+    const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
+    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now) };
+  }, [filter, todayOnly, pinFocus]);
 
   const onFilter = useCallback((id) => {
+    setPinFocus(null); // any chip tap exits location focus
     setFilter(id);
     setSelectedId((sel) => {
       const still = seed.cards.find((c) => c.id === sel && matchesFilter(c, id));
       return still ? sel : null;
+    });
+  }, []);
+
+  const onToday = useCallback((v) => {
+    setPinFocus(null); // lens change exits location focus
+    setTodayOnly(v);
+  }, []);
+
+  // Multi-card pin tap (from MapView): focus the feed on that location. The
+  // chip bar resets to All so the bar never lies about what the feed shows —
+  // the focus row in the panel announces the narrowing.
+  const onFocusLocation = useCallback((group) => {
+    if (!group) {
+      setPinFocus(null);
+      return;
+    }
+    setFilter("all");
+    setTodayOnly(false);
+    setSelectedId(null);
+    setPinFocus({
+      key: group.key,
+      name: group.cards[0].locationName,
+      count: group.cards.length,
+      ids: new Set(group.cards.map((c) => c.id)),
     });
   }, []);
 
@@ -105,6 +136,7 @@ export default function JulyApp() {
       const target = CARDS_BY_ID.get(toCardId);
       if (!target) return;
       trackEvent(EVENTS.RELATED_TAP, { fromCardId, toCardId });
+      setPinFocus(null); // the target must land in the full feed
       if (!matchesFilter(target, filter)) setFilter("all");
       if (todayOnly && !isActiveOn(target, new Date())) setTodayOnly(false);
       setSelectedId(toCardId);
@@ -129,16 +161,14 @@ export default function JulyApp() {
         </div>
       </header>
       {/* Banner prominence follows proximity (UX eval F24, decision A):
-          one-line chip while the closure is distant, full banner in the final
-          week, alert during. The chip opens the G-Train layer. */}
+          one line while the closure is distant, full banner in the final
+          week, alert during. Plain status, not a control (2026-07-23). */}
       {gtrainPhase === "distant" && (
-        <div className="july-gchip-row">
-          <button type="button" className="july-gchip" onClick={() => onFilter("g_train")}>
-            <span className="july-gbadge">G</span>
-            <span>
-              <strong>G closure {GTRAIN_WINDOW.shortDates}</strong> &middot; plan ahead &rarr;
-            </span>
-          </button>
+        <div className="july-gbanner july-gbanner--compact" role="status">
+          <span className="july-gbadge">G</span>
+          <span>
+            <strong>G closure {GTRAIN_WINDOW.shortDates}</strong> &middot; {GTRAIN_WINDOW.shuttle}
+          </span>
         </div>
       )}
       {(gtrainPhase === "near" || gtrainPhase === "active") && (
@@ -159,8 +189,10 @@ export default function JulyApp() {
           filter={filter}
           onFilter={onFilter}
           filterCounts={filterCounts}
+          focus={pinFocus}
+          onClearFocus={() => setPinFocus(null)}
           todayOnly={todayOnly}
-          onToday={setTodayOnly}
+          onToday={onToday}
           selectedId={selectedId}
           onSelect={setSelectedId}
           onRelated={onRelated}
@@ -168,14 +200,27 @@ export default function JulyApp() {
           onSignupPromptDone={onSignupPromptDone}
         />
         <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
-          <MapView cards={visible} selectedId={selectedId} onSelect={setSelectedId} />
+          <MapView
+            cards={visible}
+            selectedId={selectedId}
+            focusKey={pinFocus?.key ?? null}
+            onSelect={setSelectedId}
+            onFocusLocation={onFocusLocation}
+          />
           <button
             type="button"
             className="july-mapexpand"
             aria-pressed={mapExpanded}
+            aria-label={mapExpanded ? "Shrink map" : "Expand map"}
             onClick={() => setMapExpanded((x) => !x)}
           >
-            {mapExpanded ? "Shrink map" : "Expand map"}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              {mapExpanded ? (
+                <path d="M6.5 2.5v4h-4M9.5 2.5v4h4M6.5 13.5v-4h-4M9.5 13.5v-4h4" />
+              ) : (
+                <path d="M2.5 6.5v-4h4M13.5 6.5v-4h-4M2.5 9.5v4h4M13.5 9.5v4h-4" />
+              )}
+            </svg>
           </button>
         </div>
       </main>

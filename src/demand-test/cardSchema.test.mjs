@@ -51,7 +51,7 @@ test("free is optional but must be a boolean (truth rule: only sourced free-ness
 test("an action may target a filter view (internal action), but only a known one", () => {
   // 2026-07-03: campaign cards link INTO the map ("see who's open nearby" →
   // the G-Train layer) — an action carrying filterId instead of url.
-  const internal = { ...good, actions: [{ label: "See who's open nearby", type: "visit", filterId: "g_train" }] };
+  const internal = { ...good, actions: [{ label: "See every deal", type: "visit", filterId: "deals" }] };
   assert.deepEqual(validateCard(internal).errors, []);
   assert.equal(validateCard({ ...good, actions: [{ label: "x", type: "visit", filterId: "jobs" }] }).ok, false);
 });
@@ -96,7 +96,7 @@ test("FILTER_IDS matches the spec's filter bar (incl. Deals + News + Live Music,
   assert.deepEqual(FILTER_IDS, [
     "new", "food_drink", "shopping", "services",
     "arts_culture", "family_kids", "events", "live_music", "clubs_signups",
-    "deals", "news", "g_train",
+    "deals", "news",
   ]);
 });
 

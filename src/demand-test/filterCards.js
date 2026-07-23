@@ -16,7 +16,6 @@ const LABELS = {
 
   deals: "Deals",
   news: "News",
-  g_train: "G-Train Support",
 };
 
 export const FILTERS = [
