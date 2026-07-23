@@ -110,9 +110,10 @@ export default function JulyApp() {
     setTodayOnly(v);
   }, []);
 
-  // Multi-card pin tap (from MapView): focus the feed on that location. The
-  // chip bar resets to All so the bar never lies about what the feed shows —
-  // the focus row in the panel announces the narrowing.
+  // Pin tap (from MapView): focus the feed on that location. The chip bar
+  // resets to All so the bar never lies about what the feed shows — the
+  // focus row in the panel announces the narrowing. A single-card location
+  // also opens its card (a one-row feed of closed cards helps nobody).
   const onFocusLocation = useCallback((group) => {
     if (!group) {
       setPinFocus(null);
@@ -120,7 +121,7 @@ export default function JulyApp() {
     }
     setFilter("all");
     setTodayOnly(false);
-    setSelectedId(null);
+    setSelectedId(group.cards.length === 1 ? group.cards[0].id : null);
     setPinFocus({
       key: group.key,
       name: group.cards[0].locationName,

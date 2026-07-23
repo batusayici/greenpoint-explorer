@@ -268,9 +268,19 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   const activeIsFolded = folded.some((f) => f.id === filter);
   const showFolded = moreOpen || activeIsFolded;
 
-  // Location focus engaged (pin tap): start the narrowed feed at its top.
+  // Location focus engaged (pin tap): bring the narrowed feed into view.
+  // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
+  // the page so the map peek sits at the top — map AND its cards visible
+  // together (2026-07-23 live review, #6).
   useEffect(() => {
-    if (focus) listRef.current?.scrollTo({ top: 0 });
+    if (!focus) return;
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const list = listRef.current;
+    if (list && list.scrollHeight > list.clientHeight + 1) {
+      list.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    } else {
+      document.querySelector(".july-mapzone")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    }
   }, [focus]);
 
   // Filter-switch card actions must always answer visibly, even when their
@@ -290,24 +300,26 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     [onFilter],
   );
 
-  // Tapping a pin brings its card to the top of the feed — by scrolling the
-  // LIST only, never the page (UX eval F14, decision B: a pin tap must not
-  // throw the map out of the viewport). The initial deep-link scroll must be
-  // instant ("auto"): smooth scrolling is animation-driven and never
-  // progresses in a hidden document, so a /e/ link opened in a background tab
-  // would land unscrolled. In-session taps glide — except under
-  // prefers-reduced-motion.
+  // Selection scroll fires ONLY for the initial /e/ deep link. In-session
+  // list taps never yank the view (2026-07-23 live review), and pin taps are
+  // handled by the focus effect above. Instant ("auto") on purpose: smooth
+  // scrolling never progresses in a hidden document, so a link opened in a
+  // background tab would land unscrolled.
   useEffect(() => {
     const first = firstScrollRef.current;
     firstScrollRef.current = false;
-    if (!selectedId) return;
+    if (!first || !selectedId) return;
     const list = listRef.current;
     const el = list?.querySelector(".july-card.is-open");
     if (!list || !el) return;
-    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    // 28px = sticky day header; align the card just below it.
-    const top = el.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop - 28;
-    list.scrollTo({ top: Math.max(0, top), behavior: first || reduce ? "auto" : "smooth" });
+    if (list.scrollHeight > list.clientHeight + 1) {
+      // 28px = sticky day header; align the card just below it.
+      const top = el.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop - 28;
+      list.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    } else {
+      // Mobile page-flow: the list isn't a scroller — scroll the page.
+      el.scrollIntoView({ block: "start", behavior: "auto" });
+    }
   }, [selectedId]);
 
   return (

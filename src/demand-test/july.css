@@ -145,14 +145,6 @@ body { margin: 0; }
   cursor: pointer;
 }
 
-/* MapLibre's cooperative-gesture hint, in II-C ink (F2-A) */
-.maplibregl-cooperative-gesture-screen {
-  background: rgba(42, 36, 28, 0.5);
-  color: var(--paper-lift);
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
 
 /* --- panel --- */
 .july-panel {
@@ -590,25 +582,24 @@ body { margin: 0; }
   border: 0;
 }
 
-/* --- responsive (F3-B): list-first, map peek ---
-   The list owns the first screen; the map starts compact and grows on request
-   (Expand map). Same fixed-viewport model as desktop, so the list is its own
-   scroller and pin taps never move the page (F14-B). */
+/* --- responsive (F3-B, revised 2026-07-23 live review #5/#6): list-first,
+   map peek, natural page flow. The page scrolls as one surface so card
+   scanning gets the full screen height; the list is NOT its own scroller
+   here. The 25vh peek keeps one-finger map pan harmless (no trapped page),
+   and thumbs do everything. */
 @media (max-width: 760px) {
   .july-shell {
-    height: 100vh;
-    height: 100dvh; /* iOS toolbars */
+    height: auto;
+    min-height: 100vh;
   }
   .july-header { padding: 12px 16px 8px; }
   /* The value prop stays visible on mobile (2026-07-08: testers asked "how is
      this different from Google Maps" — the answer can't be display:none). */
   .july-header p { font-size: 0.78rem; }
-  .july-gchip-row { padding: 6px 16px; }
   .july-main {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-height: 0;
+    flex: none;
     height: auto;
   }
   .july-mapzone { order: 1; flex: none; height: 25vh; min-height: 170px; }
@@ -616,12 +607,13 @@ body { margin: 0; }
   .july-mapexpand { display: inline-block; }
   .july-panel {
     order: 2;
-    flex: 1;
-    min-height: 0;
+    display: block;
     border-right: 0;
     border-top: 1px solid var(--ink);
   }
-  /* one scrollable chip row instead of five stacked rows */
+  .july-list { overflow: visible; }
+  /* one scrollable chip row instead of five stacked rows — filter
+     discoverability is an open design call (N1) */
   .july-filters {
     flex-wrap: nowrap;
     overflow-x: auto;

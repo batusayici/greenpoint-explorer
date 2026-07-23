@@ -48,9 +48,9 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
       maxZoom: 17.5,
       maxBounds: GREENPOINT_MAX_BOUNDS,
       attributionControl: { compact: true },
-      // On phones the map led the page and ate every one-finger swipe (UX
-      // eval F2, decision A): one finger scrolls the page, two pan the map.
-      cooperativeGestures: window.matchMedia("(max-width: 760px)").matches,
+      // cooperativeGestures tried (F2-A) and removed 2026-07-23: two-finger
+      // pan broke thumb-only use, and the 25vh peek + page-flow layout
+      // removed the swipe trap it existed to solve.
     });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
@@ -165,15 +165,16 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
       }
       el.addEventListener("click", (e) => {
         e.stopPropagation();
-        if (single) {
-          trackEvent(EVENTS.PIN_TAP, { cardId: stack[0].id, kind });
-          onSelect(stack[0].id);
-        } else {
-          // Multi-card pin: focus the feed on this location (toggle off if
-          // it's already the focus).
-          trackEvent(EVENTS.PIN_TAP, { cardId: stack[0].id, kind: "stack", count: stack.length });
-          onFocusLocation(key === focusKey ? null : group);
-        }
+        // Every pin tap focuses the feed on its location (2026-07-23, Batu's
+        // #4): single-card pins also auto-open their card (JulyApp). Tapping
+        // the focused pin again shows everything.
+        trackEvent(
+          EVENTS.PIN_TAP,
+          single
+            ? { cardId: stack[0].id, kind }
+            : { cardId: stack[0].id, kind: "stack", count: stack.length },
+        );
+        onFocusLocation(key === focusKey ? null : group);
       });
       addMarker([lng, lat], el);
     }
