@@ -90,20 +90,31 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
 
 // 2026-07-22 UX eval (F4): the live Today group scanned 5 PM → 10 AM → 7 PM,
 // because in-window series cards sort by their ORIGINAL startsAt date. Within
-// Today, order must follow today's clock; all-day sentinels (00:00) lead.
-test("groupByDay: Today sorts by today's time of day, not the original start date", () => {
+// Today, order must follow today's clock. 2026-07-24 user feedback: untimed
+// cards (the 00:00 sentinel = "no stated clock") must TRAIL the timed
+// schedule, not lead it — they're "often evening, or at least not morning",
+// and sorting them first silently claims morning.
+test("groupByDay: Today sorts by today's clock; untimed cards trail the timed schedule", () => {
   const wed = new Date("2026-07-22T08:00:00-04:00");
   const series5pm = { id: "series-5pm", startsAt: "2026-07-07T17:00:00-04:00", endsAt: "2026-08-31T23:59:00-04:00" };
   const today10am = { id: "today-10am", startsAt: "2026-07-22T10:00:00-04:00", endsAt: "2026-07-22T11:00:00-04:00" };
   const today7pm = { id: "today-7pm", startsAt: "2026-07-22T19:00:00-04:00", endsAt: "2026-07-22T22:00:00-04:00" };
   const allDay = { id: "all-day", startsAt: "2026-07-22T00:00:00-04:00", endsAt: "2026-07-22T23:59:00-04:00" };
-  const groups = groupByDay([series5pm, today7pm, today10am, allDay], wed);
+  const groups = groupByDay([series5pm, today7pm, allDay, today10am], wed);
   assert.equal(groups[0].key, "today");
   assert.deepEqual(
     groups[0].cards.map((c) => c.id),
-    ["all-day", "today-10am", "series-5pm", "today-7pm"],
-    "today's clock decides: 00:00 sentinel, 10 AM, 5 PM (series), 7 PM",
+    ["today-10am", "series-5pm", "today-7pm", "all-day"],
+    "10 AM, 5 PM (series), 7 PM, then the untimed card",
   );
+});
+
+test("groupByDay: untimed cards trail on future days too", () => {
+  const wed = new Date("2026-07-22T08:00:00-04:00");
+  const friUntimed = { id: "fri-untimed", startsAt: "2026-07-24T00:00:00-04:00", endsAt: "2026-07-24T23:59:00-04:00" };
+  const friNoon = { id: "fri-noon", startsAt: "2026-07-24T12:00:00-04:00", endsAt: "2026-07-24T14:00:00-04:00" };
+  const groups = groupByDay([friUntimed, friNoon], wed);
+  assert.deepEqual(groups[0].cards.map((c) => c.id), ["fri-noon", "fri-untimed"]);
 });
 
 test("groupByDay: an all-undated layer is a single Ongoing group", () => {
@@ -156,4 +167,27 @@ test("partitionFilters: 'all' always shows; layers under the threshold fold", ()
   const { shown, folded } = partitionFilters(filters, { events: 58, deals: 2, services: 2 }, 5);
   assert.deepEqual(shown.map((f) => f.id), ["all", "events"]);
   assert.deepEqual(folded.map((f) => f.id), ["deals", "services"]);
+});
+
+// 2026-07-24 user feedback: "same day events that are past its start time
+// should be removed." Cards whose endsAt is only the day-end sentinel (no
+// sourced end time) used to linger until midnight; they now expire one hour
+// after their stated start. A sourced real end keeps exact expiry; all-day
+// cards (00:00 start sentinel) and multi-day windows are untouched.
+test("isExpiredCard: a started sentinel-end event leaves the feed an hour past its start", () => {
+  const show = { startsAt: "2026-07-24T19:00:00-04:00", endsAt: "2026-07-24T23:59:00-04:00" };
+  assert.ok(!isExpiredCard(show, new Date("2026-07-24T18:00:00-04:00")), "before start: live");
+  assert.ok(!isExpiredCard(show, new Date("2026-07-24T19:45:00-04:00")), "grace window: still joinable");
+  assert.ok(isExpiredCard(show, new Date("2026-07-24T20:01:00-04:00")), "an hour past start: gone");
+});
+
+test("isExpiredCard: real end times, all-day cards, and multi-day windows keep their expiry", () => {
+  const timedEnd = { startsAt: "2026-07-24T19:00:00-04:00", endsAt: "2026-07-24T22:00:00-04:00" };
+  assert.ok(!isExpiredCard(timedEnd, new Date("2026-07-24T21:30:00-04:00")), "sourced end wins over grace");
+  const allDay = { startsAt: "2026-07-24T00:00:00-04:00", endsAt: "2026-07-24T23:59:00-04:00" };
+  assert.ok(!isExpiredCard(allDay, new Date("2026-07-24T21:00:00-04:00")), "no start claim, no start-based expiry");
+  const series = { startsAt: "2026-07-20T19:00:00-04:00", endsAt: "2026-07-27T23:59:00-04:00" };
+  assert.ok(!isExpiredCard(series, new Date("2026-07-24T21:00:00-04:00")), "multi-day sentinel window untouched");
+  const recurring = { recurring: true, startsAt: "2026-07-24T19:00:00-04:00", endsAt: "2026-07-24T23:59:00-04:00" };
+  assert.ok(!isExpiredCard(recurring, new Date("2026-07-24T21:00:00-04:00")), "recurring cards never start-expire");
 });

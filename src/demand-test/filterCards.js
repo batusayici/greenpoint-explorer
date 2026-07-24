@@ -56,15 +56,24 @@ export function sortTodayFirst(cards, date) {
 // by date). Dated cards bucket under the calendar day they happen — a window
 // covering today reads "Today"; future starts read their start day. Undated
 // cards and recurring deals (standing offers) trail in "Ongoing". Group order:
-// Today, then future days ascending, then Ongoing. Within a day: earliest
-// start first (all-day sentinels lead), authored order as tiebreak. Today
-// sorts by today's CLOCK, not absolute startsAt — an in-window series anchored
-// weeks ago must not outrank this morning's event (2026-07-22 UX eval, F4).
+// Today, then future days ascending, then Ongoing. Within a day: the timed
+// schedule first by clock, authored order as tiebreak — and Today uses
+// today's CLOCK, not absolute startsAt, so an in-window series anchored weeks
+// ago can't outrank this morning's event (2026-07-22 UX eval, F4). Untimed
+// cards (the 00:00 sentinel = "no stated clock") TRAIL their day: they're
+// often evening, and sorting an unknown time first silently claims morning
+// (2026-07-24 user feedback).
 const DAY_LABEL = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" });
 const NY_CLOCK = new Intl.DateTimeFormat("en-US", {
   hour: "2-digit",
   minute: "2-digit",
   hour12: false,
+  timeZone: "America/New_York",
+});
+const NY_DAY = new Intl.DateTimeFormat("en-CA", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
   timeZone: "America/New_York",
 });
 
@@ -95,20 +104,21 @@ export function groupByDay(cards, date) {
       put(`d${offset}`, offset, label, card);
     }
   }
-  const byStart = (a, b) => {
-    const t = (c) => (c.startsAt != null ? Date.parse(c.startsAt) : 0);
-    return t(a) - t(b);
-  };
+  // One comparator for every day group: cards in a group share a calendar
+  // day, so clock-of-day ordering equals absolute ordering — and it's the
+  // right key for Today's in-window series regardless of their anchor date.
+  // No stated clock (missing startsAt, or the 00:00 sentinel) sorts last.
   const byClock = (a, b) => {
-    const t = (c) => (c.startsAt != null ? minutesOfDayNY(c.startsAt) : 0);
+    const t = (c) => {
+      if (c.startsAt == null) return Number.POSITIVE_INFINITY;
+      const m = minutesOfDayNY(c.startsAt);
+      return m === 0 ? Number.POSITIVE_INFINITY : m;
+    };
     return t(a) - t(b);
   };
   return [...groups.values()]
     .sort((a, b) => a.order - b.order)
-    .map((g) => {
-      if (g.key === "ongoing") return g;
-      return { ...g, cards: [...g.cards].sort(g.key === "today" ? byClock : byStart) };
-    });
+    .map((g) => (g.key === "ongoing" ? g : { ...g, cards: [...g.cards].sort(byClock) }));
 }
 
 // A dated card is dead the moment its window closes — expiry can't wait for
@@ -116,9 +126,26 @@ export function groupByDay(cards, date) {
 // (someone walks in waving a lapsed deal, or shows up to a finished event)
 // and, worse, groupByDay would regroup it under its stale start day ABOVE
 // Today (the 2026-07-21 live-page bug). Undated cards never expire.
+//
+// 2026-07-24 user feedback: "same day events that are past its start time
+// should be removed." A same-day event whose endsAt is only the day-end
+// sentinel (23:59 = no sourced end time) used to linger until midnight; it
+// now expires one hour past its stated start — long enough to still catch a
+// show you're running late to, short enough that the evening feed isn't a
+// list of things already underway. A sourced real end keeps exact expiry;
+// all-day cards (00:00 start sentinel), multi-day windows, and recurring
+// cards are untouched.
+const STARTED_GRACE_MS = 60 * 60000;
+
 export function isExpiredCard(card, date) {
   if (card.endsAt == null) return false;
-  return Date.parse(card.endsAt) < date.getTime();
+  if (Date.parse(card.endsAt) < date.getTime()) return true;
+  if (card.recurring || card.startsAt == null) return false;
+  const startClock = minutesOfDayNY(card.startsAt);
+  const endIsSentinel = minutesOfDayNY(card.endsAt) === 23 * 60 + 59;
+  const sameDay = NY_DAY.format(new Date(card.startsAt)) === NY_DAY.format(new Date(card.endsAt));
+  if (startClock === 0 || !endIsSentinel || !sameDay) return false;
+  return date.getTime() > Date.parse(card.startsAt) + STARTED_GRACE_MS;
 }
 
 // Thin-layer folding (UX eval F16, decision B): a 2-card Deals chip promising
