@@ -641,11 +641,21 @@ body { margin: 0; }
   }
   .july-filters::-webkit-scrollbar { display: none; }
   .july-chip, .july-seg button { white-space: nowrap; }
-  /* day headers ride normally — the pinned map+chips already hold context,
-     and a mis-set sticky offset under them would read as a glitch */
-  .july-day { position: static; }
-  /* deep-link scroll must clear the pinned map + chip bar */
-  .july-card { scroll-margin-top: calc(var(--peek) + 64px); }
+  /* Day header sticks right under the pinned map + chip bar (2026-07-23 live
+     review: "as I scroll down I don't lose sight of what date I'm viewing").
+     --chrome is the shared offset — map+chips height above, everything else
+     below — kept in one place so the scroll-margin stays in sync with it. */
+  /* 53px = the single-row chip bar's real height (10px+10px padding around a
+     32px min-height chip) — kept exact so the sticky date sits flush under
+     it with no gap. */
+  .july-main { --chrome: calc(var(--peek) + 53px); }
+  .july-day {
+    position: sticky;
+    top: var(--chrome);
+    z-index: 18;
+  }
+  /* deep-link scroll must clear the pinned map + chips + sticky date */
+  .july-card { scroll-margin-top: calc(var(--chrome) + 26px); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
