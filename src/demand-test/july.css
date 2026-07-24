@@ -148,12 +148,38 @@ body { margin: 0; }
 
 /* --- panel --- */
 .july-panel {
+  position: relative; /* containing block for the Today pill */
   display: flex;
   flex-direction: column;
   min-height: 0;
   border-right: 1px solid var(--ink);
   background: var(--paper);
 }
+
+/* V3-B: after a mid-scroll lens change hides today's rows above the viewport,
+   this pill offers the way back. Floats over the list; withdraws on its own
+   once the feed top is visible again. */
+.july-todaypill {
+  position: absolute;
+  left: 50%;
+  bottom: 88px;
+  transform: translateX(-50%);
+  z-index: 30;
+  min-height: 34px;
+  padding: 7px 16px 8px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper-lift);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 0 rgba(42, 36, 28, 0.35);
+  cursor: pointer;
+}
+
+.july-todaypill:hover { background: var(--ink-soft); }
 
 /* dead /e/ link greeting (Q1-A) — one warm line, dismissible */
 .july-notice {
@@ -625,6 +651,13 @@ body { margin: 0; }
     display: block;
     border-right: 0;
     border-top: 0;
+  }
+  /* Page-flow list: the panel's bottom is the end of the whole feed, so the
+     pill pins to the viewport instead — always within thumb reach, and high
+     enough to clear the footer email CTA when the feed end is on screen. */
+  .july-todaypill {
+    position: fixed;
+    bottom: 78px;
   }
   .july-list { overflow: visible; }
   /* one scrollable chip row instead of five stacked rows — filter

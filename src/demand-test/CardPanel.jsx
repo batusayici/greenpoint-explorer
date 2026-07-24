@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
-import { actionHref } from "./cardActions.js";
+import { actionHref, withShareAction, sharePayload } from "./cardActions.js";
+import { icsForCard } from "./icsEvent.js";
+import { todayPillNeeded } from "./todayPill.js";
 import { formatWindow } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
@@ -69,6 +71,9 @@ function ActionLink({ action, card, onFilter, onFilterAction }) {
 // silence, under a label that promised a post (UX eval, F5). The button now
 // confirms in place, and action_tap only fires for shares that actually
 // happened — a cancelled share sheet is not a share.
+// V1-A (first-visit test): the payload is the card — title + start time as the
+// text, the /e/ deep link retagged ?src=share as the URL — so the group-chat
+// forward reads as the event, not as "Greenpoint Life".
 function ShareAction({ action, card, cls }) {
   const [copied, setCopied] = useState(false);
   useEffect(() => {
@@ -78,10 +83,12 @@ function ShareAction({ action, card, cls }) {
   }, [copied]);
   const onShare = async () => {
     const done = () => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type });
+    const { title, url } = sharePayload(card, { origin: window.location.origin, search: window.location.search });
     if (navigator.share) {
-      await navigator.share({ title: "Greenpoint Life", url: window.location.href }).then(done).catch(() => {});
+      // text carries the title too — several share targets drop `title`.
+      await navigator.share({ title, text: title, url }).then(done).catch(() => {});
     } else {
-      await navigator.clipboard.writeText(window.location.href).then(() => {
+      await navigator.clipboard.writeText(url).then(() => {
         setCopied(true);
         done();
       }).catch(() => {});
@@ -90,6 +97,37 @@ function ShareAction({ action, card, cls }) {
   return (
     <button type="button" className={cls} onClick={onShare} aria-live="polite">
       {copied ? "Link copied ✓" : action.label}
+    </button>
+  );
+}
+
+// V2-A (first-visit test): "save an event to go to" hands the plan to the
+// user's real calendar — a client-generated .ics, downloaded on tap. Dated,
+// non-recurring cards only; the .ics carries the deep link tagged
+// ?src=calendar so a saved event's return visit is attributable.
+function CalendarAction({ card, cls }) {
+  const onSave = () => {
+    const { url } = sharePayload(card, {
+      origin: window.location.origin,
+      search: window.location.search,
+      channel: "calendar",
+    });
+    const ics = icsForCard(card, { url, now: new Date() });
+    if (!ics) return;
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const href = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = href;
+    a.download = `${card.id}.ics`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(href), 10000);
+    trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: "calendar" });
+  };
+  return (
+    <button type="button" className={cls} onClick={onSave}>
+      Add to calendar
     </button>
   );
 }
@@ -193,9 +231,10 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
         </ol>
       )}
       <div className="july-actions">
-        {card.actions.map((a) => (
+        {withShareAction(card.actions).map((a) => (
           <ActionLink key={a.label} action={a} card={card} onFilter={onFilter} onFilterAction={onFilterAction} />
         ))}
+        {card.startsAt != null && !card.recurring && <CalendarAction card={card} cls="july-action" />}
       </div>
       {related.length > 0 && (
         <p className="july-related">
@@ -262,6 +301,12 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
   const [moreOpen, setMoreOpen] = useState(false);
+  // V3-B (first-visit test): lens changes keep your scroll position, so a
+  // mid-scroll chip tap can hide today's rows above the viewport — the pill
+  // offers the way back without yanking anyone who wanted to stay mid-week.
+  const [showTodayPill, setShowTodayPill] = useState(false);
+  const firstLensRef = useRef(true);
+  const suppressPillRef = useRef(false);
   const { shown, folded } = partitionFilters(FILTERS, filterCounts ?? {}, FOLD_THRESHOLD);
   // An active folded filter (e.g. reached through a card action) must stay
   // visible even while the fold is closed.
@@ -283,10 +328,79 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     }
   }, [focus]);
 
+  // Measure AFTER the lens change has rendered: is the feed's top (today)
+  // offscreen? Desktop's list is its own scroller; mobile page flow compares
+  // the list top against the anchored map+chips chrome. Location focus has
+  // its own announcement row — no pill on top of it.
+  useEffect(() => {
+    if (firstLensRef.current) {
+      firstLensRef.current = false;
+      return;
+    }
+    if (suppressPillRef.current) {
+      suppressPillRef.current = false;
+      setShowTodayPill(false);
+      return;
+    }
+    if (focus) {
+      setShowTodayPill(false);
+      return;
+    }
+    const list = listRef.current;
+    if (!list) return;
+    setShowTodayPill(
+      todayPillNeeded({
+        ownScroller: list.scrollHeight > list.clientHeight + 1,
+        scrollTop: list.scrollTop,
+        listTop: list.getBoundingClientRect().top,
+        chromeBottom: filtersRef.current?.getBoundingClientRect().bottom ?? 0,
+      }),
+    );
+  }, [filter, todayOnly, focus]);
+
+  // The pill withdraws by itself once the feed top scrolls back into view.
+  useEffect(() => {
+    if (!showTodayPill) return;
+    const list = listRef.current;
+    const check = () => {
+      if (!list) return;
+      const still = todayPillNeeded({
+        ownScroller: list.scrollHeight > list.clientHeight + 1,
+        scrollTop: list.scrollTop,
+        listTop: list.getBoundingClientRect().top,
+        chromeBottom: filtersRef.current?.getBoundingClientRect().bottom ?? 0,
+      });
+      if (!still) setShowTodayPill(false);
+    };
+    window.addEventListener("scroll", check, { passive: true });
+    list?.addEventListener("scroll", check, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", check);
+      list?.removeEventListener("scroll", check);
+    };
+  }, [showTodayPill]);
+
+  // Instant, not smooth — same hidden-tab rule as the deep-link scroll.
+  // Mobile page flow: the map+chips are sticky, so scrollIntoView on them is a
+  // no-op — compute the page offset that seats the feed top under the chrome.
+  const onTodayPill = useCallback(() => {
+    setShowTodayPill(false);
+    const list = listRef.current;
+    if (!list) return;
+    if (list.scrollHeight > list.clientHeight + 1) {
+      list.scrollTo({ top: 0, behavior: "auto" });
+    } else {
+      const chromeBottom = filtersRef.current?.getBoundingClientRect().bottom ?? 0;
+      const top = window.scrollY + list.getBoundingClientRect().top - chromeBottom;
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    }
+  }, []);
+
   // Filter-switch card actions must always answer visibly, even when their
   // layer is already active: flash the bar, bring the list to its top (Q7-A).
   const onFilterAction = useCallback(
     (id) => {
+      suppressPillRef.current = true; // this path scrolls to top itself
       onFilter(id);
       const nav = filtersRef.current;
       if (nav) {
@@ -381,6 +495,11 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       </nav>
       {/* Location focus (pin tap): the feed is narrowed to one spot — say so,
           with the way back (the announce-the-narrowing pattern from F13). */}
+      {showTodayPill && (
+        <button type="button" className="july-todaypill" onClick={onTodayPill}>
+          Today <span aria-hidden="true">↑</span>
+        </button>
+      )}
       {focus && (
         <div className="july-focus" role="status">
           <p>
