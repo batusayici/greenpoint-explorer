@@ -73,7 +73,7 @@
       ],
       "actions": [
         {
-          "label": "Check it out",
+          "label": "Details",
           "type": "visit"
         }
       ],
@@ -112,7 +112,7 @@
       ],
       "actions": [
         {
-          "label": "Directions (appointment only)",
+          "label": "Directions",
           "type": "visit"
         }
       ],
@@ -157,7 +157,7 @@
       ],
       "actions": [
         {
-          "label": "Visit (entrance on Noble)",
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -202,7 +202,7 @@
       ],
       "actions": [
         {
-          "label": "Late-night sweets run",
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -368,12 +368,12 @@
       ],
       "actions": [
         {
-          "label": "Join the Tinned Fish Club",
+          "label": "Join",
           "type": "join",
           "url": "https://www.faluhouse.com/tinned-fish-club-sign-up"
         },
         {
-          "label": "Visit the shop",
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -494,7 +494,7 @@
       ],
       "actions": [
         {
-          "label": "Share this card",
+          "label": "Share",
           "type": "share"
         }
       ],
@@ -606,7 +606,7 @@
       "recurring": true,
       "actions": [
         {
-          "label": "Find the studio",
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -675,7 +675,7 @@
       "endsAt": "2026-07-29T23:59:00-04:00",
       "actions": [
         {
-          "label": "Read about it",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/"
         },
@@ -725,7 +725,7 @@
       "endsAt": "2026-07-22T23:59:00-04:00",
       "actions": [
         {
-          "label": "Guide listing",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://happy-hour.nyc/brooklyn/greenpoint-happy-hour"
         },
@@ -891,7 +891,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Tickets & schedule",
+          "label": "Tickets",
           "type": "learn_more",
           "url": "https://www.ferry.nyc/"
         }
@@ -933,7 +933,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://ra.co/clubs/97606"
         },
@@ -983,7 +983,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -1037,7 +1037,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Their site",
+          "label": "Website",
           "type": "learn_more",
           "url": "https://www.lefanfare.com/"
         },
@@ -1085,7 +1085,7 @@
       "endsAt": "2026-07-22T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -1133,7 +1133,7 @@
       "corridor": "manhattan-ave",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -1287,7 +1287,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://filmnoircinema.com/"
         },
@@ -1339,7 +1339,7 @@
       "corridor": "manhattan-ave",
       "actions": [
         {
-          "label": "Their site",
+          "label": "Website",
           "type": "learn_more",
           "url": "https://scrappleland.com/"
         },
@@ -1395,7 +1395,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Upcoming events",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://flowercat.nyc/events"
         },
@@ -1450,7 +1450,7 @@
       "corridor": "manhattan-ave",
       "actions": [
         {
-          "label": "Their site",
+          "label": "Website",
           "type": "learn_more",
           "url": "https://www.hideandseek.nyc/"
         },
@@ -1500,7 +1500,7 @@
       "corridor": "manhattan-ave",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -1652,7 +1652,7 @@
       "corridor": "manhattan-ave",
       "actions": [
         {
-          "label": "Their site",
+          "label": "Website",
           "type": "learn_more",
           "url": "https://www.hideandseek.nyc/"
         },
@@ -1747,7 +1747,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Their fundraiser",
+          "label": "Fundraiser",
           "type": "learn_more",
           "url": "https://www.gofundme.com/f/m85pvu-keep-us-alive"
         },
@@ -1840,7 +1840,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
@@ -1894,7 +1894,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
@@ -1943,7 +1943,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Sign up (free)",
+          "label": "Sign up",
           "type": "signup",
           "url": "https://gogreenbk.org/event/longevity-transmitter-2026/2026-07-23/"
         },
@@ -1994,7 +1994,7 @@
       "endsAt": "2026-07-23T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -2045,7 +2045,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -2096,7 +2096,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -2147,7 +2147,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -2198,7 +2198,7 @@
       "endsAt": "2026-07-27T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         },
@@ -2249,7 +2249,7 @@
       "endsAt": "2026-07-23T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -2300,7 +2300,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -2351,7 +2351,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -2402,7 +2402,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -2453,7 +2453,7 @@
       "endsAt": "2026-07-26T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -2504,7 +2504,7 @@
       "endsAt": "2026-07-26T23:59:00-04:00",
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.eavesdrop.nyc/calendar"
         },
@@ -2963,7 +2963,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Their site",
+          "label": "Website",
           "type": "learn_more",
           "url": "https://www.hideandseek.nyc/"
         },
@@ -3014,7 +3014,7 @@
       "endsAt": "2026-07-25T17:00:00-04:00",
       "actions": [
         {
-          "label": "Event details",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://www.tendgreenpoint.com/happenings"
         },
@@ -3062,7 +3062,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
@@ -3114,7 +3114,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
@@ -3165,7 +3165,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
@@ -3214,7 +3214,7 @@
       "corridor": null,
       "actions": [
         {
-          "label": "Full calendar",
+          "label": "All events",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
@@ -3266,7 +3266,7 @@
       "endsAt": "2026-07-23T23:59:00-04:00",
       "actions": [
         {
-          "label": "More info",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://bushwickinletpark.org/event/summer-music-series-2026-jazz-foundation-concert-2/"
         },
@@ -3315,7 +3315,7 @@
       "endsAt": "2026-07-23T23:59:00-04:00",
       "actions": [
         {
-          "label": "Register ($100)",
+          "label": "Register",
           "type": "rsvp",
           "url": "https://www.makeartinnyc.xyz/myclasses/p/open-studio-session-5f9zy-96krm"
         },
@@ -3362,7 +3362,7 @@
       "endsAt": "2026-07-23T23:59:00-04:00",
       "actions": [
         {
-          "label": "Get tickets ($71.21)",
+          "label": "Tickets",
           "type": "rsvp",
           "url": "https://www.eventbrite.com/e/cannabis-botany-learn-the-science-behind-the-smoke-tickets-1992309396035"
         },
@@ -3411,7 +3411,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "RSVP (free)",
+          "label": "RSVP",
           "type": "rsvp",
           "url": "https://www.eventbrite.com/e/summer-makers-terrace-tickets-1992414807323"
         },
@@ -3458,7 +3458,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "Get tickets ($47)",
+          "label": "Tickets",
           "type": "rsvp",
           "url": "https://www.hisawyer.com/play-greenpoint/schedules/activity-set/1937435"
         },
@@ -3507,7 +3507,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "Get tickets ($28.52)",
+          "label": "Tickets",
           "type": "rsvp",
           "url": "https://www.eventbrite.com/e/crafty-hour-embroidered-hats-tickets-1993031623236"
         },
@@ -3554,7 +3554,7 @@
       "endsAt": "2026-07-24T20:30:00-04:00",
       "actions": [
         {
-          "label": "Get tickets ($55)",
+          "label": "Tickets",
           "type": "rsvp",
           "url": "https://luma.com/5tentmtm"
         },
@@ -3602,7 +3602,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "RSVP (free)",
+          "label": "RSVP",
           "type": "rsvp",
           "url": "https://www.eventbrite.com/e/p-a-t-b2b-sophie-jones-dj-set-tickets-1994256594157"
         },
@@ -3638,7 +3638,7 @@
       "title": "Strong (As a Mother) Run Club",
       "kicker": "All-paces mom run, coffee after",
       "locationName": "Giggles & Wiggles",
-      "summary": "Run a few miles with your mom crew in a no-pressure, all-paces-welcome environment, followed by coffee.",
+      "summary": "Run a few miles with your mom crew in a no-pressure, all-paces-welcome environment, followed by coffee. Meet at the shop — entrance on Noble St.",
       "filters": [
         "events",
         "family_kids"
@@ -3652,12 +3652,12 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Register (free)",
+          "label": "Register",
           "type": "rsvp",
           "url": "https://docs.google.com/forms/d/e/1FAIpQLSfmRKlTkOZfFxtldv0ycGjNHCRdEI03MTaf_SmwZ6Mc-kIJgw/viewform"
         },
         {
-          "label": "Visit (entrance on Noble)",
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -3703,7 +3703,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Register (free)",
+          "label": "Register",
           "type": "rsvp",
           "url": "https://docs.google.com/forms/d/e/1FAIpQLSd7uxgNaiakSUaW45zI8rEBURJzA3KmpE5R008X0YcxVl_3Sg/viewform"
         },
@@ -3753,7 +3753,7 @@
       "endsAt": "2026-07-26T12:00:00-04:00",
       "actions": [
         {
-          "label": "Event details",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://www.nycgovparks.org/parks/transmitter-park/events"
         },
@@ -3847,7 +3847,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "Sign up ($95)",
+          "label": "Sign up",
           "type": "rsvp",
           "url": "https://annahull.as.me/schedule/9c4cf906/appointment/94965460/calendar/14251100"
         },
@@ -3894,7 +3894,7 @@
       "endsAt": "2026-07-25T23:59:00-04:00",
       "actions": [
         {
-          "label": "RSVP (free)",
+          "label": "RSVP",
           "type": "rsvp",
           "url": "https://partiful.com/e/Qm9FS5FkEaRTHg2bsSlH"
         },
@@ -3943,7 +3943,7 @@
       "endsAt": "2026-07-29T23:59:00-04:00",
       "actions": [
         {
-          "label": "Register (free)",
+          "label": "Register",
           "type": "rsvp",
           "url": "https://www.bklynlibrary.org/calendar/childrens-book-club-speak-greenpoint-library-20260729-0330pm"
         },
@@ -3999,7 +3999,7 @@
       "endsAt": "2026-07-29T23:59:00-04:00",
       "actions": [
         {
-          "label": "Get tickets ($33.85)",
+          "label": "Tickets",
           "type": "rsvp",
           "url": "https://www.eventbrite.com/e/ecstatic-dance-at-greenpoint-loft-tickets-1992599314188"
         },
@@ -4050,7 +4050,7 @@
           "url": "https://greenpointers.com/2026/07/21/greenpoint-sushi-staple-wasabi-closing-after-26-years/"
         },
         {
-          "label": "Visit before it closes",
+          "label": "Visit",
           "type": "visit"
         }
       ],
@@ -4135,12 +4135,12 @@
       "endsAt": "2026-07-22T23:59:00-04:00",
       "actions": [
         {
-          "label": "Join in — this week's spot",
+          "label": "Join in",
           "type": "join",
           "url": "https://www.instagram.com/greenpointtrashclub/"
         },
         {
-          "label": "Impact report + donate",
+          "label": "Donate",
           "type": "learn_more",
           "url": "https://greenpointtrashclub.org"
         }
@@ -4192,7 +4192,7 @@
       "endsAt": "2026-07-24T23:59:00-04:00",
       "actions": [
         {
-          "label": "Series details",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://www.townsquarebk.org/"
         },
@@ -4288,12 +4288,12 @@
       "endsAt": "2026-07-29T20:30:00-04:00",
       "actions": [
         {
-          "label": "Register for Zoom",
+          "label": "Register",
           "type": "rsvp",
           "url": "https://cbi-org.zoom.us/meeting/register/DpWHhdKDTVi6Vlu5JR1PaQ"
         },
         {
-          "label": "Event listing",
+          "label": "Details",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
         },

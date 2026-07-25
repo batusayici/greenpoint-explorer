@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload } from "./cardActions.js";
-import { icsForCard } from "./icsEvent.js";
+import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded } from "./todayPill.js";
 import { formatWindow } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
@@ -87,12 +87,31 @@ function ShareAction({ action, card, cls }) {
     if (navigator.share) {
       // text carries the title too — several share targets drop `title`.
       await navigator.share({ title, text: title, url }).then(done).catch(() => {});
-    } else {
-      await navigator.clipboard.writeText(url).then(() => {
-        setCopied(true);
-        done();
-      }).catch(() => {});
+      return;
     }
+    // navigator.share AND navigator.clipboard both require a secure context
+    // (caught on the http LAN test build, 2026-07-25) — the tap must never die
+    // silently, so fall through to the legacy textarea copy.
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      if (!ok) {
+        window.prompt("Copy this link:", url);
+        done();
+        return;
+      }
+    }
+    setCopied(true);
+    done();
   };
   return (
     <button type="button" className={cls} onClick={onShare} aria-live="polite">
@@ -101,34 +120,31 @@ function ShareAction({ action, card, cls }) {
   );
 }
 
-// V2-A (first-visit test): "save an event to go to" hands the plan to the
-// user's real calendar — a client-generated .ics, downloaded on tap. Dated,
-// non-recurring cards only; the .ics carries the deep link tagged
-// ?src=calendar so a saved event's return visit is attributable.
+// V2-A, revised 2026-07-25 (Batu's phone test): a Google Calendar template
+// link — the prefilled new-event screen, no file handling. Dated,
+// non-recurring cards only; the deep link inside is tagged ?src=calendar so a
+// saved event's return visit is attributable. Label stays one word so card
+// action rows hold to a single line.
 function CalendarAction({ card, cls }) {
-  const onSave = () => {
-    const { url } = sharePayload(card, {
-      origin: window.location.origin,
-      search: window.location.search,
-      channel: "calendar",
-    });
-    const ics = icsForCard(card, { url, now: new Date() });
-    if (!ics) return;
-    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-    const href = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = href;
-    a.download = `${card.id}.ics`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(href), 10000);
-    trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: "calendar" });
-  };
+  const { url } = sharePayload(card, {
+    origin: window.location.origin,
+    search: window.location.search,
+    channel: "calendar",
+  });
+  const href = gcalEventUrl(card, { url });
+  if (!href) return null;
   return (
-    <button type="button" className={cls} onClick={onSave}>
-      Add to calendar
-    </button>
+    <a
+      className={cls}
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Add to Google Calendar"
+      onClick={() => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: "calendar" })}
+    >
+      Calendar <span aria-hidden="true">↗</span>
+      <span className="sr-only">(opens in new tab)</span>
+    </a>
   );
 }
 
