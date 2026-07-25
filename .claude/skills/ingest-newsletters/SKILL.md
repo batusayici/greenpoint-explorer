@@ -22,7 +22,7 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 - Web-source roster: `src/data/demand-test/ingest-sources.json` (URLs, fetch method, per-source notes — the machine half of this skill)
 - Ledger: `src/data/demand-test/ingest-ledger.json` — `lastRunAt`, `processedItems`, `senderRegistry`
 - Scripts: `npm run ingest:fetch` (snapshot + diff roster → `.ingest-cache/changes.json`), `npm run ingest:expire` (expiry hygiene), `npm run ingest:index` (compact card index), `node scripts/geocode-demand-cards.mjs` (Nominatim, caches to `geocode-cache.json`)
-- Snapshots/diffs: `.ingest-cache/` (gitignored) — `<id>.txt` full text, `<id>.diff.txt` lines added since last run
+- Snapshots/diffs: `.ingest-cache/` (gitignored) — `<id>.txt` latest text, `<id>.ingested.txt` last-ingested baseline, `<id>.diff.txt` lines added vs that baseline. Statuses in `changes.json` are relative to the last *ingested* baseline, so content stays "changed" until a run actually reviews it — daily fetches can't erode a diff.
 
 ## Run modes
 
@@ -83,7 +83,7 @@ Present one compact diff: **adds** (id, title, category, when, source), **update
 1. Apply approved changes to the JSON; bump `version` to today; set `updatedAt` on touched cards. Edit surgically — never rewrite the whole file from context.
 2. `node scripts/geocode-demand-cards.mjs` — every new card must resolve inside the bbox (widen `geocodeQuery` to the venue/park name if a street query misses).
 3. Update `julyCards.test.mjs` contract counts (the expiry script printed the post-expiry baseline; adjust for adds) and the refresh-discipline date; `npm test` must pass.
-4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes.
+4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes. Then `npm run ingest:fetch -- --mark-ingested` to promote the reviewed snapshots to baselines (include sources whose extraction found nothing — they were reviewed too; a run that stopped before the review gate must NOT mark).
 5. Commit (`content(track-v): <cadence> refresh — <summary>`), deploy to Vercel prod, and spot-check the live page (pins render, no expired deals, new cards open).
 
 ## Cadence

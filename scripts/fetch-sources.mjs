@@ -5,10 +5,17 @@
 // roster sweep re-read ~40 unchanged sites into a growing context every run.
 //
 // Usage: node scripts/fetch-sources.mjs [--only id,id] [--include-monthly] [--force]
+//        node scripts/fetch-sources.mjs --mark-ingested [--only id,id]
 //
 // Roster: src/data/demand-test/ingest-sources.json (policy stays in SKILL.md).
-// State:  .ingest-cache/ (gitignored) — state.json, <id>.txt snapshots,
-//         <id>.diff.txt (lines added since last snapshot), changes.json.
+// State:  .ingest-cache/ (gitignored) — state.json, <id>.txt latest snapshots,
+//         <id>.ingested.txt baselines, <id>.diff.txt (lines added vs the
+//         INGESTED baseline), changes.json.
+//
+// Change detection is against the last *ingested* snapshot, not the last
+// fetch — otherwise a daily fetch would silently erode the diff before the
+// ingest ever saw it. The ingest's ship step runs `--mark-ingested` (no
+// network) to promote current snapshots to baselines after Batu's review.
 //
 // Fetch strategy per source: "auto" = plain HTTP with a browser UA, falling
 // back to headless Chromium (playwright, optional dep) on 403/JS-thin pages;
@@ -30,6 +37,7 @@ const onlyIdx = args.indexOf("--only");
 const ONLY = onlyIdx !== -1 ? new Set(args[onlyIdx + 1].split(",")) : null;
 const INCLUDE_MONTHLY = args.includes("--include-monthly");
 const FORCE = args.includes("--force");
+const MARK_INGESTED = args.includes("--mark-ingested");
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
@@ -41,6 +49,25 @@ const BLOCK_RE = /403 Forbidden|Access denied|Verify you are human|Just a moment
 mkdirSync(CACHE_DIR, { recursive: true });
 const state = existsSync(STATE_PATH) ? JSON.parse(readFileSync(STATE_PATH, "utf8")) : {};
 const { sources } = JSON.parse(readFileSync(SOURCES_PATH, "utf8"));
+
+// --mark-ingested: promote current snapshots to ingested baselines (no
+// network). Run at ship time, after the review gate — including for sources
+// whose extraction found nothing on-concept (they were reviewed too).
+if (MARK_INGESTED) {
+  let n = 0;
+  for (const src of sources) {
+    if (ONLY && !ONLY.has(src.id)) continue;
+    const snapPath = join(CACHE_DIR, `${src.id}.txt`);
+    if (!state[src.id]?.hash || !existsSync(snapPath)) continue;
+    writeFileSync(join(CACHE_DIR, `${src.id}.ingested.txt`), readFileSync(snapPath));
+    state[src.id].ingestedHash = state[src.id].hash;
+    state[src.id].ingestedAt = new Date().toISOString();
+    n++;
+  }
+  writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
+  console.log(`marked ${n} sources ingested (baselines promoted)`);
+  process.exit(0);
+}
 
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", mdash: "—", ndash: "–", hellip: "…", times: "×", copy: "©", reg: "®", trade: "™", bull: "•", middot: "·" };
 const decode = (s) =>
@@ -129,27 +156,28 @@ for (const src of sources) {
   try {
     const { text, method } = await fetchSource(src);
     const h = hash(text);
-    const prev = state[src.id];
+    const prev = state[src.id] ?? {};
     entry.method = method;
     entry.textPath = `.ingest-cache/${src.id}.txt`;
 
-    if (prev?.hash === h && !FORCE) {
+    // Status is relative to the last INGESTED baseline, not the last fetch.
+    const baselinePath = join(CACHE_DIR, `${src.id}.ingested.txt`);
+    if (prev.ingestedHash === h && !FORCE) {
       entry.status = "unchanged";
     } else {
-      const oldText = prev && existsSync(snapPath) ? readFileSync(snapPath, "utf8") : null;
-      entry.status = oldText == null ? "new" : "changed";
-      if (oldText != null) {
-        const oldSet = new Set(oldText.split("\n"));
-        const added = text.split("\n").filter((l) => !oldSet.has(l));
+      const baseline = existsSync(baselinePath) ? readFileSync(baselinePath, "utf8") : null;
+      entry.status = baseline == null ? "new" : "changed";
+      if (baseline != null) {
+        const baseSet = new Set(baseline.split("\n"));
+        const added = text.split("\n").filter((l) => !baseSet.has(l));
         const diffPath = join(CACHE_DIR, `${src.id}.diff.txt`);
         writeFileSync(diffPath, added.join("\n") + "\n");
         entry.diffPath = `.ingest-cache/${src.id}.diff.txt`;
         entry.addedLines = added.length;
       }
-      writeFileSync(snapPath, text + "\n");
-      state[src.id] = { hash: h, fetchedAt: new Date().toISOString(), method };
     }
-    if (entry.status === "unchanged") state[src.id].fetchedAt = new Date().toISOString();
+    writeFileSync(snapPath, text + "\n");
+    state[src.id] = { ...prev, hash: h, fetchedAt: new Date().toISOString(), method };
     console.log(`  ${entry.status.padEnd(9)} ${src.id} (${method}${entry.addedLines != null ? `, +${entry.addedLines} lines` : ""})`);
   } catch (e) {
     entry.status = "error";
