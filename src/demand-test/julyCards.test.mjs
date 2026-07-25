@@ -88,12 +88,15 @@ test("seed has exactly 71 cards across the six layers", () => {
   // kids clay), Moon Bunny + Pooch's deals, 6 BCC workshop/camp cards from
   // their newsletter (site collection hid them). Shenanigans (below Kinda
   // Nice) extracted but dropped — no geocodable address (no pin, no card).
-  assert.equal(seed.cards.length, 108);
+  // Same-day addendum: Bios Apothecary 10%-first-order deal (61 West St —
+  // address confirmed by Batu; the shop's site hides it) + Flower Cat & Bios
+  // senders registered.
+  assert.equal(seed.cards.length, 109);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 19, "16 + peek-inn + archestratus-closed + gtrain-sales-survey");
   assert.equal(count((c) => c.category === "event"), 61, "23 post-expiry + 38 extracted week-ahead events");
-  assert.equal(count((c) => c.category === "discount"), 4, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20%");
+  assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 9, "7 + archestratus-closed + gtrain-sales-survey");
   assert.equal(count((c) => c.filters.includes("live_music")), 28, "16 post-expiry + 12 new venue nights");
   assert.equal(count((c) => c.category === "subscription"), 7, "Falu, Flower Cat, Trash Club + 4 kids-program registrations");
@@ -114,7 +117,7 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // verified-through (UI suppresses the "ends" line) — a dated one-night deal
   // must NOT carry it.
   const deals = seed.cards.filter((c) => c.category === "discount");
-  assert.equal(deals.length, 4);
+  assert.equal(deals.length, 5);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -125,6 +128,7 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   assert.equal(seed.cards.find((c) => c.id === "poochs-parlor-first-groom").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "hana-bottomless-makgeolli").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "poochs-first-visit-20").recurring, true);
+  assert.equal(seed.cards.find((c) => c.id === "bios-apothecary-first-order").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "moon-bunny-back-to-school").recurring, undefined, "dated deal must NOT carry recurring");
 });
 

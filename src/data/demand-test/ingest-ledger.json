@@ -884,6 +884,24 @@
         "event"
       ],
       "note": "'The Noticer's Monthly' substack; welcomed 2026-07-22, monthly, no posts yet"
+    },
+    {
+      "publisher": "Bios Apothecary",
+      "match": "biosapothecary.com",
+      "kinds": [
+        "discount",
+        "event"
+      ],
+      "note": "61 West St herbal apothecary (address confirmed by Batu 2026-07-25); welcomed 2026-07-21 with a standing 10%-first-order offer"
+    },
+    {
+      "publisher": "Flower Cat",
+      "match": "flowercat.nyc",
+      "kinds": [
+        "event",
+        "subscription"
+      ],
+      "note": "Batu confirmed subscribed 2026-07-25 \u2014 they announce late, often newsletter-first; complements the (often empty) events page"
     }
   ],
   "watchItems": [
@@ -895,11 +913,6 @@
     {
       "name": "Shenanigans (below Kinda Nice)",
       "note": "opened per Greenpointers 7/14 but no geocodable address \u2014 card once street address verified",
-      "addedAt": "2026-07-25"
-    },
-    {
-      "name": "Bios Apothecary",
-      "note": "welcome 10% offer in Gmail; Greenpoint storefront unverified (looks e-commerce) \u2014 asked Batu",
       "addedAt": "2026-07-25"
     }
   ]

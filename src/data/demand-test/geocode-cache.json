@@ -2403,5 +2403,30 @@
         "-73.9530597"
       ]
     }
+  },
+  "61 West St, Brooklyn, NY 11222": {
+    "query": "61 West St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-25T21:37:17.296Z",
+    "hit": {
+      "place_id": 413621562,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 221686899,
+      "lat": "40.7284753",
+      "lon": "-73.9591460",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "61, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7284253",
+        "40.7285253",
+        "-73.9591960",
+        "-73.9590960"
+      ]
+    }
   }
 }
