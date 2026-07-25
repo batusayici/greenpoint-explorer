@@ -61,10 +61,20 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // so pin colors don't change — only the filter-bar membership moves. Intent
 // really does differ (discovery vs. "what changed") — if volume ever
 // justifies it, split back out; not worth a lens today at this frequency.
+// Chip ORDER is merchandising, not alphabet (2026-07-25, Batu): the ~3 chips
+// visible after "All" at 375px are the product's positioning statement, so
+// they must restate the promise ("what's happening this week", alive) —
+// Live Music leads, Family & Kids is deliberately promoted to slot 2 above
+// its raw volume (it's the growth wedge), Arts & Culture third. Then the
+// remaining event lenses, then News (the weekly pulse), then the browse/
+// static lenses last — a first tap that opens onto a stale shelf teaches
+// "this app is dead". Order is static (muscle memory beats optimality);
+// revisit ONLY at declared checkpoints against position-corrected
+// filter_tap + post-filter engagement in PostHog — see DECISION_LOG.
 export const FILTER_IDS = [
-  "food_drink", "shopping",
-  "arts_culture", "family_kids", "live_music", "wellness", "community",
-  "deals_memberships", "news",
+  "live_music", "family_kids", "arts_culture",
+  "wellness", "community", "news",
+  "food_drink", "shopping", "deals_memberships",
 ];
 
 // Generous Greenpoint envelope (Newtown Creek → McCarren, East River → BQE).

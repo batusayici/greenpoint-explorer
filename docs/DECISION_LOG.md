@@ -70,6 +70,27 @@ Decision (Batu, phone test screenshot). The post-value signup prompt ("Finding t
 
 Owner: Batu.
 
+## 2026-07-25 (6th pass) — Chip order is merchandising: promise first, wedge promoted, browse last
+
+Decision (Batu). The filter bar's display order had never been decided — it was the July 2 spec's authoring order, and three retirements later Food & Drink (12 of 13 cards undated — effectively a venue directory) had inherited the slot right after "All" by accident of deletion order.
+
+**Framing:** at 375px only ~3 chips are visible after "All" before the scroll cut, so the real decision is "which three lenses define this product," not "rank nine." The visible chips are a positioning statement and must restate the promise ("what's happening near you this week", alive).
+
+**Order shipped:** `live_music · family_kids · arts_culture · wellness · community · news · food_drink · shopping · deals_memberships`.
+
+**Determinants, in priority (the reusable rule for future lens additions):**
+1. **The promise** — visible chips restate "the week, alive"; a static directory lens in slot 1 would introduce the product as Yelp.
+2. **Observed intent, position-corrected** — `filter_tap` + post-filter engagement (card opens, action taps after filtering) in PostHog, once sample size allows. Too young and position-confounded to use today.
+3. **Strategic wedge boost** — Family & Kids holds slot 2 *above its raw volume* (27 live-music vs 12 family cards) because parents are the stated growth wedge; merchandising is how a bet becomes visible.
+4. **First tap must reward** — slots 1–2 get the most first taps; a first tap onto a stale shelf teaches "this app is dead," a product-wide trust cost. (Food & Drink fails this at 1 dated event in 13 cards.)
+5. **Stability beats optimality** — static order, muscle memory; never dynamically re-sort by live counts.
+
+**Review mechanism (standing):** at the Jul 29 checkpoint (or ~2 weeks of PostHog data, whichever is later), pull per-lens `filter_tap` and post-filter engagement, corrected for chip position. Any visible chip that a tail chip outperforms swaps. Reorders happen ONLY at declared checkpoints — this converts chip order from a recurring taste debate into a mechanism.
+
+Note: card counts / dated-vs-undated ratios are proxies for #4 only, not ranking criteria in themselves.
+
+Owner: Batu.
+
 ## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
 
 Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.
