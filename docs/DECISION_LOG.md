@@ -4,6 +4,19 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-25 — Ingest cost architecture: scripts fetch, subagents extract, orchestrator judges
+
+Decision (Batu). The agent-driven ingest was measured at ~$41/full run (~$60/wk with the Wednesday pull and Thursday scan) — 68% of it cache-read on a single growing context that held every scraped page plus the full cards JSON, re-billed on each of ~290 tool calls. Not viable, and it priced out daily freshness. Restructured so model attention is spent only on judgment:
+
+1. **Deterministic work moved to scripts** — `scripts/fetch-sources.mjs` (snapshot + hash-diff the ~44-source web roster, now machine-readable in `src/data/demand-test/ingest-sources.json`; plain fetch with headless-Chromium fallback via Playwright — covers the 403 sites), `scripts/expire-cards.mjs` (expiry hygiene, already pre-approved as auto-delete; logic + tests in `src/demand-test/ingestExpiry.js`), `scripts/card-index.mjs` (one-line-per-card dedupe index so the 137KB cards JSON never enters context).
+2. **Extraction fan-out** — only *changed* sources are parsed, each by a Sonnet subagent reading the snapshot file itself and returning compact JSON facts; page text never enters the orchestrator context.
+3. **Orchestrator stays Opus** (never Fable for scheduled runs — measured 40% more expensive for identical output) and keeps all judgment: gates, dedupe, card authoring, the review diff. **The review gate and truth rules are unchanged.**
+4. **Cadence**: daily thin runs become affordable (no-change days cost cents); the Thursday coverage scan retires once the daily loop is live — the fetch-diff does its gap-catching continuously.
+
+Projected: ~$8–15/wk for daily freshness vs ~$60/wk for weekly. Skill rewritten accordingly (`.claude/skills/ingest-newsletters/SKILL.md`, "Cost architecture" section).
+
+Owner: Batu.
+
 ## 2026-07-25 — Filter IA re-cut: lenses are a person's question, not a content taxonomy
 
 Decision (Batu, N1 groundwork — IA before UI). The filter bar re-cut from 11 content-type layers to 9 intent lenses: **New · Food & Drink · Shopping · Arts & Culture · Family & Kids · Live Music · Wellness · Deals & Memberships · News.**

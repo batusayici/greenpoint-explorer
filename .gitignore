@@ -33,3 +33,6 @@ tests/.diffs/
 
 # Local agent worktrees (never commit)
 .claude/worktrees/
+
+# Track V ingest source snapshots (scripts/fetch-sources.mjs)
+.ingest-cache/

@@ -1,107 +1,94 @@
 ---
 name: ingest-newsletters
-description: Weekly Track V content ingest — read Greenpoint business/org newsletters from Batu's Gmail (plus the Greenpointers roundup on the web), parse them into schema-valid draft cards, present a review diff for approval, then geocode, test, commit, and deploy. Use when Batu says "run the ingest", "refresh the map", "weekly refresh", or /ingest-newsletters.
+description: Track V content ingest — script-fetch the Greenpoint source roster, diff against last run, parse only changed sources into schema-valid draft cards (subagent fan-out), present a review diff for approval, then geocode, test, commit, and deploy. Use when Batu says "run the ingest", "refresh the map", "weekly refresh", "daily refresh", or /ingest-newsletters.
 ---
 
-# Ingest Newsletters → July-in-Greenpoint Map
+# Ingest → Greenpoint Life Map
 
-Turn the week's Greenpoint newsletters into reviewed, sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing ships unreviewed; nothing is invented.**
+Turn the week's Greenpoint sources into reviewed, sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing ships unreviewed; nothing is invented.**
+
+## Cost architecture (2026-07-25 redesign — read before running)
+
+The old agent-driven roster sweep cost ~$41/run because every scraped page and the full cards JSON sat in one growing context (cache-read was 68% of the bill). The redesign:
+
+- **Scripts do the deterministic work** (fetch/diff, expiry, card index) — near-zero tokens.
+- **Page text never enters the orchestrator context.** Changed sources are parsed by extraction subagents that Read the snapshot files themselves and return compact draft-card JSON.
+- **Never Read `july-2026-cards.json` into context.** Dedupe and cross-link against `npm run ingest:index` (~6k tokens). Read individual cards only when editing them (Grep for the id, Edit surgically).
+- **Model tiering:** orchestrator = Opus. Extraction subagents = `model: "sonnet"` (spec-constrained schema work). Never Fable for scheduled runs.
 
 ## Files
 
-- Cards: `src/data/demand-test/july-2026-cards.json` (schema: `src/demand-test/cardSchema.js`)
+- Cards: `src/data/demand-test/july-2026-cards.json` (schema: `src/demand-test/cardSchema.js`) — do not bulk-read; see above
+- Web-source roster: `src/data/demand-test/ingest-sources.json` (URLs, fetch method, per-source notes — the machine half of this skill)
 - Ledger: `src/data/demand-test/ingest-ledger.json` — `lastRunAt`, `processedItems`, `senderRegistry`
-- Geocoder: `scripts/geocode-demand-cards.mjs` (Nominatim, caches to `geocode-cache.json`)
+- Scripts: `npm run ingest:fetch` (snapshot + diff roster → `.ingest-cache/changes.json`), `npm run ingest:expire` (expiry hygiene), `npm run ingest:index` (compact card index), `node scripts/geocode-demand-cards.mjs` (Nominatim, caches to `geocode-cache.json`)
+- Snapshots/diffs: `.ingest-cache/` (gitignored) — `<id>.txt` full text, `<id>.diff.txt` lines added since last run
+
+## Run modes
+
+- **Full** (Monday, or on demand before an invite wave): all steps below, including Gmail and the monthly roster-discovery sweep when due.
+- **Daily thin**: steps 0–1 with web sources only + Gmail quick pass; if `changes.json` shows nothing changed and expiry deleted nothing, report "no changes" and stop — that run should cost cents.
+- **Wednesday Greenpointers pull**: scoped mini-ingest of just the new roundup (it publishes Wednesdays and is the neighborhood's most-read source — never wait for Monday). Same review gate and ship steps. If the roundup URL is already in `processedItems`, say so and stop.
 
 ## The loop
 
-### 1. Gather (since ledger.lastRunAt)
+### 0. Scripts first (no model judgment needed)
 
-- **Coverage-scan report first** (2026-07-21): read the newest report in `docs/launch/coverage-scans/` (written by the scheduled `greenpoint-coverage-scan-sunday` / `-thursday` tasks — external sweep diffed against live cards). Its MISSING list is a pre-built work queue: verify each item at the organizer's page and carry it into the draft cards; its stale/wrong list feeds expiry hygiene; its new-source candidates feed the registry/roster proposals. The internal target the scans measure is **100% coverage of on-concept local events and openings** — report the current coverage score in the review diff.
+1. `npm run ingest:expire` — deletes past events and dated deals, prunes dangling `relatedCardIds` (auto-delete is pre-approved, Batu 2026-07-16). Capture its report: the printed contract counts feed step 5, and any FLAGGED recurring deal joins the re-verify queue.
+2. `npm run ingest:fetch` — snapshots every roster source and writes `.ingest-cache/changes.json`. First Monday of the month: add `--include-monthly`.
+3. Read `changes.json` (the report only — not the snapshots). Sources with status `unchanged` are DONE — do not open them, do not "double-check" them. Sources with `error` go on the Browser-pane list for step 1.
+
+### 1. Gather
+
+- **Changed web sources** → extraction subagents (step 1a). `new` status (first-ever snapshot) = treat the full text as the diff.
+- **Errored sources** → check them yourself in the Browser pane (the roster notes in `ingest-sources.json` carry per-site instructions — e.g. the Greenpoint Library discover-catalog sweep, the Trash Club's rotating IG meetup spot).
 - **Gmail** (connector): search threads from each `senderRegistry` sender (`from:<match> newer_than:Xd`), plus a discovery pass (`{greenpoint "manhattan ave" "franklin st"} newer_than:Xd`) for senders not yet in the registry. New plausible senders → propose adding to the registry in the review step. If the Gmail connector errors with a permissions message, tell Batu to reconnect it with read access and continue with web sources only.
-- **Web**: the newest Greenpointers "What's Happening" weekly roundup (greenpointers.com blocks WebFetch — use the Browser tools), plus re-verification of any `recurring` deal whose `endsAt` (verified-through date) has passed. **Greenpointers publishes the roundup on Wednesdays** (confirmed Jul 15 + Jul 22, 2026) — it must NOT wait for the Monday run; the `greenpointers-wednesday-pull` scheduled task ingests it same-day (scoped mini-ingest, same review gate). The Monday run then only re-checks it for corrections/additions.
-- **Business-as-venue roster** (2026-07-16, the Flower Cat lesson): locally owned spots whose event programs never reach newsletters or Greenpointers. Check each published calendar every run for the coming week:
-  - Troost — troostny.com/calendar/
-  - Eavesdrop — eavesdrop.nyc/calendar
-  - Greenpoint Comedy Club — tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index
-  - Film Noir Cinema — filmnoircinema.com (month grid; also watch the "Keep Us Alive" banner)
-  - Good Room — donyc.com/venues/good-room (their own site is JS-thin)
-  - Archestratus — archestrat.us/pages/events
-  - Flower Cat — flowercat.nyc/events (often empty — they announce late; venue card carries the "check their channels" note)
-  - Hide & Seek — hideandseek.nyc (recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat)
-  - Scrappleland — scrappleland.com (ScrappleLeague Wednesdays; re-verify season is running)
-  - WORD — wordbookstores.com/events (Brooklyn filter)
-  - Brooklyn Craft Company — brooklyncraftcompany.com/collections/all-workshops (165 Greenpoint Ave; workshop calendar, sells out fast — note availability)
-  - Yaro Studios — yarostudios.com/workshops-1 (76 Kent St; ceramics/fiber/print classes) + yarostudios.com/kidsclayclasses (kids-lens events)
-  - PLAY Kids Greenpoint — playgreenpoint.com/calendar (33 Nassau Ave; classes/camps/parties — use the calendar, not the newsletter form, which is unreliable/hidden on-site)
-  - Last Place on Earth — lastplacebk.com (531 Graham Ave; board game cafe — game nights, murder mysteries, comedy, Pilates; has newsletter signup)
-  - The Carcosa Club — carcosaclub.com/events (982 Manhattan Ave; nonprofit member-run tabletop/miniatures wargaming club — Warhammer 40K, Malifaux, Blood Bowl, etc.; membership is waitlist-only but $15/day guest passes + public events exist; no newsletter found, Discord is their primary channel; ignore stale aggregator listings at a Williamsburg address — that location closed, this Greenpoint one is current)
-  - The Little Dance School — thelittledanceschool.com/greenpoint (106 Calyer St, inside Triskelion/Muriel Theatre; kids dance, live Fall 2026–Spring 2027 schedule; licenses its curriculum from Petite Performers Ltd (UK) but is independently owned/operated locally — not a chain)
-  - The Dance Space NY — dancewithellyshepley.com/thedancespaceny/studiodates (61 Greenpoint Ave, Suite 212/515; ballet/jazz/tap/hip-hop, kids + adult; owner Elly Shepley; site also directs to Instagram @thedancespaceny for live updates)
-  - Black Rabbit — blackrabbitbar.com/blackrabbit/event/ (91 Greenpoint Ave; Tue "Nerd Alert!" trivia since 2008, Sun Buckaroo Bingo)
-  - The Brew Inn — nyctrivialeague.com/listings/brew-inn-brooklyn/ (924 Manhattan Ave; Wed trivia — the venue's own domain thebrewinnnyc.com is squatted/redirects to an unrelated site, use the trivia-league listing instead)
-  - Sunshine Laundromat & Pinball — sunshinelaundromat.com (860 Manhattan Ave; pinball/arcade bar, "Our Events" section; has newsletter signup)
-  - Hana Makgeolli — hanamakgeolli.com/events + hanamakgeolli.com/soolschool (201 Dupont St; rice-wine/makgeolli producer — tours, tastings, classes; has newsletter signup)
-  - Greenhook Ginsmiths — greenhookgin.com (208 Dupont St; gin distillery; no calendar found — check newsletter, footer "Subscribe to our emails")
-  - Heaven & Earth — heavenandearthbk.com/events (290 Nassau Ave; natural wine bar; has newsletter signup)
-  - Bin Bin Sake — binbinsake.com/pages/book-a-sake-tasting (29 Norman Ave; sake/natural-wine retail + bookable tastings; has newsletter signup)
-  - Kettl Tea — kettl.co/collections/class (70 Greenpoint Ave; tea house — tastings/classes; has newsletter signup)
-  - Bellocq Tea Atelier — bellocqtea.com/collections/tea-tastings-nyc (104 West St; tea atelier — Tasting Sessions; has newsletter signup)
-  - Triskelion Arts — triskelionarts.org/availability-calendar (106 Calyer St; nonprofit dance rehearsal/performance venue + classes; has newsletter signup)
-  - Brooklyn Youth Ballet — bkyouthballet.com/calendar/ (37 Greenpoint Ave, Suite 106; ballet studio, kids + adult programs)
-  - Moon Bunny Aerial — moonbunnyaerial.com (394 McGuinness Blvd #208; aerial/circus/dance studio; booking calendar via feather.rsvp)
-  - SPARŚA Greenpoint — sparsabrooklyn.union.site (1006 Manhattan Ave; yoga studio with meditation programming — Sound Meditations, workshops; has newsletter signup at sparsabrooklyn.com/newsletter)
-  - Acme Smoked Fish — acmesmokedfish.com/collections/fish-friday (30 Gem St; Fish Friday pickup every Friday 8am–1pm, pre-orders close Fri 11:30am — re-pin the weekly event card each run; watch for closure weeks like 7/3)
-  - Dashi Okume — okume.us/blogs/classes-event (50 Norman Ave complex; classes/pop-ups page was stale as of 2026-07-22 — check monthly, not weekly)
-- **Community-institution roster** (2026-07-16, the ChatGPT-gap check): not businesses, so the locally-owned gate doesn't apply — these are the free/family backbone of the feed:
-  - Greenpoint Library — bklynlibrary.org/locations/greenpoint (rich weekly calendar; group into per-day cards, don't flood)
-  - Go Green Brooklyn — gogreenbk.org (Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days)
-  - Town Square BK — townsquarebk.org (501c3 since 2004; SummerStarz free Friday movies at Transmitter Park through Aug 21, scouts programs — check the events page weekly in season)
-  - Greenpoint Trash Club — instagram.com/greenpointtrashclub + greenpointtrashclub.org (501c3; cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post names the spot; update the `greenpoint-trash-club` card's pin/locationName + week window each run)
-  - BPL North Brooklyn environmental community calendar — bklynlibrary.org/north-brooklyn-community-calendar (community meetings, garden hours, Newtown Creek CAG; 403s plain fetches — Browser pane; mostly overlaps the branch calendar, scan for non-library civic items)
-  - NYC Parks (Greenpoint-filtered) — nycgovparks.org/events, filtered to "in or near Greenpoint", PLUS the four per-park event pages checked directly every run (the citywide filter can lag or miss park-page listings; all four URLs verified 2026-07-22): Msgr. McGolrick Park (`nycgovparks.org/parks/msgr-mcgolrick-park/events`) · McCarren Park (`nycgovparks.org/parks/mccarren-park/events`) · WNYC Transmitter Park (`nycgovparks.org/parks/transmitter-park/events`) · Newtown Barge Playground (`nycgovparks.org/parks/newtown-barge-playground/events`). nycgovparks.org returns 403 to plain fetches (curl/WebFetch) — use the Browser pane, same as Greenpointers. Batu's Gmail also carries the NYC Parks "Weekly Highlights" newsletter set to the Greenpoint neighborhood (subscribed 2026-07-21) — once a first email lands, add its sender to `senderRegistry` and treat the site as the fallback, not the primary check.
-    - **Skip standing municipal rec programming (2026-07-23, the McCarren pool lesson):** the park event pages are dominated by recurring NYC Parks recreation classes — McCarren Pool learn-to-swim sessions, lap swim, Shape Up NYC fitness (belly dance, bodyweight intervals) — which repeat all season at fixed times. These are **not** feed items and are **not** coverage gaps: they'd flood the map, they don't change week to week, and a resident who wants them goes to the rec center. Card the **one-off** park happenings instead (Summer Makers Terrace, City of Water Day, It's My Park, SummerStarz). Coverage scans should not re-flag the recurring classes as misses.
-- **Roster discovery sweep** (2026-07-21, closes the gap Gmail already has and the web roster didn't): the Gmail side self-discovers new senders every run via the broad search query; the web roster only grows when someone notices a venue by hand. Run this sweep monthly (first Monday run of the month, not every week):
-  - Scan the last 4–6 weeks of Greenpointers posts tagged "new business"/"now open" for venues with a public events/calendar page.
-  - Cross-check any senders newly added to `senderRegistry` for a companion website calendar the newsletter doesn't fully cover (newsletters and calendars often diverge — see Brooklyn Craft Company/Yaro precedent).
-  - Spot-check Google Maps "new" listings + geotagged Greenpoint Instagram posts for storefronts opened in the last ~90 days.
-  - Any hit → propose the roster addition in the review gate, same treatment as a new Gmail sender proposal.
-- **Aggregator claims rule**: events cited only by aggregators/AI answers (allevents.in, Moviefone, dead Eventbrite links) are NOT sources — verify at the organizer's own page or skip with a ledger note (precedents: Self Love Journaling 404, phantom Film Noir 9pm show).
-- **Locally-owned hard gate** (Batu, 2026-07-16): only locally owned small businesses & venues get cards. Corporate-operated venues are skipped entirely — check site footers/careers pages for operator identity (precedent: Warsaw removed, Live Nation-operated; PRESS dropped, multi-location).
-- **Senders worth subscribing to** (Batu action, then add to registry): Flower Cat, Dandelion Wine (tastings are newsletter-only), Archestratus, Hide & Seek.
+- **Greenpointers**: a front-page diff surfaces the new roundup URL — verify items at the post itself (Browser pane; the site blocks WebFetch). Apply the Williamsburg-address gate per item.
+- **Coverage-scan reports** (`docs/launch/coverage-scans/`): if a report newer than the ledger's `lastRunAt` exists, its MISSING list is a pre-built work queue — verify each item at the organizer's page. (The scheduled scan is being retired as the fetch-diff loop covers it; treat any remaining reports as input, not as a required step.)
+- **Roster discovery sweep** (monthly, first Monday run of the month): scan the last 4–6 weeks of Greenpointers "new business"/"now open" posts for venues with a public events page; cross-check newly added Gmail senders for companion website calendars; spot-check Google Maps "new" listings + geotagged Greenpoint IG for storefronts opened in the last ~90 days. Any hit → propose adding to `ingest-sources.json` in the review gate, same treatment as a new Gmail sender.
 - Skip anything whose Gmail message ID / URL is already in `processedItems`.
+
+**Hard gates (unchanged):**
+- **Aggregator claims rule**: events cited only by aggregators/AI answers (allevents.in, Moviefone, dead Eventbrite links) are NOT sources — verify at the organizer's own page or skip with a ledger note (precedents: Self Love Journaling 404, phantom Film Noir 9pm show).
+- **Locally-owned hard gate** (Batu, 2026-07-16): only locally owned small businesses & venues get cards. Corporate-operated venues are skipped entirely — check site footers/careers pages for operator identity (precedents: Warsaw removed, Live Nation-operated; PRESS dropped, multi-location). Community institutions (library, parks, Town Square, Trash Club) are exempt — they're the free/family backbone of the feed.
+- **Senders worth subscribing to** (Batu action, then add to registry): Flower Cat, Dandelion Wine (tastings are newsletter-only), Archestratus, Hide & Seek.
+
+### 1a. Extraction fan-out (changed sources)
+
+For each `changed`/`new` source, spawn an extraction subagent — batch all of them in ONE message so they run in parallel; `model: "sonnet"`. Prompt template (fill the ⟨⟩):
+
+> Read ⟨textPath⟩ (full snapshot of ⟨name⟩, ⟨url⟩) and ⟨diffPath⟩ (lines added since last ingest — your focus; ignore removed/boilerplate noise). Source notes: ⟨notes from ingest-sources.json⟩. Today is ⟨date⟩; we card events/offers from today through ⟨+10 days⟩.
+> Extract ONLY facts stated in the text: happenings with a date (events), time-bound offers (deals), standing offers, memberships/clubs, closures/openings/news. Never invent dates, times, prices, venues, free-ness, or active status; mark `free: true` only where the text says free. Skip anything at a non-Greenpoint address (report it in `skipped` with the address). Skip recurring municipal rec classes (pool lessons, Shape Up NYC).
+> Return raw JSON only: `{"items": [{"title", "kind": "event|deal|news|subscription", "startsAt", "endsAt", "venue", "address", "price", "free", "url", "quote": "<the source line(s) verbatim>", "notes"}], "skipped": [{"title", "reason"}], "nothing": false}`. ISO datetimes with -04:00; unknown end time → same-day 23:59. If the diff has no on-concept items, return `{"nothing": true}`.
+
+The subagent returns data, not cards — the orchestrator does the judgment: dedupe against `npm run ingest:index`, apply the gates above, author the card (schema fields, kicker, filters, copy rules), and cross-link.
 
 ### 2. Parse into draft cards — truth rules (hard)
 
 - Only facts **stated in the source**. Never invent dates, times, prices, venues, free-ness, or active status. `free: true` only when the source says free.
 - Every card carries `sourceLinks` with `publisher` (+ URL, date). Newsletter-derived cards cite the business/org as publisher.
 - Categories: happenings → `event` (needs `startsAt`+`endsAt`; unknown end time → same-day `23:59` sentinel); time-bound offers → `discount` with real `endsAt`; standing offers/happy hours → `discount` with `recurring: true` and `endsAt` = end of the edition week (verified-through, re-checked next run); neighborhood/civic items → `news` (publisher required); recurring clubs/memberships → `subscription`.
-- Filters (2026-07-25 IA re-cut — lenses are a person's question, not a content taxonomy): author from `FILTER_IDS` in `cardSchema.js` (`food_drink`, `shopping`, `arts_culture`, `family_kids`, `live_music`, `wellness`, `community`, `deals_memberships`, `news`). There is no `events` umbrella — the day-grouped All feed is that answer. There is no `new`/discovery lens either (folded into `news` — a newly-opened business is a news item, same as it always was for future-opening announcements; keep `category: new_business`/`service`/etc. as-is so the pin color stays correct, just tag `filters` with `news`, not a dedicated "new" tag). `wellness` = movement/mind-body (yoga, pilates, dance — NOT civic action); `community` = civic/mutual-aid stewardship AND anything that asks the reader to DO something civic — park cleanups, harbor day, adoption events, cleanup clubs, advocacy launches, stoop sales, "attend this meeting"/"file this complaint"/"adopt this business"/"support this campaign" cards (2026-07-25, 4th pass: Newtown Creek CAG meeting, adopt-a-business, MTA advocacy, and Film Noir support moved here from `news` for exactly this reason). `news` keeps purely informational/status civic content — a closure's dates, a zoning sale, a reference/timeline hub like the G-train closures card — anything reporting a fact rather than asking for participation. When a civic item is ambiguous, ask: does this card have an action the reader is meant to take (RSVP, complaint, adopt, support)? If yes → `community`; if it's just "here's what happened/changed" → `news`. Astrology/talks/science-adjacent programming goes to `arts_culture`. Deals AND subscriptions/memberships both go to `deals_memberships` unless the card is really civic (like a cleanup club — that's `community`, not a membership). A one-off with no honest lens gets an **empty** `filters: []` (All-only) — never force-fit; if All-only cards cluster (see the lens-less guard test in `julyCards.test.mjs`), flag the cluster as a candidate lens in the review diff. Retired ids (`events`, `services`, `deals`, `clubs_signups`, `g_train`, `new`) must never reappear — a guard test enforces this.
 - Geography: Greenpoint only (bbox in `cardSchema.js`). Williamsburg-proper items are skipped — note them in the run summary, don't map them. **Exception (Batu, 2026-07-22, Newtown Creek CAG precedent): Greenpoint-related civic events held nearby (e.g. just across the creek in LIC) ship as `civic_action` pinned at their exact real location** — the subject matter, not the address, is the gate for civic items.
 - Copy rules: `kicker` ≤ 44 chars, glanceable; summary must not restate the when-line's date/time; spell out "Shop Small Greenpoint" (never "SSG"); all UI stays II-C palette (no code changes needed for content).
-- Cross-link: if a card is at/with a business already on the map, add reciprocal `relatedCardIds`.
+- Cross-link: if a card is at/with a business already on the map, add reciprocal `relatedCardIds` (the index shows which venue cards exist).
 - Conflicting sources (e.g. two articles disagree on a date): prefer the dedicated article over a roundup line, note the conflict, set `trustRisk: "medium"`.
+- Re-verify any recurring deal the expiry script FLAGGED (past its verified-through date): confirm at the source and bump `endsAt`, or delete.
 
-### 3. Expiry hygiene (auto-delete — no approval needed, Batu 2026-07-16)
+### 3. Review gate (Batu approves — this IS the approval queue)
 
-- Delete `event` cards with `endsAt` before today.
-- Drop or re-verify `discount` cards past their `endsAt` (recurring ones: re-verify against the source; if unverifiable, delete).
-- Prune dangling `relatedCardIds` (delete the key if it empties — schema rejects `[]`).
+Present one compact diff: **adds** (id, title, category, when, source), **updates**, **deletes** (the expiry script's, plus any judgment deletes), **skips** (with reasons), and proposed sender-registry / source-roster additions. Wait for approval; apply edits Batu asks for. Nothing proceeds without a yes. (Daily thin runs with zero adds/updates need no gate — report and stop.)
 
-### 4. Review gate (Batu approves — this IS the approval queue)
+### 4. Ship
 
-Present one compact diff: **adds** (id, title, category, when, source), **updates**, **deletes**, **skips** (with reasons), and proposed sender-registry additions. Wait for approval; apply edits Batu asks for. Nothing proceeds without a yes.
-
-### 5. Ship
-
-1. Apply approved changes to the JSON; bump `version` to today; set `updatedAt` on touched cards.
+1. Apply approved changes to the JSON; bump `version` to today; set `updatedAt` on touched cards. Edit surgically — never rewrite the whole file from context.
 2. `node scripts/geocode-demand-cards.mjs` — every new card must resolve inside the bbox (widen `geocodeQuery` to the venue/park name if a street query misses).
-3. Update `julyCards.test.mjs` contract counts (total, per-category, free list, related pairs) to the new reality; `npm test` must pass.
+3. Update `julyCards.test.mjs` contract counts (the expiry script printed the post-expiry baseline; adjust for adds) and the refresh-discipline date; `npm test` must pass.
 4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes.
-5. Commit (`content(track-v): weekly refresh — <summary>`), deploy to Vercel prod, and spot-check the live page (pins render, no expired deals, new cards open).
+5. Commit (`content(track-v): <cadence> refresh — <summary>`), deploy to Vercel prod, and spot-check the live page (pins render, no expired deals, new cards open).
 
 ## Cadence
 
-Weekly, Monday morning (a scheduled reminder exists). Also run on demand before sending any new invite wave. The **roster discovery sweep** runs monthly, folded into the first Monday run of the month. One scheduled **coverage scan** (Thu 9am, deliberately after the Wednesday Greenpointers pull — 2026-07-22 decision) writes a gap report to `docs/launch/coverage-scans/`: weekend-urgent gaps first (Batu may trigger an off-cycle mini-ingest), and the full-week diff feeds the following Monday's ingest. The former Sunday 6pm scan is **paused**; it re-enables only if Thursday reports repeatedly flag early-week gaps a Sunday run would have caught (the report's "learned" section tracks this).
-
-**Wednesday Greenpointers pull** (2026-07-22): Greenpointers publishes their "What's Happening" weekly roundup on Wednesdays, and it's the neighborhood's most-read source — a 5-day lag to Monday means readers see it there first. The `greenpointers-wednesday-pull` scheduled task (Wed 1pm) runs a **scoped mini-ingest**: just the new roundup (plus dedupe against live cards), through the same review gate and ship steps. If the roundup isn't live yet at run time, it says so and Batu re-triggers later.
+- **Daily thin run** (scheduled): scripts + changed-source extraction + Gmail quick pass. Most days this is a no-op costing cents; late announcers (Flower Cat, Trash Club's weekly spot) get caught same-day.
+- **Monday full run**: everything, incl. monthly discovery sweep on the first Monday.
+- **Wednesday Greenpointers pull** (scheduled, Wed 1pm): the roundup publishes Wednesdays; a 5-day lag to Monday means readers see it there first. If the roundup isn't live yet at run time, say so — Batu re-triggers later.
+- The Thursday coverage scan is retired once the daily loop is live (its gap-catching is what the fetch-diff does every day); a monthly audit-style scan can replace it if gaps reappear. The former Sunday 6pm scan stays retired.
