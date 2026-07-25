@@ -113,9 +113,18 @@ export function groupByDay(cards, date) {
     };
     return t(a) - t(b);
   };
+  // Within Ongoing, reporting outranks openings (2026-07-25 user feedback:
+  // under the News lens, real news was reading below the folded-in business
+  // openings — pure array-order accident, since both are undated and the
+  // group otherwise keeps insertion order). A stable partition, not a manual
+  // reorder, so it self-maintains as future ingests append cards; harmless
+  // no-op for every other lens, since none of them mix `news`/`g_train_support`
+  // category cards with other categories.
+  const isNewsCategory = (c) => c.category === "news" || c.category === "g_train_support";
+  const byNewsFirst = (a, b) => Number(isNewsCategory(b)) - Number(isNewsCategory(a));
   return [...groups.values()]
     .sort((a, b) => a.order - b.order)
-    .map((g) => (g.key === "ongoing" ? g : { ...g, cards: [...g.cards].sort(byClock) }));
+    .map((g) => ({ ...g, cards: [...g.cards].sort(g.key === "ongoing" ? byNewsFirst : byClock) }));
 }
 
 // A dated card is dead the moment its window closes — expiry can't wait for

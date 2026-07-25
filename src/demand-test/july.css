@@ -351,9 +351,21 @@ body { margin: 0; }
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0; /* let the title child shrink instead of wrapping the row */
 }
 
-.july-card-title { font-size: 0.95rem; font-weight: 800; }
+/* One-line title contract: long titles (e.g. "Franca Ceramics Pop-up
+   Seconds Sale") truncate instead of wrapping and pushing the FREE badge
+   off the first line. */
+.july-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .july-card-loc { margin-left: 18px; font-size: 0.76rem; color: var(--ink-soft); }
 
 /* sourced-free designation (tester feedback: "designate what's free") */

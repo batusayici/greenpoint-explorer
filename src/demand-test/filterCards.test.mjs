@@ -96,6 +96,22 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
   assert.deepEqual(groups[3].cards.map((c) => c.id), ["shop", "club"], "undated + recurring deals trail as Ongoing");
 });
 
+// 2026-07-25 user feedback: under the News lens, real news read below the
+// folded-in business openings — a pure array-order accident, since both are
+// undated and Ongoing otherwise keeps insertion order. news/g_train_support
+// category cards now sort first within Ongoing, everything else keeps its
+// relative order after (stable partition, not a full re-sort).
+test("groupByDay: within Ongoing, news/g_train category cards sort before everything else", () => {
+  const wed = new Date("2026-07-25T12:00:00-04:00");
+  const opening1 = { id: "opening-1", category: "new_business" };
+  const realNews = { id: "real-news", category: "news" };
+  const opening2 = { id: "opening-2", category: "food_drink" };
+  const gtrainHub = { id: "gtrain-hub", category: "g_train_support" };
+  const groups = groupByDay([opening1, realNews, opening2, gtrainHub], wed);
+  const ongoing = groups.find((g) => g.key === "ongoing");
+  assert.deepEqual(ongoing.cards.map((c) => c.id), ["real-news", "gtrain-hub", "opening-1", "opening-2"]);
+});
+
 // 2026-07-22 UX eval (F4): the live Today group scanned 5 PM → 10 AM → 7 PM,
 // because in-window series cards sort by their ORIGINAL startsAt date. Within
 // Today, order must follow today's clock. 2026-07-24 user feedback: untimed

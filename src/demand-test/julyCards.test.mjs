@@ -68,11 +68,17 @@ test("seed has exactly 71 cards across the six layers", () => {
   // live "opened this week" lens). The 8 ex-`new` cards keep their real
   // category (new_business/service/shopping/food_drink/arts_culture) — only
   // filter-bar membership moved, so pin colors are untouched. Card set
-  // itself unchanged throughout.
+  // itself unchanged throughout. Fourth pass same day: the 4 civic-action-
+  // required cards (Newtown Creek CAG, adopt-a-business, MTA advocacy, Film
+  // Noir support) moved from news to community — they ask readers to DO
+  // something, matching community's hands-on-participation definition
+  // better than news's reporting one. The G-train status hub itself
+  // (g-train-closures) stays in news — it's the reference/timeline card,
+  // not itself an ask.
   assert.equal(seed.cards.length, 88);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 20, "12 original news cards + 8 folded from new");
+  assert.equal(count((c) => c.filters.includes("news")), 16, "20 after the new-fold, minus 4 moved to community");
   assert.equal(count((c) => c.category === "event"), 52, "52 event cards");
   assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
   assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
@@ -226,20 +232,30 @@ test("no card is lens-less — the six 2026-07-25 stragglers resolved into Commu
   assert.deepEqual(lensless, [], "a growing lens-less list means the taxonomy is leaking — review at ingest");
 });
 
-test("the community lens holds civic/mutual-aid stewardship (2026-07-25 second pass)", () => {
+test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {
   // Park cleanups, harbor day, dog adoption, a trash-cleanup club, an
   // accessibility-advocacy launch — future home for things like stoop sales.
+  // 4th pass added the civic-ASK cards: a CAG meeting, adopt-a-business,
+  // MTA advocacy, Film Noir support — hands-on participation, not reporting.
   const community = seed.cards.filter((c) => c.filters.includes("community")).map((c) => c.id).sort();
   assert.deepEqual(community, [
+    "adopt-a-business",
     "city-of-water-day-0725",
     "disabled-hungry-launch-0725",
+    "film-noir-support",
+    "g-advocacy-mta",
     "greenpoint-trash-club",
     "its-my-park-transmitter-0726",
+    "newtown-creek-cag-0729",
     "poochs-adoption-0725",
   ]);
   // Trash Club moved OUT of deals_memberships — it's civic action, not a
   // paid membership; a signup card can only be one thing at a glance.
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("deals_memberships"));
+  // The G-train status hub is a reference/timeline card, not itself an ask —
+  // it stays in news, unlike the four action cards above.
+  assert.ok(seed.cards.find((c) => c.id === "g-train-closures").filters.includes("news"));
+  assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("community"));
 });
 
 test("astrology and the cannabis-science talk landed in Arts & Culture, not stranded", () => {

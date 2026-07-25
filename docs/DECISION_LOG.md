@@ -50,6 +50,18 @@ Decision (Batu). Third same-day follow-up to the filter IA re-cut: the `new` len
 
 Owner: Batu.
 
+## 2026-07-25 (4th pass) — Civic-action cards move to Community; News sorts reporting before openings
+
+Decision (Batu). Fourth same-day follow-up.
+
+**Civic-action cards → `community`.** Newtown Creek Superfund CAG meeting, Adopt a business for shutdown weekends, "Weigh in on how the G closures are run" (MTA advocacy), and Keep Film Noir Cinema alive moved from `news` to `community` — each asks the reader to DO something (attend, adopt, complain, support), matching `community`'s hands-on-participation definition better than `news`'s reporting one. The G-train status hub (`g-train-closures`, dates/shuttle/who's-open reference card) stays in `news` — it's a timeline object, not itself an ask.
+
+**Within News, reporting now sorts before openings.** The 8 folded-in business-opening cards (from the third-pass New→News fold) were reading above real news items — a pure array-order accident, since both are undated and the shared "Ongoing" bucket otherwise keeps insertion order. `groupByDay` (`filterCards.js`) now applies a stable partition inside Ongoing: cards with `category` `news`/`g_train_support` sort first, everything else keeps its relative order after. Self-maintaining for future ingests (no manual JSON reordering); a no-op for every other lens, since none of them mix news-category cards with other categories.
+
+**Card title truncation.** Long titles ("Franca Ceramics Pop-up Seconds Sale") were wrapping to a second line and pushing the FREE badge down with them. `.july-card-title` now truncates to one line with ellipsis; the FREE badge stays pinned on the title's line.
+
+Owner: Batu.
+
 ## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
 
 Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.
