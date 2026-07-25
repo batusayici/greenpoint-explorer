@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload } from "./cardActions.js";
 import { gcalEventUrl } from "./calendarLink.js";
-import { todayPillNeeded } from "./todayPill.js";
+import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
 import { formatWindow } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
@@ -291,6 +291,20 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   );
 }
 
+// The Today pill is viewport-fixed on mobile, so it must yield whenever the
+// feed's end chrome (signup prompt, footer CTA) is on screen — Batu's phone
+// test caught it parked on top of the signup button. Desktop's pill is
+// panel-absolute in the same bottom zone, so the same guard applies there.
+function feedEndVisible(ownScroller) {
+  const end = document.querySelector(".july-prompt") ?? document.querySelector(".july-ctas");
+  if (!end) return false;
+  const top = end.getBoundingClientRect().top;
+  if (!ownScroller) return top < window.innerHeight;
+  // Desktop: prompt/footer sit below the list inside the panel — the pill
+  // (bottom: 88px) only collides with the taller signup prompt.
+  return end.classList.contains("july-prompt");
+}
+
 // Layers with fewer live cards than this fold into "More" until the weekly
 // ingest stocks them (UX eval F16, decision B).
 const FOLD_THRESHOLD = 5;
@@ -323,6 +337,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   const [showTodayPill, setShowTodayPill] = useState(false);
   const firstLensRef = useRef(true);
   const suppressPillRef = useRef(false);
+  const pillOriginRef = useRef(0); // scroll position when the pill appeared
   const { shown, folded } = partitionFilters(FILTERS, filterCounts ?? {}, FOLD_THRESHOLD);
   // An active folded filter (e.g. reached through a card action) must stay
   // visible even while the fold is closed.
@@ -364,29 +379,36 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     }
     const list = listRef.current;
     if (!list) return;
-    setShowTodayPill(
+    const ownScroller = list.scrollHeight > list.clientHeight + 1;
+    const needed =
+      !feedEndVisible(ownScroller) &&
       todayPillNeeded({
-        ownScroller: list.scrollHeight > list.clientHeight + 1,
+        ownScroller,
         scrollTop: list.scrollTop,
         listTop: list.getBoundingClientRect().top,
         chromeBottom: filtersRef.current?.getBoundingClientRect().bottom ?? 0,
-      }),
-    );
+      });
+    if (needed) pillOriginRef.current = ownScroller ? list.scrollTop : window.scrollY;
+    setShowTodayPill(needed);
   }, [filter, todayOnly, focus]);
 
-  // The pill withdraws by itself once the feed top scrolls back into view.
+  // The pill withdraws by itself: when the feed top scrolls back into view, or
+  // once the reader scrolls meaningfully past where it appeared (their answer
+  // — and a fixed pill parked at the feed end collides with the signup prompt).
   useEffect(() => {
     if (!showTodayPill) return;
     const list = listRef.current;
     const check = () => {
       if (!list) return;
+      const ownScroller = list.scrollHeight > list.clientHeight + 1;
       const still = todayPillNeeded({
-        ownScroller: list.scrollHeight > list.clientHeight + 1,
+        ownScroller,
         scrollTop: list.scrollTop,
         listTop: list.getBoundingClientRect().top,
         chromeBottom: filtersRef.current?.getBoundingClientRect().bottom ?? 0,
       });
-      if (!still) setShowTodayPill(false);
+      const away = scrolledAwayFromPill(pillOriginRef.current, ownScroller ? list.scrollTop : window.scrollY);
+      if (!still || away || feedEndVisible(ownScroller)) setShowTodayPill(false);
     };
     window.addEventListener("scroll", check, { passive: true });
     list?.addEventListener("scroll", check, { passive: true });

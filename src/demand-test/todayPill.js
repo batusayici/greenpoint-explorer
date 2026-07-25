@@ -15,3 +15,13 @@ export function todayPillNeeded({ ownScroller, scrollTop = 0, listTop = 0, chrom
   if (ownScroller) return scrollTop > DESKTOP_SCROLL_THRESHOLD;
   return listTop < chromeBottom - CHROME_SLACK;
 }
+
+// Batu's phone test (2026-07-25): a viewport-fixed pill parked at the feed end
+// collides with in-flow bottom content (the signup prompt). Scrolling
+// meaningfully past where the pill appeared — either direction — is the
+// reader's answer, so the pill withdraws instead of following them around.
+const SCROLL_AWAY_DISTANCE = 220;
+
+export function scrolledAwayFromPill(originScroll, currentScroll) {
+  return Math.abs(currentScroll - originScroll) > SCROLL_AWAY_DISTANCE;
+}
