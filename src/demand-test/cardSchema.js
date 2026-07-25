@@ -44,11 +44,16 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // `deals_memberships` (2+3 cards, both under the fold threshold); `wellness`
 // added for the movement cluster (yoga/pilates/dance/run — a real recurring
 // neighborhood cluster the events umbrella was hiding). Civic stays inside
-// news. One-off events with no honest lens carry an empty filters array and
-// live in All only — forced-fit membership is a truth miss.
+// news.
+// Same day, second pass (Batu): the six cards left lens-less sorted into two
+// real groups instead of staying All-only. `community` added — civic/mutual-
+// aid stewardship (park cleanups, harbor day, dog adoption, a trash-cleanup
+// club, an accessibility-advocacy launch; future home for things like stoop
+// sales). Astrology and a cannabis-science talk moved into `arts_culture`
+// (culture/ideas programming, same shelf as gallery talks and workshops).
 export const FILTER_IDS = [
   "new", "food_drink", "shopping",
-  "arts_culture", "family_kids", "live_music", "wellness",
+  "arts_culture", "family_kids", "live_music", "wellness", "community",
   "deals_memberships", "news",
 ];
 

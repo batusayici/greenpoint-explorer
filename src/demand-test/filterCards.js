@@ -11,6 +11,7 @@ const LABELS = {
   family_kids: "Family & Kids",
   live_music: "Live Music",
   wellness: "Wellness",
+  community: "Community",
   deals_memberships: "Deals & Memberships",
   news: "News",
 };

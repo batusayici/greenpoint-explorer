@@ -21,6 +21,20 @@ Retired ids (`events`, `services`, `deals`, `clubs_signups`, plus `g_train`) are
 
 Owner: Batu.
 
+## 2026-07-25 (2nd pass) — Community lens added; all lens-less stragglers resolved
+
+Decision (Batu). Same-day follow-up to the filter IA re-cut: the six cards left with empty `filters` sorted into two real homes instead of staying All-only.
+
+**`community` added (10th lens)** — civic/mutual-aid stewardship: park cleanups, harbor day, dog adoption, a trash-cleanup club, an accessibility-advocacy launch. Explicit future home for things like stoop sales. Distinct from civic *news* (closures, zoning, campaign reporting stays in `news`) — `community` is for hands-on participation.
+
+**Membership:** City of Water Day, It's My Park, Adoption day at Pooch's Parlor, Disabled & Hungry launch party, and **Greenpoint Trash Club** (moved out of `deals_memberships` — a cleanup collective is civic action, not a paid membership; a signup card is one thing at a glance, not two).
+
+**Astrology + cannabis-science talk → `arts_culture`** (culture/ideas programming, same shelf as gallery talks and workshops) — the two cards with no civic angle.
+
+Result: zero lens-less cards remain; the taxonomy is now `new · food_drink · shopping · arts_culture · family_kids · live_music · wellness · community · deals_memberships · news` (10 lenses total, from the original 11 content-type layers). Ingest skill authoring rules updated with the `community` vs `wellness` vs `news` distinction.
+
+Owner: Batu.
+
 ## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
 
 Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.

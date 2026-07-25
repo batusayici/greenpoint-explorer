@@ -3,17 +3,18 @@ import assert from "node:assert/strict";
 import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
-test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
+test("FILTERS = 'all' + the IA re-cut's ten, in order, with display labels", () => {
   assert.equal(FILTERS[0].id, "all");
   assert.deepEqual(FILTERS.slice(1).map((f) => f.id), FILTER_IDS);
   // g_train filter removed 2026-07-23 (Batu: campaign-as-category was confusing)
   assert.equal(FILTERS.find((f) => f.id === "g_train"), undefined);
-  // 2026-07-25 IA re-cut: events/services retired, deals+clubs merged, wellness in.
+  // 2026-07-25 IA re-cut: events/services retired, deals+clubs merged, wellness+community in.
   assert.equal(FILTERS.find((f) => f.id === "events"), undefined);
   assert.equal(FILTERS.find((f) => f.id === "services"), undefined);
   assert.equal(FILTERS.find((f) => f.id === "food_drink").label, "Food & Drink");
   assert.equal(FILTERS.find((f) => f.id === "deals_memberships").label, "Deals & Memberships");
   assert.equal(FILTERS.find((f) => f.id === "wellness").label, "Wellness");
+  assert.equal(FILTERS.find((f) => f.id === "community").label, "Community");
   assert.equal(FILTERS.find((f) => f.id === "news").label, "News");
   assert.equal(FILTERS.find((f) => f.id === "live_music").label, "Live Music");
 });

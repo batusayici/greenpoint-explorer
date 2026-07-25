@@ -60,7 +60,9 @@ test("seed has exactly 71 cards across the six layers", () => {
   // by Greenpointers + newsletters; the residual-gap catch this scan exists for).
   // 2026-07-25 IA re-cut (Batu, N1 groundwork): filter taxonomy re-authored —
   // events/services retired, deals+clubs_signups merged into deals_memberships,
-  // wellness added (6 movement cards). Card set itself unchanged.
+  // wellness added (6 movement cards). Second pass same day: the six cards
+  // left lens-less sorted into community (5, incl. Trash Club moved out of
+  // deals_memberships) or arts_culture (2). Card set itself unchanged.
   assert.equal(seed.cards.length, 88);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
@@ -190,18 +192,33 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
 });
 
-test("lens-less one-offs are the known six — everything else carries a lens", () => {
-  // Empty filters = All-only (2026-07-25): honest for one-offs with no home,
-  // but a growing list here means the taxonomy is leaking — review at ingest.
-  const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
-  assert.deepEqual(lensless, [
-    "cannabis-botany-0723",
+test("no card is lens-less — the six 2026-07-25 stragglers resolved into Community or Arts & Culture", () => {
+  // Empty filters (All-only) is legal schema-wise but was a placeholder, not
+  // a destination: every card that landed there got a real home same day.
+  const lensless = seed.cards.filter((c) => c.filters.length === 0);
+  assert.deepEqual(lensless, [], "a growing lens-less list means the taxonomy is leaking — review at ingest");
+});
+
+test("the community lens holds civic/mutual-aid stewardship (2026-07-25 second pass)", () => {
+  // Park cleanups, harbor day, dog adoption, a trash-cleanup club, an
+  // accessibility-advocacy launch — future home for things like stoop sales.
+  const community = seed.cards.filter((c) => c.filters.includes("community")).map((c) => c.id).sort();
+  assert.deepEqual(community, [
     "city-of-water-day-0725",
     "disabled-hungry-launch-0725",
-    "held-space-astrology-0725",
+    "greenpoint-trash-club",
     "its-my-park-transmitter-0726",
     "poochs-adoption-0725",
   ]);
+  // Trash Club moved OUT of deals_memberships — it's civic action, not a
+  // paid membership; a signup card can only be one thing at a glance.
+  assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("deals_memberships"));
+});
+
+test("astrology and the cannabis-science talk landed in Arts & Culture, not stranded", () => {
+  for (const id of ["held-space-astrology-0725", "cannabis-botany-0723"]) {
+    assert.ok(seed.cards.find((c) => c.id === id).filters.includes("arts_culture"), `${id} missing arts_culture`);
+  }
 });
 
 test("every dated event carries a Today-lens window (start and end)", () => {

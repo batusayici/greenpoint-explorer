@@ -3311,7 +3311,9 @@
       "kicker": "Plant-science session on the loft floors",
       "locationName": "67 West St, Unit 335",
       "summary": "A session delving into the biology of the cannabis plant and its different strains. Tickets $71.21.",
-      "filters": [],
+      "filters": [
+        "arts_culture"
+      ],
       "audience": [
         "resident"
       ],
@@ -3645,7 +3647,9 @@
       "kicker": "Harbor day: cleanup, oysters, movement",
       "locationName": "WNYC Transmitter Park",
       "summary": "The 19th annual region-wide event from Waterfront Alliance and the NY-NJ Harbor & Estuary Program championing climate-resilient harbors — a longevity stick movement class, shoreline cleanup, oyster station monitoring, and more.",
-      "filters": [],
+      "filters": [
+        "community"
+      ],
       "audience": [
         "resident",
         "visitor"
@@ -3692,7 +3696,9 @@
       "locationName": "WNYC Transmitter Park",
       "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "A volunteer day at the waterfront park through NYC Parks' It's My Park program — neighbors pitch in to help care for the green space. Free.",
-      "filters": [],
+      "filters": [
+        "community"
+      ],
       "audience": [
         "resident",
         "civic_actor"
@@ -3737,7 +3743,9 @@
       "kicker": "Meet rescue dogs (margaritas too)",
       "locationName": "Pooch's Parlor",
       "summary": "NYC Second Chance Rescue partners with the grooming salon for a chance to find your forever furry friend — and enjoy a bit of paradise in the form of margaritas. No RSVP needed.",
-      "filters": [],
+      "filters": [
+        "community"
+      ],
       "audience": [
         "resident"
       ],
@@ -3784,7 +3792,9 @@
       "kicker": "Flash readings for Leo season",
       "locationName": "Held Space",
       "summary": "Hear your horoscope, get a vibe check, or learn where Leo falls in your chart in a flash reading with Anna Hull. Sessions $95.",
-      "filters": [],
+      "filters": [
+        "arts_culture"
+      ],
       "audience": [
         "resident"
       ],
@@ -3829,7 +3839,9 @@
       "kicker": "Disability Pride Month celebration",
       "locationName": "BK Backyard Bar",
       "summary": "A launch party for Disabled & Hungry, a new blog helping people with disabilities discover restaurants, travel, and community spaces that are truly accessible — with bites, drinks, and merch for purchase, 36 years after the ADA.",
-      "filters": [],
+      "filters": [
+        "community"
+      ],
       "audience": [
         "resident"
       ],
@@ -4066,7 +4078,7 @@
       "address": "105 Franklin St, Brooklyn, NY 11222",
       "summary": "Every Wednesday night at 7:30 — rain, snow, or freezing cold — about 50 volunteers meet at a rotating neighborhood bar to clean the streets of North Brooklyn. 9,400+ lbs of litter picked up since August 2024. All supplies provided, just show up; this week's meetup is at Broken Land.",
       "filters": [
-        "deals_memberships"
+        "community"
       ],
       "audience": [
         "resident",
