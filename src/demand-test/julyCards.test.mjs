@@ -58,6 +58,9 @@ test("seed has exactly 71 cards across the six layers", () => {
   // 2026-07-22 (coverage scan → Batu's ask): +1 event — It's My Park volunteer
   // day at Transmitter Park (Jul 26), from the NYC Parks per-park page (missed
   // by Greenpointers + newsletters; the residual-gap catch this scan exists for).
+  // 2026-07-25 IA re-cut (Batu, N1 groundwork): filter taxonomy re-authored —
+  // events/services retired, deals+clubs_signups merged into deals_memberships,
+  // wellness added (6 movement cards). Card set itself unchanged.
   assert.equal(seed.cards.length, 88);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
@@ -86,7 +89,7 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   assert.equal(deals.length, 2);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
-    assert.ok(c.filters.includes("deals"), `${c.id} missing deals filter`);
+    assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
   }
   // 2026-07-21: the one-night El Born wine-night deal expired out; the two
   // survivors are both recurring standing offers (verified-through dated).
@@ -159,13 +162,46 @@ test("reader-facing copy spells out Shop Small Greenpoint (no bare acronym)", ()
   }
 });
 
-test("the g_train layer is retired — no card references it (2026-07-23)", () => {
-  // Batu: a campaign as a content category read as confusing. G cards live in
-  // their real categories; future ingests must not resurrect the layer.
+test("retired layers stay retired — no card references them", () => {
+  // g_train retired 2026-07-23 (campaign-as-category read as confusing);
+  // events/services/deals/clubs_signups retired in the 2026-07-25 IA re-cut.
+  // Future ingests must not resurrect any of them.
+  const retired = ["g_train", "events", "services", "deals", "clubs_signups"];
   for (const c of seed.cards) {
-    assert.ok(!c.filters.includes("g_train"), `${c.id} still carries g_train`);
-    assert.ok(!c.actions.some((a) => a.filterId === "g_train"), `${c.id} action opens the retired layer`);
+    for (const id of retired) {
+      assert.ok(!c.filters.includes(id), `${c.id} still carries ${id}`);
+      assert.ok(!c.actions.some((a) => a.filterId === id), `${c.id} action opens retired layer ${id}`);
+    }
   }
+});
+
+test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () => {
+  // Yoga/pilates/dance/run — the recurring cluster the events umbrella hid.
+  // Trash Club stays out (Batu: it's civic action, not fitness).
+  const wellness = seed.cards.filter((c) => c.filters.includes("wellness")).map((c) => c.id).sort();
+  assert.deepEqual(wellness, [
+    "ecstatic-dance-loft-0729",
+    "giggles-run-club-0725",
+    "gp-pilates-breath-body-0724",
+    "library-monday-programs",
+    "longevity-stick-transmitter",
+    "sunday-yoga-domino",
+  ]);
+  assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
+});
+
+test("lens-less one-offs are the known six — everything else carries a lens", () => {
+  // Empty filters = All-only (2026-07-25): honest for one-offs with no home,
+  // but a growing list here means the taxonomy is leaking — review at ingest.
+  const lensless = seed.cards.filter((c) => c.filters.length === 0).map((c) => c.id).sort();
+  assert.deepEqual(lensless, [
+    "cannabis-botany-0723",
+    "city-of-water-day-0725",
+    "disabled-hungry-launch-0725",
+    "held-space-astrology-0725",
+    "its-my-park-transmitter-0726",
+    "poochs-adoption-0725",
+  ]);
 });
 
 test("every dated event carries a Today-lens window (start and end)", () => {
@@ -181,7 +217,7 @@ test("the hidden-engagement addendum cards carry their contract", () => {
   // refresh — the pattern lives on in the spec; the subscription half stays.
   const club = seed.cards.find((c) => c.id === "falu-tinned-fish-club");
   assert.ok(club, "Falu House Tinned Fish Club exists");
-  assert.ok(club.filters.includes("clubs_signups"));
+  assert.ok(club.filters.includes("deals_memberships"));
   assert.ok(club.actions.some((a) => a.type === "join"), "club has a one-tap join action");
 });
 

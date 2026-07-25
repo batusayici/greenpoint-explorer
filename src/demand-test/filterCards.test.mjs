@@ -3,16 +3,17 @@ import assert from "node:assert/strict";
 import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
-test("FILTERS = 'all' + the spec's ten, in order, with display labels", () => {
+test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
   assert.equal(FILTERS[0].id, "all");
   assert.deepEqual(FILTERS.slice(1).map((f) => f.id), FILTER_IDS);
   // g_train filter removed 2026-07-23 (Batu: campaign-as-category was confusing)
   assert.equal(FILTERS.find((f) => f.id === "g_train"), undefined);
+  // 2026-07-25 IA re-cut: events/services retired, deals+clubs merged, wellness in.
+  assert.equal(FILTERS.find((f) => f.id === "events"), undefined);
+  assert.equal(FILTERS.find((f) => f.id === "services"), undefined);
   assert.equal(FILTERS.find((f) => f.id === "food_drink").label, "Food & Drink");
-  // Renamed from "Clubs & Signups" 2026-07-08 — tester read "club" as nightclub.
-  assert.equal(FILTERS.find((f) => f.id === "clubs_signups").label, "Memberships");
-  // Limited-launch content types (2026-07-15).
-  assert.equal(FILTERS.find((f) => f.id === "deals").label, "Deals");
+  assert.equal(FILTERS.find((f) => f.id === "deals_memberships").label, "Deals & Memberships");
+  assert.equal(FILTERS.find((f) => f.id === "wellness").label, "Wellness");
   assert.equal(FILTERS.find((f) => f.id === "news").label, "News");
   assert.equal(FILTERS.find((f) => f.id === "live_music").label, "Live Music");
 });
@@ -22,7 +23,10 @@ test("matchesFilter: 'all' passes everything; others check authored membership",
   assert.ok(matchesFilter(card, "all"));
   assert.ok(matchesFilter(card, "new"));
   assert.ok(matchesFilter(card, "food_drink"));
-  assert.ok(!matchesFilter(card, "deals"));
+  assert.ok(!matchesFilter(card, "deals_memberships"));
+  // Lens-less one-offs (2026-07-25): visible under All, matched by no lens.
+  assert.ok(matchesFilter({ filters: [] }, "all"));
+  assert.ok(!matchesFilter({ filters: [] }, "wellness"));
 });
 
 test("isActiveOn: undated cards always pass; dated cards pass only inside their window", () => {
@@ -146,27 +150,27 @@ test("isExpiredCard: any past-endsAt card expires; open windows and undated card
 test("liveFilterCounts counts only non-expired cards per authored filter", () => {
   const now = new Date("2026-07-23T12:00:00-04:00");
   const cards = [
-    { filters: ["deals"], endsAt: "2026-07-25T23:59:00-04:00" },
-    { filters: ["deals"], endsAt: "2026-07-10T23:59:00-04:00" }, // expired
-    { filters: ["events", "deals"] },
-    { filters: ["events"] },
+    { filters: ["deals_memberships"], endsAt: "2026-07-25T23:59:00-04:00" },
+    { filters: ["deals_memberships"], endsAt: "2026-07-10T23:59:00-04:00" }, // expired
+    { filters: ["live_music", "deals_memberships"] },
+    { filters: ["live_music"] },
   ];
   const counts = liveFilterCounts(cards, now);
-  assert.equal(counts.deals, 2);
-  assert.equal(counts.events, 2);
+  assert.equal(counts.deals_memberships, 2);
+  assert.equal(counts.live_music, 2);
   assert.equal(counts.news, undefined);
 });
 
 test("partitionFilters: 'all' always shows; layers under the threshold fold", () => {
   const filters = [
     { id: "all", label: "All" },
-    { id: "events", label: "Events" },
-    { id: "deals", label: "Deals" },
-    { id: "services", label: "Services" },
+    { id: "live_music", label: "Live Music" },
+    { id: "deals_memberships", label: "Deals & Memberships" },
+    { id: "shopping", label: "Shopping" },
   ];
-  const { shown, folded } = partitionFilters(filters, { events: 58, deals: 2, services: 2 }, 5);
-  assert.deepEqual(shown.map((f) => f.id), ["all", "events"]);
-  assert.deepEqual(folded.map((f) => f.id), ["deals", "services"]);
+  const { shown, folded } = partitionFilters(filters, { live_music: 27, deals_memberships: 2, shopping: 2 }, 5);
+  assert.deepEqual(shown.map((f) => f.id), ["all", "live_music"]);
+  assert.deepEqual(folded.map((f) => f.id), ["deals_memberships", "shopping"]);
 });
 
 // 2026-07-24 user feedback: "same day events that are past its start time

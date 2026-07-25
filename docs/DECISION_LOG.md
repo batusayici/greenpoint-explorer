@@ -4,6 +4,23 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-25 — Filter IA re-cut: lenses are a person's question, not a content taxonomy
+
+Decision (Batu, N1 groundwork — IA before UI). The filter bar re-cut from 11 content-type layers to 9 intent lenses: **New · Food & Drink · Shopping · Arts & Culture · Family & Kids · Live Music · Wellness · Deals & Memberships · News.**
+
+**Rationale, per retired/changed layer:**
+1. **`events` retired** — 58 of 88 cards; a lens keeping two-thirds of everything doesn't narrow, and nobody's intent is "any event whatsoever." The day-grouped All feed already answers "what's happening this week."
+2. **`services` retired** — 2 cards; services are destination searches, not a browse lens (nobody browses "Services", they look for *a groomer*). Service openings still surface via `new`. Keeping it would drift toward the directory this product explicitly isn't.
+3. **`deals` + `clubs_signups` merged into `deals_memberships`** — 2+3 cards, both permanently under the F16 fold threshold; one honest lens instead of two thin ones.
+4. **`wellness` added** — the movement cluster (yoga/pilates/dance/run, 6 cards) was the biggest coherent group the events umbrella hid. Trash Club stays out (Batu: it's civic action, not fitness).
+5. **No Civic lens** — 5 civic/campaign cards keep riding inside News; splitting them recreates the thin-layer problem. Revisit if closure-period volume spikes.
+6. **Free stays a badge, not a lens** (Batu; testers had asked for free-only filtering — the FREE badge carries it for now).
+7. **Empty `filters: []` is now legal** — a one-off with no honest lens lives under All only; forced-fit membership is a truth miss. A guard test pins the known six; a growing list means the taxonomy is leaking and the ingest review must flag the cluster as a candidate lens.
+
+Retired ids (`events`, `services`, `deals`, `clubs_signups`, plus `g_train`) are guarded by test — future ingests must not resurrect them. Ingest skill authoring rules updated. The N1 chip-bar UI (how the vocabulary is shown on mobile) remains a separate open call.
+
+Owner: Batu.
+
 ## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
 
 Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.

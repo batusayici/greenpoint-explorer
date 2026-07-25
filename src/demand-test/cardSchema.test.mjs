@@ -51,7 +51,7 @@ test("free is optional but must be a boolean (truth rule: only sourced free-ness
 test("an action may target a filter view (internal action), but only a known one", () => {
   // 2026-07-03: campaign cards link INTO the map ("see who's open nearby" →
   // the G-Train layer) — an action carrying filterId instead of url.
-  const internal = { ...good, actions: [{ label: "See every deal", type: "visit", filterId: "deals" }] };
+  const internal = { ...good, actions: [{ label: "See every deal", type: "visit", filterId: "deals_memberships" }] };
   assert.deepEqual(validateCard(internal).errors, []);
   assert.equal(validateCard({ ...good, actions: [{ label: "x", type: "visit", filterId: "jobs" }] }).ok, false);
 });
@@ -74,7 +74,7 @@ test("a card with no coords but geocoded venues validates", () => {
     ...good,
     id: "cluster",
     category: "event",
-    filters: ["events"],
+    filters: [],  // lens-less one-off: legal since the 2026-07-25 IA re-cut
     lat: null,
     lng: null,
     address: null,
@@ -92,12 +92,18 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the spec's filter bar (incl. Deals + News + Live Music, 2026-07-15)", () => {
+test("FILTER_IDS matches the 2026-07-25 IA re-cut (events/services out, wellness in, deals+memberships merged)", () => {
   assert.deepEqual(FILTER_IDS, [
-    "new", "food_drink", "shopping", "services",
-    "arts_culture", "family_kids", "events", "live_music", "clubs_signups",
-    "deals", "news",
+    "new", "food_drink", "shopping",
+    "arts_culture", "family_kids", "live_music", "wellness",
+    "deals_memberships", "news",
   ]);
+});
+
+test("filters may be empty (All-only one-off) but never absent", () => {
+  assert.deepEqual(validateCard({ ...good, filters: [] }).errors, []);
+  const { filters, ...missing } = good;
+  assert.equal(validateCard(missing).ok, false, "absent filters array");
 });
 
 test("a deal (discount) must carry an end date — offers expire", () => {
@@ -105,7 +111,7 @@ test("a deal (discount) must carry an end date — offers expire", () => {
     ...good,
     id: "deal",
     category: "discount",
-    filters: ["deals"],
+    filters: ["deals_memberships"],
     startsAt: "2026-07-14T00:00:00-04:00",
     endsAt: "2026-07-20T23:59:00-04:00",
   };
@@ -132,7 +138,7 @@ test("subscription category and join action are accepted (addendum)", () => {
     ...good,
     id: "club",
     category: "subscription",
-    filters: ["clubs_signups"],
+    filters: ["deals_memberships"],
     actions: [{ label: "Join", type: "join" }],
   };
   assert.deepEqual(validateCard(club).errors, []);

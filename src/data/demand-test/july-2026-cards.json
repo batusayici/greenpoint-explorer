@@ -8,8 +8,7 @@
       "category": "new_business",
       "filters": [
         "new",
-        "food_drink",
-        "events"
+        "food_drink"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Sailor + Siren",
@@ -58,8 +57,7 @@
       "title": "Core Press",
       "category": "service",
       "filters": [
-        "new",
-        "services"
+        "new"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Core Press",
@@ -97,8 +95,7 @@
       "title": "Pooch's Parlor",
       "category": "service",
       "filters": [
-        "new",
-        "services"
+        "new"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Pooch's Parlor",
@@ -271,8 +268,7 @@
       "category": "food_drink",
       "filters": [
         "new",
-        "food_drink",
-        "events"
+        "food_drink"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Socceria",
@@ -352,7 +348,7 @@
       "title": "Falu House Tinned Fish Club",
       "category": "subscription",
       "filters": [
-        "clubs_signups",
+        "deals_memberships",
         "food_drink"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
@@ -595,7 +591,6 @@
       "id": "artistic-voices-artudio",
       "title": "Artistic Voices: kids' art workshop",
       "filters": [
-        "events",
         "family_kids",
         "arts_culture"
       ],
@@ -639,7 +634,7 @@
       "id": "sunday-yoga-domino",
       "title": "Sunday yoga series at Domino Park",
       "filters": [
-        "events"
+        "wellness"
       ],
       "locationName": "Domino Park",
       "geocodeQuery": "Domino Park, Brooklyn, NY",
@@ -665,7 +660,7 @@
       "address": "128 India St, Brooklyn, NY 11222",
       "summary": "Greenpoint's newest dog grooming salon — mention Greenpointers for 20% off your first appointment. The vibe: tattoo shop meets dive bar.",
       "filters": [
-        "deals"
+        "deals_memberships"
       ],
       "audience": [
         "resident"
@@ -714,7 +709,7 @@
       "address": "114 Nassau Ave, Brooklyn, NY 11222",
       "summary": "Weekday afternoon oyster happy hour at the Nassau Ave fish market and raw bar — $1 oysters with a drink plus $5 beers, per the June 2026 neighborhood guide. Worth confirming before you go.",
       "filters": [
-        "deals",
+        "deals_memberships",
         "food_drink"
       ],
       "audience": [
@@ -1073,7 +1068,6 @@
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "Yallah Yallah plays the bar's nightly live music program.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -1225,7 +1219,6 @@
       "locationName": "Greenpoint Comedy Club",
       "summary": "The neighborhood's comedy room at 66 Greenpoint Ave — showcases Thursday through Saturday (often two a night), specials and touring headliners on weekends. Lineups on Instagram, tickets online.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -1277,8 +1270,7 @@
       "locationName": "Film Noir Cinema",
       "summary": "Independent cinema on Meserole Ave screening noir, cult and horror rarities, with a published monthly calendar — Film Noir Mondays and Cult Cinema Tuesdays are the standing series.",
       "filters": [
-        "arts_culture",
-        "events"
+        "arts_culture"
       ],
       "audience": [
         "resident",
@@ -1490,7 +1482,6 @@
       "locationName": "Eavesdrop",
       "summary": "Subcultures on the house system, per the bar's calendar.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -1541,7 +1532,6 @@
       "locationName": "Scrappleland",
       "summary": "The weekly Wednesday league across the city's largest pinball collection — casual by design, competitive if you want it, per Brooklyn Paper's June profile.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -1591,7 +1581,6 @@
       "locationName": "Greenpoint Comedy Club",
       "summary": "The Wednesday-night edition of the touring stand-up showcase.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -1642,7 +1631,6 @@
       "locationName": "Hide & Seek",
       "summary": "The café-lounge's weekly live jazz night, straight from their own marquee.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -1693,7 +1681,7 @@
       "locationName": "Flower Cat",
       "summary": "Monthly floral subscriptions from the Noble St florist-café — bud vase to branches tiers ($250–$400/month), arranged weekly.",
       "filters": [
-        "clubs_signups",
+        "deals_memberships",
         "shopping"
       ],
       "audience": [
@@ -1830,8 +1818,7 @@
       "summary": "Full-service branch and environmental education center on Norman Ave — storytimes, teen tech, garden hours, English classes and studio time nearly every day, plus a rooftop demonstration garden.",
       "filters": [
         "family_kids",
-        "arts_culture",
-        "events"
+        "arts_culture"
       ],
       "audience": [
         "resident",
@@ -1884,7 +1871,6 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "summary": "Toddler Time twice in the morning, then open roof-garden hours, Read and Play, and Computer Basics through the afternoon.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -1935,7 +1921,7 @@
       "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "Friends of WNYC Transmitter Park's free morning class at the pier entrance — a tai chi/yoga flow made accessible by the stick. Registering helps them reach you on rain delays.",
       "filters": [
-        "events"
+        "wellness"
       ],
       "audience": [
         "resident"
@@ -1982,7 +1968,6 @@
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "The bar's recurring World Psychedelic Groove DJ night.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2033,7 +2018,6 @@
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "DJ Frantz spins the bar's nightly program.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2084,7 +2068,6 @@
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "Jonny Compolo plays a solo piano set.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2135,7 +2118,6 @@
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "Lupe Loop and Mela spin feel-good funk, international dance jams and vintage house.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2186,7 +2168,6 @@
       "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "Rob Heath's monthly night of unapproved and experimental music.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2237,7 +2218,6 @@
       "address": "674 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "EAMMS on the house hi-fi, per the bar's calendar.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2288,7 +2268,6 @@
       "address": "674 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "DJ Selly's residency night on the house system.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2339,7 +2318,6 @@
       "address": "674 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "Andrew Goldberg on the house hi-fi, an afternoon session.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2390,7 +2368,6 @@
       "address": "674 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "DJ Shannon's evening residency at the listening bar.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2441,7 +2418,6 @@
       "address": "674 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "A Sunday afternoon funk session on the hi-fi.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2492,7 +2468,6 @@
       "address": "674 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "Heavy Hymns on the house system to close the weekend.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2543,7 +2518,6 @@
       "address": "98 Meserole Ave, Brooklyn, NY 11222",
       "summary": "Members Party with Lloyd all night, plus Lauren Murada and Party Dad.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2594,7 +2568,6 @@
       "address": "98 Meserole Ave, Brooklyn, NY 11222",
       "summary": "The Juan Maclean plays all night, with Carpet (F.L.H.P.).",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -2645,8 +2618,7 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "summary": "The cinema's weekly Film Club screening.",
       "filters": [
-        "arts_culture",
-        "events"
+        "arts_culture"
       ],
       "audience": [
         "resident",
@@ -2696,8 +2668,7 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "summary": "Jackie the Stripper paired with El Asesino de Muñecas — a double feature.",
       "filters": [
-        "arts_culture",
-        "events"
+        "arts_culture"
       ],
       "audience": [
         "resident",
@@ -2747,8 +2718,7 @@
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "summary": "Another screening of Jackie the Stripper at the microcinema.",
       "filters": [
-        "arts_culture",
-        "events"
+        "arts_culture"
       ],
       "audience": [
         "resident",
@@ -2798,7 +2768,6 @@
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "The club's weekly Thursday stand-up showcase.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -2849,7 +2818,6 @@
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "The Friday Showcase followed by the later 10pm edition — two lineups back to back.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -2900,7 +2868,6 @@
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "Three Saturday shows: Eye Candy at 6pm, Adam Pally headlining at 8pm, and the Secret Showcase at 10pm.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -2951,7 +2918,6 @@
       "address": "593 Manhattan Ave, Brooklyn, NY 11222",
       "summary": "The lounge side takes over on weekend nights — DJs every Friday and Saturday, per their site.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -3002,7 +2968,6 @@
       "address": "252 Franklin St, Brooklyn, NY 11222",
       "summary": "Franca Brooklyn brings its full ceramics line to the Tend sidewalk — beautiful pieces with tiny flaws, still fully functional and priced to move. In-person only.",
       "filters": [
-        "events",
         "shopping"
       ],
       "audience": [
@@ -3052,7 +3017,6 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "summary": "Babies & Books storytimes in the morning, free notary service and a beginners’ English class in the afternoon, then Sunset Storytime, an Energy 101 talk with Sane Energy Project, and the Friends of the Library meeting in the evening.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -3104,7 +3068,6 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "summary": "A sensory garden storytime and rooftop garden hours with a garden educator, plus a kid-friendly after-school movie in Eco Lab 1.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -3155,7 +3118,6 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "summary": "Saturday Family StoryTime with songs, books and movement, and the Cycle Alliance period pantry open all branch hours in the Teen Zone.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -3206,7 +3168,7 @@
       "address": "107 Norman Ave, Brooklyn, NY 11222",
       "summary": "Chair Yoga and Mindfulness for adults with Stefanie Mihoulides.",
       "filters": [
-        "events"
+        "wellness"
       ],
       "audience": [
         "resident"
@@ -3254,7 +3216,6 @@
       "locationName": "Bushwick Inlet Park",
       "summary": "The sixth annual weekly music series on the waterfront — this week the George Gray Jazz Coalition, in partnership with the Jazz Foundation of America. No RSVP needed.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -3303,7 +3264,6 @@
       "locationName": "Madeline's",
       "summary": "Explore acrylics on paper in a relaxing, gently guided atmosphere for creatives of all skill levels. $100, via Make Art in NYC.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -3351,9 +3311,7 @@
       "kicker": "Plant-science session on the loft floors",
       "locationName": "67 West St, Unit 335",
       "summary": "A session delving into the biology of the cannabis plant and its different strains. Tickets $71.21.",
-      "filters": [
-        "events"
-      ],
+      "filters": [],
       "audience": [
         "resident"
       ],
@@ -3399,7 +3357,6 @@
       "locationName": "McCarren Park",
       "summary": "Meet local artisans, boutique brands, food vendors, and other creatives — and buy their wares — at a lively outdoor market.",
       "filters": [
-        "events",
         "shopping"
       ],
       "audience": [
@@ -3447,7 +3404,6 @@
       "locationName": "PLAY Kids Greenpoint",
       "summary": "Drop off the kiddos for a showing of Goat, with open playtime, dinner, and snacks. Ages 4 to 8. Tickets $47.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -3495,7 +3451,6 @@
       "locationName": "Brooklyn Craft Company",
       "summary": "A hands-on session on embroidery basics — bring your own hat to adorn or buy one during class. Brooklyn Craft Company workshops tend to sell out fast. Tickets $28.52.",
       "filters": [
-        "events",
         "arts_culture"
       ],
       "audience": [
@@ -3544,7 +3499,7 @@
       "locationName": "Greenpoint Pilates Studio",
       "summary": "Regulate your nervous system with 45 minutes of breathwork followed by 45 minutes of Pilates. Tickets $55.",
       "filters": [
-        "events"
+        "wellness"
       ],
       "audience": [
         "resident"
@@ -3591,7 +3546,6 @@
       "locationName": "Threes Brewing Greenpoint",
       "summary": "Pop, hip-hop, and house music with dancing, cold beer, and drink specials at the Greenpoint taproom.",
       "filters": [
-        "events",
         "live_music"
       ],
       "audience": [
@@ -3640,8 +3594,8 @@
       "locationName": "Giggles & Wiggles",
       "summary": "Run a few miles with your mom crew in a no-pressure, all-paces-welcome environment, followed by coffee. Meet at the shop — entrance on Noble St.",
       "filters": [
-        "events",
-        "family_kids"
+        "family_kids",
+        "wellness"
       ],
       "audience": [
         "family",
@@ -3691,9 +3645,7 @@
       "kicker": "Harbor day: cleanup, oysters, movement",
       "locationName": "WNYC Transmitter Park",
       "summary": "The 19th annual region-wide event from Waterfront Alliance and the NY-NJ Harbor & Estuary Program championing climate-resilient harbors — a longevity stick movement class, shoreline cleanup, oyster station monitoring, and more.",
-      "filters": [
-        "events"
-      ],
+      "filters": [],
       "audience": [
         "resident",
         "visitor"
@@ -3740,9 +3692,7 @@
       "locationName": "WNYC Transmitter Park",
       "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "A volunteer day at the waterfront park through NYC Parks' It's My Park program — neighbors pitch in to help care for the green space. Free.",
-      "filters": [
-        "events"
-      ],
+      "filters": [],
       "audience": [
         "resident",
         "civic_actor"
@@ -3787,9 +3737,7 @@
       "kicker": "Meet rescue dogs (margaritas too)",
       "locationName": "Pooch's Parlor",
       "summary": "NYC Second Chance Rescue partners with the grooming salon for a chance to find your forever furry friend — and enjoy a bit of paradise in the form of margaritas. No RSVP needed.",
-      "filters": [
-        "events"
-      ],
+      "filters": [],
       "audience": [
         "resident"
       ],
@@ -3836,9 +3784,7 @@
       "kicker": "Flash readings for Leo season",
       "locationName": "Held Space",
       "summary": "Hear your horoscope, get a vibe check, or learn where Leo falls in your chart in a flash reading with Anna Hull. Sessions $95.",
-      "filters": [
-        "events"
-      ],
+      "filters": [],
       "audience": [
         "resident"
       ],
@@ -3883,9 +3829,7 @@
       "kicker": "Disability Pride Month celebration",
       "locationName": "BK Backyard Bar",
       "summary": "A launch party for Disabled & Hungry, a new blog helping people with disabilities discover restaurants, travel, and community spaces that are truly accessible — with bites, drinks, and merch for purchase, 36 years after the ADA.",
-      "filters": [
-        "events"
-      ],
+      "filters": [],
       "audience": [
         "resident"
       ],
@@ -3932,7 +3876,6 @@
       "locationName": "Greenpoint Library",
       "summary": "Kids in grades 3 to 6 discuss Speak Up, Santiago by Julio Anta, illustrated by Gabi Mendez, in an encouraging, friendly atmosphere, with related activities. Earlier that day the rooftop Demonstration Garden is open for quiet study, 1-4pm, weather permitting.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -3989,7 +3932,7 @@
       "locationName": "Greenpoint Loft",
       "summary": "An evening of drug-free, smoke-free, alcohol-free, and phone-free dancing for anyone looking to truly let go. Tickets $33.85.",
       "filters": [
-        "events"
+        "wellness"
       ],
       "audience": [
         "resident"
@@ -4123,7 +4066,7 @@
       "address": "105 Franklin St, Brooklyn, NY 11222",
       "summary": "Every Wednesday night at 7:30 — rain, snow, or freezing cold — about 50 volunteers meet at a rotating neighborhood bar to clean the streets of North Brooklyn. 9,400+ lbs of litter picked up since August 2024. All supplies provided, just show up; this week's meetup is at Broken Land.",
       "filters": [
-        "clubs_signups"
+        "deals_memberships"
       ],
       "audience": [
         "resident",
@@ -4179,7 +4122,6 @@
       "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
       "summary": "Town Square's outdoor movie series on the waterfront — bring a picnic blanket, friends, and family. This week: The Princess Bride. The series runs Fridays through August 21.",
       "filters": [
-        "events",
         "family_kids"
       ],
       "audience": [
@@ -4228,7 +4170,6 @@
       "address": "30 Gem St, Brooklyn, NY 11222",
       "summary": "The Gem St smokehouse opens its doors for the weekly pre-order pickup — salmon, herring, caviar, and specialty items straight from the source. Pre-orders close Friday 11:30am; a new order window opens every Saturday.",
       "filters": [
-        "events",
         "food_drink"
       ],
       "audience": [
@@ -4276,7 +4217,6 @@
       "address": "56-27 2nd St, Unit 105, Long Island City, NY 11101",
       "summary": "The Community Advisory Group for the Newtown Creek Superfund cleanup meets in person at the Queens Landing Boathouse, just across the creek — with a Zoom option for joining virtually (advance registration required for the virtual side). CBI posts the agenda before the meeting.",
       "filters": [
-        "events",
         "news"
       ],
       "audience": [

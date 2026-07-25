@@ -7,14 +7,11 @@ const LABELS = {
   new: "New",
   food_drink: "Food & Drink",
   shopping: "Shopping",
-  services: "Services",
   arts_culture: "Arts & Culture",
   family_kids: "Family & Kids",
-  events: "Events",
   live_music: "Live Music",
-  clubs_signups: "Memberships", // was "Clubs & Signups" — read as nightclubs
-
-  deals: "Deals",
+  wellness: "Wellness",
+  deals_memberships: "Deals & Memberships",
   news: "News",
 };
 

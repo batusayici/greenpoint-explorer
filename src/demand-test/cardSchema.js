@@ -29,19 +29,27 @@ export const EVIDENCE_LEVELS = ["high", "medium_high", "medium", "low"];
 
 export const TRUST_RISKS = ["low", "medium", "high"];
 
-// Filter-bar ids, in display order (spec + addendum: New · Food & Drink ·
-// Shopping · Services · Arts/Culture · Family/Kids · Events · Clubs & Signups ·
-// Deals · News · G-Train Support). The Today lens is a separate toggle, not a
+// Filter-bar ids, in display order. The Today lens is a separate toggle, not a
 // filter id. `deals`/`news` added 2026-07-15 (limited-launch content-type test);
 // `live_music` added same day (Batu: clubs/music bars are a key category —
 // venues + show nights share the layer).
 // g_train removed 2026-07-23 (Batu: a campaign as a content category read as
 // confusing) — G-related cards live in their real categories; the exclusive
 // campaign/civic cards moved to news.
+// 2026-07-25 IA re-cut (Batu, N1 groundwork): every lens is a person's actual
+// question, not a content-type taxonomy. `events` retired (58 of 88 cards —
+// the day-grouped All feed already answers "what's happening"); `services`
+// retired (2 cards; services are destination searches, not a browse lens —
+// service openings surface via `new`); `deals` + `clubs_signups` merged into
+// `deals_memberships` (2+3 cards, both under the fold threshold); `wellness`
+// added for the movement cluster (yoga/pilates/dance/run — a real recurring
+// neighborhood cluster the events umbrella was hiding). Civic stays inside
+// news. One-off events with no honest lens carry an empty filters array and
+// live in All only — forced-fit membership is a truth miss.
 export const FILTER_IDS = [
-  "new", "food_drink", "shopping", "services",
-  "arts_culture", "family_kids", "events", "live_music", "clubs_signups",
-  "deals", "news",
+  "new", "food_drink", "shopping",
+  "arts_culture", "family_kids", "live_music", "wellness",
+  "deals_memberships", "news",
 ];
 
 // Generous Greenpoint envelope (Newtown Creek → McCarren, East River → BQE).
@@ -72,7 +80,9 @@ export function validateCard(card) {
   if (card.free != null && typeof card.free !== "boolean") err("free must be a boolean");
   if (!CATEGORIES.includes(card.category)) err(`unknown category "${card.category}"`);
 
-  if (!Array.isArray(card.filters) || card.filters.length === 0) err("missing filters");
+  // Empty filters is legal (2026-07-25): a one-off with no honest lens lives
+  // under All only — the array must still be authored, never absent.
+  if (!Array.isArray(card.filters)) err("missing filters");
   else for (const f of card.filters) if (!FILTER_IDS.includes(f)) err(`unknown filter "${f}"`);
 
   if (!Array.isArray(card.audience) || card.audience.length === 0) err("missing audience");
