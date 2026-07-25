@@ -35,6 +35,21 @@ Result: zero lens-less cards remain; the taxonomy is now `new · food_drink · s
 
 Owner: Batu.
 
+## 2026-07-25 (3rd pass) — `new` folded into `news`
+
+Decision (Batu). Third same-day follow-up to the filter IA re-cut: the `new` lens retired and its 8 cards folded into `news`.
+
+**Reasoning:**
+1. **Label collision** — "New" vs "News" are one letter apart on the chip bar, distinguished only by a small unfilled-circle glyph; a real misread risk on mobile.
+2. **Staleness, confirmed by data** — every `new` card dated to the 2026-07-02 launch batch. Zero additions across five later ingest refreshes (`07-08` through `07-22`). Not a rotating "opened this week" lens — a frozen one.
+3. **Precedent already existed** — `swaines-fall-opening` was filed `category: news` from the start (a future opening announced as news). Keeping a parallel `new` tag for openings that already happened duplicated the same real-world event type into two competing, inconsistently-maintained homes.
+
+**Counterpoint weighed and accepted as a future option, not a blocker:** New (discovery: "somewhere to try") and News (informational: "what changed") are genuinely different intents. If opening volume ever grows enough to justify a dedicated lens again, split it back out — not worth a chip at today's frequency (8 cards, unmaintained).
+
+**Mechanics:** only `card.filters` changed (`new` → `news`) on the 8 affected cards; `category` (`new_business`/`service`/`shopping`/`food_drink`/`arts_culture`) is untouched, so pin colors on the map are unaffected — verified live. `CHIP_KIND` in `CardPanel.jsx` cleaned of dead retired-id entries (`new`, `events`, `clubs_signups`, `deals`) in the same pass. Retired id `new` is guard-tested.
+
+Owner: Batu.
+
 ## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
 
 Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.

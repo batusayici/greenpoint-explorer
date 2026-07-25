@@ -51,8 +51,18 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // club, an accessibility-advocacy launch; future home for things like stoop
 // sales). Astrology and a cannabis-science talk moved into `arts_culture`
 // (culture/ideas programming, same shelf as gallery talks and workshops).
+// Third pass (Batu): `new` folded into `news` — one letter apart on the chip
+// bar, and the data proved it out: every `new` card dated to the 2026-07-02
+// launch batch, untouched across five later ingests (never a rotating
+// "opened this week" lens, just a frozen one). The taxonomy already treats
+// an opening as news (Swaine's fall-opening card was filed `news` from the
+// start) — folding removes the duplicate home instead of fixing a second
+// pipeline to feed it. `category` (new_business/service/etc.) is untouched,
+// so pin colors don't change — only the filter-bar membership moves. Intent
+// really does differ (discovery vs. "what changed") — if volume ever
+// justifies it, split back out; not worth a lens today at this frequency.
 export const FILTER_IDS = [
-  "new", "food_drink", "shopping",
+  "food_drink", "shopping",
   "arts_culture", "family_kids", "live_music", "wellness", "community",
   "deals_memberships", "news",
 ];

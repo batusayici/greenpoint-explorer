@@ -7,8 +7,8 @@
       "title": "Sailor + Siren",
       "category": "new_business",
       "filters": [
-        "new",
-        "food_drink"
+        "food_drink",
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Sailor + Siren",
@@ -57,7 +57,7 @@
       "title": "Core Press",
       "category": "service",
       "filters": [
-        "new"
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Core Press",
@@ -95,7 +95,7 @@
       "title": "Pooch's Parlor",
       "category": "service",
       "filters": [
-        "new"
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Pooch's Parlor",
@@ -137,9 +137,9 @@
       "title": "Giggles & Wiggles",
       "category": "shopping",
       "filters": [
-        "new",
         "shopping",
-        "family_kids"
+        "family_kids",
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Giggles & Wiggles",
@@ -181,9 +181,9 @@
       "title": "Cookies N' Cream",
       "category": "food_drink",
       "filters": [
-        "new",
         "food_drink",
-        "family_kids"
+        "family_kids",
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Cookies N' Cream",
@@ -223,8 +223,8 @@
       "title": "Sotteatery",
       "category": "food_drink",
       "filters": [
-        "new",
-        "food_drink"
+        "food_drink",
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Sotteatery",
@@ -267,8 +267,8 @@
       "title": "Socceria",
       "category": "food_drink",
       "filters": [
-        "new",
-        "food_drink"
+        "food_drink",
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Socceria",
@@ -307,8 +307,8 @@
       "title": "Dreams on Command",
       "category": "arts_culture",
       "filters": [
-        "new",
-        "arts_culture"
+        "arts_culture",
+        "news"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Dreams on Command",

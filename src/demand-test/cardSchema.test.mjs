@@ -6,7 +6,7 @@ const good = {
   id: "test-card",
   title: "Test Card",
   category: "new_business",
-  filters: ["new", "food_drink"],
+  filters: ["food_drink"],
   sourceCampaign: "shop_small_greenpoint_july_2026",
   locationName: "Test Spot",
   address: "1 Test St",
@@ -92,9 +92,9 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the 2026-07-25 IA re-cut (events/services out, wellness+community in, deals+memberships merged)", () => {
+test("FILTER_IDS matches the 2026-07-25 IA re-cut (events/services/new out, wellness+community in, deals+memberships merged)", () => {
   assert.deepEqual(FILTER_IDS, [
-    "new", "food_drink", "shopping",
+    "food_drink", "shopping",
     "arts_culture", "family_kids", "live_music", "wellness", "community",
     "deals_memberships", "news",
   ]);

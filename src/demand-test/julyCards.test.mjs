@@ -62,10 +62,17 @@ test("seed has exactly 71 cards across the six layers", () => {
   // events/services retired, deals+clubs_signups merged into deals_memberships,
   // wellness added (6 movement cards). Second pass same day: the six cards
   // left lens-less sorted into community (5, incl. Trash Club moved out of
-  // deals_memberships) or arts_culture (2). Card set itself unchanged.
+  // deals_memberships) or arts_culture (2). Third pass same day: `new`
+  // folded into `news` (one letter apart; every `new` card dated to the
+  // original launch batch, untouched across five later ingests — never a
+  // live "opened this week" lens). The 8 ex-`new` cards keep their real
+  // category (new_business/service/shopping/food_drink/arts_culture) — only
+  // filter-bar membership moved, so pin colors are untouched. Card set
+  // itself unchanged throughout.
   assert.equal(seed.cards.length, 88);
   const count = (pred) => seed.cards.filter(pred).length;
-  assert.equal(count((c) => c.filters.includes("new")), 8, "8 discovery cards");
+  assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
+  assert.equal(count((c) => c.filters.includes("news")), 20, "12 original news cards + 8 folded from new");
   assert.equal(count((c) => c.category === "event"), 52, "52 event cards");
   assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
   assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
@@ -166,14 +173,34 @@ test("reader-facing copy spells out Shop Small Greenpoint (no bare acronym)", ()
 
 test("retired layers stay retired — no card references them", () => {
   // g_train retired 2026-07-23 (campaign-as-category read as confusing);
-  // events/services/deals/clubs_signups retired in the 2026-07-25 IA re-cut.
-  // Future ingests must not resurrect any of them.
-  const retired = ["g_train", "events", "services", "deals", "clubs_signups"];
+  // events/services/deals/clubs_signups retired in the 2026-07-25 IA re-cut;
+  // new retired same day (third pass) — folded into news. Future ingests
+  // must not resurrect any of them.
+  const retired = ["g_train", "events", "services", "deals", "clubs_signups", "new"];
   for (const c of seed.cards) {
     for (const id of retired) {
       assert.ok(!c.filters.includes(id), `${c.id} still carries ${id}`);
       assert.ok(!c.actions.some((a) => a.filterId === id), `${c.id} action opens retired layer ${id}`);
     }
+  }
+});
+
+test("the 8 ex-new cards folded into news, keeping their real category (pin color unchanged)", () => {
+  const folded = {
+    "sailor-and-siren": "new_business",
+    "core-press": "service",
+    "poochs-parlor": "service",
+    "giggles-and-wiggles": "shopping",
+    "cookies-n-cream": "food_drink",
+    "sotteatery": "food_drink",
+    "socceria": "food_drink",
+    "dreams-on-command": "arts_culture",
+  };
+  for (const [id, category] of Object.entries(folded)) {
+    const c = seed.cards.find((x) => x.id === id);
+    assert.ok(c, `${id} exists`);
+    assert.ok(c.filters.includes("news"), `${id} missing news filter`);
+    assert.equal(c.category, category, `${id} category changed — pin color would shift`);
   }
 });
 
