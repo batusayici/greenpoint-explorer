@@ -42,7 +42,7 @@ mkdirSync(CACHE_DIR, { recursive: true });
 const state = existsSync(STATE_PATH) ? JSON.parse(readFileSync(STATE_PATH, "utf8")) : {};
 const { sources } = JSON.parse(readFileSync(SOURCES_PATH, "utf8"));
 
-const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", mdash: "—", ndash: "–", hellip: "…" };
+const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", mdash: "—", ndash: "–", hellip: "…", times: "×", copy: "©", reg: "®", trade: "™", bull: "•", middot: "·" };
 const decode = (s) =>
   s
     .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
