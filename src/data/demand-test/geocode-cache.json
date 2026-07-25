@@ -2023,5 +2023,385 @@
         "-73.9601430"
       ]
     }
+  },
+  "91 Greenpoint Ave, Brooklyn, NY": {
+    "query": "91 Greenpoint Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:01.295Z",
+    "hit": {
+      "place_id": 359141725,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137511,
+      "lat": "40.7301692",
+      "lon": "-73.9566347",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "91, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7300751",
+        "40.7302633",
+        "-73.9566941",
+        "-73.9565754"
+      ]
+    }
+  },
+  "91 Greenpoint Ave": {
+    "query": "91 Greenpoint Ave",
+    "fetchedAt": "2026-07-25T20:43:02.823Z",
+    "hit": {
+      "place_id": 359902954,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137511,
+      "lat": "40.7301692",
+      "lon": "-73.9566347",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "91, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7300751",
+        "40.7302633",
+        "-73.9566941",
+        "-73.9565754"
+      ]
+    }
+  },
+  "924 Manhattan Ave, Brooklyn, NY": {
+    "query": "924 Manhattan Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:04.122Z",
+    "hit": {
+      "place_id": 359821800,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2592331340,
+      "lat": "40.7310173",
+      "lon": "-73.9541919",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "The Brew Inn",
+      "display_name": "The Brew Inn, 924, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7309673",
+        "40.7310673",
+        "-73.9542419",
+        "-73.9541419"
+      ]
+    }
+  },
+  "1006 Manhattan Ave, Brooklyn, NY": {
+    "query": "1006 Manhattan Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:05.570Z",
+    "hit": {
+      "place_id": 359109139,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280136611,
+      "lat": "40.7333818",
+      "lon": "-73.9544582",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "1006, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7333309",
+        "40.7334326",
+        "-73.9546413",
+        "-73.9542751"
+      ]
+    }
+  },
+  "201 Dupont St, Brooklyn, NY": {
+    "query": "201 Dupont St, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:07.065Z",
+    "hit": {
+      "place_id": 356865142,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280142815,
+      "lat": "40.7364370",
+      "lon": "-73.9515106",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "201, Dupont Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7362969",
+        "40.7365770",
+        "-73.9515743",
+        "-73.9514468"
+      ]
+    }
+  },
+  "201 Dupont St": {
+    "query": "201 Dupont St",
+    "fetchedAt": "2026-07-25T20:43:08.544Z",
+    "hit": {
+      "place_id": 356865142,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280142815,
+      "lat": "40.7364370",
+      "lon": "-73.9515106",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "201, Dupont Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7362969",
+        "40.7365770",
+        "-73.9515743",
+        "-73.9514468"
+      ]
+    }
+  },
+  "30 Gem Street, Brooklyn, NY": {
+    "query": "30 Gem Street, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:09.988Z",
+    "hit": {
+      "place_id": 355525133,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842878644,
+      "lat": "40.7254089",
+      "lon": "-73.9566147",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "30, Gem Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7253589",
+        "40.7254589",
+        "-73.9566647",
+        "-73.9565647"
+      ]
+    }
+  },
+  "38 Driggs Ave, Brooklyn, NY": {
+    "query": "38 Driggs Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:11.492Z",
+    "hit": {
+      "place_id": 359738536,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842680274,
+      "lat": "40.7235368",
+      "lon": "-73.9404588",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "38, Driggs Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7234868",
+        "40.7235868",
+        "-73.9405088",
+        "-73.9404088"
+      ]
+    }
+  },
+  "160 Huron Street, Brooklyn, NY": {
+    "query": "160 Huron Street, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:13.028Z",
+    "hit": {
+      "place_id": 360711032,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 274688982,
+      "lat": "40.7328744",
+      "lon": "-73.9551517",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "160, Huron Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7328104",
+        "40.7329118",
+        "-73.9552155",
+        "-73.9550880"
+      ]
+    }
+  },
+  "Kinda Nice, Greenpoint, Brooklyn, NY": {
+    "query": "Kinda Nice, Greenpoint, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:14.380Z",
+    "hit": null
+  },
+  "106 Calyer St, Brooklyn, NY": {
+    "query": "106 Calyer St, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:15.682Z",
+    "hit": {
+      "place_id": 360930975,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10988277105,
+      "lat": "40.7269717",
+      "lon": "-73.9565605",
+      "category": "amenity",
+      "type": "arts_centre",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Triskelion Arts",
+      "display_name": "Triskelion Arts, 106, Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7269217",
+        "40.7270217",
+        "-73.9566105",
+        "-73.9565105"
+      ]
+    }
+  },
+  "37 Greenpoint Ave, Brooklyn, NY": {
+    "query": "37 Greenpoint Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:17.227Z",
+    "hit": {
+      "place_id": 357501569,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2276340237,
+      "lat": "40.7298686",
+      "lon": "-73.9590216",
+      "category": "amenity",
+      "type": "restaurant",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Cozinha Latina",
+      "display_name": "Cozinha Latina, 37, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7298186",
+        "40.7299186",
+        "-73.9590716",
+        "-73.9589716"
+      ]
+    }
+  },
+  "61 Greenpoint Ave, Brooklyn, NY": {
+    "query": "61 Greenpoint Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:18.689Z",
+    "hit": {
+      "place_id": 358905276,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140861,
+      "lat": "40.7300118",
+      "lon": "-73.9583704",
+      "category": "amenity",
+      "type": "studio",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Salt Mastering",
+      "display_name": "Salt Mastering, 61, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7298858",
+        "40.7301655",
+        "-73.9587393",
+        "-73.9580060"
+      ]
+    }
+  },
+  "76 Kent St, Brooklyn, NY": {
+    "query": "76 Kent St, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:19.994Z",
+    "hit": {
+      "place_id": 356872476,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280140830,
+      "lat": "40.7303738",
+      "lon": "-73.9581195",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "76, Kent Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7302826",
+        "40.7304650",
+        "-73.9581774",
+        "-73.9580616"
+      ]
+    }
+  },
+  "394 McGuinness Blvd, Brooklyn, NY": {
+    "query": "394 McGuinness Blvd, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:21.508Z",
+    "hit": {
+      "place_id": 360245117,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280142972,
+      "lat": "40.7365745",
+      "lon": "-73.9523271",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "394, McGuinness Boulevard, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7364141",
+        "40.7366499",
+        "-73.9524932",
+        "-73.9521058"
+      ]
+    }
+  },
+  "165 Greenpoint Ave, Brooklyn, NY": {
+    "query": "165 Greenpoint Ave, Brooklyn, NY",
+    "fetchedAt": "2026-07-25T20:43:22.954Z",
+    "hit": {
+      "place_id": 359681864,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280137465,
+      "lat": "40.7304606",
+      "lon": "-73.9531143",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "165, Greenpoint Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7303871",
+        "40.7305462",
+        "-73.9531708",
+        "-73.9530597"
+      ]
+    }
   }
 }

@@ -75,21 +75,34 @@ test("seed has exactly 71 cards across the six layers", () => {
   // better than news's reporting one. The G-train status hub itself
   // (g-train-closures) stays in news — it's the reference/timeline card,
   // not itself an ask.
-  assert.equal(seed.cards.length, 88);
+  // 2026-07-25 full refresh — FIRST RUN ON THE SCRIPT PIPELINE (fetch-diff +
+  // Sonnet extraction fan-out; see DECISION_LOG 2026-07-25). Expiry script
+  // deleted 29 past events + the unverifiable Greenpoint Fish oyster HH deal;
+  // 50 adds from the full-roster backfill extraction: Troost/Eavesdrop/Good
+  // Room/GCC/Film Noir/Hide & Seek week-ahead nights, Black Rabbit venue +
+  // trivia + bingo (first carding), Brew Inn trivia, SPARŚA studio, Hana
+  // Makgeolli collab dinners + bottomless standing offer, 5 library day
+  // cards, SummerStarz Michael, Acme Fish Friday re-pin, Peek Inn (coverage-
+  // scan gap), Archestratus-closed + G-train-survey news, 4 kids-program
+  // registrations (Little Dance School, BK Youth Ballet, Dance Space, Yaro
+  // kids clay), Moon Bunny + Pooch's deals, 6 BCC workshop/camp cards from
+  // their newsletter (site collection hid them). Shenanigans (below Kinda
+  // Nice) extracted but dropped — no geocodable address (no pin, no card).
+  assert.equal(seed.cards.length, 108);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 16, "20 after the new-fold, minus 4 moved to community");
-  assert.equal(count((c) => c.category === "event"), 52, "52 event cards");
-  assert.equal(count((c) => c.category === "discount"), 2, "2 deal cards");
-  assert.equal(count((c) => c.category === "news"), 7, "7 news cards");
-  assert.equal(count((c) => c.filters.includes("live_music")), 27, "27 in the Live Music layer (venues + show nights + jazz events)");
-  assert.equal(count((c) => c.category === "subscription"), 3, "3 subscription cards (Falu House, Flower Cat, Trash Club)");
+  assert.equal(count((c) => c.filters.includes("news")), 19, "16 + peek-inn + archestratus-closed + gtrain-sales-survey");
+  assert.equal(count((c) => c.category === "event"), 61, "23 post-expiry + 38 extracted week-ahead events");
+  assert.equal(count((c) => c.category === "discount"), 4, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20%");
+  assert.equal(count((c) => c.category === "news"), 9, "7 + archestratus-closed + gtrain-sales-survey");
+  assert.equal(count((c) => c.filters.includes("live_music")), 28, "16 post-expiry + 12 new venue nights");
+  assert.equal(count((c) => c.category === "subscription"), 7, "Falu, Flower Cat, Trash Club + 4 kids-program registrations");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
-  // Refreshed 2026-07-22; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-07-22T00:00:00-04:00");
+  // Refreshed 2026-07-25; recurring series carry their series end date.
+  const refreshDay = Date.parse("2026-07-25T00:00:00-04:00");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
     assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-22 refresh`);
   }
@@ -101,20 +114,23 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // verified-through (UI suppresses the "ends" line) — a dated one-night deal
   // must NOT carry it.
   const deals = seed.cards.filter((c) => c.category === "discount");
-  assert.equal(deals.length, 2);
+  assert.equal(deals.length, 4);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
   }
-  // 2026-07-21: the one-night El Born wine-night deal expired out; the two
-  // survivors are both recurring standing offers (verified-through dated).
+  // 2026-07-25: the Greenpoint Fish oyster HH deleted (past verified-through,
+  // site unreachable for re-verification). Three recurring standing offers
+  // (verified-through dated) + one dated deal (Moon Bunny, real 8/15 deadline).
   assert.equal(seed.cards.find((c) => c.id === "poochs-parlor-first-groom").recurring, true);
-  assert.equal(seed.cards.find((c) => c.id === "greenpoint-fish-oyster-hh").recurring, true);
+  assert.equal(seed.cards.find((c) => c.id === "hana-bottomless-makgeolli").recurring, true);
+  assert.equal(seed.cards.find((c) => c.id === "poochs-first-visit-20").recurring, true);
+  assert.equal(seed.cards.find((c) => c.id === "moon-bunny-back-to-school").recurring, undefined, "dated deal must NOT carry recurring");
 });
 
 test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
-  assert.equal(news.length, 7);
+  assert.equal(news.length, 9);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
@@ -153,19 +169,20 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   assert.deepEqual(free, [
-    "bushwick-inlet-jazz-0723",
+    "brew-inn-trivia-0729",
     "city-of-water-day-0725",
     "disabled-hungry-launch-0725",
     "giggles-run-club-0725",
     "greenpoint-trash-club",
     "its-my-park-transmitter-0726",
     "library-childrens-book-club-0729",
-    "library-thursday-programs",
-    "longevity-stick-transmitter",
-    "mccarren-makers-terrace-0724",
-    "summerstarz-princess-bride-0724",
+    "library-friday-programs-0731",
+    "library-saturday-programs-0725",
+    "library-thursday-programs-0730",
+    "library-tuesday-programs-0728",
+    "library-wednesday-programs-0729",
+    "summerstarz-michael-0731",
     "tend-franca-seconds-sale",
-    "threes-pat-sophie-0724",
   ]);
 });
 
@@ -217,9 +234,8 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   assert.deepEqual(wellness, [
     "ecstatic-dance-loft-0729",
     "giggles-run-club-0725",
-    "gp-pilates-breath-body-0724",
     "library-monday-programs",
-    "longevity-stick-transmitter",
+    "sparsa-greenpoint",
     "sunday-yoga-domino",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
@@ -246,6 +262,8 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
     "g-advocacy-mta",
     "greenpoint-trash-club",
     "its-my-park-transmitter-0726",
+    "library-saturday-programs-0725",
+    "library-tuesday-programs-0728",
     "newtown-creek-cag-0729",
     "poochs-adoption-0725",
   ]);
@@ -258,8 +276,9 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("community"));
 });
 
-test("astrology and the cannabis-science talk landed in Arts & Culture, not stranded", () => {
-  for (const id of ["held-space-astrology-0725", "cannabis-botany-0723"]) {
+test("astrology landed in Arts & Culture, not stranded", () => {
+  // cannabis-botany-0723 expired out in the 2026-07-25 refresh.
+  for (const id of ["held-space-astrology-0725"]) {
     assert.ok(seed.cards.find((c) => c.id === id).filters.includes("arts_culture"), `${id} missing arts_culture`);
   }
 });
@@ -318,17 +337,20 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.ok(byId("sailor-and-siren").relatedCardIds.includes("g-train-closures"));
   assert.ok(byId("sotteatery").relatedCardIds.includes("g-train-closures"));
   // Live-music layer: venue ↔ its show nights. Rebuilt each refresh from the
-  // show cards that point back at the venue (2026-07-21: expired nights out,
-  // Jul 23–27 nights in).
-  assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-juan-maclean-0725", "good-room-members-lloyd-0724"]);
+  // show cards that point back at the venue (2026-07-25: expired nights out,
+  // Jul 25–Aug 4 nights in from the script-pipeline extraction).
+  assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-juan-maclean-0725", "good-room-matthew-dear-0731", "good-room-baltra-0801"]);
   assert.deepEqual(byId("good-room-juan-maclean-0725").relatedCardIds, ["good-room"]);
-  assert.equal(byId("troost").relatedCardIds.length, 6, "Troost links its 6 current program nights (Radio Brass expired 7/22)");
-  assert.deepEqual(byId("troost-barba-yiorgi-0723").relatedCardIds, ["troost"]);
-  assert.equal(byId("eavesdrop").relatedCardIds.length, 7, "Eavesdrop links its 7 current calendar nights");
-  assert.deepEqual(byId("eavesdrop-subcultures").relatedCardIds, ["eavesdrop"]);
-  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 4);
-  assert.ok(byId("film-noir-jackie-stripper-0724").relatedCardIds.includes("film-noir-cinema"), "screening joins the venue graph");
+  assert.equal(byId("troost").relatedCardIds.length, 8, "Troost links its 8 current program nights (thru Aug 4)");
+  assert.deepEqual(byId("troost-barba-yiorgi-0730").relatedCardIds, ["troost"]);
+  assert.equal(byId("eavesdrop").relatedCardIds.length, 6, "Eavesdrop links its 6 current calendar nights");
+  assert.deepEqual(byId("eavesdrop-arjun-shah-0731").relatedCardIds, ["eavesdrop"]);
+  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 5);
+  assert.ok(byId("film-noir-double-0725").relatedCardIds.includes("film-noir-cinema"), "screening joins the venue graph");
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
+  // First carding of Black Rabbit: venue ↔ its two standing weeknights.
+  assert.deepEqual(byId("black-rabbit").relatedCardIds, ["black-rabbit-nerd-alert-trivia", "black-rabbit-buckaroo-bingo"]);
+  assert.deepEqual(byId("black-rabbit-nerd-alert-trivia").relatedCardIds, ["black-rabbit"]);
 });
 
 test("every card id is a URL-safe slug (deep-link contract, Phase 3.1)", () => {

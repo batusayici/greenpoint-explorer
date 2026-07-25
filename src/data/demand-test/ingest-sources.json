@@ -1,49 +1,401 @@
 {
-  "description": "Track V ingest web-source roster — the machine-readable half of .claude/skills/ingest-newsletters/SKILL.md (policy stays in the skill; URLs + fetch mechanics live here). Driven by scripts/fetch-sources.mjs, which snapshots each source and emits .ingest-cache/changes.json so the ingest only spends model attention on sources that actually changed. fetch: \"auto\" = plain HTTP first, headless-browser fallback; \"browser\" = known to 403/JS-wall plain fetches. cadence: \"monthly\" sources are checked on the first Monday run of the month only.",
+  "description": "Track V ingest web-source roster \u2014 the machine-readable half of .claude/skills/ingest-newsletters/SKILL.md (policy stays in the skill; URLs + fetch mechanics live here). Driven by scripts/fetch-sources.mjs, which snapshots each source and emits .ingest-cache/changes.json so the ingest only spends model attention on sources that actually changed. fetch: \"auto\" = plain HTTP first, headless-browser fallback; \"browser\" = known to 403/JS-wall plain fetches. cadence: \"monthly\" sources are checked on the first Monday run of the month only.",
   "sources": [
-    { "id": "greenpointers", "name": "Greenpointers front page", "url": "https://greenpointers.com/", "group": "roundup", "cadence": "weekly", "fetch": "browser", "notes": "\"What's Happening\" roundup publishes WEDNESDAYS — a diff here surfaces the new post URL; always verify items at the post itself. Apply the Williamsburg-address gate per roundup item. Blocks plain WebFetch." },
-    { "id": "troost", "name": "Troost", "url": "https://troostny.com/calendar/", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "" },
-    { "id": "eavesdrop", "name": "Eavesdrop", "url": "https://eavesdrop.nyc/calendar", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "" },
-    { "id": "greenpoint-comedy-club", "name": "Greenpoint Comedy Club", "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "" },
-    { "id": "film-noir-cinema", "name": "Film Noir Cinema", "url": "https://filmnoircinema.com", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "Month grid; also watch the \"Keep Us Alive\" banner (feeds the film-noir-support card)." },
-    { "id": "good-room", "name": "Good Room (via DoNYC)", "url": "https://donyc.com/venues/good-room", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "Venue's own site is JS-thin — the DoNYC listing is the working calendar." },
-    { "id": "archestratus", "name": "Archestratus", "url": "https://archestrat.us/pages/events", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "" },
-    { "id": "flower-cat", "name": "Flower Cat", "url": "https://flowercat.nyc/events", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "Often empty — they announce late; the venue card carries the \"check their channels\" note." },
-    { "id": "hide-and-seek", "name": "Hide & Seek", "url": "https://hideandseek.nyc", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "Recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat." },
-    { "id": "scrappleland", "name": "Scrappleland", "url": "https://scrappleland.com", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "ScrappleLeague Wednesdays; re-verify the season is running." },
-    { "id": "word-bookstore", "name": "WORD Bookstore", "url": "https://www.wordbookstores.com/events", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "Apply the Brooklyn filter — the page mixes in their Jersey City store. Site bot-walls both plain and headless fetches (IndieCommerce 403) — expect status \"error\"; check via the Browser pane each run." },
-    { "id": "brooklyn-craft-company", "name": "Brooklyn Craft Company", "url": "https://brooklyncraftcompany.com/collections/all-workshops", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards." },
-    { "id": "yaro-studios", "name": "Yaro Studios workshops", "url": "https://yarostudios.com/workshops-1", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "76 Kent St; ceramics/fiber/print classes." },
-    { "id": "yaro-kids-clay", "name": "Yaro Studios kids clay", "url": "https://yarostudios.com/kidsclayclasses", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "Kids-lens events." },
-    { "id": "play-kids-greenpoint", "name": "PLAY Kids Greenpoint", "url": "https://playgreenpoint.com/calendar", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "33 Nassau Ave; use the calendar, not the newsletter form (unreliable/hidden on-site)." },
-    { "id": "last-place-on-earth", "name": "Last Place on Earth", "url": "https://lastplacebk.com", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "531 Graham Ave; board game cafe — game nights, murder mysteries, comedy, Pilates." },
-    { "id": "carcosa-club", "name": "The Carcosa Club", "url": "https://carcosaclub.com/events", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "982 Manhattan Ave; membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address." },
-    { "id": "little-dance-school", "name": "The Little Dance School", "url": "https://thelittledanceschool.com/greenpoint", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "106 Calyer St (inside Triskelion); kids dance, Fall 2026–Spring 2027 schedule. Independently owned local; UK curriculum license does not make it a chain." },
-    { "id": "dance-space-ny", "name": "The Dance Space NY", "url": "https://www.dancewithellyshepley.com/thedancespaceny/studiodates", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "61 Greenpoint Ave; site also points at IG @thedancespaceny for live updates." },
-    { "id": "black-rabbit", "name": "Black Rabbit", "url": "https://blackrabbitbar.com/event/", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "91 Greenpoint Ave; Tue \"Nerd Alert!\" trivia, Sun Buckaroo Bingo." },
-    { "id": "brew-inn-trivia", "name": "The Brew Inn (trivia league listing)", "url": "https://nyctrivialeague.com/listings/brew-inn-brooklyn/", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted — use the league listing only." },
-    { "id": "sunshine-laundromat", "name": "Sunshine Laundromat & Pinball", "url": "https://sunshinelaundromat.com", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "860 Manhattan Ave; \"Our Events\" section." },
-    { "id": "hana-makgeolli-events", "name": "Hana Makgeolli events", "url": "https://hanamakgeolli.com/events", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "201 Dupont St; tours, tastings, classes." },
-    { "id": "hana-makgeolli-soolschool", "name": "Hana Makgeolli Sool School", "url": "https://hanamakgeolli.com/soolschool", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "" },
-    { "id": "greenhook-ginsmiths", "name": "Greenhook Ginsmiths", "url": "https://greenhookgin.com", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "208 Dupont St; no calendar found — newsletter is the primary channel." },
-    { "id": "heaven-and-earth", "name": "Heaven & Earth", "url": "https://heavenandearthbk.com/events", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "290 Nassau Ave; natural wine bar." },
-    { "id": "bin-bin-sake", "name": "Bin Bin Sake", "url": "https://binbinsake.com/pages/book-a-sake-tasting", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "29 Norman Ave; bookable tastings." },
-    { "id": "kettl-tea", "name": "Kettl Tea", "url": "https://kettl.co/collections/class", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "70 Greenpoint Ave; tastings/classes." },
-    { "id": "bellocq-tea", "name": "Bellocq Tea Atelier", "url": "https://bellocqtea.com/collections/tea-tastings-nyc", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "104 West St; Tasting Sessions." },
-    { "id": "triskelion-arts", "name": "Triskelion Arts", "url": "https://www.triskelionarts.org/availability-calendar", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "106 Calyer St; nonprofit dance venue + classes." },
-    { "id": "brooklyn-youth-ballet", "name": "Brooklyn Youth Ballet", "url": "https://www.bkyouthballet.com/calendar/", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "37 Greenpoint Ave, Suite 106; kids + adult programs." },
-    { "id": "moon-bunny-aerial", "name": "Moon Bunny Aerial", "url": "https://moonbunnyaerial.com", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "394 McGuinness Blvd #208; booking calendar via feather.rsvp." },
-    { "id": "sparsa", "name": "SPARŚA Greenpoint", "url": "https://sparsabrooklyn.union.site", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "1006 Manhattan Ave; Sound Meditations, workshops." },
-    { "id": "acme-fish-friday", "name": "Acme Smoked Fish — Fish Friday", "url": "https://acmesmokedfish.com/collections/fish-friday", "group": "venue", "cadence": "weekly", "fetch": "auto", "notes": "30 Gem St; every Friday 8am–1pm, pre-orders close Fri 11:30am — re-pin the weekly event card each run; watch for closure weeks (e.g. 7/3)." },
-    { "id": "dashi-okume", "name": "Dashi Okume classes", "url": "https://okume.us/blogs/classes-event", "group": "venue", "cadence": "monthly", "fetch": "auto", "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 — monthly check only." },
-    { "id": "greenpoint-library", "name": "Greenpoint Library (branch page)", "url": "https://www.bklynlibrary.org/locations/greenpoint", "group": "institution", "cadence": "weekly", "fetch": "browser", "notes": "Rich weekly calendar — group into per-day cards, don't flood. Full sweep method: discover.bklynlibrary.org → Filters → Event Location → Greenpoint Library (JS app; Browser pane); free only where the title says \"Free\". A branch-page diff is the signal to run the sweep." },
-    { "id": "bpl-north-brooklyn-calendar", "name": "BPL North Brooklyn community calendar", "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar", "group": "institution", "cadence": "weekly", "fetch": "browser", "notes": "403s plain fetches. Mostly overlaps the branch calendar — scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG)." },
-    { "id": "go-green-bk", "name": "Go Green Brooklyn", "url": "https://www.gogreenbk.org", "group": "institution", "cadence": "weekly", "fetch": "auto", "notes": "Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days." },
-    { "id": "town-square-bk", "name": "Town Square BK", "url": "https://www.townsquarebk.org", "group": "institution", "cadence": "weekly", "fetch": "auto", "notes": "SummerStarz free Friday movies at Transmitter Park through Aug 21 (in season), scouts programs." },
-    { "id": "greenpoint-trash-club", "name": "Greenpoint Trash Club", "url": "https://greenpointtrashclub.org", "group": "institution", "cadence": "weekly", "fetch": "auto", "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run." },
-    { "id": "nycparks-mcgolrick", "name": "NYC Parks — Msgr. McGolrick Park", "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events", "group": "institution", "cadence": "weekly", "fetch": "browser", "notes": "403s plain fetches. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only." },
-    { "id": "nycparks-mccarren", "name": "NYC Parks — McCarren Park", "url": "https://www.nycgovparks.org/parks/mccarren-park/events", "group": "institution", "cadence": "weekly", "fetch": "browser", "notes": "Same 403 + skip-recurring-rec-classes rule." },
-    { "id": "nycparks-transmitter", "name": "NYC Parks — WNYC Transmitter Park", "url": "https://www.nycgovparks.org/parks/transmitter-park/events", "group": "institution", "cadence": "weekly", "fetch": "browser", "notes": "Same 403 + skip-recurring-rec-classes rule." },
-    { "id": "nycparks-newtown-barge", "name": "NYC Parks — Newtown Barge Playground", "url": "https://www.nycgovparks.org/parks/newtown-barge-playground/events", "group": "institution", "cadence": "weekly", "fetch": "browser", "notes": "Same 403 + skip-recurring-rec-classes rule." }
+    {
+      "id": "greenpointers",
+      "name": "Greenpointers front page",
+      "url": "https://greenpointers.com/",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS \u2014 a diff here surfaces the new post URL; always verify items at the post itself. Apply the Williamsburg-address gate per roundup item. Blocks plain WebFetch."
+    },
+    {
+      "id": "troost",
+      "name": "Troost",
+      "url": "https://troostny.com/calendar/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": ""
+    },
+    {
+      "id": "eavesdrop",
+      "name": "Eavesdrop",
+      "url": "https://eavesdrop.nyc/calendar",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": ""
+    },
+    {
+      "id": "greenpoint-comedy-club",
+      "name": "Greenpoint Comedy Club",
+      "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": ""
+    },
+    {
+      "id": "film-noir-cinema",
+      "name": "Film Noir Cinema",
+      "url": "https://filmnoircinema.com",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Month grid; also watch the \"Keep Us Alive\" banner (feeds the film-noir-support card)."
+    },
+    {
+      "id": "good-room",
+      "name": "Good Room (via DoNYC)",
+      "url": "https://donyc.com/venues/good-room",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Venue's own site is JS-thin \u2014 the DoNYC listing is the working calendar."
+    },
+    {
+      "id": "archestratus",
+      "name": "Archestratus",
+      "url": "https://archestrat.us/pages/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "BRICK + MORTAR CLOSED per site banner (2026-07-25) \u2014 online only now; keep for closure/reopening news + the virtual book club, expect no venue events."
+    },
+    {
+      "id": "flower-cat",
+      "name": "Flower Cat",
+      "url": "https://flowercat.nyc/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Often empty \u2014 they announce late; the venue card carries the \"check their channels\" note."
+    },
+    {
+      "id": "hide-and-seek",
+      "name": "Hide & Seek",
+      "url": "https://hideandseek.nyc",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat."
+    },
+    {
+      "id": "scrappleland",
+      "name": "Scrappleland",
+      "url": "https://scrappleland.com",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "ScrappleLeague Wednesdays; re-verify the season is running."
+    },
+    {
+      "id": "word-bookstore",
+      "name": "WORD Bookstore",
+      "url": "https://www.wordbookstores.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Apply the Brooklyn filter \u2014 the page mixes in their Jersey City store. Site bot-walls both plain and headless fetches (IndieCommerce 403) \u2014 expect status \"error\"; check via the Browser pane each run."
+    },
+    {
+      "id": "brooklyn-craft-company",
+      "name": "Brooklyn Craft Company",
+      "url": "https://brooklyncraftcompany.com/collections/all-workshops",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "165 Greenpoint Ave; workshops sell out fast \u2014 note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) \u2014 the Shopify collection page hides dated listings (2026-07-25 lesson)."
+    },
+    {
+      "id": "yaro-studios",
+      "name": "Yaro Studios workshops",
+      "url": "https://yarostudios.com/workshops-1",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "76 Kent St; ceramics/fiber/print classes."
+    },
+    {
+      "id": "yaro-kids-clay",
+      "name": "Yaro Studios kids clay",
+      "url": "https://yarostudios.com/kidsclayclasses",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Kids-lens events."
+    },
+    {
+      "id": "play-kids-greenpoint",
+      "name": "PLAY Kids Greenpoint",
+      "url": "https://playgreenpoint.com/calendar",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "33 Nassau Ave; use the calendar, not the newsletter form (unreliable/hidden on-site). Plain fetch returns nav-only chrome (2026-07-25) \u2014 browser required."
+    },
+    {
+      "id": "last-place-on-earth",
+      "name": "Last Place on Earth",
+      "url": "https://lastplacebk.com",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "531 Graham Ave; board game cafe \u2014 game nights, murder mysteries, comedy, Pilates."
+    },
+    {
+      "id": "carcosa-club",
+      "name": "The Carcosa Club",
+      "url": "https://carcosaclub.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "982 Manhattan Ave; membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address."
+    },
+    {
+      "id": "little-dance-school",
+      "name": "The Little Dance School",
+      "url": "https://thelittledanceschool.com/greenpoint",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "106 Calyer St (inside Triskelion); kids dance, Fall 2026\u2013Spring 2027 schedule. Independently owned local; UK curriculum license does not make it a chain."
+    },
+    {
+      "id": "dance-space-ny",
+      "name": "The Dance Space NY",
+      "url": "https://www.dancewithellyshepley.com/thedancespaceny/studiodates",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "61 Greenpoint Ave; site also points at IG @thedancespaceny for live updates."
+    },
+    {
+      "id": "black-rabbit",
+      "name": "Black Rabbit",
+      "url": "https://blackrabbitbar.com/event/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "91 Greenpoint Ave; Tue \"Nerd Alert!\" trivia, Sun Buckaroo Bingo."
+    },
+    {
+      "id": "brew-inn-trivia",
+      "name": "The Brew Inn (trivia league listing)",
+      "url": "https://nyctrivialeague.com/listings/brew-inn-brooklyn/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted \u2014 use the league listing only."
+    },
+    {
+      "id": "sunshine-laundromat",
+      "name": "Sunshine Laundromat & Pinball",
+      "url": "https://sunshinelaundromat.com",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "860 Manhattan Ave; \"Our Events\" section."
+    },
+    {
+      "id": "hana-makgeolli-events",
+      "name": "Hana Makgeolli events",
+      "url": "https://hanamakgeolli.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "201 Dupont St; tours, tastings, classes."
+    },
+    {
+      "id": "hana-makgeolli-soolschool",
+      "name": "Hana Makgeolli Sool School",
+      "url": "https://hanamakgeolli.com/soolschool",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": ""
+    },
+    {
+      "id": "greenhook-ginsmiths",
+      "name": "Greenhook Ginsmiths",
+      "url": "https://greenhookgin.com",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "208 Dupont St; no calendar found \u2014 newsletter is the primary channel."
+    },
+    {
+      "id": "heaven-and-earth",
+      "name": "Heaven & Earth",
+      "url": "https://heavenandearthbk.com/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "290 Nassau Ave; natural wine bar."
+    },
+    {
+      "id": "bin-bin-sake",
+      "name": "Bin Bin Sake",
+      "url": "https://binbinsake.com/pages/book-a-sake-tasting",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "29 Norman Ave; bookable tastings."
+    },
+    {
+      "id": "kettl-tea",
+      "name": "Kettl Tea",
+      "url": "https://kettl.co/collections/class",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "70 Greenpoint Ave; tastings/classes."
+    },
+    {
+      "id": "bellocq-tea",
+      "name": "Bellocq Tea Atelier",
+      "url": "https://bellocqtea.com/collections/tea-tastings-nyc",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "104 West St; Tasting Sessions."
+    },
+    {
+      "id": "triskelion-arts",
+      "name": "Triskelion Arts",
+      "url": "https://www.triskelionarts.org/availability-calendar",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "106 Calyer St; nonprofit dance venue + classes. Plain fetch returns nav-only chrome (2026-07-25) \u2014 browser required."
+    },
+    {
+      "id": "brooklyn-youth-ballet",
+      "name": "Brooklyn Youth Ballet",
+      "url": "https://www.bkyouthballet.com/calendar/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "37 Greenpoint Ave, Suite 106; kids + adult programs."
+    },
+    {
+      "id": "moon-bunny-aerial",
+      "name": "Moon Bunny Aerial",
+      "url": "https://moonbunnyaerial.com",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "394 McGuinness Blvd #208; booking calendar via feather.rsvp. Plain fetch returns nav-only chrome (2026-07-25) \u2014 browser required."
+    },
+    {
+      "id": "sparsa",
+      "name": "SPAR\u015aA Greenpoint",
+      "url": "https://sparsabrooklyn.union.site",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "1006 Manhattan Ave; Sound Meditations, workshops."
+    },
+    {
+      "id": "acme-fish-friday",
+      "name": "Acme Smoked Fish \u2014 Fish Friday",
+      "url": "https://acmesmokedfish.com/collections/fish-friday",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "30 Gem St; every Friday 8am\u20131pm, pre-orders close Fri 11:30am \u2014 re-pin the weekly event card each run; watch for closure weeks (e.g. 7/3)."
+    },
+    {
+      "id": "dashi-okume",
+      "name": "Dashi Okume classes",
+      "url": "https://okume.us/blogs/classes-event",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 \u2014 monthly check only."
+    },
+    {
+      "id": "greenpoint-library",
+      "name": "Greenpoint Library (branch page)",
+      "url": "https://www.bklynlibrary.org/locations/greenpoint",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Rich weekly calendar \u2014 group into per-day cards, don't flood. Full sweep method: discover.bklynlibrary.org \u2192 Filters \u2192 Event Location \u2192 Greenpoint Library (JS app; Browser pane); free only where the title says \"Free\". A branch-page diff is the signal to run the sweep."
+    },
+    {
+      "id": "bpl-north-brooklyn-calendar",
+      "name": "BPL North Brooklyn community calendar",
+      "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "403s plain fetches. Mostly overlaps the branch calendar \u2014 scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG)."
+    },
+    {
+      "id": "go-green-bk",
+      "name": "Go Green Brooklyn",
+      "url": "https://www.gogreenbk.org",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days."
+    },
+    {
+      "id": "town-square-bk",
+      "name": "Town Square BK",
+      "url": "https://www.townsquarebk.org",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "SummerStarz free Friday movies at Transmitter Park through Aug 21 (in season), scouts programs."
+    },
+    {
+      "id": "greenpoint-trash-club",
+      "name": "Greenpoint Trash Club",
+      "url": "https://greenpointtrashclub.org",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup \u2014 the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run."
+    },
+    {
+      "id": "nycparks-mcgolrick",
+      "name": "NYC Parks \u2014 Msgr. McGolrick Park",
+      "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "403s plain fetches. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) \u2014 card one-off happenings only."
+    },
+    {
+      "id": "nycparks-mccarren",
+      "name": "NYC Parks \u2014 McCarren Park",
+      "url": "https://www.nycgovparks.org/parks/mccarren-park/events",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Same 403 + skip-recurring-rec-classes rule."
+    },
+    {
+      "id": "nycparks-transmitter",
+      "name": "NYC Parks \u2014 WNYC Transmitter Park",
+      "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Same 403 + skip-recurring-rec-classes rule."
+    },
+    {
+      "id": "nycparks-newtown-barge",
+      "name": "NYC Parks \u2014 Newtown Barge Playground",
+      "url": "https://www.nycgovparks.org/parks/newtown-barge-playground/events",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Same 403 + skip-recurring-rec-classes rule."
+    }
   ]
 }
