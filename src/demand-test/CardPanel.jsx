@@ -636,18 +636,25 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           </div>
         </div>
       )}
-      <footer className="july-ctas">
-        <a
-          className="july-cta july-cta--primary"
-          href={SIGNUP_URL}
-          target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
-          rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
-          onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
-        >
-          {/* Q3-A: the ask is an email signup — say so before the form does. */}
-          Get next week&rsquo;s map by email
-        </a>
-      </footer>
+      {/* The post-value prompt above is the same ask with a better hook
+          ("Finding this useful?") — showing both stacked read as the app
+          asking twice in a row (Batu, phone test). The footer is the
+          fallback for readers who scroll past without ever tripping the
+          post-value gate; it steps aside whenever the prompt is up. */}
+      {!showSignupPrompt && (
+        <footer className="july-ctas">
+          <a
+            className="july-cta july-cta--primary"
+            href={SIGNUP_URL}
+            target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
+            rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
+            onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
+          >
+            {/* Q3-A: the ask is an email signup — say so before the form does. */}
+            Get next week&rsquo;s map by email
+          </a>
+        </footer>
+      )}
     </aside>
   );
 }

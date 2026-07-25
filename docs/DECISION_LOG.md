@@ -62,6 +62,14 @@ Decision (Batu). Fourth same-day follow-up.
 
 Owner: Batu.
 
+## 2026-07-25 (5th pass) — Fixed duplicate signup CTA at feed end
+
+Decision (Batu, phone test screenshot). The post-value signup prompt ("Finding this useful? Get next week's edition in your inbox" — primary CTA + "Not now") and the persistent footer CTA ("Get next week's map by email") were both always adjacent in the DOM: the footer rendered unconditionally, so any time the post-value prompt showed, it was immediately followed by a second, near-identical ask.
+
+**Fix:** the footer (`july-ctas` in `CardPanel.jsx`) now renders only when the post-value prompt is NOT showing. The prompt is the better-hooked ask ("Finding this useful?") and takes priority; the plain footer remains the fallback CTA for readers who scroll past everything without ever tripping the post-value gate (2nd card open or 1st action tap). Distinct analytics placements (`postvalue` vs `footer`) are preserved — this only changes which one is visible at a time, not the tracking.
+
+Owner: Batu.
+
 ## 2026-07-22 — Coverage-scan cadence: one weekly Thursday scan (Sunday scan paused)
 
 Decision (Batu). The twice-weekly coverage-scan cadence (2026-07-21) drops to **one weekly scan: Thursday 9am, deliberately after the Wednesday Greenpointers pull** — measuring the residual gap after both newsletters and the roundup have landed. The Thursday scan absorbs both jobs: weekend-urgent gaps flagged first (off-cycle mini-ingest at Batu's call), and the full-week diff becomes the pre-loaded input for Monday's ingest.
