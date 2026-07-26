@@ -33,7 +33,7 @@ Plan of record for the launch → learn → PMF campaign. Decided in the 2026-07
 
 Product (each TDD, preview-verified, gated deploy):
 - 3.1 Share infra: site-wide OG tags + II-C preview image on the root page; per-card deep links as **real paths** (`/e/<slug>`, `history.replaceState` on open) rather than `?card=` params — same UX, but each event gets a crawlable URL (see 3.6). Per-card OG images deferred (YAGNI).
-- 3.2 Save/star (localStorage, no login) + Saved filter chip; day-picker chips over `groupByDay()` buckets. New events: `save_tap`, day `filter_tap` variant.
+- ~~3.2 Save/star + day picker~~ **cut 2026-07-26 (Batu): no new features before launch** — share + add-to-calendar actions already prove engagement; the Laura/Edmond star/save + time-filter asks stay on record as post-launch candidates ranked by observed pull, not launch blockers.
 - 3.3 Business submission path: "Add your event/offer (free)" Tally + pinned CTA card; submissions join the Monday review queue (ingest-skill section). `submit_tap` event. Supply-side PMF sensor.
 - 3.4 Domain cutover: greenpoint.life → Vercel project; root already serves the feed directly (entry swap 2026-07-22 — no rewrite needed); 3D prototype stays unlinked; verify `?src=` + events on the new domain.
 - 3.5 De-July ships here if not already.
