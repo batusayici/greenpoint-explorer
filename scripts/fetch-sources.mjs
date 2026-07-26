@@ -8,9 +8,11 @@
 //        node scripts/fetch-sources.mjs --mark-ingested [--only id,id]
 //
 // Roster: src/data/demand-test/ingest-sources.json (policy stays in SKILL.md).
-// State:  .ingest-cache/ (gitignored) — state.json, <id>.txt latest snapshots,
+// State:  .ingest-cache/ — state.json, <id>.txt latest snapshots,
 //         <id>.ingested.txt baselines, <id>.diff.txt (lines added vs the
-//         INGESTED baseline), changes.json.
+//         INGESTED baseline), changes.json. Only the *.ingested.txt baselines
+//         are tracked in git (cloud ingest runs diff from a fresh checkout);
+//         everything else in the cache is transient and gitignored.
 //
 // Change detection is against the last *ingested* snapshot, not the last
 // fetch — otherwise a daily fetch would silently erode the diff before the
@@ -162,6 +164,11 @@ for (const src of sources) {
 
     // Status is relative to the last INGESTED baseline, not the last fetch.
     const baselinePath = join(CACHE_DIR, `${src.id}.ingested.txt`);
+    // Fresh checkouts have the committed baselines but no state.json — derive
+    // the ingested hash from the baseline (snapshots are written text + "\n").
+    if (prev.ingestedHash == null && existsSync(baselinePath)) {
+      prev.ingestedHash = hash(readFileSync(baselinePath, "utf8").replace(/\n$/, ""));
+    }
     if (prev.ingestedHash === h && !FORCE) {
       entry.status = "unchanged";
     } else {

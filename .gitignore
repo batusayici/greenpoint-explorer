@@ -34,5 +34,8 @@ tests/.diffs/
 # Local agent worktrees (never commit)
 .claude/worktrees/
 
-# Track V ingest source snapshots (scripts/fetch-sources.mjs)
-.ingest-cache/
+# Track V ingest source snapshots (scripts/fetch-sources.mjs) — transient,
+# except the *.ingested.txt diff baselines, which are tracked so cloud ingest
+# runs can diff from a fresh checkout
+.ingest-cache/*
+!.ingest-cache/*.ingested.txt
