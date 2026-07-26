@@ -4,6 +4,7 @@ import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay, l
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
+import { bannerSlot } from "./bannerSlot.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
@@ -85,6 +86,10 @@ export default function JulyApp() {
   // day boundaries even in a long-lived tab.
   const gtrainPhase = bannerPhase(new Date());
   const communityAlert = activeCommunityAlert(new Date(), CARDS_BY_ID);
+  // One banner at a time (2026-07-26): most consequential takes the slot.
+  // The feed pin below stays tied to communityAlert, not the slot — the
+  // campaign keeps its feed elevation even when a closure holds the banner.
+  const slot = bannerSlot(gtrainPhase, communityAlert);
 
   const { visible, groups } = useMemo(() => {
     const now = new Date();
@@ -180,10 +185,10 @@ export default function JulyApp() {
           </p>
         </div>
       </header>
-      {/* Banner prominence follows proximity (UX eval F24, decision A):
-          one line while the closure is distant, full banner in the final
-          week, alert during. Plain status, not a control (2026-07-23). */}
-      {gtrainPhase === "distant" && (
+      {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still
+          follows proximity (UX eval F24, decision A); the G status stays a
+          plain status, not a control (2026-07-23). */}
+      {slot?.kind === "gtrain" && slot.phase === "distant" && (
         <div className="july-gbanner july-gbanner--compact" role="status">
           <span className="july-gbadge">G</span>
           <span>
@@ -191,11 +196,11 @@ export default function JulyApp() {
           </span>
         </div>
       )}
-      {(gtrainPhase === "near" || gtrainPhase === "active") && (
+      {slot?.kind === "gtrain" && (slot.phase === "near" || slot.phase === "active") && (
         <div className="july-gbanner" role="status">
           <span className="july-gbadge">G</span>
           <span>
-            <strong>{gtrainPhase === "active" ? "No G trains" : "Next G closure"}</strong>{" "}
+            <strong>{slot.phase === "active" ? "No G trains" : "Next G closure"}</strong>{" "}
             {GTRAIN_WINDOW.dates} &middot; {GTRAIN_WINDOW.stops} &middot; {GTRAIN_WINDOW.shuttle}
           </span>
         </div>
@@ -203,13 +208,13 @@ export default function JulyApp() {
       {/* Community alert (DECISION_LOG 2026-07-26): the slot's rare
           "neighborhood needs you" tier — sourced, time-bound, one at a time,
           and a control, not a status: it deep-opens the sourced card. */}
-      {communityAlert && (
+      {slot?.kind === "community" && (
         <button type="button" className="july-cbanner" onClick={onAlertTap}>
           <span className="july-gbadge july-cbadge">&hearts;</span>
           <span className="july-cbanner-text">
-            <strong>{communityAlert.headline}</strong> &middot; {communityAlert.detail}
+            <strong>{slot.alert.headline}</strong> &middot; {slot.alert.detail}
           </span>
-          <span className="july-cbanner-cta">{communityAlert.cta} &rarr;</span>
+          <span className="july-cbanner-cta">{slot.alert.cta} &rarr;</span>
         </button>
       )}
       <main className="july-main">
