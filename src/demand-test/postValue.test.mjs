@@ -17,9 +17,9 @@ test("fires once on the 1st action tap (value demonstrated by acting)", () => {
   assert.equal(gate.record(EVENTS.ACTION_TAP), false);
 });
 
-test("non-value events (filters, pins, toggles) never trigger it", () => {
+test("non-value events (filters, pins) never trigger it", () => {
   const gate = createPostValueGate();
-  for (const name of [EVENTS.FILTER_TAP, EVENTS.PIN_TAP, EVENTS.TODAY_TOGGLE, EVENTS.CTA_TAP, EVENTS.SOURCE_TAP]) {
+  for (const name of [EVENTS.FILTER_TAP, EVENTS.PIN_TAP, EVENTS.CTA_TAP, EVENTS.SOURCE_TAP]) {
     assert.equal(gate.record(name), false, name);
   }
   assert.equal(gate.record(EVENTS.CARD_OPEN), false, "still only 1 open");

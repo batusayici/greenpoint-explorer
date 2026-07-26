@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/july-2026-cards.json";
-import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
+import { matchesFilter, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
@@ -24,7 +24,6 @@ function initialDeepLink() {
 // page; must never import the 3D runtime.
 export default function JulyApp() {
   const [filter, setFilter] = useState("all");
-  const [todayOnly, setTodayOnly] = useState(false);
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
@@ -94,14 +93,12 @@ export default function JulyApp() {
   const { visible, groups } = useMemo(() => {
     const now = new Date();
     const live = seed.cards.filter((c) => !isExpiredCard(c, now));
-    const shown = live
-      .filter((c) => matchesFilter(c, filter))
-      .filter((c) => !todayOnly || isActiveOn(c, now));
+    const shown = live.filter((c) => matchesFilter(c, filter));
     // Map keeps the flat set (full context even while focused); the list
     // scans as a calendar (day groups), narrowed to the focused location.
     const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
     return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now, communityAlert?.cardId ?? null) };
-  }, [filter, todayOnly, pinFocus, communityAlert?.cardId]);
+  }, [filter, pinFocus, communityAlert?.cardId]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
@@ -110,11 +107,6 @@ export default function JulyApp() {
       const still = seed.cards.find((c) => c.id === sel && matchesFilter(c, id));
       return still ? sel : null;
     });
-  }, []);
-
-  const onToday = useCallback((v) => {
-    setPinFocus(null); // lens change exits location focus
-    setTodayOnly(v);
   }, []);
 
   // Pin tap (from MapView): focus the feed on that location. The chip bar
@@ -127,7 +119,6 @@ export default function JulyApp() {
       return;
     }
     setFilter("all");
-    setTodayOnly(false);
     setSelectedId(group.cards.length === 1 ? group.cards[0].id : null);
     setPinFocus({
       key: group.key,
@@ -138,19 +129,17 @@ export default function JulyApp() {
   }, []);
 
   // Reveal = land the card in the visible feed no matter the current lens:
-  // exit location focus, widen the filter if it hides the target, drop the
-  // Today lens if the target isn't active. Shared by related-chip taps and
-  // the community-alert banner.
+  // exit location focus, widen the filter if it hides the target. Shared by
+  // related-chip taps and the community-alert banner.
   const revealCard = useCallback(
     (cardId) => {
       const target = CARDS_BY_ID.get(cardId);
       if (!target) return;
       setPinFocus(null);
       if (!matchesFilter(target, filter)) setFilter("all");
-      if (todayOnly && !isActiveOn(target, new Date())) setTodayOnly(false);
       setSelectedId(cardId);
     },
-    [filter, todayOnly],
+    [filter],
   );
 
   // Place-graph traversal: tapping a related chip must always land somewhere
@@ -229,8 +218,6 @@ export default function JulyApp() {
           filterCounts={filterCounts}
           focus={pinFocus}
           onClearFocus={() => setPinFocus(null)}
-          todayOnly={todayOnly}
-          onToday={onToday}
           selectedId={selectedId}
           onSelect={setSelectedId}
           onRelated={onRelated}

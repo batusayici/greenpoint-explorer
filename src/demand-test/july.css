@@ -306,35 +306,6 @@ body { margin: 0; }
 /* thin layers wait behind "More" until the ingest stocks them (F16-B) */
 .july-chip--more { border-style: dashed; color: var(--ink-soft); }
 
-/* time lens as a segmented control (F11-B): both states visible, one active */
-.july-seg {
-  display: inline-flex;
-  margin-left: auto;
-  flex: none;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.july-seg button {
-  border: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  font-family: inherit;
-  padding: 7px 12px 8px;
-  cursor: pointer;
-}
-
-.july-seg button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper-lift);
-}
-
-.july-seg button:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
-
 .july-list {
   flex: 1;
   overflow-y: auto;
@@ -736,7 +707,7 @@ body { margin: 0; }
     background: var(--paper);
   }
   .july-filters::-webkit-scrollbar { display: none; }
-  .july-chip, .july-seg button { white-space: nowrap; }
+  .july-chip { white-space: nowrap; }
   /* Day header sticks right under the pinned map + chip bar (2026-07-23 live
      review: "as I scroll down I don't lose sight of what date I'm viewing").
      --chrome is the shared offset — map+chips height above, everything else

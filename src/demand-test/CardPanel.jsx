@@ -324,7 +324,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, todayOnly, onToday, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -388,7 +388,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       });
     if (needed) pillOriginRef.current = ownScroller ? list.scrollTop : window.scrollY;
     setShowTodayPill(needed);
-  }, [filter, todayOnly, focus]);
+  }, [filter, focus]);
 
   // The pill withdraws by itself: when the feed top scrolls back into view, or
   // once the reader scrolls meaningfully past where it appeared (their answer
@@ -502,32 +502,6 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             Less
           </button>
         )}
-        {/* Time lens as a segmented control (UX eval F11, decision B): both
-            states visible, one always active — nothing to infer. */}
-        <div className="july-seg" role="group" aria-label="Time lens">
-          <button
-            type="button"
-            aria-pressed={!todayOnly}
-            onClick={() => {
-              if (!todayOnly) return;
-              trackEvent(EVENTS.TODAY_TOGGLE, { on: false });
-              onToday(false);
-            }}
-          >
-            This week
-          </button>
-          <button
-            type="button"
-            aria-pressed={todayOnly}
-            onClick={() => {
-              if (todayOnly) return;
-              trackEvent(EVENTS.TODAY_TOGGLE, { on: true });
-              onToday(true);
-            }}
-          >
-            Today
-          </button>
-        </div>
       </nav>
       {/* Location focus (pin tap): the feed is narrowed to one spot — say so,
           with the way back (the announce-the-narrowing pattern from F13). */}
@@ -591,10 +565,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             <button
               type="button"
               className="july-empty-reset"
-              onClick={() => {
-                onFilter("all");
-                onToday(false);
-              }}
+              onClick={() => onFilter("all")}
             >
               Show all
             </button>

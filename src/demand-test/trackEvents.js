@@ -8,7 +8,6 @@ export const EVENTS = Object.freeze({
   PIN_TAP: "pin_tap",
   CARD_OPEN: "card_open",
   FILTER_TAP: "filter_tap",
-  TODAY_TOGGLE: "today_toggle",
   ACTION_TAP: "action_tap",
   CTA_TAP: "cta_tap",
   RELATED_TAP: "related_tap",
