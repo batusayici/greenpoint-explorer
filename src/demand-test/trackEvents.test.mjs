@@ -9,12 +9,13 @@ test("forwards a known event with its properties to the bound transport", () => 
   assert.deepEqual(calls, [{ name: "pin_tap", data: { cardId: "core-press", kind: "business" } }]);
 });
 
-test("exposes the ten agreed events by stable wire name", () => {
+test("exposes the eleven agreed events by stable wire name", () => {
   // related_tap + source_tap added 2026-07-03: the place-graph traversal and
   // the source-credibility link are go/no-go evidence, same as action taps.
   // feedback_tap added 2026-07-15: the limited-launch feedback channel.
   // return_visit added 2026-07-26 (growth-engine R0): the retention sensor —
   // the PMF bar is denominated in it.
+  // alert_tap added 2026-07-26: the community-alert banner tap (banner charter).
   assert.deepEqual(EVENTS, {
     PIN_TAP: "pin_tap",
     CARD_OPEN: "card_open",
@@ -26,6 +27,7 @@ test("exposes the ten agreed events by stable wire name", () => {
     SOURCE_TAP: "source_tap",
     FEEDBACK_TAP: "feedback_tap",
     RETURN_VISIT: "return_visit",
+    ALERT_TAP: "alert_tap",
   });
 });
 

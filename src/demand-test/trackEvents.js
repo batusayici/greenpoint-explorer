@@ -15,6 +15,7 @@ export const EVENTS = Object.freeze({
   SOURCE_TAP: "source_tap",
   FEEDBACK_TAP: "feedback_tap",
   RETURN_VISIT: "return_visit",
+  ALERT_TAP: "alert_tap",
 });
 
 const NAMES = new Set(Object.values(EVENTS));
