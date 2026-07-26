@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-26 — Banner charter: the slot under the header is the neighborhood status line; community-alert tier ships (Film Noir)
+
+Decision (Batu). The banner slot is the product's one guaranteed-impression surface; its value is that it has never wasted attention. It is chartered as a single-slot **neighborhood status line** with a strict priority queue where silence is the default state:
+
+1. **Priority ladder:** active sourced disruption (G closure live, civic alerts) → upcoming sourced disruption → **community alert** (see bar below) → re-entry signal ("new since your last visit," future growth-engine R2) → empty.
+2. **Community-alert eligibility bar** (all required): existential stakes **publicly self-declared by the business** (their words — we never editorialize someone into crisis); sourced per truth rules; time-bound with one concrete action; **one at a time** (a second qualifying case rides the feed, never a second banner); leaves when the campaign ends. Implementation self-hides at a re-verify deadline (`expiresAt`) unless the weekly ingest renews it from a fresh source check, and self-hides if its card leaves the deck.
+3. **Banned uses:** sponsorship/ads (pre-PMF this sells the moat), email capture (postValue.js owns that, gated on demonstrated value), anything unsourced or evergreen.
+4. **Revision of 2026-07-23 "plain status, not a control":** a banner with a destination card is tappable (real `<button>`, deep-opens the card, `alert_tap` in the locked taxonomy). The G status banner stays a plain status — it has no destination.
+5. **First use + freeze exception:** Film Noir Cinema's "Keep Us Alive" fundraiser (card `film-noir-support`, sourced from filmnoircinema.com). Scoped exception to the pre-launch feature freeze: time-sensitive, tiny (one module + one banner + a feed pin), and mission-core — the header's own promise is "how to support local." While a community alert runs, its card leads the feed in a "Neighborhood needs you" group. Strategically this is the supply-loop proof-of-concept: visible community support the business can feel.
+
+Modules: `communityAlert.js`, `groupByDay(..., pinnedId)`, `EVENTS.ALERT_TAP`. Plan: `docs/superpowers/plans/2026-07-26-community-alert-banner.md`.
+
+Owner: Batu.
+
 ## 2026-07-26 — Jul 15 reframed as a friends round; checkpoint gate voided; Phase 3 becomes the launch track
 
 Decision (Batu). The Jul 15 "limited launch" never functioned as a launch: it reached a handful of friends (mostly parents), some never opened it, and its real output was the qualitative feedback that drove the 2026-07-25 IA re-cut. Consequences:
