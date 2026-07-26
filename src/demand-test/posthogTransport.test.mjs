@@ -46,3 +46,11 @@ test("POSTHOG_CONFIG locks the privacy-light contract", () => {
   assert.equal(POSTHOG_CONFIG.capture_pageleave, false);
   assert.ok(Object.isFrozen(POSTHOG_CONFIG));
 });
+
+// Launch-readiness hard gate (2026-07-26): error monitoring active before the
+// public push. Exception autocapture watches window.onerror/unhandledrejection
+// — it reports crashes, not behavior, so the privacy-light contract above is
+// untouched (still no interaction autocapture, no recording, no cookies).
+test("POSTHOG_CONFIG enables exception capture (error-monitoring gate)", () => {
+  assert.equal(POSTHOG_CONFIG.capture_exceptions, true);
+});

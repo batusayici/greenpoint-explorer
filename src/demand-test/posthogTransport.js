@@ -15,6 +15,10 @@ export const POSTHOG_CONFIG = Object.freeze({
   capture_pageleave: false,
   disable_session_recording: true,
   persistence: "localStorage",
+  // Error monitoring (launch-readiness hard gate, 2026-07-26): autocapture
+  // window.onerror + unhandledrejection into PostHog error tracking. Crashes,
+  // not behavior — the privacy-light contract above is unchanged.
+  capture_exceptions: true,
 });
 
 export function createCaptureTransport(posthog) {

@@ -39,7 +39,9 @@ Product (each TDD, preview-verified, gated deploy):
 - 3.5 De-July ships here if not already.
 - 3.6 Answer-engine surface (AEO) — *decision 2026-07-21 (Batu): post-launch north star is that humans **and AIs** asking "what's happening in Greenpoint" get Greenpoint Life as the source, not Greenpointers/Brooklyn Eagle.* The SPA is invisible to LLM crawlers (GPTBot/ClaudeBot/PerplexityBot don't execute JS), so the structured card data must exist as static HTML: build-time prerender of per-event pages at `/e/<slug>` from the cards JSON (content + schema.org/Event JSON-LD in raw HTML), `sitemap.xml`, RSS + ICS feed of current cards, `llms.txt`. Acceptance: `curl` (no JS) of an event URL returns the event's name/date/venue; JSON-LD passes Google's Rich Results test. Rides the 3.1 deep-link work and the 3.4 cutover; no framework change — a Vite build step over data that is already schema-valid. Truth rules double as the citation-trust moat; freshness (weekly ingest) is the ranking edge event queries reward.
 
-Marketing (Claude drafts, Batu sends): Reddit + local-group posts (per-channel `?src=`) · print-ready II-C QR window card (`?src=qr`), offered first to businesses already on the map. Greenpointers pitch and further SSG amplification deliberately held.
+Marketing (Claude drafts, Batu sends): Reddit + local-group posts · print-ready II-C QR window card, offered first to businesses already on the map. Greenpointers pitch and further SSG amplification deliberately held. **Every outbound link is copied from `docs/launch/channel-links.md` (canonical tagged-link table + pre-send checklist, 2026-07-26) — never composed by hand.**
+
+Launch-readiness status (2026-07-26): **error monitoring shipped** — PostHog exception autocapture (`capture_exceptions` in `posthogTransport.js`), verified end-to-end ($exception events confirmed server-side by name; note they bypass the `trackEvents` seam so they carry `$current_url` but no `src`). Batu action: enable error-tracking alert emails in the PostHog UI (needs account access, not doable via the read key).
 
 ## Phase 4 — Weekly PMF loop (Aug → ~mid-Sep)
 
