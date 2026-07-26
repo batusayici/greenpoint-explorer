@@ -108,6 +108,48 @@ body { margin: 0; }
   font-size: 0.8rem;
 }
 
+/* --- community alert banner (DECISION_LOG 2026-07-26) --- */
+/* brick bed: paper-lift on #a04432 = 4.9:1, AA for this 13px line. A real
+   button — unlike the G status, this banner has a destination card. */
+.july-cbanner {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 22px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: var(--brick);
+  color: var(--paper-lift);
+  font: inherit;
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.july-cbanner:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -3px;
+}
+
+.july-cbadge {
+  background: transparent;
+  font-size: 0.7rem;
+}
+
+.july-cbanner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.july-cbanner-cta {
+  flex: none;
+  font-weight: 850;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 /* --- main split --- */
 .july-main {
   position: relative;

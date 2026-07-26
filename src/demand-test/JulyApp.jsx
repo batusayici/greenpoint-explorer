@@ -3,6 +3,7 @@ import seed from "../data/demand-test/july-2026-cards.json";
 import { matchesFilter, isActiveOn, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
+import { activeCommunityAlert } from "./communityAlert.js";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
@@ -83,6 +84,7 @@ export default function JulyApp() {
   // Computed per render, not memoized — the banner must flip phase on the
   // day boundaries even in a long-lived tab.
   const gtrainPhase = bannerPhase(new Date());
+  const communityAlert = activeCommunityAlert(new Date(), CARDS_BY_ID);
 
   const { visible, groups } = useMemo(() => {
     const now = new Date();
@@ -93,8 +95,8 @@ export default function JulyApp() {
     // Map keeps the flat set (full context even while focused); the list
     // scans as a calendar (day groups), narrowed to the focused location.
     const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
-    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now) };
-  }, [filter, todayOnly, pinFocus]);
+    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now, communityAlert?.cardId ?? null) };
+  }, [filter, todayOnly, pinFocus, communityAlert?.cardId]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
@@ -130,20 +132,37 @@ export default function JulyApp() {
     });
   }, []);
 
+  // Reveal = land the card in the visible feed no matter the current lens:
+  // exit location focus, widen the filter if it hides the target, drop the
+  // Today lens if the target isn't active. Shared by related-chip taps and
+  // the community-alert banner.
+  const revealCard = useCallback(
+    (cardId) => {
+      const target = CARDS_BY_ID.get(cardId);
+      if (!target) return;
+      setPinFocus(null);
+      if (!matchesFilter(target, filter)) setFilter("all");
+      if (todayOnly && !isActiveOn(target, new Date())) setTodayOnly(false);
+      setSelectedId(cardId);
+    },
+    [filter, todayOnly],
+  );
+
   // Place-graph traversal: tapping a related chip must always land somewhere
   // visible, so widen the lens if the target card is filtered out right now.
   const onRelated = useCallback(
     (fromCardId, toCardId) => {
-      const target = CARDS_BY_ID.get(toCardId);
-      if (!target) return;
+      if (!CARDS_BY_ID.has(toCardId)) return;
       trackEvent(EVENTS.RELATED_TAP, { fromCardId, toCardId });
-      setPinFocus(null); // the target must land in the full feed
-      if (!matchesFilter(target, filter)) setFilter("all");
-      if (todayOnly && !isActiveOn(target, new Date())) setTodayOnly(false);
-      setSelectedId(toCardId);
+      revealCard(toCardId);
     },
-    [filter, todayOnly],
+    [revealCard],
   );
+
+  const onAlertTap = useCallback(() => {
+    trackEvent(EVENTS.ALERT_TAP, { cardId: communityAlert.cardId });
+    revealCard(communityAlert.cardId);
+  }, [communityAlert?.cardId, revealCard]);
 
   return (
     <div className="july-shell">
@@ -180,6 +199,18 @@ export default function JulyApp() {
             {GTRAIN_WINDOW.dates} &middot; {GTRAIN_WINDOW.stops} &middot; {GTRAIN_WINDOW.shuttle}
           </span>
         </div>
+      )}
+      {/* Community alert (DECISION_LOG 2026-07-26): the slot's rare
+          "neighborhood needs you" tier — sourced, time-bound, one at a time,
+          and a control, not a status: it deep-opens the sourced card. */}
+      {communityAlert && (
+        <button type="button" className="july-cbanner" onClick={onAlertTap}>
+          <span className="july-gbadge july-cbadge">&hearts;</span>
+          <span className="july-cbanner-text">
+            <strong>{communityAlert.headline}</strong> &middot; {communityAlert.detail}
+          </span>
+          <span className="july-cbanner-cta">{communityAlert.cta} &rarr;</span>
+        </button>
       )}
       <main className="july-main">
         <CardPanel
