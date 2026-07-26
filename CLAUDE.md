@@ -12,7 +12,7 @@ npm run preview   # preview production build
 node scripts/geocode-demand-cards.mjs   # geocode new cards (Nominatim → geocode-cache.json)
 ```
 
-Weekly content refresh runs via the `/ingest-newsletters` skill (review-gated; nothing ships unreviewed).
+Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill); each run opens an `ingest/*` PR — **merging the PR is the review gate and the production deploy**. Nothing ships unreviewed.
 
 ## Read First
 
