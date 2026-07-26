@@ -166,12 +166,9 @@ export default function JulyApp() {
               a freshness signal, computed per render like the banner phase. */}
           <span className="july-kicker">{editionLabel(new Date())}</span>
           <h1>Greenpoint Life</h1>
-          {/* Leads with time + action, not directory-speak (tester feedback
-              2026-07-08: "what's different from Google Maps?") */}
-          <p>
-            What&rsquo;s happening near you this week &mdash; and how to support local through the
-            G-train closures. Every business on this map is locally owned.
-          </p>
+          {/* Names the content types + the verification stake (2026-07-26:
+              de-centered from the G closures; max 2 lines on mobile). */}
+          <p>Your week in Greenpoint, verified: events, openings, deals, and neighborhood news.</p>
         </div>
       </header>
       {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still
