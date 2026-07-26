@@ -105,7 +105,7 @@ evidence.
 
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
-| R0 | **Pull the `return_visit` sensor forward from Phase 4 to now.** localStorage first-seen + visit count, privacy-light, new event through the locked taxonomy. | One gated ship, TDD. | Not an experiment — a prerequisite. Unlocks R1/R2 and the PMF bar itself. |
+| R0 | **Pull the `return_visit` sensor forward from Phase 4 to now.** localStorage first-seen + visit count, privacy-light, new event through the locked taxonomy. *(Shipped to production 2026-07-26 — `returnVisit.js`.)* | One gated ship, TDD. | Not an experiment — a prerequisite. Unlocks R1/R2 and the PMF bar itself. |
 | R1 | **Weekly digest to postvalue signups.** Mon post-ingest, "this week in Greenpoint," II-C, links carry `?src=digest`. AI drafts; Batu sends. | Plain email to existing signups — no automation build. | `src=digest` return sessions vs. signup count, pre/post over 3 weeks. Kill if <30% of recipients ever click by week 3. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
 | R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Already the checkpoint fail-branch; run it even on a pass. | Qualitative; feeds Tue proposals. |
@@ -224,6 +224,8 @@ Anything recurring that can't be automated into the Mon/Tue rhythm doesn't ship.
 Phase 4 to this week. Retention is the foundation metric of the entire engine,
 the PMF bar is denominated in it, and we currently cannot measure it. It's a
 day of gated, testable work and every later experiment reads through it.
+*(Done — shipped to production 2026-07-26. Next in line: A1 funnel read at the
+checkpoint.)*
 
 ## Explicitly not doing
 

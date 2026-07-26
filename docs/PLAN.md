@@ -2,7 +2,7 @@
 
 Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/product/approvals), Agent (execution)
 
-> **Roadmap only — milestone granularity.** Detail lives where it belongs: decisions & rationale → `docs/DECISION_LOG.md` · launch/PMF ops → `docs/launch/` · per-task designs → `docs/superpowers/specs/` · strategy → `docs/context/` · parked 3D track → `docs/parked/3d-explorer/`. Completed-work specifics (commits, files, tests) live in git history, not here.
+> **Roadmap only — milestone granularity.** Detail lives where it belongs: decisions & rationale → `docs/DECISION_LOG.md` · launch/PMF ops → `docs/launch/` · growth strategy → `docs/growth/growth-engine.md` · per-task designs → `docs/superpowers/specs/` · strategy → `docs/context/` · parked 3D track → `docs/parked/3d-explorer/`. Completed-work specifics (commits, files, tests) live in git history, not here.
 
 ## Product Goal
 
@@ -19,17 +19,18 @@ Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/produ
 - **Positioning:** Greenpointers answers *what happened*; we answer *where, what's connected, what changed, what can I do*. They are a source / distribution partner / potential embed customer — never a competitor as a news product.
 - **Moat = structure behind the pins:** place graph (`relatedCardIds`/`timeline`/`trustRisk` in the card schema), verified sources, weekly freshness. This same structure is the answer-engine wedge (2026-07-21 decision): Greenpoint Life must be the source humans **and AIs** cite for Greenpoint events.
 - **Coverage bar (2026-07-21):** 100% of on-concept local events + openings on the map, measured by a weekly coverage scan (Thu, post-Greenpointers-pull; 2026-07-22 cadence decision) diffed against live cards.
+- **Growth model (2026-07-25 → `docs/growth/growth-engine.md`):** three loops, not funnels — weekly content (metric: weekly returning locals), supply/claim (proactive supply actors), answer-engine (organic sessions); build effort goes to a loop's weakest edge. Retention-first sequencing; experiments are pre/post with pre-written kill criteria (max 3 live, no A/B machinery); channel–model fit rules paid acquisition out permanently ($0 revenue/user → owned + earned only).
 - **Monetization sequencing (post-PMF only):** sponsored campaign maps → partner tooling → evidence-gated featured cards; never charge small businesses first. Unclaimed businesses show category labels, not brands (claim model).
 
 ## Operating regime (2026-07-21 → `docs/launch/2026-07-21-pmf-ops-plan.md`)
 
-Weekly loop: **Mon** `/ingest-newsletters` (review-gated) + analytics pull → **Tue** readout + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Batu sends every outbound message; nothing user-visible deploys unapproved; decisions land in `DECISION_LOG.md`.
+Ingest runs as claude.ai cloud routines (2026-07-26 decision): Mon full + Tue–Sat daily thin + Wed Greenpointers pull, each landing as an `ingest/*` PR — **merging the PR is the review gate and the production deploy**; local scheduled tasks are disabled fallbacks. Weekly cadence on top: **Mon** analytics pull → **Tue** readout + live-experiment reads (growth-engine §6: continue / kill / graduate per pre-written rules) + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Batu sends every outbound message; nothing user-visible deploys unapproved; decisions land in `DECISION_LOG.md`.
 
 ## Roadmap
 
-- **Now — checkpoint week:** both invite waves out; scorecard pre-registered (`docs/launch/2026-07-29-checkpoint-readout.md`); Mon Jul 27 ingest → **~Jul 29 checkpoint** against the 2026-07-15 kit bar (weekly-check intents, postvalue signups, business asks, unprompted shares, content-type ranking), segmented by `?src=`.
+- **Now — checkpoint week:** both invite waves out; scorecard pre-registered (`docs/launch/2026-07-29-checkpoint-readout.md`); Mon Jul 27 ingest → **~Jul 29 checkpoint** against the 2026-07-15 kit bar (weekly-check intents, postvalue signups, business asks, unprompted shares, content-type ranking), segmented by `?src=`. Growth engine adopted 2026-07-25; its first move **R0 — the `return_visit` retention sensor — shipped to production 2026-07-26** (pulled forward from Phase 4), so the retention baseline is collecting before the checkpoint.
 - **Next (gated on checkpoint pass) — public cut + greenpoint.life:** OG tags + per-card deep links as real `/e/<slug>` paths · save/star + day filter (validated Laura/Edmond asks) · business submission path · **answer-engine surface** (prerendered per-event HTML + schema.org JSON-LD, sitemap, RSS/ICS, `llms.txt` — ops plan §3.6) · domain cutover · Reddit/local-groups + II-C QR window card. De-July reframe ships by Aug 1 regardless.
-- **Then — weekly PMF loop (Aug → ~mid-Sep):** retention sensor, iterate from observed pull. **Two-sided PMF bar:** ≥30 locals at ≥2 visits/week for 3 consecutive weeks by ~Sep 15, majority unprompted; ≥5 supply-side actors proactively in, ≥1 recurring.
+- **Then — weekly PMF loop (Aug → ~mid-Sep):** growth-engine experiment cadence (R1 weekly digest · R2 new-this-week marker · Q1 org seeding · Q2 parents-wedge post — §6 rules: max 3 live, pre/post reads only), iterate from observed pull. **Two-sided PMF bar:** ≥30 locals at ≥2 visits/week for 3 consecutive weeks by ~Sep 15, majority unprompted; ≥5 supply-side actors proactively in, ≥1 recurring.
 - **Fail at checkpoint → no public push:** ~5 qualitative interviews with warmest users; wedge-reframe proposal.
 
 ## Open items & known gaps

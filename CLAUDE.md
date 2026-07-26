@@ -20,6 +20,7 @@ Weekly content refresh runs via the `/ingest-newsletters` skill (review-gated; n
 2. `docs/PLAN.md` — active roadmap and current state
 3. `docs/DECISION_LOG.md` — durable decisions, newest first (the 2026-07-22 entry defines the current regime)
 4. `docs/launch/2026-07-21-pmf-ops-plan.md` — the launch → PMF operating plan
+5. `docs/growth/growth-engine.md` — growth strategy of record (loops, experiment rules, staging)
 
 Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history or parked work, not current authority.
 

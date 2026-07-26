@@ -4,6 +4,18 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-26 — Growth engine adopted as strategy of record; R0 shipped
+
+Decision (Batu). `docs/growth/growth-engine.md` (2026-07-25, grounded in Elena Verna's frameworks) is the growth strategy of record:
+
+1. **Three loops, not funnels** — weekly content loop (compounding metric: weekly returning locals), supply/claim loop (proactive supply actors/month), answer-engine loop (organic sessions). Build effort goes to a loop's weakest edge; the Phase 3 backlog maps onto exactly those edges (3.1 share → content, 3.3 submissions → supply, 3.6 AEO → answer-engine), which is the argument for shipping it as scoped.
+2. **Retention-first sequencing** — retained = returns in ≥2 of any 4 consecutive weeks. R0 (`return_visit` sensor) pulled forward from ops-plan Phase 4 and shipped to production 2026-07-26 so the baseline starts before the Jul 29 checkpoint.
+3. **Paid acquisition ruled out permanently** on channel–model fit ($0 revenue/user); owned + earned channels only, community orgs + parents/camps wedge first.
+4. **Monetization gate restated** — nothing monetizes before the ~Sep 15 PMF verdict; claim-model sequencing unchanged (sponsored maps first, never charge small businesses first).
+5. **Experiment rules** — kill criteria written before launch, pre/post + small-n qualitative only, max 3 live at once, micro-optimizations excluded.
+
+Owner: Batu.
+
 ## 2026-07-26 — Ingest runs moved to cloud routines; review gate becomes the PR merge
 
 Decision (Batu). The three scheduled ingest runs (Mon full 9:02, Tue–Sat daily thin 9:07, Wed Greenpointers pull 13:08, all ET) moved from local scheduled tasks — which only fire with the laptop open and Claude running — to claude.ai cloud routines (`greenpoint-monday-full-ingest`, `greenpoint-daily-thin-refresh`, `greenpoint-greenpointers-wednesday-pull`; Opus orchestrator, manage at claude.ai/code/routines). Local tasks are disabled, not deleted (fallback if cloud misbehaves).

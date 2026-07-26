@@ -43,7 +43,9 @@ Marketing (Claude drafts, Batu sends): Reddit + local-group posts (per-channel `
 
 ## Phase 4 — Weekly PMF loop (Aug → ~mid-Sep)
 
-- Retention sensor: privacy-light `return_visit` event (localStorage first-seen + visit count; no fingerprinting).
+*(2026-07-25: the weekly loop's experiment content and rules are specified in `docs/growth/growth-engine.md` §6.)*
+
+- Retention sensor: privacy-light `return_visit` event (localStorage first-seen + visit count; no fingerprinting). *(Updated 2026-07-26: pulled forward and shipped as growth-engine R0 — `src/demand-test/returnVisit.js`, `visitCount` + `weekIndex` properties, live in production.)*
 - Iterate from observed pull; features ranked by signal.
 - **Pre-registered two-sided PMF bar (numbers to confirm at checkpoint):**
   - Demand: ≥30 unique locals at ≥2 visits/week, 3 consecutive weeks by ~Sep 15, majority arriving without a fresh invite push.
