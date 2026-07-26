@@ -4,6 +4,18 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-26 — Ingest runs moved to cloud routines; review gate becomes the PR merge
+
+Decision (Batu). The three scheduled ingest runs (Mon full 9:02, Tue–Sat daily thin 9:07, Wed Greenpointers pull 13:08, all ET) moved from local scheduled tasks — which only fire with the laptop open and Claude running — to claude.ai cloud routines (`greenpoint-monday-full-ingest`, `greenpoint-daily-thin-refresh`, `greenpoint-greenpointers-wednesday-pull`; Opus orchestrator, manage at claude.ai/code/routines). Local tasks are disabled, not deleted (fallback if cloud misbehaves).
+
+Mechanics that changed:
+1. **Review gate = PR.** Cloud runs never touch main. They commit draft cards + promoted baselines to an `ingest/<type>-<date>` branch and open a PR whose body is the review diff; **merging the PR is the ship + production deploy**. Closing it discards the run (baselines never land, next run re-diffs). Truth rules unchanged.
+2. **Diff baselines now tracked in git** (`.ingest-cache/*.ingested.txt`, ~600KB text) so a fresh cloud checkout diffs against the last-ingested state instead of seeing all ~44 sources as new; `fetch-sources.mjs` derives `ingestedHash` from the baseline when `state.json` is absent. Baselines ride in the same PR as the cards, so promotion stays review-gated. Snapshots/diffs/state remain gitignored.
+3. **Gmail pass** runs in cloud when the Gmail connector authenticates headlessly; otherwise the PR flags it as pending for an interactive session.
+4. Cloud cron is fixed UTC — run times drift 1h earlier ET when DST ends (November); shift the crons then.
+
+Owner: Batu.
+
 ## 2026-07-25 — Ingest cost architecture: scripts fetch, subagents extract, orchestrator judges
 
 Decision (Batu). The agent-driven ingest was measured at ~$41/full run (~$60/wk with the Wednesday pull and Thursday scan) — 68% of it cache-read on a single growing context that held every scraped page plus the full cards JSON, re-billed on each of ~290 tool calls. Not viable, and it priced out daily freshness. Restructured so model attention is spent only on judgment:
