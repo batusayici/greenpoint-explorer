@@ -147,6 +147,24 @@ test("groupByDay: an all-undated layer is a single Ongoing group", () => {
   assert.equal(groups[0].key, "ongoing");
 });
 
+// Community alert (DECISION_LOG 2026-07-26): while the campaign runs, its
+// card leads the feed in its own group — ahead of Today.
+test("groupByDay: pinnedId hoists the alert card into a leading 'Neighborhood needs you' group", () => {
+  const cards = [{ id: "a" }, { id: "pin-me" }];
+  const groups = groupByDay(cards, new Date("2026-07-26T12:00:00-04:00"), "pin-me");
+  assert.equal(groups[0].key, "pinned");
+  assert.equal(groups[0].label, "Neighborhood needs you");
+  assert.deepEqual(groups[0].cards.map((c) => c.id), ["pin-me"]);
+  assert.ok(!groups.some((g) => g.key !== "pinned" && g.cards.some((c) => c.id === "pin-me")));
+});
+
+test("groupByDay: no pinnedId, or an id not in the deck, changes nothing", () => {
+  const cards = [{ id: "a" }];
+  const now = new Date("2026-07-26T12:00:00-04:00");
+  assert.deepEqual(groupByDay(cards, now), groupByDay(cards, now, "ghost"));
+  assert.ok(!groupByDay(cards, now).some((g) => g.key === "pinned"));
+});
+
 // 2026-07-21 live-page regression: an event that ended Jul 20 survived to
 // Jul 21 (ingest is weekly) and regrouped under its stale START day, sorting
 // ABOVE Today. Any dated card with a passed window must vanish at render time.
