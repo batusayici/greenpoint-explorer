@@ -8,11 +8,14 @@ const TZ = "America/New_York";
 const CLOCK = new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: TZ });
 const DAYKEY = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: TZ });
 
-const isStartSentinel = (d) => CLOCK.format(d) === "00:00";
-const isEndSentinel = (d) => CLOCK.format(d) === "23:59";
+// Shared with the AEO prerender (aeo.js): machine-facing dates must honor the
+// same sentinels — a 00:00 start or 23:59 end is a date, never a fake clock.
+export const isStartSentinel = (d) => CLOCK.format(d) === "00:00";
+export const isEndSentinel = (d) => CLOCK.format(d) === "23:59";
+export const nyDay = (d) => DAYKEY.format(d); // YYYY-MM-DD in event tz
 
-const utcStamp = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, "");
-const dateValue = (d) => DAYKEY.format(d).replace(/-/g, "");
+export const utcStamp = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, "");
+export const dateValue = (d) => DAYKEY.format(d).replace(/-/g, "");
 
 export function gcalEventUrl(card, { url } = {}) {
   if (card.startsAt == null || card.recurring) return null;
