@@ -676,6 +676,15 @@ body { margin: 0; }
   /* The value prop stays visible on mobile (2026-07-08: testers asked "how is
      this different from Google Maps" — the answer can't be display:none). */
   .july-header p { font-size: 0.78rem; }
+  /* Community alert holds to ONE line on mobile: headline + CTA carry it,
+     the detail lives on the card the tap opens. */
+  .july-cbanner { padding: 8px 16px; }
+  .july-cbanner-detail { display: none; }
+  .july-cbanner-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .july-main {
     display: flex;
     flex-direction: column;

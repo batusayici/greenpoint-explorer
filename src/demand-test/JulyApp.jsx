@@ -212,7 +212,8 @@ export default function JulyApp() {
         <button type="button" className="july-cbanner" onClick={onAlertTap}>
           <span className="july-gbadge july-cbadge">&hearts;</span>
           <span className="july-cbanner-text">
-            <strong>{slot.alert.headline}</strong> &middot; {slot.alert.detail}
+            <strong>{slot.alert.headline}</strong>
+            <span className="july-cbanner-detail"> &middot; {slot.alert.detail}</span>
           </span>
           <span className="july-cbanner-cta">{slot.alert.cta} &rarr;</span>
         </button>
