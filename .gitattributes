@@ -6,3 +6,8 @@
 *.webp filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.m4a filter=lfs diff=lfs merge=lfs -text
+
+# Share preview must ship as real bytes: Vercel does not resolve LFS pointers,
+# so an LFS-tracked og.png serves a 131-byte pointer to OG scrapers (found
+# broken in prod 2026-07-26). The 3D texture corpus stays in LFS.
+public/og.png -filter -diff -merge -text
