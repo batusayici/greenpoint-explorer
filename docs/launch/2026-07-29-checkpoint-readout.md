@@ -22,11 +22,26 @@ Pre-registered 2026-07-21 (before looking at results), against the success bar i
 
 **Data pull method (once collecting):** pageviews/visits via REST `GET api.vercel.com/v1/query/web-analytics/visits/…` or `npx vercel@latest metrics vercel.analytics_pageview.count` (CLI ≥ Jun 2026). Custom events: per the transport decision (PostHog query UI/API, or Vercel events REST if Pro). Tally: CSV export from the dashboard. The Vercel MCP has no analytics tools — not part of this path.
 
+## Dress rehearsal (2026-07-26) — what's ready, what's blocked
+
+Run 2 days early on purpose (the Jul 21 lesson: instrumentation gaps found late are unrecoverable). **The success bar above is untouched.**
+
+**Ready / already pulled:**
+- **Pageviews: 69 total** via `vercel metrics vercel.analytics_pageview.count`. A 14-day pull returns the *same* 69 as the 7-day pull — empirical confirmation that nothing was collected before ~Jul 21 and the usable window is **Jul 21 → Jul 28**. Peak 11 in a 4h bucket on Jul 23.
+- **Event transport verified live in production 2026-07-26**: PostHog initialized on the deployed site (server-side config round-trip present) and two event POSTs to `us.i.posthog.com/i/v0/e/` completed. R0's keys (`gl_first_seen`, `gl_visit_count`, `gl_session_seen`) are written in prod, and the session mark correctly kept a reload from inflating the count. *Not yet confirmed at name level* — see blockers.
+
+**Blockers to clear before Jul 29:**
+1. **PostHog read access (blocks the whole Funnel + Channels + Content-type tables).** The deployed key is the write-only ingest key; querying needs a personal API key (`phx_…`) or a dashboard pull. **Batu:** either check Live Events / export from the PostHog UI, or drop a read key into the environment so the pull is scriptable. This is the single largest gap — without it, criteria 2/4/5 fall back to Tally + qualitative exactly as the caveats describe.
+2. **Tally CSVs** (signup `44daZo` + feedback `LZqEj1`) — Batu exports; needed for criteria 1/2/3/6.
+3. **Name-level event confirmation** — 30-second check in PostHog Live Events that `return_visit`, `card_open`, `cta_tap` appear by name with `src` attached.
+
+**Taxonomy remap (not a bar change).** Criterion 5 names filters `events / clubs_signups / deals / news`, which no longer exist — the 2026-07-25 IA re-cut replaced them with 9 intent lenses *after* this doc was pre-registered. The ranking will be reported over the live lenses below; the threshold ("clear ranking") is unchanged. Supply denominators as of 2026-07-26 (109 live cards) are pre-filled so pull-per-card is readable, not just raw taps.
+
 ## Funnel (all traffic, Jul 15 → Jul 28)
 
 | Stage | Event | Count |
 |---|---|---|
-| Visits | pageviews | — |
+| Visits | pageviews | **69** (Jul 21→26 partial, pulled 2026-07-26) |
 | Engaged | `card_open` (unique-ish) | — |
 | Pin interaction | `pin_tap` | — |
 | Acted | `action_tap` | — |
@@ -46,14 +61,19 @@ Pre-registered 2026-07-21 (before looking at results), against the success bar i
 
 ## Content-type pull
 
-| Category | card_open | action_tap | filter_tap | Rank |
-|---|---|---|---|---|
-| events | — | — | — | — |
-| clubs/signups | — | — | — | — |
-| deals | — | — | — | — |
-| news | — | — | — | — |
-| discovery (food/shops/arts) | — | — | — | — |
-| g_train | — | — | — | — |
+Rows are the live lenses (2026-07-25 IA re-cut); "cards" = supply denominator on 2026-07-26 (109 cards total, cards carry multiple lenses).
+
+| Lens | cards | card_open | action_tap | filter_tap | Rank |
+|---|---|---|---|---|---|
+| Live Music | 28 | — | — | — | — |
+| Arts & Culture | 26 | — | — | — | — |
+| Food & Drink | 21 | — | — | — | — |
+| News | 19 | — | — | — | — |
+| Family & Kids | 17 | — | — | — | — |
+| Community | 11 | — | — | — | — |
+| Deals & Memberships | 10 | — | — | — | — |
+| Shopping | 5 | — | — | — | — |
+| Wellness | 5 | — | — | — | — |
 
 ## Qualitative synthesis
 
