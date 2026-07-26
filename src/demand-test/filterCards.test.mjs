@@ -186,11 +186,11 @@ test("partitionFilters: 'all' always shows; layers under the threshold fold", ()
     { id: "all", label: "All" },
     { id: "live_music", label: "Live Music" },
     { id: "deals_memberships", label: "Deals & Memberships" },
-    { id: "shopping", label: "Shopping" },
+    { id: "wellness", label: "Wellness" },
   ];
-  const { shown, folded } = partitionFilters(filters, { live_music: 27, deals_memberships: 2, shopping: 2 }, 5);
+  const { shown, folded } = partitionFilters(filters, { live_music: 27, deals_memberships: 2, wellness: 2 }, 5);
   assert.deepEqual(shown.map((f) => f.id), ["all", "live_music"]);
-  assert.deepEqual(folded.map((f) => f.id), ["deals_memberships", "shopping"]);
+  assert.deepEqual(folded.map((f) => f.id), ["deals_memberships", "wellness"]);
 });
 
 // 2026-07-24 user feedback: "same day events that are past its start time

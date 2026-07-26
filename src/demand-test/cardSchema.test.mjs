@@ -92,11 +92,11 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the 2026-07-25 IA re-cut, in merchandised order (promise first, wedge promoted, browse last)", () => {
+test("FILTER_IDS matches the 2026-07-26 re-order: things to do lead, informational follows, shopping folded into deals", () => {
   assert.deepEqual(FILTER_IDS, [
-    "live_music", "family_kids", "arts_culture",
-    "wellness", "community", "news",
-    "food_drink", "shopping", "deals_memberships",
+    "food_drink", "family_kids", "arts_culture",
+    "wellness", "live_music", "community",
+    "news", "deals_memberships",
   ]);
 });
 

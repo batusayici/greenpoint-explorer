@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-25",
+  "version": "2026-07-26",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -137,7 +137,6 @@
       "title": "Giggles & Wiggles",
       "category": "shopping",
       "filters": [
-        "shopping",
         "family_kids",
         "news"
       ],
@@ -863,113 +862,6 @@
       "lng": -73.960549
     },
     {
-      "id": "good-room",
-      "category": "arts_culture",
-      "sourceCampaign": "live_music_layer_2026_07_15",
-      "title": "Good Room",
-      "kicker": "Dance club by music lovers, since 2014",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave, Brooklyn, NY 11222",
-      "summary": "Launched in 2014 by nightclub veterans, fusing the Greenpoint bar scene with a club vibe — an open, inclusive floor (cap. 500) with a d&b audiotechnik sound system. Weekly Friday/Saturday parties.",
-      "filters": [
-        "live_music",
-        "arts_culture"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://ra.co/clubs/97606"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room — Resident Advisor club page",
-          "publisher": "Resident Advisor",
-          "url": "https://ra.co/clubs/97606",
-          "date": "2026-07-15"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-25",
-      "lat": 40.726909,
-      "lng": -73.95281,
-      "relatedCardIds": [
-        "good-room-juan-maclean-0725",
-        "good-room-matthew-dear-0731",
-        "good-room-baltra-0801"
-      ]
-    },
-    {
-      "id": "troost",
-      "category": "food_drink",
-      "sourceCampaign": "live_music_layer_2026_07_15",
-      "title": "Troost",
-      "kicker": "Live music or DJs nearly every night",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "The Manhattan Ave bar programs live music or DJs nearly every night — open daily 4 PM to 2 AM, full calendar on their site.",
-      "filters": [
-        "live_music",
-        "food_drink"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost — site (hours, free jazz)",
-          "publisher": "Troost",
-          "url": "https://www.troostny.com/",
-          "date": "2026-07-15"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-25",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "relatedCardIds": [
-        "troost-lupe-mela-0725",
-        "troost-nice-try-kid-0727",
-        "troost-lumens-0728",
-        "troost-barba-yiorgi-0730",
-        "troost-dj-giovanni-0731",
-        "troost-dawould-kringle-0802",
-        "troost-tired-horses-0803",
-        "troost-ken-kobayashi-0804"
-      ]
-    },
-    {
       "id": "le-fanfare",
       "category": "food_drink",
       "sourceCampaign": "live_music_layer_2026_07_15",
@@ -1014,60 +906,6 @@
       "updatedAt": "2026-07-15",
       "lat": 40.73623,
       "lng": -73.955497
-    },
-    {
-      "id": "eavesdrop",
-      "category": "food_drink",
-      "sourceCampaign": "venue_calendar_expansion_2026_07_16",
-      "title": "Eavesdrop",
-      "kicker": "Hi-fi listening bar, DJs five nights a week",
-      "locationName": "Eavesdrop",
-      "summary": "Cocktail and listening bar at the north end of Manhattan Ave — DJs Wednesday through Sunday on the house hi-fi, with record-store selectors covering Mondays and Tuesdays. Full month posted on their calendar.",
-      "filters": [
-        "live_music",
-        "food_drink"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://www.eavesdrop.nyc/calendar"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop — calendar",
-          "publisher": "Eavesdrop",
-          "url": "https://www.eavesdrop.nyc/calendar",
-          "date": "2026-07-16"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-25",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "eavesdrop-andrew-goldberg-0725",
-        "eavesdrop-dj-shannon-0725",
-        "eavesdrop-funk-du-jour-0726",
-        "eavesdrop-heavy-hymns-0726",
-        "eavesdrop-arjun-shah-0731",
-        "eavesdrop-very-j-0801"
-      ],
-      "lat": 40.724894,
-      "lng": -73.951181
     },
     {
       "id": "the-lot-radio",
@@ -1283,7 +1121,6 @@
       "summary": "Suzanne Agbayani's florist-café hybrid on Noble St — coffee and wine among the arrangements, with open mics, live jazz and workshops most weeks, announced on their channels.",
       "filters": [
         "food_drink",
-        "shopping",
         "live_music"
       ],
       "audience": [
@@ -1330,57 +1167,6 @@
       "lng": -73.954258
     },
     {
-      "id": "hide-and-seek",
-      "category": "food_drink",
-      "sourceCampaign": "venue_calendar_expansion_2026_07_16",
-      "title": "Hide & Seek",
-      "kicker": "Workspace cafe by day, lounge by night",
-      "locationName": "Hide & Seek",
-      "summary": "Café-lounge hybrid on Manhattan Ave — coffee and brunch by day, cocktails at night, with live jazz for Wine Down Wednesdays at 7pm and DJs every Friday and Saturday night per their site.",
-      "filters": [
-        "food_drink",
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "actions": [
-        {
-          "label": "Website",
-          "type": "learn_more",
-          "url": "https://www.hideandseek.nyc/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hide & Seek — site (weekly program)",
-          "publisher": "Hide & Seek",
-          "url": "https://www.hideandseek.nyc/",
-          "date": "2026-07-16"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-25",
-      "address": "593 Manhattan Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "hide-and-seek-weekend-djs-0724",
-        "hide-and-seek-jazz-0729",
-        "hide-and-seek-weekend-djs-0731"
-      ],
-      "lat": 40.72293,
-      "lng": -73.950617
-    },
-    {
       "id": "flower-cat-subscription",
       "category": "subscription",
       "sourceCampaign": "venue_calendar_expansion_2026_07_16",
@@ -1389,8 +1175,7 @@
       "locationName": "Flower Cat",
       "summary": "Monthly floral subscriptions from the Noble St florist-café — bud vase to branches tiers ($250–$400/month), arranged weekly.",
       "filters": [
-        "deals_memberships",
-        "shopping"
+        "deals_memberships"
       ],
       "audience": [
         "resident"
@@ -1613,9 +1398,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "troost"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.733463,
@@ -1663,9 +1445,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "troost"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.733463,
@@ -1713,9 +1492,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "eavesdrop"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.724894,
@@ -1763,9 +1539,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "eavesdrop"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.724894,
@@ -1813,9 +1586,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "eavesdrop"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.724894,
@@ -1863,9 +1633,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "eavesdrop"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.724894,
@@ -1913,9 +1680,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "good-room"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.726909,
@@ -2063,9 +1827,6 @@
       "monetizationRelevance": "indirect",
       "partnerRelevance": "medium",
       "trustRisk": "low",
-      "relatedCardIds": [
-        "hide-and-seek"
-      ],
       "createdAt": "2026-07-21",
       "updatedAt": "2026-07-21",
       "lat": 40.72293,
@@ -2081,7 +1842,7 @@
       "address": "252 Franklin St, Brooklyn, NY 11222",
       "summary": "Franca Brooklyn brings its full ceramics line to the Tend sidewalk — beautiful pieces with tiny flaws, still fully functional and priced to move. In-person only.",
       "filters": [
-        "shopping"
+        "deals_memberships"
       ],
       "audience": [
         "resident",
@@ -2849,9 +2610,7 @@
       "summary": "Jeff Berner, Rob Heath and Tony Maimone convene for an evening of sonic mischief.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "relatedCardIds": [
-        "troost"
-      ]
+      "startsAt": "2026-07-28T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -2892,9 +2651,7 @@
       "summary": "The Wednesday resident spins world psychedelic groove.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "relatedCardIds": [
-        "troost"
-      ]
+      "startsAt": "2026-07-30T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -2935,9 +2692,7 @@
       "summary": "DJ Giovanni takes the decks at the Manhattan Avenue bar — details on the calendar.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "relatedCardIds": [
-        "troost"
-      ]
+      "startsAt": "2026-07-31T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -2978,9 +2733,7 @@
       "summary": "Dawould Kringle plays Troost — details on the calendar.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "relatedCardIds": [
-        "troost"
-      ]
+      "startsAt": "2026-08-02T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -3021,9 +2774,7 @@
       "summary": "Tired Horses bring their psychedelic indie jazz quintet to Troost.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "relatedCardIds": [
-        "troost"
-      ]
+      "startsAt": "2026-08-03T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -3064,9 +2815,7 @@
       "summary": "The Ken Kobayashi Quartet plays jazz, groove and improvisation.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "relatedCardIds": [
-        "troost"
-      ]
+      "startsAt": "2026-08-04T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -3107,9 +2856,7 @@
       "summary": "Arjun Shah plays a late session at the Manhattan Avenue listening bar.",
       "lat": 40.724894,
       "lng": -73.951181,
-      "relatedCardIds": [
-        "eavesdrop"
-      ]
+      "startsAt": "2026-07-31T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -3150,9 +2897,7 @@
       "summary": "Very J plays the late Saturday session.",
       "lat": 40.724894,
       "lng": -73.951181,
-      "relatedCardIds": [
-        "eavesdrop"
-      ]
+      "startsAt": "2026-08-01T00:00:00-04:00"
     },
     {
       "category": "event",
@@ -3193,10 +2938,7 @@
       "endsAt": "2026-07-31T23:59:00-04:00",
       "summary": "Matthew Dear headlines with Arvin T and 4AM NYC.",
       "lat": 40.726909,
-      "lng": -73.95281,
-      "relatedCardIds": [
-        "good-room"
-      ]
+      "lng": -73.95281
     },
     {
       "category": "event",
@@ -3237,10 +2979,7 @@
       "endsAt": "2026-08-01T23:59:00-04:00",
       "summary": "Baltra, Cosmo, and Gianna and Fabiola play all night.",
       "lat": 40.726909,
-      "lng": -73.95281,
-      "relatedCardIds": [
-        "good-room"
-      ]
+      "lng": -73.95281
     },
     {
       "category": "event",
@@ -3633,10 +3372,7 @@
       "endsAt": "2026-07-29T23:59:00-04:00",
       "summary": "The weekly live-jazz night at the all-day cafe and bar.",
       "lat": 40.72293,
-      "lng": -73.950617,
-      "relatedCardIds": [
-        "hide-and-seek"
-      ]
+      "lng": -73.950617
     },
     {
       "category": "event",
@@ -3678,9 +3414,7 @@
       "summary": "The marquee says it plainly: DJs every Friday and Saturday night — next up Jul 31 and Aug 1.",
       "lat": 40.72293,
       "lng": -73.950617,
-      "relatedCardIds": [
-        "hide-and-seek"
-      ]
+      "startsAt": "2026-07-31T00:00:00-04:00"
     },
     {
       "category": "food_drink",
@@ -4988,8 +4722,7 @@
       "geocodeQuery": "61 West St, Brooklyn, NY 11222",
       "summary": "The West Street herbal apothecary takes 10% off your first order (with free domestic shipping) when you sign up for their email updates.",
       "filters": [
-        "deals_memberships",
-        "shopping"
+        "deals_memberships"
       ],
       "audience": [
         "resident"

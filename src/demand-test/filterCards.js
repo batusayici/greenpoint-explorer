@@ -5,7 +5,6 @@ import { FILTER_IDS } from "./cardSchema.js";
 
 const LABELS = {
   food_drink: "Food & Drink",
-  shopping: "Shopping",
   arts_culture: "Arts & Culture",
   family_kids: "Family & Kids",
   live_music: "Live Music",

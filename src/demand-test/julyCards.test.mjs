@@ -91,14 +91,17 @@ test("seed has exactly 71 cards across the six layers", () => {
   // Same-day addendum: Bios Apothecary 10%-first-order deal (61 West St —
   // address confirmed by Batu; the shop's site hides it) + Flower Cat & Bios
   // senders registered.
-  assert.equal(seed.cards.length, 109);
+  // 2026-07-26 live-music re-cut (Batu): 4 undated venue cards deleted
+  // (Troost, Good Room, Eavesdrop, Hide & Seek — their programs are already
+  // on the map as dated gig cards; keeping both was duplication). 109 → 105.
+  assert.equal(seed.cards.length, 105);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 19, "16 + peek-inn + archestratus-closed + gtrain-sales-survey");
   assert.equal(count((c) => c.category === "event"), 61, "23 post-expiry + 38 extracted week-ahead events");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 9, "7 + archestratus-closed + gtrain-sales-survey");
-  assert.equal(count((c) => c.filters.includes("live_music")), 28, "16 post-expiry + 12 new venue nights");
+  assert.equal(count((c) => c.filters.includes("live_music")), 24, "20 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
   assert.equal(count((c) => c.category === "subscription"), 7, "Falu, Flower Cat, Trash Club + 4 kids-program registrations");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -340,21 +343,36 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   assert.deepEqual(byId("g-advocacy-mta").relatedCardIds, ["g-train-closures", "adopt-a-business"]);
   assert.ok(byId("sailor-and-siren").relatedCardIds.includes("g-train-closures"));
   assert.ok(byId("sotteatery").relatedCardIds.includes("g-train-closures"));
-  // Live-music layer: venue ↔ its show nights. Rebuilt each refresh from the
-  // show cards that point back at the venue (2026-07-25: expired nights out,
-  // Jul 25–Aug 4 nights in from the script-pipeline extraction).
-  assert.deepEqual(byId("good-room").relatedCardIds, ["good-room-juan-maclean-0725", "good-room-matthew-dear-0731", "good-room-baltra-0801"]);
-  assert.deepEqual(byId("good-room-juan-maclean-0725").relatedCardIds, ["good-room"]);
-  assert.equal(byId("troost").relatedCardIds.length, 8, "Troost links its 8 current program nights (thru Aug 4)");
-  assert.deepEqual(byId("troost-barba-yiorgi-0730").relatedCardIds, ["troost"]);
-  assert.equal(byId("eavesdrop").relatedCardIds.length, 6, "Eavesdrop links its 6 current calendar nights");
-  assert.deepEqual(byId("eavesdrop-arjun-shah-0731").relatedCardIds, ["eavesdrop"]);
+  // Live-music layer, re-cut 2026-07-26 (Batu): live music is gigs with dates
+  // or ongoing programming, NOT places — undated venue cards whose program is
+  // already on the map as dated gigs (Troost, Good Room, Eavesdrop,
+  // Hide & Seek) are deleted as duplication, and their gig cards carry no
+  // dangling refs. Venues that ARE the representation (Le Fanfare, Lot Radio,
+  // Flower Cat — ongoing programming, no dated siblings) stay.
+  for (const gone of ["troost", "good-room", "eavesdrop", "hide-and-seek"]) {
+    assert.equal(byId(gone), undefined, `venue card "${gone}" deleted (2026-07-26 re-cut)`);
+  }
+  for (const kept of ["le-fanfare", "the-lot-radio", "flower-cat"]) {
+    assert.ok(byId(kept), `ongoing-programming card "${kept}" survives the re-cut`);
+  }
   assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 5);
   assert.ok(byId("film-noir-double-0725").relatedCardIds.includes("film-noir-cinema"), "screening joins the venue graph");
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
   // First carding of Black Rabbit: venue ↔ its two standing weeknights.
   assert.deepEqual(byId("black-rabbit").relatedCardIds, ["black-rabbit-nerd-alert-trivia", "black-rabbit-buckaroo-bingo"]);
   assert.deepEqual(byId("black-rabbit-nerd-alert-trivia").relatedCardIds, ["black-rabbit"]);
+});
+
+test("dated gigs carry a start (open-start regression, 2026-07-26)", () => {
+  // Ingest once emitted gig cards with endsAt but no startsAt; isActiveOn
+  // treats an open-start window as active on EVERY prior day, so a week of
+  // Troost gigs all stacked onto today's lens at once. Deals may be genuinely
+  // open-start ("until Aug 2"); live-music events may not.
+  for (const c of seed.cards) {
+    if ((c.filters ?? []).includes("live_music") && c.endsAt != null) {
+      assert.ok(c.startsAt != null, `${c.id}: live_music card has endsAt but no startsAt`);
+    }
+  }
 });
 
 test("every card id is a URL-safe slug (deep-link contract, Phase 3.1)", () => {

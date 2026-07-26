@@ -71,10 +71,14 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // "this app is dead". Order is static (muscle memory beats optimality);
 // revisit ONLY at declared checkpoints against position-corrected
 // filter_tap + post-filter engagement in PostHog — see DECISION_LOG.
+// Lens order 2026-07-26 (Batu): things to DO lead, informational follows —
+// leading with live_music read as "gig tracker", which this isn't. shopping
+// folded into deals_memberships (the category axis below keeps "shopping" for
+// pin labels — different taxonomy).
 export const FILTER_IDS = [
-  "live_music", "family_kids", "arts_culture",
-  "wellness", "community", "news",
-  "food_drink", "shopping", "deals_memberships",
+  "food_drink", "family_kids", "arts_culture",
+  "wellness", "live_music", "community",
+  "news", "deals_memberships",
 ];
 
 // Generous Greenpoint envelope (Newtown Creek → McCarren, East River → BQE).
