@@ -50,6 +50,6 @@ export function editionLabel(date) {
   const end = new Date(date.getTime() + 6 * 86400000);
   const sameMonth = MONTH.format(date) === MONTH.format(end);
   return sameMonth
-    ? `${MONTH.format(date)} ${DAYNUM.format(date)}–${DAYNUM.format(end)} edition`
-    : `${DATE.format(date)} – ${DATE.format(end)} edition`;
+    ? `${MONTH.format(date)} ${DAYNUM.format(date)}–${DAYNUM.format(end)}`
+    : `${DATE.format(date)} – ${DATE.format(end)}`;
 }

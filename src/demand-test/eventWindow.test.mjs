@@ -59,6 +59,6 @@ test("start-only card reads 'From <instant>'", () => {
 // edition date — the rolling week the feed actually covers, self-maintaining.
 test("editionLabel: same-month week compresses, cross-month spells both", async () => {
   const { editionLabel } = await import("./eventWindow.js");
-  assert.equal(editionLabel(new Date("2026-07-23T12:00:00-04:00")), "Jul 23–29 edition");
-  assert.equal(editionLabel(new Date("2026-07-30T12:00:00-04:00")), "Jul 30 – Aug 5 edition");
+  assert.equal(editionLabel(new Date("2026-07-23T12:00:00-04:00")), "Jul 23–29");
+  assert.equal(editionLabel(new Date("2026-07-30T12:00:00-04:00")), "Jul 30 – Aug 5");
 });
