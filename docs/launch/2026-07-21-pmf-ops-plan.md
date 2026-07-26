@@ -25,11 +25,11 @@ Plan of record for the launch → learn → PMF campaign. Decided in the 2026-07
 1.4 Mon Jul 27 ingest as usual.
 1.5 De-July design (non-gating; must ship by Aug 1): evergreen "Greenpoint Life — this week in Greenpoint" frame; `july-2026-cards.json` → month-agnostic filename with ingest-skill migration note.
 
-## Phase 2 — Checkpoint (~Jul 29) — Batu decides
+## Phase 2 — ~~Checkpoint (~Jul 29)~~ voided 2026-07-26 → launch-readiness review
 
-Readout against the kit's bar (≥5 weekly-check intents · ≥3 postvalue signups · ≥2 business asks · ≥1 unprompted share · content-type ranking · qualitative), segmented by `?src=`, plus visit → card_open → action funnel. Claude writes a widen / iterate / reframe recommendation argued strictly from the pre-registered bar; Batu's verdict goes in `DECISION_LOG.md`. **Fail → no public push:** ~5 qualitative interviews with warmest users, wedge-reframe proposal.
+*(DECISION_LOG 2026-07-26: the Jul 15 wave was a friends feedback round, not a launch — the gate is voided because the exposure never happened, not because results disappointed. The readout doc keeps its data as the friends-round record. Jul 29 is now a launch-readiness review against the Phase 3 list; the quantitative bar moves to post-launch.)*
 
-## Phase 3 — Public cut + greenpoint.life (gated on pass; target ~Aug 1–8)
+## Phase 3 — Public cut + greenpoint.life — THE LAUNCH TRACK (ungated 2026-07-26; target ~Aug 1–8)
 
 Product (each TDD, preview-verified, gated deploy):
 - 3.1 Share infra: site-wide OG tags + II-C preview image on the root page; per-card deep links as **real paths** (`/e/<slug>`, `history.replaceState` on open) rather than `?card=` params — same UX, but each event gets a crawlable URL (see 3.6). Per-card OG images deferred (YAGNI).

@@ -9,7 +9,7 @@ Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/produ
 **Greenpoint Life is a hyperlocal map + feed for Greenpoint, Brooklyn** — the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, on a 2D map in the II-C inked identity. The sole goal is **real value and PMF**: residents return weekly because it's genuinely useful, and businesses/orgs want on it.
 
 - **Product = the structured, trustworthy content layer.** Truth rules are non-negotiable: nothing invented, everything sourced, review-gated before ship.
-- **Naming (2026-07-21):** consumer product is **Greenpoint Life**; the bought domain **greenpoint.life** becomes canonical only if the Jul 29 checkpoint passes. Repo keeps the `greenpoint-explorer` name.
+- **Naming (2026-07-21):** consumer product is **Greenpoint Life**; the bought domain **greenpoint.life** becomes canonical at the domain cutover — the launch moment on the readiness list (2026-07-26 reframe). Repo keeps the `greenpoint-explorer` name.
 - **Entry (2026-07-22):** the app serves at the site root (`index.html` → `src/demand-test/`); the old `/july.html` URL redirects with query params preserved.
 - **Look:** II-C palette carries over from the parked art direction (`docs/parked/3d-explorer/ART_DIRECTION.md`) via `src/demand-test/iiMapStyle.js`. Out-of-palette color is a hard miss.
 
@@ -28,10 +28,8 @@ Ingest runs as claude.ai cloud routines (2026-07-26 decision): Mon full + Tue–
 
 ## Roadmap
 
-- **Now — checkpoint week:** both invite waves out; scorecard pre-registered (`docs/launch/2026-07-29-checkpoint-readout.md`); Mon Jul 27 ingest → **~Jul 29 checkpoint** against the 2026-07-15 kit bar (weekly-check intents, postvalue signups, business asks, unprompted shares, content-type ranking), segmented by `?src=`. Growth engine adopted 2026-07-25; its first move **R0 — the `return_visit` retention sensor — shipped to production 2026-07-26** (pulled forward from Phase 4), so the retention baseline is collecting before the checkpoint.
-- **Next (gated on checkpoint pass) — public cut + greenpoint.life:** OG tags + per-card deep links as real `/e/<slug>` paths · save/star + day filter (validated Laura/Edmond asks) · business submission path · **answer-engine surface** (prerendered per-event HTML + schema.org JSON-LD, sitemap, RSS/ICS, `llms.txt` — ops plan §3.6) · domain cutover · Reddit/local-groups + II-C QR window card. De-July reframe ships by Aug 1 regardless.
+- **Now — launch track (2026-07-26 reframe: Jul 15 was a friends feedback round, not a launch; the Jul 29 checkpoint gate is voided — exposure never happened — and Phase 3 is ungated):** launch readiness in order — attribution kit (canonical tagged links, `?src=qr`) · de-July (by Aug 1) · OG tags + per-card deep links as real `/e/<slug>` paths · save/star + day filter (validated Laura/Edmond asks) · business submission path · **answer-engine surface** (prerendered per-event HTML + schema.org JSON-LD, sitemap, RSS/ICS, `llms.txt` — ops plan §3.6) · error monitoring (hard gate) · domain cutover = the launch moment · Reddit/local-groups + II-C QR window card. Jul 29 becomes a launch-readiness review. Lens re-cut shipped 2026-07-26 (things-to-do first, shopping folded into deals, live-music = dated gigs/ongoing programming only). R0 `return_visit` baseline collecting since 2026-07-26.
 - **Then — weekly PMF loop (Aug → ~mid-Sep):** growth-engine experiment cadence (R1 weekly digest · R2 new-this-week marker · Q1 org seeding · Q2 parents-wedge post — §6 rules: max 3 live, pre/post reads only), iterate from observed pull. **Two-sided PMF bar:** ≥30 locals at ≥2 visits/week for 3 consecutive weeks by ~Sep 15, majority unprompted; ≥5 supply-side actors proactively in, ≥1 recurring.
-- **Fail at checkpoint → no public push:** ~5 qualitative interviews with warmest users; wedge-reframe proposal.
 
 ## Open items & known gaps
 

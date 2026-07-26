@@ -1,6 +1,8 @@
-# Track V 2-Week Checkpoint Readout — ~2026-07-29
+# Friends-Round Readout (formerly the Jul 29 checkpoint — gate voided 2026-07-26)
 
-Pre-registered 2026-07-21 (before looking at results), against the success bar in `2026-07-15-limited-launch-kit.md`. Fill the DATA sections on Jul 28–29; Batu's verdict goes in `DECISION_LOG.md`. Ops context: `2026-07-21-pmf-ops-plan.md`.
+> **Status (DECISION_LOG 2026-07-26):** the Jul 15 wave was a friends feedback round — a handful of parent friends, some of whom never opened the app — not a launch, so this gate is **voided because the exposure never happened, not because results disappointed**. The data below stands as the qualitative + instrumentation record of that round; the success bar is retired unscored. Jul 29 becomes a launch-readiness review (ops plan Phase 3, the launch track). The pre-registration discipline itself carries forward to the real launch bar.
+
+Pre-registered 2026-07-21 (before looking at results), against the success bar in `2026-07-15-limited-launch-kit.md`. Ops context: `2026-07-21-pmf-ops-plan.md`.
 
 ## Success bar (pre-registered — do not move after seeing data)
 
@@ -32,7 +34,7 @@ Run 2 days early on purpose (the Jul 21 lesson: instrumentation gaps found late 
 
 **Resolved during the rehearsal:** PostHog read access now exists — a scoped personal key (`query:read`, Default project only) is in `.env.local` as `POSTHOG_READ_KEY` (+ `POSTHOG_PROJECT_ID`), deliberately *not* `VITE_`-prefixed so it can never be inlined into the client bundle. Pull script: `scripts/posthog-pull.sh`. All quantitative tables below are now filled from live data through **2026-07-26** (partial — rerun on Jul 28/29). `return_visit` is confirmed firing by name with `visitCount` + `weekIndex`.
 
-**Still needed from Batu:** Tally CSVs (signup `44daZo` + feedback `LZqEj1`) for criteria 1/2/3/6.
+**Tally pulls automated 2026-07-26** (`scripts/tally-pull.mjs`, `TALLY_API_KEY` in `.env.local` — user-scoped full-permission key, GET-only script, never `VITE_`-prefixed). Live pull, all-time: signup form 18 visits → 2 starts → 2 completions (one dated **Jul 10, pre-launch**; one Jul 16 — so 1 in-window), business free-text answered 0/2; feedback form 2 visits → 0 starts. Referrer check: 100% of real traffic is `$direct` with no referring domain — channel attribution for this window is confirmed unrecoverable (Finding 1 closed).
 
 ### 🔴 Finding 1 — channel attribution never worked; criterion 4 is unscoreable as written
 

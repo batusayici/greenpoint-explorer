@@ -26,7 +26,7 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 ## Project Goal
 
-**Greenpoint Life** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, in the II-C inked visual identity. Sole goal: real value and PMF. Consumer domain `greenpoint.life` (cutover gated on the Jul 29 checkpoint).
+**Greenpoint Life** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, in the II-C inked visual identity. Sole goal: real value and PMF. Consumer domain `greenpoint.life` (cutover = the launch moment, gated on the launch-readiness list — DECISION_LOG 2026-07-26).
 
 ## Architecture
 

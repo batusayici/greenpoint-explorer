@@ -4,6 +4,18 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-26 — Jul 15 reframed as a friends round; checkpoint gate voided; Phase 3 becomes the launch track
+
+Decision (Batu). The Jul 15 "limited launch" never functioned as a launch: it reached a handful of friends (mostly parents), some never opened it, and its real output was the qualitative feedback that drove the 2026-07-25 IA re-cut. Consequences:
+
+1. **The Jul 29 checkpoint gate is voided — because the exposure never happened, not because results disappointed.** Pre-registration discipline is preserved for the real launch: the readout doc is relabeled a *friends-round readout* and keeps its data as the qualitative record. Live confirmations while voiding: criterion 2 had 1 in-window signup (the other predates Jul 15); criterion 4's channel attribution is unrecoverable (all real traffic `$direct`, no referrers, invite links untagged); the forms produced zero business asks and zero feedback text.
+2. **Phase 3 is ungated and becomes the launch track.** Jul 29 becomes a launch-readiness review. Per-ship gates are unchanged (PR merge = review + deploy; nothing user-visible ships unapproved). The quantitative bar moves to post-launch, where it measures a real population; the growth-engine PMF bar (~Sep 15) is untouched.
+3. **Lens re-cut (segment logic: visitors come for food & drink, parents for family events, civic residents for community & news; leading with Live Music misread the product as a gig tracker):** order is now *things to do first, informational after* — Food & Drink · Family & Kids · Arts & Culture · Wellness · Live Music · Community · News · Deals & Memberships. `shopping` lens folded into `deals_memberships` and deleted (the `shopping` *category* for pin labels is a different axis and stays).
+4. **Live-music rule:** the lens holds dated gigs and documented ongoing programming (Le Fanfare, Lot Radio, Flower Cat), never bare place cards. Four undated venue cards (Troost, Good Room, Eavesdrop, Hide & Seek) deleted as duplication of their own dated gigs (109 → 105 cards). Data fix: 9 gig cards shipped with `endsAt` but no `startsAt`, stacking a week of gigs onto every day's Today lens; all dated, and a regression test now fails on open-start live-music cards. Ingest skill updated with both rules.
+5. **Launch-readiness list (the work between now and launch):** attribution kit (canonical tagged links, `?src=qr`); de-July (by Aug 1); OG tags + `/e/<slug>` deep links; save/star + day picker; business submission path; AEO surface; error monitoring (hard gate); domain cutover as the launch moment.
+
+Owner: Batu.
+
 ## 2026-07-26 — Growth engine adopted as strategy of record; R0 shipped
 
 Decision (Batu). `docs/growth/growth-engine.md` (2026-07-25, grounded in Elena Verna's frameworks) is the growth strategy of record:
