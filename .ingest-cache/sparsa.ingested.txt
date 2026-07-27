@@ -5,19 +5,19 @@ Replays
 Passes
 About
 Sun
-19
+26
 Mon
-20
+27
 Tue
-21
+28
 Wed
-22
+29
 Thu
-23
+30
 Fri
-24
+31
 Sat
-25
+1
 Today
 Length
 45m
@@ -88,59 +88,13 @@ Experience Type
 In-Person
 Online
 Experience Type
-Saturday, July 25
-9:00 AM-9:50 AM EDT
-Mat Pilates with Kendra Brody
-SPARŚA Williamsburg
-9:30 AM-10:30 AM EDT
-Align & Flow with Stefanie Mihoulides
-SPARŚA Greenpoint
-10:00 AM-10:45 AM EDT
-Foam Roll: Strength + Recovery with Kendra Brody
-SPARŚA Williamsburg
-11:00 AM-12:15 PM EDT
-Prenatal / Gentle Yoga with Kendra Brody
-SPARŚA Williamsburg
-11:00 AM-12:00 PM EDT
-Gentle Flow x Community with Samina Aslam
-SPARŚA Greenpoint
-12:30 PM-1:30 PM EDT
-Flow + Restore with SPARŚA Brooklyn
-SPARŚA Williamsburg
-Sunday, July 26
-10:00 AM-10:45 AM EDT
-Mat Pilates with Kendra Brody
-SPARŚA Greenpoint
-Register
-10:00 AM-11:05 AM EDT
-Align & Flow with emily brandt
-SPARŚA Williamsburg
-Register
-11:00 AM-12:10 PM EDT
-Prenatal / Gentle Yoga with Kendra Brody
-SPARŚA Greenpoint
-Register
-12:30 PM-1:30 PM EDT
-Align & Flow with Summeya Islam
-SPARŚA Greenpoint
-Register
-5:00 PM-6:15 PM EDT
-Yin Yoga with Justine Musselman
-SPARŚA Williamsburg
-Register
-7:00 PM-8:00 PM EDT
-Restorative Yoga with Erin Cavanaugh
-SPARŚA Greenpoint
-Register
 Monday, July 27
 7:30 AM-8:30 AM EDT
 Surya Morning Flow with Sarah Lowe
 SPARŚA Greenpoint
-Register
 8:00 AM-9:00 AM EDT
 Surya Morning Flow with Kendra Brody
 SPARŚA Williamsburg
-Register
 5:15 PM-6:00 PM EDT
 Mat Pilates with Jen Mantilla
 SPARŚA Williamsburg
@@ -181,6 +135,56 @@ SPARŚA Greenpoint
 Register
 11:30 AM-12:45 PM EDT
 Baby & Me Yoga with Adele Loux-Turner
+SPARŚA Greenpoint
+Register
+1:00 PM-1:50 PM EDT
+Mat Pilates with Vasilisa Mikhaylyuk
+SPARŚA Williamsburg
+Register
+5:45 PM-6:45 PM EDT
+Yin + Restore with Allison Angerman
+Streaming
+SPARŚA Williamsburg
+Register
+6:00 PM-7:00 PM EDT
+Foam Roll: Strength + Recovery with Kendra Brody
+SPARŚA Greenpoint
+Register
+7:00 PM-9:00 PM EDT
+Classical Hatha with Steven Prestianni
+SPARŚA Williamsburg
+Register
+Wednesday, July 29
+8:00 AM-9:00 AM EDT
+Surya Morning Flow with emily brandt
+SPARŚA Williamsburg
+Register
+8:00 AM-9:00 AM EDT
+Surya Morning Flow with Whitney Winn
+SPARŚA Greenpoint
+Register
+10:00 AM-11:15 AM EDT
+Infant Developmental Movement Playgroup with Adele Loux-Turner
+SPARŚA Williamsburg
+Register
+12:15 PM-1:15 PM EDT
+(CANCELED) Solar Vinyasa x Community with SPARŚA Brooklyn
+SPARŚA Williamsburg
+1:00 PM-2:00 PM EDT
+Power Flow x Community with Erin Cavanaugh
+SPARŚA Greenpoint
+Register
+5:30 PM-6:45 PM EDT
+Flow + Restore with Stefanie Mihoulides
+SPARŚA Greenpoint
+Register
+6:30 PM-7:35 PM EDT
+Slow Burn with Allison Angerman
+Streaming
+SPARŚA Williamsburg
+Register
+7:00 PM-7:50 PM EDT
+Mat Pilates with Kendra Brody
 SPARŚA Greenpoint
 Register
 1
