@@ -139,20 +139,29 @@
     {
       "id": "last-place-on-earth",
       "name": "Last Place on Earth",
-      "url": "https://lastplacebk.com",
+      "url": "https://www.lastplacebk.com/events",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "531 Graham Ave; board game cafe \u2014 game nights, murder mysteries, comedy, Pilates."
+      "notes": "531 Graham Ave; board game cafe \u2014 game nights, murder mysteries, comedy, Pilates. Batu 2026-07-27: point at /events, not the homepage \u2014 one of the three game-club sources to keep in every scan. URL NOT YET FETCHED (network allowlist blocked it on the run that changed it) \u2014 confirm the page carries dated listings on the first successful fetch."
     },
     {
       "id": "carcosa-club",
       "name": "The Carcosa Club",
-      "url": "https://carcosaclub.com/events",
+      "url": "https://www.carcosaclub.com/events?view=calendar",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "982 Manhattan Ave; membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address."
+      "notes": "982 Manhattan Ave; membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address. Batu 2026-07-27: use the CALENDAR view — one of the three game-club sources to keep in every scan. His link pinned &month=07-2026; the month param is deliberately dropped here so the scan follows the current month instead of going stale, but that default was NOT verifiable on the run that changed it (network allowlist) — if the calendar comes back empty or stuck, re-add &month=MM-YYYY and rotate it each run."
+    },
+    {
+      "id": "nyplays",
+      "name": "NY Plays",
+      "url": "https://nyplays.org/events/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Added at Batu's direction 2026-07-27 as the third game-club source. NOT YET FETCHED OR VERIFIED — the network allowlist blocked it on the run that added it, so the org's identity, its address and whether its events are in Greenpoint are all unconfirmed; \"venue\" is a placeholder group. First successful fetch must settle those before anything cards, and the per-item Greenpoint gate applies as usual."
     },
     {
       "id": "little-dance-school",
