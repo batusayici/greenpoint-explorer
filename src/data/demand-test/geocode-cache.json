@@ -2428,5 +2428,155 @@
         "-73.9590960"
       ]
     }
+  },
+  "982 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "982 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:00:03.862Z",
+    "hit": {
+      "place_id": 355527232,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280136866,
+      "lat": "40.7326762",
+      "lon": "-73.9543946",
+      "category": "building",
+      "type": "apartments",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "982, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7326196",
+        "40.7327128",
+        "-73.9545270",
+        "-73.9542621"
+      ]
+    }
+  },
+  "531 Graham Ave, Brooklyn, NY 11222": {
+    "query": "531 Graham Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:00:05.551Z",
+    "hit": {
+      "place_id": 413609704,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 964839360,
+      "lat": "40.7213260",
+      "lon": "-73.9470000",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "531, Graham Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7212760",
+        "40.7213760",
+        "-73.9470500",
+        "-73.9469500"
+      ]
+    }
+  },
+  "724 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "724 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:00:06.972Z",
+    "hit": {
+      "place_id": 360524752,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280115345,
+      "lat": "40.7261156",
+      "lon": "-73.9518789",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "724, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7260485",
+        "40.7261827",
+        "-73.9520113",
+        "-73.9517261"
+      ]
+    }
+  },
+  "40 Quay St, Brooklyn, NY 11222": {
+    "query": "40 Quay St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:12:43.966Z",
+    "hit": {
+      "place_id": 402077024,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 5678887,
+      "lat": "40.7260411",
+      "lon": "-73.9592730",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "40, Quay Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7259911",
+        "40.7260911",
+        "-73.9593230",
+        "-73.9592230"
+      ]
+    }
+  },
+  "McGuinness Boulevard, Brooklyn, NY": {
+    "query": "McGuinness Boulevard, Brooklyn, NY",
+    "fetchedAt": "2026-07-27T18:12:45.641Z",
+    "hit": {
+      "place_id": 358318961,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 25420754,
+      "lat": "40.7369893",
+      "lon": "-73.9531176",
+      "category": "highway",
+      "type": "tertiary",
+      "place_rank": 26,
+      "importance": 0.2681408123538118,
+      "addresstype": "road",
+      "name": "McGuinness Boulevard",
+      "display_name": "McGuinness Boulevard, Greenpoint, Brooklyn, Kings County, New York, 11109, United States",
+      "boundingbox": [
+        "40.7357486",
+        "40.7382202",
+        "-73.9532606",
+        "-73.9529124"
+      ]
+    }
+  },
+  "Meeker Avenue, Brooklyn, NY 11222": {
+    "query": "Meeker Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:12:47.082Z",
+    "hit": {
+      "place_id": 358999264,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 962899097,
+      "lat": "40.7144233",
+      "lon": "-73.9530358",
+      "category": "highway",
+      "type": "secondary",
+      "place_rank": 26,
+      "importance": 0.05342509269855799,
+      "addresstype": "road",
+      "name": "Meeker Avenue",
+      "display_name": "Meeker Avenue, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7142042",
+        "40.7146425",
+        "-73.9532772",
+        "-73.9527944"
+      ]
+    }
   }
 }

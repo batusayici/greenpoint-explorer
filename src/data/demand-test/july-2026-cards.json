@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-26",
+  "version": "2026-07-27",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -128,7 +128,6 @@
       "updatedAt": "2026-07-22",
       "kicker": "Pet grooming, by appointment",
       "relatedCardIds": [
-        "poochs-adoption-0725",
         "poochs-parlor-first-groom"
       ]
     },
@@ -170,10 +169,7 @@
       "trustRisk": "low",
       "createdAt": "2026-07-02",
       "updatedAt": "2026-07-22",
-      "kicker": "Kids' shoes & toys shop",
-      "relatedCardIds": [
-        "giggles-run-club-0725"
-      ]
+      "kicker": "Kids' shoes & toys shop"
     },
     {
       "id": "cookies-n-cream",
@@ -829,7 +825,7 @@
       "kicker": "Beach ferry from the India St pier",
       "locationName": "Greenpoint ferry landing (India St)",
       "geocodeQuery": "India Street, Greenpoint, Brooklyn, NY",
-      "summary": "NYC Ferry's seasonal Rockaway Rocket returned July 11 and runs for a limited time between Long Island City, Greenpoint, and Rockaway — tickets on ferry.nyc.",
+      "summary": "NYC Ferry's seasonal Rockaway Rocket returned July 11 and runs for a limited time between Long Island City, Greenpoint, and Rockaway — $12, with tickets sold in the NYC Ferry app.",
       "filters": [
         "news"
       ],
@@ -850,6 +846,12 @@
           "publisher": "NYC Ferry",
           "url": "https://www.ferry.nyc/",
           "date": "2026-07-08"
+        },
+        {
+          "title": "NYC Ferry — \"Your Ticket to the Ultimate NYC Summer\": $12 to Rockaway, tickets in the app (email)",
+          "publisher": "NYC Ferry",
+          "url": "https://www.ferry.nyc/",
+          "date": "2026-07-23"
         }
       ],
       "evidenceStrength": "high",
@@ -857,7 +859,7 @@
       "partnerRelevance": "low",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-27",
       "lat": 40.731769,
       "lng": -73.960549
     },
@@ -997,7 +999,6 @@
       "updatedAt": "2026-07-25",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "gcc-saturday-shows-0725",
         "gcc-cysk-0729",
         "gcc-thursday-showcase-0730",
         "gcc-friday-showcases-0731",
@@ -1046,15 +1047,16 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-jackie-stripper-0727",
         "film-noir-support",
-        "film-noir-double-0725",
         "film-noir-cult-cinema-0728",
         "film-noir-jackie-0729",
-        "film-noir-film-club-0730"
+        "film-noir-film-club-0730",
+        "film-noir-electric-dragon-0727",
+        "film-noir-monday-0727"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1346,8 +1348,6 @@
       "relatedCardIds": [
         "library-childrens-book-club-0729",
         "library-monday-programs",
-        "library-saturday-storytime",
-        "library-saturday-programs-0725",
         "library-tuesday-programs-0728",
         "library-wednesday-programs-0729",
         "library-thursday-programs-0730",
@@ -1355,53 +1355,6 @@
       ],
       "lat": 40.72606,
       "lng": -73.950709
-    },
-    {
-      "id": "troost-lupe-mela-0725",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "DJs Lupe Loop & Mela at Troost",
-      "kicker": "Funk, dance & vintage house DJs",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "Lupe Loop and Mela spin feel-good funk, international dance jams and vintage house.",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-25T00:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost — calendar",
-          "publisher": "Troost",
-          "url": "https://troostny.com/calendar/",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.733463,
-      "lng": -73.955035
     },
     {
       "id": "troost-nice-try-kid-0727",
@@ -1451,241 +1404,6 @@
       "lng": -73.955035
     },
     {
-      "id": "eavesdrop-andrew-goldberg-0725",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "Andrew Goldberg at Eavesdrop",
-      "kicker": "Afternoon set on the hi-fi",
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "Andrew Goldberg on the house hi-fi, an afternoon session.",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-25T14:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://www.eavesdrop.nyc/calendar"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop — calendar",
-          "publisher": "Eavesdrop",
-          "url": "https://www.eavesdrop.nyc/calendar",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.724894,
-      "lng": -73.951181
-    },
-    {
-      "id": "eavesdrop-dj-shannon-0725",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "DJ Shannon residency at Eavesdrop",
-      "kicker": "DJ Shannon residency",
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "DJ Shannon's evening residency at the listening bar.",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-25T20:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://www.eavesdrop.nyc/calendar"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop — calendar",
-          "publisher": "Eavesdrop",
-          "url": "https://www.eavesdrop.nyc/calendar",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.724894,
-      "lng": -73.951181
-    },
-    {
-      "id": "eavesdrop-funk-du-jour-0726",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "Funk du Jour at Eavesdrop",
-      "kicker": "Sunday afternoon funk",
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "A Sunday afternoon funk session on the hi-fi.",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-26T14:00:00-04:00",
-      "endsAt": "2026-07-26T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://www.eavesdrop.nyc/calendar"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop — calendar",
-          "publisher": "Eavesdrop",
-          "url": "https://www.eavesdrop.nyc/calendar",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.724894,
-      "lng": -73.951181
-    },
-    {
-      "id": "eavesdrop-heavy-hymns-0726",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "Heavy Hymns at Eavesdrop",
-      "kicker": "Evening selector set",
-      "locationName": "Eavesdrop",
-      "address": "674 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "Heavy Hymns on the house system to close the weekend.",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-26T20:00:00-04:00",
-      "endsAt": "2026-07-26T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://www.eavesdrop.nyc/calendar"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop — calendar",
-          "publisher": "Eavesdrop",
-          "url": "https://www.eavesdrop.nyc/calendar",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.724894,
-      "lng": -73.951181
-    },
-    {
-      "id": "good-room-juan-maclean-0725",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "Juan Maclean at Good Room",
-      "kicker": "Juan Maclean all night",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave, Brooklyn, NY 11222",
-      "summary": "The Juan Maclean plays all night, with Carpet (F.L.H.P.).",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T22:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "rsvp",
-          "url": "https://donyc.com/venues/good-room"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room — upcoming (doNYC)",
-          "publisher": "Good Room",
-          "url": "https://donyc.com/venues/good-room",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.726909,
-      "lng": -73.95281
-    },
-    {
       "id": "film-noir-jackie-stripper-0727",
       "category": "event",
       "sourceCampaign": "venue_calendar_refresh_2026_07_21",
@@ -1702,7 +1420,7 @@
         "visitor"
       ],
       "corridor": null,
-      "startsAt": "2026-07-27T00:00:00-04:00",
+      "startsAt": "2026-07-27T18:00:00-04:00",
       "endsAt": "2026-07-27T23:59:00-04:00",
       "actions": [
         {
@@ -1731,205 +1449,9 @@
         "film-noir-cinema"
       ],
       "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
+      "updatedAt": "2026-07-27",
       "lat": 40.727314,
       "lng": -73.951608
-    },
-    {
-      "id": "gcc-saturday-shows-0725",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "Saturday at Greenpoint Comedy Club",
-      "kicker": "Adam Pally headlines, 3 shows",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "summary": "Three Saturday shows: Eye Candy at 6pm, Adam Pally headlining at 8pm, and the Secret Showcase at 10pm.",
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T18:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "rsvp",
-          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club — tickets & calendar",
-          "publisher": "Greenpoint Comedy Club",
-          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ],
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.729567,
-      "lng": -73.958337
-    },
-    {
-      "id": "hide-and-seek-weekend-djs-0724",
-      "category": "event",
-      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
-      "title": "Weekend DJs at Hide & Seek",
-      "kicker": "DJ sets Friday and Saturday nights",
-      "locationName": "Hide & Seek",
-      "address": "593 Manhattan Ave, Brooklyn, NY 11222",
-      "summary": "The lounge side takes over on weekend nights — DJs every Friday and Saturday, per their site.",
-      "filters": [
-        "live_music"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": "manhattan-ave",
-      "startsAt": "2026-07-24T00:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Website",
-          "type": "learn_more",
-          "url": "https://www.hideandseek.nyc/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hide & Seek — site (weekly program)",
-          "publisher": "Hide & Seek",
-          "url": "https://www.hideandseek.nyc/",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "lat": 40.72293,
-      "lng": -73.950617
-    },
-    {
-      "id": "tend-franca-seconds-sale",
-      "category": "event",
-      "sourceCampaign": "tend_newsletter_2026_07_21",
-      "title": "Franca Ceramics Pop-up Seconds Sale",
-      "kicker": "Ceramic seconds sale on the sidewalk",
-      "locationName": "Tend Greenpoint",
-      "address": "252 Franklin St, Brooklyn, NY 11222",
-      "summary": "Franca Brooklyn brings its full ceramics line to the Tend sidewalk — beautiful pieces with tiny flaws, still fully functional and priced to move. In-person only.",
-      "filters": [
-        "deals_memberships"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T13:00:00-04:00",
-      "endsAt": "2026-07-25T18:00:00-04:00",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://www.tendgreenpoint.com/happenings"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tend Greenpoint — Pop-up Seconds Sale (newsletter)",
-          "publisher": "Tend Greenpoint",
-          "url": "https://www.tendgreenpoint.com/happenings",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "medium",
-      "free": true,
-      "geocodeQuery": "252 Franklin Street, Brooklyn, NY 11222",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-25",
-      "lat": 40.734612,
-      "lng": -73.958144
-    },
-    {
-      "id": "library-saturday-storytime",
-      "category": "event",
-      "sourceCampaign": "community_institutions_2026_07_21",
-      "title": "Saturday Family StoryTime",
-      "kicker": "Family StoryTime + period pantry",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "summary": "Saturday Family StoryTime with songs, books and movement, and the Cycle Alliance period pantry open all branch hours in the Teen Zone.",
-      "filters": [
-        "family_kids"
-      ],
-      "audience": [
-        "family",
-        "resident"
-      ],
-      "corridor": null,
-      "actions": [
-        {
-          "label": "All events",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library — branch event calendar",
-          "publisher": "Brooklyn Public Library",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "date": "2026-07-21"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
-      "startsAt": "2026-07-25T10:30:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
     },
     {
       "id": "library-monday-programs",
@@ -1979,298 +1501,6 @@
       ],
       "lat": 40.72606,
       "lng": -73.950709
-    },
-    {
-      "id": "giggles-run-club-0725",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_22",
-      "title": "Strong (As a Mother) Run Club",
-      "kicker": "All-paces mom run, coffee after",
-      "locationName": "Giggles & Wiggles",
-      "summary": "Run a few miles with your mom crew in a no-pressure, all-paces-welcome environment, followed by coffee. Meet at the shop — entrance on Noble St.",
-      "filters": [
-        "family_kids",
-        "wellness"
-      ],
-      "audience": [
-        "family",
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T09:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Register",
-          "type": "rsvp",
-          "url": "https://docs.google.com/forms/d/e/1FAIpQLSfmRKlTkOZfFxtldv0ycGjNHCRdEI03MTaf_SmwZ6Mc-kIJgw/viewform"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "What's Happening, Greenpoint? (7/23-29)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22",
-      "address": "42 West St, Brooklyn, NY 11222",
-      "free": true,
-      "lat": 40.728078,
-      "lng": -73.958665,
-      "relatedCardIds": [
-        "giggles-and-wiggles"
-      ]
-    },
-    {
-      "id": "city-of-water-day-0725",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_22",
-      "title": "City of Water Day at Transmitter Park",
-      "kicker": "Harbor day: cleanup, oysters, movement",
-      "locationName": "WNYC Transmitter Park",
-      "summary": "The 19th annual region-wide event from Waterfront Alliance and the NY-NJ Harbor & Estuary Program championing climate-resilient harbors — a longevity stick movement class, shoreline cleanup, oyster station monitoring, and more.",
-      "filters": [
-        "community"
-      ],
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T10:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Register",
-          "type": "rsvp",
-          "url": "https://docs.google.com/forms/d/e/1FAIpQLSd7uxgNaiakSUaW45zI8rEBURJzA3KmpE5R008X0YcxVl_3Sg/viewform"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "What's Happening, Greenpoint? (7/23-29)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "free": true,
-      "lat": 40.729537,
-      "lng": -73.960287
-    },
-    {
-      "id": "its-my-park-transmitter-0726",
-      "category": "event",
-      "sourceCampaign": "coverage_scan_2026_07_22",
-      "title": "It's My Park at Transmitter Park",
-      "kicker": "Volunteer stewardship morning",
-      "locationName": "WNYC Transmitter Park",
-      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
-      "summary": "A volunteer day at the waterfront park through NYC Parks' It's My Park program — neighbors pitch in to help care for the green space. Free.",
-      "filters": [
-        "community"
-      ],
-      "audience": [
-        "resident",
-        "civic_actor"
-      ],
-      "corridor": null,
-      "free": true,
-      "startsAt": "2026-07-26T10:00:00-04:00",
-      "endsAt": "2026-07-26T12:00:00-04:00",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://www.nycgovparks.org/parks/transmitter-park/events"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "WNYC Transmitter Park — Events (It's My Park, Jul 26)",
-          "publisher": "NYC Parks",
-          "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "lat": 40.729537,
-      "lng": -73.960287,
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22"
-    },
-    {
-      "id": "poochs-adoption-0725",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_22",
-      "title": "Adoption day at Pooch's Parlor",
-      "kicker": "Meet rescue dogs (margaritas too)",
-      "locationName": "Pooch's Parlor",
-      "summary": "NYC Second Chance Rescue partners with the grooming salon for a chance to find your forever furry friend — and enjoy a bit of paradise in the form of margaritas. No RSVP needed.",
-      "filters": [
-        "community"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T11:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Read the roundup",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "What's Happening, Greenpoint? (7/23-29)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22",
-      "address": "128 India St, Brooklyn, NY 11222",
-      "lat": 40.732156,
-      "lng": -73.955048,
-      "relatedCardIds": [
-        "poochs-parlor"
-      ]
-    },
-    {
-      "id": "held-space-astrology-0725",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_22",
-      "title": "Leo Season flash astrology readings",
-      "kicker": "Flash readings for Leo season",
-      "locationName": "Held Space",
-      "summary": "Hear your horoscope, get a vibe check, or learn where Leo falls in your chart in a flash reading with Anna Hull. Sessions $95.",
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T12:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "rsvp",
-          "url": "https://annahull.as.me/schedule/9c4cf906/appointment/94965460/calendar/14251100"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "What's Happening, Greenpoint? (7/23-29)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22",
-      "address": "960 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "960 Manhattan Avenue, Brooklyn, NY 11222",
-      "lat": 40.732062,
-      "lng": -73.954278
-    },
-    {
-      "id": "disabled-hungry-launch-0725",
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_22",
-      "title": "Disabled & Hungry launch party",
-      "kicker": "Disability Pride Month celebration",
-      "locationName": "BK Backyard Bar",
-      "summary": "A launch party for Disabled & Hungry, a new blog helping people with disabilities discover restaurants, travel, and community spaces that are truly accessible — with bites, drinks, and merch for purchase, 36 years after the ADA.",
-      "filters": [
-        "community"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-25T14:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://partiful.com/e/Qm9FS5FkEaRTHg2bsSlH"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "What's Happening, Greenpoint? (7/23-29)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22",
-      "address": "151 Banker St, Brooklyn, NY 11222",
-      "free": true,
-      "geocodeQuery": "151 Banker Street, Brooklyn, NY 11222",
-      "lat": 40.724078,
-      "lng": -73.954879
     },
     {
       "id": "library-childrens-book-club-0729",
@@ -2664,7 +1894,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "locationName": "Troost",
       "address": "1011 Manhattan Ave",
       "filters": [
@@ -2682,14 +1912,14 @@
           "title": "Troost calendar",
           "url": "https://troostny.com/calendar/",
           "publisher": "Troost",
-          "date": "2026-07-25"
+          "date": "2026-07-27"
         }
       ],
-      "id": "troost-dj-giovanni-0731",
-      "title": "DJ Giovanni at Troost",
+      "id": "troost-dj-deridac-0731",
+      "title": "DJ Deridàc at Troost",
       "kicker": "Friday night DJ set",
       "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "DJ Giovanni takes the decks at the Manhattan Avenue bar — details on the calendar.",
+      "summary": "DJ Deridàc takes the decks at the Manhattan Avenue bar — details on the calendar.",
       "lat": 40.733463,
       "lng": -73.955035,
       "startsAt": "2026-07-31T00:00:00-04:00"
@@ -3189,50 +2419,6 @@
           "date": "2026-07-25"
         }
       ],
-      "id": "film-noir-double-0725",
-      "title": "Szurkulet + Zimeklis at Film Noir",
-      "kicker": "Double bill at the micro-cinema",
-      "startsAt": "2026-07-25T19:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "summary": "Szurkulet screens at 7, Zimeklis at 9.",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://filmnoircinema.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema calendar",
-          "url": "https://filmnoircinema.com",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-07-25"
-        }
-      ],
       "id": "film-noir-cult-cinema-0728",
       "title": "Cult Cinema at Film Noir",
       "kicker": "Tuesday cult programming",
@@ -3458,8 +2644,7 @@
         }
       ],
       "relatedCardIds": [
-        "black-rabbit-nerd-alert-trivia",
-        "black-rabbit-buckaroo-bingo"
+        "black-rabbit-nerd-alert-trivia"
       ],
       "lat": 40.730169,
       "lng": -73.956635
@@ -3488,51 +2673,6 @@
         "food_drink"
       ],
       "summary": "Five rounds of difficult trivia hosted by Casey and Sean, with a $50 bar tab among the prizes — called NYC's best by the Village Voice.",
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://blackrabbitbar.com/event/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Black Rabbit events",
-          "url": "https://blackrabbitbar.com/event/",
-          "publisher": "Black Rabbit",
-          "date": "2026-07-25"
-        }
-      ],
-      "relatedCardIds": [
-        "black-rabbit"
-      ],
-      "lat": 40.730169,
-      "lng": -73.956635
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "id": "black-rabbit-buckaroo-bingo",
-      "title": "Buckaroo Bingo with Cowboy Carl",
-      "kicker": "Honky-tonk bingo on Sundays",
-      "startsAt": "2026-07-26T19:00:00-04:00",
-      "endsAt": "2026-07-26T23:59:00-04:00",
-      "recurring": true,
-      "locationName": "Black Rabbit",
-      "address": "91 Greenpoint Ave",
-      "filters": [
-        "food_drink"
-      ],
-      "summary": "Cowboy Carl plays country guitar and DJs classic honky-tonk between rounds — prizes and shots, no skills required.",
       "actions": [
         {
           "label": "See the calendar",
@@ -3650,48 +2790,6 @@
       "trustRisk": "low",
       "createdAt": "2026-07-25",
       "updatedAt": "2026-07-25",
-      "id": "hana-gyopo-dinner-0726",
-      "title": "Gyopo Brewery × Hana Makgeolli dinner",
-      "kicker": "One-night Toronto collab dinner",
-      "startsAt": "2026-07-26T17:00:00-04:00",
-      "endsAt": "2026-07-26T22:00:00-04:00",
-      "locationName": "Hana Makgeolli",
-      "address": "201 Dupont St",
-      "geocodeQuery": "201 Dupont St, Brooklyn, NY",
-      "filters": [
-        "food_drink"
-      ],
-      "summary": "Chef Hansang Lee presents Gyopo's menu, each dish paired to a Hana makgeolli — two gyopo makers, two cities, one shared meal.",
-      "actions": [
-        {
-          "label": "Details & reservations",
-          "type": "rsvp",
-          "url": "https://hanamakgeolli.com/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hana Makgeolli events",
-          "url": "https://hanamakgeolli.com/events",
-          "publisher": "Hana Makgeolli",
-          "date": "2026-07-25"
-        }
-      ],
-      "lat": 40.736437,
-      "lng": -73.951511
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
       "id": "hana-bombom-supper-0730",
       "title": "BOMBOM supper club at Hana Makgeolli",
       "kicker": "Korean supper club, one night",
@@ -3762,51 +2860,6 @@
       ],
       "lat": 40.736437,
       "lng": -73.951511
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave",
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library calendar",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "library-saturday-programs-0725",
-      "title": "Saturday at Greenpoint Library",
-      "kicker": "Period pantry + book drive",
-      "startsAt": "2026-07-25T10:00:00-04:00",
-      "endsAt": "2026-07-25T23:59:00-04:00",
-      "filters": [
-        "community"
-      ],
-      "summary": "The Cycle Alliance's Period Pantry in the teen Eco Lab and a Brooklyn Book Bodega book drive, both from 10am.",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
     },
     {
       "category": "event",
@@ -4135,7 +3188,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "id": "gtrain-sales-survey",
       "title": "Survey: G shutdowns are cutting sales",
       "kicker": "Businesses count the closure's cost",
@@ -4144,20 +3197,20 @@
       "filters": [
         "news"
       ],
-      "summary": "A Greenpoint business survey reports significant sales declines tied to the G train shutdowns, per Greenpointers reporting.",
+      "summary": "Shop Small Greenpoint surveyed 36 local businesses across the shutdown weekends: 91% reported lower sales, with an average decline of 20–24% — and some shops reporting far steeper drops on individual weekends.",
       "actions": [
         {
           "label": "Read the story",
           "type": "learn_more",
-          "url": "https://greenpointers.com/"
+          "url": "https://greenpointers.com/2026/07/24/g-train-shutdowns-cause-significant-sales-decline-greenpoint-business-survey-says/"
         }
       ],
       "sourceLinks": [
         {
-          "title": "G Train Shutdowns Cause Significant Sales Decline (Emma Davey, Jul 24)",
-          "url": "https://greenpointers.com/",
+          "title": "G Train Shutdowns Cause Significant Sales Decline, Greenpoint Business Survey Says (Emma Davey, Jul 24)",
+          "url": "https://greenpointers.com/2026/07/24/g-train-shutdowns-cause-significant-sales-decline-greenpoint-business-survey-says/",
           "publisher": "Greenpointers",
-          "date": "2026-07-25"
+          "date": "2026-07-24"
         }
       ],
       "relatedCardIds": [
@@ -4484,48 +3537,6 @@
           "date": "2026-07-25"
         }
       ],
-      "id": "bcc-filet-crochet-0726",
-      "title": "Filet Crochet workshop",
-      "kicker": "Filet crochet — 4 spots left",
-      "startsAt": "2026-07-26T11:00:00-04:00",
-      "endsAt": "2026-07-26T23:59:00-04:00",
-      "summary": "Learn the openwork grid technique at the Greenpoint studio — four seats left at press time.",
-      "lat": 40.730461,
-      "lng": -73.953114,
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/products/filet-crochet"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-24)",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-25"
-        }
-      ],
       "id": "bcc-workshops-0727",
       "title": "Monday workshops at Brooklyn Craft Co.",
       "kicker": "Crochet cowls + felted florals",
@@ -4751,6 +3762,537 @@
       "updatedAt": "2026-07-25",
       "lat": 40.728475,
       "lng": -73.959146
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-07-27"
+        }
+      ],
+      "id": "troost-dervisi-0805",
+      "title": "Dervisi at Troost",
+      "kicker": "Greek gangsta blues, rembetika",
+      "endsAt": "2026-08-05T23:59:00-04:00",
+      "summary": "Dervisi brings Greek gangsta blues from the ’30s, punk and rembetika to the Manhattan Avenue bar.",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "startsAt": "2026-08-05T00:00:00-04:00"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-07-27"
+        }
+      ],
+      "id": "troost-barba-yiorgi-0806",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "endsAt": "2026-08-06T23:59:00-04:00",
+      "summary": "DJ Barba Yiorgi spins world psychedelic groove at the Manhattan Avenue bar.",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "startsAt": "2026-08-06T00:00:00-04:00"
+    },
+    {
+      "id": "film-noir-electric-dragon-0727",
+      "category": "event",
+      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
+      "title": "Electric Dragon at Film Noir",
+      "kicker": "Late screening, 8pm",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "Electric Dragon screens at the Meserole Avenue cinema.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-27T20:00:00-04:00",
+      "endsAt": "2026-07-27T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Showtimes",
+          "type": "learn_more",
+          "url": "https://filmnoircinema.com"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema — calendar",
+          "publisher": "Film Noir Cinema",
+          "url": "https://filmnoircinema.com",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "id": "film-noir-monday-0727",
+      "category": "event",
+      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
+      "title": "Film Noir Monday",
+      "kicker": "Monday-night noir screening",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "The cinema's Film Noir Monday slot — the July calendar also listed one on the 13th.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-27T21:00:00-04:00",
+      "endsAt": "2026-07-27T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Showtimes",
+          "type": "learn_more",
+          "url": "https://filmnoircinema.com"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema — calendar",
+          "publisher": "Film Noir Cinema",
+          "url": "https://filmnoircinema.com",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "filters": [
+        "arts_culture"
+      ],
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "GCC ticketing",
+          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-07-27"
+        }
+      ],
+      "id": "gcc-artists-beers-0802",
+      "title": "Artists & Beers: free film screenings",
+      "kicker": "Free Sunday screenings, 2pm",
+      "startsAt": "2026-08-02T14:00:00-04:00",
+      "endsAt": "2026-08-02T23:59:00-04:00",
+      "summary": "A free afternoon of film screenings at the comedy club on Greenpoint Avenue.",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ]
+    },
+    {
+      "id": "carcosa-warhammer-rtt-0801",
+      "title": "Warhammer 40k: Armageddon! RTT",
+      "category": "event",
+      "filters": [
+        "community"
+      ],
+      "locationName": "The Carcosa Club",
+      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "kicker": "All-day 40k tournament",
+      "startsAt": "2026-08-01T09:00:00-04:00",
+      "endsAt": "2026-08-01T21:00:00-04:00",
+      "summary": "Warhammer 40k: Armageddon! — an all-day RTT at the Manhattan Avenue game club.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Carcosa Club events calendar",
+          "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026",
+          "publisher": "The Carcosa Club",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.732676,
+      "lng": -73.954395
+    },
+    {
+      "id": "last-place-chess-chill",
+      "title": "Chess & Chill at Last Place on Earth",
+      "category": "subscription",
+      "filters": [
+        "community",
+        "deals_memberships"
+      ],
+      "locationName": "Last Place on Earth",
+      "address": "531 Graham Ave, Brooklyn, NY 11222",
+      "kicker": "Tuesdays 7pm — $15, no time limit",
+      "summary": "A weekly open chess night at the Graham Avenue board-game shop — meet other players, stay as long as you like.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://www.lastplacebk.com/events"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Last Place on Earth events",
+          "url": "https://www.lastplacebk.com/events",
+          "publisher": "Last Place on Earth",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.721326,
+      "lng": -73.947
+    },
+    {
+      "id": "nyplays-fall-registration",
+      "title": "NY Society of Play fall game clubs",
+      "category": "subscription",
+      "filters": [
+        "family_kids",
+        "deals_memberships"
+      ],
+      "locationName": "Frontier Games",
+      "address": "724 Manhattan Ave, Brooklyn, NY 11222",
+      "kicker": "Kids D&D & games — fall signup open",
+      "summary": "Registration is open for fall semester Dungeons & Dragons, Magic and Pokémon clubs for ages 7–17, hosted at Frontier Games on Manhattan Avenue (from $800).",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "See the schedule",
+          "type": "learn_more",
+          "url": "https://nyplays.org/events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NY Society of Play schedule (Sawyer)",
+          "url": "https://www.hisawyer.com/new-york-society-of-play/schedules",
+          "publisher": "New York Society of Play",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.726116,
+      "lng": -73.951879
+    },
+    {
+      "id": "monitor-point-approved",
+      "title": "Monitor Point approved: 1,324 waterfront apartments",
+      "kicker": "Council signs off on Quay St towers",
+      "category": "news",
+      "filters": [
+        "news"
+      ],
+      "locationName": "Monitor Point site",
+      "address": "40 Quay St, Brooklyn, NY 11222",
+      "summary": "The City Council approved Monitor Point on June 25: roughly 1,324 apartments at 40–56 Quay St, 662 of them (50%) permanently affordable, plus over an acre of new waterfront open space, a new home for the Greenpoint Monitor Museum, $300K a year for Bushwick Inlet Park maintenance, and two MTA facilities relocated out of the area. Save the Inlet's petition against building on land promised as parkland in the 2005 rezoning drew more than 5,000 signatures.",
+      "whyItMatters": "The biggest land-use decision on the waterfront in a generation — years of construction first, thousands of new neighbors after.",
+      "audience": [
+        "resident",
+        "business",
+        "civic_actor"
+      ],
+      "actions": [
+        {
+          "label": "Read the Council's announcement",
+          "type": "learn_more",
+          "url": "https://council.nyc.gov/press/2026/06/25/3147/"
+        },
+        {
+          "label": "How the fight got here",
+          "type": "learn_more",
+          "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-01-14",
+          "title": "The parkland fight",
+          "summary": "Gotham Organization proposes three towers on the Monitor Point peninsula — land set aside for parks in the 2005 rezoning. Save the Inlet's opposition petition passes 5,000 signatures.",
+          "sourceUrl": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
+        },
+        {
+          "date": "2026-06-25",
+          "title": "Council approval",
+          "summary": "Final deal: ~1,324 units with 50% permanently affordable (up from the proposed 25%), waterfront open space, a Monitor Museum home, and Bushwick Inlet Park maintenance funding.",
+          "sourceUrl": "https://council.nyc.gov/press/2026/06/25/3147/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "City Council press release — Monitor Point approval",
+          "publisher": "New York City Council",
+          "url": "https://council.nyc.gov/press/2026/06/25/3147/",
+          "date": "2026-06-25"
+        },
+        {
+          "title": "Monitor Point, explained",
+          "publisher": "Greenpoint Star",
+          "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/",
+          "date": "2026-01-14"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.726041,
+      "lng": -73.959273
+    },
+    {
+      "id": "mcguinness-redesign",
+      "title": "McGuinness redesign construction is underway",
+      "kicker": "Bike lanes reach the Pulaski by fall",
+      "category": "news",
+      "filters": [
+        "news"
+      ],
+      "locationName": "McGuinness Blvd corridor",
+      "geocodeQuery": "McGuinness Boulevard, Brooklyn, NY",
+      "summary": "Crews are extending the parking-protected bike lanes from Meeker Ave to the Pulaski Bridge. The finished boulevard gets one travel lane, one protected bike lane, and one parking/loading lane in each direction, with shorter crossings and traffic calming. The city expects completion by early fall.",
+      "whyItMatters": "Greenpoint's most divisive street decision is becoming physical — how the corridor works for drivers, deliveries, and cyclists changes this season.",
+      "audience": [
+        "resident",
+        "business",
+        "civic_actor"
+      ],
+      "actions": [
+        {
+          "label": "Read the city's announcement",
+          "type": "learn_more",
+          "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-01-05",
+          "title": "Full redesign revived",
+          "summary": "Days after inauguration, Mayor Mamdani pledges to complete the originally planned redesign the previous administration had scaled back."
+        },
+        {
+          "date": "2026-06-01",
+          "title": "Construction underway",
+          "summary": "Work confirmed in progress on the Meeker Ave–Pulaski Bridge segment; completion expected early fall 2026.",
+          "sourceUrl": "https://www.constructionowners.com/news/brooklyn-street-safety-upgrade-moves-forward-with-full-mcguinness-boulevard-redesign"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Mayor Mamdani announces start of construction to complete McGuinness Boulevard redesign",
+          "publisher": "NYC Mayor's Office",
+          "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin",
+          "date": "2026-05-27"
+        },
+        {
+          "title": "McGuinness Boulevard redesign begins construction with full corridor upgrade",
+          "publisher": "Construction Owners",
+          "url": "https://www.constructionowners.com/news/brooklyn-street-safety-upgrade-moves-forward-with-full-mcguinness-boulevard-redesign",
+          "date": "2026-06-01"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.736989,
+      "lng": -73.953118
+    },
+    {
+      "id": "meeker-plume-monitoring",
+      "title": "EPA keeps testing the Meeker Avenue Plume",
+      "kicker": "Superfund testing under east Greenpoint",
+      "category": "news",
+      "filters": [
+        "news"
+      ],
+      "locationName": "Meeker Avenue Plume area",
+      "geocodeQuery": "Meeker Avenue, Brooklyn, NY 11222",
+      "summary": "Work continues on the Meeker Avenue Plume, the Superfund groundwater site under parts of east Greenpoint (federally listed in March 2022). EPA is testing groundwater monitoring wells and presented recent indoor-air sampling results at the community advisory group's April and May meetings. Follow updates via EPA's community involvement coordinator.",
+      "whyItMatters": "Quieter than trains and towers, but for ground-floor and basement spaces above the plume it's the higher-stakes story.",
+      "audience": [
+        "resident",
+        "business"
+      ],
+      "actions": [
+        {
+          "label": "See the EPA site page",
+          "type": "learn_more",
+          "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-08",
+          "title": "Indoor-air results shared",
+          "summary": "EPA presents recent indoor-air sampling updates at the community advisory group meeting.",
+          "sourceUrl": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
+        },
+        {
+          "date": "2026-05-13",
+          "title": "CAG meets again",
+          "summary": "Follow-up community advisory group meeting; groundwater monitoring well testing planned.",
+          "sourceUrl": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Meeker Avenue Plume site profile",
+          "publisher": "US EPA",
+          "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407",
+          "date": "2026-05-13"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.714423,
+      "lng": -73.953036
     }
   ]
 }

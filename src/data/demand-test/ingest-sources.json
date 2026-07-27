@@ -1,5 +1,5 @@
 {
-  "description": "Track V ingest web-source roster \u2014 the machine-readable half of .claude/skills/ingest-newsletters/SKILL.md (policy stays in the skill; URLs + fetch mechanics live here). Driven by scripts/fetch-sources.mjs, which snapshots each source and emits .ingest-cache/changes.json so the ingest only spends model attention on sources that actually changed. fetch: \"auto\" = plain HTTP first, headless-browser fallback; \"browser\" = known to 403/JS-wall plain fetches. cadence: \"monthly\" sources are checked on the first Monday run of the month only.",
+  "description": "Track V ingest web-source roster — the machine-readable half of .claude/skills/ingest-newsletters/SKILL.md (policy stays in the skill; URLs + fetch mechanics live here). Driven by scripts/fetch-sources.mjs, which snapshots each source and emits .ingest-cache/changes.json so the ingest only spends model attention on sources that actually changed. fetch: \"auto\" = plain HTTP first, headless-browser fallback; \"browser\" = known to 403/JS-wall plain fetches. cadence: \"monthly\" sources are checked on the first Monday run of the month only.",
   "sources": [
     {
       "id": "greenpointers",
@@ -8,7 +8,7 @@
       "group": "roundup",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS \u2014 a diff here surfaces the new post URL; always verify items at the post itself. Apply the Williamsburg-address gate per roundup item. Blocks plain WebFetch."
+      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS — a diff here surfaces the new post URL; always verify items at the post itself. Apply the Williamsburg-address gate per roundup item. Blocks plain WebFetch."
     },
     {
       "id": "troost",
@@ -53,7 +53,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Venue's own site is JS-thin \u2014 the DoNYC listing is the working calendar."
+      "notes": "Venue's own site is JS-thin — the DoNYC listing is the working calendar."
     },
     {
       "id": "archestratus",
@@ -62,7 +62,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "BRICK + MORTAR CLOSED per site banner (2026-07-25) \u2014 online only now; keep for closure/reopening news + the virtual book club, expect no venue events."
+      "notes": "BRICK + MORTAR CLOSED per site banner (2026-07-25) — online only now; keep for closure/reopening news + the virtual book club, expect no venue events."
     },
     {
       "id": "flower-cat",
@@ -71,7 +71,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Often empty \u2014 they announce late; the venue card carries the \"check their channels\" note."
+      "notes": "Often empty — they announce late; the venue card carries the \"check their channels\" note."
     },
     {
       "id": "hide-and-seek",
@@ -98,7 +98,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Apply the Brooklyn filter \u2014 the page mixes in their Jersey City store. Site bot-walls both plain and headless fetches (IndieCommerce 403) \u2014 expect status \"error\"; check via the Browser pane each run."
+      "notes": "Apply the Brooklyn filter — the page mixes in their Jersey City store. Site bot-walls both plain and headless fetches (IndieCommerce 403) — expect status \"error\"; check via the Browser pane each run."
     },
     {
       "id": "brooklyn-craft-company",
@@ -107,7 +107,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "165 Greenpoint Ave; workshops sell out fast \u2014 note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) \u2014 the Shopify collection page hides dated listings (2026-07-25 lesson)."
+      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson)."
     },
     {
       "id": "yaro-studios",
@@ -134,25 +134,34 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "33 Nassau Ave; use the calendar, not the newsletter form (unreliable/hidden on-site). Plain fetch returns nav-only chrome (2026-07-25) \u2014 browser required."
+      "notes": "33 Nassau Ave; use the calendar, not the newsletter form (unreliable/hidden on-site). Plain fetch returns nav-only chrome (2026-07-25) — browser required."
     },
     {
       "id": "last-place-on-earth",
       "name": "Last Place on Earth",
-      "url": "https://lastplacebk.com",
+      "url": "https://www.lastplacebk.com/events",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "531 Graham Ave; board game cafe \u2014 game nights, murder mysteries, comedy, Pilates."
+      "notes": "531 Graham Ave, Brooklyn NY 11222 (Greenpoint zip); board game shop + community hub — D&D nights across the week, murder mysteries, one-shots, kids' afterschool. Owner-operated by Whitney Wolfe; sister space '3rd Place from the Sun' still upcoming, so single location as of the 2026-07-25 snapshot. Not a bar and not a coffee shop; outside food/drink allowed, $20 corking fee. Batu 2026-07-27: point at /events, not the homepage — the homepage snapshot carries the about/FAQ/address but NO dated listings, which is exactly why. One of the three game-club sources to keep in every scan. The /events URL itself is NOT YET FETCHED (network allowlist) — confirm it carries dated listings on the first successful fetch. CHANNEL: email is NOT viable — owner Whitney replied to Batu 2026-07-22 from lastplaceonearthbk@gmail.com, 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' So /events is the primary source and their Discord is where the schedule actually lives; if /events proves thin, Discord is the gap-filler to raise with Batu (it needs an invite, not a scrape)."
     },
     {
       "id": "carcosa-club",
       "name": "The Carcosa Club",
-      "url": "https://carcosaclub.com/events",
+      "url": "https://www.carcosaclub.com/events?view=calendar",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "982 Manhattan Ave; membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address."
+      "notes": "982 Manhattan Ave, Brooklyn NY 11222; hours Sun-Thu 9am-11pm, Fri-Sat 9am-midnight (both per the 2026-07-25 snapshot). Membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address. Batu 2026-07-27: one of the three game-club sources to keep in every scan. MONTH-BOUNDARY GAP: the events page renders ONE month grid — the current one — so near month end the Aug 1-6 half of our today+10 window is invisible. Batu's link pinned &month=07-2026; the param is dropped here so the scan follows the current month rather than going stale, but when a run falls within ~10 days of month end, ALSO fetch &month=MM-YYYY for the following month or those events are silently missed. Batu confirmed 2026-08 has events at &month=08-2026. CHANNEL: web-only — a broad Gmail search on 2026-07-27 found no Carcosa newsletter in the mailbox at all, so nothing here arrives by email."
+    },
+    {
+      "id": "nyplays",
+      "name": "New York Society of Play",
+      "url": "https://www.hisawyer.com/new-york-society-of-play/schedules",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Third game-club source (Batu 2026-07-27). RESOLVED 2026-07-27 run 2: nyplays.org/events/ is nav-only chrome — the real schedule is a Sawyer registration iframe, so the roster now points straight at the Sawyer schedules page (browser fetch). Programs are hosted at Frontier Games, 724 Manhattan Ave, Greenpoint (stated per-listing in the schedule), plus non-Greenpoint school sites (PS290 Ridgewood — skip) and online classes (not mappable). First real read 2026-07-27: all offerings are fall-semester kids registrations (Sep starts, $470–$1,425) — carded as nyplays-fall-registration (subscription); no dated in-window events yet. CHANNEL: web-only — no newsletter found in the mailbox (2026-07-27)."
     },
     {
       "id": "little-dance-school",
@@ -161,7 +170,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "106 Calyer St (inside Triskelion); kids dance, Fall 2026\u2013Spring 2027 schedule. Independently owned local; UK curriculum license does not make it a chain."
+      "notes": "106 Calyer St (inside Triskelion); kids dance, Fall 2026–Spring 2027 schedule. Independently owned local; UK curriculum license does not make it a chain."
     },
     {
       "id": "dance-space-ny",
@@ -188,7 +197,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted \u2014 use the league listing only."
+      "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted — use the league listing only."
     },
     {
       "id": "sunshine-laundromat",
@@ -224,7 +233,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "208 Dupont St; no calendar found \u2014 newsletter is the primary channel."
+      "notes": "208 Dupont St; no calendar found — newsletter is the primary channel."
     },
     {
       "id": "heaven-and-earth",
@@ -269,7 +278,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "106 Calyer St; nonprofit dance venue + classes. Plain fetch returns nav-only chrome (2026-07-25) \u2014 browser required."
+      "notes": "106 Calyer St; nonprofit dance venue + classes. Plain fetch returns nav-only chrome (2026-07-25) — browser required."
     },
     {
       "id": "brooklyn-youth-ballet",
@@ -287,11 +296,11 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "394 McGuinness Blvd #208; booking calendar via feather.rsvp. Plain fetch returns nav-only chrome (2026-07-25) \u2014 browser required."
+      "notes": "394 McGuinness Blvd #208; booking calendar via feather.rsvp. Plain fetch returns nav-only chrome (2026-07-25) — browser required."
     },
     {
       "id": "sparsa",
-      "name": "SPAR\u015aA Greenpoint",
+      "name": "SPARŚA Greenpoint",
       "url": "https://sparsabrooklyn.union.site",
       "group": "venue",
       "cadence": "weekly",
@@ -300,12 +309,12 @@
     },
     {
       "id": "acme-fish-friday",
-      "name": "Acme Smoked Fish \u2014 Fish Friday",
+      "name": "Acme Smoked Fish — Fish Friday",
       "url": "https://acmesmokedfish.com/collections/fish-friday",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "30 Gem St; every Friday 8am\u20131pm, pre-orders close Fri 11:30am \u2014 re-pin the weekly event card each run; watch for closure weeks (e.g. 7/3)."
+      "notes": "30 Gem St; every Friday 8am–1pm, pre-orders close Fri 11:30am — re-pin the weekly event card each run; watch for closure weeks (e.g. 7/3)."
     },
     {
       "id": "dashi-okume",
@@ -314,7 +323,7 @@
       "group": "venue",
       "cadence": "monthly",
       "fetch": "auto",
-      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 \u2014 monthly check only."
+      "notes": "50 Norman Ave complex; page was stale as of 2026-07-22 — monthly check only."
     },
     {
       "id": "greenpoint-library",
@@ -323,7 +332,7 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "Rich weekly calendar \u2014 group into per-day cards, don't flood. Full sweep method: discover.bklynlibrary.org \u2192 Filters \u2192 Event Location \u2192 Greenpoint Library (JS app; Browser pane); free only where the title says \"Free\". A branch-page diff is the signal to run the sweep."
+      "notes": "Rich weekly calendar — group into per-day cards, don't flood. Full sweep method: discover.bklynlibrary.org → Filters → Event Location → Greenpoint Library (JS app; Browser pane); free only where the title says \"Free\". A branch-page diff is the signal to run the sweep."
     },
     {
       "id": "bpl-north-brooklyn-calendar",
@@ -332,7 +341,7 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "403s plain fetches. Mostly overlaps the branch calendar \u2014 scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG)."
+      "notes": "403s plain fetches. Mostly overlaps the branch calendar — scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG)."
     },
     {
       "id": "go-green-bk",
@@ -359,20 +368,20 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup \u2014 the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run."
+      "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run."
     },
     {
       "id": "nycparks-mcgolrick",
-      "name": "NYC Parks \u2014 Msgr. McGolrick Park",
+      "name": "NYC Parks — Msgr. McGolrick Park",
       "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
       "group": "institution",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "403s plain fetches. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) \u2014 card one-off happenings only."
+      "notes": "403s plain fetches. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only."
     },
     {
       "id": "nycparks-mccarren",
-      "name": "NYC Parks \u2014 McCarren Park",
+      "name": "NYC Parks — McCarren Park",
       "url": "https://www.nycgovparks.org/parks/mccarren-park/events",
       "group": "institution",
       "cadence": "weekly",
@@ -381,7 +390,7 @@
     },
     {
       "id": "nycparks-transmitter",
-      "name": "NYC Parks \u2014 WNYC Transmitter Park",
+      "name": "NYC Parks — WNYC Transmitter Park",
       "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
       "group": "institution",
       "cadence": "weekly",
@@ -390,12 +399,39 @@
     },
     {
       "id": "nycparks-newtown-barge",
-      "name": "NYC Parks \u2014 Newtown Barge Playground",
+      "name": "NYC Parks — Newtown Barge Playground",
       "url": "https://www.nycgovparks.org/parks/newtown-barge-playground/events",
       "group": "institution",
       "cadence": "weekly",
       "fetch": "browser",
       "notes": "Same 403 + skip-recurring-rec-classes rule."
+    },
+    {
+      "id": "greenpoint-star",
+      "name": "Greenpoint Star",
+      "url": "https://www.greenpointstar.com/",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Civic/news coverage the venue roster never carries (Monitor Point, McGuinness, land use, transit). Added 2026-07-27 after the civic coverage-gap fix — backs monitor-point-approved. News cards only where the story is Greenpoint-side; verify claims at the named primary source (Council, DOT, EPA) when one is cited."
+    },
+    {
+      "id": "epa-meeker-plume",
+      "name": "EPA — Meeker Avenue Plume site profile",
+      "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407",
+      "group": "institution",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "Superfund site updates (CAG meetings, sampling milestones). Backs meeker-plume-monitoring — a diff here means updating that card's timeline, not a new card. Added 2026-07-27."
+    },
+    {
+      "id": "nyc-dot-mcguinness",
+      "name": "NYC Mayor's Office / DOT — McGuinness Blvd redesign",
+      "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin",
+      "group": "institution",
+      "cadence": "monthly",
+      "fetch": "browser",
+      "notes": "nyc.gov blocks plain fetch (403) — browser only. Backs mcguinness-redesign; watch for completion announcement (city says early fall 2026), then update that card's timeline. Added 2026-07-27."
     }
   ]
 }
