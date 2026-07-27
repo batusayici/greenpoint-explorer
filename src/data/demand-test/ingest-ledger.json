@@ -973,7 +973,7 @@
         "discount",
         "event"
       ],
-      "note": "83 West St (Greenpoint), site marianella.co \u2014 identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. UNVERIFIED single-location (marianella.co was unreachable under the runner's network allowlist) \u2014 confirm locally-owned before carding anything"
+      "note": "83 West St (Greenpoint), site marianella.co \u2014 identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
     },
     {
       "publisher": "The WonderMart",
@@ -983,7 +983,7 @@
         "event",
         "news"
       ],
-      "note": "141 India St \u2014 identified 2026-07-27 in the Gmail discovery pass; self-described woman-owned, community-driven Greenpoint gift shop. UNVERIFIED single-location (site unreachable under the runner's network allowlist) \u2014 confirm locally-owned before carding anything"
+      "note": "141 India St \u2014 identified 2026-07-27 in the Gmail discovery pass; woman-owned, community-driven Greenpoint gift shop. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
     }
   ],
   "watchItems": [
