@@ -825,7 +825,7 @@
       "kicker": "Beach ferry from the India St pier",
       "locationName": "Greenpoint ferry landing (India St)",
       "geocodeQuery": "India Street, Greenpoint, Brooklyn, NY",
-      "summary": "NYC Ferry's seasonal Rockaway Rocket returned July 11 and runs for a limited time between Long Island City, Greenpoint, and Rockaway — tickets on ferry.nyc.",
+      "summary": "NYC Ferry's seasonal Rockaway Rocket returned July 11 and runs for a limited time between Long Island City, Greenpoint, and Rockaway — $12, with tickets sold in the NYC Ferry app.",
       "filters": [
         "news"
       ],
@@ -846,6 +846,12 @@
           "publisher": "NYC Ferry",
           "url": "https://www.ferry.nyc/",
           "date": "2026-07-08"
+        },
+        {
+          "title": "NYC Ferry — \"Your Ticket to the Ultimate NYC Summer\": $12 to Rockaway, tickets in the app (email)",
+          "publisher": "NYC Ferry",
+          "url": "https://www.ferry.nyc/",
+          "date": "2026-07-23"
         }
       ],
       "evidenceStrength": "high",
@@ -853,7 +859,7 @@
       "partnerRelevance": "low",
       "trustRisk": "low",
       "createdAt": "2026-07-15",
-      "updatedAt": "2026-07-15",
+      "updatedAt": "2026-07-27",
       "lat": 40.731769,
       "lng": -73.960549
     },

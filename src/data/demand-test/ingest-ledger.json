@@ -785,6 +785,20 @@
       "publisher": "Marianella Market",
       "processedAt": "2026-07-27",
       "outcome": "sender identified: 83 West St, Brooklyn NY 11222 (Greenpoint) \u2014 Venezuelan-roots brand made in Brooklyn; the 7/19 sitewide sale ended that night, nothing cardable; proposed for senderRegistry"
+    },
+    {
+      "id": "gmail:19f962b549abeb04",
+      "kind": "email",
+      "publisher": "Bios Apothecary",
+      "processedAt": "2026-07-27",
+      "outcome": "nothing on-concept: product catalog blast (skincare, bath oils, custom perfume) \u2014 no dated in-store event and no offer stated at all; the standing 10%-first-order card is unaffected"
+    },
+    {
+      "id": "gmail:19f8f85cd4ba4389",
+      "kind": "email",
+      "publisher": "NYC Ferry",
+      "processedAt": "2026-07-27",
+      "outcome": "rockaway-rocket card UPDATED: email states the $12 fare and that tickets sell in the NYC Ferry app (neither was on the card); no run dates stated, nothing contradicted"
     }
   ],
   "senderRegistry": [
