@@ -143,7 +143,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "531 Graham Ave; board game cafe \u2014 game nights, murder mysteries, comedy, Pilates. Batu 2026-07-27: point at /events, not the homepage \u2014 one of the three game-club sources to keep in every scan. URL NOT YET FETCHED (network allowlist blocked it on the run that changed it) \u2014 confirm the page carries dated listings on the first successful fetch."
+      "notes": "531 Graham Ave, Brooklyn NY 11222 (Greenpoint zip); board game shop + community hub \u2014 D&D nights across the week, murder mysteries, one-shots, kids' afterschool. Owner-operated by Whitney Wolfe; sister space '3rd Place from the Sun' still upcoming, so single location as of the 2026-07-25 snapshot. Not a bar and not a coffee shop; outside food/drink allowed, $20 corking fee. Batu 2026-07-27: point at /events, not the homepage \u2014 the homepage snapshot carries the about/FAQ/address but NO dated listings, which is exactly why. One of the three game-club sources to keep in every scan. The /events URL itself is NOT YET FETCHED (network allowlist) \u2014 confirm it carries dated listings on the first successful fetch."
     },
     {
       "id": "carcosa-club",
@@ -152,16 +152,16 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "982 Manhattan Ave; membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address. Batu 2026-07-27: use the CALENDAR view — one of the three game-club sources to keep in every scan. His link pinned &month=07-2026; the month param is deliberately dropped here so the scan follows the current month instead of going stale, but that default was NOT verifiable on the run that changed it (network allowlist) — if the calendar comes back empty or stuck, re-add &month=MM-YYYY and rotate it each run."
+      "notes": "982 Manhattan Ave, Brooklyn NY 11222; hours Sun-Thu 9am-11pm, Fri-Sat 9am-midnight (both per the 2026-07-25 snapshot). Membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address. Batu 2026-07-27: one of the three game-club sources to keep in every scan. MONTH-BOUNDARY GAP: the events page renders ONE month grid — the current one — so near month end the Aug 1-6 half of our today+10 window is invisible. Batu's link pinned &month=07-2026; the param is dropped here so the scan follows the current month rather than going stale, but when a run falls within ~10 days of month end, ALSO fetch &month=MM-YYYY for the following month or those events are silently missed."
     },
     {
       "id": "nyplays",
-      "name": "NY Plays",
+      "name": "New York Society of Play",
       "url": "https://nyplays.org/events/",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Added at Batu's direction 2026-07-27 as the third game-club source. NOT YET FETCHED OR VERIFIED — the network allowlist blocked it on the run that added it, so the org's identity, its address and whether its events are in Greenpoint are all unconfirmed; \"venue\" is a placeholder group. First successful fetch must settle those before anything cards, and the per-item Greenpoint gate applies as usual."
+      "notes": "Third game-club source, added at Batu's direction 2026-07-27. Identified via Greenpointers, 'NY Society of Play opens new headquarters in Greenpoint', 2023-11-20: https://greenpointers.com/2023/11/20/ny-society-of-play-opens-new-headquarters-in-greenpoint/ — that headline is ALL that could be read; the article body and nyplays.org both refused every fetch path available (container allowlist 403s the pipeline; WebFetch gets its own 403 from the sites). So: the org name is sourced, but the HQ street address, hours, pricing and whether the Greenpoint HQ is still open are ALL unconfirmed, and the 2023 article is ~2.7 years stale. 'venue' is a placeholder group. First successful fetch must settle the address and current status before anything cards; the per-item Greenpoint gate applies as usual."
     },
     {
       "id": "little-dance-school",
