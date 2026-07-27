@@ -4,6 +4,17 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-27 — Growth Operator adopted; launch plan of record
+
+Decision (Batu, via approved plan this date). Sources: two NotebookLM syntheses Batu supplied (AI-era product/growth meta-summary; hyperlocal ops blueprint), applied with judgment — the useful frameworks adopted, the hype rejected.
+
+1. **The weekly growth loop runs as a semi-autonomous Growth Operator** — `.claude/skills/growth-weekly/SKILL.md` + cloud routine `greenpoint-tuesday-growth-readout` (Tue 9:30 ET, Opus, created **disabled**; Batu enables at launch, after this branch merges so the cloud checkout can read the skill). Same pattern as ingest: the PR is the review gate; merging is the only way operator output becomes real.
+2. **Autonomy is laddered, not granted** (growth-engine §7, new): V1 suggest / V2 draft-for-review / V3 autonomous, per task. Start: V1/V2 everywhere. Promotion only after 3 consecutive cycles without material edit, reversible, inside kit rules — proposed in a readout, ratified by Batu. Demotion immediate on any breach. **Sends, deploys/merges, taste gates, kill/graduate/PMF verdicts, and spending stay Batu's permanently** — not trust-gated; the definition of supervision.
+3. **`docs/launch/2026-07-27-launch-plan.md` is the launch runbook of record:** launch = greenpoint.life cutover (~Aug 1–8); remaining builds = business submission path + de-July; echo-chamber seeding order (org notes + parents wedge before Reddit/QR; Greenpointers held); first experiment slate R1/Q1/Q2 within the max-3 rule.
+4. **Growth engine additions (rev 2026-07-27):** organic >50% of acquisition as the word-of-mouth confirming signal on the PMF read; one-egg first-30-seconds rule on activation; echo-chamber targeting on Q1/Q2. **Explicitly rejected from the same sources:** 20X token-maxing, autonomous outbound, self-modifying nightly agents — automation expands down the ladder, never around the gates.
+
+Owner: Batu.
+
 ## 2026-07-26 — Banner charter: the slot under the header is the neighborhood status line; community-alert tier ships (Film Noir)
 
 Decision (Batu). The banner slot is the product's one guaranteed-impression surface; its value is that it has never wasted attention. It is chartered as a single-slot **neighborhood status line** with a strict priority queue where silence is the default state:
