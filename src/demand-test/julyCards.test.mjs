@@ -101,15 +101,18 @@ test("seed has exactly 71 cards across the six layers", () => {
   // (Jul 25–26 nights at Troost/Eavesdrop/Good Room/GCC/Film Noir/Hide & Seek,
   // Black Rabbit bingo, Hana gyopo dinner, BCC filet crochet, the Franca
   // seconds sale, and the Saturday library/park/community block). 105 → 84.
-  assert.equal(seed.cards.length, 84);
+  // 2026-07-27 run 2 (game-club sources + web diffs): +7 — Troost Aug 5/6,
+  // Film Noir late show 7/27, GCC free screenings 8/2, Carcosa 40k 8/1,
+  // Last Place chess night, NY Society of Play fall registration. 84 → 91.
+  assert.equal(seed.cards.length, 91);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 19, "16 + peek-inn + archestratus-closed + gtrain-sales-survey");
-  assert.equal(count((c) => c.category === "event"), 40, "61 minus the 21 Jul 25–26 events expiry deleted");
+  assert.equal(count((c) => c.category === "event"), 45, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa)");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 9, "7 + archestratus-closed + gtrain-sales-survey");
-  assert.equal(count((c) => c.filters.includes("live_music")), 17, "13 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
-  assert.equal(count((c) => c.category === "subscription"), 7, "Falu, Flower Cat, Trash Club + 4 kids-program registrations");
+  assert.equal(count((c) => c.filters.includes("live_music")), 19, "15 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
+  assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
@@ -184,6 +187,7 @@ test("free-ness is designated only where the source states it (tester feedback #
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   assert.deepEqual(free, [
     "brew-inn-trivia-0729",
+    "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
     "greenpoint-trash-club",
     "library-childrens-book-club-0729",
     "library-friday-programs-0731",
@@ -264,11 +268,16 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // 2026-07-27 expiry took the dated half of this lens (City of Water Day, the
   // Disabled & Hungry launch, It's My Park at Transmitter, the Saturday library
   // block, Pooch's adoption day) — the standing civic asks are what remain.
+  // 2026-07-27 run 2 added the game-club pair: Carcosa's all-day 40k
+  // tournament and Last Place on Earth's weekly chess night — tabletop
+  // gathering spots live here alongside the civic asks.
   assert.deepEqual(community, [
     "adopt-a-business",
+    "carcosa-warhammer-rtt-0801",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
+    "last-place-chess-chill",
     "library-tuesday-programs-0728",
     "newtown-creek-cag-0729",
   ]);

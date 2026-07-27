@@ -2428,5 +2428,80 @@
         "-73.9590960"
       ]
     }
+  },
+  "982 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "982 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:00:03.862Z",
+    "hit": {
+      "place_id": 355527232,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280136866,
+      "lat": "40.7326762",
+      "lon": "-73.9543946",
+      "category": "building",
+      "type": "apartments",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "982, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7326196",
+        "40.7327128",
+        "-73.9545270",
+        "-73.9542621"
+      ]
+    }
+  },
+  "531 Graham Ave, Brooklyn, NY 11222": {
+    "query": "531 Graham Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:00:05.551Z",
+    "hit": {
+      "place_id": 413609704,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 964839360,
+      "lat": "40.7213260",
+      "lon": "-73.9470000",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "531, Graham Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7212760",
+        "40.7213760",
+        "-73.9470500",
+        "-73.9469500"
+      ]
+    }
+  },
+  "724 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "724 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-27T18:00:06.972Z",
+    "hit": {
+      "place_id": 360524752,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280115345,
+      "lat": "40.7261156",
+      "lon": "-73.9518789",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "724, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7260485",
+        "40.7261827",
+        "-73.9520113",
+        "-73.9517261"
+      ]
+    }
   }
 }

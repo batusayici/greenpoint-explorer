@@ -1892,7 +1892,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "locationName": "Troost",
       "address": "1011 Manhattan Ave",
       "filters": [
@@ -1910,14 +1910,14 @@
           "title": "Troost calendar",
           "url": "https://troostny.com/calendar/",
           "publisher": "Troost",
-          "date": "2026-07-25"
+          "date": "2026-07-27"
         }
       ],
-      "id": "troost-dj-giovanni-0731",
-      "title": "DJ Giovanni at Troost",
+      "id": "troost-dj-deridac-0731",
+      "title": "DJ Deridàc at Troost",
       "kicker": "Friday night DJ set",
       "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "DJ Giovanni takes the decks at the Manhattan Avenue bar — details on the calendar.",
+      "summary": "DJ Deridàc takes the decks at the Manhattan Avenue bar — details on the calendar.",
       "lat": 40.733463,
       "lng": -73.955035,
       "startsAt": "2026-07-31T00:00:00-04:00"
@@ -3760,6 +3760,307 @@
       "updatedAt": "2026-07-25",
       "lat": 40.728475,
       "lng": -73.959146
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-07-27"
+        }
+      ],
+      "id": "troost-dervisi-0805",
+      "title": "Dervisi at Troost",
+      "kicker": "Greek gangsta blues, rembetika",
+      "endsAt": "2026-08-05T23:59:00-04:00",
+      "summary": "Dervisi brings Greek gangsta blues from the ’30s, punk and rembetika to the Manhattan Avenue bar.",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "startsAt": "2026-08-05T00:00:00-04:00"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-07-27"
+        }
+      ],
+      "id": "troost-barba-yiorgi-0806",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "endsAt": "2026-08-06T23:59:00-04:00",
+      "summary": "DJ Barba Yiorgi spins world psychedelic groove at the Manhattan Avenue bar.",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "startsAt": "2026-08-06T00:00:00-04:00"
+    },
+    {
+      "id": "film-noir-electric-dragon-0727",
+      "category": "event",
+      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
+      "title": "Electric Dragon at Film Noir",
+      "kicker": "Late screening, 8pm",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "Electric Dragon screens at the Meserole Avenue cinema.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-27T20:00:00-04:00",
+      "endsAt": "2026-07-27T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Showtimes",
+          "type": "learn_more",
+          "url": "https://filmnoircinema.com"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema — calendar",
+          "publisher": "Film Noir Cinema",
+          "url": "https://filmnoircinema.com",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave",
+      "filters": [
+        "arts_culture"
+      ],
+      "actions": [
+        {
+          "label": "Get tickets",
+          "type": "rsvp",
+          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "GCC ticketing",
+          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-07-27"
+        }
+      ],
+      "id": "gcc-artists-beers-0802",
+      "title": "Artists & Beers: free film screenings",
+      "kicker": "Free Sunday screenings, 2pm",
+      "startsAt": "2026-08-02T14:00:00-04:00",
+      "endsAt": "2026-08-02T23:59:00-04:00",
+      "summary": "A free afternoon of film screenings at the comedy club on Greenpoint Avenue.",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ]
+    },
+    {
+      "id": "carcosa-warhammer-rtt-0801",
+      "title": "Warhammer 40k: Armageddon! RTT",
+      "category": "event",
+      "filters": [
+        "community"
+      ],
+      "locationName": "The Carcosa Club",
+      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "kicker": "All-day 40k tournament",
+      "startsAt": "2026-08-01T09:00:00-04:00",
+      "endsAt": "2026-08-01T21:00:00-04:00",
+      "summary": "Warhammer 40k: Armageddon! — an all-day RTT at the Manhattan Avenue game club.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Carcosa Club events calendar",
+          "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026",
+          "publisher": "The Carcosa Club",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.732676,
+      "lng": -73.954395
+    },
+    {
+      "id": "last-place-chess-chill",
+      "title": "Chess & Chill at Last Place on Earth",
+      "category": "subscription",
+      "filters": [
+        "community",
+        "deals_memberships"
+      ],
+      "locationName": "Last Place on Earth",
+      "address": "531 Graham Ave, Brooklyn, NY 11222",
+      "kicker": "Tuesdays 7pm — $15, no time limit",
+      "summary": "A weekly open chess night at the Graham Avenue board-game shop — meet other players, stay as long as you like.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://www.lastplacebk.com/events"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Last Place on Earth events",
+          "url": "https://www.lastplacebk.com/events",
+          "publisher": "Last Place on Earth",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.721326,
+      "lng": -73.947
+    },
+    {
+      "id": "nyplays-fall-registration",
+      "title": "NY Society of Play fall game clubs",
+      "category": "subscription",
+      "filters": [
+        "family_kids",
+        "deals_memberships"
+      ],
+      "locationName": "Frontier Games",
+      "address": "724 Manhattan Ave, Brooklyn, NY 11222",
+      "kicker": "Kids D&D & games — fall signup open",
+      "summary": "Registration is open for fall semester Dungeons & Dragons, Magic and Pokémon clubs for ages 7–17, hosted at Frontier Games on Manhattan Avenue (from $800).",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "See the schedule",
+          "type": "learn_more",
+          "url": "https://nyplays.org/events/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NY Society of Play schedule (Sawyer)",
+          "url": "https://www.hisawyer.com/new-york-society-of-play/schedules",
+          "publisher": "New York Society of Play",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.726116,
+      "lng": -73.951879
     }
   ]
 }

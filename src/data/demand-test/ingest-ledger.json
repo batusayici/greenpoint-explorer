@@ -1,6 +1,6 @@
 {
-  "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill \u2014 hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T09:45:00-04:00",
+  "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
+  "lastRunAt": "2026-07-27T14:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -91,7 +91,7 @@
       "kind": "web",
       "publisher": "Warsaw",
       "processedAt": "2026-07-15",
-      "outcome": "venue card; no shows this week \u2014 calendar resumes Aug 13 (re-check in Aug)"
+      "outcome": "venue card; no shows this week — calendar resumes Aug 13 (re-check in Aug)"
     },
     {
       "id": "https://www.troostny.com/",
@@ -119,7 +119,7 @@
       "kind": "web",
       "publisher": "Troost",
       "processedAt": "2026-07-15",
-      "outcome": "8 nightly live-music cards (Jul 15-22); calendar runs nightly into Sep \u2014 re-pull each weekly refresh"
+      "outcome": "8 nightly live-music cards (Jul 15-22); calendar runs nightly into Sep — re-pull each weekly refresh"
     },
     {
       "id": "https://www.eavesdrop.nyc/calendar",
@@ -161,7 +161,7 @@
       "kind": "web",
       "publisher": "Brooklyn Paper",
       "processedAt": "2026-07-16",
-      "outcome": "Scrappleland venue + weekly ScrappleLeague (Wed Jul 22, trustRisk medium \u2014 season phase unverified)"
+      "outcome": "Scrappleland venue + weekly ScrappleLeague (Wed Jul 22, trustRisk medium — season phase unverified)"
     },
     {
       "id": "https://www.thelotradio.com/",
@@ -175,7 +175,7 @@
       "kind": "web",
       "publisher": "Flower Cat",
       "processedAt": "2026-07-16",
-      "outcome": "business + subscription cards; NO dated events (Upcoming page has none future-dated \u2014 announces late via IG/newsletter)"
+      "outcome": "business + subscription cards; NO dated events (Upcoming page has none future-dated — announces late via IG/newsletter)"
     },
     {
       "id": "https://greenpointers.com/2026/07/10/iconic-metal-bar-saint-vitus-is-reopening-in-bushwick/",
@@ -189,7 +189,7 @@
       "kind": "web",
       "publisher": "Warsaw",
       "processedAt": "2026-07-16",
-      "outcome": "SKIPPED + venue card REMOVED by Batu \u2014 Live Nation-operated (site footer/careers), fails locally-owned rule"
+      "outcome": "SKIPPED + venue card REMOVED by Batu — Live Nation-operated (site footer/careers), fails locally-owned rule"
     },
     {
       "id": "https://donyc.com/venues/good-room",
@@ -203,7 +203,7 @@
       "kind": "web",
       "publisher": "Le Fanfare",
       "processedAt": "2026-07-16",
-      "outcome": "no published performer calendar (hours only) \u2014 no dated cards possible; venue card unchanged"
+      "outcome": "no published performer calendar (hours only) — no dated cards possible; venue card unchanged"
     },
     {
       "id": "https://www.bklynlibrary.org/locations/greenpoint",
@@ -224,14 +224,14 @@
       "kind": "web",
       "publisher": "Eventbrite",
       "processedAt": "2026-07-16",
-      "outcome": "SKIPPED \u2014 ChatGPT-cited event; Eventbrite page 404s, only aggregator echoes exist (unverifiable)"
+      "outcome": "SKIPPED — ChatGPT-cited event; Eventbrite page 404s, only aggregator echoes exist (unverifiable)"
     },
     {
       "id": "moviefone-greenpoint-showtimes-2026-06-22",
       "kind": "web",
       "publisher": "Moviefone",
       "processedAt": "2026-07-16",
-      "outcome": "SKIPPED \u2014 ChatGPT claimed 'Film Noir (2007) 9pm Jul 16'; cinema's own July calendar shows Jul 16 dark (stale June source)"
+      "outcome": "SKIPPED — ChatGPT claimed 'Film Noir (2007) 9pm Jul 16'; cinema's own July calendar shows Jul 16 dark (stale June source)"
     },
     {
       "id": "gmail:19f81fa3af903678",
@@ -336,7 +336,7 @@
       "kind": "web",
       "publisher": "Brooklyn Public Library",
       "processedAt": "2026-07-21",
-      "outcome": "Greenpoint branch calendar sweep (filtered) \u2014 4 day cards added (Thu Jul 23, Fri Jul 24, Sat Jul 25, Mon Jul 27); Fri had garden storytime + after-school movie; Sun Jul 26 no branch programming"
+      "outcome": "Greenpoint branch calendar sweep (filtered) — 4 day cards added (Thu Jul 23, Fri Jul 24, Sat Jul 25, Mon Jul 27); Fri had garden storytime + after-school movie; Sun Jul 26 no branch programming"
     },
     {
       "id": "https://greenpointers.com/2026/07/22/support-local-artisans-go-for-a-run-and-more-whats-happening-greenpoint-7-23-29/",
@@ -350,42 +350,42 @@
       "kind": "web",
       "publisher": "Greenpointers",
       "processedAt": "2026-07-22",
-      "outcome": "1 news added (wasabi-closing) \u2014 last day of service Jul 27 after 26 years, 638 Manhattan Ave"
+      "outcome": "1 news added (wasabi-closing) — last day of service Jul 27 after 26 years, 638 Manhattan Ave"
     },
     {
       "id": "https://greenpointers.com/2026/07/22/new-seasonal-spot-swaines-to-open-this-fall-in-former-home-of-pomp-and-circumstance/",
       "kind": "web",
       "publisher": "Greenpointers",
       "processedAt": "2026-07-22",
-      "outcome": "1 news added (swaines-fall-opening) \u2014 577 Lorimer, Williamsburg side of the bbox; added on Batu's explicit ask (Domino-yoga precedent), article itself tagged Williamsburg"
+      "outcome": "1 news added (swaines-fall-opening) — 577 Lorimer, Williamsburg side of the bbox; added on Batu's explicit ask (Domino-yoga precedent), article itself tagged Williamsburg"
     },
     {
       "id": "https://www.instagram.com/greenpointtrashclub/",
       "kind": "web",
       "publisher": "Greenpoint Trash Club",
       "processedAt": "2026-07-22",
-      "outcome": "1 subscription added (greenpoint-trash-club) \u2014 Wed 7:30pm cleanups, rotating bar meetup; this week Broken Land (Jul 20 IG post). Re-pin weekly."
+      "outcome": "1 subscription added (greenpoint-trash-club) — Wed 7:30pm cleanups, rotating bar meetup; this week Broken Land (Jul 20 IG post). Re-pin weekly."
     },
     {
       "id": "https://www.townsquarebk.org/",
       "kind": "web",
       "publisher": "Town Square BK",
       "processedAt": "2026-07-22",
-      "outcome": "1 event added (summerstarz-princess-bride-0724) \u2014 free Friday movies at Transmitter Park through Aug 21. Added to community-institution roster."
+      "outcome": "1 event added (summerstarz-princess-bride-0724) — free Friday movies at Transmitter Park through Aug 21. Added to community-institution roster."
     },
     {
       "id": "https://acmesmokedfish.com/collections/fish-friday",
       "kind": "web",
       "publisher": "Acme Smoked Fish",
       "processedAt": "2026-07-22",
-      "outcome": "1 event added (acme-fish-friday-0724) \u2014 weekly Friday 8am-1pm pickup at 30 Gem St. Added to venue roster (weekly re-pin)."
+      "outcome": "1 event added (acme-fish-friday-0724) — weekly Friday 8am-1pm pickup at 30 Gem St. Added to venue roster (weekly re-pin)."
     },
     {
       "id": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
       "kind": "web",
       "publisher": "Brooklyn Public Library",
       "processedAt": "2026-07-22",
-      "outcome": "Mostly overlaps branch calendar (Energy 101, Sunset Storytime, garden hours already covered). library-childrens-book-club-0729 summary gained Jul 29 open-roof hours. SKIPPED: Newtown Creek Superfund CAG meeting Jul 29 6:30pm \u2014 Queens Landing Boathouse, LIC, out of bbox (has Zoom option; Batu may want it despite geography). Roster added."
+      "outcome": "Mostly overlaps branch calendar (Energy 101, Sunset Storytime, garden hours already covered). library-childrens-book-club-0729 summary gained Jul 29 open-roof hours. SKIPPED: Newtown Creek Superfund CAG meeting Jul 29 6:30pm — Queens Landing Boathouse, LIC, out of bbox (has Zoom option; Batu may want it despite geography). Roster added."
     },
     {
       "id": "https://cibone-us.com/blogs/news/",
@@ -399,14 +399,14 @@
       "kind": "web",
       "publisher": "Dashi Okume",
       "processedAt": "2026-07-22",
-      "outcome": "No upcoming events \u2014 classes page stale (newest entries Dec 2024). Roster: check monthly."
+      "outcome": "No upcoming events — classes page stale (newest entries Dec 2024). Roster: check monthly."
     },
     {
       "id": "https://www.dobbinst.com/culturalevents",
       "kind": "web",
       "publisher": "Dobbin St",
       "processedAt": "2026-07-22",
-      "outcome": "No current events \u2014 cultural-events page is an archive ending 2021. Not rostered."
+      "outcome": "No current events — cultural-events page is an archive ending 2021. Not rostered."
     },
     {
       "id": "https://www.bklynlibrary.org/north-brooklyn-community-calendar#newtown-creek-cag-0729",
@@ -462,7 +462,7 @@
       "kind": "web",
       "publisher": "Archestratus",
       "processedAt": "2026-07-25",
-      "outcome": "BRICK+MORTAR CLOSED per site banner \u2014 news card shipped; Zoom book club skipped (virtual)"
+      "outcome": "BRICK+MORTAR CLOSED per site banner — news card shipped; Zoom book club skipped (virtual)"
     },
     {
       "id": "https://flowercat.nyc/events",
@@ -483,7 +483,7 @@
       "kind": "web",
       "publisher": "Scrappleland",
       "processedAt": "2026-07-25",
-      "outcome": "league not mentioned on site \u2014 season unverifiable, skipped"
+      "outcome": "league not mentioned on site — season unverifiable, skipped"
     },
     {
       "id": "https://www.wordbookstores.com/events",
@@ -518,7 +518,7 @@
       "kind": "web",
       "publisher": "PLAY Kids Greenpoint",
       "processedAt": "2026-07-25",
-      "outcome": "snapshot nav-only \u2192 roster switched to browser fetch; recheck next run"
+      "outcome": "snapshot nav-only → roster switched to browser fetch; recheck next run"
     },
     {
       "id": "https://lastplacebk.com",
@@ -623,7 +623,7 @@
       "kind": "web",
       "publisher": "Triskelion Arts",
       "processedAt": "2026-07-25",
-      "outcome": "booking page nav-only \u2192 roster switched to browser fetch"
+      "outcome": "booking page nav-only → roster switched to browser fetch"
     },
     {
       "id": "https://www.bkyouthballet.com/calendar/",
@@ -637,19 +637,19 @@
       "kind": "web",
       "publisher": "Moon Bunny Aerial",
       "processedAt": "2026-07-25",
-      "outcome": "BACKTOSCHOOL deal carded; site nav-only \u2192 roster switched to browser fetch"
+      "outcome": "BACKTOSCHOOL deal carded; site nav-only → roster switched to browser fetch"
     },
     {
       "id": "https://sparsabrooklyn.union.site",
       "kind": "web",
-      "publisher": "SPAR\u015aA Greenpoint",
+      "publisher": "SPARŚA Greenpoint",
       "processedAt": "2026-07-25",
       "outcome": "venue card (13 classes/wk grouped, not flooded)"
     },
     {
       "id": "https://acmesmokedfish.com/collections/fish-friday",
       "kind": "web",
-      "publisher": "Acme Smoked Fish \u2014 Fish Friday",
+      "publisher": "Acme Smoked Fish — Fish Friday",
       "processedAt": "2026-07-25",
       "outcome": "7/31 re-pinned"
     },
@@ -693,33 +693,33 @@
       "kind": "web",
       "publisher": "Greenpoint Trash Club",
       "processedAt": "2026-07-25",
-      "outcome": "org site has no weekly spot; IG login-walled \u2014 card updated to 7/29 with spot-TBA copy (trustRisk medium)"
+      "outcome": "org site has no weekly spot; IG login-walled — card updated to 7/29 with spot-TBA copy (trustRisk medium)"
     },
     {
       "id": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
       "kind": "web",
-      "publisher": "NYC Parks \u2014 Msgr. McGolrick Park",
+      "publisher": "NYC Parks — Msgr. McGolrick Park",
       "processedAt": "2026-07-25",
       "outcome": "first-run baseline extraction (new); nothing on-concept"
     },
     {
       "id": "https://www.nycgovparks.org/parks/mccarren-park/events",
       "kind": "web",
-      "publisher": "NYC Parks \u2014 McCarren Park",
+      "publisher": "NYC Parks — McCarren Park",
       "processedAt": "2026-07-25",
       "outcome": "first-run baseline extraction (new); nothing on-concept"
     },
     {
       "id": "https://www.nycgovparks.org/parks/transmitter-park/events",
       "kind": "web",
-      "publisher": "NYC Parks \u2014 WNYC Transmitter Park",
+      "publisher": "NYC Parks — WNYC Transmitter Park",
       "processedAt": "2026-07-25",
       "outcome": "It's My Park already live; SummerStarz carded via Town Square"
     },
     {
       "id": "https://www.nycgovparks.org/parks/newtown-barge-playground/events",
       "kind": "web",
-      "publisher": "NYC Parks \u2014 Newtown Barge Playground",
+      "publisher": "NYC Parks — Newtown Barge Playground",
       "processedAt": "2026-07-25",
       "outcome": "first-run baseline extraction (new); nothing on-concept"
     },
@@ -756,7 +756,7 @@
       "kind": "email",
       "publisher": "Greenpointers",
       "processedAt": "2026-07-27",
-      "outcome": "'Greenpoint This Week' 7/24 reviewed: Wasabi closing + Swaine's already live; froyo shops + Music Hall show Williamsburg-skipped; Kingsland Wildflowers festival ('next week', no date), Meet Cute open house (Aug 2, no time/address), Lulla's Venezuela relief hub (no address) and '300 new trees' (no location) held as watchItems \u2014 not cardable, and the article pages were unreachable (network allowlist)"
+      "outcome": "'Greenpoint This Week' 7/24 reviewed: Wasabi closing + Swaine's already live; froyo shops + Music Hall show Williamsburg-skipped; Kingsland Wildflowers festival ('next week', no date), Meet Cute open house (Aug 2, no time/address), Lulla's Venezuela relief hub (no address) and '300 new trees' (no location) held as watchItems — not cardable, and the article pages were unreachable (network allowlist)"
     },
     {
       "id": "gmail:19f9f3e97e718dca",
@@ -777,21 +777,21 @@
       "kind": "email",
       "publisher": "McGolrick Bird Club",
       "processedAt": "2026-07-27",
-      "outcome": "Substack welcome only \u2014 no walk schedule or membership mechanics stated"
+      "outcome": "Substack welcome only — no walk schedule or membership mechanics stated"
     },
     {
       "id": "gmail:19f7bdf9cae3a303",
       "kind": "email",
       "publisher": "Marianella Market",
       "processedAt": "2026-07-27",
-      "outcome": "sender identified: 83 West St, Brooklyn NY 11222 (Greenpoint) \u2014 Venezuelan-roots brand made in Brooklyn; the 7/19 sitewide sale ended that night, nothing cardable; proposed for senderRegistry"
+      "outcome": "sender identified: 83 West St, Brooklyn NY 11222 (Greenpoint) — Venezuelan-roots brand made in Brooklyn; the 7/19 sitewide sale ended that night, nothing cardable; proposed for senderRegistry"
     },
     {
       "id": "gmail:19f962b549abeb04",
       "kind": "email",
       "publisher": "Bios Apothecary",
       "processedAt": "2026-07-27",
-      "outcome": "nothing on-concept: product catalog blast (skincare, bath oils, custom perfume) \u2014 no dated in-store event and no offer stated at all; the standing 10%-first-order card is unaffected"
+      "outcome": "nothing on-concept: product catalog blast (skincare, bath oils, custom perfume) — no dated in-store event and no offer stated at all; the standing 10%-first-order card is unaffected"
     },
     {
       "id": "gmail:19f8f85cd4ba4389",
@@ -805,21 +805,131 @@
       "kind": "email",
       "publisher": "Marianella Market",
       "processedAt": "2026-07-27",
-      "outcome": "nothing cardable: 'TODAY ONLY' 50% off serums/face oils, sent 7/26 \u2014 window closed before this run; footer confirms 83 West St and the site marianella.co"
+      "outcome": "nothing cardable: 'TODAY ONLY' 50% off serums/face oils, sent 7/26 — window closed before this run; footer confirms 83 West St and the site marianella.co"
     },
     {
       "id": "gmail:19fa0fd66d3b3b0d",
       "kind": "email",
       "publisher": "The WonderMart",
       "processedAt": "2026-07-27",
-      "outcome": "new sender identified: 141 India St, Brooklyn NY 11222 \u2014 woman-owned community gift shop per its own footer. This send is a seasonal product promo with no dated event and no time-bound offer, so nothing cardable; proposed for senderRegistry"
+      "outcome": "new sender identified: 141 India St, Brooklyn NY 11222 — woman-owned community gift shop per its own footer. This send is a seasonal product promo with no dated event and no time-bound offer, so nothing cardable; proposed for senderRegistry"
     },
     {
       "id": "gmail:19f8b848fabf6548",
       "kind": "email",
       "publisher": "Last Place on Earth",
       "processedAt": "2026-07-27",
-      "outcome": "owner Whitney replied direct to Batu 7/22: 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' No events in it \u2014 recorded because it settles the channel: email is not viable for this source, /events + Discord are"
+      "outcome": "owner Whitney replied direct to Batu 7/22: 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' No events in it — recorded because it settles the channel: email is not viable for this source, /events + Discord are"
+    },
+    {
+      "id": "https://troostny.com/calendar/",
+      "reviewedAt": "2026-07-27",
+      "outcome": "7/31 lineup change carded (Giovanni → DJ Deridàc); Aug 5 Dervisi + Aug 6 Barba Yiorgi added (in-window, missed by the morning run's card set)"
+    },
+    {
+      "id": "https://filmnoircinema.com",
+      "reviewedAt": "2026-07-27",
+      "outcome": "Electric Dragon 7/27 8pm added (new in diff); 9pm 'Film Noir Monday' was in the reviewed baseline and stays uncarded — flagged in the PR for review"
+    },
+    {
+      "id": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
+      "reviewedAt": "2026-07-27",
+      "outcome": "Artists & Beers free film screenings 8/2 2pm carded"
+    },
+    {
+      "id": "https://www.carcosaclub.com/events?view=calendar",
+      "reviewedAt": "2026-07-27",
+      "outcome": "July grid unchanged/no in-window items; August grid fetched per month-boundary rule — Warhammer 40k RTT 8/1 carded; 8/8+ out of window"
+    },
+    {
+      "id": "https://www.lastplacebk.com/events",
+      "reviewedAt": "2026-07-27",
+      "outcome": "first successful /events fetch: NO dated listings (matches owner's Discord-first note); Chess & Chill Tuesdays 7pm $15 carded as subscription"
+    },
+    {
+      "id": "https://www.hisawyer.com/new-york-society-of-play/schedules",
+      "reviewedAt": "2026-07-27",
+      "outcome": "nyplays resolved: Sawyer iframe holds the schedule; Frontier Games 724 Manhattan Ave confirmed; fall registration carded; roster repointed at Sawyer URL"
+    },
+    {
+      "id": "https://greenpointers.com/",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff was stale-article noise + Brooklyn Bowl union story (Williamsburg — skipped); no Wednesday roundup yet (publishes 7/29)"
+    },
+    {
+      "id": "https://donyc.com/venues/good-room",
+      "reviewedAt": "2026-07-27",
+      "outcome": "only new item Gloria Danger 9/6 — out of window"
+    },
+    {
+      "id": "https://moonbunnyaerial.com",
+      "reviewedAt": "2026-07-27",
+      "outcome": "back-to-school 10% deal already carded by the morning run — dedupe hit, no change"
+    },
+    {
+      "id": "https://www.bklynlibrary.org/locations/greenpoint",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff was chrome noise; day cards through 7/31 already live — no change, sweep not needed"
+    },
+    {
+      "id": "https://www.gogreenbk.org",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff items are BBP/Domino (non-Greenpoint) or time-less (Transmitter yoga 7/28, Battle of Brooklyn tour no venue) — skipped"
+    },
+    {
+      "id": "https://acmesmokedfish.com/collections/fish-friday",
+      "reviewedAt": "2026-07-27",
+      "outcome": "7/31 already re-pinned by morning run — no change"
+    },
+    {
+      "id": "https://archestrat.us/pages/events",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff boilerplate only; closed-status unchanged"
+    },
+    {
+      "id": "https://kettl.co/collections/class",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff is product-catalog noise, no dated classes"
+    },
+    {
+      "id": "https://bellocqtea.com/collections/tea-tastings-nyc",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff is nav boilerplate, no dated sessions"
+    },
+    {
+      "id": "https://greenhookgin.com",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff is nav/cart boilerplate"
+    },
+    {
+      "id": "https://playgreenpoint.com/calendar",
+      "reviewedAt": "2026-07-27",
+      "outcome": "no dated listings in snapshot (category headers only)"
+    },
+    {
+      "id": "https://www.triskelionarts.org/availability-calendar",
+      "reviewedAt": "2026-07-27",
+      "outcome": "rental copy only, no events"
+    },
+    {
+      "id": "https://sparsabrooklyn.union.site",
+      "reviewedAt": "2026-07-27",
+      "outcome": "nothing on-concept in diff"
+    },
+    {
+      "id": "https://www.nycgovparks.org/parks/mccarren-park/events",
+      "reviewedAt": "2026-07-27",
+      "outcome": "diff = Shape Up NYC circuit training — standing rec, skipped"
+    },
+    {
+      "id": "gmail:19fa3f77a61645b5",
+      "reviewedAt": "2026-07-27",
+      "outcome": "Marianella serum sale extended to midnight 7/27 — same-day online sale, not cardable (consistent with 19f9ecabcddd9ef6)"
+    },
+    {
+      "id": "gmail:19fa3740321606f6",
+      "reviewedAt": "2026-07-27",
+      "outcome": "PRESS Modern Massage — excluded sender, skipped"
     }
   ],
   "senderRegistry": [
@@ -857,7 +967,7 @@
       "kinds": [
         "event"
       ],
-      "note": "153 Franklin; announces SAME-DAY tastings \u2014 only catchable on morning-of runs"
+      "note": "153 Franklin; announces SAME-DAY tastings — only catchable on morning-of runs"
     },
     {
       "publisher": "WORD Bookstore",
@@ -887,7 +997,7 @@
       "publisher": "PRESS Modern Massage",
       "match": "pressmodernmassage.com",
       "kinds": [],
-      "note": "EXCLUDED by Batu 2026-07-15 \u2014 5-location business vs locally-owned framing; do not re-propose"
+      "note": "EXCLUDED by Batu 2026-07-15 — 5-location business vs locally-owned framing; do not re-propose"
     },
     {
       "publisher": "GUNK",
@@ -895,7 +1005,7 @@
       "kinds": [
         "event"
       ],
-      "note": "North Brooklyn DIY show newsletter (monthly); mostly reviews \u2014 scan for forward Greenpoint listings; partner venue L&SD is in Greenpoint"
+      "note": "North Brooklyn DIY show newsletter (monthly); mostly reviews — scan for forward Greenpoint listings; partner venue L&SD is in Greenpoint"
     },
     {
       "publisher": "Troost",
@@ -903,7 +1013,7 @@
       "kinds": [
         "event"
       ],
-      "note": "web source, not email: troostny.com/calendar/ posts the nightly program \u2014 pull during every weekly refresh"
+      "note": "web source, not email: troostny.com/calendar/ posts the nightly program — pull during every weekly refresh"
     },
     {
       "publisher": "NYC Parks",
@@ -911,7 +1021,7 @@
       "kinds": [
         "event"
       ],
-      "note": "Greenpoint 'This Week in Parks' weekly email (subscribed 2026-07-21, first issue 7/24) \u2014 now primary; the four park event pages are the fallback. Skip standing rec programming."
+      "note": "Greenpoint 'This Week in Parks' weekly email (subscribed 2026-07-21, first issue 7/24) — now primary; the four park event pages are the fallback. Skip standing rec programming."
     },
     {
       "publisher": "Brooklyn Craft Company",
@@ -919,7 +1029,7 @@
       "kinds": [
         "event"
       ],
-      "note": "info@ newsletter is the PRIMARY workshop source \u2014 the Shopify collection page hides dated listings (2026-07-25 lesson); 165 Greenpoint Ave"
+      "note": "info@ newsletter is the PRIMARY workshop source — the Shopify collection page hides dated listings (2026-07-25 lesson); 165 Greenpoint Ave"
     },
     {
       "publisher": "Greenpoint Game Club",
@@ -945,7 +1055,7 @@
         "event",
         "discount"
       ],
-      "note": "sends via Toast relay (no-reply+800a2abc@toast-restaurants.com) \u2014 match on the relay tag, not the domain (Le Botaniste shares it); welcomed 2026-07-22"
+      "note": "sends via Toast relay (no-reply+800a2abc@toast-restaurants.com) — match on the relay tag, not the domain (Le Botaniste shares it); welcomed 2026-07-22"
     },
     {
       "publisher": "McGolrick Bird Club",
@@ -971,7 +1081,7 @@
         "event",
         "subscription"
       ],
-      "note": "Batu confirmed subscribed 2026-07-25 \u2014 they announce late, often newsletter-first; complements the (often empty) events page"
+      "note": "Batu confirmed subscribed 2026-07-25 — they announce late, often newsletter-first; complements the (often empty) events page"
     },
     {
       "publisher": "Marianella Market",
@@ -980,7 +1090,7 @@
         "discount",
         "event"
       ],
-      "note": "83 West St (Greenpoint), site marianella.co \u2014 identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
+      "note": "83 West St (Greenpoint), site marianella.co — identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. Locally owned — confirmed by Batu 2026-07-27; clears the locally-owned gate"
     },
     {
       "publisher": "The WonderMart",
@@ -990,7 +1100,7 @@
         "event",
         "news"
       ],
-      "note": "141 India St \u2014 identified 2026-07-27 in the Gmail discovery pass; woman-owned, community-driven Greenpoint gift shop. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
+      "note": "141 India St — identified 2026-07-27 in the Gmail discovery pass; woman-owned, community-driven Greenpoint gift shop. Locally owned — confirmed by Batu 2026-07-27; clears the locally-owned gate"
     },
     {
       "publisher": "Last Place on Earth",
@@ -998,33 +1108,33 @@
       "kinds": [
         "event"
       ],
-      "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe \u2014 locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
+      "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe — locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
     }
   ],
   "watchItems": [
     {
       "name": "Kirbee's",
-      "note": "55 McGuinness Blvd (South) Texas BBQ \u2014 announced for summer, no confirmed open; card only on confirmed open",
+      "note": "55 McGuinness Blvd (South) Texas BBQ — announced for summer, no confirmed open; card only on confirmed open",
       "addedAt": "2026-07-23"
     },
     {
       "name": "Shenanigans (below Kinda Nice)",
-      "note": "opened per Greenpointers 7/14 but no geocodable address \u2014 card once street address verified",
+      "note": "opened per Greenpointers 7/14 but no geocodable address — card once street address verified",
       "addedAt": "2026-07-25"
     },
     {
       "name": "Meet Cute (Greenpoint film studio)",
-      "note": "Greenpointers 7/24 names an open house on August 2 \u2014 no time and no street address stated; card once both are verified",
+      "note": "Greenpointers 7/24 names an open house on August 2 — no time and no street address stated; card once both are verified",
       "addedAt": "2026-07-27"
     },
     {
       "name": "Kingsland Wildflowers festival",
-      "note": "Greenpointers 7/24: annual namesake festival 'next week' with performances \u2014 no date, time or price stated; card once the organizer's page gives a date",
+      "note": "Greenpointers 7/24: annual namesake festival 'next week' with performances — no date, time or price stated; card once the organizer's page gives a date",
       "addedAt": "2026-07-27"
     },
     {
       "name": "Lulla's Venezuela earthquake relief hub",
-      "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub \u2014 no address stated and no drop-off hours; card as community/news once the address and hours are verified",
+      "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub — no address stated and no drop-off hours; card as community/news once the address and hours are verified",
       "addedAt": "2026-07-27"
     }
   ]
