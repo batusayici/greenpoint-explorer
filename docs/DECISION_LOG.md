@@ -15,6 +15,16 @@ Decision (Batu, via approved plan this date). Sources: two NotebookLM syntheses 
 
 Owner: Batu.
 
+## 2026-07-27 — Civic-issue coverage is in scope for News; roster gains civic sources
+
+Decision (Batu, via coverage-gap review). A review against the neighborhood's three hottest issues (G-train shutdowns, Monitor Point, McGuinness redesign, plus the Meeker Avenue Plume) found the feed covered only the G train — because the ingest roster was 100% newsletters, venues, and parks calendars, with no civic/government sources. The News lens claims to be "the weekly pulse"; a pulse that misses the Council's biggest land-use approval in a generation is a coverage hole, not an editorial choice.
+
+1. **Three verified news cards added** (all claims checked against primary sources; unverifiable figures — e.g. a "4,000 daily cyclists" count — left out per truth rules): `monitor-point-approved` (Council press 6/25: ~1,324 units, 50% affordable, Quay St), `mcguinness-redesign` (nyc.gov 5/2026: construction Meeker→Pulaski, completion early fall), `meeker-plume-monitoring` (EPA site profile: groundwater + indoor-air sampling, 2026 CAG meetings). `gtrain-sales-survey` sharpened with the verified Greenpointers numbers (36 businesses, 91% reporting declines, 20–24% average) and its real permalink.
+2. **Roster fix (the durable half):** `ingest-sources.json` gains `greenpoint-star` (weekly civic coverage), `epa-meeker-plume`, and `nyc-dot-mcguinness` (both monthly, institution group) — diffs there update the standing cards' timelines rather than minting duplicates.
+3. **Rule restated:** long-arc civic stories live as durable timeline cards (the g-train-closures pattern), one card per issue, updated in place.
+
+Owner: Batu.
+
 ## 2026-07-26 — Banner charter: the slot under the header is the neighborhood status line; community-alert tier ships (Film Noir)
 
 Decision (Batu). The banner slot is the product's one guaranteed-impression surface; its value is that it has never wasted attention. It is chartered as a single-slot **neighborhood status line** with a strict priority queue where silence is the default state:

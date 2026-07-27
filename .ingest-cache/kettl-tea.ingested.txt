@@ -1,21 +1,252 @@
+Japanese Tea Classes and Learning | Kettl Tea
 Skip to content
 Orders over $150 receive free shipping. All Subscriptions ship free in the USA.
+A gift for every ritual—enjoy a complimentary matcha or tea with select tea tools and teaware purchases.
 Shop
 Experience
 Learn
 About
 Wholesale
+{
+if (value === 'dropdown-collection_dropdown-1') {
+setTimeout(() => {
+runTrap = true;
+}, 50)
+} else {
+runTrap = false;
+}
+})
+"
+>
+Curated Selections
+Shop All
+New Releases
+Best Sellers
+Subscriptions
+Yumi Nakamura Collection
+Categories
+Matcha
+Loose Tea
+Tea Bags
+Ceramics
+Tea Tools
+Incense
+Chocolate + Sweets
+Kombucha
+Kettl Greenpoint
+70 Greenpoint Ave
+Brooklyn, NY 11222
+Kettl Los Feliz
+4677 Hollywood Blvd
+Los Angeles, CA 90027
+Kettl Matcha Sen Mon Ten
+38 Norman Avenue
+Brooklyn, NY 11222
+Our experts will guide you through the freshest teas produced in Japan.
+Visit us
+{
+if (value === 'dropdown-three_up_dropdown-2') {
+setTimeout(() => {
+runTrap = true;
+}, 50)
+} else {
+runTrap = false;
+}
+})
+"
+>
+Curated Selections
+Classes & Events
+Kettl Studio
+Visit Us
+Reservations
+Featured
+Class | Crafting the Perfect Latte (NY)
+View Event
+The Foundational Flavors of Japanese Tea (NY)
+View Class
+Virtual Class: An Introduction to Matcha
+View Class
+Kettl Greenpoint
+70 Greenpoint Ave
+Brooklyn, NY 11222
+Kettl Los Feliz
+4677 Hollywood Blvd
+Los Angeles, CA 90027
+Kettl Matcha Sen Mon Ten
+38 Norman Avenue
+Brooklyn, NY 11222
+Our experts will guide you through the freshest teas produced in Japan.
+Visit us
+{
+if (value === 'dropdown-three_up_dropdown-3') {
+setTimeout(() => {
+runTrap = true;
+}, 50)
+} else {
+runTrap = false;
+}
+})
+"
+>
+Guides
+Brewing Guides
+Classes & Events
+Kettl Blog
+Our Partners
+Featured
+Whisking the Perfect Matcha
+Read More
+Class: Crafting the Perfect Matcha Latte
+Read More
+Kettl Blog: 2026 Matcha Pricing
+Read More
+Kettl Greenpoint
+70 Greenpoint Ave
+Brooklyn, NY 11222
+Kettl Los Feliz
+4677 Hollywood Blvd
+Los Angeles, CA 90027
+Kettl Matcha Sen Mon Ten
+38 Norman Avenue
+Brooklyn, NY 11222
+Our experts will guide you through the freshest teas produced in Japan.
+Visit us
+Shop
+Curated Selections
+Shop All
+New Releases
+Best Sellers
+Subscriptions
+Yumi Nakamura Collection
+Categories
+Matcha
+Loose Tea
+Tea Bags
+Ceramics
+Tea Tools
+Incense
+Chocolate + Sweets
+Kombucha
+Experience
+Curated Selections
+Classes & Events
+Kettl Studio
+Visit Us
+Reservations
+Featured
+Class | Crafting the Perfect Latte (NY)
+View Event
+The Foundational Flavors of Japanese Tea (NY)
+View Class
+Virtual Class: An Introduction to Matcha
+View Class
+Learn
+Guides
+Brewing Guides
+Classes & Events
+Kettl Blog
+Our Partners
+Featured
+Whisking the Perfect Matcha
+Read More
+Class: Crafting the Perfect Matcha Latte
+Read More
+Kettl Blog: 2026 Matcha Pricing
+Read More
+About
+Looking for wholesale information?
+Learn More
+Account
+Other sign in options
+Sign in
+Orders
+Profile
+Account
+Other sign in options
+Sign in
+Orders
+Profile
+Your cart is empty
+Have an account? Log in to check out faster.
+Continue shopping
 Total items in cart: 0
+0
+Your cart is empty
+Have an account? Log in to check out faster.
+Continue shopping
 Classes & Events
 Our classes and events guide you through an immersive experience that is enlightening, enriching and relaxing. Our tea specialists combine hands on brewing and whisking with best in class education materials to offer an unparalleled deep dive into the world of Japanese tea.
 Bundle & Save: All class ticket purchases qualify for a 15% discount on any additional item when purchased together. Your savings will automatically be applied in your cart.
 Skip to results list
+More
 Category
+Classes
+Clear
 Location
+Kettl Greenpoint
+Kettl Los Feliz
+Kettl Matcha Sen Mon Ten
+Virtual
+Clear
+Clear all
 17 items
 Sort
+Featured
+Most relevant
+Best selling
+Alphabetically, A-Z
+Alphabetically, Z-A
+Price, low to high
+Price, high to low
+Date, old to new
+Date, new to old
+Sort
+Featured
+Featured
+Most relevant
+Best selling
+Alphabetically, A-Z
+Alphabetically, Z-A
+Price, low to high
+Price, high to low
+Date, old to new
+Date, new to old
+Filter
+Filter
+Category
+Classes
+Location
+Kettl Greenpoint
+Kettl Los Feliz
+Kettl Matcha Sen Mon Ten
+Virtual
+Sort
+Featured
+Most relevant
+Best selling
+Alphabetically, A-Z
+Alphabetically, Z-A
+Price, low to high
+Price, high to low
+Date, old to new
+Date, new to old
+Sort
+Featured
+Featured
+Most relevant
+Best selling
+Alphabetically, A-Z
+Alphabetically, Z-A
+Price, low to high
+Price, high to low
+Date, old to new
+Date, new to old
+Clear all
+See 17 items
 Virtual Class | An Introduction to Matcha
 Choose
+Virtual Class | An Introduction to Matcha
 Virtual Class | An Introduction to Matcha
 From $30.00
 A virtual class exploring the fundamentals with matcha, available as a standalone ticket or with bundled tea and tools.
@@ -24,12 +255,14 @@ Virtual
 Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
 Choose
 Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
+Class | Uji: The Home of Matcha, A Guided Tasting of Our Most Premium Offerings
 $65.00
 Join us for an exploration of Japan's most revered matcha producing regions, and our catalog of teas from the top producers in Uji.
 Location
 Kettl Matcha Sen Mon Ten
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
 Choose
+Class | Los Angeles: The Matcha Latte, Pouring & Technique
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
 $70.00
 Learn the art and technique behind beautiful matcha lattes in this hands-on class for beginners. Through guided practice, you'll develop the skills to create balanced matcha lattes and expressive latte art at home.
@@ -38,12 +271,14 @@ Kettl Los Feliz
 Class | Los Angeles: Iced Matcha, A Contemporary Approach to Pinnacle Grade Tea
 Choose
 Class | Los Angeles: Iced Matcha, A Contemporary Approach to Pinnacle Grade Tea
+Class | Los Angeles: Iced Matcha, A Contemporary Approach to Pinnacle Grade Tea
 $70.00
 Explore the world of refreshing iced matcha beverages in this immersive and hands on tasting workshop.
 Location
 Kettl Los Feliz
 Class | Los Angeles: An Introduction to Matcha
 Choose
+Class | Los Angeles: An Introduction to Matcha
 Class | Los Angeles: An Introduction to Matcha
 $65.00
 Learn about that storied history of Matcha and the perfect technique for whisking a traditional bowl of usucha.,
@@ -52,12 +287,14 @@ Kettl Los Feliz
 Class | Los Angeles: Deconstructing The Matcha Latte, A Guided Tasting of Regions and Profiles
 Choose
 Class | Los Angeles: Deconstructing The Matcha Latte, A Guided Tasting of Regions and Profiles
+Class | Los Angeles: Deconstructing The Matcha Latte, A Guided Tasting of Regions and Profiles
 $70.00
 An immersive and educational tasting exploring the experience of terroir in milk drinks.
 Location
 Kettl Los Feliz
 Class | A Seasonal Guided Omakase Tasting
 Add
+Class | A Seasonal Guided Omakase Tasting
 Class | A Seasonal Guided Omakase Tasting
 $90.00
 An immersive tasting experience in our private gallery space, featuring the rarest and most exclusive teas in our catalog.
@@ -66,12 +303,14 @@ Kettl Greenpoint
 Class | The Foundational Flavors of Japanese Tea: Umami, Sweetness, Biterness
 Add
 Class | The Foundational Flavors of Japanese Tea: Umami, Sweetness, Biterness
+Class | The Foundational Flavors of Japanese Tea: Umami, Sweetness, Biterness
 $90.00
 This class is designed to help guests develop their palates, vocabulary, and understanding when tasting pinnacle quality matcha.
 Location
 Kettl Matcha Sen Mon Ten
 Class | An Introduction to Matcha
 Choose
+Class | An Introduction to Matcha
 Class | An Introduction to Matcha
 $65.00
 Learn about that storied history of Matcha and the perfect technique for whisking a traditional bowl of usucha.
@@ -80,12 +319,14 @@ Kettl Greenpoint
 Class | Crafting the Perfect Matcha Latte
 Choose
 Class | Crafting the Perfect Matcha Latte
+Class | Crafting the Perfect Matcha Latte
 $60.00
 Learn to craft the perfect matcha latte, from whisking the perfect shot to steaming the perfect milk and pouring latte art.
 Location
 Kettl Matcha Sen Mon Ten
 Class | Iced Matcha, A Contemporary Approach to Pinnacle Grade Tea
 Choose
+Class | Iced Matcha, A Contemporary Approach to Pinnacle Grade Tea
 Class | Iced Matcha, A Contemporary Approach to Pinnacle Grade Tea
 $70.00
 Explore the world of refreshing iced matcha beverages in this immersive and hands on tasting workshop.
@@ -94,12 +335,14 @@ Kettl Greenpoint
 Class | Deconstructing The Matcha Latte: A Guided Tasting of Regions and Profiles
 Choose
 Class | Deconstructing The Matcha Latte: A Guided Tasting of Regions and Profiles
+Class | Deconstructing The Matcha Latte: A Guided Tasting of Regions and Profiles
 $70.00
 An immersive and educational tasting exploring the experience of terroir in milk drinks.
 Location
 Kettl Greenpoint
 Class | Houjicha: Experience the Art of Roasting Tea
 Add
+Class | Houjicha: Experience the Art of Roasting Tea
 Class | Houjicha: Experience the Art of Roasting Tea
 $60.00
 Experience a live session of houjicha roasting, and explore the intoxicatingly fragrant world of roasted green tea.
@@ -108,12 +351,14 @@ Kettl Greenpoint
 Class | The World of Japanese Tea
 Choose
 Class | The World of Japanese Tea
+Class | The World of Japanese Tea
 $60.00
 Join us for an experiential tasting exploring the range of Japan's most popular styles of tea—matcha, sencha, and houjicha.
 Location
 Kettl Greenpoint
 Class | Sencha: Japan's Most Popular Tea
 Choose
+Class | Sencha: Japan's Most Popular Tea
 Class | Sencha: Japan's Most Popular Tea
 $60.00
 Join us for an immersive tasting of Japan's most diverse—and popular—style of tea: Sencha.
@@ -122,11 +367,13 @@ Kettl Greenpoint
 Physical Class Voucher
 Add
 Physical Class Voucher
+Physical Class Voucher
 $70.00
 Give the gift of Kettl classes with this hand written note, redeemable for Kettl classes in Brooklyn or Los Angeles.
 Location
 Digital Class Voucher
 Add
+Digital Class Voucher
 Digital Class Voucher
 $70.00
 Give the gift of Kettl classes with this digital coupon, redeemable for a Kettl class in Brooklyn or Los Angeles.
@@ -149,6 +396,34 @@ Sign up for our newsletter for 10% off your first order.
 Email
 All of our teas are sourced directly from growers and producers whom we know and visit several times a year.
 Site Credit
-© 2026 Kettl
+© 2026
+Kettl
 Terms and Policies
+Refund policy
+Privacy policy
+Terms of service
+Shipping policy
+Contact information
+Cancellation policy
+Facebook
+Instagram
+Youtube
+Search
+Search
+Clear
+Best Sellers
+Okuju Matcha
+Okuju Matcha
+$45.00
+Uji Homare Matcha
+Uji Homare Matcha
+From $85.00
+Hukuju Matcha
+Hukuju Matcha
+From $65.00
+Tsubaki Matcha
+Tsubaki Matcha
+$45.00
+View all
 Get 15% off
+{"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}

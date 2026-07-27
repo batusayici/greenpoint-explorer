@@ -87,7 +87,16 @@ All Fish Friday Products
 49
 Filters
 Product Category
+Cold Smoked
+Hot Smoked
+Salads
+Herring
+Specialty
+Gary's Special
+Specialty Caviar
 Brand
+Acme
+Blue Hill Bay
 Sort By
 Featured
 Alphabetically, A-Z
@@ -96,10 +105,39 @@ Price, highest
 Price, lowest
 Date, old to new
 Date, new to old
+Cold Smoked
+Hot Smoked
+Salads
+Herring
+Specialty
+Specialty Caviar
+Gary's Special
+Specialty Caviar
+Acme
+Blue Hill Bay
 Clear Filters
 Filter By
+Cold Smoked
+Hot Smoked
+Salads
+Herring
+Specialty
+Specialty Caviar
+Gary's Special
+Specialty Caviar
+Acme
+Blue Hill Bay
 Clear Filters
 Apply Filters
+Cold Smoked
+Hot Smoked
+Salads
+Herring
+Specialty
+Gary's Special
+Specialty Caviar
+Acme
+Blue Hill Bay
 No Fish For You.
 Hot Honey Cold Smoked Salmon - Gary's Special (1 lb.)
 Gary's Special
@@ -308,7 +346,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Salmon Candy (12 oz.)
 Hot Smoked
 20 reviews
