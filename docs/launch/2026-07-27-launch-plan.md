@@ -14,14 +14,14 @@ outbound message; truth rules and II-C palette are non-negotiable.
 | L1 | Attribution kit — canonical tagged links | ✅ `channel-links.md` (2026-07-26) | Regenerate every row at cutover (origin changes) |
 | L2 | OG tags + `/e/<slug>` deep links | ✅ shipped (og.png LFS fix 2026-07-26) | — |
 | L3 | AEO surface (prerender, JSON-LD, sitemap/RSS/ICS/llms.txt) | ✅ shipped 2026-07-26 | **Acceptance open:** prod no-JS `curl` of `/e/<slug>` (extensionless path must resolve) + Google Rich Results pass — run after next deploy |
-| L4 | Error monitoring (hard gate) | ✅ PostHog exception autocapture verified | **Batu:** enable error-tracking alert emails in PostHog UI |
+| L4 | Error monitoring (hard gate) | ✅ PostHog exception autocapture verified; alert emails confirmed on (Issue assigned + Error tracking weekly digest, Default project scoped) | — |
 | L5 | Business submission path (ops plan 3.3) | ⬜ not built | Tally form + pinned CTA card + `submit_tap` event; joins Monday review queue |
-| L6 | De-July (by Aug 1) | ⬜ open | Evergreen frame; `july-2026-cards.json` → month-agnostic name + ingest-skill migration note |
+| L6 | De-July (by Aug 1) | ✅ shipped 2026-07-27 | `cards.json` rename + evergreen meta description + skill migration note. Internal identifiers (`JulyApp.jsx`, `.july-*` CSS, `julyCards.test.mjs`) left as-is; `july-postvalue-done` key must not be renamed |
 | L7 | Domain cutover mechanics | ⬜ open | See §2 |
 | L8 | Growth Operator live | ⬜ this pass | `/growth-weekly` skill + Tuesday routine (§4) |
 | L9 | R0 retention baseline | ✅ collecting since 2026-07-26 | — |
 
-L5 + L6 are the only builds left before cutover. Feature freeze holds (2026-07-26:
+L5 is the only build left before cutover (L6 shipped 2026-07-27). Feature freeze holds (2026-07-26:
 no new features before launch; community-alert banner was the one scoped exception).
 
 ## 2. Cutover sequence (T-0 — the launch moment)

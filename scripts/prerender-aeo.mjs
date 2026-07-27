@@ -26,7 +26,7 @@ const now = new Date();
 
 const template = readFileSync(resolve(DIST, "index.html"), "utf8");
 const seed = JSON.parse(
-  readFileSync(resolve(ROOT, "src/data/demand-test/july-2026-cards.json"), "utf8"),
+  readFileSync(resolve(ROOT, "src/data/demand-test/cards.json"), "utf8"),
 );
 
 const live = liveCards(seed.cards, now);

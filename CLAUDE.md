@@ -36,7 +36,7 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 **Logic modules** (each with a sibling `.test.mjs`): `cardSchema.js` (card model incl. place-graph fields `relatedCardIds`/`timeline`/`trustRisk`), `filterCards.js`, `eventWindow.js` (Today lens, dated/ongoing/expiry), `cardActions.js`, `postValue.js` (post-value email prompt), `gtrainBanner.js`.
 
-**Data** (`src/data/demand-test/`): `july-2026-cards.json` (live feed — month-agnostic rename pending), `geocode-cache.json`, `ingest-ledger.json` (ingest run state + sender registry).
+**Data** (`src/data/demand-test/`): `cards.json` (live feed — renamed from `july-2026-cards.json` 2026-07-27), `geocode-cache.json`, `ingest-ledger.json` (ingest run state + sender registry).
 
 **Old `/july.html` URL** redirects to `/` via `vercel.json` (query params preserved — live invite links depend on this).
 

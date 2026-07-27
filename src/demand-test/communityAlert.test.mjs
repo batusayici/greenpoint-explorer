@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { COMMUNITY_ALERT, activeCommunityAlert } from "./communityAlert.js";
 
 const seed = JSON.parse(
-  readFileSync(fileURLToPath(new URL("../data/demand-test/july-2026-cards.json", import.meta.url)), "utf8"),
+  readFileSync(fileURLToPath(new URL("../data/demand-test/cards.json", import.meta.url)), "utf8"),
 );
 const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
 

@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
-import seed from "../data/demand-test/july-2026-cards.json";
+import seed from "../data/demand-test/cards.json";
 import { matchesFilter, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";

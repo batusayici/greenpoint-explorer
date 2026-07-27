@@ -13,12 +13,13 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 
 - **Scripts do the deterministic work** (fetch/diff, expiry, card index) — near-zero tokens.
 - **Page text never enters the orchestrator context.** Changed sources are parsed by extraction subagents that Read the snapshot files themselves and return compact draft-card JSON.
-- **Never Read `july-2026-cards.json` into context.** Dedupe and cross-link against `npm run ingest:index` (~6k tokens). Read individual cards only when editing them (Grep for the id, Edit surgically).
+- **Never Read `cards.json` into context.** Dedupe and cross-link against `npm run ingest:index` (~6k tokens). Read individual cards only when editing them (Grep for the id, Edit surgically).
 - **Model tiering:** orchestrator = Opus. Extraction subagents = `model: "sonnet"` (spec-constrained schema work). Never Fable for scheduled runs.
 
 ## Files
 
-- Cards: `src/data/demand-test/july-2026-cards.json` (schema: `src/demand-test/cardSchema.js`) — do not bulk-read; see above
+- Cards: `src/data/demand-test/cards.json` (schema: `src/demand-test/cardSchema.js`) — do not bulk-read; see above
+  - **Renamed 2026-07-27** from `july-2026-cards.json` (de-July, launch item L6). The feed is month-agnostic — it is the live deck, not a July edition. If a run finds the old filename anywhere (a stale doc, a cached command, an `ingest/*` branch opened before the rename), update the reference rather than recreating the old file. The test file is still named `julyCards.test.mjs` and the CSS classes are still `.july-*` — those are internal identifiers, deliberately left alone.
 - Web-source roster: `src/data/demand-test/ingest-sources.json` (URLs, fetch method, per-source notes — the machine half of this skill)
 - Ledger: `src/data/demand-test/ingest-ledger.json` — `lastRunAt`, `processedItems`, `senderRegistry`
 - Scripts: `npm run ingest:fetch` (snapshot + diff roster → `.ingest-cache/changes.json`), `npm run ingest:expire` (expiry hygiene), `npm run ingest:index` (compact card index), `node scripts/geocode-demand-cards.mjs` (Nominatim, caches to `geocode-cache.json`)

@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const CARDS_PATH = join(ROOT, "src/data/demand-test/july-2026-cards.json");
+const CARDS_PATH = join(ROOT, "src/data/demand-test/cards.json");
 const CACHE_PATH = join(ROOT, "src/data/demand-test/geocode-cache.json");
 const UA = "greenpoint-explorer-track-v/0.1 (contact: bsayici@gmail.com)";
 const FORCE = process.argv.includes("--force");

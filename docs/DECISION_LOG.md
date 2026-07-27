@@ -4,6 +4,22 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-27 — De-July shipped (launch item L6); the July-named internals stay
+
+Decision (Batu — "run L6"; the scope calls below were made in execution and are recorded here for ratification). L6 asked for three things: an evergreen frame, a month-agnostic cards filename, and an ingest-skill migration note. All three shipped. What's worth recording is the **boundary**, because "de-July" reads like a global find-and-replace and it must not become one.
+
+1. **`july-2026-cards.json` → `cards.json`** (`src/data/demand-test/`). Seven code references updated (`JulyApp.jsx`, `julyCards.test.mjs`, `communityAlert.test.mjs`, and the four scripts: geocode, card-index, expire, prerender-aeo), plus three stale `node -e` path patterns in `.claude/settings.local.json`. The name is deliberately plain — it is the live deck, not an edition.
+2. **The evergreen frame was already 90% done.** The header computes its own edition label (`editionLabel()` in `eventWindow.js` → "Jul 27–Aug 2"), the H1 is "Greenpoint Life", the tagline and both OG/Twitter descriptions were already month-agnostic. The *only* hardcoded July in the entire user-facing surface was the `<meta name="description">` tag, which still described the product as being about "the July G-train closures." Now evergreen, keeping the original's distinct "how to support locally owned businesses" angle that the OG copy lacks.
+3. **Deliberately NOT renamed — this is the durable half of the decision:**
+   - **`july-postvalue-done` (localStorage key, `postValue.js:11`) must never be renamed.** It gates the post-value email prompt to once per browser. Renaming it re-shows the prompt to every existing visitor — a live-user regression dressed up as cleanup. The key is invisible; the cost is not.
+   - `JulyApp.jsx`, `july.css` and its ~dozens of `.july-*` classes, `julyCards.test.mjs` — internal identifiers, invisible to users. Renaming them is a large mechanical diff for zero user value, during a feature freeze, in files a parallel session was editing. Not worth the merge risk.
+   - `docs/superpowers/plans/*.md` keep their `july-2026-cards.json` references — they are dated records of what was true then, not live spec.
+4. **Migration note** added to `ingest-newsletters/SKILL.md` §Files: future runs that meet the old filename (a stale doc, a cached command, an `ingest/*` branch opened pre-rename) update the reference rather than recreating the file.
+
+Verified: 424/424 tests, `npm run build` (93 AEO pages), `npm run ingest:index`, and a dev-server load — 93 cards render, zero console errors, no "july" left in the built `index.html`.
+
+Owner: Batu.
+
 ## 2026-07-27 — Growth Operator adopted; launch plan of record
 
 Decision (Batu, via approved plan this date). Sources: two NotebookLM syntheses Batu supplied (AI-era product/growth meta-summary; hyperlocal ops blueprint), applied with judgment — the useful frameworks adopted, the hype rejected.

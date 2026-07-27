@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { validateCard, inGreenpoint } from "./cardSchema.js";
 
 const seed = JSON.parse(
-  readFileSync(fileURLToPath(new URL("../data/demand-test/july-2026-cards.json", import.meta.url)), "utf8"),
+  readFileSync(fileURLToPath(new URL("../data/demand-test/cards.json", import.meta.url)), "utf8"),
 );
 
 test("seed has exactly 71 cards across the six layers", () => {

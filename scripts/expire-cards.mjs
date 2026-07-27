@@ -14,7 +14,7 @@ import { join, dirname } from "node:path";
 import { expireCards, nyToday } from "../src/demand-test/ingestExpiry.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const CARDS_PATH = join(ROOT, "src/data/demand-test/july-2026-cards.json");
+const CARDS_PATH = join(ROOT, "src/data/demand-test/cards.json");
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");

@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const CARDS_PATH = join(ROOT, "src/data/demand-test/july-2026-cards.json");
+const CARDS_PATH = join(ROOT, "src/data/demand-test/cards.json");
 const seed = JSON.parse(readFileSync(CARDS_PATH, "utf8"));
 
 const nyDate = (iso) =>
