@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill \u2014 hand-edit only to add senders.",
-  "lastRunAt": "2026-07-25T16:45:00-04:00",
+  "lastRunAt": "2026-07-27T09:45:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -750,6 +750,76 @@
       "publisher": "Dandelion Wine",
       "processedAt": "2026-07-25",
       "outcome": "MISSED: same-day winemaker night 7/23 arrived before daily cadence existed"
+    },
+    {
+      "id": "gmail:19f962e8978a7989",
+      "kind": "email",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-27",
+      "outcome": "'Greenpoint This Week' 7/24 reviewed: Wasabi closing + Swaine's already live; froyo shops + Music Hall show Williamsburg-skipped; Kingsland Wildflowers festival ('next week', no date), Meet Cute open house (Aug 2, no time/address), Lulla's Venezuela relief hub (no address) and '300 new trees' (no location) held as watchItems \u2014 not cardable, and the article pages were unreachable (network allowlist)"
+    },
+    {
+      "id": "gmail:19f9f3e97e718dca",
+      "kind": "email",
+      "publisher": "GUNK",
+      "processedAt": "2026-07-27",
+      "outcome": "nothing on-concept: Prairie Princess 8/3 is Trans Pecos (Ridgewood); Dead Letter 7/29 has no stated venue address"
+    },
+    {
+      "id": "gmail:19f9e64356ddff99",
+      "kind": "email",
+      "publisher": "McGolrick Bird Club",
+      "processedAt": "2026-07-27",
+      "outcome": "nothing cardable: 'Saturday outings' referenced but no date, time or meeting point stated"
+    },
+    {
+      "id": "gmail:19f873f57f57873b",
+      "kind": "email",
+      "publisher": "McGolrick Bird Club",
+      "processedAt": "2026-07-27",
+      "outcome": "Substack welcome only \u2014 no walk schedule or membership mechanics stated"
+    },
+    {
+      "id": "gmail:19f7bdf9cae3a303",
+      "kind": "email",
+      "publisher": "Marianella Market",
+      "processedAt": "2026-07-27",
+      "outcome": "sender identified: 83 West St, Brooklyn NY 11222 (Greenpoint) \u2014 Venezuelan-roots brand made in Brooklyn; the 7/19 sitewide sale ended that night, nothing cardable; proposed for senderRegistry"
+    },
+    {
+      "id": "gmail:19f962b549abeb04",
+      "kind": "email",
+      "publisher": "Bios Apothecary",
+      "processedAt": "2026-07-27",
+      "outcome": "nothing on-concept: product catalog blast (skincare, bath oils, custom perfume) \u2014 no dated in-store event and no offer stated at all; the standing 10%-first-order card is unaffected"
+    },
+    {
+      "id": "gmail:19f8f85cd4ba4389",
+      "kind": "email",
+      "publisher": "NYC Ferry",
+      "processedAt": "2026-07-27",
+      "outcome": "rockaway-rocket card UPDATED: email states the $12 fare and that tickets sell in the NYC Ferry app (neither was on the card); no run dates stated, nothing contradicted"
+    },
+    {
+      "id": "gmail:19f9ecabcddd9ef6",
+      "kind": "email",
+      "publisher": "Marianella Market",
+      "processedAt": "2026-07-27",
+      "outcome": "nothing cardable: 'TODAY ONLY' 50% off serums/face oils, sent 7/26 \u2014 window closed before this run; footer confirms 83 West St and the site marianella.co"
+    },
+    {
+      "id": "gmail:19fa0fd66d3b3b0d",
+      "kind": "email",
+      "publisher": "The WonderMart",
+      "processedAt": "2026-07-27",
+      "outcome": "new sender identified: 141 India St, Brooklyn NY 11222 \u2014 woman-owned community gift shop per its own footer. This send is a seasonal product promo with no dated event and no time-bound offer, so nothing cardable; proposed for senderRegistry"
+    },
+    {
+      "id": "gmail:19f8b848fabf6548",
+      "kind": "email",
+      "publisher": "Last Place on Earth",
+      "processedAt": "2026-07-27",
+      "outcome": "owner Whitney replied direct to Batu 7/22: 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' No events in it \u2014 recorded because it settles the channel: email is not viable for this source, /events + Discord are"
     }
   ],
   "senderRegistry": [
@@ -902,6 +972,33 @@
         "subscription"
       ],
       "note": "Batu confirmed subscribed 2026-07-25 \u2014 they announce late, often newsletter-first; complements the (often empty) events page"
+    },
+    {
+      "publisher": "Marianella Market",
+      "match": "fqhkbz0zmpz0x@squaremktg.com",
+      "kinds": [
+        "discount",
+        "event"
+      ],
+      "note": "83 West St (Greenpoint), site marianella.co \u2014 identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
+    },
+    {
+      "publisher": "The WonderMart",
+      "match": "thewondermart.com",
+      "kinds": [
+        "discount",
+        "event",
+        "news"
+      ],
+      "note": "141 India St \u2014 identified 2026-07-27 in the Gmail discovery pass; woman-owned, community-driven Greenpoint gift shop. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
+    },
+    {
+      "publisher": "Last Place on Earth",
+      "match": "lastplaceonearthbk@gmail.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe \u2014 locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
     }
   ],
   "watchItems": [
@@ -914,6 +1011,21 @@
       "name": "Shenanigans (below Kinda Nice)",
       "note": "opened per Greenpointers 7/14 but no geocodable address \u2014 card once street address verified",
       "addedAt": "2026-07-25"
+    },
+    {
+      "name": "Meet Cute (Greenpoint film studio)",
+      "note": "Greenpointers 7/24 names an open house on August 2 \u2014 no time and no street address stated; card once both are verified",
+      "addedAt": "2026-07-27"
+    },
+    {
+      "name": "Kingsland Wildflowers festival",
+      "note": "Greenpointers 7/24: annual namesake festival 'next week' with performances \u2014 no date, time or price stated; card once the organizer's page gives a date",
+      "addedAt": "2026-07-27"
+    },
+    {
+      "name": "Lulla's Venezuela earthquake relief hub",
+      "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub \u2014 no address stated and no drop-off hours; card as community/news once the address and hours are verified",
+      "addedAt": "2026-07-27"
     }
   ]
 }
