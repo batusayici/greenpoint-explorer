@@ -1047,10 +1047,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-jackie-stripper-0727",
+        "film-noir-monday-0727",
         "film-noir-support",
         "film-noir-cult-cinema-0728",
         "film-noir-jackie-0729",
@@ -1418,7 +1419,7 @@
         "visitor"
       ],
       "corridor": null,
-      "startsAt": "2026-07-27T00:00:00-04:00",
+      "startsAt": "2026-07-27T18:00:00-04:00",
       "endsAt": "2026-07-27T23:59:00-04:00",
       "actions": [
         {
@@ -1447,9 +1448,53 @@
         "film-noir-cinema"
       ],
       "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
+      "updatedAt": "2026-07-27",
       "lat": 40.727314,
       "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave",
+      "filters": [
+        "arts_culture"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://filmnoircinema.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema calendar",
+          "url": "https://filmnoircinema.com",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-07-25"
+        }
+      ],
+      "id": "film-noir-monday-0727",
+      "title": "Film Noir Monday",
+      "kicker": "Monday-night noir screening",
+      "startsAt": "2026-07-27T21:00:00-04:00",
+      "endsAt": "2026-07-27T23:59:00-04:00",
+      "summary": "The cinema's Film Noir Monday slot — the July calendar also listed one on the 13th.",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ]
     },
     {
       "id": "library-monday-programs",

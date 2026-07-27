@@ -101,11 +101,15 @@ test("seed has exactly 71 cards across the six layers", () => {
   // (Jul 25–26 nights at Troost/Eavesdrop/Good Room/GCC/Film Noir/Hide & Seek,
   // Black Rabbit bingo, Hana gyopo dinner, BCC filet crochet, the Franca
   // seconds sale, and the Saturday library/park/community block). 105 → 84.
-  assert.equal(seed.cards.length, 84);
+  // Same day, Batu spotted a miss: the Film Noir calendar lists TWO shows on
+  // Mon 7/27 (6pm Jackie the Stripper, 9pm Film Noir Monday) and the 2026-07-25
+  // extraction carded only the first — and gave it a 00:00 start the source
+  // never stated. Both fixed: +1 event (film-noir-monday-0727), 84 → 85.
+  assert.equal(seed.cards.length, 85);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 19, "16 + peek-inn + archestratus-closed + gtrain-sales-survey");
-  assert.equal(count((c) => c.category === "event"), 40, "61 minus the 21 Jul 25–26 events expiry deleted");
+  assert.equal(count((c) => c.category === "event"), 41, "61 minus the 21 expired, plus the missed Film Noir Monday");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 9, "7 + archestratus-closed + gtrain-sales-survey");
   assert.equal(count((c) => c.filters.includes("live_music")), 17, "13 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
