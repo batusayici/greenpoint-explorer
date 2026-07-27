@@ -107,11 +107,17 @@ test("seed has exactly 71 cards across the six layers", () => {
   // 2026-07-27 civic coverage-gap fix (Batu): the newsletter-only roster never
   // surfaces Council/DOT/EPA stories — +3 verified news cards (Monitor Point
   // approval, McGuinness redesign construction, Meeker Plume monitoring). 91 → 94.
-  assert.equal(seed.cards.length, 94);
+  // 2026-07-27 Film Noir Monday (Batu): the 7/27 grid lists THREE shows — 6pm
+  // Jackie the Stripper, 8pm Electric Dragon, 9pm Film Noir Monday — and only
+  // the first two were carded across both runs. +1 event, 94 → 95. Same commit
+  // corrects the 6pm card's 00:00 start (a value the calendar never stated;
+  // isExpiredCard reads 00:00 as the all-day sentinel and skips the
+  // started-grace hide, pinning a 6pm show to the lens from midnight).
+  assert.equal(seed.cards.length, 95);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 45, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa)");
+  assert.equal(count((c) => c.category === "event"), 46, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa) + Film Noir Monday");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
   assert.equal(count((c) => c.filters.includes("live_music")), 19, "15 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");

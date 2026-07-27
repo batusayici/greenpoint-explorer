@@ -1047,14 +1047,16 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-jackie-stripper-0727",
         "film-noir-support",
         "film-noir-cult-cinema-0728",
         "film-noir-jackie-0729",
-        "film-noir-film-club-0730"
+        "film-noir-film-club-0730",
+        "film-noir-electric-dragon-0727",
+        "film-noir-monday-0727"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1418,7 +1420,7 @@
         "visitor"
       ],
       "corridor": null,
-      "startsAt": "2026-07-27T00:00:00-04:00",
+      "startsAt": "2026-07-27T18:00:00-04:00",
       "endsAt": "2026-07-27T23:59:00-04:00",
       "actions": [
         {
@@ -1447,7 +1449,7 @@
         "film-noir-cinema"
       ],
       "createdAt": "2026-07-21",
-      "updatedAt": "2026-07-21",
+      "updatedAt": "2026-07-27",
       "lat": 40.727314,
       "lng": -73.951608
     },
@@ -3861,6 +3863,56 @@
       ],
       "corridor": null,
       "startsAt": "2026-07-27T20:00:00-04:00",
+      "endsAt": "2026-07-27T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Showtimes",
+          "type": "learn_more",
+          "url": "https://filmnoircinema.com"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema — calendar",
+          "publisher": "Film Noir Cinema",
+          "url": "https://filmnoircinema.com",
+          "date": "2026-07-27"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "id": "film-noir-monday-0727",
+      "category": "event",
+      "sourceCampaign": "venue_calendar_refresh_2026_07_21",
+      "title": "Film Noir Monday",
+      "kicker": "Monday-night noir screening",
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "summary": "The cinema's Film Noir Monday slot — the July calendar also listed one on the 13th.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-27T21:00:00-04:00",
       "endsAt": "2026-07-27T23:59:00-04:00",
       "actions": [
         {
