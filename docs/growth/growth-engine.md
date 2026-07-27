@@ -1,4 +1,4 @@
-# Greenpoint Life — Growth Engine (2026-07-25)
+# Greenpoint Life — Growth Engine (2026-07-25 · rev 2026-07-27)
 
 Grounded in Elena Verna's frameworks (growth loops / Racecar, PMF-first sequencing,
 low-traffic experimentation rules, owned-and-earned-only channels, opinionated
@@ -31,6 +31,12 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
 
 - **Compounding metric:** weekly returning locals (WRL) — the same number as the
   PMF bar (≥30 at ≥2 visits/week, 3 consecutive weeks, by ~Sep 15).
+- **Confirming signal (added 2026-07-27):** PMF in this era is binary — a
+  word-of-mouth machine exists or it doesn't, and the benchmark is **organic
+  >50% of acquisition**. Instrumentable post-launch: share of new sessions with
+  no `?src=` plus search/AI referrers, read monthly. A lens on the WRL bar (it
+  sharpens the existing "majority arriving without a fresh invite push" clause),
+  not a second bar.
 - **Weakest edges today:** (1) *re-entry* — nothing external reminds a resident
   it's a new week (no digest; habit can't form on memory alone), and (2) *share* —
   no OG tags or crawlable per-card URLs until ops plan 3.1, so word-of-mouth has
@@ -130,6 +136,12 @@ evidence.
 | A2 | **Opinionated default on first visit:** land new visitors in the merchandised "this week" state (promise-first chip order already ships; extend to whatever A1 says is the stall point — e.g. auto-focus Today on weekday evenings). | One default flipped ON, pre/post. | First-session activation rate. Kill if flat after 2 weeks. |
 | A3 | **Post-value prompt timing:** `postValue.js` already gates the email ask on demonstrated value; test the threshold (earlier vs. current) once traffic exists. | Config-level change. | Signup rate per activated session, pre/post. Deferred until ≥50 sessions/week. |
 
+**One-egg rule (added 2026-07-27):** users are selfish, vain, and lazy — the
+first 30 seconds must deliver exactly one magical thing: *"what's happening near
+me this week, verified."* A2 sharpens that one egg; it never adds a second.
+Onboarding tours, multi-feature intros, and asks before demonstrated value
+(`postValue.js` already enforces the last) all violate it.
+
 ---
 
 ## 4. Acquisition — channel–model fit, then focus
@@ -147,6 +159,14 @@ Scoring the four candidates:
 
 **Focus = two:** community-org seeding, with the parents/camps wedge as the lead
 message. Everything else is a build that rides the existing Phase 3 plan.
+
+**Echo-chamber targeting (added 2026-07-27):** the unit of seeding is a small
+trust network, not reach. Org leaders and parent-group admins are Greenpoint's
+micro-influencers — a recommendation from *inside* the network ("parents telling
+parents") converts where broadcast can't, and costs nothing. Applied to Q1/Q2:
+pick messengers embedded in the network over channels with bigger audiences, and
+saturate one network before opening the next. This tightens the existing
+experiments' messaging; it adds none (max-3 rule untouched).
 
 **Acquisition experiments (ranked; all post-checkpoint-pass, per kit rules Batu
 sends every message):**
@@ -200,15 +220,55 @@ Embedded in the existing weekly loop — no new ceremony:
 5. Every result — including kills — gets one line in the Tue readout doc;
    durable decisions go to `DECISION_LOG.md`.
 
-**Ownership split:**
-
-- **AI-autonomous:** ingest, coverage scans, digest drafting, funnel/retention
-  analysis, AEO build, experiment readouts, all instrumentation code (gated
-  ships).
-- **Needs Batu:** every outbound send (kit rule), all deploys, taste gates,
-  kill/graduate verdicts, checkpoint and PMF verdicts.
-
+**Ownership split:** governed by the operator model and autonomy ladder in §7.
 Anything recurring that can't be automated into the Mon/Tue rhythm doesn't ship.
+
+---
+
+## 7. Operator model — semi-autonomous growth under supervision
+
+*(Added 2026-07-27; the agency-control and sensor–policy–tool–learning
+frameworks are from the AI-era syntheses in Sources.)* The weekly loop runs as a
+**Growth Operator**: a Tuesday cloud routine (`/growth-weekly`, skill at
+`.claude/skills/growth-weekly/SKILL.md`) that senses, computes, drafts, and
+recommends — mirroring the proven ingest pattern, where **the PR is the review
+gate**. Autonomy is earned *per task* through calibration, never granted
+wholesale.
+
+**The operator's loop (sensor → policy → tool → learning):**
+
+- **Sensor:** PostHog pull (`./scripts/posthog-pull.sh`), Vercel Web Analytics,
+  the R0 `return_visit` baseline, the submission/ask log.
+- **Policy:** the autonomy ladder below + kit rules — every link copied from
+  `docs/launch/channel-links.md`, truth rules, max 3 live experiments.
+- **Tool:** deterministic scripts first; model judgment only where a read or a
+  draft needs it (same cost architecture as ingest, 2026-07-25).
+- **Learning:** every Batu edit to a draft becomes a standing instruction in the
+  operator skill — the growth version of "every complaint becomes a test case."
+  The Tue readout doc is the weekly calibration record.
+
+**Autonomy ladder** (V1 = suggests options · V2 = drafts complete work for
+review · V3 = executes autonomously):
+
+| Task | Level now | Ceiling |
+|---|---|---|
+| Analytics pull + metric computation | V3 (deterministic scripts) | V3 |
+| Experiment reads vs. pre-registered decision rules | V2 — reads land as recommendations | V3 — rules are mechanical once calibrated |
+| Tue readout + top-3 proposal drafting | V2 | V3 (drafting only) |
+| Outbound copy — digest, org notes, posts | V2 — draft only | V2 — **sending is Batu's, permanently** |
+| Instrumentation / growth-edge ships | V2 — PR-gated, TDD | V2 — merge = deploy stays Batu's |
+| Kill / graduate verdicts | V1 — recommend only | Batu, permanently |
+| New experiments, scope changes, monetization | V1 | Batu, permanently |
+
+**Promotion rule:** a task moves up one level only when (a) three consecutive
+cycles shipped without material edit, (b) the action is reversible, and (c) it
+stays inside kit + truth rules. Promotion is proposed in a Tue readout and
+ratified by Batu — never self-granted. **Demotion is immediate and automatic**
+on any truth-rule breach, untagged link, or misread — one strike, one rung down.
+
+**What stays human regardless of calibration:** sends, deploys/merges, taste
+gates, kill/graduate/checkpoint/PMF verdicts, and spending money. These aren't
+trust-gated — they're the definition of supervision.
 
 ---
 
@@ -239,8 +299,18 @@ checkpoint.)*
 - Geographic expansion ("Williamsburg North") — adjacent-user moves are a
   post-PMF plateau tool, and the hyperlocal focus *is* the moat.
 - Rebranding as a growth lever.
+- **Autonomy theater** — token-maxing for its own sake, autonomous outbound
+  sends, self-modifying nightly agents. Automation expands one rung at a time
+  down §7's ladder, never around the gates; the review gate and the measured
+  cost discipline (DECISION_LOG 2026-07-25) outrank velocity.
 
 ## Sources
 
 - Elena Verna, [My 9 Favorite Growth Frameworks](https://www.elenaverna.com/p/my-9-favorite-growth-frameworks) · [Five Laws of Growth](https://www.elenaverna.com/p/five-laws-of-growth)
 - Lenny's Podcast: [10 growth tactics that never work](https://www.lennysnewsletter.com/p/10-growth-tactics-that-never-work-elena-verna) · [The new AI growth playbook for 2026](https://www.lennysnewsletter.com/p/the-new-ai-growth-playbook-for-2026-elena-verna) (Lovable)
+- NotebookLM syntheses (Batu, read 2026-07-27): *The Evolution of Product,
+  Growth, and Work in the AI Era* (agency-control ladder, WoM/organic >50%
+  benchmark, one-egg TTV, echo-chamber seeding) · *Operational Blueprint for
+  Hyperlocal Content Webapp Launch* (sensor–policy–tool–learning loop,
+  eval rigor / complaints-as-test-cases; its 20X token-maxing ethos was
+  reviewed and **rejected** — see "Explicitly not doing").
