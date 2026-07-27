@@ -813,6 +813,13 @@
       "publisher": "The WonderMart",
       "processedAt": "2026-07-27",
       "outcome": "new sender identified: 141 India St, Brooklyn NY 11222 \u2014 woman-owned community gift shop per its own footer. This send is a seasonal product promo with no dated event and no time-bound offer, so nothing cardable; proposed for senderRegistry"
+    },
+    {
+      "id": "gmail:19f8b848fabf6548",
+      "kind": "email",
+      "publisher": "Last Place on Earth",
+      "processedAt": "2026-07-27",
+      "outcome": "owner Whitney replied direct to Batu 7/22: 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' No events in it \u2014 recorded because it settles the channel: email is not viable for this source, /events + Discord are"
     }
   ],
   "senderRegistry": [
@@ -984,6 +991,14 @@
         "news"
       ],
       "note": "141 India St \u2014 identified 2026-07-27 in the Gmail discovery pass; woman-owned, community-driven Greenpoint gift shop. Locally owned \u2014 confirmed by Batu 2026-07-27; clears the locally-owned gate"
+    },
+    {
+      "publisher": "Last Place on Earth",
+      "match": "lastplaceonearthbk@gmail.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe \u2014 locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
     }
   ],
   "watchItems": [
