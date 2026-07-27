@@ -799,6 +799,20 @@
       "publisher": "NYC Ferry",
       "processedAt": "2026-07-27",
       "outcome": "rockaway-rocket card UPDATED: email states the $12 fare and that tickets sell in the NYC Ferry app (neither was on the card); no run dates stated, nothing contradicted"
+    },
+    {
+      "id": "gmail:19f9ecabcddd9ef6",
+      "kind": "email",
+      "publisher": "Marianella Market",
+      "processedAt": "2026-07-27",
+      "outcome": "nothing cardable: 'TODAY ONLY' 50% off serums/face oils, sent 7/26 \u2014 window closed before this run; footer confirms 83 West St and the site marianella.co"
+    },
+    {
+      "id": "gmail:19fa0fd66d3b3b0d",
+      "kind": "email",
+      "publisher": "The WonderMart",
+      "processedAt": "2026-07-27",
+      "outcome": "new sender identified: 141 India St, Brooklyn NY 11222 \u2014 woman-owned community gift shop per its own footer. This send is a seasonal product promo with no dated event and no time-bound offer, so nothing cardable; proposed for senderRegistry"
     }
   ],
   "senderRegistry": [
@@ -959,7 +973,17 @@
         "discount",
         "event"
       ],
-      "note": "83 West St (Greenpoint) \u2014 identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. UNVERIFIED single-location (their site was unreachable under the runner's network allowlist) \u2014 confirm locally-owned before carding anything"
+      "note": "83 West St (Greenpoint), site marianella.co \u2014 identified 2026-07-27 from the Square-relay footer; Venezuelan-roots brand handmade in Brooklyn. UNVERIFIED single-location (marianella.co was unreachable under the runner's network allowlist) \u2014 confirm locally-owned before carding anything"
+    },
+    {
+      "publisher": "The WonderMart",
+      "match": "thewondermart.com",
+      "kinds": [
+        "discount",
+        "event",
+        "news"
+      ],
+      "note": "141 India St \u2014 identified 2026-07-27 in the Gmail discovery pass; self-described woman-owned, community-driven Greenpoint gift shop. UNVERIFIED single-location (site unreachable under the runner's network allowlist) \u2014 confirm locally-owned before carding anything"
     }
   ],
   "watchItems": [
