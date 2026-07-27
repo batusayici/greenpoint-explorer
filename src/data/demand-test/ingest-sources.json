@@ -405,6 +405,33 @@
       "cadence": "weekly",
       "fetch": "browser",
       "notes": "Same 403 + skip-recurring-rec-classes rule."
+    },
+    {
+      "id": "greenpoint-star",
+      "name": "Greenpoint Star",
+      "url": "https://www.greenpointstar.com/",
+      "group": "roundup",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Civic/news coverage the venue roster never carries (Monitor Point, McGuinness, land use, transit). Added 2026-07-27 after the civic coverage-gap fix — backs monitor-point-approved. News cards only where the story is Greenpoint-side; verify claims at the named primary source (Council, DOT, EPA) when one is cited."
+    },
+    {
+      "id": "epa-meeker-plume",
+      "name": "EPA — Meeker Avenue Plume site profile",
+      "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407",
+      "group": "institution",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "Superfund site updates (CAG meetings, sampling milestones). Backs meeker-plume-monitoring — a diff here means updating that card's timeline, not a new card. Added 2026-07-27."
+    },
+    {
+      "id": "nyc-dot-mcguinness",
+      "name": "NYC Mayor's Office / DOT — McGuinness Blvd redesign",
+      "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin",
+      "group": "institution",
+      "cadence": "monthly",
+      "fetch": "browser",
+      "notes": "nyc.gov blocks plain fetch (403) — browser only. Backs mcguinness-redesign; watch for completion announcement (city says early fall 2026), then update that card's timeline. Added 2026-07-27."
     }
   ]
 }

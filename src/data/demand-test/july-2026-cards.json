@@ -3186,7 +3186,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-27",
       "id": "gtrain-sales-survey",
       "title": "Survey: G shutdowns are cutting sales",
       "kicker": "Businesses count the closure's cost",
@@ -3195,20 +3195,20 @@
       "filters": [
         "news"
       ],
-      "summary": "A Greenpoint business survey reports significant sales declines tied to the G train shutdowns, per Greenpointers reporting.",
+      "summary": "Shop Small Greenpoint surveyed 36 local businesses across the shutdown weekends: 91% reported lower sales, with an average decline of 20–24% — and some shops reporting far steeper drops on individual weekends.",
       "actions": [
         {
           "label": "Read the story",
           "type": "learn_more",
-          "url": "https://greenpointers.com/"
+          "url": "https://greenpointers.com/2026/07/24/g-train-shutdowns-cause-significant-sales-decline-greenpoint-business-survey-says/"
         }
       ],
       "sourceLinks": [
         {
-          "title": "G Train Shutdowns Cause Significant Sales Decline (Emma Davey, Jul 24)",
-          "url": "https://greenpointers.com/",
+          "title": "G Train Shutdowns Cause Significant Sales Decline, Greenpoint Business Survey Says (Emma Davey, Jul 24)",
+          "url": "https://greenpointers.com/2026/07/24/g-train-shutdowns-cause-significant-sales-decline-greenpoint-business-survey-says/",
           "publisher": "Greenpointers",
-          "date": "2026-07-25"
+          "date": "2026-07-24"
         }
       ],
       "relatedCardIds": [
@@ -4061,6 +4061,186 @@
       "updatedAt": "2026-07-27",
       "lat": 40.726116,
       "lng": -73.951879
+    },
+    {
+      "id": "monitor-point-approved",
+      "title": "Monitor Point approved: 1,324 waterfront apartments",
+      "kicker": "Council signs off on Quay St towers",
+      "category": "news",
+      "filters": [
+        "news"
+      ],
+      "locationName": "Monitor Point site",
+      "address": "40 Quay St, Brooklyn, NY 11222",
+      "summary": "The City Council approved Monitor Point on June 25: roughly 1,324 apartments at 40–56 Quay St, 662 of them (50%) permanently affordable, plus over an acre of new waterfront open space, a new home for the Greenpoint Monitor Museum, $300K a year for Bushwick Inlet Park maintenance, and two MTA facilities relocated out of the area. Save the Inlet's petition against building on land promised as parkland in the 2005 rezoning drew more than 5,000 signatures.",
+      "whyItMatters": "The biggest land-use decision on the waterfront in a generation — years of construction first, thousands of new neighbors after.",
+      "audience": [
+        "resident",
+        "business",
+        "civic_actor"
+      ],
+      "actions": [
+        {
+          "label": "Read the Council's announcement",
+          "type": "learn_more",
+          "url": "https://council.nyc.gov/press/2026/06/25/3147/"
+        },
+        {
+          "label": "How the fight got here",
+          "type": "learn_more",
+          "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-01-14",
+          "title": "The parkland fight",
+          "summary": "Gotham Organization proposes three towers on the Monitor Point peninsula — land set aside for parks in the 2005 rezoning. Save the Inlet's opposition petition passes 5,000 signatures.",
+          "sourceUrl": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
+        },
+        {
+          "date": "2026-06-25",
+          "title": "Council approval",
+          "summary": "Final deal: ~1,324 units with 50% permanently affordable (up from the proposed 25%), waterfront open space, a Monitor Museum home, and Bushwick Inlet Park maintenance funding.",
+          "sourceUrl": "https://council.nyc.gov/press/2026/06/25/3147/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "City Council press release — Monitor Point approval",
+          "publisher": "New York City Council",
+          "url": "https://council.nyc.gov/press/2026/06/25/3147/",
+          "date": "2026-06-25"
+        },
+        {
+          "title": "Monitor Point, explained",
+          "publisher": "Greenpoint Star",
+          "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/",
+          "date": "2026-01-14"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.726041,
+      "lng": -73.959273
+    },
+    {
+      "id": "mcguinness-redesign",
+      "title": "McGuinness redesign construction is underway",
+      "kicker": "Bike lanes reach the Pulaski by fall",
+      "category": "news",
+      "filters": [
+        "news"
+      ],
+      "locationName": "McGuinness Blvd corridor",
+      "geocodeQuery": "McGuinness Boulevard, Brooklyn, NY",
+      "summary": "Crews are extending the parking-protected bike lanes from Meeker Ave to the Pulaski Bridge. The finished boulevard gets one travel lane, one protected bike lane, and one parking/loading lane in each direction, with shorter crossings and traffic calming. The city expects completion by early fall.",
+      "whyItMatters": "Greenpoint's most divisive street decision is becoming physical — how the corridor works for drivers, deliveries, and cyclists changes this season.",
+      "audience": [
+        "resident",
+        "business",
+        "civic_actor"
+      ],
+      "actions": [
+        {
+          "label": "Read the city's announcement",
+          "type": "learn_more",
+          "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-01-05",
+          "title": "Full redesign revived",
+          "summary": "Days after inauguration, Mayor Mamdani pledges to complete the originally planned redesign the previous administration had scaled back."
+        },
+        {
+          "date": "2026-06-01",
+          "title": "Construction underway",
+          "summary": "Work confirmed in progress on the Meeker Ave–Pulaski Bridge segment; completion expected early fall 2026.",
+          "sourceUrl": "https://www.constructionowners.com/news/brooklyn-street-safety-upgrade-moves-forward-with-full-mcguinness-boulevard-redesign"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Mayor Mamdani announces start of construction to complete McGuinness Boulevard redesign",
+          "publisher": "NYC Mayor's Office",
+          "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin",
+          "date": "2026-05-27"
+        },
+        {
+          "title": "McGuinness Boulevard redesign begins construction with full corridor upgrade",
+          "publisher": "Construction Owners",
+          "url": "https://www.constructionowners.com/news/brooklyn-street-safety-upgrade-moves-forward-with-full-mcguinness-boulevard-redesign",
+          "date": "2026-06-01"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.736989,
+      "lng": -73.953118
+    },
+    {
+      "id": "meeker-plume-monitoring",
+      "title": "EPA keeps testing the Meeker Avenue Plume",
+      "kicker": "Superfund testing under east Greenpoint",
+      "category": "news",
+      "filters": [
+        "news"
+      ],
+      "locationName": "Meeker Avenue Plume area",
+      "geocodeQuery": "Meeker Avenue, Brooklyn, NY 11222",
+      "summary": "Work continues on the Meeker Avenue Plume, the Superfund groundwater site under parts of east Greenpoint (federally listed in March 2022). EPA is testing groundwater monitoring wells and presented recent indoor-air sampling results at the community advisory group's April and May meetings. Follow updates via EPA's community involvement coordinator.",
+      "whyItMatters": "Quieter than trains and towers, but for ground-floor and basement spaces above the plume it's the higher-stakes story.",
+      "audience": [
+        "resident",
+        "business"
+      ],
+      "actions": [
+        {
+          "label": "See the EPA site page",
+          "type": "learn_more",
+          "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-04-08",
+          "title": "Indoor-air results shared",
+          "summary": "EPA presents recent indoor-air sampling updates at the community advisory group meeting.",
+          "sourceUrl": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
+        },
+        {
+          "date": "2026-05-13",
+          "title": "CAG meets again",
+          "summary": "Follow-up community advisory group meeting; groundwater monitoring well testing planned.",
+          "sourceUrl": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Meeker Avenue Plume site profile",
+          "publisher": "US EPA",
+          "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407",
+          "date": "2026-05-13"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-07-27",
+      "updatedAt": "2026-07-27",
+      "lat": 40.714423,
+      "lng": -73.953036
     }
   ]
 }

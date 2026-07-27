@@ -104,13 +104,16 @@ test("seed has exactly 71 cards across the six layers", () => {
   // 2026-07-27 run 2 (game-club sources + web diffs): +7 — Troost Aug 5/6,
   // Film Noir late show 7/27, GCC free screenings 8/2, Carcosa 40k 8/1,
   // Last Place chess night, NY Society of Play fall registration. 84 → 91.
-  assert.equal(seed.cards.length, 91);
+  // 2026-07-27 civic coverage-gap fix (Batu): the newsletter-only roster never
+  // surfaces Council/DOT/EPA stories — +3 verified news cards (Monitor Point
+  // approval, McGuinness redesign construction, Meeker Plume monitoring). 91 → 94.
+  assert.equal(seed.cards.length, 94);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
-  assert.equal(count((c) => c.filters.includes("news")), 19, "16 + peek-inn + archestratus-closed + gtrain-sales-survey");
+  assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
   assert.equal(count((c) => c.category === "event"), 45, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa)");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
-  assert.equal(count((c) => c.category === "news"), 9, "7 + archestratus-closed + gtrain-sales-survey");
+  assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
   assert.equal(count((c) => c.filters.includes("live_music")), 19, "15 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
   assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
@@ -147,7 +150,9 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
 
 test("news cards name their publisher and sit in the news layer", () => {
   const news = seed.cards.filter((c) => c.category === "news");
-  assert.equal(news.length, 9);
+  // 2026-07-27: +3 civic-issue cards (Monitor Point approval, McGuinness
+  // redesign construction, Meeker Plume monitoring) — coverage-gap fix.
+  assert.equal(news.length, 12);
   for (const c of news) {
     assert.ok(c.filters.includes("news"), `${c.id} missing news filter`);
     assert.ok(c.sourceLinks.some((s) => s.publisher), `${c.id} missing publisher`);
