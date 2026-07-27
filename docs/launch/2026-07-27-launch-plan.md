@@ -13,7 +13,7 @@ outbound message; truth rules and II-C palette are non-negotiable.
 |---|---|---|---|
 | L1 | Attribution kit — canonical tagged links | ✅ `channel-links.md` (2026-07-26) | Regenerate every row at cutover (origin changes) |
 | L2 | OG tags + `/e/<slug>` deep links | ✅ shipped (og.png LFS fix 2026-07-26) | — |
-| L3 | AEO surface (prerender, JSON-LD, sitemap/RSS/ICS/llms.txt) | ✅ shipped 2026-07-26 | **Acceptance open:** prod no-JS `curl` of `/e/<slug>` (extensionless path must resolve) + Google Rich Results pass — run after next deploy |
+| L3 | AEO surface (prerender, JSON-LD, sitemap/RSS/ICS/llms.txt) | ✅ shipped 2026-07-26; **prod acceptance passed 2026-07-27** — extensionless `/e/<slug>` resolves without a trailing slash, no-JS `curl` returns per-card title + venue + address, and dated cards carry valid `schema.org/Event` JSON-LD (name/startDate/location+geo). 40 of 93 pages carry Event schema — correct by design: undated place/news cards are not Events and must not claim a date | Google Rich Results test is a manual browser step (not scriptable) — still worth one spot-check. Re-verify on the new origin at cutover |
 | L4 | Error monitoring (hard gate) | ✅ PostHog exception autocapture verified; alert emails confirmed on (Issue assigned + Error tracking weekly digest, Default project scoped) | — |
 | L5 | Business submission path (ops plan 3.3) | ⬜ not built | Tally form + pinned CTA card + `submit_tap` event; joins Monday review queue |
 | L6 | De-July (by Aug 1) | ✅ shipped 2026-07-27 | `cards.json` rename + evergreen meta description + skill migration note. Internal identifiers (`JulyApp.jsx`, `.july-*` CSS, `julyCards.test.mjs`) left as-is; `july-postvalue-done` key must not be renamed |
