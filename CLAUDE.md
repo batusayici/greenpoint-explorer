@@ -44,6 +44,7 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 - **Truth rules:** nothing invented, everything sourced. Events/hours/deals/status come from named sources or don't ship; cards are schema-valid, geocoded, review-gated. Unclaimed businesses show category labels, not brands.
 - **Look:** every color from the II-C palette (source of truth: `docs/parked/3d-explorer/ART_DIRECTION.md`, applied via `iiMapStyle.js`). Out-of-palette is a hard miss.
+- **Source allowlist:** `.claude/settings.json` holds `WebFetch(domain:…)` allow rules for verified Greenpoint content sources. When a new business/source is verified, add its domain there in the same change.
 - Run `git status --short` before editing; report unrelated dirty files.
 - Commit when a coherent step lands and builds; **never push without Batu — push = production deploy** (Vercel-linked).
 
