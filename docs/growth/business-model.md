@@ -32,7 +32,12 @@ truth.**
 
 The durable asset is the ingest corpus — longitudinal, verified, structured data
 on openings, closings, events, deals and memberships, accumulating weekly since
-July 2026. Protect it accordingly: it is the business, not a byproduct.
+July 2026. It is an **emerging proprietary asset, not yet a moat** (reframed
+2026-07-28): public-source facts can be reconstructed from archives and listings.
+It becomes defensible only as it compounds with what cannot be reconstructed —
+trusted longitudinal coverage, direct supply relationships (recurring
+submissions, correction history, owner contact), and structured engagement
+evidence. Protect all three accordingly: they are the business, not a byproduct.
 
 ## 2. Non-negotiables
 
@@ -44,8 +49,9 @@ they hold at every stage:
 2. **Coverage is never for sale.** Every verified business, event, and org gets on
    the map free, permanently. Comprehensiveness *is* the product; paid placement
    is enhancement on top of complete free coverage, never admission to it.
-3. **Every paid surface is labeled** — legible in the II-C visual system, never
-   disguised as editorial.
+3. **Every paid surface is labeled "Sponsored" or "Paid placement"** — explicit
+   forms per FTC native-advertising guidance ("Featured" alone is insufficient
+   disclosure) — legible in the II-C visual system, never disguised as editorial.
 4. **Editorial surfaces never monetize.** News and community/civic layers carry no
    paid placement, ever. They are the credibility that makes the rest sellable,
    and the banner charter (DECISION_LOG 2026-07-26) already bans sponsorship there.
@@ -55,46 +61,100 @@ they hold at every stage:
 
 ## 3. Revenue layers — names and order only
 
-Three layers, shipped in this order. Pricing and targets are in the private doc.
+Three layers, shipped in this order. Pricing, pipeline math, and targets are in
+the private doc. *(Restructured 2026-07-28 after external review: each layer now
+enters through its cheapest validated form — pilots before sponsorships, manual
+proof before software, briefs before report products.)*
 
-1. **Founding Partners** — a small number of anchor relationships sold by Batu
-   personally; labeled persistent presence plus one featured slot within the §2
-   rule-5 cap.
-2. **Self-serve business layer** — featured event/deal slots, a business dashboard
-   (own your cards, submit/edit, demand analytics), campaign promotion. Ships only
-   after demand proof. **The free tier stays genuinely excellent** — that is rule 2,
-   and it is also the growth loop.
-3. **Spatial intelligence** — a recurring neighborhood-vitality report built from
-   the ingest corpus, sold to developers, brokers, BIDs, and city programs. Year 2.
-   **Binding data ethic: aggregate and public-source only** — no individual-level
-   user data ever, and nothing that exposes a business's non-public condition or
-   infers distress. Report what was already publicly sourced under the truth rules.
+1. **Founding Pilots → Founding Partners** — Layer 1 enters as a small number of
+   **90-day paid pilots** (prepaid preferred), each with **one buyer job, defined
+   deliverables, a measurable outcome, and quantified distribution obligations**
+   written into the deal (emails, window/lobby placements, QR counts, partner
+   posts). Offers are buyer-specific — retail owner (ground-floor tenant
+   visibility/activation), venue (verified discovery and attendance), broker
+   (neighborhood activity evidence for leasing), community institution (fund a
+   trusted free utility) — not one generic sponsorship bundle. Pilots that renew
+   convert to ongoing Founding Partner terms. Labeled presence sits within the
+   §2 rule-5 cap.
+2. **Self-serve business layer** — enters as a **manual monthly proof-of-value
+   email** to covered businesses ("your event: N saves, N calendar adds, N
+   direction taps") — zero build, closes Loop B, and tests whether demand
+   analytics are worth paying for **before** any dashboard is written. Software
+   ships only for capabilities businesses repeatedly request (verified
+   submission/correction, publication confirmation, engagement counts, recurring
+   event templates) — never a generic dashboard because dashboards theoretically
+   scale. Ships only after demand proof. **The free tier stays genuinely
+   excellent** — that is rule 2, and it is also the growth loop.
+3. **Spatial intelligence** — enters as **bespoke paid briefs** (corridor pulse,
+   category-gap analysis, opening/closure trends) sold per-project to
+   developers, brokers, BIDs, and city programs; the recurring
+   neighborhood-vitality report is the productized end-state once briefs reveal
+   which analysis changes buyer decisions. Year 2. **Binding data ethic:
+   aggregate and public-source only** — no individual-level user data ever, and
+   nothing that exposes a business's non-public condition or infers distress.
+   Report what was already publicly sourced under the truth rules.
 
 ## 4. Gates and sequencing rules
 
-- **The PMF gate is reinterpreted, not relaxed: sell before, ship after.**
-  Conversations with prospective partners may happen before the PMF verdict;
-  **no paid surface goes live until after it.**
+**Four validation gates, re-registered 2026-07-28 — before launch, before any
+data existed** (amending a pre-registered bar is legitimate only pre-data; this
+replaces the single ~Sep 15 PMF verdict, which conflated demand evidence with
+commercial permission — 30 returning residents prove someone values the product,
+not that anyone will pay for it):
+
+1. **Demand gate** — mature returning-local cohorts with high-intent actions
+   (thresholds pre-registered in the launch docs). **Sep 15 is a provisional
+   readout; the firmer verdict follows two mature 4-week cohorts (~late Oct).**
+2. **Distribution gate** — ≥2 channels repeatedly producing activated users
+   without founder-intensive outreach.
+3. **Supply gate** — recurring verified submissions measurably increasing
+   coverage or reducing manual work.
+4. **Commercial gate** — **3 paid pilots or signed LOIs** from a defined buyer
+   profile. Resident counts never open this gate; only paying buyers do.
+
+Sequencing rules:
+
+- **Sell before, ship after.** Pilot conversations may happen before the gates
+  pass; **no paid surface goes live until the demand gate passes.** Each layer's
+  cheapest form (§3) is the validation instrument for its gate.
 - **Layer order is a rule, not a preference** — institutions before small
   businesses, in time. This is what survives of "never charge small businesses
   first."
 - **Weekly returning locals is the revenue plan's leading indicator.** Layer 1
   renewals and all of Layer 2 price off it, which is the tightest coupling between
   this doc and the growth engine.
-- **No anchor deal without a distribution deliverable.** Reach is part of the
-  price. This is the structural answer to "we are not where our users are" — the
-  business model doubles as the awareness strategy, which is why it is a rule and
-  not a nicety.
-- **Partner posture:** Greenpointers is a distribution partner and potential embed
-  customer, never a news competitor (unchanged from PLAN.md). Community orgs and
-  the Chamber carry legitimacy and member distribution.
+- **No pilot without a quantified distribution deliverable.** Reach is part of
+  the price. This is the structural answer to "we are not where our users are" —
+  the business model doubles as the awareness strategy, which is why it is a rule
+  and not a nicety.
+- **Partner posture:** Greenpointers is approached as a distribution partner and
+  potential embed customer, never fought as a news competitor (unchanged from
+  PLAN.md) — but the distribution swap is a **hypothesis to negotiate, not an
+  assumption**; until agreed, plan channels as if it doesn't exist. Community
+  orgs and the Chamber carry legitimacy and member distribution.
+- **Publish coverage standards.** The differentiation claim ("complete, verified")
+  is only credible published: sources monitored, last-verified time, correction
+  time, known gaps. This is also an answer-engine trust signal.
 
 ## 5. Expansion
 
-**Unlock rule:** the next neighborhood starts only when Greenpoint revenue
-sustainably covers total costs plus the marginal ingest cost of neighborhood #2.
+**Unlock rule (replaced 2026-07-28 — the original cash-cost rule priced the
+servers and not the operator):** the next neighborhood starts only when **all**
+of the following hold:
+
+- The demand gate (§4) has passed in Greenpoint.
+- Eight consecutive weeks operated within the founder-time budget (tracked in
+  the private doc).
+- At least one Layer 1 payer showing renewal intent.
+- At least 25% of supply arriving directly (submissions, not hand-carried).
+- Content error and correction times within target.
+- A signed pilot or buyer commitment in the target neighborhood.
+
+Expansion follows demonstrated repeatability and demand — never spare cash.
 This is a post-PMF move and does not soften the growth engine's pre-PMF ban on
-geographic expansion.
+geographic expansion. Institutional buyers in the target neighborhood (e.g. the
+proposed Northside BID, still in its support-ballot phase) are **upside, never
+base-case demand**.
 
 The ingest engine, the self-serve layer, and the AEO surface travel free; Layer 1
 anchors are re-sold per neighborhood. Each neighborhood is therefore cheaper than
@@ -106,15 +166,49 @@ another neighborhood means a properly scoped surface of its own.
 
 ## 6. What we will not do
 
-- Charge residents, in any form.
+*(Ban scopes recalibrated 2026-07-28 — permanent bans stay permanent only where
+the rationale is permanent; bans whose premise the model itself changed became
+gated.)*
+
+**Permanent — rationale does not expire:**
+
+- Paywall or premium tier for residents, in any form.
 - Sell coverage, ranking, or omission.
-- Paid acquisition (channel–model fit: unchanged, permanent).
 - Paid placement in news or community/civic surfaces.
 - Unlabeled sponsored content.
-- Take outside capital (bootstrapped by decision; revisitable only by Batu).
 - Sell or share individual-level user data — under any commercial pressure.
+- Take outside capital (bootstrapped by decision; revisitable only by Batu).
 
-## 7. Deltas to prior decisions
+**Gated — closed now, with a defined reopening condition:**
+
+- **Voluntary resident support** (tip-jar/membership à la Greenpointers): dormant
+  contingency, revisit only post-PMF. The product never *needs* resident money;
+  the question of *accepting* it stays open.
+- **Paid acquisition:** absolute ban pre-PMF. Post-PMF, only sponsor-funded,
+  geo-targeted, case-by-case approved by Batu — the original "$0 revenue/user"
+  rationale is changed by this model, so the ban's scope updates with it.
+- **Social distribution:** the ban on account-grinding stays; a **low-labor
+  test** (auto-generated weekly carousel from the week's cards, posted by Batu,
+  4 weeks, pre-registered kill criteria) is an approved post-launch experiment
+  candidate under the max-3 rule.
+
+## 7. Hypotheses under validation
+
+Every load-bearing assumption, its test, and its pre-registered failure response
+(added 2026-07-28 — a model is only as strong as its cheapest-to-test weakest
+assumption). Numbers behind each test are in the private doc.
+
+| # | Hypothesis | Test | If it fails |
+|---|---|---|---|
+| H1 | Institutional/business buyers will pay for a buyer-specific pilot before the audience is large | 12–15 qualified conversations across buyer types; commercial gate = 3 paid pilots/LOIs | Layer 1 is wrong as the spine → fall back to Layer-2-first on a slower timeline; re-open the model with rejection reasons as data |
+| H2 | Businesses value demand evidence enough to eventually pay for it | Manual monthly proof-of-value email; measure replies, asks, repeat submissions | Don't build the dashboard; Layer 2 shrinks to featured slots only |
+| H3 | Verified structured coverage out-competes existing substitutes (Greenpointers guide, other calendars) for the weekly "what's happening" job | Demand gate cohorts + published coverage standards | Differentiation is insufficient → sharpen the promise or narrow to the underserved wedge (parents/camps) |
+| H4 | The Greenpointers distribution swap is negotiable | One conversation, post-launch | Plan channels without it; co-opetition, not partnership |
+| H5 | Structured pages → AI/search citations → organic sessions (Loop C) | Search Console + referrer data over ≥2 months; structured data does **not** guarantee rich results | Invest in stable venue/category pages, archives, backlinks — or deprioritize AEO as a growth loop |
+| H6 | The weekly operation fits inside the founder-time budget alongside selling | 8 consecutive weeks tracked | Cut cadence or scope before cutting verification quality; expansion stays locked |
+| H7 | Analysis briefs change buyer decisions (Layer 3 premise) | First bespoke paid briefs, per-project | No report product; corpus stays an internal asset |
+
+## 8. Deltas to prior decisions
 
 | Prior | Now |
 |---|---|
@@ -123,5 +217,9 @@ another neighborhood means a properly scoped surface of its own.
 | "Sponsored campaign maps → partner tooling → evidence-gated featured cards" | **Superseded** by the three-layer architecture (§3). |
 | "Nothing monetizes before the PMF verdict" | **Reinterpreted:** sell before, ship after. No paid surface goes live pre-verdict. |
 | Loop B "supply/claim loop" | Renamed **supply loop**; metric and weakest edge unchanged. |
-| Paid acquisition ruled out | Unchanged. |
-| Growth-engine loops and metrics | Unchanged. |
+| Single ~Sep 15 PMF verdict | **Re-registered pre-data (2026-07-28)** as four gates (§4); Sep 15 provisional, firmer verdict ~late Oct. |
+| "Breakeven with the first anchor" | **Corrected:** that is cash-cost breakeven only; business breakeven includes founder labor (tracked in the private doc). |
+| Paid acquisition ruled out permanently | **Scoped (2026-07-28):** absolute pre-PMF; post-PMF a sponsor-funded, geo-targeted, Batu-approved exception exists (§6). |
+| "Residents never pay," total | **Split (2026-07-28):** paywall/premium permanently banned; voluntary support a dormant post-PMF contingency (§6). |
+| Ingest corpus described as the moat | **Reframed (2026-07-28):** emerging proprietary asset; the moat is coverage trust + supply relationships + engagement evidence (§1). |
+| Growth-engine loops and metrics | Metrics unchanged; Loop B gains the proof-of-value edge, Loop C gains a hardening backlog (see growth-engine.md). |

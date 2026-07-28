@@ -49,7 +49,9 @@ Launch-readiness status (2026-07-26): **error monitoring shipped** — PostHog e
 
 - Retention sensor: privacy-light `return_visit` event (localStorage first-seen + visit count; no fingerprinting). *(Updated 2026-07-26: pulled forward and shipped as growth-engine R0 — `src/demand-test/returnVisit.js`, `visitCount` + `weekIndex` properties, live in production.)*
 - Iterate from observed pull; features ranked by signal.
-- **Pre-registered two-sided PMF bar (numbers to confirm at checkpoint):**
-  - Demand: ≥30 unique locals at ≥2 visits/week, 3 consecutive weeks by ~Sep 15, majority arriving without a fresh invite push.
-  - Supply: ≥5 businesses/orgs proactively submitted or asked in; ≥1 recurring submitter.
+- **Pre-registered validation gates** *(re-registered 2026-07-28, before launch data existed — the prior two-sided bar conflated demand evidence with commercial permission; four gates in `docs/growth/business-model.md` §4)*:
+  - **Demand:** ≥30 unique locals at ≥2 visits/week, 3 consecutive weeks, majority arriving without a fresh invite push. **~Sep 15 is a provisional readout** (an Aug 1–8 launch yields only ~5–6 weeks); the firm verdict follows two mature 4-week cohorts, ~late Oct.
+  - **Distribution:** ≥2 channels repeatedly producing activated users without founder-intensive outreach.
+  - **Supply:** ≥5 businesses/orgs proactively submitted or asked in; ≥1 recurring submitter.
+  - **Commercial:** 3 paid pilots or signed LOIs from a defined buyer profile — resident counts never open this gate.
 - PMF verdict unlocks the paid surfaces in `docs/growth/business-model.md` (2026-07-28): Founding Partners → self-serve business layer → spatial intelligence. **Selling starts before the verdict; shipping any paid surface waits until after it.** *(Supersedes "sponsored maps first; never charge small businesses first." 2026-07-22: Track R / the 3D explorer is parked indefinitely — reopening it is a separate, explicit decision by Batu, not an automatic unlock.)*

@@ -34,7 +34,14 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
 ```
 
 - **Compounding metric:** weekly returning locals (WRL) — the same number as the
-  PMF bar (≥30 at ≥2 visits/week, 3 consecutive weeks, by ~Sep 15).
+  demand-gate bar (≥30 at ≥2 visits/week, 3 consecutive weeks). *(Re-registered
+  2026-07-28, pre-launch: ~Sep 15 is a provisional readout — with an Aug 1–8
+  launch it holds only ~5–6 weeks of evidence; the firmer verdict follows two
+  mature 4-week cohorts, ~late Oct. Demand is gate 1 of four — distribution,
+  supply, and commercial gates are in business-model.md §4; passing demand alone
+  never unlocks paid surfaces… the commercial gate (3 paid pilots/LOIs) does.
+  Metric roles: retained = 2-of-4-weeks (R0's definition, feeds WRL); the bar
+  above is the gate; organic>50% stays a lens, not a second bar.)*
 - **Confirming signal (added 2026-07-27):** PMF in this era is binary — a
   word-of-mouth machine exists or it doesn't, and the benchmark is **organic
   >50% of acquisition**. Instrumentable post-launch: share of new sessions with
@@ -62,6 +69,13 @@ Coverage puts businesses/orgs on the map (verified, sourced, free)
 - **Weakest edge — and the only one still unrepaired:** businesses have *no path
   in*. The submission route (3.3 = launch item **L5**) is unbuilt, so this loop
   turns only when Batu hand-carries it. L5 is the last build before cutover.
+- **Missing mechanism identified 2026-07-28: proof of value back to the
+  supplier.** The loop diagram says businesses "see resident traffic & asks" —
+  but nothing shows it to them. A submission form alone doesn't close the loop;
+  submission → **publication receipt** → **measured outcome report** (manual
+  monthly proof-of-value email: saves, calendar adds, direction taps) → repeat
+  submission does. Zero build, and it doubles as the Layer 2 pricing probe
+  (business-model.md §3). Starts as soon as there is engagement to report.
 
 ### Loop C — Answer-engine distribution loop (owned; zero-CAC)
 
@@ -79,6 +93,14 @@ structured content → stronger citations → (top)
   turning** — citations accrue on crawler time. Open: Rich Results spot-check
   (manual), and re-verify after the origin flip at cutover. Freshness + truth
   rules are the citation moat competitors can't copy.
+- **Sober read (2026-07-28, business-model.md H5):** valid structured data does
+  **not** guarantee rich results or citations, and crawl latency of days is
+  material against weekly-expiring events. This loop is a *hypothesis* until
+  Search Console + referrer data confirm it (~2 months post-launch). Hardening
+  backlog if H5 needs help — **stable venue and category pages, archived events,
+  current-events sitemap, Search Console monitoring, source-attribution
+  backlinks** — post-launch candidates, not pre-launch builds (feature freeze
+  holds).
 
 **Key read:** the Phase 3 backlog is not a feature list — it is, almost item for
 item, the repair kit for the weakest edge of each loop: 3.1 share → A ✅ · 3.6
@@ -304,8 +326,8 @@ trust-gated — they're the definition of supervision.
 | Stage | Window | What's lit | What stays dark |
 |---|---|---|---|
 | 0 — Readiness *(was "Evidence"; checkpoint voided 2026-07-26)* | now → cutover (~Aug 1–8) | R0 baseline collecting · loop-edge repairs (3.1 ✅ · 3.6 ✅ · 3.3 = L5, the last build) · Founding Partner one-pager + logging business asks | All acquisition; every paid surface |
-| 1 — Loops | launch → ~Sep 15 | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence · **anchor conversations open** (selling only — nothing ships) | Every paid surface, new content layers; R2 waits for a returner population |
-| 2 — Compound | post-PMF verdict | **Paid surfaces ship** (business-model.md §5 sequencing) · adjacent audiences · new loops | Geographic expansion until the §7 unlock rule is met |
+| 1 — Loops | launch → ~Sep 15 (provisional readout) → ~late Oct (firm verdict, 2 mature cohorts) | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence · **pilot conversations open** (selling only — nothing ships) · proof-of-value emails once engagement exists | Every paid surface, new content layers; R2 waits for a returner population |
+| 2 — Compound | gates passing (business-model.md §4: demand → paid surfaces; commercial = 3 paid pilots/LOIs) | **Paid surfaces ship** (§5 sequencing) · adjacent audiences · new loops | Geographic expansion until the repeatability gate (business-model.md §5) is met |
 
 **The one thing to do first: L5** — the business submission path. It is the last
 unrepaired loop edge (B), the last build before cutover, and the only PMF bar
@@ -316,17 +338,27 @@ readouts.)*
 
 ## Explicitly not doing
 
-- **Paid acquisition — ever** (channel–model fit: $0 revenue/user).
+- **Paid acquisition pre-PMF — absolute.** *(Scoped from "ever" 2026-07-28: the
+  $0-revenue/user premise changed with the business model; post-PMF only
+  sponsor-funded + geo-targeted + Batu-approved, case by case.)*
 - A/B testing infrastructure or statistical-significance machinery.
-- Social-account grinding, generic SEO/content-marketing blog.
+- Social-account grinding, generic SEO/content-marketing blog. *(Narrowed
+  2026-07-28: a low-labor 4-week auto-generated-carousel test is an approved
+  post-launch experiment candidate — grinding stays banned.)*
 - Referral incentives or growth hacks bolted outside the loops.
 - Growth hires, agencies, or tools beyond PostHog free tier.
-- Shipping any paid surface before the PMF verdict. *(Revised 2026-07-28:
+- Shipping any paid surface before the demand gate passes. *(Revised 2026-07-28:
   monetization **conversations** are now allowed pre-verdict — sell before, ship
   after, per §5 and `business-model.md`. What stays banned is a live paid
   surface.)*
-- Charging residents, selling coverage, or paid placement in news/community
-  surfaces — permanently, at any stage (`business-model.md` §2).
+- Resident paywalls, selling coverage, or paid placement in news/community
+  surfaces — permanently, at any stage. *(Scoped 2026-07-28, `business-model.md`
+  §6: voluntary resident support is a dormant post-PMF contingency, not a
+  permanent ban; paid acquisition's "never" became "absolute pre-PMF, then only
+  sponsor-funded + geo-targeted + Batu-approved" — the $0-revenue/user premise
+  was changed by the business model itself; and the social ban narrowed to
+  account-*grinding* — a 4-week auto-generated-carousel test is an approved
+  post-launch experiment candidate under the max-3 rule.)*
 - New content layers (stories/history/routes) before the utility loop proves.
 - Geographic expansion before PMF — adjacent-user moves are a post-PMF plateau
   tool, and the hyperlocal focus *is* the moat. *(Post-PMF, expansion is governed

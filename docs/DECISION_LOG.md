@@ -23,6 +23,22 @@ Structure set by Batu: **bootstrapped indie** (no outside capital, each neighbor
 
 Owner: Batu.
 
+## 2026-07-28 — External review folded in: four validation gates, pilot-first revenue, loop closures, ban recalibration
+
+Decision (Batu, same day as adoption). An external critique of the business model + growth engine was triaged claim-by-claim (~70% accepted; items already handled in the docs or contradicting owner decisions were rejected or re-decided by Batu). Its core correction is adopted as doctrine: **audience retention and business-model validation are different things — resident counts never unlock commercial assumptions.** Amendments, all made **before launch, before any data existed** (amending a pre-registered bar is legitimate only pre-data; this window closes at launch):
+
+1. **Four validation gates replace the single PMF verdict** (`business-model.md` §4): demand (~Sep 15 now a *provisional* readout — an Aug 1–8 launch yields only ~5–6 weeks; firm verdict ~late Oct on two mature 4-week cohorts) · distribution (≥2 self-sustaining channels) · supply (unchanged bar) · **commercial (3 paid pilots or signed LOIs — the only gate that opens paid surfaces' pricing assumptions)**.
+2. **Each revenue layer enters through its cheapest validated form:** L1 = 90-day prepaid Founding Pilots with buyer-specific offers and quantified distribution obligations (not open-ended sponsorships); L2 = **manual monthly proof-of-value email before any dashboard** — this also closes Loop B's missing edge (supplier proof-of-value: submission → publication receipt → outcome report → repeat); L3 = bespoke paid briefs before any report product.
+3. **Kill criterion resized** — the 6-conversation floor carried a ~26% false-kill risk at healthy conversion (0.8⁶); now ≥12 qualified conversations across ≥3 buyer types by Dec 15 (math in the private doc).
+4. **Moat claim retracted:** the ingest corpus is an *emerging proprietary asset*; the moat is coverage trust + direct supply relationships + engagement evidence, none of which exist yet.
+5. **Expansion unlock replaced** — repeatability gate (8 weeks in time budget, renewal intent, ≥25% direct supply, error targets, signed target-neighborhood commitment) instead of the cash-cost rule, which priced the servers and not the operator. Founder labor is now tracked as a real cost (economics in the private doc). Northside BID relabeled upside, never base-case.
+6. **Ban recalibration (Batu):** resident *paywall* permanent, voluntary support a dormant post-PMF contingency; paid acquisition "never" → absolute pre-PMF then sponsor-funded/geo-targeted/Batu-approved only (the $0-revenue/user premise was changed by the model itself); social ban narrowed to account-grinding — one 4-week auto-generated-carousel test approved as a post-launch experiment candidate.
+7. **Sponsorship disclosure hardened per FTC guidance:** labels are "Sponsored"/"Paid placement," never "Featured" alone; governance + contract skeleton in the private doc. Also new: a published coverage-standards commitment, a hypothesis-status table (H1–H7) in `business-model.md`, and the Greenpointers swap reframed as a hypothesis to negotiate, not assumed distribution.
+
+Rejected from the review: renaming the doc (hypothesis table delivers the substance), "Loop A isn't a loop" (pre-PMF founder-driven loops are the growth engine's stated stance), and re-litigating attribution honesty (the 7/28 readout already documented untagged ≠ word-of-mouth). Sources checked: FTC native-advertising guide and Google's structured-data caveats verified; the in-yc substitute claim unverified and immaterial either way.
+
+Owner: Batu.
+
 ## 2026-07-28 — Strategy docs split by sensitivity: rules in the repo, numbers in gitignored `docs/private/`
 
 Decision (Batu). Business strategy should not be visible in GitHub. The repo is already private, and `PLAN.md` / `DECISION_LOG.md` / `growth-engine.md` have carried strategy for months — so rather than pull strategy out wholesale (which would break the Tuesday Growth Operator cloud routine, which reads growth-engine §2–4/§7 and this log from a fresh checkout), the split is **by sensitivity, not by topic**:
