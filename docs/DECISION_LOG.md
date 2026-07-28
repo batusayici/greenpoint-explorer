@@ -38,6 +38,20 @@ Surfaced, not moved: the investor pass argues the dormant resident-support conti
 
 Owner: Batu.
 
+## 2026-07-28 — Round-2 investor pass: ceiling re-corrected, H9 timed-brief test, contracts and concentration criteria fixed
+
+Decision (Batu-approved re-run after the first investor agent was lost mid-run). A second investor pass attacked the *already-corrected* model. Verdict as given: "no as a bootstrapped income business **at all-human delivery hours**." Synthesis accepted most findings, pushed back on the load-bearing assumption, and made one test decisive:
+
+1. **Ceiling re-corrected downward ~15% (figures in the private doc):** the first ceiling double-counted featured inventory — L1 partners' standing slots consume the same lens-weeks Layer 2 sells. The upside scenario sits *above* the structural ceiling; it closes only via Layer 3 revenue or restructuring partner presence as episodic featured weeks (**open Batu decision: standing vs. episodic slots**). New accounting rule in both docs: partner featured weeks count against sellable inventory, never double-counted.
+2. **The synthesis pushback:** the investor priced every delivery hour as founder labor; the repo's architecture exists to falsify exactly that (agent-executed, founder-reviewed). Resolution is empirical, not rhetorical — **H9: produce one corridor brief end-to-end and time founder-minutes, before the first pilot conversation.** Pass ≤2 founder-hours; >4 → reprice pilots or drop brief-first. One afternoon, resolves the margin question in either direction.
+3. **Contracts fixed:** pilot terms fixed + non-cancellable (refund window only at the start; the 30-day exit is post-pilot only — otherwise "prepaid" was a 30-day subscription with a deposit); the included brief carries a stated standalone price so bundling never anchors Layer 3 at $0; exclusivity scoped to featured presence, never to who may buy.
+4. **Concentration criteria rewritten enforceable** (old ones were arithmetically unsatisfiable — payer #1 is 100% by construction): month-12, trailing-3-month thresholds with trigger actions (diversify-next-deal, pause step-ups, target uncovered sectors).
+5. **Expansion scope economy named:** per-neighborhood operating cost is roughly flat, so expansion economics come from **multi-neighborhood package buyers** (credit union, corridor brokerage, multi-asset owner) — first Williamsburg conversation targets one. In-neighborhood L3 ≈ the L1 wallets (repricing, not new revenue); incremental L3 is expansion-era.
+6. **Loops read economically** (growth-engine note): Loop A is constant-cost operations, not compounding; the compounders are C (citations/archive — the corpus accrues only where *published*) and B (submissions displace ingest labor); founder-hours drift A→B/C as A stabilizes.
+7. **Recorded, not adopted (Batu's open option):** the ingest engine sold as capability to other hyperlocal publishers (LION pool) may outvalue operating neighborhoods; test if ever wanted = five publisher conversations post-launch. Sales-CAC and LTV are now forecast inputs in the private doc (details there).
+
+Owner: Batu.
+
 ## 2026-07-28 — Positioning sharpened: index-not-newsletter; structurally non-competing with Greenpointers; community-run events deferred
 
 Decision (Batu). Raised by Batu after the pressure-test: "what's happening and what's worth doing" is near-1:1 with what Greenpointers/OMGreenpoint already claim, and Greenpointers must not come to see us as competition. Resolution — the positioning is structural, not editorial:

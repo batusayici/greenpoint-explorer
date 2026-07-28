@@ -129,6 +129,18 @@ item, the repair kit for the weakest edge of each loop: 3.1 share → A ✅ · 3
 AEO → C ✅ · 3.3 submission → B ⬜. That's the argument for shipping it as scoped
 and resisting additions.
 
+**Economic read of the loops (round-2 investor, 2026-07-28):** a loop compounds
+when period N lowers the cost or raises the yield of period N+1. By that test,
+**Loop A is an operating cycle at constant weekly cost** — cards expire by
+design and feed density is refilled at the same price every week; that's fine
+pre-PMF (the founder *is* the growth team) but it should never be budgeted as if
+it compounds. The genuine compounders are **Loop C** (citations and archive
+depth accrue; zero CAC; nothing re-sold per neighborhood) and **Loop B**
+(direct submissions displace ingest labor — the only loop that lowers marginal
+cost). Consequence: the corpus is only an accruing asset **where it is
+published** — venue/category/archive pages, i.e. exactly the H5 hardening
+backlog — and founder-hours should drift from A toward B/C as A stabilizes.
+
 ### Aha-moment hypothesis
 
 > **"Something is happening near me this week that I didn't know about — and it's

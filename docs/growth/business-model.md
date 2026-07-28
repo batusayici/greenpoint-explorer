@@ -123,7 +123,14 @@ proof before software, briefs before report products.)*
    pipeline); owner-operator landlords before institutional ownership
    (prepayment collides with vendor onboarding/COI/net-30 — to sell
    institutional, be invoiceable). Pilots that renew convert to ongoing
-   Founding Partner terms. Labeled presence sits within the §2 rule-5 cap.
+   Founding Partner terms. Labeled presence sits within the §2 rule-5 cap, and
+   **partner featured weeks are accounted against sellable inventory** —
+   presence is finite and priced, never double-counted between layers (round-2
+   correction; standing-vs-episodic slot structure is an open Batu decision).
+   The included brief carries a **stated standalone price in the deal**, so
+   bundling never anchors the Layer 3 product at zero. Pilot terms are fixed
+   and non-cancellable (refund window only at the start); rolling exit notice
+   exists only in the post-pilot monthly phase.
 2. **Self-serve business layer** — enters as a **manual monthly proof-of-value
    email** to covered businesses ("your event: N saves, N calendar adds, N
    direction taps") — zero build, closes Loop B, and tests whether demand
@@ -229,6 +236,17 @@ of the following hold:
 - A signed pilot or buyer commitment in the target neighborhood.
 
 Expansion follows demonstrated repeatability and demand — never spare cash.
+
+**The scope economy is the buyer who spans neighborhoods (round-2 correction —
+previously forgone):** marginal operating cost per neighborhood is roughly flat
+(ingest and review minutes are linear; only the code travels free), so the real
+economics of expansion come from **multi-neighborhood package buyers** — a
+credit union with branches in both, a corridor brokerage, a multi-asset owner —
+priced as one package, exclusivity priced per package. The first Williamsburg
+conversation targets one. In-neighborhood Layer 3 buyers are largely the same
+wallets as Layer 1 (a repricing, not new revenue); **incremental Layer 3 is an
+expansion-era claim** — out-of-neighborhood buyers (city programs, lenders,
+multi-neighborhood brokerages).
 This is a post-PMF move and does not soften the growth engine's pre-PMF ban on
 geographic expansion. Institutional buyers in the target neighborhood (e.g. the
 proposed Northside BID, still in its support-ballot phase) are **upside, never
@@ -300,6 +318,7 @@ assumption). Numbers behind each test are in the private doc.
 | H6 | The weekly operation fits inside the founder-time budget alongside selling | 8 consecutive weeks tracked | Cut cadence or scope before cutting verification quality; expansion stays locked |
 | H7 | Analysis briefs change buyer decisions (Layer 3 premise — now also the Layer 1 pilot headline) | First bespoke paid briefs, per-project | No report product; corpus stays an internal asset — and the pilot reverts to presence-first with the audience objection unsolved |
 | H8 | **The audience reaches the size the prices require** (added 2026-07-28 — the previously missing load-bearing hypothesis) | Derive N backwards from the renewal price at a defensible local rate; check monthly actives against N by month 12 (arithmetic in the private doc) | Layer 1 is mission money, not marketing money: flat, annually re-bid, no step-up — and the income target routes through expansion + Layer 3 or gets revisited by Batu |
+| H9 | **Pilot delivery is agent-leveraged, not founder-labor** (added 2026-07-28, round-2 investor — at all-human hours a brief-first pilot is margin-negative) | **Produce one corridor brief end-to-end and time founder-minutes, before the first pilot conversation.** Pass: ≤2 founder-hours of review on an agent-drafted brief | >4 founder-hours → reprice pilots upward or drop brief-first; Layer 1 reverts to presence-led with the audience objection back in play |
 
 ## 8. Deltas to prior decisions
 
