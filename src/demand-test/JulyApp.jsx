@@ -5,6 +5,8 @@ import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
+import { assessFreshness } from "./freshness.js";
+import stamp from "../data/demand-test/freshness-stamp.json";
 import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
@@ -12,6 +14,13 @@ import MapView from "./MapView.jsx";
 import CardPanel from "./CardPanel.jsx";
 
 const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
+
+// "verified through Jul 27" — day precision; the exact hour is ops detail.
+function formatVerifiedThrough(iso) {
+  if (!iso) return "recently";
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? "recently" : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
 
 // Deep link (/e/<slug>): open that card on load if it's live. A dead link
 // (expired or unknown) falls back to the plain feed WITH a notice — the
@@ -85,10 +94,14 @@ export default function JulyApp() {
   // day boundaries even in a long-lived tab.
   const gtrainPhase = bannerPhase(new Date());
   const communityAlert = activeCommunityAlert(new Date(), CARDS_BY_ID);
+  // L11 (2026-07-28): staleness computed per render like the banner phase —
+  // the stamp is written at build time from the ingest ledger, so a site
+  // whose deploys have stopped ages into "verified through <date>" honestly.
+  const freshness = assessFreshness({ lastRunAt: stamp.lastRunAt, now: new Date(), cards: seed.cards });
   // One banner at a time (2026-07-26): most consequential takes the slot.
   // The feed pin below stays tied to communityAlert, not the slot — the
   // campaign keeps its feed elevation even when a closure holds the banner.
-  const slot = bannerSlot(gtrainPhase, communityAlert);
+  const slot = bannerSlot(gtrainPhase, communityAlert, freshness);
 
   const { visible, groups } = useMemo(() => {
     const now = new Date();
@@ -179,6 +192,17 @@ export default function JulyApp() {
           <span className="july-gbadge">G</span>
           <span>
             <strong>G closure {GTRAIN_WINDOW.shortDates}</strong> &middot; {GTRAIN_WINDOW.shuttle}
+          </span>
+        </div>
+      )}
+      {/* L11 (2026-07-28): honest degradation — a stale feed says so instead
+          of quietly presenting old data as current. Plain status like the G
+          banner, no destination (the fix is ours, not the reader's). */}
+      {slot?.kind === "freshness" && (
+        <div className="july-gbanner july-gbanner--compact" role="status">
+          <span>
+            <strong>Listings verified through {formatVerifiedThrough(slot.verifiedThrough)}</strong> &middot; refresh
+            delayed — updating soon
           </span>
         </div>
       )}

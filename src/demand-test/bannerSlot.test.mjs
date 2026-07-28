@@ -25,3 +25,31 @@ test("no community alert → the G phase has the slot to itself", () => {
 test("nothing to say → empty slot (silence is the default state)", () => {
   assert.equal(bannerSlot(null, null), null);
 });
+
+// L11 (2026-07-28): staleness enters the ladder as a status line — below the
+// things that change your day (closure, community alert), above the distant
+// FYI chip. It appears ONLY when freshness fails; a fresh feed stays silent,
+// so the charter's silence-default holds.
+const STALE = { fresh: false, verifiedThrough: "2026-07-26T09:07:00-04:00" };
+const FRESH = { fresh: true, verifiedThrough: "2026-07-28T09:07:00-04:00" };
+
+test("stale data yields a freshness status when nothing more consequential holds the slot", () => {
+  assert.deepEqual(bannerSlot(null, null, STALE), {
+    kind: "freshness",
+    verifiedThrough: "2026-07-26T09:07:00-04:00",
+  });
+});
+
+test("closure and community alert both outrank the freshness status", () => {
+  assert.equal(bannerSlot("active", null, STALE).kind, "gtrain");
+  assert.equal(bannerSlot(null, ALERT, STALE).kind, "community");
+});
+
+test("freshness status outranks the distant-closure chip", () => {
+  assert.equal(bannerSlot("distant", null, STALE).kind, "freshness");
+});
+
+test("fresh feed → the slot behaves exactly as before (silence, chip, etc.)", () => {
+  assert.equal(bannerSlot(null, null, FRESH), null);
+  assert.deepEqual(bannerSlot("distant", null, FRESH), { kind: "gtrain", phase: "distant" });
+});

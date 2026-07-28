@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
-import { actionHref, withShareAction, sharePayload } from "./cardActions.js";
+import { actionHref, withShareAction, sharePayload, correctionHref } from "./cardActions.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
 import { formatWindow } from "./eventWindow.js";
@@ -284,6 +284,20 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
             )}
           </React.Fragment>
         ))}
+        {/* L10 (2026-07-28): the correction entry point — "verified" needs a
+            route in for disputes that isn't Batu's inbox (email stays
+            private, 2026-07-15). Prefilled card id → targeted report; SLA in
+            AGENTS.md (ack <24h, unpublish first). */}
+        {" · "}
+        <a
+          className="july-report"
+          href={correctionHref(FEEDBACK_FORM_URL, card.id)}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "card_correction", cardId: card.id })}
+        >
+          Something wrong?
+        </a>
       </p>
     </div>
   );

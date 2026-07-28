@@ -63,3 +63,12 @@ export function sharePayload(card, { origin = "", search = "", channel = "share"
     url: `${origin}/e/${encodeURIComponent(card.id)}?${params.toString()}`,
   };
 }
+
+// L10 (DECISION_LOG 2026-07-28): per-card correction entry point. Batu's
+// email stays private (2026-07-15), so disputes route through the feedback
+// form — prefilled with the card id (Tally reads matching query params into
+// hidden fields) so a report arrives targeted instead of as free text.
+export function correctionHref(formUrl, cardId) {
+  const sep = formUrl.includes("?") ? "&" : "?";
+  return `${formUrl}${sep}card=${encodeURIComponent(cardId)}`;
+}

@@ -98,3 +98,17 @@ test("the calendar variant tags src=calendar so saved-event returns are attribut
   const { url } = sharePayload({ id: "x", title: "T" }, { origin: "https://greenpoint.life", channel: "calendar" });
   assert.equal(url, "https://greenpoint.life/e/x?src=calendar");
 });
+
+// L10 (DECISION_LOG 2026-07-28): the correction entry point. A business
+// disputing a "verified" card needs a route in that isn't Batu's inbox
+// (which stays private) — the feedback form, prefilled with the card id so
+// the report arrives targeted.
+test("correctionHref prefills the feedback form with the card id", async () => {
+  const { correctionHref } = await import("./cardActions.js");
+  assert.equal(correctionHref("https://tally.so/r/LZqEj1", "film-noir-support"), "https://tally.so/r/LZqEj1?card=film-noir-support");
+});
+
+test("correctionHref encodes ids and appends to existing query strings", async () => {
+  const { correctionHref } = await import("./cardActions.js");
+  assert.equal(correctionHref("https://tally.so/r/LZqEj1?ref=app", "a b&c"), "https://tally.so/r/LZqEj1?ref=app&card=a%20b%26c");
+});
