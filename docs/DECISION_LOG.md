@@ -4,6 +4,19 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-28 — Two-day ingest outage: root cause is the cloud routine's network egress, not `.claude/settings.json`
+
+The 2026-07-27 and 2026-07-28 daily thin runs both went expiry-only: all 45 web roster sources were unreachable, reproduced with plain `curl` outside the fetch script for every host — including domains already correctly listed in the committed allowlist. That rules out `.claude/settings.json` as the cause: it only gates Claude Code's own `WebFetch` tool inside an interactive session; it has no effect on raw subprocess network calls (`curl`, `node fetch`, Playwright) that `scripts/fetch-sources.mjs` makes when it runs inside the cloud routine's sandbox. The actual block is at that sandbox's network/egress layer — infrastructure outside this repo, not something a repo file can fix. **Not resolved by this entry** — flagged for Batu to raise with Anthropic/claude.ai support if it persists past 2026-07-29.
+
+Two real repo bugs found and fixed alongside it (neither is the root cause above, but both were masking or would recur once egress is restored):
+
+1. **Stale allowlist entry.** `nyplays` moved its fetch target to `https://www.hisawyer.com/...` on 2026-07-27 (see `ingest-sources.json` notes), but `.claude/settings.json` still listed the old `nyplays.org`. Swapped to `www.hisawyer.com`.
+2. **Playwright/Chromium version pinned ahead of the cloud sandbox's image (labeled workaround).** `playwright@1.62.0` bundles Chromium build 1234; the cloud routine's sandbox image ships build 1194 and can't self-heal via `npx playwright install` because `cdn.playwright.dev` is itself blocked by the same egress issue above. Pinned `playwright` to the exact version whose bundled Chromium matches what the sandbox actually has: **`1.56.0` → Chromium 1194** (verified via each version's `browsers.json`; exact pin, not `^`, so `npm install` can't silently drift it back ahead of the sandbox again). This is debt, not a real fix: it's tied to today's known-stale sandbox image and will need re-pinning (or removing, if the image catches up) whenever Anthropic updates the cloud routine's environment. It does **not** unblock ingestion by itself — the sandbox still can't reach any roster site until the egress block above is lifted; it only stops the browser-launch failure from masking that diagnosis on the next run.
+
+Verified: 424/424 tests; local `chromium.launch()` + `page.goto('https://greenpointers.com/')` succeeds with the new pin.
+
+Owner: Batu.
+
 ## 2026-07-27 — De-July shipped (launch item L6); the July-named internals stay
 
 Decision (Batu — "run L6"; the scope calls below were made in execution and are recorded here for ratification). L6 asked for three things: an evergreen frame, a month-agnostic cards filename, and an ingest-skill migration note. All three shipped. What's worth recording is the **boundary**, because "de-July" reads like a global find-and-replace and it must not become one.
