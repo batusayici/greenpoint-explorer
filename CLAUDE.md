@@ -44,7 +44,7 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 - **Truth rules:** nothing invented, everything sourced. Events/hours/deals/status come from named sources or don't ship; cards are schema-valid, geocoded, review-gated. Unclaimed businesses show category labels, not brands.
 - **Look:** every color from the II-C palette (source of truth: `docs/parked/3d-explorer/ART_DIRECTION.md`, applied via `iiMapStyle.js`). Out-of-palette is a hard miss.
-- **Source allowlist:** `.claude/settings.json` holds `WebFetch(domain:…)` allow rules for verified Greenpoint content sources. When a new business/source is verified, add its domain there in the same change.
+- **Source allowlist:** `.claude/settings.json` holds `WebFetch(domain:…)` allow rules for verified Greenpoint content sources. When a new business/source is verified, add its domain there in the same change. Note: this only gates Claude Code's own `WebFetch` tool in an interactive session — it does **not** govern raw subprocess network calls (`curl`, `node fetch`, Playwright) that `scripts/fetch-sources.mjs` makes when the ingest cloud routine runs. If a scheduled run reports every source unreachable (not just newly-added ones), the cause is the cloud sandbox's network egress, not this file — see `docs/DECISION_LOG.md` 2026-07-28.
 - Run `git status --short` before editing; report unrelated dirty files.
 - Commit when a coherent step lands and builds; **never push without Batu — push = production deploy** (Vercel-linked).
 
