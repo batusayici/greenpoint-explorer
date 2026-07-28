@@ -113,12 +113,21 @@ test("seed has exactly 71 cards across the six layers", () => {
   // corrects the 6pm card's 00:00 start (a value the calendar never stated;
   // isExpiredCard reads 00:00 as the all-day sentinel and skips the
   // started-grace hide, pinning a 6pm show to the lens from midnight).
-  // 2026-07-28 daily thin refresh — EXPIRY-ONLY, same cause as 07-27: the
-  // cloud runner's egress gateway answered 403 to CONNECT for all 45 web
-  // roster sources (48 minus 3 monthly), so no source could be read and
-  // nothing was added. The Gmail pass ran clean and found nothing on-concept.
-  // Expiry deleted the 7/27 night: three Film Noir shows, Troost's Nice Try
-  // Kid, the Monday library block, and BCC's workshops. 95 → 89.
+  // 2026-07-28 daily thin refresh — EXPIRY-ONLY, but (unlike 07-27) the
+  // sources were actually read and simply had nothing new for the window.
+  // Egress recovered mid-run; the fetch needed NODE_USE_ENV_PROXY=1 for the
+  // plain-fetch path (Node 22 ignores HTTPS_PROXY without it), after which
+  // 24 of 48 sources read clean: 3 changed + 1 new + 20 unchanged. The 21
+  // browser-fetch sources stayed unreadable — Chromium cannot traverse the
+  // runner's proxy (ERR_CONNECTION_RESET) even where curl succeeds.
+  // Extraction found no cardable adds: Brooklyn Craft nothing, Go Green's
+  // three items all non-Greenpoint (Brooklyn Bridge Park / Shore Road /
+  // Domino), Acme's "change" was a privacy-banner line and its Fish Friday
+  // is already carded, and the Greenpoint Star's one civic story (National
+  // Grid / CB1) is from January and cites no checkable primary source.
+  // The Gmail pass ran clean. Expiry deleted the 7/27 night: three Film Noir
+  // shows, Troost's Nice Try Kid, the Monday library block, BCC's workshops.
+  // 95 → 89.
   assert.equal(seed.cards.length, 89);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");

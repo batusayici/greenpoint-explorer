@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-28T14:00:00-04:00",
+  "lastRunAt": "2026-07-28T14:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -933,8 +933,13 @@
     },
     {
       "ref": "run:daily-thin-2026-07-28",
-      "at": "2026-07-28T14:00:00-04:00",
-      "outcome": "expiry-only — all 45 web roster sources blocked by the cloud runner egress gateway (403 to CONNECT); Gmail pass ran clean, nothing on-concept; 6 past events deleted; no sources marked ingested"
+      "at": "2026-07-28T14:30:00-04:00",
+      "outcome": "expiry-only. Egress recovered mid-run; plain-fetch path required NODE_USE_ENV_PROXY=1 (Node 22 ignores HTTPS_PROXY without it). 24/48 sources read (3 changed, 1 new, 20 unchanged); 21 browser-fetch sources still unreadable (Chromium cannot traverse the runner proxy, ERR_CONNECTION_RESET, where curl succeeds); 3 monthly skipped. No cardable adds. 6 past events expired. 24 sources marked ingested."
+    },
+    {
+      "ref": "https://www.greenpointstar.com/ — National Grid gas expansion / CB1 forum",
+      "at": "2026-07-28T14:30:00-04:00",
+      "outcome": "SKIPPED (not carded): story is dated Jan 15 2026 — six months stale for a week-of feed — and names no checkable primary source (only \"the state\"; the PSC docket was not verifiable this run). Re-verify at the PSC docket before carding if it resurfaces."
     }
   ],
   "senderRegistry": [
