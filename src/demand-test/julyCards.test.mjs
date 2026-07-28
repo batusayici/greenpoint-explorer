@@ -113,23 +113,29 @@ test("seed has exactly 71 cards across the six layers", () => {
   // corrects the 6pm card's 00:00 start (a value the calendar never stated;
   // isExpiredCard reads 00:00 as the all-day sentinel and skips the
   // started-grace hide, pinning a 6pm show to the lens from midnight).
-  assert.equal(seed.cards.length, 95);
+  // 2026-07-28 daily thin refresh — EXPIRY-ONLY, same cause as 07-27: the
+  // cloud runner's egress gateway answered 403 to CONNECT for all 45 web
+  // roster sources (48 minus 3 monthly), so no source could be read and
+  // nothing was added. The Gmail pass ran clean and found nothing on-concept.
+  // Expiry deleted the 7/27 night: three Film Noir shows, Troost's Nice Try
+  // Kid, the Monday library block, and BCC's workshops. 95 → 89.
+  assert.equal(seed.cards.length, 89);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 46, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa) + Film Noir Monday");
+  assert.equal(count((c) => c.category === "event"), 40, "46 minus the six 7/27 events expiry took");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.filters.includes("live_music")), 19, "15 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
+  assert.equal(count((c) => c.filters.includes("live_music")), 18, "19 minus Troost's Nice Try Kid (7/27, expired)");
   assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
-  // Refreshed 2026-07-27; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-07-27T00:00:00-04:00");
+  // Refreshed 2026-07-28; recurring series carry their series end date.
+  const refreshDay = Date.parse("2026-07-28T00:00:00-04:00");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
-    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-27 refresh`);
+    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-28 refresh`);
   }
 });
 
@@ -253,10 +259,11 @@ test("the 8 ex-new cards folded into news, keeping their real category (pin colo
 test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () => {
   // Yoga/pilates/dance/run — the recurring cluster the events umbrella hid.
   // Trash Club stays out (Batu: it's civic action, not fitness).
+  // library-monday-programs left the lens in the 2026-07-28 expiry (the 7/27
+  // Monday block ended); the library's standing card keeps its own lenses.
   const wellness = seed.cards.filter((c) => c.filters.includes("wellness")).map((c) => c.id).sort();
   assert.deepEqual(wellness, [
     "ecstatic-dance-loft-0729",
-    "library-monday-programs",
     "sparsa-greenpoint",
     "sunday-yoga-domino",
   ]);

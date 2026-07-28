@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T14:30:00-04:00",
+  "lastRunAt": "2026-07-28T14:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -930,6 +930,11 @@
       "id": "gmail:19fa3740321606f6",
       "reviewedAt": "2026-07-27",
       "outcome": "PRESS Modern Massage — excluded sender, skipped"
+    },
+    {
+      "ref": "run:daily-thin-2026-07-28",
+      "at": "2026-07-28T14:00:00-04:00",
+      "outcome": "expiry-only — all 45 web roster sources blocked by the cloud runner egress gateway (403 to CONNECT); Gmail pass ran clean, nothing on-concept; 6 past events deleted; no sources marked ingested"
     }
   ],
   "senderRegistry": [
