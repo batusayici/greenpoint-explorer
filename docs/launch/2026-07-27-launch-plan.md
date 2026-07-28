@@ -20,9 +20,13 @@ outbound message; truth rules and II-C palette are non-negotiable.
 | L7 | Domain cutover mechanics | ⬜ open | See §2 |
 | L8 | Growth Operator live | ⬜ this pass | `/growth-weekly` skill + Tuesday routine (§4) |
 | L9 | R0 retention baseline | ✅ collecting since 2026-07-26 | — |
+| L10 | Per-card correction link + SLA (pressure-test fatal #1) | ⬜ approved 2026-07-28 | "Something wrong?" per card → feedback form prefilled with card id; SLA now in AGENTS.md (ack <24h, unpublish-first). Error-monitoring-class freeze exception |
+| L11 | Feed-freshness alarm + verified-through line (pressure-test fatal #2) | ⬜ approved 2026-07-28 | `scripts/check-freshness.mjs` (ledger `lastRunAt` <48h + dated-card floor, alert on failure) + "verified through <date>" in the banner slot. The 7/27–28 outage was invisible without it |
 
-L5 is the only build left before cutover (L6 shipped 2026-07-27). Feature freeze holds (2026-07-26:
-no new features before launch; community-alert banner was the one scoped exception).
+L5, L10 and L11 are the builds left before cutover (L6 shipped 2026-07-27). Feature freeze holds
+(2026-07-26: no new features before launch; the community-alert banner was the one scoped exception,
+and L10/L11 are error-monitoring-class launch-readiness items granted the same class of exception
+2026-07-28 — they protect the "verified" promise, they don't add features).
 
 ## 2. Cutover sequence (T-0 — the launch moment)
 

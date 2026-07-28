@@ -67,15 +67,30 @@ enters through its cheapest validated form — pilots before sponsorships, manua
 proof before software, briefs before report products.)*
 
 1. **Founding Pilots → Founding Partners** — Layer 1 enters as a small number of
-   **90-day paid pilots** (prepaid preferred), each with **one buyer job, defined
-   deliverables, a measurable outcome, and quantified distribution obligations**
-   written into the deal (emails, window/lobby placements, QR counts, partner
-   posts). Offers are buyer-specific — retail owner (ground-floor tenant
-   visibility/activation), venue (verified discovery and attendance), broker
-   (neighborhood activity evidence for leasing), community institution (fund a
-   trusted free utility) — not one generic sponsorship bundle. Pilots that renew
-   convert to ongoing Founding Partner terms. Labeled presence sits within the
-   §2 rule-5 cap.
+   paid pilots. **The headline deliverable is the corridor brief, not presence**
+   (restructured 2026-07-28 pressure-test): a Greenpoint retail-corridor brief —
+   openings/closings velocity, category gaps, event density by block, refreshed
+   mid-term and at close — built from the ingest corpus, whose **value is
+   independent of audience size**. Labeled presence, the featured slot, and
+   vitality data ride along as included extras. Every conversation otherwise
+   dies on "you have no audience," and rule 2 means their listing is free anyway.
+   Terms: **180 days, or 90 with the renewal's leading indicators pre-agreed in
+   writing** — no target buyer has a 90-day outcome cycle. Distribution
+   placements (lobby/window/in-branch QR, partner-channel posts) are priced as a
+   **stated fee offset the buyer earns, never an extracted obligation** — "rate
+   card X, your lobbies buy it down" is defensible inside their org; a tax is
+   not. Offers stay buyer-specific — retail owner/property manager
+   (leasing-evidence brief + tenant visibility), community institution &
+   bank/credit-union (fund a trusted free utility + category exclusivity;
+   **lead with the §2 non-negotiables** — for this buyer they are the pitch, and
+   credit unions move ~3× faster than banks), broker (activity evidence).
+   **Buyer requalification:** cultural venues/event spaces are **Layer 2
+   customers, not Layer 1 anchors** (fast warm meetings, per-event ROAS logic,
+   worst conversion — they don't count toward the qualified-conversation
+   pipeline); owner-operator landlords before institutional ownership
+   (prepayment collides with vendor onboarding/COI/net-30 — to sell
+   institutional, be invoiceable). Pilots that renew convert to ongoing
+   Founding Partner terms. Labeled presence sits within the §2 rule-5 cap.
 2. **Self-serve business layer** — enters as a **manual monthly proof-of-value
    email** to covered businesses ("your event: N saves, N calendar adds, N
    direction taps") — zero build, closes Loop B, and tests whether demand
@@ -103,7 +118,12 @@ commercial permission — 30 returning residents prove someone values the produc
 not that anyone will pay for it):
 
 1. **Demand gate** — mature returning-local cohorts with high-intent actions
-   (thresholds pre-registered in the launch docs). **Sep 15 is a provisional
+   (thresholds pre-registered in the launch docs; **re-formed 2026-07-28
+   pre-data:** the bar is a *weekly-habit* bar — return in ≥3 of any 4
+   consecutive weeks — because the product refreshes weekly and R1 drives one
+   open per week by design; the old ≥2-visits/week measure demanded a
+   daily-habit the product's cadence doesn't create, and survives as a
+   supporting intensity signal, not the gate). **Sep 15 is a provisional
    readout; the firmer verdict follows two mature 4-week cohorts (~late Oct).**
 2. **Distribution gate** — ≥2 channels repeatedly producing activated users
    without founder-intensive outreach.
@@ -111,6 +131,25 @@ not that anyone will pay for it):
    coverage or reducing manual work.
 4. **Commercial gate** — **3 paid pilots or signed LOIs** from a defined buyer
    profile. Resident counts never open this gate; only paying buyers do.
+   **Kill timing re-registered (2026-07-28): Feb 15 2027, not Dec 15 2026** —
+   institutional budgets set in Q4 activate in January, so a December "no" is
+   most likely "not this budget year"; and the kill is **reason-conditional**
+   (budget-timing deferrals don't count as rejections). Sequence: owner-operators
+   Sep–Oct; banks/brokerages approached for the January budget year.
+
+**Seasonality rules (added 2026-07-28 — the word "season" previously appeared in
+no strategy doc, while 7 of 48 roster sources go dark Nov–Mar):**
+
+- **No gate is read and no renewal is priced on raw Dec–Feb numbers.** WRL and
+  feed metrics from the trough are read against the seasonal baseline, never
+  absolute. Pilot terms are written so renewal decisions don't land Jan–Feb.
+- **Feed density** (dated items in the next 7 days + share of roster yielding
+  this week) is tracked from **now, pre-launch** — baseline 2026-07-28: 95
+  cards, 38 dated in-window, 48 sources — so a winter content decline is
+  separable from product failure, and a silent ingest outage trips the metric
+  within a day.
+- September experiment reads carry a standing confound note: the citywide
+  autumn rebound. Pre/post cannot control for it; reads are labeled accordingly.
 
 Sequencing rules:
 
@@ -155,6 +194,20 @@ This is a post-PMF move and does not soften the growth engine's pre-PMF ban on
 geographic expansion. Institutional buyers in the target neighborhood (e.g. the
 proposed Northside BID, still in its support-ballot phase) are **upside, never
 base-case demand**.
+
+**Honest framing (2026-07-28 pressure-test):** one neighborhood under the §2
+caps has a structural revenue ceiling close to the model's upside scenario, and
+the base case approximately pays for the founder's time — **Greenpoint alone is
+a proof machine, not the income machine**. The income target is met through
+expansion plus Layer 3 or it is revisited; and since the majority of
+per-neighborhood revenue is Layer 1 relationship work that must be re-sold
+(only Layer 2, the engine, and AEO travel free), a neighborhood-#2 plan is
+budgeted in **founder-hours, not dollars**, before it starts (worksheet in the
+private doc). "Expansion is a revenue event" survives only with this caveat
+attached — it is also a founder-hours event, and the echo-chamber seeding
+channel that works in Greenpoint does not transfer to a network Batu isn't
+inside; neighborhood #2 needs its own embedded messengers before its own
+coverage.
 
 The ingest engine, the self-serve layer, and the AEO surface travel free; Layer 1
 anchors are re-sold per neighborhood. Each neighborhood is therefore cheaper than
@@ -206,7 +259,8 @@ assumption). Numbers behind each test are in the private doc.
 | H4 | The Greenpointers distribution swap is negotiable | One conversation, post-launch | Plan channels without it; co-opetition, not partnership |
 | H5 | Structured pages → AI/search citations → organic sessions (Loop C) | Search Console + referrer data over ≥2 months; structured data does **not** guarantee rich results | Invest in stable venue/category pages, archives, backlinks — or deprioritize AEO as a growth loop |
 | H6 | The weekly operation fits inside the founder-time budget alongside selling | 8 consecutive weeks tracked | Cut cadence or scope before cutting verification quality; expansion stays locked |
-| H7 | Analysis briefs change buyer decisions (Layer 3 premise) | First bespoke paid briefs, per-project | No report product; corpus stays an internal asset |
+| H7 | Analysis briefs change buyer decisions (Layer 3 premise — now also the Layer 1 pilot headline) | First bespoke paid briefs, per-project | No report product; corpus stays an internal asset — and the pilot reverts to presence-first with the audience objection unsolved |
+| H8 | **The audience reaches the size the prices require** (added 2026-07-28 — the previously missing load-bearing hypothesis) | Derive N backwards from the renewal price at a defensible local rate; check monthly actives against N by month 12 (arithmetic in the private doc) | Layer 1 is mission money, not marketing money: flat, annually re-bid, no step-up — and the income target routes through expansion + Layer 3 or gets revisited by Batu |
 
 ## 8. Deltas to prior decisions
 
@@ -223,3 +277,7 @@ assumption). Numbers behind each test are in the private doc.
 | "Residents never pay," total | **Split (2026-07-28):** paywall/premium permanently banned; voluntary support a dormant post-PMF contingency (§6). |
 | Ingest corpus described as the moat | **Reframed (2026-07-28):** emerging proprietary asset; the moat is coverage trust + supply relationships + engagement evidence (§1). |
 | Growth-engine loops and metrics | Metrics unchanged; Loop B gains the proof-of-value edge, Loop C gains a hardening backlog (see growth-engine.md). |
+| Presence-first pilot offer | **Superseded (2026-07-28 pressure-test):** the corridor brief is the pilot headline — its value is audience-independent; presence/slots/distribution bundle in (§3). Venues requalified to Layer 2. |
+| ≥2-visits/week demand bar | **Re-formed pre-data (2026-07-28):** weekly-habit bar (≥3 of 4 weeks); intensity becomes a supporting signal (§4). |
+| Dec 15 commercial kill | **Re-timed (2026-07-28):** Feb 15 2027, reason-conditional — December fires on a budget-calendar artifact (§4). |
+| Per-payer concentration criterion | **Extended (2026-07-28):** buyer-*sector* concentration added — Layers 1+3 are one correlated bet on North Brooklyn retail leasing (private doc). |

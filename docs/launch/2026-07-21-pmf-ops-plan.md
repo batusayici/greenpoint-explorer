@@ -50,7 +50,7 @@ Launch-readiness status (2026-07-26): **error monitoring shipped** — PostHog e
 - Retention sensor: privacy-light `return_visit` event (localStorage first-seen + visit count; no fingerprinting). *(Updated 2026-07-26: pulled forward and shipped as growth-engine R0 — `src/demand-test/returnVisit.js`, `visitCount` + `weekIndex` properties, live in production.)*
 - Iterate from observed pull; features ranked by signal.
 - **Pre-registered validation gates** *(re-registered 2026-07-28, before launch data existed — the prior two-sided bar conflated demand evidence with commercial permission; four gates in `docs/growth/business-model.md` §4)*:
-  - **Demand:** ≥30 unique locals at ≥2 visits/week, 3 consecutive weeks, majority arriving without a fresh invite push. **~Sep 15 is a provisional readout** (an Aug 1–8 launch yields only ~5–6 weeks); the firm verdict follows two mature 4-week cohorts, ~late Oct.
+  - **Demand:** ≥30 unique locals returning in **≥3 of any 4 consecutive weeks**, majority arriving without a fresh invite push *(bar re-formed pre-data 2026-07-28: the prior ≥2-visits/week measure demanded a daily habit from a weekly-refresh product; intensity stays a supporting signal)*. **~Sep 15 is a provisional readout** (an Aug 1–8 launch yields only ~5–6 weeks); the firm verdict follows two mature 4-week cohorts, ~late Oct. No gate is read on raw Dec–Feb numbers (seasonality — business-model.md §4).
   - **Distribution:** ≥2 channels repeatedly producing activated users without founder-intensive outreach.
   - **Supply:** ≥5 businesses/orgs proactively submitted or asked in; ≥1 recurring submitter.
   - **Commercial:** 3 paid pilots or signed LOIs from a defined buyer profile — resident counts never open this gate.

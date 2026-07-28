@@ -34,14 +34,29 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
 ```
 
 - **Compounding metric:** weekly returning locals (WRL) — the same number as the
-  demand-gate bar (≥30 at ≥2 visits/week, 3 consecutive weeks). *(Re-registered
-  2026-07-28, pre-launch: ~Sep 15 is a provisional readout — with an Aug 1–8
-  launch it holds only ~5–6 weeks of evidence; the firmer verdict follows two
-  mature 4-week cohorts, ~late Oct. Demand is gate 1 of four — distribution,
-  supply, and commercial gates are in business-model.md §4; passing demand alone
-  never unlocks paid surfaces… the commercial gate (3 paid pilots/LOIs) does.
-  Metric roles: retained = 2-of-4-weeks (R0's definition, feeds WRL); the bar
-  above is the gate; organic>50% stays a lens, not a second bar.)*
+  demand-gate bar: **≥30 unique locals returning in ≥3 of any 4 consecutive
+  weeks, majority unprompted.** *(Re-registered 2026-07-28, pre-launch, twice:
+  first the calendar — ~Sep 15 is a provisional readout; with an Aug 1–8 launch
+  it holds only ~5–6 weeks of evidence; the firmer verdict follows two mature
+  4-week cohorts, ~late Oct. Then the bar itself — the prior ≥2-visits/week
+  measure demanded a daily habit from a weekly-refresh product whose own R1
+  digest drives one open per week by design; visit intensity stays tracked as a
+  supporting signal. Demand is gate 1 of four — distribution, supply, and
+  commercial gates are in business-model.md §4; passing demand alone never
+  unlocks paid surfaces… the commercial gate (3 paid pilots/LOIs) does. Metric
+  roles: retained = 2-of-4-weeks (R0's definition, feeds WRL); the bar above is
+  the gate; organic>50% stays a lens, not a second bar. Seasonality rule: no
+  gate read and no renewal priced on raw Dec–Feb numbers — business-model.md
+  §4.)*
+- **Feed density (added 2026-07-28 — the leading indicator of the leading
+  indicator):** verified, dated, still-upcoming items in the next 7 days, plus
+  the share of the roster that yielded ≥1 item this week. It moves before WRL
+  does, it is the number a pilot renewal actually rests on, it separates January
+  from product failure, and it catches silent source decay and ingest outages
+  (the 7/27–28 outage would have tripped it in a day). Pulled Monday from
+  `cards.json` + `ingest-ledger.json`; one line in every Tuesday readout.
+  **Baseline (last week of July 2026): 95 cards · 38 dated in-window · 48
+  sources.**
 - **Confirming signal (added 2026-07-27):** PMF in this era is binary — a
   word-of-mouth machine exists or it doesn't, and the benchmark is **organic
   >50% of acquisition**. Instrumentable post-launch: share of new sessions with
@@ -254,6 +269,10 @@ Embedded in the existing weekly loop — no new ceremony:
 1. Every experiment ships with: hypothesis → smallest test → one metric →
    decision rule → **kill criteria written before launch**. No kill criteria, no
    launch.
+2a. **Seasonal confound (standing note, 2026-07-28):** September reads ride the
+   citywide autumn rebound and pre/post cannot control for it — early-fall lifts
+   are labeled "confounded with season" in readouts, and no experiment
+   graduates on a Sep–Oct read alone.
 2. **Pre/post and small-n qualitative only.** Five resident conversations are a
    valid instrument. No A/B infrastructure, no significance theater — at our
    traffic it's noise cosplay.
@@ -318,6 +337,15 @@ on any truth-rule breach, untagged link, or misread — one strike, one rung dow
 **What stays human regardless of calibration:** sends, deploys/merges, taste
 gates, kill/graduate/PMF verdicts, and spending money. These aren't
 trust-gated — they're the definition of supervision.
+
+**Two standing V3 promotions (Batu, 2026-07-28 — the only merge exceptions):**
+a **zero-add ingest run** (no new/changed cards; nothing to review) and an
+**expiry-only run** (deletions already pre-approved 2026-07-16) may auto-merge
+with a notification. Rationale: review minutes, not tokens, are the scarce
+resource — a nothing-to-review PR still costs a gated read. Any run containing
+an add, edit, or first-time source stays human-gated; daily cadence itself is
+unchanged. Implementation note: wiring lives in the ingest skill; until wired,
+the rule stands as pre-authorization.
 
 ---
 

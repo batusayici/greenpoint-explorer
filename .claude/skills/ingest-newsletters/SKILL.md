@@ -91,6 +91,7 @@ Present one compact diff: **adds** (id, title, category, when, source), **update
 ## Cadence
 
 - **Daily thin run** (scheduled): scripts + changed-source extraction + Gmail quick pass. Most days this is a no-op costing cents; late announcers (Flower Cat, Trash Club's weekly spot) get caught same-day.
+- **Auto-merge promotions (Batu, 2026-07-28 — growth-engine §7):** a run whose PR is **zero-add** (no new or changed cards) or **expiry-only** (deletions, pre-approved 2026-07-16) may merge itself with a notification instead of waiting for review. Anything containing an add, edit, or first-time source stays human-gated. State the classification explicitly in the PR body ("zero-add — auto-merged per 2026-07-28 promotion") so the audit trail shows why no human reviewed it.
 - **Monday full run**: everything, incl. monthly discovery sweep on the first Monday.
 - **Wednesday Greenpointers pull** (scheduled, Wed 1pm): the roundup publishes Wednesdays; a 5-day lag to Monday means readers see it there first. If the roundup isn't live yet at run time, say so — Batu re-triggers later.
 - The Thursday coverage scan is retired once the daily loop is live (its gap-catching is what the fetch-diff does every day); a monthly audit-style scan can replace it if gaps reappear. The former Sunday 6pm scan stays retired.

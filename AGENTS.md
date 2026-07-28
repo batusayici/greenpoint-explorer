@@ -23,6 +23,7 @@ Weekly rhythm (ops plan `docs/launch/2026-07-21-pmf-ops-plan.md`): **Mon** `/ing
 - **Nothing invented, everything sourced.** Events, hours, deals, business status come from named sources (newsletters, org calendars, publishers) or don't ship. Cards are schema-valid (`cardSchema.js`), geocoded, and pass the review diff before deploy.
 - **Coverage is never for sale, and no payer influences it** (`docs/growth/business-model.md`): every verified business gets on the map free; paid placement is labeled enhancement only, never admission, and never on news or community surfaces.
 - Expired content disappears at render time (`eventWindow.js`); deals require `endsAt`.
+- **Correction SLA (2026-07-28):** a disputed card is acknowledged **<24h**; **unpublish first, verify second** (deletion is pre-approved 2026-07-16 — unpublishing a disputed card never waits for a review cycle); the verified correction ships with a note on the card; every dispute is logged in `ingest-ledger.json`. Entry point: the per-card "Something wrong?" link (prefilled card id → feedback form). The AEO surface re-renders on the corrective deploy — a wrong fact must never outlive a day in the crawled copy on our side.
 - These rules are also the answer-engine citation-trust moat — they stay non-negotiable.
 
 ## Engineering Rules
