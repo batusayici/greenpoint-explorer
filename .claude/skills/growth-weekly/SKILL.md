@@ -160,3 +160,9 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   whether `$HTTPS_PROXY/__agentproxy/status` shows an egress denial for
   `us.posthog.com`. The two failures have different fixes, and this skill
   previously recorded only one of them.
+- **(proposed 2026-07-28, cycle 1 — operator-derived, pending Batu; drop this
+  line if unwanted)** Split every metric by `$host` before reporting it.
+  `localhost:*` and LAN dev servers land in the same PostHog project as
+  production and were 34% of all events on 2026-07-28. Report production only
+  (`$host = 'greenpoint-explorer.vercel.app'`, becoming `greenpoint.life` at
+  cutover), and say so in the readout.
