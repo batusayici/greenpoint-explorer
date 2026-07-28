@@ -94,7 +94,7 @@
     {
       "id": "word-bookstore",
       "name": "WORD Bookstore",
-      "url": "https://www.wordbookstores.com/events",
+      "url": "https://wordbookstores.com/events",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
@@ -283,7 +283,7 @@
     {
       "id": "brooklyn-youth-ballet",
       "name": "Brooklyn Youth Ballet",
-      "url": "https://www.bkyouthballet.com/calendar/",
+      "url": "https://bkyouthballet.com/calendar/",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
@@ -346,7 +346,7 @@
     {
       "id": "go-green-bk",
       "name": "Go Green Brooklyn",
-      "url": "https://www.gogreenbk.org",
+      "url": "https://gogreenbk.org",
       "group": "institution",
       "cadence": "weekly",
       "fetch": "auto",
