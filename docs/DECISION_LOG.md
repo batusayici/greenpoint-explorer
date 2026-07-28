@@ -19,6 +19,8 @@ Verified: 424/424 tests; local `chromium.launch()` + `page.goto()` succeeds agai
 
 **Watchout for next time:** if a scheduled run ever goes fully expiry-only again with zero fetch errors reported per-source (i.e. everything just silently unreachable rather than individual site 403s), check the cloud environment's network-access preset (Trusted vs Custom) before re-diagnosing the repo.
 
+**Addendum (same day):** the Custom list was built from the *ingest* roster, so it omitted `us.posthog.com` — the Growth Operator's only sensor host (`scripts/posthog-pull.sh`). That routine is created-disabled and would have failed its first enabled run the same silent way. Batu added the host on 2026-07-28. **General rule: the Custom list is per-host, not per-repo — every cloud routine's outbound hosts must be on it, and a new routine is a reason to re-check the list.**
+
 Owner: Batu.
 
 ## 2026-07-27 — De-July shipped (launch item L6); the July-named internals stay

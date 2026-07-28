@@ -244,12 +244,12 @@ wholesale.
 
 - **Sensor:** PostHog pull (`./scripts/posthog-pull.sh`), Vercel Web Analytics,
   the R0 `return_visit` baseline, the submission/ask log.
-  - **Launch prerequisite (2026-07-28):** the operator is a *cloud* routine, and
-    its only sensor host is `us.posthog.com`. The cloud environment's
-    network-access list is currently **Custom** with the *ingest* roster only
-    (roster hosts + nominatim + cdn.playwright.dev — DECISION_LOG 2026-07-28).
-    Add `us.posthog.com` before enabling the Tuesday routine, or it fails the
-    same silent way the 7/27–7/28 ingest runs did: no data, no per-host error.
+  - **Cloud egress (2026-07-28):** the operator is a *cloud* routine and its only
+    sensor host is `us.posthog.com` — which the cloud network-access list didn't
+    cover, since that list was built for the ingest roster (DECISION_LOG
+    2026-07-28). **Batu added it the same day.** First enabled run still confirms
+    the pull returned real numbers: a blocked host fails silently — no data, no
+    per-host error — exactly how the 7/27–7/28 ingest outage presented.
 - **Policy:** the autonomy ladder below + kit rules — every link copied from
   `docs/launch/channel-links.md`, truth rules, max 3 live experiments.
 - **Tool:** deterministic scripts first; model judgment only where a read or a
