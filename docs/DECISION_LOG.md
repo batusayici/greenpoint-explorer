@@ -4,6 +4,23 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-28 — Audience → CTA map adopted: one CTA per audience, digest is the resident CTA
+
+Decision (Batu). Derived from the business model and growth engine rather than from what the product currently does: **every audience serves exactly one loop, and its one CTA is the action that turns a visit into fuel for that loop** — not the most useful thing that audience can do. Adopted as **`docs/growth/growth-engine.md` §0**, the trace every experiment and launch item routes back to; a build that serves no audience's one CTA is not a loop-edge repair.
+
+1. **Resident → "Get the week, every Monday" (the digest).** Chosen by Batu over share: re-entry is Loop A's weakest edge and weekly returning locals is the compounding metric — nothing else in the product creates a reason to come back. The ask is a **ladder with one rung visible at a time**: first visit asks nothing (one-egg rule; `postValue.js` already gates on 2 `card_open` / 1 `action_tap`) → activated gets the digest → returning/habitual gets share, which is where the organic >50% word-of-mouth signal reads. Consequence: the existing email signup needs a stated weekly contract ("the Monday list") — copy, not build, and it is what converts the gate into R1's re-entry promise.
+2. **Business/venue owner → "Add your event — free, verified, on the map."** Persistent but low-salience: businesses arrive with intent and need to be findable, not sold; the entry also signals completeness to residents. Unbuilt — this is **L5**, the last build before cutover.
+3. **Institutional buyer → "Request the corridor brief," off-product.** No buyer CTA on the resident surface, ever — business-model.md §2 rules 4 and 6 make it a non-negotiable, not a preference. The buyer's path is a separate trust surface (published coverage standards, verified-through, unique-coverage count). **The app is the proof, not the pitch** — consistent with the brief-first pilot, whose headline deliverable is audience-independent by design.
+4. **Answer engines/crawlers are an audience, not infrastructure.** Their CTA is *cite this page*: a dated, attributable, canonical fact block. Loop C's edge is already repaired (3.6); §0 states what the audience is for.
+5. **Org leaders are not a distinct audience (Batu).** Treated as residents handed a tagged link (Q1/Q2 seeding). An org-scoped surface would serve their redistribution role but is not an immediate priority and earns no freeze exception.
+6. **Actions deliberately not offered**, recorded so they stop being re-proposed: accounts/login (breaks the one egg and the cookieless stance) · resident payment or tip jar · "claim your listing" (retired; reads as coverage-for-sale) · any paid-placement surface before the demand gate · sponsorship on news or civic cards. The per-card correction link (L10) stays available to everyone — the zero-friction supply entry that works before L5 exists.
+
+Gap surfaced and left open: the **published coverage standards page** (business-model.md §4) does not exist and pays into two loops — buyer trust and answer-engine trust. Not scheduled; post-launch candidate under the freeze.
+
+`business-model.md` needs no amendment — §2 rules 4 and 6 already bind rule 3 above.
+
+Owner: Batu.
+
 ## 2026-07-28 — Business model re-evaluated blank-slate: neighborhood economic utility, three revenue layers; claim model retired
 
 Decision (Batu). The claim model — storefront signs default to category labels, businesses pay to attach real branding — belonged to the parked 3D concept and lost its premise once the product became automatically-sourced verified events from verified local businesses. Re-evaluated from a blank slate against Batu's evolving vision (economic opportunity at hyperlocal scale; demand = things to do, supply = events/deals/memberships; testing news + civic; longer-term curiosities in local jobs/gigs and no-storefront services; scale path Greenpoint → Williamsburg → North Brooklyn). Full model of record: **`docs/growth/business-model.md`**.

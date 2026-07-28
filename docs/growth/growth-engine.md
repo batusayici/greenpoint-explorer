@@ -19,6 +19,75 @@ is retention evidence, not distribution.
 
 ---
 
+## 0. Audience → loop → the one CTA (added 2026-07-28)
+
+Every audience serves exactly one loop. The **one CTA** is therefore not the most
+useful thing that audience can do — it is the single action that turns their
+visit into fuel for their loop. Everything else they can do is support. This
+section is the trace every experiment (§2–§4) and every launch item should route
+back to; if a proposed build serves no audience's one CTA, it isn't a loop-edge
+repair and doesn't ship.
+
+| Audience | Loop | Why they opened it | Available actions | **The one CTA** |
+|---|---|---|---|---|
+| **Resident** *(parents = a message, not an audience)* | A | "What's on near me this week?" | Today / near-me / free lenses · open card · directions · add to calendar · share · correction link | **"Get the week, every Monday."** |
+| **Business / venue owner** | B | "Am I on this? Is my listing right?" | Find themselves · correct a card · submit an event/deal · (later) see their card's engagement | **"Add your event — free, verified, on the map."** |
+| **Institutional buyer** (owner, property manager, credit union, broker) | Commercial gate (business-model.md §4) | "Is this real, complete, current?" | Published coverage standards · verified-through date · unique-coverage count | **"Request the corridor brief"** — *off-product* (see rule 3) |
+| **Answer engines & crawlers** | C | Answer "what's happening in Greenpoint" | `/e/<slug>` · JSON-LD · sitemap / RSS / ICS / llms.txt | **Cite this page** — a dated, attributable, canonical fact block |
+
+**Rule 1 — the resident ask is a ladder, and only one rung is ever visible.**
+The one-egg rule (§3) means the first visit asks for nothing. The ask arrives
+after demonstrated value and changes with the relationship:
+
+1. **First visit → no ask.** Success is one high-intent act (the activation
+   proxy, §1). `postValue.js` already enforces the gate — 2 `card_open` or 1
+   `action_tap` before any prompt fires.
+2. **Activated → the Monday digest.** *(Batu, 2026-07-28: this is the resident
+   CTA of record.)* Declared over share because re-entry is Loop A's weakest
+   edge and weekly returning locals is the compounding metric — nothing else in
+   the product creates a reason to come back. This is R1's demand-side surface.
+3. **Returning / habitual → share.** The only cohort with the credibility to
+   refer, and the organic >50% word-of-mouth signal (§1) reads off it. Second
+   rung, never a competing ask.
+
+**Rule 2 — the supply CTA is persistent but low-salience.** Businesses arrive
+with intent; they need to be findable, not sold. A pinned "add your event
+(free)" entry also does quiet work on residents — it signals completeness and
+recruits word-of-mouth toward the supply side. It must never compete with the
+one egg.
+
+**Rule 3 — the buyer gets no CTA on the resident surface.** Business-model.md §2
+rules 4 and 6 (editorial never monetizes; no payer influences coverage) mean
+commerce never appears in the feed. The buyer's path is a separate trust
+surface — published coverage standards, verified-through, unique-coverage
+count — with the ask pointing off-product to the brief. **The app is the proof,
+not the pitch**, which is consistent with the brief-first pilot: its headline
+deliverable is audience-independent by design (business-model.md §3).
+
+**Rule 4 — org leaders are not a distinct audience.** *(Batu, 2026-07-28.)*
+They are residents handed a tagged link (Q1/Q2 seeding, §4). Their
+redistribution role would justify an org-scoped surface; it is not an immediate
+priority and does not earn a freeze exception.
+
+**Available to everyone, always:** the per-card correction link (L10). It is the
+zero-friction supply entry that works before a submission form exists, and the
+visible form of the trust asset.
+
+**Actions deliberately not offered:** accounts or login (breaks the one egg and
+the cookieless stance) · resident payment or tip jar (§2 non-negotiable 1) ·
+"claim your listing" (claim model retired; it reads as coverage-for-sale) ·
+any paid-placement surface before the demand gate · sponsorship affordance on
+news or civic cards, ever.
+
+**Gaps against this map** (status 2026-07-28): business CTA = **L5**, the last
+build before cutover · the digest CTA exists as a signup, not a stated weekly
+contract — making it *"the Monday list"* is copy, not build, and it is what
+converts the existing gate into R1's re-entry promise · the published coverage
+standards page (business-model.md §4) does not exist and pays into two loops
+(buyer trust + answer-engine trust signal).
+
+---
+
 ## 1. Growth model — the three loops
 
 Funnels spend; loops compound. Greenpoint Life has three candidate loops. Each is
