@@ -20,18 +20,20 @@ outbound message; truth rules and II-C palette are non-negotiable.
 | L7 | Domain cutover mechanics | ⬜ open | See §2 |
 | L8 | Growth Operator live | ⬜ this pass | `/growth-weekly` skill + Tuesday routine (§4) |
 | L9 | R0 retention baseline | ✅ collecting since 2026-07-26 | — |
-| L10 | Per-card correction link + SLA (pressure-test fatal #1) | ⬜ approved 2026-07-28 | "Something wrong?" per card → feedback form prefilled with card id; SLA now in AGENTS.md (ack <24h, unpublish-first). Error-monitoring-class freeze exception |
-| L11 | Feed-freshness alarm + verified-through line (pressure-test fatal #2) | ⬜ approved 2026-07-28 | `scripts/check-freshness.mjs` (ledger `lastRunAt` <48h + dated-card floor, alert on failure) + "verified through <date>" in the banner slot. The 7/27–28 outage was invisible without it |
+| L10 | Per-card correction link + SLA (pressure-test fatal #1) | ✅ shipped 2026-07-28 | "Something wrong?" per card (`correctionHref`, form prefilled with card id) live; SLA in AGENTS.md (ack <24h, unpublish-first). Needs `FEEDBACK_FORM_URL` set (rides L5's Tally setup) |
+| L11 | Feed-freshness alarm + verified-through line (pressure-test fatal #2) | ✅ shipped 2026-07-28 | `check-freshness.mjs` in the build (`--stamp` mode, never blocks a corrective deploy) + banner "verified through <date>" degradation live. Remaining: wire the ops-mode check (exit-1 on stale/thin) into a scheduled runner — rides the growth-weekly Monday pull (L8) |
 
-L5, L10 and L11 are the builds left before cutover (L6 shipped 2026-07-27). Feature freeze holds
-(2026-07-26: no new features before launch; the community-alert banner was the one scoped exception,
-and L10/L11 are error-monitoring-class launch-readiness items granted the same class of exception
-2026-07-28 — they protect the "verified" promise, they don't add features).
+**L5 is the last build before cutover** (L6 shipped 2026-07-27; L10/L11 shipped 2026-07-28). Feature
+freeze holds (2026-07-26: no new features before launch; the community-alert banner was the one scoped
+exception, and L10/L11 were error-monitoring-class launch-readiness items granted the same class of
+exception 2026-07-28 — they protect the "verified" promise, they don't add features).
 
 ## 2. Cutover sequence (T-0 — the launch moment)
 
-1. **Pre-flight (T-1):** L1–L6 all green; Monday ingest merged so the feed is
-   fresh on launch day; `npm test` + `npm run build` green on main.
+1. **Pre-flight (T-1):** every L-item green (L1–L11; L5 is the open one);
+   Monday ingest merged so the feed is fresh on launch day — and the
+   verified-through banner (L11) confirms it; `npm test` + `npm run build`
+   green on main.
 2. **Wire the domain:** add greenpoint.life to the Vercel project (apex + www);
    keep greenpoint-explorer.vercel.app serving (it's the rollback and the live
    invite-link target — `/july.html` redirect must keep working).
@@ -65,6 +67,10 @@ Echo-chamber order — saturate small trust networks before broadcast
   window cards (`src=qr`) offered first to businesses already on the map.
 - **Held deliberately:** Greenpointers pitch (`src=gpters`) and further Shop
   Small amplification — a later, bigger card to play once retention data exists.
+  When played, the Greenpointers offer is the **"on the map this week" embed
+  swap** (traffic + content to them, distribution to us — business-model.md §4,
+  hypothesis H4): we approach as structurally non-competing (they curate, we
+  index), never as a rival pitching coverage.
 
 ## 4. Weeks 1–2 — the loop lights up
 
@@ -78,7 +84,10 @@ Echo-chamber order — saturate small trust networks before broadcast
 - **Metrics watched weekly:** WRL via R0 (`return_visit`) · activation proxy
   (≥2 `card_open` + 1 high-intent act, first session) · per-`src` sessions and
   week-2 return · organic share of new sessions (the >50% WoM signal, monthly
-  read) · supply-side submissions/asks (L5).
+  read) · supply-side submissions/asks (L5) · **feed density** (dated in-window
+  items + roster yield share — the supply-side leading indicator, growth-engine
+  §1) · **unique-coverage count** (items no other Greenpoint source carried —
+  the differentiation proof, growth-engine §1).
 - **Kill rules are pre-registered** in growth-engine §2–4; the operator computes
   the reads, Batu owns every verdict.
 

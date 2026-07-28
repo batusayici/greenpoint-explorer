@@ -4,7 +4,8 @@ Grounded in Elena Verna's frameworks (growth loops / Racecar, PMF-first sequenci
 low-traffic experimentation rules, owned-and-earned-only channels, opinionated
 defaults — sources at bottom), applied to what we actually have: the PMF ops plan
 (`docs/launch/2026-07-21-pmf-ops-plan.md`), the launch runbook
-(`docs/launch/2026-07-27-launch-plan.md`) and its pre-registered PMF bar,
+(`docs/launch/2026-07-27-launch-plan.md`) and the pre-registered validation
+gates (four, business-model.md §4),
 the 9-event PostHog taxonomy (`src/demand-test/trackEvents.js`), and the Michael /
 Laura & Edmond interviews. This doc is the growth strategy of record; decisions it
 produces land in `DECISION_LOG.md`. Its companion is **`business-model.md`** (who
@@ -87,7 +88,7 @@ Coverage puts businesses/orgs on the map (verified, sourced, free)
 ```
 
 - **Compounding metric:** proactive supply actors per month (submissions +
-  inbound asks; PMF bar: ≥5, ≥1 recurring).
+  inbound asks; supply gate: ≥5, ≥1 recurring).
 - **Weakest edge — and the only one still unrepaired:** businesses have *no path
   in*. The submission route (3.3 = launch item **L5**) is unbuilt, so this loop
   turns only when Batu hand-carries it. L5 is the last build before cutover.
@@ -163,7 +164,10 @@ evidence.
   honest habit is "check the week." (Cadence and product are aligned — rare and
   worth protecting.)
 - **Retained user (committed definition):** returns in **≥2 of any 4 consecutive
-  weeks** after first visit. Stricter than the funnel needs, matches the PMF bar.
+  weeks** after first visit — the R0 sensor definition that feeds WRL. The
+  demand gate itself requires the stricter **≥3 of any 4 weeks** (re-registered
+  2026-07-28); retained ≠ gate-passing, by design — the sensor casts wider than
+  the bar.
 - **Evidence for:** wave-1 testers articulated weekly-check intent unprompted;
   Laura/Edmond asked for save/star + time filters (return-visit features);
   Michael's frame implies recurring use.
@@ -177,7 +181,7 @@ evidence.
 
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
-| R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the PMF bar itself. |
+| R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the demand gate itself. |
 | R1 | **Weekly digest to postvalue signups.** Mon post-ingest, "this week in Greenpoint," II-C, links carry `?src=digest`. AI drafts; Batu sends. | Plain email to existing signups — no automation build. | `src=digest` return sessions vs. signup count, pre/post over 3 weeks. Kill if <30% of recipients ever click by week 3. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
 | R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals. |
@@ -252,23 +256,32 @@ holds only the growth-side interface; that doc holds the architecture, pricing,
 and kill criteria.
 
 Verna's law is PMF → data → growth; monetizing before retention proof optimizes a
-leaky bucket. The gate is **reinterpreted, not relaxed: selling starts before the
-PMF verdict, shipping any paid surface waits until after it.** Anchor
-conversations cost nothing and take months; a live paid surface pre-verdict would
-be optimizing the leaky bucket.
+leaky bucket. The gate is **reinterpreted, not relaxed: pilot conversations may
+start before the gates read; shipping any paid surface waits for the demand
+gate.** Conversations cost nothing and take months; a live paid surface
+pre-verdict would be optimizing the leaky bucket.
+
+**Status (Batu, 2026-07-28): all monetization decisions are parked** — sole
+priority is launch → learn → PMF. The design below stands; nothing in it is
+raised for decision or action until demand evidence exists.
 
 - **The model is Verna-shaped:** free product as the growth strategy (Loops A/C),
   revenue on the supply/institution side only after demand is proven to them
-  (Loop B). Three layers: Founding Partners → self-serve business layer →
-  spatial intelligence. **Residents never pay, and coverage is never for sale.**
+  (Loop B). Layers in order: **Founding Pilots → Founding Partners → self-serve
+  business layer → spatial intelligence**, each entering through its cheapest
+  validated form — the pilot's headline deliverable is the audience-independent
+  corridor brief, not presence. **Residents never pay, and coverage is never for
+  sale.**
 - **The growth engine is the revenue plan's leading indicator.** Weekly returning
   locals prices Layer 1 renewals and all of Layer 2 — this is the tightest
   coupling between the two docs.
-- **Distribution is priced into every deal** — no anchor signs without a
-  distribution deliverable. That is a growth channel the engine gets for free,
-  and it belongs in the acquisition picture alongside §4's earned channels.
+- **Distribution is priced into every deal** — no pilot signs without a
+  quantified distribution deliverable, framed as a stated fee offset the buyer
+  earns, never an extracted obligation. That is a growth channel the engine gets
+  for free, and it belongs in the acquisition picture alongside §4's earned
+  channels.
 - **Free pre-work that is allowed now:** keep logging every business ask and
-  submission verbatim (supply-side PMF evidence *and* pricing evidence), and let
+  submission verbatim (supply-gate evidence *and* pricing evidence), and let
   Q1 note-sends double as demand probes — zero build.
 
 ---
@@ -372,13 +385,13 @@ the rule stands as pre-authorization.
 
 | Stage | Window | What's lit | What stays dark |
 |---|---|---|---|
-| 0 — Readiness *(was "Evidence"; checkpoint voided 2026-07-26)* | now → cutover (~Aug 1–8) | R0 baseline collecting · loop-edge repairs (3.1 ✅ · 3.6 ✅ · 3.3 = L5, the last build) · Founding Partner one-pager + logging business asks | All acquisition; every paid surface |
-| 1 — Loops | launch → ~Sep 15 (provisional readout) → ~late Oct (firm verdict, 2 mature cohorts) | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence · **pilot conversations open** (selling only — nothing ships) · proof-of-value emails once engagement exists | Every paid surface, new content layers; R2 waits for a returner population |
+| 0 — Readiness *(was "Evidence"; checkpoint voided 2026-07-26)* | now → cutover (~Aug 1–8) | R0 baseline collecting · loop-edge repairs (3.1 ✅ · 3.6 ✅ · 3.3 = L5, the last build) · logging business asks verbatim (free pre-work) | All acquisition; every paid surface; all monetization decisions (parked 2026-07-28) |
+| 1 — Loops | launch → ~Sep 15 (provisional readout) → ~late Oct (firm verdict, 2 mature cohorts) | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence · proof-of-value emails once engagement clears the signal floor · *pilot conversations permitted by design — timing is Batu's, parked until demand evidence* | Every paid surface, new content layers; R2 waits for a returner population |
 | 2 — Compound | gates passing (business-model.md §4: demand → paid surfaces; commercial = 3 paid pilots/LOIs) | **Paid surfaces ship** (§5 sequencing) · adjacent audiences · new loops | Geographic expansion until the repeatability gate (business-model.md §5) is met |
 
 **The one thing to do first: L5** — the business submission path. It is the last
-unrepaired loop edge (B), the last build before cutover, and the only PMF bar
-we currently have no instrument for: the supply side (≥5 proactive actors) can't
+unrepaired loop edge (B), the last build before cutover, and the only validation
+gate we currently have no instrument for: supply (≥5 proactive actors) can't
 be measured while the only way in is Batu's inbox. *(R0, the previous "one
 thing," shipped 2026-07-26. A1's funnel read follows in the first post-launch
 readouts.)*

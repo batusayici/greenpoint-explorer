@@ -43,7 +43,7 @@ Marketing (Claude drafts, Batu sends): Reddit + local-group posts · print-ready
 
 Launch-readiness status (2026-07-26): **error monitoring shipped** — PostHog exception autocapture (`capture_exceptions` in `posthogTransport.js`), verified end-to-end ($exception events confirmed server-side by name; note they bypass the `trackEvents` seam so they carry `$current_url` but no `src`). Batu action: enable error-tracking alert emails in the PostHog UI (needs account access, not doable via the read key).
 
-## Phase 4 — Weekly PMF loop (Aug → ~mid-Sep)
+## Phase 4 — Weekly PMF loop (Aug → ~late Oct: Sep 15 provisional readout, firm verdict after two mature 4-week cohorts)
 
 *(2026-07-25: the weekly loop's experiment content and rules are specified in `docs/growth/growth-engine.md` §6.)*
 
@@ -54,4 +54,4 @@ Launch-readiness status (2026-07-26): **error monitoring shipped** — PostHog e
   - **Distribution:** ≥2 channels repeatedly producing activated users without founder-intensive outreach.
   - **Supply:** ≥5 businesses/orgs proactively submitted or asked in; ≥1 recurring submitter.
   - **Commercial:** 3 paid pilots or signed LOIs from a defined buyer profile — resident counts never open this gate.
-- PMF verdict unlocks the paid surfaces in `docs/growth/business-model.md` (2026-07-28): Founding Partners → self-serve business layer → spatial intelligence. **Selling starts before the verdict; shipping any paid surface waits until after it.** *(Supersedes "sponsored maps first; never charge small businesses first." 2026-07-22: Track R / the 3D explorer is parked indefinitely — reopening it is a separate, explicit decision by Batu, not an automatic unlock.)*
+- The gates unlock the paid surfaces in `docs/growth/business-model.md` (2026-07-28): **Founding Pilots → Founding Partners → self-serve business layer → spatial intelligence**, each entering through its cheapest validated form (the pilot's headline is the audience-independent corridor brief). **Pilot conversations may start before the gates read; no paid surface ships until the demand gate passes.** All monetization decisions are **parked (Batu, 2026-07-28)** — sole priority is launch → learn → PMF; nothing here is raised for decision until demand evidence exists. *(Supersedes "sponsored maps first; never charge small businesses first." 2026-07-22: Track R / the 3D explorer is parked indefinitely — reopening it is a separate, explicit decision by Batu, not an automatic unlock.)*
