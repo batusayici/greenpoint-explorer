@@ -39,3 +39,6 @@ tests/.diffs/
 # runs can diff from a fresh checkout
 .ingest-cache/*
 !.ingest-cache/*.ingested.txt
+
+# Private strategy docs — money layer, never committed (2026-07-28)
+docs/private/

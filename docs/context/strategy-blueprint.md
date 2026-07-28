@@ -1,5 +1,11 @@
 # Greenpoint Explorer — Strategy Summary
 
+> **PRE-PIVOT CONTEXT — not current authority.** Written for the parked 3D isometric
+> explorer. Current authority: `docs/PLAN.md`, `docs/growth/growth-engine.md`
+> (growth), `docs/growth/business-model.md` (business model). The "Verified Local
+> Exploration" north star below is superseded by the growth engine's three loop
+> metrics. Kept for the durable platform ideas; deferred behind utility PMF.
+
 ## Thesis
 
 Greenpoint Explorer is a neighborhood exploration platform.

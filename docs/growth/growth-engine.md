@@ -7,7 +7,9 @@ defaults — sources at bottom), applied to what we actually have: the PMF ops p
 (`docs/launch/2026-07-27-launch-plan.md`) and its pre-registered PMF bar,
 the 9-event PostHog taxonomy (`src/demand-test/trackEvents.js`), and the Michael /
 Laura & Edmond interviews. This doc is the growth strategy of record; decisions it
-produces land in `DECISION_LOG.md`. **Everything here gates on launch** (= the
+produces land in `DECISION_LOG.md`. Its companion is **`business-model.md`** (who
+pays, for what, when) — this doc grows the audience, that one converts it, and
+§5 is the seam between them. **Everything here gates on launch** (= the
 greenpoint.life cutover); the Jul 29 checkpoint was voided 2026-07-26.
 
 **Operating stance (Verna, applied):** pre-PMF, the founder is the growth team.
@@ -44,10 +46,13 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   edge was repaired 2026-07-26 (3.1: OG tags + crawlable `/e/<slug>`); whether
   word-of-mouth actually travels is unread until post-launch traffic.
 
-### Loop B — Supply/claim loop (supply side; future monetization substrate)
+### Loop B — Supply loop (supply side; the monetization substrate)
+
+*(Renamed from "supply/claim loop" 2026-07-28 — the claim model is retired; see
+`business-model.md`. Metric and weakest edge unchanged.)*
 
 ```
-Coverage puts businesses/orgs on the map (category labels, unclaimed)
+Coverage puts businesses/orgs on the map (verified, sourced, free)
 → they see resident traffic & asks → they submit events / ask in
 → richer verified cards → more resident value → more supply attention → (top)
 ```
@@ -184,20 +189,31 @@ seeding order in the launch runbook §3; kit rules: Batu sends every message):**
 
 ---
 
-## 5. Monetization — sequenced, not started
+## 5. Monetization — sell before, ship after
+
+Full model of record: **`business-model.md`** (adopted 2026-07-28). This section
+holds only the growth-side interface; that doc holds the architecture, pricing,
+and kill criteria.
 
 Verna's law is PMF → data → growth; monetizing before retention proof optimizes a
-leaky bucket. **Nothing monetizes until the PMF verdict (~Sep 15 bar), full
-stop** — this restates the existing gate, now with the growth argument attached.
+leaky bucket. The gate is **reinterpreted, not relaxed: selling starts before the
+PMF verdict, shipping any paid surface waits until after it.** Anchor
+conversations cost nothing and take months; a live paid surface pre-verdict would
+be optimizing the leaky bucket.
 
-- The **claim model is already Verna-shaped**: free product as the growth
-  strategy (Loop A/C), monetization on the supply side only after demand is
-  proven to them (Loop B). Sequencing stands as decided: sponsored campaign maps
-  → partner tooling → evidence-gated featured cards; never charge small
-  businesses first.
+- **The model is Verna-shaped:** free product as the growth strategy (Loops A/C),
+  revenue on the supply/institution side only after demand is proven to them
+  (Loop B). Three layers: Founding Partners → self-serve business layer →
+  spatial intelligence. **Residents never pay, and coverage is never for sale.**
+- **The growth engine is the revenue plan's leading indicator.** Weekly returning
+  locals prices Layer 1 renewals and all of Layer 2 — this is the tightest
+  coupling between the two docs.
+- **Distribution is priced into every deal** — no anchor signs without a
+  distribution deliverable. That is a growth channel the engine gets for free,
+  and it belongs in the acquisition picture alongside §4's earned channels.
 - **Free pre-work that is allowed now:** keep logging every business ask and
-  submission verbatim (they're supply-side PMF evidence *and* future pricing
-  evidence), and let Q1 note-sends double as claim-demand probes — zero build.
+  submission verbatim (supply-side PMF evidence *and* pricing evidence), and let
+  Q1 note-sends double as demand probes — zero build.
 
 ---
 
@@ -287,9 +303,9 @@ trust-gated — they're the definition of supervision.
 
 | Stage | Window | What's lit | What stays dark |
 |---|---|---|---|
-| 0 — Readiness *(was "Evidence"; checkpoint voided 2026-07-26)* | now → cutover (~Aug 1–8) | R0 baseline collecting · loop-edge repairs (3.1 ✅ · 3.6 ✅ · 3.3 = L5, the last build) | All acquisition, all monetization |
-| 1 — Loops | launch → ~Sep 15 | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence | Monetization, new content layers; R2 waits for a returner population |
-| 2 — Compound | post-PMF verdict | Monetization sequencing discussable · adjacent audiences · new loops | — |
+| 0 — Readiness *(was "Evidence"; checkpoint voided 2026-07-26)* | now → cutover (~Aug 1–8) | R0 baseline collecting · loop-edge repairs (3.1 ✅ · 3.6 ✅ · 3.3 = L5, the last build) · Founding Partner one-pager + logging business asks | All acquisition; every paid surface |
+| 1 — Loops | launch → ~Sep 15 | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence · **anchor conversations open** (selling only — nothing ships) | Every paid surface, new content layers; R2 waits for a returner population |
+| 2 — Compound | post-PMF verdict | **Paid surfaces ship** (business-model.md §5 sequencing) · adjacent audiences · new loops | Geographic expansion until the §7 unlock rule is met |
 
 **The one thing to do first: L5** — the business submission path. It is the last
 unrepaired loop edge (B), the last build before cutover, and the only PMF bar
@@ -305,10 +321,18 @@ readouts.)*
 - Social-account grinding, generic SEO/content-marketing blog.
 - Referral incentives or growth hacks bolted outside the loops.
 - Growth hires, agencies, or tools beyond PostHog free tier.
-- Monetization conversations before the PMF verdict.
+- Shipping any paid surface before the PMF verdict. *(Revised 2026-07-28:
+  monetization **conversations** are now allowed pre-verdict — sell before, ship
+  after, per §5 and `business-model.md`. What stays banned is a live paid
+  surface.)*
+- Charging residents, selling coverage, or paid placement in news/community
+  surfaces — permanently, at any stage (`business-model.md` §2).
 - New content layers (stories/history/routes) before the utility loop proves.
-- Geographic expansion ("Williamsburg North") — adjacent-user moves are a
-  post-PMF plateau tool, and the hyperlocal focus *is* the moat.
+- Geographic expansion before PMF — adjacent-user moves are a post-PMF plateau
+  tool, and the hyperlocal focus *is* the moat. *(Post-PMF, expansion is governed
+  by `business-model.md` §7's unlock rule. The editorial ban on "Williamsburg
+  North" — diluting Greenpoint's product with adjacent-neighborhood content —
+  is permanent and separate: serving Williamsburg means its own scoped surface.)*
 - Rebranding as a growth lever.
 - **Autonomy theater** — token-maxing for its own sake, autonomous outbound
   sends, self-modifying nightly agents. Automation expands one rung at a time

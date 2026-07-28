@@ -21,7 +21,7 @@ Weekly rhythm (ops plan `docs/launch/2026-07-21-pmf-ops-plan.md`): **Mon** `/ing
 ## Truth Rules
 
 - **Nothing invented, everything sourced.** Events, hours, deals, business status come from named sources (newsletters, org calendars, publishers) or don't ship. Cards are schema-valid (`cardSchema.js`), geocoded, and pass the review diff before deploy.
-- Unclaimed businesses get category labels, not brand treatment (claim model).
+- **Coverage is never for sale, and no payer influences it** (`docs/growth/business-model.md`): every verified business gets on the map free; paid placement is labeled enhancement only, never admission, and never on news or community surfaces.
 - Expired content disappears at render time (`eventWindow.js`); deals require `endsAt`.
 - These rules are also the answer-engine citation-trust moat — they stay non-negotiable.
 

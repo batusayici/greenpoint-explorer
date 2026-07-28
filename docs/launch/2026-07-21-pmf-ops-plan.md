@@ -52,4 +52,4 @@ Launch-readiness status (2026-07-26): **error monitoring shipped** — PostHog e
 - **Pre-registered two-sided PMF bar (numbers to confirm at checkpoint):**
   - Demand: ≥30 unique locals at ≥2 visits/week, 3 consecutive weeks by ~Sep 15, majority arriving without a fresh invite push.
   - Supply: ≥5 businesses/orgs proactively submitted or asked in; ≥1 recurring submitter.
-- PMF verdict unlocks the existing gates: monetization sequencing becomes discussable (sponsored maps first; never charge small businesses first). *(2026-07-22: Track R / the 3D explorer is parked indefinitely — reopening it is a separate, explicit decision by Batu, not an automatic unlock.)*
+- PMF verdict unlocks the paid surfaces in `docs/growth/business-model.md` (2026-07-28): Founding Partners → self-serve business layer → spatial intelligence. **Selling starts before the verdict; shipping any paid surface waits until after it.** *(Supersedes "sponsored maps first; never charge small businesses first." 2026-07-22: Track R / the 3D explorer is parked indefinitely — reopening it is a separate, explicit decision by Batu, not an automatic unlock.)*

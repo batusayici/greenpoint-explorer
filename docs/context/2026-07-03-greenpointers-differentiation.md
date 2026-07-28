@@ -2,6 +2,8 @@
 
 Source: *Greenpoint Explorer Differentiation vs Greenpointers* (ChatGPT context update, reviewed 2026-07-03). Feeds the Track V spec (`2026-07-02-spatial-demand-test-design.md`) and the 2026-07-03 `DECISION_LOG.md` entry. **Adopted items only** — see "Rejected" at the bottom for what Batu's 2026-07-02 interview decisions supersede.
 
+> **Monetization section superseded 2026-07-28** by `docs/growth/business-model.md` (three-layer model; the claim model is retired). The Greenpointers *positioning* below — source, distribution partner, potential embed customer, never a news competitor — still holds and is now formalized as the distribution swap in that doc's §6.
+
 ## The third actor: Greenpointers
 
 Greenpointers is the stronger incumbent in the "what's happening in Greenpoint" lane: local news, openings/closings, events, civic/development coverage, newsletter distribution, ad/sponsorship infrastructure, editorial trust, contributor infrastructure. **Greenpoint Explorer must not become "Greenpointers on a map"** — a generic neighborhood news map is too easy to compare to them and too easy for them to copy.

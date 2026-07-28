@@ -1,7 +1,13 @@
 # Greenpoint Isometric Explorer — Monetization Ideas
 
+> **SUPERSEDED 2026-07-28 — historical context only.** This is pre-pivot thinking for the
+> parked 3D isometric concept, built around illustrated visual assets that the current
+> product doesn't have. The business model of record is
+> **`docs/growth/business-model.md`** (neighborhood economic utility; three revenue
+> layers). Read this only for idea archaeology — do not cite it as strategy.
+>
 > Source: "Greenpoint Isometric Explorer Monetization Ideas.pdf" (transcribed). Emerging
-> product/business-direction input, not yet adopted into PLAN.md.
+> product/business-direction input, never adopted into PLAN.md.
 
 ## Core Business Question
 
