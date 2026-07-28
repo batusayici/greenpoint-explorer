@@ -67,11 +67,20 @@ gate: **merging is the only way any of its output becomes real.**
    ≥2 `card_open` + ≥1 of `action_tap`/`cta_tap`/`today_toggle`), per-`src`
    sessions and week-2 return, organic share (sessions with no `?src=` net of
    known direct — the >50% word-of-mouth signal, monthly read).
-3. **Cloud fallback:** if the key is unavailable (script errors on missing
-   env), do not fabricate — mark every quantitative section `⚠ analytics
-   pending: run ./scripts/posthog-pull.sh locally and paste`, finish the
-   qualitative half, and flag the PR title with `[data pending]`. (Fix: add the
-   two env vars as secrets in the routine's environment at claude.ai/code.)
+3. **Cloud fallback:** if the pull fails, do not fabricate — mark every
+   quantitative section `⚠ analytics pending: run ./scripts/posthog-pull.sh
+   locally and paste`, finish the qualitative half, and flag the PR title with
+   `[data pending]`. **Diagnose which failure it is before reporting** — there
+   are two, with different fixes (2026-07-28):
+   - *Missing secrets:* `POSTHOG_READ_KEY` / `POSTHOG_PROJECT_ID` absent. Fix:
+     add them to the routine's environment at claude.ai/code. (The script's
+     `. ./.env.local` line fails in cloud regardless — `.env.local` is local
+     only; when the vars are already exported, run the queries without it.)
+   - *Egress denial:* vars present but `curl` returns `CONNECT tunnel failed,
+     response 403`. Confirm with `curl -sS "$HTTPS_PROXY/__agentproxy/status"` →
+     `recentRelayFailures` naming `us.posthog.com:443`. This is an org
+     network-policy block; **never route around it** — report the blocked host.
+     Fix: allowlist `us.posthog.com` in the routine's environment.
 4. Qualitative sensors: new business submissions/asks since last readout
    (Tally exports / Batu-forwarded replies noted in the previous readout),
    anything the week's ingest PRs flagged as demand signal.
@@ -136,11 +145,18 @@ claude.ai/code/routines) mirrors the ingest routines: Tuesdays 9:30 ET (cron
 orchestrator (never Fable for scheduled runs), repo checkout, PR-only output.
 
 **Before enabling (Batu):** (1) this skill + the launch plan must be merged to
-main (the cloud checkout reads them from there); (2) optionally add
-`POSTHOG_READ_KEY` + `POSTHOG_PROJECT_ID` to the routine's environment so runs
-carry real numbers — without them every run lands `[data pending]`. Local
+main (the cloud checkout reads them from there); (2) add `POSTHOG_READ_KEY` +
+`POSTHOG_PROJECT_ID` to the routine's environment **and allowlist
+`us.posthog.com` in its network policy** — both are required, and the 2026-07-28
+run proved the vars alone are not enough (they were present; the egress proxy
+returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
 `/growth-weekly` invocations remain the fallback if cloud misbehaves.
 
 ## Standing instructions (calibration output — append-only)
 
-*(none yet — first cycle pending)*
+- **(proposed 2026-07-28, cycle 1 — operator-derived, pending Batu; drop this
+  line if unwanted)** When the analytics pull fails in cloud, diagnose before
+  declaring `[data pending]`: check whether the env vars are present *and*
+  whether `$HTTPS_PROXY/__agentproxy/status` shows an egress denial for
+  `us.posthog.com`. The two failures have different fixes, and this skill
+  previously recorded only one of them.
