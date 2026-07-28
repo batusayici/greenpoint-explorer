@@ -6,10 +6,9 @@ defaults — sources at bottom), applied to what we actually have: the PMF ops p
 (`docs/launch/2026-07-21-pmf-ops-plan.md`), the launch runbook
 (`docs/launch/2026-07-27-launch-plan.md`) and its pre-registered PMF bar,
 the 9-event PostHog taxonomy (`src/demand-test/trackEvents.js`), and the Michael /
-Laura & Edmond interviews. *(2026-07-28 reconciliation: the Jul 29 checkpoint was
-voided 2026-07-26 — every gate that read "post-checkpoint-pass" now reads
-"post-launch," launch = the greenpoint.life cutover.)* This doc is the growth strategy of record; decisions it
-produces land in `DECISION_LOG.md`.
+Laura & Edmond interviews. This doc is the growth strategy of record; decisions it
+produces land in `DECISION_LOG.md`. **Everything here gates on launch** (= the
+greenpoint.life cutover); the Jul 29 checkpoint was voided 2026-07-26.
 
 **Operating stance (Verna, applied):** pre-PMF, the founder is the growth team.
 The engine below is staged — most of it is deliberately *not yet lit*. The job now
@@ -40,11 +39,10 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   no `?src=` plus search/AI referrers, read monthly. A lens on the WRL bar (it
   sharpens the existing "majority arriving without a fresh invite push" clause),
   not a second bar.
-- **Weakest edge today:** *re-entry* — nothing external reminds a resident
-  it's a new week (no digest; habit can't form on memory alone). R1 aims here.
-  The *share* edge was repaired 2026-07-26 (ops plan 3.1: OG tags + crawlable
-  `/e/<slug>` paths) — word-of-mouth now has an artifact to travel on, though
-  whether it travels is unread until post-launch traffic exists.
+- **Weakest edge:** *re-entry* — nothing external reminds a resident it's a new
+  week (no digest; habit can't form on memory alone). R1 aims here. The *share*
+  edge was repaired 2026-07-26 (3.1: OG tags + crawlable `/e/<slug>`); whether
+  word-of-mouth actually travels is unread until post-launch traffic.
 
 ### Loop B — Supply/claim loop (supply side; future monetization substrate)
 
@@ -56,9 +54,9 @@ Coverage puts businesses/orgs on the map (category labels, unclaimed)
 
 - **Compounding metric:** proactive supply actors per month (submissions +
   inbound asks; PMF bar: ≥5, ≥1 recurring).
-- **Weakest edge today:** businesses have *no path in* — the submission route is
-  ops plan 3.3 and doesn't exist yet. Until then this loop only turns when Batu
-  hand-carries it.
+- **Weakest edge — and the only one still unrepaired:** businesses have *no path
+  in*. The submission route (3.3 = launch item **L5**) is unbuilt, so this loop
+  turns only when Batu hand-carries it. L5 is the last build before cutover.
 
 ### Loop C — Answer-engine distribution loop (owned; zero-CAC)
 
@@ -70,22 +68,17 @@ structured content → stronger citations → (top)
 ```
 
 - **Compounding metric:** organic sessions (no `?src=`, search/AI referrers).
-- **Edge repaired 2026-07-26** (ops plan 3.6 prerender), **prod acceptance
-  passed 2026-07-28**: extensionless `/e/<slug>` resolves, no-JS `curl` returns
-  name/venue/address, dated cards carry valid `schema.org/Event` JSON-LD (40 of
-  93 pages — undated place/news cards correctly claim no date). The loop is now
-  *seeded, not yet turning*: citations accrue on crawler time, the origin flips
-  to greenpoint.life at cutover (re-verify then), and the Google Rich Results
-  spot-check is still open (manual browser step). Freshness (weekly ingest) +
-  truth rules remain the ranking/citation moat competitors can't copy.
+- **Edge repaired** (3.6 prerender), **prod acceptance passed 2026-07-28**:
+  extensionless `/e/<slug>` resolves, no-JS `curl` returns name/venue/address,
+  dated cards carry valid `schema.org/Event` JSON-LD. **Seeded, not yet
+  turning** — citations accrue on crawler time. Open: Rich Results spot-check
+  (manual), and re-verify after the origin flip at cutover. Freshness + truth
+  rules are the citation moat competitors can't copy.
 
 **Key read:** the Phase 3 backlog is not a feature list — it is, almost item for
-item, the repair kit for the weakest edge of each loop (3.1 share → A, 3.3
-submission → B, 3.6 AEO → C). That's the argument for shipping it as scoped and
-resisting additions. *(Status 2026-07-28: 3.1 ✅ and 3.6 ✅ shipped; 3.3 — the
-business submission path, launch item L5 — is the last unrepaired loop edge and
-the only build left before cutover. Loop B still only turns when Batu
-hand-carries it.)*
+item, the repair kit for the weakest edge of each loop: 3.1 share → A ✅ · 3.6
+AEO → C ✅ · 3.3 submission → B ⬜. That's the argument for shipping it as scoped
+and resisting additions.
 
 ### Aha-moment hypothesis
 
@@ -113,19 +106,17 @@ evidence.
 - **Evidence for:** wave-1 testers articulated weekly-check intent unprompted;
   Laura/Edmond asked for save/star + time filters (return-visit features);
   Michael's frame implies recurring use.
-- **Evidence against / unknown:** no quantitative retention history predates
-  R0 — Web Analytics was enabled late and PostHog runs cookieless (visitor
-  identity rotates), so nothing before 2026-07-26 is recoverable. **The sensor
-  hole is closed** (R0 `return_visit` live in production since 2026-07-26); the
-  remaining hole is a *young baseline* — the ≥2-of-4-weeks definition needs
-  weeks of accumulation before it can say anything, which is exactly why R0
-  shipped ahead of launch.
+- **Evidence against / unknown:** the sensor hole is closed (R0 `return_visit`
+  live since 2026-07-26), but the baseline is *young* — the ≥2-of-4-weeks
+  definition needs weeks of accumulation before it says anything, which is why
+  R0 shipped ahead of launch. Nothing before 2026-07-26 is recoverable
+  (Web Analytics enabled late; PostHog cookieless, so visitor identity rotates).
 
 **Retention experiments (ranked):**
 
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
-| R0 | **Pull the `return_visit` sensor forward from Phase 4 to now.** localStorage first-seen + visit count, privacy-light, new event through the locked taxonomy. *(Shipped to production 2026-07-26 — `returnVisit.js`.)* | One gated ship, TDD. | Not an experiment — a prerequisite. Unlocks R1/R2 and the PMF bar itself. |
+| R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the PMF bar itself. |
 | R1 | **Weekly digest to postvalue signups.** Mon post-ingest, "this week in Greenpoint," II-C, links carry `?src=digest`. AI drafts; Batu sends. | Plain email to existing signups — no automation build. | `src=digest` return sessions vs. signup count, pre/post over 3 weeks. Kill if <30% of recipients ever click by week 3. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
 | R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals. |
@@ -253,6 +244,12 @@ wholesale.
 
 - **Sensor:** PostHog pull (`./scripts/posthog-pull.sh`), Vercel Web Analytics,
   the R0 `return_visit` baseline, the submission/ask log.
+  - **Launch prerequisite (2026-07-28):** the operator is a *cloud* routine, and
+    its only sensor host is `us.posthog.com`. The cloud environment's
+    network-access list is currently **Custom** with the *ingest* roster only
+    (roster hosts + nominatim + cdn.playwright.dev — DECISION_LOG 2026-07-28).
+    Add `us.posthog.com` before enabling the Tuesday routine, or it fails the
+    same silent way the 7/27–7/28 ingest runs did: no data, no per-host error.
 - **Policy:** the autonomy ladder below + kit rules — every link copied from
   `docs/launch/channel-links.md`, truth rules, max 3 live experiments.
 - **Tool:** deterministic scripts first; model judgment only where a read or a
@@ -294,12 +291,12 @@ trust-gated — they're the definition of supervision.
 | 1 — Loops | launch → ~Sep 15 | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence | Monetization, new content layers; R2 waits for a returner population |
 | 2 — Compound | post-PMF verdict | Monetization sequencing discussable · adjacent audiences · new loops | — |
 
-**The one thing to do first: R0.** Pull the `return_visit` sensor forward from
-Phase 4 to this week. Retention is the foundation metric of the entire engine,
-the PMF bar is denominated in it, and we currently cannot measure it. It's a
-day of gated, testable work and every later experiment reads through it.
-*(Done — shipped to production 2026-07-26. Next in line: A1 funnel read inside
-the first post-launch readouts.)*
+**The one thing to do first: L5** — the business submission path. It is the last
+unrepaired loop edge (B), the last build before cutover, and the only PMF bar
+we currently have no instrument for: the supply side (≥5 proactive actors) can't
+be measured while the only way in is Batu's inbox. *(R0, the previous "one
+thing," shipped 2026-07-26. A1's funnel read follows in the first post-launch
+readouts.)*
 
 ## Explicitly not doing
 
