@@ -1,11 +1,14 @@
-# Greenpoint Life — Growth Engine (2026-07-25 · rev 2026-07-27)
+# Greenpoint Life — Growth Engine (2026-07-25 · rev 2026-07-28)
 
 Grounded in Elena Verna's frameworks (growth loops / Racecar, PMF-first sequencing,
 low-traffic experimentation rules, owned-and-earned-only channels, opinionated
 defaults — sources at bottom), applied to what we actually have: the PMF ops plan
-(`docs/launch/2026-07-21-pmf-ops-plan.md`), the pre-registered checkpoint bar,
+(`docs/launch/2026-07-21-pmf-ops-plan.md`), the launch runbook
+(`docs/launch/2026-07-27-launch-plan.md`) and its pre-registered PMF bar,
 the 9-event PostHog taxonomy (`src/demand-test/trackEvents.js`), and the Michael /
-Laura & Edmond interviews. This doc is the growth strategy of record; decisions it
+Laura & Edmond interviews. *(2026-07-28 reconciliation: the Jul 29 checkpoint was
+voided 2026-07-26 — every gate that read "post-checkpoint-pass" now reads
+"post-launch," launch = the greenpoint.life cutover.)* This doc is the growth strategy of record; decisions it
 produces land in `DECISION_LOG.md`.
 
 **Operating stance (Verna, applied):** pre-PMF, the founder is the growth team.
@@ -37,10 +40,11 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   no `?src=` plus search/AI referrers, read monthly. A lens on the WRL bar (it
   sharpens the existing "majority arriving without a fresh invite push" clause),
   not a second bar.
-- **Weakest edges today:** (1) *re-entry* — nothing external reminds a resident
-  it's a new week (no digest; habit can't form on memory alone), and (2) *share* —
-  no OG tags or crawlable per-card URLs until ops plan 3.1, so word-of-mouth has
-  no artifact to travel on.
+- **Weakest edge today:** *re-entry* — nothing external reminds a resident
+  it's a new week (no digest; habit can't form on memory alone). R1 aims here.
+  The *share* edge was repaired 2026-07-26 (ops plan 3.1: OG tags + crawlable
+  `/e/<slug>` paths) — word-of-mouth now has an artifact to travel on, though
+  whether it travels is unread until post-launch traffic exists.
 
 ### Loop B — Supply/claim loop (supply side; future monetization substrate)
 
@@ -66,14 +70,22 @@ structured content → stronger citations → (top)
 ```
 
 - **Compounding metric:** organic sessions (no `?src=`, search/AI referrers).
-- **Weakest edge today:** the SPA is invisible to crawlers — the loop is dark
-  until ops plan 3.6 ships. This is a build, not a campaign; freshness (weekly
-  ingest) + truth rules are the ranking/citation moat competitors can't copy.
+- **Edge repaired 2026-07-26** (ops plan 3.6 prerender), **prod acceptance
+  passed 2026-07-28**: extensionless `/e/<slug>` resolves, no-JS `curl` returns
+  name/venue/address, dated cards carry valid `schema.org/Event` JSON-LD (40 of
+  93 pages — undated place/news cards correctly claim no date). The loop is now
+  *seeded, not yet turning*: citations accrue on crawler time, the origin flips
+  to greenpoint.life at cutover (re-verify then), and the Google Rich Results
+  spot-check is still open (manual browser step). Freshness (weekly ingest) +
+  truth rules remain the ranking/citation moat competitors can't copy.
 
 **Key read:** the Phase 3 backlog is not a feature list — it is, almost item for
 item, the repair kit for the weakest edge of each loop (3.1 share → A, 3.3
 submission → B, 3.6 AEO → C). That's the argument for shipping it as scoped and
-resisting additions.
+resisting additions. *(Status 2026-07-28: 3.1 ✅ and 3.6 ✅ shipped; 3.3 — the
+business submission path, launch item L5 — is the last unrepaired loop edge and
+the only build left before cutover. Loop B still only turns when Batu
+hand-carries it.)*
 
 ### Aha-moment hypothesis
 
@@ -83,7 +95,7 @@ resisting additions.
 
 Proxy definition (instrumentable today): first session with **≥2 `card_open` and
 ≥1 high-intent act** (`action_tap`, `cta_tap`, or `today_toggle`). This is a
-hypothesis to check at the checkpoint, not a fact.
+hypothesis to check in the first post-launch readouts (A1), not a fact.
 
 ---
 
@@ -101,11 +113,13 @@ evidence.
 - **Evidence for:** wave-1 testers articulated weekly-check intent unprompted;
   Laura/Edmond asked for save/star + time filters (return-visit features);
   Michael's frame implies recurring use.
-- **Evidence against / unknown:** no quantitative retention data exists at all —
-  Web Analytics was enabled late, PostHog runs cookieless (visitor identity
-  rotates), and the `return_visit` sensor is parked in Phase 4. **We currently
-  cannot measure our foundation metric.** That is the single biggest hole in the
-  engine.
+- **Evidence against / unknown:** no quantitative retention history predates
+  R0 — Web Analytics was enabled late and PostHog runs cookieless (visitor
+  identity rotates), so nothing before 2026-07-26 is recoverable. **The sensor
+  hole is closed** (R0 `return_visit` live in production since 2026-07-26); the
+  remaining hole is a *young baseline* — the ≥2-of-4-weeks definition needs
+  weeks of accumulation before it can say anything, which is exactly why R0
+  shipped ahead of launch.
 
 **Retention experiments (ranked):**
 
@@ -114,7 +128,7 @@ evidence.
 | R0 | **Pull the `return_visit` sensor forward from Phase 4 to now.** localStorage first-seen + visit count, privacy-light, new event through the locked taxonomy. *(Shipped to production 2026-07-26 — `returnVisit.js`.)* | One gated ship, TDD. | Not an experiment — a prerequisite. Unlocks R1/R2 and the PMF bar itself. |
 | R1 | **Weekly digest to postvalue signups.** Mon post-ingest, "this week in Greenpoint," II-C, links carry `?src=digest`. AI drafts; Batu sends. | Plain email to existing signups — no automation build. | `src=digest` return sessions vs. signup count, pre/post over 3 weeks. Kill if <30% of recipients ever click by week 3. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
-| R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Already the checkpoint fail-branch; run it even on a pass. | Qualitative; feeds Tue proposals. |
+| R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals. |
 
 ---
 
@@ -132,7 +146,7 @@ evidence.
 
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
-| A1 | **Read the funnel** (PostHog, segmented by `?src=`, checkpoint week). Where do first sessions stall — before first `card_open`, or between open and act? | Analysis only. | Produces the target for A2. No build until this is read. |
+| A1 | **Read the funnel** (PostHog, segmented by `?src=`, inside the first post-launch readouts — launch runbook §4). Where do first sessions stall — before first `card_open`, or between open and act? | Analysis only. | Produces the target for A2. No build until this is read. |
 | A2 | **Opinionated default on first visit:** land new visitors in the merchandised "this week" state (promise-first chip order already ships; extend to whatever A1 says is the stall point — e.g. auto-focus Today on weekday evenings). | One default flipped ON, pre/post. | First-session activation rate. Kill if flat after 2 weeks. |
 | A3 | **Post-value prompt timing:** `postValue.js` already gates the email ask on demonstrated value; test the threshold (earlier vs. current) once traffic exists. | Config-level change. | Signup rate per activated session, pre/post. Deferred until ≥50 sessions/week. |
 
@@ -168,14 +182,14 @@ pick messengers embedded in the network over channels with bigger audiences, and
 saturate one network before opening the next. This tightens the existing
 experiments' messaging; it adds none (max-3 rule untouched).
 
-**Acquisition experiments (ranked; all post-checkpoint-pass, per kit rules Batu
-sends every message):**
+**Acquisition experiments (ranked; all post-launch — Q1/Q2 are wave 1 of the
+seeding order in the launch runbook §3; kit rules: Batu sends every message):**
 
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
 | Q1 | **Org seeding:** 3 orgs whose events are already on the map get a personal "your events are live here" note + per-org `?src=`. | 3 emails. | Sessions and activation rate per src; an org that shares = a Loop B ignition. Kill an org-type after 2 non-responses. |
 | Q2 | **Parents-wedge post** in 1–2 parent groups: "every kids/camp thing in Greenpoint this week, verified, on one map," `?src=parents`. | One post. | src=parents sessions + week-2 return (needs R0). Double down only if return beats other srcs. |
-| Q3 | **AEO acceptance** (rides 3.6): `curl` of `/e/<slug>` returns event name/date/venue; JSON-LD passes Rich Results. Then watch organic sessions monthly. | Already specced. | Organic sessions trend; no kill — owned infrastructure. |
+| Q3 | **AEO acceptance** (rides 3.6): `curl` acceptance **passed on prod 2026-07-28** (extensionless `/e/<slug>`, no-JS facts, Event JSON-LD); Rich Results manual spot-check open; re-verify on greenpoint.life at cutover. Then watch organic sessions monthly. | Shipped; watch-only. | Organic sessions trend; no kill — owned infrastructure. |
 
 ---
 
@@ -191,7 +205,7 @@ stop** — this restates the existing gate, now with the growth argument attache
   → partner tooling → evidence-gated featured cards; never charge small
   businesses first.
 - **Free pre-work that is allowed now:** keep logging every business ask and
-  submission verbatim (they're checkpoint currency *and* future pricing
+  submission verbatim (they're supply-side PMF evidence *and* future pricing
   evidence), and let Q1 note-sends double as claim-demand probes — zero build.
 
 ---
@@ -267,7 +281,7 @@ ratified by Batu — never self-granted. **Demotion is immediate and automatic**
 on any truth-rule breach, untagged link, or misread — one strike, one rung down.
 
 **What stays human regardless of calibration:** sends, deploys/merges, taste
-gates, kill/graduate/checkpoint/PMF verdicts, and spending money. These aren't
+gates, kill/graduate/PMF verdicts, and spending money. These aren't
 trust-gated — they're the definition of supervision.
 
 ---
@@ -276,16 +290,16 @@ trust-gated — they're the definition of supervision.
 
 | Stage | Window | What's lit | What stays dark |
 |---|---|---|---|
-| 0 — Evidence | now → Jul 29 | R0 sensor · A1 funnel read · checkpoint | All acquisition, all monetization |
-| 1 — Loops | pass → ~Sep 15 | Phase 3 ships (= loop-edge repairs) · R1/R2 · Q1/Q2 · weekly experiment cadence | Monetization, new content layers |
+| 0 — Readiness *(was "Evidence"; checkpoint voided 2026-07-26)* | now → cutover (~Aug 1–8) | R0 baseline collecting · loop-edge repairs (3.1 ✅ · 3.6 ✅ · 3.3 = L5, the last build) | All acquisition, all monetization |
+| 1 — Loops | launch → ~Sep 15 | Seeding waves (runbook §3) · A1 funnel read in first readouts · R1 · Q1/Q2 · weekly experiment cadence | Monetization, new content layers; R2 waits for a returner population |
 | 2 — Compound | post-PMF verdict | Monetization sequencing discussable · adjacent audiences · new loops | — |
 
 **The one thing to do first: R0.** Pull the `return_visit` sensor forward from
 Phase 4 to this week. Retention is the foundation metric of the entire engine,
 the PMF bar is denominated in it, and we currently cannot measure it. It's a
 day of gated, testable work and every later experiment reads through it.
-*(Done — shipped to production 2026-07-26. Next in line: A1 funnel read at the
-checkpoint.)*
+*(Done — shipped to production 2026-07-26. Next in line: A1 funnel read inside
+the first post-launch readouts.)*
 
 ## Explicitly not doing
 
