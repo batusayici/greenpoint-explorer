@@ -38,6 +38,12 @@ Surfaced, not moved: the investor pass argues the dormant resident-support conti
 
 Owner: Batu.
 
+## 2026-07-28 — Monetization decisions parked; sole priority is PMF
+
+Decision (Batu, end of the business-model day). All open monetization decisions — standing-vs-episodic partner slots, the LION pipeline-as-product option, H9's timed brief, pilot sequencing — are **parked, not pressing**. The only priority is understanding whether what we're building is valuable: **launch, learn, iterate toward PMF.** The business-model and pressure-test work in the entries below is banked context for the day demand evidence exists; none of it fires before the gates it's already sequenced behind, and none of it should be raised for decision until then. What matters now is the launch list (L5 · L7 · L8) and the learning instruments already live or specced: demand gate cohorts, feed density, unique-coverage count, R0 baseline, qualitative resident evidence.
+
+Owner: Batu.
+
 ## 2026-07-28 — Round-2 investor pass: ceiling re-corrected, H9 timed-brief test, contracts and concentration criteria fixed
 
 Decision (Batu-approved re-run after the first investor agent was lost mid-run). A second investor pass attacked the *already-corrected* model. Verdict as given: "no as a bootstrapped income business **at all-human delivery hours**." Synthesis accepted most findings, pushed back on the load-bearing assumption, and made one test decisive:
