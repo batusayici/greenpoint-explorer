@@ -22,13 +22,46 @@ Companion to `growth-engine.md` (how the audience compounds); §5 there is the s
 
 ## 1. Model statement
 
-Greenpoint Life is a **neighborhood economic utility**: free, complete, verified
-"what's happening and what's worth doing" for residents and visitors, funded by
-the institutions and businesses that benefit from a legible, active neighborhood
-economy — never by the residents using it.
+Greenpoint Life is a **neighborhood economic utility**: the free, complete,
+verified **index** of everything happening in Greenpoint — every event, opening,
+deal, and membership, mapped and current — funded by the institutions and
+businesses that benefit from a legible, active neighborhood economy, never by
+the residents using it.
 
 One rule governs every revenue decision: **payers buy function or presence, never
 truth.**
+
+**Positioning — index, not newsletter (sharpened 2026-07-28).** "What's
+happening and what's worth doing" is the claim every curated local newsletter
+already makes (Greenpointers, OMGreenpoint) — so it is not the positioning. The
+difference is structural, not editorial: **they curate the week; we index the
+neighborhood.** A newsletter is a push moment — someone picked ~10 things, its
+value is spent at publish time, and it cannot answer a question asked Tuesday at
+6pm. The index is a pull utility: complete rather than selected, structured
+(place, time, price, expiry) rather than prose, current rather than weekly,
+compounding rather than ephemeral. Differentiators, in strength order:
+
+1. **Query-answering structure** — tonight / near me / free / family-friendly.
+   Lead with the question it answers, not with "we have a map."
+2. **Deals & memberships — persistent state**, which a newsletter structurally
+   cannot hold (a deal mentioned three weeks ago is unfindable prose); a
+   database is the only correct form for it, and it gives businesses an ongoing
+   reason to engage rather than a one-off announcement.
+3. **Civic participation** — sourced, truth-rule-clean, low-frequency, and the
+   substance of the community-benefit narrative institutional payers renew on.
+4. **Coverage the newsletters miss** — measured, not asserted: the weekly
+   **unique-coverage count** (items on the map that appeared in no other
+   Greenpoint source) is the differentiation proof nobody can copy without
+   doing the verification work.
+
+Community-run events (stoop sales, sidewalk sales) are real white space but
+**deferred post-PMF (Batu, 2026-07-28)**: they have no named source, so they
+require a designed second verification tier — and the truth-rule asset outranks
+the differentiator. Local jobs/gigs stay parked as a future experiment.
+
+Revenue consequence: **we sell structure, never attention** (§3) — which keeps
+us out of the local sponsorship pool the newsletters live on by architecture,
+not by promise.
 
 The durable asset is the ingest corpus — longitudinal, verified, structured data
 on openings, closings, events, deals and memberships, accumulating weekly since
@@ -166,11 +199,17 @@ Sequencing rules:
   the price. This is the structural answer to "we are not where our users are" —
   the business model doubles as the awareness strategy, which is why it is a rule
   and not a nicety.
-- **Partner posture:** Greenpointers is approached as a distribution partner and
-  potential embed customer, never fought as a news competitor (unchanged from
-  PLAN.md) — but the distribution swap is a **hypothesis to negotiate, not an
-  assumption**; until agreed, plan channels as if it doesn't exist. Community
-  orgs and the Chamber carry legitimacy and member distribution.
+- **Partner posture — structurally non-competing (sharpened 2026-07-28):**
+  Greenpointers/OMGreenpoint sell curation and attention; we sell structure
+  (§1). We never bid for their sponsorship dollar, we cite their reporting as
+  sources, and we can hand them a weekly "on the map this week" embed that
+  sends traffic to their articles — they get content and reach, we get
+  distribution and legitimacy. The swap remains a **hypothesis to negotiate,
+  not an assumption** (H4); until agreed, plan channels as if it doesn't exist.
+  Honest caveat, held internally: a complete index eventually erodes any
+  newsletter's discovery role regardless of intent — the durable mitigation is
+  keeping them measurably better off inside the relationship. Community orgs
+  and the Chamber carry legitimacy and member distribution.
 - **Publish coverage standards.** The differentiation claim ("complete, verified")
   is only credible published: sources monitored, last-verified time, correction
   time, known gaps. This is also an answer-engine trust signal.
@@ -255,7 +294,7 @@ assumption). Numbers behind each test are in the private doc.
 |---|---|---|---|
 | H1 | Institutional/business buyers will pay for a buyer-specific pilot before the audience is large | 12–15 qualified conversations across buyer types; commercial gate = 3 paid pilots/LOIs | Layer 1 is wrong as the spine → fall back to Layer-2-first on a slower timeline; re-open the model with rejection reasons as data |
 | H2 | Businesses value demand evidence enough to eventually pay for it | Manual monthly proof-of-value email; measure replies, asks, repeat submissions | Don't build the dashboard; Layer 2 shrinks to featured slots only |
-| H3 | Verified structured coverage out-competes existing substitutes (Greenpointers guide, other calendars) for the weekly "what's happening" job | Demand gate cohorts + published coverage standards | Differentiation is insufficient → sharpen the promise or narrow to the underserved wedge (parents/camps) |
+| H3 | The index out-competes curated substitutes (Greenpointers guide, other calendars) for the resident's *question-answering* job — not their weekly-read job, which we don't contest | Demand gate cohorts + published coverage standards + the weekly **unique-coverage count** (§1) | Differentiation is insufficient → sharpen the promise or narrow to the underserved wedge (parents/camps) |
 | H4 | The Greenpointers distribution swap is negotiable | One conversation, post-launch | Plan channels without it; co-opetition, not partnership |
 | H5 | Structured pages → AI/search citations → organic sessions (Loop C) | Search Console + referrer data over ≥2 months; structured data does **not** guarantee rich results | Invest in stable venue/category pages, archives, backlinks — or deprioritize AEO as a growth loop |
 | H6 | The weekly operation fits inside the founder-time budget alongside selling | 8 consecutive weeks tracked | Cut cadence or scope before cutting verification quality; expansion stays locked |

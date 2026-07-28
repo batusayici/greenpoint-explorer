@@ -38,6 +38,17 @@ Surfaced, not moved: the investor pass argues the dormant resident-support conti
 
 Owner: Batu.
 
+## 2026-07-28 — Positioning sharpened: index-not-newsletter; structurally non-competing with Greenpointers; community-run events deferred
+
+Decision (Batu). Raised by Batu after the pressure-test: "what's happening and what's worth doing" is near-1:1 with what Greenpointers/OMGreenpoint already claim, and Greenpointers must not come to see us as competition. Resolution — the positioning is structural, not editorial:
+
+1. **They curate the week; we index the neighborhood.** A newsletter is a push moment (someone picked ~10 things, value spent at publish, can't answer a Tuesday-6pm question); the index is a pull utility — complete not selected, structured not prose, current not weekly, compounding not ephemeral. `business-model.md` §1 rewritten accordingly; PLAN.md positioning line extended. Weekly returning behavior is the *proof* of utility-not-publication, which is why WRL was already the right north star.
+2. **Differentiators graded (Batu's list, assessed):** query-answering structure first; **deals & memberships strongest** (persistent state — structurally impossible for a newsletter); civic participation truth-rule-clean and the substance of the institutional community-benefit story; "coverage the newsletters miss" now **measured, not asserted** — a weekly **unique-coverage count** added to the growth-engine instruments next to feed density.
+3. **Community-run events (stoop/sidewalk sales): deferred post-PMF (Batu).** Real white space, but no named source — requires a designed second verification tier (resident-reported label, corroboration, short expiry, no AEO). The truth-rule asset outranks the differentiator. Recorded in PLAN.md open items. Jobs/gigs stay parked.
+4. **Non-compete is architecture, not promise:** we sell structure, never attention (reconfirmed with the brief-first pilot decision) — so we never bid for the newsletters' sponsorship dollar; we cite their reporting, and the offerable swap is a weekly "on the map this week" embed that sends them traffic. Swap remains hypothesis H4, not an assumption. Honest internal caveat: a complete index eventually erodes newsletter discovery regardless of intent; the mitigation is keeping partners measurably better off inside the relationship.
+
+Owner: Batu.
+
 ## 2026-07-28 — External review folded in: four validation gates, pilot-first revenue, loop closures, ban recalibration
 
 Decision (Batu, same day as adoption). An external critique of the business model + growth engine was triaged claim-by-claim (~70% accepted; items already handled in the docs or contradicting owner decisions were rejected or re-decided by Batu). Its core correction is adopted as doctrine: **audience retention and business-model validation are different things — resident counts never unlock commercial assumptions.** Amendments, all made **before launch, before any data existed** (amending a pre-registered bar is legitimate only pre-data; this window closes at launch):

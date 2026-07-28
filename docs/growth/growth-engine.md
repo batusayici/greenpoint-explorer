@@ -57,6 +57,13 @@ Mon ingest (review-gated) → fresh verified cards → residents check the week
   `cards.json` + `ingest-ledger.json`; one line in every Tuesday readout.
   **Baseline (last week of July 2026): 95 cards · 38 dated in-window · 48
   sources.**
+- **Unique-coverage count (added 2026-07-28 — the differentiation proof):**
+  items on the map this week that appeared in no other Greenpoint source
+  (Greenpointers guide, OMGreenpoint, venue-only calendars). The measurable form
+  of "we index what the newsletters miss" (business-model.md §1) — marketing
+  asset, coverage-quality instrument, and H3's test in one number. Derivable
+  during the Monday ingest (a card whose only roster source is the venue/org
+  itself counts); one line in the Tuesday readout next to feed density.
 - **Confirming signal (added 2026-07-27):** PMF in this era is binary — a
   word-of-mouth machine exists or it doesn't, and the benchmark is **organic
   >50% of acquisition**. Instrumentable post-launch: share of new sessions with
