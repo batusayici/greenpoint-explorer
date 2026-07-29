@@ -30,7 +30,7 @@ repair and doesn't ship.
 
 | Audience | Loop | Why they opened it | Available actions | **The one CTA** |
 |---|---|---|---|---|
-| **Resident** *(parents = a message, not an audience)* | A | "What's on near me this week?" | Today / near-me / free lenses · open card · directions · add to calendar · share · correction link | **"Get the week, every Monday."** |
+| **Resident** *(parents = a message, not an audience)* | A | "What's on near me this week?" | Today / near-me / free lenses · open card · directions · add to calendar · share · correction link | **"Follow this"** — a lens or a place |
 | **Business / venue owner** | B | "Am I on this? Is my listing right?" | Find themselves · correct a card · submit an event/deal · (later) see their card's engagement | **"Add your event — free, verified, on the map."** |
 | **Institutional buyer** (owner, property manager, credit union, broker) | Commercial gate (business-model.md §4) | "Is this real, complete, current?" | Published coverage standards · verified-through date · unique-coverage count | **"Request the corridor brief"** — *off-product* (see rule 3) |
 | **Answer engines & crawlers** | C | Answer "what's happening in Greenpoint" | `/e/<slug>` · JSON-LD · sitemap / RSS / ICS / llms.txt | **Cite this page** — a dated, attributable, canonical fact block |
@@ -42,13 +42,52 @@ after demonstrated value and changes with the relationship:
 1. **First visit → no ask.** Success is one high-intent act (the activation
    proxy, §1). `postValue.js` already enforces the gate — 2 `card_open` or 1
    `action_tap` before any prompt fires.
-2. **Activated → the Monday digest.** *(Batu, 2026-07-28: this is the resident
-   CTA of record.)* Declared over share because re-entry is Loop A's weakest
-   edge and weekly returning locals is the compounding metric — nothing else in
-   the product creates a reason to come back. This is R1's demand-side surface.
+2. **Activated → Follow.** *(Batu, 2026-07-28: the resident CTA of record —
+   revised the same day from "the Monday digest," see below.)* One verb, two
+   objects: a **lens** ("free + kids," "tonight," "civic") or a **place**
+   ("tell me when Dandelion Wine does something"). Nothing is broadcast;
+   everything is chosen. It stays one CTA under the one-egg rule because it is
+   one mechanism, one transport, one ask — only the object changes with
+   context. Re-entry is Loop A's weakest edge and weekly returning locals is
+   the compounding metric; Follow is the version of that trigger the index can
+   make and a newsletter structurally cannot.
 3. **Returning / habitual → share.** The only cohort with the credibility to
-   refer, and the organic >50% word-of-mouth signal (§1) reads off it. Second
+   refer, and the organic >50% word-of-mouth signal (§1) reads off it. Third
    rung, never a competing ask.
+
+**Why not the Monday digest** (the prior rung 2, retired as the default
+2026-07-28). Four strikes, three of them from our own docs: it is exactly the
+"push moment" `business-model.md` §1 defines us *against* ("value spent at
+publish time; cannot answer a question asked Tuesday at 6pm") — we had written
+the case against our own re-entry mechanism · it competes head-on with
+Greenpointers/OMGreenpoint in their format, where they are established and
+better · it uses none of the four differentiators · it is unpersonalized · and
+two operational strikes: sending is permanently Batu's (§7), so it is the one
+growth mechanism whose cost never stops — colliding with H6 and with §6's rule
+that anything recurring which can't be automated into the Mon/Tue rhythm doesn't
+ship; and **it manufactures the metric that reads the gate** (the demand bar
+requires "majority arriving without a fresh invite push" — a weekly email *is*
+that push). It survives as **R1's control arm** (§2), not as the plan.
+
+**Why Follow beats the calendar subscription**, the other finalist. The shipped
+`events.ics` is the best *habit* fit — no new routine, it lands in a surface
+residents already check daily, it costs zero founder-labor forever, and a
+self-installed recurring cue is more gate-honest than anything we push. It loses
+as the *ask* on three counts: subscribing is genuinely painful on Android, the
+ask is abstract at the post-value moment, and a calendar-only subscriber never
+returns to the site — satisfying the user while starving WRL. It stays as the
+**zero-labor ambient layer**; per-lens `.ics` feeds are a small, testable
+addition to the existing prerender pipeline (post-launch).
+
+**The business kicker — Follow feeds two loops from one tap.** Follow-a-place
+produces **per-business follower counts**, which are precisely the demand
+evidence the proof-of-value email carries (Loop B's missing mechanism, §1) and
+that H2 tests. A digest generates no supply-side asset at all.
+
+**Known cost, deferred by design:** automating Follow eventually needs a
+backend, and the architecture is deliberately backend-free. That decision is
+deferred until the manual test (§2 R1) says personalization is worth paying
+for — not hidden.
 
 **Rule 2 — the supply CTA is persistent but low-salience.** Businesses arrive
 with intent; they need to be findable, not sold. A pinned "add your event
@@ -79,12 +118,16 @@ the cookieless stance) · resident payment or tip jar (§2 non-negotiable 1) ·
 any paid-placement surface before the demand gate · sponsorship affordance on
 news or civic cards, ever.
 
-**Gaps against this map** (status 2026-07-28): business CTA = **L5**, the last
-build before cutover · the digest CTA exists as a signup, not a stated weekly
-contract — making it *"the Monday list"* is copy, not build, and it is what
-converts the existing gate into R1's re-entry promise · the published coverage
-standards page (business-model.md §4) does not exist and pays into two loops
-(buyer trust + answer-engine trust signal).
+**Gaps against this map** (status 2026-07-28): business CTA = **L5 shipped**;
+only Batu's Tally form creation remains — **the Follow segment question should
+ride that same Tally setup**, making the R1 test near-free · the Follow CTA has
+no in-product surface — the existing
+post-value prompt captures an email with no stated promise, and the smallest
+version (one Tally question: which lens, or which place) is copy plus a form
+field, not a build · the published coverage standards page (business-model.md
+§4) does not exist and pays into two loops (buyer trust + answer-engine trust
+signal) · per-lens `.ics` feeds (the ambient layer) are unbuilt — small,
+testable, post-launch.
 
 ---
 
@@ -251,7 +294,7 @@ evidence.
 | # | Experiment | Smallest test | Metric & decision rule |
 |---|---|---|---|
 | R0 | **`return_visit` sensor** — localStorage first-seen + visit count, privacy-light. ✅ **live since 2026-07-26** (`returnVisit.js`). | — | Not an experiment — the prerequisite. Unlocks R1/R2 and the demand gate itself. |
-| R1 | **Weekly digest to postvalue signups.** Mon post-ingest, "this week in Greenpoint," II-C, links carry `?src=digest`. AI drafts; Batu sends. | Plain email to existing signups — no automation build. | `src=digest` return sessions vs. signup count, pre/post over 3 weeks. Kill if <30% of recipients ever click by week 3. |
+| R1 | **Follow: personalized alert vs. broadcast digest** *(restructured 2026-07-28 — was "weekly digest to postvalue signups"; the digest is now the control arm, not the treatment)*. The post-value prompt asks one question through the existing Tally — which lens, or a specific place. Operator drafts per-segment; Batu sends **only when something matches**. Unsegmented signups receive the Monday digest unchanged (`?src=digest`); segments carry `?src=follow-<lens>`. | Manual segments — no backend, no automation build. Keep segments coarse (4–5) so a narrow lens doesn't go weeks without a match. | Segment click-through vs. broadcast click-through, 3 weeks. **The design contains its own control — the answer is empirical, not argued.** Kill: if segmented doesn't beat broadcast by week 3, personalization isn't worth a backend → fall back to the digest and close the question. **Time-boxed regardless:** manual segment sends cost more founder-minutes than one digest, so the test ends at 3 weeks either way — continue only as a build decision. |
 | R2 | **"New this week" marker** — use first-seen to badge cards added since last visit; makes the weekly rhythm visible in-product. | Small UI change over existing data. | Return-visit `card_open` depth pre/post. Kill if no lift after 2 weeks of returners. |
 | R3 | **Five warm-user conversations:** "what would make you check this weekly?" | Was the voided checkpoint's fail-branch; survives as a standing instrument — run post-launch regardless of the numbers. | Qualitative; feeds Tue proposals. |
 

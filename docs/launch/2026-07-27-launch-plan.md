@@ -30,7 +30,8 @@ exception 2026-07-28 — they protect the "verified" promise, they don't add fea
 
 ## 2. Cutover sequence (T-0 — the launch moment)
 
-1. **Pre-flight (T-1):** every L-item green (L1–L11; L5 is the open one);
+1. **Pre-flight (T-1):** every L-item green (L1–L11; L5's Tally form swap and
+   L7/L8 are the open ones);
    Monday ingest merged so the feed is fresh on launch day — and the
    verified-through banner (L11) confirms it; `npm test` + `npm run build`
    green on main.
@@ -77,8 +78,10 @@ Echo-chamber order — saturate small trust networks before broadcast
 - **Cadence:** Mon ingest (cloud routines, unchanged) → **Tue Growth Operator
   routine** drafts the readout PR (§5) → Batu merges/edits → Wed–Fri approved
   ships only.
-- **Experiments (max 3 live — growth-engine §6):** light **R1 weekly digest**
-  (first Monday post-launch, `src=digest`), **Q1**, **Q2**. R2 ("new this week"
+- **Experiments (max 3 live — growth-engine §6):** light **R1 Follow**
+  (personalized alert vs. broadcast digest, first Monday post-launch;
+  `src=follow-<lens>` treatment against the `src=digest` control — restructured
+  2026-07-28, growth-engine §0/§2), **Q1**, **Q2**. R2 ("new this week"
   marker) waits for a returner population; A1 funnel read happens inside the
   first readouts (analysis, not an experiment slot).
 - **Metrics watched weekly:** WRL via R0 (`return_visit`) · activation proxy
