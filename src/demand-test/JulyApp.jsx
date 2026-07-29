@@ -37,6 +37,7 @@ export default function JulyApp() {
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
   const [showSignupPrompt, setShowSignupPrompt] = useState(false);
+  const [promptCardId, setPromptCardId] = useState(null);
   // Mobile map peek (UX eval F3, decision B): the list owns the first screen;
   // the map starts compact and grows on request. Desktop ignores this.
   const [mapExpanded, setMapExpanded] = useState(false);
@@ -67,8 +68,16 @@ export default function JulyApp() {
       /* storage blocked: prompt at most once per load */
     }
     const gate = createPostValueGate({ done });
-    return onEvent((name) => {
-      if (gate.record(name)) setShowSignupPrompt(true);
+    return onEvent((name, data) => {
+      if (gate.record(name)) {
+        setShowSignupPrompt(true);
+        // Remember WHICH card earned the ask: the Follow prompt renders next to
+        // it, and its place is the follow object when no lens is active
+        // (DECISION_LOG 2026-07-28). Before this the prompt rendered at the end
+        // of the list — measured ~8 screens from the reader who triggered it,
+        // so the behavioural gate fired into an empty room.
+        setPromptCardId(data?.cardId ?? null);
+      }
     });
   }, []);
 
@@ -244,6 +253,7 @@ export default function JulyApp() {
           onRelated={onRelated}
           showSignupPrompt={showSignupPrompt}
           onSignupPromptDone={onSignupPromptDone}
+          promptCardId={promptCardId}
         />
         <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
           <MapView

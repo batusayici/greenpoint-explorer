@@ -4,6 +4,22 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-29 — Follow shipped: the ask renders at its trigger, object taken from context; footer becomes "Follow Greenpoint"
+
+Decision (Batu, design reviewed then approved to build). Implements the resident CTA adopted 2026-07-28 (Follow replaced the Monday digest) and closes the parked placement finding from the same day.
+
+1. **The prompt renders beside the card that earned it**, not at the end of the list. `postValue.js` always fired on the right *behaviour* (2 `card_open` / 1 `action_tap`); the prompt just rendered somewhere the reader wasn't — measured **6,714px away from a reader sitting at 180px**, ~8 screens. `JulyApp` now captures the triggering `cardId` off the event stream and `CardPanel` renders the prompt inside that card's row. Measured after: **283px below the trigger card, on screen.**
+2. **The object comes from context, so the ask is concrete** — active lens → that lens ("Follow Family & Kids") · all-lens → the trigger card's place ("Follow Greenpoint Library") · neither → all of Greenpoint. `followTarget()` / `followRef()` in `postValue.js`, both pure and tested. A place target drops the "or follow a place instead" line, since it would offer what you already have.
+3. **Transport is the existing Tally, zero backend** — `followHref()` carries `?follow=lens:<id>|place:<id>|all` into a hidden field, matching the `correctionHref`/`submitHref` pattern. R1's control arm is structural: anyone who arrives without a segment is the broadcast group (growth-engine §2).
+4. **Footer becomes "Follow Greenpoint"** (`follow=all`) — Follow at its widest for readers who scroll past without tripping the gate.
+5. **Copy under-promises deliberately (Batu):** "We'll email you when something new lands in X" — not "alerts", not a cadence. Sends are permanently manual (§7), so a quiet lens means silence for weeks; the copy has to survive that. The exciting version would be a promise the backend-free architecture cannot keep.
+6. **One rung stays visible** — no Follow affordance on cards, which would ask on the first visit and break the one-egg rule. The ask exists at the post-value moment plus the footer fallback.
+7. **Fallback:** if the trigger card leaves the view (lens change, pin focus), the prompt falls back to the end of the list and re-derives its object from the now-active lens rather than disappearing with the card.
+
+Analytics: `cta_tap { cta: "follow", placement: "inline"|"listend"|"footer", object }` — no new event name, so the frozen `EVENTS` contract is untouched.
+
+Owner: Batu.
+
 ## 2026-07-28 — UX correction pass: one supply row, correction link separated, touch targets swept
 
 Decision (Batu, after reviewing the shipped L5 UI and calling four usability misses). The L5 build was mechanically correct and compositionally wrong; the review found more than it was pointed at.

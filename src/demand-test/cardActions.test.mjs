@@ -125,3 +125,15 @@ test("submitHref encodes refs and appends to existing query strings", async () =
   const { submitHref } = await import("./cardActions.js");
   assert.equal(submitHref("https://tally.so/r/abc123?x=1", "empty state"), "https://tally.so/r/abc123?x=1&ref=empty%20state");
 });
+
+// followHref (2026-07-28): the Follow ask carries its object into the Tally
+// form as a hidden field, so a segment is captured without a backend.
+test("followHref prefills the form with the follow target", async () => {
+  const { followHref } = await import("./cardActions.js");
+  assert.equal(followHref("https://tally.so/r/abc123", "lens:family_kids"), "https://tally.so/r/abc123?follow=lens%3Afamily_kids");
+});
+
+test("followHref appends to an existing query string", async () => {
+  const { followHref } = await import("./cardActions.js");
+  assert.equal(followHref("https://tally.so/r/abc123?x=1", "all"), "https://tally.so/r/abc123?x=1&follow=all");
+});

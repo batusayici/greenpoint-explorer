@@ -81,3 +81,11 @@ export function submitHref(formUrl, ref) {
   const sep = formUrl.includes("?") ? "&" : "?";
   return `${formUrl}${sep}ref=${encodeURIComponent(ref)}`;
 }
+
+// L5's sibling for the resident side: the Follow ask carries its object into
+// the form as a hidden field, so a segment is captured with no backend
+// (growth-engine §2 R1 — the smallest test is one extra Tally question).
+export function followHref(formUrl, ref) {
+  const sep = formUrl.includes("?") ? "&" : "?";
+  return `${formUrl}${sep}follow=${encodeURIComponent(ref)}`;
+}

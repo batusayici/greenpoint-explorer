@@ -23,7 +23,7 @@ outbound message; truth rules and II-C palette are non-negotiable.
 | L10 | Per-card correction link + SLA (pressure-test fatal #1) | ✅ shipped 2026-07-28 | "Something wrong?" per card (`correctionHref`, form prefilled with card id) live; SLA in AGENTS.md (ack <24h, unpublish-first). `FEEDBACK_FORM_URL` is set (CardPanel.jsx — tally.so/r/LZqEj1); nothing remaining |
 | L11 | Feed-freshness alarm + verified-through line (pressure-test fatal #2) | ✅ shipped 2026-07-28 | `check-freshness.mjs` in the build (`--stamp` mode, never blocks a corrective deploy) + banner "verified through <date>" degradation live. Remaining: wire the ops-mode check (exit-1 on stale/thin) into a scheduled runner — rides the growth-weekly Monday pull (L8) |
 
-**All builds are shipped** (L5 landed 2026-07-28 — only the Tally form swap rides on Batu; L7 cutover and L8 routine remain). Feature
+**All builds are shipped** (L5 landed 2026-07-28; the Follow resident CTA landed 2026-07-29 — DECISION_LOG. Two Tally items ride on Batu: the ultra-light **submission** form (L5) and the **Follow segment question** on the signup form, which is R1's zero-build test — growth-engine §2. L7 cutover and L8 routine remain). Feature
 freeze holds (2026-07-26: no new features before launch; the community-alert banner was the one scoped
 exception, and L10/L11 were error-monitoring-class launch-readiness items granted the same class of
 exception 2026-07-28 — they protect the "verified" promise, they don't add features).

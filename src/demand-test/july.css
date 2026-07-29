@@ -632,6 +632,32 @@ body { margin: 0; }
 
 .july-prompt p { margin: 0; font-size: 0.82rem; font-weight: 700; line-height: 1.4; }
 
+/* Inline variant (2026-07-28): the Follow ask now renders beside the card that
+   earned it, inside the list, so it takes the list's own gutter instead of the
+   panel's. It keeps the raised treatment — this is the one ask on the surface
+   and it should read as an interjection, not another feed row. */
+.july-card > .july-prompt {
+  margin: 0 12px 12px;
+}
+
+/* The second object (a place) — one tap away, deliberately not a second
+   button: §0 allows one visible rung at a time. */
+.july-prompt-alt {
+  justify-self: start;
+  padding: 4px 0;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.july-prompt-alt:hover { color: var(--ink); }
+
+.july-prompt-alt:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
 .july-prompt-row { display: flex; align-items: center; gap: 10px; }
 
 .july-prompt-row .july-cta { flex: 1; }

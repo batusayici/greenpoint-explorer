@@ -5,6 +5,7 @@
 // tolerance. Pure logic here (node --test); JulyApp owns the React wiring and
 // localStorage persistence.
 import { EVENTS } from "./trackEvents.js";
+import { FILTERS } from "./filterCards.js";
 
 // One localStorage key covers both outcomes (signed up or dismissed): either
 // way the prompt has spent its one chance for this browser.
@@ -29,4 +30,27 @@ export function createPostValueGate({ done = false } = {}) {
       return false;
     },
   };
+}
+
+// The Follow ask (DECISION_LOG 2026-07-28: Follow replaced the Monday digest
+// as the resident CTA). §0 gives it one verb and two objects — a lens or a
+// place — and the one-egg rule says it may only appear once, after value. So
+// the object is taken from context rather than asked as an abstract question:
+// whatever the reader was just doing is what we offer to follow.
+//   active lens → that lens · all-lens → the place on the card that tripped
+//   the gate · neither (the footer's ungated entry) → all of Greenpoint.
+export function followTarget({ filterId = "all", card = null } = {}) {
+  if (filterId && filterId !== "all") {
+    const lens = FILTERS.find((f) => f.id === filterId);
+    if (lens) return { kind: "lens", id: lens.id, label: lens.label };
+  }
+  if (card?.locationName) return { kind: "place", id: card.id, label: card.locationName };
+  return { kind: "all", id: "all", label: "Greenpoint" };
+}
+
+// Wire form for the target: what rides into the Tally hidden field and the
+// `object` property on the tap. R1 segments read off this (growth-engine §2);
+// anyone who arrives without one is the digest control arm.
+export function followRef(target) {
+  return target.kind === "all" ? "all" : `${target.kind}:${target.id}`;
 }

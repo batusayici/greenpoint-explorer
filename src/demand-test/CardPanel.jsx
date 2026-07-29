@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
-import { actionHref, withShareAction, sharePayload, correctionHref, submitHref } from "./cardActions.js";
+import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
+import { followTarget, followRef } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
 import { formatWindow } from "./eventWindow.js";
@@ -314,6 +315,57 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   );
 }
 
+// The resident CTA (DECISION_LOG 2026-07-28: Follow replaced the Monday
+// digest). One ask, one rung — it appears once, after the post-value gate, and
+// names what the reader was just doing so the object is concrete. Copy
+// deliberately under-promises: sends are permanently manual (growth-engine §7),
+// so "when something new lands" is a promise we can keep and "alerts" is not.
+function FollowPrompt({ filter, card, onDone, placement }) {
+  const target = followTarget({ filterId: filter, card });
+  const ref = followRef(target);
+  return (
+    <div className="july-prompt" role="status">
+      <p>
+        Want the next one? We&rsquo;ll email you when something new lands in{" "}
+        <strong>{target.label}</strong>.
+      </p>
+      <div className="july-prompt-row">
+        <a
+          className="july-cta july-cta--primary"
+          href={followHref(SIGNUP_URL, ref)}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => {
+            trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: ref });
+            onDone();
+          }}
+        >
+          Follow {target.label}
+        </a>
+        <button type="button" className="july-prompt-dismiss" onClick={onDone}>
+          Not now
+        </button>
+      </div>
+      {/* The other object stays one tap away without becoming a second ask —
+          the form's own question is where a place gets named (R1, §2). */}
+      {target.kind !== "place" && (
+        <a
+          className="july-prompt-alt"
+          href={followHref(SIGNUP_URL, ref)}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => {
+            trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: "place-instead" });
+            onDone();
+          }}
+        >
+          or follow a place instead
+        </a>
+      )}
+    </div>
+  );
+}
+
 // The Today pill is viewport-fixed on mobile, so it must yield whenever the
 // feed's end chrome (signup prompt, footer CTA) is on screen — Batu's phone
 // test caught it parked on top of the signup button. Desktop's pill is
@@ -349,7 +401,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone, promptCardId }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -366,6 +418,10 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // visible even while the fold is closed.
   const activeIsFolded = folded.some((f) => f.id === filter);
   const showFolded = moreOpen || activeIsFolded;
+  // Is the card that earned the ask still on screen? If not, the prompt falls
+  // back to the end of the list rather than disappearing with it.
+  const promptVisible =
+    promptCardId != null && groups.some((g) => g.cards.some((c) => c.id === promptCardId));
 
   // Location focus engaged (pin tap): bring the narrowed feed into view.
   // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
@@ -578,6 +634,9 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                     </button>
                   </h3>
                   {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onFilterAction={onFilterAction} onRelated={onRelated} />}
+                  {showSignupPrompt && card.id === promptCardId && (
+                    <FollowPrompt filter={filter} card={card} onDone={onSignupPromptDone} placement="inline" />
+                  )}
                 </li>
               );
             })}
@@ -637,48 +696,29 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           </a>
         </li>
       </ol>
-      {showSignupPrompt && (
-        <div className="july-prompt" role="status">
-          {/* §0 (2026-07-28): the resident CTA states the weekly contract —
-              a named cadence is R1's re-entry promise. "Monday list" already
-              carries the cadence; the trailing "every Monday" was redundant. */}
-          <p>Finding this useful? Get the Monday list &mdash; your week in Greenpoint, by email.</p>
-          <div className="july-prompt-row">
-            <a
-              className="july-cta july-cta--primary"
-              href={SIGNUP_URL}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => {
-                trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "postvalue" });
-                onSignupPromptDone();
-              }}
-            >
-              Get the Monday list
-            </a>
-            <button type="button" className="july-prompt-dismiss" onClick={onSignupPromptDone}>
-              Not now
-            </button>
-          </div>
-        </div>
+      {/* Fallback only: the prompt renders beside its trigger card (above), but
+          that card can leave the view — a lens change, a pin focus, the Today
+          lens. Rather than lose the ask, it lands here, which is where it
+          always used to be. */}
+      {showSignupPrompt && !promptVisible && (
+        <FollowPrompt filter={filter} card={null} onDone={onSignupPromptDone} placement="listend" />
       )}
-      {/* The post-value prompt above is the same ask with a better hook
-          ("Finding this useful?") — showing both stacked read as the app
-          asking twice in a row (Batu, phone test). The footer is the
-          fallback for readers who scroll past without ever tripping the
-          post-value gate; it steps aside whenever the prompt is up. */}
+      {/* The footer is the fallback for readers who scroll past without ever
+          tripping the post-value gate; it steps aside whenever the prompt is
+          up, since two stacked asks read as the app asking twice (Batu, phone
+          test). No object — an ungated reader hasn't told us anything yet, so
+          this is Follow at its widest (and R1's control arm: growth-engine §2
+          reads unsegmented signups as the broadcast group). */}
       {!showSignupPrompt && (
         <footer className="july-ctas">
           <a
             className="july-cta july-cta--primary"
-            href={SIGNUP_URL}
+            href={followHref(SIGNUP_URL, "all")}
             target={SIGNUP_URL.startsWith("http") ? "_blank" : undefined}
             rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
-            onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
+            onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement: "footer", object: "all" })}
           >
-            {/* Q3-A: the ask is an email signup — say so before the form does.
-                §0 (2026-07-28): named cadence = the weekly contract. */}
-            Get the Monday list by email
+            Follow Greenpoint
           </a>
         </footer>
       )}
