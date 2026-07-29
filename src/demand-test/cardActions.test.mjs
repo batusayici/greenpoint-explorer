@@ -112,3 +112,16 @@ test("correctionHref encodes ids and appends to existing query strings", async (
   const { correctionHref } = await import("./cardActions.js");
   assert.equal(correctionHref("https://tally.so/r/LZqEj1?ref=app", "a b&c"), "https://tally.so/r/LZqEj1?ref=app&card=a%20b%26c");
 });
+
+// submitHref added 2026-07-28 (L5): the business submission link carries a
+// ?ref= provenance tag (list vs empty placement) so the Tally submission
+// itself records where it came from — tag-every-outbound-link rule.
+test("submitHref prefills the submission form with the entry placement", async () => {
+  const { submitHref } = await import("./cardActions.js");
+  assert.equal(submitHref("https://tally.so/r/abc123", "list"), "https://tally.so/r/abc123?ref=list");
+});
+
+test("submitHref encodes refs and appends to existing query strings", async () => {
+  const { submitHref } = await import("./cardActions.js");
+  assert.equal(submitHref("https://tally.so/r/abc123?x=1", "empty state"), "https://tally.so/r/abc123?x=1&ref=empty%20state");
+});

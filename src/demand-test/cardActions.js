@@ -72,3 +72,12 @@ export function correctionHref(formUrl, cardId) {
   const sep = formUrl.includes("?") ? "&" : "?";
   return `${formUrl}${sep}card=${encodeURIComponent(cardId)}`;
 }
+
+// L5 (2026-07-28): business submission entry point. The ?ref= tag (list vs
+// empty placement) rides into a Tally hidden field so the submission itself
+// carries provenance even if the submit_tap event is blocked client-side —
+// tag-every-outbound-link rule.
+export function submitHref(formUrl, ref) {
+  const sep = formUrl.includes("?") ? "&" : "?";
+  return `${formUrl}${sep}ref=${encodeURIComponent(ref)}`;
+}

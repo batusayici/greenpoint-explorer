@@ -564,6 +564,48 @@ body { margin: 0; }
   text-underline-offset: 2px;
 }
 
+/* --- L5 business submission row: a sibling of the feedback row, one notch
+   quieter — shares its dashed-top block (no own border), a step smaller.
+   The digest CTA stays the panel's only button; hierarchy is structural. --- */
+.july-submit {
+  padding: 0 16px 14px;
+  font-size: 0.78rem;
+}
+
+.july-submit-q {
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.july-submit a {
+  color: var(--ink);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.july-submit a:focus-visible,
+.july-empty-submit a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* L5 echo inside the empty state: recovery stays primary, the door is quiet. */
+.july-empty-submit {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.july-empty-submit a {
+  color: var(--ink);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 
 /* --- post-value signup prompt: appears once, after the map proves useful --- */
 .july-prompt {

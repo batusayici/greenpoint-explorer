@@ -27,6 +27,14 @@ const API = "https://api.tally.so";
 const FORMS = [
   { id: process.env.TALLY_SIGNUP_FORM_ID ?? "44daZo", role: "signup" },
   { id: process.env.TALLY_FEEDBACK_FORM_ID ?? "LZqEj1", role: "feedback" },
+  // L5 (2026-07-28): business submission form — only pulled once the
+  // dedicated ultra-light form exists. TODO(L5): when Batu creates it, set
+  // TALLY_SUBMIT_FORM_ID in .env.local (and the id as the default here) and
+  // swap CardPanel's SUBMIT_FORM_URL. Until then submissions arrive via the
+  // feedback form (already pulled above), so nothing is lost or double-counted.
+  ...(process.env.TALLY_SUBMIT_FORM_ID
+    ? [{ id: process.env.TALLY_SUBMIT_FORM_ID, role: "submit" }]
+    : []),
 ];
 
 function loadEnvLocal() {

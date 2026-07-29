@@ -16,6 +16,8 @@ test("exposes the eleven agreed events by stable wire name", () => {
   // return_visit added 2026-07-26 (growth-engine R0): the retention sensor —
   // the PMF bar is denominated in it.
   // alert_tap added 2026-07-26: the community-alert banner tap (banner charter).
+  // submit_tap added 2026-07-28 (L5): the business submission entry — the
+  // supply-gate sensor (≥5 proactive actors, ops plan 3.3).
   assert.deepEqual(EVENTS, {
     PIN_TAP: "pin_tap",
     CARD_OPEN: "card_open",
@@ -27,6 +29,7 @@ test("exposes the eleven agreed events by stable wire name", () => {
     FEEDBACK_TAP: "feedback_tap",
     RETURN_VISIT: "return_visit",
     ALERT_TAP: "alert_tap",
+    SUBMIT_TAP: "submit_tap",
   });
 });
 

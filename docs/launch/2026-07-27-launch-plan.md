@@ -15,15 +15,15 @@ outbound message; truth rules and II-C palette are non-negotiable.
 | L2 | OG tags + `/e/<slug>` deep links | ✅ shipped (og.png LFS fix 2026-07-26) | — |
 | L3 | AEO surface (prerender, JSON-LD, sitemap/RSS/ICS/llms.txt) | ✅ shipped 2026-07-26; **prod acceptance passed 2026-07-27** — extensionless `/e/<slug>` resolves without a trailing slash, no-JS `curl` returns per-card title + venue + address, and dated cards carry valid `schema.org/Event` JSON-LD (name/startDate/location+geo). 40 of 93 pages carry Event schema — correct by design: undated place/news cards are not Events and must not claim a date | Google Rich Results test is a manual browser step (not scriptable) — still worth one spot-check. Re-verify on the new origin at cutover |
 | L4 | Error monitoring (hard gate) | ✅ PostHog exception autocapture verified; alert emails confirmed on (Issue assigned + Error tracking weekly digest, Default project scoped) | — |
-| L5 | Business submission path (ops plan 3.3) | ⬜ not built | Tally form + pinned CTA card + `submit_tap` event; joins Monday review queue |
+| L5 | Business submission path (ops plan 3.3) | ✅ shipped 2026-07-28 | Feed-end submit row + empty-state echo (chrome, not a card — DECISION_LOG 2026-07-28), `submit_tap` live, Monday-run "asks" step in the ingest skill. Remaining: **Batu creates the ultra-light Tally form** (name · what's happening · email, hidden `ref` field) → swap `SUBMIT_FORM_URL` (CardPanel.jsx) + `TALLY_SUBMIT_FORM_ID`; until then asks land in the feedback form |
 | L6 | De-July (by Aug 1) | ✅ shipped 2026-07-27 | `cards.json` rename + evergreen meta description + skill migration note. Internal identifiers (`JulyApp.jsx`, `.july-*` CSS, `julyCards.test.mjs`) left as-is; `july-postvalue-done` key must not be renamed |
 | L7 | Domain cutover mechanics | ⬜ open | See §2 |
 | L8 | Growth Operator live | ⬜ this pass | `/growth-weekly` skill + Tuesday routine (§4) |
 | L9 | R0 retention baseline | ✅ collecting since 2026-07-26 | — |
-| L10 | Per-card correction link + SLA (pressure-test fatal #1) | ✅ shipped 2026-07-28 | "Something wrong?" per card (`correctionHref`, form prefilled with card id) live; SLA in AGENTS.md (ack <24h, unpublish-first). Needs `FEEDBACK_FORM_URL` set (rides L5's Tally setup) |
+| L10 | Per-card correction link + SLA (pressure-test fatal #1) | ✅ shipped 2026-07-28 | "Something wrong?" per card (`correctionHref`, form prefilled with card id) live; SLA in AGENTS.md (ack <24h, unpublish-first). `FEEDBACK_FORM_URL` is set (CardPanel.jsx — tally.so/r/LZqEj1); nothing remaining |
 | L11 | Feed-freshness alarm + verified-through line (pressure-test fatal #2) | ✅ shipped 2026-07-28 | `check-freshness.mjs` in the build (`--stamp` mode, never blocks a corrective deploy) + banner "verified through <date>" degradation live. Remaining: wire the ops-mode check (exit-1 on stale/thin) into a scheduled runner — rides the growth-weekly Monday pull (L8) |
 
-**L5 is the last build before cutover** (L6 shipped 2026-07-27; L10/L11 shipped 2026-07-28). Feature
+**All builds are shipped** (L5 landed 2026-07-28 — only the Tally form swap rides on Batu; L7 cutover and L8 routine remain). Feature
 freeze holds (2026-07-26: no new features before launch; the community-alert banner was the one scoped
 exception, and L10/L11 were error-monitoring-class launch-readiness items granted the same class of
 exception 2026-07-28 — they protect the "verified" promise, they don't add features).

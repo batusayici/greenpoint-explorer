@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
-import { actionHref, withShareAction, sharePayload, correctionHref } from "./cardActions.js";
+import { actionHref, withShareAction, sharePayload, correctionHref, submitHref } from "./cardActions.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
 import { formatWindow } from "./eventWindow.js";
@@ -29,6 +29,12 @@ const SIGNUP_URL = "https://tally.so/r/44daZo";
 // commitment metric.
 const FEEDBACK_FORM_URL = "https://tally.so/r/LZqEj1";
 const FEEDBACK_HREF = FEEDBACK_FORM_URL || SIGNUP_URL;
+
+// L5 (2026-07-28): business submission entry — ultra-light Tally form
+// (business/org name · what's happening · email), the supply-gate sensor.
+// TODO(L5): swap for the dedicated submission form URL once Batu creates it;
+// until then the feedback form catches early asks without losing them.
+const SUBMIT_FORM_URL = "https://tally.so/r/LZqEj1";
 
 function ActionLink({ action, card, onFilter, onFilterAction }) {
   const cls = "july-action";
@@ -583,6 +589,19 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             >
               Show all
             </button>
+            {/* L5 echo: an empty lens is where "why isn't my thing here?"
+                happens mid-feed — one quiet door, recovery stays primary. */}
+            <span className="july-empty-submit">
+              Run a business or org here?{" "}
+              <a
+                href={submitHref(SUBMIT_FORM_URL, "empty")}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "empty" })}
+              >
+                Add your event &rarr;
+              </a>
+            </span>
           </li>
         )}
         {/* Feedback is a standing row at the end of every layer's feed — the
@@ -598,10 +617,31 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             Something missing or wrong? Tell us &rarr;
           </a>
         </li>
+        {/* L5 (DECISION_LOG 2026-07-28 §0): the business CTA — persistent but
+            low-salience; the feed's end is where "how do I get on this"
+            resolves for an owner scrolling to check. One notch quieter than
+            the feedback row; the digest CTA stays the panel's only button.
+            Link text is §0's canonical phrase verbatim. */}
+        <li className="july-submit">
+          {/* "business or org": §0 names the audience "business/venue owner" and
+              the supply gate counts orgs — the library and Town Square must not
+              read themselves out of the door (design_crit 2026-07-28). */}
+          <span className="july-submit-q">Run a Greenpoint business or org?</span>{" "}
+          <a
+            href={submitHref(SUBMIT_FORM_URL, "list")}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "list" })}
+          >
+            Add your event &mdash; free, verified, on the map &rarr;
+          </a>
+        </li>
       </ol>
       {showSignupPrompt && (
         <div className="july-prompt" role="status">
-          <p>Finding this useful? Get next week&rsquo;s edition in your inbox.</p>
+          {/* §0 (2026-07-28): the resident CTA states the weekly contract —
+              a named cadence ("every Monday") is R1's re-entry promise. */}
+          <p>Finding this useful? Get the Monday list &mdash; the week&rsquo;s Greenpoint in your inbox, every Monday.</p>
           <div className="july-prompt-row">
             <a
               className="july-cta july-cta--primary"
@@ -613,7 +653,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                 onSignupPromptDone();
               }}
             >
-              Get next week&rsquo;s map
+              Get the Monday list
             </a>
             <button type="button" className="july-prompt-dismiss" onClick={onSignupPromptDone}>
               Not now
@@ -635,8 +675,9 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             rel={SIGNUP_URL.startsWith("http") ? "noreferrer" : undefined}
             onClick={() => trackEvent(EVENTS.CTA_TAP, { cta: "signup", placement: "footer" })}
           >
-            {/* Q3-A: the ask is an email signup — say so before the form does. */}
-            Get next week&rsquo;s map by email
+            {/* Q3-A: the ask is an email signup — say so before the form does.
+                §0 (2026-07-28): named cadence = the weekly contract. */}
+            Get the Monday list by email
           </a>
         </footer>
       )}

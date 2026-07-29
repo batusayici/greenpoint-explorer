@@ -4,6 +4,17 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-28 — L5 shipped: feed-end submit row + empty-state echo; ultra-light form first; digest copy states the Monday contract
+
+Decision (Batu, via plan approval). The business submission path (L5, the last build before cutover) ships as **chrome, not a card** — a synthetic card would break the schema coords rule, the card-count contract, the AEO surface, and the truth rules; ops-plan 3.3's "pinned CTA card" wording was stale relative to §0's low-salience rule.
+
+1. **Placement:** a standing quiet row after the feedback row at the feed's end (every lens) — "Run a Greenpoint business or org? **Add your event — free, verified, on the map →**" (§0's canonical phrase verbatim; "or org" per design_crit — the library and Town Square must not read themselves out of the door). One notch below the feedback row (0.78rem, soft-ink qualifier, shared dashed-top block); the digest CTA remains the panel's only button. Empty lenses carry a shortened echo ("Run a business or org here? Add your event →") under the recovery action. Rejected: header/banner (one-banner charter, wrong salience), under the digest button (footer is prompt-conditional; stacked-ask problem), pinned top-of-feed (sells to residents), card-based (above).
+2. **Form is ultra-light by intent (Batu):** pre-launch, no business queues up to be featured on an app with no users — the CTA measures lightweight interest (`submit_tap`, `placement: list|empty`; `?ref=` provenance rides into the form). Fields: business/org name · what's happening · email. **Upgrade to review-ready-minimum fields is data-gated, post-launch.** Until the dedicated Tally form exists, the link points at the feedback form (asks land there; nothing is lost) — swap `SUBMIT_FORM_URL` + `TALLY_SUBMIT_FORM_ID` when Batu creates it.
+3. **Submissions join the Monday ingest run as "asks"** — supply-gate evidence first, cards second; a card only ships if its claims verify at a named source through the normal gates; submission-derived adds never qualify for the zero-add auto-merge promotion.
+4. **Digest contract (§0 consequence, same ship):** the resident signup now states the cadence — "Get the Monday list" (prompt + footer). Copy only.
+
+Owner: Batu.
+
 ## 2026-07-28 — Audience → CTA map adopted: one CTA per audience, digest is the resident CTA
 
 Decision (Batu). Derived from the business model and growth engine rather than from what the product currently does: **every audience serves exactly one loop, and its one CTA is the action that turns a visit into fuel for that loop** — not the most useful thing that audience can do. Adopted as **`docs/growth/growth-engine.md` §0**, the trace every experiment and launch item routes back to; a build that serves no audience's one CTA is not a loop-edge repair.
