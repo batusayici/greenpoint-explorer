@@ -290,11 +290,16 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
             )}
           </React.Fragment>
         ))}
-        {/* L10 (2026-07-28): the correction entry point — "verified" needs a
-            route in for disputes that isn't Batu's inbox (email stays
-            private, 2026-07-15). Prefilled card id → targeted report; SLA in
-            AGENTS.md (ack <24h, unpublish first). */}
-        {" · "}
+      </p>
+      {/* L10 (2026-07-28): the correction entry point — "verified" needs a
+          route in for disputes that isn't Batu's inbox (email stays private,
+          2026-07-15). Prefilled card id → targeted report; SLA in AGENTS.md
+          (ack <24h, unpublish first).
+          Moved out of the source line 2026-07-28: sharing that paragraph's
+          `·` separator and micro-caps styling made it parse as another
+          source name. It is an action, so it reads in sentence case, on its
+          own line, at a tappable size. */}
+      <p className="july-report-line">
         <a
           className="july-report"
           href={correctionHref(FEEDBACK_FORM_URL, card.id)}
@@ -302,7 +307,7 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
           rel="noreferrer"
           onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "card_correction", cardId: card.id })}
         >
-          Something wrong?
+          Report an error
         </a>
       </p>
     </div>
@@ -599,49 +604,45 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                 rel="noreferrer"
                 onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "empty" })}
               >
-                Add your event &rarr;
+                Add yours, free &rarr;
               </a>
             </span>
           </li>
         )}
-        {/* Feedback is a standing row at the end of every layer's feed — the
-            reader who scrolled the list is exactly who knows what's missing.
-            ONE affordance only (2026-07-15 review: two read as redundant). */}
-        <li className="july-feedback">
+        {/* One supply row, two audiences (Batu, 2026-07-28). It was two rows
+            until the feed-end zone stacked three competing asks; merging them
+            leaves the digest button unambiguously primary. The "or wrong?"
+            half moved to the per-card "Report an error" link, which reports in
+            context — so the remaining job here is the gap: something MISSING,
+            whether a reader noticed it or the owner is the one telling us.
+            Both links keep their own event so supply signal stays separable. */}
+        <li className="july-supply">
+          <span className="july-supply-q">Missing something?</span>{" "}
           <a
             href={FEEDBACK_HREF}
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent(EVENTS.FEEDBACK_TAP, { placement: "list" })}
           >
-            Something missing or wrong? Tell us &rarr;
+            Tell us
           </a>
-        </li>
-        {/* L5 (DECISION_LOG 2026-07-28 §0): the business CTA — persistent but
-            low-salience; the feed's end is where "how do I get on this"
-            resolves for an owner scrolling to check. One notch quieter than
-            the feedback row; the digest CTA stays the panel's only button.
-            Link text is §0's canonical phrase verbatim. */}
-        <li className="july-submit">
-          {/* "business or org": §0 names the audience "business/venue owner" and
-              the supply gate counts orgs — the library and Town Square must not
-              read themselves out of the door (design_crit 2026-07-28). */}
-          <span className="july-submit-q">Run a Greenpoint business or org?</span>{" "}
+          {" or "}
           <a
             href={submitHref(SUBMIT_FORM_URL, "list")}
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "list" })}
           >
-            Add your event &mdash; free, verified, on the map &rarr;
+            add yours, free &rarr;
           </a>
         </li>
       </ol>
       {showSignupPrompt && (
         <div className="july-prompt" role="status">
           {/* §0 (2026-07-28): the resident CTA states the weekly contract —
-              a named cadence ("every Monday") is R1's re-entry promise. */}
-          <p>Finding this useful? Get the Monday list &mdash; the week&rsquo;s Greenpoint in your inbox, every Monday.</p>
+              a named cadence is R1's re-entry promise. "Monday list" already
+              carries the cadence; the trailing "every Monday" was redundant. */}
+          <p>Finding this useful? Get the Monday list &mdash; your week in Greenpoint, by email.</p>
           <div className="july-prompt-row">
             <a
               className="july-cta july-cta--primary"

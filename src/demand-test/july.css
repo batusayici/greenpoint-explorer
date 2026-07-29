@@ -499,12 +499,12 @@ body { margin: 0; }
 }
 
 .july-related-chip {
-  padding: 4px 9px;
+  padding: 8px 11px;
   border: 1px dashed var(--line);
   border-radius: 999px;
   background: transparent;
   color: var(--ink);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   cursor: pointer;
   font-family: inherit;
@@ -517,19 +517,42 @@ body { margin: 0; }
 
 .july-source {
   margin: 8px 0 0;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
 
+/* Citation links are small by register, so they buy their tap height with
+   padding rather than type size (2026-07-28 touch-target sweep). */
 .july-source a {
+  display: inline-block;
+  padding: 9px 0;
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .july-source a:hover { color: var(--ink); }
+
+/* The per-card correction link is an ACTION, not a citation — it lived inside
+   .july-source until 2026-07-28 and inherited the micro-caps register, so
+   "Source: X · Something wrong?" read as two sources. Sentence case, own line,
+   12.5px, and padded to a tappable height (isolated, no adjacent targets). */
+.july-report-line {
+  margin: 6px 0 0;
+}
+
+.july-report {
+  display: inline-block;
+  padding: 9px 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.july-report:hover { color: var(--ink); }
 
 .july-empty { padding: 18px 16px; font-size: 0.84rem; color: var(--ink-soft); }
 
@@ -547,44 +570,32 @@ body { margin: 0; }
 
 .july-empty-reset:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-/* --- feedback (limited launch): a standing row at the end of the feed --- */
-.july-feedback {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 14px 16px;
+/* --- supply row: ONE standing row at the end of the feed, two doors (reader
+   reports a gap / owner adds their own). Merged from the separate feedback and
+   submit rows 2026-07-28 — three stacked asks in this zone left the digest
+   button fighting for the same attention. The digest CTA is the only button
+   here; this row is text, so hierarchy is structural, not tuned. --- */
+.july-supply {
+  padding: 6px 16px 14px;
   border-top: 1px dashed var(--line);
   font-size: 0.8rem;
-}
-
-.july-feedback a {
-  color: var(--ink);
-  font-weight: 750;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-/* --- L5 business submission row: a sibling of the feedback row, one notch
-   quieter — shares its dashed-top block (no own border), a step smaller.
-   The digest CTA stays the panel's only button; hierarchy is structural. --- */
-.july-submit {
-  padding: 0 16px 14px;
-  font-size: 0.78rem;
-}
-
-.july-submit-q {
   color: var(--ink-soft);
+}
+
+.july-supply-q {
   font-weight: 700;
 }
 
-.july-submit a {
+.july-supply a {
+  display: inline-block;
+  padding: 9px 0;
   color: var(--ink);
   font-weight: 750;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.july-submit a:focus-visible,
+.july-supply a:focus-visible,
 .july-empty-submit a:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
@@ -861,6 +872,7 @@ body { margin: 0; }
 .july-card-head:focus-visible,
 .july-related-chip:focus-visible,
 .july-source a:focus-visible,
+.july-report:focus-visible,
 .ii-pin:focus-visible,
 .ii-venue-dot:focus-visible {
   outline: 2px solid var(--ink);

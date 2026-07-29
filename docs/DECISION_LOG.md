@@ -4,6 +4,19 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-28 — UX correction pass: one supply row, correction link separated, touch targets swept
+
+Decision (Batu, after reviewing the shipped L5 UI and calling four usability misses). The L5 build was mechanically correct and compositionally wrong; the review found more than it was pointed at.
+
+1. **One supply row replaces two.** The feed-end zone had stacked three competing asks (feedback row · submit row · digest button). Merged to a single row — "Missing something? **Tell us** or **add yours, free →**" — two links, two audiences, one line, both events (`feedback_tap` / `submit_tap`) kept separable. The "or wrong?" half was retired from this row because the per-card correction link now reports in context; the remaining job here is the *gap*.
+2. **The per-card correction link left the source line.** It had lived inside `<p class="july-source">`, sharing that paragraph's `·` separator and micro-caps styling with genuine citations — so "Source: The Carcosa Club · Something wrong?" parsed as a second source. `.july-report` had **zero CSS rules**. Now its own line, sentence case ("Report an error"), 12.5px, 33px target.
+3. **Touch-target sweep (unscoped).** 63 of 169 interactive elements failed the 12px-type / 32px-target bar. Fixed in the feed: supply row, correction link, related chips, source links. **Map pins (18–24px) are knowingly left** — a different interaction class with tap tolerance; revisit only if pin mis-taps show up.
+4. **Copy tightened.** Submit ask 13 words → 5; the post-value prompt no longer says "Monday" twice.
+5. **Above the fold stays empty of asks** — §0's one-egg rule ("first visit asks nothing") is the reason, so this is by design, not a gap. No header CTA.
+6. **Process correction (the actual root cause):** the L5 design_crit pass was **scoped to the new element**, so it could not see composition, reachability, or neighbouring surfaces, and only Gate 0 was run. Standing rule going forward: **crit the surface, not the diff** — run the full gate loop unscoped before commit, and verify the behavioural premise a placement argument rests on (here: nobody measured the scroll distance to the thing being placed).
+
+Owner: Batu.
+
 ## 2026-07-28 — L5 shipped: feed-end submit row + empty-state echo; ultra-light form first; digest copy states the Monday contract
 
 Decision (Batu, via plan approval). The business submission path (L5, the last build before cutover) ships as **chrome, not a card** — a synthetic card would break the schema coords rule, the card-count contract, the AEO surface, and the truth rules; ops-plan 3.3's "pinned CTA card" wording was stale relative to §0's low-salience rule.
