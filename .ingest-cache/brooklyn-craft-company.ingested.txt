@@ -232,31 +232,11 @@ Workshop
 Vendor
 Brooklyn Craft Company
 (121)
-Sewing 101 - Tote Bag
+Block Printed Bookmarks
 Regular Price
-$95.00
+$45.00
 Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Sew Pajama Pants (2-parts)
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Watercolor Nebulas + Galaxies
-Regular Price
-$55.00
-Sale Price
-$55.00
+$45.00
 Regular Price
 Unit Price
 / per
@@ -267,166 +247,6 @@ Regular Price
 $0.00
 Sale Price
 $0.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Indigo Shibori Dyeing
-Regular Price
-$85.00
-Sale Price
-$85.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Visible Darning & Mending with a Loom
-Regular Price
-$65.00
-Sale Price
-$65.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Bookbinding 101: DIY Journals
-Regular Price
-$65.00
-Sale Price
-$65.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Private Crochet Lessons by the Hour
-Regular Price
-$60.00
-Sale Price
-$60.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Private Knitting Lessons by the Hour
-Regular Price
-$60.00
-Sale Price
-$60.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-CRAFTY HOUR: Embroidered Hats
-Regular Price
-$25.00
-Sale Price
-$25.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Block Printing 101: Tote Bag
-Regular Price
-$85.00
-Sale Price
-$85.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Sewing 101 - Make a Skirt
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Denim Mending
-Regular Price
-$65.00
-Sale Price
-$65.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Beginner Cross Stitch
-Regular Price
-$50.00
-Sale Price
-$50.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Filet Crochet
-Regular Price
-$55.00
-Sale Price
-$55.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Beaded Embroidery
-Regular Price
-$55.00
-Sale Price
-$55.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Sew a Hip Pack
-Regular Price
-$95.00
-Sale Price
-$95.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Crochet 101 - Chunky Cowl
-Regular Price
-$45.00
-Sale Price
-$45.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Flat Felting: Floral Bouquet
-Regular Price
-$55.00
-Sale Price
-$55.00
-Regular Price
-Unit Price
-/ per
-Added to Cart View Cart or Continue Shopping .
-Cart Error Some items became unavailable. Update the quantity and try again.
-Block Printed Bookmarks
-Regular Price
-$45.00
-Sale Price
-$45.00
 Regular Price
 Unit Price
 / per
@@ -462,6 +282,26 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Private Crochet Lessons by the Hour
+Regular Price
+$60.00
+Sale Price
+$60.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Private Knitting Lessons by the Hour
+Regular Price
+$60.00
+Sale Price
+$60.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 CRAFTY HOUR: 90's Nostalgia Night
 Regular Price
 $25.00
@@ -477,6 +317,26 @@ Regular Price
 $55.00
 Sale Price
 $55.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Sewing 101 - Tote Bag
+Regular Price
+$95.00
+Sale Price
+$95.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Open Sewing Hours
+Regular Price
+$20.00
+Sale Price
+$20.00
 Regular Price
 Unit Price
 / per
@@ -522,11 +382,153 @@ Unit Price
 / per
 Added to Cart View Cart or Continue Shopping .
 Cart Error Some items became unavailable. Update the quantity and try again.
+Sewing 101 - Make a Skirt
+Regular Price
+$95.00
+Sale Price
+$95.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Visible Darning & Mending with a Loom
+Regular Price
+$65.00
+Sale Price
+$65.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
 Natural Bundle Dye Workshop
 Regular Price
 $75.00
 Sale Price
 $75.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+CRAFTY HOUR: Tie Dye
+Regular Price
+$25.00
+Sale Price
+$25.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Crochet 101 - Chunky Cowl
+Regular Price
+$45.00
+Sale Price
+$45.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Beaded Embroidery
+Regular Price
+$55.00
+Sale Price
+$55.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Embroidery
+Regular Price
+$50.00
+Sale Price
+$50.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Denim Mending
+Regular Price
+$65.00
+Sale Price
+$65.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Ticket for One
+Ticket for Two (Save $10!)
+Pressed Flower Coasters
+Regular Price
+from $45.00
+Sale Price
+from $45.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+CRAFTY HOUR: Ice Dyeing
+Regular Price
+$25.00
+Sale Price
+$25.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Flat Felting: Pizza Slice
+Regular Price
+$55.00
+Sale Price
+$55.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Patchwork
+Regular Price
+$95.00
+Sale Price
+$95.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Crochet 102: Granny Squares
+Regular Price
+$45.00
+Sale Price
+$45.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Sew a Saltwater Slip Dress (2 Parts)
+Regular Price
+$175.00
+Sale Price
+$175.00
+Regular Price
+Unit Price
+/ per
+Added to Cart View Cart or Continue Shopping .
+Cart Error Some items became unavailable. Update the quantity and try again.
+Beginner Cross Stitch
+Regular Price
+$50.00
+Sale Price
+$50.00
 Regular Price
 Unit Price
 / per

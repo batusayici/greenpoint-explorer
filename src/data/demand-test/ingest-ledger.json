@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T14:30:00-04:00",
+  "lastRunAt": "2026-07-29T13:00:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -930,6 +930,46 @@
       "id": "gmail:19fa3740321606f6",
       "reviewedAt": "2026-07-27",
       "outcome": "PRESS Modern Massage — excluded sender, skipped"
+    },
+    {
+      "id": "gmail:19fa9cc1a4f802a8",
+      "reviewedAt": "2026-07-29",
+      "outcome": "Brooklyn Craft Company newsletter 7/28 — +2 events (Stretchy Knits 8/4, Crafty Hour Tie Dye 8/7); 4 workshops already carded; kids camp address corrected to the Annex (37 Greenpoint Ave); pop-up drop-ins skipped (225 Broadway, Manhattan)"
+    },
+    {
+      "id": "gmail:19fa59f9aaa331a3",
+      "reviewedAt": "2026-07-29",
+      "outcome": "Bios Apothecary 'Last Chance' 7/27 — the 10%-off-first-order is a one-use welcome code expiring 7/28, not a standing offer; bios-apothecary-first-order deleted"
+    },
+    {
+      "id": "gmail:19fadc8e8ffaf9bf",
+      "reviewedAt": "2026-07-29",
+      "outcome": "Town Square SummerStarz reminder — Michael 7/31 already carded (summerstarz-michael-0731); sender added to the registry"
+    },
+    {
+      "id": "https://donyc.com/venues/good-room",
+      "reviewedAt": "2026-07-29",
+      "outcome": "nothing on-concept in diff"
+    },
+    {
+      "id": "https://brooklyncraftcompany.com/collections/all-workshops",
+      "reviewedAt": "2026-07-29",
+      "outcome": "nothing on-concept in diff — the newsletter carried the dated workshops, as the roster note predicts"
+    },
+    {
+      "id": "https://acmesmokedfish.com/collections/fish-friday",
+      "reviewedAt": "2026-07-29",
+      "outcome": "diff = standing weekly copy only; Fish Friday 7/31 already carded (acme-fish-friday-0731)"
+    },
+    {
+      "id": "https://gogreenbk.org",
+      "reviewedAt": "2026-07-29",
+      "outcome": "3 items, none new: Newtown Creek CAG + library garden club already carded; Weeding Wednesdays is Bushwick Inlet Park (Williamsburg), skipped"
+    },
+    {
+      "id": "https://www.greenpointstar.com/",
+      "reviewedAt": "2026-07-29",
+      "outcome": "first snapshot — front page serves Jan/Feb 2026 stories (Monitor Point ULURP pre-vote, National Grid/CB1, McGuinness history). All stale, and the Monitor Point piece is superseded by the approval already carded. Nothing shipped; re-check whether this source ever carries current items"
     }
   ],
   "senderRegistry": [
@@ -1109,6 +1149,14 @@
         "event"
       ],
       "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe — locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
+    },
+    {
+      "publisher": "Town Square BK",
+      "match": "townsquarebk.org",
+      "kinds": [
+        "event"
+      ],
+      "note": "hello@ sends the SummerStarz / free-programming reminders (identified 2026-07-29 in the Gmail discovery pass); community institution, exempt from the locally-owned gate. Companion to the town-square-bk web source"
     }
   ],
   "watchItems": [
@@ -1136,6 +1184,11 @@
       "name": "Lulla's Venezuela earthquake relief hub",
       "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub — no address stated and no drop-off hours; card as community/news once the address and hours are verified",
       "addedAt": "2026-07-27"
+    },
+    {
+      "name": "Greenpoint Star (roster source freshness)",
+      "note": "first successful snapshot returned only Jan/Feb 2026 stories — nothing shippable. If the next full run sees the same front page, the source is dormant or the fetch is hitting a cached shell; decide whether to keep it on the roster",
+      "addedAt": "2026-07-29"
     }
   ]
 }

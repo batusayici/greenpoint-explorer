@@ -170,7 +170,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Sliced Sablefish (8 oz.)
 Cold Smoked
 Specialty
@@ -952,6 +952,7 @@ All Products
 Fish Friday
 Where to Buy
 Merch
+Your privacy choices
 © 2026 Acme Smoked Fish
 Account Login
 Credit Application
