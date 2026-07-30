@@ -18,8 +18,11 @@ const CHIP_KIND = {
 
 // ONE ask, lowest friction (lean test: the tap is the interest signal, the
 // form response is the commitment signal — CTA_TAP vs Tally responses is the
-// conversion funnel). Business/event submissions are an optional field INSIDE
-// the form ("July in Greenpoint — weekly map" on Batu's Tally), not a second button.
+// conversion funnel). Rebuilt as "Follow Greenpoint" 2026-07-29: one field
+// (email) plus a hidden `follow` param, so the segment is captured without
+// asking. The business question that used to live inside it moved to
+// SUBMIT_FORM_URL below — it was 0-for-2 answered and it asked residents a
+// business question.
 const SIGNUP_URL = "https://tally.so/r/44daZo";
 
 // Limited-launch feedback channel (2026-07-15): hosted form only — Batu's
@@ -31,11 +34,10 @@ const SIGNUP_URL = "https://tally.so/r/44daZo";
 const FEEDBACK_FORM_URL = "https://tally.so/r/LZqEj1";
 const FEEDBACK_HREF = FEEDBACK_FORM_URL || SIGNUP_URL;
 
-// L5 (2026-07-28): business submission entry — ultra-light Tally form
-// (business/org name · what's happening · email), the supply-gate sensor.
-// TODO(L5): swap for the dedicated submission form URL once Batu creates it;
-// until then the feedback form catches early asks without losing them.
-const SUBMIT_FORM_URL = "https://tally.so/r/LZqEj1";
+// L5 (2026-07-28): business submission entry — the supply-gate sensor.
+// Dedicated ultra-light form live 2026-07-29 ("Add your event"): business/org
+// name · what's happening · email, all required, plus a hidden `ref` param.
+const SUBMIT_FORM_URL = "https://tally.so/r/aQXzOB";
 
 function ActionLink({ action, card, onFilter, onFilterAction }) {
   const cls = "july-action";

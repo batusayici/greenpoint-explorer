@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-29 — Tally forms finalized: one visible field where possible; hidden params verified end-to-end
+
+Decision (Batu: "keep things super easy and lightweight, ask no more than what's essential"). Every CTA now terminates in a live form that captures its context. Built in Batu's Tally account via browser; all three published.
+
+1. **`44daZo` → "Follow Greenpoint"** (was "July in Greenpoint — weekly map"). **One visible field: email.** The segment is *not* asked — the hidden `follow` param already carries it from context, so R1's test costs the user zero friction. **This retires the "one extra question on the Tally form" plan in growth-engine §2** — asking would duplicate what the app already knows. Copy matches the app's under-promise ("We'll email you when something new lands. Nothing else."). **The business free-text question was removed from this form**: it asked residents a business question, was 0-for-2 answered, and now has its own form.
+2. **`aQXzOB` → "Add your event"** (new). Three required fields — business/org name · what's happening (date, time, place) · email — plus hidden `ref` (list|empty). The ultra-light spec from 2026-07-28, unchanged.
+3. **`LZqEj1` → "What's missing or wrong?"** — **had no hidden field at all**, so every `?card=<id>` from the L10 correction link was silently dropped: reports arrived with no way to tell which card was wrong. Hidden `card` added. It also had no visible title (rendered Tally's "Form title" placeholder); now set.
+4. **Verified, not assumed:** one test submission per form confirmed capture — `{"follow":"lens:family_kids"}`, `{"card":"film-noir-support"}`, `{"ref":"list"}`. Hidden values live in Tally's JS state rather than DOM inputs, so a submission is the only real proof. **Three test rows remain for Batu to delete** (each marked "delete me"/"TEST").
+5. Code: `SUBMIT_FORM_URL` → `aQXzOB`; `tally-pull.mjs` pulls the submit form unconditionally (no env var needed).
+
+Known rough edge: the pull output labels hidden fields by Tally's opaque field id (`4v1x15: {"ref":"list"}`) not the param name. Readable, but the Monday "asks" step reads this — worth a formatter fix if it grates.
+
+Owner: Batu.
+
 ## 2026-07-29 — Follow shipped: the ask renders at its trigger, object taken from context; footer becomes "Follow Greenpoint"
 
 Decision (Batu, design reviewed then approved to build). Implements the resident CTA adopted 2026-07-28 (Follow replaced the Monday digest) and closes the parked placement finding from the same day.
