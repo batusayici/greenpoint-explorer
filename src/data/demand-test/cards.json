@@ -319,7 +319,7 @@
       ],
       "actions": [
         {
-          "label": "See the current show",
+          "label": "Current show",
           "type": "visit"
         }
       ],
@@ -410,7 +410,7 @@
           "url": "https://contact.mta.info/s/customer-feedback"
         },
         {
-          "label": "Check live G service",
+          "label": "Live G service",
           "type": "learn_more",
           "url": "https://new.mta.info/alerts"
         }
@@ -536,7 +536,7 @@
           "url": "https://contact.mta.info/s/customer-feedback"
         },
         {
-          "label": "Find your representatives",
+          "label": "Your reps",
           "type": "learn_more",
           "url": "https://www.mygovnyc.org"
         }
@@ -4128,12 +4128,12 @@
       ],
       "actions": [
         {
-          "label": "Read the Council's announcement",
+          "label": "Council vote",
           "type": "learn_more",
           "url": "https://council.nyc.gov/press/2026/06/25/3147/"
         },
         {
-          "label": "How the fight got here",
+          "label": "Background",
           "type": "learn_more",
           "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
         }
@@ -4194,7 +4194,7 @@
       ],
       "actions": [
         {
-          "label": "Read the city's announcement",
+          "label": "City announcement",
           "type": "learn_more",
           "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin"
         }
