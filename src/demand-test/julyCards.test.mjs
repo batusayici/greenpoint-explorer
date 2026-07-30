@@ -113,11 +113,16 @@ test("seed has exactly 71 cards across the six layers", () => {
   // corrects the 6pm card's 00:00 start (a value the calendar never stated;
   // isExpiredCard reads 00:00 as the all-day sentinel and skips the
   // started-grace hide, pinning a 6pm show to the lens from midnight).
-  assert.equal(seed.cards.length, 95);
+  // 2026-07-30 (Batu's ask): the Kingsland Wildflowers festival had sat as a
+  // watchItem since 7/27 (Greenpointers only said "next week", no date) — the
+  // organizer's own events page (kingslandwildflowers.com/events, now a
+  // registered source) gives the 10th-annual date, Sat Aug 1 2-6pm, free,
+  // corroborated by Greenpointers' 7/23 writeup. +1 event, 95 → 96.
+  assert.equal(seed.cards.length, 96);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 46, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa) + Film Noir Monday");
+  assert.equal(count((c) => c.category === "event"), 47, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa) + Film Noir Monday + Kingsland Wildflowers Festival");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
   assert.equal(count((c) => c.filters.includes("live_music")), 19, "15 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
@@ -200,6 +205,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     "brew-inn-trivia-0729",
     "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
     "greenpoint-trash-club",
+    "kingsland-wildflowers-festival-2026",
     "library-childrens-book-club-0729",
     "library-friday-programs-0731",
     "library-thursday-programs-0730",

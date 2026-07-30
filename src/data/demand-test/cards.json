@@ -4288,6 +4288,63 @@
       "updatedAt": "2026-07-27",
       "lat": 40.714423,
       "lng": -73.953036
+    },
+    {
+      "id": "kingsland-wildflowers-festival-2026",
+      "category": "event",
+      "sourceCampaign": "kingsland_wildflowers_festival_2026_07_30",
+      "title": "Kingsland Wildflowers Festival",
+      "kicker": "Sat Aug 1 · 2–6 PM · Free",
+      "locationName": "Kingsland Wildflowers",
+      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "summary": "The 10th annual celebration atop the Broadway Stages rooftop meadow: art installations, live music and performances, native plant sales, and hands-on Newtown Creek ecology exhibits, free and open to all ages.",
+      "whyItMatters": "A milestone year for a hidden rooftop meadow most residents have never set foot on — free, family-friendly, and a short walk from the avenue.",
+      "filters": [
+        "family_kids",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "family",
+        "visitor"
+      ],
+      "corridor": null,
+      "free": true,
+      "startsAt": "2026-08-01T14:00:00-04:00",
+      "endsAt": "2026-08-01T18:00:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/10th-annual-kingsland-wildflowers-festival-tickets-1991709784581"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Events — Kingsland Wildflowers",
+          "publisher": "Kingsland Wildflowers",
+          "url": "https://www.kingslandwildflowers.com/events",
+          "date": "2026-07-30"
+        },
+        {
+          "title": "Kingsland Wildflowers Festival Celebrates 10 Years in Greenpoint",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/23/kingsland-wildflowers-festival-celebrates-10-years-in-greenpoint/",
+          "date": "2026-07-23"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "lat": 40.735131,
+      "lng": -73.94316
     }
   ]
 }

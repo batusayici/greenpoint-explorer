@@ -930,6 +930,11 @@
       "id": "gmail:19fa3740321606f6",
       "reviewedAt": "2026-07-27",
       "outcome": "PRESS Modern Massage — excluded sender, skipped"
+    },
+    {
+      "id": "https://www.kingslandwildflowers.com/events",
+      "reviewedAt": "2026-07-30",
+      "outcome": "resolved watchItem: organizer's page gives Sat Aug 1, 2-6pm, free, 520 Kingsland Ave — card added (kingsland-wildflowers-festival-2026), corroborated by Greenpointers 7/23 writeup"
     }
   ],
   "senderRegistry": [
@@ -1118,6 +1123,15 @@
         "news"
       ],
       "note": "waterfront park + Save the Inlet advocacy; civic/community opportunities and events. Batu subscribed to the newsletter 2026-07-30."
+    },
+    {
+      "publisher": "Kingsland Wildflowers",
+      "match": "kingslandwildflowers.com",
+      "kinds": [
+        "event",
+        "family_kids"
+      ],
+      "note": "520 Kingsland Ave rooftop meadow (Broadway Stages/Alive Structures/Newtown Creek Alliance/Noo Arts); web source, not email — kingslandwildflowers.com/events is the primary calendar. Annual festival is the anchor event (10th ed. Sat Aug 1 2026); pull the events page every ingest for the rest of the year's programming."
     }
   ],
   "watchItems": [
@@ -1134,11 +1148,6 @@
     {
       "name": "Meet Cute (Greenpoint film studio)",
       "note": "Greenpointers 7/24 names an open house on August 2 — no time and no street address stated; card once both are verified",
-      "addedAt": "2026-07-27"
-    },
-    {
-      "name": "Kingsland Wildflowers festival",
-      "note": "Greenpointers 7/24: annual namesake festival 'next week' with performances — no date, time or price stated; card once the organizer's page gives a date",
       "addedAt": "2026-07-27"
     },
     {
