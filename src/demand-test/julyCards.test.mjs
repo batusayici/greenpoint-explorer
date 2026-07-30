@@ -118,11 +118,16 @@ test("seed has exactly 71 cards across the six layers", () => {
   // organizer's own events page (kingslandwildflowers.com/events, now a
   // registered source) gives the 10th-annual date, Sat Aug 1 2-6pm, free,
   // corroborated by Greenpointers' 7/23 writeup. +1 event, 95 → 96.
-  assert.equal(seed.cards.length, 96);
+  // 2026-07-30 (Batu's ask, same day): Flower Cat's Botanic Drawing Workshop
+  // (7/30, 7-9pm) — flowercat.nyc/events had nothing (normal for them; their
+  // real channel is Instagram, which we don't crawl), so Batu's ma.to find
+  // is the only sourceLink. One-off attribution, not a registered ma.to
+  // roster source. +1 event, 96 → 97.
+  assert.equal(seed.cards.length, 97);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 47, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa) + Film Noir Monday + Kingsland Wildflowers Festival");
+  assert.equal(count((c) => c.category === "event"), 48, "40 post-expiry + run 2's five dated adds (Troost ×2, Film Noir, GCC, Carcosa) + Film Noir Monday + Kingsland Wildflowers Festival + Flower Cat Botanic Drawing Workshop");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
   assert.equal(count((c) => c.filters.includes("live_music")), 19, "15 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
