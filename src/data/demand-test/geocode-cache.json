@@ -2578,5 +2578,105 @@
         "-73.9527944"
       ]
     }
+  },
+  "Monsignor McGolrick Park, Brooklyn": {
+    "query": "Monsignor McGolrick Park, Brooklyn",
+    "fetchedAt": "2026-07-30T13:33:31.856Z",
+    "hit": {
+      "place_id": 359199569,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 33819642,
+      "lat": "40.7244575",
+      "lon": "-73.9433612",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.41006843495098233,
+      "addresstype": "park",
+      "name": "Monsignor McGolrick Park",
+      "display_name": "Monsignor McGolrick Park, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7232074",
+        "40.7256970",
+        "-73.9443678",
+        "-73.9423566"
+      ]
+    }
+  },
+  "138 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "138 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-30T13:33:33.781Z",
+    "hit": {
+      "place_id": 360488084,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280095825,
+      "lat": "40.7244899",
+      "lon": "-73.9477434",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "138, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7244066",
+        "40.7246628",
+        "-73.9478742",
+        "-73.9476638"
+      ]
+    }
+  },
+  "135 Franklin St, Brooklyn, NY 11222": {
+    "query": "135 Franklin St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-30T13:33:35.133Z",
+    "hit": {
+      "place_id": 359023803,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10357823713,
+      "lat": "40.7309032",
+      "lon": "-73.9579318",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "135, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7308532",
+        "40.7309532",
+        "-73.9579818",
+        "-73.9578818"
+      ]
+    }
+  },
+  "100 Sutton St, Brooklyn, NY 11222": {
+    "query": "100 Sutton St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-30T13:33:36.618Z",
+    "hit": {
+      "place_id": 359188806,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 279799000,
+      "lat": "40.7265453",
+      "lon": "-73.9405590",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "100, Sutton Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7263511",
+        "40.7267898",
+        "-73.9407570",
+        "-73.9403687"
+      ]
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T14:30:00-04:00",
+  "lastRunAt": "2026-07-30T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -930,6 +930,13 @@
       "id": "gmail:19fa3740321606f6",
       "reviewedAt": "2026-07-27",
       "outcome": "PRESS Modern Massage — excluded sender, skipped"
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-30",
+      "outcome": "Wednesday pull of the 7/30-8/5 roundup (25 items). 10 events added (McGolrick cleanup 8/1, library Sat 8/1 + Tue 8/4 day cards, Milltown dog adoption 8/1, Jucy Lucy sip & paint 7/31, Macha poetry open mic 7/31, Scrappleland Topperz pinball 8/2, Dreams on Command artist talk 8/2, Threes board-game speed dating 8/5, one-day choir at 100 Sutton 8/5); 2 library day cards updated (7/30 book club, 7/31 after-school movie). 6 skipped on the Williamsburg address gate: Tot Time + Sunset Coastal Cleanup at Marsha P Johnson State Park (11249, 7/22 precedent), Bushwick Inlet Park summer music series, Joy Flower Pot plants sale (713 Lorimer per Greenpointers' own opening article), Brooklyn Mile (Kent Ave), Hellcat screening at The Twisted Spine (306 Grand). 5 held as watchItems — no named source states a Greenpoint street address. Also deleted poochs-parlor-first-groom as a duplicate of poochs-first-visit-20 (the expiry FLAG on the older copy was a dedupe signal, not a re-verify one). NOTE: the roundup body is JS-rendered and headless Chromium has no network egress in the cloud sandbox, so ingest:fetch errored and the tracked greenpointers baseline could NOT be promoted this run; content was read from Greenpointers' own full-text RSS feed instead."
     }
   ],
   "senderRegistry": [
@@ -1136,6 +1143,31 @@
       "name": "Lulla's Venezuela earthquake relief hub",
       "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub — no address stated and no drop-off hours; card as community/news once the address and hours are verified",
       "addedAt": "2026-07-27"
+    },
+    {
+      "name": "Williamsburg Greenpoint Meetup at Bee's Knees",
+      "note": "Greenpointers 7/30-8/5 roundup: 6:30pm mingling meetup, free with RSVP (luma) — no address stated anywhere in Greenpointers' coverage, and Nominatim only resolves a different business (Bee's Knees Provisions, Boerum Hill). Card once the Greenpoint address is confirmed.",
+      "addedAt": "2026-07-30"
+    },
+    {
+      "name": "Drink and Draw at Fernanda Uribe Studio",
+      "note": "Greenpointers 7/30-8/5 roundup: 7/31 6:30pm live-model drawing session, $45 (partiful) — Greenpointers ties the artist to Greenpoint's 42 West St building but never states the studio's own address. Card once confirmed.",
+      "addedAt": "2026-07-30"
+    },
+    {
+      "name": "Community Class at Movement Loft",
+      "note": "Greenpointers 7/30-8/5 roundup: 8/1 12pm drop-in mat Pilates, $15 (arketa) — no address in any Greenpointers coverage and Nominatim misses. Would land in the wellness lens once the address is confirmed.",
+      "addedAt": "2026-07-30"
+    },
+    {
+      "name": "Open House at Meet Cute Films",
+      "note": "Greenpointers 7/30-8/5 roundup: 8/2 10:30am Love Story Studio open house, discounted to $500 — Greenpointers' own feature calls it 'the Greenpoint film studio' but states no street address. Carried since 7/27 (then missing time and address; the time is now known).",
+      "addedAt": "2026-07-30"
+    },
+    {
+      "name": "A Therapeutic Sound Bath at Gather Center",
+      "note": "Greenpointers 7/30-8/5 roundup: 8/5 7pm 90-minute Tibetan singing-bowl session, $87.21 (eventbrite) — 61 Greenpoint Ave appears in an older roundup near a Gather Center item, but attribution is ambiguous. Card once the address is confirmed.",
+      "addedAt": "2026-07-30"
     }
   ]
 }
