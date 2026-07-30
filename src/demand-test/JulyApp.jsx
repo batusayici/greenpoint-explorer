@@ -7,7 +7,6 @@ import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
 import { assessFreshness } from "./freshness.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
-import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
 import MapView from "./MapView.jsx";
@@ -36,8 +35,9 @@ export default function JulyApp() {
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
-  const [showSignupPrompt, setShowSignupPrompt] = useState(false);
-  const [promptCardId, setPromptCardId] = useState(null);
+  // Lens ids the reader has waved off this visit. In memory on purpose — see
+  // onDismissFollow: a reload is the undo.
+  const [dismissedLenses, setDismissedLenses] = useState(() => new Set());
   // Mobile map peek (UX eval F3, decision B): the list owns the first screen;
   // the map starts compact and grows on request. Desktop ignores this.
   const [mapExpanded, setMapExpanded] = useState(false);
@@ -68,38 +68,20 @@ export default function JulyApp() {
     window.history.replaceState(null, "", deepLinkUrl(selectedId, window.location.search));
   }, [selectedId]);
 
-  // Post-value email prompt (limited launch): observe the tap stream and offer
-  // the weekly signup once, only after value is demonstrated (2nd card open or
-  // 1st action tap). localStorage makes "once" mean once per browser, not per
-  // load — signing up or dismissing both spend it.
-  useEffect(() => {
-    let done = false;
-    try {
-      done = localStorage.getItem(POST_VALUE_DONE_KEY) != null;
-    } catch {
-      /* storage blocked: prompt at most once per load */
-    }
-    const gate = createPostValueGate({ done });
-    return onEvent((name, data) => {
-      if (gate.record(name)) {
-        setShowSignupPrompt(true);
-        // Remember WHICH card earned the ask: the Follow prompt renders next to
-        // it, and its place is the follow object when no lens is active
-        // (DECISION_LOG 2026-07-28). Before this the prompt rendered at the end
-        // of the list — measured ~8 screens from the reader who triggered it,
-        // so the behavioural gate fired into an empty room.
-        setPromptCardId(data?.cardId ?? null);
-      }
+  // The Follow row is dismissed PER LENS, and only for this visit (Batu,
+  // 2026-07-30). Two complaints drove both halves: one dismiss used to spend a
+  // single global key, so declining on News silently killed the ask on every
+  // other category — "dismissed from other categories as well which i didn't
+  // have a way to undo". Per-lens fixes the collateral damage; keeping the set
+  // in memory rather than storage makes a reload the undo, so no single tap
+  // can cost a category permanently.
+  const onDismissFollow = useCallback((lensId) => {
+    setDismissedLenses((prev) => {
+      if (prev.has(lensId)) return prev;
+      const next = new Set(prev);
+      next.add(lensId);
+      return next;
     });
-  }, []);
-
-  const onSignupPromptDone = useCallback(() => {
-    setShowSignupPrompt(false);
-    try {
-      localStorage.setItem(POST_VALUE_DONE_KEY, new Date().toISOString());
-    } catch {
-      /* storage blocked */
-    }
   }, []);
 
   // Escape closes the open card (UX eval, F27).
@@ -277,9 +259,8 @@ export default function JulyApp() {
           selectedId={selectedId}
           onSelect={setSelectedId}
           onRelated={onRelated}
-          showSignupPrompt={showSignupPrompt}
-          onSignupPromptDone={onSignupPromptDone}
-          promptCardId={promptCardId}
+          dismissedLenses={dismissedLenses}
+          onDismissFollow={onDismissFollow}
         />
         <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
           <MapView

@@ -1,40 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
-import { EVENTS } from "./trackEvents.js";
 
-test("fires once on the 2nd card open (value demonstrated by browsing)", () => {
-  const gate = createPostValueGate();
-  assert.equal(gate.record(EVENTS.CARD_OPEN), false, "1st open: not yet");
-  assert.equal(gate.record(EVENTS.CARD_OPEN), true, "2nd open: prompt");
-  assert.equal(gate.record(EVENTS.CARD_OPEN), false, "never twice");
-});
-
-test("fires once on the 1st action tap (value demonstrated by acting)", () => {
-  const gate = createPostValueGate();
-  assert.equal(gate.record(EVENTS.ACTION_TAP), true);
-  assert.equal(gate.record(EVENTS.CARD_OPEN), false);
-  assert.equal(gate.record(EVENTS.ACTION_TAP), false);
-});
-
-test("non-value events (filters, pins) never trigger it", () => {
-  const gate = createPostValueGate();
-  for (const name of [EVENTS.FILTER_TAP, EVENTS.PIN_TAP, EVENTS.CTA_TAP, EVENTS.SOURCE_TAP]) {
-    assert.equal(gate.record(name), false, name);
-  }
-  assert.equal(gate.record(EVENTS.CARD_OPEN), false, "still only 1 open");
-});
-
-test("a browser that already saw it (localStorage done flag) never gets it again", () => {
-  const gate = createPostValueGate({ done: true });
-  assert.equal(gate.record(EVENTS.CARD_OPEN), false);
-  assert.equal(gate.record(EVENTS.CARD_OPEN), false);
-  assert.equal(gate.record(EVENTS.ACTION_TAP), false);
-});
-
-test("the storage key is stable (changing it would re-prompt every tester)", () => {
-  assert.equal(POST_VALUE_DONE_KEY, "july-postvalue-done");
-});
+// The post-value gate that used to live here (createPostValueGate + the
+// july-postvalue-done key, 2026-07-15) was RETIRED 2026-07-30 along with its
+// tests: the Follow row no longer has a behavioural trigger at all. Batu's
+// verdict on the built version was "too annoying once you use it. feels like a
+// spammy popup" — an element that materialises in response to what the reader
+// just did reads as a popup however quiet its styling. See postValue.js for
+// what the retirement costs, and 5412473 for the implementation.
 
 // Follow, LENS-ONLY since 2026-07-30 (Batu). The ask is now an interest probe
 // for personalization, so it takes exactly one object — the category lens the

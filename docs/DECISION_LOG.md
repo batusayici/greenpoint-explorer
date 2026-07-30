@@ -4,6 +4,19 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-30 (latest) — The post-value gate is RETIRED; the Follow row is static feed furniture, dismissed per lens
+
+Decision (Batu, after using the built banner): **"too annoying once you use it. feels like a spammy popup. also once i dismissed, it was dismissed from other categories as well which i didn't have a way to undo."** Three changes:
+
+1. **The post-value gate is retired** (`createPostValueGate` + the `july-postvalue-done` key, live since 2026-07-15). The generalizable lesson: **a behavioural trigger is what makes an element read as a popup, regardless of how quietly it is styled.** Both previous rounds treated this as a styling problem — the box, the border, the button. It was never styling. Anything that materialises in response to what the reader just did is a popup. The row is now simply part of the lens: present from the moment a category is selected, never appearing, never moving.
+   **What that costs, stated plainly:** a signup no longer proves the reader got value first, so the number is *category interest* rather than *post-value pull*. Accepted while the ask is a personalization probe — category interest is precisely what we are trying to measure. The gate is recoverable from git at 5412473.
+2. **Static slot: after the first day group's cards.** Far enough down that the reader has passed real content, but fixed, and it never lands between two cards of the same day — it sits on a day boundary, which is already a break in the feed's rhythm. On a single-group lens this degenerates to the end of the feed, which is the same "you've read it, here's how to keep getting it" order. The list-end duplicate is **gone** ("no need to also anchor it to the bottom") — one placement, no repeats.
+3. **Dismiss is per lens and per visit.** The old single global key meant one × silently killed the ask on every other category, with no way back — the collateral damage Batu hit. Dismissals now live in a `Set` of lens ids in React state: per-lens fixes the collateral damage, and keeping it **in memory rather than storage makes a reload the undo**, so no single tap can cost a category permanently. Tapping through to the form also retires that lens's row, since the reader is already in the form and leaving the ask behind them would re-ask.
+
+The footer's ungated "Follow Greenpoint" keeps its job as the general/unsegmented arm (R1 control, growth-engine §2) and steps back in whenever the lens row is absent — the All lens, or a lens the reader waved off — so the surface is never askless.
+
+Owner: Batu.
+
 ## 2026-07-30 (later) — The Follow ask becomes a lens-only banner; place-follow withdrawn; the promise is now weekly
 
 Decision (Batu, after reviewing three specced directions in situ at 375px). Four changes, each with a reason that outlives the pixels:

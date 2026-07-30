@@ -343,7 +343,7 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
 // for G-train status, .july-cbanner for the civic ask): edge-to-edge,
 // zero-radius, saturated bed. Full-bleed + square is unambiguously not a
 // button, because every control on this surface is content-sized with a radius.
-function FollowPrompt({ filter, onDone, placement }) {
+function FollowPrompt({ filter, onDismiss, placement }) {
   const target = followTarget({ filterId: filter });
   // Lens-only (Batu, 2026-07-30): no lens selected, no ask. The footer's
   // ungated "Follow Greenpoint" covers that reader — see the footer's note.
@@ -368,18 +368,22 @@ function FollowPrompt({ filter, onDone, placement }) {
           rel="noreferrer"
           onClick={() => {
             trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: ref });
-            onDone();
+            // Tapping through also retires the row for this lens — the reader
+            // is now in the form; leaving the ask behind them would re-ask.
+            onDismiss();
           }}
         >
           Follow {target.label}
         </a>
       </div>
-      {/* Same dismiss vocabulary as the dead-link notice: a glyph, labelled. */}
+      {/* Same dismiss vocabulary as the dead-link notice: a glyph, labelled.
+          Scoped to THIS lens only (Batu): the old single global key meant one
+          × silently killed the ask on every other category too. */}
       <button
         type="button"
         className="july-fbanner-dismiss"
-        onClick={onDone}
-        aria-label="Dismiss"
+        onClick={onDismiss}
+        aria-label={`Dismiss ${target.label} follow`}
       >
         &times;
       </button>
@@ -432,7 +436,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone, promptCardId }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, dismissedLenses, onDismissFollow }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -449,17 +453,15 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // visible even while the fold is closed.
   const activeIsFolded = folded.some((f) => f.id === filter);
   const showFolded = moreOpen || activeIsFolded;
-  // The ask anchors to the OPEN card, falling back to its trigger card (punch
-  // list P2 #15): pinned only to the trigger, opening another card left the
-  // CTA naming a business absent from the screen. If neither is in the feed,
-  // the prompt falls back to the end of the list rather than disappearing.
-  const promptAnchorId = selectedId ?? promptCardId;
-  const promptVisible =
-    promptAnchorId != null && groups.some((g) => g.cards.some((c) => c.id === promptAnchorId));
-  // Lens-only: with no lens selected the ask renders nothing, and the footer's
-  // ungated "Follow Greenpoint" has to step back IN to cover that reader.
-  const hasFollowTarget = followTarget({ filterId: filter }) != null;
-  const askShowing = showSignupPrompt && hasFollowTarget;
+  // The Follow row has a STATIC slot and no behavioural trigger (Batu,
+  // 2026-07-30): "too annoying once you use it. feels like a spammy popup."
+  // Anything that materialises in response to what the reader just did reads
+  // as a popup, however quiet it looks — so the row is simply part of the lens
+  // now, present from the moment a category is selected and never moving.
+  // Lens-only, so on All it renders nothing and the footer's ungated "Follow
+  // Greenpoint" steps back in to cover that reader.
+  const followT = followTarget({ filterId: filter });
+  const askShowing = followT != null && !dismissedLenses.has(followT.id);
 
   // Location focus engaged (pin tap): bring the narrowed feed into view.
   // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
@@ -659,7 +661,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
         </div>
       )}
       <ol className="july-list" ref={listRef}>
-        {groups.map((group) => (
+        {groups.map((group, gi) => (
           <React.Fragment key={group.key}>
             {/* Calendar scan (2026-07-15 review): a lone Ongoing group needs no
                 header — headers appear once dated cards give days to scan.
@@ -674,15 +676,8 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             )}
             {group.cards.map((card) => {
               const open = card.id === selectedId;
-              // The ask is a PEER of the cards, not part of one (Batu,
-              // 2026-07-30): its own row in the feed, directly after the card
-              // that earned it, so it never conflates with card content.
-              // hasFollowTarget too, or the All lens (where the ask renders
-              // nothing) would leave an empty <li> sitting in the feed.
-              const askHere = askShowing && card.id === promptAnchorId;
               return (
-                <React.Fragment key={card.id}>
-                <li className={`july-card${open ? " is-open" : ""}`}>
+                <li key={card.id} className={`july-card${open ? " is-open" : ""}`}>
                   <h3 className="july-card-heading">
                     <button
                       type="button"
@@ -717,14 +712,23 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                     </div>
                   )}
                 </li>
-                {askHere && (
-                  <li className="july-fbanner-row">
-                    <FollowPrompt filter={filter} onDone={onSignupPromptDone} placement="inline" />
-                  </li>
-                )}
-                </React.Fragment>
               );
             })}
+            {/* The static slot: after the FIRST day group's cards, once per
+                feed. Far enough down that the reader has passed real content,
+                but fixed — it never appears in response to a tap, and never
+                lands between two cards of the same day. When the lens has only
+                one group this degenerates to the end of the feed, which is the
+                same "you've read it, here's how to keep getting it" order. */}
+            {gi === 0 && askShowing && (
+              <li className="july-fbanner-row">
+                <FollowPrompt
+                  filter={filter}
+                  onDismiss={() => onDismissFollow(followT.id)}
+                  placement="feed"
+                />
+              </li>
+            )}
           </React.Fragment>
         ))}
         {/* Empty layer (Q2-C): plain words, one-tap recovery — no "layer" jargon. */}
@@ -781,23 +785,15 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           </a>
         </li>
       </ol>
-      {/* Fallback only: the prompt renders beside its trigger card (above), but
-          that card can leave the view — a lens change, a pin focus, the Today
-          lens. Rather than lose the ask, it lands here, which is where it
-          always used to be. */}
-      {showSignupPrompt && !promptVisible && (
-        <FollowPrompt filter={filter} onDone={onSignupPromptDone} placement="listend" />
-      )}
-      {/* The footer is the fallback for readers who scroll past without ever
-          tripping the post-value gate; it steps aside whenever the prompt is
-          up, since two stacked asks read as the app asking twice (Batu, phone
-          test). No object — an ungated reader hasn't told us anything yet, so
-          this is Follow at its widest (and R1's control arm: growth-engine §2
-          reads unsegmented signups as the broadcast group).
-          Since the ask went lens-only (2026-07-30) it also has to step back in
-          when a gated reader is on the All lens: the personalized ask renders
-          nothing there, and without this the surface would carry no ask at
-          all — hence askShowing rather than showSignupPrompt. */}
+      {/* The list-end copy of the ask is GONE (Batu, 2026-07-30: "no need to
+          also anchor it to the bottom") — the row has one static slot in the
+          feed and does not repeat.
+          The footer is a different object: the general, unsegmented Follow for
+          readers with no lens on, and R1's control arm (growth-engine §2 reads
+          unsegmented signups as the broadcast group). It steps aside whenever
+          the lens row is up, since two stacked asks read as the app asking
+          twice — and steps back in on the All lens, or once the reader has
+          waved this lens off, so the surface is never askless. */}
       {!askShowing && (
         <footer className="july-ctas">
           <a
