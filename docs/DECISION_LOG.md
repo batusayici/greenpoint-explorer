@@ -4,6 +4,20 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-30 — "Connected" is now "Related", and shows exactly one card
+
+Decision (Batu): reword the label and constrain it to the single most relevant card.
+
+The place graph is reciprocal, so venue hubs accumulated every event they had ever hosted — Film Noir carried 7 links, the Library 6, the Comedy Club 4. A row of near-identical pills is a menu, not a pointer. 26 of the 34 linked cards already had exactly one live neighbour, so this only changes the hubs, which are exactly where the shelf was noise.
+
+**"Most relevant" has to be derived, because `relatedCardIds` is insertion ordered, not ranked** — Film Noir's list opened with a Jul 27 show. `pickRelated()` in `filterCards.js`: drop expired → soonest upcoming dated card → else freshest evergreen by `createdAt`. From a venue that yields "what's on there next"; from an undated cluster like the G-train story it yields the latest development.
+
+**This also closed a live bug.** `cardsById` is built from the *unfiltered* deck, so related pills could point at cards that had already expired — Film Noir was showing 5 dead shows out of 7, the Library 4 of 6. Tolerable as one pill among many; fatal as the only pill, so expiry filtering is now part of the selection rather than a separate concern.
+
+Ingest note: authored order of `relatedCardIds` carries no meaning — do not try to rank them by hand.
+
+Owner: Batu.
+
 ## 2026-07-30 (latest) — The post-value gate is RETIRED; the Follow row is static feed furniture, dismissed per lens
 
 Decision (Batu, after using the built banner): **"too annoying once you use it. feels like a spammy popup. also once i dismissed, it was dismissed from other categories as well which i didn't have a way to undo."** Three changes:

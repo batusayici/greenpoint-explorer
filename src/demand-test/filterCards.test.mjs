@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
@@ -267,4 +267,60 @@ test("isExpiredCard: real end times, all-day cards, and multi-day windows keep t
   assert.ok(!isExpiredCard(series, new Date("2026-07-24T21:00:00-04:00")), "multi-day sentinel window untouched");
   const recurring = { recurring: true, startsAt: "2026-07-24T19:00:00-04:00", endsAt: "2026-07-24T23:59:00-04:00" };
   assert.ok(!isExpiredCard(recurring, new Date("2026-07-24T21:00:00-04:00")), "recurring cards never start-expire");
+});
+
+// pickRelated (2026-07-30): one pointer, not a shelf. The venue hubs in the
+// live deck carried up to 7 reciprocal links, and `relatedCardIds` is
+// insertion ordered rather than ranked, so relevance has to be derived.
+const NOW = new Date("2026-07-30T12:00:00-04:00");
+const asMap = (cards) => new Map(cards.map((c) => [c.id, c]));
+
+test("pickRelated: a venue hub points at its soonest upcoming show", () => {
+  const shows = [
+    { id: "fri", title: "Friday", startsAt: "2026-07-31T20:00:00-04:00", endsAt: "2026-07-31T23:59:00-04:00" },
+    { id: "thu", title: "Thursday", startsAt: "2026-07-30T20:00:00-04:00", endsAt: "2026-07-30T23:59:00-04:00" },
+    { id: "sat", title: "Saturday", startsAt: "2026-08-01T20:00:00-04:00", endsAt: "2026-08-01T23:59:00-04:00" },
+  ];
+  const venue = { id: "club", relatedCardIds: ["fri", "thu", "sat"] };
+  assert.equal(pickRelated(venue, asMap(shows), NOW).id, "thu", "soonest wins over stored order");
+});
+
+// This was leaking before the constraint: cardsById is built from the
+// UNFILTERED deck, so a venue could point at a show that already happened.
+// Tolerable as one pill among seven, fatal as the only pill.
+test("pickRelated: never returns an expired card", () => {
+  const cards = [
+    { id: "gone", title: "Last night", startsAt: "2026-07-27T20:00:00-04:00", endsAt: "2026-07-27T23:59:00-04:00" },
+    { id: "soon", title: "Tomorrow", startsAt: "2026-07-31T20:00:00-04:00", endsAt: "2026-07-31T23:59:00-04:00" },
+  ];
+  const venue = { id: "club", relatedCardIds: ["gone", "soon"] };
+  assert.equal(pickRelated(venue, asMap(cards), NOW).id, "soon");
+  // and when every neighbour has expired, the row disappears entirely
+  const onlyDead = { id: "club2", relatedCardIds: ["gone"] };
+  assert.equal(pickRelated(onlyDead, asMap(cards), NOW), null);
+});
+
+test("pickRelated: an undated cluster falls back to the freshest", () => {
+  const cards = [
+    { id: "old", title: "Older", createdAt: "2026-07-02" },
+    { id: "new", title: "Newest", createdAt: "2026-07-25" },
+    { id: "mid", title: "Middle", createdAt: "2026-07-16" },
+  ];
+  const hub = { id: "gtrain", relatedCardIds: ["old", "new", "mid"] };
+  assert.equal(pickRelated(hub, asMap(cards), NOW).id, "new");
+});
+
+test("pickRelated: a dated neighbour outranks an evergreen one", () => {
+  const cards = [
+    { id: "evergreen", title: "Support the venue", createdAt: "2026-07-28" },
+    { id: "show", title: "Tonight", startsAt: "2026-07-30T21:00:00-04:00", endsAt: "2026-07-30T23:59:00-04:00" },
+  ];
+  const venue = { id: "cinema", relatedCardIds: ["evergreen", "show"] };
+  assert.equal(pickRelated(venue, asMap(cards), NOW).id, "show", "what's on next beats a standing ask");
+});
+
+test("pickRelated: missing, empty, and dangling link sets yield null", () => {
+  assert.equal(pickRelated({ id: "a" }, asMap([]), NOW), null, "no relatedCardIds field");
+  assert.equal(pickRelated({ id: "a", relatedCardIds: [] }, asMap([]), NOW), null, "empty");
+  assert.equal(pickRelated({ id: "a", relatedCardIds: ["ghost"] }, asMap([]), NOW), null, "dangling id");
 });

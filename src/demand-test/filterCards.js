@@ -183,6 +183,38 @@ export function isExpiredCard(card, date) {
   return date.getTime() > Date.parse(card.startsAt) + STARTED_GRACE_MS;
 }
 
+// ONE related card, not a shelf (Batu, 2026-07-30). The place graph is
+// reciprocal, so a venue card accumulates every event it has ever hosted —
+// Film Noir carried 7 links, the Library 6 — and a row of near-identical pills
+// is a menu, not a pointer. 26 of the 34 linked cards already had exactly one
+// live neighbour, so this only changes the venue hubs, which are precisely the
+// cards where the shelf was noise.
+//
+// "Most relevant" has to be derived, because `relatedCardIds` is INSERTION
+// ordered, not ranked — Film Noir's list opened with a Jul 27 show. The rule:
+//
+//   1. drop anything expired — this was already leaking. cardsById is built
+//      from the unfiltered deck, so a venue card could point at a show that
+//      had already happened. Harmless when it was one pill among seven; fatal
+//      when it is the only pill.
+//   2. soonest upcoming dated card — "what's on there next" is the useful
+//      pointer from a venue, and a card already underway sorts first.
+//   3. otherwise the freshest evergreen, by createdAt — for undated clusters
+//      like the G-train story, that surfaces the latest development.
+export function pickRelated(card, cardsById, date) {
+  const live = (card.relatedCardIds ?? [])
+    .map((id) => cardsById.get(id))
+    .filter(Boolean)
+    .filter((c) => !isExpiredCard(c, date));
+  if (live.length === 0) return null;
+  const dated = live
+    .filter((c) => c.startsAt != null)
+    .sort((a, b) => Date.parse(a.startsAt) - Date.parse(b.startsAt));
+  if (dated.length > 0) return dated[0];
+  const created = (c) => (c.createdAt ? Date.parse(c.createdAt) : 0);
+  return live.slice().sort((a, b) => created(b) - created(a))[0];
+}
+
 // Thin-layer folding (UX eval F16, decision B): a 2-card Deals chip promising
 // a full shelf reads as breakage, so layers under the threshold fold into a
 // "More" chip until the weekly ingest stocks them.

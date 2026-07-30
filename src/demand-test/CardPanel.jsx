@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
+import { FILTERS, pinKind, partitionFilters, pickRelated } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
 import { followTarget, followRef } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
@@ -221,9 +221,10 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   // Spans only (punch list P1 #3): a same-day card's when-line restated what
   // the day header + row clock already carry — keep it for "Through Aug 15".
   const when = card.recurring || !isSpan(card) ? null : formatWindow(card);
-  const related = (card.relatedCardIds ?? [])
-    .map((id) => cardsById.get(id))
-    .filter(Boolean);
+  // One pointer, not a shelf — see pickRelated for how "most relevant" is
+  // derived (the stored order is insertion order, and it can include cards
+  // that have already expired).
+  const related = pickRelated(card, cardsById, new Date());
   // Publisher only — full issue titles live in data as the citation of record
   // but read as noise at label size. First URL per publisher makes it tappable
   // (credibility via links, and the tap is source_tap evidence).
@@ -262,19 +263,16 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
         ))}
         {card.startsAt != null && !card.recurring && <CalendarAction card={card} cls="july-action" />}
       </div>
-      {related.length > 0 && (
+      {related && (
         <p className="july-related">
-          <span className="july-related-label">Connected</span>
-          {related.map((r) => (
-            <button
-              key={r.id}
-              type="button"
-              className="july-related-chip"
-              onClick={() => onRelated(card.id, r.id)}
-            >
-              {r.title}
-            </button>
-          ))}
+          <span className="july-related-label">Related</span>
+          <button
+            type="button"
+            className="july-related-chip"
+            onClick={() => onRelated(card.id, related.id)}
+          >
+            {related.title}
+          </button>
         </p>
       )}
       <p className="july-source">
