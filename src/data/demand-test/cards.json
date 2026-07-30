@@ -405,7 +405,7 @@
       ],
       "actions": [
         {
-          "label": "File an MTA complaint",
+          "label": "File complaint",
           "type": "file_complaint",
           "url": "https://contact.mta.info/s/customer-feedback"
         },
@@ -531,7 +531,7 @@
       ],
       "actions": [
         {
-          "label": "File an MTA complaint",
+          "label": "File complaint",
           "type": "file_complaint",
           "url": "https://contact.mta.info/s/customer-feedback"
         },
@@ -4253,7 +4253,7 @@
       ],
       "actions": [
         {
-          "label": "See the EPA site page",
+          "label": "EPA site",
           "type": "learn_more",
           "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
         }
