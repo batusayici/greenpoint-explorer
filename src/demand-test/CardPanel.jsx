@@ -434,7 +434,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, dismissedLenses, onDismissFollow }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, revealTick = 0, onSelect, onRelated, dismissedLenses, onDismissFollow }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -586,15 +586,22 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     [onFilter],
   );
 
-  // Selection scroll fires ONLY for the initial /e/ deep link. In-session
-  // list taps never yank the view (2026-07-23 live review), and pin taps are
-  // handled by the focus effect above. Instant ("auto") on purpose: smooth
-  // scrolling never progresses in a hidden document, so a link opened in a
-  // background tab would land unscrolled.
+  // Selection scroll fires for the initial /e/ deep link and for REVEALS —
+  // the community-alert banner and related-card chips, where the reader asked
+  // to be taken somewhere and the destination is usually offscreen (the
+  // alert's card sits ~2400px down the mobile page: without this the banner
+  // reads as a dead link). Plain in-session list taps still never yank the
+  // view (2026-07-23 live review), and pin taps are handled by the focus
+  // effect above. Instant ("auto") on purpose: smooth scrolling never
+  // progresses in a hidden document, so a link opened in a background tab
+  // would land unscrolled.
+  const lastRevealRef = useRef(revealTick);
   useEffect(() => {
     const first = firstScrollRef.current;
     firstScrollRef.current = false;
-    if (!first || !selectedId) return;
+    const revealed = revealTick !== lastRevealRef.current;
+    lastRevealRef.current = revealTick;
+    if ((!first && !revealed) || !selectedId) return;
     const list = listRef.current;
     const el = list?.querySelector(".july-card.is-open");
     if (!list || !el) return;
@@ -606,7 +613,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       // Mobile page-flow: the list isn't a scroller — scroll the page.
       el.scrollIntoView({ block: "start", behavior: "auto" });
     }
-  }, [selectedId]);
+  }, [selectedId, revealTick]);
 
   return (
     <aside className="july-panel">
