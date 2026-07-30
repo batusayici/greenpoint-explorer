@@ -4,6 +4,114 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-30 — "Connected" is now "Related", and shows exactly one card
+
+Decision (Batu): reword the label and constrain it to the single most relevant card.
+
+The place graph is reciprocal, so venue hubs accumulated every event they had ever hosted — Film Noir carried 7 links, the Library 6, the Comedy Club 4. A row of near-identical pills is a menu, not a pointer. 26 of the 34 linked cards already had exactly one live neighbour, so this only changes the hubs, which are exactly where the shelf was noise.
+
+**"Most relevant" has to be derived, because `relatedCardIds` is insertion ordered, not ranked** — Film Noir's list opened with a Jul 27 show. `pickRelated()` in `filterCards.js`: drop expired → soonest upcoming dated card → else freshest evergreen by `createdAt`. From a venue that yields "what's on there next"; from an undated cluster like the G-train story it yields the latest development.
+
+**This also closed a live bug.** `cardsById` is built from the *unfiltered* deck, so related pills could point at cards that had already expired — Film Noir was showing 5 dead shows out of 7, the Library 4 of 6. Tolerable as one pill among many; fatal as the only pill, so expiry filtering is now part of the selection rather than a separate concern.
+
+Ingest note: authored order of `relatedCardIds` carries no meaning — do not try to rank them by hand.
+
+Owner: Batu.
+
+## 2026-07-30 (latest) — The post-value gate is RETIRED; the Follow row is static feed furniture, dismissed per lens
+
+Decision (Batu, after using the built banner): **"too annoying once you use it. feels like a spammy popup. also once i dismissed, it was dismissed from other categories as well which i didn't have a way to undo."** Three changes:
+
+1. **The post-value gate is retired** (`createPostValueGate` + the `july-postvalue-done` key, live since 2026-07-15). The generalizable lesson: **a behavioural trigger is what makes an element read as a popup, regardless of how quietly it is styled.** Both previous rounds treated this as a styling problem — the box, the border, the button. It was never styling. Anything that materialises in response to what the reader just did is a popup. The row is now simply part of the lens: present from the moment a category is selected, never appearing, never moving.
+   **What that costs, stated plainly:** a signup no longer proves the reader got value first, so the number is *category interest* rather than *post-value pull*. Accepted while the ask is a personalization probe — category interest is precisely what we are trying to measure. The gate is recoverable from git at 5412473.
+2. **Static slot: after the first day group's cards.** Far enough down that the reader has passed real content, but fixed, and it never lands between two cards of the same day — it sits on a day boundary, which is already a break in the feed's rhythm. On a single-group lens this degenerates to the end of the feed, which is the same "you've read it, here's how to keep getting it" order. The list-end duplicate is **gone** ("no need to also anchor it to the bottom") — one placement, no repeats.
+3. **Dismiss is per lens and per visit.** The old single global key meant one × silently killed the ask on every other category, with no way back — the collateral damage Batu hit. Dismissals now live in a `Set` of lens ids in React state: per-lens fixes the collateral damage, and keeping it **in memory rather than storage makes a reload the undo**, so no single tap can cost a category permanently. Tapping through to the form also retires that lens's row, since the reader is already in the form and leaving the ask behind them would re-ask.
+
+The footer's ungated "Follow Greenpoint" keeps its job as the general/unsegmented arm (R1 control, growth-engine §2) and steps back in whenever the lens row is absent — the All lens, or a lens the reader waved off — so the surface is never askless.
+
+Owner: Batu.
+
+## 2026-07-30 (later) — The Follow ask becomes a lens-only banner; place-follow withdrawn; the promise is now weekly
+
+Decision (Batu, after reviewing three specced directions in situ at 375px). Four changes, each with a reason that outlives the pixels:
+
+1. **It is a full-bleed BANNER, a peer of the cards — not a box, and not inside a card.** Three versions failed the same way. v1 and v2 were a bordered box whose fill (`--paper-lift`) is the open card's own background, so only its 1px ink border and small radius were ever visible — a treatment identical to `.july-action`, the app's button. That, not the contents, is why "the whole thing looks like a button" survived a redesign of the contents. It also sat on two left edges (box x=12, text x=27) against the card body's x=16, which padding cannot fix. v3 moved it inside `.july-detail` to resolve the edges and Batu rejected it: **"conflates every card repeatedly"** — the ask becomes part of a card's content, and any card can be the anchor. So it is now its own `<li>` in the feed, directly after the card that earned it, styled as a third member of the `.july-gbanner` / `.july-cbanner` family. Full-bleed + square edges is unambiguously not a button, because every control on this surface is content-sized with a radius.
+2. **Lens-only.** The ask takes exactly one object — the category lens the reader chose — and renders nothing when none is selected. Reason: it is now an **interest probe for personalization**, so every impression must carry a category the reader picked; a Greenpoint-wide follow mixed generic-digest intent into the same metric and made the signal unreadable. The footer's ungated "Follow Greenpoint" steps back in to cover the All-lens reader (R1's control arm, growth-engine §2) — so the surface is never askless.
+3. **Place-follow is withdrawn, not filtered.** The 2026-07-29 category allowlist was necessary but insufficient: a category-*valid* card can still carry a `locationName` that is not a followable entity, because the field does double duty as map venue display. Four cards reached the live ask — "Follow (eavesdrop)" (literal open-paren), "Follow Rotating bar meetup — announced on Instagram" (44 chars, a sentence), "Follow The Little Dance School (Triskelion Arts)". Rather than pile heuristics onto a field that was never a name, the place object is gone. **Reinstating it needs a real venue-identity field, not a normalizer.**
+4. **The promise is weekly, and the channel is deliberately unpromised.** "One email when something new lands" was wrong — Batu: *"sending an email everytime something new lands is spam. it could work as an alert, but not email."* The card now says **"One email a week, just {lens}."** — keepable under manual sends (growth-engine §7), and the *personalization* is the differentiator, not the cadence. The channel question (email / text / notification) moves into the Tally form, because the open question is whether this should be mail at all: a text or push flow is what would differentiate it from every other neighborhood digest. **This ask is measuring demand, not shipping a mechanism.**
+
+Also fixed: the alt link "or follow a place instead" called `followHref(SIGNUP_URL, ref)` with the *same* ref as the primary button — it opened the identical form URL and only the analytics label differed, so it promised a place and passed a lens. Deleted with the rest of the place path. Dismiss stays permanent (same `july-postvalue-done` key as a signup), per the one-egg rule.
+
+Owner: Batu.
+
+## 2026-07-30 — Phone-test feedback: two lens rules made hard, Ongoing ranked by kind, Follow card recomposed
+
+Decision (Batu, five items from testing on his phone). Each fix is a rule, not a one-off edit:
+
+1. **Supply CTA is "submit an event"** (was "add yours, free"). Names the actual thing; "free" was arguing a point nobody asked about.
+2. **Ongoing is ranked by KIND, freshest-first inside each kind** — `ongoingRank()` in `filterCards.js`: asks (civic/mutual aid) → what changed (news) → recurring programming → standing offers → memberships/signups → places. The old rule was a single news-first partition that fixed its own 2026-07-25 bug and left the other ~36 undated rows in raw ingest-insertion order (a service card between two food_drink cards, three dance signups adrift from a fourth, standing deals at rows 39/45/47). Ranking is by decay rate + actionability; `createdAt` desc inside a tier makes each refresh's additions surface without a manual reorder.
+3. **`community` is civic action and mutual aid ONLY** (Batu: "Community has gaming events that shouldn't be there"). The 40k tournament and the weekly chess night moved to `arts_culture`. A merely *social* gathering never qualifies, however community-flavored. **Consequence, accepted:** the lens now holds 3 live cards and folds behind "More" per the F16-B threshold — thin because 3 dated civic cards expired on Jul 28–29, not because of this change; the next ingest restocks it. Threshold left alone deliberately.
+4. **`deals_memberships` is deals and standing memberships ONLY.** `subscription` is the schema category for both a standing membership (Falu tinned-fish club — open-ended) and a term enrollment (fall dance registration — a fixed term bought once), so **the lens cannot be derived from the category** and must be authored. Four enrollments/registrations moved to `family_kids`. Both rules are now enforced by tests on the live deck and written into the ingest skill's lens rules.
+5. **The Follow card is recomposed as subject → promise → action** (Batu: "the whole thing looks like a button; there's whitespace and alignment issues"). Measured before: a bordered, shadowed box whose ink button ran 257 of 327 usable px, its label centered while every line below sat left at x=27 — box-in-box with nothing aligned, and the card had no subject of its own because the object lived only inside the button label. Now the object is the headline in the row-title register, the promise sits above the action (it informs the decision), the button is sized to a one-word verb (84px) with `aria-label` carrying "Follow {object}", and all four lines share one left edge. Spacing is authored per pair (13 / 1 / 10 / 5) instead of a uniform grid gap. **This strengthens rather than weakens the 2026-07-28 "object from context" decision** — the object is now typographically the subject instead of being buried in a label. Fixed in passing: the one-line promise shipped hardcoded as "One email when they post," which read wrong on a lens or the all-target; it is now per-kind.
+
+Owner: Batu.
+
+## 2026-07-29 — Round-2 crit fixes: 14px body floor, h2 day headers, resilient map framing, far-zoom pins, today-only peek
+
+Decision (Batu: "fix all so there's no remaining known issue"). A same-day clean-context `design_crit` pass on the executed punch-list build passed Gate 2 and returned 5 pre-existing items; all fixed (details in the punch list's "Round 2" section). Durable pieces:
+
+1. **Map framing is self-healing until the reader takes the camera**: fit-to-pins re-runs on container resize (rotation, window resize, peek→expand) and stops forever after the first user drag/zoom or selection pan (`cameraTakenRef` in `MapView.jsx`).
+2. **Pins are zoom-tiered**: `.july-map--far` (zoom < 14.2) renders 14px pins / 8px venue dots — overview shows density, working zooms keep the logged 18px. Sizing is width/height only; the never-transform marker rule holds.
+3. **The mobile peek shows today + ongoing pins only** (`mapCards` in `JulyApp.jsx`); expand or desktop shows everything. Related accepted constraint: above the `minZoom 12.8` legibility floor a 375px map cannot contain the full pin extent — the peek centers the mass and crops the fringe by design; the zoom floor is not for sale.
+4. `window.__iiMap` debug handle, dev-only — camera diagnosis needed it once already.
+
+Owner: Batu.
+
+## 2026-07-29 — Design punch list executed (all but the font); several standing contracts revised
+
+Decision (Batu: "execute `2026-07-29-design-punch-list.md`, don't change font family yet"). Everything on the list shipped except **#2 (typeface)** — face decision deferred — and the **map-peek structural question**, which stays open and Batu's. Durable contract changes, each reversing or extending an earlier logged decision:
+
+1. **Place-follow allowlist (P0 #1, path a):** `followTarget()` only offers a place object for categories that name a followable business; `news`/`civic_action`/`g_train_support`/`support_local` fall back to "Follow Greenpoint". Curated `followLabel` (path b) remains available later if place-follow conversion justifies it.
+2. **Kicker/summary field contract (P1 #3):** kicker = the glanceable hook in the row; summary = what the row could not say. `lintCard()` in `cardSchema.js` (warnings: ≥50% kicker overlap, summary > 200 chars) runs on new/changed cards at ingest — the backlog tightens as re-verification touches it, not wholesale. Detail when-line is now **spans only** (`isSpan()`); same-day cards rely on the day header + row clock.
+3. **Two-line title contract (P1 #4)** replaces the 2026-07-15 one-line contract: headlines are content (news), addresses are filler — the clamp inverted that. FREE badge top-aligns.
+4. **The community-alert pinned feed row is gone (P2 #13)**, revising the 2026-07-26 "feed elevation" clause: the banner alone carries the campaign; the card rides its natural group. `groupByDay` lost its `pinnedId` param.
+5. **Follow-prompt object re-derives from the open card (P2 #15)**, and its body is one quiet line below the button ("One email when they post.", P2 #17).
+6. Sweep: vendor map chrome joined the palette (#6), `--line-control: #877d69` for control boundaries (#8), reset-target padding (#7), four missing focus rules (#9), the last unguarded motion (#10), header subtitle → "Every listing verified this week." (#11), focus row → "{name} · {count} here" (#12), "Venue calendar"/"Add to calendar" (#14), eased card expansion via grid-track animation (#16), banner CTA sentence-cased (#18). Chip bar height untouched — `--chrome: peek+53px` holds.
+
+Verified: 447/447 tests; in-browser at 320/375/1440 including the P0 repro. Full execution status is recorded at the top of the punch list itself.
+
+Owner: Batu.
+
+## 2026-07-29 — Tally forms finalized: one visible field where possible; hidden params verified end-to-end
+
+Decision (Batu: "keep things super easy and lightweight, ask no more than what's essential"). Every CTA now terminates in a live form that captures its context. Built in Batu's Tally account via browser; all three published.
+
+1. **`44daZo` → "Follow Greenpoint"** (was "July in Greenpoint — weekly map"). **One visible field: email.** The segment is *not* asked — the hidden `follow` param already carries it from context, so R1's test costs the user zero friction. **This retires the "one extra question on the Tally form" plan in growth-engine §2** — asking would duplicate what the app already knows. Copy matches the app's under-promise ("We'll email you when something new lands. Nothing else."). **The business free-text question was removed from this form**: it asked residents a business question, was 0-for-2 answered, and now has its own form.
+2. **`aQXzOB` → "Add your event"** (new). Three required fields — business/org name · what's happening (date, time, place) · email — plus hidden `ref` (list|empty). The ultra-light spec from 2026-07-28, unchanged.
+3. **`LZqEj1` → "What's missing or wrong?"** — **had no hidden field at all**, so every `?card=<id>` from the L10 correction link was silently dropped: reports arrived with no way to tell which card was wrong. Hidden `card` added. It also had no visible title (rendered Tally's "Form title" placeholder); now set.
+4. **Verified, not assumed:** one test submission per form confirmed capture — `{"follow":"lens:family_kids"}`, `{"card":"film-noir-support"}`, `{"ref":"list"}`. Hidden values live in Tally's JS state rather than DOM inputs, so a submission is the only real proof. **Three test rows remain for Batu to delete** (each marked "delete me"/"TEST").
+5. Code: `SUBMIT_FORM_URL` → `aQXzOB`; `tally-pull.mjs` pulls the submit form unconditionally (no env var needed).
+
+Known rough edge: the pull output labels hidden fields by Tally's opaque field id (`4v1x15: {"ref":"list"}`) not the param name. Readable, but the Monday "asks" step reads this — worth a formatter fix if it grates.
+
+Owner: Batu.
+
+## 2026-07-29 — Follow shipped: the ask renders at its trigger, object taken from context; footer becomes "Follow Greenpoint"
+
+Decision (Batu, design reviewed then approved to build). Implements the resident CTA adopted 2026-07-28 (Follow replaced the Monday digest) and closes the parked placement finding from the same day.
+
+1. **The prompt renders beside the card that earned it**, not at the end of the list. `postValue.js` always fired on the right *behaviour* (2 `card_open` / 1 `action_tap`); the prompt just rendered somewhere the reader wasn't — measured **6,714px away from a reader sitting at 180px**, ~8 screens. `JulyApp` now captures the triggering `cardId` off the event stream and `CardPanel` renders the prompt inside that card's row. Measured after: **283px below the trigger card, on screen.**
+2. **The object comes from context, so the ask is concrete** — active lens → that lens ("Follow Family & Kids") · all-lens → the trigger card's place ("Follow Greenpoint Library") · neither → all of Greenpoint. `followTarget()` / `followRef()` in `postValue.js`, both pure and tested. A place target drops the "or follow a place instead" line, since it would offer what you already have.
+3. **Transport is the existing Tally, zero backend** — `followHref()` carries `?follow=lens:<id>|place:<id>|all` into a hidden field, matching the `correctionHref`/`submitHref` pattern. R1's control arm is structural: anyone who arrives without a segment is the broadcast group (growth-engine §2).
+4. **Footer becomes "Follow Greenpoint"** (`follow=all`) — Follow at its widest for readers who scroll past without tripping the gate.
+5. **Copy under-promises deliberately (Batu):** "We'll email you when something new lands in X" — not "alerts", not a cadence. Sends are permanently manual (§7), so a quiet lens means silence for weeks; the copy has to survive that. The exciting version would be a promise the backend-free architecture cannot keep.
+6. **One rung stays visible** — no Follow affordance on cards, which would ask on the first visit and break the one-egg rule. The ask exists at the post-value moment plus the footer fallback.
+7. **Fallback:** if the trigger card leaves the view (lens change, pin focus), the prompt falls back to the end of the list and re-derives its object from the now-active lens rather than disappearing with the card.
+
+Analytics: `cta_tap { cta: "follow", placement: "inline"|"listend"|"footer", object }` — no new event name, so the frozen `EVENTS` contract is untouched.
+
+Owner: Batu.
+
 ## 2026-07-28 — UX correction pass: one supply row, correction link separated, touch targets swept
 
 Decision (Batu, after reviewing the shipped L5 UI and calling four usability misses). The L5 build was mechanically correct and compositionally wrong; the review found more than it was pointed at.

@@ -101,6 +101,12 @@ export function validateCard(card) {
   if (!str(card.id)) err("missing id");
   if (!str(card.title)) err("missing title");
   if (!str(card.locationName)) err("missing locationName");
+  // Field contract (2026-07-29 punch list, P1 #3 — the "reads text-heavy" root
+  // cause): `kicker` is the glanceable hook in the LIST ROW — why you'd tap;
+  // `summary` is what the row could NOT say — detail, context, the follow-on
+  // fact. They are different jobs, so a summary that restates its kicker is an
+  // authoring defect. Enforced at ingest via lintCard() below (warnings, not
+  // hard errors — the pre-contract backlog would fail wholesale).
   if (!str(card.summary)) err("missing summary");
   // Glanceability contract (tester feedback 2026-07-08): every card carries a
   // one-phrase kicker so the list scans without opening the detail.
@@ -196,4 +202,52 @@ export function validateCard(card) {
   if (!hasCoords && venues.length === 0) err("needs coords or venues to appear on the map");
 
   return { ok: errors.length === 0, errors };
+}
+
+// Ingest-time copy lint (2026-07-29 punch list, P1 #3). Warnings, not schema
+// errors: measured on the live feed, 67 of 95 cards repeated ≥50% of their
+// kicker inside their summary and 14 summaries ran past 200 chars — a hard
+// error would fail the whole backlog. The ingest ritual runs this on every NEW
+// or CHANGED card and rewrites until clean; existing cards tighten as their
+// weekly re-verification touches them.
+const SUMMARY_MAX = 200;
+// 18 chars ≈ 140px rendered, so two authored actions + Share still clear the
+// 343px row at 375px. Set from the live deck: every label already at or under
+// it fits, and the six above it are the six that overflow.
+const ACTION_LABEL_MAX = 18;
+const sigWords = (s) =>
+  s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter((w) => w.length >= 4);
+
+export function lintCard(card) {
+  const warnings = [];
+  const warn = (m) => warnings.push(`${card?.id ?? "?"}: ${m}`);
+
+  if (str(card.summary) && card.summary.length > SUMMARY_MAX) {
+    warn(`summary ${card.summary.length} chars (ceiling ${SUMMARY_MAX}) — cut to what the row could not say`);
+  }
+  // Kicker/summary overlap: the two fields have different jobs (see the field
+  // contract in validateCard) — a detail view that re-reads the row you just
+  // tapped is the "text-heavy" failure mode.
+  if (str(card.kicker) && str(card.summary)) {
+    const kw = sigWords(card.kicker);
+    if (kw.length > 0) {
+      const sw = new Set(sigWords(card.summary));
+      const repeated = kw.filter((w) => sw.has(w));
+      if (repeated.length / kw.length >= 0.5) {
+        warn(`summary repeats the kicker (${repeated.join(", ")}) — say what the row could not`);
+      }
+    }
+  }
+  // Action labels share ONE row that never wraps (2026-07-30), so a verbose
+  // label doesn't cost a second line any more — it pushes the buttons after it
+  // out of view. Share is appended to every card and dated cards also get "Add
+  // to calendar", so an authored label is competing for ~343px at 375px with
+  // two buttons it cannot see. A label is a destination, not a sentence:
+  // "Reserve", not "Details & reservations".
+  for (const a of card.actions ?? []) {
+    if (str(a?.label) && a.label.length > ACTION_LABEL_MAX) {
+      warn(`action "${a.label}" is ${a.label.length} chars (ceiling ${ACTION_LABEL_MAX}) — it will push later buttons off the row`);
+    }
+  }
+  return { ok: warnings.length === 0, warnings };
 }

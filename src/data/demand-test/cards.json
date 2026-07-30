@@ -319,7 +319,7 @@
       ],
       "actions": [
         {
-          "label": "See the current show",
+          "label": "Current show",
           "type": "visit"
         }
       ],
@@ -408,12 +408,12 @@
       ],
       "actions": [
         {
-          "label": "File an MTA complaint",
+          "label": "File complaint",
           "type": "file_complaint",
           "url": "https://contact.mta.info/s/customer-feedback"
         },
         {
-          "label": "Check live G service",
+          "label": "Live G service",
           "type": "learn_more",
           "url": "https://new.mta.info/alerts"
         }
@@ -534,12 +534,12 @@
       ],
       "actions": [
         {
-          "label": "File an MTA complaint",
+          "label": "File complaint",
           "type": "file_complaint",
           "url": "https://contact.mta.info/s/customer-feedback"
         },
         {
-          "label": "Find your representatives",
+          "label": "Your reps",
           "type": "learn_more",
           "url": "https://www.mygovnyc.org"
         }
@@ -1519,7 +1519,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1560,7 +1560,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1601,7 +1601,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1642,7 +1642,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1683,7 +1683,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1724,7 +1724,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://eavesdrop.nyc/calendar"
         }
@@ -1765,7 +1765,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://eavesdrop.nyc/calendar"
         }
@@ -2020,7 +2020,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://filmnoircinema.com"
         }
@@ -2064,7 +2064,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://hideandseek.nyc"
         }
@@ -2115,7 +2115,7 @@
           "type": "visit"
         },
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://blackrabbitbar.com/event/"
         }
@@ -2197,7 +2197,7 @@
       "summary": "Seji, author of Korean Made Easy and founder of BOMBOM, brings her intimate Korean supper club to the tasting room.",
       "actions": [
         {
-          "label": "Details & reservations",
+          "label": "Reserve",
           "type": "rsvp",
           "url": "https://hanamakgeolli.com/events"
         }
@@ -2272,7 +2272,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -2323,7 +2323,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -2586,7 +2586,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "little-dance-school-fall-registration",
       "title": "The Little Dance School fall registration",
       "kicker": "Kids dance signup + free trial",
@@ -2594,8 +2594,7 @@
       "address": "106 Calyer St",
       "geocodeQuery": "106 Calyer St, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Registration is open for the September–June season at the Muriel Theatre inside Triskelion — ages 1.5 through 8, with a complimentary September trial class when you reserve now.",
       "actions": [
@@ -2628,7 +2627,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "bk-youth-ballet-enrollment",
       "title": "Brooklyn Youth Ballet fall enrollment",
       "kicker": "Ballet signup + $40 trial class",
@@ -2636,8 +2635,7 @@
       "address": "37 Greenpoint Ave",
       "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Youth classes and adult ballet workouts are enrolling for the September–January semester — with a $40 trial class credited toward tuition, one per student. After-school pickup from six local schools.",
       "actions": [
@@ -2670,7 +2668,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "dance-space-fall-registration",
       "title": "The Dance Space NY fall registration",
       "kicker": "Ballet, jazz & tap — signup open",
@@ -2678,8 +2676,7 @@
       "address": "61 Greenpoint Ave",
       "geocodeQuery": "61 Greenpoint Ave, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Elly Shepley's studio is enrolling kids and adult classes for fall, with school pickup from PS 31, PS 34, PS 110 and Brooklyn Arbor.",
       "actions": [
@@ -3055,7 +3052,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -3096,7 +3093,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -3167,7 +3164,7 @@
       "title": "Warhammer 40k: Armageddon! RTT",
       "category": "event",
       "filters": [
-        "community"
+        "arts_culture"
       ],
       "locationName": "The Carcosa Club",
       "address": "982 Manhattan Ave, Brooklyn, NY 11222",
@@ -3181,7 +3178,7 @@
       "free": false,
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026"
         }
@@ -3199,7 +3196,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.732676,
       "lng": -73.954395
     },
@@ -3208,8 +3205,7 @@
       "title": "Chess & Chill at Last Place on Earth",
       "category": "subscription",
       "filters": [
-        "community",
-        "deals_memberships"
+        "arts_culture"
       ],
       "locationName": "Last Place on Earth",
       "address": "531 Graham Ave, Brooklyn, NY 11222",
@@ -3243,7 +3239,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.721326,
       "lng": -73.947
     },
@@ -3252,8 +3248,7 @@
       "title": "NY Society of Play fall game clubs",
       "category": "subscription",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "locationName": "Frontier Games",
       "address": "724 Manhattan Ave, Brooklyn, NY 11222",
@@ -3283,7 +3278,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.726116,
       "lng": -73.951879
     },
@@ -3306,12 +3301,12 @@
       ],
       "actions": [
         {
-          "label": "Read the Council's announcement",
+          "label": "Council vote",
           "type": "learn_more",
           "url": "https://council.nyc.gov/press/2026/06/25/3147/"
         },
         {
-          "label": "How the fight got here",
+          "label": "Background",
           "type": "learn_more",
           "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
         }
@@ -3372,7 +3367,7 @@
       ],
       "actions": [
         {
-          "label": "Read the city's announcement",
+          "label": "City announcement",
           "type": "learn_more",
           "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin"
         }
@@ -3431,7 +3426,7 @@
       ],
       "actions": [
         {
-          "label": "See the EPA site page",
+          "label": "EPA site",
           "type": "learn_more",
           "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
         }
@@ -3490,7 +3485,7 @@
       "geocodeQuery": "Monsignor McGolrick Park, Brooklyn",
       "startsAt": "2026-08-01T10:00:00-04:00",
       "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Tidy up the local park during fireworks season — pickers and other tools are provided, and all ages are welcome. No RSVP needed.",
+      "summary": "A volunteer tidy-up of the park during fireworks season. Tools are on site; no RSVP needed.",
       "actions": [
         {
           "label": "Read the roundup",
@@ -3534,7 +3529,7 @@
       "lng": -73.950709,
       "startsAt": "2026-08-01T10:30:00-04:00",
       "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Family Storytime — sing songs, read books, and express the freedom to read alongside your neighbors. No RSVP needed.",
+      "summary": "Sing songs, read books, and celebrate the freedom to read alongside your neighbors. Free, no RSVP needed.",
       "relatedCardIds": [
         "greenpoint-library"
       ],
@@ -3590,7 +3585,7 @@
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         },
         {
-          "label": "RSVP for Greenhouse Gang",
+          "label": "Greenhouse RSVP",
           "type": "rsvp",
           "url": "https://www.eventbrite.com/e/greenhouse-gang-tickets-1987549789925"
         }
@@ -3626,7 +3621,7 @@
       "address": "106 Calyer St, Brooklyn, NY 11222",
       "startsAt": "2026-08-01T13:00:00-04:00",
       "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Meet adoptable dogs from True North Rescue at the Calyer Street shop and go home with a forever pup. No RSVP needed.",
+      "summary": "Meet dogs looking for homes at the Calyer Street shop and leave with a forever pup. No RSVP needed.",
       "actions": [
         {
           "label": "Read the roundup",
@@ -3674,7 +3669,7 @@
       "address": "138 Nassau Ave, Brooklyn, NY 11222",
       "startsAt": "2026-07-31T19:00:00-04:00",
       "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "All painting supplies and one classic margarita are included at the Nassau Avenue bar. $40; call 347-641-1272 to reserve a spot.",
+      "summary": "A guided painting night at the Nassau Avenue bar. $40 covers everything; reserve by phone at 347-641-1272.",
       "actions": [
         {
           "label": "Call to reserve",
@@ -3759,7 +3754,6 @@
       "kicker": "Queer pinball, donations welcome",
       "category": "event",
       "filters": [
-        "community",
         "arts_culture"
       ],
       "audience": [
@@ -3772,7 +3766,7 @@
       "lng": -73.955155,
       "startsAt": "2026-08-02T16:00:00-04:00",
       "endsAt": "2026-08-02T23:59:00-04:00",
-      "summary": "Queer pinball league Topperz meets up to play and raise funds for NYC Trans Archive. Free to join, donations welcome on arrival.",
+      "summary": "The Topperz league takes over the arcade floor to play and raise funds for NYC Trans Archive. Free to join.",
       "relatedCardIds": [
         "scrappleland"
       ],
@@ -3818,7 +3812,7 @@
       "lng": -73.958665,
       "startsAt": "2026-08-02T12:00:00-04:00",
       "endsAt": "2026-08-02T23:59:00-04:00",
-      "summary": "Rim Albahrani, a featured artist in the gallery's debut exhibit, talks with director Marcelo Mayen about her process, the themes in her work, and the experiences that shape her paintings. First come, first served.",
+      "summary": "The artist behind the gallery's debut exhibit talks with director Marcelo Mayen about her process and the experiences that shape her work. First come, first served.",
       "relatedCardIds": [
         "dreams-on-command"
       ],
@@ -3847,7 +3841,7 @@
       "updatedAt": "2026-07-30",
       "id": "threes-board-game-speed-dating-0805",
       "title": "Board game speed dating at Threes",
-      "kicker": "Games and singles, ages 25–39",
+      "kicker": "Board games, ages 25–39",
       "category": "event",
       "filters": [
         "food_drink"
@@ -3860,7 +3854,7 @@
       "address": "113 Franklin St, Brooklyn, NY 11222",
       "startsAt": "2026-08-05T19:00:00-04:00",
       "endsAt": "2026-08-05T23:59:00-04:00",
-      "summary": "Sit down for a night of board games with a group of singles at the Franklin Street taproom, ages 25–39. From $25.",
+      "summary": "Sit down with a group of singles at the Franklin Street taproom and roll the dice. From $25.",
       "actions": [
         {
           "label": "Register",
@@ -3901,7 +3895,7 @@
       "address": "100 Sutton St, Brooklyn, NY 11222",
       "startsAt": "2026-08-05T19:00:00-04:00",
       "endsAt": "2026-08-05T23:59:00-04:00",
-      "summary": "Sing Tracy Chapman's \"Fast Car\" in harmony with fellow humans — no auditions or even experience needed. By donation.",
+      "summary": "Sing Tracy Chapman's \"Fast Car\" in harmony with a room of strangers, by donation.",
       "actions": [
         {
           "label": "RSVP",

@@ -113,27 +113,21 @@ test("seed has exactly 71 cards across the six layers", () => {
   // corrects the 6pm card's 00:00 start (a value the calendar never stated;
   // isExpiredCard reads 00:00 as the all-day sentinel and skips the
   // started-grace hide, pinning a 6pm show to the lens from midnight).
-  // 2026-07-30 Wednesday Greenpointers pull (7/30–8/5 roundup). Expiry deleted
-  // 17 past events (Jul 27–29 nights at Troost/Film Noir/GCC/Hide & Seek/Black
+  // 2026-07-30 Wednesday Greenpointers pull (7/30-8/5 roundup). Expiry deleted
+  // 17 past events (Jul 27-29 nights at Troost/Film Noir/GCC/Hide & Seek/Black
   // Rabbit/Brew Inn, the BCC Monday workshops, and the Tue/Wed library blocks),
-  // 95 → 78. +10 events from the roundup (McGolrick cleanup, library Sat +
-  // Tue day cards, Milltown dog adoption, Jucy Lucy sip & paint, Macha poetry
-  // open mic, Scrappleland Topperz pinball, Dreams on Command artist talk,
-  // Threes board-game speed dating, one-day choir at 100 Sutton) and one
-  // judgment delete: `poochs-parlor-first-groom` was a duplicate of
-  // `poochs-first-visit-20` (same 20%-off first groom, added twice — 7/22 and
-  // 7/25 — with different verified-through dates; the newer card is kept).
-  // 78 → 87. Six roundup items skipped on the Williamsburg address gate
-  // (Marsha P Johnson State Park ×2 → 11249, Bushwick Inlet Park, Joy Flower
-  // Pot → 713 Lorimer, Brooklyn Mile → Kent Ave, Twisted Spine → 306 Grand);
-  // five held as watchItems because no named source states a Greenpoint street
-  // address (Bee's Knees, Fernanda Uribe Studio, Movement Loft, Meet Cute
-  // Films, Gather Center).
+  // 95 -> 78. +10 events from the roundup and one judgment delete:
+  // `poochs-parlor-first-groom` duplicated `poochs-first-visit-20` (the same
+  // 20%-off first groom carded twice, 7/22 and 7/25, with different
+  // verified-through dates), so the expiry FLAG on the older copy was a dedupe
+  // signal, not a re-verify one. 78 -> 87. Six roundup items skipped on the
+  // Williamsburg address gate; five held as watchItems because no named source
+  // states a Greenpoint street address.
   assert.equal(seed.cards.length, 87);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 39, "29 post-expiry + the ten 7/30–8/5 Greenpointers roundup adds");
+  assert.equal(count((c) => c.category === "event"), 39, "29 post-expiry + the ten 7/30-8/5 Greenpointers roundup adds");
   assert.equal(count((c) => c.category === "discount"), 4, "Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
   assert.equal(count((c) => c.filters.includes("live_music")), 16, "12 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
@@ -161,11 +155,8 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
   }
   // 2026-07-25: the Greenpoint Fish oyster HH deleted (past verified-through,
-  // site unreachable for re-verification). 2026-07-30: `poochs-parlor-first-groom`
-  // deleted as a duplicate of `poochs-first-visit-20` — the same 20%-off first
-  // groom carded twice, so the expiry FLAG on the older copy was really a
-  // dedupe signal. Two recurring standing offers + Pooch's (verified-through
-  // dated) + one dated deal (Moon Bunny, real 8/15 deadline).
+  // site unreachable for re-verification). Three recurring standing offers
+  // (verified-through dated) + one dated deal (Moon Bunny, real 8/15 deadline).
   assert.equal(seed.cards.find((c) => c.id === "hana-bottomless-makgeolli").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "poochs-first-visit-20").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "bios-apothecary-first-order").recurring, true);
@@ -216,9 +207,9 @@ test("free-ness is designated only where the source states it (tester feedback #
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   // 2026-07-30: the four expired library/trivia day cards drop out; the five
   // roundup adds whose Greenpointers line says "Free" come in. The other five
-  // roundup adds stay unmarked — the source states a price (Jucy Lucy $40,
-  // Threes from $25), "by donation" (one-day choir), or nothing at all
-  // (McGolrick cleanup, Milltown dog adoption, both only "no RSVP needed").
+  // adds stay unmarked — the source states a price (Jucy Lucy $40, Threes from
+  // $25), "by donation" (one-day choir), or nothing at all (McGolrick cleanup,
+  // Milltown dog adoption, both only "no RSVP needed").
   assert.deepEqual(free, [
     "dreams-on-command-artist-talk-0802",
     "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
@@ -305,26 +296,32 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // 2026-07-27 expiry took the dated half of this lens (City of Water Day, the
   // Disabled & Hungry launch, It's My Park at Transmitter, the Saturday library
   // block, Pooch's adoption day) — the standing civic asks are what remain.
-  // 2026-07-27 run 2 added the game-club pair: Carcosa's all-day 40k
-  // tournament and Last Place on Earth's weekly chess night — tabletop
-  // gathering spots live here alongside the civic asks.
-  // 2026-07-30 Greenpointers roundup: +3 — the McGolrick Park cleanup and
-  // Milltown's True North Rescue adoption day are textbook stewardship, and
-  // Scrappleland's Topperz league plays to raise funds for NYC Trans Archive.
-  // Threes' board-game speed dating is deliberately NOT here: a ticketed
-  // singles night at a taproom is food_drink, not stewardship or an open club.
+  // 2026-07-30 (Batu): the game-club pair added on 2026-07-27 is OUT —
+  // "Community has gaming events that shouldn't be there. That category is for
+  // civic action." Carcosa's 40k tournament and Last Place's chess night moved
+  // to arts_culture (the shelf that already holds culture/ideas programming).
+  // The lens rule is now hard: hands-on civic participation and mutual aid
+  // only — never a gathering that is simply social.
+  // 2026-07-30 Greenpointers roundup: +2 that clear the hard rule — the
+  // McGolrick Park cleanup and Milltown's True North Rescue adoption day are
+  // stewardship, not social gatherings. Two roundup items were deliberately
+  // kept OUT under the same rule: Threes' board-game speed dating (a ticketed
+  // singles night, filed food_drink) and Scrappleland's Topperz pinball league
+  // (a game night, filed arts_culture alongside Carcosa and Last Place, even
+  // though it collects donations for NYC Trans Archive).
   assert.deepEqual(community, [
     "adopt-a-business",
-    "carcosa-warhammer-rtt-0801",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
-    "last-place-chess-chill",
     "mcgolrick-park-cleanup-0801",
     "milltown-dog-adoption-0801",
     "newtown-creek-cag-0729",
-    "scrappleland-topperz-pinball-0802",
   ]);
+  const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
+  for (const id of gathering) {
+    assert.ok(!community.includes(id), `${id} is a social gathering, not civic action`);
+  }
   // Trash Club moved OUT of deals_memberships — it's civic action, not a
   // paid membership; a signup card can only be one thing at a glance.
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("deals_memberships"));
@@ -332,6 +329,36 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // it stays in news, unlike the four action cards above.
   assert.ok(seed.cards.find((c) => c.id === "g-train-closures").filters.includes("news"));
   assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("community"));
+});
+
+// 2026-07-30 (Batu): "deals & memberships should only have deals & memberships.
+// enrollments & registrations or game nights don't belong here." `subscription`
+// is the schema category for BOTH a standing membership (Falu's tinned-fish
+// club, Flower Cat's weekly delivery) and a term enrollment (fall dance
+// registration, kids' game clubs) — so the lens cannot be derived from the
+// category and has to be authored against this rule. A membership is an
+// open-ended standing relationship; a registration buys a fixed term and
+// belongs with its audience lens (family_kids / wellness).
+test("the deals & memberships lens holds only deals and standing memberships", () => {
+  const lens = seed.cards.filter((c) => c.filters.includes("deals_memberships"));
+  for (const c of lens) {
+    assert.ok(
+      c.category === "discount" || c.category === "subscription",
+      `${c.id} (${c.category}) is neither a deal nor a membership`,
+    );
+    assert.ok(
+      !/registration|enrollment|signup|sign-up/i.test(`${c.title} ${c.kicker}`),
+      `${c.id} reads as an enrollment, not a membership — file it under its audience lens`,
+    );
+  }
+  assert.deepEqual(lens.map((c) => c.id).sort(), [
+    "bios-apothecary-first-order",
+    "falu-tinned-fish-club",
+    "flower-cat-subscription",
+    "hana-bottomless-makgeolli",
+    "moon-bunny-back-to-school",
+    "poochs-first-visit-20",
+  ]);
 });
 
 test("astrology landed in Arts & Culture, not stranded", () => {
@@ -409,13 +436,14 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   for (const kept of ["le-fanfare", "the-lot-radio", "flower-cat"]) {
     assert.ok(byId(kept), `ongoing-programming card "${kept}" survives the re-cut`);
   }
-  // Counts here track the live gig set, so expiry moves them: the 2026-07-30
-  // run pruned gcc-cysk-0729 out of the comedy club's list and took Film Noir's
-  // 7/27–29 screenings and Black Rabbit's Tuesday trivia entirely (the expiry
-  // script drops the dangling refs with them).
+  // Counts here track the live gig set, so expiry moves them: the 2026-07-27
+  // run pruned gcc-saturday-shows-0725 and black-rabbit-buckaroo-bingo out of
+  // their venues' link lists (the expiry script drops dangling refs).
   assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 3);
   assert.ok(byId("film-noir-film-club-0730").relatedCardIds.includes("film-noir-cinema"), "screening joins the venue graph");
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
+  // First carding of Black Rabbit: venue ↔ its standing weeknights (Sunday
+  // bingo expired 2026-07-27; Tuesday trivia recurs).
   // Black Rabbit's standing weeknights have both expired out, so the venue card
   // carries no gig links until the next pull re-cards them.
   assert.equal(byId("black-rabbit").relatedCardIds, undefined);
