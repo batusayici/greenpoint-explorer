@@ -2579,11 +2579,36 @@
       ]
     }
   },
+  "520 Kingsland Ave, Brooklyn, NY 11222": {
+    "query": "520 Kingsland Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-30T15:51:28.189Z",
+    "hit": {
+      "place_id": 358973490,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 279804685,
+      "lat": "40.7351314",
+      "lon": "-73.9431597",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "520, Kingsland Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7342382",
+        "40.7357689",
+        "-73.9440232",
+        "-73.9424787"
+      ]
+    }
+  },
   "Monsignor McGolrick Park, Brooklyn": {
     "query": "Monsignor McGolrick Park, Brooklyn",
-    "fetchedAt": "2026-07-30T13:33:31.856Z",
+    "fetchedAt": "2026-07-30T16:54:56.681Z",
     "hit": {
-      "place_id": 359199569,
+      "place_id": 359143538,
       "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
       "osm_type": "way",
       "osm_id": 33819642,
@@ -2606,9 +2631,9 @@
   },
   "138 Nassau Ave, Brooklyn, NY 11222": {
     "query": "138 Nassau Ave, Brooklyn, NY 11222",
-    "fetchedAt": "2026-07-30T13:33:33.781Z",
+    "fetchedAt": "2026-07-30T16:54:58.077Z",
     "hit": {
-      "place_id": 360488084,
+      "place_id": 355524523,
       "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
       "osm_type": "way",
       "osm_id": 280095825,
@@ -2631,9 +2656,9 @@
   },
   "135 Franklin St, Brooklyn, NY 11222": {
     "query": "135 Franklin St, Brooklyn, NY 11222",
-    "fetchedAt": "2026-07-30T13:33:35.133Z",
+    "fetchedAt": "2026-07-30T16:54:59.569Z",
     "hit": {
-      "place_id": 359023803,
+      "place_id": 360550194,
       "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
       "osm_type": "node",
       "osm_id": 10357823713,
@@ -2656,9 +2681,9 @@
   },
   "100 Sutton St, Brooklyn, NY 11222": {
     "query": "100 Sutton St, Brooklyn, NY 11222",
-    "fetchedAt": "2026-07-30T13:33:36.618Z",
+    "fetchedAt": "2026-07-30T16:55:00.959Z",
     "hit": {
-      "place_id": 359188806,
+      "place_id": 359748128,
       "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
       "osm_type": "way",
       "osm_id": 279799000,

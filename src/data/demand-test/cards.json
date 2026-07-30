@@ -1114,7 +1114,8 @@
       "updatedAt": "2026-07-16",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription"
+        "flower-cat-subscription",
+        "flower-cat-botanic-drawing-0730"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -2056,7 +2057,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "locationName": "Hide & Seek",
       "address": "593 Manhattan Ave",
       "filters": [
@@ -2074,7 +2075,49 @@
           "title": "Hide & Seek",
           "url": "https://hideandseek.nyc",
           "publisher": "Hide & Seek",
-          "date": "2026-07-25"
+          "date": "2026-07-30"
+        }
+      ],
+      "id": "hide-and-seek-jazz-0805",
+      "title": "Wine Down Wednesday live jazz",
+      "kicker": "Live jazz with your wine",
+      "startsAt": "2026-08-05T19:00:00-04:00",
+      "endsAt": "2026-08-05T23:59:00-04:00",
+      "recurring": true,
+      "summary": "The weekly live-jazz night at the all-day cafe and bar.",
+      "lat": 40.72293,
+      "lng": -73.950617
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
+      "locationName": "Hide & Seek",
+      "address": "593 Manhattan Ave",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://hideandseek.nyc"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hide & Seek",
+          "url": "https://hideandseek.nyc",
+          "publisher": "Hide & Seek",
+          "date": "2026-07-30"
         }
       ],
       "id": "hide-and-seek-weekend-djs-0731",
@@ -3461,6 +3504,107 @@
       "updatedAt": "2026-07-27",
       "lat": 40.714423,
       "lng": -73.953036
+    },
+    {
+      "id": "kingsland-wildflowers-festival-2026",
+      "category": "event",
+      "sourceCampaign": "kingsland_wildflowers_festival_2026_07_30",
+      "title": "Kingsland Wildflowers Festival",
+      "kicker": "Sat Aug 1 · 2–6 PM · Free",
+      "locationName": "Kingsland Wildflowers",
+      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "summary": "The 10th annual celebration atop the Broadway Stages rooftop meadow: art installations, live music and performances, native plant sales, and hands-on Newtown Creek ecology exhibits, free and open to all ages.",
+      "whyItMatters": "A milestone year for a hidden rooftop meadow most residents have never set foot on — free, family-friendly, and a short walk from the avenue.",
+      "filters": [
+        "family_kids",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "family",
+        "visitor"
+      ],
+      "corridor": null,
+      "free": true,
+      "startsAt": "2026-08-01T14:00:00-04:00",
+      "endsAt": "2026-08-01T18:00:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/10th-annual-kingsland-wildflowers-festival-tickets-1991709784581"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Events — Kingsland Wildflowers",
+          "publisher": "Kingsland Wildflowers",
+          "url": "https://www.kingslandwildflowers.com/events",
+          "date": "2026-07-30"
+        },
+        {
+          "title": "Kingsland Wildflowers Festival Celebrates 10 Years in Greenpoint",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/23/kingsland-wildflowers-festival-celebrates-10-years-in-greenpoint/",
+          "date": "2026-07-23"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "lat": 40.735131,
+      "lng": -73.94316
+    },
+    {
+      "id": "flower-cat-botanic-drawing-0730",
+      "category": "event",
+      "sourceCampaign": "flower_cat_botanic_drawing_2026_07_30",
+      "title": "Botanic Drawing Workshop",
+      "kicker": "Guided botanic drawing, 7–9 PM",
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "summary": "Artist Hansel Perez leads a guided botanic-drawing session, exploring natural forms through illustration in a community setting at the Noble St florist-cafe.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-30T19:00:00-04:00",
+      "endsAt": "2026-07-30T21:00:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Botanic Drawing Workshop at Flower Cat",
+          "publisher": "Mato",
+          "url": "https://ma.to/event/botanic-drawing-workshop-30-jul-2026",
+          "date": "2026-07-30"
+        }
+      ],
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "relatedCardIds": [
+        "flower-cat"
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
     },
     {
       "evidenceStrength": "medium_high",

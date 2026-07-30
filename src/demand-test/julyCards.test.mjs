@@ -113,24 +113,34 @@ test("seed has exactly 71 cards across the six layers", () => {
   // corrects the 6pm card's 00:00 start (a value the calendar never stated;
   // isExpiredCard reads 00:00 as the all-day sentinel and skips the
   // started-grace hide, pinning a 6pm show to the lens from midnight).
-  // 2026-07-30 Wednesday Greenpointers pull (7/30-8/5 roundup). Expiry deleted
-  // 17 past events (Jul 27-29 nights at Troost/Film Noir/GCC/Hide & Seek/Black
-  // Rabbit/Brew Inn, the BCC Monday workshops, and the Tue/Wed library blocks),
-  // 95 -> 78. +10 events from the roundup and one judgment delete:
-  // `poochs-parlor-first-groom` duplicated `poochs-first-visit-20` (the same
-  // 20%-off first groom carded twice, 7/22 and 7/25, with different
-  // verified-through dates), so the expiry FLAG on the older copy was a dedupe
-  // signal, not a re-verify one. 78 -> 87. Six roundup items skipped on the
-  // Williamsburg address gate; five held as watchItems because no named source
-  // states a Greenpoint street address.
-  assert.equal(seed.cards.length, 87);
+  // 2026-07-30 (Batu's ask): the Kingsland Wildflowers festival had sat as a
+  // watchItem since 7/27 (Greenpointers only said "next week", no date) — the
+  // organizer's own events page (kingslandwildflowers.com/events, now a
+  // registered source) gives the 10th-annual date, Sat Aug 1 2-6pm, free,
+  // corroborated by Greenpointers' 7/23 writeup. +1 event, 95 → 96.
+  // 2026-07-30 (Batu's ask, same day): Flower Cat's Botanic Drawing Workshop
+  // (7/30, 7-9pm) — flowercat.nyc/events had nothing (normal for them; their
+  // real channel is Instagram, which we don't crawl), so Batu's ma.to find
+  // is the only sourceLink. One-off attribution, not a registered ma.to
+  // roster source. +1 event, 96 → 97.
+  // 2026-07-30 Wednesday Greenpointers pull (7/30-8/5 roundup), merged after
+  // the day's three content pushes. Expiry deleted 16 past events (Jul 27-29
+  // nights at Troost/Film Noir/GCC/Black Rabbit/Brew Inn, the BCC Monday
+  // workshops, the Tue/Wed library blocks), 97 -> 81. +10 events from the
+  // roundup and one judgment delete: `poochs-parlor-first-groom` duplicated
+  // `poochs-first-visit-20` (the same 20%-off first groom carded twice, 7/22
+  // and 7/25, with different verified-through dates), so the expiry FLAG on
+  // the older copy was a dedupe signal, not a re-verify one. 81 -> 90. Six
+  // roundup items skipped on the Williamsburg address gate; five held as
+  // watchItems because no named source states a Greenpoint street address.
+  assert.equal(seed.cards.length, 90);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 39, "29 post-expiry + the ten 7/30-8/5 Greenpointers roundup adds");
+  assert.equal(count((c) => c.category === "event"), 42, "32 post-expiry + the ten 7/30-8/5 Greenpointers roundup adds");
   assert.equal(count((c) => c.category === "discount"), 4, "Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.filters.includes("live_music")), 16, "12 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
+  assert.equal(count((c) => c.filters.includes("live_music")), 17, "13 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
   assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -205,15 +215,16 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
-  // 2026-07-30: the four expired library/trivia day cards drop out; the five
-  // roundup adds whose Greenpointers line says "Free" come in. The other five
-  // adds stay unmarked — the source states a price (Jucy Lucy $40, Threes from
-  // $25), "by donation" (one-day choir), or nothing at all (McGolrick cleanup,
+  // 2026-07-30: the expired library/trivia day cards drop out; the five roundup
+  // adds whose Greenpointers line says "Free" come in. The other five stay
+  // unmarked — the source states a price (Jucy Lucy $40, Threes from $25),
+  // "by donation" (one-day choir), or nothing at all (McGolrick cleanup,
   // Milltown dog adoption, both only "no RSVP needed").
   assert.deepEqual(free, [
     "dreams-on-command-artist-talk-0802",
-    "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
+    "gcc-artists-beers-0802",
     "greenpoint-trash-club",
+    "kingsland-wildflowers-festival-2026",
     "library-friday-programs-0731",
     "library-saturday-programs-0801",
     "library-thursday-programs-0730",
