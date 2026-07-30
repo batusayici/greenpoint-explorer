@@ -45,6 +45,9 @@ export default function JulyApp() {
   // that location — the fan-out it replaces cluttered the dense mobile map.
   // { key, name, count, ids:Set }
   const [pinFocus, setPinFocus] = useState(null);
+  // Bumped by revealCard so the panel scrolls the revealed card into view.
+  // A counter, not a boolean: revealing the SAME card twice must still scroll.
+  const [revealTick, setRevealTick] = useState(0);
 
   // Chip-fold input (F16-B): live counts per layer, fixed at mount — they only
   // drift at expiry boundaries, and the bar must not reshuffle mid-session.
@@ -158,8 +161,12 @@ export default function JulyApp() {
   }, []);
 
   // Reveal = land the card in the visible feed no matter the current lens:
-  // exit location focus, widen the filter if it hides the target. Shared by
-  // related-chip taps and the community-alert banner.
+  // exit location focus, widen the filter if it hides the target, and SCROLL
+  // to it. Shared by related-chip taps and the community-alert banner.
+  // The scroll is the fix for 2026-07-30: opening the card is not revealing it
+  // — the alert's card sits ~2400px down the mobile page, so the banner tap
+  // read as a dead link on an iPhone. Reveal is a deliberate destination, so
+  // it moves the view; ordinary list taps still never yank it (CardPanel).
   const revealCard = useCallback(
     (cardId) => {
       const target = CARDS_BY_ID.get(cardId);
@@ -167,6 +174,7 @@ export default function JulyApp() {
       setPinFocus(null);
       if (!matchesFilter(target, filter)) setFilter("all");
       setSelectedId(cardId);
+      setRevealTick((n) => n + 1);
     },
     [filter],
   );
@@ -257,6 +265,7 @@ export default function JulyApp() {
           focus={pinFocus}
           onClearFocus={() => setPinFocus(null)}
           selectedId={selectedId}
+          revealTick={revealTick}
           onSelect={setSelectedId}
           onRelated={onRelated}
           dismissedLenses={dismissedLenses}
