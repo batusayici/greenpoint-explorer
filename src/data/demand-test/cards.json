@@ -319,7 +319,7 @@
       ],
       "actions": [
         {
-          "label": "See the current show",
+          "label": "Current show",
           "type": "visit"
         }
       ],
@@ -405,12 +405,12 @@
       ],
       "actions": [
         {
-          "label": "File an MTA complaint",
+          "label": "File complaint",
           "type": "file_complaint",
           "url": "https://contact.mta.info/s/customer-feedback"
         },
         {
-          "label": "Check live G service",
+          "label": "Live G service",
           "type": "learn_more",
           "url": "https://new.mta.info/alerts"
         }
@@ -531,12 +531,12 @@
       ],
       "actions": [
         {
-          "label": "File an MTA complaint",
+          "label": "File complaint",
           "type": "file_complaint",
           "url": "https://contact.mta.info/s/customer-feedback"
         },
         {
-          "label": "Find your representatives",
+          "label": "Your reps",
           "type": "learn_more",
           "url": "https://www.mygovnyc.org"
         }
@@ -1157,7 +1157,8 @@
       "updatedAt": "2026-07-16",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription"
+        "flower-cat-subscription",
+        "flower-cat-botanic-drawing-0730"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -1560,7 +1561,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1601,7 +1602,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1642,7 +1643,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1683,7 +1684,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1724,7 +1725,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1765,7 +1766,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://eavesdrop.nyc/calendar"
         }
@@ -1806,7 +1807,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://eavesdrop.nyc/calendar"
         }
@@ -2061,7 +2062,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://filmnoircinema.com"
         }
@@ -2097,7 +2098,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "locationName": "Hide & Seek",
       "address": "593 Manhattan Ave",
       "filters": [
@@ -2105,7 +2106,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://hideandseek.nyc"
         }
@@ -2115,7 +2116,49 @@
           "title": "Hide & Seek",
           "url": "https://hideandseek.nyc",
           "publisher": "Hide & Seek",
-          "date": "2026-07-25"
+          "date": "2026-07-30"
+        }
+      ],
+      "id": "hide-and-seek-jazz-0805",
+      "title": "Wine Down Wednesday live jazz",
+      "kicker": "Live jazz with your wine",
+      "startsAt": "2026-08-05T19:00:00-04:00",
+      "endsAt": "2026-08-05T23:59:00-04:00",
+      "recurring": true,
+      "summary": "The weekly live-jazz night at the all-day cafe and bar.",
+      "lat": 40.72293,
+      "lng": -73.950617
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
+      "locationName": "Hide & Seek",
+      "address": "593 Manhattan Ave",
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://hideandseek.nyc"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hide & Seek",
+          "url": "https://hideandseek.nyc",
+          "publisher": "Hide & Seek",
+          "date": "2026-07-30"
         }
       ],
       "id": "hide-and-seek-weekend-djs-0731",
@@ -2156,7 +2199,7 @@
           "type": "visit"
         },
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://blackrabbitbar.com/event/"
         }
@@ -2238,7 +2281,7 @@
       "summary": "Seji, author of Korean Made Easy and founder of BOMBOM, brings her intimate Korean supper club to the tasting room.",
       "actions": [
         {
-          "label": "Details & reservations",
+          "label": "Reserve",
           "type": "rsvp",
           "url": "https://hanamakgeolli.com/events"
         }
@@ -2313,7 +2356,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -2358,7 +2401,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -2615,7 +2658,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "little-dance-school-fall-registration",
       "title": "The Little Dance School fall registration",
       "kicker": "Kids dance signup + free trial",
@@ -2623,8 +2666,7 @@
       "address": "106 Calyer St",
       "geocodeQuery": "106 Calyer St, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Registration is open for the September–June season at the Muriel Theatre inside Triskelion — ages 1.5 through 8, with a complimentary September trial class when you reserve now.",
       "actions": [
@@ -2657,7 +2699,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "bk-youth-ballet-enrollment",
       "title": "Brooklyn Youth Ballet fall enrollment",
       "kicker": "Ballet signup + $40 trial class",
@@ -2665,8 +2707,7 @@
       "address": "37 Greenpoint Ave",
       "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Youth classes and adult ballet workouts are enrolling for the September–January semester — with a $40 trial class credited toward tuition, one per student. After-school pickup from six local schools.",
       "actions": [
@@ -2699,7 +2740,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "dance-space-fall-registration",
       "title": "The Dance Space NY fall registration",
       "kicker": "Ballet, jazz & tap — signup open",
@@ -2707,8 +2748,7 @@
       "address": "61 Greenpoint Ave",
       "geocodeQuery": "61 Greenpoint Ave, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Elly Shepley's studio is enrolling kids and adult classes for fall, with school pickup from PS 31, PS 34, PS 110 and Brooklyn Arbor.",
       "actions": [
@@ -2823,31 +2863,31 @@
       "trustRisk": "low",
       "createdAt": "2026-07-30",
       "updatedAt": "2026-07-30",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-28)",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-28"
-        }
-      ],
       "id": "bcc-crafty-hour-tie-dye-0807",
       "title": "Crafty Hour: Tie Dye",
       "kicker": "$25 Friday crafts, tie-dye night",
       "startsAt": "2026-08-07T18:30:00-04:00",
       "endsAt": "2026-08-07T23:59:00-04:00",
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
       "summary": "The studio's casual $25 evening craft session, this one spent tie-dyeing.",
       "actions": [
         {
           "label": "Book a spot",
           "type": "signup",
           "url": "https://www.brooklyncraftcompany.com/collections/summer-crafty-hours/products/crafty-hour-tie-dye"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "BCC newsletter (2026-07-28)",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-07-28"
         }
       ],
       "lat": 40.730461,
@@ -2865,31 +2905,31 @@
       "trustRisk": "low",
       "createdAt": "2026-07-30",
       "updatedAt": "2026-07-30",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-28)",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-28"
-        }
-      ],
       "id": "bcc-stretchy-knits-0804",
       "title": "Sewing with Stretchy Knits (two-part class)",
       "kicker": "Sew leggings or bike shorts",
       "startsAt": "2026-08-04T18:30:00-04:00",
       "endsAt": "2026-08-04T23:59:00-04:00",
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
       "summary": "A two-part weeknight class on sewing stretch fabric — leggings or bike shorts. The newsletter listed 4 spots left.",
       "actions": [
         {
           "label": "Book a spot",
           "type": "signup",
           "url": "https://www.brooklyncraftcompany.com/products/sewing-with-knits-leggings-or-bike-shorts-weeknights-2-parts"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "BCC newsletter (2026-07-28)",
+          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-07-28"
         }
       ],
       "lat": 40.730461,
@@ -3167,7 +3207,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -3208,7 +3248,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -3279,7 +3319,7 @@
       "title": "Warhammer 40k: Armageddon! RTT",
       "category": "event",
       "filters": [
-        "community"
+        "arts_culture"
       ],
       "locationName": "The Carcosa Club",
       "address": "982 Manhattan Ave, Brooklyn, NY 11222",
@@ -3293,7 +3333,7 @@
       "free": false,
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026"
         }
@@ -3311,7 +3351,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.732676,
       "lng": -73.954395
     },
@@ -3320,8 +3360,7 @@
       "title": "Chess & Chill at Last Place on Earth",
       "category": "subscription",
       "filters": [
-        "community",
-        "deals_memberships"
+        "arts_culture"
       ],
       "locationName": "Last Place on Earth",
       "address": "531 Graham Ave, Brooklyn, NY 11222",
@@ -3355,7 +3394,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.721326,
       "lng": -73.947
     },
@@ -3364,8 +3403,7 @@
       "title": "NY Society of Play fall game clubs",
       "category": "subscription",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "locationName": "Frontier Games",
       "address": "724 Manhattan Ave, Brooklyn, NY 11222",
@@ -3395,7 +3433,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.726116,
       "lng": -73.951879
     },
@@ -3418,12 +3456,12 @@
       ],
       "actions": [
         {
-          "label": "Read the Council's announcement",
+          "label": "Council vote",
           "type": "learn_more",
           "url": "https://council.nyc.gov/press/2026/06/25/3147/"
         },
         {
-          "label": "How the fight got here",
+          "label": "Background",
           "type": "learn_more",
           "url": "https://www.greenpointstar.com/2026/01/14/monitor-point-explained/"
         }
@@ -3484,7 +3522,7 @@
       ],
       "actions": [
         {
-          "label": "Read the city's announcement",
+          "label": "City announcement",
           "type": "learn_more",
           "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin"
         }
@@ -3543,7 +3581,7 @@
       ],
       "actions": [
         {
-          "label": "See the EPA site page",
+          "label": "EPA site",
           "type": "learn_more",
           "url": "https://cumulis.epa.gov/supercpad/cursites/csitinfo.cfm?id=0203407"
         }
@@ -3578,6 +3616,107 @@
       "updatedAt": "2026-07-27",
       "lat": 40.714423,
       "lng": -73.953036
+    },
+    {
+      "id": "kingsland-wildflowers-festival-2026",
+      "category": "event",
+      "sourceCampaign": "kingsland_wildflowers_festival_2026_07_30",
+      "title": "Kingsland Wildflowers Festival",
+      "kicker": "Sat Aug 1 · 2–6 PM · Free",
+      "locationName": "Kingsland Wildflowers",
+      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
+      "summary": "The 10th annual celebration atop the Broadway Stages rooftop meadow: art installations, live music and performances, native plant sales, and hands-on Newtown Creek ecology exhibits, free and open to all ages.",
+      "whyItMatters": "A milestone year for a hidden rooftop meadow most residents have never set foot on — free, family-friendly, and a short walk from the avenue.",
+      "filters": [
+        "family_kids",
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "family",
+        "visitor"
+      ],
+      "corridor": null,
+      "free": true,
+      "startsAt": "2026-08-01T14:00:00-04:00",
+      "endsAt": "2026-08-01T18:00:00-04:00",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/10th-annual-kingsland-wildflowers-festival-tickets-1991709784581"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Events — Kingsland Wildflowers",
+          "publisher": "Kingsland Wildflowers",
+          "url": "https://www.kingslandwildflowers.com/events",
+          "date": "2026-07-30"
+        },
+        {
+          "title": "Kingsland Wildflowers Festival Celebrates 10 Years in Greenpoint",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/23/kingsland-wildflowers-festival-celebrates-10-years-in-greenpoint/",
+          "date": "2026-07-23"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "lat": 40.735131,
+      "lng": -73.94316
+    },
+    {
+      "id": "flower-cat-botanic-drawing-0730",
+      "category": "event",
+      "sourceCampaign": "flower_cat_botanic_drawing_2026_07_30",
+      "title": "Botanic Drawing Workshop",
+      "kicker": "Guided botanic drawing, 7–9 PM",
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "summary": "Artist Hansel Perez leads a guided botanic-drawing session, exploring natural forms through illustration in a community setting at the Noble St florist-cafe.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "startsAt": "2026-07-30T19:00:00-04:00",
+      "endsAt": "2026-07-30T21:00:00-04:00",
+      "actions": [
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Botanic Drawing Workshop at Flower Cat",
+          "publisher": "Mato",
+          "url": "https://ma.to/event/botanic-drawing-workshop-30-jul-2026",
+          "date": "2026-07-30"
+        }
+      ],
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "relatedCardIds": [
+        "flower-cat"
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
     }
   ]
 }

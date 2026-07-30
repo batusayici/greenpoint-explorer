@@ -113,23 +113,34 @@ test("seed has exactly 71 cards across the six layers", () => {
   // corrects the 6pm card's 00:00 start (a value the calendar never stated;
   // isExpiredCard reads 00:00 as the all-day sentinel and skips the
   // started-grace hide, pinning a 6pm show to the lens from midnight).
-  // 2026-07-30 daily thin refresh: expiry took 17 past events (the 7/27–7/29
-  // Troost/Film Noir/library/comedy/trivia/ecstatic-dance block), 95 → 78.
+  // 2026-07-30 (Batu's ask): the Kingsland Wildflowers festival had sat as a
+  // watchItem since 7/27 (Greenpointers only said "next week", no date) — the
+  // organizer's own events page (kingslandwildflowers.com/events, now a
+  // registered source) gives the 10th-annual date, Sat Aug 1 2-6pm, free,
+  // corroborated by Greenpointers' 7/23 writeup. +1 event, 95 → 96.
+  // 2026-07-30 (Batu's ask, same day): Flower Cat's Botanic Drawing Workshop
+  // (7/30, 7-9pm) — flowercat.nyc/events had nothing (normal for them; their
+  // real channel is Instagram, which we don't crawl), so Batu's ma.to find
+  // is the only sourceLink. One-off attribution, not a registered ma.to
+  // roster source. +1 event, 96 → 97.
+  // 2026-07-30 daily thin refresh: expiry took 16 past events (the 7/27–7/29
+  // Troost/Film Noir/library/comedy/trivia/ecstatic-dance block), 97 → 81.
   // Adds: +3 — Brooklyn Craft Company's Crafty Hour Tie Dye (8/7) and
   // two-part stretchy-knits class (8/4) from the 7/28 BCC newsletter, and
   // SummerStarz: Ford v Ferrari (8/7) from the 7/29 Town Square newsletter.
   // One judgment delete: poochs-first-visit-20 duplicated
-  // poochs-parlor-first-groom (same 20%-off-first-groom offer, same address);
-  // the weaker card cited the Greenpointers homepage rather than the article,
-  // so the article-sourced card is the one kept. 78 → 80.
-  assert.equal(seed.cards.length, 80);
+  // poochs-parlor-first-groom (same 20%-off-first-groom offer, same salon at
+  // 128 India St); the weaker card cited the Greenpointers homepage rather
+  // than the article, so the article-sourced card is the one kept, re-verified
+  // at source and its verified-through bumped to 8/2. 81 → 83.
+  assert.equal(seed.cards.length, 83);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 22, "19 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.category === "event"), 32, "29 post-expiry + the two BCC workshops + SummerStarz Ford v Ferrari");
+  assert.equal(count((c) => c.category === "event"), 35, "32 post-expiry + the two BCC workshops + SummerStarz Ford v Ferrari");
   assert.equal(count((c) => c.category === "discount"), 4, "Pooch's first-groom + Hana bottomless + Moon Bunny + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 12, "9 + Monitor Point + McGuinness + Meeker Plume");
-  assert.equal(count((c) => c.filters.includes("live_music")), 16, "12 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
+  assert.equal(count((c) => c.filters.includes("live_music")), 17, "13 dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
   assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -210,6 +221,7 @@ test("free-ness is designated only where the source states it (tester feedback #
   assert.deepEqual(free, [
     "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
     "greenpoint-trash-club",
+    "kingsland-wildflowers-festival-2026",
     "library-friday-programs-0731",
     "library-thursday-programs-0730",
     // Town Square's SummerStarz listing says "Free SummerStarz Movies" and the
@@ -289,19 +301,24 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // 2026-07-27 expiry took the dated half of this lens (City of Water Day, the
   // Disabled & Hungry launch, It's My Park at Transmitter, the Saturday library
   // block, Pooch's adoption day) — the standing civic asks are what remain.
-  // 2026-07-27 run 2 added the game-club pair: Carcosa's all-day 40k
-  // tournament and Last Place on Earth's weekly chess night — tabletop
-  // gathering spots live here alongside the civic asks.
+  // 2026-07-30 (Batu): the game-club pair added on 2026-07-27 is OUT —
+  // "Community has gaming events that shouldn't be there. That category is for
+  // civic action." Carcosa's 40k tournament and Last Place's chess night moved
+  // to arts_culture (the shelf that already holds culture/ideas programming).
+  // The lens rule is now hard: hands-on civic participation and mutual aid
+  // only — never a gathering that is simply social.
   assert.deepEqual(community, [
     "adopt-a-business",
-    "carcosa-warhammer-rtt-0801",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
-    "last-place-chess-chill",
     // 2026-07-30 expiry took the library's Tuesday community block.
     "newtown-creek-cag-0729",
   ]);
+  const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
+  for (const id of gathering) {
+    assert.ok(!community.includes(id), `${id} is a social gathering, not civic action`);
+  }
   // Trash Club moved OUT of deals_memberships — it's civic action, not a
   // paid membership; a signup card can only be one thing at a glance.
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("deals_memberships"));
@@ -309,6 +326,38 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // it stays in news, unlike the four action cards above.
   assert.ok(seed.cards.find((c) => c.id === "g-train-closures").filters.includes("news"));
   assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("community"));
+});
+
+// 2026-07-30 (Batu): "deals & memberships should only have deals & memberships.
+// enrollments & registrations or game nights don't belong here." `subscription`
+// is the schema category for BOTH a standing membership (Falu's tinned-fish
+// club, Flower Cat's weekly delivery) and a term enrollment (fall dance
+// registration, kids' game clubs) — so the lens cannot be derived from the
+// category and has to be authored against this rule. A membership is an
+// open-ended standing relationship; a registration buys a fixed term and
+// belongs with its audience lens (family_kids / wellness).
+test("the deals & memberships lens holds only deals and standing memberships", () => {
+  const lens = seed.cards.filter((c) => c.filters.includes("deals_memberships"));
+  for (const c of lens) {
+    assert.ok(
+      c.category === "discount" || c.category === "subscription",
+      `${c.id} (${c.category}) is neither a deal nor a membership`,
+    );
+    assert.ok(
+      !/registration|enrollment|signup|sign-up/i.test(`${c.title} ${c.kicker}`),
+      `${c.id} reads as an enrollment, not a membership — file it under its audience lens`,
+    );
+  }
+  assert.deepEqual(lens.map((c) => c.id).sort(), [
+    "bios-apothecary-first-order",
+    "falu-tinned-fish-club",
+    "flower-cat-subscription",
+    "hana-bottomless-makgeolli",
+    "moon-bunny-back-to-school",
+    // 2026-07-30: the duplicate poochs-first-visit-20 deleted; the
+    // article-sourced poochs-parlor-first-groom is the surviving card.
+    "poochs-parlor-first-groom",
+  ]);
 });
 
 test("astrology landed in Arts & Culture, not stranded", () => {

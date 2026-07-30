@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FILTERS, pinKind, partitionFilters } from "./filterCards.js";
+import { FILTERS, pinKind, partitionFilters, pickRelated } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
 import { followTarget, followRef } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
-import { formatWindow } from "./eventWindow.js";
+import { formatWindow, isSpan } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
@@ -130,8 +130,9 @@ function ShareAction({ action, card, cls }) {
 // V2-A, revised 2026-07-25 (Batu's phone test): a Google Calendar template
 // link — the prefilled new-event screen, no file handling. Dated,
 // non-recurring cards only; the deep link inside is tagged ?src=calendar so a
-// saved event's return visit is attributable. Label stays one word so card
-// action rows hold to a single line.
+// saved event's return visit is attributable. "Add to calendar" (punch list
+// P2 #14): venue cards put "See the calendar" 6px away — two adjacent buttons
+// both named "calendar" until each said which one it meant.
 function CalendarAction({ card, cls }) {
   const { url } = sharePayload(card, {
     origin: window.location.origin,
@@ -149,7 +150,7 @@ function CalendarAction({ card, cls }) {
       aria-label="Add to Google Calendar"
       onClick={() => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: "calendar" })}
     >
-      Calendar <span aria-hidden="true">↗</span>
+      Add to calendar <span aria-hidden="true">↗</span>
       <span className="sr-only">(opens in new tab)</span>
     </a>
   );
@@ -217,10 +218,13 @@ const TIMELINE_DAY_FMT = new Intl.DateTimeFormat("en-US", {
 function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   // Recurring deals carry their schedule in kicker/summary (sourced wording);
   // the window formatter would misread verified-through as "Through Jul 22".
-  const when = card.recurring ? null : formatWindow(card);
-  const related = (card.relatedCardIds ?? [])
-    .map((id) => cardsById.get(id))
-    .filter(Boolean);
+  // Spans only (punch list P1 #3): a same-day card's when-line restated what
+  // the day header + row clock already carry — keep it for "Through Aug 15".
+  const when = card.recurring || !isSpan(card) ? null : formatWindow(card);
+  // One pointer, not a shelf — see pickRelated for how "most relevant" is
+  // derived (the stored order is insertion order, and it can include cards
+  // that have already expired).
+  const related = pickRelated(card, cardsById, new Date());
   // Publisher only — full issue titles live in data as the citation of record
   // but read as noise at label size. First URL per publisher makes it tappable
   // (credibility via links, and the tap is source_tap evidence).
@@ -259,19 +263,16 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
         ))}
         {card.startsAt != null && !card.recurring && <CalendarAction card={card} cls="july-action" />}
       </div>
-      {related.length > 0 && (
+      {related && (
         <p className="july-related">
-          <span className="july-related-label">Connected</span>
-          {related.map((r) => (
-            <button
-              key={r.id}
-              type="button"
-              className="july-related-chip"
-              onClick={() => onRelated(card.id, r.id)}
-            >
-              {r.title}
-            </button>
-          ))}
+          <span className="july-related-label">Related</span>
+          <button
+            type="button"
+            className="july-related-chip"
+            onClick={() => onRelated(card.id, related.id)}
+          >
+            {related.title}
+          </button>
         </p>
       )}
       <p className="july-source">
@@ -322,64 +323,94 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
 // names what the reader was just doing so the object is concrete. Copy
 // deliberately under-promises: sends are permanently manual (growth-engine §7),
 // so "when something new lands" is a promise we can keep and "alerts" is not.
-function FollowPrompt({ filter, card, onDone, placement }) {
-  const target = followTarget({ filterId: filter, card });
+// The Follow banner (2026-07-30). Three passes to get here, and the last two
+// failures were both about the CONTAINER, not the contents:
+//   · v1 wrapped a full-width ink button in a bordered box → "the whole thing
+//     looks like a button";
+//   · v2 kept the box and fixed its insides → still read as a button, because
+//     the box's fill (--paper-lift) is the open card's own background, so only
+//     its 1px ink border and radius were visible — a treatment identical to
+//     `.july-action`. It also sat on two left edges (x=12 box, x=27 text)
+//     against the card body's x=16.
+//   · v3 moved it INSIDE the card body to fix those edges — rejected by Batu:
+//     the ask then becomes part of a card's content, and since any card can
+//     become the anchor it gets stitched into arbitrary cards repeatedly.
+// So it is no longer inside anything. It is a full-bleed band rendered as a
+// PEER of the cards — its own row in the feed, directly after the card that
+// earned it. That is the app's existing interjection vocabulary (.july-gbanner
+// for G-train status, .july-cbanner for the civic ask): edge-to-edge,
+// zero-radius, saturated bed. Full-bleed + square is unambiguously not a
+// button, because every control on this surface is content-sized with a radius.
+function FollowPrompt({ filter, onDismiss, placement }) {
+  const target = followTarget({ filterId: filter });
+  // Lens-only (Batu, 2026-07-30): no lens selected, no ask. The footer's
+  // ungated "Follow Greenpoint" covers that reader — see the footer's note.
+  if (!target) return null;
   const ref = followRef(target);
   return (
-    <div className="july-prompt" role="status">
-      <p>
-        Want the next one? We&rsquo;ll email you when something new lands in{" "}
-        <strong>{target.label}</strong>.
-      </p>
-      <div className="july-prompt-row">
+    <div className="july-fbanner">
+      <div className="july-fbanner-body">
+        {/* Copy is Batu's (2026-07-30), verbatim. It leads with the benefit
+            rather than the mechanism, and it drops the lens name — which the
+            button below already carries, so the label no longer appears twice
+            in three lines. The cadence stays because it is a promise we can
+            KEEP: sends are permanently manual (growth-engine §7) and a
+            per-item email would be spam. Channel is deliberately unpromised;
+            the form asks how they'd want it, which is how we learn whether
+            this should be SMS or a notification rather than mail at all. */}
+        <p className="july-fbanner-terms">Stay up to date with one weekly email</p>
         <a
-          className="july-cta july-cta--primary"
+          className="july-fbanner-cta"
           href={followHref(SIGNUP_URL, ref)}
           target="_blank"
           rel="noreferrer"
           onClick={() => {
             trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: ref });
-            onDone();
+            // Tapping through also retires the row for this lens — the reader
+            // is now in the form; leaving the ask behind them would re-ask.
+            onDismiss();
           }}
         >
           Follow {target.label}
         </a>
-        <button type="button" className="july-prompt-dismiss" onClick={onDone}>
-          Not now
-        </button>
       </div>
-      {/* The other object stays one tap away without becoming a second ask —
-          the form's own question is where a place gets named (R1, §2). */}
-      {target.kind !== "place" && (
-        <a
-          className="july-prompt-alt"
-          href={followHref(SIGNUP_URL, ref)}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: "place-instead" });
-            onDone();
-          }}
-        >
-          or follow a place instead
-        </a>
-      )}
+      {/* Same dismiss vocabulary as the dead-link notice: a glyph, labelled.
+          Scoped to THIS lens only (Batu): the old single global key meant one
+          × silently killed the ask on every other category too. */}
+      <button
+        type="button"
+        className="july-fbanner-dismiss"
+        onClick={onDismiss}
+        aria-label={`Dismiss ${target.label} follow`}
+      >
+        &times;
+      </button>
     </div>
   );
 }
 
-// The Today pill is viewport-fixed on mobile, so it must yield whenever the
-// feed's end chrome (signup prompt, footer CTA) is on screen — Batu's phone
-// test caught it parked on top of the signup button. Desktop's pill is
-// panel-absolute in the same bottom zone, so the same guard applies there.
+// The Today pill is viewport-fixed on mobile, so it must yield whenever a
+// competing call-to-action shares its zone — Batu's phone test caught it
+// parked on top of the signup button. Desktop's pill is panel-absolute in the
+// same bottom zone, so the same guard applies there.
+//
+// The two competitors are measured differently on purpose (2026-07-30). The
+// footer is END chrome: it only ever rises from below, so "has its top entered
+// the viewport" is the right test. The Follow banner is now a FEED ROW and can
+// sit anywhere in the list, so it needs real intersection — the old top-only
+// test stayed true once the element had scrolled above the fold, which would
+// have hidden the pill permanently after the reader scrolled past the banner.
 function feedEndVisible(ownScroller) {
-  const end = document.querySelector(".july-prompt") ?? document.querySelector(".july-ctas");
-  if (!end) return false;
-  const top = end.getBoundingClientRect().top;
-  if (!ownScroller) return top < window.innerHeight;
-  // Desktop: prompt/footer sit below the list inside the panel — the pill
-  // (bottom: 88px) only collides with the taller signup prompt.
-  return end.classList.contains("july-prompt");
+  const banner = document.querySelector(".july-fbanner");
+  if (banner) {
+    const r = banner.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < window.innerHeight) return true;
+  }
+  // Desktop: the footer sits below the list inside the panel, so the pill
+  // (bottom: 88px) never reaches it — only the banner above can collide.
+  if (ownScroller) return false;
+  const footer = document.querySelector(".july-ctas");
+  return footer ? footer.getBoundingClientRect().top < window.innerHeight : false;
 }
 
 // Layers with fewer live cards than this fold into "More" until the weekly
@@ -403,7 +434,7 @@ function FilterChip({ f, filter, onFilter }) {
   );
 }
 
-export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, showSignupPrompt, onSignupPromptDone, promptCardId }) {
+export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismissDeadLink, filter, onFilter, filterCounts, focus, onClearFocus, selectedId, onSelect, onRelated, dismissedLenses, onDismissFollow }) {
   const listRef = useRef(null);
   const filtersRef = useRef(null);
   const firstScrollRef = useRef(true);
@@ -420,10 +451,15 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // visible even while the fold is closed.
   const activeIsFolded = folded.some((f) => f.id === filter);
   const showFolded = moreOpen || activeIsFolded;
-  // Is the card that earned the ask still on screen? If not, the prompt falls
-  // back to the end of the list rather than disappearing with it.
-  const promptVisible =
-    promptCardId != null && groups.some((g) => g.cards.some((c) => c.id === promptCardId));
+  // The Follow row has a STATIC slot and no behavioural trigger (Batu,
+  // 2026-07-30): "too annoying once you use it. feels like a spammy popup."
+  // Anything that materialises in response to what the reader just did reads
+  // as a popup, however quiet it looks — so the row is simply part of the lens
+  // now, present from the moment a category is selected and never moving.
+  // Lens-only, so on All it renders nothing and the footer's ungated "Follow
+  // Greenpoint" steps back in to cover that reader.
+  const followT = followTarget({ filterId: filter });
+  const askShowing = followT != null && !dismissedLenses.has(followT.id);
 
   // Location focus engaged (pin tap): bring the narrowed feed into view.
   // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
@@ -439,6 +475,23 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       document.querySelector(".july-mapzone")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
     }
   }, [focus]);
+
+  // The active lens must stay visible (punch list P1 #5): at 375px the bar
+  // holds ~2.7 of 9 chips, so a chip tapped at the bar's far end scrolled back
+  // out of view and the feed showed a filtered list with no highlight anywhere.
+  // Keying on `filter` covers every path — chip taps, card actions
+  // (action.filterId via onFilterAction), and pin-focus resets to All.
+  useEffect(() => {
+    const nav = filtersRef.current;
+    if (!nav || nav.scrollWidth <= nav.clientWidth + 1) return; // desktop: bar wraps
+    const active = nav.querySelector(".july-chip.is-active");
+    if (!active) return;
+    // Scroll the BAR only — scrollIntoView would also drag the page, and the
+    // bar is sticky chrome. Center the active chip so its neighbors show.
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const left = active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2;
+    nav.scrollTo({ left: Math.max(0, left), behavior: reduce ? "auto" : "smooth" });
+  }, [filter]);
 
   // Measure AFTER the lens change has rendered: is the feed's top (today)
   // offscreen? Desktop's list is its own scroller; mobile page flow compares
@@ -595,8 +648,10 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       )}
       {focus && (
         <div className="july-focus" role="status">
+          {/* "{count} here", not "on the map here" — the longer line orphaned
+              "map here" onto its own row at 375 AND 768 (punch list P2 #12). */}
           <p>
-            <strong>{focus.name}</strong> &middot; {focus.count} on the map here
+            <strong>{focus.name}</strong> &middot; {focus.count} here
           </p>
           <button type="button" className="july-empty-reset" onClick={onClearFocus}>
             Show everything
@@ -604,14 +659,18 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
         </div>
       )}
       <ol className="july-list" ref={listRef}>
-        {groups.map((group) => (
+        {groups.map((group, gi) => (
           <React.Fragment key={group.key}>
             {/* Calendar scan (2026-07-15 review): a lone Ongoing group needs no
                 header — headers appear once dated cards give days to scan.
                 Not aria-hidden: the calendar exists for screen readers too
                 (UX eval, F25). */}
+            {/* h2 (crit round 2, #2): without it the outline was H1 → 77 H3s
+                flat — the day header is the level that groups the cards. */}
             {(groups.length > 1 || group.key !== "ongoing") && (
-              <li className="july-day">{group.label}</li>
+              <li className="july-day">
+                <h2>{group.label}</h2>
+              </li>
             )}
             {group.cards.map((card) => {
               const open = card.id === selectedId;
@@ -635,13 +694,39 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                       {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
                     </button>
                   </h3>
-                  {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onFilterAction={onFilterAction} onRelated={onRelated} />}
-                  {showSignupPrompt && card.id === promptCardId && (
-                    <FollowPrompt filter={filter} card={card} onDone={onSignupPromptDone} placement="inline" />
+                  {/* reveal wrapper: eased height via the grid-track animation
+                      in july.css (punch list P2 #16) */}
+                  {open && (
+                    <div className="july-detail-reveal">
+                      <div>
+                        <CardDetail
+                          card={card}
+                          cardsById={cardsById}
+                          onFilter={onFilter}
+                          onFilterAction={onFilterAction}
+                          onRelated={onRelated}
+                        />
+                      </div>
+                    </div>
                   )}
                 </li>
               );
             })}
+            {/* The static slot: after the FIRST day group's cards, once per
+                feed. Far enough down that the reader has passed real content,
+                but fixed — it never appears in response to a tap, and never
+                lands between two cards of the same day. When the lens has only
+                one group this degenerates to the end of the feed, which is the
+                same "you've read it, here's how to keep getting it" order. */}
+            {gi === 0 && askShowing && (
+              <li className="july-fbanner-row">
+                <FollowPrompt
+                  filter={filter}
+                  onDismiss={() => onDismissFollow(followT.id)}
+                  placement="feed"
+                />
+              </li>
+            )}
           </React.Fragment>
         ))}
         {/* Empty layer (Q2-C): plain words, one-tap recovery — no "layer" jargon. */}
@@ -665,7 +750,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                 rel="noreferrer"
                 onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "empty" })}
               >
-                Add yours, free &rarr;
+                Submit an event &rarr;
               </a>
             </span>
           </li>
@@ -694,24 +779,20 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             rel="noreferrer"
             onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "list" })}
           >
-            add yours, free &rarr;
+            submit an event &rarr;
           </a>
         </li>
       </ol>
-      {/* Fallback only: the prompt renders beside its trigger card (above), but
-          that card can leave the view — a lens change, a pin focus, the Today
-          lens. Rather than lose the ask, it lands here, which is where it
-          always used to be. */}
-      {showSignupPrompt && !promptVisible && (
-        <FollowPrompt filter={filter} card={null} onDone={onSignupPromptDone} placement="listend" />
-      )}
-      {/* The footer is the fallback for readers who scroll past without ever
-          tripping the post-value gate; it steps aside whenever the prompt is
-          up, since two stacked asks read as the app asking twice (Batu, phone
-          test). No object — an ungated reader hasn't told us anything yet, so
-          this is Follow at its widest (and R1's control arm: growth-engine §2
-          reads unsegmented signups as the broadcast group). */}
-      {!showSignupPrompt && (
+      {/* The list-end copy of the ask is GONE (Batu, 2026-07-30: "no need to
+          also anchor it to the bottom") — the row has one static slot in the
+          feed and does not repeat.
+          The footer is a different object: the general, unsegmented Follow for
+          readers with no lens on, and R1's control arm (growth-engine §2 reads
+          unsegmented signups as the broadcast group). It steps aside whenever
+          the lens row is up, since two stacked asks read as the app asking
+          twice — and steps back in on the All lens, or once the reader has
+          waved this lens off, so the surface is never askless. */}
+      {!askShowing && (
         <footer className="july-ctas">
           <a
             className="july-cta july-cta--primary"

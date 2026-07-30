@@ -932,6 +932,21 @@
       "outcome": "PRESS Modern Massage — excluded sender, skipped"
     },
     {
+      "id": "https://www.kingslandwildflowers.com/events",
+      "reviewedAt": "2026-07-30",
+      "outcome": "resolved watchItem: organizer's page gives Sat Aug 1, 2-6pm, free, 520 Kingsland Ave — card added (kingsland-wildflowers-festival-2026), corroborated by Greenpointers 7/23 writeup"
+    },
+    {
+      "id": "https://hideandseek.nyc",
+      "reviewedAt": "2026-07-30",
+      "outcome": "re-verified per Batu's ask (checked against ma.to event listings as a reference, not registered as a source): venue's own marquee still reads 'Live Jazz For Wine Down Wednesdays 7pm also DJ's Every Friday and Saturday Night'. The Wed jazz card had gone stale (dated 7/29, since expired) — forward-dated to next Wednesday Aug 5 and marked recurring (hide-and-seek-jazz-0805, was hide-and-seek-jazz-0729). Weekend DJs card (hide-and-seek-weekend-djs-0731) already covers Jul 31/Aug 1, unchanged."
+    },
+    {
+      "id": "https://ma.to/event/botanic-drawing-workshop-30-jul-2026",
+      "reviewedAt": "2026-07-30",
+      "outcome": "Batu found this same-day Flower Cat workshop (7-9pm) on ma.to; not in our data. Checked flowercat.nyc/events (stale, no future listings — normal for them) and their Instagram bio (no post content visible logged out). Card added (flower-cat-botanic-drawing-0730), sourced to the ma.to listing itself since no venue-channel confirmation exists — this is a one-off attribution, not a registration of ma.to as a roster source. Root cause logged on the Flower Cat senderRegistry entry: their real channel is Instagram, which we don't crawl, so same-day one-offs like this will keep getting missed until that's addressed."
+    },
+    {
       "id": "gmail:19fa9cc1a4f802a8",
       "reviewedAt": "2026-07-30",
       "outcome": "Brooklyn Craft Company newsletter (7/28) — +2 cards (Crafty Hour Tie Dye 8/7, stretchy-knits two-parter 8/4); 90's Nostalgia 7/31, Floral Embroidery 8/1, Pietra shorts 8/2 and the kids sewing camp already carded; Lower Manhattan pop-up items skipped"
@@ -957,29 +972,9 @@
       "outcome": "first snapshot — front page carried only Jan–Feb 2026 stories (Monitor Point hearing, National Grid/CB1, two Cobb history pieces); nothing current, Monitor Point already carded. No adds; roster URL needs a live-section check on the Monday full run"
     },
     {
-      "id": "https://donyc.com/venues/good-room",
-      "reviewedAt": "2026-07-30",
-      "outcome": "diff = no on-concept items"
-    },
-    {
-      "id": "https://brooklyncraftcompany.com/collections/all-workshops",
-      "reviewedAt": "2026-07-30",
-      "outcome": "diff = undated Shopify listings only; the 7/28 newsletter carried the dates (known lesson, 2026-07-25)"
-    },
-    {
-      "id": "https://acmesmokedfish.com/collections/fish-friday",
-      "reviewedAt": "2026-07-30",
-      "outcome": "diff = no on-concept items; no closure week stated"
-    },
-    {
       "id": "https://gogreenbk.org",
       "reviewedAt": "2026-07-30",
       "outcome": "diff = 8 events, all non-Greenpoint (Brooklyn Bridge Park, Marsha P. Johnson State Park, Williamsburgh Library) — skipped"
-    },
-    {
-      "id": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
-      "reviewedAt": "2026-07-30",
-      "outcome": "re-verified the FLAGGED recurring deal at source — article still states \"Mention Greenpointers for 20% off your first appointment\"; verified-through bumped to 2026-08-02"
     }
   ],
   "senderRegistry": [
@@ -1131,7 +1126,7 @@
         "event",
         "subscription"
       ],
-      "note": "Batu confirmed subscribed 2026-07-25 — they announce late, often newsletter-first; complements the (often empty) events page"
+      "note": "Batu confirmed subscribed 2026-07-25 — they announce late, often newsletter-first; complements the (often empty) events page. LOW YIELD BY DESIGN, root cause confirmed 2026-07-30: their real day-to-day announcement channel is Instagram (@flowercatnyc, 8am-11pm Fri live jazz/music night per bio) — the newsletter and flowercat.nyc/events are both secondary and neither reliably carries same-day one-offs. We have no Instagram crawl, so a workshop like the 7/30 Botanic Drawing session (found by Batu on ma.to, an events aggregator — not a registered source, just how this one surfaced) will keep slipping through same-day; treat this as an acknowledged gap, not a fixed one, until Instagram coverage exists."
     },
     {
       "publisher": "Marianella Market",
@@ -1159,6 +1154,24 @@
         "event"
       ],
       "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe — locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
+    },
+    {
+      "publisher": "Bushwick Inlet Park",
+      "match": "bushwickinletpark.org",
+      "kinds": [
+        "event",
+        "news"
+      ],
+      "note": "waterfront park + Save the Inlet advocacy; civic/community opportunities and events. Batu subscribed to the newsletter 2026-07-30."
+    },
+    {
+      "publisher": "Kingsland Wildflowers",
+      "match": "kingslandwildflowers.com",
+      "kinds": [
+        "event",
+        "family_kids"
+      ],
+      "note": "520 Kingsland Ave rooftop meadow (Broadway Stages/Alive Structures/Newtown Creek Alliance/Noo Arts); web source, not email — kingslandwildflowers.com/events is the primary calendar. Annual festival is the anchor event (10th ed. Sat Aug 1 2026); pull the events page every ingest for the rest of the year's programming."
     }
   ],
   "watchItems": [
@@ -1175,11 +1188,6 @@
     {
       "name": "Meet Cute (Greenpoint film studio)",
       "note": "Greenpointers 7/24 names an open house on August 2 — no time and no street address stated; card once both are verified",
-      "addedAt": "2026-07-27"
-    },
-    {
-      "name": "Kingsland Wildflowers festival",
-      "note": "Greenpointers 7/24: annual namesake festival 'next week' with performances — no date, time or price stated; card once the organizer's page gives a date",
       "addedAt": "2026-07-27"
     },
     {

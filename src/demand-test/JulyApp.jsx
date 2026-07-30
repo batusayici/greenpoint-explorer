@@ -1,13 +1,12 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/cards.json";
-import { matchesFilter, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
+import { matchesFilter, sortTodayFirst, isExpiredCard, isActiveOn, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
 import { assessFreshness } from "./freshness.js";
 import stamp from "../data/demand-test/freshness-stamp.json";
-import { createPostValueGate, POST_VALUE_DONE_KEY } from "./postValue.js";
 import { resolveDeepLink, deepLinkUrl } from "./deepLink.js";
 import { editionLabel } from "./eventWindow.js";
 import MapView from "./MapView.jsx";
@@ -36,8 +35,9 @@ export default function JulyApp() {
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
   const [showDeadLinkNotice, setShowDeadLinkNotice] = useState(deadLink);
-  const [showSignupPrompt, setShowSignupPrompt] = useState(false);
-  const [promptCardId, setPromptCardId] = useState(null);
+  // Lens ids the reader has waved off this visit. In memory on purpose — see
+  // onDismissFollow: a reload is the undo.
+  const [dismissedLenses, setDismissedLenses] = useState(() => new Set());
   // Mobile map peek (UX eval F3, decision B): the list owns the first screen;
   // the map starts compact and grows on request. Desktop ignores this.
   const [mapExpanded, setMapExpanded] = useState(false);
@@ -50,44 +50,38 @@ export default function JulyApp() {
   // drift at expiry boundaries, and the bar must not reshuffle mid-session.
   const [filterCounts] = useState(() => liveFilterCounts(seed.cards, new Date()));
 
+  // Mobile layout flag for the peek-pin filter below (crit round 2, #7).
+  const [smallViewport, setSmallViewport] = useState(
+    () => window.matchMedia?.("(max-width: 760px)").matches ?? false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia?.("(max-width: 760px)");
+    if (!mq) return;
+    const onChange = (e) => setSmallViewport(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   // Keep the address bar on the card's shareable path (?src= rides along).
   // replaceState, not pushState: back should leave the page, not unwind taps.
   useEffect(() => {
     window.history.replaceState(null, "", deepLinkUrl(selectedId, window.location.search));
   }, [selectedId]);
 
-  // Post-value email prompt (limited launch): observe the tap stream and offer
-  // the weekly signup once, only after value is demonstrated (2nd card open or
-  // 1st action tap). localStorage makes "once" mean once per browser, not per
-  // load — signing up or dismissing both spend it.
-  useEffect(() => {
-    let done = false;
-    try {
-      done = localStorage.getItem(POST_VALUE_DONE_KEY) != null;
-    } catch {
-      /* storage blocked: prompt at most once per load */
-    }
-    const gate = createPostValueGate({ done });
-    return onEvent((name, data) => {
-      if (gate.record(name)) {
-        setShowSignupPrompt(true);
-        // Remember WHICH card earned the ask: the Follow prompt renders next to
-        // it, and its place is the follow object when no lens is active
-        // (DECISION_LOG 2026-07-28). Before this the prompt rendered at the end
-        // of the list — measured ~8 screens from the reader who triggered it,
-        // so the behavioural gate fired into an empty room.
-        setPromptCardId(data?.cardId ?? null);
-      }
+  // The Follow row is dismissed PER LENS, and only for this visit (Batu,
+  // 2026-07-30). Two complaints drove both halves: one dismiss used to spend a
+  // single global key, so declining on News silently killed the ask on every
+  // other category — "dismissed from other categories as well which i didn't
+  // have a way to undo". Per-lens fixes the collateral damage; keeping the set
+  // in memory rather than storage makes a reload the undo, so no single tap
+  // can cost a category permanently.
+  const onDismissFollow = useCallback((lensId) => {
+    setDismissedLenses((prev) => {
+      if (prev.has(lensId)) return prev;
+      const next = new Set(prev);
+      next.add(lensId);
+      return next;
     });
-  }, []);
-
-  const onSignupPromptDone = useCallback(() => {
-    setShowSignupPrompt(false);
-    try {
-      localStorage.setItem(POST_VALUE_DONE_KEY, new Date().toISOString());
-    } catch {
-      /* storage blocked */
-    }
   }, []);
 
   // Escape closes the open card (UX eval, F27).
@@ -108,8 +102,6 @@ export default function JulyApp() {
   // whose deploys have stopped ages into "verified through <date>" honestly.
   const freshness = assessFreshness({ lastRunAt: stamp.lastRunAt, now: new Date(), cards: seed.cards });
   // One banner at a time (2026-07-26): most consequential takes the slot.
-  // The feed pin below stays tied to communityAlert, not the slot — the
-  // campaign keeps its feed elevation even when a closure holds the banner.
   const slot = bannerSlot(gtrainPhase, communityAlert, freshness);
 
   const { visible, groups } = useMemo(() => {
@@ -118,9 +110,24 @@ export default function JulyApp() {
     const shown = live.filter((c) => matchesFilter(c, filter));
     // Map keeps the flat set (full context even while focused); the list
     // scans as a calendar (day groups), narrowed to the focused location.
+    // The community-alert card rides in its natural day group — the banner
+    // already carries the campaign, and the duplicate pinned row cost 87px of
+    // first-screen feed (punch list P2 #13).
     const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
-    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now, communityAlert?.cardId ?? null) };
-  }, [filter, pinFocus, communityAlert?.cardId]);
+    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now) };
+  }, [filter, pinFocus]);
+
+  // Peek-pin filter (crit round 2, #7): the 203px peek rendered all 53 pins
+  // at a size where the color key can't be read. In the peek, dated pins
+  // narrow to today's; ongoing/recurring cards (the map's stable geography)
+  // stay. Expanding the map — or any desktop viewport — shows everything.
+  const mapCards = useMemo(() => {
+    if (!smallViewport || mapExpanded) return visible;
+    const now = new Date();
+    return visible.filter(
+      (c) => (c.startsAt == null && c.endsAt == null) || c.recurring || isActiveOn(c, now),
+    );
+  }, [visible, smallViewport, mapExpanded]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
@@ -188,9 +195,10 @@ export default function JulyApp() {
               a freshness signal, computed per render like the banner phase. */}
           <span className="july-kicker">{editionLabel(new Date())}</span>
           <h1>Greenpoint Life</h1>
-          {/* Names the content types + the verification stake (2026-07-26:
-              de-centered from the G closures; max 2 lines on mobile). */}
-          <p>Your week in Greenpoint, verified: events, openings, deals, and neighborhood news.</p>
+          {/* The verification stake only (punch list P2 #11): the chip bar
+              right below already lists the categories — the old 12-word
+              enumeration ran 2 lines restating it. */}
+          <p>Every listing verified this week.</p>
         </div>
       </header>
       {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still
@@ -251,13 +259,12 @@ export default function JulyApp() {
           selectedId={selectedId}
           onSelect={setSelectedId}
           onRelated={onRelated}
-          showSignupPrompt={showSignupPrompt}
-          onSignupPromptDone={onSignupPromptDone}
-          promptCardId={promptCardId}
+          dismissedLenses={dismissedLenses}
+          onDismissFollow={onDismissFollow}
         />
         <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
           <MapView
-            cards={visible}
+            cards={mapCards}
             selectedId={selectedId}
             focusKey={pinFocus?.key ?? null}
             onSelect={setSelectedId}

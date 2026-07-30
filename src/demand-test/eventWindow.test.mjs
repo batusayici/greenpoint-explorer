@@ -62,3 +62,13 @@ test("editionLabel: same-month week compresses, cross-month spells both", async 
   assert.equal(editionLabel(new Date("2026-07-23T12:00:00-04:00")), "Jul 23–29");
   assert.equal(editionLabel(new Date("2026-07-30T12:00:00-04:00")), "Jul 30 – Aug 5");
 });
+
+// Punch-list P1 #3 corollary: the detail when-line renders for spans only.
+test("isSpan: multi-day and open-ended windows are spans, same-day is not", async () => {
+  const { isSpan } = await import("./eventWindow.js");
+  assert.equal(isSpan({ startsAt: "2026-07-09T19:15:00-04:00", endsAt: "2026-07-09T20:30:00-04:00" }), false);
+  assert.equal(isSpan({ startsAt: "2026-07-09T19:15:00-04:00" }), true);
+  assert.equal(isSpan({ endsAt: "2026-08-15T23:59:00-04:00" }), true);
+  assert.equal(isSpan({ startsAt: "2026-07-09T00:00:00-04:00", endsAt: "2026-08-15T23:59:00-04:00" }), true);
+  assert.equal(isSpan({}), false);
+});

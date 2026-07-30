@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
@@ -93,15 +93,19 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
   ]);
   assert.deepEqual(groups[0].cards.map((c) => c.id), ["series"], "running window is live today");
   assert.deepEqual(groups[1].cards.map((c) => c.id), ["thu-early", "thu-late"], "within a day: earliest first");
-  assert.deepEqual(groups[3].cards.map((c) => c.id), ["shop", "club"], "undated + recurring deals trail as Ongoing");
+  // Both trail as Ongoing; inside it the standing deal (rank 3) outranks the
+  // category-less place card (rank 5) — the 2026-07-30 kind ranking.
+  assert.deepEqual(groups[3].cards.map((c) => c.id), ["club", "shop"], "undated + recurring deals trail as Ongoing");
 });
 
 // 2026-07-25 user feedback: under the News lens, real news read below the
 // folded-in business openings — a pure array-order accident, since both are
-// undated and Ongoing otherwise keeps insertion order. news/g_train_support
-// category cards now sort first within Ongoing, everything else keeps its
-// relative order after (stable partition, not a full re-sort).
-test("groupByDay: within Ongoing, news/g_train category cards sort before everything else", () => {
+// undated and Ongoing otherwise kept insertion order. That fix survives inside
+// the 2026-07-30 kind ranking (Batu: "review & improve the default sorting rule
+// for Ongoing"), which orders the whole undated shelf instead of just hoisting
+// news out of it: asks → news → recurring programming → offers → signups →
+// places, freshest first inside each kind.
+test("groupByDay: within Ongoing, news/g_train category cards sort before places", () => {
   const wed = new Date("2026-07-25T12:00:00-04:00");
   const opening1 = { id: "opening-1", category: "new_business" };
   const realNews = { id: "real-news", category: "news" };
@@ -110,6 +114,45 @@ test("groupByDay: within Ongoing, news/g_train category cards sort before everyt
   const groups = groupByDay([opening1, realNews, opening2, gtrainHub], wed);
   const ongoing = groups.find((g) => g.key === "ongoing");
   assert.deepEqual(ongoing.cards.map((c) => c.id), ["real-news", "gtrain-hub", "opening-1", "opening-2"]);
+});
+
+test("ongoingRank: kinds rank by decay + actionability, recurring events by flag not category", async () => {
+  const { ongoingRank } = await import("./filterCards.js");
+  assert.equal(ongoingRank({ category: "civic_action" }), 0);
+  assert.equal(ongoingRank({ category: "support_local" }), 0);
+  assert.equal(ongoingRank({ category: "news" }), 1);
+  assert.equal(ongoingRank({ category: "g_train_support" }), 1);
+  assert.equal(ongoingRank({ category: "event", recurring: true }), 2, "recurring programming");
+  assert.equal(ongoingRank({ category: "discount" }), 3);
+  assert.equal(ongoingRank({ category: "subscription" }), 4);
+  for (const category of ["new_business", "food_drink", "service", "shopping", "arts_culture"]) {
+    assert.equal(ongoingRank({ category }), 5, category);
+  }
+  // a recurring DEAL is still an offer — the flag only promotes events
+  assert.equal(ongoingRank({ category: "discount", recurring: true }), 3);
+});
+
+test("groupByDay: Ongoing orders every kind, freshest first inside a kind", () => {
+  const wed = new Date("2026-07-30T12:00:00-04:00");
+  const cards = [
+    { id: "place-old", category: "food_drink", createdAt: "2026-07-02" },
+    { id: "signup", category: "subscription", createdAt: "2026-07-25" },
+    { id: "news-old", category: "news", createdAt: "2026-07-15" },
+    { id: "place-new", category: "food_drink", createdAt: "2026-07-25" },
+    { id: "ask", category: "civic_action", createdAt: "2026-07-02" },
+    { id: "offer", category: "discount", createdAt: "2026-07-25", recurring: true },
+    { id: "news-new", category: "news", createdAt: "2026-07-27" },
+    { id: "programme", category: "event", createdAt: "2026-07-08", recurring: true },
+  ];
+  const ongoing = groupByDay(cards, wed).find((g) => g.key === "ongoing");
+  assert.deepEqual(ongoing.cards.map((c) => c.id), [
+    "ask",
+    "news-new", "news-old",
+    "programme",
+    "offer",
+    "signup",
+    "place-new", "place-old",
+  ]);
 });
 
 // 2026-07-22 UX eval (F4): the live Today group scanned 5 PM → 10 AM → 7 PM,
@@ -147,22 +190,14 @@ test("groupByDay: an all-undated layer is a single Ongoing group", () => {
   assert.equal(groups[0].key, "ongoing");
 });
 
-// Community alert (DECISION_LOG 2026-07-26): while the campaign runs, its
-// card leads the feed in its own group — ahead of Today.
-test("groupByDay: pinnedId hoists the alert card into a leading 'Neighborhood needs you' group", () => {
-  const cards = [{ id: "a" }, { id: "pin-me" }];
-  const groups = groupByDay(cards, new Date("2026-07-26T12:00:00-04:00"), "pin-me");
-  assert.equal(groups[0].key, "pinned");
-  assert.equal(groups[0].label, "Neighborhood needs you");
-  assert.deepEqual(groups[0].cards.map((c) => c.id), ["pin-me"]);
-  assert.ok(!groups.some((g) => g.key !== "pinned" && g.cards.some((c) => c.id === "pin-me")));
-});
-
-test("groupByDay: no pinnedId, or an id not in the deck, changes nothing", () => {
-  const cards = [{ id: "a" }];
-  const now = new Date("2026-07-26T12:00:00-04:00");
-  assert.deepEqual(groupByDay(cards, now), groupByDay(cards, now, "ghost"));
-  assert.ok(!groupByDay(cards, now).some((g) => g.key === "pinned"));
+// The community-alert pinned group was removed 2026-07-29 (punch list P2 #13):
+// the banner already deep-opens the same card, and the duplicate row + header
+// cost 87px of first-screen feed. The alert card rides its natural group.
+test("groupByDay: no pinned group — every card lands in a calendar group", () => {
+  const cards = [{ id: "a" }, { id: "film-noir-support" }];
+  const groups = groupByDay(cards, new Date("2026-07-26T12:00:00-04:00"));
+  assert.ok(!groups.some((g) => g.key === "pinned"));
+  assert.deepEqual(groups[0].cards.map((c) => c.id), ["a", "film-noir-support"]);
 });
 
 // 2026-07-21 live-page regression: an event that ended Jul 20 survived to
@@ -232,4 +267,60 @@ test("isExpiredCard: real end times, all-day cards, and multi-day windows keep t
   assert.ok(!isExpiredCard(series, new Date("2026-07-24T21:00:00-04:00")), "multi-day sentinel window untouched");
   const recurring = { recurring: true, startsAt: "2026-07-24T19:00:00-04:00", endsAt: "2026-07-24T23:59:00-04:00" };
   assert.ok(!isExpiredCard(recurring, new Date("2026-07-24T21:00:00-04:00")), "recurring cards never start-expire");
+});
+
+// pickRelated (2026-07-30): one pointer, not a shelf. The venue hubs in the
+// live deck carried up to 7 reciprocal links, and `relatedCardIds` is
+// insertion ordered rather than ranked, so relevance has to be derived.
+const NOW = new Date("2026-07-30T12:00:00-04:00");
+const asMap = (cards) => new Map(cards.map((c) => [c.id, c]));
+
+test("pickRelated: a venue hub points at its soonest upcoming show", () => {
+  const shows = [
+    { id: "fri", title: "Friday", startsAt: "2026-07-31T20:00:00-04:00", endsAt: "2026-07-31T23:59:00-04:00" },
+    { id: "thu", title: "Thursday", startsAt: "2026-07-30T20:00:00-04:00", endsAt: "2026-07-30T23:59:00-04:00" },
+    { id: "sat", title: "Saturday", startsAt: "2026-08-01T20:00:00-04:00", endsAt: "2026-08-01T23:59:00-04:00" },
+  ];
+  const venue = { id: "club", relatedCardIds: ["fri", "thu", "sat"] };
+  assert.equal(pickRelated(venue, asMap(shows), NOW).id, "thu", "soonest wins over stored order");
+});
+
+// This was leaking before the constraint: cardsById is built from the
+// UNFILTERED deck, so a venue could point at a show that already happened.
+// Tolerable as one pill among seven, fatal as the only pill.
+test("pickRelated: never returns an expired card", () => {
+  const cards = [
+    { id: "gone", title: "Last night", startsAt: "2026-07-27T20:00:00-04:00", endsAt: "2026-07-27T23:59:00-04:00" },
+    { id: "soon", title: "Tomorrow", startsAt: "2026-07-31T20:00:00-04:00", endsAt: "2026-07-31T23:59:00-04:00" },
+  ];
+  const venue = { id: "club", relatedCardIds: ["gone", "soon"] };
+  assert.equal(pickRelated(venue, asMap(cards), NOW).id, "soon");
+  // and when every neighbour has expired, the row disappears entirely
+  const onlyDead = { id: "club2", relatedCardIds: ["gone"] };
+  assert.equal(pickRelated(onlyDead, asMap(cards), NOW), null);
+});
+
+test("pickRelated: an undated cluster falls back to the freshest", () => {
+  const cards = [
+    { id: "old", title: "Older", createdAt: "2026-07-02" },
+    { id: "new", title: "Newest", createdAt: "2026-07-25" },
+    { id: "mid", title: "Middle", createdAt: "2026-07-16" },
+  ];
+  const hub = { id: "gtrain", relatedCardIds: ["old", "new", "mid"] };
+  assert.equal(pickRelated(hub, asMap(cards), NOW).id, "new");
+});
+
+test("pickRelated: a dated neighbour outranks an evergreen one", () => {
+  const cards = [
+    { id: "evergreen", title: "Support the venue", createdAt: "2026-07-28" },
+    { id: "show", title: "Tonight", startsAt: "2026-07-30T21:00:00-04:00", endsAt: "2026-07-30T23:59:00-04:00" },
+  ];
+  const venue = { id: "cinema", relatedCardIds: ["evergreen", "show"] };
+  assert.equal(pickRelated(venue, asMap(cards), NOW).id, "show", "what's on next beats a standing ask");
+});
+
+test("pickRelated: missing, empty, and dangling link sets yield null", () => {
+  assert.equal(pickRelated({ id: "a" }, asMap([]), NOW), null, "no relatedCardIds field");
+  assert.equal(pickRelated({ id: "a", relatedCardIds: [] }, asMap([]), NOW), null, "empty");
+  assert.equal(pickRelated({ id: "a", relatedCardIds: ["ghost"] }, asMap([]), NOW), null, "dangling id");
 });

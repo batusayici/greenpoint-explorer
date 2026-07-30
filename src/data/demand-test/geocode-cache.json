@@ -2578,5 +2578,30 @@
         "-73.9527944"
       ]
     }
+  },
+  "520 Kingsland Ave, Brooklyn, NY 11222": {
+    "query": "520 Kingsland Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-07-30T15:51:28.189Z",
+    "hit": {
+      "place_id": 358973490,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 279804685,
+      "lat": "40.7351314",
+      "lon": "-73.9431597",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "520, Kingsland Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7342382",
+        "40.7357689",
+        "-73.9440232",
+        "-73.9424787"
+      ]
+    }
   }
 }
