@@ -662,98 +662,90 @@ body { margin: 0; }
 }
 
 
-/* --- post-value signup prompt: appears once, after the map proves useful ---
-   Composed as a small editorial unit — subject, promise, action — rather than a
-   box wrapped around a button (2026-07-30 redesign, Batu: "the whole thing
-   looks like a button; there's whitespace and alignment issues"). Every line
-   starts on the same left edge, and spacing is authored per pair instead of a
-   uniform grid gap: subject+promise read as one block, the action row gets air. */
-.july-prompt {
-  margin: 0 14px 10px;
-  padding: 12px 14px 10px;
-  border: 1px solid var(--ink);
-  border-radius: 6px;
-  background: var(--paper-lift);
-  box-shadow: 0 2px 0 rgba(42, 36, 28, 0.2);
+/* --- post-value Follow banner: appears once, after the map proves useful ---
+   A full-bleed band rendered as a PEER of the cards — its own row in the feed,
+   directly after the card that earned it (Batu, 2026-07-30). Three versions of
+   this were a bordered box, and all three read as one big button, because the
+   box's fill was the open card's own background: only its 1px ink border and
+   small radius were ever visible, and that is character-for-character
+   `.july-action`. Putting it INSIDE the card body fixed the alignment but
+   conflated the ask with card content, and any card could become the anchor.
+   So it is a band now — the same interjection vocabulary as .july-gbanner and
+   .july-cbanner. Edge-to-edge and square is unambiguously not a button, since
+   every control on this surface is content-sized with a radius. */
+.july-fbanner-row {
+  /* the row is pure structure — the band inside it does the drawing */
+  padding: 0;
 }
 
-.july-prompt p { margin: 0; font-size: 0.82rem; font-weight: 700; line-height: 1.4; }
-
-/* The object, in the row-title register — this is the card's subject. */
-.july-prompt-object {
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: -0.005em;
-}
-
-/* The promise: quiet, and above the action because it informs the decision. */
-.july-prompt p.july-prompt-note {
-  margin-top: 1px;
-  font-size: 0.78rem;
-  font-weight: 650;
-  color: var(--ink-soft);
-}
-
-/* Inline variant (2026-07-28): the Follow ask now renders beside the card that
-   earned it, inside the list, so it takes the list's own gutter instead of the
-   panel's. It keeps the raised treatment — this is the one ask on the surface
-   and it should read as an interjection, not another feed row. */
-.july-card > .july-prompt {
-  margin: 0 12px 12px;
-}
-
-/* The second object (a place) — one tap away, deliberately not a second
-   button: §0 allows one visible rung at a time. */
-/* Asymmetric padding, not margin: the link has to keep a ≥24px tap target
-   (WCAG 2.5.8) while its visual gaps stay even — more air above the text than
-   below, since the box's own bottom padding supplies the rest. */
-.july-prompt-alt {
-  display: inline-block;
-  margin-top: 5px;
-  /* 7/4 lands ~26px — deliberate headroom over the 24px floor, since the
-     display face is still unresolved and its metrics will move this. */
-  padding: 7px 0 4px;
-  font-size: 0.76rem;
-  color: var(--ink-soft);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.july-prompt-alt:hover { color: var(--ink); }
-
-.july-prompt-alt:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 2px;
-}
-
-.july-prompt-row {
+.july-fbanner {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 10px;
+  align-items: flex-start;
+  gap: 12px;
+  /* 16px left holds the feed's text spine even though the bed runs 0 → 100% */
+  padding: 12px 12px 13px 16px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper-lift);
 }
 
-/* The button is sized to its own label — a full-width ink slab inside a
-   bordered box made the whole card read as one button (2026-07-30). */
-.july-prompt-row .july-cta {
+.july-fbanner-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* --street on --ink is 8.9:1 — the quiet tone still clears AA comfortably.
+   g-green-deep and brick are both spoken for (G-train status, civic ask), so
+   ink is also the bed that keeps this band distinct from those two. */
+.july-fbanner-terms {
+  margin: 0 0 9px;
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.35;
+  color: var(--street);
+}
+
+/* Inverted control: paper on ink. Content-sized, so the band reads as a band
+   and the button reads as a button — the distinction the old version lost. */
+.july-fbanner-cta {
+  display: inline-block;
+  padding: 11px 16px;
+  border-radius: 4px;
+  background: var(--paper-lift);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.july-fbanner-cta:hover { background: #fff8ea; }
+
+/* Same glyph + aria-label vocabulary as the dead-link notice, but sized to a
+   real target: 40px square clears WCAG 2.5.8's 24px floor with mobile headroom
+   and keeps the tap away from the CTA beside it. */
+.july-fbanner-dismiss {
   flex: none;
-  padding: 9px 20px;
-}
-
-.july-prompt-dismiss {
-  padding: 9px 4px;
+  width: 40px;
+  height: 40px;
+  margin: -4px -4px 0 0;
   border: none;
   background: none;
-  color: var(--ink-soft);
-  font-size: 0.76rem;
-  font-weight: 700;
+  color: var(--street);
   font-family: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
-.july-prompt-dismiss:hover { color: var(--ink); }
+.july-fbanner-dismiss:hover { color: var(--paper-lift); }
+
+.july-fbanner-cta:focus-visible,
+.july-fbanner-dismiss:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
 
 /* --- CTAs --- */
 .july-ctas {
@@ -1026,7 +1018,6 @@ body { margin: 0; }
 .july-todaypill:focus-visible,
 .july-mapexpand:focus-visible,
 .july-notice-dismiss:focus-visible,
-.july-prompt-dismiss:focus-visible,
 .july-action:focus-visible,
 .july-cta:focus-visible,
 .july-card-head:focus-visible,

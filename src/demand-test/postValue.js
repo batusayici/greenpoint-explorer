@@ -33,37 +33,44 @@ export function createPostValueGate({ done = false } = {}) {
 }
 
 // The Follow ask (DECISION_LOG 2026-07-28: Follow replaced the Monday digest
-// as the resident CTA). §0 gives it one verb and two objects — a lens or a
-// place — and the one-egg rule says it may only appear once, after value. So
-// the object is taken from context rather than asked as an abstract question:
-// whatever the reader was just doing is what we offer to follow.
-//   active lens → that lens · all-lens → the place on the card that tripped
-//   the gate · neither (the footer's ungated entry) → all of Greenpoint.
-// Category allowlist (2026-07-29 punch list, P0 #1): a place-follow only makes
-// sense when locationName names a followable business. News/civic/support
-// cards carry SITES ("Meeker Avenue Plume area", "577 Lorimer St (former…)") —
-// verbatim in the product's one conversion ask, those read as nonsense or
-// worse. Those categories fall through to the Greenpoint-wide follow.
-const PLACE_FOLLOW_CATEGORIES = new Set([
-  "new_business", "food_drink", "shopping", "service", "event",
-  "arts_culture", "family_kids", "job", "shopkeeper_profile",
-  "discount", "subscription",
-]);
-
-export function followTarget({ filterId = "all", card = null } = {}) {
+// as the resident CTA). §0 gives it one verb and the one-egg rule says it may
+// only appear once, after value.
+//
+// LENS-ONLY (Batu, 2026-07-30). The ask now takes exactly one object — the
+// active category lens — and renders nothing at all when none is selected:
+//
+//   active lens → that lens · no lens → no ask (the footer's ungated
+//   "Follow Greenpoint" is the broadcast arm and covers that reader).
+//
+// Two things drove the narrowing. First, purpose: this ask is now an interest
+// probe for PERSONALIZATION, so every impression should carry a category the
+// reader chose. A Greenpoint-wide follow mixed generic-digest intent into the
+// same metric and made the signal unreadable.
+//
+// Second, place-follow was structurally unsound and is withdrawn. The
+// 2026-07-29 category allowlist was necessary but not sufficient: a
+// category-VALID card can still carry a locationName that is not a followable
+// entity, because locationName does two jobs — venue display on the map (where
+// "Rotating bar meetup — announced on Instagram" is genuinely useful) and
+// follow object (where it is nonsense). Live examples that reached the ask:
+// "Follow (eavesdrop)" (literal open-paren), "Follow The Little Dance School
+// (Triskelion Arts)", and the 44-char rotating-meetup string. Rather than pile
+// heuristics onto a field that was never a name, the place object is gone.
+// Reinstating it needs a real venue-identity field, not a normalizer.
+export function followTarget({ filterId = "all" } = {}) {
   if (filterId && filterId !== "all") {
     const lens = FILTERS.find((f) => f.id === filterId);
     if (lens) return { kind: "lens", id: lens.id, label: lens.label };
   }
-  if (card?.locationName && PLACE_FOLLOW_CATEGORIES.has(card.category)) {
-    return { kind: "place", id: card.id, label: card.locationName };
-  }
-  return { kind: "all", id: "all", label: "Greenpoint" };
+  return null;
 }
 
 // Wire form for the target: what rides into the Tally hidden field and the
 // `object` property on the tap. R1 segments read off this (growth-engine §2);
 // anyone who arrives without one is the digest control arm.
+// Since 2026-07-30 followTarget only ever yields a lens, so this returns
+// "lens:<id>" in practice — the bare "all" branch stays because the footer's
+// ungated CTA passes that ref literally, and R1 reads it as the control arm.
 export function followRef(target) {
   return target.kind === "all" ? "all" : `${target.kind}:${target.id}`;
 }

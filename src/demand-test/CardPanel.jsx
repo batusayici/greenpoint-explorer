@@ -325,76 +325,90 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
 // names what the reader was just doing so the object is concrete. Copy
 // deliberately under-promises: sends are permanently manual (growth-engine §7),
 // so "when something new lands" is a promise we can keep and "alerts" is not.
-function FollowPrompt({ filter, card, onDone, placement }) {
-  const target = followTarget({ filterId: filter, card });
+// The Follow banner (2026-07-30). Three passes to get here, and the last two
+// failures were both about the CONTAINER, not the contents:
+//   · v1 wrapped a full-width ink button in a bordered box → "the whole thing
+//     looks like a button";
+//   · v2 kept the box and fixed its insides → still read as a button, because
+//     the box's fill (--paper-lift) is the open card's own background, so only
+//     its 1px ink border and radius were visible — a treatment identical to
+//     `.july-action`. It also sat on two left edges (x=12 box, x=27 text)
+//     against the card body's x=16.
+//   · v3 moved it INSIDE the card body to fix those edges — rejected by Batu:
+//     the ask then becomes part of a card's content, and since any card can
+//     become the anchor it gets stitched into arbitrary cards repeatedly.
+// So it is no longer inside anything. It is a full-bleed band rendered as a
+// PEER of the cards — its own row in the feed, directly after the card that
+// earned it. That is the app's existing interjection vocabulary (.july-gbanner
+// for G-train status, .july-cbanner for the civic ask): edge-to-edge,
+// zero-radius, saturated bed. Full-bleed + square is unambiguously not a
+// button, because every control on this surface is content-sized with a radius.
+function FollowPrompt({ filter, onDone, placement }) {
+  const target = followTarget({ filterId: filter });
+  // Lens-only (Batu, 2026-07-30): no lens selected, no ask. The footer's
+  // ungated "Follow Greenpoint" covers that reader — see the footer's note.
+  if (!target) return null;
   const ref = followRef(target);
-  // The promise has to fit the object: only a place "posts" (2026-07-30 — the
-  // one-line note shipped hardcoded for places and read wrong on a lens).
-  const promise =
-    target.kind === "place" ? "One email when they post." : "One email when something new lands.";
   return (
-    <div className="july-prompt" role="status">
-      {/* Subject first, in the row-title register (2026-07-30, Batu: "the whole
-          thing looks like a button"). The object used to exist only INSIDE the
-          button label, so the card led with a near-full-width ink slab and had
-          no subject of its own — box-in-box, and the button's centered label
-          lined up with nothing below it. Naming the object as type makes the
-          ask concrete more strongly than the button label did, and leaves the
-          button free to be one short verb sized to its own content. */}
-      <p className="july-prompt-object">{target.label}</p>
-      {/* The promise informs the decision, so it sits BEFORE the action. Stays
-          one we can keep — sends are permanently manual (growth-engine §7). */}
-      <p className="july-prompt-note">{promise}</p>
-      <div className="july-prompt-row">
+    <div className="july-fbanner">
+      <div className="july-fbanner-body">
+        {/* The promise precedes the action because it informs the decision, and
+            it has to be one we can KEEP: sends are permanently manual
+            (growth-engine §7) and a per-item email would be spam (Batu). Weekly
+            and scoped to the lens is both keepable and the actual
+            differentiator — the personalization is the product, not the
+            cadence. Channel is deliberately unpromised; the form asks how
+            they'd want it, which is how we learn whether this should be SMS or
+            a notification rather than mail at all. */}
+        <p className="july-fbanner-terms">One email a week, just {target.label}.</p>
         <a
-          className="july-cta july-cta--primary"
+          className="july-fbanner-cta"
           href={followHref(SIGNUP_URL, ref)}
           target="_blank"
           rel="noreferrer"
-          aria-label={`Follow ${target.label}`}
           onClick={() => {
             trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: ref });
             onDone();
           }}
         >
-          Follow
+          Follow {target.label}
         </a>
-        <button type="button" className="july-prompt-dismiss" onClick={onDone}>
-          Not now
-        </button>
       </div>
-      {/* The other object stays one tap away without becoming a second ask —
-          the form's own question is where a place gets named (R1, §2). */}
-      {target.kind !== "place" && (
-        <a
-          className="july-prompt-alt"
-          href={followHref(SIGNUP_URL, ref)}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: "place-instead" });
-            onDone();
-          }}
-        >
-          or follow a place instead
-        </a>
-      )}
+      {/* Same dismiss vocabulary as the dead-link notice: a glyph, labelled. */}
+      <button
+        type="button"
+        className="july-fbanner-dismiss"
+        onClick={onDone}
+        aria-label="Dismiss"
+      >
+        &times;
+      </button>
     </div>
   );
 }
 
-// The Today pill is viewport-fixed on mobile, so it must yield whenever the
-// feed's end chrome (signup prompt, footer CTA) is on screen — Batu's phone
-// test caught it parked on top of the signup button. Desktop's pill is
-// panel-absolute in the same bottom zone, so the same guard applies there.
+// The Today pill is viewport-fixed on mobile, so it must yield whenever a
+// competing call-to-action shares its zone — Batu's phone test caught it
+// parked on top of the signup button. Desktop's pill is panel-absolute in the
+// same bottom zone, so the same guard applies there.
+//
+// The two competitors are measured differently on purpose (2026-07-30). The
+// footer is END chrome: it only ever rises from below, so "has its top entered
+// the viewport" is the right test. The Follow banner is now a FEED ROW and can
+// sit anywhere in the list, so it needs real intersection — the old top-only
+// test stayed true once the element had scrolled above the fold, which would
+// have hidden the pill permanently after the reader scrolled past the banner.
 function feedEndVisible(ownScroller) {
-  const end = document.querySelector(".july-prompt") ?? document.querySelector(".july-ctas");
-  if (!end) return false;
-  const top = end.getBoundingClientRect().top;
-  if (!ownScroller) return top < window.innerHeight;
-  // Desktop: prompt/footer sit below the list inside the panel — the pill
-  // (bottom: 88px) only collides with the taller signup prompt.
-  return end.classList.contains("july-prompt");
+  const banner = document.querySelector(".july-fbanner");
+  if (banner) {
+    const r = banner.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < window.innerHeight) return true;
+  }
+  // Desktop: the footer sits below the list inside the panel, so the pill
+  // (bottom: 88px) never reaches it — only the banner above can collide.
+  if (ownScroller) return false;
+  const footer = document.querySelector(".july-ctas");
+  return footer ? footer.getBoundingClientRect().top < window.innerHeight : false;
 }
 
 // Layers with fewer live cards than this fold into "More" until the weekly
@@ -442,6 +456,10 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   const promptAnchorId = selectedId ?? promptCardId;
   const promptVisible =
     promptAnchorId != null && groups.some((g) => g.cards.some((c) => c.id === promptAnchorId));
+  // Lens-only: with no lens selected the ask renders nothing, and the footer's
+  // ungated "Follow Greenpoint" has to step back IN to cover that reader.
+  const hasFollowTarget = followTarget({ filterId: filter }) != null;
+  const askShowing = showSignupPrompt && hasFollowTarget;
 
   // Location focus engaged (pin tap): bring the narrowed feed into view.
   // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
@@ -656,8 +674,15 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             )}
             {group.cards.map((card) => {
               const open = card.id === selectedId;
+              // The ask is a PEER of the cards, not part of one (Batu,
+              // 2026-07-30): its own row in the feed, directly after the card
+              // that earned it, so it never conflates with card content.
+              // hasFollowTarget too, or the All lens (where the ask renders
+              // nothing) would leave an empty <li> sitting in the feed.
+              const askHere = askShowing && card.id === promptAnchorId;
               return (
-                <li key={card.id} className={`july-card${open ? " is-open" : ""}`}>
+                <React.Fragment key={card.id}>
+                <li className={`july-card${open ? " is-open" : ""}`}>
                   <h3 className="july-card-heading">
                     <button
                       type="button"
@@ -681,14 +706,23 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                   {open && (
                     <div className="july-detail-reveal">
                       <div>
-                        <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onFilterAction={onFilterAction} onRelated={onRelated} />
+                        <CardDetail
+                          card={card}
+                          cardsById={cardsById}
+                          onFilter={onFilter}
+                          onFilterAction={onFilterAction}
+                          onRelated={onRelated}
+                        />
                       </div>
                     </div>
                   )}
-                  {showSignupPrompt && card.id === promptAnchorId && (
-                    <FollowPrompt filter={filter} card={card} onDone={onSignupPromptDone} placement="inline" />
-                  )}
                 </li>
+                {askHere && (
+                  <li className="july-fbanner-row">
+                    <FollowPrompt filter={filter} onDone={onSignupPromptDone} placement="inline" />
+                  </li>
+                )}
+                </React.Fragment>
               );
             })}
           </React.Fragment>
@@ -752,15 +786,19 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
           lens. Rather than lose the ask, it lands here, which is where it
           always used to be. */}
       {showSignupPrompt && !promptVisible && (
-        <FollowPrompt filter={filter} card={null} onDone={onSignupPromptDone} placement="listend" />
+        <FollowPrompt filter={filter} onDone={onSignupPromptDone} placement="listend" />
       )}
       {/* The footer is the fallback for readers who scroll past without ever
           tripping the post-value gate; it steps aside whenever the prompt is
           up, since two stacked asks read as the app asking twice (Batu, phone
           test). No object — an ungated reader hasn't told us anything yet, so
           this is Follow at its widest (and R1's control arm: growth-engine §2
-          reads unsegmented signups as the broadcast group). */}
-      {!showSignupPrompt && (
+          reads unsegmented signups as the broadcast group).
+          Since the ask went lens-only (2026-07-30) it also has to step back in
+          when a gated reader is on the All lens: the personalized ask renders
+          nothing there, and without this the surface would carry no ask at
+          all — hence askShowing rather than showSignupPrompt. */}
+      {!askShowing && (
         <footer className="july-ctas">
           <a
             className="july-cta july-cta--primary"

@@ -36,10 +36,11 @@ test("the storage key is stable (changing it would re-prompt every tester)", () 
   assert.equal(POST_VALUE_DONE_KEY, "july-postvalue-done");
 });
 
-// Follow (DECISION_LOG 2026-07-28): the post-value ask names what the reader
-// was just doing, so the object is concrete rather than an abstract "pick a
-// topic". Active lens wins; otherwise the place of the card that tripped the
-// gate; otherwise all of Greenpoint (the footer's ungated entry).
+// Follow, LENS-ONLY since 2026-07-30 (Batu). The ask is now an interest probe
+// for personalization, so it takes exactly one object — the category lens the
+// reader chose — and renders nothing at all otherwise. A Greenpoint-wide
+// follow mixed generic-digest intent into the same metric; the footer's
+// ungated CTA carries that reader instead.
 test("followTarget names the active lens when one is on", async () => {
   const { followTarget } = await import("./postValue.js");
   assert.deepEqual(followTarget({ filterId: "family_kids" }), {
@@ -47,35 +48,43 @@ test("followTarget names the active lens when one is on", async () => {
   });
 });
 
-test("followTarget falls back to the trigger card's place on the all lens", async () => {
+// Place-follow is WITHDRAWN, not merely filtered. The 2026-07-29 category
+// allowlist was necessary but not sufficient: a category-VALID card can still
+// carry a locationName that is not a followable entity, because the field does
+// double duty as map venue display. These four reached the live ask before the
+// withdrawal — "Follow (eavesdrop)" with a literal open-paren, a 44-char
+// rotating-meetup sentence, a parenthetical venue qualifier. Reinstating a
+// place object needs a real venue-identity field, not a normalizer.
+test("followTarget never returns a place, whatever the card carries", async () => {
   const { followTarget } = await import("./postValue.js");
-  const card = { id: "falu-house-club", locationName: "Falu House", category: "subscription" };
-  assert.deepEqual(followTarget({ filterId: "all", card }), {
-    kind: "place", id: "falu-house-club", label: "Falu House",
+  const cards = [
+    { id: "falu-house-club", locationName: "Falu House", category: "subscription" },
+    { id: "eavesdrop-gig", locationName: "(eavesdrop)", category: "event" },
+    { id: "trash-club", locationName: "Rotating bar meetup — announced on Instagram", category: "subscription" },
+    { id: "dance", locationName: "The Little Dance School (Triskelion Arts)", category: "subscription" },
+    { id: "plume", locationName: "Meeker Avenue Plume area", category: "news" },
+  ];
+  for (const card of cards) {
+    assert.equal(followTarget({ filterId: "all", card }), null, card.id);
+  }
+  // A lens still wins even when a card is passed — the card is simply ignored.
+  assert.deepEqual(followTarget({ filterId: "news", card: cards[0] }), {
+    kind: "lens", id: "news", label: "News",
   });
 });
 
-// P0 punch-list #1 (2026-07-29): news/civic/support locationNames are sites,
-// not followable entities — "Follow Meeker Avenue Plume area" must never render.
-test("followTarget never offers a site as a place (news/civic/support → Greenpoint)", async () => {
+test("followTarget yields no ask at all when no lens is selected", async () => {
   const { followTarget } = await import("./postValue.js");
-  for (const category of ["news", "civic_action", "g_train_support", "support_local"]) {
-    const card = { id: "x", locationName: "Meeker Avenue Plume area", category };
-    assert.deepEqual(followTarget({ filterId: "all", card }), {
-      kind: "all", id: "all", label: "Greenpoint",
-    }, category);
-  }
-});
-
-test("followTarget falls back to all of Greenpoint with no lens and no card", async () => {
-  const { followTarget } = await import("./postValue.js");
-  assert.deepEqual(followTarget(), { kind: "all", id: "all", label: "Greenpoint" });
-  assert.deepEqual(followTarget({ filterId: "all", card: null }), { kind: "all", id: "all", label: "Greenpoint" });
+  assert.equal(followTarget(), null);
+  assert.equal(followTarget({ filterId: "all" }), null);
+  assert.equal(followTarget({ filterId: null }), null);
+  // An unknown lens id must not invent an object either.
+  assert.equal(followTarget({ filterId: "not_a_lens" }), null);
 });
 
 test("followRef encodes the target as kind:id for the form's hidden field", async () => {
   const { followTarget, followRef } = await import("./postValue.js");
   assert.equal(followRef(followTarget({ filterId: "live_music" })), "lens:live_music");
-  assert.equal(followRef(followTarget({ filterId: "all", card: { id: "troost", locationName: "Troost", category: "food_drink" } })), "place:troost");
-  assert.equal(followRef(followTarget()), "all");
+  // The footer's ungated CTA passes this ref literally — R1's control arm.
+  assert.equal(followRef({ kind: "all", id: "all" }), "all");
 });
