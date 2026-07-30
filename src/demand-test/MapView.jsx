@@ -181,11 +181,13 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
     }
   }, [cards, selectedId, focusKey, onSelect, onFocusLocation]);
 
-  // Ease to the selected card.
+  // Ease to the selected card — instantly under prefers-reduced-motion
+  // (punch list P2 #10: this was the one unguarded animation).
   useEffect(() => {
     const card = cards.find((c) => c.id === selectedId);
     if (card?.lat != null) {
-      mapRef.current?.easeTo({ center: [card.lng, card.lat], duration: 500 });
+      const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      mapRef.current?.easeTo({ center: [card.lng, card.lat], duration: reduce ? 0 : 500 });
     }
   }, [selectedId, cards]);
 

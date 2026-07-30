@@ -79,20 +79,16 @@ function minutesOfDayNY(iso) {
   return (get("hour") % 24) * 60 + get("minute");
 }
 
-export function groupByDay(cards, date, pinnedId = null) {
+export function groupByDay(cards, date) {
   const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
   const groups = new Map(); // key -> { key, order, label, cards }
   const put = (key, order, label, card) => {
     if (!groups.has(key)) groups.set(key, { key, order, label, cards: [] });
     groups.get(key).cards.push(card);
   };
+  // (The community-alert pinned group was removed 2026-07-29, punch list P2
+  // #13: the banner already carries the campaign to the same card.)
   for (const card of cards) {
-    // Community alert (DECISION_LOG 2026-07-26): the alert's card leads the
-    // feed in its own group while the campaign runs — -1 sorts ahead of Today.
-    if (pinnedId != null && card.id === pinnedId) {
-      put("pinned", -1, "Neighborhood needs you", card);
-      continue;
-    }
     const dated = card.startsAt != null || card.endsAt != null;
     if (!dated || card.recurring) {
       put("ongoing", Number.POSITIVE_INFINITY, "Ongoing", card);

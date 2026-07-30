@@ -4,6 +4,21 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-29 — Design punch list executed (all but the font); several standing contracts revised
+
+Decision (Batu: "execute `2026-07-29-design-punch-list.md`, don't change font family yet"). Everything on the list shipped except **#2 (typeface)** — face decision deferred — and the **map-peek structural question**, which stays open and Batu's. Durable contract changes, each reversing or extending an earlier logged decision:
+
+1. **Place-follow allowlist (P0 #1, path a):** `followTarget()` only offers a place object for categories that name a followable business; `news`/`civic_action`/`g_train_support`/`support_local` fall back to "Follow Greenpoint". Curated `followLabel` (path b) remains available later if place-follow conversion justifies it.
+2. **Kicker/summary field contract (P1 #3):** kicker = the glanceable hook in the row; summary = what the row could not say. `lintCard()` in `cardSchema.js` (warnings: ≥50% kicker overlap, summary > 200 chars) runs on new/changed cards at ingest — the backlog tightens as re-verification touches it, not wholesale. Detail when-line is now **spans only** (`isSpan()`); same-day cards rely on the day header + row clock.
+3. **Two-line title contract (P1 #4)** replaces the 2026-07-15 one-line contract: headlines are content (news), addresses are filler — the clamp inverted that. FREE badge top-aligns.
+4. **The community-alert pinned feed row is gone (P2 #13)**, revising the 2026-07-26 "feed elevation" clause: the banner alone carries the campaign; the card rides its natural group. `groupByDay` lost its `pinnedId` param.
+5. **Follow-prompt object re-derives from the open card (P2 #15)**, and its body is one quiet line below the button ("One email when they post.", P2 #17).
+6. Sweep: vendor map chrome joined the palette (#6), `--line-control: #877d69` for control boundaries (#8), reset-target padding (#7), four missing focus rules (#9), the last unguarded motion (#10), header subtitle → "Every listing verified this week." (#11), focus row → "{name} · {count} here" (#12), "Venue calendar"/"Add to calendar" (#14), eased card expansion via grid-track animation (#16), banner CTA sentence-cased (#18). Chip bar height untouched — `--chrome: peek+53px` holds.
+
+Verified: 447/447 tests; in-browser at 320/375/1440 including the P0 repro. Full execution status is recorded at the top of the punch list itself.
+
+Owner: Batu.
+
 ## 2026-07-29 — Tally forms finalized: one visible field where possible; hidden params verified end-to-end
 
 Decision (Batu: "keep things super easy and lightweight, ask no more than what's essential"). Every CTA now terminates in a live form that captures its context. Built in Batu's Tally account via browser; all three published.

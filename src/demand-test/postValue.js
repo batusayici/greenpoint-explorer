@@ -39,12 +39,25 @@ export function createPostValueGate({ done = false } = {}) {
 // whatever the reader was just doing is what we offer to follow.
 //   active lens → that lens · all-lens → the place on the card that tripped
 //   the gate · neither (the footer's ungated entry) → all of Greenpoint.
+// Category allowlist (2026-07-29 punch list, P0 #1): a place-follow only makes
+// sense when locationName names a followable business. News/civic/support
+// cards carry SITES ("Meeker Avenue Plume area", "577 Lorimer St (former…)") —
+// verbatim in the product's one conversion ask, those read as nonsense or
+// worse. Those categories fall through to the Greenpoint-wide follow.
+const PLACE_FOLLOW_CATEGORIES = new Set([
+  "new_business", "food_drink", "shopping", "service", "event",
+  "arts_culture", "family_kids", "job", "shopkeeper_profile",
+  "discount", "subscription",
+]);
+
 export function followTarget({ filterId = "all", card = null } = {}) {
   if (filterId && filterId !== "all") {
     const lens = FILTERS.find((f) => f.id === filterId);
     if (lens) return { kind: "lens", id: lens.id, label: lens.label };
   }
-  if (card?.locationName) return { kind: "place", id: card.id, label: card.locationName };
+  if (card?.locationName && PLACE_FOLLOW_CATEGORIES.has(card.category)) {
+    return { kind: "place", id: card.id, label: card.locationName };
+  }
   return { kind: "all", id: "all", label: "Greenpoint" };
 }
 

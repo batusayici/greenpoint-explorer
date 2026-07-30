@@ -4,7 +4,7 @@ import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, 
 import { followTarget, followRef } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
-import { formatWindow } from "./eventWindow.js";
+import { formatWindow, isSpan } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
@@ -130,8 +130,9 @@ function ShareAction({ action, card, cls }) {
 // V2-A, revised 2026-07-25 (Batu's phone test): a Google Calendar template
 // link — the prefilled new-event screen, no file handling. Dated,
 // non-recurring cards only; the deep link inside is tagged ?src=calendar so a
-// saved event's return visit is attributable. Label stays one word so card
-// action rows hold to a single line.
+// saved event's return visit is attributable. "Add to calendar" (punch list
+// P2 #14): venue cards put "See the calendar" 6px away — two adjacent buttons
+// both named "calendar" until each said which one it meant.
 function CalendarAction({ card, cls }) {
   const { url } = sharePayload(card, {
     origin: window.location.origin,
@@ -149,7 +150,7 @@ function CalendarAction({ card, cls }) {
       aria-label="Add to Google Calendar"
       onClick={() => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: "calendar" })}
     >
-      Calendar <span aria-hidden="true">↗</span>
+      Add to calendar <span aria-hidden="true">↗</span>
       <span className="sr-only">(opens in new tab)</span>
     </a>
   );
@@ -217,7 +218,9 @@ const TIMELINE_DAY_FMT = new Intl.DateTimeFormat("en-US", {
 function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   // Recurring deals carry their schedule in kicker/summary (sourced wording);
   // the window formatter would misread verified-through as "Through Jul 22".
-  const when = card.recurring ? null : formatWindow(card);
+  // Spans only (punch list P1 #3): a same-day card's when-line restated what
+  // the day header + row clock already carry — keep it for "Through Aug 15".
+  const when = card.recurring || !isSpan(card) ? null : formatWindow(card);
   const related = (card.relatedCardIds ?? [])
     .map((id) => cardsById.get(id))
     .filter(Boolean);
@@ -327,10 +330,6 @@ function FollowPrompt({ filter, card, onDone, placement }) {
   const ref = followRef(target);
   return (
     <div className="july-prompt" role="status">
-      <p>
-        Want the next one? We&rsquo;ll email you when something new lands in{" "}
-        <strong>{target.label}</strong>.
-      </p>
       <div className="july-prompt-row">
         <a
           className="july-cta july-cta--primary"
@@ -348,6 +347,10 @@ function FollowPrompt({ filter, card, onDone, placement }) {
           Not now
         </button>
       </div>
+      {/* One line, under the button (punch list P2 #17): the old 15-word body
+          restated what "Follow {X}" already says. The promise stays one we can
+          keep — sends are permanently manual (growth-engine §7). */}
+      <p className="july-prompt-note">One email when they post.</p>
       {/* The other object stays one tap away without becoming a second ask —
           the form's own question is where a place gets named (R1, §2). */}
       {target.kind !== "place" && (
@@ -420,10 +423,13 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // visible even while the fold is closed.
   const activeIsFolded = folded.some((f) => f.id === filter);
   const showFolded = moreOpen || activeIsFolded;
-  // Is the card that earned the ask still on screen? If not, the prompt falls
-  // back to the end of the list rather than disappearing with it.
+  // The ask anchors to the OPEN card, falling back to its trigger card (punch
+  // list P2 #15): pinned only to the trigger, opening another card left the
+  // CTA naming a business absent from the screen. If neither is in the feed,
+  // the prompt falls back to the end of the list rather than disappearing.
+  const promptAnchorId = selectedId ?? promptCardId;
   const promptVisible =
-    promptCardId != null && groups.some((g) => g.cards.some((c) => c.id === promptCardId));
+    promptAnchorId != null && groups.some((g) => g.cards.some((c) => c.id === promptAnchorId));
 
   // Location focus engaged (pin tap): bring the narrowed feed into view.
   // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
@@ -439,6 +445,23 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       document.querySelector(".july-mapzone")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
     }
   }, [focus]);
+
+  // The active lens must stay visible (punch list P1 #5): at 375px the bar
+  // holds ~2.7 of 9 chips, so a chip tapped at the bar's far end scrolled back
+  // out of view and the feed showed a filtered list with no highlight anywhere.
+  // Keying on `filter` covers every path — chip taps, card actions
+  // (action.filterId via onFilterAction), and pin-focus resets to All.
+  useEffect(() => {
+    const nav = filtersRef.current;
+    if (!nav || nav.scrollWidth <= nav.clientWidth + 1) return; // desktop: bar wraps
+    const active = nav.querySelector(".july-chip.is-active");
+    if (!active) return;
+    // Scroll the BAR only — scrollIntoView would also drag the page, and the
+    // bar is sticky chrome. Center the active chip so its neighbors show.
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const left = active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2;
+    nav.scrollTo({ left: Math.max(0, left), behavior: reduce ? "auto" : "smooth" });
+  }, [filter]);
 
   // Measure AFTER the lens change has rendered: is the feed's top (today)
   // offscreen? Desktop's list is its own scroller; mobile page flow compares
@@ -595,8 +618,10 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       )}
       {focus && (
         <div className="july-focus" role="status">
+          {/* "{count} here", not "on the map here" — the longer line orphaned
+              "map here" onto its own row at 375 AND 768 (punch list P2 #12). */}
           <p>
-            <strong>{focus.name}</strong> &middot; {focus.count} on the map here
+            <strong>{focus.name}</strong> &middot; {focus.count} here
           </p>
           <button type="button" className="july-empty-reset" onClick={onClearFocus}>
             Show everything
@@ -635,8 +660,16 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                       {cardSubline(card) && <span className="july-card-loc">{cardSubline(card)}</span>}
                     </button>
                   </h3>
-                  {open && <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onFilterAction={onFilterAction} onRelated={onRelated} />}
-                  {showSignupPrompt && card.id === promptCardId && (
+                  {/* reveal wrapper: eased height via the grid-track animation
+                      in july.css (punch list P2 #16) */}
+                  {open && (
+                    <div className="july-detail-reveal">
+                      <div>
+                        <CardDetail card={card} cardsById={cardsById} onFilter={onFilter} onFilterAction={onFilterAction} onRelated={onRelated} />
+                      </div>
+                    </div>
+                  )}
+                  {showSignupPrompt && card.id === promptAnchorId && (
                     <FollowPrompt filter={filter} card={card} onDone={onSignupPromptDone} placement="inline" />
                   )}
                 </li>

@@ -1,6 +1,8 @@
 # Design Punch List — Pre-Launch (2026-07-29)
 
-> **Status:** open. Diagnosis only — **no code was changed** producing this list; the working tree was verified clean before, during, and after both passes. Every item below is a proposal awaiting Batu's call.
+> **Status: executed 2026-07-29** (Batu: "execute the punch list, don't change font family yet"). Shipped: **#1** (path (a) — category allowlist in `postValue.js`; news/civic/g_train/support_local never yield a place follow), **#3** (field contract in `cardSchema.js` + `lintCard()` overlap/200-char lint, wired into the ingest skill's copy rules; when-line now spans-only via `isSpan()`), **#4** (2-line title clamp, top-aligned dot/badge), **#5** (active chip scrolls into view on every filter change + edge fade on the mobile bar), and all of **#6–#18**. 447/447 tests green; verified in-browser at 320/375/1440 (P0 scenario reproduced: news card now yields "Follow Greenpoint"; 320px reflow still clean; chip bar still 53px so `--chrome` holds).
+>
+> **Not executed:** **#2** (font — deferred by Batu, face decision pending) and the **open structural question** (map peek height — explicitly Batu's call, untouched). "Not verified" items below also remain open, including the real-device iOS screenshot.
 
 Blocks the `greenpoint.life` cutover to the extent Batu decides. Launch-readiness context: `2026-07-27-launch-plan.md`. Regime: `docs/DECISION_LOG.md` 2026-07-22.
 

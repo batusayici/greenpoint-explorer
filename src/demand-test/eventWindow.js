@@ -41,6 +41,17 @@ export function formatWindow(card) {
   return `Through ${instant(e, isEndSentinel)}`;
 }
 
+// Span test (2026-07-29 punch list, P1 #3 corollary): the detail's when-line
+// only earns its row when the window says something the day header and the
+// row's clock can't — a multi-day or open-ended span. A same-day timed card's
+// "Jul 29, 7:00 PM" is the third restatement of one fact.
+export function isSpan(card) {
+  const { startsAt, endsAt } = card;
+  if (!startsAt && !endsAt) return false;
+  if (!startsAt || !endsAt) return true; // open-ended: "From …" / "Through …"
+  return DAYKEY.format(new Date(startsAt)) !== DAYKEY.format(new Date(endsAt));
+}
+
 // Header kicker (UX eval F23 / Q4-B): the edition date — the rolling week the
 // feed covers, today through six days out. Self-maintaining, no data field.
 const MONTH = new Intl.DateTimeFormat("en-US", { month: "short", timeZone: TZ });

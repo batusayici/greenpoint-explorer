@@ -13,6 +13,10 @@
   --ink-soft: rgba(42, 36, 28, 0.72);
   --ink-faint: rgba(42, 36, 28, 0.14);
   --line: #9b9079;
+  /* control boundaries need 3:1 on paper (WCAG 1.4.11) — --line measures
+     2.43:1 there, fine for scorelines, short for a control edge. Same
+     scoreline family, one step inkier: 3.13:1 (punch list P2 #8). */
+  --line-control: #877d69;
   --g-green: #4f7d52;
   --g-green-deep: #2e3b32; /* TRIM_TONES forest green, dark — AA bed for paper text */
   --amber: #cc9a3b;
@@ -142,12 +146,13 @@ body { margin: 0; }
   min-width: 0;
 }
 
+/* Sentence case like its peer CTAs — "SEE HOW →" beside "Tell us" was the
+   third casing for three peer asks (punch list P2 #18). */
 .july-cbanner-cta {
   flex: none;
-  font-weight: 850;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
 }
 
 /* --- main split --- */
@@ -286,7 +291,7 @@ body { margin: 0; }
   gap: 6px;
   min-height: 32px;
   padding: 6px 12px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-control);
   border-radius: 999px;
   background: transparent;
   color: var(--ink);
@@ -362,22 +367,32 @@ body { margin: 0; }
 
 .july-card-titlerow {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* dot + FREE badge hold the first line when the title wraps */
   gap: 8px;
   min-width: 0; /* let the title child shrink instead of wrapping the row */
 }
 
-/* One-line title contract: long titles (e.g. "Franca Ceramics Pop-up
-   Seconds Sale") truncate instead of wrapping and pushing the FREE badge
-   off the first line. */
+/* first-line alignment against the 2-line title (line box ≈ 19px) */
+.july-card-titlerow > .july-dot { margin-top: 3px; }
+.july-card-titlerow > .july-free { margin-top: 1px; }
+
+/* Two-line title contract (2026-07-29 punch list, P1 #4 — was one line):
+   for a news card the headline IS the content, and nowrap was cutting
+   "1,324" out of "Monitor Point approved: 1,324 waterfront apartments"
+   while the address below wrapped freely. Clamp at 2, ellipsis past that;
+   the FREE badge top-aligns instead of owning the whole row. Trade
+   accepted: the 9 previously-truncated rows run one line taller. */
 .july-card-title {
   font-size: 0.95rem;
   font-weight: 800;
+  line-height: 1.25;
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 .july-card-loc { margin-left: 18px; font-size: 0.76rem; color: var(--ink-soft); }
 
@@ -416,6 +431,20 @@ body { margin: 0; }
    ink selected-pin state */
 .july-dot--deal { background: var(--slate); }
 .july-dot--news { background: var(--line); }
+
+/* Card expansion eases open instead of jumping (punch list P2 #16): the grid
+   0fr→1fr track animation gives a real height transition without measuring —
+   browsers that can't animate grid tracks just open instantly, same as before. */
+.july-detail-reveal { display: grid; grid-template-rows: 1fr; }
+.july-detail-reveal > div { overflow: hidden; min-height: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .july-detail-reveal { animation: july-detail-open 0.22s ease-out; }
+}
+
+@keyframes july-detail-open {
+  from { grid-template-rows: 0fr; opacity: 0; }
+}
 
 .july-detail { padding: 0 16px 14px; }
 .july-detail-summary { margin: 0 0 6px; font-size: 0.84rem; line-height: 1.45; }
@@ -500,7 +529,7 @@ body { margin: 0; }
 
 .july-related-chip {
   padding: 8px 11px;
-  border: 1px dashed var(--line);
+  border: 1px dashed var(--line-control);
   border-radius: 999px;
   background: transparent;
   color: var(--ink);
@@ -559,7 +588,9 @@ body { margin: 0; }
 .july-empty-reset {
   border: none;
   background: none;
-  padding: 0;
+  /* was padding 0 → a 16px-tall target, under WCAG 2.5.8's 24px floor
+     (punch list P2 #7) */
+  padding: 6px 2px;
   color: var(--ink);
   font: inherit;
   font-weight: 750;
@@ -631,6 +662,10 @@ body { margin: 0; }
 }
 
 .july-prompt p { margin: 0; font-size: 0.82rem; font-weight: 700; line-height: 1.4; }
+
+/* The one-line promise under the button (punch list P2 #17) — quiet, not a
+   second pitch. */
+.july-prompt p.july-prompt-note { font-size: 0.78rem; font-weight: 650; color: var(--ink-soft); }
 
 /* Inline variant (2026-07-28): the Follow ask now renders beside the card that
    earned it, inside the list, so it takes the list's own gutter instead of the
@@ -784,6 +819,13 @@ body { margin: 0; }
     top: var(--peek);
     z-index: 19;
     background: var(--paper);
+    /* Edge fade (punch list P1 #5): the bar hides ~62% of its own chips at
+       375px with nothing announcing them — a soft right edge says "more".
+       Left fade sits inside the 12px padding; right fade dims at most the
+       trailing chip's tail at full scroll. Mask, not gradient overlay: the
+       bar is sticky and its background must stay opaque paper. */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 32px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 32px), transparent 100%);
   }
   .july-filters::-webkit-scrollbar { display: none; }
   .july-chip { white-space: nowrap; }
@@ -891,8 +933,50 @@ body { margin: 0; }
   border-radius: 50%;
 }
 
+/* --- third-party map chrome (punch list P2 #6) ---
+   The custom map style speaks the palette everywhere except the vendor's own
+   UI — a white zoom slab and white attribution pill were the one place the
+   authorship visibly stopped. Same treatment as .july-mapexpand. */
+.july-map .maplibregl-ctrl-group {
+  border: 1px solid var(--ink);
+  border-radius: 5px;
+  background: var(--paper-lift);
+  box-shadow: 0 2px 0 rgba(42, 36, 28, 0.3);
+}
+
+.july-map .maplibregl-ctrl-group button {
+  background: var(--paper-lift);
+}
+
+.july-map .maplibregl-ctrl-group button + button {
+  border-top: 1px solid var(--ink-faint);
+}
+
+/* the +/− glyphs are vendor background-image icons drawn near-black (#333) —
+   close enough to ink on paper-lift; only the beds needed reclaiming */
+.july-map .maplibregl-ctrl-attrib {
+  background: var(--paper-lift);
+  color: var(--ink-soft);
+}
+
+.july-map .maplibregl-compact-show.maplibregl-ctrl-attrib {
+  background: var(--paper-lift);
+}
+
+.july-map .maplibregl-ctrl-attrib a {
+  color: var(--ink-soft);
+}
+
+.july-map .maplibregl-ctrl-attrib-button {
+  background-color: var(--paper-lift);
+}
+
 /* explicit focus ring on every interactive element (paper theme swallows defaults) */
 .july-chip:focus-visible,
+.july-todaypill:focus-visible,
+.july-mapexpand:focus-visible,
+.july-notice-dismiss:focus-visible,
+.july-prompt-dismiss:focus-visible,
 .july-action:focus-visible,
 .july-cta:focus-visible,
 .july-card-head:focus-visible,

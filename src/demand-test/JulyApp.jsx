@@ -108,8 +108,6 @@ export default function JulyApp() {
   // whose deploys have stopped ages into "verified through <date>" honestly.
   const freshness = assessFreshness({ lastRunAt: stamp.lastRunAt, now: new Date(), cards: seed.cards });
   // One banner at a time (2026-07-26): most consequential takes the slot.
-  // The feed pin below stays tied to communityAlert, not the slot — the
-  // campaign keeps its feed elevation even when a closure holds the banner.
   const slot = bannerSlot(gtrainPhase, communityAlert, freshness);
 
   const { visible, groups } = useMemo(() => {
@@ -118,9 +116,12 @@ export default function JulyApp() {
     const shown = live.filter((c) => matchesFilter(c, filter));
     // Map keeps the flat set (full context even while focused); the list
     // scans as a calendar (day groups), narrowed to the focused location.
+    // The community-alert card rides in its natural day group — the banner
+    // already carries the campaign, and the duplicate pinned row cost 87px of
+    // first-screen feed (punch list P2 #13).
     const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
-    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now, communityAlert?.cardId ?? null) };
-  }, [filter, pinFocus, communityAlert?.cardId]);
+    return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now) };
+  }, [filter, pinFocus]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
@@ -188,9 +189,10 @@ export default function JulyApp() {
               a freshness signal, computed per render like the banner phase. */}
           <span className="july-kicker">{editionLabel(new Date())}</span>
           <h1>Greenpoint Life</h1>
-          {/* Names the content types + the verification stake (2026-07-26:
-              de-centered from the G closures; max 2 lines on mobile). */}
-          <p>Your week in Greenpoint, verified: events, openings, deals, and neighborhood news.</p>
+          {/* The verification stake only (punch list P2 #11): the chip bar
+              right below already lists the categories — the old 12-word
+              enumeration ran 2 lines restating it. */}
+          <p>Every listing verified this week.</p>
         </div>
       </header>
       {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still

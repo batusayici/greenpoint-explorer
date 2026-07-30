@@ -1820,7 +1820,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1861,7 +1861,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1902,7 +1902,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1943,7 +1943,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -1984,7 +1984,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -2025,7 +2025,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -2066,7 +2066,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://eavesdrop.nyc/calendar"
         }
@@ -2107,7 +2107,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://eavesdrop.nyc/calendar"
         }
@@ -2406,7 +2406,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://filmnoircinema.com"
         }
@@ -2450,7 +2450,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://filmnoircinema.com"
         }
@@ -2494,7 +2494,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://filmnoircinema.com"
         }
@@ -2538,7 +2538,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://hideandseek.nyc"
         }
@@ -2579,7 +2579,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://hideandseek.nyc"
         }
@@ -2630,7 +2630,7 @@
           "type": "visit"
         },
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://blackrabbitbar.com/event/"
         }
@@ -2675,7 +2675,7 @@
       "summary": "Five rounds of difficult trivia hosted by Casey and Sean, with a $50 bar tab among the prizes — called NYC's best by the Village Voice.",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://blackrabbitbar.com/event/"
         }
@@ -2721,7 +2721,7 @@
       "summary": "The NYC Trivia League's free weekly game, 7pm start.",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://nyctrivialeague.com/listings/brew-inn-brooklyn/"
         }
@@ -2878,7 +2878,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -2923,7 +2923,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -2969,7 +2969,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -3014,7 +3014,7 @@
       "address": "107 Norman Ave",
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.bklynlibrary.org/locations/greenpoint"
         }
@@ -3782,7 +3782,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -3823,7 +3823,7 @@
       ],
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://troostny.com/calendar/"
         }
@@ -4008,7 +4008,7 @@
       "free": false,
       "actions": [
         {
-          "label": "See the calendar",
+          "label": "Venue calendar",
           "type": "learn_more",
           "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026"
         }

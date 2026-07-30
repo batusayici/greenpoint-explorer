@@ -175,3 +175,30 @@ test("timeline: optional, entries need an ISO date and a title", () => {
   assert.equal(validateCard({ ...good, timeline: [{ date: "not-a-date", title: "x" }] }).ok, false);
   assert.equal(validateCard({ ...good, timeline: [{ date: "2026-07-10" }] }).ok, false, "missing title");
 });
+
+// Ingest-time copy lint (2026-07-29 punch list, P1 #3): warnings, not errors —
+// run on new/changed cards during the ingest ritual.
+test("lintCard warns on a summary over 200 chars", async () => {
+  const { lintCard } = await import("./cardSchema.js");
+  const clean = { ...good, kicker: "Ceramics on the sidewalk", summary: "Seconds and one-offs from the studio kiln." };
+  assert.equal(lintCard(clean).ok, true);
+  const long = { ...clean, summary: "x".repeat(201) };
+  assert.equal(lintCard(long).ok, false);
+  assert.match(lintCard(long).warnings[0], /200/);
+});
+
+test("lintCard warns when the summary restates its kicker", async () => {
+  const { lintCard } = await import("./cardSchema.js");
+  const dup = {
+    ...good,
+    kicker: "Live jazz with your wine",
+    summary: "The weekly live-jazz night at the all-day cafe and wine bar.",
+  };
+  assert.equal(lintCard(dup).ok, false, "≥50% of kicker words repeated");
+  const distinct = {
+    ...good,
+    kicker: "Live jazz with your wine",
+    summary: "No cover; the quartet rotates weekly and the kitchen runs late.",
+  };
+  assert.equal(lintCard(distinct).ok, true, "different jobs, no warning");
+});

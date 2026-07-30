@@ -49,10 +49,22 @@ test("followTarget names the active lens when one is on", async () => {
 
 test("followTarget falls back to the trigger card's place on the all lens", async () => {
   const { followTarget } = await import("./postValue.js");
-  const card = { id: "falu-house-club", locationName: "Falu House" };
+  const card = { id: "falu-house-club", locationName: "Falu House", category: "subscription" };
   assert.deepEqual(followTarget({ filterId: "all", card }), {
     kind: "place", id: "falu-house-club", label: "Falu House",
   });
+});
+
+// P0 punch-list #1 (2026-07-29): news/civic/support locationNames are sites,
+// not followable entities — "Follow Meeker Avenue Plume area" must never render.
+test("followTarget never offers a site as a place (news/civic/support → Greenpoint)", async () => {
+  const { followTarget } = await import("./postValue.js");
+  for (const category of ["news", "civic_action", "g_train_support", "support_local"]) {
+    const card = { id: "x", locationName: "Meeker Avenue Plume area", category };
+    assert.deepEqual(followTarget({ filterId: "all", card }), {
+      kind: "all", id: "all", label: "Greenpoint",
+    }, category);
+  }
 });
 
 test("followTarget falls back to all of Greenpoint with no lens and no card", async () => {
@@ -64,6 +76,6 @@ test("followTarget falls back to all of Greenpoint with no lens and no card", as
 test("followRef encodes the target as kind:id for the form's hidden field", async () => {
   const { followTarget, followRef } = await import("./postValue.js");
   assert.equal(followRef(followTarget({ filterId: "live_music" })), "lens:live_music");
-  assert.equal(followRef(followTarget({ filterId: "all", card: { id: "troost", locationName: "Troost" } })), "place:troost");
+  assert.equal(followRef(followTarget({ filterId: "all", card: { id: "troost", locationName: "Troost", category: "food_drink" } })), "place:troost");
   assert.equal(followRef(followTarget()), "all");
 });

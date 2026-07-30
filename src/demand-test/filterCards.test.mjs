@@ -147,22 +147,14 @@ test("groupByDay: an all-undated layer is a single Ongoing group", () => {
   assert.equal(groups[0].key, "ongoing");
 });
 
-// Community alert (DECISION_LOG 2026-07-26): while the campaign runs, its
-// card leads the feed in its own group — ahead of Today.
-test("groupByDay: pinnedId hoists the alert card into a leading 'Neighborhood needs you' group", () => {
-  const cards = [{ id: "a" }, { id: "pin-me" }];
-  const groups = groupByDay(cards, new Date("2026-07-26T12:00:00-04:00"), "pin-me");
-  assert.equal(groups[0].key, "pinned");
-  assert.equal(groups[0].label, "Neighborhood needs you");
-  assert.deepEqual(groups[0].cards.map((c) => c.id), ["pin-me"]);
-  assert.ok(!groups.some((g) => g.key !== "pinned" && g.cards.some((c) => c.id === "pin-me")));
-});
-
-test("groupByDay: no pinnedId, or an id not in the deck, changes nothing", () => {
-  const cards = [{ id: "a" }];
-  const now = new Date("2026-07-26T12:00:00-04:00");
-  assert.deepEqual(groupByDay(cards, now), groupByDay(cards, now, "ghost"));
-  assert.ok(!groupByDay(cards, now).some((g) => g.key === "pinned"));
+// The community-alert pinned group was removed 2026-07-29 (punch list P2 #13):
+// the banner already deep-opens the same card, and the duplicate row + header
+// cost 87px of first-screen feed. The alert card rides its natural group.
+test("groupByDay: no pinned group — every card lands in a calendar group", () => {
+  const cards = [{ id: "a" }, { id: "film-noir-support" }];
+  const groups = groupByDay(cards, new Date("2026-07-26T12:00:00-04:00"));
+  assert.ok(!groups.some((g) => g.key === "pinned"));
+  assert.deepEqual(groups[0].cards.map((c) => c.id), ["a", "film-noir-support"]);
 });
 
 // 2026-07-21 live-page regression: an event that ended Jul 20 survived to
