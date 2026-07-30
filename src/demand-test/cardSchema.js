@@ -211,6 +211,10 @@ export function validateCard(card) {
 // or CHANGED card and rewrites until clean; existing cards tighten as their
 // weekly re-verification touches them.
 const SUMMARY_MAX = 200;
+// 18 chars ≈ 140px rendered, so two authored actions + Share still clear the
+// 343px row at 375px. Set from the live deck: every label already at or under
+// it fits, and the six above it are the six that overflow.
+const ACTION_LABEL_MAX = 18;
 const sigWords = (s) =>
   s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter((w) => w.length >= 4);
 
@@ -232,6 +236,17 @@ export function lintCard(card) {
       if (repeated.length / kw.length >= 0.5) {
         warn(`summary repeats the kicker (${repeated.join(", ")}) — say what the row could not`);
       }
+    }
+  }
+  // Action labels share ONE row that never wraps (2026-07-30), so a verbose
+  // label doesn't cost a second line any more — it pushes the buttons after it
+  // out of view. Share is appended to every card and dated cards also get "Add
+  // to calendar", so an authored label is competing for ~343px at 375px with
+  // two buttons it cannot see. A label is a destination, not a sentence:
+  // "Reserve", not "Details & reservations".
+  for (const a of card.actions ?? []) {
+    if (str(a?.label) && a.label.length > ACTION_LABEL_MAX) {
+      warn(`action "${a.label}" is ${a.label.length} chars (ceiling ${ACTION_LABEL_MAX}) — it will push later buttons off the row`);
     }
   }
   return { ok: warnings.length === 0, warnings };

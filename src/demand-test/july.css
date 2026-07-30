@@ -464,14 +464,36 @@ body { margin: 0; }
    as a heading smaller than its paragraph */
 .july-detail-when { margin: 0 0 6px; font-size: 0.78rem; font-weight: 750; color: var(--ink); }
 
-.july-actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+/* One row, always (Batu, 2026-07-30: "action buttons should not exceed one
+   row"). Wrapping was content-dependent — 11 of 95 cards spilled to a second
+   row, and a second row of buttons reads as a second tier of importance that
+   the actions do not have. nowrap makes the rule structural rather than a copy
+   discipline nobody can enforce at ingest time; the overflow scrolls, so a
+   long set is clipped rather than hidden, and no action is ever dropped.
+   Deliberately NO edge-fade mask here (unlike the chip bar, which always
+   overflows): a permanent fade would dim the last button on the ~88% of cards
+   whose actions fit. The clipped button at the edge is the affordance. */
+.july-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin: 8px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.july-actions::-webkit-scrollbar { display: none; }
 
 .july-action {
   /* containing block for .sr-only children — without this, absolutely
      positioned hidden text escapes the list's overflow clip and inflates the
-     page's scroll height by thousands of px */
+     page's scroll height by thousands of px. Doubly load-bearing now that
+     .july-actions is itself a scroll container. */
   position: relative;
   display: inline-block;
+  /* never shrink or wrap a label to fit the row — the row scrolls instead */
+  flex: none;
+  white-space: nowrap;
   min-height: 32px;
   padding: 7px 11px;
   border: 1px solid var(--ink);
