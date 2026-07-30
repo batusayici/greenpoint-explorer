@@ -1109,6 +1109,15 @@
         "event"
       ],
       "note": "531 Graham Ave (11222), owner-operated by Whitney Wolfe — locally owned per the shop's own about page. LOW YIELD BY DESIGN: she told Batu 2026-07-22 they rarely send newsletters and post to Discord instead, so treat lastplacebk.com/events as the real source and this sender as an occasional bonus. Do not wait on email here."
+    },
+    {
+      "publisher": "Bushwick Inlet Park",
+      "match": "bushwickinletpark.org",
+      "kinds": [
+        "event",
+        "news"
+      ],
+      "note": "waterfront park + Save the Inlet advocacy; civic/community opportunities and events. Batu subscribed to the newsletter 2026-07-30."
     }
   ],
   "watchItems": [
