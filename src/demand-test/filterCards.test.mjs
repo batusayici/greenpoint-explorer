@@ -93,15 +93,19 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
   ]);
   assert.deepEqual(groups[0].cards.map((c) => c.id), ["series"], "running window is live today");
   assert.deepEqual(groups[1].cards.map((c) => c.id), ["thu-early", "thu-late"], "within a day: earliest first");
-  assert.deepEqual(groups[3].cards.map((c) => c.id), ["shop", "club"], "undated + recurring deals trail as Ongoing");
+  // Both trail as Ongoing; inside it the standing deal (rank 3) outranks the
+  // category-less place card (rank 5) — the 2026-07-30 kind ranking.
+  assert.deepEqual(groups[3].cards.map((c) => c.id), ["club", "shop"], "undated + recurring deals trail as Ongoing");
 });
 
 // 2026-07-25 user feedback: under the News lens, real news read below the
 // folded-in business openings — a pure array-order accident, since both are
-// undated and Ongoing otherwise keeps insertion order. news/g_train_support
-// category cards now sort first within Ongoing, everything else keeps its
-// relative order after (stable partition, not a full re-sort).
-test("groupByDay: within Ongoing, news/g_train category cards sort before everything else", () => {
+// undated and Ongoing otherwise kept insertion order. That fix survives inside
+// the 2026-07-30 kind ranking (Batu: "review & improve the default sorting rule
+// for Ongoing"), which orders the whole undated shelf instead of just hoisting
+// news out of it: asks → news → recurring programming → offers → signups →
+// places, freshest first inside each kind.
+test("groupByDay: within Ongoing, news/g_train category cards sort before places", () => {
   const wed = new Date("2026-07-25T12:00:00-04:00");
   const opening1 = { id: "opening-1", category: "new_business" };
   const realNews = { id: "real-news", category: "news" };
@@ -110,6 +114,45 @@ test("groupByDay: within Ongoing, news/g_train category cards sort before everyt
   const groups = groupByDay([opening1, realNews, opening2, gtrainHub], wed);
   const ongoing = groups.find((g) => g.key === "ongoing");
   assert.deepEqual(ongoing.cards.map((c) => c.id), ["real-news", "gtrain-hub", "opening-1", "opening-2"]);
+});
+
+test("ongoingRank: kinds rank by decay + actionability, recurring events by flag not category", async () => {
+  const { ongoingRank } = await import("./filterCards.js");
+  assert.equal(ongoingRank({ category: "civic_action" }), 0);
+  assert.equal(ongoingRank({ category: "support_local" }), 0);
+  assert.equal(ongoingRank({ category: "news" }), 1);
+  assert.equal(ongoingRank({ category: "g_train_support" }), 1);
+  assert.equal(ongoingRank({ category: "event", recurring: true }), 2, "recurring programming");
+  assert.equal(ongoingRank({ category: "discount" }), 3);
+  assert.equal(ongoingRank({ category: "subscription" }), 4);
+  for (const category of ["new_business", "food_drink", "service", "shopping", "arts_culture"]) {
+    assert.equal(ongoingRank({ category }), 5, category);
+  }
+  // a recurring DEAL is still an offer — the flag only promotes events
+  assert.equal(ongoingRank({ category: "discount", recurring: true }), 3);
+});
+
+test("groupByDay: Ongoing orders every kind, freshest first inside a kind", () => {
+  const wed = new Date("2026-07-30T12:00:00-04:00");
+  const cards = [
+    { id: "place-old", category: "food_drink", createdAt: "2026-07-02" },
+    { id: "signup", category: "subscription", createdAt: "2026-07-25" },
+    { id: "news-old", category: "news", createdAt: "2026-07-15" },
+    { id: "place-new", category: "food_drink", createdAt: "2026-07-25" },
+    { id: "ask", category: "civic_action", createdAt: "2026-07-02" },
+    { id: "offer", category: "discount", createdAt: "2026-07-25", recurring: true },
+    { id: "news-new", category: "news", createdAt: "2026-07-27" },
+    { id: "programme", category: "event", createdAt: "2026-07-08", recurring: true },
+  ];
+  const ongoing = groupByDay(cards, wed).find((g) => g.key === "ongoing");
+  assert.deepEqual(ongoing.cards.map((c) => c.id), [
+    "ask",
+    "news-new", "news-old",
+    "programme",
+    "offer",
+    "signup",
+    "place-new", "place-old",
+  ]);
 });
 
 // 2026-07-22 UX eval (F4): the live Today group scanned 5 PM → 10 AM → 7 PM,

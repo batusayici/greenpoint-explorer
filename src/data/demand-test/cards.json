@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-27",
+  "version": "2026-07-30",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -3271,7 +3271,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "little-dance-school-fall-registration",
       "title": "The Little Dance School fall registration",
       "kicker": "Kids dance signup + free trial",
@@ -3279,8 +3279,7 @@
       "address": "106 Calyer St",
       "geocodeQuery": "106 Calyer St, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Registration is open for the September–June season at the Muriel Theatre inside Triskelion — ages 1.5 through 8, with a complimentary September trial class when you reserve now.",
       "actions": [
@@ -3313,7 +3312,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "bk-youth-ballet-enrollment",
       "title": "Brooklyn Youth Ballet fall enrollment",
       "kicker": "Ballet signup + $40 trial class",
@@ -3321,8 +3320,7 @@
       "address": "37 Greenpoint Ave",
       "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Youth classes and adult ballet workouts are enrolling for the September–January semester — with a $40 trial class credited toward tuition, one per student. After-school pickup from six local schools.",
       "actions": [
@@ -3355,7 +3353,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-30",
       "id": "dance-space-fall-registration",
       "title": "The Dance Space NY fall registration",
       "kicker": "Ballet, jazz & tap — signup open",
@@ -3363,8 +3361,7 @@
       "address": "61 Greenpoint Ave",
       "geocodeQuery": "61 Greenpoint Ave, Brooklyn, NY",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "summary": "Elly Shepley's studio is enrolling kids and adult classes for fall, with school pickup from PS 31, PS 34, PS 110 and Brooklyn Arbor.",
       "actions": [
@@ -3994,7 +3991,7 @@
       "title": "Warhammer 40k: Armageddon! RTT",
       "category": "event",
       "filters": [
-        "community"
+        "arts_culture"
       ],
       "locationName": "The Carcosa Club",
       "address": "982 Manhattan Ave, Brooklyn, NY 11222",
@@ -4026,7 +4023,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.732676,
       "lng": -73.954395
     },
@@ -4035,8 +4032,7 @@
       "title": "Chess & Chill at Last Place on Earth",
       "category": "subscription",
       "filters": [
-        "community",
-        "deals_memberships"
+        "arts_culture"
       ],
       "locationName": "Last Place on Earth",
       "address": "531 Graham Ave, Brooklyn, NY 11222",
@@ -4070,7 +4066,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.721326,
       "lng": -73.947
     },
@@ -4079,8 +4075,7 @@
       "title": "NY Society of Play fall game clubs",
       "category": "subscription",
       "filters": [
-        "family_kids",
-        "deals_memberships"
+        "family_kids"
       ],
       "locationName": "Frontier Games",
       "address": "724 Manhattan Ave, Brooklyn, NY 11222",
@@ -4110,7 +4105,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-07-30",
       "lat": 40.726116,
       "lng": -73.951879
     },

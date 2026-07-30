@@ -328,29 +328,41 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
 function FollowPrompt({ filter, card, onDone, placement }) {
   const target = followTarget({ filterId: filter, card });
   const ref = followRef(target);
+  // The promise has to fit the object: only a place "posts" (2026-07-30 — the
+  // one-line note shipped hardcoded for places and read wrong on a lens).
+  const promise =
+    target.kind === "place" ? "One email when they post." : "One email when something new lands.";
   return (
     <div className="july-prompt" role="status">
+      {/* Subject first, in the row-title register (2026-07-30, Batu: "the whole
+          thing looks like a button"). The object used to exist only INSIDE the
+          button label, so the card led with a near-full-width ink slab and had
+          no subject of its own — box-in-box, and the button's centered label
+          lined up with nothing below it. Naming the object as type makes the
+          ask concrete more strongly than the button label did, and leaves the
+          button free to be one short verb sized to its own content. */}
+      <p className="july-prompt-object">{target.label}</p>
+      {/* The promise informs the decision, so it sits BEFORE the action. Stays
+          one we can keep — sends are permanently manual (growth-engine §7). */}
+      <p className="july-prompt-note">{promise}</p>
       <div className="july-prompt-row">
         <a
           className="july-cta july-cta--primary"
           href={followHref(SIGNUP_URL, ref)}
           target="_blank"
           rel="noreferrer"
+          aria-label={`Follow ${target.label}`}
           onClick={() => {
             trackEvent(EVENTS.CTA_TAP, { cta: "follow", placement, object: ref });
             onDone();
           }}
         >
-          Follow {target.label}
+          Follow
         </a>
         <button type="button" className="july-prompt-dismiss" onClick={onDone}>
           Not now
         </button>
       </div>
-      {/* One line, under the button (punch list P2 #17): the old 15-word body
-          restated what "Follow {X}" already says. The promise stays one we can
-          keep — sends are permanently manual (growth-engine §7). */}
-      <p className="july-prompt-note">One email when they post.</p>
       {/* The other object stays one tap away without becoming a second ask —
           the form's own question is where a place gets named (R1, §2). */}
       {target.kind !== "place" && (
@@ -702,7 +714,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                 rel="noreferrer"
                 onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "empty" })}
               >
-                Add yours, free &rarr;
+                Submit an event &rarr;
               </a>
             </span>
           </li>
@@ -731,7 +743,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
             rel="noreferrer"
             onClick={() => trackEvent(EVENTS.SUBMIT_TAP, { placement: "list" })}
           >
-            add yours, free &rarr;
+            submit an event &rarr;
           </a>
         </li>
       </ol>

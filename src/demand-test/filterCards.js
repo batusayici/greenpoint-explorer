@@ -79,6 +79,43 @@ function minutesOfDayNY(iso) {
   return (get("hour") % 24) * 60 + get("minute");
 }
 
+// Ongoing is the undated shelf — up to ~49 rows with no calendar to order
+// them. Until 2026-07-30 the rule was a single news-first partition, which
+// solved its own bug (2026-07-25: reporting must outrank business openings)
+// and left everything below it in raw ingest-insertion order: a service card
+// between two food_drink cards, three dance signups adrift from a fourth,
+// standing deals scattered across rows 39/45/47. So the shelf is ranked by
+// KIND — descending by how fast the row decays and how directly it can be
+// acted on — and freshest-first inside each kind, which self-maintains as
+// each ingest appends.
+const ONGOING_RANK = {
+  // 0 — asks: the neighborhood needs something from you, and the window closes.
+  civic_action: 0,
+  support_local: 0,
+  // 1 — what changed. Keeps the 2026-07-25 fix: news above the openings.
+  news: 1,
+  g_train_support: 1,
+  // 3 — standing offers you can use today.
+  discount: 3,
+  // 4 — memberships and signups: a decision, not a walk-in.
+  subscription: 4,
+};
+// 2 — recurring programming (a thing you can actually go do this week) sits
+// between the news and the offers; it is a flag, not a category.
+const RANK_RECURRING = 2;
+// 5 — places: the map's evergreen geography. Never stale, never urgent.
+const RANK_PLACE = 5;
+
+export function ongoingRank(card) {
+  if (card.recurring && card.category === "event") return RANK_RECURRING;
+  return ONGOING_RANK[card.category] ?? RANK_PLACE;
+}
+
+// Freshest first inside a kind — an undated card's createdAt is the only
+// recency signal it has, and it makes each refresh's additions surface.
+const created = (c) => Date.parse(c.createdAt ?? "") || 0;
+const byOngoingRank = (a, b) => ongoingRank(a) - ongoingRank(b) || created(b) - created(a);
+
 export function groupByDay(cards, date) {
   const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
   const groups = new Map(); // key -> { key, order, label, cards }
@@ -114,18 +151,9 @@ export function groupByDay(cards, date) {
     };
     return t(a) - t(b);
   };
-  // Within Ongoing, reporting outranks openings (2026-07-25 user feedback:
-  // under the News lens, real news was reading below the folded-in business
-  // openings — pure array-order accident, since both are undated and the
-  // group otherwise keeps insertion order). A stable partition, not a manual
-  // reorder, so it self-maintains as future ingests append cards; harmless
-  // no-op for every other lens, since none of them mix `news`/`g_train_support`
-  // category cards with other categories.
-  const isNewsCategory = (c) => c.category === "news" || c.category === "g_train_support";
-  const byNewsFirst = (a, b) => Number(isNewsCategory(b)) - Number(isNewsCategory(a));
   return [...groups.values()]
     .sort((a, b) => a.order - b.order)
-    .map((g) => ({ ...g, cards: [...g.cards].sort(g.key === "ongoing" ? byNewsFirst : byClock) }));
+    .map((g) => ({ ...g, cards: [...g.cards].sort(g.key === "ongoing" ? byOngoingRank : byClock) }));
 }
 
 // A dated card is dead the moment its window closes — expiry can't wait for

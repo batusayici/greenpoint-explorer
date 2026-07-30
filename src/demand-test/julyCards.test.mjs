@@ -279,19 +279,24 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // 2026-07-27 expiry took the dated half of this lens (City of Water Day, the
   // Disabled & Hungry launch, It's My Park at Transmitter, the Saturday library
   // block, Pooch's adoption day) — the standing civic asks are what remain.
-  // 2026-07-27 run 2 added the game-club pair: Carcosa's all-day 40k
-  // tournament and Last Place on Earth's weekly chess night — tabletop
-  // gathering spots live here alongside the civic asks.
+  // 2026-07-30 (Batu): the game-club pair added on 2026-07-27 is OUT —
+  // "Community has gaming events that shouldn't be there. That category is for
+  // civic action." Carcosa's 40k tournament and Last Place's chess night moved
+  // to arts_culture (the shelf that already holds culture/ideas programming).
+  // The lens rule is now hard: hands-on civic participation and mutual aid
+  // only — never a gathering that is simply social.
   assert.deepEqual(community, [
     "adopt-a-business",
-    "carcosa-warhammer-rtt-0801",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
-    "last-place-chess-chill",
     "library-tuesday-programs-0728",
     "newtown-creek-cag-0729",
   ]);
+  const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
+  for (const id of gathering) {
+    assert.ok(!community.includes(id), `${id} is a social gathering, not civic action`);
+  }
   // Trash Club moved OUT of deals_memberships — it's civic action, not a
   // paid membership; a signup card can only be one thing at a glance.
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("deals_memberships"));
@@ -299,6 +304,37 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // it stays in news, unlike the four action cards above.
   assert.ok(seed.cards.find((c) => c.id === "g-train-closures").filters.includes("news"));
   assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("community"));
+});
+
+// 2026-07-30 (Batu): "deals & memberships should only have deals & memberships.
+// enrollments & registrations or game nights don't belong here." `subscription`
+// is the schema category for BOTH a standing membership (Falu's tinned-fish
+// club, Flower Cat's weekly delivery) and a term enrollment (fall dance
+// registration, kids' game clubs) — so the lens cannot be derived from the
+// category and has to be authored against this rule. A membership is an
+// open-ended standing relationship; a registration buys a fixed term and
+// belongs with its audience lens (family_kids / wellness).
+test("the deals & memberships lens holds only deals and standing memberships", () => {
+  const lens = seed.cards.filter((c) => c.filters.includes("deals_memberships"));
+  for (const c of lens) {
+    assert.ok(
+      c.category === "discount" || c.category === "subscription",
+      `${c.id} (${c.category}) is neither a deal nor a membership`,
+    );
+    assert.ok(
+      !/registration|enrollment|signup|sign-up/i.test(`${c.title} ${c.kicker}`),
+      `${c.id} reads as an enrollment, not a membership — file it under its audience lens`,
+    );
+  }
+  assert.deepEqual(lens.map((c) => c.id).sort(), [
+    "bios-apothecary-first-order",
+    "falu-tinned-fish-club",
+    "flower-cat-subscription",
+    "hana-bottomless-makgeolli",
+    "moon-bunny-back-to-school",
+    "poochs-first-visit-20",
+    "poochs-parlor-first-groom",
+  ]);
 });
 
 test("astrology landed in Arts & Culture, not stranded", () => {
