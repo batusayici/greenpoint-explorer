@@ -352,15 +352,15 @@ function FollowPrompt({ filter, onDismiss, placement }) {
   return (
     <div className="july-fbanner">
       <div className="july-fbanner-body">
-        {/* The promise precedes the action because it informs the decision, and
-            it has to be one we can KEEP: sends are permanently manual
-            (growth-engine §7) and a per-item email would be spam (Batu). Weekly
-            and scoped to the lens is both keepable and the actual
-            differentiator — the personalization is the product, not the
-            cadence. Channel is deliberately unpromised; the form asks how
-            they'd want it, which is how we learn whether this should be SMS or
-            a notification rather than mail at all. */}
-        <p className="july-fbanner-terms">One email a week, just {target.label}.</p>
+        {/* Copy is Batu's (2026-07-30), verbatim. It leads with the benefit
+            rather than the mechanism, and it drops the lens name — which the
+            button below already carries, so the label no longer appears twice
+            in three lines. The cadence stays because it is a promise we can
+            KEEP: sends are permanently manual (growth-engine §7) and a
+            per-item email would be spam. Channel is deliberately unpromised;
+            the form asks how they'd want it, which is how we learn whether
+            this should be SMS or a notification rather than mail at all. */}
+        <p className="july-fbanner-terms">Stay up to date with one weekly email</p>
         <a
           className="july-fbanner-cta"
           href={followHref(SIGNUP_URL, ref)}
