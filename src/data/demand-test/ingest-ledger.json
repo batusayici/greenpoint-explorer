@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T14:30:00-04:00",
+  "lastRunAt": "2026-07-30T13:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -930,6 +930,56 @@
       "id": "gmail:19fa3740321606f6",
       "reviewedAt": "2026-07-27",
       "outcome": "PRESS Modern Massage — excluded sender, skipped"
+    },
+    {
+      "id": "gmail:19fa9cc1a4f802a8",
+      "reviewedAt": "2026-07-30",
+      "outcome": "Brooklyn Craft Company newsletter (7/28) — +2 cards (Crafty Hour Tie Dye 8/7, stretchy-knits two-parter 8/4); 90's Nostalgia 7/31, Floral Embroidery 8/1, Pietra shorts 8/2 and the kids sewing camp already carded; Lower Manhattan pop-up items skipped"
+    },
+    {
+      "id": "gmail:19fadc8e8ffaf9bf",
+      "reviewedAt": "2026-07-30",
+      "outcome": "Town Square BK newsletter (7/29) — +1 card (SummerStarz: Ford v Ferrari 8/7, free, Transmitter Park); Michael 7/31 already carded; 8/14 + 8/21 movies out of window; Eagle Court of Honor 7/31 skipped (no venue stated); Goose Pond Scout Camp PA skipped (non-Greenpoint). Sender not yet in registry — proposed"
+    },
+    {
+      "id": "gmail:19faf51c60be8111",
+      "reviewedAt": "2026-07-30",
+      "outcome": "Le Botaniste froyo pop-up 8/1 — skipped, multi-location chain (locally-owned hard gate)"
+    },
+    {
+      "id": "gmail:19fb2e7ac3978d33",
+      "reviewedAt": "2026-07-30",
+      "outcome": "PRESS Modern Massage — excluded sender, skipped"
+    },
+    {
+      "id": "https://www.greenpointstar.com/",
+      "reviewedAt": "2026-07-30",
+      "outcome": "first snapshot — front page carried only Jan–Feb 2026 stories (Monitor Point hearing, National Grid/CB1, two Cobb history pieces); nothing current, Monitor Point already carded. No adds; roster URL needs a live-section check on the Monday full run"
+    },
+    {
+      "id": "https://donyc.com/venues/good-room",
+      "reviewedAt": "2026-07-30",
+      "outcome": "diff = no on-concept items"
+    },
+    {
+      "id": "https://brooklyncraftcompany.com/collections/all-workshops",
+      "reviewedAt": "2026-07-30",
+      "outcome": "diff = undated Shopify listings only; the 7/28 newsletter carried the dates (known lesson, 2026-07-25)"
+    },
+    {
+      "id": "https://acmesmokedfish.com/collections/fish-friday",
+      "reviewedAt": "2026-07-30",
+      "outcome": "diff = no on-concept items; no closure week stated"
+    },
+    {
+      "id": "https://gogreenbk.org",
+      "reviewedAt": "2026-07-30",
+      "outcome": "diff = 8 events, all non-Greenpoint (Brooklyn Bridge Park, Marsha P. Johnson State Park, Williamsburgh Library) — skipped"
+    },
+    {
+      "id": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+      "reviewedAt": "2026-07-30",
+      "outcome": "re-verified the FLAGGED recurring deal at source — article still states \"Mention Greenpointers for 20% off your first appointment\"; verified-through bumped to 2026-08-02"
     }
   ],
   "senderRegistry": [
