@@ -341,6 +341,15 @@ body { margin: 0; }
   color: var(--ink-soft);
 }
 
+/* day headers carry an h2 (crit round 2, #2): H1 jumped straight to 77 H3s,
+   a flat outline — the h2 restores the day-grouped structure for screen
+   readers without changing the visual row */
+.july-day h2 {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
 /* disclosure heading: h3 gives the 88-row feed a navigable structure for
    screen readers without changing the visual row (UX eval, F25) */
 .july-card-heading {
@@ -447,9 +456,13 @@ body { margin: 0; }
 }
 
 .july-detail { padding: 0 16px 14px; }
-.july-detail-summary { margin: 0 0 6px; font-size: 0.84rem; line-height: 1.45; }
+/* 14px floor for the product's longest reading text (design crit 2026-07-29
+   round 2, #1: 13.44px was the one body-size miss in the app) */
+.july-detail-summary { margin: 0 0 6px; font-size: 0.875rem; line-height: 1.45; }
 .july-detail-venues { margin: 0 0 8px; font-size: 0.74rem; color: var(--ink-soft); }
-.july-detail-when { margin: 0 0 6px; font-size: 0.74rem; font-weight: 750; color: var(--ink); }
+/* 12.5px, caption tier (crit round 2, #5): bold 11.84px above 14px body read
+   as a heading smaller than its paragraph */
+.july-detail-when { margin: 0 0 6px; font-size: 0.78rem; font-weight: 750; color: var(--ink); }
 
 .july-actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
 
@@ -874,6 +887,13 @@ body { margin: 0; }
 .ii-pin--club { background: var(--brick); }
 .ii-pin--deal { background: var(--slate); }
 .ii-pin--news { background: var(--line); }
+
+/* Far-zoom pin size (crit round 2, #4): 13 pin pairs sat within 14px at the
+   framed default view — below zoom 14.2 the discs drop to 14px so category
+   color stays readable in clusters. The logged 18px (DECISION_LOG 2026-07-28)
+   holds at working zooms; sizing via width/height only, never transform. */
+.july-map--far .ii-pin { width: 14px; height: 14px; }
+.july-map--far .ii-venue-dot { width: 8px; height: 8px; }
 
 .ii-pin.is-selected {
   z-index: 3;

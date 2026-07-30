@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/cards.json";
-import { matchesFilter, sortTodayFirst, isExpiredCard, groupByDay, liveFilterCounts } from "./filterCards.js";
+import { matchesFilter, sortTodayFirst, isExpiredCard, isActiveOn, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
@@ -49,6 +49,18 @@ export default function JulyApp() {
   // Chip-fold input (F16-B): live counts per layer, fixed at mount — they only
   // drift at expiry boundaries, and the bar must not reshuffle mid-session.
   const [filterCounts] = useState(() => liveFilterCounts(seed.cards, new Date()));
+
+  // Mobile layout flag for the peek-pin filter below (crit round 2, #7).
+  const [smallViewport, setSmallViewport] = useState(
+    () => window.matchMedia?.("(max-width: 760px)").matches ?? false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia?.("(max-width: 760px)");
+    if (!mq) return;
+    const onChange = (e) => setSmallViewport(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   // Keep the address bar on the card's shareable path (?src= rides along).
   // replaceState, not pushState: back should leave the page, not unwind taps.
@@ -122,6 +134,18 @@ export default function JulyApp() {
     const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
     return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now) };
   }, [filter, pinFocus]);
+
+  // Peek-pin filter (crit round 2, #7): the 203px peek rendered all 53 pins
+  // at a size where the color key can't be read. In the peek, dated pins
+  // narrow to today's; ongoing/recurring cards (the map's stable geography)
+  // stay. Expanding the map — or any desktop viewport — shows everything.
+  const mapCards = useMemo(() => {
+    if (!smallViewport || mapExpanded) return visible;
+    const now = new Date();
+    return visible.filter(
+      (c) => (c.startsAt == null && c.endsAt == null) || c.recurring || isActiveOn(c, now),
+    );
+  }, [visible, smallViewport, mapExpanded]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
@@ -259,7 +283,7 @@ export default function JulyApp() {
         />
         <div className={`july-mapzone${mapExpanded ? " is-expanded" : ""}`}>
           <MapView
-            cards={visible}
+            cards={mapCards}
             selectedId={selectedId}
             focusKey={pinFocus?.key ?? null}
             onSelect={setSelectedId}

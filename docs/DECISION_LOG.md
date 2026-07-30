@@ -4,6 +4,17 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-07-29 — Round-2 crit fixes: 14px body floor, h2 day headers, resilient map framing, far-zoom pins, today-only peek
+
+Decision (Batu: "fix all so there's no remaining known issue"). A same-day clean-context `design_crit` pass on the executed punch-list build passed Gate 2 and returned 5 pre-existing items; all fixed (details in the punch list's "Round 2" section). Durable pieces:
+
+1. **Map framing is self-healing until the reader takes the camera**: fit-to-pins re-runs on container resize (rotation, window resize, peek→expand) and stops forever after the first user drag/zoom or selection pan (`cameraTakenRef` in `MapView.jsx`).
+2. **Pins are zoom-tiered**: `.july-map--far` (zoom < 14.2) renders 14px pins / 8px venue dots — overview shows density, working zooms keep the logged 18px. Sizing is width/height only; the never-transform marker rule holds.
+3. **The mobile peek shows today + ongoing pins only** (`mapCards` in `JulyApp.jsx`); expand or desktop shows everything. Related accepted constraint: above the `minZoom 12.8` legibility floor a 375px map cannot contain the full pin extent — the peek centers the mass and crops the fringe by design; the zoom floor is not for sale.
+4. `window.__iiMap` debug handle, dev-only — camera diagnosis needed it once already.
+
+Owner: Batu.
+
 ## 2026-07-29 — Design punch list executed (all but the font); several standing contracts revised
 
 Decision (Batu: "execute `2026-07-29-design-punch-list.md`, don't change font family yet"). Everything on the list shipped except **#2 (typeface)** — face decision deferred — and the **map-peek structural question**, which stays open and Batu's. Durable contract changes, each reversing or extending an earlier logged decision:

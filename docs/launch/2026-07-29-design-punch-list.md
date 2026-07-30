@@ -4,6 +4,20 @@
 >
 > **Not executed:** **#2** (font — deferred by Batu, face decision pending) and the **open structural question** (map peek height — explicitly Batu's call, untouched). "Not verified" items below also remain open, including the real-device iOS screenshot.
 
+## Round 2 — post-execution design crit (2026-07-29, same day)
+
+A fresh clean-context `design_crit` pass ran against the executed build (blind to the day's changes). **Gate 2 passed** ("does not look like anyone else's events app"); nothing shipped above came back as a defect. It found 5 new items, all pre-existing; **all fixed same day** (Batu: "fix all so there's no remaining known issue"):
+
+1. **Detail summary 13.44px → 14px** — the product's longest reading text was under the body floor.
+2. **Heading outline H1→H3 flat** → day headers now carry an `h2` (H1 → H2 days → H3 cards).
+3. **Map framing after viewport resize** — fit-to-pins only ran at mount, so a rotate/resize kept the stale camera (measured 5/53 pins offscreen). Now re-fits on container resize **until the reader takes the camera** (drag/zoom/selection pan), with padding scaled to container size. Fresh loads were already framed correctly — the crit's desktop measurement was this resize case.
+4. **Pin collision (13 pairs <14px at the framed default)** → below zoom 14.2 the map carries `.july-map--far` and pins render 14px (venue dots 8px); the logged 18px holds at working zooms, hit area stays ~30px via the `::after` inset. Width/height only — the marker-transform rule holds.
+5. **Peek readability** → in the mobile peek, dated pins narrow to today's (ongoing/recurring stay); the full set returns on expand or desktop. When-line also moved to the 12.5px caption tier (was bold 11.84px under 14px body).
+
+**Measured constraint, documented not "fixed":** a 375px-wide map cannot contain the full pin extent above the `minZoom: 12.8` legibility floor (fitting would need ~z11 — a postage-stamp neighborhood). The peek centers the pin mass and crops the fringe; expand + drag reaches everything; desktop fits everything. Lowering the zoom floor to chase full containment would trade the map's street-level readability for it — not taken.
+
+Crit round 2 also independently confirmed: vendor chrome in-palette, focus coverage complete, copy density lean ("the copy-budget correction clearly landed"), no reflow defects at 375/768/1440.
+
 Blocks the `greenpoint.life` cutover to the extent Batu decides. Launch-readiness context: `2026-07-27-launch-plan.md`. Regime: `docs/DECISION_LOG.md` 2026-07-22.
 
 ## Method (why two passes)

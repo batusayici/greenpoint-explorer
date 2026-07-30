@@ -34,9 +34,16 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
   useEffect(() => {
     onFocusLocationRef.current = onFocusLocation;
   });
-  // Snapshot of the mount-time card set for the initial fitBounds only —
-  // later filter changes must not re-frame the camera.
-  const initialCardsRef = useRef(cards);
+  // Latest card set for framing (initial fit + refits on container resize) —
+  // filter changes must not re-frame the camera, so fits read this ref
+  // instead of depending on `cards`.
+  const cardsRef = useRef(cards);
+  useEffect(() => {
+    cardsRef.current = cards;
+  });
+  // Once the reader takes the camera (drag/zoom, or a selection pan), resizes
+  // stop re-framing — their view is theirs.
+  const cameraTakenRef = useRef(false);
 
   useEffect(() => {
     const map = new maplibregl.Map({
@@ -91,20 +98,50 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
 
     // Open framed on the actual pin extent (not a fixed center), so the
     // neighborhood — not the river — fills the first view at any aspect.
-    const pts = [];
-    for (const card of initialCardsRef.current) {
-      if (card.lat != null) pts.push([card.lng, card.lat]);
-      for (const v of card.venues ?? []) if (v.lat != null) pts.push([v.lng, v.lat]);
-    }
-    if (pts.length > 0) {
+    const fitToPins = () => {
+      const pts = [];
+      for (const card of cardsRef.current) {
+        if (card.lat != null) pts.push([card.lng, card.lat]);
+        for (const v of card.venues ?? []) if (v.lat != null) pts.push([v.lng, v.lat]);
+      }
+      if (pts.length === 0) return;
       const bounds = pts.reduce(
         (b, p) => b.extend(p),
         new maplibregl.LngLatBounds(pts[0], pts[0]),
       );
-      map.fitBounds(bounds, { padding: 56, animate: false });
-    }
+      // Padding scales with the container so the 203px mobile peek never gets
+      // asked for 112px of vertical padding it doesn't have.
+      const el = containerRef.current;
+      const pad = Math.max(24, Math.min(56, Math.floor(Math.min(el.clientWidth, el.clientHeight) / 6)));
+      map.fitBounds(bounds, { padding: pad, animate: false });
+    };
+    fitToPins();
+
+    // Re-frame on container resize until the reader takes the camera (crit
+    // round 2, #3): the mount-only fit left a rotated phone or resized window
+    // holding the old framing — measured 5 of 53 pins offscreen after a
+    // resize. A drag/zoom (or a selection pan, marked in the effect below)
+    // makes the view theirs and resizes stop touching it.
+    const markTaken = (e) => {
+      if (e.originalEvent) cameraTakenRef.current = true;
+    };
+    map.on("dragstart", markTaken);
+    map.on("zoomstart", markTaken);
+    map.on("resize", () => {
+      if (!cameraTakenRef.current) fitToPins();
+    });
+
+    // Far-zoom pin size (crit round 2, #4): below 14.2 the container carries
+    // .july-map--far and pins render 14px — cluster discs stay readable.
+    const applyZoomClass = () => {
+      containerRef.current?.classList.toggle("july-map--far", map.getZoom() < 14.2);
+    };
+    map.on("zoom", applyZoomClass);
+    map.on("resize", applyZoomClass);
+    applyZoomClass();
 
     mapRef.current = map;
+    if (import.meta.env.DEV) window.__iiMap = map; // debug handle, dev only
     return () => {
       attribObserver?.disconnect();
       map.remove();
@@ -187,6 +224,7 @@ export default function MapView({ cards, selectedId, focusKey, onSelect, onFocus
     const card = cards.find((c) => c.id === selectedId);
     if (card?.lat != null) {
       const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      cameraTakenRef.current = true; // a centered card must survive a resize
       mapRef.current?.easeTo({ center: [card.lng, card.lat], duration: reduce ? 0 : 500 });
     }
   }, [selectedId, cards]);

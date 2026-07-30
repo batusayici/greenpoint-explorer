@@ -635,8 +635,12 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                 header — headers appear once dated cards give days to scan.
                 Not aria-hidden: the calendar exists for screen readers too
                 (UX eval, F25). */}
+            {/* h2 (crit round 2, #2): without it the outline was H1 → 77 H3s
+                flat — the day header is the level that groups the cards. */}
             {(groups.length > 1 || group.key !== "ongoing") && (
-              <li className="july-day">{group.label}</li>
+              <li className="july-day">
+                <h2>{group.label}</h2>
+              </li>
             )}
             {group.cards.map((card) => {
               const open = card.id === selectedId;
