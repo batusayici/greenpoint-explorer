@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T14:30:00-04:00",
+  "lastRunAt": "2026-07-31T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -945,6 +945,41 @@
       "id": "https://ma.to/event/botanic-drawing-workshop-30-jul-2026",
       "reviewedAt": "2026-07-30",
       "outcome": "Batu found this same-day Flower Cat workshop (7-9pm) on ma.to; not in our data. Checked flowercat.nyc/events (stale, no future listings — normal for them) and their Instagram bio (no post content visible logged out). Card added (flower-cat-botanic-drawing-0730), sourced to the ma.to listing itself since no venue-channel confirmation exists — this is a one-off attribution, not a registration of ma.to as a roster source. Root cause logged on the Flower Cat senderRegistry entry: their real channel is Instagram, which we don't crawl, so same-day one-offs like this will keep getting missed until that's addressed."
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/29/greenpoint-film-festival-returns-for-its-15th-anniversary/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-31",
+      "outcome": "1 event added (greenpoint-film-festival-0805) — Aug 5-9 at Broadway Stages, 259 Green St; pass prices carded as stated"
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/28/expect-g-train-service-changes-every-weekend-this-august/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-31",
+      "outcome": "1 news added (g-train-august-weekends) — Court Sq–Bedford-Nostrand out Aug 7-10 and 21-24 (both Greenpoint stations), Hoyt–Church Ave out Jul 31-Aug 3 and Aug 14-17; linked to gtrain-sales-survey"
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/28/greenpoints-transmitter-park-to-get-new-restaurant-and-marina/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-31",
+      "outcome": "1 news added (transmitter-park-restaurant-marina) — 25-year NYC Parks license, public design hearing next month"
+    },
+    {
+      "id": "https://scrappleland.com/",
+      "kind": "web",
+      "publisher": "Scrappleland",
+      "processedAt": "2026-07-31",
+      "outcome": "2 events added (scrappleland-backgammon-0804, scrappleland-pinball-league-0805) from the venue's own calendar; later weeks left for their own runs"
+    },
+    {
+      "id": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-07-31",
+      "outcome": "re-verified the FLAGGED recurring deal at the source (article still states the 20% first-groom offer); verified-through bumped 7/29 → 8/5"
     }
   ],
   "senderRegistry": [
@@ -1164,6 +1199,16 @@
       "name": "Lulla's Venezuela earthquake relief hub",
       "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub — no address stated and no drop-off hours; card as community/news once the address and hours are verified",
       "addedAt": "2026-07-27"
+    },
+    {
+      "name": "Greenpointers roundup 7/30-8/5 — deliberately NOT in processedItems",
+      "note": "The 7/29 roundup is carded in open PR #14 (ingest/greenpointers-2026-07-30), which had not merged when this run started. Its items were left out of this PR to avoid a duplicate/conflicting add. If #14 is closed rather than merged, this roundup is unprocessed and must be re-run: https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "name": "Chromium egress in the cloud sandbox",
+      "note": "All 20 browser-fetch roster sources fail net::ERR_CONNECTION_RESET for the third run running, while plain fetch/curl reach the same hosts (verified 200 on greenpointers.com). Tested again 7/31: explicit --proxy-server, --disable-quic, ignoreHTTPSErrors — all fail; the proxy logs no CONNECT for those hosts. Greenpointers content this run came through its public WP REST API (/wp-json/wp/v2/posts?slug=...), which is a workable fallback for that source specifically.",
+      "addedAt": "2026-07-31"
     }
   ]
 }
