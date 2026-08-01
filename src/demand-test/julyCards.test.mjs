@@ -140,11 +140,15 @@ test("seed has exactly 71 cards across the six layers", () => {
   // the Pooch's call — the offer is live, so the richer article-sourced card
   // is restored and the thin duplicate (`poochs-first-visit-20`, homepage URL
   // only) is dropped instead. 73 + 1 festival + 1 restored − 1 duplicate = 74.
-  assert.equal(seed.cards.length, 74);
+  // Then +1 SummerStarz (Ford v Ferrari, Fri 8/7): town-square-bk fetched
+  // `unchanged`, so no diff surfaced it — the page never changes, its dated
+  // list simply rolls forward, and the previous instance had just expired out.
+  // A standing-page series needs re-reading on the date, not on the diff. 75.
+  assert.equal(seed.cards.length, 75);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 25, "18 post-expiry + Acme 8/7 + Bird Club + 2 Scrappleland weeklies + 2 BCC workshops + Film Festival");
+  assert.equal(count((c) => c.category === "event"), 26, "18 post-expiry + Acme 8/7 + Bird Club + 2 Scrappleland weeklies + 2 BCC workshops + Film Festival + SummerStarz 8/7");
   assert.equal(count((c) => c.category === "discount"), 4, "Hana bottomless + Moon Bunny + Pooch's first groom + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 13, "dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
@@ -232,6 +236,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     "greenpoint-trash-club",
     "kingsland-wildflowers-festival-2026",
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    "summerstarz-ford-v-ferrari-0807", // "Free SummerStarz Movies" on townsquarebk.org
   ]);
 });
 

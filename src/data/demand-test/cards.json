@@ -3358,6 +3358,48 @@
       "relatedCardIds": [
         "poochs-parlor"
       ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "free": true,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-01",
+      "updatedAt": "2026-08-01",
+      "id": "summerstarz-ford-v-ferrari-0807",
+      "title": "SummerStarz: Ford v Ferrari at Transmitter Park",
+      "kicker": "Free Friday movie on the lawn",
+      "startsAt": "2026-08-07T20:00:00-04:00",
+      "endsAt": "2026-08-07T23:59:00-04:00",
+      "locationName": "WNYC Transmitter Park",
+      "address": "1 Greenpoint Ave",
+      "filters": [
+        "family_kids"
+      ],
+      "summary": "Town Square's series runs every Friday through August 21 — bring a blanket and come early.",
+      "actions": [
+        {
+          "label": "Free tickets",
+          "type": "rsvp",
+          "url": "https://www.townsquarebk.org"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Free SummerStarz Movies",
+          "url": "https://www.townsquarebk.org",
+          "publisher": "Town Square BK",
+          "date": "2026-08-01"
+        }
+      ],
+      "lat": 40.729537,
+      "lng": -73.960287
     }
   ]
 }

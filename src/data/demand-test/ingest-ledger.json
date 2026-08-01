@@ -1040,6 +1040,16 @@
       "id": "https://greenpointfilmfestival.org/",
       "reviewedAt": "2026-08-01",
       "outcome": "Festival's own site registered in the WebFetch allowlist alongside the new card. Not added to ingest-sources.json — a once-a-year event site, not a weekly roster source."
+    },
+    {
+      "id": "https://www.townsquarebk.org#summerstarz-0807",
+      "reviewedAt": "2026-08-01",
+      "outcome": "PR-review follow-up. town-square-bk fetched 'unchanged' so no diff surfaced it, but the standing page's dated list had rolled forward: 'Free SummerStarz Movies / Fridays, July 24th to August 21st, 8 PM / Transmitter Park, BK | 1 Greenpoint Ave' with 'Fri. 8/07 - Ford v Ferrari'. Verified in this run's own snapshot; card summerstarz-ford-v-ferrari-0807 added. LESSON: a standing page whose content rolls forward by date is invisible to the fetch-diff — the previous instance (summerstarz-michael-0731) expired the same morning, so the series silently left the map. Series continues 8/14 (Project Hail Mary) and 8/21 (Zootopia 2), both outside this window."
+    },
+    {
+      "id": "bcc-stretchy-knits-0804",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Proposed by a sibling run as missing; NOT added — it is the same class already carded here as bcc-knits-leggings-0804 (identical booking URL and 8/4 6:30pm start), just a different id. Adding it would have duplicated the workshop on the map."
     }
   ],
   "senderRegistry": [
