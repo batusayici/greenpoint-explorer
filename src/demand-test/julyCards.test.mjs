@@ -131,23 +131,28 @@ test("seed has exactly 71 cards across the six layers", () => {
   // the venue roster never carries (August G-train weekend closures, the
   // Transmitter Park restaurant + marina license), and Scrappleland's two
   // standing club nights off its own calendar. 75 → 80.
-  assert.equal(seed.cards.length, 80);
+  // 2026-08-01 second expiry pass: this refresh sat unmerged past midnight, so
+  // its own Jul 31 events aged out — 8 removed (Troost, Eavesdrop, Good Room,
+  // the GCC Friday showcases, the Friday library block, SummerStarz: Michael,
+  // Acme's Fish Friday, BCC's 90's crafty hour). 80 → 72. Re-run rather than
+  // shipped stale: merging must not put past events back on the map.
+  assert.equal(seed.cards.length, 72);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 24, "22 + August G closures + Transmitter Park marina");
-  assert.equal(count((c) => c.category === "event"), 29, "26 post-expiry + Film Festival + Scrappleland backgammon + Scrappleland pinball league");
+  assert.equal(count((c) => c.category === "event"), 21, "29 less the eight Jul 31 events that aged out overnight");
   assert.equal(count((c) => c.category === "discount"), 5, "Pooch's first-groom + Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 14, "12 + August G closures + Transmitter Park marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 16, "post-expiry gig set + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
+  assert.equal(count((c) => c.filters.includes("live_music")), 13, "post-expiry gig set + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
   assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
-  // Refreshed 2026-07-31; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-07-31T00:00:00-04:00");
+  // Refreshed 2026-08-01; recurring series carry their series end date.
+  const refreshDay = Date.parse("2026-08-01T00:00:00-04:00");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
-    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-07-31 refresh`);
+    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-08-01 refresh`);
   }
 });
 
@@ -217,12 +222,11 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   // 2026-07-31: the Jul 27–30 library blocks and Brew Inn trivia expired out.
+  // 2026-08-01: the Friday library block and SummerStarz: Michael followed.
   assert.deepEqual(free, [
     "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
     "greenpoint-trash-club",
     "kingsland-wildflowers-festival-2026",
-    "library-friday-programs-0731",
-    "summerstarz-michael-0731",
   ]);
 });
 
@@ -432,7 +436,8 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // run pruned the Jul 27–30 nights out of their venues' link lists (the
   // expiry script drops dangling refs), leaving GCC with its two live
   // showcases and Film Noir with the support card.
-  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 2);
+  // 2026-08-01: the Friday showcases aged out too, leaving the Saturday one.
+  assert.equal(byId("greenpoint-comedy-club").relatedCardIds.length, 1);
   assert.deepEqual(byId("film-noir-cinema").relatedCardIds, ["film-noir-support"]);
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
   // Venue ↔ its standing club nights (2026-07-31): Scrappleland's calendar

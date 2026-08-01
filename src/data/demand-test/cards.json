@@ -999,7 +999,6 @@
       "updatedAt": "2026-07-25",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "gcc-friday-showcases-0731",
         "gcc-saturday-showcase-0801"
       ],
       "lat": 40.729567,
@@ -1341,9 +1340,6 @@
       "trustRisk": "low",
       "createdAt": "2026-07-16",
       "updatedAt": "2026-07-25",
-      "relatedCardIds": [
-        "library-friday-programs-0731"
-      ],
       "lat": 40.72606,
       "lng": -73.950709
     },
@@ -1553,47 +1549,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-27",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-07-27"
-        }
-      ],
-      "id": "troost-dj-deridac-0731",
-      "title": "DJ Deridàc at Troost",
-      "kicker": "Friday night DJ set",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "DJ Deridàc takes the decks at the Manhattan Avenue bar — details on the calendar.",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "startsAt": "2026-07-31T00:00:00-04:00"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
       "updatedAt": "2026-07-25",
       "locationName": "Troost",
       "address": "1011 Manhattan Ave",
@@ -1738,47 +1693,6 @@
           "date": "2026-07-25"
         }
       ],
-      "id": "eavesdrop-arjun-shah-0731",
-      "title": "Arjun Shah at Eavesdrop",
-      "kicker": "Late-night selector session",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "Arjun Shah plays a late session at the Manhattan Avenue listening bar.",
-      "lat": 40.724894,
-      "lng": -73.951181,
-      "startsAt": "2026-07-31T00:00:00-04:00"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "(eavesdrop)",
-      "address": "674 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-07-25"
-        }
-      ],
       "id": "eavesdrop-very-j-0801",
       "title": "Very J at Eavesdrop",
       "kicker": "Very J closes out the week",
@@ -1820,47 +1734,6 @@
           "date": "2026-07-25"
         }
       ],
-      "id": "good-room-matthew-dear-0731",
-      "title": "Matthew Dear at Good Room",
-      "kicker": "Matthew Dear, all night",
-      "startsAt": "2026-07-31T19:00:00-04:00",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "Matthew Dear headlines with Arvin T and 4AM NYC.",
-      "lat": 40.726909,
-      "lng": -73.95281
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Tickets & info",
-          "type": "rsvp",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room on DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-07-25"
-        }
-      ],
       "id": "good-room-baltra-0801",
       "title": "Baltra at Good Room",
       "kicker": "Baltra & friends all night",
@@ -1869,50 +1742,6 @@
       "summary": "Baltra, Cosmo, and Gianna and Fabiola play all night.",
       "lat": 40.726909,
       "lng": -73.95281
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "actions": [
-        {
-          "label": "Get tickets",
-          "type": "rsvp",
-          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "GCC ticketing",
-          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "gcc-friday-showcases-0731",
-      "title": "Friday showcases at Greenpoint Comedy Club",
-      "kicker": "Two Friday shows: 8 & 10pm",
-      "startsAt": "2026-07-31T20:00:00-04:00",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "The Friday Showcase at 8, and the (Later) Friday Showcase at 10.",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ]
     },
     {
       "category": "event",
@@ -2168,135 +1997,6 @@
       ],
       "lat": 40.736437,
       "lng": -73.951511
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library calendar",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "library-friday-programs-0731",
-      "title": "Friday at Greenpoint Library",
-      "kicker": "Garden mornings for little ones",
-      "startsAt": "2026-07-31T10:30:00-04:00",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "filters": [
-        "family_kids"
-      ],
-      "summary": "Sensory Garden Hour for ages 0–5 at 10:30, and drop-in garden-educator hours 3–4 on the demonstration roof.",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "lat": 40.72606,
-      "lng": -73.950709
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "id": "summerstarz-michael-0731",
-      "title": "SummerStarz: Michael at Transmitter Park",
-      "kicker": "Free Friday movie on the lawn",
-      "startsAt": "2026-07-31T20:00:00-04:00",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "locationName": "WNYC Transmitter Park",
-      "address": "1 Greenpoint Ave",
-      "filters": [
-        "family_kids"
-      ],
-      "summary": "Town Square's free outdoor movie series continues with Michael — bring a blanket.",
-      "actions": [
-        {
-          "label": "Free tickets",
-          "type": "rsvp",
-          "url": "https://www.townsquarebk.org"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Town Square BK",
-          "url": "https://www.townsquarebk.org",
-          "publisher": "Town Square BK",
-          "date": "2026-07-25"
-        }
-      ],
-      "lat": 40.729537,
-      "lng": -73.960287
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "id": "acme-fish-friday-0731",
-      "title": "Fish Friday at Acme Smoked Fish",
-      "kicker": "Smoked-fish pickup, Fridays only",
-      "startsAt": "2026-07-31T08:00:00-04:00",
-      "endsAt": "2026-07-31T13:00:00-04:00",
-      "locationName": "Acme Smoked Fish",
-      "address": "30 Gem St",
-      "geocodeQuery": "30 Gem Street, Brooklyn, NY",
-      "filters": [
-        "food_drink"
-      ],
-      "summary": "The Gem Street smokehouse opens its doors to the neighborhood — pre-orders close at 11:30am that morning.",
-      "actions": [
-        {
-          "label": "Pre-order",
-          "type": "order",
-          "url": "https://acmesmokedfish.com/collections/fish-friday"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Acme Fish Friday",
-          "url": "https://acmesmokedfish.com/collections/fish-friday",
-          "publisher": "Acme Smoked Fish",
-          "date": "2026-07-25"
-        }
-      ],
-      "lat": 40.725409,
-      "lng": -73.956615
     },
     {
       "category": "new_business",
@@ -2680,48 +2380,6 @@
       ],
       "lat": 40.732156,
       "lng": -73.955048
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-24)",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "bcc-crafty-hour-90s-0731",
-      "title": "Crafty Hour: 90's Nostalgia Night",
-      "kicker": "$25 crafts + 90's nostalgia",
-      "startsAt": "2026-07-31T18:30:00-04:00",
-      "endsAt": "2026-07-31T23:59:00-04:00",
-      "summary": "The studio's casual $25 evening craft session goes full throwback.",
-      "lat": 40.730461,
-      "lng": -73.953114,
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/collections/summer-crafty-hours/products/crafty-hour-90s-nostalgia-night"
-        }
-      ]
     },
     {
       "category": "event",
