@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-07-27T14:30:00-04:00",
+  "lastRunAt": "2026-08-01T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -945,6 +945,81 @@
       "id": "https://ma.to/event/botanic-drawing-workshop-30-jul-2026",
       "reviewedAt": "2026-07-30",
       "outcome": "Batu found this same-day Flower Cat workshop (7-9pm) on ma.to; not in our data. Checked flowercat.nyc/events (stale, no future listings — normal for them) and their Instagram bio (no post content visible logged out). Card added (flower-cat-botanic-drawing-0730), sourced to the ma.to listing itself since no venue-channel confirmation exists — this is a one-off attribution, not a registration of ma.to as a roster source. Root cause logged on the Flower Cat senderRegistry entry: their real channel is Instagram, which we don't crawl, so same-day one-offs like this will keep getting missed until that's addressed."
+    },
+    {
+      "id": "https://acmesmokedfish.com/collections/fish-friday",
+      "reviewedAt": "2026-08-01",
+      "outcome": "weekly re-pin per source note — page still states \"every Friday\", 8AM-1PM, orders close 11:30AM; card acme-fish-friday-0807 added (0731 expired out). Diff itself was product/review noise."
+    },
+    {
+      "id": "https://gogreenbk.org/event/mcgolrick-bird-club-2026/",
+      "reviewedAt": "2026-08-01",
+      "outcome": "front-page diff surfaced McGolrick Bird Club; detail page gives every Saturday 9-10 AM, McGolrick Park at the Russell St corner, free — card mcgolrick-bird-club-0808 added (next Saturday, recurring). Organizer substack (mcgolrickbirdclub@substack.com) still has no posts, so the Go Green Brooklyn listing is the only source."
+    },
+    {
+      "id": "https://gogreenbk.org/#its-my-park-aug-2026",
+      "reviewedAt": "2026-08-01",
+      "outcome": "It's My Park in Brooklyn (Aug 2026) — listing says \"Many venues\", no Greenpoint park named; skipped, nothing to pin. The other 7 diff items are Brooklyn Bridge Park / Domino / Prospect Park."
+    },
+    {
+      "id": "https://scrappleland.com",
+      "reviewedAt": "2026-08-01",
+      "outcome": "ScrappleLeague season confirmed running — calendar lists Tuesday Backgammon Club and Wednesday Pinball League 8-10pm; cards scrappleland-backgammon-0804 and scrappleland-pinball-league-0805 added, reciprocal links to the venue card."
+    },
+    {
+      "id": "gmail:19fb969c748d5cbe",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Brooklyn Craft Company newsletter 7/31 — +2 in-window Greenpoint workshops (stretchy knits 8/4 6:30pm, Crafty Hour Tie Dye 8/7 6:30pm $25). 8/1 Floral Embroidery and 8/2 Pietra Shorts already carded; Lower Manhattan sessions and undated Greenpoint/LM joint listings skipped; 8/14-8/29 items out of window."
+    },
+    {
+      "id": "gmail:19fba32f9fb89955",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Greenpointers \"Greenpoint This Week\" 7/31 — +1 news card (Transmitter Park restaurant/marina, sourced to the 7/28 story and the 7/31 opposition follow-up). G-train line said \"service changes every weekend this August\", which conflicts with our MTA-sourced timeline (Jul 31-Aug 3 and Aug 14-17 stay south of Bedford-Nostrand); kept the MTA primary, no edit. Williamsburg items (Lamonte, Lidl, stabbing) skipped; Film Festival has no dates yet; Barcade closing has no confirmed Greenpoint address."
+    },
+    {
+      "id": "gmail:19fb45afb14754f2",
+      "reviewedAt": "2026-08-01",
+      "outcome": "NYC Parks \"This Week in Parks\" Jul 30-Aug 5 — no Greenpoint park items; nothing carded."
+    },
+    {
+      "id": "gmail:19fb84885c8a5f88",
+      "reviewedAt": "2026-08-01",
+      "outcome": "GUNK 3rd birthday lineup drop — party has no venue named anywhere in the email, so no Greenpoint confirmation; rest is Ridgewood. Skipped."
+    },
+    {
+      "id": "gmail:19fb51342fd4a3c8",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Bios Apothecary \"Design your Signature Scent\" 7/30 — standing custom-perfume offer, no date, no discount, no deadline. Not cardable; the standing 10%-first-order deal card already covers this sender."
+    },
+    {
+      "id": "gmail:19fb47e94c8a7f70",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Dandelion Wine tasting 7/30 6-8pm — same-day announcement, already past at run time. Nothing to card (the known same-day-only gap)."
+    },
+    {
+      "id": "gmail:19fb465d49c27fb2",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Bushwick Inlet Park summer concert 7/30 POSTPONED, no new date given. Nothing carded, nothing to update (no BIP concert card was live)."
+    },
+    {
+      "id": "gmail:19fb9604c2da3102",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Discovery pass hit: pr@takusando.com (Taku Sando) — new menu item, not cardable. Sender NOT added to the registry: needs a Greenpoint address + locally-owned check by Batu first."
+    },
+    {
+      "id": "https://www.greenpointstar.com/",
+      "reviewedAt": "2026-08-01",
+      "outcome": "First-ever snapshot. Front page is carrying Jan/Feb 2026 articles — nothing inside the Aug 1-11 window. The Monitor Point piece it does carry (Restler opposition, Feb) is superseded by our monitor-point-approved card. Baseline marked; re-check next run."
+    },
+    {
+      "id": "https://donyc.com/venues/good-room",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Diff = Aug 28/29 and Oct 9 gigs — all outside the 10-day window. Nothing carded."
+    },
+    {
+      "id": "poochs-parlor-first-groom",
+      "reviewedAt": "2026-08-01",
+      "outcome": "FLAGGED by expiry (recurring deal past verified-through 2026-07-29). greenpointers.com unreachable this run (browser-fetch sources all failed), so it could not be re-verified; the identical offer is live on poochs-first-visit-20 (verified through 2026-08-02). Deleted per the re-verify-or-drop rule."
     }
   ],
   "senderRegistry": [

@@ -2603,5 +2603,30 @@
         "-73.9424787"
       ]
     }
+  },
+  "Monsignor McGolrick Park, Brooklyn, NY": {
+    "query": "Monsignor McGolrick Park, Brooklyn, NY",
+    "fetchedAt": "2026-08-01T13:24:56.868Z",
+    "hit": {
+      "place_id": 358364173,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 33819642,
+      "lat": "40.7244575",
+      "lon": "-73.9433612",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.41006843495098233,
+      "addresstype": "park",
+      "name": "Monsignor McGolrick Park",
+      "display_name": "Monsignor McGolrick Park, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7232074",
+        "40.7256970",
+        "-73.9443678",
+        "-73.9423566"
+      ]
+    }
   }
 }
