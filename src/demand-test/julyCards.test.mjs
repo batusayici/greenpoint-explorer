@@ -133,12 +133,19 @@ test("seed has exactly 71 cards across the six layers", () => {
   // −1: poochs-parlor-first-groom, a FLAGGED recurring deal past its
   // verified-through date whose source was unreachable this run and which
   // duplicated the live poochs-first-visit-20 card. 67 − 1 + 7 = 73.
-  assert.equal(seed.cards.length, 73);
+  // 2026-08-01, same run, after PR review: greenpointers.com turned out to be
+  // reachable through its public WP REST API even while the HTML page and the
+  // browser fetch path were blocked. Re-verifying at the articles themselves
+  // added the Greenpoint Film Festival (Aug 5–9, 259 Green St) and reversed
+  // the Pooch's call — the offer is live, so the richer article-sourced card
+  // is restored and the thin duplicate (`poochs-first-visit-20`, homepage URL
+  // only) is dropped instead. 73 + 1 festival + 1 restored − 1 duplicate = 74.
+  assert.equal(seed.cards.length, 74);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 24, "18 post-expiry + Acme 8/7 + Bird Club + 2 Scrappleland weeklies + 2 BCC workshops");
-  assert.equal(count((c) => c.category === "discount"), 4, "Hana bottomless + Moon Bunny + Pooch's Greenpointers 20% + Bios first-order");
+  assert.equal(count((c) => c.category === "event"), 25, "18 post-expiry + Acme 8/7 + Bird Club + 2 Scrappleland weeklies + 2 BCC workshops + Film Festival");
+  assert.equal(count((c) => c.category === "discount"), 4, "Hana bottomless + Moon Bunny + Pooch's first groom + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 13, "dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
   assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
@@ -167,11 +174,13 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // 2026-07-25: the Greenpoint Fish oyster HH deleted (past verified-through,
   // site unreachable for re-verification). Three recurring standing offers
   // (verified-through dated) + one dated deal (Moon Bunny, real 8/15 deadline).
-  // 2026-08-01: poochs-parlor-first-groom deleted the same way — FLAGGED past
-  // its verified-through date, greenpointers.com unreachable this run, and the
-  // identical offer already lives on poochs-first-visit-20.
+  // 2026-08-01: the Pooch's pair resolved to ONE card. The 6/1 article still
+  // states the offer ("Mention Greenpointers for 20% off your first
+  // appointment"), re-verified via the WP REST API, so poochs-parlor-first-groom
+  // keeps its slot with verified-through bumped to 8/8; poochs-first-visit-20
+  // was the duplicate and went instead — it cited only the homepage.
   assert.equal(seed.cards.find((c) => c.id === "hana-bottomless-makgeolli").recurring, true);
-  assert.equal(seed.cards.find((c) => c.id === "poochs-first-visit-20").recurring, true);
+  assert.equal(seed.cards.find((c) => c.id === "poochs-parlor-first-groom").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "bios-apothecary-first-order").recurring, true);
   assert.equal(seed.cards.find((c) => c.id === "moon-bunny-back-to-school").recurring, undefined, "dated deal must NOT carry recurring");
 });
@@ -350,7 +359,7 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "flower-cat-subscription",
     "hana-bottomless-makgeolli",
     "moon-bunny-back-to-school",
-    "poochs-first-visit-20",
+    "poochs-parlor-first-groom",
   ]);
 });
 

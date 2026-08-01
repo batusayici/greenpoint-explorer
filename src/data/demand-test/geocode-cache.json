@@ -2628,5 +2628,30 @@
         "-73.9423566"
       ]
     }
+  },
+  "259 Green Street, Brooklyn, NY": {
+    "query": "259 Green Street, Brooklyn, NY",
+    "fetchedAt": "2026-08-01T14:33:00.837Z",
+    "hit": {
+      "place_id": 359965525,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280142895,
+      "lat": "40.7343274",
+      "lon": "-73.9502418",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "259, Green Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7342487",
+        "40.7344061",
+        "-73.9503979",
+        "-73.9500857"
+      ]
+    }
   }
 }

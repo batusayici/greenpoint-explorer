@@ -1020,6 +1020,26 @@
       "id": "poochs-parlor-first-groom",
       "reviewedAt": "2026-08-01",
       "outcome": "FLAGGED by expiry (recurring deal past verified-through 2026-07-29). greenpointers.com unreachable this run (browser-fetch sources all failed), so it could not be re-verified; the identical offer is live on poochs-first-visit-20 (verified through 2026-08-02). Deleted per the re-verify-or-drop rule."
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/29/greenpoint-film-festival-returns-for-its-15th-anniversary/",
+      "reviewedAt": "2026-08-01",
+      "outcome": "PR-review follow-up. greenpointers.com is reachable through its public WP REST API (/wp-json/wp/v2/posts?slug=…, HTTP 200 with full article bodies) even while the HTML page 403s and the Playwright path resets. Article gives Aug 5-9 at Broadway Stages, 259 Green St, 130 films, Green Pass $150 / Day $50 / Program $20 — card greenpoint-film-festival-0805 added. Earlier skip (\"no dates yet\") was based on the roundup mention only."
+    },
+    {
+      "id": "https://greenpointers.com/2026/07/28/expect-g-train-service-changes-every-weekend-this-august/",
+      "reviewedAt": "2026-08-01",
+      "outcome": "No conflict with the MTA timeline after all — the article splits the month: Jul 31-Aug 3 and Aug 14-17 are Hoyt-Schermerhorn↔Church Av (south, Greenpoint unaffected), while Aug 7-10, Aug 21-24 and weeknights Aug 17-21 are Court Sq↔Bedford-Nostrand (both Greenpoint stations). Our card carried only Aug 7-10; added the two missing Greenpoint-closing windows to the timeline and registered the article as a sourceLink."
+    },
+    {
+      "id": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Re-verified via the REST API: the article still states \"Mention Greenpointers for 20% off your first appointment at Pooch's Parlor\" (128 India St). Offer is live, so the earlier delete is reversed — poochs-parlor-first-groom restored with verified-through bumped to 2026-08-08, and the thin duplicate poochs-first-visit-20 (homepage URL, no article permalink) deleted instead. One card per offer."
+    },
+    {
+      "id": "https://greenpointfilmfestival.org/",
+      "reviewedAt": "2026-08-01",
+      "outcome": "Festival's own site registered in the WebFetch allowlist alongside the new card. Not added to ingest-sources.json — a once-a-year event site, not a weekly roster source."
     }
   ],
   "senderRegistry": [

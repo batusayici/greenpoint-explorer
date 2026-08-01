@@ -126,7 +126,10 @@
       "trustRisk": "low",
       "createdAt": "2026-07-02",
       "updatedAt": "2026-08-01",
-      "kicker": "Pet grooming, by appointment"
+      "kicker": "Pet grooming, by appointment",
+      "relatedCardIds": [
+        "poochs-parlor-first-groom"
+      ]
     },
     {
       "id": "giggles-and-wiggles",
@@ -393,7 +396,7 @@
       "lat": 40.731352,
       "lng": -73.954259,
       "corridor": "manhattan-ave",
-      "summary": "Track work closes the G between Court Sq and Bedford–Nostrand Avs — Greenpoint Av and Nassau Av included — on the weekends and overnights below. A free T403 shuttle covers the gap, and the shops and bars on this map stay open through it.",
+      "summary": "Signal work closes the G between Court Sq and Bedford–Nostrand Avs — Greenpoint Av and Nassau Av included. The free T403 bus covers the gap; shops on this map trade right through it.",
       "whyItMatters": "Closure weekends are when local spending decides which storefronts make it — this card tracks each window as it's confirmed.",
       "audience": [
         "resident",
@@ -427,6 +430,16 @@
           "date": "2026-08-07",
           "title": "Next weekend closure (MTA-confirmed)",
           "summary": "No G between Court Sq and Bedford–Nostrand Avs, Fri Aug 7 9:45 PM to Mon Aug 10 5 AM — Greenpoint Av and Nassau Av closed, free T403 shuttle. Other August G work (Jul 31–Aug 3, Aug 14–17) stays south of Bedford–Nostrand and does not close Greenpoint stops."
+        },
+        {
+          "date": "2026-08-17",
+          "title": "Weeknight closures",
+          "summary": "No G between Court Sq and Bedford–Nostrand Avs on weeknights Aug 17–21 — Greenpoint Av and Nassau Av closed."
+        },
+        {
+          "date": "2026-08-21",
+          "title": "Weekend closure",
+          "summary": "No G between Court Sq and Bedford–Nostrand Avs, Aug 21–24 — Greenpoint Av and Nassau Av closed."
         }
       ],
       "relatedCardIds": [
@@ -453,6 +466,12 @@
           "title": "Shop Small Greenpoint — July 2026 newsletter",
           "publisher": "Shop Small Greenpoint",
           "date": "2026-07-01"
+        },
+        {
+          "title": "Expect G Train Service Changes Every Weekend This August",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/28/expect-g-train-service-changes-every-weekend-this-august/",
+          "date": "2026-07-28"
         }
       ],
       "evidenceStrength": "high",
@@ -2286,50 +2305,6 @@
       "lng": -73.952327
     },
     {
-      "category": "discount",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "id": "poochs-first-visit-20",
-      "title": "20% off your pup's first groom",
-      "kicker": "Mention Greenpointers, save 20%",
-      "recurring": true,
-      "endsAt": "2026-08-02T23:59:00-04:00",
-      "locationName": "Pooch's Parlor",
-      "address": "128 India St",
-      "filters": [
-        "deals_memberships"
-      ],
-      "summary": "The India Street grooming salon takes 20% off first visits when you mention Greenpointers.",
-      "actions": [
-        {
-          "label": "Book a groom",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers (sponsored)",
-          "url": "https://greenpointers.com/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-25"
-        }
-      ],
-      "relatedCardIds": [
-        "poochs-parlor"
-      ],
-      "lat": 40.732156,
-      "lng": -73.955048
-    },
-    {
       "category": "event",
       "audience": [
         "resident"
@@ -3291,6 +3266,98 @@
       "updatedAt": "2026-08-01",
       "lat": 40.729855,
       "lng": -73.960729
+    },
+    {
+      "id": "greenpoint-film-festival-0805",
+      "category": "event",
+      "title": "Greenpoint Film Festival, 15th anniversary",
+      "kicker": "130 films in a Broadway Stages soundstage",
+      "startsAt": "2026-08-05T00:00:00-04:00",
+      "endsAt": "2026-08-09T23:59:00-04:00",
+      "locationName": "Broadway Stages",
+      "address": "259 Green St, Brooklyn, NY 11222",
+      "geocodeQuery": "259 Green Street, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "summary": "Passes run $150 for the whole run, $50 a day, $20 for one short-plus-feature program. Nearly every screening ends with a filmmaker Q&A.",
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "free": false,
+      "actions": [
+        {
+          "label": "Festival program",
+          "type": "learn_more",
+          "url": "https://greenpointfilmfestival.org/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Film Festival Returns for Its 15th Anniversary",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/07/29/greenpoint-film-festival-returns-for-its-15th-anniversary/",
+          "date": "2026-07-29"
+        }
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-01",
+      "updatedAt": "2026-08-01",
+      "lat": 40.734327,
+      "lng": -73.950242
+    },
+    {
+      "id": "poochs-parlor-first-groom",
+      "category": "discount",
+      "sourceCampaign": "greenpointers_week_2026_07_16",
+      "title": "20% off a first groom at Pooch's Parlor",
+      "kicker": "Mention Greenpointers for 20% off",
+      "locationName": "Pooch's Parlor",
+      "address": "128 India St, Brooklyn, NY 11222",
+      "summary": "Gabriella Firek opened the India Street salon in May; the vibe lands somewhere between a tattoo shop and a dive bar.",
+      "filters": [
+        "deals_memberships"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "corridor": null,
+      "recurring": true,
+      "endsAt": "2026-08-08T23:59:00-04:00",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Pup need a summer cut? Get 'em groomed at Pooch's Parlor (sponsored)",
+          "publisher": "Greenpointers",
+          "url": "https://greenpointers.com/2026/06/01/poochs-parlor-greenpoint-dog-grooming/",
+          "date": "2026-06-01"
+        }
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-15",
+      "updatedAt": "2026-08-01",
+      "lat": 40.732156,
+      "lng": -73.955048,
+      "relatedCardIds": [
+        "poochs-parlor"
+      ]
     }
   ]
 }
