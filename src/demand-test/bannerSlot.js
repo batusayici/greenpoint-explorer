@@ -4,10 +4,12 @@
 // changes your day) > community alert (existential, but the ask keeps) >
 // stale-data status (L11, 2026-07-28 — "verified" must degrade honestly, so
 // a stale feed says so instead of quietly lying about being current; appears
-// ONLY when freshness fails, keeping silence the default) > distant-closure
-// FYI chip > empty. The feed pin for a community alert's card is independent
-// of this slot: the campaign stays elevated in the feed even while a closure
-// weekend holds the banner.
+// ONLY when freshness fails, keeping silence the default) > this-week
+// closure FYI chip > empty. Since the 2026-08-02 charter, "distant" means
+// inside the 7-day horizon but outside 48h — anything further out is null
+// before it ever reaches this ladder. The feed pin for a community alert's
+// card is independent of this slot: the campaign stays elevated in the feed
+// even while a closure weekend holds the banner.
 export function bannerSlot(gtrainPhase, communityAlert, freshness) {
   if (gtrainPhase === "near" || gtrainPhase === "active") {
     return { kind: "gtrain", phase: gtrainPhase };

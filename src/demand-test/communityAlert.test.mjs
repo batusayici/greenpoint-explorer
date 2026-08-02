@@ -11,6 +11,7 @@ const CARDS_BY_ID = new Map(seed.cards.map((c) => [c.id, c]));
 
 const A = {
   cardId: "film-noir-support",
+  sourcedAt: "2026-07-26T00:00:00-04:00",
   expiresAt: "2026-08-24T00:00:00-04:00",
 };
 
@@ -21,6 +22,15 @@ test("before expiry, with the card in the deck → the alert shows", () => {
 test("at and after expiresAt → null (alert hides itself, gtrainBanner lesson)", () => {
   assert.equal(activeCommunityAlert(new Date("2026-08-24T00:00:00-04:00"), CARDS_BY_ID, A), null);
   assert.equal(activeCommunityAlert(new Date("2026-09-01T09:00:00-04:00"), CARDS_BY_ID, A), null);
+});
+
+// Banner charter (2026-08-02): 21-day slot tenure. sourcedAt Jul 26 → the
+// slot frees at Aug 16 even though the re-verify deadline runs to Aug 24;
+// only a NEW sourced development (fresh sourcedAt) restarts the clock.
+test("past sourcedAt + 21 days → null (tenure cap beats an unexpired re-verify)", () => {
+  assert.equal(activeCommunityAlert(new Date("2026-08-15T12:00:00-04:00"), CARDS_BY_ID, A), A);
+  assert.equal(activeCommunityAlert(new Date("2026-08-16T00:00:00-04:00"), CARDS_BY_ID, A), null);
+  assert.equal(activeCommunityAlert(new Date("2026-08-20T12:00:00-04:00"), CARDS_BY_ID, A), null);
 });
 
 test("card gone from the deck → null (banner must never point nowhere)", () => {

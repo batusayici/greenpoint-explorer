@@ -12,12 +12,21 @@ export const COMMUNITY_ALERT = Object.freeze({
   headline: "Keep Film Noir Cinema alive",
   detail: "The indie cinema is asking the neighborhood for help",
   cta: "See how",
-  sourcedAt: "2026-07-26",
+  sourcedAt: "2026-07-26T00:00:00-04:00",
   expiresAt: "2026-08-24T00:00:00-04:00",
 });
 
+// Slot tenure cap (banner charter, DECISION_LOG 2026-08-02): an alert may
+// hold the banner slot at most 21 days from sourcedAt before banner
+// blindness sets in — after that the card still lives in the feed, but the
+// slot frees up. A NEW sourced development (not a mere re-verify) resets the
+// clock by resetting sourcedAt.
+const SLOT_TENURE_MS = 21 * 86400000;
+
 export function activeCommunityAlert(now, cardsById, alert = COMMUNITY_ALERT) {
-  if (now.getTime() >= Date.parse(alert.expiresAt)) return null;
+  const t = now.getTime();
+  if (t >= Date.parse(alert.expiresAt)) return null;
+  if (t >= Date.parse(alert.sourcedAt) + SLOT_TENURE_MS) return null;
   if (!cardsById.has(alert.cardId)) return null;
   return alert;
 }

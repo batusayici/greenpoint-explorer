@@ -2,7 +2,7 @@ import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/cards.json";
 import { matchesFilter, sortTodayFirst, isExpiredCard, isActiveOn, groupByDay, liveFilterCounts } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
-import { GTRAIN_WINDOW, bannerPhase } from "./gtrainBanner.js";
+import { nextGtrainWindow, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
 import { bannerSlot } from "./bannerSlot.js";
 import { assessFreshness } from "./freshness.js";
@@ -97,8 +97,10 @@ export default function JulyApp() {
   }, []);
 
   // Computed per render, not memoized — the banner must flip phase on the
-  // day boundaries even in a long-lived tab.
-  const gtrainPhase = bannerPhase(new Date());
+  // day boundaries even in a long-lived tab. Multi-window since 2026-08-02:
+  // the slot tracks the next sourced closure, never the whole schedule.
+  const gtrainWindow = nextGtrainWindow(new Date());
+  const gtrainPhase = bannerPhase(new Date(), gtrainWindow);
   const communityAlert = activeCommunityAlert(new Date(), CARDS_BY_ID);
   // L11 (2026-07-28): staleness computed per render like the banner phase —
   // the stamp is written at build time from the ingest ledger, so a site
@@ -216,7 +218,7 @@ export default function JulyApp() {
         <div className="july-gbanner july-gbanner--compact" role="status">
           <span className="july-gbadge">G</span>
           <span>
-            <strong>G closure {GTRAIN_WINDOW.shortDates}</strong> &middot; {GTRAIN_WINDOW.shuttle}
+            <strong>G closure {gtrainWindow.shortDates}</strong> &middot; {gtrainWindow.shuttle}
           </span>
         </div>
       )}
@@ -236,7 +238,7 @@ export default function JulyApp() {
           <span className="july-gbadge">G</span>
           <span>
             <strong>{slot.phase === "active" ? "No G trains" : "Next G closure"}</strong>{" "}
-            {GTRAIN_WINDOW.dates} &middot; {GTRAIN_WINDOW.stops} &middot; {GTRAIN_WINDOW.shuttle}
+            {gtrainWindow.dates} &middot; {gtrainWindow.stops} &middot; {gtrainWindow.shuttle}
           </span>
         </div>
       )}

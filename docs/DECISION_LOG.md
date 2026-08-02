@@ -4,6 +4,22 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-02 — Banner charter: horizon, ramp, dwell, tenure, update discipline
+
+Decision (Batu): the banner slot gets a derived rule set instead of per-incident judgment calls. Trigger: the Aug 2 audit found the single-window G banner would go dark after Aug 10 while two more MTA-confirmed Greenpoint closures (Aug 17–21 overnights, Aug 21–24 weekend) followed — and the "distant" chip would happily advertise a closure a month out ("no need to show G disruptions two weeks ahead").
+
+The charter, generated from what the slot is for — **the one message that changes how you use the neighborhood in a horizon you can act on:**
+
+1. **Occupancy** — one banner, ever (keeps 2026-07-26). Precedence unchanged: live/imminent disruption > community alert > stale-data honesty > this-week FYI chip > empty. Silence is the default state.
+2. **Lead time** — nothing surfaces more than **7 days** before its window. Inside the horizon, prominence ramps with proximity (re-cut of UX eval F24-A): compact chip ≤7d, **full banner ≤48h** (when weekend plans get made), alert style while live.
+3. **Dwell** — a disruption banner lives exactly as long as its sourced window: drops at `endsAt`, no afterglow, then **rolls to the next window**, re-gated by rule 2. The slot shows only the next window — the card holds the full schedule; the slot is never a schedule dump.
+4. **Update discipline** — windows enter the data only from the primary source (MTA), and the weekly ingest re-verifies the next window before it can surface. With a 7-day horizon and weekly ingest, every window gets a fresh source check before going live. MTA 403s scripted fetches, so this check is a manual/browser step in the ingest ritual, not a roster URL.
+5. **Community-alert tenure** — an alert holds the slot at most **21 days from `sourcedAt`** (banner blindness), then drops to its feed card even if its re-verify deadline hasn't passed. Only a *new sourced development* (fresh `sourcedAt`), not a mere re-verify, resets the clock. Film Noir: slot until Aug 16, card stays.
+
+Encoded in `gtrainBanner.js` (multi-window `GTRAIN_WINDOWS` + `nextGtrainWindow`, phase thresholds), `communityAlert.js` (tenure cap), `bannerSlot.js` (comment); Aug 17–21 and Aug 21–24 added to the `g-train-closures` card timeline from the MTA G-line 2026 page (updated Jul 23, sourced Aug 2).
+
+Owner: Batu.
+
 ## 2026-07-30 — "Connected" is now "Related", and shows exactly one card
 
 Decision (Batu): reword the label and constrain it to the single most relevant card.
