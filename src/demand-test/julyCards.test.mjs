@@ -144,11 +144,13 @@ test("seed has exactly 71 cards across the six layers", () => {
   // `unchanged`, so no diff surfaced it — the page never changes, its dated
   // list simply rolls forward, and the previous instance had just expired out.
   // A standing-page series needs re-reading on the date, not on the diff. 75.
-  assert.equal(seed.cards.length, 75);
+  // 2026-08-02 (PR #14 port): +5 still-live Greenpointers cards the Aug 1
+  // daily never saw (its branch was cut before the Wednesday pull merged). 80.
+  assert.equal(seed.cards.length, 80);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 26, "18 post-expiry + Acme 8/7 + Bird Club + 2 Scrappleland weeklies + 2 BCC workshops + Film Festival + SummerStarz 8/7");
+  assert.equal(count((c) => c.category === "event"), 31, "26 per the Aug 1 daily + the 5 ported PR #14 Greenpointers events (all Aug 2-5)");
   assert.equal(count((c) => c.category === "discount"), 4, "Hana bottomless + Moon Bunny + Pooch's first groom + Bios first-order");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 13, "dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news");
@@ -232,10 +234,13 @@ test("every action is tappable — url, share, internal filter, or derivable dir
 test("free-ness is designated only where the source states it (tester feedback #2)", () => {
   const free = seed.cards.filter((c) => c.free === true).map((c) => c.id).sort();
   assert.deepEqual(free, [
+    "dreams-on-command-artist-talk-0802", // PR #14: Greenpointers roundup line says "Free"
     "gcc-artists-beers-0802", // "Free Film Screenings" in the ticket listing's own title
     "greenpoint-trash-club",
     "kingsland-wildflowers-festival-2026",
+    "library-tuesday-programs-0804", // PR #14: library programs, "Free" per the branch's sourcing
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    "scrappleland-topperz-pinball-0802", // PR #14: Greenpointers roundup line says "Free"
     "summerstarz-ford-v-ferrari-0807", // "Free SummerStarz Movies" on townsquarebk.org
   ]);
 });

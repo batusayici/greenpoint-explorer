@@ -3400,6 +3400,228 @@
       ],
       "lat": 40.729537,
       "lng": -73.960287
+    },
+    {
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "id": "library-tuesday-programs-0804",
+      "title": "Tuesday at Greenpoint Library",
+      "kicker": "Teen crafts and garden hands",
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "free": true,
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave",
+      "lat": 40.72606,
+      "lng": -73.950709,
+      "startsAt": "2026-08-04T15:00:00-04:00",
+      "endsAt": "2026-08-04T23:59:00-04:00",
+      "summary": "The library's teen interns run a DIY bracelet and keychain craft hour for ages 13–19, then Greenhouse Gang takes on up-potting, weeding, and nursery maintenance.",
+      "relatedCardIds": [
+        "greenpoint-library"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        },
+        {
+          "label": "Greenhouse RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/greenhouse-gang-tickets-1987549789925"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
+          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-29"
+        }
+      ]
+    },
+    {
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "id": "scrappleland-topperz-pinball-0802",
+      "title": "Topperz pinball league at Scrappleland",
+      "kicker": "Queer pinball, donations welcome",
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "locationName": "Scrappleland",
+      "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.737671,
+      "lng": -73.955155,
+      "startsAt": "2026-08-02T16:00:00-04:00",
+      "endsAt": "2026-08-02T23:59:00-04:00",
+      "summary": "The Topperz league takes over the arcade floor to play and raise funds for NYC Trans Archive. Free to join.",
+      "relatedCardIds": [
+        "scrappleland"
+      ],
+      "actions": [
+        {
+          "label": "Website",
+          "type": "learn_more",
+          "url": "https://scrappleland.com/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
+          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-29"
+        }
+      ]
+    },
+    {
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "id": "dreams-on-command-artist-talk-0802",
+      "title": "Artist talk at Dreams on Command",
+      "kicker": "Rim Albahrani on her paintings",
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "creator",
+        "visitor"
+      ],
+      "free": true,
+      "locationName": "Dreams on Command",
+      "address": "42 West St, Brooklyn, NY 11222",
+      "lat": 40.728078,
+      "lng": -73.958665,
+      "startsAt": "2026-08-02T12:00:00-04:00",
+      "endsAt": "2026-08-02T23:59:00-04:00",
+      "summary": "The artist behind the gallery's debut exhibit talks with director Marcelo Mayen about her process and the experiences that shape her work. First come, first served.",
+      "relatedCardIds": [
+        "dreams-on-command"
+      ],
+      "actions": [
+        {
+          "label": "More info",
+          "type": "learn_more",
+          "url": "https://www.instagram.com/p/DbUVJXrNTRp/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
+          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-29"
+        }
+      ]
+    },
+    {
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "id": "threes-board-game-speed-dating-0805",
+      "title": "Board game speed dating at Threes",
+      "kicker": "Board games, ages 25–39",
+      "category": "event",
+      "filters": [
+        "food_drink"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "locationName": "Threes Brewing",
+      "address": "113 Franklin St, Brooklyn, NY 11222",
+      "startsAt": "2026-08-05T19:00:00-04:00",
+      "endsAt": "2026-08-05T23:59:00-04:00",
+      "summary": "Sit down with a group of singles at the Franklin Street taproom and roll the dice. From $25.",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/board-game-speed-dating-threes-brewing-greenpoint-nyc-ages-25-39-tickets-1990995210270"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
+          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-29"
+        }
+      ],
+      "lat": 40.73024,
+      "lng": -73.957805
+    },
+    {
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-07-30",
+      "updatedAt": "2026-07-30",
+      "id": "one-day-choir-fast-car-0805",
+      "title": "One-day choir sings 'Fast Car'",
+      "kicker": "No audition or experience needed",
+      "category": "event",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "creator"
+      ],
+      "locationName": "100 Sutton St",
+      "address": "100 Sutton St, Brooklyn, NY 11222",
+      "startsAt": "2026-08-05T19:00:00-04:00",
+      "endsAt": "2026-08-05T23:59:00-04:00",
+      "summary": "Sing Tracy Chapman's \"Fast Car\" in harmony with a room of strangers, by donation.",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "rsvp",
+          "url": "https://www.eventbrite.com/e/fast-car-tracy-chapman-one-day-choir-tickets-1994985745067"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
+          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
+          "publisher": "Greenpointers",
+          "date": "2026-07-29"
+        }
+      ],
+      "lat": 40.726545,
+      "lng": -73.940559
     }
   ]
 }
