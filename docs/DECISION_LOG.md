@@ -4,7 +4,23 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — The undated shelf renders as six named sections; "Ongoing" retired
+## 2026-08-02 (latest) — First-viewport promotion evaluated and declined; the sectioning stands alone
+
+Decision (Batu): **"keep current."** The idea he opened this thread with — surface the different content types in the initial viewport so a user "instantly gets the idea" without swiping the chips — is **closed, not deferred.** The shelf sectioning shipped earlier the same day is the whole fix.
+
+Three directions were rendered as live DOM injections against the running app (real CSS, real cards, 375×812) rather than mocked, and all three were rejected:
+
+- **A — one news card promoted inline into Today (~85px).** Killed on truth grounds. An undated news card inside a header reading "Today · Sun, Aug 2" implicitly claims it happens today. Everywhere else the product refuses to fudge a date; this would be the one place it does, on the most-seen screen.
+- **B — a section teaser after Today: real "News" header, one card, "13 more in News ↓" (~160px).** Honest and the only option offering *access* rather than awareness — but the identical **News** header reappears ~1,200px down the same scroll, and a repeated header reads as a bug the second time. Unfixable in a linear feed without moving the News section up and interrupting the calendar.
+- **C — a contents line under the chips listing all six sections with counts (~62px).** Rejected for a collision only visible once rendered: the chip bar says **News**, the line said **News 14**, and the News *lens* holds 23 — two different numbers for one word on one screen. A countless variant (C′, "below the calendar") resolved that, and Batu still declined it: it informs without seducing, and the first screen is not spent on wayfinding.
+
+**Why this is the right call and not a punt:** the measured problem was that 69% of the deck sat under one anonymous header. Naming the six sections addressed the cause. Every promotion variant spends the product's most valuable screen — the one that produced Josh's "I want to move to Greenpoint," which came from *temporal density*, not categorical breadth — to advertise structure that now announces itself on scroll. Consistent with the same-day games verdict: **first-screen real estate is defended separately from taxonomy.**
+
+**Reopen only on evidence**, not on intuition: if PostHog shows users are still not reaching the shelf (scroll depth past the last day group, or ~zero card opens in the News/Places sections) after the sectioning has been live long enough to read, revisit — and revisit with **B**, since awareness is already solved by the section headers and only access would still be missing.
+
+Owner: Batu.
+
+## 2026-08-02 — The undated shelf renders as six named sections; "Ongoing" retired
 
 Decision (Batu): **"go straight to the Ongoing sectioning."** The single `Ongoing` group is replaced by the six kinds it was already ranked into, each with its own header: **Civic · News · Every week · Deals · Memberships · Places.**
 
@@ -30,7 +46,7 @@ The four remaining labels — **Every week · Deals · Memberships · Places** �
 
 **Deliberately NOT done:**
 - **No re-ranking.** `new_business` stays under Places, not "What changed" — that is the 2026-07-30 call and this change is not the place to relitigate it.
-- **No promotion into the first viewport.** Batu's original proposal (show content-type variety above the fold) is a separate, still-unbuilt step. Sectioning is its precondition: a promoted row needs a named destination to point at, or it is an orphan. Narrowed scope when it happens: **one card, not a nine-type strip** — the first screen still holds ~419px of feed against 9 lenses, and a category carousel is both the generic answer and a trade of validated temporal density ("every day, all day long, there are interesting things I could be doing") for hypothesised categorical breadth.
+- **No promotion into the first viewport.** Batu's original proposal (show content-type variety above the fold) was left as a separate step here, then **evaluated and declined the same day — see the entry above.** The first screen still holds ~419px of feed against 9 lenses, and a category carousel is both the generic answer and a trade of validated temporal density ("every day, all day long, there are interesting things I could be doing") for hypothesised categorical breadth.
 - **No chip-order change.** News is the largest lens at 23 cards and still sits at position #7 in `FILTER_IDS`, off the right edge at 375px, behind a Wellness chip that folds out anyway. That is currently an accident of insertion order rather than a decision, and per the same-day games precedent — chip real estate is defended separately from taxonomy — **it is Batu's positioning call, not a bug fix.**
 
 Encoded in `filterCards.js` (`SHELF_SECTIONS`, `shelfSection`, `groupByDay` two-key sort, `byFreshest`), `CardPanel.jsx` (headerless rule now keyed on `group.shelf`), `filterCards.test.mjs` (5 rewritten + 4 new tests, incl. the rank↔section drift guard). 461/461 green, build clean, verified in-browser across all seven visible lenses.
