@@ -355,6 +355,26 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
   assert.deepEqual(kidsGames.filters, ["family_kids"]);
 });
 
+// The rule above only pins the eight cards that existed on 2026-08-02. This one
+// keeps the split honest as the deck turns over: match on the COPY, not on ids,
+// so it survives expiry and re-asserts on every ingest. Prose in the ingest
+// skill tells the routine where games go; this is what stops a stale definition
+// from quietly refiling one back onto the culture shelf.
+test("a card that names a game is never filed under Arts & Culture", () => {
+  const NAMES_A_GAME = /\b(pinball|backgammon|chess|warhammer|trivia|bingo|board game|tabletop|mahjong|dominoes|arcade|dungeons ?& ?dragons|d&d)\b/i;
+  const play = seed.cards.filter((c) => NAMES_A_GAME.test([c.title, c.kicker, c.summary].join(" ")));
+  assert.ok(play.length > 0, "no games cards at all — the lens emptied, review the roster");
+  for (const c of play) {
+    assert.ok(!c.filters.includes("arts_culture"), `${c.id} names a game but sits in arts_culture`);
+    // `games` OR `family_kids` — kids' game clubs belong to their audience lens
+    // (Batu, 2026-08-02), so this must not force them into games.
+    assert.ok(
+      c.filters.includes("games") || c.filters.includes("family_kids"),
+      `${c.id} names a game but is in neither games nor family_kids`,
+    );
+  }
+});
+
 test("no card is lens-less — the six 2026-07-25 stragglers resolved into Community or Arts & Culture", () => {
   // Empty filters (All-only) is legal schema-wise but was a placeholder, not
   // a destination: every card that landed there got a real home same day.
