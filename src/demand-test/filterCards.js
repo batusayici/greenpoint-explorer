@@ -128,9 +128,16 @@ export function ongoingRank(card) {
 // Indexed BY RANK, so the ranking above is the section order — there is no
 // second list to drift out of sync. `groupByDay: every rank has a section`
 // fails if a rank is ever added without one.
+// Labels are the product's OWN words, not friendlier synonyms (Batu,
+// 2026-08-02): each section is exactly the undated cards of a lens's core
+// category — "News" ⊂ the News lens (14 of 23; the other 9 are openings that
+// belong under Places), "Civic" ⊂ the Civic lens (3 of 5; the other 2 are
+// dated and sit in day groups). Calling them "What changed" and "How to help"
+// invented a second vocabulary for concepts the chip bar, the schema and the
+// AEO surface already name — the same drift the Community→Civic rename fixed.
 const SHELF_SECTIONS = [
-  { key: "shelf-asks", label: "How to help" },
-  { key: "shelf-changed", label: "What changed" },
+  { key: "shelf-asks", label: "Civic" },
+  { key: "shelf-changed", label: "News" },
   { key: "shelf-weekly", label: "Every week" },
   { key: "shelf-deals", label: "Deals" },
   { key: "shelf-memberships", label: "Memberships" },

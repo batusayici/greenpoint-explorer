@@ -125,8 +125,8 @@ test("groupByDay: the undated shelf is six named sections in decay order, after 
   const groups = groupByDay(cards, wed);
   assert.deepEqual(groups.map((g) => g.label), [
     "Tomorrow · Fri, Jul 31",
-    "How to help",
-    "What changed",
+    "Civic",
+    "News",
     "Every week",
     "Deals",
     "Memberships",
@@ -181,7 +181,7 @@ test("groupByDay: every rank has a section", async () => {
 
 test("groupByDay: kinds with no cards produce no section", () => {
   const groups = groupByDay([{ id: "n", category: "news" }], new Date("2026-07-30T12:00:00-04:00"));
-  assert.deepEqual(groups.map((g) => g.label), ["What changed"]);
+  assert.deepEqual(groups.map((g) => g.label), ["News"]);
 });
 
 // 2026-07-25 user feedback: under the News lens, real news read below the

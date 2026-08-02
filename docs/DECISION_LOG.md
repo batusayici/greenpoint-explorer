@@ -6,7 +6,7 @@ This is a historical decision log. Older entries may contain status language tha
 
 ## 2026-08-02 (latest) — The undated shelf renders as six named sections; "Ongoing" retired
 
-Decision (Batu): **"go straight to the Ongoing sectioning."** The single `Ongoing` group is replaced by the six kinds it was already ranked into, each with its own header: **How to help · What changed · Every week · Deals · Memberships · Places.**
+Decision (Batu): **"go straight to the Ongoing sectioning."** The single `Ongoing` group is replaced by the six kinds it was already ranked into, each with its own header: **Civic · News · Every week · Deals · Memberships · Places.**
 
 **What forced it:** Josh's 2026-08-02 walkthrough (`docs/context/2026-08-02-josh-feedback-place-and-small-business.md`) — he noticed deals and memberships and **never found news at all**. Investigating the report produced a worse finding than the report: **0 of 23 news-lens cards carry a date.** `groupByDay` buckets every undated card into `ongoing` at `Number.POSITIVE_INFINITY`, so no news card could *ever* enter a day group. News wasn't below the fold — it was unreachable by the feed's only axis. Measured live at 375×812: **55 of 80 cards (69% of the page, 4.6 screens) under one header that begins 2.1 screens down** and names recency instead of subject. The 2026-07-30 kind ranking was already computing the right partition; none of it was legible.
 
@@ -14,7 +14,13 @@ Josh's own diagnosis — "you have to do one full scroll to know that, oh, there
 
 **Reading order is unchanged.** Every card sits exactly where the 2026-07-30 ranking already put it — this only names the boundaries that were already there, which is why the "shelf orders every kind, freshest first" test now asserts the same flat sequence across sections. No card moved; no rank changed.
 
-**Labels are editorial, not taxonomic.** "How to help" answers the question Josh actually asked out loud ("how can you support the neighborhood?"); "What changed" is the code's own framing for the news tier and is honest about a shelf where an opening and a Superfund update sit together. Naming them "Civic / News / Recurring / Discounts / Subscriptions / Businesses" would have been the schema talking to itself.
+**Labels are the product's own words.** The sections first shipped as "How to help" and "What changed" — chosen because the first answers the question Josh asked out loud and the second is the code's own framing for the news tier. Batu killed both the same day: **"is what changed same as News? If so, call it News."**
+
+They are not the same *set*, but they are not a different *concept*: each section is exactly **the undated cards of a lens's core category**. `News` is 14 of the News lens's 23 (the other 9 are business openings, which sit under Places); `Civic` is 3 of the Civic lens's 5 (the other 2 are dated and sit in day groups). Both are strict subsets — the section never contains anything the lens doesn't. So a second vocabulary bought nothing and cost consistency: the chip bar, `category`, `pinKind` and the AEO surface all already say *news* and *civic*. **This is the same drift the Community→Civic rename fixed hours earlier** — prefer the word the rule uses over the friendlier one, and never invent a synonym for a concept the product already names.
+
+The four remaining labels — **Every week · Deals · Memberships · Places** — shadow no chip, so they invent nothing: `Deals`/`Memberships` split the one "Deals & Memberships" chip along the `discount`/`subscription` categories, and `Every week`/`Places` name tiers that have no lens at all.
+
+**Residual worth watching:** tapping the News chip now yields a **News** section (14) *and* a **Places** section (9), because those 9 openings carry the `news` filter but a place-ish `category`. That reads defensibly — an opening is neighborhood news, but it is not reporting. If it confuses anyone, the thing to re-examine is the `news` filter on opening cards, **not** the section label.
 
 **One structural consequence:** the shelf sections carry small ranks (0–5) that a day offset *would* outrank, so calendar-before-shelf became its own sort key rather than a side effect of `POSITIVE_INFINITY`. A dated card 398 days out is the regression guard.
 
