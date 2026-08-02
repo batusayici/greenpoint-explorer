@@ -952,11 +952,11 @@
       "createdAt": "2026-07-16",
       "updatedAt": "2026-07-25",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "relatedCardIds": [
-        "gcc-saturday-showcase-0801"
-      ],
       "lat": 40.729567,
-      "lng": -73.958337
+      "lng": -73.958337,
+      "relatedCardIds": [
+        "gcc-artists-beers-0802"
+      ]
     },
     {
       "id": "film-noir-cinema",
@@ -1294,7 +1294,6 @@
       "createdAt": "2026-07-16",
       "updatedAt": "2026-07-30",
       "relatedCardIds": [
-        "library-saturday-programs-0801",
         "library-tuesday-programs-0804"
       ],
       "lat": 40.72606,
@@ -1629,132 +1628,6 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "(eavesdrop)",
-      "address": "674 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://eavesdrop.nyc/calendar"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Eavesdrop calendar",
-          "url": "https://eavesdrop.nyc/calendar",
-          "publisher": "Eavesdrop",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "eavesdrop-very-j-0801",
-      "title": "Very J at Eavesdrop",
-      "kicker": "Very J closes out the week",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Very J plays the late Saturday session.",
-      "lat": 40.724894,
-      "lng": -73.951181,
-      "startsAt": "2026-08-01T00:00:00-04:00"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Tickets & info",
-          "type": "rsvp",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room on DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "good-room-baltra-0801",
-      "title": "Baltra at Good Room",
-      "kicker": "Baltra & friends all night",
-      "startsAt": "2026-08-01T19:00:00-04:00",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Baltra, Cosmo, and Gianna and Fabiola play all night.",
-      "lat": 40.726909,
-      "lng": -73.95281
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "actions": [
-        {
-          "label": "Get tickets",
-          "type": "rsvp",
-          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "GCC ticketing",
-          "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "gcc-saturday-showcase-0801",
-      "title": "The Saturday Showcase",
-      "kicker": "Saturday stand-up, 8 & 10pm",
-      "startsAt": "2026-08-01T20:00:00-04:00",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "The Saturday Showcase at 8; the Secret Showcase follows at 10.",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
       "updatedAt": "2026-07-30",
       "locationName": "Hide & Seek",
       "address": "593 Manhattan Ave",
@@ -1785,48 +1658,6 @@
       "summary": "The weekly live-jazz night at the all-day cafe and bar.",
       "lat": 40.72293,
       "lng": -73.950617
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-30",
-      "locationName": "Hide & Seek",
-      "address": "593 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://hideandseek.nyc"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hide & Seek",
-          "url": "https://hideandseek.nyc",
-          "publisher": "Hide & Seek",
-          "date": "2026-07-30"
-        }
-      ],
-      "id": "hide-and-seek-weekend-djs-0731",
-      "title": "Weekend DJs at Hide & Seek",
-      "kicker": "DJs every Friday & Saturday night",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "recurring": true,
-      "summary": "The marquee says it plainly: DJs every Friday and Saturday night — next up Jul 31 and Aug 1.",
-      "lat": 40.72293,
-      "lng": -73.950617,
-      "startsAt": "2026-07-31T00:00:00-04:00"
     },
     {
       "category": "food_drink",
@@ -2363,48 +2194,6 @@
           "date": "2026-07-25"
         }
       ],
-      "id": "bcc-floral-embroidery-0801",
-      "title": "Embroidery II: Florals and Texture",
-      "kicker": "Floral embroidery — 1 spot left",
-      "startsAt": "2026-08-01T15:00:00-04:00",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "The intermediate florals-and-texture session — one seat left at press time.",
-      "lat": 40.730461,
-      "lng": -73.953114,
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/products/embroidery-ii-florals-and-texture"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-24)",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-25"
-        }
-      ],
       "id": "bcc-pietra-shorts-0802",
       "title": "Sew Pietra Shorts (two-part class)",
       "kicker": "Sew your own Pietra shorts",
@@ -2630,47 +2419,6 @@
       "relatedCardIds": [
         "greenpoint-comedy-club"
       ]
-    },
-    {
-      "id": "carcosa-warhammer-rtt-0801",
-      "title": "Warhammer 40k: Armageddon! RTT",
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "The Carcosa Club",
-      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
-      "kicker": "All-day 40k tournament",
-      "startsAt": "2026-08-01T09:00:00-04:00",
-      "endsAt": "2026-08-01T21:00:00-04:00",
-      "summary": "Warhammer 40k: Armageddon! — an all-day RTT at the Manhattan Avenue game club.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Carcosa Club events calendar",
-          "url": "https://www.carcosaclub.com/events?view=calendar&month=08-2026",
-          "publisher": "The Carcosa Club",
-          "date": "2026-07-27"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-30",
-      "lat": 40.732676,
-      "lng": -73.954395
     },
     {
       "id": "last-place-chess-chill",
@@ -2935,150 +2683,6 @@
       "lng": -73.953036
     },
     {
-      "id": "kingsland-wildflowers-festival-2026",
-      "category": "event",
-      "sourceCampaign": "kingsland_wildflowers_festival_2026_07_30",
-      "title": "Kingsland Wildflowers Festival",
-      "kicker": "Sat Aug 1 · 2–6 PM · Free",
-      "locationName": "Kingsland Wildflowers",
-      "address": "520 Kingsland Ave, Brooklyn, NY 11222",
-      "summary": "The 10th annual celebration atop the Broadway Stages rooftop meadow: art installations, live music and performances, native plant sales, and hands-on Newtown Creek ecology exhibits, free and open to all ages.",
-      "whyItMatters": "A milestone year for a hidden rooftop meadow most residents have never set foot on — free, family-friendly, and a short walk from the avenue.",
-      "filters": [
-        "family_kids",
-        "arts_culture"
-      ],
-      "audience": [
-        "resident",
-        "family",
-        "visitor"
-      ],
-      "corridor": null,
-      "free": true,
-      "startsAt": "2026-08-01T14:00:00-04:00",
-      "endsAt": "2026-08-01T18:00:00-04:00",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/10th-annual-kingsland-wildflowers-festival-tickets-1991709784581"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Events — Kingsland Wildflowers",
-          "publisher": "Kingsland Wildflowers",
-          "url": "https://www.kingslandwildflowers.com/events",
-          "date": "2026-07-30"
-        },
-        {
-          "title": "Kingsland Wildflowers Festival Celebrates 10 Years in Greenpoint",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/23/kingsland-wildflowers-festival-celebrates-10-years-in-greenpoint/",
-          "date": "2026-07-23"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "lat": 40.735131,
-      "lng": -73.94316
-    },
-    {
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "id": "mcgolrick-park-cleanup-0801",
-      "title": "Park cleanup at McGolrick Park",
-      "kicker": "Pickers provided, all ages welcome",
-      "category": "event",
-      "filters": [
-        "community"
-      ],
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "locationName": "Monsignor McGolrick Park",
-      "address": "Monsignor McGolrick Park, Brooklyn, NY 11222",
-      "geocodeQuery": "Monsignor McGolrick Park, Brooklyn",
-      "startsAt": "2026-08-01T10:00:00-04:00",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "A volunteer tidy-up of the park during fireworks season. Tools are on site; no RSVP needed.",
-      "actions": [
-        {
-          "label": "Read the roundup",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-29"
-        }
-      ],
-      "lat": 40.724458,
-      "lng": -73.943361
-    },
-    {
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "id": "library-saturday-programs-0801",
-      "title": "Saturday at Greenpoint Library",
-      "kicker": "Family storytime on Norman Ave",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": true,
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "startsAt": "2026-08-01T10:30:00-04:00",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Sing songs, read books, and celebrate the freedom to read alongside your neighbors. Free, no RSVP needed.",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-29"
-        }
-      ]
-    },
-    {
       "evidenceStrength": "high",
       "monetizationRelevance": "indirect",
       "partnerRelevance": "high",
@@ -3127,53 +2731,6 @@
           "date": "2026-07-29"
         }
       ]
-    },
-    {
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "id": "milltown-dog-adoption-0801",
-      "title": "Dog adoption day at Milltown Dog Goods",
-      "kicker": "Adopt from True North Rescue",
-      "category": "event",
-      "filters": [
-        "community"
-      ],
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "locationName": "Milltown Dog Goods",
-      "address": "106 Calyer St, Brooklyn, NY 11222",
-      "startsAt": "2026-08-01T13:00:00-04:00",
-      "endsAt": "2026-08-01T23:59:00-04:00",
-      "summary": "Meet dogs looking for homes at the Calyer Street shop and leave with a forever pup. No RSVP needed.",
-      "actions": [
-        {
-          "label": "Read the roundup",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-29"
-        },
-        {
-          "title": "Get your hands dirty, brew kombucha, and more — What's Happening, Greenpoint? (7/16-22) — address",
-          "url": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-15"
-        }
-      ],
-      "lat": 40.726972,
-      "lng": -73.95656
     },
     {
       "evidenceStrength": "medium_high",
