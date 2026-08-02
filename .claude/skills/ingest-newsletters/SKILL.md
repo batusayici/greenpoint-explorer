@@ -1,11 +1,11 @@
 ---
 name: ingest-newsletters
-description: Track V content ingest — script-fetch the Greenpoint source roster, diff against last run, parse only changed sources into schema-valid draft cards (subagent fan-out), present a review diff for approval, then geocode, test, commit, and deploy. Use when Batu says "run the ingest", "refresh the map", "weekly refresh", "daily refresh", or /ingest-newsletters.
+description: Track V content ingest — script-fetch the Greenpoint source roster, diff against last run, parse only changed sources into schema-valid draft cards (subagent fan-out), then geocode, test, and ship content straight to prod on machine gates (2026-08-02 — no content review gate; roster, sender, code, and submission changes stay human-gated). Use when Batu says "run the ingest", "refresh the map", "weekly refresh", "daily refresh", or /ingest-newsletters.
 ---
 
 # Ingest → Greenpoint Life Map
 
-Turn the week's Greenpoint sources into reviewed, sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing ships unreviewed; nothing is invented.**
+Turn the week's Greenpoint sources into sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing is invented. Content ships on machine gates (Batu, 2026-08-02 — DECISION_LOG); everything that is not content stays human-gated.**
 
 ## Cost architecture (2026-07-25 redesign — read before running)
 
@@ -80,22 +80,44 @@ The subagent returns data, not cards — the orchestrator does the judgment: ded
 - Conflicting sources (e.g. two articles disagree on a date): prefer the dedicated article over a roundup line, note the conflict, set `trustRisk: "medium"`.
 - Re-verify any recurring deal the expiry script FLAGGED (past its verified-through date): confirm at the source and bump `endsAt`, or delete.
 
-### 3. Review gate (Batu approves — this IS the approval queue)
+### 3. Gates (machine, not human — Batu 2026-08-02)
 
-Present one compact diff: **adds** (id, title, category, when, source), **updates**, **deletes** (the expiry script's, plus any judgment deletes), **skips** (with reasons), and proposed sender-registry / source-roster additions. Wait for approval; apply edits Batu asks for. Nothing proceeds without a yes. (Daily thin runs with zero adds/updates need no gate — report and stop.)
+**Content ships without human review.** The gates are the truth rules in step 2 plus the mechanical checks below; a run that passes them all pushes to prod. The reason this is safe is that the gates are *verifiable*, not judgment calls — every card traces to a named source, and the schema/lint/test suite fails on anything malformed.
+
+**Every gate must pass or the run does not ship:**
+
+1. `npm test` green (schema validity, bbox geocoding, lens rules, unique ids, place-graph integrity, no open-start gigs).
+2. `lintCard` clean on every new/changed card (kicker/summary overlap, over-length).
+3. Every new card has `sourceLinks` with a publisher, and the extraction subagent returned a verbatim `quote` for its claims. No quote → no card.
+4. Every new card geocodes inside the Greenpoint bbox.
+5. `npm run build` succeeds.
+
+**Still human-gated — these do NOT auto-ship. Open a PR and stop:**
+
+- **Roster or registry changes** — new `ingest-sources.json` entries, new Gmail senders, new `WebFetch` allowlist domains. A new source is a trust decision about a publisher, not a content decision.
+- **Business submissions (L5)** — asks are supply-gate evidence and often need a Batu follow-up; a submission-derived card never auto-ships (unchanged from 2026-07-28).
+- **Any code change** — logic, tests beyond contract-count updates, styling, banner windows. Content runs touch `cards.json`, `geocode-cache.json`, `ingest-ledger.json`, `freshness-stamp.json`, and the contract counts in `julyCards.test.mjs`. **Anything outside that file set means the run is not a content run** — PR it.
+- **`trustRisk: "high"` cards, or a conflicting-source call you had to adjudicate** — flag and PR rather than guess.
+- **A deck swing beyond ±40% of the live card count in one run** — a plausible signature of a broken fetch or a bad diff. Halt, PR, report.
+
+If a gate fails or an item is in the human-gated list, ship everything that passes and PR the remainder — never hold the clean content back because one item needs review.
 
 ### 4. Ship
 
-1. Apply approved changes to the JSON; bump `version` to today; set `updatedAt` on touched cards. Edit surgically — never rewrite the whole file from context.
+1. Apply changes to the JSON; bump `version` to today; set `updatedAt` on touched cards. Edit surgically — never rewrite the whole file from context.
 2. `node scripts/geocode-demand-cards.mjs` — every new card must resolve inside the bbox (widen `geocodeQuery` to the venue/park name if a street query misses).
 3. Update `julyCards.test.mjs` contract counts (the expiry script printed the post-expiry baseline; adjust for adds) and the refresh-discipline date; `npm test` must pass.
-4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes. Then `npm run ingest:fetch -- --mark-ingested` to promote the reviewed snapshots to baselines (include sources whose extraction found nothing — they were reviewed too; a run that stopped before the review gate must NOT mark).
-5. Commit (`content(track-v): <cadence> refresh — <summary>`), deploy to Vercel prod, and spot-check the live page (pins render, no expired deals, new cards open).
+4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes. Then `npm run ingest:fetch -- --mark-ingested` to promote the ingested snapshots to baselines (include sources whose extraction found nothing — they were processed too; a run that aborted before shipping must NOT mark).
+5. Run the step-3 gate checklist. All green → commit (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
+6. **Report every run in the summary**, whether or not it shipped: what shipped, what was held for review and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
+
+**Rollback:** content lives in one JSON file, so a bad ship is `git revert <sha> && git push`. If a spot-check shows the live page broken or a card that shouldn't be there, revert first and diagnose after — do not leave a bad deck live while investigating.
 
 ## Cadence
 
 - **Daily thin run** (scheduled): scripts + changed-source extraction + Gmail quick pass. Most days this is a no-op costing cents; late announcers (Flower Cat, Trash Club's weekly spot) get caught same-day.
-- **Auto-merge promotions (Batu, 2026-07-28 — growth-engine §7):** a run whose PR is **zero-add** (no new or changed cards) or **expiry-only** (deletions, pre-approved 2026-07-16) may merge itself with a notification instead of waiting for review. Anything containing an add, edit, or first-time source stays human-gated. State the classification explicitly in the PR body ("zero-add — auto-merged per 2026-07-28 promotion") so the audit trail shows why no human reviewed it.
+- **Content auto-ships (Batu, 2026-08-02 — supersedes the 2026-07-28 zero-add/expiry-only promotion, which was too narrow):** any run passing the step-3 machine gates pushes to `main` itself. The 2026-07-28 rule gated exactly the runs that carried value — a queue of unmerged `ingest/*` PRs left the live feed a week stale, which costs more than a wrong card would. The gates moved from "a human looked at it" to "it traces to a named source and the suite passes."
+- **The freshness alarm is the backstop** (L11, `freshness.js`): if runs stop shipping, the live banner degrades honestly to "listings verified through &lt;date&gt;" rather than silently presenting a stale deck as current. Auto-ship makes that alarm load-bearing — do not let a run mark snapshots ingested without shipping, or the stamp will claim freshness the deck doesn't have.
 - **Monday full run**: everything, incl. monthly discovery sweep on the first Monday.
 - **Wednesday Greenpointers pull** (scheduled, Wed 1pm): the roundup publishes Wednesdays; a 5-day lag to Monday means readers see it there first. If the roundup isn't live yet at run time, say so — Batu re-triggers later.
 - The Thursday coverage scan is retired once the daily loop is live (its gap-catching is what the fetch-diff does every day); a monthly audit-style scan can replace it if gaps reappear. The former Sunday 6pm scan stays retired.

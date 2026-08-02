@@ -464,6 +464,7 @@ review · V3 = executes autonomously):
 
 | Task | Level now | Ceiling |
 |---|---|---|
+| **Content ingest → prod** | **V3 (2026-08-02) — machine-gated auto-ship** | V3 |
 | Analytics pull + metric computation | V3 (deterministic scripts) | V3 |
 | Experiment reads vs. pre-registered decision rules | V2 — reads land as recommendations | V3 — rules are mechanical once calibrated |
 | Tue readout + top-3 proposal drafting | V2 | V3 (drafting only) |
@@ -478,18 +479,21 @@ stays inside kit + truth rules. Promotion is proposed in a Tue readout and
 ratified by Batu — never self-granted. **Demotion is immediate and automatic**
 on any truth-rule breach, untagged link, or misread — one strike, one rung down.
 
-**What stays human regardless of calibration:** sends, deploys/merges, taste
-gates, kill/graduate/PMF verdicts, and spending money. These aren't
+**What stays human regardless of calibration:** sends, **code** deploys/merges,
+taste gates, kill/graduate/PMF verdicts, and spending money. These aren't
 trust-gated — they're the definition of supervision.
 
-**Two standing V3 promotions (Batu, 2026-07-28 — the only merge exceptions):**
-a **zero-add ingest run** (no new/changed cards; nothing to review) and an
-**expiry-only run** (deletions already pre-approved 2026-07-16) may auto-merge
-with a notification. Rationale: review minutes, not tokens, are the scarce
-resource — a nothing-to-review PR still costs a gated read. Any run containing
-an add, edit, or first-time source stays human-gated; daily cadence itself is
-unchanged. Implementation note: wiring lives in the ingest skill; until wired,
-the rule stands as pre-authorization.
+**Content ships autonomously (Batu, 2026-08-02 — supersedes the 2026-07-28
+zero-add/expiry-only promotions):** an ingest run passing the skill's machine
+gates pushes to `main` = prod, adds included. The 2026-07-28 rule gated exactly
+the runs that carried value, and the queue it produced left the live feed a
+week stale — a staleness cost that exceeds the risk of a wrong card, because a
+wrong card is one revert away and a dead feed is a dead product. The gate did
+not disappear, it changed kind: sourced-quote per claim, schema + lint + full
+suite, bbox geocode, build. **Content only.** Roster/sender additions, business
+submissions, code changes, `trustRisk: high` cards, and any run swinging the
+deck &gt;±40% still open a PR — those are trust and judgment calls, not content.
+The L11 freshness alarm is the backstop that makes this legible if runs stop.
 
 ---
 
@@ -540,8 +544,10 @@ readouts.)*
 - Rebranding as a growth lever.
 - **Autonomy theater** — token-maxing for its own sake, autonomous outbound
   sends, self-modifying nightly agents. Automation expands one rung at a time
-  down §7's ladder, never around the gates; the review gate and the measured
-  cost discipline (DECISION_LOG 2026-07-25) outrank velocity.
+  down §7's ladder, never around the gates; the gates and the measured cost
+  discipline (DECISION_LOG 2026-07-25) outrank velocity. *(2026-08-02: content
+  ingest reached V3 by this route — the gate was replaced with a stronger
+  machine gate, not removed. Removing a gate to go faster is still the ban.)*
 
 ## Sources
 

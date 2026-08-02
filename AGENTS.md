@@ -11,12 +11,12 @@ Supersedes: v2 (2026-06-11), which governed the now-parked 3D explorer track
 
 ## Roles
 
-- **Batu owns:** product direction, taste, scope, verdicts, publish/deploy approvals, and sending every outbound message.
+- **Batu owns:** product direction, taste, scope, verdicts, **code** publish/deploy approvals, and sending every outbound message. *(Content ingest is the one carve-out — machine-gated auto-ship since 2026-08-02, DECISION_LOG.)*
 - **Agent owns:** the weekly PM/Design/PMM/Analyst loop — ingest, builds, drafts, readouts, verification, plan upkeep — and proposing options with tradeoffs when a taste call is needed.
 
 ## Working Loop
 
-Weekly rhythm (ops plan `docs/launch/2026-07-21-pmf-ops-plan.md`): **Mon** `/ingest-newsletters` (review-gated) + analytics → **Tue** readout + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Build → show → Batu reacts → iterate. Ask before changing scope.
+Weekly rhythm (ops plan `docs/launch/2026-07-21-pmf-ops-plan.md`): **Mon** `/ingest-newsletters` (content auto-ships on machine gates since 2026-08-02) + analytics → **Tue** readout + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Build → show → Batu reacts → iterate. Ask before changing scope.
 
 ## Truth Rules
 

@@ -12,7 +12,7 @@ npm run preview   # preview production build
 node scripts/geocode-demand-cards.mjs   # geocode new cards (Nominatim → geocode-cache.json)
 ```
 
-Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill); each run opens an `ingest/*` PR — **merging the PR is the review gate and the production deploy**. Nothing ships unreviewed.
+Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill). **Since 2026-08-02 content auto-ships**: a run passing the skill's machine gates (tests, lint, sourced-quote, bbox geocode, build) pushes straight to `main` = production. **Roster/sender additions, business submissions, code changes, and `trustRisk: high` cards stay human-gated** and open an `ingest/*` PR. Truth rules are unchanged — the gate moved from "a human looked" to "it traces to a named source and the suite passes."
 
 ## Read First
 

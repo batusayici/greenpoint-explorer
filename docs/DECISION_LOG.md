@@ -4,6 +4,24 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-02 (latest) — Content ingest ships to prod with no human review gate
+
+Decision (Batu): **"update ingest routines to push updates automatically to prod. no review gate on content."** This retires the regime where merging an `ingest/*` PR was both the review gate and the deploy (2026-07-26), and supersedes the narrow zero-add/expiry-only auto-merge promotions (2026-07-28).
+
+**What forced it:** the review gate was gating exactly the runs that carried value. On Aug 2 the queue held four unmerged ingest PRs — three dailies and a Wednesday Greenpointers pull — so the live feed's content was current only through Jul 29 while the deck sat finished in branches. The 2026-07-28 promotion let *nothing-to-review* runs through and held *every* run with an add, which is backwards. **A wrong card is one `git revert` away; a dead feed is a dead product.** For a product whose entire promise is "verified this week," staleness is the larger failure mode.
+
+**The gate did not disappear — it changed kind, from "a human looked at it" to machine-verifiable:** `npm test` green (schema, bbox geocode, lens rules, unique ids, place-graph, no open-start gigs) · `lintCard` clean · **a verbatim sourced quote per claim, no quote no card** · geocodes inside the bbox · `npm run build` succeeds. Truth rules are untouched; they are what the tests enforce.
+
+**Content only. Still human-gated, still PR'd:** roster/sender/allowlist additions (a new source is a trust decision about a publisher, not a content decision) · business submissions (L5 — supply-gate evidence, usually needs follow-up) · any code change (a run touching files outside `cards.json`, `geocode-cache.json`, `ingest-ledger.json`, `freshness-stamp.json`, and the contract counts in `julyCards.test.mjs` **is not a content run**) · `trustRisk: high` or an adjudicated source conflict · **any run swinging the deck >±40%**, the signature of a broken fetch. A run ships what passes and PRs the rest — clean content is never held back by one flagged item.
+
+**Backstop:** the L11 freshness alarm (2026-07-28) becomes load-bearing — if runs stop shipping, the banner degrades to "listings verified through &lt;date&gt;" instead of presenting a stale deck as current. Consequence: a run must never mark snapshots ingested without shipping, or the stamp will claim a freshness the deck doesn't have. Rollback is `git revert <sha> && git push`; a bad spot-check reverts first and diagnoses after.
+
+**This is a real risk transfer, stated plainly:** an unsourced or miscategorized card can now reach residents before any human sees it. Accepted because every gate above is verifiable rather than a judgment call, and because the failure is cheap and reversible. If a bad card ships, the fix is a new test, not a restored review queue.
+
+Encoded in `.claude/skills/ingest-newsletters/SKILL.md` (§3 gates, §4 ship, cadence), `CLAUDE.md`, `docs/PLAN.md`, `docs/growth/growth-engine.md` (§7 ladder — content ingest at V3). **The three claude.ai cloud routines carry their own copies of the prompt and must be updated in the claude.ai UI — Batu's action; until then they will keep opening PRs.**
+
+Owner: Batu.
+
 ## 2026-08-02 — Banner charter: horizon, ramp, dwell, tenure, update discipline
 
 Decision (Batu): the banner slot gets a derived rule set instead of per-incident judgment calls. Trigger: the Aug 2 audit found the single-window G banner would go dark after Aug 10 while two more MTA-confirmed Greenpoint closures (Aug 17–21 overnights, Aug 21–24 weekend) followed — and the "distant" chip would happily advertise a closure a month out ("no need to show G disruptions two weeks ahead").
