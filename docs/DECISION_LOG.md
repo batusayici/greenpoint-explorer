@@ -4,7 +4,33 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — Content ingest ships to prod with no human review gate
+## 2026-08-02 (latest) — Launch IA: `games` lens added (folded), Community relabelled Civic
+
+Decision (Batu): **"warhammer night shouldn't be in the same lens as cinema noir or art gallery opening. kids events should be in kids."** Plus two calls on the shape of it: **Games lives under "More"**, and **Community is relabelled "Civic"**.
+
+**What forced it:** Arts & Culture had grown to 24 cards — the fattest lens on the bar — doing three unrelated jobs at once: *make things* (four BCC sewing/craft classes, a kids' art workshop), *watch things* (film festival, Film Noir, comedy, artist talk, a one-day choir), and *play things* (Warhammer 40k RTT, two pinball leagues, a backgammon club, weekly chess, the Scrappleland venue card). Six of 24 were games. Someone tapping Arts & Culture for a gallery talk scrolled past Warhammer; someone after pinball scrolled past "Sew Pietra Shorts."
+
+**Why games is a lens and not just a mis-file:** the intent is different in kind. Arts cards are **attend once**; games cards are **join a standing scene** — Tuesday backgammon, Wednesday pinball, Tuesday chess, Tuesday trivia. Two of them are already filed `subscription`, not `event`. Recurring weeknight commitment is the retention shape the product wants; one-off cultural attendance is not. It also clears the volume floor at 8 cards from 5 venues, above Civic (5) and Deals & Memberships (6), and it self-restocks — leagues and club nights regenerate weekly, unlike the frozen `new` lens that got folded into news in July.
+
+**Games is authored-folded into "More"** — a new `FOLDED_FILTER_IDS` in `cardSchema.js`, honoured by `partitionFilters`. This is deliberately **not** the existing thin-layer fold, which is a volume symptom that heals when the ingest stocks a layer: leaving games to the count would let one good week silently promote it onto the primary bar and undo the call. The ~3 chips visible after "All" at 375px are the positioning statement; games seasons the neighborhood, it doesn't define it. Primary chip order is untouched — no muscle-memory reset at launch.
+
+**Community → "Civic" is a label change only.** The filter id stays `community`, so authored card membership, the ingest rules and every test still say `community`. The rename closes a gap between the chip and the rule: the 2026-07-30 rule is civic action and mutual aid *only*, and "Community" is exactly the word that kept inviting the social gatherings that rule had to evict (the 40k tournament and the chess night, twice).
+
+**"Kids events in kids"** was already 11-of-12 true; the one real fix was `artistic-voices-artudio` (an explicitly kids' art workshop) double-filed into arts_culture — now family_kids only. `nyplays-fall-registration` (kids' D&D/Magic clubs) stays single-filed to family_kids and deliberately does **not** double-file into games. Greenpoint Library and Kingsland Wildflowers keep their dual file: all-ages venue and festival, not kids events.
+
+**The 8 games cards:** Scrappleland (+food_drink) · Black Rabbit (+food_drink) · Topperz pinball league · Wednesday Pinball League · Tuesday Backgammon Club · Warhammer 40k RTT · Chess & Chill · Board game speed dating at Threes (+food_drink). Black Rabbit is the pickup that makes the lens answer "where's trivia tonight" instead of reading as a pinball page — Tuesday trivia since 2008 and Sunday bingo were invisible inside food_drink. Venues keep their real-world lens; play is an additional membership, not a replacement.
+
+**Stated risks, accepted:** Scrappleland is 4 of 8 cards (50%) — a lens that reads as one venue's programming looks like paid placement and empties on that venue's slow week. Watch it; if concentration holds above 50% across three ingests, either broaden the roster or fold the lens back into arts_culture.
+
+**Deliberately NOT done:**
+- **Wellness kept, not retired.** The proposal was to retire it at 2 cards (SPARŚA, Domino Park yoga) as a stale-shelf risk. That rationale was wrong: at 2 live cards wellness is *already* inside "More" via the thin-layer fold, so it never occupies a primary chip. Retiring it would strand SPARŚA with no honest lens (it's category `service`, which the `deals_memberships` rule and its test both refuse) and force the "no card is lens-less" guard into an allowlist. Keeping it costs nothing visible; the supply gap is in the source roster, not the taxonomy.
+- **No "Classes & Workshops" lens.** Once kids' classes sit in family_kids, the adult craft cluster is only 4 cards (BCC sewing, embroidery, tie-dye) — under the floor. **Trigger to revisit: ≥7 adult class cards from ≥3 providers.**
+
+Encoded in `cardSchema.js` (`FILTER_IDS`, new `FOLDED_FILTER_IDS`), `filterCards.js` (labels, `partitionFilters`), `cards.json` (9 cards refiled), `cardSchema.test.mjs`, `filterCards.test.mjs`, `julyCards.test.mjs` (new games-lens test), `.claude/skills/ingest-newsletters/SKILL.md` (§2 lens rules). Arts & Culture 24 → 17; games 8; no `category` values changed, so pin colors are untouched.
+
+Owner: Batu.
+
+## 2026-08-02 — Content ingest ships to prod with no human review gate
 
 Decision (Batu): **"update ingest routines to push updates automatically to prod. no review gate on content."** This retires the regime where merging an `ingest/*` PR was both the review gate and the deploy (2026-07-26), and supersedes the narrow zero-add/expiry-only auto-merge promotions (2026-07-28).
 

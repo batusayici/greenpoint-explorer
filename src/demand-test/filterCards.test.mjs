@@ -17,9 +17,14 @@ test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", ()
   assert.equal(FILTERS.find((f) => f.id === "food_drink").label, "Food & Drink");
   assert.equal(FILTERS.find((f) => f.id === "deals_memberships").label, "Deals & Memberships");
   assert.equal(FILTERS.find((f) => f.id === "wellness").label, "Wellness");
-  assert.equal(FILTERS.find((f) => f.id === "community").label, "Community");
   assert.equal(FILTERS.find((f) => f.id === "news").label, "News");
   assert.equal(FILTERS.find((f) => f.id === "live_music").label, "Live Music");
+  // 2026-08-02 launch IA: `games` in; `community` relabelled "Civic" — the ID
+  // is unchanged, so authored card membership and the ingest rules still say
+  // `community`. Only the chip's words moved.
+  assert.equal(FILTERS.find((f) => f.id === "games").label, "Games");
+  assert.equal(FILTERS.find((f) => f.id === "community").label, "Civic");
+  assert.equal(FILTERS.find((f) => f.label === "Community"), undefined);
 });
 
 test("matchesFilter: 'all' passes everything; others check authored membership", () => {
@@ -244,6 +249,19 @@ test("partitionFilters: 'all' always shows; layers under the threshold fold", ()
   const { shown, folded } = partitionFilters(filters, { live_music: 27, deals_memberships: 2, wellness: 2 }, 5);
   assert.deepEqual(shown.map((f) => f.id), ["all", "live_music"]);
   assert.deepEqual(folded.map((f) => f.id), ["deals_memberships", "wellness"]);
+});
+
+// 2026-08-02: the authored fold is a standing decision, not a volume symptom —
+// a good games week must NOT promote the chip onto the primary bar.
+test("partitionFilters: an authored-folded lens stays in More however well stocked", () => {
+  const filters = [
+    { id: "all", label: "All" },
+    { id: "games", label: "Games" },
+    { id: "live_music", label: "Live Music" },
+  ];
+  const { shown, folded } = partitionFilters(filters, { games: 40, live_music: 27 }, 5);
+  assert.deepEqual(shown.map((f) => f.id), ["all", "live_music"]);
+  assert.deepEqual(folded.map((f) => f.id), ["games"]);
 });
 
 // 2026-07-24 user feedback: "same day events that are past its start time

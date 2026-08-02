@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateCard, inGreenpoint, FILTER_IDS, TRUST_RISKS } from "./cardSchema.js";
+import { validateCard, inGreenpoint, FILTER_IDS, FOLDED_FILTER_IDS, TRUST_RISKS } from "./cardSchema.js";
 
 const good = {
   id: "test-card",
@@ -92,12 +92,19 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the 2026-07-26 re-order: things to do lead, informational follows, shopping folded into deals", () => {
+test("FILTER_IDS matches the 2026-08-02 launch IA: games added, folded; the 07-26 order otherwise intact", () => {
   assert.deepEqual(FILTER_IDS, [
     "food_drink", "family_kids", "arts_culture",
     "wellness", "live_music", "community",
     "news", "deals_memberships",
+    "games",
   ]);
+  // `games` trails because it is authored-folded — its position only orders it
+  // inside "More". The primary bar's merchandising order is unchanged.
+  assert.deepEqual(FOLDED_FILTER_IDS, ["games"]);
+  for (const id of FOLDED_FILTER_IDS) {
+    assert.ok(FILTER_IDS.includes(id), `${id} is folded but not a real lens`);
+  }
 });
 
 test("filters may be empty (All-only one-off) but never absent", () => {

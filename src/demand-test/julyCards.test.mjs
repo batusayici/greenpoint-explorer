@@ -320,6 +320,41 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
 });
 
+// 2026-08-02 launch IA (Batu): "warhammer night shouldn't be in the same lens
+// as cinema noir or art gallery opening." Arts & Culture had reached 24 cards
+// with six of them games — a Warhammer tournament, two pinball leagues and a
+// backgammon club on the same shelf as a film festival, a gallery talk and a
+// one-day choir. The intent differs: arts cards are ATTEND ONCE, games cards
+// are JOIN A STANDING SCENE. `games` is authored-folded into "More" — it earns
+// a lens, not a primary chip.
+test("the games lens holds play, and no games card is left in Arts & Culture", () => {
+  const games = seed.cards.filter((c) => c.filters.includes("games")).map((c) => c.id).sort();
+  assert.deepEqual(games, [
+    "black-rabbit",
+    "carcosa-warhammer-rtt-0801",
+    "last-place-chess-chill",
+    "scrappleland",
+    "scrappleland-backgammon-0804",
+    "scrappleland-pinball-league-0805",
+    "scrappleland-topperz-pinball-0802",
+    "threes-board-game-speed-dating-0805",
+  ]);
+  // The whole point of the cut: play and culture no longer share a shelf.
+  for (const id of games) {
+    const c = seed.cards.find((x) => x.id === id);
+    assert.ok(!c.filters.includes("arts_culture"), `${id} is still in arts_culture — the split leaked`);
+  }
+  // Venues keep their real-world lens too: Scrappleland, Black Rabbit and
+  // Threes are places you eat and drink, not only places you play.
+  for (const id of ["scrappleland", "black-rabbit", "threes-board-game-speed-dating-0805"]) {
+    assert.ok(seed.cards.find((x) => x.id === id).filters.includes("food_drink"), `${id} lost food_drink`);
+  }
+  // Batu, 2026-08-02: "kids events should be in kids." The kids' D&D/Magic
+  // clubs stay single-filed to family_kids and do NOT double-file into games.
+  const kidsGames = seed.cards.find((c) => c.id === "nyplays-fall-registration");
+  assert.deepEqual(kidsGames.filters, ["family_kids"]);
+});
+
 test("no card is lens-less — the six 2026-07-25 stragglers resolved into Community or Arts & Culture", () => {
   // Empty filters (All-only) is legal schema-wise but was a placeholder, not
   // a destination: every card that landed there got a real home same day.
@@ -342,6 +377,9 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // to arts_culture (the shelf that already holds culture/ideas programming).
   // The lens rule is now hard: hands-on civic participation and mutual aid
   // only — never a gathering that is simply social.
+  // 2026-08-02: that pair moved again, out of arts_culture and into the new
+  // `games` lens — arts_culture was only ever the least-wrong home for them.
+  // The lens is now LABELLED "Civic" to match the rule; the id is unchanged.
   // 2026-08-01 expiry took the library's Tuesday civic block; the standing
   // asks plus the CAG meeting remain.
   assert.deepEqual(community, [

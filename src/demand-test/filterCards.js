@@ -1,7 +1,7 @@
 // Track V — filter-bar model, Today lens, pin classification. Filter membership
 // is AUTHORED on each card (card.filters), not inferred: deterministic, testable,
 // and editable without touching logic.
-import { FILTER_IDS } from "./cardSchema.js";
+import { FILTER_IDS, FOLDED_FILTER_IDS } from "./cardSchema.js";
 
 const LABELS = {
   food_drink: "Food & Drink",
@@ -9,9 +9,13 @@ const LABELS = {
   family_kids: "Family & Kids",
   live_music: "Live Music",
   wellness: "Wellness",
-  community: "Community",
+  // "Civic", not "Community" (Batu, 2026-08-02): the lens is civic action and
+  // mutual aid, and "Community" invited exactly the social gatherings the
+  // 2026-07-30 rule had to evict. The label now says what the rule says.
+  community: "Civic",
   deals_memberships: "Deals & Memberships",
   news: "News",
+  games: "Games",
 };
 
 export const FILTERS = [
@@ -227,11 +231,16 @@ export function liveFilterCounts(cards, date) {
   return counts;
 }
 
+// Two ways into "More": the thin-layer fold above (a volume symptom that heals
+// when the ingest stocks the layer) and the AUTHORED fold — lenses that belong
+// inside More by decision, whatever their count (2026-08-02, `games`). The
+// authored fold wins: a good games week must not silently promote the chip.
 export function partitionFilters(filters, counts, threshold) {
   const shown = [];
   const folded = [];
   for (const f of filters) {
-    if (f.id === "all" || (counts[f.id] ?? 0) >= threshold) shown.push(f);
+    if (FOLDED_FILTER_IDS.includes(f.id)) folded.push(f);
+    else if (f.id === "all" || (counts[f.id] ?? 0) >= threshold) shown.push(f);
     else folded.push(f);
   }
   return { shown, folded };

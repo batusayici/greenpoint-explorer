@@ -77,11 +77,35 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // leading with live_music read as "gig tracker", which this isn't. shopping
 // folded into deals_memberships (the category axis below keeps "shopping" for
 // pin labels — different taxonomy).
+// Launch IA re-cut 2026-08-02 (Batu): `games` added, `community` relabelled
+// "Civic". The trigger was Arts & Culture reading as a junk drawer at 24 cards
+// — a Warhammer tournament, a pinball league and a backgammon club sat on the
+// same shelf as Film Noir, a gallery opening and a one-day choir. Six of the
+// 24 were games, and the intent is genuinely different: arts cards are ATTEND
+// ONCE, games cards are JOIN A STANDING SCENE (Tuesday backgammon, Wednesday
+// pinball, Tuesday chess, Tuesday trivia — two of them are already filed
+// `subscription`, not `event`). Recurring weeknight commitments are the
+// retention shape; one-off cultural attendance is not.
+// `community` → "Civic" is a LABEL change only — the filter id stays
+// `community`, so authored card membership and the ingest rules are untouched.
+// `games` is authored-FOLDED (see FOLDED_FILTER_IDS) — it earns a lens, not a
+// primary chip slot.
 export const FILTER_IDS = [
   "food_drink", "family_kids", "arts_culture",
   "wellness", "live_music", "community",
   "news", "deals_memberships",
+  "games",
 ];
+
+// Authored fold (Batu, 2026-08-02): these lenses ALWAYS live inside "More",
+// regardless of how many live cards they carry. Distinct from the thin-layer
+// fold in `partitionFilters`, which is a volume symptom that heals itself when
+// the ingest stocks a layer — this is a standing merchandising decision, and
+// leaving it to the count would let a good week silently promote `games` onto
+// the primary bar and undo the call. The ~3 chips visible after "All" at 375px
+// are the product's positioning statement; games seasons the neighborhood, it
+// does not define it.
+export const FOLDED_FILTER_IDS = ["games"];
 
 // Generous Greenpoint envelope (Newtown Creek → McCarren, East River → BQE).
 export const GREENPOINT_BBOX = {
