@@ -668,13 +668,14 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
       <ol className="july-list" ref={listRef}>
         {groups.map((group, gi) => (
           <React.Fragment key={group.key}>
-            {/* Calendar scan (2026-07-15 review): a lone Ongoing group needs no
-                header — headers appear once dated cards give days to scan.
-                Not aria-hidden: the calendar exists for screen readers too
-                (UX eval, F25). */}
+            {/* Calendar scan (2026-07-15 review): a lone shelf section needs no
+                header — headers appear once there is more than one group to
+                tell apart, and under a single-kind lens the chip already said
+                what it is. Not aria-hidden: the calendar exists for screen
+                readers too (UX eval, F25). */}
             {/* h2 (crit round 2, #2): without it the outline was H1 → 77 H3s
-                flat — the day header is the level that groups the cards. */}
-            {(groups.length > 1 || group.key !== "ongoing") && (
+                flat — the group header is the level that groups the cards. */}
+            {(groups.length > 1 || !group.shelf) && (
               <li className="july-day">
                 <h2>{group.label}</h2>
               </li>

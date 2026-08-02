@@ -4,7 +4,34 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — Launch IA: `games` lens added (folded), Community relabelled Civic
+## 2026-08-02 (latest) — The undated shelf renders as six named sections; "Ongoing" retired
+
+Decision (Batu): **"go straight to the Ongoing sectioning."** The single `Ongoing` group is replaced by the six kinds it was already ranked into, each with its own header: **How to help · What changed · Every week · Deals · Memberships · Places.**
+
+**What forced it:** Josh's 2026-08-02 walkthrough (`docs/context/2026-08-02-josh-feedback-place-and-small-business.md`) — he noticed deals and memberships and **never found news at all**. Investigating the report produced a worse finding than the report: **0 of 23 news-lens cards carry a date.** `groupByDay` buckets every undated card into `ongoing` at `Number.POSITIVE_INFINITY`, so no news card could *ever* enter a day group. News wasn't below the fold — it was unreachable by the feed's only axis. Measured live at 375×812: **55 of 80 cards (69% of the page, 4.6 screens) under one header that begins 2.1 screens down** and names recency instead of subject. The 2026-07-30 kind ranking was already computing the right partition; none of it was legible.
+
+Josh's own diagnosis — "you have to do one full scroll to know that, oh, there's also neighborhood news in this thing" — understated it. He was on **desktop**, where the chip bar wraps and the News chip was fully visible on screen, and he still missed news. The chip bar reads as a narrowing control, not a content index; the feed body is the surface that teaches what's in here.
+
+**Reading order is unchanged.** Every card sits exactly where the 2026-07-30 ranking already put it — this only names the boundaries that were already there, which is why the "shelf orders every kind, freshest first" test now asserts the same flat sequence across sections. No card moved; no rank changed.
+
+**Labels are editorial, not taxonomic.** "How to help" answers the question Josh actually asked out loud ("how can you support the neighborhood?"); "What changed" is the code's own framing for the news tier and is honest about a shelf where an opening and a Superfund update sit together. Naming them "Civic / News / Recurring / Discounts / Subscriptions / Businesses" would have been the schema talking to itself.
+
+**One structural consequence:** the shelf sections carry small ranks (0–5) that a day offset *would* outrank, so calendar-before-shelf became its own sort key rather than a side effect of `POSITIVE_INFINITY`. A dated card 398 days out is the regression guard.
+
+**Cost:** page height 5455 → 5592px at 375px (+2.5%) for six wayfinding anchors.
+
+**Stated risk, accepted:** thin lenses go header-heavy. Live Music renders 8 headers over 10 cards, several sections holding one card. Day groups already did exactly this (5 single-card days in that same lens), so it is a pre-existing pattern rather than a new class of clutter, and the All view — the case that matters — distributes cleanly at 3 / 14 / 8 / 3 / 8 / 18. **Revisit if a section holds one card in the All view.**
+
+**Deliberately NOT done:**
+- **No re-ranking.** `new_business` stays under Places, not "What changed" — that is the 2026-07-30 call and this change is not the place to relitigate it.
+- **No promotion into the first viewport.** Batu's original proposal (show content-type variety above the fold) is a separate, still-unbuilt step. Sectioning is its precondition: a promoted row needs a named destination to point at, or it is an orphan. Narrowed scope when it happens: **one card, not a nine-type strip** — the first screen still holds ~419px of feed against 9 lenses, and a category carousel is both the generic answer and a trade of validated temporal density ("every day, all day long, there are interesting things I could be doing") for hypothesised categorical breadth.
+- **No chip-order change.** News is the largest lens at 23 cards and still sits at position #7 in `FILTER_IDS`, off the right edge at 375px, behind a Wellness chip that folds out anyway. That is currently an accident of insertion order rather than a decision, and per the same-day games precedent — chip real estate is defended separately from taxonomy — **it is Batu's positioning call, not a bug fix.**
+
+Encoded in `filterCards.js` (`SHELF_SECTIONS`, `shelfSection`, `groupByDay` two-key sort, `byFreshest`), `CardPanel.jsx` (headerless rule now keyed on `group.shelf`), `filterCards.test.mjs` (5 rewritten + 4 new tests, incl. the rank↔section drift guard). 461/461 green, build clean, verified in-browser across all seven visible lenses.
+
+Owner: Batu.
+
+## 2026-08-02 — Launch IA: `games` lens added (folded), Community relabelled Civic
 
 Decision (Batu): **"warhammer night shouldn't be in the same lens as cinema noir or art gallery opening. kids events should be in kids."** Plus two calls on the shape of it: **Games lives under "More"**, and **Community is relabelled "Civic"**.
 

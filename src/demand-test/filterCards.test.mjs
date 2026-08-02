@@ -94,13 +94,94 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
     "Today · Wed, Jul 15",
     "Tomorrow · Thu, Jul 16",
     "Sat, Jul 18",
-    "Ongoing",
+    "Deals",
+    "Places",
   ]);
   assert.deepEqual(groups[0].cards.map((c) => c.id), ["series"], "running window is live today");
   assert.deepEqual(groups[1].cards.map((c) => c.id), ["thu-early", "thu-late"], "within a day: earliest first");
-  // Both trail as Ongoing; inside it the standing deal (rank 3) outranks the
-  // category-less place card (rank 5) — the 2026-07-30 kind ranking.
-  assert.deepEqual(groups[3].cards.map((c) => c.id), ["club", "shop"], "undated + recurring deals trail as Ongoing");
+  // Both trail the calendar; the 2026-07-30 kind ranking that used to order one
+  // anonymous "Ongoing" block now names each kind as its own section, so the
+  // standing deal (rank 3) and the category-less place card (rank 5) separate.
+  assert.deepEqual(groups[3].cards.map((c) => c.id), ["club"], "recurring deal → Deals");
+  assert.deepEqual(groups[4].cards.map((c) => c.id), ["shop"], "category-less card → Places");
+});
+
+// 2026-08-02: the undated shelf was ONE group labelled "Ongoing" — 55 of 80
+// live cards (69% of the page, 4.6 screens at 375px) under a header that names
+// recency instead of subject, beginning 2.1 screens down. Every kind was
+// already ranked (2026-07-30) and none of that ranking was legible. The shelf
+// now renders as its six ranked kinds, each with its own header.
+test("groupByDay: the undated shelf is six named sections in decay order, after every dated day", () => {
+  const wed = new Date("2026-07-30T12:00:00-04:00");
+  const cards = [
+    { id: "place", category: "food_drink" },
+    { id: "signup", category: "subscription" },
+    { id: "news", category: "news" },
+    { id: "ask", category: "civic_action" },
+    { id: "offer", category: "discount" },
+    { id: "programme", category: "event", recurring: true },
+    { id: "dated", startsAt: "2026-07-31T19:00:00-04:00", endsAt: "2026-07-31T22:00:00-04:00" },
+  ];
+  const groups = groupByDay(cards, wed);
+  assert.deepEqual(groups.map((g) => g.label), [
+    "Tomorrow · Fri, Jul 31",
+    "How to help",
+    "What changed",
+    "Every week",
+    "Deals",
+    "Memberships",
+    "Places",
+  ]);
+  assert.deepEqual(groups.map((g) => g.key), [
+    "d1",
+    "shelf-asks", "shelf-changed", "shelf-weekly",
+    "shelf-deals", "shelf-memberships", "shelf-places",
+  ]);
+  assert.deepEqual(
+    groups.map((g) => g.shelf === true),
+    [false, true, true, true, true, true, true],
+    "the shelf flag is what suppresses a lone section's header in CardPanel",
+  );
+});
+
+// Guards the ordering rewrite: "Ongoing" used to sort last via
+// Number.POSITIVE_INFINITY, which a day offset could never reach. The shelf now
+// carries small rank numbers, so day-vs-shelf must be its own sort key — a card
+// a year out still belongs on the calendar, above the shelf.
+test("groupByDay: a far-future day still precedes the shelf", () => {
+  const wed = new Date("2026-07-30T12:00:00-04:00");
+  const groups = groupByDay([
+    { id: "place", category: "food_drink" },
+    { id: "far", startsAt: "2027-09-01T19:00:00-04:00", endsAt: "2027-09-01T22:00:00-04:00" },
+  ], wed);
+  assert.deepEqual(groups.map((g) => g.key), ["d398", "shelf-places"]);
+});
+
+// SHELF_SECTIONS is indexed by ongoingRank. Adding a rank without a section
+// would put `undefined.key` on the hot path and white-screen the feed, so the
+// pairing is asserted rather than defended at runtime.
+test("groupByDay: every rank has a section", async () => {
+  const { ongoingRank, shelfSection } = await import("./filterCards.js");
+  const cards = [
+    { category: "civic_action" }, { category: "support_local" },
+    { category: "news" }, { category: "g_train_support" },
+    { category: "event", recurring: true }, { category: "discount" },
+    { category: "subscription" }, { category: "new_business" },
+    { category: "food_drink" }, { category: "service" },
+    { category: "shopping" }, { category: "arts_culture" },
+  ];
+  const seen = new Set();
+  for (const card of cards) {
+    const section = shelfSection(card);
+    assert.ok(section?.key && section?.label, `rank ${ongoingRank(card)} (${card.category}) has no section`);
+    seen.add(ongoingRank(card));
+  }
+  assert.deepEqual([...seen].sort(), [0, 1, 2, 3, 4, 5], "every rank is exercised");
+});
+
+test("groupByDay: kinds with no cards produce no section", () => {
+  const groups = groupByDay([{ id: "n", category: "news" }], new Date("2026-07-30T12:00:00-04:00"));
+  assert.deepEqual(groups.map((g) => g.label), ["What changed"]);
 });
 
 // 2026-07-25 user feedback: under the News lens, real news read below the
@@ -110,15 +191,16 @@ test("groupByDay: calendar scan — Today, Tomorrow, dated days, then Ongoing (2
 // for Ongoing"), which orders the whole undated shelf instead of just hoisting
 // news out of it: asks → news → recurring programming → offers → signups →
 // places, freshest first inside each kind.
-test("groupByDay: within Ongoing, news/g_train category cards sort before places", () => {
+test("groupByDay: news/g_train category cards section above places", () => {
   const wed = new Date("2026-07-25T12:00:00-04:00");
   const opening1 = { id: "opening-1", category: "new_business" };
   const realNews = { id: "real-news", category: "news" };
   const opening2 = { id: "opening-2", category: "food_drink" };
   const gtrainHub = { id: "gtrain-hub", category: "g_train_support" };
   const groups = groupByDay([opening1, realNews, opening2, gtrainHub], wed);
-  const ongoing = groups.find((g) => g.key === "ongoing");
-  assert.deepEqual(ongoing.cards.map((c) => c.id), ["real-news", "gtrain-hub", "opening-1", "opening-2"]);
+  assert.deepEqual(groups.map((g) => g.key), ["shelf-changed", "shelf-places"]);
+  assert.deepEqual(groups[0].cards.map((c) => c.id), ["real-news", "gtrain-hub"]);
+  assert.deepEqual(groups[1].cards.map((c) => c.id), ["opening-1", "opening-2"]);
 });
 
 test("ongoingRank: kinds rank by decay + actionability, recurring events by flag not category", async () => {
@@ -137,7 +219,7 @@ test("ongoingRank: kinds rank by decay + actionability, recurring events by flag
   assert.equal(ongoingRank({ category: "discount", recurring: true }), 3);
 });
 
-test("groupByDay: Ongoing orders every kind, freshest first inside a kind", () => {
+test("groupByDay: the shelf orders every kind, freshest first inside a kind", () => {
   const wed = new Date("2026-07-30T12:00:00-04:00");
   const cards = [
     { id: "place-old", category: "food_drink", createdAt: "2026-07-02" },
@@ -149,15 +231,15 @@ test("groupByDay: Ongoing orders every kind, freshest first inside a kind", () =
     { id: "news-new", category: "news", createdAt: "2026-07-27" },
     { id: "programme", category: "event", createdAt: "2026-07-08", recurring: true },
   ];
-  const ongoing = groupByDay(cards, wed).find((g) => g.key === "ongoing");
-  assert.deepEqual(ongoing.cards.map((c) => c.id), [
+  const groups = groupByDay(cards, wed);
+  assert.deepEqual(groups.flatMap((g) => g.cards.map((c) => c.id)), [
     "ask",
     "news-new", "news-old",
     "programme",
     "offer",
     "signup",
     "place-new", "place-old",
-  ]);
+  ], "reading order is unchanged — the sections only name the kinds it already had");
 });
 
 // 2026-07-22 UX eval (F4): the live Today group scanned 5 PM → 10 AM → 7 PM,
@@ -189,10 +271,11 @@ test("groupByDay: untimed cards trail on future days too", () => {
   assert.deepEqual(groups[0].cards.map((c) => c.id), ["fri-noon", "fri-untimed"]);
 });
 
-test("groupByDay: an all-undated layer is a single Ongoing group", () => {
+test("groupByDay: an all-undated layer of one kind is a single shelf section", () => {
   const groups = groupByDay([{ id: "a" }, { id: "b" }], new Date("2026-07-15T12:00:00-04:00"));
   assert.equal(groups.length, 1);
-  assert.equal(groups[0].key, "ongoing");
+  assert.equal(groups[0].key, "shelf-places");
+  assert.equal(groups[0].shelf, true, "a lone shelf section renders headerless");
 });
 
 // The community-alert pinned group was removed 2026-07-29 (punch list P2 #13):

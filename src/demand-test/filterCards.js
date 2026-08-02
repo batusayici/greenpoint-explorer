@@ -55,8 +55,9 @@ export function sortTodayFirst(cards, date) {
 // Day-grouped feed (2026-07-15 review: events & live music must be scannable
 // by date). Dated cards bucket under the calendar day they happen — a window
 // covering today reads "Today"; future starts read their start day. Undated
-// cards and recurring deals (standing offers) trail in "Ongoing". Group order:
-// Today, then future days ascending, then Ongoing. Within a day: the timed
+// cards and recurring deals (standing offers) trail on the kind-named shelf
+// below the calendar (SHELF_SECTIONS). Group order: Today, then future days
+// ascending, then the shelf sections in rank order. Within a day: the timed
 // schedule first by clock, authored order as tiebreak — and Today uses
 // today's CLOCK, not absolute startsAt, so an in-window series anchored weeks
 // ago can't outrank this morning's event (2026-07-22 UX eval, F4). Untimed
@@ -83,15 +84,15 @@ function minutesOfDayNY(iso) {
   return (get("hour") % 24) * 60 + get("minute");
 }
 
-// Ongoing is the undated shelf — up to ~49 rows with no calendar to order
-// them. Until 2026-07-30 the rule was a single news-first partition, which
-// solved its own bug (2026-07-25: reporting must outrank business openings)
-// and left everything below it in raw ingest-insertion order: a service card
-// between two food_drink cards, three dance signups adrift from a fourth,
-// standing deals scattered across rows 39/45/47. So the shelf is ranked by
-// KIND — descending by how fast the row decays and how directly it can be
-// acted on — and freshest-first inside each kind, which self-maintains as
-// each ingest appends.
+// The undated shelf — the cards with no calendar to order them. Until
+// 2026-07-30 the rule was a single news-first partition, which solved its own
+// bug (2026-07-25: reporting must outrank business openings) and left
+// everything below it in raw ingest-insertion order: a service card between
+// two food_drink cards, three dance signups adrift from a fourth, standing
+// deals scattered across rows 39/45/47. So the shelf is ranked by KIND —
+// descending by how fast the row decays and how directly it can be acted on —
+// and freshest-first inside each kind, which self-maintains as each ingest
+// appends.
 const ONGOING_RANK = {
   // 0 — asks: the neighborhood needs something from you, and the window closes.
   civic_action: 0,
@@ -115,16 +116,39 @@ export function ongoingRank(card) {
   return ONGOING_RANK[card.category] ?? RANK_PLACE;
 }
 
+// Each rank RENDERS as its own titled section (2026-08-02). Until now the six
+// ranks were sorted into one block labelled "Ongoing" — 55 of 80 live cards,
+// 69% of the page and 4.6 screens at 375px, under a header that names recency
+// instead of subject and starts 2.1 screens down. All 23 news-lens cards are
+// undated, so *none* of them can ever reach a day group: news wasn't below the
+// fold, it was unreachable by the feed's only axis. Naming the kinds costs no
+// new component and makes the scroll self-describing — you pass "What changed"
+// on the way to "Places" instead of one anonymous run of rows.
+//
+// Indexed BY RANK, so the ranking above is the section order — there is no
+// second list to drift out of sync. `groupByDay: every rank has a section`
+// fails if a rank is ever added without one.
+const SHELF_SECTIONS = [
+  { key: "shelf-asks", label: "How to help" },
+  { key: "shelf-changed", label: "What changed" },
+  { key: "shelf-weekly", label: "Every week" },
+  { key: "shelf-deals", label: "Deals" },
+  { key: "shelf-memberships", label: "Memberships" },
+  { key: "shelf-places", label: "Places" },
+];
+export const shelfSection = (card) => SHELF_SECTIONS[ongoingRank(card)];
+
 // Freshest first inside a kind — an undated card's createdAt is the only
-// recency signal it has, and it makes each refresh's additions surface.
+// recency signal it has, and it makes each refresh's additions surface. The
+// kind itself is now carried by the section, not by the comparator.
 const created = (c) => Date.parse(c.createdAt ?? "") || 0;
-const byOngoingRank = (a, b) => ongoingRank(a) - ongoingRank(b) || created(b) - created(a);
+const byFreshest = (a, b) => created(b) - created(a);
 
 export function groupByDay(cards, date) {
   const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
-  const groups = new Map(); // key -> { key, order, label, cards }
-  const put = (key, order, label, card) => {
-    if (!groups.has(key)) groups.set(key, { key, order, label, cards: [] });
+  const groups = new Map(); // key -> { key, order, label, shelf, cards }
+  const put = (key, order, label, card, shelf = false) => {
+    if (!groups.has(key)) groups.set(key, { key, order, label, shelf, cards: [] });
     groups.get(key).cards.push(card);
   };
   // (The community-alert pinned group was removed 2026-07-29, punch list P2
@@ -132,7 +156,9 @@ export function groupByDay(cards, date) {
   for (const card of cards) {
     const dated = card.startsAt != null || card.endsAt != null;
     if (!dated || card.recurring) {
-      put("ongoing", Number.POSITIVE_INFINITY, "Ongoing", card);
+      const rank = ongoingRank(card);
+      const section = SHELF_SECTIONS[rank];
+      put(section.key, rank, section.label, card, true);
     } else if (isActiveOn(card, date)) {
       put("today", 0, `Today · ${DAY_LABEL.format(date)}`, card);
     } else {
@@ -155,9 +181,13 @@ export function groupByDay(cards, date) {
     };
     return t(a) - t(b);
   };
+  // Calendar before shelf is its own sort key. The single "Ongoing" group used
+  // to trail via Number.POSITIVE_INFINITY, which no day offset could reach;
+  // the sections carry small ranks (0–5) that a day offset WOULD outrank, so a
+  // card a year out has to be kept above the shelf explicitly.
   return [...groups.values()]
-    .sort((a, b) => a.order - b.order)
-    .map((g) => ({ ...g, cards: [...g.cards].sort(g.key === "ongoing" ? byOngoingRank : byClock) }));
+    .sort((a, b) => (a.shelf === b.shelf ? a.order - b.order : a.shelf ? 1 : -1))
+    .map((g) => ({ ...g, cards: [...g.cards].sort(g.shelf ? byFreshest : byClock) }));
 }
 
 // A dated card is dead the moment its window closes — expiry can't wait for
