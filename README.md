@@ -6,7 +6,7 @@ A hyperlocal map + feed for Greenpoint, Brooklyn: the week's events, new opening
 
 ## What it is
 
-- A 2D MapLibre map + card feed (React + Vite, no backend). Cards are static JSON, refreshed through a scheduled newsletter-ingest ritual — nothing is invented, every card carries a source. Since 2026-08-02 content ships on machine gates (tests, lint, sourced-quote, geocode, build) rather than a human review diff; roster additions, submissions, and code changes stay human-gated.
+- A 2D MapLibre map + card feed (React + Vite, no backend). Cards are static JSON, refreshed through a scheduled newsletter-ingest ritual — nothing is invented, every card carries a source. Since 2026-08-02 routine updates ship themselves: a card ships only if a verbatim `sourceQuote` substantiates its claims (schema-checked, test-enforced) and its category follows from the source — anything unsourced or ambiguous is held for review. Roster additions, submissions, and code changes stay human-gated.
 - Content covers only locally-owned Greenpoint businesses and community orgs. Coverage target: 100% of on-concept local events and openings.
 
 ## Quickstart

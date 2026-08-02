@@ -11,16 +11,16 @@ Supersedes: v2 (2026-06-11), which governed the now-parked 3D explorer track
 
 ## Roles
 
-- **Batu owns:** product direction, taste, scope, verdicts, **code** publish/deploy approvals, and sending every outbound message. *(Content ingest is the one carve-out — machine-gated auto-ship since 2026-08-02, DECISION_LOG.)*
+- **Batu owns:** product direction, taste, scope, verdicts, **code** publish/deploy approvals, and sending every outbound message. *(Routine content ingest is the one carve-out — substantiated cards auto-ship since 2026-08-02; unsourced or ambiguous ones are still held for review. DECISION_LOG.)*
 - **Agent owns:** the weekly PM/Design/PMM/Analyst loop — ingest, builds, drafts, readouts, verification, plan upkeep — and proposing options with tradeoffs when a taste call is needed.
 
 ## Working Loop
 
-Weekly rhythm (ops plan `docs/launch/2026-07-21-pmf-ops-plan.md`): **Mon** `/ingest-newsletters` (content auto-ships on machine gates since 2026-08-02) + analytics → **Tue** readout + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Build → show → Batu reacts → iterate. Ask before changing scope.
+Weekly rhythm (ops plan `docs/launch/2026-07-21-pmf-ops-plan.md`): **Mon** `/ingest-newsletters` (routine content auto-ships since 2026-08-02; doubtful cards held for review) + analytics → **Tue** readout + top-3 proposals → **Wed–Fri** approved ships (TDD, preview-verified, gated deploy). Build → show → Batu reacts → iterate. Ask before changing scope.
 
 ## Truth Rules
 
-- **Nothing invented, everything sourced.** Events, hours, deals, business status come from named sources (newsletters, org calendars, publishers) or don't ship. Cards are schema-valid (`cardSchema.js`), geocoded, and pass the review diff before deploy.
+- **Nothing invented, everything sourced.** Events, hours, deals, business status come from named sources (newsletters, org calendars, publishers) or don't ship. Cards are schema-valid (`cardSchema.js`) and geocoded. Since 2026-08-02 every new card also carries **`sourceQuote`** — the verbatim line its claims rest on, test-enforced — and a card that can't be substantiated is held for review rather than shipped or dropped.
 - **Coverage is never for sale, and no payer influences it** (`docs/growth/business-model.md`): every verified business gets on the map free; paid placement is labeled enhancement only, never admission, and never on news or community surfaces.
 - Expired content disappears at render time (`eventWindow.js`); deals require `endsAt`.
 - **Correction SLA (2026-07-28):** a disputed card is acknowledged **<24h**; **unpublish first, verify second** (deletion is pre-approved 2026-07-16 — unpublishing a disputed card never waits for a review cycle); the verified correction ships with a note on the card; every dispute is logged in `ingest-ledger.json`. Entry point: the per-card "Something wrong?" link (prefilled card id → feedback form). The AEO surface re-renders on the corrective deploy — a wrong fact must never outlive a day in the crawled copy on our side.

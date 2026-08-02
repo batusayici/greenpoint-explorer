@@ -7,6 +7,8 @@
 // (ISO window for the Today lens). 2026-07-03 place-graph moat fields (spec
 // revision): `trustRisk` (required enum), `relatedCardIds` (optional, cross-card
 // linking), `timeline` (optional, dated history entries) — see DECISION_LOG.
+// 2026-08-02: `sourceQuote` (verbatim substantiating line) — the gate that
+// replaced human content review when ingest went autonomous.
 export const CATEGORIES = [
   "new_business", "food_drink", "shopping", "service", "event",
   "arts_culture", "family_kids", "job", "shopkeeper_profile",
@@ -135,6 +137,16 @@ export function validateCard(card) {
   if (!Array.isArray(card.sourceLinks) || card.sourceLinks.length === 0) {
     err("needs an attributed source (truth rule)");
   } else for (const s of card.sourceLinks) if (!str(s.title)) err("sourceLink missing title");
+
+  // Substantiation (2026-08-02, autonomous-ingest gate): `sourceLinks` proves a
+  // card was ATTRIBUTED; `sourceQuote` proves it was SOURCED — the verbatim
+  // line from the source that carries the card's claims (what/when/where/
+  // price). Attribution alone can't catch a plausible sentence assembled around
+  // a real URL, which is the exact failure a human reviewer used to catch.
+  // Optional in the schema so the pre-2026-08-02 backlog stays valid; required
+  // for new cards by the dated test in julyCards.test.mjs, and a card without
+  // one is HELD for review by the ingest ritual rather than shipped or dropped.
+  if (card.sourceQuote != null && !str(card.sourceQuote)) err("sourceQuote must be a string");
 
   // Hidden-engagement addendum: optional event window for the Today lens.
   for (const key of ["startsAt", "endsAt"]) {

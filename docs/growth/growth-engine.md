@@ -483,17 +483,22 @@ on any truth-rule breach, untagged link, or misread — one strike, one rung dow
 taste gates, kill/graduate/PMF verdicts, and spending money. These aren't
 trust-gated — they're the definition of supervision.
 
-**Content ships autonomously (Batu, 2026-08-02 — supersedes the 2026-07-28
-zero-add/expiry-only promotions):** an ingest run passing the skill's machine
-gates pushes to `main` = prod, adds included. The 2026-07-28 rule gated exactly
-the runs that carried value, and the queue it produced left the live feed a
-week stale — a staleness cost that exceeds the risk of a wrong card, because a
-wrong card is one revert away and a dead feed is a dead product. The gate did
-not disappear, it changed kind: sourced-quote per claim, schema + lint + full
-suite, bbox geocode, build. **Content only.** Roster/sender additions, business
-submissions, code changes, `trustRisk: high` cards, and any run swinging the
-deck &gt;±40% still open a PR — those are trust and judgment calls, not content.
-The L11 freshness alarm is the backstop that makes this legible if runs stop.
+**Routine content ships autonomously (Batu, 2026-08-02 — supersedes the
+2026-07-28 zero-add/expiry-only promotions):** an ingest run pushes its clean
+cards to `main` = prod, adds included. The 2026-07-28 rule gated exactly the
+runs that carried value, and the queue it produced left the live feed a week
+stale — a staleness cost that exceeds the risk of a wrong card, because a wrong
+card is one revert away and a dead feed is a dead product.
+
+**But the gate narrowed rather than vanished, and it is per card.** A card ships
+only if a verbatim `sourceQuote` carries its claims and its category follows
+mechanically from the source; anything unsourced, ambiguously categorized,
+inferred, or source-conflicted is **held in a review PR — never shipped, never
+dropped**. Substantiation is enforced in code (schema field + a dated test), so
+an unsourced card cannot reach prod even by mistake. Roster/sender additions,
+business submissions, code changes, and runs swinging the deck &gt;±40% remain
+fully human-gated — trust and judgment calls, not content. The L11 freshness
+alarm is the backstop that makes this legible if runs stop shipping.
 
 ---
 

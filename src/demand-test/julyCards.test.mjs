@@ -166,6 +166,27 @@ test("no fully-past events linger in the seed (refresh discipline)", () => {
   }
 });
 
+// Substantiation gate (2026-08-02): when ingest went autonomous, "a human read
+// it" stopped being the thing standing between a fabricated claim and a
+// resident. This is what replaced it — every card authored from that date
+// forward carries the verbatim source line its claims rest on. The backlog is
+// grandfathered by createdAt: those cards WERE human-reviewed, so re-quoting
+// them retroactively would be theater. A new card without a quote is not
+// dropped and not shipped — the ingest ritual holds it in a PR for review.
+const SUBSTANTIATION_FROM = "2026-08-02";
+
+test("every card authored under autonomous ingest carries its verbatim source quote", () => {
+  const missing = seed.cards
+    .filter((c) => c.createdAt >= SUBSTANTIATION_FROM)
+    .filter((c) => typeof c.sourceQuote !== "string" || c.sourceQuote.trim().length === 0)
+    .map((c) => c.id);
+  assert.deepEqual(
+    missing,
+    [],
+    `cards created on/after ${SUBSTANTIATION_FROM} must carry sourceQuote — hold them for review instead of shipping`,
+  );
+});
+
 test("deals carry the expiry contract; recurring deals are flagged, dated deals are not", () => {
   // Limited launch: expired dated cards vanish at render time (isExpiredCard), so
   // endsAt is load-bearing on every deal. recurring marks endsAt as merely

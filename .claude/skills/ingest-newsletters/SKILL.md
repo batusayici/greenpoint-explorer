@@ -1,11 +1,11 @@
 ---
 name: ingest-newsletters
-description: Track V content ingest — script-fetch the Greenpoint source roster, diff against last run, parse only changed sources into schema-valid draft cards (subagent fan-out), then geocode, test, and ship content straight to prod on machine gates (2026-08-02 — no content review gate; roster, sender, code, and submission changes stay human-gated). Use when Batu says "run the ingest", "refresh the map", "weekly refresh", "daily refresh", or /ingest-newsletters.
+description: Track V content ingest — script-fetch the Greenpoint source roster, diff against last run, parse only changed sources into schema-valid draft cards (subagent fan-out), then geocode, test, and ship routine updates straight to prod (2026-08-02). Cards are triaged per card: substantiated + mechanically categorized ones ship; unsourced, ambiguous, or conflicting ones are held in a review PR. Roster/sender additions, submissions, and code changes stay human-gated. Use when Batu says "run the ingest", "refresh the map", "weekly refresh", "daily refresh", or /ingest-newsletters.
 ---
 
 # Ingest → Greenpoint Life Map
 
-Turn the week's Greenpoint sources into sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing is invented. Content ships on machine gates (Batu, 2026-08-02 — DECISION_LOG); everything that is not content stays human-gated.**
+Turn the week's Greenpoint sources into sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing is invented. Routine updates ship themselves; doubtful cards are held for review (Batu, 2026-08-02 — DECISION_LOG). Never ship a bad card, and never drop one to avoid reviewing it.**
 
 ## Cost architecture (2026-07-25 redesign — read before running)
 
@@ -62,6 +62,7 @@ For each `changed`/`new` source, spawn an extraction subagent — batch all of t
 > Read ⟨textPath⟩ (full snapshot of ⟨name⟩, ⟨url⟩) and ⟨diffPath⟩ (lines added since last ingest — your focus; ignore removed/boilerplate noise). Source notes: ⟨notes from ingest-sources.json⟩. Today is ⟨date⟩; we card events/offers from today through ⟨+10 days⟩.
 > Extract ONLY facts stated in the text: happenings with a date (events), time-bound offers (deals), standing offers, memberships/clubs, closures/openings/news. Never invent dates, times, prices, venues, free-ness, or active status; mark `free: true` only where the text says free. Skip anything at a non-Greenpoint address (report it in `skipped` with the address). Skip recurring municipal rec classes (pool lessons, Shape Up NYC).
 > Return raw JSON only: `{"items": [{"title", "kind": "event|deal|news|subscription", "startsAt", "endsAt", "venue", "address", "price", "free", "url", "quote": "<the source line(s) verbatim>", "notes"}], "skipped": [{"title", "reason"}], "nothing": false}`. ISO datetimes with -04:00; unknown end time → same-day 23:59. If the diff has no on-concept items, return `{"nothing": true}`.
+> **`quote` is load-bearing and must be copied character-for-character from the text — it is what lets the item ship without a human reading it** (it becomes the card's `sourceQuote`). Never paraphrase, never reconstruct it from memory, never quote a line that doesn't actually carry the claim. If the text doesn't state something, leave that field null and say so in `notes` — a null field gets the item reviewed; a fabricated quote gets a wrong card in front of residents.
 
 The subagent returns data, not cards — the orchestrator does the judgment: dedupe against `npm run ingest:index`, apply the gates above, author the card (schema fields, kicker, filters, copy rules), and cross-link.
 
@@ -69,6 +70,7 @@ The subagent returns data, not cards — the orchestrator does the judgment: ded
 
 - Only facts **stated in the source**. Never invent dates, times, prices, venues, free-ness, or active status. `free: true` only when the source says free.
 - Every card carries `sourceLinks` with `publisher` (+ URL, date). Newsletter-derived cards cite the business/org as publisher.
+- **Every card authored from 2026-08-02 carries `sourceQuote`** — the extraction subagent's verbatim `quote`, the line the card's claims rest on. `sourceLinks` proves the card was *attributed*; `sourceQuote` proves it was *sourced*, and attribution alone can't catch a plausible sentence assembled around a real URL. Schema-checked, and a dated test fails any card with `createdAt >= 2026-08-02` that lacks one.
 - Categories: happenings → `event` (needs `startsAt`+`endsAt`; unknown end time → same-day `23:59` sentinel); time-bound offers → `discount` with real `endsAt`; standing offers/happy hours → `discount` with `recurring: true` and `endsAt` = end of the edition week (verified-through, re-checked next run); neighborhood/civic items → `news` (publisher required); recurring clubs/memberships → `subscription`.
 - **Lens rules (Batu, 2026-07-30) — two lenses have hard membership tests, both violated by the 2026-07-27 run:**
   - **`community` is civic action and mutual aid ONLY** — hands-on participation with neighborhood stakes (cleanups, CAG meetings, advocacy asks, a business asking for help). A gathering that is merely *social* does not qualify no matter how community-flavored it sounds: the 40k tournament and the weekly chess night went to `arts_culture`, which is where culture/ideas programming already lives.
@@ -80,27 +82,38 @@ The subagent returns data, not cards — the orchestrator does the judgment: ded
 - Conflicting sources (e.g. two articles disagree on a date): prefer the dedicated article over a roundup line, note the conflict, set `trustRisk: "medium"`.
 - Re-verify any recurring deal the expiry script FLAGGED (past its verified-through date): confirm at the source and bump `endsAt`, or delete.
 
-### 3. Gates (machine, not human — Batu 2026-08-02)
+### 3. Triage each card: ship, or hold for review (Batu, 2026-08-02)
 
-**Content ships without human review.** The gates are the truth rules in step 2 plus the mechanical checks below; a run that passes them all pushes to prod. The reason this is safe is that the gates are *verifiable*, not judgment calls — every card traces to a named source, and the schema/lint/test suite fails on anything malformed.
+**Routine updates ship. Anything unsourced or uncertainly categorized is held for review — never shipped, never silently dropped.** Triage is **per card**, not per run: a run with nine clean cards and one doubtful one ships nine and PRs the tenth. The old human gate is not being removed so much as *narrowed to the cards that actually need it*.
 
-**Every gate must pass or the run does not ship:**
+**A card SHIPS only if all of these are true:**
 
-1. `npm test` green (schema validity, bbox geocoding, lens rules, unique ids, place-graph integrity, no open-start gigs).
-2. `lintCard` clean on every new/changed card (kicker/summary overlap, over-length).
-3. Every new card has `sourceLinks` with a publisher, and the extraction subagent returned a verbatim `quote` for its claims. No quote → no card.
-4. Every new card geocodes inside the Greenpoint bbox.
-5. `npm run build` succeeds.
+1. **Substantiated** — you can point to the verbatim line in the source that carries its claims (what, when, where, price/free-ness). Put that line in the card's **`sourceQuote`** field. This is schema-checked and enforced by a dated test: any card with `createdAt >= 2026-08-02` and no `sourceQuote` fails `npm test`, so an unsourced card cannot reach prod even by mistake.
+2. **Categorized off the source, not decided** — the category and lens follow mechanically (a dated happening at a venue → `event`; a stated time-bound offer → `discount`; a membership → `subscription`). If you had to *choose* between two plausible homes, it is not mechanical.
+3. **Complete** — no claim inferred, guessed, or filled from prior knowledge. Free-ness in particular: `free: true` only where the source says free.
+4. **In the clear on the standing gates** — Greenpoint bbox, locally-owned rule, aggregator rule, no duplicate of a live card.
+5. **`trustRisk: "low"`** and no source conflict you had to adjudicate.
 
-**Still human-gated — these do NOT auto-ship. Open a PR and stop:**
+**A card is HELD (authored, then PR'd — not deleted) if any of these is true:**
 
-- **Roster or registry changes** — new `ingest-sources.json` entries, new Gmail senders, new `WebFetch` allowlist domains. A new source is a trust decision about a publisher, not a content decision.
-- **Business submissions (L5)** — asks are supply-gate evidence and often need a Batu follow-up; a submission-derived card never auto-ships (unchanged from 2026-07-28).
-- **Any code change** — logic, tests beyond contract-count updates, styling, banner windows. Content runs touch `cards.json`, `geocode-cache.json`, `ingest-ledger.json`, `freshness-stamp.json`, and the contract counts in `julyCards.test.mjs`. **Anything outside that file set means the run is not a content run** — PR it.
-- **`trustRisk: "high"` cards, or a conflicting-source call you had to adjudicate** — flag and PR rather than guess.
-- **A deck swing beyond ±40% of the live card count in one run** — a plausible signature of a broken fetch or a bad diff. Halt, PR, report.
+- No verbatim quote covers a claim, or the quote is thinner than the card (**the single most important hold** — this is the failure a reviewer used to catch).
+- Its category or lens was a judgment call between two plausible homes.
+- Any field is inferred rather than stated — a guessed end time, an assumed price, an "it's probably still running."
+- Sources conflict, or `trustRisk` is `medium`/`high`.
+- The locally-owned or Greenpoint-geography call is genuinely uncertain.
+- It came from a business submission (L5) or a first-time source.
 
-If a gate fails or an item is in the human-gated list, ship everything that passes and PR the remainder — never hold the clean content back because one item needs review.
+Hold means **keep the work**: author the card properly, put it in the PR with the reason on one line, and say what would resolve it. A held card is a queue item, not a loss.
+
+**Run-level gates — all must pass before ANY push:**
+
+1. `npm test` green (schema, substantiation, bbox geocode, lens rules, unique ids, place-graph, no open-start gigs).
+2. `lintCard` clean on every new/changed card.
+3. `npm run build` succeeds.
+4. **Deck swing within ±40%** of the live card count — a bigger swing is the signature of a broken fetch or a bad diff, not a busy week. Halt, PR, report.
+5. **File set is content-only**: `cards.json`, `geocode-cache.json`, `ingest-ledger.json`, `freshness-stamp.json`, and the contract counts in `julyCards.test.mjs`. **Anything outside that set means the run is not a content run** — PR the whole thing.
+
+**Also always human-gated, regardless of card quality:** roster/sender/allowlist additions (a new source is a trust decision about a publisher), and any code change.
 
 ### 4. Ship
 
@@ -108,8 +121,9 @@ If a gate fails or an item is in the human-gated list, ship everything that pass
 2. `node scripts/geocode-demand-cards.mjs` — every new card must resolve inside the bbox (widen `geocodeQuery` to the venue/park name if a street query misses).
 3. Update `julyCards.test.mjs` contract counts (the expiry script printed the post-expiry baseline; adjust for adds) and the refresh-discipline date; `npm test` must pass.
 4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes. Then `npm run ingest:fetch -- --mark-ingested` to promote the ingested snapshots to baselines (include sources whose extraction found nothing — they were processed too; a run that aborted before shipping must NOT mark).
-5. Run the step-3 gate checklist. All green → commit (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
-6. **Report every run in the summary**, whether or not it shipped: what shipped, what was held for review and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
+5. Run the step-3 run-level gates. All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
+6. **Held cards go to a PR** (`ingest/review-<date>`) with a one-line reason each and what would resolve it. Ship first, then PR — a doubtful card must never delay the clean ones.
+7. **Report every run in the summary**, whether or not it shipped: what shipped, what was held and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
 
 **Rollback:** content lives in one JSON file, so a bad ship is `git revert <sha> && git push`. If a spot-check shows the live page broken or a card that shouldn't be there, revert first and diagnose after — do not leave a bad deck live while investigating.
 

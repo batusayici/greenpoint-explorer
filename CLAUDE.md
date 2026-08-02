@@ -12,7 +12,7 @@ npm run preview   # preview production build
 node scripts/geocode-demand-cards.mjs   # geocode new cards (Nominatim → geocode-cache.json)
 ```
 
-Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill). **Since 2026-08-02 content auto-ships**: a run passing the skill's machine gates (tests, lint, sourced-quote, bbox geocode, build) pushes straight to `main` = production. **Roster/sender additions, business submissions, code changes, and `trustRisk: high` cards stay human-gated** and open an `ingest/*` PR. Truth rules are unchanged — the gate moved from "a human looked" to "it traces to a named source and the suite passes."
+Content refresh runs as claude.ai cloud routines (Mon full + daily thin + Wed Greenpointers, via the `/ingest-newsletters` skill). **Since 2026-08-02 routine updates auto-ship** — push to `main` = production. Cards are triaged **per card**: one that is substantiated (carries a verbatim `sourceQuote`) and mechanically categorized ships; one that is unsourced, ambiguously categorized, inferred, or source-conflicted is **held in a review PR — never shipped, never silently dropped**. Roster/sender additions, business submissions, and code changes are always human-gated. Truth rules are unchanged; `sourceQuote` is schema-checked and a dated test fails any card created on/after 2026-08-02 without one.
 
 ## Read First
 
