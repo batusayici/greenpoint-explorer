@@ -8,7 +8,7 @@ test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", ()
   assert.deepEqual(FILTERS.slice(1).map((f) => f.id), FILTER_IDS);
   // g_train filter removed 2026-07-23 (Batu: campaign-as-category was confusing)
   assert.equal(FILTERS.find((f) => f.id === "g_train"), undefined);
-  // 2026-07-25 IA re-cut: events/services retired, deals+clubs merged, wellness+community in.
+  // 2026-07-25 IA re-cut: events/services retired, deals+clubs merged, wellness+civic in.
   assert.equal(FILTERS.find((f) => f.id === "events"), undefined);
   assert.equal(FILTERS.find((f) => f.id === "services"), undefined);
   // Third pass: new folded into news (one letter apart; data showed it was a
@@ -19,11 +19,12 @@ test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", ()
   assert.equal(FILTERS.find((f) => f.id === "wellness").label, "Wellness");
   assert.equal(FILTERS.find((f) => f.id === "news").label, "News");
   assert.equal(FILTERS.find((f) => f.id === "live_music").label, "Live Music");
-  // 2026-08-02 launch IA: `games` in; `community` relabelled "Civic" — the ID
-  // is unchanged, so authored card membership and the ingest rules still say
-  // `community`. Only the chip's words moved.
+  // 2026-08-02 launch IA: `games` in; `community` renamed to `civic` — first
+  // the chip label, then the id itself the same day, so the UI, the card data
+  // and the ingest rules all use one word.
   assert.equal(FILTERS.find((f) => f.id === "games").label, "Games");
-  assert.equal(FILTERS.find((f) => f.id === "community").label, "Civic");
+  assert.equal(FILTERS.find((f) => f.id === "civic").label, "Civic");
+  assert.equal(FILTERS.find((f) => f.id === "community"), undefined, "the old id is gone");
   assert.equal(FILTERS.find((f) => f.label === "Community"), undefined);
 });
 

@@ -48,7 +48,7 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // neighborhood cluster the events umbrella was hiding). Civic stays inside
 // news.
 // Same day, second pass (Batu): the six cards left lens-less sorted into two
-// real groups instead of staying All-only. `community` added — civic/mutual-
+// real groups instead of staying All-only. `civic` added — civic/mutual-
 // aid stewardship (park cleanups, harbor day, dog adoption, a trash-cleanup
 // club, an accessibility-advocacy launch; future home for things like stoop
 // sales). Astrology and a cannabis-science talk moved into `arts_culture`
@@ -77,7 +77,7 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // leading with live_music read as "gig tracker", which this isn't. shopping
 // folded into deals_memberships (the category axis below keeps "shopping" for
 // pin labels — different taxonomy).
-// Launch IA re-cut 2026-08-02 (Batu): `games` added, `community` relabelled
+// Launch IA re-cut 2026-08-02 (Batu): `games` added, `community` renamed
 // "Civic". The trigger was Arts & Culture reading as a junk drawer at 24 cards
 // — a Warhammer tournament, a pinball league and a backgammon club sat on the
 // same shelf as Film Noir, a gallery opening and a one-day choir. Six of the
@@ -86,14 +86,20 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // pinball, Tuesday chess, Tuesday trivia — two of them are already filed
 // `subscription`, not `event`). Recurring weeknight commitments are the
 // retention shape; one-off cultural attendance is not.
-// `community` → "Civic" is a LABEL change only — the filter id stays
-// `community`, so authored card membership and the ingest rules are untouched.
+// `community` → `civic`: relabelled 2026-08-02 as a chip-label-only change,
+// then renamed all the way down the same day (Batu: "it's creating confusion.
+// lets keep things simple and consistent"). Carrying a `community` id under a
+// "Civic" chip meant the UI, the card data and the ingest rules used two words
+// for one lens, and the split cost more than the migration did. **Not renamed:
+// the community-ALERT banner** (`communityAlert.js`, `bannerSlot` kind
+// `"community"`) — a neighborhood-wide alert is a different feature, correctly
+// named, and never surfaces as a lens label.
 // `games` is authored-FOLDED (see FOLDED_FILTER_IDS) — it earns a lens, not a
 // primary chip slot.
 //
 // ORDER IS THE BAR (2026-08-02). `partitionFilters` preserves this array, so an
 // index is not cosmetic — it decides where a lens LANDS when it crosses the
-// fold threshold. `wellness` used to sit at index 3 and `community` at index 5,
+// fold threshold. `wellness` used to sit at index 3 and `civic` at index 5,
 // both invisible only because they were thin; stocking wellness to 5 cards
 // would have dropped it into the peek slot ahead of live_music, news and deals.
 // So: thick lenses in merchandising order first, fold-prone ones behind them, a
@@ -108,7 +114,7 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 export const FILTER_IDS = [
   "food_drink", "family_kids", "arts_culture",
   "live_music", "news", "deals_memberships",
-  "community", "wellness",
+  "civic", "wellness",
   "games",
 ];
 

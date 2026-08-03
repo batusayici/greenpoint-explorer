@@ -487,7 +487,7 @@
       "title": "Adopt a business for shutdown weekends",
       "category": "support_local",
       "filters": [
-        "community"
+        "civic"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Manhattan Ave corridor",
@@ -530,7 +530,7 @@
       "title": "Weigh in on how the G closures are run",
       "category": "civic_action",
       "filters": [
-        "community"
+        "civic"
       ],
       "sourceCampaign": "shop_small_greenpoint_july_2026",
       "locationName": "Shop Small Greenpoint",
@@ -1183,7 +1183,7 @@
       "summary": "The cinema's site leads with a 'Keep Us Alive' fundraiser — the independent cult house is asking the neighborhood for support to stay open.",
       "filters": [
         "arts_culture",
-        "community"
+        "civic"
       ],
       "audience": [
         "resident",
@@ -1406,7 +1406,7 @@
       "address": "105 Franklin St, Brooklyn, NY 11222",
       "summary": "Every Wednesday night at 7:30 — rain, snow, or freezing cold — about 50 volunteers meet at a rotating neighborhood bar to clean the streets of North Brooklyn. 9,400+ lbs of litter picked up since August 2024. All supplies provided, just show up; this week's meetup spot lands on their Instagram early in the week.",
       "filters": [
-        "community"
+        "civic"
       ],
       "audience": [
         "resident",
@@ -1462,7 +1462,7 @@
       "address": "56-27 2nd St, Unit 105, Long Island City, NY 11101",
       "summary": "The Community Advisory Group for the Newtown Creek Superfund cleanup meets in person at the Queens Landing Boathouse, just across the creek — with a Zoom option for joining virtually (advance registration required for the virtual side). CBI posts the agenda before the meeting.",
       "filters": [
-        "community"
+        "civic"
       ],
       "audience": [
         "civic_actor",

@@ -61,7 +61,7 @@ test("seed has exactly 71 cards across the six layers", () => {
   // 2026-07-25 IA re-cut (Batu, N1 groundwork): filter taxonomy re-authored —
   // events/services retired, deals+clubs_signups merged into deals_memberships,
   // wellness added (6 movement cards). Second pass same day: the six cards
-  // left lens-less sorted into community (5, incl. Trash Club moved out of
+  // left lens-less sorted into civic (5, incl. Trash Club moved out of
   // deals_memberships) or arts_culture (2). Third pass same day: `new`
   // folded into `news` (one letter apart; every `new` card dated to the
   // original launch batch, untouched across five later ingests — never a
@@ -70,8 +70,8 @@ test("seed has exactly 71 cards across the six layers", () => {
   // filter-bar membership moved, so pin colors are untouched. Card set
   // itself unchanged throughout. Fourth pass same day: the 4 civic-action-
   // required cards (Newtown Creek CAG, adopt-a-business, MTA advocacy, Film
-  // Noir support) moved from news to community — they ask readers to DO
-  // something, matching community's hands-on-participation definition
+  // Noir support) moved from news to civic — they ask readers to DO
+  // something, matching the lens's hands-on-participation definition
   // better than news's reporting one. The G-train status hub itself
   // (g-train-closures) stays in news — it's the reference/timeline card,
   // not itself an ask.
@@ -375,19 +375,19 @@ test("a card that names a game is never filed under Arts & Culture", () => {
   }
 });
 
-test("no card is lens-less — the six 2026-07-25 stragglers resolved into Community or Arts & Culture", () => {
+test("no card is lens-less — the six 2026-07-25 stragglers resolved into Civic or Arts & Culture", () => {
   // Empty filters (All-only) is legal schema-wise but was a placeholder, not
   // a destination: every card that landed there got a real home same day.
   const lensless = seed.cards.filter((c) => c.filters.length === 0);
   assert.deepEqual(lensless, [], "a growing lens-less list means the taxonomy is leaking — review at ingest");
 });
 
-test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {
+test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th pass)", () => {
   // Park cleanups, harbor day, dog adoption, a trash-cleanup club, an
   // accessibility-advocacy launch — future home for things like stoop sales.
   // 4th pass added the civic-ASK cards: a CAG meeting, adopt-a-business,
   // MTA advocacy, Film Noir support — hands-on participation, not reporting.
-  const community = seed.cards.filter((c) => c.filters.includes("community")).map((c) => c.id).sort();
+  const civic = seed.cards.filter((c) => c.filters.includes("civic")).map((c) => c.id).sort();
   // 2026-07-27 expiry took the dated half of this lens (City of Water Day, the
   // Disabled & Hungry launch, It's My Park at Transmitter, the Saturday library
   // block, Pooch's adoption day) — the standing civic asks are what remain.
@@ -399,10 +399,11 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // only — never a gathering that is simply social.
   // 2026-08-02: that pair moved again, out of arts_culture and into the new
   // `games` lens — arts_culture was only ever the least-wrong home for them.
-  // The lens is now LABELLED "Civic" to match the rule; the id is unchanged.
+  // 2026-08-02: LABELLED "Civic" to match the rule, then the id renamed to
+  // `civic` too — one word for one lens.
   // 2026-08-01 expiry took the library's Tuesday civic block; the standing
   // asks plus the CAG meeting remain.
-  assert.deepEqual(community, [
+  assert.deepEqual(civic, [
     "adopt-a-business",
     "film-noir-support",
     "g-advocacy-mta",
@@ -411,7 +412,7 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
-    assert.ok(!community.includes(id), `${id} is a social gathering, not civic action`);
+    assert.ok(!civic.includes(id), `${id} is a social gathering, not civic action`);
   }
   // Trash Club moved OUT of deals_memberships — it's civic action, not a
   // paid membership; a signup card can only be one thing at a glance.
@@ -419,7 +420,7 @@ test("the community lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4
   // The G-train status hub is a reference/timeline card, not itself an ask —
   // it stays in news, unlike the four action cards above.
   assert.ok(seed.cards.find((c) => c.id === "g-train-closures").filters.includes("news"));
-  assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("community"));
+  assert.ok(!seed.cards.find((c) => c.id === "g-train-closures").filters.includes("civic"));
 });
 
 // 2026-07-30 (Batu): "deals & memberships should only have deals & memberships.

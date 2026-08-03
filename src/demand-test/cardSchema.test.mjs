@@ -96,7 +96,7 @@ test("FILTER_IDS is the bar's real order: thick lenses first, fold-prone ones at
   assert.deepEqual(FILTER_IDS, [
     "food_drink", "family_kids", "arts_culture",
     "live_music", "news", "deals_memberships",
-    "community", "wellness",
+    "civic", "wellness",
     "games",
   ]);
   // `games` trails because it is authored-folded — its position only orders it
@@ -117,7 +117,7 @@ test("FILTER_IDS: a fold-prone lens crossing the threshold enters at the back of
   const { FILTERS, partitionFilters } = await import("./filterCards.js");
   const THRESHOLD = 5;
   const thick = { food_drink: 14, family_kids: 14, arts_culture: 11, live_music: 10, news: 23, deals_memberships: 6 };
-  for (const restocked of ["community", "wellness"]) {
+  for (const restocked of ["civic", "wellness"]) {
     const { shown } = partitionFilters(FILTERS, { ...thick, [restocked]: THRESHOLD }, THRESHOLD);
     const ids = shown.map((f) => f.id);
     assert.equal(ids.at(-1), restocked, `${restocked} enters last, not mid-bar`);

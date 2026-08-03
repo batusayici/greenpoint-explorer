@@ -11,8 +11,9 @@ const LABELS = {
   wellness: "Wellness",
   // "Civic", not "Community" (Batu, 2026-08-02): the lens is civic action and
   // mutual aid, and "Community" invited exactly the social gatherings the
-  // 2026-07-30 rule had to evict. The label now says what the rule says.
-  community: "Civic",
+  // 2026-07-30 rule had to evict. The id was renamed to match the same day —
+  // one word for one lens, in the UI, the card data and the ingest rules.
+  civic: "Civic",
   deals_memberships: "Deals & Memberships",
   news: "News",
   games: "Games",

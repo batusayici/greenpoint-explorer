@@ -4,13 +4,29 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — Chip order: `FILTER_IDS` reordered so a restocked lens enters at the back
+## 2026-08-02 (latest) — Lens id renamed `community` → `civic`; one word for one lens
+
+Decision (Batu): **"its creating confusion. lets keep things simple and consistent."** The morning's relabel had deliberately stopped at the chip — *"Community → 'Civic' is a label change only. The filter id stays `community`"* — leaving the UI saying **Civic** while the card data, the ingest rules and the analytics said `community`. **That entry is superseded: the id is now `civic` end to end.**
+
+**What forced it:** the split was costing more than the migration. Batu tripped on it himself inside a day, reading `community` in a chip-order summary and reading it as a regression. A translation layer that its own owner has to decode is not a saving.
+
+**Concerns raised before proceeding, and how they landed:**
+- **Auto-ship blast radius** — card `filters` are schema-validated against `FILTER_IDS`, so a routine authoring `community` after the rename yields invalid cards → `npm test` fails → that day's content ship blocks. Mitigated in the same change: `SKILL.md`'s lens rule now reads **"author `civic`, never `community`, which now fails schema validation."** No cloud-routine edit is required — per the 2026-08-02 auto-ship entry, none of the three routines embed lens definitions; all read `FILTER_IDS` and defer to `SKILL.md`, so taxonomy changes propagate through the repo alone.
+- **PostHog discontinuity** — `filter_tap` records the raw filter id (`CardPanel.jsx`), so history splits `community` before / `civic` after, mid-way through the retention baseline running since 2026-07-26. **Accepted, not solved.** Any breakdown on `filter_tap.filter` spanning 2026-08-02 must union the two values.
+
+**Deliberately NOT renamed: the community-ALERT banner.** `communityAlert.js`, `activeCommunityAlert`, and `bannerSlot`'s `kind: "community"` keep their name. A neighborhood-wide alert is a different feature, it is *correctly* named, and it never surfaces as a lens label — renaming it would trade one confusion for another.
+
+**Scope:** 5 cards' `filters` in `cards.json` (verified filters-only — the word also appears in card prose, e.g. "Community-funded court lights", and none of that moved) · `FILTER_IDS` · the `LABELS` map · `CardPanel.jsx` chip comment · `cardSchema.test.mjs`, `filterCards.test.mjs`, `julyCards.test.mjs` · `SKILL.md` §2. A new assertion locks the old id out: `FILTERS.find(f => f.id === "community")` must be `undefined`. 462/462 green, build clean, chip and section still render "Civic".
+
+Owner: Batu.
+
+## 2026-08-02 — Chip order: `FILTER_IDS` reordered so a restocked lens enters at the back
 
 Decision (Batu): reorder the array; **leave the rendered bar alone.** New order — `food_drink, family_kids, arts_culture, live_music, news, deals_memberships, community, wellness, games`.
 
 **Measured at 375px** (production): the bar is 872px against a 375px viewport — only 497px of overflow, so nothing is more than two swipes away. Three chips render fully (All · Food & Drink · Family & Kids), **Arts & Culture is cut at 71%** and serves as the scroll affordance, and Live Music · News · Deals & Memberships are one swipe out. Live counts: News 23 · Food & Drink 14 · Family & Kids 14 · Arts & Culture 11 · Live Music 10 · Deals & Memberships 6 · Games 6 · Civic 3 · Wellness 2.
 
-**What forced it:** `partitionFilters` preserves array order, so an index is not cosmetic — it decides **where a lens lands when it crosses the fold threshold**. `wellness` sat at index 3 and `community` at index 5, invisible only because both are thin. Stocking wellness to 5 cards would have dropped it straight into the **peek slot**, displacing live_music, news and deals — three established lenses pushed back by one restocked thin one, with no decision behind it. Fold-prone lenses now trail the thick ones, so crossing the threshold enters the bar at the back and earns its way forward. A test asserts this for both `community` and `wellness`.
+**What forced it:** `partitionFilters` preserves array order, so an index is not cosmetic — it decides **where a lens lands when it crosses the fold threshold**. `wellness` sat at index 3 and `community` (now `civic`) at index 5, invisible only because both are thin. Stocking wellness to 5 cards would have dropped it straight into the **peek slot**, displacing live_music, news and deals — three established lenses pushed back by one restocked thin one, with no decision behind it. Fold-prone lenses now trail the thick ones, so crossing the threshold enters the bar at the back and earns its way forward. A test asserts this for both `civic` and `wellness`.
 
 **No visual change today** — the primary bar renders byte-identical (same 8 chips, same widths, same offsets). The one intended side effect is inside "More", which reorders `Wellness, Civic, Games` → **`Civic, Wellness, Games`**: descending by supply, mission lens first.
 
@@ -81,7 +97,7 @@ Decision (Batu): **"warhammer night shouldn't be in the same lens as cinema noir
 
 **Games is authored-folded into "More"** — a new `FOLDED_FILTER_IDS` in `cardSchema.js`, honoured by `partitionFilters`. This is deliberately **not** the existing thin-layer fold, which is a volume symptom that heals when the ingest stocks a layer: leaving games to the count would let one good week silently promote it onto the primary bar and undo the call. The ~3 chips visible after "All" at 375px are the positioning statement; games seasons the neighborhood, it doesn't define it. Primary chip order is untouched — no muscle-memory reset at launch.
 
-**Community → "Civic" is a label change only.** The filter id stays `community`, so authored card membership, the ingest rules and every test still say `community`. The rename closes a gap between the chip and the rule: the 2026-07-30 rule is civic action and mutual aid *only*, and "Community" is exactly the word that kept inviting the social gatherings that rule had to evict (the 40k tournament and the chess night, twice).
+**Community → "Civic" is a label change only.** ⚠️ **Superseded the same day — the id was renamed to `civic` end to end; see the rename entry at the top of this log.** As written: the filter id stays `community`, so authored card membership, the ingest rules and every test still say `community`. The rename closes a gap between the chip and the rule: the 2026-07-30 rule is civic action and mutual aid *only*, and "Community" is exactly the word that kept inviting the social gatherings that rule had to evict (the 40k tournament and the chess night, twice).
 
 **"Kids events in kids"** was already 11-of-12 true; the one real fix was `artistic-voices-artudio` (an explicitly kids' art workshop) double-filed into arts_culture — now family_kids only. `nyplays-fall-registration` (kids' D&D/Magic clubs) stays single-filed to family_kids and deliberately does **not** double-file into games. Greenpoint Library and Kingsland Wildflowers keep their dual file: all-ages venue and festival, not kids events.
 

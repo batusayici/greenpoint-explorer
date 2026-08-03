@@ -9,7 +9,7 @@ import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
 // the color key lives in the controls people already use, not a legend box.
-// wellness/community/deals_memberships span mixed pin kinds (event + business
+// wellness/civic/deals_memberships span mixed pin kinds (event + business
 // + subscription cards), so they stay plain text like arts_culture/shopping.
 const CHIP_KIND = {
   live_music: "event", // show nights are events; venues keep their business pin
