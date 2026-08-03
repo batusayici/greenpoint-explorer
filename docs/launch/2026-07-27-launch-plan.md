@@ -17,13 +17,13 @@ outbound message; truth rules and II-C palette are non-negotiable.
 | L4 | Error monitoring (hard gate) | ✅ PostHog exception autocapture verified; alert emails confirmed on (Issue assigned + Error tracking weekly digest, Default project scoped) | — |
 | L5 | Business submission path (ops plan 3.3) | ✅ **complete 2026-07-29** | Feed-end supply row + empty-state echo (chrome, not a card), `submit_tap` live, Monday-run "asks" step in the ingest skill. Form live: **"Add your event"** (`aQXzOB`) — name · what's happening · email + hidden `ref`, wired into `SUBMIT_FORM_URL` and `tally-pull.mjs`, capture verified by test submission |
 | L6 | De-July (by Aug 1) | ✅ shipped 2026-07-27 | `cards.json` rename + evergreen meta description + skill migration note. Internal identifiers (`JulyApp.jsx`, `.july-*` CSS, `julyCards.test.mjs`) left as-is; `july-postvalue-done` key must not be renamed |
-| L7 | Domain cutover mechanics | ⬜ open | See §2 |
-| L8 | Growth Operator live | ⬜ this pass | `/growth-weekly` skill + Tuesday routine (§4) |
+| L7 | Domain cutover mechanics | ✅ shipped 2026-08-02 | `AEO_ORIGIN` flipped to `https://greenpoint.life`; apex made primary in Vercel (`www` 308s to apex, not the reverse); vercel.app kept serving as rollback. Prod-verified: `/e/<slug>` curl, sitemap/RSS/ICS/llms.txt, canonical + JSON-LD on new origin, `?src=` survives the `www`→apex hop. `channel-links.md` rows still need regenerating on the new origin |
+| L8 | Growth Operator live | ⬜ open | `/growth-weekly` skill + Tuesday routine (§4) — only remaining item |
 | L9 | R0 retention baseline | ✅ collecting since 2026-07-26 | — |
 | L10 | Per-card correction link + SLA (pressure-test fatal #1) | ✅ shipped 2026-07-28, **fixed 2026-07-29** | "Report an error" per card (`correctionHref`) live; SLA in AGENTS.md (ack <24h, unpublish-first). 2026-07-29: the form had **no hidden field**, so the prefilled `?card=` was being dropped — added and verified, so a report now names its card |
 | L11 | Feed-freshness alarm + verified-through line (pressure-test fatal #2) | ✅ shipped 2026-07-28 | `check-freshness.mjs` in the build (`--stamp` mode, never blocks a corrective deploy) + banner "verified through <date>" degradation live. Remaining: wire the ops-mode check (exit-1 on stale/thin) into a scheduled runner — rides the growth-weekly Monday pull (L8) |
 
-**All builds are shipped** (L5 landed 2026-07-28; the Follow resident CTA landed 2026-07-29 — DECISION_LOG. Two Tally items ride on Batu: the ultra-light **submission** form (L5) and the **Follow segment question** on the signup form, which is R1's zero-build test — growth-engine §2. L7 cutover and L8 routine remain). Feature
+**All builds are shipped** (L5 landed 2026-07-28; the Follow resident CTA landed 2026-07-29 — DECISION_LOG. Two Tally items ride on Batu: the ultra-light **submission** form (L5) and the **Follow segment question** on the signup form, which is R1's zero-build test — growth-engine §2. L7 cutover shipped 2026-08-02; L8 routine remains). Feature
 freeze holds (2026-07-26: no new features before launch; the community-alert banner was the one scoped
 exception, and L10/L11 were error-monitoring-class launch-readiness items granted the same class of
 exception 2026-07-28 — they protect the "verified" promise, they don't add features).

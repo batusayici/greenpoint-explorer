@@ -4,6 +4,18 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
+## 2026-08-02 (latest) — L7 domain cutover shipped: greenpoint.life is canonical, apex primary
+
+Decision (Batu): execute the L7 launch-readiness item — flip the domain cutover. `AEO_ORIGIN` (`src/demand-test/aeo.js`) moved from `https://greenpoint-explorer.vercel.app` to `https://greenpoint.life`, pushed to `main` (`c43ed04..2091b95`).
+
+**Apex made primary, not `www`.** The domain arrived in Vercel with `greenpoint.life` 308-redirecting to `www.greenpoint.life` (Production). Left as-is, every canonical URL, sitemap `<loc>`, `og:url`, and JSON-LD `url` the build now emits would point at a redirecting URL — survivable (crawlers follow 308s, `?src=` verified intact across the hop) but a needless flag for an AEO-first product whose whole bet is being cited directly, and it costs the seeded links/QR cards an extra hop and a longer URL. Flipped in Vercel dashboard: `greenpoint.life` → Production directly, `www.greenpoint.life` → 308 → `greenpoint.life`. `greenpoint-explorer.vercel.app` untouched — stays the rollback target and the live invite-link host (`/july.html` redirect verified still working, query params preserved).
+
+**Prod-verified before and after the flip** (evidence, not assertion): `npm test` 457/457, `npm run build` green, ops-mode freshness check FRESH. Post-deploy: no-JS curl of `/e/<slug>` returns canonical + title/venue/JSON-LD on the new origin; sitemap/rss/ics/llms.txt all 200 on `greenpoint.life`; `www` 308s to apex with `?src=` intact; old vercel.app origin still serves and its `/july.html?src=` redirect preserves params for live invite links.
+
+**Remaining before seeding waves fire:** regenerate every `channel-links.md` row on the new origin (L1's "regenerate at cutover" note). L8 (Growth Operator routine) is now the only open launch-readiness item.
+
+Owner: Batu.
+
 ## 2026-08-02 (latest) — Lens id renamed `community` → `civic`; one word for one lens
 
 Decision (Batu): **"its creating confusion. lets keep things simple and consistent."** The morning's relabel had deliberately stopped at the chip — *"Community → 'Civic' is a label change only. The filter id stays `community`"* — leaving the UI saying **Civic** while the card data, the ingest rules and the analytics said `community`. **That entry is superseded: the id is now `civic` end to end.**
