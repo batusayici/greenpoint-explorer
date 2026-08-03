@@ -42,6 +42,11 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 
    Why this is a hard stop: expiry in step 1 deletes regardless, so a degraded run *shrinks* the deck while looking like a quiet week. That is exactly how 95 cards became 75 between 2026-07-27 and 08-03 (`docs/growth/2026-08-03-supply-analysis.md`). If Batu decides to proceed anyway, re-run with `--allow-degraded` — the flag keeps the choice visible in the command — and say so in the PR body.
 3. Read `changes.json` (the report only — not the snapshots). Sources with status `unchanged` are DONE — do not open them, do not "double-check" them. Sources with `error` go on the Browser-pane list for step 1.
+
+   Each `changed` source reports **`addedLines` and `removedLines`** (printed as `+A/-R`). They mean different things and neither is noise (2026-08-03):
+   - **`+A` > 0** — new items to triage. This is the normal case.
+   - **`+0/-R`** — the source *shrank*: items disappeared with nothing added. Usually events passing, sometimes a cancellation or a calendar emptying out (`bpl-north-brooklyn-calendar` dropped 13 in one run). **Check whether a live card depends on something that vanished** rather than skipping it because the diff file is empty — `<id>.diff.txt` only ever holds added lines.
+   - **`reorderedOnly: true`** — same line set, different byte order. Nothing happened; treat as unchanged.
 4. **Read `watchItems` in the ledger — this is the run's memory of what is already known to be blocked (2026-08-03).** Each entry names an item and the condition that would unblock it. **Do not re-author an item on this list unless its condition is now met**; re-authoring a known-blocked item just to hold it again burns a review cycle every week and teaches nothing. Check the condition, then either promote the item to a real card or leave it. Report the count in the run summary as `N blocked, unchanged` so a stuck queue stays visible instead of going quietly dark.
 
 ### 1. Gather

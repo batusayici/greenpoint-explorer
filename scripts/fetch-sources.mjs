@@ -34,6 +34,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 import { createHash } from "node:crypto";
+import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -276,29 +277,41 @@ for (const src of sources) {
     entry.textPath = `.ingest-cache/${src.id}.txt`;
 
     // Status is relative to the last INGESTED baseline, not the last fetch.
+    // The baseline FILE is the committed truth (it is the one tracked part of
+    // the cache); state.json is a gitignored cache and loses to it — a pull
+    // that brings new baselines beside a stale state made sources report
+    // "changed" against text they matched byte for byte (2026-08-03).
     const baselinePath = join(CACHE_DIR, `${src.id}.ingested.txt`);
-    // Fresh checkouts have the committed baselines but no state.json — derive
-    // the ingested hash from the baseline (snapshots are written text + "\n").
-    if (prev.ingestedHash == null && existsSync(baselinePath)) {
-      prev.ingestedHash = hash(readFileSync(baselinePath, "utf8").replace(/\n$/, ""));
-    }
-    if (prev.ingestedHash === h && !FORCE) {
+    const baseline = existsSync(baselinePath) ? readFileSync(baselinePath, "utf8") : null;
+    const ingestedHash = resolveIngestedHash({
+      baselineText: baseline,
+      stateIngestedHash: prev.ingestedHash,
+      hash,
+    });
+
+    if (ingestedHash === h && !FORCE) {
       entry.status = "unchanged";
     } else {
-      const baseline = existsSync(baselinePath) ? readFileSync(baselinePath, "utf8") : null;
       entry.status = baseline == null ? "new" : "changed";
       if (baseline != null) {
-        const baseSet = new Set(baseline.split("\n"));
-        const added = text.split("\n").filter((l) => !baseSet.has(l));
+        const d = diffAgainstBaseline(baseline, text);
         const diffPath = join(CACHE_DIR, `${src.id}.diff.txt`);
-        writeFileSync(diffPath, added.join("\n") + "\n");
+        writeFileSync(diffPath, d.added.join("\n") + "\n");
         entry.diffPath = `.ingest-cache/${src.id}.diff.txt`;
-        entry.addedLines = added.length;
+        entry.addedLines = d.addedLines;
+        entry.removedLines = d.removedLines;
+        entry.reorderedOnly = d.reorderedOnly;
       }
     }
     writeFileSync(snapPath, text + "\n");
-    state[src.id] = { ...prev, hash: h, fetchedAt: new Date().toISOString(), method };
-    console.log(`  ${entry.status.padEnd(9)} ${src.id} (${method}${entry.addedLines != null ? `, +${entry.addedLines} lines` : ""})`);
+    state[src.id] = { ...prev, hash: h, ingestedHash: ingestedHash ?? prev.ingestedHash, fetchedAt: new Date().toISOString(), method };
+    // A source that only shrank has +0 added and would otherwise read as noise;
+    // show the removals so an emptying calendar is legible.
+    const delta =
+      entry.addedLines == null
+        ? ""
+        : `, +${entry.addedLines}/-${entry.removedLines} lines${entry.reorderedOnly ? " (reordered only)" : ""}`;
+    console.log(`  ${entry.status.padEnd(9)} ${src.id} (${method}${delta})`);
   } catch (e) {
     entry.status = "error";
     entry.error = String(e.message ?? e);
