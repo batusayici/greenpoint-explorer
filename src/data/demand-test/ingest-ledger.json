@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-01T09:30:00-04:00",
+  "lastRunAt": "2026-08-03T09:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1050,6 +1050,61 @@
       "id": "bcc-stretchy-knits-0804",
       "reviewedAt": "2026-08-01",
       "outcome": "Proposed by a sibling run as missing; NOT added — it is the same class already carded here as bcc-knits-leggings-0804 (identical booking URL and 8/4 6:30pm start), just a different id. Adding it would have duplicated the workshop on the map."
+    },
+    {
+      "id": "library-wednesday-programs-0805",
+      "reviewedAt": "2026-08-03",
+      "outcome": "SHIPPED. Greenpoint Library branch calendar (bklynlibrary.org), recovered via plain-fetch fallback after the browser fetch failed. Per-day grouped card for Wed 8/5; free-ness NOT claimed for the day because only the We Speak NYC English class states \"Free\"."
+    },
+    {
+      "id": "library-thursday-programs-0806",
+      "reviewedAt": "2026-08-03",
+      "outcome": "SHIPPED. Same source/day-grouping treatment for Thu 8/6. Free notary + free English class both state free, but the grouped card makes no blanket free claim."
+    },
+    {
+      "id": "library-friday-garden-0807",
+      "reviewedAt": "2026-08-03",
+      "outcome": "SHIPPED. Fri 8/7 rooftop-garden pair (Sensory Garden Hour 10:30am, Garden Educator hours 3-4pm). endsAt is the stated 4pm close, not the 23:59 sentinel."
+    },
+    {
+      "id": "transmitter-saltwater-fishing-0809",
+      "reviewedAt": "2026-08-03",
+      "outcome": "SHIPPED. NYC Parks Transmitter Park events page, recovered via plain-fetch fallback. Urban Park Rangers, 8/9 11:00a-12:30p, \"Free!\" stated. Authored with EMPTY filters: no live lens honestly fits a ranger fishing program, and the schema permits an All-only card rather than inventing a lens."
+    },
+    {
+      "id": "hana-bottomless-makgeolli",
+      "reviewedAt": "2026-08-03",
+      "outcome": "RE-VERIFIED + bumped. Expiry FLAGGED it past verified-through 8/2. hanamakgeolli.com/events fetched \"unchanged\" and still states the offer verbatim, so endsAt moved to 2026-08-09 and sourceQuote was added."
+    },
+    {
+      "id": "bios-apothecary-first-order",
+      "reviewedAt": "2026-08-03",
+      "outcome": "DELETED. Expiry FLAGGED it past verified-through 8/2. Re-verification at the source (Bios Apothecary email, Jul 27) shows the offer is dead: \"Your 10% off introductory offer expires tomorrow\" plus footer terms \"Offer expires 7 days from issue date.\" No current offer exists to bump to, so the card was removed rather than carried."
+    },
+    {
+      "id": "https://www.nycgovparks.org/parks/transmitter-park/events#summerstarz-0807",
+      "reviewedAt": "2026-08-03",
+      "outcome": "Duplicate — SummerStarz Ford v Ferrari 8/7 already carded as summerstarz-ford-v-ferrari-0807. Town Square email independently confirms the series: \"Fridays, July 31st through August 21st\". Not re-added."
+    },
+    {
+      "id": "https://www.brooklyncraftcompany.com/collections/summer-crafty-hours/products/crafty-hour-tie-dye",
+      "reviewedAt": "2026-08-03",
+      "outcome": "Duplicate — already carded as bcc-crafty-hour-tie-dye-0807. Not re-added."
+    },
+    {
+      "id": "https://www.brooklyncraftcompany.com/collections/all-workshops/products/sewing-with-knits-leggings-or-bike-shorts-weeknights-2-parts",
+      "reviewedAt": "2026-08-03",
+      "outcome": "Duplicate — already carded as bcc-knits-leggings-0804. Not re-added."
+    },
+    {
+      "id": "https://www.brooklyncraftcompany.com/pages/kids-classes#0808",
+      "reviewedAt": "2026-08-03",
+      "outcome": "Duplicate — the 8/8 session falls inside the existing recurring card bcc-kids-sewing-camp (8/1-8/22). Not re-added."
+    },
+    {
+      "id": "BROWSER-FETCH-OUTAGE-2026-08-03",
+      "reviewedAt": "2026-08-03",
+      "outcome": "INFRASTRUCTURE. All 22 browser-method roster sources errored with ERR_CONNECTION_RESET; Chromium has no egress in this sandbox at all (even example.com fails, with and without the proxy). Plain fetch is unaffected. Recovered 12 of the 22 via a scratchpad plain-fetch fallback using the same UA and htmlToText as scripts/fetch-sources.mjs. Those 12 were NOT marked ingested (no baseline written) because the fallback text differs from what browserText would produce — leaving them unmarked keeps the next run diffing honestly. Still uncovered: troost, greenpoint-comedy-club, film-noir-cinema, carcosa-club, nyplays, dance-space-ny, sunshine-laundromat, greenpoint-trash-club (JS-thin) and word-bookstore, sparsa (HTTP 403). NOT a roster problem — no source was dropped."
     }
   ],
   "senderRegistry": [
