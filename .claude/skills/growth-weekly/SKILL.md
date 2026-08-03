@@ -175,3 +175,22 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   `greenpoint-explorer.vercel.app` — the old host still serves already-sent
   invite links, so filtering to one host drops real traffic), and say so in the
   readout.
+- **(2026-08-03, cycle 2 — derived from Batu's amendment above)** When the
+  product's origin changes, a `$host` filter **unions** the old and new hosts
+  for as long as the old host still serves live links — never swap one for the
+  other. The old origin keeps receiving traffic from every link already sent.
+- **(2026-08-03, cycle 2 — derived from Batu's L7 commit `2091b95`)** A config
+  value named in a runbook step is not the only copy of it: grep for
+  hand-written duplicates before calling the step done. Launch-plan §2 step 3
+  named only `AEO_ORIGIN`, but `index.html`'s OG/Twitter URLs are hand-written
+  and would have kept advertising the old origin to every scraper.
+- **(2026-08-03, cycle 2 — operator-derived, pending Batu; drop if unwanted)**
+  Never put a card count in outbound copy without regenerating it the morning it
+  is sent. Org card counts are true for about a day — two of cycle 1's three Q1
+  drafts were falsified by ordinary expiry within a week (7 → 2 cards, 8 → 2).
+- **(2026-08-03, cycle 2 — operator-derived, pending Batu; drop if unwanted)**
+  `scripts/posthog-pull.sh` line 9 (`. ./.env.local` under `set -euo pipefail`)
+  aborts the script in cloud, where that file does not exist. Until it is
+  guarded, run the queries from a patched copy in scratch — never edit the
+  committed script mid-readout, and never report `[data pending]` for this
+  cause when the env vars are present.

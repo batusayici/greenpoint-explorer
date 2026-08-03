@@ -16,7 +16,12 @@ count both or it will under-report the pre-cutover channels.
 
 | Channel | `src` | Link (copy exactly) | Note |
 |---|---|---|---|
-| Weekly digest (R1) | `digest` | https://greenpoint.life/?src=digest | **new 2026-07-28** |
+| Weekly digest (R1 control arm) | `digest` | https://greenpoint.life/?src=digest | **new 2026-07-28** |
+| Follow — Family & Kids (R1 treatment) | `follow-family-kids` | https://greenpoint.life/?src=follow-family-kids | **new 2026-08-03** |
+| Follow — Food & Drink (R1 treatment) | `follow-food-drink` | https://greenpoint.life/?src=follow-food-drink | **new 2026-08-03** |
+| Follow — Arts & Culture (R1 treatment) | `follow-arts-culture` | https://greenpoint.life/?src=follow-arts-culture | **new 2026-08-03** |
+| Follow — News (R1 treatment) | `follow-news` | https://greenpoint.life/?src=follow-news | **new 2026-08-03** |
+| Follow — a place (R1 treatment) | `follow-place` | https://greenpoint.life/?src=follow-place | **new 2026-08-03** · one row for all place-follows — a per-place `src` would fragment the join key |
 | Parents-group post (Q2) | `parents` | https://greenpoint.life/?src=parents | **new 2026-07-28** |
 | Q1 org seeding — Greenpoint Library | `org-gp-library` | https://greenpoint.life/?src=org-gp-library | **new 2026-07-28** |
 | Q1 org seeding — Film Noir Cinema | `org-film-noir` | https://greenpoint.life/?src=org-film-noir | **new 2026-07-28** |
