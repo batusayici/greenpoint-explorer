@@ -8,7 +8,7 @@ const seed = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/cards.json", import.meta.url)), "utf8"),
 );
 
-test("seed has exactly 71 cards across the six layers", () => {
+test("seed has exactly 75 cards across the six layers", () => {
   // 2026-07-02 (Batu): per-station G-closure cards cut — closure context lives
   // in the banner; the layer keeps the action cards (adopt + advocacy).
   // 2026-07-08 weekly refresh: Jul 7–12 roundup in, 10 past events out.
@@ -159,15 +159,25 @@ test("seed has exactly 71 cards across the six layers", () => {
   // the terms cap it at "7 days from issue date", so there is no live offer to
   // bump to and the card is deleted rather than carried. Hana's bottomless
   // makgeolli re-verified clean off an unchanged source page. 68 + 3 − 1 = 70.
-  assert.equal(seed.cards.length, 70);
+  // 2026-08-03, PR #18 review: +5 of the nine held cards resolved against their
+  // sources and shipped. The fishing session above is one of them — its NYC
+  // Parks DETAIL page (not the events index the run read) states "Recommended
+  // for ages 8 and older", which makes family_kids a reading rather than a
+  // guess. Also shipped: the Transmitter Park Tuesday yoga series (time
+  // confirmed, 7-8 AM, modelled recurring like sunday-yoga-domino rather than
+  // as the single 8/4 date the run authored), the Marianella anniversary sale,
+  // and the two Brooklyn Youth Ballet cards. The four Brooklyn Craft Company
+  // workshops stay held — their per-session venue lives in a booking widget no
+  // fetch can reach. 70 + 5 = 75.
+  assert.equal(seed.cards.length, 75);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 22, "19 post-expiry + 3 per-day Greenpoint Library cards");
-  assert.equal(count((c) => c.category === "discount"), 3, "Hana bottomless + Moon Bunny + Pooch's first groom (Bios deleted — offer expired 7/28)");
+  assert.equal(count((c) => c.category === "event"), 24, "22 + the 8/9 ranger fishing session and the Tuesday Transmitter Park yoga series (PR #18 holds resolved)");
+  assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 9, "dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news, after the 8/1-8/2 gigs expired");
-  assert.equal(count((c) => c.category === "subscription"), 9, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs");
+  assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
@@ -206,7 +216,10 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // verified-through (UI suppresses the "ends" line) — a dated one-night deal
   // must NOT carry it.
   const deals = seed.cards.filter((c) => c.category === "discount");
-  assert.equal(deals.length, 3);
+  // 2026-08-03: +2 held cards resolved and shipped — the Marianella anniversary
+  // sale and the Brooklyn Youth Ballet trial, both recurring/verified-through
+  // (neither source states a closing date).
+  assert.equal(deals.length, 5);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -276,10 +289,12 @@ test("free-ness is designated only where the source states it (tester feedback #
   // NOT here: only some programs in each day state "Free", and a grouped card
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
+    "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
     "greenpoint-trash-club",
     "library-tuesday-programs-0804", // PR #14: library programs, "Free" per the branch's sourcing
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
     "summerstarz-ford-v-ferrari-0807", // "Free SummerStarz Movies" on townsquarebk.org
+    "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
   ]);
 });
 
@@ -330,7 +345,13 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   const wellness = seed.cards.filter((c) => c.filters.includes("wellness")).map((c) => c.id).sort();
   // 2026-08-01 expiry took the dated half again (the loft's ecstatic dance and
   // the library's Monday movement block) — the standing pair is what remains.
+  // 2026-08-03 restock: the adult ballet term (dance, 18+) and the Tuesday
+  // Transmitter Park yoga series — both the movement cluster this lens names.
+  // The ballet term is an ENROLLMENT, so it files to its audience lens here
+  // rather than deals_memberships (SKILL.md, 2026-08-02).
   assert.deepEqual(wellness, [
+    "bk-youth-ballet-adult-term",
+    "community-yoga-transmitter-tuesdays",
     "sparsa-greenpoint",
     "sunday-yoga-domino",
   ]);
@@ -459,9 +480,14 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     );
   }
   assert.deepEqual(lens.map((c) => c.id).sort(), [
+    // 2026-08-03: the ballet trial double-files family_kids + deals_memberships,
+    // the same shape as moon-bunny-back-to-school — "kids events go in kids"
+    // bars double-filing into arts_culture/games, not into a deals lens.
+    "bk-youth-ballet-trial-class",
     "falu-tinned-fish-club",
     "flower-cat-subscription",
     "hana-bottomless-makgeolli",
+    "marianella-19th-anniversary-sale",
     "moon-bunny-back-to-school",
     "poochs-parlor-first-groom",
   ]);
