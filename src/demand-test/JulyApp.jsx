@@ -205,10 +205,10 @@ export default function JulyApp() {
               a freshness signal, computed per render like the banner phase. */}
           <span className="july-kicker">{editionLabel(new Date())}</span>
           <h1>Greenpoint Life</h1>
-          {/* The verification stake only (punch list P2 #11): the chip bar
-              right below already lists the categories — the old 12-word
-              enumeration ran 2 lines restating it. */}
-          <p>Every listing verified this week.</p>
+          {/* Two claims, six words (2026-08-02): the truth stake ("real"
+              carries verified) then the participation beat. No enumeration —
+              the chip bar right below lists the categories. */}
+          <p>Know what’s real. Take part.</p>
         </div>
       </header>
       {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still
