@@ -24,6 +24,7 @@
       "WebFetch(domain:hanamakgeolli.com)",
       "WebFetch(domain:heavenandearthbk.com)",
       "WebFetch(domain:hideandseek.nyc)",
+      "WebFetch(domain:withfriends.co)",
       "WebFetch(domain:www.hisawyer.com)",
       "WebFetch(domain:kettl.co)",
       "WebFetch(domain:kingslandwildflowers.com)",
@@ -42,8 +43,7 @@
       "WebFetch(domain:townsquarebk.org)",
       "WebFetch(domain:triskelionarts.org)",
       "WebFetch(domain:troostny.com)",
-      "WebFetch(domain:wordbookstores.com)",
-      "WebFetch(domain:yarostudios.com)"
+            "WebFetch(domain:yarostudios.com)"
     ]
   }
 }

@@ -137,6 +137,15 @@
       "notes": "531 Graham Ave, Brooklyn NY 11222 (Greenpoint zip); board game shop + community hub — D&D nights across the week, murder mysteries, one-shots, kids' afterschool. Owner-operated by Whitney Wolfe; sister space '3rd Place from the Sun' still upcoming, so single location as of the 2026-07-25 snapshot. Not a bar and not a coffee shop; outside food/drink allowed, $20 corking fee. Batu 2026-07-27: point at /events, not the homepage — the homepage snapshot carries the about/FAQ/address but NO dated listings, which is exactly why. One of the three game-club sources to keep in every scan. The /events URL itself is NOT YET FETCHED (network allowlist) — confirm it carries dated listings on the first successful fetch. CHANNEL: email is NOT viable — owner Whitney replied to Batu 2026-07-22 from lastplaceonearthbk@gmail.com, 'We haven't done a newsletter in a while. Honestly, we update things mostly on discord.' So /events is the primary source and their Discord is where the schedule actually lives; if /events proves thin, Discord is the gap-filler to raise with Batu (it needs an invite, not a scrape)."
     },
     {
+      "id": "word-bookstore",
+      "name": "WORD Bookstore (Withfriends)",
+      "url": "https://withfriends.co/word/events",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Batu 2026-08-03: WORD's own site bot-walls every method (IndieCommerce 403); this is where their newsletter events are published. Plain fetch returns a 'Page load issue' shell (~470 chars) — browser only. Each event states its own location line, so the Brooklyn filter is mechanical: card ONLY 'Greenpoint, Brooklyn' / 'Brooklyn, NY' items, never 'Jersey City, NJ'. The list renders ~5 events behind a 'Show more events...' control, so treat the snapshot as the near-term window, not the full calendar."
+    },
+    {
       "id": "carcosa-club",
       "name": "The Carcosa Club",
       "url": "https://www.carcosaclub.com/events?view=calendar",
