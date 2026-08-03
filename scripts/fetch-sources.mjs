@@ -117,12 +117,25 @@ let browser = null;
 // 3 cards, and nothing downstream noticed). Three causes, three fixes — the
 // same shape as posthog-pull.sh's preflight.
 const BROWSER_CONTROL_URL = "https://example.com/";
+
+// Chromium does NOT inherit HTTPS_PROXY from the environment the way node's
+// fetch does — Playwright only proxies when told to at launch (verified
+// 2026-08-03: with HTTPS_PROXY pointed at a dead port, plain launch loads the
+// control URL anyway; passing the same value to launch() correctly fails with
+// ERR_PROXY_CONNECTION_FAILED). In a sandbox where all egress is proxied, that
+// asymmetry is invisible and total: plain fetch works, every browser fetch is
+// refused, and the run reports "no egress" per source. Pass it through.
+const PROXY = process.env.HTTPS_PROXY || process.env.https_proxy || null;
+const NO_PROXY = process.env.NO_PROXY || process.env.no_proxy || null;
+const launchOptions = PROXY
+  ? { proxy: { server: PROXY, ...(NO_PROXY ? { bypass: NO_PROXY } : {}) } }
+  : {};
 async function preflightBrowser() {
   if (!pw) {
     return { ok: false, cause: "playwright-missing", fix: "npm i -D playwright && npx playwright install chromium" };
   }
   try {
-    browser = await pw.chromium.launch();
+    browser = await pw.chromium.launch(launchOptions);
   } catch (e) {
     const msg = String(e.message ?? e);
     const missingBinary = /Executable doesn't exist|browserType.launch.*install/i.test(msg);
@@ -141,16 +154,20 @@ async function preflightBrowser() {
   try {
     page = await browser.newPage({ userAgent: UA });
     await page.goto(BROWSER_CONTROL_URL, { waitUntil: "domcontentloaded", timeout: 20000 });
-    return { ok: true };
+    return { ok: true, proxy: PROXY ? "via HTTPS_PROXY" : "direct" };
   } catch (e) {
     return {
       ok: false,
       cause: "browser-egress-blocked",
       detail: String(e.message ?? e).split("\n")[0],
-      fix:
-        `headless Chromium launched but could not load ${BROWSER_CONTROL_URL} — this is the environment's ` +
-        "egress policy, not our code (same class as the us.posthog.com denial, DECISION_LOG 2026-07-28). " +
-        "Allowlist outbound HTTPS for the routine's environment at claude.ai/code. Never route around it.",
+      proxy: PROXY ? `via HTTPS_PROXY (${PROXY})` : "direct (no HTTPS_PROXY set)",
+      fix: PROXY
+        ? `headless Chromium launched and was routed through ${PROXY}, but could not load ` +
+          `${BROWSER_CONTROL_URL}. The proxy itself is refusing the CONNECT — allowlist the host at ` +
+          "claude.ai/code (same class as the us.posthog.com denial, DECISION_LOG 2026-07-28). Never route around it."
+        : `headless Chromium launched but could not load ${BROWSER_CONTROL_URL}, and no HTTPS_PROXY is set. ` +
+          "If this environment proxies all egress, Chromium is connecting direct and being refused — " +
+          "export HTTPS_PROXY in the routine so it gets passed through at launch.",
     };
   } finally {
     if (page) await page.close().catch(() => {});
@@ -164,7 +181,7 @@ async function browserText(url) {
   if (browserPreflight && !browserPreflight.ok && !browserPreflight.skipped) {
     throw new Error(`browser unavailable (${browserPreflight.cause}) — see the BROWSER PREFLIGHT block above`);
   }
-  if (!browser) browser = await pw.chromium.launch();
+  if (!browser) browser = await pw.chromium.launch(launchOptions);
   const page = await browser.newPage({ userAgent: UA });
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
@@ -220,7 +237,9 @@ const browserRequired = selected.some((s) => s.fetch === "browser");
 let browserPreflight = { ok: true, skipped: true };
 if (browserRequired && !NO_BROWSER) {
   browserPreflight = await preflightBrowser();
-  if (!browserPreflight.ok) {
+  if (browserPreflight.ok) {
+    console.log(`browser preflight: ok (${browserPreflight.proxy})`);
+  } else {
     const needing = selected.filter((s) => s.fetch === "browser");
     console.error(`\n=== BROWSER PREFLIGHT FAILED — ${browserPreflight.cause} ===`);
     if (browserPreflight.detail) console.error(`  ${browserPreflight.detail}`);
