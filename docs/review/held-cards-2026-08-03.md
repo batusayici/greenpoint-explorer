@@ -1,69 +1,16 @@
 # Held cards — Monday full refresh, 2026-08-03
 
-Nine cards from this run were **authored but not shipped**. Each one tripped a
-step-3 hold condition (SKILL.md §3): a claim the source doesn't actually carry,
-a lens that had to be *chosen* rather than read off the source, or a missing
-field that could only be filled by inference.
+Nine cards from this run were authored but not shipped. On review (2026-08-03),
+each hold was checked against its actual source rather than against the run's
+reasoning. **Five resolved and shipped in `e19860a`. Four remain held**, all of
+them the same Brooklyn Craft Company blocker.
 
-They live here rather than in `cards.json` on purpose: one of them (the ranger
-fishing session) is lens-less, and the repo's own `no card is lens-less` test
-would fail the branch if it sat in the deck. This file keeps the work intact and
-CI green, so each card can be resolved and pasted in individually.
-
-The clean cards from the same run already shipped in `f2d1f17` — a doubtful card
+The clean cards from the same run shipped earlier in `f2d1f17` — a doubtful card
 never delays the good ones.
 
 ---
 
-## 1. Urban Park Rangers saltwater fishing — Sun 8/9
-
-**Hold reason:** no lens can be assigned without inferring one. NYC Parks files
-it under `Category: Urban Park Rangers, Fishing` and never calls it family or
-kids programming, so `family_kids` would be a guess. Shipped lens-less, it fails
-the repo's `no card is lens-less` test — which is exactly the gate working.
-
-**What resolves it:** pick the lens. `family_kids` is the closest precedent
-(`mcgolrick-bird-club-0808` earned it because Go Green Brooklyn tagged that walk
-"Family Fun"). With a lens set, everything else about this card is ship-ready —
-exact start and end times, exact meeting point, and free-ness all stated.
-
-```json
-{
-  "id": "transmitter-saltwater-fishing-0809",
-  "category": "event",
-  "title": "Saltwater fishing with the Urban Park Rangers",
-  "kicker": "Free ranger-led saltwater fishing",
-  "startsAt": "2026-08-09T11:00:00-04:00",
-  "endsAt": "2026-08-09T12:30:00-04:00",
-  "locationName": "WNYC Transmitter Park",
-  "address": "Greenpoint Ave & West St, Brooklyn, NY 11222",
-  "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
-  "lat": 40.729855,
-  "lng": -73.960729,
-  "filters": [],
-  "free": true,
-  "summary": "Meet the rangers at the West Street entrance. NYC Parks files the session under its free Urban Park Rangers programming.",
-  "audience": ["resident", "family"],
-  "actions": [
-    { "label": "Event details", "type": "learn_more", "url": "https://www.nycgovparks.org/parks/transmitter-park/events" }
-  ],
-  "sourceLinks": [
-    { "title": "WNYC Transmitter Park events", "url": "https://www.nycgovparks.org/parks/transmitter-park/events", "publisher": "NYC Parks", "date": "2026-08-03" }
-  ],
-  "sourceQuote": "Saltwater Fishing\n11:00 a.m. – 12:30 p.m.\nLocation: Entrance-West Street and Greenpoint Avenue (in WNYC Transmitter Park)\nCategory: Urban Park Rangers, Fishing Free!",
-  "relatedCardIds": ["transmitter-park-restaurant-marina"],
-  "evidenceStrength": "high",
-  "monetizationRelevance": "none",
-  "partnerRelevance": "medium",
-  "trustRisk": "low",
-  "createdAt": "2026-08-03",
-  "updatedAt": "2026-08-03"
-}
-```
-
----
-
-## 2–5. Brooklyn Craft Company workshops — location not stated per date
+## Still held: Brooklyn Craft Company workshops ×4 — venue not stated per date
 
 **Hold reason (all four):** the 7/31 newsletter lists each class with its dates
 and then the line **"In Greenpoint and Lower Manhattan"** — it never says *which
@@ -77,19 +24,31 @@ Suggestive but **not** sufficient: the Needle Felted Pets booking URL slug is
 `greenpoint-workshop-needle-felted-pets`. A URL slug is not a stated claim, and
 the quote that carries the date doesn't carry the location.
 
-**What resolves them:** open each booking URL — the product page states the
-location per session. Any date confirmed as Greenpoint ships as authored; any
-date that turns out to be Lower Manhattan gets dropped.
+**The hold is correct. The originally stated fix does not work.** "Open each
+booking URL" was checked and fails three ways:
+
+- the product pages render sessions through a **BookThatApp** widget that
+  `WebFetch` cannot see (it returns "Date & Time: select above");
+- the widget does not load headless either — a **control** on
+  `crafty-hour-tie-dye`, which is a live card on the map for 8/7 and therefore
+  definitely has a session, shows the same empty "Notify Me When New Sessions
+  are Added" state, so the empty state is the widget failing, not the schedule;
+- Shopify's product JSON (`/products/<handle>.js`) carries a single
+  `Default Title` variant — no date, time or location encoded.
+
+**What actually resolves them:** a human in a normal browser selecting each date
+in the booking widget (the page states "Your workshop location will be indicated
+when selecting your workshop date above"), or an email to Brooklyn Craft Company.
 
 No time of day is stated for any of the four either, so each currently carries a
 `00:00` start that must be corrected from the booking page before shipping.
 
 | # | id | date | booking URL |
 |---|----|------|-------------|
-| 2 | `bcc-crochet-101-lil-bag-0806` | Thu 8/6 | https://www.brooklyncraftcompany.com/products/crochet-101-lil-bag |
-| 3 | `bcc-sewing-101-tote-0809` | Sun 8/9 | https://www.brooklyncraftcompany.com/collections/all-workshops/products/sewing-101-tote-bag |
-| 4 | `bcc-needle-felted-pets-0811` | Tue 8/11 | https://www.brooklyncraftcompany.com/products/greenpoint-workshop-needle-felted-pets |
-| 5 | `bcc-crochet-101-lil-bag-0812` | Wed 8/12 | https://www.brooklyncraftcompany.com/products/crochet-101-lil-bag |
+| 1 | `bcc-crochet-101-lil-bag-0806` | Thu 8/6 | https://www.brooklyncraftcompany.com/products/crochet-101-lil-bag |
+| 2 | `bcc-sewing-101-tote-0809` | Sun 8/9 | https://www.brooklyncraftcompany.com/collections/all-workshops/products/sewing-101-tote-bag |
+| 3 | `bcc-needle-felted-pets-0811` | Tue 8/11 | https://www.brooklyncraftcompany.com/products/greenpoint-workshop-needle-felted-pets |
+| 4 | `bcc-crochet-101-lil-bag-0812` | Wed 8/12 | https://www.brooklyncraftcompany.com/products/crochet-101-lil-bag |
 
 Shared card shape (substitute id, `startsAt`/`endsAt`, `title`, and the URL):
 
@@ -130,219 +89,65 @@ Source lines for the other three, verbatim:
 
 - `bcc-sewing-101-tote-0809` — `Sewing 101 - Tote Bag 8/1, 8/9, 8/15, 8/20 In Greenpoint and Lower Manhattan`
 - `bcc-needle-felted-pets-0811` — `Needle Felted Pets 8/11 & 8/23 In Greenpoint and Lower Manhattan`
-- `bcc-crochet-101-lil-bag-0812` — same line as #2
+- `bcc-crochet-101-lil-bag-0812` — same line as #1
+
+**Open question this raises about live cards.** Five BCC cards are already on the
+map pinned at 165 Greenpoint Ave, two of them (`bcc-knits-leggings-0804`,
+`bcc-crafty-hour-tie-dye-0807`) created 2026-08-01 from the same newsletter
+format, with exact times. Either an earlier run had a resolution method worth
+writing into the ingest skill, or those cards carry the same unverified venue
+assumption this hold exists to prevent. Worth a spot-check.
 
 ---
 
-## 6. Marianella Market 19th-anniversary sale
+## Resolved and shipped (`e19860a`)
 
-**Hold reason:** no end date anywhere. The email says the sale runs **"For a
-little while"** — a `discount` card requires `endsAt`, and inventing a
-verified-through window for a sale that explicitly ends at an unstated time
-would put an expired offer in front of readers. The discount is also stated as a
-range ("up to 60%", "up to 50% off sitewide"), which is a sitewide ecommerce
-promotion rather than a neighborhood offer.
+| Card | What the hold was | What resolved it |
+|---|---|---|
+| `transmitter-saltwater-fishing-0809` | Lens-less — the NYC Parks events index tags it only `Urban Park Rangers, Fishing`, never family, so `family_kids` looked like a guess (and the same page tags Summerstarz "Best for Kids", proving Parks *does* tag kid-suitability when it applies) | The run read the index, not the event. The **detail page** states *"Recommended for ages 8 and older"*, plus all equipment provided, no registration, free. `family_kids` is now read off the source. Card repointed at the detail URL and the quote widened. |
+| `community-yoga-transmitter-tuesdays` | No time of day — a guessed hour sends people to an empty park | Go Green's detail page carries it: **7:00–8:00 AM**. It also shows this is a **series** (Aug 4/11/18/25), so it shipped `recurring` on the `sunday-yoga-domino` model instead of as the single 8/4 card the run drafted — a one-day item became a month of coverage. |
+| `marianella-19th-anniversary-sale` | Sale runs "For a little while" — no `endsAt` | That is exactly what the recurring/verified-through rule is for: `endsAt` = end of edition week, re-checked next run (`poochs-parlor-first-groom` precedent). The real risk was different — it's a **sitewide online** promotion with free shipping, so the copy now says so rather than implying an in-store rack at the West St pin. |
+| `bk-youth-ballet-adult-term` | `wellness` vs `arts_culture` | Not a choice in either direction. `cardSchema.js` defines wellness as "the movement cluster (yoga/pilates/**dance**/run)", and the enrollment rule names `family_kids`/`wellness`/`games` as the only audience lenses — `arts_culture` was never on the menu. Source says "Adult Ballet **Workout**", ages 18+. → `wellness`. |
+| `bk-youth-ballet-trial-class` | A discounted trial (`deals_memberships`) at a youth school ("kids events go in kids") | The rules don't actually collide. `moon-bunny-back-to-school` is live carrying **both** `family_kids` and `deals_memberships`; the kids rule bars double-filing into `arts_culture`/`games`, not into a deals lens. Shipped with both, `recurring` verified-through. |
 
-**What resolves it:** an end date from Marianella. With one, this ships as a
-dated `discount` (not `recurring`).
-
-```json
-{
-  "id": "marianella-19th-anniversary-sale",
-  "category": "discount",
-  "title": "Marianella's 19th-anniversary sale",
-  "kicker": "Up to 50% off sitewide",
-  "endsAt": null,
-  "locationName": "Marianella Market",
-  "address": "83 West St, Brooklyn, NY 11222",
-  "geocodeQuery": "83 West St, Brooklyn, NY",
-  "filters": ["deals_memberships"],
-  "summary": "The shop is marking nineteen years with curated bundles alongside the sitewide markdown, plus free shipping.",
-  "audience": ["resident"],
-  "actions": [
-    { "label": "Shop the sale", "type": "order", "url": "https://marianella.co/pages/store" }
-  ],
-  "sourceLinks": [
-    { "title": "Marianella Market email, 2026-08-02", "url": "https://marianella.co/pages/store", "publisher": "Marianella Market", "date": "2026-08-02" }
-  ],
-  "sourceQuote": "Our anniversary sale continues, and we've added something special. Discover new curated bundles with savings up to 60%, alongside up to 50% off sitewide and free shipping. ... Thoughtfully made. Beautifully priced. For a little while.",
-  "evidenceStrength": "medium",
-  "monetizationRelevance": "direct",
-  "partnerRelevance": "high",
-  "trustRisk": "medium",
-  "createdAt": "2026-08-03",
-  "updatedAt": "2026-08-03"
-}
-```
+Both Brooklyn Youth Ballet `sourceQuote`s were re-fetched from
+`bkyouthballet.com/calendar/` and confirmed **verbatim**.
 
 ---
 
-## 7. Brooklyn Youth Ballet — adult ballet workout term
+## Not cards — findings that needed a decision
 
-**Hold reason:** the lens is a choice, not a reading. An adult ballet workout
-term sits plausibly in `wellness` (a body-conditioning class you enroll in) or
-`arts_culture` (dance instruction). The 2026-08-02 rule says a term enrollment
-goes to its **audience** lens and never to `deals_memberships` — but it doesn't
-settle which audience lens an adult dance class belongs to.
+**Transmitter Park opposition — no action needed; the finding was wrong.** The
+run reported that the live `transmitter-park-restaurant-marina` card "announces
+the plan but not the opposition." It already carries it, and had since its
+2026-08-01 update: kicker *"Neighborhood pushback on Parks plan"*, a summary
+naming the opposition and the Parks follow-up, and the 7/31 opposition article
+already in `sourceLinks`. The run compared against the article rather than
+against the live deck — worth watching as a dedupe gap, since a re-report like
+this is how a live card gets needlessly rewritten.
 
-**What resolves it:** pick `wellness` or `arts_culture`. Everything else is
-stated: the term runs Sep 14 2026 – Jun 25 2027.
-
-```json
-{
-  "id": "bk-youth-ballet-adult-term",
-  "category": "subscription",
-  "title": "Adult ballet workout term at Brooklyn Youth Ballet",
-  "kicker": "Adult ballet, pick your time slot",
-  "endsAt": "2027-06-25T23:59:00-04:00",
-  "locationName": "Brooklyn Youth Ballet",
-  "address": "37 Greenpoint Ave",
-  "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
-  "lat": 40.729869,
-  "lng": -73.959022,
-  "filters": [],
-  "summary": "The studio's adult track runs on the same September-to-June calendar as its youth classes, with several weekly slots to choose between.",
-  "audience": ["resident"],
-  "actions": [
-    { "label": "See the calendar", "type": "learn_more", "url": "https://bkyouthballet.com/calendar/" }
-  ],
-  "sourceLinks": [
-    { "title": "Brooklyn Youth Ballet calendar", "url": "https://bkyouthballet.com/calendar/", "publisher": "Brooklyn Youth Ballet", "date": "2026-08-03" }
-  ],
-  "sourceQuote": "Adult Ballet Workout\nExpert-led adult ballet workouts in Greenpoint, find a time based on your schedule\nRuns September 14, 2026 – June 25, 2027",
-  "relatedCardIds": ["bk-youth-ballet-enrollment"],
-  "evidenceStrength": "high",
-  "monetizationRelevance": "direct",
-  "partnerRelevance": "high",
-  "trustRisk": "low",
-  "createdAt": "2026-08-03",
-  "updatedAt": "2026-08-03"
-}
-```
+**G train August service changes — agreed, no card.** Greenpointers states more
+changes are coming but gives no dates, times or segments. `g-train-closures`
+already covers August generically. The specific weekend dates need the MTA page
+or the article body.
 
 ---
-
-## 8. Brooklyn Youth Ballet — $40 new-student trial class
-
-**Hold reason:** two rules collide. It is a discounted trial, which points at
-`deals_memberships`; but it is a trial at a *youth* ballet school, and the
-2026-08-02 "kids events go in kids" rule says anything authored for children is
-`family_kids` and must not double-file. Nothing in the source settles which rule
-wins. Separately, the offer states no expiration, so `endsAt` would have to be a
-chosen verified-through date.
-
-**What resolves it:** the lens call, plus a decision to treat it as a
-`recurring` standing offer verified through the edition week.
-
-```json
-{
-  "id": "bk-youth-ballet-trial-class",
-  "category": "discount",
-  "title": "$40 trial class at Brooklyn Youth Ballet",
-  "kicker": "One trial class, credited to tuition",
-  "endsAt": null,
-  "recurring": true,
-  "locationName": "Brooklyn Youth Ballet",
-  "address": "37 Greenpoint Ave",
-  "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
-  "lat": 40.729869,
-  "lng": -73.959022,
-  "filters": ["deals_memberships"],
-  "summary": "New students can take one class before committing to a semester, and the fee comes off tuition if they enroll. Limit one per student per semester.",
-  "audience": ["resident", "family"],
-  "actions": [
-    { "label": "See the calendar", "type": "learn_more", "url": "https://bkyouthballet.com/calendar/" }
-  ],
-  "sourceLinks": [
-    { "title": "Brooklyn Youth Ballet calendar", "url": "https://bkyouthballet.com/calendar/", "publisher": "Brooklyn Youth Ballet", "date": "2026-08-03" }
-  ],
-  "sourceQuote": "New to Brooklyn Youth Ballet? Try a single trial class before enrolling in a full semester — just $40, credited toward your tuition when you enroll. One trial class per student per semester.",
-  "relatedCardIds": ["bk-youth-ballet-enrollment"],
-  "evidenceStrength": "high",
-  "monetizationRelevance": "direct",
-  "partnerRelevance": "high",
-  "trustRisk": "low",
-  "createdAt": "2026-08-03",
-  "updatedAt": "2026-08-03"
-}
-```
-
----
-
-## 9. Community Yoga in Transmitter Park — Tue 8/4
-
-**Hold reason:** Go Green Brooklyn's listing gives the date and the venue but
-**no time of day**. A dated event card with a guessed hour sends people to an
-empty park.
-
-**What resolves it:** the listing's own "Find out more" detail page carries the
-time. This is a same-week item — if it can't be confirmed today it simply
-expires.
-
-```json
-{
-  "id": "community-yoga-transmitter-0804",
-  "category": "event",
-  "title": "Community yoga in Transmitter Park",
-  "kicker": "Outdoor community yoga by the water",
-  "startsAt": null,
-  "endsAt": "2026-08-04T23:59:00-04:00",
-  "locationName": "WNYC Transmitter Park",
-  "address": "Greenpoint Ave & West St, Brooklyn, NY 11222",
-  "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
-  "lat": 40.729855,
-  "lng": -73.960729,
-  "filters": ["wellness"],
-  "summary": "Go Green Brooklyn lists the session on its neighborhood environmental calendar; the organizer's detail page carries the start time.",
-  "audience": ["resident"],
-  "actions": [
-    { "label": "Event details", "type": "learn_more", "url": "https://gogreenbk.org" }
-  ],
-  "sourceLinks": [
-    { "title": "Go Green Brooklyn events", "url": "https://gogreenbk.org", "publisher": "Go Green Brooklyn", "date": "2026-08-03" }
-  ],
-  "sourceQuote": "04\nAugust\n2026\nCommunity Yoga in Transmitter Park\nFind out more",
-  "evidenceStrength": "medium",
-  "monetizationRelevance": "none",
-  "partnerRelevance": "medium",
-  "trustRisk": "medium",
-  "createdAt": "2026-08-03",
-  "updatedAt": "2026-08-03"
-}
-```
-
-Note: a gig/event card with a null `startsAt` is blocked by the repo's
-open-start regression test, so this one cannot ship until the time is filled in.
-
----
-
-## Not cards — findings that need a decision, not a pin
-
-**Transmitter Park opposition (update to a live card, not a new one).**
-Greenpointers ran "Greenpoint Residents Voice Opposition to Planned Restaurant
-and Marina at Transmitter Park" (7/31) and its newsletter adds, verbatim: *"The
-proposal faces strong criticism from the neighborhood so far, and we followed up
-with Parks to help clarify some concerns."* The live `transmitter-park-restaurant-marina`
-card announces the plan but not the opposition. Proposed: add a timeline entry.
-Held because rewriting a live news card's reader-facing copy is an editorial
-call, and the front-page snapshot carried only the headline.
-
-**G train August service changes.** Greenpointers: *"And in evergreen news, the
-G train continues to frustrate straphangers with even more service changes
-during August."* No dates, times, or segments stated anywhere in the available
-text. The live `g-train-closures` card already covers August generically, so
-nothing was added. The specific weekend dates need the MTA page or the article
-body.
 
 ## Roster-discovery sweep (first Monday) — all source additions are human-gated
 
-Candidate venues seen in Greenpointers headlines this month, none added:
+Agreed: no senders added. **Pizza 4P's** is correctly excluded by the
+locally-owned gate (international chain).
 
-- **Pizza 4P's** — "Pizza 4P's Opens in Greenpoint's 50 Norman Complex" (note: an
-  international chain; the locally-owned gate likely excludes it)
+**But the sweep asked the wrong question of three of them.** Gallery ATARAH,
+Balera and Christina's were evaluated only as candidate *newsletter senders* —
+never as *cards*. They are locally owned Greenpoint openings with Greenpointers
+articles behind them, openings file as `news` under the lens rules, and none of
+the three appears in `cards.json` or in `ingest-ledger.json`. Three news cards
+are on the table:
+
 - **Gallery ATARAH** — "Gallery ATARAH Opens a New Summer Show This Weekend"
 - **Balera** — "Italian Restaurant and Pizzeria, Balera, Opens Soon in Former
-  Home of Da Francesco"
+  Home of Da Francesco" (undated future opening — Swaine's precedent)
 - **Christina's** — "Karczma's Owner Reopens Christina's as Retro Polish
   Restaurant This Weekend"
 
