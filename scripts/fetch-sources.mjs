@@ -116,7 +116,11 @@ let browser = null;
 // errors an hour later (2026-08-03: the Monday run did exactly that, shipped
 // 3 cards, and nothing downstream noticed). Three causes, three fixes — the
 // same shape as posthog-pull.sh's preflight.
-const BROWSER_CONTROL_URL = "https://example.com/";
+// The preflight proves the browser can reach the network at all, so its
+// control URL must itself be reachable — on a Custom/allowlist environment,
+// allowlist this host or the preflight false-alarms while the roster is fine.
+// Override with GL_BROWSER_CONTROL_URL to point at a host already on the list.
+const BROWSER_CONTROL_URL = process.env.GL_BROWSER_CONTROL_URL || "https://example.com/";
 
 // Chromium does NOT inherit HTTPS_PROXY from the environment the way node's
 // fetch does — Playwright only proxies when told to at launch (verified
