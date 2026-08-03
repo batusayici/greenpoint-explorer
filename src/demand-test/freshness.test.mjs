@@ -62,3 +62,110 @@ test("missing or unparsable lastRunAt reads as stale, never as fresh", () => {
   assert.equal(assessFreshness({ lastRunAt: null, now: NOW, cards: manyUpcoming }).fresh, false);
   assert.equal(assessFreshness({ lastRunAt: "not-a-date", now: NOW, cards: manyUpcoming }).staleIngest, true);
 });
+
+// --- L11b: unreachable sources (2026-08-03 supply analysis) ----------------
+// The 2026-08-03 Monday run could not reach 22 of 48 sources ("Chromium has no
+// egress in this sandbox"), shipped 3 cards, and check-freshness reported
+// FRESH — because a dense-enough feed hides a roster we cannot read. Expiry
+// then ran anyway: 95 -> 75 cards over two weeks, silently. A run that cannot
+// reach its sources is not fresh, however full the deck looks today.
+
+const reach = (over) => ({
+  generatedAt: "2026-07-28T09:00:00-04:00",
+  sources: [],
+  ...over,
+});
+const src = (id, status, method) => ({ id, status, ...(method ? { method } : {}) });
+
+test("reachable roster: no new trips", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:07:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    fetchReport: reach({ sources: [src("a", "changed", "plain"), src("b", "unchanged", "browser")] }),
+  });
+  assert.equal(a.sourcesUnreachable, false);
+  assert.equal(a.browserFetchDown, false);
+  assert.equal(a.fresh, true);
+  assert.equal(a.reach.errorRate, 0);
+});
+
+test("no fetch report: behaviour is unchanged (trips are false, feed still judged)", () => {
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:07:00-04:00", now: NOW, cards: manyUpcoming });
+  assert.equal(a.sourcesUnreachable, false);
+  assert.equal(a.browserFetchDown, false);
+  assert.equal(a.reach, null);
+  assert.equal(a.fresh, true);
+});
+
+test("sourcesUnreachable trips past the error-rate ceiling, even with a dense feed", () => {
+  const sources = [
+    ...Array.from({ length: 22 }, (_, i) => src(`err${i}`, "error")),
+    ...Array.from({ length: 26 }, (_, i) => src(`ok${i}`, "unchanged", "plain")),
+  ];
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:07:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    fetchReport: reach({ sources }),
+  });
+  assert.equal(a.sourcesUnreachable, true);
+  assert.equal(a.fresh, false, "a dense deck must not mask an unreadable roster");
+  assert.equal(a.reach.errored, 22);
+  assert.equal(a.reach.attempted, 48);
+});
+
+test("a couple of dead sources is normal and does not trip", () => {
+  const sources = [
+    src("err0", "error"),
+    src("err1", "error"),
+    ...Array.from({ length: 46 }, (_, i) => src(`ok${i}`, "unchanged", "plain")),
+  ];
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:07:00-04:00", now: NOW, cards: manyUpcoming, fetchReport: reach({ sources }) });
+  assert.equal(a.sourcesUnreachable, false);
+  assert.equal(a.fresh, true);
+});
+
+test("browserFetchDown: browser needed, zero browser fetches succeeded", () => {
+  const sources = [
+    src("needs-browser", "error"),
+    ...Array.from({ length: 40 }, (_, i) => src(`ok${i}`, "unchanged", "plain")),
+  ];
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:07:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    fetchReport: reach({ sources, browserRequired: true, playwright: true }),
+  });
+  assert.equal(a.browserFetchDown, true);
+  assert.equal(a.sourcesUnreachable, false, "one error is under the rate ceiling");
+  assert.equal(a.fresh, false, "the browser path being wholly down is its own alarm");
+});
+
+test("browserFetchDown stays false when a browser fetch did succeed", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:07:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    fetchReport: reach({ sources: [src("a", "error"), src("b", "changed", "browser")], browserRequired: true, playwright: true }),
+  });
+  assert.equal(a.browserFetchDown, false);
+});
+
+test("browserFetchDown stays false when no source needed a browser", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:07:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    fetchReport: reach({ sources: [src("a", "changed", "plain")], browserRequired: false, playwright: true }),
+  });
+  assert.equal(a.browserFetchDown, false);
+  assert.equal(a.fresh, true);
+});
+
+test("skipped_monthly sources are not counted as attempted or errored", () => {
+  const sources = [src("m", "skipped_monthly"), src("a", "error"), src("b", "unchanged", "plain")];
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:07:00-04:00", now: NOW, cards: manyUpcoming, fetchReport: reach({ sources }) });
+  assert.equal(a.reach.attempted, 2);
+  assert.equal(a.reach.errored, 1);
+});

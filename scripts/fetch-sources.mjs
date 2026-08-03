@@ -5,7 +5,14 @@
 // roster sweep re-read ~40 unchanged sites into a growing context every run.
 //
 // Usage: node scripts/fetch-sources.mjs [--only id,id] [--include-monthly] [--force]
+//                                       [--no-browser] [--allow-degraded]
 //        node scripts/fetch-sources.mjs --mark-ingested [--only id,id]
+//
+// Exit codes: 0 = the roster was readable. 1 = DEGRADED — errored sources
+// exceeded 15%, or every browser fetch failed. A degraded run must not be
+// ingested: expiry deletes regardless, so shipping one shrinks the deck while
+// looking like a quiet week (2026-08-03 supply analysis, docs/growth/). Pass
+// --allow-degraded to proceed knowingly.
 //
 // Roster: src/data/demand-test/ingest-sources.json (policy stays in SKILL.md).
 // State:  .ingest-cache/ — state.json, <id>.txt latest snapshots,
@@ -40,6 +47,13 @@ const ONLY = onlyIdx !== -1 ? new Set(args[onlyIdx + 1].split(",")) : null;
 const INCLUDE_MONTHLY = args.includes("--include-monthly");
 const FORCE = args.includes("--force");
 const MARK_INGESTED = args.includes("--mark-ingested");
+const NO_BROWSER = args.includes("--no-browser");
+// A run that could not read its roster exits non-zero so a scheduled runner
+// stops instead of shipping a thin run as if it were a quiet week. Pass
+// --allow-degraded to proceed deliberately, which leaves that choice visible
+// in the command rather than buried in the exit code.
+const ALLOW_DEGRADED = args.includes("--allow-degraded");
+const MAX_ERROR_RATE = 0.15;
 
 const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
@@ -96,8 +110,60 @@ function htmlToText(html) {
 let pw = null;
 try { pw = await import("playwright"); } catch { /* not installed — plain fetch only */ }
 let browser = null;
+
+// Preflight the browser path before the roster, so a run that cannot use it
+// says WHY in its first seconds instead of emitting 22 identical per-source
+// errors an hour later (2026-08-03: the Monday run did exactly that, shipped
+// 3 cards, and nothing downstream noticed). Three causes, three fixes — the
+// same shape as posthog-pull.sh's preflight.
+const BROWSER_CONTROL_URL = "https://example.com/";
+async function preflightBrowser() {
+  if (!pw) {
+    return { ok: false, cause: "playwright-missing", fix: "npm i -D playwright && npx playwright install chromium" };
+  }
+  try {
+    browser = await pw.chromium.launch();
+  } catch (e) {
+    const msg = String(e.message ?? e);
+    const missingBinary = /Executable doesn't exist|browserType.launch.*install/i.test(msg);
+    return {
+      ok: false,
+      cause: missingBinary ? "chromium-binary-missing" : "chromium-launch-failed",
+      detail: msg.split("\n")[0],
+      fix: missingBinary
+        ? "npx playwright install chromium (in the routine's setup step — the npm package alone is not the browser)"
+        : "check the sandbox's process//dev/shm limits; run with --no-browser to proceed plain-fetch-only",
+    };
+  }
+  // The browser launched. Can it reach the network? This is the case that hit
+  // us: Chromium runs fine and every navigation is refused by egress policy.
+  let page;
+  try {
+    page = await browser.newPage({ userAgent: UA });
+    await page.goto(BROWSER_CONTROL_URL, { waitUntil: "domcontentloaded", timeout: 20000 });
+    return { ok: true };
+  } catch (e) {
+    return {
+      ok: false,
+      cause: "browser-egress-blocked",
+      detail: String(e.message ?? e).split("\n")[0],
+      fix:
+        `headless Chromium launched but could not load ${BROWSER_CONTROL_URL} — this is the environment's ` +
+        "egress policy, not our code (same class as the us.posthog.com denial, DECISION_LOG 2026-07-28). " +
+        "Allowlist outbound HTTPS for the routine's environment at claude.ai/code. Never route around it.",
+    };
+  } finally {
+    if (page) await page.close().catch(() => {});
+  }
+}
 async function browserText(url) {
+  if (NO_BROWSER) throw new Error("browser path disabled (--no-browser)");
   if (!pw) throw new Error("playwright not installed (npm i -D playwright && npx playwright install chromium)");
+  // Preflight already diagnosed and reported the cause; don't re-attempt a
+  // launch per source and bury that one diagnosis under N identical errors.
+  if (browserPreflight && !browserPreflight.ok && !browserPreflight.skipped) {
+    throw new Error(`browser unavailable (${browserPreflight.cause}) — see the BROWSER PREFLIGHT block above`);
+  }
   if (!browser) browser = await pw.chromium.launch();
   const page = await browser.newPage({ userAgent: UA });
   try {
@@ -144,6 +210,30 @@ async function fetchSource(src) {
 
 const hash = (s) => createHash("sha256").update(s).digest("hex").slice(0, 16);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Which sources are in play this run, and does any of them require the browser?
+const selected = sources.filter(
+  (s) => (!ONLY || ONLY.has(s.id)) && (ONLY || s.cadence !== "monthly" || INCLUDE_MONTHLY),
+);
+const browserRequired = selected.some((s) => s.fetch === "browser");
+
+let browserPreflight = { ok: true, skipped: true };
+if (browserRequired && !NO_BROWSER) {
+  browserPreflight = await preflightBrowser();
+  if (!browserPreflight.ok) {
+    const needing = selected.filter((s) => s.fetch === "browser");
+    console.error(`\n=== BROWSER PREFLIGHT FAILED — ${browserPreflight.cause} ===`);
+    if (browserPreflight.detail) console.error(`  ${browserPreflight.detail}`);
+    console.error(`  Fix: ${browserPreflight.fix}`);
+    console.error(
+      `  Impact: ${needing.length} browser-only source(s) cannot be read this run` +
+        `${needing.length ? ` — ${needing.map((s) => s.id).join(", ")}` : ""}.`,
+    );
+    console.error("  Plain-fetch sources continue below. This run is DEGRADED, not normal.\n");
+  }
+} else if (NO_BROWSER) {
+  browserPreflight = { ok: false, cause: "disabled-by-flag", fix: "drop --no-browser to use the browser path" };
+}
 
 const results = [];
 for (const src of sources) {
@@ -200,7 +290,17 @@ if (browser) await browser.close();
 writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
 writeFileSync(
   CHANGES_PATH,
-  JSON.stringify({ generatedAt: new Date().toISOString(), playwright: !!pw, sources: results }, null, 2) + "\n",
+  JSON.stringify(
+    {
+      generatedAt: new Date().toISOString(),
+      playwright: !!pw,
+      browserRequired,
+      browserPreflight,
+      sources: results,
+    },
+    null,
+    2,
+  ) + "\n",
 );
 
 const by = (s) => results.filter((r) => r.status === s).length;
@@ -208,5 +308,32 @@ console.log(
   `\n${results.length} sources → ${by("changed")} changed, ${by("new")} new, ${by("unchanged")} unchanged, ${by("error")} error, ${by("skipped_monthly")} skipped (monthly)`,
 );
 console.log(`report: ${CHANGES_PATH}`);
+
+// Same two trips check-freshness applies, computed from this run's own report
+// so the failure is loud at the point it happens, not a day later.
+const { assessReach } = await import("../src/demand-test/freshness.js");
+const reach = assessReach({ browserRequired, sources: results }, { maxErrorRate: MAX_ERROR_RATE });
+const sourcesUnreachable = reach.attempted > 0 && reach.errorRate > reach.maxErrorRate;
+const browserFetchDown = reach.browserRequired && !reach.browserOk;
+
+console.log(
+  `reach: ${reach.attempted - reach.errored}/${reach.attempted} sources read` +
+    ` (${(reach.errorRate * 100).toFixed(0)}% error, ceiling ${(reach.maxErrorRate * 100).toFixed(0)}%)`,
+);
 if (!pw) console.log("note: playwright not installed — browser-only sources will error (npm i -D playwright && npx playwright install chromium)");
+
+if (sourcesUnreachable || browserFetchDown) {
+  console.error("\n=== DEGRADED RUN — the roster was not readable ===");
+  if (sourcesUnreachable) console.error(`  ${reach.errored} of ${reach.attempted} sources errored.`);
+  if (browserFetchDown) {
+    console.error("  Every browser fetch failed; browser-only sources contributed nothing.");
+    if (browserPreflight?.fix) console.error(`  Fix: ${browserPreflight.fix}`);
+  }
+  console.error(
+    "  Do not ingest this as a normal week: expiry will still delete, so a degraded run\n" +
+      "  shrinks the deck (2026-08-03 supply analysis). Fix the cause, or re-run with\n" +
+      "  --allow-degraded to proceed knowingly.",
+  );
+  process.exit(ALLOW_DEGRADED ? 0 : 1);
+}
 process.exit(0);

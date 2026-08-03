@@ -12,7 +12,7 @@
 //     bundle). NEVER exits non-zero: a corrective deploy during an outage
 //     must not be blocked by the outage it is fixing — the banner's
 //     "verified through" line is the honest degradation in that state.
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { assessFreshness } from "../src/demand-test/freshness.js";
@@ -23,7 +23,27 @@ const ledger = JSON.parse(readFileSync(join(dataDir, "ingest-ledger.json"), "utf
 const seed = JSON.parse(readFileSync(join(dataDir, "cards.json"), "utf8"));
 
 const stampMode = process.argv.includes("--stamp");
-const a = assessFreshness({ lastRunAt: ledger.lastRunAt, now: new Date(), cards: seed.cards });
+const now = new Date();
+
+// L11b: fold in the last fetch run's reachability when there is one. The
+// report is gitignored and absent on fresh checkouts and at build time — no
+// report means judge the feed alone, exactly as before. A report older than
+// the staleIngest window is ignored too: a week-old outage must not keep
+// alarming after the run that fixed it.
+const REPORT_MAX_AGE_H = 48;
+let fetchReport = null;
+const reportPath = join(root, ".ingest-cache", "changes.json");
+if (!stampMode && existsSync(reportPath)) {
+  try {
+    const r = JSON.parse(readFileSync(reportPath, "utf8"));
+    const age = (now.getTime() - new Date(r.generatedAt).getTime()) / 3600e3;
+    if (Number.isFinite(age) && age <= REPORT_MAX_AGE_H) fetchReport = r;
+  } catch {
+    /* unreadable report — judge the feed alone rather than crash the alarm */
+  }
+}
+
+const a = assessFreshness({ lastRunAt: ledger.lastRunAt, now, cards: seed.cards, fetchReport });
 
 if (stampMode) {
   writeFileSync(
@@ -32,15 +52,36 @@ if (stampMode) {
   );
 }
 
+const reachBit = a.reach
+  ? ` reach=${a.reach.attempted - a.reach.errored}/${a.reach.attempted}` +
+    ` sourcesUnreachable=${a.sourcesUnreachable} browserFetchDown=${a.browserFetchDown}`
+  : " reach=no-report";
 console.log(
   `[freshness] lastRunAt=${ledger.lastRunAt} datedUpcoming7d=${a.datedUpcoming} ` +
-    `staleIngest=${a.staleIngest} thinFeed=${a.thinFeed} → ${a.fresh ? "FRESH" : "NOT FRESH"}${stampMode ? " (stamp written)" : ""}`,
+    `staleIngest=${a.staleIngest} thinFeed=${a.thinFeed}${stampMode ? "" : reachBit} → ${a.fresh ? "FRESH" : "NOT FRESH"}${stampMode ? " (stamp written)" : ""}`,
 );
 
 if (!a.fresh && !stampMode) {
-  console.error(
-    `[freshness] ALARM: ${a.staleIngest ? "ingest stale (>48h since lastRunAt) " : ""}${a.thinFeed ? `feed thin (${a.datedUpcoming} dated upcoming < 10)` : ""}` +
-      ` — check the cloud routine's last run and the environment's network preset (DECISION_LOG 2026-07-28).`,
-  );
+  const why = [
+    a.staleIngest && "ingest stale (>48h since lastRunAt)",
+    a.thinFeed && `feed thin (${a.datedUpcoming} dated upcoming < 10)`,
+    a.sourcesUnreachable &&
+      `sources unreachable (${a.reach.errored} of ${a.reach.attempted} errored, ` +
+        `${(a.reach.errorRate * 100).toFixed(0)}% > ${(a.reach.maxErrorRate * 100).toFixed(0)}% ceiling)`,
+    a.browserFetchDown &&
+      "browser fetch down (sources need headless Chromium and not one browser fetch succeeded)",
+  ].filter(Boolean);
+  console.error(`[freshness] ALARM: ${why.join("; ")}`);
+  if (a.sourcesUnreachable || a.browserFetchDown) {
+    console.error(
+      "[freshness]   This is a fetch-layer failure, not a quiet week. Do NOT ship a thin run as normal:\n" +
+        "[freshness]   run `node scripts/fetch-sources.mjs` and read its BROWSER PREFLIGHT block for the exact cause.",
+    );
+  }
+  if (a.staleIngest || a.thinFeed) {
+    console.error(
+      "[freshness]   Check the cloud routine's last run and the environment's network preset (DECISION_LOG 2026-07-28).",
+    );
+  }
   process.exit(1);
 }
