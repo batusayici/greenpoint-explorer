@@ -1945,7 +1945,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-30",
+      "updatedAt": "2026-08-03",
       "id": "bk-youth-ballet-enrollment",
       "title": "Brooklyn Youth Ballet fall enrollment",
       "kicker": "Ballet signup + $40 trial class",
@@ -1972,7 +1972,11 @@
         }
       ],
       "lat": 40.729869,
-      "lng": -73.959022
+      "lng": -73.959022,
+      "relatedCardIds": [
+        "bk-youth-ballet-adult-term",
+        "bk-youth-ballet-trial-class"
+      ]
     },
     {
       "category": "subscription",
@@ -2791,7 +2795,11 @@
       "createdAt": "2026-08-01",
       "updatedAt": "2026-08-03",
       "lat": 40.729855,
-      "lng": -73.960729
+      "lng": -73.960729,
+      "relatedCardIds": [
+        "transmitter-saltwater-fishing-0809",
+        "community-yoga-transmitter-tuesdays"
+      ]
     },
     {
       "id": "greenpoint-film-festival-0805",
@@ -3191,6 +3199,233 @@
       "evidenceStrength": "high",
       "monetizationRelevance": "none",
       "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-03",
+      "updatedAt": "2026-08-03"
+    },
+    {
+      "id": "transmitter-saltwater-fishing-0809",
+      "category": "event",
+      "title": "Saltwater fishing with the Urban Park Rangers",
+      "kicker": "Free lessons, all gear provided",
+      "startsAt": "2026-08-09T11:00:00-04:00",
+      "endsAt": "2026-08-09T12:30:00-04:00",
+      "locationName": "WNYC Transmitter Park",
+      "address": "Greenpoint Ave & West St, Brooklyn, NY 11222",
+      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "filters": [
+        "family_kids"
+      ],
+      "free": true,
+      "summary": "Rangers cover rod technique, the ethics of fishing and the ecology of the waterway. Recommended for ages 8 and older; no registration.",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/parks/transmitter-park/events/2026/08/09/saltwater-fishing"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Saltwater Fishing — WNYC Transmitter Park events",
+          "url": "https://www.nycgovparks.org/parks/transmitter-park/events/2026/08/09/saltwater-fishing",
+          "publisher": "NYC Parks",
+          "date": "2026-08-03"
+        }
+      ],
+      "sourceQuote": "Saltwater Fishing\nSunday, August 9, 2026\n11:00 a.m.–12:30 p.m.\nWant to go fishing but don’t know how or where to start? Join our Urban Park Rangers for free lessons! Learn how to properly use a fishing rod. Our experienced Rangers teach the ethics of fishing and the ecology of our waterways. All equipment will be provided. Recommended for ages 8 and older.\nLocation\nEntrance-West Street and Greenpoint Avenue in WNYC Transmitter Park\nCost\nFree\nRegistration\nRegistration not required.\nCategories\nUrban Park Rangers, Fishing",
+      "relatedCardIds": [
+        "transmitter-park-restaurant-marina"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-03",
+      "updatedAt": "2026-08-03"
+    },
+    {
+      "id": "community-yoga-transmitter-tuesdays",
+      "category": "event",
+      "title": "Tuesday morning yoga in Transmitter Park",
+      "kicker": "Free waterfront yoga, Tuesdays 7 AM",
+      "startsAt": "2026-08-04T07:00:00-04:00",
+      "endsAt": "2026-08-25T23:59:00-04:00",
+      "recurring": true,
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "filters": [
+        "wellness"
+      ],
+      "free": true,
+      "summary": "Kacey Weiniger of Kindred leads it for the Friends of Transmitter Park. Meet at the main entrance and walk to the shoreline lawn; bring a mat, towel or blanket.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Community Yoga in Transmitter Park",
+          "url": "https://gogreenbk.org/event/yoga-transmitter-2026/2026-08-04/",
+          "publisher": "Go Green Brooklyn",
+          "date": "2026-08-03"
+        }
+      ],
+      "sourceQuote": "Community Yoga in Transmitter Park\nTuesday, August 4th at 7:00 AM - 8:00 AM\nJoin us on select Tuesday mornings for a free outdoor yoga practice at WNYC Transmitter Park. Hosted by Kacey Weiniger of Kindred, in partnership with the Friends of Transmitter Park.\nWhat to Bring: A yoga mat if you have one, otherwise a towel or blanket.\nWhere to Meet: Main Entrance – WNYC Transmitter Park, Greenpoint, Brooklyn- then walk to the shoreline lawn edge\n2026 Current & Upcoming Months\nTuesday, August 4, 7:00 AM to 8:00 AM\nTuesday, August 11, 7:00 AM to 8:00 AM\nTuesday, August 18, 7:00 AM to 8:00 AM\nTuesday, August 25, 7:00 AM to 8:00 AM",
+      "relatedCardIds": [
+        "transmitter-park-restaurant-marina"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-03",
+      "updatedAt": "2026-08-03"
+    },
+    {
+      "id": "marianella-19th-anniversary-sale",
+      "category": "discount",
+      "title": "Marianella's 19th-anniversary sale",
+      "kicker": "Up to 50% off sitewide, plus bundles",
+      "endsAt": "2026-08-09T23:59:00-04:00",
+      "recurring": true,
+      "locationName": "Marianella Market",
+      "address": "83 West St, Brooklyn, NY 11222",
+      "geocodeQuery": "83 West St, Brooklyn, NY 11222",
+      "lat": 40.729398,
+      "lng": -73.959338,
+      "filters": [
+        "deals_memberships"
+      ],
+      "summary": "The West Street shop is marking nineteen years. The markdown runs online with free shipping, and no closing date was announced.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Shop the sale",
+          "type": "order",
+          "url": "https://marianella.co/pages/store"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Marianella Market email, 2026-08-02",
+          "url": "https://marianella.co/pages/store",
+          "publisher": "Marianella Market",
+          "date": "2026-08-02"
+        }
+      ],
+      "sourceQuote": "Our anniversary sale continues, and we've added something special. Discover new curated bundles with savings up to 60%, alongside up to 50% off sitewide and free shipping. ... Thoughtfully made. Beautifully priced. For a little while.",
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-03",
+      "updatedAt": "2026-08-03"
+    },
+    {
+      "id": "bk-youth-ballet-adult-term",
+      "category": "subscription",
+      "title": "Adult ballet workout term at Brooklyn Youth Ballet",
+      "kicker": "Adult ballet, pick your time slot",
+      "endsAt": "2027-06-25T23:59:00-04:00",
+      "locationName": "Brooklyn Youth Ballet",
+      "address": "37 Greenpoint Ave",
+      "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
+      "lat": 40.729869,
+      "lng": -73.959022,
+      "filters": [
+        "wellness"
+      ],
+      "summary": "The studio's 18-and-over track runs the same September-to-June calendar as its youth classes, with several weekly slots to choose between.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://bkyouthballet.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Youth Ballet calendar",
+          "url": "https://bkyouthballet.com/calendar/",
+          "publisher": "Brooklyn Youth Ballet",
+          "date": "2026-08-03"
+        }
+      ],
+      "sourceQuote": "Adult Ballet Workout\nExpert-led adult ballet workouts in Greenpoint, find a time based on your schedule\nRuns September 14, 2026 – June 25, 2027",
+      "relatedCardIds": [
+        "bk-youth-ballet-enrollment"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-03",
+      "updatedAt": "2026-08-03"
+    },
+    {
+      "id": "bk-youth-ballet-trial-class",
+      "category": "discount",
+      "title": "$40 trial class at Brooklyn Youth Ballet",
+      "kicker": "One trial class, credited to tuition",
+      "endsAt": "2026-08-09T23:59:00-04:00",
+      "recurring": true,
+      "locationName": "Brooklyn Youth Ballet",
+      "address": "37 Greenpoint Ave",
+      "geocodeQuery": "37 Greenpoint Ave, Brooklyn, NY",
+      "lat": 40.729869,
+      "lng": -73.959022,
+      "filters": [
+        "family_kids",
+        "deals_memberships"
+      ],
+      "summary": "New students can take a single class before committing to a semester. Limit one per student per semester.",
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "actions": [
+        {
+          "label": "See the calendar",
+          "type": "learn_more",
+          "url": "https://bkyouthballet.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Youth Ballet calendar",
+          "url": "https://bkyouthballet.com/calendar/",
+          "publisher": "Brooklyn Youth Ballet",
+          "date": "2026-08-03"
+        }
+      ],
+      "sourceQuote": "Try a single trial class before enrolling in a full semester — just $40, credited toward your tuition when you enroll. One trial class per student per semester.",
+      "relatedCardIds": [
+        "bk-youth-ballet-enrollment"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-03",
       "updatedAt": "2026-08-03"

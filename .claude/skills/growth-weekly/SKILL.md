@@ -62,11 +62,14 @@ gate: **merging is the only way any of its output becomes real.**
 
 1. Run `./scripts/posthog-pull.sh` and capture the full output: funnel,
    channels (`?src=`), filter taps, top cards, retention days, repeat visitors.
-2. Compute from it: WRL proxy (repeat-visitor counts + `return_visit`
-   properties `visitCount`/`weekIndex`), activation proxy (first sessions with
-   ≥2 `card_open` + ≥1 of `action_tap`/`cta_tap`/`today_toggle`), per-`src`
-   sessions and week-2 return, organic share (sessions with no `?src=` net of
-   known direct — the >50% word-of-mouth signal, monthly read).
+2. The script filters to production hosts and computes the WRL and activation
+   proxies itself (2026-07-28) — read them from its output rather than
+   hand-rolling queries, which is how the first cycle's funnel numbers went
+   wrong. It also prints a `DROPPED` table of non-production traffic: skim it,
+   and if a *production* host ever appears there, fix `GL_PROD_HOSTS` before
+   reading anything else. Still computed by hand: per-`src` week-2 return, and
+   organic share (sessions with no `?src=` net of known direct — the >50%
+   word-of-mouth signal, monthly read).
 3. **Cloud fallback:** if the pull fails, do not fabricate — mark every
    quantitative section `⚠ analytics pending: run ./scripts/posthog-pull.sh
    locally and paste`, finish the qualitative half, and flag the PR title with

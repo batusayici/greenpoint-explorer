@@ -2678,5 +2678,30 @@
         "-73.9403687"
       ]
     }
+  },
+  "83 West St, Brooklyn, NY 11222": {
+    "query": "83 West St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-03T15:01:21.684Z",
+    "hit": {
+      "place_id": 358540450,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11868399777,
+      "lat": "40.7293975",
+      "lon": "-73.9593384",
+      "category": "shop",
+      "type": "beauty",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "shop",
+      "name": "Marianella Market",
+      "display_name": "Marianella Market, 83, West Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7293475",
+        "40.7294475",
+        "-73.9593884",
+        "-73.9592884"
+      ]
+    }
   }
 }
