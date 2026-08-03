@@ -125,7 +125,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "33 Nassau Ave; use the calendar, not the newsletter form (unreliable/hidden on-site). Plain fetch returns nav-only chrome (2026-07-25) — browser required."
+      "notes": "Wix Events-Calendar widget (inffuse/plugin.eventscalendar.co). Verified 2026-08-03 by loading the widget iframe directly in a real browser: the calendar is EMPTY, not unreachable — the 418-char nav-only snapshot is the true state, so do not chase this as a fetch failure. The widget also flaps: two runs an hour apart reported 'changed +5/-1' and then identical-to-baseline. Treat a small diff here as noise unless it names a dated event."
     },
     {
       "id": "last-place-on-earth",
@@ -430,8 +430,8 @@
       "url": "https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-announces-start-of-construction-to-complete-mcguin",
       "group": "institution",
       "cadence": "monthly",
-      "fetch": "browser",
-      "notes": "nyc.gov blocks plain fetch (403) — browser only. Backs mcguinness-redesign; watch for completion announcement (city says early fall 2026), then update that card's timeline. Added 2026-07-27."
+      "fetch": "auto",
+      "notes": "Plain fetch returns 200 with the full release (verified 2026-08-03); it is headless Chromium that gets bot-walled here, so this must stay `auto` and never `browser` — the old note said the opposite and was wrong. Backs mcguinness-redesign; watch for the completion announcement (city says early fall 2026), then update that card's timeline. CAVEAT: this is a single static press release, so it will never itself announce anything new — it verifies the existing card, it does not surface the next update. See ledger watchItems."
     }
   ]
 }
