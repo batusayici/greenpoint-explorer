@@ -4,7 +4,25 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — First-viewport promotion evaluated and declined; the sectioning stands alone
+## 2026-08-02 (latest) — Chip order: `FILTER_IDS` reordered so a restocked lens enters at the back
+
+Decision (Batu): reorder the array; **leave the rendered bar alone.** New order — `food_drink, family_kids, arts_culture, live_music, news, deals_memberships, community, wellness, games`.
+
+**Measured at 375px** (production): the bar is 872px against a 375px viewport — only 497px of overflow, so nothing is more than two swipes away. Three chips render fully (All · Food & Drink · Family & Kids), **Arts & Culture is cut at 71%** and serves as the scroll affordance, and Live Music · News · Deals & Memberships are one swipe out. Live counts: News 23 · Food & Drink 14 · Family & Kids 14 · Arts & Culture 11 · Live Music 10 · Deals & Memberships 6 · Games 6 · Civic 3 · Wellness 2.
+
+**What forced it:** `partitionFilters` preserves array order, so an index is not cosmetic — it decides **where a lens lands when it crosses the fold threshold**. `wellness` sat at index 3 and `community` at index 5, invisible only because both are thin. Stocking wellness to 5 cards would have dropped it straight into the **peek slot**, displacing live_music, news and deals — three established lenses pushed back by one restocked thin one, with no decision behind it. Fold-prone lenses now trail the thick ones, so crossing the threshold enters the bar at the back and earns its way forward. A test asserts this for both `community` and `wellness`.
+
+**No visual change today** — the primary bar renders byte-identical (same 8 chips, same widths, same offsets). The one intended side effect is inside "More", which reorders `Wellness, Civic, Games` → **`Civic, Wellness, Games`**: descending by supply, mission lens first.
+
+**News stays out of tier 1, deliberately, despite being the largest lens.** An earlier framing in this session called the order "an accident of insertion order" and implied News being off-screen was indefensible; that was wrong and is corrected here. Leading with News would position the product as a local news site — precisely what `docs/context/2026-07-03-greenpointers-differentiation.md` rules out ("never compete as a news product"; they curate the week, we index the neighborhood), and it would do it against the incumbent's strength. **Supply earns tier 2; positioning decides tier 1.** Tier 1 reads *a neighborhood you live in*: universal daily intent, the validated parents wedge, the cultural spine.
+
+**Civic is flickering across the fold threshold** — 5 cards in the morning, 3 by evening as dated civic cards expire, so the chip appears and disappears through the day. **Deliberately not pinned.** The 2026-08-02 sectioning changed what the chip bar is for: the feed now announces a **Civic** section on scroll whether or not the chip is on the bar, so discovery no longer depends on chip placement. This is a **supply** problem — already an open PLAN.md item (unswept civic/nonprofit orgs) — and pinning a 3-card chip would recreate the thin-shelf promise the fold exists to prevent.
+
+Encoded in `cardSchema.js` (`FILTER_IDS` + the rationale), `cardSchema.test.mjs` (order assertion rewritten around intent, plus a new threshold-crossing test). 462/462 green, build clean, bar geometry verified unchanged against production.
+
+Owner: Batu.
+
+## 2026-08-02 — First-viewport promotion evaluated and declined; the sectioning stands alone
 
 Decision (Batu): **"keep current."** The idea he opened this thread with — surface the different content types in the initial viewport so a user "instantly gets the idea" without swiping the chips — is **closed, not deferred.** The shelf sectioning shipped earlier the same day is the whole fix.
 

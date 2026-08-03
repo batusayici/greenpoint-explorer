@@ -90,10 +90,25 @@ export const TRUST_RISKS = ["low", "medium", "high"];
 // `community`, so authored card membership and the ingest rules are untouched.
 // `games` is authored-FOLDED (see FOLDED_FILTER_IDS) — it earns a lens, not a
 // primary chip slot.
+//
+// ORDER IS THE BAR (2026-08-02). `partitionFilters` preserves this array, so an
+// index is not cosmetic — it decides where a lens LANDS when it crosses the
+// fold threshold. `wellness` used to sit at index 3 and `community` at index 5,
+// both invisible only because they were thin; stocking wellness to 5 cards
+// would have dropped it into the peek slot ahead of live_music, news and deals.
+// So: thick lenses in merchandising order first, fold-prone ones behind them, a
+// restocked lens enters at the BACK and earns its way forward.
+//
+// Measured at 375px: ~3 chips are fully visible (All + food_drink +
+// family_kids) with arts_culture cut at 71% as the scroll affordance; the rest
+// is one swipe. `news` is deliberately NOT in that first group despite being
+// the largest lens — leading with News would position this as a local news
+// product, which `docs/context/2026-07-03-greenpointers-differentiation.md`
+// rules out. Supply earns tier 2; positioning decides tier 1.
 export const FILTER_IDS = [
   "food_drink", "family_kids", "arts_culture",
-  "wellness", "live_music", "community",
-  "news", "deals_memberships",
+  "live_music", "news", "deals_memberships",
+  "community", "wellness",
   "games",
 ];
 

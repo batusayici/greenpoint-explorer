@@ -92,11 +92,11 @@ test("requires at least one action and a source link", () => {
   assert.equal(validateCard({ ...good, sourceLinks: [] }).ok, false);
 });
 
-test("FILTER_IDS matches the 2026-08-02 launch IA: games added, folded; the 07-26 order otherwise intact", () => {
+test("FILTER_IDS is the bar's real order: thick lenses first, fold-prone ones at the back", () => {
   assert.deepEqual(FILTER_IDS, [
     "food_drink", "family_kids", "arts_culture",
-    "wellness", "live_music", "community",
-    "news", "deals_memberships",
+    "live_music", "news", "deals_memberships",
+    "community", "wellness",
     "games",
   ]);
   // `games` trails because it is authored-folded — its position only orders it
@@ -104,6 +104,24 @@ test("FILTER_IDS matches the 2026-08-02 launch IA: games added, folded; the 07-2
   assert.deepEqual(FOLDED_FILTER_IDS, ["games"]);
   for (const id of FOLDED_FILTER_IDS) {
     assert.ok(FILTER_IDS.includes(id), `${id} is folded but not a real lens`);
+  }
+});
+
+// 2026-08-02: the array is not cosmetic — `partitionFilters` preserves it, so a
+// lens's index decides WHERE IT LANDS when it crosses the fold threshold. Under
+// the old order `wellness` sat at index 3, so stocking it to 5 cards would have
+// dropped it into the peek slot ahead of live_music, news and deals — three
+// established lenses displaced by a restocked thin one. Fold-prone lenses now
+// trail the thick ones, so crossing the threshold enters the bar at the BACK.
+test("FILTER_IDS: a fold-prone lens crossing the threshold enters at the back of the bar", async () => {
+  const { FILTERS, partitionFilters } = await import("./filterCards.js");
+  const THRESHOLD = 5;
+  const thick = { food_drink: 14, family_kids: 14, arts_culture: 11, live_music: 10, news: 23, deals_memberships: 6 };
+  for (const restocked of ["community", "wellness"]) {
+    const { shown } = partitionFilters(FILTERS, { ...thick, [restocked]: THRESHOLD }, THRESHOLD);
+    const ids = shown.map((f) => f.id);
+    assert.equal(ids.at(-1), restocked, `${restocked} enters last, not mid-bar`);
+    assert.deepEqual(ids.slice(0, 4), ["all", "food_drink", "family_kids", "arts_culture"], "tier 1 is untouched");
   }
 });
 
