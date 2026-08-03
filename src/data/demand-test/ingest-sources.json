@@ -274,11 +274,11 @@
     {
       "id": "triskelion-arts",
       "name": "Triskelion Arts",
-      "url": "https://www.triskelionarts.org/availability-calendar",
+      "url": "https://www.triskelionarts.org/happenings-3",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "106 Calyer St; nonprofit dance venue + classes. Plain fetch returns nav-only chrome (2026-07-25) — browser required."
+      "fetch": "auto",
+      "notes": "Season performances page (verified 2026-08-03 in a real browser). The old URL (/availability-calendar) was the rehearsal-STUDIO rental booker — no public programming, which is why this source produced nothing. Seasons post in blocks (Spring 2026 was the last listed on 8/3); expect a Fall block. Dance performances -> arts_culture."
     },
     {
       "id": "brooklyn-youth-ballet",
