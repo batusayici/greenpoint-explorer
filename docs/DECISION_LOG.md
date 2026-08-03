@@ -4,7 +4,48 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — L8 confirmed live; the full launch-readiness list (L1–L11) is closed
+## 2026-08-03 (latest) — the ingest learns: a judgment call gets made once, then becomes a rule
+
+Decision (Batu): make held cards trend toward zero instead of recurring. Reviewing PR #18 card-by-card
+(the 2026-08-03 Monday run held nine) showed the holds were **not** nine judgment calls:
+
+| Root cause | Count |
+|---|---|
+| Didn't follow the listing → detail link | 2 |
+| A standing rule already covered it | 2 |
+| Genuinely new judgment call | **1** |
+| Standing source limitation | 4 |
+
+Four of nine were the run failing to use knowledge it already had; four more would have regenerated
+every week forever. Only one was new. So the fix is not more policy — it is applying what exists and
+never re-deciding a settled call.
+
+**Authority split.** *Facts* ("this newsletter never states per-date venue", "this booking widget is
+unreadable by automation") are written by the run itself into `ingest-sources.json` notes or the
+ledger's `watchItems` — no approval, both files are already in the content-only file set. *Rules*
+(anything deciding how a **class** of future card is filed) go into `ingest-newsletters/SKILL.md`,
+proposed in the review PR. **Batu approves the rule once; every future matching card then ships
+mechanically.** This needed no new gate — the existing content-only file set already forces a
+`SKILL.md` edit into a PR, so a rule can never self-approve while facts flow freely.
+
+**Mechanism** (all in `SKILL.md`): a **resolve-before-you-hold** gate (R1 follow the detail link when a
+required field is missing — a per-item page beats an index; R2 check whether a standing rule already
+supplies the field; R3 check for a live card of the same shape) that a hold must fail before it is
+legitimate, naming which check it failed. `watchItems` is now **read at step 0** so a known-blocked
+item is not re-authored just to be re-held. Every run reports
+`holds: <n> new-judgment · <n> rule-miss · <n> source-blocked` in its summary and on its
+`processedItems` entry — **`rule-miss` is the number being driven to zero**; `new-judgment` should stay
+low but never zero, since that is the loop working.
+
+**Backfilled from this run:** a kids *deal* double-files `family_kids` + `deals_memberships` (the
+no-double-file rule bars `arts_culture`/`games` only — `moon-bunny-back-to-school` had settled it in
+July); adult movement/dance enrollments are `wellness`, not `arts_culture`; an offer with no stated end
+date is `recurring` + verified-through, not a hold. The four Brooklyn Craft Company workshops became
+`watchItems`, and five of the nine held cards shipped in `e19860a`.
+
+Owner: Batu.
+
+## 2026-08-02 — L8 confirmed live; the full launch-readiness list (L1–L11) is closed
 
 Decision (Batu): verify and record L8. The claude.ai routine `greenpoint-tuesday-growth-readout`
 (`trig_01RWSr6yE5tsPuv5EzpZCjYq`) was already `enabled: true` and had already

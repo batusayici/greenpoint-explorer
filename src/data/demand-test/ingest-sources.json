@@ -107,7 +107,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson)."
+      "notes": "165 Greenpoint Ave; workshops sell out fast — note availability on cards. NEWSLETTER IS PRIMARY (info@brooklyncraftcompany.com, in senderRegistry) — the Shopify collection page hides dated listings (2026-07-25 lesson). VENUE IS NOT STATED PER DATE (2026-08-03 lesson, PR #18): the newsletter lists a class's dates then says \"In Greenpoint and Lower Manhattan\" — it never says which date is where, and BCC runs a concurrent Lower Manhattan pop-up (225 Broadway). NEVER pin a newsletter workshop at 165 Greenpoint Ave on the newsletter alone. The per-session location lives in a BookThatApp widget that is unreadable by automation — verified three ways: invisible to WebFetch (\"Date & Time: select above\"), does not render headless (a control on a known-live session shows the same empty \"Notify Me\" state), and absent from Shopify's product JSON (single Default Title variant). Resolving a date needs a human in a real browser or an email to BCC — so these go to watchItems, not to a weekly re-author."
     },
     {
       "id": "yaro-studios",

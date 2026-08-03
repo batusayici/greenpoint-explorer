@@ -1105,6 +1105,11 @@
       "id": "BROWSER-FETCH-OUTAGE-2026-08-03",
       "reviewedAt": "2026-08-03",
       "outcome": "INFRASTRUCTURE. All 22 browser-method roster sources errored with ERR_CONNECTION_RESET; Chromium has no egress in this sandbox at all (even example.com fails, with and without the proxy). Plain fetch is unaffected. Recovered 12 of the 22 via a scratchpad plain-fetch fallback using the same UA and htmlToText as scripts/fetch-sources.mjs. Those 12 were NOT marked ingested (no baseline written) because the fallback text differs from what browserText would produce — leaving them unmarked keeps the next run diffing honestly. Still uncovered: troost, greenpoint-comedy-club, film-noir-cinema, carcosa-club, nyplays, dance-space-ny, sunshine-laundromat, greenpoint-trash-club (JS-thin) and word-bookstore, sparsa (HTTP 403). NOT a roster problem — no source was dropped."
+    },
+    {
+      "id": "PR18-REVIEW-2026-08-03",
+      "reviewedAt": "2026-08-03",
+      "outcome": "PR #18 reviewed card-by-card against sources. 5 of 9 holds resolved and shipped (e19860a): ranger fishing (detail page states 'Recommended for ages 8 and older' — the run read the index), Transmitter Park yoga (detail page carries 7-8 AM and shows a 4-week series, shipped recurring), Marianella sale (recurring/verified-through — a rule that already existed), BYB adult term (wellness — dance is named in the lens definition), BYB trial (family_kids+deals_memberships per moon-bunny precedent). 4 BCC workshops moved to watchItems as source-blocked. Two run findings corrected: the Transmitter Park opposition was already on the live card since 2026-08-01 (dedupe compared against the article, not the deck), and 3 locally-owned openings (Gallery ATARAH, Balera, Christina's) were triaged only as candidate senders, never as news cards. holds: 1 new-judgment · 4 rule-miss · 4 source-blocked. The 4 rule-misses are why the resolve-before-you-hold gate (R1/R2/R3) and the rule backfill were added to SKILL.md this day."
     }
   ],
   "senderRegistry": [
@@ -1324,6 +1329,26 @@
       "name": "Lulla's Venezuela earthquake relief hub",
       "note": "Greenpointers 7/24: 'local restaurant Lulla's' acting as a volunteer hub — no address stated and no drop-off hours; card as community/news once the address and hours are verified",
       "addedAt": "2026-07-27"
+    },
+    {
+      "name": "Brooklyn Craft Company — Crochet 101: Lil' Bag, Thu 8/6 (bcc-crochet-101-lil-bag-0806)",
+      "note": "BLOCKED, do not re-author (2026-08-03, PR #18): the 7/31 newsletter never states which date is Greenpoint and which is the Lower Manhattan pop-up, and no time of day. The per-session venue is only in BCC's BookThatApp widget, which no fetch can read (see the brooklyn-craft-company notes in ingest-sources.json). UNBLOCK when a human confirms the venue+time in a real browser or BCC answers by email — then it ships as authored. Full card JSON: docs/review/held-cards-2026-08-03.md.",
+      "addedAt": "2026-08-03"
+    },
+    {
+      "name": "Brooklyn Craft Company — Sewing 101: Tote Bag, Sun 8/9 (bcc-sewing-101-tote-0809)",
+      "note": "BLOCKED, do not re-author (2026-08-03, PR #18): the 7/31 newsletter never states which date is Greenpoint and which is the Lower Manhattan pop-up, and no time of day. The per-session venue is only in BCC's BookThatApp widget, which no fetch can read (see the brooklyn-craft-company notes in ingest-sources.json). UNBLOCK when a human confirms the venue+time in a real browser or BCC answers by email — then it ships as authored. Full card JSON: docs/review/held-cards-2026-08-03.md.",
+      "addedAt": "2026-08-03"
+    },
+    {
+      "name": "Brooklyn Craft Company — Needle Felted Pets, Tue 8/11 (bcc-needle-felted-pets-0811)",
+      "note": "BLOCKED, do not re-author (2026-08-03, PR #18): the 7/31 newsletter never states which date is Greenpoint and which is the Lower Manhattan pop-up, and no time of day. The per-session venue is only in BCC's BookThatApp widget, which no fetch can read (see the brooklyn-craft-company notes in ingest-sources.json). UNBLOCK when a human confirms the venue+time in a real browser or BCC answers by email — then it ships as authored. Full card JSON: docs/review/held-cards-2026-08-03.md.",
+      "addedAt": "2026-08-03"
+    },
+    {
+      "name": "Brooklyn Craft Company — Crochet 101: Lil' Bag, Wed 8/12 (bcc-crochet-101-lil-bag-0812)",
+      "note": "BLOCKED, do not re-author (2026-08-03, PR #18): the 7/31 newsletter never states which date is Greenpoint and which is the Lower Manhattan pop-up, and no time of day. The per-session venue is only in BCC's BookThatApp widget, which no fetch can read (see the brooklyn-craft-company notes in ingest-sources.json). UNBLOCK when a human confirms the venue+time in a real browser or BCC answers by email — then it ships as authored. Full card JSON: docs/review/held-cards-2026-08-03.md.",
+      "addedAt": "2026-08-03"
     }
   ]
 }

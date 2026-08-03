@@ -38,6 +38,7 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 1. `npm run ingest:expire` — deletes past events and dated deals, prunes dangling `relatedCardIds` (auto-delete is pre-approved, Batu 2026-07-16). Capture its report: the printed contract counts feed step 5, and any FLAGGED recurring deal joins the re-verify queue.
 2. `npm run ingest:fetch` — snapshots every roster source and writes `.ingest-cache/changes.json`. First Monday of the month: add `--include-monthly`.
 3. Read `changes.json` (the report only — not the snapshots). Sources with status `unchanged` are DONE — do not open them, do not "double-check" them. Sources with `error` go on the Browser-pane list for step 1.
+4. **Read `watchItems` in the ledger — this is the run's memory of what is already known to be blocked (2026-08-03).** Each entry names an item and the condition that would unblock it. **Do not re-author an item on this list unless its condition is now met**; re-authoring a known-blocked item just to hold it again burns a review cycle every week and teaches nothing. Check the condition, then either promote the item to a real card or leave it. Report the count in the run summary as `N blocked, unchanged` so a stuck queue stays visible instead of going quietly dark.
 
 ### 1. Gather
 
@@ -78,6 +79,9 @@ The subagent returns data, not cards — the orchestrator does the judgment: ded
   - **`civic` is civic action and mutual aid ONLY** (**renamed from `community` on 2026-08-02 — author `civic`, never `community`, which now fails schema validation**). Hands-on participation with neighborhood stakes: cleanups, CAG meetings, advocacy asks, a business asking for help. A gathering that is merely *social* does not qualify no matter how community-flavored it sounds — the 40k tournament and the weekly chess night were evicted from here in July and now live in `games`.
   - **`deals_memberships` is deals and standing memberships ONLY.** `subscription` is the schema category for both a standing membership (Falu tinned-fish club, Flower Cat weekly delivery — open-ended relationship) *and* a term enrollment (fall dance registration, kids' game clubs — a fixed term you buy once). **The lens cannot be derived from the category:** enrollments and registrations go to their audience lens (`family_kids` / `wellness` / `games`), never here.
 - **Kids events go in kids (Batu, 2026-08-02).** Anything authored for children — a kids' art workshop, a kids' sewing camp, kids' D&D or Magic clubs — is `family_kids` and does **not** double-file into `arts_culture` or `games`. Genuinely all-ages venues and festivals (the Library, Kingsland Wildflowers) may still carry both.
+  - **A kids DEAL double-files `family_kids` + `deals_memberships` (2026-08-03, PR #18).** The no-double-file rule above bars `arts_culture` and `games` — it does **not** bar a deals lens, and `moon-bunny-back-to-school` has shipped both since July. So a discounted trial or offer at a kids' business is not a rule collision and is not a hold: file both.
+- **Adult movement and dance enrollments are `wellness` (2026-08-03, PR #18).** `cardSchema.js` defines the lens as the movement cluster — yoga / pilates / **dance** / run — so an adult ballet, barre or dance term is `wellness`, not `arts_culture`. `arts_culture` is culture you **attend**; a term you enrol in and do weekly is movement. (`arts_culture` was never even an option here: the enrollment rule above names `family_kids`/`wellness`/`games` as the only audience lenses.)
+- **An offer with no stated end date is `recurring` + verified-through — NOT a hold (2026-08-03, PR #18).** "For a little while", "while supplies last", an open-ended intro offer: set `endsAt` to the end of the edition week and let the next run re-verify or drop it. That mechanism already exists (see the category rules above, and `poochs-parlor-first-groom`); the 2026-08-03 run held a card for a missing field the rules already fill. If the offer is **online/sitewide** rather than in-store, say so in the copy — a storefront pin implies you can walk there for it.
 - **The live lens set is `FILTER_IDS` in `cardSchema.js` — read it, don't recall it.** It has changed six times since July; a lens you remember may be retired. Authoring a card with an unknown filter fails schema validation, and a card whose copy names a game (pinball, chess, trivia, bingo, board game, Warhammer, D&D…) fails `npm test` unless it is in `games` or `family_kids` — so a stale lens definition cannot ship a mis-filed card.
 - **Lens rules (Batu, 2026-07-26):** `shopping` is retired as a lens — sales/offers at shops go to `deals_memberships`; store openings go to `news` (+`family_kids` etc. as honest). **`live_music` = dated gigs or documented ongoing programming, never bare place cards** — do NOT author an undated venue card when the venue's program is already on the map as dated gig cards (that duplication is what got Troost/Good Room/Eavesdrop/Hide & Seek venue cards deleted). A gig card missing `startsAt` shows on every prior day's Today lens; a repo test now fails on it.
 - Geography: Greenpoint only (bbox in `cardSchema.js`). Williamsburg-proper items are skipped — note them in the run summary, don't map them. **Exception (Batu, 2026-07-22, Newtown Creek CAG precedent): Greenpoint-related civic events held nearby (e.g. just across the creek in LIC) ship as `civic_action` pinned at their exact real location** — the subject matter, not the address, is the gate for civic items.
@@ -109,6 +113,46 @@ The subagent returns data, not cards — the orchestrator does the judgment: ded
 
 Hold means **keep the work**: author the card properly, put it in the PR with the reason on one line, and say what would resolve it. A held card is a queue item, not a loss.
 
+**RESOLVE BEFORE YOU HOLD (Batu, 2026-08-03 — the PR #18 lesson).** That review
+classified all nine holds from the 2026-08-03 run and found only **one** was a
+genuinely new judgment call. Four were the run failing to use knowledge it already
+had, and four were a standing source limitation that would have regenerated every
+week. A hold is legitimate only after these three checks are exhausted, and the
+hold note must **name which one it failed**:
+
+- **R1 — Follow the link.** If a required field (time, venue, age, price,
+  free-ness) is missing — **or a lens cannot be assigned, which is the same
+  problem wearing a different hat: the fact the lens depends on is missing** —
+  *and* the listing links to a detail/event page, open the detail page before
+  holding. **When a source offers both an index and a per-item
+  page, the per-item page is the source of record.** Precedent: the NYC Parks
+  events index tags the ranger fishing session only "Urban Park Rangers, Fishing",
+  which made every lens look like a guess — the event's own page states
+  "Recommended for ages 8 and older", which shipped it. Go Green's listing
+  likewise omits the time its detail page carries. Deliberately bounded: only on a
+  **missing field**, never a fetch-everything sweep — the cost architecture above
+  is the constraint.
+- **R2 — Check whether a standing rule already supplies the field.** A "missing"
+  field is often one this skill already has an answer for: an offer with no stated
+  end date is `recurring` + verified-through (**not** a hold); an enrollment goes
+  to its audience lens. Re-read the rules above before concluding a field is
+  unfillable.
+- **R3 — Check for a live card of the same shape — for FILING ONLY.**
+  `npm run ingest:index` is already in the loop and cheap. If a live card has
+  already made this exact **categorization** call — which lens, which category,
+  whether to double-file — follow it; that call was reviewed once and does not
+  need reviewing again. Precedent: `moon-bunny-back-to-school` had already settled
+  how a kids discount files, which is what the BYB trial needed.
+  **A precedent card NEVER supplies a fact.** Venue, time, price, free-ness and
+  dates come from the source or the card is held — full stop. The trap is real
+  and this run walked up to it: five live Brooklyn Craft Company cards are pinned
+  at 165 Greenpoint Ave, so "a live card of the same shape exists" would have
+  cheerfully invented the venue for four workshops whose newsletter never said
+  which city they were in. Same shape ≠ same facts.
+
+**A hold that R1–R3 would have resolved is a defect, not caution** — it costs a
+review cycle and, on a same-week item, usually the card itself.
+
 **Run-level gates — all must pass before ANY push:**
 
 1. `npm test` green (schema, substantiation, bbox geocode, lens rules, unique ids, place-graph, no open-start gigs).
@@ -128,6 +172,17 @@ Hold means **keep the work**: author the card properly, put it in the PR with th
 5. Run the step-3 run-level gates. All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
 6. **Held cards go to a PR** (`ingest/review-<date>`) with a one-line reason each and what would resolve it. Ship first, then PR — a doubtful card must never delay the clean ones.
 7. **Report every run in the summary**, whether or not it shipped: what shipped, what was held and why, and the gate results. Autonomy without a log is not autonomy, it's drift.
+8. **Classify every hold and log the tally (2026-08-03).** One line in the summary, and the same line on the run's `processedItems` entry so the trend is queryable across runs:
+
+   `holds: <n> new-judgment · <n> rule-miss · <n> source-blocked`
+
+   - **`new-judgment`** — a call this skill genuinely has no answer for. Expected to stay low but never zero; each one should come back as a proposed rule (below).
+   - **`rule-miss`** — R1/R2/R3 would have resolved it. **This is the number to drive to zero.** A non-zero `rule-miss` means the run held a card it had everything it needed to ship, so say which check was skipped.
+   - **`source-blocked`** — the source genuinely doesn't carry the fact and no fetch can reach it. Goes to `watchItems`, not to a re-author next week.
+9. **Turn each resolved hold into something durable (Batu, 2026-08-03 — the authority split).**
+   - **Facts** — "this newsletter never states per-date venue", "this booking widget is unreadable by automation" — the run writes them itself, into the source's `notes` in `ingest-sources.json` or into `watchItems`. No approval needed; both files are already in the content-only file set.
+   - **Rules** — anything that decides how a *class* of future card is filed — go into **this skill**, proposed as a one-line addition in the review PR. Batu approves the **rule once**, and every future matching card then ships mechanically with no per-card review. This needs no new gate: gate 5's content-only file set already forces a `SKILL.md` edit into a PR, so a rule can never self-approve while facts flow freely.
+   - The point of the loop: **a judgment call should be made once.** If the same call is being made a second time, the first one wasn't written down.
 
 **Rollback:** content lives in one JSON file, so a bad ship is `git revert <sha> && git push`. If a spot-check shows the live page broken or a card that shouldn't be there, revert first and diagnose after — do not leave a bad deck live while investigating.
 
