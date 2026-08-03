@@ -137,17 +137,21 @@ rules), in the readout, never self-granted.
    and open a PR titled `growth: readout YYYY-MM-DD` whose body is the readout
    itself. **Stop there.** Merging = Batu's review; closing discards the cycle.
 
-## Cloud routine (created 2026-07-27, **disabled** until Batu enables)
+## Cloud routine (created 2026-07-27, **enabled** — confirmed live 2026-08-02, L8)
 
 `greenpoint-tuesday-growth-readout` (`trig_01RWSr6yE5tsPuv5EzpZCjYq`,
 claude.ai/code/routines) mirrors the ingest routines: Tuesdays 9:30 ET (cron
 `30 13 * * 2` UTC — shift when DST ends, like the ingest crons), Opus
 orchestrator (never Fable for scheduled runs), repo checkout, PR-only output.
 
-**Before enabling (Batu):** (1) this skill + the launch plan must be merged to
-main (the cloud checkout reads them from there); (2) add `POSTHOG_READ_KEY` +
-`POSTHOG_PROJECT_ID` to the routine's environment **and allowlist
-`us.posthog.com` in its network policy** — both are required, and the 2026-07-28
+Proven end to end 2026-07-28: real PostHog pull, merged readout
+(`docs/growth/readouts/2026-07-28.md`). A second cycle was triggered manually
+2026-08-02 to validate the pipeline against the L7 domain cutover.
+
+**What made it work:** (1) this skill + the launch plan merged to main (the
+cloud checkout reads them from there); (2) `POSTHOG_READ_KEY` +
+`POSTHOG_PROJECT_ID` in the routine's environment **and `us.posthog.com`
+allowlisted in its network policy** — both are required, and the 2026-07-28
 run proved the vars alone are not enough (they were present; the egress proxy
 returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
 `/growth-weekly` invocations remain the fallback if cloud misbehaves.

@@ -4,7 +4,25 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-02 (latest) — L7 domain cutover shipped: greenpoint.life is canonical, apex primary
+## 2026-08-02 (latest) — L8 confirmed live; the full launch-readiness list (L1–L11) is closed
+
+Decision (Batu): verify and record L8. The claude.ai routine `greenpoint-tuesday-growth-readout`
+(`trig_01RWSr6yE5tsPuv5EzpZCjYq`) was already `enabled: true` and had already
+proven itself 2026-07-28 (real PostHog pull after Batu fixed a mid-run egress
+denial, merged readout at `docs/growth/readouts/2026-07-28.md`) — the "disabled
+until Batu enables" line in `growth-weekly/SKILL.md` was stale prose, not the
+actual state. Triggered a second cycle manually (`RemoteTrigger run`) right
+after the L7 origin flip to validate the pipeline against the new canonical
+domain and updated `channel-links.md`; runs as its own PR, never touches `main`
+directly (skill's Authority section forbids it).
+
+**With L8 confirmed, every item on the L1–L11 launch-readiness table
+(`docs/launch/2026-07-27-launch-plan.md` §1) is closed.** Remaining launch-track
+work is the seeding waves (§3) — Batu-gated sends, not builds.
+
+Owner: Batu.
+
+## 2026-08-02 — L7 domain cutover shipped: greenpoint.life is canonical, apex primary
 
 Decision (Batu): execute the L7 launch-readiness item — flip the domain cutover. `AEO_ORIGIN` (`src/demand-test/aeo.js`) moved from `https://greenpoint-explorer.vercel.app` to `https://greenpoint.life`, pushed to `main` (`c43ed04..2091b95`).
 
