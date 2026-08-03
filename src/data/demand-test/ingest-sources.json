@@ -376,8 +376,8 @@
       "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "403s plain fetches. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only."
+      "fetch": "auto",
+      "notes": "Plain fetch with a browser UA returns 200 (verified 2026-08-03); it is headless Chromium that gets a CloudFront 403, so this must stay `auto` and never `browser`. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only."
     },
     {
       "id": "nycparks-mccarren",
@@ -385,8 +385,8 @@
       "url": "https://www.nycgovparks.org/parks/mccarren-park/events",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "Same 403 + skip-recurring-rec-classes rule."
+      "fetch": "auto",
+      "notes": "Same as nycparks-mcgolrick: `auto` works, headless 403s. Skip-recurring-rec-classes rule applies."
     },
     {
       "id": "nycparks-transmitter",
@@ -394,8 +394,8 @@
       "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "Same 403 + skip-recurring-rec-classes rule."
+      "fetch": "auto",
+      "notes": "Same as nycparks-mcgolrick: `auto` works, headless 403s. Skip-recurring-rec-classes rule applies."
     },
     {
       "id": "nycparks-newtown-barge",
@@ -403,8 +403,8 @@
       "url": "https://www.nycgovparks.org/parks/newtown-barge-playground/events",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "Same 403 + skip-recurring-rec-classes rule."
+      "fetch": "auto",
+      "notes": "Same as nycparks-mcgolrick: `auto` works, headless 403s. Skip-recurring-rec-classes rule applies."
     },
     {
       "id": "greenpoint-star",
