@@ -164,5 +164,7 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   line if unwanted)** Split every metric by `$host` before reporting it.
   `localhost:*` and LAN dev servers land in the same PostHog project as
   production and were 34% of all events on 2026-07-28. Report production only
-  (`$host = 'greenpoint-explorer.vercel.app'`, becoming `greenpoint.life` at
-  cutover), and say so in the readout.
+  (since the 2026-08-02 cutover that means **both** `greenpoint.life` and
+  `greenpoint-explorer.vercel.app` — the old host still serves already-sent
+  invite links, so filtering to one host drops real traffic), and say so in the
+  readout.

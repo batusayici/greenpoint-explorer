@@ -194,5 +194,5 @@ test("llms.txt names the product and points at the machine surfaces", () => {
 });
 
 test("AEO_ORIGIN is the current production origin", () => {
-  assert.equal(AEO_ORIGIN, "https://greenpoint-explorer.vercel.app");
+  assert.equal(AEO_ORIGIN, "https://greenpoint.life");
 });

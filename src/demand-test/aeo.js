@@ -11,8 +11,9 @@
 import { isExpiredCard } from "./filterCards.js";
 import { isStartSentinel, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 
-// Flips to https://greenpoint.life at the 3.4 domain cutover.
-export const AEO_ORIGIN = "https://greenpoint-explorer.vercel.app";
+// Canonical origin since the 2026-08-02 domain cutover (L7). The vercel.app
+// host keeps serving as rollback + the live-invite target; it is not canonical.
+export const AEO_ORIGIN = "https://greenpoint.life";
 
 export const liveCards = (cards, now) => cards.filter((c) => !isExpiredCard(c, now));
 

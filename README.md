@@ -2,7 +2,7 @@
 
 A hyperlocal map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news — verified, sourced, and mapped, in the II-C inked visual identity.
 
-**Live:** https://greenpoint-explorer.vercel.app (consumer domain `greenpoint.life` pending checkpoint gate)
+**Live:** https://greenpoint.life (canonical since the 2026-08-02 domain cutover; `greenpoint-explorer.vercel.app` keeps serving as the rollback path and the target of already-sent invite links)
 
 ## What it is
 
