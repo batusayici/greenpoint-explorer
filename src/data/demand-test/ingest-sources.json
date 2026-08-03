@@ -92,15 +92,6 @@
       "notes": "ScrappleLeague Wednesdays; re-verify the season is running."
     },
     {
-      "id": "word-bookstore",
-      "name": "WORD Bookstore",
-      "url": "https://wordbookstores.com/events",
-      "group": "venue",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Apply the Brooklyn filter — the page mixes in their Jersey City store. Site bot-walls both plain and headless fetches (IndieCommerce 403) — expect status \"error\"; check via the Browser pane each run."
-    },
-    {
       "id": "brooklyn-craft-company",
       "name": "Brooklyn Craft Company",
       "url": "https://brooklyncraftcompany.com/collections/all-workshops",
