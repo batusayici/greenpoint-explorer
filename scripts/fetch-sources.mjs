@@ -161,15 +161,50 @@ async function preflightBrowser() {
     await page.goto(BROWSER_CONTROL_URL, { waitUntil: "domcontentloaded", timeout: 20000 });
     return { ok: true, proxy: PROXY ? "via HTTPS_PROXY" : "direct" };
   } catch (e) {
+    const detail = String(e.message ?? e).split("\n")[0];
+    // Two failure shapes look identical from Chromium's side (it can't load
+    // the control URL) but need different fixes, so tell them apart with the
+    // one signal that distinguishes them: can plain fetch reach the SAME URL
+    // through the SAME environment right now? (2026-08-05 — a run diagnosed
+    // this by hand: curl/plain fetch reached the control host fine while
+    // Chromium's CONNECT tunnel to that exact host was reset. The preflight
+    // used to call that "browser-egress-blocked" and tell Batu to allowlist
+    // the host — wrong fix, since the host was never blocked for plain
+    // fetch. Only call it an allowlist gap when plain fetch is ALSO refused.)
+    let plainReachable = null;
+    if (PROXY) {
+      try {
+        const r = await fetch(BROWSER_CONTROL_URL, { signal: AbortSignal.timeout(10000) });
+        plainReachable = r.ok;
+      } catch {
+        plainReachable = false;
+      }
+    }
+    if (PROXY && plainReachable) {
+      return {
+        ok: false,
+        cause: "browser-connect-reset",
+        detail,
+        proxy: `via HTTPS_PROXY (${PROXY})`,
+        fix:
+          `plain fetch reached ${BROWSER_CONTROL_URL} fine through the same ${PROXY} — so this is NOT an ` +
+          "allowlist gap (that would refuse plain fetch too). Headless Chromium's own CONNECT tunnel through " +
+          "the proxy is being refused/reset for a host plain fetch reaches without trouble. That points at the " +
+          "proxy relay's handling of Chromium's CONNECT specifically, not a missing allowlist entry — report the " +
+          "exact symptom (plain fetch ok, Chromium CONNECT reset) to platform support at claude.ai/code rather " +
+          "than re-requesting a host allowlist. Never route around it.",
+      };
+    }
     return {
       ok: false,
       cause: "browser-egress-blocked",
-      detail: String(e.message ?? e).split("\n")[0],
+      detail,
       proxy: PROXY ? `via HTTPS_PROXY (${PROXY})` : "direct (no HTTPS_PROXY set)",
       fix: PROXY
         ? `headless Chromium launched and was routed through ${PROXY}, but could not load ` +
-          `${BROWSER_CONTROL_URL}. The proxy itself is refusing the CONNECT — allowlist the host at ` +
-          "claude.ai/code (same class as the us.posthog.com denial, DECISION_LOG 2026-07-28). Never route around it."
+          `${BROWSER_CONTROL_URL}, and plain fetch through the same proxy failed too — the proxy is refusing ` +
+          "this environment's egress outright. Allowlist the host at claude.ai/code (same class as the " +
+          "us.posthog.com denial, DECISION_LOG 2026-07-28). Never route around it."
         : `headless Chromium launched but could not load ${BROWSER_CONTROL_URL}, and no HTTPS_PROXY is set. ` +
           "If this environment proxies all egress, Chromium is connecting direct and being refused — " +
           "export HTTPS_PROXY in the routine so it gets passed through at launch.",
