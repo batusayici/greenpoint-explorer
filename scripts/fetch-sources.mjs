@@ -28,8 +28,13 @@
 //
 // Fetch strategy per source: "auto" = plain HTTP with a browser UA, falling
 // back to headless Chromium (playwright, optional dep) on 403/JS-thin pages;
-// "browser" = straight to headless. Sources that fail both are reported as
-// status "error" — the ingest run covers those few via the Browser pane.
+// "browser" = straight to headless; "feed" = plain HTTP against an RSS URL,
+// which for a WordPress-style feed returns full post bodies and never needs
+// the browser. Sources that fail every attempt are reported as status "error"
+// — the ingest run covers those few via the Browser pane.
+// Prefer "feed" wherever a source publishes one: it is the cheapest strategy,
+// it carries more than the rendered page, and it is immune to the browser
+// path being unavailable (2026-08-05).
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
@@ -105,6 +110,35 @@ function htmlToText(html) {
     .map((l) => l.replace(/\s+/g, " ").trim())
     .filter(Boolean)
     .join("\n");
+}
+
+// --- RSS feed ---------------------------------------------------------------
+// A third fetch strategy alongside plain and browser. WordPress-style feeds
+// carry the FULL post body in <content:encoded>, so reading the feed yields
+// article text directly — strictly more than the page it comes from, at plain
+// fetch cost. Added 2026-08-05 for Greenpointers, whose front page is
+// browser-only (JS-thin + bot-walled) but whose feed is plain-fetchable and
+// carries the "What's Happening" roundup body, not merely a link to it.
+// Written for RSS 2.0, which is what the roster's feed sources serve.
+const stripCdata = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").trim();
+function xmlTag(xml, name) {
+  const m = xml.match(new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)</${name}>`, "i"));
+  return m ? stripCdata(m[1]) : "";
+}
+function feedToText(xml) {
+  const items = xml.match(/<item\b[\s\S]*?<\/item>/gi) ?? [];
+  // Not throwing here would snapshot an error page as if it were content, the
+  // same failure mode BLOCK_RE guards for on the plain path.
+  if (!items.length) throw new Error("no <item> entries — not an RSS 2.0 feed?");
+  return items
+    .map((item) => {
+      const title = decode(xmlTag(item, "title"));
+      const link = decode(xmlTag(item, "link"));
+      const date = decode(xmlTag(item, "pubDate"));
+      const body = htmlToText(xmlTag(item, "content:encoded") || xmlTag(item, "description"));
+      return [title && `## ${title}`, link, date, body].filter(Boolean).join("\n");
+    })
+    .join("\n\n");
 }
 
 // --- optional headless-browser fallback ------------------------------------
@@ -233,22 +267,27 @@ async function browserText(url) {
   }
 }
 
-async function plainText(url) {
+async function rawGet(url, accept) {
   const res = await fetch(url, {
-    headers: { "User-Agent": UA, Accept: "text/html,application/xhtml+xml", "Accept-Language": "en-US,en;q=0.9" },
+    headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "en-US,en;q=0.9" },
     redirect: "follow",
     signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return htmlToText(await res.text());
+  return res.text();
 }
+const plainText = async (url) => htmlToText(await rawGet(url, "text/html,application/xhtml+xml"));
+const feedText = async (url) => feedToText(await rawGet(url, "application/rss+xml,application/xml,text/xml"));
+
+const ATTEMPTS = { browser: ["browser"], feed: ["feed"] }; // default: plain, then browser
+const FETCHERS = { plain: plainText, feed: feedText, browser: browserText };
 
 async function fetchSource(src) {
-  const attempts = src.fetch === "browser" ? ["browser"] : ["plain", "browser"];
+  const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];
   let lastErr = null;
   for (const method of attempts) {
     try {
-      const text = method === "plain" ? await plainText(src.url) : await browserText(src.url);
+      const text = await FETCHERS[method](src.url);
       if (BLOCK_RE.test(text.slice(0, 800))) {
         lastErr = new Error(`bot-wall page via ${method} fetch`);
         continue;

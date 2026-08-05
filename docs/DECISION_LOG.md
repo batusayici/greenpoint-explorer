@@ -4,7 +4,50 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-03 (latest) — the ingest learns: a judgment call gets made once, then becomes a rule
+## 2026-08-05 (latest) — read the feed, not the page: Greenpointers leaves the browser path
+
+Context: the 2026-08-05 daily thin refresh halted at the roster gate. 14 of 45 sources
+unreachable (31%, ceiling 15%) because headless Chromium's HTTPS CONNECT tunnel was reset by
+the cloud sandbox's proxy — while plain fetch reached the same hosts through the same proxy
+without trouble. The run correctly refused to ingest, reverted expiry's 5 deletions rather
+than shrink the deck on a degraded read, and shipped nothing. **The underlying CONNECT bug is
+platform-side and not fixable from this repo.**
+
+**Two decisions, neither of which waits on the platform.**
+
+**1. The preflight now distinguishes two failures it used to conflate.** It called every
+browser failure `browser-egress-blocked` and told Batu to allowlist the host at claude.ai/code
+— useless advice when the host was never blocked. It now cross-checks plain fetch against the
+same control URL: plain OK + Chromium refused = **`browser-connect-reset`** (a proxy-relay
+issue to report as such); both refused = `browser-egress-blocked` as before. Neither is routed
+around. A wrong diagnosis costs more than no diagnosis — it sends the fix in the wrong
+direction, and this one would have recurred every week.
+
+**2. Sources move to their RSS feed where one exists — starting with Greenpointers.** New
+`fetch: "feed"` strategy in `fetch-sources.mjs`, a third alongside `plain` and `browser`.
+Greenpointers is the neighborhood's most-read source and was browser-only (JS-thin +
+bot-walled). Its feed is plain-fetchable and **carries strictly more**: `content:encoded`
+holds the full post body, so the snapshot is the roundup's actual items — times, venues,
+free-ness, RSVP links — instead of a front-page diff that yielded only a URL.
+
+That deletes a whole step: the old skill said "verify items at the post itself (Browser
+pane)" *because* the front page gave nothing but a link. The feed removes both the browser
+dependency and the second fetch. Verified 2026-08-05: 105 lines / 15KB of article text, 10
+posts including the current "What's Happening" roundup, `0 error`. The stale front-page
+baseline was retired so the format change reads as `new` (full text as the diff) rather than
+a phantom 239-line removal; already-ingested posts are still deduped by URL against
+`processedItems`.
+
+**Standing rule:** when proposing any new source, check for a feed before proposing `browser`.
+Cheapest strategy, fuller text, immune to the browser path being down.
+
+Not fixed here: the other 13 browser-dependent sources (Wix Events, hiSawyer, withfriends,
+feather.rsvp, BPL) each need their own adapter, scoped separately. Plain-fetch sources were
+never affected — 31 of 45 read fine throughout.
+
+Owner: Batu.
+
+## 2026-08-03 — the ingest learns: a judgment call gets made once, then becomes a rule
 
 Decision (Batu): make held cards trend toward zero instead of recurring. Reviewing PR #18 card-by-card
 (the 2026-08-03 Monday run held nine) showed the holds were **not** nine judgment calls:

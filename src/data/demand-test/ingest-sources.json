@@ -3,12 +3,12 @@
   "sources": [
     {
       "id": "greenpointers",
-      "name": "Greenpointers front page",
-      "url": "https://greenpointers.com/",
+      "name": "Greenpointers (RSS)",
+      "url": "https://greenpointers.com/feed/",
       "group": "roundup",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS — a diff here surfaces the new post URL; always verify items at the post itself. Apply the Williamsburg-address gate per roundup item. Blocks plain WebFetch."
+      "fetch": "feed",
+      "notes": "\"What's Happening\" roundup publishes WEDNESDAYS. Switched from the browser-only front page to the RSS feed 2026-08-05: the feed's content:encoded carries the FULL roundup body (times, venues, free-ness, RSVP links), so the snapshot is the article text itself — no browser, and no second fetch to the post URL to read items. The post URL is still in the diff; cite it as the sourceLink. Apply the Williamsburg-address gate per roundup item. The HTML site blocks plain WebFetch — go to the feed, not the page."
     },
     {
       "id": "troost",
