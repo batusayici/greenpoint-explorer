@@ -41,7 +41,7 @@ import { join, dirname } from "node:path";
 import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
-import { jsonToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
+import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -285,8 +285,11 @@ async function jsonText(src) {
   return blocks.join("\n\n");
 }
 
-const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"] }; // default: plain, then browser
-const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, browser: browserPage };
+const embeddedText = async (src) =>
+  embeddedToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"), src.embedded ?? {});
+
+const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"] }; // default: plain, then browser
+const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage };
 
 async function fetchSource(src) {
   const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];

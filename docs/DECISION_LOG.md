@@ -4,7 +4,45 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-05 (latest) — the roster stops depending on a browser: 22 browser sources → 6
+## 2026-08-05 (latest) — Batu's corrections: 6 unreachable sources → 3, sparsa removed
+
+Batu reviewed the "provably no plain-fetchable endpoint" list below and **four of the six were wrong —
+not about the fetch mechanics, but about which page to point at.** The research had verified the
+configured URL thoroughly and never asked whether it was the right URL. Corrections:
+
+- **`dance-space-ny` — the schedule was never gone.** It lives at `/adultdanceclasses`; the configured
+  `/studiodates` now 302s to the homepage. It had been written off as "moved to Instagram" on the
+  strength of an off-site pointer in stale copy. Podia hydrates from JSON in `data-props` attributes,
+  which tag-stripping discards — hence the 18-char snapshot that read as a dead page. New **`embedded`**
+  fetch strategy reads the payload: Adult Ballet Mon 6:45–8pm, Beginner Tap Tue 6:30–7:30pm,
+  Intermediate Tap Thu 6:30–7:30pm, Beginner Jazz Thu 7:30–8:30pm, Sneaker Jazz Fri 7–8:30pm.
+- **`play-kids-greenpoint` — right finding, wrong page.** `/calendar` really is an empty Wix widget;
+  the movie nights are at **`/movie-nights`**, plain-fetchable, with real dates (Fri Aug 7, Fri Aug 21,
+  drop-off 5:30–8:30pm). Now `auto`, and it reads via **plain** — no browser at all.
+- **`greenpoint-comedy-club` — better page, still browser.** The Jump Comedy venue page
+  (`jumpcomedy.com/v/greenpoint-comedy-club`) renders the full show list with dates, times and prices
+  and avoids the Cloudflare Turnstile on the ticketing subdomain. It stays `browser`: watched live in a
+  real browser, the page issues **no XHR at all** — Phoenix LiveView pushes listings over a WebSocket.
+- **`word-bookstore` — confirmed correct as configured**, and browser-only for the same reason
+  (Withfriends is also WebSocket-delivered). Re-probed: `/api/movement/word/events` and `?format=json`
+  both return the same empty SPA shell; `.ics` 500s.
+- **`sparsa` — removed from the roster** on Batu's instruction, per the `robots.txt` ClaudeBot opt-out
+  flagged below.
+
+**Result: 47 sources, and only 3 can fail when the browser is down** — `word-bookstore`,
+`greenpoint-comedy-club`, `greenpoint-trash-club`. The `--no-browser` simulation now reports
+**41/44 read, 7% error, exit 0**, against a 15% ceiling — the thin 13% margin noted below is closed.
+Normal run 44/44, 0 errors. Tests 491 → 494.
+
+**The lesson worth keeping.** Verifying an endpoint answers "can we fetch this URL?" — it does not
+answer "is this the URL the content is on." Four sources were declared unreachable while their
+content sat on a sibling page. **When a source looks dead, check the site's own navigation for a
+better page before concluding anything**, and treat "they moved it to Instagram" as a claim needing
+evidence rather than an explanation. That check is now written into the roster-discovery step.
+
+Owner: Batu.
+
+## 2026-08-05 — the roster stops depending on a browser: 22 browser sources → 6
 
 Follow-on to the entry below, same incident. Having taken Greenpointers off the browser path, the
 question was whether the routine survives the cloud CONNECT outage for **every** source. All 13

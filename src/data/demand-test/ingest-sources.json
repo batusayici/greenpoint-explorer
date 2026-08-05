@@ -42,12 +42,12 @@
     },
     {
       "id": "greenpoint-comedy-club",
-      "name": "Greenpoint Comedy Club",
-      "url": "https://tickets.greenpointcomedyclub.com/b/greenpointcomedyclub/index",
+      "name": "Greenpoint Comedy Club (Jump Comedy)",
+      "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": ""
+      "fetch": "browser",
+      "notes": "66 Greenpoint Ave. Batu 2026-08-05: use the Jump Comedy venue page, not the tickets.greenpointcomedyclub.com booking widget — it renders the full show list with dates, times and prices, and skips the Cloudflare Turnstile the ticket subdomain puts up. STILL BROWSER-ONLY and provably so: Jump is a Phoenix LiveView app that pushes listings over a WebSocket after mount. Confirmed 2026-08-05 by watching the network — the page makes NO XHR/JSON request at all, only HTML/CSS/JS/images, and .ics + /api/ + ?format=json probes all 404. Do not re-hunt for an endpoint. Recurring showcases (Thu/Fri/Sat) repeat weekly with several dates per listing — card the named one-off shows, not every showcase instance."
     },
     {
       "id": "film-noir-cinema",
@@ -142,12 +142,12 @@
     },
     {
       "id": "play-kids-greenpoint",
-      "name": "PLAY Kids Greenpoint",
-      "url": "https://playgreenpoint.com/calendar",
+      "name": "PLAY Kids Greenpoint (movie nights)",
+      "url": "https://www.playgreenpoint.com/movie-nights",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "Wix Events-Calendar widget (inffuse/plugin.eventscalendar.co). Verified 2026-08-03 by loading the widget iframe directly in a real browser: the calendar is EMPTY, not unreachable — the 418-char nav-only snapshot is the true state, so do not chase this as a fetch failure. The widget also flaps: two runs an hour apart reported 'changed +5/-1' and then identical-to-baseline. Treat a small diff here as noise unless it names a dated event."
+      "fetch": "auto",
+      "notes": "Batu 2026-08-05: the movie nights are here, not on /calendar. The /calendar page is the Wix Events widget that was verified EMPTY 2026-08-03 — that finding was correct but pointed at the wrong page. /movie-nights is plain-fetchable and carries real dates: verified 2026-08-05 with Friday Aug 7 and Friday Aug 21, drop-off 5:30-8:30pm. Kids-authored, so family_kids and NOT arts_culture (DECISION_LOG 2026-08-02). Also worth a look when a run needs more kids supply: /classes-events and /summer-camp are plain-fetchable on the same site."
     },
     {
       "id": "last-place-on-earth",
@@ -165,7 +165,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "Batu 2026-08-03: WORD's own site bot-walls every method (IndieCommerce 403); this is where their newsletter events are published. Plain fetch returns a 'Page load issue' shell (~470 chars) — browser only. Each event states its own location line, so the Brooklyn filter is mechanical: card ONLY 'Greenpoint, Brooklyn' / 'Brooklyn, NY' items, never 'Jersey City, NJ'. The list renders ~5 events behind a 'Show more events...' control, so treat the snapshot as the near-term window, not the full calendar."
+      "notes": "Batu 2026-08-05 confirmed this is where WORD publishes events (their own site bot-walls every method — IndieCommerce 403). STILL BROWSER-ONLY and provably so: Withfriends delivers the list over a WebSocket, not HTTP. Re-probed 2026-08-05 — /api/movement/word/events and ?format=json both return the same ~82KB empty SPA shell, .ics 500s. Do not re-hunt for an endpoint. Each event states its own location line, so the Brooklyn filter is mechanical: card ONLY \"Greenpoint, Brooklyn\" / \"Brooklyn, NY\" items, never \"Jersey City, NJ\". The list renders ~5 events behind a \"Show more events...\" control, so treat the snapshot as the near-term window, not the full calendar."
     },
     {
       "id": "carcosa-club",
@@ -222,12 +222,15 @@
     },
     {
       "id": "dance-space-ny",
-      "name": "The Dance Space NY",
-      "url": "https://www.dancewithellyshepley.com/thedancespaceny/studiodates",
+      "name": "The Dance Space NY (adult classes)",
+      "url": "https://www.dancewithellyshepley.com/adultdanceclasses",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "61 Greenpoint Ave; site also points at IG @thedancespaceny for live updates."
+      "fetch": "embedded",
+      "notes": "61 Greenpoint Ave. Batu 2026-08-05: the adult class schedule lives at /adultdanceclasses — the old /studiodates URL now 302s to the homepage, which is why this looked like a dead source. Podia hydrates from JSON in data-props attributes, so tag-stripping saw 18 chars; the embedded strategy reads the payload instead. Verified 2026-08-05: Adult Ballet Mon 6:45-8pm, Beginner Tap Tue 6:30-7:30pm, Intermediate Tap Thu 6:30-7:30pm, Beginner Jazz Thu 7:30-8:30pm, Sneaker Jazz Fri 7-8:30pm. ADULT DANCE ENROLLMENTS ARE wellness, NOT arts_culture (DECISION_LOG 2026-08-03). Site also points at IG @thedancespaceny for live updates, so treat a term change there as unconfirmed until the page shows it.",
+      "embedded": {
+        "attr": "data-props"
+      }
     },
     {
       "id": "black-rabbit",
@@ -354,15 +357,6 @@
           "price_in_cents"
         ]
       }
-    },
-    {
-      "id": "sparsa",
-      "name": "SPARŚA Greenpoint",
-      "url": "https://sparsabrooklyn.union.site",
-      "group": "venue",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "1006 Manhattan Ave; Sound Meditations, workshops."
     },
     {
       "id": "acme-fish-friday",

@@ -11,7 +11,7 @@
 // Kept pure and separate from fetch-sources.mjs so it is testable: field
 // selection, nested paths and epoch coercion are exactly the kind of thing that
 // degrades a snapshot silently rather than loudly.
-import { htmlToText } from "./sourceText.js";
+import { htmlToText, decode } from "./sourceText.js";
 
 export function getPath(obj, path) {
   if (!path) return obj;
@@ -82,6 +82,42 @@ export function jsonToText(data, { path = "", fields = null } = {}) {
     .map((item) => renderItem(item, fields))
     .filter(Boolean)
     .join("\n\n");
+}
+
+/**
+ * Some site builders (Podia, Wix) hydrate their UI from JSON stashed in an HTML
+ * attribute rather than rendering it as markup. Tag-stripping throws that away
+ * — which is how a page whose class schedule is plainly readable in a browser
+ * reduced to 18 characters of text and looked like a dead source (Dance Space,
+ * 2026-08-05). Pull the payload out, resolve its escapes, render its strings.
+ *
+ * Deliberately dumb about structure: it collects every string in the payload
+ * rather than taking a path, because these blobs are UI state whose shape is
+ * the site builder's business and changes without notice. Noise is cheap here;
+ * the extraction pass reads the diff either way.
+ */
+export function embeddedToText(html, { attr } = {}) {
+  if (!attr) throw new Error("the embedded strategy needs an `attr` to read");
+  const strings = [];
+  const collect = (v) => {
+    if (typeof v === "string") strings.push(v);
+    else if (Array.isArray(v)) v.forEach(collect);
+    else if (v && typeof v === "object") Object.values(v).forEach(collect);
+  };
+  let found = 0;
+  for (const m of html.matchAll(new RegExp(`${attr}="([^"]*)"`, "g"))) {
+    found++;
+    const raw = decode(m[1]);
+    // The payload is JSON, so parsing resolves its \uXXXX escapes; a blob that
+    // is not JSON is still worth keeping as text rather than dropping.
+    try {
+      collect(JSON.parse(raw));
+    } catch {
+      strings.push(raw);
+    }
+  }
+  if (!found) throw new Error(`no ${attr}="..." payload in the page — the site's markup changed?`);
+  return htmlToText(strings.join("\n"));
 }
 
 /**

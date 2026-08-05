@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { getPath, coerceDate, jsonToText, expandUrlTemplate } from "./sourceJson.js";
+import { getPath, coerceDate, jsonToText, embeddedToText, expandUrlTemplate } from "./sourceJson.js";
+import { htmlToText } from "./sourceText.js";
 
 test("getPath walks nested keys and survives gaps", () => {
   const o = { data: { results: [1, 2] }, a: { b: { c: "deep" } } };
@@ -67,6 +68,32 @@ test("an empty array is a real state, not a failure", () => {
 test("a path that is not an array throws — the API shape moved", () => {
   assert.throws(() => jsonToText({ items: { nope: 1 } }, { path: "items" }), /not an array/);
   assert.throws(() => jsonToText({}, { path: "response.docs" }), /not an array/);
+});
+
+test("embeddedToText recovers a schedule that tag-stripping would discard", () => {
+  // Shaped like the real Podia markup: JSON in an attribute, HTML inside the
+  // JSON, with < and > carried as \u escapes the way Podia emits them. The
+  // page's own markup holds no readable text at all — that is what made a live
+  // source look dead until 2026-08-05.
+  const payload = JSON.stringify({ blocks: [{ text: "<p><strong>Adult Ballet</strong> Mondays 6:45-8pm</p>" }] })
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/"/g, "&quot;");
+  const html = `<div data-props="${payload}"></div><body></body>`;
+  assert.equal(htmlToText(html), "", "precondition: the page renders no text of its own");
+  assert.equal(embeddedToText(html, { attr: "data-props" }), "Adult Ballet Mondays 6:45-8pm");
+});
+
+test("embeddedToText keeps a non-JSON payload rather than dropping it", () => {
+  const html = `<div data-props="just text, not json"></div>`;
+  assert.equal(embeddedToText(html, { attr: "data-props" }), "just text, not json");
+});
+
+test("embeddedToText fails loudly when the payload is gone", () => {
+  // Silence here would snapshot an empty page as a real "the schedule is empty"
+  // state — the failure mode this whole strategy exists to prevent.
+  assert.throws(() => embeddedToText("<div>no payload here</div>", { attr: "data-props" }), /markup changed/);
+  assert.throws(() => embeddedToText("<div data-props=\"x\"></div>", {}), /needs an `attr`/);
 });
 
 test("expandUrlTemplate fills the runtime values the APIs demand", () => {
