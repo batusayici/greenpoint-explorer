@@ -28,13 +28,20 @@
 //
 // Fetch strategy per source: "auto" = plain HTTP with a browser UA, falling
 // back to headless Chromium (playwright, optional dep) on 403/JS-thin pages;
-// "browser" = straight to headless. Sources that fail both are reported as
-// status "error" — the ingest run covers those few via the Browser pane.
+// "browser" = straight to headless; "feed" = plain HTTP against an RSS URL,
+// which for a WordPress-style feed returns full post bodies and never needs
+// the browser. Sources that fail every attempt are reported as status "error"
+// — the ingest run covers those few via the Browser pane.
+// Prefer "feed" wherever a source publishes one: it is the cheapest strategy,
+// it carries more than the rendered page, and it is immune to the browser
+// path being unavailable (2026-08-05).
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
+import { decode, htmlToText } from "../src/demand-test/sourceText.js";
+import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -86,25 +93,33 @@ if (MARK_INGESTED) {
   process.exit(0);
 }
 
-const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", mdash: "—", ndash: "–", hellip: "…", times: "×", copy: "©", reg: "®", trade: "™", bull: "•", middot: "·" };
-const decode = (s) =>
-  s
-    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
-    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&([a-z]+);/gi, (m, name) => ENTITIES[name.toLowerCase()] ?? m);
-
-function htmlToText(html) {
-  return decode(
-    html
-      .replace(/<(script|style|noscript|svg|iframe)[\s\S]*?<\/\1>/gi, " ")
-      .replace(/<!--[\s\S]*?-->/g, " ")
-      .replace(/<(br|\/p|\/div|\/li|\/h[1-6]|\/tr|\/section|\/article|\/header|\/footer)[^>]*>/gi, "\n")
-      .replace(/<[^>]+>/g, " "),
-  )
-    .split("\n")
-    .map((l) => l.replace(/\s+/g, " ").trim())
-    .filter(Boolean)
-    .join("\n");
+// --- RSS feed ---------------------------------------------------------------
+// A third fetch strategy alongside plain and browser. WordPress-style feeds
+// carry the FULL post body in <content:encoded>, so reading the feed yields
+// article text directly — strictly more than the page it comes from, at plain
+// fetch cost. Added 2026-08-05 for Greenpointers, whose front page is
+// browser-only (JS-thin + bot-walled) but whose feed is plain-fetchable and
+// carries the "What's Happening" roundup body, not merely a link to it.
+// Written for RSS 2.0, which is what the roster's feed sources serve.
+const stripCdata = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").trim();
+function xmlTag(xml, name) {
+  const m = xml.match(new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)</${name}>`, "i"));
+  return m ? stripCdata(m[1]) : "";
+}
+function feedToText(xml) {
+  const items = xml.match(/<item\b[\s\S]*?<\/item>/gi) ?? [];
+  // Not throwing here would snapshot an error page as if it were content, the
+  // same failure mode BLOCK_RE guards for on the plain path.
+  if (!items.length) throw new Error("no <item> entries — not an RSS 2.0 feed?");
+  return items
+    .map((item) => {
+      const title = decode(xmlTag(item, "title"));
+      const link = decode(xmlTag(item, "link"));
+      const date = decode(xmlTag(item, "pubDate"));
+      const body = htmlToText(xmlTag(item, "content:encoded") || xmlTag(item, "description"));
+      return [title && `## ${title}`, link, date, body].filter(Boolean).join("\n");
+    })
+    .join("\n\n");
 }
 
 // --- optional headless-browser fallback ------------------------------------
@@ -135,48 +150,138 @@ const NO_PROXY = process.env.NO_PROXY || process.env.no_proxy || null;
 const launchOptions = PROXY
   ? { proxy: { server: PROXY, ...(NO_PROXY ? { bypass: NO_PROXY } : {}) } }
   : {};
-async function preflightBrowser() {
-  if (!pw) {
-    return { ok: false, cause: "playwright-missing", fix: "npm i -D playwright && npx playwright install chromium" };
-  }
+// Engines to try, in order. Firefox is a fallback for one specific observed
+// failure: the cloud sandbox's proxy resets Chromium's CONNECT tunnel while
+// accepting plain fetch's to the same host (2026-08-05). Firefox's network
+// stack is entirely separate, so it may tunnel where Chromium cannot — and if
+// it does, that is also the sharpest possible evidence for the platform bug
+// report. Over a CONNECT tunnel the proxy sees only TLS bytes, so an engine
+// that tunnels at all recovers the WebSocket-delivered sources too.
+//
+// Costs nothing where Firefox is absent: its launch throws, and we report
+// Chromium's original diagnosis rather than the missing-binary noise. To make
+// it do anything, the routine's setup must run `npx playwright install firefox`.
+// GL_BROWSER_ENGINES overrides the order (also the test seam for this path).
+const ENGINES = (process.env.GL_BROWSER_ENGINES || "chromium,firefox").split(",").map((s) => s.trim()).filter(Boolean);
+let browserEngine = ENGINES[0];
+
+function classifyLaunchFailure(engine, msg) {
+  const missingBinary = /Executable doesn't exist|browserType.launch.*install/i.test(msg);
+  return {
+    ok: false,
+    cause: missingBinary ? `${engine}-binary-missing` : `${engine}-launch-failed`,
+    detail: msg.split("\n")[0],
+    fix: missingBinary
+      ? `npx playwright install ${engine} (in the routine's setup step — the npm package alone is not the browser)`
+      : "check the sandbox's process//dev/shm limits; run with --no-browser to proceed plain-fetch-only",
+  };
+}
+
+async function preflightEngine(engine) {
+  let candidate = null;
   try {
-    browser = await pw.chromium.launch(launchOptions);
+    if (!pw[engine]) throw new Error(`Executable doesn't exist: playwright has no "${engine}" engine`);
+    candidate = await pw[engine].launch(launchOptions);
   } catch (e) {
-    const msg = String(e.message ?? e);
-    const missingBinary = /Executable doesn't exist|browserType.launch.*install/i.test(msg);
-    return {
-      ok: false,
-      cause: missingBinary ? "chromium-binary-missing" : "chromium-launch-failed",
-      detail: msg.split("\n")[0],
-      fix: missingBinary
-        ? "npx playwright install chromium (in the routine's setup step — the npm package alone is not the browser)"
-        : "check the sandbox's process//dev/shm limits; run with --no-browser to proceed plain-fetch-only",
-    };
+    if (candidate) await candidate.close().catch(() => {});
+    return classifyLaunchFailure(engine, String(e.message ?? e));
   }
   // The browser launched. Can it reach the network? This is the case that hit
   // us: Chromium runs fine and every navigation is refused by egress policy.
   let page;
   try {
-    page = await browser.newPage({ userAgent: UA });
+    page = await candidate.newPage({ userAgent: UA });
     await page.goto(BROWSER_CONTROL_URL, { waitUntil: "domcontentloaded", timeout: 20000 });
-    return { ok: true, proxy: PROXY ? "via HTTPS_PROXY" : "direct" };
+    await page.close().catch(() => {});
+    browser = candidate;
+    browserEngine = engine;
+    return { ok: true, engine, proxy: PROXY ? "via HTTPS_PROXY" : "direct" };
   } catch (e) {
+    if (page) await page.close().catch(() => {});
+    await candidate.close().catch(() => {});
+    const detail = String(e.message ?? e).split("\n")[0];
+    // Two failure shapes look identical from Chromium's side (it can't load
+    // the control URL) but need different fixes, so tell them apart with the
+    // one signal that distinguishes them: can plain fetch reach the SAME URL
+    // through the SAME environment right now? (2026-08-05 — a run diagnosed
+    // this by hand: curl/plain fetch reached the control host fine while
+    // Chromium's CONNECT tunnel to that exact host was reset. The preflight
+    // used to call that "browser-egress-blocked" and tell Batu to allowlist
+    // the host — wrong fix, since the host was never blocked for plain
+    // fetch. Only call it an allowlist gap when plain fetch is ALSO refused.)
+    let plainReachable = null;
+    if (PROXY) {
+      try {
+        const r = await fetch(BROWSER_CONTROL_URL, { signal: AbortSignal.timeout(10000) });
+        plainReachable = r.ok;
+      } catch {
+        plainReachable = false;
+      }
+    }
+    if (PROXY && plainReachable) {
+      return {
+        ok: false,
+        cause: "browser-connect-reset",
+        detail,
+        engine,
+        proxy: `via HTTPS_PROXY (${PROXY})`,
+        fix:
+          `plain fetch reached ${BROWSER_CONTROL_URL} fine through the same ${PROXY} — so this is NOT an ` +
+          `allowlist gap (that would refuse plain fetch too). Headless ${engine}'s own CONNECT tunnel through ` +
+          "the proxy is being refused/reset for a host plain fetch reaches without trouble. That points at the " +
+          `proxy relay's handling of ${engine}'s CONNECT specifically, not a missing allowlist entry — report the ` +
+          `exact symptom (plain fetch ok, ${engine} CONNECT reset) to platform support at claude.ai/code rather ` +
+          "than re-requesting a host allowlist. Never route around it.",
+      };
+    }
     return {
       ok: false,
       cause: "browser-egress-blocked",
-      detail: String(e.message ?? e).split("\n")[0],
+      detail,
+      engine,
       proxy: PROXY ? `via HTTPS_PROXY (${PROXY})` : "direct (no HTTPS_PROXY set)",
       fix: PROXY
-        ? `headless Chromium launched and was routed through ${PROXY}, but could not load ` +
-          `${BROWSER_CONTROL_URL}. The proxy itself is refusing the CONNECT — allowlist the host at ` +
-          "claude.ai/code (same class as the us.posthog.com denial, DECISION_LOG 2026-07-28). Never route around it."
-        : `headless Chromium launched but could not load ${BROWSER_CONTROL_URL}, and no HTTPS_PROXY is set. ` +
-          "If this environment proxies all egress, Chromium is connecting direct and being refused — " +
+        ? `headless ${engine} launched and was routed through ${PROXY}, but could not load ` +
+          `${BROWSER_CONTROL_URL}, and plain fetch through the same proxy failed too — the proxy is refusing ` +
+          "this environment's egress outright. Allowlist the host at claude.ai/code (same class as the " +
+          "us.posthog.com denial, DECISION_LOG 2026-07-28). Never route around it."
+        : `headless ${engine} launched but could not load ${BROWSER_CONTROL_URL}, and no HTTPS_PROXY is set. ` +
+          "If this environment proxies all egress, it is connecting direct and being refused — " +
           "export HTTPS_PROXY in the routine so it gets passed through at launch.",
     };
-  } finally {
-    if (page) await page.close().catch(() => {});
   }
+}
+
+async function preflightBrowser() {
+  if (!pw) {
+    return { ok: false, cause: "playwright-missing", fix: "npm i -D playwright && npx playwright install chromium" };
+  }
+  let primaryFailure = null;
+  const alsoTried = [];
+  for (const engine of ENGINES) {
+    const result = await preflightEngine(engine);
+    if (result.ok) {
+      // A fallback engine succeeding is the headline, not a footnote: it means
+      // the failure is engine-specific, which is exactly what the platform
+      // report needs and what a human would otherwise have to work out by hand.
+      if (primaryFailure) {
+        result.fellBackFrom = { engine: ENGINES[0], cause: primaryFailure.cause };
+        console.error(
+          `\n=== BROWSER FELL BACK TO ${engine.toUpperCase()} ===\n` +
+            `  ${ENGINES[0]} failed (${primaryFailure.cause}) but ${engine} reached ${BROWSER_CONTROL_URL}.\n` +
+            `  The roster is fully readable this run. This asymmetry is evidence the failure is\n` +
+            `  ${ENGINES[0]}-specific, not an egress policy — worth reporting as such.\n`,
+        );
+      }
+      return result;
+    }
+    // Report the FIRST engine's diagnosis: it is the one that is supposed to
+    // work, so its cause is the actionable one. Later engines missing their
+    // binary is expected noise in an environment that never installed them.
+    primaryFailure ??= result;
+    if (result !== primaryFailure) alsoTried.push(`${engine}: ${result.cause}`);
+  }
+  return { ...primaryFailure, enginesTried: ENGINES, ...(alsoTried.length ? { alsoTried } : {}) };
 }
 async function browserText(url) {
   if (NO_BROWSER) throw new Error("browser path disabled (--no-browser)");
@@ -186,34 +291,86 @@ async function browserText(url) {
   if (browserPreflight && !browserPreflight.ok && !browserPreflight.skipped) {
     throw new Error(`browser unavailable (${browserPreflight.cause}) — see the BROWSER PREFLIGHT block above`);
   }
-  if (!browser) browser = await pw.chromium.launch(launchOptions);
+  if (!browser) browser = await pw[browserEngine].launch(launchOptions);
   const page = await browser.newPage({ userAgent: UA });
+  const readText = async () => {
+    const text = await page.evaluate(() => document.body?.innerText ?? "");
+    return text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
+  };
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
     await page.waitForTimeout(2500); // let JS-rendered calendars settle
-    const text = await page.evaluate(() => document.body?.innerText ?? "");
-    return text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
+    let text = await readText();
+    // The remaining browser-only sources render from a WebSocket, and 2500ms is
+    // sometimes not enough — observed 2026-08-05, when one run captured the
+    // comedy club's shell (13 lines, no shows) while every other run got all 18.
+    // Nothing caught it: MIN_TEXT_CHARS only guards the plain path, so an
+    // unrendered page was accepted as a good fetch and would have read
+    // downstream as "the source shrank" — the phantom-shrink signal this
+    // pipeline is built to avoid. Wait once more, then fail loudly rather than
+    // snapshot a page that simply had not loaded yet.
+    if (text.length < MIN_TEXT_CHARS) {
+      await page.waitForTimeout(5000);
+      text = await readText();
+    }
+    if (text.length < MIN_TEXT_CHARS) {
+      throw new Error(`only ${text.length} chars after 7.5s in ${browserEngine} — page never rendered`);
+    }
+    return text;
   } finally {
     await page.close();
   }
 }
 
-async function plainText(url) {
+async function rawGet(url, accept) {
   const res = await fetch(url, {
-    headers: { "User-Agent": UA, Accept: "text/html,application/xhtml+xml", "Accept-Language": "en-US,en;q=0.9" },
+    headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "en-US,en;q=0.9" },
     redirect: "follow",
     signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return htmlToText(await res.text());
+  return res.text();
+}
+// A source normally names one `url`. `urls` (json strategy only) fetches
+// several and concatenates them, which is how the Squarespace one-month-per-
+// request calendars stop having a next-month blind spot near month end: the
+// roster asks for {{month:+0}} and {{month:+1}} instead of a run having to
+// remember to. When `urls` is present, `url` stays the human-facing page to
+// cite on a card.
+const sourceUrls = (src) => (Array.isArray(src.urls) && src.urls.length ? src.urls : [src.url]).map((u) => expandUrlTemplate(u));
+
+const plainText = async (src) => htmlToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"));
+const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"));
+const browserPage = async (src) => browserText(sourceUrls(src)[0]);
+
+async function jsonText(src) {
+  const blocks = [];
+  for (const url of sourceUrls(src)) {
+    const body = await rawGet(url, "application/json,text/plain,*/*");
+    let data;
+    try {
+      data = JSON.parse(body);
+    } catch {
+      throw new Error(`response was not JSON (${body.length} bytes) — endpoint moved or is behind a wall?`);
+    }
+    const text = jsonToText(data, src.json ?? {});
+    if (text) blocks.push(text);
+  }
+  return blocks.join("\n\n");
 }
 
+const embeddedText = async (src) =>
+  embeddedToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"), src.embedded ?? {});
+
+const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"] }; // default: plain, then browser
+const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage };
+
 async function fetchSource(src) {
-  const attempts = src.fetch === "browser" ? ["browser"] : ["plain", "browser"];
+  const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];
   let lastErr = null;
   for (const method of attempts) {
     try {
-      const text = method === "plain" ? await plainText(src.url) : await browserText(src.url);
+      const text = await FETCHERS[method](src);
       if (BLOCK_RE.test(text.slice(0, 800))) {
         lastErr = new Error(`bot-wall page via ${method} fetch`);
         continue;
@@ -243,7 +400,7 @@ let browserPreflight = { ok: true, skipped: true };
 if (browserRequired && !NO_BROWSER) {
   browserPreflight = await preflightBrowser();
   if (browserPreflight.ok) {
-    console.log(`browser preflight: ok (${browserPreflight.proxy})`);
+    console.log(`browser preflight: ok (${browserPreflight.engine}, ${browserPreflight.proxy})`);
   } else {
     const needing = selected.filter((s) => s.fetch === "browser");
     console.error(`\n=== BROWSER PREFLIGHT FAILED — ${browserPreflight.cause} ===`);
@@ -358,13 +515,26 @@ console.log(
 );
 if (!pw) console.log("note: playwright not installed — browser-only sources will error (npm i -D playwright && npx playwright install chromium)");
 
-if (sourcesUnreachable || browserFetchDown) {
+// A browser outage is reported whether or not it is fatal. It stopped being
+// fatal on its own on 2026-08-05: when this clause was written (2026-08-03) 22
+// of 48 sources were browser-only, so "every browser fetch failed" meant losing
+// ~46% of the roster. After the feed/json migrations only a handful still need
+// the browser, and the same clause would halt a run that read 42 of 48 sources
+// fine. Coverage is the thing we actually care about, and the error-rate ceiling
+// already measures it — a failed browser source counts as an error like any
+// other. Keeping a second, drifting proxy for the same question only produced
+// false alarms, so the ceiling is now the single rule.
+if (browserFetchDown) {
+  console.error("\n=== BROWSER PATH DOWN — browser-only sources contributed nothing ===");
+  if (browserPreflight?.fix) console.error(`  Fix: ${browserPreflight.fix}`);
+  console.error(
+    `  ${sourcesUnreachable ? "This run is degraded (see below)." : "Roster coverage is still within the ceiling, so this run continues."}`,
+  );
+}
+
+if (sourcesUnreachable) {
   console.error("\n=== DEGRADED RUN — the roster was not readable ===");
-  if (sourcesUnreachable) console.error(`  ${reach.errored} of ${reach.attempted} sources errored.`);
-  if (browserFetchDown) {
-    console.error("  Every browser fetch failed; browser-only sources contributed nothing.");
-    if (browserPreflight?.fix) console.error(`  Fix: ${browserPreflight.fix}`);
-  }
+  console.error(`  ${reach.errored} of ${reach.attempted} sources errored.`);
   console.error(
     "  Do not ingest this as a normal week: expiry will still delete, so a degraded run\n" +
       "  shrinks the deck (2026-08-03 supply analysis). Fix the cause, or re-run with\n" +

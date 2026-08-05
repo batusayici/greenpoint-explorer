@@ -4,7 +4,174 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-03 (latest) — the ingest learns: a judgment call gets made once, then becomes a rule
+## 2026-08-05 (latest) — the browser path falls back to Firefox, and stops accepting an unrendered page
+
+Decision (Batu): "should we instruct routine to try firefox if chromium fails? add it then merge."
+
+**Firefox as a preflight-level fallback, not a per-source retry.** Chromium is tried first; only if its
+preflight fails is Firefox tried, once. Over a CONNECT tunnel the proxy sees only TLS bytes, so an
+engine that tunnels at all recovers the WebSocket-delivered sources too — which is why this is worth
+having even though only 3 sources still need a browser. **It costs nothing where Firefox is absent:**
+the launch throws and Chromium's original diagnosis is reported unchanged, so no environment has to
+install anything it does not want. To make it live, the routine's setup must run
+`npx playwright install firefox`. `GL_BROWSER_ENGINES` overrides the order and is the test seam.
+
+A fallback that succeeds prints a loud `BROWSER FELL BACK TO FIREFOX` block, because that asymmetry is
+**the sharpest evidence available that the failure is Chromium-specific** rather than an egress policy
+— precisely what the platform bug report needs, and what a human would otherwise have to derive by hand.
+
+**Verified rather than assumed.** Firefox was installed locally and driven end-to-end: it reads both
+WebSocket sources (`word-bookstore`, `greenpoint-comedy-club`) with full content. Fallback engagement,
+graceful degradation when an engine is missing, and the untouched `--no-browser` path were each
+exercised. Full run 44/44 0 errors; `--no-browser` 41/44, 7%, exit 0.
+
+**A real defect surfaced while verifying, and is fixed here.** Comparing engines showed one Chromium
+run capturing the comedy club's *shell* — 13 lines, no shows — where every other run got all 18.
+Repeat runs proved both engines are consistent, so it was a flake: 2500ms is sometimes not enough for
+a WebSocket-rendered page. **Nothing caught it.** `MIN_TEXT_CHARS` only guards the `plain` path, so an
+unrendered page was accepted as a *successful* fetch and would have read downstream as `+0/-90` —
+"the source shrank" — sending the next run hunting for cancelled events that never were. The browser
+path now re-reads after a further 5s and, if the page is still thin, **fails loudly instead of
+snapshotting a page that had not loaded.** A visible error beats a plausible-looking empty week; that
+is the same principle as the 2026-08-03 degraded-run gate, applied one level down.
+
+Owner: Batu.
+
+## 2026-08-05 — Batu's corrections: 6 unreachable sources → 3, sparsa removed
+
+Batu reviewed the "provably no plain-fetchable endpoint" list below and **four of the six were wrong —
+not about the fetch mechanics, but about which page to point at.** The research had verified the
+configured URL thoroughly and never asked whether it was the right URL. Corrections:
+
+- **`dance-space-ny` — the schedule was never gone.** It lives at `/adultdanceclasses`; the configured
+  `/studiodates` now 302s to the homepage. It had been written off as "moved to Instagram" on the
+  strength of an off-site pointer in stale copy. Podia hydrates from JSON in `data-props` attributes,
+  which tag-stripping discards — hence the 18-char snapshot that read as a dead page. New **`embedded`**
+  fetch strategy reads the payload: Adult Ballet Mon 6:45–8pm, Beginner Tap Tue 6:30–7:30pm,
+  Intermediate Tap Thu 6:30–7:30pm, Beginner Jazz Thu 7:30–8:30pm, Sneaker Jazz Fri 7–8:30pm.
+- **`play-kids-greenpoint` — right finding, wrong page.** `/calendar` really is an empty Wix widget;
+  the movie nights are at **`/movie-nights`**, plain-fetchable, with real dates (Fri Aug 7, Fri Aug 21,
+  drop-off 5:30–8:30pm). Now `auto`, and it reads via **plain** — no browser at all.
+- **`greenpoint-comedy-club` — better page, still browser.** The Jump Comedy venue page
+  (`jumpcomedy.com/v/greenpoint-comedy-club`) renders the full show list with dates, times and prices
+  and avoids the Cloudflare Turnstile on the ticketing subdomain. It stays `browser`: watched live in a
+  real browser, the page issues **no XHR at all** — Phoenix LiveView pushes listings over a WebSocket.
+- **`word-bookstore` — confirmed correct as configured**, and browser-only for the same reason
+  (Withfriends is also WebSocket-delivered). Re-probed: `/api/movement/word/events` and `?format=json`
+  both return the same empty SPA shell; `.ics` 500s.
+- **`sparsa` — removed from the roster** on Batu's instruction, per the `robots.txt` ClaudeBot opt-out
+  flagged below.
+
+**Result: 47 sources, and only 3 can fail when the browser is down** — `word-bookstore`,
+`greenpoint-comedy-club`, `greenpoint-trash-club`. The `--no-browser` simulation now reports
+**41/44 read, 7% error, exit 0**, against a 15% ceiling — the thin 13% margin noted below is closed.
+Normal run 44/44, 0 errors. Tests 491 → 494.
+
+**The lesson worth keeping.** Verifying an endpoint answers "can we fetch this URL?" — it does not
+answer "is this the URL the content is on." Four sources were declared unreachable while their
+content sat on a sibling page. **When a source looks dead, check the site's own navigation for a
+better page before concluding anything**, and treat "they moved it to Instagram" as a claim needing
+evidence rather than an explanation. That check is now written into the roster-discovery step.
+
+Owner: Batu.
+
+## 2026-08-05 — the roster stops depending on a browser: 22 browser sources → 6
+
+Follow-on to the entry below, same incident. Having taken Greenpointers off the browser path, the
+question was whether the routine survives the cloud CONNECT outage for **every** source. All 13
+remaining browser-dependent sources were investigated for a plain-fetchable endpoint, each verified
+by live fetch rather than assumed.
+
+**Seven converted.** Six to a new `json` fetch strategy, one back to `auto`:
+
+| source | was | now | what it reads |
+|---|---|---|---|
+| `greenpoint-library` | browser | `json` | the Solr events index `discover.bklynlibrary.org` itself queries — **187 upcoming events** vs the week the branch page renders |
+| `troost` | auto→browser | `json` | the Google Calendar API its own widget calls |
+| `film-noir-cinema` | auto→browser | `json` | Squarespace collection JSON — whole programme in one call, not one month |
+| `carcosa-club` | auto→browser | `json` | Squarespace JSON, **current + next month every run** |
+| `nyplays` | browser | `json` | the Sawyer widget API behind the schedules page |
+| `moon-bunny-aerial` | browser | `json` | the feather.rsvp public API the site embeds |
+| `bpl-north-brooklyn-calendar` | browser | `auto` | plain fetch re-verified working (the "403s plain fetches" note was stale) |
+
+**Six remain browser-only and provably cannot be otherwise:** `word-bookstore` and
+`greenpoint-comedy-club` deliver listings over WebSocket (no HTTP endpoint exists to call);
+`greenpoint-trash-club` and `dance-space-ny` publish their schedules only on Instagram;
+`play-kids-greenpoint`'s widget needs a signed token and its calendar is empty anyway; `sparsa` sits
+behind a Cloudflare challenge. These are now documented as a closed list so no future run re-hunts
+them.
+
+**⚠ Batu decision needed — `sparsa`.** Its `robots.txt` explicitly disallows `ClaudeBot` by name
+(alongside GPTBot, CCBot and others). We did not build a workaround and should not: the correct
+response to an opt-out is to honour it. Recommend **removing sparsa from the roster**. Left in place
+pending your call — it currently fails harmlessly behind Cloudflare, so nothing is being retrieved
+either way. Roster removals are yours, not the run's.
+
+**The degraded gate was re-derived, not just relaxed.** It exited 1 when errored sources exceeded 15%
+**or** every browser fetch failed. That second clause was written when 22 of 48 sources were
+browser-only, where it meant losing ~46% of the roster; with 6 it fires at 12.5% and halts a run that
+read 39 of 45 sources. Coverage is the real question and the 15% ceiling measures it directly — a
+failed browser source counts as an error like any other — so the ceiling is now the single rule and a
+dead browser prints a warning instead. `assessFreshness` was changed to match, so the routine cannot
+pass the fetch gate and then fail freshness on the same non-issue.
+
+**Verified, not asserted.** With `--no-browser` (which reproduces the cloud failure exactly): **exit 0,
+39/45 sources read, 13% error** — where the same simulation before this change gave 14 errors, 31%,
+exit 1. Normal run: **45/45, 0 errors, exit 0.** Every new endpoint fetched twice consecutively with
+**zero differing lines**, confirming no nonce or export timestamp makes a run look changed — the
+defect that disqualified Troost's iCal feed (731 events back to 2023 with a per-export `DTSTAMP`).
+Tests 479 → 491.
+
+**Margin note:** 13% against a 15% ceiling is thin. One additional transient error during a browser
+outage will halt the run — correctly, but it is a narrow band. Removing the two sources that can never
+yield content (`sparsa`, `dance-space-ny`) would widen it to ~9%. Batu's call.
+
+Owner: Batu.
+
+## 2026-08-05 — read the feed, not the page: Greenpointers leaves the browser path
+
+Context: the 2026-08-05 daily thin refresh halted at the roster gate. 14 of 45 sources
+unreachable (31%, ceiling 15%) because headless Chromium's HTTPS CONNECT tunnel was reset by
+the cloud sandbox's proxy — while plain fetch reached the same hosts through the same proxy
+without trouble. The run correctly refused to ingest, reverted expiry's 5 deletions rather
+than shrink the deck on a degraded read, and shipped nothing. **The underlying CONNECT bug is
+platform-side and not fixable from this repo.**
+
+**Two decisions, neither of which waits on the platform.**
+
+**1. The preflight now distinguishes two failures it used to conflate.** It called every
+browser failure `browser-egress-blocked` and told Batu to allowlist the host at claude.ai/code
+— useless advice when the host was never blocked. It now cross-checks plain fetch against the
+same control URL: plain OK + Chromium refused = **`browser-connect-reset`** (a proxy-relay
+issue to report as such); both refused = `browser-egress-blocked` as before. Neither is routed
+around. A wrong diagnosis costs more than no diagnosis — it sends the fix in the wrong
+direction, and this one would have recurred every week.
+
+**2. Sources move to their RSS feed where one exists — starting with Greenpointers.** New
+`fetch: "feed"` strategy in `fetch-sources.mjs`, a third alongside `plain` and `browser`.
+Greenpointers is the neighborhood's most-read source and was browser-only (JS-thin +
+bot-walled). Its feed is plain-fetchable and **carries strictly more**: `content:encoded`
+holds the full post body, so the snapshot is the roundup's actual items — times, venues,
+free-ness, RSVP links — instead of a front-page diff that yielded only a URL.
+
+That deletes a whole step: the old skill said "verify items at the post itself (Browser
+pane)" *because* the front page gave nothing but a link. The feed removes both the browser
+dependency and the second fetch. Verified 2026-08-05: 105 lines / 15KB of article text, 10
+posts including the current "What's Happening" roundup, `0 error`. The stale front-page
+baseline was retired so the format change reads as `new` (full text as the diff) rather than
+a phantom 239-line removal; already-ingested posts are still deduped by URL against
+`processedItems`.
+
+**Standing rule:** when proposing any new source, check for a feed before proposing `browser`.
+Cheapest strategy, fuller text, immune to the browser path being down.
+
+Not fixed here: the other 13 browser-dependent sources (Wix Events, hiSawyer, withfriends,
+feather.rsvp, BPL) each need their own adapter, scoped separately. Plain-fetch sources were
+never affected — 31 of 45 read fine throughout.
+
+Owner: Batu.
+
+## 2026-08-03 — the ingest learns: a judgment call gets made once, then becomes a rule
 
 Decision (Batu): make held cards trend toward zero instead of recurring. Reviewing PR #18 card-by-card
 (the 2026-08-03 Monday run held nine) showed the holds were **not** nine judgment calls:

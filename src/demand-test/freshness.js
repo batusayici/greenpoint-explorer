@@ -81,8 +81,16 @@ export function assessFreshness({
   const sourcesUnreachable = !!reach && reach.attempted > 0 && reach.errorRate > reach.maxErrorRate;
   const browserFetchDown = !!reach && reach.browserRequired && !reach.browserOk;
 
+  // browserFetchDown is REPORTED but no longer decides freshness on its own
+  // (2026-08-05). It earned that veto on 2026-08-03, when 22 of 48 sources were
+  // browser-only and losing the browser meant losing ~46% of the roster. After
+  // the feed/json migrations only a handful still need it, so the same signal
+  // would now mark a run stale that read 42 of 48 sources. `sourcesUnreachable`
+  // measures coverage directly — a failed browser source counts as an error
+  // like any other — so it is the honest gate, and the fetch script's exit code
+  // uses exactly the same rule.
   return {
-    fresh: !staleIngest && !thinFeed && !sourcesUnreachable && !browserFetchDown,
+    fresh: !staleIngest && !thinFeed && !sourcesUnreachable,
     staleIngest,
     thinFeed,
     sourcesUnreachable,

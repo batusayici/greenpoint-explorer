@@ -137,9 +137,31 @@ test("browserFetchDown: browser needed, zero browser fetches succeeded", () => {
     cards: manyUpcoming,
     fetchReport: reach({ sources, browserRequired: true, playwright: true }),
   });
-  assert.equal(a.browserFetchDown, true);
+  assert.equal(a.browserFetchDown, true, "still reported — the run must say the browser path is down");
   assert.equal(a.sourcesUnreachable, false, "one error is under the rate ceiling");
-  assert.equal(a.fresh, false, "the browser path being wholly down is its own alarm");
+  assert.equal(
+    a.fresh,
+    true,
+    "a browser outage that costs 1 of 41 sources is not a stale deck (2026-08-05): " +
+      "coverage is what matters, and the error-rate ceiling already measures it",
+  );
+});
+
+test("a browser outage that DOES cost real coverage still fails, via the rate ceiling", () => {
+  // The protection that matters is unchanged: lose enough of the roster and the
+  // run is degraded regardless of which fetch path failed.
+  const sources = [
+    ...Array.from({ length: 9 }, (_, i) => src(`needs-browser${i}`, "error")),
+    ...Array.from({ length: 31 }, (_, i) => src(`ok${i}`, "unchanged", "plain")),
+  ];
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:07:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    fetchReport: reach({ sources, browserRequired: true, playwright: true }),
+  });
+  assert.equal(a.sourcesUnreachable, true, "9 of 40 errored is over the 15% ceiling");
+  assert.equal(a.fresh, false);
 });
 
 test("browserFetchDown stays false when a browser fetch did succeed", () => {
