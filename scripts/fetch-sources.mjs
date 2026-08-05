@@ -150,32 +150,55 @@ const NO_PROXY = process.env.NO_PROXY || process.env.no_proxy || null;
 const launchOptions = PROXY
   ? { proxy: { server: PROXY, ...(NO_PROXY ? { bypass: NO_PROXY } : {}) } }
   : {};
-async function preflightBrowser() {
-  if (!pw) {
-    return { ok: false, cause: "playwright-missing", fix: "npm i -D playwright && npx playwright install chromium" };
-  }
+// Engines to try, in order. Firefox is a fallback for one specific observed
+// failure: the cloud sandbox's proxy resets Chromium's CONNECT tunnel while
+// accepting plain fetch's to the same host (2026-08-05). Firefox's network
+// stack is entirely separate, so it may tunnel where Chromium cannot — and if
+// it does, that is also the sharpest possible evidence for the platform bug
+// report. Over a CONNECT tunnel the proxy sees only TLS bytes, so an engine
+// that tunnels at all recovers the WebSocket-delivered sources too.
+//
+// Costs nothing where Firefox is absent: its launch throws, and we report
+// Chromium's original diagnosis rather than the missing-binary noise. To make
+// it do anything, the routine's setup must run `npx playwright install firefox`.
+// GL_BROWSER_ENGINES overrides the order (also the test seam for this path).
+const ENGINES = (process.env.GL_BROWSER_ENGINES || "chromium,firefox").split(",").map((s) => s.trim()).filter(Boolean);
+let browserEngine = ENGINES[0];
+
+function classifyLaunchFailure(engine, msg) {
+  const missingBinary = /Executable doesn't exist|browserType.launch.*install/i.test(msg);
+  return {
+    ok: false,
+    cause: missingBinary ? `${engine}-binary-missing` : `${engine}-launch-failed`,
+    detail: msg.split("\n")[0],
+    fix: missingBinary
+      ? `npx playwright install ${engine} (in the routine's setup step — the npm package alone is not the browser)`
+      : "check the sandbox's process//dev/shm limits; run with --no-browser to proceed plain-fetch-only",
+  };
+}
+
+async function preflightEngine(engine) {
+  let candidate = null;
   try {
-    browser = await pw.chromium.launch(launchOptions);
+    if (!pw[engine]) throw new Error(`Executable doesn't exist: playwright has no "${engine}" engine`);
+    candidate = await pw[engine].launch(launchOptions);
   } catch (e) {
-    const msg = String(e.message ?? e);
-    const missingBinary = /Executable doesn't exist|browserType.launch.*install/i.test(msg);
-    return {
-      ok: false,
-      cause: missingBinary ? "chromium-binary-missing" : "chromium-launch-failed",
-      detail: msg.split("\n")[0],
-      fix: missingBinary
-        ? "npx playwright install chromium (in the routine's setup step — the npm package alone is not the browser)"
-        : "check the sandbox's process//dev/shm limits; run with --no-browser to proceed plain-fetch-only",
-    };
+    if (candidate) await candidate.close().catch(() => {});
+    return classifyLaunchFailure(engine, String(e.message ?? e));
   }
   // The browser launched. Can it reach the network? This is the case that hit
   // us: Chromium runs fine and every navigation is refused by egress policy.
   let page;
   try {
-    page = await browser.newPage({ userAgent: UA });
+    page = await candidate.newPage({ userAgent: UA });
     await page.goto(BROWSER_CONTROL_URL, { waitUntil: "domcontentloaded", timeout: 20000 });
-    return { ok: true, proxy: PROXY ? "via HTTPS_PROXY" : "direct" };
+    await page.close().catch(() => {});
+    browser = candidate;
+    browserEngine = engine;
+    return { ok: true, engine, proxy: PROXY ? "via HTTPS_PROXY" : "direct" };
   } catch (e) {
+    if (page) await page.close().catch(() => {});
+    await candidate.close().catch(() => {});
     const detail = String(e.message ?? e).split("\n")[0];
     // Two failure shapes look identical from Chromium's side (it can't load
     // the control URL) but need different fixes, so tell them apart with the
@@ -200,13 +223,14 @@ async function preflightBrowser() {
         ok: false,
         cause: "browser-connect-reset",
         detail,
+        engine,
         proxy: `via HTTPS_PROXY (${PROXY})`,
         fix:
           `plain fetch reached ${BROWSER_CONTROL_URL} fine through the same ${PROXY} — so this is NOT an ` +
-          "allowlist gap (that would refuse plain fetch too). Headless Chromium's own CONNECT tunnel through " +
+          `allowlist gap (that would refuse plain fetch too). Headless ${engine}'s own CONNECT tunnel through ` +
           "the proxy is being refused/reset for a host plain fetch reaches without trouble. That points at the " +
-          "proxy relay's handling of Chromium's CONNECT specifically, not a missing allowlist entry — report the " +
-          "exact symptom (plain fetch ok, Chromium CONNECT reset) to platform support at claude.ai/code rather " +
+          `proxy relay's handling of ${engine}'s CONNECT specifically, not a missing allowlist entry — report the ` +
+          `exact symptom (plain fetch ok, ${engine} CONNECT reset) to platform support at claude.ai/code rather ` +
           "than re-requesting a host allowlist. Never route around it.",
       };
     }
@@ -214,19 +238,50 @@ async function preflightBrowser() {
       ok: false,
       cause: "browser-egress-blocked",
       detail,
+      engine,
       proxy: PROXY ? `via HTTPS_PROXY (${PROXY})` : "direct (no HTTPS_PROXY set)",
       fix: PROXY
-        ? `headless Chromium launched and was routed through ${PROXY}, but could not load ` +
+        ? `headless ${engine} launched and was routed through ${PROXY}, but could not load ` +
           `${BROWSER_CONTROL_URL}, and plain fetch through the same proxy failed too — the proxy is refusing ` +
           "this environment's egress outright. Allowlist the host at claude.ai/code (same class as the " +
           "us.posthog.com denial, DECISION_LOG 2026-07-28). Never route around it."
-        : `headless Chromium launched but could not load ${BROWSER_CONTROL_URL}, and no HTTPS_PROXY is set. ` +
-          "If this environment proxies all egress, Chromium is connecting direct and being refused — " +
+        : `headless ${engine} launched but could not load ${BROWSER_CONTROL_URL}, and no HTTPS_PROXY is set. ` +
+          "If this environment proxies all egress, it is connecting direct and being refused — " +
           "export HTTPS_PROXY in the routine so it gets passed through at launch.",
     };
-  } finally {
-    if (page) await page.close().catch(() => {});
   }
+}
+
+async function preflightBrowser() {
+  if (!pw) {
+    return { ok: false, cause: "playwright-missing", fix: "npm i -D playwright && npx playwright install chromium" };
+  }
+  let primaryFailure = null;
+  const alsoTried = [];
+  for (const engine of ENGINES) {
+    const result = await preflightEngine(engine);
+    if (result.ok) {
+      // A fallback engine succeeding is the headline, not a footnote: it means
+      // the failure is engine-specific, which is exactly what the platform
+      // report needs and what a human would otherwise have to work out by hand.
+      if (primaryFailure) {
+        result.fellBackFrom = { engine: ENGINES[0], cause: primaryFailure.cause };
+        console.error(
+          `\n=== BROWSER FELL BACK TO ${engine.toUpperCase()} ===\n` +
+            `  ${ENGINES[0]} failed (${primaryFailure.cause}) but ${engine} reached ${BROWSER_CONTROL_URL}.\n` +
+            `  The roster is fully readable this run. This asymmetry is evidence the failure is\n` +
+            `  ${ENGINES[0]}-specific, not an egress policy — worth reporting as such.\n`,
+        );
+      }
+      return result;
+    }
+    // Report the FIRST engine's diagnosis: it is the one that is supposed to
+    // work, so its cause is the actionable one. Later engines missing their
+    // binary is expected noise in an environment that never installed them.
+    primaryFailure ??= result;
+    if (result !== primaryFailure) alsoTried.push(`${engine}: ${result.cause}`);
+  }
+  return { ...primaryFailure, enginesTried: ENGINES, ...(alsoTried.length ? { alsoTried } : {}) };
 }
 async function browserText(url) {
   if (NO_BROWSER) throw new Error("browser path disabled (--no-browser)");
@@ -236,13 +291,32 @@ async function browserText(url) {
   if (browserPreflight && !browserPreflight.ok && !browserPreflight.skipped) {
     throw new Error(`browser unavailable (${browserPreflight.cause}) — see the BROWSER PREFLIGHT block above`);
   }
-  if (!browser) browser = await pw.chromium.launch(launchOptions);
+  if (!browser) browser = await pw[browserEngine].launch(launchOptions);
   const page = await browser.newPage({ userAgent: UA });
+  const readText = async () => {
+    const text = await page.evaluate(() => document.body?.innerText ?? "");
+    return text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
+  };
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
     await page.waitForTimeout(2500); // let JS-rendered calendars settle
-    const text = await page.evaluate(() => document.body?.innerText ?? "");
-    return text.split("\n").map((l) => l.replace(/\s+/g, " ").trim()).filter(Boolean).join("\n");
+    let text = await readText();
+    // The remaining browser-only sources render from a WebSocket, and 2500ms is
+    // sometimes not enough — observed 2026-08-05, when one run captured the
+    // comedy club's shell (13 lines, no shows) while every other run got all 18.
+    // Nothing caught it: MIN_TEXT_CHARS only guards the plain path, so an
+    // unrendered page was accepted as a good fetch and would have read
+    // downstream as "the source shrank" — the phantom-shrink signal this
+    // pipeline is built to avoid. Wait once more, then fail loudly rather than
+    // snapshot a page that simply had not loaded yet.
+    if (text.length < MIN_TEXT_CHARS) {
+      await page.waitForTimeout(5000);
+      text = await readText();
+    }
+    if (text.length < MIN_TEXT_CHARS) {
+      throw new Error(`only ${text.length} chars after 7.5s in ${browserEngine} — page never rendered`);
+    }
+    return text;
   } finally {
     await page.close();
   }
@@ -326,7 +400,7 @@ let browserPreflight = { ok: true, skipped: true };
 if (browserRequired && !NO_BROWSER) {
   browserPreflight = await preflightBrowser();
   if (browserPreflight.ok) {
-    console.log(`browser preflight: ok (${browserPreflight.proxy})`);
+    console.log(`browser preflight: ok (${browserPreflight.engine}, ${browserPreflight.proxy})`);
   } else {
     const needing = selected.filter((s) => s.fetch === "browser");
     console.error(`\n=== BROWSER PREFLIGHT FAILED — ${browserPreflight.cause} ===`);

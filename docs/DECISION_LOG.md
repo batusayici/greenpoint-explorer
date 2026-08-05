@@ -4,7 +4,40 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-05 (latest) — Batu's corrections: 6 unreachable sources → 3, sparsa removed
+## 2026-08-05 (latest) — the browser path falls back to Firefox, and stops accepting an unrendered page
+
+Decision (Batu): "should we instruct routine to try firefox if chromium fails? add it then merge."
+
+**Firefox as a preflight-level fallback, not a per-source retry.** Chromium is tried first; only if its
+preflight fails is Firefox tried, once. Over a CONNECT tunnel the proxy sees only TLS bytes, so an
+engine that tunnels at all recovers the WebSocket-delivered sources too — which is why this is worth
+having even though only 3 sources still need a browser. **It costs nothing where Firefox is absent:**
+the launch throws and Chromium's original diagnosis is reported unchanged, so no environment has to
+install anything it does not want. To make it live, the routine's setup must run
+`npx playwright install firefox`. `GL_BROWSER_ENGINES` overrides the order and is the test seam.
+
+A fallback that succeeds prints a loud `BROWSER FELL BACK TO FIREFOX` block, because that asymmetry is
+**the sharpest evidence available that the failure is Chromium-specific** rather than an egress policy
+— precisely what the platform bug report needs, and what a human would otherwise have to derive by hand.
+
+**Verified rather than assumed.** Firefox was installed locally and driven end-to-end: it reads both
+WebSocket sources (`word-bookstore`, `greenpoint-comedy-club`) with full content. Fallback engagement,
+graceful degradation when an engine is missing, and the untouched `--no-browser` path were each
+exercised. Full run 44/44 0 errors; `--no-browser` 41/44, 7%, exit 0.
+
+**A real defect surfaced while verifying, and is fixed here.** Comparing engines showed one Chromium
+run capturing the comedy club's *shell* — 13 lines, no shows — where every other run got all 18.
+Repeat runs proved both engines are consistent, so it was a flake: 2500ms is sometimes not enough for
+a WebSocket-rendered page. **Nothing caught it.** `MIN_TEXT_CHARS` only guards the `plain` path, so an
+unrendered page was accepted as a *successful* fetch and would have read downstream as `+0/-90` —
+"the source shrank" — sending the next run hunting for cancelled events that never were. The browser
+path now re-reads after a further 5s and, if the page is still thin, **fails loudly instead of
+snapshotting a page that had not loaded.** A visible error beats a plausible-looking empty week; that
+is the same principle as the 2026-08-03 degraded-run gate, applied one level down.
+
+Owner: Batu.
+
+## 2026-08-05 — Batu's corrections: 6 unreachable sources → 3, sparsa removed
 
 Batu reviewed the "provably no plain-fetchable endpoint" list below and **four of the six were wrong —
 not about the fetch mechanics, but about which page to point at.** The research had verified the
