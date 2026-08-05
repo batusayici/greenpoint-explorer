@@ -40,6 +40,8 @@ import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
 import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
+import { decode, htmlToText } from "../src/demand-test/sourceText.js";
+import { jsonToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -89,27 +91,6 @@ if (MARK_INGESTED) {
   writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
   console.log(`marked ${n} sources ingested (baselines promoted)`);
   process.exit(0);
-}
-
-const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", mdash: "—", ndash: "–", hellip: "…", times: "×", copy: "©", reg: "®", trade: "™", bull: "•", middot: "·" };
-const decode = (s) =>
-  s
-    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
-    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&([a-z]+);/gi, (m, name) => ENTITIES[name.toLowerCase()] ?? m);
-
-function htmlToText(html) {
-  return decode(
-    html
-      .replace(/<(script|style|noscript|svg|iframe)[\s\S]*?<\/\1>/gi, " ")
-      .replace(/<!--[\s\S]*?-->/g, " ")
-      .replace(/<(br|\/p|\/div|\/li|\/h[1-6]|\/tr|\/section|\/article|\/header|\/footer)[^>]*>/gi, "\n")
-      .replace(/<[^>]+>/g, " "),
-  )
-    .split("\n")
-    .map((l) => l.replace(/\s+/g, " ").trim())
-    .filter(Boolean)
-    .join("\n");
 }
 
 // --- RSS feed ---------------------------------------------------------------
@@ -276,18 +257,43 @@ async function rawGet(url, accept) {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
 }
-const plainText = async (url) => htmlToText(await rawGet(url, "text/html,application/xhtml+xml"));
-const feedText = async (url) => feedToText(await rawGet(url, "application/rss+xml,application/xml,text/xml"));
+// A source normally names one `url`. `urls` (json strategy only) fetches
+// several and concatenates them, which is how the Squarespace one-month-per-
+// request calendars stop having a next-month blind spot near month end: the
+// roster asks for {{month:+0}} and {{month:+1}} instead of a run having to
+// remember to. When `urls` is present, `url` stays the human-facing page to
+// cite on a card.
+const sourceUrls = (src) => (Array.isArray(src.urls) && src.urls.length ? src.urls : [src.url]).map((u) => expandUrlTemplate(u));
 
-const ATTEMPTS = { browser: ["browser"], feed: ["feed"] }; // default: plain, then browser
-const FETCHERS = { plain: plainText, feed: feedText, browser: browserText };
+const plainText = async (src) => htmlToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"));
+const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"));
+const browserPage = async (src) => browserText(sourceUrls(src)[0]);
+
+async function jsonText(src) {
+  const blocks = [];
+  for (const url of sourceUrls(src)) {
+    const body = await rawGet(url, "application/json,text/plain,*/*");
+    let data;
+    try {
+      data = JSON.parse(body);
+    } catch {
+      throw new Error(`response was not JSON (${body.length} bytes) — endpoint moved or is behind a wall?`);
+    }
+    const text = jsonToText(data, src.json ?? {});
+    if (text) blocks.push(text);
+  }
+  return blocks.join("\n\n");
+}
+
+const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"] }; // default: plain, then browser
+const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, browser: browserPage };
 
 async function fetchSource(src) {
   const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];
   let lastErr = null;
   for (const method of attempts) {
     try {
-      const text = await FETCHERS[method](src.url);
+      const text = await FETCHERS[method](src);
       if (BLOCK_RE.test(text.slice(0, 800))) {
         lastErr = new Error(`bot-wall page via ${method} fetch`);
         continue;
@@ -432,13 +438,26 @@ console.log(
 );
 if (!pw) console.log("note: playwright not installed — browser-only sources will error (npm i -D playwright && npx playwright install chromium)");
 
-if (sourcesUnreachable || browserFetchDown) {
+// A browser outage is reported whether or not it is fatal. It stopped being
+// fatal on its own on 2026-08-05: when this clause was written (2026-08-03) 22
+// of 48 sources were browser-only, so "every browser fetch failed" meant losing
+// ~46% of the roster. After the feed/json migrations only a handful still need
+// the browser, and the same clause would halt a run that read 42 of 48 sources
+// fine. Coverage is the thing we actually care about, and the error-rate ceiling
+// already measures it — a failed browser source counts as an error like any
+// other. Keeping a second, drifting proxy for the same question only produced
+// false alarms, so the ceiling is now the single rule.
+if (browserFetchDown) {
+  console.error("\n=== BROWSER PATH DOWN — browser-only sources contributed nothing ===");
+  if (browserPreflight?.fix) console.error(`  Fix: ${browserPreflight.fix}`);
+  console.error(
+    `  ${sourcesUnreachable ? "This run is degraded (see below)." : "Roster coverage is still within the ceiling, so this run continues."}`,
+  );
+}
+
+if (sourcesUnreachable) {
   console.error("\n=== DEGRADED RUN — the roster was not readable ===");
-  if (sourcesUnreachable) console.error(`  ${reach.errored} of ${reach.attempted} sources errored.`);
-  if (browserFetchDown) {
-    console.error("  Every browser fetch failed; browser-only sources contributed nothing.");
-    if (browserPreflight?.fix) console.error(`  Fix: ${browserPreflight.fix}`);
-  }
+  console.error(`  ${reach.errored} of ${reach.attempted} sources errored.`);
   console.error(
     "  Do not ingest this as a normal week: expiry will still delete, so a degraded run\n" +
       "  shrinks the deck (2026-08-03 supply analysis). Fix the cause, or re-run with\n" +

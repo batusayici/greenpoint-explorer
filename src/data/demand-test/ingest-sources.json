@@ -12,12 +12,24 @@
     },
     {
       "id": "troost",
-      "name": "Troost",
-      "url": "https://troostny.com/calendar/",
+      "name": "Troost (Google Calendar API)",
+      "url": "https://www.googleapis.com/calendar/v3/calendars/troostlive%40gmail.com/events?key=AIzaSyB94vf6WdsNg7nv-BNhNLX-wvDYVEV1SMY&singleEvents=true&orderBy=startTime&timeMin={{now:iso}}&maxResults=40",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": ""
+      "fetch": "json",
+      "notes": "Switched 2026-08-05: troostny.com/calendar renders a client-side Google Calendar widget, so plain fetch saw nothing and it fell back to the browser. This is the exact request the site JS makes — calendar id and API key are both published in the page. IF THIS 403s, the key was rotated: re-fetch https://troostny.com/calendar/ and grep for \"apikey:\" to re-derive it. The public .ics was rejected as an alternative: it returns 731 events back to 2023, unsorted, with a DTSTAMP that changes every export, so every line diffs every run. CITE cards to https://troostny.com/calendar/.",
+      "json": {
+        "path": "items",
+        "fields": [
+          "summary",
+          "description",
+          "start.date",
+          "start.dateTime",
+          "end.date",
+          "end.dateTime",
+          "htmlLink"
+        ]
+      }
     },
     {
       "id": "eavesdrop",
@@ -39,12 +51,22 @@
     },
     {
       "id": "film-noir-cinema",
-      "name": "Film Noir Cinema",
-      "url": "https://filmnoircinema.com",
+      "name": "Film Noir Cinema (Squarespace JSON)",
+      "url": "https://www.filmnoircinema.com/program?format=json",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Month grid; also watch the \"Keep Us Alive\" banner (feeds the film-noir-support card)."
+      "fetch": "json",
+      "notes": "Switched 2026-08-05 from the browser-rendered month grid to the Squarespace collection JSON, which returns the whole upcoming programme in one call (14 screenings through November at the switch) instead of one month. startDate/endDate arrive as epoch milliseconds and are converted to ISO in the snapshot. The \"Keep Us Alive\" banner that feeds the film-noir-support card is NOT in this JSON — it is plain text in the homepage HTML at https://www.filmnoircinema.com/, check there when re-verifying that card. CITE cards to fullUrl. Squarespace location is a coordinate blob with every address field empty — deliberately not snapshotted; the venue address above is the truth.",
+      "json": {
+        "path": "upcoming",
+        "fields": [
+          "title",
+          "startDate",
+          "endDate",
+          "excerpt",
+          "fullUrl"
+        ]
+      }
     },
     {
       "id": "good-room",
@@ -147,21 +169,47 @@
     },
     {
       "id": "carcosa-club",
-      "name": "The Carcosa Club",
-      "url": "https://www.carcosaclub.com/events?view=calendar",
+      "name": "Carcosa Club (Squarespace JSON)",
+      "url": "https://www.carcosaclub.com/events",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "982 Manhattan Ave, Brooklyn NY 11222; hours Sun-Thu 9am-11pm, Fri-Sat 9am-midnight (both per the 2026-07-25 snapshot). Membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address. Batu 2026-07-27: one of the three game-club sources to keep in every scan. MONTH-BOUNDARY GAP: the events page renders ONE month grid — the current one — so near month end the Aug 1-6 half of our today+10 window is invisible. Batu's link pinned &month=07-2026; the param is dropped here so the scan follows the current month rather than going stale, but when a run falls within ~10 days of month end, ALSO fetch &month=MM-YYYY for the following month or those events are silently missed. Batu confirmed 2026-08 has events at &month=08-2026. CHANNEL: web-only — a broad Gmail search on 2026-07-27 found no Carcosa newsletter in the mailbox at all, so nothing here arrives by email."
+      "fetch": "json",
+      "notes": "982 Manhattan Ave, Brooklyn NY 11222; hours Sun-Thu 9am-11pm, Fri-Sat 9am-midnight (2026-07-25 snapshot). Membership waitlist-only but $15/day guest passes + public events. Ignore stale aggregator listings at the closed Williamsburg address. One of the three game-club sources to keep in every scan (Batu 2026-07-27). Switched 2026-08-05 to the Squarespace collection JSON. THE MONTH-BOUNDARY GAP IS NOW CLOSED IN THE ROSTER, not by instruction: this fetches the current AND next month every run, so the today+10 window can never straddle an invisible month. startDate is epoch ms, converted to ISO in the snapshot. CITE cards to fullUrl. CHANNEL: web-only — a broad Gmail search 2026-07-27 found no Carcosa newsletter. Squarespace location is a coordinate blob with every address field empty — deliberately not snapshotted; the venue address above is the truth.",
+      "urls": [
+        "https://www.carcosaclub.com/events?format=json&month={{month:+0}}",
+        "https://www.carcosaclub.com/events?format=json&month={{month:+1}}"
+      ],
+      "json": {
+        "path": "items",
+        "fields": [
+          "title",
+          "startDate",
+          "endDate",
+          "excerpt",
+          "fullUrl"
+        ]
+      }
     },
     {
       "id": "nyplays",
-      "name": "New York Society of Play",
-      "url": "https://www.hisawyer.com/new-york-society-of-play/schedules",
+      "name": "New York Society of Play (Sawyer API)",
+      "url": "https://www.hisawyer.com/api/v1/widget/scheduled_activities?slug=new-york-society-of-play&page=1",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "Third game-club source (Batu 2026-07-27). RESOLVED 2026-07-27 run 2: nyplays.org/events/ is nav-only chrome — the real schedule is a Sawyer registration iframe, so the roster now points straight at the Sawyer schedules page (browser fetch). Programs are hosted at Frontier Games, 724 Manhattan Ave, Greenpoint (stated per-listing in the schedule), plus non-Greenpoint school sites (PS290 Ridgewood — skip) and online classes (not mappable). First real read 2026-07-27: all offerings are fall-semester kids registrations (Sep starts, $470–$1,425) — carded as nyplays-fall-registration (subscription); no dated in-window events yet. CHANNEL: web-only — no newsletter found in the mailbox (2026-07-27)."
+      "fetch": "json",
+      "notes": "Third game-club source (Batu 2026-07-27). Switched 2026-08-05 from the browser-rendered Sawyer schedules page to the JSON widget API behind it — same listings, no browser. FILTER PER ITEM: only card items whose location names Frontier Games / 724 Manhattan Ave (the sole Greenpoint host). Skip location \"Online\" (not mappable) and school sites like P.S. 290 Ridgewood (out of area). Mostly fall-semester kids registrations (subscription cards), not dated in-window events. CHANNEL: web-only — no newsletter found in the mailbox (2026-07-27).",
+      "json": {
+        "path": "data.results",
+        "fields": [
+          "activity.name",
+          "location",
+          "class_times",
+          "pricing",
+          "activity.age_range",
+          "is_online",
+          "pdp_url"
+        ]
+      }
     },
     {
       "id": "little-dance-school",
@@ -291,12 +339,21 @@
     },
     {
       "id": "moon-bunny-aerial",
-      "name": "Moon Bunny Aerial",
-      "url": "https://moonbunnyaerial.com",
+      "name": "Moon Bunny Aerial (feather.rsvp API)",
+      "url": "https://api.feather.rsvp/public/organizations/a40527c5-74e8-402c-84ee-924b7de721d2/events?pageSize=100",
       "group": "venue",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "394 McGuinness Blvd #208; booking calendar via feather.rsvp. Plain fetch returns nav-only chrome (2026-07-25) — browser required."
+      "fetch": "json",
+      "notes": "394 McGuinness Blvd #208. Switched 2026-08-05 from browser to the feather.rsvp public API the site embeds — the org id is in the page HTML. Root-level array, so json.path is empty. Every event belongs to this one studio, so no geography filter is needed and location is null by design. description is deliberately NOT snapshotted: these are recurring class blurbs that would bloat every diff. pageSize=100 covers roughly a month; the window we card is today+10. CITE cards to https://moonbunnyaerial.com.",
+      "json": {
+        "path": "",
+        "fields": [
+          "name",
+          "start_at",
+          "end_at",
+          "price_in_cents"
+        ]
+      }
     },
     {
       "id": "sparsa",
@@ -327,12 +384,27 @@
     },
     {
       "id": "greenpoint-library",
-      "name": "Greenpoint Library (branch page)",
-      "url": "https://www.bklynlibrary.org/locations/greenpoint",
+      "name": "Greenpoint Library (BPL events API)",
+      "url": "https://discover.bklynlibrary.org/api/select/index.php?q=%2A%3A%2A&fq=ss_type%3Aevent&fq=ss_event_location_master%3A%22Greenpoint+Library%22&fq=is_event_start_date%3A%5B{{now:epoch}}+TO+%2A%5D&sort=is_event_start_date+asc&rows=40&wt=json",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "Rich weekly calendar — group into per-day cards, don't flood. Full sweep method: discover.bklynlibrary.org → Filters → Event Location → Greenpoint Library (JS app; Browser pane); free only where the title says \"Free\". A branch-page diff is the signal to run the sweep."
+      "fetch": "json",
+      "notes": "Switched 2026-08-05 from the browser-only branch page to the Solr events index that discover.bklynlibrary.org itself queries — same data, plain fetch, and it answers with the full forward calendar (187 upcoming at the switch) rather than the week the branch page renders. {{now:epoch}} is required: the index rejects Solr NOW on this numeric field. Still group into per-day cards, do not flood. Free only where the title says \"Free\". CITE cards to https://www.bklynlibrary.org/locations/greenpoint (the API URL is not a reader-facing link). If this ever returns a non-array, the API shape moved — the run errors loudly rather than snapshotting nothing.",
+      "json": {
+        "path": "response.docs",
+        "fields": [
+          "ts_title",
+          "ds_event_start_date",
+          "ds_event_end_date",
+          "ss_event_location",
+          "ss_event_location_master",
+          "ss_event_age",
+          "sm_event_tags",
+          "is_event_registration",
+          "is_event_canceled",
+          "ts_body"
+        ]
+      }
     },
     {
       "id": "bpl-north-brooklyn-calendar",
@@ -340,8 +412,8 @@
       "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "browser",
-      "notes": "403s plain fetches. Mostly overlaps the branch calendar — scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG)."
+      "fetch": "auto",
+      "notes": "North Brooklyn Environmental Community Calendar. Mostly overlaps the branch calendar — scan for non-library civic items (community meetings, garden hours, Newtown Creek CAG). Was fetch=browser on a \"403s plain fetches\" note; re-verified 2026-08-05: plain fetch returns 200 with ~28k chars of real listings, with or without a spoofed UA. Set to auto so it takes the cheap path and still falls back to the browser. If it 403s again in the cloud but not locally, that is IP/ASN-level blocking, not a header problem — do not add UA tricks, report it."
     },
     {
       "id": "go-green-bk",

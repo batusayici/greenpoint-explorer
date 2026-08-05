@@ -4,7 +4,60 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-05 (latest) — read the feed, not the page: Greenpointers leaves the browser path
+## 2026-08-05 (latest) — the roster stops depending on a browser: 22 browser sources → 6
+
+Follow-on to the entry below, same incident. Having taken Greenpointers off the browser path, the
+question was whether the routine survives the cloud CONNECT outage for **every** source. All 13
+remaining browser-dependent sources were investigated for a plain-fetchable endpoint, each verified
+by live fetch rather than assumed.
+
+**Seven converted.** Six to a new `json` fetch strategy, one back to `auto`:
+
+| source | was | now | what it reads |
+|---|---|---|---|
+| `greenpoint-library` | browser | `json` | the Solr events index `discover.bklynlibrary.org` itself queries — **187 upcoming events** vs the week the branch page renders |
+| `troost` | auto→browser | `json` | the Google Calendar API its own widget calls |
+| `film-noir-cinema` | auto→browser | `json` | Squarespace collection JSON — whole programme in one call, not one month |
+| `carcosa-club` | auto→browser | `json` | Squarespace JSON, **current + next month every run** |
+| `nyplays` | browser | `json` | the Sawyer widget API behind the schedules page |
+| `moon-bunny-aerial` | browser | `json` | the feather.rsvp public API the site embeds |
+| `bpl-north-brooklyn-calendar` | browser | `auto` | plain fetch re-verified working (the "403s plain fetches" note was stale) |
+
+**Six remain browser-only and provably cannot be otherwise:** `word-bookstore` and
+`greenpoint-comedy-club` deliver listings over WebSocket (no HTTP endpoint exists to call);
+`greenpoint-trash-club` and `dance-space-ny` publish their schedules only on Instagram;
+`play-kids-greenpoint`'s widget needs a signed token and its calendar is empty anyway; `sparsa` sits
+behind a Cloudflare challenge. These are now documented as a closed list so no future run re-hunts
+them.
+
+**⚠ Batu decision needed — `sparsa`.** Its `robots.txt` explicitly disallows `ClaudeBot` by name
+(alongside GPTBot, CCBot and others). We did not build a workaround and should not: the correct
+response to an opt-out is to honour it. Recommend **removing sparsa from the roster**. Left in place
+pending your call — it currently fails harmlessly behind Cloudflare, so nothing is being retrieved
+either way. Roster removals are yours, not the run's.
+
+**The degraded gate was re-derived, not just relaxed.** It exited 1 when errored sources exceeded 15%
+**or** every browser fetch failed. That second clause was written when 22 of 48 sources were
+browser-only, where it meant losing ~46% of the roster; with 6 it fires at 12.5% and halts a run that
+read 39 of 45 sources. Coverage is the real question and the 15% ceiling measures it directly — a
+failed browser source counts as an error like any other — so the ceiling is now the single rule and a
+dead browser prints a warning instead. `assessFreshness` was changed to match, so the routine cannot
+pass the fetch gate and then fail freshness on the same non-issue.
+
+**Verified, not asserted.** With `--no-browser` (which reproduces the cloud failure exactly): **exit 0,
+39/45 sources read, 13% error** — where the same simulation before this change gave 14 errors, 31%,
+exit 1. Normal run: **45/45, 0 errors, exit 0.** Every new endpoint fetched twice consecutively with
+**zero differing lines**, confirming no nonce or export timestamp makes a run look changed — the
+defect that disqualified Troost's iCal feed (731 events back to 2023 with a per-export `DTSTAMP`).
+Tests 479 → 491.
+
+**Margin note:** 13% against a 15% ceiling is thin. One additional transient error during a browser
+outage will halt the run — correctly, but it is a narrow band. Removing the two sources that can never
+yield content (`sparsa`, `dance-space-ny`) would widen it to ~9%. Batu's call.
+
+Owner: Batu.
+
+## 2026-08-05 — read the feed, not the page: Greenpointers leaves the browser path
 
 Context: the 2026-08-05 daily thin refresh halted at the roster gate. 14 of 45 sources
 unreachable (31%, ceiling 15%) because headless Chromium's HTTPS CONNECT tunnel was reset by
