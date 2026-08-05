@@ -1,4 +1,4 @@
 {
   "description": "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.",
-  "lastRunAt": "2026-08-03T09:30:00-04:00"
+  "lastRunAt": "2026-08-05T13:30:00-04:00"
 }

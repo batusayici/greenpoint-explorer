@@ -2703,5 +2703,55 @@
         "-73.9592884"
       ]
     }
+  },
+  "55 McGuinness Boulevard, Brooklyn, NY 11222": {
+    "query": "55 McGuinness Boulevard, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-05T17:24:13.321Z",
+    "hit": {
+      "place_id": 359337237,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280081339,
+      "lat": "40.7242711",
+      "lon": "-73.9482080",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "55, McGuinness Boulevard, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7242262",
+        "40.7243159",
+        "-73.9482675",
+        "-73.9481484"
+      ]
+    }
+  },
+  "Paulie Gee's Slice Shop, Brooklyn, NY": {
+    "query": "Paulie Gee's Slice Shop, Brooklyn, NY",
+    "fetchedAt": "2026-08-05T17:24:14.736Z",
+    "hit": {
+      "place_id": 361652977,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842929206,
+      "lat": "40.7283593",
+      "lon": "-73.9571898",
+      "category": "amenity",
+      "type": "fast_food",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Paulie Gee's Slice Shop",
+      "display_name": "Paulie Gee's Slice Shop, 110, Franklin Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7283093",
+        "40.7284093",
+        "-73.9572398",
+        "-73.9571398"
+      ]
+    }
   }
 }

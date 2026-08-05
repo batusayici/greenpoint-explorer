@@ -169,14 +169,23 @@ test("seed has exactly 75 cards across the six layers", () => {
   // and the two Brooklyn Youth Ballet cards. The four Brooklyn Craft Company
   // workshops stay held — their per-session venue lives in a booking widget no
   // fetch can reach. 70 + 5 = 75.
-  assert.equal(seed.cards.length, 75);
+  // 2026-08-05, Wednesday Greenpointers pull: +10 events off the 8/6-12
+  // roundup — chess at the McCarren parkhouse, the PLAY Kids movie night, the
+  // Film Noir premiere, the comedy club's secret showcase, Songwriter Sundays,
+  // the Chi Ba pop-up at Threes, Kirbee's sneak preview, Jabberjaw at Paulie
+  // Gee's, and two library day cards (8/11, 8/12). Four more were HELD (the
+  // McCarren Demo Garden potluck, the Uzuki parfait, BQFlea and the Loft Story
+  // premiere) and six Williamsburg items skipped. Expiry did NOT run — this is
+  // a scoped mini-ingest, so the refresh-discipline date below stays 08-03.
+  // 75 + 10 = 85.
+  assert.equal(seed.cards.length, 85);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 24, "22 + the 8/9 ranger fishing session and the Tuesday Transmitter Park yoga series (PR #18 holds resolved)");
+  assert.equal(count((c) => c.category === "event"), 34, "24 + the 10 events carded off the 8/6-12 Greenpointers roundup");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 9, "dated gigs + Le Fanfare/Lot Radio/Flower Cat ongoing programming + Saint Vitus news, after the 8/1-8/2 gigs expired");
+  assert.equal(count((c) => c.filters.includes("live_music")), 10, "9 + Songwriter Sundays at the McCarren parkhouse (8/9)");
   assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -292,7 +301,13 @@ test("free-ness is designated only where the source states it (tester feedback #
     "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
     "greenpoint-trash-club",
     "library-tuesday-programs-0804", // PR #14: library programs, "Free" per the branch's sourcing
+    // 2026-08-05 roundup: both state free-ness in the line the card quotes —
+    // "teen interns are running a free scavenger hunt" and "You can get free
+    // tickets here". The 8/12 library card is NOT here: its garden club line
+    // never says free.
+    "library-tuesday-programs-0811",
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    "paulie-gees-jabberjaw-comedy-0811",
     "summerstarz-ford-v-ferrari-0807", // "Free SummerStarz Movies" on townsquarebk.org
     "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
   ]);
@@ -370,6 +385,9 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
   assert.deepEqual(games, [
     "black-rabbit",
     "last-place-chess-chill",
+    // 2026-08-05: North Brooklyn Chess's August residency at the McCarren
+    // parkhouse — "Casual, social chess", so play, not culture.
+    "nb-chess-parkhouse-0806",
     "scrappleland",
     "scrappleland-backgammon-0804",
     "scrappleland-pinball-league-0805",
@@ -576,7 +594,8 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // missing reciprocal link the same run).
   // 2026-08-03: expiry took both remaining showcase cards, so the prune left
   // the venue with no link list at all (same shape as Black Rabbit below).
-  assert.equal(byId("greenpoint-comedy-club").relatedCardIds, undefined);
+  // 2026-08-05: the club is back in the graph with the 8/8 Secret Showcase.
+  assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, ["comedy-secret-showcase-0808"]);
   assert.ok(byId("scrappleland-backgammon-0804").relatedCardIds.includes("scrappleland"), "club night joins the venue graph");
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
   // Black Rabbit's weeknight cards have all expired (Sunday bingo 2026-07-27,

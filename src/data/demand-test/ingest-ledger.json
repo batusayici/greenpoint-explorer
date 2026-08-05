@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-03T09:30:00-04:00",
+  "lastRunAt": "2026-08-05T13:30:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1110,6 +1110,13 @@
       "id": "PR18-REVIEW-2026-08-03",
       "reviewedAt": "2026-08-03",
       "outcome": "PR #18 reviewed card-by-card against sources. 5 of 9 holds resolved and shipped (e19860a): ranger fishing (detail page states 'Recommended for ages 8 and older' — the run read the index), Transmitter Park yoga (detail page carries 7-8 AM and shows a 4-week series, shipped recurring), Marianella sale (recurring/verified-through — a rule that already existed), BYB adult term (wellness — dance is named in the lens definition), BYB trial (family_kids+deals_memberships per moon-bunny precedent). 4 BCC workshops moved to watchItems as source-blocked. Two run findings corrected: the Transmitter Park opposition was already on the live card since 2026-08-01 (dedupe compared against the article, not the deck), and 3 locally-owned openings (Gallery ATARAH, Balera, Christina's) were triaged only as candidate senders, never as news cards. holds: 1 new-judgment · 4 rule-miss · 4 source-blocked. The 4 rule-misses are why the resolve-before-you-hold gate (R1/R2/R3) and the rule backfill were added to SKILL.md this day."
+    },
+    {
+      "id": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
+      "kind": "web",
+      "publisher": "Greenpointers",
+      "processedAt": "2026-08-05",
+      "outcome": "Wednesday scoped pull of the 8/6-12 roundup, read from the RSS feed (first run since the feed switch, so the source snapshotted as `new` — no tracked greenpointers baseline existed). SHIPPED 10 events: nb-chess-parkhouse-0806, playkids-minecraft-movie-0807, film-noir-watch-me-0807, comedy-secret-showcase-0808, songwriter-sundays-parkhouse-0809, threes-chi-ba-bakery-0810, library-tuesday-programs-0811, kirbees-sneak-preview-0811, paulie-gees-jabberjaw-comedy-0811, library-wednesday-programs-0812. HELD 4 (PR, ingest/greenpointers-2026-08-05): McCarren Demo Garden potluck (no honest lens — civic is action/mutual aid, and a post-shift potluck is social), Uzuki gluten-free parfait (one-off event vs new menu item is undecidable from the line, no price or end), BQFlea (no lens survives the shopping retirement, and \"Meeker Avenue\" alone will not pin), Loft Story premiere (venue address exists only on Eventbrite, which is not allowlisted, 403s plain fetch, and the browser path is down). SKIPPED as already live: film festival (greenpoint-film-festival-0805), Babies & Books 8/6 (library-thursday-programs-0806), garden educator 8/7 (library-friday-garden-0807), Bird Club 8/8 (mcgolrick-bird-club-0808). SKIPPED as Williamsburg: The Penny (dog adoption), Union Pool (Sun Ra Arkestra), Domino Park x2 (craft night, salsa), Brooklyn Art Haus x2 (wrestling, opening night), Flop House Comedy Club (verified 362 Grand St, Williamsburg 11211). R1 in action: the roundup's own links carried the facts four cards needed — PLAY Kids' 5:30-8:30pm window and $47 (hisawyer + playgreenpoint.com/movie-nights), the comedy club's 66 Greenpoint Ave / 9:45pm seating / midnight end (its own ticket page, allowlisted), Kirbee's 55 McGuinness Blvd (the roundup hyperlinks the venue name to Greenpointers' own 3/5 article), and Paulie Gee's Slice Shop 110 Franklin St (Nominatim). Expiry NOT run (scoped mini-ingest) so the refresh-discipline date stays 2026-08-03. Deck 75 -> 85 (+13%). holds: 2 new-judgment · 0 rule-miss · 2 source-blocked"
     }
   ],
   "senderRegistry": [
@@ -1312,7 +1319,7 @@
   "watchItems": [
     {
       "name": "Kirbee's",
-      "note": "55 McGuinness Blvd (South) Texas BBQ — announced for summer, no confirmed open; card only on confirmed open",
+      "note": "55 McGuinness Blvd (South) Texas BBQ — announced for summer, no confirmed open; card only on confirmed open — 2026-08-05: the 8/11 sneak preview IS carded (kirbees-sneak-preview-0811, a dated event at 55 McGuinness Blvd per Greenpointers' own 3/5 article). This watch item stands unchanged: the roundup says the preview happens \"before their new restaurant opens\", so the opening is still unconfirmed and no new_business/news card ships until it is.",
       "addedAt": "2026-07-23"
     },
     {
@@ -1349,6 +1356,11 @@
       "name": "Brooklyn Craft Company — Crochet 101: Lil' Bag, Wed 8/12 (bcc-crochet-101-lil-bag-0812)",
       "note": "BLOCKED, do not re-author (2026-08-03, PR #18): the 7/31 newsletter never states which date is Greenpoint and which is the Lower Manhattan pop-up, and no time of day. The per-session venue is only in BCC's BookThatApp widget, which no fetch can read (see the brooklyn-craft-company notes in ingest-sources.json). UNBLOCK when a human confirms the venue+time in a real browser or BCC answers by email — then it ships as authored. Full card JSON: docs/review/held-cards-2026-08-03.md.",
       "addedAt": "2026-08-03"
+    },
+    {
+      "name": "BQFlea @ Meeker Avenue (Sundays under the BQE)",
+      "note": "BLOCKED on two counts (2026-08-05 roundup): (1) location — the listing says only \"@ Meeker Avenue\", and Meeker runs the length of the BQE viaduct across both Greenpoint and Williamsburg, so there is no point to pin; (2) lens — `shopping` is retired and `deals_memberships` is deals/memberships only, so an outdoor market has no honest home. UNBLOCK when the organiser's own page gives cross-streets AND Batu rules on where markets/fleas file (proposed in the 2026-08-05 review PR). Full card JSON: docs/review/held-cards-2026-08-05.md.",
+      "addedAt": "2026-08-05"
     }
   ]
 }
