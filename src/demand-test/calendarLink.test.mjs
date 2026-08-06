@@ -15,7 +15,7 @@ const harborDay = {
   endsAt: "2026-07-25T13:00:00-04:00",
 };
 
-const LINK = "https://greenpoint.life/e/city-of-water-day?src=calendar";
+const LINK = "https://stoopwise.com/e/city-of-water-day?src=calendar";
 
 function params(url) {
   assert.ok(url.startsWith("https://calendar.google.com/calendar/render?"), url);

@@ -29,7 +29,9 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 
 ## Project Goal
 
-**Greenpoint Life** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, in the II-C inked visual identity. Sole goal: real value and PMF. Consumer domain `greenpoint.life` (cutover = the launch moment, gated on the launch-readiness list — DECISION_LOG 2026-07-26).
+**Stoopwise Greenpoint** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, in the II-C inked visual identity. Sole goal: real value and PMF.
+
+**Naming (2026-08-06):** the parent brand is **Stoopwise**; this edition is **Stoopwise Greenpoint**, and future neighborhoods take the same shape (Stoopwise Astoria). Canonical domain `stoopwise.com`. `greenpoint.life` and `greenpoint-explorer.vercel.app` both keep serving and redirect here — already-sent invite links depend on it. Repo keeps the `greenpoint-explorer` name. **"Greenpoint" is not in the brand any more, so every title, meta, and machine surface must carry it explicitly** — that keyword is what search and answer engines match on.
 
 ## Architecture
 

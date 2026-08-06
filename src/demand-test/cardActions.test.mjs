@@ -63,40 +63,40 @@ test("share payload carries the card title, weekday + time, and the brand", () =
     title: "City of Water Day at Transmitter Park",
     startsAt: "2026-07-25T10:00:00-04:00",
   };
-  const { title, url } = sharePayload(card, { origin: "https://greenpoint.life", search: "" });
-  assert.equal(title, "City of Water Day at Transmitter Park — Sat 10 AM · Greenpoint Life");
-  assert.equal(url, "https://greenpoint.life/e/city-of-water-day?src=share");
+  const { title, url } = sharePayload(card, { origin: "https://stoopwise.com", search: "" });
+  assert.equal(title, "City of Water Day at Transmitter Park — Sat 10 AM · Stoopwise Greenpoint");
+  assert.equal(url, "https://stoopwise.com/e/city-of-water-day?src=share");
 });
 
 test("a 10:30 start keeps its minutes; an all-day sentinel shows the date instead", () => {
   const base = { id: "x", title: "T" };
   assert.match(
     sharePayload({ ...base, startsAt: "2026-07-25T10:30:00-04:00" }, {}).title,
-    /— Sat 10:30 AM · Greenpoint Life$/,
+    /— Sat 10:30 AM · Stoopwise Greenpoint$/,
   );
   assert.match(
     sharePayload({ ...base, startsAt: "2026-07-25T00:00:00-04:00" }, {}).title,
-    /— Sat Jul 25 · Greenpoint Life$/,
+    /— Sat Jul 25 · Stoopwise Greenpoint$/,
   );
 });
 
 test("undated and recurring cards share title-only", () => {
-  assert.equal(sharePayload({ id: "x", title: "Falu House Tinned Fish Club" }, {}).title, "Falu House Tinned Fish Club · Greenpoint Life");
+  assert.equal(sharePayload({ id: "x", title: "Falu House Tinned Fish Club" }, {}).title, "Falu House Tinned Fish Club · Stoopwise Greenpoint");
   assert.equal(
     sharePayload({ id: "x", title: "Weekend DJs", recurring: true, startsAt: "2026-07-25T20:00:00-04:00" }, {}).title,
-    "Weekend DJs · Greenpoint Life",
+    "Weekend DJs · Stoopwise Greenpoint",
   );
 });
 
 test("the share link retags the channel: src becomes share, other params survive", () => {
   const card = { id: "a b", title: "T" };
-  const { url } = sharePayload(card, { origin: "https://greenpoint.life", search: "?src=wave1&x=1" });
-  assert.equal(url, "https://greenpoint.life/e/a%20b?src=share&x=1");
+  const { url } = sharePayload(card, { origin: "https://stoopwise.com", search: "?src=wave1&x=1" });
+  assert.equal(url, "https://stoopwise.com/e/a%20b?src=share&x=1");
 });
 
 test("the calendar variant tags src=calendar so saved-event returns are attributable", () => {
-  const { url } = sharePayload({ id: "x", title: "T" }, { origin: "https://greenpoint.life", channel: "calendar" });
-  assert.equal(url, "https://greenpoint.life/e/x?src=calendar");
+  const { url } = sharePayload({ id: "x", title: "T" }, { origin: "https://stoopwise.com", channel: "calendar" });
+  assert.equal(url, "https://stoopwise.com/e/x?src=calendar");
 });
 
 // L10 (DECISION_LOG 2026-07-28): the correction entry point. A business

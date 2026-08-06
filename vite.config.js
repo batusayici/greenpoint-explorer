@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        // Greenpoint Life — the product (2D map + feed)
+        // Stoopwise Greenpoint — the product (2D map + feed)
         main: fileURLToPath(new URL("./index.html", import.meta.url)),
         // Parked 3D isometric prototype (kept runnable, not the product)
         explorer: fileURLToPath(new URL("./explorer.html", import.meta.url)),

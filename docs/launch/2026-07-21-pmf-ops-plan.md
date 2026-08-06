@@ -1,5 +1,10 @@
 # Greenpoint Life — PMF Operating Plan (2026-07-21)
 
+> **Naming superseded 2026-08-06:** the product is now **Stoopwise Greenpoint** on
+> `stoopwise.com` (DECISION_LOG 2026-08-06). Every "Greenpoint Life" and
+> `greenpoint.life` below is left as written — this is a dated record of what was
+> true on 2026-07-21, not current state. Current naming: `docs/PLAN.md`.
+
 Plan of record for the launch → learn → PMF campaign. Decided in the 2026-07-21 interview (see `DECISION_LOG.md` same date); full interview plan: `~/.claude/plans/you-will-act-as-rippling-seal.md`. Supersedes nothing — it extends the 2026-07-15 launch kit with what happens at and after the checkpoint.
 
 **Naming:** the consumer product is **Greenpoint Life**, destined for **greenpoint.life** (domain bought, not yet wired). The repo and 3D prototype keep the Greenpoint Explorer name. *(Updated 2026-07-22: the feed now serves at the root `/` — the old `/july.html` URL redirects there, query params preserved; the parked 3D prototype moved to `/explorer.html`.)*

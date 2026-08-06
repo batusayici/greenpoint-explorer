@@ -27,8 +27,9 @@ const SIGNUP_URL = "https://tally.so/r/44daZo";
 
 // Limited-launch feedback channel (2026-07-15): hosted form only — Batu's
 // email stays private (2026-07-15 review note), so no mailto anywhere.
-// Dedicated feedback form created 2026-07-21 ("Greenpoint Life — what's
-// missing or wrong?"): two optional text boxes + optional email, so error
+// Dedicated feedback form created 2026-07-21 ("Stoopwise Greenpoint — what's
+// missing or wrong?"; retitled in Tally at the 2026-08-06 rename): two
+// optional text boxes + optional email, so error
 // reports stay anonymous-friendly and the signup form's count stays a clean
 // commitment metric.
 const FEEDBACK_FORM_URL = "https://tally.so/r/LZqEj1";
@@ -80,7 +81,7 @@ function ActionLink({ action, card, onFilter, onFilterAction }) {
 // happened — a cancelled share sheet is not a share.
 // V1-A (first-visit test): the payload is the card — title + start time as the
 // text, the /e/ deep link retagged ?src=share as the URL — so the group-chat
-// forward reads as the event, not as "Greenpoint Life".
+// forward reads as the event, not as "Stoopwise Greenpoint".
 function ShareAction({ action, card, cls }) {
   const [copied, setCopied] = useState(false);
   useEffect(() => {

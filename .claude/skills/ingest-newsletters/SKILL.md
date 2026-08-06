@@ -3,7 +3,7 @@ name: ingest-newsletters
 description: Track V content ingest — script-fetch the Greenpoint source roster, diff against last run, parse only changed sources into schema-valid draft cards (subagent fan-out), then geocode, test, and ship routine updates straight to prod (2026-08-02). Cards are triaged per card: substantiated + mechanically categorized ones ship; unsourced, ambiguous, or conflicting ones are held in a review PR. Roster/sender additions, submissions, and code changes stay human-gated. Use when Batu says "run the ingest", "refresh the map", "weekly refresh", "daily refresh", or /ingest-newsletters.
 ---
 
-# Ingest → Greenpoint Life Map
+# Ingest → Stoopwise Greenpoint Map
 
 Turn the week's Greenpoint sources into sourced cards on the live map at the site root (`/` — formerly `/july.html`, which now redirects). **Nothing is invented. Routine updates ship themselves; doubtful cards are held for review (Batu, 2026-08-02 — DECISION_LOG). Never ship a bad card, and never drop one to avoid reviewing it.**
 

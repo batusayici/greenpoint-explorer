@@ -1,6 +1,6 @@
 # Parked: 3D isometric Greenpoint Explorer
 
-**Status: parked indefinitely as of 2026-07-22** (Batu's decision — see `docs/DECISION_LOG.md`, same date). The direction stays exciting and may be picked up later, but the project's sole goal now is real value / PMF via **Greenpoint Life**, the 2D map + feed.
+**Status: parked indefinitely as of 2026-07-22** (Batu's decision — see `docs/DECISION_LOG.md`, same date). The direction stays exciting and may be picked up later, but the project's sole goal now is real value / PMF via **Stoopwise Greenpoint** (named Greenpoint Life until 2026-08-06), the 2D map + feed.
 
 This folder holds the 3D track's living docs, frozen where they stood:
 

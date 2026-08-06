@@ -1,5 +1,10 @@
 # Greenpoint Life — Launch Plan (2026-07-27)
 
+> **Naming superseded 2026-08-06:** the product is now **Stoopwise Greenpoint** on
+> `stoopwise.com` (DECISION_LOG 2026-08-06). The L7 cutover recorded below shipped
+> to `greenpoint.life`, which is now a redirecting legacy origin. Names and URLs
+> below are left as written — dated record, not current state.
+
 Runbook of record for the launch. Extends the PMF ops plan
 (`2026-07-21-pmf-ops-plan.md`, Phase 3) into an executable sequence and wires in
 the Growth Operator (`docs/growth/growth-engine.md` §7). **Launch = the

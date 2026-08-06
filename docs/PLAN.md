@@ -1,4 +1,4 @@
-# Greenpoint Life — Plan
+# Stoopwise Greenpoint — Plan
 
 Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/product/approvals), Agent (execution)
 
@@ -6,10 +6,10 @@ Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/produ
 
 ## Product Goal
 
-**Greenpoint Life is a hyperlocal map + feed for Greenpoint, Brooklyn** — the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, on a 2D map in the II-C inked identity. The sole goal is **real value and PMF**: residents return weekly because it's genuinely useful, and businesses/orgs want on it.
+**Stoopwise Greenpoint is a hyperlocal map + feed for Greenpoint, Brooklyn** — the week's events, new openings, deals, memberships, and neighborhood news, verified and sourced, on a 2D map in the II-C inked identity. The sole goal is **real value and PMF**: residents return weekly because it's genuinely useful, and businesses/orgs want on it.
 
 - **Product = the structured, trustworthy content layer.** Truth rules are non-negotiable: nothing invented, everything sourced, substantiated by a verbatim quote before ship (2026-08-02 — what replaced the human review diff for routine content).
-- **Naming (2026-07-21):** consumer product is **Greenpoint Life**; the bought domain **greenpoint.life** becomes canonical at the domain cutover — the launch moment on the readiness list (2026-07-26 reframe). Repo keeps the `greenpoint-explorer` name.
+- **Naming (2026-08-06, supersedes 2026-07-21):** parent brand **Stoopwise**, this edition **Stoopwise Greenpoint**; canonical domain **stoopwise.com**. Future neighborhoods take the same shape (Stoopwise Astoria). `greenpoint.life` (canonical Aug 2–6) and `greenpoint-explorer.vercel.app` both keep serving and redirect to the new origin. Repo keeps the `greenpoint-explorer` name. **The neighborhood name is no longer inside the brand**, so titles/meta/AEO surfaces carry "Greenpoint, Brooklyn" explicitly.
 - **Entry (2026-07-22):** the app serves at the site root (`index.html` → `src/demand-test/`); the old `/july.html` URL redirects with query params preserved.
 - **Look:** II-C palette carries over from the parked art direction (`docs/parked/3d-explorer/ART_DIRECTION.md`) via `src/demand-test/iiMapStyle.js`. Out-of-palette color is a hard miss.
 
@@ -17,7 +17,7 @@ Status: Active roadmap · 2D pivot locked 2026-07-22 · Owner: Batu (taste/produ
 
 - **Platform, not directory** — but validated one layer at a time. The live layer is events/openings/deals/news; stories, history, and routes are deferred until the utility loop proves itself.
 - **Positioning (sharpened 2026-07-28):** Greenpointers answers *what happened*; we answer *where, what's connected, what changed, what can I do*. Structurally: **they curate the week, we index the neighborhood** — complete/structured/current vs. picked/prose/weekly; a newsletter can't answer a question asked Tuesday at 6pm. We sell structure, never attention, so we never bid for their sponsorship dollar (business-model.md §1). They are a source / distribution partner / potential embed customer — never a competitor as a news product. Differentiation is measured weekly (unique-coverage count), not asserted.
-- **Moat = structure behind the pins:** place graph (`relatedCardIds`/`timeline`/`trustRisk` in the card schema), verified sources, weekly freshness. This same structure is the answer-engine wedge (2026-07-21 decision): Greenpoint Life must be the source humans **and AIs** cite for Greenpoint events.
+- **Moat = structure behind the pins:** place graph (`relatedCardIds`/`timeline`/`trustRisk` in the card schema), verified sources, weekly freshness. This same structure is the answer-engine wedge (2026-07-21 decision): Stoopwise Greenpoint must be the source humans **and AIs** cite for Greenpoint events.
 - **Coverage bar (2026-07-21):** 100% of on-concept local events + openings on the map, measured by a weekly coverage scan (Thu, post-Greenpointers-pull; 2026-07-22 cadence decision) diffed against live cards.
 - **Growth model (2026-07-25 → `docs/growth/growth-engine.md`):** three loops, not funnels — weekly content (metric: weekly returning locals), supply (proactive supply actors), answer-engine (organic sessions); build effort goes to a loop's weakest edge. Retention-first sequencing; experiments are pre/post with pre-written kill criteria (max 3 live, no A/B machinery); channel–model fit rules paid acquisition out permanently ($0 revenue/user → owned + earned only).
 - **Business model (2026-07-28 → `docs/growth/business-model.md`, constraints only; numbers in the gitignored `docs/private/business-model.md`):** a **neighborhood economic utility** — free, complete, verified coverage for residents, funded by the institutions and businesses that benefit from a legible local economy. Governing rule: **payers buy function or presence, never truth.** Bootstrapped indie. Three layers in order: Founding Partners → self-serve business layer → spatial intelligence (year 2). **PMF gate reinterpreted: sell before, ship after** — anchor conversations open pre-verdict, no paid surface goes live until after it. Permanent: residents never pay · coverage is never for sale · news and community surfaces never monetize · every paid surface labeled · no payer influences coverage. **No anchor deal without a distribution deliverable** — the model doubles as the awareness strategy. *(Supersedes the claim model and the sponsored-maps sequencing.)*

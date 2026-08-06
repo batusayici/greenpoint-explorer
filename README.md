@@ -1,8 +1,8 @@
-# Greenpoint Life
+# Stoopwise Greenpoint
 
 A hyperlocal map + feed for Greenpoint, Brooklyn: the week's events, new openings, deals, memberships, and neighborhood news — verified, sourced, and mapped, in the II-C inked visual identity.
 
-**Live:** https://greenpoint.life (canonical since the 2026-08-02 domain cutover; `greenpoint-explorer.vercel.app` keeps serving as the rollback path and the target of already-sent invite links)
+**Live:** https://stoopwise.com (canonical since the 2026-08-06 Stoopwise rename. Two older origins keep serving and redirect here: `greenpoint.life`, canonical Aug 2–6, and `greenpoint-explorer.vercel.app`, the rollback path and the target of already-sent invite links)
 
 ## What it is
 

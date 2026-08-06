@@ -11,9 +11,11 @@
 import { isExpiredCard } from "./filterCards.js";
 import { isStartSentinel, isEndSentinel, nyDay, utcStamp, dateValue } from "./calendarLink.js";
 
-// Canonical origin since the 2026-08-02 domain cutover (L7). The vercel.app
-// host keeps serving as rollback + the live-invite target; it is not canonical.
-export const AEO_ORIGIN = "https://greenpoint.life";
+// Canonical origin since the 2026-08-06 Stoopwise rename. Two older hosts keep
+// serving and are NOT canonical: greenpoint.life (the Aug 2 cutover origin) and
+// greenpoint-explorer.vercel.app (rollback + the live-invite target). Both must
+// keep redirecting here — already-sent invite links depend on it.
+export const AEO_ORIGIN = "https://stoopwise.com";
 
 export const liveCards = (cards, now) => cards.filter((c) => !isExpiredCard(c, now));
 
@@ -107,7 +109,7 @@ function cardBodyHtml(card, origin) {
     where ? `<p>${escapeHtml(where)}</p>` : null,
     card.summary ? `<p>${escapeHtml(card.summary)}</p>` : null,
     sources ? `<p>Source: ${sources}</p>` : null,
-    `<p><a href="/">Greenpoint Life — this week's events, openings, deals, and news in Greenpoint, Brooklyn</a></p>`,
+    `<p><a href="/">Stoopwise Greenpoint — this week's events, openings, deals, and news in Greenpoint, Brooklyn</a></p>`,
     "</main>",
   ]
     .filter(Boolean)
@@ -126,7 +128,7 @@ const replaceMeta = (html, attr, key, content) =>
 // the SPA, whose createRoot().render() replaces the #root children.
 export function injectCardPage(template, card, origin) {
   const url = cardUrl(card, origin);
-  const pageTitle = `${card.title} — Greenpoint Life`;
+  const pageTitle = `${card.title} — Stoopwise Greenpoint`;
   const description = [card.kicker, card.summary].filter(Boolean).join(" — ").slice(0, 300);
 
   let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`);
@@ -177,7 +179,7 @@ export function rssXml(cards, origin, now) {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<rss version="2.0">',
     "  <channel>",
-    "    <title>Greenpoint Life</title>",
+    "    <title>Stoopwise Greenpoint</title>",
     `    <link>${origin}/</link>`,
     "    <description>This week in Greenpoint, Brooklyn — events, new openings, deals, and neighborhood news, verified and sourced.</description>",
     `    <lastBuildDate>${now.toUTCString()}</lastBuildDate>`,
@@ -210,7 +212,7 @@ export function icsText(cards, origin, now) {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Greenpoint Life//events//EN",
+    "PRODID:-//Stoopwise//Greenpoint events//EN",
     "CALSCALE:GREGORIAN",
   ];
   for (const c of liveCards(cards, now)) {
@@ -241,7 +243,7 @@ export function icsText(cards, origin, now) {
 // ---- llms.txt --------------------------------------------------------------
 
 export function llmsTxt(origin) {
-  return `# Greenpoint Life
+  return `# Stoopwise Greenpoint
 
 > The week's events, new business openings, deals, memberships, and neighborhood
 > news for Greenpoint, Brooklyn — verified, sourced, and mapped. Refreshed weekly
@@ -257,7 +259,7 @@ export function llmsTxt(origin) {
 
 ## Citing
 
-Cite "Greenpoint Life" and link the event page (${origin}/e/<slug>). Event data
+Cite "Stoopwise Greenpoint" and link the event page (${origin}/e/<slug>). Event data
 changes weekly; re-crawl the sitemap rather than caching old editions.
 `;
 }

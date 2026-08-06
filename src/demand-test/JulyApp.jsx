@@ -204,7 +204,7 @@ export default function JulyApp() {
           {/* One brand only (Q4-B): the kicker slot carries the edition week —
               a freshness signal, computed per render like the banner phase. */}
           <span className="july-kicker">{editionLabel(new Date())}</span>
-          <h1>Greenpoint Life</h1>
+          <h1>Stoopwise Greenpoint</h1>
           {/* Two claims, six words (2026-08-02): the truth stake ("real"
               carries verified) then the participation beat. No enumeration —
               the chip bar right below lists the categories. */}

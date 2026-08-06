@@ -1,4 +1,4 @@
-# Greenpoint Life — Growth Engine (2026-07-25 · rev 2026-07-28)
+# Stoopwise Greenpoint — Growth Engine (2026-07-25 · rev 2026-07-28)
 
 Grounded in Elena Verna's frameworks (growth loops / Racecar, PMF-first sequencing,
 low-traffic experimentation rules, owned-and-earned-only channels, opinionated
@@ -133,7 +133,7 @@ testable, post-launch.
 
 ## 1. Growth model — the three loops
 
-Funnels spend; loops compound. Greenpoint Life has three candidate loops. Each is
+Funnels spend; loops compound. Stoopwise Greenpoint has three candidate loops. Each is
 drawn end-to-end with its compounding metric and its **weakest edge** — the edge
 is where experiments and Phase 3 ships go. Nothing outside a loop edge deserves
 build time.
@@ -216,7 +216,7 @@ Coverage puts businesses/orgs on the map (verified, sourced, free)
 
 ```
 Cards published as static structured HTML (/e/<slug> + JSON-LD, RSS/ICS, llms.txt)
-→ search engines & AI assistants cite Greenpoint Life for "what's happening in
+→ search engines & AI assistants cite Stoopwise Greenpoint for "what's happening in
 Greenpoint" → residents arrive with zero CAC → usage + signals → more/fresher
 structured content → stronger citations → (top)
 ```

@@ -14,15 +14,18 @@
 #      and had been silently inflating every readout (readout 2026-07-28,
 #      Finding 1). What gets dropped is printed, never silently discarded.
 #
-# Override the production host list at the greenpoint.life cutover if the origin
-# set changes:  GL_PROD_HOSTS="greenpoint.life,www.greenpoint.life" ./scripts/posthog-pull.sh
+# Override the production host list if the origin set changes:
+#   GL_PROD_HOSTS="stoopwise.com,www.stoopwise.com" ./scripts/posthog-pull.sh
+# All four legacy hosts stay in the default list after the 2026-08-06 Stoopwise
+# rename: greenpoint.life and the vercel.app origin keep serving already-sent
+# invite links, and dropping them would silently deflate every readout.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 # .env.local is the local path; in cloud the vars are already exported.
 if [ -f ./.env.local ]; then set -a; . ./.env.local; set +a; fi
 
-: "${GL_PROD_HOSTS:=greenpoint-explorer.vercel.app,greenpoint.life,www.greenpoint.life}"
+: "${GL_PROD_HOSTS:=stoopwise.com,www.stoopwise.com,greenpoint-explorer.vercel.app,greenpoint.life,www.greenpoint.life}"
 
 API="https://us.posthog.com"
 REQ=/tmp/posthog-pull-req.json

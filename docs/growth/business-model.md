@@ -1,4 +1,4 @@
-# Greenpoint Life — Business Model: binding rules (2026-07-28)
+# Stoopwise Greenpoint — Business Model: binding rules (2026-07-28)
 
 **This is the constraints-only version.** It holds the rules that anything built in
 this repo must respect. The full model — pricing, revenue targets, prospect
@@ -22,7 +22,7 @@ Companion to `growth-engine.md` (how the audience compounds); §5 there is the s
 
 ## 1. Model statement
 
-Greenpoint Life is a **neighborhood economic utility**: the free, complete,
+Stoopwise Greenpoint is a **neighborhood economic utility**: the free, complete,
 verified **index** of everything happening in Greenpoint — every event, opening,
 deal, and membership, mapped and current — funded by the institutions and
 businesses that benefit from a legible, active neighborhood economy, never by

@@ -22,7 +22,7 @@ export function withShareAction(actions) {
   return [...actions, { type: "share", label: "Share" }];
 }
 
-// The payload is the card, not the site: "title — Sat 10 AM · Greenpoint Life"
+// The payload is the card, not the site: "title — Sat 10 AM · Stoopwise Greenpoint"
 // plus the /e/ deep link retagged src=share, so a recipient's visit is
 // attributed to the share loop rather than the sharer's own channel.
 const SHARE_DAY = new Intl.DateTimeFormat("en-US", {
@@ -59,7 +59,9 @@ export function sharePayload(card, { origin = "", search = "", channel = "share"
   const params = new URLSearchParams(search);
   params.set("src", channel);
   return {
-    title: when ? `${card.title} — ${when} · Greenpoint Life` : `${card.title} · Greenpoint Life`,
+    title: when
+      ? `${card.title} — ${when} · Stoopwise Greenpoint`
+      : `${card.title} · Stoopwise Greenpoint`,
     url: `${origin}/e/${encodeURIComponent(card.id)}?${params.toString()}`,
   };
 }

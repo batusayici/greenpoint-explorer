@@ -6,35 +6,37 @@ whole friends round is unrecoverable; see the friends-round readout, Finding 1).
 The fix is mechanical: **every outbound link is copied from this table.** If a
 channel isn't here, add the row first, then send.
 
-Origin is the live product URL. **Rows regenerated on `greenpoint.life` at the
-2026-08-02 cutover (L7).** Links already sent on
-`greenpoint-explorer.vercel.app` keep working — that host stays served as the
-rollback path and redirects preserve query params (verified for `/july.html`) —
-but every new send carries the canonical origin. Analytics consequence: prod
-traffic now arrives under two `$host` values, so a `$host`-filtered pull must
-count both or it will under-report the pre-cutover channels.
+Origin is the live product URL. **Rows regenerated on `stoopwise.com` at the
+2026-08-06 Stoopwise rename** (previously `greenpoint.life` at the 2026-08-02
+cutover, and `greenpoint-explorer.vercel.app` before that). Links already sent
+on either older host keep working — both stay served and redirect here, and
+redirects preserve query params (verified for `/july.html`) — but every new send
+carries the canonical origin. Analytics consequence: prod traffic now arrives
+under **three** `$host` values, so a `$host`-filtered pull must count all of them
+or it will under-report every pre-rename channel. `GL_PROD_HOSTS` in
+`scripts/posthog-pull.sh` already lists all five hostnames.
 
 | Channel | `src` | Link (copy exactly) | Note |
 |---|---|---|---|
-| Weekly digest (R1 control arm) | `digest` | https://greenpoint.life/?src=digest | **new 2026-07-28** |
-| Follow — Family & Kids (R1 treatment) | `follow-family-kids` | https://greenpoint.life/?src=follow-family-kids | **new 2026-08-03** |
-| Follow — Food & Drink (R1 treatment) | `follow-food-drink` | https://greenpoint.life/?src=follow-food-drink | **new 2026-08-03** |
-| Follow — Arts & Culture (R1 treatment) | `follow-arts-culture` | https://greenpoint.life/?src=follow-arts-culture | **new 2026-08-03** |
-| Follow — News (R1 treatment) | `follow-news` | https://greenpoint.life/?src=follow-news | **new 2026-08-03** |
-| Follow — a place (R1 treatment) | `follow-place` | https://greenpoint.life/?src=follow-place | **new 2026-08-03** · one row for all place-follows — a per-place `src` would fragment the join key |
-| Parents-group post (Q2) | `parents` | https://greenpoint.life/?src=parents | **new 2026-07-28** |
-| Q1 org seeding — Greenpoint Library | `org-gp-library` | https://greenpoint.life/?src=org-gp-library | **new 2026-07-28** |
-| Q1 org seeding — Film Noir Cinema | `org-film-noir` | https://greenpoint.life/?src=org-film-noir | **new 2026-07-28** |
-| Q1 org seeding — Brooklyn Craft Company | `org-brooklyn-craft` | https://greenpoint.life/?src=org-brooklyn-craft | **new 2026-07-28** |
-| Personal re-invites (wave 2) | `wave2` | https://greenpoint.life/?src=wave2 | |
-| Michael follow-up | `michael` | https://greenpoint.life/?src=michael | |
-| Laura & Edmond follow-up | `laura-edmond` | https://greenpoint.life/?src=laura-edmond | |
-| Perri / Shop Small Greenpoint | `perri` | https://greenpoint.life/?src=perri | |
-| Reddit (r/Greenpoint etc.) | `reddit` | https://greenpoint.life/?src=reddit | |
-| Local Facebook/WhatsApp groups | `fbgroups` | https://greenpoint.life/?src=fbgroups | |
-| II-C QR window card | `qr` | https://greenpoint.life/?src=qr | |
-| Greenpointers (held for now) | `gpters` | https://greenpoint.life/?src=gpters | |
-| Transport/testing (excluded from all pulls) | `verify` | https://greenpoint.life/?src=verify | |
+| Weekly digest (R1 control arm) | `digest` | https://stoopwise.com/?src=digest | **new 2026-07-28** |
+| Follow — Family & Kids (R1 treatment) | `follow-family-kids` | https://stoopwise.com/?src=follow-family-kids | **new 2026-08-03** |
+| Follow — Food & Drink (R1 treatment) | `follow-food-drink` | https://stoopwise.com/?src=follow-food-drink | **new 2026-08-03** |
+| Follow — Arts & Culture (R1 treatment) | `follow-arts-culture` | https://stoopwise.com/?src=follow-arts-culture | **new 2026-08-03** |
+| Follow — News (R1 treatment) | `follow-news` | https://stoopwise.com/?src=follow-news | **new 2026-08-03** |
+| Follow — a place (R1 treatment) | `follow-place` | https://stoopwise.com/?src=follow-place | **new 2026-08-03** · one row for all place-follows — a per-place `src` would fragment the join key |
+| Parents-group post (Q2) | `parents` | https://stoopwise.com/?src=parents | **new 2026-07-28** |
+| Q1 org seeding — Greenpoint Library | `org-gp-library` | https://stoopwise.com/?src=org-gp-library | **new 2026-07-28** |
+| Q1 org seeding — Film Noir Cinema | `org-film-noir` | https://stoopwise.com/?src=org-film-noir | **new 2026-07-28** |
+| Q1 org seeding — Brooklyn Craft Company | `org-brooklyn-craft` | https://stoopwise.com/?src=org-brooklyn-craft | **new 2026-07-28** |
+| Personal re-invites (wave 2) | `wave2` | https://stoopwise.com/?src=wave2 | |
+| Michael follow-up | `michael` | https://stoopwise.com/?src=michael | |
+| Laura & Edmond follow-up | `laura-edmond` | https://stoopwise.com/?src=laura-edmond | |
+| Perri / Shop Small Greenpoint | `perri` | https://stoopwise.com/?src=perri | |
+| Reddit (r/Greenpoint etc.) | `reddit` | https://stoopwise.com/?src=reddit | |
+| Local Facebook/WhatsApp groups | `fbgroups` | https://stoopwise.com/?src=fbgroups | |
+| II-C QR window card | `qr` | https://stoopwise.com/?src=qr | |
+| Greenpointers (held for now) | `gpters` | https://stoopwise.com/?src=gpters | |
+| Transport/testing (excluded from all pulls) | `verify` | https://stoopwise.com/?src=verify | |
 | Card share button | `share` | *(generated by the product)* | **product-generated — never send by hand.** `cardActions.js` retags the `/e/` deep link `?src=share`, so a recipient's visit is attributable. Documented 2026-07-28 after 2 real visitors arrived on it. |
 
 ## Pre-send checklist (every outbound message, no exceptions)

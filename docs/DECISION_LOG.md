@@ -4,7 +4,57 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-05 (latest) — the browser path falls back to Firefox, and stops accepting an unrendered page
+## 2026-08-06 (latest) — renamed to Stoopwise; `stoopwise.com` is canonical, `greenpoint.life` retired after 4 days
+
+Decision (Batu): "stoopwise. domain bought." The consumer product is renamed from **Greenpoint Life** to
+**Stoopwise**, with this edition titled **Stoopwise Greenpoint**; future neighborhoods take the same shape
+(Stoopwise Astoria). `stoopwise.com` becomes canonical, superseding the `greenpoint.life` cutover shipped
+four days earlier (2026-08-02, below).
+
+**Why rename at all:** "Greenpoint Life" cannot leave Greenpoint. Renaming was always going to happen; the
+only question was when, and the switching cost is at its floor right now — the domain cutover was 4 days
+old, the AEO surface 11 days old, and Reddit/QR seeding had not started, so there is no accumulated
+awareness or citation identity to strand. Every week of seeding would have raised the price.
+
+**How the name was chosen.** A full evaluation of an 18-name shortlist returned **no winner** — the three
+names the strategy panel converged on each died on a hard real-world conflict (Almanac → *Old Farmer's
+Almanac* + a local newspaper of the same name; Gazetteer → **Gazetteer SF**, a funded hyperlocal running
+the identical `<city>.gazetteer.co` expansion model; Hereabouts → **Hereabout.app**, a map-based
+neighborhood social network one letter away), and every name that survived conflict failed on strategy.
+The diagnosis was a generation failure, not a selection failure: all 18 candidates were drawn from two
+wells (pedestrian motion, antique print), none named the *answering* function, and none was participatory
+despite "Take part" being a brand value. Batu then supplied Stoopwise, which won on the three axes that
+killed the whole shortlist: **`stoopwise.com/.app/.nyc/.city` were all unregistered** (not one of the 18
+had an available `.com`), **the string has zero search footprint** so page one is ownable from day one
+with no paid budget, and **it is a coined compound** — protectable, unlike the bare common nouns that
+kept collapsing.
+
+**Known and accepted costs**, recorded so they are not rediscovered as surprises:
+1. **"Greenpoint" is no longer inside the brand.** The old name carried the primary keyword for free.
+   Every title, meta, and machine surface must now reintroduce "Greenpoint, Brooklyn" explicitly or
+   search and answer-engine discoverability drops. This is the single biggest risk in the change and the
+   reason the edition is "Stoopwise Greenpoint" rather than bare "Stoopwise".
+2. **The stoop root is occupied in-category.** `stoop.house` is a live NYC neighborhood app expanding
+   neighborhood-by-neighborhood; `thestoopmedia.com` is a hyperlocal newsletter publishing our content
+   mix in another metro; Bed-Stuy Stoop is a Brooklyn hyperlocal Substack. None is prominent enough to
+   block, but the compound is ours while the root is not. Non-legal impression only — no register search
+   or clearance has been run, and one should be before any print spend.
+3. **Stoops are brownstone Brooklyn, not New York.** The name strains at Astoria, which is a plausible
+   second market, and Greenpoint itself is Polish frame houses rather than brownstone. Accepted on
+   Batu's call that local specificity communicating hyperlocal outweighs geographic neutrality, since
+   expansion beyond NYC is far off.
+
+**Three origins now serve** and all must keep working: `stoopwise.com` (canonical), `greenpoint.life`
+(canonical 2026-08-02 → 08-06), and `greenpoint-explorer.vercel.app` (rollback + the host for
+already-sent invite links). Both legacy origins redirect to the new canonical; neither is retired.
+`GL_PROD_HOSTS` in `scripts/posthog-pull.sh` keeps all five hostnames so readouts do not silently
+deflate. `og.png` needed no regeneration — it carries no wordmark.
+
+Out-of-repo work this decision creates: Vercel domain wiring (apex primary, `www` 308 → apex — same
+call as 2026-08-02), retitling three Tally forms, the PostHog project name, the Gmail sender identity,
+and regenerating all 19 rows of `docs/launch/channel-links.md` on the new origin.
+
+## 2026-08-05 — the browser path falls back to Firefox, and stops accepting an unrendered page
 
 Decision (Batu): "should we instruct routine to try firefox if chromium fails? add it then merge."
 

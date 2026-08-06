@@ -104,18 +104,18 @@ const TEMPLATE = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Greenpoint Life</title>
+    <title>Stoopwise Greenpoint</title>
     <meta
       name="description"
       content="site description"
     />
-    <meta property="og:title" content="Greenpoint Life" />
+    <meta property="og:title" content="Stoopwise Greenpoint" />
     <meta
       property="og:description"
       content="site og description"
     />
     <meta property="og:url" content="https://example.test/" />
-    <meta name="twitter:title" content="Greenpoint Life" />
+    <meta name="twitter:title" content="Stoopwise Greenpoint" />
     <meta
       name="twitter:description"
       content="site tw description"
@@ -129,9 +129,9 @@ const TEMPLATE = `<!doctype html>
 
 test("injectCardPage swaps title/meta, adds canonical + JSON-LD, fills #root", () => {
   const html = injectCardPage(TEMPLATE, timed, ORIGIN);
-  assert.match(html, /<title>DJ Night &amp; Friends — Greenpoint Life<\/title>/);
+  assert.match(html, /<title>DJ Night &amp; Friends — Stoopwise Greenpoint<\/title>/);
   assert.ok(!html.includes("site description"), "site meta description replaced");
-  assert.match(html, /<meta property="og:title" content="DJ Night &amp; Friends — Greenpoint Life" \/>/);
+  assert.match(html, /<meta property="og:title" content="DJ Night &amp; Friends — Stoopwise Greenpoint" \/>/);
   assert.match(html, /<meta property="og:url" content="https:\/\/example\.test\/e\/gig-0730" \/>/);
   assert.match(html, /<link rel="canonical" href="https:\/\/example\.test\/e\/gig-0730" \/>/);
   assert.match(html, /<script type="application\/ld\+json">[\s\S]*"@type": ?"Event"/);
@@ -187,12 +187,12 @@ test("ics: CRLF, timed event stamps, all-day exclusive DTEND, escaping", () => {
 
 test("llms.txt names the product and points at the machine surfaces", () => {
   const txt = llmsTxt(ORIGIN);
-  assert.match(txt, /Greenpoint Life/);
+  assert.match(txt, /Stoopwise Greenpoint/);
   assert.match(txt, /sitemap\.xml/);
   assert.match(txt, /rss\.xml/);
   assert.match(txt, /events\.ics/);
 });
 
 test("AEO_ORIGIN is the current production origin", () => {
-  assert.equal(AEO_ORIGIN, "https://greenpoint.life");
+  assert.equal(AEO_ORIGIN, "https://stoopwise.com");
 });

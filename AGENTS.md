@@ -2,12 +2,12 @@
 
 Status: Active
 Date: 2026-07-22
-Project: Greenpoint Life (repo: greenpoint-explorer)
+Project: Stoopwise Greenpoint (repo: greenpoint-explorer)
 Supersedes: v2 (2026-06-11), which governed the now-parked 3D explorer track
 
 ## Product
 
-**Greenpoint Life** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn (events, openings, deals, memberships, news; verified and sourced). Sole goal: real value and PMF. The 3D isometric explorer is parked indefinitely (`docs/parked/3d-explorer/`, DECISION_LOG 2026-07-22); do not resume it without an explicit Batu decision.
+**Stoopwise Greenpoint** — a hyperlocal 2D map + feed for Greenpoint, Brooklyn (events, openings, deals, memberships, news; verified and sourced). Parent brand **Stoopwise**; renamed from Greenpoint Life 2026-08-06 (DECISION_LOG). Sole goal: real value and PMF. The 3D isometric explorer is parked indefinitely (`docs/parked/3d-explorer/`, DECISION_LOG 2026-07-22); do not resume it without an explicit Batu decision.
 
 ## Roles
 
