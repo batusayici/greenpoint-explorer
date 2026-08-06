@@ -4,7 +4,39 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-06 (latest) — three ingest rulings off PR #21: markets, work shifts, and Domino Park
+## 2026-08-06 (latest) — the Aug 3–4 traffic was internal; Wave 1 held; Eventbrite allowlisted
+
+Rulings from the PR #19 readout review (cycle 3, merged unedited).
+
+**The 2026-08-03/04 untagged burst was Batu's own** — confirmed directly. Ten "new visitors" who
+landed on `/` and opened almost nothing were cutover verification. This settles the readout's
+highest-priority open question and makes Finding 2 a **measurement artifact, not an activation
+signal**. The consequence is that three headline rates are understated in every figure published so
+far: activation 25% → 18%, card-open conversion 43% → 31%, multi-day return 32% → 24% — **not one
+numerator moved.** The pre-burst figures are the true ones. Any comparison against cycle 3's numbers
+must say which population it means.
+
+**Wave 1 is held**, per the cycle-3 sequencing rule. `datedUpcoming7d = 27` — the floor of the
+27–34 band — and flat *despite* the Wednesday refresh adding 10 cards, because expiry took as many
+as the restock added. The last **full** roster run was 2026-08-03, pre-fix; the 08-05 run was a
+scoped Greenpointers-only mini-ingest with expiry disabled, so the gate has still not been honestly
+read. First real read is the next full run.
+
+**`eventbrite.com` + `www.eventbrite.com` added to the WebFetch allowlist** in `.claude/settings.json`.
+**Gotcha recorded:** Batu first added it to `.claude/settings.local.json`, which is gitignored
+globally (`~/.config/git/ignore`) and therefore never reaches the repo or the cloud ingest routine —
+**source allowlist changes must go in the tracked `.claude/settings.json`.** Note also that this
+gates the `WebFetch` tool only, not the raw fetch/browser calls in `scripts/fetch-sources.mjs`, and
+`loft-story-whole-sky-0812` was blocked by *both* a 403 to plain fetch and a dead browser path — so
+this may not resolve that hold by itself.
+
+**Still open, explained but not decided:** whether `?src=verify` becomes binding for every
+production check, and whether `check-freshness.mjs` gains a week-over-week trend check (it reported
+FRESH throughout the 38 → 27 slide, because `thinFeed` is an absolute floor of 10). The three
+standing instructions merged into `growth-weekly/SKILL.md` remain marked "pending Batu" — merging
+recorded them, it did not ratify them.
+
+## 2026-08-06 — three ingest rulings off PR #21: markets, work shifts, and Domino Park
 
 Decisions (Batu), taken on the four cards held from the 2026-08-05 Wednesday Greenpointers pull
 (`docs/review/held-cards-2026-08-05.md`, merged as PR #21). All three are written into
