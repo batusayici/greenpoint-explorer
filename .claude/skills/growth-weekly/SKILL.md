@@ -188,9 +188,25 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   Never put a card count in outbound copy without regenerating it the morning it
   is sent. Org card counts are true for about a day — two of cycle 1's three Q1
   drafts were falsified by ordinary expiry within a week (7 → 2 cards, 8 → 2).
-- **(2026-08-03, cycle 2 — operator-derived, pending Batu; drop if unwanted)**
-  `scripts/posthog-pull.sh` line 9 (`. ./.env.local` under `set -euo pipefail`)
-  aborts the script in cloud, where that file does not exist. Until it is
-  guarded, run the queries from a patched copy in scratch — never edit the
-  committed script mid-readout, and never report `[data pending]` for this
-  cause when the env vars are present.
+- **(2026-08-03, cycle 2 — WITHDRAWN 2026-08-04, cycle 3.)** ~~`scripts/posthog-pull.sh`
+  line 9 (`. ./.env.local` under `set -euo pipefail`) aborts the script in
+  cloud.~~ The guard shipped 2026-07-28 in `2b50f05`, *before* cycle 2 wrote
+  this; the run was reading a stale working copy. The committed script runs
+  clean unmodified in cloud — do not patch it.
+- **(2026-08-04, cycle 3 — operator-derived, pending Batu; drop if unwanted)**
+  **Verify the checkout is current with `origin/main` before diagnosing any
+  script, config, or data defect** — `git fetch origin main && git rev-parse
+  HEAD origin/main`. Cycle 2 proposed a fix that had shipped six days earlier
+  because it quoted a stale working copy as if it were live.
+- **(2026-08-04, cycle 3 — operator-derived, pending Batu; drop if unwanted)**
+  **The production `$host` filter applies to every number that leaves the
+  readout — including numbers inside outbound copy and "top card" claims** — not
+  just the metrics tables. Cycle 2 filtered its tables correctly and then
+  deleted a true outbound line on the strength of an unfiltered query
+  (`moon-bunny-back-to-school`: 15 opens total, 2 in production).
+- **(2026-08-04, cycle 3 — operator-derived, pending Batu; drop if unwanted)**
+  **Every production check opens the `?src=verify` link from
+  `channel-links.md`** — cutover verification, spot-checks, demos, incognito
+  windows, second devices. An untagged internal visit is indistinguishable from
+  a real one and sits in the activation denominator permanently; ten such
+  visits moved three headline rates by a quarter on 2026-08-03/04.
