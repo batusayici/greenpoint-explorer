@@ -50,9 +50,30 @@ already-sent invite links). Both legacy origins redirect to the new canonical; n
 `GL_PROD_HOSTS` in `scripts/posthog-pull.sh` keeps all five hostnames so readouts do not silently
 deflate. `og.png` needed no regeneration — it carries no wordmark.
 
-Out-of-repo work this decision creates: Vercel domain wiring (apex primary, `www` 308 → apex — same
-call as 2026-08-02), retitling three Tally forms, the PostHog project name, the Gmail sender identity,
-and regenerating all 19 rows of `docs/launch/channel-links.md` on the new origin.
+**Out-of-repo work — executed same day, 2026-08-06:**
+- **Vercel + DNS done.** `stoopwise.com` added to the `greenpoint-explorer` project → Production, and
+  `www.stoopwise.com` → 308 → apex. Vercel's "Redirect apex domains to www (recommended)" checkbox is
+  **checked by default and had to be unchecked twice** — left alone it inverts the apex-primary decision
+  made 2026-08-02. At the registrar (GoDaddy) the default `A @ → WebsiteBuilder Site` was **edited, not
+  duplicated** (two A records on `@` would round-robin), to `216.198.79.1`; the pre-existing
+  `CNAME www → stoopwise.com` needed no change. DNS propagated in minutes; SSL issued;
+  **`https://stoopwise.com` verified serving the live app** before any code was pushed.
+- **PostHog project renamed** "Default project" → "Stoopwise". Cosmetic only — `posthog-pull.sh` keys off
+  project ID 522817, not the name.
+- **The three Tally forms needed no change** — an audit assumption that turned out false. Their titles are
+  "What's missing or wrong?", "Add your event", "Follow Greenpoint" and none of the bodies carries a brand
+  string. The claim came from an inaccurate code comment in `CardPanel.jsx`, now corrected against the
+  live forms.
+- **False alarm worth recording:** PostHog's setup page advertises `api_host: 'https://greenpoint.life'`
+  as a managed reverse proxy, which looked like a silent-analytics-breakage risk. It is not — the app
+  sets `api_host: "https://us.i.posthog.com"` directly (`posthogTransport.js:12`) and never uses the
+  proxy. The stale `greenpoint.life` managed-reverse-proxy entry still exists in PostHog org settings and
+  is unused; left in place deliberately rather than touched during a rename.
+
+**Still open:** `greenpoint.life` is deliberately **still on Production, not yet a redirect** — demoting a
+working origin before the new one was proven serving would have risked a gap. Flip it to 308 → `stoopwise.com`
+after the rename deploy lands. Also open: the Gmail sender identity, and a trademark register search before
+any print spend.
 
 ## 2026-08-05 — the browser path falls back to Firefox, and stops accepting an unrendered page
 

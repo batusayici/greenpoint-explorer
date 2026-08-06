@@ -27,9 +27,8 @@ const SIGNUP_URL = "https://tally.so/r/44daZo";
 
 // Limited-launch feedback channel (2026-07-15): hosted form only — Batu's
 // email stays private (2026-07-15 review note), so no mailto anywhere.
-// Dedicated feedback form created 2026-07-21 ("Stoopwise Greenpoint — what's
-// missing or wrong?"; retitled in Tally at the 2026-08-06 rename): two
-// optional text boxes + optional email, so error
+// Dedicated feedback form created 2026-07-21 ("What's missing or wrong?"):
+// two optional text boxes + optional email, so error
 // reports stay anonymous-friendly and the signup form's count stays a clean
 // commitment metric.
 const FEEDBACK_FORM_URL = "https://tally.so/r/LZqEj1";
