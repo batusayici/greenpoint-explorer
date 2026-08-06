@@ -37,8 +37,10 @@ kept collapsing.
 2. **The stoop root is occupied in-category.** `stoop.house` is a live NYC neighborhood app expanding
    neighborhood-by-neighborhood; `thestoopmedia.com` is a hyperlocal newsletter publishing our content
    mix in another metro; Bed-Stuy Stoop is a Brooklyn hyperlocal Substack. None is prominent enough to
-   block, but the compound is ours while the root is not. Non-legal impression only — no register search
-   or clearance has been run, and one should be before any print spend.
+   block, but the compound is ours while the root is not. **Trademark search run by Batu 2026-08-06:
+   clean** — this closes the registration question and unblocks print spend. The separate prior-use
+   question against those live stoop-root products is unchanged and unresolved by a register search;
+   it was accepted as a known cost when the name was chosen, not eliminated.
 3. **Stoops are brownstone Brooklyn, not New York.** The name strains at Astoria, which is a plausible
    second market, and Greenpoint itself is Polish frame houses rather than brownstone. Accepted on
    Batu's call that local specificity communicating hyperlocal outweighs geographic neutrality, since
@@ -91,7 +93,8 @@ survives every hop; `/e/<slug>` deep links keep their path through the 308; `gre
 still serves 200 and its `/july.html?src=` redirect still preserves params, so already-sent invite links
 are intact.
 
-**Still open:** the Gmail sender identity, and a trademark register search before any print spend.
+**Still open:** the Gmail sender identity. (Trademark search closed clean, 2026-08-06 — QR window cards
+and other print are unblocked.)
 
 ## 2026-08-05 — the browser path falls back to Firefox, and stops accepting an unrendered page
 
