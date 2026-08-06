@@ -70,10 +70,28 @@ deflate. `og.png` needed no regeneration — it carries no wordmark.
   proxy. The stale `greenpoint.life` managed-reverse-proxy entry still exists in PostHog org settings and
   is unused; left in place deliberately rather than touched during a rename.
 
-**Still open:** `greenpoint.life` is deliberately **still on Production, not yet a redirect** — demoting a
-working origin before the new one was proven serving would have risked a gap. Flip it to 308 → `stoopwise.com`
-after the rename deploy lands. Also open: the Gmail sender identity, and a trademark register search before
-any print spend.
+**Rename deploy shipped and legacy origins flipped, same day.** The push was **not** a fast-forward — a
+cloud ingest routine had landed `content(track-v): Wednesday refresh` on `main` mid-session. Caught it in
+pre-flight (the diff showed 776 deletions and a change to `julyCards.test.mjs`, a file the rename never
+touched); fetched, confirmed **zero file overlap** (ingest = data/content, rename = code/docs/config),
+rebased, re-verified on the combined tree (494/494, build green, 71 prerendered card pages vs 62).
+Force-pushing would have destroyed 10 freshly-ingested events.
+
+Then `greenpoint.life` and `www.greenpoint.life` were both flipped to 308 → `stoopwise.com`.
+**Vercel forbids redirect chains** — flipping the apex failed with *"You have redirected another domain
+(www.greenpoint.life) to this domain. In turn, you cannot redirect this one."* The fix is ordering:
+**repoint the `www` subdomain at the new canonical FIRST, then the apex.** Note also that Vercel's
+redirect-destination field is a combobox — typed text silently fails to save; the option must be picked
+from the menu.
+
+Prod-verified after the flip: `stoopwise.com` serves; sitemap/rss/ics/llms.txt/robots all 200; a no-JS
+card page returns the new title, canonical, and `schema.org/Event` JSON-LD on the new origin (absence of
+JSON-LD on an undated card is correct — `eventJsonLd` returns null for undated/recurring); `?src=`
+survives every hop; `/e/<slug>` deep links keep their path through the 308; `greenpoint-explorer.vercel.app`
+still serves 200 and its `/july.html?src=` redirect still preserves params, so already-sent invite links
+are intact.
+
+**Still open:** the Gmail sender identity, and a trademark register search before any print spend.
 
 ## 2026-08-05 — the browser path falls back to Firefox, and stops accepting an unrendered page
 
