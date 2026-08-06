@@ -30,11 +30,37 @@ gates the `WebFetch` tool only, not the raw fetch/browser calls in `scripts/fetc
 `loft-story-whole-sky-0812` was blocked by *both* a 403 to plain fetch and a dead browser path — so
 this may not resolve that hold by itself.
 
-**Still open, explained but not decided:** whether `?src=verify` becomes binding for every
-production check, and whether `check-freshness.mjs` gains a week-over-week trend check (it reported
-FRESH throughout the 38 → 27 slide, because `thinFeed` is an absolute floor of 10). The three
-standing instructions merged into `growth-weekly/SKILL.md` remain marked "pending Batu" — merging
-recorded them, it did not ratify them.
+**Three follow-on rulings, same day:**
+
+1. **The funnel clock starts at launch communication — do not retro-clean the data.** The option to
+   identify the ten internal person IDs and exclude them from `posthog-pull.sh` was offered and
+   **declined**. Everything before the first launch send is pre-acquisition noise and is **not** the
+   demand-gate denominator; clean funnel tracking begins with Wave 1, when tagged traffic starts
+   arriving. Pre-Wave-1 rates are directional only and must never be cited as a gate read. This is
+   the cheaper call than a permanent exclusion list that would itself need maintaining.
+2. **`?src=verify` is RATIFIED** and now binding for every production check — spot-checks, demos,
+   incognito, second devices. Marked as such in `growth-weekly/SKILL.md`. (The other two cycle-3
+   standing instructions — verify-checkout-before-diagnosing, and `$host` applies to outbound copy —
+   are still marked pending; they were not ruled on.)
+3. **The `check-freshness.mjs` trend check ships (L11c).** Built TDD on `feat/freshness-trend-check`.
+
+**Design notes on L11c, because two of them are non-obvious:**
+- **It compares same-weekday to same-weekday, over BOTH a 7- and a 14-day window.** The 20%
+  week-over-week bar alone would have **missed the very decline it was built for**: the real slide
+  was 38 → 33 → 27, roughly 15–18% per week, never crossing 20% in any single week while the feed
+  lost a third of its in-window items. Gradual decay is the failure mode, so the 14-day window
+  (38 → 27 = 29%) is what actually fires. Run-to-run was rejected outright — the feed sawtooths by
+  design (27 → 38 → 27) and would cry wolf every weekend.
+- **`decliningFeed` is reported but never gates `fresh`, and never exits non-zero.** `JulyApp.jsx`
+  consumes `assessFreshness` for the **client banner**, so letting a supply trend gate `fresh` would
+  change what residents are told about the feed's honesty — a thinning roster is an ops problem, the
+  cards on the map are still true. Non-fatal because the kill criteria anticipate false alarms
+  (two in four weeks → drop it), and a noisy alarm that halts the ingest is worse than no alarm.
+- History accumulates only via `check-freshness.mjs --record`, wired into the ingest ship step;
+  ad-hoc local checks stay read-only. `freshness-history.json` was added to the ingest skill's
+  content-only file set, or every run would have been forced into a PR.
+- Seeded from the readouts of record only. The §1 baseline of 38 is real but carries no exact date
+  ("last week of July"), so it is deliberately **not** seeded as a data point.
 
 ## 2026-08-06 — three ingest rulings off PR #21: markets, work shifts, and Domino Park
 

@@ -174,7 +174,7 @@ review cycle and, on a same-week item, usually the card itself.
 2. `lintCard` clean on every new/changed card.
 3. `npm run build` succeeds.
 4. **Deck swing within ±40%** of the live card count — a bigger swing is the signature of a broken fetch or a bad diff, not a busy week. Halt, PR, report.
-5. **File set is content-only**: `cards.json`, `geocode-cache.json`, `ingest-ledger.json`, `freshness-stamp.json`, and the contract counts in `julyCards.test.mjs`. **Anything outside that set means the run is not a content run** — PR the whole thing.
+5. **File set is content-only**: `cards.json`, `geocode-cache.json`, `ingest-ledger.json`, `freshness-stamp.json`, `freshness-history.json` (added 2026-08-06 with the L11c trend alarm — it is written by every run, so leaving it out would force every run into a PR), and the contract counts in `julyCards.test.mjs`. **Anything outside that set means the run is not a content run** — PR the whole thing.
 
 **Also always human-gated, regardless of card quality:** roster/sender/allowlist additions (a new source is a trust decision about a publisher), and any code change.
 
@@ -183,7 +183,7 @@ review cycle and, on a same-week item, usually the card itself.
 1. Apply changes to the JSON; bump `version` to today; set `updatedAt` on touched cards. Edit surgically — never rewrite the whole file from context.
 2. `node scripts/geocode-demand-cards.mjs` — every new card must resolve inside the bbox (widen `geocodeQuery` to the venue/park name if a street query misses).
 3. Update `julyCards.test.mjs` contract counts (the expiry script printed the post-expiry baseline; adjust for adds) and the refresh-discipline date; `npm test` must pass.
-4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes. Then `npm run ingest:fetch -- --mark-ingested` to promote the ingested snapshots to baselines (include sources whose extraction found nothing — they were processed too; a run that aborted before shipping must NOT mark).
+4. Update the ledger: `lastRunAt`, append `processedItems` entries with outcomes. Then `npm run ingest:fetch -- --mark-ingested` to promote the ingested snapshots to baselines (include sources whose extraction found nothing — they were processed too; a run that aborted before shipping must NOT mark). Then **`node scripts/check-freshness.mjs --record`** to stamp today's `datedUpcoming7d` into `freshness-history.json` — that history is the only input to the L11c trend alarm, so a run that skips it leaves the alarm blind. **Read the output**: a `WARN: feed declining` line is the supply signal the floor cannot see, and it does not exit non-zero, so it will not stop you — that is deliberate, and ignoring it is a choice.
 5. Run the step-3 run-level gates. All green → commit the **shipping** cards (`content(track-v): <cadence> refresh — <summary>`), **`git pull --rebase` then push straight to `main`** — push is the production deploy (Vercel-linked). Then spot-check the live page (pins render, no expired deals, new cards open).
 6. **Held cards go to a PR** (`ingest/review-<date>`) with a one-line reason each and what would resolve it. Ship first, then PR — a doubtful card must never delay the clean ones.
 7. **Report every run in the summary**, whether or not it shipped: what shipped, what was held and why, and the gate results. Autonomy without a log is not autonomy, it's drift.

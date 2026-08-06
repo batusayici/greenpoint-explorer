@@ -62,6 +62,39 @@ export function assessReach(fetchReport, { maxErrorRate = 0.15 } = {}) {
   };
 }
 
+// L11c (Batu, 2026-08-06, cycle-3 readout proposal 3): thinFeed is an absolute
+// floor, so it cannot see a slide. The deck went 38 -> 27 dated-upcoming over
+// two weeks and every check reported FRESH, because 27 > 10; it would keep
+// saying FRESH down to 11. This compares like weekday with like weekday — the
+// feed sawtooths by design (weekends are thin, 27 -> 38 -> 27 is normal), so a
+// run-to-run comparison would fire on every ordinary trough. Returns null when
+// there is no comparable prior run: absent evidence is not evidence of decline.
+export function assessTrend(history, { now, current, minDropRatio = 0.2 } = {}) {
+  if (!Array.isArray(history) || history.length === 0) return null;
+  const byDate = new Map(history.filter((h) => h && h.date).map((h) => [h.date, h.datedUpcoming]));
+  const dayMs = 24 * 3600 * 1000;
+  // BOTH windows, not the first that matches. The decline this check exists to
+  // catch was 38 -> 33 -> 27: roughly 15-18% per week, so a 20% week-over-week
+  // bar would have missed it every single week while the feed lost a third of
+  // its in-window items. Gradual decay IS the failure mode. The 14-day window
+  // sees 38 -> 27 (29%) and fires. Same weekday either way — never an
+  // arbitrary last run, because the feed sawtooths by design.
+  const windows = [];
+  for (const spanDays of [7, 14]) {
+    const then = new Date(now.getTime() - spanDays * dayMs).toISOString().slice(0, 10);
+    if (!byDate.has(then)) continue;
+    const prior = byDate.get(then);
+    if (!Number.isFinite(prior) || prior <= 0) continue;
+    windows.push({ prior, priorDate: then, current, spanDays, dropRatio: (prior - current) / prior });
+  }
+  if (windows.length === 0) return null;
+  // Report the window that fires; when none does, report the steepest so the
+  // readout can see the direction of travel before it crosses.
+  const firing = windows.filter((w) => w.dropRatio >= minDropRatio);
+  const chosen = (firing.length ? firing : windows).reduce((a, b) => (b.dropRatio > a.dropRatio ? b : a));
+  return { ...chosen, minDropRatio, decliningFeed: firing.length > 0 };
+}
+
 export function assessFreshness({
   lastRunAt,
   now,
@@ -70,12 +103,19 @@ export function assessFreshness({
   minDatedUpcoming = 10,
   fetchReport = null,
   maxErrorRate = 0.15,
+  history = null,
+  minDropRatio = 0.2,
+  datedUpcomingOverride = null,
 }) {
   const runDate = lastRunAt ? new Date(lastRunAt) : null;
   const staleIngest =
     !runDate || Number.isNaN(runDate.getTime()) || now.getTime() - runDate.getTime() > maxAgeHours * 3600 * 1000;
-  const datedUpcoming = cards.filter((c) => upcomingWithin7Days(c, now)).length;
+  // datedUpcomingOverride exists for tests that need a specific deck size
+  // without hand-building that many cards; production never passes it.
+  const datedUpcoming =
+    datedUpcomingOverride ?? cards.filter((c) => upcomingWithin7Days(c, now)).length;
   const thinFeed = datedUpcoming < minDatedUpcoming;
+  const trend = assessTrend(history, { now, current: datedUpcoming, minDropRatio });
 
   const reach = assessReach(fetchReport, { maxErrorRate });
   const sourcesUnreachable = !!reach && reach.attempted > 0 && reach.errorRate > reach.maxErrorRate;
@@ -89,12 +129,20 @@ export function assessFreshness({
   // measures coverage directly — a failed browser source counts as an error
   // like any other — so it is the honest gate, and the fetch script's exit code
   // uses exactly the same rule.
+  // decliningFeed is REPORTED and never gates `fresh` — the same call
+  // browserFetchDown got above, for a stronger reason: JulyApp.jsx consumes
+  // this for the CLIENT BANNER, so letting a supply trend gate `fresh` would
+  // change what residents are told about the feed's honesty. A thinning roster
+  // is an ops problem; the cards on the map are still true. It is also why
+  // check-freshness.mjs warns on this without exiting non-zero.
   return {
     fresh: !staleIngest && !thinFeed && !sourcesUnreachable,
     staleIngest,
     thinFeed,
     sourcesUnreachable,
     browserFetchDown,
+    decliningFeed: !!trend?.decliningFeed,
+    trend,
     datedUpcoming,
     reach,
     verifiedThrough: lastRunAt ?? null,

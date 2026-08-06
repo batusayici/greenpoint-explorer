@@ -204,9 +204,20 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   just the metrics tables. Cycle 2 filtered its tables correctly and then
   deleted a true outbound line on the strength of an unfiltered query
   (`moon-bunny-back-to-school`: 15 opens total, 2 in production).
-- **(2026-08-04, cycle 3 — operator-derived, pending Batu; drop if unwanted)**
+- **(2026-08-04, cycle 3 — RATIFIED by Batu 2026-08-06.)**
   **Every production check opens the `?src=verify` link from
   `channel-links.md`** — cutover verification, spot-checks, demos, incognito
   windows, second devices. An untagged internal visit is indistinguishable from
   a real one and sits in the activation denominator permanently; ten such
   visits moved three headline rates by a quarter on 2026-08-03/04.
+  **Batu confirmed on 2026-08-06 that the 08-03/04 burst was his own**, so
+  cycle 3's Finding 2 is a measurement artifact, not an activation signal — the
+  pre-burst figures are the true ones and no numerator ever moved. Say which
+  population you mean whenever you compare against cycle 3's numbers.
+- **(2026-08-06, Batu — the funnel clock starts at launch communication.)**
+  **Do not retro-clean the historical data**; the option to exclude those ten
+  person IDs from the pull was offered and declined. Everything before the
+  first launch send is pre-acquisition noise and is **not** the demand-gate
+  denominator. Clean funnel tracking begins with Wave 1, when tagged traffic
+  starts arriving. Report pre-Wave-1 rates as directional only, and never cite
+  them as a gate read.

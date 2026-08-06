@@ -191,3 +191,90 @@ test("skipped_monthly sources are not counted as attempted or errored", () => {
   assert.equal(a.reach.attempted, 2);
   assert.equal(a.reach.errored, 1);
 });
+
+// ---------------------------------------------------------------------------
+// L11c trend check (Batu, 2026-08-06, off the cycle-3 readout proposal 3).
+//
+// thinFeed is an ABSOLUTE FLOOR of 10. The deck slid 38 -> 27 dated-upcoming
+// over two weeks and check-freshness reported FRESH the whole way, because 27
+// is comfortably above 10. It would keep saying FRESH down to 11. The floor
+// catches a cliff; nothing catches a slide.
+//
+// Compared SAME-WEEKDAY-to-SAME-WEEKDAY, not run-to-run. The feed sawtooths by
+// design — weekends are thin — and the readout's own decision rule says a
+// run-to-run comparison would fire on every ordinary trough. We already know
+// the sawtooth is real (27 -> 38 -> 27), so shipping the naive version first
+// would just be shipping the known-broken one.
+//
+// decliningFeed is REPORTED, never gates `fresh`, and never exits non-zero —
+// the same call browserFetchDown got on 2026-08-05, for a stronger reason:
+// JulyApp.jsx consumes assessFreshness for the CLIENT BANNER, so letting a
+// supply trend gate `fresh` would change what residents are shown about the
+// feed's honesty. A supply decline is an ops signal, not a product one.
+
+const H = (date, datedUpcoming) => ({ date, datedUpcoming });
+
+test("trend: the real 38 -> 27 slide the floor missed now fires", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    history: [H("2026-07-14", 38), H("2026-07-21", 33), H("2026-07-28", 27)],
+    datedUpcomingOverride: 27,
+  });
+  // 33 -> 27 is only 18% week-over-week and does NOT clear the 20% bar — which
+  // is the trap: the real decline was gradual, ~15-18% every week, so a purely
+  // week-over-week check would have stayed silent the whole way down. The
+  // 14-day window is what catches it: 38 -> 27 is 29%.
+  assert.equal(a.decliningFeed, true, "the two-week window must catch a gradual slide");
+  assert.equal(a.trend.spanDays, 14, "week-over-week alone would have missed this");
+  assert.equal(a.trend.prior, 38);
+  assert.equal(a.trend.priorDate, "2026-07-14");
+  assert.equal(a.thinFeed, false, "the floor still says fine — that is the whole point");
+  assert.equal(a.fresh, true, "trend must NOT gate fresh: the client banner reads this");
+});
+
+test("trend: an ordinary weekend sawtooth does not fire", () => {
+  // Same weekday a week apart is flat; only the midweek/weekend swing differs.
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    history: [H("2026-07-21", 28), H("2026-07-25", 15), H("2026-07-28", 27)],
+    datedUpcomingOverride: 27,
+  });
+  assert.equal(a.decliningFeed, false, "must compare to the same weekday, not the last run");
+  assert.equal(a.trend.prior, 28);
+});
+
+test("trend: no baseline means no alarm", () => {
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards: manyUpcoming, history: [] });
+  assert.equal(a.decliningFeed, false);
+  assert.equal(a.trend, null, "absent evidence is not evidence of decline");
+});
+
+test("trend: falls back to 14 days when last week's same weekday is missing", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    history: [H("2026-07-14", 38)],
+    datedUpcomingOverride: 27,
+  });
+  assert.equal(a.decliningFeed, true);
+  assert.equal(a.trend.priorDate, "2026-07-14");
+  assert.equal(a.trend.spanDays, 14);
+});
+
+test("trend: growth and small dips stay quiet", () => {
+  const grow = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards: manyUpcoming,
+    history: [H("2026-07-21", 20)], datedUpcomingOverride: 27,
+  });
+  assert.equal(grow.decliningFeed, false);
+  const dip = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards: manyUpcoming,
+    history: [H("2026-07-21", 30)], datedUpcomingOverride: 27,
+  });
+  assert.equal(dip.decliningFeed, false, "10% is noise, not decay");
+});
