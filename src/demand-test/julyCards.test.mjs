@@ -178,11 +178,13 @@ test("seed has exactly 75 cards across the six layers", () => {
   // premiere) and six Williamsburg items skipped. Expiry did NOT run — this is
   // a scoped mini-ingest, so the refresh-discipline date below stays 08-03.
   // 75 + 10 = 85.
-  assert.equal(seed.cards.length, 85);
+  // 2026-08-06: −1, `sunday-yoga-domino` removed on Batu's ruling that Domino
+  // Park is Williamsburg and out of scope (PR #21). 85 − 1 = 84.
+  assert.equal(seed.cards.length, 84);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 34, "24 + the 10 events carded off the 8/6-12 Greenpointers roundup");
+  assert.equal(count((c) => c.category === "event"), 33, "24 + the 10 events off the 8/6-12 roundup, − sunday-yoga-domino (Domino Park out of scope, 2026-08-06)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 10, "9 + Songwriter Sundays at the McCarren parkhouse (8/9)");
@@ -364,11 +366,13 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   // Transmitter Park yoga series — both the movement cluster this lens names.
   // The ballet term is an ENROLLMENT, so it files to its audience lens here
   // rather than deals_memberships (SKILL.md, 2026-08-02).
+  // 2026-08-06: sunday-yoga-domino removed — Batu ruled Domino Park is
+  // Williamsburg and out of scope (PR #21). It was the deck's only Domino item
+  // and the reason the map was inconsistent about that park.
   assert.deepEqual(wellness, [
     "bk-youth-ballet-adult-term",
     "community-yoga-transmitter-tuesdays",
     "sparsa-greenpoint",
-    "sunday-yoga-domino",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
 });

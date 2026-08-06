@@ -619,49 +619,6 @@
       "kicker": "Ages 8–12 · Tuesdays 5 PM"
     },
     {
-      "category": "event",
-      "sourceCampaign": "greenpointers_week_2026_07_07",
-      "address": null,
-      "lat": 40.714106,
-      "lng": -73.968275,
-      "corridor": null,
-      "audience": [
-        "resident"
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpointers — What's Happening weekly roundup (Jul 7–12)",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/category/events/whats-happening-events/",
-          "date": "2026-07-07"
-        }
-      ],
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
-      "id": "sunday-yoga-domino",
-      "title": "Sunday yoga series at Domino Park",
-      "filters": [
-        "wellness"
-      ],
-      "locationName": "Domino Park",
-      "geocodeQuery": "Domino Park, Brooklyn, NY",
-      "summary": "A yoga series on the Domino Park lawn — every other Sunday through August.",
-      "startsAt": "2026-07-12T10:00:00-04:00",
-      "endsAt": "2026-08-31T23:59:00-04:00",
-      "recurring": true,
-      "actions": [
-        {
-          "label": "Head to the lawn",
-          "type": "visit"
-        }
-      ],
-      "kicker": "Biweekly park yoga through August · 10 AM"
-    },
-    {
       "id": "vault-gallery-culture-house",
       "category": "news",
       "sourceCampaign": "greenpointers_week_2026_07_16",

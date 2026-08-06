@@ -4,7 +4,37 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-06 (latest) — renamed to Stoopwise; `stoopwise.com` is canonical, `greenpoint.life` retired after 4 days
+## 2026-08-06 (latest) — three ingest rulings off PR #21: markets, work shifts, and Domino Park
+
+Decisions (Batu), taken on the four cards held from the 2026-08-05 Wednesday Greenpointers pull
+(`docs/review/held-cards-2026-08-05.md`, merged as PR #21). All three are written into
+`.claude/skills/ingest-newsletters/SKILL.md`; the first two retire a class of hold rather than
+resolving one card.
+
+1. **Markets, fleas and vendor fairs file under `food_drink` only when the market *is* food**
+   (smorgasbord, night market). A general-goods flea or craft fair **carries no lens and shows in
+   All only.** `shopping` is retired and `deals_memberships` is deals/memberships only, so the
+   absence of a lens is the answer, not a reason to hold. Geography stays a separate gate — this
+   ruling does *not* release `bqflea-meeker-0809`, which is still held because "Meeker Ave under
+   the BQE" spans two neighborhoods and needs the organiser's cross-streets before it can be pinned.
+2. **A community-garden or park work shift is `civic`, and its social tail inherits the lens** when
+   the source states the shift; no stated shift, no inheritance. This is the single sanctioned
+   exception to `civic`'s "merely social does not qualify" test — the shift is what earns the lens.
+   Resolves `mccarren-demo-garden-potluck-0806`, which had been authored with `filters: []`; that
+   would have been the first empty-filters card in the deck, and the rule removes the need for it.
+3. **Domino Park is Williamsburg — out of scope.** Skip every Domino Park item. The deck had been
+   inconsistent about this since July: `sunday-yoga-domino` was live while the 2026-08-05 run
+   skipped two Domino Park items as Williamsburg-proper. **The live card was the error, not the
+   precedent, and was removed** (deck 85 → 84; the wellness-lens and deck-count tests were updated
+   with the reason). Do not re-author it or cite it as prior art.
+
+The two remaining holds are unaffected and stay held: `uzuki-gluten-free-parfait-0808`
+(`uzukinyc.com` does not resolve, so event-vs-menu-item is not derivable) and
+`loft-story-whole-sky-0812` (venue unreachable; the only detail page is Eventbrite, which is not on
+the WebFetch allowlist). **Open question, not decided here:** whether to allowlist `eventbrite.com`
+for detail reads — it is now a repeat blocker, not a one-off.
+
+## 2026-08-06 — renamed to Stoopwise; `stoopwise.com` is canonical, `greenpoint.life` retired after 4 days
 
 Decision (Batu): "stoopwise. domain bought." The consumer product is renamed from **Greenpoint Life** to
 **Stoopwise**, with this edition titled **Stoopwise Greenpoint**; future neighborhoods take the same shape
