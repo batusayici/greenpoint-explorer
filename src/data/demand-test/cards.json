@@ -3852,6 +3852,49 @@
       "evidenceStrength": "medium_high",
       "lat": 40.72606,
       "lng": -73.950709
+    },
+    {
+      "category": "event",
+      "id": "mccarren-demo-garden-potluck-0806",
+      "title": "Monthly potluck at the McCarren Demo Garden",
+      "kicker": "Bring a dish after the gardening shift",
+      "startsAt": "2026-08-06T19:00:00-04:00",
+      "endsAt": "2026-08-06T23:59:00-04:00",
+      "locationName": "McCarren Demo Garden",
+      "address": "McCarren Park, Brooklyn, NY 11222",
+      "geocodeQuery": "McCarren Park, Brooklyn, NY",
+      "lat": 40.7211592,
+      "lng": -73.9528793,
+      "corridor": null,
+      "filters": [
+        "civic"
+      ],
+      "summary": "The garden's volunteer shift runs from 6pm and the table follows it. Open to anyone who turns up with something to share.",
+      "audience": [
+        "resident"
+      ],
+      "actions": [
+        {
+          "label": "Roundup",
+          "type": "learn_more",
+          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film festival fun, Songwriter Sundays, and more—What's Happening, Greenpoint? (8/6-12)",
+          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-05"
+        }
+      ],
+      "sourceQuote": "Potluck @ McCarren Demo Garden, 7 p.m.: After a 6 p.m. gardening shift, stick around for the Demo Garden's monthly potluck. Bring a dish, make a new friend!",
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-05",
+      "updatedAt": "2026-08-06"
     }
   ]
 }

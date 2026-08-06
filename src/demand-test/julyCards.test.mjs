@@ -178,13 +178,15 @@ test("seed has exactly 75 cards across the six layers", () => {
   // premiere) and six Williamsburg items skipped. Expiry did NOT run — this is
   // a scoped mini-ingest, so the refresh-discipline date below stays 08-03.
   // 75 + 10 = 85.
-  // 2026-08-06: −1, `sunday-yoga-domino` removed on Batu's ruling that Domino
-  // Park is Williamsburg and out of scope (PR #21). 85 − 1 = 84.
-  assert.equal(seed.cards.length, 84);
+  // 2026-08-06, Batu's rulings on the four 2026-08-05 holds (PR #21):
+  // −1 `sunday-yoga-domino` (Domino Park is Williamsburg, out of scope) and
+  // +1 `mccarren-demo-garden-potluck-0806`, released by the work-shift ruling.
+  // 85 − 1 + 1 = 85. BQFlea, Uzuki and Loft Story stay held.
+  assert.equal(seed.cards.length, 85);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 33, "24 + the 10 events off the 8/6-12 roundup, − sunday-yoga-domino (Domino Park out of scope, 2026-08-06)");
+  assert.equal(count((c) => c.category === "event"), 34, "24 + the 10 events off the 8/6-12 roundup, − sunday-yoga-domino + the Demo Garden potluck (2026-08-06 rulings)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 10, "9 + Songwriter Sundays at the McCarren parkhouse (8/9)");
@@ -461,11 +463,17 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   // `civic` too — one word for one lens.
   // 2026-08-01 expiry took the library's Tuesday civic block; the standing
   // asks plus the CAG meeting remain.
+  // 2026-08-06: the McCarren Demo Garden potluck joins under Batu's work-shift
+  // ruling (PR #21) — a garden work shift is civic, and a social gathering
+  // attached to one inherits the lens WHEN THE SOURCE STATES THE SHIFT. That
+  // is the one sanctioned exception to the "never merely social" rule above:
+  // the 6pm shift is in the sourceQuote, and it is what earns the lens.
   assert.deepEqual(civic, [
     "adopt-a-business",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
+    "mccarren-demo-garden-potluck-0806",
     "newtown-creek-cag-0729",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
