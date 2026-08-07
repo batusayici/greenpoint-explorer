@@ -98,8 +98,22 @@ const trendBit = a.trend
   : " trend=no-baseline";
 console.log(
   `[freshness] lastRunAt=${ledger.lastRunAt} datedUpcoming7d=${a.datedUpcoming} ` +
+    `reservoir7-14d=${a.datedReservoir} ` +
     `staleIngest=${a.staleIngest} thinFeed=${a.thinFeed}${stampMode ? "" : reachBit + trendBit} → ${a.fresh ? "FRESH" : "NOT FRESH"}${stampMode ? " (stamp written)" : ""}`,
 );
+
+// L11d: warn, never exit — same call as decliningFeed above. This is the one
+// signal that fires BEFORE the feed thins rather than after, so it is the line
+// an ingest run should act on: it names supply the roster already carries.
+if (!stampMode && a.hollowReservoir) {
+  console.error(
+    `[freshness] WARN: reservoir hollow — only ${a.datedReservoir} cards dated 7-14 days out ` +
+      `(floor is ${10}). That reservoir IS next week's window, so the feed is already committed\n` +
+      "[freshness]   to thinning no matter how many sources are reachable. Fill the back of the window:\n" +
+      "[freshness]   card each source's calendar out to 14 days (max 2 per venue inside the live 7-day\n" +
+      "[freshness]   window) — the deep calendars are usually already sitting in .ingest-cache/.",
+  );
+}
 
 // Deliberately a WARN with no exit code. thinFeed catches a cliff and should
 // break the run; a trend is a judgement call with known false-alarm risk (the

@@ -4,7 +4,62 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-06 (latest) — the Aug 3–4 traffic was internal; Wave 1 held; Eventbrite allowlisted
+## 2026-08-06 (latest) — supply decline root-caused: the ingest never filled the back of the window
+
+Follow-up investigation to the 2026-08-03 supply analysis, which fixed the **fetch** layer and left
+the decline running. Those fixes worked and are not in question: reach is `41/44`, browser-only
+sources are down from 22 to 3 documented-unreachable ones, and the deck recovered 75 → 85. **And
+`datedUpcoming7d` did not move — 38 → 27, flat.** A growing deck on a healthy fetch layer with a
+falling in-window count is the signature of an authoring problem, not a supply problem.
+
+**Root cause: every run authored the days in front of it and stopped.** The 8/5 run drew its 10
+cards from Greenpointers' *"What's Happening 8/6-12"* roundup — a source whose own horizon is one
+week — so the ingest silently inherited the roundup's window. Expiry drains the front daily; nothing
+refilled the back. On 8/6 the feed carried **2 cards dated beyond the 7-day horizon**, 8/13 and 8/14
+read **zero**, and the decline was already locked in: projected with no adds, 27 → 9 by 8/10, which
+breaches the thin-feed floor. Meanwhile `.ingest-cache/troost.txt` — a Google Calendar feed, already
+fetched, sitting on disk — held **40 named events through 9/18, 38 of them uncarded**. Same shape at
+`film-noir-cinema` (12 forward dates → 1 card), `moon-bunny-aerial` (10 → 0) and `carcosa-club`
+(6 → 0). **The supply was never missing; it was never read past day four.** `SKILL.md` carried
+hundreds of lines on categories, lenses and holds and **not one line on how far forward to author.**
+
+**RATIFIED (Batu): card 14 days out, max 2 dated cards per venue inside the live 7-day window.**
+Soonest first; uncarded nights stay in `.ingest-cache/` and roll in as the window advances. The cap
+is what stops one bar's DJ calendar taking a quarter of the feed; the grouped-day card
+(`library-thursday-programs-0806`) is the tool to reach for before the cap bites. Rule lives in
+`ingest-newsletters` step 2.
+
+**Three defects let it run silently, all fixed:**
+
+1. **Nothing measured the back of the window.** New **L11d `reservoir7-14d`** in `freshness.js`
+   counts cards dated 7–14 days out — *that reservoir IS next week's window*, so it answers to the
+   same floor of 10. It fires a week before `thinFeed` can. On 8/6 it read **0** while every other
+   gate was green. Reported and warned, **never gates `fresh`** — same call as `decliningFeed`, and
+   for the same reason: `JulyApp.jsx` reads `fresh` for the client banner, and a thin reservoir says
+   nothing about whether the cards on the map are true.
+2. **The trend alarm was blind and structurally fragile.** `trend=no-baseline` on 8/6. `assessTrend`
+   matched history at exactly −7d/−14d, so one missed record day blinded a comparison permanently.
+   Now falls back to **−7/−14/−21** — all multiples of a week, so the same-weekday property that
+   guards against the feed's designed sawtooth is preserved. A ±2-day tolerance would have fixed the
+   same blindness by comparing a Monday to a Saturday, which is the false alarm the check exists to
+   avoid.
+3. **The "scoped mini-ingest" path skipped the measuring steps.** The 8/5 commit says it plainly:
+   *"Expiry did not run — this is a scoped mini-ingest."* It also skipped `--record`, which is why
+   8/5 is absent from `freshness-history.json` — the path that shipped 10 cards recorded nothing.
+   Both are deterministic scripts costing seconds. **"Scoped" now describes which sources you read,
+   never which gates you run.**
+
+**Correction to the entry below:** it attributes the flat metric to *"expiry took as many as the
+restock added."* Expiry did not run on 8/5 and the deck grew by 10. The metric was flat because all
+10 new cards landed inside the window's front while its back stayed empty.
+
+**Known open, deliberately not fixed here:** 13 expired cards are still in `cards.json`, inflating
+the deck to 85 when it is really 74. `filterCards.js` hides them from residents, so the map is not
+lying — this is a measurement distortion, and it is precisely what made "card count recovered" read
+as "supply recovered." Clearing it is `npm run ingest:expire` plus the step-5 contract-count rewrite
+in `julyCards.test.mjs`, which is the ingest ritual's job, not a code fix.
+
+## 2026-08-06 — the Aug 3–4 traffic was internal; Wave 1 held; Eventbrite allowlisted
 
 Rulings from the PR #19 readout review (cycle 3, merged unedited).
 

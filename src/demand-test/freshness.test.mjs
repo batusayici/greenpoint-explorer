@@ -278,3 +278,56 @@ test("trend: growth and small dips stay quiet", () => {
   });
   assert.equal(dip.decliningFeed, false, "10% is noise, not decay");
 });
+
+// L11d (2026-08-06 supply investigation). The 8/3 analysis fixed the fetch
+// layer — reach went to 41/44 and the deck recovered 75 -> 85 — and
+// datedUpcoming7d did not move (38 -> 27, flat). Cause: every run filled the
+// FRONT of the window and nothing filled the back. On 8/6 the feed held 27
+// dated-upcoming and exactly 2 cards dated beyond the horizon, so 8/13 and
+// 8/14 read zero while `.ingest-cache/troost.txt` sat on 38 uncarded nights
+// of a Google Calendar feed. Every existing gate was green: reach was fine,
+// the floor of 10 was not breached, and the trend had no baseline.
+//
+// The reservoir IS next week's window. Holding it to the same floor as
+// thinFeed is the whole idea: a reservoir of 2 today is a thin feed in seven
+// days, knowable a week before the floor trips.
+
+test("reservoir: an empty next-week reservoir trips while the current window still looks healthy", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00",
+    now: NOW,
+    cards: manyUpcoming, // 12 in-window, nothing beyond the horizon
+  });
+  assert.equal(a.thinFeed, false, "the current window is above the floor");
+  assert.equal(a.datedReservoir, 0);
+  assert.equal(a.hollowReservoir, true, "no supply behind the window");
+});
+
+test("reservoir: counts cards dated in days 7-14, not the current window", () => {
+  const cards = [
+    ...manyUpcoming,
+    ...Array.from({ length: 10 }, (_, i) => dated(`r${i}`, `2026-08-0${(i % 5) + 4}T19:00:00-04:00`)),
+  ];
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards });
+  assert.equal(a.datedReservoir, 10);
+  assert.equal(a.hollowReservoir, false);
+});
+
+test("reservoir: reported but never gates fresh — the cards on the map are still true", () => {
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards: manyUpcoming });
+  assert.equal(a.hollowReservoir, true);
+  assert.equal(a.fresh, true, "a thin reservoir is an ops problem, not a client-banner honesty problem");
+});
+
+test("trend: falls back to 21 days so two missed record days do not blind the alarm", () => {
+  const a = assessFreshness({
+    lastRunAt: "2026-07-28T09:00:00-04:00",
+    now: NOW,
+    cards: manyUpcoming,
+    history: [H("2026-07-07", 38)], // -7 and -14 both missing
+    datedUpcomingOverride: 27,
+  });
+  assert.equal(a.decliningFeed, true);
+  assert.equal(a.trend.priorDate, "2026-07-07");
+  assert.equal(a.trend.spanDays, 21);
+});

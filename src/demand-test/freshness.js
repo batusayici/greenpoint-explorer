@@ -79,8 +79,14 @@ export function assessTrend(history, { now, current, minDropRatio = 0.2 } = {}) 
   // its in-window items. Gradual decay IS the failure mode. The 14-day window
   // sees 38 -> 27 (29%) and fires. Same weekday either way — never an
   // arbitrary last run, because the feed sawtooths by design.
+  // 7/14/21 and not a tolerance band: every span is a multiple of a week, so
+  // the comparison stays same-weekday-to-same-weekday. A +/- 2 day tolerance
+  // would fix the same blindness by comparing a Monday to a Saturday, which
+  // is the false alarm this check was built to avoid. 21 buys two missed
+  // record days before the alarm goes blind (2026-08-06: the 8/5 run shipped
+  // 10 cards and recorded nothing, so the gap is not hypothetical).
   const windows = [];
-  for (const spanDays of [7, 14]) {
+  for (const spanDays of [7, 14, 21]) {
     const then = new Date(now.getTime() - spanDays * dayMs).toISOString().slice(0, 10);
     if (!byDate.has(then)) continue;
     const prior = byDate.get(then);
@@ -95,6 +101,28 @@ export function assessTrend(history, { now, current, minDropRatio = 0.2 } = {}) 
   return { ...chosen, minDropRatio, decliningFeed: firing.length > 0 };
 }
 
+// L11d (2026-08-06 supply investigation): thinFeed and the trend both measure
+// the window we are standing in. Neither can see that there is nothing behind
+// it. On 2026-08-06 the feed held 27 dated-upcoming (floor 10, so FRESH) and
+// exactly 2 cards dated past the horizon — 8/13 and 8/14 read zero — while
+// `.ingest-cache/troost.txt` held 38 uncarded nights of an already-fetched
+// Google Calendar. Every gate was green and the decline was already locked in:
+// projected with zero adds, 27 -> 9 by 8/10.
+//
+// The reservoir IS next week's window, so it answers to the same floor. That
+// makes a thin feed knowable a week before thinFeed can trip, and it is the
+// signal the ratified 14-day fill rule is meant to keep above water.
+export function assessReservoir(cards, { now, minReservoir = 10 } = {}) {
+  const start = new Date(now.getTime() + WEEK_MS);
+  const end = new Date(now.getTime() + 2 * WEEK_MS);
+  const datedReservoir = cards.filter((c) => {
+    const s = c.startsAt ? new Date(c.startsAt) : null;
+    if (!s) return false; // an end-only deal is not forward event supply
+    return s >= start && s <= end;
+  }).length;
+  return { datedReservoir, hollowReservoir: datedReservoir < minReservoir, minReservoir };
+}
+
 export function assessFreshness({
   lastRunAt,
   now,
@@ -105,6 +133,7 @@ export function assessFreshness({
   maxErrorRate = 0.15,
   history = null,
   minDropRatio = 0.2,
+  minReservoir = 10,
   datedUpcomingOverride = null,
 }) {
   const runDate = lastRunAt ? new Date(lastRunAt) : null;
@@ -116,6 +145,7 @@ export function assessFreshness({
     datedUpcomingOverride ?? cards.filter((c) => upcomingWithin7Days(c, now)).length;
   const thinFeed = datedUpcoming < minDatedUpcoming;
   const trend = assessTrend(history, { now, current: datedUpcoming, minDropRatio });
+  const { datedReservoir, hollowReservoir } = assessReservoir(cards, { now, minReservoir });
 
   const reach = assessReach(fetchReport, { maxErrorRate });
   const sourcesUnreachable = !!reach && reach.attempted > 0 && reach.errorRate > reach.maxErrorRate;
@@ -143,6 +173,13 @@ export function assessFreshness({
     browserFetchDown,
     decliningFeed: !!trend?.decliningFeed,
     trend,
+    // hollowReservoir is REPORTED and never gates `fresh`, for the same reason
+    // decliningFeed does not: JulyApp.jsx reads this for the client banner, and
+    // an empty reservoir says nothing about whether the cards on the map are
+    // true. It is an ops alarm for the ingest run, and check-freshness.mjs
+    // warns on it without exiting non-zero.
+    hollowReservoir,
+    datedReservoir,
     datedUpcoming,
     reach,
     verifiedThrough: lastRunAt ?? null,
