@@ -188,11 +188,16 @@ test("seed has exactly 75 cards across the six layers", () => {
   // now reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!" — the organizer
   // overrides the NYC Parks listing that still shows it. +22 adds, 14 of them
   // dated 8/13–8/20 to refill the reservoir, which was 0. 74 − 1 + 22 = 95.
-  assert.equal(seed.cards.length, 95);
+  // 2026-08-07, Batu's ruling on the WORD hold: there is only one WORD in
+  // Greenpoint, so a bare "Brooklyn, NY" location line is unambiguous. Address
+  // verified at wordbookstores.com's own footer and corroborated by the
+  // Withfriends blurb ("locations in Greenpoint, Brooklyn and Jersey City").
+  // All three held cards shipped. 95 + 3 = 98.
+  assert.equal(seed.cards.length, 98);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 44, "23 post-expiry − SummerStarz 8/7 (rained out at source) + 22 adds off the first 14-day fill run");
+  assert.equal(count((c) => c.category === "event"), 47, "23 post-expiry − SummerStarz 8/7 (rained out at source) + 22 adds off the first 14-day fill run + 3 WORD cards released by the 2026-08-07 address ruling");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 11, "6 post-expiry + 2 Troost nights + 2 Good Room bills + the 8/15 Troost DJ set");

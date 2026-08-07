@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-06",
+  "version": "2026-08-07",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -4337,6 +4337,135 @@
       ],
       "lat": 40.724458,
       "lng": -73.943361
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St, Brooklyn, NY 11222",
+      "filters": [
+        "arts_culture"
+      ],
+      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://withfriends.co/word/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "WORD upcoming events",
+          "url": "https://withfriends.co/word/events",
+          "publisher": "WORD Bookstore",
+          "date": "2026-08-07"
+        }
+      ],
+      "id": "word-tim-sommer-0807",
+      "title": "Tim Sommer at WORD",
+      "kicker": "Author event in the basement",
+      "startsAt": "2026-08-07T19:00:00-04:00",
+      "endsAt": "2026-08-07T23:59:00-04:00",
+      "summary": "An evening with Tim Sommer at the Franklin Street bookshop. Events here run downstairs, reached by a flight of stairs.",
+      "sourceQuote": "Friday, August 7 at 7:00 PM\nTim Sommer\nGreenpoint, Brooklyn, NY",
+      "lat": 40.729072,
+      "lng": -73.957317
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St, Brooklyn, NY 11222",
+      "filters": [
+        "arts_culture"
+      ],
+      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://withfriends.co/word/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "WORD upcoming events",
+          "url": "https://withfriends.co/word/events",
+          "publisher": "WORD Bookstore",
+          "date": "2026-08-07"
+        }
+      ],
+      "id": "word-open-mic-0814",
+      "title": "What's The Word Open Mic",
+      "kicker": "Open mic night, sign up to read",
+      "startsAt": "2026-08-14T19:30:00-04:00",
+      "endsAt": "2026-08-14T23:59:00-04:00",
+      "summary": "The bookshop's recurring open mic. Held downstairs, reached by a flight of stairs; RSVP through the shop's events page.",
+      "sourceQuote": "Friday, August 14 at 7:30 PM\nWhat's The Word Open Mic in Brooklyn\nBrooklyn, NY",
+      "lat": 40.729072,
+      "lng": -73.957317
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St, Brooklyn, NY 11222",
+      "filters": [
+        "arts_culture"
+      ],
+      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://withfriends.co/word/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "WORD upcoming events",
+          "url": "https://withfriends.co/word/events",
+          "publisher": "WORD Bookstore",
+          "date": "2026-08-07"
+        }
+      ],
+      "id": "word-journal-club-0817",
+      "title": "Journal Club at WORD",
+      "kicker": "Monday evening journaling group",
+      "startsAt": "2026-08-17T19:00:00-04:00",
+      "endsAt": "2026-08-17T23:59:00-04:00",
+      "summary": "A standing Monday-night group at the Franklin Street bookshop. Held downstairs, reached by a flight of stairs.",
+      "sourceQuote": "Monday, August 17 at 7:00 PM\nJournal Club\nBrooklyn, NY",
+      "lat": 40.729072,
+      "lng": -73.957317
     }
   ]
 }
