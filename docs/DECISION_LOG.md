@@ -38,10 +38,19 @@ this may not resolve that hold by itself.
    demand-gate denominator; clean funnel tracking begins with Wave 1, when tagged traffic starts
    arriving. Pre-Wave-1 rates are directional only and must never be cited as a gate read. This is
    the cheaper call than a permanent exclusion list that would itself need maintaining.
-2. **`?src=verify` is RATIFIED** and now binding for every production check — spot-checks, demos,
-   incognito, second devices. Marked as such in `growth-weekly/SKILL.md`. (The other two cycle-3
-   standing instructions — verify-checkout-before-diagnosing, and `$host` applies to outbound copy —
-   are still marked pending; they were not ruled on.)
+2. **Five of the six standing instructions are RATIFIED** and now binding rather than provisional:
+   `?src=verify` on every production check; verify-checkout-against-`origin/main` before diagnosing;
+   `$host` applies to outbound copy and "top card" claims, not just tables; split every metric by
+   `$host` before reporting; and never put a card count in outbound copy without regenerating it the
+   morning it is sent. **Only one remains pending** — diagnose an analytics-pull failure (env vars
+   *and* proxy egress) before declaring `[data pending]`.
+   **The `$host` ratification came with a correction.** That instruction hardcoded its own host list
+   inline, and the list had gone stale within four days: it named `greenpoint.life` and
+   `greenpoint-explorer.vercel.app`, which after the Stoopwise rename **omits `stoopwise.com`, the
+   canonical origin.** Ratifying it as written would have dropped production traffic from every
+   future readout. It now points at `GL_PROD_HOSTS` in `scripts/posthog-pull.sh` as the single
+   source of truth instead of duplicating it — the same lesson as the duplicated-config instruction
+   already in that file.
 3. **The `check-freshness.mjs` trend check ships (L11c).** Built TDD on `feat/freshness-trend-check`.
 
 **Design notes on L11c, because two of them are non-obvious:**

@@ -167,14 +167,17 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   whether `$HTTPS_PROXY/__agentproxy/status` shows an egress denial for
   `us.posthog.com`. The two failures have different fixes, and this skill
   previously recorded only one of them.
-- **(proposed 2026-07-28, cycle 1 — operator-derived, pending Batu; drop this
-  line if unwanted)** Split every metric by `$host` before reporting it.
-  `localhost:*` and LAN dev servers land in the same PostHog project as
-  production and were 34% of all events on 2026-07-28. Report production only
-  (since the 2026-08-02 cutover that means **both** `greenpoint.life` and
-  `greenpoint-explorer.vercel.app` — the old host still serves already-sent
-  invite links, so filtering to one host drops real traffic), and say so in the
-  readout.
+- **(proposed 2026-07-28, cycle 1 — RATIFIED by Batu 2026-08-06.)**
+  Split every metric by `$host` before reporting it. `localhost:*` and LAN dev
+  servers land in the same PostHog project as production and were 34% of all
+  events on 2026-07-28. Report production only, and say so in the readout.
+  **The production host list is `GL_PROD_HOSTS` in `scripts/posthog-pull.sh` —
+  read it, never hardcode it here.** This line used to name the hosts inline
+  and was already stale within four days: it said "`greenpoint.life` and
+  `greenpoint-explorer.vercel.app`", which after the 2026-08-06 Stoopwise
+  rename **omits `stoopwise.com`, the canonical origin**. Ratifying it as
+  written would have dropped production traffic from every readout. One list,
+  one place — the same lesson as the duplicated-config instruction below.
 - **(2026-08-03, cycle 2 — derived from Batu's amendment above)** When the
   product's origin changes, a `$host` filter **unions** the old and new hosts
   for as long as the old host still serves live links — never swap one for the
@@ -184,7 +187,7 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   hand-written duplicates before calling the step done. Launch-plan §2 step 3
   named only `AEO_ORIGIN`, but `index.html`'s OG/Twitter URLs are hand-written
   and would have kept advertising the old origin to every scraper.
-- **(2026-08-03, cycle 2 — operator-derived, pending Batu; drop if unwanted)**
+- **(2026-08-03, cycle 2 — RATIFIED by Batu 2026-08-06.)**
   Never put a card count in outbound copy without regenerating it the morning it
   is sent. Org card counts are true for about a day — two of cycle 1's three Q1
   drafts were falsified by ordinary expiry within a week (7 → 2 cards, 8 → 2).
