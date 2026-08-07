@@ -38,12 +38,20 @@ this may not resolve that hold by itself.
    demand-gate denominator; clean funnel tracking begins with Wave 1, when tagged traffic starts
    arriving. Pre-Wave-1 rates are directional only and must never be cited as a gate read. This is
    the cheaper call than a permanent exclusion list that would itself need maintaining.
-2. **Five of the six standing instructions are RATIFIED** and now binding rather than provisional:
+2. **All six standing instructions are RATIFIED** and now binding rather than provisional:
    `?src=verify` on every production check; verify-checkout-against-`origin/main` before diagnosing;
    `$host` applies to outbound copy and "top card" claims, not just tables; split every metric by
    `$host` before reporting; and never put a card count in outbound copy without regenerating it the
-   morning it is sent. **Only one remains pending** — diagnose an analytics-pull failure (env vars
-   *and* proxy egress) before declaring `[data pending]`.
+   morning it is sent; and diagnose an analytics-pull failure before declaring `[data pending]`.
+   **Two of the six needed correcting before they could be ratified, and both corrections mattered
+   more than the ratification did.**
+   The pull-diagnosis rule claimed **two** failure modes; there are **three**. Cycles 2–3 recorded a
+   PostHog free-tier execution limit that makes *individual* queries return `ERR` while the rest of
+   the pull succeeds — neither missing env vars nor blocked egress, transient (cycle 3 saw the same
+   two queries return with no fix applied), and the one most likely to be misdiagnosed, because a
+   partial pull still looks like a working pull. Declaring `[data pending]` for the whole readout on
+   that basis would be wrong. The rule now names all three with their distinguishing signal, their
+   fix, and their owner — mode 2 is Batu's and must never be routed around.
    **The `$host` ratification came with a correction.** That instruction hardcoded its own host list
    inline, and the list had gone stale within four days: it named `greenpoint.life` and
    `greenpoint-explorer.vercel.app`, which after the Stoopwise rename **omits `stoopwise.com`, the

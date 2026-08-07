@@ -161,12 +161,27 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
 
 ## Standing instructions (calibration output — append-only)
 
-- **(proposed 2026-07-28, cycle 1 — operator-derived, pending Batu; drop this
-  line if unwanted)** When the analytics pull fails in cloud, diagnose before
-  declaring `[data pending]`: check whether the env vars are present *and*
-  whether `$HTTPS_PROXY/__agentproxy/status` shows an egress denial for
-  `us.posthog.com`. The two failures have different fixes, and this skill
-  previously recorded only one of them.
+- **(proposed 2026-07-28, cycle 1 — RATIFIED by Batu 2026-08-06, corrected to
+  three failure modes.)** When the analytics pull fails, **diagnose before
+  declaring `[data pending]`.** The cheap first question is *did the whole pull
+  fail, or individual queries?* — it separates mode 3 from modes 1 and 2:
+  1. **Env vars absent** — `POSTHOG_*` not set, so nothing can authenticate.
+     Whole pull fails. Fix: set them.
+  2. **Egress denied** — `$HTTPS_PROXY/__agentproxy/status` shows a denial for
+     `us.posthog.com`. Whole pull fails, and it looks identical to mode 1 from
+     the output alone, which is why this check is not optional. Fix is
+     environmental and **Batu's** (the cloud env's network preset, DECISION_LOG
+     2026-07-28) — report it and stop; never route around it.
+  3. **PostHog free-tier execution limit** — *some* queries return `ERR` while
+     others return normally. Cycle 2 saw `DROPPED` and `FILTER TAPS` do this;
+     cycle 3 saw both return with no fix applied, so it is **transient**.
+     Neither env nor egress, and `[data pending]` for the whole readout would be
+     wrong: report that one metric as unavailable, name the query, and retry or
+     narrow its window. Do not "fix" the script for this.
+  The three have different fixes and different owners. This line originally
+  recorded only two; the third was learned in cycles 2–3 and is the one most
+  likely to be misdiagnosed, because a partial pull still looks like a working
+  pull.
 - **(proposed 2026-07-28, cycle 1 — RATIFIED by Batu 2026-08-06.)**
   Split every metric by `$host` before reporting it. `localhost:*` and LAN dev
   servers land in the same PostHog project as production and were 34% of all
