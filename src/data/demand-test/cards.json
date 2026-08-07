@@ -1269,7 +1269,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-thursday-programs-0806",
         "library-friday-garden-0807",
         "library-tuesday-programs-0811",
         "library-wednesday-programs-0812",
@@ -1956,7 +1955,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-08-07",
       "locationName": "Brooklyn Craft Company",
       "address": "165 Greenpoint Ave",
       "filters": [
@@ -1986,50 +1985,10 @@
           "type": "signup",
           "url": "https://brooklyncraftcompany.com/collections/all-workshops"
         }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
       ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-27",
-      "updatedAt": "2026-08-06",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-07-27"
-        }
-      ],
-      "id": "troost-barba-yiorgi-0806",
-      "title": "DJ Barba Yiorgi at Troost",
-      "kicker": "World psychedelic groove",
-      "endsAt": "2026-08-06T23:59:00-04:00",
-      "summary": "DJ Barba Yiorgi spins world psychedelic groove at the Manhattan Avenue bar.",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "startsAt": "2026-08-06T00:00:00-04:00",
       "relatedCardIds": [
-        "troost-vinyl-fridays-0807"
+        "bcc-beginner-embroidery-0808",
+        "bcc-knitting-101-0817"
       ]
     },
     {
@@ -2564,51 +2523,6 @@
       "relatedCardIds": [
         "poochs-parlor"
       ]
-    },
-    {
-      "id": "library-thursday-programs-0806",
-      "category": "event",
-      "title": "Thursday at Greenpoint Library",
-      "kicker": "Babies and books, then sunset storytime",
-      "startsAt": "2026-08-06T10:30:00-04:00",
-      "endsAt": "2026-08-06T23:59:00-04:00",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "filters": [
-        "family_kids"
-      ],
-      "summary": "Free notary service and a free English class both run at 2pm, teen tech time follows, and the day closes with an all-ages read-aloud on the rooftop when weather allows.",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library branch calendar",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-03"
-        }
-      ],
-      "sourceQuote": "Babies & Books\nThu, Aug 6 10:30am\nGreenpoint Library\nBabies & Books\nThu, Aug 6 11:15am\nGreenpoint Library\nDrop-In Sewing Machine Hours\nThu, Aug 6 1:00pm\nGreenpoint Library\nFree Notary Services*\nThu, Aug 6 2:00pm\nGreenpoint Library\nFree English Class\nThu, Aug 6 2:00pm\nGreenpoint Library\nTeen Tech Time 🎮\nThu, Aug 6 3:00pm\nGreenpoint, Eco Lab 3 (Teens)\nSunset Storytime\nThu, Aug 6 6:00pm\nGreenpoint Library",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
     },
     {
       "id": "library-friday-garden-0807",
@@ -3345,49 +3259,6 @@
     },
     {
       "category": "event",
-      "id": "mccarren-demo-garden-potluck-0806",
-      "title": "Monthly potluck at the McCarren Demo Garden",
-      "kicker": "Bring a dish after the gardening shift",
-      "startsAt": "2026-08-06T19:00:00-04:00",
-      "endsAt": "2026-08-06T23:59:00-04:00",
-      "locationName": "McCarren Demo Garden",
-      "address": "McCarren Park, Brooklyn, NY 11222",
-      "geocodeQuery": "McCarren Park, Brooklyn, NY",
-      "lat": 40.7211592,
-      "lng": -73.9528793,
-      "corridor": null,
-      "filters": [
-        "civic"
-      ],
-      "summary": "The garden's volunteer shift runs from 6pm and the table follows it. Open to anyone who turns up with something to share.",
-      "audience": [
-        "resident"
-      ],
-      "actions": [
-        {
-          "label": "Roundup",
-          "type": "learn_more",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What's Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Potluck @ McCarren Demo Garden, 7 p.m.: After a 6 p.m. gardening shift, stick around for the Demo Garden's monthly potluck. Bring a dish, make a new friend!",
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "low",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-06"
-    },
-    {
-      "category": "event",
       "audience": [
         "resident"
       ],
@@ -3424,9 +3295,6 @@
           "publisher": "Troost",
           "date": "2026-08-06"
         }
-      ],
-      "relatedCardIds": [
-        "troost-barba-yiorgi-0806"
       ],
       "lat": 40.733463,
       "lng": -73.955035
@@ -3909,49 +3777,6 @@
       "geocodeQuery": "982 Manhattan Ave, Brooklyn, NY 11222",
       "lat": 40.732676,
       "lng": -73.954395
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "good-room-rumba-venezuela-0806",
-      "title": "RUMBA for Venezuela at Good Room",
-      "kicker": "Benefit night, five DJs",
-      "summary": "INVT, MPeach, Manu Miran, Naim Zarzour and CHOQUE share the bill at the Meserole Avenue club.",
-      "startsAt": "2026-08-06T19:00-04:00",
-      "endsAt": "2026-08-06T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "sourceQuote": "RUMBA for Venezuela ft INVT, MPeach, Manu Miran, Naim Zarzour, CHOQUE",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-06"
-        }
-      ],
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.726909,
-      "lng": -73.95281
     },
     {
       "category": "event",
@@ -4466,6 +4291,98 @@
       "sourceQuote": "Monday, August 17 at 7:00 PM\nJournal Club\nBrooklyn, NY",
       "lat": 40.729072,
       "lng": -73.957317
+    },
+    {
+      "id": "bcc-beginner-embroidery-0808",
+      "category": "event",
+      "title": "Beginner Embroidery",
+      "kicker": "Start embroidery at the Greenpoint studio",
+      "startsAt": "2026-08-08T15:00:00-04:00",
+      "endsAt": "2026-08-08T23:59:00-04:00",
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "summary": "A newly added session — the shop reopened dates for workshops that had been selling out.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "actions": [
+        {
+          "label": "Book a spot",
+          "type": "signup",
+          "url": "https://www.brooklyncraftcompany.com/products/beginner-embroidery-workshop"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
+          "url": "https://www.brooklyncraftcompany.com/products/beginner-embroidery-workshop",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-06"
+        }
+      ],
+      "sourceQuote": "Beginner Embroidery … In Greenpoint: … Sat, 8/8 at 3pm",
+      "relatedCardIds": [
+        "bcc-kids-sewing-camp"
+      ],
+      "lat": 40.730461,
+      "lng": -73.953114
+    },
+    {
+      "id": "bcc-knitting-101-0817",
+      "category": "event",
+      "title": "Knitting 101",
+      "kicker": "Monday-morning knitting for beginners",
+      "startsAt": "2026-08-17T11:00:00-04:00",
+      "endsAt": "2026-08-17T23:59:00-04:00",
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "summary": "A second run is on the books for the Saturday after, if a weekday does not work.",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "actions": [
+        {
+          "label": "Book a spot",
+          "type": "signup",
+          "url": "https://www.brooklyncraftcompany.com/products/open-beginner-knitting"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
+          "url": "https://www.brooklyncraftcompany.com/products/open-beginner-knitting",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-06"
+        }
+      ],
+      "sourceQuote": "Knitting 101 … In Greenpoint: … Mon, 8/17 at 11am … Sat, 8/22 at 11am",
+      "relatedCardIds": [
+        "bcc-kids-sewing-camp"
+      ],
+      "lat": 40.730461,
+      "lng": -73.953114
     }
   ]
 }

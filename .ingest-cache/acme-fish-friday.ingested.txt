@@ -87,15 +87,7 @@ All Fish Friday Products
 37
 Filters
 Product Category
-Cold Smoked
-Hot Smoked
-Salads
-Herring
-Specialty
-Gary's Special
 Brand
-Acme
-Blue Hill Bay
 Sort By
 Featured
 Alphabetically, A-Z
@@ -104,34 +96,10 @@ Price, highest
 Price, lowest
 Date, old to new
 Date, new to old
-Cold Smoked
-Hot Smoked
-Salads
-Herring
-Specialty
-Gary's Special
-Acme
-Blue Hill Bay
 Clear Filters
 Filter By
-Cold Smoked
-Hot Smoked
-Salads
-Herring
-Specialty
-Gary's Special
-Acme
-Blue Hill Bay
 Clear Filters
 Apply Filters
-Cold Smoked
-Hot Smoked
-Salads
-Herring
-Specialty
-Gary's Special
-Acme
-Blue Hill Bay
 No Fish For You.
 Southern BBQ Smoked Salmon - Gary's Special (1 lb.) (Copy)
 Gary's Special
@@ -164,7 +132,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Sliced Sablefish (8 oz.)
 Cold Smoked
 Specialty
@@ -244,7 +212,7 @@ Unit price
 Quantity
 -
 +
-Add to cart
+Sold out
 Pre-Sliced Pastrami Smoked Salmon (1 lb.)
 Cold Smoked
 63 reviews
@@ -456,7 +424,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Baked Salmon Salad (7 oz.)
 Salads
 9 reviews
@@ -472,7 +440,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Chopped Herring Salad (7 oz.)
 Salads
 Herring
@@ -521,7 +489,7 @@ Unit price
 Quantity
 -
 +
-Sold out
+Add to cart
 Smoked Trout Fillets (5 oz.)
 Hot Smoked
 Specialty
@@ -754,6 +722,7 @@ All Products
 Fish Friday
 Where to Buy
 Merch
+Your privacy choices
 © 2026 Acme Smoked Fish
 Account Login
 Credit Application

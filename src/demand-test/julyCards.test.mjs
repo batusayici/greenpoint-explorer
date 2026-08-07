@@ -193,23 +193,34 @@ test("seed has exactly 75 cards across the six layers", () => {
   // verified at wordbookstores.com's own footer and corroborated by the
   // Withfriends blurb ("locations in Greenpoint, Brooklyn and Jersey City").
   // All three held cards shipped. 95 + 3 = 98.
-  assert.equal(seed.cards.length, 98);
+  // 2026-08-07 daily thin refresh: expiry took the four past 8/6 events
+  // (98 → 94). +2 events, both Greenpoint sessions off Brooklyn Craft Company's
+  // 8/6 newsletter — Beginner Embroidery 8/8 and Knitting 101 8/17. That
+  // newsletter is the one that finally states location PER DATE ("In
+  // Greenpoint:" / "In Lower Manhattan:" above each session list, with a time
+  // on every line), which is the exact fact the four watchItems-blocked BCC
+  // workshops had been missing since the 7/31 format. All four resolve: 8/6
+  // past, 8/9 and 8/11 Lower Manhattan, 8/12 Greenpoint but SOLD OUT — so none
+  // was a Greenpoint card we lost. The 8/13 Sewing 101 session is real and
+  // Greenpoint but deferred by the 2-per-venue cap in the live 7-day window.
+  // 94 + 2 = 96.
+  assert.equal(seed.cards.length, 96);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 47, "23 post-expiry − SummerStarz 8/7 (rained out at source) + 22 adds off the first 14-day fill run + 3 WORD cards released by the 2026-08-07 address ruling");
+  assert.equal(count((c) => c.category === "event"), 45, "43 post-expiry + 2 Brooklyn Craft Company Greenpoint sessions (8/8, 8/17)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 11, "6 post-expiry + 2 Troost nights + 2 Good Room bills + the 8/15 Troost DJ set");
+  assert.equal(count((c) => c.filters.includes("live_music")), 9, "11 − the 8/6 Troost DJ night and the 8/6 Good Room bill, both expired out");
   assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
   // Refreshed 2026-08-03; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-08-03T00:00:00-04:00");
+  const refreshDay = Date.parse("2026-08-07T00:00:00-04:00");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
-    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-08-03 refresh`);
+    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-08-07 refresh`);
   }
 });
 
@@ -493,12 +504,13 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
   // attached to one inherits the lens WHEN THE SOURCE STATES THE SHIFT. That
   // is the one sanctioned exception to the "never merely social" rule above:
   // the 6pm shift is in the sourceQuote, and it is what earns the lens.
+  // 2026-08-07 expiry took that potluck (it ran 8/6), so the lens is back to
+  // the four standing asks plus the CAG meeting.
   assert.deepEqual(civic, [
     "adopt-a-business",
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
-    "mccarren-demo-garden-potluck-0806",
     "newtown-creek-cag-0729",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
