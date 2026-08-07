@@ -182,14 +182,20 @@ test("seed has exactly 75 cards across the six layers", () => {
   // −1 `sunday-yoga-domino` (Domino Park is Williamsburg, out of scope) and
   // +1 `mccarren-demo-garden-potluck-0806`, released by the work-shift ruling.
   // 85 − 1 + 1 = 85. BQFlea, Uzuki and Loft Story stay held.
-  assert.equal(seed.cards.length, 85);
+  // 2026-08-06 FULL RUN — the first under the 14-day fill rule (DECISION_LOG
+  // 2026-08-06). Expiry took 11 (85 → 74). Then −1 more: the SummerStarz
+  // 8/7 Ford v Ferrari screening was deleted because Town Square's own page
+  // now reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!" — the organizer
+  // overrides the NYC Parks listing that still shows it. +22 adds, 14 of them
+  // dated 8/13–8/20 to refill the reservoir, which was 0. 74 − 1 + 22 = 95.
+  assert.equal(seed.cards.length, 95);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 34, "24 + the 10 events off the 8/6-12 roundup, − sunday-yoga-domino + the Demo Garden potluck (2026-08-06 rulings)");
+  assert.equal(count((c) => c.category === "event"), 44, "23 post-expiry − SummerStarz 8/7 (rained out at source) + 22 adds off the first 14-day fill run");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 10, "9 + Songwriter Sundays at the McCarren parkhouse (8/9)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 11, "6 post-expiry + 2 Troost nights + 2 Good Room bills + the 8/15 Troost DJ set");
   assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -304,15 +310,21 @@ test("free-ness is designated only where the source states it (tester feedback #
   assert.deepEqual(free, [
     "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
     "greenpoint-trash-club",
-    "library-tuesday-programs-0804", // PR #14: library programs, "Free" per the branch's sourcing
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
     // "teen interns are running a free scavenger hunt" and "You can get free
     // tickets here". The 8/12 library card is NOT here: its garden club line
-    // never says free.
+    // never says free. (library-tuesday-programs-0804 expired 2026-08-06.)
     "library-tuesday-programs-0811",
     "mcgolrick-bird-club-0808", // "Free" on the Go Green Brooklyn listing
+    // 2026-08-06: NYC Parks states "Movies Under the Stars" is free on the
+    // McGolrick events page. The 8/13 and 8/14 library day-cards are NOT here —
+    // same grouped-card rule as above.
+    "mcgolrick-movies-guardians-0819",
     "paulie-gees-jabberjaw-comedy-0811",
-    "summerstarz-ford-v-ferrari-0807", // "Free SummerStarz Movies" on townsquarebk.org
+    // 2026-08-06: the 8/7 Ford v Ferrari card was DELETED, not rolled forward —
+    // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
+    // The 8/14 screening is the next live one in the same free series.
+    "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
     "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
   ]);
 });
@@ -390,23 +402,31 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
   const games = seed.cards.filter((c) => c.filters.includes("games")).map((c) => c.id).sort();
   assert.deepEqual(games, [
     "black-rabbit",
+    // 2026-08-06: Carcosa Club enters the graph on the first 14-day fill run —
+    // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
+    // Day 8/15). A game club's programme is play by definition.
+    "carcosa-hot-dog-day-0815",
+    "carcosa-malifaux-monthly-0808",
     "last-place-chess-chill",
     // 2026-08-05: North Brooklyn Chess's August residency at the McCarren
-    // parkhouse — "Casual, social chess", so play, not culture.
+    // parkhouse — "Casual, social chess", so play, not culture. 2026-08-06:
+    // re-authored as `recurring` through 8/20 — the Greenpointers piece states
+    // "weekly chess nights every Thursday from 7 to 11pm", so a single-night
+    // card was under-reading its own source.
     "nb-chess-parkhouse-0806",
     "scrappleland",
-    "scrappleland-backgammon-0804",
-    "scrappleland-pinball-league-0805",
-    "threes-board-game-speed-dating-0805",
+    // 2026-08-06: the backgammon (8/4), pinball (8/5) and Threes speed-dating
+    // (8/5) cards expired with the rest of that block.
   ]);
   // The whole point of the cut: play and culture no longer share a shelf.
   for (const id of games) {
     const c = seed.cards.find((x) => x.id === id);
     assert.ok(!c.filters.includes("arts_culture"), `${id} is still in arts_culture — the split leaked`);
   }
-  // Venues keep their real-world lens too: Scrappleland, Black Rabbit and
-  // Threes are places you eat and drink, not only places you play.
-  for (const id of ["scrappleland", "black-rabbit", "threes-board-game-speed-dating-0805"]) {
+  // Venues keep their real-world lens too: Scrappleland and Black Rabbit are
+  // places you eat and drink, not only places you play. (The Threes speed-dating
+  // card expired 2026-08-06 and left this list with it.)
+  for (const id of ["scrappleland", "black-rabbit"]) {
     assert.ok(seed.cards.find((x) => x.id === id).filters.includes("food_drink"), `${id} lost food_drink`);
   }
   // Batu, 2026-08-02: "kids events should be in kids." The kids' D&D/Magic
@@ -607,8 +627,18 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // 2026-08-03: expiry took both remaining showcase cards, so the prune left
   // the venue with no link list at all (same shape as Black Rabbit below).
   // 2026-08-05: the club is back in the graph with the 8/8 Secret Showcase.
-  assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, ["comedy-secret-showcase-0808"]);
-  assert.ok(byId("scrappleland-backgammon-0804").relatedCardIds.includes("scrappleland"), "club night joins the venue graph");
+  // 2026-08-06: the first 14-day fill run added three named one-off bookings
+  // (the recurring Thu/Fri/Sat showcases are deliberately not carded), so the
+  // club's link list is four deep.
+  assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
+    "comedy-secret-showcase-0808",
+    "comedy-raanan-hershberg-0811",
+    "comedy-carmen-lagala-0815",
+    "comedy-dani-castaneda-0816",
+  ]);
+  // Scrappleland's club nights all expired 2026-08-06; the prune emptied its
+  // link list, so Carcosa now carries the games side of the place graph.
+  assert.equal(byId("scrappleland").relatedCardIds, undefined);
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
   // Black Rabbit's weeknight cards have all expired (Sunday bingo 2026-07-27,
   // Tuesday trivia 2026-08-01) — the expiry script drops dangling refs, so the

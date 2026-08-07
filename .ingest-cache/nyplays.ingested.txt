@@ -1,0 +1,87 @@
+activity.name: Dungeons and Dragons: Red Tortles
+location: Online
+class_times: [{"title_text":"Sat","product_detail_date":"Jul 18, 2026 - Sep 5, 2026","primary_text":["6:00pm - 8:00pm EDT"],"mobile_primary_text":["6:00pm EDT"],"secondary_text":"Jul 18, 2026 - Sep 5, 2026","fine_print":null}]
+pricing: ["$175"]
+activity.age_range: 8 – 13 yrs
+is_online: true
+pdp_url: /new-york-society-of-play/schedules/activity-set/1959647
+
+activity.name: Teen Dungeons & Dragons at Frontier Games!
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Sun","product_detail_date":"Sep 6, 2026 - Jan 24, 2027","primary_text":["2:30pm - 5:30pm EDT"],"mobile_primary_text":["2:30pm EDT"],"secondary_text":"Sep 6, 2026 - Jan 24, 2027","fine_print":null}]
+pricing: ["$800"]
+activity.age_range: 12 – 17 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886920
+
+activity.name: (Middle School) Dungeons and Dragons at Frontier Games!
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Mon","product_detail_date":"Sep 7, 2026 - Jan 25, 2027","primary_text":["3:00pm - 6:00pm EDT"],"mobile_primary_text":["3:00pm EDT"],"secondary_text":"Sep 7, 2026 - Jan 25, 2027","fine_print":null}]
+pricing: ["$1,275"]
+activity.age_range: 11 – 14 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886921
+
+activity.name: (Young Adventurers) D&D at Frontier Games!
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Mon","product_detail_date":"Sep 7, 2026 - Jan 25, 2027","primary_text":["3:00pm - 6:00pm EDT"],"mobile_primary_text":["3:00pm EDT"],"secondary_text":"Sep 7, 2026 - Jan 25, 2027","fine_print":null}]
+pricing: ["$1,275"]
+activity.age_range: 7 – 10 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886925
+
+activity.name: Fantasy Frontier and Magic: The Gathering at Frontier Games
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Tue","product_detail_date":"Sep 8, 2026 - Jan 26, 2027","primary_text":["3:00pm - 6:00pm EDT"],"mobile_primary_text":["3:00pm EDT"],"secondary_text":"Sep 8, 2026 - Jan 26, 2027","fine_print":null}]
+pricing: ["$1,425"]
+activity.age_range: 7 – 13 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886928
+
+activity.name: Fantasy Frontier and Pokémon at Frontier Games
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Wed","product_detail_date":"Sep 9, 2026 - Jan 27, 2027","primary_text":["3:00pm - 6:00pm EDT"],"mobile_primary_text":["3:00pm EDT"],"secondary_text":"Sep 9, 2026 - Jan 27, 2027","fine_print":null}]
+pricing: ["$1,425"]
+activity.age_range: 7 – 12 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886933
+
+activity.name: D&D and Pokémon at Frontier Games!
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Thu","product_detail_date":"Sep 10, 2026 - Jan 28, 2027","primary_text":["3:00pm - 6:00pm EDT"],"mobile_primary_text":["3:00pm EDT"],"secondary_text":"Sep 10, 2026 - Jan 28, 2027","fine_print":null}]
+pricing: ["$1,350"]
+activity.age_range: 7 – 13 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886934
+
+activity.name: Fantasy Frontier at Frontier Games
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Fri","product_detail_date":"Sep 11, 2026 - Jan 29, 2027","primary_text":["3:00pm - 6:00pm EDT"],"mobile_primary_text":["3:00pm EDT"],"secondary_text":"Sep 11, 2026 - Jan 29, 2027","fine_print":null}]
+pricing: ["$1,350"]
+activity.age_range: 7 – 12 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886938
+
+activity.name: Teen Dungeons & Dragons at Frontier Games!
+location: Frontier Games, 724 Manhattan Ave, Greenpoint
+class_times: [{"title_text":"Sat","product_detail_date":"Sep 12, 2026 - Jan 30, 2027","primary_text":["12:30am - 3:30pm EDT"],"mobile_primary_text":["12:30am EDT"],"secondary_text":"Sep 12, 2026 - Jan 30, 2027","fine_print":null}]
+pricing: ["$800"]
+activity.age_range: 12 – 17 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1886941
+
+activity.name: Fantasy Club at PS290
+location: P.S. 290, 55-20 Metropolitan Ave, Ridgewood, NY 11385
+class_times: [{"title_text":"Mon","product_detail_date":"Sep 28, 2026 - Jan 25, 2027","primary_text":["2:20pm - 4:00pm EDT"],"mobile_primary_text":["2:20pm EDT"],"secondary_text":"Sep 28, 2026 - Jan 25, 2027","fine_print":null}]
+pricing: ["$470"]
+activity.age_range: 6 – 9 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1893205
+
+activity.name: Screenless Gaming at PS290
+location: P.S. 290, 55-20 Metropolitan Ave, Ridgewood, NY 11385
+class_times: [{"title_text":"Fri","product_detail_date":"Oct 2, 2026 - Jan 29, 2027","primary_text":["2:20pm - 4:00pm EDT"],"mobile_primary_text":["2:20pm EDT"],"secondary_text":"Oct 2, 2026 - Jan 29, 2027","fine_print":null}]
+pricing: ["$470"]
+activity.age_range: 8 – 12 yrs
+is_online: false
+pdp_url: /new-york-society-of-play/schedules/activity-set/1893206

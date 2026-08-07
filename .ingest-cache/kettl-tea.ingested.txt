@@ -261,7 +261,7 @@ Join us for an exploration of Japan's most revered matcha producing regions, and
 Location
 Kettl Matcha Sen Mon Ten
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
-Choose
+Sold out
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
 Class | Los Angeles: The Matcha Latte, Pouring & Technique
 $70.00
@@ -425,5 +425,5 @@ Tsubaki Matcha
 Tsubaki Matcha
 $45.00
 View all
-{"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}
 Get 15% off
+{"themeColor":"#574CD5","iconColor":"#574CD5","showLogo":true,"topBottomPosition":10,"rightLeftPosition":10,"iconSize":"small","iconCustomSize":64,"position":"middle-right"}

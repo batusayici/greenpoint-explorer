@@ -1,0 +1,223 @@
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-08-06
+end.date: 2026-08-07
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA4MDYgdHJvb3N0bGl2ZUBt
+
+summary: First Vinyl Fridays with Steph
+start.date: 2026-08-07
+end.date: 2026-08-08
+htmlLink: https://www.google.com/calendar/event?eid=NGh2cXIwOHFocGlycXFyN25tbGF1NGk5a2xfMjAyNjA4MDcgdHJvb3N0bGl2ZUBt
+
+summary: DJ THE HEFKER GIRL
+description: Decirculated Dub, Mariachi, Pirate Radio and Everything in between
+start.date: 2026-08-08
+end.date: 2026-08-09
+htmlLink: https://www.google.com/calendar/event?eid=ZnV1anE4cnNramg1ZWZpbDRkZTRzMGhwcTdfMjAyNjA4MDggdHJvb3N0bGl2ZUBt
+
+summary: AUTOMAT
+description: cqmurphy@gmail.com
+start.date: 2026-08-09
+end.date: 2026-08-10
+htmlLink: https://www.google.com/calendar/event?eid=XzZnczQ0Y3BoNjBxNDJiYTM4aDMzMGI5azhoMmphYmExOGdvM2FiOWs3MG8zZ2Roazc1MGthaGhtOGcgdHJvb3N0bGl2ZUBt
+
+summary: NOAH AMICK
+description: electric indie jazz
+start.date: 2026-08-10
+end.date: 2026-08-11
+htmlLink: https://www.google.com/calendar/event?eid=XzZvcDQ4Y3BpOG9vamFiOWs2b3NqOGI5azY4c2tjYmExOGwzMzZiYTM2cDMzZWdwaDhrcTQyYzIxODRfMjAyNjA4MTAgdHJvb3N0bGl2ZUBt
+
+summary: Stan Zenkov // with Ayumi Ishito, Nathan Chamberlain, Evan Crane, Yuko Togami // creative improvised music from the <3
+start.date: 2026-08-11
+end.date: 2026-08-12
+htmlLink: https://www.google.com/calendar/event?eid=NjM1Z3E4czlzMGxhNXNsb2Zia2cwNjlxMzggdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-08-13
+end.date: 2026-08-14
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA4MTMgdHJvb3N0bGl2ZUBt
+
+summary: DJ TIMOTHY O'KEEFE
+start.date: 2026-08-14
+end.date: 2026-08-15
+htmlLink: https://www.google.com/calendar/event?eid=NTk5YjVhdDY3M2tzNWs5YmMyaHBsbzFrdDNfMjAyNjA4MTQgdHJvb3N0bGl2ZUBt
+
+summary: DJ JEFF WIDNER
+description: POP MUSIC
+start.date: 2026-08-15
+end.date: 2026-08-16
+htmlLink: https://www.google.com/calendar/event?eid=XzhjcTM2ZGhvNnAzM2NiOWo2ZDFqYWI5azhvcTM0YjlvNjhwNGNiOWo4NHI0NmRocDhjcjQyaDFsNzAgdHJvb3N0bGl2ZUBt
+
+summary: GABRIEL HEINEMANN
+start.date: 2026-08-16
+end.date: 2026-08-17
+htmlLink: https://www.google.com/calendar/event?eid=NTdpY252anUzYmgxbGk1dDA2czZjMGZzMmwgdHJvb3N0bGl2ZUBt
+
+summary: JULIA KWAMYA // MARIE RAOULT // AVA RAIIN
+description: Stripped down Dream Pop and other Celestial Sounds
+start.date: 2026-08-18
+end.date: 2026-08-19
+htmlLink: https://www.google.com/calendar/event?eid=N25oNmltNHVobmhpMG9oMm41NG1rN2VvaHMgdHJvb3N0bGl2ZUBt
+
+summary: HABBINA HABBINA
+start.date: 2026-08-19
+end.date: 2026-08-20
+htmlLink: https://www.google.com/calendar/event?eid=NnZucnRmcWxpaXIydmFocmRpYzlidW9ybHAgdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-08-20
+end.date: 2026-08-21
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA4MjAgdHJvb3N0bGl2ZUBt
+
+summary: DANNY RAMOS
+start.date: 2026-08-21
+end.date: 2026-08-22
+htmlLink: https://www.google.com/calendar/event?eid=NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjA4MjEgdHJvb3N0bGl2ZUBt
+
+summary: DJ LOSSY
+start.date: 2026-08-22
+end.date: 2026-08-23
+htmlLink: https://www.google.com/calendar/event?eid=Xzg1MGowY3BpNjhvamNiYTI4Z3AzNmI5azZncms2YmEyNzExM2FiOWw4Y3NqNmQ5bThvcDNnZTFvNjggdHJvb3N0bGl2ZUBt
+
+summary: Andrew McCann Quartet
+start.date: 2026-08-23
+end.date: 2026-08-24
+htmlLink: https://www.google.com/calendar/event?eid=XzYwcGo2ZGk1NjhyM2diYTY2Z3NqMmI5azhsMTQ2YmEyNm9xamViOWs2NTFqNGQxbzY5MGppYzluNnMgdHJvb3N0bGl2ZUBt
+
+summary: John Dorney
+start.date: 2026-08-24
+end.date: 2026-08-25
+htmlLink: https://www.google.com/calendar/event?eid=M2k2dTdjM2Y0bDc5YXBrN2luZWZ1amdocDMgdHJvb3N0bGl2ZUBt
+
+summary: LUMENS
+description: An Evening of Sonic Mischief with Jeff Berner, Rob Heath and Tony Maimone
+start.date: 2026-08-25
+end.date: 2026-08-26
+htmlLink: https://www.google.com/calendar/event?eid=XzhoMmtjZGkxNzEyazhiOWg3NHI0NmI5azg0c2owYjlvOGdxMzZiOWo2Y29qZWRhMjZoMWoyaGE1NjRfMjAyNjA4MjUgdHJvb3N0bGl2ZUBt
+
+summary: LOUIS PRINCE
+start.date: 2026-08-26
+end.date: 2026-08-27
+htmlLink: https://www.google.com/calendar/event?eid=NnEybmc3OG0zZDFyNnY0cHM5Y2c5aW1vY2ogdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-08-27
+end.date: 2026-08-28
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA4MjcgdHJvb3N0bGl2ZUBt
+
+summary: DJs Lupe Loop and Mela
+description: feel good funk, international dance jams and vintage house
+start.date: 2026-08-29
+end.date: 2026-08-30
+htmlLink: https://www.google.com/calendar/event?eid=YWVnYmRkaHRuMzEwYjBybjEybmJ1aTg0Y21fMjAyNjA4MjcgdHJvb3N0bGl2ZUBt
+
+summary: Jon Madof & Nate Rappaport
+description: A set of improvised sounds and grooves with guitar, drums, percussion, and flutes.
+start.date: 2026-08-30
+end.date: 2026-08-31
+htmlLink: https://www.google.com/calendar/event?eid=XzZ0MzNnZ2E0Nm9vNDZiOW83NG9rNGI5azY0b2tjYjlvNjRvM2ViYTU2dDJqaWgxazc1MTMwaGhpOGsgdHJvb3N0bGl2ZUBt
+
+summary: ROB HEATH / NICE TRY KID
+description: Rob Heath's Nice Try, Kid!: a monthly night of unapproved and experimental music
+start.date: 2026-08-31
+end.date: 2026-09-01
+htmlLink: https://www.google.com/calendar/event?eid=dmptMGtnZ2Y0aDMwMGNvM2ptbGkxNGJsYW5fMjAyNjA4MzEgdHJvb3N0bGl2ZUBt
+
+summary: Phillip Santos, Michael Eaton, Evan Palmer
+start.date: 2026-09-01
+end.date: 2026-09-02
+htmlLink: https://www.google.com/calendar/event?eid=M2Y2Nm5zMnJzOTQwM3RpYmgwNHZoNm4xN2QgdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-09-03
+end.date: 2026-09-04
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA5MDMgdHJvb3N0bGl2ZUBt
+
+summary: First Vinyl Fridays with Steph
+start.date: 2026-09-04
+end.date: 2026-09-05
+htmlLink: https://www.google.com/calendar/event?eid=NGh2cXIwOHFocGlycXFyN25tbGF1NGk5a2xfMjAyNjA5MDQgdHJvb3N0bGl2ZUBt
+
+summary: DJ SUKI DIAZ
+start.date: 2026-09-05
+end.date: 2026-09-06
+htmlLink: https://www.google.com/calendar/event?eid=XzhwMWppZTlnOG9yNGFiOW44a3E0OGI5azhjcjQyYmEyNnAxM2ViYTQ2MHFqNGQ5bjg1MTQ4ZHBuNmMgdHJvb3N0bGl2ZUBt
+
+summary: TIRED HORSES
+description: psychedelic indie jazz quintet
+start.date: 2026-09-07
+end.date: 2026-09-08
+htmlLink: https://www.google.com/calendar/event?eid=NmpwZ3BjcXFubzhwazl2Y3ZpdmZvbHAwcXBfMjAyNjA5MDcgdHJvb3N0bGl2ZUBt
+
+summary: THE ACADEMY BLUES PROJECT
+description: “If you’re into psychedelic rock and you’re in New York right now, ABP should be at the top of your bucket list.” – New York Music Daily
+start.date: 2026-09-09
+end.date: 2026-09-10
+htmlLink: https://www.google.com/calendar/event?eid=Xzg5MjNjZ3BqNm9wajZiYTU3MG8zNGI5azhvb2s0YjlwOGNvMzRiYTQ4Y3FqaWM5bjZjcDRhY3E1ODggdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-09-10
+end.date: 2026-09-11
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA5MTAgdHJvb3N0bGl2ZUBt
+
+summary: DJ TIMOTHY O'KEEFE
+start.date: 2026-09-11
+end.date: 2026-09-12
+htmlLink: https://www.google.com/calendar/event?eid=NTk5YjVhdDY3M2tzNWs5YmMyaHBsbzFrdDNfMjAyNjA5MTEgdHJvb3N0bGl2ZUBt
+
+summary: DJ THE HEFKER GIRL
+description: Decirculated Dub, Mariachi, Pirate Radio and Everything in between
+start.date: 2026-09-12
+end.date: 2026-09-13
+htmlLink: https://www.google.com/calendar/event?eid=ZnV1anE4cnNramg1ZWZpbDRkZTRzMGhwcTdfMjAyNjA5MTIgdHJvb3N0bGl2ZUBt
+
+summary: SPAGHETTI EASTERN ELECTRO DUB
+description: Dub Meets Raga Meets Psychedelia
+start.date: 2026-09-13
+end.date: 2026-09-14
+htmlLink: https://www.google.com/calendar/event?eid=XzhwMWtjZ3EzNm9vMzJiYTQ2Z3BqNGI5azZ0MmsyYmEyNnNzMzRiYTI2OHBrOGQ5bDY4cDM4ZzlwNjAgdHJvb3N0bGl2ZUBt
+
+summary: NOAH AMICK
+description: electric indie jazz
+start.date: 2026-09-14
+end.date: 2026-09-15
+htmlLink: https://www.google.com/calendar/event?eid=XzZvcDQ4Y3BpOG9vamFiOWs2b3NqOGI5azY4c2tjYmExOGwzMzZiYTM2cDMzZWdwaDhrcTQyYzIxODRfMjAyNjA5MTQgdHJvb3N0bGl2ZUBt
+
+summary: DEVIN GRAY TRIO
+description: freely improvised sonic landscapes
+start.date: 2026-09-15
+end.date: 2026-09-16
+htmlLink: https://www.google.com/calendar/event?eid=XzZzcGs4Y2kxNmdyajhiYTY4ZDBqMmI5azhjcmowYmEyNjkxMzRiOWo2ZDBqaWgxcDc0cDMyYzlsOG8gdHJvb3N0bGl2ZUBt
+
+summary: DJ Barba Yiorgi
+description: WORLD PSYCHEDELIC GROOVE
+start.date: 2026-09-17
+end.date: 2026-09-18
+htmlLink: https://www.google.com/calendar/event?eid=XzhkMGowZGkxOGtyM2NiOWo4bDBrNGI5azY1MjM2YjlwNmNvajhiOXA2ZDIzaWUyNjhjczM4YzIxNjRfMjAyNjA5MTcgdHJvb3N0bGl2ZUBt
+
+summary: DANNY RAMOS
+start.date: 2026-09-18
+end.date: 2026-09-19
+htmlLink: https://www.google.com/calendar/event?eid=NmtsMjE2ZWZ1ZWw0ODVhc2UwY3M2NHFqMGlfMjAyNjA5MTggdHJvb3N0bGl2ZUBt
+
+summary: Jonny Compolo
+description: Solo Piano
+start.date: 2026-09-18
+end.date: 2026-09-19
+htmlLink: https://www.google.com/calendar/event?eid=XzhsMjMyY2kyNmdvMzZiYTY2MHA0Y2I5azc0cWo0YmEyODhzM2diYTE2b29qMmNoZzZjcTM4ZHE0NmMgdHJvb3N0bGl2ZUBt
+
+summary: DJ GUTZILA
+start.date: 2026-09-19
+end.date: 2026-09-20
+htmlLink: https://www.google.com/calendar/event?eid=NjA0Mm80NzkzZnZxaWlhZDV1NnBlN2E2NThfMjAyNjA5MTkgdHJvb3N0bGl2ZUBt
+
+summary: ELECTRIC PUG
+description: Featuring Flautist Rober Dick
+start.date: 2026-09-20
+end.date: 2026-09-21
+htmlLink: https://www.google.com/calendar/event?eid=XzY5MWs2ZDFvOGwxMzJiYTU4b3NqMmI5azZ0MTNjYjlwOG9wazJiYTM3MTBqZWdxMjY4c2thaDFpNjAgdHJvb3N0bGl2ZUBt

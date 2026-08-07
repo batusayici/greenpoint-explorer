@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-05",
+  "version": "2026-08-06",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -919,12 +919,15 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-05",
+      "updatedAt": "2026-08-06",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
-        "comedy-secret-showcase-0808"
+        "comedy-secret-showcase-0808",
+        "comedy-raanan-hershberg-0811",
+        "comedy-carmen-lagala-0815",
+        "comedy-dani-castaneda-0816"
       ]
     },
     {
@@ -967,11 +970,13 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-05",
+      "updatedAt": "2026-08-06",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-watch-me-0807"
+        "film-noir-watch-me-0807",
+        "film-noir-cult-cinema-0811",
+        "film-noir-watch-me-0813"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1026,11 +1031,7 @@
       "updatedAt": "2026-08-01",
       "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
       "lat": 40.737671,
-      "lng": -73.955155,
-      "relatedCardIds": [
-        "scrappleland-backgammon-0804",
-        "scrappleland-pinball-league-0805"
-      ]
+      "lng": -73.955155
     },
     {
       "id": "flower-cat",
@@ -1079,10 +1080,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-07-16",
+      "updatedAt": "2026-08-06",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription"
+        "flower-cat-subscription",
+        "flowercat-floral-kitten-0808"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -1263,15 +1265,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-05",
+      "updatedAt": "2026-08-06",
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-wednesday-programs-0805",
         "library-thursday-programs-0806",
         "library-friday-garden-0807",
         "library-tuesday-programs-0811",
-        "library-wednesday-programs-0812"
+        "library-wednesday-programs-0812",
+        "library-thursday-programs-0813"
       ]
     },
     {
@@ -1470,130 +1472,6 @@
       "lng": -73.960566
     },
     {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "troost-tired-horses-0803",
-      "title": "Tired Horses at Troost",
-      "kicker": "Psychedelic indie jazz quintet",
-      "endsAt": "2026-08-03T23:59:00-04:00",
-      "summary": "Tired Horses bring their psychedelic indie jazz quintet to Troost.",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "startsAt": "2026-08-03T00:00:00-04:00"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-07-25"
-        }
-      ],
-      "id": "troost-ken-kobayashi-0804",
-      "title": "Ken Kobayashi Quartet at Troost",
-      "kicker": "Jazz, groove & improvisation",
-      "endsAt": "2026-08-04T23:59:00-04:00",
-      "summary": "The Ken Kobayashi Quartet plays jazz, groove and improvisation.",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "startsAt": "2026-08-04T00:00:00-04:00"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-30",
-      "locationName": "Hide & Seek",
-      "address": "593 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://hideandseek.nyc"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hide & Seek",
-          "url": "https://hideandseek.nyc",
-          "publisher": "Hide & Seek",
-          "date": "2026-07-30"
-        }
-      ],
-      "id": "hide-and-seek-jazz-0805",
-      "title": "Wine Down Wednesday live jazz",
-      "kicker": "Live jazz with your wine",
-      "startsAt": "2026-08-05T19:00:00-04:00",
-      "endsAt": "2026-08-05T23:59:00-04:00",
-      "recurring": true,
-      "summary": "The weekly live-jazz night at the all-day cafe and bar.",
-      "lat": 40.72293,
-      "lng": -73.950617
-    },
-    {
       "category": "food_drink",
       "audience": [
         "resident"
@@ -1690,7 +1568,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-08-03",
+      "updatedAt": "2026-08-06",
       "id": "hana-bottomless-makgeolli",
       "title": "Bottomless makgeolli Thursdays & Sundays",
       "kicker": "$30 bottomless makgeolli",
@@ -1720,7 +1598,10 @@
       ],
       "lat": 40.736437,
       "lng": -73.951511,
-      "sourceQuote": "Join us at Hana Makgeolli on Thursdays and Sundays for Bottomless Makgeolli.\nThursdays, 5PM—11PM and Sundays, 2PM–8PM"
+      "sourceQuote": "Join us at Hana Makgeolli on Thursdays and Sundays for Bottomless Makgeolli.\nThursdays, 5PM—11PM and Sundays, 2PM–8PM",
+      "relatedCardIds": [
+        "hana-tour-tasting-0809"
+      ]
     },
     {
       "category": "new_business",
@@ -2118,48 +1999,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "filters": [
-        "live_music"
-      ],
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-07-27"
-        }
-      ],
-      "id": "troost-dervisi-0805",
-      "title": "Dervisi at Troost",
-      "kicker": "Greek gangsta blues, rembetika",
-      "endsAt": "2026-08-05T23:59:00-04:00",
-      "summary": "Dervisi brings Greek gangsta blues from the ’30s, punk and rembetika to the Manhattan Avenue bar.",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "startsAt": "2026-08-05T00:00:00-04:00"
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-27",
-      "updatedAt": "2026-07-27",
+      "updatedAt": "2026-08-06",
       "locationName": "Troost",
       "address": "1011 Manhattan Ave",
       "filters": [
@@ -2187,7 +2027,10 @@
       "summary": "DJ Barba Yiorgi spins world psychedelic groove at the Manhattan Avenue bar.",
       "lat": 40.733463,
       "lng": -73.955035,
-      "startsAt": "2026-08-06T00:00:00-04:00"
+      "startsAt": "2026-08-06T00:00:00-04:00",
+      "relatedCardIds": [
+        "troost-vinyl-fridays-0807"
+      ]
     },
     {
       "id": "last-place-chess-chill",
@@ -2539,140 +2382,6 @@
       "lng": -73.943361
     },
     {
-      "id": "scrappleland-backgammon-0804",
-      "category": "event",
-      "title": "Tuesday Backgammon Club",
-      "kicker": "Backgammon night, every Tuesday",
-      "startsAt": "2026-08-04T20:00:00-04:00",
-      "endsAt": "2026-08-04T22:00:00-04:00",
-      "recurring": true,
-      "locationName": "Scrappleland",
-      "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1150 Manhattan Ave, Brooklyn, NY",
-      "filters": [
-        "games"
-      ],
-      "summary": "A weekly board-game sit-down at the Manhattan Avenue pinball bar.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://scrappleland.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Scrappleland events calendar",
-          "url": "https://scrappleland.com",
-          "publisher": "Scrappleland",
-          "date": "2026-08-01"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "relatedCardIds": [
-        "scrappleland"
-      ],
-      "lat": 40.737671,
-      "lng": -73.955155
-    },
-    {
-      "id": "scrappleland-pinball-league-0805",
-      "category": "event",
-      "title": "Wednesday Pinball League",
-      "kicker": "League night on the pinball machines",
-      "startsAt": "2026-08-05T20:00:00-04:00",
-      "endsAt": "2026-08-05T22:00:00-04:00",
-      "recurring": true,
-      "locationName": "Scrappleland",
-      "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "1150 Manhattan Ave, Brooklyn, NY",
-      "filters": [
-        "games"
-      ],
-      "summary": "The Manhattan Avenue bar's weekly ScrappleLeague session.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://scrappleland.com"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Scrappleland events calendar",
-          "url": "https://scrappleland.com",
-          "publisher": "Scrappleland",
-          "date": "2026-08-01"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "relatedCardIds": [
-        "scrappleland"
-      ],
-      "lat": 40.737671,
-      "lng": -73.955155
-    },
-    {
-      "id": "bcc-knits-leggings-0804",
-      "category": "event",
-      "title": "Sew leggings or bike shorts (two-part class)",
-      "kicker": "Weeknight stretchy-knits sewing",
-      "startsAt": "2026-08-04T18:30:00-04:00",
-      "endsAt": "2026-08-04T23:59:00-04:00",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "summary": "Four spots were left when the studio's newsletter went out.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/products/sewing-with-knits-leggings-or-bike-shorts-weeknights-2-parts"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-31)",
-          "url": "https://brooklyncraftcompany.com/collections/all-workshops",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-31"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "lat": 40.730461,
-      "lng": -73.953114
-    },
-    {
       "id": "bcc-crafty-hour-tie-dye-0807",
       "category": "event",
       "title": "Crafty Hour: Tie Dye",
@@ -2855,226 +2564,6 @@
       "relatedCardIds": [
         "poochs-parlor"
       ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": true,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "id": "summerstarz-ford-v-ferrari-0807",
-      "title": "SummerStarz: Ford v Ferrari at Transmitter Park",
-      "kicker": "Free Friday movie on the lawn",
-      "startsAt": "2026-08-07T20:00:00-04:00",
-      "endsAt": "2026-08-07T23:59:00-04:00",
-      "locationName": "WNYC Transmitter Park",
-      "address": "1 Greenpoint Ave",
-      "filters": [
-        "family_kids"
-      ],
-      "summary": "Town Square's series runs every Friday through August 21 — bring a blanket and come early.",
-      "actions": [
-        {
-          "label": "Free tickets",
-          "type": "rsvp",
-          "url": "https://www.townsquarebk.org"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Free SummerStarz Movies",
-          "url": "https://www.townsquarebk.org",
-          "publisher": "Town Square BK",
-          "date": "2026-08-01"
-        }
-      ],
-      "lat": 40.729537,
-      "lng": -73.960287
-    },
-    {
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "id": "library-tuesday-programs-0804",
-      "title": "Tuesday at Greenpoint Library",
-      "kicker": "Teen crafts and garden hands",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "free": true,
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "startsAt": "2026-08-04T15:00:00-04:00",
-      "endsAt": "2026-08-04T23:59:00-04:00",
-      "summary": "The library's teen interns run a DIY bracelet and keychain craft hour for ages 13–19, then Greenhouse Gang takes on up-potting, weeding, and nursery maintenance.",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        },
-        {
-          "label": "Greenhouse RSVP",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/greenhouse-gang-tickets-1987549789925"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-29"
-        }
-      ]
-    },
-    {
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "id": "threes-board-game-speed-dating-0805",
-      "title": "Board game speed dating at Threes",
-      "kicker": "Board games, ages 25–39",
-      "category": "event",
-      "filters": [
-        "food_drink",
-        "games"
-      ],
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "locationName": "Threes Brewing",
-      "address": "113 Franklin St, Brooklyn, NY 11222",
-      "startsAt": "2026-08-05T19:00:00-04:00",
-      "endsAt": "2026-08-05T23:59:00-04:00",
-      "summary": "Sit down with a group of singles at the Franklin Street taproom and roll the dice. From $25.",
-      "actions": [
-        {
-          "label": "Register",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/board-game-speed-dating-threes-brewing-greenpoint-nyc-ages-25-39-tickets-1990995210270"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-29"
-        }
-      ],
-      "lat": 40.73024,
-      "lng": -73.957805
-    },
-    {
-      "evidenceStrength": "medium_high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-07-30",
-      "updatedAt": "2026-07-30",
-      "id": "one-day-choir-fast-car-0805",
-      "title": "One-day choir sings 'Fast Car'",
-      "kicker": "No audition or experience needed",
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "audience": [
-        "resident",
-        "creator"
-      ],
-      "locationName": "100 Sutton St",
-      "address": "100 Sutton St, Brooklyn, NY 11222",
-      "startsAt": "2026-08-05T19:00:00-04:00",
-      "endsAt": "2026-08-05T23:59:00-04:00",
-      "summary": "Sing Tracy Chapman's \"Fast Car\" in harmony with a room of strangers, by donation.",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/fast-car-tracy-chapman-one-day-choir-tickets-1994985745067"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Tidy up the neighborhood, sing Tracy Chapman, and more — What's Happening, Greenpoint? (7/30-8/5)",
-          "url": "https://greenpointers.com/2026/07/29/tidy-up-the-neighborhood-sing-tracy-chapman-and-more-whats-happening-greenpoint-7-30-8-5/",
-          "publisher": "Greenpointers",
-          "date": "2026-07-29"
-        }
-      ],
-      "lat": 40.726545,
-      "lng": -73.940559
-    },
-    {
-      "id": "library-wednesday-programs-0805",
-      "category": "event",
-      "title": "Wednesday at Greenpoint Library",
-      "kicker": "Toddler sessions, teen night, garden club",
-      "startsAt": "2026-08-05T10:30:00-04:00",
-      "endsAt": "2026-08-05T23:59:00-04:00",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "filters": [
-        "family_kids"
-      ],
-      "summary": "Two back-to-back Toddler Time slots open the day, the third-floor demonstration garden opens for quiet study, and a We Speak NYC English class runs in the afternoon.",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library branch calendar",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-03"
-        }
-      ],
-      "sourceQuote": "Toddler Time\nWed, Aug 5 10:30am\nGreenpoint Library\nToddler Time\nWed, Aug 5 11:15am\nGreenpoint Library\nGreenpoint Library Open Roof Hours\nWed, Aug 5 1:00pm\nGreenpoint, Demonstration Garden\nRead and Play\nWed, Aug 5 1:00pm\nGreenpoint Library\nTeen Time: Twilight\nWed, Aug 5 3:00pm\nGreenpoint, Eco Lab 3 (Teens)\nFree English Class (We Speak NYC)\nWed, Aug 5 3:30pm\nGreenpoint Library\nOur Garden Club\nWed, Aug 5 4:30pm\nGreenpoint, Demonstration Garden",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
     },
     {
       "id": "library-thursday-programs-0806",
@@ -3401,7 +2890,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
+      "updatedAt": "2026-08-06",
       "id": "nb-chess-parkhouse-0806",
       "title": "North Brooklyn Chess at the Parkhouse",
       "kicker": "Casual chess, beginners to sharks",
@@ -3410,11 +2899,11 @@
         "games"
       ],
       "startsAt": "2026-08-06T19:00:00-04:00",
-      "endsAt": "2026-08-06T23:59:00-04:00",
+      "endsAt": "2026-08-20T23:00:00-04:00",
       "locationName": "McCarren Parkhouse",
       "address": "McCarren Park, Brooklyn, NY 11222",
       "geocodeQuery": "McCarren Park, Brooklyn, NY",
-      "summary": "The group is setting up shop at the park building for a summer residency this August. RSVPs encouraged.",
+      "summary": "North Brooklyn Chess runs the parkhouse every Thursday night through the summer. All levels; boards provided.",
       "actions": [
         {
           "label": "RSVP",
@@ -3430,10 +2919,11 @@
           "date": "2026-08-05"
         }
       ],
-      "sourceQuote": "North Brooklyn Chess Residency @ McCarren Parkhouse, 7 p.m.: The folks from North Brooklyn Chess are setting up shop at the Parkhouse this August! Casual, social chess, for both beginners and high-skill players. RSVPs encouraged.",
+      "sourceQuote": "This summer, the chess club has found a new home through its residency at the McCarren Parkhouse (855 Lorimer St.) hosting weekly chess nights every Thursday from 7 to 11pm.",
       "evidenceStrength": "medium_high",
       "lat": 40.721159,
-      "lng": -73.952879
+      "lng": -73.952879,
+      "recurring": true
     },
     {
       "audience": [
@@ -3895,6 +3385,958 @@
       "trustRisk": "low",
       "createdAt": "2026-08-05",
       "updatedAt": "2026-08-06"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "troost-vinyl-fridays-0807",
+      "title": "First Vinyl Fridays with Steph at Troost",
+      "kicker": "All-vinyl set to open the weekend",
+      "summary": "Steph opens the month's vinyl series at the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-07T00:00-04:00",
+      "endsAt": "2026-08-07T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "sourceQuote": "summary: First Vinyl Fridays with Steph\nstart.date: 2026-08-07",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "troost-barba-yiorgi-0806"
+      ],
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "troost-barba-yiorgi-0813",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "summary": "The psychedelic-groove residency returns for another Thursday. No set start time is listed on the venue calendar.",
+      "startsAt": "2026-08-13T00:00-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "sourceQuote": "summary: DJ Barba Yiorgi\nstart.date: 2026-08-13",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "troost-jeff-widner-0815",
+      "title": "DJ Jeff Widner at Troost",
+      "kicker": "Pop records all night",
+      "summary": "A pop-leaning Saturday set at the Manhattan Avenue bar. The venue calendar lists no start time.",
+      "startsAt": "2026-08-15T00:00-04:00",
+      "endsAt": "2026-08-15T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "sourceQuote": "summary: DJ JEFF WIDNER\nstart.date: 2026-08-15",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.733463,
+      "lng": -73.955035
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "library-thursday-programs-0813",
+      "title": "Thursday at Greenpoint Library",
+      "kicker": "Storytimes, sewing, teen tech, ESOL",
+      "summary": "Babies & Books lapsits at 10:30 and 11:15, drop-in sewing machines at 1, English class at 2, Teen Tech at 3, Friends meeting and Sunset Storytime at 6.",
+      "startsAt": "2026-08-13T10:30-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "library-friday-garden-0814",
+      "title": "Friday in the library rooftop garden",
+      "kicker": "Sensory hour, garden educator, movie",
+      "summary": "Sensory Garden Hour for under-fives at 10:30, a garden educator on the roof at 3, and an after-school movie in Eco Lab 1 at the same hour.",
+      "startsAt": "2026-08-14T10:30-04:00",
+      "endsAt": "2026-08-14T23:59:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: After School Movie",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "film-noir-cult-cinema-0811",
+      "title": "Cult Cinema at Film Noir",
+      "kicker": "The weekly late-night cult slot",
+      "summary": "The Meserole Avenue cinema's standing cult programme. The listing names the slot but not the title screening.",
+      "startsAt": "2026-08-11T21:00-04:00",
+      "endsAt": "2026-08-11T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: CULT CINEMA",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2020/11/24/cult-cinema-wncry-7tb8g-x6f5d-b3gye-5t3rg-nl6z9-69nam-72ksn",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "film-noir-watch-me-0813",
+      "title": "Watch Me continues at Film Noir Cinema",
+      "kicker": "Second week of the run",
+      "summary": "The feature holds over for a second week at the Meserole Avenue cinema after its premiere screening.",
+      "startsAt": "2026-08-13T19:00-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: WATCH ME",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "comedy-raanan-hershberg-0811",
+      "title": "Raanan Hershberg at Greenpoint Comedy Club",
+      "kicker": "Headline set, $25",
+      "summary": "A one-off headline booking on a Tuesday, outside the club's usual Thursday-to-Saturday showcase run.",
+      "startsAt": "2026-08-11T19:30-04:00",
+      "endsAt": "2026-08-11T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Tue Aug 11, 2026, 7:30 PM\nGreenpoint Comedy Club Presents: Raanan Hershberg",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "lat": 40.729567,
+      "lng": -73.958337
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "comedy-carmen-lagala-0815",
+      "title": "Carmen Lagala at Greenpoint Comedy Club",
+      "kicker": "Early Saturday headline, $25",
+      "summary": "A named booking in the 6pm slot, before the club's regular Saturday showcases take over the room.",
+      "startsAt": "2026-08-15T18:00-04:00",
+      "endsAt": "2026-08-15T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Sat Aug 15, 2026, 6:00 PM\nGreenpoint Comedy Club Presents: Carmen Lagala",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "lat": 40.729567,
+      "lng": -73.958337
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "comedy-dani-castaneda-0816",
+      "title": "Amigos en Común at Greenpoint Comedy Club",
+      "kicker": "Spanish-language comedy, $20",
+      "summary": "Dani Castañeda hosts a Spanish-language showcase — a Sunday booking outside the club's usual run.",
+      "startsAt": "2026-08-16T19:00-04:00",
+      "endsAt": "2026-08-16T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Sun Aug 16, 2026, 7:00 PM\nDani Castañeda presenta Amigos en Común",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ],
+      "lat": 40.729567,
+      "lng": -73.958337
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "carcosa-malifaux-monthly-0808",
+      "title": "Malifaux Monthly at Carcosa Club",
+      "kicker": "All-day tabletop wargaming",
+      "summary": "The club's monthly Malifaux meet runs most of the day. No price is stated on the listing.",
+      "startsAt": "2026-08-08T09:45-04:00",
+      "endsAt": "2026-08-08T18:00-04:00",
+      "filters": [
+        "games"
+      ],
+      "locationName": "Carcosa Club",
+      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: Malifaux Monthly",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.carcosaclub.com/events/2026/7/12/malifaux-monthly-b5wzj"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Carcosa Club",
+          "url": "https://www.carcosaclub.com/events/2026/7/12/malifaux-monthly-b5wzj",
+          "publisher": "Carcosa Club",
+          "date": "2026-08-06"
+        }
+      ],
+      "geocodeQuery": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.732676,
+      "lng": -73.954395
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "carcosa-hot-dog-day-0815",
+      "title": "HVAC Hot Dog Day at Carcosa Club",
+      "kicker": "Hot dogs and games, all day",
+      "summary": "An all-day fundraiser-style gathering at the Manhattan Avenue game club. The listing states no admission price.",
+      "startsAt": "2026-08-15T10:00-04:00",
+      "endsAt": "2026-08-15T18:30-04:00",
+      "filters": [
+        "games"
+      ],
+      "locationName": "Carcosa Club",
+      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: Carcosa HVAC Hot Dog Day",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.carcosaclub.com/events/2026/8/5/carcosa-hvac-hot-dog-day"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Carcosa Club",
+          "url": "https://www.carcosaclub.com/events/2026/8/5/carcosa-hvac-hot-dog-day",
+          "publisher": "Carcosa Club",
+          "date": "2026-08-06"
+        }
+      ],
+      "geocodeQuery": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.732676,
+      "lng": -73.954395
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "good-room-rumba-venezuela-0806",
+      "title": "RUMBA for Venezuela at Good Room",
+      "kicker": "Benefit night, five DJs",
+      "summary": "INVT, MPeach, Manu Miran, Naim Zarzour and CHOQUE share the bill at the Meserole Avenue club.",
+      "startsAt": "2026-08-06T19:00-04:00",
+      "endsAt": "2026-08-06T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "sourceQuote": "RUMBA for Venezuela ft INVT, MPeach, Manu Miran, Naim Zarzour, CHOQUE",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-08-06"
+        }
+      ],
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "good-room-stuntsz-0815",
+      "title": "Stuntsz: Body Language at Good Room",
+      "kicker": "Six DJs on one bill",
+      "summary": "Ben Wagner, James Axon, Partok, Leo Scheck, Jason Wang and Markus Z play the Meserole Avenue club.",
+      "startsAt": "2026-08-15T19:00-04:00",
+      "endsAt": "2026-08-15T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "locationName": "Good Room",
+      "address": "98 Meserole Ave",
+      "sourceQuote": "Stuntsz: Body Language ft Ben Wagner, James Axon, Partok, Leo Scheck, Jason Wang, Markus Z",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://donyc.com/venues/good-room"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "DoNYC",
+          "url": "https://donyc.com/venues/good-room",
+          "publisher": "DoNYC",
+          "date": "2026-08-06"
+        }
+      ],
+      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.726909,
+      "lng": -73.95281
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "hana-tour-tasting-0809",
+      "title": "Tour and tasting at Hana Makgeolli",
+      "kicker": "45 minutes inside the brewery",
+      "summary": "The production team walks you through the Dupont Street facility and the history of sool, then pours a guided tasting before the room opens.",
+      "startsAt": "2026-08-09T13:30-04:00",
+      "endsAt": "2026-08-09T14:30-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Hana Makgeolli",
+      "address": "201 Dupont St",
+      "sourceQuote": "Our production team will take you through our facility and cover everything from the history of sool to how our wines are made followed by a guided tasting in our tasting room prior to opening hours.",
+      "actions": [
+        {
+          "label": "Book a tour",
+          "type": "learn_more",
+          "url": "https://hanamakgeolli.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hana Makgeolli",
+          "url": "https://hanamakgeolli.com/events",
+          "publisher": "Hana Makgeolli",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "hana-bottomless-makgeolli"
+      ],
+      "lat": 40.736437,
+      "lng": -73.951511
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "hana-tour-tasting-0820",
+      "title": "Tour and tasting at Hana Makgeolli",
+      "kicker": "45 minutes inside the brewery",
+      "summary": "An evening slot for the brewery walk-through and guided tasting, held before the tasting room opens to walk-ins.",
+      "startsAt": "2026-08-20T17:00-04:00",
+      "endsAt": "2026-08-20T18:00-04:00",
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Hana Makgeolli",
+      "address": "201 Dupont St",
+      "sourceQuote": "Our production team will take you through our facility and cover everything from the history of sool to how our wines are made followed by a guided tasting in our tasting room prior to opening hours.",
+      "actions": [
+        {
+          "label": "Book a tour",
+          "type": "learn_more",
+          "url": "https://hanamakgeolli.com/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hana Makgeolli",
+          "url": "https://hanamakgeolli.com/events",
+          "publisher": "Hana Makgeolli",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.736437,
+      "lng": -73.951511
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "flowercat-floral-kitten-0808",
+      "title": "Floral arranging with author Stacey Yu",
+      "kicker": "Build an arrangement, meet the author",
+      "summary": "A hands-on arranging workshop doubling as a launch for the novel Kitten. No price is stated on the listing.",
+      "startsAt": "2026-08-08T18:00-04:00",
+      "endsAt": "2026-08-08T20:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "sourceQuote": "Join author Stacey Yu to create a bespoke flower arrangement and celebrate Stacey's new novel, Kitten.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-06"
+        }
+      ],
+      "relatedCardIds": [
+        "flower-cat"
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "flowercat-eclipse-season-0809",
+      "title": "Navigating Eclipse Season with E Wray",
+      "kicker": "Astrology workshop, space limited",
+      "summary": "E Wray walks through the last Pisces eclipses and the first in Leo. Registration is required and space is limited.",
+      "startsAt": "2026-08-09T20:30-04:00",
+      "endsAt": "2026-08-09T21:30-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "sourceQuote": "Eclipse season comes again in August, when we’ll experience the last of a series of eclipses in Pisces, and the first of a series of eclipses in Leo.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "flowercat-fantasy-lab-0816",
+      "title": "Fantasy Lab at Flower Cat",
+      "kicker": "Cocktails and a sex-ed talk",
+      "summary": "Educator Miss Bloom leads a conversation on fantasy, desire and communication. A ticket includes one cocktail; no price is stated.",
+      "startsAt": "2026-08-16T19:00-04:00",
+      "endsAt": "2026-08-16T21:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "sourceQuote": "An elegant evening of cocktails, conversation, and sex education exploring fantasy, desire, and communication.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "flowercat-cozy-reading-0817",
+      "title": "Cozy Reading Night with Yellow Peril Books",
+      "kicker": "$10 with a drink, bring a book",
+      "summary": "A quiet reading evening run with Yellow Peril Books, who also sell titles on site. The ticket covers a drink of your choice.",
+      "startsAt": "2026-08-17T18:30-04:00",
+      "endsAt": "2026-08-17T20:30-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Flower Cat",
+      "address": "162 Noble St, Brooklyn, NY 11222",
+      "sourceQuote": "Tickets are $10 and include a beverage of your choice from Flower Cat.",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://flowercat.nyc/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flower Cat",
+          "url": "https://flowercat.nyc/events",
+          "publisher": "Flower Cat",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.728678,
+      "lng": -73.954258
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "summerstarz-project-hail-mary-0814",
+      "title": "SummerStarz: Project Hail Mary",
+      "kicker": "Free waterfront movie night",
+      "summary": "The free Friday series continues on the waterfront lawn. Bring a blanket and a picnic; tickets are free but requested in advance.",
+      "startsAt": "2026-08-14T20:00-04:00",
+      "endsAt": "2026-08-14T23:59:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "WNYC Transmitter Park",
+      "address": "1 Greenpoint Ave",
+      "sourceQuote": "Fridays, J uly 24th to August 21st, 8 PM\nTransmitter Park, B K | 1 Gre e npoint Ave.\nFri. 8/14 - Project Hail Mary",
+      "actions": [
+        {
+          "label": "Get free tickets",
+          "type": "learn_more",
+          "url": "https://www.townsquarebk.org"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Town Square BK",
+          "url": "https://www.townsquarebk.org",
+          "publisher": "Town Square BK",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.729537,
+      "lng": -73.960287
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": true,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-06",
+      "updatedAt": "2026-08-06",
+      "id": "mcgolrick-movies-guardians-0819",
+      "title": "Movies Under the Stars: Guardians of the Galaxy",
+      "kicker": "Free outdoor screening on the lawn",
+      "summary": "NYC Parks screens the 2014 film on the lawn at Monitor Street and Driggs Avenue. Free, no ticket needed.",
+      "startsAt": "2026-08-19T20:00-04:00",
+      "endsAt": "2026-08-19T22:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Msgr McGolrick Park",
+      "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
+      "sourceQuote": "Movies Under the Stars: Guardians of The Galaxy (2014)",
+      "actions": [
+        {
+          "label": "Park events",
+          "type": "learn_more",
+          "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "NYC Parks",
+          "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
+          "publisher": "NYC Parks",
+          "date": "2026-08-06"
+        }
+      ],
+      "lat": 40.724458,
+      "lng": -73.943361
     }
   ]
 }
