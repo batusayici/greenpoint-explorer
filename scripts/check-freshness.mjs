@@ -23,7 +23,24 @@ const ledger = JSON.parse(readFileSync(join(dataDir, "ingest-ledger.json"), "utf
 const seed = JSON.parse(readFileSync(join(dataDir, "cards.json"), "utf8"));
 
 const stampMode = process.argv.includes("--stamp");
+// --record appends today's datedUpcoming7d to the trend history. Explicit
+// rather than automatic so an ad-hoc local check stays read-only and does not
+// dirty the tree; the scheduled ingest routine is what should be recording.
+const recordMode = process.argv.includes("--record");
 const now = new Date();
+
+const historyPath = join(dataDir, "freshness-history.json");
+let history = [];
+let historyDescription = null;
+if (existsSync(historyPath)) {
+  try {
+    const h = JSON.parse(readFileSync(historyPath, "utf8"));
+    history = h.runs ?? [];
+    historyDescription = h.description ?? null; // preserve provenance notes across --record
+  } catch {
+    /* unreadable history — judge the feed without a trend rather than crash */
+  }
+}
 
 // L11b: fold in the last fetch run's reachability when there is one. The
 // report is gitignored and absent on fresh checkouts and at build time — no
@@ -43,7 +60,27 @@ if (!stampMode && existsSync(reportPath)) {
   }
 }
 
-const a = assessFreshness({ lastRunAt: ledger.lastRunAt, now, cards: seed.cards, fetchReport });
+const a = assessFreshness({ lastRunAt: ledger.lastRunAt, now, cards: seed.cards, fetchReport, history });
+
+if (recordMode) {
+  const today = now.toISOString().slice(0, 10);
+  const runs = history.filter((r) => r.date !== today); // one record per day, last write wins
+  runs.push({ date: today, datedUpcoming: a.datedUpcoming });
+  runs.sort((x, y) => x.date.localeCompare(y.date));
+  writeFileSync(
+    historyPath,
+    JSON.stringify(
+      {
+        description:
+          historyDescription ??
+          "L11c trend history — one datedUpcoming7d reading per day, written by check-freshness.mjs --record. Compared same-weekday-to-same-weekday; the feed sawtooths, so run-to-run would cry wolf every weekend.",
+        runs: runs.slice(-90),
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+}
 
 if (stampMode) {
   writeFileSync(
@@ -56,10 +93,27 @@ const reachBit = a.reach
   ? ` reach=${a.reach.attempted - a.reach.errored}/${a.reach.attempted}` +
     ` sourcesUnreachable=${a.sourcesUnreachable} browserFetchDown=${a.browserFetchDown}`
   : " reach=no-report";
+const trendBit = a.trend
+  ? ` trend=${a.trend.prior}→${a.trend.current} over ${a.trend.spanDays}d (${(a.trend.dropRatio * 100).toFixed(0)}%)`
+  : " trend=no-baseline";
 console.log(
   `[freshness] lastRunAt=${ledger.lastRunAt} datedUpcoming7d=${a.datedUpcoming} ` +
-    `staleIngest=${a.staleIngest} thinFeed=${a.thinFeed}${stampMode ? "" : reachBit} → ${a.fresh ? "FRESH" : "NOT FRESH"}${stampMode ? " (stamp written)" : ""}`,
+    `staleIngest=${a.staleIngest} thinFeed=${a.thinFeed}${stampMode ? "" : reachBit + trendBit} → ${a.fresh ? "FRESH" : "NOT FRESH"}${stampMode ? " (stamp written)" : ""}`,
 );
+
+// Deliberately a WARN with no exit code. thinFeed catches a cliff and should
+// break the run; a trend is a judgement call with known false-alarm risk (the
+// kill criteria are two false alarms in four weeks), and a noisy alarm that
+// halts the ingest is worse than no alarm at all. The growth readout reads
+// this line — that is the consumer that matters.
+if (!stampMode && a.decliningFeed) {
+  console.error(
+    `[freshness] WARN: feed declining — ${a.trend.prior} → ${a.trend.current} dated-upcoming ` +
+      `over ${a.trend.spanDays} days (${(a.trend.dropRatio * 100).toFixed(0)}% drop, bar is ` +
+      `${(a.trend.minDropRatio * 100).toFixed(0)}%). The floor of 10 will not catch this.\n` +
+      "[freshness]   Supply decay, not a quiet week, unless the roster says otherwise. Check roster yield before seeding.",
+  );
+}
 
 if (!a.fresh && !stampMode) {
   const why = [

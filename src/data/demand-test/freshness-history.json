@@ -1,0 +1,19 @@
+{
+  "description": "L11c trend history — one datedUpcoming7d reading per day, written by check-freshness.mjs --record. Compared same-weekday-to-same-weekday; the feed sawtooths, so run-to-run would cry wolf every weekend. Seeded 2026-08-06 from the readouts of record ONLY — the growth-engine §1 baseline of 38 is real but carries no exact date ('last week of July'), so it is deliberately not seeded as a data point. First real trend read lands once a same-weekday pair exists.",
+  "runs": [
+    {
+      "date": "2026-08-03",
+      "datedUpcoming": 28,
+      "source": "docs/growth/readouts/2026-08-03.md"
+    },
+    {
+      "date": "2026-08-04",
+      "datedUpcoming": 27,
+      "source": "docs/growth/readouts/2026-08-04.md"
+    },
+    {
+      "date": "2026-08-06",
+      "datedUpcoming": 27
+    }
+  ]
+}
