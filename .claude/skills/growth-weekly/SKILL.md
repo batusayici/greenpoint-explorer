@@ -193,12 +193,12 @@ returned 403 on CONNECT). Without both, every run lands `[data pending]`. Local
   cloud.~~ The guard shipped 2026-07-28 in `2b50f05`, *before* cycle 2 wrote
   this; the run was reading a stale working copy. The committed script runs
   clean unmodified in cloud — do not patch it.
-- **(2026-08-04, cycle 3 — operator-derived, pending Batu; drop if unwanted)**
+- **(2026-08-04, cycle 3 — RATIFIED by Batu 2026-08-06.)**
   **Verify the checkout is current with `origin/main` before diagnosing any
   script, config, or data defect** — `git fetch origin main && git rev-parse
   HEAD origin/main`. Cycle 2 proposed a fix that had shipped six days earlier
   because it quoted a stale working copy as if it were live.
-- **(2026-08-04, cycle 3 — operator-derived, pending Batu; drop if unwanted)**
+- **(2026-08-04, cycle 3 — RATIFIED by Batu 2026-08-06.)**
   **The production `$host` filter applies to every number that leaves the
   readout — including numbers inside outbound copy and "top card" claims** — not
   just the metrics tables. Cycle 2 filtered its tables correctly and then
