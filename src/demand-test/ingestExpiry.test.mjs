@@ -95,3 +95,28 @@ test("recurring events past verified-through are flagged, not deleted", () => {
   assert.deepEqual(deleted.map((d) => d.id), ["one-off"]);
   assert.deepEqual(flagged, [{ id: "weekly-trivia", endsAt: "2026-07-22T23:59:00-04:00" }]);
 });
+
+// 2026-08-08: expiry only ever looked at `event` and `discount`, so a dated
+// card of ANY other category outlived its own end date forever — and because
+// groupByDay buckets by date, it rendered as a past day group ABOVE Today.
+// Live example: a civic_action CAG meeting and a subscription card, both
+// dated 2026-07-29, sitting above "Today" on 2026-08-08. Expiry is about the
+// date, not the category.
+test("a dated card of a non-deletable category is FLAGGED, not silently kept", () => {
+  // Auto-delete stays scoped to past events and dated deals (Batu,
+  // 2026-07-16). Everything else past its end date is surfaced for a human
+  // decision instead of rotting in cards.json unseen — hidden from readers by
+  // isExpiredCard, but still inflating the deck size the trend gate reads.
+  const { kept, deleted, flagged } = expireCards(
+    [
+      { id: "cag", category: "civic_action", endsAt: "2026-07-29T20:30:00-04:00" },
+      { id: "weekly-club", category: "subscription", recurring: true, endsAt: "2026-07-29T23:59:00-04:00" },
+      { id: "shop", category: "food_drink" },
+      { id: "news-item", category: "news" },
+    ],
+    "2026-08-08",
+  );
+  assert.deepEqual(deleted, [], "nothing outside events/deals is auto-deleted");
+  assert.deepEqual(flagged.map((f) => f.id), ["cag", "weekly-club"]);
+  assert.deepEqual(kept.map((c) => c.id), ["cag", "weekly-club", "shop", "news-item"]);
+});
