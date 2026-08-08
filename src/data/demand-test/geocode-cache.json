@@ -2778,5 +2778,30 @@
         "-73.9541419"
       ]
     }
+  },
+  "33 Nassau Ave, Brooklyn, NY 11222": {
+    "query": "33 Nassau Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-08T13:56:41.116Z",
+    "hit": {
+      "place_id": 358517527,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2386724778,
+      "lat": "40.7231678",
+      "lon": "-73.9529485",
+      "category": "office",
+      "type": "coworking",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "office",
+      "name": "The Yard",
+      "display_name": "The Yard, 33, Nassau Avenue, Greenpoint, Williamsburg, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7231178",
+        "40.7232178",
+        "-73.9529985",
+        "-73.9528985"
+      ]
+    }
   }
 }

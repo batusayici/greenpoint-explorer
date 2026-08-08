@@ -312,8 +312,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "29 Norman Ave; bookable tastings. STANDING PROGRAMMING (2026-08-07): A standing every-Thursday pour — verify the line before carding. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
-      "standing": true
+      "notes": "29 Norman Ave; bookable tastings. STANDING PROGRAMMING (2026-08-07): A standing every-Thursday pour — verify the line before carding. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not. NOT `standing: true` (corrected 2026-08-07): it was marked so on a regex hit on 'shipments go out every Thursday', which is a SHIPPING line, not programming. Its only recurring event is a first-Thursday-of-the-month sake tasting, and every date the page lists (Thursday March 6th, Thursday April 3rd…) is in the past. Card the tasting only when a future date appears."
     },
     {
       "id": "kettl-tea",

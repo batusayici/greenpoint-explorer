@@ -46,17 +46,27 @@ const MONTHS = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8,
 const pad = (n) => String(n).padStart(2, "0");
 const iso = (y, m, d) => `${y}-${pad(m)}-${pad(d)}`;
 
+// EVERY day key here is America/New_York, never UTC. toISOString() rolls an
+// 8pm EDT event onto the NEXT day, so the first version of this script credited
+// every evening card to the wrong date and reported six well-carded evenings as
+// gaps. Closing those "gaps" would have shipped six duplicate cards — the one
+// failure mode that makes a coverage checker actively harmful.
+const NY_DAY = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit",
+});
+const nyDay = (d) => NY_DAY.format(d);
+
 const today = new Date();
-const todayISO = today.toISOString().slice(0, 10);
-const horizon = new Date(today.getTime() + WINDOW_DAYS * 864e5).toISOString().slice(0, 10);
+const todayISO = nyDay(today);
+const horizon = nyDay(new Date(today.getTime() + WINDOW_DAYS * 864e5));
 const inWindow = (s) => s >= todayISO && s <= horizon;
 
 // Year inference for formats that omit it ("Saturday, Aug 1", "Fri. 8/14").
 // Pick the year that puts the date nearest to today — a bare "Jan 3" in
 // December means next year, not eleven months ago.
 function inferYear(month, day) {
-  const y = today.getUTCFullYear();
-  const cands = [y - 1, y, y + 1].map((yy) => ({ yy, d: Math.abs(Date.parse(iso(yy, month, day)) - today.getTime()) }));
+  const y = Number(nyDay(today).slice(0, 4));
+  const cands = [y - 1, y, y + 1].map((yy) => ({ yy, d: Math.abs(Date.parse(iso(yy, month, day) + 'T12:00:00-04:00') - today.getTime()) }));
   return cands.reduce((a, b) => (b.d < a.d ? b : a)).yy;
 }
 
@@ -133,12 +143,18 @@ for (const c of seed.cards) {
   // Expand each card across every day it covers, so a recurring weekly card or
   // a multi-day run is not reported as a gap on the days it already speaks for.
   const days = new Set();
-  const s = c.startsAt ? new Date(c.startsAt) : null;
+  let s = c.startsAt ? new Date(c.startsAt) : null;
   const e = c.endsAt ? new Date(c.endsAt) : s;
-  if (s && e) for (let t = new Date(s); t <= e; t = new Date(t.getTime() + 864e5)) days.add(t.toISOString().slice(0, 10));
+  // An END-ONLY card is a standing offer ("bottomless makgeolli Thursdays and
+  // Sundays, verified through …") — no start, because it has been running for
+  // months. It speaks for every day from today to its verified-through date.
+  // Without this, `hana-bottomless-makgeolli` covered nothing and the checker
+  // demanded a fresh card for every Thursday it already accounts for.
+  if (!s && e) s = today < e ? today : e;
+  if (s && e) for (let t = new Date(s); t <= e; t = new Date(t.getTime() + 864e5)) days.add(nyDay(t));
   if (c.recurring && s && e) {
     // a weekly card speaks for its weekday across the whole span
-    for (let t = new Date(s); t <= e; t = new Date(t.getTime() + 7 * 864e5)) days.add(t.toISOString().slice(0, 10));
+    for (let t = new Date(s); t <= e; t = new Date(t.getTime() + 7 * 864e5)) days.add(nyDay(t));
   }
   for (const id of ids) {
     if (!coveredBySource.has(id)) coveredBySource.set(id, new Set());

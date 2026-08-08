@@ -225,14 +225,22 @@ test("seed has exactly 75 cards across the six layers", () => {
   // / "924" / "11222"). The hold that afternoon grepped for <number> <street>
   // only, found nothing, and called it source-blocked: a rule-miss, not a
   // source limitation. 114 + 1 = 115.
-  assert.equal(seed.cards.length, 115);
+  // 2026-08-07, L12 coverage reconciliation: the new check flagged 10 sources
+  // whose snapshots carried dates the deck had nothing for. Closed 14 of them —
+  // Troost 8/21+8/22, five Good Room bills the extraction subagent had missed
+  // entirely, the club's four standing Wed–Sat showcases as RECURRING cards
+  // (not ~8 near-identical dated ones), SummerStarz Zootopia 8/21, PLAY Kids
+  // Toy Story 8/21, and the Hana 8/21 tour. Two gaps remain and are correct:
+  // McCarren 8/10-12 is municipal rec (learn-to-swim, lap swim, Shape Up NYC)
+  // and WORD 8/12 is Jersey City. 115 + 14 = 129.
+  assert.equal(seed.cards.length, 129);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 64, "63 + Brew Inn's Wednesday trivia, released when its address turned up in the snapshot (2026-08-07)");
+  assert.equal(count((c) => c.category === "event"), 78, "64 + the 14 cards that closed the first L12 coverage report (2026-08-07)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 19, "18 + Hide & Seek's standing Wine Down Wednesday jazz (2026-08-07)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 26, "19 + 2 Troost nights and 5 Good Room bills recovered by the coverage check (2026-08-07)");
   assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -362,6 +370,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // Town Square's own page reads "Fri. 8/07 - Ford v Ferrari >> RAINED OUT!".
     // The 8/14 screening is the next live one in the same free series.
     "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
+    // 2026-08-07: the season's closing screening, surfaced by the coverage check.
+    "summerstarz-zootopia-0821",
     "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
   ]);
 });
@@ -679,6 +689,12 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
     "comedy-raanan-hershberg-0811",
     "comedy-carmen-lagala-0815",
     "comedy-dani-castaneda-0816",
+    // 2026-08-07: the four standing showcases, carded once each as recurring
+    // after the coverage check flagged six uncovered showcase dates.
+    "comedy-wednesday-cysk",
+    "comedy-thursday-showcase",
+    "comedy-friday-showcase",
+    "comedy-saturday-showcase",
   ]);
   // Scrappleland's club nights all expired 2026-08-06; the prune emptied its
   // link list, so Carcosa now carries the games side of the place graph.
