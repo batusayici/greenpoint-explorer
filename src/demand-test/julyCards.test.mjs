@@ -273,15 +273,28 @@ test("seed has exactly 75 cards across the six layers", () => {
   // page states no price) and WORD's Withfriends membership (tiers never
   // loaded). Film Noir has no membership — it has a GoFundMe, which is an
   // editorial call for Batu, not a card.
-  assert.equal(seed.cards.length, 134);
+  // 2026-08-08 BCC RE-READ (+2 = 136). Batu asked whether the Brooklyn Craft
+  // Company newsletter of 8/6 was fully reflected. It was not: 12 Greenpoint
+  // sessions in the email, 2 carded. bcc-sewing-101-tote-0813 had been
+  // deferred under a 2-per-venue cap abolished that same day, and
+  // bcc-knitting-101-0822 was already quoted inside the 8/17 card's own
+  // sourceQuote. Six later sessions went to watchItems — email is one-shot,
+  // so unlike a re-fetched web snapshot they had no roll-in path.
+  // 2026-08-08 LEAVES + GREENPOINT YMCA ONBOARDING (+3 = 139). Both were
+  // Greenpoint venues absent from the roster AND the sender registry — Batu
+  // asked after subscribing to Leaves' list the same day, and the Y's branch
+  // list turned up unread in the inbox audit. Leaves: august book club
+  // (Wednesdays, recurring) + summer writing group 8/20. YMCA: Fall 1
+  // registration. Skipped: Printed Matter art book fair (Manhattan).
+  assert.equal(seed.cards.length, 139);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 75, "74 + film-noir-watch-me-0808 (2026-08-08 ChatGPT cross-check, recovered mis-dated slug bug)");
+  assert.equal(count((c) => c.category === "event"), 79, "77 + 2 Leaves events (onboarded 2026-08-08)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
-  assert.equal(count((c) => c.category === "subscription"), 17, "11 + 6 from the 2026-08-08 membership sweep");
+  assert.equal(count((c) => c.category === "subscription"), 18, "17 + Greenpoint YMCA Fall 1 registration");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one

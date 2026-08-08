@@ -458,7 +458,14 @@
       "group": "institution",
       "cadence": "weekly",
       "fetch": "feed",
-      "feed": { "include": ["McCarren", "McGolrick", "Transmitter Park", "Newtown Barge"] },
+      "feed": {
+        "include": [
+          "McCarren",
+          "McGolrick",
+          "Transmitter Park",
+          "Newtown Barge"
+        ]
+      },
       "notes": "Replaced the four per-park page scrapes (mcgolrick/mccarren/transmitter/newtown-barge) 2026-08-08: the citywide RSS is plain-fetchable, rebuilds daily ~04:00 GMT with a 14-day window, and its event: fields carry startdate/starttime/location/coordinates/registration_url — MORE than the rendered pages did, with zero browser exposure (those pages fell through to the dead browser path in the 2026-08-08 cloud outage). The include filter scopes the snapshot to the Greenpoint parks. Feed items link the event's own page — that per-event URL is the sourceLink of record (R1). CloudFront still 403s bare/headless UAs, so plain fetch with the script's browser UA is load-bearing. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only. McCarren straddles the Williamsburg line: the geography gate stays per-event."
     },
     {
@@ -517,6 +524,24 @@
       "fetch": "auto",
       "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found the site's current exhibit, 'There Are People Here' closing 8/8, uncarded — the map only had the generic July venue blurb). Gallery's own site names its current exhibition with open/close dates and hours (W-F 2-7pm, Sat/Sun 1-6pm), so dated exhibit cards should be authored from here going forward instead of relying on secondhand newsletter mentions.",
       "standing": false
+    },
+    {
+      "id": "leaves-bookstore",
+      "name": "Leaves Bookstore (calendar)",
+      "url": "https://www.leavesbookstore.com/events.php",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "140 Nassau Ave, Brooklyn NY 11222 (second-hand shop, open daily 10am-8pm). Onboarded 2026-08-08 at Batu's request — the calendar was carrying uncarded Greenpoint events and the source was in neither the roster nor the sender registry. BROWSER-ONLY: plain fetch gets HTTP 429 'Checking your browser… JavaScript is required' on the whole host; it reads fine in a real browser. Do not add UA tricks. TWO LOCATIONS — apply the geography gate PER EVENT: the Greenpoint shop (140 Nassau Ave) and an appointment-only rare book room in BUSHWICK (350 Harman St, 11237). The calendar mixes them ('midsommar collage night at leaves rare books' was Bushwick). The gate is mechanical: each event's DETAIL page at /pages/events/<id>/<slug> prints a 'location:' block with the street address — always open the detail page, never card off the list. READ THE BODY, NOT THE HEADER RANGE: their own listings emit reversed ranges (august book club shows 'wednesday august 5, 2026 - wednesday july 29, 2026'). That is a data error on their site. The real schedule is in the body text ('wednesdays from 8-9 pm'; the writing group body lists its exact dates). NEWSLETTER: Batu subscribed 2026-08-08 (leavesbookstore@buttondown.email) — in senderRegistry."
+    },
+    {
+      "id": "greenpoint-ymca",
+      "name": "Greenpoint YMCA (programs & classes)",
+      "url": "https://ymcanyc.org/locations/greenpoint-ymca/programs-classes",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "99 Meserole Ave, Brooklyn NY 11222; 212-912-2260; open Mon-Fri 6am-11pm, Sat/Sun 6am-9pm. Onboarded 2026-08-08 — Batu is subscribed to the BRANCH list and nothing was reading it. Family/kids and wellness supply the roster otherwise lacks: swim, dance, early childhood, afterschool (3-6pm school days), teen programs, holiday camp. SEASONAL, NOT WEEKLY — programming runs in terms (Fall 1 starts Sept 8) with two registration gates, members first then community. Expect `unchanged` between terms; check at term boundaries, and card the REGISTRATION WINDOW, not individual class instances (same treatment as the dance-school fall registrations). A branch of a citywide nonprofit is IN SCOPE — the same reasoning that puts Greenpoint Library and NYC Parks on the map. This is not the PRESS Modern Massage multi-location case, which was a commercial chain."
     }
   ]
 }

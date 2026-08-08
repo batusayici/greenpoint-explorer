@@ -1153,6 +1153,27 @@
       "processedAt": "2026-08-08",
       "outcome": "DAILY THIN, RUN LOCALLY (the scheduled cloud run halted same morning: browser path dead in the sandbox — plain fetch OK through the proxy but both Chromium and Firefox CONNECT tunnels fail; reported to Batu for platform support, not routable-around). Local reach 40/41 (2% error; only nyplays, known Cloudflare-walled per watchItem). EXPIRY: 129→121 (8 passed 8/7 events; 2 relatedCardIds pruned; the BPL 'canceled due to extreme heat' diff line was the 8/7 garden hour — already expired, no live-card impact). ROSTER CHANGE (Batu-approved in session): 4 nycparks per-park scrapes replaced by ONE plain-fetch citywide-RSS feed source `nycparks-greenpoint` with a feed.include filter (fetch-sources.mjs gained opt-in feed filtering + event: extension fields — structured startdate/starttime/location per item, better than the scraped pages, zero browser exposure). SHIPPED 4: film-noir-arrebato-0808 (only new Film Noir diff line), film-noir-watch-me-0821 (run's final 8/21-22 screenings, back-of-window fill), library-thursday-programs-0820 (5 branch programs grouped, precedent 0813), acme-fish-friday-0814 (coverage check flagged UNMARKED STANDING? — the 0807 card had expired same day; roster now standing:true). DEDUPED: nycparks feed items (SummerStarz 8/14+8/21, McGolrick Guardians 8/19, saltwater fishing 8/9) all already carded; NB Chess residency already carded 8/6; WORD 8/14+8/17 already carded. ROLLED FORWARD (outside 14d window): Troost LUMENS 9/22, Moon Bunny 8/24-25 classes, Film Noir PHEDRE 8/24. Standing re-verified from today's snapshots: Scrappleland backgammon+pinball, comedy showcases, Fish Friday. Coverage after ship: 2 GAPs, both explained (nycparks missing dates = skipped municipal rec classes; WORD 8/12+8/21 = Jersey City). Gmail: reused the cloud run's same-morning clean pass (7 registry + 13 discovery threads, nothing ingestible). Deck 129→125 (-3%). holds: 0 new-judgment · 0 rule-miss · 0 source-blocked",
       "holds": "0 new-judgment · 0 rule-miss · 0 source-blocked"
+    },
+    {
+      "id": "gmail:19fd74a988737b6f",
+      "kind": "gmail",
+      "publisher": "Brooklyn Craft Company",
+      "processedAt": "2026-08-08",
+      "outcome": "RE-READ at Batu's request — the 8/7 run read this email but recorded only its in-window dates. 12 Greenpoint-dated sessions in the email; 2 had been carded. Shipped 2 more: bcc-sewing-101-tote-0813 (deferred by the 8/7 run under the 2-per-venue cap that Batu ABOLISHED the same day — SKILL.md line 139 already said 'There is NO per-venue cap') and bcc-knitting-101-0822 (its 8/22 date was already inside the 8/17 card's own sourceQuote). 6 later sessions moved to watchItems: they fell past the 14-day horizon and email, unlike a re-fetched web snapshot, has no roll-in path — they were on course to be lost."
+    },
+    {
+      "id": "https://www.leavesbookstore.com/events.php",
+      "kind": "web",
+      "publisher": "Leaves Bookstore",
+      "processedAt": "2026-08-08",
+      "outcome": "ONBOARDED at Batu's request — was in neither the roster nor the sender registry despite being a Greenpoint shop (140 Nassau Ave) running a public calendar. Carded 2: leaves-august-book-club (Wednesdays 8-9pm, recurring) and leaves-summer-writing-group-0820. SKIPPED: Printed Matter NY Art Book Fair 9/24-27 (off-site, Manhattan — geography gate). WATCHED: writing group 9/3, past window. Learned: plain fetch 429s host-wide (browser-only); two locations so the geography gate is per event and resolves on the DETAIL page's 'location:' block; and their listing headers emit reversed date ranges, so the body text is the schedule of record."
+    },
+    {
+      "id": "https://ymcanyc.org/locations/greenpoint-ymca/programs-classes",
+      "kind": "web",
+      "publisher": "YMCA of Greater New York",
+      "processedAt": "2026-08-08",
+      "outcome": "ONBOARDED at Batu's request after the branch list (greenpoint@emails.ymcanyc.org) turned up in the 2026-08-08 inbox audit unread by any pass. Carded 1: ymca-greenpoint-fall-1-registration (Fall 1 starts 9/8; member registration 8/8, community 8/15). Term registrations are subscription cards on the AUDIENCE lens (family_kids), never deals_memberships. Seasonal source — expect `unchanged` between terms and check at term boundaries."
     }
   ],
   "senderRegistry": [
@@ -1375,6 +1396,23 @@
         "arts_culture"
       ],
       "note": "Onboarded 2026-08-08 (Batu, after a ChatGPT cross-check found the gallery's own site names its current exhibit with open/close dates — the map only had the generic July venue blurb, sourced from Shop Small Greenpoint, not the gallery). Pull the gallery's own site each ingest for exhibit-dated cards going forward."
+    },
+    {
+      "publisher": "Leaves Bookstore",
+      "match": "leavesbookstore",
+      "kinds": [
+        "event"
+      ],
+      "note": "Buttondown list (leavesbookstore@buttondown.email); Batu subscribed 2026-08-08. Book club + writing group live at the Greenpoint shop, 140 Nassau Ave — but Leaves also runs a Bushwick rare book room, so apply the per-event geography gate exactly as for the web source."
+    },
+    {
+      "publisher": "Greenpoint YMCA",
+      "match": "greenpoint@emails.ymcanyc.org",
+      "kinds": [
+        "event",
+        "subscription"
+      ],
+      "note": "Match the BRANCH address, not ymcanyc.org — the citywide Y sends a lot of mail that is not Greenpoint. 99 Meserole Ave. Term registrations (Fall 1, etc.) are subscription cards on the audience lens, never deals_memberships."
     }
   ],
   "watchItems": [
@@ -1409,11 +1447,6 @@
       "addedAt": "2026-08-07"
     },
     {
-      "name": "Brooklyn Craft Company — Sewing 101: Tote Bag, Thu 8/13, Greenpoint (deferred by venue cap)",
-      "note": "NOT blocked and NOT held — fully sourced and shippable. Deferred only by the 2-per-venue cap inside the live 7-day window (2026-08-06 fill rule): BCC already had bcc-crafty-hour-tie-dye-0807 and gained bcc-beginner-embroidery-0808 this run. Card it on the next run, once 8/13 has left the live 7. Verbatim source line: \"Sewing 101: Tote Bag ... In Greenpoint: ... Thurs, 8/13 at 6:30pm\" (BCC newsletter 2026-08-06). Venue 165 Greenpoint Ave; booking at https://www.brooklyncraftcompany.com/collections/all-workshops/products/sewing-101-tote-bag",
-      "addedAt": "2026-08-07"
-    },
-    {
       "name": "North Brooklyn Chess — Challenger's Corner, Thu 8/13 at McCarren Parkhouse",
       "note": "HELD 2026-08-07 (source-blocked), PR ingest/daily-2026-08-07. Greenpointers 8/6 states the date but no time and no price for this specific night, and the live recurring card nb-chess-parkhouse-0806 already covers Thursdays 7-11pm at the same venue — so whether this is a distinct ticketed event or a named feature of a night already on the map cannot be read off the source. R1 attempted and blocked: the article links tickets to eventbrite.com, which returns CONNECT tunnel failed 403 through the routine proxy. UNBLOCKS when the Eventbrite listing is reachable (its own page carries start time and price), or when the club publishes the night on a fetchable page.",
       "addedAt": "2026-08-07"
@@ -1442,6 +1475,14 @@
       "name": "Eavesdrop — RA has the fresh calendar, but ra.co is unfetchable",
       "note": "2026-08-07. Eavesdrop's own /calendar stopped at Aug 1; ra.co/clubs/194009 is current. RA is behind DataDome + Cloudflare — plain fetch 403s and headless Chromium is blocked outright. robots.txt permits /clubs/, so the browser read was legitimate to attempt and was attempted; the block is the blocker, and defeating it is out of bounds. UNBLOCKS IF Eavesdrop resumes their own site (plain-fetchable, already in the roster), gives us a feed, or Batu opts for a human-in-the-loop read of RA. Not a per-run re-author — do not retry the fetch.",
       "addedAt": "2026-08-07"
+    },
+    {
+      "name": "Brooklyn Craft Company — Greenpoint sessions past the 14-day window (from the 2026-08-06 newsletter)",
+      "note": "EMAIL IS ONE-SHOT — there is no snapshot to re-read, so these are recorded here or lost. All Greenpoint, all fully sourced, venue stated per date under 'In Greenpoint:' in the BCC newsletter of 2026-08-06 (gmail:19fd74a988737b6f). Card each as its date enters the 14-day window; 165 Greenpoint Ave. Floral Embroidery Sun 8/23 2:30pm; Needle Felted Pets Sun 8/23 11am; Sewing 101 Make a Skirt Mon 8/24 11am; Knitting 103 Summer Bandana Tues 8/25 6:30pm; Crochet 102 Tom-a-tote Sat 8/29 11am; Knitting 104 Sock Knitting Tues 9/15 6:30pm. Already carded from the same email: Beginner Embroidery 8/8, Knitting 101 8/17, Sewing 101 Tote 8/13, Knitting 101 8/22. Correctly skipped: Crochet 101 8/12 (SOLD OUT), Make a Skirt 8/6 (past). Lower Manhattan sessions (225 Broadway) are out of area."
+    },
+    {
+      "name": "Leaves Bookstore — Summer Writing Group, Thu 9/3 (past the 14-day window)",
+      "note": "Biweekly, which recurrence.days cannot express (it models WEEKLY only), so each occurrence is carded singly. 8/20 is carded as leaves-summer-writing-group-0820; 9/3 is the last of the eight-week session — card it when it enters the window. Greenpoint shop, 140 Nassau Ave. No start time is stated for the summer session (the spring one ran 8:00-9:30pm; do NOT carry that over). Verbatim: 'meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3'."
     }
   ]
 }
