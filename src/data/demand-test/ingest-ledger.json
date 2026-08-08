@@ -1404,6 +1404,11 @@
       "name": "Brew Inn — Greenpoint Trivia Night (Wednesdays 7pm), no address anywhere",
       "note": "BLOCKED 2026-08-07. The standing-programming fix re-authored the other four dark venues, but Brew Inn cannot be pinned: nyctrivialeague.com's listing carries the night and the time and NO street address, and no prior Brew Inn card ever carried one either (checked 40 commits of cards.json). Drafting one from memory was attempted and caught — do not do it. UNBLOCKS IF a verified Brew Inn street address lands in the roster notes, same one-time roster edit as WORD. The night itself is sourced and ready: 'Wednesdays, 7pm start'.",
       "addedAt": "2026-08-07"
+    },
+    {
+      "name": "nyplays / hisawyer.com — Cloudflare bot challenge on the whole host",
+      "note": "BLOCKED 2026-08-06, diagnosed 2026-08-07. Cloudflare 'Just a moment...' interstitial to every non-browser client; bare / browser-UA / UA+Accept+Referer / the public schedules page all 403. Deliberately NOT routed around — headless-browser evasion of a fresh bot challenge is out of bounds. No supply impact: the source has never produced a dated card and its undated subscription card is unaffected. UNBLOCKS IF Cloudflare is relaxed (a plain fetch starts returning JSON again) or Batu authorises a direct ask to New York Society of Play. Otherwise this source is a drop candidate.",
+      "addedAt": "2026-08-07"
     }
   ]
 }

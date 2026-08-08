@@ -38,7 +38,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": ""
+      "notes": "674 Manhattan Ave. QUIET SINCE 2026-08-01, and that is ORGANIC — verified 2026-08-07, do not re-investigate. The /calendar page IS plain server-rendered HTML (h2 day headings + event rows), so plain fetch reaches it and extraction is correct: the snapshot carries all 24 day headings the HTML carries, Jun 27 through Aug 1, and the last event on the venue's own page is Sat Aug 1. There is nothing after it to fetch. A 2026-08-07 check briefly read this as a lossy-extraction bug by comparing the 1,745-char snapshot against 350,986 bytes of raw HTML — that ratio is meaningless, the HTML is almost entirely Tailwind class attributes. If this source is still showing Aug 1 as its last date in September, the venue has stopped maintaining the page and it should be dropped from the roster or re-pointed at their Instagram."
     },
     {
       "id": "greenpoint-comedy-club",
@@ -199,7 +199,7 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "json",
-      "notes": "Third game-club source (Batu 2026-07-27). Switched 2026-08-05 from the browser-rendered Sawyer schedules page to the JSON widget API behind it — same listings, no browser. FILTER PER ITEM: only card items whose location names Frontier Games / 724 Manhattan Ave (the sole Greenpoint host). Skip location \"Online\" (not mappable) and school sites like P.S. 290 Ridgewood (out of area). Mostly fall-semester kids registrations (subscription cards), not dated in-window events. CHANNEL: web-only — no newsletter found in the mailbox (2026-07-27).",
+      "notes": "Third game-club source (Batu 2026-07-27). Switched 2026-08-05 from the browser-rendered Sawyer schedules page to the JSON widget API behind it — same listings, no browser. FILTER PER ITEM: only card items whose location names Frontier Games / 724 Manhattan Ave (the sole Greenpoint host). Skip location \"Online\" (not mappable) and school sites like P.S. 290 Ridgewood (out of area). Mostly fall-semester kids registrations (subscription cards), not dated in-window events. CHANNEL: web-only — no newsletter found in the mailbox (2026-07-27). BLOCKED BY CLOUDFLARE SINCE 2026-08-06 (diagnosed 2026-08-07). The 403 is NOT a header problem and NOT our proxy: hisawyer.com now serves a Cloudflare interstitial ('Just a moment...') to non-browser clients across the whole host. Probed four ways — bare, browser UA, UA+Accept+Referer, and the public /new-york-society-of-play/schedules page — all 403. DO NOT add UA tricks, DO NOT re-hunt for another endpoint, and DO NOT switch this source to the browser path: driving headless Chromium at a host that has just put up a bot challenge is evading bot detection, which is out of bounds regardless of how well it would work. Supply impact is nil today — this source has never produced a dated card, and its one live card (nyplays-fall-registration, undated subscription) is unaffected. If we want this source back, the honest routes are a direct ask to New York Society of Play or dropping it; Batu's call.",
       "json": {
         "path": "data.results",
         "fields": [

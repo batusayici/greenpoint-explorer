@@ -45,6 +45,25 @@ Fixed with a `standing: true` roster marker (5 sources) and a skill rule: **a st
 re-checked on EXPIRY, not on diff.** Re-authored 5 recurring cards. Brew Inn is **held** — no street
 address in the listing or in any prior card across 40 commits.
 
+**3. Eavesdrop is organic after all; nyplays is Cloudflare and stays blocked.** Both were chased down
+rather than left as "mixed" and "an error".
+
+- **Eavesdrop** — the earlier read of this as a lossy extraction was **wrong**. `/calendar` is plain
+  server-rendered HTML, and the snapshot carries **all 24 day headings the HTML carries**, Jun 27 →
+  Aug 1. The venue's own last event is Sat Aug 1; there is nothing after it to fetch. The mistake was
+  comparing a 1,745-char snapshot against 350,986 bytes of raw HTML — a meaningless ratio, since that
+  HTML is almost entirely Tailwind class attributes. **A size ratio is not evidence of data loss.**
+  Roster note records the finding so it is not re-investigated; if Aug 1 is still the last date in
+  September, the venue has abandoned the page and the source should be dropped.
+- **nyplays** — the 403 is a **Cloudflare bot challenge across the whole `hisawyer.com` host**, not a
+  header problem and not our proxy. Probed bare, browser-UA, UA+Accept+Referer, and the public
+  schedules page: all 403, all serving "Just a moment...". **Deliberately not routed around.**
+  Switching the source to the headless-browser path would very likely work and is exactly why it was
+  not done — driving Chromium at a host that has just raised a bot challenge is evading bot
+  detection. Supply impact is nil: the source has never produced a dated card and its one undated
+  subscription card is unaffected. Honest routes are a direct ask to New York Society of Play or
+  dropping the source; Batu's call.
+
 **Process note worth keeping.** Two addresses were drafted from memory during this run — Brew Inn's
 and Hide & Seek's — and both were caught before shipping by checking the snapshot. Hide & Seek's
 drafted address was **wrong**; the real one (593 Manhattan Ave) was stated in the snapshot all along.
