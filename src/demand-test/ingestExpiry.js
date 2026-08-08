@@ -27,26 +27,31 @@ export function expireCards(cards, today) {
   const deleted = [];
   const flagged = [];
   let kept = cards.filter((c) => {
-    if (c.category === "event" && endedBeforeToday(c)) {
+    if (endedBeforeToday(c)) {
       if (c.recurring === true) {
-        // Standing programming, same rule as a recurring deal (2026-08-08):
-        // endsAt is a verified-through date, not the night the weekly quiz
-        // stops happening. Deleting on it is why venue sources went dark for
-        // a week at a time — see the roster notes on Black Rabbit et al.
+        // Standing programming and standing offers alike: endsAt is a
+        // VERIFIED-THROUGH date, not the night the weekly quiz stops
+        // happening. Re-verification is judgment, not logic — so flag, never
+        // delete. Deleting on it is why venue sources went dark for a week at
+        // a time (roster notes: Black Rabbit, Scrappleland, Hide & Seek).
         flagged.push({ id: c.id, endsAt: c.endsAt });
         return true;
       }
-      deleted.push({ id: c.id, category: c.category, endsAt: c.endsAt, free: c.free === true });
-      return false;
-    }
-    if (c.category === "discount" && endedBeforeToday(c)) {
-      if (c.recurring === true) {
-        // Verified-through date passed — needs re-verification, not deletion.
-        flagged.push({ id: c.id, endsAt: c.endsAt });
-        return true;
+      // Auto-delete is pre-approved for PAST EVENTS AND DATED DEALS only
+      // (Batu, 2026-07-16) — that scope is deliberate and stays.
+      if (c.category === "event" || c.category === "discount") {
+        deleted.push({ id: c.id, category: c.category, endsAt: c.endsAt, free: c.free === true });
+        return false;
       }
-      deleted.push({ id: c.id, category: c.category, endsAt: c.endsAt, free: c.free === true });
-      return false;
+      // Any other dated category past its end date (2026-08-08): FLAG it.
+      // These used to be ignored entirely, so they sat in cards.json forever —
+      // hidden from readers by isExpiredCard, but still counted in the deck
+      // size the trend gate reads, and never surfaced to anyone for a
+      // decision. A stale civic_action and a stale subscription were doing
+      // exactly that. Deleting them is a judgment call the run should make,
+      // not a rule this script may apply on its own.
+      flagged.push({ id: c.id, endsAt: c.endsAt });
+      return true;
     }
     return true;
   });

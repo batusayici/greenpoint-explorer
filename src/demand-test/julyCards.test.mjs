@@ -261,8 +261,19 @@ test("seed has exactly 75 cards across the six layers", () => {
   // Hotel) was sourced only to a Reddit thread, not an organizer's own page;
   // Charlotte de Witte / Under the K Bridge Park is ticketed via AXS, which
   // Batu chose not to onboard this pass (nightlife/tourist fit call, not a
-  // sourcing gap). 125 + 4 = 129.
-  assert.equal(seed.cards.length, 129);
+  // sourcing gap). 125 + 4 = 129, less the 7/29 Newtown Creek CAG = 128.
+  //
+  // 2026-08-08 MEMBERSHIP SWEEP (+6 = 134). The source roster is events-shaped
+  // — all 47 sources point at calendar/workshop URLs — so standing offers only
+  // ever arrived when a newsletter happened to mention one. A sweep of 15
+  // roster businesses found six uncarded and fully sourced: hana-sool-club,
+  // yaro-studio-membership, kettl-tea-subscriptions,
+  // carcosa-membership-guest-pass, moon-bunny-monthly-plans,
+  // word-romance-book-club. Two were HELD, not dropped: Bin Bin Club (its own
+  // page states no price) and WORD's Withfriends membership (tiers never
+  // loaded). Film Noir has no membership — it has a GoFundMe, which is an
+  // editorial call for Batu, not a card.
+  assert.equal(seed.cards.length, 134);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
@@ -270,8 +281,12 @@ test("seed has exactly 75 cards across the six layers", () => {
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
-  assert.equal(count((c) => c.category === "subscription"), 11, "10 + bandit-running-greenpoint-runners (2026-08-08 ChatGPT cross-check, GrowNYC + Bandit Running onboarded)");
-  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
+  assert.equal(count((c) => c.category === "subscription"), 17, "11 + 6 from the 2026-08-08 membership sweep");
+  // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
+  // sat past its own end date ever since (hidden by isExpiredCard, but still
+  // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
+  // surfaces for a decision instead of rotting unseen.
+  assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 4, "3 G-train cards + Film Noir support");
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
@@ -483,6 +498,7 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
     "community-yoga-transmitter-tuesdays",
+    "moon-bunny-monthly-plans",
     "sparsa-greenpoint",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
@@ -510,6 +526,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // Day 8/15). A game club's programme is play by definition.
     "carcosa-hot-dog-day-0815",
     "carcosa-malifaux-monthly-0808",
+    "carcosa-membership-guest-pass",
     "last-place-chess-chill",
     // 2026-08-05: North Brooklyn Chess's August residency at the McCarren
     // parkhouse — "Casual, social chess", so play, not culture. 2026-08-06:
@@ -598,7 +615,6 @@ test("the civic lens holds civic/mutual-aid stewardship (2026-07-25, 2nd + 4th p
     "film-noir-support",
     "g-advocacy-mta",
     "greenpoint-trash-club",
-    "newtown-creek-cag-0729",
   ]);
   const gathering = ["carcosa-warhammer-rtt-0801", "last-place-chess-chill"];
   for (const id of gathering) {
@@ -638,12 +654,17 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // the same shape as moon-bunny-back-to-school — "kids events go in kids"
     // bars double-filing into arts_culture/games, not into a deals lens.
     "bk-youth-ballet-trial-class",
+    "carcosa-membership-guest-pass",
     "falu-tinned-fish-club",
     "flower-cat-subscription",
     "hana-bottomless-makgeolli",
+    "hana-sool-club",
+    "kettl-tea-subscriptions",
     "marianella-19th-anniversary-sale",
     "moon-bunny-back-to-school",
+    "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
+    "yaro-studio-membership",
   ]);
 });
 

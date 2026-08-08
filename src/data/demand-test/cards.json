@@ -1396,8 +1396,8 @@
       ],
       "corridor": null,
       "free": true,
-      "startsAt": "2026-07-29T19:30:00-04:00",
-      "endsAt": "2026-07-29T23:59:00-04:00",
+      "startsAt": "2026-08-12T19:30:00-04:00",
+      "endsAt": "2026-08-26T23:59:00-04:00",
       "actions": [
         {
           "label": "Join in",
@@ -1415,7 +1415,7 @@
           "title": "Greenpoint Trash Club — @greenpointtrashclub (bio: every Wednesday 7:30; Jul 20 post: Broken Land meetup)",
           "publisher": "Greenpoint Trash Club",
           "url": "https://www.instagram.com/greenpointtrashclub/",
-          "date": "2026-07-20"
+          "date": "2026-08-08"
         },
         {
           "title": "greenpointtrashclub.org — mission & impact",
@@ -1430,62 +1430,16 @@
       "trustRisk": "medium",
       "geocodeQuery": "105 Franklin Street, Brooklyn, NY 11222",
       "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-08-08",
       "lat": 40.729519,
-      "lng": -73.957799
-    },
-    {
-      "id": "newtown-creek-cag-0729",
-      "category": "civic_action",
-      "sourceCampaign": "tab_review_2026_07_22",
-      "title": "Newtown Creek Superfund CAG meeting",
-      "kicker": "Have a say in the creek cleanup",
-      "locationName": "Queens Landing Boathouse & Environmental Center",
-      "address": "56-27 2nd St, Unit 105, Long Island City, NY 11101",
-      "summary": "The Community Advisory Group for the Newtown Creek Superfund cleanup meets in person at the Queens Landing Boathouse, just across the creek — with a Zoom option for joining virtually (advance registration required for the virtual side). CBI posts the agenda before the meeting.",
-      "filters": [
-        "civic"
-      ],
-      "audience": [
-        "civic_actor",
-        "resident"
-      ],
-      "corridor": null,
-      "startsAt": "2026-07-29T18:30:00-04:00",
-      "endsAt": "2026-07-29T20:30:00-04:00",
-      "actions": [
-        {
-          "label": "Register",
-          "type": "rsvp",
-          "url": "https://cbi-org.zoom.us/meeting/register/DpWHhdKDTVi6Vlu5JR1PaQ"
-        },
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar"
-        },
-        {
-          "label": "Visit",
-          "type": "visit"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "North Brooklyn Environmental Community Calendar — Newtown Creek Superfund CAG meeting",
-          "publisher": "Brooklyn Public Library",
-          "url": "https://www.bklynlibrary.org/north-brooklyn-community-calendar",
-          "date": "2026-07-22"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "low",
-      "trustRisk": "low",
-      "geocodeQuery": "56-27 2nd Street, Long Island City, NY 11101",
-      "createdAt": "2026-07-22",
-      "updatedAt": "2026-07-22",
-      "lat": 40.738582,
-      "lng": -73.960566
+      "lng": -73.957799,
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      },
+      "sourceQuote": "❇️ Come pick up litter with us around Greenpoint! ❇️ ⚛️ Every Wednesday night at 7:30! ⚛️"
     },
     {
       "category": "food_drink",
@@ -5933,6 +5887,282 @@
       ],
       "lat": 40.728078,
       "lng": -73.958665
+    },
+    {
+      "category": "subscription",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "id": "hana-sool-club",
+      "title": "Hana Sool Club",
+      "kicker": "Quarterly sool membership",
+      "filters": [
+        "deals_memberships",
+        "food_drink"
+      ],
+      "locationName": "Hana Makgeolli",
+      "address": "201 Dupont St",
+      "lat": 40.736437,
+      "lng": -73.951511,
+      "summary": "The Dupont St brewery's quarterly bottle club — four bottles or two, at a 15% discount, with free shipping and a complimentary pour on every tasting-room visit. Summer release registration closes Aug 21; the fall release follows in October.",
+      "whyItMatters": "The brewery is already on the map for its tours; the club it actually runs was nowhere on it.",
+      "actions": [
+        {
+          "label": "Join",
+          "type": "join",
+          "url": "https://hanamakgeolli.com/hanasoolclub"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hana Sool Club",
+          "publisher": "Hana Makgeolli",
+          "url": "https://hanamakgeolli.com/hanasoolclub",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "A shipment of 4 or 2 different bottles of our sool every quarter—charged at a 15% discount. An automatic 15% discount on all additional purchases. Free shipping for club releases and all additional purchases. One complimentary pour with each visit to our Tasting Room & Brewery in Brooklyn, NY. Release pricing will generally range from $100-$130 for 4 bottles and $45-$65 for 2 bottles."
+    },
+    {
+      "category": "subscription",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "id": "yaro-studio-membership",
+      "title": "Yaro Studios ceramics membership",
+      "kicker": "24/7 studio access, from $260/mo",
+      "filters": [
+        "deals_memberships",
+        "arts_culture"
+      ],
+      "locationName": "Yaro Studios",
+      "address": "76 Kent St",
+      "lat": 40.730374,
+      "lng": -73.958119,
+      "summary": "Round-the-clock access to the Kent St ceramics studio — wheels, communal tables, 20+ glazes and workshop discounts. Full shelf $300/month, half shelf $260, three-month minimum, then 30 days' notice to cancel. Clay and firing are billed on top.",
+      "whyItMatters": "For a working ceramicist this is the difference between renting time and having a studio.",
+      "actions": [
+        {
+          "label": "Apply",
+          "type": "join",
+          "url": "https://yarostudios.com/membership"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Yaro Membership",
+          "publisher": "Yaro Studios",
+          "url": "https://yarostudios.com/membership",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Full Shelf: $300/month. Half Shelf: $260/month. Membership pricing includes tax. Additional costs to our membership fees include clay and firing fees at 4 cents per cubic inch bisque/glaze firings & tax. Memberships require a minimum 3-month commitment. After that, you can cancel anytime with at least 30 days' notice before your next billing date."
+    },
+    {
+      "category": "subscription",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "id": "kettl-tea-subscriptions",
+      "title": "Kettl tea subscriptions",
+      "kicker": "Monthly tea, from $30",
+      "filters": [
+        "deals_memberships",
+        "food_drink"
+      ],
+      "locationName": "Kettl Tea",
+      "address": "70 Greenpoint Ave",
+      "geocodeQuery": "70 Greenpoint Ave, Brooklyn, NY 11222",
+      "summary": "Four standing subscriptions from the Greenpoint Ave tea shop: a matcha box from $38 a month, the founder's tea-of-the-month at $30, a house-roasted houjicha Roast Club at $30, and the quarterly Kiwami collection of rare Japanese teas at $250.",
+      "whyItMatters": "Kettl was on the roster for its classes only — the subscriptions it sells year-round were invisible.",
+      "actions": [
+        {
+          "label": "Subscribe",
+          "type": "join",
+          "url": "https://kettl.co/collections/subscriptions"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Kettl tea subscriptions",
+          "publisher": "Kettl",
+          "url": "https://kettl.co/collections/subscriptions",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "New Horizons Matcha Subscription — From $38.00: A curated matcha subscription, complete with subscriber-exclusive perks like unique recipe cards and a monthly newsletter. Founders Collection Subscription — $30.00: a hand selected tea-of-the-month by Kettl founder Zach Mangan. Roast Club Subscription — $30.00: house-roasted houjicha made with unique teas sourced directly from our producing partners. Kiwami Collection — $250.00 quarterly: the rarest and most unique teas being produced in Japan today.",
+      "lat": 40.729523,
+      "lng": -73.958159
+    },
+    {
+      "category": "subscription",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "id": "carcosa-membership-guest-pass",
+      "title": "Carcosa Club membership & guest pass",
+      "kicker": "$15 guest pass · waitlist open",
+      "filters": [
+        "deals_memberships",
+        "games"
+      ],
+      "locationName": "Carcosa Club",
+      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.732676,
+      "lng": -73.954395,
+      "summary": "Monthly memberships at the Manhattan Ave gaming club are closed at capacity, with a waitlist run through their Discord. A $15 guest pass gets you in alongside a member. Women and non-binary applicants can be approved immediately regardless of capacity.",
+      "whyItMatters": "The club reads as members-only from outside; the day pass is the way in and it is barely advertised.",
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://www.carcosaclub.com/membership"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Carcosa Club — Membership",
+          "publisher": "Carcosa Club",
+          "url": "https://www.carcosaclub.com/membership",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Monthly memberships are currently closed due to capacity limits. Guest Pass: $15 per visit. Guests must be accompanied by an existing member throughout their stay. Women and non-binary applicants may receive immediate membership approval regardless of current capacity restrictions if they contact officers through Discord."
+    },
+    {
+      "category": "subscription",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "id": "moon-bunny-monthly-plans",
+      "title": "Moon Bunny monthly class plans",
+      "kicker": "Four classes a month, from $87",
+      "filters": [
+        "deals_memberships",
+        "wellness"
+      ],
+      "locationName": "Moon Bunny Aerial",
+      "address": "394 McGuinness Blvd #208",
+      "lat": 40.736575,
+      "lng": -73.952327,
+      "summary": "Standing monthly plans at the McGuinness Blvd aerial studio — four classes a month for $87 (dance), $104 (ground skills) or $139 (aerial), about 13% off the drop-in rate. Class packs run alongside them, and kids' classes include a free trial.",
+      "whyItMatters": "Priced per month, this is a membership — but it sits on a pricing page nobody browses.",
+      "actions": [
+        {
+          "label": "See plans",
+          "type": "join",
+          "url": "https://www.moonbunnyaerial.com/discounts"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Moon Bunny Aerial — Pricing/Discounts",
+          "publisher": "Moon Bunny Aerial",
+          "url": "https://www.moonbunnyaerial.com/discounts",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Adult Dance ($25/class): 4 classes a month - $87.00 per month (13% off). Adult Ground Skills ($30/class): 4 classes a month - $104.00 per month (13% off). Adult Aerial ($40/class): 4 classes a month - $139.00 per month (13% off). Kids Juggling/Flow ($100): Free trial class. Kids Aerial, Kids Acro ($160): Free trial class."
+    },
+    {
+      "category": "subscription",
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "id": "word-romance-book-club",
+      "title": "Romance Book Club at WORD",
+      "kicker": "First Saturday of the month",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.729072,
+      "lng": -73.957317,
+      "summary": "WORD's Brooklyn romance book club meets the first Saturday of every month, and the month's pick is 10% off in the shop in the run-up. Events at the Brooklyn store are held in the basement, reached by a flight of stairs.",
+      "whyItMatters": "WORD's dated events are on the map; the standing clubs the shop is actually built around were not.",
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://wordbookstores.com/word-book-clubs"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "WORD Book Clubs",
+          "publisher": "WORD Bookstore",
+          "url": "https://wordbookstores.com/word-book-clubs",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Romance Book Club — Brooklyn — Every First Saturday. Book club selections are 10% off in the month leading up to the meeting."
     }
   ]
 }

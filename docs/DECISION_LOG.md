@@ -4,7 +4,44 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-08 (latest) — recurrence is modelled, and the roster is events-shaped
+## 2026-08-08 (latest) — membership sweep (+6) and the stale-card hole
+
+**Correction to the entry below:** it claimed stale dated cards "render a stale 'Wed, Jul 29' day
+group *above* Today". They do not. `JulyApp` filters through `isExpiredCard` before grouping, so
+readers never saw them — that observation came from a raw script that bypassed the render filter.
+
+The real defect was the inverse and worse: **Greenpoint Trash Club was invisible on the map**, and
+had been since 7/29. A live weekly civic thing — ~50 volunteers, every Wednesday 7:30 — vanished
+because its one-week window lapsed and the render filter correctly hid it. Re-authored as a
+recurring Wednesday card off the org's own IG bio ("Every Wednesday night at 7:30!"). Its rotating
+meetup bar is only in a login-walled IG post, so the pin stays the indicative one the 2026-07-22
+review chose and the card keeps disclosing the rotation. Newtown Creek CAG (7/29, one-off) deleted.
+
+**Expiry now FLAGS stale non-event/deal cards instead of ignoring them.** Auto-delete stays scoped to
+past events and dated deals — that authorization (Batu, 2026-07-16) is deliberate and unchanged — but
+until now anything else past its end date was neither deleted nor surfaced: hidden from readers,
+still counted in the deck size the trend gate reads, and never put in front of anyone for a decision.
+
+**Membership sweep: +6 cards.** Acting on the events-shaped-roster finding below, 15 roster
+businesses were checked for standing offers. Six were uncarded and fully sourced: `hana-sool-club`
+(quarterly bottle club, registration closes 8/21), `yaro-studio-membership` ($260–300/mo ceramics),
+`kettl-tea-subscriptions` (four, from $30/mo), `carcosa-membership-guest-pass` ($15 day pass),
+`moon-bunny-monthly-plans` (from $87/mo), `word-romance-book-club` (first Saturday). The
+Deals & Memberships lens goes from 2 real memberships to 7.
+
+**Held, not dropped** (the per-card triage rule): Bin Bin Club — its own page states no price;
+WORD's Withfriends membership — tiers never rendered. **Film Noir Cinema has no membership**; it has
+a GoFundMe titled "Keep Us Alive". A struggling-business fundraiser is an editorial call for Batu,
+not a card an ingest should mint.
+
+A repo test caught `word-romance-book-club` shipping `free: true` when the source never says so —
+the truth-rule gate doing exactly its job. Removed.
+
+**Limitation found:** `recurrence.days` models WEEKLY patterns only. WORD's club is "every first
+Saturday" — monthly — which the model cannot express, so it stays an undated shelf card. If monthly
+programming becomes common, `recurrence` needs an ordinal.
+
+## 2026-08-08 — recurrence is modelled, and the roster is events-shaped
 
 Batu, on a Saturday: *"no family and kids or food & drink event on a saturday (top 2 categories) is
 concerning and most likely not true."* It wasn't true, and the cause was in the feed, not the supply.
