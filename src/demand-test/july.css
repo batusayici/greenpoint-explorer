@@ -433,8 +433,10 @@ body { margin: 0; }
 
 .july-dot--business { background: var(--paper-lift); }
 .july-dot--event { background: var(--amber); }
-.july-dot--gtrain { background: var(--g-green); }
-.july-dot--club { background: var(--brick); }
+/* F20 mirror: the dots carry the pins' shape/pattern channel too, so the key
+   stays one system across pins, chips, and card rows. */
+.july-dot--gtrain { background: var(--g-green); border-radius: 3px; }
+.july-dot--club { background: radial-gradient(circle, var(--paper-lift) 0 28%, var(--brick) 36%); }
 /* limited-launch content types: deals = slate (the map's only blue), news =
    scoreline grey (newsprint) — both palette tokens, neither collides with the
    ink selected-pin state */
@@ -508,6 +510,14 @@ body { margin: 0; }
 }
 
 .july-action:hover { background: var(--ink); color: var(--paper-lift); }
+/* 2026-08-08 audit #8: the card's own destination carries the row — one filled
+   button; share/calendar/report keep the quiet outline treatment. Same bed as
+   every hover state, so no new color enters the system. */
+.july-action--primary {
+  background: var(--ink);
+  color: var(--paper-lift);
+}
+.july-action--primary:hover { color: var(--paper); }
 /* URL-less actions are guidance, not buttons — drop the chrome and hover so
    nothing tappable-looking sits beside real links */
 .july-action--static {
@@ -619,6 +629,15 @@ body { margin: 0; }
 .july-report:hover { color: var(--ink); }
 
 .july-empty { padding: 18px 16px; font-size: 0.84rem; color: var(--ink-soft); }
+
+/* Today-gap notice (2026-08-08 audit #3): one quiet line where Today would
+   sit; the next day header right below carries the actual date. */
+.july-notoday {
+  padding: 10px 16px 0;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--ink-soft);
+}
 
 .july-empty-reset {
   border: none;
@@ -832,10 +851,19 @@ body { margin: 0; }
     flex-direction: column;
     flex: none;
     height: auto;
-    /* single source of truth for the anchored map's height */
-    --peek: 25vh;
+    /* single source of truth for the anchored map's height. The 170px floor
+       lives INSIDE the var (2026-08-08): it used to be a min-height on
+       .july-mapzone only, so on viewports under ~680px tall the map stood
+       taller than --peek and the chip bar stuck part-way UP the map. */
+    --peek: max(25vh, 170px);
   }
   .july-main:has(.july-mapzone.is-expanded) { --peek: 55vh; }
+  /* Short screens (2026-08-08 audit #1, conservative cut): at 320×568 the
+     peek + chip bar held 223 of 568px. A lower floor keeps the sticky chrome
+     under ~35% of the viewport; the Expand toggle still serves map-first use. */
+  @media (max-height: 700px) {
+    .july-main { --peek: max(25vh, 140px); }
+  }
   /* Map and filter bar anchor to the top while the feed scrolls beneath
      (2026-07-23 live review: "I don't want to keep scrolling to come back
      to the map and filters"). Header scrolls away; map sticks, chips stick
@@ -843,8 +871,7 @@ body { margin: 0; }
   .july-mapzone {
     order: 1;
     flex: none;
-    height: var(--peek);
-    min-height: 170px;
+    height: var(--peek); /* floor folded into --peek above */
     position: sticky;
     top: 0;
     z-index: 20;
@@ -925,10 +952,21 @@ body { margin: 0; }
   cursor: pointer;
 }
 
+/* F20 (shipped 2026-08-08): hue is no longer the only channel. Shape and fill
+   pattern separate the kinds a red-green-blind reader can't tell apart —
+   amber/green (deutan) and brick/green (protan) were the confusable pairs:
+     business  hollow circle (paper fill — lightness channel)
+     event     filled circle
+     gtrain    rounded SQUARE (shape channel vs amber event)
+     club      donut — colored ring, paper center (pattern channel vs event)
+     deal      filled circle, dark slate (blue-yellow axis survives CVD)
+     news      light grey circle (lightness channel)
+   The donut is a scalable gradient so the 14px far-zoom size keeps it; the
+   selected state (solid ink, all kinds) keeps each pin's shape. */
 .ii-pin--business { background: var(--paper-lift); }
 .ii-pin--event { background: var(--amber); }
-.ii-pin--gtrain { background: var(--g-green); }
-.ii-pin--club { background: var(--brick); }
+.ii-pin--gtrain { background: var(--g-green); border-radius: 5px; }
+.ii-pin--club { background: radial-gradient(circle, var(--paper-lift) 0 28%, var(--brick) 36%); }
 .ii-pin--deal { background: var(--slate); }
 .ii-pin--news { background: var(--line); }
 
@@ -978,6 +1016,14 @@ body { margin: 0; }
   position: absolute;
   inset: -8px;
   border-radius: 50%;
+}
+
+/* Touch targets (2026-08-08 audit #5): 44px hit circle on touch devices — but
+   only at working zooms. At far zoom 13 pin pairs sit within 14px, so a wider
+   invisible ring there would steal taps from the pin the thumb actually meant. */
+@media (pointer: coarse) {
+  .july-map:not(.july-map--far) .ii-pin::after { inset: -13px; }
+  .july-map .maplibregl-ctrl-group button { width: 40px; height: 40px; }
 }
 
 .ii-venue-dot {

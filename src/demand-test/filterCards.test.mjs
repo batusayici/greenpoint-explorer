@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated, noTodayNotice } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
@@ -425,4 +425,23 @@ test("pickRelated: missing, empty, and dangling link sets yield null", () => {
   assert.equal(pickRelated({ id: "a" }, asMap([]), NOW), null, "no relatedCardIds field");
   assert.equal(pickRelated({ id: "a", relatedCardIds: [] }, asMap([]), NOW), null, "empty");
   assert.equal(pickRelated({ id: "a", relatedCardIds: ["ghost"] }, asMap([]), NOW), null, "dangling id");
+});
+
+// 2026-08-08 mobile audit #3: a lens with nothing on today opened on
+// "Tomorrow" with no explanation — the feed must say the Today gap out loud.
+test("noTodayNotice: fires only for a lens whose feed skips today into dated days", () => {
+  const dated = (key, offset) => ({ key, order: offset, label: key, shelf: false, cards: [] });
+  const shelf = (key) => ({ key, order: 5, label: key, shelf: true, cards: [] });
+  // Lens feed jumps straight to tomorrow → notice, with the lens's display label.
+  assert.equal(noTodayNotice([dated("d1", 1), shelf("shelf-places")], "food_drink"), "Food & Drink");
+  // The All feed never explains itself — nothing is being filtered out.
+  assert.equal(noTodayNotice([dated("d1", 1)], "all"), null);
+  // A today group means no gap.
+  assert.equal(noTodayNotice([dated("today", 0), dated("d1", 1)], "food_drink"), null);
+  // All-shelf feeds (undated lenses like News) self-describe via section headers.
+  assert.equal(noTodayNotice([shelf("shelf-changed")], "news"), null);
+  // Empty feed is the empty state's job, not the notice's.
+  assert.equal(noTodayNotice([], "food_drink"), null);
+  // Unknown filter id degrades to silence.
+  assert.equal(noTodayNotice([dated("d1", 1)], "bogus"), null);
 });

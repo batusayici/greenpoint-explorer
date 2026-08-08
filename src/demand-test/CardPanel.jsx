@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { FILTERS, pinKind, partitionFilters, pickRelated } from "./filterCards.js";
+import { FILTERS, pinKind, partitionFilters, pickRelated, noTodayNotice } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
 import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
@@ -39,8 +39,10 @@ const FEEDBACK_HREF = FEEDBACK_FORM_URL || SIGNUP_URL;
 // name · what's happening · email, all required, plus a hidden `ref` param.
 const SUBMIT_FORM_URL = "https://tally.so/r/aQXzOB";
 
-function ActionLink({ action, card, onFilter, onFilterAction }) {
-  const cls = "july-action";
+function ActionLink({ action, card, onFilter, onFilterAction, primary }) {
+  // 2026-08-08 audit #8: the card's own destination (first tappable authored
+  // action) reads as THE next step; share/calendar stay quiet peers.
+  const cls = `july-action${primary ? " july-action--primary" : ""}`;
   const onTap = () => trackEvent(EVENTS.ACTION_TAP, { cardId: card.id, actionType: action.type });
   if (action.type === "share") {
     return <ShareAction action={action} card={card} cls={cls} />;
@@ -258,9 +260,18 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
         </ol>
       )}
       <div className="july-actions">
-        {withShareAction(card.actions).map((a) => (
-          <ActionLink key={a.label} action={a} card={card} onFilter={onFilter} onFilterAction={onFilterAction} />
-        ))}
+        {(() => {
+          const actions = withShareAction(card.actions);
+          // Primary = the first authored action that actually goes somewhere
+          // (a url/derived-directions link or a filter switch). Share is
+          // appended and static guidance rows can't be "the next step".
+          const primaryIdx = actions.findIndex(
+            (a) => a.type !== "share" && (a.filterId != null || actionHref(a, card) != null),
+          );
+          return actions.map((a, i) => (
+            <ActionLink key={a.label} action={a} card={card} onFilter={onFilter} onFilterAction={onFilterAction} primary={i === primaryIdx} />
+          ));
+        })()}
         {card.startsAt != null && !card.recurring && <CalendarAction card={card} cls="july-action" />}
       </div>
       {related && (
@@ -494,6 +505,22 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     nav.scrollTo({ left: Math.max(0, left), behavior: reduce ? "auto" : "smooth" });
   }, [filter]);
 
+  // 2026-08-08 audit #4 (micro): "More +N" appends the folded chips at the
+  // rail's far end — offscreen at 375px, so the tap could read as a no-op.
+  // Bring the first revealed chip into view; desktop's wrapped bar never
+  // scrolls, so the guard makes this mobile-only without a media query.
+  useEffect(() => {
+    if (!moreOpen) return;
+    const nav = filtersRef.current;
+    if (!nav || nav.scrollWidth <= nav.clientWidth + 1) return;
+    const first = nav.querySelectorAll(".july-chip")[shown.length];
+    if (!first) return;
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    // 44px of lead-in keeps the previous chip's tail visible as context.
+    nav.scrollTo({ left: Math.max(0, first.offsetLeft - 44), behavior: reduce ? "auto" : "smooth" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [moreOpen]);
+
   // Measure AFTER the lens change has rendered: is the feed's top (today)
   // offscreen? Desktop's list is its own scroller; mobile page flow compares
   // the list top against the anchored map+chips chrome. Location focus has
@@ -667,6 +694,14 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
         </div>
       )}
       <ol className="july-list" ref={listRef}>
+        {/* Today-gap notice (2026-08-08 audit #3): the lens's feed opens on a
+            future day — say so instead of silently leading with "Tomorrow".
+            Location focus has its own announcement row, so it never stacks. */}
+        {!focus && noTodayNotice(groups, filter) && (
+          <li className="july-notoday" role="status">
+            No {noTodayNotice(groups, filter)} today
+          </li>
+        )}
         {groups.map((group, gi) => (
           <React.Fragment key={group.key}>
             {/* Calendar scan (2026-07-15 review): a lone shelf section needs no

@@ -198,6 +198,18 @@ export function groupByDay(cards, date) {
     .map((g) => ({ ...g, cards: [...g.cards].sort(g.shelf ? byFreshest : byClock) }));
 }
 
+// The Today-gap notice (2026-08-08 mobile audit, #3): under a lens, groupByDay
+// can produce no Today group at all — the feed then leads with "Tomorrow" and
+// nothing says why. When the lens's feed skips today but still has dated days
+// ahead, name the gap ("No Food & Drink today"); an all-shelf feed stays
+// silent because its section headers already say what the reader is looking at.
+export function noTodayNotice(groups, filterId) {
+  if (!filterId || filterId === "all") return null;
+  if (groups.some((g) => g.key === "today")) return null;
+  if (!groups.some((g) => !g.shelf)) return null;
+  return FILTERS.find((f) => f.id === filterId)?.label ?? null;
+}
+
 // A dated card is dead the moment its window closes — expiry can't wait for
 // the weekly refresh: a card ending mid-week would linger up to six days
 // (someone walks in waving a lapsed deal, or shows up to a finished event)
