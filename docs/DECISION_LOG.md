@@ -4,7 +4,35 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-08 (latest) — membership sweep (+6) and the stale-card hole
+## 2026-08-08 (latest) — recurring row treatment: variant C
+
+Closes the craft item the recurrence entry left open. Four row treatments were rendered as DOM
+injections against the running app (the method from 2026-08-02 — mockups hide the flaws) and Batu
+chose **C**: `8 PM · Weekly · No cover · 91 Greenpoint Ave`.
+
+The header owns the DAY, the clock owns the TIME, and one word says it comes back. Rejected: **B**
+(clock only) drops the fact that makes a card a habit; **D** ("Every Tuesday") restates the day the
+header just gave — the duplication being fixed. **A** was the bug: recurring rows started with
+"Tuesdays" while every neighbour started with a clock.
+
+- `rowTime()` returned null for ANY recurring card — correct when they all lived on the shelf, where
+  a clock under no date says nothing; stale once a card with stated days is placed in a real day
+  group. Now gated on `recurrence.days`, so shelf-bound standing offers still get no clock.
+- `recurrenceLabel()` is wired into the **detail's** when-line ("Every Tuesday"), which had been null
+  for recurring cards *because* "recurring deals carry their schedule in kicker/summary" — and this
+  change strips exactly that from the kicker. Without it the schedule would be nowhere on an open card.
+- **18 kickers and 9 summaries re-authored** to stop restating the day and the rhythm. Two repo tests
+  now fail either regression. Titles were NOT touched: several carry the day as a real name (Wine
+  Down Wednesday, Fish Friday, The Saturday Showcase).
+
+**What only rendering caught:** the variant-C mockup had dropped the kicker entirely, so its rows
+looked single-line. With kickers restored it was four segments, and the jazz row printed "Manhattan
+Ave" twice (kicker vs address). Four kickers were trimmed after seeing it on device.
+
+**"Every week" shelf section stays dead** (Batu: "until we collect evidence otherwise"). Standing
+programming is now findable by day; if evidence says the set was worth seeing whole, it comes back.
+
+## 2026-08-08 — membership sweep (+6) and the stale-card hole
 
 **Correction to the entry below:** it claimed stale dated cards "render a stale 'Wed, Jul 29' day
 group *above* Today". They do not. `JulyApp` filters through `isExpiredCard` before grouping, so

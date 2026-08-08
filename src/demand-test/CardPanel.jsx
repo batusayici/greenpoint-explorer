@@ -4,7 +4,7 @@ import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, 
 import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
-import { formatWindow, isSpan } from "./eventWindow.js";
+import { formatWindow, isSpan, recurrenceLabel } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
@@ -181,8 +181,16 @@ const CLOCK_FMT = new Intl.DateTimeFormat("en-US", {
   timeZone: "America/New_York",
 });
 
+// 2026-08-08: a recurring card used to get NO clock, which was right when
+// every one of them sat on the shelf — a bare "8 PM" under no date says
+// nothing. Now that a card stating `recurrence.days` is placed in its real day
+// group, the clock is the most useful thing in the row, and withholding it was
+// what made these rows read differently from the one-offs beside them. A
+// recurring card with no stated day is still shelf-bound, so it still gets no
+// clock.
 function rowTime(card) {
-  if (card.startsAt == null || card.recurring) return null;
+  if (card.startsAt == null) return null;
+  if (card.recurring && !(card.recurrence?.days?.length > 0)) return null;
   const d = new Date(card.startsAt);
   if (CLOCK_FMT.format(d) === "00:00") return null; // all-day sentinel
   return ROW_TIME_FMT.format(d).replace(":00", "");
@@ -206,7 +214,16 @@ function cardSubline(card) {
     card.category === "discount" && card.endsAt && !card.recurring
       ? `ends ${DEAL_END_FMT.format(new Date(card.endsAt))}`
       : null;
-  return [rowTime(card), card.kicker, named(where) ? null : where, ends].filter(Boolean).join(" · ");
+  // The rhythm, in one word (Batu, 2026-08-08, variant C). The day group's
+  // header already owns the DAY, so naming it again here ("Tuesdays, 8pm"
+  // under "TUE, AUG 11") was the third statement of one fact and broke the
+  // column every other row keeps — clock first. "Weekly" adds the only thing
+  // the header can't say: that this comes back. Shelf-bound standing offers
+  // have no stated day and get no marker.
+  const rhythm = card.recurrence?.days?.length > 0 ? "Weekly" : null;
+  return [rowTime(card), rhythm, card.kicker, named(where) ? null : where, ends]
+    .filter(Boolean)
+    .join(" · ");
 }
 
 // Timeline dates are date-only ISO strings — format in UTC so "2026-07-10"
@@ -222,7 +239,16 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
   // the window formatter would misread verified-through as "Through Jul 22".
   // Spans only (punch list P1 #3): a same-day card's when-line restated what
   // the day header + row clock already carry — keep it for "Through Aug 15".
-  const when = card.recurring || !isSpan(card) ? null : formatWindow(card);
+  // A card stating its days names the rhythm here in full ("Every Tuesday").
+  // The row can't — it sits under a day header that already says Tuesday — and
+  // as of 2026-08-08 the kicker no longer says it either, so without this the
+  // schedule would be nowhere on an opened card.
+  const when =
+    card.recurrence?.days?.length > 0
+      ? recurrenceLabel(card)
+      : card.recurring || !isSpan(card)
+        ? null
+        : formatWindow(card);
   // One pointer, not a shelf — see pickRelated for how "most relevant" is
   // derived (the stored order is insertion order, and it can include cards
   // that have already expired).

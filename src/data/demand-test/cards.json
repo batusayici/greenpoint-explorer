@@ -619,7 +619,7 @@
           "type": "visit"
         }
       ],
-      "kicker": "Ages 8–12 · Tuesdays 5 PM",
+      "kicker": "Ages 8–12, process art",
       "recurrence": {
         "days": [
           "tue"
@@ -1383,7 +1383,7 @@
       "category": "subscription",
       "sourceCampaign": "tab_review_2026_07_22",
       "title": "Greenpoint Trash Club",
-      "kicker": "Wednesday-night litter pickup crew",
+      "kicker": "Litter pickup — all supplies provided",
       "locationName": "Rotating bar meetup — announced on Instagram",
       "address": "105 Franklin St, Brooklyn, NY 11222",
       "summary": "Every Wednesday night at 7:30 — rain, snow, or freezing cold — about 50 volunteers meet at a rotating neighborhood bar to clean the streets of North Brooklyn. 9,400+ lbs of litter picked up since August 2024. All supplies provided, just show up; this week's meetup spot lands on their Instagram early in the week.",
@@ -1953,7 +1953,7 @@
       ],
       "id": "bcc-kids-sewing-camp",
       "title": "Crafternoon Kids Sewing Camp",
-      "kicker": "Saturday sewing camp for kids",
+      "kicker": "$95 drop-in, or $380 for the series",
       "startsAt": "2026-08-01T11:00:00-04:00",
       "endsAt": "2026-08-22T14:00:00-04:00",
       "recurring": true,
@@ -2243,7 +2243,7 @@
       "id": "mcgolrick-bird-club-0808",
       "category": "event",
       "title": "McGolrick Bird Club",
-      "kicker": "Free Saturday bird walk",
+      "kicker": "Meets at the Russell St corner",
       "startsAt": "2026-08-08T09:00:00-04:00",
       "endsAt": "2026-08-29T10:00:00-04:00",
       "recurring": true,
@@ -2482,7 +2482,7 @@
       "id": "community-yoga-transmitter-tuesdays",
       "category": "event",
       "title": "Tuesday morning yoga in Transmitter Park",
-      "kicker": "Free waterfront yoga, Tuesdays 7 AM",
+      "kicker": "Free waterfront yoga — bring a mat",
       "startsAt": "2026-08-04T07:00:00-04:00",
       "endsAt": "2026-08-25T23:59:00-04:00",
       "recurring": true,
@@ -4600,7 +4600,7 @@
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "black-rabbit-nerd-alert-trivia",
       "title": "Nerd Alert! Trivia at Black Rabbit",
-      "kicker": "Tuesdays, 8pm",
+      "kicker": "No cover",
       "startsAt": "2026-08-11T20:00:00-04:00",
       "locationName": "Black Rabbit",
       "address": "91 Greenpoint Ave",
@@ -4610,7 +4610,7 @@
         "games",
         "food_drink"
       ],
-      "summary": "A standing weekly quiz at the Greenpoint Avenue bar. Runs every week; the pub states no cover.",
+      "summary": "A pub quiz at the Greenpoint Avenue bar; the pub states no cover.",
       "sourceQuote": "Every Tuesday at 8pm Nerd Alert! TRIVIA",
       "actions": [
         {
@@ -4652,7 +4652,7 @@
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "black-rabbit-sunday-bingo",
       "title": "Sunday bingo at Black Rabbit",
-      "kicker": "Sundays, 7pm",
+      "kicker": "Bingo night",
       "startsAt": "2026-08-09T19:00:00-04:00",
       "locationName": "Black Rabbit",
       "address": "91 Greenpoint Ave",
@@ -4662,7 +4662,7 @@
         "games",
         "food_drink"
       ],
-      "summary": "The bar's standing Sunday-evening bingo night, week in week out.",
+      "summary": "The bar's evening bingo night.",
       "sourceQuote": "Sundays at 7pm!",
       "actions": [
         {
@@ -4701,7 +4701,7 @@
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "hide-and-seek-wine-down-jazz",
       "title": "Wine Down Wednesday live jazz",
-      "kicker": "Wednesdays, 7pm",
+      "kicker": "Standing midweek session",
       "startsAt": "2026-08-12T19:00:00-04:00",
       "locationName": "Hide & Seek",
       "address": "593 Manhattan Ave",
@@ -4750,7 +4750,7 @@
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
-      "kicker": "Tuesdays, all levels",
+      "kicker": "All levels",
       "startsAt": "2026-08-11T20:00:00-04:00",
       "locationName": "Scrappleland",
       "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
@@ -4760,7 +4760,7 @@
         "games",
         "food_drink"
       ],
-      "summary": "A standing weekly backgammon meet at the pinball bar. The venue lists it as a regular club night.",
+      "summary": "A backgammon meet at the pinball bar. The venue lists it as a regular club night.",
       "sourceQuote": "Tuesday Backgammon Club",
       "actions": [
         {
@@ -4802,7 +4802,7 @@
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
-      "kicker": "Wednesdays on the arcade floor",
+      "kicker": "League night at the pinball bar",
       "startsAt": "2026-08-12T20:00:00-04:00",
       "locationName": "Scrappleland",
       "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
@@ -4812,7 +4812,7 @@
         "games",
         "food_drink"
       ],
-      "summary": "The bar's standing weekly pinball league on the arcade floor.",
+      "summary": "The bar's pinball league on the arcade floor.",
       "sourceQuote": "Wednesday Pinball League",
       "actions": [
         {
@@ -4850,7 +4850,7 @@
       "updatedAt": "2026-08-08",
       "id": "brew-inn-greenpoint-trivia",
       "title": "Greenpoint Trivia Night at The Brew Inn",
-      "kicker": "Wednesdays, 7pm start",
+      "kicker": "Run by the NYC Trivia League",
       "startsAt": "2026-08-12T19:00:00-04:00",
       "endsAt": "2026-08-21T23:59:00-04:00",
       "locationName": "The Brew Inn",
@@ -5202,8 +5202,8 @@
       "lng": -73.958337,
       "id": "comedy-wednesday-cysk",
       "title": "Comedians You Should Know",
-      "kicker": "Wednesdays, 8pm · $20",
-      "summary": "The club's standing Wednesday showcase, running weekly.",
+      "kicker": "$20",
+      "summary": "The club's midweek showcase.",
       "filters": [
         "arts_culture"
       ],
@@ -5250,8 +5250,8 @@
       "lng": -73.958337,
       "id": "comedy-thursday-showcase",
       "title": "The Thursday Showcase",
-      "kicker": "Thursdays, 8pm · $20",
-      "summary": "A standing weekly line-up at the Greenpoint Avenue club.",
+      "kicker": "$20",
+      "summary": "A stand-up line-up at the Greenpoint Avenue club.",
       "filters": [
         "arts_culture"
       ],
@@ -5298,8 +5298,8 @@
       "lng": -73.958337,
       "id": "comedy-friday-showcase",
       "title": "The Friday Showcase",
-      "kicker": "Fridays, 8pm · $25",
-      "summary": "The weekly Friday bill; a later 10pm show runs the same night.",
+      "kicker": "$25 — a 10pm show follows",
+      "summary": "The evening bill; a later 10pm show runs the same night.",
       "filters": [
         "arts_culture"
       ],
@@ -5346,8 +5346,8 @@
       "lng": -73.958337,
       "id": "comedy-saturday-showcase",
       "title": "The Saturday Showcase",
-      "kicker": "Saturdays, 8pm · $25",
-      "summary": "The weekly Saturday bill; the Secret Showcase follows at 10pm.",
+      "kicker": "$25 — 10pm Secret Showcase follows",
+      "summary": "The club's main evening bill.",
       "filters": [
         "arts_culture"
       ],
@@ -5700,7 +5700,7 @@
       "updatedAt": "2026-08-08",
       "id": "acme-fish-friday-0814",
       "title": "Fish Friday at Acme Smoked Fish",
-      "kicker": "Smoked-fish pickup, Fridays only",
+      "kicker": "Pre-orders close 11:30am",
       "summary": "The Gem Street smokehouse opens its doors to the neighborhood — pre-orders close at 11:30am that morning.",
       "startsAt": "2026-08-14T08:00:00-04:00",
       "endsAt": "2026-08-28T13:00:00-04:00",
@@ -5746,7 +5746,7 @@
         "resident",
         "family"
       ],
-      "kicker": "Saturdays 8am–3pm, year-round",
+      "kicker": "Year-round, with compost drop-off",
       "locationName": "McCarren Park Greenmarket",
       "address": "Union Ave between Driggs & N12th St, Brooklyn, NY 11222",
       "summary": "GrowNYC's Saturday market beside the McCarren Park track and dog run, running since 1997 — local farms, cooking demos and family activities. Compost drop-off runs to 1:30pm, clothing collection to 1pm.",
@@ -5797,10 +5797,10 @@
       "audience": [
         "resident"
       ],
-      "kicker": "Saturdays 9:30am — all paces",
+      "kicker": "All paces, meets outside the shop",
       "locationName": "Bandit Running",
       "address": "37 Noble St, Brooklyn, NY 11222",
-      "summary": "Greenpoint Runners is Bandit Running's weekly Saturday group run, meeting outside the Noble Street shop — open to all paces.",
+      "summary": "Greenpoint Runners is Bandit Running's group run, meeting outside the Noble Street shop — open to all paces.",
       "actions": [
         {
           "label": "Learn more",

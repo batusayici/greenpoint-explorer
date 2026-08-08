@@ -826,3 +826,31 @@ test("a stated recurrence day agrees with the card's own first occurrence", () =
     .map((c) => `${c.id}: startsAt is ${wd(c.startsAt)}, states ${c.recurrence.days}`);
   assert.deepEqual(wrong, [], "recurrence.days must include the weekday startsAt falls on");
 });
+
+// Row contract for recurring cards (Batu, 2026-08-08 — variant C, chosen from
+// four rendered live against the running app). A card stating recurrence.days
+// is placed in its real day group, so three surfaces would otherwise say the
+// same word: the group header ("TUE, AUG 11"), the row clock, and the kicker
+// ("Tuesdays, 8pm"). The header and clock keep their jobs; the kicker gives up
+// the day and keeps the substance, and the row gains a one-word "Weekly".
+test("a recurring card's kicker does not restate the day its group header owns", () => {
+  const DAYWORD = /\b(sun|mon|tues|tue|wednes|wed|thurs|thu|fri|satur|sat)(day)?s?\b/i;
+  const offenders = seed.cards
+    .filter((c) => c.recurrence?.days?.length > 0)
+    .filter((c) => DAYWORD.test(c.kicker ?? ""))
+    .map((c) => `${c.id}: "${c.kicker}"`);
+  assert.deepEqual(offenders, [], "the day group header and the row clock already carry this");
+});
+
+// Corollary to the row contract: the UI now states the rhythm twice on its own
+// ("Weekly" in the row, "Every Tuesday" in the opened detail). A summary that
+// also says "a standing weekly quiz… runs every week" is the third and fourth
+// statement of one fact — the same restatement the kicker just gave up.
+test("a recurring card's summary does not restate the rhythm the UI already gives", () => {
+  const RHYTHM = /every week|weekly|each week|week in week out/i;
+  const offenders = seed.cards
+    .filter((c) => c.recurrence?.days?.length > 0)
+    .filter((c) => RHYTHM.test(c.summary ?? ""))
+    .map((c) => `${c.id}: "${c.summary}"`);
+  assert.deepEqual(offenders, [], "the row marker and the detail's when-line already carry this");
+});
