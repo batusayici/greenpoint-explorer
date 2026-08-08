@@ -64,6 +64,32 @@ rather than left as "mixed" and "an error".
   subscription card is unaffected. Honest routes are a direct ask to New York Society of Play or
   dropping the source; Batu's call.
 
+**4. Brew Inn ships; ra.co cannot be fetched and is NOT being routed around.**
+
+- **Brew Inn — 924 Manhattan Ave, Brooklyn, NY 11222**, and it was **in the snapshot the whole time**.
+  The NYC Trivia League listing emits structured microdata in DOM order, so the extractor writes the
+  street name on the line *before* the number (`Manhattan Avenue` / `924` / `11222`). The hold earlier
+  that day grepped for `<number> <street>`, found nothing, and filed it `source-blocked`. **That was a
+  rule-miss, not a source limitation** — R1 would have caught it by reading the raw snapshot lines
+  around the venue name. Roster note records the shape so the next directory-style source does not
+  repeat it. (Separately: `thebrewinn.com` redirects to a *different* Brew Inn Tavern in Oceanside —
+  a name collision, not our venue. Worth knowing before anyone cites that domain.)
+- **`ra.co/clubs/194009` (Eavesdrop's RA page) CANNOT go in the roster.** Batu asked for it because RA
+  carries a fresh calendar where the venue's own site stopped at Aug 1. It is genuinely fresher, and
+  it is genuinely unreachable by this pipeline. `ra.co` runs **DataDome** (`x-datadome: protected`,
+  `geo.captcha-delivery.com`): plain fetch 403s, and **headless Chromium is blocked outright** —
+  Cloudflare returns "Sorry, you have been blocked. You are unable to access ra.co." Note the line
+  taken: RA's `robots.txt` *permits* `/clubs/`, so reading it with a real browser engine would have
+  been legitimate and was tried; what stops us is that the protection blocks the automated browser
+  too, and getting past **that** would mean defeating bot detection (stealth drivers, residential
+  proxies, challenge-solving). **That is out of bounds, and the fact that a user asked for the source
+  does not change the method.** Same call as `nyplays` the same day.
+
+  The honest routes, none of them a workaround: ask Eavesdrop to keep their own `/calendar` current
+  (it is plain-fetchable and works — it is just stale); ask them for a feed; or accept a human-in-the-
+  loop read, since an interactive browser session can open RA normally and card what it finds with
+  proper sourcing. Batu's call which, if any.
+
 **Process note worth keeping.** Two addresses were drafted from memory during this run — Brew Inn's
 and Hide & Seek's — and both were caught before shipping by checking the snapshot. Hide & Seek's
 drafted address was **wrong**; the real one (593 Manhattan Ave) was stated in the snapshot all along.

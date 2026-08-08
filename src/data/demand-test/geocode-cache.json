@@ -2753,5 +2753,30 @@
         "-73.9571398"
       ]
     }
+  },
+  "924 Manhattan Ave, Brooklyn, NY 11222": {
+    "query": "924 Manhattan Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-08T13:33:06.860Z",
+    "hit": {
+      "place_id": 356889034,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2592331340,
+      "lat": "40.7310173",
+      "lon": "-73.9541919",
+      "category": "amenity",
+      "type": "bar",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "The Brew Inn",
+      "display_name": "The Brew Inn, 924, Manhattan Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7309673",
+        "40.7310673",
+        "-73.9542419",
+        "-73.9541419"
+      ]
+    }
   }
 }

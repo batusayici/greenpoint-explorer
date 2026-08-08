@@ -5166,6 +5166,51 @@
           "date": "2026-08-07"
         }
       ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "recurring": true,
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "id": "brew-inn-greenpoint-trivia",
+      "title": "Greenpoint Trivia Night at The Brew Inn",
+      "kicker": "Wednesdays, 7pm start",
+      "startsAt": "2026-08-12T19:00:00-04:00",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "locationName": "The Brew Inn",
+      "address": "924 Manhattan Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "924 Manhattan Ave, Brooklyn, NY 11222",
+      "filters": [
+        "games",
+        "food_drink"
+      ],
+      "summary": "A standing midweek quiz at the Manhattan Avenue bar, run by the NYC Trivia League. Local beers, burgers and pierogi alongside.",
+      "sourceQuote": "Trivia Wednesdays, 7pm start",
+      "actions": [
+        {
+          "label": "League listing",
+          "type": "learn_more",
+          "url": "https://nyctrivialeague.com/listings/brew-inn-brooklyn/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "The Brew Inn — NYC Trivia League",
+          "url": "https://nyctrivialeague.com/listings/brew-inn-brooklyn/",
+          "publisher": "NYC Trivia League",
+          "date": "2026-08-07"
+        }
+      ],
+      "lat": 40.731017,
+      "lng": -73.954192
     }
   ]
 }

@@ -219,11 +219,17 @@ test("seed has exactly 75 cards across the six layers", () => {
   // Black Rabbit trivia + bingo, Hide & Seek Wine Down jazz, Scrappleland
   // backgammon + pinball. Brew Inn's Wednesday quiz is HELD — no street
   // address in the listing or in any prior card. 109 + 5 = 114.
-  assert.equal(seed.cards.length, 114);
+  // 2026-08-07 (Batu): Brew Inn's Wednesday quiz ships. The address WAS in the
+  // snapshot all along — the listing emits structured microdata in DOM order,
+  // so the street name lands on the line before the number ("Manhattan Avenue"
+  // / "924" / "11222"). The hold that afternoon grepped for <number> <street>
+  // only, found nothing, and called it source-blocked: a rule-miss, not a
+  // source limitation. 114 + 1 = 115.
+  assert.equal(seed.cards.length, 115);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 63, "58 + the 5 standing-programming cards restored 2026-08-07");
+  assert.equal(count((c) => c.category === "event"), 64, "63 + Brew Inn's Wednesday trivia, released when its address turned up in the snapshot (2026-08-07)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 19, "18 + Hide & Seek's standing Wine Down Wednesday jazz (2026-08-07)");
@@ -438,6 +444,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // because a static schedule page never produces a diff.
     "black-rabbit-nerd-alert-trivia",
     "black-rabbit-sunday-bingo",
+    "brew-inn-greenpoint-trivia",
     // 2026-08-06: Carcosa Club enters the graph on the first 14-day fill run —
     // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
     // Day 8/15). A game club's programme is play by definition.
