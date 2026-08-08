@@ -102,7 +102,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "Recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat."
+      "notes": "Recurring program lives in the site marquee: jazz Wed 7pm, DJs Fri/Sat. STANDING PROGRAMMING (2026-08-07): Wine Down Wednesday live jazz 7pm; DJs every Friday and Saturday night. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
+      "standing": true
     },
     {
       "id": "scrappleland",
@@ -111,7 +112,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "ScrappleLeague Wednesdays; re-verify the season is running."
+      "notes": "ScrappleLeague Wednesdays; re-verify the season is running. STANDING PROGRAMMING (2026-08-07): Tuesday Backgammon Club; Wednesday Pinball League. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
+      "standing": true
     },
     {
       "id": "brooklyn-craft-company",
@@ -239,7 +241,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "91 Greenpoint Ave; Tue \"Nerd Alert!\" trivia, Sun Buckaroo Bingo."
+      "notes": "91 Greenpoint Ave; Tue \"Nerd Alert!\" trivia, Sun Buckaroo Bingo. STANDING PROGRAMMING (2026-08-07): Nerd Alert! Trivia every Tuesday 8pm; bingo Sundays 7pm. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
+      "standing": true
     },
     {
       "id": "brew-inn-trivia",
@@ -248,7 +251,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted — use the league listing only."
+      "notes": "924 Manhattan Ave; Wed trivia. The venue's own domain is squatted — use the league listing only. STANDING PROGRAMMING (2026-08-07): Greenpoint Trivia Night, Wednesdays 7pm. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
+      "standing": true
     },
     {
       "id": "sunshine-laundromat",
@@ -302,7 +306,8 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
-      "notes": "29 Norman Ave; bookable tastings."
+      "notes": "29 Norman Ave; bookable tastings. STANDING PROGRAMMING (2026-08-07): A standing every-Thursday pour — verify the line before carding. This page is a static schedule, so it reports `unchanged` on every run — which is exactly why this source went dark for a week after its cards expired. Do NOT treat `unchanged` as \"nothing to do\" here: check whether the live deck still holds the recurring card and re-author it from the stated line if not.",
+      "standing": true
     },
     {
       "id": "kettl-tea",

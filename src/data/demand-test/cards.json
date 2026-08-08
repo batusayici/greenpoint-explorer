@@ -1028,10 +1028,14 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-01",
+      "updatedAt": "2026-08-07",
       "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
       "lat": 40.737671,
-      "lng": -73.955155
+      "lng": -73.955155,
+      "relatedCardIds": [
+        "scrappleland-backgammon-club",
+        "scrappleland-pinball-league"
+      ]
     },
     {
       "id": "flower-cat",
@@ -1481,7 +1485,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-08-07",
       "id": "black-rabbit",
       "title": "Black Rabbit",
       "kicker": "The bar behind two classic weeknights",
@@ -1513,7 +1517,11 @@
         }
       ],
       "lat": 40.730169,
-      "lng": -73.956635
+      "lng": -73.956635,
+      "relatedCardIds": [
+        "black-rabbit-nerd-alert-trivia",
+        "black-rabbit-sunday-bingo"
+      ]
     },
     {
       "category": "service",
@@ -3273,7 +3281,7 @@
       "title": "First Vinyl Fridays with Steph at Troost",
       "kicker": "All-vinyl set to open the weekend",
       "summary": "Steph opens the month's vinyl series at the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-07T00:00-04:00",
+      "startsAt": "2026-08-07T00:00:00-04:00",
       "endsAt": "2026-08-07T23:59:00-04:00",
       "filters": [
         "live_music"
@@ -3315,7 +3323,7 @@
       "title": "DJ Barba Yiorgi at Troost",
       "kicker": "World psychedelic groove",
       "summary": "The psychedelic-groove residency returns for another Thursday. No set start time is listed on the venue calendar.",
-      "startsAt": "2026-08-13T00:00-04:00",
+      "startsAt": "2026-08-13T00:00:00-04:00",
       "endsAt": "2026-08-13T23:59:00-04:00",
       "filters": [
         "live_music"
@@ -3357,7 +3365,7 @@
       "title": "DJ Jeff Widner at Troost",
       "kicker": "Pop records all night",
       "summary": "A pop-leaning Saturday set at the Manhattan Avenue bar. The venue calendar lists no start time.",
-      "startsAt": "2026-08-15T00:00-04:00",
+      "startsAt": "2026-08-15T00:00:00-04:00",
       "endsAt": "2026-08-15T23:59:00-04:00",
       "filters": [
         "live_music"
@@ -3399,7 +3407,7 @@
       "title": "Thursday at Greenpoint Library",
       "kicker": "Storytimes, sewing, teen tech, ESOL",
       "summary": "Babies & Books lapsits at 10:30 and 11:15, drop-in sewing machines at 1, English class at 2, Teen Tech at 3, Friends meeting and Sunset Storytime at 6.",
-      "startsAt": "2026-08-13T10:30-04:00",
+      "startsAt": "2026-08-13T10:30:00-04:00",
       "endsAt": "2026-08-13T23:59:00-04:00",
       "filters": [
         "family_kids"
@@ -3441,7 +3449,7 @@
       "title": "Friday in the library rooftop garden",
       "kicker": "Sensory hour, garden educator, movie",
       "summary": "Sensory Garden Hour for under-fives at 10:30, a garden educator on the roof at 3, and an after-school movie in Eco Lab 1 at the same hour.",
-      "startsAt": "2026-08-14T10:30-04:00",
+      "startsAt": "2026-08-14T10:30:00-04:00",
       "endsAt": "2026-08-14T23:59:00-04:00",
       "filters": [
         "family_kids"
@@ -3483,7 +3491,7 @@
       "title": "Cult Cinema at Film Noir",
       "kicker": "The weekly late-night cult slot",
       "summary": "The Meserole Avenue cinema's standing cult programme. The listing names the slot but not the title screening.",
-      "startsAt": "2026-08-11T21:00-04:00",
+      "startsAt": "2026-08-11T21:00:00-04:00",
       "endsAt": "2026-08-11T23:59:00-04:00",
       "filters": [
         "arts_culture"
@@ -3528,7 +3536,7 @@
       "title": "Watch Me continues at Film Noir Cinema",
       "kicker": "Second week of the run",
       "summary": "The feature holds over for a second week at the Meserole Avenue cinema after its premiere screening.",
-      "startsAt": "2026-08-13T19:00-04:00",
+      "startsAt": "2026-08-13T19:00:00-04:00",
       "endsAt": "2026-08-13T23:59:00-04:00",
       "filters": [
         "arts_culture"
@@ -3573,7 +3581,7 @@
       "title": "Raanan Hershberg at Greenpoint Comedy Club",
       "kicker": "Headline set, $25",
       "summary": "A one-off headline booking on a Tuesday, outside the club's usual Thursday-to-Saturday showcase run.",
-      "startsAt": "2026-08-11T19:30-04:00",
+      "startsAt": "2026-08-11T19:30:00-04:00",
       "endsAt": "2026-08-11T23:59:00-04:00",
       "filters": [
         "arts_culture"
@@ -3618,7 +3626,7 @@
       "title": "Carmen Lagala at Greenpoint Comedy Club",
       "kicker": "Early Saturday headline, $25",
       "summary": "A named booking in the 6pm slot, before the club's regular Saturday showcases take over the room.",
-      "startsAt": "2026-08-15T18:00-04:00",
+      "startsAt": "2026-08-15T18:00:00-04:00",
       "endsAt": "2026-08-15T23:59:00-04:00",
       "filters": [
         "arts_culture"
@@ -3663,7 +3671,7 @@
       "title": "Amigos en Común at Greenpoint Comedy Club",
       "kicker": "Spanish-language comedy, $20",
       "summary": "Dani Castañeda hosts a Spanish-language showcase — a Sunday booking outside the club's usual run.",
-      "startsAt": "2026-08-16T19:00-04:00",
+      "startsAt": "2026-08-16T19:00:00-04:00",
       "endsAt": "2026-08-16T23:59:00-04:00",
       "filters": [
         "arts_culture"
@@ -3708,8 +3716,8 @@
       "title": "Malifaux Monthly at Carcosa Club",
       "kicker": "All-day tabletop wargaming",
       "summary": "The club's monthly Malifaux meet runs most of the day. No price is stated on the listing.",
-      "startsAt": "2026-08-08T09:45-04:00",
-      "endsAt": "2026-08-08T18:00-04:00",
+      "startsAt": "2026-08-08T09:45:00-04:00",
+      "endsAt": "2026-08-08T18:00:00-04:00",
       "filters": [
         "games"
       ],
@@ -3751,8 +3759,8 @@
       "title": "HVAC Hot Dog Day at Carcosa Club",
       "kicker": "Hot dogs and games, all day",
       "summary": "An all-day fundraiser-style gathering at the Manhattan Avenue game club. The listing states no admission price.",
-      "startsAt": "2026-08-15T10:00-04:00",
-      "endsAt": "2026-08-15T18:30-04:00",
+      "startsAt": "2026-08-15T10:00:00-04:00",
+      "endsAt": "2026-08-15T18:30:00-04:00",
       "filters": [
         "games"
       ],
@@ -3794,7 +3802,7 @@
       "title": "Stuntsz: Body Language at Good Room",
       "kicker": "Six DJs on one bill",
       "summary": "Ben Wagner, James Axon, Partok, Leo Scheck, Jason Wang and Markus Z play the Meserole Avenue club.",
-      "startsAt": "2026-08-15T19:00-04:00",
+      "startsAt": "2026-08-15T19:00:00-04:00",
       "endsAt": "2026-08-15T23:59:00-04:00",
       "filters": [
         "live_music"
@@ -3837,8 +3845,8 @@
       "title": "Tour and tasting at Hana Makgeolli",
       "kicker": "45 minutes inside the brewery",
       "summary": "The production team walks you through the Dupont Street facility and the history of sool, then pours a guided tasting before the room opens.",
-      "startsAt": "2026-08-09T13:30-04:00",
-      "endsAt": "2026-08-09T14:30-04:00",
+      "startsAt": "2026-08-09T13:30:00-04:00",
+      "endsAt": "2026-08-09T14:30:00-04:00",
       "filters": [
         "food_drink"
       ],
@@ -3882,8 +3890,8 @@
       "title": "Tour and tasting at Hana Makgeolli",
       "kicker": "45 minutes inside the brewery",
       "summary": "An evening slot for the brewery walk-through and guided tasting, held before the tasting room opens to walk-ins.",
-      "startsAt": "2026-08-20T17:00-04:00",
-      "endsAt": "2026-08-20T18:00-04:00",
+      "startsAt": "2026-08-20T17:00:00-04:00",
+      "endsAt": "2026-08-20T18:00:00-04:00",
       "filters": [
         "food_drink"
       ],
@@ -3924,8 +3932,8 @@
       "title": "Floral arranging with author Stacey Yu",
       "kicker": "Build an arrangement, meet the author",
       "summary": "A hands-on arranging workshop doubling as a launch for the novel Kitten. No price is stated on the listing.",
-      "startsAt": "2026-08-08T18:00-04:00",
-      "endsAt": "2026-08-08T20:00-04:00",
+      "startsAt": "2026-08-08T18:00:00-04:00",
+      "endsAt": "2026-08-08T20:00:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -3969,8 +3977,8 @@
       "title": "Navigating Eclipse Season with E Wray",
       "kicker": "Astrology workshop, space limited",
       "summary": "E Wray walks through the last Pisces eclipses and the first in Leo. Registration is required and space is limited.",
-      "startsAt": "2026-08-09T20:30-04:00",
-      "endsAt": "2026-08-09T21:30-04:00",
+      "startsAt": "2026-08-09T20:30:00-04:00",
+      "endsAt": "2026-08-09T21:30:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -4011,8 +4019,8 @@
       "title": "Fantasy Lab at Flower Cat",
       "kicker": "Cocktails and a sex-ed talk",
       "summary": "Educator Miss Bloom leads a conversation on fantasy, desire and communication. A ticket includes one cocktail; no price is stated.",
-      "startsAt": "2026-08-16T19:00-04:00",
-      "endsAt": "2026-08-16T21:00-04:00",
+      "startsAt": "2026-08-16T19:00:00-04:00",
+      "endsAt": "2026-08-16T21:00:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -4053,8 +4061,8 @@
       "title": "Cozy Reading Night with Yellow Peril Books",
       "kicker": "$10 with a drink, bring a book",
       "summary": "A quiet reading evening run with Yellow Peril Books, who also sell titles on site. The ticket covers a drink of your choice.",
-      "startsAt": "2026-08-17T18:30-04:00",
-      "endsAt": "2026-08-17T20:30-04:00",
+      "startsAt": "2026-08-17T18:30:00-04:00",
+      "endsAt": "2026-08-17T20:30:00-04:00",
       "filters": [
         "arts_culture"
       ],
@@ -4095,7 +4103,7 @@
       "title": "SummerStarz: Project Hail Mary",
       "kicker": "Free waterfront movie night",
       "summary": "The free Friday series continues on the waterfront lawn. Bring a blanket and a picnic; tickets are free but requested in advance.",
-      "startsAt": "2026-08-14T20:00-04:00",
+      "startsAt": "2026-08-14T20:00:00-04:00",
       "endsAt": "2026-08-14T23:59:00-04:00",
       "filters": [
         "family_kids"
@@ -4137,8 +4145,8 @@
       "title": "Movies Under the Stars: Guardians of the Galaxy",
       "kicker": "Free outdoor screening on the lawn",
       "summary": "NYC Parks screens the 2014 film on the lawn at Monitor Street and Driggs Avenue. Free, no ticket needed.",
-      "startsAt": "2026-08-19T20:00-04:00",
-      "endsAt": "2026-08-19T22:00-04:00",
+      "startsAt": "2026-08-19T20:00:00-04:00",
+      "endsAt": "2026-08-19T22:00:00-04:00",
       "filters": [
         "family_kids"
       ],
@@ -4383,6 +4391,781 @@
       ],
       "lat": 40.730461,
       "lng": -73.953114
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-hefker-girl-0808",
+      "title": "DJ The Hefker Girl at Troost",
+      "kicker": "Dub, mariachi and pirate radio",
+      "summary": "Decirculated dub, mariachi and pirate radio in one set. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-08T00:00:00-04:00",
+      "endsAt": "2026-08-08T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: DJ THE HEFKER GIRL\nstart.date: 2026-08-08",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-automat-0809",
+      "title": "AUTOMAT at Troost",
+      "kicker": "Sunday night live set",
+      "summary": "AUTOMAT plays the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-09T00:00:00-04:00",
+      "endsAt": "2026-08-09T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: AUTOMAT\nstart.date: 2026-08-09",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-noah-amick-0810",
+      "title": "Noah Amick at Troost",
+      "kicker": "Electric indie jazz",
+      "summary": "Noah Amick brings electric indie jazz to the back room. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-10T00:00:00-04:00",
+      "endsAt": "2026-08-10T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: NOAH AMICK\nstart.date: 2026-08-10",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-stan-zenkov-0811",
+      "title": "Stan Zenkov's improvised quintet at Troost",
+      "kicker": "Creative improvised music",
+      "summary": "Stan Zenkov with Ayumi Ishito, Nathan Chamberlain, Evan Crane and Yuko Togami. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-11T00:00:00-04:00",
+      "endsAt": "2026-08-11T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: Stan Zenkov // with Ayumi Ishito, Nathan Chamberlain, Evan Crane, Yuko Togami // creative improvised music from the <3\nstart.date: 2026-08-11",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-timothy-okeefe-0814",
+      "title": "DJ Timothy O'Keefe at Troost",
+      "kicker": "Friday night DJ set",
+      "summary": "A Friday set at the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-14T00:00:00-04:00",
+      "endsAt": "2026-08-14T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: DJ TIMOTHY O'KEEFE\nstart.date: 2026-08-14",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-gabriel-heinemann-0816",
+      "title": "Gabriel Heinemann at Troost",
+      "kicker": "Sunday night live set",
+      "summary": "Gabriel Heinemann plays the back room. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-16T00:00:00-04:00",
+      "endsAt": "2026-08-16T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: GABRIEL HEINEMANN\nstart.date: 2026-08-16",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-julia-kwamya-0818",
+      "title": "Julia Kwamya, Marie Raoult and Ava Raiin at Troost",
+      "kicker": "Dream pop triple bill",
+      "summary": "Stripped-down dream pop and other celestial sounds across three sets. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-18T00:00:00-04:00",
+      "endsAt": "2026-08-18T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: JULIA KWAMYA // MARIE RAOULT // AVA RAIIN\nstart.date: 2026-08-18",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-habbina-habbina-0819",
+      "title": "Habbina Habbina at Troost",
+      "kicker": "Midweek live set",
+      "summary": "Habbina Habbina plays the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-19T00:00:00-04:00",
+      "endsAt": "2026-08-19T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: HABBINA HABBINA\nstart.date: 2026-08-19",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "id": "troost-barba-yiorgi-0820",
+      "title": "DJ Barba Yiorgi at Troost",
+      "kicker": "World psychedelic groove",
+      "summary": "The psychedelic-groove residency's next Thursday. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-20T00:00:00-04:00",
+      "endsAt": "2026-08-20T23:59:00-04:00",
+      "filters": [
+        "live_music"
+      ],
+      "sourceQuote": "summary: DJ Barba Yiorgi\nstart.date: 2026-08-20",
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "id": "comedy-off-menu-0808",
+      "title": "Off Menu at Greenpoint Comedy Club",
+      "kicker": "Early Saturday show, $20",
+      "startsAt": "2026-08-08T18:00:00-04:00",
+      "endsAt": "2026-08-08T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "summary": "A one-off booking in the 6pm slot, ahead of the club's regular Saturday showcases.",
+      "sourceQuote": "Sat Aug 8, 2026, 6:00 PM\nOff Menu - Saturday August 8th 6PM",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-07"
+        }
+      ],
+      "relatedCardIds": [
+        "greenpoint-comedy-club"
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "id": "comedy-greenpoint-nights-0820",
+      "title": "Greenpoint Nights with Django Gold and JP McDade",
+      "kicker": "Thursday headline pair, $20",
+      "startsAt": "2026-08-20T20:00:00-04:00",
+      "endsAt": "2026-08-20T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Greenpoint Comedy Club",
+      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729567,
+      "lng": -73.958337,
+      "summary": "Django Gold and JP McDade share a named Thursday bill, separate from the club's weekly showcase.",
+      "sourceQuote": "Thu Aug 20, 2026, 8:00 PM\nGreenpoint Nights with Django Gold and JP McDade",
+      "actions": [
+        {
+          "label": "Tickets",
+          "type": "learn_more",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Comedy Club",
+          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
+          "publisher": "Greenpoint Comedy Club",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "id": "film-noir-paris-vu-par-0807",
+      "title": "Paris vu par at Film Noir Cinema",
+      "kicker": "Late Friday screening",
+      "startsAt": "2026-08-07T21:00:00-04:00",
+      "endsAt": "2026-08-07T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "summary": "The 1965 New Wave omnibus screens in the 9pm slot at the Meserole Avenue cinema.",
+      "sourceQuote": "title: PARIS VU PAR",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/7/7/paris-vu-par"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema programme",
+          "url": "https://www.filmnoircinema.com/program/2026/7/7/paris-vu-par",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "id": "film-noir-monday-0810",
+      "title": "Film Noir Monday",
+      "kicker": "The weekly late-night noir slot",
+      "startsAt": "2026-08-10T21:00:00-04:00",
+      "endsAt": "2026-08-10T23:59:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "summary": "The cinema's standing Monday noir programme. The listing names the slot but not the title screening.",
+      "sourceQuote": "title: FILM NOIR MONDAY",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema programme",
+          "url": "https://www.filmnoircinema.com/program/2019/12/16/film-noir-mondays-b4lyr-5hdte-8mz2l",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "recurring": true,
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "id": "black-rabbit-nerd-alert-trivia",
+      "title": "Nerd Alert! Trivia at Black Rabbit",
+      "kicker": "Tuesdays, 8pm",
+      "startsAt": "2026-08-11T20:00:00-04:00",
+      "locationName": "Black Rabbit",
+      "address": "91 Greenpoint Ave",
+      "lat": 40.730169,
+      "lng": -73.956635,
+      "filters": [
+        "games",
+        "food_drink"
+      ],
+      "summary": "A standing weekly quiz at the Greenpoint Avenue bar. Runs every week; the pub states no cover.",
+      "sourceQuote": "Every Tuesday at 8pm Nerd Alert! TRIVIA",
+      "actions": [
+        {
+          "label": "Venue site",
+          "type": "learn_more",
+          "url": "https://blackrabbitbar.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Black Rabbit",
+          "url": "https://blackrabbitbar.com",
+          "publisher": "Black Rabbit",
+          "date": "2026-08-07"
+        }
+      ],
+      "relatedCardIds": [
+        "black-rabbit"
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "recurring": true,
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "id": "black-rabbit-sunday-bingo",
+      "title": "Sunday bingo at Black Rabbit",
+      "kicker": "Sundays, 7pm",
+      "startsAt": "2026-08-09T19:00:00-04:00",
+      "locationName": "Black Rabbit",
+      "address": "91 Greenpoint Ave",
+      "lat": 40.730169,
+      "lng": -73.956635,
+      "filters": [
+        "games",
+        "food_drink"
+      ],
+      "summary": "The bar's standing Sunday-evening bingo night, week in week out.",
+      "sourceQuote": "Sundays at 7pm!",
+      "actions": [
+        {
+          "label": "Venue site",
+          "type": "learn_more",
+          "url": "https://blackrabbitbar.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Black Rabbit",
+          "url": "https://blackrabbitbar.com",
+          "publisher": "Black Rabbit",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "recurring": true,
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "id": "hide-and-seek-wine-down-jazz",
+      "title": "Wine Down Wednesday live jazz",
+      "kicker": "Wednesdays, 7pm",
+      "startsAt": "2026-08-12T19:00:00-04:00",
+      "locationName": "Hide & Seek",
+      "address": "593 Manhattan Ave",
+      "lat": 40.72293,
+      "lng": -73.950617,
+      "filters": [
+        "live_music",
+        "food_drink"
+      ],
+      "summary": "A standing midweek jazz session at the Manhattan Avenue wine bar.",
+      "sourceQuote": "Wednesdays 7pm also DJ's Every Friday and Saturday Night",
+      "actions": [
+        {
+          "label": "Venue site",
+          "type": "learn_more",
+          "url": "https://hideandseek.nyc"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Hide & Seek",
+          "url": "https://hideandseek.nyc",
+          "publisher": "Hide & Seek",
+          "date": "2026-08-07"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "recurring": true,
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "id": "scrappleland-backgammon-club",
+      "title": "Tuesday Backgammon Club at Scrappleland",
+      "kicker": "Tuesdays, all levels",
+      "startsAt": "2026-08-11T20:00:00-04:00",
+      "locationName": "Scrappleland",
+      "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.737671,
+      "lng": -73.955155,
+      "filters": [
+        "games",
+        "food_drink"
+      ],
+      "summary": "A standing weekly backgammon meet at the pinball bar. The venue lists it as a regular club night.",
+      "sourceQuote": "Tuesday Backgammon Club",
+      "actions": [
+        {
+          "label": "Venue site",
+          "type": "learn_more",
+          "url": "https://scrappleland.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Scrappleland",
+          "url": "https://scrappleland.com",
+          "publisher": "Scrappleland",
+          "date": "2026-08-07"
+        }
+      ],
+      "relatedCardIds": [
+        "scrappleland"
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "recurring": true,
+      "createdAt": "2026-08-07",
+      "updatedAt": "2026-08-07",
+      "endsAt": "2026-08-21T23:59:00-04:00",
+      "id": "scrappleland-pinball-league",
+      "title": "Wednesday Pinball League at Scrappleland",
+      "kicker": "Wednesdays on the arcade floor",
+      "startsAt": "2026-08-12T20:00:00-04:00",
+      "locationName": "Scrappleland",
+      "address": "1150 Manhattan Ave, Brooklyn, NY 11222",
+      "lat": 40.737671,
+      "lng": -73.955155,
+      "filters": [
+        "games",
+        "food_drink"
+      ],
+      "summary": "The bar's standing weekly pinball league on the arcade floor.",
+      "sourceQuote": "Wednesday Pinball League",
+      "actions": [
+        {
+          "label": "Venue site",
+          "type": "learn_more",
+          "url": "https://scrappleland.com"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Scrappleland",
+          "url": "https://scrappleland.com",
+          "publisher": "Scrappleland",
+          "date": "2026-08-07"
+        }
+      ]
     }
   ]
 }

@@ -123,6 +123,29 @@ export function assessReservoir(cards, { now, minReservoir = 10 } = {}) {
   return { datedReservoir, hollowReservoir: datedReservoir < minReservoir, minReservoir };
 }
 
+// L11e (Batu, 2026-08-07): replaces the per-venue count cap the 14-day fill
+// rule shipped with. That cap was sized on a 26% estimate computed against the
+// BROKEN 27-card window — the baseline the fill rule existed to repair — so it
+// suppressed 5 of Troost's 7 nights to prevent a concentration the Library was
+// already exceeding at 14%, uncapped, because grouped day-cards never counted.
+//
+// A share ceiling cannot be mis-sized by a bad baseline: it scales with the
+// window. It also measures the thing anyone actually cares about — "is one
+// venue swamping the feed" — rather than proxying it with a per-venue count
+// that has to be re-tuned every time the window changes size.
+export function assessConcentration(cards, { now, maxShare = 0.25 } = {}) {
+  const win = cards.filter((c) => upcomingWithin7Days(c, now));
+  if (win.length === 0) return null;
+  const byVenue = new Map();
+  for (const c of win) {
+    const k = c.locationName || "(unknown)";
+    byVenue.set(k, (byVenue.get(k) ?? 0) + 1);
+  }
+  const [topVenue, topCount] = [...byVenue.entries()].reduce((a, b) => (b[1] > a[1] ? b : a));
+  const topShare = topCount / win.length;
+  return { topVenue, topCount, windowSize: win.length, topShare, maxShare, over: topShare > maxShare };
+}
+
 export function assessFreshness({
   lastRunAt,
   now,
@@ -134,6 +157,7 @@ export function assessFreshness({
   history = null,
   minDropRatio = 0.2,
   minReservoir = 10,
+  maxVenueShare = 0.25,
   datedUpcomingOverride = null,
 }) {
   const runDate = lastRunAt ? new Date(lastRunAt) : null;
@@ -146,6 +170,7 @@ export function assessFreshness({
   const thinFeed = datedUpcoming < minDatedUpcoming;
   const trend = assessTrend(history, { now, current: datedUpcoming, minDropRatio });
   const { datedReservoir, hollowReservoir } = assessReservoir(cards, { now, minReservoir });
+  const concentration = assessConcentration(cards, { now, maxShare: maxVenueShare });
 
   const reach = assessReach(fetchReport, { maxErrorRate });
   const sourcesUnreachable = !!reach && reach.attempted > 0 && reach.errorRate > reach.maxErrorRate;
@@ -180,6 +205,11 @@ export function assessFreshness({
     // warns on it without exiting non-zero.
     hollowReservoir,
     datedReservoir,
+    // Same treatment again: reported, warned on, never gates `fresh`. A feed
+    // leaning on one venue is an editorial problem; the cards on it are still
+    // true, and `fresh` is what the client banner reads.
+    concentration,
+    overConcentrated: !!concentration?.over,
     datedUpcoming,
     reach,
     verifiedThrough: lastRunAt ?? null,

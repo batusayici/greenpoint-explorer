@@ -331,3 +331,43 @@ test("trend: falls back to 21 days so two missed record days do not blind the al
   assert.equal(a.trend.priorDate, "2026-07-07");
   assert.equal(a.trend.spanDays, 21);
 });
+
+// L11e (Batu, 2026-08-07). The 2026-08-06 fill rule shipped with a per-venue
+// cap of 2 dated cards inside the live window, sized against a 26% estimate
+// that had been computed on the BROKEN 27-card window — the very baseline the
+// fill rule existed to repair. Against a healthy window the real figure is
+// 17%, and the Library already ran 14% uncapped because grouped day-cards were
+// never subject to the count. So the cap suppressed 5 of Troost's 7 nights to
+// prevent a concentration the Library was already exceeding. Batu spotted it
+// from the outside: events on the venue's calendar, absent from the map.
+//
+// The count cap is replaced by the thing it was proxying for. A share check
+// cannot be mis-sized by a bad baseline — it scales with the window.
+
+test("concentration: a venue over the share ceiling is flagged", () => {
+  const cards = [
+    ...Array.from({ length: 7 }, (_, i) => ({ ...dated(`t${i}`, `2026-07-${29 + (i % 3)}T20:00:00-04:00`), locationName: "Troost" })),
+    ...Array.from({ length: 3 }, (_, i) => ({ ...dated(`o${i}`, `2026-07-30T20:00:00-04:00`), locationName: `Other ${i}` })),
+  ];
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards });
+  assert.equal(a.concentration.topVenue, "Troost");
+  assert.equal(a.concentration.topCount, 7);
+  assert.equal(a.overConcentrated, true, "70% of the window from one venue");
+});
+
+test("concentration: a nightly venue at a normal share passes", () => {
+  const cards = [
+    ...Array.from({ length: 7 }, (_, i) => ({ ...dated(`t${i}`, `2026-07-${29 + (i % 3)}T20:00:00-04:00`), locationName: "Troost" })),
+    ...Array.from({ length: 34 }, (_, i) => ({ ...dated(`o${i}`, `2026-07-30T20:00:00-04:00`), locationName: `Other ${i}` })),
+  ];
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards });
+  assert.equal(a.concentration.topCount, 7);
+  assert.equal(a.overConcentrated, false, "7 of 41 is 17% — the case the count cap wrongly suppressed");
+});
+
+test("concentration: reported but never gates fresh", () => {
+  const cards = Array.from({ length: 12 }, (_, i) => ({ ...dated(`t${i}`, `2026-07-${29 + (i % 3)}T20:00:00-04:00`), locationName: "Troost" }));
+  const a = assessFreshness({ lastRunAt: "2026-07-28T09:00:00-04:00", now: NOW, cards });
+  assert.equal(a.overConcentrated, true);
+  assert.equal(a.fresh, true, "an unbalanced feed is an editorial problem, not a freshness lie");
+});

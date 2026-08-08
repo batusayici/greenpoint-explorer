@@ -204,14 +204,29 @@ test("seed has exactly 75 cards across the six layers", () => {
   // was a Greenpoint card we lost. The 8/13 Sewing 101 session is real and
   // Greenpoint but deferred by the 2-per-venue cap in the live 7-day window.
   // 94 + 2 = 96.
-  assert.equal(seed.cards.length, 96);
+  // 2026-08-07 (Batu): the per-venue cap from the 14-day fill rule is REPLACED
+  // by an L11e concentration guard (no venue over 25% of the live window). The
+  // cap had been sized on a 26% estimate computed against the BROKEN 27-card
+  // window — against a healthy one Troost is 17%, and the Library already ran
+  // 14% uncapped. It was suppressing 5 of Troost's 7 nights to prevent a
+  // concentration the Library was already exceeding. Backfilled the 13 cards
+  // the cap had pushed out: 9 Troost nights, 2 comedy-club named one-offs,
+  // 2 Film Noir programmes. 96 + 13 = 109.
+  // 2026-08-07, standing-programming fix: `unchanged` was being read as "no
+  // supply". Black Rabbit, Hide & Seek and Scrappleland publish STATIC weekly
+  // schedules, so their pages never diff, so the run skipped them forever and
+  // their recurring cards expired unreplaced. Re-authored as `recurring`:
+  // Black Rabbit trivia + bingo, Hide & Seek Wine Down jazz, Scrappleland
+  // backgammon + pinball. Brew Inn's Wednesday quiz is HELD — no street
+  // address in the listing or in any prior card. 109 + 5 = 114.
+  assert.equal(seed.cards.length, 114);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 45, "43 post-expiry + 2 Brooklyn Craft Company Greenpoint sessions (8/8, 8/17)");
+  assert.equal(count((c) => c.category === "event"), 63, "58 + the 5 standing-programming cards restored 2026-08-07");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 9, "11 − the 8/6 Troost DJ night and the 8/6 Good Room bill, both expired out");
+  assert.equal(count((c) => c.filters.includes("live_music")), 19, "18 + Hide & Seek's standing Wine Down Wednesday jazz (2026-08-07)");
   assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
@@ -418,6 +433,11 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
   const games = seed.cards.filter((c) => c.filters.includes("games")).map((c) => c.id).sort();
   assert.deepEqual(games, [
     "black-rabbit",
+    // 2026-08-07: Black Rabbit and Scrappleland are back after the standing-
+    // programming fix — their weekly nights had silently stopped being carded
+    // because a static schedule page never produces a diff.
+    "black-rabbit-nerd-alert-trivia",
+    "black-rabbit-sunday-bingo",
     // 2026-08-06: Carcosa Club enters the graph on the first 14-day fill run —
     // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
     // Day 8/15). A game club's programme is play by definition.
@@ -431,8 +451,8 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // card was under-reading its own source.
     "nb-chess-parkhouse-0806",
     "scrappleland",
-    // 2026-08-06: the backgammon (8/4), pinball (8/5) and Threes speed-dating
-    // (8/5) cards expired with the rest of that block.
+    "scrappleland-backgammon-club",
+    "scrappleland-pinball-league",
   ]);
   // The whole point of the cut: play and culture no longer share a shelf.
   for (const id of games) {
@@ -655,13 +675,15 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   ]);
   // Scrappleland's club nights all expired 2026-08-06; the prune emptied its
   // link list, so Carcosa now carries the games side of the place graph.
-  assert.equal(byId("scrappleland").relatedCardIds, undefined);
+  assert.deepEqual(byId("scrappleland").relatedCardIds, ["scrappleland-backgammon-club", "scrappleland-pinball-league"]);
   assert.deepEqual(byId("flower-cat-subscription").relatedCardIds, ["flower-cat"]);
   // Black Rabbit's weeknight cards have all expired (Sunday bingo 2026-07-27,
   // Tuesday trivia 2026-08-01) — the expiry script drops dangling refs, so the
   // venue card carries no link list until its next gig is carded.
-  assert.equal(byId("black-rabbit").relatedCardIds, undefined);
-  assert.equal(byId("black-rabbit-nerd-alert-trivia"), undefined);
+  // 2026-08-07: both are back, and their venue link lists with them — this is
+  // the standing-programming fix landing in the place graph.
+  assert.deepEqual(byId("black-rabbit").relatedCardIds, ["black-rabbit-nerd-alert-trivia", "black-rabbit-sunday-bingo"]);
+  assert.ok(byId("black-rabbit-nerd-alert-trivia").recurring, "a standing weekly night is a recurring card");
 });
 
 test("dated gigs carry a start (open-start regression, 2026-07-26)", () => {

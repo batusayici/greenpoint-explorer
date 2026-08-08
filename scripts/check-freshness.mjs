@@ -99,12 +99,27 @@ const trendBit = a.trend
 console.log(
   `[freshness] lastRunAt=${ledger.lastRunAt} datedUpcoming7d=${a.datedUpcoming} ` +
     `reservoir7-14d=${a.datedReservoir} ` +
+    (a.concentration ? `topVenue=${a.concentration.topVenue}:${(a.concentration.topShare * 100).toFixed(0)}% ` : "") +
     `staleIngest=${a.staleIngest} thinFeed=${a.thinFeed}${stampMode ? "" : reachBit + trendBit} → ${a.fresh ? "FRESH" : "NOT FRESH"}${stampMode ? " (stamp written)" : ""}`,
 );
 
 // L11d: warn, never exit — same call as decliningFeed above. This is the one
 // signal that fires BEFORE the feed thins rather than after, so it is the line
 // an ingest run should act on: it names supply the roster already carries.
+// L11e: the counterweight to the fill rule. Fill hard, then check nobody is
+// swamping the feed — rather than capping venues up front, which is how the
+// 2026-08-06 cap suppressed 5 of Troost's 7 nights against a mis-sized number.
+if (!stampMode && a.overConcentrated) {
+  const c = a.concentration;
+  console.error(
+    `[freshness] WARN: ${c.topVenue} is ${(c.topShare * 100).toFixed(0)}% of the live window ` +
+      `(${c.topCount} of ${c.windowSize}, ceiling ${(c.maxShare * 100).toFixed(0)}%).\n` +
+      "[freshness]   Thin the venue OR fill the rest of the window — the second is almost always\n" +
+      "[freshness]   the right move, because a high share usually means the feed is thin, not that\n" +
+      "[freshness]   the venue is loud.",
+  );
+}
+
 if (!stampMode && a.hollowReservoir) {
   console.error(
     `[freshness] WARN: reservoir hollow — only ${a.datedReservoir} cards dated 7-14 days out ` +

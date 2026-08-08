@@ -4,7 +4,53 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-06 (latest) — supply decline root-caused: the ingest never filled the back of the window
+## 2026-08-07 (latest) — the venue cap was mis-sized; `unchanged` was hiding four sources
+
+Two corrections, both prompted by Batu looking at the actual output rather than the metrics.
+
+**1. The per-venue cap is RETIRED, replaced by a concentration guard.** Batu: *"i see events in their
+calendar beyond today but not in the app."* Correct — Troost's calendar carried 13 nights to 8/21 and
+the app showed 3. **The cap was sized on a number computed against the broken window.** The "one venue
+would be 26% of the feed" estimate divided 7 Troost nights into the *27-card* window — the very
+baseline the fill rule existed to repair. Against a healthy window Troost is **17%**, and the Library
+was already running **14% uncapped**, because grouped day-cards were never subject to the count. So
+the cap suppressed 5 of 7 nights to prevent a concentration the Library already exceeded. **Sizing a
+guard against a broken baseline bakes the breakage into the guard** — the general lesson, and it is
+the second time in two days that a number taken from the degraded state has misled a decision.
+
+Replaced by **L11e `assessConcentration`**: warn when any venue exceeds **25% of the live window**.
+A share cannot be mis-sized by a bad baseline — it scales with the window. Reported by
+`check-freshness` as `topVenue=<name>:<pct>`; warned, never gates `fresh`, same as the other two.
+When it fires the answer is usually *fill the rest of the window*, not thin the venue. Backfilled the
+13 suppressed cards (9 Troost nights, 2 comedy-club one-offs, 2 Film Noir programmes); Troost now
+sits at 16%.
+
+**2. `unchanged` was being read as "no supply", and four sources went dark.** Batu asked which
+sources had lost their event cards and whether it was organic. Nine hosts had; the split was **3
+organic** (Bios offer ended, Kingsland festival passed, a one-off drawing workshop passed), **1 not a
+loss** (the comedy club migrated to `jumpcomedy.com`), **1 mixed** (`eavesdrop.nyc` — its own payload
+stops at Aug 1, so today's loss is organic, but extraction captures 1,745 of 350,986 chars and the
+snapshot is frozen on June dates, so it would under-report if the venue resumed), and **4 a genuine
+bug**.
+
+Black Rabbit, Brew Inn, Hide & Seek and Scrappleland publish **static standing schedules** — "Every
+Tuesday at 8pm Nerd Alert! TRIVIA", "Wednesdays, 7pm start". That page never changes, so it is
+`unchanged` forever, so the skill's *"sources with status `unchanged` are DONE"* skipped it forever —
+and their recurring cards expired on schedule and were never re-authored. Roughly **8 recurring cards
+a week**, lost with every gate green. **The diff engine detects new announcements; standing
+programming produces no diff, ever.** Same family as the reservoir bug: the ingest only reacts to
+change, and steady-state supply falls through.
+
+Fixed with a `standing: true` roster marker (5 sources) and a skill rule: **a standing source is
+re-checked on EXPIRY, not on diff.** Re-authored 5 recurring cards. Brew Inn is **held** — no street
+address in the listing or in any prior card across 40 commits.
+
+**Process note worth keeping.** Two addresses were drafted from memory during this run — Brew Inn's
+and Hide & Seek's — and both were caught before shipping by checking the snapshot. Hide & Seek's
+drafted address was **wrong**; the real one (593 Manhattan Ave) was stated in the snapshot all along.
+Recall is not a source, and it is confident exactly when it is wrong. Deck 96 → 114.
+
+## 2026-08-06 — supply decline root-caused: the ingest never filled the back of the window
 
 Follow-up investigation to the 2026-08-03 supply analysis, which fixed the **fetch** layer and left
 the decline running. Those fixes worked and are not in question: reach is `41/44`, browser-only
