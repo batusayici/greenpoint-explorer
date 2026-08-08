@@ -89,4 +89,70 @@ Each was browser-checked unless noted. Recording the reasons so this scan does n
 
 Add **8** sources (Tier A + Tier B), taking the web roster 49 → 57. Subscribe to **Otis & Finn** separately.
 
+---
+
+# Part 2 — deals & memberships sweep (same day)
+
+The scan above asked one question: *does this business publish dated events?* That is the wrong lens for
+`discount` / `subscription` supply, and it produced **three false rejections**. Clay Space, Selformer and
+Held Space were all written off in Tier D — and all three run **live, priced memberships**. The
+event-calendar field measures events; it says nothing about whether a business sells a club.
+
+Method: mine all 145 SSG descriptions for membership language (noisy — "classic" matches "class"), then
+verify domains actually belong to the business and follow **the site's own** membership/deal links rather
+than guessing paths.
+
+Baseline: 23 `subscription`/`discount` cards already live. `discount` is schema-required to carry `endsAt`.
+
+## Confirmed and cardable (6)
+
+| Offer | Terms (verbatim from source) | URL |
+|---|---|---|
+| **WORD membership** | 4 tiers — Fan $5/mo, Friend $10/mo, Family $20/mo, Champion $100/mo. 5–25% off every purchase, event discounts, $10 birthday credit, free monthly ARC at Family+ | `withfriends.co/word/join` |
+| **Held Space membership** | Community $129/month or $1029/year (2 months free), no minimum; higher tiers $329/mo and $396/mo. Unlimited members-only events ≥2×/week | `heldspacebk.com/membership` |
+| **Selformer** | Summer Fling Unlimited $249/mo; Unlimited On-Demand Video $350/mo; packages $45–$399 | `selformer.com/plans-pricing` |
+| **Clay Space membership** | $210–$650 by tier. **3-month minimum**, application-gated, requires 1+ year of consistent lessons | `clayspacebk.com/membership` |
+| **Marianella subscription box** | $48/mo, auto-renews, skip or cancel anytime | `marianella.co/products/subscription-box` |
+| **Driftaway Coffee subscriptions** | Coffee subscription roaster (85 Debevoise). Precedent: Kettl's mail-order tea subs are already carded | `store.driftaway.coffee/collections/subscriptions` |
+
+**Two geography gates.** Selformer's unlimited plan reads "Williamsburg + Greenpoint" and WORD's membership
+covers Brooklyn + Jersey City. Both are valid for the Greenpoint storefront, but the card copy must not
+imply a Greenpoint-only benefit.
+
+## Hold — source-conflicted (1)
+
+**Brooklyn Winery Wine Club.** Two pages on the same site disagree:
+
+- `/wine-club/` — "Stay tuned for more information about the future of our Wine Club by signing up for news." (reads paused/TBD)
+- `/brooklyn-winery-specials-and-events/` — "Wine Club Wednesdays … First Wednesday of Every Month. Wine Club members can enjoy half-priced bottles for themselves and a guest."
+
+One page retires the club, the other advertises a standing member benefit. Under the truth rules this is
+source-conflicted → **hold, do not ship**. Resolve by asking the winery directly.
+
+## Already carded (1)
+
+**Kettl Tea subscriptions** — `kettl-tea-subscriptions`. No action.
+
+## Rejected, with reason (5)
+
+| Business | Why |
+|---|---|
+| **Green Gooding** | False positive. The page states "no listing fees, **no monthly subscriptions**, and no hidden charges" — it is a peer-to-peer appliance-rental marketplace, and the hit was its seller-side page. |
+| **Elevate BKLYN** | `/plans` renders only the headings "MEMBERSHIPS" and "PACKAGES" — no terms published (empty or broken Wix widget). Nothing citable. |
+| **Minus Moonshine** | No club/membership page anywhere in the sitemap. (Also runs a Prospect Heights store — geography gate if revisited.) |
+| **Dandelion Wine** | No membership or wine club found. Weekly tastings + free local delivery are perks, not a club. |
+| **Brooklyn Craft Company** | The "join" hit was **Join our Team** — a recruiting page. |
+
+## Weak / judgment call (1)
+
+**WORD homeWORDbound Mystery Box** (`wordbookstores.com/homewordbound-mystery-box`) — a one-off curated
+gift box, $25 minimum plus a $1 sign-up fee. **Not recurring**, so `subscription` is the wrong category.
+The copy also reads as a COVID-era holdover ("get through the next few weeks"). Live and purchasable, but
+confirm with WORD it is still current before carding.
+
+## Housekeeping spotted en route
+
+Two `discount` cards are at or past expiry: `poochs-parlor-first-groom` (`endsAt` 2026-08-08, today) and
+`marianella-19th-anniversary-sale` (2026-08-09, tomorrow). Next `ingest:expire` run should clear them.
+
 Roster additions are human-gated (`CLAUDE.md`) — this doc is the proposal, not the change. Adding all 24 would have grown the roster by half while contributing near-zero supply: **16 of the 24 are dead, empty, walled, or misfiled**, and the SSG "event calendar" field is not a reliable proxy for public dated programming.

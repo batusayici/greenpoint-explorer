@@ -6404,6 +6404,287 @@
       "sourceCampaign": "ymca_onboarding_2026_08_08",
       "lat": 40.727022,
       "lng": -73.953248
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "category": "subscription",
+      "id": "word-membership",
+      "title": "WORD bookstore membership",
+      "kicker": "5–25% off every book, from $5/mo",
+      "filters": [
+        "deals_memberships",
+        "arts_culture"
+      ],
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St",
+      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
+      "summary": "Four monthly tiers at the Franklin St bookstore: Fan $5 for 5% off everything, Friend $10 for 10% off books and events, Family $20 for 20% off plus a free advance reader copy each month, and Champion $100 for 25% off and free entry to every event. All tiers get a $10 store credit in your birthday month; cancel renewal any time.",
+      "whyItMatters": "WORD was on the map for its events — the membership that discounts those events was never surfaced.",
+      "actions": [
+        {
+          "label": "Join",
+          "type": "join",
+          "url": "https://withfriends.co/word/join"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Support WORD by becoming a member",
+          "publisher": "WORD",
+          "url": "https://withfriends.co/word/join",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Fan $5/mo: 5% discount on every purchase, online and in store; $10 store credit for a single purchase during your birthday month. Friend $10/mo: 10% discount on every purchase, online and in store; 10% discount on all events (online tickets only); Early access to RSVP for special events. Family $20/mo: 20% discount on every purchase, online and in store; 20% discount on all events; 1 free ARC (advanced reader copy) book per month (in-store pickup only). Champion $100/mo: 25% discount on every purchase, online and in store; Free entry to all events. Cancel renewal at any time.",
+      "lat": 40.729072,
+      "lng": -73.957317
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "category": "subscription",
+      "id": "held-space-membership",
+      "title": "Held Space membership",
+      "kicker": "Unlimited members-only events, $129/mo",
+      "filters": [
+        "deals_memberships",
+        "wellness"
+      ],
+      "locationName": "Held Space",
+      "address": "960 Manhattan Ave, 4th Floor",
+      "geocodeQuery": "960 Manhattan Ave, Brooklyn, NY 11222",
+      "summary": "A Manhattan Ave wellness space where the Community tier is $129 a month or $1,029 a year (two months free), with no minimum — it covers unlimited members-only events at least twice a week, from yoga to sound baths to communal coworking, plus the lounge and a members-only Slack. Practitioner tiers start at $329 and Facilitator at $396. Tours run the first and third Friday, noon to 2pm.",
+      "whyItMatters": "A standing weekly programme that never appears on a public calendar — you have to be inside to see it.",
+      "actions": [
+        {
+          "label": "Join",
+          "type": "join",
+          "url": "https://heldspacebk.com/membership"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Membership | Held Space",
+          "publisher": "Held Space",
+          "url": "https://heldspacebk.com/membership",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Community Membership: Attend unlimited Members Only Events (at least 2x per week with offerings like yoga, ecstatic dance, sound baths, communal coworking, and more); Access the common areas, including the lounge & quiet c...; Join our members-only Slack channel. $129/month or $1029/year (2 months free) No minimu... Practitioner Membership: Rates start at $329/month. Facilitator Membership: Rates start at $396/month. Come stop by for a tour! Tours are the first and third Friday of every month, between 12 - 2 pm.",
+      "lat": 40.732062,
+      "lng": -73.954278
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "category": "subscription",
+      "id": "selformer-memberships",
+      "title": "Selformer Pilates memberships",
+      "kicker": "Four classes a month, from $147",
+      "filters": [
+        "deals_memberships",
+        "wellness"
+      ],
+      "locationName": "Selformer",
+      "address": "67 West St",
+      "geocodeQuery": "67 West St, Brooklyn, NY 11222",
+      "summary": "Monthly reformer memberships at the West St studio: four classes for $147 ($36.75 each), eight for $239 ($29.87 each), or sixteen for $369 ($23.06 each). Unlimited All Access is $399 a month and an on-demand private video room is $350. All renew automatically with no commitment, but credits do not roll over and cancellation must be emailed to the studio.",
+      "whyItMatters": "Priced per class, the sixteen-a-month tier is the cheapest regular reformer access in Greenpoint.",
+      "actions": [
+        {
+          "label": "See plans",
+          "type": "join",
+          "url": "https://www.selformer.com/plans-pricing"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Plans & Pricing",
+          "publisher": "Selformer",
+          "url": "https://www.selformer.com/plans-pricing",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Unlimited All Access Membership $399 Every month. Unlimited On-Demand Video Membership $350 Every month. 4 Classes A Month Membership $147 Every month — Dip your toes in. A steady dose of reformer magic, once a week or more, for just $36.75 a class. 8 Classes A Month Membership $239 Every month — Take 8 classes per month at only $29.87 per class! 16 Classes A Month Membership $369 Every month — For your regulars who want to come 3 to 4x per week at only $23.06 a class. Monthly memberships renew automatically until canceled. Memeberships cannot be transferred to another user, or unused credits do not roll over to the next month.",
+      "lat": 40.728561,
+      "lng": -73.959184
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "category": "subscription",
+      "id": "clay-space-membership",
+      "title": "Clay Space ceramics membership",
+      "kicker": "Studio access, from $210/mo · 3-month min",
+      "filters": [
+        "deals_memberships",
+        "arts_culture"
+      ],
+      "locationName": "Clay Space",
+      "address": "275 Calyer St",
+      "geocodeQuery": "275 Calyer St, Brooklyn, NY 11222",
+      "summary": "Four membership levels at the Calyer St ceramic center, from $210–$255 a month for shared wheels and communal handbuilding tables up to $485–$650 for the storage-heavy private tier; a designated work table runs $310–$380 and the ground-floor Annex across the street $365–$525. All plus tax. Membership is application-based, needs more than a year of consistent lessons, and commits you to three months.",
+      "whyItMatters": "The application gate and the one-year prerequisite are the part nobody tells you until you ask.",
+      "actions": [
+        {
+          "label": "Apply",
+          "type": "join",
+          "url": "https://www.clayspacebk.com/membership"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Membership",
+          "publisher": "Clay Space",
+          "url": "https://www.clayspacebk.com/membership",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "This tier includes shared use of potter's wheels, 2 large communal handbuilding work tables, use of all equipment and all-level membership amenities. $210.00 - $255.00 + tax monthly. This tier includes a designated work table and pegboard divider, additional storage under the table & may include either wall or side shelving based on your particular membership level. $310 - $380 + tax monthly. The Clay Space Annex is a 700 sq. ft. ground floor, private entrance studio space located just across the street from our center. $365 - $525 + tax monthly. $485 - $650 + tax monthly. membership will only be considered for those with more than one year of consistent lessons and are able to commit to a 3-month minimum membership term.",
+      "lat": 40.729705,
+      "lng": -73.949195
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "category": "subscription",
+      "id": "marianella-subscription-box",
+      "title": "Marianella monthly box",
+      "kicker": "$48/mo, full sizes at half retail",
+      "filters": [
+        "deals_memberships"
+      ],
+      "locationName": "Marianella Market",
+      "address": "83 West St",
+      "geocodeQuery": "83 West St, Brooklyn, NY 11222",
+      "summary": "The West St bath and body maker ships a monthly box of full-sized products for $48 — the shop puts the contents at about half their retail value. It auto-renews and you can skip or cancel any month.",
+      "whyItMatters": "Marianella has been on the map as a shop; the standing subscription behind it was never carded.",
+      "actions": [
+        {
+          "label": "Subscribe",
+          "type": "join",
+          "url": "https://marianella.co/products/subscription-box"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "The New Marianella Subscription Box",
+          "publisher": "Marianella",
+          "url": "https://marianella.co/products/subscription-box",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Delve into the world of Marianella with our monthly subscription boxes, each brimming with full-sized products at an incredible 50% off their retail value. Start My Monthly Ritual Deliver every month, $48.00 $48.00 USD Subscription Auto-renews, skip or cancel anytime.",
+      "lat": 40.729398,
+      "lng": -73.959338
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "membership_sweep_2026_08_08",
+      "category": "subscription",
+      "id": "driftaway-coffee-subscriptions",
+      "title": "Driftaway coffee subscriptions",
+      "kicker": "Fresh-roasted coffee, from $16",
+      "filters": [
+        "deals_memberships",
+        "food_drink"
+      ],
+      "locationName": "Driftaway Coffee",
+      "address": "85 Debevoise Ave",
+      "geocodeQuery": "85 Debevoise Ave, Brooklyn, NY 11222",
+      "summary": "The Debevoise Ave roastery — named 2026 Roaster of the Year — runs six standing subscriptions you pick by roast profile: medium and dark from $16 a shipment, all roasts from $17, light roasts from $18, plus espresso and a $56 gift subscription that opens with an Explorer box.",
+      "whyItMatters": "A Greenpoint roastery you can subscribe to directly, the same way Kettl sells tea by the month.",
+      "actions": [
+        {
+          "label": "Subscribe",
+          "type": "join",
+          "url": "https://store.driftaway.coffee/collections/subscriptions"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Coffee Subscriptions",
+          "publisher": "Driftaway Coffee",
+          "url": "https://store.driftaway.coffee/collections/subscriptions",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Coffee Subscriptions for Coffee Lovers | 2026 Roaster of the Year. Subscription (6 products). All Roasts Subscription — A rotating selection of coffees from light to dark roasts, delivered fresh each shipment. Choose the roast profiles you want! From $17.00 USD. Light Roasts Subscription From $18.00 USD. Medium and Dark Roasts Subscription From $16.00 USD. Coffee Gift Subscription — Our bestseller for a reason! Start with an Explorer box and discover new coffees every month! From $56.00 USD.",
+      "lat": 40.717121,
+      "lng": -73.938312
     }
   ]
 }

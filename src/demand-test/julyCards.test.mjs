@@ -286,7 +286,16 @@ test("seed has exactly 75 cards across the six layers", () => {
   // list turned up unread in the inbox audit. Leaves: august book club
   // (Wednesdays, recurring) + summer writing group 8/20. YMCA: Fall 1
   // registration. Skipped: Printed Matter art book fair (Manhattan).
-  assert.equal(seed.cards.length, 139);
+  // 2026-08-08 SSG DEALS & MEMBERSHIPS SWEEP (+6 = 145). A second pass over the
+  // Shop Small Greenpoint directory asking about `subscription` supply rather
+  // than events: WORD's 4-tier membership, Held Space, Selformer, Clay Space,
+  // Marianella's monthly box, Driftaway's coffee subscriptions. Three of the
+  // six (Clay Space, Selformer, Held Space) had been rejected as EVENT sources
+  // in the same day's roster scan — the event-calendar field says nothing about
+  // whether a business sells a membership. Brooklyn Winery's wine club was HELD,
+  // not shipped: its own /wine-club page calls the club's future undecided while
+  // its specials page advertises a standing member benefit (source-conflicted).
+  assert.equal(seed.cards.length, 145);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
@@ -294,7 +303,7 @@ test("seed has exactly 75 cards across the six layers", () => {
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
-  assert.equal(count((c) => c.category === "subscription"), 18, "17 + Greenpoint YMCA Fall 1 registration");
+  assert.equal(count((c) => c.category === "subscription"), 24, "18 + the 6-card SSG deals & memberships sweep (2026-08-08)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -507,11 +516,18 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   // and the reason the map was inconsistent about that park.
   // 2026-08-08 (ChatGPT cross-check, Bandit Running onboarded): weekly
   // Saturday group run, same standing-programming shape as the other two.
+  // 2026-08-08 (SSG deals & memberships sweep): Held Space and Selformer join
+  // the cluster — members-only yoga/dance/sound baths and reformer Pilates are
+  // movement by the same reading as Moon Bunny. Marianella's monthly box was
+  // deliberately NOT filed here: it is a bath-and-body product subscription,
+  // and this lens is the movement cluster, not a wellness-adjacent shelf.
   assert.deepEqual(wellness, [
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
     "community-yoga-transmitter-tuesdays",
+    "held-space-membership",
     "moon-bunny-monthly-plans",
+    "selformer-memberships",
     "sparsa-greenpoint",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
@@ -668,15 +684,26 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     // bars double-filing into arts_culture/games, not into a deals lens.
     "bk-youth-ballet-trial-class",
     "carcosa-membership-guest-pass",
+    // 2026-08-08 SSG deals & memberships sweep (+6). The sweep asked a
+    // different question than the event scan that preceded it: three of these
+    // businesses had been REJECTED as event sources days earlier and turned out
+    // to sell live, priced memberships. "Publishes dated events" does not
+    // predict "sells a club" — see docs/review/2026-08-08-ssg-directory-roster-scan.md.
+    "clay-space-membership",
+    "driftaway-coffee-subscriptions",
     "falu-tinned-fish-club",
     "flower-cat-subscription",
     "hana-bottomless-makgeolli",
     "hana-sool-club",
+    "held-space-membership",
     "kettl-tea-subscriptions",
     "marianella-19th-anniversary-sale",
+    "marianella-subscription-box",
     "moon-bunny-back-to-school",
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
+    "selformer-memberships",
+    "word-membership",
     "yaro-studio-membership",
   ]);
 });

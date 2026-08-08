@@ -2853,5 +2853,55 @@
         "-73.9531980"
       ]
     }
+  },
+  "275 Calyer St, Brooklyn, NY 11222": {
+    "query": "275 Calyer St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-08T22:33:46.552Z",
+    "hit": {
+      "place_id": 359276773,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280105878,
+      "lat": "40.7297050",
+      "lon": "-73.9491953",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "275, Calyer Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7295702",
+        "40.7298984",
+        "-73.9493748",
+        "-73.9490615"
+      ]
+    }
+  },
+  "85 Debevoise Ave, Brooklyn, NY 11222": {
+    "query": "85 Debevoise Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-08T22:33:47.878Z",
+    "hit": {
+      "place_id": 413609263,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 5678923,
+      "lat": "40.7171209",
+      "lon": "-73.9383120",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00000999999999995449,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "85, Debevoise Avenue, Brooklyn, Kings County, New York, 11211, United States",
+      "boundingbox": [
+        "40.7170709",
+        "40.7171709",
+        "-73.9383620",
+        "-73.9382620"
+      ]
+    }
   }
 }
