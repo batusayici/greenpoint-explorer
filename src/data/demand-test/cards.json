@@ -6254,6 +6254,156 @@
       "relatedCardIds": [
         "bcc-knitting-101-0817"
       ]
+    },
+    {
+      "locationName": "Leaves",
+      "address": "140 Nassau Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "140 Nassau Avenue, Brooklyn, NY 11222",
+      "id": "leaves-august-book-club",
+      "category": "event",
+      "title": "August Book Club at Leaves",
+      "kicker": "Haunted houses — vote on the list",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "startsAt": "2026-08-12T20:00:00-04:00",
+      "endsAt": "2026-08-26T21:00:00-04:00",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      },
+      "summary": "The second-hand shop's book club, an hour in the evening at the Nassau Ave store. August's theme is gothic houses, and the group votes from a list running Shirley Jackson to Danielewski. Email events@leavesbookstore.com to sign up.",
+      "whyItMatters": "A free-to-join reading group on Nassau Ave that lives only on the shop's own calendar.",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.leavesbookstore.com/pages/events/26/august-book-club"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "august book club — leaves calendar",
+          "publisher": "Leaves Bookstore",
+          "url": "https://www.leavesbookstore.com/pages/events/26/august-book-club",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "august book club … location: leaves 140 nassau ave. brooklyn, ny 11222 … wednesdays from 8-9 pm … email events@leavesbookstore.com to sign up",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "leaves_onboarding_2026_08_08",
+      "lat": 40.724627,
+      "lng": -73.947732
+    },
+    {
+      "locationName": "Leaves",
+      "address": "140 Nassau Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "140 Nassau Avenue, Brooklyn, NY 11222",
+      "id": "leaves-summer-writing-group-0820",
+      "category": "event",
+      "title": "Summer Writing Group at Leaves",
+      "kicker": "All genres, eight-week session",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "startsAt": "2026-08-20T00:00:00-04:00",
+      "endsAt": "2026-08-20T23:59:00-04:00",
+      "summary": "The third of four meetings in the shop's eight-week summer session, held every other Thursday in the Greenpoint store. Spots are still open; email events@leavesbookstore.com to join. The shop does not state a start time for the summer session.",
+      "whyItMatters": "A running writers' group you can still join mid-session, announced nowhere but the shop's calendar.",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://www.leavesbookstore.com/pages/events/20/summer-writing-group"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "summer writing group — leaves calendar",
+          "publisher": "Leaves Bookstore",
+          "url": "https://www.leavesbookstore.com/pages/events/20/summer-writing-group",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "summer writing group … location: leaves 140 nassau ave. brooklyn, ny 11222 … meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3 … all genres welcome!",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "leaves_onboarding_2026_08_08",
+      "lat": 40.724627,
+      "lng": -73.947732
+    },
+    {
+      "id": "ymca-greenpoint-fall-1-registration",
+      "category": "subscription",
+      "title": "Greenpoint YMCA Fall 1 registration",
+      "kicker": "Community sign-up opens Aug 15",
+      "filters": [
+        "family_kids"
+      ],
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "locationName": "Greenpoint YMCA",
+      "address": "99 Meserole Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "99 Meserole Avenue, Brooklyn, NY 11222",
+      "endsAt": "2026-09-08T23:59:00-04:00",
+      "summary": "Fall 1 programming at the Meserole Ave branch starts September 8 — swim, dance, early childhood, afterschool from 3 to 6pm on school days, and teen programs. Members could register from August 8; community registration opens August 15.",
+      "whyItMatters": "The branch's own list is the only place these term dates are announced.",
+      "actions": [
+        {
+          "label": "See programs",
+          "type": "signup",
+          "url": "https://ymcanyc.org/locations/greenpoint-ymca/programs-classes"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint YMCA — programs & classes",
+          "publisher": "YMCA of Greater New York",
+          "url": "https://ymcanyc.org/locations/greenpoint-ymca/programs-classes",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Fall 1 Programming starts September 8! Member registration opens Saturday, August 8, with community registration beginning Saturday, August 15. … If online registration is closed, please visit or call your branch to see if additional spots are available.",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "sourceCampaign": "ymca_onboarding_2026_08_08",
+      "lat": 40.727022,
+      "lng": -73.953248
     }
   ]
 }

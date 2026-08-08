@@ -57,7 +57,11 @@
       "WebFetch(domain:wordbookstores.com)",
       "WebFetch(domain:www.hisawyer.com)",
       "WebFetch(domain:www.wordbookstores.com)",
-      "WebFetch(domain:yarostudios.com)"
+      "WebFetch(domain:yarostudios.com)",
+      "WebFetch(domain:leavesbookstore.com)",
+      "WebFetch(domain:www.leavesbookstore.com)",
+      "WebFetch(domain:ymcanyc.org)",
+      "WebFetch(domain:www.ymcanyc.org)"
     ]
   }
 }

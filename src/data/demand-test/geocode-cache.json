@@ -2803,5 +2803,55 @@
         "-73.9528985"
       ]
     }
+  },
+  "140 Nassau Avenue, Brooklyn, NY 11222": {
+    "query": "140 Nassau Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-08T19:57:31.403Z",
+    "hit": {
+      "place_id": 359025048,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280095833,
+      "lat": "40.7246271",
+      "lon": "-73.9477321",
+      "category": "building",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "140, Nassau Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7245187",
+        "40.7246865",
+        "-73.9477951",
+        "-73.9476691"
+      ]
+    }
+  },
+  "99 Meserole Avenue, Brooklyn, NY 11222": {
+    "query": "99 Meserole Avenue, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-08T19:57:32.826Z",
+    "hit": {
+      "place_id": 358402709,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2842897642,
+      "lat": "40.7270218",
+      "lon": "-73.9532480",
+      "category": "place",
+      "type": "house",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "place",
+      "name": "",
+      "display_name": "99, Meserole Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7269718",
+        "40.7270718",
+        "-73.9532980",
+        "-73.9531980"
+      ]
+    }
   }
 }
