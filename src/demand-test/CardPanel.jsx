@@ -629,11 +629,24 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
     firstScrollRef.current = false;
     const revealed = revealTick !== lastRevealRef.current;
     lastRevealRef.current = revealTick;
-    if ((!first && !revealed) || !selectedId) return;
+    if (!selectedId) return;
     const list = listRef.current;
     const el = list?.querySelector(".july-card.is-open");
     if (!list || !el) return;
-    if (list.scrollHeight > list.clientHeight + 1) {
+    const ownScroller = list.scrollHeight > list.clientHeight + 1;
+    if (!first && !revealed) {
+      // Plain list taps still never yank the view — EXCEPT when the tap
+      // itself left the opened card's title hidden under the sticky chrome
+      // (Batu's phone review 2026-08-08, #1). That happens when another open
+      // card ABOVE collapses in the same tap: the feed shifts up by its
+      // detail height, and the reader is inside a card whose name is
+      // offscreen. Correct only in that case, and only just enough.
+      const chromeBottom = ownScroller
+        ? list.getBoundingClientRect().top + 28
+        : (filtersRef.current?.getBoundingClientRect().bottom ?? 0) + 26;
+      if (el.getBoundingClientRect().top >= chromeBottom - 1) return;
+    }
+    if (ownScroller) {
       // 28px = sticky day header; align the card just below it.
       const top = el.getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop - 28;
       list.scrollTo({ top: Math.max(0, top), behavior: "auto" });

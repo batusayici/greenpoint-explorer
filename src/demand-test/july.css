@@ -385,12 +385,13 @@ body { margin: 0; }
 .july-card-titlerow > .july-dot { margin-top: 3px; }
 .july-card-titlerow > .july-free { margin-top: 1px; }
 
-/* Two-line title contract (2026-07-29 punch list, P1 #4 — was one line):
-   for a news card the headline IS the content, and nowrap was cutting
-   "1,324" out of "Monitor Point approved: 1,324 waterfront apartments"
-   while the address below wrapped freely. Clamp at 2, ellipsis past that;
-   the FREE badge top-aligns instead of owning the whole row. Trade
-   accepted: the 9 previously-truncated rows run one line taller. */
+/* ONE-line title contract (Batu's phone review 2026-08-08, reversing the
+   2026-07-29 two-line contract): wrapped titles broke the feed's row rhythm
+   — "titles that spill to a 2nd line shouldn't happen". The 07-29 worry
+   (headline detail like "1,324" cut by the ellipsis) is carried by the
+   kicker and summary, which the expanded card shows in full. 22 of 129
+   titles ellipsize at 375px; the ingest should keep new titles inside
+   ~40 chars. */
 .july-card-title {
   font-size: 0.95rem;
   font-weight: 800;
@@ -400,8 +401,8 @@ body { margin: 0; }
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 .july-card-loc { margin-left: 18px; font-size: 0.76rem; color: var(--ink-soft); }
 

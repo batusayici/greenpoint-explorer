@@ -143,28 +143,10 @@ export default function JulyApp() {
     });
   }, []);
 
-  // Pin tap (from MapView): focus the feed on that location. The chip bar
-  // resets to All so the bar never lies about what the feed shows — the
-  // focus row in the panel announces the narrowing. A single-card location
-  // also opens its card (a one-row feed of closed cards helps nobody).
-  const onFocusLocation = useCallback((group) => {
-    if (!group) {
-      setPinFocus(null);
-      return;
-    }
-    setFilter("all");
-    setSelectedId(group.cards.length === 1 ? group.cards[0].id : null);
-    setPinFocus({
-      key: group.key,
-      name: group.cards[0].locationName,
-      count: group.cards.length,
-      ids: new Set(group.cards.map((c) => c.id)),
-    });
-  }, []);
-
   // Reveal = land the card in the visible feed no matter the current lens:
   // exit location focus, widen the filter if it hides the target, and SCROLL
-  // to it. Shared by related-chip taps and the community-alert banner.
+  // to it. Shared by related-chip taps, the community-alert banner, and
+  // single-card pin taps.
   // The scroll is the fix for 2026-07-30: opening the card is not revealing it
   // — the alert's card sits ~2400px down the mobile page, so the banner tap
   // read as a dead link on an iPhone. Reveal is a deliberate destination, so
@@ -179,6 +161,35 @@ export default function JulyApp() {
       setRevealTick((n) => n + 1);
     },
     [filter],
+  );
+
+  // Pin tap (from MapView): a MULTI-card location focuses the feed on it —
+  // the chip bar resets to All so the bar never lies about what the feed
+  // shows, and the focus row announces the narrowing. A single-card location
+  // is just its card (Batu's phone review 2026-08-08, #2: "1 here · Show
+  // everything" on a one-card pin was chrome with nothing to announce), so it
+  // routes through revealCard: open + scroll into view, no focus row, and the
+  // lens is only widened if it actually hides the card.
+  const onFocusLocation = useCallback(
+    (group) => {
+      if (!group) {
+        setPinFocus(null);
+        return;
+      }
+      if (group.cards.length === 1) {
+        revealCard(group.cards[0].id);
+        return;
+      }
+      setFilter("all");
+      setSelectedId(null);
+      setPinFocus({
+        key: group.key,
+        name: group.cards[0].locationName,
+        count: group.cards.length,
+        ids: new Set(group.cards.map((c) => c.id)),
+      });
+    },
+    [revealCard],
   );
 
   // Place-graph traversal: tapping a related chip must always land somewhere
