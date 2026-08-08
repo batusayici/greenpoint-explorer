@@ -87,39 +87,6 @@ Private Events
 Join our Team!
 Log In/Create Account
 Search
-Currency
-USD $
-Australia AUD $
-Austria EUR €
-Belgium EUR €
-Brazil USD $
-Canada CAD $
-Czechia CZK Kč
-Denmark DKK kr.
-Finland EUR €
-France EUR €
-Germany EUR €
-Hong Kong SAR HKD $
-India INR ₹
-Ireland EUR €
-Israel ILS ₪
-Italy EUR €
-Japan JPY ¥
-Malaysia MYR RM
-Mexico USD $
-Netherlands EUR €
-New Zealand NZD $
-Norway USD $
-Poland PLN zł
-Portugal EUR €
-Singapore SGD $
-South Korea KRW ₩
-Spain EUR €
-Sweden SEK kr
-Switzerland CHF CHF
-United Arab Emirates AED د.إ
-United Kingdom GBP £
-United States USD $
 Cart
 0
 Workshops
@@ -584,42 +551,8 @@ Blog
 Private Events
 Search
 Accessibility Statement
-Your privacy choices
 Copyright © 2026 Brooklyn Craft Company .
 Made With ❤️ By Proactivo Commerce
-Currency
-United States (USD $)
-Australia AUD $
-Austria EUR €
-Belgium EUR €
-Brazil USD $
-Canada CAD $
-Czechia CZK Kč
-Denmark DKK kr.
-Finland EUR €
-France EUR €
-Germany EUR €
-Hong Kong SAR HKD $
-India INR ₹
-Ireland EUR €
-Israel ILS ₪
-Italy EUR €
-Japan JPY ¥
-Malaysia MYR RM
-Mexico USD $
-Netherlands EUR €
-New Zealand NZD $
-Norway USD $
-Poland PLN zł
-Portugal EUR €
-Singapore SGD $
-South Korea KRW ₩
-Spain EUR €
-Sweden SEK kr
-Switzerland CHF CHF
-United Arab Emirates AED د.إ
-United Kingdom GBP £
-United States USD $
 Search
 Search
 Cart

@@ -236,14 +236,22 @@ test("seed has exactly 75 cards across the six layers", () => {
   // Toy Story 8/21, and the Hana 8/21 tour. Two gaps remain and are correct:
   // McCarren 8/10-12 is municipal rec (learn-to-swim, lap swim, Shape Up NYC)
   // and WORD 8/12 is Jersey City. 115 + 14 = 129.
-  assert.equal(seed.cards.length, 129);
+  // 2026-08-08, daily thin run locally (cloud halted on the browser-path
+  // outage): expiry deleted the 8 passed 8/7 events, and 4 cards shipped —
+  // Arrebato 8/8 (new Film Noir diff line), Watch Me final screenings
+  // 8/21-22 (back-of-window fill), library Thursday 8/20 grouped card, and
+  // the next Fish Friday 8/14 (acme flagged UNMARKED STANDING? by the
+  // coverage check; roster now carries standing:true). The nycparks sources
+  // collapsed 4 scrapes into one plain-fetch citywide-RSS feed source; its
+  // SummerStarz/McGolrick items were already carded. 129 - 8 + 4 = 125.
+  assert.equal(seed.cards.length, 125);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 78, "64 + the 14 cards that closed the first L12 coverage report (2026-08-07)");
+  assert.equal(count((c) => c.category === "event"), 74, "78 - 8 passed 8/7 events + Arrebato 8/8, Watch Me finale 8/21-22, library Thursday 8/20, Fish Friday 8/14 (2026-08-08)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 26, "19 + 2 Troost nights and 5 Good Room bills recovered by the coverage check (2026-08-07)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
   assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });

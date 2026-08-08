@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-07",
+  "version": "2026-08-08",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -974,13 +974,14 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-16",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-08",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
       "relatedCardIds": [
         "film-noir-support",
-        "film-noir-watch-me-0807",
         "film-noir-cult-cinema-0811",
-        "film-noir-watch-me-0813"
+        "film-noir-watch-me-0813",
+        "film-noir-arrebato-0808",
+        "film-noir-watch-me-0821"
       ],
       "lat": 40.727314,
       "lng": -73.951608
@@ -1277,7 +1278,6 @@
       "lat": 40.72606,
       "lng": -73.950709,
       "relatedCardIds": [
-        "library-friday-garden-0807",
         "library-tuesday-programs-0811",
         "library-wednesday-programs-0812",
         "library-thursday-programs-0813"
@@ -2266,49 +2266,6 @@
       "lng": -73.953036
     },
     {
-      "id": "acme-fish-friday-0807",
-      "category": "event",
-      "title": "Fish Friday at Acme Smoked Fish",
-      "kicker": "Smoked-fish pickup, Fridays only",
-      "startsAt": "2026-08-07T08:00:00-04:00",
-      "endsAt": "2026-08-07T13:00:00-04:00",
-      "recurring": true,
-      "locationName": "Acme Smoked Fish",
-      "address": "30 Gem St",
-      "geocodeQuery": "30 Gem Street, Brooklyn, NY",
-      "filters": [
-        "food_drink"
-      ],
-      "summary": "The Gem Street smokehouse opens its doors to the neighborhood — pre-orders close at 11:30am that morning.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Pre-order",
-          "type": "order",
-          "url": "https://acmesmokedfish.com/collections/fish-friday"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Acme Fish Friday",
-          "url": "https://acmesmokedfish.com/collections/fish-friday",
-          "publisher": "Acme Smoked Fish",
-          "date": "2026-08-01"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "lat": 40.725409,
-      "lng": -73.956615
-    },
-    {
       "id": "mcgolrick-bird-club-0808",
       "category": "event",
       "title": "McGolrick Bird Club",
@@ -2351,48 +2308,6 @@
       "updatedAt": "2026-08-01",
       "lat": 40.724458,
       "lng": -73.943361
-    },
-    {
-      "id": "bcc-crafty-hour-tie-dye-0807",
-      "category": "event",
-      "title": "Crafty Hour: Tie Dye",
-      "kicker": "$25 Friday tie-dye session",
-      "startsAt": "2026-08-07T18:30:00-04:00",
-      "endsAt": "2026-08-07T23:59:00-04:00",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "summary": "Part of the studio's summer Crafty Hour series.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/collections/summer-crafty-hours/products/crafty-hour-tie-dye"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "BCC newsletter (2026-07-31)",
-          "url": "https://brooklyncraftcompany.com/collections/summer-crafty-hours/products/crafty-hour-tie-dye",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-07-31"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "lat": 40.730461,
-      "lng": -73.953114
     },
     {
       "id": "transmitter-park-restaurant-marina",
@@ -2535,51 +2450,6 @@
       "relatedCardIds": [
         "poochs-parlor"
       ]
-    },
-    {
-      "id": "library-friday-garden-0807",
-      "category": "event",
-      "title": "Friday in the library rooftop garden",
-      "kicker": "Sensory garden hour for ages 0 to 5",
-      "startsAt": "2026-08-07T10:30:00-04:00",
-      "endsAt": "2026-08-07T16:00:00-04:00",
-      "locationName": "Greenpoint Library",
-      "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "lat": 40.72606,
-      "lng": -73.950709,
-      "filters": [
-        "family_kids"
-      ],
-      "summary": "A short storytime leads into play among the beds upstairs, no registration needed. From 3 to 4pm a garden educator staffs the space to field what-is-growing questions.",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "actions": [
-        {
-          "label": "See the calendar",
-          "type": "learn_more",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Library branch calendar",
-          "url": "https://www.bklynlibrary.org/locations/greenpoint",
-          "publisher": "Brooklyn Public Library",
-          "date": "2026-08-03"
-        }
-      ],
-      "sourceQuote": "Sensory Garden Hour\nFri, Aug 7 10:30 am\nGreenpoint Library\nJoin us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well.\nFor ages 0-5. No registration required.\nGarden Hours with a Garden Educator\nFri, Aug 7 3:00 pm\nGreenpoint, Demonstration Garden\nGarden Educator will be on site from 3-4pm on Fridays, weather permitting.",
-      "relatedCardIds": [
-        "greenpoint-library"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
     },
     {
       "id": "transmitter-saltwater-fishing-0809",
@@ -2850,106 +2720,6 @@
       "lat": 40.721159,
       "lng": -73.952879,
       "recurring": true
-    },
-    {
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "playkids-minecraft-movie-0807",
-      "title": "Drop-off movie night at PLAY Kids",
-      "kicker": "Kids 4–8: A Minecraft Movie, dinner in",
-      "category": "event",
-      "filters": [
-        "family_kids"
-      ],
-      "free": false,
-      "startsAt": "2026-08-07T17:30:00-04:00",
-      "endsAt": "2026-08-07T20:30:00-04:00",
-      "locationName": "PLAY Kids Greenpoint",
-      "address": "33 Nassau Ave, Brooklyn, NY 11222",
-      "geocodeQuery": "33 Nassau Avenue, Brooklyn, NY 11222",
-      "summary": "Tickets are $47 and cover the screening, open play, pizza and popcorn. A sibling discount applies, early drop-off from 4pm costs extra, and space is limited so pre-register.",
-      "actions": [
-        {
-          "label": "Sign up",
-          "type": "rsvp",
-          "url": "https://www.hisawyer.com/play-greenpoint/schedules/activity-set/1937436?source=camps"
-        },
-        {
-          "label": "Movie nights",
-          "type": "learn_more",
-          "url": "https://www.playgreenpoint.com/movie-nights"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        },
-        {
-          "title": "Drop-Off Events & Movie Nights — Summer 2026",
-          "url": "https://www.playgreenpoint.com/movie-nights",
-          "publisher": "PLAY Kids Greenpoint",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Drop-Off Movie Night @ Play Kids Greenpoint, 5:30 p.m.: Kids 4-8 can enjoy dinner and a movie with Play Kids’ screening of A Minecraft Movie . Tickets are $47 , with a sibling discount available.",
-      "evidenceStrength": "high",
-      "lat": 40.723104,
-      "lng": -73.953158
-    },
-    {
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "film-noir-watch-me-0807",
-      "title": "Watch Me premiere at Film Noir Cinema",
-      "kicker": "Director Q&A after the US premiere",
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "startsAt": "2026-08-07T19:00:00-04:00",
-      "endsAt": "2026-08-07T23:59:00-04:00",
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "summary": "Ivan Malekin stays for the talk-back on Friday and again on Saturday, August 8 — a second indie screening this week alongside the film festival.",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "rsvp",
-          "url": "https://www.eventbrite.com/e/watch-me-us-premiere-exclusive-new-york-screenings-tickets-1989552119948"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Watch Me Premiere @ Film Noir Cinema, 7 p.m.: The film festival isn’t the only place to catch indie films this week. Join director Ivan Malekin for a post-film discussion on both August 7 and 8. Get tickets here.",
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "evidenceStrength": "medium_high",
-      "lat": 40.727314,
-      "lng": -73.951608
     },
     {
       "audience": [
@@ -3268,48 +3038,6 @@
       "evidenceStrength": "medium_high",
       "lat": 40.72606,
       "lng": -73.950709
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "troost-vinyl-fridays-0807",
-      "title": "First Vinyl Fridays with Steph at Troost",
-      "kicker": "All-vinyl set to open the weekend",
-      "summary": "Steph opens the month's vinyl series at the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-07T00:00:00-04:00",
-      "endsAt": "2026-08-07T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "sourceQuote": "summary: First Vinyl Fridays with Steph\nstart.date: 2026-08-07",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.733463,
-      "lng": -73.955035
     },
     {
       "category": "event",
@@ -4214,49 +3942,6 @@
           "date": "2026-08-07"
         }
       ],
-      "id": "word-tim-sommer-0807",
-      "title": "Tim Sommer at WORD",
-      "kicker": "Author event in the basement",
-      "startsAt": "2026-08-07T19:00:00-04:00",
-      "endsAt": "2026-08-07T23:59:00-04:00",
-      "summary": "An evening with Tim Sommer at the Franklin Street bookshop. Events here run downstairs, reached by a flight of stairs.",
-      "sourceQuote": "Friday, August 7 at 7:00 PM\nTim Sommer\nGreenpoint, Brooklyn, NY",
-      "lat": 40.729072,
-      "lng": -73.957317
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "WORD Bookstore",
-      "address": "126 Franklin St, Brooklyn, NY 11222",
-      "filters": [
-        "arts_culture"
-      ],
-      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "learn_more",
-          "url": "https://withfriends.co/word/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "WORD upcoming events",
-          "url": "https://withfriends.co/word/events",
-          "publisher": "WORD Bookstore",
-          "date": "2026-08-07"
-        }
-      ],
       "id": "word-open-mic-0814",
       "title": "What's The Word Open Mic",
       "kicker": "Open mic night, sign up to read",
@@ -4863,48 +4548,6 @@
           "title": "Greenpoint Comedy Club",
           "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
           "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "id": "film-noir-paris-vu-par-0807",
-      "title": "Paris vu par at Film Noir Cinema",
-      "kicker": "Late Friday screening",
-      "startsAt": "2026-08-07T21:00:00-04:00",
-      "endsAt": "2026-08-07T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "lat": 40.727314,
-      "lng": -73.951608,
-      "summary": "The 1965 New Wave omnibus screens in the 9pm slot at the Meserole Avenue cinema.",
-      "sourceQuote": "title: PARIS VU PAR",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/7/7/paris-vu-par"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema programme",
-          "url": "https://www.filmnoircinema.com/program/2026/7/7/paris-vu-par",
-          "publisher": "Film Noir Cinema",
           "date": "2026-08-07"
         }
       ]
@@ -5825,6 +5468,182 @@
           "date": "2026-08-07"
         }
       ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "id": "film-noir-arrebato-0808",
+      "title": "Arrebato at Film Noir Cinema",
+      "kicker": "Late addition, 9pm tonight",
+      "summary": "A one-night screening added to the Meserole Avenue programme this week, following the evening's Watch Me show.",
+      "startsAt": "2026-08-08T21:00:00-04:00",
+      "endsAt": "2026-08-08T22:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-09T01:00:00.000Z\nendDate: 2026-08-09T02:00:00.000Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-08"
+        }
+      ],
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "id": "film-noir-watch-me-0821",
+      "title": "Watch Me: final screenings",
+      "kicker": "Last two nights of the run",
+      "summary": "The feature's run at the Meserole Avenue cinema closes out with Friday and Saturday 7pm shows.",
+      "startsAt": "2026-08-21T19:00:00-04:00",
+      "endsAt": "2026-08-22T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: WATCH ME\nstartDate: 2026-08-21T23:00:00.385Z\ntitle: WATCH ME\nstartDate: 2026-08-22T23:00:00.575Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7-5rkp8-5hht2"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l-7ht38-6e3f7-5rkp8-5hht2",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-08"
+        }
+      ],
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "id": "library-thursday-programs-0820",
+      "title": "Thursday at Greenpoint Library",
+      "kicker": "Storytimes, sewing, teen tech, ESOL",
+      "summary": "Babies & Books lapsits at 10:30 and 11:15, drop-in sewing machines at 1, free English class at 2, Teen Tech at 3.",
+      "startsAt": "2026-08-20T10:30:00-04:00",
+      "endsAt": "2026-08-20T23:59:00-04:00",
+      "filters": [
+        "family_kids"
+      ],
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time 🎮",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-08"
+        }
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "id": "acme-fish-friday-0814",
+      "title": "Fish Friday at Acme Smoked Fish",
+      "kicker": "Smoked-fish pickup, Fridays only",
+      "summary": "The Gem Street smokehouse opens its doors to the neighborhood — pre-orders close at 11:30am that morning.",
+      "startsAt": "2026-08-14T08:00:00-04:00",
+      "endsAt": "2026-08-14T13:00:00-04:00",
+      "recurring": true,
+      "filters": [
+        "food_drink"
+      ],
+      "locationName": "Acme Smoked Fish",
+      "address": "30 Gem St",
+      "geocodeQuery": "30 Gem Street, Brooklyn, NY",
+      "sourceQuote": "Join us every Friday as we celebrate community, craft, and the highest quality smoked fish.\nIn-person Pick-up\nFriday 8AM - 1PM",
+      "actions": [
+        {
+          "label": "Pre-order",
+          "type": "order",
+          "url": "https://acmesmokedfish.com/collections/fish-friday"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Acme Fish Friday",
+          "url": "https://acmesmokedfish.com/collections/fish-friday",
+          "publisher": "Acme Smoked Fish",
+          "date": "2026-08-08"
+        }
+      ],
+      "lat": 40.725409,
+      "lng": -73.956615
     }
   ]
 }
