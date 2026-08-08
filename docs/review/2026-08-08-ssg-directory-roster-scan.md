@@ -119,15 +119,24 @@ Baseline: 23 `subscription`/`discount` cards already live. `discount` is schema-
 covers Brooklyn + Jersey City. Both are valid for the Greenpoint storefront, but the card copy must not
 imply a Greenpoint-only benefit.
 
-## Hold — source-conflicted (1)
+## RESOLVED — Brooklyn Winery has no wine club (Batu, 2026-08-08)
 
-**Brooklyn Winery Wine Club.** Two pages on the same site disagree:
+Held for a day as source-conflicted, now closed. **There is no wine club. Nothing ships, and nothing about
+it should be carded from either page.**
 
-- `/wine-club/` — "Stay tuned for more information about the future of our Wine Club by signing up for news." (reads paused/TBD)
+The conflict was between two pages on the winery's own site:
+
+- `/wine-club/` — "Stay tuned for more information about the future of our Wine Club by signing up for news."
 - `/brooklyn-winery-specials-and-events/` — "Wine Club Wednesdays … First Wednesday of Every Month. Wine Club members can enjoy half-priced bottles for themselves and a guest."
 
-One page retires the club, the other advertises a standing member benefit. Under the truth rules this is
-source-conflicted → **hold, do not ship**. Resolve by asking the winery directly.
+**The specials page is the stale one.** That matters beyond this card: it advertises a standing, dated,
+recurring member benefit in exactly the shape the ingest is built to card automatically — first Wednesday
+of every month, a stated discount. If Brooklyn Winery is ever onboarded as a source, a run that reads only
+the specials page will confidently card an offer that does not exist. **Do not trust
+`/brooklyn-winery-specials-and-events/` for the wine club, and do not re-open this from that page alone.**
+
+Worth keeping as the general lesson: the hold was correct. A single page read in isolation would have
+shipped a false standing offer, and the only thing that caught it was two pages disagreeing.
 
 ## Already carded (1)
 
@@ -168,7 +177,7 @@ The event scan's rejection list should be read as "this page had nothing", not "
 | Item | Ruling |
 |---|---|
 | WORD homeWORDbound Mystery Box | Left out. Not recurring, copy reads COVID-era. |
-| Brooklyn Winery wine club | On hold — the source conflict stands until the winery answers. |
+| Brooklyn Winery wine club | **No wine club.** Closed. Its specials page still advertises "Wine Club Wednesdays" — that copy is stale and must not be carded. |
 | Elevate BKLYN | No membership. Closed; do not re-probe. |
 | Selformer "Summer Fling" $249/mo | Not carded — a deal that dies Aug 15 is not worth a slot. |
 | Instagram coverage | Deferred. The 141 handles keep. |
