@@ -29,7 +29,8 @@
           "end.dateTime",
           "htmlLink"
         ]
-      }
+      },
+      "citeHost": "troostny.com"
     },
     {
       "id": "eavesdrop",
@@ -47,7 +48,11 @@
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
-      "notes": "66 Greenpoint Ave. Batu 2026-08-05: use the Jump Comedy venue page, not the tickets.greenpointcomedyclub.com booking widget — it renders the full show list with dates, times and prices, and skips the Cloudflare Turnstile the ticket subdomain puts up. STILL BROWSER-ONLY and provably so: Jump is a Phoenix LiveView app that pushes listings over a WebSocket after mount. Confirmed 2026-08-05 by watching the network — the page makes NO XHR/JSON request at all, only HTML/CSS/JS/images, and .ics + /api/ + ?format=json probes all 404. Do not re-hunt for an endpoint. Recurring showcases (Thu/Fri/Sat) repeat weekly with several dates per listing — card the named one-off shows, not every showcase instance."
+      "notes": "66 Greenpoint Ave. Batu 2026-08-05: use the Jump Comedy venue page, not the tickets.greenpointcomedyclub.com booking widget — it renders the full show list with dates, times and prices, and skips the Cloudflare Turnstile the ticket subdomain puts up. STILL BROWSER-ONLY and provably so: Jump is a Phoenix LiveView app that pushes listings over a WebSocket after mount. Confirmed 2026-08-05 by watching the network — the page makes NO XHR/JSON request at all, only HTML/CSS/JS/images, and .ics + /api/ + ?format=json probes all 404. Do not re-hunt for an endpoint. Recurring showcases (Thu/Fri/Sat) repeat weekly with several dates per listing — card the named one-off shows, not every showcase instance.",
+      "citeHost": [
+        "jumpcomedy.com",
+        "tickets.greenpointcomedyclub.com"
+      ]
     },
     {
       "id": "film-noir-cinema",
@@ -211,7 +216,8 @@
           "is_online",
           "pdp_url"
         ]
-      }
+      },
+      "citeHost": "hisawyer.com"
     },
     {
       "id": "little-dance-school",
@@ -361,7 +367,8 @@
           "end_at",
           "price_in_cents"
         ]
-      }
+      },
+      "citeHost": "moonbunnyaerial.com"
     },
     {
       "id": "acme-fish-friday",
@@ -403,7 +410,8 @@
           "is_event_canceled",
           "ts_body"
         ]
-      }
+      },
+      "citeHost": "bklynlibrary.org"
     },
     {
       "id": "bpl-north-brooklyn-calendar",

@@ -18,7 +18,8 @@
     "verify:stories": "node scripts/verify-place-stories.mjs",
     "verify:kit-coverage": "node scripts/verify-kit-coverage.mjs",
     "verify:overrides": "node scripts/verify-facade-overrides.mjs",
-    "verify": "npm run test && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides"
+    "verify": "npm run test && npm run verify:conformance && npm run verify:visual && npm run verify:components && npm run verify:stories && npm run verify:kit-coverage && npm run verify:overrides",
+    "ingest:coverage": "node scripts/check-coverage.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

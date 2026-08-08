@@ -4,7 +4,55 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-07 (latest) — the venue cap was mis-sized; `unchanged` was hiding four sources
+## 2026-08-07 (latest) — L12 coverage reconciliation: the check that reads the SOURCES, not the deck
+
+Batu, after four fetch/supply bugs in two days that he spotted before any alarm did: *"how can you
+make sure this doesn't happen again?"*
+
+**The honest diagnosis is that every supply guard built to date reads `cards.json`.** `thinFeed`,
+`reservoir7-14d`, the trend alarm, the concentration guard — all four measure the deck. **Not one
+reads the snapshots.** So the failure *"the source published it and we did not card it"* is invisible
+to all of them **by construction**, and that single failure is what all four bugs were:
+
+| Bug | Same underlying failure |
+|---|---|
+| Empty back-of-window | `troost.txt` held 38 uncarded nights |
+| Mis-sized venue cap | suppressed 5 of Troost's 7 nights |
+| `unchanged` blind spot | 4 standing-schedule venues dark for a week |
+| Brew Inn "no address" | the address was in the snapshot |
+
+Adding a fifth deck-metric would have caught **none** of them. Each was found by a human putting a
+venue calendar next to the app — a reconciliation nothing in the pipeline performed.
+
+**`scripts/check-coverage.mjs` (`npm run ingest:coverage`) performs it mechanically.** For each
+source: which dates does the snapshot carry that the deck has nothing for. It **reports and never
+gates** — a gap is frequently legitimate (a film's five-night run is one card, a recurring showcase
+is one recurring card, Williamsburg is skipped on purpose), and a parser that cannot read a format
+reports 0 dates, which means *no signal*, never *no supply*. The rule is that **every line is
+explained or closed in the run summary; a gap you cannot explain is a card you owe.** `STANDING DARK`
+is the sharper variant: a `standing: true` source still stating recurring programming while the deck
+carries nothing.
+
+**It earned its place on the first run**, flagging 12 sources — including two genuine misses nothing
+else would have caught: Troost 8/21–8/22 uncarded, and **Good Room, where the extraction subagent
+returned 2 items from a DoNYC page carrying at least 6.** Under-extraction by a subagent was a
+failure mode with no detector at all before this.
+
+**Two bugs in the checker itself, both caught before shipping and both worth recording**, because
+each is a trap the next such script will hit. (1) `Map<host, sourceId>` silently kept the *last*
+source for a shared host — four NYC Parks pages share `nycgovparks.org`, both Hana pages share
+`hanamakgeolli.com` — reporting "deck covers 0" for well-covered sources. Now `Map<host, Set<id>>`,
+which over-credits a sibling page and is the right way to be wrong: **a false GAP burns the
+reviewer's trust, and this check is worth nothing once it cries wolf.** (2) The date scan read
+`end.date:` lines, and a Google Calendar all-day event stores an **exclusive** end date — so Troost's
+8/11 gig invented a phantom 8/12 gap. That is the exact trap the extraction prompt warns subagents
+about, walked into on the first run. End-keyed lines are now stripped before parsing: **a start date
+identifies an event; an end date never does.**
+
+`citeHost` added to the roster for the five sources fetched from one host and cited to another
+(Troost → `troostny.com`, the library → `bklynlibrary.org`, Moon Bunny, nyplays, the comedy club).
+
+## 2026-08-07 — the venue cap was mis-sized; `unchanged` was hiding four sources
 
 Two corrections, both prompted by Batu looking at the actual output rather than the metrics.
 
