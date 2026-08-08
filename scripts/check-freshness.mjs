@@ -85,7 +85,7 @@ if (recordMode) {
 if (stampMode) {
   writeFileSync(
     join(dataDir, "freshness-stamp.json"),
-    JSON.stringify({ description: "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.", lastRunAt: ledger.lastRunAt ?? null }, null, 2) + "\n",
+    JSON.stringify({ description: "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.", lastRunAt: ledger.lastRunAt ?? null, sourcePulse: ledger.sourcePulse ?? {} }, null, 2) + "\n",
   );
 }
 

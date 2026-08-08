@@ -35,6 +35,19 @@
       content="What's happening in Greenpoint this week — events, new openings, deals, and neighborhood news, verified and mapped."
     />
     <meta name="twitter:image" content="https://stoopwise.com/og.png" />
+    <!-- Map first-paint (2026-08-08 audit item 2): MapLibre can't request a
+         single tile until it has fetched the TileJSON at /planet — a full
+         extra round trip serialized behind JS boot. Preconnect opens the
+         connection during HTML parse; the fetch preload gets the TileJSON
+         (CORS *, cache-control 24h) into the HTTP cache before the map
+         constructs. Chrome logs "preloaded but not used" because MapLibre's
+         request comes from a worker context the preload matcher can't see —
+         the response still lands in the shared HTTP cache (no Vary header,
+         verified 2026-08-08) and serves MapLibre without a network trip, so
+         the warning is cosmetic; do not "fix" it by removing the preload.
+         Glyph/tile requests reuse the same warmed origin. -->
+    <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
+    <link rel="preload" href="https://tiles.openfreemap.org/planet" as="fetch" crossorigin />
   </head>
   <body>
     <div id="root"></div>

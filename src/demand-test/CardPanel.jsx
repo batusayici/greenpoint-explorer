@@ -6,6 +6,8 @@ import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
 import { formatWindow, isSpan, recurrenceLabel } from "./eventWindow.js";
 import { EVENTS, trackEvent } from "./trackEvents.js";
+import { sourceCheckedDate, formatChecked } from "./sourceChecked.js";
+import stamp from "../data/demand-test/freshness-stamp.json";
 
 // Filters that map 1:1 onto a pin color get a matching swatch in their chip —
 // the color key lives in the controls people already use, not a legend box.
@@ -331,6 +333,12 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
             )}
           </React.Fragment>
         ))}
+        {(() => {
+          // Derived, never asserted — see sourceChecked.js for what "checked"
+          // is allowed to mean. Renders nothing rather than guessing.
+          const checked = formatChecked(sourceCheckedDate(card, stamp.sourcePulse), new Date());
+          return checked ? <> · checked {checked}</> : null;
+        })()}
       </p>
       {/* L10 (2026-07-28): the correction entry point — "verified" needs a
           route in for disputes that isn't Batu's inbox (email stays private,
