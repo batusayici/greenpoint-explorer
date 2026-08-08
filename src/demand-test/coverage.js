@@ -239,11 +239,17 @@ export function reconcile({ sources, cards, snapshots, now, windowDays = 14, pul
     // now, and calling that silence would be a contradiction.
     //
     // A source with NO pulse entry is never SILENT — it is "never carded",
-    // reported as an info line off `lastCardedAt: null`, not a state: 8 roster
-    // sources are cited through hosts the roster doesn't declare yet (citeHost
-    // fixes are a separate roster PR), and a permanent false SILENT for each
-    // would be the cry-wolf failure this whole file guards against. The line
-    // converges on its own the day attribution lands.
+    // reported as an info line off `lastCardedAt: null`, not a state, because a
+    // permanent false SILENT would be the cry-wolf failure this whole file
+    // guards against. Audited 2026-08-08: of the 8 sources then on the line,
+    // 7 had never produced a card in ANY revision of the deck (checked by
+    // name, alternate spellings and street address across full git history),
+    // and eavesdrop had 14 cards all citing its declared host — its pulse was
+    // lost because seeding reads only the CURRENT deck and expiry had already
+    // deleted them (backfilled by hand in the ledger). So the line mostly
+    // means "this source has genuinely yielded nothing yet"; a real
+    // attribution hole (word-bookstore fetches withfriends.co, cards cite
+    // wordbookstores.com) is fixed with `citeHost` on the roster entry.
     if ((state === "ok" || state === "quiet") && mine.size === 0 && lastCardedAt) {
       const threshold = SILENCE_MULTIPLIER * (CADENCE_DAYS[s.cadence] ?? CADENCE_DAYS.weekly);
       if (daysBetween(lastCardedAt, today) > threshold) state = "SILENT";
