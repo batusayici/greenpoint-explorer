@@ -4,6 +4,7 @@ import {
   AEO_ORIGIN,
   liveCards,
   eventJsonLd,
+  cardJsonLd,
   injectCardPage,
   sitemapXml,
   rssXml,
@@ -93,6 +94,73 @@ test("same-day sentinel end (unknown end time) omits endDate", () => {
   assert.equal(ld.endDate, undefined);
 });
 
+// ---- cardJsonLd: every card page carries structured data (2026-08-08) -------
+
+test("a dated event still routes to schema.org/Event", () => {
+  assert.equal(cardJsonLd(timed, ORIGIN)["@type"], "Event");
+});
+
+test("a membership becomes a Service provided by the local business", () => {
+  const ld = cardJsonLd(
+    { ...undated, category: "subscription", title: "Clay Space ceramics membership",
+      locationName: "Clay Space", address: "275 Calyer St", lat: 40.7297, lng: -73.9492 },
+    ORIGIN,
+  );
+  assert.equal(ld["@type"], "Service");
+  assert.equal(ld.provider["@type"], "LocalBusiness");
+  assert.equal(ld.provider.name, "Clay Space");
+  assert.equal(ld.provider.geo.latitude, 40.7297);
+  assert.equal(ld.areaServed, "Greenpoint, Brooklyn, NY");
+});
+
+test("a deal becomes an Offer that expires — validThrough, never an invented price", () => {
+  const ld = cardJsonLd(
+    { ...undated, category: "discount", endsAt: "2026-08-15T23:59:00-04:00" },
+    ORIGIN,
+  );
+  assert.equal(ld["@type"], "Offer");
+  assert.equal(ld.validThrough, "2026-08-15T23:59:00-04:00");
+  // Prices live in card prose as tier floors ("from $210/mo"). Parsing one into
+  // a numeric price would assert precision the card does not carry.
+  assert.ok(!("price" in ld), "no emitter invents a numeric price");
+});
+
+test("a news card becomes a NewsArticle naming its publisher", () => {
+  const ld = cardJsonLd(
+    { ...undated, category: "news", createdAt: "2026-08-08",
+      sourceLinks: [{ title: "t", publisher: "Greenpointers", url: "https://x.test" }] },
+    ORIGIN,
+  );
+  assert.equal(ld["@type"], "NewsArticle");
+  assert.equal(ld.headline, "Le Fanfare");
+  assert.equal(ld.publisher.name, "Greenpointers");
+  assert.equal(ld.datePublished, "2026-08-08");
+});
+
+test("a place-shaped card becomes the LocalBusiness itself", () => {
+  const ld = cardJsonLd({ ...undated, category: "new_business" }, ORIGIN);
+  assert.equal(ld["@type"], "LocalBusiness");
+  assert.match(ld.url, /\/e\/le-fanfare$/);
+});
+
+test("a civic card still gets a page-level type rather than nothing", () => {
+  const ld = cardJsonLd({ ...undated, category: "civic_action" }, ORIGIN);
+  assert.equal(ld["@type"], "WebPage");
+});
+
+test("every category yields JSON-LD — no card page ships bare", () => {
+  const categories = [
+    "event", "news", "discount", "subscription", "new_business", "food_drink",
+    "shopping", "service", "arts_culture", "civic_action", "support_local",
+    "g_train_support",
+  ];
+  for (const category of categories) {
+    const ld = cardJsonLd({ ...undated, category }, ORIGIN);
+    assert.ok(ld && ld["@type"], `${category} produced no JSON-LD`);
+    assert.equal(ld["@context"], "https://schema.org", `${category} lost its @context`);
+  }
+});
+
 test("undated and recurring cards get no Event JSON-LD", () => {
   assert.equal(eventJsonLd(undated, ORIGIN), null);
   assert.equal(eventJsonLd({ ...timed, recurring: true }, ORIGIN), null);
@@ -143,9 +211,13 @@ test("injectCardPage swaps title/meta, adds canonical + JSON-LD, fills #root", (
   assert.match(html, /assets\/index-abc123\.js/);
 });
 
-test("undated card page: no JSON-LD, content + canonical still present", () => {
+// 2026-08-08 (Batu: "all pages should always carry them as needed"). This test
+// used to assert the OPPOSITE — that an undated page carried no JSON-LD. That
+// was the gap, not the contract: 82 of 142 card pages shipped bare. Every card
+// page now carries structured data; only the @type varies.
+test("undated card page: carries JSON-LD, content + canonical still present", () => {
   const html = injectCardPage(TEMPLATE, undated, ORIGIN);
-  assert.ok(!html.includes("application/ld+json"));
+  assert.ok(html.includes("application/ld+json"));
   assert.match(html, /<link rel="canonical" href="https:\/\/example\.test\/e\/le-fanfare" \/>/);
 });
 

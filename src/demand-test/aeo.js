@@ -66,6 +66,97 @@ export function eventJsonLd(card, origin) {
   return ld;
 }
 
+// ---- schema.org for everything else ----------------------------------------
+
+// 2026-08-08 (Batu): "all pages should always carry them as needed." Before
+// this, `eventJsonLd` was the ONLY emitter, so structured data reached dated
+// events and nothing else — 82 of 142 card pages shipped bare, including all
+// 24 subscriptions, every deal and every news card. That is the exact supply an
+// answer engine is asked for ("is there a ceramics membership in Greenpoint?"),
+// so the gap sat directly across the 2026-07-21 answer-engine decision.
+//
+// TRUTH RULE CARRIES THROUGH, and it constrains the mapping: prices live in
+// card prose ("from $210/mo"), never in a parsed numeric field. Emitting
+// `price: 210` would be inventing precision the card does not hold — the tier
+// floor is not the price. So no emitter here writes `price`. `Offer` is used
+// only where a machine-checkable fact exists: a deal's `endsAt` → validThrough.
+const placeOf = (card) => {
+  const place = { "@type": "Place", name: card.locationName };
+  if (card.address) place.address = card.address;
+  if (typeof card.lat === "number" && typeof card.lng === "number") {
+    place.geo = { "@type": "GeoCoordinates", latitude: card.lat, longitude: card.lng };
+  }
+  return place;
+};
+
+const businessOf = (card) => {
+  const biz = { "@type": "LocalBusiness", name: card.locationName || card.title };
+  if (card.address) biz.address = card.address;
+  if (typeof card.lat === "number" && typeof card.lng === "number") {
+    biz.geo = { "@type": "GeoCoordinates", latitude: card.lat, longitude: card.lng };
+  }
+  return biz;
+};
+
+// Categories whose card IS a place — the pin is the point of the card.
+const PLACE_CATEGORIES = new Set([
+  "new_business", "food_drink", "shopping", "service", "arts_culture",
+]);
+
+export function cardJsonLd(card, origin) {
+  const url = cardUrl(card, origin);
+  const base = {
+    "@context": "https://schema.org",
+    name: card.title,
+    url,
+  };
+  if (card.summary) base.description = card.summary;
+
+  // A dated, non-recurring event is a real schema.org/Event — unchanged path.
+  const event = eventJsonLd(card, origin);
+  if (event) return event;
+
+  if (card.category === "news") {
+    const src = (card.sourceLinks ?? []).find((s) => s?.publisher);
+    const ld = { ...base, "@type": "NewsArticle", headline: card.title };
+    delete ld.name;
+    if (src) ld.publisher = { "@type": "Organization", name: src.publisher };
+    if (card.createdAt) ld.datePublished = card.createdAt;
+    return ld;
+  }
+
+  // A deal carries one machine-checkable fact the card guarantees: it expires.
+  if (card.category === "discount") {
+    const ld = { ...base, "@type": "Offer", availability: "https://schema.org/InStock" };
+    if (card.endsAt) ld.validThrough = card.endsAt;
+    if (card.locationName) ld.offeredBy = businessOf(card);
+    return ld;
+  }
+
+  // A card whose subject IS the place resolves to the business itself — the pin
+  // is the point. Checked BEFORE the Service branch: `food_drink` and friends
+  // are undated by nature, and an undated-means-Service catch-all would have
+  // swallowed them (and civic cards with them — caught by the per-category test).
+  if (PLACE_CATEGORIES.has(card.category) && card.locationName) {
+    return { ...base, ...businessOf(card), "@context": "https://schema.org" };
+  }
+
+  // Memberships, clubs, subscriptions — and standing programming, which is an
+  // Event with no date and therefore not an Event at all. Both are services a
+  // named local business provides.
+  if (card.category === "subscription" || card.category === "event") {
+    const ld = { ...base, "@type": "Service", areaServed: "Greenpoint, Brooklyn, NY" };
+    if (card.locationName) ld.provider = businessOf(card);
+    return ld;
+  }
+
+  // Civic notices, mutual aid, campaign cards: a page about a thing, sometimes
+  // anchored to a place.
+  const ld = { ...base, "@type": "WebPage" };
+  if (card.locationName) ld.about = placeOf(card);
+  return ld;
+}
+
 // ---- per-card page ---------------------------------------------------------
 
 // Human-readable window line for the static body (crawlers read this too).
@@ -147,7 +238,7 @@ export function injectCardPage(template, card, origin) {
     ? html.replace(/<link\s+rel="canonical"[^>]*>/, canonicalTag)
     : html.replace("</head>", `    ${canonicalTag}\n  </head>`);
 
-  const ld = eventJsonLd(card, origin);
+  const ld = cardJsonLd(card, origin);
   if (ld) {
     html = html.replace(
       "</head>",
