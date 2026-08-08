@@ -40,6 +40,14 @@ drafts); #7's card-metadata restructure (time/Free/day already extracted — the
 **Folded into open calls:** the rail rework (N1) and a new N1 candidate — a map-corner key popover,
 zero feed cost, since chip swatches structurally cover only 2 of 6 pin kinds.
 
+**Staging round 1 (same day, Batu's phone):** three fixes — (1) a list tap whose expansion leaves
+the card's own title under the sticky chrome now corrects the scroll (the no-yank rule holds for
+every tap that keeps the title visible); (2) single-card pins route through reveal — no "1 here ·
+Show everything" row, which announced nothing; (3) **titles clamp to ONE line, reversing the
+2026-07-29 two-line contract** — on-device the wrapped rows broke the feed rhythm; kicker/summary
+carry the headline detail, 22/129 current titles ellipsize, and the ingest should keep new titles
+inside ~40 characters.
+
 **Process decision — staging before prod for design batches:** major/batch design updates are no
 longer pushed straight to `main`. They go to a feature branch, pushed to origin → Vercel builds a
 preview deployment (branch push ≠ production; only `main` is production) → Batu reviews the preview
