@@ -7,6 +7,9 @@ import { validateCard, inGreenpoint } from "./cardSchema.js";
 const seed = JSON.parse(
   readFileSync(fileURLToPath(new URL("../data/demand-test/cards.json", import.meta.url)), "utf8"),
 );
+const ledger = JSON.parse(
+  readFileSync(fileURLToPath(new URL("../data/demand-test/ingest-ledger.json", import.meta.url)), "utf8"),
+);
 
 test("seed has exactly 75 cards across the six layers", () => {
   // 2026-07-02 (Batu): per-station G-closure cards cut — closure context lives
@@ -246,10 +249,28 @@ test("seed has exactly 75 cards across the six layers", () => {
 });
 
 test("no fully-past events linger in the seed (refresh discipline)", () => {
-  // Refreshed 2026-08-03; recurring series carry their series end date.
-  const refreshDay = Date.parse("2026-08-07T00:00:00-04:00");
+  // DERIVED from the ledger's lastRunAt, never hand-written (2026-08-07).
+  //
+  // This gate already existed and still failed to catch the 2026-08-05 run,
+  // for one reason: `refreshDay` was a hardcoded literal the run bumped by
+  // hand, so skipping expiry and skipping the bump were the SAME omission.
+  // That commit says it outright — "the refresh-discipline date below stays
+  // 08-03" — and 13 dead cards shipped. A tripwire you disarm by not touching
+  // it is not a tripwire.
+  //
+  // lastRunAt cannot be left stale the same way: `check-freshness --stamp`
+  // writes it and the client banner reads it, so a run that fails to update it
+  // breaks something visible. Deriving from it means a run that skips expiry
+  // now FAILS here and cannot push — verified against the 8/5 tree, which
+  // carries 5 stale event cards under this rule.
+  //
+  // Recurring series legitimately carry their series end date, which is in the
+  // future, so they are unaffected.
+  const refreshDay = Date.parse(`${ledger.lastRunAt.slice(0, 10)}T00:00:00-04:00`);
+  assert.ok(Number.isFinite(refreshDay), "ledger.lastRunAt must be a parseable date");
   for (const c of seed.cards.filter((x) => x.category === "event")) {
-    assert.ok(Date.parse(c.endsAt) >= refreshDay, `${c.id} ended before the 2026-08-07 refresh`);
+    assert.ok(Date.parse(c.endsAt) >= refreshDay,
+      `${c.id} ended ${c.endsAt}, before the run at ${ledger.lastRunAt} — expiry did not run`);
   }
 });
 

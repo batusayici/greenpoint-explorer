@@ -35,9 +35,27 @@ covers the window. Deliberately **not** extended to undated place/venue cards �
 one, and it must never mask that venue's weekly trivia going dark. The signal then converged from
 5 flagged to 0.
 
-**Still not preempted, and worth stating plainly.** Expiry/`--record`/coverage running at all is
-enforced by prose in the skill, not by any gate — a routine that silently skips a step still looks
-identical to one that ran it clean, which is exactly how the 8/5 mini-ingest failed. And the judgment
+**4. Step-execution: the gate already existed and was disarmed by hand. YAGNI on the rest.**
+Asked whether a step-receipts system was necessary, the honest answer was no — and the investigation
+found something better. `julyCards.test.mjs` **already** asserts no fully-past event lingers. It
+failed to catch the 8/5 run for one reason: `refreshDay` was a **hardcoded literal the run bumps by
+hand**, so skipping expiry and skipping the bump were the *same omission*. That commit says it
+outright — *"the refresh-discipline date below stays 08-03"* — and 13 dead cards shipped.
+**A tripwire you disarm by not touching it is not a tripwire.**
+
+`refreshDay` now derives from `ledger.lastRunAt`. Verified against the 8/5 tree: 5 stale event cards,
+`npm test` fails, the run could not have pushed. This beats receipts precisely because it **cannot be
+disarmed by omission** — `check-freshness --stamp` writes `lastRunAt` and the client banner reads it,
+so a run that leaves it stale breaks something visible. A hand-maintained constant has no such
+tension, and four new receipt fields would have been equally forgettable.
+
+The receipts system was **not built**: one occurrence, self-declared in the commit message, no
+resident-facing consequence, and a one-line change covers it. Revisit only if a step-skip recurs in a
+shape the derived date cannot see — a run skipping coverage or `--record` while expiry ran clean.
+That is a signal to wait for, not to guess at.
+
+**Still not preempted, and worth stating plainly.** Whether `--record` and coverage run at all is
+still enforced by prose, not by a gate. And the judgment
 rules (never source an address from memory; a negative grep is not absence; a size ratio is not
 evidence of data loss; never size a guard from a degraded baseline) remain prose. The one honest
 mitigation is that **the coverage check catches their *effect* regardless of cause** — it does not
