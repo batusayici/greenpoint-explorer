@@ -89,6 +89,7 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 
 **Hard gates (unchanged):**
 - **Aggregator claims rule**: events cited only by aggregators/AI answers (allevents.in, Moviefone, dead Eventbrite links) are NOT sources — verify at the organizer's own page or skip with a ledger note (precedents: Self Love Journaling 404, phantom Film Noir 9pm show).
+- **Derive the event date from the ISO `startDate`/`endDate` field, never from a Squarespace `fullUrl` slug (2026-08-08, Film Noir Cinema).** A run of the same title reuses the *first* screening's slug for every later date (`/program/2026/8/7/watch-me-5fr8l-7ht38` is the 8/13 show). Carding off the slug misdated the 8/8 WATCH ME premiere as 8/7, so the next day's `npm run ingest:expire` deleted it as "passed" — a full day before it actually screened. Always compute the card's date/id suffix from `startDate` converted to America/New_York, not the URL.
 - **Locally-owned hard gate** (Batu, 2026-07-16): only locally owned small businesses & venues get cards. Corporate-operated venues are skipped entirely — check site footers/careers pages for operator identity (precedents: Warsaw removed, Live Nation-operated; PRESS dropped, multi-location). Community institutions (library, parks, Town Square, Trash Club) are exempt — they're the free/family backbone of the feed.
 - **Senders worth subscribing to** (Batu action, then add to registry): Flower Cat, Dandelion Wine (tastings are newsletter-only), Archestratus, Hide & Seek.
 

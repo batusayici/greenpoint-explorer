@@ -1350,6 +1350,31 @@
         "family_kids"
       ],
       "note": "520 Kingsland Ave rooftop meadow (Broadway Stages/Alive Structures/Newtown Creek Alliance/Noo Arts); web source, not email — kingslandwildflowers.com/events is the primary calendar. Annual festival is the anchor event (10th ed. Sat Aug 1 2026); pull the events page every ingest for the rest of the year's programming."
+    },
+    {
+      "publisher": "GrowNYC",
+      "match": "grownyc.org",
+      "kinds": [
+        "event"
+      ],
+      "note": "Onboarded 2026-08-08 (Batu, after a ChatGPT cross-check found McCarren Park Greenmarket uncarded). Web source, not email. STANDING PROGRAMMING — year-round Saturday market; card is undated (mccarren-greenmarket). See ingest-sources.json for fetch notes (plain fetch 403s, browser fetch works)."
+    },
+    {
+      "publisher": "Bandit Running",
+      "match": "banditrunning.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "Onboarded 2026-08-08 (Batu, after a ChatGPT cross-check found the Greenpoint Runners weekly run uncarded). Web source, not email. STANDING PROGRAMMING — weekly Saturday group run, card is undated (bandit-running-greenpoint-runners)."
+    },
+    {
+      "publisher": "Dreams On Command",
+      "match": "dreamsoncommand.com",
+      "kinds": [
+        "event",
+        "arts_culture"
+      ],
+      "note": "Onboarded 2026-08-08 (Batu, after a ChatGPT cross-check found the gallery's own site names its current exhibit with open/close dates — the map only had the generic July venue blurb, sourced from Shop Small Greenpoint, not the gallery). Pull the gallery's own site each ingest for exhibit-dated cards going forward."
     }
   ],
   "watchItems": [

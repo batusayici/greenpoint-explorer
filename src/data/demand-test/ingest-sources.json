@@ -487,6 +487,36 @@
       "cadence": "monthly",
       "fetch": "auto",
       "notes": "Plain fetch returns 200 with the full release (verified 2026-08-03); it is headless Chromium that gets bot-walled here, so this must stay `auto` and never `browser` — the old note said the opposite and was wrong. Backs mcguinness-redesign; watch for the completion announcement (city says early fall 2026), then update that card's timeline. CAVEAT: this is a single static press release, so it will never itself announce anything new — it verifies the existing card, it does not surface the next update. See ledger watchItems."
+    },
+    {
+      "id": "grownyc-mccarren-greenmarket",
+      "name": "GrowNYC — McCarren Park Greenmarket",
+      "url": "https://grownyc.org/locations/mccarren-park-greenmarket/",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "browser",
+      "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found it uncarded). Plain WebFetch 403s — headless-browser fetch works and returns the static schedule page. STANDING PROGRAMMING: year-round Saturday market, 8am-3pm, Union Ave between Driggs & N12th St; compost drop-off Sat 8-1:30pm, clothing collection Sat 8:30am-1pm. Card is undated (mccarren-greenmarket) — this is a static schedule page so it will report `unchanged` most weeks; only re-author the card if the stated hours/services change.",
+      "standing": true
+    },
+    {
+      "id": "bandit-running-gpr",
+      "name": "Bandit Running — Greenpoint Runners",
+      "url": "https://banditrunning.com/pages/gpr",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found it uncarded). STANDING PROGRAMMING: weekly group run, Saturdays 9:30am, meets at 37 Noble St. Card is undated (bandit-running-greenpoint-runners) — static schedule page, expect `unchanged` most weeks; re-author only if day/time changes.",
+      "standing": true
+    },
+    {
+      "id": "dreams-on-command",
+      "name": "Dreams On Command",
+      "url": "https://www.dreamsoncommand.com/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found the site's current exhibit, 'There Are People Here' closing 8/8, uncarded — the map only had the generic July venue blurb). Gallery's own site names its current exhibition with open/close dates and hours (W-F 2-7pm, Sat/Sun 1-6pm), so dated exhibit cards should be authored from here going forward instead of relying on secondhand newsletter mentions.",
+      "standing": false
     }
   ]
 }

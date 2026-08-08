@@ -335,8 +335,11 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-02",
-      "updatedAt": "2026-07-15",
-      "kicker": "Contemporary art gallery"
+      "updatedAt": "2026-08-08",
+      "kicker": "Contemporary art gallery",
+      "relatedCardIds": [
+        "dreams-on-command-there-are-people-here-0808"
+      ]
     },
     {
       "id": "falu-tinned-fish-club",
@@ -979,6 +982,7 @@
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-cult-cinema-0811",
+        "film-noir-watch-me-0808",
         "film-noir-watch-me-0813",
         "film-noir-arrebato-0808",
         "film-noir-watch-me-0821"
@@ -5526,6 +5530,51 @@
       "trustRisk": "low",
       "createdAt": "2026-08-08",
       "updatedAt": "2026-08-08",
+      "id": "film-noir-watch-me-0808",
+      "title": "Watch Me at Film Noir Cinema",
+      "kicker": "Tonight, 7pm",
+      "summary": "Premiere-week screening at the Meserole Avenue cinema, ahead of the second-week run on 8/13 and the Arrebato late show that follows it tonight.",
+      "startsAt": "2026-08-08T19:00:00-04:00",
+      "endsAt": "2026-08-08T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "sourceQuote": "title: WATCH ME\nstartDate: 2026-08-08T23:00:00.377Z\nendDate: 2026-08-09T00:00:00.377Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-08"
+        }
+      ],
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
       "id": "film-noir-watch-me-0821",
       "title": "Watch Me: final screenings",
       "kicker": "Last two nights of the run",
@@ -5644,6 +5693,143 @@
       ],
       "lat": 40.725409,
       "lng": -73.956615
+    },
+    {
+      "id": "mccarren-greenmarket",
+      "title": "McCarren Park Greenmarket",
+      "category": "food_drink",
+      "filters": [
+        "food_drink"
+      ],
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "kicker": "Saturdays 8am–3pm, year-round",
+      "locationName": "McCarren Park Greenmarket",
+      "address": "Union Ave between Driggs & N12th St, Brooklyn, NY 11222",
+      "summary": "GrowNYC's Saturday market beside the McCarren Park track and dog run, running since 1997 — local farms, cooking demos and family activities. Compost drop-off runs to 1:30pm, clothing collection to 1pm.",
+      "actions": [
+        {
+          "label": "Market info",
+          "type": "learn_more",
+          "url": "https://grownyc.org/locations/mccarren-park-greenmarket/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "McCarren Park Greenmarket — GrowNYC",
+          "url": "https://grownyc.org/locations/mccarren-park-greenmarket/",
+          "publisher": "GrowNYC",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Saturday 8:00 am - 3:00 pm. Compost Saturday 8:00 am - 1:30 pm. Clothing Collection Saturday 8:30 am - 1:00 pm. Located alongside the McCarren Park track and dog run, the McCarren Park Greenmarket has connected local farms and farmers to the residents of the Greenpoint and Williamsburg neighborhoods since 1997.",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "lat": 40.7197171,
+      "lng": -73.9526115
+    },
+    {
+      "id": "bandit-running-greenpoint-runners",
+      "title": "Greenpoint Runners at Bandit Running",
+      "category": "subscription",
+      "filters": [
+        "wellness"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "kicker": "Saturdays 9:30am — all paces",
+      "locationName": "Bandit Running",
+      "address": "37 Noble St, Brooklyn, NY 11222",
+      "summary": "Greenpoint Runners is Bandit Running's weekly Saturday group run, meeting outside the Noble Street shop — open to all paces.",
+      "actions": [
+        {
+          "label": "Learn more",
+          "type": "learn_more",
+          "url": "https://banditrunning.com/pages/gpr"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Bandit Running — Greenpoint Runners",
+          "url": "https://banditrunning.com/pages/gpr",
+          "publisher": "Bandit Running",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "Saturdays at 9:30 am. 37 Noble Street, Brooklyn NY. Join for more information about our weekly runs, events and more.",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "lat": 40.7284846,
+      "lng": -73.9580072
+    },
+    {
+      "id": "dreams-on-command-there-are-people-here-0808",
+      "title": "“There Are People Here” closes today at Dreams On Command",
+      "category": "arts_culture",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor",
+        "creator"
+      ],
+      "kicker": "Closing day, 1–6pm",
+      "locationName": "Dreams On Command",
+      "address": "42 West St, Suite 105, Brooklyn, NY 11222",
+      "summary": "Today is the last day of “There Are People Here,” the gallery's current group show (up since July 11) — open in its usual Saturday window.",
+      "startsAt": "2026-08-08T13:00:00-04:00",
+      "endsAt": "2026-08-08T18:00:00-04:00",
+      "actions": [
+        {
+          "label": "Gallery site",
+          "type": "learn_more",
+          "url": "https://www.dreamsoncommand.com/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Dreams On Command",
+          "url": "https://www.dreamsoncommand.com/",
+          "publisher": "Dreams On Command",
+          "date": "2026-08-08"
+        }
+      ],
+      "sourceQuote": "There Are People Here. July 11–August 8, 2026. W-F (2-7pm) SAT/SUN (1-6pm).",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "relatedCardIds": [
+        "dreams-on-command"
+      ],
+      "lat": 40.728078,
+      "lng": -73.958665
     }
   ]
 }

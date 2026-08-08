@@ -244,15 +244,33 @@ test("seed has exactly 75 cards across the six layers", () => {
   // coverage check; roster now carries standing:true). The nycparks sources
   // collapsed 4 scrapes into one plain-fetch citywide-RSS feed source; its
   // SummerStarz/McGolrick items were already carded. 129 - 8 + 4 = 125.
-  assert.equal(seed.cards.length, 125);
+  // 2026-08-08, ChatGPT gap cross-check (Batu): a resident ran a Greenpoint
+  // event search in ChatGPT for today and found 4 things the deck was
+  // missing. +4 events/cards: film-noir-watch-me-0808 recovers a REAL bug —
+  // the WATCH ME entry's Squarespace fullUrl slug reused the premiere's
+  // 8/7 date even though its ISO startDate is 8/8 7pm, so the card had been
+  // carded under the wrong day and this morning's expiry deleted it as
+  // "passed" a full day before it actually screened (see SKILL.md fix).
+  // Also onboarded three new standing sources: GrowNYC (mccarren-greenmarket,
+  // Saturdays 8am-3pm) and Bandit Running (bandit-running-greenpoint-runners,
+  // Saturdays 9:30am) as undated venue-style cards; Dreams On Command's own
+  // site (dreams-on-command-there-are-people-here-0808, "There Are People
+  // Here" closing today) as a dated exhibit card — the map only had the
+  // generic July venue blurb sourced secondhand from Shop Small Greenpoint.
+  // Two ChatGPT finds stayed uncarded on purpose: On The Riddimz (Box House
+  // Hotel) was sourced only to a Reddit thread, not an organizer's own page;
+  // Charlotte de Witte / Under the K Bridge Park is ticketed via AXS, which
+  // Batu chose not to onboard this pass (nightlife/tourist fit call, not a
+  // sourcing gap). 125 + 4 = 129.
+  assert.equal(seed.cards.length, 129);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 74, "78 - 8 passed 8/7 events + Arrebato 8/8, Watch Me finale 8/21-22, library Thursday 8/20, Fish Friday 8/14 (2026-08-08)");
+  assert.equal(count((c) => c.category === "event"), 75, "74 + film-noir-watch-me-0808 (2026-08-08 ChatGPT cross-check, recovered mis-dated slug bug)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
-  assert.equal(count((c) => c.category === "subscription"), 10, "Falu, Flower Cat, Trash Club + 4 kids-program registrations + Last Place chess night + NY Society of Play fall clubs + BYB adult ballet term");
+  assert.equal(count((c) => c.category === "subscription"), 11, "10 + bandit-running-greenpoint-runners (2026-08-08 ChatGPT cross-check, GrowNYC + Bandit Running onboarded)");
   assert.equal(count((c) => ["g_train_support", "civic_action", "support_local"].includes(c.category)), 5, "3 G-train cards + Film Noir support + Newtown Creek CAG");
 });
 
@@ -459,7 +477,10 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   // 2026-08-06: sunday-yoga-domino removed — Batu ruled Domino Park is
   // Williamsburg and out of scope (PR #21). It was the deck's only Domino item
   // and the reason the map was inconsistent about that park.
+  // 2026-08-08 (ChatGPT cross-check, Bandit Running onboarded): weekly
+  // Saturday group run, same standing-programming shape as the other two.
   assert.deepEqual(wellness, [
+    "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
     "community-yoga-transmitter-tuesdays",
     "sparsa-greenpoint",
