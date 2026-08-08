@@ -50,6 +50,37 @@ export function followTarget({ filterId = "all" } = {}) {
   return null;
 }
 
+// Four rows is one phone-screen of feed at 375px — enough that the reader has
+// judged whether this lens carries anything for them before being asked to
+// subscribe to it.
+export const FOLLOW_MIN_CARDS = 4;
+
+// Where the static Follow row sits in the feed. Returns the index of the group
+// AFTER which it renders, or -1 for no slot at all.
+//
+// It used to be hardcoded to group 0. That encoded the intent ("far enough down
+// that the reader has passed real content") only for fat lenses: under All the
+// first day carries ~13 cards, so the ask landed well past real content. But the
+// ask is lens-only, and a thin lens inverts it — Family & Kids opened with a
+// single card on 2026-08-08, so the ask fired after ONE row, which is the exact
+// thing the static-slot decision was meant to prevent.
+//
+// Still static, still not a behavioural trigger: this reads only the lens's own
+// groups, so the position is fixed the moment the lens is chosen and never moves
+// in response to what the reader does.
+//
+// Below the minimum in total, it degenerates to the end of the feed — the same
+// "you've read it, here's how to keep getting it" order the slot always had.
+export function followSlotIndex(groups, minCards = FOLLOW_MIN_CARDS) {
+  if (!groups || groups.length === 0) return -1;
+  let seen = 0;
+  for (let i = 0; i < groups.length; i += 1) {
+    seen += groups[i].cards?.length ?? 0;
+    if (seen >= minCards) return i;
+  }
+  return groups.length - 1;
+}
+
 // Wire form for the target: what rides into the Tally hidden field and the
 // `object` property on the tap. R1 segments read off this (growth-engine §2);
 // anyone who arrives without one is the digest control arm.

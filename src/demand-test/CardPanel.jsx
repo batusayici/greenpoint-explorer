@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FILTERS, pinKind, partitionFilters, pickRelated } from "./filterCards.js";
 import { actionHref, withShareAction, sharePayload, correctionHref, submitHref, followHref } from "./cardActions.js";
-import { followTarget, followRef } from "./postValue.js";
+import { followTarget, followRef, followSlotIndex } from "./postValue.js";
 import { gcalEventUrl } from "./calendarLink.js";
 import { todayPillNeeded, scrolledAwayFromPill } from "./todayPill.js";
 import { formatWindow, isSpan } from "./eventWindow.js";
@@ -460,6 +460,7 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
   // Greenpoint" steps back in to cover that reader.
   const followT = followTarget({ filterId: filter });
   const askShowing = followT != null && !dismissedLenses.has(followT.id);
+  const followSlot = followSlotIndex(groups);
 
   // Location focus engaged (pin tap): bring the narrowed feed into view.
   // Desktop: the list is its own scroller — top it. Mobile page-flow: scroll
@@ -720,13 +721,16 @@ export default function CardPanel({ groups, cardsById, deadLinkNotice, onDismiss
                 </li>
               );
             })}
-            {/* The static slot: after the FIRST day group's cards, once per
-                feed. Far enough down that the reader has passed real content,
-                but fixed — it never appears in response to a tap, and never
-                lands between two cards of the same day. When the lens has only
-                one group this degenerates to the end of the feed, which is the
-                same "you've read it, here's how to keep getting it" order. */}
-            {gi === 0 && askShowing && (
+            {/* The static slot: after the first day group that carries the
+                reader past FOLLOW_MIN_CARDS rows, once per feed. Far enough
+                down that the reader has passed real content, but fixed — it
+                never appears in response to a tap, and never lands between two
+                cards of the same day. Placement is a function of the lens's own
+                groups (followSlotIndex), so a thin lens no longer asks after a
+                single row. When the whole lens is below the minimum this
+                degenerates to the end of the feed, which is the same "you've
+                read it, here's how to keep getting it" order. */}
+            {gi === followSlot && askShowing && (
               <li className="july-fbanner-row">
                 <FollowPrompt
                   filter={filter}

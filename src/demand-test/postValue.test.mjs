@@ -55,6 +55,41 @@ test("followTarget yields no ask at all when no lens is selected", async () => {
   assert.equal(followTarget({ filterId: "not_a_lens" }), null);
 });
 
+// Slot placement (design crit 2026-08-08). The slot was hardcoded to group 0,
+// which encoded "far enough down that the reader has passed real content" only
+// for fat lenses. Family & Kids opened with a single card that day, so the ask
+// landed after ONE row — the very thing the static-slot decision existed to
+// prevent. Placement now reads the lens's own groups; it is still static, since
+// it never responds to what the reader does.
+test("followSlotIndex clears the minimum before the ask, on a thin lens", async () => {
+  const { followSlotIndex } = await import("./postValue.js");
+  // The live Family & Kids shape: one card a day for several days.
+  const thin = [
+    { cards: [1] }, { cards: [1] }, { cards: [1] }, { cards: [1] }, { cards: [1] },
+  ];
+  // Group 3 is where the 4th card lands — not group 0.
+  assert.equal(followSlotIndex(thin), 3);
+});
+
+test("followSlotIndex keeps the ask at the first group on a fat lens", async () => {
+  const { followSlotIndex } = await import("./postValue.js");
+  // All: the first day carries well past the minimum on its own, so the slot
+  // stays exactly where it was — this fix must not move the fat-lens case.
+  assert.equal(followSlotIndex([{ cards: Array(13).fill(1) }, { cards: [1, 1] }]), 0);
+  // Exactly at the minimum still counts as cleared.
+  assert.equal(followSlotIndex([{ cards: [1, 1, 1, 1] }, { cards: [1] }]), 0);
+});
+
+test("followSlotIndex degenerates to the feed's end below the minimum", async () => {
+  const { followSlotIndex } = await import("./postValue.js");
+  // A lens too thin to ever clear 4 rows: the ask goes last, which is the same
+  // "you've read it, here's how to keep getting it" order.
+  assert.equal(followSlotIndex([{ cards: [1] }, { cards: [1] }]), 1);
+  // No groups at all is no slot — the empty state owns that screen.
+  assert.equal(followSlotIndex([]), -1);
+  assert.equal(followSlotIndex(undefined), -1);
+});
+
 test("followRef encodes the target as kind:id for the form's hidden field", async () => {
   const { followTarget, followRef } = await import("./postValue.js");
   assert.equal(followRef(followTarget({ filterId: "live_music" })), "lens:live_music");
