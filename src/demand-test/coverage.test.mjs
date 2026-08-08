@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { extractDates, buildHostMap, coveredDays, reconcile, nyDay } from "./coverage.js";
+import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, isFlagged, isUnexplained } from "./coverage.js";
 
 // L12 coverage reconciliation. The first version of this shipped as a script
 // with NO tests, and six bugs were found in it by hand in one afternoon. Each
@@ -162,6 +162,137 @@ test("coverage: an undated PLACE card must not mask a venue going dark", () => {
     snapshots: new Map([["black-rabbit", "Every Tuesday at 8pm Nerd Alert! TRIVIA"]]),
   });
   assert.equal(rows[0].state, "STANDING DARK", "a venue card is not a programme card");
+});
+
+// ---- per-source pulse: lastCardedAt survives card expiry (2026-08-08) ----
+// ingest:expire DELETES expired cards, so "when did this source last card" is
+// not derivable from cards.json — a source whose last card aged out looked
+// identical to one that never carded. The pulse persists it monotonically.
+
+test("updatePulse: seeds from current cards' createdAt on an empty pulse", () => {
+  const cards = [card({ url: "https://troostny.com/events", createdAt: "2026-08-05T09:00:00-04:00" })];
+  assert.deepEqual(updatePulse({ sources: SRC, cards }), { troost: "2026-08-05" });
+});
+
+test("updatePulse: monotone — a deleted expired card never lowers lastCardedAt", () => {
+  // The deck's freshest surviving troost card is OLDER than the stored pulse
+  // (the newer card expired and was deleted). The pulse must not move backward.
+  const cards = [card({ url: "https://troostny.com/events", createdAt: "2026-07-20T09:00:00-04:00" })];
+  const next = updatePulse({ sources: SRC, cards, pulse: { troost: "2026-08-05" } });
+  assert.equal(next.troost, "2026-08-05", "expiry deleting a card must never erase pulse history");
+});
+
+test("updatePulse: attributes through citeHost and shared hosts exactly like coverage", () => {
+  const cards = [card({ url: "https://www.nycgovparks.org/parks/x/events", createdAt: "2026-08-06T09:00:00-04:00" })];
+  const next = updatePulse({ sources: SRC, cards });
+  assert.equal(next["nycparks-mcgolrick"], "2026-08-06");
+  assert.equal(next["nycparks-mccarren"], "2026-08-06", "shared-host siblings both credited, same as coverage");
+});
+
+test("silence: a weekly source 22 days past its last card is SILENT; 21 is not", () => {
+  const snapshots = new Map([["troost", "Opening hours: noon till late."]]);
+  const at = (day) =>
+    reconcile({ sources: SRC, cards: [], now: NOW, snapshots, pulse: { troost: day } })
+      .find((r) => r.id === "troost");
+  assert.equal(at("2026-07-16").state, "SILENT", "22 days > 3 weekly cycles");
+  assert.equal(at("2026-07-17").state, "quiet", "21 days is exactly the threshold, not past it");
+  assert.equal(at("2026-07-16").lastCardedAt, "2026-07-16", "the report needs the date to print");
+});
+
+test("silence: a monthly source is measured against monthly cycles, not weekly", () => {
+  // Monthly sources are fetched only on first-Monday runs (skipped_monthly
+  // otherwise) — a weekly threshold would flag every one of them permanently.
+  const sources = [{ id: "greenpoint-ymca", url: "https://ymcanyc.org/greenpoint", cadence: "monthly" }];
+  const snapshots = new Map([["greenpoint-ymca", "Opening hours: 6am."]]);
+  const at = (day) =>
+    reconcile({ sources, cards: [], now: NOW, snapshots, pulse: { "greenpoint-ymca": day } })[0];
+  assert.equal(at("2026-06-08").state, "quiet", "60 days silent is fine for a monthly source");
+  assert.equal(at("2026-05-01").state, "SILENT", "98 days > 3 monthly cycles");
+});
+
+test("silence: no pulse entry is never-carded info, not a flag", () => {
+  // 8 roster sources are cited through hosts the roster doesn't declare yet;
+  // a permanent false SILENT for each is the cry-wolf failure. They surface
+  // via lastCardedAt: null, and never trip the gate.
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map([["troost", "Opening hours: noon till late."]]),
+  });
+  const r = rows.find((x) => x.id === "troost");
+  assert.equal(r.state, "quiet");
+  assert.equal(r.lastCardedAt, null);
+  assert.ok(!isFlagged(r) && !isUnexplained(r), "never-carded must not disqualify auto-ship");
+});
+
+test("silence: an existing flagged state is not renamed by a stale pulse", () => {
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map([["black-rabbit", "Every Tuesday at 8pm Nerd Alert! TRIVIA"]]),
+    pulse: { "black-rabbit": "2026-06-01" },
+  });
+  assert.equal(rows.find((r) => r.id === "black-rabbit").state, "STANDING DARK",
+    "STANDING DARK is the more actionable diagnosis and must win over SILENT");
+});
+
+test("silence: current deck coverage beats a stale pulse", () => {
+  // A live card credits the source NOW; calling that silence would be a
+  // contradiction no matter what the pulse says.
+  const cards = [card({
+    url: "https://troostny.com/events",
+    startsAt: "2026-08-12T20:00:00-04:00", endsAt: "2026-08-12T22:00:00-04:00",
+  })];
+  const rows = reconcile({
+    sources: SRC, cards, now: NOW,
+    snapshots: new Map([["troost", "start.date: 2026-08-12\n"]]),
+    pulse: { troost: "2026-06-01" },
+  });
+  assert.equal(rows.find((r) => r.id === "troost").state, "ok");
+});
+
+// ---- coverage explanations: structured, expiring, annotate-never-suppress ----
+
+const EXPLAIN = { sourceId: "troost", gapKey: "GAP", reason: "five-night run = one card", addedAt: "2026-08-06", expiresAt: "2026-08-13" };
+const GAP_SNAP = new Map([["troost", "start.date: 2026-08-20\nstart.date: 2026-08-21\n"]]);
+
+test("explanations: a live entry matching sourceId+state marks the row explained", () => {
+  const rows = reconcile({ sources: SRC, cards: [], now: NOW, snapshots: GAP_SNAP, explanations: [EXPLAIN] });
+  const r = rows.find((x) => x.id === "troost");
+  assert.equal(r.state, "GAP", "explanations annotate — the state still reports");
+  assert.ok(r.explained && isFlagged(r) && !isUnexplained(r));
+  assert.equal(r.explanation.reason, "five-night run = one card", "the report prints the reason");
+});
+
+test("explanations: an expired entry no longer explains", () => {
+  // Expiry is the anti-rubber-stamp: an explanation must be re-earned, so a
+  // gap can never stay permanently excused on last month's reasoning.
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW, snapshots: GAP_SNAP,
+    explanations: [{ ...EXPLAIN, expiresAt: "2026-08-06" }],
+  });
+  const r = rows.find((x) => x.id === "troost");
+  assert.ok(!r.explained && isUnexplained(r));
+});
+
+test("explanations: gapKey must match the state — a GAP note does not excuse STANDING DARK", () => {
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map([["black-rabbit", "Every Tuesday at 8pm Nerd Alert! TRIVIA"]]),
+    explanations: [{ sourceId: "black-rabbit", gapKey: "GAP", reason: "x", addedAt: "2026-08-06", expiresAt: "2026-08-13" }],
+  });
+  assert.ok(isUnexplained(rows.find((r) => r.id === "black-rabbit")),
+    "an excuse written for one failure must not cover a different one");
+});
+
+test("explanations: SILENT is explainable like any other flagged state", () => {
+  const rows = reconcile({
+    sources: SRC, cards: [], now: NOW,
+    snapshots: new Map([["troost", "Opening hours: noon till late."]]),
+    pulse: { troost: "2026-07-01" },
+    explanations: [{ sourceId: "troost", gapKey: "SILENT", reason: "closed for August reno per their IG", addedAt: "2026-08-06", expiresAt: "2026-08-20" }],
+  });
+  const r = rows.find((x) => x.id === "troost");
+  assert.equal(r.state, "SILENT");
+  assert.ok(r.explained && !isUnexplained(r));
 });
 
 // ---- three-state `standing`, so the signal converges instead of nagging ----
