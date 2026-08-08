@@ -454,7 +454,11 @@ test("noTodayNotice: fires only for a lens whose feed skips today into dated day
 // the Today group, and noTodayNotice correctly reported the emptiness the
 // grouping had manufactured. With `recurrence.days` the weekly card lands on
 // the day it actually happens.
-const SAT = new Date("2026-08-08T12:00:00-04:00");
+// 9:30am — DURING the bird club below, not after it. The clock is load-bearing
+// since 2026-08-08 (see the finished-occurrence test at the end of this
+// block): a noon anchor would put a 9–10am weekly card on NEXT Saturday, which
+// is correct behaviour but tests something else.
+const SAT = new Date("2026-08-08T09:30:00-04:00");
 const birdClub = {
   id: "bird", category: "event", recurring: true, recurrence: { days: ["sat"] },
   startsAt: "2026-08-08T09:00:00-04:00", endsAt: "2026-08-29T10:00:00-04:00",
@@ -502,4 +506,12 @@ test("noTodayNotice: a lens with a weekly card live today is NOT empty", () => {
   // The regression guard for the actual report.
   const groups = groupByDay([birdClub], SAT);
   assert.equal(noTodayNotice(groups, "family_kids"), null);
+});
+
+test("groupByDay: a weekly card leaves Today once its sitting is over", () => {
+  // Batu on stoopwise.com, 2026-08-08 7:37pm: the Today group led with three
+  // weekly cards that had all finished that morning. The span's endsAt (Aug
+  // 29) can't retire one sitting — the sitting's own 9–10am window does.
+  const groups = groupByDay([birdClub], new Date("2026-08-08T19:37:00-04:00"));
+  assert.deepEqual(groups.map((g) => g.label), ["Sat, Aug 15"]);
 });

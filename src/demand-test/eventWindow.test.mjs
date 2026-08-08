@@ -130,6 +130,60 @@ test("nextOccurrence finds today first, then the following week", () => {
   assert.equal(nextOccurrence(sewing, ny("2026-08-23")), null); // span exhausted
 });
 
+// 2026-08-08, Batu on stoopwise.com at 7:37pm: the Today group led with the
+// McCarren Greenmarket (Saturdays 8am–3pm), the bird club (9–10am) and the
+// runners (9:30–11am) — all finished that morning. A weekly card's endsAt is
+// the end of its SPAN (Aug 29), so isExpiredCard can't retire one sitting;
+// the occurrence's own window is the TIME OF DAY of startsAt…endsAt.
+const at = (iso) => new Date(iso);
+
+test("today's occurrence stops counting once its clock window closes", () => {
+  // Sewing camp Saturdays 11am–2pm.
+  assert.equal(nextOccurrence(sewing, at("2026-08-08T10:00:00-04:00")), "2026-08-08"); // before
+  assert.equal(nextOccurrence(sewing, at("2026-08-08T13:00:00-04:00")), "2026-08-08"); // underway
+  assert.equal(nextOccurrence(sewing, at("2026-08-08T19:37:00-04:00")), "2026-08-15"); // over → next week
+});
+
+test("a finished occurrence rolls forward even on the span's last day", () => {
+  assert.equal(nextOccurrence(sewing, at("2026-08-22T19:00:00-04:00")), null);
+});
+
+test("an unsourced end time (23:59 sentinel) expires an hour past start", () => {
+  // Matches isExpiredCard's grace for one-off cards: long enough to catch a
+  // show you're late to, short enough that the evening feed isn't a list of
+  // things already underway.
+  const yoga = {
+    startsAt: "2026-08-04T07:00:00-04:00",
+    endsAt: "2026-08-25T23:59:00-04:00",
+    recurring: true,
+    recurrence: { days: ["tue"] },
+  };
+  assert.equal(nextOccurrence(yoga, at("2026-08-11T07:45:00-04:00")), "2026-08-11");
+  assert.equal(nextOccurrence(yoga, at("2026-08-11T08:30:00-04:00")), "2026-08-18");
+});
+
+test("an all-day weekly card (00:00 start sentinel) runs to midnight", () => {
+  // No stated clock means no claim about when it ends — the truth rules
+  // forbid inventing one.
+  const allDay = {
+    startsAt: "2026-08-08T00:00:00-04:00",
+    endsAt: "2026-08-29T23:59:00-04:00",
+    recurring: true,
+    recurrence: { days: ["sat"] },
+  };
+  assert.equal(nextOccurrence(allDay, at("2026-08-08T23:00:00-04:00")), "2026-08-08");
+});
+
+test("an occurrence crossing midnight is not retired at its start", () => {
+  const lateSet = {
+    startsAt: "2026-08-08T22:00:00-04:00",
+    endsAt: "2026-08-29T01:00:00-04:00",
+    recurring: true,
+    recurrence: { days: ["sat"] },
+  };
+  assert.equal(nextOccurrence(lateSet, at("2026-08-08T23:30:00-04:00")), "2026-08-08");
+});
+
 test("recurrence days are validated tokens in week order", () => {
   assert.deepEqual(RECURRENCE_DAYS, ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]);
 });

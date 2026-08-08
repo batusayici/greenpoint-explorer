@@ -98,14 +98,59 @@ export function occursOn(card, date) {
   return days ? days.includes(dayTokenOf(date)) : true;
 }
 
-// The first day on or after `from` that this card actually happens, as
-// "YYYY-MM-DD" (NY), or null if its span is exhausted. Bounded by a week:
-// a weekly card that hasn't occurred in seven days has no stated day left to
-// hit, so there is nothing to search for beyond that.
+// ── The occurrence clock (2026-08-08) ─────────────────────────────────────
+// Batu on stoopwise.com at 7:37pm: the Today group led with the McCarren
+// Greenmarket (Saturdays 8am–3pm), the McGolrick bird club (9–10am) and the
+// Bandit run (9:30–11am) — three things that had finished that morning. A
+// weekly card's `endsAt` is the end of its SPAN (Aug 29), not of any one
+// sitting, so isExpiredCard — which reads endsAt — can never retire today's
+// occurrence, and occursOn compares calendar days only. The sitting's real
+// window is the TIME OF DAY of startsAt…endsAt, applied to the day it lands on.
+const minutesOfDay = (d) => {
+  const [h, m] = CLOCK.format(d).split(":");
+  return Number(h) * 60 + Number(m);
+};
+const DAY_END = 23 * 60 + 59;
+const OCCURRENCE_GRACE = 60; // minutes past start when no end time was sourced
+
+// When this card's sitting is over, in NY minutes-of-day. The carve-outs
+// mirror isExpiredCard exactly, so a recurring card and a one-off with the
+// same clock retire at the same moment: an unsourced end (the 23:59 sentinel)
+// expires an hour past start; an all-day card (00:00 start sentinel) states no
+// clock and so runs to midnight; a window crossing midnight is never retired
+// by a same-day comparison it would fail immediately.
+function occurrenceEndMinutes(card) {
+  if (card.startsAt == null || card.endsAt == null) return DAY_END;
+  const startMin = minutesOfDay(new Date(card.startsAt));
+  if (startMin === 0) return DAY_END;
+  const endMin = minutesOfDay(new Date(card.endsAt));
+  if (endMin === DAY_END) return Math.min(startMin + OCCURRENCE_GRACE, DAY_END);
+  return endMin < startMin ? DAY_END : endMin;
+}
+
+// Day arithmetic in NY calendar days, not in milliseconds: noon at a fixed
+// -05:00 is mid-day in New York whether it's EST or EDT, so a probe can never
+// slip a day across a DST boundary (the old `from + i * 86400000` could, for a
+// `from` near midnight in March or November).
+const nyNoon = (ymd) => new Date(`${ymd}T12:00:00-05:00`);
+const addDays = (ymd, n) => {
+  const d = new Date(`${ymd}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+};
+
+// The first day on or after `from` that this card actually happens AND has not
+// already finished, as "YYYY-MM-DD" (NY), or null if its span is exhausted.
+// `from` is an instant, not a date: its clock is what decides whether today's
+// sitting still counts. Bounded by eight days — a week past the first day
+// examined, so a card whose sitting today is over can still find next week's.
 export function nextOccurrence(card, from) {
-  for (let i = 0; i < 7; i++) {
-    const probe = new Date(from.getTime() + i * 86400000);
-    if (occursOn(card, probe)) return DAYKEY.format(probe);
+  const today = DAYKEY.format(from);
+  for (let i = 0; i < 8; i++) {
+    const day = addDays(today, i);
+    if (!occursOn(card, nyNoon(day))) continue;
+    if (day === today && minutesOfDay(from) > occurrenceEndMinutes(card)) continue;
+    return day;
   }
   return null;
 }

@@ -167,8 +167,11 @@ export function groupByDay(cards, date) {
     // repeats for six weeks would otherwise appear six times and bury the
     // one-offs it sits among. Recurring cards with NO stated day (standing
     // offers) and exhausted spans still fall through to the shelf, unchanged.
+    // `date`, not `dayStart`: nextOccurrence needs the CLOCK to know whether
+    // today's sitting is still on. Passing local midnight is what kept this
+    // morning's greenmarket under "Today" all evening (2026-08-08).
     const states = card.recurring && card.recurrence?.days?.length > 0;
-    const occurrence = dated && states ? nextOccurrence(card, dayStart) : null;
+    const occurrence = dated && states ? nextOccurrence(card, date) : null;
     if (occurrence != null) {
       // Local midnight, matching dayStart — the offset below is a whole-day
       // count, and a noon anchor would round a same-day occurrence up to 1.
