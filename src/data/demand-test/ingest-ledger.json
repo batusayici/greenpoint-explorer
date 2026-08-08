@@ -1413,6 +1413,14 @@
         "subscription"
       ],
       "note": "Match the BRANCH address, not ymcanyc.org — the citywide Y sends a lot of mail that is not Greenpoint. 99 Meserole Ave. Term registrations (Fall 1, etc.) are subscription cards on the audience lens, never deals_memberships."
+    },
+    {
+      "publisher": "Otis & Finn Barbershop",
+      "match": "otisandfinn.com",
+      "kinds": [
+        "event"
+      ],
+      "note": "197 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan; Batu subscribing. EMAIL-ONLY BY CONSTRUCTION — otisandfinn.com/community describes real community programming (annual free Back-to-School haircut event, Pride Party) but publishes NO dated calendar; the page is purely an email signup, which is why this is a sender and not a web source. Do not add the /community page to ingest-sources.json expecting dates. Seasonal: the Back-to-School haircut event lands in late August."
     }
   ],
   "watchItems": [

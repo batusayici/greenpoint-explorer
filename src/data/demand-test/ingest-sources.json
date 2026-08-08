@@ -543,6 +543,106 @@
       "cadence": "monthly",
       "fetch": "auto",
       "notes": "99 Meserole Ave, Brooklyn NY 11222; 212-912-2260; open Mon-Fri 6am-11pm, Sat/Sun 6am-9pm. Onboarded 2026-08-08 — Batu is subscribed to the BRANCH list and nothing was reading it. Family/kids and wellness supply the roster otherwise lacks: swim, dance, early childhood, afterschool (3-6pm school days), teen programs, holiday camp. SEASONAL, NOT WEEKLY — programming runs in terms (Fall 1 starts Sept 8) with two registration gates, members first then community. Expect `unchanged` between terms; check at term boundaries, and card the REGISTRATION WINDOW, not individual class instances (same treatment as the dance-school fall registrations). A branch of a citywide nonprofit is IN SCOPE — the same reasoning that puts Greenpoint Library and NYC Parks on the map. This is not the PRESS Modern Massage multi-location case, which was a commercial chain."
+    },
+    {
+      "id": "macha-studio",
+      "name": "Macha Studio (events blog Atom)",
+      "url": "https://machastudio.com/blogs/events.atom",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "feed",
+      "notes": "135 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan (docs/review/2026-08-08-ssg-directory-roster-scan.md). Shopify blog, so the .atom feed is the source of record — cheaper than the rendered /blogs/events page and carries the full entry body. Verified 2026-08-08: feed updated 2026-08-05 with \"Summer Fridays listening party\", \"Summer Fridays After Hours\", \"Summer Poetry Open-Mic\". Highest-yield find of that scan. Entry <updated> is the POST time, not the event date — read the event date out of the entry body, never from the timestamp. CITE cards to https://machastudio.com.",
+      "citeHost": "machastudio.com"
+    },
+    {
+      "id": "maison-jar",
+      "name": "Maison Jar (workshops)",
+      "url": "https://maisonjar.nyc/",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "566 Leonard St, zero-waste grocery. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. Workshops are listed on the HOMEPAGE (class=\"event\" blocks), not on a dedicated events path — the directory's deep link is a text-fragment URL into the homepage, so the homepage is the real source. Verified 2026-08-08: 26 dated hits on plain fetch, e.g. a workshop on queer botany & native seed balls with a plant-based dinner. Plain fetch is sufficient; no browser needed."
+    },
+    {
+      "id": "lockwood",
+      "name": "Lockwood (Facebook events via SociableKit feed)",
+      "url": "https://data.accentapi.com/feed/66424.json",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "json",
+      "notes": "98 Greenpoint Ave. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. THE RENDERED PAGE IS USELESS TO PLAIN FETCH: lockwoodshop.com/pages/events is 314KB of Shopify HTML that does not contain a single event — the listing is a SociableKit \"Facebook Page Events\" widget that hydrates from this JSON endpoint at runtime. Widget embed id 66424 is stable and mirrors Lockwood's Facebook page events. Verified 2026-08-08: \"Tote-ally 20 Sale!\", Aug 14-16 2026. Low volume (often 1 event) but the fetch is a single cheap GET. If the endpoint ever 404s, re-read the widget id from a browser load of /pages/events rather than assuming the source is dead. CITE cards to https://lockwoodshop.com/pages/events, never to data.accentapi.com.",
+      "json": {
+        "path": "events",
+        "fields": [
+          "name",
+          "start_date_raw",
+          "start_time",
+          "end_date_raw",
+          "end_time",
+          "location_text",
+          "ticket_uri",
+          "html_link"
+        ]
+      },
+      "citeHost": "lockwoodshop.com"
+    },
+    {
+      "id": "greek-kitchen",
+      "name": "Greek Kitchen (daily specials)",
+      "url": "https://greekkitchen.nyc/specials",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "912 Manhattan Ave. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: a recurring Sat-through-Thu day-of-week specials rota, not dated one-offs — card it undated as a deal, and expect `unchanged` most weeks. Verified 2026-08-08: 7 day-of-week hits on plain fetch. Re-author only when the rota itself changes; do NOT mint a dated card per day.",
+      "standing": true
+    },
+    {
+      "id": "sparrow-nesting",
+      "name": "Sparrow Nesting (events blog Atom)",
+      "url": "https://sparrowny.com/blogs/events.atom",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "feed",
+      "notes": "159-161 Driggs Ave, gift shop attached to Sparrow Funerals. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. LOW YIELD BY DESIGN and deliberately on monthly cadence: last feed update 2026-06-23, a handful of entries a year (\"A Gathering for End of Life Doulas\", \"GRASP Grief Recovery\"). Kept because the feed costs one plain GET and the supply — grief support and end-of-life community gatherings — is genuinely uncovered by every other source on the roster. A quiet month here is the expected state, not a fault.",
+      "citeHost": "sparrowny.com"
+    },
+    {
+      "id": "happy-medium",
+      "name": "Happy Medium — Art Cafe",
+      "url": "https://happy-medium.co/art-cafe",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "224 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: drop-in Art Cafe sessions run ~8-10 slots a day continuously ($15 deposit) — this is one undated card, NOT a dated card per session. FILTER PER ITEM IF YOU EVER READ SESSIONS: the schedule interleaves two locations, \"Greenpoint\" and \"Market Street\" (Manhattan) — apply the geography gate exactly as for WORD/Jersey City. FETCH COST, KNOWN: the plain path returns ~48 chars because the schedule hydrates from a POST to /api/graphql, which the json strategy cannot call (it issues GETs). So `auto` will fall through to the headless browser here — this is a browser-dependent source in practice, and it counts against the 15% error ceiling during a browser outage. It is accepted anyway because a standing card changes rarely; if the browser path is down, treat this source as known-state, not a new failure.",
+      "standing": true
+    },
+    {
+      "id": "brooklyn-hearts-club",
+      "name": "Brooklyn Hearts Club (adult art club)",
+      "url": "https://linktr.ee/brooklynheartsclub",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "notes": "Hosted at Madeline's, 117 Franklin St. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. STANDING PROGRAMMING: adult art club, EVERY SECOND WEDNESDAY of the month — card it undated against that recurrence rule. The club has no site of its own; the linktr.ee is the only public URL and it carries no dates, so the recurrence rule is sourced from the Shop Small Greenpoint directory entry itself (that is the sourceQuote of record, not the linktree). NOTE THE VENUE SPLIT: the club is the organiser, Madeline's is the address — the card belongs at 117 Franklin St."
+    },
+    {
+      "id": "edys-grocer",
+      "name": "Edy's Grocer (ticketed dinners)",
+      "url": "https://edysgrocer.com/shop/events?format=json",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "json",
+      "notes": "136 Meserole Ave, Lebanese market and deli. Onboarded 2026-08-08 from the Shop Small Greenpoint directory scan. Events are sold as SQUARESPACE COMMERCE PRODUCTS, not calendar entries — verified 2026-08-08 with \"Dinner at the Grocer with Silvia Barban\", $95, sold out. GOOD NEWS ON DATES: `excerpt` usually carries the whole thing — verified 2026-08-08, the Barban excerpt states \"On Tuesday, July 28th\", both seatings (6:00 PM and 8:30 PM), the address, and the ticketing terms. So most items are cardable from the snapshot alone. TWO TRAPS. (1) `publishOn` is an epoch-ms PUBLISH time, NOT the event date — never derive a card date from it; the date comes from the excerpt prose, and if the excerpt has no date, follow fullUrl before carding (an item with no confirmable date does not ship, R1). (2) `fullUrl` is RELATIVE (\"/shop/p/...\") — prefix https://edysgrocer.com when citing. A sold-out dinner is still worth carding as neighbourhood signal but must say sold out.",
+      "json": {
+        "path": "items",
+        "fields": [
+          "title",
+          "excerpt",
+          "fullUrl",
+          "publishOn"
+        ]
+      },
+      "citeHost": "edysgrocer.com"
     }
   ]
 }
