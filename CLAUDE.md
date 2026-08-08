@@ -51,7 +51,8 @@ Everything in `docs/archive/`, `docs/parked/`, and `scripts/archive/` is history
 - **Look:** every color from the II-C palette (source of truth: `docs/parked/3d-explorer/ART_DIRECTION.md`, applied via `iiMapStyle.js`). Out-of-palette is a hard miss.
 - **Source allowlist:** `.claude/settings.json` holds `WebFetch(domain:…)` allow rules for verified Greenpoint content sources. When a new business/source is verified, add its domain there in the same change. **It must be the tracked `.claude/settings.json` — `.claude/settings.local.json` is gitignored globally (`~/.config/git/ignore`), so a domain added there works locally and silently never reaches the repo or the cloud ingest routine** (2026-08-06, Eventbrite). Note: this only gates Claude Code's own `WebFetch` tool in an interactive session — it does **not** govern raw subprocess network calls (`curl`, `node fetch`, Playwright) that `scripts/fetch-sources.mjs` makes when the ingest cloud routine runs. If a scheduled run reports every source unreachable (not just newly-added ones), the cause is the cloud sandbox's network egress, not this file — see `docs/DECISION_LOG.md` 2026-07-28.
 - Run `git status --short` before editing; report unrelated dirty files.
-- Commit when a coherent step lands and builds; **never push without Batu — push = production deploy** (Vercel-linked).
+- Commit when a coherent step lands and builds; **never push `main` without Batu — a `main` push = production deploy** (Vercel-linked).
+- **Design batches stage first (2026-08-08):** major or batch design/UX changes go on a feature branch pushed to origin — Vercel builds a preview deployment (branch push ≠ prod) — Batu reviews the preview URL, then merge to `main`. Content-refresh routines keep auto-shipping per 2026-08-02.
 
 ## Parked: 3D isometric explorer
 

@@ -4,7 +4,49 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-07 (latest) — the coverage checker gets tests, and the blind spot it still had is closed
+## 2026-08-08 (latest) — external mobile audit: 7 dispositions shipped, and design batches now stage before prod
+
+An outside first-time-user audit of stoopwise.com (390/320/desktop) landed 10 findings. Triaged
+against the code and the decision history rather than implemented as written — three of its strongest
+points were the July UX eval's own open calls (N1 UI half, F13-adjacent, F20), and two directly
+contradicted decided verdicts. Batu approved this exact split:
+
+**Shipped (branch `design/mobile-audit-batch`):**
+- **#3 Today-gap notice** — a lens whose feed has no Today group but still has dated days ahead now
+  opens with one quiet line ("No Food & Drink today") instead of silently leading with Tomorrow.
+  `noTodayNotice` in `filterCards.js`, tested. All-shelf lenses (News) stay silent — their section
+  headers already self-describe. Declined from the same finding: chip result counts (noise) and a new
+  reset affordance (the All chip and the empty state's "Show all" already are it).
+- **#8 primary action** — the first tappable *authored* action on an expanded card renders filled ink
+  (`.july-action--primary`); Share/calendar stay quiet. The card's own destination is THE next step.
+- **#4 (micro)** — expanding "More +N" scrolls the chip rail to the revealed chips; the tap used to
+  read as a no-op at 375px. The rail rework itself stays inside N1.
+- **#5 touch targets** — pins already had invisible hit areas (the audit measured only the 14–18px
+  visual); topped up to 44px on coarse pointers **at working zooms only** — at far zoom 13 pin pairs
+  sit within 14px and a wider ring would steal taps. Map controls 40px on touch.
+- **#1 (conservative cut)** — the peek's 170px floor moved INSIDE `--peek` via `max()`, fixing a
+  latent bug: below ~680px viewport height the map stood taller than `--peek` and the chip bar stuck
+  part-way up the map. Under 700px tall the floor drops to 140px → sticky chrome at 320×568 went
+  223px→195px (39%→34%). The audit's bigger ask (List/Map toggle, demote the map) contradicts the
+  2026-07-23 live review and was declined — revisit only with mobile `pin_tap` evidence from PostHog.
+- **F20 shipped** — the audit's #6/#9 re-confirmed the open colorblind-pins call, so it shipped:
+  shape/pattern as second channel. gtrain = rounded square, club = donut (scalable gradient, survives
+  the 14px far-zoom size), business/news already carry lightness, event/deal stay filled circles —
+  the confusable CVD pairs (amber/green, brick/green) now differ by shape or pattern, palette
+  untouched. Mirrored on the feed/chip dots so the key stays one system.
+
+**Declined outright:** #2's plain-enumeration tagline (the exact pattern killed 2026-08-02 after 8
+drafts); #7's card-metadata restructure (time/Free/day already extracted — the audit misread it).
+**Folded into open calls:** the rail rework (N1) and a new N1 candidate — a map-corner key popover,
+zero feed cost, since chip swatches structurally cover only 2 of 6 pin kinds.
+
+**Process decision — staging before prod for design batches:** major/batch design updates are no
+longer pushed straight to `main`. They go to a feature branch, pushed to origin → Vercel builds a
+preview deployment (branch push ≠ production; only `main` is production) → Batu reviews the preview
+URL on his phone → merge to `main` ships it. Content-refresh routines are unaffected (they stay
+auto-ship per 2026-08-02). This is the standing workflow for design work from now on.
+
+## 2026-08-07 — the coverage checker gets tests, and the blind spot it still had is closed
 
 Batu: *"are all these issues preempted against so they will not repeat?"* Audited honestly, the
 answer was **no** — three gaps, two of them cheap. Both closed here.
