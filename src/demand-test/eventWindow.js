@@ -3,12 +3,18 @@
 // within itself. Sentinels from the card schema: a 00:00 start = "all day from
 // this date", a 23:59 end = "through this date" — both render as bare dates so
 // no fake clock value (12:00 AM / 11:59 PM) reaches the reader.
+import { RECURRENCE_DAYS } from "./cardSchema.js";
+
 const TZ = "America/New_York";
 const DATE = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: TZ });
 const TIME = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ });
 const CLOCK = new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: TZ });
 const MERIDIEM = new Intl.DateTimeFormat("en-US", { hour: "numeric", hour12: true, timeZone: TZ });
-const DAYKEY = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "numeric", timeZone: TZ });
+// `day: "2-digit"` is load-bearing (2026-08-08): with "numeric" this emitted
+// "2026-08-8", which is fine for the === comparisons it was written for but
+// sorts AFTER "2026-08-22". The recurrence code below compares these keys with
+// < and >, so the padding is what makes that legal.
+const DAYKEY = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: TZ });
 
 const isStartSentinel = (d) => CLOCK.format(d) === "00:00"; // all-day start
 const isEndSentinel = (d) => CLOCK.format(d) === "23:59"; // end-of-day
@@ -50,6 +56,71 @@ export function isSpan(card) {
   if (!startsAt && !endsAt) return false;
   if (!startsAt || !endsAt) return true; // open-ended: "From …" / "Through …"
   return DAYKEY.format(new Date(startsAt)) !== DAYKEY.format(new Date(endsAt));
+}
+
+// ── Recurrence (2026-08-08) ───────────────────────────────────────────────
+// `recurring: true` carried two meanings at once: a WEEKLY EVENT (Saturday
+// sewing camp, Tuesday trivia) and a STANDING OFFER (Pooch's intro groom —
+// available whenever they're open, on no particular day). Only the first has
+// a day, and nothing in the card said which, so the feed couldn't place a
+// weekly event on its calendar day and shelved all of them. That's what hid
+// the Saturday kids' events: the day was stated in the kicker prose and
+// nowhere a machine could read it.
+//
+// `recurrence.days` states it. Absent = the standing-offer meaning, and the
+// old span-containment behaviour is preserved exactly — so a card without it
+// is never silently reinterpreted.
+export { RECURRENCE_DAYS };
+const DAY_NAMES = {
+  sun: "Sunday", mon: "Monday", tue: "Tuesday", wed: "Wednesday",
+  thu: "Thursday", fri: "Friday", sat: "Saturday",
+};
+const WEEKDAY = new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: TZ });
+
+// The NY weekday token for an instant — NY, not local, so a late-evening card
+// can't drift a day for a reader in another zone (same rule as DAYKEY above).
+const dayTokenOf = (d) => WEEKDAY.format(d).toLowerCase().slice(0, 3);
+
+const statedDays = (card) => {
+  const days = card?.recurrence?.days;
+  return Array.isArray(days) && days.length > 0 ? days : null;
+};
+
+// Does this card happen on `date`? Span containment is the floor in both
+// branches: a stated day never reaches outside startsAt…endsAt.
+export function occursOn(card, date) {
+  const { startsAt, endsAt } = card;
+  if (startsAt == null && endsAt == null) return true; // undated: always on
+  const day = DAYKEY.format(date);
+  if (startsAt != null && DAYKEY.format(new Date(startsAt)) > day) return false;
+  if (endsAt != null && DAYKEY.format(new Date(endsAt)) < day) return false;
+  const days = statedDays(card);
+  return days ? days.includes(dayTokenOf(date)) : true;
+}
+
+// The first day on or after `from` that this card actually happens, as
+// "YYYY-MM-DD" (NY), or null if its span is exhausted. Bounded by a week:
+// a weekly card that hasn't occurred in seven days has no stated day left to
+// hit, so there is nothing to search for beyond that.
+export function nextOccurrence(card, from) {
+  for (let i = 0; i < 7; i++) {
+    const probe = new Date(from.getTime() + i * 86400000);
+    if (occursOn(card, probe)) return DAYKEY.format(probe);
+  }
+  return null;
+}
+
+// The rhythm, named for a row that is already sitting under a date — so it
+// says "Every Saturday", never "Saturday, Aug 8" (the when-line owns that).
+// No stated day = no claim, per the truth rules: a standing offer is not
+// "every day" just because we don't know its schedule.
+export function recurrenceLabel(card) {
+  const days = statedDays(card);
+  if (!days) return null;
+  const ordered = RECURRENCE_DAYS.filter((d) => days.includes(d));
+  if (ordered.length === 1) return `Every ${DAY_NAMES[ordered[0]]}`;
+  const plural = ordered.map((d) => `${DAY_NAMES[d]}s`);
+  return `${plural.slice(0, -1).join(", ")} & ${plural[plural.length - 1]}`;
 }
 
 // Header kicker (UX eval F23 / Q4-B): the edition date — the rolling week the

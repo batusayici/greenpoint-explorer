@@ -602,7 +602,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-07-08",
-      "updatedAt": "2026-07-08",
+      "updatedAt": "2026-08-08",
       "id": "artistic-voices-artudio",
       "title": "Artistic Voices: kids' art workshop",
       "filters": [
@@ -619,7 +619,12 @@
           "type": "visit"
         }
       ],
-      "kicker": "Ages 8–12 · Tuesdays 5 PM"
+      "kicker": "Ages 8–12 · Tuesdays 5 PM",
+      "recurrence": {
+        "days": [
+          "tue"
+        ]
+      }
     },
     {
       "id": "vault-gallery-culture-house",
@@ -1583,7 +1588,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "id": "hana-bottomless-makgeolli",
       "title": "Bottomless makgeolli Thursdays & Sundays",
       "kicker": "$30 bottomless makgeolli",
@@ -1616,7 +1621,13 @@
       "sourceQuote": "Join us at Hana Makgeolli on Thursdays and Sundays for Bottomless Makgeolli.\n$30 per person\nThursdays, 5PM—11PM and Sundays, 2PM–8PM",
       "relatedCardIds": [
         "hana-tour-tasting-0809"
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "thu",
+          "sun"
+        ]
+      }
     },
     {
       "category": "new_business",
@@ -1971,7 +1982,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-07-25",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "locationName": "Brooklyn Craft Company",
       "address": "165 Greenpoint Ave",
       "filters": [
@@ -2005,7 +2016,12 @@
       "relatedCardIds": [
         "bcc-beginner-embroidery-0808",
         "bcc-knitting-101-0817"
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      }
     },
     {
       "id": "last-place-chess-chill",
@@ -2275,7 +2291,7 @@
       "title": "McGolrick Bird Club",
       "kicker": "Free Saturday bird walk",
       "startsAt": "2026-08-08T09:00:00-04:00",
-      "endsAt": "2026-08-08T10:00:00-04:00",
+      "endsAt": "2026-08-29T10:00:00-04:00",
       "recurring": true,
       "locationName": "Msgr McGolrick Park",
       "address": "Nassau Ave & Russell St, Brooklyn, NY 11222",
@@ -2309,9 +2325,15 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
+      "updatedAt": "2026-08-08",
       "lat": 40.724458,
-      "lng": -73.943361
+      "lng": -73.943361,
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      },
+      "sourceQuote": "Join the McGolrick Bird Club every Saturday at 9 AM at the corner of Russell St. and Driggs Ave."
     },
     {
       "id": "transmitter-park-restaurant-marina",
@@ -2547,7 +2569,12 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
+      "updatedAt": "2026-08-08",
+      "recurrence": {
+        "days": [
+          "tue"
+        ]
+      }
     },
     {
       "id": "marianella-19th-anniversary-sale",
@@ -2690,7 +2717,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-08",
       "id": "nb-chess-parkhouse-0806",
       "title": "North Brooklyn Chess at the Parkhouse",
       "kicker": "Casual chess, beginners to sharks",
@@ -2723,7 +2750,12 @@
       "evidenceStrength": "medium_high",
       "lat": 40.721159,
       "lng": -73.952879,
-      "recurring": true
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      }
     },
     {
       "audience": [
@@ -4610,7 +4642,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "black-rabbit-nerd-alert-trivia",
       "title": "Nerd Alert! Trivia at Black Rabbit",
@@ -4643,7 +4675,12 @@
       ],
       "relatedCardIds": [
         "black-rabbit"
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "tue"
+        ]
+      }
     },
     {
       "category": "event",
@@ -4657,7 +4694,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "black-rabbit-sunday-bingo",
       "title": "Sunday bingo at Black Rabbit",
@@ -4687,7 +4724,12 @@
           "publisher": "Black Rabbit",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "sun"
+        ]
+      }
     },
     {
       "category": "event",
@@ -4701,7 +4743,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "hide-and-seek-wine-down-jazz",
       "title": "Wine Down Wednesday live jazz",
@@ -4731,7 +4773,12 @@
           "publisher": "Hide & Seek",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      }
     },
     {
       "category": "event",
@@ -4745,7 +4792,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "scrappleland-backgammon-club",
       "title": "Tuesday Backgammon Club at Scrappleland",
@@ -4778,7 +4825,12 @@
       ],
       "relatedCardIds": [
         "scrappleland"
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "tue"
+        ]
+      }
     },
     {
       "category": "event",
@@ -4792,7 +4844,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "endsAt": "2026-08-21T23:59:00-04:00",
       "id": "scrappleland-pinball-league",
       "title": "Wednesday Pinball League at Scrappleland",
@@ -4822,7 +4874,12 @@
           "publisher": "Scrappleland",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      }
     },
     {
       "category": "event",
@@ -4836,7 +4893,7 @@
       "trustRisk": "low",
       "recurring": true,
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "id": "brew-inn-greenpoint-trivia",
       "title": "Greenpoint Trivia Night at The Brew Inn",
       "kicker": "Wednesdays, 7pm start",
@@ -4867,7 +4924,12 @@
         }
       ],
       "lat": 40.731017,
-      "lng": -73.954192
+      "lng": -73.954192,
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      }
     },
     {
       "category": "event",
@@ -5179,7 +5241,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -5209,7 +5271,12 @@
           "publisher": "Greenpoint Comedy Club",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "wed"
+        ]
+      }
     },
     {
       "category": "event",
@@ -5222,7 +5289,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -5252,7 +5319,12 @@
           "publisher": "Greenpoint Comedy Club",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      }
     },
     {
       "category": "event",
@@ -5265,7 +5337,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -5295,7 +5367,12 @@
           "publisher": "Greenpoint Comedy Club",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "fri"
+        ]
+      }
     },
     {
       "category": "event",
@@ -5308,7 +5385,7 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
+      "updatedAt": "2026-08-08",
       "locationName": "Greenpoint Comedy Club",
       "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
       "lat": 40.729567,
@@ -5338,7 +5415,12 @@
           "publisher": "Greenpoint Comedy Club",
           "date": "2026-08-07"
         }
-      ]
+      ],
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      }
     },
     {
       "category": "event",
@@ -5667,7 +5749,7 @@
       "kicker": "Smoked-fish pickup, Fridays only",
       "summary": "The Gem Street smokehouse opens its doors to the neighborhood — pre-orders close at 11:30am that morning.",
       "startsAt": "2026-08-14T08:00:00-04:00",
-      "endsAt": "2026-08-14T13:00:00-04:00",
+      "endsAt": "2026-08-28T13:00:00-04:00",
       "recurring": true,
       "filters": [
         "food_drink"
@@ -5692,7 +5774,12 @@
         }
       ],
       "lat": 40.725409,
-      "lng": -73.956615
+      "lng": -73.956615,
+      "recurrence": {
+        "days": [
+          "fri"
+        ]
+      }
     },
     {
       "id": "mccarren-greenmarket",
@@ -5736,7 +5823,15 @@
       "createdAt": "2026-08-08",
       "updatedAt": "2026-08-08",
       "lat": 40.7197171,
-      "lng": -73.9526115
+      "lng": -73.9526115,
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      },
+      "startsAt": "2026-08-08T08:00:00-04:00",
+      "endsAt": "2026-08-29T15:00:00-04:00"
     },
     {
       "id": "bandit-running-greenpoint-runners",
@@ -5779,7 +5874,15 @@
       "createdAt": "2026-08-08",
       "updatedAt": "2026-08-08",
       "lat": 40.7284846,
-      "lng": -73.9580072
+      "lng": -73.9580072,
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sat"
+        ]
+      },
+      "startsAt": "2026-08-08T09:30:00-04:00",
+      "endsAt": "2026-08-29T11:00:00-04:00"
     },
     {
       "id": "dreams-on-command-there-are-people-here-0808",

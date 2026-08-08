@@ -4,7 +4,56 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-08 (latest) — external mobile audit: 7 dispositions shipped, and design batches now stage before prod
+## 2026-08-08 (latest) — recurrence is modelled, and the roster is events-shaped
+
+Batu, on a Saturday: *"no family and kids or food & drink event on a saturday (top 2 categories) is
+concerning and most likely not true."* It wasn't true, and the cause was in the feed, not the supply.
+
+**`recurring` was a bare boolean carrying two meanings** — a weekly event (has a day) and a standing
+offer (has none). Nothing on the card said which day, so `groupByDay` shelved *every* recurring card
+onto "Every week". On 2026-08-08 that hid the free 9 AM McGolrick bird walk and the 11 AM kids'
+sewing camp, and `noTodayNotice` then truthfully reported an emptiness the grouping had
+manufactured. The day was stated all along — in `kicker` prose, where no machine could read it.
+
+Decided: **`recurrence: { days: [...] }`**, a stated-day list on the card. A weekly card is placed on
+its **next actual occurrence** (only the next one — six weeks of a repeat would bury the one-offs it
+sits among); a card with no stated day keeps the old span-containment meaning exactly, so nothing is
+silently reinterpreted. Consequences, all decided together:
+- **The "Every week" shelf section empties.** Its cards are now reachable by day, which is the axis
+  people actually scan. `recurrenceLabel()` exists to name the rhythm on the row ("Every Saturday")
+  but is **not yet wired into `CardPanel`** — until it is, a few kickers restate the day the group
+  header already gives ("Saturdays 8am–3pm" under "TODAY · SAT, AUG 8"). Open craft item.
+- **Recurring events are flagged, not deleted, past their verified-through date** — the same rule
+  recurring deals already had. This is the documented cause of venue sources "going dark for a week
+  after their cards expired" (roster notes: Black Rabbit, Scrappleland, Hide & Seek, Brew Inn).
+- **Two Saturday anchors stopped being undated Places**: McCarren Park Greenmarket (Sat 8am–3pm) and
+  Greenpoint Runners at Bandit Running (Sat 9:30am). Both were onboarded 2026-08-08 with high-evidence
+  Saturday hours that no Saturday could ever show. Categories and lenses unchanged.
+- `DAYKEY` in `eventWindow.js` used `day: "numeric"`, emitting `2026-08-8` — harmless for the `===`
+  comparisons it was written for, but it sorts *after* `2026-08-22`. Now zero-padded; the recurrence
+  code orders by it.
+
+**Food & Drink on Saturday was partly a real gap**, and that half traces to a second finding: **the
+source roster is events-shaped.** All 47 sources point at calendar/events/workshop URLs, so
+`subscription` and `discount` cards only ever arrive when a newsletter happens to mention one in a
+diff — 7 of 129 cards carry the `deals_memberships` lens and only 2 are true memberships. WORD's
+memberships were missed exactly this way: the roster reads `withfriends.co/word/events` under a note
+saying it carries "the same events", which was true and silently narrowed the scope from WORD's
+offerings to WORD's dated events — while Withfriends *is* a membership platform. A sweep of 15 roster
+businesses found standing memberships uncarded at Hana Makgeolli, Yaro Studios, Kettl, Carcosa, Moon
+Bunny, WORD and Bin Bin — Carcosa's $15 guest pass was **already written in our own roster notes** and
+still produced no card, because nothing converts a standing offer into a card without an events diff.
+Deals & Memberships is one of the map's own lenses and has no supply line. Fix pending Batu's review
+of the list: a second per-source offers URL on a slow cadence, plus a run-level gate flagging any
+roster business with no standing-offer card.
+
+**Still open (pre-existing, found in passing):** `expireCards` only ever deletes `event` and
+`discount`, so a dated card of any other category never expires — `newtown-creek-cag-0729`
+(`civic_action`) and `greenpoint-trash-club` (`subscription`) render a stale "Wed, Jul 29" day group
+*above* Today. The trash club is genuinely a Wednesday recurring card whose rotating meetup location
+needs re-verifying before it can be re-authored under the new model.
+
+## 2026-08-08 — external mobile audit: 7 dispositions shipped, and design batches now stage before prod
 
 An outside first-time-user audit of stoopwise.com (390/320/desktop) landed 10 findings. Triaged
 against the code and the decision history rather than implemented as written — three of its strongest

@@ -75,3 +75,23 @@ test("input cards are not mutated", () => {
   expireCards([card({ id: "gone", endsAt: "2026-07-20T21:00:00-04:00" }), venue], TODAY);
   assert.deepEqual(venue.relatedCardIds, ["gone"]);
 });
+
+// 2026-08-08: recurring EVENTS were deleted like one-offs when their
+// verified-through date passed. That is the documented cause of standing
+// programming vanishing — the roster notes on Black Rabbit, Scrappleland,
+// Hide & Seek and Brew Inn all carry the same warning that "this source went
+// dark for a week after its cards expired". A weekly quiz doesn't stop being
+// weekly because our re-verification lapsed; like a recurring deal, it needs
+// re-verification, which is judgment, not logic.
+test("recurring events past verified-through are flagged, not deleted", () => {
+  const { kept, deleted, flagged } = expireCards(
+    [
+      { id: "weekly-trivia", category: "event", recurring: true, endsAt: "2026-07-22T23:59:00-04:00" },
+      { id: "one-off", category: "event", endsAt: "2026-07-22T23:59:00-04:00" },
+    ],
+    "2026-07-23",
+  );
+  assert.deepEqual(kept.map((c) => c.id), ["weekly-trivia"]);
+  assert.deepEqual(deleted.map((d) => d.id), ["one-off"]);
+  assert.deepEqual(flagged, [{ id: "weekly-trivia", endsAt: "2026-07-22T23:59:00-04:00" }]);
+});

@@ -72,3 +72,72 @@ test("isSpan: multi-day and open-ended windows are spans, same-day is not", asyn
   assert.equal(isSpan({ startsAt: "2026-07-09T00:00:00-04:00", endsAt: "2026-08-15T23:59:00-04:00" }), true);
   assert.equal(isSpan({}), false);
 });
+
+// ── Recurrence (2026-08-08) ────────────────────────────────────────────────
+// `recurring: true` was a bare boolean carrying two different meanings: a
+// weekly event (has a day) and a standing offer (has none). Without a stated
+// day the feed could not answer "what's on this Saturday", so every recurring
+// card was shelved — burying the Saturday kids' events Batu reported missing.
+// `recurrence.days` states the day; these tests pin what it must mean.
+import { occursOn, nextOccurrence, RECURRENCE_DAYS, recurrenceLabel } from "./eventWindow.js";
+
+// Real seed card: Saturday sewing camp, Aug 1–22, 11am–2pm.
+const sewing = {
+  startsAt: "2026-08-01T11:00:00-04:00",
+  endsAt: "2026-08-22T14:00:00-04:00",
+  recurring: true,
+  recurrence: { days: ["sat"] },
+};
+// Real seed card: standing offer, no stated day.
+const standingDeal = { endsAt: "2026-08-09T23:59:00-04:00", recurring: true };
+
+const ny = (ymd) => new Date(`${ymd}T12:00:00-04:00`);
+
+test("a weekly card occurs on its stated day inside the span", () => {
+  assert.equal(occursOn(sewing, ny("2026-08-08")), true); // Saturday
+  assert.equal(occursOn(sewing, ny("2026-08-15")), true); // Saturday
+});
+
+test("a weekly card does NOT occur on other days inside the span", () => {
+  // The bug this fixes in the other direction: the Today pill passed every
+  // recurring card unconditionally, so Tuesday yoga read as "today" on a Sat.
+  assert.equal(occursOn(sewing, ny("2026-08-07")), false); // Friday
+  assert.equal(occursOn(sewing, ny("2026-08-09")), false); // Sunday
+});
+
+test("a weekly card does not occur outside its span, even on the right day", () => {
+  assert.equal(occursOn(sewing, ny("2026-07-25")), false); // Sat, before start
+  assert.equal(occursOn(sewing, ny("2026-08-29")), false); // Sat, after end
+});
+
+test("a card with no stated days falls back to span containment", () => {
+  // Standing offers keep the old meaning — available whenever, not on a day.
+  assert.equal(occursOn(standingDeal, ny("2026-08-08")), true);
+  assert.equal(occursOn(standingDeal, ny("2026-08-10")), false); // past endsAt
+});
+
+test("multi-day recurrence matches every stated day", () => {
+  // hana-bottomless-makgeolli: "Thursdays 5–11pm, Sundays 2–8pm"
+  const hana = { endsAt: "2026-08-22T23:59:00-04:00", recurring: true, recurrence: { days: ["thu", "sun"] } };
+  assert.equal(occursOn(hana, ny("2026-08-13")), true); // Thu
+  assert.equal(occursOn(hana, ny("2026-08-16")), true); // Sun
+  assert.equal(occursOn(hana, ny("2026-08-14")), false); // Fri
+});
+
+test("nextOccurrence finds today first, then the following week", () => {
+  assert.equal(nextOccurrence(sewing, ny("2026-08-08")), "2026-08-08"); // today counts
+  assert.equal(nextOccurrence(sewing, ny("2026-08-09")), "2026-08-15");
+  assert.equal(nextOccurrence(sewing, ny("2026-08-23")), null); // span exhausted
+});
+
+test("recurrence days are validated tokens in week order", () => {
+  assert.deepEqual(RECURRENCE_DAYS, ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]);
+});
+
+test("recurrenceLabel names the rhythm for the row, without a date", () => {
+  assert.equal(recurrenceLabel(sewing), "Every Saturday");
+  // Week order, not authored order — the label must not depend on how the
+  // ingest happened to type the days.
+  assert.equal(recurrenceLabel({ recurring: true, recurrence: { days: ["thu", "sun"] } }), "Sundays & Thursdays");
+  assert.equal(recurrenceLabel(standingDeal), null); // no stated day, no claim
+});

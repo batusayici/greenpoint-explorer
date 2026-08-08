@@ -445,3 +445,61 @@ test("noTodayNotice: fires only for a lens whose feed skips today into dated day
   // Unknown filter id degrades to silence.
   assert.equal(noTodayNotice([dated("d1", 1)], "bogus"), null);
 });
+
+// ── Recurrence in the feed (2026-08-08) ───────────────────────────────────
+// Batu, on a Saturday: "no family and kids or food & drink event on a saturday
+// (top 2 categories) is concerning and most likely not true." It wasn't true.
+// groupByDay shelved EVERY `recurring` card, so the free Saturday bird walk
+// and the Saturday kids' sewing camp — both live that morning — never reached
+// the Today group, and noTodayNotice correctly reported the emptiness the
+// grouping had manufactured. With `recurrence.days` the weekly card lands on
+// the day it actually happens.
+const SAT = new Date("2026-08-08T12:00:00-04:00");
+const birdClub = {
+  id: "bird", category: "event", recurring: true, recurrence: { days: ["sat"] },
+  startsAt: "2026-08-08T09:00:00-04:00", endsAt: "2026-08-29T10:00:00-04:00",
+};
+const tueYoga = {
+  id: "yoga", category: "event", recurring: true, recurrence: { days: ["tue"] },
+  startsAt: "2026-08-04T07:00:00-04:00", endsAt: "2026-08-25T23:59:00-04:00",
+};
+
+test("groupByDay: a weekly card lands on its own day, not the shelf", () => {
+  const groups = groupByDay([birdClub], SAT);
+  assert.deepEqual(groups.map((g) => g.label), ["Today · Sat, Aug 8"]);
+  assert.equal(groups[0].shelf, false);
+});
+
+test("groupByDay: a weekly card on another day sits under that day, never Today", () => {
+  // The mirror bug: a Tuesday card must not read as today's just because its
+  // multi-week span happens to cover today.
+  const groups = groupByDay([tueYoga], SAT);
+  assert.deepEqual(groups.map((g) => g.label), ["Tue, Aug 11"]);
+});
+
+test("groupByDay: a weekly card shows its NEXT occurrence only, not every one", () => {
+  // birdClub runs four Saturdays; a feed that listed all of them would bury
+  // the one-offs it sits among.
+  const groups = groupByDay([birdClub], new Date("2026-08-10T12:00:00-04:00"));
+  assert.deepEqual(groups.map((g) => g.label), ["Sat, Aug 15"]);
+});
+
+test("groupByDay: a standing offer with no stated day stays on its shelf", () => {
+  // Pooch's intro groom repeats on no day at all — it must not be invented one.
+  const standing = { id: "groom", category: "discount", recurring: true, endsAt: "2026-08-22T23:59:00-04:00" };
+  const groups = groupByDay([standing], SAT);
+  assert.deepEqual(groups.map((g) => g.label), ["Deals"]);
+  assert.equal(groups[0].shelf, true);
+});
+
+test("groupByDay: a recurring event whose span is exhausted falls back to the shelf", () => {
+  const stale = { ...birdClub, endsAt: "2026-08-08T10:00:00-04:00" };
+  const groups = groupByDay([stale], new Date("2026-08-09T12:00:00-04:00"));
+  assert.deepEqual(groups.map((g) => g.label), ["Every week"]);
+});
+
+test("noTodayNotice: a lens with a weekly card live today is NOT empty", () => {
+  // The regression guard for the actual report.
+  const groups = groupByDay([birdClub], SAT);
+  assert.equal(noTodayNotice(groups, "family_kids"), null);
+});
