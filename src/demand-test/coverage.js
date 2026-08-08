@@ -97,13 +97,21 @@ export function buildHostMap(sources) {
   return m;
 }
 
+// Which roster sources does this card credit? Shared by coverage and the pulse
+// below — they MUST attribute identically, or a card that clears a GAP could
+// still leave its source SILENT. Inherits the deliberate over-crediting of
+// shared-host siblings: a false SILENT burns trust exactly like a false GAP.
+export function cardSourceIds(card, hostMap) {
+  const hosts = new Set();
+  for (const l of card.sourceLinks ?? []) { const h = hostOf(l.url); if (h) hosts.add(h); }
+  for (const a of card.actions ?? []) { const h = hostOf(a.url); if (h) hosts.add(h); }
+  return new Set([...hosts].flatMap((h) => [...(hostMap.get(h) ?? [])]));
+}
+
 export function coveredDays(cards, hostMap, { now }) {
   const out = new Map();
   for (const c of cards) {
-    const hosts = new Set();
-    for (const l of c.sourceLinks ?? []) { const h = hostOf(l.url); if (h) hosts.add(h); }
-    for (const a of c.actions ?? []) { const h = hostOf(a.url); if (h) hosts.add(h); }
-    const ids = new Set([...hosts].flatMap((h) => [...(hostMap.get(h) ?? [])]));
+    const ids = cardSourceIds(c, hostMap);
     if (ids.size === 0) continue;
 
     const days = new Set();
@@ -145,15 +153,58 @@ export function coveredDays(cards, hostMap, { now }) {
   return out;
 }
 
+// Per-source pulse (2026-08-08) — lastCardedAt, persisted in the ledger.
+// `cards.json` alone cannot answer "when did this source last yield a card":
+// ingest:expire DELETES expired cards, so a source whose last card aged out
+// looks never-carded. The pulse is therefore MONOTONE — max(stored, observed),
+// never lowered, never deleted — and seeding is free: the first run against an
+// empty pulse backfills from the current deck's createdAt.
+export function updatePulse({ sources, cards, pulse = {} }) {
+  const hostMap = buildHostMap(sources);
+  const next = { ...pulse };
+  for (const c of cards) {
+    const day = c.createdAt ? nyDay(c.createdAt) : null;
+    if (!day) continue;
+    for (const id of cardSourceIds(c, hostMap)) {
+      if (!next[id] || next[id] < day) next[id] = day;
+    }
+  }
+  return next;
+}
+
+// Silence threshold: three missed cycles. Weekly → 21d (tolerates one quiet
+// week plus one thin run); monthly → 90d, which also absorbs monthly sources
+// being fetched only on first-Monday runs (skipped_monthly otherwise).
+export const CADENCE_DAYS = { weekly: 7, monthly: 30 };
+export const SILENCE_MULTIPLIER = 3;
+
+const daysBetween = (fromDay, toDay) =>
+  Math.round((Date.parse(`${toDay}T12:00:00-04:00`) - Date.parse(`${fromDay}T12:00:00-04:00`)) / 864e5);
+
 // snapshots: Map<sourceId, text|null>. null = no snapshot on disk.
-export function reconcile({ sources, cards, snapshots, now, windowDays = 14 }) {
+// pulse: srcId -> "YYYY-MM-DD" lastCardedAt (see updatePulse).
+// explanations: [{sourceId, gapKey, reason, addedAt, expiresAt}] — a live entry
+// whose gapKey matches the row's state marks it `explained`. Explanations
+// ANNOTATE, never suppress: explained rows still report, so a rubber-stamp is
+// at least visible in every run. gapKey is the state string, not a dates hash —
+// dates roll daily and a hash would void every explanation every run; the
+// coarser match is bounded by expiresAt (SKILL rule: default ≤ 14 days).
+export function reconcile({ sources, cards, snapshots, now, windowDays = 14, pulse = {}, explanations = [] }) {
   const hostMap = buildHostMap(sources);
   const covered = coveredDays(cards, hostMap, { now });
+  const today = nyDay(now);
+  const live = explanations.filter((e) => e.expiresAt && today <= e.expiresAt);
   const rows = [];
 
+  const finish = (row) => {
+    const match = live.find((e) => e.sourceId === row.id && e.gapKey === row.state);
+    rows.push({ ...row, explained: !!match, ...(match ? { explanation: match } : {}) });
+  };
+
   for (const s of sources) {
+    const lastCardedAt = pulse[s.id] ?? null;
     const text = snapshots.get(s.id);
-    if (text == null) { rows.push({ id: s.id, state: "NO SNAPSHOT" }); continue; }
+    if (text == null) { finish({ id: s.id, state: "NO SNAPSHOT", lastCardedAt }); continue; }
 
     const srcDates = extractDates(text, { now, windowDays });
     const mine = covered.get(s.id) ?? new Set();
@@ -181,13 +232,34 @@ export function reconcile({ sources, cards, snapshots, now, windowDays = 14 }) {
     else if (missing.length) state = "GAP";
     else if (srcDates.length === 0 && mine.size === 0) state = "quiet";
 
-    rows.push({
+    // SILENT: the source HAS carded before, then stopped for > 3 cycles. Checked
+    // only where the row would otherwise pass (an existing flagged state is
+    // already actionable and must not be renamed) AND the deck currently carries
+    // nothing for it — if mine.size > 0 a live card speaks for the source right
+    // now, and calling that silence would be a contradiction.
+    //
+    // A source with NO pulse entry is never SILENT — it is "never carded",
+    // reported as an info line off `lastCardedAt: null`, not a state: 8 roster
+    // sources are cited through hosts the roster doesn't declare yet (citeHost
+    // fixes are a separate roster PR), and a permanent false SILENT for each
+    // would be the cry-wolf failure this whole file guards against. The line
+    // converges on its own the day attribution lands.
+    if ((state === "ok" || state === "quiet") && mine.size === 0 && lastCardedAt) {
+      const threshold = SILENCE_MULTIPLIER * (CADENCE_DAYS[s.cadence] ?? CADENCE_DAYS.weekly);
+      if (daysBetween(lastCardedAt, today) > threshold) state = "SILENT";
+    }
+
+    finish({
       id: s.id, state, srcCount: srcDates.length, coveredCount: mine.size, missing,
-      standing: !!s.standing,
+      standing: !!s.standing, lastCardedAt,
     });
   }
   return rows;
 }
 
-export const FLAGGED_STATES = ["GAP", "STANDING DARK", "UNMARKED STANDING?", "NO SNAPSHOT"];
+export const FLAGGED_STATES = ["GAP", "STANDING DARK", "UNMARKED STANDING?", "NO SNAPSHOT", "SILENT"];
 export const isFlagged = (r) => FLAGGED_STATES.includes(r.state);
+// The ship-decision predicate (--gate in check-coverage.mjs): a flagged row
+// with no live matching explanation disqualifies auto-ship. NEVER CARDED is
+// not flagged, so it can never trip this.
+export const isUnexplained = (r) => isFlagged(r) && !r.explained;

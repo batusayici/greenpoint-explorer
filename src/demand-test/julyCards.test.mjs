@@ -867,3 +867,31 @@ test("a recurring card's summary does not restate the rhythm the UI already give
     .map((c) => `${c.id}: "${c.summary}"`);
   assert.deepEqual(offenders, [], "the row marker and the detail's when-line already carry this");
 });
+
+// Pulse-ledger invariants (2026-08-08): sourcePulse and coverageExplanations
+// live in the ledger and are keyed by roster ids. A source rename that leaves
+// orphan keys behind would make its pulse history unreachable — the exact
+// silent decay this feature exists to catch.
+const roster = JSON.parse(
+  readFileSync(fileURLToPath(new URL("../data/demand-test/ingest-sources.json", import.meta.url)), "utf8"),
+);
+const rosterIds = new Set(roster.sources.map((s) => s.id));
+
+test("every sourcePulse key is a roster id", () => {
+  const orphans = Object.keys(ledger.sourcePulse ?? {}).filter((id) => !rosterIds.has(id));
+  assert.deepEqual(orphans, [], "a renamed source must carry its pulse entry along");
+  for (const [id, day] of Object.entries(ledger.sourcePulse ?? {})) {
+    assert.match(day, /^20\d{2}-\d{2}-\d{2}$/, `${id}: lastCardedAt must be a YYYY-MM-DD day`);
+  }
+});
+
+test("every coverageExplanations entry names a roster source, a real gapKey, and parseable dates", async () => {
+  const { FLAGGED_STATES } = await import("./coverage.js");
+  for (const e of ledger.coverageExplanations ?? []) {
+    assert.ok(rosterIds.has(e.sourceId), `${e.sourceId}: not a roster id`);
+    assert.ok(FLAGGED_STATES.includes(e.gapKey), `${e.sourceId}: gapKey "${e.gapKey}" is not a flagged state`);
+    assert.ok(e.reason?.length, `${e.sourceId}: an explanation without a reason is a rubber stamp`);
+    assert.ok(Number.isFinite(Date.parse(e.addedAt)), `${e.sourceId}: addedAt unparseable`);
+    assert.ok(Number.isFinite(Date.parse(e.expiresAt)), `${e.sourceId}: expiresAt unparseable`);
+  }
+});
