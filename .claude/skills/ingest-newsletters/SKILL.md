@@ -50,7 +50,17 @@ The old agent-driven roster sweep cost ~$41/run because every scraped page and t
 
    It **reports and never gates** (always exits 0). **A GAP is not automatically wrong** — a film's five-night run is one card, a recurring showcase is one recurring card, Williamsburg items are skipped on purpose, and a source whose format the parser cannot read reports 0 dates, which means *no signal*, never *no supply*. **The rule is that you explain every line or close it**, in the run summary. A gap you cannot explain is a card you owe.
 
-   `STANDING DARK` is the sharper signal: a `standing: true` source whose page still states recurring programming while the deck carries nothing for it. That is the bug from step 0.1 recurring — close it, don't explain it.
+   **`STANDING DARK`** — a `standing: true` source whose page still states recurring programming while the deck carries nothing for it. That is the step-0.1 bug recurring: close it, don't explain it.
+
+   **`UNMARKED STANDING?`** — a source nobody has reviewed yet that states recurring programming, publishes no dated items, and has no cards. **This is the exact pre-fix shape of Black Rabbit, Brew Inn, Hide & Seek and Scrappleland, which went dark for a week classified as "quiet".** Resolve it once, permanently, by setting `standing` in the roster — the field is **three-state on purpose** so this signal converges to zero instead of nagging every run:
+
+   | `standing` | meaning |
+   |---|---|
+   | `true` | real standing programming — a missing card is `STANDING DARK` |
+   | `false` | reviewed, the recurring phrase is incidental (`bin-bin-sake`'s is a **shipping** line) |
+   | *unset* | never reviewed — that is what the signal is asking you to do |
+
+   **An undated `subscription` card already represents standing programming** and counts as full coverage — that is this project's own model for a membership or club (`last-place-chess-chill`, `yaro-kids-clay-lab`). An undated **place/venue** card does not, and deliberately so: `black-rabbit` has one, and it must never mask that venue's weekly trivia going dark.
 
 4. Read `changes.json` (the report only — not the snapshots). Sources with status `unchanged` are DONE — do not open them, do not "double-check" them. **ONE EXCEPTION, and it is a big one (2026-08-07): a source marked `standing: true` in the roster.**
 

@@ -4,7 +4,46 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-07 (latest) — L12 coverage reconciliation: the check that reads the SOURCES, not the deck
+## 2026-08-07 (latest) — the coverage checker gets tests, and the blind spot it still had is closed
+
+Batu: *"are all these issues preempted against so they will not repeat?"* Audited honestly, the
+answer was **no** — three gaps, two of them cheap. Both closed here.
+
+**1. `check-coverage.mjs` had ZERO tests.** `npm test` runs only `src/**/*.test.mjs`; nothing under
+`scripts/` was tested at all. **Six bugs had been fixed in that file by hand in a single afternoon**,
+and every one could silently regress. The dangerous one is not a crash: the UTC day-rollover made six
+well-carded evenings read as gaps, and *closing* those "gaps" would have shipped **six duplicate
+cards**. A checker that quietly demands cards the deck already has is worse than no checker.
+
+The logic moved to **`src/demand-test/coverage.js`** behind **17 tests**, mirroring how `freshness.js`
+sits behind `check-freshness.mjs`. Every one of the seven bugs is a named regression case: shared-host
+collapse, exclusive `end.date`, UTC rollover, end-only standing cards, the false `standing` flag,
+window-horizon off-by-one, and the seventh found *while writing the tests* (below).
+
+**2. `STANDING DARK` only fired for sources already marked `standing: true`** — so a static-schedule
+venue added tomorrow would go dark exactly as Black Rabbit did, classified `quiet`. New
+**`UNMARKED STANDING?`** state reports any unreviewed source that states recurring programming,
+publishes no dated items and has no cards. `standing` is now **three-state** so the signal converges
+rather than nags: `true` (must have a card), `false` (reviewed, phrase is incidental — `bin-bin-sake`'s
+is a *shipping* line), unset (never reviewed).
+
+**3. Bug seven, found by the new signal on its first run.** It flagged five sources; three were
+**correctly represented all along** — by undated `subscription` cards, which is this project's own
+model for a standing membership (`last-place-chess-chill` = chess every Tuesday). `coveredDays`
+skipped undated cards entirely, so they covered nothing. Fixed: an undated **`subscription`** card
+covers the window. Deliberately **not** extended to undated place/venue cards — `black-rabbit` has
+one, and it must never mask that venue's weekly trivia going dark. The signal then converged from
+5 flagged to 0.
+
+**Still not preempted, and worth stating plainly.** Expiry/`--record`/coverage running at all is
+enforced by prose in the skill, not by any gate — a routine that silently skips a step still looks
+identical to one that ran it clean, which is exactly how the 8/5 mini-ingest failed. And the judgment
+rules (never source an address from memory; a negative grep is not absence; a size ratio is not
+evidence of data loss; never size a guard from a degraded baseline) remain prose. The one honest
+mitigation is that **the coverage check catches their *effect* regardless of cause** — it does not
+care why a card is missing.
+
+## 2026-08-07 — L12 coverage reconciliation: the check that reads the SOURCES, not the deck
 
 Batu, after four fetch/supply bugs in two days that he spotted before any alarm did: *"how can you
 make sure this doesn't happen again?"*
