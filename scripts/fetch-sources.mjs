@@ -100,17 +100,30 @@ if (MARK_INGESTED) {
 // fetch cost. Added 2026-08-05 for Greenpointers, whose front page is
 // browser-only (JS-thin + bot-walled) but whose feed is plain-fetchable and
 // carries the "What's Happening" roundup body, not merely a link to it.
-// Written for RSS 2.0, which is what the roster's feed sources serve.
+// Written for RSS 2.0, plus Atom (2026-08-08) — Shopify serves /blogs/<h>.atom
+// and nothing else, so Atom support is what makes a Shopify blog readable at
+// feed cost instead of scraping its (much thinner) rendered page.
 const stripCdata = (s) => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").trim();
 function xmlTag(xml, name) {
   const m = xml.match(new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)</${name}>`, "i"));
   return m ? stripCdata(m[1]) : "";
 }
+// Atom puts the URL in an attribute (<link href="..."/>), not in the element
+// body, so xmlTag cannot reach it. Prefer rel="alternate" — rel="self" is the
+// feed's own address, which would make every entry cite the same URL.
+function atomLink(entry) {
+  const links = [...entry.matchAll(/<link\b([^>]*)\/?>/gi)].map(([, attrs]) => ({
+    href: (attrs.match(/href=["']([^"']+)["']/i) ?? [])[1] ?? "",
+    rel: (attrs.match(/rel=["']([^"']+)["']/i) ?? [])[1] ?? "alternate",
+  }));
+  return (links.find((l) => l.rel === "alternate") ?? links[0])?.href ?? "";
+}
 function feedToText(xml, opts = {}) {
-  let items = xml.match(/<item\b[\s\S]*?<\/item>/gi) ?? [];
+  const atom = !/<item\b/i.test(xml) && /<entry\b/i.test(xml);
+  let items = xml.match(atom ? /<entry\b[\s\S]*?<\/entry>/gi : /<item\b[\s\S]*?<\/item>/gi) ?? [];
   // Not throwing here would snapshot an error page as if it were content, the
   // same failure mode BLOCK_RE guards for on the plain path.
-  if (!items.length) throw new Error("no <item> entries — not an RSS 2.0 feed?");
+  if (!items.length) throw new Error("no <item>/<entry> entries — not an RSS or Atom feed?");
   // Opt-in item filter for citywide feeds (roster: `feed: { include: [...] }`,
   // same shape as the `json` block). Added 2026-08-08 for the NYC Parks
   // citywide events RSS — 1,888 items, of which only the Greenpoint parks
@@ -126,9 +139,16 @@ function feedToText(xml, opts = {}) {
   return items
     .map((item) => {
       const title = decode(xmlTag(item, "title"));
-      const link = decode(xmlTag(item, "link"));
-      const date = decode(xmlTag(item, "pubDate"));
-      const body = htmlToText(xmlTag(item, "content:encoded") || xmlTag(item, "description"));
+      const link = decode(atom ? atomLink(item) : xmlTag(item, "link"));
+      // Atom's <updated> is the POST time, not the event time. It is kept as
+      // the item's date the same way pubDate is, but a card's event date must
+      // still come out of the body — see the macha-studio roster note.
+      const date = decode(atom ? xmlTag(item, "published") || xmlTag(item, "updated") : xmlTag(item, "pubDate"));
+      const body = htmlToText(
+        atom
+          ? xmlTag(item, "content") || xmlTag(item, "summary")
+          : xmlTag(item, "content:encoded") || xmlTag(item, "description"),
+      );
       // RSS extension fields (e.g. NYC Parks' event: namespace — parknames,
       // startdate, starttime, location, coordinates). They carry the facts the
       // description omits; without them a feed item has no date or venue.
