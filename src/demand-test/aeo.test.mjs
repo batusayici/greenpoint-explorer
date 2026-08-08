@@ -149,6 +149,20 @@ test("undated card page: no JSON-LD, content + canonical still present", () => {
   assert.match(html, /<link rel="canonical" href="https:\/\/example\.test\/e\/le-fanfare" \/>/);
 });
 
+// The template carries the HOME canonical (so `/` isn't a duplicate of the
+// rollback origin). A card page must OVERWRITE it, not add a second one —
+// two canonicals in one head make search engines ignore both.
+test("card page replaces the template's home canonical rather than adding a second", () => {
+  const withHomeCanonical = TEMPLATE.replace(
+    "<title>",
+    '<link rel="canonical" href="https://example.test/" />\n    <title>',
+  );
+  const html = injectCardPage(withHomeCanonical, timed, ORIGIN);
+  const canonicals = html.match(/<link rel="canonical"[^>]*>/g) ?? [];
+  assert.equal(canonicals.length, 1, `expected exactly one canonical, got ${canonicals.length}`);
+  assert.match(canonicals[0], /href="https:\/\/example\.test\/e\/gig-0730"/);
+});
+
 // ---- feeds -----------------------------------------------------------------
 
 test("sitemap lists root + live cards only", () => {

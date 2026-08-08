@@ -139,14 +139,21 @@ export function injectCardPage(template, card, origin) {
   html = replaceMeta(html, "name", "twitter:title", pageTitle);
   html = replaceMeta(html, "name", "twitter:description", description);
 
+  // The template carries the home canonical, so point it at this card instead of
+  // appending a second one — a head with two canonicals gets both ignored.
+  const canonicalTag = `<link rel="canonical" href="${escapeHtml(url)}" />`;
+  const hasCanonical = /<link\s+rel="canonical"[^>]*>/.test(html);
+  html = hasCanonical
+    ? html.replace(/<link\s+rel="canonical"[^>]*>/, canonicalTag)
+    : html.replace("</head>", `    ${canonicalTag}\n  </head>`);
+
   const ld = eventJsonLd(card, origin);
-  const headExtras = [
-    `<link rel="canonical" href="${escapeHtml(url)}" />`,
-    ld ? `<script type="application/ld+json">${JSON.stringify(ld, null, 1)}</script>` : null,
-  ]
-    .filter(Boolean)
-    .join("\n    ");
-  html = html.replace("</head>", `    ${headExtras}\n  </head>`);
+  if (ld) {
+    html = html.replace(
+      "</head>",
+      `    <script type="application/ld+json">${JSON.stringify(ld, null, 1)}</script>\n  </head>`,
+    );
+  }
 
   return html.replace('<div id="root"></div>', `<div id="root">${cardBodyHtml(card, origin)}</div>`);
 }

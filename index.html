@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stoopwise Greenpoint</title>
+    <!-- The rollback origins (greenpoint.life, greenpoint-explorer.vercel.app)
+         serve this same page, so `/` needs a canonical the way card pages do —
+         without it the root is two indexable copies. injectCardPage REPLACES
+         this tag per card; keep it a single-line <link> so that match holds. -->
+    <link rel="canonical" href="https://stoopwise.com/" />
     <meta
       name="description"
       content="What's on in Greenpoint this week — events, new openings, deals, and how to support the neighborhood's locally owned businesses. Verified and mapped."
