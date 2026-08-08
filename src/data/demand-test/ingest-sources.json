@@ -643,6 +643,86 @@
         ]
       },
       "citeHost": "edysgrocer.com"
+    },
+    {
+      "id": "held-space",
+      "name": "Held Space (membership)",
+      "url": "https://heldspacebk.com/membership",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "standing": true,
+      "notes": "960 Manhattan Ave, 4th Floor. Onboarded 2026-08-08 to WATCH THE PRICES on held-space-membership — the card quotes $129/month or $1029/year (2 months free) plus Practitioner from $329 and Facilitator from $396, and nothing was re-verifying them. STANDING PROGRAMMING: the tiers are the supply, so the card is undated; a diff here means a price or tier changed, which is a card update, not a new card. The members-only programme (\"at least 2x per week\" — yoga, ecstatic dance, sound baths, communal coworking) is real but NOT publicly dated anywhere we can reach, so do not expect event cards from this source. Note the SSG directory's event URL for this business (/attend-an-offering) 404s — do not restore it."
+    },
+    {
+      "id": "selformer",
+      "name": "Selformer (plans & pricing)",
+      "url": "https://www.selformer.com/plans-pricing",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "standing": true,
+      "notes": "67 West St. Onboarded 2026-08-08 to watch the prices on selformer-memberships ($147/$239/$369 a month for 4/8/16 classes; $399 unlimited; $350 on-demand video). TWO LOCATIONS — plans read \"Williamsburg + Greenpoint\" and the self-service station is Williamsburg-only, so never write a Greenpoint-exclusive benefit into card copy. The BOOKING page (/book-now) is login-walled Wix auth and carries nothing; this pricing page is the public surface — do not re-probe the booking path. Time-boxed promos appear here (a \"Summer Fling Unlimited\" $249/mo ran through Aug 15 2026 and was deliberately NOT carded — a deal that dies in a week is not worth a slot); card those only as `discount` WITH endsAt."
+    },
+    {
+      "id": "clay-space-membership",
+      "name": "Clay Space (membership)",
+      "url": "https://www.clayspacebk.com/membership",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "standing": true,
+      "notes": "275 Calyer St. Watches the prices on clay-space-membership: four tiers $210-$255 / $310-$380 / $365-$525 / $485-$650 + tax monthly, 3-month minimum, application-gated, requires more than a year of consistent lessons."
+    },
+    {
+      "id": "clay-space-workshops",
+      "name": "Clay Space (workshops)",
+      "url": "https://www.clayspacebk.com/workshops",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "275 Calyer St. THIS is Clay Space's live dated supply, and finding it corrected a 2026-08-08 miss: the roster scan had rejected the business on /events, which lists only PAST events (the newest was Jun 12 against an Aug 8 scan) — the conclusion \"Clay Space publishes nothing current\" was drawn from the wrong page. Workshops are one-off, named, and forward-dated in prose (\"Upcoming dates: August 29-30 + Sept 2\"), NOT in a machine-readable field, so read the dates from the visible text. Many entries say \"Fall 2026 (tba)\" — those are NOT cardable until a real date appears. Plain fetch reaches the full list; no browser needed."
+    },
+    {
+      "id": "clay-space-semester-classes",
+      "name": "Clay Space (semester classes)",
+      "url": "https://www.clayspacebk.com/semester-classes",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "standing": true,
+      "notes": "275 Calyer St. Term registration, so `subscription` on the audience lens, never deals_memberships (same rule as the YMCA and the ballet term). Fall 2026: Sunday September 13 to Saturday December 12, 12-week session, $760 per full semester ($900 independent study), public registration opens Aug 10 2026. Winter 2027 (January-March) is stated to release in late November — expect the page to turn over then. The registration-opens date is the newsworthy beat here, not the semester start."
+    },
+    {
+      "id": "driftaway-subscriptions",
+      "name": "Driftaway Coffee (subscriptions)",
+      "url": "https://store.driftaway.coffee/collections/subscriptions",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "standing": true,
+      "citeHost": "driftaway.coffee",
+      "notes": "85 Debevoise Ave. Watches driftaway-coffee-subscriptions (six standing subscriptions, from $16). Mail-order by nature — the precedent for carding a national-shipping subscription from a Greenpoint roaster is kettl-tea-subscriptions. `monthly` cadence on purpose: a coffee catalogue does not turn over weekly and checking it every run is noise."
+    },
+    {
+      "id": "marianella-subscription-box",
+      "name": "Marianella (subscription box)",
+      "url": "https://marianella.co/products/subscription-box",
+      "group": "venue",
+      "cadence": "monthly",
+      "fetch": "auto",
+      "standing": true,
+      "notes": "83 West St. Marianella is ALREADY a registered email sender; this is the web half, added 2026-08-08 because the sender channel does not re-verify the $48/month box price on marianella-subscription-box. Sale banners run across this page (a 19-year anniversary sale was live at onboarding) — those are separate `discount` cards WITH endsAt, not edits to the subscription card."
+    },
+    {
+      "id": "otis-and-finn",
+      "name": "Otis & Finn Barbershop (community)",
+      "url": "https://www.otisandfinn.com/community",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "standing": true,
+      "notes": "197 Franklin St. Onboarded 2026-08-08 alongside the email sender Batu subscribed to. EXPECT LOW WEB YIELD BY DESIGN: this page describes the programme (\"annual free Back-to-School Haircutting Event\", Pride Party) but publishes NO dates — it is an email-signup page, so the SENDER is the real source and this URL is the standing description. Marked standing:true so the L12 UNMARKED STANDING signal stays quiet. The Back-to-School haircut event is an August beat: watch the sender for it rather than waiting on this page to sprout a date."
     }
   ]
 }

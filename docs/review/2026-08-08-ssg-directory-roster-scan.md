@@ -150,6 +150,38 @@ gift box, $25 minimum plus a $1 sign-up fee. **Not recurring**, so `subscription
 The copy also reads as a COVID-era holdover ("get through the next few weeks"). Live and purchasable, but
 confirm with WORD it is still current before carding.
 
+---
+
+# Part 3 — resolutions (Batu, 2026-08-08)
+
+**Clay Space was rejected on the wrong page — corrected.** Part 1 dropped it because `/events` lists only
+past items. Its live supply is elsewhere and plain-fetchable, and both pages are now on the roster:
+
+- `/workshops` — one-off named workshops, forward-dated in prose ("Glaze Chemistry & Application … Upcoming dates: August 29-30 + Sept 2"). Entries reading "Fall 2026 (tba)" are **not** cardable until a date appears.
+- `/semester-classes` — **Fall 2026 runs Sept 13–Dec 12, 12 weeks, $760 ($900 independent study), and public registration opens Aug 10 2026.** Winter 2027 releases late November. Term registration files as `subscription` on the audience lens, never deals_memberships.
+
+The lesson generalises past this business: *a source was judged on one URL when its supply lived on another.*
+The event scan's rejection list should be read as "this page had nothing", not "this business publishes nothing".
+
+**Ruled on:**
+
+| Item | Ruling |
+|---|---|
+| WORD homeWORDbound Mystery Box | Left out. Not recurring, copy reads COVID-era. |
+| Brooklyn Winery wine club | On hold — the source conflict stands until the winery answers. |
+| Elevate BKLYN | No membership. Closed; do not re-probe. |
+| Selformer "Summer Fling" $249/mo | Not carded — a deal that dies Aug 15 is not worth a slot. |
+| Instagram coverage | Deferred. The 141 handles keep. |
+
+**Sources added (57 → 65):** `held-space`, `selformer`, `clay-space-membership`, `clay-space-workshops`,
+`clay-space-semester-classes`, `driftaway-subscriptions`, `marianella-subscription-box`, `otis-and-finn`.
+All eight read over plain HTTP — 0 errors, no browser path. Six domains added to the tracked allowlist.
+
+**WORD is the one gap left open deliberately.** `withfriends.co/word/join` carries its membership tiers over
+a WebSocket — plain fetch returns 58KB of shell with zero signal — so watching it would mean a **fourth**
+browser-dependent source. The existing `word-bookstore` entry already shares the host, so the card's
+citation resolves; the tier prices simply are not machine-watched. Revisit only if the prices move.
+
 ## Housekeeping spotted en route
 
 Two `discount` cards are at or past expiry: `poochs-parlor-first-groom` (`endsAt` 2026-08-08, today) and
