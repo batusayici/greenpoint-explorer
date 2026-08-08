@@ -9,6 +9,10 @@
 // linking), `timeline` (optional, dated history entries) — see DECISION_LOG.
 // 2026-08-02: `sourceQuote` (verbatim substantiating line) — the gate that
 // replaced human content review when ingest went autonomous.
+// 2026-08-08: `recurrence.days` — which days a repeating card actually happens
+// on. Week order is canonical (see recurrenceLabel in eventWindow.js).
+export const RECURRENCE_DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
 export const CATEGORIES = [
   "new_business", "food_drink", "shopping", "service", "event",
   "arts_culture", "family_kids", "job", "shopkeeper_profile",
@@ -213,6 +217,28 @@ export function validateCard(card) {
   }
   if (card.recurring != null && typeof card.recurring !== "boolean") {
     err("recurring must be a boolean");
+  }
+  // Recurrence (2026-08-08). `recurring` says "this repeats"; `recurrence.days`
+  // says WHICH DAYS, which is what lets the feed place a weekly event on its
+  // calendar day instead of shelving it. Optional by design: a standing offer
+  // (intro groom, anniversary sale) repeats on no particular day and must not
+  // be forced to invent one.
+  if (card.recurrence != null) {
+    const days = card.recurrence?.days;
+    if (card.recurring !== true) err("recurrence needs recurring: true");
+    if (!Array.isArray(days) || days.length === 0) {
+      err("recurrence.days must be a non-empty array");
+    } else {
+      for (const d of days) {
+        if (!RECURRENCE_DAYS.includes(d)) err(`recurrence.days has unknown day "${d}"`);
+      }
+      if (new Set(days).size !== days.length) err("recurrence.days has duplicates");
+    }
+    // A stated day is meaningless without a span to bound it: an unbounded
+    // "every Saturday" would claim the card runs forever.
+    if (card.startsAt == null && card.endsAt == null) {
+      err("recurrence needs startsAt or endsAt to bound the repeat");
+    }
   }
   if (card.category === "news" && !(card.sourceLinks ?? []).some((s) => str(s?.publisher))) {
     err("news needs a sourceLink with a publisher");

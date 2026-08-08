@@ -777,3 +777,31 @@ test("every card id is a URL-safe slug (deep-link contract, Phase 3.1)", () => {
     assert.match(card.id, /^[a-z0-9]+(-[a-z0-9]+)*$/, `card id not URL-safe: ${card.id}`);
   }
 });
+
+// Recurrence gate (2026-08-08). A recurring EVENT without stated days cannot
+// be placed on a calendar day, so the feed shelves it and the lens reads empty
+// on the day it actually happens — the Saturday-kids report. A recurring
+// DISCOUNT is exempt on purpose: a standing intro offer runs on no particular
+// day, and inventing one would break the truth rules.
+test("every recurring event states which days it happens", () => {
+  const missing = seed.cards
+    .filter((c) => c.category === "event" && c.recurring === true)
+    .filter((c) => !(c.recurrence?.days?.length > 0))
+    .map((c) => c.id);
+  assert.deepEqual(
+    missing,
+    [],
+    "a recurring event needs recurrence.days — without it the card can never reach its own day group",
+  );
+});
+
+test("a stated recurrence day agrees with the card's own first occurrence", () => {
+  const wd = (iso) =>
+    new Intl.DateTimeFormat("en-US", { weekday: "short", timeZone: "America/New_York" })
+      .format(new Date(iso)).toLowerCase().slice(0, 3);
+  const wrong = seed.cards
+    .filter((c) => c.recurrence?.days && c.startsAt)
+    .filter((c) => !c.recurrence.days.includes(wd(c.startsAt)))
+    .map((c) => `${c.id}: startsAt is ${wd(c.startsAt)}, states ${c.recurrence.days}`);
+  assert.deepEqual(wrong, [], "recurrence.days must include the weekday startsAt falls on");
+});

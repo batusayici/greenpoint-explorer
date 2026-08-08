@@ -2,6 +2,7 @@
 // is AUTHORED on each card (card.filters), not inferred: deterministic, testable,
 // and editable without touching logic.
 import { FILTER_IDS, FOLDED_FILTER_IDS } from "./cardSchema.js";
+import { occursOn, nextOccurrence } from "./eventWindow.js";
 
 const LABELS = {
   food_drink: "Food & Drink",
@@ -30,14 +31,10 @@ export const matchesFilter = (card, filterId) =>
 // Today lens (hidden-engagement addendum): a dated card is active on `date` if
 // its window touches that calendar day. Undated cards (shops, advocacy) always
 // pass — the lens narrows events, it doesn't empty the map.
-export function isActiveOn(card, date) {
-  if (card.startsAt == null && card.endsAt == null) return true;
-  const dayStart = new Date(date); dayStart.setHours(0, 0, 0, 0);
-  const dayEnd = new Date(date); dayEnd.setHours(23, 59, 59, 999);
-  if (card.startsAt != null && Date.parse(card.startsAt) > dayEnd.getTime()) return false;
-  if (card.endsAt != null && Date.parse(card.endsAt) < dayStart.getTime()) return false;
-  return true;
-}
+// 2026-08-08: delegates to occursOn, which adds one thing — a card stating
+// `recurrence.days` is active only on those days, not on every day its span
+// happens to cover. Everything else keeps the old span-containment meaning.
+export const isActiveOn = (card, date) => occursOn(card, date);
 
 // Feed priority: what's live TODAY leads the feed, most time-specific first —
 // a 6–8 PM tasting outranks a weeks-long series, which outranks undated cards.
@@ -163,7 +160,26 @@ export function groupByDay(cards, date) {
   // #13: the banner already carries the campaign to the same card.)
   for (const card of cards) {
     const dated = card.startsAt != null || card.endsAt != null;
-    if (!dated || card.recurring) {
+    // A weekly card that states its days gets placed on the NEXT day it
+    // actually happens — that is the whole point of recurrence.days, and it is
+    // what puts the Saturday bird walk in Saturday's group instead of on a
+    // shelf below the calendar. Only its next occurrence is listed: a card that
+    // repeats for six weeks would otherwise appear six times and bury the
+    // one-offs it sits among. Recurring cards with NO stated day (standing
+    // offers) and exhausted spans still fall through to the shelf, unchanged.
+    const states = card.recurring && card.recurrence?.days?.length > 0;
+    const occurrence = dated && states ? nextOccurrence(card, dayStart) : null;
+    if (occurrence != null) {
+      // Local midnight, matching dayStart — the offset below is a whole-day
+      // count, and a noon anchor would round a same-day occurrence up to 1.
+      const day = new Date(`${occurrence}T00:00:00`);
+      const offset = Math.round((day - dayStart) / 86400000);
+      const label =
+        offset === 0 ? `Today · ${DAY_LABEL.format(day)}`
+        : offset === 1 ? `Tomorrow · ${DAY_LABEL.format(day)}`
+        : DAY_LABEL.format(day);
+      put(offset === 0 ? "today" : `d${offset}`, offset, label, card);
+    } else if (!dated || card.recurring) {
       const rank = ongoingRank(card);
       const section = SHELF_SECTIONS[rank];
       put(section.key, rank, section.label, card, true);

@@ -28,6 +28,14 @@ export function expireCards(cards, today) {
   const flagged = [];
   let kept = cards.filter((c) => {
     if (c.category === "event" && endedBeforeToday(c)) {
+      if (c.recurring === true) {
+        // Standing programming, same rule as a recurring deal (2026-08-08):
+        // endsAt is a verified-through date, not the night the weekly quiz
+        // stops happening. Deleting on it is why venue sources went dark for
+        // a week at a time — see the roster notes on Black Rabbit et al.
+        flagged.push({ id: c.id, endsAt: c.endsAt });
+        return true;
+      }
       deleted.push({ id: c.id, category: c.category, endsAt: c.endsAt, free: c.free === true });
       return false;
     }
