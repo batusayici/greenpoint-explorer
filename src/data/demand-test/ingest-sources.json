@@ -170,6 +170,7 @@
       "id": "word-bookstore",
       "name": "WORD Bookstore (Withfriends)",
       "url": "https://withfriends.co/word/events",
+      "citeHost": "wordbookstores.com",
       "group": "venue",
       "cadence": "weekly",
       "fetch": "browser",
