@@ -273,11 +273,18 @@ test("seed has exactly 75 cards across the six layers", () => {
   // page states no price) and WORD's Withfriends membership (tiers never
   // loaded). Film Noir has no membership — it has a GoFundMe, which is an
   // editorial call for Batu, not a card.
-  assert.equal(seed.cards.length, 134);
+  // 2026-08-08 BCC RE-READ (+2 = 136). Batu asked whether the Brooklyn Craft
+  // Company newsletter of 8/6 was fully reflected. It was not: 12 Greenpoint
+  // sessions in the email, 2 carded. bcc-sewing-101-tote-0813 had been
+  // deferred under a 2-per-venue cap abolished that same day, and
+  // bcc-knitting-101-0822 was already quoted inside the 8/17 card's own
+  // sourceQuote. Six later sessions went to watchItems — email is one-shot,
+  // so unlike a re-fetched web snapshot they had no roll-in path.
+  assert.equal(seed.cards.length, 136);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 75, "74 + film-noir-watch-me-0808 (2026-08-08 ChatGPT cross-check, recovered mis-dated slug bug)");
+  assert.equal(count((c) => c.category === "event"), 77, "75 + 2 BCC sessions recovered from the 8/6 newsletter re-read");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");

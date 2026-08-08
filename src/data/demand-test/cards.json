@@ -6163,6 +6163,97 @@
         }
       ],
       "sourceQuote": "Romance Book Club — Brooklyn — Every First Saturday. Book club selections are 10% off in the month leading up to the meeting."
+    },
+    {
+      "category": "event",
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "sourceCampaign": "bcc_newsletter_2026_08_06",
+      "id": "bcc-sewing-101-tote-0813",
+      "title": "Sewing 101: Tote Bag",
+      "kicker": "Beginner sewing, one evening",
+      "startsAt": "2026-08-13T18:30:00-04:00",
+      "endsAt": "2026-08-13T23:59:00-04:00",
+      "summary": "The Greenpoint run of the shop's beginner sewing class — you leave with a tote you made.",
+      "actions": [
+        {
+          "label": "Book a spot",
+          "type": "signup",
+          "url": "https://www.brooklyncraftcompany.com/products/sewing-101-tote-bag"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
+          "url": "https://www.brooklyncraftcompany.com/products/sewing-101-tote-bag",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-06"
+        }
+      ],
+      "sourceQuote": "Sewing 101: Tote Bag … In Greenpoint: Thurs, 8/13 at 6:30pm"
+    },
+    {
+      "category": "event",
+      "locationName": "Brooklyn Craft Company",
+      "address": "165 Greenpoint Ave",
+      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "lat": 40.730461,
+      "lng": -73.953114,
+      "sourceCampaign": "bcc_newsletter_2026_08_06",
+      "id": "bcc-knitting-101-0822",
+      "title": "Knitting 101",
+      "kicker": "Saturday-morning knitting for beginners",
+      "startsAt": "2026-08-22T11:00:00-04:00",
+      "endsAt": "2026-08-22T23:59:00-04:00",
+      "summary": "The weekend run of the beginner class, for anyone the Monday session does not suit.",
+      "actions": [
+        {
+          "label": "Book a spot",
+          "type": "signup",
+          "url": "https://www.brooklyncraftcompany.com/products/open-beginner-knitting"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
+          "url": "https://www.brooklyncraftcompany.com/products/open-beginner-knitting",
+          "publisher": "Brooklyn Craft Company",
+          "date": "2026-08-06"
+        }
+      ],
+      "sourceQuote": "Knitting 101 … In Greenpoint: Mon, 8/17 at 11am … Sat, 8/22 at 11am",
+      "relatedCardIds": [
+        "bcc-knitting-101-0817"
+      ]
     }
   ]
 }
