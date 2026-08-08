@@ -375,6 +375,7 @@
       "id": "acme-fish-friday",
       "name": "Acme Smoked Fish — Fish Friday",
       "url": "https://acmesmokedfish.com/collections/fish-friday",
+      "standing": true,
       "group": "venue",
       "cadence": "weekly",
       "fetch": "auto",
@@ -451,40 +452,14 @@
       "notes": "Cleanup every Wednesday 7:30pm from a ROTATING bar meetup — the week's IG post (instagram.com/greenpointtrashclub, Browser pane; IG blocks headless) names the spot. Update the greenpoint-trash-club card's pin/locationName + week window each run."
     },
     {
-      "id": "nycparks-mcgolrick",
-      "name": "NYC Parks — Msgr. McGolrick Park",
-      "url": "https://www.nycgovparks.org/parks/msgr-mcgolrick-park/events",
+      "id": "nycparks-greenpoint",
+      "name": "NYC Parks — Greenpoint parks (citywide events RSS)",
+      "url": "https://www.nycgovparks.org/xml/events_300_rss.xml",
       "group": "institution",
       "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Plain fetch with a browser UA returns 200 (verified 2026-08-03); it is headless Chromium that gets a CloudFront 403, so this must stay `auto` and never `browser`. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only."
-    },
-    {
-      "id": "nycparks-mccarren",
-      "name": "NYC Parks — McCarren Park",
-      "url": "https://www.nycgovparks.org/parks/mccarren-park/events",
-      "group": "institution",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Same as nycparks-mcgolrick: `auto` works, headless 403s. Skip-recurring-rec-classes rule applies."
-    },
-    {
-      "id": "nycparks-transmitter",
-      "name": "NYC Parks — WNYC Transmitter Park",
-      "url": "https://www.nycgovparks.org/parks/transmitter-park/events",
-      "group": "institution",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Same as nycparks-mcgolrick: `auto` works, headless 403s. Skip-recurring-rec-classes rule applies."
-    },
-    {
-      "id": "nycparks-newtown-barge",
-      "name": "NYC Parks — Newtown Barge Playground",
-      "url": "https://www.nycgovparks.org/parks/newtown-barge-playground/events",
-      "group": "institution",
-      "cadence": "weekly",
-      "fetch": "auto",
-      "notes": "Same as nycparks-mcgolrick: `auto` works, headless 403s. Skip-recurring-rec-classes rule applies."
+      "fetch": "feed",
+      "feed": { "include": ["McCarren", "McGolrick", "Transmitter Park", "Newtown Barge"] },
+      "notes": "Replaced the four per-park page scrapes (mcgolrick/mccarren/transmitter/newtown-barge) 2026-08-08: the citywide RSS is plain-fetchable, rebuilds daily ~04:00 GMT with a 14-day window, and its event: fields carry startdate/starttime/location/coordinates/registration_url — MORE than the rendered pages did, with zero browser exposure (those pages fell through to the dead browser path in the 2026-08-08 cloud outage). The include filter scopes the snapshot to the Greenpoint parks. Feed items link the event's own page — that per-event URL is the sourceLink of record (R1). CloudFront still 403s bare/headless UAs, so plain fetch with the script's browser UA is load-bearing. Skip standing municipal rec programming (learn-to-swim, lap swim, Shape Up NYC) — card one-off happenings only. McCarren straddles the Williamsburg line: the geography gate stays per-event."
     },
     {
       "id": "greenpoint-star",

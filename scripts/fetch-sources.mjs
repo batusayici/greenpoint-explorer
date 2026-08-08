@@ -106,18 +106,37 @@ function xmlTag(xml, name) {
   const m = xml.match(new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)</${name}>`, "i"));
   return m ? stripCdata(m[1]) : "";
 }
-function feedToText(xml) {
-  const items = xml.match(/<item\b[\s\S]*?<\/item>/gi) ?? [];
+function feedToText(xml, opts = {}) {
+  let items = xml.match(/<item\b[\s\S]*?<\/item>/gi) ?? [];
   // Not throwing here would snapshot an error page as if it were content, the
   // same failure mode BLOCK_RE guards for on the plain path.
   if (!items.length) throw new Error("no <item> entries — not an RSS 2.0 feed?");
+  // Opt-in item filter for citywide feeds (roster: `feed: { include: [...] }`,
+  // same shape as the `json` block). Added 2026-08-08 for the NYC Parks
+  // citywide events RSS — 1,888 items, of which only the Greenpoint parks
+  // matter. Filtering here keeps the snapshot (and its daily diff) scoped to
+  // the neighborhood instead of churning with the other 1,850 items. Matching
+  // is a plain substring test against the raw item XML, so park names in
+  // <event:parknames> match without parsing the namespace. Zero matches is a
+  // legitimate quiet fortnight, not an error — the throw above already proved
+  // the feed itself was real.
+  if (Array.isArray(opts.include) && opts.include.length) {
+    items = items.filter((item) => opts.include.some((s) => item.includes(s)));
+  }
   return items
     .map((item) => {
       const title = decode(xmlTag(item, "title"));
       const link = decode(xmlTag(item, "link"));
       const date = decode(xmlTag(item, "pubDate"));
       const body = htmlToText(xmlTag(item, "content:encoded") || xmlTag(item, "description"));
-      return [title && `## ${title}`, link, date, body].filter(Boolean).join("\n");
+      // RSS extension fields (e.g. NYC Parks' event: namespace — parknames,
+      // startdate, starttime, location, coordinates). They carry the facts the
+      // description omits; without them a feed item has no date or venue.
+      const extras = [...item.matchAll(/<event:([\w-]+)(?:\s[^>]*)?>([\s\S]*?)<\/event:\1>/gi)]
+        .map(([, k, v]) => ({ k, v: decode(stripCdata(v)).trim() }))
+        .filter(({ v }) => v)
+        .map(({ k, v }) => `${k}: ${v}`);
+      return [title && `## ${title}`, link, date, body, ...extras].filter(Boolean).join("\n");
     })
     .join("\n\n");
 }
@@ -340,7 +359,7 @@ async function rawGet(url, accept) {
 const sourceUrls = (src) => (Array.isArray(src.urls) && src.urls.length ? src.urls : [src.url]).map((u) => expandUrlTemplate(u));
 
 const plainText = async (src) => htmlToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"));
-const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"));
+const feedText = async (src) => feedToText(await rawGet(sourceUrls(src)[0], "application/rss+xml,application/xml,text/xml"), src.feed ?? {});
 const browserPage = async (src) => browserText(sourceUrls(src)[0]);
 
 async function jsonText(src) {
