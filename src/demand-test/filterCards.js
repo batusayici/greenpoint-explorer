@@ -256,6 +256,26 @@ export function isExpiredCard(card, date) {
   return date.getTime() > Date.parse(card.startsAt) + STARTED_GRACE_MS;
 }
 
+// What the clock actually decides for the feed: which cards survive expiry,
+// which day each lands on, and what those days are called. Two instants with
+// the same signature render the same page.
+//
+// This exists so the 30-minute tick in JulyApp can hold still (2026-08-08).
+// The tick is what makes a long-lived tab honest — every dated surface reads
+// `new Date()` during render, and nothing re-renders a page nobody is
+// touching, so a tab open since morning kept serving the morning's feed. But
+// advancing the clock hands MapView a new cards array, and MapView tears down
+// and rebuilds every marker on identity change and re-flies to the selected
+// card. Repainting the map every half hour to change nothing would trade one
+// visible bug for another; comparing signatures means the clock only moves
+// when the page has something new to say.
+export function feedSignature(cards, date) {
+  const live = cards.filter((c) => !isExpiredCard(c, date));
+  return groupByDay(live, date)
+    .map((g) => `${g.label}:${g.cards.map((c) => c.id).join(",")}`)
+    .join("|");
+}
+
 // ONE related card, not a shelf (Batu, 2026-07-30). The place graph is
 // reciprocal, so a venue card accumulates every event it has ever hosted —
 // Film Noir carried 7 links, the Library 6 — and a row of near-identical pills

@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from "react";
 import seed from "../data/demand-test/cards.json";
-import { matchesFilter, sortTodayFirst, isExpiredCard, isActiveOn, groupByDay, liveFilterCounts } from "./filterCards.js";
+import { matchesFilter, sortTodayFirst, isExpiredCard, isActiveOn, groupByDay, liveFilterCounts, feedSignature } from "./filterCards.js";
 import { EVENTS, trackEvent, onEvent } from "./trackEvents.js";
 import { nextGtrainWindow, bannerPhase } from "./gtrainBanner.js";
 import { activeCommunityAlert } from "./communityAlert.js";
@@ -96,21 +96,57 @@ export default function JulyApp() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Computed per render, not memoized — the banner must flip phase on the
-  // day boundaries even in a long-lived tab. Multi-window since 2026-08-02:
-  // the slot tracks the next sourced closure, never the whole schedule.
-  const gtrainWindow = nextGtrainWindow(new Date());
-  const gtrainPhase = bannerPhase(new Date(), gtrainWindow);
-  const communityAlert = activeCommunityAlert(new Date(), CARDS_BY_ID);
+  // ── The page clock (2026-08-08) ─────────────────────────────────────────
+  // One instant, shared by every dated surface below. It used to be a scatter
+  // of `new Date()` calls in the render body, which is only ever as fresh as
+  // the last render — and nothing re-renders a page nobody is touching. So a
+  // tab left open since morning kept serving the morning's feed, and the
+  // banner comment that used to sit here ("must flip phase on the day
+  // boundaries even in a long-lived tab") was a claim the code couldn't keep.
+  //
+  // Every 30 minutes (Batu, 2026-08-08), plus a refresh whenever the tab comes
+  // back to the foreground: background timers are throttled and unreliable, so
+  // the refocus is what actually covers the phone that reopens the next
+  // morning — the interval is the floor for a tab you're watching.
+  //
+  // The clock only ADVANCES when the page would change. MapView rebuilds every
+  // marker when the cards array identity changes and re-flies to the selected
+  // card, so a blind tick would flash the map and yank a panned view back on
+  // the half hour to say nothing new. Signature equal → keep the old Date, no
+  // re-render.
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const pageSignature = (d) =>
+      `${feedSignature(seed.cards, d)}#${bannerPhase(d, nextGtrainWindow(d))}#${editionLabel(d)}`;
+    const tick = () =>
+      setNow((prev) => {
+        const next = new Date();
+        return pageSignature(prev) === pageSignature(next) ? prev : next;
+      });
+    const timer = setInterval(tick, 30 * 60000);
+    const onVisible = () => {
+      if (document.visibilityState === "visible") tick();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, []);
+
+  // Multi-window since 2026-08-02: the slot tracks the next sourced closure,
+  // never the whole schedule.
+  const gtrainWindow = nextGtrainWindow(now);
+  const gtrainPhase = bannerPhase(now, gtrainWindow);
+  const communityAlert = activeCommunityAlert(now, CARDS_BY_ID);
   // L11 (2026-07-28): staleness computed per render like the banner phase —
   // the stamp is written at build time from the ingest ledger, so a site
   // whose deploys have stopped ages into "verified through <date>" honestly.
-  const freshness = assessFreshness({ lastRunAt: stamp.lastRunAt, now: new Date(), cards: seed.cards });
+  const freshness = assessFreshness({ lastRunAt: stamp.lastRunAt, now, cards: seed.cards });
   // One banner at a time (2026-07-26): most consequential takes the slot.
   const slot = bannerSlot(gtrainPhase, communityAlert, freshness);
 
   const { visible, groups } = useMemo(() => {
-    const now = new Date();
     const live = seed.cards.filter((c) => !isExpiredCard(c, now));
     const shown = live.filter((c) => matchesFilter(c, filter));
     // Map keeps the flat set (full context even while focused); the list
@@ -120,7 +156,7 @@ export default function JulyApp() {
     // first-screen feed (punch list P2 #13).
     const feed = pinFocus ? live.filter((c) => pinFocus.ids.has(c.id)) : shown;
     return { visible: sortTodayFirst(shown, now), groups: groupByDay(feed, now) };
-  }, [filter, pinFocus]);
+  }, [filter, pinFocus, now]);
 
   // Peek-pin filter (crit round 2, #7): the 203px peek rendered all 53 pins
   // at a size where the color key can't be read. In the peek, dated pins
@@ -128,11 +164,10 @@ export default function JulyApp() {
   // stay. Expanding the map — or any desktop viewport — shows everything.
   const mapCards = useMemo(() => {
     if (!smallViewport || mapExpanded) return visible;
-    const now = new Date();
     return visible.filter(
       (c) => (c.startsAt == null && c.endsAt == null) || c.recurring || isActiveOn(c, now),
     );
-  }, [visible, smallViewport, mapExpanded]);
+  }, [visible, smallViewport, mapExpanded, now]);
 
   const onFilter = useCallback((id) => {
     setPinFocus(null); // any chip tap exits location focus
@@ -214,7 +249,7 @@ export default function JulyApp() {
         <div className="july-header-text">
           {/* One brand only (Q4-B): the kicker slot carries the edition week —
               a freshness signal, computed per render like the banner phase. */}
-          <span className="july-kicker">{editionLabel(new Date())}</span>
+          <span className="july-kicker">{editionLabel(now)}</span>
           <h1>Stoopwise Greenpoint</h1>
           {/* Two claims, six words (2026-08-02): the truth stake ("real"
               carries verified) then the participation beat. No enumeration —

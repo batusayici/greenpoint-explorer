@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated, noTodayNotice } from "./filterCards.js";
+import { FILTERS, matchesFilter, isActiveOn, sortTodayFirst, pinKind, isExpiredCard, groupByDay, liveFilterCounts, partitionFilters, pickRelated, noTodayNotice, feedSignature } from "./filterCards.js";
 import { FILTER_IDS } from "./cardSchema.js";
 
 test("FILTERS = 'all' + the IA re-cut's nine, in order, with display labels", () => {
@@ -514,4 +514,46 @@ test("groupByDay: a weekly card leaves Today once its sitting is over", () => {
   // 29) can't retire one sitting — the sitting's own 9–10am window does.
   const groups = groupByDay([birdClub], new Date("2026-08-08T19:37:00-04:00"));
   assert.deepEqual(groups.map((g) => g.label), ["Sat, Aug 15"]);
+});
+
+// ── The feed clock (2026-08-08) ───────────────────────────────────────────
+// Every dated surface called `new Date()` during render, which is only ever
+// as fresh as the last render — nothing re-renders a page nobody is touching,
+// so a tab left open since morning kept serving the morning's feed. The tick
+// that fixes that must not repaint the map for nothing: MapView rebuilds every
+// marker when the cards array identity changes, and re-flies to the selected
+// card. feedSignature is what lets the clock hold still — two instants that
+// render the same feed produce the same string.
+const deck = [birdClub, tueYoga, { id: "oneoff", category: "event", startsAt: "2026-08-08T19:00:00-04:00", endsAt: "2026-08-08T20:00:00-04:00" }];
+
+test("feedSignature is stable across instants that render the same feed", () => {
+  assert.equal(
+    feedSignature(deck, new Date("2026-08-08T09:30:00-04:00")),
+    feedSignature(deck, new Date("2026-08-08T09:50:00-04:00")),
+  );
+});
+
+test("feedSignature changes when a card's window closes", () => {
+  // The one-off's 7–8pm slot ends: it leaves the feed.
+  assert.notEqual(
+    feedSignature(deck, new Date("2026-08-08T19:30:00-04:00")),
+    feedSignature(deck, new Date("2026-08-08T20:30:00-04:00")),
+  );
+});
+
+test("feedSignature changes when a weekly sitting ends", () => {
+  // birdClub 9–10am rolls from Today to next Saturday.
+  assert.notEqual(
+    feedSignature(deck, new Date("2026-08-08T09:30:00-04:00")),
+    feedSignature(deck, new Date("2026-08-08T10:30:00-04:00")),
+  );
+});
+
+test("feedSignature changes across the day boundary", () => {
+  // Nothing expires between these two, but every day label shifts — the
+  // overnight tab is the whole reason the clock exists.
+  assert.notEqual(
+    feedSignature(deck, new Date("2026-08-10T23:50:00-04:00")),
+    feedSignature(deck, new Date("2026-08-11T00:10:00-04:00")),
+  );
 });
