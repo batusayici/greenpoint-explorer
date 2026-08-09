@@ -295,11 +295,19 @@ test("seed has exactly 75 cards across the six layers", () => {
   // whether a business sells a membership. Brooklyn Winery's wine club was HELD,
   // not shipped: its own /wine-club page calls the club's future undecided while
   // its specials page advertises a standing member benefit (source-conflicted).
-  assert.equal(seed.cards.length, 145);
+  // 2026-08-08 CIBONE O'TE (+2 = 147). Batu-supplied source (their newsletter):
+  // the Re:STATION archival Comme des Garçons / Yohji Yamamoto showcase, Aug 15
+  // – Sep 15, plus the venue card. This is the FIRST EXCEPTION to the
+  // locally-owned hard gate (Batu, 2026-08-08): CIBONE lists Tokyo Omotesando
+  // and Ginza alongside Brooklyn, so the 2026-07-16 rule that dropped PRESS for
+  // being multi-location would have skipped it. Batu ruled 50 Norman in — its
+  // tenants (CIBONE, Kama-Asa, Dashi Okume, Cafe O'te) are now eligible for
+  // venue and event cards like any local business.
+  assert.equal(seed.cards.length, 147);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 79, "77 + 2 Leaves events (onboarded 2026-08-08)");
+  assert.equal(count((c) => c.category === "event"), 80, "79 + the CIBONE Re:STATION showcase (2026-08-08)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
