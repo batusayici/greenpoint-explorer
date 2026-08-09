@@ -30,7 +30,7 @@ function initialDeepLink() {
 
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
-export default function JulyApp() {
+export default function JulyApp({ showOrientation = false } = {}) {
   const [filter, setFilter] = useState("all");
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
@@ -251,10 +251,19 @@ export default function JulyApp() {
               a freshness signal, computed per render like the banner phase. */}
           <span className="july-kicker">{editionLabel(now)}</span>
           <h1>Stoopwise Greenpoint</h1>
-          {/* Two claims, six words (2026-08-02): the truth stake ("real"
-              carries verified) then the participation beat. No enumeration —
-              the chip bar right below lists the categories. */}
-          <p>Know what’s real. Take part.</p>
+          {/* First-visit orientation SWAPS with the tagline (2026-08-08
+              external-audit item 4, corrected same day — Batu: "i dont want
+              two taglines"). A first-time visitor doesn't know what the
+              product IS yet, so "Know what's real. Take part." (values,
+              6 words, 2026-08-02) would land as tone with no referent. One
+              line states the literal offer instead; shouldShowOrientation
+              flips the flag at boot in main.jsx, so return visits — once
+              the reader already knows what this is — get the brand line. */}
+          {showOrientation ? (
+            <p>Events, openings, deals and neighborhood news — verified and sourced.</p>
+          ) : (
+            <p>Know what’s real. Take part.</p>
+          )}
         </div>
       </header>
       {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still
