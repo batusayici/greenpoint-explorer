@@ -172,6 +172,33 @@ export function updatePulse({ sources, cards, pulse = {} }) {
   return next;
 }
 
+// Per-CARD "checked" date, for the reader-facing source line (2026-08-08).
+// sourceChecked.js originally re-derived this client-side by slugifying
+// card.sourceLinks[].publisher and fuzzy-matching it against the pulse's
+// keys — which are roster source IDS (e.g. "greenpoint-ymca",
+// "driftaway-subscriptions"), not publisher-name slugs. Two of the eight
+// pulse entries added 2026-08-07 exposed the gap: "YMCA of Greater New York"
+// doesn't slug to "greenpoint-ymca", and "Driftaway Coffee" doesn't slug to
+// "driftaway-subscriptions" (no shared prefix either way) — that card would
+// silently miss its real pulse date and fall back to updatedAt. cardSourceIds
+// is the ONE join this codebase already trusts (coverage + updatePulse both
+// key off it); this reuses it instead of a second, weaker guess. A card with
+// no roster-source hit resolves to null — sourceChecked.js falls back to
+// updatedAt itself, same as before.
+export function resolveCardChecked({ sources, cards, pulse = {} }) {
+  const hostMap = buildHostMap(sources);
+  const out = {};
+  for (const c of cards) {
+    let best = null;
+    for (const id of cardSourceIds(c, hostMap)) {
+      const d = pulse[id];
+      if (d && (!best || d > best)) best = d;
+    }
+    out[c.id] = best;
+  }
+  return out;
+}
+
 // Silence threshold: three missed cycles. Weekly → 21d (tolerates one quiet
 // week plus one thin run); monthly → 90d, which also absorbs monthly sources
 // being fetched only on first-Monday runs (skipped_monthly otherwise).
