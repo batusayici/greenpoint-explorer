@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, isFlagged, isUnexplained } from "./coverage.js";
+import { extractDates, buildHostMap, coveredDays, reconcile, nyDay, updatePulse, resolveCardChecked, isFlagged, isUnexplained } from "./coverage.js";
 
 // L12 coverage reconciliation. The first version of this shipped as a script
 // with NO tests, and six bugs were found in it by hand in one afternoon. Each
@@ -187,6 +187,36 @@ test("updatePulse: attributes through citeHost and shared hosts exactly like cov
   const next = updatePulse({ sources: SRC, cards });
   assert.equal(next["nycparks-mcgolrick"], "2026-08-06");
   assert.equal(next["nycparks-mccarren"], "2026-08-06", "shared-host siblings both credited, same as coverage");
+});
+
+// ---- per-card "checked" resolution (2026-08-08) — the reader-facing join ----
+// The 2026-08-07 pulse additions ("greenpoint-ymca", "driftaway-subscriptions")
+// don't slug-match their cards' publisher names, which is exactly why this
+// reuses cardSourceIds (URL-host based) instead of a second guess.
+
+test("resolveCardChecked: joins by URL host, not by publisher name", () => {
+  const cards = [
+    card({ id: "ymca-fall-1", url: "https://www.ymcanyc.org/greenpoint/fall1", sourceLinks: [{ url: "https://www.ymcanyc.org/greenpoint/fall1", publisher: "YMCA of Greater New York" }] }),
+  ];
+  const sources = [{ id: "greenpoint-ymca", url: "https://www.ymcanyc.org/greenpoint" }];
+  const out = resolveCardChecked({ sources, cards, pulse: { "greenpoint-ymca": "2026-08-07" } });
+  assert.equal(out["ymca-fall-1"], "2026-08-07");
+});
+
+test("resolveCardChecked: multiple credited sources take the max date", () => {
+  const cards = [card({ id: "shared", url: "https://www.nycgovparks.org/parks/x/events" })];
+  const out = resolveCardChecked({
+    sources: SRC,
+    cards,
+    pulse: { "nycparks-mcgolrick": "2026-08-01", "nycparks-mccarren": "2026-08-06" },
+  });
+  assert.equal(out.shared, "2026-08-06");
+});
+
+test("resolveCardChecked: no roster-source hit resolves to null (caller falls back to updatedAt)", () => {
+  const cards = [card({ id: "orphan", url: "https://unlisted-domain.example/x" })];
+  const out = resolveCardChecked({ sources: SRC, cards, pulse: { troost: "2026-08-07" } });
+  assert.equal(out.orphan, null);
 });
 
 test("silence: a weekly source 22 days past its last card is SILENT; 21 is not", () => {

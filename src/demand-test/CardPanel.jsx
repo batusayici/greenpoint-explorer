@@ -336,7 +336,7 @@ function CardDetail({ card, cardsById, onFilter, onFilterAction, onRelated }) {
         {(() => {
           // Derived, never asserted — see sourceChecked.js for what "checked"
           // is allowed to mean. Renders nothing rather than guessing.
-          const checked = formatChecked(sourceCheckedDate(card, stamp.sourcePulse), new Date());
+          const checked = formatChecked(sourceCheckedDate(card, stamp.cardChecked), new Date());
           return checked ? <> · checked {checked}</> : null;
         })()}
       </p>

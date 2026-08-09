@@ -16,11 +16,14 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { assessFreshness } from "../src/demand-test/freshness.js";
+import { resolveCardChecked } from "../src/demand-test/coverage.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = join(root, "src", "data", "demand-test");
 const ledger = JSON.parse(readFileSync(join(dataDir, "ingest-ledger.json"), "utf8"));
 const seed = JSON.parse(readFileSync(join(dataDir, "cards.json"), "utf8"));
+const sourcesRaw = JSON.parse(readFileSync(join(dataDir, "ingest-sources.json"), "utf8"));
+const sources = Array.isArray(sourcesRaw) ? sourcesRaw : sourcesRaw.sources;
 
 const stampMode = process.argv.includes("--stamp");
 // --record appends today's datedUpcoming7d to the trend history. Explicit
@@ -83,9 +86,17 @@ if (recordMode) {
 }
 
 if (stampMode) {
+  // cardChecked (2026-08-08): per-card "checked <date>" for the source line,
+  // resolved HERE via the same URL-host join coverage.js already uses — never
+  // shipped as raw sourcePulse + a client-side publisher-name guess (that
+  // guess missed roster IDs like "greenpoint-ymca" that don't slug-match
+  // their card's publisher string). ingest-sources.json itself (source URLs,
+  // API keys in some cases) never leaves this script; only the resolved
+  // {cardId: date} map does.
+  const cardChecked = resolveCardChecked({ sources, cards: seed.cards, pulse: ledger.sourcePulse ?? {} });
   writeFileSync(
     join(dataDir, "freshness-stamp.json"),
-    JSON.stringify({ description: "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.", lastRunAt: ledger.lastRunAt ?? null, sourcePulse: ledger.sourcePulse ?? {} }, null, 2) + "\n",
+    JSON.stringify({ description: "Build-time ingest freshness stamp (L11). Written by check-freshness.mjs --stamp; safe for the client bundle.", lastRunAt: ledger.lastRunAt ?? null, cardChecked }, null, 2) + "\n",
   );
 }
 
