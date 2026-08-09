@@ -723,6 +723,16 @@
       "fetch": "auto",
       "standing": true,
       "notes": "197 Franklin St. Onboarded 2026-08-08 alongside the email sender Batu subscribed to. EXPECT LOW WEB YIELD BY DESIGN: this page describes the programme (\"annual free Back-to-School Haircutting Event\", Pride Party) but publishes NO dates — it is an email-signup page, so the SENDER is the real source and this URL is the standing description. Marked standing:true so the L12 UNMARKED STANDING signal stays quiet. The Back-to-School haircut event is an August beat: watch the sender for it rather than waiting on this page to sprout a date."
+    },
+    {
+      "id": "cibone-ote",
+      "name": "CIBONE O'TE",
+      "url": "https://cibone-us.com/blogs/news.atom",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "feed",
+      "standing": false,
+      "notes": "50 Norman Ave, inside the 50 Norman complex. Onboarded 2026-08-08 from a newsletter Batu forwarded (the Re:STATION archival showcase). LOCALLY-OWNED EXCEPTION — READ BEFORE SKIPPING: CIBONE lists Tokyo Omotesando and Ginza alongside Brooklyn, so the 2026-07-16 locally-owned gate (the rule that dropped PRESS for being multi-location) would skip it. Batu ruled 50 Norman IN on 2026-08-08: its tenants (CIBONE, Kama-Asa, Dashi Okume, Cafe O'te) get venue and event cards like any local business. Do not re-litigate this each run. Shopify Atom feed, not the HTML blog — /blogs/news.atom carries the full post bodies (dates, hours, address), so no browser and no second fetch to the post URL. WHAT TO CARD: month-long curated showcases and limited events (Re:STATION, HOZUBAG, glass/ceramics debuts), which is most of what this blog publishes. They state a run range and 'Store Hours: 11am - 8pm' rather than a single event time — card as a dated event spanning the run, ending at closing time on the last day. Marked standing:false so the L12 UNMARKED STANDING signal stays quiet: the blog announces limited runs, it publishes no recurring weekly programme."
     }
   ]
 }
