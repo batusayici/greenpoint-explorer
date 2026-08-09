@@ -30,7 +30,7 @@ function initialDeepLink() {
 
 // Track V — "July in Greenpoint + G-Train Support". Standalone 2D demand-test
 // page; must never import the 3D runtime.
-export default function JulyApp() {
+export default function JulyApp({ showOrientation = false } = {}) {
   const [filter, setFilter] = useState("all");
   const [{ id: initialId, dead: deadLink }] = useState(initialDeepLink);
   const [selectedId, setSelectedId] = useState(initialId);
@@ -255,6 +255,15 @@ export default function JulyApp() {
               carries verified) then the participation beat. No enumeration —
               the chip bar right below lists the categories. */}
           <p>Know what’s real. Take part.</p>
+          {/* First-visit orientation (2026-08-08 external-audit item 4): the
+              tagline states values, not what the product IS. One line,
+              first visit only — shouldShowOrientation flips the flag at
+              boot in main.jsx, so this never reappears on a return visit. */}
+          {showOrientation && (
+            <p className="july-orientation">
+              Events, openings, deals and neighborhood news — verified and sourced.
+            </p>
+          )}
         </div>
       </header>
       {/* ONE banner (bannerSlot precedence, 2026-07-26). G prominence still
