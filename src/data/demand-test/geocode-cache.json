@@ -2903,5 +2903,30 @@
         "-73.9382620"
       ]
     }
+  },
+  "50 Norman Ave, Brooklyn, NY 11222": {
+    "query": "50 Norman Ave, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-09T00:16:35.015Z",
+    "hit": {
+      "place_id": 422649956,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280118878,
+      "lat": "40.7246106",
+      "lon": "-73.9535900",
+      "category": "building",
+      "type": "retail",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "building",
+      "name": "",
+      "display_name": "50, Norman Avenue, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7244694",
+        "40.7247518",
+        "-73.9538060",
+        "-73.9533740"
+      ]
+    }
   }
 }

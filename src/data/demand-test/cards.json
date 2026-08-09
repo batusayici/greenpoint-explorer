@@ -6685,6 +6685,100 @@
       "sourceQuote": "Coffee Subscriptions for Coffee Lovers | 2026 Roaster of the Year. Subscription (6 products). All Roasts Subscription — A rotating selection of coffees from light to dark roasts, delivered fresh each shipment. Choose the roast profiles you want! From $17.00 USD. Light Roasts Subscription From $18.00 USD. Medium and Dark Roasts Subscription From $16.00 USD. Coffee Gift Subscription — Our bestseller for a reason! Start with an Explorer box and discover new coffees every month! From $56.00 USD.",
       "lat": 40.717121,
       "lng": -73.938312
+    },
+    {
+      "id": "cibone-ote",
+      "category": "shopping",
+      "title": "CIBONE O'TE",
+      "kicker": "Japanese design, ceramics and homeware",
+      "summary": "The Brooklyn outpost of the Tokyo retailer, which calls itself a quiet curator of life — objects chosen for the stories they carry, not only their form. Store hours are 11am–8pm.",
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "locationName": "CIBONE O'TE",
+      "address": "50 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "CIBONE Brooklyn will be reborn as 'CIBONE O'TE'—a place where Japanese thought is shared with the world through the hands of makers and the rhythm of everyday life.\na quiet curator of life—selecting objects not just for their beauty and form, but for the stories they carry and the ideas they imbue into our daily lives.\nStore Hours: 11am - 8pm\nAddress: 50 Norman Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Stop by",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "CIBONE Reimagined! CIBONE O'TE Grand Opening",
+          "url": "https://cibone-us.com/blogs/news/cibone-ote",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-08-08"
+        },
+        {
+          "title": "Re:STATION STORE From Japan to New York",
+          "url": "https://cibone-us.com/blogs/news/re-station-store-from-japan-to-new-york",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-08-08"
+        }
+      ],
+      "relatedCardIds": [
+        "cibone-restation-showcase-0815"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "lat": 40.724611,
+      "lng": -73.95359
+    },
+    {
+      "id": "cibone-restation-showcase-0815",
+      "category": "event",
+      "title": "Re:STATION: archival Comme des Garçons & Yohji Yamamoto",
+      "kicker": "100+ archival pieces from Japan",
+      "summary": "Re:STATION, a Tokyo curator and longtime CIBONE partner, chose the pieces for their history and enduring influence. It sits inside the shop; no admission price is stated.",
+      "startsAt": "2026-08-15T11:00:00-04:00",
+      "endsAt": "2026-09-15T20:00:00-04:00",
+      "filters": [
+        "arts_culture"
+      ],
+      "free": false,
+      "audience": [
+        "resident",
+        "visitor"
+      ],
+      "locationName": "CIBONE O'TE",
+      "address": "50 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "August 15 - September 15, 2026\nStore Hours: 11am - 8pm\nComme des Garçons and Yohji Yamamoto are two of Japan's most influential designer brands.\nRe:STATION, a trusted curator and longtime partner of CIBONE in Japan, brings together more than 100 archival pieces from these two iconic brands, selected through a deep understanding of their history, value, and enduring influence.\nAddress: 50 Norman Ave, Brooklyn, NY 11222",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://cibone-us.com/blogs/news/re-station-store-from-japan-to-new-york"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Re:STATION STORE From Japan to New York",
+          "url": "https://cibone-us.com/blogs/news/re-station-store-from-japan-to-new-york",
+          "publisher": "CIBONE O'TE",
+          "date": "2026-08-08"
+        }
+      ],
+      "relatedCardIds": [
+        "cibone-ote"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-08",
+      "updatedAt": "2026-08-08",
+      "lat": 40.724611,
+      "lng": -73.95359
     }
   ]
 }
