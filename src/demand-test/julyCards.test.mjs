@@ -303,11 +303,19 @@ test("seed has exactly 75 cards across the six layers", () => {
   // being multi-location would have skipped it. Batu ruled 50 Norman in — its
   // tenants (CIBONE, Kama-Asa, Dashi Okume, Cafe O'te) are now eligible for
   // venue and event cards like any local business.
-  assert.equal(seed.cards.length, 147);
+  // 2026-08-10 FLYER SIGHTINGS (+3 = 150). Batu photographed three posted
+  // flyers in the neighborhood: WORD Bookstore's monthly comedy night
+  // (Herman Melville Presents, third Thursdays), Kindred's Thursday sunset
+  // yoga in Transmitter Park (the Tuesday morning card's other weekly slot),
+  // and a one-off McGolrick Park pottery pop-up (Series 1: Picture Frames,
+  // same day). A fourth flyer (Green Carpet Learning Studio's Summer Studio)
+  // was held — no street address could be confirmed, and business listings
+  // are human-gated regardless.
+  assert.equal(seed.cards.length, 150);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 80, "79 + the CIBONE Re:STATION showcase (2026-08-08)");
+  assert.equal(count((c) => c.category === "event"), 83, "80 + the three 2026-08-10 flyer sightings");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
@@ -445,6 +453,9 @@ test("free-ness is designated only where the source states it (tester feedback #
   // NOT here: only some programs in each day state "Free", and a grouped card
   // must not extend one line's free-ness across the whole day.
   assert.deepEqual(free, [
+    // 2026-08-10: Kindred's Thursday sunset session, same flyer as the
+    // Tuesday morning card — "Free Community Yoga".
+    "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays", // "a free outdoor yoga practice" on the Go Green listing
     "greenpoint-trash-club",
     // 2026-08-05 roundup: both state free-ness in the line the card quotes —
@@ -465,6 +476,8 @@ test("free-ness is designated only where the source states it (tester feedback #
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
     "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
+    // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
+    "word-herman-melville-comedy-0820",
   ]);
 });
 
@@ -529,9 +542,13 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
   // movement by the same reading as Moon Bunny. Marianella's monthly box was
   // deliberately NOT filed here: it is a bath-and-body product subscription,
   // and this lens is the movement cluster, not a wellness-adjacent shelf.
+  // 2026-08-10: Kindred's Thursday sunset session joins its Tuesday morning
+  // sibling — same series, second weekly slot (flyer sighting near
+  // Transmitter Park).
   assert.deepEqual(wellness, [
     "bandit-running-greenpoint-runners",
     "bk-youth-ballet-adult-term",
+    "community-yoga-transmitter-thursdays",
     "community-yoga-transmitter-tuesdays",
     "held-space-membership",
     "moon-bunny-monthly-plans",

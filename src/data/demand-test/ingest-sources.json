@@ -435,6 +435,15 @@
       "notes": "Friends of Transmitter Park classes, Movies Under the Stars, It's My Park days."
     },
     {
+      "id": "kindred-nyc",
+      "name": "Kindred (community yoga, Transmitter Park)",
+      "url": "https://kindrednyc.co",
+      "group": "venue",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Onboarded 2026-08-10 after a street flyer surfaced an August Thursday sunset yoga series (7pm) that gogreenbk.org's own Tuesday-morning listing doesn't carry — the two sources cover different slots of the same Kindred/Friends of Transmitter Park program, so keep both. Single venue (WNYC Transmitter Park, Greenpoint) — no other neighborhood or location mentioned anywhere on the site, so it clears the locally-owned/single-location gate. Static HTML, no feed/JSON; registration is via Google Form links, not a booking widget, so plain fetch (auto) reads the schedule directly — not browser-dependent. Apply the same Brooklyn-only geography gate as any other source if a listing is ever ambiguous."
+    },
+    {
       "id": "town-square-bk",
       "name": "Town Square BK",
       "url": "https://www.townsquarebk.org",

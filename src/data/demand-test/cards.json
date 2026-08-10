@@ -6779,6 +6779,140 @@
       "updatedAt": "2026-08-08",
       "lat": 40.724611,
       "lng": -73.95359
+    },
+    {
+      "id": "word-herman-melville-comedy-0820",
+      "category": "event",
+      "title": "Herman Melville Presents: A Comedy Show",
+      "kicker": "Free comedy + donuts, third Thursdays",
+      "startsAt": "2026-08-20T20:00:00-04:00",
+      "endsAt": "2026-08-20T22:00:00-04:00",
+      "locationName": "WORD Bookstore",
+      "address": "126 Franklin St, Brooklyn, NY 11222",
+      "geocodeQuery": "126 Franklin St, Brooklyn, NY 11222",
+      "lat": 40.729072,
+      "lng": -73.957317,
+      "filters": [
+        "arts_culture"
+      ],
+      "free": true,
+      "audience": [
+        "resident"
+      ],
+      "summary": "A standing standup night at the Franklin Street bookshop, hosted monthly with a rotating lineup.",
+      "actions": [
+        {
+          "label": "Event details",
+          "type": "learn_more",
+          "url": "https://withfriends.co/word/events"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flyer posted at WORD Bookstore",
+          "publisher": "WORD Bookstore",
+          "date": "2026-08-10"
+        }
+      ],
+      "sourceQuote": "Herman Melville presents... A Comedy Show at Word Books. Free Show + Free Donuts. Third Thursdays @ 8pm.",
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10"
+    },
+    {
+      "id": "community-yoga-transmitter-thursdays",
+      "category": "event",
+      "title": "Thursday sunset yoga in Transmitter Park",
+      "kicker": "Free waterfront yoga — bring a mat",
+      "startsAt": "2026-08-13T19:00:00-04:00",
+      "endsAt": "2026-08-27T23:59:00-04:00",
+      "recurring": true,
+      "locationName": "WNYC Transmitter Park",
+      "address": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "geocodeQuery": "10 Greenpoint Ave, Brooklyn, NY 11222",
+      "lat": 40.729855,
+      "lng": -73.960729,
+      "filters": [
+        "wellness"
+      ],
+      "free": true,
+      "audience": [
+        "resident"
+      ],
+      "summary": "Kindred's evening counterpart to the Tuesday morning session — same shoreline lawn, sunset instead of sunrise.",
+      "actions": [
+        {
+          "label": "RSVP",
+          "type": "learn_more",
+          "url": "https://kindrednyc.co"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flyer posted near Transmitter Park",
+          "url": "https://kindrednyc.co",
+          "publisher": "Kindred",
+          "date": "2026-08-10"
+        }
+      ],
+      "sourceQuote": "yoga in the park. WNYC Transmitter Park. Free community yoga. Thursdays Sunset Yoga 7:00 PM: August 13, August 20, August 27. Scan to RSVP kindrednyc.co",
+      "relatedCardIds": [
+        "community-yoga-transmitter-tuesdays"
+      ],
+      "evidenceStrength": "medium_high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "medium",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "recurrence": {
+        "days": [
+          "thu"
+        ]
+      }
+    },
+    {
+      "id": "mcgolrick-pottery-picture-frames-0810",
+      "category": "event",
+      "title": "Pottery in the Park: Picture Frames",
+      "kicker": "Beginner hand-building, McGolrick Park",
+      "startsAt": "2026-08-10T18:00:00-04:00",
+      "endsAt": "2026-08-10T20:00:00-04:00",
+      "locationName": "Msgr McGolrick Park",
+      "address": "Monsignor McGolrick Park, Brooklyn, NY 11222",
+      "geocodeQuery": "Monsignor McGolrick Park, Brooklyn, NY",
+      "lat": 40.724458,
+      "lng": -73.943361,
+      "filters": [
+        "arts_culture"
+      ],
+      "audience": [
+        "resident"
+      ],
+      "summary": "Series 1 of a pop-up craft night — decorate a clay frame for a favorite photo with an instructor's help. Materials provided, no experience needed.",
+      "actions": [
+        {
+          "label": "Directions",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Flyer posted near McGolrick Park",
+          "publisher": "Pottery in the Park (McGolrick)",
+          "date": "2026-08-10"
+        }
+      ],
+      "sourceQuote": "Pottery in the Park. Series 1: Picture Frames. Join us for a relaxed, beginner-friendly evening of hand-building and decorating a frame for your favorite photo with the help of a seasoned instructor! No experience necessary, all materials provided. 10 August 2026, 6-8 PM, McGolrick Park. RSVP here!",
+      "evidenceStrength": "medium",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10"
     }
   ]
 }
