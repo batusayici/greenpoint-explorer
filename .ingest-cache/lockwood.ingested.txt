@@ -1,0 +1,6 @@
+name: Tote-ally 20 Sale!
+start_date_raw: 2026-08-14
+start_time: 11:00 am
+end_date_raw: 2026-08-16
+end_time: 8:00 pm
+html_link: https://www.facebook.com/events/1097877372807949

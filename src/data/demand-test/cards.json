@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-08",
+  "version": "2026-08-10",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -6534,6 +6534,182 @@
       "trustRisk": "low",
       "createdAt": "2026-08-10",
       "updatedAt": "2026-08-10"
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "free": false,
+      "id": "maison-jar-refill-happy-hour",
+      "category": "discount",
+      "filters": [
+        "deals_memberships"
+      ],
+      "recurring": true,
+      "endsAt": "2026-08-24T23:59:00-04:00",
+      "title": "20% off bulk refills at Maison Jar",
+      "kicker": "Bulk refills 20% off, once a month",
+      "summary": "The zero-waste grocery on Leonard Street runs it in store with no registration; they announce each date on Instagram and on signage.",
+      "locationName": "Maison Jar",
+      "address": "566 Leonard St, Brooklyn, NY 11222",
+      "sourceQuote": "Come shop our happy hours! Happening once a month, all BULK items are 20% off. Check our Instagram or signage in-store to join the next one (no need to register).",
+      "actions": [
+        {
+          "label": "Details",
+          "type": "learn_more",
+          "url": "https://maisonjar.nyc/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Maison Jar",
+          "url": "https://maisonjar.nyc/",
+          "publisher": "Maison Jar",
+          "date": "2026-08-10"
+        }
+      ],
+      "lat": 40.724239,
+      "lng": -73.949753
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "direct",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "free": false,
+      "id": "selformer-summer-fling-0815",
+      "category": "discount",
+      "filters": [
+        "wellness",
+        "deals_memberships"
+      ],
+      "endsAt": "2026-08-15T23:59:00-04:00",
+      "title": "Summer Fling unlimited Pilates at Selformer",
+      "kicker": "Unlimited Pilates at $249 a month",
+      "summary": "Valid at the Greenpoint and Williamsburg locations and includes a free guest each week. Spots are capped, and the rate reverts to regular pricing on September 15.",
+      "locationName": "Selformer",
+      "address": "67 West St, Brooklyn, NY 11222",
+      "sourceQuote": "Summer Fling Unlimited\n$ 249\nEvery month Your no-strings summer of unlimited Pilates — both locations, a free guest every week. Limited spots: available through Aug 15 or until we're full, whichever comes first.",
+      "actions": [
+        {
+          "label": "Plans",
+          "type": "learn_more",
+          "url": "https://www.selformer.com/plans-pricing"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Selformer plans & pricing",
+          "url": "https://www.selformer.com/plans-pricing",
+          "publisher": "Selformer",
+          "date": "2026-08-10"
+        }
+      ],
+      "relatedCardIds": [
+        "selformer-memberships"
+      ],
+      "lat": 40.728561,
+      "lng": -73.959184
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "free": false,
+      "id": "clay-space-fall-2026-semester",
+      "category": "subscription",
+      "filters": [
+        "arts_culture"
+      ],
+      "title": "Clay Space fall semester registration",
+      "kicker": "12-week adult ceramics term, from $760",
+      "summary": "Runs Sunday September 13 to Saturday December 12 at the Calyer Street studio. Independent study is priced separately and needs instructor approval before you register.",
+      "locationName": "Clay Space",
+      "address": "275 Calyer St, Brooklyn, NY 11222",
+      "sourceQuote": "FALL 2026 SEMESTER: Sunday, September 13 to Saturday, December 12\n12 week long session\n$760 PER 12 WEEK FULL SEMESTER\n$900 PER 12 WEEK FULL SEMESTER",
+      "actions": [
+        {
+          "label": "Register",
+          "type": "learn_more",
+          "url": "https://www.clayspacebk.com/semester-classes"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Clay Space semester classes",
+          "url": "https://www.clayspacebk.com/semester-classes",
+          "publisher": "Clay Space",
+          "date": "2026-08-10"
+        }
+      ],
+      "relatedCardIds": [
+        "clay-space-membership"
+      ],
+      "lat": 40.729705,
+      "lng": -73.949195
+    },
+    {
+      "audience": [
+        "resident"
+      ],
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "free": false,
+      "id": "library-sensory-garden-0821",
+      "category": "event",
+      "filters": [
+        "family_kids"
+      ],
+      "startsAt": "2026-08-21T10:30:00-04:00",
+      "endsAt": "2026-08-21T11:30:00-04:00",
+      "title": "Sensory Garden Hour at Greenpoint Library",
+      "kicker": "Rooftop garden time for under-fives",
+      "summary": "A short themed storytime, then activities set up among the plants. No registration needed; it can be called off in rain or extreme heat.",
+      "locationName": "Greenpoint Library",
+      "address": "107 Norman Ave, Brooklyn, NY 11222",
+      "sourceQuote": "Join us at the Greenpoint Library for kids' time in our rooftop garden! We will do a short garden-themed storytime, and then spend time together in the garden. The garden offers many sensory experiences for young kiddos, and we will set up some fun activities as well. For ages 0-5. No registration required.",
+      "actions": [
+        {
+          "label": "Branch calendar",
+          "type": "learn_more",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Greenpoint Library",
+          "url": "https://www.bklynlibrary.org/locations/greenpoint",
+          "publisher": "Brooklyn Public Library",
+          "date": "2026-08-10"
+        }
+      ],
+      "lat": 40.72606,
+      "lng": -73.950709
     }
   ]
 }

@@ -2928,5 +2928,30 @@
         "-73.9533740"
       ]
     }
+  },
+  "566 Leonard St, Brooklyn, NY 11222": {
+    "query": "566 Leonard St, Brooklyn, NY 11222",
+    "fetchedAt": "2026-08-10T20:38:36.880Z",
+    "hit": {
+      "place_id": 358918562,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 280115444,
+      "lat": "40.7242391",
+      "lon": "-73.9497528",
+      "category": "amenity",
+      "type": "pharmacy",
+      "place_rank": 30,
+      "importance": 0.00009175936522464359,
+      "addresstype": "amenity",
+      "name": "Polish American Pharmacy",
+      "display_name": "Polish American Pharmacy, 566, Leonard Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
+      "boundingbox": [
+        "40.7241630",
+        "40.7243075",
+        "-73.9499052",
+        "-73.9496230"
+      ]
+    }
   }
 }

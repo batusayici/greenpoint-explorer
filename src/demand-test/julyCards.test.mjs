@@ -337,15 +337,30 @@ test("seed has exactly 75 cards across the six layers", () => {
   // newest rows are 2025, so a 2026 market from it would be inference. Verified
   // instead at Down to Earth Markets' own site, which states the current hours
   // verbatim, and the city dataset independently agrees on day and hours.
-  assert.equal(seed.cards.length, 141);
+  // 2026-08-10 Monday full refresh — FIRST NON-DEGRADED RUN since the two
+  // environment faults were found. Allowlist round 2 (jumpcomedy, kindrednyc,
+  // leavesbookstore, happy-medium) landed, taking the roster from 22 errors
+  // that morning to 7 — all 7 now the Chromium CONNECT fault alone. Reach
+  // 51/58 (12%), under the ceiling, so the fetch exited 0. SIXTEEN sources
+  // produced a first-ever snapshot: the SSG-sweep sources onboarded 8/8 had
+  // been egress-denied since birth and were read for the very first time.
+  // Expiry deleted nothing (141 → 141; the 8/9 events had already gone in the
+  // salvage run). +4: maison-jar-refill-happy-hour (standing monthly bulk
+  // refill offer — recurring + verified-through, per the no-stated-end-date
+  // rule, NOT a hold), selformer-summer-fling-0815 (endsAt taken from the
+  // source's own "available through Aug 15"), clay-space-fall-2026-semester
+  // (term enrolment, so the AUDIENCE lens and never deals_memberships), and
+  // library-sensory-garden-0821 (8/21 carried no library card at all).
+  // 141 + 4 = 145.
+  assert.equal(seed.cards.length, 145);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 73, "68 + the 5 salvaged from the stranded 2026-08-10 branch");
-  assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
+  assert.equal(count((c) => c.category === "event"), 74, "73 + the 8/21 library Sensory Garden Hour (2026-08-10)");
+  assert.equal(count((c) => c.category === "discount"), 7, "5 + Maison Jar bulk refills and the Selformer summer promo (2026-08-10)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
   assert.equal(count((c) => c.filters.includes("live_music")), 23, "21 + the 2 salvaged Troost nights");
-  assert.equal(count((c) => c.category === "subscription"), 24, "18 + the 6-card SSG deals & memberships sweep (2026-08-08)");
+  assert.equal(count((c) => c.category === "subscription"), 25, "24 + the Clay Space fall semester term (2026-08-10)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
   // in the deck). Expiry now FLAGS stale non-event/deal cards so the next one
@@ -409,7 +424,12 @@ test("deals carry the expiry contract; recurring deals are flagged, dated deals 
   // 2026-08-03: +2 held cards resolved and shipped — the Marianella anniversary
   // sale and the Brooklyn Youth Ballet trial, both recurring/verified-through
   // (neither source states a closing date).
-  assert.equal(deals.length, 5);
+  // 2026-08-10: +2 from the first non-degraded run — Maison Jar's monthly bulk
+  // refill (recurring/verified-through: the page states a monthly cadence but
+  // never a date, which the no-stated-end-date rule fills rather than holds)
+  // and Selformer's Summer Fling promo, whose endsAt is the source's own
+  // "available through Aug 15" rather than an edition-window default.
+  assert.equal(deals.length, 7);
   for (const c of deals) {
     assert.ok(c.endsAt, `${c.id} missing endsAt`);
     assert.ok(c.filters.includes("deals_memberships"), `${c.id} missing deals_memberships filter`);
@@ -579,6 +599,10 @@ test("the wellness lens holds the movement cluster (2026-07-25 IA re-cut)", () =
     "held-space-membership",
     "moon-bunny-monthly-plans",
     "selformer-memberships",
+    // 2026-08-10: the Summer Fling promo is a DEAL at a Pilates studio, so it
+    // double-files wellness + deals_memberships on the same reading that puts
+    // a kids' discount in family_kids + deals_memberships (PR #18).
+    "selformer-summer-fling-0815",
     "sparsa-greenpoint",
   ]);
   assert.ok(!seed.cards.find((c) => c.id === "greenpoint-trash-club").filters.includes("wellness"));
@@ -748,12 +772,19 @@ test("the deals & memberships lens holds only deals and standing memberships", (
     "hana-sool-club",
     "held-space-membership",
     "kettl-tea-subscriptions",
+    // 2026-08-10, first non-degraded run: a standing monthly bulk-refill offer
+    // at the zero-waste grocery. The page states the cadence but never a date,
+    // which is the recurring + verified-through case, not a hold.
+    "maison-jar-refill-happy-hour",
     "marianella-19th-anniversary-sale",
     "marianella-subscription-box",
     "moon-bunny-back-to-school",
     "moon-bunny-monthly-plans",
     "poochs-parlor-first-groom",
     "selformer-memberships",
+    // 2026-08-10: a dated promo, so it sits beside the membership card rather
+    // than replacing it — endsAt is the source's own "available through Aug 15".
+    "selformer-summer-fling-0815",
     "word-membership",
     "yaro-studio-membership",
   ]);
