@@ -488,10 +488,44 @@
       "name": "GrowNYC — McCarren Park Greenmarket",
       "url": "https://grownyc.org/locations/mccarren-park-greenmarket/",
       "group": "institution",
-      "cadence": "weekly",
+      "cadence": "monthly",
       "fetch": "browser",
-      "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found it uncarded). Plain WebFetch 403s — headless-browser fetch works and returns the static schedule page. STANDING PROGRAMMING: year-round Saturday market, 8am-3pm, Union Ave between Driggs & N12th St; compost drop-off Sat 8-1:30pm, clothing collection Sat 8:30am-1pm. Card is undated (mccarren-greenmarket) — this is a static schedule page so it will report `unchanged` most weeks; only re-author the card if the stated hours/services change.",
+      "notes": "Onboarded 2026-08-08 (ChatGPT cross-check found it uncarded). Plain WebFetch 403s — headless-browser fetch works and returns the static schedule page. STANDING PROGRAMMING: year-round Saturday market, 8am-3pm, Union Ave between Driggs & N12th St; compost drop-off Sat 8-1:30pm, clothing collection Sat 8:30am-1pm. Card is undated (mccarren-greenmarket) — this is a static schedule page so it will report `unchanged` most weeks; only re-author the card if the stated hours/services change. CADENCE DROPPED TO MONTHLY 2026-08-10. Re-probed that day and the 403 is a BLANKET EDGE BLOCK, not a UA rule and not our proxy: the roster URL, the www. variant and even /robots.txt all 403, with a real browser UA and without. Only a headless browser gets through, so while the Chromium CONNECT fault stands this source cannot be read at all and was contributing an error to every weekly and daily run. Monthly keeps it in the roster (it is the authoritative operator, and the card cites it) without paying that cost 6 days a week. VERIFICATION PATH MEANWHILE: nyc-open-data-farmers-markets carries this market’s day/hours/EBT/year-round status and agrees with the card. It does NOT carry the compost or clothing-collection hours, so those two lines are only re-verifiable here.",
       "standing": true
+    },
+    {
+      "id": "down-to-earth-markets",
+      "name": "Down to Earth Markets (McGolrick Park)",
+      "url": "https://downtoearthmarkets.com/",
+      "group": "institution",
+      "cadence": "weekly",
+      "fetch": "auto",
+      "notes": "Onboarded 2026-08-10. Operator of the McGolrick Park Farmers Market (Sundays 9am-2pm, year-round, at the centre of the park off Russell St) — a standing Greenpoint market that no roster source covered and that was missing from the map entirely. Found via the NYC Open Data farmers-market dataset, then verified at the operator’s own site rather than carded off the dataset: Open Data’s newest row is 2025, so carding a 2026 market from it would have been inference. THE MARKET INFO IS ON THE HOMEPAGE, not a per-market page — there are no /markets/<slug>/ permalinks, and the WP REST API returns 2.2MB for a search without a McGolrick page in it. Plain fetch of the homepage is 2.2MB of HTML that htmlToText reduces to ~5k chars carrying the market block intact, so `auto` is correct and it never needs the browser. NOTE the market name and hours sit on SEPARATE LINES in the extraction (“McGolrick Park” then “Market open Sundays…”) — a single-line regex will miss it. Both www. and bare hosts resolve to https://downtoearthmarkets.com/, which is the host to allowlist. Also lists Park Slope and other non-Greenpoint markets: apply the geography gate per market.",
+      "standing": true
+    },
+    {
+      "id": "nyc-open-data-farmers-markets",
+      "name": "NYC Open Data — DOHMH Farmers Markets",
+      "url": "https://data.cityofnewyork.us/resource/8vwk-6iz2.json?$limit=400",
+      "group": "institution",
+      "cadence": "monthly",
+      "fetch": "json",
+      "notes": "Onboarded 2026-08-10 as the plain-fetchable verification path for markets whose operators are unreachable — grownyc.org sits behind a blanket edge WAF that 403s every non-browser client. Official DOHMH dataset, no WAF, 200 on a bare fetch. Carries marketname/borough/streetaddress/latitude/longitude/daysoperation/hoursoperations/accepts_ebt/open_year_round. MONTHLY BY DESIGN: the data is keyed by year and updated annually — as of 2026-08-10 the newest rows are 2025 — so it is a corroboration and discovery source, NEVER a substitute for the operator’s current page. DO NOT card a current-season market from it alone; that is how a 2025 row becomes a 2026 claim. It found the uncarded McGolrick market. Citywide, so the geography gate is per record: inside the Greenpoint bbox it returns McCarren (Sat), McGolrick (Sun) and Domino Park, and Domino is Williamsburg and out of scope per Batu 2026-08-06.",
+      "json": {
+        "path": "",
+        "fields": [
+          "marketname",
+          "borough",
+          "streetaddress",
+          "latitude",
+          "longitude",
+          "daysoperation",
+          "hoursoperations",
+          "open_year_round",
+          "year"
+        ]
+      },
+      "citeHost": "data.cityofnewyork.us"
     },
     {
       "id": "bandit-running-gpr",

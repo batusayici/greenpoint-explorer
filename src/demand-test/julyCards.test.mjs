@@ -330,7 +330,14 @@ test("seed has exactly 75 cards across the six layers", () => {
   // sourceQuote rather than a third near-identical news card.
   // Both sides had run expiry independently and converged on identical
   // relatedCardIds, so the only real merge was that hub card's content fields.
-  assert.equal(seed.cards.length, 140);
+  // 2026-08-10 McGOLRICK FARMERS MARKET (+1 = 141). A year-round Sunday market
+  // no roster source covered, surfaced by adding the NYC Open Data farmers-market
+  // dataset as a plain-fetchable stand-in for grownyc.org (blanket edge WAF —
+  // even its robots.txt 403s). Deliberately NOT carded off that dataset: its
+  // newest rows are 2025, so a 2026 market from it would be inference. Verified
+  // instead at Down to Earth Markets' own site, which states the current hours
+  // verbatim, and the city dataset independently agrees on day and hours.
+  assert.equal(seed.cards.length, 141);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");

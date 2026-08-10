@@ -6469,6 +6469,65 @@
       "startsAt": "2026-08-24T00:00:00-04:00",
       "endsAt": "2026-08-24T23:59:00-04:00",
       "sourceQuote": "summary: John Dorney\nstart.date: 2026-08-24"
+    },
+    {
+      "id": "mcgolrick-farmers-market",
+      "title": "McGolrick Park Farmers Market",
+      "category": "food_drink",
+      "filters": [
+        "food_drink"
+      ],
+      "audience": [
+        "resident",
+        "family"
+      ],
+      "kicker": "Year-round, at the park’s centre",
+      "locationName": "McGolrick Park Farmers Market",
+      "address": "Driggs Ave & Russell St, Brooklyn, NY 11222",
+      "geocodeQuery": "Monsignor McGolrick Park, Brooklyn, NY",
+      "lat": 40.724458,
+      "lng": -73.943361,
+      "summary": "Down to Earth Markets has run this one since 2012 — regional farms and food makers, with a vendor list and newsletter on their site.",
+      "recurring": true,
+      "recurrence": {
+        "days": [
+          "sun"
+        ]
+      },
+      "startsAt": "2026-08-16T09:00:00-04:00",
+      "endsAt": "2026-08-30T14:00:00-04:00",
+      "actions": [
+        {
+          "label": "Market info",
+          "type": "learn_more",
+          "url": "https://downtoearthmarkets.com/"
+        },
+        {
+          "label": "Visit",
+          "type": "visit"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Down to Earth Markets — Brooklyn markets",
+          "url": "https://downtoearthmarkets.com/",
+          "publisher": "Down to Earth Markets",
+          "date": "2026-08-10"
+        },
+        {
+          "title": "DOHMH Farmers Markets",
+          "url": "https://data.cityofnewyork.us/resource/8vwk-6iz2.json",
+          "publisher": "NYC Open Data",
+          "date": "2026-08-10"
+        }
+      ],
+      "sourceQuote": "McGolrick Park\nMarket open Sundays, 09:00AM – 2:00PM, year-round\nAt the center of the park between Driggs and Nassau Ave, off Russell St in Greenpoint\nFounding Year: 2012",
+      "evidenceStrength": "high",
+      "monetizationRelevance": "none",
+      "partnerRelevance": "low",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10"
     }
   ]
 }
