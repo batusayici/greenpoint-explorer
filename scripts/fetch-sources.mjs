@@ -177,15 +177,49 @@ let browser = null;
 // Override with GL_BROWSER_CONTROL_URL to point at a host already on the list.
 const BROWSER_CONTROL_URL = process.env.GL_BROWSER_CONTROL_URL || "https://example.com/";
 
-// Chromium does NOT inherit HTTPS_PROXY from the environment the way node's
-// fetch does — Playwright only proxies when told to at launch (verified
-// 2026-08-03: with HTTPS_PROXY pointed at a dead port, plain launch loads the
-// control URL anyway; passing the same value to launch() correctly fails with
-// ERR_PROXY_CONNECTION_FAILED). In a sandbox where all egress is proxied, that
-// asymmetry is invisible and total: plain fetch works, every browser fetch is
-// refused, and the run reports "no egress" per source. Pass it through.
+// NEITHER client inherits HTTPS_PROXY on its own — corrected 2026-08-10, and
+// the old comment here ("Chromium does not inherit it the way node's fetch
+// does") was the false premise that misdirected three weeks of diagnosis.
+// Chromium proxies only when told at launch (verified 2026-08-03). Node's
+// global fetch is undici, which ignores the env vars unless the process was
+// STARTED with NODE_USE_ENV_PROXY=1 — added in Node 22.21/24.0. Verified
+// 2026-08-10: with HTTPS_PROXY pointed at a dead port, bare fetch still
+// returned 200 (went direct); with the flag it correctly failed. Setting the
+// var from inside the script does not work — undici reads it at startup.
+//
+// Why this is fatal rather than untidy: in the cloud sandbox direct egress is
+// INTERCEPTED, not merely unproxied — nycgovparks answered 405 direct vs 200
+// proxied. So an unproxied run does not just fail honestly, it can return
+// mangled bodies that read downstream as genuine changes (brooklyn-craft-company
+// produced a phantom diff that became `unchanged` once proxied). It also made
+// the preflight's own tie-breaker unsound: it compared a DIRECT plain fetch
+// against a PROXIED browser and blamed the proxy relay for the difference.
+// With the flag on, that probe really does go through the same proxy and the
+// comparison means what it says.
 const PROXY = process.env.HTTPS_PROXY || process.env.https_proxy || null;
 const NO_PROXY = process.env.NO_PROXY || process.env.no_proxy || null;
+
+// A proxied environment plus an unproxied fetch is the silent-corruption case
+// above, so refuse the run rather than write a snapshot nobody can trust. Exit
+// 1 is already the roster-unreadable contract in SKILL.md §0.2 — this composes
+// with it instead of inventing a new failure mode.
+const [NODE_MAJOR, NODE_MINOR] = process.versions.node.split(".").map(Number);
+const ENV_PROXY_SUPPORTED = NODE_MAJOR >= 24 || (NODE_MAJOR === 22 && NODE_MINOR >= 21);
+if (PROXY && process.env.NODE_USE_ENV_PROXY !== "1") {
+  console.error("\n=== REFUSING TO RUN — plain fetch would bypass the proxy ===");
+  console.error(`  HTTPS_PROXY is set (${PROXY}) but NODE_USE_ENV_PROXY is not "1", so every`);
+  console.error("  plain/feed/json fetch would egress direct and be intercepted.");
+  console.error("  Fix: run it as `npm run ingest:fetch` (which sets the flag), or export");
+  console.error("  NODE_USE_ENV_PROXY=1 before invoking node directly.");
+  process.exit(1);
+}
+if (PROXY && !ENV_PROXY_SUPPORTED) {
+  console.error("\n=== REFUSING TO RUN — NODE_USE_ENV_PROXY is inert on this Node ===");
+  console.error(`  Node ${process.versions.node} predates the flag (needs 22.21+ or 24+), so it is`);
+  console.error("  accepted and silently does nothing — the same bypass wearing a hat.");
+  console.error("  Fix: upgrade the runtime, or install undici and set a ProxyAgent dispatcher.");
+  process.exit(1);
+}
 const launchOptions = PROXY
   ? { proxy: { server: PROXY, ...(NO_PROXY ? { bypass: NO_PROXY } : {}) } }
   : {};

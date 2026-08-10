@@ -4,7 +4,53 @@
 
 This is a historical decision log. Older entries may contain status language that was current on the entry date only; use the source-of-truth order in `AGENTS.md` for current execution authority. Entries dated before 2026-07-22 that frame the 3D isometric explorer as the product describe the parked track — see the 2026-07-22 entry.
 
-## 2026-08-08 (latest) — recurring row treatment: variant C
+## 2026-08-10 (latest) — the ingest was never using the proxy: one false comment, three weeks of wrong diagnosis
+
+**Corrects the 2026-08-05 entry below, whose central claim is false.** That entry says headless
+Chromium's CONNECT was reset "while plain fetch reached the same hosts **through the same proxy**
+without trouble," and the preflight tie-breaker was rewritten to encode it. Plain fetch never went
+through the proxy. Node's global `fetch` is undici, which ignores `HTTPS_PROXY` unless the process
+is *started* with `NODE_USE_ENV_PROXY=1` (Node 22.21+/24+). Verified: with `HTTPS_PROXY` pointed at
+a dead port, bare `fetch` returned 200; with the flag it correctly failed; `curl` failed either way.
+
+The source of the error was one comment in `fetch-sources.mjs` asserting that Chromium "does NOT
+inherit HTTPS_PROXY the way node's fetch does." **Neither client inherits it.** Chromium was proxied
+only because `launchOptions` passes it explicitly. So every run compared a DIRECT plain fetch against
+a PROXIED browser and attributed the difference to the proxy relay.
+
+**Three faults were tangled together, and the fix order matters:**
+
+1. **Code (fixed here).** ~63 of 67 sources egressed direct into a sandbox that *intercepts* direct
+   egress — `nycgovparks` answered **405 direct vs 200 proxied**. Failure was not the worst case:
+   `brooklyn-craft-company` produced a **phantom diff** that became a correct `unchanged` once
+   proxied, i.e. unproxied runs can feed mangled bodies to extraction subagents. `npm run
+   ingest:fetch` now sets the flag, and the script **refuses to run** (exit 1, composing with the
+   §0.2 roster-unreadable contract) if `HTTPS_PROXY` is set without it, or if the flag is inert on
+   an old Node. Silent bypass is what cost three weeks; it is now loud.
+2. **Proxy allowlist (Batu, pending).** 12 hosts genuinely 403 at CONNECT — evidence sound, it came
+   from the proxy's own status endpoint.
+3. **Chromium CONNECT reset (platform, pending).** Also sound: cross-checked with curl-through-proxy
+   returning 200.
+
+**Why 1 had to land before 2.** Four of the 14 sources on the pending allowlist ask — `macha-studio`,
+`cibone-ote` (`feed`), `lockwood`, `edys-grocer` (`json`) — have **no browser fallback** and so never
+touch the proxy at all. Allowlisting their hosts while the script fetched direct would have fixed
+nothing, and the run would have read as "allowlist didn't work." The 22-error list was a mixture of
+fault 1 and fault 2 that nobody could separate; **it must be re-measured with the flag on before the
+allowlist is requested.**
+
+Free side effect: with the flag on, the preflight's `plainReachable` probe really does go through the
+same proxy, so its tie-breaker becomes sound without touching its logic.
+
+Diagnostic worth keeping: `CONNECT tunnel failed, response 403` is a **libcurl** string. Node's fetch
+cannot emit it (undici says `Proxy response (403) !== 200 when HTTP Tunneling`). If that string
+appears attributed to a script fetch, it came from a curl probe, not the script.
+
+Owner: Batu. Open: re-run the fetch to get an honest error list, then request the allowlist against
+it; and decide whether the network-bound half of the ingest should move off the cloud sandbox
+entirely (5 degraded runs since 2026-07-27, no CI runner).
+
+## 2026-08-08 — recurring row treatment: variant C
 
 Closes the craft item the recurrence entry left open. Four row treatments were rendered as DOM
 injections against the running app (the method from 2026-08-02 — mockups hide the flaws) and Batu
