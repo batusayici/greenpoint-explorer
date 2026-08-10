@@ -194,6 +194,19 @@ hold note must **name which one it failed**:
   likewise omits the time its detail page carries. Deliberately bounded: only on a
   **missing field**, never a fetch-everything sweep — the cost architecture above
   is the constraint.
+  - **If an R1 fetch is egress-denied, NAME ITS HOST IN THE RUN SUMMARY (2026-08-10).**
+    The `EGRESS DENIED` block is exhaustive *for the roster* and blind to everything
+    else by construction: it is assembled from `results`, and an R1 target is not a
+    roster entry, so it never enters `results` and can never appear on the ask. **The
+    block covers the roster; the run has to cover the rest.** This is not theoretical
+    — `eventbrite.com` blocked the Challenger's Corner hold and `marianella.co`
+    blocked the Face Oil Stacker hold, both from 2026-08-07, and **neither host was on
+    the 12-host ask or the round-2 ask**, so both were still denied after Batu applied
+    both rounds successfully. A hold can sit `source-blocked` indefinitely while every
+    gate reports green and every allowlist round completes. Both were finally settled
+    from an interactive session, where egress is unrestricted — which is the fallback
+    when this happens, not a reason to skip naming the host. **A denial nobody names
+    is a denial nobody fixes.**
 - **R2 — Check whether a standing rule already supplies the field.** A "missing"
   field is often one this skill already has an answer for: an offer with no stated
   end date is `recurring` + verified-through (**not** a hold); an enrollment goes
@@ -243,7 +256,7 @@ review cycle and, on a same-week item, usually the card itself.
 
    - **`new-judgment`** — a call this skill genuinely has no answer for. Expected to stay low but never zero; each one should come back as a proposed rule (below).
    - **`rule-miss`** — R1/R2/R3 would have resolved it. **This is the number to drive to zero.** A non-zero `rule-miss` means the run held a card it had everything it needed to ship, so say which check was skipped.
-   - **`source-blocked`** — the source genuinely doesn't carry the fact and no fetch can reach it. Goes to `watchItems`, not to a re-author next week.
+   - **`source-blocked`** — the source genuinely doesn't carry the fact and no fetch can reach it. Goes to `watchItems`, not to a re-author next week. **Distinguish "the page doesn't say" from "we couldn't open the page", and if it is the latter, name the host** (R1, above): the first is permanent and the second is one allowlist entry away, and recording both as `source-blocked` hid two resolvable holds for three days. A blocked-fetch hold also has a fallback the skill cannot use itself — an interactive session, where egress is unrestricted — so say so in the summary rather than leaving it to expire.
 9. **Turn each resolved hold into something durable (Batu, 2026-08-03 — the authority split).**
    - **Facts** — "this newsletter never states per-date venue", "this booking widget is unreadable by automation" — the run writes them itself, into the source's `notes` in `ingest-sources.json` or into `watchItems`. No approval needed; both files are already in the content-only file set.
    - **Rules** — anything that decides how a *class* of future card is filed — go into **this skill**, proposed as a one-line addition in the review PR. Batu approves the **rule once**, and every future matching card then ships mechanically with no per-card review. This needs no new gate: gate 5's content-only file set already forces a `SKILL.md` edit into a PR, so a rule can never self-approve while facts flow freely.
