@@ -311,14 +311,21 @@ test("seed has exactly 75 cards across the six layers", () => {
   // same day). A fourth flyer (Green Carpet Learning Studio's Summer Studio)
   // was held — no street address could be confirmed, and business listings
   // are human-gated regardless.
-  assert.equal(seed.cards.length, 150);
+  // 2026-08-10 EXPIRY (150 → 135). The first clean expiry since 8/8 — every run
+  // between halted at the fetch gate, so 17 passed events (8/8–8/10) were live
+  // on the map for two days. Deterministic script, no judgment: 15 deletions,
+  // 6 related-link prunes, and 4 recurring deals FLAGGED rather than dropped
+  // (poochs-parlor, marianella, bk-youth-ballet, dreams-on-command) — they are
+  // past their verified-through dates but their sources are egress-blocked, so
+  // they need a bump or a delete once fetch is restored, not a guess now.
+  assert.equal(seed.cards.length, 135);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 83, "80 + the three 2026-08-10 flyer sightings");
+  assert.equal(count((c) => c.category === "event"), 68, "83 - the 15 the 2026-08-10 expiry took");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 21, "25 - 4 taken by the 2026-08-10 expiry");
   assert.equal(count((c) => c.category === "subscription"), 24, "18 + the 6-card SSG deals & memberships sweep (2026-08-08)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -475,7 +482,7 @@ test("free-ness is designated only where the source states it (tester feedback #
     "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
     "summerstarz-zootopia-0821",
-    "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
+    // (transmitter-saltwater-fishing-0809 expired out 2026-08-10)
     // 2026-08-10: "Free Show + Free Donuts" on the WORD Bookstore flyer.
     "word-herman-melville-comedy-0820",
   ]);
@@ -579,7 +586,7 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
     // Day 8/15). A game club's programme is play by definition.
     "carcosa-hot-dog-day-0815",
-    "carcosa-malifaux-monthly-0808",
+    // (carcosa-malifaux-monthly-0808 expired out 2026-08-10)
     "carcosa-membership-guest-pass",
     "last-place-chess-chill",
     // 2026-08-05: North Brooklyn Chess's August residency at the McCarren
@@ -820,8 +827,8 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // 2026-08-06: the first 14-day fill run added three named one-off bookings
   // (the recurring Thu/Fri/Sat showcases are deliberately not carded), so the
   // club's link list is four deep.
+  // 2026-08-10: expiry took the 8/8 Secret Showcase and pruned the link.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    "comedy-secret-showcase-0808",
     "comedy-raanan-hershberg-0811",
     "comedy-carmen-lagala-0815",
     "comedy-dani-castaneda-0816",
