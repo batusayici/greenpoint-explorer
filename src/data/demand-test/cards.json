@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-08",
+  "version": "2026-08-10",
   "sourceCampaign": "shop_small_greenpoint_july_2026",
   "cards": [
     {
@@ -932,7 +932,6 @@
       "lat": 40.729567,
       "lng": -73.958337,
       "relatedCardIds": [
-        "comedy-secret-showcase-0808",
         "comedy-raanan-hershberg-0811",
         "comedy-carmen-lagala-0815",
         "comedy-dani-castaneda-0816",
@@ -987,9 +986,7 @@
       "relatedCardIds": [
         "film-noir-support",
         "film-noir-cult-cinema-0811",
-        "film-noir-watch-me-0808",
         "film-noir-watch-me-0813",
-        "film-noir-arrebato-0808",
         "film-noir-watch-me-0821"
       ],
       "lat": 40.727314,
@@ -1101,8 +1098,7 @@
       "updatedAt": "2026-08-06",
       "address": "162 Noble St, Brooklyn, NY 11222",
       "relatedCardIds": [
-        "flower-cat-subscription",
-        "flowercat-floral-kitten-0808"
+        "flower-cat-subscription"
       ],
       "lat": 40.728678,
       "lng": -73.954258
@@ -1573,9 +1569,6 @@
       "lat": 40.736437,
       "lng": -73.951511,
       "sourceQuote": "Join us at Hana Makgeolli on Thursdays and Sundays for Bottomless Makgeolli.\n$30 per person\nThursdays, 5PM—11PM and Sundays, 2PM–8PM",
-      "relatedCardIds": [
-        "hana-tour-tasting-0809"
-      ],
       "recurrence": {
         "days": [
           "thu",
@@ -1968,7 +1961,6 @@
         }
       ],
       "relatedCardIds": [
-        "bcc-beginner-embroidery-0808",
         "bcc-knitting-101-0817"
       ],
       "recurrence": {
@@ -2335,52 +2327,8 @@
       "lat": 40.729855,
       "lng": -73.960729,
       "relatedCardIds": [
-        "transmitter-saltwater-fishing-0809",
         "community-yoga-transmitter-tuesdays"
       ]
-    },
-    {
-      "id": "greenpoint-film-festival-0805",
-      "category": "event",
-      "title": "Greenpoint Film Festival, 15th anniversary",
-      "kicker": "130 films in a Broadway Stages soundstage",
-      "startsAt": "2026-08-05T00:00:00-04:00",
-      "endsAt": "2026-08-09T23:59:00-04:00",
-      "locationName": "Broadway Stages",
-      "address": "259 Green St, Brooklyn, NY 11222",
-      "geocodeQuery": "259 Green Street, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "summary": "Passes run $150 for the whole run, $50 a day, $20 for one short-plus-feature program. Nearly every screening ends with a filmmaker Q&A.",
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "free": false,
-      "actions": [
-        {
-          "label": "Festival program",
-          "type": "learn_more",
-          "url": "https://greenpointfilmfestival.org/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Film Festival Returns for Its 15th Anniversary",
-          "publisher": "Greenpointers",
-          "url": "https://greenpointers.com/2026/07/29/greenpoint-film-festival-returns-for-its-15th-anniversary/",
-          "date": "2026-07-29"
-        }
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-01",
-      "lat": 40.734327,
-      "lng": -73.950242
     },
     {
       "id": "poochs-parlor-first-groom",
@@ -2430,53 +2378,6 @@
       "relatedCardIds": [
         "poochs-parlor"
       ]
-    },
-    {
-      "id": "transmitter-saltwater-fishing-0809",
-      "category": "event",
-      "title": "Saltwater fishing with the Urban Park Rangers",
-      "kicker": "Free lessons, all gear provided",
-      "startsAt": "2026-08-09T11:00:00-04:00",
-      "endsAt": "2026-08-09T12:30:00-04:00",
-      "locationName": "WNYC Transmitter Park",
-      "address": "Greenpoint Ave & West St, Brooklyn, NY 11222",
-      "geocodeQuery": "WNYC Transmitter Park, Brooklyn, NY",
-      "lat": 40.729855,
-      "lng": -73.960729,
-      "filters": [
-        "family_kids"
-      ],
-      "free": true,
-      "summary": "Rangers cover rod technique, the ethics of fishing and the ecology of the waterway. Recommended for ages 8 and older; no registration.",
-      "audience": [
-        "resident",
-        "family"
-      ],
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.nycgovparks.org/parks/transmitter-park/events/2026/08/09/saltwater-fishing"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Saltwater Fishing — WNYC Transmitter Park events",
-          "url": "https://www.nycgovparks.org/parks/transmitter-park/events/2026/08/09/saltwater-fishing",
-          "publisher": "NYC Parks",
-          "date": "2026-08-03"
-        }
-      ],
-      "sourceQuote": "Saltwater Fishing\nSunday, August 9, 2026\n11:00 a.m.–12:30 p.m.\nWant to go fishing but don’t know how or where to start? Join our Urban Park Rangers for free lessons! Learn how to properly use a fishing rod. Our experienced Rangers teach the ethics of fishing and the ecology of our waterways. All equipment will be provided. Recommended for ages 8 and older.\nLocation\nEntrance-West Street and Greenpoint Avenue in WNYC Transmitter Park\nCost\nFree\nRegistration\nRegistration not required.\nCategories\nUrban Park Rangers, Fishing",
-      "relatedCardIds": [
-        "transmitter-park-restaurant-marina"
-      ],
-      "evidenceStrength": "high",
-      "monetizationRelevance": "none",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-03",
-      "updatedAt": "2026-08-03"
     },
     {
       "id": "community-yoga-transmitter-tuesdays",
@@ -2710,100 +2611,6 @@
           "thu"
         ]
       }
-    },
-    {
-      "audience": [
-        "resident",
-        "visitor"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "comedy-secret-showcase-0808",
-      "title": "The Secret Showcase at Greenpoint Comedy Club",
-      "kicker": "Lineup stays secret until showtime",
-      "category": "event",
-      "filters": [
-        "arts_culture"
-      ],
-      "free": false,
-      "startsAt": "2026-08-08T22:00:00-04:00",
-      "endsAt": "2026-08-09T00:00:00-04:00",
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "summary": "Tickets run $25 with a one-item minimum. Seating opens at 9:45pm and the room stops admitting at 10:15pm; shows are 21+.",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "rsvp",
-          "url": "https://tickets.greenpointcomedyclub.com/e/the-later-show-on-saturdays"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        },
-        {
-          "title": "The Secret Showcase @ 10:00 PM — Sat Aug 8",
-          "url": "https://tickets.greenpointcomedyclub.com/e/the-later-show-on-saturdays",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Secret Showcase @ Greenpoint Comedy Club, 10 p.m.: You won’t know who exactly you’re going to see at this Saturday show, but we promise it’ll be good. Tickets are $25 , with a one-item minimum.",
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
-      ],
-      "evidenceStrength": "high",
-      "lat": 40.729567,
-      "lng": -73.958337
-    },
-    {
-      "audience": [
-        "resident"
-      ],
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "medium",
-      "trustRisk": "low",
-      "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-05",
-      "id": "songwriter-sundays-parkhouse-0809",
-      "title": "Songwriter Sundays at the Parkhouse",
-      "kicker": "Singer-songwriter night, $12 suggested",
-      "category": "event",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-09T19:00:00-04:00",
-      "endsAt": "2026-08-09T23:59:00-04:00",
-      "locationName": "McCarren Parkhouse",
-      "address": "McCarren Park, Brooklyn, NY 11222",
-      "geocodeQuery": "McCarren Park, Brooklyn, NY",
-      "summary": "A monthly concert series in the park building, put on to back the city's songwriting community. RSVP ahead through the organisers' page.",
-      "actions": [
-        {
-          "label": "RSVP",
-          "type": "rsvp",
-          "url": "https://partiful.com/e/bCp6ZJWr5pESwfow162F"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
-          "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
-          "publisher": "Greenpointers",
-          "date": "2026-08-05"
-        }
-      ],
-      "sourceQuote": "Songwriter Sundays @ McCarren Parkhouse, 7 p.m.: Support the city’s singer-songwriter community with this monthly concert series at the Parkhouse. Suggested donation of $12. RSVP here.",
-      "evidenceStrength": "medium_high",
-      "lat": 40.721159,
-      "lng": -73.952879
     },
     {
       "audience": [
@@ -3166,11 +2973,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-10",
       "id": "library-friday-garden-0814",
       "title": "Friday in the library rooftop garden",
       "kicker": "Sensory hour, garden educator, movie",
-      "summary": "Sensory Garden Hour for under-fives at 10:30, a garden educator on the roof at 3, and an after-school movie in Eco Lab 1 at the same hour.",
+      "summary": "Ages 0–5 start at 10:30 on the third-floor rooftop; from 3pm a specialist is on site there, and Paddington (PG, 95 min) runs in Eco Lab 1.",
       "startsAt": "2026-08-14T10:30:00-04:00",
       "endsAt": "2026-08-14T23:59:00-04:00",
       "filters": [
@@ -3178,7 +2985,7 @@
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: After School Movie",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: Friday Kids' Movie\nts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: \"Paddington\" (2015 ) Rated PG, 95 minutes -",
       "actions": [
         {
           "label": "Branch calendar",
@@ -3253,19 +3060,19 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-10",
       "id": "film-noir-watch-me-0813",
       "title": "Watch Me continues at Film Noir Cinema",
-      "kicker": "Second week of the run",
-      "summary": "The feature holds over for a second week at the Meserole Avenue cinema after its premiere screening.",
+      "kicker": "Three nights, Thursday to Saturday",
+      "summary": "The feature holds over at the Meserole Avenue cinema with 7pm shows on each of the run's midweek dates.",
       "startsAt": "2026-08-13T19:00:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
+      "endsAt": "2026-08-15T20:00:00-04:00",
       "filters": [
         "arts_culture"
       ],
       "locationName": "Film Noir Cinema",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: WATCH ME",
+      "sourceQuote": "title: WATCH ME\nstartDate: 2026-08-13T23:00:00.176Z\ntitle: WATCH ME\nstartDate: 2026-08-14T23:00:00.187Z\ntitle: WATCH ME\nstartDate: 2026-08-15T23:00:00.405Z",
       "actions": [
         {
           "label": "Programme",
@@ -3434,49 +3241,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-06",
       "updatedAt": "2026-08-06",
-      "id": "carcosa-malifaux-monthly-0808",
-      "title": "Malifaux Monthly at Carcosa Club",
-      "kicker": "All-day tabletop wargaming",
-      "summary": "The club's monthly Malifaux meet runs most of the day. No price is stated on the listing.",
-      "startsAt": "2026-08-08T09:45:00-04:00",
-      "endsAt": "2026-08-08T18:00:00-04:00",
-      "filters": [
-        "games"
-      ],
-      "locationName": "Carcosa Club",
-      "address": "982 Manhattan Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: Malifaux Monthly",
-      "actions": [
-        {
-          "label": "Event details",
-          "type": "learn_more",
-          "url": "https://www.carcosaclub.com/events/2026/7/12/malifaux-monthly-b5wzj"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Carcosa Club",
-          "url": "https://www.carcosaclub.com/events/2026/7/12/malifaux-monthly-b5wzj",
-          "publisher": "Carcosa Club",
-          "date": "2026-08-06"
-        }
-      ],
-      "geocodeQuery": "982 Manhattan Ave, Brooklyn, NY 11222",
-      "lat": 40.732676,
-      "lng": -73.954395
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
       "id": "carcosa-hot-dog-day-0815",
       "title": "HVAC Hot Dog Day at Carcosa Club",
       "kicker": "Hot dogs and games, all day",
@@ -3563,51 +3327,6 @@
       "trustRisk": "low",
       "createdAt": "2026-08-06",
       "updatedAt": "2026-08-06",
-      "id": "hana-tour-tasting-0809",
-      "title": "Tour and tasting at Hana Makgeolli",
-      "kicker": "45 minutes inside the brewery",
-      "summary": "The production team walks you through the Dupont Street facility and the history of sool, then pours a guided tasting before the room opens.",
-      "startsAt": "2026-08-09T13:30:00-04:00",
-      "endsAt": "2026-08-09T14:30:00-04:00",
-      "filters": [
-        "food_drink"
-      ],
-      "locationName": "Hana Makgeolli",
-      "address": "201 Dupont St",
-      "sourceQuote": "Our production team will take you through our facility and cover everything from the history of sool to how our wines are made followed by a guided tasting in our tasting room prior to opening hours.",
-      "actions": [
-        {
-          "label": "Book a tour",
-          "type": "learn_more",
-          "url": "https://hanamakgeolli.com/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Hana Makgeolli",
-          "url": "https://hanamakgeolli.com/events",
-          "publisher": "Hana Makgeolli",
-          "date": "2026-08-06"
-        }
-      ],
-      "relatedCardIds": [
-        "hana-bottomless-makgeolli"
-      ],
-      "lat": 40.736437,
-      "lng": -73.951511
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
       "id": "hana-tour-tasting-0820",
       "title": "Tour and tasting at Hana Makgeolli",
       "kicker": "45 minutes inside the brewery",
@@ -3637,93 +3356,6 @@
       ],
       "lat": 40.736437,
       "lng": -73.951511
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "flowercat-floral-kitten-0808",
-      "title": "Floral arranging with author Stacey Yu",
-      "kicker": "Build an arrangement, meet the author",
-      "summary": "A hands-on arranging workshop doubling as a launch for the novel Kitten. No price is stated on the listing.",
-      "startsAt": "2026-08-08T18:00:00-04:00",
-      "endsAt": "2026-08-08T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "sourceQuote": "Join author Stacey Yu to create a bespoke flower arrangement and celebrate Stacey's new novel, Kitten.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-06"
-        }
-      ],
-      "relatedCardIds": [
-        "flower-cat"
-      ],
-      "lat": 40.728678,
-      "lng": -73.954258
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
-      "id": "flowercat-eclipse-season-0809",
-      "title": "Navigating Eclipse Season with E Wray",
-      "kicker": "Astrology workshop, space limited",
-      "summary": "E Wray walks through the last Pisces eclipses and the first in Leo. Registration is required and space is limited.",
-      "startsAt": "2026-08-09T20:30:00-04:00",
-      "endsAt": "2026-08-09T21:30:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Flower Cat",
-      "address": "162 Noble St, Brooklyn, NY 11222",
-      "sourceQuote": "Eclipse season comes again in August, when we’ll experience the last of a series of eclipses in Pisces, and the first of a series of eclipses in Leo.",
-      "actions": [
-        {
-          "label": "Details",
-          "type": "learn_more",
-          "url": "https://flowercat.nyc/events"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Flower Cat",
-          "url": "https://flowercat.nyc/events",
-          "publisher": "Flower Cat",
-          "date": "2026-08-06"
-        }
-      ],
-      "lat": 40.728678,
-      "lng": -73.954258
     },
     {
       "category": "event",
@@ -3986,52 +3618,6 @@
       "lng": -73.957317
     },
     {
-      "id": "bcc-beginner-embroidery-0808",
-      "category": "event",
-      "title": "Beginner Embroidery",
-      "kicker": "Start embroidery at the Greenpoint studio",
-      "startsAt": "2026-08-08T15:00:00-04:00",
-      "endsAt": "2026-08-08T23:59:00-04:00",
-      "locationName": "Brooklyn Craft Company",
-      "address": "165 Greenpoint Ave",
-      "geocodeQuery": "165 Greenpoint Ave, Brooklyn, NY",
-      "filters": [
-        "arts_culture"
-      ],
-      "summary": "A newly added session — the shop reopened dates for workshops that had been selling out.",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "actions": [
-        {
-          "label": "Book a spot",
-          "type": "signup",
-          "url": "https://www.brooklyncraftcompany.com/products/beginner-embroidery-workshop"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Brooklyn Craft Company newsletter, 2026-08-06",
-          "url": "https://www.brooklyncraftcompany.com/products/beginner-embroidery-workshop",
-          "publisher": "Brooklyn Craft Company",
-          "date": "2026-08-06"
-        }
-      ],
-      "sourceQuote": "Beginner Embroidery … In Greenpoint: … Sat, 8/8 at 3pm",
-      "relatedCardIds": [
-        "bcc-kids-sewing-camp"
-      ],
-      "lat": 40.730461,
-      "lng": -73.953114
-    },
-    {
       "id": "bcc-knitting-101-0817",
       "category": "event",
       "title": "Knitting 101",
@@ -4076,90 +3662,6 @@
       ],
       "lat": 40.730461,
       "lng": -73.953114
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-hefker-girl-0808",
-      "title": "DJ The Hefker Girl at Troost",
-      "kicker": "Dub, mariachi and pirate radio",
-      "summary": "Decirculated dub, mariachi and pirate radio in one set. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-08T00:00:00-04:00",
-      "endsAt": "2026-08-08T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: DJ THE HEFKER GIRL\nstart.date: 2026-08-08",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Troost",
-      "address": "1011 Manhattan Ave",
-      "lat": 40.733463,
-      "lng": -73.955035,
-      "id": "troost-automat-0809",
-      "title": "AUTOMAT at Troost",
-      "kicker": "Sunday night live set",
-      "summary": "AUTOMAT plays the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
-      "startsAt": "2026-08-09T00:00:00-04:00",
-      "endsAt": "2026-08-09T23:59:00-04:00",
-      "filters": [
-        "live_music"
-      ],
-      "sourceQuote": "summary: AUTOMAT\nstart.date: 2026-08-09",
-      "actions": [
-        {
-          "label": "Venue calendar",
-          "type": "learn_more",
-          "url": "https://troostny.com/calendar/"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Troost calendar",
-          "url": "https://troostny.com/calendar/",
-          "publisher": "Troost",
-          "date": "2026-08-07"
-        }
-      ]
     },
     {
       "category": "event",
@@ -4453,51 +3955,6 @@
           "publisher": "Troost",
           "date": "2026-08-07"
         }
-      ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "id": "comedy-off-menu-0808",
-      "title": "Off Menu at Greenpoint Comedy Club",
-      "kicker": "Early Saturday show, $20",
-      "startsAt": "2026-08-08T18:00:00-04:00",
-      "endsAt": "2026-08-08T23:59:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Greenpoint Comedy Club",
-      "address": "66 Greenpoint Ave, Brooklyn, NY 11222",
-      "lat": 40.729567,
-      "lng": -73.958337,
-      "summary": "A one-off booking in the 6pm slot, ahead of the club's regular Saturday showcases.",
-      "sourceQuote": "Sat Aug 8, 2026, 6:00 PM\nOff Menu - Saturday August 8th 6PM",
-      "actions": [
-        {
-          "label": "Tickets",
-          "type": "learn_more",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Greenpoint Comedy Club",
-          "url": "https://www.jumpcomedy.com/v/greenpoint-comedy-club",
-          "publisher": "Greenpoint Comedy Club",
-          "date": "2026-08-07"
-        }
-      ],
-      "relatedCardIds": [
-        "greenpoint-comedy-club"
       ]
     },
     {
@@ -4968,49 +4425,6 @@
           "date": "2026-08-07"
         }
       ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-07",
-      "updatedAt": "2026-08-07",
-      "locationName": "Good Room",
-      "address": "98 Meserole Ave",
-      "geocodeQuery": "98 Meserole Ave, Brooklyn, NY 11222",
-      "id": "good-room-shubostar-0808",
-      "title": "Shubostar and Irena Stanisic at Good Room",
-      "kicker": "Saturday night, two on the bill",
-      "summary": "Shubostar and Irena Stanisic share the booth at the Meserole Avenue club.",
-      "filters": [
-        "live_music"
-      ],
-      "startsAt": "2026-08-08T19:00:00-04:00",
-      "endsAt": "2026-08-08T23:59:00-04:00",
-      "sourceQuote": "Saturday\nAug 8\nShubostar, Irena Stanisic\nGood Room\n7:00PM",
-      "actions": [
-        {
-          "label": "Listing",
-          "type": "learn_more",
-          "url": "https://donyc.com/venues/good-room"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Good Room via DoNYC",
-          "url": "https://donyc.com/venues/good-room",
-          "publisher": "DoNYC",
-          "date": "2026-08-07"
-        }
-      ],
-      "lat": 40.726909,
-      "lng": -73.95281
     },
     {
       "category": "event",
@@ -5508,96 +4922,6 @@
           "date": "2026-08-07"
         }
       ]
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
-      "id": "film-noir-arrebato-0808",
-      "title": "Arrebato at Film Noir Cinema",
-      "kicker": "Late addition, 9pm tonight",
-      "summary": "A one-night screening added to the Meserole Avenue programme this week, following the evening's Watch Me show.",
-      "startsAt": "2026-08-08T21:00:00-04:00",
-      "endsAt": "2026-08-08T22:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-09T01:00:00.000Z\nendDate: 2026-08-09T02:00:00.000Z",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-08"
-        }
-      ],
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
-    },
-    {
-      "category": "event",
-      "audience": [
-        "resident"
-      ],
-      "free": false,
-      "evidenceStrength": "high",
-      "monetizationRelevance": "indirect",
-      "partnerRelevance": "high",
-      "trustRisk": "low",
-      "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
-      "id": "film-noir-watch-me-0808",
-      "title": "Watch Me at Film Noir Cinema",
-      "kicker": "Tonight, 7pm",
-      "summary": "Premiere-week screening at the Meserole Avenue cinema, ahead of the second-week run on 8/13 and the Arrebato late show that follows it tonight.",
-      "startsAt": "2026-08-08T19:00:00-04:00",
-      "endsAt": "2026-08-08T20:00:00-04:00",
-      "filters": [
-        "arts_culture"
-      ],
-      "locationName": "Film Noir Cinema",
-      "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: WATCH ME\nstartDate: 2026-08-08T23:00:00.377Z\nendDate: 2026-08-09T00:00:00.377Z",
-      "actions": [
-        {
-          "label": "Programme",
-          "type": "learn_more",
-          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l"
-        }
-      ],
-      "sourceLinks": [
-        {
-          "title": "Film Noir Cinema",
-          "url": "https://www.filmnoircinema.com/program/2026/8/7/watch-me-5fr8l",
-          "publisher": "Film Noir Cinema",
-          "date": "2026-08-08"
-        }
-      ],
-      "relatedCardIds": [
-        "film-noir-cinema"
-      ],
-      "lat": 40.727314,
-      "lng": -73.951608
     },
     {
       "category": "event",
@@ -6779,6 +6103,225 @@
       "updatedAt": "2026-08-08",
       "lat": 40.724611,
       "lng": -73.95359
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "id": "film-noir-sintomas-0810",
+      "title": "Sintomas at Film Noir Cinema",
+      "kicker": "Early show before the Monday noir",
+      "summary": "A 7pm screening on the Meserole Avenue cinema's Monday bill, two hours ahead of its standing late-night noir slot.",
+      "startsAt": "2026-08-10T19:00:00-04:00",
+      "endsAt": "2026-08-10T20:00:00-04:00",
+      "sourceQuote": "title: SINTOMAS\nstartDate: 2026-08-10T23:00:00.000Z\nendDate: 2026-08-11T00:00:00.000Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-10"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "id": "film-noir-arrebato-0811",
+      "title": "Arrebato at Film Noir Cinema",
+      "kicker": "Early show before the cult slot",
+      "summary": "A 7pm screening on the Meserole Avenue cinema's Tuesday bill, ahead of the weekly late-night cult programme.",
+      "startsAt": "2026-08-11T19:00:00-04:00",
+      "endsAt": "2026-08-11T20:00:00-04:00",
+      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-11T23:00:00.324Z\nendDate: 2026-08-12T00:00:00.324Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-10"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "id": "film-noir-phedre-0824",
+      "title": "Phedre at Film Noir Cinema",
+      "kicker": "Opens the following Monday",
+      "summary": "A single 7pm show on the Meserole Avenue cinema's programme, listed for the Monday after the Watch Me run closes.",
+      "startsAt": "2026-08-24T19:00:00-04:00",
+      "endsAt": "2026-08-24T20:00:00-04:00",
+      "sourceQuote": "title: PHEDRE\nstartDate: 2026-08-24T23:00:00.000Z\nendDate: 2026-08-25T00:00:00.000Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/24/phedre"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/24/phedre",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-10"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-10"
+        }
+      ],
+      "id": "troost-andrew-mccann-quartet-0823",
+      "title": "Andrew McCann Quartet at Troost",
+      "kicker": "Sunday night quartet",
+      "summary": "A four-piece takes the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-23T00:00:00-04:00",
+      "endsAt": "2026-08-23T23:59:00-04:00",
+      "sourceQuote": "summary: Andrew McCann Quartet\nstart.date: 2026-08-23"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-10"
+        }
+      ],
+      "id": "troost-john-dorney-0824",
+      "title": "John Dorney at Troost",
+      "kicker": "Monday night live set",
+      "summary": "John Dorney plays the back room on Manhattan Avenue. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-24T00:00:00-04:00",
+      "endsAt": "2026-08-24T23:59:00-04:00",
+      "sourceQuote": "summary: John Dorney\nstart.date: 2026-08-24"
     }
   ]
 }

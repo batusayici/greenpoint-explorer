@@ -1,6 +1,6 @@
 {
   "description": "Track V newsletter-ingest ledger. lastRunAt bounds the next Gmail search window; processedItems (Gmail message IDs or source URLs) prevent re-ingestion; senderRegistry maps newsletter senders to publishers. Maintained by the ingest-newsletters skill — hand-edit only to add senders.",
-  "lastRunAt": "2026-08-08T15:30:00-04:00",
+  "lastRunAt": "2026-08-10T10:15:00-04:00",
   "processedItems": [
     {
       "id": "https://greenpointers.com/2026/07/15/get-your-hands-dirty-brew-kombucha-and-more-whats-happening-greenpoint-7-16-22/",
@@ -1174,6 +1174,13 @@
       "publisher": "YMCA of Greater New York",
       "processedAt": "2026-08-08",
       "outcome": "ONBOARDED at Batu's request after the branch list (greenpoint@emails.ymcanyc.org) turned up in the 2026-08-08 inbox audit unread by any pass. Carded 1: ymca-greenpoint-fall-1-registration (Fall 1 starts 9/8; member registration 8/8, community 8/15). Term registrations are subscription cards on the AUDIENCE lens (family_kids), never deals_memberships. Seasonal source — expect `unchanged` between terms and check at term boundaries."
+    },
+    {
+      "id": "run:2026-08-10-monday-full",
+      "kind": "run",
+      "publisher": "Track V ingest (Monday full)",
+      "processedAt": "2026-08-10",
+      "outcome": "DEGRADED — did not auto-ship; whole run took the review-PR path per SKILL.md §0.2 (`npm run ingest:fetch` exited non-zero: 22 of 58 sources errored = 38%, ceiling 15%). Snapshots deliberately NOT marked ingested, so every pending diff survives for the next run. Expiry ran and removed 15 passed events (147→132). Authored 5 adds: 3 Film Noir screenings (SINTOMAS 8/10, ARREBATO 8/11, PHEDRE 8/24 — all uncarded early/late shows visible in the programme JSON) and 2 Troost nights (Andrew McCann Quartet 8/23, John Dorney 8/24). The Troost pair came from the COVERAGE script, not the diff — the lines were already in the prior snapshot so `changed` never surfaced them; this is the fill-the-back-of-window rule working exactly as intended. Updated 2: film-noir-watch-me-0813 extended to the 8/13-8/15 block (8/14 and 8/15 were uncarded mid-run nights), library-friday-garden-0814 re-substantiated after BPL renamed 'After School Movie' to \"Friday Kids' Movie\" and named the film. holds: 1 new-judgment · 0 rule-miss · 0 source-blocked. Gmail pass NOT run — no Gmail tools available in this session. 4 FLAGGED recurring deals could not be re-verified because their sources are egress-blocked (see watchItems)."
     }
   ],
   "senderRegistry": [
@@ -1491,13 +1498,28 @@
     {
       "name": "Leaves Bookstore — Summer Writing Group, Thu 9/3 (past the 14-day window)",
       "note": "Biweekly, which recurrence.days cannot express (it models WEEKLY only), so each occurrence is carded singly. 8/20 is carded as leaves-summer-writing-group-0820; 9/3 is the last of the eight-week session — card it when it enters the window. Greenpoint shop, 140 Nassau Ave. No start time is stated for the summer session (the spring one ran 8:00-9:30pm; do NOT carry that over). Verbatim: 'meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3'."
+    },
+    {
+      "name": "ROUTINE EGRESS: 12 roster hosts denied at the proxy (403 to CONNECT) — Batu allowlist action",
+      "note": "ENVIRONMENT BLOCK recorded 2026-08-10. 14 roster sources across 12 hosts cannot be fetched by the cloud routine: the egress gateway answers 403 to the CONNECT for each, recorded verbatim in the proxy's own status endpoint as {\"kind\":\"connect_rejected\",\"detail\":\"gateway answered 403 to CONNECT (policy denial or upstream failure)\"}. Hosts: maisonjar.nyc, greekkitchen.nyc, happy-medium.co, heldspacebk.com, www.selformer.com, www.clayspacebk.com, www.otisandfinn.com, www.dreamsoncommand.com, machastudio.com, cibone-us.com, data.accentapi.com (lockwood), edysgrocer.com. Sources affected: maison-jar, greek-kitchen, happy-medium, held-space, selformer, clay-space-membership, clay-space-workshops, clay-space-semester-classes, otis-and-finn, dreams-on-command, macha-studio, cibone-ote, lockwood, edys-grocer. This is NOT a site bot-wall and NOT the chromium bug — it is this session's egress policy. Per /root/.ccr/README.md the sanctioned response is to report the blocked host, never to route around it, and that is what this entry does. UNBLOCKS when Batu allowlists these hosts for the routine at claude.ai/code. Consequence while blocked: greek-kitchen, happy-medium and otis-and-finn are standing:true sources with no live card, and dreams-on-command + marianella have FLAGGED recurring deals that cannot be re-verified.",
+      "addedAt": "2026-08-10"
+    },
+    {
+      "name": "ROUTINE BROWSER: headless Chromium CONNECT is reset by the proxy relay — platform-support action",
+      "note": "ENVIRONMENT BLOCK recorded 2026-08-10, and it is the `browser-connect-reset` cause SKILL.md already names. Chromium cannot tunnel through the session proxy: page.goto to the control URL dies with net::ERR_CONNECTION_RESET both with and without an explicit --proxy-server argument, while curl reaches the same URL through the same proxy with status 200. Playwright 1.56.0 and the chromium build are both present, so this is not a missing-binary problem; `npx playwright install firefox` also fails (download blocked), so the Firefox fallback is inert in this environment. 7 sources are browser-dependent and contributed nothing: greenpoint-comedy-club, word-bookstore, grownyc-mccarren-greenmarket, leaves-bookstore, greenpoint-trash-club, sunshine-laundromat, brooklyn-youth-ballet. Per SKILL.md this is reported to platform support at claude.ai/code and never routed around; do NOT re-request a host allowlist for this cause — plain fetch already reaches these hosts.",
+      "addedAt": "2026-08-10"
+    },
+    {
+      "name": "fetch-sources.mjs preflight misdiagnoses the browser failure — its plain-fetch control probe bypasses the proxy (code fix, human-gated)",
+      "note": "SOURCE FACT recorded 2026-08-10. Two script-level findings, both needing a code change and therefore NOT made by this run:\n(1) scripts/fetch-sources.mjs fetches every plain source with Node's built-in fetch, which does NOT read HTTPS_PROXY unless NODE_USE_ENV_PROXY=1 (Node >= 22.21; this env is Node 22.22.2). Without it the script egresses direct and is intercepted: nycgovparks returned 405 direct vs 200 through the proxy. Running `NODE_USE_ENV_PROXY=1 npm run ingest:fetch` recovered nycparks-greenpoint (+43/-46) and turned brooklyn-craft-company's spurious change into a correct `unchanged`. Proposed fix: set NODE_USE_ENV_PROXY=1 in the script or the routine's env.\n(2) BECAUSE of (1), the browser preflight's own tie-breaker is unsound: it decides between `browser-connect-reset` and `browser-egress-blocked` by asking whether plain fetch reaches the control URL 'through the same proxy', but that probe is the same unproxied fetch. Its conclusion happened to be right here (curl through the proxy confirms chromium-specific reset) but it was reached on a false comparison. Proposed fix: make the probe explicitly proxy-aware before trusting its verdict.",
+      "addedAt": "2026-08-10"
     }
   ],
   "sourcePulse": {
     "eavesdrop": "2026-07-25",
     "greenpointers": "2026-08-04",
     "greenpoint-comedy-club": "2026-08-06",
-    "film-noir-cinema": "2026-08-07",
+    "film-noir-cinema": "2026-08-09",
     "scrappleland": "2026-08-06",
     "flower-cat": "2026-08-05",
     "greenpoint-library": "2026-08-07",
@@ -1521,7 +1543,7 @@
     "epa-meeker-plume": "2026-07-26",
     "go-green-bk": "2026-08-02",
     "nycparks-greenpoint": "2026-08-06",
-    "troost": "2026-08-06",
+    "troost": "2026-08-09",
     "carcosa-club": "2026-08-07",
     "good-room": "2026-08-06",
     "town-square-bk": "2026-08-06",
@@ -1542,6 +1564,72 @@
     "clay-space-membership": "2026-08-07",
     "clay-space-workshops": "2026-08-07",
     "clay-space-semester-classes": "2026-08-07",
-    "driftaway-subscriptions": "2026-08-07"
-  }
+    "driftaway-subscriptions": "2026-08-07",
+    "cibone-ote": "2026-08-07"
+  },
+  "coverageExplanations": [
+    {
+      "sourceId": "dashi-okume",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "epa-meeker-plume",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "nyc-dot-mcguinness",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "greenpoint-ymca",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "sparrow-nesting",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "brooklyn-hearts-club",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "driftaway-subscriptions",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "marianella-subscription-box",
+      "gapKey": "NO SNAPSHOT",
+      "reason": "Monthly-cadence source, fetched only with --include-monthly on the FIRST Monday of the month. Today (2026-08-10) is the second Monday — the first was 2026-08-03 — so this source was not attempted and has no snapshot this run. Fetch report line: \"66 sources → 13 changed, 1 new, 22 unchanged, 22 error, 8 skipped (monthly)\". Absence of a snapshot here is the schedule working, not a coverage loss.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    },
+    {
+      "sourceId": "nycparks-greenpoint",
+      "gapKey": "GAP",
+      "reason": "All 8 flagged dates (8/10, 8/11, 8/12, 8/13, 8/17, 8/18, 8/20, 8/24) carry ONLY standing municipal rec programming, which both the roster notes and SKILL.md exclude by rule. Every entry on those dates is McCarren Park Pool swimming or Shape Up NYC, e.g. verbatim: \"## McCarren Pool: Lap Swim ... location: McCarren Park Pool (in McCarren Park) / categories: Fitness | Swimming/Aquatics\" and \"categories: Fitness | Shape Up NYC | Recreation Center Programming\". The three dates the deck DOES cover (8/14, 8/19, 8/21) are exactly the feed's non-rec items — the Free Summer Movies — all carded. No one-off happening on any flagged date is uncarded.",
+      "addedAt": "2026-08-10",
+      "expiresAt": "2026-08-24"
+    }
+  ]
 }

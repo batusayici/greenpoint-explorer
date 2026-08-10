@@ -303,14 +303,33 @@ test("seed has exactly 75 cards across the six layers", () => {
   // being multi-location would have skipped it. Batu ruled 50 Norman in — its
   // tenants (CIBONE, Kama-Asa, Dashi Okume, Cafe O'te) are now eligible for
   // venue and event cards like any local business.
-  assert.equal(seed.cards.length, 147);
+  // 2026-08-10 Monday full refresh — DEGRADED FETCH, review-PR path (not
+  // auto-shipped). `ingest:fetch` exited non-zero: 22 of 58 sources errored
+  // (38%, ceiling 15%) from two environment faults, both recorded in the
+  // ledger's watchItems — 12 roster hosts denied at the egress proxy (403 to
+  // CONNECT) and headless Chromium's CONNECT tunnel reset, which takes out 7
+  // browser-dependent sources. Snapshots were deliberately NOT marked
+  // ingested, so every pending diff survives for the next run.
+  // Expiry deleted 15 passed 8/8–8/9 events (147 → 132). +5 adds: three Film
+  // Noir screenings the programme JSON carried but no card covered (SINTOMAS
+  // 8/10 and ARREBATO 8/11, the 7pm shows sitting under the already-carded
+  // 9pm Monday/Cult slots, and PHEDRE 8/24), plus Troost 8/23 Andrew McCann
+  // Quartet and 8/24 John Dorney. The Troost pair came from the COVERAGE
+  // check, not the diff: those lines were already in the prior snapshot, so
+  // `changed` never surfaced them — the back-of-window fill rule working as
+  // designed. Also updated (no count change): film-noir-watch-me-0813 widened
+  // to the 8/13–8/15 block, since 8/14 and 8/15 were uncarded mid-run nights;
+  // and library-friday-garden-0814 re-substantiated after BPL renamed "After
+  // School Movie" to "Friday Kids' Movie" and named the film.
+  // 132 + 5 = 137.
+  assert.equal(seed.cards.length, 137);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 80, "79 + the CIBONE Re:STATION showcase (2026-08-08)");
+  assert.equal(count((c) => c.category === "event"), 70, "65 post-expiry + 3 Film Noir screenings + 2 Troost nights (2026-08-10)");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 25, "26 - Troost Vinyl Fridays 8/7 expired (2026-08-08)");
+  assert.equal(count((c) => c.filters.includes("live_music")), 23, "21 post-expiry + Troost 8/23 and 8/24 (2026-08-10)");
   assert.equal(count((c) => c.category === "subscription"), 24, "18 + the 6-card SSG deals & memberships sweep (2026-08-08)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still
@@ -463,8 +482,9 @@ test("free-ness is designated only where the source states it (tester feedback #
     // The 8/14 screening is the next live one in the same free series.
     "summerstarz-project-hail-mary-0814", // "Free SummerStarz Movies" on townsquarebk.org
     // 2026-08-07: the season's closing screening, surfaced by the coverage check.
+    // 2026-08-10: transmitter-saltwater-fishing-0809 ("Cost / Free" on its NYC
+    // Parks event page) expired out with the rest of the 8/9 events.
     "summerstarz-zootopia-0821",
-    "transmitter-saltwater-fishing-0809", // "Cost / Free" on the NYC Parks event page
   ]);
 });
 
@@ -562,7 +582,6 @@ test("the games lens holds play, and no games card is left in Arts & Culture", (
     // the Squarespace JSON finally carried dated events (Malifaux 8/8, Hot Dog
     // Day 8/15). A game club's programme is play by definition.
     "carcosa-hot-dog-day-0815",
-    "carcosa-malifaux-monthly-0808",
     "carcosa-membership-guest-pass",
     "last-place-chess-chill",
     // 2026-08-05: North Brooklyn Chess's August residency at the McCarren
@@ -804,7 +823,6 @@ test("relatedCardIds resolve to real cards (place-graph integrity)", () => {
   // (the recurring Thu/Fri/Sat showcases are deliberately not carded), so the
   // club's link list is four deep.
   assert.deepEqual(byId("greenpoint-comedy-club").relatedCardIds, [
-    "comedy-secret-showcase-0808",
     "comedy-raanan-hershberg-0811",
     "comedy-carmen-lagala-0815",
     "comedy-dani-castaneda-0816",
