@@ -318,14 +318,26 @@ test("seed has exactly 75 cards across the six layers", () => {
   // (poochs-parlor, marianella, bk-youth-ballet, dreams-on-command) — they are
   // past their verified-through dates but their sources are egress-blocked, so
   // they need a bump or a delete once fetch is restored, not a guess now.
-  assert.equal(seed.cards.length, 135);
+  // 2026-08-10 SALVAGE (135 → 140). The 2026-08-10 weekly run halted at the
+  // fetch gate twice and its work stranded on a branch behind a closed PR
+  // (#27), 4 commits behind main. Rather than merge a stale base, the content
+  // was lifted onto main directly: 5 cards the coverage check found that the
+  // diff never surfaced (3 Film Noir screenings sitting under already-carded
+  // slots, 2 Troost nights), plus 5 card updates — the chess card re-verified
+  // against its own 8/06 article instead of a roundup line (and a wrong
+  // sourceLink corrected), Sunset Storytime added to the 8/20 library card,
+  // and the Transmitter Park hub given the elected-officials development as a
+  // sourceQuote rather than a third near-identical news card.
+  // Both sides had run expiry independently and converged on identical
+  // relatedCardIds, so the only real merge was that hub card's content fields.
+  assert.equal(seed.cards.length, 140);
   const count = (pred) => seed.cards.filter(pred).length;
   assert.equal(count((c) => c.filters.includes("new")), 0, "new retired — folded into news");
   assert.equal(count((c) => c.filters.includes("news")), 23, "22 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.category === "event"), 68, "83 - the 15 the 2026-08-10 expiry took");
+  assert.equal(count((c) => c.category === "event"), 73, "68 + the 5 salvaged from the stranded 2026-08-10 branch");
   assert.equal(count((c) => c.category === "discount"), 5, "Hana bottomless + Moon Bunny + Pooch's first groom + Marianella anniversary + BYB trial (Bios deleted — offer expired 7/28)");
   assert.equal(count((c) => c.category === "news"), 13, "12 post-expiry + Transmitter Park restaurant/marina");
-  assert.equal(count((c) => c.filters.includes("live_music")), 21, "25 - 4 taken by the 2026-08-10 expiry");
+  assert.equal(count((c) => c.filters.includes("live_music")), 23, "21 + the 2 salvaged Troost nights");
   assert.equal(count((c) => c.category === "subscription"), 24, "18 + the 6-card SSG deals & memberships sweep (2026-08-08)");
   // 2026-08-08: Newtown Creek CAG deleted — it ran 7/29, is a one-off, and had
   // sat past its own end date ever since (hidden by isExpiredCard, but still

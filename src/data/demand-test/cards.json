@@ -2292,7 +2292,7 @@
       "filters": [
         "news"
       ],
-      "summary": "The Parks Department proposal adds a restaurant, marina and public restroom to the waterfront; residents have voiced opposition and Greenpointers followed up with Parks on their concerns.",
+      "summary": "Council Member Restler, State Senator Gonzalez and Assemblymember Gallagher have now asked the department to reconsider, citing near-unanimous local opposition ahead of an August 10 hearing.",
       "audience": [
         "resident",
         "civic_actor"
@@ -2316,6 +2316,12 @@
           "publisher": "Greenpointers",
           "url": "https://greenpointers.com/2026/07/31/greenpoint-residents-voice-opposition-to-planned-restaurant-and-marina-at-transmitter-park/",
           "date": "2026-07-31"
+        },
+        {
+          "title": "Greenpoint Elected Officials Ask NYC Parks to Reconsider Controversial Transmitter Park Proposal",
+          "url": "https://greenpointers.com/2026/08/10/greenpoint-elected-officials-ask-nyc-parks-to-reconsider-controversial-transmitter-park-proposal/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-10"
         }
       ],
       "evidenceStrength": "medium_high",
@@ -2323,12 +2329,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-03",
+      "updatedAt": "2026-08-10",
       "lat": 40.729855,
       "lng": -73.960729,
       "relatedCardIds": [
         "community-yoga-transmitter-tuesdays"
-      ]
+      ],
+      "sourceQuote": "City Council Member Lincoln Restler, State Senator Kristen Gonzalez, and State Assemblymember Emily Gallagher asked the NYC Parks Department to reconsider the controversial proposal, which sparked widespread backlash when Greenpointers first revealed the plans in July."
     },
     {
       "id": "poochs-parlor-first-groom",
@@ -2572,7 +2579,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-10",
       "id": "nb-chess-parkhouse-0806",
       "title": "North Brooklyn Chess at the Parkhouse",
       "kicker": "Casual chess, beginners to sharks",
@@ -2581,7 +2588,7 @@
         "games"
       ],
       "startsAt": "2026-08-06T19:00:00-04:00",
-      "endsAt": "2026-08-20T23:00:00-04:00",
+      "endsAt": "2026-08-24T23:00:00-04:00",
       "locationName": "McCarren Parkhouse",
       "address": "McCarren Park, Brooklyn, NY 11222",
       "geocodeQuery": "McCarren Park, Brooklyn, NY",
@@ -2594,6 +2601,12 @@
         }
       ],
       "sourceLinks": [
+        {
+          "title": "Checkmate: North Brooklyn Chess Club Sets Up Summer Residency at the McCarren Parkhouse",
+          "url": "https://greenpointers.com/2026/08/06/checkmate-north-brooklyn-chess-club-sets-up-summer-residency-at-the-mccarren-parkhouse/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-06"
+        },
         {
           "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
           "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
@@ -2973,11 +2986,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-10",
       "id": "library-friday-garden-0814",
       "title": "Friday in the library rooftop garden",
       "kicker": "Sensory hour, garden educator, movie",
-      "summary": "Sensory Garden Hour for under-fives at 10:30, a garden educator on the roof at 3, and an after-school movie in Eco Lab 1 at the same hour.",
+      "summary": "Ages 0–5 start at 10:30 on the third-floor rooftop; from 3pm a specialist is on site there, and Paddington (PG, 95 min) runs in Eco Lab 1.",
       "startsAt": "2026-08-14T10:30:00-04:00",
       "endsAt": "2026-08-14T23:59:00-04:00",
       "filters": [
@@ -2985,7 +2998,7 @@
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: After School Movie",
+      "sourceQuote": "ts_title: Sensory Garden Hour\nts_title: Garden Hours with a Garden Educator\nts_title: Friday Kids' Movie\nts_body: Join us on Friday afternoon for a kid-friendly movie! This week's movie will be: \"Paddington\" (2015 ) Rated PG, 95 minutes -",
       "actions": [
         {
           "label": "Branch calendar",
@@ -3060,19 +3073,19 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-06",
-      "updatedAt": "2026-08-06",
+      "updatedAt": "2026-08-10",
       "id": "film-noir-watch-me-0813",
       "title": "Watch Me continues at Film Noir Cinema",
-      "kicker": "Second week of the run",
-      "summary": "The feature holds over for a second week at the Meserole Avenue cinema after its premiere screening.",
+      "kicker": "Three nights, Thursday to Saturday",
+      "summary": "The feature holds over at the Meserole Avenue cinema with 7pm shows on each of the run's midweek dates.",
       "startsAt": "2026-08-13T19:00:00-04:00",
-      "endsAt": "2026-08-13T23:59:00-04:00",
+      "endsAt": "2026-08-15T20:00:00-04:00",
       "filters": [
         "arts_culture"
       ],
       "locationName": "Film Noir Cinema",
       "address": "122 Meserole Ave, Brooklyn, NY 11222",
-      "sourceQuote": "title: WATCH ME",
+      "sourceQuote": "title: WATCH ME\nstartDate: 2026-08-13T23:00:00.176Z\ntitle: WATCH ME\nstartDate: 2026-08-14T23:00:00.187Z\ntitle: WATCH ME\nstartDate: 2026-08-15T23:00:00.405Z",
       "actions": [
         {
           "label": "Programme",
@@ -4979,11 +4992,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-10",
       "id": "library-thursday-programs-0820",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Storytimes, sewing, teen tech, ESOL",
-      "summary": "Babies & Books lapsits at 10:30 and 11:15, drop-in sewing machines at 1, free English class at 2, Teen Tech at 3.",
+      "kicker": "Five programs, morning to evening",
+      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines at 1, a free English class at 2, Teen Tech Time at 3, and Sunset Storytime at 6.",
       "startsAt": "2026-08-20T10:30:00-04:00",
       "endsAt": "2026-08-20T23:59:00-04:00",
       "filters": [
@@ -4991,7 +5004,7 @@
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time 🎮",
+      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time 🎮\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-20T22:00:00Z",
       "actions": [
         {
           "label": "Branch calendar",
@@ -6237,6 +6250,225 @@
       "trustRisk": "low",
       "createdAt": "2026-08-10",
       "updatedAt": "2026-08-10"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "id": "film-noir-sintomas-0810",
+      "title": "Sintomas at Film Noir Cinema",
+      "kicker": "Early show before the Monday noir",
+      "summary": "A 7pm screening on the Meserole Avenue cinema's Monday bill, two hours ahead of its standing late-night noir slot.",
+      "startsAt": "2026-08-10T19:00:00-04:00",
+      "endsAt": "2026-08-10T20:00:00-04:00",
+      "sourceQuote": "title: SINTOMAS\nstartDate: 2026-08-10T23:00:00.000Z\nendDate: 2026-08-11T00:00:00.000Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/7/31/sintomas",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-10"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "id": "film-noir-arrebato-0811",
+      "title": "Arrebato at Film Noir Cinema",
+      "kicker": "Early show before the cult slot",
+      "summary": "A 7pm screening on the Meserole Avenue cinema's Tuesday bill, ahead of the weekly late-night cult programme.",
+      "startsAt": "2026-08-11T19:00:00-04:00",
+      "endsAt": "2026-08-11T20:00:00-04:00",
+      "sourceQuote": "title: ARREBATO\nstartDate: 2026-08-11T23:00:00.324Z\nendDate: 2026-08-12T00:00:00.324Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/8/arrebato",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-10"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "filters": [
+        "arts_culture"
+      ],
+      "locationName": "Film Noir Cinema",
+      "address": "122 Meserole Ave, Brooklyn, NY 11222",
+      "relatedCardIds": [
+        "film-noir-cinema"
+      ],
+      "lat": 40.727314,
+      "lng": -73.951608,
+      "id": "film-noir-phedre-0824",
+      "title": "Phedre at Film Noir Cinema",
+      "kicker": "Opens the following Monday",
+      "summary": "A single 7pm show on the Meserole Avenue cinema's programme, listed for the Monday after the Watch Me run closes.",
+      "startsAt": "2026-08-24T19:00:00-04:00",
+      "endsAt": "2026-08-24T20:00:00-04:00",
+      "sourceQuote": "title: PHEDRE\nstartDate: 2026-08-24T23:00:00.000Z\nendDate: 2026-08-25T00:00:00.000Z",
+      "actions": [
+        {
+          "label": "Programme",
+          "type": "learn_more",
+          "url": "https://www.filmnoircinema.com/program/2026/8/24/phedre"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Film Noir Cinema",
+          "url": "https://www.filmnoircinema.com/program/2026/8/24/phedre",
+          "publisher": "Film Noir Cinema",
+          "date": "2026-08-10"
+        }
+      ]
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-10"
+        }
+      ],
+      "id": "troost-andrew-mccann-quartet-0823",
+      "title": "Andrew McCann Quartet at Troost",
+      "kicker": "Sunday night quartet",
+      "summary": "A four-piece takes the Manhattan Avenue bar. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-23T00:00:00-04:00",
+      "endsAt": "2026-08-23T23:59:00-04:00",
+      "sourceQuote": "summary: Andrew McCann Quartet\nstart.date: 2026-08-23"
+    },
+    {
+      "category": "event",
+      "audience": [
+        "resident"
+      ],
+      "free": false,
+      "evidenceStrength": "high",
+      "monetizationRelevance": "indirect",
+      "partnerRelevance": "high",
+      "trustRisk": "low",
+      "createdAt": "2026-08-10",
+      "updatedAt": "2026-08-10",
+      "locationName": "Troost",
+      "address": "1011 Manhattan Ave",
+      "lat": 40.733463,
+      "lng": -73.955035,
+      "filters": [
+        "live_music"
+      ],
+      "actions": [
+        {
+          "label": "Venue calendar",
+          "type": "learn_more",
+          "url": "https://troostny.com/calendar/"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "title": "Troost calendar",
+          "url": "https://troostny.com/calendar/",
+          "publisher": "Troost",
+          "date": "2026-08-10"
+        }
+      ],
+      "id": "troost-john-dorney-0824",
+      "title": "John Dorney at Troost",
+      "kicker": "Monday night live set",
+      "summary": "John Dorney plays the back room on Manhattan Avenue. The venue calendar lists the night without a set start time.",
+      "startsAt": "2026-08-24T00:00:00-04:00",
+      "endsAt": "2026-08-24T23:59:00-04:00",
+      "sourceQuote": "summary: John Dorney\nstart.date: 2026-08-24"
     }
   ]
 }
