@@ -28,7 +28,16 @@ a PROXIED browser and attributed the difference to the proxy relay.
    §0.2 roster-unreadable contract) if `HTTPS_PROXY` is set without it, or if the flag is inert on
    an old Node. Silent bypass is what cost three weeks; it is now loud.
 2. **Proxy allowlist (Batu, pending).** 12 hosts genuinely 403 at CONNECT — evidence sound, it came
-   from the proxy's own status endpoint.
+   from the proxy's own status endpoint (`{"kind":"connect_rejected","detail":"gateway answered 403
+   to CONNECT (policy denial or upstream failure)"}`), and it survived re-provisioning when the proxy
+   port moved 33403 → 45457, so it is policy and not a transient. Recorded here because PR #27 was
+   closed unmerged and this is the list's only home in `main`: `maisonjar.nyc`, `greekkitchen.nyc`,
+   `happy-medium.co`, `heldspacebk.com`, `www.selformer.com`, `www.clayspacebk.com`,
+   `www.otisandfinn.com`, `www.dreamsoncommand.com`, `machastudio.com`, `cibone-us.com`,
+   `data.accentapi.com` (lockwood), `edysgrocer.com` — 14 sources. **Re-measure before requesting
+   it:** four of those sources (`macha-studio`, `cibone-ote` are `feed`; `lockwood`, `edys-grocer`
+   are `json`) have no browser fallback and never touched the proxy, so their presence on the list is
+   an artifact of fault 1 rather than a proven denial.
 3. **Chromium CONNECT reset (platform, pending).** Also sound: cross-checked with curl-through-proxy
    returning 200.
 
