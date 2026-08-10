@@ -395,12 +395,50 @@ async function browserText(url) {
   }
 }
 
+// A CONNECT proxy denies a host BEFORE any HTTP response exists, so an
+// egress-policy block does not arrive as a status code — fetch just throws.
+// Left unnamed, that surfaces as a bare "fetch failed" and, on an `auto`
+// source, is then overwritten by the browser attempt's error (see fetchSource)
+// — which is how four allowlist gaps spent 2026-08-10 disguised as browser
+// failures. Tag it so the host lands on the allowlist ask instead.
+const PROXY_DENIED = Symbol("proxy-denied");
+// A refused tunnel and a slow one are different problems with different fixes,
+// and only the first belongs on an allowlist ask. undici surfaces a rejected
+// CONNECT as a cancellation (the tunnel is torn down before any response),
+// whereas a timeout names itself. Anything that looks like a timeout, an abort
+// or DNS failure is left as an ordinary error rather than tagged as a denial —
+// greenpointtrashclub.org tripped exactly this during development, timing out
+// on a host that had answered 200 minutes earlier.
+const TRANSIENT_RE = /timeout|timed out|aborted|abortError|ENOTFOUND|EAI_AGAIN|ECONNRESET/i;
+function proxyDenial(url, e) {
+  const underlying = String(e?.cause?.message ?? e?.message ?? e);
+  const host = new URL(url).host;
+  if (TRANSIENT_RE.test(underlying)) {
+    return new Error(`could not reach ${host} through the proxy: ${underlying}`);
+  }
+  const err = new Error(
+    `could not open a connection to ${host} through the proxy — the tunnel was refused, ` +
+      "which is an egress-policy denial (allowlist the host for this environment); " +
+      `underlying: ${underlying}`,
+  );
+  err[PROXY_DENIED] = host;
+  return err;
+}
+
 async function rawGet(url, accept) {
-  const res = await fetch(url, {
-    headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "en-US,en;q=0.9" },
-    redirect: "follow",
-    signal: AbortSignal.timeout(20000),
-  });
+  let res;
+  try {
+    res = await fetch(url, {
+      headers: { "User-Agent": UA, Accept: accept, "Accept-Language": "en-US,en;q=0.9" },
+      redirect: "follow",
+      signal: AbortSignal.timeout(20000),
+    });
+  } catch (e) {
+    // Only claim a denial when a proxy is actually in the path; without one
+    // this is an ordinary network error and should read as one.
+    if (PROXY) throw proxyDenial(url, e);
+    throw e;
+  }
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
 }
@@ -435,12 +473,32 @@ async function jsonText(src) {
 const embeddedText = async (src) =>
   embeddedToText(await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml"), src.embedded ?? {});
 
+// Diagnostic only — the body is discarded. Answers one question about an
+// already-failed source: is its host reachable at all, or is it egress-denied?
+// A site bot-wall (an HTTP status, e.g. grownyc's 403) is NOT a denial and
+// correctly returns null, so the two stay distinguishable in the report.
+async function probeHostDenial(src) {
+  try {
+    await rawGet(sourceUrls(src)[0], "text/html,application/xhtml+xml");
+    return null;
+  } catch (e) {
+    return e?.[PROXY_DENIED] ?? null;
+  }
+}
+
 const ATTEMPTS = { browser: ["browser"], feed: ["feed"], json: ["json"], embedded: ["embedded"] }; // default: plain, then browser
 const FETCHERS = { plain: plainText, feed: feedText, json: jsonText, embedded: embeddedText, browser: browserPage };
 
 async function fetchSource(src) {
   const attempts = ATTEMPTS[src.fetch] ?? ["plain", "browser"];
   let lastErr = null;
+  // An `auto` source tries plain then browser, and `throw lastErr` used to
+  // keep only the browser's error — so a proxy denial on the plain attempt was
+  // discarded and the source reported "browser unavailable". That mislabels an
+  // allowlist gap as a browser outage, which inflates the browser-only count
+  // and hides the one fix that would actually restore the source. A denial is
+  // the more actionable diagnosis, so it outranks whatever the browser said.
+  let denialErr = null;
   for (const method of attempts) {
     try {
       const text = await FETCHERS[method](src);
@@ -454,10 +512,11 @@ async function fetchSource(src) {
       }
       return { text, method };
     } catch (e) {
+      if (e?.[PROXY_DENIED]) denialErr = e;
       lastErr = e;
     }
   }
-  throw lastErr;
+  throw denialErr ?? lastErr;
 }
 
 const hash = (s) => createHash("sha256").update(s).digest("hex").slice(0, 16);
@@ -545,6 +604,20 @@ for (const src of sources) {
   } catch (e) {
     entry.status = "error";
     entry.error = String(e.message ?? e);
+    let denied = e?.[PROXY_DENIED] ?? null;
+    // A `browser`-strategy source never makes a plain attempt, so a denial on
+    // its host cannot surface above — and when the browser is also down, every
+    // one of them reports "browser unavailable" regardless of whether its host
+    // is reachable at all. Two of the four allowlist gaps missed on 2026-08-10
+    // (jumpcomedy.com, leavesbookstore.com) hid in exactly that blind spot. We
+    // cannot read the source either way, but WHICH fix applies still matters,
+    // so spend one diagnostic request to tell the two apart. Only runs for a
+    // source that has already failed, so it costs nothing on a healthy run.
+    if (!denied && PROXY && /browser unavailable/.test(entry.error)) {
+      denied = await probeHostDenial(src);
+      if (denied) entry.error += ` — and its host is egress-denied (${denied}), so the browser is not the only blocker`;
+    }
+    if (denied) entry.proxyDeniedHost = denied;
     console.warn(`  ERROR     ${src.id} — ${entry.error}`);
   }
   results.push(entry);
@@ -597,6 +670,28 @@ if (!pw) console.log("note: playwright not installed — browser-only sources wi
 // already measures it — a failed browser source counts as an error like any
 // other. Keeping a second, drifting proxy for the same question only produced
 // false alarms, so the ceiling is now the single rule.
+// The allowlist ask, assembled by the run rather than by hand. On 2026-08-10
+// the ask was compiled by eye from the error list and came up four hosts
+// short, because an `auto` source whose plain fetch was denied reported only
+// "browser unavailable". Every denial is now tagged at the throw site, so this
+// block is exhaustive by construction. It prints the host actually connected
+// to, which is the one the allowlist needs: happy-medium.co 307-redirects to
+// www.happy-medium.co, and allowlisting the bare host alone leaves it denied.
+const deniedHosts = [...new Set(results.filter((r) => r.proxyDeniedHost).map((r) => r.proxyDeniedHost))].sort();
+if (deniedHosts.length) {
+  console.error("\n=== EGRESS DENIED — the proxy refused these hosts ===");
+  console.error(`  ${deniedHosts.length} host(s), affecting ${results.filter((r) => r.proxyDeniedHost).length} source(s):`);
+  for (const h of deniedHosts) {
+    const ids = results.filter((r) => r.proxyDeniedHost === h).map((r) => r.id).join(", ");
+    console.error(`    ${h}  →  ${ids}`);
+  }
+  console.error("  These are NOT site bot-walls and NOT the browser path: the tunnel was refused,");
+  console.error("  so no HTTP response ever existed (a site bot-wall returns a status, e.g. 403,");
+  console.error("  and is reported as one). Timeouts are excluded — they are not denials.");
+  console.error("  Allowlist these at claude.ai/code; the proxy's own status endpoint records");
+  console.error("  the reason per host. Never route around a policy denial.");
+}
+
 if (browserFetchDown) {
   console.error("\n=== BROWSER PATH DOWN — browser-only sources contributed nothing ===");
   if (browserPreflight?.fix) console.error(`  Fix: ${browserPreflight.fix}`);
