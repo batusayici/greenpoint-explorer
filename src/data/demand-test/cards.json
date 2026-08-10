@@ -2592,7 +2592,7 @@
       "locationName": "McCarren Parkhouse",
       "address": "McCarren Park, Brooklyn, NY 11222",
       "geocodeQuery": "McCarren Park, Brooklyn, NY",
-      "summary": "North Brooklyn Chess runs the parkhouse every Thursday night through the summer. All levels; boards provided.",
+      "summary": "North Brooklyn Chess runs the parkhouse through the summer — boards provided, all levels. Some nights are ticketed and bring in titled players for blitz; tickets are at the door either way.",
       "actions": [
         {
           "label": "RSVP",
@@ -2612,9 +2612,15 @@
           "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
           "publisher": "Greenpointers",
           "date": "2026-08-05"
+        },
+        {
+          "title": "North Brooklyn Chess | Parkhouse Summer Residency",
+          "url": "https://www.eventbrite.com/e/north-brooklyn-chess-parkhouse-summer-residency-tickets-1990656783025",
+          "publisher": "North Brooklyn Chess",
+          "date": "2026-08-10"
         }
       ],
-      "sourceQuote": "This summer, the chess club has found a new home through its residency at the McCarren Parkhouse (855 Lorimer St.) hosting weekly chess nights every Thursday from 7 to 11pm.",
+      "sourceQuote": "This summer, the chess club has found a new home through its residency at the McCarren Parkhouse (855 Lorimer St.) hosting weekly chess nights every Thursday from 7 to 11pm.\nSometimes free, sometimes ticketed. RSVPs encouraged and tickets are always available at the door.\nEach ticketed week we will bring one to two chess masters, coaches, or titled chess players for our “challengers corner”. These will be high-skill games, in Blitz or Bullet format.",
       "evidenceStrength": "medium_high",
       "lat": 40.721159,
       "lng": -73.952879,
