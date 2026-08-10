@@ -42,7 +42,7 @@ import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
 import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
-import { classifyFetchFailure, isPolicyDenial } from "../src/demand-test/proxyDiagnosis.js";
+import { classifyFetchFailure, isPolicyDenial, assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -203,24 +203,9 @@ const NO_PROXY = process.env.NO_PROXY || process.env.no_proxy || null;
 // A proxied environment plus an unproxied fetch is the silent-corruption case
 // above, so refuse the run rather than write a snapshot nobody can trust. Exit
 // 1 is already the roster-unreadable contract in SKILL.md §0.2 — this composes
-// with it instead of inventing a new failure mode.
-const [NODE_MAJOR, NODE_MINOR] = process.versions.node.split(".").map(Number);
-const ENV_PROXY_SUPPORTED = NODE_MAJOR >= 24 || (NODE_MAJOR === 22 && NODE_MINOR >= 21);
-if (PROXY && process.env.NODE_USE_ENV_PROXY !== "1") {
-  console.error("\n=== REFUSING TO RUN — plain fetch would bypass the proxy ===");
-  console.error(`  HTTPS_PROXY is set (${PROXY}) but NODE_USE_ENV_PROXY is not "1", so every`);
-  console.error("  plain/feed/json fetch would egress direct and be intercepted.");
-  console.error("  Fix: run it as `npm run ingest:fetch` (which sets the flag), or export");
-  console.error("  NODE_USE_ENV_PROXY=1 before invoking node directly.");
-  process.exit(1);
-}
-if (PROXY && !ENV_PROXY_SUPPORTED) {
-  console.error("\n=== REFUSING TO RUN — NODE_USE_ENV_PROXY is inert on this Node ===");
-  console.error(`  Node ${process.versions.node} predates the flag (needs 22.21+ or 24+), so it is`);
-  console.error("  accepted and silently does nothing — the same bypass wearing a hat.");
-  console.error("  Fix: upgrade the runtime, or install undici and set a ProxyAgent dispatcher.");
-  process.exit(1);
-}
+// with it instead of inventing a new failure mode. Shared with
+// geocode-demand-cards.mjs, which had the same defect and no guard at all.
+assertProxyAware();
 const launchOptions = PROXY
   ? { proxy: { server: PROXY, ...(NO_PROXY ? { bypass: NO_PROXY } : {}) } }
   : {};

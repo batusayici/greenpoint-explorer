@@ -130,3 +130,57 @@ export function classifyFetchFailure({ url, error, proxy }) {
 
 // The only kind that may be added to the allowlist ask.
 export const isPolicyDenial = (c) => c.kind === "policy-denied";
+
+// ---------------------------------------------------------------------------
+// Startup guard, shared by every script that fetches (2026-08-10).
+//
+// Node's global fetch ignores HTTPS_PROXY unless the process was STARTED with
+// NODE_USE_ENV_PROXY=1, so in a proxied sandbox an unguarded script egresses
+// direct — and direct egress there is INTERCEPTED, not merely unproxied, so it
+// returns mangled bodies rather than honest failures. That silent bypass cost
+// three weeks. `fetch-sources.mjs` grew a guard first; `geocode-demand-cards.mjs`
+// had the same defect and no guard, which is why this is shared rather than
+// copied: the next script to fetch should not have to rediscover it.
+//
+// Returns the message to print, or null when the environment is sound.
+export function proxyAwarenessError({ proxy, envProxyFlag, nodeVersion }) {
+  if (!proxy) return null; // no proxy in the path, nothing to bypass
+
+  const [major, minor] = String(nodeVersion).split(".").map(Number);
+  // NODE_USE_ENV_PROXY landed in 22.21 and 24.0. Older runtimes ACCEPT the flag
+  // and silently ignore it, which is the same bug wearing a hat — so a set flag
+  // on an old runtime has to fail too, not pass.
+  const supported = major >= 24 || (major === 22 && minor >= 21);
+
+  if (envProxyFlag !== "1") {
+    return (
+      "\n=== REFUSING TO RUN — plain fetch would bypass the proxy ===\n" +
+      `  HTTPS_PROXY is set (${proxy}) but NODE_USE_ENV_PROXY is not "1", so every\n` +
+      "  fetch would egress direct and be intercepted — mangled bodies, not honest errors.\n" +
+      "  Fix: invoke through `npm run` (the ingest scripts set the flag), or export\n" +
+      "  NODE_USE_ENV_PROXY=1 before invoking node directly."
+    );
+  }
+  if (!supported) {
+    return (
+      "\n=== REFUSING TO RUN — NODE_USE_ENV_PROXY is inert on this Node ===\n" +
+      `  Node ${nodeVersion} predates the flag (needs 22.21+ or 24+), so it is accepted\n` +
+      "  and silently does nothing — the same bypass wearing a hat.\n" +
+      "  Fix: upgrade the runtime, or install undici and set a ProxyAgent dispatcher."
+    );
+  }
+  return null;
+}
+
+// Convenience for scripts: read the ambient environment and exit(1) on a bad one.
+export function assertProxyAware(env = process.env, nodeVersion = process.versions.node) {
+  const msg = proxyAwarenessError({
+    proxy: env.HTTPS_PROXY || env.https_proxy || null,
+    envProxyFlag: env.NODE_USE_ENV_PROXY,
+    nodeVersion,
+  });
+  if (msg) {
+    console.error(msg);
+    process.exit(1);
+  }
+}

@@ -12,12 +12,19 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join, dirname } from "node:path";
+import { assertProxyAware } from "../src/demand-test/proxyDiagnosis.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CARDS_PATH = join(ROOT, "src/data/demand-test/cards.json");
 const CACHE_PATH = join(ROOT, "src/data/demand-test/geocode-cache.json");
 const UA = "greenpoint-explorer-track-v/0.1 (contact: bsayici@gmail.com)";
 const FORCE = process.argv.includes("--force");
+
+// Nominatim is reached with the same bare global fetch as the roster fetcher,
+// so in a proxied sandbox an unguarded run egresses direct and is intercepted —
+// which would write mangled or missing coordinates into geocode-cache.json and
+// call it evidence. Invoke through `npm run ingest:geocode`, which sets the flag.
+assertProxyAware();
 
 // Keep in sync with cardSchema.GREENPOINT_BBOX (script must stay runnable
 // standalone, so the bbox is duplicated here deliberately).

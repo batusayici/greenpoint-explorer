@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { classifyFetchFailure, causeChain, isPolicyDenial } from "./proxyDiagnosis.js";
+import { classifyFetchFailure, causeChain, isPolicyDenial, proxyAwarenessError } from "./proxyDiagnosis.js";
 
 const PROXY = "http://127.0.0.1:45457";
 const URL_ = "https://greenpointers.com/feed/";
@@ -125,5 +125,35 @@ test("every kind is one of the documented set", () => {
       ["policy-denied", "proxy-auth", "proxy-unreachable", "transient", "unproxied", "unknown"].includes(k),
       `undocumented kind "${k}"`,
     );
+  }
+});
+
+// --- the startup guard, shared by every fetching script -------------------
+// geocode-demand-cards.mjs had the identical defect to fetch-sources.mjs and no
+// guard at all, so it would have silently mis-geocoded through an intercepting
+// proxy. These pin the four cases so the next script to fetch inherits them.
+
+test("no proxy in the environment — nothing to bypass, so no complaint", () => {
+  assert.equal(proxyAwarenessError({ proxy: null, envProxyFlag: undefined, nodeVersion: "22.22.2" }), null);
+});
+
+test("proxied but the flag is missing — refuse, and say how to fix it", () => {
+  const msg = proxyAwarenessError({ proxy: "http://127.0.0.1:45457", envProxyFlag: undefined, nodeVersion: "22.22.2" });
+  assert.match(msg, /REFUSING TO RUN/);
+  assert.match(msg, /npm run/, "must name the fix, not just the fault");
+});
+
+test("proxied with the flag on a supporting Node — proceed", () => {
+  for (const v of ["22.21.0", "22.22.2", "24.0.0", "25.6.1"]) {
+    assert.equal(proxyAwarenessError({ proxy: "http://p:1", envProxyFlag: "1", nodeVersion: v }), null, v);
+  }
+});
+
+test("the flag is INERT on an older Node — that must fail too, not pass", () => {
+  // Accepting a flag that does nothing is the same silent bypass, so a set flag
+  // is not sufficient on its own.
+  for (const v of ["22.20.0", "20.11.0", "18.19.0", "23.5.0"]) {
+    const msg = proxyAwarenessError({ proxy: "http://p:1", envProxyFlag: "1", nodeVersion: v });
+    assert.match(msg ?? "", /inert/, `Node ${v} should be rejected`);
   }
 });
