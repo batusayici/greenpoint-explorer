@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run dev       # dev server at http://127.0.0.1:5173 — the product serves at /
-npm test          # unit tests (node --test src/**/*.test.mjs)
+npm test          # unit tests — TZ-pinned to America/New_York (day-grouping tests are zone-sensitive; the cloud routine runs UTC)
 npm run build     # production build to dist/
 npm run preview   # preview production build
 npm run ingest:geocode  # geocode new cards (Nominatim → geocode-cache.json)

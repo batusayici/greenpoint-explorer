@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "node scripts/check-freshness.mjs --stamp && vite build && node scripts/prerender-aeo.mjs",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --test \"src/**/*.test.mjs\"",
+    "test": "TZ=America/New_York node --test \"src/**/*.test.mjs\"",
     "ingest:fetch": "NODE_USE_ENV_PROXY=1 node scripts/fetch-sources.mjs",
     "ingest:expire": "node scripts/expire-cards.mjs",
     "ingest:geocode": "NODE_USE_ENV_PROXY=1 node scripts/geocode-demand-cards.mjs",
