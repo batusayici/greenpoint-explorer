@@ -42,6 +42,7 @@ import { createHash } from "node:crypto";
 import { diffAgainstBaseline, resolveIngestedHash } from "../src/demand-test/sourceDiff.js";
 import { decode, htmlToText } from "../src/demand-test/sourceText.js";
 import { jsonToText, embeddedToText, expandUrlTemplate } from "../src/demand-test/sourceJson.js";
+import { classifyFetchFailure, isPolicyDenial } from "../src/demand-test/proxyDiagnosis.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES_PATH = join(ROOT, "src/data/demand-test/ingest-sources.json");
@@ -402,26 +403,16 @@ async function browserText(url) {
 // — which is how four allowlist gaps spent 2026-08-10 disguised as browser
 // failures. Tag it so the host lands on the allowlist ask instead.
 const PROXY_DENIED = Symbol("proxy-denied");
-// A refused tunnel and a slow one are different problems with different fixes,
-// and only the first belongs on an allowlist ask. undici surfaces a rejected
-// CONNECT as a cancellation (the tunnel is torn down before any response),
-// whereas a timeout names itself. Anything that looks like a timeout, an abort
-// or DNS failure is left as an ordinary error rather than tagged as a denial —
-// greenpointtrashclub.org tripped exactly this during development, timing out
-// on a host that had answered 200 minutes earlier.
-const TRANSIENT_RE = /timeout|timed out|aborted|abortError|ENOTFOUND|EAI_AGAIN|ECONNRESET/i;
-function proxyDenial(url, e) {
-  const underlying = String(e?.cause?.message ?? e?.message ?? e);
-  const host = new URL(url).host;
-  if (TRANSIENT_RE.test(underlying)) {
-    return new Error(`could not reach ${host} through the proxy: ${underlying}`);
-  }
-  const err = new Error(
-    `could not open a connection to ${host} through the proxy — the tunnel was refused, ` +
-      "which is an egress-policy denial (allowlist the host for this environment); " +
-      `underlying: ${underlying}`,
-  );
-  err[PROXY_DENIED] = host;
+// The classification itself lives in src/demand-test/proxyDiagnosis.js with a
+// sibling test, because `scripts/` is outside the test glob and the first
+// version of this logic shipped a bug that only a test would have caught: it
+// read one level of `.cause` and treated "not obviously transient" as a denial,
+// so pointing HTTPS_PROXY at a dead port made the run demand an allowlist for
+// every target host in the roster. Only `policy-denied` may reach the ask.
+function proxyFailure(url, e) {
+  const c = classifyFetchFailure({ url, error: e, proxy: PROXY });
+  const err = new Error(c.message);
+  if (isPolicyDenial(c)) err[PROXY_DENIED] = c.host;
   return err;
 }
 
@@ -434,10 +425,10 @@ async function rawGet(url, accept) {
       signal: AbortSignal.timeout(20000),
     });
   } catch (e) {
-    // Only claim a denial when a proxy is actually in the path; without one
-    // this is an ordinary network error and should read as one.
-    if (PROXY) throw proxyDenial(url, e);
-    throw e;
+    // Classify in both cases: with no proxy in the path the classifier returns
+    // `unproxied` and can never claim a denial, which is the guarantee we want
+    // rather than a second branch that has to remember it.
+    throw proxyFailure(url, e);
   }
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.text();
