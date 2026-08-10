@@ -2292,7 +2292,7 @@
       "filters": [
         "news"
       ],
-      "summary": "The Parks Department proposal adds a restaurant, marina and public restroom to the waterfront; residents have voiced opposition and Greenpointers followed up with Parks on their concerns.",
+      "summary": "Council Member Restler, State Senator Gonzalez and Assemblymember Gallagher have now asked the department to reconsider, citing near-unanimous local opposition ahead of an August 10 hearing.",
       "audience": [
         "resident",
         "civic_actor"
@@ -2316,6 +2316,12 @@
           "publisher": "Greenpointers",
           "url": "https://greenpointers.com/2026/07/31/greenpoint-residents-voice-opposition-to-planned-restaurant-and-marina-at-transmitter-park/",
           "date": "2026-07-31"
+        },
+        {
+          "title": "Greenpoint Elected Officials Ask NYC Parks to Reconsider Controversial Transmitter Park Proposal",
+          "url": "https://greenpointers.com/2026/08/10/greenpoint-elected-officials-ask-nyc-parks-to-reconsider-controversial-transmitter-park-proposal/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-10"
         }
       ],
       "evidenceStrength": "medium_high",
@@ -2323,12 +2329,13 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-01",
-      "updatedAt": "2026-08-03",
+      "updatedAt": "2026-08-10",
       "lat": 40.729855,
       "lng": -73.960729,
       "relatedCardIds": [
         "community-yoga-transmitter-tuesdays"
-      ]
+      ],
+      "sourceQuote": "City Council Member Lincoln Restler, State Senator Kristen Gonzalez, and State Assemblymember Emily Gallagher asked the NYC Parks Department to reconsider the controversial proposal, which sparked widespread backlash when Greenpointers first revealed the plans in July."
     },
     {
       "id": "poochs-parlor-first-groom",
@@ -2572,7 +2579,7 @@
       "partnerRelevance": "medium",
       "trustRisk": "low",
       "createdAt": "2026-08-05",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-10",
       "id": "nb-chess-parkhouse-0806",
       "title": "North Brooklyn Chess at the Parkhouse",
       "kicker": "Casual chess, beginners to sharks",
@@ -2581,7 +2588,7 @@
         "games"
       ],
       "startsAt": "2026-08-06T19:00:00-04:00",
-      "endsAt": "2026-08-20T23:00:00-04:00",
+      "endsAt": "2026-08-24T23:00:00-04:00",
       "locationName": "McCarren Parkhouse",
       "address": "McCarren Park, Brooklyn, NY 11222",
       "geocodeQuery": "McCarren Park, Brooklyn, NY",
@@ -2594,6 +2601,12 @@
         }
       ],
       "sourceLinks": [
+        {
+          "title": "Checkmate: North Brooklyn Chess Club Sets Up Summer Residency at the McCarren Parkhouse",
+          "url": "https://greenpointers.com/2026/08/06/checkmate-north-brooklyn-chess-club-sets-up-summer-residency-at-the-mccarren-parkhouse/",
+          "publisher": "Greenpointers",
+          "date": "2026-08-06"
+        },
         {
           "title": "Film festival fun, Songwriter Sundays, and more—What’s Happening, Greenpoint? (8/6-12)",
           "url": "https://greenpointers.com/2026/08/05/film-festival-fun-songwriter-sundays-and-more-whats-happening-greenpoint-8-6-12/",
@@ -4979,11 +4992,11 @@
       "partnerRelevance": "high",
       "trustRisk": "low",
       "createdAt": "2026-08-08",
-      "updatedAt": "2026-08-08",
+      "updatedAt": "2026-08-10",
       "id": "library-thursday-programs-0820",
       "title": "Thursday at Greenpoint Library",
-      "kicker": "Storytimes, sewing, teen tech, ESOL",
-      "summary": "Babies & Books lapsits at 10:30 and 11:15, drop-in sewing machines at 1, free English class at 2, Teen Tech at 3.",
+      "kicker": "Five programs, morning to evening",
+      "summary": "Babies & Books at 10:30 and 11:15, drop-in sewing machines at 1, a free English class at 2, Teen Tech Time at 3, and Sunset Storytime at 6.",
       "startsAt": "2026-08-20T10:30:00-04:00",
       "endsAt": "2026-08-20T23:59:00-04:00",
       "filters": [
@@ -4991,7 +5004,7 @@
       ],
       "locationName": "Greenpoint Library",
       "address": "107 Norman Ave, Brooklyn, NY 11222",
-      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time 🎮",
+      "sourceQuote": "ts_title: Babies & Books\nts_title: Drop-In Sewing Machine Hours\nts_title: Free English Class\nts_title: Teen Tech Time 🎮\nts_title: Sunset Storytime\nds_event_start_date: 2026-08-20T22:00:00Z",
       "actions": [
         {
           "label": "Branch calendar",
