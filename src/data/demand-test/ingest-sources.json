@@ -200,28 +200,6 @@
       }
     },
     {
-      "id": "nyplays",
-      "name": "New York Society of Play (Sawyer API)",
-      "url": "https://www.hisawyer.com/api/v1/widget/scheduled_activities?slug=new-york-society-of-play&page=1",
-      "group": "venue",
-      "cadence": "weekly",
-      "fetch": "json",
-      "notes": "Third game-club source (Batu 2026-07-27). Switched 2026-08-05 from the browser-rendered Sawyer schedules page to the JSON widget API behind it — same listings, no browser. FILTER PER ITEM: only card items whose location names Frontier Games / 724 Manhattan Ave (the sole Greenpoint host). Skip location \"Online\" (not mappable) and school sites like P.S. 290 Ridgewood (out of area). Mostly fall-semester kids registrations (subscription cards), not dated in-window events. CHANNEL: web-only — no newsletter found in the mailbox (2026-07-27). BLOCKED BY CLOUDFLARE SINCE 2026-08-06 (diagnosed 2026-08-07). The 403 is NOT a header problem and NOT our proxy: hisawyer.com now serves a Cloudflare interstitial ('Just a moment...') to non-browser clients across the whole host. Probed four ways — bare, browser UA, UA+Accept+Referer, and the public /new-york-society-of-play/schedules page — all 403. DO NOT add UA tricks, DO NOT re-hunt for another endpoint, and DO NOT switch this source to the browser path: driving headless Chromium at a host that has just put up a bot challenge is evading bot detection, which is out of bounds regardless of how well it would work. Supply impact is nil today — this source has never produced a dated card, and its one live card (nyplays-fall-registration, undated subscription) is unaffected. If we want this source back, the honest routes are a direct ask to New York Society of Play or dropping it; Batu's call.",
-      "json": {
-        "path": "data.results",
-        "fields": [
-          "activity.name",
-          "location",
-          "class_times",
-          "pricing",
-          "activity.age_range",
-          "is_online",
-          "pdp_url"
-        ]
-      },
-      "citeHost": "hisawyer.com"
-    },
-    {
       "id": "little-dance-school",
       "name": "The Little Dance School",
       "url": "https://thelittledanceschool.com/greenpoint",

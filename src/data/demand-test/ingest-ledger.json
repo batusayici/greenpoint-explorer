@@ -1491,6 +1491,11 @@
     {
       "name": "Leaves Bookstore — Summer Writing Group, Thu 9/3 (past the 14-day window)",
       "note": "Biweekly, which recurrence.days cannot express (it models WEEKLY only), so each occurrence is carded singly. 8/20 is carded as leaves-summer-writing-group-0820; 9/3 is the last of the eight-week session — card it when it enters the window. Greenpoint shop, 140 Nassau Ave. No start time is stated for the summer session (the spring one ran 8:00-9:30pm; do NOT carry that over). Verbatim: 'meetings are held every other thursday for eight weeks in our greenpoint shop: • july 23 • august 6 • august 20 • september 3'."
+    },
+    {
+      "name": "nyplays-fall-registration — card outlives its source (roster entry removed)",
+      "note": "Batu removed the `nyplays` roster source 2026-08-10: hisawyer.com has served a Cloudflare bot challenge to every non-browser client since 2026-08-06, and the sanctioned routes were a direct ask or a drop. The live card `nyplays-fall-registration` (undated `subscription`, NY Society of Play fall game clubs, updatedAt 2026-07-30) is NOT deleted — its sourceLink and attribution stay valid. But with no roster source there is no longer any path to re-verify it, and it is undated, so expiry will never reach it either. It will go stale silently once fall registration closes. RE-VERIFY BY HAND, or delete it, at the end of the fall term. This is the general hazard of dropping a source that still has live cards — the card does not announce that its source is gone.",
+      "addedAt": "2026-08-10"
     }
   ],
   "sourcePulse": {
@@ -1515,7 +1520,6 @@
     "moon-bunny-aerial": "2026-08-07",
     "brooklyn-craft-company": "2026-08-07",
     "last-place-on-earth": "2026-07-26",
-    "nyplays": "2026-07-26",
     "greenpoint-star": "2026-07-26",
     "nyc-dot-mcguinness": "2026-07-26",
     "epa-meeker-plume": "2026-07-26",
